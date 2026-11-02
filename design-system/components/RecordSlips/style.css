@@ -1,0 +1,60 @@
+/* ---------- RecordSlips: each process and the record it leaves (look "record-slips"). Process in light display type on
+   the ground; a navy slot at its right edge; the record as a paper slip (surface-raised, data-theme="light") fed out of
+   the slot, square, with an empty tick box per record. One flow accent: the slip's top edge. ---------- */
+.aq-record-slips-sec { position: relative; }
+.aq-record-slips { position: relative; }
+.aq-record-slips__cols { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); padding-bottom: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-record-slips__cols span:first-child { padding-left: calc(var(--space-12) + var(--space-4)); }
+.aq-record-slips__cols span + span { padding-left: var(--space-8); }
+.aq-record-slips__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-record-slips__row {
+  display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); column-gap: 0; align-items: center;
+  padding: var(--space-4) 0; border-bottom: 1px solid var(--line);
+}
+.aq-record-slips__proc { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-4); padding-right: var(--space-12); }
+.aq-record-slips__proc > .aq-index { grid-row: 1 / span 3; padding-top: var(--space-2); }
+.aq-record-slips__name { margin: 0 0 var(--space-3); font: 300 32px/38px var(--font-sans); letter-spacing: -0.025em; color: var(--ink); text-wrap: balance; transition: color 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-record-slips__name a { color: inherit; }
+.aq-record-slips__k { display: none; margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-record-slips__ctl { margin: 0; max-width: 52ch; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* the feed: slot and slip */
+.aq-record-slips__feed { position: relative; display: flex; align-items: center; min-height: 100%; }
+.aq-record-slips__slot {
+  flex: none; align-self: stretch; width: var(--space-3); margin: calc(-1 * var(--space-2)) 0; background: var(--navy);
+  box-shadow: inset calc(-1 * var(--space-1)) 0 0 color-mix(in srgb, var(--on-navy) 18%, transparent);
+}
+.aq-record-slips__slip {
+  position: relative; flex: 1 1 auto; margin-left: calc(-1 * var(--space-1)); padding: var(--space-4) var(--space-6) var(--space-4) var(--space-8);
+  background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line); border-left: 0; border-top: 2px solid var(--flow);
+  transform-origin: 0 50%; transition: transform 320ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* perforation where the slip leaves the slot */
+.aq-record-slips__slip::before { content: ""; position: absolute; left: var(--space-3); top: var(--space-2); bottom: var(--space-2); border-left: 1.5px dotted var(--line-strong); }
+.aq-record-slips__recs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-record-slips__recs li { display: grid; grid-template-columns: var(--space-4) minmax(0, 1fr); column-gap: var(--space-3); align-items: baseline; font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-record-slips__box { width: var(--space-3); height: var(--space-3); border: 1.5px solid var(--line-strong); transform: translateY(1px); }
+.aq-record-slips__row:hover .aq-record-slips__slip { transform: translateX(var(--space-3)); }
+.aq-record-slips__row:hover .aq-record-slips__name { color: var(--flow); }
+
+/* Fold: desktop shows every process; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-record-slips__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-record-slips__list) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .aq-record-slips__slip, .aq-record-slips__name { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-record-slips__cols { display: none; }
+  .aq-record-slips__k { display: block; }
+  .aq-record-slips__row { grid-template-columns: minmax(0, 1fr); row-gap: 0; padding: var(--space-6) 0 var(--space-8); }
+  .aq-record-slips__proc { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); padding-right: 0; padding-bottom: var(--space-4); }
+  .aq-record-slips__name { font-size: 26px; line-height: 32px; margin-bottom: var(--space-2); }
+  .aq-record-slips__feed { flex-direction: column; align-items: stretch; padding-left: calc(var(--space-8) + var(--space-3)); }
+  .aq-record-slips__slot { width: auto; height: var(--space-2); margin: 0 calc(-1 * var(--space-2)); }
+  .aq-record-slips__slip { margin: calc(-1 * var(--space-1)) 0 0; padding: var(--space-6) var(--space-4) var(--space-4); border-left: 1px solid var(--line); border-top: 0; border-bottom: 2px solid var(--flow); transform-origin: 50% 0; }
+  .aq-record-slips__slip::before { left: var(--space-2); right: var(--space-2); top: var(--space-2); bottom: auto; border-left: 0; border-top: 1.5px dotted var(--line-strong); }
+  .aq-record-slips__recs li { font-size: 15px; line-height: 22px; }
+  .aq-record-slips__row:hover .aq-record-slips__slip { transform: translateY(var(--space-1)); }
+  .aq-fold:not(.is-open) .aq-record-slips__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-record-slips__list) > .aq-fold__btn { display: flex; }
+}

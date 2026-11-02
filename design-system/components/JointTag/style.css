@@ -1,0 +1,90 @@
+/* ---------- JointTag: the joint log as a traceability tag hanging from the joint (look "joint-tag"). The pipe is a
+   flat tonal object in limestone (the same in both themes) that runs off both page edges; the tag is light paper
+   (data-theme="light") hung by its eyelet under the wire at 60.33 % (the wire's x in the 1200-wide drawing). ---------- */
+.aq-joint-tag { position: relative; }
+.aq-section.aq-joint-tag-sec { overflow-x: clip; }
+.aq-joint-tag__pipe { position: relative; z-index: 1; margin-top: calc(-1 * var(--space-4)); }
+.aq-joint-tag__pipe svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-joint-tag__pipe * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.aq-joint-tag__body { fill: var(--limestone); }
+.aq-joint-tag__shade { fill: color-mix(in srgb, var(--limestone) 84%, var(--on-limestone)); }
+.aq-joint-tag__hi { fill: none; stroke: color-mix(in srgb, var(--limestone) 40%, var(--surface-raised)); stroke-width: 6; }
+.aq-joint-tag__edge { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; }
+.aq-joint-tag__bead { fill: color-mix(in srgb, var(--limestone) 90%, var(--on-limestone)); stroke: var(--on-limestone-muted); stroke-width: 1.5; }
+.aq-joint-tag__fuse { fill: color-mix(in srgb, var(--limestone) 92%, var(--on-limestone)); }
+.aq-joint-tag__curl { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-joint-tag__seam { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; stroke-dasharray: 2 4; }
+.aq-joint-tag__print rect { fill: color-mix(in srgb, var(--on-limestone) 45%, transparent); }
+.aq-joint-tag__sten rect { fill: none; stroke: var(--on-limestone); stroke-width: 1.5; stroke-dasharray: 10 3; }
+.aq-joint-tag__sten text { font: 500 18px/1 var(--font-mono); letter-spacing: 0.12em; fill: var(--on-limestone); }
+.aq-joint-tag__cut { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; stroke-dasharray: 8 5; }
+.aq-joint-tag__cutm { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; }
+.aq-joint-tag__wire { fill: none; stroke: var(--line-strong); stroke-width: 2; }
+.aq-joint-tag__coupon { pointer-events: none; }
+.aq-joint-tag__bench { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-joint-tag__cb { fill: var(--limestone); }
+.aq-joint-tag__cs { fill: color-mix(in srgb, var(--limestone) 84%, var(--on-limestone)); }
+.aq-joint-tag__ce, .aq-joint-tag__cbd { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; }
+.aq-joint-tag__cbd { fill: color-mix(in srgb, var(--limestone) 90%, var(--on-limestone)); }
+.aq-joint-tag__pin circle { fill: var(--navy); stroke: var(--surface); stroke-width: 2; transition: fill 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-joint-tag__pin text { font: 500 12px/1 var(--font-mono); fill: var(--on-navy); }
+.aq-joint-tag__pin.is-on circle { fill: var(--flow); }
+
+/* the tag */
+.aq-joint-tag__tag {
+  position: relative; margin-top: calc(-1 * var(--space-2)); padding: var(--space-12) var(--space-8) var(--space-8);
+  background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line-strong);
+  clip-path: polygon(var(--space-8) 0, calc(100% - var(--space-8)) 0, 100% var(--space-8), 100% 100%, 0 100%, 0 var(--space-8));
+}
+.aq-joint-tag__eye {
+  position: absolute; left: 60.33%; top: var(--space-3); width: var(--space-6); height: var(--space-6); transform: translateX(-50%);
+  border-radius: 50%; border: 4px solid var(--line); box-shadow: inset 0 0 0 1.5px var(--line-strong), 0 0 0 1.5px var(--line-strong); background: var(--surface-sunken); box-sizing: border-box;
+}
+.aq-joint-tag__th {
+  display: flex; justify-content: space-between; gap: var(--space-4); margin: 0 0 var(--space-6); padding-bottom: var(--space-3); border-bottom: 2px solid var(--ink);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);
+}
+.aq-joint-tag__th span:last-child { letter-spacing: 0.16em; }
+.aq-joint-tag__th .aq-joint-tag__lg { margin-right: auto; padding-left: var(--space-8); color: var(--ink-subtle); }
+.aq-joint-tag__k--sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.aq-joint-tag__fields { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-left: 1px solid var(--line); }
+.aq-joint-tag__field {
+  display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4) var(--space-4) var(--space-6); min-width: 0;
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-joint-tag__field:nth-child(-n+4) { border-top: 1px solid var(--line); }
+.aq-joint-tag__field:hover, .aq-joint-tag__field.is-on { background: var(--flow-tint); }
+.aq-joint-tag__name { margin: 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; text-wrap: balance; }
+.aq-joint-tag__k { margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-joint-tag__proves p, .aq-joint-tag__rec p { margin: 0; text-wrap: pretty; }
+.aq-joint-tag__proves p { font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-joint-tag__proves { position: relative; }
+/* the record: written on the form's fill-in line */
+.aq-joint-tag__rec { margin-top: auto; padding-top: var(--space-2); }
+.aq-joint-tag__rec p { font: 400 14px/20px var(--font-sans); color: var(--ink); padding-bottom: var(--space-1); border-bottom: 1px dashed var(--line-strong); }
+
+/* Fold: desktop shows every field (the tag is the whole log line); phones fold */
+.aq-fold:not(.is-open) .aq-joint-tag__field.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-joint-tag__fields) > .aq-fold__btn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-joint-tag__fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-joint-tag__field:nth-child(-n+4) { border-top: 0; }
+  .aq-joint-tag__field:nth-child(-n+2) { border-top: 1px solid var(--line); }
+}
+@container (max-width: 860px) {
+  /* the drawing is re-cropped round the joint: 190 % wide, the bead a little right of centre */
+  .aq-joint-tag__pipe { width: 190%; margin: 0 0 0 -55.8%; }
+  .aq-joint-tag__eye { left: 58.8%; }
+  /* pins sized for the thumb-width drawing (about 0.6 of desktop scale) */
+  .aq-joint-tag__pin circle { r: 24px; }
+  .aq-joint-tag__pin text { font-size: 20px; }
+  .aq-joint-tag__tag { padding: var(--space-12) var(--space-4) var(--space-6); clip-path: polygon(var(--space-6) 0, calc(100% - var(--space-6)) 0, 100% var(--space-6), 100% 100%, 0 100%, 0 var(--space-6)); }
+  .aq-joint-tag__fields { grid-template-columns: minmax(0, 1fr); }
+  .aq-joint-tag__th .aq-joint-tag__lg { display: none; }
+  .aq-joint-tag__k--sr { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; }
+  .aq-joint-tag__field:nth-child(-n+2) { border-top: 0; }
+  .aq-joint-tag__field:first-child { border-top: 1px solid var(--line); }
+  .aq-fold:not(.is-open) .aq-joint-tag__field.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-joint-tag__fields) > .aq-fold__btn { display: flex; }
+}

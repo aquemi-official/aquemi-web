@@ -1,0 +1,47 @@
+{
+ "look": "code-index",
+ "component": "CodeIndex",
+ "type": "docs",
+ "fields": "h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun.",
+ "best_for": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-fabrication",
+   "slot": 2,
+   "h": "The fabrication dossier",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "fe9516d",
+   "hash": "2e87c10f36",
+   "block": {
+    "type": "docs",
+    "look": "code-index",
+    "h": "The fabrication dossier",
+    "items": [
+     {
+      "t": "Joint records",
+      "d": "[PP joint records kept]",
+      "key": true,
+      "link": "cmp-documentation#samples",
+      "intent": "Joint records extract"
+     },
+     {
+      "t": "Material log and PP certificates",
+      "d": "[PP material certificates], indexed by lot",
+      "key": true
+     },
+     {
+      "t": "Joining procedure and welder qualifications"
+     },
+     {
+      "t": "Pressure test and cleaning certificates",
+      "d": "[PP pressure test standard]; final rinse conductivity and TOC"
+     }
+    ],
+    "nav": "Dossier"
+   }
+  }
+ ]
+}

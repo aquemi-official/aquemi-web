@@ -1,0 +1,55 @@
+{
+ "look": "gate-line",
+ "component": "GateLine",
+ "type": "steps",
+ "fields": "h, items [{t, d, hold, icon, link}], lane (optional, a drawing label, aria-hidden). icon: a line icon name (wIcon); a link makes the step's name the link.",
+ "best_for": "GateLine draws a short process as one double-line pipe on a navy band: each step owns a run of pipe with a line icon above and its number, name and line below, and a gate valve sits on every joint between steps.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-upgrades",
+   "slot": 4,
+   "h": "How an upgrade runs",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "734607d686",
+   "block": {
+    "type": "steps",
+    "look": "gate-line",
+    "nav": "How it runs",
+    "h": "How an upgrade runs",
+    "items": [
+     {
+      "t": "System assessment",
+      "d": "On site, then a costed options report in [report turnaround, working days].",
+      "icon": "magnifier"
+     },
+     {
+      "t": "Change control",
+      "d": "We draft the change request’s technical content.",
+      "hold": "Your quality unit",
+      "icon": "binder"
+     },
+     {
+      "t": "Design, build, test",
+      "d": "A factory acceptance test (FAT) of modules and software keeps site work short.",
+      "icon": "pid"
+     },
+     {
+      "t": "Cutover",
+      "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested.",
+      "icon": "wrench"
+     },
+     {
+      "t": "Requalification",
+      "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures.",
+      "icon": "gauge"
+     }
+    ],
+    "lane": "Your system"
+   }
+  }
+ ]
+}

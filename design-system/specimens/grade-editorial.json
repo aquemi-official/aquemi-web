@@ -1,0 +1,98 @@
+{
+ "look": "grade-editorial",
+ "component": "GradeEditorial",
+ "type": "grid",
+ "fields": "seen in its blocks: h, items (items: t, d, link, big, span, list, bars, bars_note, kicker, panel).",
+ "best_for": "GradeEditorial sets a short path (a grid block of about five items) as an editorial spread: the heading oversized on a navy mast, a geometric pipe collage facing asymmetric fact blocks whose key words (a grade, a span, a figure) are set huge.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "industries",
+   "slot": 2,
+   "h": "Your first Purified Water system",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "5054e7c962",
+   "block": {
+    "type": "grid",
+    "look": "grade-editorial",
+    "nav": "First system",
+    "anchor": "first-system",
+    "h": "Your first Purified Water system",
+    "items": [
+     {
+      "t": "Your product’s grade",
+      "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
+      "link": "ind-pharma#grades",
+      "big": [
+       {
+        "v": "PW",
+        "l": "Non-sterile drugs · Health Canada GUI-0001"
+       },
+       {
+        "v": "Potable",
+        "l": "Natural health products, at minimum · GUI-0158"
+       }
+      ]
+     },
+     {
+      "t": "What it covers and costs",
+      "d": "Incoming water to every outlet, design to qualification; budget ranges by configuration.",
+      "link": "systems#budget",
+      "span": [
+       "Incoming water",
+       "Every outlet"
+      ],
+      "list": [
+       "Design to qualification",
+       "Budget ranges by configuration"
+      ]
+     },
+     {
+      "t": "Running cost",
+      "d": "Service plan, consumables, energy and water to drain.",
+      "link": "svc-service#running-cost",
+      "list": [
+       "Service plan",
+       "Consumables",
+       "Energy",
+       "Water to drain"
+      ]
+     },
+     {
+      "t": "Your team’s first year",
+      "d": "First use after at least 2 weeks of daily sampling, if your quality unit approves. [staff hours in year one: sampling, logs, sanitization].",
+      "link": "svc-cq",
+      "big": [
+       {
+        "v": "2 weeks",
+        "pre": "At least",
+        "l": "Of daily sampling before first use, if your quality unit approves"
+       }
+      ],
+      "bars": [
+       "Sampling",
+       "Logs",
+       "Sanitization"
+      ],
+      "bars_note": "[staff hours in year one: sampling, logs, sanitization]"
+     },
+     {
+      "t": "Who you work with",
+      "d": "New Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
+      "link": "about#people",
+      "kicker": "New Ontario company",
+      "list": [
+       "Commercial lead",
+       "Automation engineer with pharmaceutical water experience",
+       "Modular manufacturing and design specialist"
+      ],
+      "panel": true
+     }
+    ]
+   }
+  }
+ ]
+}

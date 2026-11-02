@@ -1,0 +1,90 @@
+{
+ "look": "pipe-collage",
+ "component": "PipeCollage",
+ "type": "table",
+ "fields": "as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}), fold, fold_noun.",
+ "best_for": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a pressure vessel, a control panel, a flanged elbow, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "compliance",
+   "slot": 4,
+   "h": "Engineering, materials and pressure equipment",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "7609e13",
+   "hash": "90ea853ee2",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Engineering",
+    "anchor": "engineering",
+    "look": "pipe-collage",
+    "pieces": [
+     "vessel",
+     "panel",
+     "pipe",
+     "pellets",
+     "weld"
+    ],
+    "h": "Engineering, materials and pressure equipment",
+    "cols": [
+     "Standard",
+     "What we design to",
+     "Proof",
+     "Where we show it"
+    ],
+    "rows": [
+     [
+      "CSA B51",
+      "A Canadian registration number (CRN) from the province of installation for [pressure-rated items in the PW package]",
+      "CRN registration; vessel data reports",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ],
+     [
+      "[panel standard]",
+      "Panels built and marked to [panel certification mark held, or field evaluation used]",
+      "Panel label and report",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "[PP piping standard]",
+      "PP pipe, fittings and valves; dead legs ≤ [dead leg design limit, L/D]",
+      "Dead leg register; pressure test to [PP pressure test method]",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "[PP material standard]",
+      "Unpigmented product-contact PP, [PP grade]; polyvinyl chloride (PVC) in pretreatment only",
+      "[PP material certificates] traced by lot",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ],
+     [
+      "[PP joining standard]",
+      "Joints by [PP joining method], to [welder qualification standard for thermoplastics]",
+      "[PP joint records kept]",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "standards"
+   }
+  }
+ ]
+}

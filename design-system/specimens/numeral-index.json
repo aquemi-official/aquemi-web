@@ -1,0 +1,74 @@
+{
+ "look": "numeral-index",
+ "component": "NumeralIndex",
+ "type": "table",
+ "fields": "as the router: cols (situation, what you need, start with), rows [situation, need, {t, link, intent}]. A row with more than three cells shows the middle ones as further \"need\" lines.",
+ "best_for": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "ind-pharma",
+   "slot": 0,
+   "h": "Your situation and where to start",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "66a85ab",
+   "hash": "2e226f6011",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Your situation and where to start",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A new line, or more points of use",
+      "More PW, tied into a qualified plant",
+      {
+       "t": "Upgrades and retrofits",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "An inspection due, or a water observation open",
+      "Design assessment, dated remediation plan, validation after repair",
+      {
+       "t": "After a water observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "First export to the US or EU",
+      "Where USP and Ph. Eur. differ, we design to the stricter value",
+      {
+       "t": "Purified Water limits",
+       "link": "compliance#limits"
+      }
+     ],
+     [
+      "A new plant, or your first PW system",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "industries#first-system"
+      }
+     ],
+     [
+      "Natural health products: does this line need PW?",
+      "Potable at minimum; PW where your specification calls for it",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ]
+    ],
+    "look": "numeral-index"
+   }
+  }
+ ]
+}

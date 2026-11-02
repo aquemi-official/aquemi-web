@@ -1,0 +1,48 @@
+{
+ "look": "cut-band",
+ "component": "CutBand",
+ "type": "spec",
+ "fields": "h, intro, cols [level, set at, basis], rows [{p, v, m, level, hl, link, link_label}], note.",
+ "best_for": "CutBand lays a short table of levels across a hairline drawing of the plant as a full-width navy band, like a cutting plane (look `cut-band`, spec block).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-cq",
+   "slot": 4,
+   "h": "Alert levels come from your data",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "f7f0183363",
+   "block": {
+    "type": "spec",
+    "as": "gauges",
+    "nav": "Alert levels",
+    "h": "Alert levels come from your data",
+    "cols": [
+     "Level",
+     "Set at",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Microbial action level",
+      "v": "≤ 100 CFU/mL",
+      "level": "action",
+      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+      "hl": true,
+      "link": "compliance#limits"
+     },
+     {
+      "p": "Alert level",
+      "v": "From phases 1 and 2, confirmed on the year",
+      "m": "WHO TRS 1033, 11.3, 12.7 and 12.8"
+     }
+    ],
+    "note": "CFU: colony-forming units.",
+    "look": "cut-band"
+   }
+  }
+ ]
+}

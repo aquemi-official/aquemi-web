@@ -45,6 +45,8 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `inspiration.html` | Media gallery of every image made or considered, used or not, tagged by what became of it. Reads `design-system/inspiration/gallery.json`; after adding an image run `python tools/gallery.py`. |
 | `versions.html`, `versions/` | Page history: any page as it was at each big checkpoint (the default stops) or at any commit on main ("All versions"), flipped or compared side by side (desktop or phone). `versions/blobs`, `tree`, `index.json` are **generated** by `python tools/versions.py` (rerun after pushes you want listed; add named checkpoints in its `CHECKPOINTS`). `versions/sw.js` serves old commits from them. Never edit generated files in `versions/`. |
 | `research.html`, `research/` | Design research: pass 9's image loop for people to read (each section's Gemini concept and what it became, every image taken apart into keywords, themes, the style atlas, build notes, skills and briefs). **Generated** by `python tools/research.py`, which also copies the text records from the working folder `../research/pass9*` into `research/`; rerun after new concepts, descriptions or build notes (and `tools/gallery.py` first for new images). |
+| `sections.html`, `design-system/specimens/<look>.json`, `section-library.md`, `section-library.json` | The **Section library**: every look (section design) the site has had, live or retired, rendered with its motion from every content it has shown, grouped by block type, with a phone-width toggle. Specimens are written by `python tools/specimens.py snapshot` (appended, never pruned); the catalog (`.md` for editors, `.json` for the page) by the same command. `python tools/specimens.py fit <type>` lists the looks that take a block type. |
+| `design-system/components/bundle-library.css`, `assets/library.js`, `assets/library-motion.js` | **Generated** by `build`: the retired looks (no page uses them) and their components, kept out of the site's bundles. Only `sections.html` loads them (`library.js` is the site script plus the retired renderers, loaded instead of `aquemi-site.js`); the guide loads the CSS to show retired components. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
 | `brand/` | Logo, lockup, mark and favicon SVGs. Use as they are. |
 | `tools/design_system.py` | `build`, `check`, `new`, `stage`. Python 3 standard library only. `build` also stamps content hashes (`?v=…`) into `index.html` and `sw.js`: never edit those by hand. See README, "Page speed". |
@@ -66,6 +68,10 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 
 **Add a new kind of section.** Add the component to the design system first (above), then a renderer `assets/src/blocks/<type>.js` that outputs that component's markup, then use it in a page file in `content/pages/`. Add it to the mapping table in `page-inventory.md`.
 
+**Change or swap a section's look.** A look renders one block type. Run `python tools/specimens.py fit <type>` (or browse `sections.html`) and pick a look of the block's type; set the block's `"look"` and check it has that look's fields. A look of another type means restructuring the content to its fields (the specimen's block in `design-system/specimens/<look>.json` is the template). Before inventing a new look, check that none fits.
+
+**Retiring a section.** Looks are never deleted. When a page stops using a look (its section is cut or takes another look), leave `assets/src/blocks/look-<name>.js` and `design-system/components/<Name>/` in place: the look is retired, the build moves it into the library bundles (the site's bundles do not carry it), and it stays in the section library with the content it last had. Reusing it later is setting `look` on a block and rebuilding. After any page edit, run `python tools/specimens.py snapshot` before shipping so every content version is kept (`check` reports content not yet recorded). A look deleted by mistake comes back with `python tools/specimens.py restore <look> <commit that deleted it>`.
+
 **Explore a new section idea.** Generate a loose concept image (Gemini works well), save it in `design-system/inspiration/` and rebuild the idea as a token-only component. Steps and the prompt recipe are in `design-system/inspiration/README.md`.
 
 **Publish to the Claude design system.** After design-system changes land, publish them so Claude chats, decks and designs use the same system. Claude Code does this with the `aquemi-design-system` skill in `.claude/skills/`. Other agents: tell the person it needs publishing.
@@ -77,6 +83,7 @@ The sources are split so several people or agents can work at the same time with
 ## Before you push
 
 ```bash
+python tools/specimens.py snapshot     # after page edits: keeps every section's content in the section library
 python tools/design_system.py build
 python tools/design_system.py check
 ```

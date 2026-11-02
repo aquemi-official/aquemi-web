@@ -1,0 +1,67 @@
+{
+ "look": "membrane-face",
+ "component": "MembraneFace",
+ "type": "spec",
+ "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl}], note. No new fields.",
+ "best_for": "MembraneFace sets a short list of feed-water targets as a bento round the thing they protect: the feed end of a spiral-wound reverse osmosis element, drawn large on navy, with one target per tile around it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-pretreatment",
+   "slot": 0,
+   "h": "Water at the RO inlet",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "8e6c920e9d",
+   "block": {
+    "type": "spec",
+    "h": "Water at the RO inlet",
+    "caption": "RO FEED · DESIGN TARGETS",
+    "note": "The membrane datasheet takes precedence.",
+    "cols": [
+     "Parameter",
+     "Design target",
+     "Measured by"
+    ],
+    "rows": [
+     {
+      "p": "Free and total chlorine",
+      "v": "< 0.05 mg/L as Cl₂ [confirm]",
+      "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed",
+      "hl": true
+     },
+     {
+      "p": "Silt density index",
+      "v": "SDI₁₅ ≤ 3 [confirm]",
+      "m": "ASTM D4189, at the cartridge filter outlet"
+     },
+     {
+      "p": "Turbidity",
+      "v": "< 1 NTU",
+      "m": "Media filter outlet"
+     },
+     {
+      "p": "Hardness",
+      "v": "< 1 mg/L as CaCO₃ [confirm]",
+      "m": "Online analyzer, softener outlet"
+     },
+     {
+      "p": "Iron and manganese",
+      "v": "[design limit, mg/L each]",
+      "m": "Set with the membrane maker"
+     },
+     {
+      "p": "Silica and scaling ions",
+      "v": "Below saturation in the RO concentrate",
+      "m": "Membrane projection at coldest and warmest feed"
+     }
+    ],
+    "nav": "RO inlet targets",
+    "as": "gauges",
+    "look": "membrane-face"
+   }
+  }
+ ]
+}

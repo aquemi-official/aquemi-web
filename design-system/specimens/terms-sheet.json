@@ -1,0 +1,69 @@
+{
+ "look": "terms-sheet",
+ "component": "TermsSheet",
+ "type": "spec",
+ "fields": "h, intro, cols [term, ours, note], rows [{p, v, m, link, link_label}], fold, fold_noun (phones only: desktop shows every term).",
+ "best_for": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid that bleeds off the page's right edge: how you buy it next to what you buy.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-quality",
+   "slot": 4,
+   "h": "How buying from us works",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "6f1b81fb7d",
+   "block": {
+    "type": "spec",
+    "nav": "Terms",
+    "anchor": "buying",
+    "h": "How buying from us works",
+    "cols": [
+     "Term",
+     "Ours",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Proposal",
+      "v": "[proposal contents and line items] · valid [proposal validity, days]"
+     },
+     {
+      "p": "Currency, tax and duty",
+      "v": "[quoting currency] · [quoting terms, imported content]"
+     },
+     {
+      "p": "Payment milestones",
+      "v": "[milestone structure]"
+     },
+     {
+      "p": "Acceptance and warranty start",
+      "v": "[warranty period, start, exclusions]"
+     },
+     {
+      "p": "Delivery and lead time",
+      "v": "[delivery terms] · [lead time from drawing approval, weeks]"
+     },
+     {
+      "p": "Drawings and code",
+      "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]"
+     },
+     {
+      "p": "Onboarding documents",
+      "v": "[onboarding documents and their status]",
+      "m": "In the quality questionnaire pack, from [quality system ready for audit, date]"
+     },
+     {
+      "p": "Non-disclosure agreement",
+      "v": "[NDA turnaround, working days]"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "terms",
+    "look": "terms-sheet"
+   }
+  }
+ ]
+}

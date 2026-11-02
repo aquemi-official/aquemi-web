@@ -1,0 +1,74 @@
+{
+ "look": "method-bento",
+ "component": "MethodBento",
+ "type": "table",
+ "fields": "h, intro, cols, rows [[method, how, fit, trade-off]], anchor, figs [name per row: \"chemical\", \"hot\", \"uv\"], scale {row, marks [{v, l}]} (the temperature figure: marks in °C along a 0–100 rail), absent (the missing method's name, shown large in outline on the dashed tile with the intro). scale.base: the reading below the first mark (motion.js turns the rail into a probe the visitor can drag along it, with detents at the marks). Without absent the intro stays in the section head.",
+ "best_for": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-storage",
+   "slot": 2,
+   "h": "Chemical, hot water or UV",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "7716150e2b",
+   "block": {
+    "type": "table",
+    "h": "Chemical, hot water or UV",
+    "intro": "Ozone needs the PP maker's written rating, which we have not found.",
+    "nav": "Sanitization",
+    "anchor": "sanitization",
+    "cols": [
+     "Method",
+     "How it controls microbes",
+     "Fit with PP",
+     "Trade-off"
+    ],
+    "rows": [
+     [
+      "Hot water",
+      "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
+      "Inside the PP maker's curve; ≥ 65 °C needs an engineer's review",
+      "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
+     ],
+     [
+      "Chemical",
+      "[PP loop sanitization method]; residual tested before use",
+      "A sanitant the PP maker rates",
+      "Loop out of use each cycle"
+     ],
+     [
+      "Ultraviolet (UV)",
+      "254 nm UV on the supply lowers the viable count; it does not sanitize the loop",
+      "Alongside chemical or hot water, never alone",
+      "Lamps need replacing"
+     ]
+    ],
+    "look": "method-bento",
+    "figs": [
+     "hot",
+     "chemical",
+     "uv"
+    ],
+    "scale": {
+     "row": 0,
+     "base": "Inside the PP maker's curve",
+     "marks": [
+      {
+       "v": 65,
+       "l": "Needs an engineer's review"
+      },
+      {
+       "v": 80,
+       "l": "Not for routine use at loop pressure"
+      }
+     ]
+    },
+    "absent": "Ozone"
+   }
+  }
+ ]
+}

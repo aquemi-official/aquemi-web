@@ -1,0 +1,71 @@
+{
+ "look": "standard-wires",
+ "component": "StandardWires",
+ "type": "table",
+ "fields": "h, intro, cols (three labels), rows [[standard, asks, {t, link, art}]], fold, fold_noun, nav (plate title). art: analyzer | storage | panel | pretreatment (what the cell draws; default by the link's page).",
+ "best_for": "StandardWires sets a table of standards on a navy blueprint and wires each answer to the equipment that answers it, so a reader who starts from a standard sees which part of the system meets it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "systems",
+   "slot": 3,
+   "h": "Start from the standard you cite",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "4e0703a2ca",
+   "block": {
+    "type": "table",
+    "h": "Start from the standard you cite",
+    "nav": "By standard",
+    "cols": [
+     "Standard",
+     "What it asks",
+     "Where we answer it"
+    ],
+    "rows": [
+     [
+      "USP <645>, <643>; Ph. Eur. 0008",
+      "Uncompensated conductivity; total organic carbon (TOC) ≤ 0.50 mg/L (500 ppb)",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring",
+       "art": "analyzer"
+      }
+     ],
+     [
+      "WHO TRS 1033",
+      "Turbulent flow; storage that limits microbial growth; online conductivity and TOC",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage",
+       "art": "storage"
+      }
+     ],
+     [
+      "21 CFR Part 11; EU GMP Annex 11",
+      "Audit trails, secure electronic records and signatures, validated control software",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring",
+       "art": "panel"
+      }
+     ],
+     [
+      "USP <1231>",
+      "Guidance: drinking water feed; pretreatment that protects the RO without adding bioburden",
+      {
+       "t": "Pretreatment",
+       "link": "sys-pretreatment",
+       "art": "pretreatment"
+      }
+     ]
+    ],
+    "as": "evidence",
+    "fold": 3,
+    "look": "standard-wires"
+   }
+  }
+ ]
+}

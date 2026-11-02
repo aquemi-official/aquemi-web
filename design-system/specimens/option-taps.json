@@ -1,0 +1,98 @@
+{
+ "look": "option-taps",
+ "component": "OptionTaps",
+ "type": "options",
+ "fields": "h, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun.",
+ "best_for": "OptionTaps shows options where they would join the system, as one limestone drawing sheet: the standard train drawn solid in isometric line, each option a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, a huge light title, and the options as numbered drawing notes in a narrow column whose numbers frame their part on the drawing.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-pretreatment",
+   "slot": 5,
+   "h": "Options",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "59c22feec0",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Options",
+    "items": [
+     {
+      "t": "Iron and manganese removal",
+      "d": "For well water, ahead of the softener.",
+      "spot": "carbon-filter",
+      "at": 0.62,
+      "part": "filter",
+      "row": "front"
+     },
+     {
+      "t": "Ultrafiltration",
+      "d": "Where media filters cannot hold SDI through spring runoff.",
+      "spot": "ro-membrane",
+      "at": 0.45,
+      "part": "filter",
+      "r": 6,
+      "h": 72,
+      "row": "back"
+     },
+     {
+      "t": "Softener on demand",
+      "d": "Regenerates on measured hardness breakthrough, not a fixed volume.",
+      "spot": "pretreatment",
+      "at": 1.45,
+      "part": "analyzer",
+      "row": "back"
+     },
+     {
+      "t": "Antiscalant dosing",
+      "d": "Where silica limits recovery at your coldest feed.",
+      "spot": "pump",
+      "at": 3.05,
+      "part": "pump",
+      "row": "front"
+     },
+     {
+      "t": "Feed heat exchanger",
+      "d": "Holds RO feed at [feed heat exchanger design temperature, °C] in winter.",
+      "spot": "heat-exchanger",
+      "at": 3.6,
+      "part": "hx",
+      "row": "front"
+     }
+    ],
+    "nav": "Options",
+    "fold_noun": "options",
+    "look": "option-taps",
+    "train": [
+     {
+      "part": "filter",
+      "label": "Media filter"
+     },
+     {
+      "part": "softener",
+      "label": "Duplex softener"
+     },
+     {
+      "part": "carbon",
+      "label": "Carbon or bisulfite",
+      "ly": -64
+     },
+     {
+      "part": "filter",
+      "r": 7,
+      "h": 40,
+      "label": "5 µm cartridge filter"
+     },
+     {
+      "part": "ro",
+      "label": "To RO",
+      "ly": -70
+     }
+    ]
+   }
+  }
+ ]
+}

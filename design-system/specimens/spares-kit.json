@@ -1,0 +1,79 @@
+{
+ "look": "spares-kit",
+ "component": "SparesKit",
+ "type": "table",
+ "fields": "h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun. kit (optional): one drawing name per row (membrane, probe, card, seal, edi, lamp, cartridge); without it the drawing is matched from the part's name, and a part with no match gets a plain pocket. Desktop shows the whole tray; the fold applies on phones, where the pockets stack one per row, drawing beside the answers.",
+ "best_for": "SparesKit reads like-for-like rules off the spares kit: a tray (a shadow board seen from above) with one pocket per part, each part drawn flat in line art in its cut-out, and under it the answers: \"=\" like for like when, \"≠\" a change when, \"→\" what follows a change.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-service",
+   "slot": 4,
+   "h": "Like for like, or a change?",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "64551a4",
+   "hash": "44d9429793",
+   "block": {
+    "type": "table",
+    "look": "spares-kit",
+    "nav": "Like for like",
+    "h": "Like for like, or a change?",
+    "intro": "Changes wait for your change control.",
+    "cols": [
+     "Part",
+     "Like for like when",
+     "A change when",
+     "What follows a change"
+    ],
+    "rows": [
+     [
+      "RO membranes",
+      "Same maker, model and count",
+      "Different model, chemistry or array",
+      "Operational qualification (OQ) at design recovery; closer sampling"
+     ],
+     [
+      "Instruments",
+      "Same model, range and configuration",
+      "Different model, range or data path",
+      "Installation qualification (IQ), loop check, audit trail check"
+     ],
+     [
+      "Control software",
+      "Never",
+      "Any version, logic or configuration change",
+      "Regression tests; version and checksum recorded"
+     ],
+     [
+      "Gaskets, diaphragms, seals",
+      "Same compound and certificates",
+      "A different elastomer or polytetrafluoroethylene (PTFE) grade",
+      "Material and extractables review"
+     ],
+     [
+      "EDI modules",
+      "Same model, at qualified current and flow",
+      "Different model or operating window",
+      "OQ of the EDI step"
+     ],
+     [
+      "UV lamps",
+      "Same lamp and ballast, within rated life",
+      "Different lamp, ballast or dose",
+      "Intensity check, OQ of the UV alarm"
+     ],
+     [
+      "Vent filters",
+      "Same maker, membrane and rating",
+      "Different membrane, rating or housing",
+      "Integrity test, sanitization review"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "parts"
+   }
+  }
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "look": "suite-loop",
+ "component": "SuiteLoop",
+ "type": "table",
+ "fields": "as the router: cols (situation, water, systems, start with), rows (cells: string or {t, link, intent}).",
+ "best_for": "SuiteLoop draws a router table as a plan of one shared loop serving a row of suites: every situation is a room fed by its own drop and valve off the loop, with the start page as the room's way out.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-cdmo",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "f3934ac32d",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "Water you need",
+     "Systems",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A tech transfer for a new client program",
+      "Spare capacity and a new outlet, qualified before process performance qualification (PPQ)",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Clients filing in Canada, the US and Europe",
+      "Stricter of USP and Ph. Eur., per attribute",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Purified Water limits",
+       "link": "compliance#limits"
+      }
+     ],
+     [
+      "A client audit finding or questionnaire gap",
+      "Evidence on design, trends and data integrity",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Upgrades: after an observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "One generation train: an outage stops several clients",
+      "Duplex trains, standby pumps and storage for your longest repair",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Natural health products or supplements for brand owners",
+      "Potable at minimum; PW where your specification calls for it",
+      "PW generation, if needed",
+      {
+       "t": "Pharmaceutical: natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ]
+    ],
+    "look": "suite-loop"
+   }
+  }
+ ]
+}

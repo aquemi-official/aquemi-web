@@ -1,0 +1,66 @@
+{
+ "look": "doc-hotspots",
+ "component": "DocHotspots",
+ "type": "docs",
+ "fields": "h, intro, items [{t, d, code, key, at: [x, y]}], link, link_label, intent. at: the hotspot on the drawing, as fractions of the drawing's box (0–1, from the top left); an item without one gets no hotspot. Codes come from the DocList lookup (docCode, blocks/docs.js) unless the item names its own.",
+ "best_for": "DocHotspots pins the documents delivered with a system to the parts of the skid they cover, so the reader sees what each record is about on the equipment itself.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-pw",
+   "slot": 3,
+   "h": "Documents with the skid",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "c9db88ff36",
+   "block": {
+    "type": "docs",
+    "h": "Documents with the skid",
+    "items": [
+     {
+      "t": "FAT and SAT protocols and reports",
+      "d": "Deviations closed; SAT run on your feed water",
+      "key": true,
+      "at": [
+       0.12,
+       0.45
+      ]
+     },
+     {
+      "t": "Material certificates",
+      "d": "[PP material certificates]",
+      "key": true,
+      "at": [
+       0.66,
+       0.14
+      ]
+     },
+     {
+      "t": "Joint records",
+      "d": "[PP joining method]; [PP joint records kept]",
+      "key": true,
+      "at": [
+       0.4,
+       0.84
+      ]
+     },
+     {
+      "t": "P&IDs and general arrangement",
+      "d": "Piping and instrumentation diagrams, as built",
+      "key": true,
+      "at": [
+       0.78,
+       0.47
+      ]
+     }
+    ],
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "nav": "Documents",
+    "look": "doc-hotspots"
+   }
+  }
+ ]
+}

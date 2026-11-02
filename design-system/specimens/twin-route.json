@@ -1,0 +1,80 @@
+{
+ "look": "twin-route",
+ "component": "TwinRoute",
+ "type": "table",
+ "fields": "as a versus table: cols [test, FAT label, SAT label], rows [[test, FAT cell, SAT cell]] (strings or {t, link}), conclusion [label, FAT side, SAT side], fold, fold_noun (the fold applies on phones only), route_labels (optional small eyebrows over the two route labels, e.g. [\"Route 1\", \"Route 2\"]).",
+ "best_for": "TwinRoute draws a FAT versus SAT comparison as two routes the same skid takes: our test bay and your site, each test a station on both pipes (look `twin-route`, table block `as: \"versus\"`).",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-fat-sat",
+   "slot": 0,
+   "h": "What FAT proves, what SAT proves",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "5da967c",
+   "hash": "0f301f6640",
+   "block": {
+    "type": "table",
+    "as": "versus",
+    "nav": "FAT and SAT",
+    "h": "What FAT proves, what SAT proves",
+    "cols": [
+     "Test",
+     "FAT, our test bay",
+     "SAT, your site"
+    ],
+    "rows": [
+     [
+      "Sequences and interlocks",
+      "Every sequence, alarm, interlock and divert, restart after power loss included",
+      "Critical alarms, interlocks and divert on your utilities and water"
+     ],
+     [
+      "Utilities and loop",
+      "Not possible: the skids run on our utilities",
+      "Power, drains, air, any heating or cooling; loop hydraulics at peak demand"
+     ],
+     [
+      "Sanitization",
+      "Full [PP loop sanitization method] cycle, residual tested at the end",
+      "Full cycle on the installed loop, coldest point of use included"
+     ],
+     [
+      "Reverse osmosis (RO) with electrodeionization (EDI) or deionization (DI)",
+      "Flow, recovery and outlet quality on our feed water",
+      "The same on your feed water, in the season you are in"
+     ],
+     [
+      "Instruments and I/O",
+      "Every I/O point; critical instruments against a calibrated reference",
+      "Points to your control and monitoring systems; critical instruments re-checked"
+     ],
+     [
+      "Data integrity",
+      "Roles, audit trail, time sync, backup and restore",
+      "The same on the network, with your accounts and time server"
+     ],
+     [
+      "Piping and instrumentation diagram (P&ID) walkdown",
+      "Every line, valve and tag; skid slopes and dead legs",
+      "Field piping, loop slopes, low points, branch lengths"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "tests",
+    "conclusion": [
+     "Reuse in IQ/OQ",
+     "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
+     "Feed water, utilities and field piping: proven on site only"
+    ],
+    "look": "twin-route",
+    "route_labels": [
+     "Route 1",
+     "Route 2"
+    ]
+   }
+  }
+ ]
+}

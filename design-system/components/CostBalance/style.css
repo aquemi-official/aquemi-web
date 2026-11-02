@@ -1,0 +1,65 @@
+/* ---------- CostBalance: running costs as streams across a system boundary (look "cost-balance") ----------
+   Desktop: three columns. Left, the streams in: number, item, value (mono), what sets it; a ruled wire runs from the
+   text to the boundary and ends in an arrowhead on it. Middle, the boundary: a dashed rectangle the full height of
+   the streams, the train inside as line glyphs on one vertical water line. Right, the streams out, wired from the
+   boundary in flow (water leaving). Phones: top to bottom on one rail: streams in, the boundary with the train
+   across it, streams out. */
+.aq-cost-balance { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 2fr) minmax(0, 4fr); align-items: stretch; }
+.aq-fold:not(.is-open) .aq-cost-balance .aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-cost-balance) > .aq-fold__btn { display: none; }
+.aq-cost-balance__in, .aq-cost-balance__out { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.aq-cost-balance__in { gap: 0; justify-content: space-between; }
+.aq-cost-balance__out { justify-content: center; }
+.aq-cost-balance__s { display: grid; grid-template-columns: var(--space-8) minmax(0, 22rem) minmax(var(--space-12), 1fr); align-items: center; padding-block: var(--space-4); border-top: 1px solid var(--line); }
+.aq-cost-balance__s:last-child { border-bottom: 1px solid var(--line); }
+.aq-cost-balance__s--out { grid-template-columns: minmax(var(--space-12), 1fr) var(--space-8) minmax(0, 16rem); border: 0; }
+.aq-cost-balance__s--out:last-child { border: 0; }
+.aq-cost-balance__s--out .aq-cost-balance__wire { order: -2; }
+.aq-cost-balance__s--out .aq-cost-balance__n { order: -1; justify-self: center; }
+.aq-cost-balance__n { align-self: start; font: 500 12px/24px var(--font-mono); color: var(--ink-subtle); }
+.aq-cost-balance__p { margin: 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-cost-balance__p a { color: inherit; text-decoration: none; }
+.aq-cost-balance__p a::after { content: " →"; color: var(--flow); }
+.aq-cost-balance__p a:hover { color: var(--flow); }
+.aq-cost-balance .aq-cost-balance__v { margin: var(--space-1) 0 0; font: 400 14px/20px var(--font-mono); color: var(--ink); }
+.aq-cost-balance .aq-cost-balance__m { margin: var(--space-1) 0 0; font: 400 13px/18px var(--font-sans); color: var(--ink-muted); }
+.aq-cost-balance__mk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); margin-right: var(--space-1); }
+/* the wire: a hairline to the boundary, arrowhead on it */
+.aq-cost-balance__wire { position: relative; height: var(--space-4); margin-left: var(--space-4); }
+.aq-cost-balance__line { position: absolute; left: 0; right: 0; top: 50%; border-top: 1.5px solid var(--line-strong); transform-origin: 0 50%; }
+.aq-cost-balance__head { position: absolute; right: 0; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid var(--line-strong); border-right: 1.5px solid var(--line-strong); transform: translate(-1px, -50%) rotate(45deg); }
+.aq-cost-balance__s--out .aq-cost-balance__wire { margin: 0; }
+.aq-cost-balance__s--out .aq-cost-balance__line, .aq-cost-balance__s--out .aq-cost-balance__head { border-color: var(--flow); }
+.aq-cost-balance__s--out .aq-cost-balance__line { border-top-width: 2px; border-top-style: dashed; }
+.aq-cost-balance__s:hover .aq-cost-balance__line, .aq-cost-balance__s:hover .aq-cost-balance__head { border-color: var(--ink); }
+.aq-cost-balance__s--out:hover .aq-cost-balance__line, .aq-cost-balance__s--out:hover .aq-cost-balance__head { border-color: var(--flow); }
+/* the boundary and the train */
+.aq-cost-balance__sys { position: relative; display: flex; justify-content: center; padding: var(--space-6) 0; }
+.aq-cost-balance__edge { position: absolute; inset: 0; border: 1.5px dashed var(--ink-muted); }
+.aq-cost-balance__train { position: relative; display: flex; flex-direction: column; justify-content: space-around; align-items: center; gap: var(--space-3); }
+.aq-cost-balance__water { position: absolute; left: 50%; top: 0; bottom: 0; border-left: 2px solid var(--flow); transform-origin: 50% 0; }
+.aq-cost-balance__g { position: relative; display: grid; place-items: center; width: var(--space-12); height: var(--space-12); background: var(--surface); border: 1px solid var(--line-strong); }
+.aq-section--alt .aq-cost-balance__g { background: var(--surface-sunken); }
+.aq-cost-balance__ic { width: var(--space-8); height: var(--space-8); background: var(--ink); }
+.aq-cost-balance-sec .aq-cost-balance__note { margin-top: var(--space-4); max-width: var(--text-max); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+
+@container (max-width: 860px) {
+  .aq-cost-balance { grid-template-columns: minmax(0, 1fr); }
+  .aq-fold:not(.is-open) .aq-cost-balance .aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-cost-balance) > .aq-fold__btn { display: flex; }
+  .aq-cost-balance__s, .aq-cost-balance__s--out { grid-template-columns: var(--space-8) minmax(0, 1fr); border: 0; padding: 0 0 var(--space-4); position: relative; }
+  .aq-cost-balance__s:last-child { border: 0; }
+  .aq-cost-balance__s--out .aq-cost-balance__n { order: 0; justify-self: start; }
+  .aq-cost-balance__in, .aq-cost-balance__out { position: relative; padding-left: 0; }
+  .aq-cost-balance__in::before, .aq-cost-balance__out::before { content: ""; position: absolute; left: calc(var(--space-8) - var(--space-3)); top: var(--space-2); bottom: 0; border-left: 1.5px solid var(--line-strong); }
+  .aq-cost-balance__out::before { border-left: 2px dashed var(--flow); top: 0; }
+  .aq-cost-balance__wire { display: none; }
+  .aq-cost-balance__sys { margin: 0 0 var(--space-4); padding: var(--space-4); }
+  .aq-cost-balance__train { flex-direction: row; justify-content: space-between; width: 100%; gap: var(--space-1); }
+  .aq-cost-balance__water { left: 0; right: 0; top: 50%; bottom: auto; border-left: 0; border-top: 2px solid var(--flow); transform-origin: 0 50%; }
+  .aq-cost-balance__g { width: var(--space-8); height: var(--space-8); }
+  .aq-cost-balance__ic { width: var(--space-6); height: var(--space-6); }
+  .aq-cost-balance__p { font-size: 17px; line-height: 23px; }
+}
+.aq-cost-balance-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
+@container (max-width: 860px) { .aq-cost-balance-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }

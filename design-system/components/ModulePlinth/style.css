@@ -1,0 +1,69 @@
+/* ---------- ModulePlinth: options as modules standing on their base, an isometric plinth fed by one loop ---------- */
+.aq-module-plinth-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-module-plinth { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); column-gap: var(--space-12); align-items: start; margin-top: var(--space-8); }
+.aq-module-plinth__fig { position: sticky; top: var(--space-16); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-module-plinth-sec { overflow: clip; }
+.aq-module-plinth__svg { display: block; width: 100%; height: auto; }
+.aq-module-plinth__blk { transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-module-plinth__mk { position: absolute; transform: translate(-50%, -100%); display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1);
+  background: var(--navy); border: 1px solid var(--on-navy-muted); color: var(--on-navy); font: 500 12px/1 var(--font-mono); transition: background-color 300ms, color 300ms, border-color 300ms; }
+.aq-module-plinth__base { position: absolute; transform: translate(-50%, 0); padding: var(--space-1) var(--space-3); border-top: 1px solid var(--on-navy-muted); white-space: nowrap;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+
+.aq-module-plinth__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px;
+  background: color-mix(in srgb, var(--on-navy-muted) 30%, transparent); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+.aq-fold:not(.is-open) .aq-module-plinth__card.aq-fold-x { display: grid; }
+.aq-module-plinth__list .aq-fold__btn { display: none; color: var(--limestone); border-bottom-color: color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-module-plinth__card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto 1fr; column-gap: var(--space-3); row-gap: var(--space-2); align-content: start;
+  padding: var(--space-6) var(--space-4); background: var(--navy); color: var(--on-navy); transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-module-plinth__n { grid-row: 1; font: 500 13px/24px var(--font-mono); color: var(--on-navy-muted); }
+.aq-module-plinth__spot { grid-row: 1; grid-column: 3; width: var(--space-8); height: var(--space-8); background-color: var(--limestone); }
+.aq-module-plinth__t { grid-row: 1; grid-column: 2; margin: 0; font: 400 19px/24px var(--font-sans); letter-spacing: -0.01em; }
+.aq-module-plinth__t a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); text-underline-offset: 4px; display: inline-block; padding-block: var(--space-2); min-height: 44px; }
+.aq-module-plinth__t a::after { content: "→"; margin-left: var(--space-2); color: var(--limestone); }
+.aq-module-plinth__t a:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
+.aq-module-plinth__d { grid-row: 2; grid-column: 2 / -1; margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-navy-muted); }
+.aq-module-plinth__card:hover, .aq-module-plinth__card:focus-within { background: color-mix(in srgb, var(--navy) 88%, var(--on-navy)); }
+.aq-module-plinth__card:hover .aq-module-plinth__n, .aq-module-plinth__card:focus-within .aq-module-plinth__n { color: var(--limestone); }
+/* Hover or focus a card: its block lifts and lights, its marker fills (one rule per position, up to eight options) */
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="0"]:hover) .aq-module-plinth__blk[data-k="0"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="0"]:focus-within) .aq-module-plinth__blk[data-k="0"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="0"]:hover) .aq-module-plinth__blk[data-k="0"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="0"]:focus-within) .aq-module-plinth__blk[data-k="0"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="0"]:hover) .aq-module-plinth__mk[data-k="0"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="0"]:focus-within) .aq-module-plinth__mk[data-k="0"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="1"]:hover) .aq-module-plinth__blk[data-k="1"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="1"]:focus-within) .aq-module-plinth__blk[data-k="1"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="1"]:hover) .aq-module-plinth__blk[data-k="1"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="1"]:focus-within) .aq-module-plinth__blk[data-k="1"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="1"]:hover) .aq-module-plinth__mk[data-k="1"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="1"]:focus-within) .aq-module-plinth__mk[data-k="1"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="2"]:hover) .aq-module-plinth__blk[data-k="2"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="2"]:focus-within) .aq-module-plinth__blk[data-k="2"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="2"]:hover) .aq-module-plinth__blk[data-k="2"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="2"]:focus-within) .aq-module-plinth__blk[data-k="2"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="2"]:hover) .aq-module-plinth__mk[data-k="2"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="2"]:focus-within) .aq-module-plinth__mk[data-k="2"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="3"]:hover) .aq-module-plinth__blk[data-k="3"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="3"]:focus-within) .aq-module-plinth__blk[data-k="3"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="3"]:hover) .aq-module-plinth__blk[data-k="3"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="3"]:focus-within) .aq-module-plinth__blk[data-k="3"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="3"]:hover) .aq-module-plinth__mk[data-k="3"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="3"]:focus-within) .aq-module-plinth__mk[data-k="3"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="4"]:hover) .aq-module-plinth__blk[data-k="4"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="4"]:focus-within) .aq-module-plinth__blk[data-k="4"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="4"]:hover) .aq-module-plinth__blk[data-k="4"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="4"]:focus-within) .aq-module-plinth__blk[data-k="4"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="4"]:hover) .aq-module-plinth__mk[data-k="4"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="4"]:focus-within) .aq-module-plinth__mk[data-k="4"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="5"]:hover) .aq-module-plinth__blk[data-k="5"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="5"]:focus-within) .aq-module-plinth__blk[data-k="5"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="5"]:hover) .aq-module-plinth__blk[data-k="5"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="5"]:focus-within) .aq-module-plinth__blk[data-k="5"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="5"]:hover) .aq-module-plinth__mk[data-k="5"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="5"]:focus-within) .aq-module-plinth__mk[data-k="5"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="6"]:hover) .aq-module-plinth__blk[data-k="6"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="6"]:focus-within) .aq-module-plinth__blk[data-k="6"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="6"]:hover) .aq-module-plinth__blk[data-k="6"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="6"]:focus-within) .aq-module-plinth__blk[data-k="6"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="6"]:hover) .aq-module-plinth__mk[data-k="6"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="6"]:focus-within) .aq-module-plinth__mk[data-k="6"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="7"]:hover) .aq-module-plinth__blk[data-k="7"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="7"]:focus-within) .aq-module-plinth__blk[data-k="7"] { transform: translateY(-6px); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="7"]:hover) .aq-module-plinth__blk[data-k="7"] path, .aq-module-plinth:has(.aq-module-plinth__card[data-k="7"]:focus-within) .aq-module-plinth__blk[data-k="7"] path { stroke: var(--limestone); }
+.aq-module-plinth:has(.aq-module-plinth__card[data-k="7"]:hover) .aq-module-plinth__mk[data-k="7"], .aq-module-plinth:has(.aq-module-plinth__card[data-k="7"]:focus-within) .aq-module-plinth__mk[data-k="7"] { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+
+@container (max-width: 1100px) {
+  .aq-module-plinth { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-module-plinth__fig { position: relative; top: auto; max-width: calc(var(--space-32) * 5); }
+}
+
+/* Phones: the drawing on top, the cards in one column, the fold back on */
+@container (max-width: 860px) {
+  .aq-module-plinth { margin-top: var(--space-4); row-gap: var(--space-6); }
+  .aq-module-plinth__mk { min-width: var(--space-6); height: var(--space-4); font-size: 12px; }
+  .aq-module-plinth__base { font-size: 12px; }
+  .aq-module-plinth__cards { grid-template-columns: minmax(0, 1fr); }
+  .aq-module-plinth__card { padding: var(--space-4); }
+  .aq-module-plinth__t { font-size: 17px; line-height: 22px; }
+  .aq-fold:not(.is-open) .aq-module-plinth__card.aq-fold-x { display: none; }
+  .aq-module-plinth__list .aq-fold__btn { display: flex; }
+}

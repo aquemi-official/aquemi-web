@@ -1,0 +1,55 @@
+{
+ "look": "urs-gate",
+ "component": "UrsGate",
+ "type": "options",
+ "fields": "as options: h, items [{t, d, link, link_label}], fold, fold_noun (phones only).",
+ "best_for": "UrsGate sets decisions that must be made before a gate as one project line running into that gate: decisions stand on stems above and below the line with huge light numerals, and the gate is a bar with its word as giant outline type cut by the page edge.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "ind-pharma",
+   "slot": 3,
+   "h": "Decide before your requirements (URS) are approved",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "66a85ab",
+   "hash": "b28dcdc61f",
+   "block": {
+    "type": "options",
+    "nav": "Decisions",
+    "h": "Decide before your requirements (URS) are approved",
+    "items": [
+     {
+      "t": "Product mix in five years",
+      "d": "Generation and headers sized for planned lines, expansion written into the URS."
+     },
+     {
+      "t": "USP, Ph. Eur. or both",
+      "d": "Both: cheap at design, costly later."
+     },
+     {
+      "t": "Loop sanitization route",
+      "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "link": "sys-storage#sanitization"
+     },
+     {
+      "t": "Canadian feed water",
+      "d": "Near freezing in winter, over 20 °C in summer; membranes sized for the coldest month.",
+      "link": "sys-pretreatment"
+     },
+     {
+      "t": "Shutdown windows",
+      "d": "Duplex trains and isolable sections let you service without stopping every line."
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "decisions",
+    "as": "decisions",
+    "look": "urs-gate",
+    "gate": "URS",
+    "gate_label": "Approved"
+   }
+  }
+ ]
+}

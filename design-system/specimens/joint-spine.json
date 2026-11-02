@@ -1,0 +1,76 @@
+{
+ "look": "joint-spine",
+ "component": "JointSpine",
+ "type": "table",
+ "fields": "as a table: h, cols [field, what it proves, record], rows, fold, fold_noun. The column names show once as the log's legend (in each row for screen readers; shown per row on phones). The fold applies on phones only.",
+ "best_for": "JointSpine shows a log as rows hanging off a pipe: a twin-wall pipe drops in beside the title, bends and runs down the log as its spine, and each row sits level with a numbered joint on it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-fabrication",
+   "slot": 0,
+   "h": "One joint, one log line",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "1e61fbbf0b",
+   "block": {
+    "type": "table",
+    "look": "joint-spine",
+    "h": "One joint, one log line",
+    "cols": [
+     "Field in the joint log",
+     "What it proves in an audit",
+     "Record"
+    ],
+    "rows": [
+     [
+      "Joint number",
+      "Where this joint is in your plant",
+      "Joint map; number on the pipe"
+     ],
+     [
+      "Material lot of both parts",
+      "That both parts match their material certificates",
+      "Material log; [PP material certificates]"
+     ],
+     [
+      "Welder and qualification",
+      "That the welder was qualified on the day",
+      "[welder qualification standard for thermoplastics] certificate"
+     ],
+     [
+      "Joining parameters",
+      "That the qualified procedure ran with recorded settings",
+      "[what each joint record holds]"
+     ],
+     [
+      "Visual result",
+      "That the joint meets the acceptance criteria",
+      "[joint acceptance criteria]; inspector sign-off"
+     ],
+     [
+      "Test joint reference",
+      "That the set-up was proven before production joints",
+      "Test joint record; [test joint examination method]"
+     ],
+     [
+      "Date and inspector",
+      "Who accepted it, and when",
+      "Signature or electronic sign-off"
+     ],
+     [
+      "Repair or cut-out",
+      "How a rejected joint was replaced and accepted",
+      "New joint number linked to the original"
+     ]
+    ],
+    "nav": "Joint log",
+    "as": "evidence",
+    "fold": 4,
+    "fold_noun": "fields"
+   }
+  }
+ ]
+}

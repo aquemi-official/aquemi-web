@@ -1,0 +1,56 @@
+{
+ "look": "standard-tiles",
+ "component": "StandardTiles",
+ "type": "grid",
+ "fields": "as grid: h, intro, items [{t, d, icon, tag, link}].",
+ "best_for": "StandardTiles sets a short grid of linked items as a Swiss tile grid three across: each item a slash-numbered navy or limestone tile carrying its standard or control tag, plus a blueprint tile that draws the item being pointed at and a flow block that sets its tag large.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-meddevice",
+   "slot": 2,
+   "h": "Systems for device plants",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "4975c1796a",
+   "block": {
+    "type": "grid",
+    "nav": "What we build",
+    "h": "Systems for device plants",
+    "items": [
+     {
+      "t": "PW generation",
+      "icon": "ro-membrane",
+      "d": "Final rinse water to your written endotoxin limit.",
+      "tag": "USP <645>",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "icon": "loop",
+      "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "tag": "USP <1231>",
+      "link": "sys-storage#sanitization"
+     },
+     {
+      "t": "Monitoring and controls",
+      "icon": "conductivity",
+      "d": "Conductivity and total organic carbon trended against your alert and action levels.",
+      "tag": "21 CFR Part 11",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades and retrofits",
+      "icon": "valve",
+      "d": "Endotoxin or bioburden drifting on devices: start with a system assessment.",
+      "tag": "Change control",
+      "link": "svc-upgrades#observation"
+     }
+    ],
+    "look": "standard-tiles"
+   }
+  }
+ ]
+}

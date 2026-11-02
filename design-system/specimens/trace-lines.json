@@ -1,0 +1,53 @@
+{
+ "look": "trace-lines",
+ "component": "TraceLines",
+ "type": "table",
+ "fields": "as a table: cols [row name, requirement…] (\"URS-012: conductivity …\": the code before the first colon), rows (cells strings or {t, link}).",
+ "best_for": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-design",
+   "slot": 3,
+   "h": "An example: two requirements traced to their tests",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "63ff631263",
+   "block": {
+    "type": "table",
+    "look": "trace-lines",
+    "h": "An example: two requirements traced to their tests",
+    "cols": [
+     "Document",
+     "URS-012: conductivity ≤ 1.3 µS/cm @ 25 °C",
+     "URS-027: L/D ≤ 2"
+    ],
+    "rows": [
+     [
+      "URS compliance matrix",
+      "Met. Outlet designed to [outlet conductivity guarantee, µS/cm @ 25 °C]; return monitored.",
+      "Met. Every branch in the dead leg register."
+     ],
+     [
+      "Basis of design",
+      "Reverse osmosis and electrodeionization, passes set by your feed water analysis",
+      "[PP point-of-use valve type]; instrument tees sized to hold L/D ≤ 2"
+     ],
+     [
+      "Functional specification",
+      "Water above the divert setpoint goes to drain until conductivity recovers",
+      "Not applicable"
+     ],
+     [
+      "Verification",
+      "FAT: divert on a simulated signal. SAT and OQ: your water, uncompensated reading.",
+      "IQ: as-built L/D measured against the register"
+     ]
+    ],
+    "nav": "Traceability"
+   }
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents.
+
+- On the site: a `docs` block with `"look": "spine-shelf"` (renderer `assets/src/blocks/look-spine-shelf.js`), cmp-documentation "The turnover package, section by section". Origin: concept 51-concept-turnover-binder (the package as a filed object on a navy-framed sheet), recast as spines and an index that opens, because compliance already files its standards in manila folders (ProofFolders).
+- Markup: `<div class="aq-spine-shelf">` with `__shelf` (aria-hidden: `__row` of `__spine[data-i]` > `__body` > `__no`, `__holder` > `__name`, `__ring`; `__board`; `__cap`) and `__index` > (Fold) `ol.__list` > `li.__item[data-i]` > `details` > `summary.__sum` (`__n`, `h3.__t`, `__lead`, `__mark`) + `ul.__docs`.
+- Fields: `h`, `intro`, `items [{t, d, key, docs}]`, `fold`, `fold_noun`. `docs` (optional) lists the section's entries; without it they are read from `d`, split at ";" or ". ", else at commas outside brackets (first letter capitalised for display). The first `key` item is the navy spine and opens first.
+- Behaviour: opening a section (the summary is the keyboard control) pulls its spine up off the shelf with a flow edge; pointing at a row or a spine lifts its pair; clicking a spine opens its section. Works without motion; without script the details still open.
+- Tokens: spines `limestone` in three shades (mixed with `on-limestone` / `on-navy`), key spine `navy`; index on `line` hairlines, titles 300 weight; `flow` only for the open spine's edge, open numbers and the key section's document marks.
+- Fold: phones only (desktop shows the whole index; closed rows are one line each).
+- Phone: the shelf becomes a short band of numbered spines (no labels) over the index.
+- Motion (`motion.js`): the shelf board draws, spines drop onto it left to right with a short settle, index rows wipe in, then the key spine is pulled as its documents deal in. Once, under 3 s.
+- Not for: a short list of documents (use DocList or SheetPreviews), or evidence mapped to standards (ProofFolders).

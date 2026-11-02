@@ -1,0 +1,91 @@
+/* ---------- ShopRoute: a fabrication sequence as a spool's route through the shop, drawn as a floor plan on a
+   limestone sheet (look "shop-route"; data-theme="light" so the sheet keeps light contrast in the dark theme).
+   Bays sit on a --cols × --rows grid of equal rows; the route runs along a lane var(--lane, var(--space-8)) above the foot of each
+   row (segments a, b, c: top lane, right aisle, bottom lane), with a stop per bay and a gate after a hold bay. ---------- */
+.aq-shop-route {
+  --lane: var(--space-8); --rc: var(--flow);
+  position: relative; background: var(--limestone); color: var(--on-limestone);
+  border: 6px double var(--on-limestone-muted); padding: 0;
+}
+.aq-shop-route__bays { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); grid-auto-rows: 1fr; }
+.aq-shop-route__bay {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-2); min-width: 0;
+  padding: var(--space-6) var(--space-6) calc(var(--lane, var(--space-8)) + var(--space-12));
+  border-right: 2px solid color-mix(in srgb, var(--on-limestone) 40%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--on-limestone) 40%, transparent);
+  transition: background 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-shop-route__bay.is-rc { border-right: 0; }
+.aq-shop-route__bay.is-back { border-bottom: 0; }
+.aq-shop-route__bay:hover, .aq-shop-route__bay.is-on { background: color-mix(in srgb, var(--limestone) 80%, var(--surface-raised)); }
+/* plan furniture, top right, quiet */
+.aq-shop-route__furn { position: absolute; right: var(--space-4); top: var(--space-3); width: 26%; max-width: 128px; height: auto; overflow: visible; pointer-events: none; }
+.aq-shop-route__furn * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.aq-shop-route__ln { fill: color-mix(in srgb, var(--limestone) 70%, var(--surface-raised)); stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-shop-route__thin { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-shop-route__sheet { fill: var(--surface-raised); stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-shop-route__fix { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+.aq-shop-route__door { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; stroke-dasharray: 4 3; }
+
+/* the text */
+.aq-shop-route__n { font: 300 44px/44px var(--font-mono); letter-spacing: -0.04em; color: var(--on-limestone); }
+.aq-shop-route__t { margin: var(--space-2) 0 0; padding-right: 34%; font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); text-wrap: balance; }
+.aq-shop-route__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-limestone-muted); text-wrap: pretty; max-width: 40ch; }
+.aq-shop-route__tags { margin: var(--space-1) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.aq-shop-route__tags:empty { display: none; }
+.aq-shop-route__wit {
+  display: inline-flex; align-items: center; gap: var(--space-2); padding: 0 var(--space-2); border: 1.5px solid var(--flow); color: var(--flow);
+  font: 500 12px/24px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+}
+.aq-shop-route__wit::before { content: ""; width: var(--space-3); height: var(--space-2); border: 1.5px solid currentColor; border-radius: 50%; box-sizing: border-box; box-shadow: inset 0 0 0 2px var(--limestone), inset 0 0 0 4px currentColor; }
+.aq-shop-route__stamp {
+  display: inline-flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); align-items: baseline; padding: var(--space-1) var(--space-3);
+  border: 1.5px solid var(--on-limestone); color: var(--on-limestone); font: 400 13px/18px var(--font-mono); transform: rotate(-1.5deg); transform-origin: 0 50%;
+}
+.aq-shop-route__stamp-k { font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
+.aq-shop-route__t .aq-steps__go { color: inherit; }
+
+/* the route */
+.aq-shop-route__route { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.aq-shop-route__seg { position: absolute; display: block; }
+.aq-shop-route__seg--a { left: calc(-1 * var(--space-6)); right: var(--space-6); top: calc(100% / var(--rows, 2) - var(--lane, var(--space-8))); border-top: 3px solid var(--rc, var(--flow)); }
+.aq-shop-route__seg--b { right: var(--space-6); top: calc(100% / var(--rows, 2) - var(--lane, var(--space-8))); height: calc(100% / var(--rows, 2)); border-right: 3px solid var(--rc, var(--flow)); }
+.aq-shop-route__seg--c { left: calc(-1 * var(--space-6)); right: var(--space-6); top: calc(100% - var(--lane, var(--space-8))); border-top: 3px solid var(--rc, var(--flow)); }
+.aq-shop-route__seg--solo { right: calc(-1 * var(--space-6)); }
+/* the stops */
+.aq-shop-route__stop {
+  position: absolute; z-index: 2; left: 50%; bottom: var(--lane, var(--space-8)); width: var(--space-4); height: var(--space-4); transform: translate(-50%, 50%) translateY(1.5px);
+  border-radius: 50%; border: 3px solid var(--rc, var(--flow)); background: var(--limestone); box-sizing: border-box;
+}
+.aq-shop-route__bay.is-back .aq-shop-route__stop { bottom: var(--lane, var(--space-8)); }
+.aq-shop-route__bay.is-wit .aq-shop-route__stop { width: var(--space-6); height: var(--space-6); box-shadow: inset 0 0 0 3px var(--limestone), inset 0 0 0 7px var(--rc, var(--flow)); }
+.aq-shop-route__bay.is-hold .aq-shop-route__stop { background: var(--on-limestone); border-color: var(--on-limestone); }
+/* gate after a hold bay: two posts and a bar across the lane */
+.aq-shop-route__gate {
+  position: absolute; top: calc(100% / var(--rows, 2) - var(--lane, var(--space-8))); width: var(--space-2); height: var(--space-8); transform: translate(-50%, -50%) translateY(1.5px);
+  background: var(--on-limestone); z-index: 2;
+}
+.aq-shop-route__gate.is-back { top: calc(100% - var(--lane, var(--space-8))); }
+/* the spool that travels the route (motion only; parked at the exit) */
+.aq-shop-route__spool { position: absolute; left: calc(-1 * var(--space-4)); top: calc(100% - var(--lane, var(--space-8))); width: var(--space-8); height: var(--space-3); transform: translate(-50%, -50%) translateY(1.5px); background: var(--navy); border: 1.5px solid var(--limestone); z-index: 3; display: none; }
+.aq-shop-route__spool.is-live { display: block; }
+/* doors: the way in (top left) and out (bottom left) break the outer wall */
+.aq-shop-route__door { position: absolute; left: -6px; width: 6px; height: var(--space-12); background: var(--limestone); transform: translateY(-50%); }
+.aq-shop-route__door--in { top: calc(100% / var(--rows, 2) - var(--lane, var(--space-8))); }
+.aq-shop-route__door--out { top: calc(100% - var(--lane, var(--space-8))); }
+
+@container (max-width: 860px) {
+  .aq-shop-route { border-width: 4px; }
+  .aq-shop-route__bays { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+  .aq-shop-route__bay, .aq-shop-route__bay[style] { grid-row: auto !important; grid-column: 1 !important; border-right: 0; border-bottom: 2px solid color-mix(in srgb, var(--on-limestone) 40%, transparent); padding: var(--space-6) var(--space-4) var(--space-8) var(--space-12); }
+  .aq-shop-route__bay:last-child { border-bottom: 0; }
+  .aq-shop-route__furn { width: 30%; right: var(--space-3); top: var(--space-3); }
+  .aq-shop-route__n { font-size: 34px; line-height: 36px; }
+  .aq-shop-route__t { font-size: 20px; line-height: 26px; padding-right: 32%; }
+  .aq-shop-route__route { display: none; }
+  .aq-shop-route__door { display: none; }
+  /* the route runs down the left edge through every bay */
+  .aq-shop-route__bay::before { content: ""; position: absolute; left: var(--space-6); top: 0; bottom: 0; border-left: 3px solid var(--rc, var(--flow)); }
+  .aq-shop-route__stop { left: var(--space-6); bottom: auto; top: calc(var(--space-6) + var(--space-4)); transform: translate(-50%, -50%) translateX(1.5px); }
+  .aq-shop-route__bay.is-back .aq-shop-route__stop { bottom: auto; }
+}
+.aq-section.aq-shop-route-sec { overflow-x: clip; }

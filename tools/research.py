@@ -345,7 +345,7 @@ def panel_concepts(pg, imgs, logs, p9, p9b):
             if look:
                 comp = pascal(look)
                 has = os.path.isdir(os.path.join(ROOT, 'design-system', 'components', comp))
-                meta.append(('Built as', ('<a href="design-system.html#c-%s">%s</a>' % (comp, comp) if has else esc(comp)) + ' <span class="rs-muted">(look <code>%s</code>)</span>' % esc(look)))
+                meta.append(('Built as', ('<a href="design-system.html#c-%s">%s</a>' % (comp, comp) if has else esc(comp)) + ' <span class="rs-muted">(look <a href="sections.html#%s"><code>%s</code></a> in the section library)</span>' % (esc(look), esc(look))))
             else:
                 meta.append(('Built as', '<span class="rs-muted">the shared %s section</span>' % esc(b.get('type'))))
             prompt = q.get('prompt') or q.get('mid')
@@ -785,7 +785,7 @@ def main():
 </head>
 <body>
 <header class="rs-head"><div class="rs-in">
- <p class="rs-links"><a href="index.html">Site</a> · <a href="design-system.html">Design system</a> · <a href="inspiration.html">Media gallery</a> · <a href="versions.html">Page history</a></p>
+ <p class="rs-links"><a href="index.html">Site</a> · <a href="design-system.html">Design system</a> · <a href="sections.html">Section library</a> · <a href="inspiration.html">Media gallery</a> · <a href="versions.html">Page history</a></p>
  <h1>Design research</h1>
  <p>Pass 9's image loop, start to finish: the Gemini concepts for each section, every image taken apart into words, the themes and design choices they add up to, the build notes, and the skills that run it again.</p>
 </div></header>

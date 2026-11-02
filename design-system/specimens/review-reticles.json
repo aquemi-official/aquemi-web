@@ -1,0 +1,65 @@
+{
+ "look": "review-reticles",
+ "component": "ReviewReticles",
+ "type": "grid",
+ "fields": "(a grid block, as: \"route\"): h, nav, items [{t, d, spot, part, code, link}]. part: an IsoKit part kind to draw; without it the spot picks one (binder, toc -> analyzer, ro-skid -> ro, storage-tank -> tank, heat-exchanger -> hx, cpu -> panel, pump, uv), else the spot's line icon. code (optional): a short mono area code, a drawing label (aria-hidden). A link makes the row's name a link (it still selects on focus).",
+ "best_for": "ReviewReticles sets what an assessment reviews as a drawing register on a limestone sheet, with one inspection viewfinder that shows the pointed area's thing in IsoKit line art.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-upgrades",
+   "slot": 3,
+   "h": "What the assessment reviews",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "5972ddbe51",
+   "block": {
+    "type": "grid",
+    "look": "review-reticles",
+    "as": "route",
+    "nav": "Assessment",
+    "h": "What the assessment reviews",
+    "items": [
+     {
+      "t": "Records",
+      "d": "Qualification file, changes, drawings, dead leg register.",
+      "spot": "binder",
+      "code": "REC"
+     },
+     {
+      "t": "Water quality data",
+      "d": "A year of conductivity, TOC and microbial results.",
+      "spot": "toc",
+      "code": "WQD"
+     },
+     {
+      "t": "Generation",
+      "d": "Performance on today’s feed, capacity at your coldest feed.",
+      "spot": "ro-skid",
+      "code": "GEN"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "Materials, dead legs, slope, flow and fittings.",
+      "spot": "storage-tank",
+      "code": "S&D"
+     },
+     {
+      "t": "Sanitization",
+      "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
+      "spot": "heat-exchanger",
+      "code": "SAN"
+     },
+     {
+      "t": "Controls",
+      "d": "Support status, audit trail and backups.",
+      "spot": "cpu",
+      "code": "CTL"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "look": "hmi-trend",
+ "component": "HmiTrend",
+ "type": "table",
+ "fields": "h, intro, cols (three labels), rows [[line, how, what]] (a cell may be {t, link}), lines (the role of each row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown; decoration, aria-hidden). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.",
+ "best_for": "HmiTrend sets a table of alarm lines (line, how it is set, what the system does) as the operator panel's own screen: a dark instrument panel with a trend plot of one reading under the limit lines, flagged by the trend rule before it reaches any of them, and the alarm summary as the real table.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-monitoring",
+   "slot": 1,
+   "h": "Alert, action and trend",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "325b5d1fee",
+   "block": {
+    "type": "table",
+    "h": "Alert, action and trend",
+    "intro": "You set the levels with our input.",
+    "cols": [
+     "Line",
+     "How it is set",
+     "What the system does"
+    ],
+    "rows": [
+     [
+      "Specification",
+      {
+       "t": "Compendial limit, or your tighter internal limit",
+       "link": "compliance#limits"
+      },
+      "Diverts or stops supply; alarm needs a reason"
+     ],
+     [
+      "Action level",
+      "Qualification data; ≤ 100 CFU/mL (colony-forming units; USP <1231>; GUI-0001 C.02.009)",
+      "Quality alarm to your quality unit, logged"
+     ],
+     [
+      "Alert level",
+      "Qualification data; reassessed after investigations",
+      "Alarm with a comment, counted for trends"
+     ],
+     [
+      "Trend rule",
+      "Agreed with your quality unit, such as rising readings",
+      "Flags drift before any limit"
+     ]
+    ],
+    "nav": "Alarms",
+    "look": "hmi-trend",
+    "tabs": [
+     "Trends",
+     "Alarms",
+     "Sanitization"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+/* ---------- PackMatrix: one pack per client and period, drawn as a matrix of packs with one pulled out and opened ---------- */
+.aq-pack-matrix-sec { position: relative; }
+.aq-pack-matrix { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-16); align-items: center; margin-top: var(--space-8); }
+
+/* The matrix: identical packs on a grid, the axis words, the pulled pack in navy, a leader out to the sheet */
+.aq-pack-matrix__grid { --s: var(--space-16); --g: var(--space-4); display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: var(--space-3); row-gap: var(--space-3); }
+.aq-pack-matrix__ax { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-pack-matrix__ax--y { grid-column: 1; grid-row: 1; writing-mode: vertical-rl; transform: rotate(180deg); align-self: center; padding-block: var(--space-2);
+  border-right: 1px solid var(--line-strong); padding-right: var(--space-1); }
+.aq-pack-matrix__ax--x { grid-column: 2; grid-row: 2; padding-top: var(--space-2); border-top: 1px solid var(--line-strong); }
+.aq-pack-matrix__ax--x::after, .aq-pack-matrix__ax--y::after { content: " →"; }
+.aq-pack-matrix__cells { grid-column: 2; grid-row: 1; position: relative; display: grid; grid-template-columns: repeat(var(--cols, 4), var(--s, 48px)); grid-template-rows: repeat(var(--rows, 3), var(--s, 48px)); gap: var(--g, 12px); }
+.aq-pack-matrix__pk { grid-column: var(--c, 1); grid-row: var(--r, 1); position: relative; border: 1.5px solid var(--line-strong); background: var(--surface-raised); margin-top: var(--space-2); }
+.aq-pack-matrix__pk::before { content: ""; position: absolute; left: -1.5px; top: calc(var(--space-2) * -1 - 1.5px); width: 45%; height: var(--space-2); border: 1.5px solid var(--line-strong); border-bottom: 0; background: inherit; }
+.aq-pack-matrix__pk::after { content: ""; position: absolute; left: 20%; right: 20%; top: 40%; height: 0; border-top: 1px solid var(--line); box-sizing: border-box; }
+.aq-pack-matrix__pk.is-open { background: var(--navy); border-color: var(--navy); transform: translate(var(--space-2), calc(var(--space-2) * -1)); z-index: 1; }
+.aq-pack-matrix__pk.is-open::before { border-color: var(--navy); }
+.aq-pack-matrix__pk.is-open::after { border-top-color: color-mix(in srgb, var(--on-navy) 50%, transparent); }
+.aq-pack-matrix__lead { grid-column: 2; grid-row: 1; position: relative; align-self: start; height: 0; pointer-events: none;
+  margin-top: calc((var(--ar, 2) - 1) * (var(--s, 48px) + var(--g, 12px)) + var(--s, 48px) / 2 + var(--space-1)); margin-left: calc(var(--ac, 3) * var(--s, 48px) + (var(--ac, 3) - 1) * var(--g, 12px) + var(--space-2));
+  margin-right: calc(var(--space-16) * -1); border-top: 1.5px solid var(--action); transform-origin: 0 50%; }
+.aq-pack-matrix__lead::after { content: ""; position: absolute; right: 0; top: calc(var(--space-2) * -0.5 - 0.75px); width: var(--space-2); height: var(--space-2); background: var(--action); }
+
+/* The open pack: a sheet with a navy strip, documents in two columns */
+.aq-pack-matrix__sheet { min-width: 0; background: var(--surface-raised); border: 1px solid var(--line-strong); }
+.aq-pack-matrix__strip { display: flex; justify-content: space-between; gap: var(--space-4); padding: var(--space-2) var(--space-6); background: var(--navy); color: var(--on-navy-muted);
+  font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-pack-matrix__sheet > .aq-fold, .aq-pack-matrix__docs { padding: 0 var(--space-6); }
+.aq-pack-matrix__sheet > .aq-fold > .aq-pack-matrix__docs { padding: 0; }
+.aq-fold:not(.is-open) .aq-pack-matrix__doc.aq-fold-x { display: grid; }
+.aq-pack-matrix__sheet .aq-fold__btn { display: none; }
+.aq-pack-matrix__docs { list-style: none; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); }
+.aq-pack-matrix__doc { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-1); align-content: start; padding: var(--space-6) 0;
+  border-top: 1px solid var(--line); }
+.aq-pack-matrix__doc:nth-child(-n+2) { border-top: 0; }
+.aq-pack-matrix__n { grid-row: 1 / span 2; font: 300 48px/44px var(--font-sans); letter-spacing: -0.05em; color: var(--ink-subtle); font-variant-numeric: tabular-nums; }
+.aq-pack-matrix__t { margin: 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-pack-matrix__t a { color: inherit; }
+.aq-pack-matrix__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-pack-matrix__doc.is-key { position: relative; }
+.aq-pack-matrix__doc.is-key:nth-child(-n+2)::before { display: none; }
+.aq-pack-matrix__doc.is-key::before { content: ""; position: absolute; left: 0; top: -1px; width: var(--space-12); height: 2px; background: var(--flow); }
+.aq-pack-matrix__doc.is-key .aq-pack-matrix__n { color: var(--flow); }
+.aq-pack-matrix__doc:hover .aq-pack-matrix__n { color: var(--ink); }
+
+@container (max-width: 1100px) {
+  .aq-pack-matrix { column-gap: var(--space-8); }
+  .aq-pack-matrix__grid { --s: var(--space-8); --g: var(--space-2); }
+  .aq-pack-matrix__lead { margin-right: calc(var(--space-8) * -1); }
+  .aq-pack-matrix__docs { grid-template-columns: minmax(0, 1fr); }
+  .aq-pack-matrix__doc:nth-child(2) { border-top: 1px solid var(--line); }
+  .aq-pack-matrix__doc.is-key:nth-child(2)::before { display: block; }
+}
+
+/* Phones: the matrix small above the sheet, its leader dropping into it; the fold comes back */
+@container (max-width: 860px) {
+  .aq-pack-matrix { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); margin-top: var(--space-4); }
+  .aq-pack-matrix__grid { --s: var(--space-8); --g: var(--space-2); justify-self: start; }
+  .aq-pack-matrix__lead { display: none; }
+  .aq-pack-matrix__sheet > .aq-fold, .aq-pack-matrix__docs { padding: 0 var(--space-4); }
+  .aq-pack-matrix__strip { padding-inline: var(--space-4); }
+  .aq-pack-matrix__n { font-size: 36px; line-height: 36px; }
+  .aq-pack-matrix__t { font-size: 17px; line-height: 24px; }
+  .aq-pack-matrix__doc { padding: var(--space-4) 0; }
+  .aq-fold:not(.is-open) .aq-pack-matrix__doc.aq-fold-x { display: none; }
+  .aq-pack-matrix__sheet .aq-fold__btn { display: flex; }
+}

@@ -1,0 +1,61 @@
+{
+ "look": "stage-tiles",
+ "component": "StageTiles",
+ "type": "steps",
+ "fields": "h, intro, items [{t, d, link, label, art}]. label: a short line over the stage name (shown only when the name does not already contain it); art: \"piping\" for the drawing tile.",
+ "best_for": "StageTiles sets ordered stages as a Swiss row of navy and limestone tiles, each led by a huge light slash numeral, with the heading in a navy band over them (look `stage-tiles`, steps block).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-cq",
+   "slot": 0,
+   "h": "What each stage proves",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "47d27bb922",
+   "block": {
+    "type": "steps",
+    "nav": "Stages",
+    "h": "What each stage proves",
+    "intro": "One commissioning and qualification (C&Q) plan covers every stage.",
+    "items": [
+     {
+      "t": "Commissioning",
+      "d": "Flush, pressure test, sanitization, start-up, punch list.",
+      "label": "Commissioning"
+     },
+     {
+      "t": "Factory and site acceptance tests (FAT and SAT)",
+      "d": "Tested before shipping, then on your utilities.",
+      "link": "svc-fat-sat",
+      "label": "FAT · SAT"
+     },
+     {
+      "t": "Installation qualification (IQ)",
+      "d": "Installed as designed: drawings, materials, joints, slopes, instruments.",
+      "label": "IQ",
+      "art": "piping"
+     },
+     {
+      "t": "Operational qualification (OQ)",
+      "d": "Operating limits and worst case tested.",
+      "label": "OQ"
+     },
+     {
+      "t": "Performance qualification (PQ)",
+      "d": "Required quality, reproducibly, across the seasons.",
+      "label": "PQ"
+     },
+     {
+      "t": "Periodic review",
+      "d": "Yearly review of data and changes; requalify where they point.",
+      "label": "Review"
+     }
+    ],
+    "look": "stage-tiles"
+   }
+  }
+ ]
+}

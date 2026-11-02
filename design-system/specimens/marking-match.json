@@ -1,0 +1,71 @@
+{
+ "look": "marking-match",
+ "component": "MarkingMatch",
+ "type": "table",
+ "fields": "as a table: facts [{k (short label), v (the rule; [placeholders] allowed), glyph (\"gate\", optional)}], cols [supply, what we require, how we verify it], rows (cells strings or {t, link}), fold, fold_noun (phones only).",
+ "best_for": "MarkingMatch shows supplier control as two standing rules set as headline-sized facts over a clean ruled schedule of supplies, what we require and how we verify it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-quality",
+   "slot": 2,
+   "h": "What we require from suppliers",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "e7fd0969ae",
+   "block": {
+    "type": "table",
+    "nav": "Suppliers",
+    "h": "What we require from suppliers",
+    "facts": [
+     {
+      "k": "Supplier review",
+      "v": "Reviewed every [supplier review interval, months]"
+     },
+     {
+      "k": "Open CAPA",
+      "v": "An open CAPA stops new orders.",
+      "glyph": "gate"
+     }
+    ],
+    "cols": [
+     "Supply",
+     "What we require",
+     "How we verify it"
+    ],
+    "rows": [
+     [
+      "Polypropylene (PP) pipe, fittings and valves",
+      "PP to [PP piping standard], [PP material certificates] per lot",
+      "Lot marking checked against the certificate at receipt"
+     ],
+     [
+      "Elastomers and gaskets",
+      "[elastomer certificates per compound]",
+      "Compound and grade checked; like-for-like replacement only"
+     ],
+     [
+      "Pretreatment piping",
+      "Polyvinyl chloride (PVC) to [PVC pipe standard and schedule], [certificates supplied for PVC parts]",
+      "Markings checked against the order at receipt"
+     ],
+     [
+      "Membranes, electrodeionization (EDI) modules and resin",
+      "Manufacturer's certificates with serial or lot numbers",
+      "Serial and lot numbers recorded at receipt and installation"
+     ],
+     [
+      "Pressure vessels and panels",
+      "[pressure-rated items in the PW package] with a Canadian registration number (CRN) under CSA B51; panels to [panel standard]",
+      "Data reports reviewed; panel label checked"
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "supply categories",
+    "look": "marking-match"
+   }
+  }
+ ]
+}

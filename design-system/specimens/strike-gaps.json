@@ -1,0 +1,62 @@
+{
+ "look": "strike-gaps",
+ "component": "StrikeGaps",
+ "type": "table",
+ "fields": "as a failures table: h, intro, cols [gap, requirement, what the upgrade does], rows, fold, fold_noun.",
+ "best_for": "StrikeGaps sets gaps and their fixes as a before and after in large light type: the gap as it stands, struck through like a drawing revision; the requirement it misses in mono on an arrow; what the upgrade does at full strength.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-upgrades",
+   "slot": 2,
+   "h": "Data integrity gaps in older controls",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "cc6c457b40",
+   "block": {
+    "type": "table",
+    "look": "strike-gaps",
+    "as": "failures",
+    "nav": "Controls",
+    "h": "Data integrity gaps in older controls",
+    "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out: spares are limited.",
+    "cols": [
+     "Gap",
+     "Requirement it misses",
+     "What the upgrade does"
+    ],
+    "rows": [
+     [
+      "Shared operator login, or none",
+      "21 CFR 11.10(d); Annex 11, 12",
+      "Individual accounts, roles, automatic logoff"
+     ],
+     [
+      "No audit trail on set points or alarms",
+      "21 CFR 11.10(e); Annex 11, 9",
+      "Audit trail of who, what, when and why"
+     ],
+     [
+      "A chart recorder as the release record",
+      "21 CFR 211.68; Annex 11, 4",
+      "Validated historian, or a defined paper record"
+     ],
+     [
+      "Backups never restored",
+      "Annex 11, 7.2",
+      "Restore test at OQ, repeated on a schedule"
+     ],
+     [
+      "Records only in the old system",
+      "21 CFR 211.180; Annex 11, 17",
+      "Verified migration, or old records kept readable"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "gaps"
+   }
+  }
+ ]
+}

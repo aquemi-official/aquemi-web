@@ -1,0 +1,51 @@
+{
+ "look": "hire-path",
+ "component": "HirePath",
+ "type": "steps",
+ "fields": "h, intro, items [{t, d, icons}], fig (optional): the plate's caption, e.g. \"Test joint by [PP joining method]\" (through tx, so a placeholder stays one). icons: Icon names in the order the step's text names them.",
+ "best_for": "HirePath sets the steps into a role as one drawing sheet: the section title and the practical interview's test joint drawn large as a duotone plate on the left, the steps on a slim vertical rail on the right, each with a gate tick, a mono number, its name and line.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "careers",
+   "slot": 2,
+   "h": "How we hire",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "4e55cdc0a5",
+   "block": {
+    "type": "steps",
+    "nav": "Hiring",
+    "h": "How we hire",
+    "items": [
+     {
+      "t": "Apply",
+      "d": "The form below; the hiring manager replies yes or no."
+     },
+     {
+      "t": "Conversation",
+      "d": "A [first call length, minutes]-minute call: role, pay, travel, your questions."
+     },
+     {
+      "t": "Practical interview",
+      "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise.",
+      "icons": [
+       "pid",
+       "weld",
+       "binder",
+       "wrench"
+      ]
+     },
+     {
+      "t": "Visit and decision",
+      "d": "Meet the team where you would work. Written decision within [offer time, working days]."
+     }
+    ],
+    "fig": "Test joint by [PP joining method]",
+    "look": "hire-path"
+   }
+  }
+ ]
+}

@@ -1,0 +1,98 @@
+{
+ "look": "sensor-loop",
+ "component": "SensorLoop",
+ "type": "spec",
+ "fields": "h, caption, cols, rows [{p, v, m, site}], note, fold, fold_noun. site: toc | cond | temp | divert | flow | uv | data (where the balloon sits; a row without one is a card only). Desktop shows every row; the fold applies on phones, where the cards stack under the drawing beside a vertical signal rail.",
+ "best_for": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "sys-monitoring",
+   "slot": 2,
+   "h": "Sensors and signals",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "30040f0",
+   "hash": "37b9b65772",
+   "block": {
+    "type": "spec",
+    "h": "Sensors and signals",
+    "caption": "MONITORING · WHO TRS 1033",
+    "cols": [
+     "Signal",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "TOC analyzer",
+      "v": "Online; system suitability 85 % to 115 %",
+      "m": "USP <643>",
+      "at": [
+       37.4,
+       46.9
+      ],
+      "site": "toc"
+     },
+     {
+      "p": "Conductivity cell",
+      "v": "Cell constant ± 2 %; ± 0.1 µS/cm; temperature ± 2 °C",
+      "m": "USP <645>, uncompensated",
+      "at": [
+       49.4,
+       57.7
+      ],
+      "site": "cond"
+     },
+     {
+      "p": "Temperature",
+      "v": "Generation, tank, loop supply and return, coldest sanitization point",
+      "at": [
+       48.9,
+       41.1
+      ],
+      "site": "temp"
+     },
+     {
+      "p": "Divert",
+      "v": "Setpoint below your alert level; to drain or recirculation",
+      "m": "Value, time and duration recorded",
+      "at": [
+       72.9,
+       37.7
+      ],
+      "site": "divert"
+     },
+     {
+      "p": "Flow and pressure",
+      "v": "Return flow ≥ [qualified minimum return flow, L/h], alarmed",
+      "m": "WHO TRS 1033, 8.6 and 12.3",
+      "at": [
+       57.4,
+       69.7
+      ],
+      "site": "flow"
+     },
+     {
+      "p": "Ultraviolet (UV) units, where fitted",
+      "v": "Intensity at 254 nm, lamp hours, lamp failure",
+      "site": "uv"
+     },
+     {
+      "p": "Data recording",
+      "v": "Every quality value at [recording interval, seconds], time-stamped",
+      "m": "One site time source",
+      "site": "data"
+     }
+    ],
+    "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
+    "nav": "Measurements",
+    "fold": 5,
+    "fold_noun": "signals",
+    "as": "callouts",
+    "look": "sensor-loop"
+   }
+  }
+ ]
+}

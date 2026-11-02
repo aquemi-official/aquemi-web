@@ -1,0 +1,75 @@
+/* ---------- PlanSheets: service plans as calibration sheets side by side on navy (look "plan-sheets") ----------
+   The section is a navy band; inside it the ink tokens take their on-navy values, so the heading, the row labels and
+   the fold button read on navy. Each plan column is a limestone sheet (data-theme="light" on its cells, so it stays
+   paper in both themes): cells of one column join into one sheet, the table's border-spacing leaves navy gaps between
+   sheets. The baseline column ("No plan") is a blank dashed sheet on the navy. */
+.aq-plan-sheets-sec {
+  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted); --ink-subtle: var(--on-navy-muted);
+  --line: color-mix(in srgb, var(--on-navy) 20%, transparent); --line-strong: color-mix(in srgb, var(--on-navy) 45%, transparent);
+  --ps-flow: color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+}
+.aq-plan-sheets-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); max-width: 18ch; }
+.aq-plan-sheets-sec .aq-sec-head .aq-lead { color: var(--on-navy-muted); }
+.aq-plan-sheets { position: relative; }
+.aq-plan-sheets__switch { display: none; }
+.aq-plan-sheets__table { width: 100%; border-collapse: separate; border-spacing: var(--space-4) 0; margin-inline: calc(-1 * var(--space-4)); width: calc(100% + 2 * var(--space-4)); table-layout: fixed; }
+.aq-plan-sheets__table th, .aq-plan-sheets__table td { text-align: left; vertical-align: top; font-weight: 400; }
+.aq-plan-sheets__corner { width: 18%; }
+.aq-plan-sheets__label { padding: var(--space-4) var(--space-2) var(--space-4) 0; border-bottom: 1px solid var(--line); color: var(--on-navy-muted); font: 400 14px/20px var(--font-sans); transition: color 200ms ease; }
+.aq-plan-sheets__label .aq-index { display: block; margin-bottom: var(--space-1); color: var(--on-navy-muted); }
+.aq-plan-sheets__c { background: var(--limestone); color: var(--on-limestone); padding: var(--space-4) var(--space-6); border-bottom: 1px solid color-mix(in srgb, var(--navy) 14%, transparent); transition: background-color 200ms ease; }
+.aq-plan-sheets__c.is-base { background: transparent; color: var(--on-navy); border-inline: 1px dashed var(--line-strong); border-bottom-color: var(--line); }
+.aq-plan-sheets__k { display: none; }
+.aq-plan-sheets__v { display: block; font: 400 15px/22px var(--font-sans); text-wrap: pretty; }
+/* the sheet head: ruled scale along the top edge, the sheet number huge and light, the plan name */
+.aq-plan-sheets__head { position: relative; padding-top: var(--space-6); border-bottom: 0; }
+.aq-plan-sheets__head.is-base { border-top: 1px dashed var(--line-strong); vertical-align: bottom; }
+.aq-plan-sheets__scale { position: absolute; left: 0; top: 0; width: 100%; height: 12px; display: block; }
+.aq-plan-sheets__scale path { stroke: var(--navy); stroke-width: 1; fill: none; opacity: 0.55; }
+.aq-plan-sheets__no { display: block; font: 300 72px/72px var(--font-sans); letter-spacing: -0.04em; color: var(--navy); margin-top: var(--space-2); }
+.aq-plan-sheets__of { position: absolute; right: var(--space-4); top: var(--space-6); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-plan-sheets__name { display: block; margin-top: var(--space-3); font: 500 16px/22px var(--font-sans); }
+.aq-plan-sheets__mark { display: inline-block; margin-bottom: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow); }
+/* the headline row: who the plan suits, set large */
+.aq-plan-sheets__suits .aq-plan-sheets__c { padding-bottom: var(--space-6); border-bottom: 1px solid var(--navy); }
+.aq-plan-sheets__suits .aq-plan-sheets__c.is-base { border-bottom: 1px solid var(--line-strong); }
+.aq-plan-sheets__fit { display: block; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; text-wrap: balance; }
+.aq-plan-sheets__suits .aq-plan-sheets__label { vertical-align: bottom; padding-bottom: var(--space-6); border-bottom-color: var(--line-strong); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+/* foot: the plan's own button, the sheet's bottom edge */
+.aq-plan-sheets__acts .aq-plan-sheets__c { padding-block: var(--space-6); border-bottom: 0; }
+.aq-plan-sheets__acts .aq-plan-sheets__c.is-base { border-bottom: 1px dashed var(--line-strong); }
+.aq-plan-sheets__acts .aq-btn { width: 100%; justify-content: center; }
+.aq-plan-sheets__c.is-rec { outline: 2px solid var(--flow); outline-offset: -2px; }
+/* a row lit across every sheet */
+.aq-plan-sheets__row:hover .aq-plan-sheets__label, .aq-plan-sheets__suits:hover .aq-plan-sheets__label { color: var(--on-navy); }
+.aq-plan-sheets__row:hover .aq-plan-sheets__c:not(.is-base) { background: color-mix(in srgb, var(--limestone) 88%, var(--navy)); }
+.aq-plan-sheets__row:hover .aq-plan-sheets__c.is-base { background: color-mix(in srgb, var(--on-navy) 6%, transparent); }
+.aq-plan-sheets-sec .aq-fold__btn { color: var(--on-navy); border-bottom-color: var(--line); margin-top: var(--space-2); }
+
+/* placeholders on the navy read as dashed chips; on the sheets they keep the caution tint */
+.aq-plan-sheets-sec .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+.aq-plan-sheets-sec [data-theme="light"] .aq-ph { background: var(--caution-tint); color: var(--ink); outline: 0; }
+.aq-plan-sheets__acts .aq-btn { height: auto; min-height: 44px; white-space: normal; text-align: center; padding-block: var(--space-2); line-height: 20px; }
+
+@container (max-width: 860px) {
+  .aq-plan-sheets-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  .aq-plan-sheets__switch { display: flex; gap: var(--space-1); margin-bottom: 0; overflow: hidden; }
+  .aq-plan-sheets__tab { flex: 1 1 0; min-width: 0; min-height: 44px; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-2) var(--space-2) var(--space-3);
+    background: color-mix(in srgb, var(--on-navy) 10%, transparent); color: var(--on-navy-muted); border: 0; border-top: 2px solid transparent; cursor: pointer; text-align: left; font: 400 12px/16px var(--font-sans); }
+  .aq-plan-sheets__tab > span:last-child { overflow-wrap: anywhere; }
+  .aq-plan-sheets__tabno { font: 300 24px/24px var(--font-sans); }
+  .aq-plan-sheets__tab[aria-pressed="true"] { background: var(--limestone); color: var(--on-limestone); border-top-color: var(--navy); }
+  .aq-plan-sheets__tab[aria-pressed="true"] .aq-ph { background: var(--caution-tint); color: var(--on-limestone); outline: 0; }
+  .aq-plan-sheets__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .aq-plan-sheets__table, .aq-plan-sheets__table thead, .aq-plan-sheets__table tbody, .aq-plan-sheets__table tr { display: block; width: 100%; margin: 0; }
+  .aq-plan-sheets__corner, .aq-plan-sheets__label { display: none; }
+  .aq-plan-sheets__c { display: block; padding: var(--space-3) var(--space-4); }
+  .aq-plan-sheets[data-show="1"] .aq-plan-sheets__c:not(.t1), .aq-plan-sheets[data-show="2"] .aq-plan-sheets__c:not(.t2),
+  .aq-plan-sheets[data-show="3"] .aq-plan-sheets__c:not(.t3), .aq-plan-sheets[data-show="4"] .aq-plan-sheets__c:not(.t4),
+  .aq-plan-sheets[data-show="5"] .aq-plan-sheets__c:not(.t5), .aq-plan-sheets[data-show="6"] .aq-plan-sheets__c:not(.t6) { display: none; }
+  .aq-plan-sheets__k { display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); }
+  .aq-plan-sheets__c.is-base .aq-plan-sheets__k { color: var(--on-navy-muted); }
+  .aq-plan-sheets__no { font-size: 56px; line-height: 56px; }
+  .aq-plan-sheets__fit { font-size: 20px; line-height: 26px; }
+  .aq-plan-sheets__head.is-base { padding-top: var(--space-4); }
+}

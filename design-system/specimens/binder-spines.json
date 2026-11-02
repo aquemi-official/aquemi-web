@@ -1,0 +1,98 @@
+{
+ "look": "binder-spines",
+ "component": "BinderSpines",
+ "type": "table",
+ "fields": "as the evidence table: cols, rows [who, read, {t, link, intent}], fold, fold_noun (phones only).",
+ "best_for": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine, beside a large drawing of the plant they inspect bleeding off the page.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-pharma",
+   "slot": 2,
+   "h": "What each inspector reads",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "0d0ef0266c",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Inspectors",
+    "h": "What each inspector reads",
+    "cols": [
+     "Who inspects",
+     "What they read",
+     "Where we answer it"
+    ],
+    "rows": [
+     [
+      "Health Canada, all drug sites",
+      "GUI-0001 C.02.009: PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "FDA",
+      "21 CFR 211.65 (non-reactive surfaces); water guide: dead legs, a year's data",
+      {
+       "t": "Good manufacturing practice",
+       "link": "compliance#gmp"
+      }
+     ],
+     [
+      "Health Canada, natural health products",
+      "GUI-0158 s. 45: potable minimum, test records, qualified treatment",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "EU authorities and importers",
+      "Ph. Eur. 0008, the EMA guideline and Annex 15 qualification",
+      {
+       "t": "Standards we design to",
+       "link": "compliance"
+      }
+     ],
+     [
+      "Sterile sites, or non-sterile sites that adopt it in writing",
+      "GUI-0119 and EU good manufacturing practice (GMP) Annex 1: PW quality, dead legs, sanitization, trend review",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "inspectors",
+    "look": "binder-spines",
+    "spines": [
+     {
+      "code": "GUI-0001 C.02.009",
+      "read": "PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route"
+     },
+     {
+      "code": "21 CFR 211.65",
+      "read": "Non-reactive surfaces; water guide: dead legs, a year's data"
+     },
+     {
+      "code": "GUI-0158 s. 45",
+      "read": "Potable minimum, test records, qualified treatment"
+     },
+     {
+      "code": "Ph. Eur. 0008",
+      "read": "The EMA guideline and Annex 15 qualification"
+     },
+     {
+      "code": "GUI-0119 + Annex 1",
+      "read": "EU good manufacturing practice (GMP): PW quality, dead legs, sanitization, trend review"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "look": "release-run",
+ "component": "ReleaseRun",
+ "type": "steps",
+ "fields": "as steps: h, intro, items [{t, d, link}].",
+ "best_for": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "ind-cdmo",
+   "slot": 3,
+   "h": "From signed program to released water",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "bb33be2",
+   "hash": "ec688152a6",
+   "block": {
+    "type": "steps",
+    "nav": "Tech transfer",
+    "h": "From signed program to released water",
+    "items": [
+     {
+      "t": "Water scope review",
+      "d": "From your products, markets and PPQ date: the water specification, in [scope review turnaround, working days]."
+     },
+     {
+      "t": "Change control",
+      "d": "Before design: change description, risk assessment and requalification scope for you and each affected client."
+     },
+     {
+      "t": "Build and tie in",
+      "d": "New outlets or a skid, built by us; tie-in in a campaign gap or shutdown."
+     },
+     {
+      "t": "Release",
+      "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
+     }
+    ],
+    "look": "release-run"
+   }
+  }
+ ]
+}

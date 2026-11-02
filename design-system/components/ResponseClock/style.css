@@ -1,0 +1,48 @@
+/* ---------- ResponseClock: fault steps read off a stopwatch dial (look "response-clock") ----------
+   A navy band; inside it the ink tokens take their on-navy values. Grid 5/7: the dial (SVG, on-navy hairlines, the
+   face a shade lighter than the band, stations as rings with mono numbers, the running arc dashed in a lightened
+   flow, one hand turned by --a), then the steps as rows on hairlines with a huge light number. The start station
+   (the step that starts the clock) and a pointed step fill. Phones: dial above the list at 70 % width. */
+.aq-response-clock-sec {
+  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted); --ink-subtle: var(--on-navy-muted);
+  --line: color-mix(in srgb, var(--on-navy) 18%, transparent); --line-strong: color-mix(in srgb, var(--on-navy) 45%, transparent);
+  --rc-flow: color-mix(in srgb, var(--flow) 40%, var(--on-navy));
+}
+.aq-response-clock-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); }
+.aq-response-clock-sec .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+.aq-response-clock { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-16); align-items: start; }
+.aq-response-clock__fig { position: sticky; top: var(--space-24); }
+.aq-response-clock__dial { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-response-clock__case { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-response-clock__face { fill: color-mix(in srgb, var(--on-navy) 5%, transparent); stroke: var(--line); stroke-width: 1; }
+.aq-response-clock__crown, .aq-response-clock__btn { fill: var(--navy); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-response-clock__ticks { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.7; }
+.aq-response-clock__track { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-response-clock__run { fill: none; stroke: var(--rc-flow, var(--flow)); stroke-width: 3; stroke-dasharray: 2 7; stroke-linecap: round; }
+.aq-response-clock__st circle { fill: var(--navy); stroke: var(--on-navy-muted); stroke-width: 1.5; transition: fill 200ms ease, stroke 200ms ease; }
+.aq-response-clock__st text { font: 500 11px/1 var(--font-mono); fill: var(--on-navy); text-anchor: middle; }
+.aq-response-clock__st.is-start circle { stroke: var(--rc-flow, var(--flow)); stroke-width: 2.5; }
+.aq-response-clock__st.is-on circle { fill: var(--limestone); stroke: var(--limestone); }
+.aq-response-clock__st.is-on text { fill: var(--navy); }
+.aq-response-clock__hand { transform-box: view-box; transform-origin: 200px 210px; transform: rotate(var(--a, 0deg)); transition: transform 500ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-response-clock__hand path { fill: none; stroke: var(--limestone); stroke-width: 2.5; stroke-linecap: round; }
+.aq-response-clock__hand circle { fill: var(--limestone); }
+.aq-response-clock__steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-response-clock__step { display: grid; grid-template-columns: calc(var(--space-16) + var(--space-8)) minmax(0, 1fr); gap: var(--space-4); padding: var(--space-6) 0; border-bottom: 1px solid var(--line); outline-offset: 4px; transition: background-color 200ms ease; }
+.aq-response-clock__step:focus-visible { outline: 2px solid var(--focus); }
+.aq-response-clock__n { font: 300 56px/56px var(--font-sans); letter-spacing: -0.04em; color: var(--on-navy-muted); transition: color 200ms ease; }
+.aq-response-clock__step.is-start .aq-response-clock__n, .aq-response-clock__step.is-on .aq-response-clock__n { color: var(--on-navy); }
+.aq-response-clock__t { margin: 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-response-clock__go { color: inherit; text-decoration: none; }
+.aq-response-clock__go::after { content: " →"; color: var(--rc-flow, var(--flow)); }
+.aq-response-clock__go:hover { color: var(--rc-flow, var(--flow)); }
+.aq-response-clock__d { margin: var(--space-2) 0 0; max-width: 48ch; font: 400 16px/24px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; }
+
+@container (max-width: 860px) {
+  .aq-response-clock-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  .aq-response-clock { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-response-clock__fig { position: static; width: 72%; margin-inline: auto; }
+  .aq-response-clock__step { grid-template-columns: var(--space-12) minmax(0, 1fr); gap: var(--space-3); padding: var(--space-4) 0; }
+  .aq-response-clock__n { font-size: 36px; line-height: 40px; }
+  .aq-response-clock__t { font-size: 20px; line-height: 26px; }
+}

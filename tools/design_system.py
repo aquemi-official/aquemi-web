@@ -24,6 +24,15 @@ Sources are split so several people or agents can work at once without touching 
   assets/src/core.js + parts/*.js + blocks/<type>.js + page.js      -> assets/aquemi-site.js
   assets/src/motion/core.js, gl.js + components/<Name>/motion.js   -> assets/motion.js
   content/pages/NN-<id>.json                                        -> content/pages.json
+Section library (tools/specimens.py, sections.html): looks are never deleted. A look no page uses (no block in
+content/pages/*.json has "look": "<name>") is retired, decided at every build, and its component is too unless a live
+look or renderer still uses it. Retired ones are built into library bundles that only sections.html (and, for the CSS,
+the guide) loads, so the site's own bundles never grow:
+  components/<retired>/style.css                                    -> components/bundle-library.css
+  the site script plus blocks/look-<retired>.js                     -> assets/library.js (sections.html loads it
+                                                                       instead of aquemi-site.js)
+  components/<retired>/motion.js                                    -> assets/library-motion.js (after motion.js)
+Reusing a retired look is setting "look" on a block and rebuilding: it moves back into the site's bundles.
 Site copies, made by build for index.html only (the guide and the Claude artifact keep the readable files):
   components/bundle.css   -> components/bundle.min.css   (comments and spaces out, the Google Fonts @import dropped:
                                                           the site self-hosts Geist in assets/fonts/)
@@ -43,9 +52,60 @@ MARKER = re.compile(r'<!--\s*@dsCard(.*?)-->')
 ATTR = re.compile(r'(\w+)=(?:"([^"]*)"|(\S+))')
 
 
-def components():
-    """Every component folder, with its preview marker and the first sentence of its README."""
+def look_component(look):
+    """The component a look draws (its header: Look "<name>" -> <Pascal>), '' if the header names none."""
+    p = os.path.join(ROOT, 'assets', 'src', 'blocks', 'look-%s.js' % look)
+    m = re.search(r'Look "%s"\s*->\s*([A-Z][A-Za-z0-9]*)' % re.escape(look), open(p, encoding='utf8').read(2000)) if os.path.exists(p) else None
+    return m.group(1) if m else ''
+
+
+def all_looks():
+    d = os.path.join(ROOT, 'assets', 'src', 'blocks')
+    return sorted(f[5:-3] for f in os.listdir(d) if f.startswith('look-') and f.endswith('.js'))
+
+
+def looks_in_use():
+    """Looks some page block names (content/pages/*.json)."""
+    d, out = os.path.join(ROOT, 'content', 'pages'), set()
+    for f in sorted(os.listdir(d)):
+        if f.endswith('.json'):
+            for b in json.load(open(os.path.join(d, f), encoding='utf8')).get('blocks') or []:
+                if isinstance(b, dict) and b.get('look'):
+                    out.add(b['look'])
+    return out
+
+
+def retired_looks():
+    """Look renderers no page uses: kept, built into the library bundles only."""
+    used = looks_in_use()
+    return [l for l in all_looks() if l not in used]
+
+
+def kebab(name):
+    return re.sub(r'(?<!^)([A-Z])', r'-\1', name).lower()
+
+
+def library_components():
+    """Components drawn only by retired looks: no live look draws them and the site script (without the retired
+    renderers) never writes their class."""
+    retired = retired_looks()
+    if not retired:
+        return []
+    live = {look_component(l) for l in all_looks() if l not in retired}
+    js = site_js()
     out = []
+    for c in sorted({look_component(l) for l in retired} - live - {''}):
+        if os.path.isdir(os.path.join(DS, 'components', c)) and not re.search(r'\baq-%s\b' % re.escape(kebab(c)), js):
+            out.append(c)
+    return out
+
+
+def components():
+    """Every component folder, with its preview marker and the first sentence of its README (retired: true for a
+    component only retired looks draw; it lives in the section library)."""
+    out = []
+    lib = {look_component(l): l for l in retired_looks()}
+    lib = {c: lib[c] for c in library_components()}
     comps = os.path.join(DS, 'components')
     for name in sorted(os.listdir(comps)):
         d = os.path.join(comps, name)
@@ -63,6 +123,9 @@ def components():
         if os.path.exists(rd):
             text = open(rd, encoding='utf8').read().strip()
             c['summary'] = re.split(r'(?<=\.)\s', text, 1)[0]
+        if name in lib:
+            c['retired'] = True
+            c['look'] = lib[name]
         out.append(c)
     rank = lambda c: (GROUPS.index(c.get('group')) if c.get('group') in GROUPS else len(GROUPS), c['name'])
     return sorted(out, key=rank)
@@ -75,20 +138,49 @@ def bundle_css():
     comps = os.path.join(DS, 'components')
     parts = [GENERATED_NOTE, open(os.path.join(comps, 'base.css'), encoding='utf8').read()]
     for c in components():
+        if c.get('retired'):
+            continue
         p = os.path.join(comps, c['name'], 'style.css')
         if os.path.exists(p):
             parts.append(open(p, encoding='utf8').read())
     return '\n'.join(x.rstrip('\n') + '\n' for x in parts)
 
 
-def site_js():
+def site_js(library=False):
+    """The site script: core, parts, block renderers (the retired looks' only with library=True), page."""
     src = os.path.join(ROOT, 'assets', 'src')
+    skip = set() if library else {'look-%s.js' % l for l in retired_looks()}
     files = [os.path.join(src, 'core.js')]
     for sub in ('parts', 'blocks'):
         d = os.path.join(src, sub)
-        files += [os.path.join(d, f) for f in sorted(os.listdir(d)) if f.endswith('.js')]
+        files += [os.path.join(d, f) for f in sorted(os.listdir(d)) if f.endswith('.js') and f not in skip]
     files.append(os.path.join(src, 'page.js'))
     return ''.join(open(f, encoding='utf8').read().rstrip('\n') + '\n' for f in files)
+
+
+LIBRARY_NOTE = ('/* Section library build (sections.html only): %s. Live or retired is decided at build time from\n'
+                '   content/pages/*.json; a look no page uses is retired, never deleted. GENERATED by tools/design_system.py build. Do not edit. */\n')
+
+
+def library_js():
+    return LIBRARY_NOTE % 'the site script plus every retired look renderer, loaded instead of assets/aquemi-site.js' + site_js(True)
+
+
+def bundle_library_css():
+    comps = os.path.join(DS, 'components')
+    parts = [LIBRARY_NOTE % 'the style.css of every component only retired looks draw, loaded after bundle.css']
+    for c in library_components():
+        p = os.path.join(comps, c, 'style.css')
+        if os.path.exists(p):
+            parts.append(open(p, encoding='utf8').read())
+    return '\n'.join(x.rstrip('\n') + '\n' for x in parts)
+
+
+def library_motion_js():
+    comps = os.path.join(DS, 'components')
+    files = [os.path.join(comps, n, 'motion.js') for n in library_components() if os.path.exists(os.path.join(comps, n, 'motion.js'))]
+    return LIBRARY_NOTE % 'the motion.js of every component only retired looks draw, loaded after assets/motion.js' + ''.join(
+        open(f, encoding='utf8').read().rstrip('\n') + '\n' for f in files)
 
 
 def motion_js():
@@ -96,7 +188,8 @@ def motion_js():
     comps = os.path.join(DS, 'components')
     md = os.path.join(ROOT, 'assets', 'src', 'motion')
     files = [os.path.join(md, 'core.js')] + [os.path.join(md, n) for n in sorted(os.listdir(md)) if n.endswith('.js') and n != 'core.js']
-    files += [os.path.join(comps, n, 'motion.js') for n in sorted(os.listdir(comps)) if os.path.exists(os.path.join(comps, n, 'motion.js'))]
+    lib = set(library_components())
+    files += [os.path.join(comps, n, 'motion.js') for n in sorted(os.listdir(comps)) if n not in lib and os.path.exists(os.path.join(comps, n, 'motion.js'))]
     return '/* GENERATED by tools/design_system.py build from assets/src/motion/*.js and components/<Name>/motion.js. Do not edit. */\n' + ''.join(open(f, encoding='utf8').read().rstrip('\n') + '\n' for f in files)
 
 
@@ -135,7 +228,9 @@ def pages_min_json():
 
 
 GENERATED = [('design-system/components/bundle.css', bundle_css), ('assets/aquemi-site.js', site_js), ('assets/motion.js', motion_js), ('content/pages.json', pages_json),
-             ('design-system/components/bundle.min.css', bundle_min_css), ('content/pages.min.json', pages_min_json)]
+             ('design-system/components/bundle.min.css', bundle_min_css), ('content/pages.min.json', pages_min_json),
+             ('design-system/components/bundle-library.css', bundle_library_css), ('assets/library.js', library_js),
+             ('assets/library-motion.js', library_motion_js)]
 
 
 def build():
@@ -156,7 +251,8 @@ def build():
                 'artifact': art['artifact'], 'groups': GROUPS, 'assets': assets, 'components': components()}
     path = os.path.join(DS, 'components.json')
     open(path, 'w', encoding='utf8', newline='\n').write(json.dumps(manifest, ensure_ascii=False, indent=1) + '\n')
-    print('wrote', os.path.relpath(path, ROOT), '(%d components)' % len(manifest['components']))
+    print('wrote', os.path.relpath(path, ROOT), '(%d components, %d retired: in the section library)' % (
+        len(manifest['components']), sum(1 for c in manifest['components'] if c.get('retired'))))
 
 
 # Files index.html loads with a ?v=<content hash> (and the service worker may keep for good, since a new version is a
@@ -936,8 +1032,8 @@ def check(show_budgets=False, only=None, show_warnings=False):
             problems.append('README.md is still the scaffold: ' + name)
     # Generated files must be current, so the guide shows what is in the repo
     manifest = os.path.join(DS, 'components.json')
-    listed = {c['name'] for c in json.load(open(manifest, encoding='utf8'))['components']} if os.path.exists(manifest) else set()
-    if listed != {c['name'] for c in components()}:
+    listed = {(c['name'], bool(c.get('retired'))) for c in json.load(open(manifest, encoding='utf8'))['components']} if os.path.exists(manifest) else set()
+    if listed != {(c['name'], bool(c.get('retired'))) for c in components()}:
         problems.append('components.json is out of date: run python tools/design_system.py build')
     for rel, fn in GENERATED:
         p = os.path.join(ROOT, rel)
@@ -949,6 +1045,24 @@ def check(show_budgets=False, only=None, show_warnings=False):
     used = {c for c in re.findall(r'\baq-[a-z0-9_-]+', js) if not c.endswith('--')}
     for cls in sorted(used - defined - {'aq-ah'}):
         problems.append('assets/src uses a class no component style.css defines: ' + cls)
+    # The section library: the retired looks' renderers against the site's styles plus the library's
+    lib_defined = defined | set(re.findall(r'\.(aq-[A-Za-z0-9_-]+)', bundle_library_css()))
+    lib_used = {c for c in re.findall(r'\baq-[a-z0-9_-]+', site_js(True)) if not c.endswith('--')}
+    for cls in sorted(lib_used - used - lib_defined - {'aq-ah'}):
+        problems.append('a retired look (assets/src/blocks/look-*.js) uses a class no component style.css defines: ' + cls)
+    # Looks are never deleted (tools/specimens.py): every look draws a component that exists, and every look with a
+    # specimen keeps its renderer; every page block with a look has its content recorded
+    spec_dir = os.path.join(DS, 'specimens')
+    specs = {f[:-5]: json.load(open(os.path.join(spec_dir, f), encoding='utf8')) for f in sorted(os.listdir(spec_dir)) if f.endswith('.json')} if os.path.isdir(spec_dir) else {}
+    looks = all_looks()
+    for l in looks:
+        c = look_component(l)
+        if not c or not os.path.isdir(os.path.join(comps, c)):
+            problems.append('look %s names no component folder (header: Look "%s" -> <Pascal>)' % (l, l))
+    for l in sorted(set(specs) - set(looks)):
+        problems.append('look %s has specimens but its renderer assets/src/blocks/look-%s.js is gone: looks are never deleted (restore it: python tools/specimens.py restore %s <commit>)' % (l, l, l))
+    import hashlib
+    unrecorded = []
     # Page files. An intent that ticks no option on the linked form is a problem (DR-014, intent_problems): it was a
     # content warning while the page passes rewrote the forms and their intents, and is one again now none is left.
     pdir = os.path.join(ROOT, 'content', 'pages')
@@ -957,6 +1071,14 @@ def check(show_budgets=False, only=None, show_warnings=False):
         if f.endswith('.json'):
             pg = json.load(open(os.path.join(pdir, f), encoding='utf8'))
             pages[pg['id']] = pg
+    for pid, pg in pages.items():
+        for i, b in enumerate(pg.get('blocks') or []):
+            if isinstance(b, dict) and b.get('look'):
+                h = hashlib.sha1(json.dumps(b, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf8')).hexdigest()[:10]
+                if not any(x.get('hash') == h for x in (specs.get(b['look']) or {}).get('instances', [])):
+                    unrecorded.append('%s block %d (%s)' % (pid, i, b['look']))
+    if unrecorded:
+        problems.append('content not in the section library yet, run python tools/specimens.py snapshot: ' + ', '.join(unrecorded[:6]) + (' and %d more' % (len(unrecorded) - 6) if len(unrecorded) > 6 else ''))
     for pid, pg in pages.items():
         c = pg.get('cta') or {}
         # Closing proof: explicit {v, l}, a confirmed figure (no [placeholder]); nothing is taken from the hero facts
@@ -996,7 +1118,7 @@ def check(show_budgets=False, only=None, show_warnings=False):
     node = shutil.which('node')
     if node:
         import subprocess
-        for rel in ('aquemi-site.js', 'motion.js'):
+        for rel in ('aquemi-site.js', 'motion.js', 'library.js', 'library-motion.js'):
             js = os.path.join(ROOT, 'assets', rel)
             r = subprocess.run([node, '--check', js], capture_output=True, text=True)
             if r.returncode:
@@ -1011,9 +1133,12 @@ def stage(dest):
     if os.path.exists(out):
         shutil.rmtree(out)
     n = 0
+    lib = tuple('components/%s/' % c for c in library_components())
     for base, _, files in os.walk(DS):
         for f in files:
             rel = os.path.relpath(os.path.join(base, f), DS).replace('\\', '/')
+            if rel.startswith(lib) or rel.startswith('specimens/') or rel in ('section-library.md', 'components/bundle-library.css'):
+                continue  # retired components live in the section library (sections.html), not the Claude design system
             if rel in NOT_PUBLISHED or rel.startswith('inspiration/') or rel.endswith('/style.css') or rel.endswith('/motion.js') or rel == 'components/base.css':
                 continue  # inspiration images carry invented branding; style sources are already in bundle.css
             target = os.path.join(out, rel)

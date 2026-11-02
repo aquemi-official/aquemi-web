@@ -1,0 +1,95 @@
+{
+ "look": "plan-checker",
+ "component": "PlanChecker",
+ "type": "table",
+ "fields": "(as: \"plans\"): cols [label, plan…] (a head may be {t, intent}), rows; the row whose label starts \"Suits\" goes in the head tile; fold (terms shown first), fold_noun; recommend (only when the page says so).",
+ "best_for": "PlanChecker compares service plans as a checker of square tiles on limestone: one column per plan alternating navy and limestone, a head tile with a huge light slash numeral, the plan name and who it suits, a terms tile whose rows line up across the plans, and each plan's own button.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-service",
+   "slot": 0,
+   "h": "Service plans: response, scope, price",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "ad809ca9a6",
+   "block": {
+    "type": "table",
+    "look": "plan-checker",
+    "as": "plans",
+    "nav": "Plans",
+    "h": "Service plans: response, scope, price",
+    "intro": "Severity 1: production stopped or water out of specification; severity 2: alarm, reduced capacity or adverse trend.",
+    "cols": [
+     "",
+     "[tier 1 plan name]",
+     "[tier 2 plan name]",
+     "[tier 3 plan name]",
+     "No plan"
+    ],
+    "rows": [
+     [
+      "Suits",
+      "Own team and standby",
+      "Production depends on this system",
+      "No standby, little ride-through",
+      "Own team and spares"
+     ],
+     [
+      "Price · minimum term",
+      "[annual price, CAD] · [minimum term, months]",
+      "[annual price, CAD] · [minimum term, months]",
+      "[annual price, CAD] · [minimum term, months]",
+      "[call-out and hourly rates, CAD] · none"
+     ],
+     [
+      "On site, severity 1 · 2, inside [service coverage area]",
+      "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+      "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+      "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+      "Next available technician"
+     ],
+     [
+      "Visits a year · calibration",
+      "[visits per year] · [calibration interval, months]",
+      "[visits per year] · [calibration interval, months]",
+      "[visits per year] · [calibration interval, months]",
+      "On request"
+     ],
+     [
+      "Phone · remote diagnosis",
+      "[service phone hours] · [remote response time, hours]",
+      "[service phone hours] · [remote response time, hours]",
+      "[service phone hours] · [remote response time, hours]",
+      "[service phone hours] · best effort"
+     ],
+     [
+      "Critical spares",
+      "Recommended list only",
+      "[kit held at Aquemi or on site]",
+      "[kit on site, replenished after use]",
+      "Quoted per order"
+     ],
+     [
+      "Unplanned repairs",
+      "[labour discount, %]",
+      "[labour discount, %]",
+      "[repair parts and labour terms]",
+      "Charged in full"
+     ],
+     [
+      "Annual system review",
+      "No",
+      "Yes",
+      "Yes, with a trend review meeting",
+      "No"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "terms"
+   }
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "look": "exploded-service",
+ "component": "ExplodedService",
+ "type": "grid",
+ "fields": "h, items [{t, d, icon, link, part}]. part: which part the leader points at: \"impeller\", \"motor\" or \"tag\" (default in that order). Best for exactly three items.",
+ "best_for": "ExplodedService pins a few service promises to an exploded view of the part that service keeps running: a centrifugal pump drawn apart along its shaft on a light drawing sheet, with a leader from three of its parts to the promises.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "home",
+   "slot": 3,
+   "h": "Service after handover",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "c887c9cdf9",
+   "block": {
+    "type": "grid",
+    "h": "Service after handover",
+    "ground": "light",
+    "items": [
+     {
+      "t": "Your change control",
+      "d": "Like-for-like parts, or the change goes through your change control first.",
+      "icon": "stamp",
+      "link": "svc-service"
+     },
+     {
+      "t": "Running cost",
+      "d": "Service plans from [lowest plan price, CAD per year], plus consumables and energy.",
+      "icon": "wrench",
+      "link": "svc-service#running-cost"
+     },
+     {
+      "t": "Signed record",
+      "d": "A signed report after each visit, for your quality records.",
+      "icon": "binder",
+      "link": "svc-service"
+     }
+    ],
+    "look": "exploded-service"
+   }
+  }
+ ]
+}

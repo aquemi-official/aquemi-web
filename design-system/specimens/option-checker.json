@@ -1,0 +1,62 @@
+{
+ "look": "option-checker",
+ "component": "OptionChecker",
+ "type": "options",
+ "fields": "h, items [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the option sets; none: no part lights).",
+ "best_for": "OptionChecker sets an options block as a Swiss grid: a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile of the control system, beside the section title set large and the options as cells under huge light slash numerals.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-monitoring",
+   "slot": 4,
+   "h": "Options",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "2a926ba1f1",
+   "block": {
+    "type": "options",
+    "h": "Options",
+    "items": [
+     {
+      "t": "PLC and SCADA platform",
+      "d": "[PLC and SCADA platforms supported].",
+      "spot": "cpu",
+      "part": "plc"
+     },
+     {
+      "t": "Historian and Part 11 boundary",
+      "d": "Our historian, or your validated plant historian with ours as a buffer.",
+      "spot": "database",
+      "part": "historian"
+     },
+     {
+      "t": "Remote access",
+      "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
+      "spot": "network",
+      "part": "remote"
+     },
+     {
+      "t": "Integration",
+      "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant systems.",
+      "spot": "pid",
+      "part": "bus"
+     },
+     {
+      "t": "Control panels",
+      "d": "Built to [panel standard] and marked to [panel certification mark held, or field evaluation used].",
+      "spot": "monitor",
+      "link": "compliance#engineering",
+      "part": "panel"
+     }
+    ],
+    "nav": "Options",
+    "fold_noun": "options",
+    "as": "modules",
+    "base": "Controls",
+    "look": "option-checker"
+   }
+  }
+ ]
+}

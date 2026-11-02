@@ -1,0 +1,51 @@
+{
+ "look": "cutover-schedule",
+ "component": "CutoverSchedule",
+ "type": "steps",
+ "fields": "(a steps block with holds): h, items [{t, d, hold, link}], ground, lane (optional: the water line's label, a drawing label, aria-hidden). A link makes the step's name the link.",
+ "best_for": "CutoverSchedule sets how an upgrade runs as a schedule: each step a row with its bar on one shared, not-to-scale timeline, a hold diamond where someone signs, and your system's water line above, broken only at the step that names a planned shutdown.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-upgrades",
+   "slot": 4,
+   "h": "How an upgrade runs",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "ed32954",
+   "hash": "c85537bfed",
+   "block": {
+    "type": "steps",
+    "look": "cutover-schedule",
+    "ground": "light",
+    "nav": "How it runs",
+    "h": "How an upgrade runs",
+    "items": [
+     {
+      "t": "System assessment",
+      "d": "On site, then a costed options report in [report turnaround, working days]."
+     },
+     {
+      "t": "Change control",
+      "d": "We draft the change request’s technical content.",
+      "hold": "Your quality unit"
+     },
+     {
+      "t": "Design, build, test",
+      "d": "A factory acceptance test (FAT) of modules and software keeps site work short."
+     },
+     {
+      "t": "Cutover",
+      "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested."
+     },
+     {
+      "t": "Requalification",
+      "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures."
+     }
+    ],
+    "lane": "Your system"
+   }
+  }
+ ]
+}

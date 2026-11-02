@@ -1,0 +1,60 @@
+/* ---------- CapaRing: a defect's way from hold to close as one ring that closes (look "capa-ring"), on a navy ground
+   (aq-band--navy). The steps sit in three rows a side of the ring; each row lines up with its node, joined by a
+   leader. Lines on-navy-muted, the water and lit nodes flow (lightened towards on-navy so it reads on navy). ---------- */
+.aq-capa-ring-sec { position: relative; }
+.aq-capa-ring { --ring: calc(var(--space-32) * 3.5); --fl: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); position: relative; }
+.aq-capa-ring__fig { position: absolute; left: 50%; top: 0; width: var(--ring, var(--space-32)); height: var(--ring, var(--space-32)); transform: translateX(-50%); }
+.aq-capa-ring__svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-capa-ring__far { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 25%, transparent); stroke-width: 1; }
+.aq-capa-ring__tick { stroke: color-mix(in srgb, var(--on-navy-muted) 45%, transparent); stroke-width: 1; }
+.aq-capa-ring__base { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 35%, transparent); stroke-width: 1.5; }
+.aq-capa-ring__flow { fill: none; stroke: var(--fl, var(--flow)); stroke-width: 3; stroke-linecap: round; }
+.aq-capa-ring__lead { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 50%, transparent); stroke-width: 1; stroke-dasharray: 2 4; }
+.aq-capa-ring__dot { fill: var(--navy); stroke: var(--fl, var(--flow)); stroke-width: 2; transition: fill 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-capa-ring__no { font: 500 13px var(--font-mono); fill: var(--on-navy); transition: fill 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-capa-ring__valve { fill: none; stroke: var(--on-navy); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-capa-ring__node.is-hover .aq-capa-ring__dot { fill: var(--fl, var(--flow)); }
+.aq-capa-ring__node.is-hover .aq-capa-ring__no { fill: var(--navy); }
+.aq-capa-ring__node.is-hover .aq-capa-ring__valve { stroke: var(--navy); }
+.aq-capa-ring__node.is-hover .aq-capa-ring__lead { stroke: var(--fl, var(--flow)); stroke-dasharray: none; }
+.aq-capa-ring__core {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font: 300 72px/1 var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy);
+}
+
+/* the steps: three rows a side, the ring's column empty */
+.aq-capa-ring__steps {
+  position: relative; list-style: none; margin: 0; padding: 0; display: grid; min-height: var(--ring, var(--space-32));
+  grid-template-columns: minmax(0, 1fr) var(--ring, var(--space-32)) minmax(0, 1fr); grid-template-rows: repeat(var(--rows, 3), minmax(0, 1fr)); column-gap: var(--space-6);
+}
+.aq-capa-ring__step { grid-row: var(--row, 1); align-self: center; max-width: 40ch; padding-block: var(--space-2); }
+.aq-capa-ring__step.is-r { grid-column: 3; }
+.aq-capa-ring__step.is-l { grid-column: 1; justify-self: end; text-align: right; }
+.aq-capa-ring__n { display: block; font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy-muted); }
+.aq-capa-ring__t { margin: var(--space-1) 0 var(--space-2); font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); }
+.aq-capa-ring__t a { color: inherit; }
+.aq-capa-ring__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; }
+.aq-capa-ring__hold { display: inline-flex; gap: var(--space-2); align-items: baseline; margin: var(--space-3) 0 0; padding: var(--space-1) var(--space-3); border: 1.5px solid var(--limestone); font: 500 12px/18px var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy); }
+.aq-capa-ring__hk { text-transform: uppercase; letter-spacing: 0.08em; color: var(--limestone); }
+
+@media (prefers-reduced-motion: reduce) { .aq-capa-ring__dot, .aq-capa-ring__no { transition: none; } }
+
+@container (max-width: 1100px) {
+  .aq-capa-ring { --ring: calc(var(--space-32) * 2.75); }
+  .aq-capa-ring__t { font-size: 21px; line-height: 27px; }
+  .aq-capa-ring__d { font-size: 14px; line-height: 21px; }
+}
+@container (max-width: 860px) {
+  .aq-capa-ring { --ring: min(calc(var(--space-32) * 2.25), 76cqi); }
+  .aq-capa-ring__fig { position: relative; left: auto; transform: none; margin: 0 auto var(--space-8); }
+  .aq-capa-ring__lead { display: none; }
+  .aq-capa-ring__core { font-size: 44px; }
+  .aq-capa-ring__steps { display: block; min-height: 0; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+  .aq-capa-ring__step, .aq-capa-ring__step.is-l {
+    display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); max-width: none; text-align: left;
+    padding: var(--space-4) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
+  }
+  .aq-capa-ring__n { grid-row: 1 / span 3; padding-top: var(--space-1); }
+  .aq-capa-ring__t { margin-top: 0; font-size: 20px; line-height: 26px; }
+  .aq-capa-ring__hold { justify-self: start; }
+}

@@ -1,0 +1,63 @@
+/* ---------- NumeralIndex: a router as a Swiss index of situations under huge light outline numerals ---------- */
+.aq-numeral-index-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 18ch; }
+.aq-numeral-index { list-style: none; margin: var(--space-8) 0 0; padding: 0; counter-reset: none; }
+.aq-numeral-index__row { position: relative; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 6fr) minmax(0, 3fr);
+  column-gap: var(--space-8); align-items: start; padding: var(--space-8) 0; }
+.aq-numeral-index__row:last-child { border-bottom: 1px solid var(--line-strong); }
+.aq-numeral-index__rule { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-strong); transform-origin: 0 50%; }
+.aq-numeral-index__rule::after { content: ""; position: absolute; inset: 0; background: var(--flow); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 500ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-numeral-index__row:hover .aq-numeral-index__rule::after, .aq-numeral-index__row:focus-within .aq-numeral-index__rule::after { transform: scaleX(1); }
+
+/* The numeral: Geist Light, outlined in line-strong, filled with flow when the row is active */
+.aq-numeral-index__n { display: block; overflow: hidden; margin-top: calc(var(--space-2) * -1); font: 300 128px/104px var(--font-sans); letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums; color: transparent; -webkit-text-stroke: 1.5px var(--line-strong); }
+.aq-numeral-index__n > span { display: block; transition: color 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-numeral-index__row:hover .aq-numeral-index__n > span, .aq-numeral-index__row:focus-within .aq-numeral-index__n > span { color: var(--flow); }
+.aq-numeral-index__row:hover .aq-numeral-index__n, .aq-numeral-index__row:focus-within .aq-numeral-index__n { -webkit-text-stroke-color: var(--flow); }
+
+.aq-numeral-index__body { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; padding-top: var(--space-1); }
+.aq-numeral-index__t { margin: 0; font: 300 32px/40px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); max-width: 22ch; }
+.aq-numeral-index__need { margin: 0; display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: var(--space-4);
+  padding-top: var(--space-3); border-top: 1px solid var(--line); font: 400 17px/26px var(--font-sans); color: var(--ink-muted); max-width: 40rem; }
+.aq-numeral-index__k { font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* The go-cell: a square tile, page icon, the start page, an arrow that runs on hover */
+.aq-numeral-index__go { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr auto; gap: var(--space-3) var(--space-3);
+  min-height: calc(var(--space-32) + var(--space-8)); margin: 0; padding: var(--space-4); border: 1px solid var(--line-strong); color: var(--ink); text-decoration: none;
+  background: var(--surface-raised); transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms cubic-bezier(0.2, 0, 0, 1), color 300ms; }
+.aq-numeral-index__go .aq-numeral-index__k { grid-column: 1 / -1; }
+.aq-numeral-index__ic { grid-row: 3; grid-column: 1; width: var(--space-8); height: var(--space-8); background-color: var(--ink-muted); align-self: end; }
+.aq-numeral-index__to { grid-column: 1 / -1; grid-row: 2; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-numeral-index__arrow { grid-row: 3; grid-column: 2; justify-self: end; align-self: end; position: relative; width: var(--space-12); height: var(--space-4); }
+.aq-numeral-index__arrow::before { content: ""; position: absolute; left: 0; right: 1px; top: 50%; height: 1.5px; background: currentColor; transform-origin: 100% 50%;
+  transform: scaleX(0.5); transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-numeral-index__arrow::after { content: ""; position: absolute; right: 1px; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor; transform: translateY(-50%) rotate(45deg); transform-origin: 75% 25%; }
+.aq-numeral-index__go:hover, .aq-numeral-index__go:focus-visible { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.aq-numeral-index__go:hover .aq-numeral-index__k, .aq-numeral-index__go:focus-visible .aq-numeral-index__k { color: var(--on-navy-muted); }
+.aq-numeral-index__go:hover .aq-numeral-index__ic, .aq-numeral-index__go:focus-visible .aq-numeral-index__ic { background-color: var(--limestone); }
+.aq-numeral-index__go:hover .aq-numeral-index__arrow::before, .aq-numeral-index__go:focus-visible .aq-numeral-index__arrow::before { transform: scaleX(1); }
+.aq-numeral-index__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-numeral-index__go.is-flat { border-style: dashed; background: transparent; }
+
+@container (max-width: 1100px) {
+  .aq-numeral-index__row { grid-template-columns: minmax(0, 2fr) minmax(0, 7fr); row-gap: var(--space-6); }
+  .aq-numeral-index__go { grid-column: 2; min-height: 0; grid-template-rows: auto auto; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; }
+  .aq-numeral-index__go .aq-numeral-index__k { grid-column: 1 / -1; }
+  .aq-numeral-index__ic { grid-row: 2; align-self: center; }
+  .aq-numeral-index__to { grid-row: 2; grid-column: 2; }
+  .aq-numeral-index__arrow { grid-row: 2; grid-column: 3; align-self: center; }
+}
+
+/* Phones: numeral over the row, need stacked, go-cell full width */
+@container (max-width: 860px) {
+  .aq-numeral-index-sec .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-numeral-index { margin-top: var(--space-4); }
+  .aq-numeral-index__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); padding: var(--space-6) 0; }
+  .aq-numeral-index__n { font-size: 72px; line-height: 60px; margin-top: 0; }
+  .aq-numeral-index__t { font-size: 24px; line-height: 32px; }
+  .aq-numeral-index__need { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); font-size: 16px; line-height: 24px; }
+  .aq-numeral-index__go { grid-column: 1; }
+  .aq-numeral-index__to { font-size: 17px; line-height: 24px; }
+}

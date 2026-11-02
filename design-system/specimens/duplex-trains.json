@@ -1,0 +1,75 @@
+{
+ "look": "duplex-trains",
+ "component": "DuplexTrains",
+ "type": "options",
+ "fields": "as options (modules): h, base, items [{t, d, spot, link}], fold, fold_noun (phones only).",
+ "best_for": "DuplexTrains sets a redundancy options block as a huge light heading beside a framed drawing of two identical generation trains, a switch that swaps which train is in service, and the options as numbered cards in one band over a navy strip.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-cdmo",
+   "slot": 2,
+   "h": "Redundancy that keeps clients supplied",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "6db6a8bcf4",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "nav": "Redundancy",
+    "h": "Redundancy that keeps clients supplied",
+    "base": "Shared site loop",
+    "items": [
+     {
+      "t": "Duplex generation",
+      "spot": "ro-skid",
+      "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
+      "part": "trains"
+     },
+     {
+      "t": "N+1 pumps",
+      "spot": "pump",
+      "d": "Standby pump on each loop, automatic changeover: [duty and standby pumps, standard or option].",
+      "part": "pumps"
+     },
+     {
+      "t": "Storage autonomy",
+      "spot": "storage-tank",
+      "d": "Tank sized from peak demand and your longest credible repair, in hours of supply.",
+      "part": "tank"
+     },
+     {
+      "t": "Sanitize between campaigns",
+      "spot": "heat-exchanger",
+      "d": "[PP loop sanitization method] in campaign gaps, residual tested before use; duplex trains sanitized one at a time.",
+      "link": "sys-storage#sanitization",
+      "part": "sanitize"
+     },
+     {
+      "t": "Spares on your site",
+      "spot": "wrench",
+      "d": "Critical spares on a service plan: [kit on site, replenished after use].",
+      "link": "svc-service",
+      "part": "spares"
+     },
+     {
+      "t": "Room for new programs",
+      "spot": "pid",
+      "d": "Spare skid space and valved tie-ins for expected programs, qualified with the original system.",
+      "part": "tiein"
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "options",
+    "look": "duplex-trains",
+    "trains": [
+     "runs",
+     "sanitized",
+     "Swap trains"
+    ]
+   }
+  }
+ ]
+}

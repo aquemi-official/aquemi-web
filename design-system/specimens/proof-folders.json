@@ -1,0 +1,84 @@
+{
+ "look": "proof-folders",
+ "component": "ProofFolders",
+ "type": "table",
+ "fields": "as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}), fold, fold_noun. The code on the tab and the stamp is the standard cell up to its number (\"USP <645>\", \"Ph. Eur. 0008\"), else its first word (\"EMA\"); the rest of the cell is the standard's title under it.",
+ "best_for": "ProofFolders shows an evidence table as a drawer of manila folders, one per standard: the standard set large beside its folder, what we design to typed on a slip, the proof as clipped sheets struck with a stamp of the standard's code, and where we show it as the folder's navy index label.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "compliance",
+   "slot": 2,
+   "h": "Pharmacopoeias and their proof",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "0344d1d87e",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Pharmacopoeia",
+    "anchor": "pharmacopoeia",
+    "look": "proof-folders",
+    "ground": "light",
+    "h": "Pharmacopoeias and their proof",
+    "cols": [
+     "Standard",
+     "What we design to",
+     "Proof",
+     "Where we show it"
+    ],
+    "rows": [
+     [
+      "USP <645> Water conductivity",
+      "Stage 1, uncompensated; cell constant ± 2 %, instrument ± 0.1 µS/cm",
+      "Calibration certificates; FAT, SAT and OQ uncompensated readings",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "USP <643> Total organic carbon",
+      "System suitability: response efficiency 85 % to 115 %",
+      "Suitability records; analyzer calibration; OQ report",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Ph. Eur. 0008 Purified water",
+      "As revised in 12.3, in force 1 July 2026",
+      "Functional specification",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ],
+     [
+      "USP <1231> Water for pharmaceutical purposes (informational)",
+      "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Hot water: [maximum loop sanitization temperature for PP, °C]",
+      "Sampling plan; alert and action level rationale",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "EMA guideline on water for pharmaceutical use",
+      "PW minimum for most non-sterile dosage forms; WFI, which we do not supply, for parenterals",
+      "Water grade per point of use in the basis of design",
+      {
+       "t": "Pharmaceutical",
+       "link": "ind-pharma"
+      }
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "standards"
+   }
+  }
+ ]
+}

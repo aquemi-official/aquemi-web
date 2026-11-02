@@ -1,0 +1,138 @@
+{
+ "look": "signal-dial",
+ "component": "SignalDial",
+ "type": "spec",
+ "fields": "h, caption (eyebrow, as SpecTable prints it), cols [signal, value, basis], rows [{p, v, m, link, link_label, intent}], note, fold, fold_noun. Desktop shows every row; the fold applies on phones.",
+ "best_for": "SignalDial sets a spec block of signals as the instrument schedule (the real table) beside one multi-channel transmitter dial whose bezel turns to the chosen signal and reads it out: channel number large and light, the signal's name, a limit line, the design value and the basis on an outlined tag.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-monitoring",
+   "slot": 2,
+   "h": "Sensors and signals",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "340a8e1cf8",
+   "block": {
+    "type": "spec",
+    "h": "Sensors and signals",
+    "caption": "MONITORING · WHO TRS 1033",
+    "cols": [
+     "Signal",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "TOC analyzer",
+      "v": "Online; system suitability 85 % to 115 %",
+      "m": "USP <643>",
+      "at": [
+       37.4,
+       46.9
+      ]
+     },
+     {
+      "p": "Conductivity cell",
+      "v": "Cell constant ± 2 %; ± 0.1 µS/cm; temperature ± 2 °C",
+      "m": "USP <645>, uncompensated",
+      "at": [
+       49.4,
+       57.7
+      ]
+     },
+     {
+      "p": "Temperature",
+      "v": "Generation, tank, loop supply and return, coldest sanitization point",
+      "at": [
+       48.9,
+       41.1
+      ]
+     },
+     {
+      "p": "Divert",
+      "v": "Setpoint below your alert level; to drain or recirculation",
+      "m": "Value, time and duration recorded",
+      "at": [
+       72.9,
+       37.7
+      ]
+     },
+     {
+      "p": "Flow and pressure",
+      "v": "Return flow ≥ [qualified minimum return flow, L/h], alarmed",
+      "m": "WHO TRS 1033, 8.6 and 12.3",
+      "at": [
+       57.4,
+       69.7
+      ]
+     },
+     {
+      "p": "Ultraviolet (UV) units, where fitted",
+      "v": "Intensity at 254 nm, lamp hours, lamp failure"
+     },
+     {
+      "p": "Data recording",
+      "v": "Every quality value at [recording interval, seconds], time-stamped",
+      "m": "One site time source"
+     }
+    ],
+    "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
+    "nav": "Measurements",
+    "fold": 5,
+    "fold_noun": "signals",
+    "as": "callouts",
+    "look": "signal-dial"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 2,
+   "h": "Instrument calibration",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "3db2e55236",
+   "block": {
+    "type": "spec",
+    "look": "signal-dial",
+    "nav": "Calibration",
+    "h": "Instrument calibration",
+    "cols": [
+     "Instrument",
+     "Check and acceptance",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Conductivity cell and transmitter",
+      "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
+      "m": "USP <645>",
+      "hl": true
+     },
+     {
+      "p": "Online total organic carbon (TOC) analyzer",
+      "v": "System suitability: response efficiency 85 % to 115 %",
+      "m": "USP <643>; Ph. Eur. 2.2.44"
+     },
+     {
+      "p": "Temperature, pressure, flow and level",
+      "v": "Across the working range",
+      "m": "GUI-0001 C.02.005; 21 CFR 211.68"
+     },
+     {
+      "p": "UV lamp intensity [UV, standard or option]",
+      "v": "Against a reference sensor or the maker’s method",
+      "m": "Maker’s procedure"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "instruments",
+    "note": "Certificates show as-found and as-left values. Calibrated by [calibration provider and accreditation held]."
+   }
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+/* ---------- SparesKit: like-for-like rules on a spares tray (look "spares-kit") ----------
+   The tray is one panel on surface-sunken with a line-strong frame; pockets are cells on a 4-column grid divided by
+   hairlines. Each pocket's cut-out is the part's own outline drawn thick in a deeper sunken tone (a shadow-board
+   silhouette); the part sits in it in 1.5 px ink line art on a raised fill, flow only for a lamp's arc, a card's chip
+   or an LED. Under it the part name and the rules as a definition list: "=" like for like, "≠" a change, "→" what
+   follows, each symbol in a mono square. The last cell is the key. Hover lifts the part out of its pocket. */
+.aq-spares-kit { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--surface-sunken); border: 1px solid var(--line-strong); }
+.aq-fold:not(.is-open) .aq-spares-kit .aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-spares-kit) > .aq-fold__btn { display: none; }
+.aq-spares-kit__slot, .aq-spares-kit__key { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-6); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.aq-spares-kit__slot:nth-child(4n), .aq-spares-kit__key:nth-child(4n) { border-right: 0; }
+.aq-spares-kit__well { position: relative; margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) var(--space-2); padding: var(--space-4) var(--space-2); background: color-mix(in srgb, var(--surface-sunken) 70%, var(--line)); }
+.aq-spares-kit__art { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-spares-kit__pocket * { fill: color-mix(in srgb, var(--surface-sunken) 30%, var(--line-strong)); stroke: color-mix(in srgb, var(--surface-sunken) 30%, var(--line-strong)); stroke-width: 12; stroke-linejoin: round; stroke-linecap: round; opacity: 0.32; }
+.aq-spares-kit__part { transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-spares-kit__part * { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-spares-kit__part rect, .aq-spares-kit__part circle, .aq-spares-kit__part path:first-child { fill: var(--surface-raised); }
+.aq-spares-kit__part .k-t { stroke-width: 1; stroke: var(--ink-muted); fill: none; }
+.aq-spares-kit__part .k-a { stroke: var(--flow); fill: none; }
+.aq-spares-kit__part rect.k-a { fill: var(--flow-tint); }
+.aq-spares-kit__slot:hover .aq-spares-kit__part { transform: translate(-3px, -6px); }
+.aq-spares-kit__n { position: absolute; left: var(--space-2); top: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
+.aq-spares-kit__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.aq-spares-kit__rules { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-spares-kit__rule dt { display: flex; align-items: center; gap: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-spares-kit__rule dd { margin: var(--space-1) 0 0 calc(var(--space-6) + var(--space-2)); font: 400 14px/20px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-spares-kit__sym { flex: none; display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border: 1px solid var(--line-strong); font: 500 14px/1 var(--font-mono); color: var(--ink); text-transform: none; }
+.aq-spares-kit__rule--change .aq-spares-kit__sym { border-color: var(--ink); background: var(--surface-raised); }
+.aq-spares-kit__rule--then .aq-spares-kit__sym { border-color: var(--flow); color: var(--flow); }
+.aq-spares-kit__rule--then dd { color: var(--ink-muted); }
+.aq-spares-kit__key { justify-content: flex-end; background: transparent; }
+.aq-spares-kit__keyh { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-spares-kit__keyr { display: flex; align-items: center; gap: var(--space-2); margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-spares-kit__keyr:nth-of-type(3) .aq-spares-kit__sym { border-color: var(--ink); background: var(--surface-raised); }
+.aq-spares-kit__keyr:nth-of-type(4) .aq-spares-kit__sym { border-color: var(--flow); color: var(--flow); }
+
+@container (max-width: 1080px) {
+  .aq-spares-kit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-spares-kit__slot:nth-child(4n), .aq-spares-kit__key:nth-child(4n) { border-right: 1px solid var(--line); }
+  .aq-spares-kit__slot:nth-child(2n), .aq-spares-kit__key:nth-child(2n) { border-right: 0; }
+}
+@container (max-width: 860px) {
+  .aq-spares-kit { grid-template-columns: minmax(0, 1fr); }
+  .aq-fold:not(.is-open) .aq-spares-kit .aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-spares-kit) > .aq-fold__btn { display: flex; }
+  .aq-spares-kit__slot { padding: var(--space-4); border-right: 0; }
+  .aq-spares-kit__well { margin: 0 0 var(--space-1); padding: var(--space-2) var(--space-8); }
+  .aq-spares-kit__t { font-size: 22px; line-height: 28px; }
+  .aq-spares-kit__key { display: none; }
+}
+.aq-spares-kit-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
+@container (max-width: 860px) { .aq-spares-kit-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }

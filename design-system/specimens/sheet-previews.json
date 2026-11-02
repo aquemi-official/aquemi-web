@@ -1,0 +1,52 @@
+{
+ "look": "sheet-previews",
+ "component": "SheetPreviews",
+ "type": "docs",
+ "fields": "h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label, intent.",
+ "best_for": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "sys-pretreatment",
+   "slot": 4,
+   "h": "Documents delivered",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "ae1cda6",
+   "hash": "1f5f7f4e00",
+   "block": {
+    "type": "docs",
+    "h": "Documents delivered",
+    "key": 2,
+    "items": [
+     {
+      "t": "Feed water review and design basis",
+      "d": "Data used, design months and RO inlet targets",
+      "sheet": "basis"
+     },
+     {
+      "t": "Membrane projections",
+      "d": "At coldest and warmest feed",
+      "sheet": "curves"
+     },
+     {
+      "t": "Functional specification",
+      "d": "Regeneration, backwash, alarms and interlocks",
+      "sheet": "logic"
+     },
+     {
+      "t": "Media, resin and material certificates",
+      "d": "Lot numbers; [certificates supplied for PVC parts]",
+      "sheet": "certificate"
+     }
+    ],
+    "nav": "Documents",
+    "fold_noun": "documents",
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "look": "sheet-previews"
+   }
+  }
+ ]
+}

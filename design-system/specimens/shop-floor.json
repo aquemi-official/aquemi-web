@@ -1,0 +1,88 @@
+{
+ "look": "shop-floor",
+ "component": "ShopFloor",
+ "type": "table",
+ "fields": "a grid block (h, intro, items [{t, d, link, station}]) or a table block (h, intro, cols, rows: the first cell is the card title, the others are labelled with their column name).",
+ "best_for": "ShopFloor places the company's people or roles where their work happens, as numbered stations on one isometric plan of the shop with a walking route through them, so a reader sees the shop and who works where before reading the cards.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "careers",
+   "slot": 0,
+   "h": "Roles, base and pay",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "d7db391",
+   "hash": "8060e018b7",
+   "block": {
+    "type": "table",
+    "nav": "Roles",
+    "anchor": "roles",
+    "h": "Roles, base and pay",
+    "cols": [
+     "Role",
+     "What you do",
+     "Must have",
+     "Base and travel",
+     "Pay and opening"
+    ],
+    "rows": [
+     [
+      "Process engineer",
+      "Size systems from pretreatment to the loop, draw piping and instrumentation diagrams (P&IDs), design to USP <1231>",
+      "Chemical or mechanical engineering degree; P.Eng. or ing., or eligible, in [provinces of licence]; [minimum years]",
+      "[head office, city and province] · [hybrid days per week] · travel [% of working days]",
+      "[process engineer pay range, CAD per year] · [status, posting reference]"
+     ],
+     [
+      "[PP fabrication job title]",
+      "Build PP skids and piping by [PP joining method], with [PP joint records kept]",
+      "Qualified to [welder qualification standard for thermoplastics], or pass a test joint at interview",
+      "[shop location, city and province] · travel [% of working days]",
+      "[PP fabrication role pay range, CAD per hour] · [status, posting reference]"
+     ],
+     [
+      "Validation specialist",
+      "Run factory and site acceptance tests (FAT, SAT); execute installation and operational qualification (IQ/OQ); close deviations; assemble turnover packages",
+      "Science or engineering degree or diploma; [minimum years] executing protocols under good manufacturing practice (GMP)",
+      "[validation base, city and province] · travel [% of working days]",
+      "[validation specialist pay range, CAD per year] · [status, posting reference]"
+     ],
+     [
+      "Controls and automation engineer",
+      "Program PLCs (programmable logic controllers) and operator panels; build audit trails to 21 CFR Part 11; test to GAMP 5",
+      "Engineering degree or technologist diploma; [PLC and SCADA platforms supported]",
+      "[head office, city and province] · travel [% of working days]",
+      "[controls engineer pay range, CAD per year] · [status, posting reference]"
+     ],
+     [
+      "Field service technician",
+      "Commission, maintain, calibrate conductivity and total organic carbon (TOC) instruments, run sanitizations on site",
+      "Instrumentation or millwright trade or diploma; driver's licence",
+      "[service bases, cities] · travel [% of working days] · on call [on-call rota]",
+      "[field service technician pay range, CAD per hour] · [status, posting reference]"
+     ],
+     [
+      "Quality specialist",
+      "Document control, nonconformances and corrective and preventive action (CAPA); review fabrication records; host audits",
+      "Degree or diploma; [minimum years] in manufacturing quality",
+      "[shop location, city and province] · travel [% of working days]",
+      "[quality specialist pay range, CAD per year] · [status, posting reference]"
+     ]
+    ],
+    "as": "router",
+    "intro": "A commercial lead and two technical partners run Aquemi; each role says whether it is open.",
+    "look": "shop-floor",
+    "stations": [
+     "design",
+     "fab",
+     "test",
+     "ctl",
+     "dock",
+     "qa"
+    ]
+   }
+  }
+ ]
+}

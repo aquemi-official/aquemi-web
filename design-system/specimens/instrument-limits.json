@@ -1,0 +1,48 @@
+{
+ "look": "instrument-limits",
+ "component": "InstrumentLimits",
+ "type": "spec",
+ "fields": "(as \"gauges\"): h, intro, rows [{p, v, m, level, hl, link, link_label}], note. level: \"action\" (or \"alert\") names the status word and colour.",
+ "best_for": "InstrumentLimits reads a spec block's levels off two instruments: the action level as an analog dial with its red-line, the alert level as a chart recorder whose alert line is drawn from the data (look `instrument-limits`, spec block `as: \"gauges\"`).",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-cq",
+   "slot": 4,
+   "h": "Alert levels come from your data",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "260762c",
+   "hash": "c5f7cd7866",
+   "block": {
+    "type": "spec",
+    "as": "gauges",
+    "nav": "Alert levels",
+    "h": "Alert levels come from your data",
+    "cols": [
+     "Level",
+     "Set at",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Microbial action level",
+      "v": "≤ 100 CFU/mL",
+      "level": "action",
+      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+      "hl": true,
+      "link": "compliance#limits"
+     },
+     {
+      "p": "Alert level",
+      "v": "From phases 1 and 2, confirmed on the year",
+      "m": "WHO TRS 1033, 11.3, 12.7 and 12.8"
+     }
+    ],
+    "note": "CFU: colony-forming units.",
+    "look": "instrument-limits"
+   }
+  }
+ ]
+}

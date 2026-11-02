@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="design-system/tokens.css">
 <link rel="stylesheet" href="design-system/components/bundle.css">
+<link rel="stylesheet" href="design-system/components/bundle-library.css">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/theme.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
@@ -79,6 +80,8 @@ details.src pre { margin: var(--space-2) 0 0; padding: var(--space-3); backgroun
 .blk { display: flex; flex-direction: column; gap: var(--space-3); }
 .blk .stage .aq-section { padding-block: var(--space-8); }
 .err { color: var(--fail); }
+.ret { font: 500 11px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 1px 6px; }
+.ret a { color: var(--flow); }
 @media (max-width: 900px) {
   .doc { grid-template-columns: minmax(0, 1fr); }
   .toc { position: static; max-height: none; flex-direction: row; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
@@ -93,6 +96,7 @@ details.src pre { margin: var(--space-2) 0 0; padding: var(--space-3); backgroun
  <a href="index.html#home" aria-label="Aquemi site"><img class="aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>
  <span class="dh__t">Design system</span><span class="dh__sp"></span>
  <a class="lnk" href="index.html#home">Site</a>
+ <a class="lnk" href="sections.html">Section library</a>
  <a class="lnk" id="artlink" href="https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc">Claude design system</a>
  <a class="lnk" href="https://github.com/Aquemi-Official/aquemi-web/tree/main/design-system">Source on GitHub</a>
  <select id="wtheme" aria-label="Theme"><option value="">System theme</option><option value="light">Light</option><option value="dark">Dark</option></select>
@@ -172,11 +176,12 @@ get('design-system/components.json','json').then(function(M){
  if(M.artifact)$('artlink').href=M.artifact;
  var groups={};M.components.forEach(function(c){var g=c.group||'Other';(groups[g]=groups[g]||[]).push(c)});
  var order=M.groups.filter(function(g){return groups[g]}).concat(Object.keys(groups).filter(function(g){return M.groups.indexOf(g)<0}));
- $('counts').textContent=M.components.length+' components in '+order.length+' groups.';
+ var nr=M.components.filter(function(c){return c.retired}).length;
+ $('counts').textContent=M.components.length+' components in '+order.length+' groups'+(nr?' ('+nr+' retired: drawn only by looks no page uses, kept in the Section library)':'')+'.';
  $('components').innerHTML=order.map(function(g){var id='g-'+g.toLowerCase().replace(/\W+/g,'-');
   return '<section id="'+id+'"><span class="eb">Components</span><h2 class="d1">'+e(g)+'</h2>'+groups[g].map(function(c){
    var base=REPO+'/blob/main/design-system/components/'+c.name+'/';
-   return '<article class="comp" id="c-'+e(c.name)+'"><div class="comp__hd"><h3 class="d1" style="font-size:26px;line-height:32px">'+e(c.name)+'</h3><span class="sm">'+e(c.subtitle||'')+'</span><span class="sp"></span><span class="comp__links"><a href="'+base+'README.md">README</a><a href="'+base+'preview.html">Preview</a><a href="'+base+'style.css">Styles</a></span></div>'+
+   return '<article class="comp" id="c-'+e(c.name)+'"><div class="comp__hd"><h3 class="d1" style="font-size:26px;line-height:32px">'+e(c.name)+'</h3>'+(c.retired?'<span class="ret">Retired · <a href="sections.html#'+e(c.look||'')+'">Section library</a></span>':'')+'<span class="sm">'+e(c.subtitle||'')+'</span><span class="sp"></span><span class="comp__links"><a href="'+base+'README.md">README</a><a href="'+base+'preview.html">Preview</a><a href="'+base+'style.css">Styles</a></span></div>'+
     '<div class="stage"><div class="stage__bar"><span>preview.html</span><button type="button" data-narrow>Phone width</button></div><div class="stage__body" data-preview><p class="sm" style="padding:16px">Loading…</p></div></div>'+
     '<div class="md" data-readme></div><details class="src"><summary>Show preview code</summary><pre data-code></pre></details></article>'}).join('')+'</section>'}).join('');
  order.forEach(function(g){toc(g,groups[g].map(function(c){return ['c-'+c.name,c.name]}))});

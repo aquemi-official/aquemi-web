@@ -1,0 +1,73 @@
+{
+ "look": "site-plates",
+ "component": "SitePlates",
+ "type": "table",
+ "fields": "as a table: cols, rows, fold, fold_noun, nav (the small line under the title), and optional art: one drawing key per row (\"office\", \"shop\", \"service\", \"parts\"; any other key or none draws an empty sheet).",
+ "best_for": "SitePlates sets a table of sites (site, what happens here, address, contact and hours) as a ledger beside one navy drawing plate: the site you point at, focus or choose is drawn on the plate with numbered callouts for what happens there.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "contact-locations",
+   "slot": 1,
+   "h": "Where to find us",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "99edbbbf65",
+   "block": {
+    "type": "table",
+    "anchor": "locations",
+    "nav": "Sites",
+    "h": "Where to find us",
+    "cols": [
+     "Site",
+     "What happens here",
+     "Address",
+     "Contact and hours"
+    ],
+    "rows": [
+     [
+      "Head office, [head office, city and province]",
+      "",
+      "[mailing address]",
+      "[sales phone number] · [sales email] · [office hours, time zone]"
+     ],
+     [
+      {
+       "t": "Shop and test bay, [shop location, city and province]",
+       "link": "svc-fabrication"
+      },
+      "Skid and piping fabrication, FAT",
+      "[shop address] · [map link]",
+      "[shop phone number] · [shop hours, time zone]"
+     ],
+     [
+      {
+       "t": "Service bases, [service bases, cities]",
+       "link": "svc-service"
+      },
+      "Field technicians, [critical spares stock]",
+      "[street address, or home-based technicians]",
+      "[service phone number], [service phone hours] · [service email]"
+     ],
+     [
+      "Parts stock, [stock location or locations]",
+      "Spare parts and consumables, [order cut-off and delivery commitment]",
+      "[street address, or shipped from the shop]",
+      "[parts email address] · [parts desk hours, time zone]"
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "sites",
+    "look": "site-plates",
+    "art": [
+     "office",
+     "shop",
+     "service",
+     "parts"
+    ]
+   }
+  }
+ ]
+}

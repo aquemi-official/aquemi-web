@@ -1,0 +1,61 @@
+/* ---------- FusionBench: the fabrication standard as a shop drawing and its parts list on a navy blueprint band
+   (look "fusion-bench"). The drawing (IsoKit on navy, aq-iso-figure--navy) carries numbered balloons on leaders; the
+   parts list below repeats the numbers. A row being read (hover or focus) lights its balloon, leader and part. ---------- */
+.aq-fusion-bench { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); column-gap: var(--space-8); align-items: start; }
+.aq-fusion-bench__stage { position: sticky; top: var(--space-16); }
+.aq-fusion-bench__fig { position: relative; border: 1px solid color-mix(in srgb, var(--on-navy) 22%, transparent); }
+.aq-fusion-bench__ball {
+  position: absolute; width: var(--space-8); height: var(--space-8); transform: translate(-50%, -50%); display: grid; place-items: center;
+  border-radius: 50%; border: 1.5px solid var(--on-navy-muted); background: var(--navy); color: var(--on-navy);
+  font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; transition: background 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-fusion-bench__ball.is-on { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+.aq-fusion-bench__fig g.is-on .aq-iso__leader-line { stroke: var(--limestone); }
+.aq-fusion-bench__fig g.is-on .aq-iso__leader-dot { fill: var(--limestone); }
+.aq-fusion-bench__cap {
+  display: flex; justify-content: space-between; margin: 0; padding-bottom: var(--space-3); border-bottom: 2px solid var(--on-navy-muted);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy);
+}
+
+/* the parts list */
+.aq-fusion-bench__cols, .aq-fusion-bench__row {
+  display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-1); align-items: baseline;
+}
+.aq-fusion-bench__row > :nth-child(n+3) { grid-column: 2; }
+.aq-fusion-bench .aq-fusion-bench__cols { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); padding-top: var(--space-3); }
+.aq-fusion-bench__cols span + span::before { content: "/"; margin-right: var(--space-3); color: color-mix(in srgb, var(--on-navy) 40%, transparent); }
+.aq-fusion-bench__cols span:first-child { display: none; }
+.aq-fusion-bench__cols span:nth-child(2)::before { content: none; }
+.aq-fusion-bench__cols { padding: 0 0 var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 26%, transparent); }
+.aq-fusion-bench__list { list-style: none; margin: 0; padding: 0; }
+.aq-fusion-bench__row { padding: var(--space-4) var(--space-2) var(--space-4) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 18%, transparent); transition: background 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fusion-bench__row:hover, .aq-fusion-bench__row.is-on { background: color-mix(in srgb, var(--navy) 88%, var(--on-navy)); }
+.aq-fusion-bench__no {
+  justify-self: start; width: var(--space-8); height: var(--space-8); display: grid; place-items: center; border-radius: 50%;
+  border: 1.5px solid var(--on-navy-muted); font: 500 12px/1 var(--font-mono); color: var(--on-navy); align-self: start;
+}
+.aq-fusion-bench__row.is-on .aq-fusion-bench__no { background: var(--limestone); border-color: var(--limestone); color: var(--navy); }
+.aq-fusion-bench__p { margin: 0 0 var(--space-1); font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-fusion-bench__v { margin: 0; font: 400 16px/25px var(--font-sans); color: var(--on-navy); text-wrap: pretty; }
+.aq-fusion-bench__m { margin: 0; font: 400 14px/22px var(--font-mono); color: var(--on-navy-muted); text-wrap: pretty; }
+.aq-fusion-bench__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.aq-fusion-bench .aq-fold__btn { color: var(--on-navy-muted); margin-top: var(--space-6); }
+
+/* Fold: desktop shows the whole parts list (every balloon on the drawing has its row); phones fold */
+.aq-fold:not(.is-open) .aq-fusion-bench__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-fusion-bench__list) > .aq-fold__btn { display: none; }
+
+@container (max-width: 1000px) {
+  .aq-fusion-bench { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-fusion-bench__stage { position: relative; top: 0; }
+}
+@container (max-width: 860px) {
+  .aq-fusion-bench .aq-fusion-bench__cols { display: none; }
+  .aq-fusion-bench__fig { margin-inline: calc(-1 * var(--space-4)); border-inline: 0; }
+  .aq-fusion-bench__ball { width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-fusion-bench__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: block; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); margin-bottom: var(--space-1); }
+  .aq-fold:not(.is-open) .aq-fusion-bench__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-fusion-bench__list) > .aq-fold__btn { display: flex; }
+}
+.aq-section.aq-fusion-bench-sec { overflow-x: clip; }
+.aq-fusion-bench__parts { min-width: 0; }

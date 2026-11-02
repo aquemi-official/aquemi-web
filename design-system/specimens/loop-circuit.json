@@ -1,0 +1,63 @@
+{
+ "look": "loop-circuit",
+ "component": "LoopCircuit",
+ "type": "diagram",
+ "fields": "h, stages (or items) [{t, d, spot | icon, node}]. node: which station of the strip the stage is: gen, tank, pump, hx, pou, sensors, spray (default by position in that order).",
+ "best_for": "LoopCircuit draws how a storage and distribution loop works as one blueprint P&ID strip on a navy band, each station standing over its own numbered caption, under a display-scale headline.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-storage",
+   "slot": 1,
+   "h": "How a loop works",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "d0be80d015",
+   "block": {
+    "type": "diagram",
+    "h": "How a loop works",
+    "stages": [
+     {
+      "t": "From generation",
+      "icon": "droplet",
+      "d": "PW enters the tank under a vent filter."
+     },
+     {
+      "t": "Storage tank",
+      "spot": "storage-tank",
+      "d": "Buffers generation against peak demand and drains fully."
+     },
+     {
+      "t": "Loop pump",
+      "spot": "pump",
+      "d": "Keeps every section turbulent at peak demand."
+     },
+     {
+      "t": "Heat exchanger",
+      "spot": "heat-exchanger",
+      "d": "Holds loop temperature. [heat exchanger, standard or option]"
+     },
+     {
+      "t": "Points of use",
+      "icon": "loop",
+      "d": "Every outlet sits on a short branch, so no water stands."
+     },
+     {
+      "t": "Return sensors",
+      "icon": "conductivity",
+      "d": "Measure the water after the last outlet."
+     },
+     {
+      "t": "Spray ball",
+      "icon": "tank",
+      "d": "Wets the whole tank head so no surface stays dry."
+     }
+    ],
+    "nav": "How it works",
+    "look": "loop-circuit"
+   }
+  }
+ ]
+}

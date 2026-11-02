@@ -1,0 +1,62 @@
+{
+ "look": "limit-bento",
+ "component": "LimitBento",
+ "type": "spec",
+ "fields": "h, caption (eyebrow; also the chip under the intro), intro, rows [{p, v, m, hl, level, icon, alt}], note.",
+ "best_for": "LimitBento sets a page's water-quality limits as a bento of tiles, one limit per tile with its value as an oversized Geist Mono numeral, around a tall navy water column that is filled to the stricter limit with the looser pharmacopoeia value marked high above it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "compliance",
+   "slot": 0,
+   "h": "Purified Water limits",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "526a75f9ea",
+   "block": {
+    "type": "spec",
+    "as": "gauges",
+    "nav": "Limits",
+    "anchor": "limits",
+    "h": "Purified Water limits",
+    "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
+    "caption": "USP · PH. EUR.",
+    "cols": [
+     "Parameter",
+     "Limit",
+     "Reference"
+    ],
+    "rows": [
+     {
+      "p": "Conductivity",
+      "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
+      "m": "USP <645>",
+      "hl": true,
+      "icon": "conductivity",
+      "alt": {
+       "v": "≤ 5.1 µS/cm at 25 °C",
+       "m": "Ph. Eur."
+      }
+     },
+     {
+      "p": "Total organic carbon",
+      "v": "≤ 0.50 mg/L (500 ppb)",
+      "m": "USP <643>; Ph. Eur. 2.2.44",
+      "icon": "toc"
+     },
+     {
+      "p": "Microbial action level",
+      "v": "≤ 100 CFU/mL",
+      "level": "action",
+      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+      "icon": "droplet"
+     }
+    ],
+    "note": "Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units.",
+    "look": "limit-bento"
+   }
+  }
+ ]
+}

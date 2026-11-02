@@ -1,0 +1,106 @@
+{
+ "look": "standards-orbit",
+ "component": "StandardsOrbit",
+ "type": "standards-map",
+ "fields": "as the standards map: zones [{t, codes, to, spot}]. to: the section that holds the proof (the title jumps there); each code is a chip that scrolls to the row naming it (standardsmap.js handles data-smap-code clicks). spot picks the drawn part the arc touches: ro-skid -> RO rack, storage-tank -> tank and loop, gauge -> control panel, weld -> skid frame (fabrication), binder -> binders; any other spot gets a node with no arc. Zones take the slots left top, right top, right bottom, left bottom, bottom in order (five at most on the rings; more stack under the stage).",
+ "best_for": "StandardsOrbit draws a standards map as orbits round the plant: the Purified Water plant in isometric line art in the middle of a navy band, two elliptical rings round it, and each zone of the system a node on the outer ring with its standards beside it and an arc running in to the part that zone governs.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "compliance",
+   "slot": 1,
+   "h": "Which standard governs each part",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "d203f53add",
+   "block": {
+    "type": "standards-map",
+    "look": "standards-orbit",
+    "nav": "Map",
+    "anchor": "map",
+    "h": "Which standard governs each part",
+    "intro": "Each standard links to its proof below.",
+    "zones": [
+     {
+      "t": "Generation",
+      "icon": "ro-membrane",
+      "to": "pharmacopoeia",
+      "codes": [
+       "USP <645>",
+       "USP <643>",
+       "Ph. Eur. 0008"
+      ],
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "icon": "loop",
+      "to": "gmp",
+      "codes": [
+       "WHO TRS 1033",
+       {
+        "t": "USP <1231>",
+        "to": "pharmacopoeia"
+       },
+       {
+        "t": "[PP piping standard]",
+        "to": "engineering"
+       }
+      ],
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Controls and data",
+      "icon": "gauge",
+      "to": "gmp",
+      "codes": [
+       "21 CFR Part 11",
+       "EU GMP Annex 11",
+       "GUI-0050",
+       "GAMP 5",
+       {
+        "t": "[panel standard]",
+        "to": "engineering"
+       }
+      ],
+      "spot": "gauge"
+     },
+     {
+      "t": "Materials and fabrication",
+      "icon": "weld",
+      "to": "engineering",
+      "codes": [
+       {
+        "t": "GUI-0001",
+        "to": "gmp"
+       },
+       {
+        "t": "21 CFR 211",
+        "to": "gmp"
+       },
+       "[PP material standard]",
+       "[PP joining standard]",
+       "CSA B51"
+      ],
+      "spot": "weld"
+     },
+     {
+      "t": "Qualification",
+      "icon": "binder",
+      "to": "gmp",
+      "codes": [
+       "EU GMP Annex 15",
+       "GUI-0029",
+       "WHO TRS 1033",
+       "ASTM E2500",
+       "ICH Q9(R1)"
+      ],
+      "spot": "binder"
+     }
+    ]
+   }
+  }
+ ]
+}

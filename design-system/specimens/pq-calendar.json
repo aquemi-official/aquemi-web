@@ -1,0 +1,56 @@
+{
+ "look": "pq-calendar",
+ "component": "PqCalendar",
+ "type": "steps",
+ "fields": "h, intro, items [{t, d, hold, days}] (days: the phase's span in days for the grid; a phase without days is the routine plan that runs on to the end of the year), grid {points, days, rows, cols, unit} (the grid's size and axis words; points x days is the total shown), year {weeks, months, label} (52, 12).",
+ "best_for": "PqCalendar sets PQ phases as a short numbered stack beside one instrument readout: the sample count as a giant light numeral, the sampling grid that makes it and a tick scale of the year (look `pq-calendar`, steps block).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-cq",
+   "slot": 3,
+   "h": "PQ in three phases",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "6cd25d1e70",
+   "block": {
+    "type": "steps",
+    "nav": "PQ",
+    "h": "PQ in three phases",
+    "intro": "Conductivity, total organic carbon and microbial count; at 12 sample points, 28 days make 336 samples.",
+    "items": [
+     {
+      "t": "Phase 1",
+      "d": "At least 2 weeks of daily samples at every step and point of use. No production use.",
+      "days": 14
+     },
+     {
+      "t": "Phase 2",
+      "d": "At least 2 more weeks, same sampling, procedures in use. Production use with your approval.",
+      "hold": "Your quality unit",
+      "days": 14
+     },
+     {
+      "t": "Phase 3",
+      "d": "A reduced routine plan, trended, until the phases cover at least 12 months."
+     }
+    ],
+    "look": "pq-calendar",
+    "grid": {
+     "points": 12,
+     "days": 28,
+     "rows": "sample points",
+     "cols": "days",
+     "unit": "samples"
+    },
+    "year": {
+     "weeks": 52,
+     "months": 12,
+     "label": "12 months"
+    }
+   }
+  }
+ ]
+}

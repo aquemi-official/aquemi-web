@@ -1,0 +1,48 @@
+{
+ "look": "doc-pipe",
+ "component": "DocPipe",
+ "type": "docs",
+ "fields": "h, intro, items [{t, d, code, key, link, intent, tag}], key, fold, fold_noun, link, link_label, intent.",
+ "best_for": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-pretreatment",
+   "slot": 4,
+   "h": "Documents delivered",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "74e959129d",
+   "block": {
+    "type": "docs",
+    "h": "Documents delivered",
+    "key": 2,
+    "items": [
+     {
+      "t": "Feed water review and design basis",
+      "d": "Data used, design months and RO inlet targets"
+     },
+     {
+      "t": "Membrane projections",
+      "d": "At coldest and warmest feed"
+     },
+     {
+      "t": "Functional specification",
+      "d": "Regeneration, backwash, alarms and interlocks"
+     },
+     {
+      "t": "Media, resin and material certificates",
+      "d": "Lot numbers; [certificates supplied for PVC parts]"
+     }
+    ],
+    "nav": "Documents",
+    "fold_noun": "documents",
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "look": "doc-pipe"
+   }
+  }
+ ]
+}

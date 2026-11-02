@@ -1,0 +1,56 @@
+{
+ "look": "cert-readout",
+ "component": "CertReadout",
+ "type": "grid",
+ "fields": "h, intro, items [{t, d, tag, icon, link}].",
+ "best_for": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's standard set giant and light, beside the items as mono readout lines whose titles are buttons that put them on the readout.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-quality",
+   "slot": 3,
+   "h": "Certification status",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "d65effe03e",
+   "block": {
+    "type": "grid",
+    "nav": "Certification",
+    "anchor": "certification",
+    "h": "Certification status",
+    "items": [
+     {
+      "t": "Quality system",
+      "d": "[ISO 9001 status, registrar and expiry]",
+      "tag": "ISO 9001",
+      "icon": "stamp"
+     },
+     {
+      "t": "PP joining",
+      "d": "[number of qualified thermoplastic welders]",
+      "tag": "[welder qualification standard for thermoplastics]",
+      "link": "svc-fabrication",
+      "icon": "weld"
+     },
+     {
+      "t": "Pressure equipment",
+      "d": "[pressure vessel certificate holder or certified vessel partner]",
+      "tag": "CSA B51",
+      "link": "compliance#engineering",
+      "icon": "tank"
+     },
+     {
+      "t": "Control panels",
+      "d": "[panel certification mark held, or field evaluation used]",
+      "tag": "[panel standard]",
+      "link": "compliance#engineering",
+      "icon": "monitor"
+     }
+    ],
+    "look": "cert-readout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "look": "issued-set",
+ "component": "IssuedSet",
+ "type": "docs",
+ "fields": "h, intro, items [{t, d, code, link, intent, sheet, use}], link, link_label, intent. sheet (optional): matrix, pid, spec or report (default from the name). use (optional): the qualification step the item's own text names as using it (\"IQ\"), shown as the stamp. Codes come from the DocList lookup (docCode).",
+ "best_for": "IssuedSet shows the documents you receive as the issued set itself, dealt onto a desk: each document a sheet of paper at a slight turn with its code large, a miniature of what it looks like, its name and text, and a round stamp of the qualification step that uses it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-design",
+   "slot": 2,
+   "h": "What you receive",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "6911f9d528",
+   "block": {
+    "type": "docs",
+    "look": "issued-set",
+    "h": "What you receive",
+    "items": [
+     {
+      "t": "URS compliance matrix",
+      "code": "CM",
+      "d": "How the design meets each requirement; each gap with proposed wording."
+     },
+     {
+      "t": "P&IDs",
+      "d": "Every line, valve and tag, with slopes, drains and sample points. IQ verifies against them.",
+      "use": "IQ"
+     },
+     {
+      "t": "Functional and design specifications",
+      "d": "Setpoints, alarms, interlocks and divert logic, each testable. OQ tests against them.",
+      "use": "OQ"
+     },
+     {
+      "t": "Design review report and traceability matrix",
+      "d": "Evidence the design meets every URS line. Your quality unit approves DQ on it.",
+      "use": "DQ"
+     }
+    ],
+    "nav": "What you receive"
+   }
+  }
+ ]
+}

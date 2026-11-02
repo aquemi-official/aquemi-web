@@ -1,0 +1,68 @@
+{
+ "look": "cost-balance",
+ "component": "CostBalance",
+ "type": "spec",
+ "fields": "h, cols, rows [{p, v, m, link, side}], fold, fold_noun, note. side: \"out\" puts a row on the leaving side (default: in). glyphs (optional): icon names for the train inside the boundary (default softener, carbon-filter, ro-membrane, edi, uv, tank). A row's link makes its name the link. Desktop shows every stream; the fold applies on phones, where the balance runs top to bottom: streams in, the boundary, streams out.",
+ "best_for": "CostBalance draws what it costs to run a system as a balance around it: a dashed system boundary with the treatment train inside, every running cost a stream wired in from the left, the water that leaves (to drain) wired out to the right.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-service",
+   "slot": 1,
+   "h": "What it costs to run",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "64551a4",
+   "hash": "e01351436c",
+   "block": {
+    "type": "spec",
+    "look": "cost-balance",
+    "nav": "Running cost",
+    "anchor": "running-cost",
+    "h": "What it costs to run",
+    "cols": [
+     "Item",
+     "Interval or amount",
+     "Set by"
+    ],
+    "rows": [
+     {
+      "p": "Service plan, with calibration",
+      "v": "From [lowest plan price, CAD per year]",
+      "m": "System, instruments and distance"
+     },
+     {
+      "p": "Reverse osmosis (RO) membranes; electrodeionization (EDI) module or deionization (DI) resin",
+      "v": "[membrane and resin replacement intervals]",
+      "m": "Feed water and flow"
+     },
+     {
+      "p": "Filters, carbon, softener resin, ultraviolet (UV) lamp",
+      "v": "[filter, media and lamp intervals, months]",
+      "m": "Feed water and run hours"
+     },
+     {
+      "p": "Water to drain",
+      "v": "RO reject at [design recovery, %] recovery",
+      "m": "Feed water chemistry",
+      "link": "sys-pw",
+      "side": "out"
+     },
+     {
+      "p": "Energy",
+      "v": "[energy use, kWh per m³]",
+      "m": "Flow and feed temperature"
+     },
+     {
+      "p": "Sanitant and softener salt",
+      "v": "[PP loop sanitization method], [sanitization frequency]",
+      "m": "Your microbial trends; feed hardness"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "items"
+   }
+  }
+ ]
+}

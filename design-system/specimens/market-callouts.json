@@ -1,0 +1,57 @@
+{
+ "look": "market-callouts",
+ "component": "MarketCallouts",
+ "type": "options",
+ "fields": "seen in its blocks: h, items (items: t, d, part, scope, tags, note).",
+ "best_for": "MarketCallouts shows several markets served by one machine: a single PW package drawn with IsoKit stands centred on a navy ground as a solid limestone object, and each option is a callout around it with a leader to the part its note is about.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "industries",
+   "slot": 3,
+   "h": "Outside drug and device manufacturing",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "2987331fc7",
+   "block": {
+    "type": "options",
+    "look": "market-callouts",
+    "nav": "Adjacent uses",
+    "anchor": "adjacent",
+    "h": "Outside drug and device manufacturing",
+    "items": [
+     {
+      "t": "Hospital reprocessing (MDRD)",
+      "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit.",
+      "part": "outlet",
+      "scope": "[hospital water scope]",
+      "tags": [
+       "CSA Z314:23",
+       "ANSI/AAMI ST108:2023"
+      ],
+      "note": "Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
+     },
+     {
+      "t": "Research laboratories",
+      "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers].",
+      "part": "ro",
+      "scope": "[lab water scope]",
+      "tags": [
+       "ASTM D1193-24"
+      ],
+      "note": "Central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
+     },
+     {
+      "t": "Industrial demineralized water",
+      "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange.",
+      "part": "edi",
+      "scope": "[industrial water scope]",
+      "note": "Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "look": "sheet-stack",
+ "component": "SheetStack",
+ "type": "docs",
+ "fields": "h, items [{t, d, key, code, sheet, link, intent}], link, link_label, intent, fold, fold_noun. sheet: \"calc\", \"register\", \"iso\" or \"cert\" (default from the document code: HYD, DLR, P&ID or ISO, MAT).",
+ "best_for": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-storage",
+   "slot": 4,
+   "h": "Documents with the loop",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "198569ed50",
+   "block": {
+    "type": "docs",
+    "h": "Documents with the loop",
+    "nav": "Documents",
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "items": [
+     {
+      "t": "Hydraulic calculation",
+      "d": "Velocity and Reynolds number, every section and case",
+      "key": true
+     },
+     {
+      "t": "Dead leg register",
+      "d": "L/D for every branch, instrument tee and sample valve",
+      "key": true
+     },
+     {
+      "t": "P&IDs and as-built isometrics",
+      "d": "Piping and instrumentation diagrams: flow direction, slopes, diameters and lengths",
+      "key": true
+     },
+     {
+      "t": "Material certificates and joint records",
+      "d": "[PP material certificates]; [PP joint records kept]",
+      "key": true
+     }
+    ],
+    "look": "sheet-stack"
+   }
+  }
+ ]
+}

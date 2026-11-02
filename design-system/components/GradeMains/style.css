@@ -1,0 +1,84 @@
+/* ---------- GradeMains: a grade table drawn as water mains on navy, each step dropping to the main it takes ---------- */
+.aq-grade-mains-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-grade-mains { --lane: var(--space-16); display: grid; grid-template-columns: minmax(0, 11rem) repeat(var(--n, 8), minmax(0, 1fr));
+  grid-template-rows: auto repeat(var(--nl, 3), var(--lane, 64px)) auto; column-gap: var(--space-2); margin-top: var(--space-8); color: var(--on-navy);
+  padding: var(--space-6) 0 0; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-grade-mains__forms, .aq-grade-mains__form { display: contents; }
+.aq-fold:not(.is-open) .aq-grade-mains__form.aq-fold-x { display: contents; }
+.aq-fold:has(> .aq-grade-mains) > .aq-fold__btn { display: none; }
+.aq-grade-mains-sec .aq-fold__btn { color: var(--limestone); border-bottom-color: color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-grade-mains__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.aq-grade-mains__colh { grid-column: 1; grid-row: 1; align-self: end; margin: 0 0 var(--space-4); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+
+/* Mains: a name on the left, a twin-wall pipe across the columns with its water down the middle */
+.aq-grade-mains__lname { grid-column: 1; grid-row: var(--lr, 2); align-self: center; display: flex; flex-direction: column; margin: 0; padding-right: var(--space-4); position: relative; z-index: 1; }
+.aq-grade-mains__lt { font: 400 15px/20px var(--font-sans); color: var(--on-navy); }
+.aq-grade-mains__ln { font: 400 12px/16px var(--font-mono); color: var(--on-navy-muted); }
+.aq-grade-mains__pipe { grid-column: 2 / -1; grid-row: var(--lr, 2); align-self: center; position: relative; height: var(--space-3); margin-left: calc(var(--space-8) * -1);
+  border-block: 1.5px solid color-mix(in srgb, var(--on-navy-muted) 70%, transparent); transform-origin: 0 50%; }
+.aq-grade-mains__pipe::after { content: ""; position: absolute; right: calc(var(--space-2) * -1); top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid var(--on-navy-muted);
+  border-right: 1.5px solid var(--on-navy-muted); transform: translate(-50%, -50%) rotate(45deg); }
+.aq-grade-mains__water { position: absolute; left: 0; right: 0; top: 50%; height: 1.5px; margin-top: -0.75px; background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); transform-origin: 0 50%; }
+.aq-grade-mains__pipe.is-off { border-block-style: dashed; border-color: color-mix(in srgb, var(--on-navy-muted) 55%, transparent); }
+.aq-grade-mains__pipe.is-off .aq-grade-mains__water { display: none; }
+.aq-grade-mains__lname.is-off .aq-grade-mains__lt { color: var(--on-navy-muted); }
+
+/* Columns: the step at the top, its drop down to the deepest main it taps, valves at the taps, grade and note below */
+.aq-grade-mains__head { grid-column: var(--gc, 2); grid-row: 1; display: flex; flex-direction: column; gap: var(--space-2); padding: 0 var(--space-1) var(--space-4); min-width: 0; }
+.aq-grade-mains__head .aq-index { color: var(--on-navy-muted); }
+.aq-grade-mains__t { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-navy); hyphens: auto; }
+.aq-grade-mains__drop { grid-column: var(--gc, 2); grid-row: 2 / span var(--deep, 1); justify-self: center; position: relative; width: 1.5px;
+  height: calc(100% - var(--lane, 64px) / 2); background: color-mix(in srgb, var(--on-navy-muted) 80%, transparent); transform-origin: 50% 0; z-index: 1;
+  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-grade-mains__tap { grid-column: var(--gc, 2); grid-row: var(--tr, 2); place-self: center; position: relative; z-index: 2; width: var(--space-8); height: var(--space-6);
+  display: grid; place-items: center; transform: rotate(90deg); }
+.aq-grade-mains__tap svg { width: 100%; height: 100%; overflow: visible; }
+.aq-grade-mains__vb { fill: var(--limestone); stroke: var(--limestone); stroke-width: 1.5; stroke-linejoin: round; transition: fill 300ms, stroke 300ms; }
+.aq-grade-mains__vs { fill: none; stroke: var(--limestone); stroke-width: 1.5; stroke-linecap: round; }
+.aq-grade-mains__tap.is-alt .aq-grade-mains__vb { fill: var(--navy); stroke: var(--on-navy-muted); }
+.aq-grade-mains__tap.is-alt .aq-grade-mains__vs { stroke: var(--on-navy-muted); }
+.aq-grade-mains__foot { grid-column: var(--gc, 2); grid-row: var(--fr, 5); display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-1) 0; min-width: 0; }
+.aq-grade-mains__g { margin: 0; display: flex; flex-direction: column; font: 400 15px/20px var(--font-mono); color: var(--limestone); }
+.aq-grade-mains__k { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-grade-mains__note { margin: 0; padding-top: var(--space-2); border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); font: 400 13px/20px var(--font-sans); color: var(--on-navy-muted); hyphens: auto; }
+
+/* Hover a column: its drop and taps light, the step brightens */
+.aq-grade-mains__form:hover .aq-grade-mains__drop { background: var(--limestone); width: 2.5px; }
+.aq-grade-mains__form:hover .aq-grade-mains__tap.is-alt .aq-grade-mains__vb { stroke: var(--limestone); }
+.aq-grade-mains__form:hover .aq-grade-mains__head .aq-index { color: var(--limestone); }
+
+.aq-grade-mains__cap { display: flex; justify-content: flex-end; gap: 0; margin: var(--space-8) 0 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-grade-mains__cap span { padding: var(--space-1) var(--space-3); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); margin-left: -1px; }
+.aq-grade-mains__cap span:empty { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-grade-mains { grid-template-columns: minmax(0, 8rem) repeat(var(--n, 8), minmax(0, 1fr)); }
+  .aq-grade-mains__t { font-size: 13px; line-height: 18px; }
+  .aq-grade-mains__note { font-size: 12px; line-height: 18px; }
+}
+
+/* Phones: the mains turn upright down the right, each step a row tapping across to them; the fold comes back */
+@container (max-width: 860px) {
+  .aq-grade-mains { --lane: var(--space-12); grid-template-columns: minmax(0, 1fr) repeat(var(--nl, 3), var(--lane, 64px)); grid-template-rows: none; grid-auto-rows: auto;
+    column-gap: 0; margin-top: var(--space-4); padding-top: var(--space-4); }
+  .aq-grade-mains__colh { grid-row: 1; align-self: end; margin-bottom: var(--space-3); }
+  .aq-grade-mains__lname { grid-column: var(--lc, 2); grid-row: 1; padding: 0 0 var(--space-3); align-self: end; justify-self: center; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .aq-grade-mains__lt { font-size: 13px; line-height: 16px; }
+  .aq-grade-mains__ln { font-size: 11px; }
+  .aq-grade-mains__pipe { grid-column: var(--lc, 2); grid-row: 2 / span var(--pspan, 16); align-self: stretch; justify-self: center; width: var(--space-3); height: auto; margin: 0;
+    border-block: 0; border-inline: 1.5px solid color-mix(in srgb, var(--on-navy-muted) 70%, transparent); transform-origin: 50% 0; }
+  .aq-grade-mains__pipe.is-off { border-inline-style: dashed; }
+  .aq-grade-mains__pipe::after { display: none; }
+  .aq-grade-mains__water { left: 50%; right: auto; top: 0; bottom: 0; width: 1.5px; height: auto; margin: 0 0 0 -0.75px; transform-origin: 50% 0; }
+  .aq-grade-mains__head { grid-column: 1; grid-row: var(--pr, 2); flex-direction: row; gap: var(--space-3); padding: var(--space-4) var(--space-3) var(--space-1) 0; }
+  .aq-grade-mains__t { font-size: 16px; line-height: 22px; }
+  .aq-grade-mains__drop { grid-column: 2 / var(--pd, 3); grid-row: var(--pr, 2); justify-self: start; align-self: center; width: calc(100% - var(--lane, 64px) / 2); height: 1.5px; margin-top: var(--space-3); transform-origin: 0 50%; }
+  .aq-grade-mains__form:hover .aq-grade-mains__drop { width: calc(100% - var(--lane, 64px) / 2); height: 2.5px; }
+  .aq-grade-mains__tap { grid-column: var(--pc, 2); grid-row: var(--pr, 2); margin-top: var(--space-3); transform: none; width: var(--space-6); height: var(--space-4); }
+  .aq-grade-mains__foot { grid-column: 1; grid-row: var(--pf, 3); padding: 0 var(--space-3) var(--space-4) var(--space-8); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); }
+  .aq-grade-mains__g { flex-direction: row; flex-wrap: wrap; gap: 0 var(--space-2); align-items: baseline; }
+  .aq-grade-mains__note { font-size: 13px; line-height: 20px; }
+  .aq-fold:not(.is-open) .aq-grade-mains__form.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-grade-mains) > .aq-fold__btn { display: flex; }
+}

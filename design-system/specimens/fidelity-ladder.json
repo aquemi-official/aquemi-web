@@ -1,0 +1,54 @@
+{
+ "look": "fidelity-ladder",
+ "component": "FidelityLadder",
+ "type": "steps",
+ "fields": "h, intro, items [{t, d, hold, link, sheet}]. sheet (optional): the drawing level, one of matrix, route, pid, iso, freeze, joints (default: that order by position).",
+ "best_for": "FidelityLadder shows design stages as one drawing gaining detail on a navy blueprint band: every stage is a sheet with the same water package drawn at that stage's level (matrix, block route, P&ID, dimensioned isometric, frozen isometric, spools with their joints), joined by a run with a node per stage and a closed valve and \"Hold point\" stamp where you sign.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-design",
+   "slot": 1,
+   "h": "Design stages, and what you approve",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "276daad125",
+   "block": {
+    "type": "steps",
+    "look": "fidelity-ladder",
+    "h": "Design stages, and what you approve",
+    "items": [
+     {
+      "t": "URS and feed water review",
+      "d": "Compliance matrix: each gap with proposed wording."
+     },
+     {
+      "t": "Concept and route",
+      "d": "Route options, mass balance and a budget at [concept estimate class and accuracy]. You approve the basis of design.",
+      "hold": "You"
+     },
+     {
+      "t": "Basic design",
+      "d": "Piping and instrumentation diagrams (P&IDs), general arrangement drawings, draft functional specification and risk assessment."
+     },
+     {
+      "t": "Detailed design",
+      "d": "Approved P&IDs, isometrics, design specifications and the commissioning and qualification plan."
+     },
+     {
+      "t": "Design review and freeze",
+      "d": "Reviewed against every URS line. Your quality unit approves DQ; later changes go through change control.",
+      "hold": "Your quality unit"
+     },
+     {
+      "t": "Into fabrication",
+      "d": "The factory and site acceptance tests (FAT, SAT) follow the approved specification."
+     }
+    ],
+    "nav": "Stages"
+   }
+  }
+ ]
+}

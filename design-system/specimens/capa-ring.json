@@ -1,0 +1,53 @@
+{
+ "look": "capa-ring",
+ "component": "CapaRing",
+ "type": "steps",
+ "fields": "h, intro, items [{t, d, hold, link}], core (optional centre word). Six steps fit best (three a side); any count works. Pointing at a step lights its node.",
+ "best_for": "CapaRing shows a closed-loop procedure (a defect held, decided, repaired, corrected, checked and reported) as steps around one ring that the water runs once and closes, the hold step drawn as a closed valve.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "cmp-quality",
+   "slot": 1,
+   "h": "How a defect is held and closed",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "231cde2",
+   "hash": "ff06e4646e",
+   "block": {
+    "type": "steps",
+    "nav": "NCR and CAPA",
+    "h": "How a defect is held and closed",
+    "items": [
+     {
+      "t": "Identify and hold",
+      "d": "Whoever finds it tags and segregates the item, or stops work, and raises an NCR."
+     },
+     {
+      "t": "Disposition",
+      "d": "Reject, rework or accept as is. Accepting as is, or an unapproved repair, needs your approval.",
+      "hold": "You"
+     },
+     {
+      "t": "Repair",
+      "d": "A rejected product-contact joint is cut out and remade to [PP joint repair rule], under a new number."
+     },
+     {
+      "t": "Root cause and CAPA",
+      "d": "Repeat, systemic or client-reported: cause found, procedure, training or supplier changed."
+     },
+     {
+      "t": "Effectiveness check",
+      "d": "Evidence after an agreed period that the action worked, signed before the CAPA closes."
+     },
+     {
+      "t": "Reported to you",
+      "d": "Every NCR logged in your turnover package; one after shipment reaches you within [NCR notice after shipment, working days]."
+     }
+    ],
+    "look": "capa-ring"
+   }
+  }
+ ]
+}

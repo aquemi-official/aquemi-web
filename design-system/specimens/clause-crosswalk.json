@@ -1,0 +1,86 @@
+{
+ "look": "clause-crosswalk",
+ "component": "ClauseCrosswalk",
+ "type": "table",
+ "fields": "h, intro, cols [requirement, how, regulation A, regulation B], rows [[t, how, clausesA, clausesB]] (clauses split on \",\" and \";\", a \"(g)\" after \"11.10(d)\" reads 11.10(g)), fold (phones only), fold_noun.",
+ "best_for": "ClauseCrosswalk sets a table of requirements against two regulations' clauses as an editorial crosswalk: the requirements large down the middle, each regulation a spine at the outer edge with its name set big and vertical and its clauses as chips, and a wire from every requirement to every clause it cites.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-monitoring",
+   "slot": 3,
+   "h": "Data integrity, clause by clause",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "ad699322b4",
+   "block": {
+    "type": "table",
+    "h": "Data integrity, clause by clause",
+    "intro": "Health Canada applies EU good manufacturing practice (GMP) Annex 11 through GUI-0050.",
+    "cols": [
+     "Requirement",
+     "How the controls meet it",
+     "21 CFR Part 11",
+     "EU GMP Annex 11 (2011)"
+    ],
+    "rows": [
+     [
+      "Audit trail",
+      "Who, when, old and new value and reason; cannot be switched off",
+      "11.10(e)",
+      "9"
+     ],
+     [
+      "Access control",
+      "Individual accounts, role-based rights, automatic logout; each role tested at FAT",
+      "11.10(d), (g)",
+      "12"
+     ],
+     [
+      "Record protection",
+      "No edit or delete; backups every [backup interval], kept [data retention, years]",
+      "11.10(c)",
+      "7; 17"
+     ],
+     [
+      "Electronic signatures",
+      "If used: signer, time and meaning, linked to the record",
+      "11.50, 11.70, 11.100–11.300",
+      "14"
+     ],
+     [
+      "Validation",
+      "GAMP 5 lifecycle documents for your validation, URS to operational qualification (OQ), with a traceability matrix",
+      "11.10(a)",
+      "4"
+     ],
+     [
+      "Accurate copies",
+      "Readable and electronic reports, checked against the stored record",
+      "11.10(b)",
+      "8"
+     ],
+     [
+      "Sequence and device checks",
+      "Steps enforced in order; a failed sensor never reads as good water",
+      "11.10(f), (h)",
+      "5; 6"
+     ],
+     [
+      "Change control and review",
+      "Baseline backup and audit trail review report",
+      "11.10(k)",
+      "10; 11; 13"
+     ]
+    ],
+    "nav": "Data integrity",
+    "as": "evidence",
+    "fold": 3,
+    "fold_noun": "requirements",
+    "look": "clause-crosswalk"
+   }
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "look": "index-sheet",
+ "component": "IndexSheet",
+ "type": "docs",
+ "fields": "h, intro, nav (the strip over the sheet), items [{t, d, key, link}], fold, fold_noun. key: the section's number and rule in flow. The fold applies on phones only (desktop shows the whole index).",
+ "best_for": "IndexSheet shows a document package's index as one printed sheet: a limestone sheet on the navy band with the section title set very large, every section numbered in a ruled two-column grid with all its documents in view, and a folded leaf at the right carrying one isometric line drawing of the system the package comes with.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-documentation",
+   "slot": 0,
+   "h": "The turnover package, section by section",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "0b32b3b4b3",
+   "block": {
+    "type": "docs",
+    "nav": "Index",
+    "anchor": "index",
+    "h": "The turnover package, section by section",
+    "intro": "Documents handed over with your system.",
+    "items": [
+     {
+      "t": "Index and project summary",
+      "d": "Register with current revisions, scope, tag list, connection points (battery limits)"
+     },
+     {
+      "t": "Requirements and design basis",
+      "key": true,
+      "d": "URS compliance matrix, basis of design, risk assessment, design review report, traceability matrix, commissioning and qualification (C&Q) plan"
+     },
+     {
+      "t": "Specifications",
+      "d": "Functional and design specifications, alarm list, Part 11 and Annex 11 assessment"
+     },
+     {
+      "t": "Drawings and calculations",
+      "d": "Piping and instrumentation diagrams (P&IDs), general arrangement, isometrics, process flow diagram, balances, membrane projections, loop hydraulics"
+     },
+     {
+      "t": "Materials and components",
+      "d": "[PP material certificates] by lot, to [PP material standard]; [elastomer certificates per compound]; [certificates supplied for PVC parts]; media, resin and component certificates"
+     },
+     {
+      "t": "Fabrication and joining",
+      "d": "Fabrication and inspection plan; [PP joining method] procedure, welder qualifications, [PP joint records kept]"
+     },
+     {
+      "t": "Cleaning and drainability",
+      "d": "Slope survey; dead leg register to [dead leg design limit, L/D]; spray coverage test; cleaning certificate after [pre-commissioning flush and cleaning procedure for PP]"
+     },
+     {
+      "t": "Pressure equipment and panels",
+      "d": "Pressure tests to [PP pressure test method]. Canadian registration number (CRN) under CSA B51 and vessel data reports, where required. Panel certification or field evaluation"
+     },
+     {
+      "t": "Instruments and calibration",
+      "d": "Calibration certificates, traceable via [calibration provider and accreditation held]; total organic carbon system suitability, where an analyzer is fitted; vent filter integrity test"
+     },
+     {
+      "t": "Software",
+      "d": "Version and checksum record, code review, baseline backup, audit trail review, backup and restore procedure"
+     },
+     {
+      "t": "Testing and qualification",
+      "d": "Factory and site acceptance test (FAT, SAT), installation, operational and performance qualification (IQ, OQ, PQ) protocols and reports. Deviation logs, sanitization records."
+     },
+     {
+      "t": "Operation, maintenance and training",
+      "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first [months of operation], training records"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "sections",
+    "look": "index-sheet"
+   }
+  }
+ ]
+}

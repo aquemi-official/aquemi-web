@@ -1,0 +1,58 @@
+{
+ "look": "washer-trace",
+ "component": "WasherTrace",
+ "type": "prose",
+ "fields": "h, intro, points [{t, d}] (the first three take the drawing's stations in order; at and figure are not used by this look).",
+ "best_for": "WasherTrace tells an explainer as the water's way from the loop into a washer: one IsoKit line drawing on a limestone band, the points as callouts on leaders from their parts, and a navy readout that shows where along the route the water has reached.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-meddevice",
+   "slot": 1,
+   "h": "Where rinse water reaches the device",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "8fe408dbf0",
+   "block": {
+    "type": "prose",
+    "as": "explainer",
+    "nav": "At the washer",
+    "h": "Where rinse water reaches the device",
+    "ground": "light",
+    "figure": {
+     "kind": "art",
+     "art": "ind-meddevice"
+    },
+    "points": [
+     {
+      "t": "Supply from the loop",
+      "at": [
+       86,
+       30
+      ],
+      "d": "Washers filling at once drop loop pressure. We size storage and pumps to your fill profile."
+     },
+     {
+      "t": "Washer inlet",
+      "at": [
+       82,
+       64
+      ],
+      "d": "Specification and sample point here; any point-of-use filter integrity tested, changed on data."
+     },
+     {
+      "t": "Wash chamber",
+      "at": [
+       52,
+       70
+      ],
+      "d": "Warm water standing between batches grows biofilm; validate a drain-and-refill rule."
+     }
+    ],
+    "look": "washer-trace"
+   }
+  }
+ ]
+}

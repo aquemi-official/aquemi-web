@@ -1,0 +1,46 @@
+{
+ "look": "industry-feed",
+ "component": "IndustryFeed",
+ "type": "grid",
+ "fields": "h, items [{t, d, tag, link}]. tag is the evidence shown large (keep it short: a standard code); an item without one shows its name large instead. Best for 2 to 4 items.",
+ "best_for": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "home",
+   "slot": 1,
+   "h": "Same limits, different evidence by industry",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "58252a145f",
+   "block": {
+    "type": "grid",
+    "h": "Same limits, different evidence by industry",
+    "items": [
+     {
+      "t": "Pharmaceutical",
+      "d": "PW for oral and topical drugs, at sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
+      "tag": "GUI-0001",
+      "link": "ind-pharma"
+     },
+     {
+      "t": "Medical devices",
+      "d": "PW for rinse and process steps, with the grade worked back from your device limits.",
+      "tag": "USP <161>",
+      "link": "ind-meddevice"
+     },
+     {
+      "t": "Contract manufacturing",
+      "d": "The stricter of USP and Ph. Eur. on each attribute; records any client auditor follows.",
+      "tag": "USP · Ph. Eur.",
+      "link": "ind-cdmo"
+     }
+    ],
+    "ground": "light",
+    "look": "industry-feed"
+   }
+  }
+ ]
+}

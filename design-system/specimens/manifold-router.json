@@ -1,0 +1,99 @@
+{
+ "look": "manifold-router",
+ "component": "ManifoldRouter",
+ "type": "table",
+ "fields": "as the router: cols (first is the situation column, the rest name the route's steps), rows (first cell the situation, each other cell a string or {t, link, intent}). A route whose cells link somewhere (the last link wins) is clickable as a whole through a pointer-only overlay; the real link stays the keyboard target, its intent rides on both. A value that opens with a [placeholder] is pending: dashed rule and \"To confirm\" (as Router). Best for 3 to 8 rows.",
+ "best_for": "ManifoldRouter sets a router table as large type on a limestone sheet, every situation a branch off one manifold: the reader picks a situation, the water runs down to its branch and its route opens beside it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "home",
+   "slot": 4,
+   "h": "Start from where your project is",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "97e2d0f933",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "h": "Start from where your project is",
+    "cols": [
+     "Your situation",
+     "Send us",
+     "What comes back",
+     "Where to start"
+    ],
+    "rows": [
+     [
+      "No URS yet, or a first PW system",
+      "What you make",
+      "The grade each step needs and the package",
+      {
+       "t": "Plan your first PW system",
+       "link": "industries#first-system"
+      }
+     ],
+     [
+      "A budget before a URS",
+      "Peak demand in L/h and feed water source",
+      "The modules and a budget range, with its estimate class",
+      {
+       "t": "Get a budget range",
+       "link": "systems#budget"
+      }
+     ],
+     [
+      "A URS, approved or in draft",
+      "Your URS and feed water analysis",
+      "A proposal, or a gap review of a draft",
+      {
+       "t": "Send your URS",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft"
+      }
+     ],
+     [
+      "Comparing or qualifying suppliers",
+      "Your questionnaire, if you use one",
+      "The record each process leaves, and how to audit it",
+      {
+       "t": "Quality management",
+       "link": "cmp-quality"
+      }
+     ],
+     [
+      "A project in qualification",
+      "Your commissioning and qualification plan",
+      "IQ and OQ test list, FAT tests to reuse, PQ sampling plan",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "A system to upgrade, or a water observation",
+      "What to change, or the observation",
+      "Options with their downtime and the requalification each triggers",
+      {
+       "t": "Request a system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Production stopped or water out of specification",
+      "A call to [service phone number], [service phone hours]",
+      "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+      {
+       "t": "Service request",
+       "link": "contact-service",
+       "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
+   }
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "look": "checker-router",
+ "component": "CheckerRouter",
+ "type": "table",
+ "fields": "as the router: cols (situation, what you need, start with), rows [situation, need, {t, link, intent}].",
+ "best_for": "CheckerRouter sets a router table (situation, what you need, start with) as a Swiss checker of square navy, limestone and paper tiles, one band of six tiles per situation, the start page as a go tile.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-pharma",
+   "slot": 0,
+   "h": "Your situation and where to start",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "7408c862ee",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Your situation and where to start",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A new line, or more points of use",
+      "More PW, tied into a qualified plant",
+      {
+       "t": "Upgrades and retrofits",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "An inspection due, or a water observation open",
+      "Design assessment, dated remediation plan, validation after repair",
+      {
+       "t": "After a water observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "First export to the US or EU",
+      "Where USP and Ph. Eur. differ, we design to the stricter value",
+      {
+       "t": "Purified Water limits",
+       "link": "compliance#limits"
+      }
+     ],
+     [
+      "A new plant, or your first PW system",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "industries#first-system"
+      }
+     ],
+     [
+      "Natural health products: does this line need PW?",
+      "Potable at minimum; PW where your specification calls for it",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ]
+    ],
+    "look": "checker-router",
+    "draws": [
+     "outlet",
+     "",
+     "",
+     "ro",
+     ""
+    ]
+   }
+  }
+ ]
+}

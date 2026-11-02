@@ -1,0 +1,114 @@
+{
+ "look": "tank-section",
+ "component": "TankSection",
+ "type": "spec",
+ "fields": "h, caption, cols, rows [{p, v, m, part, link, link_label}], fold, fold_noun. part: \"spray\", \"design\", \"volume\", \"contact\", \"surface\" or \"joint\".",
+ "best_for": "TankSection reads fabrication parameters off a blueprint of the storage tank cut in half on a navy band, each parameter a numbered callout on the part it governs and the rest in a parts schedule.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "sys-storage",
+   "slot": 3,
+   "h": "Tank and pipework",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "ae1cda6",
+   "hash": "8c0648fc72",
+   "block": {
+    "type": "spec",
+    "h": "Tank and pipework",
+    "caption": "FABRICATION · POLYPROPYLENE",
+    "cols": [
+     "Parameter",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Tank volume",
+      "v": "[tank volume range, L]",
+      "m": "Sized from your demand profile",
+      "at": [
+       28.5,
+       48.6
+      ],
+      "part": "volume"
+     },
+     {
+      "p": "Product contact",
+      "v": "Unpigmented PP, [PP grade]",
+      "m": "[PP material certificates]",
+      "at": [
+       86.7,
+       71.4
+      ],
+      "part": "contact"
+     },
+     {
+      "p": "Internal surface",
+      "v": "[PP internal surface specification, Ra µm]",
+      "m": "[basis for the PP surface specification]",
+      "at": [
+       43.3,
+       20.1
+      ],
+      "part": "surface"
+     },
+     {
+      "p": "Joints",
+      "v": "[PP joining method]; [PP joint records kept]",
+      "m": "[welder qualification standard for thermoplastics]",
+      "at": [
+       78.7,
+       56.0
+      ],
+      "part": "joint"
+     },
+     {
+      "p": "Budget",
+      "v": "[budget range, CAD] for [reference tank volume L, points of use]",
+      "m": "Before tax, as of [month year]",
+      "link": "systems#budget"
+     },
+     {
+      "p": "Tank design",
+      "v": "[PP tank design: atmospheric or pressure-rated]",
+      "m": "[PP tank design standard]",
+      "at": [
+       50.7,
+       29.2
+      ],
+      "part": "design"
+     },
+     {
+      "p": "Cleaning before first use",
+      "v": "[pre-commissioning flush and cleaning procedure for PP]",
+      "m": "PW rinse to conductivity and TOC limits"
+     },
+     {
+      "p": "Heat exchangers",
+      "v": "Double tube sheet [heat exchanger, standard or option]",
+      "m": "FDA high-purity water guide (1993)"
+     },
+     {
+      "p": "Pumps",
+      "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
+      "m": "Sized for the worst-case outlet combination"
+     },
+     {
+      "p": "Spray ball",
+      "v": "Wets head space and walls continuously",
+      "m": "WHO TRS 1033, 9.2; riboflavin coverage test",
+      "part": "spray"
+     }
+    ],
+    "nav": "Fabrication",
+    "fold": 5,
+    "fold_noun": "parameters",
+    "as": "callouts",
+    "look": "tank-section"
+   }
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+/* ---------- ReleaseRun: ordered steps as Swiss columns under one water line, the last one navy ---------- */
+.aq-release-run-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 16ch; }
+.aq-release-run { position: relative; margin-top: var(--space-12); }
+.aq-release-run__line { position: absolute; left: 0; right: 0; top: 0; height: var(--space-2); border-block: 1px solid var(--line-strong); transform-origin: 0 50%; z-index: 1; }
+.aq-release-run__water { position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--flow); transform-origin: 0 50%; }
+.aq-release-run__cols { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); }
+.aq-release-run__col { position: relative; display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; padding: var(--space-12) var(--space-6) var(--space-8);
+  border-left: 1px solid var(--line); }
+.aq-release-run__col:first-child { border-left: 0; padding-left: 0; }
+.aq-release-run__node { position: absolute; left: calc(var(--space-3) * -0.5); top: calc(var(--space-1) - var(--space-3) * 0.5); width: var(--space-3); height: var(--space-3);
+  background: var(--surface); border: 1.5px solid var(--ink); z-index: 2; }
+.aq-release-run__col:first-child .aq-release-run__node { left: 0; }
+.aq-section--alt .aq-release-run__node { background: var(--surface-sunken); }
+.aq-release-run__n { display: block; font: 200 168px/0.8 var(--font-sans); letter-spacing: -0.07em; color: var(--ink); margin-left: calc(var(--space-2) * -1); }
+.aq-release-run__t { margin: var(--space-6) 0 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); }
+.aq-release-run__t a { color: inherit; }
+.aq-release-run__d { margin: 0; font: 400 16px/25px var(--font-sans); color: var(--ink-muted); max-width: 30ch; }
+
+/* The last step: the navy column where the water ends */
+.aq-release-run__col.is-end { background: var(--navy); border-left-color: var(--navy); }
+.aq-release-run__col.is-end .aq-release-run__n { color: var(--limestone); }
+.aq-release-run__col.is-end .aq-release-run__t { color: var(--on-navy); }
+.aq-release-run__col.is-end .aq-release-run__d { color: var(--on-navy-muted); }
+.aq-release-run__col.is-end .aq-release-run__node { background: var(--limestone); border-color: var(--limestone); }
+.aq-release-run__col:hover .aq-release-run__node { background: var(--flow); border-color: var(--flow); }
+.aq-release-run__col:not(.is-end):hover .aq-release-run__n { color: var(--flow); }
+.aq-release-run__n { transition: color 300ms; }
+
+@container (max-width: 1100px) {
+  .aq-release-run__n { font-size: 128px; }
+  .aq-release-run__col { padding-inline: var(--space-4); }
+}
+
+/* Phones: the line turns upright down the left, the steps stack beside it, the last one still navy */
+@container (max-width: 860px) {
+  .aq-release-run-sec .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-release-run { margin-top: var(--space-6); padding-left: var(--space-6); }
+  .aq-release-run__line { left: 0; right: auto; top: 0; bottom: 0; width: var(--space-2); height: auto; border-block: 0; border-inline: 1px solid var(--line-strong); transform-origin: 50% 0; }
+  .aq-release-run__water { left: 50%; right: auto; top: 0; bottom: 0; width: 2px; height: auto; margin: 0 0 0 -1px; transform-origin: 50% 0; }
+  .aq-release-run__cols { grid-template-columns: minmax(0, 1fr); }
+  .aq-release-run__col, .aq-release-run__col:first-child { padding: var(--space-6) var(--space-4); border-left: 0; border-top: 1px solid var(--line); gap: var(--space-2); }
+  .aq-release-run__node, .aq-release-run__col:first-child .aq-release-run__node { left: calc(var(--space-6) * -1 + var(--space-1) - var(--space-3) * 0.5); top: var(--space-8); }
+  .aq-release-run__n { font-size: 88px; }
+  .aq-release-run__t { margin-top: var(--space-2); font-size: 21px; line-height: 27px; }
+}

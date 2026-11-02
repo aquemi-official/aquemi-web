@@ -1,0 +1,107 @@
+{
+ "look": "fusion-bench",
+ "component": "FusionBench",
+ "type": "spec",
+ "fields": "h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold, fold_noun. part (optional): stock, bead, coupon, exam, bore, binder, clipboard, logger, rinse, gauge (default from the item's words). The fold applies on phones only.",
+ "best_for": "FusionBench shows a fabrication standard as a shop drawing and its parts list on a navy blueprint band: an isometric of the joining bench (pipe stock, clamps holding two lengths fused at a bead, heater plate, test coupon, procedure clipboard, data logger, test cap and gauge, open bore with the rinse water, certificate binders), a numbered balloon on the part each row is about, and the rows as the drawing's parts list.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-fabrication",
+   "slot": 1,
+   "h": "Our fabrication standard",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "fe9516d",
+   "hash": "96801cbf3b",
+   "block": {
+    "type": "spec",
+    "look": "fusion-bench",
+    "h": "Our fabrication standard",
+    "caption": "FABRICATION · POLYPROPYLENE",
+    "cols": [
+     "Item",
+     "What we do",
+     "Standard and record"
+    ],
+    "rows": [
+     {
+      "p": "Material",
+      "v": "Unpigmented PP, [PP grade]",
+      "m": "[how PP parts are marked for traceability]",
+      "at": [
+       19,
+       21
+      ]
+     },
+     {
+      "p": "Joining",
+      "v": "[PP joining method]",
+      "m": "[PP joining standard]",
+      "at": [
+       47,
+       25
+      ]
+     },
+     {
+      "p": "Test joints",
+      "v": "[when test joints are made]",
+      "m": "[test joint examination method]",
+      "at": [
+       13,
+       46
+      ]
+     },
+     {
+      "p": "Joint examination",
+      "v": "Visual on [share of product-contact joints visually examined, %]",
+      "m": "[joint acceptance criteria]",
+      "at": [
+       57,
+       48
+      ]
+     },
+     {
+      "p": "Internal surface",
+      "v": "[PP internal surface specification, Ra µm]",
+      "m": "[basis for the PP surface specification]",
+      "at": [
+       93,
+       65
+      ]
+     },
+     {
+      "p": "Material certificates",
+      "v": "Each product-contact lot's marking checked against its certificate on receipt",
+      "m": "[PP material certificates]; material log"
+     },
+     {
+      "p": "Procedures and welders",
+      "v": "Written joining procedure; [number of qualified thermoplastic welders] welders",
+      "m": "[welder qualification standard for thermoplastics]"
+     },
+     {
+      "p": "Machines",
+      "v": "[joining machine calibration and data logging]",
+      "m": "[machine calibration interval]"
+     },
+     {
+      "p": "Cleaning before first use",
+      "v": "[pre-commissioning flush and cleaning procedure for PP], PW rinse to conductivity and total organic carbon (TOC) limits",
+      "m": "Cleaning certificate"
+     },
+     {
+      "p": "Pressure test",
+      "v": "[PP pressure test method]",
+      "m": "[PP pressure test standard]; witnessed"
+     }
+    ],
+    "nav": "Our standard",
+    "fold": 5,
+    "fold_noun": "rows",
+    "as": "callouts"
+   }
+  }
+ ]
+}

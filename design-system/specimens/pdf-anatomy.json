@@ -1,0 +1,48 @@
+{
+ "look": "pdf-anatomy",
+ "component": "PdfAnatomy",
+ "type": "spec",
+ "fields": "h, intro, cols [item, how we deliver it, note], rows [{p, v, m, hl, part}]. Callouts find their part by their words (search, bookmark, else number/revision/page: the footer); rows[].parts (optional) names them in order (\"search\", \"mark\", \"foot\").",
+ "best_for": "PdfAnatomy sets delivery terms as a figure plate of the delivered document: a PDF open in a viewer (bookmark pane, a search hit, the number and revision box in the footer of every page of the stack) with each part of the highlighted row's value as a callout on a leader, and the other rows beside it as signature lines or a large statement.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-documentation",
+   "slot": 3,
+   "h": "Delivery and signatures",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "3230e21e97",
+   "block": {
+    "type": "spec",
+    "nav": "Delivery",
+    "h": "Delivery and signatures",
+    "cols": [
+     "Item",
+     "How we deliver it",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Documents we write",
+      "v": "Searchable PDF, bookmarked, number and revision on every page",
+      "hl": true
+     },
+     {
+      "p": "Signatures",
+      "v": "[electronic signature method]; wet ink, scanned; or your validation system",
+      "m": "[Part 11 and Annex 11 controls]"
+     },
+     {
+      "p": "Retention",
+      "v": "Aquemi keeps a copy for [retention period, years]",
+      "m": "Lost documents reissued on request"
+     }
+    ],
+    "look": "pdf-anatomy"
+   }
+  }
+ ]
+}

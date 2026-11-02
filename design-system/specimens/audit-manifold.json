@@ -1,0 +1,76 @@
+{
+ "look": "audit-manifold",
+ "component": "AuditManifold",
+ "type": "table",
+ "fields": "as the evidence table: h, intro, cols [who, read, answer], rows [who, read, {t, link, intent} or text], fold, fold_noun.",
+ "best_for": "AuditManifold sets an evidence table (who reads, what they read, where we answer it) on a navy blueprint sheet whose column joins are pipe headers, so each reader's row reads as one route from the auditor to our answer.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-meddevice",
+   "slot": 3,
+   "h": "Who audits your water system",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "9eb4ee6961",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Auditors",
+    "h": "Who audits your water system",
+    "cols": [
+     "Auditor",
+     "What they read",
+     "Where we answer it"
+    ],
+    "rows": [
+     [
+      "Health Canada, through MDSAP (Class II to IV)",
+      "ISO 13485:2016: 6.3, 6.4.2, 7.5.2, 7.5.6, 7.5.7 and 7.6 calibration",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "FDA",
+      "QMSR (21 CFR 820) since 2026, built on ISO 13485; Part 11",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "EU notified body",
+      "EU MDR 2017/745 Annex I, 10.2 and 11, against EN ISO 13485",
+      {
+       "t": "Documentation package",
+       "link": "cmp-documentation"
+      }
+     ],
+     [
+      "Sterilization reviewer",
+      "ISO 11737-1; ISO 11137-2 or ISO 11135; ISO 17665",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Drug inspector, combination products",
+      "Drug part: GUI-0001, or 21 CFR Part 4 with Part 211",
+      {
+       "t": "Pharmaceutical",
+       "link": "ind-pharma"
+      }
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "auditors",
+    "look": "audit-manifold"
+   }
+  }
+ ]
+}

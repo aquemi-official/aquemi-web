@@ -1,0 +1,57 @@
+{
+ "look": "rail-modules",
+ "component": "RailModules",
+ "type": "options",
+ "fields": "items [{t, d, spot|icon, link}], base, fold (phones only), fold_noun.",
+ "best_for": "RailModules shows an options block as a macro close-up of a control panel backplate: one DIN rail across the plate and off both page edges, every option a module clipped onto it (terminal screws, status lamp, number, engraved icon, name), its line hanging on a leader under the plate.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "sys-monitoring",
+   "slot": 4,
+   "h": "Options",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "30040f0",
+   "hash": "adce0e4308",
+   "block": {
+    "type": "options",
+    "h": "Options",
+    "items": [
+     {
+      "t": "PLC and SCADA platform",
+      "d": "[PLC and SCADA platforms supported].",
+      "spot": "cpu"
+     },
+     {
+      "t": "Historian and Part 11 boundary",
+      "d": "Our historian, or your validated plant historian with ours as a buffer.",
+      "spot": "database"
+     },
+     {
+      "t": "Remote access",
+      "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
+      "spot": "network"
+     },
+     {
+      "t": "Integration",
+      "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant systems.",
+      "spot": "pid"
+     },
+     {
+      "t": "Control panels",
+      "d": "Built to [panel standard] and marked to [panel certification mark held, or field evaluation used].",
+      "spot": "monitor",
+      "link": "compliance#engineering"
+     }
+    ],
+    "nav": "Options",
+    "fold_noun": "options",
+    "as": "modules",
+    "base": "Controls",
+    "look": "rail-modules"
+   }
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "look": "cost-skid",
+ "component": "CostSkid",
+ "type": "spec",
+ "fields": "h, intro, cols [item, interval or amount, set by], rows [{p, v, m, link, part}], fold, fold_noun. part: the skid stage(s) the row belongs to, space-separated: panel, gen (RO and EDI), pre (carbon and softener), soft (softener and brine tank), uv, pump, drain. A row without a part has no leader. Desktop shows every row; the fold applies on phones, where the drawing runs full width with its numbers and the rows stack under it.",
+ "best_for": "CostSkid reads running costs off the system itself: one Purified Water skid in IsoKit line art beside the title, a numbered leader from each part a cost row belongs to, and the running-cost table under it led by the same numbers.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-service",
+   "slot": 1,
+   "h": "What it costs to run",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "92e31c62ca",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Running cost",
+    "anchor": "running-cost",
+    "h": "What it costs to run",
+    "cols": [
+     "Item",
+     "Interval or amount",
+     "Set by"
+    ],
+    "rows": [
+     {
+      "p": "Service plan, with calibration",
+      "v": "From [lowest plan price, CAD per year]",
+      "m": "System, instruments and distance",
+      "part": "panel"
+     },
+     {
+      "p": "Reverse osmosis (RO) membranes; electrodeionization (EDI) module or deionization (DI) resin",
+      "v": "[membrane and resin replacement intervals]",
+      "m": "Feed water and flow",
+      "part": "gen"
+     },
+     {
+      "p": "Filters, carbon, softener resin, ultraviolet (UV) lamp",
+      "v": "[filter, media and lamp intervals, months]",
+      "m": "Feed water and run hours",
+      "part": "pre uv"
+     },
+     {
+      "p": "Water to drain",
+      "v": "RO reject at [design recovery, %] recovery",
+      "m": "Feed water chemistry",
+      "part": "drain",
+      "link": "sys-pw",
+      "side": "out"
+     },
+     {
+      "p": "Energy",
+      "v": "[energy use, kWh per m³]",
+      "m": "Flow and feed temperature",
+      "part": "pump"
+     },
+     {
+      "p": "Sanitant and softener salt",
+      "v": "[PP loop sanitization method], [sanitization frequency]",
+      "m": "Your microbial trends; feed hardness",
+      "part": "soft"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "items"
+   }
+  }
+ ]
+}

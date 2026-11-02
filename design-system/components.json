@@ -279,6 +279,18 @@
    "summary": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine, beside a large drawing of the plant they inspect bleeding off the page."
   },
   {
+   "name": "BinderTabs",
+   "readme": "design-system/components/BinderTabs/README.md",
+   "preview": "design-system/components/BinderTabs/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1280",
+   "subtitle": "C&Q: stages filed as signed tab dividers in the open qualification binder",
+   "summary": "BinderTabs files ordered stages as tab dividers in the open qualification binder, each signed off before the next (look `binder-tabs`, steps block).",
+   "retired": true,
+   "look": "binder-tabs"
+  },
+  {
    "name": "BudgetBento",
    "readme": "design-system/components/BudgetBento/README.md",
    "preview": "design-system/components/BudgetBento/preview.html",
@@ -287,6 +299,18 @@
    "width": "1280",
    "subtitle": "Budget ranges as a Swiss bento: the whole package as the navy lead tile, three modules beside it, what moves the price and what is excluded as chips",
    "summary": "BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row."
+  },
+  {
+   "name": "CapaRing",
+   "readme": "design-system/components/CapaRing/README.md",
+   "preview": "design-system/components/CapaRing/preview.html",
+   "group": "Page sections",
+   "height": "660",
+   "width": "1100",
+   "subtitle": "NCR to CAPA close as one ring that closes, navy ground",
+   "summary": "CapaRing shows a closed-loop procedure (a defect held, decided, repaired, corrected, checked and reported) as steps around one ring that the water runs once and closes, the hold step drawn as a closed valve.",
+   "retired": true,
+   "look": "capa-ring"
   },
   {
    "name": "CaseStudy",
@@ -307,6 +331,18 @@
    "width": "1100",
    "subtitle": "Certification status as a ruler-framed readout beside mono readout lines",
    "summary": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's standard set giant and light, beside the items as mono readout lines whose titles are buttons that put them on the readout."
+  },
+  {
+   "name": "CertSeals",
+   "readme": "design-system/components/CertSeals/README.md",
+   "preview": "design-system/components/CertSeals/preview.html",
+   "group": "Page sections",
+   "height": "620",
+   "width": "1100",
+   "subtitle": "Certification status as sealed certificate tiles",
+   "summary": "CertSeals sets certification status as a Swiss row of certificate tiles: a seal (ring of ticks round the item's line icon), the standard or mark it is held to set large and light, what it covers and its status.",
+   "retired": true,
+   "look": "cert-seals"
   },
   {
    "name": "CheckLedger",
@@ -349,6 +385,18 @@
    "summary": "Closing is the call to action at the end of every page: one centred display headline on the navy band, one lead sentence and a large primary button, with the brand mark large and faint, cut by the top-left corner."
   },
   {
+   "name": "CodeIndex",
+   "readme": "design-system/components/CodeIndex/README.md",
+   "preview": "design-system/components/CodeIndex/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1100",
+   "subtitle": "The fabrication dossier as an index in huge outline filing codes",
+   "summary": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow.",
+   "retired": true,
+   "look": "code-index"
+  },
+  {
    "name": "Colophon",
    "readme": "design-system/components/Colophon/README.md",
    "preview": "design-system/components/Colophon/preview.html",
@@ -367,6 +415,18 @@
    "width": "1100",
    "subtitle": "Three ways in as route sheets on a navy band: proposal (this page) and supplier audit on limestone, urgent service as the dark sheet with its call bar; each a numbered water rail ending at its response clock",
    "summary": "ContactRoutes deals the ways into Aquemi onto a navy band as route sheets, each showing what happens after you act as a numbered sequence on a water rail that ends at its response clock, so a buyer on a contact page sees which route fits and what follows before the form."
+  },
+  {
+   "name": "CostBalance",
+   "readme": "design-system/components/CostBalance/README.md",
+   "preview": "design-system/components/CostBalance/preview.html",
+   "group": "Page sections",
+   "height": "860",
+   "width": "1100",
+   "subtitle": "Running costs as streams across a system boundary",
+   "summary": "CostBalance draws what it costs to run a system as a balance around it: a dashed system boundary with the treatment train inside, every running cost a stream wired in from the left, the water that leaves (to drain) wired out to the right.",
+   "retired": true,
+   "look": "cost-balance"
   },
   {
    "name": "CostSkid",
@@ -407,6 +467,18 @@
    "width": "1300",
    "subtitle": "GMP standards on a rail beside a sticky cutaway; the active card lights the parts it governs",
    "summary": "CutawayRail reads an evidence table beside one sticky drawing: a close isometric cutaway of the plant stays in view while one card per standard runs down a rail, and the card being read lights the parts it governs, with an \"active\" tag and a callout naming it."
+  },
+  {
+   "name": "CutoverSchedule",
+   "readme": "design-system/components/CutoverSchedule/README.md",
+   "preview": "design-system/components/CutoverSchedule/preview.html",
+   "group": "Page sections",
+   "height": "920",
+   "width": "1100",
+   "subtitle": "An upgrade as a schedule, the water line broken only at cutover",
+   "summary": "CutoverSchedule sets how an upgrade runs as a schedule: each step a row with its bar on one shared, not-to-scale timeline, a hold diamond where someone signs, and your system's water line above, broken only at the step that names a planned shutdown.",
+   "retired": true,
+   "look": "cutover-schedule"
   },
   {
    "name": "DecisionPlant",
@@ -549,6 +621,18 @@
    "summary": "FidelityLadder shows design stages as one drawing gaining detail on a navy blueprint band: every stage is a sheet with the same water package drawn at that stage's level (matrix, block route, P&ID, dimensioned isometric, frozen isometric, spools with their joints), joined by a run with a node per stage and a closed valve and \"Hold point\" stamp where you sign."
   },
   {
+   "name": "FusionBench",
+   "readme": "design-system/components/FusionBench/README.md",
+   "preview": "design-system/components/FusionBench/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1100",
+   "subtitle": "The fabrication standard as a shop drawing of the joining bench and its parts list",
+   "summary": "FusionBench shows a fabrication standard as a shop drawing and its parts list on a navy blueprint band: an isometric of the joining bench (pipe stock, clamps holding two lengths fused at a bead, heater plate, test coupon, procedure clipboard, data logger, test cap and gauge, open bore with the rinse water, certificate binders), a numbered balloon on the part each row is about, and the rows as the drawing's parts list.",
+   "retired": true,
+   "look": "fusion-bench"
+  },
+  {
    "name": "GateLine",
    "readme": "design-system/components/GateLine/README.md",
    "preview": "design-system/components/GateLine/preview.html",
@@ -587,6 +671,18 @@
    "width": "1100",
    "subtitle": "Minimum water grade by step, on three lanes",
    "summary": "GradeLanes shows the minimum water grade step by step: each step drops a tap into one of three lanes, Potable, PW and WFI."
+  },
+  {
+   "name": "GradeMains",
+   "readme": "design-system/components/GradeMains/README.md",
+   "preview": "design-system/components/GradeMains/preview.html",
+   "group": "Page sections",
+   "height": "960",
+   "width": "1100",
+   "subtitle": "Eight dosage forms dropping to the water mains they take: potable, PW, WFI (dashed, not supplied)",
+   "summary": "GradeMains draws a grade table as water mains on a navy blueprint: one horizontal main per water grade, each product or process step dropping a line to the main(s) it takes water from, with a valve at every tap.",
+   "retired": true,
+   "look": "grade-mains"
   },
   {
    "name": "GradeSwitch",
@@ -659,6 +755,18 @@
    "summary": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type."
   },
   {
+   "name": "InstrumentLimits",
+   "readme": "design-system/components/InstrumentLimits/README.md",
+   "preview": "design-system/components/InstrumentLimits/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1280",
+   "subtitle": "C&Q: the action level on a dial, the alert level on a chart recorder",
+   "summary": "InstrumentLimits reads a spec block's levels off two instruments: the action level as an analog dial with its red-line, the alert level as a chart recorder whose alert line is drawn from the data (look `instrument-limits`, spec block `as: \"gauges\"`).",
+   "retired": true,
+   "look": "instrument-limits"
+  },
+  {
    "name": "IssuedSet",
    "readme": "design-system/components/IssuedSet/README.md",
    "preview": "design-system/components/IssuedSet/preview.html",
@@ -697,6 +805,18 @@
    "width": "1200",
    "subtitle": "From pipe to turnover, told on one joint: navy title column, the joint sheet, the step rail with HP/WP codes",
    "summary": "JointSteps tells a fabrication sequence on one joint: a navy title column, a drawing sheet with the joint drawn large in isometric, and the steps on a numbered rail with hold point (HP) and witness point (WP) codes; as the rail is read, the sheet shows what that step does to the joint."
+  },
+  {
+   "name": "JointTag",
+   "readme": "design-system/components/JointTag/README.md",
+   "preview": "design-system/components/JointTag/preview.html",
+   "group": "Page sections",
+   "height": "1180",
+   "width": "1100",
+   "subtitle": "The joint log as a traceability tag hanging from the fused joint it records",
+   "summary": "JointTag shows a joint log as a traceability tag hanging from the joint it records: a polypropylene pipe in side view, fused at a double-rolled bead, runs off both page edges, and the tag on its wire carries one form box per log field, each field's number pinned on the part of the joint it describes.",
+   "retired": true,
+   "look": "joint-tag"
   },
   {
    "name": "LayerStack",
@@ -829,6 +949,18 @@
    "summary": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile."
   },
   {
+   "name": "ModulePlinth",
+   "readme": "design-system/components/ModulePlinth/README.md",
+   "preview": "design-system/components/ModulePlinth/preview.html",
+   "group": "Page sections",
+   "height": "930",
+   "width": "1100",
+   "subtitle": "Six redundancy options as modules on the shared site loop's plinth, numbered cards beside",
+   "summary": "ModulePlinth draws an options block with a base as modules standing on that base: an isometric plinth on a navy blueprint carries one block per option, each fed by a riser from the loop along the plinth, with numbered cards beside it.",
+   "retired": true,
+   "look": "module-plinth"
+  },
+  {
    "name": "NcrTiles",
    "readme": "design-system/components/NcrTiles/README.md",
    "preview": "design-system/components/NcrTiles/preview.html",
@@ -847,6 +979,18 @@
    "width": "1100",
    "subtitle": "Planned notes as a revision register, filtered by topic",
    "summary": "NotesRegister lists technical notes as a register table: date, note number, topic, title and standard, with topic filter chips and the latest or next planned note in a quiet panel beside it."
+  },
+  {
+   "name": "NumeralIndex",
+   "readme": "design-system/components/NumeralIndex/README.md",
+   "preview": "design-system/components/NumeralIndex/preview.html",
+   "group": "Page sections",
+   "height": "1460",
+   "width": "1100",
+   "subtitle": "Five situations as a Swiss index under huge outline numerals, each with its start page",
+   "summary": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table.",
+   "retired": true,
+   "look": "numeral-index"
   },
   {
    "name": "OptionChecker",
@@ -899,6 +1043,18 @@
    "summary": "OptionTaps shows options where they would join the system, as one limestone drawing sheet: the standard train drawn solid in isometric line, each option a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, a huge light title, and the options as numbered drawing notes in a narrow column whose numbers frame their part on the drawing."
   },
   {
+   "name": "PackMatrix",
+   "readme": "design-system/components/PackMatrix/README.md",
+   "preview": "design-system/components/PackMatrix/preview.html",
+   "group": "Page sections",
+   "height": "710",
+   "width": "1100",
+   "subtitle": "One pack per client and period: a matrix of packs, one pulled out and opened to its six documents",
+   "summary": "PackMatrix draws a docs block that is issued again and again (one pack per client and period) as that repetition: a matrix of identical packs, one pulled out and opened beside it as a sheet of its documents.",
+   "retired": true,
+   "look": "pack-matrix"
+  },
+  {
    "name": "ParamTiles",
    "readme": "design-system/components/ParamTiles/README.md",
    "preview": "design-system/components/ParamTiles/preview.html",
@@ -939,6 +1095,18 @@
    "summary": "PidRoutes draws a router table (situation, system, start with) as a P&ID on a navy blueprint ground: each situation is piped through its own valve to its system and on to where to start, and rows that share a destination page are tied by a header line."
   },
   {
+   "name": "PipeCollage",
+   "readme": "design-system/components/PipeCollage/README.md",
+   "preview": "design-system/components/PipeCollage/preview.html",
+   "group": "Page sections",
+   "height": "1455",
+   "width": "1300",
+   "subtitle": "Engineering standards as a Swiss poster: a geometric collage, one numbered piece per standard, editorial blocks on brackets",
+   "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a pressure vessel, a control panel, a flanged elbow, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets.",
+   "retired": true,
+   "look": "pipe-collage"
+  },
+  {
    "name": "PlanChecker",
    "readme": "design-system/components/PlanChecker/README.md",
    "preview": "design-system/components/PlanChecker/preview.html",
@@ -947,6 +1115,18 @@
    "width": "1100",
    "subtitle": "Service plans as a checker of navy and limestone tiles, terms aligned across plans",
    "summary": "PlanChecker compares service plans as a checker of square tiles on limestone: one column per plan alternating navy and limestone, a head tile with a huge light slash numeral, the plan name and who it suits, a terms tile whose rows line up across the plans, and each plan's own button."
+  },
+  {
+   "name": "PlanSheets",
+   "readme": "design-system/components/PlanSheets/README.md",
+   "preview": "design-system/components/PlanSheets/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1100",
+   "subtitle": "Service plans as calibration sheets side by side on navy, terms read across",
+   "summary": "PlanSheets compares service plans like calibration sheets laid side by side on a navy band: each plan a limestone sheet with a ruled scale strip, a huge light sheet number, the plan name, who it suits set large, its terms as ruled fields and its own button.",
+   "retired": true,
+   "look": "plan-sheets"
   },
   {
    "name": "PqCalendar",
@@ -1009,6 +1189,30 @@
    "summary": "Prose is running text in a SplitSection: the heading on the left, the first sentence as a large light lead, then the paragraphs in body size, with white space and nothing else around them."
   },
   {
+   "name": "RailModules",
+   "readme": "design-system/components/RailModules/README.md",
+   "preview": "design-system/components/RailModules/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1280",
+   "subtitle": "Options as modules clipped on a DIN rail, in macro close-up, each line on a leader under the plate",
+   "summary": "RailModules shows an options block as a macro close-up of a control panel backplate: one DIN rail across the plate and off both page edges, every option a module clipped onto it (terminal screws, status lamp, number, engraved icon, name), its line hanging on a leader under the plate.",
+   "retired": true,
+   "look": "rail-modules"
+  },
+  {
+   "name": "ReaderSplit",
+   "readme": "design-system/components/ReaderSplit/README.md",
+   "preview": "design-system/components/ReaderSplit/preview.html",
+   "group": "Page sections",
+   "height": "580",
+   "width": "1100",
+   "subtitle": "Auditors on the navy half, what they read on the limestone half, across one seam",
+   "summary": "ReaderSplit sets an evidence table on a band split down the middle: the readers (auditors, inspectors) on the navy half, what each reads and where we answer it across the seam on the limestone half, row against row.",
+   "retired": true,
+   "look": "reader-split"
+  },
+  {
    "name": "Readout",
    "readme": "design-system/components/Readout/README.md",
    "preview": "design-system/components/Readout/preview.html",
@@ -1039,6 +1243,18 @@
    "summary": "RecordSheet sets each process of a quality system and the records it leaves as a ruled schedule on a drawing sheet, every record followed by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records)."
   },
   {
+   "name": "RecordSlips",
+   "readme": "design-system/components/RecordSlips/README.md",
+   "preview": "design-system/components/RecordSlips/preview.html",
+   "group": "Page sections",
+   "height": "1420",
+   "width": "1100",
+   "subtitle": "Each process and the record slip it feeds out of its slot",
+   "summary": "RecordSlips shows each process of a quality system with the record it leaves: the process set large and light, what it controls under it, and at its right edge a slot from which a paper slip feeds out listing the records you can inspect, each with an empty tick box.",
+   "retired": true,
+   "look": "record-slips"
+  },
+  {
    "name": "RedlineSheet",
    "readme": "design-system/components/RedlineSheet/README.md",
    "preview": "design-system/components/RedlineSheet/preview.html",
@@ -1059,6 +1275,18 @@
    "summary": "RelatedLinks closes a page with the pages to read next as tiles hung off one pipe: each tile shows its index and section, a picture of the target page and its title with a `flow` arrow."
   },
   {
+   "name": "ReleaseRun",
+   "readme": "design-system/components/ReleaseRun/README.md",
+   "preview": "design-system/components/ReleaseRun/preview.html",
+   "group": "Page sections",
+   "height": "720",
+   "width": "1100",
+   "subtitle": "Four tech-transfer steps as Swiss columns under one water line, the release column navy",
+   "summary": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released.",
+   "retired": true,
+   "look": "release-run"
+  },
+  {
    "name": "RequestMenu",
    "readme": "design-system/components/RequestMenu/README.md",
    "preview": "design-system/components/RequestMenu/preview.html",
@@ -1069,6 +1297,30 @@
    "summary": "RequestMenu sets a table of what each request returns as a short menu on a limestone sheet: the title oversized across the top right, an isometric skid drawn at the left, and one line per returned item with its When and Cost."
   },
   {
+   "name": "ResponseClock",
+   "readme": "design-system/components/ResponseClock/README.md",
+   "preview": "design-system/components/ResponseClock/preview.html",
+   "group": "Page sections",
+   "height": "860",
+   "width": "1100",
+   "subtitle": "Fault steps read off a stopwatch dial",
+   "summary": "ResponseClock tells what happens when something goes wrong as a response clock: a large stopwatch dial with one numbered station per step around its rim, a running arc from the step that starts the clock, and the steps listed beside it with huge light numbers.",
+   "retired": true,
+   "look": "response-clock"
+  },
+  {
+   "name": "ResponseLanes",
+   "readme": "design-system/components/ResponseLanes/README.md",
+   "preview": "design-system/components/ResponseLanes/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1100",
+   "subtitle": "Response times by request as lanes on one clock: severities 1 to 4 under huge light numerals, then the other requests; every clause a stop with its placeholder clock",
+   "summary": "ResponseLanes draws a table of response times by request as lanes on one clock: each request runs from where you call or send through its first response into what follows, every clause a stop with its time beneath, and the severities set as a calm scale of huge light numerals.",
+   "retired": true,
+   "look": "response-lanes"
+  },
+  {
    "name": "RetrofitPlant",
    "readme": "design-system/components/RetrofitPlant/README.md",
    "preview": "design-system/components/RetrofitPlant/preview.html",
@@ -1077,6 +1329,18 @@
    "width": "1100",
    "subtitle": "Upgrades on the running plant: existing faint, the sheet moves in on the new work",
    "summary": "RetrofitPlant shows common upgrades on the running plant the way a retrofit drawing does: the existing plant faint on a navy blueprint, the stages an upgrade changes lit, and the upgrades as a tab list with the picked one's terms beside it."
+  },
+  {
+   "name": "ReturnSlips",
+   "readme": "design-system/components/ReturnSlips/README.md",
+   "preview": "design-system/components/ReturnSlips/preview.html",
+   "group": "Page sections",
+   "height": "1400",
+   "width": "1100",
+   "subtitle": "What each request returns: each situation set large, a pipe across, and the returned items dealt out as paper slips with When and Cost",
+   "summary": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields.",
+   "retired": true,
+   "look": "return-slips"
   },
   {
    "name": "ReviewReticles",
@@ -1169,6 +1433,30 @@
    "summary": "SectionTrain draws a pretreatment train as one sectional elevation on a limestone sheet, every vessel cut open so its bed shows and each bed holding what it caught, so the reader sees the water lose its particles, hardness, chlorine and fines stage by stage."
   },
   {
+   "name": "SensorLoop",
+   "readme": "design-system/components/SensorLoop/README.md",
+   "preview": "design-system/components/SensorLoop/preview.html",
+   "group": "Page sections",
+   "height": "1120",
+   "width": "1280",
+   "subtitle": "Signals drawn where they are measured: an instrumented loop with ISA balloons, schedule cards on leaders, the signal bus",
+   "summary": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into.",
+   "retired": true,
+   "look": "sensor-loop"
+  },
+  {
+   "name": "SheetPreviews",
+   "readme": "design-system/components/SheetPreviews/README.md",
+   "preview": "design-system/components/SheetPreviews/preview.html",
+   "group": "Page sections",
+   "height": "840",
+   "width": "1280",
+   "subtitle": "Pretreatment documents as a Swiss row of sheets, each thumbnail showing its kind",
+   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line.",
+   "retired": true,
+   "look": "sheet-previews"
+  },
+  {
    "name": "SheetStack",
    "readme": "design-system/components/SheetStack/README.md",
    "preview": "design-system/components/SheetStack/preview.html",
@@ -1177,6 +1465,30 @@
    "width": "1100",
    "subtitle": "Four loop documents as an exploded stack of drawing sheets",
    "summary": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it."
+  },
+  {
+   "name": "ShopFloor",
+   "readme": "design-system/components/ShopFloor/README.md",
+   "preview": "design-system/components/ShopFloor/preview.html",
+   "group": "Page sections",
+   "height": "900",
+   "width": "1100",
+   "subtitle": "The people you would work with, at their stations on the shop plan",
+   "summary": "ShopFloor places the company's people or roles where their work happens, as numbered stations on one isometric plan of the shop with a walking route through them, so a reader sees the shop and who works where before reading the cards.",
+   "retired": true,
+   "look": "shop-floor"
+  },
+  {
+   "name": "ShopRoute",
+   "readme": "design-system/components/ShopRoute/README.md",
+   "preview": "design-system/components/ShopRoute/preview.html",
+   "group": "Page sections",
+   "height": "940",
+   "width": "1100",
+   "subtitle": "A spool's route through the shop drawn as a floor plan, with hold and witness points",
+   "summary": "ShopRoute shows a fabrication sequence as the route a spool takes through the shop, drawn as a floor plan on a limestone sheet: one bay per step (three across, the second row returning right to left as a U-shaped shop runs) with its plan furniture, one route line through every bay with a stop per step, a gate after a hold point, and a ringed stop and tag for each witness point.",
+   "retired": true,
+   "look": "shop-route"
   },
   {
    "name": "SignalDial",
@@ -1247,6 +1559,30 @@
    "width": "1100",
    "subtitle": "Like for like or a change, on a drawing sheet with one dimensioned spare",
    "summary": "SpareSheet sets like-for-like rules on a limestone drawing sheet: the title, one spare drawn large as a dimensioned part drawing, and the four-column table under them, where choosing a row draws its part."
+  },
+  {
+   "name": "SparesKit",
+   "readme": "design-system/components/SparesKit/README.md",
+   "preview": "design-system/components/SparesKit/preview.html",
+   "group": "Page sections",
+   "height": "1200",
+   "width": "1100",
+   "subtitle": "Like-for-like rules on a spares tray, one pocket per part",
+   "summary": "SparesKit reads like-for-like rules off the spares kit: a tray (a shadow board seen from above) with one pocket per part, each part drawn flat in line art in its cut-out, and under it the answers: \"=\" like for like when, \"≠\" a change when, \"→\" what follows a change.",
+   "retired": true,
+   "look": "spares-kit"
+  },
+  {
+   "name": "SpineShelf",
+   "readme": "design-system/components/SpineShelf/README.md",
+   "preview": "design-system/components/SpineShelf/preview.html",
+   "group": "Page sections",
+   "height": "1180",
+   "width": "1100",
+   "subtitle": "Turnover package as binder spines on a shelf beside its index that opens",
+   "summary": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents.",
+   "retired": true,
+   "look": "spine-shelf"
   },
   {
    "name": "SpoolDossier",
@@ -1379,6 +1715,18 @@
    "summary": "SystemRun shows a modular package as one continuous water line drawn as a navy blueprint: drinking water enters at the left, runs through each system's equipment in order and leaves at the point of use, with a column per system under the drawing."
   },
   {
+   "name": "TankSection",
+   "readme": "design-system/components/TankSection/README.md",
+   "preview": "design-system/components/TankSection/preview.html",
+   "group": "Page sections",
+   "height": "1150",
+   "width": "1100",
+   "subtitle": "PP storage tank in section with six callouts and a parts schedule",
+   "summary": "TankSection reads fabrication parameters off a blueprint of the storage tank cut in half on a navy band, each parameter a numbered callout on the part it governs and the rest in a parts schedule.",
+   "retired": true,
+   "look": "tank-section"
+  },
+  {
    "name": "TankTiles",
    "readme": "design-system/components/TankTiles/README.md",
    "preview": "design-system/components/TankTiles/preview.html",
@@ -1429,6 +1777,18 @@
    "summary": "TimeCard sets a spec block of working terms as the shop's time card: a limestone card with its hang hole, a column header, one ruled line per term with a punch slot and number, and the block's note stamped at its foot, so pay and terms read as the paper a person on the floor handles each week."
   },
   {
+   "name": "ToleranceScales",
+   "readme": "design-system/components/ToleranceScales/README.md",
+   "preview": "design-system/components/ToleranceScales/preview.html",
+   "group": "Page sections",
+   "height": "800",
+   "width": "1100",
+   "subtitle": "Calibration acceptance as bands on rulers, figures large",
+   "summary": "ToleranceScales reads instrument calibration as acceptance bands: each instrument a row with its name and basis, and one readout per check with the acceptance set large and a ruler showing the nominal line and the band between the limits.",
+   "retired": true,
+   "look": "tolerance-scales"
+  },
+  {
    "name": "TraceLines",
    "readme": "design-system/components/TraceLines/README.md",
    "preview": "design-system/components/TraceLines/preview.html",
@@ -1437,6 +1797,30 @@
    "width": "1100",
    "subtitle": "Two requirements as transit lines beside a readout tile of the traced limit",
    "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests."
+  },
+  {
+   "name": "TwinRoute",
+   "readme": "design-system/components/TwinRoute/README.md",
+   "preview": "design-system/components/TwinRoute/preview.html",
+   "group": "Page sections",
+   "height": "1700",
+   "width": "1280",
+   "subtitle": "FAT and SAT: the test bay and your site as two routes, each test a station on both",
+   "summary": "TwinRoute draws a FAT versus SAT comparison as two routes the same skid takes: our test bay and your site, each test a station on both pipes (look `twin-route`, table block `as: \"versus\"`).",
+   "retired": true,
+   "look": "twin-route"
+  },
+  {
+   "name": "UrsGate",
+   "readme": "design-system/components/UrsGate/README.md",
+   "preview": "design-system/components/UrsGate/preview.html",
+   "group": "Page sections",
+   "height": "880",
+   "width": "1100",
+   "subtitle": "Five decisions along the project line, before the URS approval gate",
+   "summary": "UrsGate sets decisions that must be made before a gate as one project line running into that gate: decisions stand on stems above and below the line with huge light numerals, and the gate is a bar with its word as giant outline type cut by the page edge.",
+   "retired": true,
+   "look": "urs-gate"
   },
   {
    "name": "Versus",

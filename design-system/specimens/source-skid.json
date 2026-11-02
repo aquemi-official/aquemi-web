@@ -1,0 +1,61 @@
+{
+ "look": "source-skid",
+ "component": "SourceSkid",
+ "type": "grid",
+ "fields": "h, intro, items [{t, d, link}], parts [{t, by, part}].",
+ "best_for": "SourceSkid sets the people a buyer would work with beside the package they deliver: quiet ruled cards for the people on the left, and on the right one isometric skid whose numbered callouts split what the company designs and fabricates from what comes from the makers, in the words of the block's intro.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "about",
+   "slot": 1,
+   "h": "The people you would work with",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "c23e8d35dc",
+   "block": {
+    "type": "grid",
+    "nav": "Team",
+    "anchor": "people",
+    "h": "The people you would work with",
+    "intro": "We design and fabricate the package; membranes, electrodeionization (EDI) modules and instruments come from their makers.",
+    "items": [
+     {
+      "t": "Commercial lead",
+      "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts."
+     },
+     {
+      "t": "Industrial automation engineer",
+      "d": "[Full name] · [licence or qualification]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity.",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Modular manufacturing and design specialist",
+      "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
+      "link": "svc-fabrication"
+     }
+    ],
+    "parts": [
+     {
+      "t": "The package",
+      "by": "We design and fabricate",
+      "part": "package"
+     },
+     {
+      "t": "Instruments",
+      "by": "From their makers",
+      "part": "instruments"
+     },
+     {
+      "t": "Membranes and EDI modules",
+      "by": "From their makers",
+      "part": "modules"
+     }
+    ],
+    "look": "source-skid"
+   }
+  }
+ ]
+}

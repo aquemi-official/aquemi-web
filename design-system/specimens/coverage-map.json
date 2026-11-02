@@ -1,0 +1,163 @@
+{
+ "look": "coverage-map",
+ "component": "CoverageMap",
+ "type": "table",
+ "fields": "as a table: cols, rows, nav, and map: [{c: \"ON\", n: \"Ontario\", x: 4, y: 1, r: 0}] one tile per province or territory: code, name, column and row on the grid, and r, the index of the row that covers it (no invented places, only the tiles it lists); base: {c: \"ON\", label: \"Based in Ontario\"} (optional) the tile marked as home, with its label (copy from the page); its row is on the readout when the page opens.",
+ "best_for": "CoverageMap sets a coverage table by region as one column per region beside an instrument readout: the region in hand, its severity 1 on-site time as the large figure, a seal stamp naming the CRN body and the engineering seal, and the tile map with its provinces lit.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "contact-locations",
+   "slot": 2,
+   "h": "Can you support my site?",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "fbc08d32af",
+   "block": {
+    "type": "table",
+    "anchor": "coverage",
+    "nav": "Coverage",
+    "h": "Can you support my site?",
+    "cols": [
+     "Your region",
+     "Severity 1: technician on site, on a plan",
+     "Technician and parts from",
+     "Design registration (CRN), where required, and seal"
+    ],
+    "rows": [
+     [
+      "Ontario",
+      "[severity 1 on-site response time, hours] in [Ontario centres served]",
+      "[service base, city] · [stocking point for Ontario, city]",
+      "CRN: Technical Standards and Safety Authority (TSSA). Seal: Professional Engineers Ontario (PEO) · [certificate of authorization: yes or no]"
+     ],
+     [
+      "Quebec",
+      "[Quebec severity 1 on-site hours, or visits only] in [Quebec centres served]",
+      "[service base, city] · [stocking point for Quebec, city]. [language of service in Quebec]",
+      "CRN: Régie du bâtiment du Québec (RBQ). Seal: Ordre des ingénieurs du Québec (OIQ) · [OIQ member on staff: yes or no]"
+     ],
+     [
+      "British Columbia",
+      "[BC severity 1 on-site hours, or visits only] in [BC centres served]",
+      "[service base or partner, city] · [BC stocking point, city]",
+      "CRN: Technical Safety BC. Seal: Engineers and Geoscientists BC (EGBC) · [firm permit to practice: yes or no]"
+     ],
+     [
+      "Alberta",
+      "[Alberta severity 1 on-site hours, or visits only] in [Alberta centres served]",
+      "[service base or partner, city] · [Alberta stocking point, city]",
+      "CRN: Alberta Boilers Safety Association (ABSA). Seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA) · [permit to practice: yes or no]"
+     ],
+     [
+      "Other provinces and territories",
+      "[severity 1 on-site hours, or visits only]",
+      "[service base or partner, city] · [stocking point, city]",
+      "Authorities where the system is installed"
+     ]
+    ],
+    "as": "router",
+    "look": "coverage-map",
+    "map": [
+     {
+      "c": "YT",
+      "n": "Yukon",
+      "x": 0,
+      "y": 0,
+      "r": 4
+     },
+     {
+      "c": "NT",
+      "n": "Northwest Territories",
+      "x": 1,
+      "y": 0,
+      "r": 4
+     },
+     {
+      "c": "NU",
+      "n": "Nunavut",
+      "x": 2,
+      "y": 0,
+      "r": 4
+     },
+     {
+      "c": "BC",
+      "n": "British Columbia",
+      "x": 0,
+      "y": 1,
+      "r": 2
+     },
+     {
+      "c": "AB",
+      "n": "Alberta",
+      "x": 1,
+      "y": 1,
+      "r": 3
+     },
+     {
+      "c": "SK",
+      "n": "Saskatchewan",
+      "x": 2,
+      "y": 1,
+      "r": 4
+     },
+     {
+      "c": "MB",
+      "n": "Manitoba",
+      "x": 3,
+      "y": 1,
+      "r": 4
+     },
+     {
+      "c": "ON",
+      "n": "Ontario",
+      "x": 4,
+      "y": 1,
+      "r": 0
+     },
+     {
+      "c": "QC",
+      "n": "Quebec",
+      "x": 5,
+      "y": 1,
+      "r": 1
+     },
+     {
+      "c": "NL",
+      "n": "Newfoundland and Labrador",
+      "x": 6,
+      "y": 1,
+      "r": 4
+     },
+     {
+      "c": "NB",
+      "n": "New Brunswick",
+      "x": 5,
+      "y": 2,
+      "r": 4
+     },
+     {
+      "c": "PE",
+      "n": "Prince Edward Island",
+      "x": 6,
+      "y": 2,
+      "r": 4
+     },
+     {
+      "c": "NS",
+      "n": "Nova Scotia",
+      "x": 6,
+      "y": 3,
+      "r": 4
+     }
+    ],
+    "base": {
+     "c": "ON",
+     "label": "Based in Ontario"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "look": "membrane-atlas",
+ "component": "MembraneAtlas",
+ "type": "table",
+ "fields": "h, cols [condition, effect, design], rows [[t, effect, design]], fold, fold_noun.",
+ "best_for": "MembraneAtlas reads a feed-water table as a numbered sequence of membrane failures: each row headed by a navy tile with a huge light slash numeral over a micrograph of what that condition does to the membrane, then the condition, its effect and what we design for.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-pretreatment",
+   "slot": 2,
+   "h": "Canadian feed water and what it does",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "75f2b4f3e9",
+   "block": {
+    "type": "table",
+    "h": "Canadian feed water and what it does",
+    "cols": [
+     "Feed condition",
+     "Effect on your RO",
+     "What we design for"
+    ],
+    "rows": [
+     [
+      "Chloramine, used by many large utilities",
+      "Oxidizes membranes; its ammonia loads the electrodeionization (EDI) stage",
+      "Catalytic carbon, two beds or bisulfite; total chlorine alarm"
+     ],
+     [
+      "Winter near 2 °C, summer over 20 °C",
+      "Cold cuts RO output and silica solubility; warmth speeds growth",
+      "Membranes sized at your coldest month; RO sanitization set for summer"
+     ],
+     [
+      "Spring runoff and fall turnover",
+      "Turbidity and organics raise SDI and foul membranes",
+      "Media filter sized for the worst month; on-site SDI test [confirm]"
+     ],
+     [
+      "Hardness and alkalinity, highest in groundwater",
+      "Carbonate scales the last elements; CO₂ loads the EDI",
+      "Softeners sized on measured hardness; CO₂ handled on the Purified Water skid"
+     ],
+     [
+      "Silica",
+      "Passes softeners, scales the concentrate and limits recovery",
+      "Recovery limited at your coldest feed; antiscalant if needed"
+     ],
+     [
+      "Iron and manganese, mostly well water",
+      "Foul membranes and coat resin",
+      "Oxidation and catalytic media ahead of the softener"
+     ],
+     [
+      "No disinfectant after carbon",
+      "Biofilm in carbon and softeners sheds into the RO",
+      "Carbon replaced every [carbon replacement interval, months] or bisulfite instead; samples around each bed"
+     ]
+    ],
+    "nav": "Feed water",
+    "as": "failures",
+    "fold": 3,
+    "fold_noun": "feed conditions",
+    "look": "membrane-atlas",
+    "marks": [
+     "oxidize",
+     "cold",
+     "foul",
+     "scale",
+     "silica",
+     "coat",
+     "biofilm"
+    ]
+   }
+  }
+ ]
+}

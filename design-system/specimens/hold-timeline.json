@@ -1,0 +1,59 @@
+{
+ "look": "hold-timeline",
+ "component": "HoldTimeline",
+ "type": "steps",
+ "fields": "seen in its blocks: h, intro, items, ground (items: t, d, hold).",
+ "best_for": "HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a fused pipe joint, each stage's duration and deliverables hung off its node.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "services",
+   "slot": 1,
+   "h": "How long each stage takes, and what it leaves",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "614fbf7128",
+   "block": {
+    "type": "steps",
+    "h": "How long each stage takes, and what it leaves",
+    "intro": "Plan your review time at each hold point.",
+    "items": [
+     {
+      "t": "Design, [design to DQ, weeks]",
+      "d": "Compliance matrix, basis of design, piping and instrumentation diagrams, functional specification, design qualification.",
+      "hold": "Your quality unit"
+     },
+     {
+      "t": "Fabrication, [approved design to FAT, weeks]",
+      "d": "Material certificates, joint records, pressure test records."
+     },
+     {
+      "t": "FAT, [FAT duration, days]",
+      "d": "Approved protocol, raw data, deviation log, report. Release to ship.",
+      "hold": "Both parties"
+     },
+     {
+      "t": "Installation and SAT, [installation and SAT, days]",
+      "d": "Installation: [installation scope]. SAT on your utilities, reused tests flagged, SAT report.",
+      "hold": "You"
+     },
+     {
+      "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+      "d": "Protocols, reports, draft procedures.",
+      "hold": "Your quality unit"
+     },
+     {
+      "t": "Performance qualification (PQ), at least 12 months",
+      "d": "Protocol, sampling plan, phase reports, alert and action levels. Use from phase 2, after at least 2 weeks (WHO TRS 1033).",
+      "hold": "Your quality unit"
+     }
+    ],
+    "nav": "Stages",
+    "ground": "light",
+    "look": "hold-timeline"
+   }
+  }
+ ]
+}

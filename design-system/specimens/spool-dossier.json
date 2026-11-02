@@ -1,0 +1,47 @@
+{
+ "look": "spool-dossier",
+ "component": "SpoolDossier",
+ "type": "docs",
+ "fields": "h, intro, items [{t, d, key, link, intent, layer}]. layer (optional): joints, lots, quals, test (default from the part's words).",
+ "best_for": "SpoolDossier sets a document set beside the as-built isometric it indexes: the title huge and light at the top left, an isometric polypropylene spool at the right with numbered joints and lot-tagged lengths, and the documents in a hairline grid under them.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-fabrication",
+   "slot": 2,
+   "h": "The fabrication dossier",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "e89a8463b6",
+   "block": {
+    "type": "docs",
+    "look": "spool-dossier",
+    "h": "The fabrication dossier",
+    "items": [
+     {
+      "t": "Joint records",
+      "d": "[PP joint records kept]",
+      "key": true,
+      "link": "cmp-documentation#samples",
+      "intent": "Joint records extract"
+     },
+     {
+      "t": "Material log and PP certificates",
+      "d": "[PP material certificates], indexed by lot",
+      "key": true
+     },
+     {
+      "t": "Joining procedure and welder qualifications"
+     },
+     {
+      "t": "Pressure test and cleaning certificates",
+      "d": "[PP pressure test standard]; final rinse conductivity and TOC"
+     }
+    ],
+    "nav": "Dossier"
+   }
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+ "look": "test-sheet",
+ "component": "TestSheet",
+ "type": "steps",
+ "fields": "h, intro, items [{t, d, hold, link}], cols (optional header strip: [step, action, sign-off]; omitted, no strip), hold_label (the hold cell's label, default \"Hold point\"), tear (true: the last step sits below a perforation; default true when there are three or more steps).",
+ "best_for": "TestSheet sets ordered steps as the protocol's own test sheet lying on a limestone table: ruled rows, tick boxes, signed and stamped hold points, the last step torn off along a perforation (look `test-sheet`, steps block).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-fat-sat",
+   "slot": 2,
+   "h": "From protocol to release, then SAT",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "0fbd529495",
+   "block": {
+    "type": "steps",
+    "ground": "light",
+    "nav": "Process",
+    "h": "From protocol to release, then SAT",
+    "items": [
+     {
+      "t": "Draft protocol",
+      "d": "From the functional specification, sent [protocol issue before FAT, weeks] ahead. Each test traces to your user requirement specification (URS) in a traceability matrix."
+     },
+     {
+      "t": "Your approval",
+      "d": "Your team may add test cases and confirm which IQ/OQ will reuse. Nothing runs before your quality unit signs.",
+      "hold": "Your quality unit"
+     },
+     {
+      "t": "Internal dry run",
+      "d": "We run the full protocol first, so the witnessed FAT confirms rather than debugs [confirm]."
+     },
+     {
+      "t": "Witnessed run",
+      "d": "Results recorded as found; minor defects go on the punch list."
+     },
+     {
+      "t": "Report and release",
+      "d": "Raw data, deviation log and release decision. Skid drained, then [post-FAT drying and sealing method].",
+      "hold": "Both parties"
+     },
+     {
+      "t": "SAT on your site",
+      "d": "Critical tests re-run on site; the report feeds IQ/OQ."
+     }
+    ],
+    "look": "test-sheet"
+   }
+  }
+ ]
+}

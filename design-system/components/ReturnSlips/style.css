@@ -1,0 +1,82 @@
+/* ---------- ReturnSlips: what each request returns, as an exchange of paper slips on a limestone band ----------
+   A row per situation: what you have, large and light, on the left; a pipe with its arrow across the gutter; what comes
+   back on the right as paper slips (one per returned item) with "When" and "Cost" fields. The wrapper carries
+   data-theme="light" so the slips keep light tokens on the limestone ground in both themes. */
+.aq-return-slips-wrap { display: flex; flex-direction: column; gap: var(--space-12); color: var(--on-limestone); }
+.aq-return-slips { --rs-gut: var(--space-16); }
+.aq-return-slips__cols {
+  margin: 0 0 var(--space-4); display: grid; grid-template-columns: minmax(0, 3fr) var(--rs-gut, var(--space-16)) minmax(0, 9fr);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted);
+}
+.aq-return-slips__cols > span + span { grid-column: 3; }
+.aq-return-slips__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-return-slips__row {
+  position: relative; display: grid; grid-template-columns: minmax(0, 3fr) var(--rs-gut, var(--space-16)) minmax(0, 9fr); align-items: start;
+  padding-block: var(--space-8); border-bottom: 1px solid var(--line-strong);
+}
+
+/* What you have: index and the situation, large and light */
+.aq-return-slips__have { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: baseline; padding-right: var(--space-4); }
+.aq-return-slips__i { font: 400 13px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--on-limestone-muted); }
+.aq-return-slips__s { margin: 0; font: 300 32px/38px var(--font-sans); letter-spacing: -0.02em; color: var(--on-limestone); text-wrap: balance; }
+.aq-return-slips__s a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+/* The pipe: twin wall with the water arrow, from what you have to what comes back */
+.aq-return-slips__pipe { position: relative; align-self: start; margin-top: var(--space-4); height: var(--space-3);
+  border-block: 1.5px solid var(--line-strong); transform: scaleX(var(--aq-pipe, 1)); transform-origin: left center; }
+.aq-return-slips__pipe i { position: absolute; left: 0; right: var(--space-2); top: 50%; height: 0; border-top: 1.5px solid var(--flow);
+  transform: scaleX(var(--aq-water, 1)); transform-origin: left center; }
+.aq-return-slips__pipe::after { content: ""; position: absolute; right: calc(-1 * var(--space-1)); top: 50%; width: var(--space-3); height: var(--space-3);
+  border-top: 1.5px solid var(--flow); border-right: 1.5px solid var(--flow); transform: translateY(-50%) rotate(45deg); }
+
+/* The slips: paper with a folded corner and a ruled header, the returned item, then When and Cost */
+.aq-return-slips__slips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); row-gap: 0; }
+.aq-return-slips__slip:nth-child(n+5) { margin-top: var(--space-4); }
+.aq-return-slips__slip:only-child { grid-column: span 2; }
+.aq-return-slips__slip {
+  position: relative; display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: var(--space-3); min-width: 0;
+  padding: var(--space-4);
+  background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line);
+  clip-path: polygon(0 0, calc(100% - var(--space-6)) 0, 100% var(--space-6), 100% 100%, 0 100%);
+}
+.aq-return-slips__slip::after { content: ""; position: absolute; right: 0; top: 0; width: var(--space-6); height: var(--space-6);
+  background: var(--line-strong); clip-path: polygon(0 0, 100% 100%, 0 100%); }
+.aq-return-slips__ruling { display: flex; gap: var(--space-1); }
+.aq-return-slips__ruling i { display: block; height: 3px; width: var(--space-6); background: var(--line-strong); }
+.aq-return-slips__ruling i.is-k { background: var(--flow); }
+.aq-return-slips__t { margin: 0; font: 400 17px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-return-slips__t a { color: var(--flow); text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.aq-return-slips__f { margin: 0; display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-3); border-top: 1px dashed var(--line-strong); }
+.aq-return-slips__f > div { display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-return-slips__f dt { display: inline-flex; align-items: center; gap: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-return-slips__f dd { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-return-slips__ic { width: 12px; height: 12px; background-color: var(--ink-muted); }
+.aq-return-slips .aq-fold__btn { color: var(--on-limestone-muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .aq-return-slips__slip { transition: transform 240ms cubic-bezier(0.2, 0, 0, 1), border-color 240ms; }
+  .aq-return-slips__pipe { transition: border-color 240ms; }
+  .aq-return-slips__row:hover .aq-return-slips__slip, .aq-return-slips__row:focus-within .aq-return-slips__slip { transform: translateY(calc(-1 * var(--space-1))); border-color: var(--line-strong); }
+  .aq-return-slips__row:hover .aq-return-slips__pipe, .aq-return-slips__row:focus-within .aq-return-slips__pipe { border-color: var(--flow); }
+}
+
+@container (max-width: 860px) {
+  .aq-return-slips-wrap { gap: var(--space-8); }
+  .aq-return-slips__cols { display: none; }
+  .aq-return-slips__row { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-6); row-gap: var(--space-3); }
+  .aq-return-slips__have { grid-template-columns: var(--space-8) minmax(0, 1fr); padding-right: 0; }
+  .aq-return-slips__s { font-size: 24px; line-height: 30px; }
+  /* the pipe turns down: from the situation into its slips */
+  .aq-return-slips__pipe { justify-self: start; margin: 0 0 0 calc(var(--space-8) + var(--space-2)); width: var(--space-3); height: var(--space-8);
+    border-block: 0; border-inline: 1.5px solid var(--line-strong); transform: scaleY(var(--aq-pipe, 1)); transform-origin: center top; }
+  .aq-return-slips__pipe i { left: 50%; right: auto; top: 0; bottom: var(--space-2); height: auto; border-top: 0; border-left: 1.5px solid var(--flow);
+    transform: scaleY(var(--aq-water, 1)); transform-origin: center top; }
+  .aq-return-slips__pipe::after { right: auto; left: 50%; top: auto; bottom: calc(-1 * var(--space-1)); transform: translateX(-50%) rotate(135deg); }
+  .aq-return-slips__slips { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+  .aq-return-slips__slip { display: flex; flex-direction: column; gap: var(--space-3); }
+  .aq-return-slips__slip:nth-child(n+5) { margin-top: 0; }
+  .aq-return-slips__slip:only-child { grid-column: auto; }
+  .aq-return-slips__f > div { display: grid; grid-template-columns: minmax(0, 4.5rem) minmax(0, 1fr); column-gap: var(--space-3); align-items: baseline; }
+  .aq-return-slips__t { font-size: 16px; line-height: 24px; }
+}
+.aq-return-slips-sec .aq-sec-head .aq-h1 { color: var(--on-limestone); }

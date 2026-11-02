@@ -1,0 +1,100 @@
+/* ---------- SpineShelf: the turnover package as binder spines on one shelf beside its index that opens (look
+   "spine-shelf"). Spines are limestone (every third a shade apart), the key section navy; a spine's width follows how
+   many documents its section holds. Opening a section pulls its spine up off the shelf with a flow edge. ---------- */
+.aq-spine-shelf-sec { position: relative; }
+.aq-spine-shelf__index { min-width: 0; }
+.aq-spine-shelf { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-16); align-items: start; }
+
+/* The shelf (decoration; the index is the content) */
+.aq-spine-shelf__shelf { position: sticky; top: var(--space-24); padding-top: var(--space-12); }
+.aq-spine-shelf__row { display: flex; align-items: flex-end; gap: calc(var(--space-1) / 2); height: calc(var(--space-32) * 3.25); padding: 0 var(--space-2); }
+.aq-spine-shelf__spine { position: relative; flex: var(--w, 4) 1 0; min-width: calc(var(--space-6) + var(--space-2)); height: 100%; cursor: pointer; }
+.aq-spine-shelf__body {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) 0 var(--space-4); background: var(--limestone); color: var(--on-limestone);
+  border: 1px solid color-mix(in srgb, var(--on-limestone) 26%, transparent);
+  transition: transform 320ms cubic-bezier(0.2, 0, 0, 1), box-shadow 320ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-spine-shelf__spine:nth-child(3n+2) .aq-spine-shelf__body { background: color-mix(in srgb, var(--limestone) 90%, var(--on-limestone)); }
+.aq-spine-shelf__spine:nth-child(3n) .aq-spine-shelf__body { background: color-mix(in srgb, var(--limestone) 60%, var(--on-navy)); }
+/* binding bands near top and foot */
+.aq-spine-shelf__body::before, .aq-spine-shelf__body::after { content: ""; position: absolute; left: 0; right: 0; height: 0; border-top: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); }
+.aq-spine-shelf__body::before { top: var(--space-8); }
+.aq-spine-shelf__body::after { bottom: var(--space-12); }
+.aq-spine-shelf__no { font: 500 12px/16px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
+.aq-spine-shelf__holder {
+  flex: 1 1 auto; min-height: 0; display: flex; justify-content: center; width: calc(100% - var(--space-2) * 2); max-width: var(--space-8);
+  margin-top: var(--space-3); padding: var(--space-3) 0; background: color-mix(in srgb, var(--limestone) 30%, var(--on-navy)); border: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); overflow: hidden;
+}
+.aq-spine-shelf__name { writing-mode: vertical-rl; transform: rotate(180deg); font: 400 13px/16px var(--font-sans); color: var(--on-limestone); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 100%; }
+.aq-spine-shelf__ring { flex: none; width: var(--space-3); height: var(--space-3); margin-bottom: var(--space-1); border: 1.5px solid color-mix(in srgb, var(--on-limestone) 55%, transparent); border-radius: var(--radius-pill); }
+/* the key section: the navy spine */
+.aq-spine-shelf__spine.is-key .aq-spine-shelf__body { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+.aq-spine-shelf__spine.is-key .aq-spine-shelf__body::before, .aq-spine-shelf__spine.is-key .aq-spine-shelf__body::after { border-top-color: color-mix(in srgb, var(--on-navy) 30%, transparent); }
+.aq-spine-shelf__spine.is-key .aq-spine-shelf__holder { background: color-mix(in srgb, var(--navy) 80%, var(--on-navy)); border-color: color-mix(in srgb, var(--on-navy) 35%, transparent); }
+.aq-spine-shelf__spine.is-key .aq-spine-shelf__name { color: var(--on-navy); }
+.aq-spine-shelf__spine.is-key .aq-spine-shelf__ring { border-color: var(--on-navy-muted); }
+/* lifted (pointing at its row) and pulled (its section open) */
+.aq-spine-shelf__spine.is-hover .aq-spine-shelf__body { transform: translateY(calc(-1 * var(--space-3))); }
+.aq-spine-shelf__spine.is-open .aq-spine-shelf__body { transform: translateY(calc(-1 * var(--space-8))); box-shadow: inset 0 2px 0 var(--flow); }
+.aq-spine-shelf__board { display: block; height: var(--space-3); border-top: 1.5px solid var(--line-strong); border-bottom: 1px solid var(--line); background: var(--surface-sunken); }
+.aq-spine-shelf__cap { margin: var(--space-3) 0 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* The index */
+.aq-spine-shelf__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-spine-shelf__item { border-bottom: 1px solid var(--line); }
+.aq-spine-shelf__sum {
+  list-style: none; display: grid; grid-template-columns: var(--space-12) auto minmax(var(--space-8), 1fr) var(--space-8); align-items: center; column-gap: var(--space-4);
+  min-height: calc(var(--space-12) + var(--space-3)); cursor: pointer; transition: background 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-spine-shelf__sum::-webkit-details-marker { display: none; }
+.aq-spine-shelf__sum:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-spine-shelf__item.is-hover .aq-spine-shelf__sum { background: color-mix(in srgb, var(--flow-tint) 55%, transparent); }
+.aq-spine-shelf__n { font: 400 13px/24px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); padding-left: var(--space-2); }
+.aq-spine-shelf__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.aq-spine-shelf__lead { align-self: center; height: 0; margin-top: var(--space-2); border-bottom: 1.5px dotted var(--line-strong); }
+.aq-spine-shelf__mark { position: relative; justify-self: end; width: var(--space-6); height: var(--space-6); margin-right: var(--space-2); }
+.aq-spine-shelf__mark::before, .aq-spine-shelf__mark::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--space-4); height: 0; border-top: 1.5px solid var(--ink-muted); transform: translate(-50%, -50%); transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-spine-shelf__mark::after { transform: translate(-50%, -50%) rotate(90deg); }
+details[open] > .aq-spine-shelf__sum .aq-spine-shelf__mark::after { transform: translate(-50%, -50%) rotate(0deg); }
+details[open] > .aq-spine-shelf__sum .aq-spine-shelf__n, .aq-spine-shelf__item.is-key .aq-spine-shelf__n { color: var(--flow); }
+details[open] > .aq-spine-shelf__sum .aq-spine-shelf__t { font-weight: 400; }
+.aq-spine-shelf__docs {
+  list-style: none; margin: 0; padding: var(--space-1) var(--space-8) var(--space-6) calc(var(--space-12) + var(--space-4));
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-3);
+}
+.aq-spine-shelf__docs li { position: relative; padding-left: var(--space-6); font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+/* each document a small sheet with a folded corner */
+.aq-spine-shelf__docs li::before {
+  content: ""; position: absolute; left: 0; top: var(--space-1); width: var(--space-3); height: var(--space-4);
+  border: 1px solid var(--line-strong); background: var(--surface-raised); clip-path: polygon(0 0, 66% 0, 100% 28%, 100% 100%, 0 100%);
+}
+.aq-spine-shelf__item.is-key .aq-spine-shelf__docs li::before { border-color: var(--flow); }
+
+/* Fold: desktop shows the whole index; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-spine-shelf__item.aq-fold-x { display: block; }
+.aq-fold:has(> .aq-spine-shelf__list) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .aq-spine-shelf__body, .aq-spine-shelf__mark::before, .aq-spine-shelf__mark::after { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-spine-shelf { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-spine-shelf__shelf { position: relative; top: auto; padding-top: var(--space-8); }
+  .aq-spine-shelf__row { height: calc(var(--space-32) + var(--space-8)); padding: 0; gap: 1px; }
+  .aq-spine-shelf__spine { min-width: 0; }
+  .aq-spine-shelf__holder { display: none; }
+  .aq-spine-shelf__body { padding-top: var(--space-2); }
+  .aq-spine-shelf__body::before { top: var(--space-6); }
+  .aq-spine-shelf__body::after { bottom: var(--space-8); }
+  .aq-spine-shelf__no { writing-mode: vertical-rl; transform: rotate(180deg); }
+  .aq-spine-shelf__ring { margin-top: auto; }
+  .aq-spine-shelf__spine.is-open .aq-spine-shelf__body { transform: translateY(calc(-1 * var(--space-6))); }
+  .aq-spine-shelf__sum { grid-template-columns: var(--space-8) minmax(0, 1fr) var(--space-8); column-gap: var(--space-3); min-height: var(--space-12); padding-block: var(--space-2); }
+  .aq-spine-shelf__lead { display: none; }
+  .aq-spine-shelf__n { padding-left: 0; font-size: 12px; }
+  .aq-spine-shelf__t { font-size: 19px; line-height: 26px; }
+  .aq-spine-shelf__docs { grid-template-columns: minmax(0, 1fr); padding: 0 0 var(--space-4) calc(var(--space-8) + var(--space-3)); row-gap: var(--space-2); }
+  .aq-spine-shelf__docs li { font-size: 14px; line-height: 21px; }
+  .aq-fold:not(.is-open) .aq-spine-shelf__item.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-spine-shelf__list) > .aq-fold__btn { display: flex; }
+}

@@ -1,0 +1,62 @@
+{
+ "look": "strata-run",
+ "component": "StrataRun",
+ "type": "diagram",
+ "fields": "stages [{t, d, icon|spot, link, art}], base, base_link, caption. art: what stands on the slab, one of feed, pretreatment, generation, storage, loop, outlets (default by position). link: a page id or page#anchor.",
+ "best_for": "StrataRun draws a process diagram as one water run stepping down a terrace of stacked paper slabs, so the reader sees the whole package from feed water to points of use as a single route through real equipment.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "systems",
+   "slot": 0,
+   "h": "How the systems fit together",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "7bec53a443",
+   "block": {
+    "type": "diagram",
+    "h": "How the systems fit together",
+    "stages": [
+     {
+      "t": "Feed water",
+      "icon": "droplet",
+      "d": "City or well drinking water that changes with the season."
+     },
+     {
+      "t": "Pretreatment",
+      "spot": "pretreatment",
+      "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
+      "link": "sys-pretreatment"
+     },
+     {
+      "t": "PW generation",
+      "spot": "ro-skid",
+      "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria.",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Storage",
+      "spot": "storage-tank",
+      "d": "Buffers generation against peak demand.",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Distribution loop",
+      "spot": "loop",
+      "d": "Keeps water moving from the tank to every outlet and back.",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Points of use",
+      "icon": "valve"
+     }
+    ],
+    "base": "Monitoring and controls · conductivity and TOC",
+    "look": "strata-run",
+    "base_link": "sys-monitoring"
+   }
+  }
+ ]
+}

@@ -1,0 +1,73 @@
+{
+ "look": "signature-blocks",
+ "component": "SignatureBlocks",
+ "type": "table",
+ "fields": "as the roles table: cols [document, written, reviewed], rows [[document, written, reviewed]] (strings or {t, link}), fold, fold_noun, key (optional [Aquemi, your side, both] labels; default \"Aquemi\", \"Your team\", \"Shared\").",
+ "best_for": "SignatureBlocks sets a roles table (who writes, who reviews) as the signature block at the foot of each document, the party in each field shown by its box (look `signature-blocks`, table block `as: \"roles\"`).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-cq",
+   "slot": 1,
+   "h": "Who writes, who reviews",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "0319234472",
+   "block": {
+    "type": "table",
+    "as": "roles",
+    "nav": "Who signs",
+    "anchor": "roles",
+    "h": "Who writes, who reviews",
+    "intro": "The validation master plan stays yours.",
+    "cols": [
+     "Document or activity",
+     "Written or done by",
+     "Reviewed by"
+    ],
+    "rows": [
+     [
+      "Risk assessment and C&Q plan",
+      "Aquemi drafts from your requirements (URS)",
+      "Your validation team"
+     ],
+     [
+      "FAT, SAT, IQ and OQ protocols",
+      "Aquemi",
+      "Your validation team"
+     ],
+     [
+      "IQ and OQ execution",
+      "Aquemi [executing staff: own engineers or named partner], you witness",
+      "Your validation team"
+     ],
+     [
+      "PQ protocol and sampling plan",
+      "You, or Aquemi drafts for you",
+      "Both teams and your laboratory"
+     ],
+     [
+      "PQ sampling and testing",
+      "Your operators and laboratory",
+      "Your quality control"
+     ],
+     [
+      "Alert and action levels",
+      "Aquemi recommends from the data",
+      "Your quality control"
+     ],
+     [
+      "Phase reports and final summary",
+      "Aquemi drafts from executed records",
+      "Your validation team"
+     ]
+    ],
+    "fold": 5,
+    "fold_noun": "documents",
+    "look": "signature-blocks"
+   }
+  }
+ ]
+}

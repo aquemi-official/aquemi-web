@@ -1,0 +1,44 @@
+{
+ "look": "tie-in-run",
+ "component": "TieInRun",
+ "type": "steps",
+ "fields": "as steps: h, intro, items [{t, d, link}] (the first four drive the drawing's stages).",
+ "best_for": "TieInRun tells ordered steps on one sticky drawing of a qualified loop gaining a new outlet: as the steps pass, the outlet is planned, its change boundary ruled, the branch built and tied in, and the water released into it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-cdmo",
+   "slot": 3,
+   "h": "From signed program to released water",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "2a9e1fa891",
+   "block": {
+    "type": "steps",
+    "nav": "Tech transfer",
+    "h": "From signed program to released water",
+    "items": [
+     {
+      "t": "Water scope review",
+      "d": "From your products, markets and PPQ date: the water specification, in [scope review turnaround, working days]."
+     },
+     {
+      "t": "Change control",
+      "d": "Before design: change description, risk assessment and requalification scope for you and each affected client."
+     },
+     {
+      "t": "Build and tie in",
+      "d": "New outlets or a skid, built by us; tie-in in a campaign gap or shutdown."
+     },
+     {
+      "t": "Release",
+      "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
+     }
+    ],
+    "look": "tie-in-run"
+   }
+  }
+ ]
+}

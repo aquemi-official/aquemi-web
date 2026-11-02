@@ -1,0 +1,44 @@
+/* ---------- SheetPreviews: documents as a Swiss row of sheets, each thumbnail showing what kind of document it is ---------- */
+.aq-sheet-previews__top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
+.aq-sheet-previews__more { margin: 0; }
+.aq-sheet-previews { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+  column-gap: var(--space-6); row-gap: var(--space-12); border-top: 1px solid var(--ink); }
+.aq-sheet-previews__item { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); }
+.aq-sheet-previews__num { display: block; margin-bottom: var(--space-4); font: 200 112px/96px var(--font-sans); letter-spacing: -0.06em; color: var(--line-strong);
+  font-variant-numeric: tabular-nums; }
+.aq-sheet-previews__item.is-key .aq-sheet-previews__num { color: var(--ink); }
+
+/* The sheet: limestone paper with a dog-eared corner; the thumbnail in fine on-limestone lines */
+.aq-sheet-previews__sheet { position: relative; width: 100%; max-width: 240px; margin-bottom: var(--space-4); transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-sheet-previews__item:hover .aq-sheet-previews__sheet, .aq-sheet-previews__item:focus-within .aq-sheet-previews__sheet { transform: translateY(calc(-1 * var(--space-2))); }
+.aq-sheet-previews__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-sheet-previews__svg * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.aq-sheet-previews__paper { fill: var(--limestone); }
+.aq-sheet-previews__fold { fill: var(--surface); }
+.aq-sheet-previews__ln, .aq-sheet-previews__box { fill: none; stroke: var(--on-limestone); stroke-width: 1; }
+.aq-sheet-previews__box { fill: var(--surface-raised); }
+.aq-sheet-previews__thin { fill: none; stroke: var(--on-limestone-muted); stroke-width: 0.75; }
+.aq-sheet-previews__txt { fill: none; stroke: var(--on-limestone-muted); stroke-width: 3; opacity: 0.45; stroke-linecap: butt; }
+.aq-sheet-previews__hatch { fill: none; stroke: var(--flow); stroke-width: 1; }
+.aq-sheet-previews__curve { fill: none; stroke: var(--flow); stroke-width: 2; }
+.aq-sheet-previews__curve--b { stroke: var(--on-limestone); stroke-dasharray: 5 4; }
+.aq-sheet-previews__seal { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+.aq-sheet-previews__bar { fill: none; stroke: var(--on-limestone); stroke-width: 1.5; stroke-linecap: butt; }
+.aq-sheet-previews__codebox { fill: none; stroke: var(--on-limestone); stroke-width: 1; }
+.aq-sheet-previews__code-t { font: 500 11px/1 var(--font-mono); fill: var(--on-limestone); text-anchor: middle; letter-spacing: 0.06em; }
+.aq-sheet-previews__tiny { font: 400 8px/1 var(--font-mono); fill: var(--on-limestone-muted); text-anchor: middle; }
+
+.aq-sheet-previews__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.1em; color: var(--ink-subtle); }
+.aq-sheet-previews__item.is-key .aq-sheet-previews__code { color: var(--flow); }
+.aq-sheet-previews__t { margin: 0; font: 500 18px/25px var(--font-sans); color: var(--ink); }
+.aq-sheet-previews__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-sheet-previews) > .aq-fold__btn { display: none; }
+
+@container (max-width: 860px) {
+  .aq-sheet-previews { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: var(--space-8); }
+  .aq-sheet-previews__num { font-size: 64px; line-height: 56px; margin-bottom: var(--space-2); }
+  .aq-sheet-previews__t { font-size: 16px; line-height: 22px; }
+  .aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-sheet-previews) > .aq-fold__btn { display: flex; }
+}

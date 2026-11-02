@@ -1,0 +1,57 @@
+{
+ "look": "layer-stack",
+ "component": "LayerStack",
+ "type": "diagram",
+ "fields": "stages [{t, d, icon, art, key}], caption. art: instruments | plc | hmi | historian | network (default by position). key: true draws that plate navy.",
+ "best_for": "LayerStack shows the layers of one system (field instruments up to the plant network) as an exploded isometric stack of machined plates, each carrying its equipment, with the labels on leaders from the plate corners.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-monitoring",
+   "slot": 0,
+   "h": "How the controls are built",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "6f64307bda",
+   "block": {
+    "type": "diagram",
+    "h": "How the controls are built",
+    "stages": [
+     {
+      "t": "Instruments",
+      "d": "Measure total organic carbon (TOC), conductivity and temperature online.",
+      "icon": "conductivity",
+      "art": "instruments"
+     },
+     {
+      "t": "Controller (PLC)",
+      "d": "Runs sequences, interlocks and divert, even if every layer above fails.",
+      "art": "plc",
+      "key": true
+     },
+     {
+      "t": "Operator panel (HMI)",
+      "d": "Where operators see alarms, trends and sanitization status.",
+      "icon": "monitor",
+      "art": "hmi"
+     },
+     {
+      "t": "Supervisory control (SCADA) historian",
+      "d": "Keeps time-stamped records with an audit trail.",
+      "icon": "database",
+      "art": "historian"
+     },
+     {
+      "t": "Plant network",
+      "d": "Reaches your network through a demilitarized zone (DMZ).",
+      "art": "network"
+     }
+    ],
+    "nav": "Architecture",
+    "look": "layer-stack"
+   }
+  }
+ ]
+}

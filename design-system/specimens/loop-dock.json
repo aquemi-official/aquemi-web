@@ -1,0 +1,55 @@
+{
+ "look": "loop-dock",
+ "component": "LoopDock",
+ "type": "options",
+ "fields": "h, intro, items [{t, d, spot | icon, part, link}], spot (base glyph), base (default \"Base skid\"), fold, fold_noun. part: the drawing ids the option adds, an array of \"uv\", \"cool\", \"mod\" (default by position: uv, mod, cool; order the items left to right along the loop so the leaders never cross). The fold applies on phones only.",
+ "best_for": "LoopDock shows a loop's options where they fit on the loop: one isometric storage and distribution loop on a full-width navy band, a numbered marker on the part each option adds and a leader from it down to the option's caption on the limestone below.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-storage",
+   "slot": 5,
+   "h": "Options",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "9f61a2f492",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Options",
+    "items": [
+     {
+      "t": "UV on the supply",
+      "d": "After the tank, before the first outlet. [UV, standard or option]",
+      "spot": "uv",
+      "part": [
+       "uv"
+      ]
+     },
+     {
+      "t": "Prefabricated loop modules",
+      "d": "Pump, exchanger, UV and instruments on one skid; [100 %] tested with water before shipping.",
+      "spot": "pump",
+      "part": [
+       "mod",
+       "uv"
+      ]
+     },
+     {
+      "t": "Point-of-use coolers",
+      "d": "Single-user coolers that flush to drain until temperature and time are met.",
+      "spot": "heat-exchanger",
+      "part": [
+       "cool"
+      ]
+     }
+    ],
+    "nav": "Options",
+    "spot": "storage-tank",
+    "look": "loop-dock"
+   }
+  }
+ ]
+}

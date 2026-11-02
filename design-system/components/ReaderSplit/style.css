@@ -1,0 +1,60 @@
+/* ---------- ReaderSplit: readers on the navy half, what they read on the limestone half, row against row across a seam ---------- */
+.aq-reader-split-sec { position: relative; overflow: hidden; background: var(--limestone); color: var(--on-limestone); }
+.aq-reader-split__ground { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: var(--navy); transform-origin: 0 50%; }
+.aq-reader-split-sec > .aq-in { position: relative; }
+.aq-reader-split { --gap: var(--space-16); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gap, 64px); }
+.aq-reader-split__head { grid-column: 1; color: var(--on-navy); padding-right: var(--space-8); }
+.aq-reader-split__head .aq-h1 { color: var(--on-navy); }
+.aq-reader-split__head .aq-lead { color: var(--on-navy-muted); }
+.aq-reader-split__colh { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gap, 64px); margin: 0 0 var(--space-3); padding-top: var(--space-12);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-reader-split__colh span:first-child { color: var(--on-navy-muted); }
+.aq-reader-split__colh span + span { color: var(--on-limestone-muted); }
+.aq-reader-split > .aq-fold, .aq-reader-split > .aq-reader-split__rows { grid-column: 1 / -1; }
+.aq-reader-split-sec .aq-fold__btn { color: var(--on-limestone); border-bottom-color: color-mix(in srgb, var(--on-limestone) 25%, transparent); padding-left: calc(50% + var(--gap, 64px) / 2); }
+
+.aq-reader-split__rows { position: relative; list-style: none; margin: 0; padding: 0; }
+.aq-reader-split__rows::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1.5px; margin-left: -0.75px; background: var(--limestone); }
+.aq-reader-split__row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gap, 64px); }
+.aq-reader-split__who { display: flex; gap: var(--space-4); align-items: baseline; padding: var(--space-8) var(--space-8) var(--space-8) 0;
+  border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); color: var(--on-navy); }
+.aq-reader-split__who .aq-index { color: var(--on-navy-muted); }
+.aq-reader-split__t { margin: 0; font: 300 28px/34px var(--font-sans); letter-spacing: -0.02em; }
+.aq-reader-split__what { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-8) 0; border-top: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); }
+.aq-reader-split__read { margin: 0; font: 400 17px/27px var(--font-mono); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-reader-split__k { display: block; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-reader-split__go { align-self: flex-start; display: flex; flex-direction: column; gap: var(--space-1); min-height: 44px; margin: 0; color: var(--on-limestone); text-decoration: none; font: 400 16px/22px var(--font-sans); }
+a.aq-reader-split__go span + span::after { content: " →"; color: var(--flow); }
+a.aq-reader-split__go:hover span + span { text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 4px; }
+a.aq-reader-split__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* The tie: a node on the seam at the row's first line, and a short tie across it that draws on hover */
+.aq-reader-split__tie { position: absolute; left: calc(50% - var(--gap, 64px) / 2); width: var(--gap, 64px); top: calc(var(--space-8) + var(--space-4)); height: 1.5px; pointer-events: none; }
+.aq-reader-split__tie::before { content: ""; position: absolute; inset: 0; background: var(--limestone); transform: scaleX(0.3); transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-reader-split__node { position: absolute; left: 50%; top: 50%; width: var(--space-3); height: var(--space-3); margin: calc(var(--space-3) * -0.5) 0 0 calc(var(--space-3) * -0.5);
+  background: var(--navy); border: 1.5px solid var(--limestone); transition: background-color 300ms; }
+.aq-reader-split__row:hover .aq-reader-split__tie::before, .aq-reader-split__row:focus-within .aq-reader-split__tie::before { transform: scaleX(1); }
+.aq-reader-split__row:hover .aq-reader-split__node, .aq-reader-split__row:focus-within .aq-reader-split__node { background: var(--limestone); }
+
+@container (max-width: 1100px) {
+  .aq-reader-split { --gap: var(--space-12); }
+  .aq-reader-split__t { font-size: 24px; line-height: 30px; }
+}
+
+/* Phones: one column on limestone; each reader is a navy bar over its reading, the seam turns into the bar's edge */
+@container (max-width: 860px) {
+  .aq-reader-split__ground { display: none; }
+  .aq-reader-split__head, .aq-reader-split__head .aq-h1 { color: var(--on-limestone); }
+  .aq-reader-split__head .aq-lead { color: var(--on-limestone-muted); }
+  .aq-reader-split { grid-template-columns: minmax(0, 1fr); }
+  .aq-reader-split__head { padding: 0 0 var(--space-8); }
+  .aq-reader-split__colh { display: none; }
+  .aq-reader-split__rows::before { display: none; }
+  .aq-reader-split__row { grid-template-columns: minmax(0, 1fr); margin-bottom: var(--space-4); }
+  .aq-reader-split__who { padding: var(--space-4); background: var(--navy); border-top: 0; }
+  .aq-reader-split__t { font-size: 21px; line-height: 27px; }
+  .aq-reader-split__what { padding: var(--space-4) var(--space-4) var(--space-4) var(--space-4); border: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); border-top: 0; }
+  .aq-reader-split__read { font-size: 15px; line-height: 24px; }
+  .aq-reader-split__tie { display: none; }
+  .aq-reader-split-sec .aq-fold__btn { padding-left: 0; }
+}

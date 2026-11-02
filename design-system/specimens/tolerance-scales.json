@@ -1,0 +1,57 @@
+{
+ "look": "tolerance-scales",
+ "component": "ToleranceScales",
+ "type": "spec",
+ "fields": "h, cols, rows [{p, v, m, hl}], fold, fold_noun, note. Figures are read from the value text (\"± n unit\" or \"a % to b %\"); nothing is added.",
+ "best_for": "ToleranceScales reads instrument calibration as acceptance bands: each instrument a row with its name and basis, and one readout per check with the acceptance set large and a ruler showing the nominal line and the band between the limits.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "svc-service",
+   "slot": 2,
+   "h": "Instrument calibration",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "64551a4",
+   "hash": "6f1d2a975d",
+   "block": {
+    "type": "spec",
+    "look": "tolerance-scales",
+    "nav": "Calibration",
+    "h": "Instrument calibration",
+    "cols": [
+     "Instrument",
+     "Check and acceptance",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Conductivity cell and transmitter",
+      "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
+      "m": "USP <645>",
+      "hl": true
+     },
+     {
+      "p": "Online total organic carbon (TOC) analyzer",
+      "v": "System suitability: response efficiency 85 % to 115 %",
+      "m": "USP <643>; Ph. Eur. 2.2.44"
+     },
+     {
+      "p": "Temperature, pressure, flow and level",
+      "v": "Across the working range",
+      "m": "GUI-0001 C.02.005; 21 CFR 211.68"
+     },
+     {
+      "p": "UV lamp intensity [UV, standard or option]",
+      "v": "Against a reference sensor or the maker’s method",
+      "m": "Maker’s procedure"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "instruments",
+    "note": "Certificates show as-found and as-left values. Calibrated by [calibration provider and accreditation held]."
+   }
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "look": "grade-switch",
+ "component": "GradeSwitch",
+ "type": "table",
+ "fields": "as the grades table: cols, rows [product, minimum, note].",
+ "best_for": "GradeSwitch sets a short grade table as a selector panel: one strip per product, a selector with one slot per water grade, the knob in the minimum and a dashed open slot where your specification may call for more.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-pharma",
+   "slot": 4,
+   "h": "Natural health products: does this line need Purified Water?",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "0c346e1c3a",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "nav": "Natural health products",
+    "anchor": "nhp",
+    "h": "Natural health products: does this line need Purified Water?",
+    "intro": "GUI-0158 asks for potable water that does not harm the product, test records, and any treatment qualified and monitored.",
+    "cols": [
+     "Product",
+     "Minimum water",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Tablets, capsules and powders",
+      "Potable",
+      "PW only if your specification requires it"
+     ],
+     [
+      "Liquids, creams and lotions",
+      "Potable, or PW where your specification requires it",
+      "Microbial limits and shelf life decide"
+     ],
+     [
+      "Homeopathic dilutions",
+      "PW, or another liquid the monograph names",
+      ""
+     ],
+     [
+      "Products sold abroad as drugs",
+      "PW",
+      "Under the importing market’s drug rules"
+     ]
+    ],
+    "look": "grade-switch",
+    "positions": [
+     {
+      "id": "potable",
+      "t": "Potable"
+     },
+     {
+      "id": "pw",
+      "t": "PW"
+     }
+    ],
+    "switch": [
+     [
+      "potable",
+      "pw?"
+     ],
+     [
+      "potable",
+      "pw?"
+     ],
+     [
+      "pw"
+     ],
+     [
+      "pw"
+     ]
+    ]
+   }
+  }
+ ]
+}

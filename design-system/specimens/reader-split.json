@@ -1,0 +1,76 @@
+{
+ "look": "reader-split",
+ "component": "ReaderSplit",
+ "type": "table",
+ "fields": "as the evidence table: h, intro, cols, rows [who, read, {t, link, intent}], fold, fold_noun.",
+ "best_for": "ReaderSplit sets an evidence table on a band split down the middle: the readers (auditors, inspectors) on the navy half, what each reads and where we answer it across the seam on the limestone half, row against row.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "ind-meddevice",
+   "slot": 3,
+   "h": "Who audits your water system",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "217928f",
+   "hash": "a757cd28bc",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Auditors",
+    "h": "Who audits your water system",
+    "cols": [
+     "Auditor",
+     "What they read",
+     "Where we answer it"
+    ],
+    "rows": [
+     [
+      "Health Canada, through MDSAP (Class II to IV)",
+      "ISO 13485:2016: 6.3, 6.4.2, 7.5.2, 7.5.6, 7.5.7 and 7.6 calibration",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "FDA",
+      "QMSR (21 CFR 820) since 2026, built on ISO 13485; Part 11",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "EU notified body",
+      "EU MDR 2017/745 Annex I, 10.2 and 11, against EN ISO 13485",
+      {
+       "t": "Documentation package",
+       "link": "cmp-documentation"
+      }
+     ],
+     [
+      "Sterilization reviewer",
+      "ISO 11737-1; ISO 11137-2 or ISO 11135; ISO 17665",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Drug inspector, combination products",
+      "Drug part: GUI-0001, or 21 CFR Part 4 with Part 211",
+      {
+       "t": "Pharmaceutical",
+       "link": "ind-pharma"
+      }
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "auditors",
+    "look": "reader-split"
+   }
+  }
+ ]
+}

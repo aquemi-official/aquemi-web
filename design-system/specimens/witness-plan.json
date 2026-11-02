@@ -1,0 +1,58 @@
+{
+ "look": "witness-plan",
+ "component": "WitnessPlan",
+ "type": "options",
+ "fields": "h, intro, items [{t, d, part}], zones [bay label, remote label] (short drawing labels, aria-hidden: the frame and the camera). part: \"panel\", \"camera\", \"gauge\", \"documents\", \"analyzer\", \"ro\" or \"tank\".",
+ "best_for": "WitnessPlan sets the ways to witness a FAT as ruled rows whose leader lines run into the package standing in the test bay; choosing a way lights its leader, marker and part (look `witness-plan`, options block).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-fat-sat",
+   "slot": 3,
+   "h": "How you witness",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "d0dd30fb60",
+   "block": {
+    "type": "options",
+    "nav": "Witnessing",
+    "h": "How you witness",
+    "intro": "Available once [shop and test bay ready for visits]; cost: [FAT witness costs, included or quoted].",
+    "items": [
+     {
+      "t": "In person",
+      "d": "In our test bay, inside the panels.",
+      "part": "panel"
+     },
+     {
+      "t": "Remote",
+      "d": "Cameras and live protocol.",
+      "part": "camera"
+     },
+     {
+      "t": "Hybrid",
+      "d": "One person attends for physical checks, the rest remote.",
+      "part": "gauge"
+     },
+     {
+      "t": "Your delegate",
+      "d": "A consultant you name witnesses and signs.",
+      "part": "documents"
+     },
+     {
+      "t": "Review only",
+      "d": "Unwitnessed; we send raw data and video.",
+      "part": "analyzer"
+     }
+    ],
+    "look": "witness-plan",
+    "zones": [
+     "Our test bay",
+     "Remote"
+    ]
+   }
+  }
+ ]
+}

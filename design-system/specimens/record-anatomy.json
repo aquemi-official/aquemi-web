@@ -1,0 +1,47 @@
+{
+ "look": "record-anatomy",
+ "component": "RecordAnatomy",
+ "type": "prose",
+ "fields": "h, intro, points [{t, d, fig}]. fig (optional): figure, method, report, approval, the zone's drawing (default by order).",
+ "best_for": "RecordAnatomy explains what a published record carries as a drawing sheet: the title large in the sheet's open half, four specimen drawings in a drawing field (one per point, none carrying a value), and the points themselves as the sheet's title block, so every published figure reads as signed off like a drawing.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "projects",
+   "slot": 1,
+   "h": "What a case study proves",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "525f4bb6b5",
+   "block": {
+    "type": "prose",
+    "as": "explainer",
+    "h": "What a case study proves",
+    "intro": "Each published figure will carry four things your team can check.",
+    "points": [
+     {
+      "t": "Figure",
+      "d": "Measured value, unit and temperature, against the pharmacopoeia limit."
+     },
+     {
+      "t": "Method",
+      "d": "Sampling point, number of samples and period."
+     },
+     {
+      "t": "Report",
+      "d": "Executed acceptance test or qualification report, with its number."
+     },
+     {
+      "t": "Approval",
+      "d": "A second engineer checks it [confirm]; the client's quality unit approves the text in writing, deviations included."
+     }
+    ],
+    "nav": "Standard",
+    "ground": "light",
+    "look": "record-anatomy"
+   }
+  }
+ ]
+}

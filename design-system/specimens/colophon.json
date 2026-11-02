@@ -1,0 +1,95 @@
+{
+ "look": "colophon",
+ "component": "Colophon",
+ "type": "spec",
+ "fields": "h, caption (eyebrow), intro, cols [item, fact, evidence], rows [{p, v, m, hl, link, link_label, intent}], note, fold, fold_noun.",
+ "best_for": "Colophon sets a spec block of company facts as a split ledger: a navy band with a limestone strip down its left edge, the section title set very large across the strip's edge so the colour split runs through the type and on down through the facts (item on the strip, fact and evidence on the navy).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "about",
+   "slot": 0,
+   "h": "Company facts",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "0a998691af",
+   "block": {
+    "type": "spec",
+    "nav": "Company",
+    "anchor": "facts",
+    "h": "Company facts",
+    "cols": [
+     "Item",
+     "Fact",
+     "Evidence"
+    ],
+    "rows": [
+     {
+      "p": "Scope",
+      "v": "One modular Purified Water package in polypropylene: pretreatment to distribution, design to service. Not Water for Injection, pure steam or stainless steel systems; not residential or municipal",
+      "m": "",
+      "link": "systems",
+      "hl": true
+     },
+     {
+      "p": "Founded and ownership",
+      "v": "[founding year] · [ownership; any equipment maker's stake]",
+      "m": "[corporate registration, jurisdiction and number]"
+     },
+     {
+      "p": "People",
+      "v": "[headcount] in total · [headcount by discipline]",
+      "m": "Organization chart, from [quality system ready for audit, date]",
+      "link": "cmp-quality#audit"
+     },
+     {
+      "p": "Head office",
+      "v": "[head office, city and province]",
+      "m": "",
+      "link": "contact-locations#locations"
+     },
+     {
+      "p": "Shop and test bay",
+      "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
+      "m": "Visit once [shop and test bay ready for visits]",
+      "link": "contact-locations#visit"
+     },
+     {
+      "p": "Professional licences",
+      "v": "[number of licensed engineers] P.Eng. or ing. in [provinces of licence] · [engineering firm permit, by province]",
+      "m": "[licensing body registers]"
+     },
+     {
+      "p": "Quality system",
+      "v": "[ISO 9001 status, registrar and expiry]",
+      "m": "",
+      "link": "cmp-quality#certification"
+     },
+     {
+      "p": "Insurance",
+      "v": "[general and professional liability limits, CAD]",
+      "m": "Certificates, from [quality system ready for audit, date]",
+      "link": "cmp-quality#audit"
+     },
+     {
+      "p": "Financial standing",
+      "v": "[financial standing evidence for procurement]",
+      "m": "On request"
+     },
+     {
+      "p": "Systems delivered",
+      "v": "[systems delivered, by type and province]",
+      "m": "",
+      "link": "projects"
+     }
+    ],
+    "note": "A bracketed fact is not yet confirmed.",
+    "fold": 5,
+    "fold_noun": "facts",
+    "look": "colophon"
+   }
+  }
+ ]
+}

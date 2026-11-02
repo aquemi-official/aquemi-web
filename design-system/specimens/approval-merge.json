@@ -1,0 +1,67 @@
+{
+ "look": "approval-merge",
+ "component": "ApprovalMerge",
+ "type": "table",
+ "fields": "as a roles table: h, intro, cols [request, prepared by, approved by], rows, caption_noun, anchor.",
+ "best_for": "ApprovalMerge shows who prepares and who approves each request as lanes that merge into one approval: each request large on the left, its preparer a node on that party's lane, a wire from every node into one bus that ends in a single stamp naming the approver.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-upgrades",
+   "slot": 0,
+   "h": "After a water observation or out-of-trend results",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "5c4e5aee83",
+   "block": {
+    "type": "table",
+    "look": "approval-merge",
+    "as": "roles",
+    "anchor": "observation",
+    "nav": "Observation",
+    "h": "After a water observation or out-of-trend results",
+    "intro": "Five FDA warning letters (2024 to 2026) asked for these between them, with 15 working days to reply.",
+    "cols": [
+     "Asked for",
+     "Prepared by",
+     "Approved by"
+    ],
+    "rows": [
+     [
+      "Design assessment of the system",
+      "Aquemi: system assessment",
+      "You"
+     ],
+     [
+      "Remediation plan with dates",
+      "Aquemi: options, including other suppliers'",
+      "You"
+     ],
+     [
+      "Validation after repair, new systems included",
+      "Aquemi: installation and operational qualification (IQ, OQ)",
+      "You"
+     ],
+     [
+      "Monitoring with alert and action levels",
+      "Aquemi: levels from your data",
+      "You"
+     ],
+     [
+      "Lot risk assessment and the written reply",
+      "You",
+      "You"
+     ],
+     [
+      "A qualified consultant, where asked",
+      "Your consultant",
+      "You"
+     ]
+    ],
+    "caption_noun": "requests"
+   }
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+/* ---------- SensorLoop: signals drawn where they are measured on one loop (look "sensor-loop") ---------- */
+/* A light drawing sheet. Desktop: one 12-column grid; the cards of the top row in grid row 1, the drawing across row 2,
+   the bottom row in row 3, each card centred over its leader (the renderer writes grid-column and the leader x from the
+   same column split). Balloons: a circle with the panel bar, the row's number in mono. The bus is a dashed line in
+   flow along the foot. Phones: the drawing on top (leaders off), the cards stack down a vertical signal rail. */
+.aq-sensor-loop { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto auto auto; border: 1px solid var(--line-strong); background: var(--surface-raised); position: relative; }
+.aq-sensor-loop__cards { display: contents; list-style: none; margin: 0; padding: 0; }
+.aq-sensor-loop__fig { grid-row: 2; grid-column: 1 / -1; position: relative; border-block: 1px solid var(--line); background-image: radial-gradient(circle, var(--line) 1px, transparent 1.5px); background-size: var(--space-6) var(--space-6); }
+.aq-fold:not(.is-open) .aq-sensor-loop__card.aq-fold-x { display: block; }
+.aq-fold:has(> .aq-sensor-loop) > .aq-fold__btn { display: none; }
+.aq-sensor-loop__card { position: relative; padding: var(--space-4) var(--space-4) var(--space-4); text-align: left; transition: background-color 200ms ease; }
+.aq-sensor-loop__card--t { align-self: end; border-bottom: 0; }
+.aq-sensor-loop__card--b { align-self: start; }
+.aq-sensor-loop__card--free { grid-row: 4; grid-column: span 6; border-top: 1px solid var(--line); }
+.aq-sensor-loop__n { display: inline-grid; place-items: center; min-width: var(--space-8); height: var(--space-6); margin-bottom: var(--space-2); border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font: 500 12px/16px var(--font-mono); color: var(--ink-muted); transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease; }
+.aq-sensor-loop__p { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--ink); }
+.aq-sensor-loop .aq-sensor-loop__v { margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-sensor-loop .aq-sensor-loop__m { margin: var(--space-2) 0 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
+.aq-sensor-loop__card.is-hot { background: var(--flow-tint); }
+.aq-sensor-loop__card.is-hot .aq-sensor-loop__n { color: var(--surface); background: var(--flow); border-color: var(--flow); }
+.aq-sensor-loop__svg { display: block; width: 100%; height: auto; }
+.aq-sensor-loop__lead { fill: none; stroke: var(--ink-subtle); stroke-width: 1; transition: stroke 200ms ease; }
+.aq-sensor-loop__ball circle { fill: var(--surface-raised); stroke: var(--ink); stroke-width: 1.5; }
+.aq-sensor-loop__ball.is-more circle { stroke-dasharray: 3 2; }
+.aq-sensor-loop__bar { fill: none; stroke: var(--ink); stroke-width: 1; }
+.aq-sensor-loop__stem { fill: none; stroke: var(--ink); stroke-width: 1; }
+.aq-sensor-loop__ball text { font: 500 10px/1 var(--font-mono); fill: var(--ink); text-anchor: middle; }
+.aq-sensor-loop__ball.is-hot circle, .aq-sensor-loop__ball.is-hot .aq-sensor-loop__bar, .aq-sensor-loop__ball.is-hot .aq-sensor-loop__stem { stroke: var(--flow); }
+.aq-sensor-loop__ball.is-hot circle { fill: var(--flow-tint); }
+.aq-sensor-loop__lead.is-hot { stroke: var(--flow); stroke-width: 1.5; }
+.aq-sensor-loop__bus { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.aq-sensor-loop__tap { fill: none; stroke: var(--flow); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.6; }
+.aq-sensor-loop__tap.is-hot { opacity: 1; }
+.aq-sensor-loop__node { fill: var(--flow); }
+.aq-sensor-loop__ret .aq-iso__pipe-wall { stroke-dasharray: none; }
+.aq-sensor-loop__drain .aq-iso__flow { stroke-dasharray: 2 3; }
+.aq-sensor-loop-sec .aq-sensor-loop__note { margin-top: var(--space-4); max-width: var(--text-max); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); padding-left: var(--space-4); border-left: 2px solid var(--flow); }
+
+@container (max-width: 860px) {
+  .aq-sensor-loop { display: flex; flex-direction: column; border: 0; background: none; }
+  .aq-sensor-loop__fig { order: -1; }
+  .aq-sensor-loop__ball circle { r: 21px; stroke-width: 2; }
+  .aq-sensor-loop__bar { display: none; }
+  .aq-sensor-loop__fig { border: 1px solid var(--line-strong); background-color: var(--surface-raised); }
+  .aq-sensor-loop__lead { display: none; }
+  .aq-sensor-loop__ball text { font-size: 21px; transform: translateY(9px); }
+  .aq-sensor-loop__cards { display: block; position: relative; margin-top: var(--space-6); padding-left: var(--space-12); }
+  .aq-sensor-loop__cards::before { content: ""; position: absolute; left: calc(var(--space-4) - 1px); top: 0; bottom: 0; border-left: 2px dashed var(--flow); }
+  .aq-sensor-loop__card, .aq-sensor-loop__card--free { padding: 0 0 var(--space-6); border: 0; }
+  .aq-sensor-loop__n { position: absolute; left: calc(-1 * var(--space-12)); top: 0; background: var(--surface); }
+  .aq-fold:not(.is-open) .aq-sensor-loop__card.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-sensor-loop) > .aq-fold__btn { display: flex; }
+}
+.aq-sensor-loop__busg { pointer-events: none; }

@@ -1,0 +1,68 @@
+{
+ "look": "pack-matrix",
+ "component": "PackMatrix",
+ "type": "docs",
+ "fields": "as docs: h, intro, items [{t, d, key, link, intent}], fold, fold_noun (phones only).",
+ "best_for": "PackMatrix draws a docs block that is issued again and again (one pack per client and period) as that repetition: a matrix of identical packs, one pulled out and opened beside it as a sheet of its documents.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "ind-cdmo",
+   "slot": 1,
+   "h": "The client audit pack",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "bb33be2",
+   "hash": "c08f4e5920",
+   "block": {
+    "type": "docs",
+    "nav": "Audit pack",
+    "anchor": "audit-pack",
+    "h": "The client audit pack",
+    "intro": "One pack per client and period: [reporting by suite, outlet and date].",
+    "items": [
+     {
+      "t": "System description",
+      "key": true,
+      "d": "PW generation, loops, outlets by suite, sanitization"
+     },
+     {
+      "t": "Compliance matrix",
+      "key": true,
+      "d": "Each USP, Ph. Eur. and client limit: design value and where it is tested"
+     },
+     {
+      "t": "Qualification summary",
+      "d": "Factory acceptance test to performance qualification, with deviations and approvals"
+     },
+     {
+      "t": "Trend reports",
+      "d": "Conductivity, total organic carbon and microbial counts against alert and action levels"
+     },
+     {
+      "t": "Excursion summary",
+      "d": "Excursions by outlet and date, with the batches that used the water; your quality unit assesses product impact"
+     },
+     {
+      "t": "Change log",
+      "d": "Changes since qualification, with risk assessment and requalification scope"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "documents",
+    "look": "pack-matrix",
+    "matrix": {
+     "rows": 3,
+     "cols": 4,
+     "at": [
+      1,
+      2
+     ],
+     "y": "Client",
+     "x": "Period"
+    }
+   }
+  }
+ ]
+}

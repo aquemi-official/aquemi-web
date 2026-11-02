@@ -1,0 +1,67 @@
+/* ---------- ShopFloor: people or roles placed at their stations on one isometric plan of the shop ---------- */
+.aq-shop-floor-sec { }
+.aq-shop-floor__body { min-width: 0; }
+/* Navy band. Wide: the plan on the left (sticky when the cards run long), the cards on the right on a hairline rail.
+   Pins are square mono tags over the plan; the lit station and its walking leg turn flow, its pin fills limestone. */
+.aq-shop-floor { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; margin-top: var(--space-4); }
+.aq-shop-floor.is-long { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); }
+.aq-shop-floor__fig { margin: 0; position: sticky; top: var(--space-24); }
+.aq-shop-floor__plan { position: relative; }
+.aq-shop-floor__svg { display: block; width: 100%; height: auto; }
+.aq-shop-floor__st { transition: opacity 300ms; }
+.aq-shop-floor__st.is-idle { opacity: 0.42; }
+.aq-shop-floor__st.is-lit { opacity: 1; }
+.aq-shop-floor__st.is-lit .aq-iso__eq, .aq-shop-floor__st.is-lit .aq-iso__ln, .aq-shop-floor__st.is-lit .aq-iso__thin { stroke: var(--on-navy); }
+/* the walking route: a bold dashed line in full on-navy, so it reads apart from the muted walls and room lines */
+.aq-shop-floor .aq-shop-floor__walk .aq-iso__pipe-line { stroke: var(--on-navy); stroke-width: 3px; stroke-dasharray: 8 6; stroke-linecap: butt; }
+.aq-shop-floor__walk .aq-iso__flow { stroke: transparent; transition: stroke 300ms; }
+.aq-shop-floor__walk.is-lit .aq-iso__flow, .aq-shop-floor.is-walking .aq-shop-floor__walk .aq-iso__flow { stroke: var(--on-navy); }
+.aq-shop-floor__svg .aq-iso__flow--line { stroke-width: 2px; }
+.aq-shop-floor__door { stroke: var(--on-navy); stroke-width: 3px; }
+
+.aq-shop-floor__pin { position: absolute; transform: translate(-50%, -100%); display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6);
+  padding: 0 var(--space-1); background: var(--navy); color: var(--on-navy); border: 1px solid var(--on-navy-muted);
+  font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; transition: background-color 250ms, color 250ms, border-color 250ms; }
+.aq-shop-floor__pin::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: var(--space-3); background: var(--on-navy-muted); }
+.aq-shop-floor__pin.is-on { background: var(--limestone); color: var(--on-limestone); border-color: var(--limestone); }
+
+/* Cards: index, title, nameplate or labelled fields */
+.aq-shop-floor__cards { list-style: none; margin: 0; padding: 0; border-top: 1px solid color-mix(in srgb, var(--on-navy) 22%, transparent); }
+.aq-shop-floor__card { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); gap: var(--space-4);
+  padding: var(--space-6) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 22%, transparent); transition: background-color 300ms; }
+.aq-shop-floor__card::before { content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 100%; background: var(--on-navy);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-shop-floor__card.is-on::before { transform: scaleX(1); }
+.aq-shop-floor__n { font: 300 32px/1 var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy-muted); font-variant-numeric: tabular-nums; transition: color 300ms; }
+.aq-shop-floor__card.is-on .aq-shop-floor__n { color: var(--on-navy); }
+.aq-shop-floor__t { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-wrap: balance; }
+.aq-shop-floor .aq-shop-floor__name { margin: var(--space-3) 0 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy); }
+.aq-shop-floor .aq-shop-floor__d { margin: var(--space-2) 0 0; font: 400 16px/26px var(--font-sans); color: var(--on-navy-muted); max-width: 46ch; }
+.aq-shop-floor .aq-shop-floor__go { margin: var(--space-2) 0 0; }
+.aq-shop-floor__go a { display: inline-flex; align-items: center; min-height: var(--space-12); color: var(--on-navy); font: 500 14px/20px var(--font-sans); text-decoration: none;
+  box-shadow: inset 0 -1px 0 var(--on-navy-muted); }
+.aq-shop-floor__go a::after { content: "→"; margin-left: var(--space-2); transition: transform 200ms; }
+.aq-shop-floor__go a:hover::after { transform: translateX(var(--space-1)); }
+.aq-shop-floor a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-shop-floor__dl { margin: var(--space-4) 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4) var(--space-6); }
+.aq-shop-floor__f { min-width: 0; }
+.aq-shop-floor__f:first-child { grid-column: 1 / -1; }
+.aq-shop-floor.is-long .aq-shop-floor__dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aq-shop-floor__f dt { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-shop-floor__f dd { margin: var(--space-1) 0 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy); overflow-wrap: anywhere; }
+.aq-shop-floor__f:first-child dd { font-size: 17px; line-height: 27px; }
+.aq-shop-floor .aq-ph { background: color-mix(in srgb, var(--limestone) 22%, transparent); color: var(--on-navy); }
+
+@container (max-width: 1100px) {
+  .aq-shop-floor, .aq-shop-floor.is-long { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); }
+  .aq-shop-floor__dl, .aq-shop-floor.is-long .aq-shop-floor__dl { grid-template-columns: minmax(0, 1fr); }
+}
+/* Phones: the plan is a band above the cards (not sticky), pins smaller */
+@container (max-width: 860px) {
+  .aq-shop-floor, .aq-shop-floor.is-long { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-shop-floor__fig { position: relative; top: auto; margin-inline: calc(var(--space-2) * -1); }
+  .aq-shop-floor__pin { min-width: var(--space-6); height: var(--space-4); font-size: 11px; }
+  .aq-shop-floor__card { grid-template-columns: var(--space-8) minmax(0, 1fr); gap: var(--space-3); padding: var(--space-4) 0 var(--space-6); }
+  .aq-shop-floor__n { font-size: 24px; }
+  .aq-shop-floor__t { font-size: 22px; line-height: 28px; }
+}

@@ -1,0 +1,102 @@
+{
+ "look": "check-ledger",
+ "component": "CheckLedger",
+ "type": "table",
+ "fields": "(a table, as \"router\"): h, intro, cols [check, route, does not prove, time], rows (cells strings or {t, link, intent}), fold, fold_noun.",
+ "best_for": "CheckLedger sets a router table of checks a buyer can run before a case study exists as a ledger of tiles: each check is one row headed by a navy slash-numeral tile, then the route to arrange it, what you check, what it does not prove, and the time to arrange in mono at the right edge.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "projects",
+   "slot": 0,
+   "h": "Verify before a case study exists",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "59ad23cf10",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Checks",
+    "anchor": "verify",
+    "h": "Verify before a case study exists",
+    "cols": [
+     "What you check",
+     "Route",
+     "What it does not prove",
+     "Time to arrange"
+    ],
+    "rows": [
+     [
+      "The engineer who would lead your project",
+      {
+       "t": "Talk to an engineer",
+       "link": "contact-proposal",
+       "intent": "Not sure yet: talk to an engineer"
+      },
+      "Delivery on schedule and budget",
+      "[proposal response time, working days]"
+     ],
+     [
+      "How we join and trace PP parts, in [shop location, city and province]",
+      {
+       "t": "Shop visit",
+       "link": "contact-locations#visit",
+       "intent": "Shop tour before shortlisting"
+      },
+      "How your system will perform",
+      "[shop visit notice, working days], once [shop and test bay ready for visits]"
+     ],
+     [
+      "What your turnover package will contain",
+      {
+       "t": "Specimen package",
+       "link": "cmp-documentation#samples",
+       "intent": "Turnover package index"
+      },
+      "That a project's records are complete",
+      "[specimen package response time, working days]"
+     ],
+     [
+      "That our quality system works",
+      {
+       "t": "Supplier audit",
+       "link": "cmp-quality#audit",
+       "intent": "On-site supplier audit"
+      },
+      "A specific system's performance",
+      "[on-site audit notice, working days], from [quality system ready for audit, date]"
+     ],
+     [
+      "That we read your user requirement specification (URS) line by line",
+      {
+       "t": "Compliance matrix",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft|Compliance matrix"
+      },
+      "How the installed system performs",
+      "[compliance matrix response time, working days]"
+     ],
+     [
+      "Your system's alarms, interlocks and controls, before it ships",
+      {
+       "t": "Factory acceptance test (FAT) witness",
+       "link": "contact-locations#visit",
+       "intent": "Witness the FAT on our project"
+      },
+      "Performance on your feed water",
+      "[FAT witness notice, working days], once [shop and test bay ready for visits]"
+     ]
+    ],
+    "look": "check-ledger",
+    "fits": {
+     "1": [
+      "cross",
+      "tee"
+     ]
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+/* ---------- BinderTabs: stages filed as tab dividers in the open qualification binder (look "binder-tabs") ----------
+   Desktop: one open binder across the section. Left, the navy cover (4 of 12) with the heading in a ruled label holder
+   and the spine along its inner edge; right, the stack of dividers on surface-raised paper, three rings crossing from
+   the spine into the punched holes. Each divider steps a little further right than the one above it (a filed fan),
+   carries its index tab standing proud of the stack (limestone, mono label), and ends in a sign-off line with a flow
+   signature. Phones: the cover is a band over the stack; the tabs move inside the divider's right end. */
+.aq-binder-tabs { --bt-tab: var(--space-32); --bt-step: var(--space-1); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); align-items: stretch; padding-right: var(--bt-tab, var(--space-32)); }
+.aq-binder-tabs__cover { position: relative; background: var(--navy); color: var(--on-navy); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-8); }
+.aq-binder-tabs__holder { border: 1px solid color-mix(in srgb, var(--on-navy-muted) 55%, transparent); outline: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); outline-offset: var(--space-2); padding: var(--space-6); }
+.aq-binder-tabs__holder .aq-h1 { color: var(--on-navy); }
+.aq-binder-tabs__holder .aq-lead { color: var(--on-navy-muted); }
+.aq-binder-tabs__spine { position: absolute; top: 0; bottom: 0; right: 0; width: var(--space-6); background: color-mix(in srgb, var(--navy) 80%, var(--ink)); border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+:root[data-theme="dark"] .aq-binder-tabs__spine { background: color-mix(in srgb, var(--navy) 70%, var(--surface)); }
+.aq-binder-tabs__stack { position: relative; background: var(--surface-sunken); padding: var(--space-6) 0 var(--space-8) var(--space-8); border: 1px solid var(--line); border-left: 0; }
+.aq-binder-tabs__rings { position: absolute; left: calc(-1 * var(--space-6)); top: 0; bottom: 0; width: var(--space-16); pointer-events: none; z-index: 2; }
+.aq-binder-tabs__rings i { position: absolute; left: 0; width: 100%; height: var(--space-8); margin-top: calc(-1 * var(--space-4)); border: 4px solid var(--line-strong); border-radius: var(--space-4); background: transparent; }
+.aq-binder-tabs__rings i:nth-child(1) { top: 16%; } .aq-binder-tabs__rings i:nth-child(2) { top: 50%; } .aq-binder-tabs__rings i:nth-child(3) { top: 84%; }
+.aq-binder-tabs__list { list-style: none; margin: 0; padding: 0; position: relative; }
+.aq-binder-tabs__div { position: relative; display: grid; grid-template-columns: var(--space-8) var(--space-12) minmax(0, 1fr) var(--space-24); align-items: center; column-gap: var(--space-4);
+  margin-left: calc(var(--i, 0) * var(--bt-step, var(--space-1))); margin-right: calc(var(--i, 0) * var(--bt-step, var(--space-1)) * -1); padding: var(--space-4) var(--space-6) var(--space-4) 0;
+  background: var(--surface-raised); border: 1px solid var(--line); margin-top: -1px; }
+.aq-binder-tabs__holes { justify-self: center; width: var(--space-3); height: var(--space-3); border-radius: 50%; background: var(--surface-sunken); border: 1px solid var(--line-strong); }
+.aq-binder-tabs__n { font: 300 28px/32px var(--font-mono); letter-spacing: -0.03em; color: var(--ink-subtle); }
+.aq-binder-tabs__t { margin: 0; font: 500 18px/26px var(--font-sans); color: var(--ink); }
+.aq-binder-tabs__d { margin: var(--space-1) 0 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-binder-tabs__sign { align-self: end; border-bottom: 1px solid var(--ink-muted); padding-bottom: var(--space-1); }
+.aq-binder-tabs__sign svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-binder-tabs__sign path { fill: none; stroke: var(--flow); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.aq-binder-tabs__tab { position: absolute; top: -1px; bottom: -1px; left: 100%; width: calc(var(--bt-tab, var(--space-32)) - var(--space-4)); display: flex; align-items: center; justify-content: center;
+  background: var(--limestone); color: var(--on-limestone); border: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); border-left: 0;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; text-align: center; padding: 0 var(--space-2);
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms; transform-origin: 0 50%; }
+.aq-binder-tabs__div:nth-child(even) .aq-binder-tabs__tab { background: color-mix(in srgb, var(--limestone) 70%, var(--surface-raised)); }
+.aq-binder-tabs__div:hover .aq-binder-tabs__tab, .aq-binder-tabs__div:focus-within .aq-binder-tabs__tab { transform: translateX(var(--space-2)); background: var(--navy); color: var(--on-navy); }
+.aq-binder-tabs__div:hover .aq-binder-tabs__n { color: var(--flow); }
+
+@container (max-width: 860px) {
+  .aq-binder-tabs { grid-template-columns: minmax(0, 1fr); padding-right: 0; }
+  .aq-binder-tabs__cover { padding: var(--space-6) var(--space-4) var(--space-12); }
+  .aq-binder-tabs__holder { padding: var(--space-4); }
+  .aq-binder-tabs__spine { top: auto; left: 0; width: auto; height: var(--space-4); }
+  .aq-binder-tabs__stack { padding: var(--space-8) var(--space-3) var(--space-4); border-left: 1px solid var(--line); border-top: 0; }
+  .aq-binder-tabs__rings { left: 0; right: 0; top: calc(-1 * var(--space-6)); bottom: auto; width: auto; height: var(--space-12); }
+  .aq-binder-tabs__rings i { width: var(--space-6); height: var(--space-12); margin: 0; top: 0 !important; border-radius: var(--space-3); }
+  .aq-binder-tabs__rings i:nth-child(1) { left: 16%; } .aq-binder-tabs__rings i:nth-child(2) { left: calc(50% - var(--space-3)); } .aq-binder-tabs__rings i:nth-child(3) { left: auto; right: 16%; }
+  .aq-binder-tabs__div { grid-template-columns: var(--space-8) minmax(0, 1fr); margin: -1px 0 0; padding: var(--space-4) var(--space-3) var(--space-4) var(--space-3); row-gap: var(--space-2); align-items: start; }
+  .aq-binder-tabs__holes { display: none; }
+  .aq-binder-tabs__n { font-size: 20px; line-height: 26px; }
+  .aq-binder-tabs__n { grid-row: 1 / span 2; }
+  .aq-binder-tabs__body { grid-column: 2; grid-row: 2; }
+  .aq-binder-tabs__t { font-size: 17px; line-height: 24px; }
+  .aq-binder-tabs__d { font-size: 14px; line-height: 22px; }
+  .aq-binder-tabs__sign { grid-column: 2; grid-row: 3; width: var(--space-16); }
+  .aq-binder-tabs__tab { position: static; grid-column: 2; grid-row: 1; justify-self: start; width: auto; padding: var(--space-1) var(--space-2); border-left: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); font-size: 12px; }
+}
+
+/* section hook (the look marks its section) */
+.aq-binder-tabs-sec { position: relative; }

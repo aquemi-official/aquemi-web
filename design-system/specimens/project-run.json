@@ -1,0 +1,52 @@
+{
+ "look": "project-run",
+ "component": "ProjectRun",
+ "type": "steps",
+ "fields": "h, items [{t, d, link, art, label}]. art: an illustration id from ART (Hero.js); default the link's page when it has one. label: short stop name on the run (default t).",
+ "best_for": "ProjectRun tells ordered steps as one run the reader scrolls along: on wide screens a sticky stage shows the current step's equipment drawing, its number set huge and a pipe whose water fills stop by stop as the steps scroll past.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "home",
+   "slot": 2,
+   "h": "How a project runs",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "b517a2f1b4",
+   "block": {
+    "type": "steps",
+    "h": "How a project runs",
+    "items": [
+     {
+      "t": "Design",
+      "d": "We turn your user requirement specification (URS) into a design you approve before anything is built.",
+      "link": "svc-design"
+     },
+     {
+      "t": "Fabricate",
+      "d": "We build the PP skids and record each joint.",
+      "link": "svc-fabrication"
+     },
+     {
+      "t": "Test",
+      "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves.",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Qualify",
+      "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves.",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Support",
+      "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts.",
+      "link": "svc-service"
+     }
+    ],
+    "look": "project-run"
+   }
+  }
+ ]
+}

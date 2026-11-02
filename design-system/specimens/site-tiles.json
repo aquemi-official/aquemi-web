@@ -1,0 +1,52 @@
+{
+ "look": "site-tiles",
+ "component": "SiteTiles",
+ "type": "grid",
+ "fields": "h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp, softener, truck; default from icon (gauge -> spool: a PP spool with a valve and a pressure gauge for the test; stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated load, for service and spares), else the item's line icon as a Spot.",
+ "best_for": "SiteTiles sets a short grid of what changes for a site as one navy drawing sheet: a framed sheet with its zone band, the title large in the top left, and one column per item with its number, title, one isometric part (IsoKit) that makes the change visible, its line and its link.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "about",
+   "slot": 2,
+   "h": "What changes for a Canadian site",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "8e4d9726ba",
+   "block": {
+    "type": "grid",
+    "nav": "Canada",
+    "h": "What changes for a Canadian site",
+    "items": [
+     {
+      "t": "Witness your factory acceptance test (FAT)",
+      "d": "In [shop location, city and province], once [shop and test bay ready for visits].",
+      "link": "svc-fat-sat",
+      "icon": "gauge"
+     },
+     {
+      "t": "Registration in your province",
+      "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for [pressure-rated items in the PW package].",
+      "link": "compliance#engineering",
+      "icon": "stamp"
+     },
+     {
+      "t": "Designed for Canadian feed water",
+      "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
+      "link": "sys-pretreatment",
+      "icon": "softener"
+     },
+     {
+      "t": "Service and spares",
+      "d": "From [service bases, cities], with spares in [stock location or locations].",
+      "link": "contact-locations#coverage",
+      "icon": "wrench"
+     }
+    ],
+    "look": "site-tiles"
+   }
+  }
+ ]
+}

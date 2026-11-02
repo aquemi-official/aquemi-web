@@ -1,0 +1,61 @@
+{
+ "look": "budget-bento",
+ "component": "BudgetBento",
+ "type": "spec",
+ "fields": "h, caption (eyebrow), intro, cols ([scope, range, basis] labels for the tile keys), rows [{p, v, m, hl, spot, link, link_label}], note, note_link, note_link_label. spot: a Spot or Icon name for a module tile.",
+ "best_for": "BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "systems",
+   "slot": 1,
+   "h": "Budget ranges before a quote",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "f442a37a0e",
+   "block": {
+    "type": "spec",
+    "h": "Budget ranges before a quote",
+    "caption": "CAD, before tax, as of [month year] · [estimate class and accuracy]",
+    "cols": [
+     "Scope",
+     "Budget range",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Whole package, [reference capacity, L/h]",
+      "v": "[budget range, CAD]",
+      "m": "Supply, factory acceptance test (FAT), installation and operational qualification (IQ/OQ) protocols, turnover package",
+      "hl": true
+     },
+     {
+      "p": "PW generation, [reference capacity, L/h]",
+      "v": "[budget range, CAD]",
+      "m": "Single-pass RO and EDI, city feed",
+      "spot": "ro-skid"
+     },
+     {
+      "p": "Storage tank and loop, [reference tank volume L, points of use]",
+      "v": "[budget range, CAD]",
+      "m": "[PP loop sanitization method]; field piping excluded",
+      "spot": "storage-tank"
+     },
+     {
+      "p": "Pretreatment train, [reference capacity, L/h]",
+      "v": "[budget range, CAD]",
+      "m": "PVC train: multimedia, softener and carbon or bisulfite",
+      "spot": "pretreatment"
+     }
+    ],
+    "note": "Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation. Not included: installation, tie-ins, utilities, lab testing during qualification and temporary water.",
+    "note_link": "svc-service#running-cost",
+    "nav": "Budget",
+    "anchor": "budget",
+    "look": "budget-bento"
+   }
+  }
+ ]
+}

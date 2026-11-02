@@ -1,0 +1,46 @@
+/* ---------- CutoverSchedule: an upgrade as a schedule with your system's water line (look "cutover-schedule") ----------
+   Rows in a 12-column split: number (mono), the step (5 columns: name in light 24 px, line, hold stamp), the track
+   (6 columns, a faint column rule per step). Bars are hairline-framed boxes on the track; the shutdown step's bar is
+   navy (on-site work with the system down), a hold bar ends in a diamond on its right end. Above, the water line in
+   flow across the track, broken at the shutdown with a dashed bracket and its label. "Not to scale" in mono at
+   the foot. Phones: the step's text over its track. */
+.aq-cutover-schedule { --cols: var(--space-8) minmax(0, 5fr) minmax(0, 6fr); }
+.aq-cutover-schedule__lane, .aq-cutover-schedule__row { display: grid; grid-template-columns: var(--cols, auto); column-gap: var(--space-6); }
+.aq-cutover-schedule__lane { align-items: end; padding-bottom: var(--space-4); border-bottom: 1px solid var(--line-strong); }
+.aq-cutover-schedule__lk { grid-column: 2; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow); text-align: right; }
+.aq-cutover-schedule__ltrack { grid-column: 3; position: relative; height: var(--space-12); }
+.aq-cutover-schedule__water { position: absolute; bottom: var(--space-2); height: 0; border-top: 3px solid var(--flow); transform-origin: 0 50%; }
+.aq-cutover-schedule__gap { position: absolute; bottom: 0; height: var(--space-6); border: 1.5px dashed var(--ink-muted); border-bottom: 0; }
+.aq-cutover-schedule__gl { position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); margin-bottom: var(--space-1); white-space: nowrap; font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+.aq-cutover-schedule__rows { list-style: none; margin: 0; padding: 0; }
+.aq-cutover-schedule__row { align-items: stretch; border-bottom: 1px solid var(--line); }
+.aq-cutover-schedule__n { padding-top: var(--space-6); font: 500 12px/30px var(--font-mono); color: var(--ink-subtle); }
+.aq-cutover-schedule__txt { padding: var(--space-6) 0; }
+.aq-cutover-schedule__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); }
+.aq-cutover-schedule__go { color: inherit; text-decoration: none; }
+.aq-cutover-schedule__go::after { content: " →"; color: var(--flow); }
+.aq-cutover-schedule__d { margin: var(--space-2) 0 0; max-width: 46ch; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-cutover-schedule__hold { display: inline-flex; gap: var(--space-2); align-items: center; margin: var(--space-3) 0 0; padding: var(--space-1) var(--space-2); border: 1.5px solid var(--ink); font: 500 12px/16px var(--font-mono); color: var(--ink); }
+.aq-cutover-schedule__hk { padding-right: var(--space-2); border-right: 1px solid var(--ink); text-transform: uppercase; letter-spacing: 0.08em; }
+.aq-cutover-schedule__track { position: relative; min-height: var(--space-16); }
+.aq-cutover-schedule__grid span { position: absolute; top: 0; bottom: 0; border-left: 1px dashed var(--line); }
+.aq-cutover-schedule__bar { position: absolute; top: 50%; height: var(--space-6); margin-top: calc(-1 * var(--space-3)); border: 1.5px solid var(--ink); background: var(--surface-raised); transform-origin: 0 50%; transition: background-color 200ms ease; }
+.aq-section--alt .aq-cutover-schedule__bar { background: var(--surface); }
+.aq-cutover-schedule__row.is-cut .aq-cutover-schedule__bar { background: var(--ink); border-color: var(--ink); }
+.aq-cutover-schedule__diamond { position: absolute; right: calc(-1 * var(--space-3)); top: 50%; width: var(--space-4); height: var(--space-4); margin-top: calc(-1 * var(--space-2)); background: var(--surface); border: 2px solid var(--ink); transform: rotate(45deg); }
+.aq-cutover-schedule__row:hover .aq-cutover-schedule__bar { background: var(--flow-tint); border-color: var(--flow); }
+.aq-cutover-schedule__row.is-cut:hover .aq-cutover-schedule__bar { background: var(--ink); }
+.aq-cutover-schedule__nts { margin: var(--space-3) 0 0; text-align: right; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+@container (max-width: 860px) {
+  .aq-cutover-schedule { --cols: var(--space-8) minmax(0, 1fr); }
+  .aq-cutover-schedule__lane { grid-template-columns: var(--cols, auto); }
+  .aq-cutover-schedule__lk { grid-column: 2; text-align: left; margin-bottom: var(--space-8); grid-row: 1; }
+  .aq-cutover-schedule__ltrack { grid-column: 2; grid-row: 2; }
+  .aq-cutover-schedule__txt { padding: var(--space-4) 0 var(--space-2); }
+  .aq-cutover-schedule__n { padding-top: var(--space-4); }
+  .aq-cutover-schedule__track { grid-column: 2; min-height: var(--space-12); margin-bottom: var(--space-2); }
+  .aq-cutover-schedule__t { font-size: 20px; line-height: 26px; }
+}
+.aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
+@container (max-width: 860px) { .aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }

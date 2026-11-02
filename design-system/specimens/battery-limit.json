@@ -1,0 +1,86 @@
+{
+ "look": "battery-limit",
+ "component": "BatteryLimit",
+ "type": "spec",
+ "fields": "h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows [{p, v, m, side, link, link_label}] (side: \"limit\" | \"package\" | \"site\"; default site), sides ([package label, site label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card).",
+ "best_for": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "systems",
+   "slot": 2,
+   "h": "What changes on your site",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "1da42c372d",
+   "block": {
+    "type": "spec",
+    "h": "What changes on your site",
+    "cols": [
+     "Item",
+     "Typical",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Connection points (battery limits)",
+      "v": "[standard battery limits, typical scope]",
+      "m": "Listed in the proposal, with who supplies each",
+      "side": "limit"
+     },
+     {
+      "p": "Footprint and weight",
+      "v": "[typical footprint and weight, by capacity]",
+      "side": "package"
+     },
+     {
+      "p": "Power, feed water and drain",
+      "v": "[supply voltage options]; [feed and drain flows, L/h]",
+      "m": "RO reject and rinse water to drain",
+      "side": "site"
+     },
+     {
+      "p": "Installation and field joints",
+      "v": "[installation scope]",
+      "side": "site"
+     },
+     {
+      "p": "Electrical and pressure approvals",
+      "v": "Electrical: [panel certification mark held, or field evaluation used]",
+      "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
+      "link": "compliance#engineering",
+      "side": "package"
+     },
+     {
+      "p": "Tie-in and shutdown",
+      "v": "[typical shutdown for tie-in, days]",
+      "m": "Plan temporary water if production cannot stop",
+      "side": "site"
+     },
+     {
+      "p": "Sanitizing chemicals",
+      "v": "[PP loop sanitization method]; residual tested before use",
+      "side": "site"
+     },
+     {
+      "p": "Isolation and lockout",
+      "v": "[lockable isolation points and lockout diagram]",
+      "side": "package"
+     }
+    ],
+    "nav": "Site",
+    "anchor": "site",
+    "fold": 4,
+    "fold_noun": "requirements",
+    "look": "battery-limit",
+    "sides": [
+     "The PW package",
+     "Your site"
+    ],
+    "seam": "Battery limit"
+   }
+  }
+ ]
+}

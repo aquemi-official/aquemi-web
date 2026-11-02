@@ -1,0 +1,65 @@
+{
+ "look": "wet-run-hmi",
+ "component": "WetRunHmi",
+ "type": "prose",
+ "fields": "h, points [{t, d, part, x, y}] (part: \"divert\", \"outlet\" or \"record\", the station the point is about; a point without one takes the next free part; x, y optional: the text block's top left in % of the drawing, default per part), modes [dry label, wet label] (the switch's two words, default \"Dry\", \"Water\"). at and figure are the fallback renderer's and are ignored here.",
+ "best_for": "WetRunHmi sets an explainer as the test bay's water route on a navy blueprint ground: one double-wall pipe runs across the section and folds down and back up, each point sits beside its station, and a two-position switch runs the skid dry or with water (look `wet-run-hmi`, prose block `as: \"explainer\"`).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-fat-sat",
+   "slot": 1,
+   "h": "Water finds faults a dry check misses",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "788b114bd7",
+   "block": {
+    "type": "prose",
+    "as": "explainer",
+    "ground": "light",
+    "nav": "Why water",
+    "h": "Water finds faults a dry check misses",
+    "points": [
+     {
+      "t": "Some faults show only with water",
+      "d": "A valve opening at the wrong step; out-of-limit water not sent to drain. On site: a permit and a production gap.",
+      "at": [
+       44,
+       40
+      ],
+      "part": "divert"
+     },
+     {
+      "t": "Run it, read at the outlet",
+      "d": "Pumps at working pressure; conductivity and total organic carbon measured at the skid outlet.",
+      "at": [
+       75,
+       58
+      ],
+      "part": "outlet"
+     },
+     {
+      "t": "Evidence your team can reuse",
+      "d": "Approved protocol, calibrated instruments, raw data: results your installation and operational qualification (IQ/OQ) can reuse. A checklist gets repeated.",
+      "at": [
+       86,
+       40
+      ],
+      "part": "record"
+     }
+    ],
+    "figure": {
+     "kind": "art",
+     "art": "svc-fat-sat"
+    },
+    "look": "wet-run-hmi",
+    "modes": [
+     "Dry check",
+     "With water"
+    ]
+   }
+  }
+ ]
+}

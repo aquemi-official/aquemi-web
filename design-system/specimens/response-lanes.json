@@ -1,0 +1,70 @@
+{
+ "look": "response-lanes",
+ "component": "ResponseLanes",
+ "type": "table",
+ "fields": "as a table: cols [your request, first response, what follows] (the two value labels head the lane zones), rows [request, first response, what follows], intro, nav. Cells may be {t, link, intent}.",
+ "best_for": "ResponseLanes draws a table of response times by request as lanes on one clock: each request runs from where you call or send through its first response into what follows, every clause a stop with its time beneath, and the severities set as a calm scale of huge light numerals.",
+ "status": "retired",
+ "instances": [
+  {
+   "page": "contact-service",
+   "slot": 2,
+   "h": "Response times by request",
+   "status": "retired",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "commit": "5185310",
+   "hash": "e653cb4edc",
+   "block": {
+    "type": "table",
+    "nav": "Response times",
+    "h": "Response times by request",
+    "intro": "Times apply on a service plan; without one, a call-out with the next available technician.",
+    "cols": [
+     "Your request",
+     "First response",
+     "What follows"
+    ],
+    "rows": [
+     [
+      "Severity 1: production stopped or water out of specification",
+      "Answered within [severity 1 phone answer time, minutes]; remote diagnosis within [remote response time, hours]",
+      "On site within [severity 1 on-site response time, hours], inside [service coverage area]"
+     ],
+     [
+      "Severity 2: alarm, reduced capacity or adverse trend",
+      "Reply within [severity 2 reply time, hours]",
+      "Visit within [severity 2 visit time]"
+     ],
+     [
+      "Severity 3: no effect on water quality or supply",
+      "Reply within [severity 3 reply time, working days]",
+      "Fixed at the next or a booked visit"
+     ],
+     [
+      "Severity 4: maintenance or calibration",
+      "Date within [maintenance booking reply time, working days]",
+      "Signed report; calibration certificates to USP <645> and <643>"
+     ],
+     [
+      "Requalification after a change",
+      "Reply within [requalification support reply time, working days]",
+      "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7)"
+     ],
+     [
+      "Parts and consumables",
+      "Quote within [parts quote turnaround, working hours]",
+      "Checked like for like against your qualified parts list, with certificates"
+     ],
+     [
+      "First service, other make",
+      "Reply within [other-builder request reply time, working days]",
+      "For [makes and equipment types serviced]: a condition survey quote"
+     ]
+    ],
+    "as": "router",
+    "look": "response-lanes"
+   }
+  }
+ ]
+}

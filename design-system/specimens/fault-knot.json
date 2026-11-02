@@ -1,0 +1,49 @@
+{
+ "look": "fault-knot",
+ "component": "FaultKnot",
+ "type": "steps",
+ "fields": "h, intro, items [{t, d, link}]. A link makes the step's name the link. The knot's stage per step runs from tied (first) to straight (the step whose text says the water is back, else the last).",
+ "best_for": "FaultKnot sets \"when something goes wrong\" as an editorial split: a huge light title running across a navy and limestone ground, a knotted twin-wall pipe that loosens step by step, and the fault steps read across the foot with the call step on the navy.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "svc-service",
+   "slot": 5,
+   "h": "When something goes wrong",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "03aaaa2ff4",
+   "block": {
+    "type": "steps",
+    "look": "fault-knot",
+    "nav": "Faults",
+    "h": "When something goes wrong",
+    "items": [
+     {
+      "t": "Call",
+      "d": "[service phone number], [service phone hours]. Severity 1: always call."
+     },
+     {
+      "t": "Triage",
+      "d": "We confirm severity, open a ticket and start your plan’s response clock."
+     },
+     {
+      "t": "Remote diagnosis",
+      "d": "Trends and alarms reviewed within [remote response time, hours]; operators guided to a safe state.",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "On site",
+      "d": "A technician with the likely parts; water back within limits."
+     },
+     {
+      "t": "Report",
+      "d": "Root cause, parts and lot numbers, for your deviation."
+     }
+    ]
+   }
+  }
+ ]
+}

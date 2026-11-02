@@ -1,0 +1,59 @@
+{
+ "look": "decision-valve",
+ "component": "DecisionValve",
+ "type": "table",
+ "fields": "(a table block, as: \"router\"): h, cols [situation, step, ...the rest], rows [[situation, step, ...]]; cells may be {t, link, intent} as in every table. No new fields.",
+ "best_for": "DecisionValve draws a router table as a multiport valve, a navy object on the paper: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-pretreatment",
+   "slot": 3,
+   "h": "Chlorine or chloramine: the removal step",
+   "status": "live",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-02",
+   "commit": "0efa42f",
+   "hash": "a4638c0982",
+   "block": {
+    "type": "table",
+    "h": "Chlorine or chloramine: the removal step",
+    "cols": [
+     "Your supply",
+     "Removal step",
+     "Removes",
+     "Watch for"
+    ],
+    "rows": [
+     [
+      "Your utility chloraminates",
+      "Catalytic carbon",
+      "Chlorine and chloramine, with less contact time",
+      "Sized at peak flow and winter temperature"
+     ],
+     [
+      "Chloramine, with a breakthrough check",
+      "Two carbon beds in series",
+      "Both; a sample point between beds",
+      "Two beds to backwash and replace"
+     ],
+     [
+      "Free chlorine only, no dosed chemicals",
+      "Granular activated carbon",
+      "Free chlorine and some organics; chloramine only slowly",
+      "Biofilm; needs regular backwash and replacement"
+     ],
+     [
+      "Little floor space, or no carbon bed",
+      "Sodium bisulfite dosing",
+      "Both, by chemical reduction, fast",
+      "Overdose feeds bacteria; verify on ORP"
+     ]
+    ],
+    "nav": "Chlorine or chloramine",
+    "as": "router",
+    "look": "decision-valve"
+   }
+  }
+ ]
+}
