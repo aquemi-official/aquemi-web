@@ -70,6 +70,12 @@
      "next": "Continue to the details",
      "fields": [
       {
+       "kind": "note",
+       "label": "What each request returns, and its cost",
+       "link": "contact-proposal#requests",
+       "action": "See the table"
+      },
+      {
        "label": "Where are you starting from?",
        "kind": "radio",
        "required": true,
@@ -388,6 +394,7 @@
         "Procurement",
         "Finance",
         "Consultant acting for a client",
+        "Contractor or installer",
         "Other"
        ]
       },
@@ -426,7 +433,7 @@
    "anchor": "requests",
    "nav": "Requests",
    "h": "What each request returns",
-   "fold": 4,
+   "fold": 6,
    "fold_noun": "requests",
    "cols": [
     "Situation",
@@ -465,13 +472,13 @@
       "t": "Audit or questionnaire pack, on Quality management",
       "link": "cmp-quality#audit"
      },
-     "[audit request response time, working days]",
-     "[supplier audit before order, free or charged]"
+     "Reply within [audit request response time, working days]",
+     "Before an order: [supplier audit before order, free or charged]"
     ],
     [
      "Not sure yet: talk to an engineer",
      "A written answer from an engineer",
-     "[proposal response time, working days]",
+     "Written reply within [proposal response time, working days]",
      "[fit check cost or free]"
     ]
    ],
@@ -487,7 +494,7 @@
  "todo": [
   "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
   "Turnaround per request, for the requests table: URS review, compliance matrix, document review (one figure for loop, controls, fabrication, C&Q plan and FAT list reviews), scope review, feed water review, budget proposal, assessment, audit request (FD-01). Once filled, name each figure in its cell (gap review, matrix, proposal, document review), since the placeholder names then disappear",
-  "Cost per request, free or CAD, and whether a fee is credited against an order: URS review, compliance matrix, proposals, document review, scope review, feed water review ([cost of the feed water review], the canonical name in ops/placeholder-names.md), budget range, assessment, supplier audit, fit check (FD-02). If the fit check is free, unfold the requests table (fold 6) so the \"Not sure yet\" row's cost shows",
+  "Cost per request, free or CAD, and whether a fee is credited against an order: URS review, compliance matrix, proposals, document review, scope review, feed water review ([cost of the feed water review], the canonical name in ops/placeholder-names.md), budget range, assessment, supplier audit, fit check (FD-02). The requests table shows all six rows (DR-024 rule 5). At launch a cost FD-02 has not set drops its row (DR-024 rule 6, DR-005 rule 8); \"Free\" only where FD-02 says so",
   "Confirm reviews carry no obligation, and whether they may be used in the client's own tender ([review obligation and use in your tender], home's name; FD-02). Once confirmed, the lead may end \"Nothing commits you to buy.\"",
   "Whether a budget range comes in the first reply, and what the modules-and-budget answer contains for the PW package (pretreatment, RO, DI or EDI, distribution) (FD-02, FD-03)",
   "Sales phone number and office hours with time zone (same names as contact-locations and CONTACT.sales; FD-33). The closing button dials once the number is filled in its label and its tel: link, in one commit. Unfilled at launch, it becomes \"Talk to an engineer\" to #intake (DR-006 rule 6)",

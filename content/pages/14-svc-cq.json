@@ -12,7 +12,7 @@
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
  "secondary_cta": {
-  "label": "FAT results reused at IQ/OQ",
+  "label": "See what FAT can replace",
   "link": "svc-fat-sat#faq"
  },
  "blocks": [
@@ -189,7 +189,7 @@
    "type": "steps",
    "nav": "PQ",
    "h": "PQ in three phases",
-   "intro": "Conductivity, total organic carbon and microbial count; at 12 sample points, 28 days make 336 samples.",
+   "intro": "Conductivity, total organic carbon and microbial count. For example, 12 sample points over 28 days make 336 samples.",
    "items": [
     {
      "t": "Phase 1",
@@ -213,7 +213,8 @@
     "days": 28,
     "rows": "sample points",
     "cols": "days",
-    "unit": "samples"
+    "unit": "samples",
+    "example": true
    },
    "year": {
     "weeks": 52,
@@ -252,6 +253,7 @@
   {
    "type": "faq",
    "nav": "FAQ",
+   "anchor": "faq",
    "h": "Questions validation teams ask",
    "items": [
     {
@@ -260,7 +262,10 @@
     },
     {
      "q": "Can IQ and OQ be combined into one protocol?",
-     "a": "Yes, depending on complexity, under EU good manufacturing practice (GMP) Annex 15, 2.5 and 3.10. On a single module it saves a review cycle; on the full package we keep them apart."
+     "a": "Yes, depending on complexity, under EU good manufacturing practice (GMP) Annex 15, 2.5 and 3.10. On a single module it saves a review cycle; on the full package we keep them apart.",
+     "link": "cmp-documentation#samples",
+     "link_label": "Request the IQ/OQ contents",
+     "intent": "IQ and OQ protocol contents"
     },
     {
      "q": "We work to ASTM E2500, not IQ/OQ/PQ. Can you?",
@@ -274,6 +279,12 @@
      "q": "Can you qualify a system you did not build?",
      "a": "For [makes and equipment types serviced]: we start with a system assessment of its qualification file and the installed system.",
      "link": "svc-upgrades"
+    },
+    {
+     "q": "Natural health products: do we need IQ, OQ and PQ?",
+     "a": "GUI-0158's water sections (45 and 46) do not name IQ, OQ and PQ. They ask for criteria to qualify and monitor treated water, test records, and calibrated, maintained equipment. Our scope for that evidence: [NHP qualification scope]. Where your quality assurance person (QAP) asks for IQ, OQ and PQ, the path on this page applies.",
+     "link": "ind-pharma#nhp",
+     "link_label": "Water by product line"
     }
    ]
   },
@@ -295,8 +306,8 @@
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
   "include": [
-   "Your URS, or what you make",
-   "Validation master plan, protocol templates",
+   "No URS yet? What you make and your flow",
+   "Your URS, validation master plan, protocol templates",
    "Points of use and demand pattern"
   ],
   "returns": [
@@ -318,7 +329,9 @@
   "PP joining method, joint records kept and the PP joining standard checked at IQ ([PP joining method], [PP joint records kept], [PP joining standard], the name compliance and svc-fabrication use; FD-18). Joint records, for example the joint map and per-joint log; the example stays out of the brackets",
   "Material certificates verified at IQ ([PP material certificates], [certificates supplied for PVC parts]; the names compliance, cmp-quality and sys-pretreatment use; FD-17)",
   "PP loop sanitization method proven at OQ, with its contact time and residual test ([PP loop sanitization method]; FD-14, DR-013)",
-  "A real qualification project (phase dates, deviations, water release date) before any case block (DR-016, FD-42)"
+  "A real qualification project (phase dates, deviations, water release date) before any case block (DR-016, FD-42)",
+  "NHP qualification scope ([NHP qualification scope]; FD-46; new in pass 10, SITE-PLAN 7): what Aquemi delivers for a natural health product site under GUI-0158 sections 45 and 46 (qualification criteria for the treated water, test record templates, calibration and maintenance SOPs for the purification system), and whether the drug IQ/OQ/PQ path is offered when the QAP asks for it. The FAQ states GUI-0158's own terms (checked against industries/natural-health-products.md, IPH-02, IPH-05, desk ruling Q9); \"dry-dose lines need only documented rinse control\" waits on FD-20 and stays off this page. At launch an unset scope drops that sentence, the rest of the answer stands",
+  "Pass 10, intent I6 (SITE-PLAN 4.5): \"Request the IQ/OQ contents\" (cmp-documentation#samples, \"IQ and OQ protocol contents\") sits on the FAQ \"Can IQ and OQ be combined\" because the walkdown-pins look of \"IQ and OQ on site\" renders no link. Specimens wait on FD-47: at launch, with no specimen, the FAQ link goes (DR-006 rule 6)"
  ],
  "facts": [
   {

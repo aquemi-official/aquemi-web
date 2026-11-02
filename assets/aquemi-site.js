@@ -2327,56 +2327,6 @@ LOOKS['exploded-service']=function(b,H){var I=(b.items||[]).slice(0,3),P=esPump(
  [].forEach.call(r.querySelectorAll('[data-iso-id="'+c.getAttribute('data-part')+'"], .aq-exploded-service__svg [data-lead="'+c.getAttribute('data-lead')+'"]'),function(el){el.classList.toggle('is-lit',on)})}
  document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
  document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)})})();
-/* Look "fault-knot" -> FaultKnot (design-system/components/FaultKnot): what happens when something goes wrong, as an
-   editorial split. The section is limestone with a navy field down its left; the title is set huge and light and runs
-   across the colour split (on-navy over the navy, navy over the limestone: a clipped twin of the heading, aria-hidden).
-   Right of the title, one drawing in a quiet framed grid: a twin-wall pipe tied in a knot, the water standing in it.
-   Along the foot the steps read across, mono "01 / Call" over each line; the first step (call us) stands on the navy.
-   Pointing at or focusing a step loosens the knot to that step's stage (shape morph, CSS d transition); by the step
-   that restores the water the pipe runs straight and the water runs through it once.
-   Concept: research/pass9b/concepts/svc-service.5.png (headline across a navy/limestone split, a knotted-pipe figure,
-   five slash-numbered steps, the call step on navy).
-   Fields (a steps block): h, intro, items [{t, d, link}]. A link makes the step's name the link. The knot's stage per
-   step runs from tied (first) to straight (the step whose text says the water is back, else the last).
-   Phones: the navy field sits behind the top of the title (the split runs across the second line), the drawing
-   under it full width, the call step as a navy row, the other steps stacked. */
-function fkD(amp){var N=220,W=552,cy=180,o='',i;amp=Math.max(0,Math.min(1,+amp||0));
- for(i=0;i<=N;i++){var s=i/N,u=Math.max(0,Math.min(1,(s-0.1)/0.8)),en=Math.pow(Math.sin(Math.PI*u),2),th=2*Math.PI*5.5*u;
-  var x=24+W*s-amp*en*(92*Math.sin(th)+30*Math.sin(2.3*th+0.4)),y=cy-amp*en*(112*Math.cos(th)-38*Math.sin(0.37*th+1)+18*Math.cos(1.7*th));
-  o+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}
- return o}
-window.fkD=fkD;
-/* the knot's tension per step: tied at the first, straight from the step that brings the water back */
-function fkAmps(I){var n=I.length,back=-1;I.forEach(function(it,i){if(back<0&&/back within|water back|restor/i.test(String(it.d||'')))back=i});
- if(back<1)back=n-1;return I.map(function(it,i){return i>=back?0:+(1-i/back).toFixed(3)})}
-LOOKS['fault-knot']=function(b,H){var I=b.items||[],K='aq-fault-knot',A=fkAmps(I),d0=fkD(1);
- var twin=H.replace(/<(\/?)h2\b/g,'<$1p');
- var grid='';for(var g=60;g<600;g+=60)grid+='M'+g+' 12V348';for(var h=60;h<360;h+=60)grid+='M12 '+h+'H588';
- var svg='<svg class="'+K+'__svg" viewBox="0 0 600 360" aria-hidden="true" focusable="false">'
-  +'<rect class="'+K+'__frame" x="12" y="12" width="576" height="336"/><path class="'+K+'__grid" d="'+grid+'"/>'
-  +'<path class="'+K+'__p '+K+'__wall" d="'+d0+'"/><path class="'+K+'__p '+K+'__bore" d="'+d0+'"/><path class="'+K+'__p '+K+'__flow" d="'+d0+'"/>'
-  +'<path class="'+K+'__flange" d="M18 164v32M30 164v32M570 164v32M582 164v32"/></svg>';
- var steps=I.map(function(it,i){var n=(i<9?'0':'')+(i+1),t=tx(it.t),ln=it.link&&wp(it.link);
-  if(ln)t='<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>';
-  return '<li class="'+K+'__step'+(i?'':' is-call')+'" data-i="'+i+'" data-amp="'+A[i]+'"'+(ln?'':' tabindex="0"')+'>'
-   +'<h3 class="'+K+'__t"><span class="'+K+'__n" aria-hidden="true">'+n+' /</span> '+t+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
- return sec('<div class="'+K+'" style="--n:'+I.length+'"><div class="'+K+'__ground" aria-hidden="true"></div>'
-  +'<div class="'+K+'__top"><div class="'+K+'__head"><div class="'+K+'__ground2" aria-hidden="true"></div>'+H+'<div class="'+K+'__twin" aria-hidden="true">'+twin+'</div></div>'
-  +'<figure class="'+K+'__fig">'+svg+'</figure></div>'
-  +'<ol class="'+K+'__steps" role="list">'+steps+'</ol></div>','aq-band--limestone '+K+'-sec" data-theme="light')};
-/* Ported from Subframe Motion "SVG shape morph" (shape-morph), MIT, (c) 2026 Subframe: one path whose commands keep
-   their structure morphs by a CSS d transition (0.7 s cubic-bezier(.4,0,.2,1)); keyboard choices land at once.
-   fkSet(look, amp, step): amp null returns to the rest state (the scroll story's, else tied). */
-function fkSet(r,amp,step){if(!r)return;var rest=r._fkRest!=null?r._fkRest:1,a=amp==null?rest:amp,d=fkD(a);
- [].forEach.call(r.querySelectorAll('.aq-fault-knot__p'),function(p){p.setAttribute('d',d);p.style.d='path("'+d+'")'});
- var on=step!=null?step:(r._fkStep!=null?r._fkStep:-1);
- [].forEach.call(r.querySelectorAll('.aq-fault-knot__step'),function(s){s.classList.toggle('is-on',+s.getAttribute('data-i')===on)});
- var clear=a<0.001;if(clear&&!r.classList.contains('is-clear')){r.classList.remove('is-clear');void r.offsetWidth}r.classList.toggle('is-clear',clear)}
-window.fkSet=fkSet;
-(function(){function go(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-fault-knot__step');if(!s||s.contains(ev.relatedTarget))return;var r=s.closest('.aq-fault-knot');
- r._fkHover=on;r.classList.toggle('is-key',ev.type.indexOf('focus')===0&&on);r.classList.remove('is-scrub');fkSet(r,on?+s.getAttribute('data-amp'):null,on?+s.getAttribute('data-i'):null)}
- document.addEventListener('mouseover',function(ev){go(ev,true)});document.addEventListener('mouseout',function(ev){go(ev,false)});
- document.addEventListener('focusin',function(ev){go(ev,true)});document.addEventListener('focusout',function(ev){go(ev,false)})})();
 /* Look "fidelity-ladder" -> FidelityLadder (design-system/components/FidelityLadder): design stages as one drawing
    gaining detail, on a navy blueprint band. Each stage is a sheet showing the same water package at that stage's level
    of drawing: a requirements matrix, a block route with its alternative, a P&ID, a dimensioned isometric, the frozen
@@ -2923,35 +2873,6 @@ LOOKS['joint-macro']=(function(){
   if(!on&&ev.relatedTarget&&row.contains(ev.relatedTarget))return;set(row,on&&row.hasAttribute('data-crop'))}}
  document.addEventListener('mouseover',h(true));document.addEventListener('mouseout',h(false));
  document.addEventListener('focusin',h(true));document.addEventListener('focusout',h(false))})();
-/* Look "joint-spine" -> JointSpine (design-system/components/JointSpine): a log whose rows hang off a pipe. A twin-wall
-   pipe drops in from the top of the section beside the title, bends and runs down the left of the log as its spine;
-   each row of the log sits level with a joint on the spine (the piping-isometric joint mark: a tick across the pipe
-   and a dot), and the row's number is written at the joint, alternating sides, as joint numbers are on a drawing.
-   The pipe runs on past the last row and out of the section. Pointing at a row lights its joint.
-   Fields, as a table: h, cols [field, what it proves, record], rows, fold, fold_noun. The column names show once as
-   the log's legend (in each row for screen readers; shown per row on phones). The fold applies on phones only.
-   Phones: no drop or bend; the spine runs down a narrow rail at the left, numbers beside it. */
-LOOKS['joint-spine']=function(b,H){var C=b.cols||[],R=b.rows||[];
- var k=function(i){return C[i]?'<span class="aq-joint-spine__k">'+tx(C[i])+'</span>':''};
- /* the bend from the drop into the spine: a 13-wide wall stroke with a 10-wide ground stroke over it leaves two 1.5
-    px walls; the water is the centre line. Impression (faint) under, ink over. */
- var d='M14 0V14Q14 34 34 34H140Q160 34 160 54V72';
- var bend='<svg class="aq-joint-spine__bend" viewBox="0 0 240 72" aria-hidden="true" focusable="false">'
-  +'<path class="aq-joint-spine__w aq-joint-spine__w--imp" d="'+d+'"/><path class="aq-joint-spine__g" d="'+d+'"/>'
-  +'<g class="aq-joint-spine__bink"><path class="aq-joint-spine__w" d="'+d+'"/><path class="aq-joint-spine__g" d="'+d+'"/><path class="aq-joint-spine__h2o" d="'+d+'"/></g></svg>';
- var legend='<p class="aq-joint-spine__legend" aria-hidden="true">'+[0,1,2].map(function(i){return '<span>'+tx(C[i]||'')+'</span>'}).join('')+'</p>';
- var pipe=function(cls,inner){return '<span class="aq-joint-spine__pipe'+(cls?' '+cls:'')+'" aria-hidden="true"><i class="aq-joint-spine__ink"></i>'+(inner||'')+'</span>'};
- var rows=R.map(function(r,i){var n=(i<9?'0':'')+(i+1);
-  return fli('<li class="aq-joint-spine__row'+(i%2?' is-r':'')+'" data-k="'+i+'">',b,i)
-   +pipe('',('<span class="aq-joint-spine__joint"></span><span class="aq-joint-spine__no">'+n+'</span>'))
-   +'<h3 class="aq-joint-spine__f">'+tcell(r[0])+'</h3>'
-   +(r[1]!=null?'<p class="aq-joint-spine__p">'+k(1)+tcell(r[1])+'</p>':'')
-   +(r[2]!=null?'<p class="aq-joint-spine__r">'+k(2)+tcell(r[2])+'</p>':'')+'</li>'}).join('');
- var log='<ol class="aq-joint-spine__log" role="list">'+rows+'</ol>';
- return sec('<div class="aq-joint-spine">'
-  +'<div class="aq-joint-spine__lead">'+pipe('aq-joint-spine__drop')+H+bend+legend+'</div>'
-  +wFold(b,R.length,log,b.fold_noun||'fields')+pipe('aq-joint-spine__tail')
-  +'</div>','aq-joint-spine-sec')};
 /* Look "joint-steps" -> JointSteps (design-system/components/JointSteps): a fabrication sequence told on one joint. A
    navy title column at the left (title and intro), a drawing sheet in the middle with one joint drawn large in
    isometric (IsoKit: two pipe lengths meeting at joint J-01, the joint zone between dashed bounds, the lot marking
@@ -4180,6 +4101,26 @@ LOOKS['record-sheet']=(function(){
   var tb='<div class="aq-record-sheet__tb" aria-hidden="true"><span class="aq-record-sheet__tbt">'+tx(b.nav||C[0]||'')+'</span>'
    +'<span>'+nn(R.length-1)+' '+e(noun)+'</span><span>'+nn(count-1)+' '+e(rec)+'</span></div>';
   return sec(H+'<div class="aq-record-sheet">'+head+wFold(b,R.length,'<ol class="aq-record-sheet__list" role="list">'+rows+'</ol>',noun)+tb+'</div>','aq-record-sheet-sec')}})();
+/* Look "record-slips" -> RecordSlips (design-system/components/RecordSlips): each process of the quality system and the
+   record it leaves behind. A process is set large and light on the ground with what it controls under it; at its right
+   edge a slot, and out of the slot comes a paper slip: the record you can inspect, one line per record (split at ";"),
+   each with an empty box an auditor ticks. The records are the evidence; the slips make them the thing you hold.
+   Pointing at a process feeds its slip a little further out. The column names head the list once (desktop) or label
+   each row (phones).
+   Fields, as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}),
+   fold, fold_noun (phones only: desktop shows every process). Phones: the slot runs under the process and the slip
+   hangs below it. */
+LOOKS['record-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var k=function(i){return C[i]?'<p class="aq-record-slips__k">'+tx(C[i])+'</p>':''};
+ var list=R.map(function(r,i){var recs=String(r[2]&&typeof r[2]==='object'?r[2].t:r[2]||'').split(/\s*;\s*/).filter(Boolean);
+  return fli('<li class="aq-record-slips__row" style="--i:'+i+'">',b,i)
+   +'<div class="aq-record-slips__proc">'+idx(i)+'<h3 class="aq-record-slips__name">'+tcell(r[0])+'</h3>'+k(1)+'<p class="aq-record-slips__ctl">'+tcell(r[1])+'</p></div>'
+   +'<div class="aq-record-slips__feed"><span class="aq-record-slips__slot" aria-hidden="true"></span>'
+   +'<div class="aq-record-slips__slip" data-theme="light">'+k(2)+'<ul class="aq-record-slips__recs" role="list">'
+   +recs.map(function(x,j){x=x.charAt(0).toUpperCase()+x.slice(1);return '<li style="--j:'+j+'"><span class="aq-record-slips__box" aria-hidden="true"></span><span>'+tx(x)+'</span></li>'}).join('')
+   +'</ul></div></div></li>'}).join('');
+ var cols='<div class="aq-record-slips__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[2]||'')+'</span></div>';
+ return sec(H+'<div class="aq-record-slips">'+cols+wFold(b,R.length,'<ol class="aq-record-slips__list" role="list">'+list+'</ol>',b.fold_noun||'processes')+'</div>','aq-record-slips-sec')};
 /* Look "redline-sheet" -> RedlineSheet (design-system/components/RedlineSheet): qualification failures caught on paper.
    One limestone drawing sheet (border, zone numbers, title block) carries a column per failure, each a design-review
    markup: a revision triangle and what fails at qualification on top, a small drawing of the design with the mistake
@@ -4318,6 +4259,37 @@ LOOKS['request-menu']=function(b,H){var C=b.cols||[],R=b.rows||[],F=b.fold>0&&R.
   +'<div class="aq-request-menu"><figure class="aq-request-menu__fig" aria-hidden="true">'+figure()+'</figure>'
   +'<div class="aq-request-menu__body">'+wFold(b,R.length,table,b.fold_noun||'rows')+'</div></div></div>','aq-band--limestone aq-request-menu-sec')};
 })();
+/* Look "response-clock" -> ResponseClock (design-system/components/ResponseClock): what happens when something goes
+   wrong, read off the response clock. On a navy band a large stopwatch dial (minute ticks, crown and buttons, one
+   hand) carries a numbered station per step around its rim, first at twelve o'clock, clockwise. The step whose text
+   names the clock ("…start your plan's response clock") starts a flow arc that runs on round the dial, dashed, as
+   the clock runs; it ends nowhere in particular, because the page sets no time. Beside the dial the steps read down
+   as a list: huge light number, name, what happens. Pointing at (or focusing) a step turns the hand to its station.
+   Fields (a steps block): h, intro, items [{t, d, link}]. A link makes the step's name the link. No hold points (a
+   steps block with holds belongs to ProcessSteps or CutoverSchedule). Phones: the dial sits above the list, smaller. */
+function rcPt(cx,cy,r,a){var t=(a-90)*Math.PI/180;return [cx+r*Math.cos(t),cy+r*Math.sin(t)]}
+LOOKS['response-clock']=function(b,H){var I=b.items||[],n=I.length,K='aq-response-clock',cx=200,cy=210,R=150,span=n>1?300/(n-1):0;
+ var start=-1;I.forEach(function(it,i){if(start<0&&/clock/i.test(String(it.d||'')+' '+String(it.t||'')))start=i});
+ var ang=I.map(function(it,i){return i*span}),f=function(v){return v.toFixed(1)},ticks='',i;
+ for(i=0;i<60;i++){var a=i*6,p0=rcPt(cx,cy,R+18,a),p1=rcPt(cx,cy,R+(i%5?12:6),a);ticks+='M'+f(p0[0])+' '+f(p0[1])+'L'+f(p1[0])+' '+f(p1[1])}
+ var arc='';if(start>=0){var a0=ang[start],a1=a0+Math.min(330-a0,300),P0=rcPt(cx,cy,R-16,a0),P1=rcPt(cx,cy,R-16,a1);
+  arc='<path class="'+K+'__run" d="M'+f(P0[0])+' '+f(P0[1])+'A'+(R-16)+' '+(R-16)+' 0 '+(a1-a0>180?1:0)+' 1 '+f(P1[0])+' '+f(P1[1])+'"/>'}
+ var st=I.map(function(it,i){var p=rcPt(cx,cy,R,ang[i]);return '<g class="'+K+'__st'+(i===start?' is-start':'')+'" data-i="'+i+'"><circle cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="17"/><text x="'+f(p[0])+'" y="'+f(p[1]+4)+'">'+(i<9?'0':'')+(i+1)+'</text></g>'}).join('');
+ var dial='<svg class="'+K+'__dial" viewBox="0 0 400 400" aria-hidden="true" focusable="false">'
+  +'<path class="'+K+'__crown" d="M186 18h28v14h-28zM192 32h16v12h-16z"/><path class="'+K+'__btn" d="M318 64l14-14 12 12-14 14zM82 64l-14-14-12 12 14 14z"/>'
+  +'<circle class="'+K+'__case" cx="'+cx+'" cy="'+cy+'" r="'+(R+30)+'"/><circle class="'+K+'__face" cx="'+cx+'" cy="'+cy+'" r="'+(R+22)+'"/>'
+  +'<path class="'+K+'__ticks" d="'+ticks+'"/><circle class="'+K+'__track" cx="'+cx+'" cy="'+cy+'" r="'+(R-16)+'"/>'+arc+st
+  +'<g class="'+K+'__hand" style="--a:'+(start>=0?ang[start]:0)+'deg"><path d="M'+cx+' '+(cy+22)+'V'+(cy-R+30)+'"/><circle cx="'+cx+'" cy="'+cy+'" r="7"/></g></svg>';
+ var list=I.map(function(it,i){var t=tx(it.t);if(it.link&&wp(it.link))t='<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>';
+  return '<li class="'+K+'__step'+(i===start?' is-start':'')+'" data-i="'+i+'" data-a="'+ang[i]+'"'+(it.link&&wp(it.link)?'':' tabindex="0"')+'><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<div class="'+K+'__body"><h3 class="'+K+'__t">'+t+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
+ return sec(H+'<div class="'+K+'"><div class="'+K+'__fig">'+dial+'</div><ol class="'+K+'__steps" role="list">'+list+'</ol></div>','aq-band--navy '+K+'-sec')};
+/* Pointing at a step turns the hand to its station */
+(function(){function go(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-response-clock__step');if(!s||s.contains(ev.relatedTarget))return;var r=s.closest('.aq-response-clock'),h=r.querySelector('.aq-response-clock__hand');
+ if(on){r.setAttribute('data-rest',r.getAttribute('data-rest')||h.style.getPropertyValue('--a'));h.style.setProperty('--a',s.getAttribute('data-a')+'deg')}else h.style.setProperty('--a',r.getAttribute('data-rest')||'0deg');
+ [].forEach.call(r.querySelectorAll('[data-i="'+s.getAttribute('data-i')+'"]'),function(el){el.classList.toggle('is-on',on)})}
+ document.addEventListener('mouseover',function(ev){go(ev,true)});document.addEventListener('mouseout',function(ev){go(ev,false)});
+ document.addEventListener('focusin',function(ev){go(ev,true)});document.addEventListener('focusout',function(ev){go(ev,false)})})();
 /* Look "retrofit-plant" -> RetrofitPlant (design-system/components/RetrofitPlant): common upgrades shown on the running
    plant, drawn the way a retrofit drawing is: existing equipment faint, the new work bold. A navy blueprint sheet
    carries the whole PW plant (IsoKit, the scene shared with look "visit-plan"); under it the upgrades are a tab list

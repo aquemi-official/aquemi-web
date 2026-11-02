@@ -7,7 +7,7 @@
  "path": "/compliance/documentation/",
  "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GUI-0029 · GAMP 5",
  "headline": "Every document your auditor asks for",
- "lead": "We write each document as we design, build and test your polypropylene (PP) Purified Water package. Each line of your user requirement specification (URS) traces to the document proving it.",
+ "lead": "We write each document as we design, build and test your polypropylene Purified Water package. Each line of your user requirement specification (URS) traces to proof. Device makers validate processes with them (ISO 13485:2016, 7.5.6).",
  "primary_cta": "Request a specimen package",
  "secondary_cta": {
   "label": "See what each document proves",
@@ -95,7 +95,7 @@
     ],
     [
      "Fabrication · Annex 15, 3.9",
-     "Installation qualification (IQ) evidence. Both parties sign the inspection plan; you verify records at IQ.",
+     "Installation qualification (IQ) evidence. Both parties sign the inspection plan; your validation team verifies records at IQ.",
      "Fabrication and inspection plan; Material log and certificates; Welder qualifications; [PP joint records kept]; Pressure test and cleaning records"
     ],
     [
@@ -110,7 +110,7 @@
     ],
     [
      "Handover",
-     "Your system owner accepts the package.",
+     "Your system owner accepts the package; maintenance works from it.",
      "Document register and punch list; As-built drawings; Calibration certificates; Software backup; Operation and maintenance manual; Draft procedures; Spare parts list"
     ],
     [
@@ -242,7 +242,9 @@
     },
     {
      "q": "Do you check third-party certificates, or just forward them?",
-     "a": "We check them: markings and lot numbers against the certificate at receipt. Certificates reach you as the issuer sent them, never retyped."
+     "a": "We check them: markings and lot numbers against the certificate at receipt. Certificates reach you as the issuer sent them, never retyped. If you make products for clients, their auditors see the same records.",
+     "link": "ind-cdmo#audit-pack",
+     "link_label": "See the client audit pack"
     },
     {
      "q": "When do we see the protocols?",
@@ -266,7 +268,7 @@
  "cta": {
   "h": "Send your URS for your document list",
   "body": "An engineer replies in writing. Cost: [proposal cost or free].",
-  "button": "Get your document list",
+  "button": "Send your URS",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Proposal against your URS",
   "include": [
@@ -303,7 +305,8 @@
   "Who signs fabrication records for Aquemi (DR-004 rule 4; FD-34): the page names no role until a person holds it",
   "Native files ([drawing formats delivered], for example PDF and native CAD; [drawing ownership or licence terms]; svc-design's names, cmp-quality sets the terms; FD-10, FD-47): drawing, spreadsheet and word processing formats; raw data export format for trends, alarms and events (FD-23)",
   "French documents (FD-36; DR-012): which documents are offered in French, how translations are controlled, French documentation cost per project. Nothing on the page until FD-36 is answered",
-  "Transfer and paper ([secure transfer method or portal]; FD-47): number of paper sets, if any"
+  "Transfer and paper ([secure transfer method or portal]; FD-47): number of paper sets, if any",
+  "Device validation basis in the lead (DR-022 rule 5): checked against industries/medical-devices.md (ISO 13485:2016, 7.5.6 validation of production processes; FDA expects IQ/OQ/PQ of a device maker's water system [IMD-17][IMD-19][IMD-21]); the site's split stays as ind-meddevice states it: the device maker validates the process, the water system is qualified"
  ],
  "primary_cta_link": "#samples",
  "figure": {

@@ -2012,55 +2012,6 @@ AQmotion.fx('FAQ', function (root, m) {
     dial(d.parentElement);
   });
 })();
-/* FaultKnot: the title lands word by word in both colours at once (the core's word reveal, run here on the heading and
-   its clipped twin together so the words stay whole across the split); the frame and grid fade up, the knotted pipe
-   inks itself in, the steps rise left to right. Then the page's one scroll-linked story: as the section scrolls
-   through the viewport the knot loosens step by step and runs straight at the step that brings the water back, and
-   the step in reach lights its number. Readable at every scroll position; no pin; nothing under reduced motion (the
-   static knot stands). Pointing at or focusing a step (look file) morphs to that step and returns to the scroll state. */
-AQmotion.fx('FaultKnot', function (root, m) {
-  root.querySelectorAll('.aq-fault-knot').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var real = el.querySelector('.aq-fault-knot__head > .aq-sec-head .aq-h1'), twin = el.querySelector('.aq-fault-knot__twin .aq-h1');
-    var sp = [real, twin].map(function (h) { return h ? m.split(h, { type: 'words', mask: 'words', wordsClass: 'aq-m-word' }) : null });
-    var words = [];
-    sp.forEach(function (s) { if (!s) return; if (s.masks) s.masks.forEach(function (k) { k.style.paddingBottom = '0.12em'; k.style.marginBottom = '-0.12em' }); words.push(s.words) });
-    var leads = [].slice.call(el.querySelectorAll('.aq-fault-knot__head .aq-lead'));
-    var frame = el.querySelectorAll('.aq-fault-knot__frame, .aq-fault-knot__grid, .aq-fault-knot__flange');
-    var pipe = [].slice.call(el.querySelectorAll('.aq-fault-knot__wall, .aq-fault-knot__bore'));
-    var flow = el.querySelector('.aq-fault-knot__flow'), steps = [].slice.call(el.querySelectorAll('.aq-fault-knot__step'));
-    var tl = m.tw(gsap.timeline({ paused: true }));
-    if (window.CustomEase && !CustomEase.get('aq-word')) CustomEase.create('aq-word', 'M0,0 C0.22,1 0.36,1 1,1');
-    if (words.length) {
-      var n = words[0].length, gap = n > 1 ? Math.min(0.075, 0.9 / (n - 1)) : 0;
-      words.forEach(function (w) { gsap.set(w, { yPercent: 100, autoAlpha: 0 }); tl.to(w, { yPercent: 0, autoAlpha: 1, duration: 0.52, ease: window.CustomEase ? 'aq-word' : 'expo.out', stagger: gap }, 0.05) });
-      tl.call(function () { sp.forEach(function (s) { try { if (s) s.revert() } catch (x) {} }) }, null, 0.05 + gap * Math.max(0, n - 1) + 0.6);
-    }
-    if (leads.length) tl.from(leads, { y: 16, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.6);
-    tl.from(frame, { autoAlpha: 0, duration: 0.6, ease: 'power2.out', clearProps: 'opacity,visibility' }, 0.2);
-    if (window.DrawSVGPlugin && pipe.length) {
-      tl.fromTo(pipe, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.8, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.35);
-      if (flow) tl.from(flow, { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, 1.9);
-    }
-    tl.from(steps, { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0.9);
-    m.on(el, function () { tl.play() }, 'top 85%');
-
-    /* scroll story: progress 0..1 across the steps' stages (piecewise between each step's tension) */
-    if (!window.fkSet) return;
-    var amps = steps.map(function (s) { return +s.getAttribute('data-amp') }), k = amps.length - 1;
-    if (k < 1) return;
-    var last = -1;
-    m.tw(ScrollTrigger.create({
-      trigger: el, start: 'top 45%', end: 'bottom 75%',
-      onUpdate: function (self) {
-        var x = self.progress * k, i = Math.min(k - 1, Math.floor(x)), f = x - i, a = amps[i] + (amps[i + 1] - amps[i]) * f;
-        a = Math.round(a * 200) / 200; el._fkRest = a; el._fkStep = Math.min(k, Math.round(x));
-        if (el._fkHover || tl.isActive() || a === last) return; last = a;
-        el.classList.add('is-scrub'); fkSet(el, null, null);
-      }
-    }));
-  });
-});
 /* FaultList: the failures rise in order; then the open one unfolds, its cause column first and the design answer
    after it, cause before effect. Opening another failure unfolds it the same way (the visitor drives it). */
 AQmotion.fx('FaultList', function (root, m) {
@@ -3306,64 +3257,6 @@ AQmotion.fx('JointMacro', function (root, m) {
     var rows = qa('.aq-joint-macro__legend, .aq-joint-macro__row').filter(function (r) { return r.offsetParent });
     if (rows.length) tl.from(rows, { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.3);
     m.on(el, function () { tl.play() }, 'top 70%');
-  });
-});
-/* JointSpine: the pipe is inked over its own faint impression, top to bottom in one stroke: down beside the title,
-   round the bend, down the spine past every joint and out of the section. As the ink reaches a joint its dot strikes
-   and its row prints beside it. One timeline, once, about 2.6 s.
-   Ported from Subframe Motion "SVG line drawing animation" (signature-draw), MIT, (c) 2026 Subframe
-   (kept: the faint offset impression that is always there, the ink drawn over it as one stroke over 2100 ms on
-   cubic-bezier(.37,.12,.28,1), the detail that appears when the stroke reaches it; replaced: one SVG path with the
-   drop, the bend and the CSS pipe pieces sharing one progress by their length, the replay button with scroll-in). */
-AQmotion.fx('JointSpine', function (root, m) {
-  root.querySelectorAll('.aq-joint-spine').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
-    var sec = el.closest('.aq-section') || el, top0 = function (n) { return n.getBoundingClientRect().top };
-    var ez = window.CustomEase ? (CustomEase.get('aq-sig') || CustomEase.create('aq-sig', 'M0,0 C0.37,0.12 0.28,1 1,1')) : 'power2.inOut';
-    var rows = qa('.aq-joint-spine__row').filter(function (r) { return r.offsetParent });
-    var bink = qa('.aq-joint-spine__bink path'), bend = el.querySelector('.aq-joint-spine__bend');
-    var drop = el.querySelector('.aq-joint-spine__drop .aq-joint-spine__ink'), tail = el.querySelector('.aq-joint-spine__tail .aq-joint-spine__ink');
-    var showBend = bend && bend.getBoundingClientRect().width > 0;
-    var tl = m.tw(gsap.timeline({ paused: true }));
-    /* rows wait for their joint */
-    rows.forEach(function (r) {
-      var cells = qa(':scope > h3, :scope > p', r), j = r.querySelector('.aq-joint-spine__joint'), no = r.querySelector('.aq-joint-spine__no');
-      r._tl = m.tw(gsap.timeline({ paused: true }));
-      if (j) r._tl.from(j, { scaleX: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform' }, 0);
-      if (no) r._tl.from(no, { autoAlpha: 0, x: r.classList.contains('is-r') ? -8 : 8, duration: 0.3, ease: 'power3.out', clearProps: 'opacity,visibility,transform' }, 0.05);
-      if (cells.length) r._tl.from(cells, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.05);
-    });
-    function run() {
-      /* the stroke's pieces, measured now (in reading order) */
-      var s0 = top0(sec), P = [], L = 0;
-      function add(kind, n, len, extra) { if (!n || len <= 0) return; P.push({ k: kind, n: n, a: L, l: len, x: extra }); L += len }
-      if (showBend && drop) { var dr = drop.getBoundingClientRect(), vis = Math.max(0, dr.bottom - s0); add('drop', drop, vis, dr.height) }
-      if (showBend && bink.length) { bink.forEach(function (p) { p.setAttribute('pathLength', '1'); p.style.strokeDasharray = '1 1' }); add('bend', bink, 150) }
-      rows.forEach(function (r) { var ink = r.querySelector('.aq-joint-spine__ink'), h = r.getBoundingClientRect().height, j = r.querySelector('.aq-joint-spine__joint');
-        var jy = j ? j.getBoundingClientRect().top - r.getBoundingClientRect().top : h / 2; add('seg', ink, h, { r: r, jy: jy }) });
-      if (tail) add('tail', tail, Math.max(60, sec.getBoundingClientRect().bottom - tail.getBoundingClientRect().top));
-      P.forEach(function (q) { if (q.k !== 'bend') gsap.set(q.n, { scaleY: q.k === 'drop' ? (q.x - q.l) / q.x : 0 }) });
-      var o = { p: 0 };
-      tl.to(o, { p: 1, duration: 2.1 + Math.min(0.5, rows.length * 0.04), ease: ez, onUpdate: function () {
-        var at = o.p * L;
-        P.forEach(function (q) { var f = Math.max(0, Math.min(1, (at - q.a) / q.l));
-          if (q.k === 'bend') q.n.forEach(function (p) { p.style.strokeDashoffset = String(1 - f) });
-          else if (q.k === 'drop') gsap.set(q.n, { scaleY: (q.x - q.l + f * q.l) / q.x });
-          else gsap.set(q.n, { scaleY: f });
-          if (q.k === 'seg' && !q.x.r._hit && at >= q.a + q.x.jy) { q.x.r._hit = 1; q.x.r._tl.play() } });
-      }, onComplete: function () {
-        P.forEach(function (q) { if (q.k === 'bend') q.n.forEach(function (p) { p.style.removeProperty('stroke-dasharray'); p.style.removeProperty('stroke-dashoffset') }); else gsap.set(q.n, { clearProps: 'transform' }) });
-        rows.forEach(function (r) { if (!r._hit) { r._hit = 1; r._tl.play() } });
-      } });
-      tl.play();
-    }
-    /* hide the ink until the stroke starts (the impression stays) */
-    if (showBend && bink.length) bink.forEach(function (p) { p.setAttribute('pathLength', '1'); p.style.strokeDasharray = '1 1'; p.style.strokeDashoffset = '1' });
-    qa('.aq-joint-spine__row .aq-joint-spine__ink').forEach(function (n) { gsap.set(n, { scaleY: 0 }) });
-    if (tail) gsap.set(tail, { scaleY: 0 });
-    if (showBend && drop) { var d0 = drop.getBoundingClientRect(), v0 = Math.max(0, d0.bottom - top0(sec)); if (d0.height) gsap.set(drop, { scaleY: (d0.height - v0) / d0.height }) }
-    m.on(el, run, 'top 75%');
   });
 });
 /* JointSteps: the sheet draws the joint the IsoKit way and the rail's steps rise in turn (once, under 3.5 s). Then the
@@ -5127,6 +5020,28 @@ AQmotion.fx('RecordSheet', function (root, m) {
     if (tb) { gsap.set(tb, { autoAlpha: 0, y: 8 }); m.on(tb, function () { m.tw(gsap.to(tb, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out', clearProps: 'transform,opacity,visibility' })) }, 'top 95%') }
   });
 });
+/* RecordSlips: each process prints its record. Row by row as it scrolls in: the process name rises, the slot drops
+   into place, then the slip feeds out of the slot (clipped at the slot edge, sliding out from behind it) and its
+   record lines tick in one after another. Phones: the slip feeds down out of the slot. One timeline per row, once,
+   under 2 s. Rows behind the phone fold play when opened. */
+AQmotion.fx('RecordSlips', function (root, m) {
+  root.querySelectorAll('.aq-record-slips').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var narrow = m.narrow();
+    [].forEach.call(el.querySelectorAll('.aq-record-slips__row'), function (row) {
+      var name = row.querySelector('.aq-record-slips__name'), rest = row.querySelectorAll('.aq-record-slips__proc > .aq-index, .aq-record-slips__proc > p'),
+        slot = row.querySelector('.aq-record-slips__slot'), slip = row.querySelector('.aq-record-slips__slip'), recs = row.querySelectorAll('.aq-record-slips__recs li');
+      var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+      if (name) tl.from(name, { yPercent: 40, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0);
+      if (rest.length) tl.from(rest, { autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'opacity,visibility' }, 0.15);
+      if (slot) tl.from(slot, narrow ? { scaleX: 0, duration: 0.4, clearProps: 'transform' } : { scaleY: 0, duration: 0.4, clearProps: 'transform' }, 0.2);
+      if (slip) tl.from(slip, narrow ? { yPercent: -60, clipPath: 'inset(60% 0 0 0)', duration: 0.8, ease: 'power2.out', clearProps: 'clipPath' } : { xPercent: -45, clipPath: 'inset(0 0 0 45%)', duration: 0.8, ease: 'power2.out', clearProps: 'clipPath' }, 0.45);
+      if (slip) tl.set(slip, { clearProps: 'transform' });
+      if (recs.length) tl.from(recs, { autoAlpha: 0, x: -8, duration: 0.35, stagger: 0.12, clearProps: 'transform,opacity,visibility' }, 0.9);
+      m.on(row, function () { tl.play() }, 'top 85%');
+    });
+  });
+});
 /* RedlineSheet: a design review in progress. The sheet unrolls from the top, then each markup in turn: the figure
    draws on as it was designed, the reviewer's pen rings the mistake with its revision cloud, the triangle and the
    failure strike, the mistake is struck through, and the correction is drawn into the figure in flow while its note
@@ -5281,6 +5196,40 @@ AQmotion.fx('RequestMenu', function (root, m) {
   document.addEventListener('pointerout', function (ev) { var t = ev.target.closest && ev.target.closest('.aq-request-menu__table'); if (t && !t.contains(ev.relatedTarget)) set(t, null) });
   document.addEventListener('focusout', function (ev) { var t = ev.target.closest && ev.target.closest('.aq-request-menu__table'); if (t && !t.contains(ev.relatedTarget)) set(t, null) });
 })();
+/* ResponseClock: the dial is drawn (case, face, the minute ticks running round), then the hand sweeps once from
+   twelve through every station: each station strikes as the hand reaches it and its step rises in the list; at the
+   step that starts the clock the running arc appears. The hand comes to rest on that station. One timeline, once,
+   about 3.5 s. Phones: the same, the list rows rising as the hand passes. Hover turns the hand (CSS transition). */
+AQmotion.fx('ResponseClock', function (root, m) {
+  root.querySelectorAll('.aq-response-clock').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s) { return [].slice.call(el.querySelectorAll(s)) }, hand = el.querySelector('.aq-response-clock__hand');
+    var st = q('.aq-response-clock__st'), steps = q('.aq-response-clock__step'), run = el.querySelector('.aq-response-clock__run');
+    var rest = hand.style.getPropertyValue('--a') || '0deg', tl = m.tw(gsap.timeline({ paused: true }));
+    var D = window.DrawSVGPlugin;
+    if (D) { q('.aq-response-clock__case, .aq-response-clock__face').forEach(function (c) { c.setAttribute('vector-effect', 'non-scaling-stroke') });
+      tl.fromTo(q('.aq-response-clock__case'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.8, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0) }
+    tl.from(q('.aq-response-clock__face, .aq-response-clock__crown, .aq-response-clock__btn, .aq-response-clock__track'), { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, 0.2);
+    tl.from(q('.aq-response-clock__ticks'), { rotation: -90, svgOrigin: '200 210', autoAlpha: 0, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.2);
+    gsap.set(st, { autoAlpha: 0 }); gsap.set(steps, { autoAlpha: 0, y: 14 }); if (run) gsap.set(run, { autoAlpha: 0 });
+    hand.style.transition = 'none';
+    tl.set(hand, { '--a': '0deg' }, 0);
+    tl.from(hand, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 0.6);
+    var t = 0.9, per = 0.42;
+    steps.forEach(function (s, i) {
+      var a = +s.getAttribute('data-a') || 0, at = t + (i ? per : 0.15);
+      tl.to(hand, { '--a': a + 'deg', duration: i ? per : 0.15, ease: 'power1.inOut' }, t);
+      tl.to(st[i], { autoAlpha: 1, duration: 0.2, clearProps: 'opacity,visibility' }, at - 0.05);
+      tl.from(st[i] && st[i].querySelector('circle'), { scale: 1.7, transformOrigin: '50% 50%', duration: 0.35, ease: 'back.out(2)', clearProps: 'transform' }, at - 0.05);
+      tl.to(s, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, at - 0.05);
+      if (run && s.classList.contains('is-start')) tl.to(run, { autoAlpha: 1, duration: 0.6, clearProps: 'opacity,visibility' }, at);
+      t = at;
+    });
+    tl.to(hand, { '--a': rest, duration: 0.6, ease: 'power2.inOut' }, t + 0.3);
+    tl.call(function () { hand.style.transition = '' }, null, t + 0.95);
+    m.on(el, function () { tl.play() }, 'top 70%');
+  });
+});
 /* RetrofitPlant: the existing plant is drawn and the water runs it once at full strength (IsoKit's choreography, the
    faint "existing" state held off until then), then the plant drops back to existing, the sheet moves in on the picked
    upgrade (CSS transition on the camera group, 0.9 s) and its stages light; the tab list and the panel rise. One timeline, once, under 5 s. Picking another upgrade fades the sheet over

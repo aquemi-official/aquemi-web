@@ -7,7 +7,7 @@
  "path": "/services/process-design/",
  "eyebrow": "SERVICES · PROCESS DESIGN · URS TO DQ",
  "headline": "Purified Water system design, traced to your URS",
- "lead": "We design a polypropylene Purified Water package from your user requirement specification (URS). Your quality unit approves it at design qualification (DQ).",
+ "lead": "We design the Purified Water package to your user requirement specification (URS), from pretreatment to the polypropylene loop. Your quality unit approves it at design qualification (DQ).",
  "tags": [
   "EU GMP Annex 15",
   "GUI-0029",
@@ -55,6 +55,7 @@
   },
   {
    "type": "steps",
+   "anchor": "stages",
    "look": "fidelity-ladder",
    "h": "Design stages, and what you approve",
    "items": [
@@ -121,8 +122,8 @@
    "h": "An example: two requirements traced to their tests",
    "cols": [
     "Document",
-    "URS-012: conductivity ≤ 1.3 µS/cm @ 25 °C",
-    "URS-027: L/D ≤ 2"
+    "URS-012: conductivity limit ≤ 1.3 µS/cm @ 25 °C",
+    "URS-027: dead leg limit L/D ≤ 2"
    ],
    "rows": [
     [
@@ -150,6 +151,7 @@
   },
   {
    "type": "faq",
+   "anchor": "faq",
    "h": "Questions teams ask",
    "nav": "FAQ",
    "items": [
@@ -169,8 +171,11 @@
      "a": "[risk assessment method], under ICH Q9(R1), the quality risk management guideline."
     },
     {
-     "q": "Can you work with our engineering firm's design?",
-     "a": "Yes, as the supplier of the water package: we design it inside their project, to their interfaces. Reviewing a design they produced: [design-only engagements offered, and pricing]."
+     "q": "Consultant or contractor: what do we receive, and when?",
+     "a": "Consultants receive a compliance matrix against your client's URS within [compliance matrix response time, working days]. The basis of design follows at the concept hold. P&IDs and a draft functional specification follow at basic design, approved issues at detailed design. Contractors: connection points come in the proposal; footprint, weight, utilities, tie-ins and field joints are in our site requirements (Systems).",
+     "link": "contact-proposal",
+     "link_label": "Request a compliance matrix",
+     "intent": "I have a URS or a draft|Compliance matrix"
     },
     {
      "q": "Is design charged separately from the equipment?",
@@ -231,7 +236,9 @@
   "Client templates: whether Aquemi writes design and qualification documents in the client's own templates (FD-46). \"In your template\" was cut from the DQ and risk-method answers until confirmed",
   "Vessel calculations: cut from Detailed design until Aquemi confirms which package items need pressure calculations, who makes them (in-house or partner) and the CRN route (FD-24; compliance holds the route)",
   "Who pays for design gaps found at DQ or IQ/OQ ([design gap warranty terms]): its home is cmp-quality's \"How buying from us works\" (FD-07, DR-005 rule 7), not this page",
-  "A real design project (scope, URS lines traced, design-to-DQ duration) before adding a case study block (FD-42, DR-016)"
+  "A real design project (scope, URS lines traced, design-to-DQ duration) before adding a case study block (FD-42, DR-016)",
+  "[compliance matrix response time, working days] (FAQ 4, pass 10, DR-019): same name as compliance's closing and services' router row 8 (FD-01). At launch an unset time leaves the clause (DR-006 rule 7)",
+  "FAQ 4 \"Consultant or contractor: what do we receive, and when?\" (DR-019 with the desk ruling, pass 10) answers consultants and contractors now; their open values stay in brackets: design-only work and reviews of another firm's design are FAQ 5's [design-only engagements offered, and pricing] (FD-25, FD-02), seal and file formats in FAQ 6 (FD-34, FD-10), the contractor's values on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26). Its timing mirrors the stages above (pass 10 review): basis of design at the concept hold, P&IDs and a draft functional specification at basic design, approved issues at detailed design; confirm Aquemi issues them at these holds (FD-46). Its link asks for a compliance matrix (contact-proposal option \"Compliance matrix\"), the request services' row 8 promises; the contractor's site requirements are named in the answer (\"(Systems)\") and linked from svc-fabrication's FAQ. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4)"
  ],
  "facts": [
   {

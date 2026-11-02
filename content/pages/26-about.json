@@ -3,11 +3,11 @@
  "section": "Company",
  "nav_label": "About",
  "title": "About Aquemi: a new Ontario Purified Water company | Aquemi",
- "meta": "A new Ontario company that designs and builds one Purified Water package in polypropylene. Company facts, the people you would work with, and how to check us.",
+ "meta": "A new Ontario company that designs and builds one Purified Water package in polypropylene with PVC pretreatment. Company facts, the people you would work with, and how to check us.",
  "path": "/company/about/",
  "eyebrow": "ABOUT AQUEMI",
  "headline": "A new Ontario company, one Purified Water package in polypropylene",
- "lead": "Our team: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist. No Water for Injection, pure steam or stainless steel systems.",
+ "lead": "Built for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers. Our team: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
  "facts": [
   {
    "v": "[founding year]",
@@ -43,7 +43,7 @@
    "rows": [
     {
      "p": "Scope",
-     "v": "One modular Purified Water package in polypropylene: pretreatment to distribution, design to service. Not Water for Injection, pure steam or stainless steel systems; not residential or municipal",
+     "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Not Water for Injection, pure steam or stainless steel systems; not residential or municipal",
      "m": "",
      "link": "systems",
      "hl": true
@@ -58,23 +58,6 @@
      "v": "[headcount] in total · [headcount by discipline]",
      "m": "Organization chart, from [quality system ready for audit, date]",
      "link": "cmp-quality#audit"
-    },
-    {
-     "p": "Head office",
-     "v": "[head office, city and province]",
-     "m": "",
-     "link": "contact-locations#locations"
-    },
-    {
-     "p": "Shop and test bay",
-     "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
-     "m": "Visit once [shop and test bay ready for visits]",
-     "link": "contact-locations#visit"
-    },
-    {
-     "p": "Professional licences",
-     "v": "[number of licensed engineers] P.Eng. or ing. in [provinces of licence] · [engineering firm permit, by province]",
-     "m": "[licensing body registers]"
     },
     {
      "p": "Quality system",
@@ -94,6 +77,23 @@
      "m": "On request"
     },
     {
+     "p": "Professional licences",
+     "v": "[number of licensed engineers] P.Eng. or ing. in [provinces of licence] · [engineering firm permit, by province]",
+     "m": "[licensing body registers]"
+    },
+    {
+     "p": "Head office",
+     "v": "[head office, city and province]",
+     "m": "",
+     "link": "contact-locations#locations"
+    },
+    {
+     "p": "Shop and test bay",
+     "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
+     "m": "Visit once [shop and test bay ready for visits]",
+     "link": "contact-locations#visit"
+    },
+    {
      "p": "Systems delivered",
      "v": "[systems delivered, by type and province]",
      "m": "",
@@ -101,7 +101,7 @@
     }
    ],
    "note": "A bracketed fact is not yet confirmed.",
-   "fold": 5,
+   "fold": 8,
    "fold_noun": "facts",
    "look": "colophon"
   },
@@ -173,7 +173,7 @@
      "t": "Service and spares",
      "d": "From [service bases, cities], with spares in [stock location or locations].",
      "link": "contact-locations#coverage",
-     "icon": "wrench"
+     "icon": "valve"
     }
    ],
    "look": "site-tiles"
@@ -190,7 +190,7 @@
      "link_label": "See the documentation package"
     },
     {
-     "q": "Do you work outside drug and device manufacturing?",
+     "q": "Do you supply hospital, lab or industrial water?",
      "a": "Our scope: [hospital water scope]; [lab water scope]; [industrial water scope]. Hospital reprocessing water follows CSA Z314:23 and ANSI/AAMI ST108:2023. Critical water under ST108 is looser on ions than Purified Water, tighter on microbes, and has an endotoxin limit.",
      "link": "industries#adjacent",
      "link_label": "See adjacent uses"
@@ -248,7 +248,7 @@
   "Systems delivered, by type and province, or \"none yet\" ([systems delivered, by type and province]; FD-41, DR-016)",
   "CRN: which items in the package are pressure-rated and need a CRN, for example RO membrane housings ([pressure-rated items in the PW package], the canonical name; FD-24). Who prepares and submits, and the provinces covered, stay on compliance ([Aquemi CRN process and provinces covered]); the item links compliance#engineering, the CSA B51 row's block",
   "Service bases and spares stock locations ([service bases, cities], [stock location or locations]; contact-locations uses the same names; FD-11, FD-28)",
-  "Adjacent uses: [hospital water scope], [lab water scope], [industrial water scope], the same words as industries and ind-meddevice (FD-25, DR-002 rules 4 to 6). Its two hospital sentences are word for word ind-meddevice's hospital FAQ (DR-002 rule 4): change both together; ind-meddevice's scope sentence names the hospital scope only. The link lands on industries#adjacent, the rows' home (DR-009 rule 1)",
+  "Adjacent uses: [hospital water scope], [lab water scope], [industrial water scope], the same words as industries and ind-meddevice (FD-25, DR-002 rules 4 to 6). Its two hospital sentences are word for word ind-meddevice's hospital FAQ (DR-002 rule 4): change both together; ind-meddevice's scope sentence names the hospital scope only. The link lands on industries#adjacent, the rows' home (DR-009 rule 1). The question reads \"Do you supply hospital, lab or industrial water?\" since the pass 10 review, so a natural health product maker does not read the old \"outside drug and device manufacturing\" as excluding them",
   "Other makers' systems ([makes and equipment types serviced]; FD-30, DR-011): question and answer are services' one-line FAQ, word for word (\"Do you work on other makers' systems?\"); it gets its yes or no once FD-30 is answered",
   "Joint records in the key-person FAQ ([PP joint records kept], the name sys-pw, svc-cq and compliance use; FD-18): the FAQ names the joint map and log only once FD-18 is signed off",
   "Company facts note (\"A bracketed fact is not yet confirmed.\"): draft only; it goes at launch, when no bracket is left",
@@ -256,7 +256,11 @@
   "French-language capability: which roles work in French, which documents are offered in French, translation review ([French roles and documents]; FD-36, DR-012)",
   "Project-facts sheet: link it from this page once it exists, with no brackets (DR-001 rule 5; FD-03, FD-05 to FD-08)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page; FD-01). At launch, if unset, the closing says \"An engineer replies in writing.\" (DR-006 rule 7)",
-  "Cost of talking to an engineer ([fit check cost or free]; contact-proposal's requests table; FD-02), the same line as home, services, projects and news; unset at launch, the cost line goes (DR-005 rule 8)"
+  "Cost of talking to an engineer ([fit check cost or free]; contact-proposal's requests table; FD-02), the same line as home, services, projects and news; unset at launch, the cost line goes (DR-005 rule 8)",
+  "Segments in the lead (\"Built for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers\", the footer's short form word for word, DR-011 rule 3; DR-002 order, DR-017): natural health products stay named only if FD-38 confirms them as a launch segment; the footer description and ind-pharma#nhp change in the same commit",
+  "Service and spares tile (Canada block) shows a valve, not the look's default service truck, until FD-28 says how service reaches sites (vehicles and bases); then the icon may return to \"wrench\" (DR-018)",
+  "Scope row envelope (DR-021 as amended by the desk Q2 ruling; DR-013 rule 1; FD-14): \"Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.\" replaced \"Ambient Purified Water only\" (FD-14: never \"ambient\" alone). Once FD-14 names the sanitization regime and its frequency, the row adds it in the same words as sys-pw and compliance",
+  "DI or EDI (FD-21): the hero drawing label reads \"Pretreatment · RO · deionization\", which covers MISSION's DI/EDI without choosing one (DR-018 rule 2; \"DI/EDI\" as a label would need DI spelled out in the reading text, DR-003). Once FD-21 says DI, EDI or both, align the label, the people intro \"membranes, electrodeionization (EDI) modules\" and the parts label \"Membranes and EDI modules\" in one commit"
  ],
  "figure": {
   "spots": [
@@ -264,6 +268,6 @@
    "ro-skid",
    "edi-stack"
   ],
-  "label": "Pretreatment · RO · EDI"
+  "label": "Pretreatment · RO · deionization"
  }
 }

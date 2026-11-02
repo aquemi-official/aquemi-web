@@ -84,11 +84,21 @@
     [
      "Comparing suppliers",
      {
-      "t": "Quality: request a supplier audit",
-      "link": "cmp-quality"
+      "t": "Quality: send your questionnaire",
+      "link": "cmp-quality#audit",
+      "intent": "Your questionnaire, completed"
      },
      "Your supplier questionnaire",
      "Your questionnaire completed, within [audit request response time, working days]"
+    ],
+    [
+     "Consultant or contractor",
+     {
+      "t": "Process design: what specifiers receive",
+      "link": "svc-design#faq"
+     },
+     "Your client's URS or specification, and the bid date",
+     "A compliance matrix against it, within [compliance matrix response time, working days]"
     ]
    ],
    "as": "router",
@@ -101,7 +111,8 @@
     "Installed",
     "In service",
     "Aging",
-    "Comparing suppliers"
+    "Comparing suppliers",
+    "Specifying for a client"
    ],
    "kinetic": [
     "Start",
@@ -110,6 +121,7 @@
   },
   {
    "type": "steps",
+   "anchor": "durations",
    "h": "How long each stage takes, and what it leaves",
    "intro": "Plan your review time at each hold point.",
    "items": [
@@ -170,7 +182,7 @@
     },
     {
      "q": "How long from URS to water released?",
-     "a": "Design takes [design to DQ, weeks], fabrication [approved design to FAT, weeks] and the factory acceptance test [FAT duration, days]. Installation and site acceptance take [installation and SAT, days], then [IQ/OQ on site, days] of qualification. Under WHO TRS 1033, water can be used after at least 2 weeks of sampling, with quality unit approval. Sampling runs for a year."
+     "a": "Design takes [design to DQ, weeks], fabrication [approved design to FAT, weeks] and the factory acceptance test [FAT duration, days]. Installation and site acceptance take [installation and SAT, days], then [IQ/OQ on site, days] of qualification testing. WHO TRS 1033 allows use after at least 2 weeks of sampling, with your quality unit's approval. Sampling continues for a year."
     }
    ]
   },
@@ -206,7 +218,7 @@
  },
  "todo": [
   "Proposal response time ([proposal response time, working days]; one figure on every page; FD-01). Until it is set, launch copy reads \"An engineer replies in writing\" (DR-006 rule 7)",
-  "Turnarounds in the router, one per row, same placeholders as each row's page and contact-proposal's requests table: [URS review turnaround, working days] (svc-design), [document review turnaround, working days] (svc-fabrication, svc-cq), [specimen package response time, working days] (svc-fat-sat, cmp-documentation), [quote response time, working days] (svc-service), [assessment response time, working days] (svc-upgrades), [audit request response time, working days] (cmp-quality) (FD-01). At launch an unset time leaves its row (DR-006 rule 7)",
+  "Turnarounds in the router, one per row, same placeholders as each row's page and contact-proposal's requests table: [URS review turnaround, working days] (svc-design), [document review turnaround, working days] (svc-fabrication, svc-cq), [specimen package response time, working days] (svc-fat-sat, cmp-documentation), [quote response time, working days] (svc-service), [assessment response time, working days] (svc-upgrades), [audit request response time, working days] (cmp-quality), [compliance matrix response time, working days] (compliance; row 8, DR-019) (FD-01). At launch an unset time leaves its row (DR-006 rule 7)",
   "Cost of talking to an engineer ([fit check cost or free]; contact-proposal's requests table names it; FD-02), shown in the closing beside its button (DR-005 rule 4, DR-006 rule 5)",
   "Router row 3 shows svc-fat-sat's draft offer, a specimen FAT protocol (FD-47). At launch, if no specimen exists, the row takes svc-fat-sat's fallback: \"FAT and SAT: request a FAT test list\", send \"URS or functional specification\", back \"A draft FAT test list, reusable tests marked, within [document review turnaround, working days]\" (DR-006 rule 6)",
   "Service phone number and hours ([service phone number], [service phone hours]; same names as the nav, svc-service and contact-service; FD-27). The closing's line keeps the urgent-route wording \"Production stopped or water out of specification\" (contact-service, contact-locations)",
@@ -216,6 +228,8 @@
   "[services sold separately, yes or no]: whether each service is sold on its own as well as end to end (FD-25). If yes, the router's \"Design approved\" row may say again \"by us or another firm\"",
   "[makes and equipment types serviced]: same name on home, svc-service, svc-upgrades, about, contact-service and contact-proposal; the full answers live on svc-service and svc-upgrades (FD-30, DR-009, DR-011). Qualification of systems Aquemi did not build stays off this page until FD-30 answers it",
   "If Aquemi confirms one named project engineer from URS review to handover (FD-34) and which of the six services are in-house or partnered (FD-25), the headline may state it; \"One team\" was cut because neither is confirmed (DR-004 rule 5)",
-  "Supplier audit offer in the router waits on cmp-quality's audit readiness (FD-48, DR-006 rule 6); at launch, if no audit can be hosted, the row's next rung is \"Talk to an engineer\""
+  "Router row 7 (\"Quality: send your questionnaire\", pass 10 review) sends the questionnaire to cmp-quality#audit with the option \"Your questionnaire, completed\"; it waits on cmp-quality's audit readiness (FD-48, DR-006 rule 6); at launch, if that request cannot be answered, the row's next rung is \"Talk to an engineer\"",
+  "Router row 8 (DR-019, pass 10): the consultant and contractor door (situation \"Consultant or contractor\", label \"Specifying for a client\") sends to svc-design#faq, whose FAQ \"Consultant or contractor: what do we receive, and when?\" holds the answer. Design-only work and reviews of another firm's design stay [design-only engagements offered, and pricing] (FD-25, FD-02). A specifier page only with its own DR once spec text, a typical P&ID and dimensional data exist",
+  "FAQ 4 keeps pass C's meaning (\"with your quality unit's approval\", \"of qualification testing\", \"Sampling continues for a year\"), restored in pass 10 after a pass 9 trim had dropped \"your\"; the WHO sentence was reworded (\"allows use after\") so the answer stays within its 60-word budget without cutting a placeholder"
  ]
 }

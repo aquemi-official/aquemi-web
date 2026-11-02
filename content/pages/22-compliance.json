@@ -7,7 +7,7 @@
  "path": "/compliance/",
  "eyebrow": "COMPLIANCE · USP · PH. EUR. · GMP",
  "headline": "Every standard, its number, its proof",
- "lead": "Each standard behind our polypropylene (PP) Purified Water (PW) package, with its limit and the document that proves it. No Water for Injection, pure steam or stainless steel systems.",
+ "lead": "The standards behind our ambient polypropylene (PP) Purified Water (PW) package with polyvinyl chloride pretreatment. For each, its limit and the document proving it.",
  "primary_cta": "Request a compliance matrix",
  "primary_cta_intent": "I have a URS or a draft|Compliance matrix",
  "primary_cta_link": "contact-proposal",
@@ -23,7 +23,7 @@
    "nav": "Limits",
    "anchor": "limits",
    "h": "Purified Water limits",
-   "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
+   "intro": "For Purified Water only, not Water for Injection (WFI). Where USP and Ph. Eur. differ, we design to the stricter value.",
    "caption": "USP · PH. EUR.",
    "cols": [
     "Parameter",
@@ -56,7 +56,7 @@
      "icon": "droplet"
     }
    ],
-   "note": "Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units.",
+   "note": "Ph. Eur. conductivity: ≤ 5.1 µS/cm at 25 °C. Nitrates: ≤ 0.2 ppm, test waived at WFI conductivity (Ph. Eur. 11.4). CFU: colony-forming units.",
    "look": "limit-bento"
   },
   {
@@ -117,11 +117,11 @@
      "to": "engineering",
      "codes": [
       {
-       "t": "GUI-0001",
+       "t": "GUI-0001 C.02.004, C.02.005",
        "to": "gmp"
       },
       {
-       "t": "21 CFR 211",
+       "t": "21 CFR 211.63, 211.65",
        "to": "gmp"
       },
       "[PP material standard]",
@@ -139,7 +139,8 @@
       "GUI-0029",
       "WHO TRS 1033",
       "ASTM E2500",
-      "ICH Q9(R1)"
+      "ICH Q9(R1)",
+      "ISO 13485:2016"
      ],
      "spot": "binder"
     }
@@ -189,11 +190,11 @@
     ],
     [
      "USP <1231> Water for pharmaceutical purposes (informational)",
-     "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Hot water: [maximum loop sanitization temperature for PP, °C]",
+     "Microbial control: sampling plan; alert and action levels from performance qualification data",
      "Sampling plan; alert and action level rationale",
      {
-      "t": "Storage and distribution loops",
-      "link": "sys-storage"
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
      }
     ],
     [
@@ -222,7 +223,8 @@
     "docs",
     "ctl",
     "ctl ana",
-    "ana pov",
+    "docs",
+    "docs",
     "pov loop"
    ],
    "h": "Good manufacturing practice (GMP) and qualification",
@@ -234,7 +236,7 @@
    ],
    "rows": [
     [
-     "Health Canada GUI-0001; 21 CFR 211 (drug GMP) · C.02.004, C.02.005, C.02.009; 211.63, 211.65",
+     "Drug GMP (Health Canada GUI-0001 C.02.004, C.02.005, C.02.009; 21 CFR 211.63, 211.65); GUI-0158 where a natural health product needs PW",
      "Qualified as a utility; non-reactive, non-additive, non-absorptive surfaces that withstand sanitizing",
      "[PP material certificates] traced by lot",
      {
@@ -288,6 +290,15 @@
      }
     ],
     [
+     "Medical devices: ISO 13485:2016; FDA QMSR (21 CFR 820)",
+     "7.4 purchasing: you qualify us as a supplier. 7.5.6: our qualification reports support your validation of production processes",
+     "Questionnaire pack from [quality system ready for audit, date]; qualification reports",
+     {
+      "t": "Medical devices",
+      "link": "ind-meddevice#supplier-quality"
+     }
+    ],
+    [
      "EU GMP Annex 1 (2022); Health Canada GUI-0119",
      "For sterile sites, or non-sterile sites that adopt it in writing: 6.5 records; 6.7 dead legs; 6.9 flow; 6.12 sanitization; 6.13 alert levels",
      "Dead leg register; hydraulics; sanitization OQ",
@@ -308,7 +319,7 @@
    "anchor": "engineering",
    "look": "skid-tags",
    "parts": [
-    "vessel",
+    "",
     "panel",
     "deadleg",
     "wall",
@@ -378,12 +389,14 @@
    "h": "Questions quality teams ask",
    "items": [
     {
-     "q": "Is your system USP certified?",
-     "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT) and operational qualification (OQ) prove it on your feed water."
+     "q": "Our auditor expects stainless. Will PP pass?",
+     "a": "No rule requires stainless. 21 CFR 211.65 and GUI-0001 C.02.005 ask for surfaces that do not react, add or absorb, and survive sanitizing. WHO TRS 1033, 7.2.1, generally recommends 316L or polyvinylidene chloride (PVDC). It does not name PP; we answer it point by point. Your qualification decides. Our scope: ambient Purified Water; no WFI, pure steam or stainless steel.",
+     "link": "sys-storage#sanitization",
+     "link_label": "Where a PP loop stops"
     },
     {
-     "q": "Our auditor expects stainless. Will PP pass?",
-     "a": "It can: no rule requires stainless. 21 CFR 211.65 and GUI-0001 C.02.005 ask for surfaces that do not react, add or absorb, and survive sanitizing. WHO TRS 1033, 7.2.1, generally recommends 316L or polyvinylidene chloride (PVDC) and does not name polypropylene (PP). We answer its list point by point."
+     "q": "Is your system USP certified?",
+     "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT) and operational qualification (OQ) prove it on your feed water."
     },
     {
      "q": "Which edition of each standard do you design to?",
@@ -407,7 +420,7 @@
    "items": [
     "cmp-documentation",
     "cmp-quality",
-    "svc-cq",
+    "ind-meddevice",
     "ind-cdmo"
    ]
   }
@@ -419,7 +432,7 @@
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Compliance matrix",
   "include": [
-   "Your URS, a draft or your product list",
+   "No URS yet? What you make and your flow",
    "Pharmacopoeias that apply",
    "Corporate or site engineering standards",
    "Province of installation"
@@ -439,7 +452,7 @@
   "PP material standard, grade (for example PP-R) and certificates for product-contact parts ([PP material standard], [PP grade], [PP material certificates]; names shared with sys-storage, svc-fabrication, cmp-quality and cmp-documentation; FD-17)",
   "PP joining: method (FD-18 recommends IR or BCF fusion for product-contact PP, no socket fusion), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method], [welder qualification standard for thermoplastics], svc-fabrication's name, [PP joint records kept]; the joining method keeps one name site-wide; FD-18)",
   "Dead leg design limit, L/D, for PP piping on the skid and the loop ([dead leg design limit, L/D]; engineering table; the name sys-pw and svc-design use; FD-19)",
-  "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma and sys-storage; any temperature wording follows DR-013 (FD-14)",
+  "Maximum loop sanitization temperature for PP ([maximum loop sanitization temperature for PP, °C]; FD-14): pass 10 took it off this page with the PP temperature sentence (the USP <1231> row now states microbial control; the PP limit's home is sys-storage, DR-009). Any temperature wording follows DR-013",
   "WHO TRS 1033, 7.2.1 justification for PP, point by point, written before launch: the FAQ 'Our auditor expects stainless' offers it (FD-49 proof backlog)",
   "Risk assessment method Aquemi uses for ASTM E2500 and ICH Q9(R1) critical aspects ([risk assessment method], GMP table; the same placeholder as svc-design; FD-46). Never fill it with FMEA because a notebook suggested it",
   "Compliance matrix cost, free or CAD, beside the button ([compliance matrix cost or free]; the same placeholder as contact-proposal's requests table; FD-02)",
@@ -447,7 +460,10 @@
   "Scope for hospital MDRD water (CSA Z314 / ANSI/AAMI ST108) and laboratory water (ASTM D1193): new systems, upgrades, service only or not offered (FD-25)",
   "Supplier questionnaire and quality agreement: confirm returned with the quote (yes or no), and questionnaire turnaround in working days (FD-48)",
   "Confirm Aquemi practice stated here: the stricter-of basis (limits intro); the edition in force at functional specification approval, changes under change control; corporate standard conflicts flagged in the functional specification (FAQ)",
-  "Quality review of each standard row (edition, clause numbers, limits) before publication, GUI-0001's current version included (the clause references were read in the 2018 edition, version 3 of 2020)"
+  "Quality review of each standard row (edition, clause numbers, limits) before publication, GUI-0001's current version included (the clause references were read in the 2018 edition, version 3 of 2020)",
+  "Medical devices row (GMP table, DR-022 rule 3): links ind-meddevice#supplier-quality, the block the ind-meddevice editor adds in pass 10; the proof cell's questionnaire pack is cmp-quality's, available from [quality system ready for audit, date] (FD-48)",
+  "GUI-0158 (natural health products) is named in the GUI-0001 row's standard cell; its one home is ind-pharma#nhp (DR-017), reached from the footer. A cell holds one link, so the row keeps its Fabrication proof link",
+  "Scope envelope (FAQ 1, DR-021 as amended): the lead names the ambient PP package; confirm 'ambient' against the sanitization regime once FD-14 is answered"
  ],
  "figure": {
   "spots": [

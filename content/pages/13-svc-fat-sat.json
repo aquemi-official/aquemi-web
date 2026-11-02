@@ -217,7 +217,9 @@
     },
     {
      "q": "Is the software we see at FAT the software that ships?",
-     "a": "Its version and checksum are recorded at the factory acceptance test (FAT) [confirm]. Any later change goes through change control and is shown again at the site acceptance test (SAT)."
+     "a": "Its version and checksum are recorded at FAT [confirm]. Any later change goes through change control and is shown again at SAT.",
+     "link": "sys-monitoring#data-integrity",
+     "link_label": "How the code is controlled"
     },
     {
      "q": "How long does a FAT take?",
@@ -255,7 +257,7 @@
  "todo": [
   "Specimen FAT protocol (FD-47): an Aquemi-written table of contents and test cases with acceptance criteria, shared [openly or under NDA] (the name cmp-documentation uses). It is the hero and closing button, landing on cmp-documentation#samples with \"FAT protocol: contents and test cases\" ticked; that option label must stay on the specimen form",
   "Launch rule (DR-004 class 2, DR-006 rule 6): the specimen button shows at launch only if the specimen exists (FD-47); otherwise hero and closing become \"Request a FAT test list\" -> contact-proposal, intent \"I have a URS or a draft|Review of another document|URS or functional specification, to draft a factory acceptance test (FAT) list\"; include \"Your URS or functional specification\", \"Your protocol template, if any\", \"Tests your IQ/OQ must reuse\"; returns \"A draft FAT test list, reusable tests marked\"; turnaround [document review turnaround, working days] and body \"Cost: [document review cost].\" (contact-proposal's requests table, \"Review of another document\"). Services' router row 3 takes the same fallback",
-  "Shop and test bay ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44): the witnessing intro. At launch the secondary link and the witnessing block show only if it holds a date that has passed (the bay can host a FAT); otherwise both are removed (DR-004 class 2, DR-006 rule 6)",
+  "Shop and test bay ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44): the witnessing intro. At launch the secondary link and the witnessing block show only if it holds a date that has passed (the bay can host a FAT); otherwise both are removed (DR-004 class 2, DR-006 rule 6). DR-018 (pass 10): the witness-plan drawing shows the PP package in \"Our test bay\" with a camera rig as existing, so the launch rule cuts the whole section, drawing included, while FD-44 is unset; never ship the drawing over an undated intro; and the headline becomes \"Tested on water before it ships\"",
   "Whether FAT witness time, travel and remote witnessing are included in the price or quoted separately ([FAT witness costs, included or quoted]; FD-44). At launch an unset cost leaves the intro (DR-005 rule 8)",
   "Wet FAT share: confirm every skid, distribution pump module included, is tested with water at FAT, or state the real share (\"[100 %] · Skids tested with water · at FAT\", the same label as home; FD-45; DR-009 rule 5, DR-010). Field-built loop piping is proven at SAT and IQ. At launch an unset fact goes",
   "FD-45 practices the page marks [confirm]: an internal dry run before every witnessed FAT (Process, step 3); software version and checksum recorded at FAT (FAQ 3, whose answer regains its opening Yes once confirmed). Also confirm that the comparison table's FAT column (every sequence, I/O point and P&ID line) is the standard protocol scope",
@@ -273,7 +275,8 @@
   "Specimen cost ([specimen cost or free]: the closing body; FD-02, FD-47; DR-006 rule 5, DR-005 rule 4). A new name: cmp-documentation's specimen form, the offer's home (DR-014 rule 12), should use it if it shows a cost. At launch an unset cost is cut (DR-005 rule 8)",
   "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block. A closing proof box only with a confirmed figure (website.md closing rule; DR-011): \"0, 50, 100 % · Every analog loop checked at FAT\" went until FD-45",
   "Test instrument calibration interval and traceability (FD-32)",
-  "Post-FAT drying, capping and any gas blanket used for shipment ([post-FAT drying and sealing method]; FD-45)"
+  "Post-FAT drying, capping and any gas blanket used for shipment ([post-FAT drying and sealing method]; FD-45)",
+  "Pass 10, intent I7 (SITE-PLAN 4.5): \"Book a pre-FAT walk-down\" -> contact-locations#visit, intent \"Pre-FAT walk-down or protocol review\", belongs in the witnessing section, but the witness-plan look renders no link field (items [{t, d, part}], intro is plain text). Wire it when the look gains a block link (shared code), or on launch with the witnessing section; no other block here fits it"
  ],
  "primary_cta_link": "cmp-documentation#samples",
  "primary_cta_intent": "FAT protocol: contents and test cases",

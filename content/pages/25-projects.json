@@ -7,7 +7,7 @@
  "path": "/projects/",
  "eyebrow": "PROJECTS",
  "headline": "Check us at the source before our first case study",
- "lead": "We are a new Ontario company designing and building a Purified Water package in polypropylene (PP). Each check below says what it proves, what it does not, and how soon.",
+ "lead": "We are a new Ontario company. We build a Purified Water package in polypropylene (PP) for pharmaceutical, medical device, natural health product and contract manufacturers. Each check below names what it proves and its limit.",
  "primary_cta": "Talk to an engineer",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
  "primary_cta_link": "contact-proposal",
@@ -26,7 +26,10 @@
    ],
    "rows": [
     [
-     "The engineer who would lead your project",
+     {
+      "t": "The engineer who would lead your project",
+      "link": "about#people"
+     },
      {
       "t": "Talk to an engineer",
       "link": "contact-proposal",
@@ -144,6 +147,16 @@
      "link": "svc-fat-sat",
      "link_label": "See what FAT proves"
     }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to check us next",
+   "items": [
+    "about",
+    "cmp-quality#buying",
+    "cmp-documentation",
+    "compliance"
    ]
   }
  ],
