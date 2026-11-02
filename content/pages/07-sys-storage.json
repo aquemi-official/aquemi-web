@@ -66,15 +66,13 @@
     {
      "p": "Loop sanitization",
      "v": "[PP loop sanitization method]",
-     "m": "WHO TRS 1033, 8.4; verified at the coldest point",
-     "rule": "≤ [maximum loop sanitization temperature for PP, °C]",
-     "fig": "sanitize"
+     "m": "WHO TRS 1033, 8.4; inside the PP maker's pressure–temperature curve; verified at the coldest point",
+     "rule": "≤ [maximum loop sanitization temperature for PP, °C]"
     },
     {
      "p": "Point-of-use valves",
      "v": "[PP point-of-use valve type], joined by [PP joining method]",
-     "m": "WHO TRS 1033, 8.6",
-     "fig": "valve"
+     "m": "WHO TRS 1033, 8.6"
     },
     {
      "p": "Tank vent",
@@ -151,16 +149,16 @@
    ],
    "rows": [
     [
-     "Hot water",
-     "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
-     "Inside the PP maker's curve; ≥ 65 °C needs an engineer's review",
-     "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
-    ],
-    [
      "Chemical",
      "[PP loop sanitization method]; residual tested before use",
      "A sanitant the PP maker rates",
      "Loop out of use each cycle"
+    ],
+    [
+     "Hot water",
+     "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
+     "Inside the PP maker's pressure–temperature curve; ≥ 65 °C needs an engineer's review",
+     "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
     ],
     [
      "Ultraviolet (UV)",
@@ -171,13 +169,13 @@
    ],
    "look": "method-bento",
    "figs": [
-    "hot",
     "chemical",
+    "hot",
     "uv"
    ],
    "scale": {
-    "row": 0,
-    "base": "Inside the PP maker's curve",
+    "row": 1,
+    "base": "Inside the PP maker's pressure–temperature curve",
     "marks": [
      {
       "v": 65,
@@ -188,8 +186,7 @@
       "l": "Not for routine use at loop pressure"
      }
     ]
-   },
-   "absent": "Ozone"
+   }
   },
   {
    "type": "spec",
@@ -347,6 +344,16 @@
      "link": "svc-upgrades"
     }
    ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "sys-pw",
+    "sys-monitoring",
+    "svc-service",
+    "ind-meddevice"
+   ]
   }
  ],
  "cta": {
@@ -376,13 +383,14 @@
   "Dead leg design limit, L/D, measured from the main pipe's inside wall (FAQ): rules table and hero fact ([dead leg design limit, L/D]; one name with sys-pw, compliance and cmp-documentation, ops/placeholder-names.md; FD-19)",
   "Loop sanitization method: sanitant, concentration, contact time, temperature and frequency, with the residual test method and limit; the sanitant must be one the PP maker rates ([PP loop sanitization method]; same placeholder as home, systems, svc-fat-sat, svc-cq, svc-service, svc-upgrades and ind-cdmo; FD-14, DR-013 rule 3)",
   "Hot-water cycles offered or not; if offered, the maximum temperature at the hottest point, the hold at the coldest point, cycles a year and the cumulative-damage check under DVS 2210-1 ([maximum loop sanitization temperature for PP, °C]; same placeholder as compliance and ind-pharma; FD-14, DR-013 rule 2)",
+  "Rules sheet, loop sanitization: the rule-figures \"sanitize\" drawing (a thermometer at the loop's coldest point) is off while the method is open; restore it only if FD-14 offers a hot-water cycle. If none is offered, the row's rule chip ≤ [maximum loop sanitization temperature for PP, °C] goes too (DR-018 rule 2, DR-013 rule 2)",
   "Ozone stays off this page, with no option, row, rule, FAQ or placeholder, until a PP maker rates PP in writing for dissolved and headspace ozone (FD-16, DR-013 rule 4); then the table intro changes and an option, a rule and the interlock FAQ can return",
   "Whether Aquemi quotes PVDF loops for routine 80 °C, hot-held or steamed loops, or refers the buyer ([whether we quote PVDF], FAQ; FD-15); the current offer is the PP package only",
   "PP grade for tank and loop, for example PP-R, and the material certificates for resin and pipe, with their type ([PP grade], [PP material certificates]; one name on every page, ops/placeholder-names.md; FD-17)",
   "PP internal surface specification, Ra µm, and its basis ([PP internal surface specification, Ra µm], [basis for the PP surface specification]; FD-19)",
   "PP joining method and the thermoplastic welder qualification standard, for example DVS 2212 ([PP joining method], one name on every page; [welder qualification standard for thermoplastics], svc-fabrication's name; FD-18)",
   "[PP joint records kept]: FD-18, for example the joint map with each joint numbered on the isometric and the per-joint log; the example stays out of the brackets.",
-  "PP point-of-use valve type, for example a zero-static diaphragm valve, and how it is joined into the loop ([PP point-of-use valve type], same as svc-design; FD-19)",
+  "PP point-of-use valve type, for example a zero-static diaphragm valve, and how it is joined into the loop ([PP point-of-use valve type], same as svc-design; FD-19). The rules sheet's valve figure (rule-figures fig \"valve\", a zero-static valve) is off until this is set; restore it only if the type is zero-static (DR-018 rule 2)",
   "Whether PP tanks are atmospheric or pressure-rated, and the tank design standard, for example DVS 2205 ([PP tank design: atmospheric or pressure-rated], [PP tank design standard]; FD-19)",
   "Pre-commissioning flush and cleaning procedure for PP, with its conductivity and TOC endpoint ([pre-commissioning flush and cleaning procedure for PP]; same as svc-fabrication; FD-19)",
   "Whether a heat exchanger, UV on the supply, duty and standby pumps and TOC on the return are standard or options ([heat exchanger, standard or option], [UV, standard or option], [duty and standby pumps, standard or option], [TOC on the return, standard or option]; FD-21)",

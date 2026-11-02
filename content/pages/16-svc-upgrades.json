@@ -7,7 +7,7 @@
  "path": "/services/upgrades-retrofits/",
  "eyebrow": "UPGRADES · EU GMP ANNEX 15 · GUI-0029",
  "headline": "Upgrade the system you have",
- "lead": "We assess and upgrade Purified Water (PW) systems with modules from our polypropylene (PP) package, for [makes and equipment types serviced]. Each upgrade option states its downtime and requalification.",
+ "lead": "We assess and upgrade Purified Water (PW) systems with modules from our polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: [makes and equipment types serviced].",
  "tags": [],
  "primary_cta": "Request a system assessment",
  "primary_cta_link": "contact-proposal",
@@ -25,7 +25,7 @@
    "anchor": "observation",
    "nav": "Observation",
    "h": "After a water observation or out-of-trend results",
-   "intro": "Five FDA warning letters (2024 to 2026) asked for these between them, with 15 working days to reply.",
+   "intro": "Five FDA warning letters (2024 to 2026) asked for these between them, with 15 working days to reply. Health Canada’s GUI-0023 rates an unqualified PW system a major (Risk 2) observation.",
    "cols": [
     "Asked for",
     "Prepared by",
@@ -33,7 +33,11 @@
    ],
    "rows": [
     [
-     "Design assessment of the system",
+     {
+      "t": "Design assessment of the system",
+      "link": "contact-proposal",
+      "intent": "I have a system already"
+     },
      "Aquemi: system assessment",
      "You"
     ],
@@ -147,7 +151,8 @@
     "toc",
     "panel",
     "gen loop"
-   ]
+   ],
+   "anchor": "upgrades"
   },
   {
    "type": "table",
@@ -201,38 +206,33 @@
     {
      "t": "Records",
      "d": "Qualification file, changes, drawings, dead leg register.",
-     "spot": "binder",
-     "code": "REC"
+     "spot": "binder"
     },
     {
      "t": "Water quality data",
      "d": "A year of conductivity, TOC and microbial results.",
-     "spot": "toc",
-     "code": "WQD"
+     "spot": "toc"
     },
     {
      "t": "Generation",
      "d": "Performance on today’s feed, capacity at your coldest feed.",
-     "spot": "ro-skid",
-     "code": "GEN"
+     "spot": "ro-skid"
     },
     {
      "t": "Storage and distribution",
      "d": "Materials, dead legs, slope, flow and fittings.",
-     "spot": "storage-tank",
-     "code": "S&D"
+     "spot": "storage-tank"
     },
     {
      "t": "Sanitization",
      "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
-     "spot": "heat-exchanger",
-     "code": "SAN"
+     "spot": "storage-tank",
+     "part": "outlet"
     },
     {
      "t": "Controls",
      "d": "Support status, audit trail and backups.",
-     "spot": "cpu",
-     "code": "CTL"
+     "spot": "cpu"
     }
    ]
   },
@@ -282,7 +282,10 @@
     },
     {
      "q": "Will an upgrade restart our performance qualification (PQ)?",
-     "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale."
+     "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale.",
+     "link": "contact-service",
+     "link_label": "Plan a requalification",
+     "intent": "Requalification after a change"
     },
     {
      "q": "Can we keep producing water during the upgrade?",

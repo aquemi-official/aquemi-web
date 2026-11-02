@@ -70,7 +70,7 @@
     }
    ],
    "nav": "Limits",
-   "intro": "Limits apply at the point of use; we hold margin on your worst feed.",
+   "intro": "Limits apply at each point of use; the skid outlet has its own guarantee.",
    "as": "gauges",
    "look": "limit-stack"
   },
@@ -88,7 +88,8 @@
      "t": "Heat exchanger",
      "spot": "heat-exchanger",
      "d": "Where fitted, warms winter feed to the membrane design temperature.",
-     "label": "Heat"
+     "label": "Heat",
+     "optional": true
     },
     {
      "t": "RO pass 1",
@@ -107,7 +108,8 @@
      "t": "RO pass 2",
      "spot": "ro-skid",
      "d": "Where needed, adds margin on conductivity, TOC and silica.",
-     "label": "RO 2"
+     "label": "RO 2",
+     "optional": true
     },
     {
      "t": "DI or EDI",
@@ -221,6 +223,7 @@
     }
    ],
    "nav": "Skid design",
+   "anchor": "design",
    "fold": 6,
    "as": "callouts",
    "ground": "light",
@@ -298,13 +301,13 @@
      "t": "Ultrafiltration or 254 nm UV",
      "d": "After DI or EDI, where your microbial target needs more margin. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
      "spot": "uv-ozone",
-     "shape": "folder"
+     "shape": "tag"
     },
     {
      "t": "Recovery enhancement",
      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
      "spot": "pump",
-     "shape": "folder"
+     "shape": "tag"
     }
    ],
    "nav": "Options",
@@ -317,6 +320,12 @@
    "h": "Questions engineers ask",
    "items": [
     {
+     "q": "How is the PP skid sanitized?",
+     "a": "Skid sanitization: [sanitization method for the PP skid]; heat-sanitizable RO and EDI: [heat-sanitizable RO and EDI, yes or no]. After any chemical sanitization, removal of the sanitant is proven before use (WHO TRS 1033). Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+     "link": "sys-storage#sanitization",
+     "link_label": "Compare sanitization methods"
+    },
+    {
      "q": "Single-pass or double-pass RO?",
      "a": "Single-pass reverse osmosis (RO) with electrodeionization (EDI) suits feed with moderate dissolved solids. Double pass adds margin on conductivity, total organic carbon and silica for high-solids feed."
     },
@@ -326,11 +335,9 @@
     },
     {
      "q": "Our supply is chloraminated. What changes?",
-     "a": "Chloramine damages reverse osmosis (RO) membranes, so it is removed first, which releases ammonia. Ammonia can pass RO when pH is raised for CO₂ control, so we design both together."
-    },
-    {
-     "q": "How is the PP skid sanitized?",
-     "a": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]. After any chemical sanitization, removal of the sanitant is proven before the water is used (WHO TRS 1033)."
+     "a": "Pretreatment removes chloramine before the membranes. We design for the ammonia it releases together with CO₂ control.",
+     "link": "sys-pretreatment",
+     "link_label": "How pretreatment handles chloramine"
     },
     {
      "q": "How do we know it will pass IQ/OQ?",
@@ -348,7 +355,7 @@
     "sys-pretreatment",
     "sys-storage",
     "sys-monitoring",
-    "svc-fat-sat"
+    "svc-service"
    ]
   }
  ],
@@ -377,7 +384,8 @@
   "Guaranteed conductivity at the skid outlet, µS/cm at 25 °C, and how FAT and SAT measure it ([outlet conductivity guarantee, µS/cm @ 25 °C], hero and limits table; same name on home and svc-design; FD-21)",
   "Membrane design temperature held by the feed heat exchanger, °C ([feed heat exchanger design temperature, °C], same name as sys-pretreatment), and whether that heat exchanger is standard on the skid, an option, or part of pretreatment (sys-pretreatment lists it as an option; the diagram says \"Where fitted\") (FD-21)",
   "Design system recovery, % ([design recovery, %]; same name as svc-service's running-cost table, which the recovery row links; FD-21)",
-  "Sanitization method for the PP skid ([sanitization method for the PP skid]) and whether the RO elements and EDI modules are rated for hot water ([heat-sanitizable RO and EDI, yes or no]). No temperature through RO and EDI on any page until then (FD-14, DR-013 rule 5)",
+  "Sanitization method for the PP skid ([sanitization method for the PP skid]) and whether the RO elements and EDI modules are rated for hot water ([heat-sanitizable RO and EDI, yes or no]). No temperature through RO and EDI on any page until then (FD-14, DR-013 rule 5). Unfilled at launch, the FAQ's first sentence goes and the answer opens with the sanitant-removal sentence",
+  "Whether Aquemi quotes PVDF loops for routine 80 °C, hot-held or steamed loops, or refers the buyer ([whether we quote PVDF], FAQ 1; same name as sys-storage; FD-15, DR-013 rule 2)",
   "Unpigmented PP grade, for example PP-R ([PP grade], the canonical name in ops/placeholder-names.md), PP piping standard ([PP piping standard]) and dead leg design limit, L/D ([dead leg design limit, L/D], same as compliance, cmp-documentation and news) (FD-17, FD-19)",
   "PP joining method ([PP joining method]; IR or bead-and-crevice-free fusion with no socket fusion is the library's recommendation, not a decision), joint inspection method and extent ([joint inspection method and extent]) and the joint records kept, for example the joint map and joining log ([PP joint records kept], same as about, svc-cq and compliance) (FD-18)",
   "Certificates supplied with the skid's PP product-contact parts ([PP material certificates], same name as compliance and cmp-quality; FD-17)",

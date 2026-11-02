@@ -67,6 +67,48 @@
    "look": "record-sheet"
   },
   {
+   "type": "grid",
+   "nav": "Certification",
+   "anchor": "certification",
+   "h": "Certification status",
+   "items": [
+    {
+     "t": "Quality system",
+     "d": "[ISO 9001 status, registrar and expiry]",
+     "tag": "ISO 9001",
+     "icon": "stamp"
+    },
+    {
+     "t": "Device quality system",
+     "d": "[ISO 13485 status, registrar and expiry]",
+     "tag": "ISO 13485",
+     "icon": "stamp"
+    },
+    {
+     "t": "PP joining",
+     "d": "[number of qualified thermoplastic welders]",
+     "tag": "[welder qualification standard for thermoplastics]",
+     "link": "svc-fabrication",
+     "icon": "weld"
+    },
+    {
+     "t": "Pressure equipment",
+     "d": "[pressure vessel certificate holder or certified vessel partner]",
+     "tag": "CSA B51",
+     "link": "compliance#engineering",
+     "icon": "tank"
+    },
+    {
+     "t": "Control panels",
+     "d": "[panel certification mark held, or field evaluation used]",
+     "tag": "[panel standard]",
+     "link": "compliance#engineering",
+     "icon": "monitor"
+    }
+   ],
+   "look": "cert-readout"
+  },
+  {
    "type": "steps",
    "nav": "NCR and CAPA",
    "h": "How a defect is held and closed",
@@ -110,15 +152,11 @@
    "type": "table",
    "nav": "Suppliers",
    "h": "What we require from suppliers",
+   "intro": "An open corrective action (CAPA) on a supplier stops new orders to it [confirm].",
    "facts": [
     {
      "k": "Supplier review",
      "v": "Reviewed every [supplier review interval, months]"
-    },
-    {
-     "k": "Open CAPA",
-     "v": "An open CAPA stops new orders.",
-     "glyph": "gate"
     }
    ],
    "cols": [
@@ -155,43 +193,8 @@
    ],
    "fold": 2,
    "fold_noun": "supply categories",
-   "look": "marking-match"
-  },
-  {
-   "type": "grid",
-   "nav": "Certification",
-   "anchor": "certification",
-   "h": "Certification status",
-   "items": [
-    {
-     "t": "Quality system",
-     "d": "[ISO 9001 status, registrar and expiry]",
-     "tag": "ISO 9001",
-     "icon": "stamp"
-    },
-    {
-     "t": "PP joining",
-     "d": "[number of qualified thermoplastic welders]",
-     "tag": "[welder qualification standard for thermoplastics]",
-     "link": "svc-fabrication",
-     "icon": "weld"
-    },
-    {
-     "t": "Pressure equipment",
-     "d": "[pressure vessel certificate holder or certified vessel partner]",
-     "tag": "CSA B51",
-     "link": "compliance#engineering",
-     "icon": "tank"
-    },
-    {
-     "t": "Control panels",
-     "d": "[panel certification mark held, or field evaluation used]",
-     "tag": "[panel standard]",
-     "link": "compliance#engineering",
-     "icon": "monitor"
-    }
-   ],
-   "look": "cert-readout"
+   "look": "marking-match",
+   "anchor": "suppliers"
   },
   {
    "type": "spec",
@@ -206,40 +209,45 @@
    "rows": [
     {
      "p": "Proposal",
-     "v": "[proposal contents and line items] · valid [proposal validity, days]"
+     "v": "[proposal contents and line items] · valid [proposal validity, days] from issue"
     },
     {
      "p": "Currency, tax and duty",
-     "v": "[quoting currency] · [quoting terms, imported content]"
+     "v": "[quoting currency] · [quoting terms, imported content]",
+     "m": "Set in the proposal"
     },
     {
      "p": "Payment milestones",
-     "v": "[milestone structure]"
+     "v": "[milestone structure]",
+     "m": "Set in the proposal"
     },
     {
      "p": "Acceptance and warranty start",
-     "v": "[warranty period, start, exclusions]"
+     "v": "[warranty period, start, exclusions]",
+     "m": "Set in the proposal"
     },
     {
      "p": "Delivery and lead time",
-     "v": "[delivery terms] · [lead time from drawing approval, weeks]"
+     "v": "[delivery terms] · [lead time from drawing approval, weeks]",
+     "m": "Set in the proposal"
     },
     {
      "p": "Drawings and code",
-     "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]"
+     "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
+     "m": "Set in the proposal"
     },
     {
      "p": "Onboarding documents",
      "v": "[onboarding documents and their status]",
-     "m": "In the quality questionnaire pack, from [quality system ready for audit, date]"
+     "m": "In the quality questionnaire pack, from [quality system ready for audit, date]",
+     "link": "about#facts",
+     "link_label": "See insurance and financial standing"
     },
     {
      "p": "Non-disclosure agreement",
-     "v": "[NDA turnaround, working days]"
+     "v": "[NDA turnaround, working days] from receipt"
     }
    ],
-   "fold": 4,
-   "fold_noun": "terms",
    "look": "terms-sheet"
   },
   {
@@ -297,7 +305,9 @@
    "items": [
     {
      "q": "Are you ISO 9001 certified?",
-     "a": "[ISO 9001 status, registrar and expiry]. From [quality system ready for audit, date], your audit can test the system itself: the processes above and a sample traced end to end."
+     "a": "[ISO 9001 status, registrar and expiry]. From [quality system ready for audit, date], your audit can test the processes above directly.",
+     "link": "cmp-quality#certification",
+     "link_label": "See certification status"
     },
     {
      "q": "Can we audit you before we order?",
@@ -305,15 +315,24 @@
     },
     {
      "q": "What is in the questionnaire pack?",
-     "a": "From [quality system ready for audit, date]: our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. [onboarding documents and their status]."
+     "a": "From [quality system ready for audit, date]: our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. [onboarding documents and their status].",
+     "link": "cmp-quality#audit",
+     "link_label": "Request the pack",
+     "intent": "Quality questionnaire pack"
     },
     {
      "q": "Will you sign our quality agreement?",
-     "a": "We return a mark-up within [quality agreement mark-up turnaround, working days]. Send it with your request for proposal."
+     "a": "We return a mark-up within [quality agreement mark-up turnaround, working days]. Send it with your request for proposal. Changes to parts, materials or software you approved: notice per [change notification to clients: scope and notice]."
     },
     {
      "q": "Who can stop a shipment?",
      "a": "[role that releases to ship, and its independence]. Nothing ships with an open nonconformance report (NCR) on a product-contact part unless you approved its disposition."
+    },
+    {
+     "q": "What should we ask any Purified Water supplier?",
+     "a": "Five things make proposals comparable. The document index, with who writes and who signs each document. A factory acceptance test (FAT) that runs the system on water. The record kept for each product-contact joint. Access to audit the quality system before you order. A map from each data integrity requirement to the control that meets it.",
+     "link": "cmp-documentation#index",
+     "link_label": "See our document index"
     }
    ]
   },
@@ -346,12 +365,12 @@
  "todo": [
   "KEY: ISO 9001 status (certification status block, FAQ; FD-48): certified (registrar, certificate number, scope, expiry, downloadable copy) or, only if FD-48 chooses it, \"QMS built to ISO 9001; certification targeted for [date]; audit us now\". Never claim certification until held; no ISO label in the eyebrow, a heading or the meta until certified (DR-004 rule 3)",
   "ISO 9001 clause references per process (change control 6.3, 8.5.6; nonconformance and complaints 8.7, 9.1.2, 10.2; traceability 8.5.2; calibration 7.1.5; document control 7.5; supplier control 8.4; internal audit and management review 9.2, 9.3) were taken off the process rows: they state a basis FD-48 has not chosen, and the library has not read ISO 9001 (DR-007 rule 3). Restore them as \"Process · ISO 9001 n.n\" once FD-48 says the QMS is built to ISO 9001, checked against the standard's text",
-  "ISO 13485: device makers ask (FD-48; ind-meddevice links here for status). It applies to a product that is a medical device, not to a water system supplier (procurement/certifications-and-terms.md § 7); add a status line only if the owner holds it or chooses to state it",
+  "ISO 13485: device makers ask (FD-48; ind-meddevice links here for status). It applies to a product that is a medical device, not to a water system supplier (procurement/certifications-and-terms.md § 7); since the pass 10 review the certification block carries the status line \"Device quality system\" ([ISO 13485 status, registrar and expiry], tag ISO 13485), because ind-meddevice's supplier-quality row links here for it (DR-011 rule 3, DR-022). At launch drop this line and the ind-meddevice bracket together if FD-48 does not state it",
   "Confirm the QMS processes listed exist as written procedures: document control, change control, NCR and CAPA with effectiveness check, supplier approval and review, identification and traceability, calibration with out-of-tolerance impact review, training matrix, internal audit, management review, complaint handling; procedure list for the questionnaire pack. At launch keep a process row only where a written procedure exists (DR-004)",
-  "Date the quality system is ready for a supplier audit and the questionnaire pack is ready ([quality system ready for audit, date]; FD-48; the name home, svc-fabrication, projects, cmp-documentation and contact-proposal use): form intro and FAQ answers 1 to 3. Launch rule (DR-004 class 2, DR-006 rule 6; pass B relay): the audit and pack offers show only if this date is filled and has passed (the audit can be held); otherwise they are removed. Then the form (anchor audit), FAQ 2 and 3 and FAQ 1's second sentence go; the title, meta, eyebrow and headline drop the audit; the hero and closing buttons become \"Talk to an engineer\" to contact-proposal with the intent \"Not sure yet: talk to an engineer\", the closing with \"Cost: [fit check cost or free].\" In the same commit the links to cmp-quality#audit on about, cmp-documentation, contact-locations, contact-proposal, projects, svc-fabrication and svc-fat-sat change (check flags them), and the \"On-site supplier audit\" intents on projects and svc-fabrication go. Check cannot flag two more: services' router row \"Quality: request a supplier audit\" (links cmp-quality) becomes \"Talk to an engineer\", and home's risk FAQ drops its audit sentence",
+  "Date the quality system is ready for a supplier audit and the questionnaire pack is ready ([quality system ready for audit, date]; FD-48; the name home, svc-fabrication, projects, cmp-documentation and contact-proposal use): form intro and FAQ answers 1 to 3. Launch rule (DR-004 class 2, DR-006 rule 6; pass B relay): the audit and pack offers show only if this date is filled and has passed (the audit can be held); otherwise they are removed. Then the form (anchor audit), FAQ 2 and 3 and FAQ 1's second sentence go, and FAQ 6's sentence \"Access to audit the quality system before you order.\" goes (four checks remain; its first sentence becomes \"Four things make proposals comparable.\"); the title, meta, eyebrow and headline drop the audit; the hero and closing buttons become \"Talk to an engineer\" to contact-proposal with the intent \"Not sure yet: talk to an engineer\", the closing with \"Cost: [fit check cost or free].\" In the same commit the links to cmp-quality#audit on about, cmp-documentation, contact-locations, contact-proposal, projects, svc-fabrication and svc-fat-sat change (check flags them), and the \"On-site supplier audit\" intents on projects and svc-fabrication go. Check cannot flag two more: services' router row \"Quality: request a supplier audit\" (links cmp-quality) becomes \"Talk to an engineer\", and home's risk FAQ drops its audit sentence",
   "Who answers audit and questionnaire requests (FD-34). Once a person holds the role, the form intro says who replies (DR-006 rule 7); until then \"we\" (DR-004 rule 4: no quality lead named before one exists)",
   "Confirm change control practice: client approval before changing a client-approved document; internal changes approved by Aquemi quality; change control register in the turnover package",
-  "Confirm NCR practice: accept-as-is and repairs departing from approved documents need client approval; no shipment with an open product-contact NCR without client-approved disposition",
+  "Confirm NCR practice: accept-as-is and repairs departing from approved documents need client approval; no shipment with an open product-contact NCR without client-approved disposition. The hero stamp ticks \"Nonconformances dispositioned\", not \"closed\", to match FAQ 5 (pass 10 review; DR-018 rule 1)",
   "Notification time for nonconformances found after shipment (working days)",
   "Supplier review interval (months); confirm that an open CAPA stops orders to that supplier; whether Aquemi audits critical subcontractors on site and how often; supplier audit practice",
   "PP piping standard and PP material certificate type per lot for pipe, fittings and valves ([PP piping standard], [PP material certificates]; same as compliance; FD-17)",
@@ -372,7 +391,7 @@
   "Terms, acceptance and warranty (FD-07): period, start event (for example a signed SAT report or acceptance), coverage, exclusions, claim response ([warranty period, start, exclusions]); include who pays for design gaps found at DQ or IQ/OQ (svc-design's [design gap warranty terms] points here)",
   "Terms, delivery (FD-08): delivery terms for Canadian projects, for example the Incoterms rule ([delivery terms]); lead time in weeks from drawing approval ([lead time from drawing approval, weeks])",
   "Terms, drawings and code (FD-10): one name each, set here. Drawings and native files: [drawing ownership or licence terms] (svc-design's name; cmp-documentation's to-do uses it too). Application code: [code delivered unlocked, and who owns it] (sys-monitoring's name; web/site-jobs.md § 5's \"code ownership policy\" takes it); escrow for anything delivered locked",
-  "Terms, onboarding documents ([onboarding documents and their status], in the terms row and the pack FAQ): corporate registration and business number (FD-33), certificates of insurance (limits are about's [general and professional liability limits, CAD]; FD-12), workers' compensation (WSIB) clearance, safety program and COR, contractor-safety platforms such as Avetta, ISNetworld or ComplyWorks (FD-13), bank reference (FD-12). List only the documents held (FD-12, FD-13, FD-33). The row's note \"In the quality questionnaire pack, from [quality system ready for audit, date]\" (about's wording for its pack lines) shows at launch only if that date is filled and has passed; otherwise it goes (pass B relay launch rule)",
+  "Terms, onboarding documents ([onboarding documents and their status], in the terms row and the pack FAQ): corporate registration and business number (FD-33), certificates of insurance (limits are about's [general and professional liability limits, CAD]; FD-12), workers' compensation (WSIB) clearance, safety program and COR, contractor-safety platforms such as Avetta, ISNetworld or ComplyWorks (FD-13), bank reference (FD-12). List only the documents held (FD-12, FD-13, FD-33). The row's note \"In the quality questionnaire pack, from [quality system ready for audit, date]\" (about's wording for its pack lines) shows at launch only if that date is filled and has passed; otherwise it goes (pass B relay launch rule). The row links about#facts (insurance, financial standing), the home of those facts, for procurement arriving at #buying (pass 10 review)",
   "Terms, non-disclosure agreement: whose form is signed (Aquemi's mutual NDA or the buyer's) and the turnaround ([NDA turnaround, working days]; FD-01, FD-47)",
   "Quality manual and critical supplier names shared openly or under NDA (same as svc-design: openly or under NDA)",
   "Questionnaire turnaround (working days); whether quality agreement mark-ups come back with the quote (yes or no: the FAQ leaves it out until confirmed) and the mark-up turnaround ([quality agreement mark-up turnaround, working days]); compliance's to-do asks the same (FD-48)",
@@ -382,17 +401,20 @@
   "Role that releases a system to ship and its independence from production; quality organization chart",
   "Quality record retention (years); turnover package copy retention is on cmp-documentation",
   "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, certification status, organization chart, specimen NCR, CAPA and change records (Aquemi-written; redacted real records only once they exist, never from a client project without written consent: DR-004), calibration certificate and training matrix extract, and the onboarding documents. The pack FAQ offers it from [quality system ready for audit, date] (launch rule above)",
-  "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)"
+  "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)",
+  "Change notification to clients (FAQ \"Will you sign our quality agreement?\"; DR-022 rule 4): which changes you notify (parts, materials, software the client approved), how and with what notice ([change notification to clients: scope and notice]; FD-48). Until set, the placeholder stays",
+  "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)"
  ],
  "figure": {
   "plate": "stamp",
-  "label": "Released",
-  "title": "Release record",
+  "label": "Recorded",
+  "title": "Shipment record",
   "items": [
    "Inspection record",
    "Test record",
-   "Nonconformances closed",
+   "Nonconformances dispositioned",
    "Records reviewed"
-  ]
+  ],
+  "sub": "Aquemi"
  }
 }

@@ -24,7 +24,7 @@
    ],
    "items": [
     {
-     "t": "After a water observation: what FDA asked for",
+     "t": "After a water observation: what inspectors ask for",
      "topic": "Standards",
      "std": "GUI-0001; 21 CFR 211",
      "link": "svc-upgrades#observation",
@@ -62,6 +62,18 @@
      "std": "USP <645>",
      "link": "sys-monitoring",
      "d": "Our transmitters show temperature-compensated conductivity. Can we release water on that reading?"
+    },
+    {
+     "t": "Device manufacturing water: no grade is named, so you specify it",
+     "topic": "Standards",
+     "std": "ISO 13485:2016, 7.5.2; 21 CFR 820 (QMSR, 2026)",
+     "link": "ind-meddevice#grades"
+    },
+    {
+     "t": "Natural health products: does this line need Purified Water?",
+     "topic": "Standards",
+     "std": "GUI-0158",
+     "link": "ind-pharma#nhp"
     },
     {
      "t": "USP <1231> is informational: what does it ask of you?",
@@ -287,9 +299,9 @@
   "intent": "Not sure yet: talk to an engineer"
  },
  "todo": [
-  "First note publication month ([first note publication month, year]; FD-53) and a target month for each of the 25 planned notes (add a status line per row once set); publish only notes that have passed review",
+  "First note publication month ([first note publication month, year]; FD-53) and a target month for each of the 27 planned notes (add a status line per row once set); publish only notes that have passed review",
   "Named author (engineer, with role) and named reviewer for each topic group ([named author and reviewer, by topic group]); whether bylines may name a partner's former employer (FD-34, FD-35)",
-  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231> (revision official 1 April 2027); Ph. Eur. 0008, 2.2.44 (12.3); WHO TRS 1033; GUI-0001, GUI-0029; 21 CFR 211; EU GMP Annex 15; CSA B51; FDA computer software assurance guidance (final, 3 February 2026; medical-device production and quality system software under 21 CFR 820, not drug GMP: say so in the note); GAMP 5; Annex 1 and GUI-0119 for the sterile-site note only. ISPE Baseline Guide Vol. 4 (2019) is named, not read: read the chapters a note relies on before writing it (DR-007 rule 3)",
+  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231> (revision official 1 April 2027); Ph. Eur. 0008, 2.2.44 (12.3); WHO TRS 1033; GUI-0001, GUI-0029; 21 CFR 211; EU GMP Annex 15; CSA B51; FDA computer software assurance guidance (final, 3 February 2026; medical-device production and quality system software under 21 CFR 820, not drug GMP: say so in the note); GAMP 5; GUI-0158 (natural health products note: potable minimum, PW where the product's specification or a monograph calls for it, DR-002 rule 2); ISO 13485:2016 7.5.2 and 21 CFR 820 as amended (QMSR, effective 2 February 2026) for the device-water note; Annex 1 and GUI-0119 for the sterile-site note only. ISPE Baseline Guide Vol. 4 (2019) is named, not read: read the chapters a note relies on before writing it (DR-007 rule 3)",
   "Send frequency ([send frequency, emails per month at most]; FD-39). The value opens the form's intro: fill it as a phrase, for example \"At most 2 emails a month\"",
   "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe (FD-39)",
   "CASL sender identification: [legal entity name] (the footer's name), [mailing address] and [sales email], contact-locations' head office address and email (issue #2 §2; FD-33); unsubscribe processing time (10 business days at most; CASL s. 11 not read by the library: counsel, OQ-81)",

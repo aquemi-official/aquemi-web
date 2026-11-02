@@ -266,7 +266,9 @@
    "height": "1250",
    "width": "1280",
    "subtitle": "Site requirements on a navy and limestone split; the divide is the battery limit, every card tied to it by a leader",
-   "summary": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site."
+   "summary": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
+   "retired": true,
+   "look": "battery-limit"
   },
   {
    "name": "BinderSpines",
@@ -508,7 +510,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "Rinse water grade worked as numbered derivation lines, device endotoxin limits as hero figures",
-   "summary": "DerivationSheet works a grade table as an engineering derivation on a calculation pad: each row is a numbered line read like an equation, step, what sets it, then the typical water boxed as the answer, with a device limit set as the line's hero figure."
+   "summary": "DerivationSheet works a grade table as an engineering derivation on a calculation pad: each row is a numbered line read like an equation, step, what sets it, then the typical water boxed as the answer, with a device limit set as the line's hero figure.",
+   "retired": true,
+   "look": "derivation-sheet"
   },
   {
    "name": "DocHotspots",
@@ -680,9 +684,7 @@
    "height": "960",
    "width": "1100",
    "subtitle": "Eight dosage forms dropping to the water mains they take: potable, PW, WFI (dashed, not supplied)",
-   "summary": "GradeMains draws a grade table as water mains on a navy blueprint: one horizontal main per water grade, each product or process step dropping a line to the main(s) it takes water from, with a valve at every tap.",
-   "retired": true,
-   "look": "grade-mains"
+   "summary": "GradeMains draws a grade table as water mains on a navy blueprint: one horizontal main per water grade, each product or process step dropping a line to the main(s) it takes water from, with a valve at every tap."
   },
   {
    "name": "GradeSwitch",
@@ -906,7 +908,9 @@
    "height": "960",
    "width": "1280",
    "subtitle": "Adjacent uses as callouts around one PW package drawn as a solid object on navy",
-   "summary": "MarketCallouts shows several markets served by one machine: a single PW package drawn with IsoKit stands centred on a navy ground as a solid limestone object, and each option is a callout around it with a leader to the part its note is about."
+   "summary": "MarketCallouts shows several markets served by one machine: a single PW package drawn with IsoKit stands centred on a navy ground as a solid limestone object, and each option is a callout around it with a leader to the part its note is about.",
+   "retired": true,
+   "look": "market-callouts"
   },
   {
    "name": "MarkingMatch",
@@ -988,9 +992,7 @@
    "height": "1460",
    "width": "1100",
    "subtitle": "Five situations as a Swiss index under huge outline numerals, each with its start page",
-   "summary": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table.",
-   "retired": true,
-   "look": "numeral-index"
+   "summary": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table."
   },
   {
    "name": "OptionChecker",

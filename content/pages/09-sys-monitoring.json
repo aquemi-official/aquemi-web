@@ -56,7 +56,7 @@
   {
    "type": "table",
    "h": "Alert, action and trend",
-   "intro": "You set the levels with our input.",
+   "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot shows online readings.",
    "cols": [
     "Line",
     "How it is set",
@@ -93,6 +93,10 @@
     "Trends",
     "Alarms",
     "Sanitization"
+   ],
+   "plot": [
+    "limit",
+    "trend"
    ]
   },
   {
@@ -230,7 +234,8 @@
    "as": "evidence",
    "fold": 3,
    "fold_noun": "requirements",
-   "look": "clause-crosswalk"
+   "look": "clause-crosswalk",
+   "anchor": "data-integrity"
   },
   {
    "type": "options",
@@ -303,6 +308,16 @@
      "a": "Then we do not install it. The system runs and records fully offline. Any later access goes through your demilitarized zone (DMZ) under your change control, every session logged."
     }
    ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "svc-fat-sat",
+    "svc-upgrades#upgrades",
+    "svc-service",
+    "ind-cdmo#audit-pack"
+   ]
   }
  ],
  "cta": {
@@ -312,7 +327,7 @@
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
   "include": [
-   "Your user requirement specification (URS), if any",
+   "Your user requirement specification (URS), or what you make and your flow",
    "Water grades and internal limits",
    "Systems to control, new or existing",
    "PLC, SCADA and historian standards",

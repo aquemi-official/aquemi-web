@@ -108,59 +108,53 @@
     {
      "p": "Connection points (battery limits)",
      "v": "[standard battery limits, typical scope]",
-     "m": "Listed in the proposal, with who supplies each",
-     "side": "limit"
+     "m": "Listed in the proposal, with who supplies each"
     },
     {
      "p": "Footprint and weight",
      "v": "[typical footprint and weight, by capacity]",
-     "side": "package"
+     "m": "Per capacity; on the general arrangement drawings"
     },
     {
      "p": "Power, feed water and drain",
      "v": "[supply voltage options]; [feed and drain flows, L/h]",
-     "m": "RO reject and rinse water to drain",
-     "side": "site"
+     "m": "RO reject and rinse water to drain; [sanitization waste to drain: pH, temperature]"
     },
     {
      "p": "Installation and field joints",
      "v": "[installation scope]",
-     "side": "site"
+     "m": "Joined by [PP joining method]; scope set in the proposal",
+     "link": "svc-fabrication#standard",
+     "link_label": "Our fabrication standard"
     },
     {
      "p": "Electrical and pressure approvals",
      "v": "Electrical: [panel certification mark held, or field evaluation used]",
      "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
      "link": "compliance#engineering",
-     "side": "package"
+     "link_label": "Pressure and electrical approvals"
     },
     {
      "p": "Tie-in and shutdown",
      "v": "[typical shutdown for tie-in, days]",
-     "m": "Plan temporary water if production cannot stop",
-     "side": "site"
+     "m": "Plan temporary water if production cannot stop"
     },
     {
      "p": "Sanitizing chemicals",
      "v": "[PP loop sanitization method]; residual tested before use",
-     "side": "site"
+     "m": "[who supplies sanitizing chemicals and safety data sheets]; listed in the proposal",
+     "link": "sys-storage#sanitization",
+     "link_label": "Sanitization methods"
     },
     {
      "p": "Isolation and lockout",
      "v": "[lockable isolation points and lockout diagram]",
-     "side": "package"
+     "m": "Marked on the drawings, for your lockout procedure"
     }
    ],
    "nav": "Site",
    "anchor": "site",
-   "fold": 4,
-   "fold_noun": "requirements",
-   "look": "battery-limit",
-   "sides": [
-    "The PW package",
-    "Your site"
-   ],
-   "seam": "Battery limit"
+   "look": "terms-sheet"
   },
   {
    "type": "table",
@@ -220,15 +214,15 @@
    "anchor": "faq",
    "items": [
     {
-     "q": "We pay for exchange DI. When does a package make sense?",
-     "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request.",
-     "link": "svc-service#running-cost"
-    },
-    {
      "q": "When is polypropylene the wrong choice?",
      "a": "When the loop must run hot. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
      "link": "sys-storage#sanitization",
      "link_label": "Compare sanitization methods"
+    },
+    {
+     "q": "We pay for exchange DI. When does a package make sense?",
+     "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request.",
+     "link": "svc-service#running-cost"
     },
     {
      "q": "Can you supply one part, or should one supplier design it all?",
@@ -282,6 +276,8 @@
   "Budget proposal turnaround, working days ([budget proposal turnaround, working days], closing; the figure contact-proposal's requests table defines; FD-01)",
   "Intent \"I have water data, no system yet|Modules and a budget range\" (hero and closing) must match contact-proposal's situation and follow-up labels (DR-014 rules 2 and 11)",
   "Site requirements (FD-20, FD-21, FD-24, FD-26): [standard battery limits, typical scope]; [typical footprint and weight, by capacity]; [supply voltage options]; [feed and drain flows, L/h]; [installation scope] (who installs and makes field joints); [panel certification mark held, or field evaluation used] (compliance's and sys-monitoring's name: a certified panel shop or a per-unit field evaluation, FD-24); [pressure-rated items in the PW package] (same as compliance and cmp-quality); [typical shutdown for tie-in, days]; [lockable isolation points and lockout diagram]",
+  "Who supplies the sanitizing chemicals, and the safety data sheet for each ([who supplies sanitizing chemicals and safety data sheets], site table; FD-26). The site table shows all eight rows unfolded (DR-024) in the neutral terms-sheet look: battery-limit assigned each row to a side the owner has not set (DR-018; FD-24, FD-14, installation scope). Restore battery-limit only once every row's side is a fact",
+  "Sanitization waste to drain: pH, temperature and chemistry of the sanitizing and rinse discharge, against the local sewer bylaw ([sanitization waste to drain: pH, temperature], site table; FD-26). Unfilled at launch, the clause goes and the note keeps \"RO reject and rinse water to drain\"",
   "Sanitization method for the PP tank and loop ([PP loop sanitization method], budget and site tables; FD-14, DR-013)",
   "Exchange DI breakeven, L/day, from the ten-year cost sheet ([exchange DI breakeven, L/day], FAQ; FD-49, DR-015)",
   "Check USP <1231> §5.1.6 in the texts official 1 Dec 2021 and 1 Apr 2027.",

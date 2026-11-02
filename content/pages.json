@@ -67,7 +67,7 @@
     },
     {
      "type": "grid",
-     "h": "Same limits, different evidence by industry",
+     "h": "Same PW limits, different evidence by industry",
      "items": [
       {
        "t": "Pharmaceutical",
@@ -86,6 +86,12 @@
        "d": "The stricter of USP and Ph. Eur. on each attribute; records any client auditor follows.",
        "tag": "USP · Ph. Eur.",
        "link": "ind-cdmo"
+      },
+      {
+       "t": "Natural health products",
+       "d": "Potable water at minimum; Purified Water where your specification or a monograph calls for it.",
+       "tag": "GUI-0158",
+       "link": "ind-pharma#nhp"
       }
      ],
      "ground": "light",
@@ -152,6 +158,7 @@
     {
      "type": "table",
      "as": "router",
+     "anchor": "start",
      "h": "Start from where your project is",
      "cols": [
       "Your situation",
@@ -211,7 +218,7 @@
        "What to change, or the observation",
        "Options with their downtime and the requalification each triggers",
        {
-        "t": "Request a system assessment",
+        "t": "Upgrades and water observations",
         "link": "svc-upgrades"
        }
       ],
@@ -235,9 +242,8 @@
       {
        "q": "You are smaller than the global manufacturers. Why take the risk?",
        "a": "We are a new company, so judge us on checks, not size. Today, talk to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits].",
-       "link": "contact-proposal",
-       "link_label": "Talk to an engineer",
-       "intent": "Not sure yet: talk to an engineer"
+       "link": "projects",
+       "link_label": "See what you can check"
       },
       {
        "q": "Do you supply WFI or pure steam?",
@@ -285,7 +291,8 @@
     "Sanitization method for the PP tank and loop ([PP loop sanitization method]; FD-14); any temperature wording follows DR-013",
     "\"Record each joint\" (How a project runs) repeats svc-fabrication's joint-log practice: it follows that page's FD-18 launch gate, and becomes [PP joint records kept] if the practice is not confirmed",
     "Confirm the standards in the eyebrow against the standards Aquemi designs to routinely",
-    "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)"
+    "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)",
+    "Natural health products tile (Same PW limits, different evidence by industry; DR-017): stays while FD-38 keeps natural health products a launch segment; if FD-38 drops them, remove the tile and the footer item together. Its line keeps the industries grade row's wording (GUI-0158: potable minimum, PW where the specification or a monograph calls for it; DR-017 rule 3)"
    ]
   },
   {
@@ -398,59 +405,53 @@
       {
        "p": "Connection points (battery limits)",
        "v": "[standard battery limits, typical scope]",
-       "m": "Listed in the proposal, with who supplies each",
-       "side": "limit"
+       "m": "Listed in the proposal, with who supplies each"
       },
       {
        "p": "Footprint and weight",
        "v": "[typical footprint and weight, by capacity]",
-       "side": "package"
+       "m": "Per capacity; on the general arrangement drawings"
       },
       {
        "p": "Power, feed water and drain",
        "v": "[supply voltage options]; [feed and drain flows, L/h]",
-       "m": "RO reject and rinse water to drain",
-       "side": "site"
+       "m": "RO reject and rinse water to drain; [sanitization waste to drain: pH, temperature]"
       },
       {
        "p": "Installation and field joints",
        "v": "[installation scope]",
-       "side": "site"
+       "m": "Joined by [PP joining method]; scope set in the proposal",
+       "link": "svc-fabrication#standard",
+       "link_label": "Our fabrication standard"
       },
       {
        "p": "Electrical and pressure approvals",
        "v": "Electrical: [panel certification mark held, or field evaluation used]",
        "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
        "link": "compliance#engineering",
-       "side": "package"
+       "link_label": "Pressure and electrical approvals"
       },
       {
        "p": "Tie-in and shutdown",
        "v": "[typical shutdown for tie-in, days]",
-       "m": "Plan temporary water if production cannot stop",
-       "side": "site"
+       "m": "Plan temporary water if production cannot stop"
       },
       {
        "p": "Sanitizing chemicals",
        "v": "[PP loop sanitization method]; residual tested before use",
-       "side": "site"
+       "m": "[who supplies sanitizing chemicals and safety data sheets]; listed in the proposal",
+       "link": "sys-storage#sanitization",
+       "link_label": "Sanitization methods"
       },
       {
        "p": "Isolation and lockout",
        "v": "[lockable isolation points and lockout diagram]",
-       "side": "package"
+       "m": "Marked on the drawings, for your lockout procedure"
       }
      ],
      "nav": "Site",
      "anchor": "site",
-     "fold": 4,
-     "fold_noun": "requirements",
-     "look": "battery-limit",
-     "sides": [
-      "The PW package",
-      "Your site"
-     ],
-     "seam": "Battery limit"
+     "look": "terms-sheet"
     },
     {
      "type": "table",
@@ -510,15 +511,15 @@
      "anchor": "faq",
      "items": [
       {
-       "q": "We pay for exchange DI. When does a package make sense?",
-       "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request.",
-       "link": "svc-service#running-cost"
-      },
-      {
        "q": "When is polypropylene the wrong choice?",
        "a": "When the loop must run hot. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
        "link": "sys-storage#sanitization",
        "link_label": "Compare sanitization methods"
+      },
+      {
+       "q": "We pay for exchange DI. When does a package make sense?",
+       "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request.",
+       "link": "svc-service#running-cost"
       },
       {
        "q": "Can you supply one part, or should one supplier design it all?",
@@ -572,6 +573,8 @@
     "Budget proposal turnaround, working days ([budget proposal turnaround, working days], closing; the figure contact-proposal's requests table defines; FD-01)",
     "Intent \"I have water data, no system yet|Modules and a budget range\" (hero and closing) must match contact-proposal's situation and follow-up labels (DR-014 rules 2 and 11)",
     "Site requirements (FD-20, FD-21, FD-24, FD-26): [standard battery limits, typical scope]; [typical footprint and weight, by capacity]; [supply voltage options]; [feed and drain flows, L/h]; [installation scope] (who installs and makes field joints); [panel certification mark held, or field evaluation used] (compliance's and sys-monitoring's name: a certified panel shop or a per-unit field evaluation, FD-24); [pressure-rated items in the PW package] (same as compliance and cmp-quality); [typical shutdown for tie-in, days]; [lockable isolation points and lockout diagram]",
+    "Who supplies the sanitizing chemicals, and the safety data sheet for each ([who supplies sanitizing chemicals and safety data sheets], site table; FD-26). The site table shows all eight rows unfolded (DR-024) in the neutral terms-sheet look: battery-limit assigned each row to a side the owner has not set (DR-018; FD-24, FD-14, installation scope). Restore battery-limit only once every row's side is a fact",
+    "Sanitization waste to drain: pH, temperature and chemistry of the sanitizing and rinse discharge, against the local sewer bylaw ([sanitization waste to drain: pH, temperature], site table; FD-26). Unfilled at launch, the clause goes and the note keeps \"RO reject and rinse water to drain\"",
     "Sanitization method for the PP tank and loop ([PP loop sanitization method], budget and site tables; FD-14, DR-013)",
     "Exchange DI breakeven, L/day, from the ten-year cost sheet ([exchange DI breakeven, L/day], FAQ; FD-49, DR-015)",
     "Check USP <1231> §5.1.6 in the texts official 1 Dec 2021 and 1 Apr 2027.",
@@ -653,7 +656,7 @@
       }
      ],
      "nav": "Limits",
-     "intro": "Limits apply at the point of use; we hold margin on your worst feed.",
+     "intro": "Limits apply at each point of use; the skid outlet has its own guarantee.",
      "as": "gauges",
      "look": "limit-stack"
     },
@@ -671,7 +674,8 @@
        "t": "Heat exchanger",
        "spot": "heat-exchanger",
        "d": "Where fitted, warms winter feed to the membrane design temperature.",
-       "label": "Heat"
+       "label": "Heat",
+       "optional": true
       },
       {
        "t": "RO pass 1",
@@ -690,7 +694,8 @@
        "t": "RO pass 2",
        "spot": "ro-skid",
        "d": "Where needed, adds margin on conductivity, TOC and silica.",
-       "label": "RO 2"
+       "label": "RO 2",
+       "optional": true
       },
       {
        "t": "DI or EDI",
@@ -804,6 +809,7 @@
       }
      ],
      "nav": "Skid design",
+     "anchor": "design",
      "fold": 6,
      "as": "callouts",
      "ground": "light",
@@ -881,13 +887,13 @@
        "t": "Ultrafiltration or 254 nm UV",
        "d": "After DI or EDI, where your microbial target needs more margin. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
        "spot": "uv-ozone",
-       "shape": "folder"
+       "shape": "tag"
       },
       {
        "t": "Recovery enhancement",
        "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
        "spot": "pump",
-       "shape": "folder"
+       "shape": "tag"
       }
      ],
      "nav": "Options",
@@ -900,6 +906,12 @@
      "h": "Questions engineers ask",
      "items": [
       {
+       "q": "How is the PP skid sanitized?",
+       "a": "Skid sanitization: [sanitization method for the PP skid]; heat-sanitizable RO and EDI: [heat-sanitizable RO and EDI, yes or no]. After any chemical sanitization, removal of the sanitant is proven before use (WHO TRS 1033). Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+       "link": "sys-storage#sanitization",
+       "link_label": "Compare sanitization methods"
+      },
+      {
        "q": "Single-pass or double-pass RO?",
        "a": "Single-pass reverse osmosis (RO) with electrodeionization (EDI) suits feed with moderate dissolved solids. Double pass adds margin on conductivity, total organic carbon and silica for high-solids feed."
       },
@@ -909,11 +921,9 @@
       },
       {
        "q": "Our supply is chloraminated. What changes?",
-       "a": "Chloramine damages reverse osmosis (RO) membranes, so it is removed first, which releases ammonia. Ammonia can pass RO when pH is raised for CO₂ control, so we design both together."
-      },
-      {
-       "q": "How is the PP skid sanitized?",
-       "a": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]. After any chemical sanitization, removal of the sanitant is proven before the water is used (WHO TRS 1033)."
+       "a": "Pretreatment removes chloramine before the membranes. We design for the ammonia it releases together with CO₂ control.",
+       "link": "sys-pretreatment",
+       "link_label": "How pretreatment handles chloramine"
       },
       {
        "q": "How do we know it will pass IQ/OQ?",
@@ -931,7 +941,7 @@
       "sys-pretreatment",
       "sys-storage",
       "sys-monitoring",
-      "svc-fat-sat"
+      "svc-service"
      ]
     }
    ],
@@ -960,7 +970,8 @@
     "Guaranteed conductivity at the skid outlet, µS/cm at 25 °C, and how FAT and SAT measure it ([outlet conductivity guarantee, µS/cm @ 25 °C], hero and limits table; same name on home and svc-design; FD-21)",
     "Membrane design temperature held by the feed heat exchanger, °C ([feed heat exchanger design temperature, °C], same name as sys-pretreatment), and whether that heat exchanger is standard on the skid, an option, or part of pretreatment (sys-pretreatment lists it as an option; the diagram says \"Where fitted\") (FD-21)",
     "Design system recovery, % ([design recovery, %]; same name as svc-service's running-cost table, which the recovery row links; FD-21)",
-    "Sanitization method for the PP skid ([sanitization method for the PP skid]) and whether the RO elements and EDI modules are rated for hot water ([heat-sanitizable RO and EDI, yes or no]). No temperature through RO and EDI on any page until then (FD-14, DR-013 rule 5)",
+    "Sanitization method for the PP skid ([sanitization method for the PP skid]) and whether the RO elements and EDI modules are rated for hot water ([heat-sanitizable RO and EDI, yes or no]). No temperature through RO and EDI on any page until then (FD-14, DR-013 rule 5). Unfilled at launch, the FAQ's first sentence goes and the answer opens with the sanitant-removal sentence",
+    "Whether Aquemi quotes PVDF loops for routine 80 °C, hot-held or steamed loops, or refers the buyer ([whether we quote PVDF], FAQ 1; same name as sys-storage; FD-15, DR-013 rule 2)",
     "Unpigmented PP grade, for example PP-R ([PP grade], the canonical name in ops/placeholder-names.md), PP piping standard ([PP piping standard]) and dead leg design limit, L/D ([dead leg design limit, L/D], same as compliance, cmp-documentation and news) (FD-17, FD-19)",
     "PP joining method ([PP joining method]; IR or bead-and-crevice-free fusion with no socket fusion is the library's recommendation, not a decision), joint inspection method and extent ([joint inspection method and extent]) and the joint records kept, for example the joint map and joining log ([PP joint records kept], same as about, svc-cq and compliance) (FD-18)",
     "Certificates supplied with the skid's PP product-contact parts ([PP material certificates], same name as compliance and cmp-quality; FD-17)",
@@ -1045,15 +1056,13 @@
       {
        "p": "Loop sanitization",
        "v": "[PP loop sanitization method]",
-       "m": "WHO TRS 1033, 8.4; verified at the coldest point",
-       "rule": "≤ [maximum loop sanitization temperature for PP, °C]",
-       "fig": "sanitize"
+       "m": "WHO TRS 1033, 8.4; inside the PP maker's pressure–temperature curve; verified at the coldest point",
+       "rule": "≤ [maximum loop sanitization temperature for PP, °C]"
       },
       {
        "p": "Point-of-use valves",
        "v": "[PP point-of-use valve type], joined by [PP joining method]",
-       "m": "WHO TRS 1033, 8.6",
-       "fig": "valve"
+       "m": "WHO TRS 1033, 8.6"
       },
       {
        "p": "Tank vent",
@@ -1130,16 +1139,16 @@
      ],
      "rows": [
       [
-       "Hot water",
-       "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
-       "Inside the PP maker's curve; ≥ 65 °C needs an engineer's review",
-       "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
-      ],
-      [
        "Chemical",
        "[PP loop sanitization method]; residual tested before use",
        "A sanitant the PP maker rates",
        "Loop out of use each cycle"
+      ],
+      [
+       "Hot water",
+       "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
+       "Inside the PP maker's pressure–temperature curve; ≥ 65 °C needs an engineer's review",
+       "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
       ],
       [
        "Ultraviolet (UV)",
@@ -1150,13 +1159,13 @@
      ],
      "look": "method-bento",
      "figs": [
-      "hot",
       "chemical",
+      "hot",
       "uv"
      ],
      "scale": {
-      "row": 0,
-      "base": "Inside the PP maker's curve",
+      "row": 1,
+      "base": "Inside the PP maker's pressure–temperature curve",
       "marks": [
        {
         "v": 65,
@@ -1167,8 +1176,7 @@
         "l": "Not for routine use at loop pressure"
        }
       ]
-     },
-     "absent": "Ozone"
+     }
     },
     {
      "type": "spec",
@@ -1326,6 +1334,16 @@
        "link": "svc-upgrades"
       }
      ]
+    },
+    {
+     "type": "related",
+     "h": "Where to go next",
+     "items": [
+      "sys-pw",
+      "sys-monitoring",
+      "svc-service",
+      "ind-meddevice"
+     ]
     }
    ],
    "cta": {
@@ -1355,13 +1373,14 @@
     "Dead leg design limit, L/D, measured from the main pipe's inside wall (FAQ): rules table and hero fact ([dead leg design limit, L/D]; one name with sys-pw, compliance and cmp-documentation, ops/placeholder-names.md; FD-19)",
     "Loop sanitization method: sanitant, concentration, contact time, temperature and frequency, with the residual test method and limit; the sanitant must be one the PP maker rates ([PP loop sanitization method]; same placeholder as home, systems, svc-fat-sat, svc-cq, svc-service, svc-upgrades and ind-cdmo; FD-14, DR-013 rule 3)",
     "Hot-water cycles offered or not; if offered, the maximum temperature at the hottest point, the hold at the coldest point, cycles a year and the cumulative-damage check under DVS 2210-1 ([maximum loop sanitization temperature for PP, °C]; same placeholder as compliance and ind-pharma; FD-14, DR-013 rule 2)",
+    "Rules sheet, loop sanitization: the rule-figures \"sanitize\" drawing (a thermometer at the loop's coldest point) is off while the method is open; restore it only if FD-14 offers a hot-water cycle. If none is offered, the row's rule chip ≤ [maximum loop sanitization temperature for PP, °C] goes too (DR-018 rule 2, DR-013 rule 2)",
     "Ozone stays off this page, with no option, row, rule, FAQ or placeholder, until a PP maker rates PP in writing for dissolved and headspace ozone (FD-16, DR-013 rule 4); then the table intro changes and an option, a rule and the interlock FAQ can return",
     "Whether Aquemi quotes PVDF loops for routine 80 °C, hot-held or steamed loops, or refers the buyer ([whether we quote PVDF], FAQ; FD-15); the current offer is the PP package only",
     "PP grade for tank and loop, for example PP-R, and the material certificates for resin and pipe, with their type ([PP grade], [PP material certificates]; one name on every page, ops/placeholder-names.md; FD-17)",
     "PP internal surface specification, Ra µm, and its basis ([PP internal surface specification, Ra µm], [basis for the PP surface specification]; FD-19)",
     "PP joining method and the thermoplastic welder qualification standard, for example DVS 2212 ([PP joining method], one name on every page; [welder qualification standard for thermoplastics], svc-fabrication's name; FD-18)",
     "[PP joint records kept]: FD-18, for example the joint map with each joint numbered on the isometric and the per-joint log; the example stays out of the brackets.",
-    "PP point-of-use valve type, for example a zero-static diaphragm valve, and how it is joined into the loop ([PP point-of-use valve type], same as svc-design; FD-19)",
+    "PP point-of-use valve type, for example a zero-static diaphragm valve, and how it is joined into the loop ([PP point-of-use valve type], same as svc-design; FD-19). The rules sheet's valve figure (rule-figures fig \"valve\", a zero-static valve) is off until this is set; restore it only if the type is zero-static (DR-018 rule 2)",
     "Whether PP tanks are atmospheric or pressure-rated, and the tank design standard, for example DVS 2205 ([PP tank design: atmospheric or pressure-rated], [PP tank design standard]; FD-19)",
     "Pre-commissioning flush and cleaning procedure for PP, with its conductivity and TOC endpoint ([pre-commissioning flush and cleaning procedure for PP]; same as svc-fabrication; FD-19)",
     "Whether a heat exchanger, UV on the supply, duty and standby pumps and TOC on the return are standard or options ([heat exchanger, standard or option], [UV, standard or option], [duty and standby pumps, standard or option], [TOC on the return, standard or option]; FD-21)",
@@ -1391,20 +1410,20 @@
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I have water data, no system yet|Feed water review",
    "secondary_cta": {
-    "label": "See the documentation package",
-    "link": "cmp-documentation"
+    "label": "Replacing a train? See upgrades",
+    "link": "svc-upgrades#upgrades"
    },
    "facts": [
     {
-     "v": "< 0.05 mg/L [confirm]",
+     "v": "[RO inlet chlorine target, mg/L as Cl₂]",
      "l": "Total chlorine, RO inlet · online analyzer"
     },
     {
-     "v": "< 1 mg/L as CaCO₃ [confirm]",
-     "l": "Hardness, softener outlet · online analyzer"
+     "v": "[softener outlet hardness target, mg/L as CaCO₃]",
+     "l": "Hardness, softener outlet · [hardness measurement method]"
     },
     {
-     "v": "≤ 3 [confirm]",
+     "v": "[RO inlet SDI₁₅ target]",
      "l": "Silt density index, RO inlet · ASTM D4189"
     },
     {
@@ -1426,24 +1445,24 @@
      "rows": [
       {
        "p": "Free and total chlorine",
-       "v": "< 0.05 mg/L as Cl₂ [confirm]",
-       "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed",
+       "v": "[RO inlet chlorine target, mg/L as Cl₂]",
+       "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed. Membrane makers: typically < 0.1 mg/L free chlorine",
        "hl": true
       },
       {
        "p": "Silt density index",
-       "v": "SDI₁₅ ≤ 3 [confirm]",
+       "v": "[RO inlet SDI₁₅ target]",
        "m": "ASTM D4189, at the cartridge filter outlet"
       },
       {
        "p": "Turbidity",
-       "v": "< 1 NTU",
+       "v": "[media filter outlet turbidity target, NTU]",
        "m": "Media filter outlet"
       },
       {
        "p": "Hardness",
-       "v": "< 1 mg/L as CaCO₃ [confirm]",
-       "m": "Online analyzer, softener outlet"
+       "v": "[softener outlet hardness target, mg/L as CaCO₃]",
+       "m": "[hardness measurement method], softener outlet"
       },
       {
        "p": "Iron and manganese",
@@ -1458,7 +1477,8 @@
      ],
      "nav": "RO inlet targets",
      "as": "gauges",
-     "look": "membrane-face"
+     "look": "membrane-face",
+     "anchor": "inlet"
     },
     {
      "type": "diagram",
@@ -1497,9 +1517,9 @@
        }
       },
       {
-       "t": "Carbon or bisulfite",
+       "t": "Carbon bed",
        "icon": "carbon-filter",
-       "d": "Removes chlorine and chloramine, which oxidize RO membranes.",
+       "d": "Removes chlorine and chloramine, which oxidize RO membranes. Bisulfite dosing can replace it.",
        "cut": "carbon",
        "catch": {
         "g": "c",
@@ -1507,7 +1527,7 @@
        }
       },
       {
-       "t": "5 µm cartridge filter",
+       "t": "Cartridge filter",
        "icon": "ro-membrane",
        "d": "Catches fines from the beds before the RO.",
        "cut": "cartridge",
@@ -1523,7 +1543,7 @@
        "cut": "out"
       }
      ],
-     "base": "Online monitoring · total chlorine, ORP, hardness, pressure drop",
+     "base": "Online monitoring · total chlorine, ORP, pressure drop",
      "nav": "The train",
      "look": "section-train"
     },
@@ -1716,14 +1736,14 @@
       },
       {
        "part": "carbon",
-       "label": "Carbon or bisulfite",
+       "label": "Carbon bed",
        "ly": -64
       },
       {
        "part": "filter",
        "r": 7,
        "h": 40,
-       "label": "5 µm cartridge filter"
+       "label": "Cartridge filter"
       },
       {
        "part": "ro",
@@ -1737,6 +1757,11 @@
      "h": "Questions engineers ask",
      "nav": "FAQ",
      "items": [
+      {
+       "q": "Can you replace our existing pretreatment?",
+       "a": "For [makes and equipment types serviced]: we assess the system, then replace the train; the existing pretreatment runs until cutover.",
+       "link": "svc-upgrades#upgrades"
+      },
       {
        "q": "Our water meets drinking water standards. Why is that not enough?",
        "a": "Those standards protect people, not membranes. Health Canada sets no guideline value for chloramine; the US EPA allows up to 4 mg/L. Polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine."
@@ -1766,12 +1791,17 @@
       {
        "q": "What happens to the ammonia from chloramine?",
        "a": "Some passes the reverse osmosis membranes as ammonia gas, at the pH used to control CO₂. It then loads the electrodeionization stage, so we design chloramine removal and the Purified Water skid together."
-      },
-      {
-       "q": "Can you replace our existing pretreatment?",
-       "a": "For [makes and equipment types serviced]: we assess the system, then replace the train; the existing pretreatment runs until cutover.",
-       "link": "svc-upgrades"
       }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Where to go next",
+     "items": [
+      "sys-pw",
+      "svc-upgrades#upgrades",
+      "svc-service",
+      "ind-pharma"
      ]
     }
    ],
@@ -1794,13 +1824,14 @@
     ]
    },
    "todo": [
-    "RO feed design targets, three drafts (FD-21; DR-010): total chlorine at the RO inlet, mg/L as Cl₂ (\"< 0.05 mg/L\"); silt density index at the RO inlet, SDI₁₅ to ASTM D4189 (\"≤ 3\"); hardness at the softener outlet, mg/L as CaCO₃ (\"< 1 mg/L\"). Each shows \"[confirm]\" in its hero fact and inlet table row until engineering confirms it (DR-011 rule 1)",
+    "RO feed design targets (FD-21; DR-010 rule 5; DR-018 rule 3): [RO inlet chlorine target, mg/L as Cl₂] (draft \"< 0.05 mg/L\"), [RO inlet SDI₁₅ target] (SDI₁₅ to ASTM D4189; draft \"≤ 3\"), [softener outlet hardness target, mg/L as CaCO₃] (draft \"< 1 mg/L\"), [media filter outlet turbidity target, NTU] (draft \"< 1 NTU\", no source in the library). Pass 10: the drafts were set at display size in the hero facts and the inlet gauges, so each now shows its placeholder name; engineering fills each with the confirmed value (hero fact and inlet row, one figure). Unfilled at launch, the hero fact goes (DR-010 rule 5)",
     "Iron and manganese design limit at the RO inlet, mg/L each ([design limit, mg/L each]; FD-21)",
     "Pretreatment capacity range per train, L/h of RO feed at the coldest feed ([pretreatment capacity range, L/h], hero fact; FD-20). Unfilled at launch, the fact goes (DR-010 rule 5)",
     "Budget band for the pretreatment train: [budget range, CAD] at [reference capacity, L/h], as of [month year], the systems budget row word for word (FAQ, linked to systems#budget; DR-005 rules 1 and 3; FD-03). Unfilled at launch, the cost question goes (DR-005 rule 8)",
     "Which makes and equipment types Aquemi replaces pretreatment on ([makes and equipment types serviced], FAQ; FD-30). The full answer lives on svc-upgrades. Unfilled at launch, the question goes (DR-011 rule 1)",
-    "Whether bisulfite dosing is offered instead of carbon: the diagram, the feed water table and the removal-step router all show it (FD-21)",
-    "Softener on demand is an option, not the standard scope (moved here from sys-pw). Confirm whether the online hardness analyzer at the softener outlet is standard, as the hero fact, the inlet table and the diagram's monitoring line say, or comes only with that option (FD-21)",
+    "Whether bisulfite dosing is offered instead of carbon: the diagram's carbon bed stage (\"Bisulfite dosing can replace it\"), the feed water table and the removal-step router all show it (FD-21). Pass 10: the stage is named \"Carbon bed\", as the section-train look draws a bed and has no neutral stage drawing (DR-018); the options drawing's train label matches it (DR-018 rule 5)",
+    "Softener on demand is an option, not the standard scope (moved here from sys-pw). Confirm whether the online hardness analyzer at the softener outlet is standard or comes only with that option (FD-21): [hardness measurement method] (hero fact label and inlet row). Pass 10 review: until FD-21 answers, the hero fact and inlet row show the placeholder and the diagram's monitoring line names no hardness analyzer (DR-018 rule 2); if standard, fill \"Online analyzer\" and restore \"hardness\" in the monitoring line",
+    "Cartridge filter rating ahead of the RO, µm (FD-21): [cartridge filter rating, µm]. Pass 10 review: the diagram stage and the options drawing's train label read \"Cartridge filter\" (one name, DR-018 rule 5) until it is set; then both may read \"[rating] µm cartridge filter\"",
     "Whether Aquemi tests SDI on site during the feed water review, and with what kit (\"on-site SDI test [confirm]\", feed water table; FD-21)",
     "UV dechlorination: the removal-step row is cut until it is offered (FD-21). If restored: the PVC needs a light-tight transition piece at the UV unit (IPEX), and the chlorine analyzer stays downstream",
     "Carbon replacement interval ([carbon replacement interval, months], feed water table and FAQ), reset from counts during qualification. svc-service's running-cost row holds it inside [filter, media and lamp intervals, months]: one figure in both (FD-21; DR-005 rule 6; DR-011)",
@@ -1873,7 +1904,7 @@
     {
      "type": "table",
      "h": "Alert, action and trend",
-     "intro": "You set the levels with our input.",
+     "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot shows online readings.",
      "cols": [
       "Line",
       "How it is set",
@@ -1910,6 +1941,10 @@
       "Trends",
       "Alarms",
       "Sanitization"
+     ],
+     "plot": [
+      "limit",
+      "trend"
      ]
     },
     {
@@ -2047,7 +2082,8 @@
      "as": "evidence",
      "fold": 3,
      "fold_noun": "requirements",
-     "look": "clause-crosswalk"
+     "look": "clause-crosswalk",
+     "anchor": "data-integrity"
     },
     {
      "type": "options",
@@ -2120,6 +2156,16 @@
        "a": "Then we do not install it. The system runs and records fully offline. Any later access goes through your demilitarized zone (DMZ) under your change control, every session logged."
       }
      ]
+    },
+    {
+     "type": "related",
+     "h": "Where to go next",
+     "items": [
+      "svc-fat-sat",
+      "svc-upgrades#upgrades",
+      "svc-service",
+      "ind-cdmo#audit-pack"
+     ]
     }
    ],
    "cta": {
@@ -2129,7 +2175,7 @@
     "link": "contact-proposal",
     "intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
     "include": [
-     "Your user requirement specification (URS), if any",
+     "Your user requirement specification (URS), or what you make and your flow",
      "Water grades and internal limits",
      "Systems to control, new or existing",
      "PLC, SCADA and historian standards",
@@ -3967,7 +4013,7 @@
    "path": "/services/upgrades-retrofits/",
    "eyebrow": "UPGRADES · EU GMP ANNEX 15 · GUI-0029",
    "headline": "Upgrade the system you have",
-   "lead": "We assess and upgrade Purified Water (PW) systems with modules from our polypropylene (PP) package, for [makes and equipment types serviced]. Each upgrade option states its downtime and requalification.",
+   "lead": "We assess and upgrade Purified Water (PW) systems with modules from our polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: [makes and equipment types serviced].",
    "tags": [],
    "primary_cta": "Request a system assessment",
    "primary_cta_link": "contact-proposal",
@@ -3985,7 +4031,7 @@
      "anchor": "observation",
      "nav": "Observation",
      "h": "After a water observation or out-of-trend results",
-     "intro": "Five FDA warning letters (2024 to 2026) asked for these between them, with 15 working days to reply.",
+     "intro": "Five FDA warning letters (2024 to 2026) asked for these between them, with 15 working days to reply. Health Canada’s GUI-0023 rates an unqualified PW system a major (Risk 2) observation.",
      "cols": [
       "Asked for",
       "Prepared by",
@@ -3993,7 +4039,11 @@
      ],
      "rows": [
       [
-       "Design assessment of the system",
+       {
+        "t": "Design assessment of the system",
+        "link": "contact-proposal",
+        "intent": "I have a system already"
+       },
        "Aquemi: system assessment",
        "You"
       ],
@@ -4107,7 +4157,8 @@
       "toc",
       "panel",
       "gen loop"
-     ]
+     ],
+     "anchor": "upgrades"
     },
     {
      "type": "table",
@@ -4161,38 +4212,33 @@
       {
        "t": "Records",
        "d": "Qualification file, changes, drawings, dead leg register.",
-       "spot": "binder",
-       "code": "REC"
+       "spot": "binder"
       },
       {
        "t": "Water quality data",
        "d": "A year of conductivity, TOC and microbial results.",
-       "spot": "toc",
-       "code": "WQD"
+       "spot": "toc"
       },
       {
        "t": "Generation",
        "d": "Performance on today’s feed, capacity at your coldest feed.",
-       "spot": "ro-skid",
-       "code": "GEN"
+       "spot": "ro-skid"
       },
       {
        "t": "Storage and distribution",
        "d": "Materials, dead legs, slope, flow and fittings.",
-       "spot": "storage-tank",
-       "code": "S&D"
+       "spot": "storage-tank"
       },
       {
        "t": "Sanitization",
        "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
-       "spot": "heat-exchanger",
-       "code": "SAN"
+       "spot": "storage-tank",
+       "part": "outlet"
       },
       {
        "t": "Controls",
        "d": "Support status, audit trail and backups.",
-       "spot": "cpu",
-       "code": "CTL"
+       "spot": "cpu"
       }
      ]
     },
@@ -4242,7 +4288,10 @@
       },
       {
        "q": "Will an upgrade restart our performance qualification (PQ)?",
-       "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale."
+       "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale.",
+       "link": "contact-service",
+       "link_label": "Plan a requalification",
+       "intent": "Requalification after a change"
       },
       {
        "q": "Can we keep producing water during the upgrade?",
@@ -4313,7 +4362,7 @@
    "path": "/industries/",
    "eyebrow": "INDUSTRIES · USP · PH. EUR.",
    "headline": "Your product sets the grade",
-   "lead": "One Purified Water (PW) package in polypropylene. No Water for Injection, pure steam or stainless steel systems. PW limits are the same in every industry.",
+   "lead": "One Purified Water (PW) package in polypropylene, with polyvinyl chloride (PVC) pretreatment. No Water for Injection, pure steam or stainless steel systems. PW limits are the same in every industry.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec",
@@ -4374,7 +4423,10 @@
       ],
       [
        "Natural health products: does this line need PW?",
-       "PW generation, if needed",
+       {
+        "t": "PW generation, if your specification asks",
+        "link": "sys-pw"
+       },
        {
         "t": "Pharmaceutical: natural health products",
         "link": "ind-pharma#nhp"
@@ -4444,9 +4496,9 @@
       [
        {
         "t": "Cosmetics and personal care",
-        "link": "ind-pharma"
+        "link": "industries#faq"
        },
-       "Your written specification; PW for any drug line",
+       "Your written specification; ISO 22716 good manufacturing practice (GMP) encouraged; PW for any drug line",
        "Each product’s legal class, by market",
        "Health Canada; FDA for over-the-counter drugs"
       ],
@@ -4509,70 +4561,33 @@
       },
       {
        "t": "Your team’s first year",
-       "d": "First use after at least 2 weeks of daily sampling, if your quality unit approves. [staff hours in year one: sampling, logs, sanitization].",
-       "link": "svc-cq",
-       "big": [
-        {
-         "v": "2 weeks",
-         "pre": "At least",
-         "l": "Of daily sampling before first use, if your quality unit approves"
-        }
-       ],
-       "bars": [
-        "Sampling",
-        "Logs",
-        "Sanitization"
-       ],
-       "bars_note": "[staff hours in year one: sampling, logs, sanitization]"
+       "d": "Staff time: [staff hours in year one: sampling, logs, sanitization]. Drug lines: first use after at least 2 weeks’ daily sampling and quality unit approval.",
+       "link": "svc-cq"
       },
       {
        "t": "Who you work with",
        "d": "New Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
-       "link": "about#people",
-       "kicker": "New Ontario company",
-       "list": [
-        "Commercial lead",
-        "Automation engineer with pharmaceutical water experience",
-        "Modular manufacturing and design specialist"
-       ],
-       "panel": true
+       "link": "about#people"
       }
      ]
     },
     {
      "type": "options",
-     "look": "market-callouts",
      "nav": "Adjacent uses",
      "anchor": "adjacent",
      "h": "Outside drug and device manufacturing",
      "items": [
       {
        "t": "Hospital reprocessing (MDRD)",
-       "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit.",
-       "part": "outlet",
-       "scope": "[hospital water scope]",
-       "tags": [
-        "CSA Z314:23",
-        "ANSI/AAMI ST108:2023"
-       ],
-       "note": "Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
+       "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
       },
       {
        "t": "Research laboratories",
-       "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers].",
-       "part": "ro",
-       "scope": "[lab water scope]",
-       "tags": [
-        "ASTM D1193-24"
-       ],
-       "note": "Central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
+       "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
       },
       {
        "t": "Industrial demineralized water",
-       "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange.",
-       "part": "edi",
-       "scope": "[industrial water scope]",
-       "note": "Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
+       "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
       }
      ]
     },
@@ -4587,11 +4602,11 @@
        "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel. It covers pretreatment, reverse osmosis, deionization or electrodeionization, and distribution; no stills. Where your product needs WFI, you generate it; PW is the usual feed to a WFI still."
       },
       {
-       "q": "Do natural health products or cosmetics need PW?",
-       "a": "Not always. Under Health Canada’s GUI-0158, natural health products need potable water at minimum. Purified Water (PW) is needed where the specification or a monograph calls for it. For cosmetics, the product’s legal class sets the grade: cosmetic-only lines follow your written specification; any drug line needs PW.",
+       "q": "Do cosmetics need Purified Water (PW)?",
+       "a": "It depends on each product’s legal class. Cosmetic-only lines follow your written specification; Health Canada encourages ISO 22716 GMP. Drug lines (a Canadian drug identification number, or US over-the-counter drug-cosmetics) need PW under drug GMP. Natural health product lines: potable water at minimum under GUI-0158; PW where your specification or a monograph calls for it.",
        "link": "contact-proposal",
-       "link_label": "Talk to an engineer",
-       "intent": "Not sure yet: talk to an engineer"
+       "link_label": "Request a water scope review",
+       "intent": "I know my product, not my water spec|Cosmetics or personal care"
       }
      ]
     },
@@ -4612,8 +4627,8 @@
     "link": "contact-proposal",
     "intent": "I know my product, not my water spec",
     "include": [
-     "What you make, and how it is sterilized",
-     "Markets and pharmacopoeias",
+     "What you make, and where you sell it",
+     "Whether any product is sterile",
      "Where your site is"
     ],
     "turnaround": "[scope review turnaround, working days]",
@@ -4628,27 +4643,33 @@
     "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
     "One scope sentence per adjacent use (FD-25, DR-002 rule 6), opening that use's row and in the same words on ind-meddevice and about: [hospital water scope] (for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor), [lab water scope], [industrial water scope]",
     "Laboratory Type I water: [whether Aquemi integrates third-party polishers] (DR-002 rule 5)",
-    "Staff time in year one for sampling, logs and sanitization ([staff hours in year one: sampling, logs, sanitization], first-system path); FD-52 (DR-015)",
+    "Staff time in year one for sampling, logs and sanitization ([staff hours in year one: sampling, logs, sanitization], first-system path); FD-52 (DR-015). At launch, if FD-52 is unset, the item opens with the drug-lines sentence and the staff-time clause goes",
     "WFI wording (FAQ, sterile row): Aquemi supplies PW only (MISSION). PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it until the owner confirms",
     "References per segment, or 'none yet' (FD-41): no reference call or case block here until a client agrees in writing (DR-004, DR-016); link projects per industry once a case study exists (FD-42)",
-    "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002; router and grade table), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005 rule 1), svc-service#running-cost (DR-005 rule 6; the path's running-cost row). Until a block carries its anchor, the link opens that page at the top",
+    "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002; router and grade table), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005 rule 1), svc-service#running-cost (DR-005 rule 6; the path's running-cost row), industries#faq (the cosmetics grade row lands on the cosmetics answer, DR-023). Until a block carries its anchor, the link opens that page at the top",
     "Device inspector cell: Health Canada requires an ISO 13485 certificate from an MDSAP audit for Class II to IV licences (IMD-70; IMD-22, IMD-28). Keep the cell word for word with ind-meddevice's auditor table",
-    "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if needed'"
+    "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if your specification asks' and links sys-pw, the same wording as ind-cdmo's row (DR-011 rule 3)",
+    "Cosmetics (DR-023): row and FAQ only, no page, tile or router row until FD-38 confirms personal-care makers with drug or natural health product lines as a launch segment; no recall statistics or microbial fear copy on the site. The FAQ's natural health products line is unlinked: the FAQ allows one link, used for intent I10; the grade row and router row link ind-pharma#nhp (departure from DR-023 rule 3's 'one line + link')",
+    "Adjacent uses (#adjacent) render as a plain options list while hospital, lab and industrial scope is open (DR-018; FD-25): the market-callouts look drew one PW package serving each use, which DR-002 rule 4 cut; its specimen stays in the section library for reuse once FD-25 confirms a shared scope"
    ]
   },
   {
    "id": "ind-pharma",
    "section": "Industries",
    "nav_label": "Pharmaceutical",
-   "title": "Pharmaceutical water systems: Purified Water (PW) | Aquemi",
-   "meta": "The water grade each dosage form needs for Health Canada, FDA and EU filings, and for natural health products. One polypropylene Purified Water package; no WFI.",
+   "title": "Pharmaceutical and natural health product water: Purified Water | Aquemi",
+   "meta": "The water grade each dosage form needs for Health Canada, FDA and EU filings, and whether a natural health product line needs Purified Water. One polypropylene package; no WFI.",
    "path": "/industries/pharmaceutical/",
-   "eyebrow": "PHARMACEUTICAL · USP · PH. EUR. · GUI-0001",
+   "eyebrow": "PHARMACEUTICAL · NATURAL HEALTH PRODUCTS · USP · GUI-0001",
    "headline": "Water matched to your dosage forms",
-   "lead": "Dosage forms set the grade. We supply one Purified Water (PW) package in polypropylene, with polyvinyl chloride (PVC) pretreatment. No Water for Injection, pure steam or stainless steel systems.",
+   "lead": "Dosage forms set the grade. We supply one Purified Water (PW) package in polypropylene, with polyvinyl chloride (PVC) pretreatment.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec|Pharmaceutical drug products",
+   "secondary_cta": {
+    "label": "After a water observation",
+    "link": "svc-upgrades#observation"
+   },
    "blocks": [
     {
      "type": "table",
@@ -4670,8 +4691,8 @@
        }
       ],
       [
-       "An inspection due, or a water observation open",
-       "Design assessment, dated remediation plan, validation after repair",
+       "An inspection due, an observation, or results out of trend",
+       "GUI-0001 C.02.009 water quality at risk; first, assess design, trends and records",
        {
         "t": "After a water observation",
         "link": "svc-upgrades#observation"
@@ -4679,7 +4700,7 @@
       ],
       [
        "First export to the US or EU",
-       "Where USP and Ph. Eur. differ, we design to the stricter value",
+       "Both pharmacopoeias in one specification",
        {
         "t": "Purified Water limits",
         "link": "compliance#limits"
@@ -4858,7 +4879,7 @@
       ],
       [
        "EU authorities and importers",
-       "Ph. Eur. 0008, the EMA guideline and Annex 15 qualification",
+       "Ph. Eur. 0008, plus the EMA guideline and Annex 15 qualification",
        {
         "t": "Standards we design to",
         "link": "compliance"
@@ -4866,7 +4887,7 @@
       ],
       [
        "Sterile sites, or non-sterile sites that adopt it in writing",
-       "GUI-0119 and EU good manufacturing practice (GMP) Annex 1: PW quality, dead legs, sanitization, trend review",
+       "GUI-0119 and Annex 1 (EU good manufacturing practice, GMP): PW quality, dead legs, sanitization, trend review",
        {
         "t": "Storage and distribution loops",
         "link": "sys-storage"
@@ -4891,10 +4912,10 @@
       },
       {
        "code": "Ph. Eur. 0008",
-       "read": "The EMA guideline and Annex 15 qualification"
+       "read": "Plus the EMA guideline and Annex 15 qualification"
       },
       {
-       "code": "GUI-0119 + Annex 1",
+       "code": "GUI-0119 and Annex 1",
        "read": "EU good manufacturing practice (GMP): PW quality, dead legs, sanitization, trend review"
       }
      ]
@@ -4912,8 +4933,8 @@
        "row": 2
       },
       {
-       "t": "USP, Ph. Eur. or both",
-       "d": "Both: cheap at design, costly later.",
+       "t": "Where polypropylene stops",
+       "d": "Hot-held loops, steam or routine 80 °C at loop pressure need polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]. A stainless-only standard needs stainless.",
        "part": "sheet",
        "side": "r",
        "row": 3
@@ -4954,7 +4975,7 @@
      "nav": "Natural health products",
      "anchor": "nhp",
      "h": "Natural health products: does this line need Purified Water?",
-     "intro": "GUI-0158 asks for potable water that does not harm the product, test records, and any treatment qualified and monitored.",
+     "intro": "Potable water is the minimum; Purified Water only where your specification or a monograph asks. GUI-0158 asks for test records and qualified, monitored treatment.",
      "cols": [
       "Product",
       "Minimum water",
@@ -4969,7 +4990,7 @@
       [
        "Liquids, creams and lotions",
        "Potable, or PW where your specification requires it",
-       "Microbial limits and shelf life decide"
+       "The highest microbial risk: limits and shelf life decide"
       ],
       [
        "Homeopathic dilutions",
@@ -5016,21 +5037,23 @@
      "h": "Common questions",
      "items": [
       {
+       "q": "How is water qualified for a natural health product line?",
+       "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this: [NHP qualification scope]. Installation, operational and performance qualification (IQ, OQ, PQ) where your quality assurance person asks for it.",
+       "link": "contact-proposal",
+       "intent": "I know my product, not my water spec|Natural health products",
+       "link_label": "Request a water scope review"
+      },
+      {
+       "q": "Do you supply WFI, pure steam or stainless steel?",
+       "a": "No. Our scope is one Purified Water (PW) package in polypropylene. Water for Injection (WFI), pure steam, stills and stainless steel systems sit outside it.",
+       "link": "industries#faq",
+       "link_label": "Why we stop at PW"
+      },
+      {
        "q": "Can one system supply Canada, the United States and Europe?",
        "a": "Yes. Where USP and Ph. Eur. differ, we design to the stricter value. The functional specification names both, and the factory acceptance test (FAT) checks both where methods allow.",
        "link": "compliance#limits",
        "link_label": "See the Purified Water limits"
-      },
-      {
-       "q": "Do you supply WFI or pure steam?",
-       "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel."
-      },
-      {
-       "q": "Do natural health products need Purified Water?",
-       "a": "Not always. GUI-0158 sets potable water as the minimum; Purified Water (PW) where your specification or a monograph calls for it.",
-       "link": "contact-proposal",
-       "intent": "I know my product, not my water spec|Natural health products",
-       "link_label": "Request a water scope review"
       },
       {
        "q": "Does a new production line mean full requalification?",
@@ -5043,8 +5066,9 @@
      "h": "Where to go next",
      "items": [
       "sys-pw",
-      "sys-storage",
-      "compliance"
+      "compliance",
+      "cmp-quality",
+      "projects"
      ]
     }
    ],
@@ -5068,14 +5092,15 @@
    },
    "todo": [
     "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
-    "Hero secondary: \"Get a budget range\" to systems#budget once the budget bands are filled (FD-03; DR-006, DR-005 rule 8); none until then. The sample turnover package it offered does not exist yet (FD-47)",
+    "Hero secondary: \"After a water observation\" (svc-upgrades#observation; DR-020, SITE-PLAN C1). \"Get a budget range\" to systems#budget once the budget bands are filled (FD-03; DR-006 allows one secondary: choose then). The sample turnover package it once offered does not exist yet (FD-47)",
     "PW as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it until the owner confirms; the grade table says only that WFI is not supplied",
-    "Natural health products: confirm the segment at launch (FD-38) and whether a scope without a loop is offered for dry-dose lines (FD-20); the section stays a section, not a page (DR-002)",
+    "Natural health products: confirm the segment at launch (FD-38) and whether a scope without a loop is offered for dry-dose lines (FD-20); the section stays a section, not a page (DR-017). The NHP FAQ carries [NHP qualification scope] (FD-46): the GUI-0158 evidence set Aquemi hands over (water criteria, test record templates, calibration and maintenance schedules) and whether a lighter path than IQ, OQ and PQ is offered; at launch an unset scope drops that sentence. Its link is the one door that ticks \"Natural health products\" on the form (SITE-PLAN I11)",
     "References per segment, or \"none yet\" (FD-41); a pharmaceutical or natural health product case study with a measured outcome only once a client approves it in writing (FD-42, DR-016). No reference offer or case block here before",
-    "Sanitization: this page states only the PP rating (DR-013 rule 1), and its decision row links sys-storage#sanitization, where the method and the maximum temperature ([maximum loop sanitization temperature for PP, °C]) live (FD-14)",
+    "Sanitization: this page states the PP rating (DR-013 rule 1) and, in decisions, where PP stops (DR-013 rule 2 conditions: a hot-held loop, steam, or routine 80 °C at loop pressure; a standard naming stainless rules PP out unless it allows exceptions; [whether we quote PVDF]; FD-15); the decision row links sys-storage#sanitization, where the method and the maximum temperature ([maximum loop sanitization temperature for PP, °C]) live (FD-14). No ozone (DR-013 rule 4)",
     "Shutdown windows (decisions, folded): duplex trains are named as a choice for the URS, with no train shares; if the owner drops duplex trains as a configuration (FD-20, FD-21), the line keeps isolable sections only. Shares stay on sys-pw and ind-cdmo under one placeholder name (DR-011)",
     "FAT practice (FAQ \"Can one system supply…\"): confirm which USP and Ph. Eur. attributes the factory acceptance test checks, and how (FD-45). The share of skids tested with water is svc-fat-sat's figure, not this page's (DR-010)",
-    "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, industries#first-system and sys-storage#sanitization"
+    "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, industries#first-system and sys-storage#sanitization",
+    "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)"
    ]
   },
   {
@@ -5087,15 +5112,74 @@
    "path": "/industries/medical-devices/",
    "eyebrow": "MEDICAL DEVICES · USP <161>",
    "headline": "Final rinse water you can defend at audit",
-   "lead": "A polypropylene Purified Water (PW) package with PVC pretreatment, built to your endotoxin and bioburden limits at the washer inlet. No Water for Injection, pure steam or stainless steel systems.",
+   "lead": "A polypropylene Purified Water (PW) package with PVC pretreatment, built to your endotoxin and bioburden limits at the washer inlet.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec|Medical devices",
+   "secondary_cta": {
+    "label": "Supplier quality checks",
+    "link": "#supplier-quality"
+   },
    "blocks": [
+    {
+     "type": "table",
+     "as": "router",
+     "nav": "Where to start",
+     "h": "Start from your situation",
+     "cols": [
+      "Your situation",
+      "What you need",
+      "Start with"
+     ],
+     "rows": [
+      [
+       "Endotoxin or bioburden drifting at the washer inlet",
+       "Your rinse water limit at risk; first, assess loop, sample point and trends",
+       {
+        "t": "Out-of-trend results",
+        "link": "svc-upgrades#observation"
+       }
+      ],
+      [
+       "Bioburden rising, a dose audit at risk",
+       "Rinse water bioburden adds to device bioburden (ISO 11737-1, ISO 11137-2); first, assess the supply",
+       {
+        "t": "Upgrades: system assessment",
+        "link": "svc-upgrades"
+       }
+      ],
+      [
+       "A new device or line",
+       "Rinse water limits worked back from your device limits",
+       {
+        "t": "Process design",
+        "link": "svc-design"
+       }
+      ],
+      [
+       "A supplier questionnaire or audit due",
+       "Our quality system status, audit access and quality agreement",
+       {
+        "t": "Supplier quality",
+        "link": "ind-meddevice#supplier-quality"
+       }
+      ],
+      [
+       "A first PW system for a small plant",
+       "Cost, scope and your team’s first year",
+       {
+        "t": "Your first PW system",
+        "link": "industries#first-system"
+       }
+      ]
+     ],
+     "look": "numeral-index"
+    },
     {
      "type": "table",
      "as": "grades",
      "nav": "Grade by step",
+     "anchor": "grades",
      "h": "Water grade by process step",
      "intro": "Common practice, not a rule: your risk assessment sets the grade per step.",
      "cols": [
@@ -5125,7 +5209,35 @@
        "2.15 endotoxin units per device (USP <161>)"
       ]
      ],
-     "look": "derivation-sheet"
+     "look": "grade-mains",
+     "lanes": [
+      {
+       "id": "pw",
+       "t": "Purified Water (PW)"
+      },
+      {
+       "id": "wfi",
+       "t": "Water for Injection (WFI)",
+       "note": "We do not supply WFI",
+       "off": true
+      }
+     ],
+     "taps": [
+      [
+       "pw"
+      ],
+      [
+       "pw"
+      ],
+      [
+       "pw",
+       "wfi?"
+      ],
+      [
+       "wfi",
+       "pw?"
+      ]
+     ]
     },
     {
      "type": "prose",
@@ -5166,6 +5278,62 @@
      "look": "washer-trace"
     },
     {
+     "type": "spec",
+     "nav": "Supplier quality",
+     "anchor": "supplier-quality",
+     "h": "Qualifying us as your supplier",
+     "intro": "ISO 13485:2016 clause 7.4 puts us under your purchasing controls.",
+     "cols": [
+      "Check",
+      "Our answer",
+      "Where"
+     ],
+     "rows": [
+      {
+       "p": "Quality system",
+       "v": "ISO 9001: [ISO 9001 status, registrar and expiry]. ISO 13485: [ISO 13485 status, registrar and expiry].",
+       "link": "cmp-quality#certification"
+      },
+      {
+       "p": "Questionnaire and audit",
+       "v": "Your questionnaire completed; audits from [quality system ready for audit, date].",
+       "link": "cmp-quality#audit",
+       "link_label": "Send your questionnaire",
+       "intent": "Your questionnaire, completed"
+      },
+      {
+       "p": "Quality agreement",
+       "v": "Your template, marked up within [quality agreement mark-up turnaround, working days]."
+      },
+      {
+       "p": "Documents and traceability",
+       "v": "Each turnover document and who approves it",
+       "link": "cmp-documentation#index"
+      },
+      {
+       "p": "Data integrity",
+       "v": "Audit trail and access control, clause by clause",
+       "link": "sys-monitoring#data-integrity"
+      },
+      {
+       "p": "Clause-by-clause matrix",
+       "v": "Each standard, with the document that proves it",
+       "link": "compliance#map"
+      },
+      {
+       "p": "Change notification",
+       "v": "Changes to parts, materials and software: [change notification to clients: scope and notice]."
+      },
+      {
+       "p": "Our own suppliers",
+       "v": "What we require of the parts and materials we buy",
+       "link": "cmp-quality#suppliers",
+       "link_label": "What we require from suppliers"
+      }
+     ],
+     "look": "colophon"
+    },
+    {
      "type": "grid",
      "nav": "What we build",
      "h": "Systems for device plants",
@@ -5188,15 +5356,15 @@
        "t": "Monitoring and controls",
        "icon": "conductivity",
        "d": "Conductivity and total organic carbon trended against your alert and action levels.",
-       "tag": "21 CFR Part 11",
+       "tag": "Audit trail",
        "link": "sys-monitoring"
       },
       {
        "t": "Upgrades and retrofits",
        "icon": "valve",
-       "d": "Endotoxin or bioburden drifting on devices: start with a system assessment.",
+       "d": "Your existing system assessed, then upgraded under your change control.",
        "tag": "Change control",
-       "link": "svc-upgrades#observation"
+       "link": "svc-upgrades"
       }
      ],
      "look": "standard-tiles"
@@ -5263,28 +5431,18 @@
      "h": "Questions device teams ask",
      "items": [
       {
+       "q": "Do we need WFI for our final rinse?",
+       "a": "Only if your risk assessment says so, as is common for cerebrospinal fluid contact. For blood or lymph contact, PW with a written endotoxin limit is usual. Our package is polypropylene with polyvinyl chloride (PVC) pretreatment, not WFI, pure steam, stills or stainless steel. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats."
+      },
+      {
        "q": "Our rinse water meets USP PW. Is that enough for implants?",
        "a": "Not on its own. The Purified Water (PW) monograph sets no endotoxin limit, and its microbial action level (USP <1231>) is guidance only. Write both into your water specification and sample at the washer inlet."
-      },
-      {
-       "q": "Do we need WFI for our final rinse?",
-       "a": "Only if your risk assessment says so, as is common for cerebrospinal fluid contact. For blood or lymph contact, Purified Water (PW) with a written endotoxin limit is usual. We supply a polypropylene PW package with polyvinyl chloride (PVC) pretreatment, not Water for Injection (WFI)."
-      },
-      {
-       "q": "How does rinse water affect our radiation dose?",
-       "a": "Your dose is audited from device bioburden (ISO 11737-1). Rising rinse water bioburden raises device bioburden and can fail an ISO 11137-2 dose audit."
       },
       {
        "q": "Is the water system validated or qualified?",
        "a": "Qualified. You validate the cleaning process (ISO 13485:2016, 7.5.6), for example to ASTM F3127. The water system is qualified by installation and operational qualification (IQ, OQ), then performance qualification (PQ) from routine sampling.",
        "link": "svc-cq#roles",
        "link_label": "See who writes, who reviews"
-      },
-      {
-       "q": "Are you ISO 13485 or ISO 9001 certified?",
-       "a": "[ISO 9001 status, registrar and expiry].",
-       "link": "cmp-quality#certification",
-       "link_label": "See certification status"
       },
       {
        "q": "Do you supply water for hospital reprocessing?",
@@ -5301,7 +5459,7 @@
       "compliance",
       "cmp-quality",
       "cmp-documentation",
-      "svc-cq"
+      "projects"
      ]
     }
    ],
@@ -5327,12 +5485,15 @@
    "todo": [
     "Target segments at launch (FD-38): medical device makers are tier A3, after pharmaceutical and CDMO (DR-002); confirm",
     "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]; FD-01) is defined in contact-proposal's requests table and shown here as the figure only, as on industries",
-    "Quality system status line (FAQ; FD-48): [ISO 9001 status, registrar and expiry], the name cmp-quality and about use, linked to its home, cmp-quality#certification (DR-009). Device makers also ask about ISO 13485, so the filled line answers both: certified (registrar, number, scope, expiry) or the status FD-48 chooses. No ISO label in an eyebrow, heading or meta until certified (DR-004 rule 3)",
+    "Quality system status lines (supplier quality block, #supplier-quality; FD-48): [ISO 9001 status, registrar and expiry] (the name cmp-quality and about use) and [ISO 13485 status, registrar and expiry] (new, SITE-PLAN section 7). Status lines, never badges (DR-004 rule 3, DR-018); if FD-48 chooses it, \"QMS built to ISO 9001; certification targeted for [date]; audit us now\" (DR-022 rule 2). No ISO label in an eyebrow, heading or meta until certified. The certification FAQ was cut: its answer lives in the block (DR-022 rule 1)",
     "References (FD-41) and a device case study with a measured outcome (FD-42): no reference offer or case block until a client agrees in writing (DR-004, DR-016)",
     "Adjacent-use scope (hospital FAQ; FD-25, DR-002 rules 4 and 6): [hospital water scope], the name on industries and about (ops/placeholder-names.md in the library), for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor. The two hospital sentences, the link (industries#adjacent, the rows' home) and its label are word for word about's adjacent-use FAQ (DR-002 rule 4): change both together. The scope sentence names only the hospital scope, the use this question asks about",
     "PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it",
     "Point-of-use filters or ultrafiltration at the washer inlet (explainer; FD-21, 'point-of-use UF for device rinse'): whether the package supplies them; sys-pw lists ultrafiltration after deionization as an option",
-    "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (IMD-71, IMD-70, IMD-72 in the library's sources/IMD.json); the QMSR took effect on 2 February 2026 (IMD-17); re-check at each new edition"
+    "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (IMD-71, IMD-70, IMD-72 in the library's sources/IMD.json); the QMSR took effect on 2 February 2026 (IMD-17); re-check at each new edition",
+    "Supplier quality block (DR-022): [quality system ready for audit, date] (cmp-quality's name; FD-48), [quality agreement mark-up turnaround, working days] (FD-48) and [change notification to clients: scope and notice] (FD-48, SITE-PLAN section 7). At launch a row whose value is still a bracket drops (DR-004 class 2, DR-024 rule 6), except the quality system row: it is the first check a device QA head makes (desk Q5, DR-022), so it stays and FD-48 must set its status line before launch. Its links go to each answer's home, never a copy (DR-009): cmp-quality#certification, cmp-quality#audit (intent \"Your questionnaire, completed\"), cmp-quality (what we require from suppliers: the page top until cmp-quality anchors that table, then link the anchor), cmp-documentation#index, sys-monitoring#data-integrity, compliance#map",
+    "Router (DR-020 as amended): the dose-audit row carries the cut FAQ's answer (ISO 11737-1, ISO 11137-2); the drifting row lands on svc-upgrades#observation, labelled \"Out-of-trend results\"; the supplier row names what the reader checks rather than repeating the block intro (DR-009). Anchors on this page: grades, supplier-quality",
+    "Scope line (DR-021 as amended): the lead names the package only; the exclusion lives in the first FAQ (\"Do we need WFI for our final rinse?\"), worded as an envelope with DR-013 rule 1's rating and stills (DR-021 rule 5)"
    ]
   },
   {
@@ -5344,7 +5505,7 @@
    "path": "/industries/cdmo/",
    "eyebrow": "CONTRACT MANUFACTURING · USP · PH. EUR.",
    "headline": "One water system, every client's auditor",
-   "lead": "Our polypropylene Purified Water (PW) package is designed to the stricter of USP and Ph. Eur. on each attribute. No Water for Injection, pure steam or stainless steel systems.",
+   "lead": "Our polypropylene Purified Water package comes with polyvinyl chloride (PVC) pretreatment. It is designed to the stricter of USP and Ph. Eur. on each attribute, and to the client limits written into your specification.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec|CDMO or contract manufacturing",
@@ -5366,7 +5527,7 @@
      "h": "Start from your situation",
      "cols": [
       "Your situation",
-      "Water you need",
+      "What you need",
       "Systems",
       "Start with"
      ],
@@ -5397,7 +5558,7 @@
       ],
       [
        "A client audit finding or questionnaire gap",
-       "Evidence on design, trends and data integrity",
+       "The client’s quality agreement (GUI-0001 C.02.012) at risk; first, evidence on design, trends and data integrity",
        {
         "t": "Monitoring and controls",
         "link": "sys-monitoring"
@@ -5409,20 +5570,23 @@
       ],
       [
        "One generation train: an outage stops several clients",
-       "Duplex trains, standby pumps and storage for your longest repair",
+       "Supply to every client program at risk; first, storage for your longest repair, standby pumps, duplex trains",
        {
         "t": "PW generation",
         "link": "sys-pw"
        },
        {
-        "t": "Upgrades: system assessment",
-        "link": "svc-upgrades"
+        "t": "Redundancy options",
+        "link": "ind-cdmo#redundancy"
        }
       ],
       [
        "Natural health products or supplements for brand owners",
        "Potable at minimum; PW where your specification calls for it",
-       "PW generation, if needed",
+       {
+        "t": "PW generation, if your specification asks",
+        "link": "sys-pw"
+       },
        {
         "t": "Pharmaceutical: natural health products",
         "link": "ind-pharma#nhp"
@@ -5480,6 +5644,7 @@
      "type": "options",
      "as": "modules",
      "nav": "Redundancy",
+     "anchor": "redundancy",
      "h": "Redundancy that keeps clients supplied",
      "base": "Shared site loop",
      "items": [
@@ -5503,10 +5668,10 @@
       },
       {
        "t": "Sanitize between campaigns",
-       "spot": "heat-exchanger",
-       "d": "[PP loop sanitization method] in campaign gaps, residual tested before use; duplex trains sanitized one at a time.",
+       "spot": "loop",
+       "d": "[PP loop sanitization method] in campaign gaps, residual tested before use.",
        "link": "sys-storage#sanitization",
-       "part": "sanitize"
+       "part": "tank"
       },
       {
        "t": "Spares on your site",
@@ -5561,22 +5726,24 @@
      "h": "Questions contract manufacturers ask",
      "items": [
       {
+       "q": "A client needs WFI, stainless or a hot-held loop. What then?",
+       "a": "We supply Purified Water (PW) in polypropylene only: no Water for Injection (WFI), pure steam or stainless steel systems. A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]. A standard requiring stainless rules out polypropylene, unless it allows exceptions.",
+       "link": "sys-storage#sanitization",
+       "link_label": "Compare sanitization methods"
+      },
+      {
        "q": "Who will audit the water system?",
        "a": "Health Canada inspects under your establishment licence (GUI-0001); the FDA, when a client sells in the US. Each client's quality unit audits too, routinely and for cause. Natural health product sites follow GUI-0158 under their site licence."
       },
       {
        "q": "Who owns the water data, us or our clients?",
-       "a": "Usually you: the water system is a site utility. Each quality agreement sets what that client receives (GUI-0001 C.02.012). Per-client reports: [reporting by suite, outlet and date]."
+       "a": "Usually you: the water system is a site utility. Each quality agreement sets what that client receives (GUI-0001 C.02.012). Per-client reports: [reporting by suite, outlet and date].",
+       "link": "sys-monitoring",
+       "link_label": "No remote access needed"
       },
       {
        "q": "Can you attend our clients' audits?",
-       "a": "[client audit attendance and terms]"
-      },
-      {
-       "q": "A client's standard requires stainless or a hot-held loop. Can polypropylene work?",
-       "a": "A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]. A standard that requires stainless rules out polypropylene, unless it allows exceptions.",
-       "link": "sys-storage#sanitization",
-       "link_label": "Compare sanitization methods"
+       "a": "Your clients audit the water system as part of your site. Our attendance as your supplier, in person or by video: [client audit attendance and terms]."
       },
       {
        "q": "Our system is another maker's, with paper records. Where do we start?",
@@ -5591,9 +5758,9 @@
      "h": "Where to go next",
      "items": [
       "compliance",
-      "sys-monitoring",
-      "svc-service",
-      "cmp-quality"
+      "cmp-quality",
+      "projects",
+      "svc-service"
      ]
     }
    ],
@@ -5620,7 +5787,7 @@
     "Target segment at launch (FD-38): contract manufacturers are tier A, second after pharmaceutical (DR-002). Confirm this page serves drug CDMOs and natural health product and supplement contract makers (router row 5)",
     "Water scope review turnaround and cost ([scope review turnaround, working days], tech transfer step 1 and closing; [scope review cost or free], closing): defined in contact-proposal's requests table, same names as industries and home (FD-01, FD-02)",
     "Severity 1 on-site response time, hours, on a service plan, inside the service coverage area ([severity 1 on-site response time, hours], [service coverage area]; hero fact in svc-service's words, per plan on svc-service; FD-27, FD-28). At launch an unset hero fact goes (DR-010 rule 5)",
-    "Stricter-of design basis (lead, router row 2) and client limits in the compliance matrix: confirm as Aquemi practice, with compliance's limits intro; one wording on home, industries and compliance (DR-011)",
+    "Stricter-of design basis (lead, router row 2) and the client limits written into the specification (lead; bounded, never \"any tighter client limit\", since a WFI, hot-held or stainless client is not met) and in the compliance matrix: confirm as Aquemi practice, with compliance's limits intro; one wording on home, industries and compliance (DR-011)",
     "Duplex train shares ([duplex train shares offered], redundancy option 1; sys-pw's duplex option carries the same name in the same sentence; FD-20, FD-21): the share of peak demand each train covers, for example 50 % or 100 %, and whether both are offered. One wording on both pages (DR-011)",
     "Duty and standby pumps, standard or option ([duty and standby pumps, standard or option]; same name as sys-storage; FD-21)",
     "Loop sanitization method used in campaign gaps ([PP loop sanitization method]; same name as home, systems and sys-storage; FD-14). Any temperature wording follows DR-013",
@@ -5630,12 +5797,14 @@
     "Reporting by suite, outlet and date, and how one client's data is kept from another's ([reporting by suite, outlet and date]; audit pack intro, FAQ 2; FD-23). Align with sys-monitoring",
     "Client audit pack: part of the handover scope or an option, and whether service plans refresh its trend reports (FD-47). A specimen pack (Aquemi-written, so named until a delivered system exists), once written, becomes the hero secondary's target (DR-006 rule 6); until then the secondary jumps to the block",
     "Change package (tech transfer step 2): which documents Aquemi drafts for the change control and for each affected client (FD-46); a specimen change package once written (FD-47)",
-    "Client audit attendance: whether Aquemi attends clients' audits and inspections as the supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ 3; FD-48). At launch the question goes if unset (DR-004 class 2, DR-006 rule 6)",
+    "Client audit attendance: whether Aquemi attends clients' audits and inspections as the supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ 3; FD-48). At launch the question goes if unset (DR-004 class 2, DR-006 rule 6). The answer keeps its basis (clients audit the water system as part of the site) around the bracket (DR-024 as extended by the desk ruling)",
     "Capability sheet and questionnaire support for CDMO business development, and whether service plans include it (FD-48). Not offered on the page until it exists",
     "References at contract manufacturers: 'none yet' until a client agrees in writing (FD-41). No reference call or case block on this page until then (DR-004, DR-016)",
     "A contract manufacturing case study with a measured outcome, published only with the client's written approval; then add a case block (FD-42, DR-016)",
-    "WFI: the lead carries the shared scope line (no Water for Injection, pure steam or stainless steel systems). PW sized as feed to a client's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it",
-    "Makes and equipment types assessed on other builders' systems ([makes and equipment types serviced]; FAQ 5; same name on home, services, svc-service, svc-upgrades, svc-cq, about, contact-service and contact-proposal; FD-30). The full answer lives on svc-upgrades"
+    "WFI: the scope line moved from the lead to the first FAQ, worded as the scope (DR-021 as amended by the pass 10 desk ruling); its full answer is industries#faq. PW sized as feed to a client's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it",
+    "Makes and equipment types assessed on other builders' systems ([makes and equipment types serviced]; FAQ 5; same name on home, services, svc-service, svc-upgrades, svc-cq, about, contact-service and contact-proposal; FD-30). The full answer lives on svc-upgrades",
+    "Redundancy: the \"Sanitize between campaigns\" card now lights the storage tank and loop side, not the train out of service, and its train clause went (FD-20 open; DR-018). Launch rule: if FD-20 says duplex trains are not offered, drop the duplex card and set the look's trains field to [] so the \"Swap trains\" control is not drawn, and cut \", duplex trains\" from router row 4",
+    "Router (DR-020 as amended): rows 3 and 4 name the requirement at risk and the first answer; row 4 starts at its on-page answer (ind-cdmo#redundancy); row 5 links sys-pw. Anchors on this page: audit-pack, redundancy"
    ]
   },
   {
@@ -6489,6 +6658,48 @@
      "look": "record-sheet"
     },
     {
+     "type": "grid",
+     "nav": "Certification",
+     "anchor": "certification",
+     "h": "Certification status",
+     "items": [
+      {
+       "t": "Quality system",
+       "d": "[ISO 9001 status, registrar and expiry]",
+       "tag": "ISO 9001",
+       "icon": "stamp"
+      },
+      {
+       "t": "Device quality system",
+       "d": "[ISO 13485 status, registrar and expiry]",
+       "tag": "ISO 13485",
+       "icon": "stamp"
+      },
+      {
+       "t": "PP joining",
+       "d": "[number of qualified thermoplastic welders]",
+       "tag": "[welder qualification standard for thermoplastics]",
+       "link": "svc-fabrication",
+       "icon": "weld"
+      },
+      {
+       "t": "Pressure equipment",
+       "d": "[pressure vessel certificate holder or certified vessel partner]",
+       "tag": "CSA B51",
+       "link": "compliance#engineering",
+       "icon": "tank"
+      },
+      {
+       "t": "Control panels",
+       "d": "[panel certification mark held, or field evaluation used]",
+       "tag": "[panel standard]",
+       "link": "compliance#engineering",
+       "icon": "monitor"
+      }
+     ],
+     "look": "cert-readout"
+    },
+    {
      "type": "steps",
      "nav": "NCR and CAPA",
      "h": "How a defect is held and closed",
@@ -6532,15 +6743,11 @@
      "type": "table",
      "nav": "Suppliers",
      "h": "What we require from suppliers",
+     "intro": "An open corrective action (CAPA) on a supplier stops new orders to it [confirm].",
      "facts": [
       {
        "k": "Supplier review",
        "v": "Reviewed every [supplier review interval, months]"
-      },
-      {
-       "k": "Open CAPA",
-       "v": "An open CAPA stops new orders.",
-       "glyph": "gate"
       }
      ],
      "cols": [
@@ -6577,43 +6784,8 @@
      ],
      "fold": 2,
      "fold_noun": "supply categories",
-     "look": "marking-match"
-    },
-    {
-     "type": "grid",
-     "nav": "Certification",
-     "anchor": "certification",
-     "h": "Certification status",
-     "items": [
-      {
-       "t": "Quality system",
-       "d": "[ISO 9001 status, registrar and expiry]",
-       "tag": "ISO 9001",
-       "icon": "stamp"
-      },
-      {
-       "t": "PP joining",
-       "d": "[number of qualified thermoplastic welders]",
-       "tag": "[welder qualification standard for thermoplastics]",
-       "link": "svc-fabrication",
-       "icon": "weld"
-      },
-      {
-       "t": "Pressure equipment",
-       "d": "[pressure vessel certificate holder or certified vessel partner]",
-       "tag": "CSA B51",
-       "link": "compliance#engineering",
-       "icon": "tank"
-      },
-      {
-       "t": "Control panels",
-       "d": "[panel certification mark held, or field evaluation used]",
-       "tag": "[panel standard]",
-       "link": "compliance#engineering",
-       "icon": "monitor"
-      }
-     ],
-     "look": "cert-readout"
+     "look": "marking-match",
+     "anchor": "suppliers"
     },
     {
      "type": "spec",
@@ -6628,40 +6800,45 @@
      "rows": [
       {
        "p": "Proposal",
-       "v": "[proposal contents and line items] · valid [proposal validity, days]"
+       "v": "[proposal contents and line items] · valid [proposal validity, days] from issue"
       },
       {
        "p": "Currency, tax and duty",
-       "v": "[quoting currency] · [quoting terms, imported content]"
+       "v": "[quoting currency] · [quoting terms, imported content]",
+       "m": "Set in the proposal"
       },
       {
        "p": "Payment milestones",
-       "v": "[milestone structure]"
+       "v": "[milestone structure]",
+       "m": "Set in the proposal"
       },
       {
        "p": "Acceptance and warranty start",
-       "v": "[warranty period, start, exclusions]"
+       "v": "[warranty period, start, exclusions]",
+       "m": "Set in the proposal"
       },
       {
        "p": "Delivery and lead time",
-       "v": "[delivery terms] · [lead time from drawing approval, weeks]"
+       "v": "[delivery terms] · [lead time from drawing approval, weeks]",
+       "m": "Set in the proposal"
       },
       {
        "p": "Drawings and code",
-       "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]"
+       "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
+       "m": "Set in the proposal"
       },
       {
        "p": "Onboarding documents",
        "v": "[onboarding documents and their status]",
-       "m": "In the quality questionnaire pack, from [quality system ready for audit, date]"
+       "m": "In the quality questionnaire pack, from [quality system ready for audit, date]",
+       "link": "about#facts",
+       "link_label": "See insurance and financial standing"
       },
       {
        "p": "Non-disclosure agreement",
-       "v": "[NDA turnaround, working days]"
+       "v": "[NDA turnaround, working days] from receipt"
       }
      ],
-     "fold": 4,
-     "fold_noun": "terms",
      "look": "terms-sheet"
     },
     {
@@ -6719,7 +6896,9 @@
      "items": [
       {
        "q": "Are you ISO 9001 certified?",
-       "a": "[ISO 9001 status, registrar and expiry]. From [quality system ready for audit, date], your audit can test the system itself: the processes above and a sample traced end to end."
+       "a": "[ISO 9001 status, registrar and expiry]. From [quality system ready for audit, date], your audit can test the processes above directly.",
+       "link": "cmp-quality#certification",
+       "link_label": "See certification status"
       },
       {
        "q": "Can we audit you before we order?",
@@ -6727,15 +6906,24 @@
       },
       {
        "q": "What is in the questionnaire pack?",
-       "a": "From [quality system ready for audit, date]: our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. [onboarding documents and their status]."
+       "a": "From [quality system ready for audit, date]: our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. [onboarding documents and their status].",
+       "link": "cmp-quality#audit",
+       "link_label": "Request the pack",
+       "intent": "Quality questionnaire pack"
       },
       {
        "q": "Will you sign our quality agreement?",
-       "a": "We return a mark-up within [quality agreement mark-up turnaround, working days]. Send it with your request for proposal."
+       "a": "We return a mark-up within [quality agreement mark-up turnaround, working days]. Send it with your request for proposal. Changes to parts, materials or software you approved: notice per [change notification to clients: scope and notice]."
       },
       {
        "q": "Who can stop a shipment?",
        "a": "[role that releases to ship, and its independence]. Nothing ships with an open nonconformance report (NCR) on a product-contact part unless you approved its disposition."
+      },
+      {
+       "q": "What should we ask any Purified Water supplier?",
+       "a": "Five things make proposals comparable. The document index, with who writes and who signs each document. A factory acceptance test (FAT) that runs the system on water. The record kept for each product-contact joint. Access to audit the quality system before you order. A map from each data integrity requirement to the control that meets it.",
+       "link": "cmp-documentation#index",
+       "link_label": "See our document index"
       }
      ]
     },
@@ -6768,12 +6956,12 @@
    "todo": [
     "KEY: ISO 9001 status (certification status block, FAQ; FD-48): certified (registrar, certificate number, scope, expiry, downloadable copy) or, only if FD-48 chooses it, \"QMS built to ISO 9001; certification targeted for [date]; audit us now\". Never claim certification until held; no ISO label in the eyebrow, a heading or the meta until certified (DR-004 rule 3)",
     "ISO 9001 clause references per process (change control 6.3, 8.5.6; nonconformance and complaints 8.7, 9.1.2, 10.2; traceability 8.5.2; calibration 7.1.5; document control 7.5; supplier control 8.4; internal audit and management review 9.2, 9.3) were taken off the process rows: they state a basis FD-48 has not chosen, and the library has not read ISO 9001 (DR-007 rule 3). Restore them as \"Process · ISO 9001 n.n\" once FD-48 says the QMS is built to ISO 9001, checked against the standard's text",
-    "ISO 13485: device makers ask (FD-48; ind-meddevice links here for status). It applies to a product that is a medical device, not to a water system supplier (procurement/certifications-and-terms.md § 7); add a status line only if the owner holds it or chooses to state it",
+    "ISO 13485: device makers ask (FD-48; ind-meddevice links here for status). It applies to a product that is a medical device, not to a water system supplier (procurement/certifications-and-terms.md § 7); since the pass 10 review the certification block carries the status line \"Device quality system\" ([ISO 13485 status, registrar and expiry], tag ISO 13485), because ind-meddevice's supplier-quality row links here for it (DR-011 rule 3, DR-022). At launch drop this line and the ind-meddevice bracket together if FD-48 does not state it",
     "Confirm the QMS processes listed exist as written procedures: document control, change control, NCR and CAPA with effectiveness check, supplier approval and review, identification and traceability, calibration with out-of-tolerance impact review, training matrix, internal audit, management review, complaint handling; procedure list for the questionnaire pack. At launch keep a process row only where a written procedure exists (DR-004)",
-    "Date the quality system is ready for a supplier audit and the questionnaire pack is ready ([quality system ready for audit, date]; FD-48; the name home, svc-fabrication, projects, cmp-documentation and contact-proposal use): form intro and FAQ answers 1 to 3. Launch rule (DR-004 class 2, DR-006 rule 6; pass B relay): the audit and pack offers show only if this date is filled and has passed (the audit can be held); otherwise they are removed. Then the form (anchor audit), FAQ 2 and 3 and FAQ 1's second sentence go; the title, meta, eyebrow and headline drop the audit; the hero and closing buttons become \"Talk to an engineer\" to contact-proposal with the intent \"Not sure yet: talk to an engineer\", the closing with \"Cost: [fit check cost or free].\" In the same commit the links to cmp-quality#audit on about, cmp-documentation, contact-locations, contact-proposal, projects, svc-fabrication and svc-fat-sat change (check flags them), and the \"On-site supplier audit\" intents on projects and svc-fabrication go. Check cannot flag two more: services' router row \"Quality: request a supplier audit\" (links cmp-quality) becomes \"Talk to an engineer\", and home's risk FAQ drops its audit sentence",
+    "Date the quality system is ready for a supplier audit and the questionnaire pack is ready ([quality system ready for audit, date]; FD-48; the name home, svc-fabrication, projects, cmp-documentation and contact-proposal use): form intro and FAQ answers 1 to 3. Launch rule (DR-004 class 2, DR-006 rule 6; pass B relay): the audit and pack offers show only if this date is filled and has passed (the audit can be held); otherwise they are removed. Then the form (anchor audit), FAQ 2 and 3 and FAQ 1's second sentence go, and FAQ 6's sentence \"Access to audit the quality system before you order.\" goes (four checks remain; its first sentence becomes \"Four things make proposals comparable.\"); the title, meta, eyebrow and headline drop the audit; the hero and closing buttons become \"Talk to an engineer\" to contact-proposal with the intent \"Not sure yet: talk to an engineer\", the closing with \"Cost: [fit check cost or free].\" In the same commit the links to cmp-quality#audit on about, cmp-documentation, contact-locations, contact-proposal, projects, svc-fabrication and svc-fat-sat change (check flags them), and the \"On-site supplier audit\" intents on projects and svc-fabrication go. Check cannot flag two more: services' router row \"Quality: request a supplier audit\" (links cmp-quality) becomes \"Talk to an engineer\", and home's risk FAQ drops its audit sentence",
     "Who answers audit and questionnaire requests (FD-34). Once a person holds the role, the form intro says who replies (DR-006 rule 7); until then \"we\" (DR-004 rule 4: no quality lead named before one exists)",
     "Confirm change control practice: client approval before changing a client-approved document; internal changes approved by Aquemi quality; change control register in the turnover package",
-    "Confirm NCR practice: accept-as-is and repairs departing from approved documents need client approval; no shipment with an open product-contact NCR without client-approved disposition",
+    "Confirm NCR practice: accept-as-is and repairs departing from approved documents need client approval; no shipment with an open product-contact NCR without client-approved disposition. The hero stamp ticks \"Nonconformances dispositioned\", not \"closed\", to match FAQ 5 (pass 10 review; DR-018 rule 1)",
     "Notification time for nonconformances found after shipment (working days)",
     "Supplier review interval (months); confirm that an open CAPA stops orders to that supplier; whether Aquemi audits critical subcontractors on site and how often; supplier audit practice",
     "PP piping standard and PP material certificate type per lot for pipe, fittings and valves ([PP piping standard], [PP material certificates]; same as compliance; FD-17)",
@@ -6794,7 +6982,7 @@
     "Terms, acceptance and warranty (FD-07): period, start event (for example a signed SAT report or acceptance), coverage, exclusions, claim response ([warranty period, start, exclusions]); include who pays for design gaps found at DQ or IQ/OQ (svc-design's [design gap warranty terms] points here)",
     "Terms, delivery (FD-08): delivery terms for Canadian projects, for example the Incoterms rule ([delivery terms]); lead time in weeks from drawing approval ([lead time from drawing approval, weeks])",
     "Terms, drawings and code (FD-10): one name each, set here. Drawings and native files: [drawing ownership or licence terms] (svc-design's name; cmp-documentation's to-do uses it too). Application code: [code delivered unlocked, and who owns it] (sys-monitoring's name; web/site-jobs.md § 5's \"code ownership policy\" takes it); escrow for anything delivered locked",
-    "Terms, onboarding documents ([onboarding documents and their status], in the terms row and the pack FAQ): corporate registration and business number (FD-33), certificates of insurance (limits are about's [general and professional liability limits, CAD]; FD-12), workers' compensation (WSIB) clearance, safety program and COR, contractor-safety platforms such as Avetta, ISNetworld or ComplyWorks (FD-13), bank reference (FD-12). List only the documents held (FD-12, FD-13, FD-33). The row's note \"In the quality questionnaire pack, from [quality system ready for audit, date]\" (about's wording for its pack lines) shows at launch only if that date is filled and has passed; otherwise it goes (pass B relay launch rule)",
+    "Terms, onboarding documents ([onboarding documents and their status], in the terms row and the pack FAQ): corporate registration and business number (FD-33), certificates of insurance (limits are about's [general and professional liability limits, CAD]; FD-12), workers' compensation (WSIB) clearance, safety program and COR, contractor-safety platforms such as Avetta, ISNetworld or ComplyWorks (FD-13), bank reference (FD-12). List only the documents held (FD-12, FD-13, FD-33). The row's note \"In the quality questionnaire pack, from [quality system ready for audit, date]\" (about's wording for its pack lines) shows at launch only if that date is filled and has passed; otherwise it goes (pass B relay launch rule). The row links about#facts (insurance, financial standing), the home of those facts, for procurement arriving at #buying (pass 10 review)",
     "Terms, non-disclosure agreement: whose form is signed (Aquemi's mutual NDA or the buyer's) and the turnaround ([NDA turnaround, working days]; FD-01, FD-47)",
     "Quality manual and critical supplier names shared openly or under NDA (same as svc-design: openly or under NDA)",
     "Questionnaire turnaround (working days); whether quality agreement mark-ups come back with the quote (yes or no: the FAQ leaves it out until confirmed) and the mark-up turnaround ([quality agreement mark-up turnaround, working days]); compliance's to-do asks the same (FD-48)",
@@ -6804,18 +6992,21 @@
     "Role that releases a system to ship and its independence from production; quality organization chart",
     "Quality record retention (years); turnover package copy retention is on cmp-documentation",
     "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, certification status, organization chart, specimen NCR, CAPA and change records (Aquemi-written; redacted real records only once they exist, never from a client project without written consent: DR-004), calibration certificate and training matrix extract, and the onboarding documents. The pack FAQ offers it from [quality system ready for audit, date] (launch rule above)",
-    "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)"
+    "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)",
+    "Change notification to clients (FAQ \"Will you sign our quality agreement?\"; DR-022 rule 4): which changes you notify (parts, materials, software the client approved), how and with what notice ([change notification to clients: scope and notice]; FD-48). Until set, the placeholder stays",
+    "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)"
    ],
    "figure": {
     "plate": "stamp",
-    "label": "Released",
-    "title": "Release record",
+    "label": "Recorded",
+    "title": "Shipment record",
     "items": [
      "Inspection record",
      "Test record",
-     "Nonconformances closed",
+     "Nonconformances dispositioned",
      "Records reviewed"
-    ]
+    ],
+    "sub": "Aquemi"
    }
   },
   {
@@ -7670,7 +7861,7 @@
      ],
      "items": [
       {
-       "t": "After a water observation: what FDA asked for",
+       "t": "After a water observation: what inspectors ask for",
        "topic": "Standards",
        "std": "GUI-0001; 21 CFR 211",
        "link": "svc-upgrades#observation",
@@ -7708,6 +7899,18 @@
        "std": "USP <645>",
        "link": "sys-monitoring",
        "d": "Our transmitters show temperature-compensated conductivity. Can we release water on that reading?"
+      },
+      {
+       "t": "Device manufacturing water: no grade is named, so you specify it",
+       "topic": "Standards",
+       "std": "ISO 13485:2016, 7.5.2; 21 CFR 820 (QMSR, 2026)",
+       "link": "ind-meddevice#grades"
+      },
+      {
+       "t": "Natural health products: does this line need Purified Water?",
+       "topic": "Standards",
+       "std": "GUI-0158",
+       "link": "ind-pharma#nhp"
       },
       {
        "t": "USP <1231> is informational: what does it ask of you?",
@@ -7933,9 +8136,9 @@
     "intent": "Not sure yet: talk to an engineer"
    },
    "todo": [
-    "First note publication month ([first note publication month, year]; FD-53) and a target month for each of the 25 planned notes (add a status line per row once set); publish only notes that have passed review",
+    "First note publication month ([first note publication month, year]; FD-53) and a target month for each of the 27 planned notes (add a status line per row once set); publish only notes that have passed review",
     "Named author (engineer, with role) and named reviewer for each topic group ([named author and reviewer, by topic group]); whether bylines may name a partner's former employer (FD-34, FD-35)",
-    "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231> (revision official 1 April 2027); Ph. Eur. 0008, 2.2.44 (12.3); WHO TRS 1033; GUI-0001, GUI-0029; 21 CFR 211; EU GMP Annex 15; CSA B51; FDA computer software assurance guidance (final, 3 February 2026; medical-device production and quality system software under 21 CFR 820, not drug GMP: say so in the note); GAMP 5; Annex 1 and GUI-0119 for the sterile-site note only. ISPE Baseline Guide Vol. 4 (2019) is named, not read: read the chapters a note relies on before writing it (DR-007 rule 3)",
+    "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231> (revision official 1 April 2027); Ph. Eur. 0008, 2.2.44 (12.3); WHO TRS 1033; GUI-0001, GUI-0029; 21 CFR 211; EU GMP Annex 15; CSA B51; FDA computer software assurance guidance (final, 3 February 2026; medical-device production and quality system software under 21 CFR 820, not drug GMP: say so in the note); GAMP 5; GUI-0158 (natural health products note: potable minimum, PW where the product's specification or a monograph calls for it, DR-002 rule 2); ISO 13485:2016 7.5.2 and 21 CFR 820 as amended (QMSR, effective 2 February 2026) for the device-water note; Annex 1 and GUI-0119 for the sterile-site note only. ISPE Baseline Guide Vol. 4 (2019) is named, not read: read the chapters a note relies on before writing it (DR-007 rule 3)",
     "Send frequency ([send frequency, emails per month at most]; FD-39). The value opens the form's intro: fill it as a phrase, for example \"At most 2 emails a month\"",
     "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe (FD-39)",
     "CASL sender identification: [legal entity name] (the footer's name), [mailing address] and [sales email], contact-locations' head office address and email (issue #2 §2; FD-33); unsubscribe processing time (10 business days at most; CASL s. 11 not read by the library: counsel, OQ-81)",

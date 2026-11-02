@@ -1512,44 +1512,6 @@ LOOKS['audit-skid']=function(b,H){var I=(b.items||[]).map(function(x){return typ
  document.addEventListener('click',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
 })();
 })();
-/* Look "battery-limit" -> BatteryLimit (design-system/components/BatteryLimit): a spec block of site requirements on a
-   split band, navy on the left and limestone on the right; the divide is the battery limit, drawn as a P&ID battery
-   limit line (dash and dot) with its name set vertically. The row that is the battery limit itself sits on the seam,
-   across both grounds. Every other row is a card on its side, the package's on the navy, the site's on the limestone,
-   each tied to the seam by a leader that ends in a tie-in node, so the line reads as the list of connection points.
-   Site cards hang half a step lower than the package's, so the nodes alternate down the line like a zip.
-   Fields: h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows
-   [{p, v, m, side, link, link_label}] (side: "limit" | "package" | "site"; default site), sides ([package label, site
-   label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card). */
-LOOKS['battery-limit']=function(b,H){
- var R=b.rows||[],C=b.cols||['Item','Typical','Note'],SD=b.sides||['',''],lim=-1;
- R.some(function(r,i){if(r.side==='limit'){lim=i;return true}});
- var kk={package:0,site:0};
- function card(r,i,side){var lk=r.link&&wp(r.link)?'<a class="aq-battery-limit__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
-  var body='<div class="aq-battery-limit__card">'+idx(i)+'<h3 class="aq-battery-limit__p">'+tx(r.p)+'</h3>'
-   +'<dl class="aq-battery-limit__dl"><div><dt>'+tx(C[1]||'')+'</dt><dd class="aq-battery-limit__v">'+tx(r.v)+'</dd></div>'
-   +(r.m||lk?'<div><dt>'+tx(C[2]||'')+'</dt><dd class="aq-battery-limit__m">'+(r.m?tx(r.m):'')+(r.m&&lk?' ':'')+lk+'</dd></div>':'')+'</dl></div>';
-  if(side==='limit')return '<div class="aq-battery-limit__limit">'+body+'</div>';
-  return fli('<li class="aq-battery-limit__item" data-r="'+i+'" data-k="'+(kk[side]++)+'">',b,i)+(side==='site'?'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__node"></span><span class="aq-battery-limit__lead"></span></span>'+body
-   :body+'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__lead"></span><span class="aq-battery-limit__node"></span></span>')+'</li>'}
- var pk='',st='';R.forEach(function(r,i){if(i===lim)return;if(r.side==='package')pk+=card(r,i,'package');else st+=card(r,i,'site')});
- var seam='<span class="aq-battery-limit__navy" aria-hidden="true"></span><svg class="aq-battery-limit__line" aria-hidden="true" focusable="false"><line x1="50%" y1="0" x2="50%" y2="100%"/></svg>'
-  +(b.seam?'<span class="aq-battery-limit__seam-t" aria-hidden="true">'+tx(b.seam)+'</span>':'');
- var inner='<div class="aq-battery-limit">'
-  +'<div class="aq-battery-limit__head">'+H+'</div>'
-  +(SD[0]?'<p class="aq-battery-limit__side is-pkg">'+tx(SD[0])+'</p>':'')
-  +'<ul class="aq-battery-limit__list is-pkg" role="list">'+pk+'</ul>'
-  +(lim>=0?card(R[lim],lim,'limit'):'')
-  +(SD[1]?'<p class="aq-battery-limit__side is-site">'+tx(SD[1])+'</p>':'')
-  +'<ul class="aq-battery-limit__list is-site" role="list">'+st+'</ul></div>';
- return '<section class="aq-section aq-band--split aq-battery-limit-sec">'+seam+'<div class="aq-in">'+wFold(b,R.length,inner,b.fold_noun)+'</div></section>'};
-/* Hover or focus on a card lights its leader and tie-in node */
-(function(){
- function over(ev){var root=ev.target.closest&&ev.target.closest('.aq-battery-limit');if(!root)return;var t=ev.target.closest('.aq-battery-limit__item');
-  [].forEach.call(root.querySelectorAll('.aq-battery-limit__item.is-hot'),function(el){if(el!==t)el.classList.remove('is-hot')});if(t)t.classList.add('is-hot')}
- function out(ev){var root=ev.target.closest&&ev.target.closest('.aq-battery-limit');if(root&&!root.contains(ev.relatedTarget))[].forEach.call(root.querySelectorAll('.is-hot'),function(el){el.classList.remove('is-hot')})}
- document.addEventListener('mouseover',over);document.addEventListener('focusin',over);document.addEventListener('mouseout',out);document.addEventListener('focusout',out);
-})();
 /* Look "binder-spines" -> BinderSpines (design-system/components/BinderSpines): an evidence table (as: "evidence":
    who, what they read, where we answer it) as the QA shelf, one ring binder per inspector standing on it, beside the
    plant they inspect: a large IsoKit drawing of a polypropylene PW package that stands on the shelf's floor line and
@@ -2171,31 +2133,6 @@ if(typeof document!=='undefined'){
  document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;var w=t.closest('.'+K);[].forEach.call(w.querySelectorAll('.'+K+'__in, .'+K+'__out'),function(p){p.classList.toggle('is-hint',p.getAttribute('data-i')===t.getAttribute('data-i'))})});
  document.addEventListener('mouseout',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;[].forEach.call(t.closest('.'+K).querySelectorAll('.is-hint'),function(p){p.classList.remove('is-hint')})})}
 })();
-/* Look "derivation-sheet" -> DerivationSheet (design-system/components/DerivationSheet): a grade table (as: "grades")
-   worked as an engineering derivation on a calculation pad. Each row is a numbered line read left to right like an
-   equation: the process step, an arrow, what sets it, a double arrow, and the typical water as the boxed answer. A
-   "what sets it" cell that opens with a number and its unit ("20.0 endotoxin units per device (USP <161>); tested to
-   USP <85>") is set as the line's hero figure: the number large in Geist Mono Light, the unit beside it, the reference
-   and any rest under it. Lines run from the loosest step to the strictest, as the table orders them.
-   Fields, as the grades table: cols [step, typical water, what sets it], rows, intro. Concept: sys-pw.0 (numbers as
-   heroes, stepping type) on a calculation sheet; the pass 9 "measured editorial" spine. */
-(function(){
-var NUM=/^(\d+(?:\.\d+)?)\s+([^(;]+?)\s*(?:\(([^)]+)\))?\s*(?:;\s*(.*))?$/;
-var GRID='<svg class="aq-derivation-sheet__grid" aria-hidden="true" focusable="false"><defs><pattern id="dsgrid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16"/></pattern>'
- +'<pattern id="dsgrid5" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80"/></pattern></defs><rect width="100%" height="100%" fill="url(#dsgrid)"/><rect class="aq-derivation-sheet__g5" width="100%" height="100%" fill="url(#dsgrid5)"/></svg>';
-LOOKS['derivation-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[];
- var lines=R.map(function(r,i){var set=String(r[2]||''),m=set.match(NUM);
-  var lim=m?'<p class="aq-derivation-sheet__v"><span class="aq-derivation-sheet__num">'+tx(m[1])+'</span><span class="aq-derivation-sheet__u">'+tx(m[2])+'</span></p>'
-    +(m[3]||m[4]?'<p class="aq-derivation-sheet__ref">'+[m[3],m[4]].filter(Boolean).map(tx).join('<span aria-hidden="true"> · </span>')+'</p>':'')
-   :'<ul class="aq-derivation-sheet__set">'+set.split(/;\s*/).filter(Boolean).map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>';
-  return '<li class="aq-derivation-sheet__line'+(m?' is-figure':'')+'"><span class="aq-derivation-sheet__no" aria-hidden="true">('+(i+1)+')</span>'
-   +'<div class="aq-derivation-sheet__given"><span class="aq-derivation-sheet__k">'+tx(C[0]||'')+'</span><h3 class="aq-derivation-sheet__t">'+tx(r[0])+'</h3></div>'
-   +'<span class="aq-derivation-sheet__op" aria-hidden="true"><svg viewBox="0 0 48 16" focusable="false"><path d="M2 8H44M37 2L45 8L37 14"/></svg></span>'
-   +'<div class="aq-derivation-sheet__lim"><span class="aq-derivation-sheet__k">'+tx(C[2]||'')+'</span>'+lim+'</div>'
-   +'<span class="aq-derivation-sheet__op is-imp" aria-hidden="true"><svg viewBox="0 0 48 16" focusable="false"><path d="M2 5H42M2 11H42M36 1L46 8L36 15"/></svg></span>'
-   +'<div class="aq-derivation-sheet__ans"><span class="aq-derivation-sheet__k">'+tx(C[1]||'')+'</span><p class="aq-derivation-sheet__w">'+tx(r[1])+'</p><span class="aq-derivation-sheet__box" aria-hidden="true"></span></div></li>'}).join('');
- return sec(H+'<div class="aq-derivation-sheet">'+GRID+'<span class="aq-derivation-sheet__margin" aria-hidden="true"></span><ol class="aq-derivation-sheet__lines">'+lines+'</ol></div>','aq-derivation-sheet-sec')};
-})();
 /* Look "doc-hotspots" -> DocHotspots (design-system/components/DocHotspots): the documents delivered with a system,
    each pinned to the part of the skid it covers. On a navy band the page's equipment drawing (assets/illustrations/
    <page>.webp, painted limestone) stands in the middle; numbered hotspots sit on the parts, and a leader runs from each
@@ -2642,6 +2579,36 @@ document.addEventListener('keydown',function(ev){var r=ev.target.closest&&ev.tar
  var o=[].filter.call(r.parentNode.children,function(x){return x.offsetParent!==null}),i=o.indexOf(r),k=ev.key,j=-1;
  if(k==='ArrowDown')j=Math.min(o.length-1,i+1);else if(k==='ArrowUp')j=Math.max(0,i-1);else if(k==='Home')j=0;else if(k==='End')j=o.length-1;
  if(j>-1){ev.preventDefault();o[j].focus()}});
+})();
+/* Look "grade-mains" -> GradeMains (design-system/components/GradeMains): a grade table (as: "grades") drawn as water
+   mains on a navy blueprint. One horizontal header (main) per water grade runs across the band; every product or
+   process step stands at the top of its own column and drops a line down to the main(s) it takes water from, with a
+   valve at each tap: a filled valve for the minimum grade, an open one for a grade the note allows or asks for. A main
+   we do not supply is drawn dashed. Under each column: the grade as written and the note.
+   Fields, as the grades table: cols, rows [step, grade, note], fold, fold_noun (phones only; desktop shows every column).
+   Added: lanes [{id, t, note, off}] (the mains, top to bottom; off: drawn dashed), taps [["pw", "wfi?"], …] (one list per
+   row: lane ids; "?" marks an alternative, drawn open). Concept 46-concept-grade-lanes. */
+(function(){
+var VALVE='<svg viewBox="0 0 32 22" focusable="false"><path class="aq-grade-mains__vb" d="M3 5 L16 13 L3 21 Z M29 5 L16 13 L29 21 Z"/><path class="aq-grade-mains__vs" d="M16 13 V3 M10 2.5 H22"/></svg>';
+LOOKS['grade-mains']=function(b,H){var R=b.rows||[],L=b.lanes||[],T=b.taps||[],n=R.length,nl=L.length,C=b.cols||[];
+ var li={};L.forEach(function(l,k){li[l.id]=k});
+ var lanes=L.map(function(l,k){return '<p class="aq-grade-mains__lname'+(l.off?' is-off':'')+'" style="--lr:'+(k+2)+';--lc:'+(k+2)+'">'
+   +'<span class="aq-grade-mains__lt">'+tx(l.t)+'</span>'+(l.note?'<span class="aq-grade-mains__ln">'+tx(l.note)+'</span>':'')+'</p>'
+   +'<span class="aq-grade-mains__pipe'+(l.off?' is-off':'')+'" style="--lr:'+(k+2)+';--lc:'+(k+2)+'" aria-hidden="true"><span class="aq-grade-mains__water"></span></span>'}).join('');
+ var forms=R.map(function(r,j){var taps=(T[j]||[]).map(function(t){var alt=/\?$/.test(t),id=t.replace(/\?$/,'');return {k:li[id],alt:alt}}).filter(function(t){return t.k!=null});
+  var deep=taps.reduce(function(a,t){return Math.max(a,t.k)},0);
+  var st='--gc:'+(j+2)+';--deep:'+(deep+1)+';--pr:'+(2+2*j)+';--pf:'+(3+2*j)+';--pd:'+(deep+3);
+  var tp=taps.map(function(t){return '<span class="aq-grade-mains__tap'+(t.alt?' is-alt':'')+'" style="--tr:'+(t.k+2)+';--pc:'+(t.k+2)+'" aria-hidden="true">'+VALVE+'</span>'}).join('');
+  var lab=taps.map(function(t){return L[t.k].t+(t.alt?' (alternative)':'')}).join(', ');
+  return fli('<li class="aq-grade-mains__form" style="'+st+'">'
+   +'<div class="aq-grade-mains__head">'+idx(j)+'<h3 class="aq-grade-mains__t">'+tx(r[0])+'</h3></div>'
+   +'<span class="aq-grade-mains__drop" aria-hidden="true"></span>'+tp
+   +'<div class="aq-grade-mains__foot"><p class="aq-grade-mains__g"><span class="aq-grade-mains__k">'+tx(C[1]||'')+'</span>'+tx(r[1])+'</p>'
+   +(r[2]?'<p class="aq-grade-mains__note">'+tx(r[2])+'</p>':'')+'<span class="aq-grade-mains__sr">'+e(lab)+'</span></div></li>',b,j)}).join('');
+ var cap='<p class="aq-grade-mains__cap" aria-hidden="true"><span>Aquemi</span><span>'+e(b.nav||'')+'</span><span>'+e(wCount(b,n,''))+'</span></p>';
+ var grid='<div class="aq-grade-mains" style="--n:'+n+';--nl:'+nl+';--fr:'+(nl+2)+';--pspan:'+(2*n)+'">'
+  +'<p class="aq-grade-mains__colh">'+tx(C[0]||'')+'</p>'+lanes+'<ol class="aq-grade-mains__forms">'+forms+'</ol></div>';
+ return sec(H+wFold(b,n,grid,b.fold_noun)+cap,'aq-band--navy aq-grade-mains-sec')};
 })();
 /* Look "grade-switch" -> GradeSwitch (design-system/components/GradeSwitch): a short grade table (as: "grades") set as
    a selector panel on the page ground (the core's alternating surface; the URS line above sits on the sunken ground). Each product is a strip on one plate: its name, a selector with one slot per
@@ -3412,49 +3379,6 @@ LOOKS['manifold-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,
 /* One open at a time: the picked branch opens its route; the water fills the manifold down to it */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-manifold-router__opt');if(!t)return;var w=t.closest('.aq-manifold-router'),O=[].slice.call(w.querySelectorAll('.aq-manifold-router__opt')),k=O.indexOf(t);
  O.forEach(function(o,i){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');o.classList.toggle('is-wet',i<=k);document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});
-/* Look "market-callouts" -> MarketCallouts (design-system/components/MarketCallouts): one machine, several markets.
-   A single PW package (IsoKit: feed riser, cartridge filter, RO rack, EDI stack, panel on a skid, product water out)
-   stands centred on a navy ground, drawn as a solid limestone object; each option is a callout around it, its leader
-   running to the part of the machine its note is about, with a numbered marker on that part.
-   Item fields: t, and either d or the parts of d: scope (opening scope line, usually a [placeholder]), tags (standards,
-   drawn as tags), note (the technical sentence); part: the drawing anchor the leader ends on ("feed", "filter",
-   "ro", "edi", "panel", "outlet"; default by position). Desktop: callouts left, right, left around the machine.
-   Phones: the drawing, cropped to the machine with its numbered markers, then the callouts in order. */
-LOOKS['market-callouts']=(function(){
- var VW=1200,VH=660;
- function scene(){
-  /* drawn in world space, then mirrored so the feed comes down on the right and the product water leaves upper left */
-  var sk=isoPart('skid',0,0,0,1,{w:196,d:76}),ro=isoPart('ro',40,8,9,1,{id:'ro'}),ed=isoPart('edi',162,22,9,1,{id:'edi'}),
-   fi=isoPart('filter',18,52,9,1,{id:'filter'}),pa=isoPart('panel',178,60,9,1,{id:'panel'});
-  var top=[fi.ports.in[0],fi.ports.in[1],150];
-  var feed=isoPipe(isoRoute(top,fi.ports.in,'zxy'),{to:'filter',caps:'start'});
-  var p1=isoPipe(isoRoute(fi.ports.out,ro.ports.in,'zxy'),{to:'ro'});
-  var p2=isoPipe(isoRoute(ro.ports.out,ed.ports.in,'xzy',{via:[[ro.ports.out[0]+8,ro.ports.out[1],ro.ports.out[2]]]}),{to:'edi'});
-  var o=ed.ports.out,end=[o[0]+8,-72,o[2]+56];
-  var p3=isoPipe(isoRoute(o,end,'xzy'),{to:'outlet',flanges:'ends',id:'outlet',caps:'end'});
-  var inner=[p3,sk,ro,ed,feed,fi,p1,p2,pa,isoArrow([top[0],top[1],120],'-z',{size:6}),isoArrow([end[0],-46,end[2]],'-y',{size:6})].join('');
-  var A={feed:[top[0],top[1],130],filter:fi.ports.top,ro:[96,34,9+46],edi:ed.ports.top,panel:pa.ports.top,outlet:[end[0],-58,end[2]]};
-  var bx=isoBounds([[0,0,0],[196,76,0],[0,76,0],[196,0,0],top,end,[40,8,80],[162,22,50]],6),S=Math.min(640/bx.w,600/bx.h),
-   ox=VW/2+(bx.x+bx.w/2)*S,oy=VH/2-(bx.y+bx.h/2)*S;
-  function at(k){var p=isoP(A[k]||A.ro);return [ox-p[0]*S,oy+p[1]*S]}
-  return {g:'<g transform="translate('+ox.toFixed(1)+' '+oy.toFixed(1)+') scale('+(-S).toFixed(3)+' '+S.toFixed(3)+')">'+inner+'</g>',at:at}}
- var SLOTS=[{x:0,y:3,side:'l'},{x:76,y:33,side:'r'},{x:0,y:63,side:'l'},{x:76,y:70,side:'r'}],DEF=['outlet','ro','edi','filter'];
- return function(b,H){var I=b.items||[],sc=scene(),lead='',marks='';
-  var list=I.map(function(it,i){var s=SLOTS[i%SLOTS.length],part=it.part||DEF[i%DEF.length],p=sc.at(part),n=(i<9?'0':'')+(i+1);
-   var ax=s.side==='l'?(s.x+24)*VW/100:s.x*VW/100-12,ay=s.y*VH/100+14,bend=s.side==='l'?Math.max(ax+40,p[0]-60):Math.min(ax-40,p[0]+60);
-   var ld='M'+ax.toFixed(1)+' '+ay.toFixed(1)+'H'+bend.toFixed(1)+'L'+p[0].toFixed(1)+' '+p[1].toFixed(1);
-   lead+='<g class="aq-market-callouts__lead" data-c="'+i+'"><path class="aq-market-callouts__halo" d="'+ld+'"/><path d="'+ld+'"/><circle cx="'+ax.toFixed(1)+'" cy="'+ay.toFixed(1)+'" r="3"/></g>';
-   marks+='<span class="aq-market-callouts__mk" data-c="'+i+'" data-part="'+e(part)+'" style="left:'+(100*p[0]/VW).toFixed(2)+'%;top:'+(100*p[1]/VH).toFixed(2)+'%">'+n+'</span>';
-   var body=it.scope||it.tags||it.note?(it.scope?'<p class="aq-market-callouts__scope">'+tx(it.scope)+'</p>':'')
-     +(it.tags&&it.tags.length?'<p class="aq-tags aq-market-callouts__tags">'+it.tags.map(function(t){return '<span class="aq-tag">'+tx(t)+'</span>'}).join('')+'</p>':'')
-     +(it.note?'<p class="aq-market-callouts__note">'+tx(it.note)+'</p>':''):(it.d?'<p class="aq-market-callouts__note">'+tx(it.d)+'</p>':'');
-   return '<li class="aq-market-callouts__c aq-market-callouts__c--'+s.side+'" data-c="'+i+'" style="--x:'+s.x+'%;--y:'+s.y+'%">'
-    +'<h3 class="aq-market-callouts__t"><span class="aq-market-callouts__n" aria-hidden="true">'+n+' /</span> '+tx(it.t)+'</h3>'+body+'</li>'}).join('');
-  var svg=isoSvg(VW,VH,sc.g+'<g class="aq-market-callouts__leads">'+lead+'</g>','aq-iso--limestone aq-market-callouts__svg',{});
-  return sec(H+'<div class="aq-market-callouts"><div class="aq-market-callouts__stage"><div class="aq-market-callouts__plane" aria-hidden="true">'
-   +svg+marks+'</div>'
-   +'<ol class="aq-market-callouts__list">'+list+'</ol></div></div>','aq-band--navy aq-market-callouts-band')}
-})();
 /* Look "marking-match" -> MarkingMatch (design-system/components/MarkingMatch): supplier control as two rules and a
    clean schedule. The block's two standing rules come first as headline-sized facts (a mono label, the rule set large
    and light; a fact may carry a small line glyph: "gate", a pipe run whose water stops at a closed valve). Under them
@@ -3668,6 +3592,26 @@ LOOKS['ncr-tiles']=(function(){
      +'<span><span class="aq-ncr-tiles__hk">Hold</span> · Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span></p>':'')+'</li>'});
   if(dr)tiles.splice(2,0,'<li class="aq-ncr-tiles__tile is-figure" style="--o:'+(ds*2+1)+'" aria-hidden="true">'+drawing(dr,I[ds].t,nn(ds))+'</li>');
   return sec(H+'<ol class="aq-ncr-tiles" role="list">'+tiles.join('')+'</ol>','aq-ncr-tiles-sec')}})();
+/* Look "numeral-index" -> NumeralIndex (design-system/components/NumeralIndex): a router table (as: "router") set as a
+   Swiss index of situations. Each row opens with a huge light outline numeral, the situation in large light type with
+   what you need under a hairline, and the start page as a square go-cell (page icon, label, arrow) at the right. The
+   rules draw across, the numerals fill with flow on hover or focus.
+   Fields, as the router: cols (situation, what you need, start with), rows [situation, need, {t, link, intent}].
+   A row with more than three cells shows the middle ones as further "need" lines. Design system: components/NumeralIndex. */
+(function(){
+LOOKS['numeral-index']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ function lk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c:null}
+ var rows=R.map(function(r,i){var last=r[r.length-1],go=lk(last),mid=r.slice(1,r.length-1);
+  var need=mid.map(function(c,j){return '<p class="aq-numeral-index__need"><span class="aq-numeral-index__k">'+tx(C[j+1]||'')+'</span>'+tcell(c)+'</p>'}).join('');
+  var cell=go?'<a class="aq-numeral-index__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'>'
+    +'<span class="aq-numeral-index__k">'+tx(C[r.length-1]||'')+'</span>'+(pageIcon(go.link)?wIcon(pageIcon(go.link),'aq-numeral-index__ic'):'')
+    +'<span class="aq-numeral-index__to">'+tx(go.t)+'</span><span class="aq-numeral-index__arrow" aria-hidden="true"></span></a>'
+   :'<p class="aq-numeral-index__go is-flat"><span class="aq-numeral-index__k">'+tx(C[r.length-1]||'')+'</span><span class="aq-numeral-index__to">'+tcell(last)+'</span></p>';
+  return '<li class="aq-numeral-index__row"><span class="aq-numeral-index__rule" aria-hidden="true"></span>'
+   +'<span class="aq-numeral-index__n" aria-hidden="true"><span>'+(i<9?'0':'')+(i+1)+'</span></span>'
+   +'<div class="aq-numeral-index__body"><h3 class="aq-numeral-index__t">'+tx(r[0])+'</h3>'+need+'</div>'+cell+'</li>'}).join('');
+ return sec(H+'<ol class="aq-numeral-index">'+rows+'</ol>','aq-numeral-index-sec')};
+})();
 /* Look "option-checker" -> OptionChecker (design-system/components/OptionChecker): an options block as a Swiss grid.
    Left, a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile (two by two) that draws
    the control system the options configure: the panel with its PLC and operator screen, the historian, the DMZ with

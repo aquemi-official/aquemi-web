@@ -65,7 +65,7 @@
   },
   {
    "type": "grid",
-   "h": "Same limits, different evidence by industry",
+   "h": "Same PW limits, different evidence by industry",
    "items": [
     {
      "t": "Pharmaceutical",
@@ -84,6 +84,12 @@
      "d": "The stricter of USP and Ph. Eur. on each attribute; records any client auditor follows.",
      "tag": "USP · Ph. Eur.",
      "link": "ind-cdmo"
+    },
+    {
+     "t": "Natural health products",
+     "d": "Potable water at minimum; Purified Water where your specification or a monograph calls for it.",
+     "tag": "GUI-0158",
+     "link": "ind-pharma#nhp"
     }
    ],
    "ground": "light",
@@ -150,6 +156,7 @@
   {
    "type": "table",
    "as": "router",
+   "anchor": "start",
    "h": "Start from where your project is",
    "cols": [
     "Your situation",
@@ -209,7 +216,7 @@
      "What to change, or the observation",
      "Options with their downtime and the requalification each triggers",
      {
-      "t": "Request a system assessment",
+      "t": "Upgrades and water observations",
       "link": "svc-upgrades"
      }
     ],
@@ -233,9 +240,8 @@
     {
      "q": "You are smaller than the global manufacturers. Why take the risk?",
      "a": "We are a new company, so judge us on checks, not size. Today, talk to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits].",
-     "link": "contact-proposal",
-     "link_label": "Talk to an engineer",
-     "intent": "Not sure yet: talk to an engineer"
+     "link": "projects",
+     "link_label": "See what you can check"
     },
     {
      "q": "Do you supply WFI or pure steam?",
@@ -283,6 +289,7 @@
   "Sanitization method for the PP tank and loop ([PP loop sanitization method]; FD-14); any temperature wording follows DR-013",
   "\"Record each joint\" (How a project runs) repeats svc-fabrication's joint-log practice: it follows that page's FD-18 launch gate, and becomes [PP joint records kept] if the practice is not confirmed",
   "Confirm the standards in the eyebrow against the standards Aquemi designs to routinely",
-  "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)"
+  "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)",
+  "Natural health products tile (Same PW limits, different evidence by industry; DR-017): stays while FD-38 keeps natural health products a launch segment; if FD-38 drops them, remove the tile and the footer item together. Its line keeps the industries grade row's wording (GUI-0158: potable minimum, PW where the specification or a monograph calls for it; DR-017 rule 3)"
  ]
 }

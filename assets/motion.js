@@ -553,54 +553,6 @@ AQmotion.fx('AuditSkid', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
-/* BatteryLimit: the limit is drawn, then each side fills up to it. The battery limit line draws top to bottom and its
-   name decodes; the navy half opens out from the seam to the left; the battery-limit card stamps down on the line;
-   the side labels decode; then the cards come in from their own side in list order, alternating, and each one's leader
-   runs to the seam and its tie-in node seats there. The heading stays with the core. One timeline, once, under 5 s. */
-AQmotion.fx('BatteryLimit', function (root, m) {
-  root.querySelectorAll('.aq-battery-limit-sec').forEach(function (sec) {
-    var el = sec.querySelector('.aq-battery-limit'); if (!el || !m.free(el)) return;
-    var qa = function (s, r) { return [].slice.call((r || sec).querySelectorAll(s)) };
-    var navy = sec.querySelector('.aq-battery-limit__navy'), line = sec.querySelector('.aq-battery-limit__line'), name = sec.querySelector('.aq-battery-limit__seam-t');
-    var limit = el.querySelector('.aq-battery-limit__limit'), sides = qa('.aq-battery-limit__side', el), lists = qa('.aq-battery-limit__list', el);
-    [navy, line, name, limit].concat(sides, lists).forEach(function (x) { if (x) m.claim(x) });
-    var items = qa('.aq-battery-limit__item', el).filter(function (li) { return !li.classList.contains('aq-fold-x') || !m.narrow() });
-    items.sort(function (a, b) { return +a.getAttribute('data-r') - +b.getAttribute('data-r') });
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    if (line && !m.narrow()) tl.fromTo(line, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.4, ease: 'power2.inOut', clearProps: 'clipPath' }, 0);
-    if (name && !m.narrow()) tl.call(function () { m.scramble(name, 0) }, null, 0.2);
-    if (navy && !m.narrow()) tl.from(navy, { scaleX: 0.04, transformOrigin: '100% 50%', duration: 1.1, ease: 'power3.inOut', clearProps: 'transform' }, 0.05);
-    if (limit) tl.from(limit, { y: -18, scale: 1.04, autoAlpha: 0, duration: 0.55, ease: 'back.out(1.8)', clearProps: 'transform,opacity,visibility' }, 0.55);
-    sides.forEach(function (s, i) { tl.from(s, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 0.8 + i * 0.1); tl.call(function () { m.scramble(s, 0) }, null, 0.8 + i * 0.1) });
-    items.forEach(function (li, i) {
-      var site = !!li.closest('.is-site'), at = 0.95 + i * 0.16, card = li.querySelector('.aq-battery-limit__card');
-      tl.from(card, { x: site ? 36 : -36, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at);
-      tl.from(li.querySelector('.aq-battery-limit__lead'), { scaleX: 0, duration: 0.45, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.35);
-      tl.from(li.querySelector('.aq-battery-limit__node'), { scale: 0, rotation: 0, duration: 0.35, ease: 'back.out(3)', clearProps: 'transform' }, at + 0.7);
-    });
-    m.on(sec, function () { tl.play() }, 'top 70%');
-
-    // Ported from Subframe Motion "Border beam" (border-beam), MIT, (c) 2026 Subframe
-    // Pointing at or focusing a connection point sends a small light round its card's edge (offset-path rect() along a
-    // border mask, the library's mechanism) while its leader and tie-in node light: the visitor sees which side of the
-    // battery limit the item sits on and where it ties in. Runs only while the visitor stays (visitor-driven).
-    qa('.aq-battery-limit__item, .aq-battery-limit__limit', el).forEach(function (li) {
-      var card = li.querySelector('.aq-battery-limit__card'); if (!card) return;
-      var beam = document.createElement('span'); beam.className = 'aq-battery-limit__beam'; beam.setAttribute('aria-hidden', 'true');
-      beam.innerHTML = '<span class="aq-battery-limit__light"></span>'; card.appendChild(beam);
-      var light = beam.firstChild, loop = null, site = !!li.closest('.is-site');
-      function on() {
-        if (loop) return;
-        gsap.set(beam, { display: 'block' }); m.tw(gsap.to(beam, { autoAlpha: 1, duration: 0.2, overwrite: true }));
-        // start where the leader leaves the card (right edge for the package, left for the site) and run clockwise
-        loop = m.tw(gsap.fromTo(light, { offsetDistance: site ? '75%' : '25%' }, { offsetDistance: site ? '175%' : '125%', duration: 2.6, ease: 'none', repeat: -1 }));
-      }
-      function off() { if (loop) { loop.kill(); loop = null } m.tw(gsap.to(beam, { autoAlpha: 0, duration: 0.13, overwrite: true, onComplete: function () { if (!loop) gsap.set(beam, { display: 'none' }) } })) }
-      li.addEventListener('pointerenter', on); li.addEventListener('pointerleave', off);
-      li.addEventListener('focusin', on); li.addEventListener('focusout', function (ev) { if (!li.contains(ev.relatedTarget)) off() });
-    });
-  });
-});
 /* BinderSpines: the plant is drawn first (IsoKit's choreography: parts back to front, pipes along the route, the water
    once round the loop), the shelf runs out from the left, then the binders are filed onto it one by one, each sliding
    down into its place and settling; its paper label prints in, the clause decodes, the reading and the answer follow.
@@ -1487,38 +1439,6 @@ AQmotion.fx('DecisionValve', function (root, m) {
       var r = m.tw(gsap.timeline());
       if (a) r.fromTo(a, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.4, ease: 'power1.in', clearProps: 'strokeDasharray,strokeDashoffset' }, 0);
       if (b) r.fromTo(b, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.4, ease: 'power1.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.35);
-    });
-  });
-});
-/* DerivationSheet: the derivation is written out line by line, as on the pad. The margin rule draws down; on each line
-   the number is set, the step writes in from the left, the arrow draws, the limit appears (a hero figure rolls up to
-   its value on odometer wheels, sliding-number via m.count), the double arrow draws and the answer is boxed: the frame traces round it, then the underline. One
-   timeline, once on scroll-in, under 5 s; nothing under reduced motion, and the sheet is complete without script. */
-AQmotion.fx('DerivationSheet', function (root, m) {
-  root.querySelectorAll('.aq-derivation-sheet').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), draw = !!window.DrawSVGPlugin;
-    tl.from(el.querySelector('.aq-derivation-sheet__margin'), { scaleY: 0, duration: 1.2, ease: 'power2.inOut', clearProps: 'transform' }, 0);
-    var lines = el.querySelectorAll('.aq-derivation-sheet__line');
-    lines.forEach(function (ln, i) {
-      var at = 0.2 + i * 0.85, ops = ln.querySelectorAll('.aq-derivation-sheet__op path'), num = ln.querySelector('.aq-derivation-sheet__num');
-      tl.from(ln.querySelector('.aq-derivation-sheet__no'), { autoAlpha: 0, x: -6, duration: 0.3, clearProps: 'transform,opacity,visibility' }, at);
-      tl.fromTo(ln.querySelector('.aq-derivation-sheet__given'), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.6, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 0.05);
-      if (draw && ops[0]) tl.fromTo(ln.querySelectorAll('.aq-derivation-sheet__op:not(.is-imp) path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.35, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.45);
-      tl.from(ln.querySelector('.aq-derivation-sheet__lim'), { autoAlpha: 0, y: 8, duration: 0.45, clearProps: 'transform,opacity,visibility' }, at + 0.6);
-      if (num) tl.call(function () { m.count(num, { now: true, duration: 1.1 }) }, null, at + 0.6);
-      if (draw) tl.fromTo(ln.querySelectorAll('.aq-derivation-sheet__op.is-imp path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.35, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.9);
-      tl.from(ln.querySelector('.aq-derivation-sheet__w'), { autoAlpha: 0, x: -8, duration: 0.4, clearProps: 'transform,opacity,visibility' }, at + 1.0);
-      tl.fromTo(ln.querySelector('.aq-derivation-sheet__box'), { clipPath: 'polygon(0 0, 0 0, 0 0, 0 0)' }, { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 1.1);
-    });
-    m.on(el, function () { tl.play() }, 'top 75%');
-    /* Pointing at a line re-runs its working: the arrow, then the implication, draw again (0.2 s each), the answer box
-       turns flow (CSS). Visitor-driven, so it may repeat; ignored while the entrance is still writing. */
-    if (draw) lines.forEach(function (ln) {
-      ln.addEventListener('pointerenter', function (ev) {
-        if (ev.pointerType !== 'mouse' || tl.isActive()) return;
-        m.tw(gsap.fromTo(ln.querySelectorAll('.aq-derivation-sheet__op path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.2, stagger: 0.12, ease: 'power2.out', overwrite: true, clearProps: 'strokeDasharray,strokeDashoffset' }));
-      });
     });
   });
 });
@@ -2705,6 +2625,30 @@ AQmotion.fx('GradeLanes', function (root, m) {
         if (alt.length) tl.to(alt, { autoAlpha: 1, scale: 1, duration: 0.35, ease: 'power2.out', stagger: 0.05, clearProps: 'opacity,visibility,scale' }, t + 0.6);
       });
     }, 'top 75%');
+  });
+});
+/* GradeMains: the mains are laid first (each twin-wall pipe runs out from the left, the dashed one last), the steps set
+   in across the top, then every column drops its line down to its main and the valves seat with a small overshoot,
+   column by column. Last, the water runs along each supplied main once, and the grades and notes read in under the
+   columns. One timeline, once on scroll-in, under 4.5 s. Folded columns (phones) are left alone. */
+AQmotion.fx('GradeMains', function (root, m) {
+  root.querySelectorAll('.aq-grade-mains').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var vis = function (s) { return [].filter.call(el.querySelectorAll(s), function (x) { return x.offsetParent !== null || getComputedStyle(x).position === 'fixed' }) };
+    var nar = m.narrow(), tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var pipes = vis('.aq-grade-mains__pipe');
+    tl.from(vis('.aq-grade-mains__lname'), { x: nar ? 0 : -16, y: nar ? 10 : 0, autoAlpha: 0, duration: 0.5, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, 0);
+    tl.from(pipes, nar ? { scaleY: 0, duration: 1, stagger: 0.12, ease: 'power2.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 1, stagger: 0.12, ease: 'power2.inOut', clearProps: 'transform' }, 0.05);
+    var forms = [].filter.call(el.querySelectorAll('.aq-grade-mains__form'), function (f) { var h = f.querySelector('.aq-grade-mains__head'); return h && h.offsetParent !== null });
+    forms.forEach(function (f, i) {
+      var at = 0.5 + i * (nar ? 0.12 : 0.09);
+      tl.from(f.querySelector('.aq-grade-mains__head'), { y: 14, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at);
+      tl.from(f.querySelector('.aq-grade-mains__drop'), nar ? { scaleX: 0, duration: 0.5, ease: 'power2.inOut', clearProps: 'transform' } : { scaleY: 0, duration: 0.55, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.2);
+      tl.from(f.querySelectorAll('.aq-grade-mains__tap svg'), { scale: 0, duration: 0.45, stagger: 0.08, ease: 'back.out(2.2)', clearProps: 'transform' }, at + 0.55);
+      tl.from(f.querySelector('.aq-grade-mains__foot'), { y: 10, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.7);
+    });
+    tl.from(vis('.aq-grade-mains__water'), nar ? { scaleY: 0, duration: 1.2, stagger: 0.1, ease: 'power1.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 1.2, stagger: 0.1, ease: 'power1.inOut', clearProps: 'transform' }, 1.4);
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* GradeSwitch: the plate is screwed down (the screws turn a quarter), the strips wipe in one by one, and on each strip
@@ -3950,76 +3894,6 @@ AQmotion.fx('ManifoldRouter', function (root, m) {
     });
   });
 });
-/* MarketCallouts: the machine is built, the water runs through it once, then each market is called off the part it
-   is about. The skid and equipment draw back to front and settle solid (IsoKit
-   timeline); the water drops down the feed riser and runs the route, lighting each stage as it arrives. Then, per
-   callout in turn, the marker pops on its part (the part lights), the leader draws from the part out to the callout
-   and the callout's lines follow the line in. The callouts start as the water reaches the RO; parts settle back at the end; about 4 s.
-   Hover or focus inside a callout lights its part, marker and leader (a reading aid; the numbers carry the same link). */
-AQmotion.fx('MarketCallouts', function (root, m) {
-  root.querySelectorAll('.aq-market-callouts').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var q = function (s, c) { return (c || el).querySelector(s) }, qa = function (s, c) { return [].slice.call((c || el).querySelectorAll(s)) };
-    var svg = q('svg.aq-iso'), D = window.DrawSVGPlugin, narrow = m.narrow(), A = window.AQiso;
-    var tl = A && svg ? A.timeline(svg, m, { draw: 1.1, pipe: 0.6, flow: 1.2, stagger: 0.06 }) : null;
-    if (!tl) { tl = m.tw(gsap.timeline({ paused: true })); if (svg) tl.from(svg, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, 0) }
-    var t0 = tl.labels && tl.labels.flow != null ? tl.labels.flow + 0.2 : 1.6;
-    qa('.aq-market-callouts__c').forEach(function (c, i) {
-      var id = c.getAttribute('data-c'), mk = q('.aq-market-callouts__mk[data-c="' + id + '"]'), ld = q('.aq-market-callouts__lead[data-c="' + id + '"]');
-      var part = mk && mk.getAttribute('data-part'), at = t0 + i * 0.4;
-      if (mk) tl.from(mk, { scale: 0, duration: 0.4, ease: 'back.out(2.6)', clearProps: 'transform' }, at);
-      if (part && A) tl.call(function () { A.light(svg, part, true) }, null, at);
-      var path = ld && [].slice.call(ld.querySelectorAll('path')), dot = ld && ld.querySelector('circle');
-      if (path && path.length && D && !narrow) tl.fromTo(path, { drawSVG: '100% 100%' }, { drawSVG: '0% 100%', duration: 0.55, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.1);
-      else if (path && path.length) tl.from(path, { autoAlpha: 0, duration: 0.3 }, at + 0.1);
-      if (dot) tl.from(dot, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, clearProps: 'transform' }, at + 0.6);
-      var kids = [].slice.call(c.children);
-      tl.from(kids, { x: narrow ? 0 : (c.classList.contains('aq-market-callouts__c--l') ? -16 : 16), y: narrow ? 12 : 0, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + (narrow ? 0.1 : 0.55));
-      if (part && A) tl.call(function () { A.light(svg, part, false) }, null, at + 1.1);
-    });
-    m.on(el, function () { tl.play() }, 'top 75%');
-
-    // Ported from Subframe Motion "Guided inspection" (guided-inspection), MIT, (c) 2026 Subframe
-    // Reading a market's callout puts the machine under an inspection spotlight: the drawing dims round the part that
-    // callout is about and the lit window glides from part to part as the reader moves between callouts (550 ms,
-    // cubic-bezier(.22,.75,.22,1), the library's camera values; no zoom, so the leaders stay on their parts).
-    // Pointer or keyboard focus; leaving the callouts lifts the spotlight. Wide screens only.
-    var plane = q('.aq-market-callouts__plane'); if (!plane || narrow || !svg || !A) return;
-    var dim = document.createElement('span'); dim.className = 'aq-market-callouts__dim'; dim.setAttribute('aria-hidden', 'true');
-    dim.innerHTML = '<span class="aq-market-callouts__spot"></span>'; plane.appendChild(dim);
-    var spot = dim.firstChild, gEase = window.CustomEase ? (CustomEase.get('aq-inspect') || CustomEase.create('aq-inspect', 'M0,0 C0.22,0.75 0.22,1 1,1')) : 'power3.out', on = false, cur = null;
-    function look(id) {
-      if (id === cur) return; cur = id;
-      var mk = id != null && q('.aq-market-callouts__mk[data-c="' + id + '"]'), part = mk && mk.getAttribute('data-part');
-      var els = part ? qa('[data-iso-id="' + part + '"]', svg) : [];
-      if (!els.length || tl.isActive()) { on = false; m.tw(gsap.to(dim, { autoAlpha: 0, duration: 0.2, overwrite: 'auto', onComplete: function () { if (!on) gsap.set(dim, { display: 'none' }) } })); return }
-      var pr = plane.getBoundingClientRect(), r = null;
-      els.concat(mk ? [mk] : []).forEach(function (e) { var b = e.getBoundingClientRect(); if (!b.width && !b.height) return; r = r ? { l: Math.min(r.l, b.left), t: Math.min(r.t, b.top), r: Math.max(r.r, b.right), b: Math.max(r.b, b.bottom) } : { l: b.left, t: b.top, r: b.right, b: b.bottom } });
-      if (!r) return;
-      var pad = 14, box = { left: r.l - pr.left - pad, top: r.t - pr.top - pad, width: r.r - r.l + 2 * pad, height: r.b - r.t + 2 * pad };
-      if (!on) { gsap.set(spot, box); gsap.set(dim, { display: 'block' }); m.tw(gsap.to(dim, { autoAlpha: 1, duration: 0.3, overwrite: 'auto' })); on = true }
-      else m.tw(gsap.to(spot, Object.assign({ duration: 0.55, ease: gEase, overwrite: 'auto' }, box)));
-    }
-    qa('.aq-market-callouts__c').forEach(function (c) {
-      var id = c.getAttribute('data-c');
-      c.addEventListener('pointerenter', function () { look(id) }); c.addEventListener('focusin', function () { look(id) });
-    });
-    var list = q('.aq-market-callouts__list') || el;
-    qa('.aq-market-callouts__c').forEach(function (c) { c.addEventListener('pointerleave', function (ev) { if (!(ev.relatedTarget && ev.relatedTarget.closest && ev.relatedTarget.closest('.aq-market-callouts__c'))) look(null) }) });
-    el.addEventListener('focusout', function (ev) { if (!el.contains(ev.relatedTarget)) look(null) });
-  });
-});
-/* Hover or focus within a callout: light its part, marker and leader */
-(function () {
-  function set(el, id) {
-    [].forEach.call(el.querySelectorAll('[data-c]'), function (x) { x.classList.toggle('is-on', id != null && x.getAttribute('data-c') === id) });
-    var svg = el.querySelector('svg.aq-iso');
-    if (svg && window.AQiso) [].forEach.call(el.querySelectorAll('.aq-market-callouts__mk'), function (mk) { var p = mk.getAttribute('data-part'); if (p) window.AQiso.light(svg, p, id != null && mk.getAttribute('data-c') === id) });
-  }
-  function over(ev) { var el = ev.target.closest && ev.target.closest('.aq-market-callouts'); if (!el) return; var c = ev.target.closest('.aq-market-callouts__c'); set(el, c ? c.getAttribute('data-c') : null) }
-  document.addEventListener('mouseover', over);
-  document.addEventListener('mouseout', function (ev) { var el = ev.target.closest && ev.target.closest('.aq-market-callouts'); if (el && !el.contains(ev.relatedTarget)) set(el, null) });
-})();
 /* MarkingMatch: the two rules land, the water runs to the closed gate, the schedule is read with a crosshair.
    Ported from Subframe Motion "Chart crosshair" (chart-crosshair), MIT, (c) 2026 Subframe
    (kept: the crosshair snaps to the nearest data point rather than following the raw pointer, its rules move in
@@ -4408,6 +4282,27 @@ AQmotion.fx('NotesRegister', function (root, m) {
       if (fold) tl.to(fold, { autoAlpha: 1, duration: 0.3, clearProps: 'opacity,visibility' }, end);
       if (block && !phone) tl.to(block, { autoAlpha: 1, duration: 0.3, clearProps: 'opacity,visibility' }, end);
     }
+  });
+});
+/* NumeralIndex: the index is ruled and set like type. Each rule draws across from the left, the outline numeral rolls up
+   out of its slot as its digits decode, the situation and its need rise in, and the go-cell wipes open from the left.
+   Rows follow one another down the index. One timeline, once on scroll-in, under 4 s; nothing under reduced motion. */
+AQmotion.fx('NumeralIndex', function (root, m) {
+  root.querySelectorAll('.aq-numeral-index').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var rows = [].slice.call(el.querySelectorAll('.aq-numeral-index__row'));
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    rows.forEach(function (r, i) {
+      var at = i * 0.22, n = r.querySelector('.aq-numeral-index__n > span');
+      tl.from(r.querySelector('.aq-numeral-index__rule'), { scaleX: 0, duration: 0.9, ease: 'power2.inOut', clearProps: 'transform' }, at);
+      if (n) {
+        tl.from(n, { yPercent: 100, duration: 0.9, ease: 'power4.out', clearProps: 'transform' }, at + 0.15);
+        if (window.ScrambleTextPlugin) tl.to(n, { duration: 0.6, scrambleText: { text: n.textContent, chars: '0123456789', speed: 0.6 }, ease: 'none' }, at + 0.15);
+      }
+      tl.from(r.querySelectorAll('.aq-numeral-index__t, .aq-numeral-index__need'), { y: 18, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + 0.25);
+      tl.fromTo(r.querySelector('.aq-numeral-index__go'), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at + 0.35);
+    });
+    m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
 /* OptionChecker: the field opens like shutters, then the blueprint draws and the options follow.
