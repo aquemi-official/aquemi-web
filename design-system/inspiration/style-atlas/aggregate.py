@@ -20,7 +20,7 @@ Method
 3. Families: each image gets one primary style family from FAMILY_RULES (first match wins on its
    style_family / rendering / palette text), with OVERRIDES for the few hybrids where the rule
    picks the secondary trait. Secondary traits stay visible in the per-image tags.
-4. Eras by image number: 01-30 early concepts and drawings, 31-67 later passes, 68-94 pass 9.
+4. Eras by image number: 01-30 early concepts and drawings, 31-67 later passes, 68+ pass 9 and 9b.
 """
 import json
 import re
@@ -47,7 +47,7 @@ CRITIQUE_FIELDS = ["weaknesses", "brand_fit_why"]
 ERAS = [  # (id, label, first, last)
     ("early", "01-30 early concepts and drawings", 1, 30),
     ("later", "31-67 later passes", 31, 67),
-    ("pass9", "68-94 pass 9 varied art directions", 68, 999),
+    ("pass9", "68+ pass 9 and 9b varied art directions", 68, 999),
 ]
 
 # --------------------------------------------------------------------------------- normalising
@@ -225,6 +225,8 @@ CONCEPTS = [
     ("x_glossy", "glossy / photo-real / skeuomorphic props", "anti", r"gloss|photo-real|stock|skeuomorph|consumer|props|literal", C),
     ("x_hype", "hype copy or claims", "anti", r"hype|slogan|seamless|guaranteed|marketing|99\.9|claim", C),
     ("x_cliche", "cliche / generic", "anti", r"clich|generic|saas", C),
+    ("x_plain_table", "plain table on a frame, no visual idea", "anti",
+     r"plain table|table[ -]only|no visual idea|basically a table|just a table|mostly a (plain )?table|only a table", C),
     ("x_invented", "invented figures or fake UI", "anti", r"invented|fake|mislead|mistaken for real|impl(y|ies)|live (monitor|configurator)", C),
 ]
 CONCEPT_BY_ID = {c[0]: c for c in CONCEPTS}
@@ -268,6 +270,17 @@ OVERRIDES = {  # file number -> (family, reason)
     78: ("editorial", "editorial spread first; the glass sculpture is its secondary 3D trait"),
     90: ("swiss_bento", "bento tile layout first; the photo-real render is one tile"),
     69: ("navy_sheet_ui", "ghosted drawing-sheet collage with framed boxes; the '3D-ish' pipe is a small pasted-on detail"),
+    115: ("navy_sheet_ui", "clause table on navy with row leaders into an inset skid drawing; not a pipe route"),
+    118: ("swiss_bento", "navy/limestone split with stage cards first; the isometric plant is one half"),
+    124: ("photo_tactile", "macro direction drawn as one large dimensioned fusion-joint line drawing; macro plate beside steps"),
+    146: ("navy_sheet_ui", "navy zone-bordered drawing register; 'register' in its name is not a limestone sheet"),
+    147: ("navy_sheet_ui", "navy drawing sheet first; the P&ID symbols are fragments inside the table"),
+    154: ("photo_tactile", "macro direction drawn as a line-mesh bead on a navy plate; the macro plate is the figure"),
+    155: ("photo_tactile", "macro direction drawn as an engraved line-hatched bead; macro plate beside a table"),
+    166: ("photo_tactile", "macro direction drawn as a duotone shaded joint; macro plate beside a table"),
+    163: ("limestone_sheet", "isometric drawing on a limestone page beside a list, not a navy route"),
+    175: ("limestone_sheet", "isometric frame on a limestone page beside a table, not a navy route"),
+    182: ("limestone_sheet", "isometric drawing on a limestone page beside a list, not a navy route"),
 }
 
 

@@ -12,6 +12,7 @@
 //                   Then capture with the computer tool: zoom region [0,0,w*0.6125,h*0.6125], save_to_disk:true,
 //                   scale:1 (0.6125 = screenshot px per CSS px on a 2560 px wide window; check innerWidth).
 //   ovx()           remove the overlay.
+//   await nw(mid)   (current interface) type PRE+mid+SUF into a new chat's box and press Send; see SKILL.md stage 3.
 (function () {
   window.PRE = window.PRE || '';
   window.SUF = window.SUF || '';
@@ -58,7 +59,20 @@
     }
     return 'none';
   };
+  // Gemini's Nov 2026 interface: a saved chat often reloads blank after a generation, so go() can't be relied on.
+  // nw(mid) types PRE+mid+SUF into a NEW chat (navigate to https://gemini.google.com/app first) and presses Send.
+  window.nw = async function (mid) {
+    var t;
+    for (var i = 0; i < 20 && !(t = document.querySelector('rich-textarea .ql-editor')); i++) await new Promise(r => setTimeout(r, 300));
+    if (!t) return 'no box';
+    t.focus(); document.execCommand('insertText', false, PRE + mid + SUF);
+    await new Promise(r => setTimeout(r, 600));
+    var b = document.querySelector('button.send-button, button[aria-label*="Send"]');
+    if (!b) return 'no send';
+    b.click(); return 'sent ' + t.innerText.length;
+  };
   localStorage.p9 = 'window.PRE=' + JSON.stringify(PRE) + ';window.SUF=' + JSON.stringify(SUF) + ';window.go=' + go.toString() +
-    ';window.st=' + st.toString() + ';window.ov=' + ov.toString() + ';window.ovx=' + ovx.toString() + ';window.cap=' + cap.toString() + ';1';
+    ';window.st=' + st.toString() + ';window.ov=' + ov.toString() + ';window.ovx=' + ovx.toString() + ';window.cap=' + cap.toString() +
+    ';window.nw=' + nw.toString() + ';1';
   return 'helpers ready (' + localStorage.p9.length + ' chars stored)';
 })();

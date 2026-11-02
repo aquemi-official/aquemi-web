@@ -1,0 +1,114 @@
+{
+ "file": "132-p9b-svc-cq-1.png",
+ "prompted_for": "'Who writes, who reviews' (svc-cq); art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules; concept: responsibility table on a navy drawing sheet with zone border and an AQ-CQ-001 title block",
+ "section_kind": "spec/limits",
+ "style_family": "navy drawing sheet table",
+ "art_direction": [
+  "engineering drawing sheet",
+  "zone-reference border with numbers and letters",
+  "title block bottom right",
+  "monospace table on navy",
+  "hairline rules"
+ ],
+ "composition": [
+  "full navy sheet framed by a thin border with zone ticks 1-4 across and A-C down",
+  "two small wordmarks along the top inside the border",
+  "very large light headline, then a smaller light subhead and a short note on one line",
+  "a four-column table (number, document, written by, reviewed by) with seven ruled rows filling the middle",
+  "small drawing title block with document code in the bottom-right corner"
+ ],
+ "layout_devices": [
+  "zone-reference border with tick marks and grid letters/numbers",
+  "title block with mono fields and AQ-CQ-001 code",
+  "row numbers 01 to 07 in a narrow first column",
+  "steel-blue hairline header rule and vertical column rules",
+  "bracketed placeholder inside a cell"
+ ],
+ "palette": [
+  "deep navy sheet ground",
+  "off-white text",
+  "steel-blue hairline rules and border",
+  "faint grey title-block lines"
+ ],
+ "typography": [
+  "very large light-weight sans headline in sentence case",
+  "light sans subhead",
+  "monospace for every table cell and row number",
+  "tiny mono title-block labels",
+  "small sans zone numerals in the border"
+ ],
+ "rendering": [
+  "flat vector",
+  "no image, no shadows"
+ ],
+ "line_and_texture": [
+  "hairline border and table rules",
+  "tick marks at zone divisions",
+  "flat fills, square corners"
+ ],
+ "motifs": [
+  "drawing sheet border",
+  "title block",
+  "document code",
+  "numbered rows"
+ ],
+ "ui_patterns": [
+  "responsibility (RACI-like) table",
+  "numbered data table"
+ ],
+ "motion_implied": [
+  "border and zone ticks draw in",
+  "rows type in one by one",
+  "title block stamps in last"
+ ],
+ "mood": [
+  "technical",
+  "formal",
+  "calm",
+  "document-like"
+ ],
+ "t2i_keywords": [
+  "engineering drawing sheet on deep navy",
+  "zone-reference border with numbers and letters",
+  "tick marks along sheet border",
+  "drawing title block bottom right",
+  "mono document code in title block",
+  "monospace table text",
+  "steel-blue hairline table rules",
+  "numbered rows 01 to 07",
+  "four-column responsibility table",
+  "very large light-weight sans headline",
+  "light sans subhead with short note",
+  "off-white text on navy",
+  "flat vector, no shadows",
+  "square corners",
+  "blueprint document aesthetic",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "generous margins inside border",
+  "calm formal mood",
+  "technical document styling",
+  "thin vertical column rules",
+  "no imagery",
+  "precise engineering layout",
+  "minimal palette navy and steel blue",
+  "document control feel"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup styled as an engineering drawing sheet on deep navy. A thin steel-blue border with zone-reference ticks numbered across and lettered down frames the sheet. Inside, a very large light-weight sans headline and smaller light subhead, then a numbered monospace table of <CONTENT> with steel-blue hairline header and column rules and off-white text. A small drawing title block with a mono document code sits in the bottom-right corner. Flat, square corners, no shadows, calm and formal.",
+ "signature_idea": "The responsibility table is set as a controlled drawing: zone border, mono cells and a title block carrying the document code.",
+ "strengths": [
+  "zone border and title block give a plain table a strong, on-brand document identity",
+  "mono cells and light headline match the type system",
+  "table is clean, legible and easy to build with tokens",
+  "navy plus steel-blue hairlines is the brand palette"
+ ],
+ "weaknesses": [
+  "beyond the sheet frame it is a plain table, no visual idea inside",
+  "duplicated 'Aquemi' wordmarks along the top",
+  "headline repeats the page name; the section title is demoted to subhead",
+  "title-block fields are tiny and garbled",
+  "all-mono body is dense for seven rows of prose"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy sheet, steel-blue hairlines, light headline, mono cells and square corners fit the brand, but it is mostly a plain table with a duplicated wordmark."
+}

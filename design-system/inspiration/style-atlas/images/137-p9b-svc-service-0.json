@@ -1,0 +1,118 @@
+{
+ "file": "137-p9b-svc-service-0.png",
+ "prompted_for": "'Service plans: response, scope, price' (svc-service); art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing; concept: four plan columns as alternating navy/limestone tiles, huge slash numerals, price/response tiles below",
+ "section_kind": "options",
+ "style_family": "swiss navy limestone tile grid",
+ "art_direction": [
+  "Swiss International Typographic Style",
+  "strict 4x2 modular grid",
+  "alternating navy and limestone tiles",
+  "huge light numerals with slash",
+  "faint blueprint drawing in one tile"
+ ],
+ "composition": [
+  "small sans eyebrow top left, wordmark top right",
+  "large light headline across the top with a one-line definition below",
+  "four plan columns, each split into a numeral/name tile above and a price/response tile below",
+  "columns alternate navy, limestone, navy, limestone; outlined limestone tiles",
+  "a faint steel-blue line drawing of a skid overlaps the right edge of the last column"
+ ],
+ "layout_devices": [
+  "huge slash numerals 01/ to 04/ topping each plan",
+  "plan name and 'Suits /' line under each numeral",
+  "price and term as the lead line in the lower tile, then response and visits",
+  "thin outline on limestone tiles, solid navy tiles",
+  "drawing breaking out of the grid at the right"
+ ],
+ "palette": [
+  "deep navy tiles",
+  "warm limestone page and tiles",
+  "off-white text on navy, navy text on limestone",
+  "faint steel-blue line drawing",
+  "thin grey-blue tile outlines"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "huge light sans numerals with slash",
+  "regular sans plan names and price lines",
+  "small sans notes",
+  "no mono figures"
+ ],
+ "rendering": [
+  "flat vector colour blocks",
+  "pale steel-blue line drawing of a skid, partly transparent",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "thin tile outlines",
+  "fine line drawing",
+  "flat fills, square corners"
+ ],
+ "motifs": [
+  "slash numerals",
+  "plan tiers",
+  "skid line drawing"
+ ],
+ "ui_patterns": [
+  "pricing plan columns",
+  "bento grid of tiles",
+  "tier comparison"
+ ],
+ "motion_implied": [
+  "tiles reveal column by column",
+  "numerals count in",
+  "drawing draws in at the right"
+ ],
+ "mood": [
+  "confident",
+  "ordered",
+  "commercial",
+  "clear"
+ ],
+ "t2i_keywords": [
+  "Swiss International Typographic Style pricing section",
+  "strict modular grid four columns two rows",
+  "alternating deep navy and limestone tiles",
+  "huge light numerals with slash 01/",
+  "plan name under each numeral",
+  "lead price line in lower tile",
+  "thin outline on limestone tiles",
+  "faint steel-blue skid line drawing breaking the grid",
+  "large light-weight sans headline sentence case",
+  "one-line definition under headline",
+  "small sans eyebrow and wordmark",
+  "flat vector, no shadows",
+  "square corners",
+  "bento grid pricing tiers",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "off-white text on navy",
+  "checkerboard rhythm",
+  "high contrast navy and limestone",
+  "poster-like rhythm",
+  "generous tile padding",
+  "confident ordered mood",
+  "tier comparison columns",
+  "minimal steel-blue accent",
+  "regular sans price lines",
+  "outlined limestone tiles",
+  "thin grey-blue tile outlines"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in Swiss International Typographic Style on warm limestone. Top: a small sans eyebrow, a large light-weight sans headline and a one-line definition. Below, a strict grid of four columns by two rows of square-cornered tiles alternating deep navy and outlined limestone. Upper tiles: a huge light numeral with slash and a short name; lower tiles: a lead line and short notes for <CONTENT>. A faint steel-blue line drawing of a skid breaks the grid at the right edge. Flat, no shadows.",
+ "signature_idea": "Service tiers as a Swiss checkerboard of slash-numbered columns, top tile naming the plan, bottom tile pricing it.",
+ "strengths": [
+  "very close to the brand: navy/limestone tiles, light headline and numerals, square corners",
+  "four plans compare at a glance column by column",
+  "clean two-tier tile split separates identity from terms",
+  "maps directly to the Swiss tile grid component"
+ ],
+ "weaknesses": [
+  "skid drawing overlaps text in the last column and looks pasted on",
+  "invented prices, terms and response times would be mistaken for real offers",
+  "no mono for figures; prices set in regular sans",
+  "'Suits /' lines are garbled; 04 repeats 01's note",
+  "four-column dense lower tiles get cramped"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Swiss navy/limestone tiles with huge light slash numerals and a light headline are on-brand, but the drawing collides with text and figures are not mono."
+}

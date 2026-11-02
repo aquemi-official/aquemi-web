@@ -1,0 +1,128 @@
+{
+ "file": "156-p9b-ind-meddevice-1.png",
+ "prompted_for": "'Where rinse water reaches the device' (ind-meddevice); art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag; concept: loop-to-washer line schematic with 3 numbered stations under a navy flow readout (big 12.5 m3/h, ticks, limit tag)",
+ "section_kind": "process diagram",
+ "style_family": "instrument readout over limestone schematic",
+ "art_direction": [
+  "instrument-panel readout",
+  "line schematic on limestone sheet",
+  "numbered station callouts",
+  "oversized light headline",
+  "Swiss-style header bar with cells"
+ ],
+ "composition": [
+  "limestone page with a thin header bar split into cells (wordmark, section label, right-aligned slash-numbered breadcrumb)",
+  "very large light headline across the width, short subhead below at left",
+  "right ~45%: a navy readout panel with a tick scale across its top, a single limit line with an outlined mono limit tag, and an oversized light numeral with mono unit",
+  "below and left: a thin-line schematic of a valve, pump, nozzle and washer chamber, running under the readout panel",
+  "three numbered stations with small-caps titles and short notes placed at left, lower-left and lower-right, linked by leaders"
+ ],
+ "layout_devices": [
+  "header bar divided by vertical hairlines into cells",
+  "slash-numbered breadcrumb 03 /",
+  "navy readout panel with tick scale and limit marker",
+  "outlined mono limit tag",
+  "numbered stations 01 to 03 with dot-terminated leaders",
+  "faint vertical grid lines tying stations to the drawing"
+ ],
+ "palette": [
+  "warm limestone page",
+  "deep navy readout panel",
+  "white numeral and ticks on navy",
+  "navy and grey schematic lines",
+  "navy text",
+  "no extra accent colour"
+ ],
+ "typography": [
+  "oversized light-weight sans headline in sentence case",
+  "very large light sans numeral in the readout",
+  "mono unit, scale numbers and limit tag",
+  "small-caps sans station titles with mono numbers",
+  "small sans body notes",
+  "uppercase sans header labels"
+ ],
+ "rendering": [
+  "flat vector readout panel",
+  "thin-line schematic drawing, no shading",
+  "flat UI"
+ ],
+ "line_and_texture": [
+  "fine tick scale with a longer limit tick",
+  "hairline schematic lines and P&ID-like valve symbol",
+  "dot-terminated leader lines",
+  "hairline header cell dividers",
+  "flat untextured ground"
+ ],
+ "motifs": [
+  "flow readout with tick scale",
+  "limit tag",
+  "valve and pump symbols",
+  "washer chamber",
+  "numbered stations",
+  "loop supply line"
+ ],
+ "ui_patterns": [
+  "big KPI readout",
+  "annotated diagram with numbered notes",
+  "header bar breadcrumb",
+  "headline plus subhead"
+ ],
+ "motion_implied": [
+  "numeral counts up to the value",
+  "needle tick slides along the scale toward the limit",
+  "schematic lines draw from the loop to the washer",
+  "station notes fade in one by one"
+ ],
+ "mood": [
+  "precise",
+  "technical",
+  "calm",
+  "confident",
+  "instrumental"
+ ],
+ "t2i_keywords": [
+  "instrument-panel readout",
+  "oversized light numeral with mono unit",
+  "fine tick scale across the top",
+  "single limit line with outlined mono limit tag",
+  "deep navy readout panel",
+  "warm limestone page",
+  "thin-line process schematic",
+  "P&ID valve and pump symbols",
+  "numbered stations 01 02 03",
+  "small-caps station titles",
+  "dot-terminated leader lines",
+  "header bar divided into cells",
+  "slash-numbered breadcrumb",
+  "oversized light-weight sans headline",
+  "short subhead under headline",
+  "mono scale numbers",
+  "navy and white only",
+  "no shading",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "generous whitespace",
+  "faint vertical grid lines",
+  "calm instrumental mood",
+  "engineering dashboard meets editorial page",
+  "diagram running under the readout"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone background. A thin header bar split into cells by hairlines, then an oversized light-weight navy sans headline and a short subhead. Right: a square deep navy readout panel with a fine white tick scale, one limit line with an outlined mono limit tag, and an oversized light numeral with a mono unit. Below, a thin-line navy process schematic with valve and pump symbols, and three numbered stations with small-caps titles and short notes for <CONTENT> on dot leaders. Flat, no shading.",
+ "signature_idea": "One big flow readout with its limit tag sits over a line schematic, so the number and the place it is measured read together.",
+ "strengths": [
+  "readout device is clean, on-brand and buildable",
+  "light numeral plus mono unit and limit tag match the brand",
+  "schematic and numbered stations explain a real flow",
+  "strict navy and limestone, square corners, lots of space"
+ ],
+ "weaknesses": [
+  "tick scale numbers run backwards and do not match the value or limit",
+  "schematic is loose and partly meaningless; lines do not connect cleanly",
+  "invented flow and limit figures read as real",
+  "no steel-blue accent to mark the limit",
+  "readout overlaps the schematic awkwardly"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy readout, light numeral with mono unit, hairline schematic, limestone space and square corners are the brand book closely."
+}

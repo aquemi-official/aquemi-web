@@ -1,0 +1,125 @@
+{
+ "file": "167-p9b-cmp-documentation-2.png",
+ "prompted_for": "'How each document reaches your file' (cmp-documentation); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: five numbered document-lifecycle steps with leader lines into a white soft-3D RO skid",
+ "section_kind": "steps/timeline",
+ "style_family": "white soft-3D skid callouts",
+ "art_direction": [
+  "matte white polypropylene skid in soft 3D isometric render",
+  "even studio light",
+  "translucent pale-blue water",
+  "hairline leader lines from text to object",
+  "numbered steps beside product render"
+ ],
+ "composition": [
+  "off-white limestone page with a thin navy bar along the top edge",
+  "small mono eyebrow and a two-line light navy headline top-left",
+  "long hairline rule under the headline running across the page",
+  "left ~45%: five numbered steps stacked vertically",
+  "right ~55%: a large white isometric RO skid with frame, membrane housings, tanks and a control box, cropped by the bottom-right",
+  "each step joined to a point on the skid by an elbowed hairline leader ending in a small square marker"
+ ],
+ "layout_devices": [
+  "mono step numerals 01 to 05 in steel blue",
+  "mono uppercase step titles with a bracketed qualifier",
+  "elbowed leader lines with square end markers",
+  "long horizontal rule under the headline",
+  "render bleeding off the lower right"
+ ],
+ "palette": [
+  "off-white limestone page ground",
+  "matte white skid with pale grey shading",
+  "translucent pale-blue membrane housings",
+  "deep navy headline, text and leader lines",
+  "muted steel-blue step numerals",
+  "thin navy top bar"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "small mono eyebrow",
+  "mono numerals in steel blue",
+  "mono uppercase step titles",
+  "mono body text for every step description"
+ ],
+ "rendering": [
+  "soft 3D render, isometric",
+  "matte white materials with soft ambient occlusion",
+  "translucent pale-blue water in membrane housings",
+  "flat UI text and lines over a clean background"
+ ],
+ "line_and_texture": [
+  "hairline navy leader lines with right-angle elbows",
+  "small square terminal markers",
+  "smooth matte surfaces, no grain",
+  "soft contact shadows under the skid",
+  "square corners"
+ ],
+ "motifs": [
+  "white PP skid frame",
+  "membrane housings with pale-blue water",
+  "white tanks",
+  "control enclosure",
+  "numbered process steps"
+ ],
+ "ui_patterns": [
+  "numbered vertical step list",
+  "annotated product hero",
+  "eyebrow plus headline stack"
+ ],
+ "motion_implied": [
+  "leader lines draw from each step to the skid in order",
+  "skid slowly rotates or settles into place",
+  "highlighted skid part pulses as each step reveals",
+  "water shimmers in the membrane housings"
+ ],
+ "mood": [
+  "clean",
+  "calm",
+  "product-focused",
+  "orderly",
+  "approachable"
+ ],
+ "t2i_keywords": [
+  "matte white polypropylene skid",
+  "soft 3D isometric render",
+  "even soft studio light",
+  "translucent pale-blue water in membrane housings",
+  "white tanks and frame",
+  "off-white limestone background",
+  "numbered vertical step list on the left",
+  "steel-blue mono step numerals 01 to 05",
+  "mono uppercase step titles",
+  "elbowed hairline leader lines to the object",
+  "small square end markers on leader lines",
+  "large light-weight sans-serif headline",
+  "two-line headline in sentence case",
+  "small mono eyebrow",
+  "long hairline rule under headline",
+  "render cropped at bottom right",
+  "soft contact shadows",
+  "clean product hero",
+  "square corners",
+  "navy text on limestone",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm clean mood",
+  "annotated product illustration",
+  "generous white space"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on an off-white limestone ground. Top-left: a small mono eyebrow and a large two-line light-weight navy sans-serif headline, a long hairline rule beneath. Left: five numbered steps stacked vertically, each with a steel-blue mono numeral, a mono uppercase title and short text for <CONTENT>. Right: a large matte white polypropylene skid in soft 3D isometric render under even studio light, with translucent pale-blue water in membrane housings, cropped at the lower right. Elbowed navy hairline leader lines with small square markers join each step to a point on the skid. Calm, clean.",
+ "signature_idea": "Each document step is wired by an elbowed hairline to a part of one white soft-3D skid, so the paperwork visibly attaches to the equipment.",
+ "strengths": [
+  "matte white PP skid with pale-blue water is the clearest picture of the actual offer",
+  "numbered steps with one steel-blue accent are calm and readable",
+  "leader-line device is easy to build and animate",
+  "light headline and limestone ground fit the brand"
+ ],
+ "weaknesses": [
+  "leader lines point to arbitrary parts; document stages have no physical location, so the mapping means nothing",
+  "all step body text is set in mono, too heavy for reading copy",
+  "step titles duplicate themselves with a bracketed restatement",
+  "invented figure (review period in days) reads as a commitment",
+  "skid detail is generic RO equipment with an unclear control box"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone ground, light headline, steel-blue mono numerals and a white PP skid fit, but mono body text and meaningless leader targets weaken the precision."
+}

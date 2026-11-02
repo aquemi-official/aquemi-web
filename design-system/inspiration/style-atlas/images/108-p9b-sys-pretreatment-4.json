@@ -1,0 +1,123 @@
+{
+ "file": "108-p9b-sys-pretreatment-4.png",
+ "prompted_for": "'Documents delivered' (sys-pretreatment); art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints; concept: one double-line steel-blue pipe with valves snakes through five numbered document stops",
+ "section_kind": "documents",
+ "style_family": "navy blueprint pipe route",
+ "art_direction": [
+  "technical blueprint on deep navy",
+  "one continuous double-line pipe route",
+  "P&ID valve symbols",
+  "numbered document stops",
+  "wide panoramic band"
+ ],
+ "composition": [
+  "small mono uppercase eyebrow and large light headline with a period, top left, short two-line intro below",
+  "a wide band where five numbered document stops sit in a row across the width",
+  "one double-line steel-blue pipe enters from the left edge, dips under stop 01, climbs at 02, runs up and over 03, loops in a rectangle around 04 and ends at 05",
+  "valve symbols sit on the pipe at each bend or junction",
+  "lots of empty navy above and below the route"
+ ],
+ "layout_devices": [
+  "large mono numerals 01-05 heading each stop",
+  "light sans document title under each numeral",
+  "two-line mono uppercase detail under each title",
+  "pipe route weaving between text blocks as the connector",
+  "inline gate and control valve symbols with handwheels",
+  "pipe stub entering from the left edge as the source"
+ ],
+ "palette": [
+  "deep navy ground",
+  "steel-blue double-line pipe with pale blue-white inner line",
+  "off-white headline and titles",
+  "pale grey-blue mono details",
+  "no other colour"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case with period",
+  "small mono uppercase eyebrow",
+  "large mono numerals 01-05",
+  "light sans document titles",
+  "small mono uppercase sub-lines",
+  "small light sans intro"
+ ],
+ "rendering": [
+  "flat vector blueprint line art",
+  "double-line pipe drawn as outlined hairlines",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "double hairline pipe with rounded elbows",
+  "fine P&ID valve glyphs",
+  "flat untextured navy",
+  "consistent stroke weight"
+ ],
+ "motifs": [
+  "continuous pipe route",
+  "gate valves and handwheels",
+  "pipe loop",
+  "numbered stops",
+  "inlet stub"
+ ],
+ "ui_patterns": [
+  "horizontal numbered list",
+  "connector path between items",
+  "eyebrow + headline + intro header"
+ ],
+ "motion_implied": [
+  "pipe draws in from left to right reaching each stop in turn",
+  "valves turn or tick as the line passes",
+  "stops fade up as the route reaches them",
+  "water dash flows along the pipe on loop"
+ ],
+ "mood": [
+  "calm",
+  "technical",
+  "confident",
+  "ordered",
+  "spacious"
+ ],
+ "t2i_keywords": [
+  "deep navy blueprint web section",
+  "one continuous double-line pipe route",
+  "steel-blue outlined pipe with rounded elbows",
+  "P&ID valve symbols at bends",
+  "five numbered stops in a row",
+  "pipe weaving between text blocks",
+  "large mono numerals 01-05",
+  "light sans titles under numerals",
+  "small mono uppercase detail lines",
+  "large light-weight sans headline with period",
+  "small mono uppercase eyebrow",
+  "short light intro paragraph",
+  "pipe enters from left edge",
+  "rectangular pipe loop around one item",
+  "flat vector line art, no shading",
+  "uniform hairline strokes",
+  "generous empty navy space",
+  "off-white and pale blue text",
+  "square layout, no cards",
+  "wide panoramic band",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "process line as list connector",
+  "engineering drawing feel",
+  "calm ordered mood"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on deep navy. Top left: a small mono uppercase eyebrow, a large light-weight sans headline and a short light intro. Across the width, five stops each with a large mono numeral 01-05, a light sans title and two small mono uppercase lines for <CONTENT>. One continuous double-line steel-blue pipe enters from the left edge and weaves under, over and around the stops with rounded elbows, with fine P&ID valve symbols at the bends. Flat blueprint line art, no shading, no cards, generous empty navy.",
+ "signature_idea": "The document list is strung on one pipe: a single steel-blue double line with valves threads past every numbered deliverable.",
+ "strengths": [
+  "one clear visual idea that turns a plain list into a process line",
+  "very close to brand: navy, one steel-blue accent, light headline, mono numerals",
+  "spacious and calm; text is legible",
+  "easy to build as an SVG path behind a five-column grid with a draw-on animation"
+ ],
+ "weaknesses": [
+  "pipe route is arbitrary: the bends and loop do not mean anything about the documents",
+  "valves are decorative, not tied to any step",
+  "item 05 says 'PVC part certificates' (wrong material; offer is PP)",
+  "pipe crosses close to text at 02 and 04, tight on smaller widths",
+  "intro copy is generic marketing tone"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy ground, single steel-blue accent pipe, light sans headline, mono numerals and hairline P&ID art match the brand book closely."
+}

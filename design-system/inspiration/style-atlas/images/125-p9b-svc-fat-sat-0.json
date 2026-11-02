@@ -1,0 +1,119 @@
+{
+ "file": "125-p9b-svc-fat-sat-0.png",
+ "prompted_for": "'What FAT proves, what SAT proves' (svc-fat-sat); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: navy headline block cropped by the frame, numbered FAT/SAT comparison rows, a line-drawn loop at right",
+ "section_kind": "spec/limits",
+ "style_family": "editorial oversized type navy block",
+ "art_direction": [
+  "editorial oversized headline in a navy block",
+  "headline touching the left frame edge",
+  "comparison table with hairline rules",
+  "small line-drawn loop figure",
+  "asymmetric layout"
+ ],
+ "composition": [
+  "top-left ~70% x 45%: deep navy block bleeding off the top and left edges, with small label and wordmark over a hairline rule and a huge two-line regular-weight headline whose first letters touch the left edge",
+  "right ~30%: limestone field with a simple navy line drawing of a closed loop with a tank, a filter-like shield shape and a valve",
+  "bottom ~55% left: three-column comparison table with five numbered rows, hairline rules, running off the bottom edge",
+  "loop drawing floats in empty limestone, unconnected to the table"
+ ],
+ "layout_devices": [
+  "navy headline block bleeding off two edges",
+  "headline cropped tight to the frame edge",
+  "mono row numbers 01-05",
+  "bracketed uppercase mono row labels",
+  "two comparison columns (FAT vs SAT)",
+  "hairline row rules",
+  "table running off the bottom edge"
+ ],
+ "palette": [
+  "deep navy headline block",
+  "warm limestone page",
+  "navy hairline loop drawing",
+  "off-white headline on navy",
+  "near-black table text"
+ ],
+ "typography": [
+  "huge regular-weight sans headline, heavier than light",
+  "small sans label and wordmark",
+  "mono for row numbers and bracketed labels",
+  "small regular sans table text",
+  "sans column headers"
+ ],
+ "rendering": [
+  "flat vector colour block",
+  "simple line drawing, no shading",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "hairline table rules",
+  "uniform medium-weight loop line",
+  "flat untextured fills"
+ ],
+ "motifs": [
+  "closed water loop",
+  "valve symbol",
+  "tank",
+  "comparison rows",
+  "bracketed placeholders"
+ ],
+ "ui_patterns": [
+  "two-column comparison table",
+  "oversized headline block"
+ ],
+ "motion_implied": [
+  "headline block wipes in from the left",
+  "table rows reveal top to bottom",
+  "loop line draws around"
+ ],
+ "mood": [
+  "bold",
+  "editorial",
+  "direct",
+  "plain",
+  "confident"
+ ],
+ "t2i_keywords": [
+  "editorial oversized headline",
+  "deep navy headline block bleeding off top and left edges",
+  "huge sans headline touching frame edge",
+  "warm limestone page",
+  "three-column comparison table",
+  "two comparison columns side by side",
+  "mono row numbers 01-05",
+  "bracketed uppercase mono row labels",
+  "hairline row rules",
+  "simple navy line drawing of a closed water loop",
+  "valve and tank symbols",
+  "loop figure in empty space at right",
+  "asymmetric layout",
+  "table running off bottom edge",
+  "small label and wordmark over hairline rule",
+  "flat vector, no shadows",
+  "square corners",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "direct editorial mood",
+  "navy and limestone two-tone",
+  "generous negative space",
+  "hairline header rule",
+  "bracketed mono labels in table",
+  "left-aligned headline in navy block"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup. Top-left: a deep navy block bleeding off the top and left edges, holding a small label over a hairline rule and a huge two-line light-weight sans headline cropped by the left frame edge. Below on warm limestone: a three-column hairline table with mono row numbers and bracketed uppercase mono labels comparing two columns for <CONTENT>, running off the bottom edge. At right, in open limestone space, one simple navy hairline line drawing of a closed water loop with a tank and a valve. Flat, square corners.",
+ "signature_idea": "A headline block cropped by the frame shouts the comparison, then a plain two-column table answers it beside a lone loop drawing.",
+ "strengths": [
+  "huge headline block gives strong editorial entry",
+  "comparison table is clear and readable",
+  "navy/limestone two-tone is on-palette",
+  "mono row numbers and labels fit the system"
+ ],
+ "weaknesses": [
+  "mostly a plain table with a headline, little visual idea",
+  "headline weight is regular, not light, so it reads heavy",
+  "loop drawing is crude and disconnected from the table",
+  "no steel-blue accent",
+  "bracketed labels misuse placeholder brackets for real row names"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette and mono table fit, but the heavy headline, crude loop and plain table make it louder and less precise than the brand."
+}

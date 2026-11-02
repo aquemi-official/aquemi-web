@@ -1,0 +1,121 @@
+{
+ "file": "173-p9b-cmp-quality-2.png",
+ "prompted_for": "'What we require from suppliers' (cmp-quality); art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag; concept: two lead facts (big '12 months' review interval, 'open CAPA stops orders') above a supplier requirements table",
+ "section_kind": "standards",
+ "style_family": "lead-fact instrument readout table",
+ "art_direction": [
+  "instrument-panel readout",
+  "oversized numeral with its unit",
+  "fine tick scale with an outlined limit tag",
+  "two lead facts above a table",
+  "plain limestone page"
+ ],
+ "composition": [
+  "limestone page with a small grey eyebrow and a one-line large light headline",
+  "two lead facts side by side: left a big mono figure with unit and a small note, right a two-line light sans statement with a small hairline glyph",
+  "full-width three-column table with five numbered rows below, header row ruled in navy",
+  "last table cell replaced by a mini readout: large light numeral, mono unit, a tick scale and a small outlined limit tag"
+ ],
+ "layout_devices": [
+  "mono uppercase lead-fact labels with slash numbers 01 / and 02 /",
+  "big mono figure with unit as a lead fact",
+  "large light sans sentence as the second lead fact",
+  "abstract hairline bracket glyph beside the second fact",
+  "numbered table rows with slash",
+  "tick-scale readout with outlined 'MAX' tag inside a table cell"
+ ],
+ "palette": [
+  "warm limestone page ground",
+  "near-black navy headline, figures and text",
+  "steel-blue light numeral and tick scale in the readout",
+  "grey eyebrow and rules",
+  "steel-blue strokes in the glyph"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "big mono figure with unit, medium weight",
+  "large light sans lead statement",
+  "mono uppercase labels and row numbers",
+  "regular sans table cells",
+  "light large numeral plus mono unit in the readout"
+ ],
+ "rendering": [
+  "flat vector page",
+  "hairline tick scale and glyph",
+  "no shading, no image"
+ ],
+ "line_and_texture": [
+  "hairline table rules with a stronger header rule",
+  "fine tick-mark scale",
+  "small outlined tag with square corners",
+  "flat paper, faint grain",
+  "square corners"
+ ],
+ "motifs": [
+  "tick-scale readout",
+  "limit tag",
+  "lead figure with unit",
+  "requirements and verification table"
+ ],
+ "ui_patterns": [
+  "key-fact pair above a table",
+  "three-column requirements table",
+  "inline gauge in a table cell"
+ ],
+ "motion_implied": [
+  "lead figure counts up",
+  "tick scale fills to the value and stops short of the limit tag",
+  "table rows reveal in order"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "factual",
+  "orderly",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "instrument-panel readout",
+  "oversized light numeral with mono unit",
+  "fine tick-mark scale",
+  "small outlined limit tag",
+  "two lead facts above a table",
+  "big mono figure with unit as key fact",
+  "large light sans statement as second fact",
+  "mono uppercase labels with slash numbers 01 /",
+  "warm limestone page ground",
+  "large light-weight sans-serif headline",
+  "headline in sentence case",
+  "small grey eyebrow",
+  "full-width three-column requirements table",
+  "hairline table rules with navy header rule",
+  "numbered rows with slash",
+  "steel-blue readout accent",
+  "flat vector, no shading",
+  "square corners",
+  "near-black navy text",
+  "generous spacing",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm precise mood",
+  "inline gauge inside a table cell",
+  "small hairline glyph beside fact"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone ground. A small grey eyebrow and a large light-weight navy sans-serif headline in sentence case. Below, two lead facts side by side, each with a mono uppercase label and slash number: one a big mono figure with its unit, one a large light sans statement. Under them, a full-width three-column table with hairline rules and numbered rows for <CONTENT>. One cell holds an instrument readout: an oversized light steel-blue numeral, a mono unit, a fine tick scale and a small outlined limit tag. Flat, square corners, calm.",
+ "signature_idea": "Two lead facts, one set as a big mono figure, sit over a requirements table whose last cell turns into a tiny tick-scale readout.",
+ "strengths": [
+  "lead facts above the table give the section a clear point before the detail",
+  "light headline, mono labels and limestone ground fit the brand",
+  "table is readable with generous row spacing",
+  "the readout shows how a limit tag and tick scale could be built at small size"
+ ],
+ "weaknesses": [
+  "mostly a plain table; the readout is crammed into one cell and means nothing there",
+  "readout figures and limit are invented and unrelated to the row",
+  "lead figure is set in medium-weight mono, heavier than the light system",
+  "bracket glyph beside the second fact is decorative",
+  "invented standards and certificate names in the cells must not be read as facts"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, light headline, mono labels, steel-blue readout and square hairlines fit, but it is mostly a plain table with a token readout."
+}

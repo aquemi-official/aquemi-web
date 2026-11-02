@@ -1,0 +1,125 @@
+{
+ "file": "124-p9b-svc-fabrication-3.png",
+ "prompted_for": "'From pipe to turnover' (svc-fabrication); art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it; concept: navy title column, big dimensioned line drawing of one PP butt-fusion joint tagged J-01, five numbered steps with WP marks",
+ "section_kind": "steps/timeline",
+ "style_family": "navy column limestone drawing sheet",
+ "art_direction": [
+  "three-panel split: navy title column, limestone drawing field, steps rail",
+  "large dimensioned line drawing of one butt-fusion joint",
+  "engineering annotation with tags and leader lines",
+  "numbered steps with witness-point marks"
+ ],
+ "composition": [
+  "left ~28%: deep navy column with wordmark, small eyebrow, large light three-line headline and a short lead sentence",
+  "centre ~45%: limestone field with faint construction grid lines; a big diagonal pipe drawn in perspective with a fusion bead band at its middle, crossing from bottom-left off the top-right",
+  "steel-blue lines along the pipe edges highlight the wall",
+  "right ~27%: five stacked step cells divided by hairline rules, each with a huge light numeral, mono code under it, title and short text",
+  "pipe and its edges bleed under the step column"
+ ],
+ "layout_devices": [
+  "huge light numerals 01-05 with small mono codes beneath (PP-24, WP)",
+  "rounded-pill tags J-01 and J-02 with leader lines",
+  "dimension callouts T = 4.5mm with extension ticks",
+  "rotated labels along the bead (WELD ZONE, BEAD WIDTH)",
+  "faint construction grid across the drawing field",
+  "hairline rules between steps"
+ ],
+ "palette": [
+  "deep navy title column",
+  "warm limestone drawing field and step column",
+  "navy hairline linework",
+  "steel-blue highlight lines along the pipe wall",
+  "off-white type on navy"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "light sans lead text",
+  "huge light numerals",
+  "regular sans step titles",
+  "small sans step text",
+  "mono codes, tags and dimension labels"
+ ],
+ "rendering": [
+  "perspective technical line drawing with fine hatching on the bead",
+  "flat colour fields",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "navy hairlines with dense parallel hatching on the bead",
+  "steel-blue thicker edge lines",
+  "dimension extension ticks",
+  "faint construction grid",
+  "flat paper ground"
+ ],
+ "motifs": [
+  "butt-fusion joint",
+  "pipe wall thickness callout",
+  "joint tags",
+  "witness point marks",
+  "numbered steps"
+ ],
+ "ui_patterns": [
+  "numbered step rail",
+  "split title column",
+  "annotated hero drawing"
+ ],
+ "motion_implied": [
+  "pipe draws in along its axis",
+  "bead hatching fills",
+  "tags and dimensions pop in",
+  "steps reveal top to bottom with numerals counting"
+ ],
+ "mood": [
+  "precise",
+  "technical",
+  "calm",
+  "confident",
+  "engineered"
+ ],
+ "t2i_keywords": [
+  "three-panel layout navy title column limestone drawing steps rail",
+  "deep navy left column with light headline",
+  "large technical line drawing of a pipe butt-fusion joint",
+  "diagonal pipe crossing the frame",
+  "fusion bead band with fine hatching",
+  "steel-blue edge highlight lines on pipe wall",
+  "joint tags with leader lines",
+  "dimension callouts wall thickness",
+  "rotated mono labels along the bead",
+  "faint construction grid",
+  "navy hairline linework",
+  "huge light numerals 01-05",
+  "small mono codes under numerals",
+  "witness point marks",
+  "hairline rules between steps",
+  "light-weight sans headline sentence case",
+  "warm limestone drawing field",
+  "flat, no shadows",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "precise engineering mood",
+  "pipe bleeding off frame edges",
+  "one accent colour",
+  "annotated technical illustration",
+  "construction grid lines on paper",
+  "pipe wall edges highlighted in steel blue"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup in three panels. Left: a deep navy column with a small wordmark, eyebrow and a large light-weight sans headline with a short lead. Centre: warm limestone field with a faint construction grid and a large navy hairline line drawing of a polypropylene pipe crossing diagonally, its butt-fusion bead finely hatched, wall edges in steel blue, annotated with mono tags and dimension callouts. Right: five stacked steps divided by hairline rules, each with a huge light numeral and small mono code, for <CONTENT>. Square corners, no shadows.",
+ "signature_idea": "One fusion joint drawn huge and dimensioned sits between the title and the steps, making the joint the hero of a pipe-to-turnover process.",
+ "strengths": [
+  "shows the actual PP butt-fusion joint as a precise drawing",
+  "navy/limestone panels with one steel-blue accent are on-palette",
+  "numerals plus mono codes make steps scannable",
+  "drawing is striking yet calm",
+  "clear buildable three-column structure"
+ ],
+ "weaknesses": [
+  "rounded pill tags break the square-corner rule",
+  "invented standard ISO 13485 and dimensions shown on the drawing",
+  "dense hatching on the bead is heavier than the hairline system",
+  "tags J-01 duplicated and J-02 on the same joint",
+  "steps column is dense with small text"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy and limestone panels, light headline, huge light numerals, mono codes and one steel-blue accent fit; pill tags, heavy hatching and invented standards cost a point."
+}

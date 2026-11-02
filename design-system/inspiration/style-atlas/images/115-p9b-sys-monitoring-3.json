@@ -1,0 +1,125 @@
+{
+ "file": "115-p9b-sys-monitoring-3.png",
+ "prompted_for": "'Data integrity, clause by clause' (sys-monitoring); art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching; concept: clause crosswalk table on navy with leaders from rows into an isometric skid line drawing in a white card",
+ "section_kind": "standards",
+ "style_family": "navy drawing sheet isometric skid",
+ "art_direction": [
+  "deep navy page with a clause crosswalk table",
+  "isometric technical line drawing in a white card",
+  "catalogue illustration",
+  "leader lines from table rows into the drawing",
+  "uniform hairline strokes"
+ ],
+ "composition": [
+  "small breadcrumb and wordmark top left",
+  "large light white headline across the top with a one-line intro under it",
+  "left ~40%: a square off-white card holding an isometric line drawing of a skid with tall vessels, two control cabinets, cartridge housings and a pipe frame",
+  "right ~58%: a five-row, five-column crosswalk table with white hairline grid",
+  "five leaders run from the table's row numbers into points on the cabinets and frame in the card"
+ ],
+ "layout_devices": [
+  "white hairline table grid with full cell borders",
+  "row numerals 01-05 outside the grid acting as leader starts",
+  "elbowed leader lines crossing from navy into the card",
+  "mono cells for clause references",
+  "square drawing card as an inset plate"
+ ],
+ "palette": [
+  "deep navy page",
+  "off-white limestone drawing card",
+  "dark grey line art in the card",
+  "white and pale blue-grey text and grid lines",
+  "no accent colour"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small light sans intro and breadcrumb",
+  "light sans wordmark",
+  "regular sans table headers and requirement names",
+  "mono for clause numbers",
+  "light sans row numerals"
+ ],
+ "rendering": [
+  "isometric technical line drawing, no shading",
+  "flat UI table on navy",
+  "catalogue illustration style"
+ ],
+ "line_and_texture": [
+  "uniform fine strokes in the drawing",
+  "white hairline table grid",
+  "elbowed hairline leaders",
+  "flat untextured fields",
+  "square card corners"
+ ],
+ "motifs": [
+  "isometric skid on a frame",
+  "tall vessels with domed tops",
+  "control cabinets with screens",
+  "cartridge filter housings",
+  "pipe rack",
+  "clause crosswalk"
+ ],
+ "ui_patterns": [
+  "crosswalk / compliance matrix table",
+  "row-to-drawing leader callouts",
+  "inset illustration card",
+  "breadcrumb"
+ ],
+ "motion_implied": [
+  "row hover highlights its leader and target part",
+  "leaders draw from row numbers into the drawing",
+  "drawing lines trace in on scroll",
+  "rows stagger in"
+ ],
+ "mood": [
+  "authoritative",
+  "technical",
+  "precise",
+  "serious",
+  "documentary"
+ ],
+ "t2i_keywords": [
+  "deep navy web section with compliance crosswalk table",
+  "isometric technical line drawing of a water treatment skid",
+  "off-white square inset card holding the drawing",
+  "uniform hairline strokes, no shading, no hatching",
+  "catalogue illustration style",
+  "elbowed hairline leader lines from table rows into the drawing",
+  "row numerals 01-05 as leader starts",
+  "white hairline table grid with full cell borders",
+  "mono clause references",
+  "large light-weight sans headline in white",
+  "one-line light intro under headline",
+  "small breadcrumb and wordmark top left",
+  "tall vessels and control cabinets on a pipe frame",
+  "no gradients, no shadows",
+  "split layout drawing left, table right",
+  "square corners",
+  "flat UI on navy",
+  "pale blue-grey text",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "serious documentary mood",
+  "regulatory matrix",
+  "five-column table",
+  "drawing card as inset plate",
+  "navy and limestone two-tone"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on deep navy. Top left: a small breadcrumb and wordmark, a large light-weight white sans headline and a one-line intro. Left 40%: a square off-white card holding an isometric technical line drawing of white equipment on a frame, uniform hairline strokes, no shading, catalogue style. Right: a five-row table with a white hairline grid and mono reference cells for <CONTENT>. Row numerals 01-05 sit outside the grid and send elbowed hairline leaders into points on the drawing. Square corners, calm.",
+ "signature_idea": "A regulation crosswalk where each clause row reaches across the page with a leader into the skid drawing that implements it.",
+ "strengths": [
+  "leaders from rows into the drawing work and read clearly",
+  "navy page with a limestone drawing plate is on the brand's two-tone",
+  "light white headline and mono clause references fit",
+  "drawing is clean catalogue line art"
+ ],
+ "weaknesses": [
+  "skid drawn looks like stainless tanks and cabinets, not obviously PP",
+  "full-grid table on navy is dense and close to a plain table",
+  "invented clause numbers and retention figures in cells",
+  "no steel-blue accent anywhere",
+  "leader endpoints are arbitrary for abstract requirements like 'validation'"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy and limestone, light headline, mono references and hairline line art fit, but the dense grid table and stainless-looking skid pull it off-offer."
+}

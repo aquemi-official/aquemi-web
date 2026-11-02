@@ -1,0 +1,125 @@
+{
+ "file": "123-p9b-svc-fabrication-2.png",
+ "prompted_for": "'The fabrication dossier' (svc-fabrication); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: huge light headline, dimensioned isometric PP pipe spool, four dossier parts in a split hairline grid",
+ "section_kind": "documents",
+ "style_family": "editorial oversized type limestone",
+ "art_direction": [
+  "editorial magazine spread",
+  "oversized light-weight headline",
+  "isometric dimensioned pipe spool line drawing",
+  "split hairline grid of items",
+  "asymmetric layout"
+ ],
+ "composition": [
+  "limestone page inside a thin navy outer frame",
+  "mono breadcrumb with slashes top-left",
+  "huge two-line light navy headline top-left filling ~55% width, not cropped",
+  "right ~45% upper: isometric drawing of a PP pipe spool with elbows, tees and flanged ends, dimension lines and arrows",
+  "five numbered items in a split grid: 01 and 02 under the headline, 03 bottom-left, 04 and 05 bottom-right, leaving an empty cell bottom-centre",
+  "each item topped by a hairline rule"
+ ],
+ "layout_devices": [
+  "hairline rule above each item",
+  "large light numerals 01-05",
+  "uppercase mono item labels",
+  "split grid with a deliberate gap",
+  "bracketed placeholder in one item",
+  "dimension chains with arrows on the spool",
+  "breadcrumb trail"
+ ],
+ "palette": [
+  "warm limestone ground",
+  "deep navy headline, text and thin outer frame",
+  "navy hairline drawing with pale blue-grey pipe fills",
+  "no strong accent colour"
+ ],
+ "typography": [
+  "huge light-weight sans headline in sentence case",
+  "large light sans numerals",
+  "small uppercase mono labels",
+  "regular sans body",
+  "small mono breadcrumb",
+  "tiny dimension numerals"
+ ],
+ "rendering": [
+  "isometric hairline line drawing with very light tonal fill on pipes",
+  "flat paper ground",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "navy hairlines",
+  "dimension lines with arrowheads",
+  "1px rules above items",
+  "flat untextured ground"
+ ],
+ "motifs": [
+  "isometric pipe spool",
+  "elbows, tees and socket joints",
+  "dimension callouts",
+  "numbered dossier parts",
+  "breadcrumb"
+ ],
+ "ui_patterns": [
+  "numbered feature grid",
+  "breadcrumb",
+  "headline plus illustration hero split"
+ ],
+ "motion_implied": [
+  "headline types in or fades up large",
+  "spool draws in with dimensions following",
+  "items reveal with their rules extending left to right"
+ ],
+ "mood": [
+  "editorial",
+  "calm",
+  "confident",
+  "precise",
+  "airy"
+ ],
+ "t2i_keywords": [
+  "editorial magazine spread",
+  "huge light-weight sans headline",
+  "warm limestone page",
+  "thin navy outer frame",
+  "isometric pipe spool line drawing",
+  "dimension lines with arrowheads",
+  "navy hairline linework",
+  "pale blue-grey tonal fill on pipes",
+  "elbows tees and socket joints",
+  "numbered items with large light numerals",
+  "hairline rule above each item",
+  "uppercase mono item labels",
+  "split grid with deliberate empty cell",
+  "asymmetric layout",
+  "mono breadcrumb with slashes",
+  "generous whitespace",
+  "flat, no shadows",
+  "square corners",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm editorial mood",
+  "navy ink on limestone",
+  "technical illustration as hero figure",
+  "short item descriptions",
+  "breadcrumb trail in mono",
+  "dossier parts as numbered grid"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as an editorial magazine spread on a warm limestone page with a thin navy outer frame. Small mono breadcrumb top-left, then a huge two-line light-weight navy sans headline. At upper right, one isometric hairline drawing of a white polypropylene pipe spool with elbows and tees, dimensioned with arrowed lines. Below, an asymmetric split grid of numbered items, each with a hairline rule above, a large light numeral, an uppercase mono label and a short line, for <CONTENT>. Generous space, flat, square corners.",
+ "signature_idea": "A magazine-scale headline and one dimensioned PP spool frame the dossier as a set of numbered, ruled parts in an asymmetric grid.",
+ "strengths": [
+  "huge light headline gives editorial presence with brand calm",
+  "isometric spool is on-offer PP piping, not generic equipment",
+  "numbered ruled items are simple and buildable",
+  "limestone plus navy ink is on-palette",
+  "lots of space as a material"
+ ],
+ "weaknesses": [
+  "headline is not cropped by the frame as prompted, so less dramatic",
+  "five items, not four, and the grid gap looks accidental",
+  "dimension numbers are random and meaningless",
+  "no steel-blue accent anywhere",
+  "spool includes flange-like collars that read as metal fittings"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Light huge headline, mono labels, navy on limestone, square corners and generous space are exactly the brand; only the missing accent and filler dimensions detract."
+}

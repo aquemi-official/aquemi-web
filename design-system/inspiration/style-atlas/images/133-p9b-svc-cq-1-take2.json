@@ -1,0 +1,112 @@
+{
+ "file": "133-p9b-svc-cq-1-take2.png",
+ "prompted_for": "'Who writes, who reviews' (svc-cq); art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules; concept: responsibility table on a navy drawing sheet with zone border and an AQ-CQ-001 title block",
+ "section_kind": "spec/limits",
+ "style_family": "navy drawing sheet table",
+ "art_direction": [
+  "engineering drawing sheet",
+  "double zone-reference border",
+  "fully boxed monospace table",
+  "tab label on the table",
+  "empty title block"
+ ],
+ "composition": [
+  "navy sheet with an outer zone band (letters and numbers both ways, centring arrows) and an inner frame line",
+  "very large light headline and light subhead top left",
+  "a small outlined tab with the section title sitting on the top-right edge of the table",
+  "a three-column fully gridded table of seven rows filling the lower two thirds",
+  "small empty title block in the bottom-right corner"
+ ],
+ "layout_devices": [
+  "zone-reference band with A-D and 1-5 markers and centring arrows",
+  "outlined tab label attached to table like a folder tab",
+  "fully boxed cells with steel-blue hairlines",
+  "bold mono header row",
+  "empty title block as sheet signature"
+ ],
+ "palette": [
+  "deep navy sheet ground",
+  "off-white text",
+  "steel-blue hairline border, frame and cell rules"
+ ],
+ "typography": [
+  "very large light-weight sans headline in sentence case",
+  "light sans subhead",
+  "monospace table cells, bold mono header",
+  "light sans tab label",
+  "tiny sans zone letters and numerals"
+ ],
+ "rendering": [
+  "flat vector",
+  "no image, no shadows"
+ ],
+ "line_and_texture": [
+  "hairline double border with ticks",
+  "full cell grid in steel-blue hairlines",
+  "flat fills, square corners"
+ ],
+ "motifs": [
+  "drawing sheet border",
+  "centring arrows",
+  "title block",
+  "tabbed table"
+ ],
+ "ui_patterns": [
+  "responsibility table",
+  "tabbed section label"
+ ],
+ "motion_implied": [
+  "border draws around the sheet",
+  "table grid draws then rows fill"
+ ],
+ "mood": [
+  "formal",
+  "technical",
+  "orderly",
+  "plain"
+ ],
+ "t2i_keywords": [
+  "engineering drawing sheet on deep navy",
+  "double border with zone-reference letters and numbers",
+  "centring arrows on sheet edges",
+  "empty title block bottom right",
+  "fully boxed monospace table",
+  "bold mono header row",
+  "steel-blue hairline cell grid",
+  "outlined folder tab label on table",
+  "very large light-weight sans headline",
+  "light sans subhead",
+  "off-white text on navy",
+  "flat vector, no shadows",
+  "square corners",
+  "blueprint document aesthetic",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "three-column table",
+  "calm formal mood",
+  "no imagery",
+  "precise engineering layout",
+  "navy and steel-blue only",
+  "technical document styling",
+  "margins inside sheet frame",
+  "document control feel",
+  "plain grid table"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup styled as an engineering drawing sheet on deep navy. A double steel-blue border carries zone-reference letters and numbers and small centring arrows. Inside, a very large light-weight sans headline and light subhead, then a fully boxed monospace table of <CONTENT> with a bold mono header row and steel-blue hairline cells. A small outlined tab label sits on the table's top-right edge; an empty title block fills the bottom-right corner. Off-white text, flat, square corners, no shadows.",
+ "signature_idea": "The table wears a folder-style tab label inside a zone-bordered drawing sheet, like a sheet pulled from a document set.",
+ "strengths": [
+  "clean, legible table; easy to build",
+  "zone band with centring arrows is a convincing drawing-sheet frame",
+  "palette is strictly navy, off-white and steel-blue",
+  "light headline and mono cells fit the type system"
+ ],
+ "weaknesses": [
+  "plain table only, no visual idea beyond the frame",
+  "title block is empty; no AQ-CQ-001 code as asked",
+  "no row numbers; full boxed grid is heavier than hairline rules",
+  "headline repeats the page name, section title demoted to a tab",
+  "invented responsibility values repeat 'Aquemi' and 'Your validation team' almost everywhere"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "On-palette and square with light headline and mono cells, but it is a plain boxed table that misses the title-block code and numbered rows."
+}

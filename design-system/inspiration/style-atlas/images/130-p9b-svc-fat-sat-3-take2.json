@@ -1,0 +1,121 @@
+{
+ "file": "130-p9b-svc-fat-sat-3-take2.png",
+ "prompted_for": "'How you witness' (svc-fat-sat); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: five witness modes as ruled rows whose leader lines run into a white PP skid in its frame",
+ "section_kind": "options",
+ "style_family": "centred skid render with callouts",
+ "art_direction": [
+  "soft 3D isometric product render",
+  "white skid centred on deep navy",
+  "callout labels around the object",
+  "slide-like presentation layout",
+  "props for remote witnessing (camera, screen, tablet)"
+ ],
+ "composition": [
+  "small sans eyebrow top left, wordmark top right",
+  "large light sans headline across the top left",
+  "centre: an enclosed white skid with clear vessels, a camera on a mast, a video-call monitor and a tablet on a stand",
+  "callouts split left (1, 2) and right (2, 3, 4, 5), each joined to the render by a hairline",
+  "small intro paragraph under the headline and bracketed availability and cost notes bottom left"
+ ],
+ "layout_devices": [
+  "numbered callout labels with bold names and colon",
+  "hairline leader lines from labels to props on the skid",
+  "labels balanced on both sides of a central object",
+  "bracketed placeholder notes as loose text"
+ ],
+ "palette": [
+  "deep navy page ground",
+  "white and pale grey skid panels",
+  "translucent pale-blue and clear vessels and pipes",
+  "off-white text",
+  "small red, amber and green stack-light and red button (off-palette)",
+  "grey electrical boxes"
+ ],
+ "typography": [
+  "very large light sans headline in sentence case",
+  "medium-weight sans callout names with colons",
+  "regular sans body under each callout",
+  "no mono figures",
+  "small sans eyebrow and wordmark"
+ ],
+ "rendering": [
+  "soft 3D render, isometric, even studio light",
+  "glossy clear acrylic-like vessels and pipes",
+  "detailed props: camera, monitor with faces, tablet with signature",
+  "soft shadow under the base"
+ ],
+ "line_and_texture": [
+  "thin white leader lines",
+  "smooth surfaces, light reflections on clear parts",
+  "no ruled rows or grid",
+  "small rounded corners on screens and enclosure"
+ ],
+ "motifs": [
+  "enclosed white skid with access doors",
+  "clear vertical vessels",
+  "CCTV camera on mast",
+  "video-call screen with people",
+  "tablet with e-signature",
+  "stack light"
+ ],
+ "ui_patterns": [
+  "annotated product hero",
+  "callout labels around an object",
+  "slide-style intro block"
+ ],
+ "motion_implied": [
+  "callouts fade in one by one with their leader lines",
+  "camera or screen lights up for the matching mode"
+ ],
+ "mood": [
+  "explanatory",
+  "presentational",
+  "busy",
+  "friendly"
+ ],
+ "t2i_keywords": [
+  "soft 3D isometric render of a white equipment skid",
+  "object centred on deep navy background",
+  "numbered callout labels on both sides",
+  "thin white leader lines to props",
+  "clear translucent vessels and pipes",
+  "camera on mast and video-call monitor props",
+  "tablet with signature on a stand",
+  "very large light-weight sans headline",
+  "medium-weight sans callout names",
+  "even studio light",
+  "soft shadow under base",
+  "presentation slide layout",
+  "small eyebrow and wordmark in corners",
+  "off-white text on navy",
+  "annotated product hero",
+  "1440 px desktop web section",
+  "flat straight-on composition",
+  "explanatory diagram",
+  "balanced left-right labels",
+  "minimal graphic chrome",
+  "no grid, no table",
+  "pale-blue water accents",
+  "white matte panels",
+  "isometric three-quarter view",
+  "generous navy margin"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section on a deep navy background, flat straight-on composition. Top left: a very large light-weight sans headline in sentence case and a short intro line. Centre: one white polypropylene skid in soft 3D isometric render, even studio light, clear pale-blue vessels and pipes, with small props that explain <CONTENT>. Numbered callout labels sit left and right of the object, each with a medium-weight name and a short note, joined by thin white leader lines to the matching part. Off-white text, square corners, calm generous navy margins.",
+ "signature_idea": "Each witness mode is pinned to a physical prop on the skid: a camera for remote, a screen for hybrid, a tablet for the delegate's signature.",
+ "strengths": [
+  "callouts point at things that mean something (camera, screen, tablet)",
+  "navy ground with a white object has strong contrast and presence",
+  "light headline is on-brand",
+  "easy to read at a glance like a product slide"
+ ],
+ "weaknesses": [
+  "'2. Remote' is duplicated and its right-hand note is missing; intro text repeats 'modular modular'",
+  "the prompted ruled rows are gone; loose labels on both sides, no grid",
+  "skid reads as a generic lab cabinet with clear acrylic vessels, electrical boxes and red/amber/green stack light (off-palette)",
+  "no mono figures; callout names in medium-weight sans with colons",
+  "bracketed placeholder notes float bottom left as loose text",
+  "video-call faces and props add clutter"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Navy ground and light headline fit, but garbled duplicated labels, off-palette props, rounded screens and a slide-like loose layout miss the precise, calm brand."
+}

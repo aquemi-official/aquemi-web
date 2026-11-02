@@ -1,0 +1,120 @@
+{
+ "file": "185-p9b-contact-proposal-2.png",
+ "prompted_for": "'What each request returns' (contact-proposal); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: headline cropped off the top-right edge, isometric skid line drawing left, situation / returns / when / cost table with mono turnaround",
+ "section_kind": "options",
+ "style_family": "editorial oversized type table",
+ "art_direction": [
+  "editorial magazine spread",
+  "oversized light-weight headline cropped off the top-right edge",
+  "asymmetric layout",
+  "isometric skid line drawing as the one figure",
+  "hairline-ruled table"
+ ],
+ "composition": [
+  "limestone panel inset in a navy frame",
+  "giant light two-line headline pushed to the upper right, cropped by the top and right edges",
+  "left third: an isometric line drawing of a small skid frame with a tank, cartridge housings, pipes and a control box",
+  "right two-thirds: a four-column table (situation, what comes back, when, cost) with three numbered rows",
+  "vertical and horizontal hairline rules divide the table",
+  "large empty area at top left"
+ ],
+ "layout_devices": [
+  "headline bleeding off the frame top and right",
+  "mono row numbers 01 to 03",
+  "hairline column dividers and row rules",
+  "mono turnaround values with unit abbreviation",
+  "steel-blue text for the free entries",
+  "isolated isometric figure as counterweight"
+ ],
+ "palette": [
+  "warm limestone panel",
+  "deep navy frame, headline and text",
+  "white equipment with navy outlines",
+  "steel-blue pipe accents and highlighted cost text"
+ ],
+ "typography": [
+  "oversized light grotesk headline, cropped",
+  "light sans column headers",
+  "regular sans table text",
+  "mono row numbers, turnaround and cost figures"
+ ],
+ "rendering": [
+  "isometric hairline line drawing with flat white fills and steel-blue pipe accents",
+  "flat UI table",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "uniform navy hairline outlines",
+  "hairline table rules",
+  "flat fills, no grain",
+  "square corners"
+ ],
+ "motifs": [
+  "skid frame with tank and cartridge housings",
+  "pipe runs",
+  "cropped headline",
+  "numbered request rows"
+ ],
+ "ui_patterns": [
+  "comparison table of request types",
+  "numbered rows",
+  "price/turnaround columns"
+ ],
+ "motion_implied": [
+  "headline slides in from the cropped edge",
+  "table rows rule in one by one",
+  "skid drawing traces in"
+ ],
+ "mood": [
+  "confident",
+  "clear",
+  "editorial",
+  "calm",
+  "direct"
+ ],
+ "t2i_keywords": [
+  "editorial oversized type web section",
+  "giant light-weight sans headline cropped off top and right edges",
+  "asymmetric magazine layout",
+  "warm limestone panel in deep navy frame",
+  "four-column table with hairline rules",
+  "mono row numbers",
+  "mono turnaround and cost figures",
+  "steel-blue highlight on one value type",
+  "isometric hairline line drawing of small water skid",
+  "flat white fills, navy outlines",
+  "steel-blue pipe accents",
+  "figure isolated left, table right",
+  "light sans column headers",
+  "square corners",
+  "flat, no shading",
+  "generous empty top-left space",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "confident editorial mood",
+  "minimal palette navy limestone steel blue",
+  "catalogue illustration",
+  "large type as graphic element",
+  "cropped display headline",
+  "hairline column dividers",
+  "situation and returns table",
+  "right-aligned headline"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup: a warm limestone panel inside a deep navy frame. A giant light-weight navy sans headline is pushed to the upper right and cropped by the top and right edges. Left third: an isolated isometric hairline line drawing of a small water skid with flat white fills and steel-blue pipe accents. Right two-thirds: a four-column table with hairline rules, mono row numbers and mono figures in the last two columns, for <CONTENT>. Square corners, flat, no shading, confident editorial balance.",
+ "signature_idea": "An oversized headline breaks out of the top-right corner while a small skid drawing anchors a plain table of what each request returns.",
+ "strengths": [
+  "cropped giant headline gives a plain table an editorial edge",
+  "mono turnaround figures and hairline rules are on-brand",
+  "isometric PP skid drawing is clean and buildable",
+  "steel-blue accent used once for a meaningful highlight"
+ ],
+ "weaknesses": [
+  "below the headline it is a plain table with no visual idea",
+  "headline crop cuts the top line so it reads as an error",
+  "skid drawing is unrelated to the table rows",
+  "invented costs and turnaround figures",
+  "garbled cost entry and abbreviations ('wd')"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy and limestone, light oversized headline, mono figures, one steel-blue accent and square corners fit, but the crop reads as a mistake and the table is plain."
+}

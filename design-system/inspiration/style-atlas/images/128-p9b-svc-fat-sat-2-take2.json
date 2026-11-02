@@ -1,0 +1,123 @@
+{
+ "file": "128-p9b-svc-fat-sat-2-take2.png",
+ "prompted_for": "'From protocol to release, then SAT' (svc-fat-sat); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: near-empty limestone drawing sheet: big light title, abstract hairline routing, six steps in a notes column",
+ "section_kind": "steps/timeline",
+ "style_family": "limestone drawing sheet",
+ "art_direction": [
+  "near-empty limestone drawing sheet",
+  "fine navy border frame",
+  "full engineering title block bottom right",
+  "abstract hairline routing into a box",
+  "numbered notes column"
+ ],
+ "composition": [
+  "limestone sheet inside a thin navy border with a small wordmark top-left",
+  "small two-line light headline lower-left, far from the top",
+  "centre: a stepped hairline routing of nested lines feeding into a rectangle with arrows in and out",
+  "a single thick steel-blue horizontal bar under the routing",
+  "right: a free-standing vertical hairline with six numbered steps beside it, vertically centred",
+  "bottom-right: a gridded title block with labelled cells (project, section, scale, sheet no) touching the border",
+  "most of the sheet is empty paper"
+ ],
+ "layout_devices": [
+  "sheet border as section frame",
+  "drawing-style title block with labelled cells",
+  "numbered notes list with mono-like numerals",
+  "vertical hairline beside notes",
+  "single steel-blue bar as ground line or baseline",
+  "arrows on the routing into and out of the box"
+ ],
+ "palette": [
+  "warm limestone paper",
+  "deep navy border, text and linework",
+  "one steel-blue bar",
+  "no other colours"
+ ],
+ "typography": [
+  "small light-weight sans headline in sentence case, undersized",
+  "light sans wordmark",
+  "small sans numbered list",
+  "small uppercase sans labels in title block",
+  "regular sans title block values"
+ ],
+ "rendering": [
+  "flat vector line art",
+  "no shading, no shadows",
+  "flat paper ground"
+ ],
+ "line_and_texture": [
+  "uniform navy hairlines with right-angle bends",
+  "fine border and title block grid",
+  "one thick steel-blue rule",
+  "flat untextured paper"
+ ],
+ "motifs": [
+  "abstract routing feeding a box",
+  "flow arrows",
+  "drawing title block",
+  "numbered notes",
+  "baseline bar"
+ ],
+ "ui_patterns": [
+  "numbered step list",
+  "framed section",
+  "drawing title block footer"
+ ],
+ "motion_implied": [
+  "routing lines draw into the box",
+  "arrows pulse along the flow",
+  "steps appear one by one",
+  "title block fills in"
+ ],
+ "mood": [
+  "quiet",
+  "sparse",
+  "minimal",
+  "documentary",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "near-empty limestone drawing sheet",
+  "fine navy border frame",
+  "engineering title block bottom right with labelled cells",
+  "project section scale sheet no cells",
+  "small wordmark top-left",
+  "light-weight navy sans headline",
+  "abstract navy hairline routing into a rectangle",
+  "right-angle stepped lines with arrows",
+  "one thick steel-blue baseline bar",
+  "numbered notes list beside a vertical hairline",
+  "vast empty paper",
+  "flat vector, no shadows",
+  "square corners",
+  "navy ink on limestone",
+  "one accent colour",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "quiet documentary mood",
+  "space as a material",
+  "technical drawing sheet aesthetic",
+  "flow arrows into and out of box",
+  "sparse composition",
+  "labelled title block cells in uppercase sans",
+  "light sans list type",
+  "headline at lower left"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section drawn as a near-empty engineering drawing sheet on warm limestone paper, framed by a fine navy border, with a full gridded title block in the bottom-right corner. Small wordmark top-left and a light-weight navy sans headline at left. In the centre, a navy hairline routing diagram of stepped lines with arrows feeding a rectangle, over one thick steel-blue baseline bar. On the right, a numbered notes list beside a vertical hairline for <CONTENT>. Vast empty paper, flat, square corners, no shadows.",
+ "signature_idea": "The section is a drawing sheet with a real title block: one routing sketch, one blue baseline and the steps written as sheet notes.",
+ "strengths": [
+  "title block is convincingly engineering-sheet and brand-specific",
+  "very calm and square, navy on limestone with one steel-blue accent",
+  "notes column is clean and readable",
+  "simple to build as a framed component"
+ ],
+ "weaknesses": [
+  "headline is far too small for a section title",
+  "routing diagram is abstract and means nothing",
+  "steel-blue bar is decorative with no meaning",
+  "steps are a plain small list, weak for a process",
+  "too much empty sheet, reads unfinished"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy on limestone, light type, square border, title block and one steel-blue accent are on-brand, but the tiny headline and meaningless diagram leave it thin."
+}

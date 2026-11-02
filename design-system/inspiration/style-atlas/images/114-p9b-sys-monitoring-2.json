@@ -1,0 +1,128 @@
+{
+ "file": "114-p9b-sys-monitoring-2.png",
+ "prompted_for": "'Sensors and signals' (sys-monitoring); art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag; concept: signals table beside a circular tick-dial readout with a big light conductivity numeral and limit tag",
+ "section_kind": "spec/limits",
+ "style_family": "instrument readout dial with table",
+ "art_direction": [
+  "instrument-panel readout",
+  "circular tick-dial gauge",
+  "oversized light mono numeral with unit",
+  "single horizontal limit line with outlined tags",
+  "limestone sheet on navy frame"
+ ],
+ "composition": [
+  "limestone sheet inset on a navy frame, with a navy block notched into the bottom right corner",
+  "wordmark top left and a small section label top centre",
+  "large light headline with a mono uppercase standards sub-label below",
+  "a five-row, three-column table on the left ~60%",
+  "a large circular tick dial on the right, partly cropped by the sheet edge, with a big light mono numeral and unit at centre",
+  "a horizontal limit line crosses the dial with a 'MAX' tag and an 'ALERT' tag",
+  "a short linear tick scale under the numeral"
+ ],
+ "layout_devices": [
+  "circular ring of fine ticks with a heavier index tick at top",
+  "linear tick scale under the numeral",
+  "full-width limit line through the dial",
+  "small outlined rectangular limit tags in mono",
+  "plain row numbers 1-5 in the table",
+  "hairline row rules, heavier header rule",
+  "faint ghost dial rings in the background"
+ ],
+ "palette": [
+  "warm limestone sheet",
+  "deep navy frame and corner block",
+  "navy text, ticks and numeral",
+  "steel-blue index tick and limit line",
+  "faint grey ghost rings"
+ ],
+ "typography": [
+  "large light-weight sans headline",
+  "mono uppercase sub-label with letterspacing",
+  "oversized light mono numeral with smaller mono unit",
+  "mono table cells",
+  "small sans column headers",
+  "small mono uppercase limit tags",
+  "light sans wordmark"
+ ],
+ "rendering": [
+  "flat vector instrument graphic",
+  "flat UI table",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "fine radial tick marks",
+  "hairline table rules",
+  "hairline limit line",
+  "outlined tags with tiny rounded corners",
+  "flat paper ground with faint ghost circles"
+ ],
+ "motifs": [
+  "circular gauge dial",
+  "tick scale",
+  "limit line and limit tag",
+  "big readout numeral with unit"
+ ],
+ "ui_patterns": [
+  "signals table",
+  "live readout widget",
+  "limit/alert badge",
+  "header with standards label"
+ ],
+ "motion_implied": [
+  "numeral counts up or ticks live",
+  "dial ticks sweep in around the ring",
+  "limit line slides in and tags fade on",
+  "row hover changes the readout to that signal"
+ ],
+ "mood": [
+  "precise",
+  "technical",
+  "calm",
+  "instrumented",
+  "authoritative"
+ ],
+ "t2i_keywords": [
+  "instrument-panel readout web section",
+  "large circular tick-dial gauge",
+  "oversized light monospace numeral with unit",
+  "fine radial tick marks with one steel-blue index tick",
+  "short linear tick scale under numeral",
+  "single horizontal limit line through the dial",
+  "small outlined mono limit tags MAX and ALERT",
+  "signals table on the left",
+  "mono table cells with hairline row rules",
+  "large light-weight sans headline",
+  "mono uppercase standards sub-label",
+  "warm limestone sheet on deep navy frame",
+  "navy block notched into a corner",
+  "dial cropped by sheet edge",
+  "faint ghost rings behind dial",
+  "flat vector, no shading",
+  "square corners",
+  "deep navy ink, steel-blue accent",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "precise instrumented mood",
+  "lab instrument aesthetic",
+  "generous whitespace around readout",
+  "plain row numbers",
+  "data sheet feel"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup: a warm limestone sheet on a deep navy frame. Top left: a large light-weight sans headline and a mono uppercase sub-label. Left 60%: a five-row table with mono cells and hairline rules for <CONTENT>. Right: a large circular dial of fine radial ticks with one steel-blue index tick, cropped by the sheet edge, holding an oversized light mono numeral with its unit and a short linear tick scale; one steel-blue horizontal limit line crosses it with small outlined mono limit tags. Flat, square corners, calm.",
+ "signature_idea": "A signals table set beside one oversized live readout: a light mono numeral in a tick-ring dial crossed by a single limit line.",
+ "strengths": [
+  "readout is a strong, ownable instrument motif that fits the brand",
+  "mono numerals, light headline and one steel-blue accent match the brand book",
+  "table is legible and ordered",
+  "dial is easy to build in SVG and animate"
+ ],
+ "weaknesses": [
+  "dial shows one value while the table lists five signals; the link is implied only",
+  "whole table in mono is heavy for prose cells",
+  "invented figures and clause numbers in cells and readout",
+  "limit tags have slightly rounded corners",
+  "dial cropped by the sheet edge feels accidental"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Limestone on navy, light headline, mono figures, a single steel-blue limit line and a precise tick dial are the brand book's instrument idea almost exactly."
+}

@@ -1,0 +1,125 @@
+{
+ "file": "118-p9b-svc-design-1.png",
+ "prompted_for": "'Design stages, and what you approve' (svc-design); art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching; concept: five numbered stage cards on navy, each with a mono doc code, beside an isometric plant with one blue route",
+ "section_kind": "steps/timeline",
+ "style_family": "navy limestone split isometric",
+ "art_direction": [
+  "two-ground split: navy text field and limestone drawing field",
+  "isometric technical line drawing",
+  "catalogue illustration of a skid",
+  "numbered stage grid",
+  "one steel-blue route through the plant"
+ ],
+ "composition": [
+  "thin mono breadcrumb bar across the top",
+  "huge light headline running across both grounds, crossing the navy/limestone seam",
+  "steel-blue hairline rule under the headline spanning the width",
+  "left ~57% navy: five stages in a 3+2 grid divided by hairline verticals and one horizontal rule",
+  "right ~43% limestone: isometric skid of tanks, filter housings and a pump on a base plate, one steel-blue pipe route snaking through it",
+  "bottom-right of the stage grid left empty"
+ ],
+ "layout_devices": [
+  "large light numerals 01-05 heading each stage",
+  "uppercase stage titles",
+  "mono document code at the foot of each stage (COMP_V1.1 style)",
+  "hairline column dividers",
+  "headline crossing the colour seam so the two halves read as one",
+  "single highlighted route in the drawing"
+ ],
+ "palette": [
+  "deep navy left field",
+  "warm limestone right field",
+  "off-white text on navy, navy text on limestone",
+  "steel-blue headline rule and highlighted pipe route",
+  "navy hairline equipment drawing"
+ ],
+ "typography": [
+  "very large light-weight sans headline in sentence case",
+  "large light numerals",
+  "light uppercase sans stage titles",
+  "small regular sans body",
+  "mono codes for document IDs",
+  "small mono breadcrumb"
+ ],
+ "rendering": [
+  "flat vector colour fields",
+  "isometric hairline line drawing with no shading",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "uniform hairline equipment strokes",
+  "1px divider rules",
+  "thicker steel-blue route line",
+  "flat untextured fills"
+ ],
+ "motifs": [
+  "isometric water-treatment skid",
+  "vertical tanks and filter housings",
+  "pipe route highlighted in blue",
+  "document codes",
+  "numbered stages"
+ ],
+ "ui_patterns": [
+  "numbered step grid",
+  "breadcrumb header",
+  "split text/illustration section"
+ ],
+ "motion_implied": [
+  "stages fade in by number",
+  "blue route draws through the plant",
+  "headline rule extends across the seam"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "engineered",
+  "orderly",
+  "confident"
+ ],
+ "t2i_keywords": [
+  "navy and limestone split background",
+  "huge light-weight sans headline crossing the colour seam",
+  "steel-blue hairline rule under headline",
+  "five numbered stages in a 3+2 grid",
+  "large light numerals 01-05",
+  "light uppercase stage titles",
+  "mono document code under each stage",
+  "hairline column dividers",
+  "isometric technical line drawing",
+  "white polypropylene water treatment skid",
+  "uniform hairline strokes no shading",
+  "one steel-blue highlighted pipe route",
+  "tanks filter housings and pump on base plate",
+  "catalogue illustration isolated on limestone",
+  "flat vector, no shadows",
+  "square corners",
+  "mono breadcrumb header",
+  "generous whitespace",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm engineering mood",
+  "navy text field with off-white type",
+  "one accent colour only",
+  "precise technical documentation feel",
+  "grid of short stage descriptions",
+  "steel-blue accent on route only"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup. Background split vertically: deep navy on the left, warm limestone on the right. A huge light-weight sans headline runs across both halves, underlined by a thin steel-blue rule. On the navy side, numbered stages in a 3+2 grid with large light numerals, uppercase light titles, short text and a mono document code each, separated by hairline dividers, for <CONTENT>. On the limestone side, an isometric hairline line drawing of a white polypropylene water skid, no shading, with one pipe route highlighted in steel blue. Square corners, no shadows.",
+ "signature_idea": "A headline that spans a navy/limestone seam ties numbered approval stages to an isometric plant whose one blue route shows the thread through every stage.",
+ "strengths": [
+  "very close to the brand palette and type: light headline, mono codes, one steel-blue accent",
+  "doc code per stage makes 'what you approve' concrete",
+  "isometric drawing is clean hairline catalogue style, matching the illustration system",
+  "split grounds give strong but calm structure",
+  "maps easily to a step grid plus illustration component"
+ ],
+ "weaknesses": [
+  "blue route is decorative and does not map to any stage",
+  "headline text crossing the seam half on navy half on limestone hurts legibility",
+  "drawing includes generic tanks and gauges, not clearly PP-specific equipment",
+  "empty sixth cell in the grid looks unfinished",
+  "invented doc codes and accuracy class figures"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone grounds, one steel-blue accent, light sans headline, mono codes, square corners and hairline isometric art are the brand book applied directly."
+}

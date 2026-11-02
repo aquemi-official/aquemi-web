@@ -1,0 +1,124 @@
+{
+ "file": "165-p9b-cmp-documentation-0.png",
+ "prompted_for": "'The turnover package, section by section' (cmp-documentation); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: limestone sheet on navy: huge headline, five numbered package sections in a ruled grid, isometric pipe-frame drawing",
+ "section_kind": "documents",
+ "style_family": "editorial oversized type",
+ "art_direction": [
+  "editorial magazine spread",
+  "oversized light-weight headline",
+  "limestone sheet inset on navy",
+  "ruled numbered grid",
+  "one isometric line drawing as the figure"
+ ],
+ "composition": [
+  "navy page with a thin top bar: wordmark left, section label right, hairline rule below",
+  "large limestone sheet inset with a narrow navy margin on all sides",
+  "two-line giant light headline filling the top half of the sheet, left aligned, not cropped",
+  "one-line light subhead under the headline",
+  "left ~60%: five numbered entries in a ruled grid, two rows of two plus a third column entry",
+  "right ~35%: a large navy isometric line drawing of a pipe frame floating on the sheet"
+ ],
+ "layout_devices": [
+  "big mono numerals 01 to 05 beside each entry",
+  "mono uppercase entry titles",
+  "short horizontal hairlines under each row",
+  "vertical hairlines dividing columns at uneven lengths",
+  "empty cell under entry 03 left as space",
+  "figure bleeds almost to the sheet edge"
+ ],
+ "palette": [
+  "deep navy page ground and margins",
+  "warm limestone sheet",
+  "near-black navy headline and body text",
+  "navy hairline drawing",
+  "no accent colour"
+ ],
+ "typography": [
+  "very large light grotesk headline in sentence case",
+  "light sans subhead",
+  "mono numerals 01-05",
+  "mono uppercase entry titles",
+  "small regular sans body lines",
+  "small light sans header labels on navy"
+ ],
+ "rendering": [
+  "flat vector sheet",
+  "navy hairline isometric line drawing",
+  "no shadows, no shading"
+ ],
+ "line_and_texture": [
+  "hairline rules",
+  "double-line pipe outlines with elbow and flange details",
+  "flat untextured fills",
+  "square corners"
+ ],
+ "motifs": [
+  "isometric pipe frame of straight runs, elbows and a valve",
+  "numbered document sections",
+  "sheet on a navy desk"
+ ],
+ "ui_patterns": [
+  "top bar with wordmark and section label",
+  "numbered list grid",
+  "feature figure beside text"
+ ],
+ "motion_implied": [
+  "headline types or slides in",
+  "numbered entries fade in by number",
+  "pipe frame lines draw in along their paths",
+  "hairline rules extend from left"
+ ],
+ "mood": [
+  "calm",
+  "editorial",
+  "confident",
+  "precise",
+  "spacious"
+ ],
+ "t2i_keywords": [
+  "editorial magazine spread web section",
+  "oversized light-weight sans-serif headline",
+  "two-line giant headline in sentence case",
+  "warm limestone sheet inset on deep navy page",
+  "narrow navy margin around the sheet",
+  "numbered entries in a ruled grid",
+  "mono numerals 01 to 05",
+  "mono uppercase entry titles",
+  "small regular sans body text",
+  "hairline row and column rules",
+  "navy isometric line drawing of a pipe frame",
+  "double-line pipe outlines with elbows",
+  "line drawing floating on paper",
+  "no shading, no shadows",
+  "flat vector",
+  "square corners",
+  "generous white space",
+  "asymmetric layout",
+  "text left, figure right",
+  "thin top bar with wordmark and section label",
+  "hairline rule under top bar",
+  "no accent colour",
+  "calm precise mood",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "technical document index",
+  "light sans subhead under headline"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup: a warm limestone paper sheet inset on a deep navy page with a narrow navy margin and a thin top bar holding a wordmark and section label. On the sheet, an oversized two-line light-weight sans-serif headline in sentence case fills the top half, with a light subhead below. Left: numbered entries in a ruled grid, each with a mono numeral, a mono uppercase title and short body text for <CONTENT>, divided by hairline rules. Right: a large navy hairline isometric line drawing of a pipe frame with elbows. Flat, square corners, no shadows, calm and spacious.",
+ "signature_idea": "A giant light headline and a quiet isometric pipe drawing share one limestone sheet, with the package laid out as a numbered ruled index beneath.",
+ "strengths": [
+  "light oversized headline, mono numerals and limestone-on-navy are on-brand",
+  "numbered ruled grid is a clear, buildable index for a document package",
+  "line drawing gives equipment context without colour or noise",
+  "lots of space, calm and readable"
+ ],
+ "weaknesses": [
+  "headline is not cropped by the frame, so the editorial drama is mild",
+  "grid is irregular: entry 03 sits alone with an empty cell below and vertical rules end at uneven lengths",
+  "pipe drawing is a generic pipe rack with odd floating fittings, not a recognisable skid",
+  "no steel-blue accent, so nothing marks focus",
+  "entry text is dense small body copy"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone, a light sans headline, mono numerals, hairline navy line art, square corners and generous space match the brand book closely."
+}

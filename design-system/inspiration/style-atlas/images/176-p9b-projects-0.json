@@ -1,0 +1,128 @@
+{
+ "file": "176-p9b-projects-0.png",
+ "prompted_for": "'Verify before a case study exists' (projects); art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing; concept: five verification routes as rows of tiles: navy slash-numeral tile, route, check, not-proved, mono time-to-arrange",
+ "section_kind": "router",
+ "style_family": "swiss navy limestone tile table",
+ "art_direction": [
+  "Swiss International Typographic Style",
+  "strict modular grid of square tiles",
+  "navy and limestone colour blocks",
+  "huge light slash numerals",
+  "small blueprint inset tiles"
+ ],
+ "composition": [
+  "breadcrumb bar across the top with wordmark left",
+  "very large light sentence-case headline full width under it",
+  "slash-numbered column headers (01 / ROUTE to 04 / TIME TO ARRANGE) on one line",
+  "five equal rows, each opening with a solid navy tile holding a huge light numeral",
+  "four limestone cells per row: route, what you check, what it does not prove, time to arrange",
+  "two small blueprint tiles inset inside row 02, one navy and one steel blue",
+  "one white cell in row 01 breaks the limestone run",
+  "grid fills the frame edge to edge and is cropped at the bottom"
+ ],
+ "layout_devices": [
+  "navy numeral tiles as a left spine",
+  "slash-numbered column headers",
+  "repeated small label above each cell value",
+  "hairline cell borders on a limestone ground",
+  "column edges drift slightly row to row instead of aligning",
+  "inset blueprint tiles of pipe crosses and valves",
+  "secondary mono note under some time values"
+ ],
+ "palette": [
+  "warm limestone cells and page ground",
+  "deep navy numeral tiles",
+  "steel-blue blueprint tile",
+  "white blueprint line art",
+  "near-black text",
+  "one paper-white cell"
+ ],
+ "typography": [
+  "very large light grotesk headline in sentence case",
+  "huge light numerals with slash in white on navy",
+  "small uppercase sans column headers with slash numbers",
+  "small sans cell labels, larger regular sans values",
+  "mono for time-to-arrange values and their notes"
+ ],
+ "rendering": [
+  "flat vector colour blocks",
+  "white line drawings on navy and steel-blue tiles",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "thin grey hairline cell rules",
+  "fine blueprint pipe and valve lines",
+  "flat fills, no grain",
+  "square corners throughout"
+ ],
+ "motifs": [
+  "slash numerals 01/ to 05/",
+  "pipe cross and tee fittings",
+  "valve symbol",
+  "verification routes"
+ ],
+ "ui_patterns": [
+  "comparison table as tile grid",
+  "row router with numbered entries",
+  "label-over-value cells",
+  "breadcrumb header"
+ ],
+ "motion_implied": [
+  "rows slide in one after another by numeral",
+  "numerals count or wipe in",
+  "blueprint tiles draw their lines"
+ ],
+ "mood": [
+  "rigorous",
+  "ordered",
+  "plain-spoken",
+  "calm",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "Swiss International Typographic Style web section",
+  "strict modular tile grid table",
+  "solid deep navy numeral tiles as left spine",
+  "huge light numerals with slash 01/",
+  "warm limestone cells with hairline borders",
+  "very large light-weight sans headline sentence case",
+  "slash-numbered uppercase column headers",
+  "small label above each cell value",
+  "monospace time values",
+  "one or two small white blueprint inset tiles",
+  "steel-blue blueprint tile accent",
+  "pipe tee and valve line drawing",
+  "square corners",
+  "flat vector, no shadows",
+  "edge-to-edge grid",
+  "breadcrumb bar top",
+  "five equal rows",
+  "four content columns",
+  "high contrast navy and limestone",
+  "generous type, sparse content",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm rigorous mood",
+  "poster-like grid rhythm",
+  "minimal single accent colour",
+  "label-over-value table cells",
+  "uppercase small headers"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in Swiss International Typographic Style on warm limestone. A very large light-weight sans headline in sentence case across the top, a thin breadcrumb bar above it. Below, slash-numbered uppercase column headers and a strict grid of rows; each row opens with a solid deep navy tile holding a huge light white numeral with slash, then limestone cells with hairline borders, a small label above a larger value, the last column in monospace, for <CONTENT>. One or two cells hold a small white pipe-and-valve blueprint on steel blue. Square corners, flat, no shadows.",
+ "signature_idea": "A verification table whose rows are anchored by a spine of navy slash-numeral tiles, so a plain router reads like a Swiss poster.",
+ "strengths": [
+  "navy numeral spine makes five routes instantly scannable",
+  "label-over-value cells keep each column's meaning explicit",
+  "palette, light headline, mono times and square corners are on-brand",
+  "maps directly to a token-only CSS grid table"
+ ],
+ "weaknesses": [
+  "essentially a table on a frame; blueprint tiles are decoration that mean nothing for the row",
+  "column edges misalign between rows",
+  "repeated cell labels duplicate the column headers",
+  "duplicated word in one cell ('the the') and invented location and dates",
+  "one stray white cell breaks the palette rhythm"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy and limestone tiles, light headline, mono figures and square corners match the brand, but it is close to a plain table with decorative blueprint insets."
+}

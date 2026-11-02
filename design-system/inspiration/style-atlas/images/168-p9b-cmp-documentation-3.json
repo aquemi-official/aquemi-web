@@ -1,0 +1,122 @@
+{
+ "file": "168-p9b-cmp-documentation-3.png",
+ "prompted_for": "'Delivery and signatures' (cmp-documentation); art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules; concept: 3-row delivery table on a navy zone-bordered drawing sheet with doc code DS-001-A and an AQ-DP-04 title block",
+ "section_kind": "spec/limits",
+ "style_family": "navy drawing sheet table",
+ "art_direction": [
+  "engineering drawing sheet on navy",
+  "zone-reference border with numbers and letters",
+  "title block bottom right",
+  "mono document codes",
+  "hairline table rules"
+ ],
+ "composition": [
+  "full-bleed deep navy sheet with an outer zone border: numbers 1-4 top and bottom, letters A-D on both sides",
+  "wordmark top-left, small tick-scale ruler top centre, short rule with a tiny figure glyph top right",
+  "grey eyebrow, large light off-white headline and a steel-blue mono document code down the left",
+  "full-width three-column table with three numbered rows across the middle",
+  "title block of stacked mono cells in the bottom-right corner, breaking the inner frame",
+  "short vertical hairline at right and a small corner bracket above the title block"
+ ],
+ "layout_devices": [
+  "zone-reference border with grid letters and numbers",
+  "drawing title block with company, package, section, drawing number and revision",
+  "steel-blue mono row numerals 01 to 03",
+  "mono document code under the headline",
+  "hairline table with full horizontal and vertical rules",
+  "decorative tick-scale ruler"
+ ],
+ "palette": [
+  "deep navy sheet ground",
+  "off-white headline and table text",
+  "grey eyebrow",
+  "muted steel-blue hairlines, numerals, codes and border labels",
+  "no warm colour"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "small light grey sans eyebrow",
+  "steel-blue mono document code and row numerals",
+  "regular sans table headers and cells",
+  "mono uppercase title-block text",
+  "tiny mono zone letters and numbers"
+ ],
+ "rendering": [
+  "flat vector drawing sheet",
+  "steel-blue hairline linework",
+  "no shading, no image"
+ ],
+ "line_and_texture": [
+  "hairline steel-blue rules and borders",
+  "tick-mark ruler scale",
+  "faint dark vignette and slight texture on navy",
+  "square corners"
+ ],
+ "motifs": [
+  "zone-bordered engineering drawing sheet",
+  "title block",
+  "document and revision codes",
+  "tick scale"
+ ],
+ "ui_patterns": [
+  "eyebrow, headline, code stack",
+  "three-column data table",
+  "drawing title block as footer"
+ ],
+ "motion_implied": [
+  "border and zone markers draw in around the sheet",
+  "table rules extend and rows type in",
+  "title block cells fill in last like a stamp"
+ ],
+ "mood": [
+  "technical",
+  "formal",
+  "calm",
+  "precise",
+  "documentary"
+ ],
+ "t2i_keywords": [
+  "engineering drawing sheet on deep navy",
+  "zone-reference border with numbers and letters",
+  "drawing title block in bottom-right corner",
+  "mono document code under headline",
+  "steel-blue hairline rules",
+  "large light-weight off-white sans-serif headline",
+  "headline in sentence case",
+  "small grey eyebrow",
+  "three-column hairline table",
+  "steel-blue mono row numerals 01 to 03",
+  "mono uppercase title-block text",
+  "revision and drawing number cells",
+  "small tick-scale ruler at top",
+  "flat vector, no shading",
+  "square corners",
+  "blueprint-like navy sheet",
+  "full-width table",
+  "generous margins inside the border",
+  "off-white text on navy",
+  "one steel-blue accent",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "formal technical mood",
+  "subtle dark vignette",
+  "documentary engineering style"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup styled as an engineering drawing sheet on deep navy. A steel-blue hairline zone-reference border runs around the edge with numbers along the top and bottom and letters down the sides. Top-left: a small grey eyebrow, a large light-weight off-white sans-serif headline in sentence case and a steel-blue mono document code. Across the middle: a full-width three-column hairline table with steel-blue mono row numerals for <CONTENT>. Bottom-right: a drawing title block of stacked mono uppercase cells with drawing number and revision. Flat, square corners, calm and formal.",
+ "signature_idea": "The section is set as a drawing sheet: zone border, document code under the headline and a title block in the corner frame an ordinary table.",
+ "strengths": [
+  "navy, off-white and one steel-blue accent with a light headline and mono codes are on-brand",
+  "zone border and title block are cheap to build and instantly read as engineering",
+  "table is clear and readable at size",
+  "square corners and hairlines throughout"
+ ],
+ "weaknesses": [
+  "plain table only, no visual idea beyond the sheet frame",
+  "tick-scale ruler, tiny figure glyph, vertical hairline and corner bracket are decorative and mean nothing",
+  "zone letters and numbers do not index anything on the sheet",
+  "no limestone surface, so the section is a single dark slab",
+  "an empty dash cell and an incomplete retention phrase look unfinished"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Palette, light headline, mono codes and square hairline structure match, but it is a plain table with decorative drawing furniture."
+}

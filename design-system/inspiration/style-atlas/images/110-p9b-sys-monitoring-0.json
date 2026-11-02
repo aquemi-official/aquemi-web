@@ -1,0 +1,127 @@
+{
+ "file": "110-p9b-sys-monitoring-0.png",
+ "prompted_for": "'How the controls are built' (sys-monitoring); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: giant cropped headline on navy over a limestone sheet holding the PLC-HMI-SCADA-DMZ architecture",
+ "section_kind": "process diagram",
+ "style_family": "editorial oversized type over limestone sheet",
+ "art_direction": [
+  "editorial magazine spread",
+  "dramatic asymmetric layout",
+  "oversized light-weight headline cropped by the left edge",
+  "navy field with an overlapping limestone sheet",
+  "line-drawn control architecture diagram"
+ ],
+ "composition": [
+  "deep navy field across the top and left",
+  "giant white light headline on two lines bleeds off the left edge and crosses onto the limestone sheet",
+  "a limestone sheet steps in from the right, its top-left corner notched so the headline's second line stays on navy",
+  "a navy hairline block diagram (instruments, PLC, HMI, SCADA, DMZ) sits centre-right on the sheet",
+  "numbered callouts 01-05 with leader lines: two on the left, three on the right",
+  "tiny mono uppercase eyebrow above the headline"
+ ],
+ "layout_devices": [
+  "cropped giant headline as the main graphic",
+  "stepped navy/limestone overlap with a notch",
+  "mono numerals 01-05 over bold label plus short body",
+  "horizontal hairline leaders from callouts to diagram blocks",
+  "solid and dashed signal lines in the diagram",
+  "bracket grouping the instrument boxes"
+ ],
+ "palette": [
+  "deep navy field",
+  "warm limestone sheet",
+  "white headline",
+  "navy diagram lines and text",
+  "steel-blue mono numerals",
+  "no other colour"
+ ],
+ "typography": [
+  "oversized light-weight sans headline, cropped",
+  "tiny mono uppercase eyebrow",
+  "mono callout numerals in steel blue",
+  "bold small sans callout titles",
+  "regular small sans callout body",
+  "light sans labels inside diagram boxes"
+ ],
+ "rendering": [
+  "flat vector navy hairline block diagram",
+  "no shading",
+  "flat colour fields"
+ ],
+ "line_and_texture": [
+  "uniform hairline strokes",
+  "dashed signal lines with arrowheads",
+  "flat untextured fields",
+  "square boxes and corners"
+ ],
+ "motifs": [
+  "PLC box",
+  "HMI panel with screen and buttons",
+  "SCADA box",
+  "DMZ box",
+  "instrument boxes on a bus",
+  "isolator symbol",
+  "signal arrows"
+ ],
+ "ui_patterns": [
+  "numbered callouts with leaders",
+  "eyebrow + display headline",
+  "annotated diagram"
+ ],
+ "motion_implied": [
+  "headline slides in from the left edge",
+  "limestone sheet slides up under it",
+  "diagram lines draw from instruments up to the DMZ",
+  "callouts fade in by number"
+ ],
+ "mood": [
+  "bold",
+  "editorial",
+  "confident",
+  "technical",
+  "modern"
+ ],
+ "t2i_keywords": [
+  "editorial magazine spread web section",
+  "oversized light-weight sans headline cropped by left edge",
+  "white headline on deep navy field",
+  "limestone sheet overlapping navy from the right",
+  "stepped notch where headline crosses fields",
+  "dramatic asymmetric layout",
+  "navy hairline block diagram",
+  "control architecture boxes",
+  "dashed signal lines with arrowheads",
+  "numbered callouts 01-05 with leader lines",
+  "steel-blue mono numerals",
+  "bold small label plus short body per callout",
+  "tiny mono uppercase eyebrow",
+  "flat vector, no shading",
+  "square corners",
+  "uniform hairline strokes",
+  "two-tone navy and limestone",
+  "headline as graphic",
+  "generous negative space",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "callouts on both sides of diagram",
+  "bracket grouping symbol",
+  "confident editorial mood",
+  "engineering diagram on paper"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in editorial magazine style. A deep navy field holds an oversized light-weight white sans headline on two lines, cropped by the left edge. A warm limestone sheet steps in from the right and below, with a notch where the headline crosses. On the sheet, a navy hairline block diagram of <CONTENT> with solid and dashed signal lines, and five callouts with steel-blue mono numerals, a bold short label and a line of body, joined by hairline leaders. Tiny mono eyebrow. Flat, square corners, no shading.",
+ "signature_idea": "A giant cropped headline on navy sits over a limestone sheet that carries the control architecture as a hairline diagram with numbered callouts.",
+ "strengths": [
+  "strong editorial impact from the cropped light headline",
+  "diagram shows a real layered architecture with clear numbered callouts",
+  "palette is navy, limestone and one steel-blue accent with square corners",
+  "buildable: two colour fields, display type and an SVG diagram"
+ ],
+ "weaknesses": [
+  "callout 02 (PLC) is duplicated, once top right and once bottom left",
+  "leader lines do not reliably meet the boxes they name; bottom-left leader runs to nothing",
+  "diagram wiring on the left is dense, meaningless bus lines",
+  "bold callout titles break the light-type rule",
+  "headline crop is very tight on 'H', may read as a cut rather than a choice"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Light oversized type, navy/limestone fields, steel-blue mono numerals and hairline art fit, but duplicated callouts, bold labels and noisy wiring reduce precision."
+}

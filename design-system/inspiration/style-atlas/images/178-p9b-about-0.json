@@ -1,0 +1,122 @@
+{
+ "file": "178-p9b-about-0.png",
+ "prompted_for": "'Company facts' (about); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: giant cropped 'Company facts' headline straddling a limestone/navy split, fact table across it, small skid line drawing",
+ "section_kind": "spec/limits",
+ "style_family": "editorial oversized type split",
+ "art_direction": [
+  "editorial magazine spread",
+  "oversized light-weight headline cropped by the frame",
+  "asymmetric limestone and navy split",
+  "hairline-ruled fact table",
+  "small line-drawn equipment figure"
+ ],
+ "composition": [
+  "frame split vertically: narrow limestone panel on the left about a quarter wide, deep navy on the rest",
+  "giant light two-line headline cropped off the top and left edges, straddling the colour split so letters change colour where they cross it",
+  "a three-column fact table (item, fact, evidence) spans from the limestone panel across the navy, five numbered rows",
+  "small white line drawing of a skid cabinet with numbered callouts sits alone at the right",
+  "large empty navy space below the drawing"
+ ],
+ "layout_devices": [
+  "headline straddling a two-colour split with colour-inverting letters",
+  "cropped headline bleeding off the frame",
+  "slash-numbered row labels (01 / SCOPE)",
+  "hairline row rules in the table",
+  "uppercase column headers",
+  "circled numbered callouts on the line drawing"
+ ],
+ "palette": [
+  "deep navy ground",
+  "warm limestone side panel",
+  "off-white headline and table text on navy",
+  "navy text on limestone",
+  "pale blue-white line drawing"
+ ],
+ "typography": [
+  "oversized light grotesk headline, cropped",
+  "small uppercase sans column headers",
+  "regular sans table text",
+  "slash-numbered uppercase row labels",
+  "small circled numerals on the drawing"
+ ],
+ "rendering": [
+  "flat colour fields",
+  "white hairline line drawing of equipment on navy",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "hairline table rules",
+  "thin uniform line art",
+  "flat fills, no grain",
+  "square corners"
+ ],
+ "motifs": [
+  "cropped giant headline",
+  "colour-split panel",
+  "skid cabinet with piping and filter housing",
+  "numbered callout circles"
+ ],
+ "ui_patterns": [
+  "three-column fact table with evidence column",
+  "numbered rows",
+  "annotated diagram"
+ ],
+ "motion_implied": [
+  "headline slides in from the cropped edge",
+  "split panel wipes open",
+  "table rows rule in one by one",
+  "drawing lines trace in with callouts popping"
+ ],
+ "mood": [
+  "confident",
+  "editorial",
+  "factual",
+  "bold",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "editorial oversized type spread",
+  "giant light-weight sans headline cropped by frame",
+  "headline straddling limestone and navy split",
+  "letters invert colour across the split",
+  "narrow warm limestone side panel",
+  "deep navy ground",
+  "asymmetric magazine layout",
+  "three-column fact table with hairline rules",
+  "slash-numbered uppercase row labels",
+  "uppercase small column headers",
+  "evidence column",
+  "small white line drawing of skid cabinet",
+  "circled numbered callouts",
+  "pale blue-white hairline line art on navy",
+  "square corners",
+  "flat colour fields, no shadows",
+  "generous negative space",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "confident calm editorial mood",
+  "off-white text on navy",
+  "single figure isolated on the right",
+  "light sans table text",
+  "hairline rules",
+  "colour-inverting display type",
+  "bleeding headline",
+  "editorial poster balance"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in editorial magazine style. The frame is split: a narrow warm limestone panel on the left, deep navy on the rest. A giant light-weight sans headline is cropped off the top-left edge and straddles the split, its letters inverting colour as they cross. Across both panels, a three-column fact table with hairline rules and slash-numbered uppercase row labels for <CONTENT>. On the right, one small pale blue-white hairline line drawing of an equipment skid with circled numbered callouts. Square corners, flat, generous space.",
+ "signature_idea": "A giant cropped headline straddles a limestone-navy split, the letters inverting colour as they cross it, with the fact table bridging both fields.",
+ "strengths": [
+  "colour-inverting cropped headline is a striking, buildable editorial device",
+  "fact plus evidence columns suit a facts section for auditors",
+  "navy, limestone, light type and hairline rules are on-brand",
+  "the line drawing adds equipment context without clutter"
+ ],
+ "weaknesses": [
+  "table crossing the split hurts legibility at the boundary",
+  "line drawing is small and its callouts point to nothing labelled",
+  "invented figures, addresses, dates and registration numbers would be mistaken for facts",
+  "no steel-blue accent; large dead navy area bottom right"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy and limestone with a light oversized headline, hairline rules and square corners fit well, though the table over the split and the invented facts weaken it."
+}

@@ -1,0 +1,124 @@
+{
+ "file": "174-p9b-cmp-quality-3.png",
+ "prompted_for": "'Certification status' (cmp-quality); art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag; concept: ruler-framed readout box with a giant light numeral and REQ tag, certifications as a 2x2 grid of mono status lines",
+ "section_kind": "standards",
+ "style_family": "instrument readout ruler frame",
+ "art_direction": [
+  "instrument-panel readout",
+  "one oversized light numeral with its unit",
+  "fine tick scale framing the figure",
+  "single limit line with outlined limit tag",
+  "mono status lines in a grid"
+ ],
+ "composition": [
+  "limestone page with a small grey eyebrow and a one-line large light navy headline top-left",
+  "left ~40%: a tall square-ish box framed by ruler tick scales on top, bottom, left and right",
+  "a giant light numeral with superscript unit centred in the box",
+  "a short limit line on the right ruler with a small outlined 'REQ' tag, and a large steel-blue mono '01' at the ruler's top-right",
+  "right ~55%: five status entries in a two-column grid, the fifth alone on a third row",
+  "lots of empty limestone space around both halves"
+ ],
+ "layout_devices": [
+  "ruler-framed readout box with tick scales on all four sides",
+  "outlined limit tag pointing at a limit line on the scale",
+  "steel-blue mono index numeral above the scale",
+  "slash-numbered mono uppercase labels 01 / to 05 /",
+  "large mono status line with a small mono or sans sub-line",
+  "open grid with no rules between entries"
+ ],
+ "palette": [
+  "warm limestone page ground",
+  "deep navy headline, numeral and status lines",
+  "muted steel-blue index numeral and limit marker",
+  "grey tick scales, eyebrow and labels"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "giant thin light grotesk numeral with small superscript unit",
+  "steel-blue mono index numeral",
+  "small sans uppercase labels with slash numbers",
+  "large mono status values",
+  "small sans and mono sub-lines"
+ ],
+ "rendering": [
+  "flat vector page",
+  "hairline tick-scale rulers",
+  "no shading, no image"
+ ],
+ "line_and_texture": [
+  "fine tick marks at two lengths on every ruler",
+  "hairline limit line",
+  "small outlined tag with a pointer",
+  "flat paper, faint grain",
+  "square corners"
+ ],
+ "motifs": [
+  "ruler frame",
+  "tick scale",
+  "limit tag",
+  "big readout numeral",
+  "certificate status lines"
+ ],
+ "ui_patterns": [
+  "hero stat readout beside a status grid",
+  "label, value, sub-line stat blocks",
+  "eyebrow plus headline"
+ ],
+ "motion_implied": [
+  "numeral counts up to its value",
+  "tick scales draw around the box",
+  "limit tag slides to its line",
+  "status lines type in one by one"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "confident",
+  "spacious",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "instrument-panel readout",
+  "giant thin light numeral with superscript unit",
+  "box framed by ruler tick scales on four sides",
+  "fine two-length tick marks",
+  "single limit line with small outlined limit tag",
+  "steel-blue mono index numeral",
+  "warm limestone page ground",
+  "large light-weight navy sans-serif headline",
+  "headline in sentence case",
+  "small grey eyebrow",
+  "two-column grid of status entries",
+  "slash-numbered mono uppercase labels",
+  "large mono status values",
+  "small sub-lines under each value",
+  "no rules between grid entries",
+  "generous empty space",
+  "flat vector, no shading",
+  "square corners",
+  "navy and grey on limestone",
+  "one steel-blue accent",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm precise mood",
+  "measurement instrument aesthetic",
+  "readout left, list right"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone ground. A small grey eyebrow and a large light-weight navy sans-serif headline in sentence case at top-left. Left: a tall box framed on all four sides by fine grey ruler tick scales, holding one giant thin light numeral with a superscript unit, a short limit line with a small outlined limit tag and a steel-blue mono index numeral. Right: a two-column grid of status entries, each with a slash-numbered mono uppercase label, a large mono value and a small sub-line for <CONTENT>. Generous space, square corners, flat.",
+ "signature_idea": "One giant light numeral sits inside a box framed by ruler tick scales with a limit tag, beside a quiet grid of mono status lines.",
+ "strengths": [
+  "ruler-framed readout is a distinctive, buildable signature device",
+  "thin light numeral, mono values and one steel-blue accent are very on-brand",
+  "large space and no rules make the status grid calm and scannable",
+  "tick scales are precise without being busy"
+ ],
+ "weaknesses": [
+  "the big percentage is a vanity figure with no meaning for certification status",
+  "invented certificate bodies, expiry dates, counts and values read as facts",
+  "five entries in a two-column grid leave the fifth orphaned",
+  "a conductivity value is mixed into a certification list",
+  "index '01' on the readout indexes nothing"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Limestone ground, light headline and numeral, mono figures, one steel-blue accent, hairline scales and generous space match the brand book closely."
+}

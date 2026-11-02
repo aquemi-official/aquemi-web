@@ -1,0 +1,118 @@
+{
+ "file": "171-p9b-cmp-quality-0-take2.png",
+ "prompted_for": "'Each process, and the record it leaves' (cmp-quality); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: three ruled columns on a limestone drawing sheet, each entry followed by a tiny hairline record glyph",
+ "section_kind": "standards",
+ "style_family": "limestone drawing sheet grid",
+ "art_direction": [
+  "limestone paper drawing sheet",
+  "fine navy border",
+  "title strip down the right edge",
+  "numbered note boxes",
+  "boxed ruled table"
+ ],
+ "composition": [
+  "limestone sheet with a thin navy border",
+  "left ~28%: a stacked five-line large light navy headline in sentence case",
+  "centre ~45%: a boxed three-column table with five rows; only the process column has text, the other two columns are empty grids of faint vertical lines",
+  "right ~17%: a tall strip divided into five boxes, each tagged with a mono number 01-05 in a small corner box and otherwise empty",
+  "small title block at the bottom of the right strip repeating the headline in quotes"
+ ],
+ "layout_devices": [
+  "heavy-outlined table box with header row",
+  "empty cells subdivided by faint vertical hairlines",
+  "numbered note boxes with corner number tags",
+  "right-edge title strip like a drawing sheet margin",
+  "tall narrow stacked headline"
+ ],
+ "palette": [
+  "warm limestone sheet",
+  "paler off-white table body",
+  "deep navy headline, text and outlines",
+  "faint grey cell lines",
+  "no accent colour"
+ ],
+ "typography": [
+  "large light grotesk headline, stacked one or two words per line",
+  "regular sans table headers and row labels",
+  "mono note numbers in boxed tags",
+  "small sans quoted title in the title block"
+ ],
+ "rendering": [
+  "flat vector drawing sheet",
+  "navy line outlines",
+  "no shading, no image"
+ ],
+ "line_and_texture": [
+  "medium navy table and box outlines",
+  "faint grey vertical hairlines inside empty cells",
+  "flat paper with no grain",
+  "square corners"
+ ],
+ "motifs": [
+  "drawing sheet margin strip",
+  "numbered note boxes",
+  "empty record grid"
+ ],
+ "ui_patterns": [
+  "headline beside table",
+  "three-column data table",
+  "numbered side boxes"
+ ],
+ "motion_implied": [
+  "table cells fill with text row by row",
+  "note boxes reveal top to bottom",
+  "outlines draw around the table"
+ ],
+ "mood": [
+  "plain",
+  "formal",
+  "empty",
+  "orderly",
+  "unfinished"
+ ],
+ "t2i_keywords": [
+  "limestone paper drawing sheet",
+  "thin navy sheet border",
+  "tall stacked light-weight sans-serif headline",
+  "headline left, table centre, notes right",
+  "boxed three-column table with navy outlines",
+  "header row with regular sans labels",
+  "row labels in regular sans",
+  "numbered note boxes down the right edge",
+  "mono number tags in small corner boxes",
+  "drawing sheet margin strip",
+  "small title block at bottom right",
+  "faint vertical hairlines in cells",
+  "off-white table body on limestone",
+  "flat vector, no shading",
+  "square corners",
+  "navy linework only",
+  "no accent colour",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "formal technical sheet",
+  "generous outer margin",
+  "engineering document layout",
+  "calm monochrome navy on limestone",
+  "plain gridded form",
+  "quiet paper surface"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup styled as a warm limestone paper drawing sheet with a thin navy border. Left: a large light-weight navy sans-serif headline stacked over several short lines. Centre: a boxed three-column table with navy outlines, a header row and row labels for <CONTENT>, every cell filled with short text. Right: a narrow margin strip of numbered note boxes, each with a small mono number tag in its corner, and a small title block at the bottom. Flat, square corners, no shading, calm and orderly.",
+ "signature_idea": "A drawing sheet with a margin strip of numbered note boxes framing a boxed process table, like a form waiting to be filled.",
+ "strengths": [
+  "limestone sheet and navy outlines are on-palette and calm",
+  "right-edge numbered strip is a clear drawing-sheet device that could hold notes",
+  "light headline is readable and on-brand",
+  "simple to build as a CSS grid"
+ ],
+ "weaknesses": [
+  "plain table only, no visual idea",
+  "two of three table columns are empty grids, so it reads unfinished",
+  "note boxes are empty numbers",
+  "headline text is duplicated ('it it') and repeated in the title block",
+  "table outlines are heavier than hairlines",
+  "no mono figures, no accent, little hierarchy"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Palette and light type fit, but it is an empty form with duplicated text and no idea, far from the brand's precise finish."
+}

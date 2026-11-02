@@ -1,0 +1,124 @@
+{
+ "file": "182-p9b-careers-1.png",
+ "prompted_for": "'Pay, benefits and terms' (careers); art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching; concept: numbered terms list (title + mono detail line) beside an isometric PP plant line drawing",
+ "section_kind": "spec/limits",
+ "style_family": "isometric line drawing list",
+ "art_direction": [
+  "isometric technical line drawing of white PP equipment",
+  "catalogue illustration",
+  "uniform hairline strokes",
+  "isolated object on plain ground",
+  "numbered terms list with mono details"
+ ],
+ "composition": [
+  "off-white limestone page with a small slash-numbered breadcrumb top left and wordmark top right",
+  "large light one-line headline across the upper left",
+  "left half: a three-column list (item, our terms, note) with five numbered rows separated by hairline rules",
+  "each row: number, sans title, two-line mono detail, and a short mono note at right",
+  "right half: a large isometric line drawing of a small plant: two square tanks, a round tank with blue bands, cartridge filter housings, a control box and connecting pipes",
+  "drawing floats on the ground with no frame"
+ ],
+ "layout_devices": [
+  "slash-numbered breadcrumb (04 / Careers)",
+  "column header underlines of different weights",
+  "hairline row rules",
+  "title over mono detail line in each row",
+  "grey note column",
+  "isolated isometric illustration as counterweight"
+ ],
+ "palette": [
+  "off-white limestone ground",
+  "deep navy headline and text",
+  "grey note header",
+  "white equipment with navy outlines",
+  "pale steel-blue pipe fill and tank bands"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "regular sans row titles",
+  "mono detail lines and notes",
+  "small sans column headers, note header greyed",
+  "small sans breadcrumb"
+ ],
+ "rendering": [
+  "isometric hairline line drawing with flat white fills",
+  "flat UI list",
+  "no shading, no hatching"
+ ],
+ "line_and_texture": [
+  "uniform navy hairline outlines",
+  "hairline row rules",
+  "flat fills, no grain",
+  "square corners on UI"
+ ],
+ "motifs": [
+  "square and round PP tanks",
+  "cartridge filter housings",
+  "pipe runs with unions and valves",
+  "control box",
+  "numbered terms"
+ ],
+ "ui_patterns": [
+  "three-column terms table",
+  "numbered list rows",
+  "breadcrumb header"
+ ],
+ "motion_implied": [
+  "rows rule in one by one",
+  "isometric drawing traces in along its pipes",
+  "pipes fill with a pale blue flow line"
+ ],
+ "mood": [
+  "calm",
+  "clear",
+  "approachable",
+  "orderly",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing of white polypropylene equipment",
+  "catalogue illustration style",
+  "uniform navy hairline strokes",
+  "flat white fills, no shading, no hatching",
+  "pale steel-blue pipe accents",
+  "tanks, filter housings and pipe runs",
+  "object isolated on plain off-white ground",
+  "large light-weight sans headline sentence case",
+  "numbered list rows with hairline rules",
+  "title over mono detail line",
+  "three-column terms table",
+  "grey note column in mono",
+  "slash-numbered breadcrumb",
+  "split layout list left, drawing right",
+  "square corners",
+  "warm limestone off-white background",
+  "deep navy text",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm orderly mood",
+  "generous margins",
+  "minimal palette",
+  "technical catalogue page",
+  "mono figures",
+  "cartridge filter housings",
+  "round tank with blue bands",
+  "catalogue part drawing"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a warm off-white limestone ground. Top-left: a small slash-numbered breadcrumb and a large light-weight navy sans headline in sentence case. Left half: a three-column list with five numbered rows separated by hairline rules, each with a sans title over a mono detail line and a short mono note, for <CONTENT>. Right half: an isolated isometric technical line drawing of white polypropylene tanks, filter housings and pipe runs in uniform navy hairlines with pale steel-blue pipe accents. No shading, no hatching, square corners.",
+ "signature_idea": "A plain terms list balanced by a catalogue-style isometric PP plant drawing, so an HR table still looks like an engineering firm.",
+ "strengths": [
+  "very clean, calm and legible",
+  "title plus mono detail rows are a good pattern for terms",
+  "isometric hairline PP drawing is on-brand and buildable as SVG",
+  "navy, limestone, light headline and mono figures fit the brand book"
+ ],
+ "weaknesses": [
+  "drawing has no link to the list content; it is decoration",
+  "otherwise a plain table with no visual idea",
+  "note column is garbled and misaligned with its rows",
+  "invented pay, hours and benefit figures",
+  "pipe accent is pale and the plant looks domestic rather than a pharma skid"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone ground, navy light headline, mono details, square corners and hairline isometric PP drawing fit, but the drawing is unrelated decoration beside a plain table."
+}

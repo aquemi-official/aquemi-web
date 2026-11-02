@@ -1,0 +1,121 @@
+{
+ "file": "116-p9b-sys-monitoring-4.png",
+ "prompted_for": "'Options' (sys-monitoring); art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing; concept: navy-limestone checkerboard field on the left, five big slash-numbered option cells on the right",
+ "section_kind": "options",
+ "style_family": "swiss navy limestone checkerboard",
+ "art_direction": [
+  "Swiss International Typographic Style",
+  "strict modular grid of square tiles",
+  "navy and limestone checkerboard field",
+  "huge light numerals with slash",
+  "one blueprint drawing tile"
+ ],
+ "composition": [
+  "thin top bar with wordmark and a section label divided by a hairline",
+  "left ~39%: a checkerboard of square tiles in navy, limestone and white, bleeding off the left and bottom edges",
+  "one larger navy tile in the checkerboard holds a white-and-steel-blue piping schematic with small corner numerals",
+  "top right: huge light 'Options' headline right-aligned",
+  "right ~61%: option cells in a hairline grid, two wide cells on the first row and three on the second",
+  "each cell: huge light slash numeral, a sans title with colon, two or three lines of small body"
+ ],
+ "layout_devices": [
+  "checkerboard colour-block field",
+  "huge light slash numerals 01/ to 05/",
+  "hairline cell borders",
+  "blueprint tile breaking the checkerboard with a thin steel-blue outline",
+  "2-over-3 cell grid",
+  "top bar with vertical hairline divider"
+ ],
+ "palette": [
+  "deep navy tiles",
+  "warm limestone tiles and ground",
+  "white tiles",
+  "white and steel-blue line drawing on navy",
+  "navy text"
+ ],
+ "typography": [
+  "huge light-weight sans headline",
+  "huge light-weight slash numerals",
+  "regular sans option titles with colons",
+  "small regular sans body",
+  "light sans corner numerals in the blueprint tile",
+  "regular sans wordmark"
+ ],
+ "rendering": [
+  "flat vector colour blocks",
+  "white hairline schematic on navy (blueprint)",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "hairline cell borders",
+  "fine schematic strokes with valve glyphs and elbows",
+  "flat fills, no grain",
+  "square corners throughout"
+ ],
+ "motifs": [
+  "checkerboard tiles",
+  "blueprint piping schematic",
+  "slash-numbered cells"
+ ],
+ "ui_patterns": [
+  "bento grid of option cards",
+  "numbered feature cells",
+  "top bar"
+ ],
+ "motion_implied": [
+  "checkerboard tiles flip in sequence",
+  "numerals fade up by order",
+  "blueprint lines draw in"
+ ],
+ "mood": [
+  "rigorous",
+  "ordered",
+  "bold",
+  "calm",
+  "modern"
+ ],
+ "t2i_keywords": [
+  "Swiss International Typographic Style web section",
+  "checkerboard field of square navy, limestone and white tiles",
+  "one navy tile with white and steel-blue blueprint schematic",
+  "huge light-weight numerals with slash 01/",
+  "huge light-weight headline right-aligned",
+  "option cells in hairline grid",
+  "two cells over three cells",
+  "regular sans title with short body per cell",
+  "colour-block field bleeding off the left edge",
+  "strict modular grid",
+  "flat vector colour blocks, no shadows",
+  "square corners",
+  "hairline cell borders",
+  "thin top bar with wordmark",
+  "deep navy and warm limestone palette",
+  "minimal steel-blue accent",
+  "generous padding inside cells",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "poster-like grid rhythm",
+  "rigorous ordered mood",
+  "blueprint tile breaking the pattern",
+  "small corner numerals",
+  "bento option grid",
+  "high contrast navy blocks"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in Swiss International Typographic Style. A thin top bar with a wordmark. Left 40%: a checkerboard of square deep navy, limestone and white tiles bleeding off the left edge; one larger navy tile holds a white and steel-blue blueprint schematic with a thin steel-blue outline. Top right: a huge light-weight sans headline. Right 60%: option cells in a hairline grid, two above three, each with a huge light slash numeral, a short sans title and two lines of body for <CONTENT>. Flat, square corners, no shadows.",
+ "signature_idea": "A Swiss checkerboard field with one blueprint tile sits beside five big slash-numbered option cells, colour on the left and reading on the right.",
+ "strengths": [
+  "very close to the brand book: light huge numerals, navy/limestone blocks, square corners",
+  "option cells are clear and scannable",
+  "blueprint tile adds equipment context without clutter",
+  "maps cleanly to a token-only CSS grid"
+ ],
+ "weaknesses": [
+  "checkerboard is pure decoration and takes 40% of the width",
+  "white tiles add a third neutral that weakens the two-tone",
+  "stray tile numerals '01 02 02' in the blueprint tile are duplicated and mean nothing",
+  "titles with spaced colons look sloppy",
+  "invented vendor names, protocols and certifications in body copy"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone blocks, huge light slash numerals, one blueprint tile with steel-blue, hairlines and square corners match the brand book closely."
+}

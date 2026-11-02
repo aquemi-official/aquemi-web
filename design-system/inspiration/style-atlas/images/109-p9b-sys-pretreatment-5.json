@@ -1,0 +1,121 @@
+{
+ "file": "109-p9b-sys-pretreatment-5.png",
+ "prompted_for": "'Options' (sys-pretreatment); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: limestone drawing sheet: huge light title, navy hairline schematic, five notes in a narrow column",
+ "section_kind": "options",
+ "style_family": "limestone drawing sheet",
+ "art_direction": [
+  "limestone paper engineering drawing sheet",
+  "fine navy border frame",
+  "huge light display title",
+  "navy hairline P&ID schematic",
+  "narrow notes column",
+  "empty title block"
+ ],
+ "composition": [
+  "thin navy frame inset from the edges forming the sheet",
+  "huge light 'Pretreatment' word spans the upper middle, with a smaller light second word right-aligned beneath",
+  "a navy hairline schematic sits lower left, partly under the title",
+  "a narrow numbered list of five options top right, separated by a long vertical hairline",
+  "an empty ruled title block in the bottom right corner",
+  "large empty paper area lower middle and right"
+ ],
+ "layout_devices": [
+  "drawing-sheet border frame",
+  "title block grid bottom right (empty cells)",
+  "vertical hairline divider for a notes column",
+  "numbered plain-text notes list 1-5",
+  "two-size stacked title (huge word plus smaller word)"
+ ],
+ "palette": [
+  "warm limestone paper ground with faint grain",
+  "deep navy frame, title and line art",
+  "one steel-blue pipe run in the schematic",
+  "no other colour"
+ ],
+ "typography": [
+  "huge light-weight sans display word",
+  "medium light sans second word right-aligned",
+  "small light sans numbered notes",
+  "no mono used"
+ ],
+ "rendering": [
+  "flat vector navy hairline P&ID schematic",
+  "no shading",
+  "paper sheet look"
+ ],
+ "line_and_texture": [
+  "uniform hairline schematic strokes with valve glyphs, a gauge and a pump",
+  "faint paper grain",
+  "thin border and title block rules",
+  "square corners throughout"
+ ],
+ "motifs": [
+  "drawing sheet frame",
+  "title block",
+  "filter vessel with diagonal media line",
+  "gate valves",
+  "gauge circle",
+  "pipe crossovers with hop arcs"
+ ],
+ "ui_patterns": [
+  "numbered list",
+  "section title",
+  "sheet frame"
+ ],
+ "motion_implied": [
+  "schematic lines draw in",
+  "notes appear one by one",
+  "hovering a note highlights its part of the schematic"
+ ],
+ "mood": [
+  "calm",
+  "sparse",
+  "architectural",
+  "quiet",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "limestone paper engineering drawing sheet",
+  "fine navy border frame inset",
+  "empty title block bottom right",
+  "huge light-weight sans display title",
+  "smaller light second title word right-aligned",
+  "navy hairline P&ID schematic",
+  "one steel-blue pipe run",
+  "valve glyphs and gauge circle",
+  "pipe crossover hop arcs",
+  "narrow numbered notes column",
+  "long vertical hairline divider",
+  "faint paper grain",
+  "flat vector line art, no shading",
+  "square corners",
+  "lots of empty paper space",
+  "deep navy ink only",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "architectural drawing feel",
+  "calm sparse mood",
+  "uniform hairline strokes",
+  "title overlapping drawing area",
+  "small light sans list text",
+  "draughtsman sheet layout",
+  "quiet engineering poster"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup styled as a limestone paper engineering drawing sheet with faint grain and a fine navy border frame. A huge light-weight sans display title spans the upper middle with a smaller light word right-aligned below. Lower left: a navy hairline P&ID schematic with valve glyphs, a gauge and one steel-blue pipe run. Top right: a narrow numbered notes column behind a long vertical hairline listing <CONTENT>. An empty ruled title block in the bottom right corner. Flat, no shading, square corners, much empty paper.",
+ "signature_idea": "The options section is a draughtsman's sheet: giant light title, a P&ID sketch and a notes column, framed with a title block.",
+ "strengths": [
+  "strong, calm poster feel with a huge light title",
+  "faithful drawing-sheet vocabulary (border, title block, notes column)",
+  "strict navy on limestone with a single steel-blue pipe",
+  "very little text, lots of space"
+ ],
+ "weaknesses": [
+  "options are a bare five-line list with no detail or link to the schematic",
+  "schematic is generic and does not show the five options",
+  "title block is empty decoration",
+  "large dead area bottom middle; balance tilts left",
+  "no mono figures or numbering style beyond plain '1.'"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone sheet, navy hairline art, one steel-blue accent and a huge light title are on-brand, but the options carry almost no content and the drawing is decorative."
+}

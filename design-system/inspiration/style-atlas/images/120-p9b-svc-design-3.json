@@ -1,0 +1,128 @@
+{
+ "file": "120-p9b-svc-design-3.png",
+ "prompted_for": "'An example: two requirements traced to their tests' (svc-design); art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag; concept: trace table beside a steel-blue readout tile: huge 1.3 uS/cm, tick scale, outlined limit tag",
+ "section_kind": "standards",
+ "style_family": "instrument readout trace table",
+ "art_direction": [
+  "instrument-panel readout tile",
+  "oversized light numeral with unit",
+  "fine tick scale with one limit line",
+  "hairline trace table",
+  "ghosted pipe line art behind"
+ ],
+ "composition": [
+  "limestone page with small wordmark top-left and section label top-right over a hairline rule",
+  "two-line light headline top-left",
+  "left ~65%: three-column trace table, rows numbered 01/ to 07/ with hairline row and column rules",
+  "right ~30%: a steel-blue readout tile, vertically centred, holding a huge light numeral with a mono unit",
+  "tick scale across the tile foot with a single limit marker and a small outlined limit tag below",
+  "faint white pipe elbows and tees behind the tile, bleeding off the right edge"
+ ],
+ "layout_devices": [
+  "slash-numbered row labels (01 / DOCUMENT)",
+  "hairline grid table with two requirement columns",
+  "readout tile as a single key figure",
+  "tick scale with a highlighted limit tick",
+  "outlined limit tag",
+  "bracketed placeholder text in table cells",
+  "ghosted background pipework framing the tile"
+ ],
+ "palette": [
+  "warm limestone ground",
+  "near-black navy text and rules",
+  "muted steel-blue readout tile",
+  "off-white numeral, ticks and tag",
+  "pale off-white ghost pipework"
+ ],
+ "typography": [
+  "light-weight sans headline in sentence case",
+  "light sans wordmark and section label",
+  "mono for all table text",
+  "oversized light sans numeral",
+  "mono unit beside numeral",
+  "tiny mono limit tag"
+ ],
+ "rendering": [
+  "flat vector tile and table",
+  "faint outline line art of pipe fittings, no shading",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "hairline table rules",
+  "fine tick scale",
+  "thin outline of tag",
+  "flat untextured fills",
+  "slightly rounded tile and tag corners"
+ ],
+ "motifs": [
+  "conductivity readout",
+  "tick scale and limit line",
+  "trace matrix rows",
+  "pipe elbows and tees",
+  "slash numerals"
+ ],
+ "ui_patterns": [
+  "comparison/trace table",
+  "key-figure readout tile",
+  "limit tag badge"
+ ],
+ "motion_implied": [
+  "numeral counts up to the value",
+  "tick scale fills to the limit",
+  "table rows reveal top to bottom",
+  "ghost pipes draw in"
+ ],
+ "mood": [
+  "precise",
+  "technical",
+  "calm",
+  "evidential",
+  "measured"
+ ],
+ "t2i_keywords": [
+  "instrument-panel readout tile",
+  "oversized light-weight numeral with mono unit",
+  "fine tick scale with single limit line",
+  "small outlined limit tag",
+  "muted steel-blue tile",
+  "warm limestone page ground",
+  "hairline trace table",
+  "slash-numbered rows 01/ 02/",
+  "monospace table text",
+  "two requirement columns traced to tests",
+  "light-weight sans headline sentence case",
+  "ghosted pipe elbow line art behind tile",
+  "pipework bleeding off right edge",
+  "wordmark and section label over hairline rule",
+  "flat vector, no shadows",
+  "square corners",
+  "one accent colour",
+  "generous padding",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "measurement evidence aesthetic",
+  "calm precise mood",
+  "navy text on limestone",
+  "key figure beside table",
+  "limit marker tick on scale",
+  "data evidence beside readout"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone ground. Small wordmark and section label over a hairline rule, then a two-line light-weight sans headline. Left two thirds: a hairline table with slash-numbered rows and monospace cells for <CONTENT>. Right: a square-cornered muted steel-blue readout tile with one oversized light numeral and a mono unit, a fine tick scale along its foot with a single limit line and a small outlined limit tag. Faint off-white pipe elbow line art behind the tile, bleeding off the edge. Flat, no shadows.",
+ "signature_idea": "A trace table ends in one instrument readout: the requirement's number shown as a meter with its limit tick, so the claim looks measured.",
+ "strengths": [
+  "readout tile is a strong, reusable key-figure device",
+  "table is genuinely structured: rows by document, columns by requirement",
+  "brand type system is right: light headline, mono figures, sentence case",
+  "ghost pipework adds context without clutter",
+  "one accent block on limestone keeps it calm"
+ ],
+ "weaknesses": [
+  "readout figure equals the limit, so the scale tells no story",
+  "tile and tag corners are slightly rounded",
+  "table is dense mono text and close to plain table",
+  "invented requirement IDs and values",
+  "ghost pipes are decorative and connect to nothing"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Limestone, navy text, one steel-blue tile, light headline and mono figures match the brand book; only slight rounding and table density detract."
+}

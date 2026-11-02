@@ -1,0 +1,125 @@
+{
+ "file": "113-p9b-sys-monitoring-1-take2.png",
+ "prompted_for": "'Alert, action and trend' (sys-monitoring); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: levels table whose rows run leader lines into a soft-3D white PP skid",
+ "section_kind": "spec/limits",
+ "style_family": "soft 3D skid with table",
+ "art_direction": [
+  "soft 3D isometric product render",
+  "matte white polypropylene skid with translucent tanks",
+  "even studio light",
+  "table beside render with numbered pin callouts",
+  "limestone page"
+ ],
+ "composition": [
+  "mono uppercase eyebrow, large light headline and one-line subhead top left",
+  "a four-row, three-column table fills the left ~58%",
+  "a soft-3D isometric white PP skid with two translucent pale-blue tanks, a frame, a control cabinet and piping sits on a white tray at right",
+  "five navy numbered pin discs float around the skid with hairline leaders to parts",
+  "plenty of limestone margin around the render"
+ ],
+ "layout_devices": [
+  "mono row numerals 01-04 inside the first column",
+  "vertical hairline column dividers and horizontal row rules",
+  "heavier navy rule under the header row",
+  "navy filled pin discs 1-5 with hairline leaders and dot ends",
+  "table and render side by side, not connected"
+ ],
+ "palette": [
+  "warm limestone page",
+  "matte white PP render",
+  "translucent pale-blue water in tanks and pipes",
+  "deep navy text, header rule and pin discs",
+  "grey-blue mono numerals"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small mono uppercase eyebrow",
+  "light sans subhead",
+  "mono table cells (whole table set in mono)",
+  "regular sans header labels",
+  "white numerals in navy pins"
+ ],
+ "rendering": [
+  "soft 3D render with even studio light",
+  "isometric product view",
+  "translucent tanks",
+  "flat UI table"
+ ],
+ "line_and_texture": [
+  "hairline table rules",
+  "hairline leaders with small dot ends",
+  "smooth matte plastic",
+  "soft contact shadows on the tray",
+  "rounded pipe bends and tank domes"
+ ],
+ "motifs": [
+  "white PP skid on a tray",
+  "translucent water tanks",
+  "control cabinet",
+  "frame of white pipe",
+  "numbered pins",
+  "valves and unions"
+ ],
+ "ui_patterns": [
+  "levels table",
+  "numbered hotspot callouts on a render",
+  "eyebrow + headline + subhead"
+ ],
+ "motion_implied": [
+  "pins pop in by number",
+  "hovering a pin highlights the matching row",
+  "water level shimmers in the tanks",
+  "slow turntable rotation of the skid"
+ ],
+ "mood": [
+  "clean",
+  "calm",
+  "clinical",
+  "precise",
+  "product-focused"
+ ],
+ "t2i_keywords": [
+  "soft 3D isometric render of a matte white polypropylene skid",
+  "translucent pale-blue water tanks",
+  "white pipe frame and control cabinet on a white tray",
+  "even studio light, soft contact shadows",
+  "warm limestone page background",
+  "table on the left with vertical and horizontal hairlines",
+  "heavier navy rule under header row",
+  "mono table cells",
+  "mono row numerals 01-04",
+  "navy filled numbered pin discs",
+  "hairline leaders with dot ends",
+  "large light-weight sans headline sentence case",
+  "small mono uppercase eyebrow",
+  "one-line light subhead",
+  "generous margin around render",
+  "deep navy text",
+  "square table corners",
+  "1440 px desktop section",
+  "straight-on flat UI with 3D product render",
+  "clinical clean mood",
+  "pharma equipment catalogue feel",
+  "hotspot callouts",
+  "table and render side by side",
+  "quiet palette with pale-blue water",
+  "no gradients on UI"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on warm limestone. Top left: a small mono uppercase eyebrow, a large light-weight sans headline and a one-line subhead. Left 58%: a four-row table with mono cells, mono row numerals, hairline column and row rules and a heavier navy header rule for <CONTENT>. Right: a soft 3D isometric render of a matte white polypropylene skid with translucent pale-blue water tanks, white pipe frame and a control cabinet on a white tray, in even studio light, with five navy numbered pin discs and hairline leaders. Square corners, calm.",
+ "signature_idea": "A clean mono levels table beside a believable white PP skid with translucent tanks, tagged with five navy hotspot pins.",
+ "strengths": [
+  "more believable PP skid than the first take: frame, tanks, cabinet, translucent water",
+  "table is clear and well ruled, mono figures read well",
+  "navy pins are crisp and on-palette",
+  "calm limestone page with good margins"
+ ],
+ "weaknesses": [
+  "pins 1-5 do not map to the four table rows; the leader idea from the brief is lost",
+  "whole table in mono is heavy to read for prose cells",
+  "invented figures and document codes in cells (CFU limit, USP number, GUI code)",
+  "no steel-blue accent beyond the water",
+  "render's rounded pipe bends and domes are fine, but the skid shows unexplained parts"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Light headline, mono figures, navy pins and a white PP render on limestone are on-brand, but the table and render do not connect and figures are invented."
+}

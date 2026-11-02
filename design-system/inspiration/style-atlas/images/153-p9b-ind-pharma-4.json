@@ -1,0 +1,123 @@
+{
+ "file": "153-p9b-ind-pharma-4.png",
+ "prompted_for": "'Natural health products: does this line need Purified Water?' (ind-pharma); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: soft-3D translucent PP column skid with leaders on the left, product/minimum-water table on the right",
+ "section_kind": "spec/limits",
+ "style_family": "limestone sheet soft 3D skid",
+ "art_direction": [
+  "soft 3D isometric product render",
+  "limestone paper sheet",
+  "split layout: object left, table right",
+  "hairline leader-line callouts",
+  "quiet editorial page"
+ ],
+ "composition": [
+  "warm limestone page with a small eyebrow label and a full-width hairline rule at top",
+  "wordmark under the rule, then a large light two-line question headline top-left",
+  "left half: one matte white skid with four translucent pale-blue columns and tube racks on a white base plate, isometric",
+  "numbered callouts fan out left and right from the skid on hairline leaders",
+  "right half: short lead paragraph above a three-column table (product, minimum water, note) with four rows and hairline row rules"
+ ],
+ "layout_devices": [
+  "two-column split with the object free on the ground",
+  "numbered leader-line callouts 01. to 05.",
+  "three-column comparison table with hairline rules only",
+  "top rule spanning the page like a sheet header",
+  "one steel-blue word in the table as the only accent"
+ ],
+ "palette": [
+  "warm limestone ground",
+  "matte white polypropylene",
+  "translucent pale-blue water",
+  "deep navy headline and table text",
+  "grey hairline rules and leaders",
+  "single steel-blue table value"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case, navy",
+  "regular sans lead paragraph",
+  "small sans table headers and cells",
+  "small sans numbered callout labels",
+  "no mono used for codes"
+ ],
+ "rendering": [
+  "soft 3D render with even studio light",
+  "matte white plastic with soft contact shadow",
+  "translucent pale-blue liquid in clear columns",
+  "flat UI table"
+ ],
+ "line_and_texture": [
+  "hairline leader lines ending at the object",
+  "hairline table rules",
+  "smooth untextured plastic",
+  "soft ambient occlusion only"
+ ],
+ "motifs": [
+  "white PP column skid",
+  "translucent water columns",
+  "tube racks and elbows",
+  "numbered callouts",
+  "product/water grade table"
+ ],
+ "ui_patterns": [
+  "annotated product hero image",
+  "comparison table",
+  "eyebrow label plus headline",
+  "lead paragraph above table"
+ ],
+ "motion_implied": [
+  "skid fades up then leaders draw out to labels",
+  "water level rises in the columns",
+  "table rows reveal top to bottom"
+ ],
+ "mood": [
+  "calm",
+  "clean",
+  "clinical",
+  "approachable",
+  "orderly"
+ ],
+ "t2i_keywords": [
+  "soft 3D isometric render of a matte white polypropylene skid",
+  "translucent pale-blue water columns",
+  "even soft studio light",
+  "warm limestone page background",
+  "split layout object left table right",
+  "numbered hairline leader-line callouts",
+  "large light-weight sans headline sentence case",
+  "deep navy text",
+  "three-column table with hairline rules",
+  "no fills in table cells",
+  "single steel-blue accent word",
+  "eyebrow label above top hairline rule",
+  "object isolated on the ground with soft contact shadow",
+  "white base plate",
+  "clear columns with white end caps",
+  "small regular sans labels",
+  "generous whitespace",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "calm clinical mood",
+  "editorial product page",
+  "minimal palette navy limestone white",
+  "precise technical annotation",
+  "quiet premium industrial design"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone background. A small eyebrow label and a hairline rule across the top, then a large light-weight navy sans headline in sentence case. Left half: one matte white polypropylene skid with translucent pale-blue water columns, soft 3D isometric render in even studio light, with numbered hairline leader-line callouts. Right half: a short lead paragraph and a three-column table with hairline rules for <CONTENT>, one value in steel blue. Square corners, generous space, calm.",
+ "signature_idea": "One soft white PP skid floats on the limestone page as the product hero, while the grade question is answered in a plain ruled table beside it.",
+ "strengths": [
+  "calm, uncluttered layout with lots of space",
+  "light navy headline and hairline table are on-brand",
+  "matte white PP and translucent water show the real material",
+  "table is legible with short, scannable cells"
+ ],
+ "weaknesses": [
+  "skid callouts are generic and do not relate to the table",
+  "duplicated callout label (04. Modular Skid twice)",
+  "columns look like filter housings, a lab demo rather than a PW skid",
+  "no mono for codes or figures",
+  "table side is a plain table with no visual link to the image"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone ground, navy light headline, hairline table and white PP render fit the brand, but the callouts are generic and mono figures are missing."
+}

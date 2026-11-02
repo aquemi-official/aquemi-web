@@ -1,0 +1,119 @@
+{
+ "file": "170-p9b-cmp-quality-0.png",
+ "prompted_for": "'Each process, and the record it leaves' (cmp-quality); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: three ruled columns on a limestone drawing sheet, each entry followed by a tiny hairline record glyph",
+ "section_kind": "standards",
+ "style_family": "limestone drawing sheet columns",
+ "art_direction": [
+  "limestone paper drawing sheet",
+  "fine navy border",
+  "title block bottom right",
+  "numbered notes in a narrow column",
+  "tiny hairline glyph after each entry"
+ ],
+ "composition": [
+  "limestone sheet framed by a thin navy border",
+  "small sans eyebrow and a two-line large light navy headline top-left",
+  "three ruled columns of entries below the headline, each column separated by a vertical hairline",
+  "each entry is a short sans label followed by a small hairline glyph at the column's right edge",
+  "narrow right column split off by a vertical rule, holding mono note numbers 01-05 with mostly empty notes",
+  "title block with empty grid cells and a wordmark in the bottom-right corner"
+ ],
+ "layout_devices": [
+  "three parallel columns read as a row-aligned table without horizontal rules",
+  "tiny hairline record glyphs (bracket, tick ladder, hatched grid, list lines) after each entry",
+  "numbered notes column in mono",
+  "drawing title block with empty cells",
+  "thin sheet border"
+ ],
+ "palette": [
+  "warm limestone sheet",
+  "deep navy headline, text and lines",
+  "muted steel-blue strokes inside the glyphs",
+  "no fills"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "small regular sans eyebrow and column headers",
+  "regular sans entries at a comfortable reading size",
+  "mono note numbers and note text",
+  "small sans and large light wordmark in the title block"
+ ],
+ "rendering": [
+  "flat vector drawing sheet",
+  "navy and steel-blue hairline glyphs",
+  "no shading, no image"
+ ],
+ "line_and_texture": [
+  "hairline border and column rules",
+  "tiny brackets, tick ladders and hatched grids as glyphs",
+  "flat paper with no grain",
+  "square corners"
+ ],
+ "motifs": [
+  "drawing sheet with title block",
+  "record glyphs",
+  "numbered notes",
+  "process to control to record columns"
+ ],
+ "ui_patterns": [
+  "three-column comparison list",
+  "side notes column",
+  "title-block footer"
+ ],
+ "motion_implied": [
+  "columns reveal left to right per row",
+  "glyphs draw in after each entry",
+  "note numbers tick in down the side"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "quiet",
+  "documentary",
+  "orderly"
+ ],
+ "t2i_keywords": [
+  "limestone paper drawing sheet",
+  "fine navy border around the sheet",
+  "drawing title block in bottom-right corner",
+  "three ruled columns separated by vertical hairlines",
+  "tiny hairline glyph after each entry",
+  "abstract record glyphs: brackets, tick ladders, hatched grids",
+  "narrow numbered notes column in mono",
+  "large light-weight navy sans-serif headline",
+  "two-line headline in sentence case",
+  "small sans eyebrow",
+  "regular sans list entries",
+  "steel-blue strokes in glyphs",
+  "navy linework on limestone",
+  "flat vector, no shading",
+  "square corners",
+  "generous line spacing",
+  "no horizontal table rules",
+  "technical document sheet",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm precise mood",
+  "engineering notes column",
+  "minimal monochrome navy",
+  "quiet paper texture-free surface",
+  "empty title-block grid cells"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup styled as a warm limestone paper drawing sheet with a fine navy border. Top-left: a small sans eyebrow and a two-line large light-weight navy sans-serif headline in sentence case. Below, three columns of short entries separated by vertical hairlines, each entry followed by a tiny navy and steel-blue hairline glyph, listing <CONTENT>. A narrow right column holds numbered mono notes. Bottom-right: a drawing title block with fine grid cells and a wordmark. Flat, square corners, no shading, calm and precise.",
+ "signature_idea": "A process, control and record list set on a limestone drawing sheet, each entry tagged with a tiny hairline glyph like a drawing symbol.",
+ "strengths": [
+  "limestone sheet, navy linework and a light headline are on-brand and calm",
+  "three parallel columns read process to control to record cleanly",
+  "entry type is large and readable with good spacing",
+  "title block and notes column give engineering character cheaply"
+ ],
+ "weaknesses": [
+  "prompt words leak in as text: 'award-winning web design', 'Numbered notes', 'Drawing sheet title block'",
+  "glyphs are abstract and mean nothing; they do not depict any record type",
+  "notes column is mostly empty numbers",
+  "rows do not align across columns and the last row has no matching entries",
+  "title block cells are empty filler"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone sheet, navy hairlines, light headline, mono notes and square corners fit, but leaked prompt text and meaningless glyphs undercut precision."
+}

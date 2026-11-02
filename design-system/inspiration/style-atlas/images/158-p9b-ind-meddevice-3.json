@@ -1,0 +1,125 @@
+{
+ "file": "158-p9b-ind-meddevice-3.png",
+ "prompted_for": "'Who audits your water system' (ind-meddevice); art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints; concept: auditor table on navy blueprint grid; double-line pipe manifolds with valves feed each row across the columns",
+ "section_kind": "standards",
+ "style_family": "navy blueprint pipe route table",
+ "art_direction": [
+  "technical blueprint on deep navy",
+  "faint blueprint grid ground",
+  "double-line pipe manifolds between table columns",
+  "P&ID valve symbols at row joints",
+  "three-column standards table"
+ ],
+ "composition": [
+  "deep navy page with a faint square grid, hamburger top-left and wordmark top-right",
+  "eyebrow with a short terminated rule, then a large light pale-blue headline",
+  "three-column table (auditor, what they read, where we answer it) with five numbered rows and hairline row rules",
+  "between columns 1-2 and 2-3, a vertical double-line pipe manifold branches to every row",
+  "each branch ends in a valve symbol or arrow pointing into the next column's cell"
+ ],
+ "layout_devices": [
+  "two vertical pipe headers acting as column dividers",
+  "double-line branches with rounded elbows into each row",
+  "bow-tie valve symbols and arrow tips at joints",
+  "numbered rows 01 to 05 with a short vertical tick separator",
+  "hairline row rules spanning each column",
+  "eyebrow with a terminated rule"
+ ],
+ "palette": [
+  "deep navy ground",
+  "faint lighter-navy grid lines",
+  "pale blue-white line art and pipes",
+  "pale-blue headline",
+  "off-white table text",
+  "no warm colour"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case, pale blue",
+  "regular sans column headers",
+  "mono for all table cells, standards codes and row numbers",
+  "small sans eyebrow"
+ ],
+ "rendering": [
+  "flat blueprint line art",
+  "thin double-line pipes, no shading",
+  "flat UI table on dark ground"
+ ],
+ "line_and_texture": [
+  "faint square blueprint grid",
+  "double-line pipes with rounded elbows",
+  "hairline row rules",
+  "P&ID valve glyphs",
+  "no glow, flat lines"
+ ],
+ "motifs": [
+  "pipe manifold",
+  "P&ID valves",
+  "flow arrows into cells",
+  "blueprint grid",
+  "numbered auditor rows",
+  "standards clauses"
+ ],
+ "ui_patterns": [
+  "three-column evidence table",
+  "numbered rows",
+  "eyebrow plus headline",
+  "hamburger nav"
+ ],
+ "motion_implied": [
+  "pipe headers draw down the table",
+  "branches fill into each row in order",
+  "valves open as rows reveal",
+  "flow pulses from auditor to answer"
+ ],
+ "mood": [
+  "technical",
+  "authoritative",
+  "systematic",
+  "calm",
+  "engineered"
+ ],
+ "t2i_keywords": [
+  "technical blueprint on deep navy",
+  "faint square blueprint grid background",
+  "pale blue-white hairline line art",
+  "double-line pipe manifold between table columns",
+  "branches with rounded elbows into each row",
+  "P&ID bow-tie valve symbols at joints",
+  "flow arrows pointing into table cells",
+  "three-column table with hairline row rules",
+  "monospace table text",
+  "numbered rows 01 to 05",
+  "large light-weight pale-blue sans headline",
+  "eyebrow with terminated rule",
+  "no warm colours",
+  "flat line art no glow",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "pipe as connector between data",
+  "engineering schematic table",
+  "generous row height",
+  "calm authoritative mood",
+  "minimal navy monochrome",
+  "P&ID diagram language",
+  "dense mono figures",
+  "vertical pipe headers as column dividers"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a deep navy background with a faint square blueprint grid. Eyebrow with a short terminated rule, then a large light-weight pale-blue sans headline. Below, a three-column table with hairline row rules and numbered rows, all cells in monospace, for <CONTENT>. Between the columns, vertical double-line pipe manifolds in pale blue-white branch into every row with rounded elbows, ending in P&ID valve symbols and arrows that point into the next cell. Flat line art, no glow.",
+ "signature_idea": "The table is plumbed: pipe manifolds between the columns carry each auditor's row through a valve to the place it is answered.",
+ "strengths": [
+  "pipe manifolds give a plain table a real visual idea tied to the product",
+  "strict navy monochrome blueprint is calm and precise",
+  "mono standards codes suit the brand",
+  "rows read clearly left to right"
+ ],
+ "weaknesses": [
+  "no steel-blue pipe as prompted; pipes are pale white so there is no accent",
+  "valve branches are decorative; rows do not actually map one-to-one to answers",
+  "mono for all body cells is dense and harder to read",
+  "invented regulatory clauses and dates read as fact",
+  "dark-only treatment loses the limestone half of the palette"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy blueprint, light headline, mono codes and square corners fit, but the missing steel-blue accent, all-mono density and decorative valves cost a point."
+}

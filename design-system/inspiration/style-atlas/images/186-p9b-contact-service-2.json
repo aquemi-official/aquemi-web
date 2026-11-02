@@ -1,0 +1,126 @@
+{
+ "file": "186-p9b-contact-service-2.png",
+ "prompted_for": "'Response times by request' (contact-service); art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints; concept: steel-blue riser pipe with a valve per severity row branching out to the response and follow-up columns",
+ "section_kind": "router",
+ "style_family": "navy blueprint pipe route",
+ "art_direction": [
+  "technical blueprint on deep navy",
+  "pale blue-white hairline line art",
+  "one steel-blue riser pipe linking every row",
+  "P&ID valve symbols at each branch",
+  "pipe-as-table-connector"
+ ],
+ "composition": [
+  "deep navy ground with a small label, large light headline and one-line subhead at top left",
+  "three uppercase column headers: your request, first response, what follows",
+  "five numbered rows separated by hairline rules, each with a mono number, severity title and short description",
+  "a vertical steel-blue double-line riser runs down between the first and second columns, from a stub at the top to an elbow at row 05",
+  "at each row a branch with gate valve and ball-valve symbols tees off the riser into the first-response cell",
+  "white double-line pipes loop from the left of each row over to the third column, ending above the follow-up text",
+  "wordmark bottom right"
+ ],
+ "layout_devices": [
+  "vertical steel-blue riser as the table spine",
+  "valve cluster per row on the riser",
+  "secondary white pipes routing from row to follow-up column",
+  "mono row numbers 01 to 05",
+  "mixed-size figures: larger mono numbers inside sans sentences",
+  "uppercase small column headers",
+  "hairline row rules"
+ ],
+ "palette": [
+  "deep navy ground",
+  "steel-blue riser pipe",
+  "pale blue-white secondary pipes and valve symbols",
+  "off-white headline and text",
+  "grey-blue hairline rules"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "light sans subhead",
+  "small uppercase sans column headers",
+  "mono row numbers",
+  "regular sans titles, light sans descriptions",
+  "larger mono figures with units inside the response text"
+ ],
+ "rendering": [
+  "flat blueprint line art on navy",
+  "no shading",
+  "flat UI text"
+ ],
+ "line_and_texture": [
+  "double-line pipes with rounded bends",
+  "P&ID valve symbols in hairline",
+  "hairline row rules",
+  "flat fill, no grain"
+ ],
+ "motifs": [
+  "vertical riser pipe",
+  "gate and ball valve symbols",
+  "branch tees",
+  "looping pipe runs",
+  "severity rows"
+ ],
+ "ui_patterns": [
+  "service-level table",
+  "numbered severity rows",
+  "three-column router",
+  "inline emphasised figures"
+ ],
+ "motion_implied": [
+  "water fills the riser top to bottom",
+  "each valve opens as its row reveals",
+  "branch pipes draw across to the follow-up column"
+ ],
+ "mood": [
+  "technical",
+  "reassuring",
+  "orderly",
+  "engineered",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "navy blueprint pipe route web section",
+  "vertical steel-blue double-line riser pipe as table spine",
+  "P&ID gate and ball valve symbols at each branch",
+  "branch tees into each table row",
+  "pale blue-white secondary pipe runs",
+  "deep navy ground",
+  "large light-weight sans headline sentence case",
+  "light sans subhead",
+  "three-column table with hairline row rules",
+  "small uppercase column headers",
+  "mono row numbers 01 to 05",
+  "larger mono figures with units inline",
+  "off-white text on navy",
+  "flat line art, no shading",
+  "process diagram as layout",
+  "single steel-blue accent",
+  "square text blocks",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm technical mood",
+  "service-level table",
+  "blueprint aesthetic",
+  "minimal palette",
+  "riser pipe spine",
+  "valve per row",
+  "branching pipe runs to columns"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on deep navy. Top-left: a small label, a large light-weight off-white sans headline in sentence case and a light subhead. Below, a three-column table with small uppercase headers and hairline row rules, numbered rows in mono, for <CONTENT>. A vertical steel-blue double-line riser pipe runs down between the first two columns, with a P&ID gate valve and ball valve branching into every row, and thin pale blue-white pipes routing across to the last column. Larger mono figures inline. Flat blueprint line art, no shading.",
+ "signature_idea": "Severity rows hang off one steel-blue riser, each with its own valve, so the table reads as a service line that branches by urgency.",
+ "strengths": [
+  "the riser makes a plain service table into a process diagram",
+  "inline mono figures make the response times pop",
+  "navy, one steel-blue accent, light headline and mono numbers are on-brand",
+  "rows stay legible and evenly spaced"
+ ],
+ "weaknesses": [
+  "secondary white pipes loop over text and add clutter without meaning",
+  "row 05 has no response or follow-up, so the pipe ends on an empty row",
+  "invented response times and standards references",
+  "rounded pipe bends are busy against square table rules"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy blueprint with one steel-blue riser, light headline, mono figures and hairline rules fit the brand, but the extra looping pipes add noise."
+}

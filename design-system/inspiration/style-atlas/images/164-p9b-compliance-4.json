@@ -1,0 +1,122 @@
+{
+ "file": "164-p9b-compliance-4.png",
+ "prompted_for": "'Engineering, materials and pressure equipment' (compliance); art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture; concept: skid elevation drawing with five numbered square tags above a 4-column standards table whose rows carry the same numbers",
+ "section_kind": "standards",
+ "style_family": "limestone sheet skid elevation with tagged table",
+ "art_direction": [
+  "skid elevation line drawing",
+  "limestone reading sheet",
+  "numbered square tags linking drawing to table",
+  "four-column standards table",
+  "headline left, drawing right, table below"
+ ],
+ "composition": [
+  "limestone page with wordmark top-left",
+  "large light three-line headline at left",
+  "upper right: a front elevation line drawing of a skid frame with a vessel, valves, pipe runs, flow elements and a control panel",
+  "five small steel-blue square tags with mono numbers placed on leaders around the drawing",
+  "full-width four-column table below (standard, what we design to, proof, where we show it) with five numbered rows and hairline row rules",
+  "double hairline closing rule at the bottom"
+ ],
+ "layout_devices": [
+  "filled steel-blue square tags 01 to 05 on the drawing",
+  "matching mono row numbers in the table's first column",
+  "hairline leaders from tags to equipment",
+  "hairline row rules with an offset short rule at left",
+  "mono standards codes in the second column",
+  "double rule closing the table"
+ ],
+ "palette": [
+  "warm limestone ground",
+  "navy line drawing",
+  "steel-blue square tags with white numbers",
+  "navy text",
+  "grey hairline rules"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "mono standards codes and row numbers",
+  "regular small sans table cells and headers",
+  "mono numbers in tags",
+  "medium sans wordmark"
+ ],
+ "rendering": [
+  "thin-line technical elevation drawing, no shading",
+  "flat UI table"
+ ],
+ "line_and_texture": [
+  "uniform thin strokes in the elevation",
+  "hairline leaders",
+  "hairline table rules",
+  "flat untextured ground"
+ ],
+ "motifs": [
+  "skid frame elevation",
+  "vessel and control panel",
+  "valves and pipe runs",
+  "numbered square tags",
+  "standards codes"
+ ],
+ "ui_patterns": [
+  "tagged diagram linked to a table",
+  "standards evidence table",
+  "headline plus illustration"
+ ],
+ "motion_implied": [
+  "drawing lines draw in",
+  "tags pop in by number",
+  "hovering a table row highlights its tag on the drawing",
+  "rows reveal top to bottom"
+ ],
+ "mood": [
+  "precise",
+  "authoritative",
+  "calm",
+  "technical",
+  "trustworthy"
+ ],
+ "t2i_keywords": [
+  "skid front elevation technical line drawing",
+  "thin navy strokes no shading",
+  "small filled steel-blue square tags with mono numbers",
+  "tags on hairline leaders",
+  "warm limestone page",
+  "large light-weight sans headline sentence case",
+  "four-column standards table below",
+  "numbered rows matching drawing tags",
+  "mono standards codes",
+  "hairline row rules",
+  "double closing rule",
+  "headline left drawing right",
+  "control panel, vessel, valves, pipe runs",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "generous whitespace",
+  "single steel-blue accent",
+  "calm authoritative mood",
+  "drawing linked to data",
+  "engineering datasheet look",
+  "minimal navy limestone palette",
+  "tag-to-row numbering",
+  "offset short rule before row numbers",
+  "equipment datasheet spread"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone background. Top-left: a large light-weight navy sans headline in sentence case. Top-right: a thin-line navy front elevation drawing of an equipment skid with a vessel, valves, pipe runs and a control panel, no shading, with five small filled steel-blue square tags carrying mono numbers on hairline leaders. Below, a full-width four-column table with hairline row rules and numbered rows matching the tags, mono codes in one column, for <CONTENT>. Square corners, calm.",
+ "signature_idea": "Numbered steel-blue tags on a skid elevation match the numbered rows of the standards table, so each standard points to a place on the equipment.",
+ "strengths": [
+  "tag-to-row numbering gives the table a real visual idea",
+  "steel-blue square tags are a disciplined single accent",
+  "mono codes, light headline, hairline rules are on-brand",
+  "clean elevation drawing reads as engineering"
+ ],
+ "weaknesses": [
+  "no navy band; the prompted navy/limestone alternation is missing",
+  "drawing shows a metal vessel and gauges, closer to stainless equipment",
+  "tag placement is loose; some tags point at nothing specific",
+  "table text runs into rules (row 1 and 4 overlap the next rule)",
+  "invented clause numbers and limits read as fact"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Limestone sheet, light headline, mono codes, hairline table and one steel-blue tag colour linking drawing to rows are the brand book closely."
+}

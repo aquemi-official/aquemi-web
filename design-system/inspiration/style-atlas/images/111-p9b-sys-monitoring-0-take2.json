@@ -1,0 +1,118 @@
+{
+ "file": "111-p9b-sys-monitoring-0-take2.png",
+ "prompted_for": "'How the controls are built' (sys-monitoring); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: giant cropped headline on navy over a limestone sheet holding the PLC-HMI-SCADA-DMZ architecture",
+ "section_kind": "process diagram",
+ "style_family": "editorial oversized type limestone sheet",
+ "art_direction": [
+  "editorial magazine spread",
+  "asymmetric layout",
+  "oversized light headline cropped by the left edge",
+  "abstract line-drawn figure as centrepiece",
+  "limestone sheet inside a thin navy frame"
+ ],
+ "composition": [
+  "a limestone sheet fills the frame with a thin navy border showing at the edges",
+  "tiny mono eyebrow top left above a full-width hairline",
+  "large light navy headline on two lines, cropped at the left edge, top left",
+  "an abstract navy line figure, half human silhouette and half geometric construction, stands in the centre",
+  "five numbered items: 01 and 02 stacked on the left, 03-05 stacked on the right, each topped with a short hairline",
+  "small uppercase wordmark bottom right"
+ ],
+ "layout_devices": [
+  "mono uppercase item labels with slash numerals '01 /'",
+  "short hairline rules above each item",
+  "centre figure flanked by text columns",
+  "cropped headline at the frame edge",
+  "full-width hairline under the eyebrow"
+ ],
+ "palette": [
+  "warm limestone sheet",
+  "deep navy frame edge, headline and text",
+  "navy and steel-blue lines in the figure",
+  "no other colour"
+ ],
+ "typography": [
+  "large light-weight sans headline with period, cropped",
+  "mono uppercase item labels with slash numerals",
+  "regular sans body lines",
+  "tiny mono uppercase eyebrow",
+  "small uppercase sans wordmark"
+ ],
+ "rendering": [
+  "flat vector line drawing",
+  "abstract figurative line art",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "uniform hairline and slightly heavier strokes in the figure",
+  "overlapping double lines",
+  "flat untextured paper",
+  "short hairline item rules"
+ ],
+ "motifs": [
+  "abstract human-machine figure",
+  "angular construction lines",
+  "numbered items",
+  "frame edge"
+ ],
+ "ui_patterns": [
+  "two-column numbered list around a central image",
+  "eyebrow + display headline"
+ ],
+ "motion_implied": [
+  "figure lines draw in stroke by stroke",
+  "items fade in by number around the figure",
+  "headline slides in from the left edge"
+ ],
+ "mood": [
+  "editorial",
+  "artful",
+  "calm",
+  "abstract",
+  "ambiguous"
+ ],
+ "t2i_keywords": [
+  "editorial magazine spread web section",
+  "warm limestone sheet with thin navy frame edge",
+  "large light-weight sans headline cropped by left edge",
+  "abstract line-drawn figure as centrepiece",
+  "navy and steel-blue hairline line art",
+  "numbered items flanking a central image",
+  "mono uppercase labels with slash numerals",
+  "short hairline rule above each item",
+  "tiny mono uppercase eyebrow over full-width hairline",
+  "asymmetric two-column text around figure",
+  "flat vector line drawing, no shading",
+  "square corners",
+  "generous negative space",
+  "small uppercase wordmark bottom right",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "regular sans body lines",
+  "calm editorial mood",
+  "headline with full stop",
+  "navy ink on limestone paper",
+  "geometric construction lines",
+  "poster-like centre figure",
+  "no cards no boxes",
+  "airy layout",
+  "monochrome navy palette"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in editorial magazine style on a warm limestone sheet with a thin navy frame edge. A tiny mono eyebrow over a full-width hairline, then a large light-weight sans headline on two lines cropped by the left edge. In the centre, one striking navy and steel-blue hairline line drawing of <CONTENT>. Five numbered items flank it, two on the left and three on the right, each with a short hairline, a mono uppercase label with slash numeral and two lines of sans body. Flat, no shading, square corners, generous space.",
+ "signature_idea": "A cropped light headline and one large abstract line figure in the centre, with the five control layers set as numbered notes on either side.",
+ "strengths": [
+  "calm, spacious editorial layout with clear numbered items",
+  "light cropped headline and mono slash labels are on-brand",
+  "monochrome navy on limestone with square corners",
+  "text is legible and evenly spaced"
+ ],
+ "weaknesses": [
+  "central figure is a meaningless human-like scribble, not the PLC-HMI-SCADA-DMZ architecture",
+  "items do not connect to the figure; no leaders",
+  "lost the navy field from the brief; only a thin frame edge remains",
+  "figure looks unresolved, with crossing lines and an odd seated pose",
+  "'online' and 'PLC' show small typographic glitches (underline, small-caps)"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Typography, palette and spacing fit the brand, but the centrepiece is an abstract figure with no technical meaning, which is not precise."
+}

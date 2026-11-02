@@ -1,0 +1,119 @@
+{
+ "file": "175-p9b-cmp-quality-4.png",
+ "prompted_for": "'How buying from us works' (cmp-quality); art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture; concept: numbered commercial-terms table beside an isometric skid frame bleeding off the right edge",
+ "section_kind": "spec/limits",
+ "style_family": "isometric skid frame table",
+ "art_direction": [
+  "limestone reading sheet",
+  "numbered terms table",
+  "isometric skid line drawing bleeding off the right edge",
+  "light headline over ruled table"
+ ],
+ "composition": [
+  "limestone page with a small sans eyebrow and a one-line large light navy headline top-left",
+  "left ~70%: a three-column table with five numbered rows, open-sided with hairline rules",
+  "right ~30%: a grey isometric line drawing of a long skid frame with an enclosure and two cylinders, cropped by the top and right edges",
+  "a black UI bar with two chat titles overlaps the bottom-left (screenshot artifact, not part of the design)",
+  "no navy band visible; the whole frame is one limestone sheet"
+ ],
+ "layout_devices": [
+  "mono row numerals 01 to 05",
+  "two-line row labels in regular sans",
+  "vertical and horizontal hairline table rules, open sides",
+  "middle-dot separators inside note cells",
+  "drawing bleeding off the right and top edges"
+ ],
+ "palette": [
+  "warm limestone page ground",
+  "deep navy headline and table text",
+  "mid grey isometric line drawing",
+  "no accent colour",
+  "black overlay bar from the capture"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "small regular sans eyebrow",
+  "mono row numerals",
+  "regular sans row labels and headers",
+  "small regular sans cell text"
+ ],
+ "rendering": [
+  "flat vector page",
+  "grey hairline isometric line drawing",
+  "no shading, no image"
+ ],
+ "line_and_texture": [
+  "navy hairline table rules",
+  "fine grey isometric frame lines with tube profiles",
+  "flat paper with faint grain",
+  "square corners"
+ ],
+ "motifs": [
+  "isometric skid frame",
+  "cylindrical vessels",
+  "control enclosure",
+  "numbered terms table"
+ ],
+ "ui_patterns": [
+  "eyebrow plus headline",
+  "three-column terms table",
+  "illustration bleeding off the edge"
+ ],
+ "motion_implied": [
+  "skid drawing lines draw in from the right edge",
+  "table rows reveal in order",
+  "skid slowly slides in as the section scrolls"
+ ],
+ "mood": [
+  "calm",
+  "practical",
+  "orderly",
+  "plain",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "warm limestone reading sheet",
+  "large light-weight navy sans-serif headline",
+  "headline in sentence case",
+  "small sans eyebrow",
+  "three-column numbered terms table",
+  "mono row numerals 01 to 05",
+  "open-sided hairline table rules",
+  "regular sans cell text",
+  "middle-dot separators in notes",
+  "isometric skid line drawing bleeding off the right edge",
+  "grey hairline equipment drawing",
+  "skid frame with tube profiles",
+  "drawing cropped by top and right edges",
+  "table left, drawing right",
+  "flat vector, no shading",
+  "square corners",
+  "no accent colour",
+  "navy text on limestone",
+  "generous row spacing",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm practical mood",
+  "technical commercial terms layout",
+  "line drawing as backdrop",
+  "quiet engineering sheet"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone reading sheet. Top-left: a small sans eyebrow and a large light-weight navy sans-serif headline in sentence case. Left two thirds: an open-sided three-column table with navy hairline rules and five numbered rows with mono numerals, holding <CONTENT>. Right: a grey hairline isometric line drawing of a long equipment skid frame with tube profiles, cropped by the top and right edges so it bleeds off the page. Flat, no shading, square corners, calm and practical.",
+ "signature_idea": "A plain numbered terms table with an isometric skid frame drawing bleeding off the right edge as a quiet backdrop.",
+ "strengths": [
+  "light headline, mono numerals and limestone sheet fit the brand",
+  "table is readable with generous row spacing",
+  "bleeding skid drawing adds equipment context without competing",
+  "easy to build from existing table and illustration parts"
+ ],
+ "weaknesses": [
+  "mostly a plain table with a backdrop drawing, little visual idea",
+  "the requested navy band is missing, so there is no navy-limestone alternation",
+  "skid shows aluminium-profile framing and gas-bottle-like cylinders, not a PP water skid",
+  "invented commercial terms (percentages, validity, warranty) read as real offers",
+  "hype phrases in notes break the brand voice",
+  "black chat-title bar from the capture overlaps the bottom-left"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, light headline, mono numerals, hairline rules and square corners fit, but no navy or accent and an off-offer skid drawing."
+}

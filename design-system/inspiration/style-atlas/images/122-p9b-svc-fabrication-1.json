@@ -1,0 +1,124 @@
+{
+ "file": "122-p9b-svc-fabrication-1.png",
+ "prompted_for": "'Our fabrication standard' (svc-fabrication); art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it; concept: full-bleed duotone macro of a fusion bead, its contour traced and numbered, standard table at right",
+ "section_kind": "spec/limits",
+ "style_family": "duotone macro callout table",
+ "art_direction": [
+  "full-bleed photographic macro",
+  "duotone navy and limestone",
+  "shallow depth of field",
+  "hairline contour tracing and numbered callouts",
+  "table overlaid on the photo"
+ ],
+ "composition": [
+  "full-bleed macro of a pale curved bead or pipe surface sweeping diagonally from bottom-left to top-right, navy shadows in the corners",
+  "small uppercase eyebrow and large light headline top-left over dark navy",
+  "left-centre: the bead's contour traced in a steel-blue hairline with numbered leader lines 01-05 fanning to both sides",
+  "right ~45%: a four-column table with numbered rows over the photo, hairline row rules",
+  "table sits partly over the bright highlight of the photo"
+ ],
+ "layout_devices": [
+  "traced contour outline on the photo",
+  "numbered leader-line callouts ending in dots",
+  "mono callout numbers",
+  "numbered table rows 01-05 matching callouts",
+  "hairline table header and row rules",
+  "right-angle mark on the contour"
+ ],
+ "palette": [
+  "deep navy shadows",
+  "limestone and pale grey photo highlights",
+  "steel-blue hairline tracing and callout numbers",
+  "off-white headline and table text"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small uppercase sans eyebrow with dot separator",
+  "small sans table headers",
+  "regular sans table body",
+  "mono row and callout numbers"
+ ],
+ "rendering": [
+  "photo-real macro duotone",
+  "shallow depth of field blur",
+  "flat UI table over photo",
+  "crisp vector hairline annotation"
+ ],
+ "line_and_texture": [
+  "steel-blue hairline contour",
+  "thin leader lines with dot ends",
+  "soft photographic grain and blur",
+  "hairline table rules"
+ ],
+ "motifs": [
+  "fusion bead macro",
+  "traced contour",
+  "numbered callouts",
+  "standard table",
+  "polypropylene surface"
+ ],
+ "ui_patterns": [
+  "annotated hero image",
+  "numbered spec table",
+  "callout-to-row numbering"
+ ],
+ "motion_implied": [
+  "contour traces itself around the bead",
+  "callouts extend one by one",
+  "photo slowly shifts focus",
+  "table rows reveal in sync with callouts"
+ ],
+ "mood": [
+  "tactile",
+  "precise",
+  "premium",
+  "calm",
+  "material"
+ ],
+ "t2i_keywords": [
+  "full-bleed photographic macro",
+  "duotone deep navy and limestone",
+  "polypropylene butt-fusion bead close-up",
+  "shallow depth of field",
+  "diagonal sweep of pale material",
+  "steel-blue hairline contour tracing",
+  "numbered leader-line callouts",
+  "mono callout numbers 01-05",
+  "dot-terminated leader lines",
+  "table overlaid on photo",
+  "four-column hairline table",
+  "large light-weight sans headline sentence case",
+  "small uppercase eyebrow",
+  "off-white text on navy",
+  "dark navy vignette corners",
+  "soft photographic blur",
+  "crisp vector annotations over photo",
+  "square corners",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "premium material close-up mood",
+  "calm technical",
+  "one accent colour",
+  "generous negative space top-left",
+  "contour traced over macro photo",
+  "callout numbers matching table rows"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup over a full-bleed photographic macro: a pale polypropylene butt-fusion bead sweeping diagonally, duotone deep navy and limestone, shallow depth of field, navy shadows in the corners. Top-left: a small uppercase eyebrow and a large light-weight sans headline. Over the bead, its contour traced in a crisp steel-blue hairline with numbered dot-terminated leader lines. On the right, a hairline table with mono-numbered rows overlaid on the photo for <CONTENT>. Square corners, no cards, no shadows.",
+ "signature_idea": "The weld itself becomes the diagram: its contour traced and numbered over a duotone macro, each number a row in the standard table beside it.",
+ "strengths": [
+  "shows the real material story (PP fusion) up close",
+  "duotone keeps the photo inside the navy/limestone palette",
+  "traced contour plus numbers is a distinctive, ownable device",
+  "light headline and mono numbers are on-brand",
+  "table reads cleanly on the dark area"
+ ],
+ "weaknesses": [
+  "callout numbers duplicated (01 and 02 appear twice) and do not map clearly",
+  "traced contour does not match the bead shape",
+  "table text over the bright highlight loses contrast",
+  "photo subject is ambiguous, could be any pipe",
+  "invented standard references and figures"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Duotone navy/limestone, steel-blue hairlines, light headline and mono numbers fit; muddled callouts and a busy photo behind the table cost calm and precision."
+}

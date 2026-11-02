@@ -1,0 +1,119 @@
+{
+ "file": "140-p9b-svc-service-3.png",
+ "prompted_for": "'What a maintenance visit covers' (svc-service); art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture; concept: navy band with a line-drawn skid and visit checks along its base, the signed report as a closing limestone line",
+ "section_kind": "steps/timeline",
+ "style_family": "navy drawing band isometric skid",
+ "art_direction": [
+  "navy drawing band between limestone sheets",
+  "isometric line drawing of a skid on navy",
+  "numbered checks along the band's base",
+  "closing limestone line for the outcome",
+  "one picture per band"
+ ],
+ "composition": [
+  "limestone top strip with wordmark left and small eyebrow plus large light headline offset right",
+  "a full-width navy band holding a large isometric white-line drawing of an RO/treatment skid with tank, vessels, cabinet and a pipe loop",
+  "five numbered check notes in a row along the base of the band",
+  "two of the notes (01, 04) duplicated at the top of the band",
+  "a limestone closing strip with a single line '06 Signed report…' in large light sans, with a small notch connecting it to the band"
+ ],
+ "layout_devices": [
+  "full-bleed navy band as the picture",
+  "numbered checks 01-05 along the band base",
+  "closing outcome line numbered 06 on limestone",
+  "small V-notch where band meets closing strip",
+  "headline offset to align with content column"
+ ],
+ "palette": [
+  "deep navy band",
+  "warm limestone strips",
+  "white and pale steel-blue line drawing",
+  "steel-blue row numbers",
+  "off-white text on navy, navy text on limestone"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small sans eyebrow and wordmark",
+  "regular sans check names, small sans notes",
+  "steel-blue sans/mono numerals 01-05",
+  "large light sans closing line"
+ ],
+ "rendering": [
+  "isometric line drawing, white hairlines on navy (blueprint)",
+  "no shading, no fills",
+  "flat bands, no shadows"
+ ],
+ "line_and_texture": [
+  "uniform white and steel-blue hairlines",
+  "flat fills",
+  "square corners"
+ ],
+ "motifs": [
+  "isometric skid with membrane housings, tank and cabinet",
+  "pipe loop",
+  "numbered checks",
+  "signed report line"
+ ],
+ "ui_patterns": [
+  "full-bleed illustrated band",
+  "numbered checklist row",
+  "closing outcome statement"
+ ],
+ "motion_implied": [
+  "skid drawing draws in on scroll",
+  "checks appear left to right along the base",
+  "closing line types in last like a signature"
+ ],
+ "mood": [
+  "calm",
+  "technical",
+  "confident",
+  "blueprint-like"
+ ],
+ "t2i_keywords": [
+  "full-width deep navy drawing band",
+  "isometric white line drawing of a water treatment skid",
+  "blueprint white hairlines on navy",
+  "no shading, no hatching",
+  "warm limestone top and bottom strips",
+  "numbered checks in a row along band base",
+  "steel-blue numerals 01",
+  "closing outcome line on limestone",
+  "large light-weight sans headline sentence case",
+  "small sans eyebrow",
+  "headline offset right",
+  "small V-notch between band and strip",
+  "off-white text on navy",
+  "flat, no shadows",
+  "square corners",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "alternating navy band and limestone sheet",
+  "one picture per band",
+  "calm technical mood",
+  "minimal palette navy limestone steel-blue",
+  "generous navy space around drawing",
+  "membrane housings and tank",
+  "pipe loop line art",
+  "white linework on navy",
+  "large light closing statement",
+  "eyebrow above headline"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup. A warm limestone top strip with a small eyebrow and a large light-weight sans headline. Below, a full-width deep navy band holding one large isometric line drawing of a polypropylene water skid in white and pale steel-blue hairlines, no shading. Along the base of the band, a row of numbered short notes for <CONTENT> with steel-blue numerals. A limestone closing strip carries one large light sans line as the outcome. Square corners, flat, calm and technical.",
+ "signature_idea": "One navy band shows the whole skid as a blueprint while the visit's checks line up along its base, closed by a single signed-report line.",
+ "strengths": [
+  "band-and-sheet rhythm is clear and on-brand",
+  "white line drawing on navy is the brand's blueprint language",
+  "closing outcome line on limestone is a strong, simple ending",
+  "light headline and steel-blue numerals fit the type system"
+ ],
+ "weaknesses": [
+  "checks 01 and 04 are duplicated at the top of the band",
+  "check labels do not point to any part of the drawing",
+  "skid shows UV, EDI, softener tank and a metal-looking cabinet, drifting off-offer",
+  "bottom notes crowd into the drawing and overlap it",
+  "the notch connecting band and closing strip is unexplained"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy band, limestone strips, white blueprint linework, light headline and steel-blue numerals fit closely, but duplicated notes and unlinked labels weaken it."
+}

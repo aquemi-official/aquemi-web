@@ -1,0 +1,123 @@
+{
+ "file": "119-p9b-svc-design-2.png",
+ "prompted_for": "'What you receive' (svc-design); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: limestone drawing sheet: dimensioned plant elevation, four deliverables as drawing notes, title block",
+ "section_kind": "documents",
+ "style_family": "limestone drawing sheet",
+ "art_direction": [
+  "engineering drawing sheet on limestone paper",
+  "fine navy border frame",
+  "dimensioned plant elevation",
+  "numbered drawing notes",
+  "title block bottom right"
+ ],
+ "composition": [
+  "whole section framed as one drawing sheet with a thin navy border",
+  "small mono eyebrow above a very large light navy headline, top-left",
+  "left ~60%: a wide front elevation of a treatment plant (vessels on legs, cartridge housings, tank, pumps) with dimension chains above and below",
+  "right ~30%: four numbered deliverables in mono as a notes column, with a hairline vertical rule at its left",
+  "title block with grid cells at the bottom-right corner touching the border",
+  "generous empty limestone around the headline"
+ ],
+ "layout_devices": [
+  "sheet border as the section frame",
+  "numbered notes list 1-4 in mono",
+  "dimension lines with ticks and extension lines around the drawing",
+  "title block cells carrying section name and company",
+  "hairline divider beside the notes column"
+ ],
+ "palette": [
+  "warm limestone paper ground",
+  "deep navy headline, linework and border",
+  "no accent colour used",
+  "faint grey for dimension text"
+ ],
+ "typography": [
+  "very large light-weight sans headline in sentence case",
+  "small mono eyebrow",
+  "mono numbered notes in regular weight",
+  "tiny mono in the title block"
+ ],
+ "rendering": [
+  "flat navy hairline line drawing, orthographic elevation",
+  "no shading, no shadows",
+  "flat paper ground"
+ ],
+ "line_and_texture": [
+  "uniform navy hairlines",
+  "dimension chains with tick terminators",
+  "fine frame border",
+  "light hatch fill in one vessel (level indication)",
+  "flat untextured paper"
+ ],
+ "motifs": [
+  "drawing sheet with title block",
+  "vessels on legs and cartridge filter housings",
+  "pipework with valves and gauges",
+  "dimension chains",
+  "numbered notes"
+ ],
+ "ui_patterns": [
+  "numbered deliverables list",
+  "framed section card",
+  "header with eyebrow"
+ ],
+ "motion_implied": [
+  "elevation draws in line by line",
+  "dimension chains extend after the drawing",
+  "notes appear in sequence",
+  "title block fills in last"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "documentary",
+  "quiet",
+  "engineered"
+ ],
+ "t2i_keywords": [
+  "limestone paper engineering drawing sheet",
+  "fine navy border frame",
+  "title block bottom right corner",
+  "very large light-weight navy sans headline",
+  "small mono eyebrow",
+  "orthographic front elevation line drawing",
+  "navy hairline linework",
+  "dimension chains with tick marks",
+  "extension lines above and below drawing",
+  "numbered notes column in monospace",
+  "hairline vertical rule beside notes",
+  "vessels on legs and cartridge filter housings",
+  "pipework with small valve symbols",
+  "no shading, no hatching",
+  "flat paper ground, no texture",
+  "generous empty space",
+  "square corners",
+  "one navy ink colour only",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm documentary mood",
+  "technical drawing aesthetic",
+  "drawing notes as content list",
+  "orderly grid alignment",
+  "blank paper margins around headline",
+  "engineering sheet as section frame"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section drawn as one engineering drawing sheet on warm limestone paper, framed by a fine navy border, with a gridded title block at the bottom-right corner. Top-left: a small mono eyebrow and a very large light-weight navy sans headline. Left: a wide orthographic front elevation of white polypropylene process equipment in uniform navy hairlines, no shading, with dimension chains above and below. Right: a narrow column of numbered mono drawing notes for <CONTENT>, beside a hairline rule. Flat, square corners, lots of empty paper.",
+ "signature_idea": "The section is the drawing sheet: deliverables are written as numbered drawing notes beside a dimensioned elevation, signed off in a title block.",
+ "strengths": [
+  "directly expresses 'engineering documents' as the deliverable",
+  "very calm: one ink, lots of paper, light headline",
+  "numbered notes are a clean, buildable list pattern",
+  "title block is a distinctive, brand-specific closing device",
+  "square, precise and quiet"
+ ],
+ "weaknesses": [
+  "elevation is generic process equipment that reads as stainless vessels on legs, not PP",
+  "no steel-blue accent, so nothing leads the eye",
+  "dimension chains carry blank or meaningless labels",
+  "title block content is filler",
+  "drawing and notes are not linked, notes do not reference parts of it"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Limestone paper, navy hairlines, light headline, mono notes and square framing are on-brand and calm; only the missing accent and generic vessels hold it back slightly."
+}

@@ -1,0 +1,120 @@
+{
+ "file": "163-p9b-ind-cdmo-3.png",
+ "prompted_for": "'From signed program to released water' (ind-cdmo); art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching; concept: four numbered steps with steel-blue placeholder figures beside a ring of isometric line-drawn PP modules",
+ "section_kind": "steps/timeline",
+ "style_family": "isometric catalogue line drawing",
+ "art_direction": [
+  "isometric technical line drawing",
+  "catalogue illustration",
+  "numbered step list",
+  "isolated object on the ground",
+  "text left, drawing right split"
+ ],
+ "composition": [
+  "pale limestone page with a small mono eyebrow top-left",
+  "large light two-line headline top-left",
+  "left ~45%: four numbered steps stacked vertically, each a mono number, a mono title and a short mono note with one steel-blue figure",
+  "right ~55%: an isometric line drawing of white box modules, a cylinder tank and filter housings arranged in a ring and joined by short pipes",
+  "five plain-text labels around the drawing on hairline leaders"
+ ],
+ "layout_devices": [
+  "mono step numbers 01 to 04 hanging in a left column",
+  "steel-blue inline figures as placeholder values",
+  "hairline leader-line labels around the object",
+  "object isolated without frame",
+  "two-column split"
+ ],
+ "palette": [
+  "pale limestone ground",
+  "white equipment fills",
+  "navy outline strokes",
+  "navy text",
+  "steel-blue inline figures"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "mono step numbers and step titles",
+  "mono body notes",
+  "small sans drawing labels",
+  "small mono eyebrow"
+ ],
+ "rendering": [
+  "isometric thin-line drawing, white fills, no shading or hatching",
+  "flat UI text column"
+ ],
+ "line_and_texture": [
+  "uniform medium strokes on the equipment",
+  "hairline leaders",
+  "flat untextured ground"
+ ],
+ "motifs": [
+  "ring of modular boxes",
+  "cylinder tank",
+  "filter housings",
+  "pipe fittings and nozzles",
+  "numbered steps",
+  "steel-blue placeholder figures"
+ ],
+ "ui_patterns": [
+  "numbered step list",
+  "annotated product illustration",
+  "eyebrow plus headline"
+ ],
+ "motion_implied": [
+  "steps reveal top to bottom",
+  "modules draw in around the ring in step order",
+  "labels fade in on leaders",
+  "figures count up"
+ ],
+ "mood": [
+  "clear",
+  "approachable",
+  "technical",
+  "calm",
+  "orderly"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "catalogue illustration of white modular equipment",
+  "uniform strokes white fills no shading no hatching",
+  "object isolated on pale limestone ground",
+  "ring of modular boxes joined by short pipes",
+  "cylinder tank and filter housings",
+  "hairline leader-line labels",
+  "numbered steps 01 to 04 in a left column",
+  "mono step titles and notes",
+  "steel-blue inline figures",
+  "large light-weight sans headline sentence case",
+  "small mono eyebrow",
+  "navy outlines and text",
+  "text left drawing right",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "generous whitespace",
+  "calm orderly mood",
+  "precise catalogue look",
+  "minimal navy limestone steel-blue palette",
+  "mono step numbers hanging left",
+  "filter housings and nozzles",
+  "toy-like clean modular boxes",
+  "no frame around illustration"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a pale limestone background. A small mono eyebrow and a large light-weight navy sans headline in sentence case at top-left. Left column: four numbered steps, each a mono number, a mono title and a short note for <CONTENT>, with key figures in steel blue. Right: an isometric technical line drawing of white modular polypropylene equipment arranged in a ring and joined by short pipes, uniform navy strokes, white fills, no shading or hatching, with a few hairline leader labels. Calm, precise.",
+ "signature_idea": "Steps run down a mono column beside a ring of isometric line-drawn PP modules, like a catalogue spread.",
+ "strengths": [
+  "clean isometric catalogue drawing fits the brand's line-art direction",
+  "steel-blue inline figures are a disciplined single accent",
+  "light headline and lots of space",
+  "step list is simple and buildable"
+ ],
+ "weaknesses": [
+  "drawing labels are redundant and garbled (polypropylene modular equipment twice)",
+  "steps and drawing do not connect; modules are not numbered to steps",
+  "mono for whole step bodies is dense and less readable",
+  "strokes are heavier than hairline, blocky toy-like modules",
+  "invented durations shown as figures"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Light headline, mono figures, one steel-blue accent and isometric line art fit; generic labels and the unlinked drawing cost a point."
+}

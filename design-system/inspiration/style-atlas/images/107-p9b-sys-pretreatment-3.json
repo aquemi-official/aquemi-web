@@ -1,0 +1,124 @@
+{
+ "file": "107-p9b-sys-pretreatment-3.png",
+ "prompted_for": "'Chlorine or chloramine: the removal step' (sys-pretreatment); art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture; concept: decision table with carbon-bed vessels drawn inside it, numbered pins linking rows to vessels",
+ "section_kind": "router",
+ "style_family": "limestone hairline table sheet",
+ "art_direction": [
+  "limestone reading sheet",
+  "decision table with embedded line drawing",
+  "navy hairline schematic",
+  "numbered pin callouts",
+  "quiet engineering document"
+ ],
+ "composition": [
+  "small breadcrumb label top left above a large light two-line headline",
+  "a five-zone row: three table columns at left, a vessel drawing occupying the fourth column slot, a 'watch for' column at far right",
+  "four numbered rows separated by hairline rules span the full width, passing behind the drawing",
+  "three tall carbon-bed vessels with piping loops above sit between the 'removes' and 'watch for' columns",
+  "small wordmark bottom left over a full-width footer hairline",
+  "no navy band: the whole section is one limestone sheet"
+ ],
+ "layout_devices": [
+  "mono uppercase column headers with right-aligned 01-04 column numbers",
+  "mono row numbers 01-04 in the left gutter",
+  "row hairlines that run into the drawing and end at small navy numbered pins on the vessels",
+  "drawing placed as a table column rather than beside the table",
+  "one vessel shows a pale fill level as a breakthrough cue"
+ ],
+ "palette": [
+  "warm limestone ground",
+  "deep navy headline, text and line art",
+  "muted navy-grey numbered pin discs",
+  "white fill inside one vessel",
+  "no accent colour used"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small mono uppercase column headers",
+  "mono row and column numerals",
+  "regular sans body in table cells",
+  "small sans breadcrumb and wordmark"
+ ],
+ "rendering": [
+  "flat vector navy hairline line drawing",
+  "no shading",
+  "flat UI table"
+ ],
+ "line_and_texture": [
+  "uniform hairline strokes for vessels and pipes",
+  "hairline row rules and heavier header rule",
+  "flat untextured paper ground",
+  "rounded vessel heads and pipe bends inside the drawing"
+ ],
+ "motifs": [
+  "carbon-bed pressure vessels",
+  "series piping loops",
+  "numbered pin markers",
+  "fill level in a vessel",
+  "decision rows"
+ ],
+ "ui_patterns": [
+  "comparison/decision table",
+  "row-to-drawing pin linking",
+  "breadcrumb label",
+  "numbered columns"
+ ],
+ "motion_implied": [
+  "hovering a row highlights its pin and vessel",
+  "row rules draw left to right into the drawing",
+  "fill level in the vessel rises",
+  "pins pop in by number"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "documentary",
+  "technical",
+  "quiet"
+ ],
+ "t2i_keywords": [
+  "limestone paper sheet web section",
+  "decision table with embedded technical drawing",
+  "navy hairline line drawing of pressure vessels",
+  "row rules running into the drawing",
+  "small numbered pin discs on the drawing",
+  "mono uppercase column headers with numbers",
+  "mono row numerals in left gutter",
+  "large light-weight sans headline sentence case",
+  "small breadcrumb label above headline",
+  "drawing occupies a table column",
+  "four hairline-separated rows",
+  "flat vector, no shading",
+  "uniform hairline strokes",
+  "square corners",
+  "warm limestone ground with deep navy ink",
+  "generous white space",
+  "piping loops connecting vessels",
+  "subtle fill level inside a vessel",
+  "full-width footer hairline",
+  "small wordmark bottom left",
+  "straight-on flat UI mockup",
+  "1440 px desktop section",
+  "engineering document feel",
+  "no accent colour",
+  "calm precise mood",
+  "regular sans table body"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on warm limestone paper. Top left: a small breadcrumb and a large light-weight sans headline in sentence case. Below, a four-row decision table with mono uppercase column headers numbered 01-04 and mono row numbers; one column slot is filled by a navy hairline line drawing of <CONTENT>, and each row's hairline rule runs into the drawing and ends at a small numbered pin. Deep navy ink only, uniform hairline strokes, no shading, square corners, generous space, full-width footer rule with a small wordmark.",
+ "signature_idea": "The drawing is a column of the table: each row's hairline runs into the vessels and ends on a numbered pin.",
+ "strengths": [
+  "rows physically link to the equipment they describe",
+  "very calm and legible: light headline, mono numbering, hairline rules",
+  "palette is strictly navy on limestone with square corners",
+  "buildable as a table with an inline SVG column"
+ ],
+ "weaknesses": [
+  "ignored the art direction: no navy drawing band, one limestone sheet only",
+  "pins do not map cleanly; row 01 and 04 pins overlap the same vessel area and the 'watch for' pin 04 sits on row 1",
+  "no steel-blue accent, so nothing leads the eye",
+  "rounded vessel heads and pipe bends are fine but the third vessel's fill reads as decoration",
+  "cell copy is invented treatment advice, not facts"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy hairline on limestone, light headline and mono numerals are on-brand and calm, but it skips the navy band and the pin logic is muddled."
+}

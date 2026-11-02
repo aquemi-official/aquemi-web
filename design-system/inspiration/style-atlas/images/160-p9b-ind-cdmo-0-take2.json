@@ -1,0 +1,121 @@
+{
+ "file": "160-p9b-ind-cdmo-0-take2.png",
+ "prompted_for": "'Start from your situation' (ind-cdmo); art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules; concept: 4-column situation router table on a navy zone-bordered drawing sheet with title block",
+ "section_kind": "router",
+ "style_family": "navy drawing sheet form blocks",
+ "art_direction": [
+  "engineering drawing sheet on navy",
+  "ruler-ticked zone border",
+  "corner crop marks",
+  "separate boxed table blocks with limestone header bars",
+  "title block bottom-right"
+ ],
+ "composition": [
+  "deep navy sheet with a hairline border carrying fine ruler ticks, zone numbers 1 to 3 and letters A to C, and white crop-mark brackets at the top-right corner",
+  "large light white headline top-left with no eyebrow",
+  "four separate boxed table blocks arranged in a loose grid, each with a limestone header bar holding a label and a small mono code",
+  "most cells empty; one block lists five situations as rows",
+  "large title block in the bottom-right quarter with Title, Date and Contact cells"
+ ],
+ "layout_devices": [
+  "limestone header bars on boxed blocks",
+  "small mono drawing codes in header bars (SECT-01, SYS-99, DWG-880)",
+  "ruler-tick border with zone references",
+  "corner crop-mark brackets",
+  "title block grid",
+  "empty ruled cells like a blank form"
+ ],
+ "palette": [
+  "deep navy ground",
+  "warm limestone header bars",
+  "pale blue-white hairlines and ticks",
+  "white headline and cell text",
+  "navy text on limestone bars",
+  "no steel-blue accent"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "regular sans header labels and row text",
+  "small mono drawing codes and title block labels",
+  "mono zone numbers on the border"
+ ],
+ "rendering": [
+  "flat vector drawing-sheet frame",
+  "flat boxed form blocks",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "fine ruler ticks along every border edge",
+  "hairline cell grids",
+  "white L-shaped crop marks",
+  "flat navy ground"
+ ],
+ "motifs": [
+  "drawing sheet",
+  "title block",
+  "drawing codes",
+  "blank form tables",
+  "crop marks"
+ ],
+ "ui_patterns": [
+  "boxed data tables with header bars",
+  "blank form layout",
+  "title block footer"
+ ],
+ "motion_implied": [
+  "border ticks draw around the sheet",
+  "header bars slide in then cells rule in",
+  "title block fills in last"
+ ],
+ "mood": [
+  "technical",
+  "bureaucratic",
+  "orderly",
+  "unfinished",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "engineering drawing sheet on deep navy",
+  "ruler-tick border with zone numbers and letters",
+  "corner crop-mark brackets",
+  "boxed table blocks with limestone header bars",
+  "small mono drawing codes in header bars",
+  "title block with title, date and contact cells",
+  "pale blue-white hairline grids",
+  "large light-weight white sans headline",
+  "regular sans row text",
+  "navy and limestone two-tone",
+  "flat vector no shading",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "technical form layout",
+  "blank ruled cells",
+  "calm technical mood",
+  "document frame as section container",
+  "mono zone references",
+  "modular block arrangement",
+  "white L-shaped corner marks",
+  "fine ruler ticks along every edge",
+  "loose grid of separate table boxes",
+  "label left code right in header bar",
+  "technical drawing title block"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup styled as an engineering drawing sheet on deep navy. A pale hairline border with fine ruler ticks and mono zone references, and white crop-mark brackets at one corner. A large light-weight white sans headline top-left. Below, a few square boxed table blocks in a grid, each with a warm limestone header bar carrying a label and a small mono drawing code, and hairline-ruled rows for <CONTENT>. A title block with mono labels in the bottom-right. Flat, no shading.",
+ "signature_idea": "Each router column becomes its own drawing-sheet block with a limestone header bar and a mono drawing code, like parts of a title-blocked sheet.",
+ "strengths": [
+  "limestone header bars with mono codes are a nice reusable device",
+  "ruler-tick border and crop marks add precision",
+  "navy and limestone two-tone is on-brand",
+  "light headline and square corners fit"
+ ],
+ "weaknesses": [
+  "content is broken: most cells are empty and columns are scattered",
+  "duplicated 'Systems' blocks and repeated DWG-880 code",
+  "reads as a blank form, not a router; no situation-to-action link",
+  "invented drawing codes look like real document numbers",
+  "large empty title block wastes space"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Palette and frame are on-brand, but the router has collapsed into empty, duplicated form blocks that carry no content."
+}

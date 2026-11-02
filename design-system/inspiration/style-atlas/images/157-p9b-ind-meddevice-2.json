@@ -1,0 +1,125 @@
+{
+ "file": "157-p9b-ind-meddevice-2.png",
+ "prompted_for": "'Systems for device plants' (ind-meddevice); art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing; concept: four system links as slash-numbered navy/limestone tiles, one blueprint tile and one abstract steel-blue tile",
+ "section_kind": "options",
+ "style_family": "swiss navy limestone tile grid",
+ "art_direction": [
+  "Swiss International Typographic Style",
+  "strict 3x2 modular tile grid",
+  "navy and limestone checkerboard",
+  "huge numerals with slash",
+  "one blueprint tile and one abstract colour-block tile"
+ ],
+ "composition": [
+  "white page with hamburger icon top-left and wordmark top-right",
+  "small eyebrow then a large light headline top-left",
+  "3-column by 2-row grid of near-square tiles with even gutters",
+  "tiles 01 to 04 alternate navy and limestone, each with a huge mono-like numeral, a hairline rule, a title and a two-line note",
+  "bottom-middle tile: navy blueprint of a skid with vessels, piping and a control panel in pale-blue line",
+  "bottom-right tile: abstract perspective of limestone, steel-blue and navy planes like a room corner"
+ ],
+ "layout_devices": [
+  "huge slash numerals 01/ to 04/",
+  "hairline rule under each numeral",
+  "alternating navy and limestone tiles",
+  "image tile breaking the text rhythm",
+  "abstract colour-block tile as pure rhythm",
+  "even gutters on white"
+ ],
+ "palette": [
+  "deep navy tiles",
+  "warm limestone tiles",
+  "white page ground",
+  "pale-blue blueprint lines on navy",
+  "one flat steel-blue plane",
+  "white and navy text"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "very large mono-style numerals with slash",
+  "regular sans tile titles",
+  "small sans tile notes",
+  "small grey eyebrow"
+ ],
+ "rendering": [
+  "flat vector colour blocks",
+  "thin-line blueprint drawing on navy",
+  "flat geometric perspective planes",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "hairline rules under numerals",
+  "fine blueprint equipment lines",
+  "flat fills, no grain",
+  "crisp square tile edges"
+ ],
+ "motifs": [
+  "slash-numbered tiles",
+  "skid blueprint with vessels and control panel",
+  "abstract room-corner planes",
+  "system links"
+ ],
+ "ui_patterns": [
+  "bento grid of link cards",
+  "numbered service tiles",
+  "hamburger nav",
+  "eyebrow plus headline"
+ ],
+ "motion_implied": [
+  "tiles reveal in number order",
+  "numerals slide up into place",
+  "blueprint lines draw in",
+  "abstract planes shift on hover"
+ ],
+ "mood": [
+  "rigorous",
+  "ordered",
+  "confident",
+  "modern",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "Swiss International Typographic Style web section",
+  "strict modular grid of square tiles",
+  "alternating deep navy and limestone tiles",
+  "huge numerals with slash 01/",
+  "hairline rule under each numeral",
+  "regular sans tile title and short note",
+  "one blueprint tile with pale-blue skid line drawing on navy",
+  "one abstract colour-block tile with steel-blue plane",
+  "flat vector colour blocks",
+  "large light-weight sans headline sentence case",
+  "small grey eyebrow label",
+  "even gutters on white ground",
+  "square corners",
+  "no shadows",
+  "bento grid link cards",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "poster-like rhythm",
+  "minimal steel-blue accent",
+  "high contrast navy and off-white",
+  "generous tile padding",
+  "rigorous ordered mood",
+  "3 by 2 grid",
+  "abstract room-corner perspective planes",
+  "short two-line note per tile"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in Swiss International Typographic Style. Small grey eyebrow and a large light-weight navy sans headline at top left. Below, a 3 by 2 grid of square-cornered tiles with even gutters, alternating deep navy and limestone. Text tiles carry a huge numeral with a slash, a hairline rule, a regular sans title and a short note for <CONTENT>. One tile holds a pale-blue blueprint line drawing of a skid on navy; one is an abstract composition of flat limestone, navy and steel-blue planes. Flat, no shadows.",
+ "signature_idea": "System links as a Swiss checkerboard of slash-numbered tiles, closed by a blueprint tile and one abstract steel-blue plane.",
+ "strengths": [
+  "very close to the brand: navy/limestone, light headline, square corners",
+  "slash numerals give a strong, scannable order",
+  "blueprint tile adds equipment context without clutter",
+  "maps cleanly to an existing tile-grid component"
+ ],
+ "weaknesses": [
+  "abstract steel-blue tile means nothing and reads as filler",
+  "numerals are heavier than the light headline",
+  "tiles show no link affordance (no arrow or action)",
+  "notes repeat endotoxin claims and a PP temperature figure that look factual",
+  "white page ground instead of limestone"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone tiles, a single steel-blue plane, light headline, slash numerals and square corners match the brand book almost exactly."
+}

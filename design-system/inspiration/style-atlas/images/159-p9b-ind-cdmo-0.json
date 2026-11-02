@@ -1,0 +1,117 @@
+{
+ "file": "159-p9b-ind-cdmo-0.png",
+ "prompted_for": "'Start from your situation' (ind-cdmo); art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules; concept: 4-column situation router table on a navy zone-bordered drawing sheet with title block",
+ "section_kind": "router",
+ "style_family": "navy drawing sheet zone-bordered table",
+ "art_direction": [
+  "engineering drawing sheet on navy",
+  "zone-reference border with letters and numbers",
+  "title block bottom-right",
+  "four-column router table",
+  "hairline rules"
+ ],
+ "composition": [
+  "deep navy sheet with an inset hairline border carrying zone letters A to H across top and bottom and A to D down the sides",
+  "eyebrow and a large light white headline top-left inside the frame",
+  "a full-width four-column table (your situation, water you need, systems, start with) with five rows, fully boxed in hairlines",
+  "small title block in the bottom-right corner with two mono code cells",
+  "empty band between table and border"
+ ],
+ "layout_devices": [
+  "zone-reference border with tick divisions",
+  "boxed hairline table grid",
+  "title block with mono code cells",
+  "eyebrow plus headline inside the sheet",
+  "header row separated by a rule"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale blue-white hairlines and border",
+  "white headline and table text",
+  "no accent colour"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "regular sans table headers and cells",
+  "small mono zone letters and title block codes",
+  "small sans eyebrow"
+ ],
+ "rendering": [
+  "flat vector drawing-sheet frame",
+  "flat UI table",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "hairline sheet border with zone ticks",
+  "full hairline cell grid",
+  "flat untextured navy"
+ ],
+ "motifs": [
+  "drawing sheet frame",
+  "zone letters and numbers",
+  "title block",
+  "router table"
+ ],
+ "ui_patterns": [
+  "situation-to-action router table",
+  "eyebrow plus headline",
+  "table cells as links (implied)"
+ ],
+ "motion_implied": [
+  "sheet border draws in around the section",
+  "zone letters tick in",
+  "table rows reveal top to bottom",
+  "row highlights on hover"
+ ],
+ "mood": [
+  "technical",
+  "orderly",
+  "calm",
+  "official",
+  "plain"
+ ],
+ "t2i_keywords": [
+  "engineering drawing sheet on deep navy",
+  "zone-reference border with letters A to H and numbers",
+  "title block bottom-right with mono document codes",
+  "four-column table with full hairline grid",
+  "pale blue-white hairlines",
+  "large light-weight white sans headline",
+  "small sans eyebrow",
+  "regular sans table cells",
+  "flat vector no shading",
+  "square corners",
+  "inset sheet border with tick divisions",
+  "navy monochrome",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "router table rows",
+  "generous row height",
+  "calm official mood",
+  "technical document look",
+  "drawing frame as section container",
+  "mono zone labels",
+  "header row separated by hairline",
+  "empty margin band inside sheet border",
+  "engineering document frame",
+  "zone tick divisions on border",
+  "situation to action columns"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup styled as an engineering drawing sheet on deep navy. An inset pale hairline border with zone letters and numbers in small mono around all four edges and a small title block with mono document codes bottom-right. Inside: a small sans eyebrow and a large light-weight white sans headline, then a full-width four-column table with a boxed hairline grid for <CONTENT>. Flat, no shading, square corners, calm and official.",
+ "signature_idea": "The router table is set inside a navy drawing sheet with zone border and title block, so the whole section reads as one engineering document.",
+ "strengths": [
+  "drawing-sheet frame is a cheap, on-brand container device",
+  "navy, light headline and hairlines are on-brand",
+  "table is legible with short cells",
+  "title block gives a natural home for mono codes"
+ ],
+ "weaknesses": [
+  "plain table only, no visual idea beyond the frame",
+  "zone numbers along the bottom are out of order (5 between C and 4)",
+  "title block reads literally 'Title block' and 'document Code'",
+  "boxed grid is heavier than hairline row rules",
+  "no steel-blue accent or mono in the table"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy sheet, light headline and hairlines fit, but it is a plain boxed table with garbled frame text and no accent."
+}

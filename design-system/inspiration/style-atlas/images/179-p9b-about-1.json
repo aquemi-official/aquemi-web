@@ -1,0 +1,128 @@
+{
+ "file": "179-p9b-about-1.png",
+ "prompted_for": "'The people you would work with' (about); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: three numbered people cards beside a soft-3D skid whose leaders split 'designed by Aquemi' from 'maker-sourced' parts",
+ "section_kind": "other",
+ "style_family": "limestone sheet soft 3D skid",
+ "art_direction": [
+  "soft 3D isometric render of a matte white PP skid",
+  "even studio light",
+  "translucent pale-blue water in clear housings",
+  "hairline leader lines to numbered labels",
+  "limestone sheet with mono reference marks"
+ ],
+ "composition": [
+  "limestone sheet inset on a navy frame with thin navy bands left and right",
+  "mono section and reference codes top left, wordmark top right",
+  "large light two-line headline upper left",
+  "short intro paragraph upper right",
+  "left column: three stacked outlined people cards, each numbered with role, name and an 'ask about' line",
+  "right half: a large isometric white skid frame with vertical housings, pipes and an instrument panel",
+  "three numbered leader-line labels on the far right separating the fabricated package from maker-sourced parts",
+  "mono footer codes along the bottom and faint corner tick marks"
+ ],
+ "layout_devices": [
+  "numbered outlined cards",
+  "hairline leader lines ending in numbered labels",
+  "mono reference codes as page furniture (section, ref, width)",
+  "split of 'designed by us' versus 'maker sourced' via callouts",
+  "corner tick-mark registration lines"
+ ],
+ "palette": [
+  "warm limestone sheet",
+  "deep navy outer frame and text",
+  "matte white polypropylene render",
+  "translucent pale-blue water",
+  "grey-navy hairlines"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "light sans intro paragraph",
+  "regular sans card roles and names",
+  "small sans card notes",
+  "mono uppercase reference codes",
+  "small sans callout labels with bracketed notes"
+ ],
+ "rendering": [
+  "soft 3D render of the skid with even studio light",
+  "flat UI cards and text",
+  "hairline leader lines over render"
+ ],
+ "line_and_texture": [
+  "thin outline card borders",
+  "hairline leader lines with end dots",
+  "soft ambient-occlusion shading on the render",
+  "flat limestone ground",
+  "square corners"
+ ],
+ "motifs": [
+  "white PP skid frame",
+  "vertical membrane and EDI housings with blue water",
+  "instrument panel",
+  "numbered callouts",
+  "reference codes"
+ ],
+ "ui_patterns": [
+  "team contact cards",
+  "annotated product diagram",
+  "numbered list"
+ ],
+ "motion_implied": [
+  "skid rotates slightly or settles in",
+  "leader lines draw out to each label",
+  "cards stagger in from the left",
+  "hovering a callout highlights that part of the skid"
+ ],
+ "mood": [
+  "approachable",
+  "precise",
+  "calm",
+  "honest",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "soft 3D isometric render of matte white polypropylene skid",
+  "even soft studio light",
+  "translucent pale-blue water in clear housings",
+  "white pipe frame with vertical membrane housings",
+  "hairline leader lines to numbered labels",
+  "warm limestone sheet on deep navy frame",
+  "large light-weight sans headline sentence case",
+  "three numbered outlined cards stacked left",
+  "role, name and note per card",
+  "mono uppercase reference codes as page furniture",
+  "corner registration tick marks",
+  "split left text, right render",
+  "square corners",
+  "flat UI with one rendered object",
+  "navy text on limestone",
+  "small bracketed notes under labels",
+  "calm approachable mood",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "generous whitespace",
+  "no glow, no drop shadows on UI",
+  "precise technical annotation",
+  "light sans intro paragraph",
+  "monochrome product with blue water accent",
+  "matte white PP pipe frame",
+  "instrument panel on skid",
+  "numbered callout labels"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a warm limestone sheet framed by deep navy bands. Top-left: small mono reference codes and a large light-weight sans headline in sentence case. Left column: three stacked square-cornered outlined cards, each numbered, with a role, a name and a short note for <CONTENT>. Right half: a soft 3D isometric render of a matte white polypropylene water skid with translucent pale-blue water in vertical housings, even studio light, with hairline leader lines to three numbered labels. Mono codes along the bottom. Calm, precise.",
+ "signature_idea": "The people sit beside the machine they build, and its callouts draw the line between what Aquemi fabricates and what comes from makers.",
+ "strengths": [
+  "callouts make the 'we design the package, makers supply parts' boundary visible",
+  "white PP skid with blue water is Aquemi's real material story",
+  "light headline, mono codes, navy and limestone on-brand",
+  "people cards are simple and buildable"
+ ],
+ "weaknesses": [
+  "invented names and credentials would be mistaken for real staff",
+  "cards and skid are unrelated; nothing ties a person to a part",
+  "mono furniture text ('1440 px', 'REF. AQ-442') is meaningless filler",
+  "no steel-blue accent; render is generic and slightly busy",
+  "tick marks in the corner mean nothing"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, navy, light headline, mono codes and a white PP render fit the brand, but invented people and filler reference text undercut precision."
+}

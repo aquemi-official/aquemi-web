@@ -1,0 +1,123 @@
+{
+ "file": "126-p9b-svc-fat-sat-1.png",
+ "prompted_for": "'Water finds faults a dry check misses' (svc-fat-sat); art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints; concept: one double-line pipe route with valves, pump and meters threads five numbered test points on navy",
+ "section_kind": "process diagram",
+ "style_family": "navy blueprint pipe route",
+ "art_direction": [
+  "technical blueprint on deep navy",
+  "continuous double-line pipe route",
+  "pale blue-white hairline line art",
+  "P&ID valve, pump and meter symbols",
+  "numbered points threaded along the route"
+ ],
+ "composition": [
+  "deep navy ground with a faint diagonal sheen",
+  "small wordmark, divider and section label with superscript page number top-left",
+  "large two-line light headline upper-left",
+  "one double-line pipe enters from the left edge, steps up and down in a serpentine across the width, wrapping under the lower row and exiting right",
+  "numbered text items placed above and below the pipe at each symbol: 01, 02, 04 on top row, 02, 03, 04, 05 on lower row",
+  "loop-arrow recycle icon at bottom right"
+ ],
+ "layout_devices": [
+  "mono numbers with full stops (01.) heading each item",
+  "uppercase sans item titles",
+  "symbols on the pipe marking each test point",
+  "pipe acting as a connector between items",
+  "two-row zigzag reading order",
+  "rounded pipe bends"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale blue-white double-line pipe and symbols",
+  "off-white headline and text",
+  "faint lighter navy sheen",
+  "no steel-blue accent"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "mono item numbers",
+  "light uppercase sans item titles mixed with lowercase",
+  "small sans body",
+  "small uppercase wordmark"
+ ],
+ "rendering": [
+  "flat blueprint line art",
+  "outline P&ID-style icons",
+  "no shading, no shadows"
+ ],
+ "line_and_texture": [
+  "double-line hairline pipe with rounded bends",
+  "outline valve, pump, gauge and check icons",
+  "subtle gradient sheen on ground"
+ ],
+ "motifs": [
+  "serpentine pipe route",
+  "valves and pump",
+  "pressure gauges",
+  "check-mark badge",
+  "recycle loop arrows"
+ ],
+ "ui_patterns": [
+  "numbered process route",
+  "icon-plus-caption steps",
+  "breadcrumb header"
+ ],
+ "motion_implied": [
+  "pipe fills or draws left to right",
+  "each symbol lights as the flow reaches it",
+  "items fade in in sequence",
+  "loop arrows rotate"
+ ],
+ "mood": [
+  "technical",
+  "calm",
+  "nocturnal",
+  "explanatory",
+  "busy"
+ ],
+ "t2i_keywords": [
+  "technical blueprint on deep navy",
+  "one continuous double-line pipe route",
+  "serpentine pipe crossing the full width",
+  "pipe entering from left edge and exiting right",
+  "pale blue-white hairline line art",
+  "P&ID valve symbols on the pipe",
+  "centrifugal pump outline icon",
+  "pressure gauge outline icon",
+  "numbered test points along the route",
+  "mono numbers 01. 02.",
+  "light uppercase item titles",
+  "small captions beside symbols",
+  "two-row zigzag reading order",
+  "large light-weight sans headline sentence case",
+  "small wordmark and section label header",
+  "rounded pipe bends",
+  "flat line art, no shading",
+  "subtle navy sheen",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "process explainer diagram",
+  "calm technical mood",
+  "off-white text on navy",
+  "pipe wrapping under lower row",
+  "outline gauge and pump icons",
+  "one steel-blue accent on the pipe"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a deep navy ground. Small wordmark and section label top-left, then a large two-line light-weight sans headline. One continuous double-line pipe in pale blue-white hairlines enters from the left edge and snakes across the width in two rows, carrying P&ID valve, pump and gauge symbols. At each symbol a mono number, a light uppercase title and a short caption sit beside the pipe for <CONTENT>. One steel-blue accent on the pipe. Flat line art, square corners, no shadows.",
+ "signature_idea": "A single water route snakes across the section and every test point is a fitting on it, so the reader follows the water to each fault it can find.",
+ "strengths": [
+  "one continuous pipe linking items is a clear, ownable device",
+  "light headline and navy blueprint palette are on-brand",
+  "P&ID symbols give real engineering vocabulary",
+  "route maps naturally to scroll-driven drawing"
+ ],
+ "weaknesses": [
+  "item numbers duplicated (02 and 04 appear twice) and copy repeated",
+  "reading order of the zigzag is confusing",
+  "pipe is pale, not steel-blue, so no accent leads",
+  "mixed icon styles (check badges, recycle arrows) clutter the drawing",
+  "dense, busy layout with too many captions"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy blueprint, hairline pipe and light headline fit, but duplicated items, confusing order and cluttered icons undermine the calm and precision."
+}

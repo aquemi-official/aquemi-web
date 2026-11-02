@@ -1,0 +1,129 @@
+{
+ "file": "180-p9b-about-2.png",
+ "prompted_for": "'What changes for a Canadian site' (about); art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules; concept: navy drawing sheet: four columns, each with one line-drawn part (flange, pipe spool, vessel pair, tank), title block AQ-SEC-CAN-04",
+ "section_kind": "options",
+ "style_family": "navy drawing sheet columns",
+ "art_direction": [
+  "engineering drawing sheet on deep navy",
+  "zone-reference border with numbers and letters",
+  "title block bottom right",
+  "mono document codes",
+  "isometric hairline part drawings",
+  "hairline column rules"
+ ],
+ "composition": [
+  "whole frame is a navy drawing sheet with a zone-reference border (1 to 4 across, A to C down)",
+  "wordmark and small section label top left, mono drawing number box top right",
+  "large light two-line headline upper left",
+  "two isometric vessel drawings fill the upper right",
+  "a full-width hairline rule, then four equal columns divided by vertical hairlines",
+  "each column: mono number, light sans title, and one isometric line-drawn part below (flanged tee, dimensioned pipe spool, vessel pair on a frame, tank)",
+  "title block overlaps the bottom of the fourth column",
+  "a stray dark UI strip with two leftover chat labels sits under the image"
+ ],
+ "layout_devices": [
+  "zone-reference border with tick divisions",
+  "drawing-number box top right",
+  "title block with mono codes",
+  "four-column grid separated by vertical hairlines",
+  "mono column numbers 01 to 04",
+  "dimension lines with mono figures on parts",
+  "tiny 'utility labels' metadata text beside the headline"
+ ],
+ "palette": [
+  "deep navy sheet",
+  "off-white headline and titles",
+  "pale blue-white hairline drawings",
+  "grey-blue border and rules"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "light sans column titles",
+  "small mono column numbers",
+  "tiny mono drawing codes and title block labels",
+  "tiny mono dimension figures"
+ ],
+ "rendering": [
+  "white hairline isometric line drawings on navy",
+  "flat navy ground",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "uniform pale hairlines",
+  "dimension and extension lines",
+  "thin sheet border with zone ticks",
+  "flat fill, no grain",
+  "square corners"
+ ],
+ "motifs": [
+  "flanged pipe tee",
+  "dimensioned pipe spool",
+  "pair of filter vessels on a frame",
+  "cylindrical tank",
+  "title block",
+  "zone border"
+ ],
+ "ui_patterns": [
+  "four-column feature grid with icon drawings",
+  "section header with drawing number",
+  "numbered columns"
+ ],
+ "motion_implied": [
+  "border and zone ticks draw in first",
+  "each part drawing traces in column by column",
+  "title block fields type in"
+ ],
+ "mood": [
+  "technical",
+  "rigorous",
+  "calm",
+  "engineered",
+  "authoritative"
+ ],
+ "t2i_keywords": [
+  "navy engineering drawing sheet web section",
+  "zone-reference border with numbers and letters",
+  "title block bottom right with mono codes",
+  "drawing-number box top right",
+  "deep navy ground",
+  "pale blue-white hairline isometric line drawings",
+  "four equal columns divided by vertical hairlines",
+  "one line-drawn part per column",
+  "flanged tee, pipe spool, vessel pair, tank",
+  "dimension lines with tiny mono figures",
+  "large light-weight sans headline sentence case",
+  "light sans column titles",
+  "mono column numbers 01 to 04",
+  "full-width hairline rule under header",
+  "square corners",
+  "flat line art, no shading",
+  "blueprint precision",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm technical mood",
+  "off-white type on navy",
+  "generous padding inside columns",
+  "no glow",
+  "minimal palette",
+  "mono document codes",
+  "dimensioned part drawings",
+  "zone ticks on border"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on mockup of an engineering drawing sheet on deep navy, with a thin zone-reference border numbered 1 to 4 and lettered A to C, a mono drawing-number box top right and a title block bottom right. Top-left: a large light-weight off-white sans headline in sentence case. Below a full-width hairline rule, four equal columns separated by vertical hairlines, each with a mono number, a light sans title and one pale blue-white isometric hairline drawing of a part with dimension lines, for <CONTENT>. Flat, no shading, square corners.",
+ "signature_idea": "Four country-specific changes set as the columns of one navy drawing sheet, each illustrated by a single dimensioned part.",
+ "strengths": [
+  "zone border and title block make a convincing, ownable navy drawing sheet",
+  "one part drawing per column is clear and buildable as SVG",
+  "light headline, mono codes and square corners match the brand",
+  "calm spacing despite four columns"
+ ],
+ "weaknesses": [
+  "upper-right vessel drawings duplicate the column art and add nothing",
+  "part drawings are generic; the pipe spool has no relation to 'registration'",
+  "filler text ('utility labels tiny metadata') and garbled title block labels",
+  "stray dark UI strip with leftover chat labels below the sheet",
+  "no steel-blue accent; vessels hint at stainless styling"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "A navy drawing sheet with light type, mono codes and hairline part drawings is on-brand, but filler text, duplicated art and no accent weaken it."
+}

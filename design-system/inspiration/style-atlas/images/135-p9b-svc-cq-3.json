@@ -1,0 +1,119 @@
+{
+ "file": "135-p9b-svc-cq-3.png",
+ "prompted_for": "'PQ in three phases' (svc-cq); art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag; concept: three slash-numbered phase rows beside a readout panel: giant light 336 SAMPLES, tick scale, limit tag",
+ "section_kind": "steps/timeline",
+ "style_family": "limestone instrument readout panel",
+ "art_direction": [
+  "instrument-panel readout",
+  "oversized light numeral with unit",
+  "fine tick scale with one limit line",
+  "boxed phase rows beside the readout",
+  "limestone paper ground"
+ ],
+ "composition": [
+  "small mono eyebrow top left, wordmark top right",
+  "large light headline and a two-line mono lede",
+  "left ~45%: three stacked boxed rows, each a numeral cell (01 /) and a phase name with short mono note",
+  "right ~40%: a slightly darker limestone panel with a giant white light numeral filling it, a mono unit label, a tick scale and an outlined LIMIT tag",
+  "short steel-blue dash and a steel-blue base rule under the panel"
+ ],
+ "layout_devices": [
+  "slash numerals 01 / to 03 / with steel-blue slash in their own cell",
+  "outlined boxes around each phase row",
+  "giant numeral as the panel's figure",
+  "fine tick scale with one taller limit tick",
+  "small outlined limit tag with pointer",
+  "bold mono emphasis on durations inside notes"
+ ],
+ "palette": [
+  "warm limestone page",
+  "slightly darker greige panel",
+  "white giant numeral",
+  "navy text and box lines",
+  "steel-blue slashes, limit tick and base rule"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "mono eyebrow and mono lede",
+  "mono numerals with slash",
+  "mono phase names and notes with bold mono highlights",
+  "huge ultra-light sans numeral",
+  "mono uppercase unit and tag"
+ ],
+ "rendering": [
+  "flat vector",
+  "no image, no shadows"
+ ],
+ "line_and_texture": [
+  "thin navy box outlines",
+  "fine tick marks",
+  "flat fills, square corners",
+  "single steel-blue base rule"
+ ],
+ "motifs": [
+  "giant readout numeral",
+  "tick scale",
+  "limit tag",
+  "slash-numbered phases"
+ ],
+ "ui_patterns": [
+  "key-figure readout panel",
+  "numbered step list",
+  "limit marker"
+ ],
+ "motion_implied": [
+  "big numeral counts up",
+  "tick scale fills to the limit line",
+  "phase rows reveal in order"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "measured",
+  "instrument-like"
+ ],
+ "t2i_keywords": [
+  "instrument-panel readout",
+  "one oversized ultra-light numeral filling a panel",
+  "mono uppercase unit label under numeral",
+  "fine tick scale",
+  "single limit tick with small outlined LIMIT tag",
+  "warm limestone page background",
+  "slightly darker greige readout panel",
+  "white giant numeral on greige",
+  "three boxed step rows",
+  "mono slash numerals 01 /",
+  "steel-blue slash accent",
+  "monospace notes with bold mono highlights",
+  "large light-weight sans headline sentence case",
+  "mono lede paragraph",
+  "steel-blue base rule",
+  "split layout steps left, readout right",
+  "flat, no shadows",
+  "square corners",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "thin navy outlines",
+  "calm measured mood",
+  "generous whitespace",
+  "minimal palette limestone navy steel-blue",
+  "laboratory instrument feel"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a warm limestone background. Top left: a small mono eyebrow, a large light-weight sans headline and a two-line mono lede. Left: three thin-outlined boxed rows, each with a mono numeral and steel-blue slash in its own cell and a short mono note for <CONTENT>. Right: a slightly darker greige panel filled by one oversized ultra-light white numeral, a mono uppercase unit, a fine tick scale and a single limit tick with a small outlined tag. A steel-blue rule under the panel. Square corners, flat, calm.",
+ "signature_idea": "A whole PQ programme summed up as one instrument reading: a giant light sample count on a tick scale with a single limit tag.",
+ "strengths": [
+  "readout panel is a clear, ownable visual idea for a key figure",
+  "palette stays strictly limestone, navy and one steel-blue accent",
+  "light headline and mono figures match the type system",
+  "phase rows are short and scannable"
+ ],
+ "weaknesses": [
+  "white numeral on greige is low contrast",
+  "tick scale and limit tag mean nothing for a sample count; there is no limit to a count",
+  "all-mono body with bold highlights is heavy and dense",
+  "invented figures (12 points, 28 days, 336) would read as real",
+  "stray short steel-blue dash in the panel is unexplained"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, navy and one steel-blue accent with a light headline, mono figures and square corners fit closely, but the limit scale is decorative and the numeral contrast is weak."
+}

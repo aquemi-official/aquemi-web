@@ -1,0 +1,125 @@
+{
+ "file": "172-p9b-cmp-quality-1.png",
+ "prompted_for": "'How a defect is held and closed' (cmp-quality); art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing; concept: six NCR steps as navy/limestone tiles with huge slash numerals; one tile is a dimensioned joint-repair drawing with 'defective region' tags",
+ "section_kind": "steps/timeline",
+ "style_family": "swiss navy limestone tiles",
+ "art_direction": [
+  "Swiss International Typographic Style",
+  "strict modular grid of navy and limestone tiles",
+  "huge light numerals with slash",
+  "one tile holds a blueprint-style drawing",
+  "uppercase step labels"
+ ],
+ "composition": [
+  "limestone header band with a small grey eyebrow, a large light headline left and a wordmark right",
+  "top row: a big navy lead tile with a giant 01/ numeral, a wide limestone tile for step 02 with the joint drawing framed on its right",
+  "bottom row: four equal tiles alternating navy and limestone for steps 03 to 06",
+  "tiles butt edge to edge with no gutters, divided by faint hairlines",
+  "drawing sits in a thin navy frame with a small label box in its lower-right corner"
+ ],
+ "layout_devices": [
+  "huge light slash numerals 01/ to 06/ anchoring each tile",
+  "lead tile with a much larger numeral than the rest",
+  "checkerboard of navy and limestone tiles",
+  "framed navy line drawing inside a text tile",
+  "dimension lines and leader tags on the drawing",
+  "small mono label box in the drawing frame"
+ ],
+ "palette": [
+  "deep navy tiles",
+  "warm limestone tiles and header band",
+  "off-white text on navy, navy text on limestone",
+  "navy hairline drawing on limestone",
+  "grey eyebrow and small tag",
+  "no accent colour"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "huge light grotesk numerals with slash",
+  "regular sans uppercase step titles",
+  "small regular sans body text",
+  "mono uppercase drawing tags and label box"
+ ],
+ "rendering": [
+  "flat vector colour blocks",
+  "navy hairline isometric technical drawing",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "hairline tile dividers",
+  "fine dimension lines with arrows and figures",
+  "dashed leader lines to tags",
+  "flat fills, faint paper grain on limestone",
+  "square corners"
+ ],
+ "motifs": [
+  "pipe joint with a bead or coupling",
+  "defect tags",
+  "dimension callouts",
+  "numbered tiles"
+ ],
+ "ui_patterns": [
+  "bento grid of step tiles",
+  "lead tile larger than the rest",
+  "image tile inside the grid"
+ ],
+ "motion_implied": [
+  "tiles reveal in number order",
+  "big numerals slide or count in",
+  "drawing lines and dimensions draw in",
+  "defect tags blink on to mark the region"
+ ],
+ "mood": [
+  "rigorous",
+  "ordered",
+  "confident",
+  "technical",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "Swiss International Typographic Style web section",
+  "strict modular grid of square-cornered tiles",
+  "deep navy and warm limestone colour blocks",
+  "checkerboard tile rhythm",
+  "huge light numerals with slash 01/",
+  "one oversized lead tile",
+  "uppercase regular sans step titles",
+  "small sans body text in tiles",
+  "tiles butted edge to edge, no gutters",
+  "one tile holds a navy hairline isometric drawing",
+  "pipe joint drawing with dimension lines",
+  "dashed leader lines to mono uppercase tags",
+  "framed drawing with label box",
+  "light-weight sans-serif headline in sentence case",
+  "small grey eyebrow",
+  "limestone header band",
+  "flat vector, no shadows",
+  "square corners",
+  "off-white text on navy",
+  "high contrast navy and limestone",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "poster-like grid",
+  "rigorous ordered mood",
+  "technical blueprint tile breaking the text grid"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup in Swiss International Typographic Style. A limestone header band with a small eyebrow and a large light-weight sans-serif headline in sentence case. Below, a strict grid of square-cornered tiles butted edge to edge in alternating deep navy and warm limestone: one oversized lead tile, the rest equal. Each tile carries a huge light numeral with a slash, an uppercase step title and short text for <CONTENT>. One limestone tile holds a framed navy hairline isometric drawing of a pipe joint with dimension lines and mono tags. Flat, no shadows.",
+ "signature_idea": "Steps set as a navy and limestone Swiss tile grid with giant slash numerals, one tile carrying a dimensioned joint drawing like a figure in a poster.",
+ "strengths": [
+  "giant light slash numerals make the sequence instantly readable",
+  "navy/limestone tiles, light headline and square corners match the brand",
+  "drawing tile gives the steps a concrete subject",
+  "maps cleanly to a token-only CSS grid",
+  "body text is short and readable"
+ ],
+ "weaknesses": [
+  "the joint drawing is incoherent: two pipes pass through each other and the 'defective region' tag repeats",
+  "dimension figures are invented and garbled",
+  "uppercase regular titles are heavier than the light system",
+  "invented commitments (days, process names) read as facts",
+  "tile sizes are uneven, leaving step 02 text crammed beside the drawing",
+  "no steel-blue accent to mark focus"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone tiles, huge light numerals, light headline, mono tags, line drawing and square corners are the brand book almost verbatim."
+}

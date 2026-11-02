@@ -1,0 +1,123 @@
+{
+ "file": "138-p9b-svc-service-1.png",
+ "prompted_for": "'What it costs to run' (svc-service); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: white RO skid in soft 3D with numbered leaders dropping into the running-cost table below",
+ "section_kind": "spec/limits",
+ "style_family": "white skid render with leader table",
+ "art_direction": [
+  "soft 3D isometric product render",
+  "matte white RO skid on a frame",
+  "numbered leader lines from render to table",
+  "full page mockup with nav bar",
+  "limestone page in a navy frame"
+ ],
+ "composition": [
+  "nav bar with wordmark, breadcrumb and five links; a steel-blue strip at the very top",
+  "large light headline and a two-line light lede on the left",
+  "upper right: a white RO skid with horizontal pressure vessels, control panel, cartridge housings and pump, numbered 2-5 on the right edge",
+  "lower right ~70%: a five-row ruled cost table; hairlines from the render drop into rows 1-3",
+  "empty ruled stubs on the lower left mirroring the table rows"
+ ],
+ "layout_devices": [
+  "numbered leader lines from equipment parts to right-edge numbers and down into table rows",
+  "elbowed leaders with dot terminals",
+  "five ruled rows with mono values",
+  "empty ruled lines left of the table as rhythm",
+  "breadcrumb nav"
+ ],
+ "palette": [
+  "warm limestone page",
+  "deep navy outer frame",
+  "matte white skid",
+  "translucent pale-blue pipes",
+  "navy text",
+  "steel-blue leader lines and top strip"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "light sans lede",
+  "regular sans row names",
+  "monospace values and 'set by' column",
+  "regular sans nav and breadcrumb"
+ ],
+ "rendering": [
+  "soft 3D render, isometric, even studio light",
+  "matte white clay-like materials with soft shadow",
+  "pale-blue translucent tubing",
+  "flat UI around it"
+ ],
+ "line_and_texture": [
+  "steel-blue hairline leaders with elbows and dots",
+  "grey hairline table rules",
+  "smooth untextured surfaces",
+  "square corners"
+ ],
+ "motifs": [
+  "RO pressure vessels",
+  "cartridge filter housings",
+  "control panel",
+  "pump",
+  "numbered leaders"
+ ],
+ "ui_patterns": [
+  "annotated product render",
+  "running-cost table",
+  "nav bar with breadcrumb"
+ ],
+ "motion_implied": [
+  "leader lines draw from parts down to their rows",
+  "row hover highlights the part on the skid",
+  "render gently rotates or fades in"
+ ],
+ "mood": [
+  "calm",
+  "clean",
+  "practical",
+  "product-catalogue"
+ ],
+ "t2i_keywords": [
+  "soft 3D isometric render of a matte white RO skid",
+  "horizontal pressure vessels and cartridge housings",
+  "translucent pale-blue pipes",
+  "even studio light, soft shadow",
+  "warm limestone page background",
+  "numbered leader lines from parts to table rows",
+  "elbowed steel-blue hairline leaders with dots",
+  "ruled cost table with mono values",
+  "large light-weight sans headline sentence case",
+  "light sans lede",
+  "render upper right, table lower right",
+  "nav bar with breadcrumb",
+  "deep navy outer frame",
+  "grey hairline row rules",
+  "empty ruled lines for rhythm",
+  "square corners",
+  "no glow, no gradients",
+  "1440 px desktop web page",
+  "straight-on flat UI mockup",
+  "catalogue annotation style",
+  "calm practical mood",
+  "minimal palette navy limestone steel-blue",
+  "generous whitespace",
+  "clay-white materials",
+  "dot-terminated leader lines",
+  "pale-blue tubing accents",
+  "mono interval values"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a warm limestone background inside a thin navy frame. Top left: a large light-weight sans headline and a light lede. Upper right: one matte white polypropylene skid with pressure vessels, cartridge housings and a pump, soft 3D isometric render, even studio light, pale-blue pipes. Numbered steel-blue hairline leaders with elbows and dots run from its parts down into a ruled table of <CONTENT> below, with monospace values. Square corners, calm and practical.",
+ "signature_idea": "Running costs hang off the skid: each consumable part's leader line drops straight into its own cost row.",
+ "strengths": [
+  "leaders from part to row are meaningful: membranes, filters, pump map to costs",
+  "light headline, mono values and limestone ground are on-brand",
+  "white skid render is calm and clean",
+  "table is legible and well ruled"
+ ],
+ "weaknesses": [
+  "leader numbering is broken: 2-5 on the render, rows 1-3 linked, 4 and 5 unconnected and lines cross",
+  "nav links are garbled and duplicated ('About UI', 'Services' twice)",
+  "skid has a metal-looking pump, control box and UV/EDI parts that drift off-offer",
+  "invented costs and energy figures would read as real",
+  "empty ruled stubs on the left mean nothing"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, navy, steel-blue leaders, light headline and mono values fit, but the leader numbering is broken and the nav is garbled."
+}

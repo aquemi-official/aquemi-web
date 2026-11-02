@@ -1,0 +1,120 @@
+{
+ "file": "117-p9b-svc-design-0.png",
+ "prompted_for": "'Qualification failures that start in design' (svc-design); art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture; concept: navy P&ID band above a three-column failure / mistake / design-in table with slash numerals",
+ "section_kind": "standards",
+ "style_family": "navy drawing band over limestone sheet",
+ "art_direction": [
+  "navy drawing band above a limestone reading sheet",
+  "P&ID schematic as the band's one picture",
+  "three-column cause-and-fix table",
+  "slash numerals on column heads"
+ ],
+ "composition": [
+  "mono uppercase letterspaced eyebrow, large light headline and one-line subhead across the top",
+  "a wide navy band (~2/3 width) holding a white-and-steel-blue P&ID with small numbered tags",
+  "a limestone panel to the right of the band holding a two-line wordmark and tagline",
+  "below, a three-column table: 'fails at qualification', 'design mistake', 'what we design in', each header with a slash numeral at right",
+  "three rows with hairline rules and vertical dividers, the last row cut by the bottom edge"
+ ],
+ "layout_devices": [
+  "navy drawing band as a header image",
+  "mono slash numerals 01/ 02/ 03/ right-aligned in column headers",
+  "heavier rule under headers, hairline row rules",
+  "vertical hairline column dividers",
+  "small numbered tags scattered on the P&ID",
+  "side panel beside the band"
+ ],
+ "palette": [
+  "warm limestone page",
+  "deep navy drawing band",
+  "white and steel-blue P&ID lines",
+  "slightly darker limestone side panel",
+  "navy text"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "mono uppercase letterspaced eyebrow",
+  "regular sans subhead",
+  "light sans column headers with mono slash numerals",
+  "regular sans cell text at a large reading size",
+  "regular and light sans wordmark and tagline"
+ ],
+ "rendering": [
+  "flat vector P&ID line art on navy (blueprint)",
+  "flat UI table",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "fine schematic strokes with valve, pump and instrument glyphs",
+  "dashed and solid lines",
+  "hairline table rules",
+  "flat untextured fields",
+  "square corners"
+ ],
+ "motifs": [
+  "P&ID loop with pump, valves and tank",
+  "numbered tags",
+  "cause-mistake-fix rows"
+ ],
+ "ui_patterns": [
+  "three-column comparison table",
+  "header image band",
+  "eyebrow + headline + subhead"
+ ],
+ "motion_implied": [
+  "P&ID lines draw in across the band",
+  "rows reveal one by one",
+  "hovering a row highlights tagged points on the drawing"
+ ],
+ "mood": [
+  "calm",
+  "authoritative",
+  "clear",
+  "technical",
+  "editorial"
+ ],
+ "t2i_keywords": [
+  "navy drawing band above a limestone reading sheet",
+  "white and steel-blue P&ID schematic on deep navy",
+  "small numbered tags on the schematic",
+  "valve, pump and instrument glyphs",
+  "three-column table below the band",
+  "mono slash numerals 01/ 02/ 03/ in column headers",
+  "light sans column headers",
+  "large readable regular sans cells",
+  "hairline row rules and vertical dividers",
+  "heavier rule under header row",
+  "large light-weight sans headline sentence case",
+  "mono uppercase letterspaced eyebrow",
+  "one-line subhead",
+  "limestone side panel beside the band",
+  "flat vector blueprint line art",
+  "square corners",
+  "no shadows",
+  "deep navy and warm limestone two-tone",
+  "minimal steel-blue accent",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm authoritative mood",
+  "cause and fix comparison",
+  "wide panoramic band",
+  "editorial engineering document"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on warm limestone. Top: a mono uppercase letterspaced eyebrow, a large light-weight sans headline and a one-line subhead. Below, a wide deep navy band holding a white and steel-blue P&ID schematic with small numbered tags, with a plain limestone panel beside it. Under the band, a three-column table for <CONTENT>, each light sans column header carrying a mono slash numeral at right, with large regular sans cells, hairline row rules and vertical dividers. Flat, square corners, no shadows.",
+ "signature_idea": "A navy P&ID band sits like a drawing strip above a three-column table that reads failure, cause and the design fix across each row.",
+ "strengths": [
+  "clear three-column cause-to-fix structure that reads well",
+  "follows the navy band plus limestone sheet direction",
+  "light headline, mono slash numerals and square corners are on-brand",
+  "cells are large and legible"
+ ],
+ "weaknesses": [
+  "P&ID band is generic decoration; tags do not link to any table row",
+  "side panel repeats the company tagline from the prompt as filler",
+  "below the band it is a plain table with no further visual idea",
+  "numbered tags on the drawing are duplicated and random",
+  "last row cut by the frame"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy band, limestone sheet, light headline, mono slash numerals and steel-blue lines fit the brand, but the drawing is disconnected decoration over a plain table."
+}

@@ -1,0 +1,122 @@
+{
+ "file": "166-p9b-cmp-documentation-1.png",
+ "prompted_for": "'What each stage issues' (cmp-documentation); art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it; concept: duotone fusion-joint line drawing with dimension ticks beside a stage / approver / documents table",
+ "section_kind": "standards",
+ "style_family": "duotone macro joint illustration",
+ "art_direction": [
+  "macro close-up of a pipe joint",
+  "duotone navy and limestone",
+  "shallow depth of field",
+  "hairline annotations over the image",
+  "illustration beside a ruled table"
+ ],
+ "composition": [
+  "limestone page, small sans eyebrow top-left",
+  "very large light navy headline across the top, one line ending in a full stop",
+  "small light subhead below the headline",
+  "left ~45%: a diagonal macro close-up of a pipe with a raised fusion bead ring, cropped by the left and bottom edges",
+  "right ~50%: a three-column table with three numbered rows, running off the bottom edge"
+ ],
+ "layout_devices": [
+  "dimension tick scales curving around the joint",
+  "hairline leader lines from the bead with no labels",
+  "open-sided table with vertical and horizontal hairlines only",
+  "numbered row labels 1. to 3.",
+  "bracketed placeholder text inside a cell",
+  "image bleeds off two edges"
+ ],
+ "palette": [
+  "warm limestone ground",
+  "deep navy headline, text and dark tonal bands",
+  "pale grey-blue shading on the pipe",
+  "white highlights",
+  "no accent colour"
+ ],
+ "typography": [
+  "very large light grotesk headline in sentence case",
+  "small regular sans eyebrow",
+  "small light sans subhead",
+  "regular sans table headers and body",
+  "no mono used"
+ ],
+ "rendering": [
+  "duotone shaded illustration with soft tonal gradients",
+  "depth-of-field blur on the far end of the pipe",
+  "navy hairline annotation overlay",
+  "flat table"
+ ],
+ "line_and_texture": [
+  "fine radial hatching on the fusion bead",
+  "hairline tick scales and leader lines",
+  "smooth soft shading, no grain",
+  "hairline table rules",
+  "square corners"
+ ],
+ "motifs": [
+  "pipe with fusion bead ring",
+  "dimension ticks",
+  "staged documentation table"
+ ],
+ "ui_patterns": [
+  "eyebrow, headline, subhead stack",
+  "three-column data table",
+  "image plus table split"
+ ],
+ "motion_implied": [
+  "camera slowly pushes in on the joint",
+  "tick scales and leader lines draw in",
+  "table rows reveal one by one",
+  "focus pulls from blur to sharp"
+ ],
+ "mood": [
+  "calm",
+  "precise",
+  "technical",
+  "quiet",
+  "material-focused"
+ ],
+ "t2i_keywords": [
+  "macro close-up of a pipe fusion joint",
+  "duotone navy and limestone illustration",
+  "shallow depth of field blur",
+  "raised weld bead ring with fine radial hatching",
+  "hairline dimension tick scales around the joint",
+  "hairline leader lines over the image",
+  "image cropped diagonally by the frame edges",
+  "warm limestone page ground",
+  "very large light-weight sans-serif headline",
+  "headline in sentence case with full stop",
+  "small sans eyebrow above headline",
+  "small light subhead",
+  "three-column ruled table",
+  "open-sided table with hairline rules",
+  "numbered table rows",
+  "image left, table right",
+  "soft tonal shading",
+  "navy line overlay",
+  "no accent colour",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "calm precise mood",
+  "material close-up as section figure",
+  "table running off bottom edge"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone ground. Small sans eyebrow and a very large light-weight navy sans-serif headline in sentence case across the top, with a small subhead. Left: a duotone navy and limestone macro close-up of a pipe running diagonally with a raised fusion bead ring, soft tonal shading, shallow depth of field, overlaid with hairline dimension tick scales and leader lines, cropped by the frame. Right: an open-sided three-column table with hairline rules and numbered rows for <CONTENT>. Square corners, no accent colour, calm and precise.",
+ "signature_idea": "A duotone macro of a single fusion joint, annotated with hairline tick scales, sits beside the stage-by-stage document table like a figure in a technical paper.",
+ "strengths": [
+  "the joint macro shows the actual craft of PP fusion, not generic equipment",
+  "duotone navy and limestone keeps the image calm and on-palette",
+  "light headline and plain hairline table are clear and buildable",
+  "image cropping gives the section a confident editorial feel"
+ ],
+ "weaknesses": [
+  "leader lines and tick scales point to nothing and carry no labels, so they are decorative",
+  "bead reads like a metal weld collar more than a PP butt-fusion bead",
+  "table is plain and dense with small body text, the visual idea lives only in the image",
+  "no mono for codes or clause numbers where the brand expects it",
+  "invented clause references in the cells must not be read as facts"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy and limestone duotone, light headline, square corners and hairline rules fit, but there is no mono or accent and the annotations are decorative."
+}

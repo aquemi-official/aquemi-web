@@ -1,0 +1,121 @@
+{
+ "file": "129-p9b-svc-fat-sat-3.png",
+ "prompted_for": "'How you witness' (svc-fat-sat); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: five witness modes as ruled rows whose leader lines run into a white PP skid in its frame",
+ "section_kind": "options",
+ "style_family": "white skid render with ruled rows",
+ "art_direction": [
+  "soft 3D isometric product render",
+  "matte white polypropylene skid in an open frame",
+  "ruled list rows with leader lines into the render",
+  "pale limestone page, no bands",
+  "catalogue annotation"
+ ],
+ "composition": [
+  "small mono eyebrow and large light headline top left, two small bracketed mono tags beside it (one navy-filled)",
+  "left ~50%: five ruled rows, each a mono slash number, uppercase mono mode name and short sans note",
+  "right ~50%: a large white skid in a box frame at three-quarter isometric view, cropped by the right edge",
+  "each row's hairline extends right and ends on a different part of the skid",
+  "generous empty limestone ground above and below"
+ ],
+ "layout_devices": [
+  "numbered rows 01. to 05. with full-width hairline rules under each",
+  "leader lines continuing from each row into the render",
+  "bracketed mono tags as status chips, one navy-filled",
+  "em-dash joining mode name and note on one line",
+  "render bleeding off the right edge"
+ ],
+ "palette": [
+  "warm limestone page ground",
+  "matte white and pale grey skid surfaces",
+  "translucent pale-blue pipes",
+  "near-black navy text",
+  "navy fill on one small tag",
+  "grey-blue hairlines"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "mono uppercase eyebrow",
+  "mono numerals and uppercase mono mode names, letterspaced",
+  "small regular sans notes",
+  "tiny mono bracketed tags"
+ ],
+ "rendering": [
+  "soft 3D render, isometric, even studio light",
+  "white clay-like matte materials with soft ambient occlusion",
+  "translucent pale-blue tubing",
+  "flat UI type over a flat ground"
+ ],
+ "line_and_texture": [
+  "hairline row rules and leader lines in grey-blue",
+  "smooth untextured surfaces",
+  "soft contact shadows under the skid",
+  "square corners throughout"
+ ],
+ "motifs": [
+  "white PP skid in a box frame",
+  "pale-blue pipe loops",
+  "cylindrical vessels and filter housings",
+  "numbered option rows",
+  "bracketed status tags"
+ ],
+ "ui_patterns": [
+  "numbered option list",
+  "annotated product render",
+  "status chips beside headline"
+ ],
+ "motion_implied": [
+  "rows reveal top to bottom",
+  "each leader line draws from row into the skid",
+  "hovering a row highlights its zone on the skid"
+ ],
+ "mood": [
+  "calm",
+  "clean",
+  "precise",
+  "airy",
+  "product-catalogue"
+ ],
+ "t2i_keywords": [
+  "soft 3D isometric render of a matte white polypropylene skid",
+  "open box frame equipment skid",
+  "translucent pale-blue pipes",
+  "even studio light, soft ambient occlusion",
+  "warm limestone page background",
+  "numbered ruled list rows",
+  "mono slash numerals 01.",
+  "uppercase mono item names",
+  "hairline leader lines from rows into the render",
+  "large light-weight sans headline sentence case",
+  "small mono eyebrow label",
+  "bracketed mono status tags",
+  "one navy-filled tag",
+  "render cropped by right edge",
+  "half list, half product image",
+  "grey-blue hairline rules",
+  "square corners",
+  "no gradients, no glow",
+  "generous whitespace",
+  "flat straight-on UI mockup",
+  "1440 px desktop web section",
+  "catalogue annotation style",
+  "calm precise mood",
+  "clay-white materials",
+  "minimal palette navy on limestone"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a warm limestone background. Top left: a small mono uppercase eyebrow, a large light-weight sans headline in sentence case and two tiny bracketed mono tags, one filled navy. Left half: five ruled rows, each with a mono numeral, an uppercase mono name and a short sans note for <CONTENT>; each row's hairline runs right into the image. Right half: one matte white polypropylene skid in an open box frame, soft 3D isometric render, even studio light, translucent pale-blue pipes, cropped by the right edge. Square corners, calm and precise.",
+ "signature_idea": "Each option row's own rule line runs on into the skid, so the list and the equipment read as one annotated drawing.",
+ "strengths": [
+  "rows-into-render is a clear, buildable idea that ties list to equipment",
+  "white PP skid matches the real product material",
+  "light headline, mono numbers and limestone ground are on-brand",
+  "lots of space; five items read instantly"
+ ],
+ "weaknesses": [
+  "leader lines land on arbitrary skid points; witness modes have no physical location, so the links mean nothing",
+  "uppercase mono names are heavier than the light brand voice",
+  "skid is cropped at right and a little generic",
+  "no steel-blue accent; pale-blue pipes are the only colour"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone ground, light headline, mono numerals, square corners and a white PP skid fit well, but the leader lines are decorative rather than meaningful."
+}

@@ -1,0 +1,121 @@
+{
+ "file": "139-p9b-svc-service-2.png",
+ "prompted_for": "'Instrument calibration' (svc-service); art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag; concept: calibration table beside a tick-ring dial with a big steel-blue tolerance figure and two outlined limit tags",
+ "section_kind": "spec/limits",
+ "style_family": "instrument readout tick-ring dial",
+ "art_direction": [
+  "instrument-panel readout",
+  "tick-ring dial with big steel-blue numeral",
+  "vertical limit line with outlined tags",
+  "calibration table beside the dial",
+  "limestone card on a navy frame"
+ ],
+ "composition": [
+  "a limestone card with slightly rounded corners inside a deep navy frame",
+  "wordmark and breadcrumb label top left, divided by a hairline",
+  "large light headline across the upper left",
+  "left ~50%: a three-column table of four numbered instrument rows with hairline rules",
+  "right: a large open ring of tick marks with a big steel-blue mono '02%' in the centre, a vertical limit line through the right of the ring with two outlined mono tags, and a small line icon of a transmitter beside it"
+ ],
+ "layout_devices": [
+  "tick-ring dial with longer major ticks",
+  "vertical limit line crossing the ring",
+  "two small outlined mono limit tags on the line",
+  "numbered rows 01. to 04.",
+  "small line-drawn instrument icon as context",
+  "bracketed placeholder inside a cell"
+ ],
+ "palette": [
+  "deep navy outer frame",
+  "warm limestone card",
+  "navy text and table rules",
+  "steel-blue numeral, tick ring and breadcrumb",
+  "grey hairlines"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "regular sans table header and cells",
+  "mono row numbers",
+  "big steel-blue mono numeral with smaller sans percent sign",
+  "tiny mono uppercase limit tags",
+  "small sans wordmark and breadcrumb"
+ ],
+ "rendering": [
+  "flat vector",
+  "simple line icon of a transmitter",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "fine radial tick marks",
+  "hairline table rules",
+  "single vertical limit rule",
+  "flat fills, slightly rounded card corners"
+ ],
+ "motifs": [
+  "tick-ring dial",
+  "limit tags",
+  "conductivity transmitter icon",
+  "numbered instrument rows"
+ ],
+ "ui_patterns": [
+  "gauge readout",
+  "calibration table",
+  "key-figure dial"
+ ],
+ "motion_implied": [
+  "ticks light up around the ring up to the value",
+  "numeral counts up",
+  "limit tags slide along the limit line"
+ ],
+ "mood": [
+  "precise",
+  "calm",
+  "instrument-like",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "instrument-panel readout",
+  "open tick-ring dial of fine radial ticks",
+  "big steel-blue mono numeral in dial centre",
+  "vertical limit line crossing the dial",
+  "small outlined mono limit tags",
+  "small line icon of an instrument transmitter",
+  "calibration table left, dial right",
+  "numbered rows with hairline rules",
+  "warm limestone card",
+  "deep navy outer frame",
+  "large light-weight sans headline sentence case",
+  "wordmark and breadcrumb with hairline divider",
+  "navy text, steel-blue accent",
+  "flat vector, no shadows",
+  "square corners",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "precise calm mood",
+  "minimal palette navy limestone steel-blue",
+  "generous whitespace",
+  "laboratory instrument aesthetic",
+  "tiny mono uppercase labels",
+  "gauge readout key figure",
+  "open ring of ticks with longer major ticks",
+  "single steel-blue accent",
+  "hairline divider between wordmark and label"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup: a warm limestone sheet inside a deep navy frame. Top left: a small wordmark and breadcrumb, then a large light-weight sans headline. Left: a three-column table of <CONTENT> with mono row numbers and hairline rules. Right: an open ring of fine radial tick marks with one big steel-blue mono numeral and unit at its centre, a single vertical limit line crossing the ring with two small outlined mono limit tags, and a small line icon of an instrument beside it. Square corners, flat, precise and calm.",
+ "signature_idea": "Calibration tolerance shown as a tick-ring gauge, the figure in steel blue with its limits tagged on one vertical line.",
+ "strengths": [
+  "dial readout is a strong, ownable instrument motif with one steel-blue accent",
+  "table is clean and legible with good spacing",
+  "light headline and limestone/navy palette are on-brand",
+  "lots of calm space"
+ ],
+ "weaknesses": [
+  "dial reading '02%' with limits 'LMT 2 %' and '85-115 %' mixes unrelated tolerances; the gauge says nothing true",
+  "limit line cuts the ring at an arbitrary place, so the tags look decorative",
+  "invented standards and clause numbers would read as real",
+  "slightly rounded card corners break the square rule",
+  "table cells in sans, not mono figures"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy, limestone and one steel-blue accent with a light headline and a precise dial fit the brand, but the gauge values are incoherent and corners are softly rounded."
+}

@@ -1,0 +1,115 @@
+{
+ "file": "131-p9b-svc-cq-0.png",
+ "prompted_for": "'What each stage proves' (svc-cq); art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing; concept: C&Q stages as a row of navy/limestone tiles with huge slash numerals, one blueprint pipe tile",
+ "section_kind": "steps/timeline",
+ "style_family": "swiss navy limestone tile grid",
+ "art_direction": [
+  "Swiss International Typographic Style",
+  "strict modular grid",
+  "alternating navy and limestone tiles",
+  "huge numerals with slash",
+  "one blueprint pipe tile"
+ ],
+ "composition": [
+  "thin top bar with wordmark and mono uppercase section label divided by a hairline",
+  "large light headline on a full-width navy band with a tiny outlined note chip",
+  "a row of four stage columns: limestone, navy, blueprint, limestone, each split into numeral tile above and text tile below",
+  "a fifth right-hand navy column stacking 05/ and 06/ with their text",
+  "hairline grid lines separating every cell"
+ ],
+ "layout_devices": [
+  "huge slash numerals 01/ to 06/ heading each stage",
+  "one numeral in faded steel-blue on navy for rhythm",
+  "blueprint tile replacing the 03/ numeral with a pipe route drawing",
+  "short tag, stage name and one-line proof in each text tile",
+  "hairline grid over all tiles"
+ ],
+ "palette": [
+  "deep navy tiles and band",
+  "warm limestone tiles",
+  "faded steel-blue numerals on navy",
+  "white hairline blueprint on navy",
+  "off-white and near-black text"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "huge light mono-like numerals with slash",
+  "regular sans stage tags and names",
+  "small sans body lines",
+  "mono uppercase top-bar label"
+ ],
+ "rendering": [
+  "flat vector colour blocks",
+  "white line drawing of pipes with flow arrows on navy (blueprint)",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "hairline grid lines between tiles",
+  "fine blueprint pipe lines with elbows, tees and arrows",
+  "flat fills, square corners"
+ ],
+ "motifs": [
+  "slash numerals",
+  "pipe route with flow arrows",
+  "stage columns"
+ ],
+ "ui_patterns": [
+  "bento grid of numbered steps",
+  "top bar with section label",
+  "note chip beside headline"
+ ],
+ "motion_implied": [
+  "tiles reveal left to right in stage order",
+  "numerals count or type in",
+  "blueprint pipe route draws with arrows moving along it"
+ ],
+ "mood": [
+  "rigorous",
+  "ordered",
+  "confident",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "Swiss International Typographic Style web section",
+  "strict modular grid of square tiles",
+  "alternating deep navy and limestone tiles",
+  "huge light numerals with slash 01/",
+  "faded steel-blue numeral on navy",
+  "one tile with white blueprint pipe route on navy",
+  "flow arrows on pipe drawing",
+  "numeral tile above text tile per column",
+  "large light-weight sans headline sentence case",
+  "full-width navy headline band",
+  "hairline grid lines",
+  "mono uppercase section label in top bar",
+  "small outlined note chip",
+  "flat vector, no shadows",
+  "square corners",
+  "bento grid of steps",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "short stage name and one-line note",
+  "poster-like rhythm",
+  "high contrast navy and off-white",
+  "rigorous ordered mood",
+  "generous padding inside tiles",
+  "engineering process sequence",
+  "minimal steel-blue accent"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in Swiss International Typographic Style. A thin top bar with a mono uppercase label, then a full-width deep navy band with a large light-weight sans headline. Below, a strict grid of square-cornered tiles alternating deep navy and warm limestone, one column per step of <CONTENT>: a huge light numeral with a slash on top, a short name and one-line note beneath. One tile replaces its numeral with a white blueprint pipe route with flow arrows on navy. Hairline grid lines, flat fills, no shadows.",
+ "signature_idea": "C&Q stages as a Swiss poster row of slash-numbered tiles, with one stage's numeral swapped for a blueprint of the pipe route it checks.",
+ "strengths": [
+  "almost verbatim brand: navy/limestone, light headline, huge light numerals, square corners",
+  "stage order reads left to right at a glance",
+  "blueprint tile adds equipment context without clutter",
+  "maps directly to the existing Swiss tile grid component"
+ ],
+ "weaknesses": [
+  "stage text is garbled: '05/ PQ & Review' and '06/ Performance qualification' duplicate the same line",
+  "fifth column is cramped and stacks two stages, breaking the even row",
+  "03/ moved into the text tile while 03's numeral tile holds the drawing, which confuses the numbering",
+  "blueprint pipe drawing is generic and not tied to IQ"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone tiles, huge light slash numerals, a light headline, hairlines and one blueprint tile are the brand system almost exactly; only the garbled text lets it down."
+}

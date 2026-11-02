@@ -1,0 +1,122 @@
+{
+ "file": "154-p9b-ind-meddevice-0.png",
+ "prompted_for": "'Water grade by process step' (ind-meddevice); art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it; concept: navy panel with a dimensioned line-mesh fusion bead beside the process-step / water-grade table",
+ "section_kind": "standards",
+ "style_family": "editorial oversized type with navy line-mesh panel",
+ "art_direction": [
+  "macro close-up as dense line mesh",
+  "duotone navy and limestone",
+  "dimensioned engineering annotation",
+  "editorial oversized headline",
+  "image left, table right split"
+ ],
+ "composition": [
+  "limestone page with wordmark top-right over a full-width hairline rule",
+  "small eyebrow label then a very large light headline running across the full width",
+  "left ~50%: a navy panel with a diagonal pipe whose fusion bead swells in the centre, drawn as thousands of fine white contour lines",
+  "dimension lines and small mono measurements laid over the bead",
+  "right: a lead sentence and a three-column numbered table (process step, typical water, what sets it) with four rows"
+ ],
+ "layout_devices": [
+  "navy image panel against limestone page",
+  "dimension lines with arrowheads and extension lines over the macro",
+  "numbered table rows 1 to 4",
+  "hairline table rules, no cell fills",
+  "full-width oversized headline as the page anchor"
+ ],
+ "palette": [
+  "warm limestone page",
+  "deep navy image panel",
+  "white and pale-grey line mesh",
+  "navy text",
+  "grey hairline rules"
+ ],
+ "typography": [
+  "oversized light-weight sans headline in sentence case with full stop",
+  "regular sans lead sentence",
+  "small sans table headers and cells",
+  "tiny mono dimension labels on the drawing",
+  "wordmark in medium sans"
+ ],
+ "rendering": [
+  "dense white contour-line mesh on navy, like a wireframe scan",
+  "flat UI table",
+  "no shading other than line density"
+ ],
+ "line_and_texture": [
+  "thousands of fine parallel lines describing the surface",
+  "hairline dimension and extension lines",
+  "hairline table rules",
+  "soft fall-off of line density at the panel edge"
+ ],
+ "motifs": [
+  "butt-fusion weld bead",
+  "pipe surface as contour mesh",
+  "dimension callouts",
+  "numbered process steps",
+  "standard codes in cells"
+ ],
+ "ui_patterns": [
+  "split image and table",
+  "eyebrow plus big headline",
+  "numbered comparison table",
+  "lead sentence caveat above table"
+ ],
+ "motion_implied": [
+  "contour lines draw along the pipe",
+  "dimension lines extend and labels type in",
+  "table rows reveal in order"
+ ],
+ "mood": [
+  "precise",
+  "scientific",
+  "calm",
+  "authoritative",
+  "crafted"
+ ],
+ "t2i_keywords": [
+  "oversized light-weight sans headline across full width",
+  "warm limestone page",
+  "deep navy image panel",
+  "macro pipe weld bead drawn as dense white contour lines",
+  "line-mesh wireframe surface",
+  "duotone navy and white",
+  "hairline dimension lines with arrowheads",
+  "tiny mono measurement labels",
+  "image left table right split",
+  "three-column table with hairline rules",
+  "numbered table rows",
+  "no cell fills",
+  "sentence case headline with full stop",
+  "small eyebrow label",
+  "wordmark top-right over hairline rule",
+  "engineering drawing annotation over imagery",
+  "scientific visualisation look",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "generous margins",
+  "calm precise mood",
+  "editorial technical page",
+  "monochrome line art on dark ground",
+  "shallow depth of field fall-off in line density",
+  "scan-like surface topology"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone background. Small eyebrow label, then an oversized light-weight navy sans headline in sentence case across the full width. Left half: a square-cornered deep navy panel showing a macro of a pipe joint bead drawn as dense fine white contour lines, overlaid with hairline dimension lines and tiny mono measurements. Right half: a short lead sentence and a numbered three-column table with hairline rules for <CONTENT>. No fills, no shadows, calm and precise.",
+ "signature_idea": "The fusion bead becomes a contour-line scan on navy, dimensioned like a drawing, set against a big quiet headline and a ruled table.",
+ "strengths": [
+  "striking, distinctive image that still reads as engineering",
+  "palette is strictly navy, limestone and white",
+  "oversized light headline and hairline table are on-brand",
+  "image and table share the calm duotone language"
+ ],
+ "weaknesses": [
+  "line mesh reads as a wave or fabric, not obviously a PP weld",
+  "dimension labels are tiny and partly garbled",
+  "table text lists WFI and endotoxin figures, off-offer and invented",
+  "no steel-blue accent or mono figures in the table",
+  "image does not link to any table row"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy and limestone duotone, light oversized headline and hairline table are on-brand, but the mesh is ambiguous and the table drifts into WFI claims."
+}

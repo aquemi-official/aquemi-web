@@ -1,0 +1,119 @@
+{
+ "file": "134-p9b-svc-cq-2.png",
+ "prompted_for": "'IQ and OQ on site' (svc-cq); art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching; concept: IQ/OQ checks table beside a detailed isometric line drawing of the skid with a few labelled check points",
+ "section_kind": "spec/limits",
+ "style_family": "limestone sheet isometric skid drawing",
+ "art_direction": [
+  "isometric technical line drawing",
+  "catalogue illustration",
+  "limestone sheet inset on a navy frame",
+  "table beside drawing",
+  "sparse leader-line labels"
+ ],
+ "composition": [
+  "a limestone sheet sitting inside a thick navy border",
+  "small sans eyebrow and large light headline top left",
+  "left ~45%: a three-column checks table with five numbered rows and hairline rules",
+  "right ~55%: a large isometric line drawing of an RO/storage skid on a base plate, with membrane housings, a vertical tank, a cabinet and pipe manifold",
+  "four short labels with leader lines pointing to check points on the drawing"
+ ],
+ "layout_devices": [
+  "steel-blue row numbers 01-05 outside the table edge",
+  "check names as 'IQ · Drawings' with a middle dot",
+  "steel-blue hairline under the table header",
+  "leader-line labels at four check points",
+  "navy frame around a paper sheet"
+ ],
+ "palette": [
+  "deep navy outer frame",
+  "warm limestone sheet",
+  "dark navy line drawing and text",
+  "steel-blue row numbers and header rule",
+  "grey hairline row rules"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case with full stop",
+  "small sans eyebrow",
+  "regular sans table header",
+  "monospace table cells",
+  "tiny sans drawing labels"
+ ],
+ "rendering": [
+  "isometric line drawing, uniform strokes, no shading, no hatching",
+  "flat sheet and frame",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "uniform dark hairline strokes in the drawing",
+  "hairline table rules",
+  "flat paper ground, no grain",
+  "square corners"
+ ],
+ "motifs": [
+  "isometric skid with membrane housings and vertical vessel",
+  "pipe manifold with valves",
+  "control cabinet",
+  "base plate",
+  "labelled check points"
+ ],
+ "ui_patterns": [
+  "checks table",
+  "annotated equipment drawing",
+  "inset sheet card"
+ ],
+ "motion_implied": [
+  "line drawing draws in stroke by stroke",
+  "row hover highlights its check point on the drawing",
+  "labels fade in with leader lines"
+ ],
+ "mood": [
+  "precise",
+  "technical",
+  "calm",
+  "catalogue-like"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing of a water treatment skid",
+  "uniform hairline strokes, no shading, no hatching",
+  "catalogue illustration style",
+  "warm limestone paper sheet",
+  "deep navy outer frame",
+  "drawing isolated on the ground",
+  "membrane housings and vertical tank",
+  "pipe manifold with valves",
+  "leader-line labels at check points",
+  "three-column checks table",
+  "steel-blue row numbers 01",
+  "monospace table cells",
+  "hairline table rules",
+  "large light-weight sans headline sentence case",
+  "small sans eyebrow",
+  "table left, drawing right",
+  "dark navy linework",
+  "flat, no shadows",
+  "square corners",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "precise engineering mood",
+  "generous margins on sheet",
+  "base plate skid",
+  "minimal palette navy limestone steel-blue"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup: a warm limestone sheet inset within a deep navy frame. Top left: a small sans eyebrow and a large light-weight sans headline. Left: a three-column table of <CONTENT> with steel-blue row numbers, monospace cells and hairline rules. Right: a large isometric technical line drawing of a polypropylene water skid on a base plate, uniform dark navy hairline strokes, no shading, no hatching, with four tiny leader-line labels at check points. Square corners, flat, calm and precise.",
+ "signature_idea": "The site checks table sits beside a catalogue line drawing of the skid, with labels marking where each check happens.",
+ "strengths": [
+  "clean line drawing on limestone is very close to the brand's drawing language",
+  "table plus drawing pairs evidence with equipment",
+  "light headline, mono cells and steel-blue numbers are on-system",
+  "lots of calm space; easy to build as a split section"
+ ],
+ "weaknesses": [
+  "drawing labels do not match the table rows; only four loose points with no numbers",
+  "skid shows a metal-looking tank, control box and stainless-style manifold rather than clearly PP",
+  "invented specifics (DVS 2207, USP Class VI, ozone) read as real claims",
+  "thick navy frame around the sheet adds a heavy border",
+  "table text is small and cramped in narrow columns"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone sheet, navy linework, light headline, mono cells and steel-blue numbers fit well, but labels are unlinked to rows and the equipment drifts off-offer."
+}

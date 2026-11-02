@@ -1,0 +1,121 @@
+{
+ "file": "169-p9b-cmp-documentation-3-take2.png",
+ "prompted_for": "'Delivery and signatures' (cmp-documentation); art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules; concept: 3-row delivery table on a navy zone-bordered drawing sheet with doc code DS-001-A and an AQ-DP-04 title block",
+ "section_kind": "spec/limits",
+ "style_family": "navy drawing sheet table",
+ "art_direction": [
+  "engineering drawing sheet on navy",
+  "zone-reference border",
+  "title block bottom right",
+  "mono document codes",
+  "ruled table with limestone label column"
+ ],
+ "composition": [
+  "full-bleed deep navy sheet with an outer zone border: numbers 1-4 top and bottom, letters down both sides",
+  "very large light off-white page label across the top, a steel-blue rule beneath",
+  "second large light headline directly below, almost as big as the first",
+  "full-width three-column table with three numbered rows filling the middle",
+  "first content column filled with limestone, the other cells navy with off-white rules",
+  "small title block in the bottom-right corner with a wide name cell and stacked code and revision cells"
+ ],
+ "layout_devices": [
+  "zone-reference border with grid numbers and letters",
+  "steel-blue horizontal rule between the two headlines",
+  "limestone-filled label column inside a navy table",
+  "plain sans row numerals 1 to 3 outside the cells",
+  "tiny mono document codes at right and above the title block",
+  "drawing title block with code and revision"
+ ],
+ "palette": [
+  "deep navy sheet ground",
+  "off-white headlines, text and table rules",
+  "warm limestone label-column cells with navy text",
+  "steel-blue rule under the top headline",
+  "faint steel-blue mono codes"
+ ],
+ "typography": [
+  "very large light grotesk page label in title case",
+  "large light grotesk headline in sentence case",
+  "regular sans table headers and cells, fairly large",
+  "tiny mono document and revision codes",
+  "regular sans title-block name"
+ ],
+ "rendering": [
+  "flat vector drawing sheet",
+  "off-white hairline table",
+  "no shading, no image"
+ ],
+ "line_and_texture": [
+  "off-white hairline table rules",
+  "thin border and zone tick marks",
+  "flat navy with no texture",
+  "square corners"
+ ],
+ "motifs": [
+  "zone-bordered drawing sheet",
+  "title block",
+  "document and revision codes"
+ ],
+ "ui_patterns": [
+  "stacked double headline",
+  "three-column data table with highlighted label column",
+  "title block footer"
+ ],
+ "motion_implied": [
+  "zone border draws around the sheet",
+  "limestone label cells wipe in row by row",
+  "title block stamps in last"
+ ],
+ "mood": [
+  "formal",
+  "technical",
+  "plain",
+  "dense",
+  "documentary"
+ ],
+ "t2i_keywords": [
+  "engineering drawing sheet on deep navy",
+  "zone-reference border with numbers and letters",
+  "drawing title block in bottom-right corner",
+  "very large light-weight sans-serif headline",
+  "second headline stacked below",
+  "steel-blue rule between headlines",
+  "three-column ruled table",
+  "limestone-filled label column",
+  "off-white hairline table rules",
+  "numbered table rows",
+  "tiny mono document codes",
+  "revision cell in title block",
+  "flat vector, no shading",
+  "square corners",
+  "off-white text on navy",
+  "full-width table",
+  "blueprint-like sheet",
+  "one steel-blue accent line",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "formal technical mood",
+  "limestone and navy contrast cells",
+  "large readable table text",
+  "engineering document styling",
+  "margins inside zone border"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup styled as an engineering drawing sheet on deep navy, with a thin zone-reference border marked by numbers along the top and bottom and letters down the sides. A large light-weight off-white sans-serif headline in sentence case at top-left over a single steel-blue rule. Below, a full-width three-column table with off-white hairline rules and numbered rows for <CONTENT>; the label column is filled with warm limestone and navy text, the other cells navy. Bottom-right: a small title block with tiny mono code and revision cells. Flat, square corners.",
+ "signature_idea": "A drawing-sheet table where the label column is cut out in limestone, so the row names read like stamped panels on the navy sheet.",
+ "strengths": [
+  "limestone label column gives the table a simple, buildable contrast device",
+  "navy sheet, zone border and title block read as engineering at a glance",
+  "table text is large and readable",
+  "square corners and flat colour throughout"
+ ],
+ "weaknesses": [
+  "plain table only, no visual idea beyond the sheet frame",
+  "two near-equal giant headlines compete; the page label is promoted to a headline",
+  "zone letters on the right edge are mislabeled and repeat out of order",
+  "document code is duplicated in three places",
+  "dense and crowded, the table fills the sheet with little space",
+  "an empty note cell and an incomplete retention phrase look unfinished"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette, light type and square hairlines fit, but competing headlines, crowding and garbled zone labels lose the calm precision."
+}

@@ -1,0 +1,126 @@
+{
+ "file": "121-p9b-svc-fabrication-0.png",
+ "prompted_for": "'One joint, one log line' (svc-fabrication); art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints; concept: vertical double-line pipe with joints tagged J-081..J-085 runs beside the joint-log table",
+ "section_kind": "standards",
+ "style_family": "navy blueprint pipe route",
+ "art_direction": [
+  "technical blueprint on deep navy",
+  "pale blue-white hairline line art",
+  "continuous double-line pipe",
+  "P&ID valve symbols at joints",
+  "hairline evidence table"
+ ],
+ "composition": [
+  "deep navy ground with a faint blueprint grid",
+  "small eyebrow and large light headline top-centre-left",
+  "left ~25%: a double-line pipe enters from the top edge, bends right, then drops vertically through five valve symbols tagged J-081 to J-085, running off the bottom edge",
+  "right ~55%: a three-column table with five numbered rows aligned to the pipe joints",
+  "footer strip: wordmark bottom-left, mono page counter 03/06 and section label bottom-right over a hairline rule"
+ ],
+ "layout_devices": [
+  "pipe joints vertically aligned with table rows",
+  "alternating left/right joint tags with leader ticks",
+  "numbered rows 01-05 in mono",
+  "hairline row rules and header rule",
+  "page counter in footer",
+  "pipe bleeding off top and bottom edges"
+ ],
+ "palette": [
+  "deep navy ground with slight vignette",
+  "pale blue-white pipe linework",
+  "faint navy blueprint grid",
+  "off-white headline and table text",
+  "muted steel-blue row numbers"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small light sans eyebrow",
+  "small sans column headers",
+  "regular sans table body",
+  "mono row numbers and joint tags",
+  "bold uppercase wordmark"
+ ],
+ "rendering": [
+  "flat blueprint line art",
+  "double-line pipe with no shading",
+  "flat UI table",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "hairline double-line pipe",
+  "P&ID bow-tie valve symbols",
+  "fine blueprint grid",
+  "hairline table rules",
+  "subtle radial vignette on ground"
+ ],
+ "motifs": [
+  "vertical pipe run",
+  "valve symbols as joints",
+  "joint tags J-0xx",
+  "joint log table",
+  "blueprint grid"
+ ],
+ "ui_patterns": [
+  "evidence table with numbered rows",
+  "diagram-to-table alignment",
+  "page counter footer"
+ ],
+ "motion_implied": [
+  "pipe draws down from the top",
+  "each joint lights as its table row reveals",
+  "tags fade in beside joints"
+ ],
+ "mood": [
+  "calm",
+  "technical",
+  "authoritative",
+  "orderly",
+  "nocturnal"
+ ],
+ "t2i_keywords": [
+  "technical blueprint on deep navy",
+  "faint blueprint grid",
+  "pale blue-white hairline line art",
+  "continuous double-line pipe",
+  "pipe entering from top edge and bending down",
+  "P&ID bow-tie valve symbols at joints",
+  "mono joint tags with leader ticks",
+  "pipe joints aligned to table rows",
+  "three-column hairline table",
+  "mono row numbers 01-05",
+  "large light-weight sans headline sentence case",
+  "small eyebrow above headline",
+  "off-white text on navy",
+  "pipe bleeding off top and bottom",
+  "footer with page counter 03/06",
+  "flat vector, no shadows",
+  "square corners",
+  "generous spacing",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm engineering mood",
+  "evidence log aesthetic",
+  "subtle navy vignette",
+  "one accent colour only",
+  "row numbers in muted steel blue",
+  "joint log as evidence table"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a deep navy ground with a faint blueprint grid. Small eyebrow and a large light-weight sans headline. On the left, one continuous double-line pipe in pale blue-white hairlines enters from the top edge, bends, and drops vertically through a series of P&ID valve symbols, each tagged with a small mono code. On the right, a three-column hairline table with mono-numbered rows aligned to each joint, for <CONTENT>. Footer with a wordmark and a mono page counter. Flat, square corners, no shadows.",
+ "signature_idea": "A single pipe drops down the page and each of its joints lines up with one row of the log, so the table reads as the pipe's own record.",
+ "strengths": [
+  "diagram-to-row alignment is a strong, buildable idea",
+  "very calm navy blueprint with hairline art",
+  "headline, mono numbers and table are on-brand",
+  "pipe running off both edges implies continuity across sections",
+  "table is readable and well spaced"
+ ],
+ "weaknesses": [
+  "valve symbols stand in for fusion joints, which is semantically wrong",
+  "joint tags duplicated on both sides of each joint",
+  "pipe is pale blue-white, not the prompted steel-blue accent",
+  "joints J-081..085 align to fields, not to joints, mixing two ideas",
+  "bold wordmark is off-system"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Deep navy, hairline line art, light headline, mono numbers and square calm layout match the brand closely; the missing accent and wrong symbols are minor."
+}

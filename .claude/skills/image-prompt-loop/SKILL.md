@@ -41,7 +41,7 @@ negatives) so new prompts follow it.
 1. Prompts: `python tools/section_prompts.py tools/kit.json <queue.json> [page ids]` writes one item per section
    (`key`, `dir`, `mid`). Art directions rotate in shuffled rounds so neighbours differ. Hand-edit a `mid` when a
    section deserves a specific idea (e.g. a hybrid from atlas §5).
-2. Gemini (gemini.google.com, model Pro, through Claude in Chrome; one tab, the only tab in the group, no new chats):
+2. Gemini (gemini.google.com, model Pro, through Claude in Chrome; one tab, the only tab in the group):
    - Send the first prompt by typing it (any section), so the chat has one user message.
    - Set `window.PRE`/`window.SUF` from `kit.json`, then paste `tools/gemini-helpers.js` into one `javascript_exec`.
      It stores the helpers in `localStorage.p9`.
@@ -52,6 +52,13 @@ negatives) so new prompts follow it.
      `computer zoom` region `[0,0,w*0.6125,h*0.6125]` with `save_to_disk:true, scale:1`, `ovx()`. Then
      `python tools/save_capture.py <key> <saved png> <h> <out dir>` (crops to the real height; keeps earlier takes as
      `.vN`). Gemini returns 1024 px wide images of varying height (572–718).
+   - **Current interface (since 2026-11-01): one fresh chat per image, no reload.** Saved chats now often reload
+     blank after a generation, so the edit-and-reload loop above breaks. Per image instead: `navigate`
+     `https://gemini.google.com/app` (a new chat, context-free by construction), load helpers, `await nw(<mid>)`,
+     wait 10 s ×4 + 8 s, then without reloading `await cap()` (if it returns 'none', wait 10 s and call it once more),
+     zoom-save, `ovx()`, `save_capture.py`. Each image leaves one chat in the history; that is fine. Check once per run
+     that the model picker says Pro: it falls back to Flash-Lite between sessions. Tall images (over ~720 px) need a
+     taller zoom region than the previous capture: use the `cap()` numbers every time.
    - Editing the first prompt each time gives a fresh, context-free generation (earlier images do not steer it).
      To regenerate the same prompt, change a word (" Take 2."): identical text leaves Update disabled.
    - Do not download images from the page (the second automatic download raises Chrome's multiple-downloads prompt

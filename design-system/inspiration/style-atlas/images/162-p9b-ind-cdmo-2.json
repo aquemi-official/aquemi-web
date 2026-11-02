@@ -1,0 +1,126 @@
+{
+ "file": "162-p9b-ind-cdmo-2.png",
+ "prompted_for": "'Redundancy that keeps clients supplied' (ind-cdmo); art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules; concept: huge stacked headline, isometric drawing of twin duplex trains, five numbered redundancy cards in a band with mono codes",
+ "section_kind": "options",
+ "style_family": "editorial oversized type with isometric line drawing",
+ "art_direction": [
+  "editorial magazine spread",
+  "oversized stacked light headline",
+  "isometric line drawing in a framed box",
+  "card band across the bottom",
+  "asymmetric layout"
+ ],
+ "composition": [
+  "limestone page with eyebrow at left and centred wordmark above a full-width hairline rule",
+  "left half: a four-line stacked oversized light headline, not cropped",
+  "right: a hairline-framed box with an isometric line drawing of two pairs of rounded tanks on a base with piping and valves",
+  "a floating card (02) overlapping the headline and drawing box",
+  "bottom band: five equal cards on a navy strip that bleeds to the edges, four white and one steel-blue highlighted"
+ ],
+ "layout_devices": [
+  "oversized stacked headline as the left column",
+  "framed line drawing panel",
+  "five-card band with vertical hairline dividers",
+  "large mono numerals 01 to 05 on each card",
+  "bracketed mono codes at the foot of each card",
+  "one card filled steel blue as the active item",
+  "navy strip behind the card band"
+ ],
+ "palette": [
+  "warm limestone page",
+  "white cards",
+  "deep navy band and text",
+  "steel-blue highlighted card",
+  "navy line drawing",
+  "grey hairlines"
+ ],
+ "typography": [
+  "oversized light-weight sans headline stacked over four lines",
+  "large mono numerals on cards",
+  "uppercase mono-like card titles",
+  "small sans card notes",
+  "bracketed uppercase mono codes",
+  "small sans eyebrow and light sans wordmark"
+ ],
+ "rendering": [
+  "isometric thin-line drawing, no shading",
+  "flat UI cards",
+  "flat colour fills"
+ ],
+ "line_and_texture": [
+  "uniform hairline strokes in the drawing",
+  "hairline frame around the drawing",
+  "hairline card dividers",
+  "flat untextured ground"
+ ],
+ "motifs": [
+  "twin duplex tank trains",
+  "piping and valves",
+  "numbered option cards",
+  "bracketed mono codes",
+  "highlighted active card"
+ ],
+ "ui_patterns": [
+  "card band / option strip",
+  "active card state",
+  "editorial hero with illustration",
+  "eyebrow plus headline"
+ ],
+ "motion_implied": [
+  "headline lines rise in sequence",
+  "drawing strokes draw in",
+  "cards slide up from the band one by one",
+  "highlight moves across cards on hover"
+ ],
+ "mood": [
+  "confident",
+  "editorial",
+  "technical",
+  "calm",
+  "assured"
+ ],
+ "t2i_keywords": [
+  "editorial magazine spread",
+  "oversized light-weight sans headline stacked over four lines",
+  "asymmetric layout",
+  "isometric line drawing of twin tank trains",
+  "uniform hairline strokes no shading",
+  "hairline-framed drawing panel",
+  "warm limestone page",
+  "band of five numbered cards across the bottom",
+  "large mono numerals on cards",
+  "bracketed uppercase mono codes",
+  "one card highlighted in steel blue",
+  "deep navy strip behind cards",
+  "white cards with vertical hairline dividers",
+  "small uppercase card titles",
+  "eyebrow and centred wordmark over hairline rule",
+  "square corners",
+  "flat straight-on UI mockup",
+  "1440 px desktop section",
+  "navy limestone steel-blue palette",
+  "confident editorial mood",
+  "precise technical illustration",
+  "generous margins",
+  "card band bleeding to page edges",
+  "active card state",
+  "vertical hairline card dividers"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section as a flat straight-on UI mockup on a warm limestone background. Eyebrow and wordmark over a hairline rule. Left: an oversized light-weight navy sans headline stacked over four lines. Right: a hairline-framed panel with an isometric navy line drawing of twin process trains, uniform strokes, no shading. Across the bottom, a deep navy strip holding five square white cards with large mono numerals, uppercase titles, short notes and bracketed mono codes for <CONTENT>; one card filled steel blue. Square corners, flat.",
+ "signature_idea": "A huge stacked headline and a framed twin-train line drawing sit over a band of five numbered redundancy cards, one lit in steel blue.",
+ "strengths": [
+  "oversized light headline and isometric line drawing are strong and on-brand",
+  "card band with mono numerals and codes is a reusable options pattern",
+  "one steel-blue card is a disciplined single accent",
+  "clear hierarchy from headline to drawing to options"
+ ],
+ "weaknesses": [
+  "duplicated card 02 floats over the layout and overlaps the headline",
+  "garbled text ('smatic', 'sanitize' typo) in cards",
+  "headline is not cropped as the brief asked, so less dramatic",
+  "drawn tanks look like stainless vessels rather than PP modules",
+  "bracketed codes are invented and read like real part numbers"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Light oversized headline, line drawing, mono codes and one steel-blue card fit, but the duplicated floating card and garbled text break the calm."
+}

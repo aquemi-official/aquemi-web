@@ -1,0 +1,121 @@
+{
+ "file": "177-p9b-projects-1.png",
+ "prompted_for": "'What a case study proves' (projects); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: sparse limestone drawing sheet whose title block rows read Figure / Method / Report / Approval",
+ "section_kind": "other",
+ "style_family": "limestone drawing sheet",
+ "art_direction": [
+  "limestone paper engineering drawing sheet",
+  "fine navy border",
+  "title block bottom right",
+  "abstract navy hairline geometric diagram",
+  "extreme negative space"
+ ],
+ "composition": [
+  "whole frame is one limestone sheet inside a thin navy border",
+  "large light two-line headline vertically centred on the left half",
+  "right half: an abstract hairline construction drawing of concentric circles, crosshairs, a hexagon and arcs",
+  "a narrow column of numbered blank note lines (01 to about 40) running down the left edge of the drawing",
+  "one steel-blue horizontal line crossing the drawing as the single accent",
+  "four-row title block in the bottom-right corner labelled Figure, Method, Report, Approval with empty fields"
+ ],
+ "layout_devices": [
+  "drawing-sheet border frame",
+  "title block with label and empty value cells",
+  "numbered note lines as a ruler-like column",
+  "single steel-blue accent rule",
+  "dotted and solid construction arcs",
+  "headline set as the sheet's only content"
+ ],
+ "palette": [
+  "warm limestone paper ground",
+  "deep navy hairlines and headline",
+  "one steel-blue accent line",
+  "grey-navy dotted construction lines"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case, navy",
+  "tiny mono numerals for the note column",
+  "small mono labels in the title block"
+ ],
+ "rendering": [
+  "flat line drawing on paper colour",
+  "no shading",
+  "no texture beyond flat fill"
+ ],
+ "line_and_texture": [
+  "uniform navy hairlines",
+  "dotted construction arcs",
+  "concentric circle sets",
+  "thin border rule",
+  "square corners"
+ ],
+ "motifs": [
+  "drawing-sheet border",
+  "title block",
+  "compass-like concentric circles",
+  "crosshair construction lines",
+  "numbered notes list"
+ ],
+ "ui_patterns": [
+  "section intro panel",
+  "label/value title block",
+  "numbered list column"
+ ],
+ "motion_implied": [
+  "construction lines draw in from centre",
+  "note numbers tick down the column",
+  "title block fields fill one by one"
+ ],
+ "mood": [
+  "calm",
+  "quiet",
+  "precise",
+  "spare",
+  "architectural"
+ ],
+ "t2i_keywords": [
+  "limestone paper engineering drawing sheet",
+  "fine navy border frame",
+  "title block bottom right corner",
+  "label column with empty value fields",
+  "large light-weight sans headline sentence case",
+  "deep navy text on warm limestone",
+  "abstract navy hairline construction drawing",
+  "concentric circles and crosshairs",
+  "dotted construction arcs",
+  "single steel-blue accent line",
+  "narrow numbered notes column in tiny mono",
+  "extreme negative space",
+  "flat line art, no shading",
+  "square corners",
+  "two-column split: headline left, drawing right",
+  "drafting-table precision",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "minimal palette navy limestone steel blue",
+  "calm architectural mood",
+  "uniform hairline stroke weight",
+  "technical drawing sheet aesthetic",
+  "quiet editorial restraint",
+  "mono labels",
+  "navy hairline diagram",
+  "dotted construction circles",
+  "cover-sheet composition"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on mockup of a warm limestone paper engineering drawing sheet inside a fine navy border. Left half: a large light-weight sans headline in navy, sentence case, with generous empty space. Right half: a navy hairline construction drawing of concentric circles, crosshairs and dotted arcs, crossed by one steel-blue line, with a narrow column of tiny mono numbered note lines beside it for <CONTENT>. Bottom-right: a small four-row title block with mono labels. Flat line art, no shading, square corners, calm and spare.",
+ "signature_idea": "The section is a blank drawing sheet whose title block asks what a case study must carry: figure, method, report, approval.",
+ "strengths": [
+  "drawing-sheet border and title block are a strong, ownable frame",
+  "very calm, lots of space, light navy headline on limestone",
+  "single steel-blue accent used exactly once",
+  "title block rows give a clear hook for real content"
+ ],
+ "weaknesses": [
+  "the diagram is abstract geometry with no meaning for water systems",
+  "numbered notes column is empty filler lines, not content",
+  "content is almost absent; reads as a cover page rather than a section",
+  "title block fields are blank so the concept carries no information"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy on limestone, light headline, mono labels, one accent and square corners fit perfectly, but the drawing is meaningless decoration and the sheet holds almost no content."
+}

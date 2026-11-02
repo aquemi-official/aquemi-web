@@ -1,0 +1,123 @@
+{
+ "file": "112-p9b-sys-monitoring-1.png",
+ "prompted_for": "'Alert, action and trend' (sys-monitoring); art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels; concept: levels table whose rows run leader lines into a soft-3D white PP skid",
+ "section_kind": "spec/limits",
+ "style_family": "soft 3D skid with table",
+ "art_direction": [
+  "soft 3D isometric product render",
+  "matte white polypropylene skid",
+  "even studio light",
+  "levels table with leader lines into the render",
+  "limestone page"
+ ],
+ "composition": [
+  "small grey breadcrumb and uppercase wordmark top left",
+  "large light headline across the top, then a smaller light subhead and a two-line intro",
+  "a four-row, four-column table on the left half",
+  "a soft-3D white skid of blocky tanks, columns and a clear pipe on a white base plate at right, cropped by the right edge",
+  "each table row ends in a short hairline with a small square marker that angles into the skid"
+ ],
+ "layout_devices": [
+  "mono row numerals 01-04 in a left gutter",
+  "column headers in small sans over a hairline",
+  "hairline row rules",
+  "leader lines with square end markers from row ends to the render",
+  "render bleeding off the right edge"
+ ],
+ "palette": [
+  "warm limestone page",
+  "matte white PP render with soft grey shadows",
+  "translucent pale-blue water in clear pipes",
+  "deep navy headline and text",
+  "grey-blue mono numerals and leaders"
+ ],
+ "typography": [
+  "large light-weight sans headline with period",
+  "light sans subhead",
+  "small regular sans intro",
+  "mono row numerals",
+  "small sans table headers and cells",
+  "small grey breadcrumb, small uppercase wordmark"
+ ],
+ "rendering": [
+  "soft 3D render with even studio light",
+  "isometric product view",
+  "flat UI table"
+ ],
+ "line_and_texture": [
+  "hairline row rules",
+  "hairline leaders with small square markers",
+  "smooth matte plastic surfaces",
+  "rounded tank tops and soft fillets on blocks",
+  "soft contact shadows"
+ ],
+ "motifs": [
+  "white PP skid on a base plate",
+  "rectangular tanks and round columns",
+  "clear pipe with pale-blue water",
+  "small sample valves"
+ ],
+ "ui_patterns": [
+  "levels table",
+  "row-to-render leader callouts",
+  "breadcrumb",
+  "headline + subhead + intro"
+ ],
+ "motion_implied": [
+  "hovering a row lights its leader and point on the skid",
+  "leaders draw from table into the render",
+  "water in the clear pipe flows",
+  "render rotates slightly on scroll"
+ ],
+ "mood": [
+  "clean",
+  "calm",
+  "product-focused",
+  "clinical",
+  "approachable"
+ ],
+ "t2i_keywords": [
+  "soft 3D isometric render of a matte white polypropylene skid",
+  "even studio light, soft contact shadows",
+  "translucent pale-blue water in clear pipes",
+  "warm limestone page background",
+  "table on the left half",
+  "hairline leader lines from table rows into the render",
+  "small square leader end markers",
+  "mono row numerals 01-04",
+  "hairline row rules",
+  "large light-weight sans headline with period",
+  "light sans subhead",
+  "small sans intro text",
+  "render bleeding off the right edge",
+  "white base plate",
+  "blocky tanks and round columns",
+  "deep navy text",
+  "grey-blue accents",
+  "square table, no cards",
+  "1440 px desktop section",
+  "straight-on flat UI over 3D render",
+  "clinical clean mood",
+  "generous left margin",
+  "small breadcrumb top left",
+  "product-and-data pairing",
+  "pharma equipment catalogue feel"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on warm limestone. Top left: a small breadcrumb, a large light-weight sans headline, a light subhead and a short intro. Left half: a four-row table with mono row numerals, small sans headers and hairline rules for <CONTENT>. Right: a soft 3D isometric render of one matte white polypropylene skid with blocky tanks, round columns and a clear pipe of translucent pale-blue water on a white base plate, in even studio light, bleeding off the right edge. Hairline leaders with small square markers run from each row end into the skid.",
+ "signature_idea": "Each limit row of the table runs a hairline leader into the white PP skid, tying a number on paper to a point on the equipment.",
+ "strengths": [
+  "shows the actual product: a white PP skid with pale-blue water",
+  "table is clear, calm and legible with mono numerals",
+  "leaders connect data to the equipment as the brief asked",
+  "limestone, navy text and white render keep the palette quiet"
+ ],
+ "weaknesses": [
+  "leaders end on arbitrary spots of the skid; the levels have no physical location",
+  "intro line is the prompt's company description pasted as copy",
+  "invented figures and document codes (CFU limit, USP number, GUI code) in cells",
+  "skid is toy-like blocks with rounded corners, not a believable PP system",
+  "no steel-blue accent; leaders are grey"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Light headline, mono numerals, limestone and white PP render are on-brand and calm, but the leaders mean nothing and the copy and figures are invented."
+}

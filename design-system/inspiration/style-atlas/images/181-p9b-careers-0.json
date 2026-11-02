@@ -1,0 +1,125 @@
+{
+ "file": "181-p9b-careers-0.png",
+ "prompted_for": "'Roles, base and pay' (careers); art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints; concept: role cards set inside the bends of one double-line pipe loop with valves; open/closed status after each title",
+ "section_kind": "router",
+ "style_family": "navy blueprint pipe route",
+ "art_direction": [
+  "technical blueprint on deep navy",
+  "pale blue-white hairline line art",
+  "one continuous double-line pipe route in steel blue",
+  "P&ID valve symbols at the joints",
+  "role entries set inside pipe bends"
+ ],
+ "composition": [
+  "large empty navy band at top with a centred light headline ending in a full stop and a one-line subhead",
+  "lower half: a double-line pipe snakes across the width, dipping and rising to enclose three role blocks",
+  "faint grid of thin construction lines behind the pipe",
+  "each role block: mono slash number, uppercase mono title with status in brackets, then a label/value list (what you do, must have, base and travel, pay and status)",
+  "valves sit on the vertical pipe runs between blocks",
+  "the third role is duplicated, stacked twice on the right",
+  "pipe and grid run off the bottom and right edges"
+ ],
+ "layout_devices": [
+  "continuous double-line pipe as the connector between entries",
+  "P&ID gate valve symbols, one with an actuator",
+  "role blocks nested inside U-bends of the pipe",
+  "hairline rule after each mono number",
+  "label/value definition list per role",
+  "faint background construction grid"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale steel-blue double-line pipe and valves",
+  "off-white headline and text",
+  "faint blue-grey grid lines"
+ ],
+ "typography": [
+  "light grotesk headline in sentence case, centred",
+  "small light sans subhead",
+  "uppercase mono role titles with sans status in brackets",
+  "small mono slash numbers",
+  "small bold sans labels, regular sans values"
+ ],
+ "rendering": [
+  "flat blueprint line art on navy",
+  "no shading",
+  "flat UI text"
+ ],
+ "line_and_texture": [
+  "double-line pipe with rounded bends",
+  "hairline background grid",
+  "thin rules under numbers",
+  "flat fill, no grain"
+ ],
+ "motifs": [
+  "double-line pipe loop",
+  "gate valve symbols",
+  "valve with actuator",
+  "P&ID linework",
+  "role list"
+ ],
+ "ui_patterns": [
+  "job listing cards",
+  "label/value definition lists",
+  "open/closed status tags",
+  "numbered entries"
+ ],
+ "motion_implied": [
+  "pipe draws along its route linking each role in turn",
+  "valves turn open or shut to match role status",
+  "role text fades in as the pipe reaches its bend"
+ ],
+ "mood": [
+  "technical",
+  "calm",
+  "orderly",
+  "engineered",
+  "understated"
+ ],
+ "t2i_keywords": [
+  "navy blueprint pipe route web section",
+  "one continuous double-line pipe linking items",
+  "pale steel-blue pipe on deep navy",
+  "P&ID gate valve symbols at joints",
+  "valve with actuator symbol",
+  "content set inside U-bends of the pipe",
+  "faint hairline construction grid background",
+  "large light-weight sans headline centred",
+  "small light subhead",
+  "uppercase mono titles",
+  "mono slash numbers with hairline rule",
+  "label and value definition list",
+  "status in brackets after title",
+  "flat line art, no shading",
+  "off-white text on navy",
+  "pipe running off the frame edges",
+  "generous empty top band",
+  "square corners on text blocks",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm technical mood",
+  "blueprint aesthetic",
+  "minimal palette navy and steel blue",
+  "process-diagram as layout",
+  "valve symbols on vertical runs",
+  "rounded pipe bends",
+  "definition lists in pipe loops"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on deep navy. A centred large light-weight sans headline and a small light subhead in an empty top band. Below, one continuous pale steel-blue double-line pipe snakes across the width over a faint hairline grid, dipping into U-bends that hold text blocks, with P&ID gate valve symbols on the vertical runs. Each block has a mono slash number with hairline rule, an uppercase mono title with status in brackets and a label/value list for <CONTENT>. Flat blueprint line art, no shading, pipe running off the edges.",
+ "signature_idea": "Open roles sit in the bends of one pipe loop, with a valve between each so open and closed can read as valve state.",
+ "strengths": [
+  "the pipe as connector is an ownable process metaphor for a water company",
+  "valve symbols could encode open/closed status meaningfully",
+  "navy, steel-blue line art, light headline and mono titles are on-brand",
+  "label/value lists keep each role scannable"
+ ],
+ "weaknesses": [
+  "third role is duplicated (garbled repetition)",
+  "valves are decorative; they do not reflect each role's status",
+  "invented pay figures, locations and reference codes",
+  "body text is small and dense inside the bends",
+  "rounded pipe bends and background grid add noise"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy blueprint with one steel-blue pipe, light headline and mono labels fits the brand, but duplicated content and meaningless valves reduce precision."
+}

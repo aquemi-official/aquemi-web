@@ -1,0 +1,121 @@
+{
+ "file": "136-p9b-svc-cq-4.png",
+ "prompted_for": "'Alert levels come from your data' (svc-cq); art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture; concept: full-width navy band carrying the two-level table slices across a hairline skid drawing on limestone",
+ "section_kind": "spec/limits",
+ "style_family": "navy band over limestone sheet drawing",
+ "art_direction": [
+  "full-width navy band slicing a limestone sheet",
+  "hairline skid elevation drawing behind the band",
+  "large light headline on limestone",
+  "two-row limits table inside the band",
+  "layered band-over-drawing composition"
+ ],
+ "composition": [
+  "limestone page with small sans eyebrow and large two-line light headline top left",
+  "right ~35%: a steel-blue hairline front elevation of a skid (vessels, cabinet, pipes) in a box",
+  "a full-bleed deep navy band crosses the middle, covering the drawing's middle",
+  "the drawing continues below the band, ending in two small boxes and a stray leg running off down-left",
+  "inside the band: a three-column table with two numbered rows"
+ ],
+ "layout_devices": [
+  "full-bleed navy band as table carrier",
+  "band interrupts the drawing, which reappears below",
+  "mono row numbers 01, 02",
+  "thin vertical column rules in the band",
+  "hairline header rule",
+  "small 'Columns:' label before the header"
+ ],
+ "palette": [
+  "warm limestone page",
+  "deep navy band",
+  "steel-blue hairline drawing",
+  "off-white text on navy, navy text on limestone",
+  "grey mono row numbers"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small sans eyebrow",
+  "light sans level names and basis prose",
+  "large mono limit value",
+  "mono standard references",
+  "mono row numbers"
+ ],
+ "rendering": [
+  "flat vector",
+  "simple hairline elevation drawing, no shading",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "uniform steel-blue hairlines in the drawing",
+  "thin rules in the table",
+  "flat fills, square corners"
+ ],
+ "motifs": [
+  "skid front elevation",
+  "twin vessels",
+  "full-width band",
+  "limit value with unit"
+ ],
+ "ui_patterns": [
+  "two-row limits table",
+  "full-bleed band section",
+  "headline over drawing"
+ ],
+ "motion_implied": [
+  "band slides across the drawing on scroll",
+  "drawing draws in above and below the band",
+  "limit value counts in"
+ ],
+ "mood": [
+  "calm",
+  "spare",
+  "technical",
+  "editorial"
+ ],
+ "t2i_keywords": [
+  "full-bleed deep navy band across a limestone page",
+  "band slicing through a hairline drawing",
+  "steel-blue hairline skid elevation drawing",
+  "drawing visible above and below band",
+  "warm limestone background",
+  "large light-weight sans headline sentence case",
+  "small sans eyebrow",
+  "three-column table inside navy band",
+  "large mono limit value with unit",
+  "mono standard references",
+  "mono row numbers 01 02",
+  "thin vertical column rules",
+  "off-white text on navy",
+  "flat vector, no shadows",
+  "square corners",
+  "generous empty space",
+  "1440 px desktop web section",
+  "straight-on flat UI mockup",
+  "layered band and drawing",
+  "simple line elevation, no shading",
+  "calm spare mood",
+  "minimal palette navy limestone steel-blue",
+  "editorial technical layout",
+  "drawing on the right third",
+  "hairline header rule in band",
+  "two-line headline",
+  "layered composition"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a warm limestone background. Top left: a small sans eyebrow and a large two-line light-weight sans headline. On the right third, a simple steel-blue hairline front elevation of a water skid. A full-bleed deep navy band crosses the middle of the section, slicing through the drawing, which continues above and below it. Inside the band, a three-column table of <CONTENT> with mono row numbers, a large mono value with unit and thin column rules. Off-white text on navy. Flat, square corners, calm and spare.",
+ "signature_idea": "The limits table is a navy band laid across the skid drawing, as if the numbers cut through the equipment they govern.",
+ "strengths": [
+  "simple, bold and calm; few elements and lots of space",
+  "palette is strictly navy, limestone and steel-blue",
+  "light headline with mono values matches the type system",
+  "band-over-drawing is a buildable layered layout"
+ ],
+ "weaknesses": [
+  "drawing is generic boxes and lines and does not relate to the levels",
+  "drawing below the band trails off into meaningless boxes and a stray line",
+  "invented figures and references (100 CFU/mL, GUI-0001, TRS 1033 clauses) would be mistaken for facts",
+  "stray 'Columns:' label leaks prompt text",
+  "only two rows; mostly a plain table on a band"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "On-palette, square, light headline and mono figures with lots of space, but the drawing is decorative and the table carries the whole idea."
+}

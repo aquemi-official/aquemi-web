@@ -1,0 +1,122 @@
+{
+ "file": "184-p9b-news-0.png",
+ "prompted_for": "'The notes register' (news); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: limestone drawing sheet: big title left, notes as the sheet's numbered notes column in mono, faint schematic between",
+ "section_kind": "documents",
+ "style_family": "limestone drawing sheet notes",
+ "art_direction": [
+  "limestone paper engineering drawing sheet",
+  "fine navy border",
+  "title block bottom right",
+  "faint navy hairline schematic",
+  "numbered notes column in mono"
+ ],
+ "composition": [
+  "whole frame is a limestone sheet inside a thin navy border",
+  "large light headline centred vertically on the left with a one-line light subhead below",
+  "faint grey schematic of boxes, lines and small tables fading in between headline and notes, with one small steel-blue component",
+  "a vertical hairline divides off a narrow right column of five numbered mono notes",
+  "title block with wordmark and empty grid cells in the bottom-right corner",
+  "large empty space top-left and bottom-left"
+ ],
+ "layout_devices": [
+  "drawing-sheet border frame",
+  "numbered notes column as the content list",
+  "vertical hairline separating notes from the field",
+  "title block bottom right",
+  "faint background schematic as texture",
+  "single steel-blue element in the schematic"
+ ],
+ "palette": [
+  "warm limestone paper ground",
+  "deep navy headline, border and notes",
+  "pale grey schematic lines",
+  "one small steel-blue block"
+ ],
+ "typography": [
+  "large light grotesk headline in sentence case",
+  "light sans subhead",
+  "mono numbered notes in navy",
+  "small sans wordmark in title block"
+ ],
+ "rendering": [
+  "flat line drawing on paper colour",
+  "faded hairline schematic",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "thin navy border",
+  "pale grey hairline schematic lines",
+  "vertical hairline divider",
+  "title block grid lines",
+  "flat fill, no grain",
+  "square corners"
+ ],
+ "motifs": [
+  "drawing sheet",
+  "title block",
+  "numbered notes",
+  "faint P&ID-like schematic",
+  "small table grids"
+ ],
+ "ui_patterns": [
+  "link list as numbered notes",
+  "section header with subhead",
+  "index register"
+ ],
+ "motion_implied": [
+  "notes type in one by one",
+  "schematic fades up behind the headline",
+  "hovering a note highlights a part of the schematic"
+ ],
+ "mood": [
+  "calm",
+  "quiet",
+  "documentary",
+  "precise",
+  "restrained"
+ ],
+ "t2i_keywords": [
+  "limestone paper engineering drawing sheet",
+  "fine navy border frame",
+  "title block bottom right with grid cells",
+  "large light-weight sans headline sentence case",
+  "light sans one-line subhead",
+  "narrow right column of numbered notes in mono",
+  "vertical hairline divider before notes",
+  "faint grey hairline schematic in background",
+  "boxes, lines and small table grids",
+  "one small steel-blue accent element",
+  "warm limestone ground",
+  "deep navy text",
+  "extreme negative space",
+  "flat line art, no shading",
+  "square corners",
+  "drafting sheet aesthetic",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm documentary mood",
+  "minimal palette navy limestone steel blue",
+  "register or index list",
+  "quiet editorial restraint",
+  "numbered notes as article links",
+  "drawing-sheet title block",
+  "faint P&ID texture",
+  "sparse right-hand column"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on mockup of a warm limestone paper drawing sheet inside a fine navy border. Left: a large light-weight navy sans headline in sentence case with a light one-line subhead, surrounded by generous empty space. Centre: a faint pale grey hairline schematic of boxes, lines and small table grids, with one small steel-blue element. Right: a vertical hairline and a narrow column of numbered mono notes for <CONTENT>. Bottom-right: a small title block with grid cells. Flat line art, no shading, square corners, calm.",
+ "signature_idea": "The news index becomes the numbered notes column of a drawing sheet, with each note a link into the page that applies it.",
+ "strengths": [
+  "notes column is a natural, ownable way to list articles",
+  "very calm, spacious and on-palette",
+  "one steel-blue accent used sparingly",
+  "mono notes and light headline match the brand"
+ ],
+ "weaknesses": [
+  "background schematic is meaningless filler and looks unfinished",
+  "title block is mostly empty cells",
+  "notes column is cramped against the right edge while the left is empty",
+  "notes have no dates or tags, so it reads as a list not a register"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone sheet, navy border, light headline, mono notes and one accent fit well, but the schematic is filler and the layout is lopsided."
+}

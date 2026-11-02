@@ -1,0 +1,119 @@
+{
+ "file": "127-p9b-svc-fat-sat-2.png",
+ "prompted_for": "'From protocol to release, then SAT' (svc-fat-sat); art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column; concept: near-empty limestone drawing sheet: big light title, abstract hairline routing, six steps in a notes column",
+ "section_kind": "steps/timeline",
+ "style_family": "limestone drawing sheet",
+ "art_direction": [
+  "near-empty limestone drawing sheet",
+  "fine navy border frame",
+  "abstract hairline routing diagram",
+  "narrow numbered notes column",
+  "minimal title block"
+ ],
+ "composition": [
+  "limestone sheet inside a thin navy border with a narrow right column split off by a vertical rule",
+  "small centred section label at the top of the main field",
+  "large three-line light navy headline left of centre, vertically centred",
+  "centre-right: abstract routing of navy hairlines with stepped bends and small muted steel-blue bars on segments",
+  "right column: six numbered steps as a short plain list near the top",
+  "two-cell title block at the bottom of the right column",
+  "large expanses of empty paper"
+ ],
+ "layout_devices": [
+  "sheet border as section frame",
+  "narrow notes column separated by a hairline",
+  "numbered list 1-6",
+  "title block cells at the foot of the column",
+  "muted blue bars as markers on the routing lines"
+ ],
+ "palette": [
+  "warm limestone paper",
+  "deep navy border, headline and lines",
+  "muted steel-blue marker bars",
+  "no other colours"
+ ],
+ "typography": [
+  "large light-weight sans headline in sentence case",
+  "small regular sans section label",
+  "small sans numbered list",
+  "small uppercase sans in title block"
+ ],
+ "rendering": [
+  "flat vector line art",
+  "flat rectangular colour bars",
+  "no shading, no shadows"
+ ],
+ "line_and_texture": [
+  "navy hairlines with right-angle and 45-degree bends",
+  "thin border and column rules",
+  "flat untextured paper"
+ ],
+ "motifs": [
+  "abstract routing lines",
+  "marker bars",
+  "drawing sheet border",
+  "title block",
+  "numbered notes"
+ ],
+ "ui_patterns": [
+  "numbered step list",
+  "framed section",
+  "headline plus diagram"
+ ],
+ "motion_implied": [
+  "routing lines draw in from the left",
+  "marker bars slide along their lines",
+  "list items step in one by one"
+ ],
+ "mood": [
+  "quiet",
+  "minimal",
+  "calm",
+  "abstract",
+  "sparse"
+ ],
+ "t2i_keywords": [
+  "near-empty limestone drawing sheet",
+  "fine navy border frame",
+  "narrow notes column on the right",
+  "hairline vertical column rule",
+  "minimal two-cell title block at bottom right",
+  "large light-weight navy sans headline",
+  "abstract navy hairline routing",
+  "right-angle and 45-degree line bends",
+  "small muted steel-blue marker bars on lines",
+  "numbered list notes",
+  "small centred section label",
+  "vast empty paper",
+  "flat vector, no shadows",
+  "square corners",
+  "one navy ink plus one muted accent",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "quiet minimal mood",
+  "space as a material",
+  "technical drawing aesthetic",
+  "minimal title block cells",
+  "headline left of centre",
+  "sparse composition",
+  "abstract diagram beside headline",
+  "light sans list type"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop website section drawn as a near-empty drawing sheet on warm limestone paper, framed by a fine navy border, with a narrow notes column on the right split off by a hairline and a small two-cell title block at its foot. A large light-weight navy sans headline sits left of centre. Centre-right, an abstract routing of navy hairlines with right-angle and 45-degree bends, small muted steel-blue bars marking segments. The notes column holds a short numbered list for <CONTENT>. Vast empty paper, flat, square corners.",
+ "signature_idea": "A drawing sheet left almost empty: one big light title, a few abstract routing lines and a numbered notes column, using space as the material.",
+ "strengths": [
+  "extremely calm, uses space as a material",
+  "light headline, navy on limestone and square border are on-brand",
+  "notes column plus title block is a simple, buildable frame",
+  "one muted accent used sparingly"
+ ],
+ "weaknesses": [
+  "routing lines are abstract and mean nothing",
+  "steps are a tiny plain list, too weak for a process section",
+  "large empty right-of-centre area feels unfinished",
+  "marker bars look like random redaction blocks",
+  "no link between diagram and the six steps"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Palette, light type and square sheet are on-brand and very calm, but meaningless lines and an underweight list leave it thin."
+}
