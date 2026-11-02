@@ -1,0 +1,13 @@
+DuplexTrains sets a redundancy options block as a huge light heading beside a framed drawing of two identical generation trains, a switch that swaps which train is in service, and the options as numbered cards in one band over a navy strip.
+
+- On the site: an `options` block (`"as": "modules"`) with `"look": "duplex-trains"` (renderer `assets/src/blocks/look-duplex-trains.js`); used on ind-cdmo ("Redundancy that keeps clients supplied"). Concept: pass 9b ind-cdmo.2 (huge stacked headline, isometric twin trains in a frame, numbered cards in a band, one card in steel blue).
+- Drawing: IsoKit on limestone (`ro` twice, `tank`, `pump` twice, `valve`, `module` for the spares box, pipes, a dashed future branch past the spare tie-in). Polypropylene Purified Water only.
+- Markup: limestone band; `.aq-in` becomes a grid (heading | figure, then the band). `div.aq-duplex-trains[data-run="A|B"]` (display: contents) → `figure.__fig` (`div.__plate` aria-hidden: `svg.aq-iso`, `span.__tag[data-train]` with `b` letter and `span.__st` run/off words, `span.__base`; `button.__swap[aria-pressed]` with `svg.__ico`, `span.__bl`, `span.__run`), `div.__band` → fold → `ol.__cards` of `li.__card` (`tabindex=0`, `data-part`: `span.__n`, `h3.__t` with the link, `p.__d`).
+- Fields: `h`, `base` (the loop's drawing label), `items` [{t, d, spot, link, part}], `fold`, `fold_noun` (phones only), `trains` [run word, sanitize word, button label] (short words from the first option's copy). `part`: `trains`, `pumps`, `tank`, `sanitize` (the train out of service), `spares`, `tiein`.
+- Tokens: frame and lines `on-limestone` mixes; water, lit parts and the switch's icon and sweep `flow` mixed 72 % with `on-limestone` so they read on limestone in both themes; the train in service has a `navy` letter; cards `surface-raised` with `line` rules, the pointed card `flow` with `surface` text; the strip `navy`. Heading Geist Light 80/84 (56 mid, 40 phones).
+- Interaction (in the look): pointing at or focusing a card lights its parts; the swap flips `data-run` and `aria-pressed`: the train out of service quiets to 0.45 and loses its water, the tags swap their words.
+- Mid widths: heading over drawing, cards three a row. Phones: one column, fold back on (button on navy), the loop label dropped.
+
+## Motion
+
+The drawing builds through the IsoKit choreography; tags and label come in with the pipes; cards rise into the band 0.08 s apart. Once on scroll-in, under 5 s. The swap is ported from Subframe Motion "Theme toggle button" (switch-button): arrows turn 180 deg in 700 ms cubic-bezier(.645,.045,.355,1), the letter rolls over in 250 ms, a flow rule sweeps the button in 500 ms; motion reruns the water through the train now in service (0.6 s). Instant under reduced motion.

@@ -1,0 +1,71 @@
+/* ---------- RevisionSheet: one document's way to your file (look "revision-sheet"). A pinned paper sheet
+   (data-theme="light", so the paper stays paper in the dark theme) takes each step's marks as the steps scroll past;
+   classes is-s1 … is-sN on the paper wrap switch the step layers on, cumulatively. Ink is line-strong and ink-muted;
+   flow marks what the step adds (highlights, ticks, signatures); the hold labels repeat the steps' real text. ---------- */
+.aq-revision-sheet-sec { position: relative; }
+.aq-revision-sheet__body { min-width: 0; }
+.aq-revision-sheet__grid { opacity: 1; }
+.aq-revision-sheet { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); column-gap: var(--space-16); align-items: start; }
+/* pass 9b (concept cmp-documentation.2): the numbered steps lead at the left, the sheet stands at the right */
+.aq-revision-sheet__steps { grid-column: 1; grid-row: 1; }
+.aq-revision-sheet__fig { grid-column: 2; grid-row: 1; position: sticky; top: calc(var(--space-24) + var(--space-4)); }
+.aq-revision-sheet__paperwrap { position: relative; max-width: calc(var(--space-32) * 4); margin-left: auto; transform: rotate(-1deg); }
+.aq-revision-sheet__paperwrap::before { content: ""; position: absolute; inset: 0; transform: translate(var(--space-3), var(--space-3)) rotate(2deg); background: var(--limestone); z-index: -1; }
+.aq-revision-sheet__svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* the paper and its printed furniture */
+.aq-revision-sheet__paper { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1; }
+.aq-revision-sheet__frame { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-revision-sheet__bar { fill: var(--navy); }
+.aq-revision-sheet__txt { fill: none; stroke: var(--line); stroke-width: 4; stroke-linecap: square; }
+.aq-revision-sheet__lbl { font: 400 13px var(--font-mono); fill: var(--ink-muted); }
+.aq-revision-sheet__lbl--cm { font-size: 10px; fill: var(--flow); }
+.aq-revision-sheet__lbl--tag { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; fill: var(--ink-muted); }
+
+/* step marks */
+.aq-revision-sheet__hl { fill: var(--flow-tint); }
+.aq-revision-sheet__lead { fill: none; stroke: var(--flow); stroke-width: 1; stroke-dasharray: 2 3; }
+.aq-revision-sheet__cm { fill: var(--surface-raised); stroke: var(--flow); stroke-width: 1.5; }
+.aq-revision-sheet__dtag rect { fill: none; stroke: var(--ink-muted); stroke-width: 1.5; }
+.aq-revision-sheet__strike { fill: none; stroke: var(--ink-muted); stroke-width: 1.5; }
+.aq-revision-sheet__tri { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-revision-sheet__cma { fill: var(--flow); }
+.aq-revision-sheet__ticka { fill: none; stroke: var(--surface-raised); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.aq-revision-sheet__tick, .aq-revision-sheet__tickw { fill: none; stroke: var(--flow); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.aq-revision-sheet__sig { fill: none; stroke: var(--navy); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 240; stroke-dashoffset: 240; transition: stroke-dashoffset 900ms cubic-bezier(0.4, 0, 0.2, 1); }
+.aq-revision-sheet__data { fill: none; stroke: var(--ink-muted); stroke-width: 3; }
+.aq-revision-sheet__cur { fill: var(--flow-tint); }
+.aq-revision-sheet__done circle { fill: none; stroke: var(--flow); stroke-width: 2; }
+
+/* layers: off until their step, then on (cumulative) */
+.aq-revision-sheet__ly { opacity: 0; transition: opacity 360ms cubic-bezier(0.2, 0, 0, 1); }
+.is-s1 .aq-revision-sheet__ly1, .is-s2 .aq-revision-sheet__ly2, .is-s3 .aq-revision-sheet__ly3, .is-s4 .aq-revision-sheet__ly4,
+.is-s5 .aq-revision-sheet__ly5, .is-s6 .aq-revision-sheet__ly6, .is-s7 .aq-revision-sheet__ly7, .is-s8 .aq-revision-sheet__ly8 { opacity: 1; }
+.is-s1 .aq-revision-sheet__ly1 .aq-revision-sheet__sig, .is-s2 .aq-revision-sheet__ly2 .aq-revision-sheet__sig, .is-s3 .aq-revision-sheet__ly3 .aq-revision-sheet__sig,
+.is-s4 .aq-revision-sheet__ly4 .aq-revision-sheet__sig, .is-s5 .aq-revision-sheet__ly5 .aq-revision-sheet__sig, .is-s6 .aq-revision-sheet__ly6 .aq-revision-sheet__sig { stroke-dashoffset: 0; }
+
+/* the steps */
+.aq-revision-sheet__steps { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+.aq-revision-sheet__step { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); column-gap: var(--space-4); padding: var(--space-6) 0 var(--space-8); border-top: 1px solid var(--line); min-height: calc(var(--space-32) * 1.3); }
+.aq-revision-sheet__step:last-child { min-height: 0; }
+.aq-revision-sheet__n { font: 300 48px/52px var(--font-mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); transition: color 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-revision-sheet__t { margin: var(--space-2) 0 var(--space-2); font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); }
+.aq-revision-sheet__d { margin: 0; max-width: 44ch; font: 400 16px/25px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-revision-sheet__hold { display: inline-flex; flex-wrap: wrap; gap: var(--space-2); align-items: baseline; margin: var(--space-4) 0 0; padding: var(--space-1) var(--space-3); border: 1.5px solid var(--navy); font: 500 12px/18px var(--font-mono); letter-spacing: 0.04em; color: var(--ink); }
+.aq-revision-sheet__hk { text-transform: uppercase; letter-spacing: 0.08em; color: var(--flow); }
+.aq-revision-sheet__step.is-on { border-top-color: var(--flow); box-shadow: inset 0 2px 0 var(--flow); }
+.aq-revision-sheet__step.is-on .aq-revision-sheet__n, .aq-revision-sheet__step.is-past .aq-revision-sheet__n { color: var(--flow); }
+
+@media (prefers-reduced-motion: reduce) { .aq-revision-sheet__ly, .aq-revision-sheet__sig, .aq-revision-sheet__n { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-revision-sheet { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-revision-sheet__steps, .aq-revision-sheet__fig { grid-column: 1; grid-row: auto; }
+  .aq-revision-sheet__fig { position: relative; top: auto; padding: 0 var(--space-4) var(--space-3) 0; }
+  .aq-revision-sheet__paperwrap { margin: 0 auto; max-width: calc(var(--space-32) * 2.5); }
+  .aq-revision-sheet__lbl--cm { display: none; }
+  .aq-revision-sheet__step { grid-template-columns: var(--space-12) minmax(0, 1fr); min-height: 0; padding: var(--space-6) 0; }
+  .aq-revision-sheet__n { font-size: 32px; line-height: 36px; }
+  .aq-revision-sheet__t { margin-top: 0; font-size: 21px; line-height: 27px; }
+  .aq-revision-sheet__d { font-size: 15px; line-height: 23px; }
+}

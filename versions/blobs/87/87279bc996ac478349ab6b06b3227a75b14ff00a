@@ -1,0 +1,78 @@
+/* ---------- VisitPlan: a service visit walked around the plant (look "visit-plan") ----------
+   One navy band (the ink tokens take their on-navy values inside). The drawing (IsoKit, aq-iso--navy) carries the
+   plant, the dashed walk on the floor and the numbered stops (pin, ring, number in mono; the sign-off stop a tick).
+   Along the base of the band the captions: one column per stop on on-navy hairlines, numbered like the stops. The
+   sign-off item closes the band as one limestone line across the full width. A lit caption (hover or focus) turns its
+   stop and its parts flow. Phones: no big drawing; the walk runs down the left, each caption a row with its stage
+   drawn small, the closing line last. */
+.aq-visit-plan-sec {
+  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted);
+  --vp-line: color-mix(in srgb, var(--on-navy) 22%, transparent); --vp-flow: color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+}
+.aq-visit-plan-sec .aq-sec-head .aq-h1 { font: 300 64px/68px var(--font-sans); letter-spacing: -0.035em; max-width: 18ch; color: var(--on-navy); }
+.aq-visit-plan-sec .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+.aq-visit-plan { position: relative; }
+.aq-visit-plan__sheet { margin-inline: calc(-1 * var(--space-4)); }
+.aq-visit-plan__svg { display: block; width: 100%; height: auto; }
+.aq-visit-plan__walk { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.5; stroke-dasharray: 5 5; stroke-linecap: round; }
+.aq-visit-plan__pin { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; }
+.aq-visit-plan__mark circle { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; transition: fill 200ms ease, stroke 200ms ease; }
+.aq-visit-plan__mark text { font: 500 11px/1 var(--font-mono); fill: var(--on-navy); text-anchor: middle; }
+.aq-visit-plan__mark.is-end circle { fill: var(--limestone); stroke: var(--limestone); }
+.aq-visit-plan__tick { fill: none; stroke: var(--navy); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.aq-visit-plan__mark.is-on circle { fill: var(--vp-flow, var(--flow)); stroke: var(--vp-flow, var(--flow)); }
+.aq-visit-plan__mark.is-on text { fill: var(--navy); }
+.aq-visit-plan__mark.is-on .aq-visit-plan__pin { stroke: var(--vp-flow, var(--flow)); }
+.aq-visit-plan__walker { fill: var(--vp-flow, var(--flow)); stroke: var(--navy); stroke-width: 2; }
+
+/* captions along the base */
+.aq-visit-plan__stops {
+  list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols, 7), minmax(0, 1fr));
+  border-top: 1px solid var(--vp-line, var(--line));
+}
+.aq-visit-plan__stop { min-width: 0; border-left: 1px solid var(--vp-line, var(--line)); }
+.aq-visit-plan__stop:first-child { border-left: 0; }
+.aq-visit-plan__body { display: flex; flex-direction: column; gap: var(--space-2); height: 100%; padding: var(--space-4) var(--space-3) var(--space-6); color: var(--on-navy); text-decoration: none; outline-offset: -2px; transition: background-color 200ms ease; }
+.aq-visit-plan__body:focus-visible { outline: 2px solid var(--on-navy); }
+.aq-visit-plan__stop.is-on .aq-visit-plan__body, .aq-visit-plan__body:hover { background: color-mix(in srgb, var(--on-navy) 8%, var(--navy)); }
+.aq-visit-plan__fig { display: flex; align-items: center; gap: var(--space-2); }
+.aq-visit-plan__mini { display: none; }
+.aq-visit-plan__n { display: inline-grid; place-items: center; width: var(--space-8); height: var(--space-8); border: 1.5px solid var(--on-navy); border-radius: 50%; font: 500 12px/1 var(--font-mono); color: var(--on-navy); transition: background-color 200ms ease, color 200ms ease; }
+.aq-visit-plan__n svg { width: var(--space-4); height: var(--space-4); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.aq-visit-plan__stop.is-on .aq-visit-plan__n { background: var(--vp-flow, var(--flow)); border-color: var(--vp-flow, var(--flow)); color: var(--navy); }
+.aq-visit-plan__cap { font: 400 12px/16px var(--font-mono); color: var(--on-navy-muted); }
+.aq-visit-plan__t { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-navy); text-wrap: balance; }
+a.aq-visit-plan__body .aq-visit-plan__t::after { content: " →"; color: var(--vp-flow, var(--flow)); }
+a.aq-visit-plan__body:hover .aq-visit-plan__t { color: var(--vp-flow, var(--flow)); }
+.aq-visit-plan__d { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; }
+
+/* the sign-off item closes the band as one limestone line */
+.aq-visit-plan__stop.is-end { grid-column: 1 / -1; border-left: 0; margin-inline: calc(-1 * var(--space-8)); margin-bottom: calc(-1 * var(--space-16)); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__body {
+  flex-direction: row; align-items: baseline; flex-wrap: wrap; column-gap: var(--space-4); row-gap: var(--space-1);
+  padding: var(--space-6) var(--space-8); background: var(--limestone); color: var(--on-limestone);
+}
+.aq-visit-plan__stop.is-end .aq-visit-plan__fig { align-self: center; }
+.aq-visit-plan__stop.is-end .aq-visit-plan__n { background: var(--navy); border-color: var(--navy); color: var(--limestone); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__cap { color: var(--on-limestone-muted); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__t { font: 300 28px/34px var(--font-sans); letter-spacing: -0.01em; color: var(--navy); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__t::after { content: ":"; }
+.aq-visit-plan__stop.is-end .aq-visit-plan__d { flex: 1 1 24rem; font: 300 28px/34px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-visit-plan__stop.is-end.is-on .aq-visit-plan__body, .aq-visit-plan__stop.is-end .aq-visit-plan__body:hover { background: color-mix(in srgb, var(--limestone) 85%, var(--surface)); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__body:focus-visible { outline-color: var(--focus); }
+
+@container (max-width: 860px) {
+  .aq-visit-plan-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  .aq-visit-plan__sheet { display: none; }
+  .aq-visit-plan__stops { display: block; position: relative; border: 0; }
+  .aq-visit-plan__stops::before { content: ""; position: absolute; left: calc(var(--space-4) - 1px); top: var(--space-6); bottom: var(--space-24); border-left: 1.5px dashed var(--on-navy-muted); }
+  .aq-visit-plan__stop { border: 0; border-top: 1px solid var(--vp-line, var(--line)); }
+  .aq-visit-plan__body { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr) auto; column-gap: var(--space-3); row-gap: var(--space-1); padding: var(--space-4) 0; }
+  .aq-visit-plan__fig { display: contents; }
+  .aq-visit-plan__n { grid-column: 1; grid-row: 1 / span 3; align-self: start; position: relative; background: var(--navy); }
+  .aq-visit-plan__mini { display: block; grid-column: 3; grid-row: 1 / span 3; width: calc(var(--space-16) + var(--space-8)); height: auto; align-self: start; }
+  .aq-visit-plan__cap, .aq-visit-plan__t, .aq-visit-plan__d { grid-column: 2; }
+  .aq-visit-plan__stop.is-end { margin-inline: calc(-1 * var(--space-4)); margin-bottom: calc(-1 * var(--space-12)); margin-top: var(--space-6); border: 0; }
+  .aq-visit-plan__stop.is-end .aq-visit-plan__body { display: grid; padding: var(--space-6) var(--space-4); }
+  .aq-visit-plan__stop.is-end .aq-visit-plan__t, .aq-visit-plan__stop.is-end .aq-visit-plan__d { font-size: 20px; line-height: 26px; }
+}

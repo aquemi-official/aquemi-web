@@ -1,0 +1,63 @@
+/* ---------- PqCalendar: PQ phases beside one instrument readout (look "pq-calendar") ----------
+   Section on the limestone band; the figure carries data-theme="light" so navy and flow keep their light values on
+   limestone in both themes. Desktop: the phases as a ruled stack (5 of 12; mono "01 /" numerals, a key in the
+   phase's fill), the readout panel beside it (7 of 12) on a lighter sheet with a navy foot rule: the giant light
+   count, unit and sum, the sampling grid, then the year's tick scale (solid ticks for the daily phases, short ticks for
+   the routine plan) with month numbers and the year tag. The region marker (flow tint, flow edges with handles)
+   glides to the pointed phase's span: --g0/--g1 on the grid, --y0/--y1 on the scale. */
+.aq-pq-calendar { --pq-p1: var(--navy); --pq-p2: var(--flow); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: start; color: var(--on-limestone); }
+.aq-pq-calendar__phases { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--on-limestone); }
+.aq-pq-calendar__ph { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); column-gap: var(--space-4); padding: var(--space-6) var(--space-2) var(--space-6) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-limestone) 35%, transparent); outline: none; cursor: default; transition: background-color 180ms; }
+.aq-pq-calendar__ph:hover, .aq-pq-calendar__ph:focus-visible { background: color-mix(in srgb, var(--surface-raised) 45%, transparent); }
+.aq-pq-calendar__ph:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-pq-calendar__n { font: 300 34px/1 var(--font-mono); letter-spacing: -0.04em; color: var(--on-limestone); padding-left: var(--space-2); }
+.aq-pq-calendar__n i { font-style: normal; color: var(--on-limestone-muted); margin-left: 0.1em; }
+.aq-pq-calendar__t { margin: 0; display: flex; align-items: center; gap: var(--space-2); font: 400 20px/26px var(--font-sans); color: var(--on-limestone); }
+.aq-pq-calendar__key { width: var(--space-3); height: var(--space-3); flex: none; background: var(--pq-p1, var(--navy)); border-radius: 50%; }
+.is-p2 > .aq-pq-calendar__txt .aq-pq-calendar__key { background: var(--pq-p2, var(--flow)); }
+.is-rest > .aq-pq-calendar__txt .aq-pq-calendar__key { border-radius: 0; width: 2px; height: var(--space-4); background: var(--pq-p1, var(--navy)); }
+.aq-pq-calendar__d { margin: var(--space-2) 0 0; font: 400 15px/23px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-pq-calendar__hold { margin: var(--space-3) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--on-limestone); }
+.aq-pq-calendar__hold span { padding: 0 var(--space-2); border: 1px solid var(--on-limestone); font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.aq-pq-calendar__panel { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-8) var(--space-8) var(--space-6); background: color-mix(in srgb, var(--surface-raised) 55%, transparent); border-bottom: 2px solid var(--navy); }
+.aq-pq-calendar__total { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-4); }
+.aq-pq-calendar__num { flex-basis: 100%; font: 300 168px/0.9 var(--font-sans); letter-spacing: -0.05em; color: var(--on-limestone); font-variant-numeric: tabular-nums; }
+.aq-pq-calendar__unit { font: 400 13px/18px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-limestone); }
+.aq-pq-calendar__eq { font: 400 13px/18px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); }
+.aq-pq-calendar__zoomed, .aq-pq-calendar__scale { position: relative; }
+.aq-pq-calendar__grid { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-pq-calendar__dot.is-p1 { fill: var(--pq-p1, var(--navy)); }
+.aq-pq-calendar__dot.is-p2 { fill: var(--pq-p2, var(--flow)); }
+.aq-pq-calendar__hl { stroke: var(--on-limestone); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.aq-pq-calendar__year { display: block; width: 100%; height: var(--space-8); }
+.aq-pq-calendar__wk.is-p1 { fill: var(--pq-p1, var(--navy)); }
+.aq-pq-calendar__wk.is-p2 { fill: var(--pq-p2, var(--flow)); }
+.aq-pq-calendar__wk.is-rest { fill: var(--on-limestone-muted); }
+.aq-pq-calendar__strip { position: relative; margin-top: var(--space-4); }
+.aq-pq-calendar__months { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); margin-top: var(--space-1); border-top: 1px solid var(--on-limestone); }
+.aq-pq-calendar__months span { padding: var(--space-1) 0 0 var(--space-1); border-left: 1px solid color-mix(in srgb, var(--on-limestone) 35%, transparent); font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-pq-calendar__ylab { position: absolute; right: 0; top: calc(-1 * var(--space-6)); padding: 0 var(--space-2); border: 1px solid var(--on-limestone); font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone); background: var(--limestone); }
+
+/* the region marker: not drawn until a phase is pointed at; then glides between spans */
+.aq-pq-calendar__reg { position: absolute; top: calc(-1 * var(--space-1)); bottom: calc(-1 * var(--space-1)); left: var(--g0, 0%); width: var(--g1, 0%); background: color-mix(in srgb, var(--flow) 14%, transparent); border-left: 1px solid var(--flow); border-right: 1px solid var(--flow); display: none; pointer-events: none;
+  transition: left 240ms cubic-bezier(0.2, 0, 0, 1), width 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-pq-calendar__reg i { position: absolute; top: 50%; width: var(--space-1); height: var(--space-4); margin-top: calc(-1 * var(--space-2)); background: var(--flow); }
+.aq-pq-calendar__reg i:first-child { left: calc(-1 * var(--space-1) / 2); } .aq-pq-calendar__reg i:last-child { right: calc(-1 * var(--space-1) / 2); }
+.aq-pq-calendar__scale .aq-pq-calendar__reg { left: var(--y0, 0%); width: var(--y1, 0%); }
+.aq-pq-calendar[data-on] .aq-pq-calendar__scale .aq-pq-calendar__reg, .aq-pq-calendar[data-on="grid"] .aq-pq-calendar__zoomed .aq-pq-calendar__reg { display: block; }
+@media (prefers-reduced-motion: reduce) { .aq-pq-calendar__reg { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-pq-calendar { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .aq-pq-calendar__ph { grid-template-columns: var(--space-16) minmax(0, 1fr); padding: var(--space-4) 0; }
+  .aq-pq-calendar__n { font-size: 26px; padding-left: 0; }
+  .aq-pq-calendar__t { font-size: 18px; line-height: 24px; }
+  .aq-pq-calendar__d { font-size: 14px; line-height: 22px; }
+  .aq-pq-calendar__panel { padding: var(--space-6) var(--space-4) var(--space-4); gap: var(--space-6); }
+  .aq-pq-calendar__num { font-size: 104px; }
+  .aq-pq-calendar__months span:nth-child(even) { color: transparent; }
+}
+
+/* section hook */
+.aq-pq-calendar-sec { position: relative; }

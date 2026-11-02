@@ -1,0 +1,80 @@
+/* ---------- AuditManifold: an evidence table on a navy blueprint sheet, its column joins drawn as pipe headers ---------- */
+.aq-audit-manifold-sec { position: relative; }
+.aq-audit-manifold-sec > .aq-in { position: relative; }
+.aq-audit-manifold-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-audit-manifold-sec .aq-sec-head .aq-lead { color: var(--on-navy-muted); }
+.aq-audit-manifold__grid { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.aq-audit-manifold__grid path { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.1; }
+.aq-audit-manifold__grid path.aq-audit-manifold__g5 { opacity: 0.2; }
+
+.aq-audit-manifold { --cols: minmax(0, 3fr) var(--space-16) minmax(0, 4fr) var(--space-16) minmax(0, 3fr); margin-top: var(--space-4); }
+.aq-audit-manifold__colh, .aq-audit-manifold__row { display: grid; grid-template-columns: var(--cols, 1fr); column-gap: var(--space-4); }
+.aq-audit-manifold__colh { margin: 0; padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-audit-manifold__rows { list-style: none; margin: 0; padding: 0; }
+.aq-audit-manifold__row { position: relative; align-items: center; padding-block: var(--space-6); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent);
+  transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-audit-manifold.is-pointing .aq-audit-manifold__row:not(.is-on) { opacity: 0.62; }
+
+.aq-audit-manifold__who { display: flex; align-items: baseline; gap: var(--space-3); }
+.aq-audit-manifold__no { flex: none; font: 500 13px/20px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy-muted); }
+.aq-audit-manifold__t { margin: 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-audit-manifold__k { display: none; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-audit-manifold__v { margin: 0; font: 400 15px/24px var(--font-mono); color: var(--on-navy); }
+.aq-audit-manifold__link { display: inline-block; min-height: calc(var(--space-12) - var(--space-1)); padding-block: var(--space-2); font: 400 17px/24px var(--font-sans); color: var(--on-navy);
+  text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--on-navy-muted) 50%, transparent); text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+.aq-audit-manifold__link::after { content: "\2192"; margin-left: var(--space-2); color: var(--on-navy-muted); transition: transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-audit-manifold__link:hover, .aq-audit-manifold__row.is-on .aq-audit-manifold__link { text-decoration-color: var(--on-navy); }
+.aq-audit-manifold__link:hover::after { transform: translateX(var(--space-1)); }
+.aq-audit-manifold__link:focus-visible { outline: 2px solid var(--on-navy); outline-offset: var(--space-1); }
+
+/* The pipework: a twin-wall header down the gutter, a branch per row through a valve to a flange */
+.aq-audit-manifold__pipe { --wall: color-mix(in srgb, var(--on-navy-muted) 70%, transparent); --water: color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+  position: relative; align-self: stretch; margin-block: calc(var(--space-6) * -1); min-height: var(--space-12); }
+.aq-audit-manifold__hdr { position: absolute; left: var(--space-2); width: var(--space-3); top: 0; bottom: -1px; border-inline: 1.5px solid var(--wall, var(--on-navy-muted)); }
+.aq-audit-manifold__row.is-first .aq-audit-manifold__hdr { top: 50%; border-top: 1.5px solid var(--wall, var(--on-navy-muted)); }
+.aq-audit-manifold__row.is-last .aq-audit-manifold__hdr { bottom: 50%; border-bottom: 1.5px solid var(--wall, var(--on-navy-muted)); }
+.aq-audit-manifold__br { position: absolute; left: calc(var(--space-2) + var(--space-3) - 1.5px); right: var(--space-1); top: 50%; height: var(--space-3); transform: translateY(-50%);
+  border-block: 1.5px solid var(--wall, var(--on-navy-muted)); background: var(--navy); }
+.aq-audit-manifold__w { position: absolute; display: block; background: var(--water, var(--flow)); transition: background-color 160ms; }
+.aq-audit-manifold__hdr .aq-audit-manifold__w { left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; transform-origin: 50% 0; }
+.aq-audit-manifold__row.is-first .aq-audit-manifold__hdr .aq-audit-manifold__w { top: 0; }
+.aq-audit-manifold__br .aq-audit-manifold__w { top: 50%; left: 0; right: 0; height: 2px; margin-top: -1px; transform-origin: 0 50%; }
+.aq-audit-manifold__fl { position: absolute; right: 0; top: 50%; width: var(--space-1); height: var(--space-6); transform: translateY(-50%); border: 1.5px solid var(--wall, var(--on-navy-muted)); background: var(--navy); }
+.aq-audit-manifold__valve { position: absolute; left: 58%; top: 50%; width: var(--space-6); height: auto; transform: translate(-50%, -68%); overflow: visible; }
+.aq-audit-manifold__body { fill: var(--navy); stroke: var(--wall, var(--on-navy-muted)); stroke-width: 1.5; stroke-linejoin: round; transition: fill 160ms; }
+.aq-audit-manifold__stem { fill: none; stroke: var(--wall, var(--on-navy-muted)); stroke-width: 1.5; stroke-linecap: round; transform-box: fill-box; transform-origin: 50% 100%; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-audit-manifold__row.is-on .aq-audit-manifold__body { fill: var(--water, var(--flow)); }
+.aq-audit-manifold__row.is-on .aq-audit-manifold__stem { transform: rotate(90deg); }
+.aq-audit-manifold__row.is-on .aq-audit-manifold__br .aq-audit-manifold__w { background: var(--on-navy); }
+
+.aq-audit-manifold-sec .aq-fold__btn { color: var(--on-navy-muted); border-bottom-color: color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+.aq-audit-manifold-sec .aq-fold__btn:hover { color: var(--on-navy); }
+.aq-audit-manifold-sec .aq-fold__btn:focus-visible { outline: 2px solid var(--on-navy); outline-offset: var(--space-1); }
+
+@container (max-width: 1100px) {
+  .aq-audit-manifold { --cols: minmax(0, 3fr) var(--space-12) minmax(0, 4fr) var(--space-12) minmax(0, 3fr); }
+  .aq-audit-manifold__t { font-size: 19px; line-height: 25px; }
+  .aq-audit-manifold__v { font-size: 14px; line-height: 22px; }
+}
+
+/* Phones: each row a short vertical run: the auditor, then a riser teeing into what they read and where we answer it */
+@container (max-width: 860px) {
+  .aq-audit-manifold { --cols: var(--space-12) minmax(0, 1fr); }
+  .aq-audit-manifold__colh { display: none; }
+  .aq-audit-manifold__row { grid-template-columns: var(--cols, 1fr); row-gap: var(--space-3); align-items: start; padding-block: var(--space-6); }
+  .aq-audit-manifold__row:first-child { border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+  .aq-audit-manifold__who { grid-column: 1 / -1; grid-row: 1; }
+  .aq-audit-manifold__read { grid-column: 2; grid-row: 2; }
+  .aq-audit-manifold__go { grid-column: 2; grid-row: 3; }
+  .aq-audit-manifold__pipe { grid-column: 1; margin-block: 0; min-height: var(--space-12); }
+  .aq-audit-manifold__pipe--a { grid-row: 2; margin-top: calc(var(--space-3) * -1); margin-bottom: calc(var(--space-3) * -1); }
+  .aq-audit-manifold__pipe--b { grid-row: 3; }
+  .aq-audit-manifold__row .aq-audit-manifold__pipe--a .aq-audit-manifold__hdr { top: 0; bottom: 0; border-top: 1.5px solid var(--wall, var(--on-navy-muted)); }
+  .aq-audit-manifold__row .aq-audit-manifold__pipe--b .aq-audit-manifold__hdr { top: 0; bottom: 50%; border-top: 0; border-bottom: 1.5px solid var(--wall, var(--on-navy-muted)); }
+  .aq-audit-manifold__pipe--a .aq-audit-manifold__br { top: calc(var(--space-3) + var(--space-6)); }
+  .aq-audit-manifold__pipe--a .aq-audit-manifold__valve, .aq-audit-manifold__pipe--a .aq-audit-manifold__fl { top: calc(var(--space-3) + var(--space-6)); }
+  .aq-audit-manifold__k { display: block; margin-bottom: var(--space-1); }
+  .aq-audit-manifold__t { font-size: 20px; line-height: 26px; }
+  .aq-audit-manifold__v { font-size: 14px; line-height: 22px; }
+}

@@ -1,0 +1,90 @@
+/* ---------- RecordAnatomy: what a published record carries, as a drawing sheet with a title block (pass 9b) ---------- */
+/* Limestone band; the sheet keeps the light tokens in both themes (data-theme="light" on .aq-record-anatomy). Wide:
+   the title large in the open left half, the drawing field top right, the title block (the points) in the lower right
+   corner against the frame. */
+.aq-record-anatomy-sec { }
+.aq-record-anatomy { color: var(--on-limestone); --ra-pad: var(--space-12); }
+.aq-record-anatomy__sheet { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto; column-gap: var(--space-12);
+  padding: var(--ra-pad, var(--space-12)) var(--ra-pad, var(--space-12)) var(--space-2); border: 1px solid var(--navy); outline: 1px solid color-mix(in srgb, var(--navy) 35%, transparent); outline-offset: calc(var(--space-2) * -1 - 1px); }
+/* zone band: numbers across the top edge, letters down the left edge, quiet mono */
+.aq-record-anatomy__band { position: absolute; display: flex; font: 500 11px/1 var(--font-mono); color: color-mix(in srgb, var(--navy) 60%, transparent); pointer-events: none; }
+.aq-record-anatomy__band span { flex: 1; display: grid; place-items: center; }
+.aq-record-anatomy__band--x { left: var(--space-8); right: var(--space-8); top: 0; height: var(--space-6); }
+.aq-record-anatomy__band--x span + span { border-left: 1px solid color-mix(in srgb, var(--navy) 25%, transparent); }
+.aq-record-anatomy__band--x span { height: var(--space-2); align-self: start; padding-top: var(--space-3); }
+.aq-record-anatomy__band--y { flex-direction: column; top: var(--space-8); bottom: var(--space-8); left: 0; width: var(--space-6); }
+.aq-record-anatomy__title { grid-column: 1; grid-row: 1 / span 2; align-self: start; padding-bottom: var(--space-12); }
+.aq-record-anatomy-sec .aq-record-anatomy__title .aq-h1 { font-size: 64px; line-height: 68px; font-weight: 300; letter-spacing: -0.035em; color: var(--ink); max-width: 9ch; }
+.aq-record-anatomy-sec .aq-record-anatomy__title .aq-lead { margin-top: var(--space-6); max-width: 30ch; color: var(--ink-muted); }
+
+/* drawing field: four specimen drawings in a 2 x 2 plate with centre lines */
+.aq-record-anatomy__field { grid-column: 2; grid-row: 1; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: var(--space-8);
+  border: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
+.aq-record-anatomy__field::before, .aq-record-anatomy__field::after { content: ""; position: absolute; pointer-events: none; border: 0 dashed color-mix(in srgb, var(--navy) 35%, transparent); }
+.aq-record-anatomy__field::before { left: 50%; top: calc(var(--space-4) * -1); bottom: calc(var(--space-4) * -1); border-left-width: 1px; }
+.aq-record-anatomy__field::after { top: 50%; left: calc(var(--space-4) * -1); right: calc(var(--space-4) * -1); border-top-width: 1px; }
+.aq-record-anatomy__zone { position: relative; padding: var(--space-8) var(--space-4) var(--space-4) var(--space-4); transition: opacity 300ms; }
+.aq-record-anatomy__field.is-guided .aq-record-anatomy__zone:not(.is-on) { opacity: 0.3; }
+.aq-record-anatomy__mark { position: absolute; left: var(--space-2); top: var(--space-2); display: grid; place-items: center; min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1);
+  border: 1px solid var(--navy); color: var(--navy); font: 500 11px/1 var(--font-mono); transition: background-color 250ms, color 250ms; }
+.aq-record-anatomy__zone.is-on .aq-record-anatomy__mark { background: var(--navy); color: var(--limestone); }
+.aq-record-anatomy__lens { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 1; pointer-events: none; opacity: 0; border: 2px solid var(--flow);
+  transition: left 550ms cubic-bezier(0.22, 0.75, 0.22, 1), top 550ms cubic-bezier(0.22, 0.75, 0.22, 1), width 550ms cubic-bezier(0.22, 0.75, 0.22, 1), height 550ms cubic-bezier(0.22, 0.75, 0.22, 1), opacity 200ms; }
+.aq-record-anatomy__field.has-lens.is-guided .aq-record-anatomy__lens { opacity: 1; }
+
+/* the drawings */
+.aq-record-anatomy__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-record-anatomy__stamp, .aq-record-anatomy__sig { transform-box: view-box; }
+.aq-record-anatomy__svg path, .aq-record-anatomy__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-record-anatomy__ln { stroke: var(--navy); stroke-width: 1.5px; }
+.aq-record-anatomy__thin { stroke: color-mix(in srgb, var(--navy) 55%, transparent); stroke-width: 1px; }
+.aq-record-anatomy__hid { stroke: var(--navy); stroke-width: 1px; stroke-dasharray: 4 4; }
+.aq-record-anatomy__limit { stroke: var(--navy); stroke-width: 1.5px; stroke-dasharray: 8 5; }
+.aq-record-anatomy__tick { stroke: var(--navy); stroke-width: 1.5px; }
+.aq-record-anatomy__flow { stroke: var(--flow); stroke-width: 1.5px; }
+.aq-record-anatomy__imp { stroke: color-mix(in srgb, var(--flow) 22%, transparent); stroke-width: 1.5px; }
+.aq-record-anatomy__svg .aq-record-anatomy__fill { fill: var(--navy); stroke: var(--navy); stroke-width: 1.5px; }
+.aq-record-anatomy__svg .aq-record-anatomy__sheet { fill: var(--surface-raised); stroke: var(--navy); stroke-width: 1.5px; }
+.aq-record-anatomy__svg .aq-record-anatomy__pt { fill: var(--limestone); stroke: var(--flow); stroke-width: 1.5px; }
+.aq-record-anatomy__br { font: 300 96px/1 var(--font-sans); fill: var(--navy); }
+.aq-record-anatomy__no { font: 500 11px/1 var(--font-mono); fill: var(--navy); }
+
+/* title block: the points, one ruled row per field, flush to the sheet's lower right corner */
+.aq-record-anatomy__block { grid-column: 2; grid-row: 2; list-style: none; margin: 0 calc(var(--space-2) - var(--ra-pad, var(--space-12))) 0 0; padding: 0; border-top: 1px solid var(--navy); border-left: 1px solid var(--navy); }
+.aq-record-anatomy__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 9rem) minmax(0, 1fr); align-items: baseline; position: relative; cursor: default;
+  border-bottom: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); transition: background-color 200ms; }
+.aq-record-anatomy__row:last-child { border-bottom: 0; }
+.aq-record-anatomy__row > * { padding: var(--space-3) var(--space-4); }
+.aq-record-anatomy__row.is-on { background: color-mix(in srgb, var(--navy) 6%, transparent); }
+.aq-record-anatomy__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-record-anatomy__no-c { align-self: stretch; font: 500 12px/24px var(--font-mono); color: color-mix(in srgb, var(--navy) 65%, transparent); border-right: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
+.aq-record-anatomy__row.is-on .aq-record-anatomy__no-c { color: var(--flow); }
+.aq-record-anatomy__t { margin: 0; align-self: stretch; font: 500 13px/24px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); border-right: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
+.aq-record-anatomy__d { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-record-anatomy__mini { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-record-anatomy { --ra-pad: var(--space-8); }
+  .aq-record-anatomy__sheet { column-gap: var(--space-8); grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+  .aq-record-anatomy-sec .aq-record-anatomy__title .aq-h1 { font-size: 48px; line-height: 52px; }
+  .aq-record-anatomy__row { grid-template-columns: var(--space-8) minmax(0, 7rem) minmax(0, 1fr); }
+  .aq-record-anatomy__row > * { padding: var(--space-3); }
+}
+/* Phones: the sheet keeps its frame and band; the title, then the title block, each row with its own drawing */
+@container (max-width: 860px) {
+  .aq-record-anatomy { --ra-pad: var(--space-6); }
+  .aq-record-anatomy__sheet { grid-template-columns: minmax(0, 1fr); padding: var(--space-8) var(--space-4) 0 var(--space-6); }
+  .aq-record-anatomy__band--x { left: var(--space-6); right: var(--space-4); }
+  .aq-record-anatomy__band--y { width: var(--space-4); }
+  .aq-record-anatomy__title { grid-row: 1; padding-bottom: var(--space-8); }
+  .aq-record-anatomy-sec .aq-record-anatomy__title .aq-h1 { font-size: 40px; line-height: 44px; }
+  .aq-record-anatomy__field { display: none; }
+  .aq-record-anatomy__block { grid-column: 1; grid-row: 2; margin: 0 calc(var(--space-4) * -1) 0 calc(var(--space-6) * -1); border-left: 0; }
+  .aq-record-anatomy__row { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-record-anatomy__row > * { padding: var(--space-2) var(--space-3); }
+  .aq-record-anatomy__no-c { grid-row: 1 / span 3; }
+  .aq-record-anatomy__t { border-right: 0; padding-top: var(--space-4); }
+  .aq-record-anatomy__d { padding-bottom: var(--space-4); }
+  .aq-record-anatomy__mini { display: block; grid-column: 2; grid-row: 1; padding: var(--space-4) var(--space-3) 0; }
+  .aq-record-anatomy__mini .aq-record-anatomy__svg { max-width: 18rem; }
+}

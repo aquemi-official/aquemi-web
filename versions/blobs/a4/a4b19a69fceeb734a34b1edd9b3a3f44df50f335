@@ -1,0 +1,48 @@
+/* ---------- TimeCard: working terms as the shop's time card, a limestone card with a punch column ---------- */
+.aq-time-card-sec { }
+.aq-time-card__stack { position: relative; max-width: calc(var(--content-max) * 0.78); margin-top: var(--space-8); }
+.aq-time-card { position: relative; padding: var(--space-12) var(--space-8) var(--space-8);
+  background: var(--limestone); color: var(--on-limestone); border: 1px solid color-mix(in srgb, var(--navy) 26%, transparent); }
+/* the card beneath it in the rack, outlined and turned a little */
+.aq-time-card__under { position: absolute; inset: 0; border: 1px solid var(--line-strong); transform: rotate(-1.2deg) translate(var(--space-3), var(--space-2)); }
+.aq-time-card__hole { position: absolute; left: 50%; top: var(--space-4); width: var(--space-12); height: var(--space-3); margin-left: calc(var(--space-12) / -2);
+  border-radius: var(--radius-sm); background: var(--surface); border: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
+.aq-section--alt .aq-time-card__hole { background: var(--surface-sunken); }
+.aq-time-card__head, .aq-time-card__row { display: grid; grid-template-columns: var(--space-16) minmax(0, 7fr) minmax(0, 3fr); column-gap: var(--space-6); }
+.aq-time-card__head { padding: var(--space-2) 0; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--navy);
+  font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-time-card__rows { list-style: none; margin: 0; padding: 0; }
+.aq-time-card__row { align-items: baseline; padding: var(--space-4) 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 18%, transparent); transition: background-color 200ms; }
+.aq-time-card__row:hover { background: color-mix(in srgb, var(--navy) 5%, transparent); }
+.aq-time-card__n { position: relative; display: flex; align-items: center; gap: var(--space-2); font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted); font-variant-numeric: tabular-nums; }
+/* the punch slot: punched (filled) at rest; motion blanks the visible lines first and punches them one by one */
+.aq-time-card__n i { flex: none; width: var(--space-6); height: var(--space-3); background: var(--navy); border: 1px solid var(--navy); transition: background-color 250ms, border-color 250ms; }
+.aq-time-card__n i.is-blank { background: transparent; border-style: dashed; border-color: color-mix(in srgb, var(--navy) 45%, transparent); }
+.aq-time-card__row:hover .aq-time-card__n i { background: var(--flow); border-style: solid; border-color: var(--flow); }
+/* the term-name / mono-detail pairing: the item names the line, the term follows as one mono detail line */
+.aq-time-card__pv { min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-time-card__p { margin: 0; font: 300 22px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-time-card .aq-time-card__v { margin: 0; font: 400 13px/22px var(--font-mono); color: var(--on-limestone); overflow-wrap: anywhere; }
+.aq-time-card .aq-time-card__m { margin: 0; font: 400 12px/20px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-time-card .aq-fold__btn { color: var(--on-limestone-muted); }
+.aq-time-card .aq-time-card__note { margin: var(--space-6) 0 0; display: flex; justify-content: flex-end; }
+.aq-time-card__stamp { display: inline-block; padding: var(--space-2) var(--space-4); border: 2px solid var(--navy); color: var(--navy);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; transform: rotate(-2deg); }
+
+@container (max-width: 1100px) {
+  .aq-time-card__stack { max-width: none; }
+  .aq-time-card__head, .aq-time-card__row { grid-template-columns: var(--space-12) minmax(0, 7fr) minmax(0, 3fr); column-gap: var(--space-4); }
+  .aq-time-card__n i { display: none; }
+}
+/* Phones: the card fills the width; each line stacks item, term, note beside its number */
+@container (max-width: 860px) {
+  .aq-time-card__stack { margin-top: var(--space-4); }
+  .aq-time-card { padding: var(--space-8) var(--space-4) var(--space-6); }
+  .aq-time-card__under { transform: rotate(-1deg) translate(var(--space-1), var(--space-2)); }
+  .aq-time-card__head { display: none; }
+  .aq-time-card__rows { border-top: 2px solid var(--navy); }
+  .aq-time-card__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-1); }
+  .aq-time-card__m { grid-column: 2; }
+  .aq-time-card__p { font-size: 19px; line-height: 26px; }
+  .aq-time-card__stamp { font-size: 11px; }
+}

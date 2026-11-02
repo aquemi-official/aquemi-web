@@ -1,0 +1,61 @@
+/* ---------- GateLine: steps strung on one double-line pipe, gate valves between them (look "gate-line") ----------
+   A navy band (data-theme="dark": flow is the light water blue). Equal columns, one per step, no gap, so the runs join
+   into one pipe. Each column: a hairline icon, its run of pipe (two on-navy-muted walls, flow water inside; the
+   shutdown step's run is dry: a dashed bore and its label), then number (light 40 px), name (light 22 px), line and
+   hold stamp. A gate valve (P&ID bowtie on a stem) sits on the joint at the left of every step but the first; the
+   gate after a hold step carries a "Hold" tag. The pipe leaves at the right through an arrow. A legend over the pipe
+   names the water. Phones: one column; the pipe runs down the left, the valves turned with it; icon, number, name
+   and line on the right. */
+.aq-gate-line-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); }
+.aq-gate-line__legend { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-3); margin: 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy); }
+.aq-gate-line__sw { width: var(--space-8); height: var(--space-2); background: var(--flow); }
+.aq-gate-line { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); }
+.aq-gate-line__step { position: relative; display: grid; grid-template-rows: calc(var(--space-16) + var(--space-8)) var(--space-4) auto; min-width: 0; }
+.aq-gate-line__ic { align-self: end; padding: 0 var(--space-4) var(--space-6) var(--space-8); }
+.aq-gate-line__ic .aq-icon { display: block; width: var(--space-12); height: var(--space-12); background: var(--on-navy-muted); transition: background-color 160ms ease; }
+.aq-gate-line__step:hover .aq-gate-line__ic .aq-icon { background: var(--flow); }
+
+/* the run of pipe: walls, water or a dry bore */
+.aq-gate-line__run { position: relative; display: block; }
+.aq-gate-line__walls { position: absolute; inset: 0; border-top: 1.5px solid var(--on-navy-muted); border-bottom: 1.5px solid var(--on-navy-muted); }
+.aq-gate-line__water { position: absolute; inset: var(--space-1) 0; background: var(--flow); transform-origin: 0 0; }
+.aq-gate-line__dry { position: absolute; inset: var(--space-1) var(--space-6); border: 1.5px dashed var(--on-navy-muted); }
+.aq-gate-line__dl { position: absolute; right: calc(-1 * var(--space-6)); bottom: calc(100% + var(--space-6)); white-space: nowrap; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy); }
+.aq-gate-line__out { position: absolute; right: calc(-1 * var(--space-1)); top: 50%; width: var(--space-4); height: var(--space-4); border-top: 1.5px solid var(--on-navy); border-right: 1.5px solid var(--on-navy); transform: translateY(-50%) rotate(45deg); }
+
+/* the gate valve on the joint */
+.aq-gate-line__gate { position: absolute; z-index: 1; left: 0; top: 50%; width: var(--space-8); translate: -50% -63.2%; }
+.aq-gate-line__vsvg { display: block; width: 100%; height: auto; aspect-ratio: 28 / 38; overflow: visible; }
+.aq-gate-line__vb { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-gate-line__vfill { fill: var(--on-navy); fill-opacity: 0; }
+.aq-gate-line__vs, .aq-gate-line__vh { fill: none; stroke: var(--on-navy); stroke-width: 1.5; stroke-linecap: round; }
+.aq-gate-line__vh { transform-box: fill-box; transform-origin: 50% 50%; }
+.aq-gate-line__gk { position: absolute; left: 50%; bottom: calc(100% + var(--space-2)); translate: -50% 0; padding: 0 var(--space-2); border: 1.5px solid var(--flow); font: 500 11px/18px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy); white-space: nowrap; }
+
+/* the step's text */
+.aq-gate-line__txt { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-8) var(--space-6) 0 var(--space-8); }
+.aq-gate-line__n { font: 300 40px/1 var(--font-sans); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--on-navy); }
+.aq-gate-line__t { margin: var(--space-2) 0 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); text-wrap: balance; }
+.aq-gate-line__go { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.aq-gate-line__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; }
+.aq-gate-line__hold { margin: var(--space-2) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); font: 400 13px/18px var(--font-mono); color: var(--on-navy); }
+.aq-gate-line__hk { padding: 0 var(--space-2); border: 1.5px solid var(--flow); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+
+@container (max-width: 860px) {
+  .aq-gate-line-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  .aq-gate-line__legend { justify-content: flex-start; }
+  .aq-gate-line { grid-template-columns: minmax(0, 1fr); }
+  .aq-gate-line__step { grid-template-columns: var(--space-12) minmax(0, 1fr); grid-template-rows: auto auto; column-gap: var(--space-4); }
+  .aq-gate-line__run { grid-column: 1; grid-row: 1 / span 2; justify-self: center; width: var(--space-4); }
+  .aq-gate-line__walls { border-top: 0; border-bottom: 0; border-left: 1.5px solid var(--on-navy-muted); border-right: 1.5px solid var(--on-navy-muted); }
+  .aq-gate-line__water { inset: 0 var(--space-1); }
+  .aq-gate-line__dry { inset: var(--space-6) var(--space-1); }
+  .aq-gate-line__dl, .aq-gate-line__gk { display: none; }
+  .aq-gate-line__out { right: auto; left: 50%; top: auto; bottom: calc(-1 * var(--space-1)); transform: translateX(-50%) rotate(135deg); }
+  .aq-gate-line__gate { left: 50%; top: 0; transform-origin: 50% 63.2%; rotate: -90deg; }
+  .aq-gate-line__ic { grid-column: 2; grid-row: 1; padding: var(--space-8) 0 var(--space-2); }
+  .aq-gate-line__ic .aq-icon { width: var(--space-8); height: var(--space-8); }
+  .aq-gate-line__txt { grid-column: 2; grid-row: 2; padding: 0 0 var(--space-6); }
+  .aq-gate-line__n { font-size: 32px; }
+  .aq-gate-line__t { font-size: 20px; line-height: 26px; }
+}

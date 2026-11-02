@@ -1,0 +1,111 @@
+/* ---------- StageStacks: what each stage issues, as the turnover package building up along the project axis (look
+   "stage-stacks"). Navy ground (aq-band--navy). Stages share one grid (subgrid rows: stack, axis, stage, step), so
+   every stack stands on the same axis line and every name and step line up across. Sheets are limestone paper, one
+   per document, stacked bottom up. The axis is the only flow line. ---------- */
+.aq-stage-stacks-sec { position: relative; }
+.aq-stage-stacks { position: relative; padding-left: calc(var(--space-32) + var(--space-6)); }
+.aq-stage-stacks__list {
+  list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr));
+  grid-template-rows: auto var(--space-8) auto auto; column-gap: 0;
+}
+.aq-stage-stacks__stage { position: relative; display: grid; grid-row: 1 / span 4; grid-template-rows: subgrid; min-width: 0; }
+.aq-stage-stacks__head { grid-row: 3; position: relative; padding: var(--space-4) var(--space-3) 0 var(--space-2); }
+.aq-stage-stacks__pile { grid-row: 1; position: relative; align-self: end; padding: var(--space-12) var(--space-3) var(--space-3) var(--space-2); }
+.aq-stage-stacks__axis { grid-row: 2; position: relative; }
+.aq-stage-stacks__who { grid-row: 4; position: relative; padding: var(--space-4) var(--space-3) 0 var(--space-2); }
+
+/* the axis: one flow run through a node per stage */
+.aq-stage-stacks__axis::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-stage-stacks__run { position: absolute; left: 0; right: 0; top: 50%; margin-top: -1px; border-top: 2px solid var(--flow); }
+.aq-stage-stacks__stage:last-child .aq-stage-stacks__run { right: var(--space-6); }
+.aq-stage-stacks__stage:last-child .aq-stage-stacks__axis::after {
+  content: ""; position: absolute; right: var(--space-4); top: 50%; width: var(--space-3); height: var(--space-3);
+  border-top: 2px solid var(--flow); border-right: 2px solid var(--flow); transform: translateY(-50%) rotate(45deg);
+}
+.aq-stage-stacks__node {
+  position: absolute; left: var(--space-2); top: 50%; width: var(--space-3); height: var(--space-3); transform: translateY(-50%);
+  margin: 0; padding: 0; background: var(--navy); border: 2px solid var(--flow); border-radius: 0; cursor: pointer; z-index: 1;
+  transition: background 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* the rail's hit target: 44 px round the node */
+.aq-stage-stacks__node::before { content: ""; position: absolute; inset: calc(-1 * var(--space-4)); }
+.aq-stage-stacks__node:focus-visible { outline: 2px solid var(--on-navy); outline-offset: var(--space-1); }
+.aq-stage-stacks__node[aria-pressed="true"] { background: var(--on-navy); border-color: var(--on-navy); }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__node, .aq-stage-stacks__stage:hover .aq-stage-stacks__node { background: var(--flow); }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__node[aria-pressed="true"] { background: var(--on-navy); }
+
+/* stage rail: stacks the water has not reached go quiet as outlines (paper fill off, text on-navy-muted, which keeps
+   at least 4.5:1 on navy); text opacity never drops. The sought stage's stack lifts. */
+.aq-stage-stacks__run { transform-origin: 0 50%; }
+.aq-stage-stacks__stage.is-ahead .aq-stage-stacks__doc, .aq-stage-stacks__stage.is-ahead .aq-stage-stacks__doc:nth-child(even) {
+  background: var(--navy); color: var(--on-navy-muted); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+}
+.aq-stage-stacks__stage.is-ahead .aq-stage-stacks__step { border-top-style: dotted; }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__doc { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__doc:nth-child(even) { transform: translate(var(--space-1), calc(-1 * var(--space-1))); }
+
+/* the stage */
+.aq-stage-stacks__name { margin: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-stage-stacks__no { font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy-muted); }
+.aq-stage-stacks__nm { font: 300 22px/28px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-wrap: balance; }
+.aq-stage-stacks__nm a { color: inherit; }
+.aq-stage-stacks__ref { font: 400 12px/18px var(--font-mono); color: var(--on-navy-muted); }
+.aq-stage-stacks__step { margin: 0; padding-top: var(--space-3); border-top: 1px dashed color-mix(in srgb, var(--on-navy-muted) 45%, transparent); font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; }
+
+/* the stack: sheets bottom up */
+.aq-stage-stacks__docs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column-reverse; gap: 2px; }
+.aq-stage-stacks__doc {
+  position: relative; padding: var(--space-2) var(--space-3); background: var(--limestone); color: var(--on-limestone);
+  font: 400 13px/18px var(--font-sans); text-wrap: pretty; transition: transform 240ms cubic-bezier(0.2, 0, 0, 1), background 240ms cubic-bezier(0.2, 0, 0, 1), color 240ms cubic-bezier(0.2, 0, 0, 1);
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--on-limestone) 18%, transparent);
+}
+.aq-stage-stacks__doc:nth-child(even) { transform: translateX(var(--space-1)); background: color-mix(in srgb, var(--limestone) 70%, var(--on-navy)); }
+.aq-stage-stacks__doc:last-child { clip-path: polygon(0 0, calc(100% - var(--space-3)) 0, 100% var(--space-3), 100% 100%, 0 100%); }
+.aq-stage-stacks__stage:hover .aq-stage-stacks__doc { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-stage-stacks__stage:hover .aq-stage-stacks__doc:nth-child(even) { transform: translate(var(--space-1), calc(-1 * var(--space-1))); }
+
+/* band labels: the table's column names, once, in the margin left of the first stage */
+.aq-stage-stacks__k { display: none; margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-stage-stacks__stage:first-child .aq-stage-stacks__k { display: block; position: absolute; right: calc(100% + var(--space-6)); width: var(--space-32); text-align: right; text-wrap: balance; }
+.aq-stage-stacks__stage:first-child .aq-stage-stacks__pile > .aq-stage-stacks__k { bottom: var(--space-3); }
+.aq-stage-stacks__stage:first-child .aq-stage-stacks__head > .aq-stage-stacks__k { top: var(--space-4); }
+.aq-stage-stacks__stage:first-child .aq-stage-stacks__who > .aq-stage-stacks__k { top: calc(var(--space-4) + var(--space-3)); }
+
+/* Fold: desktop shows the whole axis; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-stage-stacks__stage.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-stage-stacks__list) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .aq-stage-stacks__doc, .aq-stage-stacks__node { transition: none; } }
+
+/* mid widths: the band labels turn to read up the margin (bottom to top), so every band stays named */
+@container (max-width: 1100px) {
+  .aq-stage-stacks { padding-left: var(--space-12); }
+  .aq-stage-stacks__stage:first-child .aq-stage-stacks__k {
+    right: calc(100% + var(--space-4)); width: auto; max-inline-size: var(--space-32); writing-mode: vertical-rl; transform: rotate(180deg); text-align: start;
+  }
+  .aq-stage-stacks__stage:first-child .aq-stage-stacks__head > .aq-stage-stacks__k { top: var(--space-4); }
+  .aq-stage-stacks__nm { font-size: 19px; line-height: 25px; }
+}
+@container (max-width: 860px) {
+  .aq-stage-stacks__list { display: block; }
+  .aq-stage-stacks__stage { grid-template-columns: var(--space-8) minmax(0, 1fr); grid-template-rows: none; grid-row: auto; padding-bottom: var(--space-8); }
+  .aq-stage-stacks__head, .aq-stage-stacks__pile, .aq-stage-stacks__who { grid-column: 2; grid-row: auto; padding: 0; }
+  .aq-stage-stacks__pile { padding-top: var(--space-4); align-self: start; }
+  .aq-stage-stacks__who { padding-top: var(--space-4); }
+  .aq-stage-stacks__axis { grid-column: 1; grid-row: 1 / span 3; position: absolute; left: 0; top: 0; bottom: 0; width: var(--space-8); }
+  .aq-stage-stacks__axis::before { left: var(--space-2); right: auto; top: 0; bottom: 0; border-top: 0; border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+  .aq-stage-stacks__run { left: var(--space-2); right: auto; top: 0; bottom: 0; margin: 0 0 0 calc(-1 * 1px / 2); border-top: 0; border-left: 2px solid var(--flow); transform-origin: 50% 0; }
+  .aq-stage-stacks__stage:last-child .aq-stage-stacks__run { right: auto; bottom: var(--space-8); }
+  .aq-stage-stacks__stage:last-child .aq-stage-stacks__axis::after { right: auto; top: auto; left: calc(var(--space-2) - var(--space-3) / 2 + 1px); bottom: var(--space-6); border-top: 0; border-left: 0; border-right: 2px solid var(--flow); border-bottom: 2px solid var(--flow); transform: rotate(45deg); }
+  .aq-stage-stacks__node { left: calc(var(--space-2) - var(--space-3) / 2 + 1px); top: var(--space-2); transform: none; }
+  .aq-stage-stacks { padding-left: 0; }
+  .aq-stage-stacks__nm { font-size: 20px; line-height: 26px; }
+  .aq-stage-stacks__docs { flex-direction: row; flex-wrap: wrap; gap: var(--space-1); }
+  .aq-stage-stacks__doc, .aq-stage-stacks__doc:nth-child(even) { transform: none; }
+  .aq-stage-stacks__doc:last-child { clip-path: none; }
+  .aq-stage-stacks__k.is-ph, .aq-stage-stacks__stage:first-child .aq-stage-stacks__k { display: block; position: static; width: auto; max-inline-size: none; writing-mode: horizontal-tb; transform: none; text-align: left; margin-bottom: var(--space-2); }
+  .aq-stage-stacks__head > .aq-stage-stacks__k, .aq-stage-stacks__stage:first-child .aq-stage-stacks__head > .aq-stage-stacks__k { display: none; }
+  .aq-stage-stacks__step { border-top: 0; padding-top: 0; }
+  .aq-fold:not(.is-open) .aq-stage-stacks__stage.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-stage-stacks__list) > .aq-fold__btn { display: flex; color: var(--on-navy-muted); margin-top: var(--space-2); }
+}

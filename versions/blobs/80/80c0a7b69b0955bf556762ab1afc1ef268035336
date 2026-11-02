@@ -1,0 +1,10 @@
+MarkingMatch shows supplier control as two standing rules set as headline-sized facts over a clean ruled schedule of supplies, what we require and how we verify it.
+
+- On the site: a `table` block with `"look": "marking-match"` (renderer `assets/src/blocks/look-marking-match.js`), cmp-quality "What we require from suppliers". Origin: pass 9b concept `cmp-quality.2` (two lead facts above a supplier requirements table; its inline gauge dropped as noise). Pass 9's part drawings and certificate papers are gone: the page keeps its line art to NcrTiles and TermsSheet.
+- Markup: `<div class="aq-marking-match">` > `__facts` > `__fact` (`has-glyph`) > `p.__fk` (aria-hidden number + label), `p.__fv`, optional `svg.__gate` (`__pw`, `__vb`, `__vs`, `__wf` water, `__gt` gate) + `__table` > `__head` (aria-hidden `span[data-c]` + `i.__colbar`) + (Fold) `ol.__list` > `li.__row` > `__c[data-c]` (`__k`, `h3.__name` > `__n` + span / `p` / `p.__how` > `svg.__ok` + span) + `i.__band`.
+- Fields: `facts [{k, v, glyph}]` (`glyph: "gate"` draws a pipe whose water stops at a closed valve), `cols [supply, what we require, how we verify it]`, `rows` (strings or `{t, link}`), `fold`, `fold_noun`. The facts replace the block's intro (the plain table renderer has no facts).
+- Tokens: facts 300 weight 48 px (placeholders at half size), labels mono; head rule `navy` 1.5 px, row and column rules `line`; ticks and the gate's water `flow`; crosshair band `flow-tint`, column bar `flow`. Column names visually hidden on desktop, shown per supply on phones.
+- Fold: phones only.
+- Phone: facts stack, the gate glyph under its rule; each supply stacks its three cells with labels.
+- Motion (`motion.js`): facts rise 16 px; on the gate the pipe draws, the water runs to the valve and the gate drops shut. Rows rise 8 px, 0.07 s apart, ticks draw. Ported from Subframe Motion "Chart crosshair" (chart-crosshair): pointing at a cell snaps a `flow-tint` band to its row and a `flow` bar under its column head (180 ms), whose name lights; without the script the row tints on hover (CSS).
+- Not for: standards and their proof (ProofFolders, EvidenceMap).

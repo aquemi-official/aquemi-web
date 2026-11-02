@@ -1,0 +1,101 @@
+/* ---------- RiserValves: response times by request on one riser pipe (look riser-valves) ----------
+   Navy sheet. A twin-wall riser runs down the gutter between the requests and the answers (one segment per row, so it
+   stays continuous whatever the row heights). Branch A tees off at the first line of each row through a gate valve into
+   the first response; branch B leaves the riser at the foot of the row, runs under the first response and turns up
+   into what follows. Water is flow mixed toward on-navy; walls on-navy-muted. Drawn parts are fixed-size inline SVGs.
+   Motion sets --rv-r (riser), --rv-a (branch A), --rv-b (branch B run), --rv-c (elbow and rise) per row; all default to
+   1, so the drawing is complete without script. Phones: the riser runs down a left gutter and both branches are short
+   tees into the zone labels. */
+.aq-riser-valves-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-riser-valves-sec .aq-sec-head .aq-lead { color: var(--on-navy-muted); max-width: 60ch; }
+.aq-riser-valves {
+  --rv-q: 30%; --rv-g: calc(var(--space-24) + var(--space-8));
+  --rv-wall: color-mix(in srgb, var(--on-navy-muted) 55%, transparent);
+  --rv-water: color-mix(in srgb, var(--flow) 78%, var(--on-navy));
+  --rv-hi: color-mix(in srgb, var(--flow) 40%, var(--on-navy));
+  --rv-rule: color-mix(in srgb, var(--on-navy-muted) 25%, transparent);
+}
+.aq-riser-valves__colh, .aq-riser-valves__row { display: grid; grid-template-columns: var(--rv-q, 30%) var(--rv-g, calc(var(--space-24) + var(--space-8))) minmax(0, 1fr) minmax(0, 1fr); }
+.aq-riser-valves__colh {
+  margin: 0; padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted);
+}
+.aq-riser-valves__colh > span:nth-child(2) { grid-column: 3; }
+.aq-riser-valves__colh > span:nth-child(3) { grid-column: 4; padding-left: var(--space-8); }
+.aq-riser-valves__rows { list-style: none; margin: 0; padding: 0; }
+.aq-riser-valves__row { position: relative; padding-block: var(--space-8); border-bottom: 1px solid var(--rv-rule, var(--on-navy-muted)); align-items: stretch; }
+.aq-riser-valves__row.is-break { border-top: 1px solid var(--rv-wall, var(--on-navy-muted)); }
+
+/* The request */
+.aq-riser-valves__req { grid-column: 1; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: baseline; padding-right: var(--space-6); }
+.aq-riser-valves__no { font: 400 14px/26px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--on-navy-muted); }
+.aq-riser-valves__t { margin: 0; display: flex; flex-direction: column; gap: var(--space-1); font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); text-wrap: balance; }
+.aq-riser-valves__what { font: 300 17px/24px var(--font-sans); letter-spacing: 0; color: var(--on-navy-muted); }
+.aq-riser-valves__row.is-first-sev .aq-riser-valves__sev, .aq-riser-valves__row.is-first-sev .aq-riser-valves__no { color: var(--rv-hi, var(--on-navy)); }
+.aq-riser-valves__sr, .aq-riser-valves__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* The answers */
+.aq-riser-valves__cell { position: relative; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-riser-valves__cell[data-zone="1"] { grid-column: 3; padding-right: var(--space-8); }
+.aq-riser-valves__cell[data-zone="2"] { grid-column: 4; padding-left: var(--space-8); }
+.aq-riser-valves__v { margin: 0; font: 400 17px/26px var(--font-sans); color: var(--on-navy); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-riser-valves__v a { color: var(--on-navy); }
+.aq-riser-valves__v a:focus-visible { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+
+/* Pipes: twin walls, water a centre line */
+.aq-riser-valves__br { position: absolute; inset: 0; pointer-events: none; }
+.aq-riser-valves__br--b { overflow: visible; }
+.aq-riser-valves__riser, .aq-riser-valves__br--a, .aq-riser-valves__run, .aq-riser-valves__rise { position: absolute; box-sizing: border-box; pointer-events: none; }
+.aq-riser-valves__w { position: absolute; display: block; background: var(--rv-water, var(--flow)); transition: background-color 160ms; }
+.aq-riser-valves__riser { z-index: 1; left: calc(var(--rv-q, 30%) + var(--rv-g, calc(var(--space-24) + var(--space-8))) / 2 - 5px); width: 10px; top: 0; bottom: -1px; border-inline: 1.5px solid var(--rv-wall, var(--on-navy-muted)); background: var(--navy); }
+.aq-riser-valves__riser .aq-riser-valves__w { left: 50%; width: 3px; margin-left: -1.5px; top: 0; bottom: 0; transform: scaleY(var(--rv-r, 1)); transform-origin: center top; }
+.aq-riser-valves__row.is-top .aq-riser-valves__riser { top: calc(var(--space-8) - var(--space-6)); border-top: 1.5px solid var(--rv-wall, var(--on-navy-muted)); }
+.aq-riser-valves__row.is-top .aq-riser-valves__riser::before { content: ""; position: absolute; left: -6px; right: -6px; top: -6px; height: 5px; border: 1.5px solid var(--rv-wall, var(--on-navy-muted)); background: var(--navy); }
+.aq-riser-valves__row.is-end .aq-riser-valves__riser { bottom: calc(var(--space-4) - 5px); border-bottom: 1.5px solid var(--rv-wall, var(--on-navy-muted)); }
+.aq-riser-valves__br--a, .aq-riser-valves__run { height: 10px; border-block: 1.5px solid var(--rv-wall, var(--on-navy-muted)); }
+.aq-riser-valves__br--a .aq-riser-valves__w, .aq-riser-valves__run .aq-riser-valves__w { left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; transform-origin: left center; }
+.aq-riser-valves__br--a { left: calc(var(--rv-g, calc(var(--space-24) + var(--space-8))) / -2 + 5px); right: calc(100% + var(--space-3)); top: var(--space-2); }
+.aq-riser-valves__br--a .aq-riser-valves__w { transform: scaleX(var(--rv-a, 1)); }
+.aq-riser-valves__run { left: calc(-100% - var(--rv-g, calc(var(--space-24) + var(--space-8))) / 2 + 5px); right: calc(100% - 2px); top: calc(100% + var(--space-4) - 5px); }
+.aq-riser-valves__run .aq-riser-valves__w { transform: scaleX(var(--rv-b, 1)); }
+.aq-riser-valves__elb { position: absolute; left: 2px; top: calc(100% + var(--space-4) - 10px); overflow: visible; }
+.aq-riser-valves__ew { fill: none; stroke: var(--rv-wall, var(--on-navy-muted)); stroke-width: 1.5; }
+.aq-riser-valves__ef { fill: none; stroke: var(--rv-water, var(--flow)); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--rv-c, 1)); transition: stroke 160ms; }
+.aq-riser-valves__rise { left: 7px; width: 10px; top: var(--space-2); bottom: calc(10px - var(--space-4)); border-inline: 1.5px solid var(--rv-wall, var(--on-navy-muted)); border-top: 1.5px solid var(--rv-wall, var(--on-navy-muted)); }
+.aq-riser-valves__rise .aq-riser-valves__w { left: 50%; width: 3px; margin-left: -1.5px; top: 0; bottom: 0; transform: scaleY(var(--rv-c, 1)); transform-origin: center bottom; }
+
+/* The valve: gate body, stem and lever; open = body full of water, lever along the pipe; shut = lever across */
+.aq-riser-valves__valve { position: absolute; left: calc(50% - 12px); top: calc(50% - 17px); overflow: visible; }
+.aq-riser-valves__vb { fill: var(--rv-water, var(--flow)); stroke: var(--rv-wall, var(--on-navy-muted)); stroke-width: 1.5; stroke-linejoin: round; transition: fill 160ms; }
+.aq-riser-valves__vs, .aq-riser-valves__vl { fill: none; stroke: var(--rv-wall, var(--on-navy-muted)); stroke-width: 1.5; stroke-linecap: round; }
+.aq-riser-valves__vl { transform-box: fill-box; transform-origin: 50% 50%; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-riser-valves__row[data-rv="shut"] .aq-riser-valves__vb { fill: var(--navy); }
+.aq-riser-valves__row[data-rv="shut"] .aq-riser-valves__vl { transform: rotate(90deg); }
+
+/* Pointing at a request opens its valve and runs its two branches in full, brighter */
+.aq-riser-valves__row:hover .aq-riser-valves__vb, .aq-riser-valves__row:focus-within .aq-riser-valves__vb { fill: var(--on-navy); }
+.aq-riser-valves__row:hover .aq-riser-valves__vl, .aq-riser-valves__row:focus-within .aq-riser-valves__vl { transform: none; }
+.aq-riser-valves__row:hover .aq-riser-valves__cell .aq-riser-valves__w, .aq-riser-valves__row:focus-within .aq-riser-valves__cell .aq-riser-valves__w { background: var(--on-navy); transform: none; }
+.aq-riser-valves__row:hover .aq-riser-valves__ef, .aq-riser-valves__row:focus-within .aq-riser-valves__ef { stroke: var(--on-navy); stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-riser-valves__w, .aq-riser-valves__ef, .aq-riser-valves__vb, .aq-riser-valves__vl { transition: none; }
+}
+
+@container (max-width: 860px) {
+  .aq-riser-valves { --rv-gp: var(--space-16); }
+  .aq-riser-valves__colh { display: none; }
+  .aq-riser-valves__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); padding: var(--space-6) 0 var(--space-6) var(--rv-gp, var(--space-16)); }
+  .aq-riser-valves__req, .aq-riser-valves__cell[data-zone="1"], .aq-riser-valves__cell[data-zone="2"] { grid-column: 1; padding: 0; }
+  .aq-riser-valves__req { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-riser-valves__t { font-size: 19px; line-height: 25px; }
+  .aq-riser-valves__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal;
+    margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .aq-riser-valves__v { font-size: 16px; line-height: 24px; }
+  .aq-riser-valves__riser { left: calc(var(--rv-gp, var(--space-16)) / 2 - 5px); }
+  .aq-riser-valves__row.is-top .aq-riser-valves__riser { top: var(--space-2); }
+  .aq-riser-valves__row.is-end .aq-riser-valves__riser { bottom: var(--space-6); }
+  .aq-riser-valves__br--a, .aq-riser-valves__run { left: calc(var(--rv-gp, var(--space-16)) / -2 + 5px); right: calc(100% + var(--space-2)); top: 3px; }
+  .aq-riser-valves__elb, .aq-riser-valves__rise { display: none; }
+  .aq-riser-valves__valve { left: calc(50% - 10px); top: calc(50% - 14px); width: 20px; height: 20px; }
+}

@@ -1,0 +1,67 @@
+/* ---------- CheckerRouter: a router as a Swiss checker of navy, limestone and paper tiles, one band per situation ---------- */
+.aq-checker-router-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
+.aq-checker-router { list-style: none; margin: var(--space-8) 0 0; padding: 0; display: grid; gap: 1px; }
+.aq-checker-router__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 0.8fr) minmax(0, 1.3fr) minmax(0, 0.8fr) minmax(0, 1.1fr);
+  gap: 1px; min-height: calc(var(--space-32) + var(--space-12)); }
+
+/* One tile. Its tone is a class; the inverse (row in hand) swaps tones tile by tile after --d steps of 45 ms, no tween */
+.aq-checker-router__tile { position: relative; display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; margin: 0; padding: var(--space-4);
+  --bg: var(--limestone); --fg: var(--on-limestone); --mu: var(--on-limestone-muted);
+  background: var(--bg, var(--limestone)); color: var(--fg, var(--on-limestone)); box-shadow: 0 0 0 1px var(--line-strong); transition: background-color 1ms steps(1, end) calc(var(--d, 0) * 45ms), color 1ms steps(1, end) calc(var(--d, 0) * 45ms); }
+.aq-checker-router__tile.is-navy { --bg: var(--navy); --fg: var(--on-navy); --mu: var(--on-navy-muted); }
+.aq-checker-router__tile.is-paper { --bg: var(--surface-raised); --fg: var(--ink); --mu: var(--ink-subtle); }
+.aq-checker-router__row.is-on .aq-checker-router__tile.is-lime,
+.aq-checker-router__row.is-on .aq-checker-router__tile.is-paper { --bg: var(--navy); --fg: var(--on-navy); --mu: var(--on-navy-muted); }
+.aq-checker-router__row.is-on .aq-checker-router__tile.is-navy { --bg: var(--limestone); --fg: var(--on-limestone); --mu: var(--on-limestone-muted); }
+.aq-checker-router__row:not(.is-on) .aq-checker-router__tile { transition-delay: calc(var(--d, 0) * 30ms); }
+
+/* The numeral tile: Geist Light figures, the slash in flow */
+.aq-checker-router__num { justify-content: flex-start; }
+.aq-checker-router__n { font: 300 88px/80px var(--font-sans); letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.aq-checker-router__n i { font-style: normal; margin-left: var(--space-1); color: color-mix(in srgb, var(--flow) 55%, var(--fg, var(--on-limestone))); }
+
+.aq-checker-router__k { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mu, var(--on-limestone-muted)); }
+.aq-checker-router__t { margin: 0; font: 300 21px/27px var(--font-sans); letter-spacing: -0.01em; text-wrap: balance; }
+.aq-checker-router__d { margin: 0; font: 400 15px/22px var(--font-sans); }
+.aq-checker-router__d a { color: inherit; }
+
+/* The go tile: a link the size of the tile, the arrow runs on hover */
+a.aq-checker-router__go { text-decoration: none; cursor: pointer; }
+.aq-checker-router__to { font: 400 17px/24px var(--font-sans); }
+.aq-checker-router__arrow { margin-top: auto; align-self: flex-end; width: var(--space-8); height: 1px; background: currentColor; position: relative; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-checker-router__arrow::after { content: ""; position: absolute; right: 0; top: calc(var(--space-1) * -1); width: var(--space-2); height: var(--space-2);
+  border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: translateY(1px) rotate(45deg); transform-origin: 100% 0; }
+.aq-checker-router__row.is-on .aq-checker-router__arrow { transform: translateX(var(--space-1)); }
+a.aq-checker-router__go:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+.aq-checker-router__row.is-on a.aq-checker-router__go:focus-visible { outline-color: var(--on-navy); }
+
+/* Paper filler with a tiny drawing; the drawing follows the tile's ink */
+.aq-checker-router__tile.has-fig { align-items: center; justify-content: center; padding: var(--space-3); }
+.aq-checker-router__svg { width: 100%; height: 100%; max-height: calc(var(--space-32) + var(--space-4)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-checker-router__tile, .aq-checker-router__arrow { transition: none; }
+}
+
+/* Small laptops: fillers narrow, figures smaller */
+@container (max-width: 1100px) {
+  .aq-checker-router__row { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr) minmax(0, 0.5fr) minmax(0, 1.4fr) minmax(0, 0.5fr) minmax(0, 1.2fr); }
+  .aq-checker-router__n { font-size: 64px; line-height: 60px; }
+  .aq-checker-router__tile.has-fig .aq-checker-router__svg { display: none; }
+}
+
+/* Phones: each situation is a 2 x 2 block of tiles (numeral | situation, need | start), still a checker */
+@container (max-width: 860px) {
+  .aq-checker-router-sec .aq-sec-head .aq-h1 { font-size: 34px; line-height: 40px; }
+  .aq-checker-router { margin-top: var(--space-6); }
+  .aq-checker-router__row { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); min-height: 0; }
+  .aq-checker-router__tile.is-fill, .aq-checker-router__tile.is-paper { display: none; }
+  .aq-checker-router__n { font-size: 56px; line-height: 52px; }
+  .aq-checker-router__t { font-size: 19px; line-height: 25px; }
+  .aq-checker-router__need { grid-column: 1 / -1; }
+  .aq-checker-router__go { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: center; min-height: var(--space-16); column-gap: var(--space-4); }
+  .aq-checker-router__go .aq-checker-router__k { flex-basis: 100%; }
+  .aq-checker-router__arrow { margin: 0 0 0 auto; align-self: center; }
+  .aq-checker-router__row:nth-child(odd) .aq-checker-router__go { --bg: var(--navy); --fg: var(--on-navy); --mu: var(--on-navy-muted); }
+  .aq-checker-router__row:nth-child(odd).is-on .aq-checker-router__go { --bg: var(--limestone); --fg: var(--on-limestone); --mu: var(--on-limestone-muted); }
+}

@@ -1,0 +1,50 @@
+/* ---------- TieInRun: steps beside one sticky drawing of a loop gaining a new outlet ---------- */
+.aq-tie-in-run-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 14ch; }
+/* --p0..--p3: how far each stage of the drawing has come (0..1); motion.js drives them from scroll, 1 at rest */
+.aq-tie-in-run { --p0: 1; --p1: 1; --p2: 1; --p3: 1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-12); align-items: start; }
+
+/* The steps */
+.aq-tie-in-run__steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.aq-tie-in-run__step { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2); padding: var(--space-8) 0;
+  border-top: 1px solid var(--line); transition: opacity 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-tie-in-run__step:last-child { border-bottom: 1px solid var(--line); }
+.aq-tie-in-run__n { grid-row: 1 / span 2; font: 300 32px/36px var(--font-mono); letter-spacing: -0.04em; color: var(--ink-subtle); transition: color 240ms ease; }
+.aq-tie-in-run__t { margin: 0; font: 400 22px/28px var(--font-mono); letter-spacing: -0.01em; color: var(--ink); }
+.aq-tie-in-run__t a { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 3px; }
+.aq-tie-in-run__d { grid-column: 2; margin: 0; max-width: 46ch; font: 400 15px/24px var(--font-mono); color: var(--ink-muted); }
+.aq-tie-in-run__step.is-on .aq-tie-in-run__n { color: var(--flow); }
+.aq-tie-in-run.is-live .aq-tie-in-run__step:not(.is-on) { opacity: 0.55; }
+
+/* The drawing: sticky while the steps pass */
+.aq-tie-in-run__fig { position: sticky; top: var(--space-24); }
+.aq-tie-in-run__plate { position: relative; }
+.aq-tie-in-run__svg { display: block; width: 100%; height: auto; }
+.aq-tie-in-run__new { opacity: var(--p0, 1); }
+.aq-tie-in-run__new .aq-iso__eq, .aq-tie-in-run__new .aq-iso__ln, .aq-tie-in-run__new .aq-iso__thin, .aq-tie-in-run__new .aq-iso__pipe-wall {
+  stroke: var(--flow); stroke-dasharray: 3px calc(3px * (1 - var(--p2, 1))); fill-opacity: var(--p2, 1); }
+.aq-tie-in-run__cc { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; opacity: calc(var(--p1, 1) * 0.9); }
+.aq-tie-in-run__mk { position: absolute; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); margin: calc(var(--space-8) / -2) 0 0 calc(var(--space-8) / -2);
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-muted); font: 500 12px/1 var(--font-mono);
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease; }
+.aq-tie-in-run__mk.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+
+@media (prefers-reduced-motion: reduce) { .aq-tie-in-run__step, .aq-tie-in-run__n, .aq-tie-in-run__mk { transition: none; } }
+
+@container (max-width: 1100px) {
+  .aq-tie-in-run { column-gap: var(--space-8); }
+  .aq-tie-in-run__t { font-size: 18px; line-height: 24px; }
+}
+
+/* Phones: the drawing rides as a sticky band over the steps */
+@container (max-width: 860px) {
+  .aq-tie-in-run-sec .aq-sec-head .aq-h1 { font-size: 36px; line-height: 40px; }
+  .aq-tie-in-run { grid-template-columns: minmax(0, 1fr); }
+  .aq-tie-in-run__fig { grid-row: 1; z-index: 2; top: var(--space-16); padding: var(--space-2) 0; background: var(--surface); border-bottom: 1px solid var(--line-strong); }
+  .aq-tie-in-run__plate { max-width: calc(var(--space-32) * 2.3); margin: 0 auto; }
+  .aq-tie-in-run__mk { width: var(--space-6); height: var(--space-6); margin: calc(var(--space-6) / -2) 0 0 calc(var(--space-6) / -2); }
+  .aq-tie-in-run__step { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-6) 0; }
+  .aq-tie-in-run__step:first-child { border-top: 0; }
+  .aq-tie-in-run__n { font-size: 22px; line-height: 28px; }
+  .aq-tie-in-run__t { font-size: 18px; line-height: 24px; }
+  .aq-tie-in-run__d { font-size: 14px; line-height: 22px; }
+}

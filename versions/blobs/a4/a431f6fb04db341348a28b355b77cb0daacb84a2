@@ -1,0 +1,12 @@
+HirePath sets the steps into a role as one drawing sheet: the section title and the practical interview's test joint drawn large as a duotone plate on the left, the steps on a slim vertical rail on the right, each with a gate tick, a mono number, its name and line.
+
+- On the site: Careers, "How we hire" (`steps` block, `"look": "hire-path"`; renderer `assets/src/blocks/look-hire-path.js`). Origin: pass 9b concept `research/pass9b/concepts/careers.2.png` (dimensioned duotone macro of a PP joint beside a vertical four-step rail).
+- Markup: `div.aq-hire-path` (hairline frame) → `div.__main` (the section head, then `figure.__fig` → `div.__plate` with the aria-hidden `svg.__svg`: navy ground, two limestone pipe legs in flat lit and shade bands, the joint zone as two dashed bounds and a seam, dimension hairlines `__dl` for the outside diameter and the joint zone, a leader to the tag, short labels `g.__lbl`; `figcaption.__cap`) and `div.__side` → `span.__head` (the playhead, motion only) and `ol.__steps` of `li.__step` → `span.__gate`, `p.__n` (aria-hidden "01 /"), `h3.__t`, `p.__d`, `p.__icons` (aria-hidden `span.__ic` with an Icon).
+- Fields (a `steps` block): `h`, `intro`, `items [{t, d, icons}]`, `fig` (optional caption under the plate, through tx; Careers: "Test joint by [PP joining method]", the FAQ's own words). `icons`: Icon names in the order the step's text names them.
+- The joint asserts no joining method: no bead profile, only the zone's two dashed bounds and the seam. Keep it so until the method is decided.
+- Tokens: `line-strong` frame, `navy` plate, `limestone` pipe planes (mixed with `navy` for the shade), `on-navy` dimension lines and Geist Mono labels (16 px in the 640 px sheet, 24 px on phones so they read at 12 px or more), `flow` rail, gates and numbers at rest.
+- Phones: the plate full width under the title (whole sheet in view), the rail below it.
+
+## Motion
+
+Motion: the plate opens on the joint like an aperture (ported from Subframe Motion "Circular image reveal", aperture-reveal: clip-path circle 25 % to 80 % in 850 ms, cubic-bezier(.22,1,.36,1)), then the dimension hairlines draw and their labels print. A playhead walks the dry rail at one tempo (ported from "Score follow", score-follow); each gate it reaches fills and its number turns flow; at the foot the rail fills and the playhead goes. Once, under 4 s. Pointing at a step glides the playhead to its gate (0.3 s) until the pointer leaves the rail. Nothing under reduced motion: the rail, gates and numbers show walked.

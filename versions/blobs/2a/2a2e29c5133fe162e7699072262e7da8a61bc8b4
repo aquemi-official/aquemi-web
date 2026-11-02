@@ -1,0 +1,82 @@
+/* ---------- StageTiles: ordered stages as a Swiss row of navy and limestone tiles (look "stage-tiles") ----------
+   Desktop (six stages): a five-column grid. Row 1: the heading in a navy band across four columns, stage 05 at the
+   right. Row 2: stages 01 to 04, stage 06 under 05. The list is one subgrid over both rows, so tiles sit in the
+   wrapper's columns while the heading stays outside the list. Every tile leads with a huge light mono numeral and a
+   lighter slash; the words sit at the tile's foot. Tones run limestone, navy, navy, so no two limestone tiles meet.
+   The art tile (IQ) carries the pipe-run blueprint above a smaller numeral. */
+.aq-stage-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aq-stage-tiles__head { grid-column: 1 / -1; background: var(--navy); color: var(--on-navy); padding: var(--space-12) var(--space-8); }
+.aq-stage-tiles__head .aq-sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-4) var(--space-8); margin: 0; max-width: none; }
+.aq-stage-tiles__head .aq-h1 { margin: 0; color: var(--on-navy); font: 300 64px/68px var(--font-sans); letter-spacing: -0.03em; }
+.aq-stage-tiles__head .aq-lead { margin: 0 0 var(--space-2); max-width: 32ch; padding: var(--space-1) var(--space-2); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 55%, transparent); color: var(--on-navy-muted); font: 400 14px/20px var(--font-sans); }
+.aq-stage-tiles__list { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.aq-stage-tiles__tile { position: relative; display: flex; flex-direction: column; gap: var(--space-6); min-height: calc(var(--space-32) * 2.6); padding: var(--space-8) var(--space-6); }
+.aq-stage-tiles__tile::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--flow); transform: scaleX(0); transform-origin: 0 50%; transition: transform 180ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-stage-tiles__tile:hover::before, .aq-stage-tiles__tile:focus-within::before { transform: scaleX(1); }
+.aq-stage-tiles__tile.is-lime { background: var(--limestone); color: var(--on-limestone); }
+.aq-stage-tiles__tile.is-navy { background: var(--navy); color: var(--on-navy); }
+.aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy { border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+
+.aq-stage-tiles__n { display: block; font: 300 96px/1 var(--font-mono); letter-spacing: -0.06em; white-space: nowrap; }
+.aq-stage-tiles__n i { font-style: normal; margin-left: 0.04em; }
+.is-lime .aq-stage-tiles__n i { color: var(--on-limestone-muted); }
+.is-navy .aq-stage-tiles__n i { color: var(--on-navy-muted); }
+.aq-stage-tiles__body { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-stage-tiles__lab { font: 300 22px/28px var(--font-sans); }
+.is-lime .aq-stage-tiles__lab { color: var(--on-limestone-muted); }
+.is-navy .aq-stage-tiles__lab { color: var(--on-navy-muted); }
+.aq-stage-tiles__t { margin: 0; font: 400 21px/27px var(--font-sans); letter-spacing: -0.01em; color: inherit; }
+.aq-stage-tiles__t a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.is-navy .aq-stage-tiles__t a { text-decoration-color: var(--on-navy-muted); }
+.aq-stage-tiles__t a:hover { text-decoration-color: currentColor; }
+.aq-stage-tiles__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-stage-tiles__d { margin: 0; font: 400 14px/21px var(--font-sans); }
+.is-lime .aq-stage-tiles__d { color: var(--on-limestone-muted); }
+.is-navy .aq-stage-tiles__d { color: var(--on-navy-muted); }
+
+/* the art tile: the pipe-run blueprint in place of the big numeral */
+.aq-stage-tiles__tile.has-art { gap: var(--space-4); }
+.has-art .aq-stage-tiles__n { font-size: 40px; }
+.aq-stage-tiles__art { margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0; border: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+.aq-stage-tiles__svg { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; }
+.aq-stage-tiles__grid { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 14%, transparent); stroke-width: 1; }
+.aq-stage-tiles__pw { fill: none; stroke: var(--on-navy-muted); stroke-width: 9; stroke-linejoin: round; }
+.aq-stage-tiles__pi { fill: none; stroke: var(--navy); stroke-width: 6; stroke-linejoin: round; }
+.aq-stage-tiles__water { fill: none; stroke: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.aq-stage-tiles__jt { fill: none; stroke: var(--on-navy); stroke-width: 2; }
+.aq-stage-tiles__ar { fill: none; stroke: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.aq-stage-tiles__tb { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 55%, transparent); stroke-width: 1; }
+
+/* roll faces (motion.js builds them; the numeral reads the same without them) */
+.aq-stage-tiles__ch { position: relative; display: inline-block; perspective: 10000px; transform-style: preserve-3d; }
+.aq-stage-tiles__ch > span { display: inline-block; backface-visibility: hidden; }
+.aq-stage-tiles__ch > span + span { position: absolute; left: 0; top: 0; }
+
+/* six stages, wide: the concept's composition */
+@container (min-width: 1081px) {
+  .aq-stage-tiles.is-six { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto; }
+  .is-six .aq-stage-tiles__head { grid-column: 1 / 5; grid-row: 1; display: flex; align-items: flex-end; }
+  .is-six .aq-stage-tiles__list { grid-column: 1 / -1; grid-row: 1 / 3; grid-template-columns: subgrid; grid-template-rows: subgrid; pointer-events: none; }
+  .is-six .aq-stage-tiles__tile { pointer-events: auto; grid-row: 2; }
+  .is-six .aq-stage-tiles__tile:nth-child(5) { grid-column: 5; grid-row: 1; min-height: 0; border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+  .is-six .aq-stage-tiles__tile:nth-child(6) { grid-column: 5; grid-row: 2; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+  .is-six .aq-stage-tiles__tile:nth-child(5) .aq-stage-tiles__n { font-size: 80px; }
+}
+
+@container (max-width: 860px) {
+  .aq-stage-tiles, .aq-stage-tiles__list { grid-template-columns: minmax(0, 1fr); }
+  .aq-stage-tiles__head { padding: var(--space-8) var(--space-4); }
+  .aq-stage-tiles__head .aq-h1 { font-size: 40px; line-height: 44px; }
+  .aq-stage-tiles__tile { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); align-items: start; column-gap: var(--space-4); min-height: 0; padding: var(--space-6) var(--space-4); }
+  .aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy { border-left: 0; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+  .aq-stage-tiles__n { font-size: 48px; }
+  .aq-stage-tiles__body { margin-top: 0; }
+  .aq-stage-tiles__lab { font-size: 17px; line-height: 24px; }
+  .aq-stage-tiles__t { font-size: 18px; line-height: 24px; }
+  .aq-stage-tiles__art { grid-column: 1 / -1; margin: 0 0 var(--space-2); }
+  .has-art .aq-stage-tiles__n { font-size: 32px; }
+}
+
+/* section hook (the look marks its section) */
+.aq-stage-tiles-sec { position: relative; }

@@ -1,0 +1,11 @@
+RecordSheet sets each process of a quality system and the records it leaves as a ruled schedule on a drawing sheet, every record followed by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records).
+
+- On the site: a `table` block (`as: "evidence"`) with `"look": "record-sheet"` (renderer `assets/src/blocks/look-record-sheet.js`), cmp-quality "Each process, and the record it leaves". Origin: pass 9b concept `cmp-quality.0` (three ruled columns on a limestone drawing sheet, a tiny record glyph after each entry, numbered notes margin, title block). Replaces RecordSlips.
+- Markup: `<div class="aq-record-sheet">` > `__cols` (aria-hidden column names) + (Fold) `ol.__list` > `li.__row` > `__c.__proc` (`__pn` phone number, `__k`, `h3.__name`), `__c.__ctl` (`__k`, `p`), `__c.__recs` (`__k`, `ul` > `li` > text + `svg.__g` with `path.__imp`, `path.__ink`, `path.__acc`), `__no` (aria-hidden row number in the notes margin); then `__tb` title block (aria-hidden: nav name, process and record counts).
+- Fields: `cols [process, what it controls, record you can inspect]`, `rows` (strings or `{t, link}`), `nav`, `fold`, `fold_noun`. Records split at ";". The glyph kind comes from the record's words (certificate, register, log, minutes, list, request or assessment, CAPA or check, report or NCR, records; otherwise a plain sheet).
+- Tokens: sheet `surface-sunken` with a `line-strong` border and an inner `line` frame; vertical rules `line-strong`, row rules `line`; process 300 weight; glyph ink `line-strong` 1.5 px over a 22 % offset impression, accent `flow`. Column names are visually hidden on desktop (read by screen readers), shown per row on phones.
+- Hover: the row lifts onto `flow-tint`, its name, number and glyph ink turn `flow`, and its glyphs re-ink.
+- Fold: phones only.
+- Phone: sheet border kept; each process stacks number and name, what it controls, its records; the title block runs full width under the list.
+- Motion (`motion.js`): ported from Subframe Motion "Reed in one line" (signature-draw): per row the name and cells rise 8 px and each glyph inks over its impression (0.8 s, cubic-bezier(.37,.12,.28,1), 0.12 s apart, accent after the body). Pointing at a row re-inks its glyphs in 0.45 s.
+- Not for: documents delivered with a system (DocList, IndexSheet).

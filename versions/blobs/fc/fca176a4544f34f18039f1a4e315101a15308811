@@ -1,0 +1,12 @@
+DecisionPlant sets an options block of decisions as numbered callouts round one hairline process schematic of the plant they size, each leader running into the part it decides.
+
+- On the site: an `options` block with `"look": "decision-plant"` (renderer `assets/src/blocks/look-decision-plant.js`, `window.AQdecision.lay/show`); used on ind-pharma (decide before the URS is approved). Concept: pass 9b ind-pharma.3 (central hairline schematic, five decisions as callouts on both sides, leaders into the plant). Replaces UrsGate.
+- Markup: `div.aq-decision-plant` (grid: left callouts, figure, right callouts) → `div.__fig` (inline `svg.__svg`, aria-hidden: `__frame`, `__pipe`, `__flow`, `g.__part[data-part]` with `__eq`, `__ln`, `__thin`, `__hid`, `__opt`, `__main`, `__eqf`, `text.__gate`; `span.__mk[data-i]` numbered markers), `ol.__list` (display: contents) of `li.__item.is-l|is-r[tabindex=0]` (`data-i`, `data-part`, `--row`; `__n`, `h3.__t`, `p.__d`, `a.__link`), `svg.__leads` (aria-hidden; `path.__lead[data-i]` laid out by the look's script from the rendered callouts, ResizeObserver).
+- The schematic is drawn in the renderer as a flat elevation (IsoKit draws isometric only): feed and pretreatment vessel, membrane train, a second train dashed (the option), storage tank, loop pump, header with three points of use and an isolation valve, the return, the title block.
+- Fields: `h`, `items` [{t, d, link, link_label}], `fold`, `fold_noun` (phones only). Added: `items[].part` (feed, membranes, trains, tank, headers, loop, or sheet = the title block, for a decision that belongs to the specification), `items[].side` ("l" / "r"), `items[].row` (1–3), `gate` (the title block's word, aria-hidden).
+- Tokens: hairlines `line-strong` (1–2.5 px, non-scaling), fills `surface-raised`, water `flow`, markers `navy` (lit `flow`), callout rule `line-strong` (lit `flow`). Pointing at or focusing a decision lights its part, leader and marker and quiets the rest to 40 %.
+- Under 1100 px: drawing on top, callouts in two columns, no leaders (the numbers pair them). Phones: one column, the fold returns.
+
+## Motion
+
+Sheet, then the parts back to front, the pipes draw and the water runs the route once; then the decisions branch out: each leader draws from the part toward its callout and the callout rises in (from 0.96) as it arrives, 0.12 s apart. Once on scroll-in, under 4 s. Port of Subframe process-choreography (connectors drawn source to output, each output scaling in inside its window). Nothing under reduced motion.

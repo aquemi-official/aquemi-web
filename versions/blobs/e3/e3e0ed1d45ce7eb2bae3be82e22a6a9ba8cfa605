@@ -1,0 +1,81 @@
+/* ---------- RecordSheet: each process and the record it leaves (look "record-sheet"). A ruled schedule on a drawing
+   sheet: three columns between vertical hairlines, a numbered-notes margin at the right, a title block at the foot.
+   Every record carries a hairline glyph of its kind (ink in line-strong, its accent in flow), over a faint offset
+   impression of itself. ---------- */
+.aq-record-sheet-sec { position: relative; }
+.aq-record-sheet {
+  position: relative; background: var(--surface-sunken); border: 1px solid var(--line-strong);
+  box-shadow: inset 0 0 0 var(--space-2) var(--surface-sunken), inset 0 0 0 calc(var(--space-2) + 1px) var(--line);
+  padding: var(--space-8) 0 0 var(--space-8);
+}
+.aq-record-sheet__cols, .aq-record-sheet__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 5fr) var(--space-16); }
+.aq-record-sheet__cols { font: 400 16px/24px var(--font-sans); color: var(--ink); padding-bottom: var(--space-4); }
+.aq-record-sheet__cols span { padding: 0 var(--space-6); }
+.aq-record-sheet__cols span:first-child { padding-left: 0; }
+.aq-record-sheet__cols span:nth-child(2), .aq-record-sheet__cols span:nth-child(3) { border-left: 1px solid var(--line-strong); }
+.aq-record-sheet__cols span:last-child { border-left: 1px solid var(--line-strong); }
+.aq-record-sheet__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-record-sheet__row { transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-record-sheet__c { padding: var(--space-4) var(--space-6); border-bottom: 1px solid var(--line); }
+.aq-record-sheet__proc { padding-left: 0; }
+.aq-record-sheet__ctl, .aq-record-sheet__recs { border-left: 1px solid var(--line-strong); }
+.aq-record-sheet__pn { display: none; }
+.aq-record-sheet__name { margin: 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-record-sheet__name a { color: inherit; }
+.aq-record-sheet__ctl p { margin: 0; max-width: 46ch; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+/* column names: read by screen readers on desktop (the visible head is aria-hidden), shown per row on phones */
+.aq-record-sheet__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-record-sheet__recs ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-record-sheet__recs li { display: grid; grid-template-columns: minmax(0, 1fr) var(--space-8); column-gap: var(--space-4); align-items: center; font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-record-sheet__no {
+  display: flex; align-items: flex-start; justify-content: center; padding-top: var(--space-4);
+  border-left: 1px solid var(--line-strong); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: var(--ink-subtle);
+}
+
+/* the glyph: faint offset impression, then the ink (and its flow accent) over it */
+.aq-record-sheet__g { display: block; width: var(--space-8); height: auto; overflow: visible; }
+.aq-record-sheet__g path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-record-sheet__imp { stroke: var(--line-strong); stroke-width: 1.5; opacity: 0.22; }
+.aq-record-sheet__ink { stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 1 1; stroke-dashoffset: 0; }
+.aq-record-sheet__acc { stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 1 1; stroke-dashoffset: 0; }
+
+/* pointing at a process: the row lifts onto flow-tint, its name and glyph ink turn flow */
+.aq-record-sheet__row:hover { background: var(--flow-tint); }
+.aq-record-sheet__row:hover .aq-record-sheet__name { color: var(--flow); }
+.aq-record-sheet__row:hover .aq-record-sheet__ink { stroke: var(--flow); }
+.aq-record-sheet__row:hover .aq-record-sheet__no { color: var(--flow); }
+
+/* title block: closes the sheet under the notes margin */
+.aq-record-sheet__tb {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; margin: 0 0 0 auto; width: min(100%, calc(var(--space-16) * 6));
+  border-left: 1px solid var(--line-strong); border-top: 1px solid var(--line-strong); margin-top: var(--space-8);
+  font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle);
+}
+.aq-record-sheet__tb > span { padding: var(--space-2) var(--space-4); border-bottom: 1px solid var(--line); }
+.aq-record-sheet__tb > span:nth-child(3) { border-left: 1px solid var(--line); }
+.aq-record-sheet__tb > .aq-record-sheet__tbt { grid-column: 1 / -1; font: 300 28px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); padding: var(--space-4); }
+
+/* Fold: desktop shows every process; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-record-sheet__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-record-sheet__list) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .aq-record-sheet__row, .aq-record-sheet__name { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-record-sheet { padding: var(--space-6) var(--space-4) 0; box-shadow: none; }
+  .aq-record-sheet__cols { display: none; }
+  .aq-record-sheet__row { grid-template-columns: minmax(0, 1fr); padding: var(--space-6) 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-record-sheet__c { padding: 0; border: 0; }
+  .aq-record-sheet__proc { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-2); align-items: baseline; padding-bottom: var(--space-3); }
+  .aq-record-sheet__pn { display: block; font: 400 13px/16px var(--font-mono); color: var(--ink-subtle); }
+  .aq-record-sheet__name { font-size: 22px; line-height: 28px; }
+  .aq-record-sheet__ctl, .aq-record-sheet__recs { padding-left: calc(var(--space-8) + var(--space-2)); }
+  .aq-record-sheet__recs { padding-top: var(--space-4); }
+  .aq-record-sheet__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+  .aq-record-sheet__proc .aq-record-sheet__k { display: none; }
+  .aq-record-sheet__recs li { font-size: 15px; line-height: 22px; }
+  .aq-record-sheet__no { display: none; }
+  .aq-record-sheet__tb { width: auto; margin: var(--space-6) calc(-1 * var(--space-4)) 0; border-left: 0; }
+  .aq-fold:not(.is-open) .aq-record-sheet__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-record-sheet__list) > .aq-fold__btn { display: flex; }
+}

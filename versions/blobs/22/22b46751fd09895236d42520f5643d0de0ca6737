@@ -1,0 +1,11 @@
+CostSkid reads running costs off the system itself: one Purified Water skid in IsoKit line art beside the title, a numbered leader from each part a cost row belongs to, and the running-cost table under it led by the same numbers.
+
+Look `cost-skid` (`assets/src/blocks/look-cost-skid.js`) on a `spec` block. Used on svc-service, "What it costs to run". Concept: research/pass9b/concepts/svc-service.1.png (a skid with numbered leaders over the running-cost table).
+
+- Markup: `section.aq-cost-skid-sec` > `div.aq-cost-skid` > `__top` (the section head, `div.aq-iso-figure.__fig` > `svg.aq-iso.__svg` (the skid; leaders `g.aq-iso__leader[data-r]`) + `span.aq-iso-figure__label.__pin[data-r]` numbers, aria-hidden), then the fold wrapper with `table.__table`: `thead` (number column with `__sr` text, item, value, set by), `tr.__row[data-r][data-parts][tabindex=0]` > `td.__n`, `th.__p` (a link when the row has one), `td.__v`, `td.__m` (phone labels `__k`).
+- Fields: `h`, `intro`, `cols` [item, interval or amount, set by], `rows [{p, v, m, link, part}]`, `fold`, `fold_noun`. `part`: the skid stage(s) the row belongs to, space-separated: `panel`, `gen` (RO rack and EDI), `pre` (carbon vessel), `soft` (softener and brine tank), `uv`, `pump`, `drain` (the reject line off the frame edge). The number sits on the first stage named; a row without a part has no number on the drawing.
+- Scene (fixed, one PW skid, `csScene()`): base frame, softener, carbon, RO rack, EDI stack, loop pump, UV unit, control panel; the reject line drops to the floor with a flow arrow. Leaders are short, up from each part's top to its number; numbers that would meet are moved apart.
+- Tokens: IsoKit default ground (follows the theme); leaders `ink-muted`; pins `surface` with a `line-strong` edge, `flow` when lit; table hairlines; a lit row `flow-tint`.
+- Phones: the drawing full width with its numbers; rows stack (number, item, value and set-by under their labels); the fold applies here only.
+
+Motion: the skid draws itself with IsoKit's choreography (parts back to front, pipes and leaders, the water runs the train once), then each cost row is wired in: its number strikes at the part (scale 1.6 to 1, 0.35 s), the row prints and its parts light for a moment. One timeline, under 5 s. Hover or focus on a row lights its parts, leader and number (repeats).

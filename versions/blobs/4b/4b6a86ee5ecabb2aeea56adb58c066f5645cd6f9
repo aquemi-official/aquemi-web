@@ -1,0 +1,101 @@
+/* ---------- DuplexTrains: redundancy drawn as two identical trains, a swap, and a band of option cards ---------- */
+.aq-duplex-trains-sec { overflow-x: clip; }
+.aq-duplex-trains-sec > .aq-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-12); row-gap: var(--space-12); align-items: start; }
+.aq-duplex-trains-sec .aq-sec-head { grid-column: 1; grid-row: 1; align-self: start; padding-top: var(--space-4); }
+.aq-duplex-trains-sec .aq-sec-head .aq-h1 { font: 300 80px/84px var(--font-sans); letter-spacing: -0.035em; max-width: 9ch; color: var(--on-limestone); text-wrap: balance; }
+.aq-duplex-trains { display: contents; }
+
+/* The framed drawing and its swap */
+.aq-duplex-trains__fig { grid-column: 2; grid-row: 1; margin: 0; display: flex; flex-direction: column; border: 1.5px solid color-mix(in srgb, var(--on-limestone) 55%, transparent); }
+.aq-duplex-trains__plate { position: relative; padding: var(--space-12) var(--space-6) var(--space-4); }
+.aq-duplex-trains__svg { display: block; width: 100%; height: auto; }
+.aq-duplex-trains .aq-iso [data-iso-id] { transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-duplex-trains .aq-iso .is-on .aq-iso__eq, .aq-duplex-trains .aq-iso .is-on .aq-iso__ln, .aq-duplex-trains .aq-iso .is-on .aq-iso__thin,
+.aq-duplex-trains .aq-iso .is-on .aq-iso__pipe-wall, .aq-duplex-trains .aq-iso .is-on.aq-iso__hid { stroke: color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); }
+/* water reads on limestone in both themes */
+.aq-duplex-trains .aq-iso .aq-iso__flow, .aq-duplex-trains .aq-iso .aq-iso__arrow, .aq-duplex-trains .aq-iso .aq-iso__acc { stroke: color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); }
+.aq-duplex-trains__fut { stroke-dasharray: 3 3; }
+/* the train out of service: quiet lines, no water */
+.aq-duplex-trains[data-run="A"] .aq-iso [data-iso-id="trainB"]:not(.is-on), .aq-duplex-trains[data-run="B"] .aq-iso [data-iso-id="trainA"]:not(.is-on) { opacity: 0.45; }
+.aq-duplex-trains[data-run="A"] .aq-iso [data-iso-id="trainB"] .aq-iso__flow, .aq-duplex-trains[data-run="B"] .aq-iso [data-iso-id="trainA"] .aq-iso__flow { display: none; }
+
+.aq-duplex-trains__tag { position: absolute; display: flex; align-items: center; gap: var(--space-2); transform: translate(-50%, calc(-100% - var(--space-3))); white-space: nowrap;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-duplex-trains__tag b { display: grid; place-items: center; width: var(--space-6); height: var(--space-6); border: 1.5px solid currentColor; font-weight: 500; color: var(--on-limestone); }
+.aq-duplex-trains__st { display: none; }
+.aq-duplex-trains[data-run="A"] [data-train="A"] [data-run], .aq-duplex-trains[data-run="B"] [data-train="B"] [data-run],
+.aq-duplex-trains[data-run="A"] [data-train="B"] [data-off], .aq-duplex-trains[data-run="B"] [data-train="A"] [data-off] { display: inline; }
+.aq-duplex-trains[data-run="A"] [data-train="A"] b, .aq-duplex-trains[data-run="B"] [data-train="B"] b { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.aq-duplex-trains[data-run="A"] [data-train="A"], .aq-duplex-trains[data-run="B"] [data-train="B"] { color: var(--on-limestone); }
+.aq-duplex-trains__base { position: absolute; transform: translate(-100%, 0); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); white-space: nowrap; }
+
+.aq-duplex-trains__swap { position: relative; overflow: hidden; display: flex; align-items: center; gap: var(--space-3); min-height: 44px; margin: 0; padding: var(--space-2) var(--space-6);
+  border: 0; border-top: 1.5px solid color-mix(in srgb, var(--on-limestone) 55%, transparent); background: transparent; color: var(--on-limestone); cursor: pointer;
+  font: 500 13px/20px var(--font-mono); letter-spacing: 0.04em; text-align: left; transition: background-color 150ms ease; }
+.aq-duplex-trains__swap:hover { background: color-mix(in srgb, var(--on-navy) 45%, transparent); }
+.aq-duplex-trains__swap:active { transform: scale(0.99); }
+.aq-duplex-trains__swap:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+.aq-duplex-trains__ico { width: var(--space-6); height: var(--space-6); fill: none; stroke: color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform 700ms cubic-bezier(0.645, 0.045, 0.355, 1); }
+.aq-duplex-trains__swap[aria-pressed="true"] .aq-duplex-trains__ico { transform: rotate(180deg); }
+.aq-duplex-trains__run { display: grid; overflow: hidden; margin-left: auto; font: 400 20px/24px var(--font-mono); color: var(--on-limestone); }
+.aq-duplex-trains__run > span { grid-area: 1 / 1; transition: transform 250ms ease; }
+.aq-duplex-trains__swap[aria-pressed="true"] [data-a] { transform: translateY(-110%); }
+.aq-duplex-trains__swap[aria-pressed="false"] [data-b] { transform: translateY(110%); }
+.aq-duplex-trains__swap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 0; border-bottom: 1.5px solid color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1); }
+.aq-duplex-trains__swap[aria-pressed="true"]::after { transform: scaleX(1); transform-origin: 0 50%; }
+
+/* The options band over a navy strip */
+.aq-duplex-trains__band { grid-column: 1 / -1; grid-row: 2; position: relative; isolation: isolate; }
+.aq-duplex-trains__band::before { content: ""; position: absolute; z-index: -1; left: 50%; width: 100vw; margin-left: -50vw; top: var(--space-16); bottom: calc(var(--space-16) * -1); background: var(--navy); }
+.aq-duplex-trains__band > .aq-fold { display: contents; }
+.aq-duplex-trains__band .aq-fold__btn { display: none; }
+.aq-fold:not(.is-open) .aq-duplex-trains__card.aq-fold-x { display: flex; }
+.aq-duplex-trains__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); border: 1.5px solid color-mix(in srgb, var(--on-limestone) 55%, transparent); background: var(--surface-raised); }
+.aq-duplex-trains__card { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-6) var(--space-4) var(--space-8); outline: none;
+  color: var(--ink); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-duplex-trains__card + .aq-duplex-trains__card { border-left: 1px solid var(--line); }
+.aq-duplex-trains__card:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+.aq-duplex-trains__n { font: 300 40px/44px var(--font-mono); letter-spacing: -0.04em; color: var(--ink); }
+.aq-duplex-trains__t { margin: 0; font: 500 13px/18px var(--font-mono); letter-spacing: 0.04em; color: var(--ink); }
+.aq-duplex-trains__t a { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 3px; padding-block: var(--space-3); }
+.aq-duplex-trains__t a::after { content: " →"; color: var(--flow); }
+.aq-duplex-trains__card.is-on .aq-duplex-trains__t a::after { color: currentColor; }
+.aq-duplex-trains__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-duplex-trains__card.is-on { background: var(--flow); color: var(--surface); }
+.aq-duplex-trains__card.is-on .aq-duplex-trains__n, .aq-duplex-trains__card.is-on .aq-duplex-trains__t, .aq-duplex-trains__card.is-on .aq-duplex-trains__d { color: var(--surface); }
+.aq-duplex-trains__card.is-on .aq-duplex-trains__t a { text-decoration-color: currentColor; }
+.aq-duplex-trains__card.is-on a:focus-visible { outline-color: var(--surface); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-duplex-trains__ico, .aq-duplex-trains__run > span, .aq-duplex-trains__swap::after, .aq-duplex-trains__card, .aq-duplex-trains .aq-iso [data-iso-id] { transition: none; }
+}
+
+/* Mid widths: heading over the drawing, cards three a row */
+@container (max-width: 1100px) {
+  .aq-duplex-trains-sec > .aq-in { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-duplex-trains-sec .aq-sec-head, .aq-duplex-trains__fig, .aq-duplex-trains__band { grid-column: 1; grid-row: auto; }
+  .aq-duplex-trains-sec .aq-sec-head .aq-h1 { font-size: 56px; line-height: 60px; max-width: 14ch; }
+  .aq-duplex-trains__cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aq-duplex-trains__card:nth-child(3n+1) { border-left: 0; }
+  .aq-duplex-trains__card:nth-child(n+4) { border-top: 1px solid var(--line); }
+}
+
+/* Phones: the drawing full width, cards in one column, fold back on */
+@container (max-width: 860px) {
+  .aq-duplex-trains-sec .aq-sec-head .aq-h1 { font-size: 40px; line-height: 44px; }
+  .aq-duplex-trains__plate { padding: var(--space-12) var(--space-2) var(--space-3); }
+  .aq-duplex-trains__swap { padding-inline: var(--space-4); }
+  .aq-duplex-trains__band::before { top: var(--space-24); bottom: calc(var(--space-12) * -1); }
+  .aq-duplex-trains__band > .aq-fold { display: flex; flex-direction: column; }
+  .aq-duplex-trains__band .aq-fold__btn { display: flex; position: relative; color: var(--on-navy); border-bottom-color: color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+  .aq-duplex-trains__band .aq-fold__btn:hover { color: var(--on-navy); }
+  .aq-duplex-trains__band .aq-fold__btn:focus-visible { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+  .aq-fold:not(.is-open) .aq-duplex-trains__card.aq-fold-x { display: none; }
+  .aq-duplex-trains__cards { grid-template-columns: minmax(0, 1fr); }
+  .aq-duplex-trains__card, .aq-duplex-trains__card:nth-child(n) { border-left: 0; padding: var(--space-4) var(--space-4) var(--space-6); }
+  .aq-duplex-trains__card + .aq-duplex-trains__card { border-top: 1px solid var(--line); }
+  .aq-duplex-trains__n { font-size: 32px; line-height: 36px; }
+  .aq-duplex-trains__base { display: none; }
+}

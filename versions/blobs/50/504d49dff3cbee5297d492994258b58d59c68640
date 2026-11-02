@@ -1,0 +1,56 @@
+/* ---------- HirePath: how we hire as one drawing sheet, the test joint as the plate and the steps on a slim vertical rail ---------- */
+.aq-hire-path-sec { }
+.aq-hire-path { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); column-gap: var(--space-12); padding: var(--space-12);
+  border: 1px solid var(--line-strong); }
+.aq-hire-path__main { min-width: 0; display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-hire-path__main .aq-sec-head { margin: 0; }
+.aq-hire-path__fig { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-hire-path__plate { position: relative; aspect-ratio: 8 / 5; background: var(--navy); overflow: hidden; }
+.aq-hire-path__svg { display: block; width: 100%; height: 100%; }
+/* duotone planes: a limestone pipe on the navy, its lit band and its shade band */
+.aq-hire-path__ground { fill: var(--navy); }
+.aq-hire-path__pb { fill: color-mix(in srgb, var(--limestone) 84%, var(--navy)); }
+.aq-hire-path__ph { fill: var(--limestone); }
+.aq-hire-path__ps { fill: color-mix(in srgb, var(--limestone) 58%, var(--navy)); }
+.aq-hire-path__po { fill: none; stroke: color-mix(in srgb, var(--limestone) 40%, var(--navy)); stroke-width: 1.5px; }
+.aq-hire-path__jz { fill: none; stroke: var(--navy); stroke-width: 1.5px; stroke-dasharray: 5 4; }
+.aq-hire-path__jl { fill: none; stroke: var(--navy); stroke-width: 1px; }
+.aq-hire-path__dl { fill: none; stroke: var(--on-navy); stroke-width: 1.2px; stroke-linecap: round; }
+.aq-hire-path__lbl text { fill: var(--on-navy); font: 400 16px var(--font-mono); letter-spacing: 0.04em; }
+.aq-hire-path .aq-hire-path__cap { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+
+/* the rail: one slim line down the steps, a gate tick at each */
+.aq-hire-path__side { position: relative; min-width: 0; padding-top: var(--space-2); }
+.aq-hire-path__steps { position: relative; list-style: none; margin: 0; padding: 0 0 0 var(--space-8); display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-hire-path__steps::before { content: ""; position: absolute; left: var(--space-2); top: var(--space-3); bottom: var(--space-2); width: 2px; background: var(--flow); }
+.aq-hire-path__step { position: relative; min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-hire-path__gate { position: absolute; left: calc(var(--space-8) * -1 + var(--space-1)); top: var(--space-2); width: var(--space-3); height: var(--space-3);
+  background: var(--flow); border: 2px solid var(--flow); transition: background-color 200ms, border-color 200ms; }
+.aq-hire-path .aq-hire-path__n { margin: 0; font: 400 24px/32px var(--font-mono); color: var(--flow); font-variant-numeric: tabular-nums; transition: color 200ms; }
+.aq-hire-path__t { margin: 0; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-hire-path__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-hire-path .aq-hire-path__icons { margin: var(--space-2) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.aq-hire-path__ic { display: grid; place-items: center; width: var(--space-8); height: var(--space-8); border: 1px solid var(--line); color: var(--ink-muted); background: var(--surface-raised); }
+.aq-hire-path__ic .aq-icon { width: var(--space-4); height: var(--space-4); }
+/* the playhead: shown only while motion walks it */
+.aq-hire-path__head { position: absolute; left: calc(var(--space-2) - var(--space-2) + 1px); top: 0; width: var(--space-4); height: 2px; background: var(--ink); display: none; }
+.aq-hire-path__head::after { content: ""; position: absolute; left: 100%; top: calc(var(--space-1) * -1 + 1px); border: var(--space-1) solid transparent; border-left-color: var(--ink); }
+.aq-hire-path.is-walk .aq-hire-path__head, .aq-hire-path.is-seek .aq-hire-path__head { display: block; }
+/* before the walk (motion only): the rail is dry and the gates empty until the head passes */
+.aq-hire-path.is-walk .aq-hire-path__steps::before { background: var(--line-strong); }
+.aq-hire-path.is-walk .aq-hire-path__step:not(.is-on) .aq-hire-path__gate { background: transparent; border-color: var(--line-strong); }
+.aq-hire-path.is-walk .aq-hire-path__step:not(.is-on) .aq-hire-path__n { color: var(--ink-muted); }
+.aq-hire-path__step:hover .aq-hire-path__gate { background: var(--ink); border-color: var(--ink); }
+
+@container (max-width: 1100px) {
+  .aq-hire-path { padding: var(--space-8); column-gap: var(--space-8); grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+}
+/* Phones: the plate full width under the title, the rail below it */
+@container (max-width: 860px) {
+  .aq-hire-path { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); padding: var(--space-6) var(--space-4); }
+  .aq-hire-path__main { gap: var(--space-6); }
+  /* the whole sheet stays in view; drawing labels drawn larger so they read at 12 px or more */
+  .aq-hire-path__lbl text { font-size: 24px; }
+  .aq-hire-path .aq-hire-path__n { font-size: 20px; line-height: 28px; }
+  .aq-hire-path__t { font-size: 18px; line-height: 26px; }
+}

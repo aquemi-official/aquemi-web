@@ -1,0 +1,80 @@
+/* ---------- CertReadout: certification status as an instrument readout (look "cert-readout"). A navy box framed by
+   rulers with the selected tag set giant and light (FxGuilloche faint behind), beside mono readout lines two by two.
+   The flow accent marks the selected line and the scale marker. ---------- */
+.aq-cert-readout-sec { position: relative; }
+.aq-cert-readout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-12); align-items: stretch; }
+
+/* the readout */
+.aq-cert-readout__box {
+  position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: center;
+  min-height: calc(var(--space-16) * 7); padding: var(--space-16) var(--space-16) var(--space-16) var(--space-8);
+  background: var(--navy); color: var(--on-navy);
+}
+.aq-cert-readout__box > .aq-fx-shader { --fx-amt: 0.07; --fx-x: 0.46; --fx-y: 0.5; --fx-size: 1.4; }
+.aq-cert-readout__rule { position: absolute; display: block; overflow: visible; }
+.aq-cert-readout__rule path { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-cert-readout__rule.is-top { left: var(--space-4); right: var(--space-12); top: var(--space-4); height: var(--space-2); }
+.aq-cert-readout__rule.is-foot { left: var(--space-4); right: var(--space-12); bottom: var(--space-4); height: var(--space-2); transform: scaleY(-1); }
+.aq-cert-readout__rule.is-side { right: var(--space-8); top: var(--space-16); bottom: var(--space-8); width: var(--space-2); transform: scaleX(-1); }
+.aq-cert-readout__no { position: absolute; top: var(--space-6); right: var(--space-12); font: 300 32px/1 var(--font-mono); letter-spacing: 0.02em; color: var(--on-navy-muted); font-variant-numeric: tabular-nums; }
+/* the scale marker rides the side ruler to the selected line */
+.aq-cert-readout__mark {
+  position: absolute; right: var(--space-8); top: calc(var(--space-16) + (100% - var(--space-16) - var(--space-8)) * var(--p, 0) / var(--n, 1)); height: 0;
+  transition: top 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.aq-cert-readout__mark::before { content: ""; position: absolute; right: 0; top: 0; width: var(--space-6); border-top: 1.5px solid var(--on-navy); }
+.aq-cert-readout__mark span {
+  position: absolute; right: var(--space-6); top: 0; transform: translateY(-50%); padding: 0 var(--space-1); white-space: nowrap;
+  border: 1px solid var(--on-navy-muted); background: var(--navy); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy);
+}
+.aq-cert-readout__face { position: relative; max-width: 100%; }
+.aq-cert-readout__big { margin: 0 0 var(--space-6); font: 300 104px/1 var(--font-sans); letter-spacing: -0.045em; color: var(--on-navy); overflow-wrap: anywhere; transition: color 800ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-cert-readout__big.is-long { font: 400 24px/36px var(--font-mono); letter-spacing: 0; }
+.aq-cert-readout__ft { margin: 0 0 var(--space-2); font: 400 20px/28px var(--font-sans); color: var(--on-navy); }
+.aq-cert-readout__fd { margin: 0; max-width: 36ch; font: 400 13px/20px var(--font-mono); color: var(--on-navy-muted); }
+/* quote-tick: the new reading enters 8 px from the side of travel in 220 ms, tinted flow-tint for 800 ms */
+.aq-cert-readout__face.is-up { animation: aq-cert-readout-up 220ms cubic-bezier(0, 0, 0.2, 1); }
+.aq-cert-readout__face.is-down { animation: aq-cert-readout-down 220ms cubic-bezier(0, 0, 0.2, 1); }
+.aq-cert-readout__face.is-up .aq-cert-readout__big:not(.is-long), .aq-cert-readout__face.is-down .aq-cert-readout__big:not(.is-long) { animation: aq-cert-readout-tint 800ms cubic-bezier(0.2, 0, 0, 1); }
+@keyframes aq-cert-readout-up { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
+@keyframes aq-cert-readout-down { from { opacity: 0; transform: translateY(calc(-1 * var(--space-2))); } to { opacity: 1; transform: none; } }
+@keyframes aq-cert-readout-tint { from { color: var(--flow-tint); } to { color: var(--on-navy); } }
+
+/* the readout lines */
+.aq-cert-readout__lines { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-8); align-content: center; }
+.aq-cert-readout__line { position: relative; padding-top: var(--space-4); border-top: 1px solid var(--line-strong); }
+.aq-cert-readout__line::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; border-top: 2px solid var(--flow); transform: scaleX(0); transform-origin: 0 50%; transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-cert-readout__line.is-on::before { transform: none; }
+.aq-cert-readout__k { margin: 0 0 var(--space-3); }
+.aq-cert-readout__pick {
+  display: inline-flex; align-items: center; gap: var(--space-1); min-height: var(--space-12); margin: calc(-1 * var(--space-3)) 0 0; padding: 0; border: 0; background: none; cursor: pointer;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); text-align: left;
+}
+.aq-cert-readout__line.is-on .aq-cert-readout__pick { color: var(--flow); }
+.aq-cert-readout__n { font-variant-numeric: tabular-nums; }
+.aq-cert-readout__t { text-wrap: balance; }
+.aq-cert-readout__pick:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-cert-readout__tag { margin: 0 0 var(--space-2); font: 400 28px/36px var(--font-mono); letter-spacing: -0.01em; color: var(--ink); overflow-wrap: anywhere; }
+.aq-cert-readout__tag.is-long { font-size: 15px; line-height: 24px; letter-spacing: 0; }
+.aq-cert-readout__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-cert-readout__go { margin: var(--space-3) 0 0; font: 400 15px/24px var(--font-sans); }
+.aq-cert-readout__go a { display: inline-flex; align-items: center; min-height: var(--space-12); color: var(--flow); }
+.aq-cert-readout__go a::before { content: "→"; margin-right: var(--space-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-cert-readout__mark, .aq-cert-readout__line::before, .aq-cert-readout__big { transition: none; }
+  .aq-cert-readout__face.is-up, .aq-cert-readout__face.is-down, .aq-cert-readout__face .aq-cert-readout__big { animation: none !important; }
+}
+
+@container (max-width: 1100px) {
+  .aq-cert-readout__big { font-size: 80px; }
+}
+@container (max-width: 860px) {
+  .aq-cert-readout { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-cert-readout__box { min-height: calc(var(--space-16) * 4.5); padding: var(--space-12) var(--space-16) var(--space-12) var(--space-6); }
+  .aq-cert-readout__big { font-size: 56px; margin-bottom: var(--space-4); }
+  .aq-cert-readout__big.is-long { font-size: 17px; line-height: 26px; }
+  .aq-cert-readout__no { font-size: 24px; top: var(--space-4); }
+  .aq-cert-readout__lines { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-cert-readout__tag { font-size: 24px; line-height: 32px; }
+}

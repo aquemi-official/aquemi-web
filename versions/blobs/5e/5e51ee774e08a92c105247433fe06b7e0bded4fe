@@ -1,0 +1,108 @@
+/* ---------- GradeLadder: a grade table read beside one instrument (huge row number, a fader up the water grades, a minimum line) ---------- */
+.aq-grade-ladder-sec .aq-sec-head .aq-h1 { font: 300 52px/58px var(--font-sans); letter-spacing: -0.03em; max-width: 16ch; }
+.aq-grade-ladder { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-16); align-items: start; margin-top: var(--space-8); }
+.aq-fold:not(.is-open) .aq-grade-ladder__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-grade-ladder__list) > .aq-fold__btn { display: none; }
+.aq-grade-ladder__k { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* The instrument: sticky while the rows pass; --f (0..1) is the minimum's height on the scale */
+.aq-grade-ladder__inst { --sh: calc(var(--space-32) * 4); position: sticky; top: var(--space-24); height: var(--sh, calc(var(--space-32) * 4)); display: grid;
+  grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-6); }
+.aq-grade-ladder__read { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.aq-grade-ladder__num { display: block; font: 300 232px/184px var(--font-sans); letter-spacing: -0.07em; font-variant-numeric: tabular-nums; color: var(--ink); margin-left: calc(var(--space-2) * -1); }
+.aq-grade-ladder__step { font: 400 15px/22px var(--font-sans); color: var(--ink-muted); max-width: 22ch; }
+.is-tick { animation: aq-grade-ladder-tick 220ms cubic-bezier(0.25, 1, 0.5, 1); }
+@keyframes aq-grade-ladder-tick { from { opacity: 0.2; transform: translateY(var(--space-2)); } }
+
+/* The fader: grade labels, a ruler, the track with its fill */
+.aq-grade-ladder__fader { position: relative; display: grid; grid-template-columns: calc(var(--space-24) + var(--space-8)) var(--space-4) var(--space-12); column-gap: var(--space-2); height: 100%; }
+.aq-grade-ladder__labels, .aq-grade-ladder__ruler, .aq-grade-ladder__track { position: relative; display: block; height: 100%; }
+.aq-grade-ladder__mark { position: absolute; right: 0; bottom: calc(var(--m, 0) * 100%); transform: translateY(50%); display: flex; flex-direction: column; align-items: flex-end; text-align: right;
+  color: var(--ink-subtle); transition: color 200ms; }
+.aq-grade-ladder__lt { position: relative; font: 300 28px/32px var(--font-sans); letter-spacing: -0.01em; }
+.aq-grade-ladder__ln { font: 500 11px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); max-width: 14ch; }
+.aq-grade-ladder__mark.is-min { color: var(--flow); }
+.aq-grade-ladder__mark.is-off .aq-grade-ladder__lt { color: var(--ink-subtle); }
+.aq-grade-ladder__mark.is-alt .aq-grade-ladder__lt::before { content: ""; position: absolute; left: calc(var(--space-6) * -1); top: 50%; width: var(--space-3); height: var(--space-3);
+  transform: translateY(-50%) rotate(45deg); border: 1.5px dashed var(--flow); }
+.aq-grade-ladder__ruler i { position: absolute; right: 0; bottom: calc(var(--t, 0) * 100%); width: var(--space-2); height: 1px; background: var(--line-strong); }
+.aq-grade-ladder__ruler i.is-major { width: var(--space-4); background: var(--ink-subtle); }
+.aq-grade-ladder__track { border: 1px solid var(--line-strong); background: var(--surface-raised); overflow: hidden; }
+.aq-grade-ladder__fill { position: absolute; inset: 0; background: var(--flow-tint); transform-origin: 50% 100%; transform: scaleY(var(--f, 0.5));
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-grade-ladder__zone { position: absolute; z-index: 1; left: var(--space-1); right: var(--space-1); bottom: calc(var(--z0, 0) * 100% + var(--space-1)); height: calc((var(--z1, 1) - var(--z0, 0)) * 100% - var(--space-2));
+  border: 1px dashed var(--line-strong); }
+
+/* The minimum line crosses the whole instrument at --f; dashed when the row names no single minimum */
+.aq-grade-ladder__limit { position: absolute; inset: 0 calc(var(--space-2) * -1) 0 calc(var(--space-24) + var(--space-8) + var(--space-2)); pointer-events: none; transform: translateY(calc(var(--f, 0.5) * -100%)); transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-grade-ladder__limit::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; border-bottom: 1.5px solid var(--flow); }
+.aq-grade-ladder__limit.is-open::after { border-bottom-style: dashed; }
+.aq-grade-ladder__tag { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1.5px solid var(--flow); max-width: 24ch; }
+.aq-grade-ladder__tag .aq-grade-ladder__k { color: var(--flow); }
+.aq-grade-ladder__val { font: 400 17px/24px var(--font-mono); color: var(--ink); }
+
+/* The rows */
+.aq-grade-ladder__list { min-width: 0; }
+.aq-grade-ladder__colh, .aq-grade-ladder__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1.35fr) minmax(0, 0.8fr) minmax(0, 1.25fr); column-gap: var(--space-4); }
+.aq-grade-ladder__colh { margin: 0; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line-strong); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-grade-ladder__rows { list-style: none; margin: 0; padding: 0; }
+.aq-grade-ladder__row { position: relative; align-items: baseline; padding: var(--space-6) var(--space-3) var(--space-6) 0; border-bottom: 1px solid var(--line); cursor: default; outline: none;
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-grade-ladder__row::before { content: ""; position: absolute; left: 0; top: -1px; bottom: -1px; width: 2px; background: var(--flow); transform: scaleY(0); transform-origin: 50% 0; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-grade-ladder__row.is-on { background: var(--flow-tint); }
+.aq-grade-ladder__row.is-on::before { transform: scaleY(1); }
+.aq-grade-ladder__row:focus-visible { box-shadow: inset 0 0 0 2px var(--focus); }
+.aq-grade-ladder__row .aq-index { padding-left: var(--space-3); }
+.aq-grade-ladder__t { margin: 0; font: 400 18px/25px var(--font-sans); color: var(--ink); }
+.aq-grade-ladder__g { margin: 0; font: 400 15px/22px var(--font-mono); color: var(--ink); }
+.aq-grade-ladder__g .aq-grade-ladder__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.aq-grade-ladder__note { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-grade-ladder__fill, .aq-grade-ladder__limit, .aq-grade-ladder__row, .aq-grade-ladder__row::before, .aq-grade-ladder__mark { transition: none; }
+  .is-tick { animation: none; }
+}
+
+@container (max-width: 1100px) {
+  .aq-grade-ladder { column-gap: var(--space-8); grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+  .aq-grade-ladder__num { font-size: 140px; line-height: 120px; }
+  .aq-grade-ladder__colh, .aq-grade-ladder__row { grid-template-columns: var(--space-8) minmax(0, 1.2fr) minmax(0, 0.8fr); }
+  .aq-grade-ladder__note { grid-column: 2 / -1; margin-top: var(--space-2); }
+  .aq-grade-ladder__colh span:last-child { display: none; }
+}
+
+/* Phones: the instrument becomes a sticky band over the rows: the number at the left, the fader lying flat */
+@container (max-width: 860px) {
+  .aq-grade-ladder-sec .aq-sec-head .aq-h1 { font-size: 32px; line-height: 38px; }
+  .aq-grade-ladder { grid-template-columns: minmax(0, 1fr); margin-top: var(--space-4); }
+  .aq-grade-ladder__inst { z-index: 2; top: var(--space-16); height: auto; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto var(--space-3) var(--space-8) auto;
+    grid-template-areas: "num ruler" "num ruler" "num track" "num labels"; column-gap: var(--space-4); padding: var(--space-3) 0; overflow-x: clip; background: var(--surface); border-bottom: 1px solid var(--line-strong); }
+  .aq-grade-ladder__read { grid-area: num; justify-content: center; }
+  .aq-grade-ladder__read .aq-grade-ladder__k, .aq-grade-ladder__step, .aq-grade-ladder__tag { display: none; }
+  .aq-grade-ladder__fader { position: static; }
+  .aq-grade-ladder__num { font-size: 64px; line-height: 56px; margin-left: 0; }
+  .aq-grade-ladder__fader { display: contents; }
+  .aq-grade-ladder__labels { grid-area: labels; height: var(--space-12); }
+  .aq-grade-ladder__ruler { grid-area: 2 / 2 / 3 / 3; }
+  .aq-grade-ladder__track { grid-area: track; }
+  .aq-grade-ladder__mark { right: auto; bottom: auto; top: var(--space-1); left: calc(var(--m, 0) * 100%); transform: translateX(-50%); align-items: center; text-align: center; }
+  .aq-grade-ladder__lt { font-size: 15px; line-height: 20px; }
+  .aq-grade-ladder__ln { font-size: 11px; line-height: 14px; max-width: none; white-space: nowrap; }
+  .aq-grade-ladder__mark:last-child { left: auto; right: 0; transform: none; align-items: flex-end; text-align: right; }
+  .aq-grade-ladder__mark.is-alt .aq-grade-ladder__lt::before { left: calc(var(--space-4) * -1); width: var(--space-2); height: var(--space-2); }
+  .aq-grade-ladder__ruler i { right: auto; bottom: 0; left: calc(var(--t, 0) * 100%); width: 1px; height: var(--space-2); }
+  .aq-grade-ladder__ruler i.is-major { width: 1px; height: var(--space-3); }
+  .aq-grade-ladder__fill { transform-origin: 0 50%; transform: scaleX(var(--f, 0.5)); }
+  .aq-grade-ladder__zone { top: var(--space-1); bottom: var(--space-1); left: calc(var(--z0, 0) * 100% + var(--space-1)); right: auto; width: calc((var(--z1, 1) - var(--z0, 0)) * 100% - var(--space-2)); height: auto; }
+  .aq-grade-ladder__limit { grid-area: track; position: relative; inset: auto; transform: translateX(calc(var(--f, 0.5) * 100%)); }
+  .aq-grade-ladder__limit::after { left: 0; right: auto; top: calc(var(--space-1) * -1); bottom: calc(var(--space-1) * -1); border-bottom: 0; border-left: 2px solid var(--flow); }
+  .aq-grade-ladder__limit.is-open::after { border-left-style: dashed; }
+  .aq-grade-ladder__colh { display: none; }
+  .aq-grade-ladder__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4) 0; }
+  .aq-grade-ladder__g, .aq-grade-ladder__note { grid-column: 2; }
+  .aq-grade-ladder__g { display: flex; flex-direction: column; }
+  .aq-grade-ladder__g .aq-grade-ladder__k { position: static; width: auto; height: auto; clip-path: none; }
+  .aq-grade-ladder__note { margin-top: 0; }
+  .aq-fold:not(.is-open) .aq-grade-ladder__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-grade-ladder__list) > .aq-fold__btn { display: flex; }
+}

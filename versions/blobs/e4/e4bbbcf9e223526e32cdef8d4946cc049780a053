@@ -1,0 +1,11 @@
+SpareSheet sets like-for-like rules on a limestone drawing sheet: the title, one spare drawn large as a dimensioned part drawing, and the four-column table under them, where choosing a row draws its part.
+
+Look `spare-sheet` (`assets/src/blocks/look-spare-sheet.js`) on a `table` block. Used on svc-service, "Like for like, or a change?". Concept: research/pass9b/concepts/svc-service.4.png (dimensioned part drawing on a limestone sheet, part list, title block), with the table's four-column like-for-like logic kept whole.
+
+- Markup: `section.aq-spare-sheet-sec` > `div.aq-spare-sheet[data-theme=light][data-on]` > `__top` (the section head, `figure.__fig > svg.__svg` with `__cross` and one `g.__part[data-i]` per row: `g.__art` (the drawing), `__cl` centre line, `__dim` dimensions A and B, `__ball` / `__bt` balloon with the row number), the fold wrapper with `table.__table` (`thead th` with `__hn` 1 to 4; `tr.__row[data-i]` > `th > button.__pick[aria-pressed]` (`__n`, `__p`) + three `td`, each with a phone label `__k`), and `__tb` (title block, aria-hidden: the chosen part, "Part 01 / 07").
+- Fields: `h`, `intro`, `cols` [part, like-for-like, change, what follows], `rows`, `fold`, `fold_noun`, `kit` (optional drawing per row: membrane, probe, card, seal, edi, lamp, cartridge; otherwise matched from the part's name; no match draws a plain outline).
+- Drawings: flat line art in a 240 x 104 field, scaled into the 480 x 260 drawing area; dimensions carry letters only (A, B), never figures.
+- Tokens: sheet `limestone` with a `line-strong` border and a `line` inner frame; equipment `line-strong` 1.5 px, details `ink-muted`, accents `flow`; table hairlines `line`; the chosen row a `flow` rule on `flow-tint`.
+- Phones: the drawing full width over the rows; each row stacks its three answers under their column names; the fold applies here only.
+
+Motion: the first part draws on the board (outline inks in, centre line and dimension lines run out from their middle, balloon and letters strike) while the column heads and rows print. Once, about 2 s. Choosing another row (pointer, focus, button) redraws that part in 0.7 s (repeats). Nothing under reduced motion: the chosen part just shows.

@@ -1,0 +1,79 @@
+/* ---------- AuditSkid: the audit pack pinned to the system it describes ---------- */
+.aq-audit-skid-sec .aq-sec-head .aq-h1 { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; }
+.aq-audit-skid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.7fr) minmax(0, 1fr); grid-template-rows: repeat(var(--rows, 3), auto);
+  column-gap: var(--space-6); row-gap: var(--space-8); align-items: center; padding: var(--space-12) var(--space-8) var(--space-16); border: 1px solid var(--line); background: var(--surface-raised); }
+
+/* The drawing in the middle, the pins over it */
+.aq-audit-skid__fig { position: relative; grid-column: 2; grid-row: 1 / span var(--rows, 3); align-self: center; }
+.aq-audit-skid__svg { display: block; width: 100%; height: auto; }
+.aq-audit-skid__svg.aq-iso { --iso-ground: var(--surface-raised); }
+.aq-audit-skid .aq-iso .aq-iso__eq { fill: var(--surface-raised); }
+.aq-audit-skid .aq-iso [data-iso-id] { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-audit-skid .aq-iso .is-on .aq-iso__eq, .aq-audit-skid .aq-iso .is-on .aq-iso__ln, .aq-audit-skid .aq-iso .is-on .aq-iso__thin,
+.aq-audit-skid .aq-iso .is-on.aq-iso__eq, .aq-audit-skid .aq-iso .is-on .aq-iso__pipe-wall { stroke: var(--flow); }
+.aq-audit-skid .aq-iso .is-on .aq-iso__eq { fill: var(--flow-tint); }
+.aq-audit-skid__pin { position: absolute; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); margin: calc(var(--space-6) / -2) 0 0 calc(var(--space-6) / -2);
+  border: 1px solid var(--line-strong); background: var(--surface-raised); color: var(--ink); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease; }
+.aq-audit-skid__pin.is-key { border-color: var(--flow); color: var(--flow); }
+.aq-audit-skid__pin.is-on { background: var(--navy); border-color: var(--navy); color: var(--on-navy); transform: scale(1.12); }
+.aq-audit-skid__ring { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; opacity: 0;
+  transition: left 250ms cubic-bezier(0.2, 0.8, 0.2, 1), top 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms ease; }
+.aq-audit-skid__ring::before { content: ""; position: absolute; left: calc(calc(var(--space-8) + var(--space-2)) / -2); top: calc(calc(var(--space-8) + var(--space-2)) / -2); width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2));
+  border: 1px solid var(--flow); }
+.aq-audit-skid__ring.is-on { opacity: 1; }
+
+/* The documents: the list folds away into the grid's side columns */
+.aq-audit-skid > .aq-fold, .aq-audit-skid__docs { display: contents; }
+.aq-audit-skid .aq-fold__btn { display: none; }
+.aq-fold:not(.is-open) .aq-audit-skid__doc.aq-fold-x { display: grid; }
+.aq-audit-skid__docs { list-style: none; margin: 0; padding: 0; }
+.aq-audit-skid__doc { position: relative; z-index: 1; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-content: start;
+  grid-row: var(--row, 1); padding: var(--space-3); margin: calc(var(--space-3) * -1); cursor: default; outline: none; transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-audit-skid__doc.is-l { grid-column: 1; }
+.aq-audit-skid__doc.is-r { grid-column: 3; }
+.aq-audit-skid__doc:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-audit-skid__n { grid-row: 1; font: 300 20px/24px var(--font-mono); letter-spacing: -0.02em; color: var(--ink-subtle); transition: color 180ms ease; }
+.aq-audit-skid__doc.is-key .aq-audit-skid__n { color: var(--flow); }
+.aq-audit-skid__t { grid-row: 1; grid-column: 2; margin: 0; font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-audit-skid__t a { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 3px; }
+.aq-audit-skid__d { grid-column: 2; margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-audit-skid.is-pointing .aq-audit-skid__doc:not(.is-on) { opacity: 0.62; }
+.aq-audit-skid__doc.is-on .aq-audit-skid__n { color: var(--flow); }
+
+/* Leaders, laid by the look from the rendered callouts to the pins */
+.aq-audit-skid__leads { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.aq-audit-skid__lead { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-linejoin: round; transition: stroke 180ms ease; }
+.aq-audit-skid__lead.is-on { stroke: var(--flow); stroke-width: 1.5; }
+
+/* Mono corners */
+.aq-audit-skid__corner { position: absolute; bottom: var(--space-4); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-audit-skid__corner.is-l { left: var(--space-8); }
+.aq-audit-skid__corner.is-r { right: var(--space-8); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-audit-skid__pin, .aq-audit-skid__ring, .aq-audit-skid__doc, .aq-audit-skid__lead, .aq-audit-skid .aq-iso [data-iso-id] { transition: none; }
+}
+
+/* Mid widths: the drawing above, the documents in two columns under it, no leaders */
+@container (max-width: 1100px) {
+  .aq-audit-skid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: none; row-gap: var(--space-6); }
+  .aq-audit-skid__fig { grid-column: 1 / -1; grid-row: 1; max-width: calc(var(--space-32) * 5); width: 100%; justify-self: center; }
+  .aq-audit-skid__doc, .aq-audit-skid__doc.is-l, .aq-audit-skid__doc.is-r { grid-column: auto; grid-row: auto; }
+  .aq-audit-skid__leads { display: none; }
+}
+
+/* Phones: the drawing on top, the documents in one column, fold back on */
+@container (max-width: 860px) {
+  .aq-audit-skid-sec .aq-sec-head .aq-h1 { font-size: 36px; line-height: 40px; }
+  .aq-audit-skid { grid-template-columns: minmax(0, 1fr); padding: var(--space-6) var(--space-4) var(--space-12); row-gap: var(--space-4); }
+  .aq-audit-skid__doc { margin: 0 calc(var(--space-3) * -1); }
+  .aq-audit-skid .aq-fold { display: flex; flex-direction: column; gap: var(--space-4); }
+  .aq-audit-skid .aq-fold > .aq-audit-skid__docs { display: flex; flex-direction: column; gap: var(--space-4); }
+  .aq-audit-skid .aq-fold__btn { display: flex; }
+  .aq-fold:not(.is-open) .aq-audit-skid__doc.aq-fold-x { display: none; }
+  .aq-audit-skid__t { font-size: 17px; line-height: 22px; }
+  .aq-audit-skid__corner.is-l { left: var(--space-4); }
+  .aq-audit-skid__corner.is-r { display: none; }
+  .aq-audit-skid__fig { margin-inline: calc(var(--space-3) * -1); }
+}

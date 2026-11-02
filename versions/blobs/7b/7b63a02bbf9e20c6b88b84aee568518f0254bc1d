@@ -1,0 +1,70 @@
+/* ---------- PlanChecker: service plans as a checker of navy and limestone tiles (look "plan-checker") ----------
+   Limestone band (data-theme light). One column per plan, columns alternate navy and a lighter limestone tile with a
+   hairline edge; each column is a head tile (slash numeral 300 at up to 112 px, name, who it suits) and a terms tile
+   whose rows line up across columns through subgrid. No table rules: tiles and gaps separate. Navy tiles remap the ink
+   tokens to their on-navy values. Phones: numeral tabs pick one plan. */
+.aq-plan-checker-sec .aq-sec-head .aq-h1 { font-weight: 300; letter-spacing: -0.03em; }
+.aq-plan-checker__tabs { display: none; }
+.aq-plan-checker__plans {
+  list-style: none; margin: 0; padding: 0; display: grid; column-gap: var(--space-1);
+  grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+  grid-template-rows: auto repeat(var(--rows, 3), auto) auto;
+}
+.aq-plan-checker__plan { grid-row: 1 / -1; display: grid; grid-template-rows: subgrid; min-width: 0; }
+.aq-plan-checker .is-navy {
+  background: var(--navy); color: var(--on-navy);
+  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted); --line-strong: color-mix(in srgb, var(--on-navy) 45%, transparent);
+}
+.aq-plan-checker .is-lime {
+  background: color-mix(in srgb, var(--surface) 55%, var(--limestone)); color: var(--on-limestone);
+  box-shadow: inset 1px 0 var(--line-strong), inset -1px 0 var(--line-strong);
+}
+.aq-plan-checker .is-navy .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+
+.aq-plan-checker__head { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); margin-bottom: var(--space-1); min-height: 19rem; }
+.aq-plan-checker__head.is-lime { box-shadow: inset 0 0 0 1px var(--line-strong); }
+.aq-plan-checker__no { margin: 0 0 auto; font: 300 clamp(72px, 8.4vw, 112px)/0.9 var(--font-sans); letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.aq-plan-checker__sl { opacity: 0.55; margin-left: 0.04em; }
+.aq-plan-checker__mark { margin: 0; font: 500 12px/16px var(--font-mono); color: var(--flow); }
+.aq-plan-checker__name { margin: var(--space-4) 0 0; font: 400 13px/20px var(--font-mono); }
+.aq-plan-checker__suits { margin: 0; font: 300 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+.aq-plan-checker__sk { display: block; font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
+.is-navy .aq-plan-checker__sk { color: var(--on-navy-muted); }
+
+.aq-plan-checker__term { padding: var(--space-3) var(--space-6); transition: background-color 160ms ease; }
+.aq-plan-checker__term.is-first { padding-top: var(--space-6); }
+.aq-plan-checker__term.is-first.is-lime { box-shadow: inset 1px 0 var(--line-strong), inset -1px 0 var(--line-strong), inset 0 1px var(--line-strong); }
+.aq-plan-checker__v { margin: 0; font-size: 16px; line-height: 23px; overflow-wrap: anywhere; }
+.aq-plan-checker__term.is-first .aq-plan-checker__v { font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-plan-checker__k { margin: var(--space-1) 0 0; font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); }
+.is-navy .aq-plan-checker__k { color: var(--on-navy-muted); }
+.aq-plan-checker__term.is-lit.is-lime { background: var(--flow-tint); }
+.aq-plan-checker__term.is-lit.is-navy { background: color-mix(in srgb, var(--on-navy) 12%, var(--navy)); }
+.aq-plan-checker__act { padding: var(--space-4) var(--space-6) var(--space-6); }
+.aq-plan-checker__act.is-lime { box-shadow: inset 1px 0 var(--line-strong), inset -1px 0 var(--line-strong), inset 0 -1px var(--line-strong); }
+.aq-plan-checker__act .aq-btn { width: 100%; justify-content: center; text-align: center; }
+.aq-plan-checker-sec .aq-fold__btn { margin-top: var(--space-6); }
+.aq-fold:not(.is-open) .aq-plan-checker__term.aq-fold-x { display: none; }
+
+@container (max-width: 860px) {
+  .aq-plan-checker__tabs { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--space-1); margin-bottom: var(--space-1); }
+  .aq-plan-checker__tab {
+    display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); min-height: 72px; min-width: 0;
+    padding: var(--space-2); border: 0; border-radius: 0; font: inherit; text-align: left; cursor: pointer;
+  }
+  .aq-plan-checker__tabno { font: 300 28px/1 var(--font-sans); letter-spacing: -0.04em; }
+  .aq-plan-checker__tabn { font: 400 11px/14px var(--font-mono); overflow-wrap: anywhere; }
+  .aq-plan-checker__tab .aq-ph { font-size: 11px; }
+  .aq-plan-checker__tab[aria-pressed="true"] { outline: 2px solid var(--flow); outline-offset: -2px; }
+  .aq-plan-checker__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .aq-plan-checker__plans { grid-template-columns: minmax(0, 1fr); }
+  .aq-plan-checker[data-show="1"] .aq-plan-checker__plan:not(.t1),
+  .aq-plan-checker[data-show="2"] .aq-plan-checker__plan:not(.t2),
+  .aq-plan-checker[data-show="3"] .aq-plan-checker__plan:not(.t3),
+  .aq-plan-checker[data-show="4"] .aq-plan-checker__plan:not(.t4),
+  .aq-plan-checker[data-show="5"] .aq-plan-checker__plan:not(.t5) { display: none; }
+  .aq-plan-checker__head { min-height: 0; padding: var(--space-4); }
+  .aq-plan-checker__no { font-size: 64px; margin-bottom: var(--space-4); }
+  .aq-plan-checker__term { padding-inline: var(--space-4); }
+  .aq-plan-checker__act { padding-inline: var(--space-4); }
+}

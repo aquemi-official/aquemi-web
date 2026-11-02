@@ -1,0 +1,68 @@
+/* ---------- IndexSheet: the package's index as one printed sheet (look "index-sheet"). A limestone sheet
+   (data-theme="light", so it stays paper in the dark theme) on the navy band: the title set very large, a ruled,
+   numbered two-column index with every section's documents in view, and a folded leaf at the right carrying one
+   isometric line drawing. Rules are line-strong hairlines; flow marks only the key section and the water. ---------- */
+.aq-index-sheet-sec { position: relative; }
+.aq-index-sheet { position: relative; }
+.aq-index-sheet__strip {
+  display: flex; justify-content: space-between; gap: var(--space-4); margin: 0 0 var(--space-4); padding-bottom: var(--space-3);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy-muted);
+}
+.aq-index-sheet__sheet { position: relative; padding: var(--space-16) var(--space-12) var(--space-12); background: var(--limestone); color: var(--on-limestone); }
+.aq-index-sheet__sheet .aq-sec-head { max-width: none; }
+.aq-index-sheet__sheet .aq-sec-head .aq-h1 { margin: 0; max-width: 15ch; font: 300 84px/86px var(--font-sans); letter-spacing: -0.04em; color: var(--on-limestone); text-wrap: balance; }
+.aq-index-sheet__sheet .aq-sec-head .aq-lead { margin-top: var(--space-6); color: var(--on-limestone-muted); }
+
+.aq-index-sheet__main { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); column-gap: var(--space-12); margin-top: var(--space-12); align-items: stretch; }
+.aq-index-sheet__index { min-width: 0; }
+
+/* the ruled index: two columns, a hairline over every section, a rule between the columns */
+.aq-index-sheet__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--line-strong); }
+.aq-index-sheet__cell { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-4) var(--space-6) var(--space-6) 0; min-width: 0; }
+.aq-index-sheet__cell:nth-child(even) { padding-left: var(--space-6); padding-right: 0; border-left: 1px solid var(--line-strong); }
+.aq-index-sheet__rule { position: absolute; left: 0; right: 0; top: 0; border-top: 1px solid var(--line-strong); transform-origin: 0 50%; }
+.aq-index-sheet__cell.is-key .aq-index-sheet__rule { border-top: 2px solid var(--flow); }
+.aq-index-sheet__n { font: 300 26px/30px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--on-limestone-muted); }
+.aq-index-sheet__cell.is-key .aq-index-sheet__n { color: var(--flow); }
+.aq-index-sheet__body { min-width: 0; }
+.aq-index-sheet__t { margin: var(--space-1) 0 var(--space-2); font: 500 14px/20px var(--font-mono); letter-spacing: 0.01em; color: var(--on-limestone); }
+.aq-index-sheet__t a { color: inherit; }
+.aq-index-sheet__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-limestone-muted); text-wrap: pretty; }
+.aq-index-sheet__cell:hover .aq-index-sheet__n { color: var(--flow); }
+.aq-index-sheet__n { transition: color 160ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* the folded leaf: a crease down its hinge edge, its back a blank face of the same paper (seen only while it unfolds) */
+.aq-index-sheet__wing { position: relative; transform-style: preserve-3d; transform-origin: 0 50%; padding-left: var(--space-8); border-left: 1px dashed var(--line-strong); }
+.aq-index-sheet__face { position: sticky; top: calc(var(--space-24) + var(--space-4)); backface-visibility: hidden; }
+.aq-index-sheet__back {
+  position: absolute; inset: 0; background: color-mix(in srgb, var(--limestone) 90%, var(--on-limestone)); border: 1px solid var(--line-strong);
+  transform: rotateY(180deg); backface-visibility: hidden; pointer-events: none;
+}
+.aq-index-sheet__fig { margin: 0; }
+.aq-index-sheet__svg { display: block; width: 100%; height: auto; max-height: calc(var(--space-32) * 5); }
+
+/* Fold: desktop shows the whole index; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-index-sheet__cell.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-index-sheet__grid) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .aq-index-sheet__n { transition: none; } }
+
+@container (max-width: 1100px) {
+  .aq-index-sheet__sheet .aq-sec-head .aq-h1 { font-size: 64px; line-height: 68px; }
+  .aq-index-sheet__main { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-index-sheet__wing { order: -1; padding: 0 0 var(--space-8); border-left: 0; border-bottom: 1px dashed var(--line-strong); transform-origin: 50% 0; }
+  .aq-index-sheet__face { position: relative; top: auto; max-width: calc(var(--space-32) * 3); margin: 0 auto; }
+}
+@container (max-width: 860px) {
+  .aq-index-sheet__sheet { padding: var(--space-8) var(--space-4) var(--space-6); }
+  .aq-index-sheet__sheet .aq-sec-head .aq-h1 { font-size: 40px; line-height: 44px; letter-spacing: -0.03em; }
+  .aq-index-sheet__main { margin-top: var(--space-6); row-gap: var(--space-4); }
+  .aq-index-sheet__wing { padding-bottom: var(--space-4); }
+  .aq-index-sheet__face { max-width: calc(var(--space-32) * 1.6); }
+  .aq-index-sheet__grid { grid-template-columns: minmax(0, 1fr); }
+  .aq-index-sheet__cell, .aq-index-sheet__cell:nth-child(even) { grid-template-columns: var(--space-8) minmax(0, 1fr); padding: var(--space-3) 0 var(--space-4); border-left: 0; }
+  .aq-index-sheet__n { font-size: 18px; line-height: 22px; }
+  .aq-fold:not(.is-open) .aq-index-sheet__cell.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-index-sheet__grid) > .aq-fold__btn { display: flex; margin-top: var(--space-2); }
+}

@@ -1,0 +1,86 @@
+/* ---------- FaultKnot: fault steps under a title that crosses a navy / limestone split (look "fault-knot") ----------
+   Limestone section (data-theme light), a navy field from the left edge to 30 % of the content width. The title is set
+   huge and light in navy; its aria-hidden twin, in on-navy, lies exactly over it and is clipped to the navy field, so
+   the title changes colour where it crosses the split. The knot drawing sits right of the title in a framed grid;
+   the steps read across the foot, the first on the navy. Phones: the field runs behind the title's first lines. */
+.aq-fault-knot-sec { position: relative; overflow: clip; }
+.aq-fault-knot { position: relative; --fk-split: 30%; }
+.aq-fault-knot__ground {
+  position: absolute; z-index: 0; top: calc(-1 * var(--space-16)); bottom: calc(-1 * var(--space-16));
+  left: -100vw; width: calc(100vw + var(--fk-split, 30%)); background: var(--navy);
+}
+.aq-fault-knot__ground2 { display: none; }
+.aq-fault-knot__top { position: relative; z-index: 1; display: flex; align-items: center; min-height: 26rem; }
+.aq-fault-knot__head { position: relative; flex: 1 1 auto; min-width: 0; }
+.aq-fault-knot__head .aq-sec-head { margin: 0; }
+.aq-fault-knot__head .aq-h1 {
+  margin: 0; max-width: 5.4em; font: 300 clamp(76px, 10.4vw, 136px)/0.94 var(--font-sans); letter-spacing: -0.045em;
+  color: var(--navy); text-wrap: initial;
+}
+.aq-fault-knot__head .aq-lead { max-width: 34ch; margin-left: calc(var(--fk-split, 30%) + var(--space-8)); }
+.aq-fault-knot__twin {
+  position: absolute; inset: 0; pointer-events: none; user-select: none;
+  clip-path: inset(-20% calc(100% - var(--fk-split, 30%)) -20% -20%);
+}
+.aq-fault-knot__twin .aq-h1 { color: var(--on-navy); }
+.aq-fault-knot__twin .aq-lead { color: var(--on-navy-muted); }
+
+/* the knot: framed grid, twin-wall pipe (wall stroke, bore in the ground colour), the water as a dashed flow line */
+.aq-fault-knot__fig { position: absolute; right: 0; top: 50%; width: 40%; margin: 0; transform: translateY(-50%); }
+.aq-fault-knot__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-fault-knot__frame { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-fault-knot__grid { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-fault-knot__p { fill: none; stroke-linecap: butt; stroke-linejoin: round; transition: d 700ms cubic-bezier(0.4, 0, 0.2, 1); }
+.aq-fault-knot__wall { stroke: var(--navy); stroke-width: 15; }
+.aq-fault-knot__bore { stroke: var(--limestone); stroke-width: 11.5; }
+.aq-fault-knot__flow { stroke: var(--flow); stroke-width: 3; stroke-dasharray: 10 14; }
+.aq-fault-knot__flange { fill: none; stroke: var(--navy); stroke-width: 2.5; }
+.aq-fault-knot.is-scrub .aq-fault-knot__p, .aq-fault-knot.is-key .aq-fault-knot__p { transition: none; }
+.aq-fault-knot.is-clear .aq-fault-knot__flow { stroke-dasharray: 40 10; animation: aq-fk-run 2.4s cubic-bezier(0.4, 0, 0.2, 1) 1; }
+@keyframes aq-fk-run { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
+
+/* the steps across the foot: 30 % for the call on the navy, four on the limestone between hairlines */
+.aq-fault-knot__steps {
+  position: relative; z-index: 1; list-style: none; margin: var(--space-16) 0 0; padding: 0;
+  display: grid; grid-template-columns: var(--fk-split, 30%); grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column;
+}
+.aq-fault-knot__step { padding: var(--space-2) var(--space-6) var(--space-2); border-left: 1px solid var(--line-strong); outline: none; }
+.aq-fault-knot__step.is-call { padding-left: 0; padding-right: var(--space-8); border-left: 0; color: var(--on-navy); }
+.aq-fault-knot__step:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-fault-knot__t { margin: 0 0 var(--space-3); font: 400 15px/22px var(--font-mono); letter-spacing: 0; color: var(--navy); }
+.aq-fault-knot__n { color: var(--on-limestone-muted); transition: color 160ms ease; }
+.aq-fault-knot__d { margin: 0; font-size: 15px; line-height: 22px; color: var(--on-limestone-muted); }
+.aq-fault-knot__step.is-call .aq-fault-knot__t { color: var(--on-navy); }
+.aq-fault-knot__step.is-call .aq-fault-knot__n { color: var(--on-navy-muted); }
+.aq-fault-knot__step.is-call .aq-fault-knot__d { font: 300 20px/28px var(--font-sans); color: var(--on-navy); }
+.aq-fault-knot__step.is-call .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+.aq-fault-knot__step.is-on .aq-fault-knot__n { color: var(--flow); }
+.aq-fault-knot__step.is-call.is-on .aq-fault-knot__n { color: var(--on-navy); }
+.aq-fault-knot__go { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 0.2em; }
+.aq-fault-knot__go::after { content: "\a0\2192"; color: var(--flow); }
+.aq-fault-knot__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-fault-knot__p, .aq-fault-knot__n { transition: none; }
+  .aq-fault-knot.is-clear .aq-fault-knot__flow { animation: none; }
+}
+
+@container (max-width: 860px) {
+  .aq-fault-knot__ground { display: none; }
+  .aq-fault-knot__top { display: block; min-height: 0; }
+  .aq-fault-knot__ground2 {
+    display: block; position: absolute; z-index: -1; left: -100vw; right: -100vw;
+    top: calc(-1 * var(--space-12)); height: calc(var(--space-12) + 81px); background: var(--navy);
+  }
+  .aq-fault-knot__head { isolation: isolate; }
+  .aq-fault-knot__head .aq-h1 { font-size: 52px; line-height: 54px; letter-spacing: -0.04em; }
+  .aq-fault-knot__head .aq-lead { margin-left: 0; }
+  .aq-fault-knot__twin { clip-path: inset(-20% -20% calc(100% - 81px) -20%); }
+  .aq-fault-knot__fig { position: static; width: 100%; margin-top: var(--space-8); transform: none; }
+  .aq-fault-knot__steps { display: block; margin-top: var(--space-8); }
+  .aq-fault-knot__step { padding: var(--space-4) 0; border-left: 0; border-top: 1px solid var(--line-strong); }
+  .aq-fault-knot__step.is-call {
+    margin-inline: calc(-1 * var(--space-4)); padding: var(--space-6) var(--space-4); border-top: 0; background: var(--navy);
+  }
+  .aq-fault-knot__step.is-call .aq-fault-knot__d { font-size: 18px; line-height: 26px; }
+}

@@ -46,6 +46,9 @@ CHECKPOINTS = [
     ('30040f0', 'Pass 9: every section its own design',
      'Each section of all 27 pages redrawn from Gemini concepts in varied art directions (104 looks, IsoKit drawings, '
      'per-section GSAP), new hero, FAQ, related links, form and closing, then a polish pass. Tag pre-pass9.'),
+    ('1f1147c', 'Pass 9b: library motion, every section concepted',
+     'Motion ported from the Subframe Motion library site-wide (ambient WebGL shaders, odometer counts, interactions '
+     'on every page); the 81 sections pass 9 had no concept for got their own Gemini concepts and were rebuilt from them.'),
 ]
 
 # Not part of the site a visitor loads.

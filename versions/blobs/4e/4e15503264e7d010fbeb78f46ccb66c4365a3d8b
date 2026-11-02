@@ -1,0 +1,82 @@
+/* ---------- SpareSheet: like-for-like rules on a limestone drawing sheet (look "spare-sheet") ----------
+   A limestone sheet (data-theme light) on the section ground: double border (outer line-strong, inner hairline), the
+   title and intro top left, the dimensioned part drawing top right (equipment 1.5 px line-strong, centre line
+   dash-dot, dimensions and balloon in hairline ink-muted, drawing letters mono), the four-column table under them on
+   hairlines with numbered column notes, a title block bottom right. The chosen row carries a flow rule at its left. */
+.aq-spare-sheet {
+  position: relative; background: var(--limestone); color: var(--on-limestone);
+  border: 1px solid var(--line-strong); outline: 1px solid var(--line); outline-offset: calc(-1 * var(--space-2));
+  padding: var(--space-12) var(--space-12) var(--space-24);
+}
+.aq-spare-sheet__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: center; }
+.aq-spare-sheet .aq-sec-head .aq-h1 { font-weight: 300; font-size: 56px; line-height: 60px; letter-spacing: -0.03em; }
+.aq-spare-sheet .aq-sec-head .aq-lead { color: var(--on-limestone-muted); }
+.aq-spare-sheet__fig { margin: 0; }
+.aq-spare-sheet__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-spare-sheet__cross { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-spare-sheet__part { display: none; }
+.aq-spare-sheet__part.is-on { display: inline; }
+.aq-spare-sheet__art * { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-spare-sheet__art .k-t { stroke: var(--ink-muted); stroke-width: 1; }
+.aq-spare-sheet__art .k-a { stroke: var(--flow); }
+.aq-spare-sheet__cl { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 14 3 2 3; }
+.aq-spare-sheet__dim { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+.aq-spare-sheet__dot { fill: var(--ink-muted); }
+.aq-spare-sheet__ball { fill: var(--limestone); stroke: var(--line-strong); stroke-width: 1; }
+.aq-spare-sheet__dt, .aq-spare-sheet__bt { font: 400 12px/1 var(--font-mono); fill: var(--ink-muted); text-anchor: middle; }
+.aq-spare-sheet__bt { fill: var(--on-limestone); }
+
+.aq-spare-sheet .aq-fold { margin-top: var(--space-8); }
+.aq-spare-sheet__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-spare-sheet__table thead th {
+  padding: 0 var(--space-4) var(--space-3) 0; text-align: left; vertical-align: bottom;
+  font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); border-bottom: 1px solid var(--line-strong);
+}
+.aq-spare-sheet__table thead th:first-child { width: 26%; }
+.aq-spare-sheet__hn {
+  display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); margin-right: var(--space-2);
+  border: 1px solid var(--line-strong); color: var(--on-limestone);
+}
+.aq-spare-sheet__row th, .aq-spare-sheet__row td {
+  padding: var(--space-3) var(--space-4) var(--space-3) 0; vertical-align: top; text-align: left;
+  border-bottom: 1px solid var(--line); font-size: 15px; line-height: 22px;
+}
+.aq-spare-sheet__row th { font-weight: 400; padding: 0; }
+.aq-spare-sheet__k { display: none; }
+.aq-spare-sheet__pick {
+  display: flex; gap: var(--space-3); align-items: baseline; width: 100%; min-height: 44px; margin: 0;
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-3); border: 0; border-left: 2px solid transparent;
+  background: transparent; color: var(--on-limestone); font: 400 16px/22px var(--font-sans); text-align: left; cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+.aq-spare-sheet__pick:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-spare-sheet__n { font: 400 12px/22px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-spare-sheet__row.is-on .aq-spare-sheet__pick { border-left-color: var(--flow); background: var(--flow-tint); }
+.aq-spare-sheet__row.is-on .aq-spare-sheet__n { color: var(--flow); }
+.aq-fold:not(.is-open) .aq-spare-sheet__row.aq-fold-x { display: table-row; }
+.aq-fold:has(> .aq-spare-sheet__table) > .aq-fold__btn { display: none; }
+
+.aq-spare-sheet__tb {
+  position: absolute; right: var(--space-2); bottom: var(--space-2); display: grid; grid-template-columns: auto auto;
+  border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong);
+}
+.aq-spare-sheet__tb > span { padding: var(--space-2) var(--space-4); font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-spare-sheet__tbn { border-right: 1px solid var(--line-strong); color: var(--on-limestone); min-width: 14rem; }
+.aq-spare-sheet__tbi { font-variant-numeric: tabular-nums; }
+.aq-spare-sheet__tbp { display: none; }
+.aq-spare-sheet__tbp.is-on { display: inline; }
+
+@container (max-width: 860px) {
+  .aq-spare-sheet { padding: var(--space-8) var(--space-4) var(--space-16); }
+  .aq-spare-sheet__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-spare-sheet .aq-sec-head .aq-h1 { font-size: 34px; line-height: 40px; }
+  .aq-spare-sheet__table, .aq-spare-sheet__table tbody { display: block; }
+  .aq-spare-sheet__table thead { display: none; }
+  .aq-spare-sheet__row, .aq-fold:not(.is-open) .aq-spare-sheet__row.aq-fold-x { display: block; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line-strong); }
+  .aq-fold:not(.is-open) .aq-spare-sheet__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-spare-sheet__table) > .aq-fold__btn { display: flex; }
+  .aq-spare-sheet__row th, .aq-spare-sheet__row td { display: block; border: 0; padding: var(--space-1) 0 var(--space-1) var(--space-3); }
+  .aq-spare-sheet__row th { padding: 0; }
+  .aq-spare-sheet__k { display: block; font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); }
+  .aq-spare-sheet__tbn { min-width: 0; }
+}

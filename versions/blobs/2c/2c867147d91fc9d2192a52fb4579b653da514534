@@ -1,0 +1,68 @@
+/* ---------- CutBand: a short table of levels laid across the plant like a cutting plane (look "cut-band") ----------
+   Desktop: a 6/6 grid. The heading top left; the hairline elevation of the package in the right column, standing
+   from the heading's top to below the band; the navy band in between spans both columns and bleeds to the page
+   edges (a ::before reaching 100vw each way; the section clips it, so there is no sideways scroll). The band's
+   table: numbers and column names in mono, level names in light display, a figure in mono display, the basis as
+   mono lines. The occluder (motion only) is the cutting plane's stroke; it is hidden without motion. */
+.aq-cut-band-sec { overflow-x: clip; }
+.aq-cut-band { position: relative; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); grid-template-rows: minmax(calc(var(--space-32) * 2.3), auto) auto minmax(var(--space-32), auto); column-gap: var(--space-12); }
+.aq-cut-band__head { grid-column: 1; grid-row: 1; padding-bottom: var(--space-16); }
+.aq-cut-band__head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 14ch; }
+.aq-cut-band__fig { grid-column: 2; grid-row: 1 / 4; position: relative; z-index: 0; display: flex; align-items: stretch; }
+.aq-cut-band__svg { display: block; width: 100%; height: 100%; }
+.aq-cut-band__frame { fill: none; stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-cut-band__eq { fill: var(--surface); stroke: var(--flow); stroke-width: 1.25; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-cut-band__ln { fill: none; stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-cut-band__hid { fill: none; stroke: var(--flow); stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.aq-cut-band__trace { fill: none; stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-cut-band__pipe { fill: none; stroke: var(--line-strong); stroke-width: 5; stroke-linejoin: round; }
+.aq-cut-band__water { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-cut-band__smp { fill: none; stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-cut-band__pt { fill: var(--flow); }
+
+.aq-cut-band__band { grid-column: 1 / -1; grid-row: 2; position: relative; z-index: 1; padding: var(--space-8) 0 var(--space-6); color: var(--on-navy); }
+.aq-cut-band__band::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -100vw; right: -100vw; background: var(--navy); }
+.aq-cut-band__band.is-cut::before { opacity: 0; }
+.aq-cut-band__band.is-cut > :not(.aq-cut-band__occ) { visibility: hidden; }
+.aq-cut-band__occ { display: none; position: absolute; z-index: 2; top: 0; bottom: 0; left: 0; background: var(--navy); border-left: 2px solid var(--flow); border-right: 2px solid var(--flow); pointer-events: none; will-change: transform; }
+.aq-cut-band__occ i { position: absolute; top: 0; bottom: 0; width: 1px; background: color-mix(in srgb, var(--on-navy-muted) 22%, transparent); }
+.aq-cut-band__occ i:first-child { left: 33%; } .aq-cut-band__occ i:last-child { left: 66%; }
+
+.aq-cut-band__cols, .aq-cut-band__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr); column-gap: var(--space-6); }
+.aq-cut-band__cols { padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy-muted); }
+.aq-cut-band__rows { list-style: none; margin: 0; padding: 0; }
+.aq-cut-band__row { align-items: start; padding: var(--space-6) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+.aq-cut-band__row:last-child { border-bottom: 0; }
+.aq-cut-band__n { font: 400 13px/36px var(--font-mono); color: var(--on-navy-muted); }
+.aq-cut-band__p { margin: 0; font: 300 30px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--on-navy); max-width: 14ch; }
+.aq-cut-band__v { margin: 0; font: 300 24px/32px var(--font-sans); color: var(--on-navy); }
+.aq-cut-band__v.is-fig { font: 300 36px/36px var(--font-mono); letter-spacing: -0.02em; }
+.aq-cut-band__k { display: none; }
+.aq-cut-band__val { display: block; }
+.aq-cut-band__m { display: flex; flex-direction: column; gap: var(--space-1); padding-top: var(--space-2); }
+.aq-cut-band__ref { font: 400 14px/20px var(--font-mono); color: var(--on-navy); }
+.aq-cut-band__go { margin: var(--space-3) 0 0; }
+.aq-cut-band__go a { color: var(--on-navy); }
+.aq-cut-band__go a:focus-visible { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+.aq-cut-band__note { grid-column: 1; grid-row: 3; margin: var(--space-6) 0 0; font: 400 13px/20px var(--font-sans); color: var(--ink-muted); align-self: start; }
+
+@container (max-width: 860px) {
+  .aq-cut-band { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .aq-cut-band__head, .aq-cut-band__fig, .aq-cut-band__band, .aq-cut-band__note { grid-column: 1; grid-row: auto; }
+  .aq-cut-band__head { padding-bottom: var(--space-6); }
+  .aq-cut-band__head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-cut-band__fig { height: calc(var(--space-32) * 3); }
+  .aq-cut-band__svg { min-height: 0; }
+  .aq-cut-band__band { margin-top: calc(-1 * var(--space-24)); padding: var(--space-6) 0 var(--space-4); }
+  .aq-cut-band__cols { display: none; }
+  .aq-cut-band__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-3); padding: var(--space-4) 0; }
+  .aq-cut-band__row > :not(.aq-cut-band__n) { grid-column: 2; }
+  .aq-cut-band__n { grid-row: 1; line-height: 28px; }
+  .aq-cut-band__p { font-size: 22px; line-height: 28px; max-width: none; }
+  .aq-cut-band__k { display: block; margin-bottom: var(--space-1); font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy-muted); }
+  .aq-cut-band__v { font-size: 19px; line-height: 26px; }
+  .aq-cut-band__v.is-fig { font-size: 30px; line-height: 34px; }
+  .aq-cut-band__m { padding-top: 0; }
+  .aq-cut-band__ref { font-size: 13px; }
+  .aq-cut-band__note { margin-top: var(--space-4); }
+}

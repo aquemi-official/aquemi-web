@@ -1,0 +1,110 @@
+/* ---------- SkidTags: an evidence table keyed to an elevation drawing of the skid (look "skid-tags"). Limestone band
+   (data-theme="light"): heading beside the drawing, numbered square tags round it with leaders to the parts, the
+   table below with the same numbers. Selection (tag, row number, row hover or focus) lights the tag, the row, the part
+   and its leader in flow; a crosshair ring glides to the part (atlas-hotspots). ---------- */
+.aq-skid-tags { display: flex; flex-direction: column; gap: var(--space-12); }
+.aq-skid-tags__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); gap: var(--space-12); align-items: center; }
+.aq-skid-tags__top > .aq-sec-head { margin: 0; align-self: start; }
+.aq-skid-tags-sec .aq-sec-head h2 { font-weight: 300; }
+.aq-skid-tags__stage { min-width: 0; }
+.aq-skid-tags__fig { position: relative; aspect-ratio: 2 / 1; }
+.aq-skid-tags__svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* the drawing: fills are the paper, so later pieces hide what is behind them */
+.aq-skid-tags__eq { fill: var(--limestone); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__fn { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__fl { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__gr { fill: none; stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__dim { fill: none; stroke: var(--ink-subtle); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__lab { font: 500 13px/1 var(--font-mono); fill: var(--ink-subtle); }
+.aq-skid-tags__cut { fill: var(--limestone); stroke: none; }
+.aq-skid-tags__sec { fill: var(--ink-muted); stroke: none; }
+.aq-skid-tags__ld { fill: none; stroke: var(--ink-subtle); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__dot { fill: var(--on-limestone); stroke: none; }
+.aq-skid-tags__part.is-on .aq-skid-tags__eq, .aq-skid-tags__part.is-on .aq-skid-tags__fn, .aq-skid-tags__part.is-on .aq-skid-tags__dim,
+.aq-skid-tags__lead.is-on .aq-skid-tags__ld { stroke: var(--flow); }
+.aq-skid-tags__part.is-on .aq-skid-tags__sec, .aq-skid-tags__lead.is-on .aq-skid-tags__dot, .aq-skid-tags__part.is-on .aq-skid-tags__lab { fill: var(--flow); }
+.aq-skid-tags__lead.is-on .aq-skid-tags__ld { stroke-width: 1.5; }
+
+/* numbered square tags: 44 px targets around a navy square */
+.aq-skid-tags__tag, .aq-skid-tags__num { display: grid; place-items: center; width: calc(var(--space-12) - var(--space-1)); height: calc(var(--space-12) - var(--space-1)); padding: 0; border: 0; background: none; color: inherit; cursor: pointer; font: inherit; }
+.aq-skid-tags__tag { position: absolute; transform: translate(-50%, -50%); z-index: 2; }
+.aq-skid-tags__tag > span, .aq-skid-tags__num > span, .aq-skid-tags__num-x { display: grid; place-items: center; width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) + var(--space-1)); background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; }
+.aq-skid-tags__num-x { background: none; color: var(--ink-subtle); }
+.aq-skid-tags__tag:hover > span, .aq-skid-tags__num:hover > span { background: var(--ink); }
+.aq-skid-tags__tag[aria-pressed="true"] > span, .aq-skid-tags__num[aria-pressed="true"] > span { background: var(--flow); color: var(--on-navy); transform: scale(1.12); }
+.aq-skid-tags__tag:focus-visible, .aq-skid-tags__num:focus-visible { outline: none; }
+.aq-skid-tags__tag:focus-visible > span, .aq-skid-tags__num:focus-visible > span { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* the crosshair ring: a full-size layer translated to the chosen anchor (percentages of the drawing) */
+.aq-skid-tags__crossbox { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.aq-skid-tags__cross { position: absolute; inset: 0; pointer-events: none; opacity: 0; transform: translate(var(--cx, 0%), var(--cy, 0%)); }
+.aq-skid-tags__cross.is-on { opacity: 1; }
+.aq-skid-tags__cross::after { content: ""; position: absolute; left: 0; top: 0; width: var(--space-8); height: var(--space-8); border: 1px solid var(--flow); border-radius: 50%; transform: translate(-50%, -50%); }
+.aq-skid-tags__cross::before { content: ""; position: absolute; left: 0; top: 0; width: var(--space-12); height: var(--space-12); transform: translate(-50%, -50%);
+  background: linear-gradient(var(--flow), var(--flow)) 50% 0 / 1px var(--space-2) no-repeat, linear-gradient(var(--flow), var(--flow)) 50% 100% / 1px var(--space-2) no-repeat,
+    linear-gradient(var(--flow), var(--flow)) 0 50% / var(--space-2) 1px no-repeat, linear-gradient(var(--flow), var(--flow)) 100% 50% / var(--space-2) 1px no-repeat; }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-skid-tags__cross { transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms; }
+  .aq-skid-tags__tag > span, .aq-skid-tags__num > span { transition: background-color 180ms ease, transform 180ms ease; }
+  .aq-skid-tags__eq, .aq-skid-tags__fn, .aq-skid-tags__ld, .aq-skid-tags__dim { transition: stroke 180ms ease; }
+  .aq-skid-tags__row { transition: background-color 180ms ease; }
+}
+
+/* the readout: phones only (the table is far below the drawing there); on desktop it stays for screen readers */
+.aq-skid-tags__detail { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-skid-tags__vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* the table */
+.aq-skid-tags__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-skid-tags__table th, .aq-skid-tags__table td { text-align: left; vertical-align: top; padding: var(--space-4) var(--space-4) var(--space-4) 0; border-bottom: 1px solid var(--line); }
+.aq-skid-tags__table thead th { font: 400 15px/22px var(--font-sans); color: var(--ink-muted); padding-bottom: var(--space-3); border-bottom: 1px solid var(--line-strong); }
+.aq-skid-tags__table thead th:nth-child(1) { width: calc(var(--space-16) + var(--space-2)); }
+.aq-skid-tags__table thead th:nth-child(2) { width: 22%; }
+.aq-skid-tags__table thead th:nth-child(4) { width: 24%; }
+.aq-skid-tags__table thead th:nth-child(5) { width: 19%; }
+.aq-skid-tags__table td.aq-skid-tags__n { padding-top: var(--space-1); }
+.aq-skid-tags__n { padding-right: var(--space-4); }
+.aq-skid-tags__std { font: 400 17px/24px var(--font-mono); color: var(--ink); letter-spacing: -0.01em; }
+.aq-skid-tags__how { font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-skid-tags__proof { font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-skid-tags__k { display: none; }
+.aq-skid-tags__go a { display: inline-block; padding: var(--space-3) 0; margin-top: calc(-1 * var(--space-3)); color: var(--flow); font: 500 15px/22px var(--font-sans); text-decoration: none; }
+.aq-skid-tags__go a::after { content: "\a0\2192"; }
+.aq-skid-tags__go a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-skid-tags__go a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-skid-tags__row { box-shadow: inset 0 0 0 0 var(--flow); }
+.aq-skid-tags__row.is-on { background: color-mix(in srgb, var(--surface-raised) 60%, transparent); box-shadow: inset 2px 0 0 0 var(--flow); }
+.aq-skid-tags__row.is-on .aq-skid-tags__std { color: var(--flow); }
+.aq-skid-tags__row.aq-standards-map-hit { background: var(--flow-tint); }
+.aq-skid-tags__row:focus { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-skid-tags__row td:first-child { padding-left: var(--space-3); }
+/* desktop: every row shows; the fold is for phones */
+.aq-skid-tags .aq-fold:not(.is-open) .aq-skid-tags__row.aq-fold-x { display: table-row; }
+.aq-skid-tags .aq-fold__btn { display: none; }
+
+@container (max-width: 860px) {
+  .aq-skid-tags { gap: var(--space-8); }
+  .aq-skid-tags__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-skid-tags__tag > span { width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-skid-tags__cross::after { width: var(--space-6); height: var(--space-6); }
+  .aq-skid-tags__cross::before { width: var(--space-8); height: var(--space-8); }
+  .aq-skid-tags__detail { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-1) var(--space-3);
+    margin-top: var(--space-4); padding: var(--space-3) 0 0; border-top: 1px solid var(--line-strong); min-height: calc(var(--space-16) + var(--space-2)); }
+  .aq-skid-tags__dn { grid-row: span 2; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); background: var(--flow); color: var(--on-navy); font: 500 12px/1 var(--font-mono); }
+  .aq-skid-tags__ds { font: 400 16px/22px var(--font-mono); color: var(--ink); }
+  .aq-skid-tags__dh { font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+  .aq-skid-tags__table, .aq-skid-tags__table tbody { display: block; }
+  .aq-skid-tags__table thead { display: none; }
+  .aq-skid-tags__row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-2) var(--space-3); padding: var(--space-4) var(--space-3); border-bottom: 1px solid var(--line); }
+  .aq-skid-tags__table .aq-skid-tags__row > * { display: block; padding: 0; border: 0; }
+  .aq-skid-tags__table .aq-skid-tags__row > .aq-skid-tags__n { grid-row: span 4; margin: calc(-1 * var(--space-2)) 0 0 calc(-1 * var(--space-2)); }
+  .aq-skid-tags__row td:first-child { padding-left: 0; }
+  .aq-skid-tags__std { align-self: center; }
+  .aq-skid-tags__k { display: block; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); margin-bottom: var(--space-1); }
+  .aq-skid-tags__how .aq-skid-tags__k { display: none; }
+  .aq-skid-tags__go .aq-skid-tags__k { display: none; }
+  .aq-skid-tags__go a { margin: calc(-1 * var(--space-2)) 0; }
+  .aq-skid-tags .aq-fold:not(.is-open) .aq-skid-tags__row.aq-fold-x { display: none; }
+  .aq-skid-tags .aq-fold__btn { display: flex; margin-top: var(--space-6); }
+}

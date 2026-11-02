@@ -1,0 +1,75 @@
+/* ---------- MarkingMatch: supplier control (look "marking-match"). Two standing rules as headline-sized facts, then a
+   clean ruled schedule between vertical hairlines. Flow only for the ticks, the gate glyph's water and the crosshair
+   (the band under the pointed row, the bar under the pointed column's head). ---------- */
+.aq-marking-match-sec { position: relative; }
+.aq-marking-match { position: relative; }
+
+/* the two facts */
+.aq-marking-match__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-16); margin-bottom: var(--space-16); }
+.aq-marking-match__fact { position: relative; min-width: 0; }
+.aq-marking-match__fact.has-glyph { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-8); align-items: end; }
+.aq-marking-match__fact.has-glyph .aq-marking-match__fk { grid-column: 1 / -1; }
+.aq-marking-match__fk { margin: 0 0 var(--space-4); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-marking-match__fv { margin: 0; max-width: 16ch; font: 300 48px/56px var(--font-sans); letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; }
+.aq-marking-match__fv .aq-ph { font-size: 0.5em; line-height: 1.4; vertical-align: middle; }
+.aq-marking-match__gate { display: block; width: calc(var(--space-32) + var(--space-8)); height: auto; overflow: visible; }
+.aq-marking-match__gate path { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-marking-match__pw, .aq-marking-match__vb, .aq-marking-match__vs { stroke: var(--line-strong); }
+.aq-marking-match__wf { stroke: var(--flow); }
+.aq-marking-match__gt { stroke: var(--ink); }
+
+/* the schedule */
+.aq-marking-match__table { position: relative; }
+.aq-marking-match__head, .aq-marking-match__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr); }
+.aq-marking-match__head { position: relative; border-bottom: 1.5px solid var(--navy); }
+.aq-marking-match__head span { padding: 0 var(--space-6) var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); transition: color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-marking-match__head span:first-child { padding-left: 0; }
+.aq-marking-match__colbar { position: absolute; left: 0; bottom: -1.5px; width: calc(100% / 3); border-bottom: 2px solid var(--flow); opacity: 0; transform: translateX(calc(100% * var(--hc, 0))); transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 150ms linear; }
+.aq-marking-match__list { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; }
+.aq-marking-match__row { border-bottom: 1px solid var(--line); }
+.aq-marking-match__c { min-width: 0; padding: var(--space-4) var(--space-6); }
+.aq-marking-match__c[data-c="0"] { padding-left: 0; }
+.aq-marking-match__c + .aq-marking-match__c { border-left: 1px solid var(--line); }
+.aq-marking-match__name { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: 0; margin: 0; font: 400 17px/26px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-marking-match__n { font: 400 13px/26px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-subtle); white-space: nowrap; }
+.aq-marking-match__c p { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-marking-match__how { display: grid; grid-template-columns: var(--space-4) minmax(0, 1fr); column-gap: var(--space-3); }
+.aq-marking-match__ok { width: var(--space-4); height: var(--space-4); margin-top: var(--space-1); overflow: visible; }
+.aq-marking-match__ok path { fill: none; stroke: var(--flow); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+/* column names: for screen readers on desktop, shown per supply on phones */
+.aq-marking-match__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+
+/* crosshair: the band glides under the pointed row; the column head lights (motion.js sets --hy, --hh, --hc) */
+.aq-marking-match__band {
+  position: absolute; left: 0; right: 0; top: 0; height: var(--hh, 0); background: var(--flow-tint); opacity: 0; pointer-events: none;
+  transform: translateY(var(--hy, 0)); transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), height 180ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 150ms linear;
+}
+.aq-marking-match__table.is-x .aq-marking-match__band, .aq-marking-match__table.is-x .aq-marking-match__colbar { opacity: 1; }
+.aq-marking-match__table[data-hc="0"] .aq-marking-match__head span[data-c="0"],
+.aq-marking-match__table[data-hc="1"] .aq-marking-match__head span[data-c="1"],
+.aq-marking-match__table[data-hc="2"] .aq-marking-match__head span[data-c="2"] { color: var(--flow); }
+/* without motion.js: the pointed row still lifts onto flow-tint */
+.aq-marking-match__table:not(.is-live) .aq-marking-match__row:hover { background: var(--flow-tint); }
+
+/* Fold: desktop shows every supply; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-marking-match__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-marking-match__list) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .aq-marking-match__band, .aq-marking-match__colbar, .aq-marking-match__head span { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-marking-match__facts { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); margin-bottom: var(--space-12); }
+  .aq-marking-match__fv { font-size: 34px; line-height: 42px; }
+  .aq-marking-match__fact.has-glyph { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
+  .aq-marking-match__gate { width: calc(var(--space-24) + var(--space-8)); }
+  .aq-marking-match__head { display: none; }
+  .aq-marking-match__list { border-top: 1.5px solid var(--navy); }
+  .aq-marking-match__row { grid-template-columns: minmax(0, 1fr); padding: var(--space-4) 0 var(--space-6); }
+  .aq-marking-match__c, .aq-marking-match__c[data-c="0"] { padding: 0 0 var(--space-3); }
+  .aq-marking-match__c + .aq-marking-match__c { border-left: 0; padding-left: var(--space-12); }
+  .aq-marking-match__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+  .aq-marking-match__c[data-c="0"] .aq-marking-match__k { display: none; }
+  .aq-marking-match__band, .aq-marking-match__colbar { display: none; }
+  .aq-fold:not(.is-open) .aq-marking-match__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-marking-match__list) > .aq-fold__btn { display: flex; }
+}

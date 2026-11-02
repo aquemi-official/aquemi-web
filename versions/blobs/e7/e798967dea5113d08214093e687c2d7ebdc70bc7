@@ -1,0 +1,56 @@
+/* ---------- RoleLoop: the roles as bays of one twin-wall pipe loop on the navy band, a valve on each role's branch ---------- */
+.aq-role-loop-sec { }
+.aq-role-loop { position: relative; margin-top: var(--space-8); padding: var(--space-12) var(--space-12) var(--space-16); }
+.aq-role-loop__pipe { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-role-loop:not(.is-laid) .aq-role-loop__pipe { display: none; }
+.aq-role-loop__pipe path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+/* twin wall: a wide stroke in the line colour, the bore in the band's navy over it, the water down the middle */
+.aq-role-loop__wall { stroke: color-mix(in srgb, var(--on-navy) 62%, transparent); stroke-width: 11px; }
+.aq-role-loop__bore { stroke: var(--navy); stroke-width: 8px; }
+.aq-role-loop__water { stroke: var(--flow); stroke-width: 3px; }
+/* a role's bay of the loop, lit while the role is pointed at */
+.aq-role-loop__seg { stroke: var(--flow); stroke-width: 6px; stroke-opacity: 0; transition: stroke-opacity 120ms; }
+.aq-role-loop__seg.is-lit { stroke-opacity: 1; transition-duration: 180ms; }
+.aq-role-loop__sw { stroke: color-mix(in srgb, var(--on-navy) 62%, transparent); stroke-width: 9px; }
+.aq-role-loop__sb { stroke: var(--navy); stroke-width: 6px; }
+.aq-role-loop__sq { stroke: var(--flow); stroke-width: 3px; }
+.aq-role-loop__vb { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5px; }
+.aq-role-loop__vs { stroke: var(--on-navy); stroke-width: 1.5px; }
+/* closed: a filled body; status not given: dashed, and no water enters the branch */
+.aq-role-loop__stub.is-closed .aq-role-loop__vb { fill: var(--on-navy); }
+.aq-role-loop__stub.is-unset .aq-role-loop__sw { stroke-dasharray: 3 3; stroke-linecap: butt; }
+.aq-role-loop__stub.is-unset .aq-role-loop__vb, .aq-role-loop__stub.is-unset .aq-role-loop__vs { stroke: var(--on-navy-muted); stroke-dasharray: 2.5 2; }
+.aq-role-loop__stub.is-unset .aq-role-loop__sq { display: none; }
+.aq-role-loop__stub.is-lit .aq-role-loop__vb, .aq-role-loop__stub.is-lit .aq-role-loop__vs { stroke: var(--flow); }
+
+.aq-role-loop__bays { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-16); row-gap: var(--space-24); }
+.aq-role-loop__bay { min-width: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-role-loop .aq-role-loop__no { margin: 0; padding: 0 0 var(--space-2) var(--space-12); border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 30%, transparent);
+  font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy-muted); font-variant-numeric: tabular-nums; transition: border-color 180ms; }
+.aq-role-loop__no span { color: var(--on-navy); transition: color 180ms; }
+.aq-role-loop__bay.is-lit .aq-role-loop__no { border-color: var(--flow); }
+.aq-role-loop__t { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); }
+.aq-role-loop .aq-role-loop__st { margin: 0; display: flex; align-items: flex-start; gap: var(--space-2); font: 400 12px/18px var(--font-mono); color: var(--on-navy); }
+.aq-role-loop__vk { flex: none; width: var(--space-6); height: var(--space-4); margin-top: 1px; }
+.aq-role-loop__vk path { fill: none; stroke: var(--on-navy); stroke-width: 1.5px; stroke-linejoin: round; }
+.aq-role-loop__st.is-closed .aq-role-loop__vk path:first-child { fill: var(--on-navy); }
+.aq-role-loop__st.is-unset .aq-role-loop__vk path { stroke: var(--on-navy); stroke-dasharray: 2.5 2; }
+.aq-role-loop__dl { margin: var(--space-2) 0 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-role-loop__f { display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-role-loop__f dt { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-role-loop__f dd { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-navy); overflow-wrap: anywhere; }
+/* before the water reaches a bay (motion only) */
+.aq-role-loop.is-pre .aq-role-loop__bay { opacity: 0; }
+.aq-role-loop.is-pre .aq-role-loop__pipe { visibility: hidden; }
+
+@container (max-width: 1100px) {
+  .aq-role-loop { padding-inline: var(--space-8); }
+  .aq-role-loop__bays { column-gap: var(--space-12); }
+  .aq-role-loop__t { font-size: 22px; line-height: 28px; }
+}
+/* Phones: the cards stack; the loop runs down their left and back up their right, each branch off the left run */
+@container (max-width: 860px) {
+  .aq-role-loop { margin-top: var(--space-4); padding: var(--space-8) var(--space-8) var(--space-8) var(--space-12); }
+  .aq-role-loop__bays { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-16); }
+  .aq-role-loop__f dd { font-size: 14px; line-height: 22px; }
+}
