@@ -1,0 +1,273 @@
+{
+ "id": "about",
+ "section": "Company",
+ "nav_label": "About",
+ "title": "About Aquemi: a new Ontario Purified Water company | Aquemi",
+ "meta": "A new Ontario company that designs and builds one Purified Water package in polypropylene with PVC pretreatment. Company facts, the people you would work with, and how to check us.",
+ "path": "/company/about/",
+ "eyebrow": "ABOUT AQUEMI",
+ "headline": "A new Ontario company, one Purified Water package in polypropylene",
+ "lead": "Built for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers. Our team: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
+ "facts": [
+  {
+   "v": "[founding year]",
+   "l": "Year founded · corporate registration"
+  },
+  {
+   "v": "[headcount]",
+   "l": "People in the company · organization chart"
+  },
+  {
+   "v": "[number of licensed engineers]",
+   "l": "Licensed engineers · licensing body registers"
+  }
+ ],
+ "primary_cta": "Talk to an engineer",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
+ "primary_cta_link": "contact-proposal",
+ "secondary_cta": {
+  "label": "How buying from us works",
+  "link": "cmp-quality#buying"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "nav": "Company",
+   "anchor": "facts",
+   "h": "Company facts",
+   "cols": [
+    "Item",
+    "Fact",
+    "Evidence"
+   ],
+   "rows": [
+    {
+     "p": "Scope",
+     "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Not Water for Injection, pure steam or stainless steel systems; not residential or municipal",
+     "m": "",
+     "link": "systems",
+     "hl": true
+    },
+    {
+     "p": "Founded and ownership",
+     "v": "[founding year] · [ownership; any equipment maker's stake]",
+     "m": "[corporate registration, jurisdiction and number]"
+    },
+    {
+     "p": "People",
+     "v": "[headcount] in total · [headcount by discipline]",
+     "m": "Organization chart, from [quality system ready for audit, date]",
+     "link": "cmp-quality#audit"
+    },
+    {
+     "p": "Quality system",
+     "v": "[ISO 9001 status, registrar and expiry]",
+     "m": "",
+     "link": "cmp-quality#certification"
+    },
+    {
+     "p": "Insurance",
+     "v": "[general and professional liability limits, CAD]",
+     "m": "Certificates, from [quality system ready for audit, date]",
+     "link": "cmp-quality#audit"
+    },
+    {
+     "p": "Financial standing",
+     "v": "[financial standing evidence for procurement]",
+     "m": "On request"
+    },
+    {
+     "p": "Professional licences",
+     "v": "[number of licensed engineers] P.Eng. or ing. in [provinces of licence] · [engineering firm permit, by province]",
+     "m": "[licensing body registers]"
+    },
+    {
+     "p": "Head office",
+     "v": "[head office, city and province]",
+     "m": "",
+     "link": "contact-locations#locations"
+    },
+    {
+     "p": "Shop and test bay",
+     "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
+     "m": "Visit once [shop and test bay ready for visits]",
+     "link": "contact-locations#visit"
+    },
+    {
+     "p": "Systems delivered",
+     "v": "[systems delivered, by type and province]",
+     "m": "",
+     "link": "projects"
+    }
+   ],
+   "note": "A bracketed fact is not yet confirmed.",
+   "fold": 8,
+   "fold_noun": "facts",
+   "look": "colophon"
+  },
+  {
+   "type": "grid",
+   "nav": "Team",
+   "anchor": "people",
+   "h": "The people you would work with",
+   "intro": "We design and fabricate the package; membranes, electrodeionization (EDI) modules and instruments come from their makers.",
+   "items": [
+    {
+     "t": "Commercial lead",
+     "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts."
+    },
+    {
+     "t": "Industrial automation engineer",
+     "d": "[Full name] · [licence or qualification]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity.",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Modular manufacturing and design specialist",
+     "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
+     "link": "svc-fabrication"
+    }
+   ],
+   "parts": [
+    {
+     "t": "The package",
+     "by": "We design and fabricate",
+     "part": "package"
+    },
+    {
+     "t": "Instruments",
+     "by": "From their makers",
+     "part": "instruments"
+    },
+    {
+     "t": "Membranes and EDI modules",
+     "by": "From their makers",
+     "part": "modules"
+    }
+   ],
+   "look": "source-skid"
+  },
+  {
+   "type": "grid",
+   "nav": "Canada",
+   "h": "What changes for a Canadian site",
+   "items": [
+    {
+     "t": "Witness your factory acceptance test (FAT)",
+     "d": "In [shop location, city and province], once [shop and test bay ready for visits].",
+     "link": "svc-fat-sat",
+     "icon": "gauge"
+    },
+    {
+     "t": "Registration in your province",
+     "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for [pressure-rated items in the PW package].",
+     "link": "compliance#engineering",
+     "icon": "stamp"
+    },
+    {
+     "t": "Designed for Canadian feed water",
+     "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
+     "link": "sys-pretreatment",
+     "icon": "softener"
+    },
+    {
+     "t": "Service and spares",
+     "d": "From [service bases, cities], with spares in [stock location or locations].",
+     "link": "contact-locations#coverage",
+     "icon": "valve"
+    }
+   ],
+   "look": "site-tiles"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions buyers ask",
+   "items": [
+    {
+     "q": "What happens to our system if a key person leaves?",
+     "a": "The knowledge is in the records: specification, as-built drawings, [PP joint records kept], software backup, factory acceptance test (FAT) and qualification reports. You receive them at handover, so whoever takes over works from them.",
+     "link": "cmp-documentation#index",
+     "link_label": "See the documentation package"
+    },
+    {
+     "q": "Do you supply hospital, lab or industrial water?",
+     "a": "Our scope: [hospital water scope]; [lab water scope]; [industrial water scope]. Hospital reprocessing water follows CSA Z314:23 and ANSI/AAMI ST108:2023. Critical water under ST108 is looser on ions than Purified Water, tighter on microbes, and has an endotoxin limit.",
+     "link": "industries#adjacent",
+     "link_label": "See adjacent uses"
+    },
+    {
+     "q": "Do you work on other makers' systems?",
+     "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment.",
+     "link": "svc-service",
+     "link_label": "See service for other makes"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Check what we say here",
+   "items": [
+    "compliance",
+    "cmp-quality",
+    "projects",
+    "careers"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Talk to the engineer who would lead your project",
+  "body": "Send what you have. An engineer replies. Cost: [fit check cost or free].",
+  "button": "Talk to an engineer",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer",
+  "include": [
+   "Your questions",
+   "What you make, and where",
+   "Your user requirement specification (URS), if any"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "A written answer from an engineer",
+   "Answers to the questions you sent"
+  ]
+ },
+ "todo": [
+  "Founding year ([founding year]; hero fact and Company facts; one figure on every page; FD-33). The founding place is not shown: the head office row gives the location ([head office, city and province], ops/placeholder-names.md)",
+  "Corporate registration and ownership, including any equipment maker's stake ([corporate registration, jurisdiction and number], [ownership; any equipment maker's stake]; FD-33). One name now replaces the two ownership placeholders; the FAQ \"Who owns Aquemi?\" was cut because the Company facts row answers it (DR-009, DR-011 rule 2)",
+  "Headcount in total and by discipline ([headcount], [headcount by discipline]; hero fact and People row; FD-34). careers must show the same team (web/site-jobs.md § 4 row 13)",
+  "Licensed engineers: number, provinces of licence, engineering firm permit or certificate of authorization where required, and the licensing bodies' public registers ([number of licensed engineers], [provinces of licence], [engineering firm permit, by province], [licensing body registers]; FD-24, FD-34)",
+  "Team rows: [Full name] and [licence or qualification] for the commercial lead, the industrial automation engineer and the modular manufacturing and design specialist, each named with consent; titles once set; years in regulated water if wanted (FD-34). Add a row only for a real person (DR-004 rule 4). The automation engineer's former employer stays unnamed until FD-35 (DR-004 class 1)",
+  "Who backs up whom, and whether one engineer leads each project from proposal to handover (FD-34): if confirmed, the people intro may say it; the closing heading already names the engineer who would lead the project (DR-004 rule 1)",
+  "Head office, city and province ([head office, city and province]; contact-locations holds the address; FD-33). The row says \"Head office\", as contact-locations does; if engineering works from another place, FD-33 names it and the row adds it (DR-011 rule 1)",
+  "Shop and test bay: location, floor area and largest skid ([shop location, city and province], [floor area, m²], [largest skid size, m], svc-fat-sat's name; FD-33, FD-44). Test bay water flow ([test bay water, L/h]) and the other test bay limits are FAT capacity: they belong on svc-fat-sat, not here. Visits (shop row) and FAT witness (Canada block) keep [shop and test bay ready for visits] in the draft; at launch each shows only if it is filled with a date that has passed, otherwise it is removed (FD-44, DR-004 class 2, DR-006 rule 6)",
+  "Hero fact \"0 · Border crossings, shop to a Canadian site\" returns, with a basis, only once FD-33 places the shop in Canada; it holds for Canadian sites only (DR-010, FD-37). \"Built in Canada\" waits on the same decision (eyebrow, title and the Canada block heading were reworded)",
+  "Quality system status line, same wording as cmp-quality ([ISO 9001 status, registrar and expiry]; FD-48, DR-004 rule 3); the row links cmp-quality#certification, the status line's home",
+  "Insurance limits ([general and professional liability limits, CAD]; FD-12). This row is the home of the limits; cmp-quality's onboarding row points here (DR-011 rule 3)",
+  "Financial standing evidence offered to procurement, for example a bank reference or bonding capacity ([financial standing evidence for procurement]; FD-12). \"On request\" stays only once the evidence exists (DR-004 class 2)",
+  "Organization chart (People row) and insurance certificates (Insurance row) come in the quality questionnaire pack, requested on cmp-quality#audit and ready from [quality system ready for audit, date], cmp-quality's name (FD-48, FD-12). At launch each line shows only if that date is filled and has passed; otherwise the line and its link are removed (DR-004 class 2, DR-006 rule 6). The hero fact's basis, \"organization chart\", holds from the same date",
+  "Systems delivered, by type and province, or \"none yet\" ([systems delivered, by type and province]; FD-41, DR-016)",
+  "CRN: which items in the package are pressure-rated and need a CRN, for example RO membrane housings ([pressure-rated items in the PW package], the canonical name; FD-24). Who prepares and submits, and the provinces covered, stay on compliance ([Aquemi CRN process and provinces covered]); the item links compliance#engineering, the CSA B51 row's block",
+  "Service bases and spares stock locations ([service bases, cities], [stock location or locations]; contact-locations uses the same names; FD-11, FD-28)",
+  "Adjacent uses: [hospital water scope], [lab water scope], [industrial water scope], the same words as industries and ind-meddevice (FD-25, DR-002 rules 4 to 6). Its two hospital sentences are word for word ind-meddevice's hospital FAQ (DR-002 rule 4): change both together; ind-meddevice's scope sentence names the hospital scope only. The link lands on industries#adjacent, the rows' home (DR-009 rule 1). The question reads \"Do you supply hospital, lab or industrial water?\" since the pass 10 review, so a natural health product maker does not read the old \"outside drug and device manufacturing\" as excluding them",
+  "Other makers' systems ([makes and equipment types serviced]; FD-30, DR-011): question and answer are services' one-line FAQ, word for word (\"Do you work on other makers' systems?\"); it gets its yes or no once FD-30 is answered",
+  "Joint records in the key-person FAQ ([PP joint records kept], the name sys-pw, svc-cq and compliance use; FD-18): the FAQ names the joint map and log only once FD-18 is signed off",
+  "Company facts note (\"A bracketed fact is not yet confirmed.\"): draft only; it goes at launch, when no bracket is left",
+  "Work outside Canada: whether US projects are offered and how FAT, registration and service are handled (FD-37). Until then \"What changes for a Canadian site\" speaks to Canadian sites only",
+  "French-language capability: which roles work in French, which documents are offered in French, translation review ([French roles and documents]; FD-36, DR-012)",
+  "Project-facts sheet: link it from this page once it exists, with no brackets (DR-001 rule 5; FD-03, FD-05 to FD-08)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page; FD-01). At launch, if unset, the closing says \"An engineer replies in writing.\" (DR-006 rule 7)",
+  "Cost of talking to an engineer ([fit check cost or free]; contact-proposal's requests table; FD-02), the same line as home, services, projects and news; unset at launch, the cost line goes (DR-005 rule 8)",
+  "Segments in the lead (\"Built for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers\", the footer's short form word for word, DR-011 rule 3; DR-002 order, DR-017): natural health products stay named only if FD-38 confirms them as a launch segment; the footer description and ind-pharma#nhp change in the same commit",
+  "Service and spares tile (Canada block) shows a valve, not the look's default service truck, until FD-28 says how service reaches sites (vehicles and bases); then the icon may return to \"wrench\" (DR-018)",
+  "Scope row envelope (DR-021 as amended by the desk Q2 ruling; DR-013 rule 1; FD-14): \"Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.\" replaced \"Ambient Purified Water only\" (FD-14: never \"ambient\" alone). Once FD-14 names the sanitization regime and its frequency, the row adds it in the same words as sys-pw and compliance",
+  "DI or EDI (FD-21): the hero drawing label reads \"Pretreatment · RO · deionization\", which covers MISSION's DI/EDI without choosing one (DR-018 rule 2; \"DI/EDI\" as a label would need DI spelled out in the reading text, DR-003). Once FD-21 says DI, EDI or both, align the label, the people intro \"membranes, electrodeionization (EDI) modules\" and the parts label \"Membranes and EDI modules\" in one commit"
+ ],
+ "figure": {
+  "spots": [
+   "pretreatment",
+   "ro-skid",
+   "edi-stack"
+  ],
+  "label": "Pretreatment · RO · deionization"
+ }
+}

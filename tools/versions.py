@@ -49,6 +49,10 @@ CHECKPOINTS = [
     ('1f1147c', 'Pass 9b: library motion, every section concepted',
      'Motion ported from the Subframe Motion library site-wide (ambient WebGL shaders, odometer counts, interactions '
      'on every page); the 81 sections pass 9 had no concept for got their own Gemini concepts and were rebuilt from them.'),
+    ('3010d6d', 'Pass 10: copy and audience',
+     'Every page re-read for each industry and buyer role after notebook interviews and a 73-site competitor study: '
+     'natural health products get their own door, device QA its supplier block, failure-led routers, drawings that no '
+     'longer state open facts, wired form options. Design kept: the section library holds every look, 32 restored.'),
 ]
 
 # Not part of the site a visitor loads.

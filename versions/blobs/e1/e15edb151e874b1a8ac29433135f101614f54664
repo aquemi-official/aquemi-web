@@ -1,0 +1,342 @@
+{
+ "id": "svc-cq",
+ "section": "Services",
+ "nav_label": "Commissioning and qualification",
+ "title": "Purified Water system IQ, OQ and PQ to EU GMP Annex 15 | Aquemi",
+ "meta": "Commissioning, IQ and OQ of your polypropylene Purified Water package to protocols your quality unit approves, then PQ in three phases over 12 months (WHO TRS 1033, FDA guide).",
+ "path": "/services/commissioning-qualification/",
+ "eyebrow": "IQ, OQ, PQ · EU GMP ANNEX 15 · GUI-0029",
+ "headline": "IQ, OQ and a year of PQ",
+ "lead": "We commission and test your polypropylene (PP) Purified Water package on site. Your quality unit approves each protocol and first production use, after at least 2 weeks of sampling.",
+ "primary_cta": "Request a C&Q plan review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
+ "secondary_cta": {
+  "label": "See what FAT can replace",
+  "link": "svc-fat-sat#faq"
+ },
+ "blocks": [
+  {
+   "type": "steps",
+   "nav": "Stages",
+   "h": "What each stage proves",
+   "intro": "One commissioning and qualification (C&Q) plan covers every stage.",
+   "items": [
+    {
+     "t": "Commissioning",
+     "d": "Flush, pressure test, sanitization, start-up, punch list.",
+     "label": "Commissioning"
+    },
+    {
+     "t": "Factory and site acceptance tests (FAT and SAT)",
+     "d": "Tested before shipping, then on your utilities.",
+     "link": "svc-fat-sat",
+     "label": "FAT · SAT"
+    },
+    {
+     "t": "Installation qualification (IQ)",
+     "d": "Installed as designed: drawings, materials, joints, slopes, instruments.",
+     "label": "IQ",
+     "art": "piping"
+    },
+    {
+     "t": "Operational qualification (OQ)",
+     "d": "Operating limits and worst case tested.",
+     "label": "OQ"
+    },
+    {
+     "t": "Performance qualification (PQ)",
+     "d": "Required quality, reproducibly, across the seasons.",
+     "label": "PQ"
+    },
+    {
+     "t": "Periodic review",
+     "d": "Yearly review of data and changes; requalify where they point.",
+     "label": "Review"
+    }
+   ],
+   "look": "stage-tiles"
+  },
+  {
+   "type": "table",
+   "as": "roles",
+   "nav": "Who signs",
+   "anchor": "roles",
+   "h": "Who writes, who reviews",
+   "intro": "The validation master plan stays yours.",
+   "cols": [
+    "Document or activity",
+    "Written or done by",
+    "Reviewed by"
+   ],
+   "rows": [
+    [
+     "Risk assessment and C&Q plan",
+     "Aquemi drafts from your requirements (URS)",
+     "Your validation team"
+    ],
+    [
+     "FAT, SAT, IQ and OQ protocols",
+     "Aquemi",
+     "Your validation team"
+    ],
+    [
+     "IQ and OQ execution",
+     "Aquemi [executing staff: own engineers or named partner], you witness",
+     "Your validation team"
+    ],
+    [
+     "PQ protocol and sampling plan",
+     "You, or Aquemi drafts for you",
+     "Both teams and your laboratory"
+    ],
+    [
+     "PQ sampling and testing",
+     "Your operators and laboratory",
+     "Your quality control"
+    ],
+    [
+     "Alert and action levels",
+     "Aquemi recommends from the data",
+     "Your quality control"
+    ],
+    [
+     "Phase reports and final summary",
+     "Aquemi drafts from executed records",
+     "Your validation team"
+    ]
+   ],
+   "fold": 5,
+   "fold_noun": "documents",
+   "look": "signature-blocks"
+  },
+  {
+   "type": "spec",
+   "nav": "IQ and OQ",
+   "h": "IQ and OQ on site",
+   "cols": [
+    "Check",
+    "What we verify",
+    "Basis or record"
+   ],
+   "rows": [
+    {
+     "p": "IQ · Drawings and dead legs",
+     "v": "Walkdown: P&ID (piping and instrumentation diagram), isometrics, field piping",
+     "m": "Dead leg register, L/D per branch",
+     "part": "branch"
+    },
+    {
+     "p": "IQ · Joints",
+     "v": "[PP joint records kept] for [PP joining method]",
+     "m": "[PP joining standard]",
+     "part": "joint"
+    },
+    {
+     "p": "OQ · Drain on high conductivity",
+     "v": "Divert on a real conductivity rise, then return",
+     "m": "Uncompensated reading",
+     "part": "analyzer"
+    },
+    {
+     "p": "OQ · Sanitization",
+     "v": "Full [PP loop sanitization method] cycle, verified at the coldest point",
+     "m": "Residual tested before use",
+     "part": "coldest"
+    },
+    {
+     "p": "OQ · Hydraulics",
+     "v": "Every point of use open at peak demand, then minimum",
+     "m": "Positive return pressure · functional specification",
+     "part": "outlets"
+    },
+    {
+     "p": "OQ · Sequences and interlocks",
+     "v": "Forced by real condition where safe, else simulated",
+     "m": "FAT results reused where accepted",
+     "part": "panel"
+    },
+    {
+     "p": "IQ · Materials",
+     "v": "PP modules and loop, polyvinyl chloride (PVC) pretreatment; elastomers to specification",
+     "m": "[PP material certificates]; [certificates supplied for PVC parts]",
+     "part": "skid"
+    },
+    {
+     "p": "IQ · Instruments",
+     "v": "Installed, ranged, calibrated; critical ones identified",
+     "m": "Traceable via [calibration provider and accreditation held]",
+     "part": "gauge"
+    },
+    {
+     "p": "OQ · Data integrity",
+     "v": "Roles, audit trail, time sync, backup, restore",
+     "m": "Annex 11; GUI-0050; 21 CFR Part 11",
+     "part": "panel"
+    }
+   ],
+   "fold": 5,
+   "fold_noun": "checks",
+   "look": "walkdown-pins",
+   "labels": {
+    "joint": "Loop joint",
+    "analyzer": "Conductivity",
+    "coldest": "Coldest point",
+    "skid": "PP modules"
+   }
+  },
+  {
+   "type": "steps",
+   "nav": "PQ",
+   "h": "PQ in three phases",
+   "intro": "Conductivity, total organic carbon and microbial count. For example, 12 sample points over 28 days make 336 samples.",
+   "items": [
+    {
+     "t": "Phase 1",
+     "d": "At least 2 weeks of daily samples at every step and point of use. No production use.",
+     "days": 14
+    },
+    {
+     "t": "Phase 2",
+     "d": "At least 2 more weeks, same sampling, procedures in use. Production use with your approval.",
+     "hold": "Your quality unit",
+     "days": 14
+    },
+    {
+     "t": "Phase 3",
+     "d": "A reduced routine plan, trended, until the phases cover at least 12 months."
+    }
+   ],
+   "look": "pq-calendar",
+   "grid": {
+    "points": 12,
+    "days": 28,
+    "rows": "sample points",
+    "cols": "days",
+    "unit": "samples",
+    "example": true
+   },
+   "year": {
+    "weeks": 52,
+    "months": 12,
+    "label": "12 months"
+   }
+  },
+  {
+   "type": "spec",
+   "as": "gauges",
+   "nav": "Alert levels",
+   "h": "Alert levels come from your data",
+   "cols": [
+    "Level",
+    "Set at",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "Microbial action level",
+     "v": "≤ 100 CFU/mL",
+     "level": "action",
+     "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+     "hl": true,
+     "link": "compliance#limits"
+    },
+    {
+     "p": "Alert level",
+     "v": "From phases 1 and 2, confirmed on the year",
+     "m": "WHO TRS 1033, 11.3, 12.7 and 12.8"
+    }
+   ],
+   "note": "CFU: colony-forming units.",
+   "look": "cut-band"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions validation teams ask",
+   "items": [
+    {
+     "q": "Do we really have to wait a year before using the water?",
+     "a": "No. WHO TRS 1033 allows use from phase 2 when data show the required quality and your quality unit approves. The year covers seasonal feed water changes."
+    },
+    {
+     "q": "Can IQ and OQ be combined into one protocol?",
+     "a": "Yes, depending on complexity, under EU good manufacturing practice (GMP) Annex 15, 2.5 and 3.10. On a single module it saves a review cycle; on the full package we keep them apart.",
+     "link": "cmp-documentation#samples",
+     "link_label": "Request the IQ/OQ contents",
+     "intent": "IQ and OQ protocol contents"
+    },
+    {
+     "q": "We work to ASTM E2500, not IQ/OQ/PQ. Can you?",
+     "a": "Yes. Under ASTM E2500 the tests are much the same, focused on the critical aspects your risk assessment names."
+    },
+    {
+     "q": "What if an action level is exceeded during PQ?",
+     "a": "It is a deviation under your procedure. We help find the root cause (WHO TRS 1033, 12.9); resampling verifies the fix. The phase may be extended."
+    },
+    {
+     "q": "Can you qualify a system you did not build?",
+     "a": "For [makes and equipment types serviced]: we start with a system assessment of its qualification file and the installed system.",
+     "link": "svc-upgrades"
+    },
+    {
+     "q": "Natural health products: do we need IQ, OQ and PQ?",
+     "a": "GUI-0158's water sections (45 and 46) do not name IQ, OQ and PQ. They ask for criteria to qualify and monitor treated water, test records, and calibrated, maintained equipment. Our scope for that evidence: [NHP qualification scope]. Where your quality assurance person (QAP) asks for IQ, OQ and PQ, the path on this page applies.",
+     "link": "ind-pharma#nhp",
+     "link_label": "Water by product line"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after qualification",
+   "items": [
+    "svc-fat-sat",
+    "sys-monitoring",
+    "svc-upgrades",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your requirements, get a C&Q plan",
+  "body": "An engineer replies. Cost: [document review cost].",
+  "button": "Request a C&Q plan review",
+  "link": "contact-proposal",
+  "intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
+  "include": [
+   "No URS yet? What you make and your flow",
+   "Your URS, validation master plan, protocol templates",
+   "Points of use and demand pattern"
+  ],
+  "returns": [
+   "A draft C&Q plan, or a qualification scope",
+   "IQ/OQ tests and reusable FAT tests",
+   "A PQ sampling plan"
+  ],
+  "turnaround": "[document review turnaround, working days]"
+ },
+ "todo": [
+  "Who executes IQ and OQ: Aquemi's own engineers or a named partner ([executing staff: own engineers or named partner]; FD-46, FD-34; services uses the same name)",
+  "IQ/OQ days on site for the full package, pretreatment to distribution ([IQ/OQ on site, days]; hero fact, DR-010; FD-08; services uses the same name); add a single-module figure only if it differs",
+  "PQ support scope: whether Aquemi staff take samples on site in phases 1 and 2 ([on-site PQ sampling by Aquemi, yes or no]) and through which laboratory ([contract laboratory, if Aquemi arranges one]) (FD-46). Until then the roles table says your operators and laboratory sample and test",
+  "Which C&Q documents Aquemi drafts (risk assessment, C&Q plan, protocols, PQ protocol, reports, alert level recommendation; roles table and FAQ; FD-46) and whether it writes them in client templates. \"In your template\" (roles table) and \"in your model\" (ASTM E2500 answer) were cut until confirmed, as on svc-design",
+  "FAT practice (FD-45): the FAT and SAT stage says \"Tested before shipping\"; add \"with water\" only once a wet FAT of every skid is policy (svc-fat-sat's [100 %] fact)",
+  "C&Q plan review: cost and turnaround ([document review cost], [document review turnaround, working days]; the names in contact-proposal's requests table; FD-01, FD-02)",
+  "Calibration provider and its accreditation, for example ISO/IEC 17025 ([calibration provider and accreditation held]; svc-service's name; FD-32)",
+  "Qualification and requalification of systems Aquemi did not build, and of which makes ([makes and equipment types serviced]; FD-30; the full answer lives on svc-service and svc-upgrades)",
+  "PP joining method, joint records kept and the PP joining standard checked at IQ ([PP joining method], [PP joint records kept], [PP joining standard], the name compliance and svc-fabrication use; FD-18). Joint records, for example the joint map and per-joint log; the example stays out of the brackets",
+  "Material certificates verified at IQ ([PP material certificates], [certificates supplied for PVC parts]; the names compliance, cmp-quality and sys-pretreatment use; FD-17)",
+  "PP loop sanitization method proven at OQ, with its contact time and residual test ([PP loop sanitization method]; FD-14, DR-013)",
+  "A real qualification project (phase dates, deviations, water release date) before any case block (DR-016, FD-42)",
+  "NHP qualification scope ([NHP qualification scope]; FD-46; new in pass 10, SITE-PLAN 7): what Aquemi delivers for a natural health product site under GUI-0158 sections 45 and 46 (qualification criteria for the treated water, test record templates, calibration and maintenance SOPs for the purification system), and whether the drug IQ/OQ/PQ path is offered when the QAP asks for it. The FAQ states GUI-0158's own terms (checked against industries/natural-health-products.md, IPH-02, IPH-05, desk ruling Q9); \"dry-dose lines need only documented rinse control\" waits on FD-20 and stays off this page. At launch an unset scope drops that sentence, the rest of the answer stands",
+  "Pass 10, intent I6 (SITE-PLAN 4.5): \"Request the IQ/OQ contents\" (cmp-documentation#samples, \"IQ and OQ protocol contents\") sits on the FAQ \"Can IQ and OQ be combined\" because the walkdown-pins look of \"IQ and OQ on site\" renders no link. Specimens wait on FD-47: at launch, with no specimen, the FAQ link goes (DR-006 rule 6)"
+ ],
+ "facts": [
+  {
+   "v": "[IQ/OQ on site, days]",
+   "l": "On-site testing · full package"
+  }
+ ]
+}

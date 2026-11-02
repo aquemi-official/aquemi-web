@@ -1,0 +1,311 @@
+{
+ "id": "ind-cdmo",
+ "section": "Industries",
+ "nav_label": "Contract manufacturing (CDMO)",
+ "title": "Purified Water systems for CDMOs and contract manufacturers | Aquemi",
+ "meta": "Polypropylene Purified Water package for CDMOs and natural health product contract makers: stricter of USP and Ph. Eur., client audit pack, redundancy. No WFI.",
+ "path": "/industries/cdmo/",
+ "eyebrow": "CONTRACT MANUFACTURING · USP · PH. EUR.",
+ "headline": "One water system, every client's auditor",
+ "lead": "Our polypropylene Purified Water package comes with polyvinyl chloride (PVC) pretreatment. It is designed to the stricter of USP and Ph. Eur. on each attribute, and to the client limits written into your specification.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I know my product, not my water spec|CDMO or contract manufacturing",
+ "secondary_cta": {
+  "label": "See the client audit pack",
+  "link": "#audit-pack"
+ },
+ "facts": [
+  {
+   "v": "[severity 1 on-site response time, hours]",
+   "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Where to start",
+   "h": "Start from your situation",
+   "cols": [
+    "Your situation",
+    "What you need",
+    "Systems",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "A tech transfer for a new client program",
+     "Spare capacity and a new outlet, qualified before process performance qualification (PPQ)",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Upgrades: system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "Clients filing in Canada, the US and Europe",
+     "Stricter of USP and Ph. Eur., per attribute",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Purified Water limits",
+      "link": "compliance#limits"
+     }
+    ],
+    [
+     "A client audit finding or questionnaire gap",
+     "The client’s quality agreement (GUI-0001 C.02.012) at risk; first, evidence on design, trends and data integrity",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades: after an observation",
+      "link": "svc-upgrades#observation"
+     }
+    ],
+    [
+     "One generation train: an outage stops several clients",
+     "Supply to every client program at risk; first, storage for your longest repair, standby pumps, duplex trains",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Redundancy options",
+      "link": "ind-cdmo#redundancy"
+     }
+    ],
+    [
+     "Natural health products or supplements for brand owners",
+     "Potable at minimum; PW where your specification calls for it",
+     {
+      "t": "PW generation, if your specification asks",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Pharmaceutical: natural health products",
+      "link": "ind-pharma#nhp"
+     }
+    ]
+   ],
+   "look": "suite-loop"
+  },
+  {
+   "type": "docs",
+   "nav": "Audit pack",
+   "anchor": "audit-pack",
+   "h": "The client audit pack",
+   "intro": "One pack per client and period: [reporting by suite, outlet and date].",
+   "items": [
+    {
+     "t": "System description",
+     "key": true,
+     "d": "PW generation, loops, outlets by suite, sanitization",
+     "part": "ro"
+    },
+    {
+     "t": "Compliance matrix",
+     "key": true,
+     "d": "Each USP, Ph. Eur. and client limit: design value and where it is tested",
+     "part": "sample"
+    },
+    {
+     "t": "Qualification summary",
+     "d": "Factory acceptance test to performance qualification, with deviations and approvals",
+     "part": "skid"
+    },
+    {
+     "t": "Trend reports",
+     "d": "Conductivity, total organic carbon and microbial counts against alert and action levels",
+     "part": "analyzer"
+    },
+    {
+     "t": "Excursion summary",
+     "d": "Excursions by outlet and date, with the batches that used the water; your quality unit assesses product impact",
+     "part": "outlet"
+    },
+    {
+     "t": "Change log",
+     "d": "Changes since qualification, with risk assessment and requalification scope",
+     "part": "tiein"
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "documents",
+   "look": "audit-skid",
+   "corner": "Client · period"
+  },
+  {
+   "type": "options",
+   "as": "modules",
+   "nav": "Redundancy",
+   "anchor": "redundancy",
+   "h": "Redundancy that keeps clients supplied",
+   "base": "Shared site loop",
+   "items": [
+    {
+     "t": "Duplex generation",
+     "spot": "ro-skid",
+     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
+     "part": "trains"
+    },
+    {
+     "t": "N+1 pumps",
+     "spot": "pump",
+     "d": "Standby pump on each loop, automatic changeover: [duty and standby pumps, standard or option].",
+     "part": "pumps"
+    },
+    {
+     "t": "Storage autonomy",
+     "spot": "storage-tank",
+     "d": "Tank sized from peak demand and your longest credible repair, in hours of supply.",
+     "part": "tank"
+    },
+    {
+     "t": "Sanitize between campaigns",
+     "spot": "loop",
+     "d": "[PP loop sanitization method] in campaign gaps, residual tested before use.",
+     "link": "sys-storage#sanitization",
+     "part": "tank"
+    },
+    {
+     "t": "Spares on your site",
+     "spot": "wrench",
+     "d": "Critical spares on a service plan: [kit on site, replenished after use].",
+     "link": "svc-service",
+     "part": "spares"
+    },
+    {
+     "t": "Room for new programs",
+     "spot": "pid",
+     "d": "Spare skid space and valved tie-ins for expected programs, qualified with the original system.",
+     "part": "tiein"
+    }
+   ],
+   "fold": 3,
+   "fold_noun": "options",
+   "look": "duplex-trains",
+   "trains": [
+    "runs",
+    "sanitized",
+    "Swap trains"
+   ]
+  },
+  {
+   "type": "steps",
+   "nav": "Tech transfer",
+   "h": "From signed program to released water",
+   "items": [
+    {
+     "t": "Water scope review",
+     "d": "From your products, markets and PPQ date: the water specification, in [scope review turnaround, working days]."
+    },
+    {
+     "t": "Change control",
+     "d": "Before design: change description, risk assessment and requalification scope for you and each affected client."
+    },
+    {
+     "t": "Build and tie in",
+     "d": "New outlets or a skid, built by us; tie-in in a campaign gap or shutdown."
+    },
+    {
+     "t": "Release",
+     "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
+    }
+   ],
+   "look": "tie-in-run"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions contract manufacturers ask",
+   "items": [
+    {
+     "q": "A client needs WFI, stainless or a hot-held loop. What then?",
+     "a": "We supply Purified Water (PW) in polypropylene only: no Water for Injection (WFI), pure steam or stainless steel systems. A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]. A standard requiring stainless rules out polypropylene, unless it allows exceptions.",
+     "link": "sys-storage#sanitization",
+     "link_label": "Compare sanitization methods"
+    },
+    {
+     "q": "Who will audit the water system?",
+     "a": "Health Canada inspects under your establishment licence (GUI-0001); the FDA, when a client sells in the US. Each client's quality unit audits too, routinely and for cause. Natural health product sites follow GUI-0158 under their site licence."
+    },
+    {
+     "q": "Who owns the water data, us or our clients?",
+     "a": "Usually you: the water system is a site utility. Each quality agreement sets what that client receives (GUI-0001 C.02.012). Per-client reports: [reporting by suite, outlet and date].",
+     "link": "sys-monitoring",
+     "link_label": "No remote access needed"
+    },
+    {
+     "q": "Can you attend our clients' audits?",
+     "a": "Your clients audit the water system as part of your site. Our attendance as your supplier, in person or by video: [client audit attendance and terms]."
+    },
+    {
+     "q": "Our system is another maker's, with paper records. Where do we start?",
+     "a": "For [makes and equipment types serviced]: with a system assessment of drawings, qualification file, trends and data integrity against your clients' markets.",
+     "link": "svc-upgrades",
+     "link_label": "See the system assessment"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "compliance",
+    "cmp-quality",
+    "projects",
+    "svc-service"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your programs and uptime target",
+  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I know my product, not my water spec|CDMO or contract manufacturing",
+  "include": [
+   "Dosage forms per client program",
+   "Markets and any stricter client limits",
+   "Peak demand by suite, L/h",
+   "Longest acceptable outage, hours, and its cost"
+  ],
+  "returns": [
+   "The water specification",
+   "The redundancy to hold it",
+   "The qualification scope"
+  ],
+  "turnaround": "[scope review turnaround, working days]"
+ },
+ "todo": [
+  "Target segment at launch (FD-38): contract manufacturers are tier A, second after pharmaceutical (DR-002). Confirm this page serves drug CDMOs and natural health product and supplement contract makers (router row 5)",
+  "Water scope review turnaround and cost ([scope review turnaround, working days], tech transfer step 1 and closing; [scope review cost or free], closing): defined in contact-proposal's requests table, same names as industries and home (FD-01, FD-02)",
+  "Severity 1 on-site response time, hours, on a service plan, inside the service coverage area ([severity 1 on-site response time, hours], [service coverage area]; hero fact in svc-service's words, per plan on svc-service; FD-27, FD-28). At launch an unset hero fact goes (DR-010 rule 5)",
+  "Stricter-of design basis (lead, router row 2) and the client limits written into the specification (lead; bounded, never \"any tighter client limit\", since a WFI, hot-held or stainless client is not met) and in the compliance matrix: confirm as Aquemi practice, with compliance's limits intro; one wording on home, industries and compliance (DR-011)",
+  "Duplex train shares ([duplex train shares offered], redundancy option 1; sys-pw's duplex option carries the same name in the same sentence; FD-20, FD-21): the share of peak demand each train covers, for example 50 % or 100 %, and whether both are offered. One wording on both pages (DR-011)",
+  "Duty and standby pumps, standard or option ([duty and standby pumps, standard or option]; same name as sys-storage; FD-21)",
+  "Loop sanitization method used in campaign gaps ([PP loop sanitization method]; same name as home, systems and sys-storage; FD-14). Any temperature wording follows DR-013",
+  "[whether we quote PVDF] (FAQ 4): whether Aquemi quotes a PVDF loop where a client needs a hot-held loop, or refers the buyer; same name as sys-storage and svc-upgrades (FD-15, DR-013 rule 2)",
+  "Critical spares kit on site ([kit on site, replenished after use], redundancy option 5): svc-service's name, its plans table's tier 3 term (tier 2: [kit held at Aquemi or on site]). Which plans include an on-site kit and on what terms, one wording with svc-service (FD-11, FD-29; DR-011). At launch an unset kit drops the option (DR-004 class 2)",
+  "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer step 4; FD-08). Only a figure Aquemi commits to (DR-005 rule 5)",
+  "Reporting by suite, outlet and date, and how one client's data is kept from another's ([reporting by suite, outlet and date]; audit pack intro, FAQ 2; FD-23). Align with sys-monitoring",
+  "Client audit pack: part of the handover scope or an option, and whether service plans refresh its trend reports (FD-47). A specimen pack (Aquemi-written, so named until a delivered system exists), once written, becomes the hero secondary's target (DR-006 rule 6); until then the secondary jumps to the block",
+  "Change package (tech transfer step 2): which documents Aquemi drafts for the change control and for each affected client (FD-46); a specimen change package once written (FD-47)",
+  "Client audit attendance: whether Aquemi attends clients' audits and inspections as the supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ 3; FD-48). At launch the question goes if unset (DR-004 class 2, DR-006 rule 6). The answer keeps its basis (clients audit the water system as part of the site) around the bracket (DR-024 as extended by the desk ruling)",
+  "Capability sheet and questionnaire support for CDMO business development, and whether service plans include it (FD-48). Not offered on the page until it exists",
+  "References at contract manufacturers: 'none yet' until a client agrees in writing (FD-41). No reference call or case block on this page until then (DR-004, DR-016)",
+  "A contract manufacturing case study with a measured outcome, published only with the client's written approval; then add a case block (FD-42, DR-016)",
+  "WFI: the scope line moved from the lead to the first FAQ, worded as the scope (DR-021 as amended by the pass 10 desk ruling); its full answer is industries#faq. PW sized as feed to a client's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it",
+  "Makes and equipment types assessed on other builders' systems ([makes and equipment types serviced]; FAQ 5; same name on home, services, svc-service, svc-upgrades, svc-cq, about, contact-service and contact-proposal; FD-30). The full answer lives on svc-upgrades",
+  "Redundancy: the \"Sanitize between campaigns\" card now lights the storage tank and loop side, not the train out of service, and its train clause went (FD-20 open; DR-018). Launch rule: if FD-20 says duplex trains are not offered, drop the duplex card and set the look's trains field to [] so the \"Swap trains\" control is not drawn, and cut \", duplex trains\" from router row 4",
+  "Router (DR-020 as amended): rows 3 and 4 name the requirement at risk and the first answer; row 4 starts at its on-page answer (ind-cdmo#redundancy); row 5 links sys-pw. Anchors on this page: audit-pack, redundancy"
+ ]
+}

@@ -1,0 +1,393 @@
+{
+ "id": "ind-meddevice",
+ "section": "Industries",
+ "nav_label": "Medical devices",
+ "title": "Medical device water: Purified Water for final rinse | Aquemi",
+ "meta": "Polypropylene Purified Water (PW) package for medical device final rinse, built to your endotoxin (USP <161>) and bioburden limits at the washer inlet. No WFI.",
+ "path": "/industries/medical-devices/",
+ "eyebrow": "MEDICAL DEVICES · USP <161>",
+ "headline": "Final rinse water you can defend at audit",
+ "lead": "A polypropylene Purified Water (PW) package with PVC pretreatment, built to your endotoxin and bioburden limits at the washer inlet.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I know my product, not my water spec|Medical devices",
+ "secondary_cta": {
+  "label": "Supplier quality checks",
+  "link": "#supplier-quality"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Where to start",
+   "h": "Start from your situation",
+   "cols": [
+    "Your situation",
+    "What you need",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "Endotoxin or bioburden drifting at the washer inlet",
+     "Your rinse water limit at risk; first, assess loop, sample point and trends",
+     {
+      "t": "Out-of-trend results",
+      "link": "svc-upgrades#observation"
+     }
+    ],
+    [
+     "Bioburden rising, a dose audit at risk",
+     "Rinse water bioburden adds to device bioburden (ISO 11737-1, ISO 11137-2); first, assess the supply",
+     {
+      "t": "Upgrades: system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "A new device or line",
+     "Rinse water limits worked back from your device limits",
+     {
+      "t": "Process design",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "A supplier questionnaire or audit due",
+     "Our quality system status, audit access and quality agreement",
+     {
+      "t": "Supplier quality",
+      "link": "ind-meddevice#supplier-quality"
+     }
+    ],
+    [
+     "A first PW system for a small plant",
+     "Cost, scope and your team’s first year",
+     {
+      "t": "Your first PW system",
+      "link": "industries#first-system"
+     }
+    ]
+   ],
+   "look": "numeral-index"
+  },
+  {
+   "type": "table",
+   "as": "grades",
+   "nav": "Grade by step",
+   "anchor": "grades",
+   "h": "Water grade by process step",
+   "intro": "Common practice, not a rule: your risk assessment sets the grade per step.",
+   "cols": [
+    "Process step",
+    "Typical water",
+    "What sets it"
+   ],
+   "rows": [
+    [
+     "Intermediate rinses; final rinse, intact-skin devices",
+     "PW",
+     "Your cleaning validation; ISO 13485 7.5.2"
+    ],
+    [
+     "Final rinse, radiation or ethylene oxide sterilized",
+     "PW with a microbial action level",
+     "ISO 11737-1 bioburden; ISO 11137-2 dose audits; ISO 11135"
+    ],
+    [
+     "Final rinse, blood or lymph contact",
+     "PW with a written endotoxin limit, or Water for Injection (WFI)",
+     "20.0 endotoxin units per device (USP <161>); tested to USP <85>"
+    ],
+    [
+     "Final rinse, cerebrospinal fluid contact",
+     "WFI, or water held to its endotoxin limit",
+     "2.15 endotoxin units per device (USP <161>)"
+    ]
+   ],
+   "look": "grade-mains",
+   "lanes": [
+    {
+     "id": "pw",
+     "t": "Purified Water (PW)"
+    },
+    {
+     "id": "wfi",
+     "t": "Water for Injection (WFI)",
+     "note": "We do not supply WFI",
+     "off": true
+    }
+   ],
+   "taps": [
+    [
+     "pw"
+    ],
+    [
+     "pw"
+    ],
+    [
+     "pw",
+     "wfi?"
+    ],
+    [
+     "wfi",
+     "pw?"
+    ]
+   ]
+  },
+  {
+   "type": "prose",
+   "as": "explainer",
+   "nav": "At the washer",
+   "h": "Where rinse water reaches the device",
+   "ground": "light",
+   "figure": {
+    "kind": "art",
+    "art": "ind-meddevice"
+   },
+   "points": [
+    {
+     "t": "Supply from the loop",
+     "at": [
+      86,
+      30
+     ],
+     "d": "Washers filling at once drop loop pressure. We size storage and pumps to your fill profile."
+    },
+    {
+     "t": "Washer inlet",
+     "at": [
+      82,
+      64
+     ],
+     "d": "Specification and sample point here; any point-of-use filter integrity tested, changed on data."
+    },
+    {
+     "t": "Wash chamber",
+     "at": [
+      52,
+      70
+     ],
+     "d": "Warm water standing between batches grows biofilm; validate a drain-and-refill rule."
+    }
+   ],
+   "look": "washer-trace"
+  },
+  {
+   "type": "spec",
+   "nav": "Supplier quality",
+   "anchor": "supplier-quality",
+   "h": "Qualifying us as your supplier",
+   "intro": "ISO 13485:2016 clause 7.4 puts us under your purchasing controls.",
+   "cols": [
+    "Check",
+    "Our answer",
+    "Where"
+   ],
+   "rows": [
+    {
+     "p": "Quality system",
+     "v": "ISO 9001: [ISO 9001 status, registrar and expiry]. ISO 13485: [ISO 13485 status, registrar and expiry].",
+     "link": "cmp-quality#certification"
+    },
+    {
+     "p": "Questionnaire and audit",
+     "v": "Your questionnaire completed; audits from [quality system ready for audit, date].",
+     "link": "cmp-quality#audit",
+     "link_label": "Send your questionnaire",
+     "intent": "Your questionnaire, completed"
+    },
+    {
+     "p": "Quality agreement",
+     "v": "Your template, marked up within [quality agreement mark-up turnaround, working days]."
+    },
+    {
+     "p": "Documents and traceability",
+     "v": "Each turnover document and who approves it",
+     "link": "cmp-documentation#index"
+    },
+    {
+     "p": "Data integrity",
+     "v": "Audit trail and access control, clause by clause",
+     "link": "sys-monitoring#data-integrity"
+    },
+    {
+     "p": "Clause-by-clause matrix",
+     "v": "Each standard, with the document that proves it",
+     "link": "compliance#map"
+    },
+    {
+     "p": "Change notification",
+     "v": "Changes to parts, materials and software: [change notification to clients: scope and notice]."
+    },
+    {
+     "p": "Our own suppliers",
+     "v": "What we require of the parts and materials we buy",
+     "link": "cmp-quality#suppliers",
+     "link_label": "What we require from suppliers"
+    }
+   ],
+   "look": "colophon"
+  },
+  {
+   "type": "grid",
+   "nav": "What we build",
+   "h": "Systems for device plants",
+   "items": [
+    {
+     "t": "PW generation",
+     "icon": "ro-membrane",
+     "d": "Final rinse water to your written endotoxin limit.",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "icon": "loop",
+     "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "tag": "USP <1231>",
+     "link": "sys-storage#sanitization"
+    },
+    {
+     "t": "Monitoring and controls",
+     "icon": "conductivity",
+     "d": "Conductivity and total organic carbon trended against your alert and action levels.",
+     "tag": "Audit trail",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Upgrades and retrofits",
+     "icon": "valve",
+     "d": "Your existing system assessed, then upgraded under your change control.",
+     "tag": "Change control",
+     "link": "svc-upgrades"
+    }
+   ],
+   "look": "standard-tiles"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Auditors",
+   "h": "Who audits your water system",
+   "cols": [
+    "Auditor",
+    "What they read",
+    "Where we answer it"
+   ],
+   "rows": [
+    [
+     "Health Canada, through MDSAP (Class II to IV)",
+     "ISO 13485:2016: 6.3, 6.4.2, 7.5.2, 7.5.6, 7.5.7 and 7.6 calibration",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "FDA",
+     "QMSR (21 CFR 820) since 2026, built on ISO 13485; Part 11",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "EU notified body",
+     "EU MDR 2017/745 Annex I, 10.2 and 11, against EN ISO 13485",
+     {
+      "t": "Documentation package",
+      "link": "cmp-documentation"
+     }
+    ],
+    [
+     "Sterilization reviewer",
+     "ISO 11737-1; ISO 11137-2 or ISO 11135; ISO 17665",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "Drug inspector, combination products",
+     "Drug part: GUI-0001, or 21 CFR Part 4 with Part 211",
+     {
+      "t": "Pharmaceutical",
+      "link": "ind-pharma"
+     }
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "auditors",
+   "look": "audit-manifold"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions device teams ask",
+   "items": [
+    {
+     "q": "Do we need WFI for our final rinse?",
+     "a": "Only if your risk assessment says so, as is common for cerebrospinal fluid contact. For blood or lymph contact, PW with a written endotoxin limit is usual. Our package is polypropylene with polyvinyl chloride (PVC) pretreatment, not WFI, pure steam, stills or stainless steel. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats."
+    },
+    {
+     "q": "Our rinse water meets USP PW. Is that enough for implants?",
+     "a": "Not on its own. The Purified Water (PW) monograph sets no endotoxin limit, and its microbial action level (USP <1231>) is guidance only. Write both into your water specification and sample at the washer inlet."
+    },
+    {
+     "q": "Is the water system validated or qualified?",
+     "a": "Qualified. You validate the cleaning process (ISO 13485:2016, 7.5.6), for example to ASTM F3127. The water system is qualified by installation and operational qualification (IQ, OQ), then performance qualification (PQ) from routine sampling.",
+     "link": "svc-cq#roles",
+     "link_label": "See who writes, who reviews"
+    },
+    {
+     "q": "Do you supply water for hospital reprocessing?",
+     "a": "Our scope: [hospital water scope]. Hospital reprocessing water follows CSA Z314:23 and ANSI/AAMI ST108:2023. Critical water under ST108 is looser on ions than Purified Water, tighter on microbes, and has an endotoxin limit.",
+     "link": "industries#adjacent",
+     "link_label": "See adjacent uses"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "compliance",
+    "cmp-quality",
+    "cmp-documentation",
+    "projects"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your devices and release limits",
+  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I know my product, not my water spec|Medical devices",
+  "include": [
+   "Device types, class and patient contact",
+   "Sterilization method and its validation standard",
+   "Release limits and extraction volume, mL",
+   "Washer fills per hour, L per fill"
+  ],
+  "turnaround": "[scope review turnaround, working days]",
+  "returns": [
+   "Rinse water limits from your device limits",
+   "The PW package to hold them",
+   "The qualification scope"
+  ]
+ },
+ "todo": [
+  "Target segments at launch (FD-38): medical device makers are tier A3, after pharmaceutical and CDMO (DR-002); confirm",
+  "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]; FD-01) is defined in contact-proposal's requests table and shown here as the figure only, as on industries",
+  "Quality system status lines (supplier quality block, #supplier-quality; FD-48): [ISO 9001 status, registrar and expiry] (the name cmp-quality and about use) and [ISO 13485 status, registrar and expiry] (new, SITE-PLAN section 7). Status lines, never badges (DR-004 rule 3, DR-018); if FD-48 chooses it, \"QMS built to ISO 9001; certification targeted for [date]; audit us now\" (DR-022 rule 2). No ISO label in an eyebrow, heading or meta until certified. The certification FAQ was cut: its answer lives in the block (DR-022 rule 1)",
+  "References (FD-41) and a device case study with a measured outcome (FD-42): no reference offer or case block until a client agrees in writing (DR-004, DR-016)",
+  "Adjacent-use scope (hospital FAQ; FD-25, DR-002 rules 4 and 6): [hospital water scope], the name on industries and about (ops/placeholder-names.md in the library), for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor. The two hospital sentences, the link (industries#adjacent, the rows' home) and its label are word for word about's adjacent-use FAQ (DR-002 rule 4): change both together. The scope sentence names only the hospital scope, the use this question asks about",
+  "PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it",
+  "Point-of-use filters or ultrafiltration at the washer inlet (explainer; FD-21, 'point-of-use UF for device rinse'): whether the package supplies them; sys-pw lists ultrafiltration after deionization as an option",
+  "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (IMD-71, IMD-70, IMD-72 in the library's sources/IMD.json); the QMSR took effect on 2 February 2026 (IMD-17); re-check at each new edition",
+  "Supplier quality block (DR-022): [quality system ready for audit, date] (cmp-quality's name; FD-48), [quality agreement mark-up turnaround, working days] (FD-48) and [change notification to clients: scope and notice] (FD-48, SITE-PLAN section 7). At launch a row whose value is still a bracket drops (DR-004 class 2, DR-024 rule 6), except the quality system row: it is the first check a device QA head makes (desk Q5, DR-022), so it stays and FD-48 must set its status line before launch. Its links go to each answer's home, never a copy (DR-009): cmp-quality#certification, cmp-quality#audit (intent \"Your questionnaire, completed\"), cmp-quality (what we require from suppliers: the page top until cmp-quality anchors that table, then link the anchor), cmp-documentation#index, sys-monitoring#data-integrity, compliance#map",
+  "Router (DR-020 as amended): the dose-audit row carries the cut FAQ's answer (ISO 11737-1, ISO 11137-2); the drifting row lands on svc-upgrades#observation, labelled \"Out-of-trend results\"; the supplier row names what the reader checks rather than repeating the block intro (DR-009). Anchors on this page: grades, supplier-quality",
+  "Scope line (DR-021 as amended): the lead names the package only; the exclusion lives in the first FAQ (\"Do we need WFI for our final rinse?\"), worded as an envelope with DR-013 rule 1's rating and stills (DR-021 rule 5)"
+ ]
+}

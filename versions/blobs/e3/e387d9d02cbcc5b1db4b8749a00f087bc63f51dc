@@ -1,0 +1,325 @@
+{
+ "id": "cmp-documentation",
+ "section": "Compliance",
+ "nav_label": "Documentation package",
+ "title": "Turnover package and validation documents | Aquemi",
+ "meta": "Every document delivered with our polypropylene Purified Water package, by stage: URS compliance matrix, P&IDs, material certificates, joint records, FAT and IQ/OQ protocols. Request an Aquemi-written specimen package.",
+ "path": "/compliance/documentation/",
+ "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GUI-0029 · GAMP 5",
+ "headline": "Every document your auditor asks for",
+ "lead": "We write each document as we design, build and test your polypropylene Purified Water package. Each line of your user requirement specification (URS) traces to proof. Device makers validate processes with them (ISO 13485:2016, 7.5.6).",
+ "primary_cta": "Request a specimen package",
+ "secondary_cta": {
+  "label": "See what each document proves",
+  "link": "compliance#map"
+ },
+ "blocks": [
+  {
+   "type": "docs",
+   "nav": "Index",
+   "anchor": "index",
+   "h": "The turnover package, section by section",
+   "intro": "Documents handed over with your system.",
+   "items": [
+    {
+     "t": "Index and project summary",
+     "d": "Register with current revisions, scope, tag list, connection points (battery limits)"
+    },
+    {
+     "t": "Requirements and design basis",
+     "key": true,
+     "d": "URS compliance matrix, basis of design, risk assessment, design review report, traceability matrix, commissioning and qualification (C&Q) plan"
+    },
+    {
+     "t": "Specifications",
+     "d": "Functional and design specifications, alarm list, Part 11 and Annex 11 assessment"
+    },
+    {
+     "t": "Drawings and calculations",
+     "d": "Piping and instrumentation diagrams (P&IDs), general arrangement, isometrics, process flow diagram, balances, membrane projections, loop hydraulics"
+    },
+    {
+     "t": "Materials and components",
+     "d": "[PP material certificates] by lot, to [PP material standard]; [elastomer certificates per compound]; [certificates supplied for PVC parts]; media, resin and component certificates"
+    },
+    {
+     "t": "Fabrication and joining",
+     "d": "Fabrication and inspection plan; [PP joining method] procedure, welder qualifications, [PP joint records kept]"
+    },
+    {
+     "t": "Cleaning and drainability",
+     "d": "Slope survey; dead leg register to [dead leg design limit, L/D]; spray coverage test; cleaning certificate after [pre-commissioning flush and cleaning procedure for PP]"
+    },
+    {
+     "t": "Pressure equipment and panels",
+     "d": "Pressure tests to [PP pressure test method]. Canadian registration number (CRN) under CSA B51 and vessel data reports, where required. Panel certification or field evaluation"
+    },
+    {
+     "t": "Instruments and calibration",
+     "d": "Calibration certificates, traceable via [calibration provider and accreditation held]; total organic carbon system suitability, where an analyzer is fitted; vent filter integrity test"
+    },
+    {
+     "t": "Software",
+     "d": "Version and checksum record, code review, baseline backup, audit trail review, backup and restore procedure"
+    },
+    {
+     "t": "Testing and qualification",
+     "d": "Factory and site acceptance test (FAT, SAT), installation, operational and performance qualification (IQ, OQ, PQ) protocols and reports. Deviation logs, sanitization records."
+    },
+    {
+     "t": "Operation, maintenance and training",
+     "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first [months of operation], training records"
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "sections",
+   "look": "index-sheet"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "By stage",
+   "ground": "dark",
+   "h": "What each stage issues",
+   "intro": "Your proposal lists your system's subset.",
+   "cols": [
+    "Stage",
+    "Your step, and who approves",
+    "Documents issued"
+   ],
+   "rows": [
+    [
+     "Specify and design · Annex 15, 3.3",
+     "Design qualification (DQ). Your quality unit approves DQ; your engineering lead, drawings.",
+     "URS compliance matrix; Basis of design; Risk assessment; P&IDs; Functional specification; Design review report; C&Q plan; Traceability matrix"
+    ],
+    [
+     "Fabrication · Annex 15, 3.9",
+     "Installation qualification (IQ) evidence. Both parties sign the inspection plan; your validation team verifies records at IQ.",
+     "Fabrication and inspection plan; Material log and certificates; Welder qualifications; [PP joint records kept]; Pressure test and cleaning records"
+    ],
+    [
+     "FAT and SAT · Annex 15, 3.6; GUI-0029, 8.1",
+     "Tests your quality unit agrees to reuse in IQ and OQ. It approves each protocol before execution.",
+     "Approved protocols; Executed protocols with raw data; Deviation log; FAT release decision; SAT report; Code review; Software version record"
+    ],
+    [
+     "Qualification · Annex 15, 3.8–3.14",
+     "IQ, OQ and PQ. Your quality unit approves each protocol and report.",
+     "IQ and OQ protocols and reports; Dead leg register and slope survey; Sanitization records; PQ protocol, sampling plan, phase reports; Proposed alert and action levels"
+    ],
+    [
+     "Handover",
+     "Your system owner accepts the package; maintenance works from it.",
+     "Document register and punch list; As-built drawings; Calibration certificates; Software backup; Operation and maintenance manual; Draft procedures; Spare parts list"
+    ],
+    [
+     "Service and change · Annex 15, 4.1 and 11; GUI-0029, 7",
+     "Periodic review; changes go through your change control.",
+     "Signed service reports; Calibration certificates; Annual system review; Updated as-builts; Change-scoped test records"
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "stages",
+   "look": "stage-stacks"
+  },
+  {
+   "type": "steps",
+   "nav": "Review cycle",
+   "h": "How each document reaches your file",
+   "items": [
+    {
+     "t": "Draft and review",
+     "d": "Issued at its stage, numbered; your team comments within [standard review period, working days]."
+    },
+    {
+     "t": "Revision",
+     "d": "We answer each comment in a log that stays with the document, then reissue."
+    },
+    {
+     "t": "Approval",
+     "d": "Your quality unit approves protocols before execution, specifications at their design gate.",
+     "hold": "Your quality unit"
+    },
+    {
+     "t": "Execution or as built",
+     "d": "Executed records carry raw data and both parties' signatures; drawings reissued as built.",
+     "hold": "Both parties"
+    },
+    {
+     "t": "Turnover",
+     "d": "The register lists every current revision; anything open is a punch list item."
+    }
+   ],
+   "look": "revision-sheet"
+  },
+  {
+   "type": "spec",
+   "nav": "Delivery",
+   "h": "Delivery and signatures",
+   "cols": [
+    "Item",
+    "How we deliver it",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Documents we write",
+     "v": "Searchable PDF, bookmarked, number and revision on every page",
+     "hl": true
+    },
+    {
+     "p": "Signatures",
+     "v": "[electronic signature method]; wet ink, scanned; or your validation system",
+     "m": "[Part 11 and Annex 11 controls]"
+    },
+    {
+     "p": "Retention",
+     "v": "Aquemi keeps a copy for [retention period, years]",
+     "m": "Lost documents reissued on request"
+    }
+   ],
+   "look": "pdf-anatomy"
+  },
+  {
+   "type": "form",
+   "h": "Request a specimen package",
+   "nav": "Specimens",
+   "anchor": "samples",
+   "intro": "Aquemi-written [specimen package], sent [openly or under NDA] within [specimen package response time, working days]; cost: [specimen cost or free].",
+   "note": "[privacy notice link]",
+   "submit": "Send me the specimens",
+   "fields": [
+    {
+     "kind": "checkbox-group",
+     "label": "Documents you want",
+     "required": true,
+     "options": [
+      "Turnover package index",
+      "FAT protocol: contents and test cases",
+      "IQ and OQ protocol contents",
+      "Joint records extract"
+     ]
+    },
+    {
+     "kind": "select",
+     "label": "Where your project stands",
+     "required": false,
+     "options": [
+      "Early research or budgeting",
+      "Writing the URS",
+      "URS ready, requesting proposals",
+      "Existing system: upgrade or requalification"
+     ]
+    },
+    {
+     "kind": "text",
+     "label": "Full name",
+     "required": true
+    },
+    {
+     "kind": "email",
+     "label": "Work email",
+     "required": true
+    },
+    {
+     "kind": "text",
+     "label": "Company",
+     "required": true
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions validation teams ask",
+   "items": [
+    {
+     "q": "Can we see real documents before we order?",
+     "a": "As a new company, we send an Aquemi-written [specimen package]: the package index, protocol contents and record formats, shared [openly or under NDA]. Audit our quality system from [quality system ready for audit, date].",
+     "link": "cmp-quality#audit",
+     "link_label": "Request a supplier audit"
+    },
+    {
+     "q": "Do you check third-party certificates, or just forward them?",
+     "a": "We check them: markings and lot numbers against the certificate at receipt. Certificates reach you as the issuer sent them, never retyped. If you make products for clients, their auditors see the same records.",
+     "link": "ind-cdmo#audit-pack",
+     "link_label": "See the client audit pack"
+    },
+    {
+     "q": "When do we see the protocols?",
+     "a": "[protocol issue before FAT, weeks] before testing, the factory acceptance test (FAT) protocol reaches your quality unit for approval. Installation and operational qualification (IQ, OQ) protocols follow. They cite the FAT results your quality unit agreed to reuse (EU good manufacturing practice Annex 15, 3.6; GUI-0029, 8.1).",
+     "link": "svc-fat-sat",
+     "link_label": "See what FAT proves"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where each document comes from",
+   "items": [
+    "svc-design",
+    "svc-fabrication",
+    "svc-fat-sat",
+    "svc-cq"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS for your document list",
+  "body": "An engineer replies in writing. Cost: [proposal cost or free].",
+  "button": "Send your URS",
+  "link": "contact-proposal",
+  "intent": "I have a URS or a draft|Proposal against your URS",
+  "include": [
+   "Your URS, or your product and flow",
+   "Your protocol templates, if any",
+   "Your numbering and good documentation practice rules",
+   "Your electronic validation system, if used"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Your system's document list, by stage",
+   "Who approves each document"
+  ]
+ },
+ "todo": [
+  "KEY: prepare the Aquemi-written specimens the form offers ([specimen package]; FD-47): turnover package index, FAT protocol contents and test cases, IQ and OQ protocol contents, joint records extract (svc-fabrication's [specimen joint log]; which records, FD-18). Shared [openly or under NDA] (form intro, FAQ; the name svc-fat-sat and svc-fabrication use); whether Aquemi uses its own mutual NDA. Keep the option labels \"Turnover package index\" (projects), \"FAT protocol: contents and test cases\" (svc-fat-sat) and \"Joint records extract\" (svc-fabrication's launch fallback) and the anchor \"samples\": other pages pre-select them",
+  "Launch rule (DR-004 class 2, DR-006 rule 6; as on svc-fat-sat and svc-fabrication): a specimen shows only once it exists, [specimen package] then unbracketed; an option whose specimen does not exist leaves the form, and pages that tick it drop their link. If none exists, the form, FAQ 1's specimen sentence, the meta's last sentence and the hero button go: the hero becomes \"Get your document list\" (link contact-proposal, intent \"I have a URS or a draft|Proposal against your URS\", as the closing), and projects, svc-fat-sat and svc-fabrication drop their cmp-documentation#samples links",
+  "Executed or redacted records from a client's project only after the first delivered project, with that client's written consent (DR-004 class 3; FD-42). Until then FAQ 1 and the form offer specimens only",
+  "Specimen reply time and cost ([specimen package response time, working days], [specimen cost or free]: the form intro; FD-01, FD-02, FD-47; the names svc-fat-sat uses, and projects and services for the time). At launch an unset time is cut with its \"within\" clause (DR-006 rule 7), an unset cost with its clause (DR-005 rule 8). Form back end before launch: where submissions go, the on-screen and email acknowledgement, the privacy notice ([privacy notice link], in the form intro until a form without steps draws its note; FD-39; DR-014 rule 10)",
+  "Supplier audit date ([quality system ready for audit, date]; FD-48; the name home, svc-fabrication, cmp-quality, projects and contact-proposal use). Launch rule (DR-004 class 2, DR-006 rule 6): FAQ 1's audit sentence and its \"Request a supplier audit\" link (cmp-quality#audit) show only if that date is filled and has passed, the sentence then dropping its \"from\" clause; otherwise both are removed. If FAQ 1's specimen and audit sentences both go, it says \"a new company\" and names the checks that exist (DR-004 rule 1), with the link \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
+  "Protocol issue before FAT ([protocol issue before FAT, weeks]; FD-45; same name as svc-fat-sat)",
+  "Client review period for each issued document ([standard review period, working days]; FD-47)",
+  "Electronic signatures on protocols and reports ([electronic signature method], [Part 11 and Annex 11 controls]; FD-23; svc-fat-sat and sys-monitoring use the method's name): whether the method records signer, date and meaning, linked to the record (21 CFR Part 11 Subpart C; EU GMP Annex 11 (2011), 14. The revised Annex 11 is still a 2025 consultation draft with no effective date, so the 2011 number stays until it is adopted; the draft renumbers it 13, and GUI-0050 keeps 4.14 until Health Canada adopts the revision: technical-checks TCK-06, TCK-09, H2O-12). Never \"Part 11 compliant\" (DR-004 rule 2)",
+  "Retention of Aquemi's copy ([retention period, years]; FD-47, FD-48) and reissue on request; quality record retention is cmp-quality's",
+  "PP material certificates and standard ([PP material certificates], [PP material standard]; FD-17; names shared with compliance, svc-fabrication, cmp-quality): the certificates received per lot, for example 21 CFR 177.1520 conformity, the dated USP <88> Class VI report and the EN 10204 type. Elastomers: [elastomer certificates per compound], cmp-quality's name (FD-17); contact-service's parts option and svc-service's like-for-like row name no standard either; the index said \"to USP <88> Class VI\" until pass C, a purchasing rule no owner decision confirms",
+  "PVC parts, media and resin ([certificates supplied for PVC parts]; FD-17; sys-pretreatment's and svc-cq's name), and which components get certificates by serial number (membranes, electrodeionization modules, pumps)",
+  "Joining and fabrication records ([PP joining method], [PP joint records kept]; FD-18; the joint records name careers, about, sys-pw, svc-cq and compliance use): the procedure, welder qualifications and which joint records are kept, for example a joint map, a per-joint log with machine parameters ([what each joint record holds] on svc-fabrication) and test joint records. Bracketed in the index and the fabrication stage row until FD-18 is signed off (ops/placeholder-names.md). Both parties sign the fabrication and inspection plan, as svc-fabrication states",
+  "Loop records ([dead leg design limit, L/D], [pre-commissioning flush and cleaning procedure for PP]; FD-19; svc-fabrication's and sys-storage's names). Whether the spray coverage (riboflavin) test is run in-house (FD-19; sys-storage's spray ball row states it). Add the support and expansion calculation to \"Drawings and calculations\" once FD-19 sets its basis",
+  "Pressure test and approvals ([PP pressure test method], FD-19, as compliance and svc-fabrication; [pressure-rated items in the PW package] and [panel certification mark held, or field evaluation used], FD-24, compliance's names): which items need a CRN, who calculates and submits",
+  "Calibration route ([calibration provider and accreditation held]; FD-32; svc-cq's name). Total organic carbon system suitability only where an online analyzer is fitted (sys-pw: [online TOC at the outlet, standard or option])",
+  "Spare parts list coverage ([months of operation]; FD-11)",
+  "First reply and cost ([proposal response time, working days], one figure on every page; [proposal cost or free], contact-proposal's requests table; FD-01, FD-02)",
+  "Practice the page states, to confirm (FD-46, FD-47): the 12-section index; each comment answered in a log kept with the document; open items at turnover on the punch list; protocols in the client's template and numbering (the closing asks for them; svc-cq and svc-design cut \"in your template\" until FD-46 confirms it); Aquemi drafts procedures and the PQ protocol and proposes alert and action levels from the data (svc-cq's roles table)",
+  "Who signs fabrication records for Aquemi (DR-004 rule 4; FD-34): the page names no role until a person holds it",
+  "Native files ([drawing formats delivered], for example PDF and native CAD; [drawing ownership or licence terms]; svc-design's names, cmp-quality sets the terms; FD-10, FD-47): drawing, spreadsheet and word processing formats; raw data export format for trends, alarms and events (FD-23)",
+  "French documents (FD-36; DR-012): which documents are offered in French, how translations are controlled, French documentation cost per project. Nothing on the page until FD-36 is answered",
+  "Transfer and paper ([secure transfer method or portal]; FD-47): number of paper sets, if any",
+  "Device validation basis in the lead (DR-022 rule 5): checked against industries/medical-devices.md (ISO 13485:2016, 7.5.6 validation of production processes; FDA expects IQ/OQ/PQ of a device maker's water system [IMD-17][IMD-19][IMD-21]); the site's split stays as ind-meddevice states it: the device maker validates the process, the water system is qualified"
+ ],
+ "primary_cta_link": "#samples",
+ "figure": {
+  "plate": "binder",
+  "label": "Turnover package",
+  "items": [
+   "Index and project summary",
+   "Requirements and design basis",
+   "Specifications",
+   "Drawings and calculations",
+   "Materials and components",
+   "Fabrication and joining"
+  ],
+  "foot": "Indexed to your URS"
+ }
+}

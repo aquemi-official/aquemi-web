@@ -1,0 +1,605 @@
+{
+ "id": "contact-service",
+ "section": "Contact",
+ "nav_label": "Service request",
+ "title": "Service request: faults, calibration and parts | Aquemi",
+ "meta": "Production stopped? Call [service phone number], [service phone hours]. Or log a fault, maintenance, USP <645> calibration, parts or requalification request.",
+ "path": "/contact/service/",
+ "eyebrow": "SERVICE REQUEST · PURIFIED WATER",
+ "headline": "Service for Aquemi systems and [makes and equipment types serviced]",
+ "lead": "Production stopped? Call [service phone number], [service phone hours]. Anything else? The form asks only what your request needs.",
+ "primary_cta": "Log a service request",
+ "primary_cta_link": "#request",
+ "secondary_cta": {
+  "label": "Call [service phone number]",
+  "link": "tel:[service phone number]"
+ },
+ "facts": [
+  {
+   "v": "[severity 1 on-site response time, hours]",
+   "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "contact-routes",
+   "h": "Three ways in",
+   "routes": [
+    {
+     "t": "Request a proposal or review",
+     "d": "New system, upgrade or document review.",
+     "steps": [
+      "Send what you have",
+      "An engineer reads it",
+      "Written answer, then a proposal"
+     ],
+     "clock": "Written reply within [proposal response time, working days]",
+     "link": "contact-proposal",
+     "action": "Choose your request"
+    },
+    {
+     "t": "Production stopped or water out of specification",
+     "d": "Severity 1. Answered [service phone hours].",
+     "phone": "[service phone number]",
+     "steps": [
+      "Call the service line",
+      "Triage confirms severity",
+      "Remote diagnosis, then on site"
+     ],
+     "clock": "Answered within [severity 1 phone answer time, minutes]",
+     "link": "contact-service",
+     "urgent": true,
+     "action": "Log a service request",
+     "current": true
+    },
+    {
+     "t": "Can you support my site?",
+     "steps": [
+      "Find your region",
+      "On-site time, base, parts",
+      "Ask for it in writing"
+     ],
+     "clock": "Written reply within [proposal response time, working days]",
+     "link": "contact-locations#coverage",
+     "action": "Check coverage for your site"
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "anchor": "request",
+   "nav": "Request",
+   "h": "Log a service request",
+   "intro": "Parts orders also by email: [parts email address].",
+   "submit": "Send service request",
+   "note": "Ticket number by email within [ticket acknowledgment time, minutes]. Out of hours, forms read within [out-of-hours form review time, hours]. [privacy notice link]",
+   "steps": [
+    {
+     "title": "Your request",
+     "next": "Continue to the system",
+     "fields": [
+      {
+       "label": "What do you need?",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "Fault now",
+        "Preventive maintenance",
+        "Calibration",
+        "Parts and consumables",
+        "Service plan quote",
+        "Requalification after a change",
+        "First service, other make"
+       ],
+       "help": "Upgrades and assessments go to the proposal form."
+      },
+      {
+       "label": "Severity",
+       "kind": "radio",
+       "required": true,
+       "when": "Fault now",
+       "options": [
+        "Severity 1: production stopped or water out of specification",
+        "Severity 2: alarm, reduced capacity or adverse trend",
+        "Severity 3: no effect on water quality or supply"
+       ],
+       "help": "Severity 1? Call [service phone number] too. Not sure? Choose the higher one."
+      },
+      {
+       "label": "Ticket number, if you already called",
+       "kind": "text",
+       "required": false,
+       "when": "Fault now"
+      },
+      {
+       "label": "Who built the system?",
+       "kind": "radio",
+       "required": true,
+       "when": "Fault now|Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change",
+       "options": [
+        "Aquemi",
+        "Another builder",
+        "Several builders, or unknown"
+       ],
+       "help": "No Aquemi serial number needed."
+      },
+      {
+       "label": "Which systems?",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Fault now|Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make",
+       "options": [
+        "Purified Water (PW) generation",
+        "Storage and distribution loop",
+        "Pretreatment",
+        "Controls: PLC, HMI or SCADA",
+        "One instrument"
+       ],
+       "help": "Controller (PLC), operator panel (HMI) or supervisory control (SCADA)."
+      }
+     ]
+    },
+    {
+     "title": "System and details",
+     "next": "Continue to contact details",
+     "fields": [
+      {
+       "label": "Aquemi serial number",
+       "kind": "text",
+       "required": false,
+       "when": "Aquemi",
+       "help": "On the nameplate, format [serial number format]. Blank is fine."
+      },
+      {
+       "label": "Make, model and year installed",
+       "kind": "text",
+       "required": true,
+       "when": "Another builder|Several builders, or unknown|First service, other make",
+       "help": "From each nameplate, or \"unknown\". A photo helps."
+      },
+      {
+       "label": "Records you have for that system",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Another builder|Several builders, or unknown|First service, other make",
+       "options": [
+        "Piping and instrumentation diagrams (P&IDs)",
+        "Installation, operational and performance qualification (IQ, OQ, PQ) reports",
+        "Bill of materials or spares list",
+        "PLC program backup",
+        "Manuals",
+        "None of these"
+       ],
+       "help": "Missing records do not stop a visit."
+      },
+      {
+       "label": "What do you need first on that system?",
+       "kind": "checkbox-group",
+       "required": true,
+       "when": "First service, other make",
+       "options": [
+        "Condition survey and report",
+        "Spares list from the nameplates",
+        "Maintenance and calibration",
+        "A service plan"
+       ],
+       "help": "We service [makes and equipment types serviced]."
+      },
+      {
+       "label": "Service plan or contract number",
+       "kind": "text",
+       "required": false,
+       "help": "It sets your response time."
+      },
+      {
+       "label": "What is happening",
+       "kind": "textarea",
+       "required": true,
+       "when": "Fault now",
+       "help": "Alarm text, when it started, and what changed just before."
+      },
+      {
+       "label": "Product conductivity, uncompensated",
+       "kind": "number",
+       "required": false,
+       "unit": "µS/cm",
+       "when": "Fault now",
+       "help": "The value not adjusted to 25 °C, for USP <645> stage 1."
+      },
+      {
+       "label": "Temperature at the conductivity sensor",
+       "kind": "number",
+       "required": false,
+       "unit": "°C",
+       "when": "Fault now"
+      },
+      {
+       "label": "Total organic carbon (TOC)",
+       "kind": "number",
+       "required": false,
+       "unit": "ppb",
+       "when": "Fault now",
+       "help": "1 ppb = 1 µg/L."
+      },
+      {
+       "label": "Loop return flow or generation flow",
+       "kind": "number",
+       "required": false,
+       "unit": "L/h",
+       "when": "Fault now"
+      },
+      {
+       "label": "Is water from this system in use now?",
+       "kind": "radio",
+       "required": true,
+       "when": "Fault now",
+       "options": [
+        "In use or being released",
+        "On hold, or production stopped",
+        "No good manufacturing practice (GMP) use now"
+       ],
+       "help": "Your quality unit decides whether water already used is affected."
+      },
+      {
+       "label": "Is a deviation open?",
+       "kind": "radio",
+       "required": false,
+       "when": "Fault now",
+       "options": [
+        "Yes, a deviation is open",
+        "Being assessed",
+        "No deviation"
+       ]
+      },
+      {
+       "label": "Deviation reference and investigation due date",
+       "kind": "text",
+       "required": false,
+       "when": "Yes, a deviation is open",
+       "help": "So the report reaches you before your investigation closes."
+      },
+      {
+       "label": "Remote access you allow",
+       "kind": "radio",
+       "required": false,
+       "when": "Fault now|Service plan quote",
+       "options": [
+        "No remote connection",
+        "Read-only telemetry through your demilitarized zone (DMZ)",
+        "Supervised session your staff open",
+        "Your IT decides"
+       ],
+       "help": "No connection? We diagnose from your readings and a call; on-site times do not change."
+      },
+      {
+       "label": "Alarm log and trend data",
+       "kind": "file",
+       "required": false,
+       "when": "Fault now",
+       "help": "A copy from [trend window, hours] before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]."
+      },
+      {
+       "label": "Preferred window",
+       "kind": "text",
+       "required": true,
+       "when": "Preventive maintenance|Calibration|Requalification after a change",
+       "help": "Dates, shutdowns and production constraints."
+      },
+      {
+       "label": "Last preventive maintenance visit",
+       "kind": "text",
+       "required": false,
+       "when": "Preventive maintenance",
+       "help": "Month, year, who did it."
+      },
+      {
+       "label": "Instruments to calibrate",
+       "kind": "checkbox-group",
+       "required": true,
+       "when": "Calibration",
+       "options": [
+        "Conductivity (USP <645>)",
+        "Online TOC (USP <643>)",
+        "Temperature",
+        "Pressure, flow and level",
+        "Ultraviolet (UV) intensity"
+       ]
+      },
+      {
+       "label": "Number of instruments",
+       "kind": "number",
+       "required": false,
+       "when": "Calibration"
+      },
+      {
+       "label": "Whose forms do we work to?",
+       "kind": "radio",
+       "required": false,
+       "when": "Preventive maintenance|Calibration|Requalification after a change",
+       "options": [
+        "Your work orders and forms",
+        "Aquemi report and certificates",
+        "Both"
+       ]
+      },
+      {
+       "label": "Parts needed",
+       "kind": "textarea",
+       "required": true,
+       "when": "Parts and consumables",
+       "help": "Tag number or description, and quantity. One line per part."
+      },
+      {
+       "label": "Why you need them",
+       "kind": "radio",
+       "required": true,
+       "when": "Parts and consumables",
+       "options": [
+        "To restore a stopped system",
+        "Planned replacement",
+        "Quote only"
+       ],
+       "help": "Restoring a stopped system? Call [service phone number] too."
+      },
+      {
+       "label": "Certificates to ship with the parts",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Parts and consumables",
+       "options": [
+        "Material certificates for wetted parts",
+        "Elastomer certificates",
+        "Certificate of conformance",
+        "Calibration certificate"
+       ]
+      },
+      {
+       "label": "Purchase order number",
+       "kind": "text",
+       "required": false,
+       "when": "Parts and consumables",
+       "help": "If you have one."
+      },
+      {
+       "label": "Instruments in the system",
+       "kind": "number",
+       "required": false,
+       "when": "Service plan quote"
+      },
+      {
+       "label": "Who maintains it today",
+       "kind": "radio",
+       "required": false,
+       "when": "Service plan quote",
+       "options": [
+        "Your own team",
+        "Your team and a contractor",
+        "A contractor",
+        "No regular maintenance"
+       ]
+      },
+      {
+       "label": "How long production can run without new water",
+       "kind": "number",
+       "required": false,
+       "unit": "h",
+       "when": "Service plan quote",
+       "help": "Storage full, no standby. It sets the plan tier."
+      },
+      {
+       "label": "What changed, or will change",
+       "kind": "textarea",
+       "required": true,
+       "when": "Requalification after a change",
+       "help": "The part, software or operating window, and why."
+      },
+      {
+       "label": "Change control status",
+       "kind": "radio",
+       "required": false,
+       "when": "Requalification after a change",
+       "options": [
+        "Raised, not yet approved",
+        "Approved, work scheduled",
+        "Done, requalification outstanding"
+       ]
+      },
+      {
+       "label": "Help you need",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Requalification after a change",
+       "options": [
+        "Input for the change request",
+        "IQ and OQ protocols",
+        "Protocol execution on site",
+        "Sampling plan for return to use"
+       ]
+      },
+      {
+       "label": "Files",
+       "kind": "file",
+       "required": false,
+       "when": "Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make",
+       "help": "Spares list, schedule, nameplate photos or change request, up to [maximum upload size, MB]."
+      },
+      {
+       "label": "Notes",
+       "kind": "textarea",
+       "required": false
+      }
+     ]
+    },
+    {
+     "title": "Contact and site",
+     "fields": [
+      {
+       "label": "Full name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Phone you can be reached on today",
+       "kind": "tel",
+       "required": true,
+       "when": "Fault now",
+       "help": "A mobile: the triage call comes here."
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false,
+       "when": "Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make"
+      },
+      {
+       "label": "Work email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Company",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Site address",
+       "kind": "text",
+       "required": true,
+       "help": "And the parts delivery address if different."
+      },
+      {
+       "label": "Role",
+       "kind": "select",
+       "required": false,
+       "options": [
+        "Facilities or maintenance",
+        "Production or operations",
+        "Quality",
+        "Validation",
+        "Engineering",
+        "Procurement",
+        "Other"
+       ]
+      },
+      {
+       "label": "Site access requirements",
+       "kind": "text",
+       "required": false,
+       "help": "Induction, good manufacturing practice (GMP) training, gowning, permits."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Response times",
+   "h": "Response times by request",
+   "intro": "Times apply on a service plan; without one, a call-out with the next available technician.",
+   "cols": [
+    "Your request",
+    "First response",
+    "What follows"
+   ],
+   "rows": [
+    [
+     "Severity 1: production stopped or water out of specification",
+     "Answered within [severity 1 phone answer time, minutes]; remote diagnosis within [remote response time, hours]",
+     "On site within [severity 1 on-site response time, hours], inside [service coverage area]"
+    ],
+    [
+     "Severity 2: alarm, reduced capacity or adverse trend",
+     "Reply within [severity 2 reply time, hours]",
+     "Visit within [severity 2 visit time]"
+    ],
+    [
+     "Severity 3: no effect on water quality or supply",
+     "Reply within [severity 3 reply time, working days]",
+     "Fixed at the next or a booked visit"
+    ],
+    [
+     "Preventive maintenance or calibration",
+     "Date within [maintenance booking reply time, working days]",
+     "Signed report; calibration certificates, instruments checked against USP <645> and <643>"
+    ],
+    [
+     "Requalification after a change",
+     "Reply within [requalification support reply time, working days]",
+     "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7)"
+    ],
+    [
+     "Parts and consumables",
+     "Quote within [parts quote turnaround, working hours]",
+     "Checked like for like against your qualified parts list, with certificates"
+    ],
+    [
+     "First service, other make",
+     "Reply within [other-builder request reply time, working days]",
+     "For [makes and equipment types serviced]: a condition survey quote"
+    ]
+   ],
+   "as": "router",
+   "look": "riser-valves"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions before you send",
+   "items": [
+    {
+     "q": "Who decides whether water already used is affected?",
+     "a": "Your quality unit. Our signed service report gives it the facts: when readings left specification, where, what we found and what we did. We do not release water."
+    },
+    {
+     "q": "We have no service plan. Will you come?",
+     "a": "Yes, inside [service coverage area], as a call-out with the next available technician, at [call-out and hourly rates, CAD]."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "No service plan yet?",
+  "body": "A plan sets response times, visits, calibrations and spares in writing.",
+  "button": "Compare service plans",
+  "link": "svc-service",
+  "include_label": "Have ready when you call",
+  "include": [
+   "Serial number, or make and model",
+   "Alarm text and when it started",
+   "Last readings, with units",
+   "Water in use or on hold"
+  ]
+ },
+ "todo": [
+  "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer, dispatcher or nobody; if nobody, route 2 and the phone menu say so, with the form note's [out-of-hours form review time, hours] (buyer panel 2026-10-31).",
+  "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition, here and on contact-proposal and contact-locations.",
+  "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",
+  "Severity definitions (FD-27): svc-service is their home (DR-009, DR-011). This page's form offers three severities; its table row 4 is \"Preventive maintenance or calibration\" (the form's request types), so the riser-valves look no longer stamps a fourth severity (pass 10, drift audit group 3). svc-service still defines \"Severity 4: maintenance or calibration\": the owner sets one wording for both pages (three severities plus routine requests, or four); the form options keep their names so other pages' intents still match.",
+  "Call-out and hourly rates without a plan (FD-29): [call-out and hourly rates, CAD], svc-service's name.",
+  "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] (contact-locations uses it too) and who receives parts orders.",
+  "Reply times (FD-31): [maintenance booking reply time, working days], one time for maintenance and calibration unless you set two; [requalification support reply time, working days]; [other-builder request reply time, working days]; [parts quote turnaround, working hours].",
+  "Other builders' systems (FD-30): [makes and equipment types serviced], one name on every page that offers it (DR-011); whether parts are supplied for other makes; whether WFI stills, pure steam generators or stainless loops by others are excluded (the form lists PW systems only). The headline carries the placeholder (\"Service for Aquemi systems and [makes and equipment types serviced]\", pass 10, DR-011 rule 1) so \"your system\" no longer promises any make. Launch rule: the headline names equipment types only; makes are listed on svc-service and in the form help. If none are served, the headline becomes \"Service for Aquemi systems\" and the other-builder option, branch, row and help lines go. Also whether a fault on another builder's system runs on the severity clocks as a call-out or starts with a condition survey: the table's last row, \"First service, other make\", times only that request (buyer panel 2026-10-31).",
+  "Ozone and UV (FD-16, FD-30): the calibration list shows UV only; the hero figure draws TOC and conductivity, not UV, while [UV, standard or option] is open (DR-018 rule 2). UV stays in the list, and returns to the figure, if the package has it ([UV, standard or option], sys-storage's name) or FD-30 covers other makes with UV; ozone sensor calibration returns only if FD-30 covers other makers' ozone systems (DR-013).",
+  "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [PP material certificates]. The form's option names no material, so it fits any builder's system; the elastomer option names no standard ([elastomer certificates per compound] is cmp-quality's name for what ships; FD-17).",
+  "Uploads and privacy (FD-39): [maximum upload size, MB], as on contact-proposal; [privacy notice link], contact-proposal's name, covering PIPEDA and Quebec Law 25 after counsel's check (OQ-81).",
+  "Language for the reply (FD-36, DR-012): the field (English, French) returns to step 3 only once a named French-speaking technician or engineer replies within the same times, as on contact-proposal (DR-012 rule 2 and consequences).",
+  "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004)."
+ ],
+ "hero_index": false,
+ "figure": {
+  "spots": [
+   {
+    "spot": "pump",
+    "t": "Loop pumps"
+   },
+   {
+    "spot": "toc",
+    "t": "TOC and conductivity"
+   },
+   {
+    "spot": "wrench",
+    "t": "Parts and repair"
+   }
+  ]
+ }
+}

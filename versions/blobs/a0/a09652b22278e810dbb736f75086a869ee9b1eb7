@@ -1,0 +1,363 @@
+{
+ "id": "sys-monitoring",
+ "section": "Systems",
+ "nav_label": "Monitoring and controls",
+ "title": "Purified Water system monitoring, controls and Part 11 | Aquemi",
+ "meta": "Online TOC to USP <643>, uncompensated conductivity to USP <645> stage 1 and audit trails mapped to 21 CFR Part 11 and Annex 11, for a polypropylene PW package.",
+ "path": "/systems/monitoring-and-controls/",
+ "eyebrow": "SYSTEMS · MONITORING AND CONTROLS · USP <645>, <643>",
+ "headline": "Water data you can defend",
+ "lead": "Controls and online monitoring for our polypropylene Purified Water package. Audit trails and access control are mapped to 21 CFR Part 11 and Annex 11; your procedures complete them.",
+ "primary_cta": "Request a controls specification review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
+ "secondary_cta": {
+  "label": "See the documentation package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "diagram",
+   "h": "How the controls are built",
+   "stages": [
+    {
+     "t": "Instruments",
+     "d": "Measure total organic carbon (TOC), conductivity and temperature online.",
+     "icon": "conductivity",
+     "art": "instruments"
+    },
+    {
+     "t": "Controller (PLC)",
+     "d": "Runs sequences, interlocks and divert, even if every layer above fails.",
+     "art": "plc",
+     "key": true
+    },
+    {
+     "t": "Operator panel (HMI)",
+     "d": "Where operators see alarms, trends and sanitization status.",
+     "icon": "monitor",
+     "art": "hmi"
+    },
+    {
+     "t": "Supervisory control (SCADA) historian",
+     "d": "Keeps time-stamped records with an audit trail.",
+     "icon": "database",
+     "art": "historian"
+    },
+    {
+     "t": "Plant network",
+     "d": "Reaches your network through a demilitarized zone (DMZ).",
+     "art": "network"
+    }
+   ],
+   "nav": "Architecture",
+   "look": "layer-stack"
+  },
+  {
+   "type": "table",
+   "h": "Alert, action and trend",
+   "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot shows online readings.",
+   "cols": [
+    "Line",
+    "How it is set",
+    "What the system does"
+   ],
+   "rows": [
+    [
+     "Specification",
+     {
+      "t": "Compendial limit, or your tighter internal limit",
+      "link": "compliance#limits"
+     },
+     "Diverts or stops supply; alarm needs a reason"
+    ],
+    [
+     "Action level",
+     "Qualification data; ≤ 100 CFU/mL (colony-forming units; USP <1231>; GUI-0001 C.02.009)",
+     "Quality alarm to your quality unit, logged"
+    ],
+    [
+     "Alert level",
+     "Qualification data; reassessed after investigations",
+     "Alarm with a comment, counted for trends"
+    ],
+    [
+     "Trend rule",
+     "Agreed with your quality unit, such as rising readings",
+     "Flags drift before any limit"
+    ]
+   ],
+   "nav": "Alarms",
+   "look": "hmi-trend",
+   "tabs": [
+    "Trends",
+    "Alarms",
+    "Sanitization"
+   ],
+   "plot": [
+    "limit",
+    "trend"
+   ]
+  },
+  {
+   "type": "spec",
+   "h": "Sensors and signals",
+   "caption": "MONITORING · WHO TRS 1033",
+   "cols": [
+    "Signal",
+    "Design value",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "TOC analyzer",
+     "v": "Online; system suitability 85 % to 115 %",
+     "m": "USP <643>",
+     "at": [
+      37.4,
+      46.9
+     ]
+    },
+    {
+     "p": "Conductivity cell",
+     "v": "Cell constant ± 2 %; ± 0.1 µS/cm; temperature ± 2 °C",
+     "m": "USP <645>, uncompensated",
+     "at": [
+      49.4,
+      57.7
+     ]
+    },
+    {
+     "p": "Temperature",
+     "v": "Generation, tank, loop supply and return, coldest sanitization point",
+     "at": [
+      48.9,
+      41.1
+     ]
+    },
+    {
+     "p": "Divert",
+     "v": "Setpoint below your alert level; to drain or recirculation",
+     "m": "Value, time and duration recorded",
+     "at": [
+      72.9,
+      37.7
+     ]
+    },
+    {
+     "p": "Flow and pressure",
+     "v": "Return flow ≥ [qualified minimum return flow, L/h], alarmed",
+     "m": "WHO TRS 1033, 8.6 and 12.3",
+     "at": [
+      57.4,
+      69.7
+     ]
+    },
+    {
+     "p": "Ultraviolet (UV) units, where fitted",
+     "v": "Intensity at 254 nm, lamp hours, lamp failure"
+    },
+    {
+     "p": "Data recording",
+     "v": "Every quality value at [recording interval, seconds], time-stamped",
+     "m": "One site time source"
+    }
+   ],
+   "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
+   "nav": "Measurements",
+   "fold": 5,
+   "fold_noun": "signals",
+   "as": "callouts",
+   "look": "signal-dial"
+  },
+  {
+   "type": "table",
+   "h": "Data integrity, clause by clause",
+   "intro": "Health Canada applies EU good manufacturing practice (GMP) Annex 11 through GUI-0050.",
+   "cols": [
+    "Requirement",
+    "How the controls meet it",
+    "21 CFR Part 11",
+    "EU GMP Annex 11 (2011)"
+   ],
+   "rows": [
+    [
+     "Audit trail",
+     "Who, when, old and new value and reason; cannot be switched off",
+     "11.10(e)",
+     "9"
+    ],
+    [
+     "Access control",
+     "Individual accounts, role-based rights, automatic logout; each role tested at FAT",
+     "11.10(d), (g)",
+     "12"
+    ],
+    [
+     "Record protection",
+     "No edit or delete; backups every [backup interval], kept [data retention, years]",
+     "11.10(c)",
+     "7; 17"
+    ],
+    [
+     "Electronic signatures",
+     "If used: signer, time and meaning, linked to the record",
+     "11.50, 11.70, 11.100–11.300",
+     "14"
+    ],
+    [
+     "Validation",
+     "GAMP 5 lifecycle documents for your validation, URS to operational qualification (OQ), with a traceability matrix",
+     "11.10(a)",
+     "4"
+    ],
+    [
+     "Accurate copies",
+     "Readable and electronic reports, checked against the stored record",
+     "11.10(b)",
+     "8"
+    ],
+    [
+     "Sequence and device checks",
+     "Steps enforced in order; a failed sensor never reads as good water",
+     "11.10(f), (h)",
+     "5; 6"
+    ],
+    [
+     "Change control and review",
+     "Baseline backup and audit trail review report",
+     "11.10(k)",
+     "10; 11; 13"
+    ]
+   ],
+   "nav": "Data integrity",
+   "as": "evidence",
+   "fold": 3,
+   "fold_noun": "requirements",
+   "look": "clause-crosswalk",
+   "anchor": "data-integrity"
+  },
+  {
+   "type": "options",
+   "h": "Options",
+   "items": [
+    {
+     "t": "PLC and SCADA platform",
+     "d": "[PLC and SCADA platforms supported].",
+     "spot": "cpu",
+     "part": "plc"
+    },
+    {
+     "t": "Historian and Part 11 boundary",
+     "d": "Our historian, or your validated plant historian with ours as a buffer.",
+     "spot": "database",
+     "part": "historian"
+    },
+    {
+     "t": "Remote access",
+     "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
+     "spot": "network",
+     "part": "remote"
+    },
+    {
+     "t": "Integration",
+     "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant systems.",
+     "spot": "pid",
+     "part": "bus"
+    },
+    {
+     "t": "Control panels",
+     "d": "Built to [panel standard] and marked to [panel certification mark held, or field evaluation used].",
+     "spot": "monitor",
+     "link": "compliance#engineering",
+     "part": "panel"
+    }
+   ],
+   "nav": "Options",
+   "fold_noun": "options",
+   "as": "modules",
+   "base": "Controls",
+   "look": "option-checker"
+  },
+  {
+   "type": "faq",
+   "h": "Questions quality and IT teams ask",
+   "nav": "FAQ",
+   "items": [
+    {
+     "q": "Can we release water on online TOC and conductivity?",
+     "a": "Yes, for total organic carbon (TOC) and conductivity, once qualification shows the online readings match point-of-use samples. USP <643> and <645> allow online tests. Microbial counts stay laboratory tests.",
+     "link": "svc-cq"
+    },
+    {
+     "q": "Our transmitters show compensated conductivity. Is that a problem?",
+     "a": "For trending, no. USP <645> stage 1 compares the uncompensated reading with the table row at or below the measured temperature. Compensation can pass water stage 1 would fail. We store both."
+    },
+    {
+     "q": "Which Part 11 clauses need our procedures?",
+     "a": "No system is Part 11 compliant on its own: your site complies through its validated system and its procedures. Our Part 11 and Annex 11 assessment shows which clauses need a site procedure."
+    },
+    {
+     "q": "Do we get full access to the PLC and HMI code?",
+     "a": "[code delivered unlocked, and who owns it]. The code's version and checksum are recorded at the factory acceptance test (FAT) [confirm]. You can then show the running code is the tested code.",
+     "link": "cmp-quality#buying",
+     "link_label": "How buying from us works"
+    },
+    {
+     "q": "Our IT team allows no remote access to GMP equipment.",
+     "a": "Then we do not install it. The system runs and records fully offline. Any later access goes through your demilitarized zone (DMZ) under your change control, every session logged."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "svc-fat-sat",
+    "svc-upgrades#upgrades",
+    "svc-service",
+    "ind-cdmo#audit-pack"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your controls requirements",
+  "body": "An engineer replies in writing. Cost: [document review cost].",
+  "button": "Request a controls specification review",
+  "link": "contact-proposal",
+  "intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
+  "include": [
+   "Your user requirement specification (URS), or what you make and your flow",
+   "Water grades and internal limits",
+   "Systems to control, new or existing",
+   "PLC, SCADA and historian standards",
+   "Remote access policy"
+  ],
+  "turnaround": "[document review turnaround, working days]",
+  "returns": [
+   "Draft functional specification outline",
+   "Questions on your requirements"
+  ]
+ },
+ "todo": [
+  "PLC and SCADA platforms supported, and whether buyers may choose their site standard (FD-23): [PLC and SCADA platforms supported]. If buyers may choose, the options line adds 'or your site standard'. The integration protocols listed follow the platforms: confirm the list once they are set",
+  "Who writes and tests the PLC and HMI code: Aquemi's own engineers or a named partner (FD-23). The validation and documents rows imply in-house",
+  "Whether PLC and HMI application code is delivered unlocked, under which licence or ownership, and escrow for anything delivered locked (FD-10): [code delivered unlocked, and who owns it]. Fill it as the answer's opening yes or no (DR-003 rule 3); unfilled at launch, the question goes. The answer links cmp-quality#buying (\"How buying from us works\"): if that block does not ship, the link goes with it (cmp-quality todo[21])",
+  "Code version and checksum recorded at FAT as standard practice (FD-45; at SAT too, FD-10's recommendation): the FAQ answer marks it [confirm], as svc-fat-sat's FAQ does; drop the marker, or the sentence, once FD-45 is answered. Each access role tested at FAT: the access row, as svc-fat-sat's FAT column states it ('Roles, audit trail, time sync, backup and restore'); confirmed with that column's protocol scope",
+  "Historian recording interval for quality values, seconds (FD-23): [recording interval, seconds]",
+  "Backup interval and default data retention, years (FD-23): [backup interval], [data retention, years]",
+  "Qualified minimum return flow default, L/h (the site's flow unit, DR-003 rule 5), or a note that it is set per loop at qualification (FD-19): [qualified minimum return flow, L/h]",
+  "Panel standard and approval route, in compliance's names (FD-24, OQ-78): [panel standard], [panel certification mark held, or field evaluation used]; whether panels are built in-house (FD-23)",
+  "Whether electronic signatures are offered, and the method (FD-23; cmp-documentation's [electronic signature method]); the row reads 'If used' until then",
+  "Whether read-only telemetry, remote alarm review and supervised remote sessions are offered as a service, and their scope (FD-23; svc-service shows remote diagnosis with the same status)",
+  "UV reads 'where fitted' until sys-storage's [UV, standard or option] is decided (FD-16)",
+  "Document review turnaround and cost, as named in contact-proposal's requests table (FD-01, FD-02): [document review turnaround, working days], [document review cost]",
+  "Data-integrity summary PDF (FD-49, data-integrity feature table): make it the hero secondary once it exists; until then 'See the documentation package'",
+  "Datasheet PDF; add a download link only once it exists",
+  "Software development and change control procedure available for client audit (FD-23, FD-48)",
+  "A real controls project (new or upgrade) with scope and inspection outcome, published only with the client's written consent, before any case study block (FD-42)",
+  "Ozone stays off this page, placeholders included, until the owner offers it on a PP maker's written rating for dissolved and headspace ozone (FD-16, DR-013 rule 4)",
+  "Hero facts: none until an Aquemi figure exists, such as the recording interval or default retention once FD-23 sets them, labelled 'what, where · basis' (DR-010)",
+  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3)."
+ ]
+}

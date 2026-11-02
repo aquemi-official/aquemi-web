@@ -1,0 +1,253 @@
+{
+ "id": "svc-design",
+ "section": "Services",
+ "nav_label": "Process design and engineering",
+ "title": "Purified Water system design, URS to DQ | Aquemi",
+ "meta": "Process design for a polypropylene Purified Water package: URS gap review, basis of design, P&IDs, functional specification and risk assessment, ready for your DQ.",
+ "path": "/services/process-design/",
+ "eyebrow": "SERVICES · PROCESS DESIGN · URS TO DQ",
+ "headline": "Purified Water system design, traced to your URS",
+ "lead": "We design the Purified Water package to your user requirement specification (URS), from pretreatment to the polypropylene loop. Your quality unit approves it at design qualification (DQ).",
+ "tags": [
+  "EU GMP Annex 15",
+  "GUI-0029",
+  "ASTM E2500",
+  "ICH Q9(R1)"
+ ],
+ "primary_cta": "Request a URS gap review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have a URS or a draft|URS gap review",
+ "secondary_cta": {
+  "label": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I know my product, not my water spec"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "look": "redline-sheet",
+   "as": "failures",
+   "h": "Qualification failures that start in design",
+   "intro": "Each is cheap to fix on paper, expensive in a qualified room.",
+   "cols": [
+    "Fails at qualification",
+    "Design mistake",
+    "What we design in"
+   ],
+   "rows": [
+    [
+     "No turbulent flow at peak demand",
+     "Loop sized on average demand",
+     "Hydraulics checked at peak demand, every operating case"
+    ],
+    [
+     "Dead leg found at installation qualification (IQ)",
+     "Branch drawn without its length",
+     "Every branch dimensioned and listed in a dead leg register"
+    ],
+    [
+     "Send-to-drain deviation at operational qualification (OQ)",
+     "Setpoint missing from the specification",
+     "Every setpoint, alarm and interlock written as a testable sentence"
+    ]
+   ],
+   "nav": "Why design"
+  },
+  {
+   "type": "steps",
+   "anchor": "stages",
+   "look": "fidelity-ladder",
+   "h": "Design stages, and what you approve",
+   "items": [
+    {
+     "t": "URS and feed water review",
+     "d": "Compliance matrix: each gap with proposed wording."
+    },
+    {
+     "t": "Concept and route",
+     "d": "Route options, mass balance and a budget at [concept estimate class and accuracy]. You approve the basis of design.",
+     "hold": "You"
+    },
+    {
+     "t": "Basic design",
+     "d": "Piping and instrumentation diagrams (P&IDs), general arrangement drawings, draft functional specification and risk assessment."
+    },
+    {
+     "t": "Detailed design",
+     "d": "Approved P&IDs, isometrics, design specifications and the commissioning and qualification plan."
+    },
+    {
+     "t": "Design review and freeze",
+     "d": "Reviewed against every URS line. Your quality unit approves DQ; later changes go through change control.",
+     "hold": "Your quality unit"
+    },
+    {
+     "t": "Into fabrication",
+     "d": "The factory and site acceptance tests (FAT, SAT) follow the approved specification."
+    }
+   ],
+   "nav": "Stages"
+  },
+  {
+   "type": "docs",
+   "look": "issued-set",
+   "h": "What you receive",
+   "items": [
+    {
+     "t": "URS compliance matrix",
+     "code": "CM",
+     "d": "How the design meets each requirement; each gap with proposed wording."
+    },
+    {
+     "t": "P&IDs",
+     "d": "Every line, valve and tag, with slopes, drains and sample points. IQ verifies against them.",
+     "use": "IQ"
+    },
+    {
+     "t": "Functional and design specifications",
+     "d": "Setpoints, alarms, interlocks and divert logic, each testable. OQ tests against them.",
+     "use": "OQ"
+    },
+    {
+     "t": "Design review report and traceability matrix",
+     "d": "Evidence the design meets every URS line. Your quality unit approves DQ on it.",
+     "use": "DQ"
+    }
+   ],
+   "nav": "What you receive"
+  },
+  {
+   "type": "table",
+   "look": "trace-lines",
+   "h": "An example: two requirements traced to their tests",
+   "cols": [
+    "Document",
+    "URS-012: conductivity limit ≤ 1.3 µS/cm @ 25 °C",
+    "URS-027: dead leg limit L/D ≤ 2"
+   ],
+   "rows": [
+    [
+     "URS compliance matrix",
+     "Met. Outlet designed to [outlet conductivity guarantee, µS/cm @ 25 °C]; return monitored.",
+     "Met. Every branch in the dead leg register."
+    ],
+    [
+     "Basis of design",
+     "Reverse osmosis and electrodeionization, passes set by your feed water analysis",
+     "[PP point-of-use valve type]; instrument tees sized to hold L/D ≤ 2"
+    ],
+    [
+     "Functional specification",
+     "Water above the divert setpoint goes to drain until conductivity recovers",
+     "Not applicable"
+    ],
+    [
+     "Verification",
+     "FAT: divert on a simulated signal. SAT and OQ: your water, uncompensated reading.",
+     "IQ: as-built L/D measured against the register"
+    ]
+   ],
+   "nav": "Traceability"
+  },
+  {
+   "type": "faq",
+   "anchor": "faq",
+   "h": "Questions teams ask",
+   "nav": "FAQ",
+   "items": [
+    {
+     "q": "Our URS is a draft. Is it too early to send it?",
+     "a": "No. A draft is the best time: changing a sentence costs less than changing a design. We return every gap in your user requirement specification (URS) with proposed wording; the URS stays yours to approve. No URS yet? Start with a water scope review.",
+     "link": "contact-proposal",
+     "link_label": "Request a water scope review",
+     "intent": "I know my product, not my water spec"
+    },
+    {
+     "q": "Who owns DQ: you or us?",
+     "a": "You do. Design qualification (DQ) shows the design meets your requirements and good manufacturing practice (GMP), under EU GMP Annex 15, 3.3. Your quality unit approves it (Health Canada GUI-0029, section 5). We supply the evidence: the design review report, traceability matrix and risk assessment."
+    },
+    {
+     "q": "Which risk assessment method do you use?",
+     "a": "[risk assessment method], under ICH Q9(R1), the quality risk management guideline."
+    },
+    {
+     "q": "Consultant or contractor: what do we receive, and when?",
+     "a": "Consultants receive a compliance matrix against your client's URS within [compliance matrix response time, working days]. The basis of design follows at the concept hold. P&IDs and a draft functional specification follow at basic design, approved issues at detailed design. Contractors: connection points come in the proposal; footprint, weight, utilities, tie-ins and field joints are in our site requirements (Systems).",
+     "link": "contact-proposal",
+     "link_label": "Request a compliance matrix",
+     "intent": "I have a URS or a draft|Compliance matrix"
+    },
+    {
+     "q": "Is design charged separately from the equipment?",
+     "a": "User requirement specification (URS) gap review: [URS review cost]. Design fees credited against an equipment order: [design fees credited, yes or no]. Design-only work: [design-only engagements offered, and pricing].",
+     "link": "contact-proposal#requests",
+     "link_label": "See what each request costs"
+    },
+    {
+     "q": "Who seals drawings, and do we get native CAD files?",
+     "a": "[P.Eng. seal] in [provinces of licence]. Drawings come as [drawing formats delivered], under [drawing ownership or licence terms].",
+     "link": "cmp-quality#buying",
+     "link_label": "How buying from us works"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where the design goes next",
+   "items": [
+    "svc-fabrication",
+    "svc-fat-sat",
+    "svc-cq",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS, draft or final",
+  "body": "An engineer replies. Cost: [URS review cost].",
+  "button": "Request a URS gap review",
+  "link": "contact-proposal",
+  "intent": "I have a URS or a draft|URS gap review",
+  "include": [
+   "Your URS",
+   "Feed water analysis, summer and winter",
+   "Points of use and peak demand, L/h"
+  ],
+  "turnaround": "[URS review turnaround, working days]",
+  "returns": [
+   "URS compliance matrix: each gap with proposed wording",
+   "Missing feed water data"
+  ]
+ },
+ "todo": [
+  "[URS review turnaround, working days] (hero fact, closing): working days from complete inputs to the written gap list; same name as contact-proposal's requests table and services (FD-01)",
+  "[design to DQ, weeks] (hero fact): from the URS to an approved design, for one package; same name as services (FD-08). Say whether it includes the client's review time at each hold. Only a figure Aquemi commits to (DR-005 rule 5); at launch an unset fact goes (DR-010 rule 5)",
+  "[URS review cost] (closing, FAQ): free or charged, in CAD (FD-02); defined in contact-proposal's requests table (DR-005 rule 4, DR-014 rule 3)",
+  "[concept estimate class and accuracy] (stages, Concept and route): the AACE 18R-97 class (5 or 4) and the accuracy the concept estimate supports (FD-03; DR-005 rule 1 and its svc-design consequence). Not the same fact as systems' [estimate class and accuracy] for the published bands",
+  "[design fees credited, yes or no] (FAQ): whether concept or design fees are credited against an equipment order (FD-02)",
+  "[design-only engagements offered, and pricing] (FAQ, two answers): whether design without the equipment, or a review of another firm's design, is sold, and its price (FD-02, FD-25). Designing the PW package inside an engineering firm's project, as its supplier, stays a plain yes (MISSION: process design is a service)",
+  "[P.Eng. seal] (FAQ): who seals drawings and any calculations (P.Eng. or ing.) (FD-24, FD-34). The provinces are about's [provinces of licence] (DR-011 rule 2); if a partner seals where we hold no licence, the answer names that route instead. The answer opens with it: unset at launch, the question goes (DR-005 rule 8)",
+  "[drawing formats delivered] (FAQ): which formats come with the drawings, for example PDF and native CAD files, and the design software used (FD-10, FD-47); cmp-documentation's to-do points to this answer",
+  "[drawing ownership or licence terms] (FAQ): drawing and native-file ownership or licence (FD-10). The full term lives in cmp-quality's \"How buying from us works\" (DR-005 rule 7) under the same name; the answer links there (cmp-quality#buying)",
+  "[risk assessment method] (FAQ): the method Aquemi uses for the system risk assessment, and whether it is run with the client's quality and engineering leads (FD-46; same name as compliance). \"Run with your quality and engineering leads\" was cut from the answer until confirmed. Never fill it with FMEA because a notebook suggested it (DR-011). The answer opens with it: unset at launch, the question goes (DR-005 rule 8)",
+  "[outlet conductivity guarantee, µS/cm @ 25 °C] (traceability example): same placeholder as home and sys-pw (FD-21)",
+  "[PP point-of-use valve type] (traceability example): the valve that holds URS-027's L/D ≤ 2; same name as sys-storage (FD-19). The example's \"Met\" assumes the PP loop can hold L/D ≤ 2: check it against [dead leg design limit, L/D] on sys-pw",
+  "Confirm that Aquemi writes the commissioning and qualification plan at detailed design (stages) (FD-46)",
+  "Client templates: whether Aquemi writes design and qualification documents in the client's own templates (FD-46). \"In your template\" was cut from the DQ and risk-method answers until confirmed",
+  "Vessel calculations: cut from Detailed design until Aquemi confirms which package items need pressure calculations, who makes them (in-house or partner) and the CRN route (FD-24; compliance holds the route)",
+  "Who pays for design gaps found at DQ or IQ/OQ ([design gap warranty terms]): its home is cmp-quality's \"How buying from us works\" (FD-07, DR-005 rule 7), not this page",
+  "A real design project (scope, URS lines traced, design-to-DQ duration) before adding a case study block (FD-42, DR-016)",
+  "[compliance matrix response time, working days] (FAQ 4, pass 10, DR-019): same name as compliance's closing and services' router row 8 (FD-01). At launch an unset time leaves the clause (DR-006 rule 7)",
+  "FAQ 4 \"Consultant or contractor: what do we receive, and when?\" (DR-019 with the desk ruling, pass 10) answers consultants and contractors now; their open values stay in brackets: design-only work and reviews of another firm's design are FAQ 5's [design-only engagements offered, and pricing] (FD-25, FD-02), seal and file formats in FAQ 6 (FD-34, FD-10), the contractor's values on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26). Its timing mirrors the stages above (pass 10 review): basis of design at the concept hold, P&IDs and a draft functional specification at basic design, approved issues at detailed design; confirm Aquemi issues them at these holds (FD-46). Its link asks for a compliance matrix (contact-proposal option \"Compliance matrix\"), the request services' row 8 promises; the contractor's site requirements are named in the answer (\"(Systems)\") and linked from svc-fabrication's FAQ. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4)"
+ ],
+ "facts": [
+  {
+   "v": "[URS review turnaround, working days]",
+   "l": "Written gap list · from complete inputs"
+  },
+  {
+   "v": "[design to DQ, weeks]",
+   "l": "To an approved design · from your URS"
+  }
+ ]
+}
