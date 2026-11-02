@@ -1,7 +1,8 @@
 /* Look "washer-trace" -> WasherTrace (design-system/components/WasherTrace): an explainer (prose, as "explainer")
    told as the water's way from the loop into the machine, on a limestone sheet. One IsoKit line drawing (pass 9b,
    concept ind-meddevice.1): the loop comes in at floor level, a pump lifts it into a header, the header carries a
-   diaphragm valve and drops into the washer through a sample point, and the water runs on into the wash chamber
+   valve and drops into the washer through a sample point (its valve the kit's default valve, the one every drawing
+   uses for [PP point-of-use valve type]: no ball valve or other named type while FD-19 is open, DR-018), and the water runs on into the wash chamber
    (the washer is drawn here from IsoKit primitives: the kit has no washer part). Each point is a callout on a leader
    from its part (point 1 at the header, 2 at the sample point, 3 in the chamber). Over the drawing, a navy readout:
    a ruler of the route from the loop to the chamber with each point marked where it sits along the water's way, a
@@ -35,7 +36,7 @@ function wtScene(){
  var p2=isoPipe([po,[po[0],y0,zH],[xv,y0,zH]],{r:3.4,id:'loop',to:'inlet',caps:false,flanges:'ends'});
  var p3=isoPipe([[xv,y0,zH],[xd,y0,zH],[xd,y0,165]],{r:3.4,id:'inlet',to:'chamber',caps:false,flanges:'ends'});
  var vl=isoPart('valve',xv,y0,zH,1.6,{id:'inlet'});
- var sp=isoPipe([[xd,y0,198],[xd,y0+24,198]],{r:1.6,id:'inlet',flow:false,caps:'end'}),sv=isoPart('valve',xd,y0+18,198,0.9,{id:'inlet',type:'ball',rot:1});
+ var sp=isoPipe([[xd,y0,198],[xd,y0+24,198]],{r:1.6,id:'inlet',flow:false,caps:'end'}),sv=isoPart('valve',xd,y0+18,198,0.9,{id:'inlet',rot:1});
  var inner=[p1,pu,wtWasher(),p2,p3,wtCavity(),vl,sp,sv,isoArrow([-330,pi[1],pi[2]],'x',{size:7}),isoArrow([-60,y0,zH],'x',{size:7})].join('');
  /* the stations: where each point's leader starts (3D), and the route length to it (screen, for the readout's ruler) */
  var A=[[po[0],y0,zH],[xd,y0+24,198],[80,70,52]];

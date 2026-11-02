@@ -1,10 +1,13 @@
 /* Look "system-run" -> SystemRun (design-system/components/SystemRun): the package as one continuous water line drawn
-   as a navy blueprint (IsoKit). Drinking water enters at the left, runs through the four systems in order (media and
-   carbon filters and softener; RO rack and EDI stack; PP tank and loop pump; analyser, panel and point of use) and
+   as a navy blueprint (IsoKit). Drinking water enters at the left, runs through the four systems in order (media
+   filter, softener, then carbon or bisulfite, drawn as one vessel, the order sys-pretreatment teaches; RO rack and a
+   DI/EDI unit, drawn as one stack while DI versus EDI is open, FD-21; PP tank and loop pump; analyser, panel and
+   point of use) and
    leaves at the point of use. Each system has a bracket over its equipment with its number and name, and a column
    under the drawing with its line, standard tag and link; pointing at a column lights its equipment.
    Phones: the long drawing gives way to one drawing per system, stacked down a vertical water line.
-   Fields (a path block): h, from, to, items [{t, d, tag, link, label}] (label: short bracket name, default t).
+   Fields (a path block): h, from, to, items [{t, d, tag, link, label}] (label: short bracket name, default t; the
+   second system's bracket defaults to "RO and DI/EDI", what the drawing shows, never EDI only: DR-018).
    The drawing itself is fixed: it shows these four systems in this order (IsoKit parts), so the look fits a path block
    of exactly the home page's four systems; other paths keep the WaterPath renderer. */
 /* drop repeated points and middle points of straight runs, so isoPipe never gets a zero-length leg */
@@ -20,12 +23,12 @@ function srStages(){
   else {pts.push([a[0]+g,a[1],h],[a[0]+g,b[1],h],[b[0]-g,b[1],h],[b[0]-g,b[1],b[2]],b)}
   return isoPipe(srDedupe(pts),{to:to,r:2.2,flanges:false,caps:false})}
  /* 1 pretreatment */
- var fi=P('filter',62,{id:'s0'}),ca=P('carbon',118,{id:'s0'}),so=P('softener',196,{id:'s0'},0,0);
+ var fi=P('filter',62,{id:'s0'}),so=P('softener',134,{id:'s0'},0,0),ca=P('carbon',212,{id:'s0'});
  var f0=fi.ports.in,feed=isoPipe(srDedupe([[f0[0]-40,f0[1],feedZ],[f0[0]-8,f0[1],feedZ],[f0[0]-8,f0[1],f0[2]],f0]),{to:'s0',r:2.2,caps:'start',flanges:false});
- S.push({parts:[feed,fi,link(fi.ports.out,ca.ports.in,'s0','side',fi.ports.out[2]+6),ca,link(ca.ports.out,so.ports.in,'s0','side',so.ports.in[2]+8),so],span:[22,240],feed:feed});
+ S.push({parts:[feed,fi,link(fi.ports.out,so.ports.in,'s0','side',so.ports.in[2]+8),so,link(so.ports.out,ca.ports.in,'s0','side',ca.ports.in[2]+6),ca],span:[22,240],feed:feed});
  /* 2 PW generation: RO rack anchored at its min corner (screen centre 0.866 (2t + 31.5)), EDI after it */
  var tr=(352/ISO_C-31.5)/2,ro=isoPart('ro',tr,-tr,0,1,{id:'s1'}),te=(468/ISO_C-9)/2,ed=isoPart('edi',te,-te,0,1,{id:'s1'});
- S.push({parts:[link(so.ports.out,ro.ports.in,'s1','side',so.ports.out[2]+10),ro,link(ro.ports.out,ed.ports.in,'s1','side',ro.ports.out[2]+4),ed],span:[282,500]});
+ S.push({parts:[link(ca.ports.out,ro.ports.in,'s1','side',ca.ports.out[2]+10),ro,link(ro.ports.out,ed.ports.in,'s1','side',ro.ports.out[2]+4),ed],span:[282,500]});
  /* 3 storage: tank fed from the top, loop pump at its outlet */
  var ta=P('tank',600,{id:'s2'}),tp=(672/ISO_C-16)/2,pu=isoPart('pump',tp,-tp,0,1,{id:'s2'});
  S.push({parts:[link(ed.ports.out,ta.ports.in,'s2','top',ta.ports.in[2]+14),ta,link(ta.ports.out,pu.ports.in,'s2','side',ta.ports.out[2]),pu],span:[560,720]});
@@ -44,7 +47,7 @@ LOOKS['system-run']=function(b,H){
  var sheet=isoSheet(W,Hh+60,{grid:'iso',gridStep:22,title:false,m:0,band:8,cols:8,rows:3});
  var svg=isoSvg(W,Hh+60,big,'aq-iso--navy aq-system-run__svg',{origin:[org[0],org[1]+60],under:sheet});
  var brackets=I.map(function(it,i){var s=S[i];if(!s)return '';var l=s.span[0]/W*100,w=(s.span[1]-s.span[0])/W*100;
-  return '<span class="aq-system-run__bracket" data-stage="s'+i+'" style="left:'+l.toFixed(2)+'%;width:'+w.toFixed(2)+'%"><span class="aq-system-run__bn">'+(i<9?'0':'')+(i+1)+'</span>'+tx(it.label||it.t)+'</span>'}).join('');
+  return '<span class="aq-system-run__bracket" data-stage="s'+i+'" style="left:'+l.toFixed(2)+'%;width:'+w.toFixed(2)+'%"><span class="aq-system-run__bn">'+(i<9?'0':'')+(i+1)+'</span>'+tx(it.label||(i===1?'RO and DI/EDI':it.t))+'</span>'}).join('');
  var f0=S[0].feed.start,fin=isoPct([f0[0],f0[1]],W,Hh+60,[org[0],org[1]+60]);
  var ends='<span class="aq-system-run__end aq-system-run__end--in" style="left:'+fin.left+';top:'+fin.top+'">'+tx(b.from||'Drinking water')+'</span>'
   +'<span class="aq-system-run__end aq-system-run__end--out">'+tx(b.to||'Point of use')+'</span>';

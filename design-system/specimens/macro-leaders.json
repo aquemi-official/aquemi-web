@@ -3,14 +3,14 @@
  "component": "MacroLeaders",
  "type": "table",
  "fields": "cols (first is the row name), rows (cells, strings or {t, link}). No new fields.",
- "best_for": "MacroLeaders sets a comparison table beside a macro drawing (RO membrane leaves fanned over a PP pipe and its weld bead) and calls each row out from it with a numbered marker and a leader, so a by-industry table reads as one piece of equipment serving every row.",
+ "best_for": "MacroLeaders sets a comparison table beside a macro drawing (RO membrane leaves fanned over a plain PP pipe labelled \"PP pipe\"; no weld bead while the joining method is open, FD-18, DR-018) and calls each row out from it with a numbered marker and a leader, so a by-industry table reads as one piece of equipment serving every row.",
  "status": "live",
  "instances": [
   {
    "page": "industries",
    "slot": 1,
    "h": "Grade, limit and inspector by industry",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -69,6 +69,84 @@
        "link": "ind-pharma"
       },
       "Your written specification; PW for any drug line",
+      "Each product’s legal class, by market",
+      "Health Canada; FDA for over-the-counter drugs"
+     ],
+     [
+      {
+       "t": "Pharma, sterile",
+       "link": "industries#faq"
+      },
+      "PW for non-sterile steps; we do not supply Water for Injection",
+      "USP <645> and <643>",
+      "Health Canada GUI-0119; FDA; EU authorities"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 1,
+   "h": "Grade, limit and inspector by industry",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "36cc9a507c",
+   "block": {
+    "type": "table",
+    "look": "macro-leaders",
+    "nav": "By industry",
+    "h": "Grade, limit and inspector by industry",
+    "cols": [
+     "Industry",
+     "Grades and uses",
+     "Limit that applies",
+     "Inspector"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Pharma, non-sterile",
+       "link": "ind-pharma"
+      },
+      "PW for granulation, coating and rinse",
+      "USP <645> and <643>",
+      "Health Canada GUI-0001; FDA 21 CFR 211"
+     ],
+     [
+      {
+       "t": "Contract manufacturing",
+       "link": "ind-cdmo"
+      },
+      "PW per client program",
+      "Stricter of USP and Ph. Eur., per attribute",
+      "Regulators and each client’s quality unit"
+     ],
+     [
+      {
+       "t": "Medical devices",
+       "link": "ind-meddevice"
+      },
+      "PW final rinse, with an endotoxin limit where needed",
+      "USP <161> per device; ISO 11737-1 bioburden",
+      "Health Canada, through MDSAP (Class II to IV); FDA 21 CFR 820"
+     ],
+     [
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      },
+      "Potable at minimum; PW where your specification calls for it",
+      "Your specification (GUI-0158 s. 45)",
+      "Health Canada GUI-0158"
+     ],
+     [
+      {
+       "t": "Cosmetics and personal care",
+       "link": "industries#faq"
+      },
+      "Your written specification; ISO 22716 good manufacturing practice (GMP) encouraged; PW for any drug line",
       "Each product’s legal class, by market",
       "Health Canada; FDA for over-the-counter drugs"
      ],

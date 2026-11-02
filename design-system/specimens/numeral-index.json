@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as the router: cols (situation, what you need, start with), rows [situation, need, {t, link, intent}]. A row with more than three cells shows the middle ones as further \"need\" lines.",
  "best_for": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "ind-pharma",
@@ -64,6 +64,70 @@
       {
        "t": "Natural health products",
        "link": "ind-pharma#nhp"
+      }
+     ]
+    ],
+    "look": "numeral-index"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "853c9da91c",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "Endotoxin or bioburden drifting at the washer inlet",
+      "Your rinse water limit at risk; first, assess loop, sample point and trends",
+      {
+       "t": "Out-of-trend results",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "Bioburden rising, a dose audit at risk",
+      "Rinse water bioburden adds to device bioburden (ISO 11737-1, ISO 11137-2); first, assess the supply",
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "A new device or line",
+      "Rinse water limits worked back from your device limits",
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "A supplier questionnaire or audit due",
+      "Our quality system status, audit access and quality agreement",
+      {
+       "t": "Supplier quality",
+       "link": "ind-meddevice#supplier-quality"
+      }
+     ],
+     [
+      "A first PW system for a small plant",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "industries#first-system"
       }
      ]
     ],

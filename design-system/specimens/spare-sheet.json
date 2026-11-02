@@ -10,7 +10,7 @@
    "page": "svc-service",
    "slot": 4,
    "h": "Like for like, or a change?",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -21,6 +21,75 @@
     "nav": "Like for like",
     "h": "Like for like, or a change?",
     "intro": "Changes wait for your change control.",
+    "cols": [
+     "Part",
+     "Like for like when",
+     "A change when",
+     "What follows a change"
+    ],
+    "rows": [
+     [
+      "RO membranes",
+      "Same maker, model and count",
+      "Different model, chemistry or array",
+      "Operational qualification (OQ) at design recovery; closer sampling"
+     ],
+     [
+      "Instruments",
+      "Same model, range and configuration",
+      "Different model, range or data path",
+      "Installation qualification (IQ), loop check, audit trail check"
+     ],
+     [
+      "Control software",
+      "Never",
+      "Any version, logic or configuration change",
+      "Regression tests; version and checksum recorded"
+     ],
+     [
+      "Gaskets, diaphragms, seals",
+      "Same compound and certificates",
+      "A different elastomer or polytetrafluoroethylene (PTFE) grade",
+      "Material and extractables review"
+     ],
+     [
+      "EDI modules",
+      "Same model, at qualified current and flow",
+      "Different model or operating window",
+      "OQ of the EDI step"
+     ],
+     [
+      "UV lamps",
+      "Same lamp and ballast, within rated life",
+      "Different lamp, ballast or dose",
+      "Intensity check, OQ of the UV alarm"
+     ],
+     [
+      "Vent filters",
+      "Same maker, membrane and rating",
+      "Different membrane, rating or housing",
+      "Integrity test, sanitization review"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "parts"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 4,
+   "h": "Like for like, or a change?",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "2d198dbbc3",
+   "block": {
+    "type": "table",
+    "look": "spare-sheet",
+    "nav": "Like for like",
+    "h": "Like for like, or a change?",
+    "intro": "Like for like under your procedure keeps the system qualified. A change waits for your change control (EU GMP Annex 15, 11; GUI-0029, 7).",
     "cols": [
      "Part",
      "Like for like when",

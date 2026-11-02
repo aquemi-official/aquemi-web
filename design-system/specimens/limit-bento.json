@@ -10,7 +10,7 @@
    "page": "compliance",
    "slot": 0,
    "h": "Purified Water limits",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -55,6 +55,58 @@
      }
     ],
     "note": "Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units.",
+    "look": "limit-bento"
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 0,
+   "h": "Purified Water limits",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "4fe8cd28ea",
+   "block": {
+    "type": "spec",
+    "as": "gauges",
+    "nav": "Limits",
+    "anchor": "limits",
+    "h": "Purified Water limits",
+    "intro": "For Purified Water only, not Water for Injection (WFI). Where USP and Ph. Eur. differ, we design to the stricter value.",
+    "caption": "USP · PH. EUR.",
+    "cols": [
+     "Parameter",
+     "Limit",
+     "Reference"
+    ],
+    "rows": [
+     {
+      "p": "Conductivity",
+      "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
+      "m": "USP <645>",
+      "hl": true,
+      "icon": "conductivity",
+      "alt": {
+       "v": "≤ 5.1 µS/cm at 25 °C",
+       "m": "Ph. Eur."
+      }
+     },
+     {
+      "p": "Total organic carbon",
+      "v": "≤ 0.50 mg/L (500 ppb)",
+      "m": "USP <643>; Ph. Eur. 2.2.44",
+      "icon": "toc"
+     },
+     {
+      "p": "Microbial action level",
+      "v": "≤ 100 CFU/mL",
+      "level": "action",
+      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+      "icon": "droplet"
+     }
+    ],
+    "note": "Ph. Eur. conductivity: ≤ 5.1 µS/cm at 25 °C. Nitrates: ≤ 0.2 ppm, test waived at WFI conductivity (Ph. Eur. 11.4). CFU: colony-forming units.",
     "look": "limit-bento"
    }
   }

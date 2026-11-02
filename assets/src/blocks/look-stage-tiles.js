@@ -2,13 +2,15 @@
    navy and limestone, each led by a huge light slash numeral ("01/"). The heading sits in a navy band over the first
    tiles; with six stages the last two stack in a column at the right (05 beside the heading, 06 under it), so the
    stages read left to right and then down. A stage with art "piping" carries a small blueprint of a pipe run (twin
-   walls, fusion joints at the bends, flow arrows) in place of its numeral: the stage that checks the drawing (IQ).
+   walls, joint lines at the bends, flow arrows) in place of its numeral: the stage that checks the drawing (IQ). A
+   joint is a plain line across the pipe, flush with its walls: no bead or collar standing proud of the pipe, since the
+   joining method is open (DR-018, FD-18; as JointMacro).
    Fields (a steps block): h, intro, items [{t, d, link, label, art}]. label: a short line over the stage name (shown
    only when the name does not already contain it); art: "piping" for the drawing tile.
    Container under 1080 px: the heading over a three-column grid; phones: one column, numeral beside the words. */
 function stPiping(){var P='aq-stage-tiles'+'__',run='M-6 34H58Q72 34 72 48V98Q72 112 86 112H148Q162 112 162 98V48Q162 34 176 34H246',br='M118 112V166';
  var g='';for(var x=20;x<240;x+=20)g+='M'+x+' 0V160';for(var y=20;y<160;y+=20)g+='M0 '+y+'H240';
- function jt(x,y,v){return '<path class="'+P+'jt" d="'+(v?'M'+(x-6)+' '+y+'H'+(x+6):'M'+x+' '+(y-6)+'V'+(y+6))+'"/>'}
+ function jt(x,y,v){return '<path class="'+P+'jt" d="'+(v?'M'+(x-4.5)+' '+y+'H'+(x+4.5):'M'+x+' '+(y-4.5)+'V'+(y+4.5))+'"/>'}
  function ar(x,y,r){return '<path class="'+P+'ar" d="M-4 -4L2 0L-4 4" transform="translate('+x+' '+y+') rotate('+r+')"/>'}
  return '<svg class="'+P+'svg" viewBox="0 0 240 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">'
   +'<path class="'+P+'grid" d="'+g+'"/>'

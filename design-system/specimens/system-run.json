@@ -2,7 +2,7 @@
  "look": "system-run",
  "component": "SystemRun",
  "type": "path",
- "fields": "h, from, to, items [{t, d, tag, link, label}] (label: short bracket name, default t).",
+ "fields": "h, from, to, items [{t, d, tag, link, label}] (label: short bracket name, default t; the second system's bracket defaults to \"RO and DI/EDI\", what the drawing shows, never EDI only: DR-018).",
  "best_for": "SystemRun shows a modular package as one continuous water line drawn as a navy blueprint: drinking water enters at the left, runs through each system's equipment in order and leaves at the point of use, with a column per system under the drawing.",
  "status": "live",
  "instances": [

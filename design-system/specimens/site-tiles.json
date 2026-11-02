@@ -10,7 +10,7 @@
    "page": "about",
    "slot": 2,
    "h": "What changes for a Canadian site",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -43,6 +43,48 @@
       "d": "From [service bases, cities], with spares in [stock location or locations].",
       "link": "contact-locations#coverage",
       "icon": "wrench"
+     }
+    ],
+    "look": "site-tiles"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 2,
+   "h": "What changes for a Canadian site",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "9dca7fd038",
+   "block": {
+    "type": "grid",
+    "nav": "Canada",
+    "h": "What changes for a Canadian site",
+    "items": [
+     {
+      "t": "Witness your factory acceptance test (FAT)",
+      "d": "In [shop location, city and province], once [shop and test bay ready for visits].",
+      "link": "svc-fat-sat",
+      "icon": "gauge"
+     },
+     {
+      "t": "Registration in your province",
+      "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for [pressure-rated items in the PW package].",
+      "link": "compliance#engineering",
+      "icon": "stamp"
+     },
+     {
+      "t": "Designed for Canadian feed water",
+      "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
+      "link": "sys-pretreatment",
+      "icon": "softener"
+     },
+     {
+      "t": "Service and spares",
+      "d": "From [service bases, cities], with spares in [stock location or locations].",
+      "link": "contact-locations#coverage",
+      "icon": "valve"
      }
     ],
     "look": "site-tiles"

@@ -10,7 +10,7 @@
    "page": "svc-fabrication",
    "slot": 2,
    "h": "The fabrication dossier",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -34,6 +34,44 @@
      },
      {
       "t": "Joining procedure and welder qualifications"
+     },
+     {
+      "t": "Pressure test and cleaning certificates",
+      "d": "[PP pressure test standard]; final rinse conductivity and TOC"
+     }
+    ],
+    "nav": "Dossier"
+   }
+  },
+  {
+   "page": "svc-fabrication",
+   "slot": 2,
+   "h": "The fabrication dossier",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "5c5ee5652d",
+   "block": {
+    "type": "docs",
+    "look": "spool-dossier",
+    "h": "The fabrication dossier",
+    "items": [
+     {
+      "t": "Joint records",
+      "d": "[PP joint records kept]",
+      "key": true,
+      "link": "cmp-documentation#samples",
+      "intent": "Joint records extract"
+     },
+     {
+      "t": "Material log and PP certificates",
+      "d": "[PP material certificates], indexed by lot",
+      "key": true
+     },
+     {
+      "t": "Joining procedure and welder qualifications",
+      "d": "Procedure to [PP joining standard]; each welder's qualification record"
      },
      {
       "t": "Pressure test and cleaning certificates",

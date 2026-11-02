@@ -10,7 +10,7 @@
    "page": "contact-service",
    "slot": 2,
    "h": "Response times by request",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -45,6 +45,66 @@
       "Severity 4: maintenance or calibration",
       "Date within [maintenance booking reply time, working days]",
       "Signed report; calibration certificates to USP <645> and <643>"
+     ],
+     [
+      "Requalification after a change",
+      "Reply within [requalification support reply time, working days]",
+      "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7)"
+     ],
+     [
+      "Parts and consumables",
+      "Quote within [parts quote turnaround, working hours]",
+      "Checked like for like against your qualified parts list, with certificates"
+     ],
+     [
+      "First service, other make",
+      "Reply within [other-builder request reply time, working days]",
+      "For [makes and equipment types serviced]: a condition survey quote"
+     ]
+    ],
+    "as": "router",
+    "look": "riser-valves"
+   }
+  },
+  {
+   "page": "contact-service",
+   "slot": 2,
+   "h": "Response times by request",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "4f106f31b6",
+   "block": {
+    "type": "table",
+    "nav": "Response times",
+    "h": "Response times by request",
+    "intro": "Times apply on a service plan; without one, a call-out with the next available technician.",
+    "cols": [
+     "Your request",
+     "First response",
+     "What follows"
+    ],
+    "rows": [
+     [
+      "Severity 1: production stopped or water out of specification",
+      "Answered within [severity 1 phone answer time, minutes]; remote diagnosis within [remote response time, hours]",
+      "On site within [severity 1 on-site response time, hours], inside [service coverage area]"
+     ],
+     [
+      "Severity 2: alarm, reduced capacity or adverse trend",
+      "Reply within [severity 2 reply time, hours]",
+      "Visit within [severity 2 visit time]"
+     ],
+     [
+      "Severity 3: no effect on water quality or supply",
+      "Reply within [severity 3 reply time, working days]",
+      "Fixed at the next or a booked visit"
+     ],
+     [
+      "Preventive maintenance or calibration",
+      "Date within [maintenance booking reply time, working days]",
+      "Signed report; calibration certificates, instruments checked against USP <645> and <643>"
      ],
      [
       "Requalification after a change",

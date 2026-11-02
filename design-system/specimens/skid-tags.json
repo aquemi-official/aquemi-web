@@ -10,7 +10,7 @@
    "page": "compliance",
    "slot": 4,
    "h": "Engineering, materials and pressure equipment",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -23,6 +23,87 @@
     "look": "skid-tags",
     "parts": [
      "vessel",
+     "panel",
+     "deadleg",
+     "wall",
+     "joint"
+    ],
+    "tag": "On the drawing",
+    "h": "Engineering, materials and pressure equipment",
+    "cols": [
+     "Standard",
+     "What we design to",
+     "Proof",
+     "Where we show it"
+    ],
+    "rows": [
+     [
+      "CSA B51",
+      "A Canadian registration number (CRN) from the province of installation for [pressure-rated items in the PW package]",
+      "CRN registration; vessel data reports",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ],
+     [
+      "[panel standard]",
+      "Panels built and marked to [panel certification mark held, or field evaluation used]",
+      "Panel label and report",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "[PP piping standard]",
+      "PP pipe, fittings and valves; dead legs ≤ [dead leg design limit, L/D]",
+      "Dead leg register; pressure test to [PP pressure test method]",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "[PP material standard]",
+      "Unpigmented product-contact PP, [PP grade]; polyvinyl chloride (PVC) in pretreatment only",
+      "[PP material certificates] traced by lot",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ],
+     [
+      "[PP joining standard]",
+      "Joints by [PP joining method], to [welder qualification standard for thermoplastics]",
+      "[PP joint records kept]",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "standards"
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 4,
+   "h": "Engineering, materials and pressure equipment",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "20a0c584bb",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Engineering",
+    "anchor": "engineering",
+    "look": "skid-tags",
+    "parts": [
+     "",
      "panel",
      "deadleg",
      "wall",

@@ -6,7 +6,7 @@
    glides to it (atlas-hotspots, below). Pass 9b concept research/pass9b/concepts/compliance.4.png.
    Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
    fold, fold_noun. New optional fields: parts, one per row: the drawn part its standard governs (vessel, panel, deadleg,
-   wall, joint; a row without one gets no tag); tag, the name of the number column and of the drawing's tag group.
+   wall, joint: a plain line across the pipe, no bead profile; a row without one gets no tag); tag, the name of the number column and of the drawing's tag group.
    The drawing is fixed (it names no standard); which row points at which part is data. Desktop shows every row; the
    fold applies on phones, where a readout under the drawing shows the chosen row. */
 var ST_W=840,ST_H=420;
@@ -40,7 +40,9 @@ function stDrawing(){var g=function(k,s){return '<g class="aq-skid-tags__part" d
  var deadleg=stR(604,74,12,20)+stR(598,60,24,16)+stR(603,50,14,10)+stR(594,44,32,6)+stR(622,63,22,10)+stP('M644 63 V73','fn')+stP('M622 68 H644','fl')
   +stP('M610 94 V76','fl')+stP('M598 94 H580 M598 76 H580 M586 94 V76 M583 91 L589 97 M583 73 L589 79','dim')+'<text class="aq-skid-tags__lab" x="576" y="89" text-anchor="end">L</text>';
  var wall=stR(690,92,60,16,'cut')+stR(690,94,60,2.5,'sec')+stR(690,103.5,60,2.5,'sec')+stP('M690 100 H750','fl')+stP('M690 90 L686 96 L694 104 L690 110 M750 90 L746 96 L754 104 L750 110','fn');
- var joint=stP('M506 298 A4 4 0 0 1 514 298 Z M506 310 A4 4 0 0 0 514 310 Z')+stP('M510 298 V310','fn');
+ /* the joint: one line across the pipe, flush with its walls; no bead or collar while the joining method is open
+    (DR-018, FD-18; as JointMacro) */
+ var joint=stP('M510 298 V310');
  var panel=stR(588,322,134,8)+stR(590,130,130,192)+stP('M655 130 V322','fn')+stR(602,150,42,30,'fn')+stP('M606 172 L614 166 L620 169 L628 158 L634 162 L640 156','fl')
   +stC(610,198,3.5,'fn')+stC(622,198,3.5,'fn')+stC(634,198,3.5,'fn')+stC(623,220,5,'fn')+stP('M623 220 L626 216','fn')+stR(659,220,4,20,'fn')
   +stR(668,146,40,12,'fn')+stP('M668 290 H708 M668 296 H708 M668 302 H708','fn');

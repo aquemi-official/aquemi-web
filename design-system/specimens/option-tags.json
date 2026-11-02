@@ -10,7 +10,7 @@
    "page": "sys-pw",
    "slot": 4,
    "h": "Configurations and options",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -47,6 +47,55 @@
       "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
       "spot": "pump",
       "shape": "folder"
+     }
+    ],
+    "nav": "Options",
+    "fold": 3,
+    "spot": "ro-skid",
+    "look": "option-tags"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 4,
+   "h": "Configurations and options",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "1f660d8b11",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Configurations and options",
+    "items": [
+     {
+      "t": "Membrane degasser",
+      "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high.",
+      "spot": "ro-membrane"
+     },
+     {
+      "t": "Duplex trains",
+      "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Recirculation at no demand",
+      "d": "Circulates when storage is full, so water never stands in the membranes.",
+      "spot": "loop",
+      "shape": "round"
+     },
+     {
+      "t": "Ultrafiltration or 254 nm UV",
+      "d": "After DI or EDI, where your microbial target needs more margin. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
+      "spot": "uv-ozone",
+      "shape": "tag"
+     },
+     {
+      "t": "Recovery enhancement",
+      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
+      "spot": "pump",
+      "shape": "tag"
      }
     ],
     "nav": "Options",

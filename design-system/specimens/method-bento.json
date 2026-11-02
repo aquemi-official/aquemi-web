@@ -10,7 +10,7 @@
    "page": "sys-storage",
    "slot": 2,
    "h": "Chemical, hot water or UV",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -68,6 +68,69 @@
      ]
     },
     "absent": "Ozone"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 2,
+   "h": "Chemical, hot water or UV",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "50f33f3bc7",
+   "block": {
+    "type": "table",
+    "h": "Chemical, hot water or UV",
+    "intro": "Ozone needs the PP maker's written rating, which we have not found.",
+    "nav": "Sanitization",
+    "anchor": "sanitization",
+    "cols": [
+     "Method",
+     "How it controls microbes",
+     "Fit with PP",
+     "Trade-off"
+    ],
+    "rows": [
+     [
+      "Chemical",
+      "[PP loop sanitization method]; residual tested before use",
+      "A sanitant the PP maker rates",
+      "Loop out of use each cycle"
+     ],
+     [
+      "Hot water",
+      "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
+      "Inside the PP maker's pressure–temperature curve; ≥ 65 °C needs an engineer's review",
+      "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
+     ],
+     [
+      "Ultraviolet (UV)",
+      "254 nm UV on the supply lowers the viable count; it does not sanitize the loop",
+      "Alongside chemical or hot water, never alone",
+      "Lamps need replacing"
+     ]
+    ],
+    "look": "method-bento",
+    "figs": [
+     "chemical",
+     "hot",
+     "uv"
+    ],
+    "scale": {
+     "row": 1,
+     "base": "Inside the PP maker's pressure–temperature curve",
+     "marks": [
+      {
+       "v": 65,
+       "l": "Needs an engineer's review"
+      },
+      {
+       "v": 80,
+       "l": "Not for routine use at loop pressure"
+      }
+     ]
+    }
    }
   }
  ]

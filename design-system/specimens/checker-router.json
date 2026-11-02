@@ -10,7 +10,7 @@
    "page": "ind-pharma",
    "slot": 0,
    "h": "Your situation and where to start",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -45,6 +45,77 @@
      [
       "First export to the US or EU",
       "Where USP and Ph. Eur. differ, we design to the stricter value",
+      {
+       "t": "Purified Water limits",
+       "link": "compliance#limits"
+      }
+     ],
+     [
+      "A new plant, or your first PW system",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "industries#first-system"
+      }
+     ],
+     [
+      "Natural health products: does this line need PW?",
+      "Potable at minimum; PW where your specification calls for it",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ]
+    ],
+    "look": "checker-router",
+    "draws": [
+     "outlet",
+     "",
+     "",
+     "ro",
+     ""
+    ]
+   }
+  },
+  {
+   "page": "ind-pharma",
+   "slot": 0,
+   "h": "Your situation and where to start",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "0c831f2e0a",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Your situation and where to start",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A new line, or more points of use",
+      "More PW, tied into a qualified plant",
+      {
+       "t": "Upgrades and retrofits",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "An inspection due, an observation, or results out of trend",
+      "GUI-0001 C.02.009 water quality at risk; first, assess design, trends and records",
+      {
+       "t": "After a water observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "First export to the US or EU",
+      "Both pharmacopoeias in one specification",
       {
        "t": "Purified Water limits",
        "link": "compliance#limits"

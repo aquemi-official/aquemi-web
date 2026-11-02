@@ -10,7 +10,7 @@
    "page": "svc-upgrades",
    "slot": 1,
    "h": "Common upgrades and their requalification",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -98,6 +98,101 @@
      "panel",
      "gen loop"
     ]
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 1,
+   "h": "Common upgrades and their requalification",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "d113f66002",
+   "block": {
+    "type": "table",
+    "look": "retrofit-plant",
+    "as": "router",
+    "nav": "Upgrades",
+    "h": "Common upgrades and their requalification",
+    "cols": [
+     "Upgrade",
+     "What changes",
+     "Requalification",
+     "Site downtime",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "Deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
+      "New skid; the loop usually stays",
+      "IQ/OQ reusing factory test results; intensive, then reduced sampling",
+      "[days]; DI runs until release",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ],
+     [
+      "New pretreatment",
+      "Polyvinyl chloride (PVC) module before the RO",
+      "IQ/OQ; RO inlet chlorine and hardness; downstream sampling",
+      "[days]; existing pretreatment runs until cutover",
+      {
+       "t": "Pretreatment",
+       "link": "sys-pretreatment"
+      }
+     ],
+     [
+      "Distribution loop replacement",
+      "PP loop and pump module; points of use reconnected",
+      "IQ with dead leg register; OQ of flow and [PP loop sanitization method]; every outlet sampled",
+      "[days], planned shutdown",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Online total organic carbon (TOC) and conductivity",
+      "Analyzer, sample line, historian link",
+      "OQ with USP <643> suitability; lab results in parallel until release",
+      "[days]",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Controls replacement",
+      "New controller (PLC), operator panel (HMI), supervisory control (SCADA), electronic records",
+      "GAMP 5 validation; factory software test; short sampling",
+      "[days], tank full",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Capacity increase",
+      "Second RO train, DI/EDI module or pump; PP sub-loops only off ambient, chemically sanitized loops",
+      "IQ/OQ of new equipment; loop flow at the new peak",
+      "[days]; built while running",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ]
+    ],
+    "parts": [
+     "gen",
+     "pre",
+     "loop",
+     "toc",
+     "panel",
+     "gen loop"
+    ],
+    "anchor": "upgrades"
    }
   }
  ]

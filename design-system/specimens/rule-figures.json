@@ -10,7 +10,7 @@
    "page": "sys-storage",
    "slot": 0,
    "h": "Loop design rules",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -60,6 +60,78 @@
       "v": "[PP point-of-use valve type], joined by [PP joining method]",
       "m": "WHO TRS 1033, 8.6",
       "fig": "valve"
+     },
+     {
+      "p": "Tank vent",
+      "v": "Hydrophobic 0.2 µm filter",
+      "m": "WHO TRS 1033, 9.2",
+      "fig": "vent"
+     },
+     {
+      "p": "Online monitoring",
+      "v": "Conductivity, temperature and flow on the return; total organic carbon (TOC): [TOC on the return, standard or option]",
+      "m": "USP <645>; USP <643>",
+      "fig": "monitor"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "rules",
+    "as": "rules",
+    "look": "rule-figures"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 0,
+   "h": "Loop design rules",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "c18a12e976",
+   "block": {
+    "type": "spec",
+    "h": "Loop design rules",
+    "caption": "PW LOOP · WHO TRS 1033",
+    "cols": [
+     "Rule",
+     "Design value",
+     "Basis"
+    ],
+    "nav": "Design rules",
+    "rows": [
+     {
+      "p": "Flow regime",
+      "v": "Turbulent in every section at peak demand",
+      "m": "WHO TRS 1033, 8.6; return flow alarmed",
+      "hl": true,
+      "rule": "≥ [design minimum return velocity, m/s]",
+      "fig": "turbulent"
+     },
+     {
+      "p": "Slope and drainage",
+      "v": "Continuous fall to low-point drains",
+      "m": "WHO TRS 1033, 7.2.1; fall measured on each run",
+      "rule": "≥ [design minimum slope, in/ft or %]",
+      "fig": "slope"
+     },
+     {
+      "p": "Dead legs",
+      "v": "Every branch, instrument tee and sample valve kept short",
+      "m": "WHO TRS 1033, 8.6; measured and listed in the dead leg register",
+      "rule": "≤ [dead leg design limit, L/D]",
+      "fig": "deadleg"
+     },
+     {
+      "p": "Loop sanitization",
+      "v": "[PP loop sanitization method]",
+      "m": "WHO TRS 1033, 8.4; inside the PP maker's pressure–temperature curve; verified at the coldest point",
+      "rule": "≤ [maximum loop sanitization temperature for PP, °C]"
+     },
+     {
+      "p": "Point-of-use valves",
+      "v": "[PP point-of-use valve type], joined by [PP joining method]",
+      "m": "WHO TRS 1033, 8.6"
      },
      {
       "p": "Tank vent",

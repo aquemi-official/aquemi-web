@@ -10,7 +10,7 @@
    "page": "ind-meddevice",
    "slot": 2,
    "h": "Systems for device plants",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -47,6 +47,52 @@
       "d": "Endotoxin or bioburden drifting on devices: start with a system assessment.",
       "tag": "Change control",
       "link": "svc-upgrades#observation"
+     }
+    ],
+    "look": "standard-tiles"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 4,
+   "h": "Systems for device plants",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "78d272474f",
+   "block": {
+    "type": "grid",
+    "nav": "What we build",
+    "h": "Systems for device plants",
+    "items": [
+     {
+      "t": "PW generation",
+      "icon": "ro-membrane",
+      "d": "Final rinse water to your written endotoxin limit.",
+      "tag": "USP <645>",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "icon": "loop",
+      "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "tag": "USP <1231>",
+      "link": "sys-storage#sanitization"
+     },
+     {
+      "t": "Monitoring and controls",
+      "icon": "conductivity",
+      "d": "Conductivity and total organic carbon trended against your alert and action levels.",
+      "tag": "Audit trail",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades and retrofits",
+      "icon": "valve",
+      "d": "Your existing system assessed, then upgraded under your change control.",
+      "tag": "Change control",
+      "link": "svc-upgrades"
      }
     ],
     "look": "standard-tiles"

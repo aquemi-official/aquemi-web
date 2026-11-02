@@ -10,7 +10,7 @@
    "page": "svc-fabrication",
    "slot": 1,
    "h": "Our fabrication standard",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -18,6 +18,104 @@
    "block": {
     "type": "spec",
     "look": "joint-macro",
+    "h": "Our fabrication standard",
+    "caption": "FABRICATION · POLYPROPYLENE",
+    "cols": [
+     "Item",
+     "What we do",
+     "Standard and record"
+    ],
+    "rows": [
+     {
+      "p": "Material",
+      "v": "Unpigmented PP, [PP grade]",
+      "m": "[how PP parts are marked for traceability]",
+      "at": [
+       19,
+       21
+      ]
+     },
+     {
+      "p": "Joining",
+      "v": "[PP joining method]",
+      "m": "[PP joining standard]",
+      "at": [
+       47,
+       25
+      ]
+     },
+     {
+      "p": "Test joints",
+      "v": "[when test joints are made]",
+      "m": "[test joint examination method]",
+      "at": [
+       13,
+       46
+      ]
+     },
+     {
+      "p": "Joint examination",
+      "v": "Visual on [share of product-contact joints visually examined, %]",
+      "m": "[joint acceptance criteria]",
+      "at": [
+       57,
+       48
+      ]
+     },
+     {
+      "p": "Internal surface",
+      "v": "[PP internal surface specification, Ra µm]",
+      "m": "[basis for the PP surface specification]",
+      "at": [
+       93,
+       65
+      ]
+     },
+     {
+      "p": "Material certificates",
+      "v": "Each product-contact lot's marking checked against its certificate on receipt",
+      "m": "[PP material certificates]; material log"
+     },
+     {
+      "p": "Procedures and welders",
+      "v": "Written joining procedure; [number of qualified thermoplastic welders] welders",
+      "m": "[welder qualification standard for thermoplastics]"
+     },
+     {
+      "p": "Machines",
+      "v": "[joining machine calibration and data logging]",
+      "m": "[machine calibration interval]"
+     },
+     {
+      "p": "Cleaning before first use",
+      "v": "[pre-commissioning flush and cleaning procedure for PP], PW rinse to conductivity and total organic carbon (TOC) limits",
+      "m": "Cleaning certificate"
+     },
+     {
+      "p": "Pressure test",
+      "v": "[PP pressure test method]",
+      "m": "[PP pressure test standard]; witnessed"
+     }
+    ],
+    "nav": "Our standard",
+    "fold": 5,
+    "fold_noun": "rows",
+    "as": "callouts"
+   }
+  },
+  {
+   "page": "svc-fabrication",
+   "slot": 1,
+   "h": "Our fabrication standard",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "836f4c861e",
+   "block": {
+    "type": "spec",
+    "look": "joint-macro",
+    "anchor": "standard",
     "h": "Our fabrication standard",
     "caption": "FABRICATION · POLYPROPYLENE",
     "cols": [

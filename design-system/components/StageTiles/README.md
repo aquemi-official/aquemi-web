@@ -6,7 +6,7 @@ Concept: pass 9b svc-cq.0 (C&Q stages as tiles with slash numerals, one blueprin
 `<section class="aq-section aq-stage-tiles-sec">` > `.aq-stage-tiles[.is-six]` > `__head` (section head) and `ol.__list` > `li.__tile.is-lime|is-navy[.has-art]` (`__art` > `svg.__svg` when the item has art, `__n` with the slash in `i`, `__body` > `__lab`, `h3.__t`, `p.__d`).
 
 ## Fields
-`h`, `intro`, `items` [{`t`, `d`, `link`, `label`, `art`}]. `label`: a short line over the name, shown only when the name does not already contain it. `art`: "piping" puts the pipe-run blueprint (twin walls, fusion joints at the bends, flow arrows, a title block) in place of the big numeral.
+`h`, `intro`, `items` [{`t`, `d`, `link`, `label`, `art`}]. `label`: a short line over the name, shown only when the name does not already contain it. `art`: "piping" puts the pipe-run blueprint (twin walls, joint lines at the bends drawn flush with the walls, with no bead or collar while the joining method is open (FD-18, DR-018), flow arrows, a title block) in place of the big numeral.
 
 ## Rules
 - Tones run limestone, navy, navy by index so two limestone tiles never meet; navy neighbours get an `on-navy-muted` hairline.

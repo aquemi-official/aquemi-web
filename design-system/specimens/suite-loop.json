@@ -10,7 +10,7 @@
    "page": "ind-cdmo",
    "slot": 0,
    "h": "Start from your situation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -79,6 +79,91 @@
       "Natural health products or supplements for brand owners",
       "Potable at minimum; PW where your specification calls for it",
       "PW generation, if needed",
+      {
+       "t": "Pharmaceutical: natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ]
+    ],
+    "look": "suite-loop"
+   }
+  },
+  {
+   "page": "ind-cdmo",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "7ec6e5f6af",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Systems",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A tech transfer for a new client program",
+      "Spare capacity and a new outlet, qualified before process performance qualification (PPQ)",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Clients filing in Canada, the US and Europe",
+      "Stricter of USP and Ph. Eur., per attribute",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Purified Water limits",
+       "link": "compliance#limits"
+      }
+     ],
+     [
+      "A client audit finding or questionnaire gap",
+      "The client’s quality agreement (GUI-0001 C.02.012) at risk; first, evidence on design, trends and data integrity",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Upgrades: after an observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "One generation train: an outage stops several clients",
+      "Supply to every client program at risk; first, storage for your longest repair, standby pumps, duplex trains",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Redundancy options",
+       "link": "ind-cdmo#redundancy"
+      }
+     ],
+     [
+      "Natural health products or supplements for brand owners",
+      "Potable at minimum; PW where your specification calls for it",
+      {
+       "t": "PW generation, if your specification asks",
+       "link": "sys-pw"
+      },
       {
        "t": "Pharmaceutical: natural health products",
        "link": "ind-pharma#nhp"

@@ -330,7 +330,7 @@
    "height": "640",
    "width": "1100",
    "subtitle": "Certification status as a ruler-framed readout beside mono readout lines",
-   "summary": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's standard set giant and light, beside the items as mono readout lines whose titles are buttons that put them on the readout."
+   "summary": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's status line set as the giant reading and its standard as a small line, beside the items as mono readout lines whose titles are buttons that put them on the readout."
   },
   {
    "name": "CertSeals",
@@ -732,7 +732,7 @@
    "height": "1000",
    "width": "1280",
    "subtitle": "Services: six stages on a rising line over a macro weld; hold points ringed, PQ as the boxed figure",
-   "summary": "HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a fused pipe joint, each stage's duration and deliverables hung off its node."
+   "summary": "HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a PP pipe, each stage's duration and deliverables hung off its node."
   },
   {
    "name": "IndexSheet",
@@ -845,7 +845,7 @@
    "group": "Page sections",
    "height": "1300",
    "width": "1280",
-   "subtitle": "Purified Water limits as a stepped type stack beside the outlet pipe and its Guaranteed collar",
+   "subtitle": "Purified Water limits as a stepped type stack beside the outlet pipe and its collar",
    "summary": "LimitStack sets a page's water-quality limits as an editorial type stack beside a sculpted outlet pipe, so the reader sees each limit large, its reference, and the guaranteed skid-outlet value as the stack's last, boxed step."
   },
   {
@@ -885,8 +885,8 @@
    "group": "Page sections",
    "height": "900",
    "width": "1280",
-   "subtitle": "Grade, limit and inspector by industry, called out from a macro drawing of membrane leaves and a PP weld",
-   "summary": "MacroLeaders sets a comparison table beside a macro drawing (RO membrane leaves fanned over a PP pipe and its weld bead) and calls each row out from it with a numbered marker and a leader, so a by-industry table reads as one piece of equipment serving every row."
+   "subtitle": "Grade, limit and inspector by industry, called out from a macro drawing of membrane leaves and a PP pipe",
+   "summary": "MacroLeaders sets a comparison table beside a macro drawing (RO membrane leaves fanned over a plain PP pipe labelled \"PP pipe\"; no weld bead while the joining method is open, FD-18, DR-018) and calls each row out from it with a numbered marker and a leader, so a by-industry table reads as one piece of equipment serving every row."
   },
   {
    "name": "ManifoldRouter",

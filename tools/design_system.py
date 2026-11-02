@@ -12,7 +12,7 @@
                                                        page's visible-word count, overrun or not, and that page's
                                                        warning summary)
   python tools/design_system.py check --warnings [id]  Also list every content warning (or one page's, or one type's:
-                                                       register, faq, fact, contact, link); with a page id the budget
+                                                       register, faq, fact, contact, link, look); with a page id the budget
                                                        line and the summary count that page's only
   python tools/design_system.py new <Name> "<Group>"   Scaffold design-system/components/<Name>/ (README.md, preview.html, style.css)
   python tools/design_system.py stage <dir>            Copy the system into <dir>/project/ for publishing to the Claude artifact
@@ -596,6 +596,8 @@ WARN_TYPES = [  # type, record, what the summary line counts, sub-checks with th
     # DR-014 intents are not here: an intent label that ticks nothing fails the check (intent_problems)
     ('contact', 'DR-008', 'CONTACT values no page file carries', []),
     ('link', 'DR-008', 'links to a missing page or anchor', []),
+    ('look', 'DR-018', 'look fields that state what the copy does not', [('placeholder', 'hold a placeholder'),
+        ('figure', 'hold a figure no reading field states')]),
 ]
 REGISTER = {'lead_codes': 2, 'sentence': 20, 'button': 5, 'question': 12}  # DR-003 rule 3 (language/register-rules.md in the library; an FAQ question is 12 words or fewer on its register card)
 # Page fields a reader never sees as copy (beyond NOT_COPY). LABELS are seen, but as labels: a code there needs spelling
@@ -959,8 +961,68 @@ def link_warnings(pages):
     return out
 
 
+# DR-018 rule 4: look-only fields (a look draws them; they are not the block's reading copy). train: only its labels.
+LOOK_FIELDS = ('alt', 'big', 'spines', 'scale', 'train', 'grid')
+# keys inside a look field that place or index a drawn thing, never a figure
+LOOK_GEOM = {'row', 'col', 'index', 'i', 'k', 'x', 'y', 'dx', 'dy', 'lx', 'ly', 'at', 'w', 'part', 'example'}
+NUMBER = re.compile(r'(?<![\w.])\d+(?:[.,]\d+)?(?![\w])')
+
+
+def look_warnings(pages):
+    """DR-018 rule 4 (website.md, "Content rules"): a look-only field (alt, big, spines, scale, train[].label, grid) that
+    holds a [placeholder], or a figure (a number with its unit, or a bare number value) that no reading field of the same
+    block states. Never fails the check: the drawing may repeat a fact; it may not state one alone."""
+    def look_leaves(x, path, field):
+        """(path, value) for every string or number inside one look field; train keeps only each stop's label."""
+        if isinstance(x, dict):
+            for k, v in x.items():
+                if k in LOOK_GEOM or (field == 'train' and k != 'label'):
+                    continue
+                yield from look_leaves(v, path + '.' + k, field)
+        elif isinstance(x, list):
+            for i, v in enumerate(x):
+                yield from look_leaves(v, '%s[%d]' % (path, i), field)
+        elif isinstance(x, (str, int, float)) and not isinstance(x, bool):
+            yield path, x
+    def find(x, path=''):
+        """(path, field, value) for each look field anywhere in a block."""
+        if isinstance(x, dict):
+            for k, v in x.items():
+                p = path + '.' + k if path else k
+                if k in LOOK_FIELDS:
+                    yield p, k, v
+                else:
+                    yield from find(v, p)
+        elif isinstance(x, list):
+            for i, v in enumerate(x):
+                yield from find(v, '%s[%d]' % (path, i))
+    def num(n):
+        return float(str(n).replace(',', '.') if re.fullmatch(r'\d+,\d{1,2}', str(n)) else str(n).replace(',', ''))
+    out = []
+    for pid, pg in pages.items():
+        for bi, b in enumerate(pg.get('blocks', [])):
+            looks = list(find(b))
+            if not looks:
+                continue
+            reading = ' '.join(t for _, t in copy_items(b, skip=NOT_SHOWN | set(LOOK_FIELDS)))
+            figs, nums = set(figures(reading)), {num(n) for n in NUMBER.findall(bare(reading))}
+            for p, field, val in looks:
+                for lp, v in look_leaves(val, p, field):
+                    where = 'blocks[%d].%s' % (bi, lp)
+                    if isinstance(v, str) and placeholders(v):
+                        out.append(('look', 'placeholder', (pid,), where, '"%s" holds a placeholder: keep it in the reading fields, draw it neutral or not at all' % clip(v, 50)))
+                        continue
+                    if isinstance(v, str):
+                        miss = [f for f in figures(v) if f not in figs]
+                        if miss:
+                            out.append(('look', 'figure', (pid,), where, '"%s": %s stated by no reading field of the block' % (clip(v, 50), ', '.join('%g %s' % f for f in miss))))
+                    elif float(v) not in nums:
+                        out.append(('look', 'figure', (pid,), where, '%g stated by no reading field of the block' % v))
+    return out
+
+
 def content_warnings(pages):
-    return register_warnings(pages) + faq_warnings(pages) + fact_warnings(pages) + contact_warnings(pages) + link_warnings(pages)
+    return register_warnings(pages) + faq_warnings(pages) + fact_warnings(pages) + contact_warnings(pages) + link_warnings(pages) + look_warnings(pages)
 
 
 def report_warnings(ws, show=False, only=None, page=False):

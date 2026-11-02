@@ -10,7 +10,7 @@
    "page": "svc-upgrades",
    "slot": 3,
    "h": "What the assessment reviews",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -57,6 +57,56 @@
       "d": "Support status, audit trail and backups.",
       "spot": "cpu",
       "code": "CTL"
+     }
+    ]
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 3,
+   "h": "What the assessment reviews",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "c22f467ff0",
+   "block": {
+    "type": "grid",
+    "look": "review-reticles",
+    "as": "route",
+    "nav": "Assessment",
+    "h": "What the assessment reviews",
+    "items": [
+     {
+      "t": "Records",
+      "d": "Qualification file, changes, drawings, dead leg register.",
+      "spot": "binder"
+     },
+     {
+      "t": "Water quality data",
+      "d": "A year of conductivity, TOC and microbial results.",
+      "spot": "toc"
+     },
+     {
+      "t": "Generation",
+      "d": "Performance on today’s feed, capacity at your coldest feed.",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "Materials, dead legs, slope, flow and fittings.",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Sanitization",
+      "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
+      "spot": "storage-tank",
+      "part": "outlet"
+     },
+     {
+      "t": "Controls",
+      "d": "Support status, audit trail and backups.",
+      "spot": "cpu"
      }
     ]
    }

@@ -8,7 +8,7 @@ The site has one job: let everyone who must agree to the purchase (who specifies
 | --- | --- | --- |
 | Systems | Purified Water (PW) generation · Storage and distribution loops · Pretreatment · Monitoring and controls | One page per module of the PP package: what it does, key specifications, configuration options, documentation delivered. Written first for the process engineer (QA, QC microbiology or maintenance by module); finance, contractors and EHS read second. The hub holds the budget range and the site requirements. WFI, pure steam and stainless steel systems are not offered; their pages are archived in `content/retired/`. |
 | Services | Process design and engineering · Fabrication · FAT and SAT · Commissioning and qualification (IQ/OQ/PQ) · Service and spare parts · Upgrades and retrofits | How a project runs from user requirement specification to handover and beyond, written first for validation leads and project managers (maintenance leads once the system runs); procurement reads second. The hub holds the durations; Service and spare parts holds the running cost. |
-| Industries | Pharmaceutical · Medical devices · Contract manufacturing (CDMO) | Each industry page links to the systems it uses most, written first for process engineers and QA heads; site heads and founders read second. The hub holds the plain path to a first PW system. |
+| Industries | Pharmaceutical (with natural health products as its `nhp` section, `ind-pharma#nhp`: DR-017) · Medical devices · Contract manufacturing (CDMO) | Each industry page links to the systems it uses most, written first for process engineers and QA heads; site heads and founders read second. The hub holds the plain path to a first PW system. |
 | Compliance | Standards we design to · Documentation package · Quality management | The pages validation and QA teams will look for first. Quality management is also procurement's page and holds the terms: how buying from us works. Certification is a status line per certification (registrar, number, scope, expiry), never an empty "we hold" list, and no ISO label goes in an eyebrow, heading or meta until certified (DR-004 rule 3). |
 | Projects | Projects | Has it been done, and how can we check? For site heads, procurement and QA heads. Until the first delivered project is accepted and its client approves the text in writing: where Aquemi stands, in true facts only (a new Ontario company, no case study yet), and the checks a buyer can run now, each linking to its own form. No template record, reference call or form of its own. After it: problem, system delivered, measured outcome. Use real figures or don't publish. |
 | Company | About · Careers · News | About holds the company facts an approver checks, for site heads, procurement and QA heads; finance and founders read second. Careers is for applicants, News for engineers before a project starts. |
@@ -16,14 +16,15 @@ The site has one job: let everyone who must agree to the purchase (who specifies
 
 ## Home page
 
-1. **Hero.** `eyebrow`, one `display-xl` line, one `body-lg` sentence, one primary button ("Talk to an engineer") and one secondary link to the systems ("See the systems"). Beside them, on `surface`, the fine-line drawing of a figure-eight distribution loop (Hero, "Loop drawing"): the pipe in `flow` with its arrows, the conductivity and TOC sensors labelled with their USP chapters, the heat exchanger under its placeholder until Aquemi says whether it is standard, and a valve at the furthest point of use. No figure is drawn on it and no filter sits on the loop. The KeyFacts strip of Aquemi's own figures follows. No photograph, no carousel.
-2. **Systems index.** The system families in a 3-column grid on desktop, 1 column on phones. Each item: `h3` name, one line of description, the governing standard as a tag. Hairlines between items, not cards.
-3. **Proof in numbers.** One `readout`: a single large measurement with its method on the limit tag and a one-sentence caption below. Only real, sourced figures.
-4. **How we work.** The project sequence (Design → Fabricate → Test → Qualify → Support) as a horizontal sequence. This is a genuine order, so numbering is appropriate here.
-5. **Compliance strip.** Standard tags on `surface-sunken` with a link to the Compliance page.
-6. **Case study.** One project, full-bleed image, outcome in one sentence.
-7. **Closing band.** `navy` band, `h1` in `ink-inverse`, primary button in Limestone.
-8. **Footer.** `navy`, Limestone logo, sitemap columns, address, legal.
+1. **Hero.** `eyebrow` (the standards), one `display-xl` line, one `body-lg` lead that names the package and keeps the scope and exclusion line (DR-021: the exclusion stays in the lead on home), one primary button ("Talk to an engineer") and one secondary link to the systems ("See the systems"). The KeyFacts strip carries Aquemi's own figures only, as placeholders until confirmed (DR-010). No photograph, no carousel.
+2. **One package, one water path.** The four modules as one water line (`path` block, SystemRun): pretreatment, PW generation, storage and distribution, monitoring and controls, each with its governing standard as a tag and a link to its page.
+3. **Industries.** Same PW limits, different evidence by industry (`grid`, IndustryFeed): pharmaceutical, medical devices, contract manufacturing and natural health products (`ind-pharma#nhp`, DR-017), each tile linking to its page or section.
+4. **How a project runs.** The project sequence (Design → Fabricate → Test → Qualify → Support) as one horizontal sequence; a genuine order, so numbered.
+5. **Service after handover.** What the buyer keeps after handover: their change control, the running cost, the signed record.
+6. **Start from where your project is.** The router (`table`, `anchor: start`): one row per buyer situation, from no URS yet to production stopped, each with where to start (DR-015, DR-020).
+7. **Questions before the first call.** FAQ for site heads and founders ("why a new company?" links to projects, DR-016). No case study and no "proof in numbers" until a delivered project and its client's written approval exist (DR-004, DR-016).
+8. **Closing band.** `navy` band, `h1` in `ink-inverse`, primary button in Limestone, with what to send (`cta.include`).
+9. **Footer.** `navy`, Limestone logo, one sentence naming the package and its readers, the contact line, sitemap columns, legal.
 
 ## System page template
 
@@ -32,7 +33,7 @@ The site has one job: let everyone who must agree to the purchase (who specifies
 3. How it works: a line-art process diagram with the water path in `flow`.
 4. Configurations and options, in a two-column list.
 5. Documentation delivered: functional specification, P&IDs, material certificates, joint logs, FAT/SAT protocols, IQ/OQ protocols.
-6. Related systems and a closing call to action.
+6. Questions engineers ask (FAQ: where PP's limit decides fit, it is in the first answer, never last), Where to go next (related: the other modules and the industry pages that use this one), and a closing call to action with what to send.
 
 ## Navigation
 
@@ -44,7 +45,6 @@ The site has one job: let everyone who must agree to the purchase (who specifies
 - A link in a page file may name a block: `page#anchor` (`cmp-quality#buying`, `systems#budget`) opens that page at the block whose `anchor` (or nav id) matches; without a match the page opens at the top. It works in every link field: the hero's button and secondary link, the closing button, contact routes, table cells, rows, option modules, hold-flow stations, a spec's note link, FAQ links, form notes, related links and the footer. `#anchor` scrolls to a block on the same page, in the hero's button and secondary link and the closing button (`primary_cta_link`, `secondary_cta.link`, `cta.link`); elsewhere write `page#anchor`. `check` warns on a link whose page or anchor does not exist.
 - The same three fields take a call: `tel:[sales phone number]` (DR-006, "Call [sales phone number]"). While the number is a placeholder the action shows as text with the placeholder, never a link; once filled it dials (Button, "Call"). Fill the label and the link in the same commit as the pages that repeat the number.
 - Any link to a page with a form may carry `intent` (the options that form ticks on arrival): the hero's `primary_cta_intent` and `secondary_cta.intent`, `cta.intent`, contact routes, table and router cells `{t, link, intent}`, FAQ items and form notes (EnquiryForm, "Pre-set from the linking page"). Every label must tick an option on the linked form: `check` fails on one that ticks nothing (DR-014; a problem again since pass B, no longer a content warning).
-- Mega-menus list system pages in plain text columns with no icons.
 
 ## What we learned from category leaders
 
@@ -104,6 +104,15 @@ The page is `surface`, in light or dark theme as the brand book sets it. Section
 
 The closing call to action can carry the page's "what to send us" list as `cta.include` (three to seven strings, 8 words or fewer each; `cta.include_label` overrides the label). Add `cta.returns` (two to four strings: what comes back, named as documents, only what the page already promises) and `cta.turnaround` (a placeholder until confirmed) and the closing shows the exchange: what you send → turnaround → what comes back. Use it instead of a separate `docs` block for the same list: one ask, in one place. The proof box under it shows only an explicit `cta.proof` (`{"v", "l"}`): one confirmed figure that evidences the ask, such as an Aquemi commitment or a test we run, never a public limit (a pharmacopoeia or regulatory limit, labelled or not). Leave it out otherwise; the closing does not borrow hero facts.
 
+## Content rules
+
+- **Drawings and look fields are copy (DR-018).** Every visible string, number, stamp, seal, count, badge, lit region or drawn part a look adds is held to the same rules as the words: proof classes (DR-004), one status per fact (DR-011), PP wording and no ozone (DR-013), display-size figures Aquemi's own or none (DR-010).
+- While a fact is a placeholder, a drawing shows it neutral (dashed, unlabelled, absent) or not at all: joining method (no weld bead), scope sides, certification, seals, coverage, guarantees, optional equipment drawn as standard, ozone.
+- Display size is a claim: a standard's limit, an example or a minimum is never the largest element unless labelled ("Example:", "USP limit").
+- No fact lives only in a look field: limits, conditions and scope sit in reading fields; a look field may repeat them. Where a display field replaces a cell on screen (`big`, `span`, `list`, `spines`, `scale`, `train[].label`, `grid`), keep one source.
+- Counts count what exists: "25 planned", not "25 notes".
+- Fix in data first, then a small renderer fix, then swap to an existing look; the old look keeps its specimen in the section library.
+
 ## Content budgets
 
 `python tools/design_system.py check` counts overruns (one line, never fails the check yet); `check --budgets` lists them all and `check --budgets <pageId>` lists one page, as `BUDGET <page> <where> <field>: count/limit`, then that page's visible-word count with its hero, blocks and closing shares, overrun or not (for before-and-after numbers); its content-warning summary then counts that page's warnings only, each line marked "(DR-003, <pageId> only)", so no editor reads another page's warning as theirs. Words are counted as whitespace-separated tokens containing a letter or digit.
@@ -136,6 +145,7 @@ Visible words follow what the renderer draws. Rows behind "Show all" are left ou
 | `faq` | One FAQ question on two or more pages, unless every page gives it the same one-line answer. Paraphrases are not caught. | DR-009 |
 | `fact` | A hero fact equal to a public limit (a figure the site states with a pharmacopoeia or regulator), a code, clause or material as the value, or a label without its " · " basis. | DR-010 |
 | `contact` | A `CONTACT` value that no page file carries. | DR-008 |
+| `look` | A look-only field (`alt`, `big`, `spines`, `scale`, `train[].label`, `grid`) that holds a `[placeholder]`, or a figure (a number) that no reading field of the same block states. | DR-018 |
 | `link` | A link to a page that does not exist, a `page#anchor` or `#anchor` whose page has no block with that anchor, or an in-page `#anchor` where only `page#anchor` works. | DR-008 |
 
 Intents are no longer a warning. An intent label that ticks nothing on the linked page's form is a `check` problem and fails it (DR-014), as it did before the page passes lowered it to a warning: no such option, or an option the intent never opens (name the situation first: `situation\|follow-up`). It is read wherever an intent sits: the hero's button and secondary link, the closing, contact routes, table and router cells, plan columns (`{t, intent}`, on the page's own call to action), FAQ links, form notes, a docs block's link and gauge and rule rows. An intent on an in-page or phone link, or on a cell with no link, ticks nothing. It prints as `PROBLEM <page> <where>: <message>`.

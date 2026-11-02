@@ -10,7 +10,7 @@
    "page": "cmp-quality",
    "slot": 4,
    "h": "How buying from us works",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -62,6 +62,140 @@
     ],
     "fold": 4,
     "fold_noun": "terms",
+    "look": "terms-sheet"
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 2,
+   "h": "What changes on your site",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "89c6df0f73",
+   "block": {
+    "type": "spec",
+    "h": "What changes on your site",
+    "cols": [
+     "Item",
+     "Typical",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Connection points (battery limits)",
+      "v": "[standard battery limits, typical scope]",
+      "m": "Listed in the proposal, with who supplies each"
+     },
+     {
+      "p": "Footprint and weight",
+      "v": "[typical footprint and weight, by capacity]",
+      "m": "Per capacity; on the general arrangement drawings"
+     },
+     {
+      "p": "Power, feed water and drain",
+      "v": "[supply voltage options]; [feed and drain flows, L/h]",
+      "m": "RO reject and rinse water to drain; [sanitization waste to drain: pH, temperature]"
+     },
+     {
+      "p": "Installation and field joints",
+      "v": "[installation scope]",
+      "m": "Joined by [PP joining method]; scope set in the proposal",
+      "link": "svc-fabrication#standard",
+      "link_label": "Our fabrication standard"
+     },
+     {
+      "p": "Electrical and pressure approvals",
+      "v": "Electrical: [panel certification mark held, or field evaluation used]",
+      "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
+      "link": "compliance#engineering",
+      "link_label": "Pressure and electrical approvals"
+     },
+     {
+      "p": "Tie-in and shutdown",
+      "v": "[typical shutdown for tie-in, days]",
+      "m": "Plan temporary water if production cannot stop"
+     },
+     {
+      "p": "Sanitizing chemicals",
+      "v": "[PP loop sanitization method]; residual tested before use",
+      "m": "[who supplies sanitizing chemicals and safety data sheets]; listed in the proposal",
+      "link": "sys-storage#sanitization",
+      "link_label": "Sanitization methods"
+     },
+     {
+      "p": "Isolation and lockout",
+      "v": "[lockable isolation points and lockout diagram]",
+      "m": "Marked on the drawings, for your lockout procedure"
+     }
+    ],
+    "nav": "Site",
+    "anchor": "site",
+    "look": "terms-sheet"
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 4,
+   "h": "How buying from us works",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "a291065ef7",
+   "block": {
+    "type": "spec",
+    "nav": "Terms",
+    "anchor": "buying",
+    "h": "How buying from us works",
+    "cols": [
+     "Term",
+     "Ours",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Proposal",
+      "v": "[proposal contents and line items] · valid [proposal validity, days] from issue"
+     },
+     {
+      "p": "Currency, tax and duty",
+      "v": "[quoting currency] · [quoting terms, imported content]",
+      "m": "Set in the proposal"
+     },
+     {
+      "p": "Payment milestones",
+      "v": "[milestone structure]",
+      "m": "Set in the proposal"
+     },
+     {
+      "p": "Acceptance and warranty start",
+      "v": "[warranty period, start, exclusions]",
+      "m": "Set in the proposal"
+     },
+     {
+      "p": "Delivery and lead time",
+      "v": "[delivery terms] · [lead time from drawing approval, weeks]",
+      "m": "Set in the proposal"
+     },
+     {
+      "p": "Drawings and code",
+      "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
+      "m": "Set in the proposal"
+     },
+     {
+      "p": "Onboarding documents",
+      "v": "[onboarding documents and their status]",
+      "m": "In the quality questionnaire pack, from [quality system ready for audit, date]",
+      "link": "about#facts",
+      "link_label": "See insurance and financial standing"
+     },
+     {
+      "p": "Non-disclosure agreement",
+      "v": "[NDA turnaround, working days] from receipt"
+     }
+    ],
     "look": "terms-sheet"
    }
   }

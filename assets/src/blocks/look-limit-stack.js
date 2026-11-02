@@ -1,8 +1,11 @@
 /* Look "limit-stack" -> LimitStack (design-system/components/LimitStack): a spec block's limits as an editorial type
    stack. The heading set at display scale with the caption beside it, the rows stepping down and in like set type
    (index, mono label, the limit large in Geist Mono, its reference on a hairline that runs to the drawing), and a
-   sculpted outlet pipe (IsoKit) coiling once before the skid outlet run, where a navy collar reads "Guaranteed".
-   The row named "guaranteed" (or "outlet") is the stack's last, boxed step and the one the collar points to.
+   sculpted outlet pipe (IsoKit) coiling once before the skid outlet run, round which a navy collar sits.
+   The row named "guaranteed" (or "outlet") is the stack's last, boxed step and the one the collar points to. The
+   collar's word comes from that row's own label (its last comma part, "Skid outlet, guaranteed" -> "Guaranteed") and
+   is left blank while the row's value is a [placeholder] or no row is named so (DR-018: the drawing never states a
+   guarantee the copy keeps open); the collar band itself is always drawn.
    Fields: h, caption (shown beside the heading), intro (an annotation on the pipe), rows [{p, v, m, level}], note.
    Uses gaugeParse / gaugeLevel (blocks/spec.js) to split "≤ 1.3 µS/cm @ 25 °C" into limit, unit and qualifier. */
 function lsPipe(){
@@ -22,7 +25,8 @@ function lsPipe(){
  return {svg:isoSvg(W,Hh,inner,'aq-iso--limestone aq-limit-stack__svg',{origin:org}),
   seal:isoPct(c,W,Hh,org),out:isoPct(o,W,Hh,org),note:isoPct(lead.end,W,Hh,org),side:lead.side}}
 LOOKS['limit-stack']=function(b,H){
- var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h});
+ var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h}),hr=rows.filter(function(r){return /guarant|outlet/i.test(String(r.p||''))}).pop();
+ var cw=hr&&String(hr.v||'').indexOf('[')<0?String(hr.p||'').split(',').pop().trim():'';cw=cw&&cw.charAt(0).toUpperCase()+cw.slice(1);
  var list='<ol class="aq-limit-stack__list">'+rows.map(function(r,i){
   var hero=/guarant|outlet/i.test(String(r.p||'')),g=gaugeParse(r.v),lvl=gaugeLevel(r);
   var val=g?'<span class="aq-limit-stack__n">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u?' <span class="aq-limit-stack__u">'+tx(g.u)+'</span>':'')+(g.q?' <span class="aq-limit-stack__q">'+tx(g.q)+'</span>':''):'<span class="aq-limit-stack__n aq-limit-stack__n--open">'+tx(r.v)+'</span>';
@@ -32,7 +36,7 @@ LOOKS['limit-stack']=function(b,H){
    +'<p class="aq-limit-stack__m"><span class="aq-limit-stack__rule" aria-hidden="true"></span><span class="aq-limit-stack__mt">'+tx(r.m||'')+'</span></p></li>'}).join('')+'</ol>';
  var P=lsPipe(),pos=function(p){return 'left:'+p.left+';top:'+p.top};
  var fig='<figure class="aq-limit-stack__fig">'+P.svg
-  +'<span class="aq-limit-stack__seal" aria-hidden="true" style="'+pos(P.seal)+'">Guaranteed</span>'
+  +(cw?'<span class="aq-limit-stack__seal" aria-hidden="true" style="'+pos(P.seal)+'">'+tx(cw)+'</span>':'')
   +'<span class="aq-limit-stack__outlet" aria-hidden="true" style="'+pos(P.out)+'">Skid outlet</span>'
   +(b.intro?'<figcaption class="aq-limit-stack__note aq-limit-stack__note--'+P.side+'" style="'+pos(P.note)+'">'+tx(b.intro)+'</figcaption>':'')+'</figure>';
  /* The limestone sheet keeps its light tokens in the dark theme too (pipe body, flow line, the boxed outlet row) */

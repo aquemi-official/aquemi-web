@@ -5,7 +5,8 @@
    line keeps one status colour, one shape and its name everywhere (plot label, banner, table).
    Fields: h, intro, cols (three labels), rows [[line, how, what]] (a cell may be {t, link}), lines (the role of each
    row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown;
-   decoration, aria-hidden). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.
+   decoration, aria-hidden), plot (optional: the roles drawn on the trend plot, e.g. ["limit","trend"] when the action
+   and alert levels are laboratory results, not online readings; default every role; the table keeps every row). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.
    Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
 var HMI_Y={limit:52,action:112,alert:172};
 function hmiTrace(){var d='',x,y,pts=[];
@@ -18,7 +19,8 @@ LOOKS['hmi-trend']=function(b,H){
  /* the plot: grid, limit lines, the reading, the trend rule's fit line and flag */
  var W=1000,Hh=320,grid='';for(var gx=50;gx<W;gx+=50)grid+='M'+gx+' 0V'+Hh;for(var gy=40;gy<Hh;gy+=40)grid+='M0 '+gy+'H'+W;
  var tr=hmiTrace(),lines='',labels='';
- R.forEach(function(r,i){var k=kind(i);if(!HMI_Y[k])return;var y=HMI_Y[k];
+ var P=b.plot||null;
+ R.forEach(function(r,i){var k=kind(i);if(!HMI_Y[k]||(P&&P.indexOf(k)<0))return;var y=HMI_Y[k];
   lines+='<path class="aq-hmi-trend__lim aq-hmi-trend__lim--'+k+'" data-hmi="'+i+'" d="M0 '+y+'H'+W+'"/>';
   labels+='<span class="aq-hmi-trend__ll aq-hmi-trend__ll--'+k+'" data-hmi="'+i+'" style="top:'+(100*y/Hh).toFixed(2)+'%"><i class="aq-hmi-trend__pri aq-hmi-trend__pri--'+k+'"></i>'+tx(name(r))+'</span>'});
  var flagX=780,fit='M640 '+(262).toFixed(0)+'L930 '+(tr.end[1]-4).toFixed(1);

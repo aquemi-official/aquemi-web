@@ -2,7 +2,7 @@
  "look": "winding-route",
  "component": "WindingRoute",
  "type": "diagram",
- "fields": "h, stages (or items) [{t, d, spot | icon, label, fx}]. label: a short stop name for the mono code (\"Feed\", \"RO 1\"; default the first word of t). fx: \"gas\" draws a few rising bubbles over that stop.",
+ "fields": "h, stages (or items) [{t, d, spot | icon, label, fx}]. label: a short stop name for the mono code (\"Feed\", \"RO 1\"; default the first word of t). fx: \"gas\" draws a few rising bubbles over that stop. optional: true (or the word to show, a string) marks a stage fitted only on some systems (DR-018 rule 2: optional equipment is never drawn as standard): its stop is drawn dashed (node ring, and the phone bend) and its mono code carries \"Where fitted\" (or the given word) after the label; the class is-optional is set on the stop.",
  "best_for": "WindingRoute draws a treatment train as one winding pipe across a navy band, each stage a stop on the wave with its line glyph, so the reader follows the water stage by stage.",
  "status": "live",
  "instances": [
@@ -10,7 +10,7 @@
    "page": "sys-pw",
    "slot": 1,
    "h": "How water moves through the skid",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -49,6 +49,69 @@
       "spot": "ro-skid",
       "d": "Where needed, adds margin on conductivity, TOC and silica.",
       "label": "RO 2"
+     },
+     {
+      "t": "DI or EDI",
+      "spot": "edi-stack",
+      "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration].",
+      "label": "DI or EDI"
+     },
+     {
+      "t": "To PW storage",
+      "spot": "storage-tank",
+      "d": "Off-spec water diverts until it recovers.",
+      "label": "Out"
+     }
+    ],
+    "nav": "How it works",
+    "look": "winding-route"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 1,
+   "h": "How water moves through the skid",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "e4fc5b9d37",
+   "block": {
+    "type": "diagram",
+    "h": "How water moves through the skid",
+    "stages": [
+     {
+      "t": "Softened, dechlorinated feed",
+      "spot": "pretreatment",
+      "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last.",
+      "label": "Feed"
+     },
+     {
+      "t": "Heat exchanger",
+      "spot": "heat-exchanger",
+      "d": "Where fitted, warms winter feed to the membrane design temperature.",
+      "label": "Heat",
+      "optional": true
+     },
+     {
+      "t": "RO pass 1",
+      "spot": "ro-skid",
+      "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria.",
+      "label": "RO 1"
+     },
+     {
+      "t": "CO₂ removal",
+      "icon": "valve",
+      "d": "Strips or converts carbon dioxide, which passes RO as a gas.",
+      "label": "CO₂",
+      "fx": "gas"
+     },
+     {
+      "t": "RO pass 2",
+      "spot": "ro-skid",
+      "d": "Where needed, adds margin on conductivity, TOC and silica.",
+      "label": "RO 2",
+      "optional": true
      },
      {
       "t": "DI or EDI",

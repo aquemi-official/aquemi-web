@@ -10,7 +10,7 @@
    "page": "industries",
    "slot": 2,
    "h": "Your first Purified Water system",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -90,6 +90,74 @@
        "Modular manufacturing and design specialist"
       ],
       "panel": true
+     }
+    ]
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 2,
+   "h": "Your first Purified Water system",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "1d696ea30a",
+   "block": {
+    "type": "grid",
+    "look": "grade-editorial",
+    "nav": "First system",
+    "anchor": "first-system",
+    "h": "Your first Purified Water system",
+    "items": [
+     {
+      "t": "Your product’s grade",
+      "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
+      "link": "ind-pharma#grades",
+      "big": [
+       {
+        "v": "PW",
+        "l": "Non-sterile drugs · Health Canada GUI-0001"
+       },
+       {
+        "v": "Potable",
+        "l": "Natural health products, at minimum · GUI-0158"
+       }
+      ]
+     },
+     {
+      "t": "What it covers and costs",
+      "d": "Incoming water to every outlet, design to qualification; budget ranges by configuration.",
+      "link": "systems#budget",
+      "span": [
+       "Incoming water",
+       "Every outlet"
+      ],
+      "list": [
+       "Design to qualification",
+       "Budget ranges by configuration"
+      ]
+     },
+     {
+      "t": "Running cost",
+      "d": "Service plan, consumables, energy and water to drain.",
+      "link": "svc-service#running-cost",
+      "list": [
+       "Service plan",
+       "Consumables",
+       "Energy",
+       "Water to drain"
+      ]
+     },
+     {
+      "t": "Your team’s first year",
+      "d": "Staff time: [staff hours in year one: sampling, logs, sanitization]. Drug lines: first use after at least 2 weeks’ daily sampling and quality unit approval.",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Who you work with",
+      "d": "New Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
+      "link": "about#people"
      }
     ]
    }

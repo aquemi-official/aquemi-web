@@ -10,7 +10,7 @@
    "page": "sys-pretreatment",
    "slot": 0,
    "h": "Water at the RO inlet",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -61,6 +61,64 @@
     "nav": "RO inlet targets",
     "as": "gauges",
     "look": "membrane-face"
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 0,
+   "h": "Water at the RO inlet",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "a7784fdade",
+   "block": {
+    "type": "spec",
+    "h": "Water at the RO inlet",
+    "caption": "RO FEED · DESIGN TARGETS",
+    "note": "The membrane datasheet takes precedence.",
+    "cols": [
+     "Parameter",
+     "Design target",
+     "Measured by"
+    ],
+    "rows": [
+     {
+      "p": "Free and total chlorine",
+      "v": "[RO inlet chlorine target, mg/L as Cl₂]",
+      "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed. Membrane makers: typically < 0.1 mg/L free chlorine",
+      "hl": true
+     },
+     {
+      "p": "Silt density index",
+      "v": "[RO inlet SDI₁₅ target]",
+      "m": "ASTM D4189, at the cartridge filter outlet"
+     },
+     {
+      "p": "Turbidity",
+      "v": "[media filter outlet turbidity target, NTU]",
+      "m": "Media filter outlet"
+     },
+     {
+      "p": "Hardness",
+      "v": "[softener outlet hardness target, mg/L as CaCO₃]",
+      "m": "[hardness measurement method], softener outlet"
+     },
+     {
+      "p": "Iron and manganese",
+      "v": "[design limit, mg/L each]",
+      "m": "Set with the membrane maker"
+     },
+     {
+      "p": "Silica and scaling ions",
+      "v": "Below saturation in the RO concentrate",
+      "m": "Membrane projection at coldest and warmest feed"
+     }
+    ],
+    "nav": "RO inlet targets",
+    "as": "gauges",
+    "look": "membrane-face",
+    "anchor": "inlet"
    }
   }
  ]

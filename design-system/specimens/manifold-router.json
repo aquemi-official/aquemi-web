@@ -10,7 +10,7 @@
    "page": "home",
    "slot": 4,
    "h": "Start from where your project is",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -78,6 +78,96 @@
       "Options with their downtime and the requalification each triggers",
       {
        "t": "Request a system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Production stopped or water out of specification",
+      "A call to [service phone number], [service phone hours]",
+      "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+      {
+       "t": "Service request",
+       "link": "contact-service",
+       "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 4,
+   "h": "Start from where your project is",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "dcd00a4289",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "anchor": "start",
+    "h": "Start from where your project is",
+    "cols": [
+     "Your situation",
+     "Send us",
+     "What comes back",
+     "Where to start"
+    ],
+    "rows": [
+     [
+      "No URS yet, or a first PW system",
+      "What you make",
+      "The grade each step needs and the package",
+      {
+       "t": "Plan your first PW system",
+       "link": "industries#first-system"
+      }
+     ],
+     [
+      "A budget before a URS",
+      "Peak demand in L/h and feed water source",
+      "The modules and a budget range, with its estimate class",
+      {
+       "t": "Get a budget range",
+       "link": "systems#budget"
+      }
+     ],
+     [
+      "A URS, approved or in draft",
+      "Your URS and feed water analysis",
+      "A proposal, or a gap review of a draft",
+      {
+       "t": "Send your URS",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft"
+      }
+     ],
+     [
+      "Comparing or qualifying suppliers",
+      "Your questionnaire, if you use one",
+      "The record each process leaves, and how to audit it",
+      {
+       "t": "Quality management",
+       "link": "cmp-quality"
+      }
+     ],
+     [
+      "A project in qualification",
+      "Your commissioning and qualification plan",
+      "IQ and OQ test list, FAT tests to reuse, PQ sampling plan",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "A system to upgrade, or a water observation",
+      "What to change, or the observation",
+      "Options with their downtime and the requalification each triggers",
+      {
+       "t": "Upgrades and water observations",
        "link": "svc-upgrades"
       }
      ],

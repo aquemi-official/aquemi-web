@@ -6,7 +6,7 @@ Concept: pass 9b svc-cq.3 (three slash-numbered phase rows beside a readout pane
 `<section class="aq-section aq-band--limestone aq-pq-calendar-sec">` > section head, `.aq-pq-calendar[data-theme=light][data-on]` > `ol.__phases` > `li.__ph.is-p1|is-p2|is-rest[tabindex=0]` (`--g0/--g1/--y0/--y1` spans; `__n`, `__txt` > `h3.__t` with `__key`, `p.__d`, `p.__hold`) and `__panel` (`p.__total` > `__num`, `__unit`, `__eq`; `__zoomed` > `svg.__grid` + `__reg`; `__strip` > `__scale` > `svg.__year` + `__reg`, `__months`, `__ylab`).
 
 ## Fields
-`items` [{`t`, `d`, `hold`, `days`}] (a phase without `days` is the routine plan to the year's end), `grid` {`points`, `days`, `rows`, `cols`, `unit`}, `year` {`weeks`, `months`, `label`}. The total shown is points x days.
+`items` [{`t`, `d`, `hold`, `days`}] (a phase without `days` is the routine plan to the year's end), `grid` {`points`, `days`, `rows`, `cols`, `unit`, `example`}, `year` {`weeks`, `months`, `label`}. The total shown is points x days, and only when the block sets `grid.points` and `grid.days` (no 12 x 28 default total; without them the dots draw at 12 x 28 with no count stated). `grid.example: true` prefixes the readout "Example:" (a `span.__unit` before the numeral), since a figure set large reads as Aquemi's own (DR-018 rule 3).
 
 ## Rules
 - Limestone band, figure forced light; phase 1 `navy`, phase 2 `flow`, routine ticks `on-limestone-muted`; count Geist light 168 px (phones 104 px).

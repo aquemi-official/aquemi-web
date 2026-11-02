@@ -7,8 +7,12 @@
    year's end, its label as the tag at the end). Pointing at or focusing a phase moves a region marker (edge handles)
    over its days on the grid and its weeks on the scale; arrow keys, Home and End step between the phases.
    Fields (a steps block): h, intro, items [{t, d, hold, days}] (days: the phase's span in days for the grid; a phase
-   without days is the routine plan that runs on to the end of the year), grid {points, days, rows, cols, unit}
-   (the grid's size and axis words; points x days is the total shown), year {weeks, months, label} (52, 12).
+   without days is the routine plan that runs on to the end of the year), grid {points, days, rows, cols, unit,
+   example} (the grid's size and axis words; points x days is the total shown), year {weeks, months, label} (52, 12).
+   DR-018 rule 3 (display size is a claim): the total readout (giant numeral, unit, points x days) shows only when the
+   block sets grid.points and grid.days, never a 12 x 28 default; optional grid.example: true prefixes it "Example:"
+   (an example plan, not Aquemi's number). Without grid the sampling dots still draw at the default 12 x 28 size,
+   with no count stated.
    Phones: the phases stack over the panel; the scale keeps the full width with odd months numbered. */
 LOOKS['pq-calendar']=function(b,H){var I=b.items||[],G=b.grid||{},Y=b.year||{},NP=+G.points||12,ND=+G.days||28,NW=+Y.weeks||52,NM=+Y.months||12;
  var acc=0,spans=I.map(function(it){var d=+it.days>0?+it.days:0,s=acc;acc+=d;return d?[s,acc]:null}),ends=spans.filter(Boolean).map(function(s){return s[1]});
@@ -26,7 +30,7 @@ LOOKS['pq-calendar']=function(b,H){var I=b.items||[],G=b.grid||{},Y=b.year||{},N
  var hl=holdAt>0?'<line class="aq-pq-calendar__hl" x1="'+(holdAt*S)+'" y1="-8" x2="'+(holdAt*S)+'" y2="'+(NP*S+8)+'"/>':'';
  var mat='<svg class="aq-pq-calendar__grid" viewBox="0 -8 '+(ND*S)+' '+(NP*S+16)+'" aria-hidden="true" focusable="false">'+dots+hl+'</svg>';
  var reg='<span class="aq-pq-calendar__reg" aria-hidden="true"><i></i><i></i></span>';
- var total=NP*ND;
+ var total=NP*ND,showT=+G.points>0&&+G.days>0;
  var phases=I.map(function(it,i){var sp=spans[i],g=sp?[sp[0]/ND,sp[1]/ND]:null,y=sp?[sp[0]/7/NW,sp[1]/7/NW]:[wk/NW,1];
   return '<li class="aq-pq-calendar__ph '+(sp?'is-p'+(i+1):'is-rest')+'" tabindex="0" style="--g0:'+(g?f(g[0]):'0%')+';--g1:'+(g?f(g[1]-g[0]):'0%')+';--y0:'+f(y[0])+';--y1:'+f(y[1]-y[0])+'">'
   +'<span class="aq-pq-calendar__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'<i>/</i></span>'
@@ -36,8 +40,9 @@ LOOKS['pq-calendar']=function(b,H){var I=b.items||[],G=b.grid||{},Y=b.year||{},N
  return sec(H+'<div class="aq-pq-calendar" data-theme="light">'
   +'<ol class="aq-pq-calendar__phases">'+phases+'</ol>'
   +'<div class="aq-pq-calendar__panel">'
-  +'<p class="aq-pq-calendar__total"><span class="aq-pq-calendar__num">'+total+'</span><span class="aq-pq-calendar__unit">'+tx(G.unit||'')+'</span>'
-  +'<span class="aq-pq-calendar__eq">'+NP+' '+tx(G.rows||'')+' &times; '+ND+' '+tx(G.cols||'')+'</span></p>'
+  +(showT?'<p class="aq-pq-calendar__total">'+(G.example===true?'<span class="aq-pq-calendar__unit">Example:</span>':'')
+   +'<span class="aq-pq-calendar__num">'+total+'</span><span class="aq-pq-calendar__unit">'+tx(G.unit||'')+'</span>'
+   +'<span class="aq-pq-calendar__eq">'+NP+' '+tx(G.rows||'')+' &times; '+ND+' '+tx(G.cols||'')+'</span></p>':'')
   +'<div class="aq-pq-calendar__zoomed">'+mat+reg+'</div>'
   +'<div class="aq-pq-calendar__strip"><div class="aq-pq-calendar__scale">'+year+reg+'</div><div class="aq-pq-calendar__months" aria-hidden="true">'+months+'</div>'
   +(Y.label?'<span class="aq-pq-calendar__ylab" aria-hidden="true">'+tx(Y.label)+'</span>':'')+'</div>'

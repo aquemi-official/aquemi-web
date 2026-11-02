@@ -91,7 +91,7 @@
    "page": "svc-service",
    "slot": 2,
    "h": "Instrument calibration",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -112,6 +112,56 @@
       "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
       "m": "USP <645>",
       "hl": true
+     },
+     {
+      "p": "Online total organic carbon (TOC) analyzer",
+      "v": "System suitability: response efficiency 85 % to 115 %",
+      "m": "USP <643>; Ph. Eur. 2.2.44"
+     },
+     {
+      "p": "Temperature, pressure, flow and level",
+      "v": "Across the working range",
+      "m": "GUI-0001 C.02.005; 21 CFR 211.68"
+     },
+     {
+      "p": "UV lamp intensity [UV, standard or option]",
+      "v": "Against a reference sensor or the maker’s method",
+      "m": "Maker’s procedure"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "instruments",
+    "note": "Certificates show as-found and as-left values. Calibrated by [calibration provider and accreditation held]."
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 2,
+   "h": "Instrument calibration",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "a657dd1b79",
+   "block": {
+    "type": "spec",
+    "look": "signal-dial",
+    "nav": "Calibration",
+    "h": "Instrument calibration",
+    "cols": [
+     "Instrument",
+     "Check and acceptance",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Conductivity cell and transmitter",
+      "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
+      "m": "USP <645>",
+      "hl": true,
+      "link": "contact-service#request",
+      "link_label": "Request a calibration visit",
+      "intent": "Calibration"
      },
      {
       "p": "Online total organic carbon (TOC) analyzer",

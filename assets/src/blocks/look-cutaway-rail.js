@@ -7,7 +7,7 @@
    Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
    fold, fold_noun. New optional fields: tag (the word before the active standard's code on the drawing's tag, e.g.
    "Active"); parts, one entry per row, the drawn parts the row governs, space-separated:
-   mat (product-contact pipe), loop (tank and loop), pov (point-of-use branch, its valve and dead leg), ana (analyser),
+   mat (product-contact pipe, drawn plain: no joint profile), loop (tank and loop), pov (point-of-use branch, its valve and dead leg), ana (analyser),
    ctl (control panel), docs (binders and clipboard). A row without parts lights nothing.
    Desktop shows every card (the rail is the reading); the fold applies on phones, where the drawing is a band above
    the cards and each card lights its parts as it passes. */
@@ -22,10 +22,11 @@ function crScene(){
  var an=isoPart('analyzer',96,y1+34,0,1.2,{id:'ana'});
  var smp=isoPipe(isoRoute([96,y1,z],an.ports.sample||[96,y1+28,z+10],'yzx'),{r:1.2,wall:false,id:'ana',caps:false,flow:false});
  var bd=isoPart('binder',-20,150,0,1.25,{id:'docs'}),cb=isoPart('clipboard',30,176,0,1.2,{id:'docs'});
- /* product-contact pipe cut open in the foreground: thick wall shown at the cut, a fusion bead band */
+ /* product-contact pipe cut open in the foreground: thick wall shown at the cut; no joint, bead or band is drawn on it
+    while the joining method is open (DR-018, FD-18; as JointMacro) */
  var cy=y1+110,cz=26,L=150,x0=60;
- var body=isoCylD([x0,cy,cz],'x',L,13),inn=isoRingD([x0+L,cy,cz],'x',9.5),out=isoRingD([x0+L,cy,cz],'x',13),bead=isoBandD([x0+L*0.45,cy,cz],'x',14.2);
- var mat='<g class="aq-iso__part" data-iso-id="mat">'+isoPath(body[0]+body[1],'aq-iso__eq')+isoPath(bead,'aq-iso__ln')+isoPath(isoBandD([x0+L*0.45+4,cy,cz],'x',14.2),'aq-iso__thin')
+ var body=isoCylD([x0,cy,cz],'x',L,13),inn=isoRingD([x0+L,cy,cz],'x',9.5),out=isoRingD([x0+L,cy,cz],'x',13);
+ var mat='<g class="aq-iso__part" data-iso-id="mat">'+isoPath(body[0]+body[1],'aq-iso__eq')
   +isoPath(out,'aq-iso__eq aq-iso__eq--alt')+isoPath(inn,'aq-iso__eq')+isoPath(isoRingD([x0+L,cy,cz],'x',11.2),'aq-iso__hid')+'</g>';
  var water='<path class="aq-iso__flow" d="M'+isoT(isoP([x0+6,cy,cz]))+' L'+isoT(isoP([x0+L-2,cy,cz]))+'" data-iso-to="mat"/>';
  var inner=[tk,pn,sup,vl,smp,an,br,bd,cb,ou,mat,water].join('');

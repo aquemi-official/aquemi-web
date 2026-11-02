@@ -10,7 +10,7 @@
    "page": "cmp-documentation",
    "slot": 1,
    "h": "What each stage issues",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
    "last_seen": "2026-11-02",
    "commit": "0efa42f",
@@ -51,6 +51,64 @@
      [
       "Handover",
       "Your system owner accepts the package.",
+      "Document register and punch list; As-built drawings; Calibration certificates; Software backup; Operation and maintenance manual; Draft procedures; Spare parts list"
+     ],
+     [
+      "Service and change · Annex 15, 4.1 and 11; GUI-0029, 7",
+      "Periodic review; changes go through your change control.",
+      "Signed service reports; Calibration certificates; Annual system review; Updated as-builts; Change-scoped test records"
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "stages",
+    "look": "stage-stacks"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 1,
+   "h": "What each stage issues",
+   "status": "live",
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "commit": "b8b6da7",
+   "hash": "f8ecaf2a11",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "By stage",
+    "ground": "dark",
+    "h": "What each stage issues",
+    "intro": "Your proposal lists your system's subset.",
+    "cols": [
+     "Stage",
+     "Your step, and who approves",
+     "Documents issued"
+    ],
+    "rows": [
+     [
+      "Specify and design · Annex 15, 3.3",
+      "Design qualification (DQ). Your quality unit approves DQ; your engineering lead, drawings.",
+      "URS compliance matrix; Basis of design; Risk assessment; P&IDs; Functional specification; Design review report; C&Q plan; Traceability matrix"
+     ],
+     [
+      "Fabrication · Annex 15, 3.9",
+      "Installation qualification (IQ) evidence. Both parties sign the inspection plan; your validation team verifies records at IQ.",
+      "Fabrication and inspection plan; Material log and certificates; Welder qualifications; [PP joint records kept]; Pressure test and cleaning records"
+     ],
+     [
+      "FAT and SAT · Annex 15, 3.6; GUI-0029, 8.1",
+      "Tests your quality unit agrees to reuse in IQ and OQ. It approves each protocol before execution.",
+      "Approved protocols; Executed protocols with raw data; Deviation log; FAT release decision; SAT report; Code review; Software version record"
+     ],
+     [
+      "Qualification · Annex 15, 3.8–3.14",
+      "IQ, OQ and PQ. Your quality unit approves each protocol and report.",
+      "IQ and OQ protocols and reports; Dead leg register and slope survey; Sanitization records; PQ protocol, sampling plan, phase reports; Proposed alert and action levels"
+     ],
+     [
+      "Handover",
+      "Your system owner accepts the package; maintenance works from it.",
       "Document register and punch list; As-built drawings; Calibration certificates; Software backup; Operation and maintenance manual; Draft procedures; Spare parts list"
      ],
      [
