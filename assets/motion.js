@@ -1282,31 +1282,70 @@ AQmotion.fx('CostSkid', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 70%');
   });
 });
-/* CoverageMap: the map is laid tile by tile from west to east (each square drops into its place), the home tile's mark
-   strikes, the readout of the region being read slides into the map's open corner, then the region rows rise in. While you read, the row nearest the middle of the screen lights its tiles on
-   the held map (desktop), so the map always points at what you are reading. One entrance timeline under 2.5 s; the
-   reading sync is a ScrollTrigger per row. Nothing under reduced motion (hover and press still light tiles). */
+/* CoverageMap: the readout comes on like an instrument. The region columns rise in one after another; the readout's
+   rule runs across, the region in hand decodes (text-scramble), its stamp strikes, then the tile map is laid tile by tile
+   from west to east and the base line follows. One entrance timeline under 2.5 s, once on scroll-in.
+   Choosing another region (pointer, focus, a tile): its readout face decodes again and the stamp strikes (visitor-driven,
+   may repeat; instant for keyboard). Nothing under reduced motion: the readout simply shows the region in hand. */
 AQmotion.fx('CoverageMap', function (root, m) {
-  var CLEAR = 'transform,opacity,visibility';
+  var CLEAR = 'transform,opacity,visibility', CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+  /* Ported from Subframe Motion "Text scramble effect" (text-scramble), MIT, (c) 2026 Subframe; after ibelick's
+     motion-primitives text-scramble, MIT, (c) 2024 ibelick. 20 steps of 40 ms: each step shows the letters up to
+     progress x length as they are and random capitals and digits after them (spaces and punctuation stay), then the
+     text as it is. Works on every text node of the mono parts of a readout face, so placeholder chips keep their
+     markup; the accessible text is restored at the end (and the face is an aria-live region that announces the end). */
+  function scramble(face) {
+    var nodes = [];
+    face.querySelectorAll('.aq-coverage-map__sc').forEach(function (el) {
+      var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n; while ((n = w.nextNode())) if (n.nodeValue.trim()) nodes.push({ n: n, t: n.nodeValue });
+    });
+    if (!nodes.length) return null;
+    var st = { p: 0 }, steps = 20;
+    function show(p) {
+      var q = Math.floor(p * steps) / steps;
+      nodes.forEach(function (o) {
+        var t = o.t, L = t.length, s = '';
+        for (var i = 0; i < L; i++) { var c = t[i]; s += (!/[A-Za-z0-9]/.test(c) || q * L > i) ? c : CHARS[Math.floor(Math.random() * CHARS.length)] }
+        o.n.nodeValue = q >= 1 ? t : s;
+      });
+    }
+    return gsap.to(st, { p: 1, duration: steps * 0.04, ease: 'none', onUpdate: function () { show(st.p) }, onComplete: function () { show(1) }, onInterrupt: function () { show(1) } });
+  }
+  function strike(face) {
+    var s = face.querySelector('.aq-coverage-map__stamp'); if (!s) return null;
+    return gsap.fromTo(s, { scale: 1.12, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.22, ease: 'power2.out', clearProps: CLEAR });
+  }
+
   root.querySelectorAll('.aq-coverage-map').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var tiles = [].slice.call(el.querySelectorAll('.aq-coverage-map__tile')), rows = [].slice.call(el.querySelectorAll('.aq-coverage-map__row')),
-      base = el.querySelector('.aq-coverage-map__base'), title = el.querySelector('.aq-coverage-map__title');
+    var cols = [].slice.call(el.querySelectorAll('.aq-coverage-map__col')), now = el.querySelector('.aq-coverage-map__now'),
+      tiles = [].slice.call(el.querySelectorAll('.aq-coverage-map__tile')), base = el.querySelector('.aq-coverage-map__base');
     var col = function (t) { return parseInt(t.style.gridColumnStart || t.style.gridColumn, 10) || 1 };
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    if (title) tl.fromTo(title, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
+    if (cols.length) tl.fromTo(cols, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.1, clearProps: CLEAR }, 0.1);
+    if (now) {
+      tl.fromTo(now, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, 0);
+      var face = now.querySelector('.aq-coverage-map__nv.is-on');
+      if (face) {
+        tl.add(function () { var t = scramble(face); if (t) m.tw(t) }, 0.45);
+        var s = face.querySelector('.aq-coverage-map__stamp');
+        if (s) tl.fromTo(s, { scale: 1.12, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.22, ease: 'power2.out', clearProps: CLEAR }, 1.0);
+      }
+    }
     tiles.forEach(function (t) {
-      tl.fromTo(t, { y: -14, scale: 0.85, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: 'back.out(2)', clearProps: CLEAR }, 0.1 + (col(t) - 1) * 0.12 + Math.random() * 0.05);
+      tl.fromTo(t, { y: -10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power3.out', clearProps: CLEAR }, 0.7 + (col(t) - 1) * 0.09);
     });
-    var now = el.querySelector('.aq-coverage-map__now');
-    if (now) tl.fromTo(now, { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.45, clearProps: CLEAR }, '>-0.15');
     if (base) tl.fromTo(base, { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.4, clearProps: CLEAR }, '>-0.1');
-    if (rows.length) tl.fromTo(rows, { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.1, clearProps: CLEAR }, 0.3);
     var total = tl.duration(); if (total > 2.5) tl.timeScale(total / 2.5);
     m.on(el, function () { tl.play() }, 'top 75%');
-    if (!m.narrow() && window.AQcoverage) rows.forEach(function (r) {
-      m.tw(ScrollTrigger.create({ trigger: r, start: 'top 55%', end: 'bottom 55%',
-        onToggle: function (s) { if (s.isActive) window.AQcoverage(el, r.getAttribute('data-r')) } }));
+
+    var run = [];
+    el.addEventListener('aqcoverage', function (ev) {
+      run.forEach(function (t) { t && t.kill() }); run = [];
+      if (ev.detail.instant || !now) return;
+      var f = now.querySelector('.aq-coverage-map__nv.is-on'); if (!f) return;
+      run = [scramble(f), strike(f)];
     });
   });
 });
@@ -5878,27 +5917,44 @@ AQmotion.fx('SignatureBlocks', function (root, m) {
     blocks.forEach(function (b) { var t = gsap.timeline({ paused: true }); m.tw(t); play(t, b, 0); m.on(b, function () { t.play() }, 'top 88%') });
   });
 });
-/* SitePlates: each plate is printed. The hairline over it draws across, the drawing's panel wipes up and its line work
-   draws on (stroke), then the index, the kind and the fields rise in. Plates follow one another; folded plates appear
-   as they are. One timeline, once on scroll-in, under 3 s; nothing under reduced motion. */
+/* SitePlates: the ledger is ruled and filled, the plate is laid. The header rule draws across, the rows rise in one
+   after another; the navy plate wipes in from the right, the site in hand is drawn on it (AQiso: lines back to front),
+   its pins strike and its callouts follow. One timeline, once on scroll-in, under 3 s; nothing under reduced motion.
+   Choosing another site: the reel slides (CSS, see the look file); the arriving figure's pins strike and its callouts
+   rise 8 px in 0.3 s (visitor-driven, may repeat). */
 AQmotion.fx('SitePlates', function (root, m) {
   var CLEAR = 'transform,opacity,visibility';
   root.querySelectorAll('.aq-site-plates').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var plates = [].slice.call(el.querySelectorAll('.aq-site-plates__plate')).filter(function (p) { return p.offsetParent !== null });
+    var head = el.querySelector('.aq-site-plates__table thead'), sub = el.querySelector('.aq-site-plates__sub'),
+      rows = [].slice.call(el.querySelectorAll('.aq-site-plates__row')).filter(function (r) { return r.offsetParent !== null }),
+      plate = el.querySelector('.aq-site-plates__plate'), still = el.querySelector('.aq-site-plates__still.is-on');
+    // every drawing on the plate is this component's: the ones off the window stay complete for when they slide in
+    el.querySelectorAll('.aq-site-plates__plate svg').forEach(function (s) { m.claim(s) });
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    plates.forEach(function (p, i) {
-      var at = i * 0.35, fig = p.querySelector('.aq-site-plates__fig'), svg = p.querySelector('svg'),
-        words = p.querySelectorAll('.aq-site-plates__at, .aq-site-plates__t, .aq-site-plates__dl > div');
-      if (fig) tl.fromTo(fig, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
-      if (svg && window.DrawSVGPlugin) {
-        var set = m.lines(svg);
-        if (set.solid.length) tl.fromTo(set.solid, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.2, ease: 'power2.inOut', stagger: { amount: 0.5 }, clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.3);
+    if (sub) tl.fromTo(sub, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 0.1);
+    if (head) tl.fromTo(head, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, 0.1);
+    if (rows.length) tl.fromTo(rows, { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.55, stagger: 0.09, clearProps: CLEAR }, 0.3);
+    if (plate) tl.fromTo(plate, { clipPath: 'inset(0 0 0 100%)' }, { clipPath: 'inset(0 0 0 0%)', duration: 0.9, ease: 'power3.inOut', clearProps: 'clipPath' }, 0.15);
+    if (still) {
+      var svg = still.querySelector('svg'), pins = still.querySelectorAll('.aq-site-plates__pin'), calls = still.querySelectorAll('.aq-site-plates__cap, .aq-site-plates__calls li');
+      if (calls.length) tl.fromTo(calls, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, stagger: 0.08, clearProps: CLEAR }, 0.7);
+      if (svg) {
+        var iso = window.AQiso && AQiso.timeline(svg, m, { draw: 1.1, flow: 0 });
+        if (iso) tl.add(iso, 0.75);
+        else if (window.DrawSVGPlugin) { var set = m.lines(svg); if (set.solid.length) tl.fromTo(set.solid, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1, ease: 'power2.inOut', stagger: { amount: 0.4 }, clearProps: 'strokeDasharray,strokeDashoffset' }, 0.75) }
       }
-      if (words.length) tl.fromTo(words, { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.55, stagger: 0.07, clearProps: CLEAR }, at + 0.25);
-    });
+      if (pins.length) tl.fromTo(pins, { scale: 1.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: 'power2.out', stagger: 0.12, clearProps: CLEAR }, '>-0.3');
+    }
     var total = tl.duration(); if (total > 3) tl.timeScale(total / 3);
     m.on(el, function () { tl.play() }, 'top 75%');
+    el.addEventListener('aqsitepick', function (ev) {
+      if (ev.detail.instant) return;
+      var s = el.querySelector('.aq-site-plates__still.is-on'); if (!s) return;
+      var p = s.querySelectorAll('.aq-site-plates__pin'), c = s.querySelectorAll('.aq-site-plates__calls li');
+      if (p.length) gsap.fromTo(p, { scale: 1.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.24, ease: 'power2.out', stagger: 0.08, delay: 0.18, clearProps: CLEAR, overwrite: true });
+      if (c.length) gsap.fromTo(c, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: 'power3.out', stagger: 0.06, delay: 0.12, clearProps: CLEAR, overwrite: true });
+    });
   });
 });
 /* SiteTiles: the sheet is unfolded, then each column's part is drawn. The frame and its zone band fade up; the two

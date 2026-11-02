@@ -36,7 +36,7 @@
    "group": "Foundations",
    "height": "420",
    "width": "1000",
-   "subtitle": "Survey-sheet contour lines on limestone, under a coverage map",
+   "subtitle": "Survey-sheet contour lines on limestone, under the coverage readout",
    "summary": "FxContour is contour lines of a slowly drifting terrain (ported from Subframe Motion \"Contour terrain\"), drawn as hairlines with an index contour every fifth, so a map sheet reads as a survey sheet."
   },
   {
@@ -383,10 +383,10 @@
    "readme": "design-system/components/CoverageMap/README.md",
    "preview": "design-system/components/CoverageMap/preview.html",
    "group": "Page sections",
-   "height": "1500",
+   "height": "1400",
    "width": "1100",
-   "subtitle": "Can you support my site: a tile map of the provinces and territories held beside the region rows; a row lights its tiles",
-   "summary": "CoverageMap reads a coverage table by region off a tile map: the provinces and territories as squares on a limestone sheet held in view, the regions as rows beside it, and the row you point at, focus or read lighting its tiles."
+   "subtitle": "Can you support my site: one column per region beside a readout of the region in hand: its severity 1 time, seal stamp and lit tiles",
+   "summary": "CoverageMap sets a coverage table by region as one column per region beside an instrument readout: the region in hand, its severity 1 on-site time as the large figure, a seal stamp naming the CRN body and the engineering seal, and the tile map with its provinces lit."
   },
   {
    "name": "CutBand",
@@ -1203,10 +1203,10 @@
    "readme": "design-system/components/SitePlates/README.md",
    "preview": "design-system/components/SitePlates/preview.html",
    "group": "Page sections",
-   "height": "700",
+   "height": "760",
    "width": "1100",
-   "subtitle": "Where to find us: each site a figure plate with its isometric drawing, the kind set large, address and contact lines; two shown, the rest folded",
-   "summary": "SitePlates sets a table of sites (site, what happens here, address, contact and hours) as figure plates, two to a row, each with an isometric drawing of what stands there, the kind of site set large and light, and its address and contact lines."
+   "subtitle": "Where to find us: the sites ledger beside a navy plate; the site you point at is drawn on the plate with its callouts",
+   "summary": "SitePlates sets a table of sites (site, what happens here, address, contact and hours) as a ledger beside one navy drawing plate: the site you point at, focus or choose is drawn on the plate with numbered callouts for what happens there."
   },
   {
    "name": "SiteTiles",

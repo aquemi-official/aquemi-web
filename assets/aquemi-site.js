@@ -1845,54 +1845,68 @@ function csLight(r,i,on){if(!r)return;var row=r.querySelector('.aq-cost-skid__ro
  document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
  document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)})})();
 /* Look "coverage-map" -> CoverageMap (design-system/components/CoverageMap): a coverage table by region (a router table:
-   region, then the columns that answer for it) read off a map. Left, held in view as you read: a tile map of the country
-   on a limestone sheet, one square per province or territory at its rough place (the block's map field: no invented
-   places, only the tiles it lists), the base marked; every tile belongs to one row. Right, the regions as rows: index,
-   the region set large and light, the tile codes it covers, then each column as a labelled field. Pointing at, focusing
-   or (on desktop, with motion) scrolling to a row lights its tiles in flow; pressing a tile lights it and brings its row
-   into view. Every row is always shown: the map only points.
+   region, then the columns that answer for it) set as one column per region beside an instrument readout (pass 9b,
+   concept contact-locations.2). Three columns to a row on desktop; the readout takes the top right cell: the region in
+   hand, its severity 1 on-site time set as the large readout figure (the first column's cell up to " in "; the rest,
+   the centres served, sits under it with the column's own label), a round seal stamp naming the CRN body and the
+   engineering seal (the acronyms in brackets in the last column, or the body's name when it has none), and the tile map
+   of the provinces and territories with that region's tiles lit and the base marked. Each region column: index, the
+   region set large and light (a button that puts it on the readout), the tile codes it covers, then each column as a
+   labelled field. Pointing at a column, focusing or pressing its name, or pressing a tile on the map puts that region on
+   the readout; the choice persists. Every column is always shown: the readout only repeats one.
    Fields, as a table: cols, rows, nav, and
-     map: [{c: "ON", n: "Ontario", x: 4, y: 1, r: 0}] one tile per region: code, name, column and row on the grid, and
-          r, the index of the row that covers it;
-     base: {c: "ON", label: "Based in Ontario"} (optional) the tile marked as home, with its label (copy from the page).
+     map: [{c: "ON", n: "Ontario", x: 4, y: 1, r: 0}] one tile per province or territory: code, name, column and row on
+          the grid, and r, the index of the row that covers it (no invented places, only the tiles it lists);
+     base: {c: "ON", label: "Based in Ontario"} (optional) the tile marked as home, with its label (copy from the page);
+          its row is on the readout when the page opens.
    Design system: components/CoverageMap. */
 (function(){
 var covN=0;
-LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=b.base||null,k=++covN;
+function pad(i){return (i<9?'0':'')+(i+1)}
+function txt(c){return c&&typeof c==='object'?String(c.t||''):String(c==null?'':c)}
+/* the cell's text up to " in " outside a [placeholder]: [time, rest] */
+function cut(s){var d=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='[')d++;else if(c===']'&&d)d--;else if(!d&&s.substr(i,4)===' in ')return [s.slice(0,i),s.slice(i+1)]}return [s,'']}
+/* the stamp: "CRN: <body> (ABC). Seal: <body> (DEF) · ..." -> [["CRN","ABC"],["Seal","DEF"]] */
+function stamp(s){var o=[];[['CRN','CRN:'],['Seal','Seal:']].forEach(function(k){var i=s.indexOf(k[1]);if(i<0)return;var r=s.slice(i+k[1].length),j=r.search(/\.\s|\s·\s|\.$/);r=(j<0?r:r.slice(0,j)).trim();
+ var a=r.match(/\(([^()]+)\)\s*$/);if(r)o.push([k[0],a?a[1]:r])});return o}
+LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=b.base||null,k=++covN,nid='cov-'+k+'-now';
  var cols=M.reduce(function(a,t){return Math.max(a,(+t.x||0)+1)},1),rws=M.reduce(function(a,t){return Math.max(a,(+t.y||0)+1)},1);
- function rid(i){return 'cov-'+k+'-'+i}
- /* The readout: the region being read, set in the map's open bottom-left corner (the widest empty block of cells
-    under the tiles, at least 3 columns); one line per row, the lit one shown. Opens on the home row. */
- var occ={};M.forEach(function(t){occ[(+t.x||0)+','+(+t.y||0)]=1});
- var best=null;for(var w=1;w<=cols;w++){var h=0;for(var y=rws-1;y>=0;y--){var free=true;for(var x=0;x<w;x++)if(occ[x+','+y])free=false;if(!free)break;h++}
-  if(h&&w>=3&&(!best||w*h>=best.w*best.h))best={w:w,h:h}}
- var on=-1;if(B)M.forEach(function(t){if(t.c===B.c&&+t.r>=0&&+t.r<R.length)on=+t.r});
+ var on=0;if(B)M.forEach(function(t){if(t.c===B.c&&+t.r>=0&&+t.r<R.length)on=+t.r});
  function lt(i){return +i===on?' is-on':''}
- var now=best&&R.length?'<li class="aq-coverage-map__now" aria-hidden="true" style="grid-column:1 / span '+best.w+';grid-row:'+(rws-best.h+1)+' / span '+best.h+'">'
-  +R.map(function(r,i){return '<span class="aq-coverage-map__nv'+lt(i)+'" data-r="'+i+'"><span class="aq-coverage-map__ni">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-coverage-map__nt">'+tcell(r[0])+'</span></span>'}).join('')+'</li>':'';
+ /* the readout: one face per region, the one in hand shown */
+ var faces=R.map(function(r,i){var t=cut(txt(r[1])),st=stamp(txt(r[r.length-1])),codes=M.filter(function(x){return +x.r===i}).map(function(x){return e(x.c)});
+  return '<div class="aq-coverage-map__nv'+lt(i)+'" data-r="'+i+'">'
+   +'<p class="aq-coverage-map__nh"><span class="aq-coverage-map__ni aq-coverage-map__sc">'+pad(i)+(codes.length&&codes.length<3?' · '+codes.join(' '):'')+'</span><span class="aq-coverage-map__nt">'+tx(txt(r[0]))+'</span></p>'
+   +'<div class="aq-coverage-map__nb"><p class="aq-coverage-map__big aq-coverage-map__sc">'+tx(t[0])+'</p>'
+   +(st.length?'<p class="aq-coverage-map__stamp">'+st.map(function(x){return '<span><span class="aq-coverage-map__sk">'+tx(x[0])+'</span><span class="aq-coverage-map__sv aq-coverage-map__sc">'+tx(x[1])+'</span></span>'}).join('')+'</p>':'')+'</div>'
+   +'<p class="aq-coverage-map__nl">'+tx(C[1]||'')+(t[1]?'<span>'+tx(t[1])+'</span>':'')+'</p></div>'}).join('');
  var tiles=M.map(function(t){var home=B&&B.c===t.c,r=+t.r,has=r>=0&&r<R.length;
-  return '<li class="aq-coverage-map__tile'+(home?' is-home':'')+(has&&r===on?' is-on':'')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'">'
-   +(has?'<button type="button" class="aq-coverage-map__btn" data-cov="'+e(rid(r))+'" aria-label="'+e(t.n||t.c)+'">':'<span class="aq-coverage-map__btn">')
-   +'<span class="aq-coverage-map__code" aria-hidden="true">'+e(t.c)+'</span>'+(has?'<span class="aq-coverage-map__ri" aria-hidden="true">'+(r<9?'0':'')+(r+1)+'</span>':'')
-   +(has?'</button>':'</span>')+'</li>'}).join('');
+  return '<span class="aq-coverage-map__tile'+(home?' is-home':'')+(has&&r===on?' is-on':'')+(has?'':' is-none')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'" title="'+e(t.n||t.c)+'">'
+   +'<span class="aq-coverage-map__code">'+e(t.c)+'</span></span>'}).join('');
  var base=B&&B.label?'<p class="aq-coverage-map__base"><span class="aq-coverage-map__pin" aria-hidden="true"></span>'+tx(B.label)+'</p>':'';
- /* the sheet is a survey sheet: faint contour lines drift under the tiles (FxContour, ambient WebGL, aria-hidden) */
- var sheet='<div class="aq-coverage-map__sheet aq-fx-host" data-theme="light"><canvas class="aq-fx-shader" data-gl="contour" aria-hidden="true"></canvas><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
-  +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+now+'</ol>'+base+'</div>';
- var rows=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
-  return '<li class="aq-coverage-map__row'+lt(i)+'" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'
-   +'<div class="aq-coverage-map__rh"><span class="aq-coverage-map__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-coverage-map__t">'+tcell(r[0])+'</h3>'
-   +(codes.length?'<p class="aq-coverage-map__codes" aria-hidden="true">'+codes.map(function(c){return '<span>'+c+'</span>'}).join('')+'</p>':'')+'</div>'
-   +'<dl class="aq-coverage-map__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl></li>'}).join('');
- return sec(H+'<div class="aq-coverage-map"><div class="aq-coverage-map__map">'+sheet+'</div><ol class="aq-coverage-map__rows">'+rows+'</ol></div>','aq-coverage-map-sec')};
-/* Light a row's tiles: pointing at or focusing a row, or pressing a tile (which also brings its row into view) */
-function lit(w,r){[].forEach.call(w.querySelectorAll('[data-r]'),function(x){x.classList.toggle('is-on',r!==''&&x.getAttribute('data-r')===String(r))})}
+ /* the readout is a survey sheet: faint contour lines drift under it (FxContour, ambient WebGL, aria-hidden) */
+ var now='<li class="aq-coverage-map__now aq-fx-host" data-theme="light"><canvas class="aq-fx-shader" data-gl="contour" aria-hidden="true"></canvas>'
+  +'<div class="aq-coverage-map__faces" id="'+nid+'" aria-live="polite">'+faces+'</div>'
+  +'<div class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-hidden="true">'+tiles+'</div>'+base+'</li>';
+ var list=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
+  return '<li class="aq-coverage-map__col'+lt(i)+'" data-r="'+i+'">'
+   +'<p class="aq-coverage-map__i" aria-hidden="true">'+pad(i)+'</p>'
+   +'<h3 class="aq-coverage-map__t"><button type="button" class="aq-coverage-map__pick" aria-pressed="'+(i===on?'true':'false')+'" aria-controls="'+nid+'">'+tx(txt(r[0]))+'</button></h3>'
+   +(codes.length?'<p class="aq-coverage-map__codes" aria-hidden="true">'+codes.map(function(c){return '<span>'+c+'</span>'}).join('')+'</p>':'')
+   +'<dl class="aq-coverage-map__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl></li>'});
+ /* the readout takes the third cell (top right on desktop) */
+ list.splice(Math.min(2,list.length),0,now);
+ return sec(H+'<ol class="aq-coverage-map" role="list">'+list.join('')+'</ol>','aq-coverage-map-sec')};
+/* Put a region on the readout: its column, its face and its tiles go on; the wrapper hears 'aqcoverage' (motion) */
+function lit(w,r,instant){if(r===''||r==null)return;r=String(r);var cur=w.querySelector('.aq-coverage-map__col.is-on');if(cur&&cur.getAttribute('data-r')===r)return;
+ [].forEach.call(w.querySelectorAll('[data-r]'),function(x){x.classList.toggle('is-on',x.getAttribute('data-r')===r)});
+ [].forEach.call(w.querySelectorAll('.aq-coverage-map__pick'),function(p){p.setAttribute('aria-pressed',p.closest('[data-r]').getAttribute('data-r')===r?'true':'false')});
+ w.dispatchEvent(new CustomEvent('aqcoverage',{detail:{r:+r,instant:!!instant}}))}
 window.AQcoverage=lit;
-document.addEventListener('mouseover',function(ev){var row=ev.target.closest&&ev.target.closest('.aq-coverage-map__row,.aq-coverage-map__tile');if(!row)return;var w=row.closest('.aq-coverage-map');if(w)lit(w,row.getAttribute('data-r'))});
-document.addEventListener('focusin',function(ev){var row=ev.target.closest&&ev.target.closest('.aq-coverage-map__row,.aq-coverage-map__tile');if(!row)return;var w=row.closest('.aq-coverage-map');if(w)lit(w,row.getAttribute('data-r'))});
-document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-cov]');if(!t)return;var row=document.getElementById(t.getAttribute('data-cov'));if(!row)return;
- var w=t.closest('.aq-coverage-map');if(w)lit(w,row.getAttribute('data-r'));
- row.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'})});
+function at(ev,sel){var x=ev.target.closest&&ev.target.closest(sel);return x&&x.closest('.aq-coverage-map')?x:null}
+document.addEventListener('mouseover',function(ev){var c=at(ev,'.aq-coverage-map__col');if(c)lit(c.closest('.aq-coverage-map'),c.getAttribute('data-r'))});
+document.addEventListener('focusin',function(ev){var c=at(ev,'.aq-coverage-map__col');if(c)lit(c.closest('.aq-coverage-map'),c.getAttribute('data-r'),true)});
+document.addEventListener('click',function(ev){var t=at(ev,'.aq-coverage-map__tile:not(.is-none), .aq-coverage-map__pick');if(!t)return;var r=t.closest('[data-r]').getAttribute('data-r');lit(t.closest('.aq-coverage-map'),r,ev.detail===0)});
 })();
 /* Look "cut-band" -> CutBand (design-system/components/CutBand): a short table of levels laid across the plant like a
    cutting plane. On a light ground the heading sits top left and a hairline elevation of the package stands at the
@@ -5039,36 +5053,71 @@ LOOKS['signature-blocks']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.key||[
  return sec(H+'<div class="aq-signature-blocks">'+key+wFold(b,R.length,'<ol class="aq-signature-blocks__list">'+blocks+'</ol>',b.fold_noun||'documents')+'</div>','aq-signature-blocks-sec')
   .replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};
 /* Look "site-plates" -> SitePlates (design-system/components/SitePlates): a table of sites (site, what happens here,
-   address, contact and hours) set as figure plates, two to a row. Each site is a plate: a small isometric drawing of
-   what stands there (IsoKit, on a limestone panel with a faint grid), its index and place, the kind of site set large
-   and light, then what happens here, the address and the contact lines (a cell's " · " parts each on its own line).
-   The first cell is split at its first ", " into the kind ("Shop and test bay") and the place ("[shop location, city and
-   province]"); a {t, link} first cell links the kind. Fields, as a table: cols, rows, fold, fold_noun, and optional
-   art: one drawing key per row ("office", "shop", "service", "parts"; any other key or none draws no figure).
+   address, contact and hours) set as a ledger beside one navy drawing plate (pass 9b, concept contact-locations.1: a
+   limestone sites ledger beside a duotone plate; the plate draws the site you point at instead of the concept's weld).
+   Left: the section title set large, then the ledger, a real table: the site (its index is a button that puts the site
+   on the plate, the kind of site, the place under it), what happens here, the address and the contact lines in mono (a
+   cell's " · " parts each on its own line). Right: the plate, a window over a reel of one figure per site: index and
+   kind, an isometric drawing of what stands there (IsoKit, aq-iso--navy), numbered pins on the parts that do the work
+   and, under it, what happens here as a numbered callout list (the cell split at ", " outside [placeholders]).
+   Pointing at a row, focusing into it or pressing its index slides the reel to that site (project-index); the
+   selection persists. The first cell is split at its first ", " into the kind and the place; a {t, link} first cell
+   links the kind. Fields, as a table: cols, rows, fold, fold_noun, nav (the small line under the title), and optional
+   art: one drawing key per row ("office", "shop", "service", "parts"; any other key or none draws an empty sheet).
    Drawings are drawn here from IsoKit parts (building; skid, RO rack and panel; truck; crates are boxes drawn with the
    kit's box primitive next to a pump and valve). Design system: components/SitePlates. */
 (function(){
+var spN=0;
 function eq(d){return '<path class="aq-iso__eq" d="'+d+'"/>'}
+/* each scene: its parts, its 3D bounds, and pins: the 3D points the "what happens here" items point at, in order */
 var SCENES={
- office:function(){return {inner:isoPart('building',0,0,0,1,{w:84,d:56,h:52}),box:[[0,0,0],[84,0,0],[0,56,0],[84,56,0],[0,0,68],[84,0,68],[0,56,68]]}},
+ office:function(){return {inner:isoPart('building',0,0,0,1,{w:84,d:56,h:52}),box:[[0,0,0],[84,0,0],[0,56,0],[84,56,0],[0,0,68],[84,0,68],[0,56,68]],pins:[[42,28,54]]}},
  shop:function(){var sk=isoPart('skid',0,0,0,1,{w:150,d:70}),ro=isoPart('ro',8,6,9,1,{id:'ro'}),pn=isoPart('panel',124,48,9,0.9,{id:'pn'});
-  return {inner:[sk,ro,pn].join(''),box:[[0,0,0],[150,0,0],[0,70,0],[150,70,0],[0,0,70],[150,0,70],[0,70,70]]}},
- service:function(){return {inner:isoPart('truck',0,0,0,1,{load:false}),box:[[0,0,0],[96,0,0],[0,30,0],[96,30,0],[0,0,40],[96,0,40],[0,30,40]]}},
+  return {inner:[sk,ro,pn].join(''),box:[[0,0,0],[150,0,0],[0,70,0],[150,70,0],[0,0,70],[150,0,70],[0,70,70]],pins:[ro.ports.top,pn.ports.top]}},
+ service:function(){return {inner:isoPart('truck',0,0,0,1,{load:false}),box:[[0,0,0],[96,0,0],[0,30,0],[96,30,0],[0,0,40],[96,0,40],[0,30,40]],pins:[[79,13,36],[32,13,13]]}},
  parts:function(){var o=[];[[0,0,0,30,26,22],[34,0,0,30,26,22],[0,0,22,30,26,22],[34,0,22,30,26,18],[68,0,0,24,26,16]].forEach(function(c){o.push(eq(isoBoxD([c[0],c[1],c[2]],c[3],c[4],c[5])))});
   o.push(isoPart('pump',30,52,0,0.9,{id:'pump'}));o.push(isoPart('valve',86,46,6,1.1,{id:'valve'}));
-  return {inner:o.join(''),box:[[0,0,0],[96,0,0],[0,70,0],[96,70,0],[0,0,48],[96,0,48],[0,70,48]]}}
+  return {inner:o.join(''),box:[[0,0,0],[96,0,0],[0,70,0],[96,70,0],[0,0,48],[96,0,48],[0,70,48]],pins:[[32,13,44]]}}
 };
-function scene(k){var f=SCENES[k];if(!f)return '';var s=f(),bx=isoBounds(s.box,18),W=Math.round(bx.w),H=Math.round(bx.h);
- return '<div class="aq-site-plates__fig" aria-hidden="true" data-theme="light">'+isoSvg(W,H,s.inner,'aq-iso--limestone aq-site-plates__svg',{origin:[-bx.x,-bx.y]})+'</div>'}
+/* split a cell at ", " but never inside a [placeholder] */
+function parts(s){var o=[],d=0,st=0;s=String(s||'');for(var i=0;i<s.length;i++){var c=s[i];if(c==='[')d++;else if(c===']'&&d)d--;else if(!d&&c===','&&s[i+1]===' '){o.push(s.slice(st,i));st=i+2}}o.push(s.slice(st));return o.map(function(x){return x.trim()}).filter(Boolean)}
+function pad(i){return (i<9?'0':'')+(i+1)}
+function figure(k,n){var f=SCENES[k];if(!f)return '<div class="aq-site-plates__area" aria-hidden="true"></div>';var s=f(),bx=isoBounds(s.box,18),W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y];
+ var pins=(s.pins||[]).slice(0,n).map(function(p,j){var at=isoPct(isoP(p),W,Hh,org);return '<span class="aq-site-plates__pin" style="left:'+at.left+';top:'+at.top+'">'+(j+1)+'</span>'}).join('');
+ return '<div class="aq-site-plates__area" aria-hidden="true"><div class="aq-site-plates__fig aq-iso-figure" style="--ar:'+(W/Hh).toFixed(3)+'">'+isoSvg(W,Hh,s.inner,'aq-iso--navy aq-site-plates__svg',{origin:org})+pins+'</div></div>'}
 function lines(c){if(c&&typeof c==='object')return tcell(c);return String(c==null?'':c).split(/\s+·\s+/).map(function(x){return '<span>'+tx(x)+'</span>'}).join('')}
-LOOKS['site-plates']=function(b,H){var C=b.cols||[],R=b.rows||[],A=b.art||[];
- var li=R.map(function(r,i){var c0=r[0],t=c0&&typeof c0==='object'?c0.t:String(c0||''),k=t.indexOf(', '),kind=k>0?t.slice(0,k):t,place=k>0?t.slice(k+2):'';
-  var kh=c0&&typeof c0==='object'&&c0.link&&wp(c0.link)?wlink(c0.link,kind,c0.intent):tx(kind);
-  var dl=[1,2,3].map(function(j){var v=r[j];if(v==null||v==='')return '';return '<div><dt>'+tx(C[j]||'')+'</dt><dd>'+lines(v)+'</dd></div>'}).join('');
-  return fli('<li class="aq-site-plates__plate">',b,i)+scene(A[i])
-   +'<div class="aq-site-plates__text"><p class="aq-site-plates__at"><span class="aq-site-plates__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+(place?'<span>'+tx(place)+'</span>':'')+'</p>'
-   +'<h3 class="aq-site-plates__t">'+kh+'</h3><dl class="aq-site-plates__dl">'+dl+'</dl></div></li>'}).join('');
- return sec(H+wFold(b,R.length,'<ol class="aq-site-plates">'+li+'</ol>',b.fold_noun||'rows'),'aq-site-plates-sec')};
+LOOKS['site-plates']=function(b,H){var C=b.cols||[],R=b.rows||[],A=b.art||[],k=++spN,pid='sp-'+k;
+ var sites=R.map(function(r){var c0=r[0],t=c0&&typeof c0==='object'?c0.t:String(c0||''),i=t.indexOf(', ');
+  return {kind:i>0?t.slice(0,i):t,place:i>0?t.slice(i+2):'',link:c0&&typeof c0==='object'&&c0.link&&wp(c0.link)?c0:null}});
+ var head='<thead><tr>'+C.map(function(c){return '<th scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>';
+ var body=R.map(function(r,i){var s=sites[i],kh=s.link?wlink(s.link.link,s.kind,s.link.intent):tx(s.kind);
+  var cells=[1,2,3].map(function(j){var v=r[j];return '<td class="'+['aq-site-plates__what','aq-site-plates__addr','aq-site-plates__contact'][j-1]+'" data-l="'+e(C[j]||'')+'">'+(v==null||v===''?'':lines(v))+'</td>'}).join('');
+  return fli('<tr class="aq-site-plates__row'+(i?'':' is-on')+'" data-i="'+i+'">',b,i)
+   +'<th scope="row"><div class="aq-site-plates__site"><button type="button" class="aq-site-plates__pick" aria-pressed="'+(i?'false':'true')+'" aria-controls="'+pid+'" aria-label="'+e(s.kind)+'">'+pad(i)+'</button>'
+   +'<span class="aq-site-plates__kind">'+kh+'</span>'+(s.place?'<span class="aq-site-plates__place">'+tx(s.place)+'</span>':'')+'</div></th>'+cells+'</tr>'}).join('');
+ var table='<table class="aq-site-plates__table">'+head+'<tbody>'+body+'</tbody></table>';
+ var stills=R.map(function(r,i){var s=sites[i],w=r[1]&&typeof r[1]!=='object'?parts(r[1]):[];
+  return '<figure class="aq-site-plates__still'+(i?'':' is-on')+'" data-i="'+i+'" style="--d:'+i+'"'+(i?' aria-hidden="true"':'')+'>'
+   +'<figcaption class="aq-site-plates__cap"><span class="aq-site-plates__ci">'+pad(i)+' / '+pad(R.length-1)+'</span><span class="aq-site-plates__ck">'+tx(s.kind)+'</span>'+(s.place?'<span class="aq-site-plates__cp">'+tx(s.place)+'</span>':'')+'</figcaption>'
+   +figure(A[i],w.length)
+   +(w.length?'<ol class="aq-site-plates__calls">'+w.map(function(x,j){return '<li><span class="aq-site-plates__pn" aria-hidden="true">'+(j+1)+'</span><span>'+tx(x)+'</span></li>'}).join('')+'</ol>':'')
+   +'</figure>'}).join('');
+ var plate='<div class="aq-site-plates__plate" id="'+pid+'" data-theme="dark"><div class="aq-site-plates__reel">'+stills+'</div></div>';
+ var sub=b.nav?'<p class="aq-site-plates__sub" aria-hidden="true">'+tx(b.nav)+' · '+pad(R.length-1)+'</p>':'';
+ return sec('<div class="aq-site-plates"><div class="aq-site-plates__main">'+H+sub+wFold(b,R.length,table,b.fold_noun||'rows')+'</div>'+plate+'</div>','aq-site-plates-sec')};
+/* Selection (ported from Subframe Motion "Hover image preview list" (project-index), MIT, (c) 2026 Subframe): pointing
+   at a row, focusing into it or pressing its index puts its site on the plate; the reel slides (CSS, 240 ms
+   cubic-bezier(.2,.85,.25,1)), instantly for keyboard and under reduced motion. The choice persists. */
+function pick(w,i,instant){var cur=w.querySelector('.aq-site-plates__row.is-on');if(cur&&cur.getAttribute('data-i')===String(i))return;
+ var plate=w.querySelector('.aq-site-plates__plate');if(plate)plate.classList.toggle('is-instant',!!instant);
+ [].forEach.call(w.querySelectorAll('.aq-site-plates__row'),function(r){var on=r.getAttribute('data-i')===String(i);r.classList.toggle('is-on',on);var bt=r.querySelector('.aq-site-plates__pick');if(bt)bt.setAttribute('aria-pressed',on?'true':'false')});
+ [].forEach.call(w.querySelectorAll('.aq-site-plates__still'),function(s){var d=+s.getAttribute('data-i')-i;s.style.setProperty('--d',d);s.classList.toggle('is-on',!d);if(d)s.setAttribute('aria-hidden','true');else s.removeAttribute('aria-hidden')});
+ w.dispatchEvent(new CustomEvent('aqsitepick',{detail:{i:+i,instant:!!instant}}))}
+window.AQsitePick=pick;
+function row(ev){var r=ev.target.closest&&ev.target.closest('.aq-site-plates__row');return r&&r.closest('.aq-site-plates')?r:null}
+document.addEventListener('mouseover',function(ev){var r=row(ev);if(r)pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),false)});
+document.addEventListener('focusin',function(ev){var r=row(ev);if(r)pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),true)});
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-site-plates__pick');if(!t)return;var r=t.closest('.aq-site-plates__row');pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),ev.detail===0)});
 })();
 /* Look "site-tiles" -> SiteTiles (design-system/components/SiteTiles): a short grid of what changes for a site, set as
    one navy drawing sheet (pass 9b, concept about.2): a framed sheet with its zone band (numbers across, letters down),

@@ -43,3 +43,37 @@ contact-locations untouched. `check`: 0 problems; `check --budgets` 0 overruns o
 - RequestMenu's When and Cost columns are narrow for the long placeholders (three-line chips in row 01); reads better
   once real times and costs replace them.
 - The riser's water shows clearly only once scrolled; at rest (static) everything is full, which is the honest end state.
+
+# Pass 9b · locations (contact-locations.1 and .2)
+
+Built 2026-11-02 on port 8768. Only blocks 1 and 2 of contact-locations changed (renderers, components); the page file,
+contact-routes, the visit form and the closing are untouched. `check`: 0 problems; `check --budgets contact-locations`:
+0 overruns; motioncheck 0 errors and 0 hidden at 1280 and 375. Checked light and dark, keyboard (index and region
+buttons choose, instantly), reduced motion (complete and still).
+
+## contact-locations.1 "Where to find us": `site-plates` / SitePlates (upgraded in place)
+- Concept weak (log): kept its composition, not its picture. The title set large and light (up to 96 px) with "Sites ·
+  04" under it, a real ledger table (site / what happens here / address / contact and hours, mono addresses and
+  contacts, vertical hairlines) and, where the concept had the unrelated weld macro, a navy plate that draws the site
+  in hand (the pass 9 IsoKit scenes) with numbered pins on the parts and what happens here as numbered callouts.
+  No address, coordinate or map invented.
+- Motion: project-index port (pointer, focus or the index button slides the plate's reel, choice persists; instant for
+  keyboard); entrance: head rule draws, rows rise, plate wipes in, AQiso draws the site, pins strike.
+- Phone: title, plate, then each site a card with its cells labelled. Fold (2 of 4) kept, both links kept.
+- Copy: nothing cut or added (the empty head-office cell stays empty, per the todo).
+
+## contact-locations.2 "Can you support my site?": `coverage-map` / CoverageMap (upgraded in place)
+- Concept followed: one column per region on hairlines (index, region large and light, fields), and the instrument
+  readout in the top right cell: the region in hand, its severity 1 on-site time as the large figure (only the cell's
+  own text: today the placeholder, kept as a chip; the concept's "04 HR", tick scale and MAX tag are not built), a
+  round seal stamp with the CRN body and seal acronyms taken from the last column (TSSA / PEO, RBQ / OIQ, Technical
+  Safety BC / EGBC, ABSA / APEGA; none for other provinces), the column's label with "in [centres served]" under it.
+  The pass 9 tile map lives on inside the readout (region's tiles lit, base marked); FxContour kept behind it.
+- Motion: text-scramble port (the readout face decodes on entrance and on each choice), stamp strikes, tiles laid
+  west to east; the pass 9 per-row scroll sync and the back.out tile ease are gone.
+- Phone: readout first (tiles ≥ 44 px tall choose a region there), regions stacked under it.
+- Copy: nothing cut or added.
+
+## Still weak
+- The readout's big figure is a placeholder chip until the severity 1 times exist; it was designed for a short figure.
+- The office plate has no callouts (its "What happens here" is empty until FD-33).

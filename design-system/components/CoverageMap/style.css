@@ -1,86 +1,89 @@
-/* ---------- CoverageMap: coverage by region read off a tile map (look coverage-map) ----------
-   Desktop: the map sheet (limestone, data-theme light) is held in view on the left while the region rows run on the
-   right; a row's tiles light in flow (is-on) when it is pointed at, focused or scrolled to. Phones: the map above the
-   rows, full width, not held. */
-.aq-coverage-map { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); column-gap: var(--space-12); align-items: start; }
-.aq-coverage-map__map { position: sticky; top: calc(var(--space-24) + var(--space-4)); }
-.aq-coverage-map__sheet { position: relative; padding: var(--space-6); background: var(--limestone); color: var(--on-limestone); }
-.aq-coverage-map__sheet::before { content: ""; position: absolute; inset: var(--space-2); border: 1px solid color-mix(in srgb, var(--on-limestone-muted) 35%, transparent); pointer-events: none; }
-.aq-coverage-map__title { position: relative; margin: 0 0 var(--space-6); display: flex; gap: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-limestone-muted) 35%, transparent);
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-coverage-map__title > span + span::before { content: "·"; margin-right: var(--space-3); }
+/* ---------- CoverageMap: one column per region beside an instrument readout (look coverage-map, pass 9b) ----------
+   Desktop: three cells to a row on hairline columns; the readout (limestone survey sheet, data-theme light) takes the top
+   right cell: the region in hand, its severity 1 on-site time as the large figure, the seal stamp, the tile map with its
+   tiles lit. Phones: the readout first (the map's tiles choose), then the regions stacked. */
+.aq-coverage-map { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-12);
+  border-top: 1px solid var(--line-strong); padding-top: var(--space-8); }
 
-/* The tile map */
-.aq-coverage-map__grid { position: relative; list-style: none; margin: 0; padding: 0; display: grid;
-  grid-template-columns: repeat(var(--cols, 7), minmax(0, 1fr)); grid-template-rows: repeat(var(--rows, 4), auto); gap: var(--space-1); }
-.aq-coverage-map__tile { aspect-ratio: 1; min-width: 0; }
-.aq-coverage-map__btn {
-  position: relative; display: flex; flex-direction: column; justify-content: space-between; width: 100%; height: 100%; min-height: 44px;
-  margin: 0; padding: var(--space-2); border: 1.5px solid var(--on-limestone-muted); background: var(--surface-raised); color: var(--on-limestone);
-  font: inherit; text-align: left; cursor: pointer;
-}
-span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
-.aq-coverage-map__btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.aq-coverage-map__code { font: 400 20px/24px var(--font-mono); letter-spacing: 0.02em; }
-.aq-coverage-map__ri { align-self: flex-end; font: 500 12px/16px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--on-limestone-muted); }
-.aq-coverage-map__tile.is-on .aq-coverage-map__btn { background: var(--flow); border-color: var(--flow); color: var(--on-navy); }
-.aq-coverage-map__tile.is-on .aq-coverage-map__ri { color: var(--on-navy); }
-.aq-coverage-map__tile.is-home .aq-coverage-map__btn { border-width: 3px; border-color: var(--navy); }
-.aq-coverage-map__tile.is-home .aq-coverage-map__btn::after { content: ""; position: absolute; left: var(--space-2); bottom: var(--space-2); width: var(--space-2); height: var(--space-2); background: var(--navy); }
-.aq-coverage-map__tile.is-home.is-on .aq-coverage-map__btn::after { background: var(--on-navy); }
-.aq-coverage-map__base { position: relative; margin: var(--space-6) 0 0; display: flex; align-items: center; gap: var(--space-3); font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
+/* A region column */
+.aq-coverage-map__col { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding-left: var(--space-6); border-left: 1px solid var(--line); }
+.aq-coverage-map__col::before { content: ""; position: absolute; left: -1px; top: 0; bottom: 0; border-left: 2px solid var(--flow); transform: scaleY(0); transform-origin: center top; }
+.aq-coverage-map__col.is-on::before { transform: scaleY(1); }
+.aq-coverage-map__i { margin: 0; align-self: flex-end; font: 400 13px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+.aq-coverage-map__col.is-on .aq-coverage-map__i { color: var(--flow); }
+.aq-coverage-map__t { margin: calc(-1 * var(--space-3)) 0 0; font: 300 32px/38px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); }
+.aq-coverage-map__pick { display: inline-block; min-height: 44px; margin: 0; padding: var(--space-1) 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: left; text-wrap: balance; cursor: pointer;
+  text-decoration: underline 1px transparent; text-underline-offset: 6px; }
+.aq-coverage-map__pick:hover, .aq-coverage-map__pick[aria-pressed="true"] { text-decoration-color: var(--flow); }
+.aq-coverage-map__pick:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-coverage-map__codes { margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.aq-coverage-map__codes span { padding: 0 var(--space-1); border: 1px solid var(--line-strong); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.aq-coverage-map__dl { margin: var(--space-2) 0 0; display: flex; flex-direction: column; }
+.aq-coverage-map__dl > div { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-1); padding-block: var(--space-3); border-top: 1px solid var(--line); }
+.aq-coverage-map__dl dt { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-coverage-map__dl dd { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-coverage-map__dl > div:first-child dd { font-family: var(--font-mono); font-size: 14px; }
+
+/* The readout: a limestone survey sheet in the top right cell */
+.aq-coverage-map__now { position: relative; grid-column: 3; grid-row: 1; display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; align-self: start;
+  margin-top: calc(-1 * var(--space-8) - 1px); padding: var(--space-6); border-top: 3px solid var(--line-strong); background: var(--limestone); color: var(--on-limestone); }
+.aq-coverage-map__now::before { content: ""; position: absolute; inset: var(--space-2); top: var(--space-1); border: 1px solid color-mix(in srgb, var(--on-limestone-muted) 30%, transparent); pointer-events: none; }
+.aq-coverage-map__faces { position: relative; display: grid; }
+.aq-coverage-map__nv { grid-area: 1 / 1; display: none; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.aq-coverage-map__nv.is-on { display: flex; }
+.aq-coverage-map__nh { margin: 0; display: flex; flex-direction: column; gap: var(--space-1); padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-limestone-muted) 35%, transparent); }
+.aq-coverage-map__ni { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--on-limestone-muted); }
+.aq-coverage-map__nt { font: 300 28px/32px var(--font-sans); letter-spacing: -0.02em; color: var(--on-limestone); text-wrap: balance; }
+.aq-coverage-map__nb { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-4); align-items: center; }
+/* the large readout figure: a real time sets at 72 px mono light; a placeholder keeps its chip, larger */
+.aq-coverage-map__big { margin: 0; font: 300 72px/1 var(--font-mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--flow); overflow-wrap: break-word; }
+.aq-coverage-map__big:has(> .aq-ph) { font-size: 18px; line-height: 30px; letter-spacing: 0; }
+.aq-coverage-map__big .aq-ph { font-size: 18px; letter-spacing: 0; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+/* the seal stamp: a double ring, the CRN body over the seal */
+.aq-coverage-map__stamp { position: relative; margin: 0; width: calc(var(--space-24) + var(--space-4)); aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-1);
+  border: 1.5px solid var(--on-limestone-muted); border-radius: 50%; text-align: center; }
+.aq-coverage-map__stamp::before { content: ""; position: absolute; inset: var(--space-1); border: 1px solid color-mix(in srgb, var(--on-limestone-muted) 60%, transparent); border-radius: 50%; }
+.aq-coverage-map__stamp > span { display: flex; flex-direction: column; max-width: 76%; }
+.aq-coverage-map__stamp > span + span { padding-top: var(--space-1); border-top: 1px solid color-mix(in srgb, var(--on-limestone-muted) 45%, transparent); }
+.aq-coverage-map__sk { font: 500 12px/14px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-coverage-map__sv { font: 500 13px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--on-limestone); overflow-wrap: anywhere; }
+.aq-coverage-map__nl { margin: 0; display: flex; flex-direction: column; gap: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-coverage-map__nl > span { font: 400 15px/22px var(--font-sans); letter-spacing: 0; text-transform: none; color: var(--on-limestone); }
+
+/* the mono parts of a face that decode when it comes on (motion.js) */
+.aq-coverage-map__sc { font-variant-numeric: tabular-nums; }
+
+/* The tile map under the readout */
+.aq-coverage-map__grid { position: relative; display: grid; grid-template-columns: repeat(var(--cols, 7), minmax(0, 1fr)); grid-template-rows: repeat(var(--rows, 4), auto); gap: var(--space-1); }
+.aq-coverage-map__tile { position: relative; aspect-ratio: 1; min-width: 0; display: flex; align-items: flex-start; padding: var(--space-1); border: 1.5px solid var(--on-limestone-muted); background: var(--surface-raised); color: var(--on-limestone); cursor: pointer; }
+.aq-coverage-map__tile.is-none { cursor: default; border-style: dashed; }
+.aq-coverage-map__code { font: 400 12px/14px var(--font-mono); letter-spacing: 0.02em; }
+.aq-coverage-map__tile.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-navy); }
+.aq-coverage-map__tile.is-home { border-width: 3px; border-color: var(--navy); }
+.aq-coverage-map__tile.is-home::after { content: ""; position: absolute; left: var(--space-1); bottom: var(--space-1); width: var(--space-2); height: var(--space-2); background: var(--navy); }
+.aq-coverage-map__tile.is-home.is-on::after { background: var(--on-navy); }
+.aq-coverage-map__base { position: relative; margin: 0; display: flex; align-items: center; gap: var(--space-3); font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
 .aq-coverage-map__pin { width: var(--space-4); height: var(--space-4); border: 3px solid var(--navy); position: relative; }
 .aq-coverage-map__pin::after { content: ""; position: absolute; inset: 2px; background: var(--navy); }
 
-/* The readout in the map's open corner: the region being read (the lit row), index in flow over the name, large and light */
-.aq-coverage-map__now { contain: size; position: relative; display: flex; align-items: flex-end; min-width: 0; padding: 0 var(--space-4) var(--space-1) 0; }
-.aq-coverage-map__nv { display: none; }
-.aq-coverage-map__nv.is-on { display: flex; flex-direction: column; gap: var(--space-1); padding-left: var(--space-3); border-left: 2px solid var(--flow); }
-.aq-coverage-map__ni { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--flow); }
-.aq-coverage-map__nt { font: 300 28px/32px var(--font-sans); letter-spacing: -0.02em; color: var(--on-limestone); text-wrap: balance; overflow-wrap: break-word; }
-.aq-coverage-map__nt .aq-ph { font-size: 13px; line-height: 20px; }
-
-/* The region rows */
-.aq-coverage-map__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
-.aq-coverage-map__row { position: relative; padding-block: var(--space-8); border-bottom: 1px solid var(--line); scroll-margin-top: var(--space-24); outline: none; }
-.aq-coverage-map__row::before { content: ""; position: absolute; left: 0; top: -1px; width: 100%; height: 0; border-top: 2px solid var(--flow); transform: scaleX(0); transform-origin: left center; }
-.aq-coverage-map__row.is-on::before { transform: scaleX(1); }
-.aq-coverage-map__rh { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: baseline; row-gap: var(--space-2); }
-.aq-coverage-map__i { font: 400 13px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted); }
-.aq-coverage-map__row.is-on .aq-coverage-map__i { color: var(--flow); }
-.aq-coverage-map__t { margin: 0; font: 300 32px/38px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
-.aq-coverage-map__codes { grid-column: 2; margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-1); }
-.aq-coverage-map__codes span { padding: 0 var(--space-1); border: 1px solid var(--line-strong); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
-.aq-coverage-map__dl { margin: var(--space-4) 0 0 var(--space-12); display: flex; flex-direction: column; }
-.aq-coverage-map__dl > div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: var(--space-6); padding-block: var(--space-3); border-top: 1px solid var(--line); }
-.aq-coverage-map__dl dt { font: 500 12px/18px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
-.aq-coverage-map__dl dd { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
-
 @media (prefers-reduced-motion: no-preference) {
-  .aq-coverage-map__btn { transition: background-color 240ms, border-color 240ms, color 240ms; }
-  .aq-coverage-map__row::before { transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
-  .aq-coverage-map__nv.is-on { animation: aq-coverage-now 320ms cubic-bezier(0.2, 0, 0, 1); }
-  @keyframes aq-coverage-now { from { opacity: 0; transform: translateY(var(--space-1)); } }
+  .aq-coverage-map__tile { transition: background-color 240ms, border-color 240ms, color 240ms; }
+  .aq-coverage-map__col::before { transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-coverage-map__pick { transition: text-decoration-color 160ms; }
 }
 
 @container (max-width: 860px) {
-  .aq-coverage-map { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
-  .aq-coverage-map__map { position: static; }
-  .aq-coverage-map__sheet { padding: var(--space-4); }
-  .aq-coverage-map__btn { padding: var(--space-1); }
-  .aq-coverage-map__code { font-size: 14px; line-height: 18px; }
-  .aq-coverage-map__ri { display: none; }
-  .aq-coverage-map__now { display: none; }
-  .aq-coverage-map__row { padding-block: var(--space-6); }
-  .aq-coverage-map__rh { grid-template-columns: var(--space-8) minmax(0, 1fr); }
-  .aq-coverage-map__t { font-size: 24px; line-height: 30px; }
-  .aq-coverage-map__dl { margin-left: 0; }
-  .aq-coverage-map__dl > div { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-1); }
+  .aq-coverage-map { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); padding-top: 0; border-top: 0; }
+  .aq-coverage-map__now { grid-column: 1; grid-row: auto; order: -1; margin-top: 0; padding: var(--space-4) var(--space-3); gap: var(--space-4); }
+  .aq-coverage-map__big { font-size: 56px; }
+  .aq-coverage-map__nb { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
+  .aq-coverage-map__tile { min-height: 44px; }
+  .aq-coverage-map__col { padding-left: var(--space-4); }
+  .aq-coverage-map__t { font-size: 26px; line-height: 32px; }
 }
 .aq-coverage-map-sec { overflow: visible; }
 
-/* Survey sheet (pass 9b): FxContour draws the terrain's contour lines in on-limestone under the tiles, faint (index
-   contours at 12 %, the rest at 7 %: the mono title and labels keep AA), so the tile codes keep their contrast; masked off the bottom-left corner, where the readout and the base label
-   sit (the readout's flow index is only just AA on bare limestone). */
-.aq-coverage-map__sheet > .aq-fx-shader { --fx-amt: 0.12;
-  -webkit-mask-image: linear-gradient(to top right, transparent 34%, var(--ink) 52%); mask-image: linear-gradient(to top right, transparent 34%, var(--ink) 52%); }
+/* Survey sheet (pass 9b): FxContour draws the terrain's contour lines in on-limestone under the readout, faint (index
+   contours at 12 %, the rest at 7 %), masked off the top half where the region, the figure and the stamp sit. */
+.aq-coverage-map__now > .aq-fx-shader { --fx-amt: 0.12;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40%, var(--ink) 70%); mask-image: linear-gradient(to bottom, transparent 40%, var(--ink) 70%); }

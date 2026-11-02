@@ -107,3 +107,7 @@ PAGE DONE contact-proposal
 contact-service.2 | 1 | steel-blue riser pipe with a valve per severity row branching out to the response and follow-up columns | a vertical header pipe feeds each severity row; branch lines carry the eye from request to response to follow-up
 PAGE DONE contact-service
 QUOTA at contact-locations.1 (reset: Nov 2, 3:57 AM per the model menu; Flash, 3.1 Pro and Argon limited). Resume at queue index 79 (contact-locations.1); 2 items left.
+contact-locations.1 | 2 | limestone sites table beside a dimensioned duotone fusion-joint macro panel | clean 4-site ledger with mono addresses; the weld macro is unrelated to locations (weak; a map/site diagram would fit better)
+contact-locations.2 | 2 | three region columns (ON, QC, BC), each with mono Severity-1 hours, plus one big '04 HR' readout with tick scale and MAX tag | one region per column, response hours as the big instrument numeral; builder could switch the readout per selected region
+PAGE DONE contact-locations
+QUEUE COMPLETE: all 81 pass 9b items captured.
