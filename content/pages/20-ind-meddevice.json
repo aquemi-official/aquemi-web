@@ -71,6 +71,62 @@
    "look": "numeral-index"
   },
   {
+   "type": "spec",
+   "nav": "Supplier quality",
+   "anchor": "supplier-quality",
+   "h": "Qualifying us as your supplier",
+   "intro": "ISO 13485:2016 clause 7.4 puts us under your purchasing controls.",
+   "cols": [
+    "Check",
+    "Our answer",
+    "Where"
+   ],
+   "rows": [
+    {
+     "p": "Quality system",
+     "v": "ISO 9001: [ISO 9001 status, registrar and expiry]. ISO 13485: [ISO 13485 status, registrar and expiry].",
+     "link": "cmp-quality#certification"
+    },
+    {
+     "p": "Questionnaire and audit",
+     "v": "Your questionnaire completed; audits from [quality system ready for audit, date].",
+     "link": "cmp-quality#audit",
+     "link_label": "Send your questionnaire",
+     "intent": "Your questionnaire, completed"
+    },
+    {
+     "p": "Quality agreement",
+     "v": "Your template, marked up within [quality agreement mark-up turnaround, working days]."
+    },
+    {
+     "p": "Documents and traceability",
+     "v": "Each turnover document and who approves it",
+     "link": "cmp-documentation#index"
+    },
+    {
+     "p": "Data integrity",
+     "v": "Audit trail and access control, clause by clause",
+     "link": "sys-monitoring#data-integrity"
+    },
+    {
+     "p": "Clause-by-clause matrix",
+     "v": "Each standard, with the document that proves it",
+     "link": "compliance#map"
+    },
+    {
+     "p": "Change notification",
+     "v": "Changes to parts, materials and software: [change notification to clients: scope and notice]."
+    },
+    {
+     "p": "Our own suppliers",
+     "v": "What we require of the parts and materials we buy",
+     "link": "cmp-quality#suppliers",
+     "link_label": "What we require from suppliers"
+    }
+   ],
+   "look": "colophon"
+  },
+  {
    "type": "table",
    "as": "grades",
    "nav": "Grade by step",
@@ -171,62 +227,6 @@
     }
    ],
    "look": "washer-trace"
-  },
-  {
-   "type": "spec",
-   "nav": "Supplier quality",
-   "anchor": "supplier-quality",
-   "h": "Qualifying us as your supplier",
-   "intro": "ISO 13485:2016 clause 7.4 puts us under your purchasing controls.",
-   "cols": [
-    "Check",
-    "Our answer",
-    "Where"
-   ],
-   "rows": [
-    {
-     "p": "Quality system",
-     "v": "ISO 9001: [ISO 9001 status, registrar and expiry]. ISO 13485: [ISO 13485 status, registrar and expiry].",
-     "link": "cmp-quality#certification"
-    },
-    {
-     "p": "Questionnaire and audit",
-     "v": "Your questionnaire completed; audits from [quality system ready for audit, date].",
-     "link": "cmp-quality#audit",
-     "link_label": "Send your questionnaire",
-     "intent": "Your questionnaire, completed"
-    },
-    {
-     "p": "Quality agreement",
-     "v": "Your template, marked up within [quality agreement mark-up turnaround, working days]."
-    },
-    {
-     "p": "Documents and traceability",
-     "v": "Each turnover document and who approves it",
-     "link": "cmp-documentation#index"
-    },
-    {
-     "p": "Data integrity",
-     "v": "Audit trail and access control, clause by clause",
-     "link": "sys-monitoring#data-integrity"
-    },
-    {
-     "p": "Clause-by-clause matrix",
-     "v": "Each standard, with the document that proves it",
-     "link": "compliance#map"
-    },
-    {
-     "p": "Change notification",
-     "v": "Changes to parts, materials and software: [change notification to clients: scope and notice]."
-    },
-    {
-     "p": "Our own suppliers",
-     "v": "What we require of the parts and materials we buy",
-     "link": "cmp-quality#suppliers",
-     "link_label": "What we require from suppliers"
-    }
-   ],
-   "look": "colophon"
   },
   {
    "type": "grid",
