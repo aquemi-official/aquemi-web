@@ -71,30 +71,31 @@ details[open] > .aq-spine-shelf__sum .aq-spine-shelf__t { font-weight: 400; }
 }
 .aq-spine-shelf__item.is-key .aq-spine-shelf__docs li::before { border-color: var(--flow); }
 
-/* Fold: desktop shows the whole index; the fold works on phones only */
-.aq-fold:not(.is-open) .aq-spine-shelf__item.aq-fold-x { display: block; }
-.aq-fold:has(> .aq-spine-shelf__list) > .aq-fold__btn { display: none; }
-
 @media (prefers-reduced-motion: reduce) { .aq-spine-shelf__body, .aq-spine-shelf__mark::before, .aq-spine-shelf__mark::after { transition: none; } }
 
+/* Phones (pass 12, concept 212): no shelf; a numbered rail down the left, the key section first as a navy row
+   (open), the others as outlined rows, each number in a square on the rail */
 @container (max-width: 860px) {
-  .aq-spine-shelf { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
-  .aq-spine-shelf__shelf { position: relative; top: auto; padding-top: var(--space-8); }
-  .aq-spine-shelf__row { height: calc(var(--space-32) + var(--space-8)); padding: 0; gap: 1px; }
-  .aq-spine-shelf__spine { min-width: 0; }
-  .aq-spine-shelf__holder { display: none; }
-  .aq-spine-shelf__body { padding-top: var(--space-2); }
-  .aq-spine-shelf__body::before { top: var(--space-6); }
-  .aq-spine-shelf__body::after { bottom: var(--space-8); }
-  .aq-spine-shelf__no { writing-mode: vertical-rl; transform: rotate(180deg); }
-  .aq-spine-shelf__ring { margin-top: auto; }
-  .aq-spine-shelf__spine.is-open .aq-spine-shelf__body { transform: translateY(calc(-1 * var(--space-6))); }
-  .aq-spine-shelf__sum { grid-template-columns: var(--space-8) minmax(0, 1fr) var(--space-8); column-gap: var(--space-3); min-height: var(--space-12); padding-block: var(--space-2); }
+  .aq-spine-shelf { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .aq-spine-shelf__shelf { display: none; }
+  .aq-spine-shelf__list { display: flex; flex-direction: column; gap: var(--space-2); position: relative; border-top: 0; padding-left: calc(var(--space-12) - var(--space-1)); }
+  .aq-spine-shelf__list::before { content: ""; position: absolute; left: calc(var(--space-4) - 1px); top: var(--space-6); bottom: var(--space-6); border-left: 1px solid var(--line-strong); }
+  /* z-index: the key row (order -1) paints before the rail line otherwise, and the line would cross its number */
+  .aq-spine-shelf__item { position: relative; z-index: 1; border: 1px solid var(--line-strong); background: var(--surface-raised); }
+  .aq-spine-shelf__item.is-key { order: -1; background: var(--navy); border-color: var(--navy); }
+  .aq-spine-shelf__sum { grid-template-columns: minmax(0, 1fr) var(--space-8); column-gap: var(--space-3); min-height: calc(var(--space-12) + var(--space-1)); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); }
   .aq-spine-shelf__lead { display: none; }
-  .aq-spine-shelf__n { padding-left: 0; font-size: 12px; }
-  .aq-spine-shelf__t { font-size: 19px; line-height: 26px; }
-  .aq-spine-shelf__docs { grid-template-columns: minmax(0, 1fr); padding: 0 0 var(--space-4) calc(var(--space-8) + var(--space-3)); row-gap: var(--space-2); }
-  .aq-spine-shelf__docs li { font-size: 14px; line-height: 21px; }
-  .aq-fold:not(.is-open) .aq-spine-shelf__item.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-spine-shelf__list) > .aq-fold__btn { display: flex; }
+  .aq-spine-shelf__n {
+    position: absolute; left: calc(-1 * (var(--space-12) - var(--space-1))); top: calc((var(--space-12) + var(--space-1)) / 2 - var(--space-4)); width: var(--space-8); height: var(--space-8);
+    display: grid; place-items: center; padding: 0; border: 1px solid var(--line-strong); background: var(--surface); font: 500 12px/1 var(--font-mono); color: var(--ink);
+  }
+  .aq-spine-shelf__item.is-key .aq-spine-shelf__n, .aq-spine-shelf__item.is-key details[open] > .aq-spine-shelf__sum .aq-spine-shelf__n { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+  .aq-spine-shelf__t { font-size: 18px; line-height: 24px; }
+  .aq-spine-shelf__item.is-key .aq-spine-shelf__t { color: var(--on-navy); }
+  .aq-spine-shelf__item.is-key .aq-spine-shelf__mark::before, .aq-spine-shelf__item.is-key .aq-spine-shelf__mark::after { border-top-color: var(--on-navy-muted); }
+  .aq-spine-shelf__item.is-hover .aq-spine-shelf__sum { background: none; }
+  .aq-spine-shelf__docs { grid-template-columns: minmax(0, 1fr); padding: 0 var(--space-4) var(--space-4); row-gap: var(--space-2); }
+  .aq-spine-shelf__docs li { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-spine-shelf__item.is-key .aq-spine-shelf__docs li { color: var(--on-navy-muted); }
+  .aq-spine-shelf__item.is-key .aq-spine-shelf__docs li::before { background: var(--navy); border-color: var(--on-navy-muted); }
 }

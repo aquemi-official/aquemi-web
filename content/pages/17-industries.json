@@ -67,11 +67,12 @@
      "link": "ind-process",
      "d": "Spirits proofing, beverage and ingredient water, cannabis extracts, electronics rinse, chemical batches, boiler and electrolyser feed."
     }
-   ]
+   ],
+   "look": "application-wheel"
   },
   {
    "type": "table",
-   "look": "macro-leaders",
+   "look": "use-matrix",
    "anchor": "matrix",
    "nav": "By use",
    "h": "Industry by water use",
@@ -260,7 +261,7 @@
   {
    "type": "spec",
    "as": "rules",
-   "look": "rule-figures",
+   "look": "fit-readout",
    "anchor": "fit",
    "nav": "Fit",
    "h": "Where the package fits, in any industry",
@@ -318,7 +319,7 @@
   },
   {
    "type": "diagram",
-   "look": "strata-run",
+   "look": "limit-writers",
    "anchor": "same-water",
    "nav": "Same package",
    "h": "Same package, different limit-writer",
@@ -361,7 +362,14 @@
    ],
    "base": "Monitoring and controls · alarm limits from your limit-writer",
    "base_link": "sys-monitoring",
-   "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents."
+   "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents.",
+   "writers": [
+    "A pharmacopoeia",
+    "ANSI/AAMI ST108:2023",
+    "ASTM D1193-24 or CLSI GP40",
+    "Your recipe",
+    "Your equipment maker"
+   ]
   },
   {
    "type": "grid",

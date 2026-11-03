@@ -1,0 +1,78 @@
+/* ---------- LimitDrawer: who writes your limit, and what to send, as a file drawer ---------- */
+/* Three folders to a row. Each folder's tab sits at its own cut (--cut 0, 1, 2: left, middle, right third), so across a
+   row the tabs step along the drawer and none hides another. Folders are limestone (every second a shade deeper),
+   the slip is raised paper with a hairline edge and a clip, the index label is navy. No shadows. */
+.aq-limit-drawer { position: relative; }
+.aq-limit-drawer__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-6); row-gap: var(--space-8); }
+.aq-limit-drawer__f { --tab: 30px; position: relative; display: flex; flex-direction: column; min-width: 0; padding-top: var(--tab, 30px); }
+.aq-limit-drawer__tab { position: absolute; top: 0; left: calc(var(--cut, 0) * 33.333%); min-width: 33.333%; max-width: 62%; height: calc(var(--tab, 30px) + 1px); box-sizing: border-box;
+  display: flex; align-items: center; gap: var(--space-2); padding: 0 var(--space-3); overflow: hidden; white-space: nowrap;
+  background: var(--fc, var(--limestone)); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone); z-index: 1; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-limit-drawer__tab span { color: var(--on-limestone-muted); }
+.aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__tab { left: auto; right: 0; }
+.aq-limit-drawer__f:nth-child(even) { --fc: color-mix(in srgb, var(--limestone) 86%, var(--on-limestone)); }
+.aq-limit-drawer__body { flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-6) var(--space-4);
+  background: var(--fc, var(--limestone)); color: var(--on-limestone); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm); }
+.aq-limit-drawer__f[style*="--cut:1"] .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__body { border-radius: var(--radius-sm); }
+/* the phone head shows only while PhoneKit is on (below 860 px); on desktop the body's parts sit straight in the folder */
+.aq-limit-drawer__more { display: contents; }
+.aq-limit-drawer__who { margin: 0 0 var(--space-2); font: 400 22px/28px var(--font-sans); letter-spacing: -0.015em; color: var(--on-limestone); }
+.aq-limit-drawer__k, .aq-limit-drawer__sk { margin: 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-limit-drawer__sets { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
+.aq-limit-drawer__slip { position: relative; margin: var(--space-3) 0 var(--space-4); padding: var(--space-4) var(--space-4) var(--space-3); background: var(--surface-raised); color: var(--ink);
+  border: 1px solid var(--line); transform: rotate(-0.6deg); transform-origin: 20% 0; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-limit-drawer__f:nth-child(even) .aq-limit-drawer__slip { transform: rotate(0.5deg); }
+.aq-limit-drawer__clip { position: absolute; top: calc(-1 * var(--space-2)); right: var(--space-6); width: var(--space-3); height: var(--space-6); box-sizing: border-box;
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); }
+.aq-limit-drawer__sk { color: var(--flow); margin-bottom: var(--space-1); }
+.aq-limit-drawer__send { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.aq-limit-drawer__send li { position: relative; padding-left: var(--space-4); font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-limit-drawer__send li::before { content: ""; position: absolute; left: 0; top: 10px; width: var(--space-2); height: 1px; background: var(--flow); }
+.aq-limit-drawer__label { margin: auto 0 0; display: flex; flex-direction: column; gap: 2px; min-height: 48px; box-sizing: border-box; padding: var(--space-2) var(--space-3);
+  background: var(--navy); color: var(--on-navy); text-decoration: none; font: 500 15px/20px var(--font-sans); border-radius: var(--radius-sm); }
+.aq-limit-drawer__lk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+a.aq-limit-drawer__label::after { content: "\2192"; align-self: flex-end; margin-top: calc(-1 * var(--space-6)); color: var(--flow-tint); transition: transform 200ms; }
+a.aq-limit-drawer__label:hover::after { transform: translateX(var(--space-1)); }
+a.aq-limit-drawer__label:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* pointing at a folder lifts its tab and pulls its slip out a little */
+.aq-limit-drawer__f:hover .aq-limit-drawer__tab, .aq-limit-drawer__f:focus-within .aq-limit-drawer__tab { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-limit-drawer__f:hover .aq-limit-drawer__slip, .aq-limit-drawer__f:focus-within .aq-limit-drawer__slip { transform: rotate(0deg) translateY(calc(-1 * var(--space-1))); }
+/* the drawer's front rail and pull */
+.aq-limit-drawer__front { position: relative; height: var(--space-6); margin-top: var(--space-6); border-top: 2px solid var(--line-strong); border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--limestone) 60%, var(--surface)); }
+.aq-limit-drawer__pull { position: absolute; left: 50%; top: 50%; width: var(--space-24); height: var(--space-2); margin: calc(var(--space-2) / -2) 0 0 calc(var(--space-24) / -2);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface); box-sizing: border-box; }
+
+@container (max-width: 1100px) {
+  .aq-limit-drawer__list { column-gap: var(--space-4); }
+  .aq-limit-drawer__body { padding: var(--space-4); }
+  .aq-limit-drawer__who { font-size: 19px; line-height: 25px; }
+}
+
+/* Phones and tablets: one folder per row. Without script every folder is open with its tab on the left; with PhoneKit on,
+   the tabs keep their stepped cuts and each folder closes to a 48 px head, one open at a time. */
+@container (max-width: 860px) {
+  .aq-limit-drawer__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
+  .aq-limit-drawer__f { --tab: 28px; }
+  .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__tab, .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__tab {
+    left: 0; right: auto; min-width: 0; max-width: 80%; }
+  .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:1"] .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__body { padding: var(--space-4); gap: var(--space-1); }
+  .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__body { border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm); }
+  .aq-limit-drawer__who { font-size: 19px; line-height: 25px; }
+  .aq-limit-drawer__sets { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-limit-drawer__slip, .aq-limit-drawer__f:nth-child(even) .aq-limit-drawer__slip { transform: none; margin: var(--space-3) 0; padding: var(--space-3); }
+  .aq-limit-drawer__send li { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-limit-drawer__label { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; column-gap: var(--space-2); }
+  .aq-limit-drawer__lk { flex-basis: 100%; }
+  a.aq-limit-drawer__label::after { margin-top: calc(-1 * var(--space-4)); }
+  .aq-limit-drawer__front { margin-top: var(--space-4); }
+  /* the accordion: folders closer together, a closed folder is its tab and its 48 px head */
+  .aq-limit-drawer__list[data-pk-on] { row-gap: var(--space-2); }
+  .aq-limit-drawer__list[data-pk-on] .aq-limit-drawer__body { padding-block: 0; }
+  .aq-limit-drawer__list[data-pk-on] .is-pk-open .aq-limit-drawer__body { padding-bottom: var(--space-4); }
+  .aq-limit-drawer__list[data-pk-on] .aq-limit-drawer__head { padding-block: var(--space-2); font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+  .aq-limit-drawer__ht { flex: 1 1 auto; min-width: 0; }
+  .aq-limit-drawer__head .aq-phone-kit__chev { margin-right: calc(-1 * var(--space-3)); }
+  .aq-limit-drawer__list[data-pk-on] .aq-limit-drawer__slip { margin-top: var(--space-2); }
+}

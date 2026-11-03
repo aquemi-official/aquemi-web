@@ -31,7 +31,8 @@
   .aq-release-run__col { padding-inline: var(--space-4); }
 }
 
-/* Phones: the line turns upright down the left, the steps stack beside it, the last one still navy */
+/* Phones: the line turns upright down the left, the steps stack beside it, the last one still navy; each numeral
+   inline to the left of its step's name (pass 12) */
 @container (max-width: 860px) {
   .aq-release-run-sec .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
   .aq-release-run { margin-top: var(--space-6); padding-left: var(--space-6); }
@@ -40,6 +41,12 @@
   .aq-release-run__cols { grid-template-columns: minmax(0, 1fr); }
   .aq-release-run__col, .aq-release-run__col:first-child { padding: var(--space-6) var(--space-4); border-left: 0; border-top: 1px solid var(--line); gap: var(--space-2); }
   .aq-release-run__node, .aq-release-run__col:first-child .aq-release-run__node { left: calc(var(--space-6) * -1 + var(--space-1) - var(--space-3) * 0.5); top: var(--space-8); }
-  .aq-release-run__n { font-size: 88px; }
-  .aq-release-run__t { margin-top: var(--space-2); font-size: 21px; line-height: 27px; }
+  /* pass 12 (S13): the numeral (48 px) sits inline to the left of the step's name, the words full width under both */
+  .aq-release-run__col, .aq-release-run__col:first-child { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-2); align-items: center; padding: var(--space-4); }
+  .aq-release-run__node, .aq-release-run__col:first-child .aq-release-run__node { top: calc(var(--space-4) + var(--space-4)); }
+  .aq-release-run__n { grid-column: 1; grid-row: 1; margin: 0; font-size: 48px; line-height: 40px; letter-spacing: -0.05em; }
+  .aq-release-run__t { grid-column: 2; margin: 0; font-size: 20px; line-height: 26px; }
+  .aq-release-run__d { grid-column: 1 / -1; font-size: 15px; line-height: 23px; max-width: none; }
+  .aq-release-run__t a { position: relative; }
+  .aq-release-run__t a::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; min-height: var(--aq-hit, 44px); transform: translateY(-50%); }
 }

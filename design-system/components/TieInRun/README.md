@@ -6,7 +6,8 @@ TieInRun tells ordered steps on one sticky drawing of a qualified loop gaining a
 - Fields: `h`, `intro`, `items` [{t, d, link}]. The first four steps drive the drawing's stages (plan, boundary, build, release). Placeholders stay Placeholder chips.
 - Stage values: `--p0`…`--p3` on the root (0–1, 1 at rest): the new branch's opacity, the boundary's opacity, the branch's dash gap and fill, and (in motion.js) the water drawn into it. Without script or under reduced motion the drawing shows the finished, released state.
 - Tokens: steps `ink` / `ink-muted`, numerals `ink-subtle`, the step on the reading line `flow`; new branch and boundary `flow`; markers `surface` on `line-strong`, the current one `flow`. Heading Geist Light 56/60 (36/40 on phones).
-- Phones: the drawing rides as a sticky band under the nav (narrower plate, `surface` ground, rule below), the steps scroll beneath it.
+- Phones (pass 12, PhoneKit sticky figure: `data-pk-sticky data-pk-bp="600" data-pk-h="200" data-pk-zoom="1.1"`, markers `data-pk-key`, steps `data-pk-row`): the drawing rides as a 200 px strip under the header, full width at 1.1x, panned to the active step's marker. The step on the reading line drives it: the step and its marker light and the drawing shows that step's stage (later stages not yet drawn); with motion the drawing eases between stages (0.6 s), without motion it switches. The steps scroll beneath it at full strength (no dimming of the reading text; the lit number and marker carry the highlight), the markers of stages not drawn yet step back (`is-future`, 35 %), and the strip lifts off with the last step so it is never covered (PhoneKit's `--pk-lift`).
+- Tablets (601-860 px): PhoneKit stays off; the steps and the sticky drawing sit side by side (two equal columns), the desktop scroll story at a smaller scale.
 
 ## Motion
 

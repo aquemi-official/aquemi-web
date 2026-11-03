@@ -75,4 +75,10 @@ a.aq-visit-plan__body:hover .aq-visit-plan__t { color: var(--vp-flow, var(--flow
   .aq-visit-plan__stop.is-end { margin-inline: calc(-1 * var(--space-4)); margin-bottom: calc(-1 * var(--space-12)); margin-top: var(--space-6); border: 0; }
   .aq-visit-plan__stop.is-end .aq-visit-plan__body { display: grid; padding: var(--space-6) var(--space-4); }
   .aq-visit-plan__stop.is-end .aq-visit-plan__t, .aq-visit-plan__stop.is-end .aq-visit-plan__d { font-size: 20px; line-height: 26px; }
+  /* pass 12: the stop drawings draw past their box; keep them a 16 px gutter clear of the edge, and the sign-off
+     line at 18 px so it no longer runs to seven lines beside its drawing */
+  .aq-visit-plan__mini { margin-right: var(--space-4); }
+  .aq-visit-plan__stop.is-end .aq-visit-plan__t, .aq-visit-plan__stop.is-end .aq-visit-plan__d { font-size: 18px; line-height: 25px; }
+  .aq-visit-plan__stop.is-end .aq-visit-plan__mini { grid-row: 1 / span 2; }
+  .aq-visit-plan__stop.is-end .aq-visit-plan__d { grid-column: 2 / -1; }
 }

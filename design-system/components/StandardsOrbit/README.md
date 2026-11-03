@@ -13,3 +13,9 @@ StandardsOrbit draws a standards map as orbits round the plant: the Purified Wat
 Motion: one timeline when the stage scrolls in. The rings draw on from their sides and the ticks fade up while the plant builds (IsoKit: parts, pipes, a run of water); then each zone in turn: its node lands on the ring, its arc draws in to the part and the part lights as the arc touches it, and the zone's title and chips slide out from the node's side. Parts settle back at the end. Under 5 s; nothing under reduced motion. Phones (rings and arcs hidden) play the plant and the list.
 
 Ported (pass 9b): Subframe Motion "Orbiting circles" (orbiting-circles): each node arrives by riding the outer orbit a quarter turn into its slot (once, settling). Pointing at or focusing a zone runs a signal (`AQbeam`) down its arc from the node into the part it governs.
+
+## Phones (pass 12)
+
+The sticky strip runs under 600 px (`data-pk-bp="599"`); 600-860 px keep the large plant with its pins, and the 44 px chips wrap at their own width.
+
+The plant carries one numbered pin (01-05) per zone, on the part the zone governs (`__pin`, inside `__pan`, hidden above 860 px). The plant is a 180 px sticky strip under the header (PhoneKit sticky figure); the zone on the reading line lights its pin, its drawn part and its node on the orbit line. Zone titles are 44 px links; standard chips are 44 px tall, two to a row, wrapping inside the chip. The section clips with `overflow: clip` (not the navy band's `hidden`, which would stop the strip from sticking).

@@ -81,3 +81,26 @@
 @container (max-width: 860px) {
   .aq-joint-steps__tag, .aq-joint-steps__tag--right { left: var(--space-2) !important; top: var(--space-2) !important; transform: none; }
 }
+
+/* ---------- Pass 12 phones: PhoneKit holds the sheet as a 180 px strip under the header ----------
+   The sheet wrapper steps aside (display: contents) so the strip sticks for the whole rail. The drawing runs the full
+   width and PhoneKit pans it to the part the active stage draws; the joint's tag stays pinned top left. */
+@container (max-width: 860px) {
+  .aq-joint-steps[data-pk-on] .aq-joint-steps__sheet { display: contents; }
+  .aq-joint-steps[data-pk-on] .aq-joint-steps__fig { margin-bottom: var(--space-4); border-width: 0 0 1px; }
+  .aq-joint-steps[data-pk-on] .aq-joint-steps__fig .aq-iso { width: 100%; height: auto; }
+  .aq-joint-steps[data-pk-on] .aq-joint-steps__tag { z-index: 1; }
+  .aq-joint-steps[data-pk-on] .aq-joint-steps__step { scroll-margin-top: calc(var(--pk-top, 0px) + var(--pk-h, 180px) + var(--space-4)); }
+  /* a step title that links: a 48 px tap box round the words, no change to the line */
+  .aq-joint-steps__t a { position: relative; }
+  .aq-joint-steps__t a::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 48px; margin-top: -24px; }
+  /* the sheet's zone letters and dimensions would render at 8 px in the strip (S9): the strip shows the drawing only */
+  .aq-joint-steps[data-pk-on] .aq-joint-steps__fig svg text { display: none; }
+}
+
+/* Tablets (601-860 px; PhoneKit holds only to 600 px here): the sheet sticky beside the rail, the desktop story at a
+   smaller scale, instead of a strip that shows a third of the sheet */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-joint-steps { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .aq-joint-steps__fig { position: sticky; top: var(--space-16); margin-bottom: 0; }
+}

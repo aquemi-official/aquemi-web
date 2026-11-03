@@ -3,7 +3,10 @@
    the left, cropped by the page edge; numbered markers stand on an arc over it and a leader runs from each marker into
    its row, so every industry is "called out" from the same piece of equipment.
    Fields as a table block: cols (first is the row name), rows (cells, strings or {t, link}). No new fields.
-   Phones: the macro is a short band above the rows; the markers stand on a rail down the left of the rows.
+   Phones (pass 12, S12/S18): the macro stays on desktop only (on a phone it was an unlabelled crop); the value columns
+   are named once in a legend, each with a colour code (1 flow, 2 ink, 3 caution), and each row's values are lines
+   carrying the same code; the markers stand on a rail down the left of the rows. Each cell's value is wrapped
+   (span.__v) so a placeholder never falls into a label column.
    The pipe is drawn plain, labelled "PP pipe", with no weld bead (DR-018: the joining method is open, FD-18). */
 LOOKS['macro-leaders']=(function(){
  var uid=0;
@@ -36,8 +39,10 @@ LOOKS['macro-leaders']=(function(){
   var body=R.map(function(r,i){var t=n>1?(i-(n-1)/2)/((n-1)/2):0,kk=2*(1-Math.sqrt(1-0.75*t*t));
    return '<tr role="row" data-i="'+i+'" style="--k:'+kk.toFixed(3)+'">'+r.map(function(c,j){
     if(!j)return '<th role="rowheader" scope="row" class="aq-macro-leaders__ind"><span class="aq-macro-leaders__lead" aria-hidden="true"><span class="aq-macro-leaders__mk">'+(i<9?'0':'')+(i+1)+'</span></span><span class="aq-macro-leaders__name">'+tcell(c)+'</span></th>';
-    return '<td role="cell"><span class="aq-macro-leaders__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+tcell(c)+'</td>'}).join('')+'</tr>'}).join('');
+    return '<td role="cell" data-c="'+j+'"><span class="aq-macro-leaders__k" aria-hidden="true">'+tx(C[j]||'')+'</span><span class="aq-macro-leaders__v">'+tcell(c)+'</span></td>'}).join('')+'</tr>'}).join('');
+  /* phones: the value columns named once, each with its colour code; every row's lines carry the same code */
+  var legend='<p class="aq-macro-leaders__legend" aria-hidden="true">'+C.slice(1).map(function(c,j){return '<span data-c="'+(j+1)+'">'+tx(c)+'</span>'}).join('')+'</p>';
   return sec(H+'<div class="aq-macro-leaders" style="--n:'+n+'"><figure class="aq-macro-leaders__fig" aria-hidden="true">'+macro(k)+'</figure>'
-   +'<table class="aq-macro-leaders__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th role="columnheader" scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
+   +legend+'<table class="aq-macro-leaders__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th role="columnheader" scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
    +'<tbody role="rowgroup">'+body+'</tbody></table></div>','aq-macro-leaders-sec')}
 })();

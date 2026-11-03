@@ -5,7 +5,7 @@ BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole pac
 - Fields: `h`, `caption` (eyebrow), `intro`, `cols` (keys: the second and third label the range and basis), `rows [{p, v, m, hl, spot, link, link_label}]`, `note`, `note_link`, `note_link_label`. `spot` (new, optional): Spot or Icon name for a module tile. The lead's basis splits on commas into the ticked list. The note becomes chips only when every sentence reads "Label: a, b and c." (a label starting "Not" marks exclusions); otherwise it prints as the spec note.
 - Tokens: hairline grid in `line-strong`, tiles `surface-raised`, lead `navy` with `on-navy` text, Geist Light numerals, Geist Mono ranges, the band `flow-tint` with a `flow` edge (on navy a `flow`/`on-navy` mix). Chips: `line-strong` outline, exclusions dashed in `ink-muted` with a dash glyph. Hover: a module tile's numeral turns `flow`.
 - The bracket is a glyph, not a scale: it never positions a value. Placeholders stay placeholders.
-- Phones: one column, lead first; numerals and range sizes step down; the chips wrap under their labels.
+- Phones (pass 12, ~1,310 px from 1,990): a short navy lead card (its outlined "01" whole in the corner, the range on its bracket) and the modules as compact rows (40-44 px numeral inline with the scope, the range and bracket beside a "Basis +" head). Every basis sits behind its own head: the grid is a PhoneKit accordion (`data-pk-picker="accordion"`, `data-pk-open="-1"`, each tile a `data-pk-item`, `button.__bh` the head showing the basis column label and announced as "label: scope", `div.__basis` the body). The two chip rows scroll sideways, the last chip fading at the gutter. Basis lines and the ticked list read at 14 px. Desktop unchanged.
 
 ## Motion
 

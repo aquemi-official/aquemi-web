@@ -2,7 +2,7 @@
    Limestone band (data-theme light). One column per plan, columns alternate navy and a lighter limestone tile with a
    hairline edge; each column is a head tile (slash numeral 300 at up to 112 px, name, who it suits) and a terms tile
    whose rows line up across columns through subgrid. No table rules: tiles and gaps separate. Navy tiles remap the ink
-   tokens to their on-navy values. Phones: numeral tabs pick one plan. */
+   tokens to their on-navy values. Phones: a snap row of plan cards at 85 % under a strip of numeral tabs. */
 .aq-plan-checker-sec .aq-sec-head .aq-h1 { font-weight: 300; letter-spacing: -0.03em; }
 .aq-plan-checker__tabs { display: none; }
 .aq-plan-checker__plans {
@@ -46,25 +46,37 @@
 .aq-plan-checker-sec .aq-fold__btn { margin-top: var(--space-6); }
 .aq-fold:not(.is-open) .aq-plan-checker__term.aq-fold-x { display: none; }
 
+/* Phones (pass 12, S11): the plans become a snap row of cards at 85 % width, the next one peeking; each card keeps
+   its checker tiles (head, terms, button) in its own column. Over the row, a strip of numeral tabs (numerals only,
+   still navy/limestone) jumps to a plan and follows the swipe (look JS, AQsnap). */
 @container (max-width: 860px) {
-  .aq-plan-checker__tabs { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--space-1); margin-bottom: var(--space-1); }
+  .aq-plan-checker__tabs { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--space-1); margin-bottom: var(--space-2); }
   .aq-plan-checker__tab {
-    display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); min-height: 72px; min-width: 0;
-    padding: var(--space-2); border: 0; border-radius: 0; font: inherit; text-align: left; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; min-height: 48px; min-width: 0;
+    padding: 0 var(--space-2); border: 0; border-radius: 0; font: inherit; cursor: pointer;
   }
-  .aq-plan-checker__tabno { font: 300 28px/1 var(--font-sans); letter-spacing: -0.04em; }
-  .aq-plan-checker__tabn { font: 400 11px/14px var(--font-mono); overflow-wrap: anywhere; }
-  .aq-plan-checker__tab .aq-ph { font-size: 11px; }
-  .aq-plan-checker__tab[aria-pressed="true"] { outline: 2px solid var(--flow); outline-offset: -2px; }
+  .aq-plan-checker__tabno { font: 300 24px/1 var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+  /* the current mark sits outside the tile, on the limestone band (flow on navy is under 3:1) */
+  .aq-plan-checker__tab[aria-current="true"] { outline: 3px solid var(--flow); outline-offset: 1px; }
   .aq-plan-checker__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-  .aq-plan-checker__plans { grid-template-columns: minmax(0, 1fr); }
-  .aq-plan-checker[data-show="1"] .aq-plan-checker__plan:not(.t1),
-  .aq-plan-checker[data-show="2"] .aq-plan-checker__plan:not(.t2),
-  .aq-plan-checker[data-show="3"] .aq-plan-checker__plan:not(.t3),
-  .aq-plan-checker[data-show="4"] .aq-plan-checker__plan:not(.t4),
-  .aq-plan-checker[data-show="5"] .aq-plan-checker__plan:not(.t5) { display: none; }
-  .aq-plan-checker__head { min-height: 0; padding: var(--space-4); }
-  .aq-plan-checker__no { font-size: 64px; margin-bottom: var(--space-4); }
+  .aq-plan-checker__plans {
+    display: flex; gap: var(--space-2); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scrollbar-width: none; padding-bottom: var(--space-1); }
+  .aq-plan-checker__plans::-webkit-scrollbar { display: none; }
+  .aq-plan-checker__plan { flex: 0 0 min(85%, 340px); display: flex; flex-direction: column; scroll-snap-align: start; }
+  .aq-plan-checker__head { flex: 1 0 auto; min-height: 0; padding: var(--space-4); gap: var(--space-2); align-content: start;
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); align-items: center; }
+  .aq-plan-checker__no { grid-row: 1 / span 2; margin: 0; font-size: var(--aq-num-phone, 44px); line-height: 1; }
+  .aq-plan-checker__mark, .aq-plan-checker__name { grid-column: 2; margin: 0; font-size: 14px; }
+  .aq-plan-checker__suits { grid-column: 1 / -1; margin-top: var(--space-2); font-size: 18px; line-height: 24px; }
   .aq-plan-checker__term { padding-inline: var(--space-4); }
-  .aq-plan-checker__act { padding-inline: var(--space-4); }
+  .aq-plan-checker__term.is-first { padding-top: var(--space-4); }
+  .aq-plan-checker__term.is-first .aq-plan-checker__v { font-size: 18px; line-height: 25px; }
+  .aq-plan-checker__v { font-size: 15px; line-height: 22px; }
+  .aq-plan-checker__v .aq-ph, .aq-plan-checker__k .aq-ph { font-size: var(--aq-chip-phone, 13px); }
+  .aq-plan-checker__k { font-size: 12px; }
+  .aq-plan-checker__act { padding: var(--space-4); }
+  .aq-plan-checker__act .aq-btn { min-height: 48px; }
+  /* the base plan has no button: its last tile is a thin foot */
+  .aq-plan-checker__plan.is-base .aq-plan-checker__act { padding: 0 0 var(--space-4); }
 }

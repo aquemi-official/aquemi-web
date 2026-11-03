@@ -5,12 +5,14 @@
    two points of use, one with its own cooler, and the return overhead back to the tank. Each option has a numbered
    marker on the part it adds and a leader from that part down to its caption in the row under the band; pointing at a
    caption lights its part and leader. The base is named beside the tank.
-   Phones: the same band, full width with its markers (no leaders), the captions stacked.
+   Phones: the same band, full bleed, cropped to the drawing (the loop, its skid and every option's marker; CROP, measured
+   once from the fixed scene) so it runs about twice the size of the whole band scaled down; markers 14 px, no leaders;
+   the base's name under the plate; the captions stacked (pass 12, S9).
    Fields (an options block): h, intro, items [{t, d, spot | icon, part, link}], spot (base glyph), base (default
    "Base skid"), fold, fold_noun. part: the drawing ids the option adds, an array of "uv", "cool", "mod" (default by
    position: uv, mod, cool; order the items left to right along the loop so the leaders never cross). The fold applies on phones only. */
 (function(){
-var VW=1200,VH=560,DEF=[['uv'],['mod','uv'],['cool']];
+var VW=1200,VH=560,DEF=[['uv'],['mod','uv'],['cool']],CROP=[380,14,630,510];
 function scene(){
  var ta=isoPart('tank',0,0,0,1,{id:'base'}),sk=isoPart('skid',44,-26,0,1,{w:200,d:52,id:'mod'}),dz=9,
   pu=isoPart('pump',66,0,dz,1,{id:'mod'}),hx=isoPart('hx',104,-24,dz,1,{id:'mod'}),uv=isoPart('uv',168,0,dz,1,{id:'uv'}),
@@ -49,7 +51,7 @@ LOOKS['loop-dock']=function(b,H){
  var baseLab='<span class="aq-loop-dock__base" style="left:'+(100*bq[0]/VW).toFixed(2)+'%;top:'+(100*bq[1]/VH).toFixed(2)+'%">'+base+'<span>'+tx(b.base||'Base skid')+(pg&&pg.nav_label?' · '+tx(pg.nav_label):'')+'</span></span>';
  var svg=isoSvg(VW,VH,sc.g,'aq-iso--navy aq-loop-dock__svg',{});
  var lsvg='<svg class="aq-loop-dock__leads" viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+leads+'</svg>';
- var inner='<div class="aq-loop-dock" style="--n:'+n+'"><div class="aq-loop-dock__band"><div class="aq-loop-dock__plane" aria-hidden="true">'+svg+lsvg+marks+'</div>'+baseLab+'</div>'
+ var inner='<div class="aq-loop-dock" style="--n:'+n+'"><div class="aq-loop-dock__band"><div class="aq-loop-dock__plane" aria-hidden="true" style="--ca:'+CROP[2]+' / '+CROP[3]+';--cl:'+(100*CROP[0]/CROP[2]).toFixed(2)+'%;--ct:'+(100*CROP[1]/CROP[3]).toFixed(2)+'%;--cw:'+(100*VW/CROP[2]).toFixed(2)+'%;--ch:'+(100*VH/CROP[3]).toFixed(2)+'%"><div class="aq-loop-dock__zoom">'+svg+lsvg+marks+'</div></div>'+baseLab+'</div>'
   +'<ol class="aq-loop-dock__cards" role="list">'+cards+'</ol></div>';
  return sec(H+wFold(b,I.length,inner,b.fold_noun||'options'),'aq-band--limestone aq-loop-dock-sec')};
 /* Pointing at an option lights the parts it adds (colour only) */

@@ -93,6 +93,25 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   .aq-macro-leaders__lead { right: auto; left: var(--space-4); top: calc(var(--space-4) + 14px); width: var(--space-6); }
   .aq-macro-leaders__lead::after { display: none; }
   .aq-macro-leaders__mk { left: 0; }
-  .aq-macro-leaders__table td { display: grid; grid-template-columns: minmax(0, 7.5em) minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-1); font-size: 14px; line-height: 21px; }
-  .aq-macro-leaders__k { display: block; font: 500 11px/21px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+  /* pass 12: no macro crop; one legend; each value a colour-coded line */
+  .aq-macro-leaders__fig { display: none; }
+  .aq-macro-leaders__legend { display: flex; flex-direction: column; gap: var(--space-2); margin: 0; padding: var(--space-3) 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-macro-leaders__legend span { display: flex; align-items: center; gap: var(--space-2); font: 500 14px/20px var(--font-sans); color: var(--ink); }
+  .aq-macro-leaders__legend span::before { content: ""; flex: none; width: 3px; height: 18px; background: var(--ml-c, var(--flow)); }
+  .aq-macro-leaders__table td { padding: var(--space-1) 0 var(--space-1) var(--space-3); margin-top: var(--space-1); border-left: 3px solid var(--ml-c, var(--flow)); font-size: 15px; line-height: 22px; color: var(--ink); }
+  .aq-macro-leaders [data-c="1"] { --ml-c: var(--flow); }
+  .aq-macro-leaders [data-c="2"] { --ml-c: var(--ink); }
+  .aq-macro-leaders [data-c="3"] { --ml-c: var(--caution); }
+  .aq-macro-leaders [data-c="4"] { --ml-c: var(--line-strong); }
+  .aq-macro-leaders__table td:nth-child(2) { color: var(--ink); }
+  .aq-macro-leaders__k { display: none; }
+}
+.aq-macro-leaders__legend { display: none; }
+@container (max-width: 860px) { .aq-macro-leaders__legend { display: flex; } }
+.aq-macro-leaders__v { min-width: 0; }
+/* Phones (pass 12, F8): the second value's code is a dashed ink rule (in the key and in the rows), so the two codes
+   differ by pattern as well as hue (flow and ink read close on paper) */
+@container (max-width: 860px) {
+  .aq-macro-leaders td[data-c="2"] { border-left-style: dashed; }
+  .aq-macro-leaders__legend span[data-c="2"]::before { background: repeating-linear-gradient(to bottom, var(--ink) 0 4px, transparent 4px 7px); }
 }

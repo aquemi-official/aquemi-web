@@ -2,7 +2,7 @@
  "look": "colophon",
  "component": "Colophon",
  "type": "spec",
- "fields": "h, caption (eyebrow), intro, cols [item, fact, evidence], rows [{p, v, m, hl, link, link_label, intent}], note, fold, fold_noun.",
+ "fields": "h, caption (eyebrow), intro, cols [item, fact, evidence], rows [{p, v, m, hl, link, link_label, intent}], note, fold, fold_noun. Pass 12: a ledger of more than 6 rows with no fold of its own folds after 4 on phones only (class is-phonefold; desktop shows every row and no button).",
  "best_for": "Colophon sets a spec block of company facts as a split ledger: a navy band with a limestone strip down its left edge, the section title set very large across the strip's edge so the colour split runs through the type and on down through the facts (item on the strip, fact and evidence on the navy).",
  "status": "live",
  "instances": [

@@ -5783,11 +5783,12 @@
        "link": "ind-process",
        "d": "Spirits proofing, beverage and ingredient water, cannabis extracts, electronics rinse, chemical batches, boiler and electrolyser feed."
       }
-     ]
+     ],
+     "look": "application-wheel"
     },
     {
      "type": "table",
-     "look": "macro-leaders",
+     "look": "use-matrix",
      "anchor": "matrix",
      "nav": "By use",
      "h": "Industry by water use",
@@ -5976,7 +5977,7 @@
     {
      "type": "spec",
      "as": "rules",
-     "look": "rule-figures",
+     "look": "fit-readout",
      "anchor": "fit",
      "nav": "Fit",
      "h": "Where the package fits, in any industry",
@@ -6034,7 +6035,7 @@
     },
     {
      "type": "diagram",
-     "look": "strata-run",
+     "look": "limit-writers",
      "anchor": "same-water",
      "nav": "Same package",
      "h": "Same package, different limit-writer",
@@ -6077,7 +6078,14 @@
      ],
      "base": "Monitoring and controls · alarm limits from your limit-writer",
      "base_link": "sys-monitoring",
-     "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents."
+     "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents.",
+     "writers": [
+      "A pharmacopoeia",
+      "ANSI/AAMI ST108:2023",
+      "ASTM D1193-24 or CLSI GP40",
+      "Your recipe",
+      "Your equipment maker"
+     ]
     },
     {
      "type": "grid",
@@ -7989,7 +7997,7 @@
        }
       ]
      ],
-     "look": "decision-valve"
+     "look": "multiport-router"
     },
     {
      "type": "table",
@@ -8025,7 +8033,7 @@
        "Health Canada GUI-0001"
       ]
      ],
-     "look": "derivation-sheet"
+     "look": "calc-pad"
     },
     {
      "type": "grid",
@@ -8051,7 +8059,7 @@
        "d": "Liquid soaps, detergents and cleaners made on the same site"
       }
      ],
-     "look": "industry-feed"
+     "look": "plant-stations"
     },
     {
      "type": "spec",
@@ -8158,7 +8166,7 @@
      "seam": "Where polypropylene stops",
      "fold": 4,
      "fold_noun": "conditions",
-     "look": "battery-limit"
+     "look": "scope-seam"
     },
     {
      "type": "options",
@@ -8198,23 +8206,23 @@
       {
        "t": "Monitoring records",
        "d": "Conductivity trends, alarms and excursions, by date",
-       "sheet": "curves"
+       "sheet": "trend"
       },
       {
        "t": "Sanitization and calibration",
        "d": "Each sanitization with its residual test; instrument calibration certificates",
-       "sheet": "basis"
+       "sheet": "log"
       },
       {
        "t": "Drug lines: qualification",
        "d": "Installation qualification (IQ), operational qualification (OQ), performance qualification (PQ): protocols and reports",
-       "sheet": "logic",
+       "sheet": "binder",
        "link": "svc-cq"
       },
       {
        "t": "Cosmetic-only lines: acceptance",
        "d": "Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
-       "sheet": "certificate"
+       "sheet": "signoff"
       }
      ],
      "fold_noun": "records",
@@ -8441,7 +8449,7 @@
        "ASTM D1193-24"
       ]
      ],
-     "look": "clause-crosswalk"
+     "look": "grade-crosswalk"
     },
     {
      "type": "grid",
@@ -8452,38 +8460,44 @@
      "items": [
       {
        "t": "Washer-disinfector final rinse",
+       "draw": "washer",
        "d": "The last water on every instrument before drying. It needs critical water.",
        "spot": "valve",
        "part": "outlet"
       },
       {
        "t": "Ultrasonic cleaners",
+       "draw": "ultrasonic",
        "d": "Filled from the loop, at the grade your program sets for each step.",
        "spot": "tank"
       },
       {
        "t": "Manual sinks and lumen flushing",
+       "draw": "sink",
        "d": "Rinsing and flushing channels by hand, from taps on the loop.",
        "spot": "valve"
       },
       {
        "t": "Endoscope reprocessors",
+       "draw": "endoscope",
        "d": "They filter their own feed further; the maker's instructions set what goes in.",
        "spot": "valve",
        "part": "filter"
       },
       {
        "t": "Cart washers",
+       "draw": "cart",
        "d": "Utility water is enough here, not critical water.",
        "spot": "loop"
       },
       {
        "t": "Sterilizer feed",
+       "draw": "sterilizer",
        "d": "Feed water to the sterilizer maker's specification. We supply the water, not the steam.",
        "spot": "gauge"
       }
      ],
-     "look": "review-reticles"
+     "look": "drawing-register"
     },
     {
      "type": "grid",
@@ -8495,34 +8509,39 @@
      "items": [
       {
        "t": "Glassware washers and autoclaves",
+       "draw": "washer",
        "d": "They draw in batches, so storage is sized to carry the peak.",
        "spot": "storage-tank",
        "part": "tank"
       },
       {
        "t": "Analyzer feed",
+       "draw": "analyzer",
        "d": "To the analyzer maker's specification, which governs.",
        "spot": "toc",
        "part": "toc"
       },
       {
        "t": "Reagent and buffer preparation",
+       "draw": "bench",
        "d": "ASTM D1193-24 Type II or III at bench taps, or clinical laboratory reagent water.",
        "spot": "valve",
        "part": "loop"
       },
       {
        "t": "Humidifiers",
+       "draw": "humidifier",
        "d": "Fed from the loop, to the humidifier maker's specification.",
        "spot": "loop"
       },
       {
        "t": "Cell culture and molecular work",
+       "draw": "hood",
        "d": "Type I water from a point-of-use polisher at the bench, from its own maker. The loop feeds it to that maker's specification.",
        "spot": "loop"
       }
      ],
-     "look": "visit-plan"
+     "look": "building-loop"
     },
     {
      "type": "diagram",
@@ -8574,7 +8593,7 @@
        "d": "[PP loop sanitization method]; residual tested before use. PVC stays upstream, out of the critical-water loop."
       }
      ],
-     "look": "loop-circuit"
+     "look": "train-strip"
     },
     {
      "type": "docs",
@@ -8904,7 +8923,7 @@
      ],
      "fold_noun": "limits",
      "ground": "light",
-     "look": "proof-folders"
+     "look": "limit-drawer"
     },
     {
      "type": "table",
@@ -13120,7 +13139,19 @@
     "h": "Prefer to talk first?",
     "body": "Ask for an engineer, [office hours, time zone].",
     "button": "Call [sales phone number]",
-    "link": "tel:[sales phone number]"
+    "link": "tel:[sales phone number]",
+    "variant": "call",
+    "include_label": "Have ready",
+    "include": [
+     "Your URS, or your product and flow",
+     "Feed water analysis, if any",
+     "Where your site is"
+    ],
+    "turnaround": "An engineer on the line",
+    "returns": [
+     "A written answer from an engineer",
+     "Then a scope review, budget range or proposal"
+    ]
    },
    "todo": [
     "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
@@ -13894,7 +13925,9 @@
      "look": "site-plates",
      "art": [
       "office",
-      "shop"
+      "shop",
+      "service",
+      "parts"
      ]
     },
     {

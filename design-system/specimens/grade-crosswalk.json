@@ -1,0 +1,73 @@
+{
+ "look": "grade-crosswalk",
+ "component": "GradeCrosswalk",
+ "type": "table",
+ "fields": "h, intro, cols [water, how, standards A, standards B], rows [[water, how, citesA, citesB]] (cites split on \";\"; an empty cell means none on that side).",
+ "best_for": "GradeCrosswalk sets a grades table that maps water types to two families of standards as a crosswalk: the water types run down the middle as navy blocks, one side's standards stand as chips on the left and the other side's on the right, and hairline wires join every standard to every water that cites it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-hospital-lab",
+   "slot": 1,
+   "h": "Which water each standard asks for",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "7ad281d7c6",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Grades",
+    "anchor": "grades",
+    "h": "Which water each standard asks for",
+    "intro": "None of these is Purified Water. Purified Water is held to ≤ 1.3 µS/cm at 25 °C (USP <645> stage 1), with no endotoxin limit.",
+    "cols": [
+     "Water",
+     "How it differs from Purified Water",
+     "Hospital standard",
+     "Laboratory standard"
+    ],
+    "rows": [
+     [
+      "Critical water",
+      "Fewer ions removed, far tighter on microbes, plus an endotoxin limit: < 10 µS/cm, < 10 colony-forming units (CFU)/mL, < 10 endotoxin units/mL",
+      "ANSI/AAMI ST108:2023; CSA Z314:23",
+      ""
+     ],
+     [
+      "Utility water",
+      "Looser: < 500 µS/cm, < 500 CFU/mL. As the final rinse after high-level disinfection: < 10 CFU/mL and < 10 endotoxin units/mL",
+      "ANSI/AAMI ST108:2023",
+      ""
+     ],
+     [
+      "Type II reagent water",
+      "Tighter on ions and organic carbon: < 1 µS/cm at 25 °C, total organic carbon < 50 µg/L",
+      "",
+      "ASTM D1193-24; values from D1193-06"
+     ],
+     [
+      "Type III reagent water",
+      "Tighter on ions than Type II, looser on organic carbon: < 0.25 µS/cm at 25 °C, total organic carbon < 200 µg/L. Not a purity ladder",
+      "",
+      "ASTM D1193-24; values from D1193-06"
+     ],
+     [
+      "Clinical laboratory reagent water",
+      "Defined for medical laboratories; an analyzer maker's specification governs that analyzer's feed",
+      "",
+      "CLSI GP40 5th ed."
+     ],
+     [
+      "Type I reagent water",
+      "Made at the bench by a point-of-use polisher fed from the loop, not by a central loop",
+      "",
+      "ASTM D1193-24"
+     ]
+    ],
+    "look": "grade-crosswalk"
+   }
+  }
+ ]
+}

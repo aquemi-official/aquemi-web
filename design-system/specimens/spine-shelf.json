@@ -2,7 +2,7 @@
  "look": "spine-shelf",
  "component": "SpineShelf",
  "type": "docs",
- "fields": "h, intro, items [{t, d, key, docs}], fold, fold_noun. docs (optional): the section's entries as a list; without it they are read from d, split at \";\" or \". \", else at commas outside brackets.",
+ "fields": "h, intro, items [{t, d, key, docs}], fold_noun (the shelf caption's noun). docs (optional): the section's entries as a list; without it they are read from d, split at \";\" or \". \", else at commas outside brackets. Titles are set as written (sentence case), never upper-cased.",
  "best_for": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents.",
  "status": "live",
  "instances": [

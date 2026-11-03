@@ -10,7 +10,8 @@
    is about; a point without one takes the next free part; x, y optional: the text block's top left in % of the
    drawing, default per part), modes [dry label, wet label] (the switch's two words, default "Dry", "Water").
    at and figure are the fallback renderer's and are ignored here.
-   Up to tablet width the route turns vertical: one pipe down the left, the numbered markers on it, the points beside. */
+   Up to tablet width the route turns vertical: one pipe down the left, the numbered markers on it, the points beside,
+   under a compact strip of the skid (pass 12, wrhStrip) that the switch runs dry or with water. */
 var WRH_ST={divert:{m:[320,44],p:[320,90],t:[2,44]},outlet:{m:[590,428],p:[590,380],t:[37,3]},record:{m:[878,34],p:[980,90],t:[70,30]}};
 var WRH_ROUTE='M0 90H376Q400 90 400 114V356Q400 380 424 380H776Q800 380 800 356V114Q800 90 824 90H1200';
 function wrhRoute(){
@@ -40,6 +41,27 @@ function wrhRoute(){
  s+='<polyline class="'+P+'trend" points="918,46 926,40 934,42 942,34 950,38 958,30 966,34 974,28 982,32 990,26 998,30 1006,27"/>';
  s+=L('M1024 22H1108M1024 34H1096M1024 46H1104',P+'log');
  return '<svg class="'+P+'svg" viewBox="0 0 1200 460" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">'+s+'</svg>'}
+/* pass 12: the compact strip shown up to tablet width (the wide route is hidden there): the same skid in 360 x 150
+   units at about 1:1 on a phone, so its tags read at 12 px or more: feed, pump, RO, the divert valve with its drain,
+   COND and TOC on the outlet with their readouts, the logger with its trend, and the points' numbers on their
+   stations (markers keyed by part). Same classes as the wide route, so the dry / water switch drives it the same way. */
+function wrhStrip(parts){
+ var P='aq-wet-run-hmi'+'__',eq=P+'eq',th=P+'thin',tg=P+'tag',R='M0 72H360';
+ function L(d,c){return '<path class="'+c+'" d="'+d+'"/>'}
+ function T(x,y,s,a){return '<text class="'+tg+'" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+s+'</text>'}
+ var s=L(R,P+'wall')+L(R,P+'bore')+L('M150 80V112',P+'wall')+L('M150 80V112',P+'bore')+L(R,P+'water');
+ s+=L('M2 64L10 72L2 80',th)+L('M350 64L358 72L350 80',th);
+ s+='<circle class="'+eq+'" cx="30" cy="72" r="13"/>'+L('M23 63L41 72L23 81',th)+T(30,104,'PUMP','middle');
+ s+='<rect class="'+eq+'" x="56" y="58" width="62" height="28"/>'+L('M56 86L118 58',th)+T(87,104,'RO','middle');
+ s+='<path class="'+eq+'" d="M138 64L150 72L138 80ZM162 64L150 72L162 80ZM143 84L150 72L157 84Z"/>'+L('M150 72V56M142 56H158',th);
+ s+=L('M138 118H162M142 124H158M146 130H154',th)+T(150,146,'DRAIN','middle');
+ [[198,'COND'],[240,'TOC']].forEach(function(b,i){s+=L('M'+b[0]+' 64V44',th)+'<circle class="'+eq+'" cx="'+b[0]+'" cy="36" r="8"/>'
+  +'<rect class="'+P+'rd" x="'+(b[0]-16)+'" y="14" width="32" height="5"/><rect class="'+P+'rdv" x="'+(b[0]-16)+'" y="14" width="'+(i?19:25)+'" height="5"/>'+T(b[0],100,b[1],'middle')});
+ s+=L('M318 64V52',th)+'<rect class="'+eq+'" x="284" y="10" width="68" height="42"/><polyline class="'+P+'flat" points="290,38 346,38"/>'
+  +'<polyline class="'+P+'trend" points="290,40 297,34 304,36 311,28 318,32 325,24 332,28 339,21 346,24"/>';
+ var at={divert:[150,30],outlet:[219,128],record:[318,104]};
+ parts.forEach(function(k,i){var a=at[k];if(!a)return;s+='<g class="'+P+'smk" data-part="'+k+'"><circle cx="'+a[0]+'" cy="'+a[1]+'" r="12"/><text x="'+a[0]+'" y="'+a[1]+'" text-anchor="middle" dominant-baseline="central">'+(i<9?'0':'')+(i+1)+'</text></g>'});
+ return '<svg class="'+P+'strip" viewBox="0 0 360 150" aria-hidden="true" focusable="false">'+s+'</svg>'}
 LOOKS['wet-run-hmi']=function(b,H){var Pt=b.points||[],M=b.modes||['Dry','Water'],used={},free=['divert','outlet','record'];
  var parts=Pt.map(function(p){var k=WRH_ST[p.part]?p.part:'';if(!k||used[k])k=free.filter(function(f){return !used[f]})[0]||'record';used[k]=1;return k});
  function pc(v){return (Math.round(v/12*10)/10)+'%'}
@@ -54,7 +76,7 @@ LOOKS['wet-run-hmi']=function(b,H){var Pt=b.points||[],M=b.modes||['Dry','Water'
   +'<button type="button" class="aq-wet-run-hmi__mode" data-wrh-mode="wet" aria-pressed="true">'+tx(M[1])+'</button></div>';
  return '<section class="aq-section aq-wet-run-hmi-sec" data-theme="dark"><div class="aq-in"><div class="aq-wet-run-hmi is-wet">'
   +'<div class="aq-wet-run-hmi__head">'+H+sw+'</div>'
-  +'<div class="aq-wet-run-hmi__fig">'+wrhRoute()+marks+'<ol class="aq-wet-run-hmi__pts">'+list+'</ol></div></div></div></section>'};
+  +'<div class="aq-wet-run-hmi__fig">'+wrhRoute()+marks+wrhStrip(parts)+'<ol class="aq-wet-run-hmi__pts">'+list+'</ol></div></div></div></section>'};
 /* the switch: dry or with water (the page reads complete in the "with water" state without script); arrow keys move
    between the two positions. wrhMode is shared with motion.js. */
 function wrhMode(w,wet){if(!w)return;w.classList.toggle('is-wet',wet);w.classList.toggle('is-dry',!wet);

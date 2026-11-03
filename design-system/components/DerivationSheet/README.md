@@ -4,7 +4,7 @@ DerivationSheet works a grade table as an engineering derivation on a calculatio
 - Markup: `div.aq-derivation-sheet` (pad: `svg.__grid` pattern, `span.__margin` double rule in `flow`) → `ol.__lines` of `li.__line` (`.is-figure`) → `span.__no` "(1)", `div.__given` (mono key, `h3.__t` Geist Light 24/31), `span.__op` arrow svg, `div.__lim` (`p.__set` mono, or the hero `p.__v` → `span.__num` Geist Mono Light 72 + `span.__u`, then `p.__ref`), `span.__op.is-imp` double arrow, `div.__ans` (`p.__w`, `span.__box` frame and underline).
 - Fields: `cols` [step, typical water, what sets it], `rows`, `intro`. A "what sets it" cell that opens with a number and unit, optionally "(reference)" and "; rest", becomes the hero figure (parsed, no new field).
 - Tokens: pad `surface-raised` with a `line` grid, `ink` answer box (hover `flow`), arrows `ink-subtle` / `flow`. Column keys show on the first line only (every line on phones).
-- Phones: each line reads down the pad, arrows turned down.
+- Phones (pass 12, S12/S13): one compact card per line, no arrows, no number gutter (the margin rule is a thin edge rule). The step heads the card at 17 px; the boxed answer sits beside it as a chip on the same row, or, when any answer in the block runs over 48 characters (`.is-stacked` on the pad), under it boxed to its own width so every line reads alike; "what sets it" runs under them as one 14 px line (items joined by a `flow` middle dot). A hero figure shrinks to an inline 22 px value. Column keys stay on the first line only. About 45 % shorter (first-system 3,020 to 1,576, urs-guide 2,460 to 1,360).
 
 ## Motion
 

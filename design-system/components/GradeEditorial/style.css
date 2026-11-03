@@ -97,4 +97,8 @@ path.aq-grade-editorial__edge:not(.aq-grade-editorial__w) { fill: none; }
   .aq-grade-editorial__v { font-size: 64px; }
   .aq-grade-editorial__item:not([data-i="0"]) .aq-grade-editorial__v { font-size: 48px; }
   .aq-grade-editorial__span { font-size: 26px; line-height: 30px; }
+  /* pass 12: the poster as a 4:3 band at full width, cropped through its middle */
+  .aq-grade-editorial__art { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; display: flex; align-items: center; }
+  .aq-grade-editorial__art .aq-grade-editorial__svg { flex: none; }
+  .aq-grade-editorial__t a { display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); }
 }

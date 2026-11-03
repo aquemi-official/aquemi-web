@@ -22,7 +22,7 @@ AQmotion.fx('SitePlates', function (root, m) {
       if (calls.length) tl.fromTo(calls, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, stagger: 0.08, clearProps: CLEAR }, 0.7);
       if (svg) {
         var iso = window.AQiso && AQiso.timeline(svg, m, { draw: 1.1, flow: 0 });
-        if (iso) tl.add(iso, 0.75);
+        if (iso) { iso.paused(false); tl.add(iso, 0.75); }
         else if (window.DrawSVGPlugin) { var set = m.lines(svg); if (set.solid.length) tl.fromTo(set.solid, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1, ease: 'power2.inOut', stagger: { amount: 0.4 }, clearProps: 'strokeDasharray,strokeDashoffset' }, 0.75) }
       }
       if (pins.length) tl.fromTo(pins, { scale: 1.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: 'power2.out', stagger: 0.12, clearProps: CLEAR }, '>-0.3');

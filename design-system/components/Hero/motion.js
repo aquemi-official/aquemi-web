@@ -45,7 +45,9 @@
       // the flow scan line rides the print edge up the drawing, then fades
       var scan = q('.aq-hero__scan', f);
       if (art && scan) t.fromTo(scan, { autoAlpha: 1, top: '98%' }, { top: '2%', duration: 1.3, ease: 'power3.inOut' }, 0).to(scan, { autoAlpha: 0, duration: 0.35, clearProps: 'top' }, 1.3);
-      var svg = q(narrow ? '.aq-hero__leaders--narrow' : '.aq-hero__leaders--wide', f), co = qa('.aq-hero__callout', f);
+      // phones (pass 12): no leaders; the numbered pins pop onto the drawing, then the callout rows follow in order
+      var svg = narrow ? null : q('.aq-hero__leaders--wide', f), co = qa('.aq-hero__callout', f), pins = narrow ? qa('.aq-hero__pins > .aq-hero__pin', f) : [];
+      if (pins.length) t.from(pins, { scale: 0, autoAlpha: 0, duration: 0.4, stagger: 0.12, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }, 0.95);
       if (co.length) gsap.set(co, { autoAlpha: 0, y: narrow ? 0 : 8 });
       if (svg) {
         var ln = qa('line', svg), dots = qa('circle:not(.is-start)', svg), starts = qa('circle.is-start', svg);
@@ -64,9 +66,15 @@
 
     // Home: the loop draws itself, then water runs round it once
     figure(q('.aq-hero__loop'), function () {
-      var f = q('.aq-hero__loop'), svg = q('svg', f), pipe = q('.aq-loop__pipe', f); if (!svg || !pipe) return null;
+      // the drawing showing at this width: the upright loop on desktop, the one turned on its side on phones (pass 12)
+      var f = q('.aq-hero__loop'), svg = qa('.aq-loop__svg', f).filter(function (v) { return v.getBoundingClientRect().width > 0 })[0], pipe = svg && q('.aq-loop__pipe', svg); if (!svg || !pipe) return null;
       var t = m.tw(gsap.timeline({ defaults: { ease: 'power2.out' } }));
-      var guide = q('.aq-loop__guide', f), rule = qa('.aq-loop__rule line', f), parts = qa('.aq-loop__part > *', f), arrows = qa('.aq-loop__arrow', f), lead = qa('.aq-loop__lead line', f), text = qa('.aq-loop__text text', f);
+      var guide = q('.aq-loop__guide', svg), rule = qa('.aq-loop__rule line', svg), parts = qa('.aq-loop__part > *', svg), arrows = qa('.aq-loop__arrow', svg), lead = qa('.aq-loop__lead line', svg), text = qa('.aq-loop__text text', svg);
+      if (svg.classList.contains('aq-loop__svg--narrow')) { // phone: pins land on the parts, then the legend rows
+        var pins = qa('.aq-loop__band > .aq-hero__pin', f), rows = qa('.aq-loop__legend li, .aq-loop__cap', f);
+        if (pins.length) t.from(pins, { scale: 0, autoAlpha: 0, duration: 0.35, stagger: 0.1, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }, 1.1);
+        if (rows.length) t.from(rows, { autoAlpha: 0, y: 6, duration: 0.4, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.2);
+      }
       if (guide) t.from(guide, { autoAlpha: 0, duration: 0.6 }, 0);
       if (rule.length) t.from(rule, { autoAlpha: 0, duration: 0.2, stagger: { amount: 0.6 } }, 0.1);
       if (window.DrawSVGPlugin) t.fromTo(pipe, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.6, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.2);
@@ -77,7 +85,7 @@
       if (window.MotionPathPlugin) {
         var ns = 'http://www.w3.org/2000/svg';
         for (var i = 0; i < 4; i++) {
-          var c = document.createElementNS(ns, 'circle'); c.setAttribute('r', '4'); c.setAttribute('class', 'aq-loop__dot'); c.setAttribute('aria-hidden', 'true'); svg.appendChild(c);
+          var c = document.createElementNS(ns, 'circle'); c.setAttribute('r', '4'); c.setAttribute('class', 'aq-loop__dot'); c.setAttribute('aria-hidden', 'true'); pipe.parentNode.appendChild(c);
           gsap.set(c, { autoAlpha: 0 });
           t.set(c, { autoAlpha: 1 }, 1.75 + i * 0.12);
           t.to(c, { duration: 2.4, ease: 'none', motionPath: { path: pipe, align: pipe, alignOrigin: [0.5, 0.5], start: i * 0.25, end: i * 0.25 + 1 } }, 1.75 + i * 0.12);

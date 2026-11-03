@@ -53,6 +53,8 @@
 
 /* the readout: phones only (the table is far below the drawing there); on desktop it stays for screen readers */
 .aq-skid-tags__detail { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+/* the readout's parts (screen readers): number, standard, what we design to */
+.aq-skid-tags__dn, .aq-skid-tags__ds, .aq-skid-tags__dh { margin-right: var(--space-1); }
 .aq-skid-tags__vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* the table */
@@ -86,14 +88,10 @@
 @container (max-width: 860px) {
   .aq-skid-tags { gap: var(--space-8); }
   .aq-skid-tags__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .aq-skid-tags__tag > span { width: var(--space-6); height: var(--space-6); font-size: 12px; }
   .aq-skid-tags__cross::after { width: var(--space-6); height: var(--space-6); }
   .aq-skid-tags__cross::before { width: var(--space-8); height: var(--space-8); }
-  .aq-skid-tags__detail { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-1) var(--space-3);
-    margin-top: var(--space-4); padding: var(--space-3) 0 0; border-top: 1px solid var(--line-strong); min-height: calc(var(--space-16) + var(--space-2)); }
-  .aq-skid-tags__dn { grid-row: span 2; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); background: var(--flow); color: var(--on-navy); font: 500 12px/1 var(--font-mono); }
-  .aq-skid-tags__ds { font: 400 16px/22px var(--font-mono); color: var(--ink); }
-  .aq-skid-tags__dh { font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+  /* pass 12: no readout on phones (it repeated the row right under it); it stays, visually hidden, for screen readers. */
+  .aq-skid-tags__tag > span { width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) + var(--space-1)); font-size: 13px; }
   .aq-skid-tags__table, .aq-skid-tags__table tbody { display: block; }
   .aq-skid-tags__table thead { display: none; }
   .aq-skid-tags__row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-2) var(--space-3); padding: var(--space-4) var(--space-3); border-bottom: 1px solid var(--line); }
@@ -107,4 +105,19 @@
   .aq-skid-tags__go a { margin: calc(-1 * var(--space-2)) 0; }
   .aq-skid-tags .aq-fold:not(.is-open) .aq-skid-tags__row.aq-fold-x { display: none; }
   .aq-skid-tags .aq-fold__btn { display: flex; margin-top: var(--space-6); }
+  /* pass 12: every tagged row shows (S7), so the rows run tighter: the proof label sits inline, 15 px reading lines */
+  .aq-skid-tags__row { padding: var(--space-3) var(--space-3) var(--space-2); gap: var(--space-1) var(--space-3); }
+  .aq-skid-tags__how { font-size: 15px; line-height: 22px; }
+  .aq-skid-tags__proof { font-size: 14px; line-height: 21px; }
+  .aq-skid-tags__proof .aq-skid-tags__k { display: inline; margin: 0 var(--space-2) 0 0; }
+  .aq-skid-tags__go a { padding-block: var(--space-3); }
+}
+
+/* pass 12 phones (under 600 px; 600-860 keeps the whole skid, legible at that width): the drawing is cropped to the
+   tagged parts (--st-x0 .. right edge, set by the look) at a legible scale. The crop clips sideways only, so a tag on
+   the top edge keeps its whole 44 px target. */
+@container (max-width: 599px) {
+  .aq-skid-tags__stage.is-crop { position: relative; overflow-x: clip; overflow-y: visible; aspect-ratio: var(--st-cw, 840) / 420; margin-inline: calc(-1 * var(--space-2)); }
+  .aq-skid-tags__stage.is-crop .aq-skid-tags__fig { width: calc(840 / var(--st-cw, 840) * 100%); margin-left: calc(-1 * var(--st-x0, 0) / var(--st-cw, 840) * 100%); }
+  .aq-skid-tags__stage.is-crop::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--space-6); background: linear-gradient(90deg, var(--limestone), transparent); pointer-events: none; }
 }

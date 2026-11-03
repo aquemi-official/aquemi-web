@@ -13,3 +13,7 @@ Look `site-plates` (`assets/src/blocks/look-site-plates.js`); pass 9 built it as
 ## Motion
 
 Motion (`motion.js`): the ledger's head rule draws across and the rows rise in one after another; the navy plate wipes in from the right and the site in hand is drawn on it (`AQiso.timeline`, lines back to front), its caption and callouts rise and its pins strike. One timeline under 3 s, once on scroll-in. Choosing another site (project-index port, see the look file): the reel slides, then the arriving figure's pins strike (scale 1.6 to 1, 0.24 s) and its callouts rise 8 px (0.3 s); visitor-driven, may repeat; not for keyboard choices. Nothing under reduced motion.
+
+## Phones (pass 12)
+
+Bug fixed: the plate dropped below the rows when nothing folds (no `.aq-fold` wrapper, so its `order` never applied); the table now carries `order: 3` itself. The plate is a 200 px strip held under the header (PhoneKit sticky figure) that swaps to the site whose row is on the reading line (caption and drawing; a site with no drawing shows its callouts instead of an empty sheet). A table with no `art` at all (ind-process) keeps no plate on phones. Site names are 44 px links, cell text 14 px, links in cells get a 44 px hit box without moving a line.

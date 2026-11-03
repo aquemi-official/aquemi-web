@@ -11,3 +11,7 @@ AuditSkid draws a documents block as the system those documents describe: one is
 ## Motion
 
 The system is drawn through the IsoKit choreography, the pins come in with the pipes, then each leader draws from its pin out to the callout and the callout rises in as it arrives (0.12 s apart). Once on scroll-in, under 5 s; at the end the first document is selected without quieting the others. Selection ported from Subframe Motion "Image hotspots" (atlas-hotspots): shared pin/list selection, ring glide 0.25 s cubic-bezier(.2,.8,.2,1), chosen pin to 1.12.
+
+## Phones (pass 12)
+
+The drawing is a 200 px strip held under the header (PhoneKit sticky figure, `data-pk-zoom="1.8"`; the svg, pins and ring sit in `__pan`). The document on the reading line is selected exactly as on desktop (pin filled, crosshair ring, its part in flow) and the strip pans and zooms to its pin; pins and ring are counter-scaled so they stay about 29 px. Every document shows (S7: each one is pinned, so none is folded away); the others are not quieted on phones. Tapping a document selects it too. Desktop and the 860-1100 px layout are unchanged.

@@ -1,0 +1,99 @@
+/* ---------- LimitWriters: the same package, a different limit-writer ---------- */
+/* The drawing: the package (IsoKit, its outlet run up to the drawing's mid height and level to the right edge), then the header pipe
+   (a stretched SVG: trunk in at mid height, a riser, one tee per sheet), then the sheets, one per equal row so each
+   tee meets its sheet's middle. Pipes are twin-wall: a 12 px line-strong stroke, a 10 px ground stroke over it, a
+   2 px flow stroke in the middle (all non-scaling), the same in the stub and the header. */
+.aq-limit-writers { display: grid; gap: var(--space-12); }
+.aq-limit-writers__fig { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 1.2fr) minmax(0, 3.8fr); align-items: stretch; min-height: 400px; }
+.aq-limit-writers__skid { display: flex; align-items: center; min-width: 0; }
+.aq-limit-writers__skid .aq-limit-writers__iso { display: block; width: 100%; height: auto; max-height: 360px; overflow: visible; }
+.aq-limit-writers__pipe { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-limit-writers__w1, .aq-limit-writers__w2, .aq-limit-writers__w3 { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: butt; stroke-linejoin: miter; }
+.aq-limit-writers__w1 { stroke: var(--line-strong); stroke-width: 12px; }
+.aq-limit-writers__w2 { stroke: var(--surface); stroke-width: 10px; }
+.aq-limit-writers__w3 { stroke: var(--flow); stroke-width: 2px; }
+
+.aq-limit-writers__sheets { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-rows: minmax(0, 1fr); }
+.aq-limit-writers__sh { display: flex; align-items: center; padding-block: var(--space-2); min-width: 0; }
+.aq-limit-writers__sheet { position: relative; flex: 1 1 auto; display: flex; align-items: baseline; gap: var(--space-4); min-height: var(--space-12); box-sizing: border-box;
+  padding: var(--space-3) var(--space-8) var(--space-3) var(--space-4); background: var(--surface-raised); border: 1px solid var(--line-strong);
+  clip-path: polygon(0 0, calc(100% - var(--space-4)) 0, 100% var(--space-4), 100% 100%, 0 100%); transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms; }
+/* the folded corner */
+.aq-limit-writers__sheet::after { content: ""; position: absolute; right: 0; top: 0; width: var(--space-4); height: var(--space-4); box-sizing: border-box;
+  background: linear-gradient(225deg, transparent 50%, var(--surface-sunken) 50%); border-left: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+.aq-limit-writers__sheet > .aq-index { flex: none; font: 400 13px/20px var(--font-mono); letter-spacing: 0.06em; color: var(--flow); }
+.aq-limit-writers__name { margin: 0; min-width: 0; font: 400 17px/24px var(--font-sans); color: var(--ink); }
+.aq-limit-writers__sh:hover .aq-limit-writers__sheet { transform: translateX(var(--space-1)); border-color: var(--flow); }
+
+/* the two lists: what stays the same, what changes */
+.aq-limit-writers__lists { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); row-gap: var(--space-8); }
+.aq-limit-writers__ch { margin: 0 0 var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--line-strong); font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-limit-writers__col--chg .aq-limit-writers__ch { border-bottom-color: var(--flow); }
+.aq-limit-writers__rows { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-8); }
+.aq-limit-writers__col--chg .aq-limit-writers__rows { grid-template-columns: minmax(0, 1fr); }
+.aq-limit-writers__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-2); row-gap: var(--space-1); align-content: start; }
+.aq-limit-writers__row > * { grid-column: 2; }
+.aq-limit-writers__row > .aq-index, .aq-limit-writers__bm { grid-column: 1; grid-row: 1; font: 400 13px/24px var(--font-mono); color: var(--ink-subtle); }
+.aq-limit-writers__col--chg .aq-limit-writers__row > .aq-index { color: var(--flow); }
+.aq-limit-writers__t { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--ink); }
+.aq-limit-writers__t a { color: inherit; text-decoration: none; }
+.aq-limit-writers__t a::after { content: "\00a0\2192"; color: var(--flow); display: inline-block; transition: transform 200ms; }
+.aq-limit-writers__t a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--flow); }
+.aq-limit-writers__t a:hover::after { transform: translateX(var(--space-1)); }
+.aq-limit-writers__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-limit-writers__d { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-limit-writers__row--base { padding-top: var(--space-4); border-top: 1px dashed var(--line-strong); }
+.aq-limit-writers__bm { align-self: center; width: var(--space-3); height: var(--space-3); margin-top: 0; border: 2px solid var(--flow); border-radius: var(--radius-pill); box-sizing: border-box; }
+.aq-limit-writers__row--base .aq-limit-writers__t { font: 500 12px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.aq-limit-writers__note { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+
+@container (max-width: 1100px) {
+  .aq-limit-writers__lists { column-gap: var(--space-8); }
+  .aq-limit-writers__rows { grid-template-columns: minmax(0, 1fr); }
+  .aq-limit-writers__name { font-size: 16px; }
+}
+
+/* Tablets and phones: the lists stacked; the drawing keeps its desktop form down to 600 px */
+@container (max-width: 860px) {
+  .aq-limit-writers { gap: var(--space-8); }
+  .aq-limit-writers__lists { grid-template-columns: minmax(0, 1fr); }
+  .aq-limit-writers__rows { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-limit-writers__ch { font-size: 18px; line-height: 25px; }
+  .aq-limit-writers__d { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-limit-writers__t { display: flex; align-items: center; min-height: var(--aq-hit, 44px); line-height: 22px; }
+  .aq-limit-writers__t a { display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); }
+  .aq-limit-writers__row > .aq-index, .aq-limit-writers__bm { line-height: 44px; }
+  .aq-limit-writers__bm { align-self: center; }
+  .aq-limit-writers__row { row-gap: 0; }
+  /* the monitoring line is a sentence with a destination, so it reads at 14 px sans, not as a mono label */
+  .aq-limit-writers__row--base .aq-limit-writers__t { display: block; padding-block: var(--space-2); font: 500 14px/21px var(--font-sans); letter-spacing: 0; text-transform: none; }
+  .aq-limit-writers__row--base .aq-limit-writers__t a { display: inline; }
+}
+
+/* Phones: the package on top; its outlet run drops down the right edge into a riser, with the sheets branching off it
+   on short tees to the left, so one pipe runs from the tank to every limit-writer */
+@container (max-width: 600px) {
+  .aq-limit-writers__fig { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .aq-limit-writers__skid { position: relative; margin-bottom: calc(-1 * var(--space-2)); }
+  .aq-limit-writers__skid .aq-limit-writers__iso { max-height: 240px; }
+  .aq-limit-writers__stub { display: inline; }
+  /* IsoKit rounds every iso path's ends; the run must stop square at the elbow */
+  .aq-limit-writers__iso .aq-limit-writers__stub path { stroke-linecap: butt; }
+  /* the drop: an elbow at the outlet run's end (the drawing's right edge, mid height), then down to the riser. Walls and
+     water are drawn as gradients so the elbow stays open where the run comes in from the left */
+  .aq-limit-writers__skid::after { content: ""; position: absolute; right: 0; top: calc(50% - var(--space-3) / 2); bottom: calc(-1 * var(--space-2)); width: var(--space-3);
+    background: linear-gradient(var(--flow), var(--flow)) 50% 5px / 2px 100% no-repeat, linear-gradient(var(--flow), var(--flow)) 0 5px / 50% 2px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) 0 0 / 100% 1px no-repeat, linear-gradient(var(--line-strong), var(--line-strong)) 100% 0 / 1px 100% no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) 0 11px / 1px 100% no-repeat, var(--surface); }
+  .aq-limit-writers__pipe { display: none; }
+  .aq-limit-writers__sheets { position: relative; padding-right: calc(var(--space-3) + var(--space-6)); }
+  .aq-limit-writers__sheets::before { content: ""; position: absolute; right: 0; top: 0; bottom: calc(100% / var(--n, 5) / 2 - 6px); width: var(--space-3); box-sizing: border-box;
+    border: 1px solid var(--line-strong); border-top: 0; background: linear-gradient(var(--flow), var(--flow)) 50% 0 / 2px calc(100% - 5px) no-repeat var(--surface); }
+  .aq-limit-writers__sh { position: relative; padding-block: var(--space-1); }
+  /* each tee runs into the riser to its water line, so the riser's wall opens where the tee joins */
+  .aq-limit-writers__sh::before { content: ""; position: absolute; right: calc(-1 * var(--space-6) - 7px); top: 50%; width: calc(var(--space-6) + 7px); height: var(--space-3);
+    margin-top: calc(var(--space-3) / -2); background: linear-gradient(var(--flow), var(--flow)) 0 50% / 100% 2px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) 0 0 / var(--space-6) 1px no-repeat, linear-gradient(var(--line-strong), var(--line-strong)) 0 100% / var(--space-6) 1px no-repeat, var(--surface); }
+  .aq-limit-writers__sheet { min-height: 48px; padding: var(--space-2) var(--space-6) var(--space-2) var(--space-3); gap: var(--space-3); }
+  .aq-limit-writers__name { font-size: 15px; line-height: 21px; }
+}

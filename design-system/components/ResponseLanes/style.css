@@ -81,3 +81,67 @@
 .aq-response-lanes-sec .aq-sec-head .aq-lead { max-width: 52ch; }
 .aq-response-lanes { display: block; }
 .aq-response-lanes__what { display: block; }
+
+/* ---------- Notice calendar (pass 12): event pins on one navy timeline, a limestone bracket back from each pin for its
+   notice, the document hanging off the bracket's start. Even spacing: order, never a time scale. ---------- */
+/* line ink: navy on light; navy falls to 1.5:1 on the dark surface, so the timeline turns flow there */
+.aq-response-lanes.is-cal { --cal-ink: var(--navy); }
+[data-theme="dark"] .aq-response-lanes.is-cal { --cal-ink: var(--flow); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-response-lanes.is-cal { --cal-ink: var(--flow); } }
+.aq-response-lanes .aq-response-lanes__key { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0 0 var(--space-8);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-response-lanes__ki { display: inline-flex; align-items: center; gap: var(--space-2); white-space: nowrap; }
+.aq-response-lanes__ki > span { flex: none; display: inline-block; }
+.aq-response-lanes__kp { width: var(--space-3); height: var(--space-3); border-radius: 50%; background: var(--cal-ink, var(--navy)); }
+.aq-response-lanes__kb { width: var(--space-8); height: var(--space-2); background: var(--limestone); border-left: 1.5px solid var(--cal-ink, var(--navy)); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.aq-response-lanes__kd { width: var(--space-3); height: var(--space-4); border: 1px solid var(--line-strong); background: var(--surface-raised); }
+.aq-response-lanes__cal { --cal-y: 10px; list-style: none; margin: 0; padding: 0 var(--space-2) 0 0; position: relative; display: grid;
+  grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); grid-template-rows: auto var(--space-8) auto auto; }
+/* the one navy timeline, through every event: each event's mark cell carries its stretch (the cells abut) */
+.aq-response-lanes__mark::after { content: ""; position: absolute; left: 0; right: 0; top: calc(var(--cal-y, 10px) - 1.5px); height: 3px; background: var(--cal-ink, var(--navy));
+  transform: scaleX(var(--aq-line, 1)); transform-origin: left center; }
+.aq-response-lanes__ev:last-child .aq-response-lanes__mark::after { right: calc(var(--space-2) * -1); }
+.aq-response-lanes__ev { grid-row: 1 / span 4; display: grid; grid-template-rows: subgrid; min-width: 0; }
+.aq-response-lanes__evt { grid-row: 1; align-self: end; margin: 0; padding: 0 0 var(--space-3) var(--space-3); display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-1);
+  text-align: right; font: 400 17px/23px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-response-lanes-sec--cal .aq-sec-head { margin-bottom: var(--space-2); }
+.aq-response-lanes__evw { display: block; }
+.aq-response-lanes__evn { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-subtle); }
+.aq-response-lanes__mark { grid-row: 2; position: relative; }
+.aq-response-lanes__pin { position: absolute; right: 0; top: var(--cal-y, 10px); z-index: 1; width: var(--space-4); height: var(--space-4); border-radius: 50%; transform: translate(50%, -50%);
+  background: var(--cal-ink, var(--navy)); border: 3px solid var(--surface); box-shadow: 0 0 0 1.5px var(--cal-ink, var(--navy)); }
+.aq-section--alt .aq-response-lanes__pin { border-color: var(--surface-sunken); }
+.aq-response-lanes__br { position: absolute; left: var(--space-3); right: 0; top: calc(var(--cal-y, 10px) + 4px); height: var(--space-3);
+  background: var(--limestone); border-left: 1.5px solid var(--cal-ink, var(--navy)); box-shadow: inset 0 0 0 1px var(--line-strong); transform-origin: right center; }
+.aq-response-lanes__br::before { content: ""; position: absolute; left: -1.5px; top: calc(-4px - 1px); height: 5px; border-left: 1.5px solid var(--cal-ink, var(--navy)); }
+.aq-response-lanes .aq-response-lanes__nt { grid-row: 3; margin: 0 0 0 var(--space-3); padding: var(--space-1) var(--space-3) var(--space-3) var(--space-3); border-left: 1px solid var(--line-strong);
+  font: 400 15px/22px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-response-lanes .aq-response-lanes__doc { grid-row: 4; position: relative; align-self: start; margin: 0 var(--space-3) 0 var(--space-3); padding: var(--space-2) var(--space-3) var(--space-3);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); box-shadow: 0 1px 0 var(--line); font: 400 14px/21px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; }
+.aq-response-lanes__doc::before { content: ""; position: absolute; left: -1px; top: 0; width: var(--space-3); border-top: 2px solid var(--cal-ink, var(--navy)); }
+.aq-response-lanes__ev:hover .aq-response-lanes__br, .aq-response-lanes__ev:focus-within .aq-response-lanes__br { background: color-mix(in srgb, var(--limestone) 60%, var(--flow)); }
+
+@container (max-width: 1100px) {
+  .aq-response-lanes__evt { font-size: 15px; line-height: 21px; }
+  .aq-response-lanes .aq-response-lanes__nt { font-size: 14px; line-height: 21px; padding-inline: var(--space-2); }
+  .aq-response-lanes .aq-response-lanes__doc { padding-inline: var(--space-2); margin-right: var(--space-2); }
+}
+/* Phones: the timeline runs down a left rail; each event's pin sits on it beside the event's name, and its bracket is
+   a limestone span beside the rail along the notice and the document */
+@container (max-width: 860px) {
+  .aq-response-lanes .aq-response-lanes__key { margin-bottom: var(--space-6); }
+  .aq-response-lanes__cal { display: block; padding: 0 0 0 var(--space-8); }
+  .aq-response-lanes__mark::after { left: 7px; right: auto; top: 0; bottom: calc(var(--space-6) * -1); width: 3px; height: auto; transform: scaleY(var(--aq-line, 1)); transform-origin: center top; }
+  .aq-response-lanes__ev:first-child .aq-response-lanes__mark::after { top: 12px; }
+  .aq-response-lanes__ev:last-child .aq-response-lanes__mark::after { right: auto; bottom: 0; }
+  .aq-response-lanes__ev { position: relative; display: block; padding-bottom: var(--space-6); }
+  .aq-response-lanes__evt { display: block; padding: 0 0 var(--space-2); text-align: left; font-size: 18px; line-height: 24px; }
+  .aq-response-lanes__evn { margin-right: var(--space-2); }
+  .aq-response-lanes__evw { display: inline; }
+  .aq-response-lanes__mark { position: absolute; left: calc(var(--space-8) * -1); top: 0; bottom: var(--space-6); width: var(--space-8); }
+  .aq-response-lanes__pin { left: 8.5px; right: auto; top: 12px; transform: translate(-50%, -50%); }
+  .aq-response-lanes__br { left: 14px; right: auto; top: 30px; bottom: 0; width: 6px; height: auto; border-left: 0; border-top: 1.5px solid var(--cal-ink, var(--navy)); transform-origin: center top; }
+  .aq-response-lanes__br::before { display: none; }
+  .aq-response-lanes .aq-response-lanes__nt { margin: 0; padding: 0 0 var(--space-2); border-left: 0; font-size: 15px; }
+  .aq-response-lanes .aq-response-lanes__doc { margin: 0; }
+}

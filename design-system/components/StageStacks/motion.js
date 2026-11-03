@@ -1,6 +1,6 @@
 /* StageStacks: the file grows stage by stage. The water runs the axis from the first node to the arrow; as it reaches
    each stage the node seats, that stage's sheets drop onto its stack from the bottom up, and its name and step wipe in
-   under the axis. Phones: the same, down the vertical axis. One timeline, once, about 3.5 s. */
+   under the axis. Phones: the same, along the axis of the snap rail. One timeline, once, about 3.5 s. */
 AQmotion.fx('StageStacks', function (root, m) {
   root.querySelectorAll('.aq-stage-stacks').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
@@ -12,7 +12,7 @@ AQmotion.fx('StageStacks', function (root, m) {
     stages.forEach(function (s, i) {
       var t = 0.15 + i * per, run = s.querySelector('.aq-stage-stacks__run'), node = s.querySelector('.aq-stage-stacks__node'),
         docs = [].slice.call(s.querySelectorAll('.aq-stage-stacks__doc')), head = s.querySelector('.aq-stage-stacks__head'), who = s.querySelector('.aq-stage-stacks__who');
-      if (run) tl.from(run, narrow ? { scaleY: 0, transformOrigin: '50% 0', duration: per, ease: 'none', clearProps: 'transform' } : { scaleX: 0, transformOrigin: '0 50%', duration: per, ease: 'none', clearProps: 'transform' }, t);
+      if (run) tl.from(run, { scaleX: 0, transformOrigin: '0 50%', duration: per, ease: 'none', clearProps: 'transform' }, t);
       if (node) tl.from(node, { scale: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform' }, t);
       if (docs.length) tl.from(docs, { y: narrow ? -12 : -48, autoAlpha: 0, duration: 0.4, ease: 'power2.in', stagger: narrow ? 0.03 : 0.05, clearProps: 'transform,opacity,visibility' }, t + 0.05);
       if (head) tl.from(head, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, t + 0.1);

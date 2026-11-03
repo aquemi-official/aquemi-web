@@ -39,7 +39,10 @@ AQmotion.fx('WitnessPlan', function (root, m) {
       if (D && ps.length) gsap.fromTo(ps, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, stagger: 0.12, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' });
       ps.forEach(function (p, k) { gsap.delayedCall(0.4 + k * 0.12, function () { beam(p.getAttribute('data-i')) }) });
     }, at);
-    mks.forEach(function (k, i) { tl.fromTo(k, { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'power3.in', clearProps: 'opacity,visibility,transform' }, at + 0.55 + i * 0.12) });
+    /* the markers strike after their leaders; where the leaders are off (1080 and under, the drawing is a strip the
+       reader is already on) they strike as soon as the package is drawn */
+    var mkAt = (leads && getComputedStyle(leads).display !== 'none') ? at + 0.55 : 0.5;
+    mks.forEach(function (k, i) { tl.fromTo(k, { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'power3.in', clearProps: 'opacity,visibility,transform' }, mkAt + i * 0.12) });
     m.on(fig, function () { tl.play() }, 'top 70%');
 
     /* choosing a way sends a light down its leader */

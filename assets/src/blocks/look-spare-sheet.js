@@ -8,8 +8,11 @@
    cartridge (matched from the part's name, or b.kit[i]); a part with no drawing gets a plain outline.
    Concept: research/pass9b/concepts/svc-service.4.png (dimensioned part drawing on a limestone sheet, part list boxed,
    title block), with the live table's four-column like-for-like logic restored.
-   Fields as a table block: h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun, kit.
-   Desktop shows every row; the fold applies on phones, where each row stacks with its column names. */
+   Fields as a table block: h, intro, cols [part, like-for-like, change, what follows], rows, kit. Every row shows on
+   every width (pass 12; fold / fold_noun no longer read).
+   Phones (pass 12, PhoneKit sticky figure): the part drawing is a 180 px strip held under the section bar (lines 1.5
+   px, letters and balloon number 12 px as seen) and redrawn for the row on the reading line; rows stack with their
+   column names; no title block. */
 var SS_ART={
  membrane:{b:[22,36,218,64],a:'<rect x="22" y="36" width="196" height="28"/><path d="M34 36v28M206 36v28M70 36v28M118 36v28M166 36v28"/><path class="k-t" d="M22 50h-10M218 50h10"/><circle class="k-t" cx="28" cy="50" r="3"/>'},
  probe:{b:[14,40,180,92],a:'<rect x="30" y="40" width="58" height="20"/><path d="M88 46h70v8H88"/><path class="k-t" d="M158 48h22M158 52h22"/><path d="M30 50C14 50 14 78 40 78h38"/><rect x="78" y="70" width="40" height="22"/><path class="k-t" d="M84 76h28M84 81h20"/><circle class="k-a" cx="112" cy="86" r="2"/>'},
@@ -38,12 +41,16 @@ LOOKS['spare-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-spare-she
  var nos=['1','2','3','4'];
  var head='<thead><tr>'+C.slice(0,4).map(function(c,j){return '<th scope="col"><span class="'+K+'__hn" aria-hidden="true">'+nos[j]+'</span>'+tx(c)+'</th>'}).join('')+'</tr></thead>';
  var body=R.map(function(r,i){var no=(i<9?'0':'')+(i+1);
-  return fli('<tr class="'+K+'__row'+(i?'':' is-on')+'" data-i="'+i+'">',b,i)
+  /* a row whose answer holds a long word (16+ letters) stacks its two answers on phones, so the word is not split */
+  var wide=[1,2].some(function(j){var c=r[j];return /[^\s\/-]{16,}/.test(String(c&&c.t||c||''))});
+  return '<tr class="'+K+'__row'+(i?'':' is-on')+(wide?' is-wide':'')+'" data-i="'+i+'" data-pk-row="'+i+'">'
    +'<th scope="row"><button type="button" class="'+K+'__pick" data-i="'+i+'" aria-pressed="'+(i?'false':'true')+'"><span class="'+K+'__n" aria-hidden="true">'+no+'</span><span class="'+K+'__p">'+tcell(r[0])+'</span></button></th>'
    +[1,2,3].map(function(j){return '<td><span class="'+K+'__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+tcell(r[j])+'</td>'}).join('')+'</tr>'}).join('');
  var tb='<div class="'+K+'__tb" aria-hidden="true"><span class="'+K+'__tbn">'+R.map(function(r,i){return '<span class="'+K+'__tbp'+(i?'':' is-on')+'" data-i="'+i+'">'+tcell(r[0])+'</span>'}).join('')+'</span><span class="'+K+'__tbs">Part <span class="'+K+'__tbi">01</span> / '+tot+'</span></div>';
- var sheet='<div class="'+K+'" data-theme="light"><div class="'+K+'__top">'+H+'<figure class="'+K+'__fig">'+svg+'</figure></div>'
-  +wFold(b,n,'<table class="'+K+'__table">'+head+'<tbody>'+body+'</tbody></table>',b.fold_noun||'parts')+tb+'</div>';
+ /* every part shows on every width: each has its drawing and balloon (pass 12, S7: no fold; fold / fold_noun not
+    read). Phones: PhoneKit holds the drawing as a 180 px strip and the part on the reading line is drawn. */
+ var sheet='<div class="'+K+'" data-theme="light" data-pk-sticky data-pk-bp="860" data-pk-h="180"><div class="'+K+'__top">'+H+'<figure class="'+K+'__fig" data-pk-fig>'+svg+'</figure></div>'
+  +'<table class="'+K+'__table">'+head+'<tbody>'+body+'</tbody></table>'+tb+'</div>';
  return sec(sheet,K+'-sec')};
 /* Choosing a row (pointer, focus, or its button) draws that part on the sheet */
 function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(String(i)===cur)return;r.setAttribute('data-on',i);
@@ -51,5 +58,7 @@ function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(Stri
  var t=r.querySelector('.aq-spare-sheet__tbi');if(t)t.textContent=(i<9?'0':'')+(+i+1);
  if(window.AQspareDraw)AQspareDraw(r,i)}
 window.ssPick=ssPick;
+/* phones (PhoneKit on): the part on the reading line is drawn on the strip */
+document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-spare-sheet'))return;ssPick(r,ev.detail&&ev.detail.on?ev.detail.index:0)});
 (function(){function go(ev){var s=ev.target.closest&&ev.target.closest('.aq-spare-sheet__row');if(!s)return;ssPick(s.closest('.aq-spare-sheet'),+s.getAttribute('data-i'))}
  document.addEventListener('mouseover',go);document.addEventListener('focusin',go);document.addEventListener('click',go)})();

@@ -4,7 +4,9 @@
    its own to the right. Lanes: a vertical hairline per party at its lane centre, continuous through the rows; a row's
    node sits on its party's lane (Aquemi: flow fill; your side: ring in ink; shared: dashed ring), the party and the
    detail centred under it. The wire runs from the node to the bus (a vertical flow line), the bus ends in one stamp.
-   Phones: rows stack (request, then the party chip, then the approver stamp); lanes, wires and bus are dropped. */
+   Phones: rows stack (request, then the party). With one approver (pass 12) a right-edge approval rail takes the
+   merge: a node per request on it, the rail running into one stamp (rules at the end). With several approvers each
+   row keeps its own approver chip. */
 .aq-approval-merge__top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-8); }
 .aq-approval-merge-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 18ch; }
 .aq-approval-merge__hero { margin: 0; display: flex; flex-direction: column; align-items: flex-end; flex: none; }
@@ -73,4 +75,57 @@
   .aq-approval-merge__node { width: var(--space-3); height: var(--space-3); }
   .aq-approval-merge__who, .aq-approval-merge__det { margin: 0; padding: 0; max-width: none; background: none; }
   .aq-approval-merge__appr, .aq-approval-merge__appr.is-merged { position: static; width: auto; height: auto; overflow: visible; clip-path: none; padding: 0; margin-left: auto; }
+}
+
+/* Phones, one approver (pass 12, audit svc-upgrades.0, S10): the merge stays. One approval rail runs down the right
+   edge; each request ends in a node on it (filled flow: Aquemi prepares; open ring: you or your consultant; dashed:
+   shared), joined by a short wire from the request; the rail runs on under the last request into one "Approved by"
+   stamp. No per-row approver chips (the stamp says it once; each row's approver stays in the markup for screen
+   readers). The wire carries the node and the rail segment (clipped to its row), so the rail is continuous whatever
+   the rows' heights. */
+@container (max-width: 860px) {
+  .aq-approval-merge.is-one { --rail: var(--space-8); }
+  .aq-approval-merge.is-one .aq-approval-merge__row {
+    display: grid; grid-template-columns: minmax(0, 1fr) var(--rail, var(--space-8)); column-gap: 0; row-gap: var(--space-2);
+    overflow: clip; border-bottom: 1px solid var(--line);
+  }
+  .aq-approval-merge.is-one .aq-approval-merge__row > .aq-index { grid-column: 1; grid-row: 1; }
+  .aq-approval-merge.is-one .aq-approval-merge__t { grid-column: 1; grid-row: 2; padding-right: var(--space-4); }
+  .aq-approval-merge.is-one .aq-approval-merge__prep { grid-column: 1; grid-row: 3; padding-right: var(--space-3); }
+  .aq-approval-merge.is-one .aq-approval-merge__prep .aq-approval-merge__node { display: none; }
+  .aq-approval-merge.is-one .aq-approval-merge__appr.is-merged { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); margin: 0; }
+  .aq-approval-merge.is-one .aq-approval-merge__who { font-size: 13px; }
+  .aq-approval-merge.is-one .aq-approval-merge__det { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+  /* the wire: from the request's party line across to the rail, the node at its end */
+  .aq-approval-merge.is-one .aq-approval-merge__wire {
+    display: block; position: relative; left: auto; right: auto; top: auto; grid-column: 2; grid-row: 3; align-self: start;
+    margin-top: 9px; margin-left: calc(-1 * var(--space-3)); height: 0; border-top: 1.5px solid var(--line-strong);
+  }
+  .aq-approval-merge.is-one .aq-approval-merge__row:has(.aq-approval-merge__prep.is-ours) .aq-approval-merge__wire { border-top-color: color-mix(in srgb, var(--flow) 60%, var(--line-strong)); }
+  .aq-approval-merge.is-one .aq-approval-merge__wire::before {
+    content: ""; position: absolute; right: 5px; top: -100vh; bottom: -100vh; border-left: 2px solid var(--flow);
+  }
+  .aq-approval-merge.is-one .aq-approval-merge__row:first-child .aq-approval-merge__wire::before { top: 0; }
+  .aq-approval-merge.is-one .aq-approval-merge__wire::after {
+    content: ""; position: absolute; right: 0; top: -7px; width: 12px; height: 12px; box-sizing: border-box; border-radius: 50%;
+    border: 2px solid var(--ink); background: var(--surface);
+  }
+  .aq-approval-merge.is-one .aq-approval-merge__row:has(.aq-approval-merge__prep.is-ours) .aq-approval-merge__wire::after { background: var(--flow); border-color: var(--flow); }
+  .aq-approval-merge.is-one .aq-approval-merge__row:has(.aq-approval-merge__prep.is-shared) .aq-approval-merge__wire::after { border-style: dashed; }
+  .aq-approval-merge.is-one .aq-approval-merge__lit { display: none; }
+  /* the rail runs on into the one stamp */
+  .aq-approval-merge.is-one .aq-approval-merge__bus { display: flex; justify-content: flex-end; position: relative; padding-top: var(--space-6); }
+  .aq-approval-merge.is-one .aq-approval-merge__busline { position: absolute; left: auto; right: 5px; top: 0; bottom: auto; height: var(--space-6); border-left: 2px solid var(--flow); }
+  .aq-approval-merge.is-one .aq-approval-merge__buslit, .aq-approval-merge.is-one .aq-approval-merge__big::before { display: none; }
+  .aq-approval-merge.is-one .aq-approval-merge__big {
+    position: relative; left: auto; top: auto; bottom: auto; margin: 0; flex-direction: row; align-items: baseline; gap: var(--space-3);
+    padding: var(--space-3) var(--space-4); border: 2px solid var(--ink); border-top-color: var(--flow);
+  }
+  .aq-approval-merge.is-one .aq-approval-merge__bigk { font-size: 12px; }
+  .aq-approval-merge.is-one .aq-approval-merge__bigv { font-size: 32px; line-height: 36px; }
+}
+/* a request that links (the design assessment): a 44 px hit box over its line on phones, no visual change */
+@container (max-width: 860px) {
+  .aq-approval-merge__t a { position: relative; }
+  .aq-approval-merge__t a::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
 }

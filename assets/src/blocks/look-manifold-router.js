@@ -3,7 +3,8 @@
    down the left; each situation tees off it as a branch, its words set large. The reader picks a situation: the water
    runs down the manifold to that branch, the branch lights and its route opens on a sheet to the right (Send us, What
    comes back, then the link that starts it, set largest). One situation is open at a time, the first by default.
-   Phones: the route opens under its situation, on the same manifold.
+   Phones: the route opens under its situation, on the same manifold; each row ends in a 44 px chevron cue (PhoneKit's
+   .aq-phone-kit__chev, turned up on the open row), hidden on wider screens.
    Fields, as the router: cols (first is the situation column, the rest name the route's steps), rows (first cell the
    situation, each other cell a string or {t, link, intent}). A route whose cells link somewhere (the last link wins) is
    clickable as a whole through a pointer-only overlay; the real link stays the keyboard target, its intent rides on
@@ -19,7 +20,7 @@ LOOKS['manifold-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,
   return '<button type="button" class="aq-manifold-router__opt'+(open?' is-wet':'')+(i===0?' is-first':'')+(i===n-1?' is-last':'')+'" aria-expanded="'+(open?'true':'false')+'" aria-controls="'+id+'" style="--i:'+i+'">'
    +'<span class="aq-manifold-router__seg" aria-hidden="true"><span class="aq-manifold-router__water"></span></span>'
    +'<span class="aq-manifold-router__branch" aria-hidden="true"><span class="aq-manifold-router__water"></span></span>'
-   +'<span class="aq-manifold-router__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-manifold-router__t">'+tx(s)+'</span></button>'
+   +'<span class="aq-manifold-router__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-manifold-router__t">'+tx(s)+'</span><span class="aq-phone-kit__chev aq-manifold-router__chev" aria-hidden="true"></span></button>'
    +'<div class="aq-manifold-router__route'+(to?' is-link':'')+'" id="'+id+'" style="grid-row:1 / span '+n+'"'+(open?'':' hidden')+'>'
    +(to?'<a class="aq-manifold-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'"'+(ti?' data-intent="'+e(ti)+'"':'')+' tabindex="-1" aria-hidden="true"></a>':'')
    +'<p class="aq-manifold-router__sit" aria-hidden="true">'+tx(s)+'</p>'

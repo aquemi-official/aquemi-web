@@ -2,7 +2,7 @@
  "look": "option-tags",
  "component": "OptionTags",
  "type": "options",
- "fields": "h, intro, items [{t, d, spot | icon, shape}], spot (base glyph), base, fold, fold_noun. shape: \"tag\" (default), \"round\" or \"folder\"; folders sit on the navy strip (desktop).",
+ "fields": "h, intro, items [{t, d, spot | icon, shape}], spot (base glyph), base, fold, fold_noun. shape: \"tag\" (default), \"round\" or \"folder\"; folders sit on the navy strip (desktop). With no folder the strip is left out (.is-flat) and the tags fill three columns.",
  "best_for": "OptionTags lays a system's configuration options out as physical tags on a limestone table, so each option reads as a separate item the buyer can add to the base skid.",
  "status": "live",
  "instances": [

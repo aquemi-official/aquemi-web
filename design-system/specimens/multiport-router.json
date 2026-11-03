@@ -1,0 +1,67 @@
+{
+ "look": "multiport-router",
+ "component": "MultiportRouter",
+ "type": "table",
+ "fields": "(a table block, as: \"router\"): h, intro, cols [situation, need, ...the rest], rows [[situation, need, ...]]; cells may be {t, link, intent} as in every table. No new fields.",
+ "best_for": "MultiportRouter draws a router table as a multiport valve in plan: the valve in the middle with one numbered port per situation, each port piped to its route card, the chosen card lit steel blue and the valve's lever turned to its port.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-personal-care",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "c7eb573a35",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "anchor": "start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A new line or plant",
+      "A water specification from your products and batch sizes",
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "Counts rising at the DI outlet or a tap, or an audit finding on water",
+      "An assessment of the whole system, loop and hoses included, before a new generator",
+      {
+       "t": "Upgrades: after an observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "Adding an OTC, drug identification number (DIN) or natural health product line, or exporting",
+      "The minimum water for each product class, in each market",
+      {
+       "t": "Water by product class",
+       "link": "ind-personal-care#grade"
+      }
+     ],
+     [
+      "Moving off exchange deionization (DI) tanks",
+      "Your own water, sized to your batches",
+      {
+       "t": "From exchange DI",
+       "link": "ind-personal-care#from-di"
+      }
+     ]
+    ],
+    "look": "multiport-router"
+   }
+  }
+ ]
+}

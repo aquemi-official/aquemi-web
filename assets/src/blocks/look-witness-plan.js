@@ -10,7 +10,9 @@
    Leaders are laid out from the rendered rows (ResizeObserver), so they follow wrapping; without them the numbers
    still pair rows and parts. Arrow keys, Home and End move between the ways and choose. The list's first item is the
    sliding indicator (an empty, aria-hidden li that motion.js springs to the chosen row).
-   Container under 1080 px: the drawing above the rows, no leaders (the numbered markers pair them). */
+   Container under 1080 px: the drawing above the rows, no leaders (the numbered markers pair them). Phones (pass 12):
+   the room's frame is cropped away and the drawing is a PhoneKit sticky strip (220 px) that zooms (x1.2) onto the
+   part of the way on the reading line; that way is chosen as it arrives, and tapping a way brings it to the line. */
 var WP_PARTS=['panel','camera','gauge','documents','analyzer','ro','tank'];
 function wpScene(){var P='aq-witness-plan'+'__',B=[-62,-26,0],X=300,Yd=172,Z=104,F=function(a,b){return 'M'+isoT(isoP(a))+'L'+isoT(isoP(b))};
  var x0=B[0],y0=B[1],x1=x0+X,y1=y0+Yd;
@@ -33,13 +35,13 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],S=wpSce
  function part(it){return WP_PARTS.indexOf(it.part)>-1?it.part:'ro'}
  var svg=isoSvg(W,Hh,S.inner,'aq-witness-plan__svg',{origin:org});
  var mk=I.map(function(it,i){var k=part(it),n=seen[k]=(seen[k]||0)+1,at=isoPct(isoP(S.A[k]),W,Hh,org);
-  return '<span class="aq-witness-plan__mk'+(i?'':' is-on')+'" data-i="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+  return '<span class="aq-witness-plan__mk'+(i?'':' is-on')+'" data-i="'+i+'" data-pk-key="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
  var zl=function(s,p,c){var at=isoPct(isoP(p),W,Hh,org);return s?'<span class="aq-witness-plan__zone '+c+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(s)+'</span>':''};
- var list=I.map(function(it,i){return '<li><button type="button" class="aq-witness-plan__opt" data-i="'+i+'" data-part="'+e(part(it))+'" aria-pressed="'+(i?'false':'true')+'">'
+ var list=I.map(function(it,i){return '<li data-pk-row="'+i+'"><button type="button" class="aq-witness-plan__opt" data-i="'+i+'" data-part="'+e(part(it))+'" aria-pressed="'+(i?'false':'true')+'">'
   +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'.</span>'
   +'<span class="aq-witness-plan__t">'+tx(it.t)+'</span>'+(it.d?'<span class="aq-witness-plan__d">'+tx(it.d)+'</span>':'')+'</button></li>'}).join('');
- return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list"><li class="aq-witness-plan__ind" aria-hidden="true"></li>'+list+'</ol></div>'
-  +'<div class="aq-witness-plan__fig"><div class="aq-witness-plan__sheet">'+svg+zl(Z[0],S.zone,'is-bay')+zl(Z[1],S.camAt,'is-cam')+mk+'</div></div>'
+ return sec('<div class="aq-witness-plan" data-pk-sticky data-pk-h="220" data-pk-zoom="1.2">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list"><li class="aq-witness-plan__ind" aria-hidden="true"></li>'+list+'</ol></div>'
+  +'<div class="aq-witness-plan__fig" data-pk-fig><div class="aq-witness-plan__sheet">'+svg+zl(Z[0],S.zone,'is-bay')+zl(Z[1],S.camAt,'is-cam')+mk+'</div></div>'
   +'<svg class="aq-witness-plan__leads" aria-hidden="true" focusable="false"></svg></div>','aq-witness-plan-sec')};
 (function(){var NS='http://www.w3.org/2000/svg';
  /* lay the leaders out from the rendered rows: row end, along the row, then into the part's marker */
@@ -60,7 +62,13 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],S=wpSce
   new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,scan)})}).observe(document.documentElement,{childList:true,subtree:true});
   if(document.body)scan(document.body)}
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;var w=t.closest('.aq-witness-plan');
-  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t)});
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t);
+  /* phones: a tapped way that is not on the reading line is brought to it, so the strip zooms onto its part */
+  var li=t.closest('[data-pk-row]');if(ev.isTrusted&&li&&w.hasAttribute('data-pk-on')&&window.AQpk&&!li.classList.contains('is-pk-active')){
+   var y=window.scrollY+li.getBoundingClientRect().top-window.AQpk.line(w)+2,rm=window.AQpk.reduced&&window.AQpk.reduced();window.scrollTo({top:Math.max(0,y),behavior:rm?'auto':'smooth'})}});
+ /* phones: the way on the reading line is the chosen way (PhoneKit sticky) */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-witness-plan')||!ev.detail.on)return;
+  var li=w.querySelector('[data-pk-row="'+ev.detail.key+'"]'),o=li&&li.querySelector('.aq-witness-plan__opt');if(o&&o.getAttribute('aria-pressed')!=='true')o.click()});
  document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
   var w=t.closest('.aq-witness-plan');show(w,w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]'))});

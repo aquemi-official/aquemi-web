@@ -45,6 +45,8 @@
   .aq-signature-blocks__t { font-size: 20px; line-height: 26px; }
   .aq-signature-blocks__fields { gap: var(--space-3); }
   .aq-signature-blocks__v { min-height: var(--space-12); padding: var(--space-2); font-size: 14px; line-height: 20px; }
+  /* pass 12: the field labels ("WRITTEN OR DONE BY") and the key up to 13 px with a little more tracking */
+  .aq-signature-blocks__lab, .aq-signature-blocks__key span { font-size: 13px; line-height: 18px; letter-spacing: 0.1em; }
   .aq-fold:not(.is-open) .aq-signature-blocks__b.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-signature-blocks__list) > .aq-fold__btn { display: flex; margin-top: var(--space-4); }
 }

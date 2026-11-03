@@ -3,7 +3,7 @@
  "component": "SheetPreviews",
  "type": "docs",
  "fields": "h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label, intent.",
- "best_for": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line.",
+ "best_for": "SheetPreviews sets a short document list as a Swiss row of sheets: each limestone sheet carries its light index numeral and a thumbnail of what kind of document it is, then its code, name and line.",
  "status": "live",
  "instances": [
   {
@@ -52,7 +52,7 @@
    "page": "ind-personal-care",
    "slot": 6,
    "h": "Records for your file",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",
@@ -83,6 +83,49 @@
       "t": "Cosmetic-only lines: acceptance",
       "d": "Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
       "sheet": "certificate"
+     }
+    ],
+    "fold_noun": "records",
+    "link": "cmp-documentation#index",
+    "link_label": "Full document index",
+    "look": "sheet-previews"
+   }
+  },
+  {
+   "page": "ind-personal-care",
+   "slot": 6,
+   "h": "Records for your file",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "cd26521be3",
+   "block": {
+    "type": "docs",
+    "nav": "Records",
+    "anchor": "records",
+    "h": "Records for your file",
+    "items": [
+     {
+      "t": "Monitoring records",
+      "d": "Conductivity trends, alarms and excursions, by date",
+      "sheet": "trend"
+     },
+     {
+      "t": "Sanitization and calibration",
+      "d": "Each sanitization with its residual test; instrument calibration certificates",
+      "sheet": "log"
+     },
+     {
+      "t": "Drug lines: qualification",
+      "d": "Installation qualification (IQ), operational qualification (OQ), performance qualification (PQ): protocols and reports",
+      "sheet": "binder",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Cosmetic-only lines: acceptance",
+      "d": "Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+      "sheet": "signoff"
      }
     ],
     "fold_noun": "records",

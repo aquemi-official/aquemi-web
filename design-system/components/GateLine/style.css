@@ -3,7 +3,7 @@
    into one pipe. Each column: a hairline icon, its run of pipe (two on-navy-muted walls, flow water inside; the
    shutdown step's run is dry: a dashed bore and its label), then number (light 40 px), name (light 22 px), line and
    hold stamp. A gate valve (P&ID bowtie on a stem) sits on the joint at the left of every step but the first; the
-   gate after a hold step carries a "Hold" tag. The pipe leaves at the right through an arrow. A legend over the pipe
+   hold reads once, as the stamp under its step. The pipe leaves at the right through an arrow. A legend over the pipe
    names the water. Phones: one column; the pipe runs down the left, the valves turned with it; icon, number, name
    and line on the right. */
 .aq-gate-line-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); }
@@ -30,7 +30,6 @@
 .aq-gate-line__vfill { fill: var(--on-navy); fill-opacity: 0; }
 .aq-gate-line__vs, .aq-gate-line__vh { fill: none; stroke: var(--on-navy); stroke-width: 1.5; stroke-linecap: round; }
 .aq-gate-line__vh { transform-box: fill-box; transform-origin: 50% 50%; }
-.aq-gate-line__gk { position: absolute; left: 50%; bottom: calc(100% + var(--space-2)); translate: -50% 0; padding: 0 var(--space-2); border: 1.5px solid var(--flow); font: 500 11px/18px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy); white-space: nowrap; }
 
 /* the step's text */
 .aq-gate-line__txt { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-8) var(--space-6) 0 var(--space-8); }
@@ -50,7 +49,7 @@
   .aq-gate-line__walls { border-top: 0; border-bottom: 0; border-left: 1.5px solid var(--on-navy-muted); border-right: 1.5px solid var(--on-navy-muted); }
   .aq-gate-line__water { inset: 0 var(--space-1); }
   .aq-gate-line__dry { inset: var(--space-6) var(--space-1); }
-  .aq-gate-line__dl, .aq-gate-line__gk { display: none; }
+  .aq-gate-line__dl { display: none; }
   .aq-gate-line__out { right: auto; left: 50%; top: auto; bottom: calc(-1 * var(--space-1)); transform: translateX(-50%) rotate(135deg); }
   .aq-gate-line__gate { left: 50%; top: 0; transform-origin: 50% 63.2%; rotate: -90deg; }
   .aq-gate-line__ic { grid-column: 2; grid-row: 1; padding: var(--space-8) 0 var(--space-2); }

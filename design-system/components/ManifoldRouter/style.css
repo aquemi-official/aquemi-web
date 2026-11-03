@@ -88,3 +88,11 @@
 @container (max-width: 860px) {
   .aq-manifold-router-sec > .aq-fx-shader { -webkit-mask-image: radial-gradient(circle at 100% 0, var(--ink), transparent 32%); mask-image: radial-gradient(circle at 100% 0, var(--ink), transparent 32%); }
 }
+
+/* Pass 12: an open/close cue on phones (PhoneKit's chevron, 44 px box at the row's end); none on wider screens */
+.aq-manifold-router__chev { display: none; }
+@container (max-width: 860px) {
+  .aq-manifold-router__opt { padding-right: 0; }
+  .aq-manifold-router__chev { display: block; align-self: center; width: var(--space-8); margin-right: calc(-1 * var(--space-2)); color: var(--on-limestone-muted); }
+  .aq-manifold-router__opt[aria-expanded="true"] .aq-manifold-router__chev { color: var(--on-limestone); }
+}

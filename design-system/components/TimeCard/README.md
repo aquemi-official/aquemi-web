@@ -4,7 +4,7 @@ TimeCard sets a spec block of working terms as the shop's time card: a limestone
 - Markup: `div.__stack` → `span.__under` (the card beneath, an outline turned 1.2°) and `div.aq-time-card[data-theme=light]` → `span.__hole`, `div.__head` (aria-hidden: "No.", "item / term" and the note column from the block's `cols`), the fold with `ol.__rows` of `li.__row` → `span.__n` (aria-hidden slot `i` and number), `div.__pv` (`h3.__p` the item, `p.__v` the term as a mono detail line under it), `p.__m`; then `p.__note` with `span.__stamp`.
 - Fields: `h`, `caption`, `intro`, `cols` [item, term, note], `rows [{p, v, m}]`, `note`, `fold`, `fold_noun`.
 - Tokens: `limestone` card with `on-limestone` text, `navy` rules and stamp, Geist Light 22 item names over Geist Mono 13 term lines (the term-name / mono-detail pairing of pass 9b concept careers.1), Geist Mono also for the header, notes, numbers and stamp; `line-strong` outline for the card beneath. No shadows. At rest every slot is punched (filled navy); hover turns the line's slot flow.
-- Phones: the card fills the width, header hidden, each line stacks item, term and note beside its number.
+- Phones: the card fills the width, header hidden, each line stacks item, term and note beside its number; term and note lines read at 14 px (pass 12, S4); the stamp sentence at 12 px, uppercase, as on desktop.
 - Not for comparing terms across options (CompareTable, PlanChecker) or for company facts (Colophon).
 
 ## Motion

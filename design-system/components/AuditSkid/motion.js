@@ -24,7 +24,7 @@ AQmotion.fx('AuditSkid', function (root, m) {
       m.tw(gsap.delayedCall(docs.length * 0.12 + 0.9, function () {
         if (window.AQauditSkid && !el.querySelector('.aq-audit-skid__doc.is-on') && docs[0]) { AQauditSkid.show(el, docs[0]); el.classList.remove('is-pointing') }
       }));
-    }, null, 'flow');
+    }, null, m.narrow() ? 'parts' : 'flow'); // phones: the documents come with the parts (the strip is zoomed in; the card below must not sit empty)
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });

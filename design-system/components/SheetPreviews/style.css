@@ -1,6 +1,7 @@
 /* ---------- SheetPreviews: documents as a Swiss row of sheets, each thumbnail showing what kind of document it is ---------- */
 .aq-sheet-previews__top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
 .aq-sheet-previews__more { margin: 0; }
+.aq-sheet-previews__more a { display: inline-flex; align-items: center; min-height: 44px; }
 .aq-sheet-previews { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
   column-gap: var(--space-6); row-gap: var(--space-12); border-top: 1px solid var(--ink); }
 .aq-sheet-previews__item { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); }
@@ -35,10 +36,35 @@
 .aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: flex; }
 .aq-fold:has(> .aq-sheet-previews) > .aq-fold__btn { display: none; }
 
+/* Pass 12: the index numeral on the sheet, light; record thumbnails (limit lines, ticks, binder spine, signature) */
+.aq-sheet-previews__nume { font: 200 46px/1 var(--font-sans); letter-spacing: -0.04em; fill: var(--on-limestone-muted); }
+.aq-sheet-previews__item.is-key .aq-sheet-previews__nume { fill: var(--on-limestone); }
+.aq-sheet-previews__limit { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-dasharray: 6 4; }
+.aq-sheet-previews__limit--b { stroke: var(--on-limestone-muted); }
+.aq-sheet-previews__tick { fill: none; stroke: var(--flow); stroke-width: 1.75; }
+.aq-sheet-previews__spine { fill: var(--surface-raised); stroke: var(--on-limestone); stroke-width: 1.25; }
+.aq-sheet-previews__sig { fill: none; stroke: var(--on-limestone); stroke-width: 1.5; }
+.aq-sheet-previews__body { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.aq-sheet-previews__code { display: flex; gap: var(--space-3); }
+.aq-sheet-previews__no { color: var(--ink-muted); }
+
+/* Phones: one sheet per row, the sheet (a third of the row) beside its number, name and line */
 @container (max-width: 860px) {
-  .aq-sheet-previews { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: var(--space-8); }
-  .aq-sheet-previews__num { font-size: 64px; line-height: 56px; margin-bottom: var(--space-2); }
-  .aq-sheet-previews__t { font-size: 16px; line-height: 22px; }
+  .aq-sheet-previews { grid-template-columns: minmax(0, 1fr); row-gap: 0; border-top-color: var(--line-strong); }
+  .aq-sheet-previews__item { display: grid; grid-template-columns: minmax(96px, 30%) minmax(0, 1fr); column-gap: var(--space-4); align-items: start;
+    padding: var(--space-4) 0; border-bottom: 1px solid var(--line); }
+  .aq-sheet-previews__sheet { margin: 0; }
+  .aq-sheet-previews__item:hover .aq-sheet-previews__sheet, .aq-sheet-previews__item:focus-within .aq-sheet-previews__sheet { transform: none; }
+  .aq-sheet-previews__t { font-size: 17px; line-height: 23px; }
+  .aq-sheet-previews__t a { display: inline-flex; align-items: center; min-height: 44px; margin-block: -10px; }
+  .aq-sheet-previews__d { font-size: 14px; line-height: 21px; }
+  /* the code reads in the text beside the sheet; on the small sheet it would fall under 12 px */
+  .aq-sheet-previews__codebox, .aq-sheet-previews__code-t { display: none; }
   .aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-sheet-previews) > .aq-fold__btn { display: flex; }
+}
+/* Tablets: two rows of two, each sheet capped beside its text (a 30 % sheet ran 220 x 300 px beside two lines) */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-sheet-previews { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); }
+  .aq-sheet-previews__item { grid-template-columns: minmax(96px, 128px) minmax(0, 1fr); }
 }

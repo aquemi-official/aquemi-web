@@ -60,7 +60,7 @@
   .aq-doc-hotspots { gap: var(--space-6); }
   .aq-doc-hotspots__fig { width: 100%; max-width: none; }
   .aq-doc-hotspots__cards { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
-  .aq-doc-hotspots__card { padding: var(--space-4) var(--space-4) var(--space-6); }
+  .aq-doc-hotspots__card { padding: var(--space-3) var(--space-4) var(--space-4); }
   .aq-doc-hotspots__t { font-size: 19px; line-height: 26px; }
 }
 

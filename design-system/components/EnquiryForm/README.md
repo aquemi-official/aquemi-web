@@ -60,7 +60,8 @@ Origin: concept L in design-system/inspiration/ (`concept-l-form.png`), rebuilt 
 - Section 1.0 holds the requirement fields: "System data" when any field has a unit, otherwise "Details".
 - The trailing run of contact fields (labels with name, company, role, email, phone, site or contract) becomes 2.0: "Site and contact" when a site field is in it, otherwise "Contact". A form with no trailing contact run stays one section.
 - A field with `"section": "<legend>"` starts a new section; a block-level `"sections": [..]` renames them in order.
-- Items are numbered in order within their section or step (1.1, 1.2 …); a note takes no number.
+- Items are numbered in order within their section or step (1.1, 1.2 …); a note takes no number, and neither does a conditional field while it is hidden (pass 12): `wRenum` in `parts/EnquiryForm.js` numbers the showing fields again whenever an answer opens or closes one (an empty `aq-form__ref` takes no room), so the sheet never skips a number (careers, contact-locations).
+- Fields in a two-column row start at the top of their cell (`align-content: start`): a neighbour with a help line no longer pushes a field's input down (contact-locations' "Number of visitors").
 - The block's `note` draws under the submit in both shapes (above: in a single sheet's submit band, under a stepped form's last actions).
 - `name` is the label as a slug (`required-capacity`). The `wform` class and `wform-msg` status are hooked by `index.html` to show the draft-site message on submit; nothing is sent.
 
@@ -70,7 +71,7 @@ Origin: concept L in design-system/inspiration/ (`concept-l-form.png`), rebuilt 
 - **Title strip:** the title row bleeds to the panel's edges as a `navy` strip (`space-4` / `space-8` padding): "Data sheet" in `on-navy` led by a short rule in `flow` lifted towards `on-navy`, the count in `on-navy-muted`, eyebrow style. Scoped as `.aq-form .aq-form__title` so the page's paragraph reset does not undo its bleed.
 - **Progress (stepped form):** a pipeline. Each step is a `space-8` square node (`radius-sm`, 1 px `line-strong`, its number in mono 13) on one 1 px `line-strong` line running to the next node, the step's name under it (Geist 500 14/20). Steps passed take a `flow` node and a 1.5 px `flow` line; the current node is filled with `action` (`on-action` number); steps ahead stay `line-strong`. With motion a `flow` ring (`aq-form__mark`) sits round the current node and slides to the next one.
 - **Legends:** the section number (`1.0`) in Geist 300 30/28 `flow` before the title.
-- **Phone** (`@container (max-width: 860px)`): `space-4` side padding, the strip bleeding the same way, step names 13/18, one column, full-width submit.
+- **Phone** (`@container (max-width: 860px)`): `space-4` side padding, the strip bleeding the same way, step names 14/20 (pass 12, the reading floor), one column, full-width submit. A short option list (`aq-checks--short`, set by the renderer when there are four or more options of 20 characters or fewer and no placeholder, such as news' topics) keeps two columns of 44 px cells where each is 140 px or wider (one column below that), at 14/20 type with `space-2` padding, hyphenated if a word is still too long.
 
 ## Token rules
 

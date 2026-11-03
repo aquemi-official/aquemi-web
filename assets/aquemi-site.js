@@ -173,17 +173,26 @@ var TABLE_AS={};
 var BLOCKS={};
 /* Section looks (pass 9): LOOKS[name] = function(block, heading) -> section HTML, chosen by a block's look field. */
 var LOOKS={};
-/* BackToTop: a floating button that appears once the reader is a screen and a half down the page and returns them to
-   the top. It moves focus to the logo link, so keyboard and screen-reader users land at the start of the page too.
-   Smooth scroll unless reduced motion is set. One scroll listener for the whole site; each render writes a fresh button. */
+/* BackToTop: a floating button that returns the reader to the top. Pass 12 (S1): it shows only when it is wanted and
+   never sits on what is being read: hidden until the reader is two screens down, hidden again while they scroll down
+   (reading on), shown when they scroll back up (looking for the top) or while it has keyboard focus. Two screens down
+   it is also armed: in the tab order but invisible, so a keyboard reader tabbing past the footer reaches it and it
+   appears. It moves focus to the logo link, so keyboard and screen-reader users land at the start of the page too.
+   Smooth scroll unless reduced motion is set. One scroll listener for the whole site, batched to one update per frame;
+   each render writes a fresh button. */
 function wBackToTop(){return '<button class="aq-back-to-top" type="button" id="wtop"><span class="aq-back-to-top__arrow" aria-hidden="true">↑</span><span class="aq-back-to-top__label">Back to top</span></button>'}
 if(typeof document!=='undefined'){
- var topSync=function(){var b=document.getElementById('wtop');if(b)b.classList.toggle('is-shown',window.scrollY>window.innerHeight*1.5)};
- window.addEventListener('scroll',topSync,{passive:true});window.addEventListener('resize',topSync);
+ var topY=0,topUp=false,topQ=0;
+ var topSync=function(){topQ=0;var b=document.getElementById('wtop'),y=window.scrollY||0,dy=y-topY;
+  /* direction with a small dead band, so a finger's jitter does not flicker it */
+  if(dy>6){topUp=false;topY=y}else if(dy<-6){topUp=true;topY=y}
+  if(b){b.classList.toggle('is-armed',y>window.innerHeight*2);b.classList.toggle('is-shown',y>window.innerHeight*2&&(topUp||document.activeElement===b))}};
+ var topSched=function(){if(!topQ)topQ=window.requestAnimationFrame?requestAnimationFrame(topSync):(topSync(),0)};
+ window.addEventListener('scroll',topSched,{passive:true});window.addEventListener('resize',topSched);
  document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('#wtop');if(!b)return;
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
-  var home=document.querySelector('.aq-nav__home');if(home)home.focus({preventScroll:true});b.classList.remove('is-shown')});
+  var home=document.querySelector('.aq-nav__home');if(home)home.focus({preventScroll:true});topUp=false;b.classList.remove('is-shown')});
 }
 /* Button: the hero's primary and secondary links (kind "link"), the closing, the contact routes, FAQ links and form
    notes all use it.
@@ -207,24 +216,39 @@ function wCall(label,num,kind){num=String(num||'').trim();label=String(label||''
    closing asks for (an Aquemi commitment or a test we run). Without it there is no proof box; nothing is taken from the hero.
    returns: optional list of what comes back (each ≤ 8 words: "Sizing note", "Block flow diagram"), shown beside include as
    an exchange: what you send → turnaround → what comes back. returns_label
-   overrides "What comes back"; turnaround (a placeholder until confirmed) labels the arrow between the two lists. */
+   overrides "What comes back"; turnaround (a placeholder until confirmed) labels the arrow between the two lists.
+   variant: "call" draws the exchange as a phone call (look field; contact-proposal): include is what to have ready,
+   turnaround names the line, the button (a tel: link) sits on the pipe, returns is what comes back. */
 function wClosing(c,p){if(!c||!c.h)return '';
  var f=c.proof&&c.proof.v?c.proof:null,inc=c.include&&c.include.length?c.include:null,ret=inc&&c.returns&&c.returns.length?c.returns:null;
  /* Each row: index, text; a returned document also carries a drawn sheet (aq-closing__doc, aria-hidden). */
- var list=function(cls,label,items,doc){return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
-  return '<li>'+(doc?'<span class="aq-closing__doc" aria-hidden="true"></span>':'')+idx(i)+'<span class="aq-closing__t">'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
+ /* Pass 12 (S3): phones show every item, the send list as a two-column chip grid; an item too long for half the width
+    (over 40 characters) takes the whole row (is-wide), and so does a half item that would otherwise sit alone in its
+    row (before a wide one, or last), so the grid never has a hole. Desktop ignores the class. */
+ var wides=function(items){var w=items.map(function(x){return String(x).length>40}),col=0;
+  return w.map(function(on,i){if(on){col=0;return true}if(col===0&&(i===items.length-1||w[i+1])){return true}col=1-col;return false})};
+ var list=function(cls,label,items,doc){var W=wides(items);return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
+  return '<li'+(W[i]?' class="is-wide"':'')+'>'+(doc?'<span class="aq-closing__doc" aria-hidden="true"></span>':'')+idx(i)+'<span class="aq-closing__t">'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
+ /* variant "call" (contact-proposal, pass 12): the exchange as a phone call. What to have ready, then the line itself
+    (the turnaround names it; the call button rides the pipe instead of standing under the lead), then what comes back.
+    Without include and returns it falls back to the plain closing with its button. */
+ var call=c.variant==='call'&&inc&&ret,cta=wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent);
  var send=inc?list('',c.include_label||'What to send us',inc):'';
  /* Exchange: what you send, the turnaround, what comes back, as two hairline lists on the navy */
  /* Exchange (pass 9): a small process drawn on the navy. The send rows feed a manifold (a bus down their right side), one
     pipe carries them across to the returns' manifold, and the turnaround rides the pipe as its label; each returned row
     is a drawn sheet. The pipe (aq-closing__pipe) is aria-hidden drawing; the turnaround stays real text. */
- var swap=ret?'<div class="aq-closing__plate"><div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span class="aq-closing__pipe" aria-hidden="true"><i></i></span><span class="aq-closing__turn-t">'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret,1)+'</div></div>':send;
+ /* The turnaround is a chip on the pipe; on phones it reads "Reply within [time]" (the words are hidden on desktop,
+    where the pipe already says it). A call puts its button on the pipe, under the line's name. */
+ var turn=call?'<div class="aq-closing__turn aq-closing__turn--call"><span class="aq-closing__pipe" aria-hidden="true"><i></i></span><span class="aq-closing__turn-t">'+tx(c.turnaround||'On the line')+'</span><span class="aq-closing__call">'+cta+'</span></div>'
+  :'<p class="aq-closing__turn"><span class="aq-closing__pipe" aria-hidden="true"><i></i></span><span class="aq-closing__turn-t">'+(c.turnaround?'<span class="aq-closing__within">Reply within </span>':'')+tx(c.turnaround||'')+'</span></p>';
+ var swap=ret?'<div class="aq-closing__plate"><div class="aq-closing__swap'+(call?' aq-closing__swap--call':'')+'">'+send+turn+list(' aq-closing__returns',c.returns_label||'What comes back',ret,1)+'</div></div>':send;
  /* The original closing: one centred headline, lead and button, with the brand mark large and faint, cut by the top-left corner.
     A checklist or exchange, when the page has one, sits below the button under a hairline. */
- return '<section class="aq-section aq-band--navy aq-closing aq-fx-host">'+CLOSE_WATER+MARK_CLOSE+'<div class="aq-in"><div class="aq-closing__frame">'+
+ return '<section class="aq-section aq-band--navy aq-closing aq-fx-host'+(call?' aq-closing--call':'')+'">'+CLOSE_WATER+MARK_CLOSE+'<div class="aq-in"><div class="aq-closing__frame">'+
   '<h2 class="aq-closing__h">'+tx(c.h)+'</h2>'+
   (c.body?'<p class="aq-lead aq-closing__lead">'+tx(c.body)+'</p>':'')+
-  '<div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div>'+
+  (call?'':'<div class="aq-closing__action">'+cta+'</div>')+
   (swap||f?'<div class="aq-closing__more">'+swap+(f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+'</div>':'')+
   '</div></div></section>'}
 /* The band is water (pass 9b): an FxRipple layer under everything, rings trailing the pointer and a slow drop every
@@ -252,7 +276,9 @@ function wTick(sc,intent){var pre=String(intent||'').split('|').filter(Boolean);
    if(!x.checked){x.checked=true;x.dispatchEvent(new Event('change',{bubbles:true}))}});
   var st=first&&first.closest('.aq-form__step'),cur=fm.querySelector('.aq-form__step:not([hidden])');
   if(st&&cur&&+st.dataset.step<+cur.dataset.step){var g=document.createElement('button');g.type='button';g.hidden=true;g.setAttribute('data-step-go',st.dataset.step);cur.appendChild(g);g.click();g.remove()}})}
-/* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers. */
+/* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers.
+   Only fields showing are numbered (pass 12): a conditional field still hidden gets an empty ref, and wRenum numbers
+   the refs again whenever an answer opens or closes one, so the sheet never skips (1.1, 1.2, 1.3 …). */
 function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 /* Option labels: through tx like any copy, so a [placeholder] in an option shows in the Placeholder style (careers'
    "[PP fabrication job title]", news' consent line). A checkbox or radio label holding markup (a placeholder, µ) wraps
@@ -262,6 +288,8 @@ function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').
    (wPreset) and conditional fields (data-when) match on it. */
 function wOptT(o){var t=tx(o);return t===e(o)?t:'<span>'+t+'</span>'}
 function wOptPh(o){return /\[[^\]]+\]/.test(String(o||''))}
+/* Short options (four or more, each 20 characters or fewer, no placeholder): two columns on phones (aq-checks--short) */
+function wShortOpts(o){o=o||[];return o.length>=4&&o.every(function(x){return String(x).length<=20&&!wOptPh(x)})}
 /* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form (DR-014 rule 2:
    "I am qualifying suppliers" -> cmp-quality#audit). {kind: "note", when, label, link, action, intent}: label is the
    line, link a page id or page#anchor, action the link's words (default the linked block's heading, else the page's
@@ -281,12 +309,12 @@ function wReqNow(fm){return [].filter.call(fm.querySelectorAll('[required],[data
 function wReqText(n){return '<span class="wform-req">'+n+' required</span>'}
 function wField(f,i,ref){if(f.kind==='note')return wFormNote(f);var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f.required?' required':'',hid=id+'_help',
  when=f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'',
- num=ref?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
+ num=typeof ref==='string'?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
  lab='<label class="aq-field__label" for="'+id+'">'+num+tx(f.label)+opt+'</label>',
  help=f.help?'<p class="aq-field__help" id="'+hid+'">'+tx(f.help)+'</p>':'',desc=f.help?' aria-describedby="'+hid+'"':'',inp;
  if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option'+(wOptPh(o)?' class="aq-ph"':'')+'>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'></textarea>';
- else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+wOptT(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks'+(wShortOpts(f.options)?' aq-checks--short':'')+'">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+wOptT(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
  /* File: optional unless the request cannot go without it (careers' CV); a required one is marked and checked like any
     field: required on the input, no "(optional)", counted in the title row, and Continue or Send asks for a file */
  else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+req+desc+'>';
@@ -299,16 +327,21 @@ function wFormSteps(b){var n=0,S=b.steps,k=S.length,all=[];S.forEach(function(s)
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+k+' steps · '+wReqText(wReq(all))+'</span></p>'
   +'<ol class="aq-form__progress">'+S.map(function(s,i){return '<li'+(i?'':' aria-current="step"')+'>'+tx(s.title)+'</li>'}).join('')+'</ol>'
   +S.map(function(s,i){var q=0;return '<fieldset class="aq-form__section aq-form__step" data-step="'+i+'"'+(i?' hidden':'')+'><legend class="aq-form__legend"><span class="aq-form__num">'+(i+1)+'.0</span> Step '+(i+1)+' of '+k+': '+tx(s.title)+'</legend>'
-   +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd){return wField(fd,fd._n,fd.kind==='note'?'':(i+1)+'.'+(++q))}).join('')+'</div>'
+   +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd){return wField(fd,fd._n,fd.kind==='note'||fd._show===false?'':(i+1)+'.'+(++q))}).join('')+'</div>'
    +'<div class="aq-form__actions">'+(i?'<button class="aq-btn aq-btn--secondary" type="button" data-step-go="'+(i-1)+'">Back</button>':'')+(i<k-1?'<button class="aq-btn aq-btn--primary" type="button" data-step-go="'+(i+1)+'">'+tx(s.next||'Continue')+' <span class="aq-btn__arrow">→</span></button>':'<button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button>')+'</div>'
    +(i===k-1&&b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+(i===k-1?'<span class="aq-small wform-msg" role="status"></span>':'')+'</fieldset>'}).join('')
   +'</form>'}
+/* Item numbers of the fields showing, per numbered section ("2.0" numbers its items 2.1, 2.2 …); a ref inside a hidden
+   conditional field is emptied (CSS hides an empty ref). */
+function wRenum(fm){[].forEach.call(fm.querySelectorAll('.aq-form__section'),function(sc){var n=sc.querySelector('.aq-form__num'),pre=n?String(n.textContent).split('.')[0]:'',q=0;
+ [].forEach.call(sc.querySelectorAll('.aq-form__ref'),function(r){var w=r.closest('[data-when]');r.textContent=w&&w.hidden?'':pre+'.'+(++q)})})}
 /* Conditional fields: data-when="A|B" shows the field while any listed option is ticked. Ticks inside a hidden field do not count,
-   so a follow-up question disappears with its parent (three passes cover two levels of nesting). Then the title row's
-   required count follows what now shows. */
+   so a follow-up question disappears with its parent (three passes cover two levels of nesting). Then the item numbers
+   and the title row's required count follow what now shows. */
 document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var ws=fm.querySelectorAll('[data-when]');
  for(var k=0;k<3;k++){var on=[].filter.call(fm.querySelectorAll('input:checked'),function(x){var w=x.closest('[data-when]');return !w||!w.hidden}).map(function(x){return x.value});
   ws.forEach(function(w){w.hidden=!w.dataset.when.split('|').some(function(v){return on.indexOf(v)>=0})})}
+ wRenum(fm);
  var rq=fm.querySelector('.wform-req');if(rq)rq.textContent=wReqNow(fm)+' required'});
 /* Validation feedback (the form is novalidate, so the messages are ours and read the same everywhere). A field is checked
    when the visitor leaves it after typing, re-checked live while it shows an error, and every visible field of the step
@@ -380,8 +413,15 @@ var ART={
  'ind-pharma':'Mixing vessel for oral liquids and creams, fed from a Purified Water point-of-use valve',
  'ind-biotech':'Jacketed bioprocess vessel with agitator drive, sanitary piping, valves and control box',
  'ind-meddevice':'Washer-disinfector with instrument racks and spray arms, fed by a purified water line',
- 'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop'
+ 'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop',
+ 'ind-personal-care':'Water treatment skid with cartridge filters, membrane housings and a tank, piped to a mixing vessel with agitator and a bottle filler, a hose reel on the wall',
+ 'ind-hospital-lab':'Plant room with a membrane skid, pumps and a storage tank, its loop rising to a washer-disinfector and a lab bench sink on the floor above',
+ 'ind-process':'Membrane skid with filter vessels on a plinth, one pipe teeing to a cabinet, an open rinse tank and a plate-stack unit'
 };
+/* Width / height of each drawing in ART (the PNG mask's own ratio). On phones the hero's drawing box takes this ratio,
+   never taller than 5:4 (ART_R below 1.25 keeps the 5:4 box), so a wide drawing runs the full gutter width with no
+   empty band above or below it. A page missing here keeps the 5:4 box. */
+var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':1.05,'ind-meddevice':0.91,'ind-personal-care':1.74,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.51,'svc-service':1,'svc-upgrades':1.05,'sys-monitoring':0.69,'sys-pretreatment':1.18,'sys-pure-steam':0.65,'sys-pw':0.93,'sys-storage':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91};
 function artMask(id){var u='url(assets/illustrations/'+id+'.webp)';return '-webkit-mask-image:'+u+';mask-image:'+u}
 /* Equipment figure (sys-, svc-, ind- pages with a drawing): the drawing large and dominant, up to four key facts as
    callouts round it, each joined to the drawing by a leader line ending in a dot. Callouts come in two lists: the top
@@ -397,10 +437,27 @@ function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=
   if(wide){x0=left?32.4:87.6;y0=top?13:87;x1=12+96*a[0];y1=2+96*a[1]}else{x0=left?47:53;y0=top?0:80;x1=10+80*a[0];y1=80*a[1]}
   o+='<line x1="'+x0+'" y1="'+y0+'" x2="'+x1.toFixed(1)+'" y2="'+y1.toFixed(1)+'"/><circle cx="'+x1.toFixed(1)+'" cy="'+y1.toFixed(1)+'" r="'+(wide?0.9:1.1)+'"/><circle class="is-start" cx="'+x0+'" cy="'+y0+'" r="'+(wide?0.6:0.8)+'"/>'}
  return '<svg class="aq-hero__leaders aq-hero__leaders--'+(wide?'wide':'narrow')+'" viewBox="0 0 '+(wide?'120 100':'100 80')+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+o+'</svg>'}
-function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'};
- return '<figure class="aq-hero__figure">'
+/* Phone pins (pass 12, S16): on phones the leaders give way to numbered dots on the drawing, and the callouts follow the
+   drawing as numbered rows. Hidden on desktop, aria-hidden (the callouts carry the text).
+   Anchors: HERO_AT_P[page] where the generic HERO_AT slot would mark the wrong part (a numbered pin reads as "this part
+   is that row"), else HERO_AT; both are fractions of the square drawing box. Desktop leaders keep HERO_AT.
+   Placement: the phone box has ratio R (--art-r), the drawing (ratio r, ART_R) sits in it contained and centred, and its
+   square box (side = the drawing's longer side) is centred on it, so a pin lands at 50 % + (a - 0.5) x side / box. */
+var HERO_AT_P={
+ 'sys-storage':[[0.40,0.36],[0.115,0.37],[0.62,0.42]],
+ 'sys-pw':[[0.40,0.36],[0.92,0.47]],
+ 'sys-pretreatment':[[0.40,0.36],[0.62,0.32],[0.885,0.555],[0.65,0.665]]
+};
+function heroPins(n,id,R){var at=HERO_AT_P[id]||HERO_AT,r=ART_R[id]||1,w=r>=R?1:r/R,h=r>=R?1/r:1/R,S=Math.max(w,h),o='';
+ for(var i=0;i<n;i++){var a=at[i]||HERO_AT[i];o+='<span class="aq-hero__pin" style="left:'+(50+(a[0]-0.5)*S*100).toFixed(1)+'%;top:'+(50+(a[1]-0.5)*S*R*100).toFixed(1)+'%">'+(i+1)+'</span>'}
+ return n?'<span class="aq-hero__pins" aria-hidden="true">'+o+'</span>':''}
+/* The phone box: the drawing's own ratio, never taller than 5:4; a system page's drawing (hero--mist, pins on it) may
+   go down to square, so a near-square drawing runs the full gutter width (S9). */
+function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,/^sys-/.test(id)?1:1.25):1.25}
+function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'},r=ART_R[p.id],R=heroBoxR(p.id);
+ return '<figure class="aq-hero__figure"'+(r?' style="--art-r:'+R+'"':'')+'>'
   +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
-  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span><span class="aq-hero__scan" aria-hidden="true"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
+  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span><span class="aq-hero__scan" aria-hidden="true"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false)+heroPins(n,p.id,R):'')+'</div>'
   +(n>2?'<dl class="aq-hero__callouts aq-hero__callouts--bottom">'+facts.slice(2,4).map(co).join('')+'</dl>':'')+'</figure>'}
 /* Hero sheet (pass 9): a faint drawing-sheet ground behind every hero, aria-hidden: small registration crosses on a
    48 px grid, masked so they gather behind the right-hand figure and fade out before the headline. Pure decoration;
@@ -434,23 +491,34 @@ function wHeroIndex(x){var n=x.items.length;
    drawing has no generation or tank to show one upstream. The heat exchanger is labelled with sys-storage's placeholder,
    "[heat exchanger, standard or option]" (aq-loop__ph, the placeholder's mono), since drawn as standard it would read as
    hot-water sanitization (DR-013). The weight sits on the diagonal: sensors top right, heat exchanger bottom left. */
+/* Phones (pass 12): the same loop turned on its side (matrix(0 -1 1 0 0 440): x' = y, y' = 440 - x) in a 515 x 255
+   box, so it runs the full gutter width at about 170 px tall; its SVG labels would paint at 7 px there, so the parts
+   carry numbered pins (HTML, LOOP_PINS in percent of that box) and the labels move to a 2 x 2 legend under the drawing,
+   at reading size, under a caption naming the loop. Both drawings are in the markup; CSS shows one. */
+var LOOP_PINS=[[19.6,7.1,'CE · USP <645>'],[28.2,7.1,'TOC · USP <643>'],[68.5,94.1,'[heat exchanger, standard or option]'],[91.1,67.5,'Furthest point of use']];
 function wHomeLoop(){
  var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
  var label=function(x,y,s,a,c){return '<text'+(c?' class="'+c+'"':'')+' x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
+ var pipe='<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
+  arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
+  '<g class="aq-loop__part"><rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
+  '<line x1="300" y1="Y1" x2="324" y2="Y1"/><circle cx="336" cy="Y1" r="12"/><line x1="300" y1="Y2" x2="324" y2="Y2"/><circle cx="336" cy="Y2" r="12"/>'+
+  '<path d="M220,470 L220,480 M206,480 L206,492 L234,480 L234,492 Z"/></g>';
+ /* the sensors sit 34 apart on the wide drawing, 44 apart on the phone one so their pins do not touch */
+ var sensors=function(a,b){return pipe.replace(/Y1/g,a).replace(/Y2/g,b)};
+ var phone='<div class="aq-loop__phone"><p class="aq-loop__cap">Distribution loop · PP</p><div class="aq-loop__band">'+
+  '<svg class="aq-loop__svg aq-loop__svg--narrow" viewBox="12 86 515 255" aria-hidden="true" focusable="false"><g transform="matrix(0 -1 1 0 0 440)">'+sensors(113,157)+'</g></svg>'+
+  LOOP_PINS.map(function(q,i){return '<span class="aq-hero__pin" style="left:'+q[0]+'%;top:'+q[1]+'%">'+(i+1)+'</span>'}).join('')+'</div>'+
+  '<ol class="aq-loop__legend">'+LOOP_PINS.map(function(q,i){return '<li><span class="aq-hero__pin">'+(i+1)+'</span><span>'+tx(q[2])+'</span></li>'}).join('')+'</ol></div>';
  return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a heat exchanger on the loop, standard or option still to be confirmed, conductivity and TOC sensors on the return, a valve at the furthest point of use, and flow arrows.">'+
- '<svg viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+
- '<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
- arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
- '<g class="aq-loop__part"><rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
- '<line x1="300" y1="118" x2="324" y2="118"/><circle cx="336" cy="118" r="12"/><line x1="300" y1="152" x2="324" y2="152"/><circle cx="336" cy="152" r="12"/>'+
- '<path d="M220,470 L220,480 M206,480 L206,492 L234,480 L234,492 Z"/></g>'+
+ '<svg class="aq-loop__svg aq-loop__svg--wide" viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+sensors(118,152)+
  '<g class="aq-loop__lead"><line x1="108" y1="365" x2="126" y2="365"/></g>'+
  '<g class="aq-loop__text">'+label(0,14,'Distribution loop · PP')+
   '<text class="aq-loop__tag" x="336" y="121" text-anchor="middle">CE</text><text class="aq-loop__tag" x="336" y="155" text-anchor="middle">TOC</text>'+
   label(352,122,'USP <645>')+label(352,156,'USP <643>')+
   label(104,362,'[heat exchanger,','end','aq-loop__ph')+label(104,374,'standard or option]','end','aq-loop__ph')+
   label(244,483,'Furthest point of use')+
- '</g></svg></figure>'}
+ '</g></svg>'+phone+'</figure>'}
 /* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area
    on surface (no frame), always aria-hidden; the headline and lead carry the meaning.
    - {"spots": ["ro-skid", "storage-tank", "pure-steam-generator"], "label": "…"}: 2-4 Spot vignettes (an Icon name
@@ -511,7 +579,7 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'" data-hero="'+e(p.id)+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* IsoKit: the shared isometric line-drawing kit (README: design-system/components/IsoKit/README.md). Every look that
    draws equipment, pipes, water or drawing-sheet furniture builds it here, so all sections read as one hand.
    World axes: x runs to the lower right, y to the lower left, z up; 30° isometric, 1 world unit = 1 user unit along an
@@ -1139,6 +1207,116 @@ if(typeof document!=='undefined'){
  document.addEventListener('click',function(ev){var b=ev.target&&ev.target.closest&&ev.target.closest('#wmenu');if(b&&!b.isConnected){var t=document.getElementById('wmenu');if(t)t.focus()}});
  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&WMENU&&!ev.defaultPrevented){var t=document.getElementById('wmenu');if(t){t.click();t=document.getElementById('wmenu');if(t)t.focus()}}});
 }
+/* PhoneKit (pass 12): the shared phone behaviour for looks, opted into with data attributes only (no load-order
+   coupling; markup contract in design-system/components/PhoneKit/README.md). Two behaviours, each active only while
+   the root's page container (.aq-page, the box the looks' @container rules measure) is at most the root's breakpoint
+   (data-pk-bp, default 860 px); above it nothing changes, and growing past it restores the desktop state.
+   It is site script, not motion: it runs the same with reduced motion (no transitions then).
+   - Picker / accordion (S11): [data-pk-picker="accordion|chips"] > [data-pk-item] with a [data-pk-head] (a button) and
+     a [data-pk-body]; one open at a time (data-pk-open, default 0). aria-expanded and aria-controls on the heads;
+     Enter and Space open a head, arrow keys move between chips.
+   - Sticky compact figure (S8): [data-pk-sticky] with a [data-pk-fig] strip (data-pk-h, 96-220 px, default 160) held
+     under the header while [data-pk-row="<key>"] rows scroll; the row on the reading line (30 % of the view below the
+     strip) gets .is-pk-active, as do the figure's [data-pk-key="<key>"] targets, and the root data-pk-active="<key>".
+     Optional data-pk-zoom="<scale>" pans and zooms the figure's [data-pk-pan] layer to the active target.
+   Both dispatch pk:change on the root (detail: key, index, on); switching off sends index -1, on false.
+   window.AQpk: scan(), on(root), line(root), open(root, index). */
+var AQpk=(function(){
+ if(typeof document==='undefined'||!document.addEventListener)return null;
+ var R=[],uid=0,q=0,rm=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null,RO=window.ResizeObserver?new ResizeObserver(sched):null,seen=[];
+ function A(sel,root){return [].slice.call(root.querySelectorAll(sel))}
+ /* the root's own parts (a nested PhoneKit root keeps its own) */
+ function own(root,sel){var t=root.hasAttribute('data-pk-picker')?'[data-pk-picker]':'[data-pk-sticky]';return A(sel,root).filter(function(x){return x.closest(t)===root})}
+ function page(root){return root.closest('.aq-page')||document.documentElement}
+ function fits(root){var bp=+root.getAttribute('data-pk-bp')||860;return page(root).clientWidth<=bp}
+ function emit(root,key,i,on){var ev;try{ev=new CustomEvent('pk:change',{bubbles:true,detail:{key:key,index:i,on:on}})}catch(_){ev=document.createEvent('CustomEvent');ev.initCustomEvent('pk:change',true,false,{key:key,index:i,on:on})}root.dispatchEvent(ev)}
+
+ /* ---- picker / accordion ---- */
+ function parts(root){return own(root,'[data-pk-item]').map(function(it){return {it:it,h:it.querySelector('[data-pk-head]'),b:it.querySelector('[data-pk-body]')}})}
+ function show(root,k,keep){var P=parts(root),chips=root.getAttribute('data-pk-picker')==='chips',y=keep&&keep.getBoundingClientRect().top;
+  if(!chips&&k===root._pkOpen)k=-1;/* an accordion head closes its own row; chips always show one card */
+  if(chips&&!(k>=0))k=0;
+  root._pkOpen=k;
+  P.forEach(function(p,i){var on=i===k;p.it.classList.toggle('is-pk-open',on);if(p.h)p.h.setAttribute('aria-expanded',on?'true':'false');if(p.b)p.b.hidden=!on;
+   /* chips: one tab stop for the group (the open chip), so Tab runs chip -> open card -> on; arrows move between chips */
+   if(chips&&p.h)p.h.tabIndex=on?0:-1});
+  /* the row the reader tapped stays where it was, so a long body closing above it never throws the page */
+  if(keep){var d=keep.getBoundingClientRect().top-y;if(Math.abs(d)>1)window.scrollBy(0,d)}
+  var it=P[k]&&P[k].it;emit(root,it?(it.getAttribute('data-pk-item')||String(k)):null,k,true)}
+ function pickOn(root){var P=parts(root),k=root._pkOpen;if(k==null){k=+(root.getAttribute('data-pk-open')||0);if(!(k>=-1&&k<P.length))k=0}
+  P.forEach(function(p,i){if(!p.b||!p.h)return;if(p.b._pkH==null)p.b._pkH=p.b.hidden;if(p.h._pkTi===undefined)p.h._pkTi=p.h.getAttribute('tabindex');if(!p.b.id){p.b.id='pk-'+root._pkId+'-'+i;p.b._pkOwnId=1}
+   p.h.setAttribute('aria-controls',p.b.id);if(p.h.tagName!=='BUTTON'){p.h.setAttribute('role','button');if(!p.h.hasAttribute('tabindex'))p.h.tabIndex=0}});
+  root._pkOpen=null;show(root,k)}
+ function pickOff(root){parts(root).forEach(function(p){p.it.classList.remove('is-pk-open');if(p.h)p.h.removeAttribute('aria-expanded');if(p.h)p.h.removeAttribute('aria-controls');if(p.b&&p.b._pkH!=null)p.b.hidden=p.b._pkH;if(p.b&&p.b._pkOwnId){p.b.removeAttribute('id');p.b._pkOwnId=0}
+  if(p.h&&p.h._pkTi!==undefined){if(p.h._pkTi==null)p.h.removeAttribute('tabindex');else p.h.setAttribute('tabindex',p.h._pkTi);p.h._pkTi=undefined}})}
+ document.addEventListener('click',function(ev){var h=ev.target.closest&&ev.target.closest('[data-pk-head]');if(!h)return;var root=h.closest('[data-pk-picker]');if(!root||!root.hasAttribute('data-pk-on'))return;
+  var P=parts(root),k=-1;P.forEach(function(p,i){if(p.h===h)k=i});if(k<0)return;ev.preventDefault();
+  if(root.getAttribute('data-pk-picker')!=='chips')show(root,k,h);else if(k!==root._pkOpen)show(root,k)});
+ document.addEventListener('keydown',function(ev){var h=ev.target.closest&&ev.target.closest('[data-pk-head]');if(!h)return;var root=h.closest('[data-pk-picker]');if(!root||!root.hasAttribute('data-pk-on'))return;
+  if((ev.key==='Enter'||ev.key===' ')&&h.tagName!=='BUTTON'){ev.preventDefault();h.click();return}
+  var d={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[ev.key];if(!d||root.getAttribute('data-pk-picker')!=='chips')return;
+  var H=parts(root).map(function(p){return p.h}),i=H.indexOf(h);if(i<0)return;ev.preventDefault();
+  /* selection follows focus (the tabs pattern): the chip moved to opens its card and becomes the group's tab stop */
+  var j=i;do{j=(j+d+H.length)%H.length}while(!H[j]&&j!==i);if(j===i)return;show(root,j);H[j].focus()});
+
+ /* ---- sticky compact figure ---- */
+ /* the header line the strip sits under: the page's section bar while it shows (it tucks away on scroll down), else 0 */
+ function top(){var b=document.querySelector('.aq-section-nav');return b&&!b.classList.contains('is-tucked')&&b.getBoundingClientRect().top<=1?Math.round(b.getBoundingClientRect().height):0}
+ function hOf(root){var h=+root.getAttribute('data-pk-h')||160;return Math.max(96,Math.min(220,h))}
+ function line(root){var t=root._pkTop||0,h=hOf(root);return t+h+(window.innerHeight-t-h)*0.3}
+ function stickOn(root){root.style.setProperty('--pk-h',hOf(root)+'px');root._pkKey=undefined;spy(root)}
+ function stickOff(root){root._pkLift=0;['--pk-h','--pk-top','--pk-x','--pk-y','--pk-s','--pk-lift'].forEach(function(v){root.style.removeProperty(v)});root.removeAttribute('data-pk-active');
+  own(root,'.is-pk-active').forEach(function(x){x.classList.remove('is-pk-active')});root._pkKey=undefined;root._pkTop=undefined;
+  own(root,'[data-pk-pan]').forEach(function(x){if(x._pkOwn){x.removeAttribute('data-pk-pan');x._pkOwn=0}});if(root.getAttribute('style')==='')root.removeAttribute('style')}
+ function zoom(root,T){var s=+root.getAttribute('data-pk-zoom'),fig=own(root,'[data-pk-fig]')[0],pan=fig&&(fig.querySelector('[data-pk-pan]')||fig.firstElementChild);if(!s||!pan)return;
+  if(!pan.hasAttribute('data-pk-pan')){pan.setAttribute('data-pk-pan','');pan._pkOwn=1}
+  /* measured against the layer's transform as drawn now (it may be mid-transition), so the maths never drifts */
+  var M=getComputedStyle(pan).transform,v=M&&M!=='none'?M.match(/-?[\d.e]+/g):null,cur=v?+v[0]||1:1,e=v?+v[4]:0,g=v?+v[5]:0;
+  var p=pan.getBoundingClientRect(),f=fig.getBoundingClientRect(),w=p.width/cur,h=p.height/cur,ox=p.left-f.left,oy=p.top-f.top;
+  /* the layer's untransformed origin inside the figure: where it is drawn now, less the translation applied */
+  var bx=ox-e,by=oy-g;
+  var cx=w/2,cy=h/2;if(T.length){var t=T[0].getBoundingClientRect();cx=(t.left-p.left+t.width/2)/cur;cy=(t.top-p.top+t.height/2)/cur}else s=1;
+  var x=f.width/2-bx-s*cx,y=f.height/2-by-s*cy;
+  x=s*w<=f.width?(f.width-s*w)/2-bx:Math.min(-bx,Math.max(f.width-bx-s*w,x));
+  y=s*h<=f.height?(f.height-s*h)/2-by:Math.min(-by,Math.max(f.height-by-s*h,y));
+  root.style.setProperty('--pk-s',String(s));root.style.setProperty('--pk-x',Math.round(x)+'px');root.style.setProperty('--pk-y',Math.round(y)+'px')}
+ /* the last row never slides under the strip: as it rises to the strip's foot the strip lifts off with it (--pk-lift,
+    a translate, no transition), so the section's last step reads whole while the strip still holds */
+ function lift(root){var rows=own(root,'[data-pk-row]'),fig=own(root,'[data-pk-fig]')[0];if(rows.length<2||!fig)return;
+  var cur=root._pkLift||0,fb=fig.getBoundingClientRect().bottom+cur,lt=rows[rows.length-1].getBoundingClientRect().top,v=Math.max(0,Math.round(fb+16-lt));
+  if(v!==cur){root._pkLift=v;if(v)root.style.setProperty('--pk-lift',v+'px');else root.style.removeProperty('--pk-lift')}}
+ function spy(root){var t=top();if(t!==root._pkTop){root._pkTop=t;root.style.setProperty('--pk-top',t+'px')}
+  lift(root);
+  var rows=own(root,'[data-pk-row]');if(!rows.length)return;var L=line(root),a=rows[0];
+  rows.forEach(function(r){if(r.getBoundingClientRect().top<=L)a=r});
+  var key=a.getAttribute('data-pk-row');if(key===root._pkKey)return;root._pkKey=key;
+  rows.forEach(function(r){r.classList.toggle('is-pk-active',r===a)});
+  var T=own(root,'[data-pk-key]').filter(function(x){var on=(' '+x.getAttribute('data-pk-key')+' ').indexOf(' '+key+' ')>=0;x.classList.toggle('is-pk-active',on);return on});
+  root.setAttribute('data-pk-active',key);zoom(root,T);emit(root,key,rows.indexOf(a),true)}
+
+ /* ---- switching ---- */
+ function set(root,on){if(on===!!root._pkOn)return;root._pkOn=on;var pick=root.hasAttribute('data-pk-picker');
+  if(on){root.setAttribute('data-pk-on','');if(pick)pickOn(root);else stickOn(root)}
+  else{root.removeAttribute('data-pk-on');if(pick)pickOff(root);else stickOff(root);emit(root,null,-1,false)}}
+ function scan(){R=R.filter(function(r){return r.isConnected});
+  A('[data-pk-picker],[data-pk-sticky]',document).forEach(function(root){if(root._pkId)return;root._pkId=++uid;R.push(root);
+   var pg=page(root);if(RO&&seen.indexOf(pg)<0){seen.push(pg);RO.observe(pg)}});
+  seen=seen.filter(function(p){return p.isConnected});
+  R.forEach(function(root){set(root,fits(root))})}
+ function sticks(f){R.forEach(function(root){if(root.isConnected&&root._pkOn&&root.hasAttribute('data-pk-sticky'))f(root)})}
+ function tick(){q=0;sticks(spy)}
+ function sched(){scan();if(!q)q=requestAnimationFrame(function(){requestAnimationFrame(tick)})}
+ /* the lift follows the scroll in the next frame; the reading line a frame later (after the section bar has tucked) */
+ window.addEventListener('scroll',function(){if(!q)q=requestAnimationFrame(function(){sticks(lift);requestAnimationFrame(tick)})},{passive:true});
+ window.addEventListener('resize',sched,{passive:true});
+ /* new markup (every page render) is set up before it is painted: the observer's callback runs ahead of the next frame */
+ var SEL='[data-pk-picker],[data-pk-sticky]';
+ function has(n){return n.nodeType===1&&(n.matches(SEL)||!!n.querySelector(SEL))}
+ if(window.MutationObserver)new MutationObserver(function(M){for(var i=0;i<M.length;i++)for(var j=0;j<M[i].addedNodes.length;j++)if(has(M[i].addedNodes[j])){sched();return}}).observe(document.documentElement,{childList:true,subtree:true});
+ if(document.readyState!=='loading')sched();else document.addEventListener('DOMContentLoaded',sched);
+ return window.AQpk={scan:scan,on:function(root){return !!(root&&root._pkOn)},line:line,
+  open:function(root,k){if(root&&root._pkOn&&root.hasAttribute('data-pk-picker'))show(root,k)},reduced:function(){return !!(rm&&rm.matches)}};
+})();
 /* ProcessDiagram: a treatment train as an interactive piping flow in a Plate (also drawn by WaterPath).
    Desktop: one row of stations (Spot vignette in a hairline box, index, name) joined by a double-hairline
    flow pipe with arrows; the stations are toggle buttons and the selected one tints the pipe up to it and opens
@@ -1323,7 +1501,13 @@ BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[])
    The route for the page being read (current: true, or link = this page) is marked "This page" and its action scrolls
    to this page's form; the others link to their pages (action label defaults to that page's nav label; intent ticks
    options on its form). The urgent route comes first in the markup, so phones show it first; desktop keeps the data
-   order (--o). Every clock stays the page's own placeholder until confirmed. */
+   order (--o). Every clock stays the page's own placeholder until confirmed.
+   Phones (pass 12, visual audit S11): the urgent route stays first and whole, its number a full-width call button; the
+   other routes are compact (title, response line, action) with their steps behind a "How it works" toggle
+   (button.__how, aria-expanded, works with motion off; desktop never shows the toggle and always shows the steps); the
+   route for this page is one line, its title as an anchor to this page's form (a.__jump, phone only). The tab's number
+   is the data order on desktop (__rn-d) and the phone's own order on phones (__rn-p: urgent first), so phones read
+   Route 1, 2, 3 down the stack; CSS shows one of the two. */
 var CR_CLOCK=wIcon('clock','aq-contact-routes__icon');
 var CR_PHONE=wIcon('phone','aq-contact-routes__icon');
 /* The call line's number: wtel in core.js, the one phone rule (a tel: link once confirmed, the placeholder until then) */
@@ -1333,24 +1517,32 @@ BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
  PB.forEach(function(x,i){if(fi<0&&x.type==='form')fi=i});
  var fid=fi>=0&&PB[fi].nav?jid(PB[fi],fi):'';
  var order=R.map(function(r,i){return i}).sort(function(a,c){return (R[c].urgent?1:0)-(R[a].urgent?1:0)||a-c});
- var cards=order.map(function(i){var r=R[i],cur=!!(r.current||(r.link&&r.link===p.id)),urg=!!r.urgent,S=r.steps||[];
-  var go=cur?'<a class="aq-btn aq-btn--primary" href="#'+e(p.id||WP)+'" '+(fid?'data-jump="'+e(fid)+'"':'data-routes-form=""')+'>'+tx(r.action||'Use the form below')+' <span class="aq-btn__arrow" aria-hidden="true">↓</span></a>'
+ var cards=order.map(function(i,k){var r=R[i],cur=!!(r.current||(r.link&&r.link===p.id)),urg=!!r.urgent,S=r.steps||[];
+  var to='href="#'+e(p.id||WP)+'" '+(fid?'data-jump="'+e(fid)+'"':'data-routes-form=""'),sid='crs-'+e(p.id||WP)+'-'+i;
+  var go=cur?'<a class="aq-btn aq-btn--primary" '+to+'>'+tx(r.action||'Use the form below')+' <span class="aq-btn__arrow" aria-hidden="true">↓</span></a>'
    :r.link&&wp(r.link)?wBtn(r.action||wp(r.link).nav_label||r.link,r.link,'secondary',r.intent):'';
   return '<li class="aq-contact-routes__route'+(urg?' is-urgent':'')+(cur?' is-current':'')+'" style="--o:'+i+'" data-theme="'+(urg?'dark':'light')+'"'+(cur?' aria-current="page"':'')+'>'
-   +'<p class="aq-contact-routes__tab"><span class="aq-contact-routes__rn">Route '+(i+1)+'</span>'
+   +'<p class="aq-contact-routes__tab"><span class="aq-contact-routes__rn">Route <span class="aq-contact-routes__rn-d">'+(i+1)+'</span><span class="aq-contact-routes__rn-p">'+(k+1)+'</span></span>'
     +(urg?'<span class="aq-contact-routes__mark">Urgent</span>':'')
     +(cur?'<span class="aq-contact-routes__mark">This page</span>':'')+'</p>'
    +'<div class="aq-contact-routes__body"><div class="aq-contact-routes__main"><h3 class="aq-contact-routes__t">'+tx(r.t)+'</h3>'
     +(r.d?'<p class="aq-contact-routes__d">'+tx(r.d)+'</p>':'')+'</div>'
    +(r.phone?'<p class="aq-contact-routes__call">'+CR_PHONE+'<span class="aq-contact-routes__k">Call</span>'+crPhone(r.phone)+'</p>':'')
-   +(S.length?'<ol class="aq-contact-routes__steps">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__node" aria-hidden="true"></span><span class="aq-contact-routes__n" aria-hidden="true">'+(k<9?'0':'')+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span></li>'}).join('')+'</ol>':'')+'</div>'
+   +(S.length?'<button type="button" class="aq-contact-routes__how" aria-expanded="false" aria-controls="'+sid+'">How it works<span class="aq-contact-routes__chev" aria-hidden="true"></span></button>':'')
+   +(S.length?'<ol class="aq-contact-routes__steps" id="'+sid+'">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__node" aria-hidden="true"></span><span class="aq-contact-routes__n" aria-hidden="true">'+(k<9?'0':'')+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span></li>'}).join('')+'</ol>':'')+'</div>'
    +(r.clock?'<p class="aq-contact-routes__clock"><span class="aq-contact-routes__end" aria-hidden="true">'+CR_CLOCK+'</span><span class="aq-contact-routes__k">Response</span><span class="aq-contact-routes__v">'+tx(r.clock)+'</span></p>':'<span class="aq-contact-routes__clock is-empty" aria-hidden="true"></span>')
    +'<div class="aq-contact-routes__action">'+go+'</div>'
+   +(cur&&!urg?'<a class="aq-contact-routes__jump" '+to+'><span>'+tx(r.t)+'</span><span class="aq-contact-routes__jump-arrow" aria-hidden="true">↓</span></a>':'')
    +'</li>'}).join('');
  return sec(H+'<ul class="aq-contact-routes" style="--routes:'+R.length+'">'+cards+'</ul>','aq-band--navy aq-contact-routes-sec');};
 /* Fallback for a page whose form has no nav id: scroll to the first form after the routes */
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-routes-form]');if(!a)return;var f=document.querySelector('.wform');if(!f)return;ev.preventDefault();
  (f.closest('section')||f).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
+/* Phone "How it works" toggle: opens or closes that route's steps (aria-expanded on the button; the CSS shows the steps
+   only while it reads true, below 860 px). With motion on, the beam then runs the opened rail once. */
+document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-contact-routes__how');if(!b)return;
+ var open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',open?'true':'false');
+ var li=b.closest('.aq-contact-routes__route');if(open&&li&&window.AQrouteBeam)setTimeout(function(){AQrouteBeam(li)},30)});
 /* Block "diagram" -> ProcessDiagram. Fields: stages [names, 5 to 7], optional base (what spans every stage), caption. */
 BLOCKS['diagram']=function(b,H){return sec(H+wDiagram(b)+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':''));};
 /* Block "docs" -> DocList: the documents delivered with a system as a hairline list. Each row: the index, the short
@@ -1487,7 +1679,7 @@ TABLE_AS.failures=function(b,H){var C=b.cols||[],R=b.rows||[];faultN++;
    wPreset ticks the options named by the linking button's intent before rendering.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
    email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them.
-   A note (kind "note", parts/EnquiryForm.js) takes no number. The title row counts the required fields showing (wReq).
+   A note (kind "note", parts/EnquiryForm.js) takes no number, nor does a conditional field until it shows (wRenum). The title row counts the required fields showing (wReq).
    Block note (b.note, one line such as the privacy notice link): under the submit, in both shapes. A stepped form draws
    it under its last step's actions; a single sheet in its submit band, on its own line under the button (aq-form__note,
    the same small line). */
@@ -1500,7 +1692,7 @@ BLOCKS['form']=function(b,H){
  var L1=F.some(function(f){return f.unit})?'System data':'Details',
   L2=F.slice(cut).some(function(f){return /\bsite\b/i.test(f.label||'')})?'Site and contact':'Contact';
  F.forEach(function(f,i){var l=f.section||(i===0?L1:i===cut?L2:'');if(l||!G.length)G.push({l:l||L1,f:[]});G[G.length-1].f.push(i)});
- var body=G.map(function(g,gi){var n=gi+1,q=0;return '<fieldset class="aq-form__section"><legend class="aq-form__legend"><span class="aq-form__num">'+n+'.0</span> '+tx((b.sections&&b.sections[gi])||g.l)+'</legend><div class="aq-form__grid">'+g.f.map(function(i){return wField(F[i],i,F[i].kind==='note'?'':n+'.'+(++q))}).join('')+'</div></fieldset>'}).join('');
+ var body=G.map(function(g,gi){var n=gi+1,q=0;return '<fieldset class="aq-form__section"><legend class="aq-form__legend"><span class="aq-form__num">'+n+'.0</span> '+tx((b.sections&&b.sections[gi])||g.l)+'</legend><div class="aq-form__grid">'+g.f.map(function(i){return wField(F[i],i,F[i].kind==='note'||F[i]._show===false?'':n+'.'+(++q))}).join('')+'</div></fieldset>'}).join('');
  return split(H,
   '<form class="aq-form wform" novalidate>'
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+wReqText(wReq(F))+'</span></p>'
@@ -1547,6 +1739,81 @@ BLOCKS['grid'].route=function(b,H){var I=b.items||[],n=I.length,C=n<=4?n:(n%4===
    inner='<span class="aq-visit-route__fig" aria-hidden="true">'+(sp?wSpot(it.spot,'l','aq-visit-route__spot'):'')+tag+'</span>'
     +(end?'<span class="aq-visit-route__cap">Sign-off</span>':'')+'<h3 class="aq-visit-route__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-visit-route__d">'+tx(it.d)+'</p>':'');
   return '<li class="'+cls.join(' ')+'" style="--c:'+c+';--r:'+(r+1)+'">'+(it.link&&wp(it.link)?'<a class="aq-visit-route__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-visit-route__body">'+inner+'</div>')+'</li>'}).join('')+'</ol>',{cls:'aq-visit-route__plate'}));};
+/* Look "application-wheel" -> ApplicationWheel (design-system/components/ApplicationWheel): where one water goes, as
+   an application wheel. One Purified Water package (IsoKit line art) sits in the hub inside its loop ring; round it
+   the wheel splits into one numbered segment per group. Each group's block stands beside its segment (three right,
+   three left, clockwise from the top right): number, name (the link to its page), its limit tag, and its plant words
+   (the uses) as a numbered list. A hairline leader runs from each block into its segment. Pointing at a block (or
+   its segment) lights both.
+   Concept: design-system/inspiration/gemini/191-p12-industries-map.png (idea only: no copy, numbers or labels).
+   Fields (a grid block): h, intro, items [{t, tag, link, d}]. d is the list of uses, split into plant words at
+   commas and semicolons (a final period dropped). Best for six groups (four to eight draw; the side columns take
+   half each).
+   Phones: the wheel (package in its ring, segment numbers) on top, a riser down the middle from it, and the groups
+   as a two-column grid branching off the riser; names are 44 px links. */
+function awUses(d){var s=String(d||'').replace(/\.\s*$/,''),P=s.split(/\s*[,;]\s*/).filter(Boolean);
+ /* a sentence with a comma is not a list: split only when every piece reads as a use (six words or fewer) */
+ if(P.some(function(x){return x.split(/\s+/).length>6}))P=s?[s]:[];
+ return P.map(function(x){return x.charAt(0).toUpperCase()+x.slice(1)})}
+function awArc(cx,cy,r0,r1,a0,a1){var R=Math.PI/180,p=function(r,a){return (cx+r*Math.cos(a*R)).toFixed(1)+' '+(cy+r*Math.sin(a*R)).toFixed(1)},lg=a1-a0>180?1:0;
+ return 'M'+p(r1,a0)+'A'+r1+' '+r1+' 0 '+lg+' 1 '+p(r1,a1)+'L'+p(r0,a1)+'A'+r0+' '+r0+' 0 '+lg+' 0 '+p(r0,a0)+'Z'}
+/* the package in the hub: a base frame with a media filter, the RO rack's pump side and the storage tank, piped */
+function awPackage(){var sk=isoPart('skid',0,0,0,1,{w:118,d:56}),z=9;
+ var fi=isoPart('filter',20,22,z,1,{r:10,h:50}),ta=isoPart('tank',84,28,z,1,{}),pu=isoPart('pump',50,40,z,0.9,{});
+ var p1=isoPipe([fi.ports.out,[fi.ports.out[0]+10,fi.ports.out[1],fi.ports.out[2]],[pu.ports.in[0],fi.ports.out[1],pu.ports.in[2]],pu.ports.in].filter(function(p,i,a){return !i||String(p)!==String(a[i-1])}),{r:1.8,flanges:false,caps:false});
+ var p2=isoPipe([pu.ports.out,[pu.ports.out[0],pu.ports.out[1],ta.ports.in[2]+8],[ta.ports.in[0],pu.ports.out[1],ta.ports.in[2]+8],[ta.ports.in[0],ta.ports.in[1],ta.ports.in[2]+8],ta.ports.in],{r:1.8,flanges:false,caps:false});
+ var inner=[sk,fi,p1,pu,p2,ta].join(''),bx=isoBounds([[0,0,0],[118,0,0],[0,56,0],[118,56,0],[20,22,z+70],[84,28,z+82],[118,0,z+40]],6);
+ return isoSvg(bx.w,bx.h,inner,'aq-application-wheel__pkg',{origin:[-bx.x,-bx.y]})}
+LOOKS['application-wheel']=function(b,H){var I=(b.items||[]).slice(0,8),n=I.length,K='aq-application-wheel',half=Math.ceil(n/2);
+ if(!n)return sec(H,K+'-sec');
+ /* segment i is centred at -90 + (i + 0.5) * 360/n degrees: clockwise from the top; the right column takes the first
+    half top to bottom, the left column the rest bottom to top */
+ var step=360/n,C=200,R1=190,R0=118,gap=1.4,segs='',nums='';
+ I.forEach(function(it,i){var a0=-90+i*step+gap,a1=-90+(i+1)*step-gap,am=(a0+a1)/2*Math.PI/180,rm=(R0+R1)/2;
+  var go=it.link&&wp(it.link)?' data-wp="'+e(it.link)+'"':'';
+  segs+='<g class="'+K+'__seg" data-i="'+i+'"'+go+'><path d="'+awArc(C,C,R0,R1,a0,a1)+'"/></g>';
+  nums+='<text class="'+K+'__num" x="'+(C+rm*Math.cos(am)).toFixed(1)+'" y="'+(C+rm*Math.sin(am)).toFixed(1)+'" data-i="'+i+'">'+(i<9?'0':'')+(i+1)+'</text>'});
+ var pkg=awPackage().replace('<svg ','<svg x="'+(C-90)+'" y="'+(C-78)+'" width="180" height="156" ');
+ var wheel='<div class="'+K+'__wheel" aria-hidden="true"><svg class="'+K+'__svg" viewBox="0 0 400 400" focusable="false">'
+  +'<circle class="'+K+'__disc" cx="'+C+'" cy="'+C+'" r="'+R1+'"/>'+segs+nums
+  +'<circle class="'+K+'__hub" cx="'+C+'" cy="'+C+'" r="'+(R0-8)+'"/><circle class="'+K+'__loop" cx="'+C+'" cy="'+C+'" r="'+(R0-16)+'"/>'
+  +pkg+'</svg></div>';
+ var groups=I.map(function(it,i){var right=i<half,row=right?i+1:n-i,uses=awUses(it.d),num=(i<9?'0':'')+(i+1);
+  var name=it.link&&wp(it.link)?'<a class="'+K+'__link" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
+  return '<li class="'+K+'__grp '+K+'__grp--'+(right?'r':'l')+'" data-i="'+i+'" style="--row:'+row+'">'
+   +'<p class="'+K+'__n" aria-hidden="true">'+num+'</p><h3 class="'+K+'__t">'+name+'</h3>'
+   +(it.tag?'<p class="'+K+'__tag">'+tx(it.tag)+'</p>':'')
+   +(uses.length?'<ul class="'+K+'__uses">'+uses.map(function(u,j){return '<li><span class="'+K+'__ui" aria-hidden="true">'+num+'.'+(j+1)+'</span>'+tx(u)+'</li>'}).join('')+'</ul>':'')
+   +'</li>'}).join('');
+ return sec(H+'<div class="'+K+'" style="--n:'+n+';--rows:'+half+'" data-aw-r0="'+R0+'" data-aw-r1="'+R1+'"><svg class="'+K+'__leads" aria-hidden="true" focusable="false"></svg>'+wheel+'<ol class="'+K+'__list" role="list">'+groups+'</ol></div>',K+'-sec')};
+/* Pointing at a segment lights its group, and the other way round (the CSS :has rules light the segment from a block) */
+(function(){function hot(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-application-wheel__seg,.aq-application-wheel__grp');if(!s)return;
+  var r=s.closest('.aq-application-wheel'),i=s.getAttribute('data-i');if(!r)return;
+  [].forEach.call(r.querySelectorAll('[data-i="'+i+'"]'),function(el){el.classList.toggle('is-hot',on)})}
+ document.addEventListener('mouseover',function(ev){hot(ev,true)});document.addEventListener('mouseout',function(ev){hot(ev,false)});
+ document.addEventListener('focusin',function(ev){hot(ev,true)});document.addEventListener('focusout',function(ev){hot(ev,false)})})();
+/* Leaders: one path per group, from the middle of the block's inner edge, level towards the wheel, then angled into the
+   rim of its segment (at the segment's middle). Measured, so any block height works; redrawn on resize. Desktop only
+   (the phone CSS hides the layer). */
+(function(){var RO=window.ResizeObserver?new ResizeObserver(function(E){E.forEach(function(x){awLead(x.target)})}):null;
+ function awLead(r){var sv=r.querySelector('.aq-application-wheel__leads'),wh=r.querySelector('.aq-application-wheel__svg');if(!sv||!wh)return;
+  var rb=r.getBoundingClientRect(),wb=wh.getBoundingClientRect();if(!rb.width||getComputedStyle(sv).display==='none'){sv.innerHTML='';return}
+  var k=wb.width/400,cx=wb.left-rb.left+200*k,cy=wb.top-rb.top+200*k,R=(+r.getAttribute('data-aw-r1')||190)*k,G=[].slice.call(r.querySelectorAll('.aq-application-wheel__grp')),n=G.length,out='';
+  sv.setAttribute('viewBox','0 0 '+rb.width.toFixed(1)+' '+rb.height.toFixed(1));sv.setAttribute('width',rb.width.toFixed(1));sv.setAttribute('height',rb.height.toFixed(1));
+  G.forEach(function(g,i){var b=g.getBoundingClientRect(),right=g.classList.contains('aq-application-wheel__grp--r'),dir=right?1:-1;
+   var sx=(right?b.left:b.right)-rb.left,sy=b.top-rb.top+b.height/2,a=(-90+(i+0.5)*360/n)*Math.PI/180,px=cx+R*Math.cos(a),py=cy+R*Math.sin(a);
+   var run=Math.abs(sy-py)*0.58,ex=px+dir*Math.min(run,Math.abs(sx-px));if(dir*(sx-ex)<0)ex=sx;
+   out+='<g class="aq-application-wheel__lead" data-i="'+i+'"><path d="M'+sx.toFixed(1)+' '+sy.toFixed(1)+'H'+ex.toFixed(1)+'L'+px.toFixed(1)+' '+py.toFixed(1)+'"/>'
+    +'<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="3"/></g>'});
+  sv.innerHTML=out;if(g0(r))[].forEach.call(sv.querySelectorAll('.aq-application-wheel__lead[data-i="'+g0(r)+'"]'),function(el){el.classList.add('is-hot')})}
+ function g0(r){var h=r.querySelector('.aq-application-wheel__grp.is-hot');return h?h.getAttribute('data-i'):null}
+ function scan(){[].forEach.call(document.querySelectorAll('.aq-application-wheel'),function(r){if(!r._aw){r._aw=1;if(RO)RO.observe(r)}awLead(r)})}
+ window.awLead=awLead;
+ if(window.MutationObserver)new MutationObserver(function(M){for(var i=0;i<M.length;i++)for(var j=0;j<M[i].addedNodes.length;j++){var a=M[i].addedNodes[j];
+  if(a.nodeType===1&&(a.classList.contains('aq-application-wheel')||a.querySelector('.aq-application-wheel'))){requestAnimationFrame(scan);return}}}).observe(document.documentElement,{childList:true,subtree:true});
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(scan);
+ if(document.readyState!=='loading')scan();else document.addEventListener('DOMContentLoaded',scan);
+})();
 /* Look "approval-merge" -> ApprovalMerge (design-system/components/ApprovalMerge): who prepares and who approves each
    request, drawn as lanes that all merge into one approval. Each request is a row set large on the left; the middle
    holds one lane per preparing party (Aquemi, your side, shared), and each row's preparer is a node on its lane with
@@ -1585,25 +1852,32 @@ LOOKS['approval-merge']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-approv
    the auditor, through what they read, to the page where we answer it. Pointing at or focusing a row opens its valves
    and runs the water along its two branches (motion.js).
    Fields, as the evidence table: h, intro, cols [who, read, answer], rows [who, read, {t, link, intent} or text], fold,
-   fold_noun. Concept: ind-meddevice.3 (auditor table on a navy blueprint grid, double-line manifolds with valves
+   fold_noun. The look never folds (pass 12, S7: the header pipe references every row), so `fold` is kept in the
+   data and ignored here. Access tables (pass 12): when a "what they read" cell says how a reader gets the item (on
+   this page, on request, at audit, under NDA), the row carries its access state for the phone valve: open (now, on
+   this page), half (on request, at audit) or closed with an "NDA" tag; the state is read from the row's own words.
+   Concept: ind-meddevice.3 (auditor table on a navy blueprint grid, double-line manifolds with valves
    feeding each row across the columns). */
 (function(){
 var VALVE='<svg class="aq-audit-manifold__valve" viewBox="0 0 28 22" aria-hidden="true" focusable="false"><path class="aq-audit-manifold__stem" d="M14 15V5M9 4H19"/><path class="aq-audit-manifold__body" d="M3 9L14 15L3 21ZM25 9L14 15L25 21Z"/></svg>';
 var GRID='<svg class="aq-audit-manifold__grid" aria-hidden="true" focusable="false"><defs><pattern id="amgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24"/></pattern>'
  +'<pattern id="amgrid5" width="120" height="120" patternUnits="userSpaceOnUse"><path class="aq-audit-manifold__g5" d="M120 0H0V120"/></pattern></defs><rect width="100%" height="100%" fill="url(#amgrid)"/><rect width="100%" height="100%" fill="url(#amgrid5)"/></svg>';
-function pipe(k){return '<span class="aq-audit-manifold__pipe aq-audit-manifold__pipe--'+k+'" aria-hidden="true"><span class="aq-audit-manifold__hdr"><i class="aq-audit-manifold__w"></i></span>'
- +'<span class="aq-audit-manifold__br"><i class="aq-audit-manifold__w"></i></span>'+VALVE+'<span class="aq-audit-manifold__fl"></span></span>'}
-LOOKS['audit-manifold']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
- var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
+function pipe(k,st){return '<span class="aq-audit-manifold__pipe aq-audit-manifold__pipe--'+k+'" aria-hidden="true"><span class="aq-audit-manifold__hdr"><i class="aq-audit-manifold__w"></i></span>'
+ +'<span class="aq-audit-manifold__br"><i class="aq-audit-manifold__w"></i></span>'+VALVE+'<span class="aq-audit-manifold__fl"></span>'+(st==='closed'?'<span class="aq-audit-manifold__nda">NDA</span>':'')+'</span>'}
+var ACC=/\b(NDA|on request|on this page|at audit)\b/i;
+function access(t){var u=String(t||'').replace(/\[[^\]]*\]/g,'');
+ return /\bNDA\b/.test(u)?'closed':/^\s*now\b|on this page/i.test(u)?'open':/on request|at audit/i.test(u)?'half':''}
+LOOKS['audit-manifold']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,acc=R.some(function(r){return ACC.test(String(r[1]||''))});
+ var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link),st=acc?access(r[1]):'';
   var ans=lk?'<a class="aq-audit-manifold__link" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'>'+tx(go.t)+'</a>'
    :(go?'<span class="aq-audit-manifold__link">'+tcell(go)+'</span>':'');
-  return fli('<li class="aq-audit-manifold__row'+(i===0?' is-first':'')+(i===n-1?' is-last':'')+'" data-k="'+i+'">'
+  return '<li class="aq-audit-manifold__row'+(i===0?' is-first':'')+(i===n-1?' is-last':'')+(st?' is-'+st:'')+'" data-k="'+i+'">'
    +'<div class="aq-audit-manifold__who"><span class="aq-audit-manifold__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-audit-manifold__t">'+tx(r[0])+'</h3></div>'
-   +pipe('a')+'<div class="aq-audit-manifold__read"><span class="aq-audit-manifold__k">'+tx(C[1]||'')+'</span><p class="aq-audit-manifold__v">'+tx(r[1])+'</p></div>'
-   +pipe('b')+'<div class="aq-audit-manifold__go"><span class="aq-audit-manifold__k">'+tx(C[2]||'')+'</span>'+ans+'</div></li>',b,i)}).join('');
+   +pipe('a',st)+'<div class="aq-audit-manifold__read"><span class="aq-audit-manifold__k">'+tx(C[1]||'')+'</span><p class="aq-audit-manifold__v">'+tx(r[1])+'</p></div>'
+   +pipe('b')+'<div class="aq-audit-manifold__go"><span class="aq-audit-manifold__k">'+tx(C[2]||'')+'</span>'+ans+'</div></li>'}).join('');
  var colh='<p class="aq-audit-manifold__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span></span><span>'+tx(C[1]||'')+'</span><span></span><span>'+tx(C[2]||'')+'</span></p>';
  return '<section class="aq-section aq-band--navy aq-audit-manifold-sec">'+GRID+'<div class="aq-in aq-stack-l">'+H
-  +'<div class="aq-audit-manifold">'+colh+wFold(b,n,'<ol class="aq-audit-manifold__rows">'+rows+'</ol>',b.fold_noun)+'</div></div></section>'};
+  +'<div class="aq-audit-manifold">'+colh+'<ol class="aq-audit-manifold__rows'+(acc?' is-access':'')+'">'+rows+'</ol></div></div></section>'};
 })();
 /* Look "audit-skid" -> AuditSkid (design-system/components/AuditSkid): a docs block (the client audit pack) drawn as
    the system the pack describes, each document pinned to the part of the system it covers. One IsoKit line drawing
@@ -1617,7 +1891,10 @@ LOOKS['audit-manifold']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
    Added: items[].part (the part the document covers: "ro" generation rack, "sample" sample point, "skid" the skid,
    "analyzer", "outlet" point of use, "tiein" spare tie-in, "tank", "pump", "panel"); corner (short mono word, decorative).
    Concept: pass 9b ind-cdmo.1 (white PP skid centred, the audit-pack documents as numbered callouts on both sides,
-   doc code and period in mono corners). */
+   doc code and period in mono corners).
+   Phones (pass 12): the drawing is a 200 px strip held under the header (PhoneKit sticky figure, zoom 1.8) that pans
+   and zooms to the pin of the document on the reading line, which is selected as on desktop (pin filled, ring, part in
+   flow); every document shows (S7: a pinned row is never folded away); tapping a document selects it too. */
 (function(){
 var K='aq-audit-skid';
 function scene(){var dz=9,o=[],pins={};
@@ -1648,13 +1925,13 @@ function scene(){var dz=9,o=[],pins={};
  return {inner:o.join(''),pins:pins,w:Math.round(bx.w),h:Math.round(bx.h),org:[-bx.x,-bx.y]}}
 LOOKS['audit-skid']=function(b,H){var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=I.length,half=Math.ceil(n/2),S=scene();
  var pins=I.map(function(x,i){var p=S.pins[x.part]||S.pins.skid,a=isoPct(isoP(p),S.w,S.h,S.org);
-  return '<span class="'+K+'__pin'+(x.key?' is-key':'')+'" data-i="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
- var fig='<div class="'+K+'__fig" aria-hidden="true">'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+pins+'<span class="'+K+'__ring"></span></div>';
+  return '<span class="'+K+'__pin'+(x.key?' is-key':'')+'" data-i="'+i+'" data-pk-key="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+ var fig='<div class="'+K+'__fig" aria-hidden="true" data-pk-fig><div class="'+K+'__pan" data-pk-pan>'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+pins+'<span class="'+K+'__ring"></span></div></div>';
  var docs=I.map(function(x,i){var L=i<half,name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
-  return fli('<li class="'+K+'__doc '+(L?'is-l':'is-r')+(x.key?' is-key':'')+'" tabindex="0" data-i="'+i+'" data-part="'+e(S.pins[x.part]?x.part:'skid')+'" style="--row:'+((L?i:i-half)+1)+'">'
+  return fli('<li class="'+K+'__doc '+(L?'is-l':'is-r')+(x.key?' is-key':'')+'" tabindex="0" data-i="'+i+'" data-pk-row="'+i+'" data-part="'+e(S.pins[x.part]?x.part:'skid')+'" style="--row:'+((L?i:i-half)+1)+'">'
    +'<span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</li>',b,i)}).join('');
  var corners='<span class="'+K+'__corner is-l" aria-hidden="true">'+e(b.nav||'')+' · '+n+' '+e(b.fold_noun||'documents')+'</span>'+(b.corner?'<span class="'+K+'__corner is-r" aria-hidden="true">'+e(b.corner)+'</span>':'');
- var body='<div class="'+K+'" style="--rows:'+half+'">'+fig+wFold(b,n,'<ol class="'+K+'__docs" role="list">'+docs+'</ol>',b.fold_noun)
+ var body='<div class="'+K+'" style="--rows:'+half+'" data-pk-sticky data-pk-h="200" data-pk-zoom="1.8">'+fig+wFold(b,n,'<ol class="'+K+'__docs" role="list">'+docs+'</ol>',b.fold_noun)
   +'<svg class="'+K+'__leads" aria-hidden="true" focusable="false"></svg>'+corners+'</div>';
  return sec(H+body,K+'-sec')};
 /* Leaders and selection (works without motion and under reduced motion; the CSS transitions are dropped there).
@@ -1687,6 +1964,9 @@ LOOKS['audit-skid']=function(b,H){var I=(b.items||[]).map(function(x){return typ
  document.addEventListener('pointerover',function(ev){var it=at(ev);if(it&&ev.pointerType!=='touch')show(it.closest('.'+K),it)});
  document.addEventListener('focusin',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
  document.addEventListener('click',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
+ /* phones: the document on PhoneKit's reading line is the selection; the strip has already panned to its pin */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains(K))return;
+  var it=ev.detail&&ev.detail.on&&w.querySelector('.'+K+'__doc[data-i="'+ev.detail.key+'"]');show(w,it||null)});
 })();
 })();
 /* Look "battery-limit" -> BatteryLimit (design-system/components/BatteryLimit): a spec block of site requirements on a
@@ -1701,13 +1981,14 @@ LOOKS['audit-skid']=function(b,H){var I=(b.items||[]).map(function(x){return typ
 LOOKS['battery-limit']=function(b,H){
  var R=b.rows||[],C=b.cols||['Item','Typical','Note'],SD=b.sides||['',''],lim=-1;
  R.some(function(r,i){if(r.side==='limit'){lim=i;return true}});
- var kk={package:0,site:0};
+ var kk={package:0,site:0},last=R.length-1;if(last===lim)last--;
  function card(r,i,side){var lk=r.link&&wp(r.link)?'<a class="aq-battery-limit__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
-  var body='<div class="aq-battery-limit__card">'+idx(i)+'<h3 class="aq-battery-limit__p">'+tx(r.p)+'</h3>'
+  var who=side!=='limit'&&SD[side==='package'?0:1]?'<span class="aq-battery-limit__who">'+tx(SD[side==='package'?0:1])+'</span>':'';
+  var body='<div class="aq-battery-limit__card">'+idx(i)+who+'<h3 class="aq-battery-limit__p">'+tx(r.p)+'</h3>'
    +'<dl class="aq-battery-limit__dl"><div><dt>'+tx(C[1]||'')+'</dt><dd class="aq-battery-limit__v">'+tx(r.v)+'</dd></div>'
    +(r.m||lk?'<div><dt>'+tx(C[2]||'')+'</dt><dd class="aq-battery-limit__m">'+(r.m?tx(r.m):'')+(r.m&&lk?' ':'')+lk+'</dd></div>':'')+'</dl></div>';
-  if(side==='limit')return '<div class="aq-battery-limit__limit">'+body+'</div>';
-  return fli('<li class="aq-battery-limit__item" data-r="'+i+'" data-k="'+(kk[side]++)+'">',b,i)+(side==='site'?'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__node"></span><span class="aq-battery-limit__lead"></span></span>'+body
+  if(side==='limit')return '<div class="aq-battery-limit__limit" style="order:'+(10+i)+'"'+(i===R.length-1?' data-last':'')+'>'+body+'</div>';
+  return fli('<li class="aq-battery-limit__item" data-r="'+i+'" data-k="'+(kk[side]++)+'" style="order:'+(10+i)+'"'+(i===last?' data-last':'')+'>',b,i)+(side==='site'?'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__node"></span><span class="aq-battery-limit__lead"></span></span>'+body
    :body+'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__lead"></span><span class="aq-battery-limit__node"></span></span>')+'</li>'}
  var pk='',st='';R.forEach(function(r,i){if(i===lim)return;if(r.side==='package')pk+=card(r,i,'package');else st+=card(r,i,'site')});
  var seam='<span class="aq-battery-limit__navy" aria-hidden="true"></span><svg class="aq-battery-limit__line" aria-hidden="true" focusable="false"><line x1="50%" y1="0" x2="50%" y2="100%"/></svg>'
@@ -1775,22 +2056,45 @@ LOOKS['binder-spines']=function(b,H){var C=b.cols||[],R=b.rows||[],S=b.spines||[
    at its foot. The stages read as a sequence of signatures: each divider is signed before the next is opened.
    Fields (a steps block): h, intro, items [{t, d, link, label}]. label: the tab's short text ("IQ", "FAT · SAT");
    without one the tab shows the stage number.
-   Phones: the cover becomes a band over the stack; tabs sit at the right end of each divider. */
+   Phones: the cover becomes a band over the stack; the tab sits over each divider's name; the binder is signed once,
+   on its last divider (the other sign-off lines drop), and a linked divider is a link from edge to edge.
+   Long binders (8 dividers or more) on phones (pass 12, S11, PhoneKit): a strip of the tab labels sticks under the
+   header over the stack (44 px tabs, a scrolling row that follows the divider being read, a tap jumps to it), and each
+   divider closes to its number, name and one line of what it settles, a tap opening the whole of it. The head button sits
+   in an h3 (the desktop h3 is hidden there), and the last divider keeps its sign-off under it. */
 var BT_SIG=['M2 14C8 4 12 4 11 11S16 18 21 9 28 3 31 11 36 16 42 8 48 6 54 12',
  'M2 12C6 5 11 3 12 10S18 17 24 8 31 4 35 12 42 15 50 7',
  'M2 13C9 3 14 6 13 12S20 16 26 9 30 5 36 11 44 14 52 9'];
 LOOKS['binder-tabs']=function(b,H){var I=b.items||[],n=I.length;
- var tabs=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
-  return '<li class="aq-binder-tabs__div" style="--i:'+i+'">'
+ var long=n>=8,lab=function(it,i){return it.label?tx(it.label):(i<9?'0':'')+(i+1)};
+ var tabs=I.map(function(it,i){var lk=it.link&&wp(it.link),nm=lk?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t),no=(i<9?'0':'')+(i+1);
+  var head=long?'<h3 class="aq-binder-tabs__ph"><button type="button" class="aq-binder-tabs__hd" data-pk-head><span class="aq-binder-tabs__hn" aria-hidden="true">'+no+'</span><span class="aq-binder-tabs__ht">'+tx(it.t)+'</span>'
+   +'<span class="aq-phone-kit__chev" aria-hidden="true"></span>'+(it.d?'<span class="aq-binder-tabs__h1" aria-hidden="true">'+tx(it.d)+'</span>':'')+'</button></h3>':'';
+  return '<li class="aq-binder-tabs__div'+(lk?' has-link':'')+'" style="--i:'+i+'"'+(long?' data-pk-item="'+i+'" data-pk-row="'+i+'"':'')+'>'
    +'<span class="aq-binder-tabs__holes" aria-hidden="true"></span>'
-   +'<span class="aq-binder-tabs__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="aq-binder-tabs__body"><h3 class="aq-binder-tabs__t">'+nm+'</h3>'+(it.d?'<p class="aq-binder-tabs__d">'+tx(it.d)+'</p>':'')+'</div>'
+   +'<span class="aq-binder-tabs__n" aria-hidden="true"'+(long?' data-pk-desk':'')+'>'+no+'</span>'+head
+   +'<div class="aq-binder-tabs__body"'+(long?' data-pk-body':'')+'><h3 class="aq-binder-tabs__t"'+(long?' data-pk-desk':'')+'>'+nm+'</h3>'+(it.d?'<p class="aq-binder-tabs__d">'+tx(it.d)+'</p>':'')
+   +(long&&lk?'<a class="aq-phone-kit__go aq-binder-tabs__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':'')+'</div>'
    +'<span class="aq-binder-tabs__sign" aria-hidden="true"><svg viewBox="0 0 56 20" focusable="false"><path d="'+BT_SIG[i%BT_SIG.length]+'"/></svg></span>'
-   +'<span class="aq-binder-tabs__tab" aria-hidden="true"><span>'+(it.label?tx(it.label):(i<9?'0':'')+(i+1))+'</span></span></li>'}).join('');
- return sec('<div class="aq-binder-tabs" style="--n:'+n+'">'
+   +'<span class="aq-binder-tabs__tab" aria-hidden="true"'+(long?' data-pk-desk':'')+'><span>'+lab(it,i)+'</span></span></li>'}).join('');
+ var strip=long?'<div class="aq-binder-tabs__strip" data-pk-fig><div class="aq-binder-tabs__strip-in" role="group" aria-label="'+e(String(b.h||'Sections'))+'">'
+  +I.map(function(it,i){return '<button type="button" class="aq-binder-tabs__sb" data-pk-key="'+i+'" data-bt-to="'+i+'">'+lab(it,i)+'</button>'}).join('')+'</div></div>':'';
+ return sec('<div class="aq-binder-tabs'+(long?' is-long':'')+'" style="--n:'+n+'">'
   +'<div class="aq-binder-tabs__cover"><div class="aq-binder-tabs__holder">'+H+'</div><span class="aq-binder-tabs__spine" aria-hidden="true"></span></div>'
-  +'<div class="aq-binder-tabs__stack"><span class="aq-binder-tabs__rings" aria-hidden="true"><i></i><i></i><i></i></span>'
-  +'<ol class="aq-binder-tabs__list">'+tabs+'</ol></div></div>','aq-binder-tabs-sec')};
+  +'<div class="aq-binder-tabs__stack"'+(long?' data-pk-sticky data-pk-h="96"':'')+'><span class="aq-binder-tabs__rings" aria-hidden="true"><i></i><i></i><i></i></span>'+strip
+  +'<ol class="aq-binder-tabs__list"'+(long?' data-pk-picker="accordion" data-pk-open="-1"':'')+'>'+tabs+'</ol></div></div>','aq-binder-tabs-sec')};
+/* Long binders on phones: a tab in the strip opens its divider and brings it under the strip; the strip keeps the
+   divider being read in view (PhoneKit's pk:change from the stack). State, not motion: works with reduced motion. */
+(function(){
+ function keep(strip,t){var s=strip.querySelector('.aq-binder-tabs__strip-in');if(!s||!t)return;var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;
+  if(a<s.scrollLeft+8)s.scrollLeft=a-8;else if(z>s.scrollLeft+s.clientWidth-8)s.scrollLeft=z-s.clientWidth+8}
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-bt-to]');if(!t)return;var st=t.closest('.aq-binder-tabs__stack'),ol=st&&st.querySelector('.aq-binder-tabs__list'),i=+t.getAttribute('data-bt-to');
+  if(!ol)return;var li=ol.children[i],bh=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';if(!li)return;
+  /* land the divider just over PhoneKit's reading line, so the strip lights the tab that was tapped */
+  if(window.AQpk&&AQpk.on(ol)){AQpk.open(ol,i);scrollTo({top:scrollY+li.getBoundingClientRect().top-AQpk.line(st)+32,behavior:bh})}else li.scrollIntoView({block:'start',behavior:bh})});
+ document.addEventListener('pk:change',function(ev){var st=ev.target;if(!st||!st.classList||!st.classList.contains('aq-binder-tabs__stack')||!ev.detail||!ev.detail.on)return;
+  var strip=st.querySelector('.aq-binder-tabs__strip');keep(strip,strip&&strip.querySelector('[data-pk-key="'+ev.detail.key+'"]'))});
+})();
 /* Look "budget-bento" -> BudgetBento (design-system/components/BudgetBento): a spec block of budget ranges as a Swiss
    bento of numbered tiles, set like a price sheet rather than a table. The first highlighted row (the whole package) is
    the tall navy lead tile: a huge cropped numeral, the scope, the range set large in mono over a range bracket (a
@@ -1799,7 +2103,9 @@ LOOKS['binder-tabs']=function(b,H){var I=b.items||[],n=I.length;
    range on its own bracket and basis. The note becomes two chip rows when it is written as "Label: a, b and c."
    sentences (a sentence whose label starts "Not" reads as exclusions, the chips struck through), with its link after.
    Fields: h, caption (eyebrow), intro, cols ([scope, range, basis] labels for the tile keys), rows [{p, v, m, hl, spot,
-   link, link_label}], note, note_link, note_link_label. spot: a Spot or Icon name for a module tile. */
+   link, link_label}], note, note_link, note_link_label. spot: a Spot or Icon name for a module tile.
+   Phones (pass 12): the grid is a PhoneKit accordion; every tile with a basis gets a phone-only "Basis +" head (the
+   basis column label) and the basis becomes its body, closed at first. */
 function bbNote(b){var n=String(b.note||''),S=n.split(/\.\s+(?=[A-Z])/).map(function(x){return x.replace(/\.\s*$/,'')}).filter(Boolean);
  var ok=S.length&&S.every(function(x){return /^[^:]{2,32}:\s+\S/.test(x)});
  var lk=b.note_link&&wp(b.note_link)?'<a class="aq-budget-bento__go" href="#'+e(b.note_link)+'" data-wp="'+e(b.note_link)+'">'+tx(b.note_link_label||wlabel(b.note_link))+'</a>':'';
@@ -1817,13 +2123,107 @@ LOOKS['budget-bento']=function(b,H){
  function link(r){return r.link&&wp(r.link)?'<a class="aq-budget-bento__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':''}
  var tiles=rows.map(function(r,i){var L=i===lead,n=(i<9?'0':'')+(i+1);
   var basis=L&&r.m?'<ul class="aq-budget-bento__incl" role="list">'+String(r.m).split(/,\s+/).map(function(x){return '<li>'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</li>'}).join('')+'</ul>':r.m?'<p class="aq-budget-bento__m">'+tx(r.m)+'</p>':'';
-  return '<li class="aq-budget-bento__tile'+(L?' is-lead':'')+'">'
+  return '<li class="aq-budget-bento__tile'+(L?' is-lead':'')+'" data-pk-item="'+n+'">'
    +'<span class="aq-budget-bento__n" aria-hidden="true">'+n+'</span>'
    +(!L&&r.spot?wSpot(r.spot,0,'aq-budget-bento__spot'):'')
    +'<div class="aq-budget-bento__body"><h3 class="aq-budget-bento__p">'+tx(r.p)+'</h3>'
    +'<div class="aq-budget-bento__val"><p class="aq-budget-bento__k">'+tx(C[1]||'')+'</p><p class="aq-budget-bento__v">'+tx(r.v)+'</p>'+bbRange(L)+'</div>'
-   +(r.m?'<div class="aq-budget-bento__basis"><p class="aq-budget-bento__k">'+tx(C[2]||'')+'</p>'+basis+'</div>':'')+link(r)+'</div></li>'}).join('');
- return sec(wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'<div class="aq-budget-bento"><ol class="aq-budget-bento__grid" role="list">'+tiles+'</ol>'+bbNote(b)+'</div>','aq-budget-bento-sec')};
+   +(r.m?'<button type="button" class="aq-budget-bento__bh" data-pk-head aria-label="'+e(C[2]||'Basis')+': '+e(String(r.p||'').replace(/\[[^\]]*\]/g,'').replace(/,\s*$/,'').trim())+'">'+tx(C[2]||'Basis')+'<span class="aq-phone-kit__chev aq-phone-kit__chev--plus" aria-hidden="true"></span></button>'
+     +'<div class="aq-budget-bento__basis" data-pk-body><p class="aq-budget-bento__k">'+tx(C[2]||'')+'</p>'+basis+'</div>':'')+link(r)+'</div></li>'}).join('');
+ /* phones (PhoneKit accordion, all closed at first): each tile's basis sits behind its own "Basis +" head */
+ return sec(wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'<div class="aq-budget-bento"><ol class="aq-budget-bento__grid" role="list" data-pk-picker="accordion" data-pk-open="-1">'+tiles+'</ol>'+bbNote(b)+'</div>','aq-budget-bento-sec')};
+/* Look "building-loop" -> BuildingLoop (design-system/components/BuildingLoop): where water goes in a building, on a
+   navy band (pass 12 concept 210). A three-storey building section in hairlines (slabs, walls, a stair and lift core,
+   a roof plant housing) with the central plant on the ground floor; one pale loop leaves the plant, rises up the
+   riser, threads the floors (out along the top floor, back along the middle one, out along the ground floor) and
+   returns to the plant. Each item is one numbered stop on the loop: a drop to the fixture it feeds, a numbered ring,
+   and a leader to the building's edge, where the item's name is set in the margin (left or right, whichever side
+   the stop is on). Under the band, one numbered caption per stop (number, name, line). Pointing at a caption or a
+   margin name lights its stop.
+   Fields (a grid block, as: "route"): h, intro, items [{t, d, draw}]. draw: the fixture at the stop (washer, analyzer,
+   bench, humidifier, hood); without it a bench tap. Up to six stops, placed in flow order on fixed positions
+   (top floor left and right, middle floor right and left, ground floor left and right). The drawing carries no copy:
+   the names in the margins are the items' own names (aria-hidden; the captions carry them for readers).
+   Phones: the section drawing at full width with its numbered stops, then a riser: the pale loop down the left, one
+   row per stop (number on the loop, name, line); every stop shown, no fold. */
+(function(){
+var K='aq-building-loop',W=760,HH=440,X0=60,X1=700;
+var SLOTS=[[200,86],[560,86],[560,196],[230,196],[290,306],[580,306]];
+var PICK={1:[0],2:[0,1],3:[0,1,2],4:[0,1,2,3],5:[0,1,2,3,5],6:[0,1,2,3,4,5]};
+var FLOOR={86:180,196:290,306:400};
+function P(d,c){return '<path class="'+K+'__'+c+'" d="'+d+'"/>'}
+function R(x,y,w,h,c){return P('M'+x+' '+y+'h'+w+'v'+h+'h'+(-w)+'Z',c||'fx')}
+var FIX={
+ washer:function(x,f){return R(x-20,f-56,40,56)+P('M'+(x-20)+' '+(f-48)+'h40','fl')+R(x-15,f-44,30,38,'fl')+R(x-11,f-40,22,16,'fl')+P('M'+(x-9)+' '+(f-30)+'h18','fl')},
+ analyzer:function(x,f){return P('M'+(x-30)+' '+(f-30)+'h60M'+(x-26)+' '+(f-30)+'V'+f+'M'+(x+26)+' '+(f-30)+'V'+f,'fx')+R(x-18,f-58,30,28)+R(x-14,f-54,14,10,'fl')},
+ bench:function(x,f){return P('M'+(x-34)+' '+(f-30)+'h68M'+(x-30)+' '+(f-30)+'V'+f+'M'+(x+30)+' '+(f-30)+'V'+f,'fx')+P('M'+(x+14)+' '+(f-30)+'v-18q0-6 6-6t6 6v4','fx')+R(x-24,f-44,7,14,'fl')+R(x-14,f-40,6,10,'fl')},
+ humidifier:function(x,f){return P('M'+(x-8)+' '+(f-62)+'V'+(f-110)+'M'+(x+8)+' '+(f-62)+'V'+(f-110),'fl')+R(x-20,f-62,40,24)+P('M'+(x-12)+' '+(f-50)+'h24','fl')+P('M'+x+' '+(f-38)+'v8','fl')},
+ hood:function(x,f){return P('M'+(x-28)+' '+(f-22)+'h56M'+(x-24)+' '+(f-22)+'V'+f+'M'+(x+24)+' '+(f-22)+'V'+f,'fx')+P('M'+(x-28)+' '+(f-22)+'V'+(f-74)+'h56V'+(f-22)+'M'+(x-28)+' '+(f-44)+'L'+(x-20)+' '+(f-66)+'h48','fx')}};
+var TOP={washer:56,analyzer:58,bench:54,humidifier:62,hood:74};
+function topOf(s){return s.f-TOP[s.k]}
+function kindOf(it){if(it.draw&&FIX[it.draw])return it.draw;var t=String(it.t||'').toLowerCase();
+ return /wash|autoclave/.test(t)?'washer':/analy[sz]er/.test(t)?'analyzer':/humidif/.test(t)?'humidifier':/culture|hood|molecular/.test(t)?'hood':'bench'}
+function no(i){return (i<9?'0':'')+(i+1)}
+function building(){var g='',f;
+ g+=P('M0 400H'+W,'gr');
+ /* walls, slabs, roof parapet and plant housing */
+ g+=P('M'+X0+' 400V64H'+X1+'V400','wall')+P('M'+X0+' 70H'+X1+'M'+X0+' 180H'+X1+'M'+X0+' 290H'+X1,'slab');
+ g+=P('M330 64V36H410V64','wall')+P('M342 46h56','hair');
+ /* core: stair and lift with a door on each floor */
+ g+=P('M350 70V400M410 70V400','hair');[180,290,400].forEach(function(y){g+=R(366,y-58,26,58,'hair')});
+ /* windows on the outer walls */
+ [180,290,400].forEach(function(y){g+=P('M'+X0+' '+(y-84)+'v44M'+X1+' '+(y-84)+'v44','win')});
+ return g}
+/* the central plant on the ground floor: tank and RO skid (drawn over the loop's ends) */
+function plant(){return P('M92 400V346q0-12 15-12t15 12V400','fx')+R(134,358,56,42)+P('M142 368h40M142 380h40','fl')}
+function loop(){var r=14;
+ return 'M162 358V330H76V'+(86+r)+'q0-'+r+' '+r+'-'+r+'H'+(670-r)+'q'+r+' 0 '+r+' '+r+'V'+(196-r)+'q0 '+r+'-'+r+' '+r+'H'+(130+r)+'q-'+r+' 0-'+r+' '+r+'V'+(306-r)+'q0 '+r+' '+r+' '+r+'H'+(670-r)+'q'+r+' 0 '+r+' '+r+'V'+(418-r)+'q0 '+r+'-'+r+' '+r+'H107V400'}
+LOOKS['building-loop']=function(b,H){var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}).slice(0,6),n=I.length;if(!n)return sec(H,'aq-band--navy '+K+'-sec');
+ var pick=PICK[n],stops=I.map(function(it,i){var s=SLOTS[pick[i]];return {x:s[0],y:s[1],f:FLOOR[s[1]],side:s[0]<380?'l':'r',k:kindOf(it)}});
+ var g=building()+P(loop(),'loop')+P(loop(),'glint')+plant();
+ stops.forEach(function(s,i){var edge=s.side==='l'?X0:X1,top=topOf(s);
+  var my=s.y+(top-s.y)/2;
+  g+='<g class="'+K+'__stop" data-bl="'+i+'">'+FIX[s.k](s.x,s.f)+P('M'+s.x+' '+s.y+'V'+top,'drop')
+   +P('M'+(s.side==='l'?s.x-16:s.x+16)+' '+my+'H'+edge,'lead')+R(edge-4,my-4,8,8,'tick')
+   +'<circle class="'+K+'__ring" cx="'+s.x+'" cy="'+my+'"/><text class="'+K+'__num" x="'+s.x+'" y="'+my+'">'+no(i)+'</text></g>'});
+ var svg='<svg class="'+K+'__svg" viewBox="0 0 '+W+' '+HH+'" aria-hidden="true" focusable="false">'+g+'</svg>';
+ var lab=function(side){return '<div class="'+K+'__margin '+K+'__margin--'+side+'" aria-hidden="true">'+stops.map(function(s,i){if(s.side!==side)return '';
+   var my=s.y+(topOf(s)-s.y)/2;
+   return '<span class="'+K+'__label" data-bl="'+i+'" style="--y:'+(my/HH).toFixed(4)+'"><span class="'+K+'__lt">'+tx(I[i].t)+'</span> <span class="'+K+'__ln">['+no(i)+']</span></span>'}).join('')+'</div>'};
+ var caps=I.map(function(it,i){return '<li class="'+K+'__cap" data-bl="'+i+'"><span class="'+K+'__no" aria-hidden="true">'+no(i)+'</span><h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+ var inner='<div class="'+K+'" style="--n:'+n+'"><div class="'+K+'__fig">'+lab('l')+'<div class="'+K+'__draw">'+svg+'</div>'+lab('r')+'</div><ol class="'+K+'__caps" role="list">'+caps+'</ol></div>';
+ return sec(H+inner,'aq-band--navy '+K+'-sec')};
+function set(root,i){root.classList.toggle('has-hot',i!=null);[].forEach.call(root.querySelectorAll('[data-bl]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-bl')===i)})}
+['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(!root)return;var el=ev.target.closest('[data-bl]');set(root,el?el.getAttribute('data-bl'):null)})});
+document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(root&&!root.contains(ev.relatedTarget))set(root,null)});
+})();
+/* Look "calc-pad" -> CalcPad (design-system/components/CalcPad): a grade table (as: "grades") written out as working on
+   a squared calculation pad, after pass 12 concept 200 (ind-personal-care.grade, take 2). One derivation line per
+   product class, in the order the table gives (loosest to strictest): the class, an arrow, what sets it, an equals
+   sign, then the minimum water as the boxed answer at the line's end. Words are set in Geist; mono only for the line
+   number and for codes inside the text (GUI-0158, 21 CFR 210, ISO 22716, USP <645>). A key line above the work names
+   the columns in the derivation's own order. One answer box is lit steel blue: the first on load, then the line the
+   pointer is on or the line tapped. Phones: each line wraps above a full-width answer box.
+   Fields, as the grades table: h, intro, cols [class, minimum water, what sets it], rows [[class, minimum, sets]]. No
+   new fields. */
+(function(){
+var K='aq-calc-pad';
+var CODE=/\b(GUI-\d{3,5}|ISO \d{4,5}(?:-\d+)?|\d+ CFR \d+(?:\.\d+)?(?: and \d+)?|USP &lt;\d+&gt;)/g;
+function code(h){return h.replace(CODE,function(x){return '<span class="'+K+'__code">'+x+'</span>'})}
+LOOKS['calc-pad']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var key='<p class="'+K+'__key" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span class="'+K+'__op">&rarr;</span><span>'+tx(C[2]||'')+'</span><span class="'+K+'__op">=</span><span class="'+K+'__keybox">'+tx(C[1]||'')+'</span></p>';
+ var lines=R.map(function(r,i){
+  return '<li class="'+K+'__line'+(i?'':' is-on')+'" data-i="'+i+'"><span class="'+K+'__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<p class="'+K+'__work"><span class="'+K+'__class">'+code(tx(r[0]))+'</span> '
+   +'<span class="'+K+'__sets"><span class="'+K+'__op" aria-hidden="true">&rarr;</span> <span class="'+K+'__sr">'+tx(C[2]||'')+': </span>'+code(tx(r[2]||''))+' <span class="'+K+'__op" aria-hidden="true">=</span></span></p>'
+   +'<p class="'+K+'__ans"><span class="'+K+'__sr">'+tx(C[1]||'')+': </span>'+code(tx(r[1]||''))+'</p></li>'}).join('');
+ return sec(H+'<div class="'+K+'">'+key+'<ol class="'+K+'__lines">'+lines+'</ol></div>',K+'-sec')};
+/* the lit answer: the line under the pointer, or the line tapped; it stays where it was left */
+function lit(t){var w=t.closest('.'+K);if(!w||t.classList.contains('is-on'))return;[].forEach.call(w.querySelectorAll('.'+K+'__line'),function(l){l.classList.toggle('is-on',l===t)})}
+if(typeof document!=='undefined'){
+ document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__line');if(t)lit(t)});
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__line');if(t)lit(t)})}
+})();
 /* Look "capa-ring" -> CapaRing (design-system/components/CapaRing): a defect's way from hold to close as one loop that
    closes. On a navy ground the steps sit around a ring, clockwise from the top right: the first three down the right,
    the rest back up the left, each joined to its node by a short leader. A hold step's node is drawn as a closed valve
@@ -1832,7 +2232,9 @@ LOOKS['budget-bento']=function(b,H){
    record's short name, taken from the first step's text (the abbreviation in it, e.g. "NCR"), or the block's "core".
    Fields (a steps block): h, intro, items [{t, d, hold, link}], core (optional centre word). Six steps fit best (three
    a side); any count works. Pointing at a step lights its node.
-   Phones: the ring sits over the steps, which follow as a numbered list. */
+   Phones (pass 12): the ring is a 200 px sticky strip under the header (PhoneKit sticky figure) over the numbered steps;
+   the step on the reading line lights its node, the steps before it stay marked done. Every node carries its number
+   on phones (a hold node keeps its square, its number in place of the valve glyph); the hold stamp runs full width. */
 LOOKS['capa-ring']=function(b,H){var I=b.items||[],n=I.length,half=Math.ceil(n/2),cx=200,cy=200,r=148;
  var core=b.core||((String(I[0]&&I[0].d||'').match(/\b[A-Z]{3,5}\b/)||[''])[0]);
  var ang=function(i){return (-90+(i+0.5)*360/n)*Math.PI/180},pt=function(i,rr){return [cx+(rr||r)*Math.cos(ang(i)),cy+(rr||r)*Math.sin(ang(i))]};
@@ -1844,18 +2246,21 @@ LOOKS['capa-ring']=function(b,H){var I=b.items||[],n=I.length,half=Math.ceil(n/2
   +'<path class="aq-capa-ring__flow" d="'+ring+'"/>';
  for(var t=0;t<72;t++){var a=t*5*Math.PI/180,r1=180,r2=t%6?184:190;svg+='<path class="aq-capa-ring__tick" d="M'+f(cx+r1*Math.cos(a))+' '+f(cy+r1*Math.sin(a))+'L'+f(cx+r2*Math.cos(a))+' '+f(cy+r2*Math.sin(a))+'"/>'}
  I.forEach(function(it,i){var p=pt(i),right=Math.cos(ang(i))>=0,ex=right?400:0;
-  svg+='<g class="aq-capa-ring__node'+(it.hold?' is-hold':'')+'" data-i="'+i+'"><path class="aq-capa-ring__lead" d="M'+f(p[0]+(right?16:-16))+' '+f(p[1])+'H'+ex+'"/>'
-   +(it.hold?'<rect class="aq-capa-ring__dot" x="'+f(p[0]-15)+'" y="'+f(p[1]-15)+'" width="30" height="30"/><path class="aq-capa-ring__valve" d="M'+f(p[0]-8)+' '+f(p[1]-6)+'L'+f(p[0]+8)+' '+f(p[1]+6)+'V'+f(p[1]-6)+'L'+f(p[0]-8)+' '+f(p[1]+6)+'Z"/>'
+  svg+='<g class="aq-capa-ring__node'+(it.hold?' is-hold':'')+'" data-i="'+i+'" data-pk-key="'+i+'"><path class="aq-capa-ring__lead" d="M'+f(p[0]+(right?16:-16))+' '+f(p[1])+'H'+ex+'"/>'
+   +(it.hold?'<rect class="aq-capa-ring__dot" x="'+f(p[0]-15)+'" y="'+f(p[1]-15)+'" width="30" height="30"/><path class="aq-capa-ring__valve" d="M'+f(p[0]-8)+' '+f(p[1]-6)+'L'+f(p[0]+8)+' '+f(p[1]+6)+'V'+f(p[1]-6)+'L'+f(p[0]-8)+' '+f(p[1]+6)+'Z"/><text class="aq-capa-ring__no is-hold-no" x="'+f(p[0])+'" y="'+f(p[1]+4.5)+'" text-anchor="middle">'+(i+1)+'</text>'
     :'<circle class="aq-capa-ring__dot" cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="15"/><text class="aq-capa-ring__no" x="'+f(p[0])+'" y="'+f(p[1]+4.5)+'" text-anchor="middle">'+(i+1)+'</text>')+'</g>'});
  svg+='</svg>';
  var steps=I.map(function(it,i){var who=it.hold?String(it.hold):'',side=i<half?'r':'l',row=i<half?i+1:n-i;
-  return '<li class="aq-capa-ring__step is-'+side+(it.hold?' is-hold':'')+'" data-i="'+i+'" style="--row:'+row+'"><span class="aq-capa-ring__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+  return '<li class="aq-capa-ring__step is-'+side+(it.hold?' is-hold':'')+'" data-i="'+i+'" data-pk-row="'+i+'" style="--row:'+row+'"><span class="aq-capa-ring__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
    +'<h3 class="aq-capa-ring__t">'+(it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t))+'</h3>'+(it.d?'<p class="aq-capa-ring__d">'+tx(it.d)+'</p>':'')
    +(who?'<p class="aq-capa-ring__hold"><span class="aq-capa-ring__hk">Hold</span> <span>Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span></p>':'')+'</li>'}).join('');
- return sec(H+'<div class="aq-capa-ring" style="--rows:'+half+'"><div class="aq-capa-ring__fig">'+svg+(core?'<span class="aq-capa-ring__core" aria-hidden="true">'+e(core)+'</span>':'')+'</div>'
+ return sec(H+'<div class="aq-capa-ring" style="--rows:'+half+'" data-pk-sticky data-pk-h="200"><div class="aq-capa-ring__fig" data-pk-fig>'+svg+(core?'<span class="aq-capa-ring__core" aria-hidden="true">'+e(core)+'</span>':'')+'</div>'
   +'<ol class="aq-capa-ring__steps" role="list">'+steps+'</ol></div>','aq-band--navy aq-capa-ring-sec')};
 if(typeof document!=='undefined'&&document.addEventListener)['mouseover','mouseout','focusin','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var s=ev.target.closest&&ev.target.closest('.aq-capa-ring__step');if(!s)return;
  if(/out$/.test(t)&&ev.relatedTarget&&s.contains(ev.relatedTarget))return;var g=s.closest('.aq-capa-ring').querySelector('.aq-capa-ring__node[data-i="'+s.getAttribute('data-i')+'"]');if(g)g.classList.toggle('is-hover',/over|in$/.test(t))})});
+/* phones (PhoneKit strip): the nodes before the step being read are done */
+if(typeof document!=='undefined'&&document.addEventListener)document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-capa-ring'))return;
+ var k=ev.detail&&ev.detail.on?+ev.detail.key:-1;[].forEach.call(w.querySelectorAll('.aq-capa-ring__node'),function(g){g.classList.toggle('is-done',k>=0&&+g.getAttribute('data-i')<k)})});
 /* Look "cert-readout" -> CertReadout (design-system/components/CertReadout): certification status read like an
    instrument. At the left a navy readout box framed by rulers (ticks along the top and foot, a vertical scale at the
    right edge with a marker at the selected line), the selected item's status line (its d) set as the giant reading,
@@ -1972,7 +2377,9 @@ document.addEventListener('focusout',function(ev){var r=ev.target.closest&&ev.ta
    clause to light every requirement that cites it. Each row also carries its clause references as text (visually
    hidden on desktop, shown on phones), so nothing depends on the wires.
    Fields: h, intro, cols [requirement, how, regulation A, regulation B], rows [[t, how, clausesA, clausesB]] (clauses
-   split on "," and ";", a "(g)" after "11.10(d)" reads 11.10(g)), fold (phones only), fold_noun. */
+   split on "," and ";", a "(g)" after "11.10(d)" reads 11.10(g)), fold (phones only), fold_noun.
+   Phones (pass 12): each row is a mini crosswalk, regulation A's chips on a left rail and B's on a right rail, short
+   curves from every chip to the requirement set in a box between them, how under it; the rail names head the list. */
 function cwTok(c){var out=[],base='';String(c&&typeof c==='object'?c.t:c||'').split(/\s*[,;]\s*/).forEach(function(t){t=t.trim();if(!t)return;
   if(t.charAt(0)==='('&&base)t=base+t;else base=t.replace(/\(.*$/,'');out.push(t)});return out}
 function cwKey(t){return (String(t).match(/\d+|[a-z]/gi)||[]).map(function(x){return /\d/.test(x)?('0000'+x).slice(-5):x})}
@@ -1989,11 +2396,17 @@ LOOKS['clause-crosswalk']=function(b,H){
   s.keys.forEach(function(t,j){var ny=((j+0.5)/M*Y).toFixed(1);s.rows[t].forEach(function(i){var a=k==='a'?'M0 '+ny+'C55 '+ny+' 45 '+ry(i)+' 100 '+ry(i):'M0 '+ry(i)+'C55 '+ry(i)+' 45 '+ny+' 100 '+ny;
    d+='<path class="aq-clause-crosswalk__wire" data-cw="'+i+'" data-cwn="'+k+j+'" d="'+a+'"/>'})});
   return '<svg class="aq-clause-crosswalk__wires aq-clause-crosswalk__wires--'+k+'" viewBox="0 0 100 '+Y+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+d+'</svg>'}
- var rows=R.map(function(r,i){var refs=sides.map(function(s){var t=cwTok(r[s.ci]);return t.length?'<span class="aq-clause-crosswalk__ref"><span class="aq-clause-crosswalk__rk">'+tx(C[s.ci])+'</span> '+t.map(function(x){return '<span class="aq-clause-crosswalk__chip">'+tx(x)+'</span>'}).join(' ')+'</span>':''}).join('');
-  return fli('<li class="aq-clause-crosswalk__row" data-cw="'+i+'">'+idx(i)+'<h3 class="aq-clause-crosswalk__t">'+tcell(r[0])+'</h3><p class="aq-clause-crosswalk__how">'+tcell(r[1])+'</p><p class="aq-clause-crosswalk__refs">'+refs+'</p></li>',b,i)}).join('');
+ var rows=R.map(function(r,i){var refs=sides.map(function(s,k){var t=cwTok(r[s.ci]);return t.length?'<span class="aq-clause-crosswalk__ref aq-clause-crosswalk__ref--'+(k?'b':'a')+'"><span class="aq-clause-crosswalk__rk">'+tx(C[s.ci])+'</span> '+t.map(function(x){return '<span class="aq-clause-crosswalk__chip">'+tx(x)+'</span>'}).join(' ')+'</span>':''}).join('');
+  /* pass 12 phone: a mini crosswalk per row, short curves from each rail's chips to the requirement's box (chip j of
+     M leaves at (j + 0.5) / M of the rail, the box sits at its middle; a stretched svg like the desktop wires) */
+  var mini=sides.map(function(s,k){var t=cwTok(r[s.ci]),M=t.length;if(!M)return '';
+   var d=t.map(function(x,j){var y=((j+0.5)/M*100).toFixed(1);return '<path'+(M===1?' class="is-straight"':'')+' d="'+(k?'M0 50C55 50 45 '+y+' 100 '+y:'M0 '+y+'C55 '+y+' 45 50 100 50')+'"/>'}).join('');
+   return '<svg class="aq-clause-crosswalk__mini aq-clause-crosswalk__mini--'+(k?'b':'a')+'" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+d+'</svg>'}).join('');
+  return fli('<li class="aq-clause-crosswalk__row" data-cw="'+i+'">'+idx(i)+'<h3 class="aq-clause-crosswalk__t">'+tcell(r[0])+'</h3><p class="aq-clause-crosswalk__how">'+tcell(r[1])+'</p><p class="aq-clause-crosswalk__refs">'+refs+'</p>'+mini+'</li>',b,i)}).join('');
+ var phead='<div class="aq-clause-crosswalk__pheads" aria-hidden="true"><span>'+tx(C[2])+'</span><span>'+tx(C[3])+'</span></div>';
  var head='<div class="aq-clause-crosswalk__heads" aria-hidden="true"><span>'+tx(C[0])+'</span><span>'+tx(C[1])+'</span></div>';
  var inner='<div class="aq-clause-crosswalk" style="--cw-n:'+N+'">'+spine(sides[0],'a')+wires(sides[0],'a')
-  +head+'<div class="aq-clause-crosswalk__mid"><ol class="aq-clause-crosswalk__rows" role="list">'+rows+'</ol></div>'+wires(sides[1],'b')+spine(sides[1],'b')+'</div>';
+  +head+'<div class="aq-clause-crosswalk__mid">'+phead+'<ol class="aq-clause-crosswalk__rows" role="list">'+rows+'</ol></div>'+wires(sides[1],'b')+spine(sides[1],'b')+'</div>';
  return sec(H+wFold(b,N,inner,b.fold_noun||'requirements'),'aq-clause-crosswalk-sec')};
 (function(){
  function set(root,rows,nodes){var on=rows||nodes;root.classList.toggle('has-hot',!!on);
@@ -2027,9 +2440,11 @@ LOOKS['code-index']=function(b,H){
    ledger: number and item on the strip, the fact and the evidence on the navy. The highlighted row's value is split at
    its first full stop (words unchanged): the first sentence as the fact, the rest under it, quieter.
    Fields: h, caption (eyebrow), intro, cols [item, fact, evidence], rows [{p, v, m, hl, link, link_label, intent}],
-   note, fold, fold_noun. */
+   note, fold, fold_noun. Pass 12: a ledger of more than 6 rows with no fold of its own folds after 4 on phones only
+   (class is-phonefold; desktop shows every row and no button). */
 function cphGo(r){return r.link&&wp(r.link)?'<a class="aq-colophon__go" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'"'+(r.intent?' data-intent="'+e(r.intent)+'"':'')+'>'+tx(r.link_label||wlabel(r.link))+'</a>':''}
 LOOKS['colophon']=function(b,H){var R=b.rows||[],C=b.cols||[],num=function(i){return (i<9?'0':'')+(i+1)};
+ var pf=!(b.fold>0)&&R.length>6;if(pf){var o={};for(var k in b)o[k]=b[k];o.fold=4;b=o}
  var items=R.map(function(r,i){var v=String(r.v||''),a=v,z='';
   if(r.hl){var k=v.search(/\.\s+(?=[A-Z\[])/);if(k>=0){a=v.slice(0,k+1);z=v.slice(k+1).trim()}}
   return fli('<li class="aq-colophon__row'+(r.hl?' is-hl':'')+'" style="--i:'+i+'">',b,i)
@@ -2038,7 +2453,7 @@ LOOKS['colophon']=function(b,H){var R=b.rows||[],C=b.cols||[],num=function(i){re
    +'<p class="aq-colophon__m">'+(r.m?'<span class="aq-colophon__ev">'+tx(r.m)+'</span>':'')+cphGo(r)+'</p></li>'}).join('');
  var head=C.length?'<div class="aq-colophon__head" aria-hidden="true">'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>':'';
  var list='<ol class="aq-colophon__rows" role="list">'+items+'</ol>';
- return sec('<div class="aq-colophon"><span class="aq-colophon__strip" aria-hidden="true"></span>'
+ return sec('<div class="aq-colophon'+(pf?' is-phonefold':'')+'"><span class="aq-colophon__strip" aria-hidden="true"></span>'
   +'<div class="aq-colophon__mast">'+H+'<p class="aq-colophon__ghost" aria-hidden="true">'+tx(b.h)+'</p></div>'
   +head+wFold(b,R.length,list,b.fold_noun||'facts')+wSpecNote(b)+'</div>','aq-band--navy aq-colophon-sec')};
 /* Look "cost-balance" -> CostBalance (design-system/components/CostBalance): what it costs to run, drawn as a balance
@@ -2050,20 +2465,44 @@ LOOKS['colophon']=function(b,H){var R=b.rows||[],C=b.cols||[],num=function(i){re
    Fields as a spec block: h, cols, rows [{p, v, m, link, side}], fold, fold_noun, note. side: "out" puts a row on the
    leaving side (default: in). glyphs (optional): icon names for the train inside the boundary (default softener,
    carbon-filter, ro-membrane, edi, uv, tank). A row's link makes its name the link. Desktop shows every stream; the
-   fold applies on phones, where the balance runs top to bottom: streams in, the boundary, streams out. */
-LOOKS['cost-balance']=function(b,H){var R=b.rows||[],C=b.cols||[],K='aq-cost-balance';
+   fold applies on phones, where the balance runs top to bottom: streams in, the boundary, streams out. 
+   Phones (pass 12): with one glyph per incoming stream (buying) each stream carries its glyph at the left on one
+   water pipe that runs down into the leaving row ("pipe"); otherwise (first-system) the boundary becomes a 56 px
+   sticky mini-skid (PhoneKit sticky figure) that lights the glyphs the stream in view names (a stream naming the
+   package lights them all, any other lights the boundary; the leaving stream lights the water out) and shows its
+   number ("strip"). A note that opens with a short label and a colon ("First year, all in: ...") becomes a navy total
+   card on phones. Rows with a link are one 44 px target on phones. */
+
+(function(){var K='aq-cost-balance';
+/* which glyphs a stream lights in the phone strip: the parts its name or basis names (a look rule, no copy) */
+var GW={'softener':/\b(salt|resin|soften)/i,'carbon-filter':/\b(filter|carbon)/i,'ro-membrane':/\b(membrane|RO)\b|membranes/i,'edi':/\b(resin|EDI)\b/i,'uv':/\bUV\b|\blamp/i,'tank':/\b(tank|storage)\b/i};
+function lit(r,G){var t=(r.p||'')+' '+(r.m||'');if(/\bpackage\b/i.test(r.p||''))return G.slice();return G.filter(function(g){return GW[g]&&GW[g].test(t)})}
+LOOKS['cost-balance']=function(b,H){var R=b.rows||[],C=b.cols||[];
  var G=(b.glyphs||['softener','carbon-filter','ro-membrane','edi','uv','tank']).filter(isIcon);
- var setBy=C[2]||'',item=function(r,i,side){var nm=r.link&&wp(r.link)?wlink(r.link,r.p):tx(r.p);
-  return fli('<li class="'+K+'__s '+K+'__s--'+side+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+ var nIn=R.filter(function(r){return !(r&&r.side==='out')}).length,pipe=G.length>0&&nIn===G.length,gi=0;
+ var setBy=C[2]||'',item=function(r,i,side){var nm=r.link&&wp(r.link)?wlink(r.link,r.p):tx(r.p),key=String(i+1);
+  var rg=pipe&&side==='in'&&G[gi]?'<span class="'+K+'__rg" aria-hidden="true">'+wIcon(G[gi++],K+'__ic')+'</span>':'';
+  return fli('<li class="'+K+'__s '+K+'__s--'+side+(r.link&&wp(r.link)?' is-link':'')+'" data-pk-row="'+key+'">'+rg+'<span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
    +'<div class="'+K+'__txt"><h3 class="'+K+'__p">'+nm+'</h3><p class="'+K+'__v">'+tx(r.v)+'</p>'
    +(r.m?'<p class="'+K+'__m">'+(setBy?'<span class="'+K+'__mk">'+tx(setBy)+'</span> ':'')+tx(r.m)+'</p>':'')+'</div>'
    +'<span class="'+K+'__wire" aria-hidden="true"><span class="'+K+'__line"></span><span class="'+K+'__head"></span></span></li>',b,i)};
- var ins='',outs='';R.forEach(function(r,i){if(r&&r.side==='out')outs+=item(r,i,'out');else ins+=item(r,i,'in')});
- var train='<div class="'+K+'__sys" aria-hidden="true"><span class="'+K+'__edge"></span><div class="'+K+'__train"><span class="'+K+'__water"></span>'
-  +G.map(function(g){return '<span class="'+K+'__g">'+wIcon(g,K+'__ic')+'</span>'}).join('')+'</div></div>';
- var inner='<div class="'+K+'"><ol class="'+K+'__in" role="list">'+ins+'</ol>'+train+'<ol class="'+K+'__out" role="list">'+outs+'</ol></div>';
- var note=b.note?'<p class="'+K+'__note">'+tx(b.note)+'</p>':'';
+ var ins='',outs='',keys={},inK=[],outK=[];
+ R.forEach(function(r,i){if(!r)return;var k=String(i+1);if(r.side==='out'){outs+=item(r,i,'out');outK.push(k)}else{ins+=item(r,i,'in');inK.push(k);
+  lit(r,G).forEach(function(g){(keys[g]=keys[g]||[]).push(k)});if(!lit(r,G).length)(keys._edge=keys._edge||[]).push(k)}});
+ var pk=function(a){return a&&a.length?' data-pk-key="'+a.join(' ')+'"':''};
+ var train='<div class="'+K+'__sys" aria-hidden="true"'+(pipe?'':' data-pk-fig')+'><span class="'+K+'__arr is-in"'+pk(inK)+'></span><span class="'+K+'__edge"'+pk(keys._edge)+'></span><div class="'+K+'__train"><span class="'+K+'__water"'+pk(outK)+'></span>'
+  +G.map(function(g){return '<span class="'+K+'__g"'+pk(keys[g])+'>'+wIcon(g,K+'__ic')+'</span>'}).join('')+'</div><span class="'+K+'__arr is-out"'+pk(outK)+'></span>'
+  +'<span class="'+K+'__now"><span class="'+K+'__nowk">'+e(C[0]||'Line')+'</span> <b class="'+K+'__nown">01</b><span class="'+K+'__nowt"> / '+(R.length<10?'0':'')+R.length+'</span></span></div>';
+ var inner='<div class="'+K+(pipe?' is-pipe':' is-strip')+'"'+(pipe?'':' data-pk-sticky data-pk-h="96"')+'><ol class="'+K+'__in" role="list">'+ins+'</ol>'+train+'<ol class="'+K+'__out" role="list">'+outs+'</ol></div>';
+ /* "Label: rest" with a short label: the label is the total card's head on phones (same words on desktop) */
+ var nm=b.note&&/^([^:.;]{3,40}):\s/.exec(b.note),note=!b.note?'':nm&&nm[1].split(/\s+/).length<=6
+  ?'<p class="'+K+'__note is-total"><span class="'+K+'__tl">'+tx(nm[1])+'<span class="'+K+'__colon">:</span></span> <span class="'+K+'__tr">'+tx(b.note.slice(nm[0].length))+'</span></p>'
+  :'<p class="'+K+'__note">'+tx(b.note)+'</p>';
  return sec(H+wFold(b,R.length,inner,b.fold_noun||'items')+note,K+'-sec')};
+/* the strip's number follows the stream in view (state, not motion: works with motion off) */
+document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains(K))return;var n=w.querySelector('.'+K+'__nown');
+ if(n&&ev.detail&&ev.detail.key){var k=+ev.detail.key;n.textContent=(k<10?'0':'')+k}});
+})();
 /* Look "cost-skid" -> CostSkid (design-system/components/CostSkid): what it costs to run, read off the system itself.
    The title top left; top right one Purified Water skid drawn in IsoKit line art (softener with its brine tank, carbon
    vessel, RO rack, EDI stack, loop pump, UV unit and control panel on a base frame, the reject line to drain off the
@@ -2073,8 +2512,10 @@ LOOKS['cost-balance']=function(b,H){var R=b.rows||[],C=b.cols||[],K='aq-cost-bal
    Concept: research/pass9b/concepts/svc-service.1.png (a skid with numbered leaders over the running-cost table).
    Fields (a spec block): h, intro, cols [item, interval or amount, set by], rows [{p, v, m, link, part}], fold, fold_noun.
    part: the skid stage(s) the row belongs to, space-separated: panel, gen (RO and EDI), pre (carbon and softener),
-   soft (softener and brine tank), uv, pump, drain. A row without a part has no leader. Desktop shows every row; the
-   fold applies on phones, where the drawing runs full width with its numbers and the rows stack under it. */
+   soft (softener and brine tank), uv, pump, drain. A row without a part has no leader. Every row shows on every width
+   (pass 12, S7: the numbers on the drawing point at them; fold / fold_noun are no longer read). Phones: the drawing
+   runs full width with its numbers; each row is two compact lines (number and item, then the value) with the third
+   column (cols[2], "Set by" or "Note") behind a 44 px button that opens it under the row. */
 function csScene(){var S={},order=[];
  function add(id,el){order.push(el);if(!S[id])S[id]={pts:[]};if(el.ports){for(var k in el.ports)S[id].pts.push(el.ports[k]);if(el.ports.top&&!S[id].top)S[id].top=el.ports.top}}
  function link(a,b,to,z){var g=4,pp=vpDedupe([a,[a[0]+g,a[1],a[2]],[a[0]+g,a[1],z],[a[0]+g,b[1],z],[b[0]-g,b[1],z],[b[0]-g,b[1],b[2]],b]);return isoPipe(pp,{to:to,r:1.8,flanges:false,caps:false})}
@@ -2088,7 +2529,7 @@ function csScene(){var S={},order=[];
  var r0=[ro.ports.base[0]+36,ro.ports.base[1]+10,z+6],dr=isoPipe(vpDedupe([r0,[r0[0],70,z+6],[r0[0],70,-14]]),{to:'drain',r:1.6,flanges:false,caps:'end'});
  add('drain',dr);order.push(isoArrow([r0[0],70,-6],[0,0,-1],{size:4}));S.drain.pts.push([r0[0],70,-20]);
  return {S:S,order:order}}
-window.csLight=csLight;
+window.csLight=csLight;var csN=0;
 LOOKS['cost-skid']=function(b,H){var R=b.rows||[],C=b.cols||[],K='aq-cost-skid',sc=csScene(),S=sc.S;
  var parts=function(r){return String(r&&r.part||'').split(/\s+/).filter(function(k){return S[k]})};
  var all=[];Object.keys(S).forEach(function(k){all=all.concat(S[k].pts)});
@@ -2105,17 +2546,24 @@ LOOKS['cost-skid']=function(b,H){var R=b.rows||[],C=b.cols||[],K='aq-cost-skid',
  W=bx.w;org=[-bx.x,-bx.y];var Hh=bx.h,svg=isoSvg(W,Hh,sc.order.join('')+leads,K+'__svg',{origin:org});
  var pins=L.map(function(l){var at=isoPct(l.end,W,Hh,org);return '<span class="aq-iso-figure__label '+(l.left?'aq-iso-figure__label--left ':'')+K+'__pin" data-r="'+l.i+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+(l.i<9?'0':'')+(l.i+1)+'</span>'}).join('');
  var head='<thead><tr><th scope="col"><span class="aq-cost-skid__sr">No.</span></th>'+[0,1,2].map(function(j){return '<th scope="col">'+tx(C[j]||'')+'</th>'}).join('')+'</tr></thead>';
- var body=R.map(function(r,i){var nm=r.link&&wp(r.link)?wlink(r.link,r.p):tx(r.p),ps=parts(r);
-  return fli('<tr class="'+K+'__row" data-r="'+i+'" data-parts="'+ps.join(' ')+'" tabindex="0">',b,i)
+ csN++;
+ var body=R.map(function(r,i){var nm=r.link&&wp(r.link)?wlink(r.link,r.p):tx(r.p),ps=parts(r),mid=K+'-m'+csN+'-'+i;
+  /* phones: the third column ("Set by", "Note") opens under its row from a 44 px button; desktop never shows it */
+  var why=r.m&&C[2]?'<td class="'+K+'__why"><button type="button" class="'+K+'__wb" aria-expanded="false" aria-controls="'+mid+'"><span>'+tx(C[2])+'</span><span class="aq-phone-kit__chev aq-phone-kit__chev--plus" aria-hidden="true"></span></button></td>':'';
+  return '<tr class="'+K+'__row" data-r="'+i+'" data-parts="'+ps.join(' ')+'" tabindex="0">'
    +'<td class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</td><th scope="row" class="'+K+'__p">'+nm+'</th>'
-   +'<td class="'+K+'__v"><span class="'+K+'__k" aria-hidden="true">'+tx(C[1]||'')+'</span>'+tx(r.v)+'</td><td class="'+K+'__m"><span class="'+K+'__k" aria-hidden="true">'+tx(C[2]||'')+'</span>'+tx(r.m)+'</td></tr>'}).join('');
+   +'<td class="'+K+'__v"><span class="'+K+'__k" aria-hidden="true">'+tx(C[1]||'')+'</span>'+tx(r.v)+'</td><td class="'+K+'__m" id="'+mid+'"><span class="'+K+'__k" aria-hidden="true">'+tx(C[2]||'')+'</span>'+tx(r.m)+'</td>'+why+'</tr>'}).join('');
+ /* every row shows on every width: each numbered part on the drawing points at its row (pass 12, S7: no fold) */
  var inner='<div class="'+K+'"><div class="'+K+'__top">'+H+'<div class="aq-iso-figure '+K+'__fig">'+svg+pins+'</div></div>'
-  +wFold(b,R.length,'<table class="'+K+'__table">'+head+'<tbody>'+body+'</tbody></table>',b.fold_noun||'items')+'</div>';
+  +'<table class="'+K+'__table">'+head+'<tbody>'+body+'</tbody></table></div>';
  return sec(inner,K+'-sec')};
 /* Pointing at (or focusing) a row lights its parts, its leader and number */
 function csLight(r,i,on){if(!r)return;var row=r.querySelector('.aq-cost-skid__row[data-r="'+i+'"]'),svg=r.querySelector('.aq-cost-skid__svg');if(!row)return;
  String(row.getAttribute('data-parts')||'').split(' ').forEach(function(id){if(id&&svg)[].forEach.call(svg.querySelectorAll('[data-iso-id="'+id+'"],[data-iso-to="'+id+'"]'),function(el){el.classList.toggle('is-lit',on)})});
  [].forEach.call(r.querySelectorAll('[data-r="'+i+'"]'),function(el){el.classList.toggle('is-on',on)})}
+/* phones: the row's third-column button opens or closes that row's note and lights its parts */
+document.addEventListener('click',function(ev){var bt=ev.target.closest&&ev.target.closest('.aq-cost-skid__wb');if(!bt)return;var row=bt.closest('.aq-cost-skid__row'),o=bt.getAttribute('aria-expanded')!=='true';
+ bt.setAttribute('aria-expanded',o?'true':'false');row.classList.toggle('is-open',o)});
 (function(){function hl(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-cost-skid__row');if(!s||s.contains(ev.relatedTarget))return;csLight(s.closest('.aq-cost-skid'),s.getAttribute('data-r'),on)}
  document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
  document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)})})();
@@ -2134,17 +2582,26 @@ function csLight(r,i,on){if(!r)return;var row=r.querySelector('.aq-cost-skid__ro
           the grid, and r, the index of the row that covers it (no invented places, only the tiles it lists);
      base: {c: "ON", label: "Based in Ontario"} (optional) the tile marked as home, with its label (copy from the page);
           its row is on the readout when the page opens.
+   Every tile is a button: a tile with a row puts that row on the readout; a tile without one picks the row named like
+   the tile (Quebec), else the row for the rest ("Other provinces and territories", the last row whose label starts
+   "Other"); the dashed look of a tile without a row is kept.
+   Phones (pass 12, S11): the tile map is the province picker. The readout sheet shows the map (and the stamp, when the
+   region has one); under it only the chosen region's column shows (the base row's at first), so the region is never
+   read twice and the section is one map and one card. A row of region chips under the map (the row names, 44 px,
+   aria-pressed) does what a tile does, so no region hides behind the map; tiles that pick a named row (data-named) get
+   a solid edge on phones; a polite status names the chosen region when the readout face is folded.
    Design system: components/CoverageMap. */
 (function(){
 var covN=0;
 function pad(i){return (i<9?'0':'')+(i+1)}
+function low(s){return String(s||'').toLowerCase().trim()}
 function txt(c){return c&&typeof c==='object'?String(c.t||''):String(c==null?'':c)}
 /* the cell's text up to " in " outside a [placeholder]: [time, rest] */
 function cut(s){var d=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='[')d++;else if(c===']'&&d)d--;else if(!d&&s.substr(i,4)===' in ')return [s.slice(0,i),s.slice(i+1)]}return [s,'']}
 /* the stamp: "CRN: <body> (ABC). Seal: <body> (DEF) · ..." -> [["CRN","ABC"],["Seal","DEF"]] */
 function stamp(s){var o=[];[['CRN','CRN:'],['Seal','Seal:']].forEach(function(k){var i=s.indexOf(k[1]);if(i<0)return;var r=s.slice(i+k[1].length),j=r.search(/\.\s|\s·\s|\.$/);r=(j<0?r:r.slice(0,j)).trim();
  var a=r.match(/\(([^()]+)\)\s*$/);if(r)o.push([k[0],a?a[1]:r])});return o}
-LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=b.base||null,k=++covN,nid='cov-'+k+'-now';
+LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=b.base||null,k=++covN,nid='cov-'+k+'-now',lid='cov-'+k+'-list';
  var cols=M.reduce(function(a,t){return Math.max(a,(+t.x||0)+1)},1),rws=M.reduce(function(a,t){return Math.max(a,(+t.y||0)+1)},1);
  var on=0;if(B)M.forEach(function(t){if(t.c===B.c&&+t.r>=0&&+t.r<R.length)on=+t.r});
  function lt(i){return +i===on?' is-on':''}
@@ -2155,14 +2612,20 @@ LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=
    +'<div class="aq-coverage-map__nb"><p class="aq-coverage-map__big aq-coverage-map__sc">'+tx(t[0])+'</p>'
    +(st.length?'<p class="aq-coverage-map__stamp">'+st.map(function(x){return '<span><span class="aq-coverage-map__sk">'+tx(x[0])+'</span><span class="aq-coverage-map__sv aq-coverage-map__sc">'+tx(x[1])+'</span></span>'}).join('')+'</p>':'')+'</div>'
    +'<p class="aq-coverage-map__nl">'+tx(C[1]||'')+(t[1]?'<span>'+tx(t[1])+'</span>':'')+'</p></div>'}).join('');
- var tiles=M.map(function(t){var home=B&&B.c===t.c,r=+t.r,has=r>=0&&r<R.length;
-  return '<span class="aq-coverage-map__tile'+(home?' is-home':'')+(has&&r===on?' is-on':'')+(has?'':' is-none')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'" title="'+e(t.n||t.c)+'">'
-   +'<span class="aq-coverage-map__code">'+e(t.c)+'</span></span>'}).join('');
+ var other=-1;R.forEach(function(r,i){if(/^other\b/i.test(txt(r[0])))other=i});
+ function pick(t){var r=+t.r;if(r>=0&&r<R.length)return r;for(var i=0;i<R.length;i++)if(low(txt(R[i][0]))===low(t.n))return i;return other}
+ var tiles=M.map(function(t){var home=B&&B.c===t.c,r=+t.r,has=r>=0&&r<R.length,pk=pick(t);
+  return '<button type="button" class="aq-coverage-map__tile'+(home?' is-home':'')+(has&&r===on?' is-on':'')+(pk===on?' is-pick':'')+(has?'':' is-none')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'" data-p="'+(pk<0?'':pk)+'"'+(pk>=0&&pk!==other?' data-named':'')+' aria-label="'+e(t.n||t.c)+'" aria-pressed="'+(pk===on?'true':'false')+'" aria-controls="'+nid+' '+lid+'">'
+   +'<span class="aq-coverage-map__code" aria-hidden="true">'+e(t.c)+'</span></button>'}).join('');
+ /* phones: the regions as chips under the map (the row names), so every region can be found without guessing that a
+    tile is pressable; a polite status names the region when the readout face is not shown */
+ var chips='<div class="aq-coverage-map__chips" role="group" aria-label="'+e(txt(C[0])||'Regions')+'">'+R.map(function(r,i){return '<button type="button" class="aq-coverage-map__chip" data-p="'+i+'" aria-pressed="'+(i===on?'true':'false')+'" aria-controls="'+lid+'">'+tx(txt(r[0]))+'</button>'}).join('')+'</div>'
+  +'<span class="aq-coverage-map__say" role="status"></span>';
  var base=B&&B.label?'<p class="aq-coverage-map__base"><span class="aq-coverage-map__pin" aria-hidden="true"></span>'+tx(B.label)+'</p>':'';
  /* the readout is a survey sheet: faint contour lines drift under it (FxContour, ambient WebGL, aria-hidden) */
  var now='<li class="aq-coverage-map__now aq-fx-host" data-theme="light"><canvas class="aq-fx-shader" data-gl="contour" aria-hidden="true"></canvas>'
   +'<div class="aq-coverage-map__faces" id="'+nid+'" aria-live="polite">'+faces+'</div>'
-  +'<div class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-hidden="true">'+tiles+'</div>'+base+'</li>';
+  +'<div class="aq-coverage-map__grid" role="group" aria-label="'+e(txt(C[0])||'Provinces and territories')+'" style="--cols:'+cols+';--rows:'+rws+'">'+tiles+'</div>'+base+chips+'</li>';
  var list=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
   return '<li class="aq-coverage-map__col'+lt(i)+'" data-r="'+i+'">'
    +'<p class="aq-coverage-map__i" aria-hidden="true">'+pad(i)+'</p>'
@@ -2171,17 +2634,22 @@ LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=
    +'<dl class="aq-coverage-map__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl></li>'});
  /* the readout takes the third cell (top right on desktop) */
  list.splice(Math.min(2,list.length),0,now);
- return sec(H+'<ol class="aq-coverage-map" role="list">'+list.join('')+'</ol>','aq-coverage-map-sec')};
+ return sec(H+'<ol class="aq-coverage-map" id="'+lid+'" role="list">'+list.join('')+'</ol>','aq-coverage-map-sec')};
 /* Put a region on the readout: its column, its face and its tiles go on; the wrapper hears 'aqcoverage' (motion) */
 function lit(w,r,instant){if(r===''||r==null)return;r=String(r);var cur=w.querySelector('.aq-coverage-map__col.is-on');if(cur&&cur.getAttribute('data-r')===r)return;
  [].forEach.call(w.querySelectorAll('[data-r]'),function(x){x.classList.toggle('is-on',x.getAttribute('data-r')===r)});
+ [].forEach.call(w.querySelectorAll('.aq-coverage-map__tile'),function(t){var y=t.getAttribute('data-p')===r;t.classList.toggle('is-pick',y);t.setAttribute('aria-pressed',y?'true':'false')});
  [].forEach.call(w.querySelectorAll('.aq-coverage-map__pick'),function(p){p.setAttribute('aria-pressed',p.closest('[data-r]').getAttribute('data-r')===r?'true':'false')});
+ [].forEach.call(w.querySelectorAll('.aq-coverage-map__chip'),function(p){p.setAttribute('aria-pressed',p.getAttribute('data-p')===r?'true':'false')});
+ var f=w.querySelector('.aq-coverage-map__faces'),say=w.querySelector('.aq-coverage-map__say'),col=w.querySelector('.aq-coverage-map__col.is-on .aq-coverage-map__pick');
+ if(say)say.textContent=f&&!f.offsetWidth&&col?col.textContent:'';
  w.dispatchEvent(new CustomEvent('aqcoverage',{detail:{r:+r,instant:!!instant}}))}
 window.AQcoverage=lit;
 function at(ev,sel){var x=ev.target.closest&&ev.target.closest(sel);return x&&x.closest('.aq-coverage-map')?x:null}
 document.addEventListener('mouseover',function(ev){var c=at(ev,'.aq-coverage-map__col');if(c)lit(c.closest('.aq-coverage-map'),c.getAttribute('data-r'))});
 document.addEventListener('focusin',function(ev){var c=at(ev,'.aq-coverage-map__col');if(c)lit(c.closest('.aq-coverage-map'),c.getAttribute('data-r'),true)});
-document.addEventListener('click',function(ev){var t=at(ev,'.aq-coverage-map__tile:not(.is-none), .aq-coverage-map__pick');if(!t)return;var r=t.closest('[data-r]').getAttribute('data-r');lit(t.closest('.aq-coverage-map'),r,ev.detail===0)});
+document.addEventListener('click',function(ev){var t=at(ev,'.aq-coverage-map__tile, .aq-coverage-map__pick, .aq-coverage-map__chip');if(!t)return;
+ var r=t.hasAttribute('data-p')?t.getAttribute('data-p'):t.closest('[data-r]').getAttribute('data-r');lit(t.closest('.aq-coverage-map'),r,ev.detail===0)});
 })();
 /* Look "cut-band" -> CutBand (design-system/components/CutBand): a short table of levels laid across the plant like a
    cutting plane. On a light ground the heading sits top left and a hairline elevation of the package stands at the
@@ -2191,7 +2659,9 @@ document.addEventListener('click',function(ev){var t=at(ev,'.aq-coverage-map__ti
    level numbered, its name in light display type, what it is set at (a figure in mono display), its basis as mono
    lines (split at ";") and the row's link.
    Fields, as a spec block: h, intro, cols [level, set at, basis], rows [{p, v, m, level, hl, link, link_label}], note.
-   Phones: the drawing stands under the heading and the band rises over its foot; rows stack inside the band. */
+   Phones (pass 12): the plant drawing gives way to a 12-month trend strip on chart paper (cbTrend: the action level
+   as a navy rule labelled with the action row's "set at", the alert level as a dashed rule named by the other row,
+   set from a shaded first stretch), then the navy band with the rows stacked. Desktop unchanged. */
 function cbPlant(){var P='aq-cut-band'+'__',L=function(c,d){return '<path class="'+P+c+'" d="'+d+'"/>'};
  var s=L('frame','M8 8H472V592H8Z');
  /* skid base and feet */
@@ -2214,6 +2684,21 @@ function cbPlant(){var P='aq-cut-band'+'__',L=function(c,d){return '<path class=
  /* the water in the header and loop */
  s+=L('water','M282 237H306V92H366V116')+L('water','M404 448V430H428V528H72V500');
  return '<svg class="'+P+'svg" viewBox="0 0 480 600" preserveAspectRatio="xMidYMin meet" aria-hidden="true" focusable="false">'+s+'</svg>'}
+/* The phone's trend strip (pass 12, audit svc-cq.4): twelve months of monitoring on chart paper, the levels as ruled
+   lines named from the block's own rows (the action row's "set at", the other row's name). The dots are a drawn
+   pattern, not data: no axis values, no counts. Phases 1 and 2 (a dense first stretch, shaded) set the alert line,
+   which then carries on through the year; one reading rises over it, never to the action line. */
+function cbTrend(R){var act=null,alt=null;R.forEach(function(r){if(!act&&r.level==='action')act=r;else if(!alt)alt=r});if(!act)return '';
+ var P='aq-cut-band'+'__',W=360,Hh=170,x0=6,x1=354,mw=(x1-x0)/12,yA=34,yL=80,yB=158,s='',seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+ for(var m=0;m<=12;m++)s+='<path class="'+P+'tg'+(m%3?'':' is-q')+'" d="M'+(x0+m*mw).toFixed(1)+' 8V'+yB+'"/>';
+ for(var y=yB;y>8;y-=12)s+='<path class="'+P+'tg" d="M'+x0+' '+y+'H'+x1+'"/>';
+ s+='<rect class="'+P+'ph" x="'+x0+'" y="8" width="'+mw.toFixed(1)+'" height="'+(yB-8)+'"/>';
+ var d='';for(var i=0;i<28;i++){var x=x0+3+i*(mw-6)/27,y=112+rnd()*24;d+='<circle class="'+P+'dt is-ph" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="1.6"/>'}
+ for(var j=0;j<44;j++){var xx=x0+mw+6+j*(x1-x0-mw-10)/43,yy=j===14?68:106+rnd()*32;d+='<circle class="'+P+'dt'+(j===14?' is-x':'')+'" cx="'+xx.toFixed(1)+'" cy="'+yy.toFixed(1)+'" r="'+(j===14?2.6:1.9)+'"/>'+(j===14?'<circle class="'+P+'ring" cx="'+xx.toFixed(1)+'" cy="68" r="7"/>':'')}
+ s+='<path class="'+P+'act" d="M'+x0+' '+yA+'H'+x1+'"/>'+(alt?'<path class="'+P+'alt" d="M'+(x0+mw).toFixed(1)+' '+yL+'H'+x1+'"/><path class="'+P+'alt is-set" d="M'+x0+' '+yL+'H'+(x0+mw).toFixed(1)+'"/>':'')+d;
+ var lab=function(c,y,t){return '<span class="'+P+'tl '+P+'tl--'+c+'" style="top:'+(100*y/Hh).toFixed(2)+'%">'+tx(t)+'</span>'};
+ return '<div class="'+P+'trend" data-theme="light" aria-hidden="true"><div class="'+P+'paper" style="aspect-ratio:'+W+' / '+Hh+'"><svg class="'+P+'tsvg" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="none" focusable="false">'+s+'</svg>'
+  +lab('act',yA,act.v||act.p)+(alt?lab('alt',yL,alt.p):'')+'</div></div>'}
 LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var head='<div class="aq-cut-band__cols" aria-hidden="true"><span></span>'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>';
  var rows=R.map(function(r,i){var fig=/\d/.test(String(r.v||''))&&String(r.v).length<24,basis=String(r.m||'').split(/;\s*/).filter(Boolean);
@@ -2223,7 +2708,7 @@ LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
    +'<h3 class="aq-cut-band__p">'+tx(r.p)+'</h3>'
    +'<p class="aq-cut-band__v'+(fig?' is-fig':'')+'">'+(C[1]?'<span class="aq-cut-band__k">'+tx(C[1])+'</span>':'')+'<span class="aq-cut-band__val">'+tx(r.v)+'</span></p>'
    +'<div class="aq-cut-band__m">'+(C[2]?'<span class="aq-cut-band__k">'+tx(C[2])+'</span>':'')+basis.map(function(x){return '<span class="aq-cut-band__ref">'+tx(x)+'</span>'}).join('')+go+'</div></li>'}).join('');
- return sec('<div class="aq-cut-band"><div class="aq-cut-band__head">'+H+'</div><div class="aq-cut-band__fig">'+cbPlant()+'</div>'
+ return sec('<div class="aq-cut-band"><div class="aq-cut-band__head">'+H+'</div><div class="aq-cut-band__fig">'+cbPlant()+'</div>'+cbTrend(R)
   +'<div class="aq-cut-band__band"><span class="aq-cut-band__occ" aria-hidden="true"><i></i><i></i></span>'+head+'<ol class="aq-cut-band__rows">'+rows+'</ol></div>'
   +(b.note?'<p class="aq-cut-band__note">'+tx(b.note)+'</p>':'')+'</div>','aq-cut-band-sec')};
 /* Look "cutaway-rail" -> CutawayRail (design-system/components/CutawayRail): an evidence table read beside one sticky
@@ -2238,7 +2723,11 @@ LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
    mat (product-contact pipe, drawn plain: no joint profile), loop (tank and loop), pov (point-of-use branch, its valve and dead leg), ana (analyser),
    ctl (control panel), docs (binders and clipboard). A row without parts lights nothing.
    Desktop shows every card (the rail is the reading); the fold applies on phones, where the drawing is a band above
-   the cards and each card lights its parts as it passes. */
+   the cards and each card lights its parts as it passes.
+   Pass 12 phones (under 768 px): the 300 px sticky stage gives way to a 112 px strip (PhoneKit sticky figure, zoom 2)
+   that pans to the first part of the card being read, with the active tag over it; the strip never covers that card
+   (PhoneKit's reading line sits below it). Cards folded away carry no row key until the fold opens. 768 px and up
+   (the desktop rail) is unchanged. */
 function crScene(){
  var tk=isoPart('tank',0,0,0,1.2,{id:'loop'}),pn=isoPart('panel',150,-30,0,1.15,{id:'ctl'});
  var o=tk.ports.out,y1=96,x2=230,z=o[2];
@@ -2266,14 +2755,18 @@ LOOKS['cutaway-rail']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[],
  var cards='<ol class="aq-cutaway-rail__cards" role="list">'+R.map(function(r,i){
   var parts=String(P[i]||'').trim(),name=String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||''),code=name.split(/;|\s\(|,\s/)[0];
   var cell=function(j,cls){var c=r[j];if(c==null||c==='')return '';return '<div class="aq-cutaway-rail__f aq-cutaway-rail__f--'+cls+'"><p class="aq-cutaway-rail__k">'+tx(C[j]||'')+'</p><p class="aq-cutaway-rail__v">'+(cls==='go'?tcell(c):tcell(c))+'</p></div>'};
-  return fli('<li class="aq-cutaway-rail__card" data-parts="'+e(parts)+'" data-code="'+e(code)+'" data-theme="light">',b,i)
+  return fli('<li class="aq-cutaway-rail__card"'+(b.fold&&i>=b.fold?'':' data-pk-row="'+i+'"')+' data-i="'+i+'" data-parts="'+e(parts)+'" data-code="'+e(code)+'" data-theme="light">',b,i)
    +'<span class="aq-cutaway-rail__node" aria-hidden="true"></span>'
    +idx(i)+'<div class="aq-cutaway-rail__std"><h3 class="aq-cutaway-rail__name">'+tcell(r[0])+'</h3></div>'
    +cell(1,'how')+cell(2,'proof')+cell(3,'go')+'</li>'}).join('')+'</ol>';
- var pins=Object.keys(S.A).map(function(k){return '<span class="aq-cutaway-rail__pin" data-part="'+k+'" style="left:'+S.A[k].left+';top:'+S.A[k].top+'"></span>'}).join('');
- var fig='<figure class="aq-cutaway-rail__fig" aria-hidden="true"><div class="aq-cutaway-rail__draw">'+S.svg+pins+'<span class="aq-cutaway-rail__call"></span></div>'
+ /* phone strip targets: each pin names the rows whose first part it is (PhoneKit pans to it) */
+ /* each row keys the strip to its first part that differs from the row before's key, so two cards that both start with
+    the same part still pan the strip (phones) */
+ var first={},prev='';R.forEach(function(r,i){var ps=String(P[i]||'').trim().split(/\s+/).filter(Boolean),f=ps.filter(function(p){return p!==prev})[0]||ps[0];if(f){(first[f]=first[f]||[]).push(i);prev=f}});
+ var pins=Object.keys(S.A).map(function(k){return '<span class="aq-cutaway-rail__pin" data-part="'+k+'"'+(first[k]?' data-pk-key="'+first[k].join(' ')+'"':'')+' style="left:'+S.A[k].left+';top:'+S.A[k].top+'"></span>'}).join('');
+ var fig='<figure class="aq-cutaway-rail__fig" aria-hidden="true" data-pk-fig><div class="aq-cutaway-rail__draw" data-pk-pan>'+S.svg+pins+'<span class="aq-cutaway-rail__call"></span></div>'
   +'<p class="aq-cutaway-rail__tag">'+(b.tag?'<span class="aq-cutaway-rail__tag-k">'+tx(b.tag)+'</span> ':'')+'<span class="aq-cutaway-rail__tag-v"></span></p></figure>';
- return sec(H+'<div class="aq-cutaway-rail">'+fig+'<div class="aq-cutaway-rail__rail">'+wFold(b,R.length,cards,b.fold_noun||'standards')+'</div></div>','aq-band--navy aq-cutaway-rail-sec')};
+ return sec(H+'<div class="aq-cutaway-rail" data-pk-sticky data-pk-h="112" data-pk-zoom="2" data-pk-bp="767">'+fig+'<div class="aq-cutaway-rail__rail">'+wFold(b,R.length,cards,b.fold_noun||'standards')+'</div></div>','aq-band--navy aq-cutaway-rail-sec')};
 /* Active card: the one crossing 45 % of the viewport height (or under the pointer or focus) lights its parts */
 function crSet(w,card){if(!w||!card||w._crOn===card)return;w._crOn=card;
  [].forEach.call(w.querySelectorAll('.aq-cutaway-rail__card.is-on'),function(c){c.classList.remove('is-on')});card.classList.add('is-on');
@@ -2284,13 +2777,21 @@ function crSet(w,card){if(!w||!card||w._crOn===card)return;w._crOn=card;
  if(call){call.classList.toggle('is-on',!!pin);if(pin){call.style.left=pin.style.left;call.style.top=pin.style.top;call.classList.toggle('is-left',parseFloat(pin.style.left)>60);call.textContent=card.getAttribute('data-code')||''}}
  [].forEach.call(w.querySelectorAll('.aq-cutaway-rail__pin'),function(p){p.classList.toggle('is-on',P.indexOf(p.getAttribute('data-part'))>=0)})}
 function crScan(){var mid=innerHeight*0.45;[].forEach.call(document.querySelectorAll('.aq-cutaway-rail'),function(w){
-  if(w._crHover)return;var best=null,bd=1e9;[].forEach.call(w.querySelectorAll('.aq-cutaway-rail__card'),function(c){var r=c.getBoundingClientRect();if(!r.height)return;
+  if(w._crHover||w.hasAttribute('data-pk-on'))return;var best=null,bd=1e9;[].forEach.call(w.querySelectorAll('.aq-cutaway-rail__card'),function(c){var r=c.getBoundingClientRect();if(!r.height)return;
    var d=r.top<=mid&&r.bottom>=mid?0:Math.min(Math.abs(r.top-mid),Math.abs(r.bottom-mid));if(d<bd){bd=d;best=c}});
   if(best)crSet(w,best)})}
 if(typeof document!=='undefined'&&document.addEventListener){var crQ=0;
  var crTick=function(){if(crQ)return;crQ=1;requestAnimationFrame(function(){crQ=0;crScan()})};
- addEventListener('scroll',crTick,{passive:true});addEventListener('resize',crTick);document.addEventListener('click',function(ev){if(ev.target.closest&&ev.target.closest('.aq-cutaway-rail .aq-fold__btn'))setTimeout(crScan,0)});
- ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var c=ev.target.closest&&ev.target.closest('.aq-cutaway-rail__card');if(!c)return;var w=c.closest('.aq-cutaway-rail');w._crHover=1;crSet(w,c)})});
+ addEventListener('scroll',crTick,{passive:true});addEventListener('resize',crTick);
+ /* the fold: cards it shows become strip rows (a hidden card would read as already passed); closing takes them out again */
+ document.addEventListener('click',function(ev){var bt=ev.target.closest&&ev.target.closest('.aq-cutaway-rail .aq-fold__btn');if(!bt)return;setTimeout(function(){
+  var f=bt.closest('.aq-fold'),open=f&&f.classList.contains('is-open');if(f)[].forEach.call(f.querySelectorAll('.aq-cutaway-rail__card.aq-fold-x'),function(c){if(open)c.setAttribute('data-pk-row',c.getAttribute('data-i'));else c.removeAttribute('data-pk-row')});
+  crScan();if(window.AQpk)AQpk.scan()},0)});
+ /* phones: PhoneKit's strip names the card on its reading line; the card, its parts, pins and tag follow */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-cutaway-rail'))return;
+  if(!(ev.detail&&ev.detail.on)){w._crOn=null;crTick();return}
+  var c=w.querySelector('.aq-cutaway-rail__card[data-i="'+ev.detail.key+'"]');if(c)crSet(w,c)});
+ ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var c=ev.target.closest&&ev.target.closest('.aq-cutaway-rail__card');if(!c)return;var w=c.closest('.aq-cutaway-rail');if(w.hasAttribute('data-pk-on'))return;w._crHover=1;crSet(w,c)})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var c=ev.target.closest&&ev.target.closest('.aq-cutaway-rail__card');if(!c||(ev.relatedTarget&&c.contains(ev.relatedTarget)))return;var w=c.closest('.aq-cutaway-rail');w._crHover=0;crTick()})});
  if(typeof MutationObserver!=='undefined')new MutationObserver(crTick).observe(document.documentElement,{childList:true,subtree:true});
  window.AQcutaway={scan:function(){[].forEach.call(document.querySelectorAll('.aq-cutaway-rail'),function(w){w._crOn=null});crScan()}};
@@ -2303,7 +2804,9 @@ if(typeof document!=='undefined'&&document.addEventListener){var crQ=0;
    shutdown, where the line breaks and the gap is labelled with those words; that step's bar is filled.
    Fields (a steps block with holds): h, items [{t, d, hold, link}], ground, lane (optional: the water line's label,
    a drawing label, aria-hidden). A link makes the step's name the link.
-   Phones: the same rows stacked, each bar on the shared timeline under its step. */
+   Phones (pass 12, S10/S8): no bar under each row; one mini schedule (all bars stair-stepped under the water line, its
+   break at the shutdown) held under the header as a PhoneKit sticky strip, lighting the bar and the step number of the
+   row being read. The rows become compact cards. */
 LOOKS['cutover-schedule']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-cutover-schedule',w=100/n;
  var cut=-1,lab='';I.forEach(function(it,i){var m=String(it.d||'').match(/planned shutdown|shutdown/i);if(cut<0&&m){cut=i;lab=m[0].charAt(0).toUpperCase()+m[0].slice(1)}});
  var seg=function(a,c){return '<span class="'+K+'__water" style="left:'+a.toFixed(3)+'%;width:'+(c-a).toFixed(3)+'%"></span>'};
@@ -2317,7 +2820,14 @@ LOOKS['cutover-schedule']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-cu
    +(it.hold?'<p class="'+K+'__hold"><span class="'+K+'__hk">Hold</span> <span>Signed by '+stepWho(it.hold)+'</span></p>':'')+'</div>'
    +'<div class="'+K+'__track" aria-hidden="true">'+grid+'<span class="'+K+'__bar" style="left:'+(i*w).toFixed(3)+'%;width:'+w.toFixed(3)+'%">'+(it.hold?'<span class="'+K+'__diamond"></span>':'')+'</span></div></li>'}).join('');
  var foot='<p class="'+K+'__nts" aria-hidden="true">Not to scale</p>';
- return sec(H+'<div class="'+K+'" style="--n:'+n+'">'+lane+'<ol class="'+K+'__rows" role="list">'+rows+'</ol>'+foot+'</div>',K+'-sec')};
+ /* the phone strip: the step number in view, then the whole schedule in miniature (water line, its gap, every bar) */
+ var nn=function(i){return (i<9?'0':'')+(i+1)};
+ var mini='<div class="'+K+'__mini" data-pk-fig aria-hidden="true"><span class="'+K+'__mn">'+I.map(function(it,i){return '<span data-pk-key="'+i+'">'+nn(i)+'</span>'}).join('')+'<small>/ '+nn(n-1)+'</small></span>'
+  +'<span class="'+K+'__mg"><span class="'+K+'__mk">'+tx(b.lane||'')+'</span><span class="'+K+'__mw">'
+  +(cut<0?seg(0,100):seg(0,cut*w)+'<span class="'+K+'__mgap" style="left:'+(cut*w).toFixed(3)+'%;width:'+w.toFixed(3)+'%"></span>'+seg((cut+1)*w,100))+'</span>'
+  +'<span class="'+K+'__mb">'+I.map(function(it,i){return '<span class="'+(i===cut?'is-cut':'')+(it.hold?' is-hold':'')+'" data-pk-key="'+i+'" style="left:'+(i*w).toFixed(3)+'%;width:'+w.toFixed(3)+'%;top:'+(i*100/n).toFixed(3)+'%;height:calc('+(100/n).toFixed(3)+'% - 1px)"></span>'}).join('')+'</span></span></div>';
+ rows=rows.replace(/<li class="([^"]*)"/g,(function(){var k=0;return function(m,c){return '<li class="'+c+'" data-pk-row="'+(k++)+'"'}})());
+ return sec(H+'<div class="'+K+'" style="--n:'+n+'" data-pk-sticky data-pk-h="96">'+mini+lane+'<ol class="'+K+'__rows" role="list">'+rows+'</ol>'+foot+'</div>',K+'-sec')};
 /* Look "decision-plant" -> DecisionPlant (design-system/components/DecisionPlant): an options block of decisions set
    round one hairline process schematic of the plant they size (a flat elevation drawn here, IsoKit has no elevations:
    feed and pretreatment vessel, the membrane train, a second train drawn dashed as the option, the storage tank, the
@@ -2328,7 +2838,9 @@ LOOKS['cutover-schedule']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-cu
    Added: items[].part ("feed", "membranes", "trains", "tank", "headers", "loop" or "sheet": the title block, for a
    decision that is the specification's own), items[].side ("l" or "r"), items[].row (1-3, the callout's row on its side);
    gate (the title block's word, "URS"; aria-hidden). Concept: pass 9b ind-pharma.3 (central hairline schematic, five
-   decisions as numbered callouts on both sides, leader lines into the plant). */
+   decisions as numbered callouts on both sides, leader lines into the plant).
+   Phones (pass 12): with the leaders gone (under 1100 px), each marker on the drawing is a 44 px target that opens its
+   decision (the fold opens if the decision is folded away), lights it and scrolls it into view; links are 44 px rows. */
 (function(){
 var K='aq-decision-plant',W=760,Hh=372;
 /* anchors in viewBox units: where each part's leader ends */
@@ -2395,14 +2907,23 @@ LOOKS['decision-plant']=function(b,H){var I=b.items||[],n=I.length,rows={l:0,r:0
  document.addEventListener('focusin',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
  document.addEventListener('focusout',function(ev){var it=at(ev);if(it&&!(ev.relatedTarget&&it.closest('.'+K).contains(ev.relatedTarget)))show(it.closest('.'+K),null)});
  document.addEventListener('click',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
+ /* under 1100 px (no leaders) a marker is a target: it opens its decision (unfolding the list if it is folded away),
+    lights it and brings it into view below the marker's drawing */
+ document.addEventListener('click',function(ev){var mk=ev.target.closest&&ev.target.closest('.'+K+'__mk');if(!mk||getComputedStyle(mk).pointerEvents==='none')return;
+  var w=mk.closest('.'+K),it=w&&w.querySelector('.'+K+'__item[data-i="'+mk.getAttribute('data-i')+'"]');if(!it)return;
+  var f=it.closest('.aq-fold');if(f&&!f.classList.contains('is-open')&&getComputedStyle(it).display==='none'){var bt=f.querySelector('.aq-fold__btn');if(bt)bt.click()}
+  show(w,it);var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  it.scrollIntoView({block:'center',behavior:rm?'auto':'smooth'});try{it.focus({preventScroll:true})}catch(_){}});
 })();
 })();
 /* Look "decision-valve" -> DecisionValve (design-system/components/DecisionValve): a router table drawn as a multiport
    valve, a navy object on the paper (pass 9b concept sys-pretreatment.3 is a light sheet). Each situation is a supply line on the left; the valve sits in the middle with one numbered
    position per route on its plate; each route leaves the valve on its own line to a card on the right (the step, then
    the other columns under their own labels). Choosing a supply turns the valve's lever to that position and lights the
-   line in and the line out; every card stays readable. Default: the first route. Phones: the valve heads the section,
-   then each supply sits directly over its card on a short pipe.
+   line in and the line out; every card stays readable. Default: the first route. Phones (pass 12, PhoneKit sticky
+   figure): the valve rides as a 120 px strip under the header (the dial with its lever and the position in words) and
+   each supply sits directly over its card on a short pipe; the pair on the reading line turns the lever to its
+   position and lights its card (state, so it holds with reduced motion; a tap on a supply still chooses it).
    Fields (a table block, as: "router"): h, cols [situation, step, ...the rest], rows [[situation, step, ...]]; cells
    may be {t, link, intent} as in every table. No new fields. */
 (function(){
@@ -2429,18 +2950,22 @@ LOOKS['decision-valve']=function(b,H){
  var C=b.cols||[],R=b.rows||[],n=R.length,k=++N;
  var rows=R.map(function(r,i){var id=K+'-'+k+'-'+i,on=i===0;
   var rest=r.slice(2).map(function(c,j){return '<div class="'+K+'__kv"><dt>'+tx(C[j+2]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('');
-  return '<button type="button" class="'+K+'__src'+(on?' is-on':'')+'" data-i="'+i+'" aria-pressed="'+(on?'true':'false')+'" aria-controls="'+id+'" style="--r:'+(i+2)+'">'
+  return '<button type="button" class="'+K+'__src'+(on?' is-on':'')+'" data-i="'+i+'" data-pk-row="'+i+'" aria-pressed="'+(on?'true':'false')+'" aria-controls="'+id+'" style="--r:'+(i+2)+'">'
     +'<span class="'+K+'__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="'+K+'__srct">'+tcell(r[0])+'</span></button>'
-   +'<article class="'+K+'__card'+(on?' is-on':'')+'" id="'+id+'" data-i="'+i+'" style="--r:'+(i+2)+'">'
+   +'<article class="'+K+'__card'+(on?' is-on':'')+'" id="'+id+'" data-i="'+i+'" data-pk-row="'+i+'" style="--r:'+(i+2)+'">'
     +'<p class="'+K+'__cardno" aria-hidden="true">Position '+(i<9?'0':'')+(i+1)+'</p><h3 class="'+K+'__step">'+tcell(r[1])+'</h3>'
     +(rest?'<dl class="'+K+'__dl">'+rest+'</dl>':'')+'</article>'}).join('');
  var heads='<p class="'+K+'__colh '+K+'__colh--src">'+tx(C[0]||'')+'</p><p class="'+K+'__colh '+K+'__colh--card">'+tx(C[1]||'')+'</p>';
- var mid='<div class="'+K+'__valve">'+lines(n)+dial(n)+'</div>';
- return sec(H+'<div class="'+K+'" style="--n:'+n+'">'+heads+mid+rows+'</div>',K+'-sec')};
+ var mid='<div class="'+K+'__valve" data-pk-fig>'+lines(n)+dial(n)+'<p class="'+K+'__now" aria-hidden="true"><span class="'+K+'__nowk">Position</span> <span class="'+K+'__nown">01</span><span class="'+K+'__nowof"> / '+(n<10?'0':'')+n+'</span></p></div>';
+ return sec(H+'<div class="'+K+'" data-pk-sticky data-pk-h="120" style="--n:'+n+'">'+heads+mid+rows+'</div>',K+'-sec')};
 /* choose a route: the lever turns, the line in and the line out light, the card lights; all cards stay visible */
 function pick(w,i){if(!w)return;var n=+getComputedStyle(w).getPropertyValue('--n')||w.querySelectorAll('.'+K+'__src').length;
  [].forEach.call(w.querySelectorAll('[data-i]'),function(x){var on=+x.getAttribute('data-i')===i;x.classList.toggle('is-on',on);if(x.tagName==='BUTTON')x.setAttribute('aria-pressed',on?'true':'false')});
  var lv=w.querySelector('.'+K+'__lever');if(lv)lv.style.setProperty('--a',ang(i,n)+'deg')}
+/* phone: the pair on the reading line (PhoneKit) turns the valve to its position; switching off restores the first */
+function now(w,i){var x=w.querySelector('.'+K+'__nown');if(x)x.textContent=(i<9?'0':'')+(i+1)}
+if(typeof document!=='undefined')document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains(K))return;
+ var i=ev.detail&&ev.detail.on&&ev.detail.index>=0?+ev.detail.key:0;if(isNaN(i))i=0;pick(w,i);now(w,i)});
 /* fit the lines to the drawn valve: each supply line runs from its button's centre into the inlet boss, each route
    line leaves its own outlet boss (radially, at that position's angle) and lands on its card's centre. The static
    paths above (a 200 x 400 box) are the no-JS fallback; this redraws them in the valve column's real pixels. */
@@ -2461,7 +2986,7 @@ if(typeof document!=='undefined'){
  if(typeof MutationObserver!=='undefined')new MutationObserver(function(){if(document.querySelector('.'+K+':not([data-dv])')){[].forEach.call(document.querySelectorAll('.'+K+':not([data-dv])'),function(w){w.setAttribute('data-dv','')});soon()}}).observe(document.documentElement,{childList:true,subtree:true});
  if(document.readyState!=='loading')soon();else document.addEventListener('DOMContentLoaded',soon);
  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(soon);
- document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src, .'+K+'__card');if(!t||(ev.target.closest('a')))return;pick(t.closest('.'+K),+t.getAttribute('data-i'))});
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src, .'+K+'__card');if(!t||(ev.target.closest('a')))return;var w=t.closest('.'+K);pick(w,+t.getAttribute('data-i'));now(w,+t.getAttribute('data-i'))});
  document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;var w=t.closest('.'+K);[].forEach.call(w.querySelectorAll('.'+K+'__in, .'+K+'__out'),function(p){p.classList.toggle('is-hint',p.getAttribute('data-i')===t.getAttribute('data-i'))})});
  document.addEventListener('mouseout',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;[].forEach.call(t.closest('.'+K).querySelectorAll('.is-hint'),function(p){p.classList.remove('is-hint')})})}
 })();
@@ -2472,12 +2997,15 @@ if(typeof document!=='undefined'){
    USP <85>") is set as the line's hero figure: the number large in Geist Mono Light, the unit beside it, the reference
    and any rest under it. Lines run from the loosest step to the strictest, as the table orders them.
    Fields, as the grades table: cols [step, typical water, what sets it], rows, intro. Concept: sys-pw.0 (numbers as
-   heroes, stepping type) on a calculation sheet; the pass 9 "measured editorial" spine. */
+   heroes, stepping type) on a calculation sheet; the pass 9 "measured editorial" spine.
+   Phones (pass 12): a compact card per line (CSS only). When any answer runs over 48 characters the pad gets
+   .is-stacked and every answer sits under its step (boxed to its own width) instead of as a chip beside it, so the
+   lines read alike. */
 (function(){
 var NUM=/^(\d+(?:\.\d+)?)\s+([^(;]+?)\s*(?:\(([^)]+)\))?\s*(?:;\s*(.*))?$/;
 var GRID='<svg class="aq-derivation-sheet__grid" aria-hidden="true" focusable="false"><defs><pattern id="dsgrid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16"/></pattern>'
  +'<pattern id="dsgrid5" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80"/></pattern></defs><rect width="100%" height="100%" fill="url(#dsgrid)"/><rect class="aq-derivation-sheet__g5" width="100%" height="100%" fill="url(#dsgrid5)"/></svg>';
-LOOKS['derivation-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[];
+LOOKS['derivation-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[],long=R.some(function(r){return String(r[1]||'').length>48});
  var lines=R.map(function(r,i){var set=String(r[2]||''),m=set.match(NUM);
   var lim=m?'<p class="aq-derivation-sheet__v"><span class="aq-derivation-sheet__num">'+tx(m[1])+'</span><span class="aq-derivation-sheet__u">'+tx(m[2])+'</span></p>'
     +(m[3]||m[4]?'<p class="aq-derivation-sheet__ref">'+[m[3],m[4]].filter(Boolean).map(tx).join('<span aria-hidden="true"> · </span>')+'</p>':'')
@@ -2488,7 +3016,7 @@ LOOKS['derivation-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[];
    +'<div class="aq-derivation-sheet__lim"><span class="aq-derivation-sheet__k">'+tx(C[2]||'')+'</span>'+lim+'</div>'
    +'<span class="aq-derivation-sheet__op is-imp" aria-hidden="true"><svg viewBox="0 0 48 16" focusable="false"><path d="M2 5H42M2 11H42M36 1L46 8L36 15"/></svg></span>'
    +'<div class="aq-derivation-sheet__ans"><span class="aq-derivation-sheet__k">'+tx(C[1]||'')+'</span><p class="aq-derivation-sheet__w">'+tx(r[1])+'</p><span class="aq-derivation-sheet__box" aria-hidden="true"></span></div></li>'}).join('');
- return sec(H+'<div class="aq-derivation-sheet">'+GRID+'<span class="aq-derivation-sheet__margin" aria-hidden="true"></span><ol class="aq-derivation-sheet__lines">'+lines+'</ol></div>','aq-derivation-sheet-sec')};
+ return sec(H+'<div class="aq-derivation-sheet'+(long?' is-stacked':'')+'">'+GRID+'<span class="aq-derivation-sheet__margin" aria-hidden="true"></span><ol class="aq-derivation-sheet__lines">'+lines+'</ol></div>','aq-derivation-sheet-sec')};
 })();
 /* Look "doc-hotspots" -> DocHotspots (design-system/components/DocHotspots): the documents delivered with a system,
    each pinned to the part of the skid it covers. On a navy band the page's equipment drawing (assets/illustrations/
@@ -2512,7 +3040,9 @@ LOOKS['doc-hotspots']=function(b,H){
  var fig='<div class="aq-doc-hotspots__fig"><span class="aq-illustration aq-doc-hotspots__art" role="img" aria-label="'+e(ART[art]||'')+'" style="'+artMask(art)+'"></span>'+hots+'</div>';
  var svg=leads?'<svg class="aq-doc-hotspots__leads" viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+leads+'</svg>':'';
  var more=b.link&&wp(b.link)?'<p class="aq-doc-hotspots__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
- return sec(H+'<div class="aq-doc-hotspots" style="--k:'+k+'">'+svg+fig+'<ol class="aq-doc-hotspots__cards">'+cards+'</ol></div>'+more,'aq-band--navy aq-doc-hotspots-sec')};
+ /* The cards are limestone paper in both themes: data-theme="light" on the list keeps every token inside them (codes,
+    badges, placeholders) on its light value, as on .aq-request-menu-wrap (pass 12, F3) */
+ return sec(H+'<div class="aq-doc-hotspots" style="--k:'+k+'">'+svg+fig+'<ol class="aq-doc-hotspots__cards" data-theme="light">'+cards+'</ol></div>'+more,'aq-band--navy aq-doc-hotspots-sec')};
 /* Look "doc-pipe" -> DocPipe (design-system/components/DocPipe): a short document list where the pipe route is the
    list (pass 9b concept sys-pretreatment.4). On a navy band under a display-scale heading, one double-line pipe with
    valves snakes across the band: under the first document, up and over the second, down under the third, and so on;
@@ -2546,6 +3076,88 @@ LOOKS['doc-pipe']=function(b,H){
  var more=b.link&&wp(b.link)?'<p class="'+K+'__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
  var html=sec('<div class="'+K+'__top">'+H+more+'</div>'+wFold(b,n,'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>',b.fold_noun||'documents'),'aq-band--navy '+K+'-sec');
  return html.replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};
+})();
+/* Look "drawing-register" -> DrawingRegister (design-system/components/DrawingRegister): where water goes, set as a
+   drawing register on a limestone sheet (pass 12 concept 209). A row of framed outline drawings, one per item, each
+   with its mono sheet code ("01 / WD") and name; one steel-blue viewfinder stands over the selected drawing, and under
+   the row the selected item's detail: its drawing at large in a dimensioned frame (hairline extension and dimension
+   lines, no figures) beside its notes (the item's name and line) and a title block (Aquemi, the section, the item,
+   "01 / 06"). Pointing at a drawing (mouse), focusing it or tapping it moves the viewfinder and the detail there;
+   the first item is selected as rendered. Drawings are front-and-side outline views drawn here, one per kind:
+   washer (a washer-disinfector cabinet: control strip, glazed door with rack shelves, plinth), ultrasonic (open tank
+   with basket and tap), sink (worktop basin, gooseneck tap, lumen flushing hose and gun), endoscope (top-loading
+   reprocessor with its own feed filter), cart (tunnel cabinet with a cart behind the glazed door), sterilizer (chamber
+   cabinet with its water feed valve only, no steam plant), else a plain cabinet. No dialysis equipment and no steam
+   generator is ever drawn.
+   Fields (a grid block, as: "route"): h, nav, items [{t, d, draw, link}]. draw: the drawing kind (washer, ultrasonic,
+   sink, endoscope, cart, sterilizer); without it the kind is read from the name. The sheet code is the kind's
+   initials (WD, UC, MS, ER, CW, SF), a drawing label only. Every item's name and line are always in the page (the
+   detail is a visual copy, aria-hidden).
+   Phones: the drawings two to a row, the selected one framed in steel blue, then the viewfinder block (the drawing on
+   steel blue, its notes, the title block). */
+(function(){
+var K='aq-drawing-register',DX=12,DY=-7;
+var CODE={washer:'WD',ultrasonic:'UC',sink:'MS',endoscope:'ER',cart:'CW',sterilizer:'SF',cabinet:'EQ'};
+function kindOf(it){if(it.draw&&CODE[it.draw])return it.draw;var t=String(it.t||'').toLowerCase();
+ return /washer-disinfector|washer disinfector/.test(t)?'washer':/ultrason/.test(t)?'ultrasonic':/sink|lumen/.test(t)?'sink':/endoscop/.test(t)?'endoscope':/cart/.test(t)?'cart':/sterili[sz]er|autoclave/.test(t)?'sterilizer':'cabinet'}
+function P(d,c){return '<path class="'+K+'__'+(c||'ln')+'" d="'+d+'"/>'}
+function R(x,y,w,h,c){return P('M'+x+' '+y+'h'+w+'v'+h+'h'+(-w)+'Z',c||'th')}
+function O(x,y,r,c){return '<circle class="'+K+'__'+(c||'th')+'" cx="'+x+'" cy="'+y+'" r="'+r+'"/>'}
+/* a box seen from the front with its top and right side receding */
+function box(x,y,w,h){var a=x+DX,b=y+DY;return P('M'+x+' '+y+'h'+w+'v'+h+'h'+(-w)+'Z','eq')+P('M'+x+' '+y+'L'+a+' '+b+'H'+(a+w)+'L'+(x+w)+' '+y+'Z','eq')+P('M'+(x+w)+' '+y+'L'+(a+w)+' '+b+'V'+(b+h)+'L'+(x+w)+' '+(y+h)+'Z','eq')}
+function valve(x,y){return P('M'+(x-5)+' '+(y-5)+'L'+(x+5)+' '+(y+5)+'V'+(y-5)+'L'+(x-5)+' '+(y+5)+'Z','eq')+P('M'+x+' '+y+'V'+(y-8)+'M'+(x-4)+' '+(y-8)+'H'+(x+4),'ln')}
+var DRAW={
+ washer:function(){var g=box(26,18,56,72);
+  g+=P('M26 28H82','th')+R(31,21,16,5)+O(62,23.5,1.6)+O(68,23.5,1.6)+O(74,23.5,1.6);
+  g+=R(30,32,48,52,'ln')+R(35,37,38,30);
+  for(var y=47;y<=59;y+=12){g+=P('M37 '+y+'H71','th');for(var x=40;x<=68;x+=5)g+=P('M'+x+' '+y+'v-3','th')}
+  g+=P('M74 50V60','hd')+P('M26 86H82','th')+P('M94 70H106V94','wa');return g},
+ ultrasonic:function(){var g=box(16,50,76,34);
+  g+=P('M23 48.5L31 44H99L91 48.5Z','th')+P('M38 46.5q3-1.4 6 0t6 0t6 0t6 0t6 0','wa');
+  g+=P('M38 46v-7h7v7M83 46v-7h7v7','ln')+R(22,58,20,9)+O(80,67,4.5)+O(68,67,2.4)+P('M20 84v4M88 84v4','ln');
+  g+=P('M112 14H100V26','wa')+P('M100 28v6','wa');return g},
+ sink:function(){var g=box(8,50,92,8);
+  g+=P('M30 49L37 45H84L77 49Z','th')+P('M30 58V72H77V58','th')+P('M12 58V92M96 58V92M12 84H96','th');
+  g+=P('M57 45V22Q57 14 65 14Q73 14 73 22V27','ln')+P('M73 29V41','wa');
+  g+=P('M92 45V32','ln')+P('M92 32C104 30 110 46 102 60C98 68 104 74 110 70','th')+P('M107 66L116 63L118 69L110 72Z','eq');return g},
+ endoscope:function(){var g=box(24,40,58,50);
+  g+=P('M36 33L40 12H98L94 33','th')+'<ellipse class="'+K+'__th" cx="59" cy="36.5" rx="17" ry="2.6"/><ellipse class="'+K+'__th" cx="59" cy="36.5" rx="10" ry="1.5"/>';
+  g+=R(29,45,22,9)+O(60,49.5,1.6)+O(66,49.5,1.6)+P('M24 60H82M53 60V90','th')+P('M48 70v8M58 70v8','hd');
+  g+=R(6,50,10,28,'eq')+P('M6 54H16','th')+P('M0 46H11V50','wa')+P('M16 72H24','wa');return g},
+ cart:function(){var g=box(8,16,92,74);
+  g+=P('M88 16V90','th')+R(90,22,7,10)+O(93.5,40,1.6)+O(93.5,46,1.6);
+  g+=R(12,20,72,66,'ln')+R(17,25,62,46);
+  g+=P('M24 30V64M72 30V64M24 40H72M24 52H72M22 64H74','th')+O(28,66.5,2.4)+O(68,66.5,2.4)+P('M80 48V58','hd')+P('M2 90H118','th');return g},
+ sterilizer:function(){var g=box(34,16,58,74);
+  g+=P('M34 26H92','th')+R(39,19,14,5)+O(84,21.5,1.6);
+  g+=P('M42 32h42a3 3 0 0 1 3 3v44a3 3 0 0 1-3 3h-42a3 3 0 0 1-3-3v-44a3 3 0 0 1 3-3Z','ln')+R(45,38,36,38,'dash')+P('M42 44h-3M42 70h-3','hd')+P('M70 57H84','hd')+P('M34 86H92','th');
+  g+=P('M0 78H34','wa')+valve(17,78);return g},
+ cabinet:function(){return box(26,22,58,68)+P('M26 32H84','th')+R(31,25,16,5)+R(32,38,46,44,'ln')}};
+function svg(k,cls){return '<svg class="'+K+'__svg'+(cls?' '+cls:'')+'" viewBox="-4 4 128 96" aria-hidden="true" focusable="false">'+(DRAW[k]||DRAW.cabinet)()+'</svg>'}
+function no(i){return (i<9?'0':'')+(i+1)}
+LOOKS['drawing-register']=function(b,H){var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=I.length;if(!n)return sec(H,K+'-sec');
+ var kinds=I.map(kindOf),N=no(n-1);
+ var cells=I.map(function(it,i){var code=no(i)+' / '+CODE[kinds[i]];
+  var name=it.link&&wp(it.link)?'<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
+  return '<li class="'+K+'__item'+(i?'':' is-on')+'" data-i="'+i+'"><button type="button" class="'+K+'__cell" aria-pressed="'+(i?'false':'true')+'">'
+   +'<span class="'+K+'__frame">'+svg(kinds[i])+'</span><span class="'+K+'__code" aria-hidden="true">'+e(code)+'</span>'
+   +'<span class="'+K+'__name">'+tx(it.t)+'</span></button>'+(it.link&&wp(it.link)?'<p class="'+K+'__link">'+name+'</p>':'')
+   +(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+ var panes=I.map(function(it,i){return '<div class="'+K+'__pane'+(i?'':' is-on')+'" data-i="'+i+'">'
+   +'<div class="'+K+'__zoom"><span class="'+K+'__dim '+K+'__dim--h"></span><span class="'+K+'__dim '+K+'__dim--v"></span>'+svg(kinds[i],K+'__svg--big')+'</div>'
+   +'<div class="'+K+'__notes"><p class="'+K+'__nl">Notes</p><p class="'+K+'__nt">'+tx(it.t)+'</p>'+(it.d?'<p class="'+K+'__nd">'+tx(it.d)+'</p>':'')
+   +'<p class="'+K+'__tb"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span><span class="'+K+'__tbn">'+no(i)+' / '+N+'</span><span class="'+K+'__tbc">'+e(CODE[kinds[i]])+'</span></p></div></div>'}).join('');
+ var inner='<div class="'+K+'" style="--n:'+n+';--sel:0"><div class="'+K+'__strip"><ol class="'+K+'__cells" role="list">'+cells+'</ol><span class="'+K+'__vf" aria-hidden="true"></span></div>'
+  +'<div class="'+K+'__detail" aria-hidden="true">'+panes+'</div></div>';
+ return sec(H+inner,'aq-band--limestone '+K+'-sec" data-theme="light')};
+/* selection: works without the motion layer and under reduced motion (the glide is a CSS transition, off there) */
+function sel(it){var r=it.closest('.'+K);if(!r)return;var i=it.getAttribute('data-i');r.style.setProperty('--sel',i);
+ [].forEach.call(r.querySelectorAll('.'+K+'__item'),function(x){var on=x===it;x.classList.toggle('is-on',on);var bt=x.querySelector('.'+K+'__cell');if(bt)bt.setAttribute('aria-pressed',on?'true':'false')});
+ [].forEach.call(r.querySelectorAll('.'+K+'__pane'),function(p){p.classList.toggle('is-on',p.getAttribute('data-i')===i)})}
+function item(ev){return ev.target.closest&&ev.target.closest('.'+K+'__item')}
+document.addEventListener('pointerover',function(ev){if(ev.pointerType!=='mouse')return;var it=item(ev);if(it&&!it.classList.contains('is-on'))sel(it)});
+document.addEventListener('focusin',function(ev){var it=item(ev);if(it)sel(it)});
+document.addEventListener('click',function(ev){var it=item(ev);if(it)sel(it)});
 })();
 /* Look "duplex-trains" -> DuplexTrains (design-system/components/DuplexTrains): an options block (as: "modules") about
    redundancy, on a limestone band. Top left the heading set huge and light; top right a framed IsoKit drawing of the
@@ -2739,12 +3351,59 @@ LOOKS['fidelity-ladder']=(function(){
     +'</li>'}).join('');
   return sec(H+'<ol class="aq-fidelity-ladder" style="--cols:'+cols+'">'+li+'</ol>','aq-band--navy aq-fidelity-ladder-sec')}
 })();
+/* Look "fit-readout" -> FitReadout (design-system/components/FitReadout): a fit test read off an instrument. A navy
+   readout plots the loop material's pressure rating falling as it heats, with one limit line where the rated range
+   ends (beyond it the field is hatched out); beside it the first rows are the numbered rule tiles (the test), and the
+   remaining rows are outlined tags (what is not served, or where another page answers), each linking its home.
+   The readout's words come from the highlighted row (hl, else the first): its two axis words are the condition split at
+   "and" ("Temperature and pressure"), and the axis numbers are drawn only when its answer states a range ("0 to 80 °C");
+   with none, the axis is bare. The caption is the readout's title strip.
+   Concept: design-system/inspiration/gemini/193-p12-industries-fit.png (idea only: never its axis figures or tags).
+   Fields (a spec block): h, intro, caption, rows [{p, v, m, link, link_label, hl}], tiles (how many rows are tiles,
+   default 3). Phones: the readout first at full width, then the tiles stacked, then the tags stacked. */
+function frAxis(r){var w=String(r&&r.p||'').split(/\s+and\s+/i),cap=function(s){s=String(s||'').trim();return s.charAt(0).toUpperCase()+s.slice(1)};
+ var m=String(r&&r.v||'').match(/(-?\d+(?:[.,]\d+)?)\s*(?:to|–|-)\s*(-?\d+(?:[.,]\d+)?)\s*(°\s?[CF])/);
+ return {x:w.length===2?cap(w[0]):'',y:w.length===2?cap(w[1]):'',lo:m?m[1]:'',hi:m?m[2]+' '+m[3].replace(/\s/g,''):''}}
+function frChart(r,k){var a=frAxis(r),W=360,Hh=250,x0=46,x1=338,y0=208,y1=22,lim=x0+(x1-x0)*0.78,id='frh-'+k;
+ /* the rating curve: full at the cold end, falling faster as it heats, ending at the limit line */
+ var pts=[],i,t;for(i=0;i<=24;i++){t=i/24;pts.push([x0+(lim-x0)*t,y1+18+(y0-y1-46)*Math.pow(t,1.7)])}
+ var d='M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1)}).join('L'),end=pts[pts.length-1];
+ var ticks='';for(i=0;i<=12;i++){var tx_=x0+(x1-x0)*i/12;ticks+='M'+tx_.toFixed(1)+' '+y0+'v'+(i%3?4:7)}
+ for(i=0;i<=8;i++){var ty=y0-(y0-y1)*i/8;ticks+='M'+x0+' '+ty.toFixed(1)+'h-'+(i%2?4:7)}
+ return '<svg class="aq-fit-readout__chart" viewBox="0 0 '+W+' '+Hh+'" aria-hidden="true" focusable="false">'
+  +'<defs><pattern id="'+id+'" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V8"/></pattern></defs>'
+  +'<rect class="aq-fit-readout__out" x="'+lim.toFixed(1)+'" y="'+y1+'" width="'+(x1-lim).toFixed(1)+'" height="'+(y0-y1)+'" fill="url(#'+id+')"/>'
+  +'<path class="aq-fit-readout__grid" d="M'+x0+' '+y1+'H'+x1+'M'+x0+' '+((y0+y1)/2)+'H'+x1+'M'+((x0+x1)/2)+' '+y1+'V'+y0+'"/>'
+  +'<path class="aq-fit-readout__ax" d="M'+x0+' '+y1+'V'+y0+'H'+x1+ticks+'"/>'
+  +'<path class="aq-fit-readout__curve" d="'+d+'"/>'
+  +'<path class="aq-fit-readout__tail" d="M'+end[0].toFixed(1)+' '+end[1].toFixed(1)+'Q'+(lim+26).toFixed(1)+' '+(end[1]+18).toFixed(1)+' '+(x1-6)+' '+(y0-8)+'"/>'
+  +'<path class="aq-fit-readout__lim" d="M'+lim.toFixed(1)+' '+(y1-6)+'V'+(y0+4)+'"/>'
+  +'<circle class="aq-fit-readout__dot" cx="'+pts[0][0].toFixed(1)+'" cy="'+pts[0][1].toFixed(1)+'" r="4.5"/>'
+  +'<circle class="aq-fit-readout__end" cx="'+end[0].toFixed(1)+'" cy="'+end[1].toFixed(1)+'" r="4.5"/>'
+  +(a.y?'<text class="aq-fit-readout__lab" transform="translate(16 '+((y0+y1)/2)+') rotate(-90)" text-anchor="middle">'+e(a.y)+'</text>':'')
+  +(a.x?'<text class="aq-fit-readout__lab" x="'+((x0+lim)/2).toFixed(1)+'" y="'+(Hh-6)+'" text-anchor="middle">'+e(a.x)+'</text>':'')
+  +(a.lo!==''?'<text class="aq-fit-readout__val" x="'+x0+'" y="'+(y0+22)+'" text-anchor="middle">'+e(a.lo)+'</text>':'')
+  +(a.hi?'<text class="aq-fit-readout__val aq-fit-readout__val--lim" x="'+lim.toFixed(1)+'" y="'+(y0+22)+'" text-anchor="middle">'+e(a.hi)+'</text>':'')
+  +'</svg>'}
+var frUid=0;
+LOOKS['fit-readout']=function(b,H){var R=b.rows||[],K='aq-fit-readout',T=Math.min(R.length,b.tiles>0?b.tiles:3),hl=R.filter(function(r){return r&&r.hl})[0]||R[0];
+ var link=function(r,cls){return r.link&&wp(r.link)?'<a class="'+K+'__go'+(cls?' '+cls:'')+'" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':''};
+ var readout='<figure class="'+K+'__readout">'+(b.caption?'<p class="'+K+'__cap" aria-hidden="true"><span>'+tx(b.caption)+'</span><span class="'+K+'__led"></span></p>':'')
+  +frChart(hl,++frUid)+'</figure>';
+ var tiles='<ol class="'+K+'__tiles" role="list">'+R.slice(0,T).map(function(r,i){
+  return '<li class="'+K+'__tile'+(r===hl?' is-hl':'')+'" style="--i:'+i+'">'+idx(i)+'<h3 class="'+K+'__t">'+tx(r.p)+'</h3>'
+   +(r.v?'<p class="'+K+'__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="'+K+'__m">'+tx(r.m)+'</p>':'')+link(r)+'</li>'}).join('')+'</ol>';
+ var tags=R.length>T?'<ul class="'+K+'__tags" role="list">'+R.slice(T).map(function(r,i){var no=/^not\b/i.test(String(r.v||''));
+  return '<li class="'+K+'__tag'+(no?' is-not':'')+'" style="--i:'+i+'"><p class="'+K+'__tp">'+tx(r.p)+'</p>'
+   +(r.v?'<p class="'+K+'__tv">'+tx(r.v)+'</p>':'')+(r.m?'<p class="'+K+'__tm">'+tx(r.m)+'</p>':'')+link(r,K+'__go--tag')+'</li>'}).join('')+'</ul>':'';
+ return sec(H+'<div class="'+K+'">'+readout+tiles+tags+'</div>',K+'-sec')};
 /* Look "gate-line" -> GateLine (design-system/components/GateLine): how an upgrade runs, drawn as one double-line pipe
    on a navy band (pass 9b concept svc-upgrades.4). The pipe is the process axis: each step owns one run of it, a line
    icon above its run and its number, name and line below; a gate valve sits on every joint between two steps, so a
    step is a stage gate the water passes. Your system's water fills the pipe; a legend over the pipe names it with the
-   block's lane ("Your system"). A step with a hold puts a "Hold" tag on the gate after it (the water waits there for who
-   signs). The step whose line names a (planned) shutdown has a dry run: walls only, dashed, labelled with those words,
+   block's lane ("Your system"). A step with a hold marks the gate after it (is-hold; in motion the water waits there
+   until the hold stamp strikes); the "Hold" stamp with who signs reads once, under that step (pass 12: the gate's
+   own "Hold" tag repeated it and is gone). The step whose line names a (planned) shutdown has a dry run: walls only, dashed, labelled with those words,
    because the system is off while that step is done; the water runs on after it.
    Each step carries its own run and gate, so the same markup reflows: a row of runs at desktop, a vertical pipe down
    the left on phones.
@@ -2756,7 +3415,7 @@ LOOKS['gate-line']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-gate-line
  var li=I.map(function(it,i){var t=tx(it.t);if(it.link&&wp(it.link))t='<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>';
   var held=i>0&&I[i-1].hold;
   var run='<span class="'+K+'__run" aria-hidden="true"><span class="'+K+'__walls"></span>'+(i===cut?'<span class="'+K+'__dry"><span class="'+K+'__dl">'+e(lab)+'</span></span>':'<span class="'+K+'__water"></span>')
-   +(i>0?'<span class="'+K+'__gate'+(held?' is-hold':'')+'">'+glValve()+(held?'<span class="'+K+'__gk">Hold</span>':'')+'</span>':'')
+   +(i>0?'<span class="'+K+'__gate'+(held?' is-hold':'')+'">'+glValve()+'</span>':'')
    +(i===n-1?'<span class="'+K+'__out"></span>':'')+'</span>';
   return '<li class="'+K+'__step'+(i===cut?' is-cut':'')+(it.hold?' is-hold':'')+'" style="--i:'+i+'">'
    +'<span class="'+K+'__ic" aria-hidden="true">'+(isIcon(it.icon)?wIcon(it.icon):'')+'</span>'+run
@@ -2764,6 +3423,64 @@ LOOKS['gate-line']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-gate-line
    +(it.hold?'<p class="'+K+'__hold"><span class="'+K+'__hk">Hold</span> <span>Signed by '+stepWho(it.hold)+'</span></p>':'')+'</div></li>'}).join('');
  var leg=b.lane?'<p class="'+K+'__legend" aria-hidden="true"><span class="'+K+'__sw"></span>'+tx(b.lane)+'</p>':'';
  return sec(H+leg+'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>','aq-band--navy '+K+'-sec" data-theme="dark')};
+/* Look "grade-crosswalk" -> GradeCrosswalk (design-system/components/GradeCrosswalk): a grades table that sets water
+   types against two families of standards (water, how it differs, standard column A, standard column B), drawn as a
+   crosswalk (pass 12 concept 208). The water types run down the middle as navy blocks (index, name, how it differs);
+   column A's standards stand as chips on the left, column B's on the right, one chip per standard however many rows
+   cite it, each placed level with the rows it serves; hairline wires run from every chip to every block that cites it,
+   so a standard serving two waters branches to both and a water no standard on that side names has no wire there.
+   Each chip splits the standard's name (sans) from its edition (mono): "ANSI/AAMI ST108" | ":2023". A segment after
+   ";" that starts in lower case ("values from D1193-06") is a note on the citation before it: it rides in the block in
+   mono, never as a chip. Pointing at a block lights its wires and chips; pointing at a chip lights every block it
+   serves. Every block also carries its citations as text (visually hidden on desktop), so nothing depends on wires.
+   Fields (a table block): h, intro, cols [water, how, standards A, standards B], rows [[water, how, citesA, citesB]]
+   (cites split on ";"; an empty cell means none on that side).
+   Phones: one navy block per water with its citation rows under it (side, standard, edition, note, and "also 02 · 06":
+   the other blocks citing the same standard); no wires. */
+function gcSeg(c){var out=[];String(c&&typeof c==='object'?c.t:c||'').split(/\s*;\s*/).forEach(function(s){s=s.trim();if(!s)return;
+  if(/^[a-z]/.test(s)&&out.length){out[out.length-1].note=s;return}
+  var m=s.match(/^(.*?)((?::\d{2,4})|(?:-\d{2})|(?:\s+\d+(?:st|nd|rd|th)\s+ed\.?))$/);
+  out.push({k:s,n:m?m[1]:s,ed:m?m[2]:''})});return out}
+function gcChip(c,K){var m=c.ed.match(/^([:\-]|\s+)(.*)$/),sep=m?m[1]:'',ed=m?m[2]:c.ed;
+ return '<span class="'+K+'__std">'+tx(c.n)+'</span>'+(c.ed?'<span class="'+K+'__ed">'+(sep.trim()?'<span class="'+K+'__sep">'+e(sep)+'</span>':' ')+tx(ed)+'</span>':'')}
+LOOKS['grade-crosswalk']=function(b,H){var K='aq-grade-crosswalk',C=b.cols||[],R=b.rows||[],N=R.length;if(N<1||C.length<4)return BLOCKS.table(b,H);
+ var cites=R.map(function(r){return [gcSeg(r[2]),gcSeg(r[3])]});
+ /* one node per standard per side, placed at the mean of its rows' centres, then pushed apart (min gap 0.55 row) */
+ var sides=[0,1].map(function(s){var all={},order=[];cites.forEach(function(c,i){c[s].forEach(function(x){if(!all[x.k]){all[x.k]={c:x,rows:[]};order.push(x.k)}all[x.k].rows.push(i)})});
+  var nodes=order.map(function(k){var o=all[k],m=0;o.rows.forEach(function(i){m+=(i+0.5)/N});o.p=m/o.rows.length;return o});
+  nodes.sort(function(a,c){return a.p-c.p});var g=0.55/N;
+  for(var i=1;i<nodes.length;i++)if(nodes[i].p-nodes[i-1].p<g)nodes[i].p=nodes[i-1].p+g;
+  var over=nodes.length?nodes[nodes.length-1].p-(1-g/2):0;if(over>0)nodes.forEach(function(o){o.p=Math.max(g/2,o.p-over)});
+  return nodes});
+ var Y=1000;
+ function wires(s){var d='';sides[s].forEach(function(o,j){var ny=(o.p*Y).toFixed(1);o.rows.forEach(function(i){var ry=((i+0.5)/N*Y).toFixed(1);
+   var p=s===0?'M0 '+ny+'C55 '+ny+' 45 '+ry+' 100 '+ry:'M0 '+ry+'C55 '+ry+' 45 '+ny+' 100 '+ny;
+   d+='<path class="'+K+'__wire" data-gc="'+i+'" data-gcn="'+s+j+'" d="'+p+'"/>'})});
+  return '<svg class="'+K+'__wires '+K+'__wires--'+(s?'b':'a')+'" viewBox="0 0 100 '+Y+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+d+'</svg>'}
+ function rail(s){var chips=sides[s].map(function(o,j){return '<li class="'+K+'__node" data-gcn="'+s+j+'" data-rows="'+o.rows.join(' ')+'" style="--p:'+o.p.toFixed(4)+'">'+gcChip(o.c,K)+'</li>'}).join('');
+  return '<div class="'+K+'__rail '+K+'__rail--'+(s?'b':'a')+'" aria-hidden="true"><ol class="'+K+'__nodes">'+chips+'</ol></div>'}
+ /* phones: each citation row names the other blocks that cite the same standard ("also 02 · 06"), so the crosswalk
+    idea survives without wires */
+ function also(s,k,i){var o=null;sides[s].forEach(function(n){if(n.c.k===k)o=n});var r=o?o.rows.filter(function(j){return j!==i}):[];
+  return r.length?'<span class="'+K+'__also" aria-hidden="true">also '+r.map(function(j){return (j<9?'0':'')+(j+1)}).join(' · ')+'</span>':''}
+ var rows=R.map(function(r,i){var notes=[],refs=[0,1].map(function(s){var L=cites[i][s];if(!L.length)return '';
+   L.forEach(function(x){if(x.note)notes.push(x.note)});
+   return L.map(function(x,j){return '<li class="'+K+'__ref'+(j?'':' is-first')+'">'+(j?'':'<span class="'+K+'__side">'+tx(C[2+s])+'</span>')+'<span class="'+K+'__cite">'+gcChip(x,K)+'</span>'+(x.note?'<span class="'+K+'__rnote">'+tx(x.note)+'</span>':'')+also(s,x.k,i)+'</li>'}).join('')}).join('');
+  return '<li class="'+K+'__row" data-gc="'+i+'"><div class="'+K+'__block">'+idx(i)+'<h3 class="'+K+'__t">'+tcell(r[0])+'</h3><p class="'+K+'__how">'+tcell(r[1])+'</p>'
+   +(notes.length?'<p class="'+K+'__note" aria-hidden="true">'+notes.map(tx).join(' · ')+'</p>':'')+'</div>'
+   +(refs?'<ul class="'+K+'__refs" role="list">'+refs+'</ul>':'')+'</li>'}).join('');
+ var heads='<div class="'+K+'__head '+K+'__head--a" aria-hidden="true">'+tx(C[2])+'</div><div class="'+K+'__head '+K+'__head--m" aria-hidden="true"><span>'+tx(C[0])+'</span><span>'+tx(C[1])+'</span></div><div class="'+K+'__head '+K+'__head--b" aria-hidden="true">'+tx(C[3])+'</div>';
+ var inner='<div class="'+K+'" style="--n:'+N+'">'+heads+rail(0)+wires(0)+'<ol class="'+K+'__rows" role="list">'+rows+'</ol>'+wires(1)+rail(1)+'</div>';
+ return sec(H+inner,K+'-sec')};
+(function(){var K='aq-grade-crosswalk';
+ function set(root,rows,nodes){var on=rows||nodes;root.classList.toggle('has-hot',!!on);
+  [].forEach.call(root.querySelectorAll('[data-gc],[data-gcn]'),function(el){var r=el.getAttribute('data-gc'),n=el.getAttribute('data-gcn'),rs=el.getAttribute('data-rows');
+   var hot=!!on&&((rows&&r!=null&&rows.indexOf(r)>=0)||(nodes&&n!=null&&nodes.indexOf(n)>=0)||(rows&&rs&&rs.split(' ').some(function(x){return rows.indexOf(x)>=0})));el.classList.toggle('is-hot',hot)})}
+ document.addEventListener('mouseover',function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(!root)return;
+  var row=ev.target.closest('.'+K+'__row'),node=ev.target.closest('.'+K+'__node');
+  if(row)set(root,[row.getAttribute('data-gc')],null);else if(node)set(root,node.getAttribute('data-rows').split(' '),[node.getAttribute('data-gcn')]);else set(root,null,null)});
+ document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(root&&!root.contains(ev.relatedTarget))set(root,null,null)});
+})();
 /* Look "grade-editorial" -> GradeEditorial (design-system/components/GradeEditorial): a short path set as an editorial
    spread. The heading runs oversized on a navy mast; below, on limestone, a geometric pipe collage (Swiss poster
    tiles, a hollow pipe with the water running through a tank and a pump to an outlet) faces five asymmetric fact
@@ -2980,7 +3697,8 @@ LOOKS['hire-path']=function(b,H){var I=b.items||[],P='aq-hire-path'+'__',num=fun
    row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown;
    decoration, aria-hidden), plot (optional: the roles drawn on the trend plot, e.g. ["limit","trend"] when the action
    and alert levels are laboratory results, not online readings; default every role; the table keeps every row). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.
-   Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
+   Phones: every tab stays, as one 44 px segmented strip (pass 12; the tabs are the screen's chrome, not panels), the
+   newest alarm wraps under it with the lamp cluster, the plot shortens, the table rows stack. */
 var HMI_Y={limit:52,action:112,alert:172};
 function hmiTrace(){var d='',x,y,pts=[];
  for(x=0;x<=930;x+=10){var n=Math.sin(x*0.071)*7+Math.sin(x*0.23+1.3)*4+Math.sin(x*0.013+0.4)*5,dr=x>600?Math.pow((x-600)/330,1.6)*58:0;y=262+n-dr;pts.push([x,y])}
@@ -3131,7 +3849,8 @@ LOOKS['industry-feed']=function(b,H){var I=b.items||[],n=I.length,len=Math.max.a
    Fields (a docs block): h, intro, items [{t, d, code, link, intent, sheet, use}], link, link_label, intent.
    sheet (optional): matrix, pid, spec or report (default from the name). use (optional): the qualification step the
    item's own text names as using it ("IQ"), shown as the stamp. Codes come from the DocList lookup (docCode).
-   Phones: two sheets a row, then one, with less turn. */
+   Mid widths: two sheets a row. Phones (pass 12, S11): the set is a snap deck on the desk, each sheet 78 % wide with
+   the next one peeking, turn and stamp kept; dots under the deck jump between sheets (AQsnap, below). */
 LOOKS['issued-set']=(function(){
  function P(d,c){return '<path class="aq-issued-set'+'__'+(c||'ln')+'" d="'+d+'"/>'}
  function lines(x,y,n,step,w){var o='';for(var i=0;i<n;i++)o+=P('M'+x+' '+(y+i*step)+'H'+(x+w-((i*37)%(w*0.45))),'txt');return o}
@@ -3154,7 +3873,7 @@ LOOKS['issued-set']=(function(){
  return function(b,H){var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=items.length;
   var li=items.map(function(x,i){var t=String(x.t||''),c=x.code||docCode(t)[0],s=MINI[x.sheet]?x.sheet:pick(t),num=(i<9?'0':'')+(i+1);
    var name=x.link&&wp(x.link)?wlink(x.link,t,x.intent):tx(t);
-   return fli('<li class="aq-issued-set__sheet'+(x.key?' is-key':'')+'" data-theme="light" style="--i:'+i+'">',b,i)
+   return fli('<li class="aq-issued-set__sheet'+(x.key?' is-key':'')+(i?'':' is-snap')+'" data-theme="light" style="--i:'+i+'">',b,i)
     +'<div class="aq-issued-set__hd"><span class="aq-issued-set__code" aria-hidden="true">'+e(c)+'</span><span class="aq-issued-set__no" aria-hidden="true">'+num+' / '+(n<10?'0':'')+n+'</span></div>'
     +'<div class="aq-issued-set__fig"><svg class="aq-issued-set__mini" viewBox="0 0 240 136" aria-hidden="true" focusable="false">'+MINI[s]()+'</svg>'
     +(x.use?'<span class="aq-issued-set__use" aria-hidden="true"><span>'+e(x.use)+'</span></span>':'')+'</div>'
@@ -3162,8 +3881,27 @@ LOOKS['issued-set']=(function(){
     +'<span class="aq-issued-set__tb" aria-hidden="true"><span>Aquemi</span><span>'+e(c)+'</span></span>'
     +'</li>'}).join('');
   var more=b.link&&wp(b.link)?'<p class="aq-issued-set__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
-  return sec(H+'<div class="aq-issued-set">'+wFold(b,n,'<ol class="aq-issued-set__desk" style="--n:'+Math.min(n,4)+'">'+li+'</ol>',b.fold_noun||'documents')+more+'</div>','aq-issued-set-sec')}
+  var dots=n>1?'<div class="aq-issued-set__dots" role="group" aria-label="'+e(String(b.h||'Documents'))+'">'+items.map(function(x,i){return '<button type="button" class="aq-issued-set__dot" data-snap-to="'+i+'"'+(i?'':' aria-current="true"')+' aria-label="'+e(String(x.t||''))+'"></button>'}).join('')+'</div>':'';
+  return sec(H+'<div class="aq-issued-set" data-snap-box>'+wFold(b,n,'<ol class="aq-issued-set__desk" data-snap style="--n:'+Math.min(n,4)+'">'+li+'</ol>',b.fold_noun||'documents')+dots+more+'</div>','aq-issued-set-sec')}
 })();
+/* Snap rail (phones; pass 12 S11): a [data-snap] scroller whose children snap, and [data-snap-to="i"] buttons (dots or
+   numbers) in the same [data-snap-box]. The child nearest the scroller's start edge gets .is-snap and its button
+   aria-current (a strip of buttons that scrolls keeps it in view); a button scrolls its child to the start. At the
+   rail's end (items that cannot reach the start edge) the tapped child keeps the mark until the reader swipes (_want). State, not motion: it runs with reduced motion (jumps).
+   Shared by several looks; each defines it only if it is missing, so any one of them may be retired. */
+(function(){if(window.AQsnap)return;window.AQsnap=function(r){var it=[].slice.call(r.children),x=r.getBoundingClientRect().left+(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),k=0,b=1e9;
+ it.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-x);if(d<b-1){b=d;k=i}});
+ if(r.scrollLeft>0&&r.scrollLeft+r.clientWidth>=r.scrollWidth-2)k=r._want!=null&&r._want>=k&&it[r._want]?r._want:it.length-1;
+ it.forEach(function(c,i){c.classList.toggle('is-snap',i===k)});
+ var bx=r.closest('[data-snap-box]')||r.parentNode;[].forEach.call(bx.querySelectorAll('[data-snap-to]'),function(t){if(+t.getAttribute('data-snap-to')!==k){t.removeAttribute('aria-current');return}t.setAttribute('aria-current','true');
+  var s=t.parentNode;if(s.scrollWidth>s.clientWidth+1){var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;if(a<s.scrollLeft)s.scrollLeft=a;else if(z>s.scrollLeft+s.clientWidth)s.scrollLeft=z-s.clientWidth}});return k};
+ var q=null;document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||r.nodeType!==1||!r.hasAttribute('data-snap'))return;if(q!==r){q=r;requestAnimationFrame(function(){window.AQsnap(q);q=null})}},true);
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-snap-to]');if(!t)return;var bx=t.closest('[data-snap-box]'),r=bx&&bx.querySelector('[data-snap]');if(!r)return;
+  var c=r.children[+t.getAttribute('data-snap-to')];if(!c)return;r._want=+t.getAttribute('data-snap-to');var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=r.scrollLeft+c.getBoundingClientRect().left-r.getBoundingClientRect().left-(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),still=Math.abs(Math.max(0,Math.min(L,r.scrollWidth-r.clientWidth))-r.scrollLeft)<1;
+  r.scrollTo({left:L,behavior:red?'auto':'smooth'});
+  if(red||still)window.AQsnap(r)});
+ ['pointerdown','touchstart','wheel','keydown'].forEach(function(n){document.addEventListener(n,function(ev){var r=ev.target.closest&&ev.target.closest('[data-snap]');if(r)r._want=null},{capture:true,passive:true})})})();
 /* Look "joint-macro" -> JointMacro (design-system/components/JointMacro): a standard as a macro close-up of the thing it
    governs, its contours traced and numbered, with the standard's rows beside it. On the navy band, the end of a
    polypropylene pipe fills the left of the section in flat duotone planes, cropped by the section edge: the body
@@ -3175,7 +3913,10 @@ LOOKS['issued-set']=(function(){
    method]) and the drawing must not assert one.
    Fields, as a spec block: h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold,
    fold_noun. part (optional): wall, face, exam, bore, mark, or "none" (default from the item's words). The fold applies
-   on phones only. Phones: the macro on top, the rows in one column under it. */
+   on phones only, and not on this look (pass 12, S7: the callouts point at rows 07-10). Phones: the macro is a PhoneKit
+   sticky strip (220 px, the whole drawing so every callout stays inside) over all the rows as compact rows; the row on
+   the reading line lights its callout (no crop frame at this size) and is named beside the macro. Without
+   script, the macro sits on top and the rows run under it. */
 LOOKS['joint-macro']=(function(){
  var W=720,Hh=640;
  /* anchors on the part and where the number sits (viewBox units); a second row on the same part uses the second pair */
@@ -3212,13 +3953,16 @@ LOOKS['joint-macro']=(function(){
   var legend='<p class="aq-joint-macro__legend" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+(C[2]?' · '+tx(C[2]):'')+'</span></p>';
   var list='<ol class="aq-joint-macro__rows" role="list">'+R.map(function(r,i){var p=parts[i],cr=CROP[p];
    var at=cr?' data-crop="'+[cr[1]/Hh,1-(cr[0]+cr[2])/W,1-(cr[1]+cr[3])/Hh,cr[0]/W].map(function(v){return (Math.max(0,v)*100).toFixed(2)+'%'}).join(' ')+'" tabindex="0"':'';
-   return fli('<li class="aq-joint-macro__row'+(cr?' is-pinned':'')+'" data-k="'+i+'"'+at+'>',b,i)
+   return fli('<li class="aq-joint-macro__row'+(cr?' is-pinned':'')+'" data-k="'+i+'" data-pk-row="'+i+'"'+at+'>',b,i)
     +'<span class="aq-joint-macro__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
     +'<h3 class="aq-joint-macro__p">'+tx(r.p)+'</h3>'
     +'<div class="aq-joint-macro__vm"><p class="aq-joint-macro__v">'+k(1)+tx(r.v)+'</p><p class="aq-joint-macro__m">'+k(2)+tx(r.m)+'</p></div></li>'}).join('')+'</ol>';
   var cap=b.caption?'<p class="aq-eyebrow aq-joint-macro__cap">'+tx(b.caption)+'</p>':'';
-  return sec('<div class="aq-joint-macro"><div class="aq-joint-macro__head">'+cap+H+'</div>'
-   +'<div class="aq-joint-macro__stage">'+fig+'</div>'
+  /* pass 12 phone: the stage is a PhoneKit sticky strip; beside the macro it names the row being read (filled from the
+     row's own number and title by the script below; aria-hidden, the row carries the words) */
+  var now='<p class="aq-joint-macro__now" aria-hidden="true"><span class="aq-joint-macro__now-n"></span><span class="aq-joint-macro__now-t"></span></p>';
+  return sec('<div class="aq-joint-macro" data-pk-sticky data-pk-h="220"><div class="aq-joint-macro__head">'+cap+H+'</div>'
+   +'<div class="aq-joint-macro__stage" data-pk-fig>'+fig+now+'</div>'
    +'<div class="aq-joint-macro__body">'+legend+wFold(b,R.length,list,b.fold_noun||'rows')+'</div></div>','aq-band--navy aq-joint-macro-sec')}
 })();
 /* JointMacro: pointing at (or focusing) a pinned row moves the crop frame onto its part; leaving resets it */
@@ -3230,7 +3974,18 @@ LOOKS['joint-macro']=(function(){
  function h(on){return function(ev){var row=ev.target.closest&&ev.target.closest('.aq-joint-macro__row');if(!row)return;
   if(!on&&ev.relatedTarget&&row.contains(ev.relatedTarget))return;set(row,on&&row.hasAttribute('data-crop'))}}
  document.addEventListener('mouseover',h(true));document.addEventListener('mouseout',h(false));
- document.addEventListener('focusin',h(true));document.addEventListener('focusout',h(false))})();
+ document.addEventListener('focusin',h(true));document.addEventListener('focusout',h(false));
+ /* phones (PhoneKit sticky): the row on the reading line lights its callout and fills the strip's "now" label */
+ document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-joint-macro'))return;
+  var rows=[].slice.call(r.querySelectorAll('.aq-joint-macro__row')),row=rows[ev.detail.index],n=r.querySelector('.aq-joint-macro__now-n'),t=r.querySelector('.aq-joint-macro__now-t');
+  [].forEach.call(r.querySelectorAll('.is-on'),function(x){x.classList.remove('is-on')});
+  r.classList.remove('is-pk-none');
+  if(!ev.detail.on||!row){if(rows[0])set(rows[0],false);if(n)n.textContent='';if(t)t.textContent='';return}
+  /* a row with no part on the drawing: every callout steps back, so the strip does not look as if it lost the row */
+  if(!r.querySelector('.aq-joint-macro__lead[data-k="'+row.getAttribute('data-k')+'"]'))r.classList.add('is-pk-none');
+  /* the strip is small: no crop, every callout stays drawn and the row's own callout lights */
+  [].forEach.call(r.querySelectorAll('[data-k="'+row.getAttribute('data-k')+'"]'),function(x){x.classList.add('is-on')});var a=row.querySelector('.aq-joint-macro__n'),b=row.querySelector('.aq-joint-macro__p');
+  if(n)n.textContent=a?a.textContent:'';if(t)t.textContent=b?b.textContent:''})})();
 /* Look "joint-spine" -> JointSpine (design-system/components/JointSpine): a log whose rows hang off a pipe. A twin-wall
    pipe drops in from the top of the section beside the title, bends and runs down the left of the log as its spine;
    each row of the log sits level with a joint on the spine (the piping-isometric joint mark: a tick across the pipe
@@ -3238,8 +3993,11 @@ LOOKS['joint-macro']=(function(){
    The pipe runs on past the last row and out of the section. Pointing at a row lights its joint.
    Fields, as a table: h, cols [field, what it proves, record], rows, fold, fold_noun. The column names show once as
    the log's legend (in each row for screen readers; shown per row on phones). The fold applies on phones only.
-   Phones: no drop or bend; the spine runs down a narrow rail at the left, numbers beside it. */
-LOOKS['joint-spine']=function(b,H){var C=b.cols||[],R=b.rows||[];
+   Phones: no drop or bend; the spine runs down a narrow rail at the left, numbers beside it. The legend shows once
+   above the log as a key and the per-row labels stay for screen readers only (pass 12, S12). When every second-column
+   value is short (50 characters or fewer: a status such as "Included" or a placeholder) the block gets .is-chips and
+   on phones that value is a chip beside the field name (both wrapped in div.__fh, display: contents on desktop). */
+LOOKS['joint-spine']=function(b,H){var C=b.cols||[],R=b.rows||[],chips=R.length&&R.every(function(r){return String(r[1]&&r[1].t||r[1]||'').length<=50});
  var k=function(i){return C[i]?'<span class="aq-joint-spine__k">'+tx(C[i])+'</span>':''};
  /* the bend from the drop into the spine: a 13-wide wall stroke with a 10-wide ground stroke over it leaves two 1.5
     px walls; the water is the centre line. Impression (faint) under, ink over. */
@@ -3252,11 +4010,11 @@ LOOKS['joint-spine']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var rows=R.map(function(r,i){var n=(i<9?'0':'')+(i+1);
   return fli('<li class="aq-joint-spine__row'+(i%2?' is-r':'')+'" data-k="'+i+'">',b,i)
    +pipe('',('<span class="aq-joint-spine__joint"></span><span class="aq-joint-spine__no">'+n+'</span>'))
-   +'<h3 class="aq-joint-spine__f">'+tcell(r[0])+'</h3>'
-   +(r[1]!=null?'<p class="aq-joint-spine__p">'+k(1)+tcell(r[1])+'</p>':'')
+   +'<div class="aq-joint-spine__fh"><h3 class="aq-joint-spine__f">'+tcell(r[0])+'</h3>'
+   +(r[1]!=null?'<p class="aq-joint-spine__p">'+k(1)+tcell(r[1])+'</p>':'')+'</div>'
    +(r[2]!=null?'<p class="aq-joint-spine__r">'+k(2)+tcell(r[2])+'</p>':'')+'</li>'}).join('');
  var log='<ol class="aq-joint-spine__log" role="list">'+rows+'</ol>';
- return sec('<div class="aq-joint-spine">'
+ return sec('<div class="aq-joint-spine'+(chips?' is-chips':'')+'">'
   +'<div class="aq-joint-spine__lead">'+pipe('aq-joint-spine__drop')+H+bend+legend+'</div>'
   +wFold(b,R.length,log,b.fold_noun||'fields')+pipe('aq-joint-spine__tail')
   +'</div>','aq-joint-spine-sec')};
@@ -3272,12 +4030,16 @@ LOOKS['joint-spine']=function(b,H){var C=b.cols||[],R=b.rows||[];
    Fields (a steps block): h, intro, method, items [{t, d, hold, link, stage}]. stage (optional): plan, receive,
    qualify, join, test, clean (default from the step's words). A step whose text names a witness point gets a
    "Witness point" tag (the sentence moves out of the text, unchanged); a hold step gets the stamp "Hold point · Signed
-   by …". Phones: title block, sheet, then the rail. */
+   by …". Phones: title block, sheet, then the rail.
+   Phones (pass 12, PhoneKit sticky figure): the sheet rides as a 180 px strip under the header while the rail scrolls;
+   the step on the reading line sets the sheet's stage (data-st, as on desktop) and the strip pans to the part that
+   stage draws (each stage group names the steps that show it, data-pk-key). Works with reduced motion. PhoneKit holds
+   to 600 px; from 601 to 860 px (tablets) the sheet sits sticky beside the rail, the desktop story at a smaller scale. */
 LOOKS['joint-steps']=(function(){
- var R=34;
+ var R=34,KEYS=null;
  function pick(t){t=String(t||'');return /plan/i.test(t)?'plan':/receive|material/i.test(t)?'receive':/qualif|test joint/i.test(t)?'qualify':/join|weld|record/i.test(t)?'join':/test|survey/i.test(t)?'test':/clean|turn|rinse/i.test(t)?'clean':'plan'}
  var WIT=/\s*Witness point\.\s*/;
- function g(st,inner){return '<g class="aq-joint-steps__st" data-st="'+st+'">'+inner+'</g>'}
+ function g(st,inner){return '<g class="aq-joint-steps__st" data-st="'+st+'"'+(KEYS&&KEYS[st]?' data-pk-key="'+KEYS[st].join(' ')+'"':'')+'>'+inner+'</g>'}
  function drawing(){var o=[];
   /* the test coupon lying beside the joint (behind it in drawing order) */
   o.push(g('qualify',isoPipe([[-150,-150,-R],[-150,-70,-R]],{r:11,caps:true,flow:false})
@@ -3295,27 +4057,32 @@ LOOKS['joint-steps']=(function(){
   /* the plan: dimensions and the joint's tag */
   o.push(g('plan',isoDim([0,160,-R],[0,160,R],{off:[60,0,0],text:'OD'})+isoDim([0,14,R],[0,-14,R],{off:[0,0,34]})));
   return o.join('')}
- return function(b,H){var I=b.items||[],n=I.length;
+ return function(b,H){var I=b.items||[],n=I.length;KEYS={};I.forEach(function(it,i){var st=it.stage||pick(it.t);(KEYS[st]=KEYS[st]||[]).push(i)});
   var pts=[[0,240,0],[0,-260,0],[0,240,-R],[0,-260,R+50],[-150,-160,-R-12],[R+70,160,0],[0,-20,R+70],[-150,-60,-R-12]],bx=isoBounds(pts,26),W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y];
   var tag=isoLeader([0,0,R],{dx:-50,dy:-70},{shelf:16}),at=isoPct(tag.end,W,Hh,org);
   var svg=isoSvg(W,Hh,drawing()+g('join',tag),'aq-joint-steps__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',title:true})});
   var lab='<span class="aq-joint-steps__tag aq-joint-steps__tag--'+(tag.side||'left')+'" style="left:'+at.left+';top:'+at.top+'"><b aria-hidden="true">J-01</b>'+(b.method?' <span>'+tx(b.method)+'</span>':'')+'</span>';
   var steps=I.map(function(it,i){var st=it.stage||pick(it.t),d=String(it.d||''),wit=WIT.test(d),num=(i<9?'0':'')+(i+1);if(wit)d=d.replace(WIT,' ').trim();
    var code=it.hold?'HP':wit?'WP':'';
-   return '<li class="aq-joint-steps__step'+(i===0?' is-on':'')+'" data-st="'+st+'" data-i="'+i+'" tabindex="0">'
+   return '<li class="aq-joint-steps__step'+(i===0?' is-on':'')+'" data-st="'+st+'" data-i="'+i+'" data-pk-row="'+i+'" tabindex="0">'
     +'<span class="aq-joint-steps__n" aria-hidden="true">'+num+(code?'<small>'+code+'</small>':'')+'</span>'
     +'<div class="aq-joint-steps__txt"><h3 class="aq-joint-steps__t">'+stepTitle(it)+'</h3>'+(d?'<p class="aq-joint-steps__d">'+tx(d)+'</p>':'')
     +((wit||it.hold)?'<p class="aq-joint-steps__tags">'+(wit?'<span class="aq-joint-steps__wit">Witness point</span>':'')
       +(it.hold?'<span class="aq-joint-steps__stamp"><span>Hold point</span> <span>Signed by '+stepWho(it.hold)+'</span></span>':'')+'</p>':'')
     +'</div></li>'}).join('');
-  return sec('<div class="aq-joint-steps"><div class="aq-joint-steps__title">'+H+'</div>'
-   +'<div class="aq-joint-steps__sheet"><div class="aq-joint-steps__fig aq-iso-figure" data-st="'+(I[0]?(I[0].stage||pick(I[0].t)):'')+'">'+svg+lab+'</div></div>'
+  KEYS=null;
+  return sec('<div class="aq-joint-steps" data-pk-sticky data-pk-bp="600" data-pk-h="180" data-pk-zoom="1"><div class="aq-joint-steps__title">'+H+'</div>'
+   +'<div class="aq-joint-steps__sheet"><div class="aq-joint-steps__fig aq-iso-figure" data-pk-fig data-st="'+(I[0]?(I[0].stage||pick(I[0].t)):'')+'">'+svg+lab+'</div></div>'
    +'<ol class="aq-joint-steps__rail" role="list">'+steps+'</ol></div>','aq-joint-steps-sec')}
 })();
-/* JointSteps: pointing at (or focusing) a step shows its stage on the sheet (the scroll story in motion.js does the same as the rail is read) */
-(function(){function on(ev){var s=ev.target.closest&&ev.target.closest('.aq-joint-steps__step');if(!s)return;var r=s.closest('.aq-joint-steps');if(r&&r.AQset)r.AQset(+s.getAttribute('data-i'));else if(r){
+/* JointSteps: pointing at (or focusing) a step shows its stage on the sheet (the scroll story in motion.js does the same
+   as the rail is read); on phones PhoneKit's step on the reading line does it (pk:change), with or without motion */
+(function(){function show(r,s){if(!r||!s)return;if(r.AQset)r.AQset(+s.getAttribute('data-i'));else{
   [].forEach.call(r.querySelectorAll('.aq-joint-steps__step.is-on'),function(x){x.classList.remove('is-on')});s.classList.add('is-on');var f=r.querySelector('.aq-joint-steps__fig');if(f)f.setAttribute('data-st',s.getAttribute('data-st'))}}
- document.addEventListener('mouseover',on);document.addEventListener('focusin',on)})();
+ function on(ev){var s=ev.target.closest&&ev.target.closest('.aq-joint-steps__step');if(s)show(s.closest('.aq-joint-steps'),s)}
+ document.addEventListener('mouseover',on);document.addEventListener('focusin',on);
+ document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-joint-steps')||!ev.detail||!ev.detail.on||ev.detail.index<0)return;
+  show(r,r.querySelectorAll('.aq-joint-steps__step')[ev.detail.index])})})();
 /* Look "layer-stack" -> LayerStack (design-system/components/LayerStack): a diagram block whose stages are layers of
    one system (field instruments up to the plant network), drawn as an exploded isometric stack of machined plates,
    the first stage at the bottom, each next one a step higher and further back. Each plate carries its equipment in
@@ -3323,10 +4090,14 @@ LOOKS['joint-steps']=(function(){
    switch with a dashed DMZ boundary and firewall). A data riser climbs from plate to plate and a trace crosses each
    plate top; one packet rides it from the instruments to the plant network. Labels alternate right and left of the
    stack, each on a leader from its plate's corner. A stage marked key (the controller that runs on its own) is the
-   navy plate. Phones: the stack fills the width (cropped from the same drawing), the labels list under it.
+   navy plate. Phones: the stack fills the width (cropped from the same drawing) with each plate tagged 01-05, the labels list
+   under it top plate first, so list and drawing read in the same order.
    Fields: stages [{t, d, icon, art, key}], caption. art: instruments | plc | hmi | historian | network (default by
    position). key: true draws that plate navy. */
 var LS_ART=['instruments','plc','hmi','historian','network'],LS_W=170,LS_D=80,LS_T=8,LS_SY=44,LS_SZ=70;
+/* pass 12 phone: the stage number as a tag on the plate's free corner (the fourth hole), shown only on phones, where
+   the leaders are gone and the list runs under the stack (top plate first, so list and drawing read the same way) */
+function lsTag(c,i,key){return '<g class="aq-layer-stack__tag'+(key?' is-key':'')+'" data-ls="'+i+'"><circle cx="'+isoF(c[0])+'" cy="'+isoF(c[1])+'" r="15"/><text x="'+isoF(c[0])+'" y="'+isoF(c[1])+'" text-anchor="middle" dominant-baseline="central">'+String(i+1).padStart(2,'0')+'</text></g>'}
 function lsPath(d,cls){return '<path class="'+cls+'" d="'+d+'"/>'}
 /* one layer: o maps plate-local [x, y, z] (top face at z 0) to world */
 function lsLayer(k,o,key){var W=LS_W,D=LS_D,T=LS_T,P=function(x,y,z){return o([x,y,z])},Q=function(a){return a.map(function(p){return o(p)})};
@@ -3372,7 +4143,7 @@ LOOKS['layer-stack']=function(b,H){
   at.push(route.length);tr.forEach(function(q){route.push(Pp(q[0],q[1],q[2]))});
   var riser='';if(i<n-1){var a=Pp(12,24,0),r2=isoP(off(i)([12,24,LS_SZ-LS_T]));riser='<path class="aq-layer-stack__riser" d="M'+isoT(a)+'L'+isoT(r2)+'"/>'}
   body+='<g class="aq-layer-stack__layer" data-ls="'+i+'" data-dx="'+isoF(-(isoP(0,-LS_SY*i,0)[0]))+'" data-dy="'+isoF(LS_SZ*i-(LS_T+2)*i+LS_SY*i*0.5)+'">'
-   +lsLayer(k,o,s.key)+'<path class="aq-layer-stack__trace" d="'+trd+'"/></g>'+(riser?'<g class="aq-layer-stack__gap" data-ls="'+i+'">'+riser+'</g>':'');
+   +lsLayer(k,o,s.key)+'<path class="aq-layer-stack__trace" d="'+trd+'"/>'+lsTag(k==='instruments'?Pp(22,38,0):Pp(16,LS_D-16,0),i,s.key)+'</g>'+(riser?'<g class="aq-layer-stack__gap" data-ls="'+i+'">'+riser+'</g>':'');
   /* leader from the plate corner out to its label, right for the even layers, left for the odd */
   var cn=ri?Pp(LS_W,0,0):Pp(0,LS_D,0),ex=ri?bx.x+bx.w+30:bx.x-30;
   lead+='<g class="aq-layer-stack__lead" data-ls="'+i+'"><path d="M'+isoT(cn)+'H'+isoF(ex)+'"/><circle cx="'+isoF(cn[0])+'" cy="'+isoF(cn[1])+'" r="2.4"/></g>';
@@ -3409,6 +4180,7 @@ LOOKS['layer-stack']=function(b,H){
    (the first row that has one): the other pharmacopoeia's value for the same parameter ("≤ 5.1 µS/cm at 25 °C",
    "Ph. Eur."). Without any alt the bento has no column and the tiles take three across.
    The basis (m) prints as one tag per ";" part; a level chip prints only when the parameter name does not already say it.
+   Phones (pass 12): the tile of the row the column draws folds into the column (no repeat of the same value).
    Uses gaugeParse / gaugeLevel / gaugeScale / gaugeNum / wGaugeGo (blocks/spec.js). */
 function lbVal(g,v){return g?'<span class="aq-limit-bento__c">'+e(g.c)+'</span><span class="aq-limit-bento__n aq-num">'+e(g.t)+'</span>'+(g.u?' <span class="aq-limit-bento__u">'+tx(g.u)+'</span>':''):'<span class="aq-limit-bento__n">'+tx(v)+'</span>'}
 function lbColumn(r){var g=gaugeParse(r.v),a=gaugeParse(r.alt&&r.alt.v);if(!g||!a)return '';
@@ -3429,13 +4201,45 @@ LOOKS['limit-bento']=function(b,H){
  var col=ci>=0?lbColumn(rows[ci]):'';
  var head='<div class="aq-limit-bento__head">'+wSecHead({h:b.h,intro:b.intro})+(b.caption?'<p class="aq-limit-bento__chip">'+tx(b.caption)+'</p>':'')+'</div>';
  var tiles=rows.map(function(r,i){var g=gaugeParse(r.v),lvl=gaugeLevel(r),q=g&&g.q?g.q:'';
-  return '<li class="aq-limit-bento__tile'+(r.hl?' is-hl':'')+'"'+(i%2?' data-theme="light"':'')+'>'
+  /* phones (pass 12): the column already says this row whole (value, condition, its one basis), so its tile folds into
+     the column's caption there; a row with more than one basis or a link keeps its tile */
+  var folds=i===ci&&!!col&&String(r.m||'').split(/\s*;\s*/).filter(Boolean).length<=1&&!wGaugeGo(r);
+  return '<li class="aq-limit-bento__tile'+(r.hl?' is-hl':'')+(folds?' is-col':'')+'"'+(i%2?' data-theme="light"':'')+'>'
    +'<div class="aq-limit-bento__top">'+idx(i)+'<h3 class="aq-limit-bento__p">'+tx(r.p)+'</h3>'+(isIcon(r.icon)?wIcon(r.icon,'aq-limit-bento__ic'):'')+'</div>'
    +(lvl&&String(r.p||'').toLowerCase().indexOf(lvl.toLowerCase())<0?'<p class="aq-limit-bento__lvl">'+e(lvl)+'</p>':'')
    +'<p class="aq-limit-bento__v">'+lbVal(g,r.v)+'</p>'
    +(q?'<p class="aq-limit-bento__q">'+tx(q)+'</p>':'')
    +(r.m?'<p class="aq-limit-bento__m">'+String(r.m).split(/\s*;\s*/).filter(Boolean).map(function(x){return '<span class="aq-tag">'+tx(x)+'</span>'}).join(' ')+'</p>':'')+wGaugeGo(r)+'</li>'}).join('');
  return sec('<div class="aq-limit-bento'+(col?'':' is-plain')+'">'+head+col+'<ol class="aq-limit-bento__tiles" role="list">'+tiles+'</ol></div>'+wSpecNote(b),'aq-limit-bento-sec')};
+/* Look "limit-drawer" -> LimitDrawer (design-system/components/LimitDrawer): who writes your limit, and what to send,
+   as a file drawer. One manila folder per limit-writer stands in the drawer, three to a row; each folder's tab sits
+   at its own cut position (left, middle, right along the row), so no tab hides another. On the folder: the writer, what
+   the limit sets, then a white slip clipped to it with what to send (one line per ";" item), and the navy index label
+   at its foot naming where it applies (the row's link). The drawer's front rail and pull close the set.
+   Concept: design-system/inspiration/gemini/216-p12-ind-process-limits.png (weak; idea only: never its codes, slogans
+   or contact line).
+   Fields (a table block): cols [who writes the limit, what it sets, what to send, where it applies], rows (cells
+   strings or {t, link}). The tab is the writer up to its first number (ASTM D1193-24), else its first word.
+   Phones and tablets (PhoneKit accordion, S11): one folder per row, the tabs still at their stepped cuts; each folder
+   closes to a 48 px head (the writer, a chevron) and one is open at a time with what it sets, the slip and the label
+   as a 48 px row link. Without script every folder stays open. */
+function ldCode(s){s=String(s||'');var m=s.match(/^(.*?\b\d[\d.-]*)/);return m&&m[1].length<=18?m[1]:s.split(/\s+/)[0]}
+LOOKS['limit-drawer']=function(b,H){var C=b.cols||[],R=(b.rows||[]).filter(function(r){return r&&r.length}),K='aq-limit-drawer';
+ var cell=function(c){return c&&typeof c==='object'?c.t:c==null?'':String(c)};
+ var folders=R.map(function(r,i){var who=cell(r[0]),send=cell(r[2]).split(/\s*;\s*/).filter(Boolean),go=r[3]!=null?r[3]:null,num=(i<9?'0':'')+(i+1);
+  var label=go&&typeof go==='object'&&go.link&&wp(go.link)?'<a class="'+K+'__label" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"><span class="'+K+'__lk">'+tx(C[3]||'')+'</span>'+tx(go.t)+'</a>'
+   :(go?'<p class="'+K+'__label"><span class="'+K+'__lk">'+tx(C[3]||'')+'</span>'+tx(cell(go))+'</p>':'');
+  return '<li class="'+K+'__f" data-pk-item="'+i+'" style="--i:'+i+';--cut:'+(i%3)+'">'
+   +'<span class="'+K+'__tab" aria-hidden="true"><span>'+num+'</span>'+tx(ldCode(who))+'</span>'
+   +'<div class="'+K+'__body" data-theme="light">'
+    +'<button type="button" class="'+K+'__head" data-pk-head><span class="'+K+'__ht">'+tx(who)+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button>'
+    +'<h3 class="'+K+'__who" data-pk-desk>'+tx(who)+'</h3>'
+    +'<div class="'+K+'__more" data-pk-body>'
+    +(r[1]!=null?'<p class="'+K+'__k">'+tx(C[1]||'')+'</p><p class="'+K+'__sets">'+tcell(r[1])+'</p>':'')
+    +(send.length?'<div class="'+K+'__slip"><span class="'+K+'__clip" aria-hidden="true"></span><p class="'+K+'__sk">'+tx(C[2]||'')+'</p><ul class="'+K+'__send">'
+     +send.map(function(x){return '<li>'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</li>'}).join('')+'</ul></div>':'')
+    +label+'</div></div></li>'}).join('');
+ return sec(H+'<div class="'+K+'"><ol class="'+K+'__list" role="list" data-pk-picker="accordion" data-pk-open="0">'+folders+'</ol><div class="'+K+'__front" aria-hidden="true"><span class="'+K+'__pull"></span></div></div>',K+'-sec')};
 /* Look "limit-stack" -> LimitStack (design-system/components/LimitStack): a spec block's limits as an editorial type
    stack. The heading set at display scale with the caption beside it, the rows stepping down and in like set type
    (index, mono label, the limit large in Geist Mono, its reference on a hairline that runs to the drawing), and a
@@ -3461,7 +4265,9 @@ function lsPipe(){
  var all=pts.concat([[X+6,y,z-24],[X+6,y,z+24],[0,-320,cz+R+30]]),bx=isoBounds(all,20),W=Math.round(bx.w),Hh=Math.round(bx.h+150),org=[-bx.x,-bx.y];
  var c=isoP([273,y+9,z+9]),o=isoP([140,y,z-30]);
  return {svg:isoSvg(W,Hh,inner,'aq-iso--limestone aq-limit-stack__svg',{origin:org}),
-  seal:isoPct(c,W,Hh,org),out:isoPct(o,W,Hh,org),note:isoPct(lead.end,W,Hh,org),side:lead.side}}
+  seal:isoPct(c,W,Hh,org),out:isoPct(o,W,Hh,org),note:isoPct(lead.end,W,Hh,org),side:lead.side,
+  /* the band under the pipe that only the note's leader uses, as % of the width (phones drop the leader, pass 12) */
+  cut:(140/W*100).toFixed(2)+'%'}}
 LOOKS['limit-stack']=function(b,H){
  var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h}),hr=rows.filter(function(r){return /guarant|outlet/i.test(String(r.p||''))}).pop();
  var cw=hr&&String(hr.v||'').indexOf('[')<0?String(hr.p||'').split(',').pop().trim():'';cw=cw&&cw.charAt(0).toUpperCase()+cw.slice(1);
@@ -3473,12 +4279,56 @@ LOOKS['limit-stack']=function(b,H){
    +'<p class="aq-limit-stack__v">'+val+'</p>'
    +'<p class="aq-limit-stack__m"><span class="aq-limit-stack__rule" aria-hidden="true"></span><span class="aq-limit-stack__mt">'+tx(r.m||'')+'</span></p></li>'}).join('')+'</ol>';
  var P=lsPipe(),pos=function(p){return 'left:'+p.left+';top:'+p.top};
- var fig='<figure class="aq-limit-stack__fig">'+P.svg
+ /* The drawing and its lettering share one box (__draw), so the lettering stays on the pipe at any drawing width; the
+    note is placed against the figure, which is the same box while the note is on the drawing (on phones it drops out
+    of the drawing and sits under it, pass 12) */
+ var fig='<figure class="aq-limit-stack__fig" style="--ls-cut:'+P.cut+'"><div class="aq-limit-stack__draw">'+P.svg
   +(cw?'<span class="aq-limit-stack__seal" aria-hidden="true" style="'+pos(P.seal)+'">'+tx(cw)+'</span>':'')
-  +'<span class="aq-limit-stack__outlet" aria-hidden="true" style="'+pos(P.out)+'">Skid outlet</span>'
+  +'<span class="aq-limit-stack__outlet" aria-hidden="true" style="'+pos(P.out)+'">Skid outlet</span></div>'
   +(b.intro?'<figcaption class="aq-limit-stack__note aq-limit-stack__note--'+P.side+'" style="'+pos(P.note)+'">'+tx(b.intro)+'</figcaption>':'')+'</figure>';
  /* The limestone sheet keeps its light tokens in the dark theme too (pipe body, flow line, the boxed outlet row) */
  return sec('<div class="aq-limit-stack">'+'<div class="aq-limit-stack__text">'+head+list+wSpecNote(b)+'</div>'+fig+'</div>','aq-band--limestone aq-limit-stack-sec').replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="light"')};
+/* Look "limit-writers" -> LimitWriters (design-system/components/LimitWriters): the same package, a different limit-
+   writer. One PP package on its base frame (IsoKit: media filter, RO rack, storage tank) sends one twin-wall pipe to a
+   header that tees into a numbered sheet for each limit-writer (a pharmacopoeia, a standard, your recipe, your
+   equipment maker). Under the drawing the stages split in two lists headed by the caption's two sentences: what stays
+   the same (stages whose text does not start "Changes") and what changes (the stages that do, then the monitoring
+   line, base, with its link).
+   Concept: design-system/inspiration/gemini/195-p12-industries-same-water.png (idea only: never its [limit] tags).
+   Fields (a diagram block): h, intro, writers (the limit-writers named in the intro, one per sheet; without it they
+   are read from the intro after its colon), stages [{t, d, link}], base, base_link, caption ("What stays the same: … .
+   What changes: … ."; with one sentence it is a note under both lists).
+   Phones: the package on top at full width, its outlet dropping into a riser down the right with the sheets branching off it, then the two
+   lists stacked. */
+function lwWriters(b){if(b.writers&&b.writers.length)return b.writers;var s=String(b.intro||''),k=s.indexOf(':');if(k<0)return [];
+ return s.slice(k+1).split('.')[0].split(/,\s*|\s+or\s+(?=your\b)/).map(function(x){x=x.replace(/^\s*(a|an)\s+/i,'').trim();return x.charAt(0).toUpperCase()+x.slice(1)}).filter(Boolean).slice(0,7)}
+function lwSkid(){var z=9,sk=isoPart('skid',0,0,0,1,{w:206,d:62}),fi=isoPart('filter',18,32,z,1,{}),ro=isoPart('ro',40,14,z,1,{}),ta=isoPart('tank',178,34,z,1,{});
+ var p1=isoPipe([fi.ports.out,[ro.ports.in[0],fi.ports.out[1],fi.ports.out[2]],[ro.ports.in[0],ro.ports.in[1],ro.ports.in[2]]].filter(function(p,i,a){return !i||String(p)!==String(a[i-1])}),{r:1.8,flanges:false,caps:false});
+ var o=ro.ports.out,t=ta.ports.in,p2=isoPipe([o,[o[0]+8,o[1],o[2]],[o[0]+8,o[1],t[2]+10],[t[0],o[1],t[2]+10],[t[0],t[1],t[2]+10],t],{r:1.8,flanges:false,caps:false});
+ var q=ta.ports.out,end=[q[0]+22,q[1],q[2]],p3=isoPipe([q,end],{r:2.4,flanges:'ends',caps:false});
+ var inner=[sk,fi,p1,ro,p2,ta,p3].join(''),bx=isoBounds([[0,0,0],[206,0,0],[0,62,0],[206,62,0],[18,32,z+76],[40,14,z+70],[152,40,z+70],[178,34,z+90],end],8);
+ var e2=isoP(end),W=e2[0]-bx.x+48,Hh=bx.h,org=[-bx.x,-bx.y],y=e2[1]+org[1],x=e2[0]+org[0];
+ /* the outlet run: level out of the tank's outlet, up (or down) to the drawing's mid height, then level to the right
+    edge, so it meets the header pipe's trunk at the figure's mid height (the drawing is centred beside the sheets) */
+ var ym=Hh/2,xr=x+18,pd='M'+x.toFixed(1)+' '+y.toFixed(1)+'H'+xr.toFixed(1)+'V'+ym.toFixed(1)+'H'+W.toFixed(1);
+ var stub='<g class="aq-limit-writers__stub">'+'<path class="aq-limit-writers__w1" d="'+pd+'"/><path class="aq-limit-writers__w2" d="'+pd+'"/><path class="aq-limit-writers__w3" d="'+pd+'"/>'+'</g>';
+ return isoSvg(W,Hh,inner,'aq-limit-writers__iso',{origin:org}).replace(/<\/svg>$/,stub+'</svg>').replace('xMidYMid meet','xMaxYMid meet')}
+LOOKS['limit-writers']=function(b,H){var K='aq-limit-writers',Wr=lwWriters(b),n=Wr.length,S=b.stages||[];
+ /* the header: trunk in at mid height, a riser from the first sheet to the last, a tee into each (viewBox 100 x 100, stretched) */
+ var d='M0 50H38',y0=50/n,y1=100-50/n;d+='M38 '+y0.toFixed(2)+'V'+y1.toFixed(2);for(var i=0;i<n;i++){var y=(i+0.5)*100/n;d+='M38 '+y.toFixed(2)+'H100'}
+ var pipe='<svg class="'+K+'__pipe" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="'+K+'__w1" d="'+d+'"/><path class="'+K+'__w2" d="'+d+'"/><path class="'+K+'__w3" d="'+d+'"/></svg>';
+ var sheets='<ol class="'+K+'__sheets" role="list" style="--n:'+n+'">'+Wr.map(function(w,i){return '<li class="'+K+'__sh" style="--i:'+i+'"><div class="'+K+'__sheet">'+idx(i)+'<p class="'+K+'__name">'+tx(w)+'</p></div></li>'}).join('')+'</ol>';
+ var fig=n?'<div class="'+K+'__fig"><div class="'+K+'__skid" aria-hidden="true">'+lwSkid()+'</div>'+pipe+sheets+'</div>':'';
+ var cap=String(b.caption||'').split(/(?<=\.)\s+/).filter(Boolean),two=cap.length===2;
+ var row=function(s,i){var t=s.link&&wp(s.link)?'<a href="#'+e(s.link)+'" data-wp="'+e(s.link)+'">'+tx(s.t)+'</a>':tx(s.t);
+  return '<li class="'+K+'__row">'+idx(i)+'<h3 class="'+K+'__t">'+t+'</h3>'+(s.d?'<p class="'+K+'__d">'+tx(s.d)+'</p>':'')+'</li>'};
+ var same=[],chg=[];S.forEach(function(s,i){(/^changes\b/i.test(String(s.d||''))?chg:same).push(row(s,i))});
+ var base=b.base?'<li class="'+K+'__row '+K+'__row--base"><span class="'+K+'__bm" aria-hidden="true"></span><p class="'+K+'__t">'
+  +(b.base_link&&wp(b.base_link)?'<a href="#'+e(b.base_link)+'" data-wp="'+e(b.base_link)+'">'+tx(b.base)+'</a>':tx(b.base))+'</p></li>':'';
+ var lists='<div class="'+K+'__lists"><div class="'+K+'__col">'+(two?'<p class="'+K+'__ch">'+tx(cap[0])+'</p>':'')+'<ol class="'+K+'__rows" role="list">'+same.join('')+'</ol></div>'
+  +'<div class="'+K+'__col '+K+'__col--chg">'+(two?'<p class="'+K+'__ch">'+tx(cap[1])+'</p>':'')+'<ol class="'+K+'__rows" role="list">'+chg.join('')+base+'</ol></div></div>'
+  +(!two&&b.caption?'<p class="'+K+'__note">'+tx(b.caption)+'</p>':'');
+ return sec(H+'<div class="'+K+'">'+fig+lists+'</div>',K+'-sec')};
 /* Look "loop-circuit" -> LoopCircuit (design-system/components/LoopCircuit): how a storage and distribution loop works,
    drawn as one blueprint P&ID strip on a navy band under a display-scale headline (pass 9b concept sys-storage.1).
    The strip is cut into one column per stage and every station stands over its own caption: generation feed with its
@@ -3486,8 +4336,9 @@ LOOKS['limit-stack']=function(b,H){
    the points of use on short drops, the return sensors (CE, TE, FE and a dashed AE for TOC), and the return riser
    with a detail of the spray ball wetting the tank head. The column rules run up through the drawing; the captions sit
    on a numbered row underneath. Pointing at a caption lights its station.
-   Phones: the strip gives way to a vertical circuit: the stages down a flow rail with their line glyphs, a return line
-   running back up to the tank.
+   Phones (pass 12, S10): the strip turns into a vertical circuit: the supply pipe runs down the left edge through the
+   stations (generation, tank, pump, exchanger, outlets, return sensors), turns at the foot and the return comes back up
+   the right edge past the spray ball's marker into the tank head; each stop's text sits between the two pipes.
    Fields (a diagram block): h, stages (or items) [{t, d, spot | icon, node}]. node: which station of the strip the
    stage is: gen, tank, pump, hx, pou, sensors, spray (default by position in that order). */
 (function(){
@@ -3542,7 +4393,9 @@ LOOKS['loop-circuit']=function(b,H){
  var I=b.stages||b.items||[],n=I.length,nodes=I.map(function(it,i){return it.node||NODE[i]||''}),nums=I.map(function(it,i){return (i<9?'0':'')+(i+1)});
  var at=nodes.map(function(id){return AT[id]?AT[id].join(','):''});
  var list=I.map(function(it,i){var g=wSpot(it.spot||it.icon,'','aq-spot--on-navy aq-loop-circuit__glyph');
-  return '<li class="'+K+'__stage" data-node="'+e(nodes[i])+'" data-at="'+at[i]+'"><span class="'+K+'__mark" aria-hidden="true">'+g+'</span>'
+  var pipes='<span class="'+K+'__sp" aria-hidden="true"></span><span class="'+K+'__rp" aria-hidden="true"></span>'
+   +(nodes[i]==='tank'?'<span class="'+K+'__tt" aria-hidden="true"></span><span class="'+K+'__ts" aria-hidden="true"></span>':'')+(i===n-1?'<span class="'+K+'__bt" aria-hidden="true"></span>':'');
+  return '<li class="'+K+'__stage" data-node="'+e(nodes[i])+'" data-at="'+at[i]+'">'+pipes+'<span class="'+K+'__mark" aria-hidden="true">'+g+'</span>'
    +'<p class="'+K+'__no" aria-hidden="true">'+nums[i]+'</p><h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
  var html=sec(H+'<div class="'+K+'" style="--n:'+n+'"><div class="'+K+'__strip">'+strip()+'</div><ol class="'+K+'__stages" role="list">'+list+'</ol></div>','aq-band--navy aq-loop-circuit-sec');
  return html.replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};
@@ -3558,12 +4411,14 @@ document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEve
    two points of use, one with its own cooler, and the return overhead back to the tank. Each option has a numbered
    marker on the part it adds and a leader from that part down to its caption in the row under the band; pointing at a
    caption lights its part and leader. The base is named beside the tank.
-   Phones: the same band, full width with its markers (no leaders), the captions stacked.
+   Phones: the same band, full bleed, cropped to the drawing (the loop, its skid and every option's marker; CROP, measured
+   once from the fixed scene) so it runs about twice the size of the whole band scaled down; markers 14 px, no leaders;
+   the base's name under the plate; the captions stacked (pass 12, S9).
    Fields (an options block): h, intro, items [{t, d, spot | icon, part, link}], spot (base glyph), base (default
    "Base skid"), fold, fold_noun. part: the drawing ids the option adds, an array of "uv", "cool", "mod" (default by
    position: uv, mod, cool; order the items left to right along the loop so the leaders never cross). The fold applies on phones only. */
 (function(){
-var VW=1200,VH=560,DEF=[['uv'],['mod','uv'],['cool']];
+var VW=1200,VH=560,DEF=[['uv'],['mod','uv'],['cool']],CROP=[380,14,630,510];
 function scene(){
  var ta=isoPart('tank',0,0,0,1,{id:'base'}),sk=isoPart('skid',44,-26,0,1,{w:200,d:52,id:'mod'}),dz=9,
   pu=isoPart('pump',66,0,dz,1,{id:'mod'}),hx=isoPart('hx',104,-24,dz,1,{id:'mod'}),uv=isoPart('uv',168,0,dz,1,{id:'uv'}),
@@ -3602,7 +4457,7 @@ LOOKS['loop-dock']=function(b,H){
  var baseLab='<span class="aq-loop-dock__base" style="left:'+(100*bq[0]/VW).toFixed(2)+'%;top:'+(100*bq[1]/VH).toFixed(2)+'%">'+base+'<span>'+tx(b.base||'Base skid')+(pg&&pg.nav_label?' · '+tx(pg.nav_label):'')+'</span></span>';
  var svg=isoSvg(VW,VH,sc.g,'aq-iso--navy aq-loop-dock__svg',{});
  var lsvg='<svg class="aq-loop-dock__leads" viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+leads+'</svg>';
- var inner='<div class="aq-loop-dock" style="--n:'+n+'"><div class="aq-loop-dock__band"><div class="aq-loop-dock__plane" aria-hidden="true">'+svg+lsvg+marks+'</div>'+baseLab+'</div>'
+ var inner='<div class="aq-loop-dock" style="--n:'+n+'"><div class="aq-loop-dock__band"><div class="aq-loop-dock__plane" aria-hidden="true" style="--ca:'+CROP[2]+' / '+CROP[3]+';--cl:'+(100*CROP[0]/CROP[2]).toFixed(2)+'%;--ct:'+(100*CROP[1]/CROP[3]).toFixed(2)+'%;--cw:'+(100*VW/CROP[2]).toFixed(2)+'%;--ch:'+(100*VH/CROP[3]).toFixed(2)+'%"><div class="aq-loop-dock__zoom">'+svg+lsvg+marks+'</div></div>'+baseLab+'</div>'
   +'<ol class="aq-loop-dock__cards" role="list">'+cards+'</ol></div>';
  return sec(H+wFold(b,I.length,inner,b.fold_noun||'options'),'aq-band--limestone aq-loop-dock-sec')};
 /* Pointing at an option lights the parts it adds (colour only) */
@@ -3617,7 +4472,10 @@ document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEvent
    the left, cropped by the page edge; numbered markers stand on an arc over it and a leader runs from each marker into
    its row, so every industry is "called out" from the same piece of equipment.
    Fields as a table block: cols (first is the row name), rows (cells, strings or {t, link}). No new fields.
-   Phones: the macro is a short band above the rows; the markers stand on a rail down the left of the rows.
+   Phones (pass 12, S12/S18): the macro stays on desktop only (on a phone it was an unlabelled crop); the value columns
+   are named once in a legend, each with a colour code (1 flow, 2 ink, 3 caution), and each row's values are lines
+   carrying the same code; the markers stand on a rail down the left of the rows. Each cell's value is wrapped
+   (span.__v) so a placeholder never falls into a label column.
    The pipe is drawn plain, labelled "PP pipe", with no weld bead (DR-018: the joining method is open, FD-18). */
 LOOKS['macro-leaders']=(function(){
  var uid=0;
@@ -3650,9 +4508,11 @@ LOOKS['macro-leaders']=(function(){
   var body=R.map(function(r,i){var t=n>1?(i-(n-1)/2)/((n-1)/2):0,kk=2*(1-Math.sqrt(1-0.75*t*t));
    return '<tr role="row" data-i="'+i+'" style="--k:'+kk.toFixed(3)+'">'+r.map(function(c,j){
     if(!j)return '<th role="rowheader" scope="row" class="aq-macro-leaders__ind"><span class="aq-macro-leaders__lead" aria-hidden="true"><span class="aq-macro-leaders__mk">'+(i<9?'0':'')+(i+1)+'</span></span><span class="aq-macro-leaders__name">'+tcell(c)+'</span></th>';
-    return '<td role="cell"><span class="aq-macro-leaders__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+tcell(c)+'</td>'}).join('')+'</tr>'}).join('');
+    return '<td role="cell" data-c="'+j+'"><span class="aq-macro-leaders__k" aria-hidden="true">'+tx(C[j]||'')+'</span><span class="aq-macro-leaders__v">'+tcell(c)+'</span></td>'}).join('')+'</tr>'}).join('');
+  /* phones: the value columns named once, each with its colour code; every row's lines carry the same code */
+  var legend='<p class="aq-macro-leaders__legend" aria-hidden="true">'+C.slice(1).map(function(c,j){return '<span data-c="'+(j+1)+'">'+tx(c)+'</span>'}).join('')+'</p>';
   return sec(H+'<div class="aq-macro-leaders" style="--n:'+n+'"><figure class="aq-macro-leaders__fig" aria-hidden="true">'+macro(k)+'</figure>'
-   +'<table class="aq-macro-leaders__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th role="columnheader" scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
+   +legend+'<table class="aq-macro-leaders__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th role="columnheader" scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
    +'<tbody role="rowgroup">'+body+'</tbody></table></div>','aq-macro-leaders-sec')}
 })();
 /* Look "manifold-router" -> ManifoldRouter (design-system/components/ManifoldRouter): a router table (as: "router")
@@ -3660,7 +4520,8 @@ LOOKS['macro-leaders']=(function(){
    down the left; each situation tees off it as a branch, its words set large. The reader picks a situation: the water
    runs down the manifold to that branch, the branch lights and its route opens on a sheet to the right (Send us, What
    comes back, then the link that starts it, set largest). One situation is open at a time, the first by default.
-   Phones: the route opens under its situation, on the same manifold.
+   Phones: the route opens under its situation, on the same manifold; each row ends in a 44 px chevron cue (PhoneKit's
+   .aq-phone-kit__chev, turned up on the open row), hidden on wider screens.
    Fields, as the router: cols (first is the situation column, the rest name the route's steps), rows (first cell the
    situation, each other cell a string or {t, link, intent}). A route whose cells link somewhere (the last link wins) is
    clickable as a whole through a pointer-only overlay; the real link stays the keyboard target, its intent rides on
@@ -3676,7 +4537,7 @@ LOOKS['manifold-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,
   return '<button type="button" class="aq-manifold-router__opt'+(open?' is-wet':'')+(i===0?' is-first':'')+(i===n-1?' is-last':'')+'" aria-expanded="'+(open?'true':'false')+'" aria-controls="'+id+'" style="--i:'+i+'">'
    +'<span class="aq-manifold-router__seg" aria-hidden="true"><span class="aq-manifold-router__water"></span></span>'
    +'<span class="aq-manifold-router__branch" aria-hidden="true"><span class="aq-manifold-router__water"></span></span>'
-   +'<span class="aq-manifold-router__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-manifold-router__t">'+tx(s)+'</span></button>'
+   +'<span class="aq-manifold-router__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-manifold-router__t">'+tx(s)+'</span><span class="aq-phone-kit__chev aq-manifold-router__chev" aria-hidden="true"></span></button>'
    +'<div class="aq-manifold-router__route'+(to?' is-link':'')+'" id="'+id+'" style="grid-row:1 / span '+n+'"'+(open?'':' hidden')+'>'
    +(to?'<a class="aq-manifold-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'"'+(ti?' data-intent="'+e(ti)+'"':'')+' tabindex="-1" aria-hidden="true"></a>':'')
    +'<p class="aq-manifold-router__sit" aria-hidden="true">'+tx(s)+'</p>'
@@ -3775,7 +4636,9 @@ LOOKS['membrane-atlas']=function(b,H){
    (pressure vessel wall, anti-telescoping spokes, membrane leaves spiralling out from the permeate tube), with the
    block note as its caption; numbered marks on its rim answer the six target tiles around it. Each tile: index,
    parameter, the target set large in Geist Mono (a placeholder or a worded target set in the sans), the basis under a
-   hairline. Phones: heading, the element as a short band, the tiles one by one.
+   hairline. Phones (pass 12, S10): the element with its six ring numbers is the header (the numbers are 44 px buttons),
+   the targets a scroll-snap row of compact cards under it; tapping a ring number brings its card into the row, and
+   the card in view lights its number on the rim (state in this file, so it works with motion off).
    Behind the drawn face the element's body runs back, a quarter cut away to show the wound leaves (FxCutaway,
    ambient WebGL, aria-hidden, faint limestone on the navy).
    Fields (a spec block): h, caption (eyebrow), intro, rows [{p, v, m, hl}], note. No new fields. */
@@ -3799,6 +4662,11 @@ function face(n){var o='',i;
   mk+='<g class="'+K+'__mark" data-i="'+i+'"><path class="'+K+'__tick" d="M'+f1(p0[0])+' '+f1(p0[1])+'L'+f1(p1[0])+' '+f1(p1[1])+'"/><circle class="'+K+'__pin" cx="'+f1(p0[0])+'" cy="'+f1(p0[1])+'" r="3"/>'
    +'<text class="'+K+'__num" x="'+f1(200+212*Math.cos(c))+'" y="'+f1(200+212*Math.sin(c)+4)+'">'+(i<9?'0':'')+(i+1)+'</text></g>'}
  return '<svg class="'+K+'__svg" viewBox="-30 -30 460 460" aria-hidden="true" focusable="false">'+o+mk+'</svg>'}
+/* phone: the rim numbers as buttons over the drawing (same angles and radius as face()) */
+function jumps(rows){var ang=[-72,-28,208,14,152,56],o='';
+ for(var i=0;i<rows.length&&i<ang.length;i++){var c=ang[i]*Math.PI/180,x=(200+212*Math.cos(c)+30)/460*100,y=(200+212*Math.sin(c)+30)/460*100;
+  o+='<button type="button" class="'+K+'__jump" data-i="'+i+'" style="left:'+x.toFixed(2)+'%;top:'+y.toFixed(2)+'%" aria-label="'+e((i<9?'0':'')+(i+1)+' '+(rows[i].p||''))+'">'+(i<9?'0':'')+(i+1)+'</button>'}
+ return o}
 LOOKS['membrane-face']=function(b,H){
  var rows=b.rows||[];
  var tiles=rows.map(function(r,i){var g=parse(r.v);
@@ -3808,10 +4676,27 @@ LOOKS['membrane-face']=function(b,H){
    +'<h3 class="'+K+'__p">'+idx(i)+'<span>'+tx(r.p)+'</span></h3>'
    +'<p class="'+K+'__v">'+v+'</p>'
    +(r.m?'<p class="'+K+'__m">'+tx(r.m)+'</p>':'')+'</li>'}).join('');
- var core='<figure class="'+K+'__core aq-fx-host"><canvas class="aq-fx-shader" data-gl="cutaway" aria-hidden="true"></canvas><p class="'+K+'__label" aria-hidden="true">RO element · feed end</p>'+face(rows.length)
+ var core='<figure class="'+K+'__core aq-fx-host"><canvas class="aq-fx-shader" data-gl="cutaway" aria-hidden="true"></canvas><p class="'+K+'__label" aria-hidden="true">RO element · feed end</p>'+'<div class="'+K+'__dial">'+face(rows.length)+jumps(rows)+'</div>'
   +(b.note?'<figcaption class="'+K+'__note">'+tx(b.note)+'</figcaption>':'')+'</figure>';
  var head='<div class="'+K+'__head">'+wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'</div>';
  return sec('<div class="'+K+'" style="--n:'+rows.length+'">'+head+core+'<ol class="'+K+'__tiles" role="list">'+tiles+'</ol></div>',K+'-sec')};
+/* phone: a ring number brings its card into the row; the card in view lights its number (and is the ring's current
+   one for assistive technology). On arrival the first card is in view, so its number is lit from the start (the
+   is-in styles live in the phone rule only, so this changes nothing on desktop, where the ring buttons are hidden). */
+function lit(r,k){[].forEach.call(r.querySelectorAll('.'+K+'__jump,.'+K+'__mark,.'+K+'__tile'),function(x){var on=+x.getAttribute('data-i')===k;x.classList.toggle('is-in',on);
+ if(x.classList.contains(K+'__jump')){if(on)x.setAttribute('aria-current','true');else x.removeAttribute('aria-current')}})}
+function init(n){if(!n||!n.querySelectorAll)return;var a=n.classList&&n.classList.contains(K)?[n]:[].slice.call(n.querySelectorAll('.'+K));
+ a.forEach(function(r){if(!r.querySelector('.'+K+'__jump.is-in'))lit(r,0)})}
+function row(r){return r.querySelector('.'+K+'__tiles')}
+if(typeof document!=='undefined'){
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){init(document)});else init(document);
+ if(window.MutationObserver)new MutationObserver(function(M){M.forEach(function(m){[].forEach.call(m.addedNodes,init)})}).observe(document.documentElement,{childList:true,subtree:true});
+ document.addEventListener('click',function(x){var j=x.target.closest&&x.target.closest('.'+K+'__jump');if(!j)return;var r=j.closest('.'+K),ol=row(r),k=+j.getAttribute('data-i'),t=ol&&ol.children[k];if(!t)return;
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,pl=parseFloat(getComputedStyle(ol).paddingLeft)||0;
+  ol.scrollTo({left:t.getBoundingClientRect().left-ol.getBoundingClientRect().left+ol.scrollLeft-pl,behavior:rm?'auto':'smooth'});lit(r,k)});
+ var raf=0;document.addEventListener('scroll',function(x){var ol=x.target;if(!ol.classList||!ol.classList.contains(K+'__tiles')||raf)return;raf=requestAnimationFrame(function(){raf=0;
+  var a=ol.getBoundingClientRect().left+(parseFloat(getComputedStyle(ol).paddingLeft)||0),best=0,d=1e9;[].forEach.call(ol.children,function(t,i){var q=Math.abs(t.getBoundingClientRect().left-a);if(q<d){d=q;best=i}});lit(ol.closest('.'+K),best)})},true);
+}
 /* hover or focus on a target lights its mark on the element's rim */
 if(typeof document!=='undefined')['mouseover','mouseout','focusin','focusout'].forEach(function(ev){document.addEventListener(ev,function(x){
  var t=x.target.closest&&x.target.closest('.'+K+'__tile');if(!t)return;var on=ev==='mouseover'||ev==='focusin',r=t.closest('.'+K),mk=r&&r.querySelector('.'+K+'__mark[data-i="'+t.getAttribute('data-i')+'"]');
@@ -3829,7 +4714,11 @@ if(typeof document!=='undefined')['mouseover','mouseout','focusin','focusout'].f
    "hot", "uv"], scale {row, marks [{v, l}]} (the temperature figure: marks in °C along a 0–100 rail), absent (the
    missing method's name, shown large in outline on the dashed tile with the intro). scale.base: the reading below the
    first mark (motion.js turns the rail into a probe the visitor can drag along it, with detents at the marks). Without absent the intro stays in
-   the section head. */
+   the section head (sys-storage: the single ozone line lives there, DR-013).
+   Pass 12 layout: desktop reads as a table drawn as tiles: the temperature scale runs as a full-width navy band under
+   the heading, the hot-water column hangs from it in navy, and the three methods stand as equal columns whose
+   number, name, drawing and three column rows line up across (subgrid). Under 900 px a 3-segment switch (PhoneKit
+   chips, the method names) shows one method card at a time, its drawing or scale on top. */
 (function(){
 var K='aq-method-bento';function P(d,c){return '<path class="'+K+'__'+(c||'ln')+'" d="'+d+'"/>'}
 var FIG={
@@ -3837,6 +4726,11 @@ var FIG={
   +P('M72 50q-3 5 0 8q3-3 0-8','fl');var s=3;function r(){s=(s*9301+49297)%233280;return s/233280}
   for(var i=0;i<26;i++){var x=82+i*5.4,sp=(x-82)/140*9;o+='<circle class="aq-method-bento__dot" cx="'+x.toFixed(1)+'" cy="'+(81+(r()-0.5)*2*sp).toFixed(1)+'" r="1.4"/>'}
   return o+P('M204 14V54A6 6 0 0 0 216 54V14M200 14H220','ln')+P('M205 40H215','fl')},
+ /* pass 12: hot water, drawn for the hot-water column under the band: the loop's pipe heated through an exchanger
+    (shell and coil), heat rising off the run, the check at the far (coldest) end */
+ hot:function(){var o=P('M10 70H230M10 92H230')+P('M10 81H230','fl')+P('M40 12H110V44H40Z','fill')+P('M48 28l8 -8l8 16l8 -16l8 16l8 -16l8 8','th')
+  +P('M58 44V70M92 44V70','ln');for(var x=128;x<=188;x+=20)o+=P('M'+x+' 62q-4 -6 0 -12q4 -6 0 -12','ray');
+  return o+'<circle class="aq-method-bento__fill" cx="214" cy="40" r="12"/>'+P('M214 52V70','ln')+P('M214 46V33','fl')},
  uv:function(){var o=P('M30 40H210A20 20 0 0 1 210 80H30A20 20 0 0 1 30 40Z','fill')+P('M36 55H204V65H36Z','fl')+P('M210 60H232M226 54V66','ln')
   +P('M60 80V96M180 80V96M52 96H68M172 96H188','ln');
   for(var x=52;x<=188;x+=17)o+=P('M'+x+' 52q-3 -3 0 -6q3 -3 0 -6M'+x+' 68q-3 3 0 6q3 3 0 6','ray');return o}
@@ -3854,47 +4748,149 @@ LOOKS['method-bento']=function(b,H){
  if(hasAbs)H=wSecHead({eyebrow:b.eyebrow,h:b.h});
  var tiles=R.map(function(r,i){var hot=sc&&sc.row===i,f=F[i]||'',cls='aq-method-bento__tile'+(hot?' is-hot':'')+' is-'+(i===0?'a':i===1?'b':'c');
   var dl='<dl class="aq-method-bento__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+e(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl>';
-  return '<li class="'+cls+'"><p class="aq-method-bento__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</p><h3 class="aq-method-bento__t">'+tcell(r[0])+'</h3>'
-   +(hot?scale(sc):fig(f))+dl+'</li>'}).join('');
+  /* phones: the method's name is also its segment in the switch (a PhoneKit chip, hidden on desktop) */
+  return '<li class="'+cls+'" data-pk-item="'+i+'"><button type="button" class="aq-method-bento__seg" data-pk-head>'+tx(typeof r[0]==='object'&&r[0]?r[0].t:r[0])+'</button>'
+   +'<div class="aq-method-bento__card" data-pk-body><p class="aq-method-bento__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</p><h3 class="aq-method-bento__t">'+tcell(r[0])+'</h3>'
+   +(hot?scale(sc)+fig(f):fig(f))+dl+'</div></li>'}).join('');
  var gap=hasAbs?'<li class="aq-method-bento__tile aq-method-bento__gap"><p class="aq-method-bento__ghost" aria-hidden="true">'+tx(b.absent)+'</p><p class="aq-method-bento__gapt">'+tx(b.intro||'')+'</p></li>':'';
- return sec('<div class="aq-method-bento"><div class="aq-method-bento__head">'+H+'</div><ol class="aq-method-bento__tiles" role="list">'+tiles+gap+'</ol></div>','aq-method-bento-sec')};
+ return sec('<div class="aq-method-bento'+(sc?' has-band':'')+'"><div class="aq-method-bento__head">'+H+'</div><ol class="aq-method-bento__tiles" role="list" data-pk-picker="chips" data-pk-bp="900" data-pk-open="0">'+tiles+gap+'</ol></div>','aq-method-bento-sec')};
 })();
 /* Look "module-plinth" -> ModulePlinth (design-system/components/ModulePlinth): an options block (as: "modules") with a
-   base, drawn as a set of modules standing on that base. On a navy band an isometric plinth (the base, b.base) carries
-   one block per option in a row, each fed by a riser from the loop that runs along the plinth's front (IsoKit
-   primitives on an iso sheet; the kit has no plain module block, so the blocks are drawn here from isoBoxD with a
-   front panel and a nameplate line). A numbered marker floats over each block; the options read as numbered cards
-   beside the drawing, each with its spot. Hovering or focusing a card lights its block and riser and lifts the block.
-   Fields, as options (modules): h, base, items [{t, d, spot, link}], fold, fold_noun (phones only).
-   Concept: sys-pw.4 (tactile objects you pick up) and STYLE-ATLAS hybrid 1 (figure plate with numbered parts). */
+   base, drawn as the options standing on that base. On a navy band one plinth (IsoKit) carries one module per option,
+   level, left to right; one header pipe runs along the plinth's front and a riser leaves it for every module. Each
+   module is drawn by its spot (storage-tank: two exchange vessels; ro-skid: an RO rack with its tank; loop: a tank,
+   its pump and a point of use on a loop; anything else: a plain equipment module). A numbered tag stands over each
+   module and the numbered caption cards sit under the drawing, one column per module. The base (b.base) is the
+   caption under the header. Pointing at or focusing a card lights its module and riser and lifts the module.
+   Pass 12 (concept 204, ind-personal-care.from-di): one plinth, real equipment, no blueprint sheet, no filler tile.
+   Phones: the header becomes a vertical line down the left; each option branches off it with its own small drawing
+   over its card; the fold applies on phones only, past b.fold.
+   Fields, as options (modules): h, base, items [{t, d, spot, link}], fold, fold_noun (phones only). */
 (function(){
-function mpScene(n,base){
- var gap=64,bw=40,bd=40,ph=12,W=n*gap+24,D=64,Hs=[50,40,58,36,46,42,54,38],py=D+10,pz=6,parts=[],marks=[];
- var plinth='<g class="aq-iso__part" data-iso="plinth"><path class="aq-iso__eq" d="'+isoBoxD([0,0,0],W,D,ph)+'"/>'
-  +'<path class="aq-iso__thin" d="'+isoPoly([[0,D,ph-4],[W,D,ph-4]])+'"/></g>';
- for(var i=0;i<n;i++){var x=16+i*gap,y=10,z=ph,h=Hs[i%Hs.length],id='m'+i,fy=y+bd;
-  var face=isoPoly([[x+6,fy,z+8],[x+bw-6,fy,z+8],[x+bw-6,fy,z+h-8],[x+6,fy,z+h-8]],1);
-  var plate=isoPoly([[x+10,fy,z+h-14],[x+bw-10,fy,z+h-14]]);
-  var top=isoPoly([[x+8,y+8,z+h],[x+bw-8,y+8,z+h],[x+bw-8,y+bd-8,z+h],[x+8,y+bd-8,z+h]],1);
-  parts.push('<g class="aq-iso__part aq-module-plinth__blk" data-iso="module" data-iso-id="'+id+'" data-k="'+i+'"><path class="aq-iso__eq" d="'+isoBoxD([x,y,z],bw,bd,h)+'"/>'
-   +'<path class="aq-iso__thin" d="'+face+'"/><path class="aq-iso__acc" d="'+plate+'"/><path class="aq-iso__thin" d="'+top+'"/></g>');
-  var riser=isoPipe([[x+bw/2,py,pz],[x+bw/2,py,z+16],[x+bw/2,fy,z+16]],{r:1.8,to:id,caps:false});
-  parts.push(riser);
-  var lp=isoP([x+bw/2,y+bd/2,z+h]);marks.push({k:i,p:[lp[0],lp[1]-26],s:lp});
- }
- var loop=isoPipe([[-34,py,pz],[W+34,py,pz]],{r:2.6,flanges:'ends',caps:true});
- var bl=isoP([W*0.3,py+44,0]);
- var inner=plinth+loop+parts.join('')+isoArrow([W+20,py,pz],'x')+marks.map(function(mk){return '<path class="aq-iso__leader-line" d="M'+isoT(mk.s)+'L'+isoT(mk.p)+'"/><circle class="aq-iso__leader-dot" cx="'+isoF(mk.s[0])+'" cy="'+isoF(mk.s[1])+'" r="1.6"/>'}).join('');
- var bx=isoBounds([[-40,0,0],[W+40,0,0],[-40,py+4,0],[W+40,py+4,0],[0,0,90],[W,0,90]],22),w=Math.round(bx.w),hh=Math.round(bx.h+10),org=[-bx.x,-bx.y+10];
- var labs=marks.map(function(mk){var a=isoPct(mk.p,w,hh,org);return '<span class="aq-module-plinth__mk" data-k="'+mk.k+'" style="left:'+a.left+';top:'+a.top+'">'+(mk.k<9?'0':'')+(mk.k+1)+'</span>'}).join('');
- var bp=isoPct(bl,w,hh,org);
- return '<div class="aq-iso-figure aq-module-plinth__fig" aria-hidden="true">'+isoSvg(w,hh,inner,'aq-iso--navy aq-module-plinth__svg',{origin:org,under:isoSheet(w,hh,{grid:'iso',m:6,band:0,gridStep:22})})+labs
-  +(base?'<span class="aq-module-plinth__base" style="left:'+bp.left+';top:'+bp.top+'">'+e(base)+'</span>':'')+'</div>'}
+var PH=10,HZ=5;
+function mod(spot,cx,cy,z){var k=1.6,X=function(d){return cx+d*k},Y=function(d){return cy+d*k},o='';
+ if(spot==='storage-tank')o=isoPart('filter',X(-14),Y(0),z,0.85*k,{bed:[]})+isoPart('filter',X(14),Y(4),z,0.85*k,{bed:[]});
+ else if(spot==='ro-skid')o=isoPart('ro',X(-34),Y(-8),z,0.44*k)+isoPart('tank',X(28),Y(2),z,0.6*k);
+ else if(spot==='loop'){var t=isoPart('tank',X(-22),Y(-2),z,0.58*k),p=isoPart('pump',X(6),Y(12),z,0.55*k),u=isoPart('outlet',X(34),Y(6),z,0.62*k);
+  o=t+p+isoPipe([[X(-10),Y(10),z+8*k],[X(0),Y(10),z+8*k]],{r:1.3*k,caps:false,flow:false})+isoPipe([[X(14),Y(12),z+14*k],[X(26),Y(12),z+14*k],[X(26),Y(6),z+22*k]],{r:1.3*k,caps:false,flow:false})+u}
+ else o='<path class="aq-iso__eq" d="'+isoBoxD([X(-20),Y(-20),z],40*k,40*k,46*k)+'"/><path class="aq-iso__thin" d="'+isoPoly([[X(-14),Y(20),z+8*k],[X(14),Y(20),z+8*k],[X(14),Y(20),z+38*k],[X(-14),Y(20),z+38*k]],1)+'"/>';
+ return o}
+function top(spot){return 1.6*(spot==='storage-tank'?66:spot==='ro-skid'?50:spot==='loop'?50:56)}
+/* The plinth runs along the screen: u steps along world (1,-1) (level on the drawing), v along (1,1) (toward the
+   viewer, straight down on the drawing), so one slab carries the modules side by side and the header runs level in
+   front of it; the modules themselves stay isometric. F(u, v, z) -> world point. */
+function F(u,v,z){return [u+v,-u+v,z]}
+function slab(u0,u1,V){return '<g class="aq-iso__part" data-iso="plinth"><path class="aq-iso__eq" d="'+isoPoly([F(u0,-V,PH),F(u1,-V,PH),F(u1,V,PH),F(u0,V,PH)],1)+isoPoly([F(u0,V,0),F(u1,V,0),F(u1,V,PH),F(u0,V,PH)],1)+'"/>'
+ +'<path class="aq-iso__thin" d="'+isoPoly([F(u0,V,PH-4),F(u1,V,PH-4)])+'"/></g>'}
+var STEP=132,VV=44,HV=VV+12;
+/* the whole set on one plinth (desktop) */
+function scene(I){var n=I.length,u0=-STEP*0.62,u1=(n-1)*STEP+STEP*0.62,o='',marks=[];
+ o+=slab(u0,u1,VV);
+ o+=isoPipe([F(u0-30,HV,HZ),F(u1+30,HV,HZ)],{r:2.6,flanges:'ends',caps:true});
+ I.forEach(function(it,i){var u=i*STEP,c=F(u,0,0),id='m'+i;
+  o+=isoPipe([F(u,HV,HZ),F(u,HV,PH+12),F(u,24,PH+12)],{r:1.8,to:id,caps:false,id:id});
+  o+='<g class="aq-module-plinth__blk" data-k="'+i+'">'+mod(it.spot||it.icon,c[0],c[1],PH).replace(/class="aq-iso__part"/g,'class="aq-iso__part" data-iso-id="'+id+'"')+'</g>';
+  marks.push({k:i,p:isoP(F(u,0,PH+top(it.spot||it.icon)+10))})});
+ o+=isoArrow(F(u1+16,HV,HZ),[1,-1,0]);
+ var bx=isoBounds([F(u0-36,HV,0),F(u1+36,HV,0),F(u0,0,128),F(u1,0,128),F(u0,HV+4,-6)],12),w=Math.round(bx.w),h=Math.round(bx.h),org=[-bx.x,-bx.y];
+ var tags=marks.map(function(mk){var a=isoPct(mk.p,w,h,org);return '<span class="aq-module-plinth__mk" data-k="'+mk.k+'" style="left:'+a.left+';top:'+a.top+'">'+(mk.k<9?'0':'')+(mk.k+1)+'</span>'}).join('');
+ return '<div class="aq-iso-figure aq-module-plinth__fig" aria-hidden="true">'+isoSvg(w,h,o,'aq-iso--navy aq-module-plinth__svg',{origin:org})+tags+'</div>'}
+/* one option alone on its piece of the plinth, with its riser (phones): the plinth cropped to the module plus a short
+   margin each side, and shallower than the desktop slab, so the module fills the drawing instead of an empty slab */
+var MU=56,MV=34,MH=MV+12;
+function mini(it,i){var c=F(0,0,0),o=slab(-MU,MU,MV)+isoPipe([F(-MU-8,MH,HZ),F(MU+8,MH,HZ)],{r:2.2,caps:false,flow:false})+isoPipe([F(0,MH,HZ),F(0,MH,PH+12),F(0,24,PH+12)],{r:1.8,caps:false,flow:false})+mod(it.spot||it.icon,c[0],c[1],PH);
+ var zt=PH+top(it.spot||it.icon)+10,bx=isoBounds([F(-MU-10,MH,0),F(MU+10,MH,0),F(-MU,-MV,zt),F(MU,-MV,zt),F(0,MH+4,-6)],6);
+ var hy=isoP(F(0,MH,HZ))[1]-bx.y;
+ return '<span class="aq-module-plinth__mini" style="--hy:'+(100*hy/bx.h).toFixed(1)+'%" aria-hidden="true">'+isoSvg(Math.round(bx.w),Math.round(bx.h),o,'aq-iso--navy',{origin:[-bx.x,-bx.y]})+'</span>'}
 LOOKS['module-plinth']=function(b,H){var I=b.items||[],n=I.length;
- var cards=I.map(function(it,i){var lk=it.link&&wp(it.link),sp=wSpot(it.spot||it.icon,'s','aq-module-plinth__spot');
-  return fli('<li class="aq-module-plinth__card" data-k="'+i+'"><span class="aq-module-plinth__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+sp
+ var cards=I.map(function(it,i){var lk=it.link&&wp(it.link);
+  return fli('<li class="aq-module-plinth__card" data-k="'+i+'">'+mini(it,i)+'<span class="aq-module-plinth__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
    +'<h3 class="aq-module-plinth__t">'+(lk?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t))+'</h3>'+(it.d?'<p class="aq-module-plinth__d">'+tx(it.d)+'</p>':'')+'</li>',b,i)}).join('');
- return sec(H+'<div class="aq-module-plinth">'+mpScene(n,b.base)+'<div class="aq-module-plinth__list">'+wFold(b,n,'<ol class="aq-module-plinth__cards">'+cards+'</ol>',b.fold_noun)+'</div></div>','aq-band--navy aq-module-plinth-sec')};
+ var base=b.base?'<p class="aq-module-plinth__base">'+tx(b.base)+'</p>':'';
+ return sec(H+'<div class="aq-module-plinth" style="--n:'+(n>4?3:n)+'">'+scene(I)+base+'<div class="aq-module-plinth__list">'+wFold(b,n,'<ol class="aq-module-plinth__cards">'+cards+'</ol>',b.fold_noun)+'</div></div>','aq-band--navy aq-module-plinth-sec')};
+/* pointing at or focusing a card lights its module and riser */
+function hot(w,k){[].forEach.call(w.querySelectorAll('[data-k]'),function(x){x.classList.toggle('is-hot',x.getAttribute('data-k')===k)});
+ [].forEach.call(w.querySelectorAll('.aq-module-plinth__fig [data-iso-id]'),function(p){p.classList.toggle('is-lit',k!=null&&p.getAttribute('data-iso-id')==='m'+k)})}
+if(typeof document!=='undefined'){
+ var over=function(ev){var t=ev.target.closest&&ev.target.closest('.aq-module-plinth__card');if(!t)return;hot(t.closest('.aq-module-plinth'),t.getAttribute('data-k'))};
+ var out=function(ev){var w=ev.target.closest&&ev.target.closest('.aq-module-plinth');if(w&&!w.contains(ev.relatedTarget))hot(w,null)};
+ document.addEventListener('mouseover',over);document.addEventListener('focusin',over);document.addEventListener('mouseout',out);document.addEventListener('focusout',out)}
+})();
+/* Look "multiport-router" -> MultiportRouter (design-system/components/MultiportRouter): a router table drawn as a
+   multiport valve in plan, after pass 12 concept 196 (ind-personal-care.start). The valve sits in the middle with one
+   numbered port per situation, ports alternating left and right; each port is piped (a twin-wall pipe) to its route
+   card, so the cards stand in two columns round the valve. A card carries the number, the situation as its title, and
+   the other columns under their own labels (what you need, the start-with link). Choosing a card turns the valve's
+   lever to its port, fills that pipe with water and lights the card steel blue (flow); every card stays readable.
+   Default: the first route. Phones (PhoneKit chips, one column): a small valve on a riser heads the block, the
+   situations hang off the riser as 48 px chips, the chosen chip's card opens under them; the lever follows the chip.
+   Without script every card shows, titled, under the valve.
+   Fields (a table block, as: "router"): h, intro, cols [situation, need, ...the rest], rows [[situation, need, ...]];
+   cells may be {t, link, intent} as in every table. No new fields. */
+(function(){
+var K='aq-multiport-router',N=0;
+function f1(n){return Math.round(n*10)/10}
+function nn(i){return (i<9?'0':'')+(i+1)}
+/* port i: even on the left, odd on the right; rows spread over the body's height */
+function port(i,n){var m=Math.ceil(n/2),k=Math.floor(i/2),s=i%2?1:-1,y=m>1?-46+92*k/(m-1):0;return {s:s,y:y,x:s*f1(Math.sqrt(100*100-y*y))}}
+function ang(i,n){var p=port(i,n);return f1(Math.atan2(p.y,p.s*100)*180/Math.PI)}
+function valve(n){var o='',i;
+ /* bonnet and foot: the valve stands on its supply riser */
+ o+='<path class="'+K+'__foot" d="M-26 96V134H26V96"/><path class="'+K+'__flange" d="M-40 134H40V146H-40Z"/>'
+  +'<path class="'+K+'__bonnet" d="M-30 -96V-124H30V-96"/><path class="'+K+'__flange" d="M-40 -136H40V-124H-40Z"/>';
+ for(i=0;i<n;i++){var p=port(i,n),x0=p.x-p.s*6,x1=p.s*150,on=i?'':' is-on';
+  o+='<path class="'+K+'__boss" d="M'+x0+' '+f1(p.y-13)+'H'+x1+'V'+f1(p.y+13)+'H'+x0+'Z"/>'
+   +'<path class="'+K+'__flange" d="M'+f1(x1-p.s*10)+' '+f1(p.y-19)+'H'+x1+'V'+f1(p.y+19)+'H'+f1(x1-p.s*10)+'Z"/>'
+   +'<text class="'+K+'__pn'+on+'" data-i="'+i+'" x="'+f1((p.x+x1)/2-p.s*4)+'" y="'+f1(p.y<0?p.y-22:p.y+34)+'">'+nn(i)+'</text>'}
+ o+='<circle class="'+K+'__body" cx="0" cy="0" r="100"/><circle class="'+K+'__ring" cx="0" cy="0" r="80"/>';
+ for(i=0;i<n;i++){var a=ang(i,n)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
+  o+='<path class="'+K+'__mark'+(i?'':' is-on')+'" data-i="'+i+'" d="M'+f1(66*c)+' '+f1(66*s)+'L'+f1(80*c)+' '+f1(80*s)+'"/>'}
+ o+='<circle class="'+K+'__ring '+K+'__ring--in" cx="0" cy="0" r="40"/>'
+  +'<g class="'+K+'__lever" style="--a:'+ang(0,n)+'deg"><path class="'+K+'__arm" d="M-10 -8H76Q90 -8 90 0Q90 8 76 8H-10Q-22 8 -22 0Q-22 -8 -10 -8Z"/>'
+  +'<path class="'+K+'__grip" d="M58 -8V8M66 -8V8M74 -8V8"/><circle class="'+K+'__hub" cx="0" cy="0" r="18"/><circle class="'+K+'__nut" cx="0" cy="0" r="6"/></g>';
+ return '<svg class="'+K+'__valve" viewBox="-160 -160 320 320" aria-hidden="true" focusable="false">'+o+'</svg>'}
+LOOKS['multiport-router']=function(b,H){
+ var C=b.cols||[],R=b.rows||[],n=R.length,k=++N,m=Math.ceil(n/2);
+ var items=R.map(function(r,i){var on=i===0,p=port(i,n);
+  var rest=r.slice(1).map(function(c,j){var go=c&&typeof c==='object'&&c.link;return '<div class="'+K+'__kv'+(go?' is-go':'')+'"><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('');
+  return '<li class="'+K+'__route'+(on?' is-on':'')+'" data-pk-item="'+i+'" data-i="'+i+'" style="--c:'+(p.s<0?1:3)+';--r:'+(Math.floor(i/2)+1)+'">'
+   +'<button type="button" class="'+K+'__chip" data-pk-head><span class="'+K+'__chipn" aria-hidden="true">'+nn(i)+'</span><span class="'+K+'__chipt">'+tcell(r[0])+'</span></button>'
+   +'<article class="'+K+'__card'+(on?' is-on':'')+'" data-pk-body data-i="'+i+'">'
+    +'<p class="'+K+'__no" aria-hidden="true">'+nn(i)+' /</p>'
+    +'<h3 class="'+K+'__sit" data-pk-desk><button type="button" class="'+K+'__pick" data-i="'+i+'" aria-pressed="'+(on?'true':'false')+'">'+tcell(r[0])+'</button></h3>'
+    +(rest?'<dl class="'+K+'__dl">'+rest+'</dl>':'')+'</article></li>'}).join('');
+ return sec(H+'<div class="'+K+'" id="'+K+'-'+k+'" style="--n:'+n+';--m:'+m+'">'
+  +'<div class="'+K+'__plant" aria-hidden="true">'+valve(n)+'</div><svg class="'+K+'__pipes" aria-hidden="true" focusable="false"></svg>'
+  +'<ol class="'+K+'__routes" data-pk-picker="chips" data-pk-open="0">'+items+'</ol></div>',K+'-sec')};
+/* choose a route: the lever turns to its port, its pipe fills, its card lights; every card stays readable */
+function pick(w,i){if(!w)return;var n=w.querySelectorAll('.'+K+'__route').length;
+ [].forEach.call(w.querySelectorAll('[data-i]'),function(x){var on=+x.getAttribute('data-i')===i;x.classList.toggle('is-on',on);if(x.tagName==='BUTTON')x.setAttribute('aria-pressed',on?'true':'false')});
+ var lv=w.querySelector('.'+K+'__lever');if(lv)lv.style.setProperty('--a',ang(i,n)+'deg')}
+/* the pipes: from each port's flange, out level, one rounded jog, level again into the card's inner edge at its
+   title line; drawn in the block's own pixels, redrawn on resize */
+function layout(w){var sv=w.querySelector('.'+K+'__pipes'),vs=w.querySelector('.'+K+'__valve');if(!sv||!vs||!sv.getClientRects().length)return;
+ var wb=w.getBoundingClientRect(),vr=vs.getBoundingClientRect();if(!vr.width)return;
+ var s=vr.width/320,cx=vr.left-wb.left+vr.width/2,cy=vr.top-wb.top+vr.height/2,R=w.querySelectorAll('.'+K+'__card'),n=R.length,o='',i;
+ for(i=0;i<n;i++){var c=R[i],cr=c.getBoundingClientRect();if(!cr.width)continue;var p=port(i,n),ax=cx+p.s*150*s,ay=cy+p.y*s;
+  var bx=p.s<0?cr.right-wb.left:cr.left-wb.left,by=cr.top-wb.top+Math.min(cr.height/2,56),mx=(ax+bx)/2,dy=by-ay,r=Math.min(14,Math.abs(dy)/2,Math.abs(bx-ax)/4),sg=dy<0?-1:1,sx=p.s<0?-1:1,d;
+  if(Math.abs(dy)<1)d='M'+f1(ax)+' '+f1(ay)+'H'+f1(bx);
+  else d='M'+f1(ax)+' '+f1(ay)+'H'+f1(mx-sx*r)+'Q'+f1(mx)+' '+f1(ay)+' '+f1(mx)+' '+f1(ay+sg*r)+'V'+f1(by-sg*r)+'Q'+f1(mx)+' '+f1(by)+' '+f1(mx+sx*r)+' '+f1(by)+'H'+f1(bx);
+  var on=c.classList.contains('is-on')?' is-on':'';
+  o+='<g class="'+K+'__pipe'+on+'" data-i="'+i+'"><path class="'+K+'__wall" d="'+d+'"/><path class="'+K+'__bore" d="'+d+'"/><path class="'+K+'__water" d="'+d+'"/></g>'}
+ sv.setAttribute('viewBox','0 0 '+f1(wb.width)+' '+f1(wb.height));sv.innerHTML=o}
+function scan(){[].forEach.call(document.querySelectorAll('.'+K),function(w){if(!w._mpRO&&typeof ResizeObserver!=='undefined'){w._mpRO=new ResizeObserver(function(){layout(w)});w._mpRO.observe(w)}layout(w)})}
+var queued=0;function soon(){if(queued)return;queued=1;requestAnimationFrame(function(){queued=0;scan()})}
+if(typeof window!=='undefined')window.AQmultiport={layout:layout,scan:scan,pick:pick};
+if(typeof document!=='undefined'){
+ if(typeof MutationObserver!=='undefined')new MutationObserver(function(){var x=document.querySelectorAll('.'+K+':not([data-mp])');if(x.length){[].forEach.call(x,function(w){w.setAttribute('data-mp','')});soon()}}).observe(document.documentElement,{childList:true,subtree:true});
+ if(document.readyState!=='loading')soon();else document.addEventListener('DOMContentLoaded',soon);
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(soon);
+ /* desktop: a click anywhere on a card (not its link) chooses it */
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__card');if(!t||ev.target.closest('a'))return;var w=t.closest('.'+K);if(w.querySelector('[data-pk-on]'))return;pick(w,+t.getAttribute('data-i'))});
+ /* phones: the chip PhoneKit opened is the chosen route */
+ document.addEventListener('pk:change',function(ev){var r=ev.target,w=r&&r.closest&&r.closest('.'+K);if(!w)return;var d=ev.detail||{};if(d.on&&d.index>=0)pick(w,d.index)});
+ document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__card');if(!t)return;var w=t.closest('.'+K),i=t.getAttribute('data-i');[].forEach.call(w.querySelectorAll('.'+K+'__pipe'),function(p){p.classList.toggle('is-hint',p.getAttribute('data-i')===i)})});
+ document.addEventListener('mouseout',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__card');if(!t)return;[].forEach.call(t.closest('.'+K).querySelectorAll('.'+K+'__pipe.is-hint'),function(p){p.classList.remove('is-hint')})})}
 })();
 /* Look "ncr-tiles" -> NcrTiles (design-system/components/NcrTiles): how a defect is held and closed, as a bento of
    navy and limestone tiles, each led by a huge light slash numeral ("01/"). The first step (the hold) takes the
@@ -3965,7 +4961,9 @@ LOOKS['numeral-index']=function(b,H){var C=b.cols||[],R=b.rows||[];
    the blueprint tile. Concept: research/pass9b/concepts/sys-monitoring.4.png.
    Fields: h, intro (optional; printed under the title in the top cell through wSecHead, as option-taps does), items
    [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
-   option sets; none: no part lights). Phones: the field shortens to two rows over the cells, which stack. */
+   option sets; none: no part lights). Phones: the field shortens to a full-width 4 x 2 band (the blueprint tile
+   centred, a navy and limestone square at each side, set as a true checker through data-r / data-c), then the
+   cells stack with a 44 px numeral (pass 12). */
 var OC_PAT=['n','l','n','s','s','b','b','n','l','b','b','l','n','s','n','l'];
 function ocPlate(){
  var p=function(k,inner){return '<g class="aq-option-checker__part" data-part="'+k+'">'+inner+'</g>'};
@@ -3982,7 +4980,7 @@ LOOKS['option-checker']=function(b,H){
  var I=b.items||[];if(!I.length)return BLOCKS.options(b,H);
  var tiles=OC_PAT.map(function(k,j){var r=Math.floor(j/4)+1,c=j%4+1;if(k==='b'&&(j!==5))return '';
   return k==='b'?'<div class="aq-option-checker__tile aq-option-checker__tile--b" data-r="2" style="grid-row:2/span 2;grid-column:2/span 2">'+ocPlate()+'</div>'
-   :'<div class="aq-option-checker__tile aq-option-checker__tile--'+k+'" data-r="'+r+'" style="grid-row:'+r+';grid-column:'+c+'"></div>'}).join('');
+   :'<div class="aq-option-checker__tile aq-option-checker__tile--'+k+'" data-r="'+r+'" data-c="'+c+'" style="grid-row:'+r+';grid-column:'+c+'"></div>'}).join('');
  var top=I.length>3?2:I.length,cells=I.map(function(it,i){
   var t=it.link&&wp(it.link)?wlink(it.link,it.t,it.intent).replace('</a>',' <span class="aq-option-checker__arrow" aria-hidden="true">&rarr;</span></a>'):tx(it.t);
   return '<li class="aq-option-checker__cell'+(i<top?' aq-option-checker__cell--wide':'')+'"'+(it.part?' data-part="'+e(it.part)+'"':'')+'>'
@@ -4004,19 +5002,27 @@ LOOKS['option-checker']=function(b,H){
    out on a limestone table, the section heading on a paper label card. Each option is a shipping tag on a string
    (eyelet, string, the option's line glyph as a round stamp, its number in mono), a round tag, or a manila folder lying
    on the navy strip at the right. Hovering a tag picks it up (it straightens and lifts). Two sample vials lie between
-   them (decoration). The fold (fold, fold_noun) applies on phones only, where the tags stack in one column.
+   them (decoration). The fold (fold, fold_noun) applies on phones only, where the tags stack in one column, and only
+   to more than five options.
    Fields (an options block): h, intro, items [{t, d, spot | icon, shape}], spot (base glyph), base, fold, fold_noun.
-   shape: "tag" (default), "round" or "folder"; folders sit on the navy strip (desktop). */
+   shape: "tag" (default), "round" or "folder"; folders sit on the navy strip (desktop). With no folder the strip is
+   left out (.is-flat) and the tags fill three columns. */
 var OT_TILT=[-3.5,2.5,-1.5,2,-2.5,1.5];
 function otVial(cls){return '<svg class="aq-option-tags__vial '+cls+'" viewBox="0 0 40 120" aria-hidden="true" focusable="false">'
  +'<rect class="aq-option-tags__cap" x="11" y="2" width="18" height="14"/><path d="M13 16v8h14v-8"/><path d="M8 28q0-4 4-4h16q4 0 4 4v80q0 10-12 10t-12-10z"/>'
  +'<path class="aq-option-tags__liquid" d="M8 70h24"/><rect class="aq-option-tags__lab" x="10" y="38" width="20" height="22"/><path class="aq-option-tags__hair" d="M13 45h14M13 50h10"/></svg>'}
 LOOKS['option-tags']=function(b,H){
+ /* pass 12 (F7): five options or fewer are not folded on phones (hiding one or two behind a button costs more than it
+    saves); the fold stays for longer lists */
+ if((b.items||[]).length<=5&&b.fold)b=Object.assign({},b,{fold:0});
  var I=b.items||[],pg=wp(WP),base=isVig(b.spot)?wSpot(b.spot,'','aq-spot--muted aq-option-tags__base-ic'):'';
  var label='<div class="aq-option-tags__label">'+H+'<p class="aq-option-tags__base">'+base+'<span>'+tx(b.base||'Base skid')+(pg&&pg.nav_label?' · '+tx(pg.nav_label):'')+'</span></p></div>';
  var L=1,R=0;/* desktop cells: the label holds column 1 row 1; tags fill columns 1-2 in reading order, folders column 3 */
+ /* pass 12: with no folder the navy strip would stand empty, so it is not drawn (.is-flat) and the tags use all three
+    columns */
+ var flat=!I.some(function(it){return it.shape==='folder'}),K=flat?3:2;
  var tags=I.map(function(it,i){var sh=it.shape==='round'||it.shape==='folder'?it.shape:'tag',g=wSpot(it.spot||it.icon,'','aq-option-tags__glyph'),lk=it.link&&wp(it.link),cell;
-  if(sh==='folder'){R++;cell=[3,R]}else{cell=[L%2+1,Math.floor(L/2)+1];L++}
+  if(sh==='folder'){R++;cell=[3,R]}else{cell=[L%K+1,Math.floor(L/K)+1];L++}
   var str=sh==='folder'?'':'<svg class="aq-option-tags__string" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="'+(sh==='round'?'M50 60C46 40 58 22 50 0':'M100 30C70 34 60 8 30 18S8 50 0 44')+'"/></svg>';
   return fli('<li class="aq-option-tags__item aq-option-tags__item--'+sh+'" style="--r:'+(sh==='round'?0:OT_TILT[i%OT_TILT.length])+'deg;--c:'+cell[0]+';--rw:'+cell[1]+'">'+str
    +'<div class="aq-option-tags__tag">'+(sh==='folder'?'':'<span class="aq-option-tags__eyelet" aria-hidden="true"></span>')
@@ -4024,7 +5030,7 @@ LOOKS['option-tags']=function(b,H){
    +'<h3 class="aq-option-tags__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-option-tags__d">'+tx(it.d)+'</p>':'')
    +'<span class="aq-option-tags__foot" aria-hidden="true">'+(g?'<span class="aq-option-tags__stamp">'+g+'</span>':'')+'<span class="aq-option-tags__no">'+(i<9?'0':'')+(i+1)+'</span></span>'
    +(lk?'</a>':'</div>')+'</div></li>',b,i)}).join('');
- var inner='<div class="aq-option-tags">'+label+'<ol class="aq-option-tags__list">'+tags+'</ol>'+otVial('aq-option-tags__vial--a')+otVial('aq-option-tags__vial--b')+'</div>';
+ var inner='<div class="aq-option-tags'+(flat?' is-flat':'')+'">'+label+'<ol class="aq-option-tags__list">'+tags+'</ol>'+otVial('aq-option-tags__vial--a')+otVial('aq-option-tags__vial--b')+'</div>';
  return sec(wFold(b,I.length,inner,b.fold_noun||'options'),'aq-band--limestone aq-option-tags-sec')};
 /* Look "option-taps" -> OptionTaps (design-system/components/OptionTaps): options drawn where they would join the
    train, as one limestone drawing sheet (pass 9b concept sys-pretreatment.5: sheet border and title block, a huge
@@ -4039,21 +5045,20 @@ LOOKS['option-tags']=function(b,H){
    New optional fields: train: the standard train left to right (part: an IsoKit kind, label: a short drawing label);
    per item: at (position along the train, 0 = first part, fractions between), part (the IsoKit kind drawn dashed;
    default filter), row ("back" or "front", default alternating).
-   Phones: the sheet keeps its border; the drawing (pins keep the pairing), then the notes, each with its own small
-   dashed part. */
+   Phones (pass 12, S9): the sheet keeps its border and title block; the whole-train overview (too small to read at
+   phone width) gives way to a crop of the train at each option's tap point, set over its note: the trunk, the
+   standard parts in a column-wide window (the nearest with its drawing label), the dashed tee and part; the number
+   tag sits beside the note title. Tablets (600-860 px): the notes two a row. */
 (function(){
 var K='aq-option-taps',S=230;
-/* the card's own drawing of its dashed part (phones, where the sheet is small) */
-function mini(it){var pt=isoPart(it.part||'filter',0,0,0,1,{cls:K+'__ghost',r:it.r,h:it.h}),bx=isoBounds([[-40,-40,0],[40,40,0],[-40,40,90],[40,-40,90]],4);
- return isoSvg(Math.round(bx.w),Math.round(bx.h),pt,'aq-iso--limestone '+K+'__mini',{origin:[-bx.x,-bx.y]})}
 function pos(j,dy){return [j*S/2,-j*S/2+(dy||0),0]}
 LOOKS['option-taps']=function(b,H){
- var T=b.train||[],I=b.items||[],sc=1.7,back='',main='',front='',labels=[],marks=[];
+ var T=b.train||[],I=b.items||[],sc=1.7,back='',main='',front='',labels=[],marks=[],tp=[],crops=[];
  var line=function(j){var p=pos(j,46);return [p[0],p[1],14]};
  var j0=-0.55,j1=Math.max(T.length-1,0)+0.5;
  /* the standard train */
  T.forEach(function(t,j){var p=pos(j),pt=isoPart(t.part||'filter',p[0]+(t.part==='ro'?-50:0),p[1]+(t.part==='ro'?-6:0),0,t.part==='ro'?1.2:sc,{id:'t'+j,r:t.r,h:t.h});
-  main+=pt;labels.push({at:pt.at,t:t.label,dy:t.ly})});
+  main+=pt;tp.push(pt);labels.push({at:pt.at,t:t.label,dy:t.ly})});
  var trunk=isoPipe([line(j0),line(j1)],{r:4,caps:true,flanges:'ends',to:'t0'});
  /* the options: dashed parts on dashed tees */
  I.forEach(function(it,i){var row=it.row||(i%2?'front':'back'),j=it.at!=null?+it.at:i,d=row==='back'?-95:95,p=pos(j);p=[p[0]+d,p[1]+d,0];
@@ -4061,7 +5066,32 @@ LOOKS['option-taps']=function(b,H){
   var a=line(j),q=[p[0],p[1]+(row==='back'?20:-20),14];
   var tee=isoPipe([a,[q[0],a[1],14],q],{r:3,flow:false,caps:'end',cls:K+'__tee',id:'tee'+i});
   if(row==='back')back+=tee+pt;else front+=tee+pt;
-  marks.push({at:pt.at,i:i})});
+  marks.push({at:pt.at,i:i});
+  /* phone crop (pass 12, S9): a strip of the train as wide as the column, at the option's tap point: the trunk edge to
+     edge, the standard parts inside the window, the dashed tee and part. The nearest standard part carries its drawing
+     label, under it when the option stands behind the train (the option takes the space above), over it when in front.
+     A part on legs (the tank): the tee rises into its foot, so it never ends in the open between the legs. */
+  var lo=Math.max(0,Math.floor(j)),hi=Math.min(T.length-1,Math.ceil(j)),ks=[];for(var k=lo;k<=hi;k++)if(tp[k])ks.push(k);if(!ks.length&&tp.length)ks=[Math.min(tp.length-1,Math.max(0,Math.round(j)))];
+  var teeC=(it.part==='tank')?isoPipe([a,[q[0],a[1],14],q,[q[0],q[1],32]],{r:3,flow:false,caps:'end',cls:K+'__tee',id:'tee'+i}):tee;
+  var box=function(k){var c=pos(k);return [[c[0]-44,c[1]-44,0],[c[0]+44,c[1]+44,0],[c[0]-44,c[1]+44,170],[c[0]+44,c[1]-44,170]]};
+  var pts=[line(j-0.75),line(j+0.75),[p[0]-34,p[1]-34,0],[p[0]+34,p[1]+34,0],[p[0]-34,p[1]+34,150],[p[0]+34,p[1]-34,150]];
+  ks.forEach(function(k){pts=pts.concat(box(k))});
+  var under=row==='back',kn=Math.min(T.length-1,Math.max(0,Math.round(j))),lk=ks.filter(function(k){return k===kn||ks.length===1});
+  var la=lk.map(function(k){var c=isoP(pos(k));return {k:k,q:under?[c[0],c[1]+36+36]:[labels[k].at[0],labels[k].at[1]-14]}});
+  var bx=isoBounds(pts,10),foot=function(b){var y=b.y+b.h;la.forEach(function(l){y=Math.max(y,l.q[1]+6)});return y};
+  /* the window: twice as wide as it is tall (a phone column at about 140 px), slid along the train so it never shows
+     paper past the train's ends; the neighbouring parts it takes in are cut by its edge, like a camera crop */
+  var Wt=Math.max(bx.w,(foot(bx)-bx.y)*2.1),cx=bx.x+bx.w/2,xL=cx-Wt/2,xR=cx+Wt/2,HX=82,nb=[];
+  var eL=Math.min(isoP(line(j0))[0]-10,-HX-10,bx.x),eR=Math.max(isoP(line(j1))[0]+10,isoP(pos(T.length-1))[0]+HX+10,bx.x+bx.w);
+  if(eR-eL<=Wt){xL=(eL+eR-Wt)/2;xR=xL+Wt}else if(xL<eL){xR+=eL-xL;xL=eL}else if(xR>eR){xL-=xR-eR;xR=eR}
+  T.forEach(function(t,k){if(ks.indexOf(k)>=0||!tp[k])return;var sx=isoP(pos(k))[0];if(sx+HX>xL&&sx-HX<xR){nb.push(k);pts=pts.concat(box(k))}});
+  var vb=isoBounds(pts,10),yT=vb.y,yB=foot(vb),cw=Math.round(xR-xL),ch=Math.round(yB-yT),corg=[-xL,-yT];
+  var tAt=function(x){return (x/ISO_C+46)/230},tA=Math.max(j0,tAt(xL)-0.02),tB=Math.min(j1,tAt(xR)+0.02);
+  var segC=isoPipe([line(tA),line(tB)],{r:4,caps:tA===j0&&tB===j1?true:tA===j0?'start':tB===j1?'end':false,flanges:false});
+  var std=ks.concat(nb).sort(function(x,y){return x-y}).map(function(k){return tp[k]}).join('');
+  var csvg=isoSvg(cw,ch,row==='back'?teeC+pt+segC+std:segC+std+teeC+pt,'aq-iso--limestone '+K+'__crop-svg',{origin:corg});
+  var clab=la.map(function(l){var q=isoPct(l.q,cw,ch,corg);return '<span class="'+K+'__clab" style="left:'+q.left+';top:'+q.top+'">'+tx(labels[l.k].t||'')+'</span>'}).join('');
+  crops[i]='<span class="'+K+'__crop" aria-hidden="true" style="aspect-ratio:'+cw+' / '+ch+'">'+csvg+clab+'</span>'});
  var inner=back+trunk+main+isoArrow(line(j0+0.25),[1,-1,0],{size:8})+isoArrow(line(j1-0.1),[1,-1,0],{size:8})+front;
  var Wd=1180,Hd=500,org=[150,310];
  var svg=isoSvg(Wd,Hd,inner,'aq-iso--limestone '+K+'__svg',{origin:org});
@@ -4070,8 +5100,8 @@ LOOKS['option-taps']=function(b,H){
  var mk=marks.map(function(m){return '<span class="'+K+'__mark" data-i="'+m.i+'" aria-hidden="true" style="'+pc(m.at,-22)+'">'+(m.i<9?'0':'')+(m.i+1)+'</span>'}).join('');
  var pg=wp(WP),head=wSecHead({eyebrow:pg&&pg.nav_label,h:b.h,intro:b.intro});
  var notes=I.map(function(it,i){var no=(i<9?'0':'')+(i+1);return fli('<li class="'+K+'__card" data-i="'+i+'">',b,i)
-  +'<p class="'+K+'__no"><button type="button" class="'+K+'__pin" data-i="'+i+'" aria-pressed="false" aria-label="'+no+': show on the drawing">'+no+'</button></p>'
-  +mini(it)+'<h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+  +'<p class="'+K+'__no"><button type="button" class="'+K+'__pin" data-i="'+i+'" aria-pressed="false" aria-label="'+no+': show on the drawing">'+no+'</button><span class="'+K+'__nop">'+no+'</span></p>'
+  +(crops[i]||'')+'<h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
  var fig='<div class="'+K+'__fig"><div class="'+K+'__cam">'+svg+lab+mk+'</div></div>';
  var block='<div class="'+K+'__block" aria-hidden="true"><span>Aquemi</span><span>'+tx((pg&&pg.nav_label)||'')+'</span><span>'+tx(b.h||'')+'</span></div>';
  var inner='<div class="'+K+'" style="--n:'+I.length+'"><div class="'+K+'__main">'+head+fig+'</div>'
@@ -4214,7 +5244,9 @@ if(typeof document!=='undefined'&&document.addEventListener)document.addEventLis
    symbol; rows whose next cell links the same page are tied by a header line (junction dots where they join, a line
    break where a header crosses a run it does not join), so the shared destinations read as converging pipework.
    Fields: cols (three labels), rows ([situation, system, start]; each cell a string or {t, link, intent}), nav (drawing
-   caption). Phones: each route runs down as a vertical pipe, situation over system over start, labels shown. */
+   caption). Phones (pass 12, PhoneKit accordion): six tap rows (path number, situation, chevron; 56 px or more), one
+   open at a time; the open row draws one short horizontal pipe, System through its valve to Start with (the start box
+   is the link, 44 px or more). Without script: each route runs down as a vertical pipe, labels shown. */
 LOOKS['pid-routes']=(function(){
  var KINDS=['gate','globe','diaphragm','check','ball'],uid=0;
  function key(c){return c&&typeof c==='object'?(c.link?wsplit(c.link)[0]:String(c.t||'')):String(c||'')}
@@ -4250,18 +5282,19 @@ LOOKS['pid-routes']=(function(){
   function node(c,i,j){return '<div class="aq-pid-routes__node aq-pid-routes__node--'+(j===1?'sys':'go')+'" data-r="'+i+'"><div class="aq-pid-routes__box">'
    +'<p class="aq-pid-routes__k">'+tx(C[j]||'')+'</p><p class="aq-pid-routes__v">'+tcell(c)+'</p></div></div>'}
   var rows=R.map(function(r,i){var s=r[0]&&typeof r[0]==='object'?r[0].t:r[0];
-   return '<li class="aq-pid-routes__route" role="listitem">'
-    +'<div class="aq-pid-routes__sit" data-r="'+i+'"><div class="aq-pid-routes__box"><p class="aq-pid-routes__tag" aria-hidden="true"><span>Path '+(i<9?'0':'')+(i+1)+'</span></p>'
+   return '<li class="aq-pid-routes__route" role="listitem" data-pk-item="'+i+'">'
+    +'<button type="button" class="aq-pid-routes__tap" data-pk-head><span class="aq-pid-routes__tn" aria-hidden="true">Path '+(i<9?'0':'')+(i+1)+'</span><span class="aq-pid-routes__tt">'+tx(s)+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button>'
+    +'<div class="aq-pid-routes__sit" data-r="'+i+'" data-pk-desk><div class="aq-pid-routes__box"><p class="aq-pid-routes__tag" aria-hidden="true"><span>Path '+(i<9?'0':'')+(i+1)+'</span></p>'
     +'<p class="aq-pid-routes__k aq-pid-routes__k--sit">'+tx(C[0]||'')+'</p><h3 class="aq-pid-routes__t">'+tx(s)+'</h3></div></div>'
-    +run(i,'a',tA[i],KINDS[i%KINDS.length],!tA[i].length&&i%2===0)+node(r[1],i,1)
-    +run(i,'b',tB[i],KINDS[(i+2)%KINDS.length],false)+node(r[2],i,2)+'</li>'}).join('');
+    +'<div class="aq-pid-routes__path" data-pk-body>'+run(i,'a',tA[i],KINDS[i%KINDS.length],!tA[i].length&&i%2===0)+node(r[1],i,1)
+    +run(i,'b',tB[i],KINDS[(i+2)%KINDS.length],false)+node(r[2],i,2)+'</div></li>'}).join('');
   var ruler='<svg class="aq-pid-routes__ruler" aria-hidden="true" focusable="false"><defs><pattern id="pidr-'+k+'" width="64" height="10" patternUnits="userSpaceOnUse">'
    +'<path d="M0.5 0V10 M16.5 6V10 M32.5 3V10 M48.5 6V10"/></pattern></defs><rect width="100%" height="10" fill="url(#pidr-'+k+')"/></svg>';
   var heads='<div class="aq-pid-routes__heads" aria-hidden="true">'+[0,1,2].map(function(j){return '<p class="aq-pid-routes__head"><span>Column 0'+(j+1)+'</span>'+tx(C[j]||'')+'</p>'}).join('<span></span>')+'</div>';
   var cap='<p class="aq-pid-routes__cap" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span><span>P&amp;ID</span></p>';
   return sec(H+'<div class="aq-pid-routes" style="--n:'+R.length+'">'
    +'<span class="aq-pid-routes__mark aq-pid-routes__mark--tl" aria-hidden="true"></span><span class="aq-pid-routes__mark aq-pid-routes__mark--tr" aria-hidden="true"></span>'
-   +heads+ruler+'<ol class="aq-pid-routes__list" role="list">'+rows+'</ol>'+ruler.replace('pidr-'+k,'pidr-'+k+'b').replace('pidr-'+k+')','pidr-'+k+'b)')+cap+'</div>','aq-band--navy aq-pid-routes-band')}
+   +heads+ruler+'<ol class="aq-pid-routes__list" role="list" data-pk-picker="accordion" data-pk-open="0">'+rows+'</ol>'+ruler.replace('pidr-'+k,'pidr-'+k+'b').replace('pidr-'+k+')','pidr-'+k+'b)')+cap+'</div>','aq-band--navy aq-pid-routes-band')}
 })();
 /* Hover or focus on any part of a route lights its whole run (and the header lines it shares); the rest dims */
 (function(){
@@ -4282,7 +5315,9 @@ LOOKS['pid-routes']=(function(){
    Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
    fold, fold_noun. New optional field: pieces, one per row, naming the piece drawn for it: vessel, panel, pipe,
    pellets, weld (each at most once; a row without one has no piece). The fold applies on phones only (desktop shows
-   every block beside the whole collage). Phones: the board gives way to each block led by its own piece. */
+   every block beside the whole collage). Phones (pass 12): the board becomes a full-width 3 x 2 band of square tiles
+   under the heading (each piece cropped to its middle, numbered as its row; a tap brings its row into view, opening
+   the fold if needed); the blocks run in one column with no stair indent. */
 var PC_SLOT={vessel:[0,0,1,2],pipe:[1,1,2,1],pellets:[0,2,1,1],panel:[2,2,1,2],weld:[0,3,2,1]};
 var PC_FILL=[['arc',1,0],['quarter',2,0],['diag',1,2]];
 function pcPiece(k){var r=function(x,y,w,h,c){return '<rect data-f="'+c+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'},
@@ -4308,15 +5343,26 @@ LOOKS['pipe-collage']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.pieces||[]
  R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&!used[k]){used[k]=1;cells+=pcG(k,0,0,(i<9?'0':'')+(i+1),i)}});
  Object.keys(PC_SLOT).forEach(function(k){if(!used[k])cells+=pcG(k==='weld'?'arc':k==='pellets'?'quarter':'diag',PC_SLOT[k][0],PC_SLOT[k][1])});
  var board='<div class="aq-pipe-collage__board" data-theme="light" aria-hidden="true"><svg viewBox="0 0 300 400" focusable="false">'+cells+'</svg></div>';
+ /* the phone band: six square tiles, 3 x 2, each piece cropped to its middle (numbered as its row) among fillers;
+    a tap on a piece opens the fold if its row is folded and brings the row into view (S7) */
+ var PP=[];R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&used[k]&&PP.every(function(x){return x.k!==k}))PP.push({k:k,i:i})});PP=PP.slice(0,6);
+ var SL=[0,4,2,3,1,5],T=[null,null,null,null,null,null],FL=['arc','quarter','diag','arc','quarter','diag'],fi=0;
+ PP.forEach(function(x,j){T[SL[j]]=x});
+ var band='<div class="aq-pipe-collage__band" data-theme="light" aria-hidden="true">'+T.map(function(x){
+  if(!x){var f=FL[fi++];return '<span class="aq-pipe-collage__tile"><svg viewBox="0 0 100 100" focusable="false">'+pcPiece(f)+'</svg></span>'}
+  var S=PC_SLOT[x.k];return '<span class="aq-pipe-collage__tile is-piece" data-go="'+x.i+'"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" preserveAspectRatio="xMidYMid slice" focusable="false">'+pcPiece(x.k)+'</svg><span class="aq-pipe-collage__tn">'+(x.i<9?'0':'')+(x.i+1)+'</span></span>'}).join('')+'</div>';
  var blocks='<ol class="aq-pipe-collage__blocks" role="list">'+R.map(function(r,i){var k=K[i],S=PC_SLOT[k],th=S&&used[k]?'<span class="aq-pipe-collage__thumb" data-theme="light" aria-hidden="true"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" focusable="false">'+pcPiece(k)+'</svg></span>':'';
   var f=function(j,cls){var c=r[j];if(c==null||c==='')return '';return '<p class="'+cls+'"><span class="aq-pipe-collage__k">'+tx(C[j]||'')+'</span> '+tcell(c)+'</p>'};
   return fli('<li class="aq-pipe-collage__block" data-pc="'+i+'">',b,i)+th
    +idx(i)+'<div class="aq-pipe-collage__head"><h3 class="aq-pipe-collage__std">'+tcell(r[0])+'</h3></div>'
    +'<p class="aq-pipe-collage__how">'+tcell(r[1])+'</p>'+f(2,'aq-pipe-collage__proof')+f(3,'aq-pipe-collage__go')+'</li>'}).join('')+'</ol>';
- return sec(H+'<div class="aq-pipe-collage">'+board+'<div class="aq-pipe-collage__text">'+wFold(b,R.length,blocks,b.fold_noun||'standards')+'</div></div>','aq-pipe-collage-sec')};
+ return sec(H+'<div class="aq-pipe-collage">'+board+(PP.length?band:'')+'<div class="aq-pipe-collage__text">'+wFold(b,R.length,blocks,b.fold_noun||'standards')+'</div></div>','aq-pipe-collage-sec')};
 function pcLight(bl,on){var w=bl&&bl.closest('.aq-pipe-collage');if(!w)return;var c=w.querySelector('.aq-pipe-collage__cell[data-pc="'+bl.getAttribute('data-pc')+'"]');
  if(c)c.classList.toggle('is-on',on);w.classList.toggle('is-focus',on&&!!c)}
 if(typeof document!=='undefined'&&document.addEventListener){
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-pipe-collage__tile[data-go]');if(!t)return;var w=t.closest('.aq-pipe-collage'),bl=w&&w.querySelector('.aq-pipe-collage__block[data-pc="'+t.getAttribute('data-go')+'"]');if(!bl)return;
+  var fd=bl.closest('.aq-fold');if(fd&&!fd.classList.contains('is-open')&&bl.classList.contains('aq-fold-x')){var fb=fd.querySelector('.aq-fold__btn');if(fb)fb.click()}
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;bl.scrollIntoView({block:'center',behavior:rm?'auto':'smooth'});pcLight(bl,true);setTimeout(function(){pcLight(bl,false)},1200)});
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x)pcLight(x,true)})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x&&!(ev.relatedTarget&&x.contains(ev.relatedTarget)))pcLight(x,false)})})}
 /* Look "plan-checker" -> PlanChecker (design-system/components/PlanChecker): service plans as a checker of square-cornered
@@ -4329,7 +5375,9 @@ if(typeof document!=='undefined'&&document.addEventListener){
    Fields as a table block (as: "plans"): cols [label, plan…] (a head may be {t, intent}), rows; the row whose label
    starts "Suits" goes in the head tile; fold (terms shown first), fold_noun; recommend (only when the page says so).
    Button: the page's primary CTA (label, link, intent), one per plan, none on "No plan".
-   Phones: the numerals become a row of tabs (still a checker); the picked plan's two tiles run full width. */
+   Phones (pass 12, S11): the plans are a snap row of cards at 85 % width with the next one peeking (numeral beside the
+   name, who it suits, the terms, the quote button); a strip of numeral tabs over the row (still a checker, numerals
+   only, the name in the label) jumps between them and follows the swipe (AQsnap, below). */
 LOOKS['plan-checker']=function(b,H){var C=b.cols||[],R=b.rows||[],lab=function(r){return String(r[0]&&r[0].t||r[0]||'')};
  var suits=R.filter(function(r){return /^suits/i.test(lab(r))})[0],rows=R.filter(function(r){return r!==suits});
  var p=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0]||wp(WP)||{},c=p.cta||{};
@@ -4337,7 +5385,7 @@ LOOKS['plan-checker']=function(b,H){var C=b.cols||[],R=b.rows||[],lab=function(r
  var names=C.map(function(x){return String(x&&x.t||x||'')});
  var rec=typeof b.recommend==='number'?b.recommend:b.recommend?names.indexOf(String(b.recommend)):-1;
  var K='aq-plan-checker',T=C.slice(1).map(function(x,k){var j=k+1;return {j:j,n:names[j],base:/^no\b/i.test(names[j]),rec:j===rec,it:x&&typeof x==='object'&&x.intent||'',no:(j<10?'0':'')+j,navy:k%2===0}});
- var show=rec>0?rec:1,nr=rows.length;
+ var nr=rows.length;
  var plans=T.map(function(t){var tone=t.navy?' is-navy':' is-lime';
   var head='<div class="'+K+'__head'+tone+'"><p class="'+K+'__no" aria-hidden="true"><span class="'+K+'__num">'+t.no+'</span><span class="'+K+'__sl">/</span></p>'
    +(t.rec?'<p class="'+K+'__mark">Recommended</p>':'')+'<h3 class="'+K+'__name">'+tx(t.n)+'</h3>'
@@ -4345,19 +5393,95 @@ LOOKS['plan-checker']=function(b,H){var C=b.cols||[],R=b.rows||[],lab=function(r
   var terms=rows.map(function(r,i){return fli('<div class="'+K+'__term'+tone+(i?'':' is-first')+'" data-r="'+i+'">',b,i)
    +'<p class="'+K+'__v">'+tcell(r[t.j])+'</p><p class="'+K+'__k">'+tcell(r[0])+'</p></div>'}).join('');
   var act='<div class="'+K+'__act'+tone+'">'+(t.base?'':wBtn(label,link,t.rec?null:'secondary',t.it||intent).replace('<a ','<a aria-label="'+e(label+': '+t.n)+'" '))+'</div>';
-  return '<li class="'+K+'__plan t'+t.j+(t.base?' is-base':'')+(t.rec?' is-rec':'')+'">'+head+terms+act+'</li>'}).join('');
- var tabs='<div class="'+K+'__tabs" role="group" aria-label="Show one plan">'+T.map(function(t){return '<button type="button" class="'+K+'__tab'+(t.navy?' is-navy':' is-lime')+'" data-tier="'+t.j+'" aria-pressed="'+(t.j===show?'true':'false')+'">'
-  +'<span class="'+K+'__tabno" aria-hidden="true">'+t.no+'/</span><span class="'+K+'__tabn">'+tx(t.n)+'</span></button>'}).join('')+'</div>';
- var grid='<div class="'+K+'" data-show="'+show+'" style="--n:'+T.length+';--rows:'+nr+'">'+tabs+'<ol class="'+K+'__plans" role="list">'+plans+'</ol></div>';
+  return '<li class="'+K+'__plan t'+t.j+(t.j===1?' is-snap':'')+(t.base?' is-base':'')+(t.rec?' is-rec':'')+'">'+head+terms+act+'</li>'}).join('');
+ var tabs='<div class="'+K+'__tabs" role="group" aria-label="Plans">'+T.map(function(t,k){return '<button type="button" class="'+K+'__tab'+(t.navy?' is-navy':' is-lime')+'" data-snap-to="'+k+'"'+(k?'':' aria-current="true"')+' aria-label="'+e(t.no+' '+String(t.n).replace(/[\[\]]/g,''))+'">'
+  +'<span class="'+K+'__tabno" aria-hidden="true">'+t.no+'/</span></button>'}).join('')+'</div>';
+ var grid='<div class="'+K+'" data-snap-box style="--n:'+T.length+';--rows:'+nr+'">'+tabs+'<ol class="'+K+'__plans" role="list" data-snap>'+plans+'</ol></div>';
  return sec(H+wFold(b,nr,grid,b.fold_noun||'terms'),'aq-band--limestone '+K+'-sec" data-theme="light')};
-/* Tabs (phones) show one plan; arrow keys move between tabs. Pointing at a term lights it in every plan. */
-document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-plan-checker__tab');if(!t)return;var w=t.closest('.aq-plan-checker');
- w.setAttribute('data-show',t.getAttribute('data-tier'));w.querySelectorAll('.aq-plan-checker__tab').forEach(function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
+/* Numeral tabs (phones) jump the snap row to a plan (AQsnap); arrow keys move between tabs. Pointing at a term lights it in every plan. */
 document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-plan-checker__tab');if(!t||(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft'))return;
  var a=[].slice.call(t.parentNode.querySelectorAll('.aq-plan-checker__tab')),n=a[(a.indexOf(t)+(ev.key==='ArrowRight'?1:a.length-1))%a.length];ev.preventDefault();n.focus();n.click()});
 (function(){function hl(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-plan-checker__term');if(!s||s.contains(ev.relatedTarget))return;
  [].forEach.call(s.closest('.aq-plan-checker').querySelectorAll('.aq-plan-checker__term[data-r="'+s.getAttribute('data-r')+'"]'),function(x){x.classList.toggle('is-lit',on)})}
  document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)})})();
+/* Snap rail (phones; pass 12 S11): a [data-snap] scroller whose children snap, and [data-snap-to="i"] buttons (dots or
+   numbers) in the same [data-snap-box]. The child nearest the scroller's start edge gets .is-snap and its button
+   aria-current (a strip of buttons that scrolls keeps it in view); a button scrolls its child to the start. At the
+   rail's end (items that cannot reach the start edge) the tapped child keeps the mark until the reader swipes (_want). State, not motion: it runs with reduced motion (jumps).
+   Shared by several looks; each defines it only if it is missing, so any one of them may be retired. */
+(function(){if(window.AQsnap)return;window.AQsnap=function(r){var it=[].slice.call(r.children),x=r.getBoundingClientRect().left+(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),k=0,b=1e9;
+ it.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-x);if(d<b-1){b=d;k=i}});
+ if(r.scrollLeft>0&&r.scrollLeft+r.clientWidth>=r.scrollWidth-2)k=r._want!=null&&r._want>=k&&it[r._want]?r._want:it.length-1;
+ it.forEach(function(c,i){c.classList.toggle('is-snap',i===k)});
+ var bx=r.closest('[data-snap-box]')||r.parentNode;[].forEach.call(bx.querySelectorAll('[data-snap-to]'),function(t){if(+t.getAttribute('data-snap-to')!==k){t.removeAttribute('aria-current');return}t.setAttribute('aria-current','true');
+  var s=t.parentNode;if(s.scrollWidth>s.clientWidth+1){var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;if(a<s.scrollLeft)s.scrollLeft=a;else if(z>s.scrollLeft+s.clientWidth)s.scrollLeft=z-s.clientWidth}});return k};
+ var q=null;document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||r.nodeType!==1||!r.hasAttribute('data-snap'))return;if(q!==r){q=r;requestAnimationFrame(function(){window.AQsnap(q);q=null})}},true);
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-snap-to]');if(!t)return;var bx=t.closest('[data-snap-box]'),r=bx&&bx.querySelector('[data-snap]');if(!r)return;
+  var c=r.children[+t.getAttribute('data-snap-to')];if(!c)return;r._want=+t.getAttribute('data-snap-to');var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=r.scrollLeft+c.getBoundingClientRect().left-r.getBoundingClientRect().left-(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),still=Math.abs(Math.max(0,Math.min(L,r.scrollWidth-r.clientWidth))-r.scrollLeft)<1;
+  r.scrollTo({left:L,behavior:red?'auto':'smooth'});
+  if(red||still)window.AQsnap(r)});
+ ['pointerdown','touchstart','wheel','keydown'].forEach(function(n){document.addEventListener(n,function(ev){var r=ev.target.closest&&ev.target.closest('[data-snap]');if(r)r._want=null},{capture:true,passive:true})})})();
+/* Look "plant-stations" -> PlantStations (design-system/components/PlantStations): a grid block of the points water is
+   used at in a plant, drawn as an isometric plant room (IsoKit), after pass 12 concept 201 (ind-personal-care.uses,
+   take 2). The package stands in the back corner; a dashed route runs from it round the room to one numbered station
+   per item, and the station's tag (12 px and up, real HTML over the drawing) is keyed once to the numbered row beside
+   it. Each station is drawn by what its item names (a batching vessel for ingredient water, a point of use with its
+   hose for a rinse, a bench for a laboratory, a second line for household products; a point of use otherwise), never
+   with a label of its own. Pointing at a row lights its station and tag. Up to six stations; items past six are listed
+   without one. Phones: the plan, trimmed to the room, then every row (no fold: each row has a tag on the plan).
+   Fields (a grid block): h, intro, items [{t, d, link}]. No new fields. */
+(function(){
+var K='aq-plant-stations',W=360,D=280,HW=72;
+/* station slots round the loop (loop: x 120..255, y 100..175 on the floor); drop = the dashed branch to the station */
+var SLOT=[{p:[292,60],drop:[[255,100],[292,100],[292,80]]},{p:[300,206],drop:[[255,175],[300,175],[300,194]]},
+ {p:[182,240],drop:[[182,175],[182,226]]},{p:[60,194],drop:[[120,175],[82,175]]},
+ {p:[62,112],drop:[[120,112],[84,112]]},{p:[330,140],drop:[[255,140],[316,140]]}];
+function kind(t){t=String(t||'').toLowerCase();
+ if(/household|second line|soap|detergent/.test(t))return 'line';
+ if(/\blab|\bqc\b|quality control|testing/.test(t))return 'lab';
+ if(/ingredient|batch|emulsion|formulat|mix/.test(t))return 'vessel';
+ return 'rinse'}
+function g(id,inner){return '<g class="aq-iso__part" data-iso-id="'+id+'">'+inner+'</g>'}
+function eq(d,c){return '<path class="aq-iso__eq'+(c?' '+c:'')+'" d="'+d+'"/>'}
+function bottles(x,y,z,n,gap){var o='';for(var i=0;i<n;i++){var c=isoCylD([x+i*gap,y,z],'z',9,2.6);o+=eq(c[0]+c[1])}return o}
+function station(k,x,y,id){
+ if(k==='vessel'){var t=isoPart('tank',x,y,0,0.8,{id:id}),top=t.ports.top||[x,y,62];
+  return {svg:t+g(id,eq(isoBoxD([top[0]-5,top[1]-5,top[2]+2],10,10,9))+'<path class="aq-iso__ln" d="'+isoPoly([[top[0],top[1],top[2]+2],[top[0],top[1],top[2]-6]])+'"/>'),top:[top[0],top[1],top[2]+12]}}
+ if(k==='lab')return {svg:g(id,eq(isoBoxD([x-30,y-13,0],60,26,30))+'<path class="aq-iso__thin" d="'+isoPoly([[x-30,y+13,22],[x+30,y+13,22]])+'"/>'+bottles(x-16,y-2,30,4,9)),top:[x,y,44]};
+ if(k==='line'){var md=isoPart('module',x-6,y,0,0.7,{id:id});
+  return {svg:md+g(id,eq(isoBoxD([x+8,y-5,12],44,10,4))+bottles(x+16,y,16,3,11)),top:[x,y,40]}}
+ var o=isoPart('outlet',x,y,0,1,{id:id});return {svg:o,top:o.ports.top||[x,y,34]}}
+LOOKS['plant-stations']=function(b,H){var I=(b.items||[]),n=Math.min(I.length,SLOT.length);
+ /* the room: floor slab, two back walls, the route on the floor */
+ var room=eq(isoBoxD([0,0,-6],W,D,6),'aq-iso__eq--alt')
+  +eq(isoPoly([[0,0,0],[W,0,0],[W,0,HW],[0,0,HW]],1))+eq(isoPoly([[0,0,0],[0,D,0],[0,D,HW],[0,0,HW]],1))
+  +'<path class="aq-iso__thin" d="'+isoPoly([[0,0,HW*0.55],[W,0,HW*0.55]])+isoPoly([[0,0,HW*0.55],[0,D,HW*0.55]])+'"/>';
+ var route='<path class="'+K+'__route" d="'+isoPoly([[172,58,0],[172,100,0]])+isoPoly([[120,100,0],[255,100,0],[255,175,0],[120,175,0]],1)+'"/>';
+ var drops='';for(var i=0;i<n;i++)drops+='<path class="'+K+'__route '+K+'__drop" data-i="'+i+'" d="'+isoPoly(SLOT[i].drop.map(function(q){return [q[0],q[1],0]}))+'"/>';
+ var arrows=isoArrow([200,100,0],'x',{size:7})+isoArrow([255,140,0],'y',{size:7})+isoArrow([150,175,0],'-x',{size:7})+isoArrow([172,80,0],'y',{size:7});
+ /* the package in the back corner: RO rack and its tank */
+ var ro=isoPart('ro',22,14,0,1,{id:'pkg'}),tk=isoPart('tank',176,36,0,1,{id:'pkg'});
+ var pkg=ro+tk;
+ /* stations back to front */
+ var order=[];for(i=0;i<n;i++)order.push(i);order.sort(function(a,c){return (SLOT[a].p[0]+SLOT[a].p[1])-(SLOT[c].p[0]+SLOT[c].p[1])});
+ var st={},parts='';order.forEach(function(i){var s=station(kind(I[i].t),SLOT[i].p[0],SLOT[i].p[1],'st'+i);st[i]=s;parts+=s.svg});
+ var bb=isoBounds([[0,0,HW+16],[W,0,HW+16],[0,D,-6],[W,D,-6],[W,0,-6],[0,D,HW+16]],10),org=[-bb.x,-bb.y];
+ var svg=isoSvg(bb.w,bb.h,room+route+drops+arrows+pkg+parts,K+'__svg',{origin:org});
+ var tags='';for(i=0;i<n;i++){var at=isoPct(isoP(st[i].top),bb.w,bb.h,org);
+  tags+='<span class="'+K+'__tag" data-i="'+i+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
+ var rows=I.map(function(it,i){var inner='<span class="'+K+'__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="'+K+'__txt"><span class="'+K+'__t">'+tx(it.t)+'</span>'+(it.d?'<span class="'+K+'__d">'+tx(it.d)+'</span>':'')+'</span>';
+  var go=it.link&&wp(it.link);
+  return '<li class="'+K+'__row" data-i="'+i+'">'+(go?'<a class="'+K+'__in" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="'+K+'__in">'+inner+'</div>')+'</li>'}).join('');
+ return sec(H+'<div class="'+K+'"><div class="'+K+'__plan aq-iso-figure">'+svg+tags+'</div><ol class="'+K+'__rows" role="list">'+rows+'</ol></div>',K+'-sec')};
+/* pointing at a row (or focusing its link) lights its station, branch and tag */
+function hot(w,i){[].forEach.call(w.querySelectorAll('[data-i]'),function(x){x.classList.toggle('is-hot',x.getAttribute('data-i')===i)});
+ [].forEach.call(w.querySelectorAll('.aq-iso__part[data-iso-id^="st"]'),function(p){p.classList.toggle('is-lit',i!=null&&p.getAttribute('data-iso-id')==='st'+i)})}
+if(typeof document!=='undefined'){
+ var over=function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__row');if(!t)return;var w=t.closest('.'+K);hot(w,t.getAttribute('data-i'))};
+ var out=function(ev){var w=ev.target.closest&&ev.target.closest('.'+K);if(w&&!w.contains(ev.relatedTarget))hot(w,null)};
+ document.addEventListener('mouseover',over);document.addEventListener('focusin',over);document.addEventListener('mouseout',out);document.addEventListener('focusout',out)}
+})();
 /* Look "pq-calendar" -> PqCalendar (design-system/components/PqCalendar): PQ phases beside one instrument readout
    (pass 9b concept svc-cq.3), Swiss data graphics on the limestone band. Left, the phases as a short numbered stack
    ("01 /" in mono), each with what it samples and, where it has one, the hold point. Right, a readout panel: the
@@ -4423,22 +5547,40 @@ LOOKS['pq-calendar']=function(b,H){var I=b.items||[],G=b.grid||{},Y=b.year||{},N
    Without motion (no script, reduced motion) and on phones the same steps stack down a vertical run, each with its
    drawing beside it, so nothing depends on scrolling.
    Fields (a steps block): h, items [{t, d, link, art, label}]. art: an illustration id from ART (Hero.js); default
-   the link's page when it has one. label: short stop name on the run (default t). */
+   the link's page when it has one. label: short stop name on the run (default t).
+   Phones (pass 12, PhoneKit sticky figure): the stage comes back as a 132 px strip held under the header, a small
+   version of the desktop stage: the current step's drawing, its number with the stop name, and the 6-stop run whose
+   water fills to the current stop. The steps scroll under it as short rows (node, title link 44 px, one paragraph)
+   on the vertical run; the step on the reading line drives the strip (state, not motion, so it holds with reduced
+   motion). Without script the phone keeps the static stack with a drawing per step. */
+(function(){
 LOOKS['project-run']=function(b,H){var I=b.items||[],n=I.length;
  function art(it){var a=it.art||wsplit(it.link||'')[0];return ART[a]?a:''}
  function pic(it,cls){var a=art(it);return a?'<span class="aq-illustration aq-illustration--ink '+cls+'" aria-hidden="true" style="'+artMask(a)+'"></span>':''}
  var num=function(i){return (i<9?'0':'')+(i+1)};
- var stage='<div class="aq-project-run__stage" aria-hidden="true">'
-  +'<p class="aq-project-run__num"><span class="aq-project-run__cur">01</span><span class="aq-project-run__of">/ '+num(n-1)+'</span></p>'
+ var stage='<div class="aq-project-run__stage" aria-hidden="true" data-pk-fig>'
+  +'<p class="aq-project-run__num"><span class="aq-project-run__cur">01</span><span class="aq-project-run__of">/ '+num(n-1)+'</span><span class="aq-project-run__now">'+(I[0]?tx(I[0].label||I[0].t):'')+'</span></p>'
   +'<div class="aq-project-run__arts">'+I.map(function(it,i){return pic(it,'aq-project-run__art'+(i?'':' is-on'))}).join('')+'</div>'
   +'<div class="aq-project-run__run"><span class="aq-project-run__pipe"><span class="aq-project-run__water"></span><span class="aq-project-run__drop"></span></span>'
   +I.map(function(it,i){return '<span class="aq-project-run__stop'+(i?'':' is-on')+'" style="--k:'+i+'"><i class="aq-project-run__dot"></i><span class="aq-project-run__lab">'+tx(it.label||it.t)+'</span></span>'}).join('')+'</div></div>';
  var steps=I.map(function(it,i){var go=it.link&&wp(it.link);
-  return '<li class="aq-project-run__step'+(i?'':' is-on')+'" style="--k:'+i+'"><span class="aq-project-run__node" aria-hidden="true">'+num(i)+'</span>'
+  return '<li class="aq-project-run__step'+(i?'':' is-on')+'" style="--k:'+i+'" data-pk-row="'+i+'"><span class="aq-project-run__node" aria-hidden="true">'+num(i)+'</span>'
    +pic(it,'aq-project-run__pic')
    +'<div class="aq-project-run__text"><p class="aq-project-run__code" aria-hidden="true">'+num(i)+' / '+num(n-1)+'</p>'
    +'<h3 class="aq-project-run__t">'+(go?wlink(it.link,it.t):tx(it.t))+'</h3>'+(it.d?'<p class="aq-project-run__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
- return sec(H+'<div class="aq-project-run" style="--n:'+n+'">'+stage+'<ol class="aq-project-run__steps">'+steps+'</ol></div>')};
+ return sec(H+'<div class="aq-project-run" data-pk-sticky data-pk-h="132" style="--n:'+n+'">'+stage+'<ol class="aq-project-run__steps">'+steps+'</ol></div>')};
+/* PhoneKit's step change drives the phone strip: drawing, number, stop name, water (the desktop live stage is motion's) */
+function phone(el,k){var q=function(s){return [].slice.call(el.querySelectorAll(s))},n=q('.aq-project-run__step').length,on=k>=0;
+ q('.aq-project-run__step').forEach(function(s,j){s.classList.toggle('is-on',on?j===k:j===0);s.classList.toggle('is-past',on&&j<k)});
+ q('.aq-project-run__node').forEach(function(d,j){d.classList.toggle('is-wet',on&&j<k)});
+ q('.aq-project-run__art').forEach(function(a,j){a.classList.toggle('is-on',on?j===k:j===0)});
+ var st=q('.aq-project-run__stop');st.forEach(function(s,j){s.classList.toggle('is-on',on?j===k:j===0);s.classList.toggle('is-past',on&&j<k)});
+ var c=el.querySelector('.aq-project-run__cur'),w=el.querySelector('.aq-project-run__now'),r=el.querySelector('.aq-project-run__run'),i=on?k:0;
+ if(c)c.textContent=(i<9?'0':'')+(i+1);if(w&&st[i])w.textContent=st[i].textContent;
+ if(r){if(on)r.style.setProperty('--f',(n>1?i/(n-1):1).toFixed(4));else r.style.removeProperty('--f')}}
+if(typeof document!=='undefined')document.addEventListener('pk:change',function(ev){var el=ev.target;if(!el.classList||!el.classList.contains('aq-project-run')||el.classList.contains('is-live'))return;
+ phone(el,ev.detail&&ev.detail.on?ev.detail.index:-1)});
+})();
 /* Look "proof-folders" -> ProofFolders (design-system/components/ProofFolders): an evidence table as a drawer of manila
    folders, one per standard, stacked so each tab shows over the folder in front of it. The standard is set large on
    the ground beside its folder; inside, what we design to is typed on a slip, the proof is a fan of clipped sheets
@@ -4447,16 +5589,19 @@ LOOKS['project-run']=function(b,H){var I=b.items||[],n=I.length;
    Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
    fold, fold_noun. The code on the tab and the stamp is the standard cell up to its number ("USP <645>", "Ph. Eur.
    0008"), else its first word ("EMA"); the rest of the cell is the standard's title under it.
-   Phones: each folder takes the full width, the standard on the folder, then slip, sheets and label stacked. */
+   Phones (pass 12, S11): the folders are a snap row at 85 % width (the next folder peeking), every standard in the
+   row, folded or not; over it a strip of the folders' codes (44 px tabs) jumps to a folder and follows the swipe
+   (AQsnap, below). Each folder keeps its tab, typed slip, clipped sheets, stamp and navy label, at half the padding,
+   with the sheets inside the gutter. */
 function pfCode(s){s=String(s||'');var m=s.match(/^(.*?(?:<\d+>|\b\d[\d.]*))\s+(\S.*)$/);return m?[m[1],m[2]]:[s.split(/\s+/)[0],s.slice(s.split(/\s+/)[0].length).trim()]}
 LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var k=function(i){return '<p class="aq-proof-folders__k">'+tx(C[i]||'')+'</p>'};
  var heads='<div class="aq-proof-folders__cols" aria-hidden="true">'+C.slice(0,4).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>';
- var list='<ol class="aq-proof-folders__list" role="list">'+R.map(function(r,i){
+ var list='<ol class="aq-proof-folders__list" role="list" data-snap>'+R.map(function(r,i){
   var name=String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||''),c=pfCode(name),proof=String(r[2]&&typeof r[2]==='object'?r[2].t:r[2]||'');
   var sheets=proof.split(/\s*;\s*/).filter(Boolean).map(function(x,j){return '<li class="aq-proof-folders__sheet" style="--j:'+j+'">'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</li>'}).join('');
   var go=r[3]!=null?tcell(r[3]):'';
-  return fli('<li class="aq-proof-folders__row" style="--i:'+i+'">',b,i)
+  return fli('<li class="aq-proof-folders__row'+(i?'':' is-snap')+'" style="--i:'+i+'">',b,i)
    +idx(i)+'<div class="aq-proof-folders__std"><h3 class="aq-proof-folders__name"><span class="aq-proof-folders__code">'+tx(c[0])+'</span>'+(c[1]?' <span class="aq-proof-folders__title">'+tx(c[1])+'</span>':'')+'</h3></div>'
    +'<div class="aq-proof-folders__folder" data-theme="light">'
     +'<span class="aq-proof-folders__tab" aria-hidden="true">'+tx(c[0])+'</span>'
@@ -4465,29 +5610,56 @@ LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
      +'<span class="aq-proof-folders__stamp" aria-hidden="true"><span>'+tx(c[0])+'</span><span>'+tx(C[2]||'')+'</span></span></div>'
     +(go?'<div class="aq-proof-folders__go">'+k(3)+'<p class="aq-proof-folders__label">'+go+'</p></div>':'')
    +'</div></li>'}).join('')+'</ol>';
- return sec(H+'<div class="aq-proof-folders">'+heads+wFold(b,R.length,list,b.fold_noun||'standards')+'</div>','aq-proof-folders-sec')};
+ var tabs='<div class="aq-proof-folders__tabs" role="group" aria-label="'+e(String(C[0]&&C[0].t||C[0]||''))+'">'+R.map(function(r,i){var c=pfCode(String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||''));
+  return '<button type="button" class="aq-proof-folders__tb" data-snap-to="'+i+'"'+(i?'':' aria-current="true"')+'>'+tx(c[0])+'</button>'}).join('')+'</div>';
+ return sec(H+'<div class="aq-proof-folders" data-snap-box>'+heads+tabs+wFold(b,R.length,list,b.fold_noun||'standards')+'</div>','aq-proof-folders-sec')};
+/* Snap rail (phones; pass 12 S11): a [data-snap] scroller whose children snap, and [data-snap-to="i"] buttons (dots or
+   numbers) in the same [data-snap-box]. The child nearest the scroller's start edge gets .is-snap and its button
+   aria-current (a strip of buttons that scrolls keeps it in view); a button scrolls its child to the start. At the
+   rail's end (items that cannot reach the start edge) the tapped child keeps the mark until the reader swipes (_want). State, not motion: it runs with reduced motion (jumps).
+   Shared by several looks; each defines it only if it is missing, so any one of them may be retired. */
+(function(){if(window.AQsnap)return;window.AQsnap=function(r){var it=[].slice.call(r.children),x=r.getBoundingClientRect().left+(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),k=0,b=1e9;
+ it.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-x);if(d<b-1){b=d;k=i}});
+ if(r.scrollLeft>0&&r.scrollLeft+r.clientWidth>=r.scrollWidth-2)k=r._want!=null&&r._want>=k&&it[r._want]?r._want:it.length-1;
+ it.forEach(function(c,i){c.classList.toggle('is-snap',i===k)});
+ var bx=r.closest('[data-snap-box]')||r.parentNode;[].forEach.call(bx.querySelectorAll('[data-snap-to]'),function(t){if(+t.getAttribute('data-snap-to')!==k){t.removeAttribute('aria-current');return}t.setAttribute('aria-current','true');
+  var s=t.parentNode;if(s.scrollWidth>s.clientWidth+1){var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;if(a<s.scrollLeft)s.scrollLeft=a;else if(z>s.scrollLeft+s.clientWidth)s.scrollLeft=z-s.clientWidth}});return k};
+ var q=null;document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||r.nodeType!==1||!r.hasAttribute('data-snap'))return;if(q!==r){q=r;requestAnimationFrame(function(){window.AQsnap(q);q=null})}},true);
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-snap-to]');if(!t)return;var bx=t.closest('[data-snap-box]'),r=bx&&bx.querySelector('[data-snap]');if(!r)return;
+  var c=r.children[+t.getAttribute('data-snap-to')];if(!c)return;r._want=+t.getAttribute('data-snap-to');var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=r.scrollLeft+c.getBoundingClientRect().left-r.getBoundingClientRect().left-(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),still=Math.abs(Math.max(0,Math.min(L,r.scrollWidth-r.clientWidth))-r.scrollLeft)<1;
+  r.scrollTo({left:L,behavior:red?'auto':'smooth'});
+  if(red||still)window.AQsnap(r)});
+ ['pointerdown','touchstart','wheel','keydown'].forEach(function(n){document.addEventListener(n,function(ev){var r=ev.target.closest&&ev.target.closest('[data-snap]');if(r)r._want=null},{capture:true,passive:true})})})();
 /* Look "reader-split" -> ReaderSplit (design-system/components/ReaderSplit): an evidence table (who, what they read,
    where we answer it) on a band split down the middle: the readers stand on the navy half, what each one reads and
    where we answer it sit across the seam on the limestone half, row against row. The seam is a drawn line with one
    node per row; hovering a row lights its node and draws a tie across the seam.
    Fields, as the evidence table: h, intro, cols, rows [who, read, {t, link, intent}], fold, fold_noun.
    The first two column names head the halves once (aria-hidden) and are repeated in each row as a label before the
-   reader and before the reading: visually hidden on wide screens (read by assistive tech), shown on phones, where the
-   halves stack and the heads are gone. The third column's name already labels each answer.
+   reader and before the reading, visually hidden at every width (read by assistive tech). The third column's name
+   labels each answer on wide screens; on phones the three names show once, as a key above the rows (pass 12, S12).
+   Phones (PhoneKit accordion, under 860 px): each reader becomes a 48 px navy head button (index, reader, chevron)
+   and its reading and answer the body under it, one open at a time (the first by default). The desktop reader cell
+   is the head's data-pk-desk twin; without script every row shows open.
    Concept: systems.2 (navy/limestone split where the seam is the boundary; STYLE-ATLAS hybrid 4, "battery-limit split,
    calm", in light type). */
 (function(){
+/* pass 12 (F9): a hyphenated word in a phone head is kept on one line ("hand-off", not "hand- / off"); only text
+   between tags is touched */
+function rsBind(h){return String(h).replace(/(^|>)([^<]+)/g,function(m,a,t){return a+t.replace(/([A-Za-z]+-[A-Za-z]+)/g,'<span class="aq-reader-split__nb">$1</span>')})}
 LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
  var lab=function(j){return C[j]?'<span class="aq-reader-split__lab">'+tx(C[j])+'</span>':''};
  var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
-  return fli('<li class="aq-reader-split__row"><div class="aq-reader-split__who">'+idx(i)+lab(0)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
+  return fli('<li class="aq-reader-split__row" data-pk-item="'+i+'"><h3 class="aq-reader-split__ph"><button type="button" class="aq-reader-split__head-btn" data-pk-head>'+idx(i)+lab(0)+'<span class="aq-reader-split__pt">'+rsBind(tx(r[0]))+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h3>'
+   +'<div class="aq-reader-split__who" data-pk-desk>'+idx(i)+lab(0)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
    +'<span class="aq-reader-split__tie" aria-hidden="true"><span class="aq-reader-split__node"></span></span>'
-   +'<div class="aq-reader-split__what">'+lab(1)+'<p class="aq-reader-split__read">'+tx(r[1])+'</p>'
+   +'<div class="aq-reader-split__what" data-pk-body>'+lab(1)+'<p class="aq-reader-split__read">'+tx(r[1])+'</p>'
    +(lk?'<a class="aq-reader-split__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tx(go.t)+'</span></a>'
      :(go?'<p class="aq-reader-split__go"><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tcell(go)+'</span></p>':''))+'</div></li>',b,i)}).join('');
- var colh='<p class="aq-reader-split__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
+ var colh='<p class="aq-reader-split__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span>'+(C[2]?'<span class="aq-reader-split__colk">'+tx(C[2])+'</span>':'')+'</p>';
  return '<section class="aq-section aq-band--split aq-reader-split-sec"><span class="aq-reader-split__ground" aria-hidden="true"></span><div class="aq-in"><div class="aq-reader-split">'
-  +'<div class="aq-reader-split__head">'+H+'</div>'+colh+wFold(b,n,'<ol class="aq-reader-split__rows">'+rows+'</ol>',b.fold_noun)+'</div></div></section>'};
+  +'<div class="aq-reader-split__head">'+H+'</div>'+colh+wFold(b,n,'<ol class="aq-reader-split__rows" data-pk-picker="accordion" data-pk-open="0">'+rows+'</ol>',b.fold_noun)+'</div></div></section>'};
 })();
 /* Look "record-anatomy" -> RecordAnatomy (design-system/components/RecordAnatomy): an explainer (prose, as
    "explainer") of what a published record carries, set as a drawing sheet (pass 9b, concept projects.1): a sparse
@@ -4499,7 +5671,8 @@ LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
    sampling map and a row of sample ticks, the report a numbered document, the approval two signature lines and a
    stamp.
    Fields: h, intro, points [{t, d, fig}]. fig (optional): figure, method, report, approval, the zone's drawing
-   (default by order). Phones: no drawing field; each title-block row carries its own drawing above its text. */
+   (default by order). Phones: no drawing field, frame or zone gutter; the title-block rows form a 2 x 2 grid, each
+   cell carrying its own drawing above its text. */
 (function(){
 function S(inner){return '<svg class="aq-record-anatomy__svg" viewBox="0 0 360 120" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false">'+inner+'</svg>'}
 function P(d,c){return '<path class="aq-record-anatomy'+'__'+(c||'ln')+'" d="'+d+'"/>'}
@@ -4626,7 +5799,9 @@ LOOKS['record-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
    the same figure in flow with what we design in as the markup note.
    Fields, as a table: cols [fails at qualification, design mistake, what we design in], rows (cells strings or {t, link}).
    Optional: figs (one per row: "peak", "deadleg", "setpoint" or "sheet"; default from the row's words), block (title
-   block cells; default ["Aquemi", nav]). Phones: the sheet holds the markups one under the other. */
+   block cells; default ["Aquemi", nav]). Phones: the sheet holds the markups one under the other; the P&ID band is a
+   PhoneKit sticky strip (150 px, the plan at full height, about 820 px wide) that pans to the pin of the markup being
+   read and lights it; no zone ruler. */
 LOOKS['redline-sheet']=(function(){
  function cloud(cx,cy,rx,ry,n){var d='',p=[];for(var i=0;i<=n;i++){var t=-Math.PI/2+i*2*Math.PI/n;p.push([cx+rx*Math.cos(t),cy+ry*Math.sin(t)])}
   d='M'+p[0][0].toFixed(1)+' '+p[0][1].toFixed(1);for(var j=1;j<p.length;j++){var a=p[j-1],c=p[j],ch=Math.hypot(c[0]-a[0],c[1]-a[1]);d+='A'+(ch*0.62).toFixed(1)+' '+(ch*0.62).toFixed(1)+' 0 0 1 '+c[0].toFixed(1)+' '+c[1].toFixed(1)}return d}
@@ -4668,22 +5843,24 @@ LOOKS['redline-sheet']=(function(){
   g+=L('M70 96H110V144H70ZM76 102V138M104 102V138')+W(90,166,'PRE');
   g+=L('M150 98H230V142H150ZM150 142L230 98')+W(190,166,'RO');
   g+=L('M260 98H320V142H260ZM270 98V142M280 98V142M290 98V142M300 98V142M310 98V142')+W(290,166,'EDI');
-  g+=L('M352 120V100')+'<circle class="aq-redline-sheet__p" cx="352" cy="88" r="12"/>'+W(352,92,'CIT');
+  g+=L('M352 120V100')+'<circle class="aq-redline-sheet__p aq-redline-sheet__cit" cx="352" cy="88" r="12"/>'+W(352,92,'CIT');
   g+=L('M390 112L410 128V112L390 128Z')+L('M400 128V188','w')+chev(400,170,'d')+L('M390 188H410L400 200Z')+W(400,214,'drain');
   g+=L('M470 70Q470 44 500 44Q530 44 530 70V170H470Z')+W(500,192,'TANK');
   g+=L('M530 160H576','w')+'<circle class="aq-redline-sheet__p" cx="590" cy="160" r="14"/>'+L('M583 151L600 160L583 169Z');
   g+=L('M604 160H1150V60H560Q530 60 530 70','w')+chev(800,160)+chev(1150,110,'u')+chev(1000,60,'l');
   [760,880,1000].forEach(function(x,i){var y2=i===1?132:96;g+=L('M'+x+' 60V'+(y2-10),'w')+L('M'+(x-8)+' '+(y2-10)+'L'+(x+8)+' '+(y2+6)+'H'+(x-8)+'L'+(x+8)+' '+(y2-10)+'Z')+W(x,y2+24,'POU')});
   var pins='',spots=[];kinds.forEach(function(k,i){var p=PIN[k]||PIN.sheet;spots.push(p);
-   pins+='<g class="aq-redline-sheet__pin" data-i="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="26"/><path class="aq-redline-sheet__ptri" d="M14 -46L28 -22H0Z"/><text class="aq-redline-sheet__pn" x="14" y="-26" text-anchor="middle">'+(i+1)+'</text></g>'});
-  return '<div class="aq-redline-sheet__band" data-theme="dark" aria-hidden="true" data-spots="'+spots.map(function(p){return p.join(',')}).join(' ')+'"><svg viewBox="0 0 1200 220" focusable="false" preserveAspectRatio="xMidYMid meet"><g class="aq-redline-sheet__cam">'+g+pins+'<path class="aq-redline-sheet__dim" d=""/></g></svg></div>'}
+   pins+='<g class="aq-redline-sheet__pin" data-i="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="26"/><path class="aq-redline-sheet__ptri" d="M14 -46L28 -22H0Z"/><text class="aq-redline-sheet__pn" x="14" y="-26" text-anchor="middle">'+(i+1)+'</text></g>'
+    /* pass 12 phone twin: a bigger pin for the sticky strip (shown only on phones; PhoneKit lights it with its markup) */
+    +'<g class="aq-redline-sheet__ppin" data-pk-key="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="34"/><path class="aq-redline-sheet__ptri" d="M22 -72L44 -34H0Z"/><text class="aq-redline-sheet__pn" x="22" y="-41" text-anchor="middle">'+(i+1)+'</text></g>'});
+  return '<div class="aq-redline-sheet__band" data-theme="dark" aria-hidden="true" data-pk-fig data-spots="'+spots.map(function(p){return p.join(',')}).join(' ')+'"><svg viewBox="0 0 1200 220" focusable="false" preserveAspectRatio="xMidYMid meet"><g class="aq-redline-sheet__cam">'+g+pins+'<path class="aq-redline-sheet__dim" d=""/></g></svg></div>'}
  function pick(r){var s=r.map(function(c){return String(c&&typeof c==='object'?c.t:c||'')}).join(' ');
   return /peak|average|turbulent|demand/i.test(s)?'peak':/dead leg|branch/i.test(s)?'deadleg':/setpoint|divert|drain|interlock/i.test(s)?'setpoint':'sheet'}
  return function(b,H){var C=b.cols||[],R=b.rows||[],F=b.figs||[],blk=(b.block||['Aquemi',b.nav||'']).filter(Boolean);
   var k=function(i,c){return '<p class="aq-redline-sheet__k'+(c?' aq-redline-sheet__k--'+c:'')+'">'+tx(C[i]||'')+'</p>'};
   var zones='<div class="aq-redline-sheet__zones" aria-hidden="true">'+[1,2,3,4,5,6].map(function(z){return '<span>'+z+'</span>'}).join('')+'</div>';
   var list='<ol class="aq-redline-sheet__list" role="list">'+R.map(function(r,i){var f=FIG[F[i]]?F[i]:pick(r),n=String(i+1);
-   return '<li class="aq-redline-sheet__item" style="--i:'+i+'">'
+   return '<li class="aq-redline-sheet__item" style="--i:'+i+'" data-pk-row="'+i+'">'
     +'<div class="aq-redline-sheet__head"><span class="aq-redline-sheet__rev" aria-hidden="true">'+n+'</span>'+k(0,'fail')+'<h3 class="aq-redline-sheet__fail">'+tcell(r[0])+'</h3></div>'
     +'<figure class="aq-redline-sheet__fig" aria-hidden="true"><svg viewBox="0 0 320 190" focusable="false">'+FIG[f](n)+'</svg></figure>'
     +(r[1]!=null?'<div class="aq-redline-sheet__err">'+k(1)+'<p class="aq-redline-sheet__mistake">'+tcell(r[1])+'</p></div>':'')
@@ -4691,7 +5868,7 @@ LOOKS['redline-sheet']=(function(){
     +'</li>'}).join('')+'</ol>';
   var tb=blk.length?'<div class="aq-redline-sheet__block" aria-hidden="true">'+blk.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'<span>'+R.length+' markups</span></div>':'';
   var kinds=R.map(function(r,i){return FIG[F[i]]?F[i]:pick(r)});
-  return sec(H+'<div class="aq-redline-sheet" data-theme="light">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
+  return sec(H+'<div class="aq-redline-sheet" data-theme="light" data-pk-sticky data-pk-h="150" data-pk-zoom="1">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
 })();
 /* Pointing at a markup column turns the band's camera onto its pin: ported from Subframe Motion "Product tour
    spotlight" (guided-inspection), MIT, (c) 2026 Subframe: the plan scales about the stop (x1.7) and recentres in
@@ -4708,9 +5885,9 @@ function rsCam(band,i){var cam=band&&band.querySelector('.aq-redline-sheet__cam'
 if(typeof window!=='undefined')window.AQrsCam=rsCam;
 (function(){
  if(typeof document==='undefined')return;
- document.addEventListener('mouseover',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-redline-sheet__item'),sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(!sh||sh.hasAttribute('data-tour'))return;
+ document.addEventListener('mouseover',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-redline-sheet__item'),sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(!sh||sh.hasAttribute('data-tour')||sh.hasAttribute('data-pk-on'))return;
   var list=[].slice.call(sh.querySelectorAll('.aq-redline-sheet__item'));rsCam(sh.querySelector('.aq-redline-sheet__band'),it?list.indexOf(it):null)});
- document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
+ document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour')&&!sh.hasAttribute('data-pk-on'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
 })();
 /* Look "release-run" -> ReleaseRun (design-system/components/ReleaseRun): ordered steps (steps block) set as Swiss
    columns under one water line. A twin-wall line runs across the top of the columns, a node where each step starts;
@@ -4734,7 +5911,8 @@ LOOKS['release-run']=function(b,H){var I=b.items||[],n=I.length;
    joined by " · " gives one line per item; the "When" and "Cost" cells are split the same way when they hold the same
    number of parts, otherwise the whole cell spans the group's lines. A {t, link, intent} cell keeps its link.
    Fields, as a table: cols [situation, what comes back, when, cost] (the column heads, and the phone's field keys), rows,
-   fold, fold_noun. Design system: components/RequestMenu. */
+   fold, fold_noun. Design system: components/RequestMenu.
+   Phones: the table gives way to an accordion of the same rows (div.__phone, PhoneKit), synced to the form's radio. */
 (function(){
 function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
 function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
@@ -4767,9 +5945,26 @@ LOOKS['request-menu']=function(b,H){var C=b.cols||[],R=b.rows||[],F=b.fold>0&&R.
   return '<tbody class="aq-request-menu__set'+(F&&i>=F?' aq-fold-x':'')+'" style="--n:'+n+'">'+lines+'</tbody>'}).join('');
  var head='<thead><tr>'+[0,1,2,3].map(function(j){return '<th scope="col" class="aq-request-menu__h" data-col="'+j+'">'+(j===2?wIcon('clock','aq-request-menu__ic'):'')+tx(C[j]||'')+'</th>'}).join('')+'</tr></thead>';
  var table='<table class="aq-request-menu__table">'+head+groups+'</table>';
+ /* Phones (pass 12, S11/S12/S18): the same rows as a PhoneKit accordion (the table and the drawing are hidden under
+    860 px). Head: number and situation, 48 px, chevron. Body: one entry per returned item, the item in 15 px with its
+    When and Cost as chips under it (clock chip in mono, cost chip in flow); the column names show once as a key. The
+    item open follows the form's "Where are you starting from?" radio: the situation whose text equals the ticked value
+    opens (see the listener at the end). Without script every body shows. */
+ var chip=function(cls,v){return v==null?'':'<span class="aq-request-menu__chip aq-request-menu__chip--'+cls+'">'+(cls==='when'?wIcon('clock','aq-request-menu__ic'):'')+tcell(v)+'</span>'};
+ var acc='<div class="aq-request-menu__phone"><p class="aq-request-menu__key" aria-hidden="true"><span>'+tx(C[1]||'')+'</span>'+chip('when',C[2]||'When')+chip('cost',C[3]||'Cost')+'</p>'
+  +'<ol class="aq-request-menu__acc" data-pk-picker="accordion" data-pk-open="0">'+R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length,wS=when.length===n,cS=cost.length===n;
+   var sit=r[0]&&typeof r[0]==='object'?r[0].t:r[0];
+   return '<li class="aq-request-menu__item" data-pk-item="'+e(sit)+'"><h3 class="aq-request-menu__ah"><button type="button" class="aq-request-menu__hb" data-pk-head><span class="aq-request-menu__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-request-menu__at">'+tx(sit)+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h3>'
+    +'<div class="aq-request-menu__ab" data-pk-body><ul class="aq-request-menu__gets">'+got.map(function(g,j){var w=wS?when[j]:(j?null:r[2]),c=cS?cost[j]:(j?null:r[3]);
+     return '<li><p class="aq-request-menu__gt">'+tcell(cap(g))+'</p>'+(w!=null||c!=null?'<p class="aq-request-menu__chips"><span class="aq-request-menu__sr">'+tx(C[2]||'When')+': </span>'+chip('when',w)+(c!=null?'<span class="aq-request-menu__sr">'+tx(C[3]||'Cost')+': </span>':'')+chip('cost',c)+'</p>':'')+'</li>'}).join('')+'</ul></div></li>'}).join('')+'</ol></div>';
  return sec('<div class="aq-request-menu-wrap" data-theme="light"><div class="aq-request-menu__mast">'+H+'</div>'
   +'<div class="aq-request-menu"><figure class="aq-request-menu__fig" aria-hidden="true">'+figure()+'</figure>'
-  +'<div class="aq-request-menu__body">'+wFold(b,R.length,table,b.fold_noun||'rows')+'</div></div></div>','aq-band--limestone aq-request-menu-sec')};
+  +'<div class="aq-request-menu__body">'+wFold(b,R.length,table,b.fold_noun||'rows')+acc+'</div></div></div>','aq-band--limestone aq-request-menu-sec')};
+/* The phone accordion follows the form: ticking a situation on the page's form opens the same situation here (a row
+   that is already open stays open: PhoneKit's open() toggles an open accordion row shut) */
+if(typeof document!=='undefined')document.addEventListener('change',function(ev){var x=ev.target;if(!x||x.type!=='radio'||!x.checked||!window.AQpk)return;
+ [].forEach.call(document.querySelectorAll('.aq-request-menu__acc'),function(root){if(!AQpk.on(root))return;
+  [].forEach.call(root.querySelectorAll(':scope > [data-pk-item]'),function(it,i){if(it.getAttribute('data-pk-item')===x.value&&!it.classList.contains('is-pk-open'))AQpk.open(root,i)})})});
 })();
 /* Look "response-clock" -> ResponseClock (design-system/components/ResponseClock): what happens when something goes
    wrong, read off the response clock. On a navy band a large stopwatch dial (minute ticks, crown and buttons, one
@@ -4811,14 +6006,30 @@ LOOKS['response-clock']=function(b,H){var I=b.items||[],n=I.length,K='aq-respons
    lane is drawn in flow. Stops sit at even spacing: the lanes show the order of events, never a time scale.
    Fields, as a table: cols [your request, first response, what follows] (the two value labels head the lane zones),
    rows [request, first response, what follows], intro, nav. Cells may be {t, link, intent}. Design system:
-   components/ResponseLanes. */
+   components/ResponseLanes.
+   Notice calendar (pass 12, concept project-plan.2 / audit #38): a table whose second column is a notice ("Notice")
+   is drawn as a notice calendar instead: [event, notice, what you receive]. One navy timeline runs through every
+   event, each event a pin on it in project order (even spacing: order, never a time scale); back from each pin a
+   limestone bracket stands for its notice period, and the document you receive hangs off the bracket's start like a
+   slip, the notice written under the bracket. Phones: the timeline runs down a left rail, each event's pin on it and
+   its bracket a limestone span beside the rail along its notice and document. */
 (function(){
 /* clauses: a cell split at "; " outside brackets and parentheses ("Annex 15, 11; GUI-0029, 7" inside a parenthesis stays one) */
 function clauses(c){if(c&&typeof c==='object')return [c];var s=String(c==null?'':c),o=[],d=0,st=0;
  for(var i=0;i<s.length;i++){var ch=s[i];if(ch==='('||ch==='[')d++;else if((ch===')'||ch===']')&&d)d--;else if(ch===';'&&!d&&/\s/.test(s[i+1]||'')){o.push(s.slice(st,i));st=i+1}}
  o.push(s.slice(st));return o.map(function(x){return x.trim()}).filter(function(x){return x!==''})}
 function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
+function noticeCal(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,num=function(i){return (i<9?'0':'')+(i+1)},sr=function(t){return t?'<span class="aq-response-lanes__sr">'+tx(t)+': </span>':''};
+ var ev=R.map(function(r,i){return '<li class="aq-response-lanes__ev" style="--i:'+i+'">'
+   +'<h3 class="aq-response-lanes__evt"><span class="aq-response-lanes__evn" aria-hidden="true">'+num(i)+'</span><span class="aq-response-lanes__evw">'+tcell(r[0])+'</span></h3>'
+   +'<span class="aq-response-lanes__mark" aria-hidden="true"><span class="aq-response-lanes__br"></span><span class="aq-response-lanes__pin"></span></span>'
+   +'<p class="aq-response-lanes__nt">'+sr(C[1])+tcell(cap(r[1]))+'</p>'
+   +(r[2]!=null&&r[2]!==''?'<p class="aq-response-lanes__doc">'+sr(C[2])+tcell(cap(r[2]))+'</p>':'')+'</li>'}).join('');
+ var ki=function(k,t){return t?'<span class="aq-response-lanes__ki"><span class="'+k+'"></span>'+tx(t)+'</span>':''};
+ var key='<p class="aq-response-lanes__key" aria-hidden="true">'+ki('aq-response-lanes__kp',C[0])+ki('aq-response-lanes__kb',C[1])+ki('aq-response-lanes__kd',C[2])+'</p>';
+ return sec(H+'<div class="aq-response-lanes is-cal">'+key+'<ol class="aq-response-lanes__cal" style="--n:'+n+'">'+ev+'</ol></div>','aq-response-lanes-sec aq-response-lanes-sec--cal')}
 LOOKS['response-lanes']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false;
+ if(/notice/i.test(String(C[1]||''))&&!R.some(function(r){return /^Severity\s+\d+:/.test(String(r[0]&&r[0].t||r[0]||''))}))return noticeCal(b,H);
  var rows=R.map(function(r,i){var t=r[0]&&typeof r[0]==='object'?r[0].t:String(r[0]||''),m=t.match(/^Severity\s+(\d+):\s*(.*)$/),sev=m?+m[1]:0;
   var brk=!sev&&!seen&&i>0;if(!sev)seen=true;
   function zone(c,k){var E=clauses(c);return '<div class="aq-response-lanes__zone" data-zone="'+k+'"><p class="aq-response-lanes__zk">'+tx(C[k]||'')+'</p><ol class="aq-response-lanes__stops">'
@@ -4840,7 +6051,10 @@ LOOKS['response-lanes']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false;
    Fields as a router table: h, intro, cols [upgrade, what changes, requalification, downtime, start with], rows (the
    last cell {t, link}). parts (optional): one entry per row naming the stage(s) it changes, space-separated (pre,
    gen, tank, loop, uv, toc, panel); a row without parts leaves the whole plant as existing.
-   Phones: no tabs; every upgrade is a card with its terms and its stage drawn small. */
+   Phones (pass 12, audit svc-upgrades.1): the blueprint stays, rendered 552 px wide and cropped to the column round
+   the camera's centre (where the picked upgrade sits), the key plan moved into the crop (CSS, --ky); the tabs become a
+   row of numbered 44 px chips (names kept for screen readers; the panel title names the upgrade); one panel, the
+   picked one. The small per-card stage drawings (vpMini) are no longer shown. */
 var rpN=0;
 /* the camera: a rectangle in sheet units framing the picked upgrade's stages (tx, ty, z) and the key-plan window */
 function rpCam(r,VW,VH,PW,PH){if(!r)return {tx:0,ty:Math.round((VH-PH)/2),z:1};
@@ -4863,7 +6077,7 @@ LOOKS['retrofit-plant']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[
  var drawing='<g id="'+id+'-plant" transform="scale('+sc.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+order.join('').replace(/<g class="(aq\-iso__(?:part|pipe)[^"]*)"([^>]*?data-iso-(?:id|to)="([^"]+)")/g,function(m,c,rest,k){return on0.indexOf(k)>=0?'<g class="'+c+' is-lit"'+rest:m})+'</g>';
  var sheet=isoSheet(VW,VH,{grid:'iso',gridStep:22,title:false,m:0,band:8,cols:9,rows:3});
  var clip='<defs><clipPath id="'+id+'-clip"><rect x="8" y="8" width="'+(VW-16)+'" height="'+(VH-16)+'"/></clipPath></defs>';
- var key='<g class="'+K+'__key" transform="translate('+kx+' '+ky+')"><rect class="'+K+'__kbox" x="-10" y="-10" width="'+(KW+20)+'" height="'+(KH+34)+'"/>'
+ var key='<g class="'+K+'__key" transform="translate('+kx+' '+ky+')" style="--ky:'+ky+'px"><rect class="'+K+'__kbox" x="-10" y="-10" width="'+(KW+20)+'" height="'+(KH+34)+'"/>'
   +'<g class="'+K+'__kplant" transform="scale('+ks.toFixed(4)+')"><use href="#'+id+'-plant"/></g>'
   +'<rect class="'+K+'__kwin" x="0" y="0" width="1" height="1" vector-effect="non-scaling-stroke" style="'+win(cams[0])+'"/>'
   +'<text class="aq-iso__sheet-t" x="0" y="'+(KH+14)+'" dominant-baseline="central">KEY PLAN</text></g>';
@@ -5052,7 +6266,9 @@ document.addEventListener('focusin',function(ev){var li=ev.target.closest&&ev.ta
    signs and labels the sheet's signature boxes (first hold: the left box, second: the right).
    Pass 9b (concept research/pass9b/concepts/cmp-documentation.2.png, its numbered rhythm): steps lead at the left, the
    sheet stands at the right (style.css).
-   Phones: the sheet sits over the steps and plays its marks through once. */
+   Phones (pass 12): the sheet is a 140 px sticky strip under the header (PhoneKit sticky figure): a thumbnail of the
+   whole sheet beside its revision rows, both filling step by step as each step reaches the reading line. Under 600 px
+   only (data-pk-bp): 600-860 px keep the full sheet. */
 LOOKS['revision-sheet']=(function(){
  function P(d,c){return '<path class="aq-revision-sheet'+'__'+(c||'ln')+'" d="'+d+'"/>'}
  function T(x,y,s,c,a){return '<text class="aq-revision-sheet__lbl'+(c?' aq-revision-sheet__lbl--'+c:'')+'" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'}
@@ -5093,18 +6309,21 @@ LOOKS['revision-sheet']=(function(){
   return '<svg class="aq-revision-sheet__svg" viewBox="0 0 400 520" aria-hidden="true" focusable="false">'+o+'</svg>'}
  return function(b,H){var I=b.items||[],n=I.length,all='';for(var k=1;k<=n;k++)all+=' is-s'+k;
   var steps=I.map(function(it,i){var who=it.hold?String(it.hold):'';
-   return '<li class="aq-revision-sheet__step" data-s="'+(i+1)+'"><span class="aq-revision-sheet__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   return '<li class="aq-revision-sheet__step" data-s="'+(i+1)+'" data-pk-row="'+(i+1)+'"><span class="aq-revision-sheet__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
     +'<div class="aq-revision-sheet__body"><h3 class="aq-revision-sheet__t">'+(it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t))+'</h3>'+(it.d?'<p class="aq-revision-sheet__d">'+tx(it.d)+'</p>':'')
     +(who?'<p class="aq-revision-sheet__hold"><span class="aq-revision-sheet__hk">Hold</span> <span>Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span></p>':'')+'</div></li>'}).join('');
-  return sec(H+'<div class="aq-revision-sheet" data-n="'+n+'"><div class="aq-revision-sheet__fig"><div class="aq-revision-sheet__paperwrap'+all+'" data-theme="light">'+sheet(I)+'</div></div>'
+  /* phone strip: the revision rows beside the thumbnail, one per step (number and a tick as it is done) */
+  var revs='<ol class="aq-revision-sheet__revs" aria-hidden="true">'+I.map(function(it,i){return '<li class="aq-revision-sheet__rv" data-pk-key="'+(i+1)+'"><span>'+(i<9?'0':'')+(i+1)+'</span></li>'}).join('')+'</ol>';
+  return sec(H+'<div class="aq-revision-sheet" data-n="'+n+'" data-pk-sticky data-pk-h="140" data-pk-bp="599"><div class="aq-revision-sheet__fig" data-pk-fig><div class="aq-revision-sheet__paperwrap'+all+'" data-theme="light">'+sheet(I)+'</div>'+revs+'</div>'
    +'<ol class="aq-revision-sheet__steps" role="list">'+steps+'</ol></div>','aq-revision-sheet-sec')}})();
 /* The sheet follows the step nearest the middle of the screen (desktop) or the step pointed at; without script it
    shows every step's marks. */
 function rsSet(w,s){var p=w.querySelector('.aq-revision-sheet__paperwrap'),n=+w.getAttribute('data-n')||0;if(!p||w._rsOn===s)return;w._rsOn=s;
  for(var k=1;k<=n;k++)p.classList.toggle('is-s'+k,k<=s);
- [].forEach.call(w.querySelectorAll('.aq-revision-sheet__step'),function(li){var d=+li.getAttribute('data-s');li.classList.toggle('is-on',d===s);li.classList.toggle('is-past',d<s)})}
+ [].forEach.call(w.querySelectorAll('.aq-revision-sheet__step'),function(li){var d=+li.getAttribute('data-s');li.classList.toggle('is-on',d===s);li.classList.toggle('is-past',d<s)});
+ [].forEach.call(w.querySelectorAll('.aq-revision-sheet__rv'),function(li){li.classList.toggle('is-done',+li.getAttribute('data-pk-key')<=s)})}
 function rsScan(){var mid=innerHeight*0.5;[].forEach.call(document.querySelectorAll('.aq-revision-sheet'),function(w){
- if(w._rsHover||w._rsAuto)return;if(innerWidth<860){rsSet(w,+w.getAttribute('data-n'));return}
+ if(w._rsHover||w._rsAuto||w.hasAttribute('data-pk-on'))return;if(innerWidth<860){rsSet(w,+w.getAttribute('data-n'));return}
  var L=w.querySelectorAll('.aq-revision-sheet__step'),s=0;[].forEach.call(L,function(li){if(li.getBoundingClientRect().top<mid)s=+li.getAttribute('data-s')});
  var r=w.getBoundingClientRect();if(r.bottom<mid)s=L.length;rsSet(w,Math.max(1,s))})}
 if(typeof document!=='undefined'&&document.addEventListener){var rsQ=0;
@@ -5113,6 +6332,9 @@ if(typeof document!=='undefined'&&document.addEventListener){var rsQ=0;
  document.addEventListener('mouseover',function(ev){var li=ev.target.closest&&ev.target.closest('.aq-revision-sheet__step');if(!li)return;var w=li.closest('.aq-revision-sheet');w._rsHover=1;rsSet(w,+li.getAttribute('data-s'))});
  document.addEventListener('mouseout',function(ev){var li=ev.target.closest&&ev.target.closest('.aq-revision-sheet__step');if(!li||(ev.relatedTarget&&li.contains(ev.relatedTarget)))return;var w=li.closest('.aq-revision-sheet');w._rsHover=0;rsTick()});
  if(typeof MutationObserver!=='undefined')new MutationObserver(rsTick).observe(document.documentElement,{childList:true,subtree:true});
+ /* phones: PhoneKit names the step on its reading line; the strip's sheet takes that step's marks (off: back to the scan) */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-revision-sheet'))return;
+  if(ev.detail&&ev.detail.on&&ev.detail.key){w._rsAuto=0;rsSet(w,+ev.detail.key)}else{w._rsOn=null;rsTick()}});
  window.AQrevsheet={set:rsSet,scan:rsScan}}
 /* Look "riser-valves" -> RiserValves (design-system/components/RiserValves): a table of response times by request
    (your request, first response, what follows) on a navy sheet with one riser pipe (pass 9b concept contact-service.2).
@@ -5157,25 +6379,33 @@ LOOKS['riser-valves']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false,n=R
    Fields (a table block): h, intro, cols [role, what you do, must have, base and travel, pay and opening], rows
    (strings; the last cell "pay · status"). Best for 1 to 6 roles (one or two rows of three); more roles still draw.
    The pipe is laid out from the rendered cards (ResizeObserver), so it follows wrapping; without it the cards stand
-   alone. Container under 860 px: the cards stack and the loop runs down their left and back up their right. */
+   alone. Phones (pass 12, S11/S12/S14, PhoneKit accordion): the roles are collapsed rows, each a 48 px+ head with the
+   role (the number line gives way to the branch), its status (valve and text) and the last two columns (base, pay) as one line each, marked by the legend over
+   the list that names those two columns once; tapping a row opens what you do and what you must have. The loop is one
+   supply-and-return pair down the left (a single frame), each row's branch and valve off the inner pipe. */
 (function(){
 var NS='http://www.w3.org/2000/svg',P='aq-role-loop'+'__';
 function rlState(s){s=String(s||'').trim();return /^open\b/i.test(s)?'open':/^closed\b/i.test(s)?'closed':'unset'}
 function rlValve(){return '<svg class="'+P+'vk" viewBox="0 0 20 14" aria-hidden="true" focusable="false"><path d="M4 4L16 12V4L4 12Z"/><path d="M10 8V2M7 2H13"/></svg>'}
 LOOKS['role-loop']=function(b,H){var R=b.rows||[],C=b.cols||[],n=R.length;if(!n)return sec(H,'aq-band--navy');
  var num=function(i){return (i<9?'0':'')+(i+1)},last=C.length-1;
+ var sumL=C.length-2;/* the last two columns (base, pay) sum up a role on phones */
  var li=R.map(function(r,i){var cells=r||[],pay=cells[last],stx='',pt=pay;
   if(typeof pay==='string'){var k=pay.lastIndexOf(' · ');if(k>-1){pt=pay.slice(0,k);stx=pay.slice(k+3)}}
   var stt=rlState(stx);
   var dl=C.slice(1).map(function(c,j){var v=j+1===last?pt:cells[j+1];if(v==null||v==='')return '';
-   return '<div class="'+P+'f"><dt>'+tx(c)+'</dt><dd>'+tcell(v)+'</dd></div>'}).join('');
-  return '<li class="'+P+'bay" data-i="'+i+'" data-valve="'+stt+'" style="--i:'+i+'">'
+   return '<div class="'+P+'f'+(j+1>=sumL?' is-sum':'')+'"><dt>'+tx(c)+'</dt><dd>'+tcell(v)+'</dd></div>'}).join('');
+  var sum=[sumL,last].map(function(c,k){var v=c===last?pt:cells[c];return v==null||v===''||c<1?'':'<span class="'+P+'hl is-'+(k?'pay':'base')+'"><span class="'+P+'sr">'+tx(C[c]||'')+': </span>'+tcell(v)+'</span>'}).join('');
+  var head='<h3 class="'+P+'ph"><button type="button" class="'+P+'hd" data-pk-head><span class="'+P+'ht">'+tcell(cells[0])+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span>'
+   +(stx?'<span class="'+P+'st is-'+stt+'">'+rlValve()+'<span>'+tx(stx)+'</span></span>':'')+sum+'</button></h3>';
+  return '<li class="'+P+'bay" data-i="'+i+'" data-pk-item="'+i+'" data-valve="'+stt+'" style="--i:'+i+'">'
    +'<p class="'+P+'no" aria-hidden="true"><span>'+num(i)+'</span> / '+num(n-1)+'</p>'
-   +'<h3 class="'+P+'t">'+tcell(cells[0])+'</h3>'
-   +(stx?'<p class="'+P+'st is-'+stt+'">'+rlValve()+'<span>'+tx(stx)+'</span></p>':'')
-   +'<dl class="'+P+'dl">'+dl+'</dl></li>'}).join('');
+   +head+'<h3 class="'+P+'t" data-pk-desk>'+tcell(cells[0])+'</h3>'
+   +(stx?'<p class="'+P+'st is-'+stt+'" data-pk-desk>'+rlValve()+'<span>'+tx(stx)+'</span></p>':'')
+   +'<div class="'+P+'body" data-pk-body><dl class="'+P+'dl">'+dl+'</dl></div></li>'}).join('');
+ var legend=sumL>0?'<p class="'+P+'legend" aria-hidden="true"><span class="'+P+'hl is-base">'+tx(C[sumL]||'')+'</span><span class="'+P+'hl is-pay">'+tx(C[last]||'')+'</span></p>':'';
  var svg='<svg class="'+P+'pipe" aria-hidden="true" focusable="false"><g class="'+P+'segs"></g><path class="'+P+'wall"/><path class="'+P+'bore"/><path class="'+P+'water"/><g class="'+P+'stubs"></g></svg>';
- return sec(H+'<div class="aq-role-loop">'+svg+'<ol class="'+P+'bays" role="list">'+li+'</ol></div>','aq-band--navy aq-role-loop-sec')};
+ return sec(H+'<div class="aq-role-loop">'+svg+legend+'<ol class="'+P+'bays" role="list" data-pk-picker="accordion" data-pk-open="-1">'+li+'</ol></div>','aq-band--navy aq-role-loop-sec')};
 
 /* rounded polyline: corners cut at radius r with a quadratic through the corner; closed paths start at Q[0], which
    the layout keeps on a straight run */
@@ -5194,11 +6424,12 @@ function lay(w){var ol=w.querySelector('.'+P+'bays'),svg=w.querySelector('.'+P+'
  var wr=w.getBoundingClientRect();if(!wr.width)return;
  var cards=[].slice.call(ol.children),rc=cards.map(function(c){var r=c.getBoundingClientRect();return {l:r.left-wr.left,r:r.right-wr.left,t:r.top-wr.top,b:r.bottom-wr.top}});
  var rows=[];rc.forEach(function(r,i){var row=null;rows.forEach(function(x){if(Math.abs(x.t-r.t)<4)row=x});if(!row){row={t:r.t,b:r.b,c:[]};rows.push(row)}row.c.push(i);row.b=Math.max(row.b,r.b)});
- var C=rows[0].c.length,a=24,rr=16,Q=[],seg=[],stub=[],cs=getComputedStyle(ol),gx=parseFloat(cs.columnGap)||64,ys=function(i){return rc[i].t+8};
+ var C=rows[0].c.length,a=24,rr=16,Q=[],seg=[],stub=[],cs=getComputedStyle(ol),gx=parseFloat(cs.columnGap)||64,
+  nos=cards.map(function(c){var no=c.querySelector('.'+P+'no');return no&&no.offsetParent!==null?no:null}),ys=function(i){return rc[i].t+(nos[i]?8:22)};
  svg.setAttribute('viewBox','0 0 '+wr.width.toFixed(1)+' '+wr.height.toFixed(1));
- if(C===1){/* stacked: down the cards' left, back up their right */
-  var xL=rc[0].l-32,xR=rc[0].r+a-4,yT=rc[0].t-a,yB=rc[rc.length-1].b+a;
-  Q=[[xL,rc[0].t],[xL,yB],[xR,yB],[xR,yT],[xL,yT]];
+ if(C===1){/* stacked (phones): one supply-and-return pair down the cards' left, a single frame */
+  var xL=rc[0].l-24,xO=xL-12,yT=rc[0].t-a/2,yB=rc[rc.length-1].b+a/2;
+  Q=[[xL,rc[0].t],[xL,yB],[xO,yB],[xO,yT],[xL,yT]];
   rc.forEach(function(r,i){seg[i]=[[xL,r.t-8],[xL,r.b+8]];stub[i]=[xL,ys(i),r.l]});
  }else{/* lanes: verticals in the column gaps (and outside the outer columns), horizontals a quarter row gap off the cards */
   var cols=rows[0].c.map(function(i){return rc[i]}),xv=[cols[0].l-gx/2];
@@ -5213,7 +6444,7 @@ function lay(w){var ol=w.querySelector('.'+P+'bays'),svg=w.querySelector('.'+P+'
  }
  var d=rlPath(Q,rr,true);['wall','bore','water'].forEach(function(k){svg.querySelector('.'+P+k).setAttribute('d',d)});
  var sg=svg.querySelector('.'+P+'segs'),st=svg.querySelector('.'+P+'stubs');
- cards.forEach(function(card,i){if(!seg[i])return;var v=card.getAttribute('data-valve')||'unset',s=stub[i],no=card.querySelector('.'+P+'no'),x0=s[0]+5,x1=s[2]+(no?parseFloat(getComputedStyle(no).paddingLeft)||0:0)-6,xm=(x0+x1)/2,y=s[1];
+ cards.forEach(function(card,i){if(!seg[i])return;var v=card.getAttribute('data-valve')||'unset',s=stub[i],no=nos[i],x0=s[0]+5,x1=s[2]+(no?parseFloat(getComputedStyle(no).paddingLeft)||0:0)-(no?6:3),xm=(x0+x1)/2,y=s[1];
   rlEl(sg,'path',P+'seg',i).setAttribute('d',rlPath(seg[i],rr,false));
   var g=rlEl(st,'g',P+'stub is-'+v,i);g.setAttribute('class',P+'stub is-'+v);
   g.innerHTML='<path class="'+P+'sw" d="M'+x0+' '+y+'H'+x1+'"/><path class="'+P+'sb" d="M'+x0+' '+y+'H'+x1+'"/>'
@@ -5242,7 +6473,12 @@ document.addEventListener('pointerout',function(ev){var c=ev.target.closest&&ev.
    "turbulent" (lead), "slope" (a falling run to a low-point drain, slope triangle), "deadleg" (a branch off the main
    with its L and D dimensions), "sanitize" (the loop with a thermometer at its coldest point), "valve" (a zero-static
    point-of-use valve on the main), "vent" (tank head with its vent filter), "monitor" (instrument bubbles on the
-   return: CE, TE, FE and a dashed AE for TOC). A row without fig gets no figure.
+   return: CE, TE, FE and a dashed AE for TOC). A row without fig gets the figure its name asks for
+   (pass 12: "sanitiz" -> "sanitemp", the sanitization level along the run checked at the coldest point; "point of use"
+   -> "valve", or "pou" (an open, dashed seat) while the row's value is still a placeholder; "sample" -> "sample", a
+   sample point on the main, its valve drawn open until its design is chosen), else no figure box at all.
+   Phones (pass 12): each card a row, its figure cropped square at 96 px on the left, the basis behind a "Basis +"
+   head (PhoneKit accordion); the lead pipe stays inside the gutter.
    Fields (a spec block): h, caption, cols, rows [{p, v, m, rule, hl, fig, link, link_label}], fold, fold_noun.
    The fold applies on phones only (desktop shows every rule). */
 (function(){
@@ -5267,6 +6503,17 @@ var FIG={
  vent:function(){return p('M24 120V94C24 68 70 54 120 54C170 54 216 68 216 94V120','ln')+p('M112 54V40M128 54V40M104 40H136','ln')
   +p('M106 10H134V40H106Z','fill')+p('M112 14V36M116 14V36M120 14V36M124 14V36M128 14V36','th')+p('M150 30V8M145 13L150 8L155 13','dim')
   +p('M30 104H210','fl fl-hid')},
+ /* pass 12: the sanitization level along the run (temperature or dose): high where it enters, lowest at the far
+    end, held under the dashed maximum, checked by the TE at the coldest point */
+ sanitemp:function(){return p('M10 22H230M10 38H230','ln')+p('M10 30H230','fl')
+  +p('M10 108H230','dim')+p('M14 62C70 64 130 72 196 82L230 86V108H14Z','band')+p('M14 62C70 64 130 72 196 82L230 86','fl')
+  +p('M10 56H230','lim')+p('M196 82V38','dim')+'<circle class="aq-rule-figures__ring" cx="196" cy="82" r="4"/>'
+  +'<circle class="'+K+'__bub" cx="214" cy="60" r="15"/>'+t(214,64,'TE','is-mid')+p('M199 60H196','ln')+p('M60 30m-5 -4l6 4l-6 4M140 30m-5 -4l6 4l-6 4','fl')},
+ /* pass 12: a sample point on the main; the valve is drawn open (a dashed seat) until its design is chosen in the copy */
+ sample:function(){return p('M10 30H230M10 46H230','ln')+p('M10 38H230','fl')
+  +p('M104 46H136V68H104Z','open')+p('M120 76q-3 4 0 6q3-2 0-6','fl')},
+ /* pass 12: a point-of-use valve whose type the copy still leaves open: an open, dashed seat on the main, its outlet down */
+ pou:function(){return p('M10 30H230M10 46H230','ln')+p('M10 38H230','fl')+p('M104 46H136V68H104Z','open')+p('M120 68V84','ln')},
  monitor:function(){var o=p('M10 70H230M10 86H230','ln')+p('M10 78H230','fl');
   [['CE',44],['TE',96],['FE',148],['AE',200]].forEach(function(q,i){o+=p('M'+q[1]+' 50V70','ln')+'<circle class="'+K+'__'+(i===3?'bub is-opt':'bub')+'" cx="'+q[1]+'" cy="34" r="16"/>'+t(q[1],38,q[0],'is-mid')});return o}
 };
@@ -5283,7 +6530,12 @@ function lead(){var W=1200,o='',s=7;function r(){s=(s*9301+49297)%233280;return 
  return '<svg class="aq-rule-figures__pipe" viewBox="0 0 '+W+' 200" preserveAspectRatio="xMinYMid slice" aria-hidden="true" focusable="false">'
   +walls+'<g class="aq-rule-figures__streaks">'+o+'</g><g class="aq-rule-figures__eddies">'+ed+'</g>'
   +p('M'+X+' 28V172','dim')+'<g class="aq-rule-figures__prof">'+prof+'</g>'+p(env,'env')+'</svg>'}
-function fig(n){return FIG[n]?'<svg class="aq-rule-figures__fig" viewBox="'+VB+'" aria-hidden="true" focusable="false">'+FIG[n]()+'</svg>':''}
+/* phones: each figure cropped square on its subject, so its letters render at 12 px or more in a 96 px box */
+var PV={slope:'76 0 130 130',deadleg:'58 -2 130 130',sanitize:'110 -5 130 130',sanitemp:'100 0 130 130',valve:'55 -2 130 130',sample:'55 -2 130 130',pou:'55 -2 130 130',vent:'55 -5 130 130',monitor:'28 -5 140 140'};
+function fig(n){return FIG[n]?'<svg class="aq-rule-figures__fig" viewBox="'+VB+'" aria-hidden="true" focusable="false">'+FIG[n]()+'</svg>'
+  +'<svg class="aq-rule-figures__fig aq-rule-figures__fig--ph" viewBox="'+(PV[n]||VB)+'" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">'+FIG[n]()+'</svg>':''}
+/* a rule without a fig field gets the figure its name asks for (pass 12), each at most once per block */
+function figFor(r,used){if(r.fig)return r.fig;var n=String(r.p||''),k=/sanitiz/i.test(n)?'sanitemp':/point.of.use/i.test(n)?(/^\s*\[/.test(r.v)?'pou':'valve'):/sample/i.test(n)?'sample':'';return k&&!used[k]?k:''}
 function golink(r){return r.link&&wp(r.link)?' <a class="aq-rule-figures__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':''}
 LOOKS['rule-figures']=function(b,H){
  var R=b.rows||[],C=b.cols||['Rule','Design value','Basis'],li=-1;R.forEach(function(r,i){if(li<0&&r.hl)li=i});if(li<0)li=0;
@@ -5293,13 +6545,77 @@ LOOKS['rule-figures']=function(b,H){
  var band='<div class="aq-rule-figures__lead"><div class="aq-rule-figures__lead-text"><p class="aq-rule-figures__no" aria-hidden="true">'+num(li)+'</p>'
   +'<h3 class="aq-rule-figures__lead-p">'+tx(L.p)+'</h3>'+(L.rule?'<p class="aq-rule-figures__rule aq-rule-figures__rule--lead">'+tx(L.rule)+'</p>':'')+dl(L)+'</div>'
   +'<div class="aq-rule-figures__lead-art">'+lead()+'</div></div>';
- var cards=R.map(function(r,i){if(i===li)return '';return fli('<li class="aq-rule-figures__card">',b,i)
-  +'<div class="aq-rule-figures__figbox">'+fig(r.fig)+'</div>'
+ var used={};R.forEach(function(r){if(r.fig)used[r.fig]=1});
+ /* phones (PhoneKit accordion, all closed): each card's basis sits behind a "Basis +" head (the basis column label) */
+ var pdl=function(r){var bs=r.m||r.link;return '<dl class="aq-rule-figures__dl"><div><dt>'+e(C[1]||'Design value')+'</dt><dd class="aq-rule-figures__v">'+tx(r.v)+'</dd></div>'
+  +'</dl>'+(bs?'<button type="button" class="aq-rule-figures__bh" data-pk-head aria-label="'+e(C[2]||'Basis')+': '+e(String(r.p||'').replace(/\[[^\]]*\]/g,'').replace(/,\s*$/,'').trim())+'">'+e(C[2]||'Basis')+'<span class="aq-phone-kit__chev aq-phone-kit__chev--plus" aria-hidden="true"></span></button>'
+   +'<dl class="aq-rule-figures__dl" data-pk-body><dt>'+e(C[2]||'Basis')+'</dt><dd class="aq-rule-figures__m">'+tx(r.m||'')+golink(r)+'</dd></dl>':'')};
+ var cards=R.map(function(r,i){if(i===li)return '';var f=figFor(r,used);if(f)used[f]=1;
+  return fli('<li class="aq-rule-figures__card'+(f&&FIG[f]?'':' is-nofig')+'" data-pk-item="'+i+'">',b,i)
+  +(f&&FIG[f]?'<div class="aq-rule-figures__figbox">'+fig(f)+'</div>':'')
   +'<p class="aq-rule-figures__head"><span class="aq-rule-figures__n" aria-hidden="true">'+num(i)+'</span><span class="aq-rule-figures__p">'+tx(r.p)+'</span></p>'
-  +(r.rule?'<p class="aq-rule-figures__rule">'+tx(r.rule)+'</p>':'')+dl(r)+'</li>'}).join('');
- var list='<ol class="aq-rule-figures__grid" role="list">'+cards+'</ol>';
+  +(r.rule?'<p class="aq-rule-figures__rule">'+tx(r.rule)+'</p>':'')+pdl(r)+'</li>'}).join('');
+ var list='<ol class="aq-rule-figures__grid" role="list" data-pk-picker="accordion" data-pk-open="-1">'+cards+'</ol>';
  var cap=b.caption?'<p class="aq-rule-figures__cap" aria-hidden="true">'+tx(b.caption)+' · '+R.length+' '+e(b.fold_noun||'rules')+'</p>':'';
  return sec(H+'<div class="aq-rule-figures">'+cap+band+wFold(b,R.length,list,b.fold_noun||'rules')+'</div>','aq-rule-figures-sec')};
+})();
+/* Look "scope-seam" -> ScopeSeam (design-system/components/ScopeSeam): a spec block of what fits the package and what
+   does not, after pass 12 concept 203 (ind-personal-care.fit). The band splits navy and limestone; the divide is the
+   seam where the package's material stops. In the navy half an ambient loop is drawn whole (tank, pump, loop, flow
+   arrows); in the limestone half a loop the package cannot serve is drawn dashed, outside the seam; two tie-in nodes sit
+   on the seam where the two meet. Under the drawing each half lists its own rows, numbered down the page; the limit row
+   (the condition that is the seam itself) sits on the seam across both grounds. Each loop is named by its half's first
+   row (no new words). Phones: the navy block (head, package rows, then the ambient loop) over the limestone block; the
+   seam is a rule carrying the two nodes and its name; the loop's branches cross it through the nodes into the dashed
+   loop, then the limit card and the other rows. Every row
+   shows on phones (no fold: the limit and both site rows are what the section is for).
+   Fields: h, intro, rows [{p, v, m, side, link, link_label}] (side: "package" | "site" | "limit"; default site), sides
+   [package label, site label], seam (the seam's name). cols, fold and fold_noun are read by other looks, not here. */
+(function(){
+var K='aq-scope-seam';
+function ar(x,y,d,c){return '<path class="'+K+'__arrow'+(c?' '+c:'')+'" d="M'+(x-5*d)+' '+(y-5)+'L'+x+' '+y+'L'+(x-5*d)+' '+(y+5)+'"/>'}
+function dn(x,y){return '<path class="'+K+'__arrow is-p" d="M'+(x-5)+' '+(y-5)+'L'+x+' '+y+'L'+(x+5)+' '+(y-5)+'"/>'}
+/* the ambient loop, inside: storage tank, pump, the loop round to two branches that end at the seam (x 600). Phones
+   (is-p): the drawing sits right above the seam, so the two branches turn down (x 570, 540) and leave by the bottom edge,
+   crossing the seam rule through its two nodes (90 % and 95 % of the drawing's width). */
+function drawIn(){return '<svg class="'+K+'__svg" viewBox="0 0 600 240" aria-hidden="true" focusable="false">'
+ +'<path class="'+K+'__loop" d="M126 196H180M216 196H500Q520 196 520 176V64Q520 44 500 44H118Q98 44 98 64V78"/>'
+ +'<path class="'+K+'__loop is-d" d="M520 92H600M520 152H600"/>'
+ +'<path class="'+K+'__loop is-p" d="M520 92H570V262M520 152H540V262"/>'
+ +'<rect class="'+K+'__tank" x="70" y="78" width="56" height="130" rx="12"/><path class="'+K+'__tankl" d="M70 104H126"/>'
+ +'<circle class="'+K+'__pump" cx="198" cy="196" r="18"/><path class="'+K+'__pumpt" d="M190 184L212 196L190 208Z"/>'
+ +'<path class="'+K+'__valve" d="M300 34L300 54L324 34L324 54Z"/>'
+ +ar(380,196,1)+ar(560,92,1,'is-d')+ar(560,152,1,'is-d')+ar(240,44,-1)+dn(570,224)+dn(540,224)
+ +'<rect class="'+K+'__node" x="593" y="85" width="14" height="14"/><rect class="'+K+'__node" x="593" y="145" width="14" height="14"/></svg>'}
+/* the loop outside: dashed, from the two tie-ins round a heat exchanger and back. Phones (is-p): the tie-ins come
+   down from above the top edge (x 540, 570; the overrun is clipped at the seam rule) into the loop's right side. */
+function drawOut(){return '<svg class="'+K+'__svg" viewBox="0 0 600 240" aria-hidden="true" focusable="false">'
+ +'<path class="'+K+'__dash is-d" d="M0 92H80M0 152H80M80 92V44H500V196H80V152"/>'
+ +'<path class="'+K+'__dash is-p" d="M540 -600V92H500M570 -600V152H500M500 92V44H80V196H500V152"/>'
+ +'<circle class="'+K+'__hx" cx="150" cy="122" r="22"/><path class="'+K+'__hxz" d="M128 122L136 112L144 132L152 112L160 132L166 122L172 122"/>'
+ +'<path class="'+K+'__dash" d="M150 100V44M150 144V196"/></svg>'}
+LOOKS['scope-seam']=function(b,H){
+ var R=b.rows||[],SD=b.sides||['',''],pk=[],st=[],lim=null;
+ R.forEach(function(r){if(r.side==='limit'&&!lim)lim=r;else if(r.side==='package')pk.push(r);else st.push(r)});
+ var n=0;
+ function item(r){var lk=r.link&&wp(r.link)?'<a class="'+K+'__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
+  return '<li class="'+K+'__item"><span class="'+K+'__no" aria-hidden="true">'+(++n<10?'0':'')+n+'</span><div class="'+K+'__body"><h3 class="'+K+'__p">'+tx(r.p)+'</h3>'
+   +(r.v?'<p class="'+K+'__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="'+K+'__m">'+tx(r.m)+'</p>':'')+lk+'</div></li>'}
+ var listIn=pk.map(item).join(''),listOut=st.map(item).join('');
+ function fig(svg,lab,cls){return '<figure class="'+K+'__fig '+cls+'">'+svg+(lab?'<figcaption class="'+K+'__lab" aria-hidden="true">'+tx(lab)+'</figcaption>':'')+'</figure>'}
+ var seam='<div class="'+K+'__seam"><span class="'+K+'__nodes" aria-hidden="true"><span class="'+K+'__nd"></span><span class="'+K+'__nd"></span></span>'
+  +(b.seam?'<p class="'+K+'__seamt">'+tx(b.seam)+'</p>':'')+'</div>';
+ var limit=lim?'<div class="'+K+'__limit"><h3 class="'+K+'__p">'+tx(lim.p)+'</h3>'+(lim.v?'<p class="'+K+'__v">'+tx(lim.v)+'</p>':'')+(lim.m?'<p class="'+K+'__m">'+tx(lim.m)+'</p>':'')+'</div>':'';
+ var inner='<div class="'+K+'">'
+  +'<div class="'+K+'__in"><div class="'+K+'__head">'+H+'</div>'
+   +(SD[0]?'<p class="'+K+'__side is-in">'+tx(SD[0])+'</p>':'')
+   +fig(drawIn(),pk[0]&&pk[0].p,'is-in')
+   +'<ol class="'+K+'__list is-in" role="list">'+listIn+'</ol></div>'
+  +'<div class="'+K+'__out">'+seam+limit
+   +(SD[1]?'<p class="'+K+'__side is-out">'+tx(SD[1])+'</p>':'')
+   +fig(drawOut(),st[0]&&st[0].p,'is-out')
+   +'<ol class="'+K+'__list is-out" role="list">'+listOut+'</ol></div></div>';
+ return '<section class="aq-section '+K+'-sec"><div class="aq-in">'+inner+'</div></section>'};
 })();
 /* Look "section-train" -> SectionTrain (design-system/components/SectionTrain): a pretreatment train as one sectional
    elevation on a limestone sheet. Every vessel is cut in half (hatched walls) so its bed shows: graded media, resin
@@ -5419,111 +6735,125 @@ LOOKS['section-train']=function(b,H){
  var base=b.base?'<p class="'+K+'__base"><span class="'+K+'__base-mark" aria-hidden="true"></span>'+tx(b.base)+'</p>':'';
  return sec(H+'<div class="'+K+'" data-theme="light" style="--n:'+n+'">'+svg+'<ol class="'+K+'__stages">'+li+'</ol>'+base+'</div>','aq-band--limestone '+K+'-sec')};
 })();
-/* Look "sensor-loop" -> SensorLoop (design-system/components/SensorLoop): a spec block of signals (signal, design
-   value, basis) drawn where each one is measured: one storage and distribution loop in IsoKit line art (tank, pump,
-   UV unit, TOC and conductivity analysers on the supply, divert valve with its drain, two points of use, the return
-   overhead to the tank) with an instrument balloon (ISA style, the row's number) on every measuring point, and a
-   dashed signal bus along the foot that every instrument drops into (data recording). The rows are instrument
-   schedule cards in a row above and a row below the drawing, each on a leader to its balloon; a signal measured at
-   several points (temperature) shows its number on each. The caption is the section's eyebrow, as on a plain spec.
-   Fields: h, caption, cols, rows [{p, v, m, site}], note, fold, fold_noun. site: toc | cond | temp | divert | flow |
-   uv | data (where the balloon sits; a row without one is a card only). Desktop shows every row; the fold applies on
-   phones, where the cards stack under the drawing beside a vertical signal rail. */
-function slScene(){var A=58,B=58,st=function(i,dz){return [A*i,-B*i,dz||0]},o={},p=[],b='',bus=[],B0=[];
- var tk=isoPart('tank',0,0,0,1.05,{id:'tank'}),pu=isoPart('pump',st(1)[0]+6,st(1)[1]+18,0,0.85,{id:'pump'}),uv=isoPart('uv',st(2)[0]-10,st(2)[1]+6,0,0.8,{id:'uv'});
- var zs=44,zh=112,an1=isoPart('analyzer',st(3)[0]+6,st(3)[1]-16,0,0.9,{id:'toc'}),an2=isoPart('analyzer',st(3)[0]+40,st(3)[1]-16,0,0.9,{id:'cond'});
- var dv=[st(4)[0]+20,st(4)[1]+8,zs],o1=isoPart('outlet',st(5)[0]+14,st(5)[1]+14,0,0.85,{id:'pou'}),o2=isoPart('outlet',st(6)[0]+14,st(6)[1]+14,0,0.85,{id:'pou'});
- /* supply: tank -> pump -> UV -> analyser tee -> divert -> header over the outlets */
- var s1=isoPipe(isoRoute(tk.ports.out,pu.ports.in,'xyz',{via:[[tk.ports.out[0]+10,tk.ports.out[1],tk.ports.out[2]]]}),{r:2.2,to:'pump',caps:false});
- var s2=isoPipe(isoRoute(pu.ports.out,uv.ports.in,'zxy',{via:[[pu.ports.out[0],pu.ports.out[1],zs]]}).concat([]),{r:2.2,to:'uv',caps:false});
- var uo=uv.ports.out,sA=[uo[0],uo[1],zs],sB=[dv[0]-9,dv[1],zs];
- var s3=isoPipe([uo,sA,[sA[0]+14,sA[1],zs],[sA[0]+14,sB[1],zs],sB],{r:2.2,to:'toc',caps:false});
- var va=isoPart('valve',dv[0],dv[1],dv[2],1.2,{id:'divert'});
- var hd1=[dv[0]+9,dv[1],zs],hx=o2.ports.in[0]+30;
- var s4=isoPipe([hd1,[hd1[0]+10,hd1[1],zs],[hd1[0]+10,hd1[1],zh-30],[hd1[0]+10,o1.ports.in[1],zh-30],[o1.ports.in[0]-30,o1.ports.in[1],zh-30]].concat([]),{r:2.2,to:'pou',caps:false});
- var hy=o1.ports.in[1],hz=zh-30;
- var hdr=isoPipe([[o1.ports.in[0]-30,hy,hz],[hx,hy,hz]],{r:2.2,to:'pou',caps:false});
- var drops=[o1,o2].map(function(oo){var q=oo.ports.in;return isoPipe([[q[0],hy,hz],[q[0],q[1],hz],q],{r:1.6,to:'pou',caps:false})}).join('');
- /* return: from the header end up, then one straight overhead run back along the line of the plant (level on the
-    drawing, as a pipe rack reads, set back behind the equipment) and a short leg into the tank's return nozzle */
- var tr=tk.ports.ret,RB=90,p0=[hx,hy,zh],p1=[hx,hy-RB,zh],p2=[tr[0],hx+hy-RB-tr[0],zh],rp=[[hx,hy,hz],p0,p1,p2];
- if(Math.abs(p2[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
- var ret=isoPipe(rp,{r:2.2,to:'tank',caps:false,cls:'aq-sensor-loop__ret'});
- /* drain off the divert: a drop to the floor with an arrow */
- var dr=isoPipe([[dv[0]+5,dv[1],zs],[dv[0]+5,dv[1]+18,zs],[dv[0]+5,dv[1]+18,6]],{r:1.6,caps:'end',cls:'aq-sensor-loop__drain'});
- /* return instruments on the overhead run, in water order: flow meter, pressure gauge, temperature well */
- var mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]},rl=Math.hypot(p2[0]-p1[0],p2[1]-p1[1])||1,rd=[(p2[0]-p1[0])/rl,(p2[1]-p1[1])/rl,0];
- var fm=mid(p1,p2,0.2),gp=mid(p1,p2,0.45),t3=mid(p1,p2,0.72);t3=[t3[0],t3[1],zh+2.2];
- var ga=isoPart('gauge',gp[0],gp[1],zh+2.4,1,{id:'flow',value:0.5});
- var fmD=isoCylD([fm[0]-7*rd[0],fm[1]-7*rd[1],fm[2]],rd,14,4.4);
- /* order: back to front and in water order */
- b+=tk+s1+pu+s2+uv+an1+an2;
- b+=s3+dr+va+s4+hdr+o1+o2+drops+ret+ga+'<path class="aq-iso__eq" d="'+fmD[0]+fmD[1]+'"/>';
- /* temperature wells: small stems on the supply after the pump, on the tank and on the return */
- var tw=function(q){return '<path class="aq-iso__ln" d="'+isoPoly([q,[q[0],q[1],q[2]+7]])+'"/><path class="aq-iso__eq" d="'+isoRingD([q[0],q[1],q[2]+7],'z',1.6)+'"/>'};
- var t1=[pu.ports.out[0],pu.ports.out[1],zs+2.2],t2=[tk.ports.top[0]+10,tk.ports.top[1]+10,tk.ports.top[2]-14];
- b+=tw(t1)+tw(t3);
- /* measuring points (balloon anchors, 3D) */
- o.toc=[an1.ports.top];o.cond=[an2.ports.top];o.uv=[uv.ports.top];o.divert=[va.ports.top];
- o.flow=[[fm[0],fm[1],fm[2]+6],ga.ports.top];o.temp=[[t3[0],t3[1],t3[2]+9],[t1[0],t1[1],t1[2]+9],t2];
- /* the bus: under the floor line, a dashed riser from every instrument */
- var fl=function(q){return [q[0],q[1],0]};
- return {svg:b,pts:o,parts:[tk,pu,uv,an1,an2,o1,o2],ext:[[hx+30,hy,0],[hx,hy,zh+20],[-30,30,0],[tr[0],tr[1],zh+20]]}}
+/* Look "sensor-loop" -> SensorLoop (design-system/components/SensorLoop): a spec block of control points or signals
+   drawn where each one sits on one storage and distribution loop, as a flat P&ID on a navy sheet (pass 12, after
+   concept 202, ind-personal-care.microbes; the pass 9 IsoKit drawing it replaces is in git history). The loop: the
+   tank, the supply run with the circulation pump and, in water order, only the measuring points the rows name, then
+   the points of use (and sample tees when a row names sample ports) hanging off the supply, and the return run back
+   to the tank. Every measuring point carries an instrument balloon with its real tag letters over the row number
+   (FIT flow, CIT conductivity, AIT TOC, TIT temperature, XV divert valve, SP sample point; the UV unit is tagged UV);
+   hoses carry the row number at their ends. The rows are keyed notes along the foot, each with its number and tag.
+   Pointing at a note lights its marks. Phones: the same loop recomposed vertically (the supply a riser, balloons left
+   of it, branches and hoses to the right, the return up the left edge), then every note in one column.
+   Fields: h, caption (the eyebrow), intro, rows [{p, v, m, site}], note, fold, fold_noun (phones only). site: flow |
+   uv | cond | toc | temp | divert | data; a row without a site is placed by its words ("sample" -> sample tees,
+   "hose" / "point of use" / "outlet" -> the hoses) or is a note only. */
+(function(){
+var TAG={flow:'FIT',uv:'UV',cond:'CIT',toc:'AIT',temp:'TIT',divert:'XV',sample:'SP'};
+var SUP=['uv','toc','cond','temp','divert'];
+function f1(n){return Math.round(n*10)/10}
+function nn(i){return (i<9?'0':'')+(i+1)}
+function siteOf(r){if(!r)return '';if(r.site)return r.site;var p=String(r.p||'').toLowerCase();
+ if(/sample/.test(p))return 'sample';if(/hose|point(s)? of use|outlet/.test(p))return 'pou';return ''}
+/* one loop, two orientations. Run coordinate t along the supply; v off it (+ = branch side, - = toward the return). */
+function plan(R){var at={};R.forEach(function(r,i){var s=siteOf(r);if(s&&at[s]==null)at[s]=i});
+ var M=[{k:'pump'}];SUP.forEach(function(k){if(at[k]!=null)M.push({k:k,i:at[k]})});
+ for(var j=0;j<2;j++){if(at.sample!=null)M.push({k:'sample',i:at.sample,more:j>0});M.push({k:'pou',i:at.pou,more:j>0})}
+ return {M:M,at:at}}
+function scene(R,ph){var P=plan(R),M=P.M,at=P.at,n=M.length;
+ var RV=ph?-180:-190,g=ph?66:Math.min(150,(1000-200)/Math.max(n-1,1)),t0=ph?112:200,tank=ph?40:96,end=t0+(n-1)*g+(ph?46:70);
+ var map=ph?function(t,v){return [200+v,t]}:function(t,v){return [t,270+v]};
+ var T=function(t,v){var q=map(t,v);return f1(q[0])+' '+f1(q[1])};
+ var tr=function(t){var q=map(t,0);return ph?'matrix(0 1 1 0 '+f1(q[0])+' '+f1(q[1])+')':'translate('+f1(q[0])+' '+f1(q[1])+')'};
+ var o='',b='',tags='';
+ /* pipes: supply from the tank down to the run, along it to the end, across to the return, back to the tank top */
+ var pipe='M'+T(tank,-36)+'L'+T(tank,0)+'L'+T(end,0)+'L'+T(end,RV)+'L'+T(tank,RV)+'L'+T(tank,-160);
+ o+='<path class="aq-sensor-loop__wall" d="'+pipe+'"/><path class="aq-sensor-loop__bore" d="'+pipe+'"/>';
+ /* flow arrows on the runs */
+ var arr=function(t,v,d){return '<path class="aq-sensor-loop__arrow" transform="'+(ph?'matrix(0 '+d+' '+d+' 0 ':'matrix('+d+' 0 0 '+d+' ')+T(t,v).replace(' ',' ')+')" d="M-5 -5L3 0L-5 5"/>'};
+ o+=arr(t0+g*0.5,0,1)+arr((tank+end)/2,RV,-1);
+ /* the tank between the runs */
+ var a=map(tank-34,-160),c=map(tank+34,-36),x0=Math.min(a[0],c[0]),y0=Math.min(a[1],c[1]),w=Math.abs(c[0]-a[0]),h=Math.abs(c[1]-a[1]);
+ o+='<rect class="aq-sensor-loop__tank" x="'+f1(x0)+'" y="'+f1(y0)+'" width="'+f1(w)+'" height="'+f1(h)+'" rx="22"/>';
+ /* marks */
+ var ball=function(i,k,t,v,more){var q=map(t,v);return '<g class="aq-sensor-loop__ball'+(more?' is-more':'')+'" data-sl="'+i+'"><circle cx="'+f1(q[0])+'" cy="'+f1(q[1])+'" r="22"/>'
+  +'<path class="aq-sensor-loop__bar" d="M'+f1(q[0]-22)+' '+f1(q[1])+'h44"/><text class="aq-sensor-loop__tg" x="'+f1(q[0])+'" y="'+f1(q[1]-6)+'">'+TAG[k]+'</text><text class="aq-sensor-loop__nu" x="'+f1(q[0])+'" y="'+f1(q[1]+15)+'">'+nn(i)+'</text></g>'};
+ var stem=function(i,t,v0,v1){return '<path class="aq-sensor-loop__stem" data-sl="'+i+'" d="M'+T(t,v0)+'L'+T(t,v1)+'"/>'};
+ M.forEach(function(mk,j){var t=t0+j*g,k=mk.k,i=mk.i,s='',hl=i!=null?' data-sl="'+i+'"':'';
+  if(k==='pump')s='<circle class="aq-sensor-loop__eq" cx="0" cy="0" r="17"/><path class="aq-sensor-loop__ink" d="M-7 -10L11 0L-7 10Z"/>';
+  else if(k==='uv')s='<rect class="aq-sensor-loop__eq" x="-30" y="-13" width="60" height="26"/><path class="aq-sensor-loop__thin" d="M-22 0H22"/>';
+  else if(k==='cond')s='<rect class="aq-sensor-loop__eq" x="-11" y="-11" width="22" height="22"/><path class="aq-sensor-loop__thin" d="M-4 -11V-22M4 -11V-22"/>';
+  else if(k==='toc')s='<path class="aq-sensor-loop__thin" d="M0 0V-24"/><rect class="aq-sensor-loop__eq" x="-13" y="-44" width="26" height="20"/>';
+  else if(k==='temp')s='<path class="aq-sensor-loop__thin" d="M0 -6V-22"/><circle class="aq-sensor-loop__eq" cx="0" cy="-26" r="4"/>';
+  else if(k==='divert')s='<path class="aq-sensor-loop__eq" d="M-12 -9L12 9V-9L-12 9Z"/><path class="aq-sensor-loop__thin" d="M0 0V-20M-8 -20H8M0 9V40M-5 34L0 40L5 34"/>';
+  else if(k==='sample')s='<path class="aq-sensor-loop__thin" d="M0 0V40"/><path class="aq-sensor-loop__eq" d="M-8 22L8 38H-8L8 22Z"/>';
+  else if(k==='pou')s='<path class="aq-sensor-loop__thin" d="M0 0V28"/><path class="aq-sensor-loop__eq" d="M-8 28L8 44H-8L8 28Z"/>'
+   +(i!=null?'<path class="aq-sensor-loop__hose" d="M0 44C0 64 22 60 22 82C22 98 8 102 8 110"/><path class="aq-sensor-loop__thin" d="M4 110H12"/>':'');
+  b+='<g class="aq-sensor-loop__mk" transform="'+tr(t)+'"'+hl+'>'+s+'</g>';
+  if(i==null||k==='pump')return;
+  if(k==='pou'){var q=map(t+(ph?34:30),ph?100:126);tags+='<text class="aq-sensor-loop__ht'+(mk.more?' is-more':'')+'" data-sl="'+i+'" x="'+f1(q[0])+'" y="'+f1(q[1])+'">'+nn(i)+'</text>';return}
+  var top=k==='toc'?-44:k==='temp'?-30:k==='cond'?-22:k==='divert'?-20:k==='uv'?-13:-1;
+  b+=stem(i,t,top,-62)+ball(i,k,t,-84,mk.more)});
+ /* return-run instrument: the flow element, its balloon inside the loop */
+ if(at.flow!=null){var tf=end-(ph?40:40);
+  b+='<g class="aq-sensor-loop__mk" transform="'+tr(tf)+'" data-sl="'+at.flow+'"><g transform="translate(0 '+RV+')"><rect class="aq-sensor-loop__eq" x="-14" y="-9" width="28" height="18"/><path class="aq-sensor-loop__thin" d="M-14 9L14 -9"/></g></g>'
+   +stem(at.flow,tf,RV+9,RV+44)+ball(at.flow,'flow',tf,RV+66)}
+ /* data recording: a recorder inside the loop with a dashed signal line from each balloon (desktop only) */
+ if(at.data!=null&&!ph){var rx=end-280,ry=100,bus='',xs=[];M.forEach(function(mk,j){if(mk.i==null||mk.k==='pou'||mk.k==='pump'||mk.more)return;var t=t0+j*g;xs.push(t);bus+='M'+f1(t)+' 164V146'});
+  if(xs.length)bus+='M'+f1(Math.min.apply(0,xs.concat(rx+50)))+' 146H'+f1(Math.max.apply(0,xs.concat(rx+50)))+'M'+f1(rx+50)+' 146V138';
+  b+='<path class="aq-sensor-loop__bus" d="'+bus+'"/><g data-sl="'+at.data+'" class="aq-sensor-loop__mk"><rect class="aq-sensor-loop__eq" x="'+f1(rx)+'" y="'+f1(ry)+'" width="100" height="38"/><path class="aq-sensor-loop__thin" d="M'+f1(rx+10)+' '+f1(ry+26)+'l16 -8l12 6l16 -12l14 4l20 -6"/></g>'
+   +'<text class="aq-sensor-loop__ht" data-sl="'+at.data+'" x="'+f1(rx+50)+'" y="'+f1(ry-8)+'">'+nn(at.data)+'</text>'}
+ var vb=ph?'0 0 340 '+f1(end+48):'0 30 1160 '+(at.pou!=null?400:300);
+ return '<svg class="aq-sensor-loop__svg aq-sensor-loop__svg--'+(ph?'p':'d')+'" viewBox="'+vb+'" aria-hidden="true" focusable="false">'+o+b+tags+'</svg>'}
 LOOKS['sensor-loop']=function(b,H){H=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
- var R=b.rows||[],sc=slScene(),W=1000;
- /* view box: the scene's bounds, padded for balloons and the bus */
- var all=[];Object.keys(sc.pts).forEach(function(k){sc.pts[k].forEach(function(q){all.push(q)})});all=all.concat(sc.ext);
- var bx=isoBounds(all,30),sx=W/bx.w,VH=Math.round(bx.h*sx+40),org=[-bx.x,-bx.y+50/sx];
- var scale=sx;
- /* balloons: rows with a site, in screen space of the scaled drawing */
- var S=function(q){var p=isoP(q);return [(p[0]+org[0])*scale,(p[1]+org[1])*scale]};
- var used=[],top=[],bot=[];
- R.forEach(function(r,i){var k=r&&r.site,ps=k==='data'?null:(k&&sc.pts[k]);
-  if(k==='data'){used.push({i:i,p:[W*0.86,VH-30],more:[]});return}
-  if(!ps||!ps.length)return;var a=S(ps[0]);a[1]-=26;used.push({i:i,p:a,more:ps.slice(1).map(function(q){var c=S(q);c[1]-=22;return c})})});
- /* rows of cards: the higher balloons to the top row, the lower to the bottom; each row sorted left to right */
- var srt=used.slice().sort(function(a,c){return a.p[1]-c.p[1]}),nt=Math.ceil(used.length/2);
- srt.forEach(function(u,j){(j<nt?top:bot).push(u)});
- [top,bot].forEach(function(L){L.sort(function(a,c){return a.p[0]-c.p[0]})});
- var col={};var lead='',ball='';
- [[top,'t'],[bot,'b']].forEach(function(z){var L=z[0],n=Math.max(L.length,1);L.forEach(function(u,j){var cx=W*(j+0.5)/n,p=u.p,y0=z[1]==='t'?0:VH,kn=z[1]==='t'?p[1]-30-j*6:p[1]+30+j*6;
-   if(z[1]==='b')kn=Math.max(kn,p[1]+30);
-   col[u.i]={row:z[1],c:j+1,n:n};
-   lead+='<path class="aq-sensor-loop__lead" data-sl="'+u.i+'" d="M'+cx.toFixed(1)+' '+y0+'V'+kn.toFixed(1)+'H'+p[0].toFixed(1)+'V'+(p[1]+(z[1]==='t'?-12:12)).toFixed(1)+'"/>'})});
- used.forEach(function(u){var num=(u.i<9?'0':'')+(u.i+1);[u.p].concat(u.more).forEach(function(p,k){
-  ball+='<g class="aq-sensor-loop__ball'+(k?' is-more':'')+'" data-sl="'+u.i+'"><path class="aq-sensor-loop__stem" d="M'+p[0].toFixed(1)+' '+(p[1]+12).toFixed(1)+'v'+(k?14:18)+'"/><circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="12"/><path class="aq-sensor-loop__bar" d="M'+(p[0]-12).toFixed(1)+' '+p[1].toFixed(1)+'h24"/><text x="'+p[0].toFixed(1)+'" y="'+(p[1]-2.5).toFixed(1)+'">'+num+'</text></g>'})});
- /* the bus: along the foot, a dashed drop from each balloon's measuring point */
- var by=VH-30,bus='<path class="aq-sensor-loop__bus" d="M'+(W*0.04).toFixed(1)+' '+by+'H'+(W*0.86-12).toFixed(1)+'"/>';
- used.forEach(function(u){if(R[u.i].site==='data')return;var x=u.p[0];bus+='<path class="aq-sensor-loop__tap" data-sl="'+u.i+'" d="M'+x.toFixed(1)+' '+(u.p[1]+30).toFixed(1)+'V'+by+'"/><circle class="aq-sensor-loop__node" cx="'+x.toFixed(1)+'" cy="'+by+'" r="2.5"/>'});
- var drawing='<g transform="scale('+scale.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+sc.svg+'</g>';
- var svg='<svg class="aq-iso aq-sensor-loop__svg" viewBox="0 0 '+W+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'
-  +'<g class="aq-sensor-loop__busg">'+bus+'</g>'+drawing+lead+ball+'</svg>';
- /* cards: data order in the DOM; placed in the top or bottom row column by column */
- var cards=R.map(function(r,i){var c=col[i],num=(i<9?'0':'')+(i+1),sp=c?Math.round(12/c.n):0,st=c?' style="grid-row:'+(c.row==='t'?1:3)+';grid-column:'+((c.c-1)*sp+1)+' / span '+sp+'"':'';
-  return fli('<li class="aq-sensor-loop__card'+(c?' aq-sensor-loop__card--'+c.row:' aq-sensor-loop__card--free')+'" data-sl="'+i+'"'+st+'><span class="aq-sensor-loop__n" aria-hidden="true">'+num+'</span>'
-   +'<h3 class="aq-sensor-loop__p">'+tx(r.p)+'</h3><p class="aq-sensor-loop__v">'+tx(r.v)+'</p>'+(r.m?'<p class="aq-sensor-loop__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
- var nt2=top.length||1,nb=bot.length||1;
- var inner='<div class="aq-sensor-loop" style="--sl-top:'+nt2+';--sl-bot:'+nb+'"><ol class="aq-sensor-loop__cards" role="list">'+cards+'</ol>'
-  +'<div class="aq-sensor-loop__fig">'+svg+'</div></div>';
+ var R=b.rows||[];
+ var notes=R.map(function(r,i){var s=siteOf(r),tg=TAG[s]||'';
+  return fli('<li class="aq-sensor-loop__card" data-sl="'+i+'"><p class="aq-sensor-loop__n" aria-hidden="true"><span>'+nn(i)+'</span>'+(tg?'<span class="aq-sensor-loop__ntag">'+tg+'</span>':'')+'</p>'
+   +'<h3 class="aq-sensor-loop__p">'+tx(r.p)+'</h3>'+(r.v?'<p class="aq-sensor-loop__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="aq-sensor-loop__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
+ var inner='<div class="aq-sensor-loop"><div class="aq-sensor-loop__fig">'+scene(R,false)+scene(R,true)+'</div><ol class="aq-sensor-loop__cards" role="list">'+notes+'</ol></div>';
  var note=b.note?'<p class="aq-sensor-loop__note">'+tx(b.note)+'</p>':'';
  return sec(H+wFold(b,R.length,inner,b.fold_noun||'signals')+note,'aq-sensor-loop-sec')};
-(function(){
- function set(root,i){[].forEach.call(root.querySelectorAll('[data-sl]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-sl')===i)});root.classList.toggle('has-hot',i!=null)}
- document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-sensor-loop__card'),root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root)set(root,t?t.getAttribute('data-sl'):null)});
- document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
+/* pointing at a note (or a mark) lights the note and its marks */
+function set(root,i){[].forEach.call(root.querySelectorAll('[data-sl]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-sl')===i)});root.classList.toggle('has-hot',i!=null)}
+if(typeof document!=='undefined'){
+ document.addEventListener('mouseover',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(!root)return;var t=ev.target.closest('[data-sl]');set(root,t?t.getAttribute('data-sl'):null)});
+ document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root&&!root.contains(ev.relatedTarget))set(root,null)})}
 })();
 /* Look "sheet-previews" -> SheetPreviews (design-system/components/SheetPreviews): a short document list set as a Swiss
-   row of sheets. Each document gets a column: a huge light index numeral, a paper sheet whose thumbnail shows the kind
-   of document it is (a month-by-month basis grid, two projection curves, a logic sequence, a certificate with its seal
-   and lot strip), then its code, name and line. Deciding documents (key) keep DocList's rule: their code turns flow.
+   row of sheets. Each document gets a column: a limestone sheet carrying its light index numeral (/01) and a thumbnail
+   of the kind of document it is, then its code (only a real one: an explicit code or tag, or one the document lookup
+   knows; never initials), name and line. Pass 12 (concept 205, ind-personal-care.records): the numeral moved onto the
+   sheet, four new thumbnails for record kinds (trend, log, binder, signoff), no filler tile; phones list the sheets one
+   per row, the sheet beside its text. The number lives on the sheet only; the eyebrow shows only for a real code.
+   Deciding documents (key) keep DocList's rule: their code turns flow.
    The block link ("Full index") sits at the end of the heading row.
    Fields (a docs block): h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label,
-   intent. New optional per item: sheet: "basis" | "curves" | "logic" | "certificate" (anything else: ruled text). */
+   intent. New optional per item: sheet: "trend" (a reading under its dashed limit lines) | "log" (a ruled log with
+   ticks) | "binder" (a ring binder by its protocol sheets) | "signoff" (an acceptance sheet with its signed box) |
+   "basis" | "curves" | "logic" | "certificate" (anything else: ruled text). */
 (function(){
 var K='aq-sheet-previews';
 function f1(n){return Math.round(n*10)/10}
 function bars(y0,n,w,gap){var d='';for(var i=0;i<n;i++)d+='M24 '+(y0+i*gap)+'H'+(24+w*(i%3===2?0.6:1));return '<path class="'+K+'__txt" d="'+d+'"/>'}
 var THUMB={
+ trend:function(){var o='<path class="'+K+'__ln" d="M30 96V226H186"/>',d='',ys=[200,192,198,184,190,176,186,180,168,178,172,182,170,176];
+  for(var i=0;i<ys.length;i++)d+=(i?'L':'M')+f1(34+i*11.4)+' '+ys[i];
+  o+='<path class="'+K+'__limit" d="M30 132H186"/><path class="'+K+'__limit '+K+'__limit--b" d="M30 150H186"/><path class="'+K+'__curve" d="'+d+'"/>';
+  for(var k=1;k<6;k++)o+='<path class="'+K+'__thin" d="M'+(30+k*26)+' 226v4"/>';
+  return o},
+ log:function(){var o='<rect class="'+K+'__box" x="24" y="96" width="162" height="138"/>',g='M24 116H186',t='',ck='',i;
+  for(i=1;i<6;i++)g+='M24 '+(116+i*20)+'H186';g+='M70 96V234M130 96V234M160 96V234';o+='<path class="'+K+'__ln" d="'+g+'"/>';
+  for(i=0;i<5;i++){var y=126+i*20;t+='M32 '+y+'H'+(58-(i%2)*8)+'M78 '+y+'H'+(118-(i%3)*10);ck+='M165 '+(y-1)+'l4 4l8 -8'}
+  return o+'<path class="'+K+'__txt" d="'+t+'"/><path class="'+K+'__tick" d="'+ck+'"/>'},
+ binder:function(){var o='<rect class="'+K+'__box" x="92" y="100" width="88" height="118"/><rect class="'+K+'__box" x="84" y="108" width="88" height="118"/>';
+  o+='<path class="'+K+'__txt" d="M96 128H160M96 140H150M96 152H160M96 176H140"/>';
+  o+='<rect class="'+K+'__spine" x="30" y="92" width="44" height="146"/><rect class="'+K+'__box" x="38" y="108" width="28" height="44"/>';
+  o+='<circle class="'+K+'__thin" cx="52" cy="196" r="5"/><circle class="'+K+'__thin" cx="52" cy="214" r="5"/>';
+  return o},
+ signoff:function(){var o='<path class="'+K+'__txt" d="M24 104H186M24 116H170M24 128H186M24 140H130"/>';
+  o+='<rect class="'+K+'__box" x="24" y="164" width="162" height="62"/><path class="'+K+'__thin" d="M36 210H130"/>';
+  o+='<path class="'+K+'__sig" d="M44 204C52 180 58 214 66 196S80 186 84 202S100 190 108 198"/><path class="'+K+'__tick" d="M150 186l8 8l16 -16"/>';
+  return o},
  basis:function(){var o='',x0=24,x1=186,y0=86,y1=226,cw=(x1-x0)/12,i;
   o+='<path class="'+K+'__hatch" d="'+[0,11].map(function(c){var d='',xa=x0+c*cw;for(var y=y0;y<y1;y+=6)d+='M'+f1(xa)+' '+(y+6)+'L'+f1(xa+cw)+' '+y;return d}).join('')+'"/>';
   var g='M'+x0+' '+y0+'H'+x1+'V'+y1+'H'+x0+'Z';for(i=1;i<12;i++)g+='M'+f1(x0+i*cw)+' '+y0+'V'+y1;for(i=1;i<7;i++)g+='M'+x0+' '+(y0+i*20)+'H'+x1;
@@ -5545,21 +6875,21 @@ var THUMB={
   o+='<path class="'+K+'__seal" d="'+s+'Z"/><circle class="'+K+'__thin" cx="150" cy="196" r="11"/>';
   var bc='';for(var j=0;j<26;j++)bc+='M'+(40+j*3+(j%4===0?1:0))+' 186v'+(j%5===0?24:20);
   return o+'<path class="'+K+'__bar" d="'+bc+'"/>'}};
-function sheet(kind,code){var o='<rect class="'+K+'__paper" x="0" y="0" width="210" height="280"/>'
+function sheet(kind,code,num){var cw=Math.max(40,String(code||'').length*8+14),o='<rect class="'+K+'__paper" x="0" y="0" width="210" height="280"/>'
   +'<path class="'+K+'__fold" d="M180 0H210V30Z"/><path class="'+K+'__ln" d="M180 0V30H210"/>'
-  +bars(26,3,110,9)+'<rect class="'+K+'__codebox" x="132" y="22" width="40" height="22"/><text class="'+K+'__code-t" x="152" y="37">'+e(code||'')+'</text>';
- o+=THUMB[kind]?THUMB[kind]():bars(80,14,160,11);
+  +'<text class="'+K+'__nume" x="16" y="62">/'+num+'</text>'
+  +(code?'<rect class="'+K+'__codebox" x="'+(170-cw)+'" y="40" width="'+cw+'" height="22"/><text class="'+K+'__code-t" x="'+f1(170-cw/2)+'" y="55">'+e(code)+'</text>':'');
+ o+=THUMB[kind]?THUMB[kind]():bars(96,12,160,11);
  o+='<path class="'+K+'__thin" d="M24 252H186M120 252V268M150 252V268"/>';
  return '<svg class="'+K+'__svg" viewBox="0 0 210 280" aria-hidden="true" focusable="false">'+o+'</svg>'}
 LOOKS['sheet-previews']=function(b,H){
  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=items.length;
  var marked=items.some(function(x){return x.key}),nk=b.key!=null?+b.key:0;
- var li=items.map(function(x,i){var c=x.code?[x.code,true]:docCode(x.t),key=marked?!!x.key:i<nk,tag=x.tag||c[0];if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
+ var li=items.map(function(x,i){var c=x.code?[x.code,true]:docCode(x.t),key=marked?!!x.key:i<nk,tag=x.tag||(c[1]?c[0]:'');if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
   var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
   return fli('<li class="'+K+'__item'+(key?' is-key':'')+'" style="--i:'+i+'">',b,i)
-   +'<span class="'+K+'__num" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="'+K+'__sheet" data-theme="light">'+sheet(x.sheet,tag)+'</div>'
-   +'<p class="'+K+'__code">'+e(tag)+'</p><h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</li>'}).join('');
+   +'<div class="'+K+'__sheet" data-theme="light">'+sheet(x.sheet,tag,(i<9?'0':'')+(i+1))+'</div>'
+   +'<div class="'+K+'__body">'+(tag?'<p class="'+K+'__code"><span>'+e(tag)+'</span></p>':'')+'<h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</div></li>'}).join('');
  var more=b.link&&wp(b.link)?'<p class="'+K+'__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
  return sec('<div class="'+K+'__top">'+H+more+'</div>'+wFold(b,n,'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>',b.fold_noun||'documents'),K+'-sec')};
 })();
@@ -5603,8 +6933,10 @@ LOOKS['sheet-stack']=function(b,H){
    also a slider (drag, arrow keys, Home, End). The readout copies the chosen row's own cells, so no copy lives here.
    Concept: research/pass9b/concepts/sys-monitoring.2.png (signals table beside a tick-dial readout).
    Fields: h, caption (eyebrow, as SpecTable prints it), cols [signal, value, basis], rows [{p, v, m, link,
-   link_label, intent}], note, fold, fold_noun. Desktop shows every row; the fold applies on phones.
-   Phones: the dial first (smaller), the rows stacked under it. Without JS: channel 01 is shown, the table is whole. */
+   link_label, intent}], note. Every row shows on every width (pass 12; fold / fold_noun no longer read).
+   Phones (pass 12, PhoneKit sticky figure): the dial's top half as a 160 px strip held under the section bar, the
+   channel number at its centre (no names on the face: the rows carry them), the bezel stops as 44 px targets; the row
+   on the reading line turns the dial; rows stacked, the link a 44 px button. Without JS: channel 01, the table whole. */
 var SD_STEP=24;
 function sdDial(n){var C=200,s='',t,a,r1,r2,cls;
  /* the turning bezel: a tick every 3 degrees, a stop every 24 degrees from 12 o'clock for each channel */
@@ -5625,19 +6957,24 @@ LOOKS['signal-dial']=function(b,H){
  var pad=function(i){return (i<9?'0':'')+(i+1)};
  var rows=R.map(function(r,i){
   var go=r.link&&wp(r.link)?' <span class="aq-signal-dial__go">'+wlink(r.link,r.link_label||'More',r.intent)+'</span>':'';
-  return fli('<tr class="aq-signal-dial__row'+(i?'':' is-on')+'" data-sd="'+i+'"><th scope="row"><button type="button" class="aq-signal-dial__pick" data-sd="'+i+'" aria-pressed="'+(i?'false':'true')+'">'
+  return ('<tr class="aq-signal-dial__row'+(i?'':' is-on')+'" data-sd="'+i+'" data-pk-row="'+i+'"><th scope="row"><button type="button" class="aq-signal-dial__pick" data-sd="'+i+'" aria-pressed="'+(i?'false':'true')+'">'
    +'<span class="aq-signal-dial__n" aria-hidden="true">'+pad(i)+'</span><span class="aq-signal-dial__p">'+tx(r.p)+'</span></button></th>'
-   +'<td class="aq-signal-dial__v">'+tx(r.v||'')+'</td><td class="aq-signal-dial__m">'+(r.m?tx(r.m):'')+go+'</td></tr>',b,i)}).join('');
+   +'<td class="aq-signal-dial__v">'+tx(r.v||'')+'</td><td class="aq-signal-dial__m">'+(r.m?tx(r.m):'')+go+'</td></tr>')}).join('');
  var r0=R[0];
  var read='<div class="aq-signal-dial__read" aria-hidden="true"><span class="aq-signal-dial__ch">CH</span>'
   +'<span class="aq-signal-dial__num"><span class="aq-signal-dial__digits">'+pad(0)+'</span><span class="aq-signal-dial__of">/ '+pad(n-1)+'</span></span>'
   +'<span class="aq-signal-dial__name">'+tx(r0.p)+'</span><span class="aq-signal-dial__lim"></span>'
   +'<span class="aq-signal-dial__val">'+tx(r0.v||'')+'</span><span class="aq-signal-dial__tag"'+(r0.m?'':' hidden')+'>'+(r0.m?tx(r0.m):'')+'</span></div>';
+ /* phones: each bezel stop is a 44 px tap target riding the bezel (a turning layer like the ring); a tap brings that
+    channel's row to the reading line. Pointer conveniences only: the row buttons and the slider are the keyboard path. */
+ var bz='<div class="aq-signal-dial__bz" aria-hidden="true">'+R.map(function(r,i){return '<button type="button" class="aq-signal-dial__chb" data-sd="'+i+'" tabindex="-1" style="--j:'+i+'"><span>'+pad(i)+'</span></button>'}).join('')+'</div>';
  var dial='<div class="aq-signal-dial__dial" role="slider" tabindex="0" aria-label="Signal channel" aria-valuemin="1" aria-valuemax="'+n+'" aria-valuenow="1" aria-valuetext="'+e(pad(0)+' '+r0.p)+'" style="--sd-a:0">'
-  +sdDial(n)+read+'</div>';
- var inner='<div class="aq-signal-dial" data-n="'+n+'" data-step="'+SD_STEP+'"><div class="aq-signal-dial__fig">'+dial+'<p class="aq-signal-dial__hint" aria-hidden="true">Turn the dial or pick a row</p></div>'
+  +sdDial(n)+bz+read+'</div>';
+ /* every row shows on every width: each is a channel on the dial (pass 12, S7: no fold; fold / fold_noun not read).
+    Phones: PhoneKit holds the dial's top half as a 160 px strip and the row on the reading line turns it. */
+ var inner='<div class="aq-signal-dial" data-n="'+n+'" data-step="'+SD_STEP+'" data-pk-sticky data-pk-bp="860" data-pk-h="160"><div class="aq-signal-dial__fig" data-pk-fig>'+dial+'<p class="aq-signal-dial__hint" aria-hidden="true">Turn the dial or pick a row</p></div>'
   +'<table class="aq-signal-dial__table"><thead><tr><th scope="col">'+tx(C[0]||'')+'</th><th scope="col">'+tx(C[1]||'')+'</th><th scope="col">'+tx(C[2]||'')+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
- return sec(H+wFold(b,n,inner,b.fold_noun||'signals')+(b.note?'<p class="aq-signal-dial__note">'+tx(b.note)+'</p>':''),'aq-signal-dial-sec')};
+ return sec(H+inner+(b.note?'<p class="aq-signal-dial__note">'+tx(b.note)+'</p>':''),'aq-signal-dial-sec')};
 /* The dial's behaviour (works without GSAP and under reduced motion; CSS does the turning, and stands still under
    reduced motion). Ported from Subframe Motion "Exposure dial control" (camera-wheel), MIT, (c) 2026 Subframe:
    a role=slider that follows a horizontal drag (54 px a step, the example's scale), snaps to the nearest stop on
@@ -5670,7 +7007,21 @@ LOOKS['signal-dial']=function(b,H){
   var root=rootOf(d),n=+root.getAttribute('data-n'),i=+(root.getAttribute('data-on')||0),k=ev.key;
   if(['ArrowLeft','ArrowRight','ArrowDown','ArrowUp','Home','End'].indexOf(k)<0)return;ev.preventDefault();
   set(root,k==='Home'?0:k==='End'?n-1:i+(k==='ArrowRight'||k==='ArrowUp'?1:-1))});
+ /* phones (PhoneKit on): the row on the reading line turns the dial; a tapped bezel stop brings its row there */
+ document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-signal-dial')||r._sdHold!=null)return;set(r,ev.detail&&ev.detail.on?ev.detail.index:0)});
+ document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-signal-dial__chb');if(!c)return;var root=rootOf(c),i=+c.getAttribute('data-sd'),tr=root.querySelector('tr[data-sd="'+i+'"]');
+  set(root,i);if(!tr||!window.AQpk||!AQpk.on(root))return;
+  /* the section bar can tuck or untuck during the smooth scroll, which moves the reading line: hold the tapped row
+     until the scroll ends, then re-aim once without animation (pass 12 verify V4) */
+  function yOf(){return Math.max(0,window.scrollY+tr.getBoundingClientRect().top-(AQpk.line(root)-8))}
+  var tok={},done=false;root._sdHold=tok;
+  function end(){if(done)return;done=true;window.removeEventListener('scrollend',end);clearTimeout(t);
+   if(root._sdHold!==tok)return;var y=yOf();if(Math.abs(y-window.scrollY)>2)window.scrollTo({top:y,behavior:'auto'});set(root,i);
+   setTimeout(function(){if(root._sdHold===tok){root._sdHold=null;set(root,i)}},150)}
+  window.addEventListener('scrollend',end);var t=setTimeout(end,900);
+  window.scrollTo({top:yOf(),behavior:AQpk.reduced&&AQpk.reduced()?'auto':'smooth'})});
  document.addEventListener('pointerdown',function(ev){var d=ev.target.closest&&ev.target.closest('.aq-signal-dial__dial');if(!d||ev.button!==0||drag)return;
+  if(window.AQpk&&AQpk.on(rootOf(d)))return;
   ev.preventDefault();d.focus({preventScroll:true});var root=rootOf(d);
   drag={d:d,root:root,x:ev.clientX,v:+(root.getAttribute('data-on')||0),id:ev.pointerId,n:+root.getAttribute('data-n'),st:+root.getAttribute('data-step')};
   d.classList.add('is-drag');try{d.setPointerCapture(ev.pointerId)}catch(x){}});
@@ -5715,7 +7066,11 @@ LOOKS['signature-blocks']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.key||[
    links the kind. Fields, as a table: cols, rows, fold, fold_noun, nav (the small line under the title), and optional
    art: one drawing key per row ("office", "shop", "service", "parts"; any other key or none draws an empty sheet).
    Drawings are drawn here from IsoKit parts (building; skid, RO rack and panel; truck; crates are boxes drawn with the
-   kit's box primitive next to a pump and valve). Design system: components/SitePlates. */
+   kit's box primitive next to a pump and valve). Design system: components/SitePlates.
+   Phones (pass 12): title, then the plate as a 200 px strip held under the header (PhoneKit sticky figure) that
+   swaps to the site whose row is on the reading line, then the rows (the plate no longer drops below them: the order
+   now holds with or without a fold). Site names are 44 px links. A table with no drawings (no art) keeps no plate on
+   phones: an empty navy band would be dead space. */
 (function(){
 var spN=0;
 function eq(d){return '<path class="aq-iso__eq" d="'+d+'"/>'}
@@ -5742,7 +7097,7 @@ LOOKS['site-plates']=function(b,H){var C=b.cols||[],R=b.rows||[],A=b.art||[],k=+
  var head='<thead><tr>'+C.map(function(c){return '<th scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>';
  var body=R.map(function(r,i){var s=sites[i],kh=s.link?wlink(s.link.link,s.kind,s.link.intent):tx(s.kind);
   var cells=[1,2,3].map(function(j){var v=r[j];return '<td class="'+['aq-site-plates__what','aq-site-plates__addr','aq-site-plates__contact'][j-1]+'" data-l="'+e(C[j]||'')+'">'+(v==null||v===''?'':lines(v))+'</td>'}).join('');
-  return fli('<tr class="aq-site-plates__row'+(i?'':' is-on')+'" data-i="'+i+'">',b,i)
+  return fli('<tr class="aq-site-plates__row'+(i?'':' is-on')+'" data-i="'+i+'" data-pk-row="'+i+'">',b,i)
    +'<th scope="row"><div class="aq-site-plates__site"><button type="button" class="aq-site-plates__pick" aria-pressed="'+(i?'false':'true')+'" aria-controls="'+pid+'" aria-label="'+e(s.kind)+'">'+pad(i)+'</button>'
    +'<span class="aq-site-plates__kind">'+kh+'</span>'+(s.place?'<span class="aq-site-plates__place">'+tx(s.place)+'</span>':'')+'</div></th>'+cells+'</tr>'}).join('');
  var table='<table class="aq-site-plates__table">'+head+'<tbody>'+body+'</tbody></table>';
@@ -5752,9 +7107,10 @@ LOOKS['site-plates']=function(b,H){var C=b.cols||[],R=b.rows||[],A=b.art||[],k=+
    +figure(A[i],w.length)
    +(w.length?'<ol class="aq-site-plates__calls">'+w.map(function(x,j){return '<li><span class="aq-site-plates__pn" aria-hidden="true">'+(j+1)+'</span><span>'+tx(x)+'</span></li>'}).join('')+'</ol>':'')
    +'</figure>'}).join('');
- var plate='<div class="aq-site-plates__plate" id="'+pid+'" data-theme="dark"><div class="aq-site-plates__reel">'+stills+'</div></div>';
+ var art=R.some(function(r,i){return !!SCENES[A[i]]});
+ var plate='<div class="aq-site-plates__plate" id="'+pid+'" data-theme="dark"'+(art?' data-pk-fig':'')+'><div class="aq-site-plates__reel">'+stills+'</div></div>';
  var sub=b.nav?'<p class="aq-site-plates__sub" aria-hidden="true">'+tx(b.nav)+' · '+pad(R.length-1)+'</p>':'';
- return sec('<div class="aq-site-plates"><div class="aq-site-plates__main">'+H+sub+wFold(b,R.length,table,b.fold_noun||'rows')+'</div>'+plate+'</div>','aq-site-plates-sec')};
+ return sec('<div class="aq-site-plates'+(art?'':' is-noart')+'"'+(art?' data-pk-sticky data-pk-h="200"':'')+'><div class="aq-site-plates__main">'+H+sub+wFold(b,R.length,table,b.fold_noun||'rows')+'</div>'+plate+'</div>','aq-site-plates-sec')};
 /* Selection (ported from Subframe Motion "Hover image preview list" (project-index), MIT, (c) 2026 Subframe): pointing
    at a row, focusing into it or pressing its index puts its site on the plate; the reel slides (CSS, 240 ms
    cubic-bezier(.2,.85,.25,1)), instantly for keyboard and under reduced motion. The choice persists. */
@@ -5767,6 +7123,9 @@ window.AQsitePick=pick;
 function row(ev){var r=ev.target.closest&&ev.target.closest('.aq-site-plates__row');return r&&r.closest('.aq-site-plates')?r:null}
 document.addEventListener('mouseover',function(ev){var r=row(ev);if(r)pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),false)});
 document.addEventListener('focusin',function(ev){var r=row(ev);if(r)pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),true)});
+/* phones: PhoneKit names the row on its reading line; the strip's plate swaps to that site (instant under reduced motion) */
+document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-site-plates')||!(ev.detail&&ev.detail.on))return;
+ pick(w,ev.detail.key,!!(window.AQpk&&AQpk.reduced&&AQpk.reduced()))});
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-site-plates__pick');if(!t)return;var r=t.closest('.aq-site-plates__row');pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),ev.detail===0)});
 })();
 /* Look "site-tiles" -> SiteTiles (design-system/components/SiteTiles): a short grid of what changes for a site, set as
@@ -5775,19 +7134,22 @@ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.targe
    one isometric part drawn in IsoKit on the navy (the change made visible), the line and the link. The zone numbers
    over the columns are the columns' numbers, so pointing at a column lights its part and its zone, as on a drawing.
    Fields (a grid block): h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp,
-   softener, truck; default from icon (gauge -> spool: a PP spool with a valve and a pressure gauge for the test;
+   softener, truck, valve (pass 12: a flanged spool with a diaphragm valve, drawn on the navy like the others, so a
+   valve icon no longer falls back to a navy-on-navy Spot); default from icon (valve -> valve; gauge -> spool: a PP spool with a valve and a pressure gauge for the test;
    stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated
-   load, for service and spares), else the item's line icon as a Spot. Phones: the sheet keeps its frame; columns
-   stack, each with its drawing beside the number and title. */
+   load, for service and spares), else the item's line icon as a limestone Spot. Phones (pass 12): no inner frame or
+   zone bands; each column stacks its drawing (72 px tall) above the number and title, the line and link under them. */
 (function(){
 var ST_FIG={
  spool:function(){return {inner:isoPipe([[0,0,0],[96,0,0]],{r:5,flanges:'ends',caps:true,flow:false})+isoPart('valve',30,0,0,2.4,{id:'fig'})+isoPart('gauge',68,0,5,2.2,{id:'fig'}),
   pts:[[-6,-10,-10],[102,10,-10],[66,0,42],[0,0,12],[96,0,12]]}},
  stamp:function(){return {inner:isoPart('stamp',0,0,0,3.4,{id:'fig'}),pts:[[-82,0,0],[30,40,0],[0,-20,0],[0,0,72],[-40,30,0]]}},
  softener:function(){return {inner:isoPart('softener',0,0,0,1.5,{id:'fig'}),pts:[[-34,-40,0],[74,-40,0],[-34,16,0],[0,0,96],[60,-30,70]]}},
- truck:function(){return {inner:isoPart('truck',0,0,0,1.05,{id:'fig',load:true}),pts:[[-4,-6,0],[118,-6,0],[-4,36,0],[118,36,0],[60,15,52]]}}
+ truck:function(){return {inner:isoPart('truck',0,0,0,1.05,{id:'fig',load:true}),pts:[[-4,-6,0],[118,-6,0],[-4,36,0],[118,36,0],[60,15,52]]}},
+ valve:function(){return {inner:isoPipe([[0,0,0],[84,0,0]],{r:6,flanges:'ends',caps:true,flow:false})+isoPart('valve',42,0,0,3.2,{id:'fig'}),
+  pts:[[-6,-12,-12],[90,12,-12],[42,0,52],[0,0,14],[84,0,14]]}}
 };
-var ST_AUTO={gauge:'spool',stamp:'stamp',softener:'softener',wrench:'truck'};
+var ST_AUTO={gauge:'spool',stamp:'stamp',softener:'softener',wrench:'truck',valve:'valve'};
 function stFig(f){var d=ST_FIG[f](),B=isoBounds(d.pts,12),W=Math.round(B.w),H=Math.round(B.h);
  return isoSvg(W,H,d.inner,'aq-iso--navy aq-site-tiles__svg',{origin:[-B.x,-B.y]})}
 LOOKS['site-tiles']=function(b,H){var I=b.items||[],n=I.length,num=function(i){return (i<9?'0':'')+(i+1)};
@@ -5813,7 +7175,11 @@ LOOKS['site-tiles']=function(b,H){var I=b.items||[],n=I.length,num=function(i){r
    fold, fold_noun. New optional fields: parts, one per row: the drawn part its standard governs (vessel, panel, deadleg,
    wall, joint: a plain line across the pipe, no bead profile; a row without one gets no tag); tag, the name of the number column and of the drawing's tag group.
    The drawing is fixed (it names no standard); which row points at which part is data. Desktop shows every row; the
-   fold applies on phones, where a readout under the drawing shows the chosen row. */
+   fold applies on phones (pass 12: only to rows with no tag, S7: a row a tag points at is never folded away).
+   Pass 12 phones: under 600 px the drawing is cropped to the tagged parts (the panel and piping half; the crop starts left of the
+   leftmost tagged part, so a new part never falls outside it) and runs full column at a legible scale (600-860 px keep
+   the whole skid); no readout
+   (it stays for screen readers); each tag is a 44 px target that selects its row and scrolls it into view. */
 var ST_W=840,ST_H=420;
 /* each part: its anchor on the drawing (leader start, ring) and its tag (leader end) in viewBox units */
 var ST_PART={vessel:{a:[156,181],t:[24,181]},panel:{a:[688,152],t:[816,152]},deadleg:{a:[610,46],t:[610,14]},wall:{a:[720,100],t:[720,14]},joint:{a:[510,304],t:[510,406]}};
@@ -5865,17 +7231,24 @@ LOOKS['skid-tags']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[],K='
  var leads=D.leads.replace(/<g class="aq-skid-tags__lead" data-part="([a-z]+)">.*?<\/g>/g,function(m,k){return used[k]?m:''});
  var svg='<svg class="'+K+'__svg" viewBox="0 0 '+ST_W+' '+ST_H+'" aria-hidden="true" focusable="false"><g class="'+K+'__ground">'+D.floor+'</g><g class="'+K+'__plant">'+D.eq+'</g><g class="'+K+'__water">'+D.flow+'</g>'+leads+'</svg>';
  var first=-1;R.forEach(function(r,i){if(first<0&&ST_PART[P[i]])first=i});
+ /* the phone crop: from left of the leftmost tagged part (anchor or tag) to the drawing's right edge */
+ var x0=ST_W;Object.keys(used).forEach(function(k){var p=ST_PART[k];x0=Math.min(x0,p.a[0]-40,p.t[0]-40)});x0=Math.max(0,Math.round(x0/10)*10);
+ var crop=x0>=200?' style="--st-x0:'+x0+';--st-cw:'+(ST_W-x0)+'"':'';
  var fig='<div class="'+K+'__fig" role="group" aria-label="'+e(b.tag||C[0]||'')+'">'+svg+'<span class="'+K+'__crossbox" aria-hidden="true"><span class="'+K+'__cross"></span></span>'+tags+'</div>'
   +'<p class="'+K+'__detail" aria-live="polite"></p>';
  var head='<thead><tr><th scope="col" class="'+K+'__nh"><span class="'+K+'__vh">'+tx(b.tag||'')+'</span></th>'+C.slice(0,4).map(function(c){return '<th scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>';
- var body='<tbody>'+R.map(function(r,i){var k=P[i],has=!!(ST_PART[k]&&used[k]);
+ /* the fold (phones) only takes rows no tag points at */
+ var hasT=function(i){return !!(ST_PART[P[i]]&&used[P[i]])},fb=b.fold>0?{fold:b.fold}:{},nf=0;
+ if(b.fold>0)R.forEach(function(r,i){if(i>=b.fold&&!hasT(i))nf++});
+ var fr=function(h,i){return b.fold>0&&i>=b.fold&&!hasT(i)?h.replace(/^<tr class="/,'<tr class="aq-fold-x '):h};
+ var body='<tbody>'+R.map(function(r,i){var k=P[i],has=hasT(i);
   var cell=function(j,cls){var c=r[j];return '<td class="'+K+'__'+cls+'"><span class="'+K+'__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+(c==null?'':tcell(c))+'</td>'};
-  return fli('<tr class="'+K+'__row" data-k="'+i+'"'+(has?' data-part="'+k+'"':'')+'>',b,i)
+  return fr('<tr class="'+K+'__row" data-k="'+i+'"'+(has?' data-part="'+k+'"':'')+'>',i)
    +'<td class="'+K+'__n">'+(has?'<button type="button" class="'+K+'__num" data-k="'+i+'" aria-pressed="false" aria-label="'+num(i)+' '+e(stTxt(r[0]))+'"><span>'+num(i)+'</span></button>':'<span class="'+K+'__num-x" aria-hidden="true">'+num(i)+'</span>')+'</td>'
    +'<th scope="row" class="'+K+'__std">'+tcell(r[0])+'</th>'+cell(1,'how')+cell(2,'proof')+cell(3,'go')+'</tr>'}).join('')+'</tbody>';
  var table='<table class="'+K+'__table">'+head+body+'</table>';
- return sec('<div class="'+K+'" data-first="'+first+'"><div class="'+K+'__top">'+H+'<div class="'+K+'__stage">'+fig+'</div></div>'
-  +wFold(b,R.length,table,b.fold_noun||'standards')+'</div>','aq-band--limestone '+K+'-sec" data-theme="light')};
+ return sec('<div class="'+K+'" data-first="'+first+'"><div class="'+K+'__top">'+H+'<div class="'+K+'__stage'+(crop?' is-crop':'')+'"'+crop+'>'+fig+'</div></div>'
+  +(nf?wFold(b,R.length,table,b.fold_noun||'standards'):table)+'</div>','aq-band--limestone '+K+'-sec" data-theme="light')};
 
 // Ported from Subframe Motion "Inside the image" (atlas-hotspots), MIT, (c) 2026 Subframe
 /* One selection shared by the drawing's tags and the table's rows (the library's pins and index): choosing a tag or a
@@ -5897,7 +7270,10 @@ function stInit(root){[].forEach.call((root||document).querySelectorAll('.aq-ski
 if(typeof document!=='undefined'&&document.addEventListener){
  var stObs=typeof MutationObserver!=='undefined'&&new MutationObserver(function(){if(document.querySelector('.aq-skid-tags:not([data-k])'))stInit()});
  if(stObs)stObs.observe(document.documentElement,{childList:true,subtree:true});
- document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(t)stPick(t.closest('.aq-skid-tags'),t.getAttribute('data-k'))});
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(!t)return;var w=t.closest('.aq-skid-tags');stPick(w,t.getAttribute('data-k'));
+  /* phones: a tag on the drawing takes the reader to its row (the table runs far below the drawing there) */
+  if(t.classList.contains('aq-skid-tags__tag')&&(w.closest('.aq-page')||document.documentElement).clientWidth<=860){var r=w.querySelector('.aq-skid-tags__row[data-k="'+t.getAttribute('data-k')+'"]');
+   if(r&&r.getClientRects().length){var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;r.scrollIntoView({block:'center',behavior:rm?'auto':'smooth'})}}});
  ['pointerover','focusin'].forEach(function(n){document.addEventListener(n,function(ev){if(n==='pointerover'&&ev.pointerType&&ev.pointerType!=='mouse')return;
   var r=ev.target.closest&&ev.target.closest('.aq-skid-tags__row[data-part]');if(r)stPick(r.closest('.aq-skid-tags'),r.getAttribute('data-k'))})});
  document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(!t||['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Home','End'].indexOf(ev.key)<0)return;
@@ -5914,8 +7290,9 @@ if(typeof document!=='undefined'&&document.addEventListener){
    Fields (a grid block): h, intro, items [{t, d, link}], parts [{t, by, part}]. New optional field: parts, the
    callouts; part is one of package, modules, instruments (the drawing's groups); by is the line under the callout's
    name (who makes it, from the intro's words). A grid item's d that opens with a bracketed name line ("[Full name] ·
-   [licence]. Ask about ...") shows that line as the card's nameplate. Phones: cards first, then the drawing with its
-   numbered pins and the callouts listed under it. */
+   [licence]. Ask about ...") shows that line as the card's nameplate. Phones (pass 12): the people as a scroll-snap
+   row (cards 82 % wide, aria-hidden count dots that follow the scroll), then the intro, the skid full bleed with 28 px
+   numbered chips (a tap on a chip scrolls to its legend row and presses it), and the callouts listed under it. */
 (function(){
 var SS_ANCHOR={package:[236,0,112],modules:[150,66,30],instruments:[214,86,58]};
 function ssScene(){
@@ -5940,6 +7317,7 @@ LOOKS['source-skid']=function(b){var I=b.items||[],Pa=(b.parts||[]).filter(funct
   return '<li class="aq-source-skid__card" style="--i:'+i+'"><p class="aq-source-skid__role"><span class="aq-source-skid__n" aria-hidden="true">'+num(i)+'</span><span>'+tx(it.t)+'</span></p>'
    +(n[0]?'<p class="aq-source-skid__name">'+tx(n[0])+'</p>':'')+(n[1]?'<p class="aq-source-skid__d">'+tx(n[1])+'</p>':'')
    +(go?'<p class="aq-source-skid__go">'+wlink(it.link)+'</p>':'')+'</li>'}).join('');
+ var dots=I.length>1?'<p class="aq-source-skid__dots" aria-hidden="true">'+I.map(function(x,i){return '<span'+(i?'':' class="is-on"')+'></span>'}).join('')+'</p>':'';
  var inner=ssScene(),pts=[[-34,-4,-4],[276,100,-4],[-34,-4,118],[276,100,118],[276,0,118],[-34,100,-4]],B=isoBounds(pts,12);
  var W=Math.round(B.w)+150,H=Math.round(B.h),org=[-B.x,-B.y],xr=Math.round(B.w)+16,callX=xr-org[0];
  var leads='',pins='',calls='';
@@ -5952,7 +7330,7 @@ LOOKS['source-skid']=function(b){var I=b.items||[],Pa=(b.parts||[]).filter(funct
  var fig='<div class="aq-source-skid__fig"><div class="aq-source-skid__view"><div class="aq-source-skid__plan" style="--pw:'+(W/xr*100).toFixed(1)+'%">'+isoSvg(W,H,inner+leads,'aq-source-skid__svg',{origin:org})+pins+'</div></div>'
   +(calls?'<ol class="aq-source-skid__calls" role="list" style="--x:'+((xr+8)/W*100).toFixed(2)+'%">'+calls+'</ol>':'')+'</div>';
  var head=wSecHead({h:b.h,eyebrow:b.eyebrow});
- return sec('<div class="aq-source-skid"><div class="aq-source-skid__l">'+head+'<ol class="aq-source-skid__cards" role="list">'+cards+'</ol></div>'
+ return sec('<div class="aq-source-skid"><div class="aq-source-skid__l">'+head+'<ol class="aq-source-skid__cards" role="list">'+cards+'</ol>'+dots+'</div>'
   +'<div class="aq-source-skid__r">'+(b.intro?'<p class="aq-lead aq-source-skid__intro">'+tx(b.intro)+'</p>':'')+fig+'</div></div>','aq-source-skid-sec')};
 /* Selection: the callout under the pointer or focus, else the pressed one; one group lit, maker parts lift */
 function ssSet(w,grp){var f=w.querySelector('.aq-source-skid__fig');if(!f)return;if(grp)f.setAttribute('data-sel',grp);else f.removeAttribute('data-sel');
@@ -5963,7 +7341,17 @@ if(typeof document!=='undefined'&&document.addEventListener){
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var c=ev.target.closest&&ev.target.closest('.aq-source-skid__btn');if(!c)return;ssSet(c.closest('.aq-source-skid'),c.getAttribute('data-grp'))})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var c=ev.target.closest&&ev.target.closest('.aq-source-skid__btn');if(!c||(ev.relatedTarget&&c.contains(ev.relatedTarget)))return;ssRest(c.closest('.aq-source-skid'))})});
  document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-source-skid__btn');if(!c)return;var w=c.closest('.aq-source-skid'),on=c.getAttribute('aria-pressed')!=='true';
-  [].forEach.call(w.querySelectorAll('.aq-source-skid__btn'),function(x){x.setAttribute('aria-pressed',String(x===c&&on))});ssSet(w,on?c.getAttribute('data-grp'):null)})}
+  [].forEach.call(w.querySelectorAll('.aq-source-skid__btn'),function(x){x.setAttribute('aria-pressed',String(x===c&&on))});ssSet(w,on?c.getAttribute('data-grp'):null)});
+ /* phones: a tap on a drawing chip scrolls to its legend row and presses it (the chips are aria-hidden; the legend
+    buttons are the keyboard route) */
+ document.addEventListener('click',function(ev){var p=ev.target.closest&&ev.target.closest('.aq-source-skid__pin');if(!p)return;var w=p.closest('.aq-source-skid'),
+  c=w&&w.querySelector('.aq-source-skid__btn[data-grp="'+p.getAttribute('data-grp')+'"]');if(!c)return;
+  if(c.getAttribute('aria-pressed')!=='true')c.click();var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  c.scrollIntoView({block:'nearest',behavior:rm?'auto':'smooth'})});
+ /* phones: the count dots follow the people row's scroll */
+ document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||!r.classList||!r.classList.contains('aq-source-skid__cards'))return;var c=r.firstElementChild;if(!c)return;
+  var k=Math.round(r.scrollLeft/(c.getBoundingClientRect().width||1)),d=r.parentNode.querySelectorAll('.aq-source-skid__dots span');
+  [].forEach.call(d,function(x,i){x.classList.toggle('is-on',i===Math.min(k,d.length-1))})},true)}
 })();
 /* Look "spare-sheet" -> SpareSheet (design-system/components/SpareSheet): like for like, or a change, read off a
    limestone drawing sheet. The sheet has a double border and a title block; the title and intro sit top left, and top
@@ -5975,8 +7363,11 @@ if(typeof document!=='undefined'&&document.addEventListener){
    cartridge (matched from the part's name, or b.kit[i]); a part with no drawing gets a plain outline.
    Concept: research/pass9b/concepts/svc-service.4.png (dimensioned part drawing on a limestone sheet, part list boxed,
    title block), with the live table's four-column like-for-like logic restored.
-   Fields as a table block: h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun, kit.
-   Desktop shows every row; the fold applies on phones, where each row stacks with its column names. */
+   Fields as a table block: h, intro, cols [part, like-for-like, change, what follows], rows, kit. Every row shows on
+   every width (pass 12; fold / fold_noun no longer read).
+   Phones (pass 12, PhoneKit sticky figure): the part drawing is a 180 px strip held under the section bar (lines 1.5
+   px, letters and balloon number 12 px as seen) and redrawn for the row on the reading line; rows stack with their
+   column names; no title block. */
 var SS_ART={
  membrane:{b:[22,36,218,64],a:'<rect x="22" y="36" width="196" height="28"/><path d="M34 36v28M206 36v28M70 36v28M118 36v28M166 36v28"/><path class="k-t" d="M22 50h-10M218 50h10"/><circle class="k-t" cx="28" cy="50" r="3"/>'},
  probe:{b:[14,40,180,92],a:'<rect x="30" y="40" width="58" height="20"/><path d="M88 46h70v8H88"/><path class="k-t" d="M158 48h22M158 52h22"/><path d="M30 50C14 50 14 78 40 78h38"/><rect x="78" y="70" width="40" height="22"/><path class="k-t" d="M84 76h28M84 81h20"/><circle class="k-a" cx="112" cy="86" r="2"/>'},
@@ -6005,12 +7396,16 @@ LOOKS['spare-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-spare-she
  var nos=['1','2','3','4'];
  var head='<thead><tr>'+C.slice(0,4).map(function(c,j){return '<th scope="col"><span class="'+K+'__hn" aria-hidden="true">'+nos[j]+'</span>'+tx(c)+'</th>'}).join('')+'</tr></thead>';
  var body=R.map(function(r,i){var no=(i<9?'0':'')+(i+1);
-  return fli('<tr class="'+K+'__row'+(i?'':' is-on')+'" data-i="'+i+'">',b,i)
+  /* a row whose answer holds a long word (16+ letters) stacks its two answers on phones, so the word is not split */
+  var wide=[1,2].some(function(j){var c=r[j];return /[^\s\/-]{16,}/.test(String(c&&c.t||c||''))});
+  return '<tr class="'+K+'__row'+(i?'':' is-on')+(wide?' is-wide':'')+'" data-i="'+i+'" data-pk-row="'+i+'">'
    +'<th scope="row"><button type="button" class="'+K+'__pick" data-i="'+i+'" aria-pressed="'+(i?'false':'true')+'"><span class="'+K+'__n" aria-hidden="true">'+no+'</span><span class="'+K+'__p">'+tcell(r[0])+'</span></button></th>'
    +[1,2,3].map(function(j){return '<td><span class="'+K+'__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+tcell(r[j])+'</td>'}).join('')+'</tr>'}).join('');
  var tb='<div class="'+K+'__tb" aria-hidden="true"><span class="'+K+'__tbn">'+R.map(function(r,i){return '<span class="'+K+'__tbp'+(i?'':' is-on')+'" data-i="'+i+'">'+tcell(r[0])+'</span>'}).join('')+'</span><span class="'+K+'__tbs">Part <span class="'+K+'__tbi">01</span> / '+tot+'</span></div>';
- var sheet='<div class="'+K+'" data-theme="light"><div class="'+K+'__top">'+H+'<figure class="'+K+'__fig">'+svg+'</figure></div>'
-  +wFold(b,n,'<table class="'+K+'__table">'+head+'<tbody>'+body+'</tbody></table>',b.fold_noun||'parts')+tb+'</div>';
+ /* every part shows on every width: each has its drawing and balloon (pass 12, S7: no fold; fold / fold_noun not
+    read). Phones: PhoneKit holds the drawing as a 180 px strip and the part on the reading line is drawn. */
+ var sheet='<div class="'+K+'" data-theme="light" data-pk-sticky data-pk-bp="860" data-pk-h="180"><div class="'+K+'__top">'+H+'<figure class="'+K+'__fig" data-pk-fig>'+svg+'</figure></div>'
+  +'<table class="'+K+'__table">'+head+'<tbody>'+body+'</tbody></table>'+tb+'</div>';
  return sec(sheet,K+'-sec')};
 /* Choosing a row (pointer, focus, or its button) draws that part on the sheet */
 function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(String(i)===cur)return;r.setAttribute('data-on',i);
@@ -6018,6 +7413,8 @@ function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(Stri
  var t=r.querySelector('.aq-spare-sheet__tbi');if(t)t.textContent=(i<9?'0':'')+(+i+1);
  if(window.AQspareDraw)AQspareDraw(r,i)}
 window.ssPick=ssPick;
+/* phones (PhoneKit on): the part on the reading line is drawn on the strip */
+document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-spare-sheet'))return;ssPick(r,ev.detail&&ev.detail.on?ev.detail.index:0)});
 (function(){function go(ev){var s=ev.target.closest&&ev.target.closest('.aq-spare-sheet__row');if(!s)return;ssPick(s.closest('.aq-spare-sheet'),+s.getAttribute('data-i'))}
  document.addEventListener('mouseover',go);document.addEventListener('focusin',go);document.addEventListener('click',go)})();
 /* Look "spine-shelf" -> SpineShelf (design-system/components/SpineShelf): the turnover package as the object on the
@@ -6026,10 +7423,12 @@ window.ssPick=ssPick;
    key section is the navy spine. Right, the package index: each section is a disclosure (number, name, dotted leader)
    that opens to the documents it holds, one entry per document. Opening a section pulls its spine off the shelf;
    pointing at a spine or a row lifts the other. The key section opens first.
-   Fields (a docs block): h, intro, items [{t, d, key, docs}], fold, fold_noun. docs (optional): the section's entries
-   as a list; without it they are read from d, split at ";" or ". ", else at commas outside brackets.
-   The fold applies on phones only (desktop shows the whole index; closed rows are one line each).
-   Phones: the shelf is a short band of numbered spines over the index. */
+   Fields (a docs block): h, intro, items [{t, d, key, docs}], fold_noun (the shelf caption's noun). docs (optional):
+   the section's entries as a list; without it they are read from d, split at ";" or ". ", else at commas outside
+   brackets. Titles are set as written (sentence case), never upper-cased. Every section is always listed: no fold
+   (closed rows are one line each; a fold field is ignored, pass 12 S7).
+   Phones (pass 12, concept 212): the shelf gives way to a numbered rail: the key section first as a navy row, open,
+   then the other sections as outlined rows, each number in a square on the rail. */
 function ssComma(s){var o=[],d=0,cur='';for(var i=0;i<s.length;i++){var c=s.charAt(i);if(c==='('||c==='[')d++;else if((c===')'||c===']')&&d)d--;
   if(c===','&&!d){o.push(cur);cur='';continue}cur+=c}o.push(cur);return o}
 function ssDocs(it){var L=it.docs;if(!L){var s=String(it.d||'').trim();L=s.split(/;\s+|\.\s+(?=[A-Z\[])/);if(L.length<2)L=ssComma(s)}
@@ -6045,11 +7444,11 @@ LOOKS['spine-shelf']=function(b,H){var I=(b.items||[]).map(function(x){return ty
  var shelf='<div class="aq-spine-shelf__shelf" aria-hidden="true"><div class="aq-spine-shelf__row">'+spines+'</div>'
   +'<span class="aq-spine-shelf__board"></span><p class="aq-spine-shelf__cap">'+n+' '+e(b.fold_noun||'sections')+'</p></div>';
  var rows=I.map(function(x,i){var num=(i<9?'0':'')+(i+1);
-  return fli('<li class="aq-spine-shelf__item'+(x.key?' is-key':'')+'" data-i="'+i+'">',b,i)
+  return '<li class="aq-spine-shelf__item'+(x.key?' is-key':'')+'" data-i="'+i+'">'
    +'<details'+(i===keyAt?' open':'')+'><summary class="aq-spine-shelf__sum"><span class="aq-spine-shelf__n" aria-hidden="true">'+num+'</span>'
    +'<h3 class="aq-spine-shelf__t">'+tx(x.t)+'</h3><span class="aq-spine-shelf__lead" aria-hidden="true"></span><span class="aq-spine-shelf__mark" aria-hidden="true"></span></summary>'
    +'<ul class="aq-spine-shelf__docs">'+D[i].map(function(d,j){return '<li style="--j:'+j+'">'+tx(d)+'</li>'}).join('')+'</ul></details></li>'}).join('');
- return sec(H+'<div class="aq-spine-shelf">'+shelf+'<div class="aq-spine-shelf__index">'+wFold(b,n,'<ol class="aq-spine-shelf__list" role="list">'+rows+'</ol>',b.fold_noun||'sections')+'</div></div>','aq-spine-shelf-sec')};
+ return sec(H+'<div class="aq-spine-shelf">'+shelf+'<div class="aq-spine-shelf__index">'+'<ol class="aq-spine-shelf__list" role="list">'+rows+'</ol>'+'</div></div>','aq-spine-shelf-sec')};
 /* Index and shelf move together: a section opened or closed pulls or returns its spine; pointing at a row or a spine
    lifts its pair; a click on a spine opens its section (the summary stays the keyboard control). */
 if(typeof document!=='undefined'&&document.addEventListener){
@@ -6127,26 +7526,30 @@ LOOKS['spool-dossier']=(function(){
    back or on to that stage, and the stacks still ahead go quiet, so the file reads as it stands at that stage.
    Fields, as a table: cols [stage, your step and who approves, documents issued], rows [[stage, step, documents]]
    (cells strings or {t, link}); stage cells "Name · clause" set the clause under the name; documents are split at ";".
-   fold, fold_noun: on phones only (desktop shows the whole axis). Phones: the axis runs down the left, each stage's
-   sheets wrap beside it, then its step. */
+   fold, fold_noun: kept for the no-script phone fallback only. Phones (pass 12, S10/S11): the same axis, as a snap rail
+   of stage columns about 280 px wide (every stage, the stacks standing on one axis line, name and step under it), the
+   band names once in the first column; over it a 01-06 number rail (44 px) jumps to a stage and follows the swipe
+   (AQsnap, below); the axis nodes keep their 44 px hit box and still hold the file at a stage. */
 function stDocs(c){return String(c&&typeof c==='object'?c.t:c||'').split(/\s*;\s*/).filter(Boolean)}
 LOOKS['stage-stacks']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var k=function(i,cls){return '<p class="aq-stage-stacks__k'+(cls?' '+cls:'')+'">'+tx(C[i]||'')+'</p>'};
  var list=R.map(function(r,i){var s=String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||''),p=s.split(/\s+·\s+/),num=(i<9?'0':'')+(i+1);
   var docs=stDocs(r[2]).map(function(d,j){return '<li class="aq-stage-stacks__doc" style="--j:'+j+'">'+tx(d)+'</li>'}).join('');
-  return fli('<li class="aq-stage-stacks__stage" style="--i:'+i+'">',b,i)
+  return fli('<li class="aq-stage-stacks__stage'+(i?'':' is-snap')+'" style="--i:'+i+'">',b,i)
    +'<div class="aq-stage-stacks__head">'+k(0,'is-ph')+'<h3 class="aq-stage-stacks__name"><span class="aq-stage-stacks__no" aria-hidden="true">'+num+'</span><span class="aq-stage-stacks__nm">'+(r[0]&&typeof r[0]==='object'?tcell({t:p[0],link:r[0].link}):tx(p[0]))+'</span>'
     +(p[1]?'<span class="aq-stage-stacks__ref">'+tx(p.slice(1).join(' · '))+'</span>':'')+'</h3></div>'
    +'<div class="aq-stage-stacks__pile">'+k(2,'is-ph')+'<ul class="aq-stage-stacks__docs" role="list" data-theme="light">'+docs+'</ul></div>'
    +'<span class="aq-stage-stacks__axis"><span class="aq-stage-stacks__run" aria-hidden="true"></span><button type="button" class="aq-stage-stacks__node" aria-pressed="false" aria-label="'+e('Show the file up to '+p[0])+'"></button></span>'
    +'<div class="aq-stage-stacks__who">'+k(1,'is-ph')+'<p class="aq-stage-stacks__step">'+tcell(r[1])+'</p></div></li>'}).join('');
- return sec(H+'<div class="aq-stage-stacks" data-n="'+R.length+'" style="--n:'+R.length+'">'+wFold(b,R.length,'<ol class="aq-stage-stacks__list" role="list">'+list+'</ol>',b.fold_noun||'stages')+'</div>','aq-band--navy aq-stage-stacks-sec')};
+ var dots='<div class="aq-stage-stacks__dots" role="group" aria-label="'+e(String(C[0]&&C[0].t||C[0]||''))+'">'+R.map(function(r,i){var s=String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||'').split(/\s+·\s+/)[0];
+  return '<button type="button" class="aq-stage-stacks__dot" data-snap-to="'+i+'"'+(i?'':' aria-current="true"')+' aria-label="'+e(s)+'">'+(i<9?'0':'')+(i+1)+'</button>'}).join('')+'</div>';
+ return sec(H+'<div class="aq-stage-stacks" data-snap-box data-n="'+R.length+'" style="--n:'+R.length+'">'+dots+wFold(b,R.length,'<ol class="aq-stage-stacks__list" role="list" data-snap>'+list+'</ol>',b.fold_noun||'stages')+'</div>','aq-band--navy aq-stage-stacks-sec')};
 /* Stage rail. Ported from Subframe Motion "Chapter timeline scrubber" (cue-scrubber), MIT, (c) 2026 Subframe: one reach
    value is sought (0.5-0.9 s by distance, power2.inOut; a third faster on the way back to the whole file), the water
    fills each stage's run as far as the reach, and stages it has not reached go quiet. Reduced motion: the reach jumps.
    Pointing at a stage or focusing its node seeks it; pressing a node holds that stage until it is pressed again. */
 function stRail(el){if(el._st)return el._st;var S=[].slice.call(el.querySelectorAll('.aq-stage-stacks__stage')),n=S.length,st={reach:n,pin:-1,tw:null};el._st=st;
- st.apply=function(){var r=st.reach,v=innerWidth<860;S.forEach(function(s,i){var run=s.querySelector('.aq-stage-stacks__run'),f=Math.max(0,Math.min(1,r-i));
+ st.apply=function(){var r=st.reach,v=false;S.forEach(function(s,i){var run=s.querySelector('.aq-stage-stacks__run'),f=Math.max(0,Math.min(1,r-i));
   if(run)run.style.transform=r>=n?'':(v?'scaleY(':'scaleX(')+f.toFixed(3)+')';s.classList.toggle('is-ahead',r<n&&i>r+0.001)})};
  st.seek=function(k,back){var to=k<0?n:k,red=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   S.forEach(function(s,i){s.classList.toggle('is-sel',i===k)});if(st.tw)st.tw.kill();
@@ -6161,6 +7564,24 @@ if(typeof document!=='undefined'&&document.addEventListener){
  document.addEventListener('focusout',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-stage-stacks__node');if(!b||(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-stage-stacks__node')))return;var st=stRail(b.closest('.aq-stage-stacks'));if(st.pin<0)st.seek(-1,true)});
  document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-stage-stacks__node');if(!b)return;var el=b.closest('.aq-stage-stacks'),st=stRail(el),k=stIdx(b.closest('.aq-stage-stacks__stage'));
   st.pin=st.pin===k?-1:k;[].forEach.call(el.querySelectorAll('.aq-stage-stacks__node'),function(x){x.setAttribute('aria-pressed',x===b&&st.pin===k?'true':'false')});st.seek(st.pin,st.pin<0)})}
+/* Snap rail (phones; pass 12 S11): a [data-snap] scroller whose children snap, and [data-snap-to="i"] buttons (dots or
+   numbers) in the same [data-snap-box]. The child nearest the scroller's start edge gets .is-snap and its button
+   aria-current (a strip of buttons that scrolls keeps it in view); a button scrolls its child to the start. At the
+   rail's end (items that cannot reach the start edge) the tapped child keeps the mark until the reader swipes (_want). State, not motion: it runs with reduced motion (jumps).
+   Shared by several looks; each defines it only if it is missing, so any one of them may be retired. */
+(function(){if(window.AQsnap)return;window.AQsnap=function(r){var it=[].slice.call(r.children),x=r.getBoundingClientRect().left+(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),k=0,b=1e9;
+ it.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-x);if(d<b-1){b=d;k=i}});
+ if(r.scrollLeft>0&&r.scrollLeft+r.clientWidth>=r.scrollWidth-2)k=r._want!=null&&r._want>=k&&it[r._want]?r._want:it.length-1;
+ it.forEach(function(c,i){c.classList.toggle('is-snap',i===k)});
+ var bx=r.closest('[data-snap-box]')||r.parentNode;[].forEach.call(bx.querySelectorAll('[data-snap-to]'),function(t){if(+t.getAttribute('data-snap-to')!==k){t.removeAttribute('aria-current');return}t.setAttribute('aria-current','true');
+  var s=t.parentNode;if(s.scrollWidth>s.clientWidth+1){var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;if(a<s.scrollLeft)s.scrollLeft=a;else if(z>s.scrollLeft+s.clientWidth)s.scrollLeft=z-s.clientWidth}});return k};
+ var q=null;document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||r.nodeType!==1||!r.hasAttribute('data-snap'))return;if(q!==r){q=r;requestAnimationFrame(function(){window.AQsnap(q);q=null})}},true);
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-snap-to]');if(!t)return;var bx=t.closest('[data-snap-box]'),r=bx&&bx.querySelector('[data-snap]');if(!r)return;
+  var c=r.children[+t.getAttribute('data-snap-to')];if(!c)return;r._want=+t.getAttribute('data-snap-to');var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=r.scrollLeft+c.getBoundingClientRect().left-r.getBoundingClientRect().left-(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),still=Math.abs(Math.max(0,Math.min(L,r.scrollWidth-r.clientWidth))-r.scrollLeft)<1;
+  r.scrollTo({left:L,behavior:red?'auto':'smooth'});
+  if(red||still)window.AQsnap(r)});
+ ['pointerdown','touchstart','wheel','keydown'].forEach(function(n){document.addEventListener(n,function(ev){var r=ev.target.closest&&ev.target.closest('[data-snap]');if(r)r._want=null},{capture:true,passive:true})})})();
 /* Look "stage-tiles" -> StageTiles (design-system/components/StageTiles): ordered stages as a Swiss row of tiles on
    navy and limestone, each led by a huge light slash numeral ("01/"). The heading sits in a navy band over the first
    tiles; with six stages the last two stack in a column at the right (05 beside the heading, 06 under it), so the
@@ -6170,7 +7591,8 @@ if(typeof document!=='undefined'&&document.addEventListener){
    joining method is open (DR-018, FD-18; as JointMacro).
    Fields (a steps block): h, intro, items [{t, d, link, label, art}]. label: a short line over the stage name (shown
    only when the name does not already contain it); art: "piping" for the drawing tile.
-   Container under 1080 px: the heading over a three-column grid; phones: one column, numeral beside the words. */
+   Container under 1080 px: the heading over a three-column grid; phones (pass 12): the pipe-run drawing as a band
+   under the heading, then the stages as a 2-column grid of square tiles (44 px numeral, name, line). */
 function stPiping(){var P='aq-stage-tiles'+'__',run='M-6 34H58Q72 34 72 48V98Q72 112 86 112H148Q162 112 162 98V48Q162 34 176 34H246',br='M118 112V166';
  var g='';for(var x=20;x<240;x+=20)g+='M'+x+' 0V160';for(var y=20;y<160;y+=20)g+='M0 '+y+'H240';
  function jt(x,y,v){return '<path class="'+P+'jt" d="'+(v?'M'+(x-4.5)+' '+y+'H'+(x+4.5):'M'+x+' '+(y-4.5)+'V'+(y+4.5))+'"/>'}
@@ -6189,7 +7611,9 @@ LOOKS['stage-tiles']=function(b,H){var I=b.items||[],n=I.length;
    +(art?'<div class="aq-stage-tiles__art">'+stPiping()+'</div>':'')
    +'<span class="aq-stage-tiles__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'<i>/</i></span>'
    +'<div class="aq-stage-tiles__body">'+lab+'<h3 class="aq-stage-tiles__t">'+nm+'</h3>'+(it.d?'<p class="aq-stage-tiles__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
- return sec('<div class="aq-stage-tiles'+(n===6?' is-six':'')+'" style="--n:'+n+'"><div class="aq-stage-tiles__head">'+H+'</div>'
+ /* phones: the drawing leaves its tile and runs as a band under the heading (a phone-only copy, aria-hidden) */
+ var band=I.some(function(it){return it.art==='piping'})?'<div class="aq-stage-tiles__band" aria-hidden="true">'+stPiping()+'</div>':'';
+ return sec('<div class="aq-stage-tiles'+(n===6?' is-six':'')+'" style="--n:'+n+'"><div class="aq-stage-tiles__head">'+H+'</div>'+band
   +'<ol class="aq-stage-tiles__list">'+tiles+'</ol></div>','aq-stage-tiles-sec')};
 /* Look "stair-router" -> StairRouter (pass 9): a router table (as: "router") drawn as a rising staircase of situation
    cards over huge cropped outline type. Every situation is a card on its own tread, the first lowest, the last highest;
@@ -6201,8 +7625,11 @@ LOOKS['stage-tiles']=function(b,H){var I=b.items||[],n=I.length;
    the last sits large on the wedge; decorative, aria-hidden). A card whose cells link somewhere (the last link wins)
    is clickable as a whole through a pointer-only overlay; the real link stays the keyboard target and its intent rides
    on both. A value that opens with a [placeholder] is a pending value: dashed rule and "To confirm".
-   Best for 3 to 7 rows. Design system: components/StairRouter. */
-LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b.labels||[],K=b.kinetic||[],w0=K[0]||'',w1=K.length>1?K[K.length-1]:'';
+   Best for 3 to 7 rows. Design system: components/StairRouter.
+   Phones (pass 12, PhoneKit): a situation picker. With labels, the labels are chips in two columns (01 open first) and
+   the one card shows under them; without labels, the situations are accordion heads with the card under its head. The
+   stair stays as a thin rising rail at the top of the card (this step lit); no indents. */
+LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b.labels||[],K=b.kinetic||[],w0=K[0]||'',w1=K.length>1?K[K.length-1]:'',acc=!L.length;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
  function val(c){return c&&typeof c==='object'?c.t:c}
  function words(side){return '<div class="aq-stair-router__words aq-stair-router__words--'+side+'">'
@@ -6215,16 +7642,18 @@ LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b
   var dl=(lab?'<div class="aq-stair-router__f is-sit"><dt>'+tx(C[0]||'')+'</dt><dd>'+tx(s)+'</dd></div>':'')
    +st.map(function(c,j){var pend=j!==go&&/^\s*\[/.test(val(c)),cl=['aq-stair-router__f'];if(j===go)cl.push('is-go');if(pend)cl.push('is-pending');
     return '<div class="'+cl.join(' ')+'"><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+(pend?' <span class="aq-stair-router__tbc">To confirm</span>':'')+'</dd></div>'}).join('');
-  return '<li class="aq-stair-router__step'+(to?' is-link':'')+'" style="--i:'+i+'">'
+  var chip='<button type="button" class="aq-stair-router__chip" data-pk-head><span class="aq-stair-router__cn" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-stair-router__cl">'+tx(lab||s)+'</span>'+(acc?'<span class="aq-phone-kit__chev" aria-hidden="true"></span>':'')+'</button>';
+  var rail='<span class="aq-stair-router__rail" aria-hidden="true"><b>'+(i<9?'0':'')+(i+1)+' / '+(n<10?'0':'')+n+'</b><span>'+R.map(function(_,k){return '<i class="'+(k<i?'is-past':k===i?'is-here':'')+'" style="--k:'+k+'"></i>'}).join('')+'</span></span>';
+  return '<li class="aq-stair-router__step'+(to?' is-link':'')+'" style="--i:'+i+'" data-pk-item="'+i+'">'
    +'<span class="aq-stair-router__n" aria-hidden="true"><span class="aq-stair-router__num">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-stair-router__arrow"></span></span>'
    +'<span class="aq-stair-router__tread" aria-hidden="true"></span>'+(i?'<span class="aq-stair-router__riser" aria-hidden="true"></span>':'')
-   +'<div class="aq-stair-router__card">'
+   +chip+'<div class="aq-stair-router__card" data-pk-body>'+rail
    +(to?'<a class="aq-stair-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'"'+(ti?' data-intent="'+e(ti)+'"':'')+' tabindex="-1" aria-hidden="true"></a>':'')
    +'<h3 class="aq-stair-router__t">'+tx(lab||s)+'</h3><dl class="aq-stair-router__dl">'+dl+'</dl></div></li>'}).join('');
  return '<section class="aq-section aq-stair-router-sec">'+type+'<div class="aq-stair-router__wedge" aria-hidden="true"></div>'
   +(w1?'<p class="aq-stair-router__go" aria-hidden="true">'+e(w1)+'</p>':'')
   +'<div class="aq-in"><div class="aq-stair-router" style="--n:'+n+'">'+H
-  +'<ol class="aq-stair-router__flight">'+steps+'</ol><span class="aq-stair-router__drop" aria-hidden="true"></span></div></div></section>'};
+  +'<ol class="aq-stair-router__flight" data-pk-picker="'+(acc?'accordion':'chips')+'" data-pk-open="0">'+steps+'</ol><span class="aq-stair-router__drop" aria-hidden="true"></span></div></div></section>'};
 /* Look "standard-tiles" -> StandardTiles (design-system/components/StandardTiles): a short grid of linked items set as a
    Swiss tile grid, three across (pass 9b, concept ind-meddevice.2). Each item is one linked tile, alternately navy and
    limestone: a huge slash-numbered count ("01/") in Geist Mono Light, a hairline, the title and one line, and its
@@ -6329,7 +7758,10 @@ LOOKS['standard-wires']=function(b,H){var C=b.cols||[],R=b.rows||[];
    spot picks the drawn part the arc touches: ro-skid -> RO rack, storage-tank -> tank and loop, gauge -> control panel,
    weld -> skid frame (fabrication), binder -> binders; any other spot gets a node with no arc. Zones take the slots left top, right
    top, right bottom, left bottom, bottom in order (five at most on the rings; more stack under the stage).
-   Phones: the plant on top, the zones as a list strung on a vertical orbit line down the left, chips under each title. */
+   Phones: the plant on top, the zones as a list strung on a vertical orbit line down the left, chips under each title.
+   Pass 12 phones: the plant carries a numbered pin (01-05) on the part each zone governs and holds as a 180 px sticky
+   strip under the header (PhoneKit sticky figure, under 600 px; tablets keep the large figure); the zone in view lights
+   its pin. Chips are 44 px, two columns. */
 var SO_PART={'ro-skid':'gen','storage-tank':'sto',gauge:'ctl',weld:'mat',binder:'qual'};
 function soScene(){
  var sk=isoPart('skid',0,0,0,1,{w:150,d:64,id:'mat'}),ro=isoPart('ro',12,10,9,1,{id:'gen'}),
@@ -6365,13 +7797,16 @@ LOOKS['standards-orbit']=function(b,H){
     +'<circle class="aq-standards-orbit__end" data-so="'+i+'" cx="'+soF(tg[0])+'" cy="'+soF(tg[1])+'" r="4"/>'}
   nodes+='<g class="aq-standards-orbit__node" data-so="'+i+'"><circle class="aq-standards-orbit__halo" cx="'+soF(nd[0])+'" cy="'+soF(nd[1])+'" r="11"/><circle class="aq-standards-orbit__dot" cx="'+soF(nd[0])+'" cy="'+soF(nd[1])+'" r="5"/></g>';
   var to=z.to||'',ttl=to?'<a href="#'+e(WP)+'" data-jump="'+e(to)+'">'+tx(z.t)+'</a>':tx(z.t);
-  lab+='<li class="aq-standards-orbit__zone is-'+sl[1]+'" data-so="'+i+'"'+(pid?' data-part="'+pid+'"':'')+' style="--x:'+(100*nd[0]/SW).toFixed(2)+'%;--y:'+(100*nd[1]/SH).toFixed(2)+'%">'
+  lab+='<li class="aq-standards-orbit__zone is-'+sl[1]+'" data-pk-row="'+i+'" data-so="'+i+'"'+(pid?' data-part="'+pid+'"':'')+' style="--x:'+(100*nd[0]/SW).toFixed(2)+'%;--y:'+(100*nd[1]/SH).toFixed(2)+'%">'
    +'<div class="aq-standards-orbit__head">'+idx(i)+'<h3 class="aq-standards-orbit__t">'+ttl+'</h3></div>'
    +'<ul class="aq-standards-orbit__codes">'+(z.codes||[]).map(function(c){var ct=c&&typeof c==='object'?c.t:c,cto=(c&&typeof c==='object'&&c.to)||to;
     return '<li><a class="aq-standards-orbit__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></li>'});
  var orbit='<svg class="aq-standards-orbit__orbits" viewBox="0 0 '+SW+' '+SH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'+rings+'<g>'+ticks+'</g>'+arcs+nodes+'</svg>';
- var plant='<div class="aq-standards-orbit__plant" aria-hidden="true" style="left:'+(100*px/SW).toFixed(2)+'%;top:'+(100*py/SH).toFixed(2)+'%;width:'+(100*pw/SW).toFixed(2)+'%">'+S.svg+'</div>';
- return sec(H+'<div class="aq-standards-orbit"><div class="aq-standards-orbit__stage" style="--sw:'+SW+';--sh:'+SH+'">'+orbit+plant
+ /* phone pins: one per zone on the part it governs (zones with no drawn part pin the skid frame) */
+ var pins=Z.map(function(z,i){if(!slots[i])return '';var pid=SO_PART[z.spot],a=S.A[pid&&S.A[pid]?pid:'mat'];
+  return '<span class="aq-standards-orbit__pin" data-pk-key="'+i+'" style="left:'+(100*a[0]/S.W).toFixed(2)+'%;top:'+(100*a[1]/S.H).toFixed(2)+'%">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+ var plant='<div class="aq-standards-orbit__plant" aria-hidden="true" data-pk-fig style="left:'+(100*px/SW).toFixed(2)+'%;top:'+(100*py/SH).toFixed(2)+'%;width:'+(100*pw/SW).toFixed(2)+'%"><div class="aq-standards-orbit__pan" style="--so-pw:'+S.W+';--so-ph:'+S.H+'">'+S.svg+pins+'</div></div>';
+ return sec(H+'<div class="aq-standards-orbit" data-pk-sticky data-pk-h="180" data-pk-bp="599"><div class="aq-standards-orbit__stage" style="--sw:'+SW+';--sh:'+SH+'">'+orbit+plant
   +'<ol class="aq-standards-orbit__zones">'+lab+'</ol></div></div>','aq-band--navy aq-standards-orbit-sec')};
 /* Hover or focus a zone: its arc, node and drawn part light (the zone list drives it, so a keyboard reaches it too) */
 function soLight(z,on){var w=z&&z.closest('.aq-standards-orbit');if(!w)return;var i=z.getAttribute('data-so'),p=z.getAttribute('data-part');
@@ -6380,6 +7815,11 @@ function soLight(z,on){var w=z&&z.closest('.aq-standards-orbit');if(!w)return;va
  w.classList.toggle('is-focus',on)}
 if(typeof document!=='undefined'&&document.addEventListener){
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var z=ev.target.closest&&ev.target.closest('.aq-standards-orbit__zone');if(z)soLight(z,true)})});
+ /* phones (PhoneKit strip): the zone in view lights its drawn part too; switching off clears it */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-standards-orbit'))return;
+  [].forEach.call(w.querySelectorAll('.aq-standards-orbit__plant [data-iso-id].is-lit'),function(el){el.classList.remove('is-lit')});
+  var z=ev.detail&&ev.detail.on&&w.querySelector('.aq-standards-orbit__zone[data-pk-row="'+ev.detail.key+'"]'),p=z&&z.getAttribute('data-part');
+  if(p)[].forEach.call(w.querySelectorAll('.aq-standards-orbit__plant [data-iso-id="'+p+'"]'),function(el){el.classList.add('is-lit')})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var z=ev.target.closest&&ev.target.closest('.aq-standards-orbit__zone');if(z&&!(ev.relatedTarget&&z.contains(ev.relatedTarget)))soLight(z,false)})})}
 /* Look "strata-run" -> StrataRun (design-system/components/StrataRun): a diagram block (stages from feed water to
    points of use) as one water run stepping down a terrace of stacked paper slabs. Each stage stands on its own slab
@@ -6387,7 +7827,9 @@ if(typeof document!=='undefined'&&document.addEventListener){
    water down the terraces from slab to slab, the loop runs overhead back to the tank, and a cut-paper stream in
    flow-tint runs behind the whole terrace. The stage names hang over their slab as a row of labels whose left
    hairline drops to the part (one leader per stage). The base line (monitoring) is a dashed signal bus along the foot
-   of the terrace. Phones: the labels stack down a vertical pipe, each with its own slab and equipment beside it.
+   of the terrace. Phones (pass 12): the run turns vertical: each stage's slab drawing runs wide, alternating left and
+   right, and one pipe zigzags down between them, in at one corner of a slab and out at the other, then down the page
+   edge past the stage's text to the next slab. The text sits under its slab.
    Fields: stages [{t, d, icon|spot, link, art}], base, base_link, caption. art: what stands on the slab, one of
    feed, pretreatment, generation, storage, loop, outlets (default by position). link: a page id or page#anchor. */
 var SR_ART=['feed','pretreatment','generation','storage','loop','outlets'];
@@ -6454,9 +7896,14 @@ LOOKS['strata-run']=function(b,H){
  /* labels */
  var items=S.map(function(s,i){var k=SR_ART.indexOf(s.art)>=0?s.art:SR_ART[Math.min(i,5)],m=srScene([{art:k}],true),mb=isoBounds(m.pts,6);
   var mini=isoSvg(Math.round(mb.w),Math.round(mb.h),m.svg,'aq-strata-run__mini',{origin:[-mb.x,-mb.y]});
+  /* phone pipe: where the slab's left and right corners sit (mid-height of the slab), as fractions of the drawing */
+  var sw=k==='generation'?124:k==='outlets'?118:k==='feed'?60:100,sd=k==='generation'?84:70,cl=isoP([-sw/2,sd/2,11]),cr=isoP([sw/2,-sd/2,11]);
+  var pipe='<span class="aq-strata-run__pp aq-strata-run__pp--iv"></span><span class="aq-strata-run__pp aq-strata-run__pp--ih"></span>'
+   +(i<n-1?'<span class="aq-strata-run__pp aq-strata-run__pp--oh"></span><span class="aq-strata-run__pp aq-strata-run__pp--ov"></span>':'');
+  var ly=((cl[1]-mb.y)/mb.h).toFixed(3),ry=((cr[1]-mb.y)/mb.h).toFixed(3);
   var t='<h3 class="aq-strata-run__t">'+(s.link&&wp(s.link)?'<a href="#'+e(s.link)+'" data-wp="'+e(s.link)+'">'+tx(s.t)+'</a>':tx(s.t))+'</h3>';
-  return '<li class="aq-strata-run__stage" data-stage="s'+i+'" data-art="'+k+'">'+idx(i)+t+(s.d?'<p class="aq-strata-run__d">'+tx(s.d)+'</p>':'')
-   +'<span class="aq-strata-run__thumb" aria-hidden="true">'+mini+'</span></li>'}).join('');
+  return '<li class="aq-strata-run__stage" data-stage="s'+i+'" data-art="'+k+'" style="--ly:'+ly+';--ry:'+ry+'">'+idx(i)+t+(s.d?'<p class="aq-strata-run__d">'+tx(s.d)+'</p>':'')
+   +'<span class="aq-strata-run__thumb" aria-hidden="true">'+mini+pipe+'</span></li>'}).join('');
  var base=b.base?'<p class="aq-strata-run__base" data-stage="mon"><span class="aq-strata-run__bus-key" aria-hidden="true"></span>'
   +(b.base_link&&wp(b.base_link)?'<a href="#'+e(b.base_link)+'" data-wp="'+e(b.base_link)+'">'+tx(b.base)+'</a>':'<span>'+tx(b.base)+'</span>')+'</p>':'';
  return sec(H+'<div class="aq-strata-run"><ol class="aq-strata-run__stages" role="list">'+items+'</ol>'
@@ -6488,7 +7935,9 @@ LOOKS['strike-gaps']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-strike-ga
    one shared loop serving several suites, on a limestone band. The loop is a twin-wall pipe round the sheet; every
    situation is a suite (a room in plan: walls, a door swing) fed by its own drop and point-of-use valve off the loop.
    Inside the suite: the situation, the water it needs, the systems link and the start page as the suite's way out.
-   Hovering or focusing a suite sends a slug of water along the loop from the supply to its drop and lights the drop. Phones: the loop runs down the left, suites branch off it.
+   Hovering or focusing a suite sends a slug of water along the loop from the supply to its drop and lights the drop. Phones (pass 12): the loop runs across the top as the header and the suites are a snap row
+   under it (one ~300 px room a swipe, each hanging off its own drop and valve); the room in view lights its valve
+   and drop, and a dot rail under the row jumps between rooms (AQsnap, below).
    Fields, as the router: cols (situation, water, systems, start with), rows (cells: string or {t, link, intent}).
    Concept: industries.0 / home.4 (situations piped from one manifold) set as the CDMO's own plant: one loop, many
    suites (the page drawing ind-cdmo shows the same idea). */
@@ -6500,12 +7949,31 @@ LOOKS['suite-loop']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
   var dl=mid.map(function(c,j){return '<div class="aq-suite-loop__f'+(lk(c)?' is-link':'')+'"><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('');
   var out=go?'<a class="aq-suite-loop__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-suite-loop__k">'+tx(C[r.length-1]||'')+'</span><span class="aq-suite-loop__to">'+tx(go.t)+'</span></a>'
    :'<p class="aq-suite-loop__go"><span class="aq-suite-loop__k">'+tx(C[r.length-1]||'')+'</span><span class="aq-suite-loop__to">'+tcell(last)+'</span></p>';
-  return '<li class="aq-suite-loop__suite" style="--rows:'+(mid.length+3)+'"><span class="aq-suite-loop__drop" aria-hidden="true"><span class="aq-suite-loop__dw"></span><span class="aq-suite-loop__valve">'+VALVE+'</span></span>'
+  return '<li class="aq-suite-loop__suite'+(i?'':' is-snap')+'" style="--rows:'+(mid.length+3)+'"><span class="aq-suite-loop__drop" aria-hidden="true"><span class="aq-suite-loop__dw"></span><span class="aq-suite-loop__valve">'+VALVE+'</span></span>'
    +'<span class="aq-suite-loop__door" aria-hidden="true"></span>'
    +'<span class="aq-suite-loop__tag" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-suite-loop__t">'+tx(r[0])+'</h3><dl class="aq-suite-loop__dl">'+dl+'</dl>'+out+'</li>'}).join('');
+ var dots='<div class="aq-suite-loop__dots" role="group" aria-label="Suites">'+R.map(function(r,i){return '<button type="button" class="aq-suite-loop__dot" data-snap-to="'+i+'"'+(i?'':' aria-current="true"')+' aria-label="'+e((i<9?'0':'')+(i+1)+' '+String(r[0]&&r[0].t||r[0]||''))+'"></button>'}).join('')+'</div>';
  var loop='<span class="aq-suite-loop__loop" aria-hidden="true"><span class="aq-suite-loop__water"></span><span class="aq-suite-loop__arrow"></span><span class="aq-suite-loop__beam"></span></span>';
- return sec(H+'<div class="aq-suite-loop" style="--n:'+n+'">'+loop+'<ol class="aq-suite-loop__suites">'+suites+'</ol></div>','aq-band--limestone aq-suite-loop-sec')};
+ return sec(H+'<div class="aq-suite-loop'+(n>5?' is-dense':'')+'" data-snap-box style="--n:'+n+'">'+loop+'<ol class="aq-suite-loop__suites" data-snap>'+suites+'</ol>'+dots+'</div>','aq-band--limestone aq-suite-loop-sec" data-theme="light')};
 })();
+/* Snap rail (phones; pass 12 S11): a [data-snap] scroller whose children snap, and [data-snap-to="i"] buttons (dots or
+   numbers) in the same [data-snap-box]. The child nearest the scroller's start edge gets .is-snap and its button
+   aria-current (a strip of buttons that scrolls keeps it in view); a button scrolls its child to the start. At the
+   rail's end (items that cannot reach the start edge) the tapped child keeps the mark until the reader swipes (_want). State, not motion: it runs with reduced motion (jumps).
+   Shared by several looks; each defines it only if it is missing, so any one of them may be retired. */
+(function(){if(window.AQsnap)return;window.AQsnap=function(r){var it=[].slice.call(r.children),x=r.getBoundingClientRect().left+(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),k=0,b=1e9;
+ it.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-x);if(d<b-1){b=d;k=i}});
+ if(r.scrollLeft>0&&r.scrollLeft+r.clientWidth>=r.scrollWidth-2)k=r._want!=null&&r._want>=k&&it[r._want]?r._want:it.length-1;
+ it.forEach(function(c,i){c.classList.toggle('is-snap',i===k)});
+ var bx=r.closest('[data-snap-box]')||r.parentNode;[].forEach.call(bx.querySelectorAll('[data-snap-to]'),function(t){if(+t.getAttribute('data-snap-to')!==k){t.removeAttribute('aria-current');return}t.setAttribute('aria-current','true');
+  var s=t.parentNode;if(s.scrollWidth>s.clientWidth+1){var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;if(a<s.scrollLeft)s.scrollLeft=a;else if(z>s.scrollLeft+s.clientWidth)s.scrollLeft=z-s.clientWidth}});return k};
+ var q=null;document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||r.nodeType!==1||!r.hasAttribute('data-snap'))return;if(q!==r){q=r;requestAnimationFrame(function(){window.AQsnap(q);q=null})}},true);
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-snap-to]');if(!t)return;var bx=t.closest('[data-snap-box]'),r=bx&&bx.querySelector('[data-snap]');if(!r)return;
+  var c=r.children[+t.getAttribute('data-snap-to')];if(!c)return;r._want=+t.getAttribute('data-snap-to');var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=r.scrollLeft+c.getBoundingClientRect().left-r.getBoundingClientRect().left-(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),still=Math.abs(Math.max(0,Math.min(L,r.scrollWidth-r.clientWidth))-r.scrollLeft)<1;
+  r.scrollTo({left:L,behavior:red?'auto':'smooth'});
+  if(red||still)window.AQsnap(r)});
+ ['pointerdown','touchstart','wheel','keydown'].forEach(function(n){document.addEventListener(n,function(ev){var r=ev.target.closest&&ev.target.closest('[data-snap]');if(r)r._want=null},{capture:true,passive:true})})})();
 /* Look "system-run" -> SystemRun (design-system/components/SystemRun): the package as one continuous water line drawn
    as a navy blueprint (IsoKit). Drinking water enters at the left, runs through the four systems in order (media
    filter, softener, then carbon or bisulfite, drawn as one vessel, the order sys-pretreatment teaches; RO rack and a
@@ -6513,7 +7981,10 @@ LOOKS['suite-loop']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
    point of use) and
    leaves at the point of use. Each system has a bracket over its equipment with its number and name, and a column
    under the drawing with its line, standard tag and link; pointing at a column lights its equipment.
-   Phones: the long drawing gives way to one drawing per system, stacked down a vertical water line.
+   Phones: the long drawing gives way to one drawing per system, stacked down a vertical water line: one twin-wall
+   pipe runs down the rail from "Drinking water" to "Point of use", and a tee leaves it for each system's drawing at
+   the drawing's own inlet pipe, so the path reads as one line (pass 12). Each phone drawing is cropped tight to its
+   equipment and the pipe that brings water in (nothing clipped); tag and link share one row.
    Fields (a path block): h, from, to, items [{t, d, tag, link, label}] (label: short bracket name, default t; the
    second system's bracket defaults to "RO and DI/EDI", what the drawing shows, never EDI only: DR-018).
    The drawing itself is fixed: it shows these four systems in this order (IsoKit parts), so the look fits a path block
@@ -6533,20 +8004,23 @@ function srStages(){
  /* 1 pretreatment */
  var fi=P('filter',62,{id:'s0'}),so=P('softener',134,{id:'s0'},0,0),ca=P('carbon',212,{id:'s0'});
  var f0=fi.ports.in,feed=isoPipe(srDedupe([[f0[0]-40,f0[1],feedZ],[f0[0]-8,f0[1],feedZ],[f0[0]-8,f0[1],f0[2]],f0]),{to:'s0',r:2.2,caps:'start',flanges:false});
- S.push({parts:[feed,fi,link(fi.ports.out,so.ports.in,'s0','side',so.ports.in[2]+8),so,link(so.ports.out,ca.ports.in,'s0','side',ca.ports.in[2]+6),ca],span:[22,240],feed:feed});
+ S.push({inlet:feed.start,parts:[feed,fi,link(fi.ports.out,so.ports.in,'s0','side',so.ports.in[2]+8),so,link(so.ports.out,ca.ports.in,'s0','side',ca.ports.in[2]+6),ca],span:[22,240],feed:feed});
  /* 2 PW generation: RO rack anchored at its min corner (screen centre 0.866 (2t + 31.5)), EDI after it */
  var tr=(352/ISO_C-31.5)/2,ro=isoPart('ro',tr,-tr,0,1,{id:'s1'}),te=(468/ISO_C-9)/2,ed=isoPart('edi',te,-te,0,1,{id:'s1'});
- S.push({parts:[link(ca.ports.out,ro.ports.in,'s1','side',ca.ports.out[2]+10),ro,link(ro.ports.out,ed.ports.in,'s1','side',ro.ports.out[2]+4),ed],span:[282,500]});
+ var l1=link(ca.ports.out,ro.ports.in,'s1','side',ca.ports.out[2]+10);
+ S.push({inlet:l1.start,parts:[l1,ro,link(ro.ports.out,ed.ports.in,'s1','side',ro.ports.out[2]+4),ed],span:[282,500]});
  /* 3 storage: tank fed from the top, loop pump at its outlet */
  var ta=P('tank',600,{id:'s2'}),tp=(672/ISO_C-16)/2,pu=isoPart('pump',tp,-tp,0,1,{id:'s2'});
- S.push({parts:[link(ed.ports.out,ta.ports.in,'s2','top',ta.ports.in[2]+14),ta,link(ta.ports.out,pu.ports.in,'s2','side',ta.ports.out[2]),pu],span:[560,720]});
+ var l2=link(ed.ports.out,ta.ports.in,'s2','top',ta.ports.in[2]+14);
+ S.push({inlet:l2.start,parts:[l2,ta,link(ta.ports.out,pu.ports.in,'s2','side',ta.ports.out[2]),pu],span:[560,720]});
  /* 4 monitoring: the loop runs behind the panel to the point of use; the analyser draws its sample from a tee */
  var tpa=436,pa=isoPart('panel',tpa,-tpa-40,0,1,{id:'s3'}),tan=484,an=isoPart('analyzer',tan,-tan-14,0,1,{id:'s3'}),sp=an.ports.sample;
  var to=930/(2*ISO_C),ou=isoPart('outlet',to,-to,0,1,{id:'s3'}),po=pu.ports.out,oi=ou.ports.in,zL=36,yL=oi[1];
  var loop=isoPipe(srDedupe([po,[po[0],po[1],zL],[po[0],yL,zL],[oi[0],yL,zL],oi]),{to:'s3',r:2.2,flanges:false,caps:false});
  var tee=isoPipe(srDedupe([[sp[0]+6,yL,zL],[sp[0]+6,yL,sp[2]],[sp[0]+6,sp[1],sp[2]],sp]),{to:'s3',r:1.2,flanges:false,caps:false});
- S.push({parts:[loop,pa,tee,an,ou],span:[770,968]});
+ S.push({inlet:loop.start,parts:[loop,pa,tee,an,ou],span:[770,968]});
  return S}
+var SR_CROP=[[2,32,216,105],[-47,56,270,133],[-68,4,223,144],[-105,0,296,133]];
 LOOKS['system-run']=function(b,H){
  var I=(b.items||[]).slice(0,4),S=srStages(),W=1000,Hh=180,org=[0,120];
  /* a dimension line on the floor in front of each system (blueprint furniture, no figures); the fourth keeps the space for the point-of-use label */
@@ -6561,8 +8035,11 @@ LOOKS['system-run']=function(b,H){
   +'<span class="aq-system-run__end aq-system-run__end--out">'+tx(b.to||'Point of use')+'</span>';
  var fig='<div class="aq-system-run__fig" aria-hidden="true">'+svg+'<div class="aq-system-run__brackets">'+brackets+'</div>'+ends+'</div>';
  var cols=I.map(function(it,i){var s=S[i],mini='';
-  if(s){var x0=s.span[0]-8,x1=s.span[1]+8,mw=x1-x0;
-   mini=isoSvg(mw,Hh,s.parts.join('')+(s.extra||''),'aq-iso--navy aq-system-run__mini',{origin:[org[0]-x0,org[1]]})}
+  /* phone crop: the stage's equipment and its inlet pipe, measured once in the old 180-high crop (x from span[0]-8);
+     the drawing is fixed, so the boxes are too. The tee joins the rail at the inlet pipe's start. */
+  if(s){var x0=s.span[0]-8,c=SR_CROP[i]||[0,0,s.span[1]-s.span[0]+16,Hh],vx=c[0]-4,vy=c[1]-4,vw=c[2]+8,vh=c[3]+8,o=[org[0]-x0-vx,org[1]-vy];
+   mini=isoSvg(vw,vh,s.parts.join('')+(s.extra||''),'aq-iso--navy aq-system-run__mini',{origin:o}).replace('xMidYMid','xMinYMid');
+   var q=s.inlet||[0,0];mini+='<i class="aq-system-run__tee" style="top:'+(100*(q[1]+o[1])/vh).toFixed(2)+'%;--tx:'+(100*(q[0]+o[0])/vw).toFixed(2)+'%"></i>'}
   var inner='<span class="aq-system-run__mark" aria-hidden="true"></span>'
    +'<span class="aq-system-run__mini-wrap" aria-hidden="true">'+mini+'</span>'
    +'<p class="aq-system-run__code" aria-hidden="true">'+(i<9?'0':'')+(i+1)+' / '+(I.length<10?'0':'')+I.length+'</p>'
@@ -6571,7 +8048,8 @@ LOOKS['system-run']=function(b,H){
    +(it.link&&wp(it.link)?'<span class="aq-system-run__go">'+tx(wlabel(it.link))+'</span>':'')+'</p>';
   return '<li class="aq-system-run__item">'+(it.link&&wp(it.link)?'<a class="aq-system-run__stage" data-stage="s'+i+'" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>'
    :'<div class="aq-system-run__stage" data-stage="s'+i+'">'+inner+'</div>')+'</li>'}).join('');
- return sec(H+'<div class="aq-system-run">'+fig+'<ol class="aq-system-run__stages">'+cols+'</ol></div>','aq-band--navy aq-system-run-sec')};
+ var pin='<p class="aq-system-run__pend aq-system-run__pend--in" aria-hidden="true">'+tx(b.from||'Drinking water')+'</p>',pout='<p class="aq-system-run__pend aq-system-run__pend--out" aria-hidden="true">'+tx(b.to||'Point of use')+'</p>';
+ return sec(H+'<div class="aq-system-run">'+fig+pin+'<ol class="aq-system-run__stages">'+cols+'</ol>'+pout+'</div>','aq-band--navy aq-system-run-sec')};
 /* Pointing at (or focusing) a system's column lights its equipment in the drawing (no motion: a colour change) */
 (function(){function hl(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-system-run__stage');if(!s)return;var r=s.closest('.aq-system-run'),id=s.getAttribute('data-stage');
  if(on&&s.contains(ev.relatedTarget))return;if(!on&&s.contains(ev.relatedTarget))return;
@@ -6623,8 +8101,11 @@ LOOKS['tank-tiles']=function(b,H){
    note. The note gets its own column only when at least half the rows have one; otherwise it sits under the values,
    introduced by the third column's name.
    Fields (a spec block): h, intro, cols [term, ours, note], rows [{p, v, m, link, link_label}], fold, fold_noun
-   (phones only: desktop shows every term). Phones: the drawing is a strip above the table (cropped, not bleeding);
-   rows stack number, term and values. */
+   (phones only: desktop shows every term). Phones (pass 12): no drawing (S18: the generic skid has no tie to the
+   rows); rows stack number, term and values. With six terms or more the list is a PhoneKit accordion: the head is the
+   number and term (48 px, chevron), the values stay in view under it, and the note and the link (44 px) open on tap
+   (div.__pb, a phone-only copy of the row's note and link; the desktop cells stay as rendered). A row with neither
+   note nor link is not a head. */
 LOOKS['terms-sheet']=(function(){
  function skid(){
   var sk=isoPart('skid',0,0,0,1,{w:150,d:62,id:'ro'}),ro=isoPart('ro',8,8,9,1,{id:'ro'}),pn=isoPart('panel',-40,-6,0,1,{id:'panel'}),
@@ -6634,19 +8115,23 @@ LOOKS['terms-sheet']=(function(){
   var bx=isoBounds([[-60,-40,0],[250,-30,0],[250,60,0],[0,70,0],[-60,-40,110],[210,10,130]],8);
   return isoSvg(Math.round(bx.w),Math.round(bx.h),inner,'aq-terms-sheet__svg',{origin:[-bx.x,-bx.y]})}
  return function(b,H){var C=b.cols||[],R=(b.rows||[]).map(function(r){return Array.isArray(r)?{p:r[0],v:r[1],m:r[2]}:r}),n=R.length;
-  var notes=R.filter(function(r){return r.m}).length,noteCol=notes*2>=n;
+  var notes=R.filter(function(r){return r.m}).length,noteCol=notes*2>=n,acc=n>=6;
   var nn=function(i){return (i<9?'0':'')+(i+1)};
   var rows=R.map(function(r,i){var V=String(r.v||'').split(/\s+·\s+/).filter(Boolean);
    var note=r.m?(noteCol?'<div class="aq-terms-sheet__c aq-terms-sheet__note"><p class="aq-terms-sheet__k">'+tx(C[2]||'')+'</p><p>'+tcell(r.m)+'</p></div>'
     :'<p class="aq-terms-sheet__m"><span class="aq-terms-sheet__mk">'+tx(C[2]||'')+'</span> '+tcell(r.m)+'</p>'):(noteCol?'<div class="aq-terms-sheet__c aq-terms-sheet__note"></div>':'');
-   return fli('<li class="aq-terms-sheet__row" style="--i:'+i+'">',b,i)
-    +'<span class="aq-terms-sheet__n" aria-hidden="true">'+nn(i)+'</span>'
-    +'<div class="aq-terms-sheet__c"><h3 class="aq-terms-sheet__t">'+tx(r.p)+'</h3></div>'
+   var go=r.link&&wp(r.link),tap=acc&&(r.m||go),dk=tap?' data-pk-desk':'';
+   return fli('<li class="aq-terms-sheet__row" style="--i:'+i+'"'+(tap?' data-pk-item="'+i+'"':'')+'>',b,i)
+    +'<span class="aq-terms-sheet__n" aria-hidden="true"'+dk+'>'+nn(i)+'</span>'
+    +'<div class="aq-terms-sheet__c"'+dk+'><h3 class="aq-terms-sheet__t">'+tx(r.p)+'</h3></div>'
     +'<div class="aq-terms-sheet__c"><p class="aq-terms-sheet__k">'+tx(C[1]||'')+'</p><ul class="aq-terms-sheet__v" role="list">'+V.map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>'
-    +(noteCol?'':note)+(r.link&&wp(r.link)?'<p class="aq-terms-sheet__go">'+wlink(r.link,r.link_label)+'</p>':'')+'</div>'+(noteCol?note:'')+'</li>'}).join('');
+    +(noteCol?'':note)+(go?'<p class="aq-terms-sheet__go">'+wlink(r.link,r.link_label)+'</p>':'')+'</div>'+(noteCol?note:'')
+    +(tap?'<div class="aq-terms-sheet__pb" data-pk-body>'+(r.m?'<p class="aq-terms-sheet__pm">'+tcell(r.m)+'</p>':'')+(go?'<p class="aq-terms-sheet__pgo">'+wlink(r.link,r.link_label)+'</p>':'')+'</div>':'')
+    /* the phone head comes last in the markup (the desktop cells keep their nth-child places); CSS orders it first */
+    +(tap?'<h3 class="aq-terms-sheet__ph"><button type="button" class="aq-terms-sheet__hb" data-pk-head><span class="aq-terms-sheet__hn" aria-hidden="true">'+nn(i)+'</span><span class="aq-terms-sheet__ht">'+tx(r.p)+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h3>':'')+'</li>'}).join('');
   var head='<div class="aq-terms-sheet__head" aria-hidden="true"><span></span><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span>'+(noteCol?'<span>'+tx(C[2]||'')+'</span>':'')+'</div>';
   return sec(H+'<div class="aq-terms-sheet'+(noteCol?' has-notes':'')+'"><div class="aq-terms-sheet__table">'+head
-   +wFold(b,n,'<ol class="aq-terms-sheet__list" role="list">'+rows+'</ol>',b.fold_noun||'terms')+'</div>'
+   +wFold(b,n,'<ol class="aq-terms-sheet__list" role="list"'+(acc?' data-pk-picker="accordion" data-pk-open="-1"':'')+'>'+rows+'</ol>',b.fold_noun||'terms')+'</div>'
    +'<div class="aq-terms-sheet__fig" aria-hidden="true">'+skid()+'</div></div>','aq-terms-sheet-sec')}})();
 /* Look "test-sheet" -> TestSheet (design-system/components/TestSheet): ordered steps set as the protocol's own test
    sheet, lying on a limestone table. The heading sits on the table; the sheet is a paper form with a header strip
@@ -6687,7 +8172,12 @@ LOOKS['test-sheet']=function(b,H){var I=b.items||[],n=I.length,C=b.cols||[],tear
    drawing shows the finished, released state. Placeholders in the words stay placeholders.
    Fields, as steps: h, intro, items [{t, d, link}] (the first four drive the drawing's stages).
    Concept: pass 9b ind-cdmo.3 (four numbered steps with placeholder figures in the accent beside a ring of
-   line-drawn modules), with the log's note: show the new outlet being tied in instead of a generic module ring. */
+   line-drawn modules), with the log's note: show the new outlet being tied in instead of a generic module ring.
+   Phones (pass 12, PhoneKit sticky figure): the drawing rides as a 200 px strip under the header and the step on the
+   reading line drives it: that step and its marker light, and the drawing shows that step's stage (stages up to it
+   done, later ones not yet). This is state, not motion, so it holds with reduced motion too; motion.js eases between
+   stages when it runs. The markers of stages not drawn yet step back (is-future). PhoneKit holds to 600 px; from 601 to
+   860 px (tablets) the steps and the sticky drawing sit side by side again, the desktop story at a smaller scale. */
 (function(){
 var K='aq-tie-in-run';
 function scene(){var zH=92,xt=200,yb=48,xo=234,x1=330;
@@ -6706,12 +8196,18 @@ function scene(){var zH=92,xt=200,yb=48,xo=234,x1=330;
  var bx=isoBounds([[-70,0,zH+4],[x1,0,zH+4],[x1,0,0],[20,18,0],[178,84,0],[272,84,0],[-70,0,40]],18);
  return {inner:inner,mk:mk,w:Math.round(bx.w),h:Math.round(bx.h),org:[-bx.x,-bx.y]}}
 LOOKS['tie-in-run']=function(b,H){var I=b.items||[],n=I.length,S=scene(),m=Math.min(4,n);
- var mks='';for(var i=0;i<m;i++){var a=isoPct(isoP(S.mk[i]),S.w,S.h,S.org);mks+='<span class="'+K+'__mk" data-i="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}
- var fig='<div class="'+K+'__fig"><div class="'+K+'__plate" aria-hidden="true">'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+mks+'</div></div>';
+ var mks='';for(var i=0;i<m;i++){var a=isoPct(isoP(S.mk[i]),S.w,S.h,S.org);mks+='<span class="'+K+'__mk" data-i="'+i+'" data-pk-key="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}
+ var fig='<div class="'+K+'__fig" data-pk-fig><div class="'+K+'__plate" aria-hidden="true" style="aspect-ratio:'+S.w+' / '+S.h+'">'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+mks+'</div></div>';
  var steps=I.map(function(it,i){var lk=it.link&&wp(it.link);
-  return '<li class="'+K+'__step" data-i="'+i+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="'+K+'__t">'+(lk?wlink(it.link,it.t):tx(it.t))+'</h3>'
+  return '<li class="'+K+'__step" data-i="'+i+'" data-pk-row="'+i+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="'+K+'__t">'+(lk?wlink(it.link,it.t):tx(it.t))+'</h3>'
    +(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
- return sec(H+'<div class="'+K+'" data-stage="'+m+'" style="--n:'+n+'"><ol class="'+K+'__steps">'+steps+'</ol>'+fig+'</div>',K+'-sec')};
+ return sec(H+'<div class="'+K+'" data-stage="'+m+'" data-pk-sticky data-pk-bp="600" data-pk-h="200" data-pk-zoom="1.1" style="--n:'+n+'"><ol class="'+K+'__steps">'+steps+'</ol>'+fig+'</div>',K+'-sec')};
+/* PhoneKit's step change sets the stage the drawing shows (motion.js takes this over, eased, when it runs) */
+function stage(el,k){var m=+el.getAttribute('data-stage')||4;for(var i=0;i<4;i++)el.style.setProperty('--p'+i,k<0||i<=k||i>=m?'1':'0');
+ [].forEach.call(el.querySelectorAll('.'+K+'__step,.'+K+'__mk'),function(x){var i=+x.getAttribute('data-i');x.classList.toggle('is-on',k>=0&&i===k);x.classList.toggle('is-future',k>=0&&i>k)});el.classList.toggle('is-live',k>=0)}
+if(typeof document!=='undefined')document.addEventListener('pk:change',function(ev){var el=ev.target;if(!el.classList||!el.classList.contains(K)||el._tirMotion)return;
+ if(ev.detail&&ev.detail.on&&ev.detail.index>=0)stage(el,Math.min(ev.detail.index,(+el.getAttribute('data-stage')||4)-1));
+ else{for(var i=0;i<4;i++)el.style.removeProperty('--p'+i);stage(el,-1)}});
 })();
 /* Look "time-card" -> TimeCard (design-system/components/TimeCard): a spec block of working terms set as the shop's
    time card, the one paper everyone on the floor handles each week. A limestone card stands on the ground with its
@@ -6786,6 +8282,115 @@ LOOKS['trace-lines']=(function(){
  document.addEventListener('click',function(ev){var k=ev.target.closest&&ev.target.closest('.aq-trace-lines__key');if(k)show(k.closest('.aq-trace-lines-wrap'),k.getAttribute('data-line'))});
  document.addEventListener('mouseover',function(ev){var l=ev.target.closest&&ev.target.closest('.aq-trace-lines__line'),w=l&&l.closest('.aq-trace-lines-wrap');if(w)show(w,l.getAttribute('data-line'))});
 })();
+/* Look "train-strip" -> TrainStrip (design-system/components/TrainStrip): one treatment train as a P&ID strip on a
+   navy band (pass 12 concept 211). Left to right on one line: the feed through PVC pretreatment housings (grey
+   pipe), duplex RO in parallel (two membrane symbols, each behind its own valve), the storage tank, the loop pump and
+   UV, the heat exchanger, the endotoxin filter housing, then the PP loop (pale pipe): isolation valves either side of
+   the points of use, drops to three taps, the return sensors (a CE bubble and a sample valve), a sanitization port,
+   and the return overhead back to the tank top. Every valve is a PP diaphragm valve symbol (body and bonnet, no
+   flanges). A numbered marker stands under each station; one numbered caption per stage runs under the strip.
+   Pointing at a caption or a station lights the other.
+   Fields (a diagram block): h, intro, stages [{t, d, node}]. node: the station the stage is: gen, tank, pump, hx,
+   pou, sensors, spray (default by position in that order). The strip is fixed (one train); it carries no copy
+   except the P&ID material tags PVC and PP and the CE instrument letters.
+   Phones: a riser: the pipe down the left with a P&ID symbol per stage on it (RO, tank, pump, exchanger, valve, CE
+   bubble, capped port), one row per stage (number, name, line); every stage shown, no fold. */
+(function(){
+var K='aq-train-strip',NODE=['gen','tank','pump','hx','pou','sensors','spray'];
+var AT={gen:[185,222],tank:[330,250],pump:[505,250],hx:[700,268],pou:[970,290],sensors:[1140,250],spray:[1290,284]};
+function P(d,c){return '<path class="'+K+'__'+c+'" d="'+d+'"/>'}
+function C(x,y,r,c){return '<circle class="'+K+'__'+c+'" cx="'+x+'" cy="'+y+'" r="'+r+'"/>'}
+function T(x,y,t,c){return '<text class="'+K+'__'+(c||'tag')+'" x="'+x+'" y="'+y+'">'+t+'</text>'}
+/* PP diaphragm valve: bow-tie body, domed bonnet, no flanges; v: on a vertical line */
+function valve(x,y,v){return v?P('M'+(x-8)+' '+(y-8)+'H'+(x+8)+'L'+(x-8)+' '+(y+8)+'H'+(x+8)+'Z','eq')+P('M'+(x+8)+' '+(y-5)+'a5 5 0 0 1 0 10','ln')
+ :P('M'+(x-8)+' '+(y-8)+'V'+(y+8)+'L'+(x+8)+' '+(y-8)+'V'+(y+8)+'Z','eq')+P('M'+(x-5)+' '+(y-8)+'a5 5 0 0 1 10 0','ln')}
+function ro(x,y){return P('M'+x+' '+(y-12)+'h70v24h-70Z','eq')+P('M'+x+' '+(y+12)+'L'+(x+70)+' '+(y-12),'ln')}
+function strip(){var g='';
+ /* pipes: PVC feed and pretreatment (grey), PP from the RO on (pale), the water over them */
+ g+=P('M0 170H110','pvc')+P('M110 170V130H250V170M110 170V210H250V170M250 170H300','pp');
+ g+=P('M330 230V250H1360V40H330V70','pp '+K+'__loop');
+ /* 01 generation: two PVC pretreatment housings, then duplex RO in parallel */
+ g+='<g class="'+K+'__node" data-ts="gen">'+P('M30 200V146q0-10 10-10t10 10V200Z','eq '+K+'__pvceq')+P('M66 200V146q0-10 10-10t10 10V200Z','eq '+K+'__pvceq')
+  +valve(132,130)+valve(132,210)+ro(152,130)+ro(152,210)+T(28,228,'PVC')+'</g>';
+ /* 02 storage tank (domed head, level, return inlet) */
+ g+='<g class="'+K+'__node" data-ts="tank">'+P('M300 230V92q0-22 30-22t30 22V230Z','eq')+P('M306 130H354','level')+P('M310 230v12M350 230v12','ln')+'</g>';
+ /* 03 loop pump and UV */
+ g+='<g class="'+K+'__node" data-ts="pump">'+C(450,250,18,'eq')+P('M443 239L462 250L443 261Z','ln')+P('M436 268h28','ln')
+  +P('M530 236h60v28h-60Z','eq')+P('M540 258l14-16 4 8 14-14','ln')+P('M566 234l6-2-1 6','ln')+'</g>';
+ /* 04 heat exchanger */
+ g+='<g class="'+K+'__node" data-ts="hx">'+C(700,250,18,'eq')+P('M684 250l5-8 6 16 6-16 6 16 5-8','ln')+'</g>';
+ /* 05 endotoxin filter housing, isolation valves either side of the points of use, three taps */
+ g+='<g class="'+K+'__node" data-ts="pou">'+P('M808 276V232q0-10 12-10t12 10V276Z','eq')+P('M820 284V276','ln')
+  +valve(880,250)+valve(1060,250);
+ [920,970,1020].forEach(function(x){g+=P('M'+x+' 250V286','pp')+valve(x,270,1)+P('M'+(x-5)+' 290h10','ln')});
+ g+='</g>'+T(1000,30,'PP');
+ /* 06 return sensors: conductivity bubble and a sample valve */
+ g+='<g class="'+K+'__node" data-ts="sensors">'+P('M1120 250V224','ln')+C(1120,210,14,'eq')+T(1120,214,'CE','ce')+P('M1170 250V270','pp')+valve(1170,270,1)+'</g>';
+ /* 07 sanitization port: capped tee with its valve */
+ g+='<g class="'+K+'__node" data-ts="spray">'+P('M1290 250V284','pp')+valve(1290,268,1)+P('M1282 286h16','cap')+'</g>';
+ /* flow arrows */
+ [[770,250,'r'],[1230,250,'r'],[900,40,'l'],[600,40,'l']].forEach(function(a){var x=a[0],y=a[1];g+=P(a[2]==='r'?'M'+(x-6)+' '+(y-7)+'l9 7l-9 7':'M'+(x+6)+' '+(y-7)+'l-9 7l9 7','chev')});
+ return g}
+var GLYPH={
+ gen:'<path class="'+K+'__eq" d="M4 10h24v12H4Z"/><path class="'+K+'__ln" d="M4 22L28 10"/>',
+ tank:'<path class="'+K+'__eq" d="M8 28V9q0-6 8-6t8 6v19Z"/><path class="'+K+'__level" d="M10 14h12"/>',
+ pump:'<circle class="'+K+'__eq" cx="16" cy="16" r="11"/><path class="'+K+'__ln" d="M12 9.5L23 16L12 22.5Z"/>',
+ hx:'<circle class="'+K+'__eq" cx="16" cy="16" r="11"/><path class="'+K+'__ln" d="M6 16l3-5 4 10 4-10 4 10 3-5"/>',
+ pou:'<path class="'+K+'__eq" d="M8 8H24L8 24H24Z"/><path class="'+K+'__ln" d="M24 11a5 5 0 0 1 0 10"/>',
+ sensors:'<circle class="'+K+'__eq" cx="16" cy="16" r="11"/><text class="'+K+'__ce" x="16" y="20">CE</text>',
+ spray:'<path class="'+K+'__eq" d="M8 6H24L8 22H24Z"/><path class="'+K+'__ln" d="M24 9a5 5 0 0 1 0 10"/><path class="'+K+'__cap" d="M9 28h14"/>'};
+function no(i){return (i<9?'0':'')+(i+1)}
+LOOKS['train-strip']=function(b,H){var S=b.stages||b.items||[],n=S.length;if(!n)return sec(H,'aq-band--navy '+K+'-sec');
+ var nodes=S.map(function(s,i){return s.node&&AT[s.node]?s.node:NODE[i]||null});
+ var marks=nodes.map(function(k,i){if(!k)return '';var a=AT[k],x=a[0],y=310;
+  return '<g class="'+K+'__mark" data-ts="'+k+'">'+P('M'+x+' '+(a[1]+2)+'V'+(y-18),'lead')+C(x,y,18,'mk')+T(x,y,no(i),'mkn')+'</g>'}).join('');
+ var svg='<svg class="'+K+'__svg" viewBox="0 0 1400 330" aria-hidden="true" focusable="false">'+strip()+marks+'</svg>';
+ var rows=S.map(function(s,i){var k=nodes[i];return '<li class="'+K+'__stage"'+(k?' data-ts="'+k+'"':'')+'>'
+   +'<span class="'+K+'__glyph" aria-hidden="true">'+(k?'<svg viewBox="0 0 32 32" focusable="false">'+GLYPH[k]+'</svg>':'')+'</span>'
+   +'<span class="'+K+'__no" aria-hidden="true">'+no(i)+'</span><h3 class="'+K+'__t">'+tx(s.t)+'</h3>'+(s.d?'<p class="'+K+'__d">'+tx(s.d)+'</p>':'')+'</li>'}).join('');
+ var inner='<div class="'+K+'" style="--n:'+n+'"><div class="'+K+'__strip">'+svg+'</div><ol class="'+K+'__stages" role="list">'+rows+'</ol></div>';
+ return sec(H+inner,'aq-band--navy '+K+'-sec')};
+function set(root,k){root.classList.toggle('has-hot',!!k);[].forEach.call(root.querySelectorAll('[data-ts]'),function(el){el.classList.toggle('is-hot',!!k&&el.getAttribute('data-ts')===k)})}
+['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(!root)return;var el=ev.target.closest('[data-ts]');set(root,el?el.getAttribute('data-ts'):null)})});
+document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(root&&!root.contains(ev.relatedTarget))set(root,null)});
+})();
+/* Look "use-matrix" -> UseMatrix (design-system/components/UseMatrix): an industry-by-use table drawn as one water
+   main. A twin-wall pipe runs along the column heads and tees down into every use column; each row is an industry
+   (its name the link to its page), each cell a square on the column's drop line: a filled navy square where the
+   content sets a grade, an open square where the cell is a dash. The cell's text sits beside its square, and its
+   bracketed source (a short "(EMA)", "(ST108:2023)", 24 characters or fewer) is set as a small mono tag. Pointing at a cell
+   lights its column and its tee.
+   Concept: design-system/inspiration/gemini/194-p12-industries-matrix-take2.png (idea only; its rows, columns and fully
+   filled grid are not ours: the blank pattern is the content's own).
+   Fields (a table block): cols [row label, use 1 … use n] (2 to 6 uses), rows ([industry string or {t, link}, cell …];
+   a cell "—" or "-" or "" is a blank), intro.
+   Phones (PhoneKit accordion): a riser down the left with one tap row per industry branching off it, each carrying its
+   row in miniature (one numbered square per use, filled or open, the uses named once in a key above); the open row
+   lists its set uses as navy chips with their text, its blanks as open chips, and its page as a 48 px row link.
+   Without script every row shows open. */
+function umBlank(c){var s=String(c&&typeof c==='object'?c.t:c==null?'':c).trim();return !s||s==='—'||s==='-'||s==='–'}
+function umText(c){var h=tcell(c);return h.replace(/\s*\(([^()]{1,24})\)/g,' <span class="aq-use-matrix__src">$1</span>')}
+LOOKS['use-matrix']=function(b,H){var C=b.cols||[],U=C.slice(1,7),R=(b.rows||[]).filter(function(r){return r&&r.length}),K='aq-use-matrix',n=U.length;
+ var num=function(j){return String(j+1)};
+ var heads='<div class="'+K+'__heads" aria-hidden="true"><p class="'+K+'__h0">'+tx(C[0]||'')+'</p>'
+  +U.map(function(u,j){return '<p class="'+K+'__h" data-c="'+j+'"><span class="'+K+'__drop"><span class="'+K+'__water"></span></span><span class="'+K+'__hn">'+num(j)+'</span>'+tx(u)+'</p>'}).join('')+'</div>';
+ var key='<ol class="'+K+'__key" aria-hidden="true">'+U.map(function(u,j){return '<li><span class="'+K+'__ks">'+num(j)+'</span>'+tx(u)+'</li>'}).join('')+'</ol>';
+ var rows=R.map(function(r,i){var nm=r[0]&&typeof r[0]==='object'?r[0].t:r[0],go=r[0]&&typeof r[0]==='object'&&r[0].link&&wp(r[0].link)?r[0].link:'';
+  var strip=U.map(function(u,j){return '<span class="'+K+'__ms'+(umBlank(r[j+1])?'':' is-set')+'">'+num(j)+'</span>'}).join('');
+  var cells=U.map(function(u,j){var c=r[j+1],bl=umBlank(c);
+   return '<div class="'+K+'__cell'+(bl?' is-blank':' is-set')+'" data-c="'+j+'"><span class="'+K+'__sq" aria-hidden="true"></span>'
+    +'<p class="'+K+'__v"><span class="'+K+'__k">'+tx(u)+'</span> '+(bl?'<span class="'+K+'__dash">—</span><span class="'+K+'__sr">no grade set</span>':umText(c))+'</p></div>'}).join('');
+  return '<li class="'+K+'__row" data-pk-item="'+i+'" style="--i:'+i+'">'
+   +'<button type="button" class="'+K+'__tap" data-pk-head><span class="'+K+'__tt">'+tx(nm)+'</span><span class="'+K+'__strip" aria-hidden="true">'+strip+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button>'
+   +'<h3 class="'+K+'__name" data-pk-desk>'+tcell(r[0])+'</h3>'
+   +'<div class="'+K+'__cells" data-pk-body>'+cells+(go?'<a class="aq-phone-kit__go '+K+'__go" href="#'+e(go)+'" data-wp="'+e(go)+'">'+tx(nm)+'</a>':'')+'</div></li>'}).join('');
+ return sec(H+'<div class="'+K+'" style="--c:'+n+'">'+heads+key
+  +'<ol class="'+K+'__list" role="list" data-pk-picker="accordion" data-pk-open="0">'+rows+'</ol></div>',K+'-sec')};
+/* Pointing at a cell (or a column head) lights its column and its tee */
+(function(){function col(ev,on){var c=ev.target.closest&&ev.target.closest('.aq-use-matrix [data-c]');if(!c)return;var r=c.closest('.aq-use-matrix');
+  [].forEach.call(r.querySelectorAll('[data-c="'+c.getAttribute('data-c')+'"]'),function(el){el.classList.toggle('is-col',on)})}
+ document.addEventListener('mouseover',function(ev){col(ev,true)});document.addEventListener('mouseout',function(ev){col(ev,false)});
+ document.addEventListener('focusin',function(ev){col(ev,true)});document.addEventListener('focusout',function(ev){col(ev,false)})})();
 /* Look "versus-spread" -> VersusSpread (design-system/components/VersusSpread): a FAT versus SAT table (table, as
    "versus") set as an editorial spread. A navy mast bleeds off the left edge of the page with the heading at display
    scale in light type; under it the comparison sits on the page ground as a numbered, hairline-ruled table (test,
@@ -6799,7 +8404,13 @@ LOOKS['trace-lines']=(function(){
    rows [[test, FAT cell, SAT cell]] (strings or {t, link}), conclusion [label, FAT side, SAT side], fold, fold_noun
    (the fold applies on phones only), row_parts (optional, one string per row: space-separated drawing parts the test
    covers, any of skid, ro, pump, panel, inst, valve, pipe, tank, loop, pou, util).
-   Phones: the mast full width, the drawing under it (not sticky), each row stacked: test, then its FAT and SAT cells. */
+   Phones (pass 12): the mast full width; under it the drawing at 240 px beside a FAT / SAT switch (two 48 px buttons
+   styled as the two boundaries) that lights that boundary and switches every row, the conclusion included, to that
+   side's cell; all rows show (no fold). Tapping a row still lights its parts and names it under the switch.
+   Verify fix (V5): the drawing and the switch are a PhoneKit sticky strip (200 px) over the rows, so the switch stays
+   in reach to row 08 and the conclusion, and the row on the reading line lights its parts (and the conclusion the
+   test bay); the side label is said once, by the switch (screen readers keep it per cell). 600-860 px: no switch,
+   both sides side by side under a sticky two-column head. */
 var VS_PARTS=['skid','ro','pump','panel','inst','valve','pipe','tank','loop','pou','util'];
 function vsFig(C){var P='aq-versus-spread'+'__';
  function G(p,inner){return '<g class="'+P+'part" data-p="'+p+'">'+inner+'</g>'}
@@ -6840,20 +8451,22 @@ LOOKS['versus-spread']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.conclusio
  function na(c){var t=c&&typeof c==='object'?c.t:c;return /^not possible\b/i.test(String(t||''))}
  function cell(c,k){return '<div class="aq-versus-spread__c aq-versus-spread__c--'+k+(na(c)?' is-na':'')+'" role="cell">'
   +'<span class="aq-versus-spread__k" aria-hidden="true">'+tx(C[k==='fat'?1:2]||'')+'</span>'+tcell(c)+'</div>'}
- var rows=R.map(function(r,i){return fli('<div class="aq-versus-spread__row" role="row" tabindex="0" data-i="'+i+'" data-parts="'+parts(RP[i])+'">'
+ var rows=R.map(function(r,i){return fli('<div class="aq-versus-spread__row" role="row" tabindex="0" data-i="'+i+'" data-pk-row="'+i+'" data-parts="'+parts(RP[i])+'">'
   +'<div class="aq-versus-spread__test" role="rowheader"><span class="aq-versus-spread__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
   +'<span class="aq-versus-spread__tn">'+tcell(r[0])+'</span></div>'+cell(r[1],'fat')+cell(r[2],'sat')+'</div>',b,i)}).join('');
  var head='<div class="aq-versus-spread__hrow" role="row">'+[0,1,2].map(function(k){return '<span class="aq-versus-spread__h" role="columnheader">'+tx(C[k]||'')+'</span>'}).join('')+'</div>';
- var end=K.length?'<div class="aq-versus-spread__end" role="row" tabindex="0" data-i="'+n+'" data-parts="fat">'
+ var end=K.length?'<div class="aq-versus-spread__end" role="row" tabindex="0" data-i="'+n+'" data-pk-row="'+n+'" data-parts="fat">'
   +'<div class="aq-versus-spread__test" role="rowheader"><span class="aq-versus-spread__reuse">'+tx(K[0]||'')+'</span></div>'
   +cell(K[1]||'','fat')+cell(K[2]||'','sat')+'</div>':'';
  var table=wFold(b,n,'<div class="aq-versus-spread__table" role="table" aria-label="'+e(b.h||'')+'">'+head
   +'<div class="aq-versus-spread__rows" role="rowgroup"><span class="aq-versus-spread__lens" aria-hidden="true"></span>'+rows+'</div></div>',b.fold_noun||'tests');
  var mast='<div class="aq-versus-spread__mast" data-theme="dark"><div class="aq-versus-spread__top" aria-hidden="true"><span>'+tx(b.nav||'')+'</span><span>'+e(wCount(b,n,'tests'))+'</span></div>'+H+'</div>';
- var fig='<figure class="aq-versus-spread__fig"><div class="aq-versus-spread__art">'+vsFig(C)+'</div>'
+ var fig='<figure class="aq-versus-spread__fig" data-pk-fig><div class="aq-versus-spread__art">'+vsFig(C)+'</div>'
   +'<figcaption class="aq-versus-spread__now" aria-hidden="true"><span class="aq-versus-spread__count">'+String(n).padStart(2,'0')+' '+e(b.fold_noun||'tests')+'</span>'
-  +'<span class="aq-versus-spread__now-t"></span></figcaption></figure>';
- return '<section class="aq-section aq-versus-spread-sec"><div class="aq-in"><div class="aq-versus-spread" style="--n:'+n+'">'+mast+fig
+  +'<span class="aq-versus-spread__now-t"></span></figcaption>'
+  +'<div class="aq-versus-spread__mode" role="group" aria-label="'+e((C[1]||'')+' / '+(C[2]||''))+'">'
+  +['fat','sat'].map(function(k,j){return '<button type="button" class="aq-versus-spread__mb aq-versus-spread__mb--'+k+'" data-vs-side="'+k+'" aria-pressed="'+(j?'false':'true')+'">'+tx(C[j+1]||k.toUpperCase())+'</button>'}).join('')+'</div></figure>';
+ return '<section class="aq-section aq-versus-spread-sec"><div class="aq-in"><div class="aq-versus-spread" data-side="fat" data-pk-sticky data-pk-h="200" style="--n:'+n+'">'+mast+fig
   +'<div class="aq-versus-spread__body">'+table+end+'</div></div></div></section>'};
 /* Point at or focus a row: light the parts its test covers, name it under the drawing. vsShow is shared with motion.js
    (the reading lens drives the same state); i = -1 clears. Works without GSAP and under reduced motion. */
@@ -6875,6 +8488,12 @@ window.vsShow=vsShow;
  document.addEventListener('pointerout',function(ev){var r=row(ev);if(!r||(ev.relatedTarget&&r.contains(ev.relatedTarget)))return;var w=r.closest('.aq-versus-spread');
   if(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-versus-spread [data-parts]'))return;w.removeAttribute('data-hold');back(w)});
  document.addEventListener('focusin',function(ev){var r=row(ev);if(!r)return;var w=r.closest('.aq-versus-spread');w.setAttribute('data-hold','');vsShow(w,+r.getAttribute('data-i'))});
+ /* phones: the FAT / SAT switch (state, not motion: works with motion off) */
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('[data-vs-side]');if(!b)return;var w=b.closest('.aq-versus-spread');if(!w)return;
+  w.setAttribute('data-side',b.getAttribute('data-vs-side'));[].forEach.call(w.querySelectorAll('[data-vs-side]'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})});
+ /* phones: the row on PhoneKit's reading line lights its parts on the sticky strip (index -1 clears) */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w||!w.classList||!w.classList.contains('aq-versus-spread')||w.hasAttribute('data-hold'))return;
+  var k=ev.detail&&ev.detail.on&&ev.detail.key!=null?+ev.detail.key:-1;vsShow(w,k>=0?k:-1)});
  document.addEventListener('focusout',function(ev){var r=row(ev);if(!r)return;var w=r.closest('.aq-versus-spread');if(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-versus-spread [data-parts]'))return;w.removeAttribute('data-hold');back(w)})})();
 /* Look "visit-plan" -> VisitPlan (design-system/components/VisitPlan): a service visit as a route around the system,
    on one navy drawing band. The whole plant stands in IsoKit line art (on-navy lines), left to right along one water
@@ -6979,7 +8598,9 @@ LOOKS['visit-plan']=function(b,H){var I=b.items||[],K='aq-visit-plan',pl=vpPlant
    names, aria-hidden), fold, fold_noun (phones only). part: the drawing anchor, one of "branch" (a point-of-use
    branch), "joint" (a loop joint), "analyzer", "coldest" (the far point of use), "outlets" (both points of use),
    "panel", "skid", "gauge"; a row without one marks the skid.
-   Phones: the sheet over the list; rows stack; the list folds. */
+   Phones (pass 12): every check open (no fold: each has a marker); the sheet becomes PhoneKit's sticky 200 px strip,
+   zoomed 1.8x and panned to the marker of the check on the reading line, which lights with its part; no leader
+   callouts on phones. fold / fold_noun are no longer read (kept in the JSON, harmless). */
 var WDP_PART={branch:'pou-a',joint:'loop',analyzer:'an',coldest:'pou-b',outlets:'pou-a pou-b',panel:'pn',skid:'ro',gauge:'gauge'};
 function wdpScene(){
  var wl=isoPart('wall',-40,-46,0,1,{w:340,h:74}),pn=isoPart('panel',-30,34,0,1,{id:'pn'}),sk=isoPart('skid',0,0,0,1,{w:150,d:62,id:'ro'}),ro=isoPart('ro',8,8,9,1,{id:'ro'}),
@@ -6996,30 +8617,58 @@ function wdpScene(){
  var inner=[wl,pn,sk,ro,feed,tk,suck,pu,loop,smp,an,ga,dropA,oa,dropB,ob].join('');
  var bx=isoBounds([[-40,-46,0],[300,-46,0],[-40,-46,80],[300,-46,80],[-50,60,0],[-50,60,60],[110,230,0],[220,230,0],[300,200,0],[300,60,90]],22);
  var A={branch:[oa.ports.in[0],Y,Z+3],joint:[pu.ports.out[0],150,Z+2],analyzer:an.ports.top,coldest:ob.ports.top,outlets:[148,Y,Z+3],panel:pn.ports.top,skid:ro.ports.top,gauge:[pu.ports.out[0],120,Z+12]};
- return {inner:inner,bx:bx,A:A}}
+ return {inner:inner,bx:bx,A:A,pipe:loopPts}}
 LOOKS['walkdown-pins']=function(b,H){var R=b.rows||[],C=b.cols||[],LB=b.labels||{},S=wdpScene(),bx={x:S.bx.x-60,y:S.bx.y-14,w:S.bx.w+120,h:S.bx.h+20},W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y],seen={};
  function key(r){return WDP_PART[r.part]?r.part:'skid'}
- /* leader callouts: one per labelled part, out to the nearer side of the sheet, the name over the shelf */
+ /* the check markers' boxes on the sheet (screen units, about 1 px each on desktop), so no callout name runs under one */
+ var pinAt=R.map(function(r,i){var k=key(r),n=seen[k]=(seen[k]||0)+1,p=isoP(S.A[k]);return {i:i,k:k,n:n,p:p}});seen={};
+ /* and the drawn loop pipe, sampled every 8 screen units, so a name never sits on the pipe either (pass 12 verify V3) */
+ var pipeAt=[];S.pipe.forEach(function(v,k){if(!k)return;var a=isoP(S.pipe[k-1]),c=isoP(v),n=Math.max(1,Math.ceil(Math.hypot(c[0]-a[0],c[1]-a[1])/8));
+  for(var t=0;t<=n;t++)pipeAt.push([a[0]+(c[0]-a[0])*t/n,a[1]+(c[1]-a[1])*t/n])});
+ function hitsPin(x0,x1,y0,y1){return pinAt.some(function(q){var px=q.p[0]+(q.n-1)*24;return px+14>x0&&px-14<x1&&q.p[1]+14>y0&&q.p[1]-14<y1})
+  ||pipeAt.some(function(q){return q[0]+4>x0&&q[0]-4<x1&&q[1]+4>y0&&q[1]-4<y1})}
+ /* leader callouts: one per labelled part, out to the nearer side of the sheet, the name over the shelf, stacked 30
+    apart per side. A name never runs under a check marker (pass 12: "Conductivity" sat behind marker 04): the
+    colliding name and those above it move up together by the smallest step that clears (kept on the sheet,
+    at most 72), else it and those below move down. */
  var cx=bx.x+bx.w/2,leads=[],labs=[],side={l:[],r:[]};Object.keys(LB).forEach(function(k){if(!S.A[k]||!LB[k])return;var s=isoP(S.A[k]);side[s[0]<cx?'l':'r'].push({k:k,s:s})});
- ['l','r'].forEach(function(sd){var prev=-1e9;side[sd].sort(function(a,c){return a.s[1]-c.s[1]}).forEach(function(o){var left=sd==='l',x=left?bx.x+12:bx.x+bx.w-12,y=Math.max(o.s[1]-16,prev+30);prev=y;
-  var ld=isoLeader(S.A[o.k],[left?x+92:x-92,y],{shelf:92,cls:'aq-walkdown-pins__lead'});leads.push(String(ld));
-  var at=isoPct([x,y],W,Hh,org);labs.push('<span class="aq-walkdown-pins__lab aq-walkdown-pins__lab--'+sd+'" data-part="'+e(o.k)+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(LB[o.k])+'</span>')})});
+ ['l','r'].forEach(function(sd){var left=sd==='l',x=left?bx.x+12:bx.x+bx.w-12,L=side[sd].sort(function(a,c){return a.s[1]-c.s[1]}),prev=-1e9;
+  L.forEach(function(o){o.y=Math.max(o.s[1]-16,prev+30);prev=o.y;o.tw=String(LB[o.k]).length*7.4+4});
+  function hit(o,y){return hitsPin(left?x:x-o.tw,left?x+o.tw:x,y-22,y+2)}
+  L.forEach(function(o,i){if(!hit(o,o.y))return;var d;
+   /* up: this name rises by d, those above rise only as far as the 30 spacing needs */
+   function rise(d){var Y=L.map(function(q){return q.y});Y[i]-=d;for(var k=i-1;k>=0;k--)Y[k]=Math.min(Y[k],Y[k+1]-30);return Y}
+   for(d=6;d<=72;d+=6){var Y=rise(d);if(Y[0]-22>=bx.y+8&&L.slice(0,i+1).every(function(q,k){return !hit(q,Y[k])})){L.forEach(function(q,k){q.y=Y[k]});return}}
+   for(d=6;d<=120;d+=6)if(L.slice(i).every(function(q){return !hit(q,q.y+d)})){L.slice(i).forEach(function(q){q.y+=d});return}});
+  L.forEach(function(o){var ld=isoLeader(S.A[o.k],[left?x+92:x-92,o.y],{shelf:92,cls:'aq-walkdown-pins__lead'});leads.push(String(ld));
+   var at=isoPct([x,o.y],W,Hh,org);labs.push('<span class="aq-walkdown-pins__lab aq-walkdown-pins__lab--'+sd+'" data-part="'+e(o.k)+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(LB[o.k])+'</span>')})});
  var svg=isoSvg(W,Hh,S.inner+leads.join(''),'aq-walkdown-pins__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',m:8,band:0,gridStep:22})});
- var pins=R.map(function(r,i){var k=key(r),n=seen[k]=(seen[k]||0)+1,p=isoP(S.A[k]),at=isoPct(p,W,Hh,org);
-  return '<span class="aq-walkdown-pins__pin" data-row="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+ var pins=pinAt.map(function(q){var i=q.i,at=isoPct(q.p,W,Hh,org);
+  return '<span class="aq-walkdown-pins__pin" data-row="'+i+'" data-pk-key="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(q.n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
  var thead=C.length?'<div class="aq-walkdown-pins__cols" aria-hidden="true"><span></span>'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>':'';
  var rows=R.map(function(r,i){var m=String(r.p||'').match(/^(IQ|OQ|PQ)\s*·\s*(.*)$/),tag=m?m[1]:'',name=m?m[2]:r.p;
-  return fli('<li class="aq-walkdown-pins__row" data-row="'+i+'" data-lit="'+e(WDP_PART[key(r)])+'" data-part="'+e(key(r))+'" tabindex="0">'
+  return ('<li class="aq-walkdown-pins__row" data-row="'+i+'" data-pk-row="'+i+'" data-lit="'+e(WDP_PART[key(r)])+'" data-part="'+e(key(r))+'" tabindex="0">'
    +'<span class="aq-walkdown-pins__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
    +'<h3 class="aq-walkdown-pins__t">'+(tag?'<span class="aq-walkdown-pins__tag aq-walkdown-pins__tag--'+tag.toLowerCase()+'">'+tag+'</span>':'')+'<span>'+tx(name)+'</span></h3>'
-   +(r.v?'<p class="aq-walkdown-pins__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="aq-walkdown-pins__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
- return sec(H+'<div class="aq-walkdown-pins"><div class="aq-walkdown-pins__tab">'+thead+wFold(b,R.length,'<ol class="aq-walkdown-pins__list">'+rows+'</ol>',b.fold_noun||'checks')+'</div>'
-  +'<div class="aq-walkdown-pins__fig"><div class="aq-walkdown-pins__sheet">'+svg+labs.join('')+pins+'</div></div></div>','aq-walkdown-pins-sec')};
+   +(r.v?'<p class="aq-walkdown-pins__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="aq-walkdown-pins__m">'+tx(r.m)+'</p>':'')+'</li>')}).join('');
+ /* every check stays open on every width: each one has a marker on the sheet (pass 12, S7: never fold a row a pin
+    points at). Phones: PhoneKit holds the sheet as a 200 px strip and zooms 1.8x to the marker of the check in view;
+    wider columns (tablets) zoom less, 1.8 x 400 / column width, so the strip keeps the skid in view (verify V5). */
+ var cw=(typeof window!=='undefined'&&window.innerWidth||375)-32;
+ return sec(H+'<div class="aq-walkdown-pins" data-pk-sticky data-pk-bp="860" data-pk-h="200" data-pk-zoom="'+wdpZoom(cw)+'"><div class="aq-walkdown-pins__tab">'+thead+'<ol class="aq-walkdown-pins__list">'+rows+'</ol></div>'
+  +'<div class="aq-walkdown-pins__fig" data-pk-fig><div class="aq-walkdown-pins__sheet">'+svg+labs.join('')+pins+'</div></div></div>','aq-walkdown-pins-sec')};
+/* the strip's zoom for a column width: 1.8 on phones, less on wider columns (about 1.0 at 736) */
+function wdpZoom(cw){return String(Math.round(100*Math.min(1.8,1.8*400/Math.max(1,cw)))/100)}
+if(typeof window!=='undefined')window.addEventListener('resize',function(){[].forEach.call(document.querySelectorAll('.aq-walkdown-pins'),function(w){if(w.clientWidth)w.setAttribute('data-pk-zoom',wdpZoom(w.clientWidth))})},{passive:true});
 /* pointing at a check lights its part on the sheet and its pin */
 (function(){function lit(row,on){var w=row.closest('.aq-walkdown-pins');if(!w)return;var ids=(row.getAttribute('data-lit')||'').split(' ');
   ids.forEach(function(id){if(id)[].forEach.call(w.querySelectorAll('[data-iso-id="'+id+'"]'),function(el){el.classList.toggle('is-lit',on)})});
   [].forEach.call(w.querySelectorAll('.aq-walkdown-pins__lab[data-part="'+row.getAttribute('data-part')+'"]'),function(l){l.classList.toggle('is-on',on)});
   var p=w.querySelector('.aq-walkdown-pins__pin[data-row="'+row.getAttribute('data-row')+'"]');if(p)p.classList.toggle('is-on',on)}
+ /* phones: the check on PhoneKit's reading line lights its part on the strip (pk:change; switching off clears it) */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-walkdown-pins'))return;
+  [].forEach.call(w.querySelectorAll('.aq-walkdown-pins__row'),function(r){lit(r,false)});
+  if(ev.detail&&ev.detail.on){var r=w.querySelector('.aq-walkdown-pins__row[data-pk-row="'+ev.detail.key+'"]');if(r)lit(r,true)}});
  ['pointerover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-walkdown-pins__row');if(r)lit(r,true)})});
  ['pointerout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-walkdown-pins__row');if(r&&!(ev.relatedTarget&&r.contains(ev.relatedTarget)))lit(r,false)})})})();
 /* Look "washer-trace" -> WasherTrace (design-system/components/WasherTrace): an explainer (prose, as "explainer")
@@ -7101,7 +8750,8 @@ LOOKS['washer-trace']=function(b,H){var P=(b.points||[]).slice(0,3),n=P.length,S
    is about; a point without one takes the next free part; x, y optional: the text block's top left in % of the
    drawing, default per part), modes [dry label, wet label] (the switch's two words, default "Dry", "Water").
    at and figure are the fallback renderer's and are ignored here.
-   Up to tablet width the route turns vertical: one pipe down the left, the numbered markers on it, the points beside. */
+   Up to tablet width the route turns vertical: one pipe down the left, the numbered markers on it, the points beside,
+   under a compact strip of the skid (pass 12, wrhStrip) that the switch runs dry or with water. */
 var WRH_ST={divert:{m:[320,44],p:[320,90],t:[2,44]},outlet:{m:[590,428],p:[590,380],t:[37,3]},record:{m:[878,34],p:[980,90],t:[70,30]}};
 var WRH_ROUTE='M0 90H376Q400 90 400 114V356Q400 380 424 380H776Q800 380 800 356V114Q800 90 824 90H1200';
 function wrhRoute(){
@@ -7131,6 +8781,27 @@ function wrhRoute(){
  s+='<polyline class="'+P+'trend" points="918,46 926,40 934,42 942,34 950,38 958,30 966,34 974,28 982,32 990,26 998,30 1006,27"/>';
  s+=L('M1024 22H1108M1024 34H1096M1024 46H1104',P+'log');
  return '<svg class="'+P+'svg" viewBox="0 0 1200 460" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">'+s+'</svg>'}
+/* pass 12: the compact strip shown up to tablet width (the wide route is hidden there): the same skid in 360 x 150
+   units at about 1:1 on a phone, so its tags read at 12 px or more: feed, pump, RO, the divert valve with its drain,
+   COND and TOC on the outlet with their readouts, the logger with its trend, and the points' numbers on their
+   stations (markers keyed by part). Same classes as the wide route, so the dry / water switch drives it the same way. */
+function wrhStrip(parts){
+ var P='aq-wet-run-hmi'+'__',eq=P+'eq',th=P+'thin',tg=P+'tag',R='M0 72H360';
+ function L(d,c){return '<path class="'+c+'" d="'+d+'"/>'}
+ function T(x,y,s,a){return '<text class="'+tg+'" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+s+'</text>'}
+ var s=L(R,P+'wall')+L(R,P+'bore')+L('M150 80V112',P+'wall')+L('M150 80V112',P+'bore')+L(R,P+'water');
+ s+=L('M2 64L10 72L2 80',th)+L('M350 64L358 72L350 80',th);
+ s+='<circle class="'+eq+'" cx="30" cy="72" r="13"/>'+L('M23 63L41 72L23 81',th)+T(30,104,'PUMP','middle');
+ s+='<rect class="'+eq+'" x="56" y="58" width="62" height="28"/>'+L('M56 86L118 58',th)+T(87,104,'RO','middle');
+ s+='<path class="'+eq+'" d="M138 64L150 72L138 80ZM162 64L150 72L162 80ZM143 84L150 72L157 84Z"/>'+L('M150 72V56M142 56H158',th);
+ s+=L('M138 118H162M142 124H158M146 130H154',th)+T(150,146,'DRAIN','middle');
+ [[198,'COND'],[240,'TOC']].forEach(function(b,i){s+=L('M'+b[0]+' 64V44',th)+'<circle class="'+eq+'" cx="'+b[0]+'" cy="36" r="8"/>'
+  +'<rect class="'+P+'rd" x="'+(b[0]-16)+'" y="14" width="32" height="5"/><rect class="'+P+'rdv" x="'+(b[0]-16)+'" y="14" width="'+(i?19:25)+'" height="5"/>'+T(b[0],100,b[1],'middle')});
+ s+=L('M318 64V52',th)+'<rect class="'+eq+'" x="284" y="10" width="68" height="42"/><polyline class="'+P+'flat" points="290,38 346,38"/>'
+  +'<polyline class="'+P+'trend" points="290,40 297,34 304,36 311,28 318,32 325,24 332,28 339,21 346,24"/>';
+ var at={divert:[150,30],outlet:[219,128],record:[318,104]};
+ parts.forEach(function(k,i){var a=at[k];if(!a)return;s+='<g class="'+P+'smk" data-part="'+k+'"><circle cx="'+a[0]+'" cy="'+a[1]+'" r="12"/><text x="'+a[0]+'" y="'+a[1]+'" text-anchor="middle" dominant-baseline="central">'+(i<9?'0':'')+(i+1)+'</text></g>'});
+ return '<svg class="'+P+'strip" viewBox="0 0 360 150" aria-hidden="true" focusable="false">'+s+'</svg>'}
 LOOKS['wet-run-hmi']=function(b,H){var Pt=b.points||[],M=b.modes||['Dry','Water'],used={},free=['divert','outlet','record'];
  var parts=Pt.map(function(p){var k=WRH_ST[p.part]?p.part:'';if(!k||used[k])k=free.filter(function(f){return !used[f]})[0]||'record';used[k]=1;return k});
  function pc(v){return (Math.round(v/12*10)/10)+'%'}
@@ -7145,7 +8816,7 @@ LOOKS['wet-run-hmi']=function(b,H){var Pt=b.points||[],M=b.modes||['Dry','Water'
   +'<button type="button" class="aq-wet-run-hmi__mode" data-wrh-mode="wet" aria-pressed="true">'+tx(M[1])+'</button></div>';
  return '<section class="aq-section aq-wet-run-hmi-sec" data-theme="dark"><div class="aq-in"><div class="aq-wet-run-hmi is-wet">'
   +'<div class="aq-wet-run-hmi__head">'+H+sw+'</div>'
-  +'<div class="aq-wet-run-hmi__fig">'+wrhRoute()+marks+'<ol class="aq-wet-run-hmi__pts">'+list+'</ol></div></div></div></section>'};
+  +'<div class="aq-wet-run-hmi__fig">'+wrhRoute()+marks+wrhStrip(parts)+'<ol class="aq-wet-run-hmi__pts">'+list+'</ol></div></div></div></section>'};
 /* the switch: dry or with water (the page reads complete in the "with water" state without script); arrow keys move
    between the two positions. wrhMode is shared with motion.js. */
 function wrhMode(w,wet){if(!w)return;w.classList.toggle('is-wet',wet);w.classList.toggle('is-dry',!wet);
@@ -7159,6 +8830,7 @@ document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.tar
    curve; under the band, a column per stage: "01 / label", the stage name and its line. Water enters on a fan of feed
    lines at the left and leaves on a fan at the right. Phones: the pipe turns vertical and winds down the left edge,
    one bend per stage, the text beside it.
+   Phones (pass 12): the stage glyph, hidden on the pipe, stands at 24 px before the stop's code (span.__cg).
    Fields (a diagram block): h, stages (or items) [{t, d, spot | icon, label, fx}]. label: a short stop name for the
    mono code ("Feed", "RO 1"; default the first word of t). fx: "gas" draws a few rising bubbles over that stop.
    optional: true (or the word to show, a string) marks a stage fitted only on some systems (DR-018 rule 2: optional
@@ -7179,7 +8851,7 @@ LOOKS['winding-route']=function(b,H){
   var seg='<svg class="aq-winding-route__seg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M50 0C50 25 '+(high?70:30)+' 25 '+(high?70:30)+' 50S50 75 50 100"'+(opt?' stroke-dasharray="8 6"':'')+'/></svg>';
   return '<li class="aq-winding-route__stop '+(high?'is-high':'is-low')+(i===0?' is-first':'')+(i===n-1?' is-last':'')+(opt?' is-optional':'')+'" style="--k:'+i+'">'
    +'<div class="aq-winding-route__mark" aria-hidden="true">'+seg+'<span class="aq-winding-route__tail"></span>'+g+(it.fx==='gas'?gas:'')+'<span class="aq-winding-route__node"'+(opt?' style="border-style:dashed"':'')+'></span></div>'
-   +'<div class="aq-winding-route__text"><p class="aq-winding-route__code"><span>'+(i<9?'0':'')+(i+1)+'</span> / '+tx(lab)+(opt?' · '+tx(opt):'')+'</p>'
+   +'<div class="aq-winding-route__text"><p class="aq-winding-route__code">'+(g?'<span class="aq-winding-route__cg" aria-hidden="true">'+wSpot(it.spot||it.icon,'','aq-spot--on-navy aq-winding-route__pglyph')+'</span>':'')+'<span>'+(i<9?'0':'')+(i+1)+'</span> / '+tx(lab)+(opt?' · '+tx(opt):'')+'</p>'
    +'<h3 class="aq-winding-route__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-winding-route__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
  return sec(H+'<div class="aq-winding-route" style="--n:'+n+'">'+line+'<span class="aq-winding-route__drop" aria-hidden="true"></span><ol class="aq-winding-route__stops">'+stops+'</ol></div>','aq-band--navy aq-winding-route-sec')};
 /* Look "witness-plan" -> WitnessPlan (design-system/components/WitnessPlan): the ways to witness a FAT read as ruled
@@ -7194,7 +8866,9 @@ LOOKS['winding-route']=function(b,H){
    Leaders are laid out from the rendered rows (ResizeObserver), so they follow wrapping; without them the numbers
    still pair rows and parts. Arrow keys, Home and End move between the ways and choose. The list's first item is the
    sliding indicator (an empty, aria-hidden li that motion.js springs to the chosen row).
-   Container under 1080 px: the drawing above the rows, no leaders (the numbered markers pair them). */
+   Container under 1080 px: the drawing above the rows, no leaders (the numbered markers pair them). Phones (pass 12):
+   the room's frame is cropped away and the drawing is a PhoneKit sticky strip (220 px) that zooms (x1.2) onto the
+   part of the way on the reading line; that way is chosen as it arrives, and tapping a way brings it to the line. */
 var WP_PARTS=['panel','camera','gauge','documents','analyzer','ro','tank'];
 function wpScene(){var P='aq-witness-plan'+'__',B=[-62,-26,0],X=300,Yd=172,Z=104,F=function(a,b){return 'M'+isoT(isoP(a))+'L'+isoT(isoP(b))};
  var x0=B[0],y0=B[1],x1=x0+X,y1=y0+Yd;
@@ -7217,13 +8891,13 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],S=wpSce
  function part(it){return WP_PARTS.indexOf(it.part)>-1?it.part:'ro'}
  var svg=isoSvg(W,Hh,S.inner,'aq-witness-plan__svg',{origin:org});
  var mk=I.map(function(it,i){var k=part(it),n=seen[k]=(seen[k]||0)+1,at=isoPct(isoP(S.A[k]),W,Hh,org);
-  return '<span class="aq-witness-plan__mk'+(i?'':' is-on')+'" data-i="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+  return '<span class="aq-witness-plan__mk'+(i?'':' is-on')+'" data-i="'+i+'" data-pk-key="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
  var zl=function(s,p,c){var at=isoPct(isoP(p),W,Hh,org);return s?'<span class="aq-witness-plan__zone '+c+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(s)+'</span>':''};
- var list=I.map(function(it,i){return '<li><button type="button" class="aq-witness-plan__opt" data-i="'+i+'" data-part="'+e(part(it))+'" aria-pressed="'+(i?'false':'true')+'">'
+ var list=I.map(function(it,i){return '<li data-pk-row="'+i+'"><button type="button" class="aq-witness-plan__opt" data-i="'+i+'" data-part="'+e(part(it))+'" aria-pressed="'+(i?'false':'true')+'">'
   +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'.</span>'
   +'<span class="aq-witness-plan__t">'+tx(it.t)+'</span>'+(it.d?'<span class="aq-witness-plan__d">'+tx(it.d)+'</span>':'')+'</button></li>'}).join('');
- return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list"><li class="aq-witness-plan__ind" aria-hidden="true"></li>'+list+'</ol></div>'
-  +'<div class="aq-witness-plan__fig"><div class="aq-witness-plan__sheet">'+svg+zl(Z[0],S.zone,'is-bay')+zl(Z[1],S.camAt,'is-cam')+mk+'</div></div>'
+ return sec('<div class="aq-witness-plan" data-pk-sticky data-pk-h="220" data-pk-zoom="1.2">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list"><li class="aq-witness-plan__ind" aria-hidden="true"></li>'+list+'</ol></div>'
+  +'<div class="aq-witness-plan__fig" data-pk-fig><div class="aq-witness-plan__sheet">'+svg+zl(Z[0],S.zone,'is-bay')+zl(Z[1],S.camAt,'is-cam')+mk+'</div></div>'
   +'<svg class="aq-witness-plan__leads" aria-hidden="true" focusable="false"></svg></div>','aq-witness-plan-sec')};
 (function(){var NS='http://www.w3.org/2000/svg';
  /* lay the leaders out from the rendered rows: row end, along the row, then into the part's marker */
@@ -7244,7 +8918,13 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],S=wpSce
   new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,scan)})}).observe(document.documentElement,{childList:true,subtree:true});
   if(document.body)scan(document.body)}
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;var w=t.closest('.aq-witness-plan');
-  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t)});
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t);
+  /* phones: a tapped way that is not on the reading line is brought to it, so the strip zooms onto its part */
+  var li=t.closest('[data-pk-row]');if(ev.isTrusted&&li&&w.hasAttribute('data-pk-on')&&window.AQpk&&!li.classList.contains('is-pk-active')){
+   var y=window.scrollY+li.getBoundingClientRect().top-window.AQpk.line(w)+2,rm=window.AQpk.reduced&&window.AQpk.reduced();window.scrollTo({top:Math.max(0,y),behavior:rm?'auto':'smooth'})}});
+ /* phones: the way on the reading line is the chosen way (PhoneKit sticky) */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-witness-plan')||!ev.detail.on)return;
+  var li=w.querySelector('[data-pk-row="'+ev.detail.key+'"]'),o=li&&li.querySelector('.aq-witness-plan__opt');if(o&&o.getAttribute('aria-pressed')!=='true')o.click()});
  document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
   var w=t.closest('.aq-witness-plan');show(w,w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]'))});
@@ -7447,17 +9127,61 @@ document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.targe
  if(S)Flip.from(S,{targets:R,duration:0.45,ease:'power2.inOut',onEnter:function(x){return gsap.fromTo(x,{autoAlpha:0,x:-12},{autoAlpha:1,x:0,duration:0.4,stagger:0.03,clearProps:'transform,opacity,visibility'})}})});
 /* Block "related" -> RelatedLinks: the pages to read next. items: page ids. Pass 9: one pipe runs along the top of the
    row and every page hangs off it by a drop and a node, as a tile: the index and section label, the target page's
-   picture (its equipment drawing from ART when it has one, else its page icon drawn large as a Spot; aria-hidden), and
-   the page's title with an arrow. The whole tile is the link. Desktop: up to four to a row; phones: one column of rows
-   off a rail down the left. */
-function relVis(id){var s=wsplit(id)[0],n=pageIcon(id);
+   picture and the page's title with an arrow. The whole tile is the link. Desktop: one row of up to five (six as two
+   rows of three); phones: one column of rows off a rail down the left.
+   Pass 12 (S2): every destination has a drawing in one isometric hand. A page with an equipment drawing (ART, Hero.js)
+   shows that drawing; every other page shows its own small IsoKit scene (REL_ISO below: a clipboard of ticked clauses
+   for the URS guide, a ruled schedule for how a project runs, binders for the documentation package, and so on), in
+   the same ink-muted line as the drawings. A page with neither keeps its title at the bottom of the tile (no empty top).
+   Two links to the same page (page#anchor) are told apart by the linked block's heading (wlabel). */
+/* REL_ISO: page id -> [world-space scene, its bounds [x, y, w, h]] for pages without an equipment drawing. Scenes are
+   composed from IsoKit parts only (drawn back to front); the bounds were measured once from the drawn scene, so the
+   viewBox fits it. Nothing here is a fact: no labels, no figures. */
+function relSheet(x,y,w,d){return '<path class="aq-iso__eq aq-iso__eq--sheet" d="'+isoBoxD([x,y,0],w,d,0.8)+'"/>'}
+function relRule(x,y,w,d,n){var s='';for(var i=0;i<n;i++){var yy=y+d*(i+1)/(n+1);s+='M'+isoT(isoP(x+w*0.12,yy,0.8))+'L'+isoT(isoP(x+w*(i%2?0.7:0.88),yy,0.8))}return '<path class="aq-iso__thin" d="'+s+'"/>'}
+function relGrid(x,y,w,d,c,r){var s='',i;for(i=1;i<c;i++){var xx=x+w*i/c;s+='M'+isoT(isoP(xx,y,0.8))+'L'+isoT(isoP(xx,y+d,0.8))}
+ for(i=1;i<r;i++){var yy=y+d*i/r;s+='M'+isoT(isoP(x,yy,0.8))+'L'+isoT(isoP(x+w,yy,0.8))}return '<path class="aq-iso__thin" d="'+s+'"/>'}
+/* schedule bars, one per row, each starting where the last one is under way */
+function relBars(x,y,w,d,r){var s='';for(var i=0;i<r;i++){var yy=y+d*(i+0.5)/r,a=x+w*(0.06+i*0.13),b=a+w*0.36;s+='M'+isoT(isoP(a,yy,0.8))+'L'+isoT(isoP(b,yy,0.8))}return '<path class="aq-iso__acc" d="'+s+'"/>'}
+/* a tick at the end of each matrix row */
+function relTicks(x,y,w,d,r){var s='';for(var j=0;j<r;j++){var yy=y+d*(j+0.5)/r,xx=x+w*0.88;s+='M'+isoT(isoP(xx-3,yy-1,0.8))+'L'+isoT(isoP(xx-1,yy+1.5,0.8))+'L'+isoT(isoP(xx+3,yy-2.5,0.8))}return '<path class="aq-iso__acc" d="'+s+'"/>'}
+/* a dashed footprint on the floor */
+function relFoot(x,y,w,d){return '<path class="aq-iso__hid" d="M'+isoT(isoP(x,y,0))+'L'+isoT(isoP(x+w,y,0))+'L'+isoT(isoP(x+w,y+d,0))+'L'+isoT(isoP(x,y+d,0))+'Z"/>'}
+var REL_ISO={
+ systems:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('ro',6,6,6,0.9)},[-48,-58,144,141]],
+ services:[function(){return isoPart('desk',0,0,0,1.3)},[-40,-80,79,101]],
+ 'urs-guide':[function(){return isoPart('clipboard',0,0,0,1.6,{ticks:4})},[-40,-25,80,48]],
+ 'first-system':[function(){return isoPart('wall',-50,-40,0,1,{w:100,h:52})+relFoot(-34,-12,60,44)+isoPart('module',0,10,0,0.8)},[-57,-97,135,126]],
+ 'project-plan':[function(){return relSheet(-40,-28,80,56)+relGrid(-40,-28,80,56,1,5)+relBars(-40,-28,80,56,5)
+  +'<path class="aq-iso__hid" d="M'+isoT(isoP(14,-28,0.8))+'L'+isoT(isoP(14,28,0.8))+'"/>'},[-59,-35,118,69]],
+ 'cmp-documentation':[function(){return isoPart('binder',0,0,0,1.5)},[-70,-60,116,85]],
+ 'cmp-quality':[function(){return relSheet(-34,-22,50,40)+relRule(-34,-22,50,40,5)+isoPart('stamp',22,8,0,1.3)},[-45,-29,78,51]],
+ compliance:[function(){return relSheet(-38,-26,76,52)+relGrid(-38,-26,76,52,4,6)+relTicks(-38,-26,76,52,6)},[-55,-33,111,65]],
+ projects:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('module',30,28,6,0.8)+isoPart('tank',80,30,6,0.6)},[-48,-33,144,116]],
+ industries:[function(){return isoPart('outlet',-30,20,0,1)+isoPart('outlet',20,20,0,1)},[-67,-72,90,104]],
+ about:[function(){return isoPart('building',-45,-26,0,1)},[-61,-76,123,111]],
+ buying:[function(){return isoPart('truck',-40,-14,0,1)},[-45,-57,101,83]],
+ 'contact-locations':[function(){return isoPart('building',-60,-40,0,0.8)+isoPart('truck',0,20,0,0.7)},[-53,-82,98,129]],
+ 'contact-service':[function(){return isoPart('panel',0,0,0,1.4)},[-30,-93,61,111]],
+ 'contact-proposal':[function(){return relSheet(-30,-20,44,34)+relRule(-30,-20,44,34,4)+isoPart('clipboard',20,10,0,1)},[-38,-26,72,55]],
+ 'ind-hospital-lab':[function(){return isoPart('outlet',0,0,0,1.4)},[-33,-93,65,111]],
+ 'ind-process':[function(){return isoPart('tank',-20,0,0,0.8)+isoPart('pump',30,20,0,1)},[-40,-83,97,136]],
+ 'ind-personal-care':[function(){return isoPart('tank',0,0,0,1)},[-28,-91,57,107]]
+};
+function relIso(s){var r=REL_ISO[s];if(!r||typeof isoSvg!=='function')return '';var b=r[1],m=4;
+ return isoSvg(b[2]+2*m,b[3]+2*m,r[0](),'aq-iso--raised aq-related-links__iso',{origin:[m-b[0],m-b[1]]}).replace('<svg ','<svg data-iso-motion="off" ')}
+function relVis(id){var s=wsplit(id)[0],iso;
  if(ART[s])return '<span class="aq-related-links__vis is-art" aria-hidden="true"><span class="aq-illustration aq-related-links__art" style="'+artMask(s)+'"></span></span>';
+ if((iso=relIso(s)))return '<span class="aq-related-links__vis is-iso" aria-hidden="true">'+iso+'</span>';
+ var n=pageIcon(id);
  return n?'<span class="aq-related-links__vis" aria-hidden="true">'+wSpot(n,'l','aq-related-links__spot')+'</span>':''}
-BLOCKS['related']=function(b,H){var I=(b.items||[]).filter(wp);
- return sec(H+'<ol class="aq-related-links" style="--n:'+I.length+'">'+I.map(function(id,i){var p=wp(id),n=(i<9?'0':'')+(i+1);
- return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="aq-related-links__n" aria-hidden="true">'+n+'</span>'
-  +'<span class="aq-related-links__group"><span aria-hidden="true">'+n+' / </span>'+e(p.section)+'</span>'+relVis(id)
-  +'<span class="aq-related-links__title">'+tx(p.nav_label)+'<span class="aq-related-links__arrow" aria-hidden="true">→</span></span></a></li>'}).join('')+'</ol>');};
+BLOCKS['related']=function(b,H){var I=(b.items||[]).filter(wp),pg={};
+ I.forEach(function(id){var s=wsplit(id)[0];pg[s]=(pg[s]||0)+1});
+ return sec(H+'<ol class="aq-related-links" style="--n:'+I.length+'">'+I.map(function(id,i){var p=wp(id),n=(i<9?'0':'')+(i+1),v=relVis(id),
+  t=pg[wsplit(id)[0]]>1?wlabel(id):p.nav_label;
+ return '<li><a class="aq-related-links__card'+(v?'':' is-bare')+'" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="aq-related-links__n" aria-hidden="true">'+n+'</span>'
+  +'<span class="aq-related-links__group"><span aria-hidden="true">'+n+' / </span>'+e(p.section)+'</span>'+v
+  +'<span class="aq-related-links__title">'+tx(t)+'<span class="aq-related-links__arrow" aria-hidden="true">→</span></span></a></li>'}).join('')+'</ol>');};
 /* Table as "roles" -> RoleMatrix: who writes, does or approves each document, like the signature blocks on a controlled
    document. Fields as a table: cols [document, then one column per role], rows. Each role cell is a stamp labelled
    with its column name; a cell that starts with "Aquemi" is ours (tinted flow), one that starts with "You" or "Your" is

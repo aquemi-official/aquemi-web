@@ -1,0 +1,77 @@
+{
+ "look": "scope-seam",
+ "component": "ScopeSeam",
+ "type": "spec",
+ "fields": "h, intro, rows [{p, v, m, side, link, link_label}] (side: \"package\" | \"site\" | \"limit\"; default site), sides [package label, site label], seam (the seam's name). cols, fold and fold_noun are read by other looks, not here.",
+ "best_for": "ScopeSeam shows where a package fits and where it does not as a band split navy and limestone: the ambient loop the package serves drawn whole in the navy half, a loop it cannot serve dashed in the limestone half, two tie-in nodes on the seam between them, the limit row on the seam itself and each half's rows numbered under its drawing.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-personal-care",
+   "slot": 4,
+   "h": "Where the package fits, and where it does not",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "f9d3093543",
+   "block": {
+    "type": "spec",
+    "nav": "Fit",
+    "anchor": "fit",
+    "h": "Where the package fits, and where it does not",
+    "intro": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Your loop's temperature decides the material.",
+    "cols": [
+     "Condition",
+     "What applies",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Ambient loop, chemically sanitized",
+      "v": "[PP loop sanitization method]; residual tested before use.",
+      "m": "The duty this package is built for",
+      "side": "package",
+      "link": "industries#fit",
+      "link_label": "Check your use fits"
+     },
+     {
+      "p": "Hot-held loop, steam, or routine 80 °C at loop pressure",
+      "v": "Needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]",
+      "side": "site"
+     },
+     {
+      "p": "A standard that requires stainless steel",
+      "v": "Rules out polypropylene, unless the standard allows exceptions",
+      "side": "site"
+     },
+     {
+      "p": "Hot-water cycles",
+      "v": "Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C].",
+      "side": "limit"
+     },
+     {
+      "p": "Wetted parts",
+      "v": "[PP material certificates]",
+      "m": "For your file: what touches the water",
+      "side": "package"
+     },
+     {
+      "p": "Batch peaks",
+      "v": "Storage sized to your largest batch and its rinses",
+      "m": "From batch size and batches per week",
+      "side": "package"
+     }
+    ],
+    "sides": [
+     "Fits the package",
+     "Needs another material"
+    ],
+    "seam": "Where polypropylene stops",
+    "fold": 4,
+    "fold_noun": "conditions",
+    "look": "scope-seam"
+   }
+  }
+ ]
+}

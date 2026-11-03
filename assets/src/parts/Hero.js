@@ -18,8 +18,15 @@ var ART={
  'ind-pharma':'Mixing vessel for oral liquids and creams, fed from a Purified Water point-of-use valve',
  'ind-biotech':'Jacketed bioprocess vessel with agitator drive, sanitary piping, valves and control box',
  'ind-meddevice':'Washer-disinfector with instrument racks and spray arms, fed by a purified water line',
- 'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop'
+ 'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop',
+ 'ind-personal-care':'Water treatment skid with cartridge filters, membrane housings and a tank, piped to a mixing vessel with agitator and a bottle filler, a hose reel on the wall',
+ 'ind-hospital-lab':'Plant room with a membrane skid, pumps and a storage tank, its loop rising to a washer-disinfector and a lab bench sink on the floor above',
+ 'ind-process':'Membrane skid with filter vessels on a plinth, one pipe teeing to a cabinet, an open rinse tank and a plate-stack unit'
 };
+/* Width / height of each drawing in ART (the PNG mask's own ratio). On phones the hero's drawing box takes this ratio,
+   never taller than 5:4 (ART_R below 1.25 keeps the 5:4 box), so a wide drawing runs the full gutter width with no
+   empty band above or below it. A page missing here keeps the 5:4 box. */
+var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':1.05,'ind-meddevice':0.91,'ind-personal-care':1.74,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.51,'svc-service':1,'svc-upgrades':1.05,'sys-monitoring':0.69,'sys-pretreatment':1.18,'sys-pure-steam':0.65,'sys-pw':0.93,'sys-storage':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91};
 function artMask(id){var u='url(assets/illustrations/'+id+'.webp)';return '-webkit-mask-image:'+u+';mask-image:'+u}
 /* Equipment figure (sys-, svc-, ind- pages with a drawing): the drawing large and dominant, up to four key facts as
    callouts round it, each joined to the drawing by a leader line ending in a dot. Callouts come in two lists: the top
@@ -35,10 +42,27 @@ function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=
   if(wide){x0=left?32.4:87.6;y0=top?13:87;x1=12+96*a[0];y1=2+96*a[1]}else{x0=left?47:53;y0=top?0:80;x1=10+80*a[0];y1=80*a[1]}
   o+='<line x1="'+x0+'" y1="'+y0+'" x2="'+x1.toFixed(1)+'" y2="'+y1.toFixed(1)+'"/><circle cx="'+x1.toFixed(1)+'" cy="'+y1.toFixed(1)+'" r="'+(wide?0.9:1.1)+'"/><circle class="is-start" cx="'+x0+'" cy="'+y0+'" r="'+(wide?0.6:0.8)+'"/>'}
  return '<svg class="aq-hero__leaders aq-hero__leaders--'+(wide?'wide':'narrow')+'" viewBox="0 0 '+(wide?'120 100':'100 80')+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+o+'</svg>'}
-function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'};
- return '<figure class="aq-hero__figure">'
+/* Phone pins (pass 12, S16): on phones the leaders give way to numbered dots on the drawing, and the callouts follow the
+   drawing as numbered rows. Hidden on desktop, aria-hidden (the callouts carry the text).
+   Anchors: HERO_AT_P[page] where the generic HERO_AT slot would mark the wrong part (a numbered pin reads as "this part
+   is that row"), else HERO_AT; both are fractions of the square drawing box. Desktop leaders keep HERO_AT.
+   Placement: the phone box has ratio R (--art-r), the drawing (ratio r, ART_R) sits in it contained and centred, and its
+   square box (side = the drawing's longer side) is centred on it, so a pin lands at 50 % + (a - 0.5) x side / box. */
+var HERO_AT_P={
+ 'sys-storage':[[0.40,0.36],[0.115,0.37],[0.62,0.42]],
+ 'sys-pw':[[0.40,0.36],[0.92,0.47]],
+ 'sys-pretreatment':[[0.40,0.36],[0.62,0.32],[0.885,0.555],[0.65,0.665]]
+};
+function heroPins(n,id,R){var at=HERO_AT_P[id]||HERO_AT,r=ART_R[id]||1,w=r>=R?1:r/R,h=r>=R?1/r:1/R,S=Math.max(w,h),o='';
+ for(var i=0;i<n;i++){var a=at[i]||HERO_AT[i];o+='<span class="aq-hero__pin" style="left:'+(50+(a[0]-0.5)*S*100).toFixed(1)+'%;top:'+(50+(a[1]-0.5)*S*R*100).toFixed(1)+'%">'+(i+1)+'</span>'}
+ return n?'<span class="aq-hero__pins" aria-hidden="true">'+o+'</span>':''}
+/* The phone box: the drawing's own ratio, never taller than 5:4; a system page's drawing (hero--mist, pins on it) may
+   go down to square, so a near-square drawing runs the full gutter width (S9). */
+function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,/^sys-/.test(id)?1:1.25):1.25}
+function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'},r=ART_R[p.id],R=heroBoxR(p.id);
+ return '<figure class="aq-hero__figure"'+(r?' style="--art-r:'+R+'"':'')+'>'
   +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
-  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span><span class="aq-hero__scan" aria-hidden="true"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
+  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span><span class="aq-hero__scan" aria-hidden="true"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false)+heroPins(n,p.id,R):'')+'</div>'
   +(n>2?'<dl class="aq-hero__callouts aq-hero__callouts--bottom">'+facts.slice(2,4).map(co).join('')+'</dl>':'')+'</figure>'}
 /* Hero sheet (pass 9): a faint drawing-sheet ground behind every hero, aria-hidden: small registration crosses on a
    48 px grid, masked so they gather behind the right-hand figure and fade out before the headline. Pure decoration;
@@ -72,23 +96,34 @@ function wHeroIndex(x){var n=x.items.length;
    drawing has no generation or tank to show one upstream. The heat exchanger is labelled with sys-storage's placeholder,
    "[heat exchanger, standard or option]" (aq-loop__ph, the placeholder's mono), since drawn as standard it would read as
    hot-water sanitization (DR-013). The weight sits on the diagonal: sensors top right, heat exchanger bottom left. */
+/* Phones (pass 12): the same loop turned on its side (matrix(0 -1 1 0 0 440): x' = y, y' = 440 - x) in a 515 x 255
+   box, so it runs the full gutter width at about 170 px tall; its SVG labels would paint at 7 px there, so the parts
+   carry numbered pins (HTML, LOOP_PINS in percent of that box) and the labels move to a 2 x 2 legend under the drawing,
+   at reading size, under a caption naming the loop. Both drawings are in the markup; CSS shows one. */
+var LOOP_PINS=[[19.6,7.1,'CE · USP <645>'],[28.2,7.1,'TOC · USP <643>'],[68.5,94.1,'[heat exchanger, standard or option]'],[91.1,67.5,'Furthest point of use']];
 function wHomeLoop(){
  var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
  var label=function(x,y,s,a,c){return '<text'+(c?' class="'+c+'"':'')+' x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
+ var pipe='<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
+  arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
+  '<g class="aq-loop__part"><rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
+  '<line x1="300" y1="Y1" x2="324" y2="Y1"/><circle cx="336" cy="Y1" r="12"/><line x1="300" y1="Y2" x2="324" y2="Y2"/><circle cx="336" cy="Y2" r="12"/>'+
+  '<path d="M220,470 L220,480 M206,480 L206,492 L234,480 L234,492 Z"/></g>';
+ /* the sensors sit 34 apart on the wide drawing, 44 apart on the phone one so their pins do not touch */
+ var sensors=function(a,b){return pipe.replace(/Y1/g,a).replace(/Y2/g,b)};
+ var phone='<div class="aq-loop__phone"><p class="aq-loop__cap">Distribution loop · PP</p><div class="aq-loop__band">'+
+  '<svg class="aq-loop__svg aq-loop__svg--narrow" viewBox="12 86 515 255" aria-hidden="true" focusable="false"><g transform="matrix(0 -1 1 0 0 440)">'+sensors(113,157)+'</g></svg>'+
+  LOOP_PINS.map(function(q,i){return '<span class="aq-hero__pin" style="left:'+q[0]+'%;top:'+q[1]+'%">'+(i+1)+'</span>'}).join('')+'</div>'+
+  '<ol class="aq-loop__legend">'+LOOP_PINS.map(function(q,i){return '<li><span class="aq-hero__pin">'+(i+1)+'</span><span>'+tx(q[2])+'</span></li>'}).join('')+'</ol></div>';
  return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a heat exchanger on the loop, standard or option still to be confirmed, conductivity and TOC sensors on the return, a valve at the furthest point of use, and flow arrows.">'+
- '<svg viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+
- '<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
- arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
- '<g class="aq-loop__part"><rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
- '<line x1="300" y1="118" x2="324" y2="118"/><circle cx="336" cy="118" r="12"/><line x1="300" y1="152" x2="324" y2="152"/><circle cx="336" cy="152" r="12"/>'+
- '<path d="M220,470 L220,480 M206,480 L206,492 L234,480 L234,492 Z"/></g>'+
+ '<svg class="aq-loop__svg aq-loop__svg--wide" viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+sensors(118,152)+
  '<g class="aq-loop__lead"><line x1="108" y1="365" x2="126" y2="365"/></g>'+
  '<g class="aq-loop__text">'+label(0,14,'Distribution loop · PP')+
   '<text class="aq-loop__tag" x="336" y="121" text-anchor="middle">CE</text><text class="aq-loop__tag" x="336" y="155" text-anchor="middle">TOC</text>'+
   label(352,122,'USP <645>')+label(352,156,'USP <643>')+
   label(104,362,'[heat exchanger,','end','aq-loop__ph')+label(104,374,'standard or option]','end','aq-loop__ph')+
   label(244,483,'Furthest point of use')+
- '</g></svg></figure>'}
+ '</g></svg>'+phone+'</figure>'}
 /* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area
    on surface (no frame), always aria-hidden; the headline and lead carry the meaning.
    - {"spots": ["ro-skid", "storage-tank", "pure-steam-generator"], "label": "…"}: 2-4 Spot vignettes (an Icon name
@@ -149,4 +184,4 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'" data-hero="'+e(p.id)+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}

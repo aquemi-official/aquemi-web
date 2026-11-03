@@ -58,8 +58,15 @@
 /* Phones: the readout on top, the drawing with numbered pins, the points as a numbered run under it */
 @container (max-width: 860px) {
   .aq-washer-trace__fig { display: flex; flex-direction: column; gap: var(--space-4); }
-  .aq-washer-trace__read { position: relative; width: auto; order: -1; }
-  .aq-washer-trace__rn { font-size: 64px; line-height: 60px; }
+  /* pass 12: the readout is a slim bar (ruler over one line: the reached point "03 / 03" and its tag) */
+  .aq-washer-trace__read { position: relative; width: auto; order: -1; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-2) var(--space-4);
+    padding: var(--space-3) var(--space-4); }
+  .aq-washer-trace__ruler { grid-column: 1 / -1; height: var(--space-8); margin: 0; }
+  .aq-washer-trace__cur { height: calc(var(--space-4) + var(--space-1)); } /* the reached tick stops under the label row (labels end at 14 px) */
+  .aq-washer-trace__big { gap: var(--space-2); }
+  .aq-washer-trace__rn { font-size: 32px; line-height: 32px; }
+  .aq-washer-trace__of { font-size: 15px; line-height: 20px; }
+  .aq-washer-trace__tag { justify-self: end; align-self: center; }
   .aq-washer-trace__leads { display: none; }
   .aq-washer-trace__fig { overflow: hidden; }
   .aq-washer-trace__draw { width: 185%; margin-left: -30%; }

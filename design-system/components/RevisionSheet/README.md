@@ -6,6 +6,12 @@ RevisionSheet tells a document review cycle on one document: a paper sheet stays
 - Behaviour (look script, works without motion): the step nearest the screen's middle sets the sheet's state (`window.AQrevsheet.set/scan`); pointing at a step shows the sheet at that step. Without script, and below the last step, every mark shows.
 - Tokens: paper `surface-raised` on a `limestone` backing, printed furniture `line` / `line-strong`, marks `flow` and `flow-tint`, signatures `navy`. Drawing labels in SVG `<text>` repeat the steps' text (aria-hidden).
 - Layout (pass 9b, concept research/pass9b/concepts/cmp-documentation.2.png, numbered rhythm only): the steps lead at the left with large Geist Mono 300 numbers, the sheet stands at the right; rows shortened to 1.3 × space-32 so the story moves at reading pace.
-- Phone: the sheet sits over the steps (not pinned) and plays its marks through once.
+- Phone: see "Phones (pass 12)" below (sticky strip that fills step by step).
 - Motion (`motion.js`): the sheet is laid down and turns to its angle, steps rule in; on phones the marks play a step every 0.6 s. Under 4 s.
 - Not for: steps without a single document to follow (ProcessSteps, HoldTimeline).
+
+## Phones (pass 12)
+
+The strip runs under 600 px (`data-pk-bp="599"`); 600-860 px keep the full sheet above the steps.
+
+The sheet is a 140 px strip held under the header (PhoneKit sticky figure): the whole sheet as a thumbnail beside its revision rows (`__revs`, one per step: number, a rule, a tick when done). The step on the reading line sets the sheet's marks (cumulative, as on desktop) and lights its row; the motion's play-through stands down while PhoneKit drives. Desktop: the sheet sits 16 px in from the viewport edge.

@@ -5,7 +5,12 @@ MembraneFace sets a short list of feed-water targets as a bento round the thing 
 - Fields: `h`, `caption`, `intro`, `rows [{p, v, m, hl}]`, `note`. No new fields. `hl` tints that tile `flow-tint` with a `flow` border (one per block).
 - Grid: heading over two columns with tiles 1 and 2 beside it; the element 2 × 2 in the middle; tiles 3 to 6 either side; more rows run on underneath. The rim marks sit towards their tiles. Hover or focus within a tile lights its rim mark; the index numbers carry the pairing for everyone.
 - Tokens: tiles `surface-raised` on `line`, values `ink`, bases `ink-muted`; the element `navy` with `limestone` lines and `on-navy-muted` furniture.
-- Mid widths (up to 1100 px): two columns, the element as a wide band above the tiles. Phones: heading, the element as a short band (drawing left, note right), the tiles one by one.
+- Mid widths (up to 1100 px): two columns, the element as a wide band above the tiles. Phones (pass 12, S10): the element with its six ring numbers is the header (the numbers are 44 px buttons,
+  `__jump`, over the rim, the drawing 272 px wide), the note under it; the targets run as one scroll-snap row of
+  compact cards (84 % wide, the next peeking). Tapping a number brings its card into the row (smooth unless reduced
+  motion); the card in view lights its number and rim pin (`is-in`; the lit number carries `aria-current`), number 01 from
+  arrival. The behaviour lives in the renderer, so it works
+  with motion off. Sys-pretreatment at 375 px: 1,514 -> 811 px.
 - Use it for four to eight targets that protect one piece of equipment. For limits with a guaranteed outlet value use LimitStack; for many parameters ParamTiles or SpecTable.
 
 ## Motion

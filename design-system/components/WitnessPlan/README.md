@@ -15,3 +15,7 @@ Concept: pass 9b svc-fat-sat.3 (five witness modes as ruled rows with mono numer
 
 ## Motion
 The IsoKit drawing plays, rows rise, leaders draw out of their rows and a light runs each one to its part as its marker strikes (animated-beam port); the first way stays chosen. Choosing a way sends one light down its leader; the raised indicator springs between rows (sliding-tabs port). Once, under 4.5 s; nothing under reduced motion.
+
+Phones (pass 12, audit S8/S9): the room's frame and its zone labels are cropped away, and the drawing is a PhoneKit sticky strip (`data-pk-sticky`, 220 px, `data-pk-zoom="1.2"`; markers carry `data-pk-key`, each way's `li` is a `data-pk-row`). PhoneKit zooms the sheet onto the marker of the way on the reading line, and that way is chosen as it arrives (row, marker and part light); tapping a way brings it to the reading line (smooth, instant with reduced motion). Markers 24 px with 12 px figures. Without script the drawing stands above the ways. Desktop unchanged.
+
+Verify fixes (pass 12 V1, V2): the list isolates its stacking context (`isolation: isolate`), so the sliding chosen-way panel (`__ind`, z-index -1) paints above the section ground at every width; under 1080 px it had been hidden behind it with motion on. Where the leaders are off (1080 and under) the markers strike as soon as the package is drawn (0.5 s) instead of after the leaders (2.45 s).

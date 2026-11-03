@@ -8,3 +8,7 @@ Look `response-clock` (`assets/src/blocks/look-response-clock.js`) on a `steps` 
 - Phones: the dial (72 % wide) above the list.
 
 Motion: the case draws, the ticks turn in, then the hand sweeps once from twelve through every station; each station strikes and its step rises as the hand arrives; at the start step the running arc appears; the hand comes to rest there. Once, about 3.5 s. Pointing at or focusing a step turns the hand to its station.
+
+Phones (pass 12): a step with a link is a single tap target, the whole row (a stretched `::before` on the step name's
+link; the row is the positioning box), so "Remote diagnosis" and "On site" are about 120 px tall targets instead of
+26 px; focus draws the ring round the row. Desktop unchanged.

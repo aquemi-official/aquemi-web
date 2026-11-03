@@ -99,4 +99,6 @@
   .aq-limit-bento__u { font-size: 20px; }
   .aq-limit-bento__ic { top: var(--space-4); right: var(--space-4); width: var(--space-6); height: var(--space-6); }
   .aq-limit-bento__tile::before, .aq-limit-bento__tile::after { display: none; }
+  /* pass 12: the column's own row is not repeated as a tile under it */
+  .aq-limit-bento__tile.is-col { display: none; }
 }

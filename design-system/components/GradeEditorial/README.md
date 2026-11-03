@@ -4,7 +4,7 @@ GradeEditorial sets a short path (a grid block of about five items) as an editor
 - Markup: `section.aq-band--limestone.aq-grade-editorial-band` > `.aq-grade-editorial__mast` (the section head on full-bleed navy) and `.aq-grade-editorial` > `figure.aq-grade-editorial__art` (aria-hidden collage svg) + `.aq-grade-editorial__grid` of `.aq-grade-editorial__item`.
 - Layout: art 5 of 12 columns; the grid's six sub-columns take the first two items 3 + 3 and the next three 2 + 2 + 2 (five items; other counts run 3 + 3).
 - Colours: `limestone` ground (light in both themes), `navy` and `on-navy` tiles, a 16 % navy tint, the hollow pipe in `navy` walls over `limestone`, water in `flow` mixed 60 % with `navy`. Text `on-limestone` / `on-limestone-muted`; the panel `on-navy`. Placeholders stay chips.
-- Phones: mast, collage up to 360 px wide, then one block per row; big words at 64 / 48 px.
+- Phones: mast, the collage as a full-width 4:3 band cropped through its middle (pass 12), then one block per row; big words at 64 / 48 px; the grade and plain-terms links carry 44 px targets.
 - Not for long items: each block carries a few words; sentences belong in LinkGrid.
 
 Motion (`motion.js`): the collage tiles drop into the grid from scattered quarter turns, the pipe walls draw, the tank and pump seat over them, the water runs the route once and the drop falls; the blocks wipe in one by one, titles decode, big words rise letter by letter from a mask, the scope run draws across, list lines slide out, the empty bar tracks draw on and the navy panel wipes up (about 3.8 s). Nothing under reduced motion.

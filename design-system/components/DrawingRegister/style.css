@@ -1,0 +1,94 @@
+/* ---------- DrawingRegister: framed outline drawings, one steel-blue viewfinder, the selected item's detail (look "drawing-register") ---------- */
+/* The section is a limestone band forced to the light theme (data-theme="light"), so flow stays the steel blue.
+   The viewfinder is one element over the row of frames: --sel moves it by whole cells (its own width plus the gap),
+   so it needs no measuring. The glide (240 ms, .2/.85/.25/1) follows Subframe Motion "Project index"
+   (project-index), MIT, (c) 2026 Subframe, as ReviewReticles does; it is a CSS transition, so it is instant under
+   reduced motion. */
+.aq-drawing-register { --gap: var(--space-4); display: flex; flex-direction: column; gap: var(--space-8); border: 1px solid var(--line-strong); padding: var(--space-8); position: relative; }
+.aq-drawing-register::before { content: ""; position: absolute; inset: var(--space-2); border: 1px solid var(--line); pointer-events: none; }
+.aq-drawing-register__strip { position: relative; }
+.aq-drawing-register__cells { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); gap: var(--gap, var(--space-4)); }
+.aq-drawing-register__item { position: relative; min-width: 0; }
+.aq-drawing-register__cell {
+  display: flex; flex-direction: column; gap: var(--space-2); width: 100%; padding: 0; margin: 0; border: 0; background: none; text-align: start; color: var(--on-limestone); font: inherit; cursor: pointer;
+}
+.aq-drawing-register__cell:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-3); }
+.aq-drawing-register__frame { display: block; aspect-ratio: 6 / 5; border: 1px solid var(--on-limestone); background: var(--surface); position: relative; transition: border-color 200ms ease; }
+.aq-drawing-register__svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-drawing-register__svg path, .aq-drawing-register__svg circle, .aq-drawing-register__svg ellipse { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-drawing-register__svg .aq-drawing-register__eq { fill: var(--surface); stroke: var(--on-limestone); stroke-width: 1.4; }
+.aq-drawing-register__ln { stroke: var(--on-limestone); stroke-width: 1.4; }
+.aq-drawing-register__th { stroke: var(--on-limestone); stroke-width: 0.9; }
+.aq-drawing-register__hd { stroke: var(--on-limestone); stroke-width: 2.4; }
+.aq-drawing-register__dash { stroke: var(--on-limestone-muted); stroke-width: 0.9; stroke-dasharray: 3 3; }
+.aq-drawing-register__wa { stroke: var(--flow); stroke-width: 1.6; }
+.aq-drawing-register__code { font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone); }
+.aq-drawing-register__name { font: 400 15px/20px var(--font-sans); color: var(--on-limestone-muted); text-wrap: balance; transition: color 200ms ease; }
+.aq-drawing-register__item.is-on .aq-drawing-register__name { color: var(--on-limestone); }
+.aq-drawing-register__item.is-on .aq-drawing-register__code { color: var(--flow); }
+/* item text for readers: the visible copy is the detail below (aria-hidden) */
+.aq-drawing-register__d, .aq-drawing-register__link { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-drawing-register__go { color: inherit; }
+/* the viewfinder: one steel-blue square that overhangs the selected frame */
+.aq-drawing-register__vf {
+  position: absolute; left: 0; top: 0; width: calc((100% - (var(--n, 6) - 1) * var(--gap, var(--space-4))) / var(--n, 6)); aspect-ratio: 6 / 5; pointer-events: none;
+  transform: translateX(calc(var(--sel, 0) * (100% + var(--gap, var(--space-4))))); transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+.aq-drawing-register__vf::before { content: ""; position: absolute; inset: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) calc(-1 * var(--space-1)); background: color-mix(in srgb, var(--flow) 26%, transparent); border: 2px solid var(--flow); }
+/* the detail: the selected item drawn large in a dimensioned frame, its notes, the title block */
+.aq-drawing-register__detail { position: relative; }
+.aq-drawing-register__pane { display: none; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: stretch; }
+.aq-drawing-register__pane.is-on { display: grid; }
+.aq-drawing-register__zoom { position: relative; border: 1px solid var(--on-limestone); background: var(--surface); padding: var(--space-8) var(--space-8) var(--space-6) var(--space-12); }
+.aq-drawing-register__svg--big { height: auto; max-height: calc(var(--space-32) * 2); margin: 0 auto; }
+.aq-drawing-register__dim { position: absolute; border-color: var(--on-limestone-muted); border-style: solid; border-width: 0; }
+.aq-drawing-register__dim--h { left: var(--space-12); right: var(--space-8); top: var(--space-4); height: var(--space-2); border-width: 0 1px; border-top-width: 1px; }
+.aq-drawing-register__dim--v { left: var(--space-4); top: var(--space-8); bottom: var(--space-6); width: var(--space-2); border-width: 1px 0; border-left-width: 1px; }
+.aq-drawing-register__notes { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.aq-drawing-register__nl { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-drawing-register__nt { margin: 0; font: 300 32px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--on-limestone); text-wrap: balance; }
+.aq-drawing-register__nd { margin: 0; font: 400 17px/26px var(--font-sans); color: var(--on-limestone-muted); max-width: 46ch; text-wrap: pretty; }
+.aq-drawing-register__tb {
+  margin: auto 0 0; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; border: 1px solid var(--on-limestone);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone);
+}
+.aq-drawing-register__tb span { padding: var(--space-3) var(--space-4); border-left: 1px solid var(--on-limestone); }
+.aq-drawing-register__tb span:first-child { border-left: 0; }
+.aq-drawing-register__tbn, .aq-drawing-register__tbc { color: var(--flow); }
+.aq-drawing-register-sec { position: relative; }
+@media (hover: hover) { .aq-drawing-register__cell:hover .aq-drawing-register__frame { border-color: var(--flow); } }
+
+/* Phones: drawings two to a row, the selected one framed in steel blue, then the viewfinder block on steel blue */
+@container (max-width: 860px) {
+  .aq-drawing-register { padding: var(--space-4); gap: var(--space-6); --gap: var(--space-3); }
+  .aq-drawing-register::before { display: none; }
+  .aq-drawing-register__cells { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-4); }
+  .aq-drawing-register__cell { min-height: var(--aq-hit, 44px); gap: var(--space-1); }
+  .aq-drawing-register__vf { display: none; }
+  .aq-drawing-register__item.is-on .aq-drawing-register__frame { border-color: var(--flow); box-shadow: 0 0 0 2px var(--flow); background: color-mix(in srgb, var(--flow) 14%, var(--surface)); }
+  .aq-drawing-register__name { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  .aq-drawing-register__pane.is-on { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; background: var(--flow); color: var(--on-navy); }
+  .aq-drawing-register__zoom { display: grid; place-items: center; border: 0; background: none; padding: var(--space-4) var(--space-4) 0 var(--space-8); }
+  .aq-drawing-register__dim--h { left: var(--space-8); right: var(--space-4); top: var(--space-2); }
+  .aq-drawing-register__dim--v { left: var(--space-3); top: var(--space-4); bottom: 0; }
+  .aq-drawing-register__dim { border-color: var(--on-navy-muted); }
+  .aq-drawing-register__svg--big { max-height: calc(var(--space-32) + var(--space-8)); width: auto; }
+  .aq-drawing-register__svg--big .aq-drawing-register__eq { fill: var(--flow); stroke: var(--on-navy); }
+  .aq-drawing-register__svg--big .aq-drawing-register__ln, .aq-drawing-register__svg--big .aq-drawing-register__th, .aq-drawing-register__svg--big .aq-drawing-register__hd { stroke: var(--on-navy); }
+  .aq-drawing-register__svg--big .aq-drawing-register__dash { stroke: var(--on-navy-muted); }
+  .aq-drawing-register__svg--big .aq-drawing-register__wa { stroke: var(--limestone); stroke-width: 2.2; }
+  .aq-drawing-register__notes { padding: var(--space-4); gap: var(--space-2); }
+  .aq-drawing-register__nl { color: var(--on-navy); }
+  .aq-drawing-register__nt { font-size: 24px; line-height: 28px; color: var(--on-navy); }
+  .aq-drawing-register__nd { font-size: 15px; line-height: 22px; color: var(--on-navy); }
+  .aq-drawing-register__tb { margin-top: var(--space-3); border-color: var(--on-navy-muted); color: var(--on-navy); grid-template-columns: auto minmax(0, 1fr) auto; }
+  .aq-drawing-register__tb span { border-color: var(--on-navy-muted); padding: var(--space-2) var(--space-3); }
+  .aq-drawing-register__tbc { display: none; }
+  .aq-drawing-register__tbn { color: var(--on-navy); }
+}
+/* Tablets (561 to 860 px): drawings three to a row, and the large drawing beside its notes on the steel blue */
+@container (min-width: 561px) and (max-width: 860px) {
+  .aq-drawing-register__cells { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aq-drawing-register__pane.is-on { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .aq-drawing-register__zoom { padding-bottom: var(--space-4); }
+}

@@ -4,7 +4,8 @@
    writes in from the left. Pass 9b: first the P&ID band draws (pipes, then the water route), then a guided tour
    (Subframe Motion "Product tour spotlight", guided-inspection, MIT, (c) 2026 Subframe; the camera is AQrsCam in the
    renderer) turns the band's camera onto each failure's pin as its markup is drawn, and pulls back to the whole plan
-   at the end. Pointing is ignored during the tour. One timeline, once, under 5 s. The section heading is left to
+   at the end. Pointing is ignored during the tour. Phones (pass 12): PhoneKit owns the band (a sticky strip panned to the
+   pin being read), so the tour leaves the camera alone while it is on. One timeline, once, under 5 s. The section heading is left to
    the core. */
 AQmotion.fx('RedlineSheet', function (root, m) {
   root.querySelectorAll('.aq-redline-sheet').forEach(function (el) {
@@ -33,7 +34,7 @@ AQmotion.fx('RedlineSheet', function (root, m) {
       var head = it.querySelector('.aq-redline-sheet__head'), rev = it.querySelector('.aq-redline-sheet__rev'), err = it.querySelector('.aq-redline-sheet__err'), fix = it.querySelector('.aq-redline-sheet__fix');
       var base = qa('.aq-redline-sheet__ln, .aq-redline-sheet__thin, .aq-redline-sheet__flw', svg), bars = qa('.aq-redline-sheet__bar, .aq-redline-sheet__txt, .aq-redline-sheet__paper, .aq-redline-sheet__avg', svg);
       var marks = qa('.aq-redline-sheet__mark .aq-redline-sheet__cl', svg), mlbl = qa('.aq-redline-sheet__mark text', svg), fixes = qa('.aq-redline-sheet__fixln', svg), flbl = qa('.aq-redline-sheet__fixg text', svg);
-      if (band && cam) tl.call(function () { cam(band, i) }, null, at);
+      if (band && cam) tl.call(function () { if (!el.hasAttribute('data-pk-on')) cam(band, i) }, null, at);
       tl.from(it.querySelector('.aq-redline-sheet__fig'), { autoAlpha: 0, y: 12, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at);
       draw(base, at + 0.1, 0.6);
       if (bars.length) tl.from(bars, { autoAlpha: 0, scaleY: 0, transformOrigin: '50% 100%', duration: 0.4, stagger: 0.012, clearProps: 'transform,opacity,visibility' }, at + 0.2);
@@ -46,7 +47,7 @@ AQmotion.fx('RedlineSheet', function (root, m) {
       if (flbl.length) tl.from(flbl, { autoAlpha: 0, duration: 0.25, clearProps: 'opacity,visibility' }, at + 1.5);
       if (fix) tl.from(fix, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 1.3);
     });
-    if (band) tl.call(function () { if (cam) cam(band, null); el.removeAttribute('data-tour') }, null, tl.duration() - 0.3);
+    if (band) tl.call(function () { if (cam && !el.hasAttribute('data-pk-on')) cam(band, null); el.removeAttribute('data-tour') }, null, tl.duration() - 0.3);
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });

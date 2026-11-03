@@ -72,14 +72,41 @@
   .aq-ncr-tiles__tile.is-lead .aq-ncr-tiles__n { font-size: 136px; }
   .aq-ncr-tiles__n { font-size: 56px; }
 }
+/* Phones: no blocks. Each step is a compact row: a 40 px light numeral inline left of the title, and a 6 px left rule
+   that alternates navy and limestone (the limestone rows keep a pale limestone ground). The repair drawing runs at the
+   full column width right after the step it shows. */
 @container (max-width: 860px) {
-  .aq-ncr-tiles { grid-template-columns: minmax(0, 1fr); }
+  .aq-ncr-tiles { grid-template-columns: minmax(0, 1fr); gap: 0; background: none; border: 0; border-top: 1px solid var(--line); }
   .aq-ncr-tiles__tile, .aq-ncr-tiles__tile.is-lead, .aq-ncr-tiles__tile:nth-child(2), .aq-ncr-tiles__tile.is-wide, .aq-ncr-tiles__tile.is-figure { grid-column: 1; order: var(--o, 0); min-height: 0; }
-  .aq-ncr-tiles__tile { padding: var(--space-6) var(--space-4) var(--space-8); }
-  .aq-ncr-tiles__tile.is-lead { padding: var(--space-6) var(--space-4) var(--space-8); }
-  .aq-ncr-tiles__tile.is-lead .aq-ncr-tiles__n { font-size: 112px; margin-bottom: 0; }
-  .aq-ncr-tiles__tile.is-lead .aq-ncr-tiles__t { margin-top: var(--space-6); font-size: 26px; line-height: 32px; }
-  .aq-ncr-tiles__n { font-size: 56px; margin-bottom: var(--space-4); }
-  .aq-ncr-tiles__tile.is-figure { padding: var(--space-4); }
-  .aq-ncr-tiles__fig { min-height: 0; padding-bottom: var(--space-8); }
+  .aq-ncr-tiles__tile, .aq-ncr-tiles__tile.is-lead {
+    display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-3); align-content: start;
+    padding: var(--space-4) var(--space-4) var(--space-4) var(--space-3); border-left: 6px solid var(--navy); border-bottom: 1px solid var(--line);
+  }
+  .aq-ncr-tiles__tile.is-navy { background: var(--surface); color: var(--ink); }
+  .aq-ncr-tiles__tile.is-stone { background: color-mix(in srgb, var(--limestone) 45%, var(--surface)); border-left-color: var(--limestone); }
+  .aq-ncr-tiles__tile > * { grid-column: 2; }
+  .aq-ncr-tiles__n, .aq-ncr-tiles__tile.is-lead .aq-ncr-tiles__n {
+    grid-column: 1; grid-row: 1 / span 3; align-self: start; margin: 0; font-size: 40px; line-height: 32px; letter-spacing: -0.06em; min-width: 2ch;
+  }
+  .aq-ncr-tiles__t, .aq-ncr-tiles__tile.is-lead .aq-ncr-tiles__t { margin: 0 0 var(--space-1); font: 400 19px/26px var(--font-sans); }
+  .aq-ncr-tiles__tile.is-lead .aq-ncr-tiles__t { font-weight: 500; }
+  .aq-ncr-tiles__d, .aq-ncr-tiles__tile.is-lead .aq-ncr-tiles__d { font-size: 15px; line-height: 22px; max-width: none; }
+  .aq-ncr-tiles__tile.is-navy .aq-ncr-tiles__d { color: var(--ink-muted); }
+  .aq-ncr-tiles__tile.is-navy .aq-ncr-tiles__valve path { fill: var(--ink); stroke: var(--ink); }
+  .aq-ncr-tiles__tile .aq-ncr-tiles__hold { justify-self: start; margin-top: var(--space-3); }
+  .aq-ncr-tiles__tile.is-figure { display: block; padding: 0; border: 0; border-bottom: 1px solid var(--line); background: var(--surface-raised); }
+  .aq-ncr-tiles__fig { min-height: 0; padding-bottom: var(--space-4); border: 0; }
+}
+/* Phones in dark: navy falls to 1.5:1 on the dark surface, so the navy rows' rule turns flow */
+@container (max-width: 860px) {
+  [data-theme="dark"] .aq-ncr-tiles__tile.is-navy { border-left-color: var(--flow); }
+}
+@media (prefers-color-scheme: dark) {
+  @container (max-width: 860px) {
+    :root:not([data-theme="light"]) .aq-ncr-tiles__tile.is-navy { border-left-color: var(--flow); }
+  }
+}
+/* Tablets (600-860): the repair drawing keeps a reading measure instead of the full column (about 610 px tall) */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-ncr-tiles__fig { max-width: 34rem; margin-inline: auto; }
 }

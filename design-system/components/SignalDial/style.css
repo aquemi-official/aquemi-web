@@ -74,8 +74,8 @@
 .aq-signal-dial__row.is-on > * { background: var(--flow-tint); }
 .aq-signal-dial__row.is-on .aq-signal-dial__pick { border-left-color: var(--flow); }
 .aq-signal-dial__row.is-on .aq-signal-dial__n { color: var(--flow); }
-.aq-fold:not(.is-open) .aq-signal-dial__row.aq-fold-x { display: table-row; }
-.aq-fold:has(> .aq-signal-dial) > .aq-fold__btn { display: none; }
+/* the bezel's tap targets: phones only (below) */
+.aq-signal-dial__bz { display: none; }
 .aq-signal-dial__note { margin: 0; padding-left: var(--space-4); border-left: 2px solid var(--flow); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); max-width: var(--text-max); }
 
 @media (prefers-reduced-motion: reduce) {
@@ -88,17 +88,55 @@
   .aq-signal-dial__dial { max-width: 320px; }
   .aq-signal-dial__digits { font-size: 56px; }
   .aq-signal-dial__name { font-size: 16px; line-height: 22px; }
-  .aq-signal-dial__val { font-size: 12px; line-height: 16px; }
+  .aq-signal-dial__val { font-size: 14px; line-height: 20px; }
   .aq-signal-dial__lim { margin-top: var(--space-2); }
   .aq-signal-dial__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .aq-signal-dial__table, .aq-signal-dial__table tbody { display: block; }
-  .aq-signal-dial__row, .aq-fold:not(.is-open) .aq-signal-dial__row.aq-fold-x { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); border-bottom: 1px solid var(--line); }
-  .aq-fold:not(.is-open) .aq-signal-dial__row.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-signal-dial) > .aq-fold__btn { display: flex; }
+  .aq-signal-dial__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); border-bottom: 1px solid var(--line); }
   .aq-signal-dial__row > * { border-bottom: 0; }
   .aq-signal-dial__row > th { grid-column: 1 / -1; width: auto; }
+  /* the active tint on the whole row, not its cells, so the number column under the title is tinted too (verify V9) */
+  .aq-signal-dial__row { transition: background-color 200ms ease; }
+  .aq-signal-dial__row.is-on { background: var(--flow-tint); }
+  .aq-signal-dial__row.is-on > * { background: none; }
   .aq-signal-dial__v, .aq-signal-dial__m { grid-column: 2; padding: 0 var(--space-3) var(--space-2) 0; }
-  .aq-signal-dial__m { padding-bottom: var(--space-4); }
+  .aq-signal-dial__v { font-size: 15px; }
+  .aq-signal-dial__m { padding-bottom: var(--space-4); font-size: 14px; line-height: 21px; }
+  /* the row's link as a 44 px button */
+  .aq-signal-dial__go { margin-top: var(--space-3); }
+  .aq-signal-dial__go a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--flow); border-radius: var(--radius-sm); color: var(--flow); text-decoration: none; font: 500 15px/20px var(--font-sans); }
+  .aq-signal-dial__go a::after { content: "\2192"; margin-left: var(--space-2); }
+  .aq-signal-dial__go a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 }
+
+/* Phones (pass 12, PhoneKit sticky figure): the strip is the dial's top half, 160 px, held under the section bar; a
+   flex column (not a grid) so the strip holds for the whole schedule. The face keeps only the channel number at its
+   centre (names, values and basis are in the rows under it). The bezel stops are 44 px targets on a layer that turns
+   with the ring. The row on the reading line turns the dial (pk:change -> the look's set()). */
+@container (max-width: 860px) {
+  .aq-signal-dial[data-pk-on] { display: flex; flex-direction: column; align-items: stretch; row-gap: 0; --sd-w: 300px; }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__fig { display: block; margin-bottom: var(--space-2); }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__dial { position: absolute; left: 50%; top: var(--space-3); width: var(--sd-w, 300px); max-width: none; margin-left: calc(var(--sd-w, 300px) / -2); cursor: default; touch-action: auto; }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__hint { display: none; }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__sn { font-size: 17px; }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__index { stroke-width: 2; }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__read { top: auto; bottom: 50%; transform: translate(-50%, -2px); width: auto; flex-direction: row; align-items: baseline; gap: var(--space-2); }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__name, .aq-signal-dial[data-pk-on] .aq-signal-dial__lim,
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__val, .aq-signal-dial[data-pk-on] .aq-signal-dial__tag { display: none; }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__digits { font-size: 48px; }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__bz {
+    display: block; position: absolute; inset: 0; transform: rotate(calc(var(--sd-a, 0) * 1deg));
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__chb {
+    position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0; border: 0; border-radius: 50%;
+    background: transparent; color: transparent; font-size: 1px; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transform: rotate(calc(var(--j, 0) * 24deg)) translateY(calc(var(--sd-w, 300px) * -0.395));
+  }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__chb span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__chb:active { background: color-mix(in srgb, var(--flow) 14%, transparent); }
+  .aq-signal-dial[data-pk-on] .aq-signal-dial__row.is-pk-active .aq-signal-dial__n { color: var(--flow); }
+}
+@media (prefers-reduced-motion: reduce) { .aq-signal-dial__bz { transition: none !important; } }
 .aq-signal-dial-sec { position: relative; }
 .aq-signal-dial__p { min-width: 0; }

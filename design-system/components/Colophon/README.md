@@ -5,7 +5,9 @@ Colophon sets a spec block of company facts as a split ledger: a navy band with 
 - Fields: `h`, `caption`, `intro`, `cols` [item, fact, evidence], `rows [{p, v, m, hl, link, link_label, intent}]`, `note`, `fold`, `fold_noun`. The `hl` row's `v` is split at its first full stop (words unchanged).
 - Custom properties: `--cph-w` strip width, `--cph-fs` title size, `--cph-p` divider position from 0 to 1 (1 at rest; motion sweeps it).
 - Tokens: `aq-band--navy`; title Geist Light at display size, `limestone` on navy and `navy` on the strip; items mono `on-limestone`; facts Geist Light `on-navy`, evidence `on-navy-muted`; placeholders as limestone-tinted chips. Contrast holds in both themes (limestone and navy keep light-theme values).
-- Phones: the strip narrows to the number column; item, fact and evidence stack on the navy beside it.
+- Lead (pass 12 contrast fix): the section lead starts in the fact column (`padding-left` = strip width + gutter), so it always sits on the navy, never light-on-limestone over the strip (ind-meddevice, news).
+- Long ledgers (pass 12): a ledger of more than 6 rows with no `fold` of its own gets `is-phonefold` and folds after 4 on phones only; above the phone width every row shows and the button hides (about 9 rows, ind-meddevice 10).
+- Phones (≤ 860 px, pass 12): the strip becomes a 6 px limestone rail at the page edge (`--aq-sheet-rail`), the title drops the colour split (the ghost hides; one limestone headline on the full navy band, 48–72 px); each row puts "01 / ITEM" on its first line as a 12 px mono label, the fact full width (19 px) under it, the evidence at 15 px, and a link as a full-width 48 px row with its arrow at the right. about 2,641 → 1,048 px; ind-meddevice 2,326 → 1,026; news 1,589 → 1,251. The desktop type split is unchanged.
 - Not for limits or design values with units (LimitStack, ParamTiles) or for terms a reader compares across options (TermsSheet, CompareTable).
 
 ## Motion

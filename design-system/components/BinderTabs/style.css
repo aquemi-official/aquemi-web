@@ -3,7 +3,8 @@
    and the spine along its inner edge; right, the stack of dividers on surface-raised paper, three rings crossing from
    the spine into the punched holes. Each divider steps a little further right than the one above it (a filed fan),
    carries its index tab standing proud of the stack (limestone, mono label), and ends in a sign-off line with a flow
-   signature. Phones: the cover is a band over the stack; the tabs move inside the divider's right end. */
+   signature. Phones: the cover is a band over the stack; the tabs move over the divider's name; long binders get a
+   sticky strip of tabs and close each divider to one line (PhoneKit). */
 .aq-binder-tabs { --bt-tab: var(--space-32); --bt-step: var(--space-1); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); align-items: stretch; padding-right: var(--bt-tab, var(--space-32)); }
 .aq-binder-tabs__cover { position: relative; background: var(--navy); color: var(--on-navy); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-8); }
 .aq-binder-tabs__holder { border: 1px solid color-mix(in srgb, var(--on-navy-muted) 55%, transparent); outline: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); outline-offset: var(--space-2); padding: var(--space-6); }
@@ -52,6 +53,52 @@
   .aq-binder-tabs__d { font-size: 14px; line-height: 22px; }
   .aq-binder-tabs__sign { grid-column: 2; grid-row: 3; width: var(--space-16); }
   .aq-binder-tabs__tab { position: static; grid-column: 2; grid-row: 1; justify-self: start; width: auto; padding: var(--space-1) var(--space-2); border-left: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); font-size: 12px; }
+}
+
+/* Phone-only parts of a long binder (the strip, the heads' one-line preview, the body's row link): out of the desktop */
+.aq-binder-tabs__strip, .aq-binder-tabs__go { display: none; }
+.aq-binder-tabs__list:not([data-pk-on]) .aq-binder-tabs__ph { display: none; }
+
+/* Phones, every binder (pass 12): signed once, on the last divider; a linked divider is a link from edge to edge */
+@container (max-width: 860px) {
+  .aq-binder-tabs__div:not(:last-child) .aq-binder-tabs__sign { display: none; }
+  .aq-binder-tabs__div.has-link .aq-binder-tabs__t a { position: static; }
+  .aq-binder-tabs__div.has-link .aq-binder-tabs__t a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+  .aq-binder-tabs__div.has-link .aq-binder-tabs__t a:focus-visible { outline: none; }
+  .aq-binder-tabs__div.has-link:has(.aq-binder-tabs__t a:focus-visible) { outline: 2px solid var(--focus); outline-offset: -2px; }
+}
+
+/* Phones, long binders (8+ dividers; pass 12, S11): the tab strip sticks under the header (PhoneKit sticky strip, set
+   here to 60 px), lighting the divider being read; each divider is a head (number, name, one line, chevron) that
+   opens the whole text (PhoneKit accordion). */
+@container (max-width: 860px) {
+  .aq-binder-tabs__stack[data-pk-sticky][data-pk-on] .aq-binder-tabs__strip[data-pk-fig] {
+    display: block; height: 60px; margin: 0 calc(-1 * var(--space-3)) var(--space-2); padding: var(--space-2) 0; background: var(--surface-sunken); border-bottom: 1px solid var(--line-strong); }
+  .aq-binder-tabs__strip-in { display: flex; gap: var(--space-1); height: 44px; padding: 0 var(--space-3); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .aq-binder-tabs__strip-in::-webkit-scrollbar { display: none; }
+  .aq-binder-tabs__sb { flex: none; min-width: 44px; height: 44px; padding: 0 var(--space-3); scroll-snap-align: start; border: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); border-radius: 0;
+    background: var(--limestone); color: var(--on-limestone); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer;
+    transition: background-color 200ms, color 200ms; }
+  .aq-binder-tabs__sb:nth-child(even) { background: color-mix(in srgb, var(--limestone) 70%, var(--surface-raised)); }
+  .aq-binder-tabs__sb.is-pk-active, .aq-binder-tabs__sb.is-pk-active:nth-child(even) { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+  .aq-binder-tabs__sb:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__div { display: block; padding: 0 var(--space-3); }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__hd { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr) 44px; column-gap: 0; row-gap: 2px; align-items: baseline;
+    padding: var(--space-3) 0; min-height: 56px; }
+  .aq-binder-tabs__hn { grid-row: 1; font: 300 16px/24px var(--font-mono); color: var(--ink-subtle); }
+  .aq-binder-tabs__ht { grid-row: 1; font: 500 16px/24px var(--font-sans); color: var(--ink); }
+  .aq-binder-tabs__hd .aq-phone-kit__chev { grid-column: 3; grid-row: 1 / span 2; align-self: center; margin: 0 -10px 0 0; color: var(--ink-muted); }
+  .aq-binder-tabs__h1 { grid-column: 2; grid-row: 2; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+  .aq-binder-tabs__hd[aria-expanded="true"] .aq-binder-tabs__h1 { visibility: hidden; height: 0; }
+  .aq-binder-tabs__hd[aria-expanded="true"] .aq-binder-tabs__hn { color: var(--flow); }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__body { padding: 0 0 var(--space-4) var(--space-8); margin-top: calc(-1 * var(--space-2)); }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__d { margin: 0; font-size: 14px; line-height: 22px; }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__go { display: flex; margin: var(--space-2) 0 0; padding-inline: 0; color: var(--flow); font-size: 15px; }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__div.has-link .aq-binder-tabs__t a::after { content: none; }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__ph { display: block; margin: 0; font: inherit; letter-spacing: inherit; }
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__div:not(:last-child) .aq-binder-tabs__sign { display: none; }
+  /* signed once, under the last divider (as the short binder) */
+  .aq-binder-tabs__list[data-pk-on] .aq-binder-tabs__div:last-child .aq-binder-tabs__sign { display: block; position: static; width: var(--space-16); margin: var(--space-2) 0 var(--space-4) var(--space-8); }
 }
 
 /* section hook (the look marks its section) */

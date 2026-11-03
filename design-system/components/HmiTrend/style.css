@@ -63,7 +63,15 @@
 
 @container (max-width: 860px) {
   .aq-hmi-trend { padding: var(--space-1); }
-  .aq-hmi-trend__tab:not(.is-on), .aq-hmi-trend__lamps, .aq-hmi-trend__bt { display: none; }
+  /* the screen chrome stays whole (pass 12, S10): every tab as one 44 px segmented strip (the shown screen lit, as on
+     desktop), then the newest alarm with its text and the lamp cluster on a row of their own */
+  .aq-hmi-trend__bar { flex-wrap: wrap; gap: 0; }
+  .aq-hmi-trend__tabs { flex: 1 1 100%; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); border-bottom: 1px solid var(--line); }
+  .aq-hmi-trend__tab { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 var(--space-2); box-sizing: border-box; text-align: center; letter-spacing: 0.04em; }
+  .aq-hmi-trend__tab:last-child { border-right: 0; }
+  .aq-hmi-trend__banner { flex: 1 1 0; flex-wrap: wrap; gap: var(--space-1) var(--space-2); padding: var(--space-2) var(--space-3); min-height: 44px; box-sizing: border-box; }
+  .aq-hmi-trend__bt { flex: 1 1 100%; white-space: normal; font-size: 14px; line-height: 20px; }
+  .aq-hmi-trend__lamps { padding: 0 var(--space-3); }
   .aq-hmi-trend__plot { height: calc(var(--space-32) * 1.5); margin: var(--space-12) var(--space-4) var(--space-8); }
   .aq-hmi-trend__ll { left: auto; right: 0; transform: translateY(calc(-100% - var(--space-1))); padding: 0; background: var(--surface); }
   .aq-hmi-trend__flag { transform: translate(-60%, calc(-100% - var(--space-1))); }
@@ -85,3 +93,8 @@
    trace, fading within a few pixels; the vignette darkens the plot's corners slightly. */
 .aq-hmi-trend__plot { isolation: isolate; }
 .aq-hmi-trend__plot > .aq-fx-shader { --fx-amt: 0.85; }
+/* Narrow phones (pass 12, F9): the longest tab word ("Sanitization") fills its third of the strip; tighter padding and
+   tracking leave it room */
+@container (max-width: 400px) {
+  .aq-hmi-trend__tab { padding: 0 var(--space-1); letter-spacing: 0.02em; }
+}

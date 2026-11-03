@@ -1,6 +1,7 @@
 /* ApprovalMerge: the intro's figure counts up; the lanes run down the rows; each request rises with its node landing
    on its lane, and its wire runs right to the bus; the bus fills down and the one approval stamp strikes last. One
-   timeline, once, about 3 s. Phones: rows rise in order, the stamps strike. Hover lights a row's wire (CSS) and, after
+   timeline, once, about 3 s. Phones: rows rise in order; with one approver each row's node lands on the right-edge
+   rail and the one stamp strikes last (pass 12), otherwise each row's stamp strikes. Hover lights a row's wire (CSS) and, after
    the entrance, traces its route to the approval: an ink beam runs the wire, then the bus to the stamp, which answers
    with a small press; leaving fades the trace a third faster.
    Trace ported from Subframe Motion "Animated beam connections" (animated-beam), MIT, (c) 2026 Subframe */
@@ -18,12 +19,13 @@ AQmotion.fx('ApprovalMerge', function (root, m) {
       tl.from(r.querySelector('.aq-approval-merge__node'), { scale: 0, duration: 0.35, ease: 'power3.out', clearProps: 'transform' }, at + 0.15);
       tl.from(r.querySelectorAll('.aq-approval-merge__who, .aq-approval-merge__det'), { autoAlpha: 0, duration: 0.35, clearProps: 'opacity,visibility' }, at + 0.25);
       if (!nar) tl.from(r.querySelector('.aq-approval-merge__wire'), { scaleX: 0, duration: 0.5, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.3);
+      else if (el.classList.contains('is-one')) tl.from(r.querySelector('.aq-approval-merge__wire'), { autoAlpha: 0, duration: 0.3, ease: 'power2.out', clearProps: 'opacity,visibility' }, at + 0.3);
       else tl.from(r.querySelector('.aq-approval-merge__stamp'), { scale: 1.3, autoAlpha: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.3);
     });
     var tb = 0.2 + rows.length * 0.2 + 0.3;
     var bl = el.querySelector('.aq-approval-merge__busline'), big = el.querySelector('.aq-approval-merge__big');
     if (bl && !nar) tl.from(bl, { scaleY: 0, duration: 0.6, ease: 'power2.inOut', clearProps: 'transform' }, tb - 0.6);
-    if (big && !nar) tl.from(big, { autoAlpha: 0, scale: 1.25, rotation: -4, duration: 0.4, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, tb);
+    if (big) tl.from(big, { autoAlpha: 0, scale: nar ? 1.15 : 1.25, rotation: nar ? -2 : -4, duration: 0.4, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, tb);
     var done = nar; tl.eventCallback('onComplete', function () { done = true });
     m.on(el, function () { tl.play() }, 'top 75%');
     var bus = el.querySelector('.aq-approval-merge__bus'), bl2 = el.querySelector('.aq-approval-merge__buslit');

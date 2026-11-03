@@ -2,7 +2,7 @@
  "look": "method-bento",
  "component": "MethodBento",
  "type": "table",
- "fields": "h, intro, cols, rows [[method, how, fit, trade-off]], anchor, figs [name per row: \"chemical\", \"hot\", \"uv\"], scale {row, marks [{v, l}]} (the temperature figure: marks in °C along a 0–100 rail), absent (the missing method's name, shown large in outline on the dashed tile with the intro). scale.base: the reading below the first mark (motion.js turns the rail into a probe the visitor can drag along it, with detents at the marks). Without absent the intro stays in the section head.",
+ "fields": "h, intro, cols, rows [[method, how, fit, trade-off]], anchor, figs [name per row: \"chemical\", \"hot\", \"uv\"], scale {row, marks [{v, l}]} (the temperature figure: marks in °C along a 0–100 rail), absent (the missing method's name, shown large in outline on the dashed tile with the intro). scale.base: the reading below the first mark (motion.js turns the rail into a probe the visitor can drag along it, with detents at the marks). Without absent the intro stays in the section head (sys-storage: the single ozone line lives there, DR-013).",
  "best_for": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile.",
  "status": "live",
  "instances": [

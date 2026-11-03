@@ -16,7 +16,7 @@
 .aq-stage-tiles__tile:hover::before, .aq-stage-tiles__tile:focus-within::before { transform: scaleX(1); }
 .aq-stage-tiles__tile.is-lime { background: var(--limestone); color: var(--on-limestone); }
 .aq-stage-tiles__tile.is-navy { background: var(--navy); color: var(--on-navy); }
-.aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy { border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+.aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy, .aq-stage-tiles__band + .aq-stage-tiles__list .is-navy { border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
 
 .aq-stage-tiles__n { display: block; font: 300 96px/1 var(--font-mono); letter-spacing: -0.06em; white-space: nowrap; }
 .aq-stage-tiles__n i { font-style: normal; margin-left: 0.04em; }
@@ -64,18 +64,36 @@
   .is-six .aq-stage-tiles__tile:nth-child(5) .aq-stage-tiles__n { font-size: 80px; }
 }
 
+/* the phone band (the pipe-run drawing under the heading) is phone-only */
+.aq-stage-tiles__band { display: none; }
+
 @container (max-width: 860px) {
-  .aq-stage-tiles, .aq-stage-tiles__list { grid-template-columns: minmax(0, 1fr); }
-  .aq-stage-tiles__head { padding: var(--space-8) var(--space-4); }
+  /* Phones (pass 12, S13): the heading band (intro without its inset frame), the pipe-run drawing as a band under it,
+     then a 2-column grid of square tiles: 44 px numeral, name, line at 14 px. ~1 screen for six stages. */
+  .aq-stage-tiles { grid-template-columns: minmax(0, 1fr); }
+  .aq-stage-tiles__list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; }
+  .aq-stage-tiles__head { padding: var(--space-8) var(--space-4) var(--space-6); }
   .aq-stage-tiles__head .aq-h1 { font-size: 40px; line-height: 44px; }
-  .aq-stage-tiles__tile { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); align-items: start; column-gap: var(--space-4); min-height: 0; padding: var(--space-6) var(--space-4); }
-  .aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy { border-left: 0; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
-  .aq-stage-tiles__n { font-size: 48px; }
-  .aq-stage-tiles__body { margin-top: 0; }
-  .aq-stage-tiles__lab { font-size: 17px; line-height: 24px; }
-  .aq-stage-tiles__t { font-size: 18px; line-height: 24px; }
-  .aq-stage-tiles__art { grid-column: 1 / -1; margin: 0 0 var(--space-2); }
-  .has-art .aq-stage-tiles__n { font-size: 32px; }
+  .aq-stage-tiles__head .aq-lead { padding: 0; border: 0; max-width: none; font-size: 15px; line-height: 22px; }
+  .aq-stage-tiles__band { display: block; background: var(--navy); padding: 0 var(--space-4) var(--space-4); }
+  .aq-stage-tiles__band .aq-stage-tiles__svg { aspect-ratio: 5 / 2; border: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); box-sizing: border-box; }
+  .aq-stage-tiles__tile { display: flex; flex-direction: column; gap: var(--space-2); min-height: min(calc(50cqw - var(--space-4)), 220px); padding: var(--space-4) var(--space-3) var(--space-4) var(--space-4); }
+  /* the heading column starts on the left (the desktop row's flex-end would push the h1 right at tablet widths) */
+  .aq-stage-tiles__head .aq-sec-head { align-items: flex-start; }
+  .aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy, .aq-stage-tiles__band + .aq-stage-tiles__list .is-navy { border-left: 0; }
+  .aq-stage-tiles__tile.is-navy { box-shadow: inset 0 0 0 0.5px color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+  .aq-stage-tiles__n, .has-art .aq-stage-tiles__n { font-size: var(--aq-num-phone, 44px); }
+  .aq-stage-tiles__art { display: none; }
+  .aq-stage-tiles__body { margin-top: auto; gap: var(--space-1); }
+  .aq-stage-tiles__lab { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  .aq-stage-tiles__t { font-size: 16px; line-height: 21px; }
+  .aq-stage-tiles__d { font-size: var(--aq-read-phone, 14px); line-height: 19px; }
+  .aq-stage-tiles__t a { display: inline; padding-block: 2px; }
+}
+@container (max-width: 359px) {
+  .aq-stage-tiles__list { grid-template-columns: minmax(0, 1fr); }
+  .aq-stage-tiles__tile { min-height: 0; }
+  .aq-stage-tiles__list { grid-auto-rows: auto; }
 }
 
 /* section hook (the look marks its section) */

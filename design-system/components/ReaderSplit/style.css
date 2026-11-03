@@ -43,24 +43,48 @@ a.aq-reader-split__go:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-reader-split__t { font-size: 24px; line-height: 30px; }
 }
 
-/* Phones: one column on limestone; each reader is a navy bar over its reading, the seam turns into the bar's edge */
+/* Phone-only parts: the third column's key and the accordion head (PhoneKit) stay out of the desktop render */
+.aq-reader-split__colk, .aq-reader-split__ph { display: none; }
+
+/* Phones (pass 12, S11/S12): one column on limestone. The three column names show once as a key above the rows; each
+   reader is a 48 px navy head (index, reader, chevron) stacked on a hairline, so the navy line of readers stays in view,
+   and the reading opens under its head on tap (PhoneKit accordion, one open). Rows grow with their text (no locked
+   height); reading 15 px, answer 15 px with a 44 px link. Without script every row shows open, led by its navy bar. */
 @container (max-width: 860px) {
   .aq-reader-split__ground { display: none; }
   .aq-reader-split__head, .aq-reader-split__head .aq-h1 { color: var(--on-limestone); }
   .aq-reader-split__head .aq-lead { color: var(--on-limestone-muted); }
   .aq-reader-split { grid-template-columns: minmax(0, 1fr); }
-  .aq-reader-split__head { padding: 0 0 var(--space-8); }
-  .aq-reader-split__colh { display: none; }
-  .aq-reader-split__who { flex-wrap: wrap; row-gap: var(--space-1); }
-  .aq-reader-split__lab { position: static; flex-basis: 100%; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal;
-    font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-  .aq-reader-split__who .aq-reader-split__lab { color: var(--on-navy-muted); }
+  .aq-reader-split__head { padding: 0 0 var(--space-6); }
+  /* the key: navy swatch = the reader, a rule = the reading, the flow tick = the answer */
+  .aq-reader-split__colh { display: flex; flex-direction: column; gap: var(--space-1); margin: 0 0 var(--space-3); padding: 0;
+    font: 500 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
+  .aq-reader-split__colh span { display: flex; align-items: center; gap: var(--space-2); color: var(--on-limestone-muted) !important; }
+  .aq-reader-split__colh span::before { content: ""; flex: none; width: 14px; height: 10px; box-sizing: border-box; }
+  .aq-reader-split__colh span:first-child::before { background: var(--navy); }
+  .aq-reader-split__colh span:nth-child(2)::before { border: 1px solid color-mix(in srgb, var(--on-limestone) 40%, transparent); }
+  .aq-reader-split__colh .aq-reader-split__colk { display: flex; }
+  .aq-reader-split__colh .aq-reader-split__colk::before { width: 3px; margin: 0 5px; background: var(--flow); }
   .aq-reader-split__rows::before { display: none; }
-  .aq-reader-split__row { grid-template-columns: minmax(0, 1fr); margin-bottom: var(--space-4); }
-  .aq-reader-split__who { padding: var(--space-4); background: var(--navy); border-top: 0; }
-  .aq-reader-split__t { font-size: 21px; line-height: 27px; }
-  .aq-reader-split__what { padding: var(--space-4) var(--space-4) var(--space-4) var(--space-4); border: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); border-top: 0; }
-  .aq-reader-split__read { font-size: 15px; line-height: 24px; }
+  .aq-reader-split__row { grid-template-columns: minmax(0, 1fr); margin: 0 0 1px; }
+  .aq-reader-split__who { flex-wrap: wrap; row-gap: var(--space-1); padding: var(--space-3) var(--space-4); background: var(--navy); border-top: 0; }
+  .aq-reader-split__t { font-size: 19px; line-height: 25px; }
+  .aq-reader-split__what { height: auto; gap: var(--space-3); padding: var(--space-4);
+    border: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); border-top: 0; margin-bottom: var(--space-2); }
+  .aq-reader-split__read { font-size: 15px; line-height: 23px; }
+  .aq-reader-split__k { display: none; }
+  .aq-reader-split__go { min-height: 44px; justify-content: center; padding-left: var(--space-3); border-left: 3px solid var(--flow); font-size: 15px; line-height: 21px; }
   .aq-reader-split__tie { display: none; }
   .aq-reader-split-sec .aq-fold__btn { padding-left: 0; }
+  /* the accordion head (PhoneKit switches it on): a navy bar, index, reader, chevron */
+  .aq-reader-split__ph { margin: 0; }
+  [data-pk-on] .aq-reader-split__ph { display: block; }
+  .aq-reader-split__rows[data-pk-on] .aq-reader-split__head-btn { gap: var(--space-3); align-items: center; min-height: 52px; padding: var(--space-2) 0 var(--space-2) var(--space-4);
+    background: var(--navy); color: var(--on-navy); font: 400 17px/23px var(--font-sans); letter-spacing: -0.01em; }
+  .aq-reader-split__head-btn .aq-index { flex: none; color: var(--on-navy-muted); }
+  .aq-reader-split__head-btn .aq-phone-kit__chev { color: var(--on-navy-muted); }
+  .aq-reader-split__head-btn[aria-expanded="true"] .aq-phone-kit__chev { color: var(--on-navy); }
+  .aq-reader-split__rows[data-pk-on] .aq-reader-split__what { border-top: 0; }
 }
+.aq-reader-split__pt { min-width: 0; text-wrap: balance; }/* pass 12 (F9): no lone word after a hard hyphen ("hand- / off") */
+.aq-reader-split__nb { white-space: nowrap; }

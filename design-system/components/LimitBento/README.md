@@ -11,3 +11,7 @@ LimitBento sets a page's water-quality limits as a bento of tiles, one limit per
 ## Motion
 
 Motion: one timeline when the bento scrolls in. Tiles slide in from the side they sit on, each comparator rises and the limit counts up; the column wipes up from the floor, its ticks light, the water fills to the limit with the limit's mark riding the surface, the surface swells twice and settles, then the looser value's dashed mark drops in above. Under 4 s; nothing under reduced motion. The section heading is left to the core.
+
+## Phones (pass 12)
+
+The tile of the row the water column draws (card 01 on compliance) folds into the column under 860 px, so the same value is not read twice; a row with more than one basis or a link keeps its tile. Desktop unchanged.

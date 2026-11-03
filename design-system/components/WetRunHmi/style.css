@@ -82,3 +82,20 @@
   .aq-wet-run-hmi__t { font-size: 18px; line-height: 24px; }
   .aq-wet-run-hmi__d { font-size: 14px; line-height: 22px; }
 }
+
+/* pass 12 (audit S10, svc-fat-sat.1): up to tablet width a compact strip of the skid (wrhStrip, 360 x 150 units, about
+   150 px high on a phone) sits over the points: pump, RO, divert valve and drain, COND and TOC with their readouts, the
+   logger and its trend, and the points' numbers on their stations. Dry empties the pipe, blanks the readouts and the
+   trend and unlights the numbers; with water fills them (the same is-dry hooks as the wide route). */
+.aq-wet-run-hmi__strip { display: none; }
+@container (max-width: 1080px) {
+  .aq-wet-run-hmi__strip { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 0 var(--space-8); overflow: visible; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__wall { stroke-width: 7; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__bore { stroke-width: 4.5; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__water { stroke-width: 2; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__tag { font-size: 13.5px; letter-spacing: 0.03em; }
+  .aq-wet-run-hmi__smk circle { fill: var(--flow); stroke: var(--navy); stroke-width: 3; paint-order: stroke; transition: fill 300ms, stroke 300ms; }
+  .aq-wet-run-hmi__smk text { font: 500 13.5px/1 var(--font-mono); fill: var(--navy); transition: fill 300ms; }
+  .is-dry .aq-wet-run-hmi__smk circle { fill: var(--navy); stroke: var(--line-strong); stroke-width: 1.5; }
+  .is-dry .aq-wet-run-hmi__smk text { fill: var(--ink-subtle); }
+}

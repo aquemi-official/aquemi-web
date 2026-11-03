@@ -5,8 +5,9 @@
    the points of use on short drops, the return sensors (CE, TE, FE and a dashed AE for TOC), and the return riser
    with a detail of the spray ball wetting the tank head. The column rules run up through the drawing; the captions sit
    on a numbered row underneath. Pointing at a caption lights its station.
-   Phones: the strip gives way to a vertical circuit: the stages down a flow rail with their line glyphs, a return line
-   running back up to the tank.
+   Phones (pass 12, S10): the strip turns into a vertical circuit: the supply pipe runs down the left edge through the
+   stations (generation, tank, pump, exchanger, outlets, return sensors), turns at the foot and the return comes back up
+   the right edge past the spray ball's marker into the tank head; each stop's text sits between the two pipes.
    Fields (a diagram block): h, stages (or items) [{t, d, spot | icon, node}]. node: which station of the strip the
    stage is: gen, tank, pump, hx, pou, sensors, spray (default by position in that order). */
 (function(){
@@ -61,7 +62,9 @@ LOOKS['loop-circuit']=function(b,H){
  var I=b.stages||b.items||[],n=I.length,nodes=I.map(function(it,i){return it.node||NODE[i]||''}),nums=I.map(function(it,i){return (i<9?'0':'')+(i+1)});
  var at=nodes.map(function(id){return AT[id]?AT[id].join(','):''});
  var list=I.map(function(it,i){var g=wSpot(it.spot||it.icon,'','aq-spot--on-navy aq-loop-circuit__glyph');
-  return '<li class="'+K+'__stage" data-node="'+e(nodes[i])+'" data-at="'+at[i]+'"><span class="'+K+'__mark" aria-hidden="true">'+g+'</span>'
+  var pipes='<span class="'+K+'__sp" aria-hidden="true"></span><span class="'+K+'__rp" aria-hidden="true"></span>'
+   +(nodes[i]==='tank'?'<span class="'+K+'__tt" aria-hidden="true"></span><span class="'+K+'__ts" aria-hidden="true"></span>':'')+(i===n-1?'<span class="'+K+'__bt" aria-hidden="true"></span>':'');
+  return '<li class="'+K+'__stage" data-node="'+e(nodes[i])+'" data-at="'+at[i]+'">'+pipes+'<span class="'+K+'__mark" aria-hidden="true">'+g+'</span>'
    +'<p class="'+K+'__no" aria-hidden="true">'+nums[i]+'</p><h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
  var html=sec(H+'<div class="'+K+'" style="--n:'+n+'"><div class="'+K+'__strip">'+strip()+'</div><ol class="'+K+'__stages" role="list">'+list+'</ol></div>','aq-band--navy aq-loop-circuit-sec');
  return html.replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};

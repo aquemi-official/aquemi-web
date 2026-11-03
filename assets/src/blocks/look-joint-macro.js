@@ -9,7 +9,10 @@
    method]) and the drawing must not assert one.
    Fields, as a spec block: h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold,
    fold_noun. part (optional): wall, face, exam, bore, mark, or "none" (default from the item's words). The fold applies
-   on phones only. Phones: the macro on top, the rows in one column under it. */
+   on phones only, and not on this look (pass 12, S7: the callouts point at rows 07-10). Phones: the macro is a PhoneKit
+   sticky strip (220 px, the whole drawing so every callout stays inside) over all the rows as compact rows; the row on
+   the reading line lights its callout (no crop frame at this size) and is named beside the macro. Without
+   script, the macro sits on top and the rows run under it. */
 LOOKS['joint-macro']=(function(){
  var W=720,Hh=640;
  /* anchors on the part and where the number sits (viewBox units); a second row on the same part uses the second pair */
@@ -46,13 +49,16 @@ LOOKS['joint-macro']=(function(){
   var legend='<p class="aq-joint-macro__legend" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+(C[2]?' · '+tx(C[2]):'')+'</span></p>';
   var list='<ol class="aq-joint-macro__rows" role="list">'+R.map(function(r,i){var p=parts[i],cr=CROP[p];
    var at=cr?' data-crop="'+[cr[1]/Hh,1-(cr[0]+cr[2])/W,1-(cr[1]+cr[3])/Hh,cr[0]/W].map(function(v){return (Math.max(0,v)*100).toFixed(2)+'%'}).join(' ')+'" tabindex="0"':'';
-   return fli('<li class="aq-joint-macro__row'+(cr?' is-pinned':'')+'" data-k="'+i+'"'+at+'>',b,i)
+   return fli('<li class="aq-joint-macro__row'+(cr?' is-pinned':'')+'" data-k="'+i+'" data-pk-row="'+i+'"'+at+'>',b,i)
     +'<span class="aq-joint-macro__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
     +'<h3 class="aq-joint-macro__p">'+tx(r.p)+'</h3>'
     +'<div class="aq-joint-macro__vm"><p class="aq-joint-macro__v">'+k(1)+tx(r.v)+'</p><p class="aq-joint-macro__m">'+k(2)+tx(r.m)+'</p></div></li>'}).join('')+'</ol>';
   var cap=b.caption?'<p class="aq-eyebrow aq-joint-macro__cap">'+tx(b.caption)+'</p>':'';
-  return sec('<div class="aq-joint-macro"><div class="aq-joint-macro__head">'+cap+H+'</div>'
-   +'<div class="aq-joint-macro__stage">'+fig+'</div>'
+  /* pass 12 phone: the stage is a PhoneKit sticky strip; beside the macro it names the row being read (filled from the
+     row's own number and title by the script below; aria-hidden, the row carries the words) */
+  var now='<p class="aq-joint-macro__now" aria-hidden="true"><span class="aq-joint-macro__now-n"></span><span class="aq-joint-macro__now-t"></span></p>';
+  return sec('<div class="aq-joint-macro" data-pk-sticky data-pk-h="220"><div class="aq-joint-macro__head">'+cap+H+'</div>'
+   +'<div class="aq-joint-macro__stage" data-pk-fig>'+fig+now+'</div>'
    +'<div class="aq-joint-macro__body">'+legend+wFold(b,R.length,list,b.fold_noun||'rows')+'</div></div>','aq-band--navy aq-joint-macro-sec')}
 })();
 /* JointMacro: pointing at (or focusing) a pinned row moves the crop frame onto its part; leaving resets it */
@@ -64,4 +70,15 @@ LOOKS['joint-macro']=(function(){
  function h(on){return function(ev){var row=ev.target.closest&&ev.target.closest('.aq-joint-macro__row');if(!row)return;
   if(!on&&ev.relatedTarget&&row.contains(ev.relatedTarget))return;set(row,on&&row.hasAttribute('data-crop'))}}
  document.addEventListener('mouseover',h(true));document.addEventListener('mouseout',h(false));
- document.addEventListener('focusin',h(true));document.addEventListener('focusout',h(false))})();
+ document.addEventListener('focusin',h(true));document.addEventListener('focusout',h(false));
+ /* phones (PhoneKit sticky): the row on the reading line lights its callout and fills the strip's "now" label */
+ document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-joint-macro'))return;
+  var rows=[].slice.call(r.querySelectorAll('.aq-joint-macro__row')),row=rows[ev.detail.index],n=r.querySelector('.aq-joint-macro__now-n'),t=r.querySelector('.aq-joint-macro__now-t');
+  [].forEach.call(r.querySelectorAll('.is-on'),function(x){x.classList.remove('is-on')});
+  r.classList.remove('is-pk-none');
+  if(!ev.detail.on||!row){if(rows[0])set(rows[0],false);if(n)n.textContent='';if(t)t.textContent='';return}
+  /* a row with no part on the drawing: every callout steps back, so the strip does not look as if it lost the row */
+  if(!r.querySelector('.aq-joint-macro__lead[data-k="'+row.getAttribute('data-k')+'"]'))r.classList.add('is-pk-none');
+  /* the strip is small: no crop, every callout stays drawn and the row's own callout lights */
+  [].forEach.call(r.querySelectorAll('[data-k="'+row.getAttribute('data-k')+'"]'),function(x){x.classList.add('is-on')});var a=row.querySelector('.aq-joint-macro__n'),b=row.querySelector('.aq-joint-macro__p');
+  if(n)n.textContent=a?a.textContent:'';if(t)t.textContent=b?b.textContent:''})})();

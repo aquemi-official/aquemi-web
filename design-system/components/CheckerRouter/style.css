@@ -65,3 +65,57 @@ a.aq-checker-router__go:focus-visible { outline: 2px solid var(--focus); outline
   .aq-checker-router__row:nth-child(odd) .aq-checker-router__go { --bg: var(--navy); --fg: var(--on-navy); --mu: var(--on-navy-muted); }
   .aq-checker-router__row:nth-child(odd).is-on .aq-checker-router__go { --bg: var(--limestone); --fg: var(--on-limestone); --mu: var(--on-limestone-muted); }
 }
+
+/* ---------- Pass 12 phones: one card per situation ----------
+   A navy numeral tile (40 px, inline at the left) beside the situation, what you need under both on limestone in one
+   14 px line, and the navy start-with band across the foot as the 48 px tap target. The checker survives as
+   navy / limestone / navy down each card; pointing or focusing still inverts the card (mosaic). The column terms of
+   the situation and the need stay for screen readers. */
+@container (max-width: 860px) {
+  .aq-checker-router { gap: var(--space-3); }
+  .aq-checker-router__row { grid-template-columns: auto minmax(0, 1fr); gap: 0; border: 1px solid var(--line-strong); }
+  .aq-checker-router__row .aq-checker-router__tile { box-shadow: none; }
+  .aq-checker-router__num { grid-column: 1; grid-row: 1; min-width: var(--space-16); padding: var(--space-3) var(--space-2) var(--space-3) var(--space-3); }
+  .aq-checker-router__n { font-size: 40px; line-height: 40px; letter-spacing: -0.04em; }
+  .aq-checker-router__n i { margin-left: 0; }
+  .aq-checker-router__sit { grid-column: 2; grid-row: 1; gap: 0; justify-content: center; padding: var(--space-3) var(--space-4); }
+  .aq-checker-router__need { grid-column: 1 / -1; grid-row: 2; gap: 0; padding: var(--space-3) var(--space-4); border-top: 1px solid color-mix(in srgb, var(--mu, var(--on-limestone-muted)) 30%, transparent); }
+  .aq-checker-router__sit .aq-checker-router__k, .aq-checker-router__need .aq-checker-router__k {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-checker-router__t { font-size: 18px; line-height: 24px; }
+  .aq-checker-router__d { font-size: var(--aq-read-phone, 14px); line-height: 20px; color: var(--mu, var(--on-limestone-muted)); }
+  .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__go { grid-column: 1 / -1; grid-row: 3; flex-wrap: nowrap; min-height: 48px; padding: var(--space-2) var(--space-4);
+    column-gap: var(--space-3); --bg: var(--navy); --fg: var(--on-navy); --mu: var(--on-navy-muted); }
+  .aq-checker-router__row.is-on .aq-checker-router__tile.aq-checker-router__go { --bg: var(--limestone); --fg: var(--on-limestone); --mu: var(--on-limestone-muted); }
+  .aq-checker-router__go .aq-checker-router__k { flex: none; flex-basis: auto; }
+  .aq-checker-router__to { font-size: 15px; line-height: 20px; }
+  .aq-checker-router__arrow { width: var(--space-6); }
+}
+
+/* Pass 12 verify: the checker comes back as a zigzag. Each card carries two tones (x: numeral and start band; y:
+   situation and need); every other card swaps them, so down the column the numerals and bands run navy, limestone,
+   navy... against the opposite middle. Pointing or focusing a card still inverts it (mosaic). From 600 px the cards
+   sit two across, and the swap follows the 2 x 2 checker (cards 2 and 3 of every four). */
+@container (max-width: 860px) {
+  .aq-checker-router__row, .aq-checker-router__row:nth-child(even).is-on {
+    --x-bg: var(--navy); --x-fg: var(--on-navy); --x-mu: var(--on-navy-muted);
+    --y-bg: var(--limestone); --y-fg: var(--on-limestone); --y-mu: var(--on-limestone-muted); }
+  .aq-checker-router__row:nth-child(even):not(.is-on), .aq-checker-router__row:nth-child(odd).is-on {
+    --x-bg: var(--limestone); --x-fg: var(--on-limestone); --x-mu: var(--on-limestone-muted);
+    --y-bg: var(--navy); --y-fg: var(--on-navy); --y-mu: var(--on-navy-muted); }
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__num,
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__go { --bg: var(--x-bg, var(--navy)); --fg: var(--x-fg, var(--on-navy)); --mu: var(--x-mu, var(--on-navy-muted)); }
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__sit,
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__need { --bg: var(--y-bg, var(--limestone)); --fg: var(--y-fg, var(--on-limestone)); --mu: var(--y-mu, var(--on-limestone-muted)); }
+  .aq-checker-router__row.is-on a.aq-checker-router__go:focus-visible { outline-color: currentColor; }
+}
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-checker-router { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
+  .aq-checker-router__row { grid-template-rows: auto 1fr auto; }
+  .aq-checker-router__row:is(:nth-child(4n+1), :nth-child(4n)):not(.is-on), .aq-checker-router__row:is(:nth-child(4n+2), :nth-child(4n+3)).is-on {
+    --x-bg: var(--navy); --x-fg: var(--on-navy); --x-mu: var(--on-navy-muted);
+    --y-bg: var(--limestone); --y-fg: var(--on-limestone); --y-mu: var(--on-limestone-muted); }
+  .aq-checker-router__row:is(:nth-child(4n+2), :nth-child(4n+3)):not(.is-on), .aq-checker-router__row:is(:nth-child(4n+1), :nth-child(4n)).is-on {
+    --x-bg: var(--limestone); --x-fg: var(--on-limestone); --x-mu: var(--on-limestone-muted);
+    --y-bg: var(--navy); --y-fg: var(--on-navy); --y-mu: var(--on-navy-muted); }
+}

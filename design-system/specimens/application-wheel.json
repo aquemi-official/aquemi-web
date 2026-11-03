@@ -1,0 +1,66 @@
+{
+ "look": "application-wheel",
+ "component": "ApplicationWheel",
+ "type": "grid",
+ "fields": "h, intro, items [{t, tag, link, d}]. d is the list of uses, split into plant words at commas and semicolons (a final period dropped). Best for six groups (four to eight draw; the side columns take half each).",
+ "best_for": "ApplicationWheel shows where one Purified Water package goes as an application wheel: the package in the hub inside its loop ring, one numbered segment per industry group round it, and each group's block (name and page link, limit tag, plant uses) beside its segment on a hairline leader.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "industries",
+   "slot": 0,
+   "h": "Where our water goes",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "88d71044a0",
+   "block": {
+    "type": "grid",
+    "anchor": "map",
+    "nav": "Where it goes",
+    "h": "Where our water goes",
+    "intro": "One Purified Water package, configured to each use, across all six. What changes is where the water goes and who writes its limit.",
+    "items": [
+     {
+      "t": "Drugs and natural health products",
+      "tag": "USP · Ph. Eur.",
+      "link": "ind-pharma",
+      "d": "Granulation fluid, coating suspensions, syrups and drops, cream water phase, final equipment rinse; veterinary lines too."
+     },
+     {
+      "t": "Contract manufacturing",
+      "tag": "Each client",
+      "link": "ind-cdmo",
+      "d": "One site loop feeding several suites and client programs, through every campaign changeover."
+     },
+     {
+      "t": "Medical devices",
+      "tag": "USP <161>",
+      "link": "ind-meddevice",
+      "d": "Final rinse after cleaning, intermediate rinses, diagnostic reagent and ophthalmic solution make-up."
+     },
+     {
+      "t": "Hospitals and laboratories",
+      "tag": "ST108 · ASTM · CLSI",
+      "link": "ind-hospital-lab",
+      "d": "Washer-disinfector final rinse, endoscope reprocessing, analyzer feed, reagent and buffer make-up, lab building loops."
+     },
+     {
+      "t": "Cosmetics and personal care",
+      "tag": "Your specification · PW for drugs",
+      "link": "ind-personal-care",
+      "d": "Water phase of creams and lotions, shampoos and gels, over-the-counter sunscreens, household products, filler rinse."
+     },
+     {
+      "t": "Food, beverage and industrial",
+      "tag": "Your recipe or equipment maker",
+      "link": "ind-process",
+      "d": "Spirits proofing, beverage and ingredient water, cannabis extracts, electronics rinse, chemical batches, boiler and electrolyser feed."
+     }
+    ],
+    "look": "application-wheel"
+   }
+  }
+ ]
+}

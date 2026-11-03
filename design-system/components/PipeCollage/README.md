@@ -4,9 +4,9 @@ PipeCollage sets an evidence table as a Swiss poster: a geometric collage of fla
 - Markup: `<section class="aq-section aq-pipe-collage-sec">` → `div.aq-pipe-collage` with `div.__board` (aria-hidden, `data-theme="light"`, one svg 300 × 400: each tile a placing `<g transform>` around `g.__cell` with `data-edge`; a piece's cell is also `is-piece` with `data-pc`, its `__frame` and `text.__n`; shapes carry `data-f` for their fill or stroke role) and `div.__text` → `ol.__blocks` of `li.__block` (`data-pc`): an optional `__thumb` (the piece, phones only), `__head` (index, `h3.__std`), `p.__how`, `p.__proof` and `p.__go`, each with a `__k` column name.
 - Fields, as a table: `cols`, `rows` (cells strings or `{t, link}`), `fold`, `fold_noun`. New optional field: `pieces`, one per row: `vessel`, `panel`, `pipe`, `pellets` or `weld` (each at most once). Pieces have fixed places on the board; a piece no row uses becomes a filler.
 - Hover or focus on a block frames its piece in `flow` and dims the others.
-- Desktop shows every block (the board shows every piece); the fold applies on phones only.
+- Every block shows at every width (pass 12 verify, S7: never fold a row a drawing points at); the fold button never shows.
 - Tokens: board fills `navy`, `limestone`, `surface-sunken`, `surface-raised`; `flow` only as a line; brackets `line-strong`, turning `flow` on hover.
-- Phones: the board gives way to each block led by its own piece; blocks stack with a small alternate indent.
+- Phones (pass 12): the collage becomes a full-width 3 x 2 band of ~110 px square tiles under the heading (`div.__band`, phone-only, aria-hidden: each piece cropped to its middle with `preserveAspectRatio="xMidYMid slice"` and numbered as its row at 12 px, fillers between). A tap on a piece brings its row into view (every row shows, so no number in the band points at a hidden row). Blocks run in one column with no stair indent and no thumbs; proof lines at 14 px. Desktop unchanged.
 - Use it for three to six engineering or material standards, where a picture per row helps more than a drawing of the plant.
 
 ## Motion

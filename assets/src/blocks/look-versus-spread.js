@@ -11,7 +11,13 @@
    rows [[test, FAT cell, SAT cell]] (strings or {t, link}), conclusion [label, FAT side, SAT side], fold, fold_noun
    (the fold applies on phones only), row_parts (optional, one string per row: space-separated drawing parts the test
    covers, any of skid, ro, pump, panel, inst, valve, pipe, tank, loop, pou, util).
-   Phones: the mast full width, the drawing under it (not sticky), each row stacked: test, then its FAT and SAT cells. */
+   Phones (pass 12): the mast full width; under it the drawing at 240 px beside a FAT / SAT switch (two 48 px buttons
+   styled as the two boundaries) that lights that boundary and switches every row, the conclusion included, to that
+   side's cell; all rows show (no fold). Tapping a row still lights its parts and names it under the switch.
+   Verify fix (V5): the drawing and the switch are a PhoneKit sticky strip (200 px) over the rows, so the switch stays
+   in reach to row 08 and the conclusion, and the row on the reading line lights its parts (and the conclusion the
+   test bay); the side label is said once, by the switch (screen readers keep it per cell). 600-860 px: no switch,
+   both sides side by side under a sticky two-column head. */
 var VS_PARTS=['skid','ro','pump','panel','inst','valve','pipe','tank','loop','pou','util'];
 function vsFig(C){var P='aq-versus-spread'+'__';
  function G(p,inner){return '<g class="'+P+'part" data-p="'+p+'">'+inner+'</g>'}
@@ -52,20 +58,22 @@ LOOKS['versus-spread']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.conclusio
  function na(c){var t=c&&typeof c==='object'?c.t:c;return /^not possible\b/i.test(String(t||''))}
  function cell(c,k){return '<div class="aq-versus-spread__c aq-versus-spread__c--'+k+(na(c)?' is-na':'')+'" role="cell">'
   +'<span class="aq-versus-spread__k" aria-hidden="true">'+tx(C[k==='fat'?1:2]||'')+'</span>'+tcell(c)+'</div>'}
- var rows=R.map(function(r,i){return fli('<div class="aq-versus-spread__row" role="row" tabindex="0" data-i="'+i+'" data-parts="'+parts(RP[i])+'">'
+ var rows=R.map(function(r,i){return fli('<div class="aq-versus-spread__row" role="row" tabindex="0" data-i="'+i+'" data-pk-row="'+i+'" data-parts="'+parts(RP[i])+'">'
   +'<div class="aq-versus-spread__test" role="rowheader"><span class="aq-versus-spread__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
   +'<span class="aq-versus-spread__tn">'+tcell(r[0])+'</span></div>'+cell(r[1],'fat')+cell(r[2],'sat')+'</div>',b,i)}).join('');
  var head='<div class="aq-versus-spread__hrow" role="row">'+[0,1,2].map(function(k){return '<span class="aq-versus-spread__h" role="columnheader">'+tx(C[k]||'')+'</span>'}).join('')+'</div>';
- var end=K.length?'<div class="aq-versus-spread__end" role="row" tabindex="0" data-i="'+n+'" data-parts="fat">'
+ var end=K.length?'<div class="aq-versus-spread__end" role="row" tabindex="0" data-i="'+n+'" data-pk-row="'+n+'" data-parts="fat">'
   +'<div class="aq-versus-spread__test" role="rowheader"><span class="aq-versus-spread__reuse">'+tx(K[0]||'')+'</span></div>'
   +cell(K[1]||'','fat')+cell(K[2]||'','sat')+'</div>':'';
  var table=wFold(b,n,'<div class="aq-versus-spread__table" role="table" aria-label="'+e(b.h||'')+'">'+head
   +'<div class="aq-versus-spread__rows" role="rowgroup"><span class="aq-versus-spread__lens" aria-hidden="true"></span>'+rows+'</div></div>',b.fold_noun||'tests');
  var mast='<div class="aq-versus-spread__mast" data-theme="dark"><div class="aq-versus-spread__top" aria-hidden="true"><span>'+tx(b.nav||'')+'</span><span>'+e(wCount(b,n,'tests'))+'</span></div>'+H+'</div>';
- var fig='<figure class="aq-versus-spread__fig"><div class="aq-versus-spread__art">'+vsFig(C)+'</div>'
+ var fig='<figure class="aq-versus-spread__fig" data-pk-fig><div class="aq-versus-spread__art">'+vsFig(C)+'</div>'
   +'<figcaption class="aq-versus-spread__now" aria-hidden="true"><span class="aq-versus-spread__count">'+String(n).padStart(2,'0')+' '+e(b.fold_noun||'tests')+'</span>'
-  +'<span class="aq-versus-spread__now-t"></span></figcaption></figure>';
- return '<section class="aq-section aq-versus-spread-sec"><div class="aq-in"><div class="aq-versus-spread" style="--n:'+n+'">'+mast+fig
+  +'<span class="aq-versus-spread__now-t"></span></figcaption>'
+  +'<div class="aq-versus-spread__mode" role="group" aria-label="'+e((C[1]||'')+' / '+(C[2]||''))+'">'
+  +['fat','sat'].map(function(k,j){return '<button type="button" class="aq-versus-spread__mb aq-versus-spread__mb--'+k+'" data-vs-side="'+k+'" aria-pressed="'+(j?'false':'true')+'">'+tx(C[j+1]||k.toUpperCase())+'</button>'}).join('')+'</div></figure>';
+ return '<section class="aq-section aq-versus-spread-sec"><div class="aq-in"><div class="aq-versus-spread" data-side="fat" data-pk-sticky data-pk-h="200" style="--n:'+n+'">'+mast+fig
   +'<div class="aq-versus-spread__body">'+table+end+'</div></div></div></section>'};
 /* Point at or focus a row: light the parts its test covers, name it under the drawing. vsShow is shared with motion.js
    (the reading lens drives the same state); i = -1 clears. Works without GSAP and under reduced motion. */
@@ -87,4 +95,10 @@ window.vsShow=vsShow;
  document.addEventListener('pointerout',function(ev){var r=row(ev);if(!r||(ev.relatedTarget&&r.contains(ev.relatedTarget)))return;var w=r.closest('.aq-versus-spread');
   if(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-versus-spread [data-parts]'))return;w.removeAttribute('data-hold');back(w)});
  document.addEventListener('focusin',function(ev){var r=row(ev);if(!r)return;var w=r.closest('.aq-versus-spread');w.setAttribute('data-hold','');vsShow(w,+r.getAttribute('data-i'))});
+ /* phones: the FAT / SAT switch (state, not motion: works with motion off) */
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('[data-vs-side]');if(!b)return;var w=b.closest('.aq-versus-spread');if(!w)return;
+  w.setAttribute('data-side',b.getAttribute('data-vs-side'));[].forEach.call(w.querySelectorAll('[data-vs-side]'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})});
+ /* phones: the row on PhoneKit's reading line lights its parts on the sticky strip (index -1 clears) */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w||!w.classList||!w.classList.contains('aq-versus-spread')||w.hasAttribute('data-hold'))return;
+  var k=ev.detail&&ev.detail.on&&ev.detail.key!=null?+ev.detail.key:-1;vsShow(w,k>=0?k:-1)});
  document.addEventListener('focusout',function(ev){var r=row(ev);if(!r)return;var w=r.closest('.aq-versus-spread');if(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-versus-spread [data-parts]'))return;w.removeAttribute('data-hold');back(w)})})();

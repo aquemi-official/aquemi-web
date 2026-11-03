@@ -61,7 +61,7 @@
      }
     ]
    ],
-   "look": "decision-valve"
+   "look": "multiport-router"
   },
   {
    "type": "table",
@@ -97,7 +97,7 @@
      "Health Canada GUI-0001"
     ]
    ],
-   "look": "derivation-sheet"
+   "look": "calc-pad"
   },
   {
    "type": "grid",
@@ -123,7 +123,7 @@
      "d": "Liquid soaps, detergents and cleaners made on the same site"
     }
    ],
-   "look": "industry-feed"
+   "look": "plant-stations"
   },
   {
    "type": "spec",
@@ -230,7 +230,7 @@
    "seam": "Where polypropylene stops",
    "fold": 4,
    "fold_noun": "conditions",
-   "look": "battery-limit"
+   "look": "scope-seam"
   },
   {
    "type": "options",
@@ -270,23 +270,23 @@
     {
      "t": "Monitoring records",
      "d": "Conductivity trends, alarms and excursions, by date",
-     "sheet": "curves"
+     "sheet": "trend"
     },
     {
      "t": "Sanitization and calibration",
      "d": "Each sanitization with its residual test; instrument calibration certificates",
-     "sheet": "basis"
+     "sheet": "log"
     },
     {
      "t": "Drug lines: qualification",
      "d": "Installation qualification (IQ), operational qualification (OQ), performance qualification (PQ): protocols and reports",
-     "sheet": "logic",
+     "sheet": "binder",
      "link": "svc-cq"
     },
     {
      "t": "Cosmetic-only lines: acceptance",
      "d": "Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
-     "sheet": "certificate"
+     "sheet": "signoff"
     }
    ],
    "fold_noun": "records",

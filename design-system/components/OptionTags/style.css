@@ -6,6 +6,8 @@
 .aq-option-tags::before { content: ""; position: absolute; z-index: 0; top: calc(-1 * var(--space-32)); bottom: calc(-1 * var(--space-32));
   left: calc(200% / 3 + var(--space-4)); right: calc(-1 * var(--space-32) * 4); background: var(--navy); }
 .aq-option-tags__list { display: contents; list-style: none; }
+/* no folder among the options: no navy strip (it would stand empty), the tags take the third column (pass 12) */
+.aq-option-tags.is-flat::before { content: none; }
 
 /* Label card: the section heading on a printed label */
 .aq-option-tags__label { position: relative; z-index: 1; grid-column: 1; grid-row: 1; display: flex; flex-direction: column; gap: var(--space-6);
@@ -90,3 +92,15 @@
   .aq-fold:has(> .aq-option-tags) > .aq-fold__btn { display: flex; }
 }
 .aq-option-tags__vial .aq-option-tags__lab { stroke-width: 1; }
+
+/* Dark theme (pass 12, F3): the label card turns navy with --surface-raised, so its lead takes the card's own muted ink;
+   the fold button sits on limestone, so it takes the limestone inks */
+.aq-option-tags__label .aq-lead { color: var(--ink-muted); }
+.aq-option-tags-sec .aq-fold__btn { color: var(--on-limestone-muted); }
+.aq-option-tags-sec .aq-fold__btn:hover { color: var(--on-limestone); }
+
+/* Phones (pass 12, F7): the strings and vials dangle with nothing to tie to in one column, so they go; the tilt and the
+   eyelets keep the tag idea. (The fold is not drawn for five options or fewer; see the renderer.) */
+@container (max-width: 860px) {
+  .aq-option-tags__string { display: none; }
+}

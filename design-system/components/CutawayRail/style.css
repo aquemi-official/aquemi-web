@@ -83,3 +83,19 @@
 .aq-cutaway-rail__f { min-width: 0; }
 /* the active card's parts: a stronger line than IsoKit's own lit state, so the change reads at a glance */
 .aq-cutaway-rail .aq-iso .aq-iso__part.is-lit .aq-iso__eq, .aq-cutaway-rail .aq-iso .aq-iso__part.is-lit .aq-iso__ln, .aq-cutaway-rail .aq-iso .aq-iso__pipe.is-lit .aq-iso__pipe-wall { stroke: color-mix(in srgb, var(--flow) 60%, var(--on-navy)); stroke-width: 2; }
+
+/* Pass 12 phones (under 768 px): no 300 px stage over the cards. The figure is a 112 px strip held under the header
+   (PhoneKit sticky figure, data-pk-bp 767) that pans and zooms (x2) to the first part of the card on the reading
+   line, the active tag over its corner; the strip spans the column edge to edge on the navy band. 768 px and up keep
+   the rail exactly as before. */
+@container (max-width: 767px) {
+  .aq-cutaway-rail[data-pk-on] { gap: var(--space-4); }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__fig { margin: 0 calc(-1 * var(--space-4)); border: 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent);
+    border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); background: var(--navy); }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__svg { max-height: none; }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__tag { top: auto; bottom: var(--space-2); left: var(--space-4); z-index: 2; padding: var(--space-1) var(--space-2); }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__tag-v { font-size: 13px; }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__pin.is-on { box-shadow: 0 0 0 var(--space-1) color-mix(in srgb, var(--flow) 40%, transparent); }
+  /* the card being read: its node fills (as on desktop); the others keep their place */
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__card.is-pk-active { border-left-color: var(--flow); }
+}

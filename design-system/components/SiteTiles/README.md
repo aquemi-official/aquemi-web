@@ -5,7 +5,8 @@ SiteTiles sets a short grid of what changes for a site as one navy drawing sheet
 - Figures (`fig`, default from the item's `icon`): `spool` (a PP spool with a diaphragm valve and a pressure gauge, for `gauge`), `stamp` (a stamp and its imprint), `softener` (twin resin vessels and a brine tank), `truck` (a truck with a crated load, for `wrench`). Any other icon shows as a Spot. No figure carries a value.
 - Fields (a `grid` block): `h`, `intro`, `items [{t, d, link, link_label, icon, fig}]`. Best for 3 to 4 items.
 - Tokens: `aq-band--navy`; frame and rules `on-navy` hairlines; title Geist Light 64 `limestone`; column titles Geist Light 26 `on-navy`, lines `on-navy-muted`; IsoKit navy line work. Pointing at or focusing a column turns its part's lines towards `flow` and fills its zone number `limestone` (CSS `:has`, no script).
-- Phones: the sheet keeps its frame; one column per row with the drawing beside the number and title, the line and link under them; two columns between 860 and 1100 px.
+- Valve figure (pass 12): `fig: "valve"` (and `icon: "valve"` by default) draws a flanged spool with a diaphragm valve in IsoKit on the navy, the size of the other parts; any other icon falls back to a Spot painted `limestone` (it was navy on navy). about tile 04.
+- Phones (≤ 860 px, pass 12, S14): no frame, inner frame or zone bands; one column per row, the drawing 96 px tall and sat on its baseline above the title, the number as a mono tag at the row's top right, then the line and the link (left-aligned, 48 px). about 1,332 → 1,247 px. Two columns between 860 and 1100 px (unchanged), and again between 600 and 860 px (pass 12 verify) so tablets do not stack one narrow drawing per full-width row.
 
 ## Motion
 

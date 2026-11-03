@@ -23,7 +23,9 @@ function lsPipe(){
  var all=pts.concat([[X+6,y,z-24],[X+6,y,z+24],[0,-320,cz+R+30]]),bx=isoBounds(all,20),W=Math.round(bx.w),Hh=Math.round(bx.h+150),org=[-bx.x,-bx.y];
  var c=isoP([273,y+9,z+9]),o=isoP([140,y,z-30]);
  return {svg:isoSvg(W,Hh,inner,'aq-iso--limestone aq-limit-stack__svg',{origin:org}),
-  seal:isoPct(c,W,Hh,org),out:isoPct(o,W,Hh,org),note:isoPct(lead.end,W,Hh,org),side:lead.side}}
+  seal:isoPct(c,W,Hh,org),out:isoPct(o,W,Hh,org),note:isoPct(lead.end,W,Hh,org),side:lead.side,
+  /* the band under the pipe that only the note's leader uses, as % of the width (phones drop the leader, pass 12) */
+  cut:(140/W*100).toFixed(2)+'%'}}
 LOOKS['limit-stack']=function(b,H){
  var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h}),hr=rows.filter(function(r){return /guarant|outlet/i.test(String(r.p||''))}).pop();
  var cw=hr&&String(hr.v||'').indexOf('[')<0?String(hr.p||'').split(',').pop().trim():'';cw=cw&&cw.charAt(0).toUpperCase()+cw.slice(1);
@@ -35,9 +37,12 @@ LOOKS['limit-stack']=function(b,H){
    +'<p class="aq-limit-stack__v">'+val+'</p>'
    +'<p class="aq-limit-stack__m"><span class="aq-limit-stack__rule" aria-hidden="true"></span><span class="aq-limit-stack__mt">'+tx(r.m||'')+'</span></p></li>'}).join('')+'</ol>';
  var P=lsPipe(),pos=function(p){return 'left:'+p.left+';top:'+p.top};
- var fig='<figure class="aq-limit-stack__fig">'+P.svg
+ /* The drawing and its lettering share one box (__draw), so the lettering stays on the pipe at any drawing width; the
+    note is placed against the figure, which is the same box while the note is on the drawing (on phones it drops out
+    of the drawing and sits under it, pass 12) */
+ var fig='<figure class="aq-limit-stack__fig" style="--ls-cut:'+P.cut+'"><div class="aq-limit-stack__draw">'+P.svg
   +(cw?'<span class="aq-limit-stack__seal" aria-hidden="true" style="'+pos(P.seal)+'">'+tx(cw)+'</span>':'')
-  +'<span class="aq-limit-stack__outlet" aria-hidden="true" style="'+pos(P.out)+'">Skid outlet</span>'
+  +'<span class="aq-limit-stack__outlet" aria-hidden="true" style="'+pos(P.out)+'">Skid outlet</span></div>'
   +(b.intro?'<figcaption class="aq-limit-stack__note aq-limit-stack__note--'+P.side+'" style="'+pos(P.note)+'">'+tx(b.intro)+'</figcaption>':'')+'</figure>';
  /* The limestone sheet keeps its light tokens in the dark theme too (pipe body, flow line, the boxed outlet row) */
  return sec('<div class="aq-limit-stack">'+'<div class="aq-limit-stack__text">'+head+list+wSpecNote(b)+'</div>'+fig+'</div>','aq-band--limestone aq-limit-stack-sec').replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="light"')};

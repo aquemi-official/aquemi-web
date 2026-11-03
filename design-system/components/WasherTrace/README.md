@@ -6,7 +6,7 @@ WasherTrace tells an explainer as the water's way from the loop into a washer: o
 - Fields: `h`, `intro`, `points` [{t, d}] (the first three take the stations in order). `figure` and each point's `at` are not used by this look (they stay in the page file for the default renderer).
 - Tokens: `limestone` ground, `on-limestone` / `on-limestone-muted` text and lines, water `flow` mixed toward `on-limestone` (reads in both themes); readout `navy` with `on-navy`, the reached number in Geist Mono Light 104.
 - Without script, under reduced motion: the whole route is drawn, every callout shows, the readout shows the last point.
-- Phones: the readout on top, the drawing cropped to the equipment with numbered pins, the points as a numbered run under it.
+- Phones: the readout on top, the drawing cropped to the equipment with numbered pins, the points as a numbered run under it. Pass 12: the readout is a slim bar on phones (the ruler over one line: the reached point at 32 px, "/ 03", and its tag); desktop unchanged.
 
 ## Motion
 

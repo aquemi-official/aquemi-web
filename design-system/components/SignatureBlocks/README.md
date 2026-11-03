@@ -18,3 +18,7 @@ The key boxes stamp in; each block draws in from its top left as it scrolls in, 
 Polish (pass 9b): the reviewer's signature line carries a signature (aria-hidden svg `__sig` with `__imp` and `__ink`).
 
 Polish (pass 9): desktop sets the blocks two to a row (an odd last block runs the full width, name beside its fields); the party in a field is set in Geist, labels stay mono.
+
+Phones (pass 12): the field labels ("Written or done by", "Reviewed by") and the key boxes go from 12 to 13 px with
+0.1em tracking below 860 px; the stamps, the fold (5 of 8 documents, none referenced by a drawing) and desktop are
+unchanged.

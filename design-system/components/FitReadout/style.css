@@ -1,0 +1,77 @@
+/* ---------- FitReadout: a fit test read off an instrument ---------- */
+/* Desktop: the navy readout on the left (5 of 12), the numbered rule tiles stacked on the right, the outlined tags in
+   one row under both. The readout is a drawing: hairline axes and ticks in on-navy-muted, the curve in on-navy, the
+   limit line dashed in on-navy-muted, the field beyond it hatched out. */
+.aq-fit-readout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-12); row-gap: var(--space-12); align-items: start; }
+.aq-fit-readout__readout { position: sticky; top: var(--space-24); margin: 0; padding: var(--space-4) var(--space-4) var(--space-3); background: var(--navy); color: var(--on-navy);
+  border-radius: var(--radius-sm); box-sizing: border-box; }
+.aq-fit-readout__cap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin: 0 0 var(--space-3); padding-bottom: var(--space-2);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 25%, transparent); font: 500 11px/16px var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-fit-readout__led { flex: none; width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--on-navy); }
+.aq-fit-readout__chart { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-fit-readout__chart pattern path { stroke: color-mix(in srgb, var(--on-navy) 22%, transparent); stroke-width: 1px; }
+.aq-fit-readout__out { stroke: none; }
+.aq-fit-readout__grid { fill: none; stroke: color-mix(in srgb, var(--on-navy) 14%, transparent); stroke-width: 1px; stroke-dasharray: 2 4; vector-effect: non-scaling-stroke; }
+.aq-fit-readout__ax { fill: none; stroke: var(--on-navy-muted); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.aq-fit-readout__curve { fill: none; stroke: var(--on-navy); stroke-width: 2px; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-fit-readout__tail { fill: none; stroke: color-mix(in srgb, var(--on-navy) 40%, transparent); stroke-width: 1.5px; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; }
+.aq-fit-readout__lim { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.5px; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; }
+.aq-fit-readout__dot { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5px; vector-effect: non-scaling-stroke; }
+.aq-fit-readout__end { fill: var(--on-navy); stroke: var(--navy); stroke-width: 2px; vector-effect: non-scaling-stroke; }
+.aq-fit-readout__lab { font: 400 13px/1 var(--font-mono); letter-spacing: 0.06em; fill: var(--on-navy-muted); }
+.aq-fit-readout__val { font: 400 14px/1 var(--font-mono); fill: var(--on-navy-muted); }
+.aq-fit-readout__val--lim { fill: var(--on-navy); }
+
+.aq-fit-readout__tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); counter-reset: none; }
+.aq-fit-readout__tile { position: relative; display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2);
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-4); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-raised); }
+.aq-fit-readout__tile > * { grid-column: 2; }
+.aq-fit-readout__tile > .aq-index { grid-column: 1; grid-row: 1 / span 3; font: 300 40px/1 var(--font-mono); letter-spacing: -0.04em; color: var(--ink-subtle); }
+.aq-fit-readout__tile.is-hl > .aq-index { color: var(--flow); }
+.aq-fit-readout__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-fit-readout__v { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--ink); max-width: var(--text-max); }
+.aq-fit-readout__m { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); max-width: var(--text-max); }
+.aq-fit-readout__go { justify-self: start; display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); color: var(--ink); text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: var(--flow); font: 500 15px/20px var(--font-sans); }
+.aq-fit-readout__go::after { content: "\00a0\2192"; color: var(--flow); display: inline-block; transition: transform 200ms; }
+.aq-fit-readout__go:hover::after { transform: translateX(var(--space-1)); }
+.aq-fit-readout__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* the tags: outlined, one row under the readout and the tiles */
+.aq-fit-readout__tags { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--space-4); }
+.aq-fit-readout__tag { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-4) var(--space-2); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); }
+.aq-fit-readout__tag.is-not { border-style: dashed; }
+.aq-fit-readout__tp { margin: 0; font: 400 16px/22px var(--font-sans); color: var(--ink); }
+.aq-fit-readout__tv { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-fit-readout__tag.is-not .aq-fit-readout__tv { align-self: flex-start; padding: 0 var(--space-2); border: 1px solid var(--ink-muted); border-radius: var(--radius-sm);
+  font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-fit-readout__tm { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-fit-readout__go--tag { margin-top: auto; font-size: 14px; }
+
+@container (max-width: 1100px) {
+  .aq-fit-readout { column-gap: var(--space-8); }
+  .aq-fit-readout__tile > .aq-index { font-size: 32px; }
+}
+
+/* Phones: the readout first at full width, the tiles stacked, then the tags stacked */
+@container (max-width: 860px) {
+  .aq-fit-readout { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-fit-readout__readout { position: static; padding: var(--space-3); }
+  .aq-fit-readout__lab { font-size: 15px; }
+  .aq-fit-readout__val { font-size: 16px; }
+  .aq-fit-readout__tiles { gap: var(--space-3); }
+  .aq-fit-readout__tile { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-4); }
+  .aq-fit-readout__tile > * { grid-column: 1 / -1; }
+  .aq-fit-readout__tile > .aq-index { grid-column: 1; grid-row: 1; font-size: 28px; line-height: 26px; }
+  .aq-fit-readout__tile > .aq-fit-readout__t { grid-column: 2; grid-row: 1; align-self: center; font-size: 18px; line-height: 24px; }
+  .aq-fit-readout__v { font-size: 15px; line-height: 22px; }
+  .aq-fit-readout__m { font-size: var(--aq-read-phone, 14px); }
+  .aq-fit-readout__tags { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+}
+
+/* Tablets (601-860): the readout keeps its own column beside the tiles, the tags run two to a row */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-fit-readout { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-6); }
+  .aq-fit-readout__readout { position: sticky; top: var(--space-24); }
+  .aq-fit-readout__tags { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

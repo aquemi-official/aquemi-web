@@ -18,7 +18,9 @@ function wTick(sc,intent){var pre=String(intent||'').split('|').filter(Boolean);
    if(!x.checked){x.checked=true;x.dispatchEvent(new Event('change',{bubbles:true}))}});
   var st=first&&first.closest('.aq-form__step'),cur=fm.querySelector('.aq-form__step:not([hidden])');
   if(st&&cur&&+st.dataset.step<+cur.dataset.step){var g=document.createElement('button');g.type='button';g.hidden=true;g.setAttribute('data-step-go',st.dataset.step);cur.appendChild(g);g.click();g.remove()}})}
-/* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers. */
+/* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers.
+   Only fields showing are numbered (pass 12): a conditional field still hidden gets an empty ref, and wRenum numbers
+   the refs again whenever an answer opens or closes one, so the sheet never skips (1.1, 1.2, 1.3 …). */
 function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 /* Option labels: through tx like any copy, so a [placeholder] in an option shows in the Placeholder style (careers'
    "[PP fabrication job title]", news' consent line). A checkbox or radio label holding markup (a placeholder, µ) wraps
@@ -28,6 +30,8 @@ function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').
    (wPreset) and conditional fields (data-when) match on it. */
 function wOptT(o){var t=tx(o);return t===e(o)?t:'<span>'+t+'</span>'}
 function wOptPh(o){return /\[[^\]]+\]/.test(String(o||''))}
+/* Short options (four or more, each 20 characters or fewer, no placeholder): two columns on phones (aq-checks--short) */
+function wShortOpts(o){o=o||[];return o.length>=4&&o.every(function(x){return String(x).length<=20&&!wOptPh(x)})}
 /* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form (DR-014 rule 2:
    "I am qualifying suppliers" -> cmp-quality#audit). {kind: "note", when, label, link, action, intent}: label is the
    line, link a page id or page#anchor, action the link's words (default the linked block's heading, else the page's
@@ -47,12 +51,12 @@ function wReqNow(fm){return [].filter.call(fm.querySelectorAll('[required],[data
 function wReqText(n){return '<span class="wform-req">'+n+' required</span>'}
 function wField(f,i,ref){if(f.kind==='note')return wFormNote(f);var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f.required?' required':'',hid=id+'_help',
  when=f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'',
- num=ref?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
+ num=typeof ref==='string'?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
  lab='<label class="aq-field__label" for="'+id+'">'+num+tx(f.label)+opt+'</label>',
  help=f.help?'<p class="aq-field__help" id="'+hid+'">'+tx(f.help)+'</p>':'',desc=f.help?' aria-describedby="'+hid+'"':'',inp;
  if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option'+(wOptPh(o)?' class="aq-ph"':'')+'>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'></textarea>';
- else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+wOptT(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks'+(wShortOpts(f.options)?' aq-checks--short':'')+'">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+wOptT(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
  /* File: optional unless the request cannot go without it (careers' CV); a required one is marked and checked like any
     field: required on the input, no "(optional)", counted in the title row, and Continue or Send asks for a file */
  else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+req+desc+'>';
@@ -65,16 +69,21 @@ function wFormSteps(b){var n=0,S=b.steps,k=S.length,all=[];S.forEach(function(s)
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+k+' steps · '+wReqText(wReq(all))+'</span></p>'
   +'<ol class="aq-form__progress">'+S.map(function(s,i){return '<li'+(i?'':' aria-current="step"')+'>'+tx(s.title)+'</li>'}).join('')+'</ol>'
   +S.map(function(s,i){var q=0;return '<fieldset class="aq-form__section aq-form__step" data-step="'+i+'"'+(i?' hidden':'')+'><legend class="aq-form__legend"><span class="aq-form__num">'+(i+1)+'.0</span> Step '+(i+1)+' of '+k+': '+tx(s.title)+'</legend>'
-   +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd){return wField(fd,fd._n,fd.kind==='note'?'':(i+1)+'.'+(++q))}).join('')+'</div>'
+   +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd){return wField(fd,fd._n,fd.kind==='note'||fd._show===false?'':(i+1)+'.'+(++q))}).join('')+'</div>'
    +'<div class="aq-form__actions">'+(i?'<button class="aq-btn aq-btn--secondary" type="button" data-step-go="'+(i-1)+'">Back</button>':'')+(i<k-1?'<button class="aq-btn aq-btn--primary" type="button" data-step-go="'+(i+1)+'">'+tx(s.next||'Continue')+' <span class="aq-btn__arrow">→</span></button>':'<button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button>')+'</div>'
    +(i===k-1&&b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+(i===k-1?'<span class="aq-small wform-msg" role="status"></span>':'')+'</fieldset>'}).join('')
   +'</form>'}
+/* Item numbers of the fields showing, per numbered section ("2.0" numbers its items 2.1, 2.2 …); a ref inside a hidden
+   conditional field is emptied (CSS hides an empty ref). */
+function wRenum(fm){[].forEach.call(fm.querySelectorAll('.aq-form__section'),function(sc){var n=sc.querySelector('.aq-form__num'),pre=n?String(n.textContent).split('.')[0]:'',q=0;
+ [].forEach.call(sc.querySelectorAll('.aq-form__ref'),function(r){var w=r.closest('[data-when]');r.textContent=w&&w.hidden?'':pre+'.'+(++q)})})}
 /* Conditional fields: data-when="A|B" shows the field while any listed option is ticked. Ticks inside a hidden field do not count,
-   so a follow-up question disappears with its parent (three passes cover two levels of nesting). Then the title row's
-   required count follows what now shows. */
+   so a follow-up question disappears with its parent (three passes cover two levels of nesting). Then the item numbers
+   and the title row's required count follow what now shows. */
 document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var ws=fm.querySelectorAll('[data-when]');
  for(var k=0;k<3;k++){var on=[].filter.call(fm.querySelectorAll('input:checked'),function(x){var w=x.closest('[data-when]');return !w||!w.hidden}).map(function(x){return x.value});
   ws.forEach(function(w){w.hidden=!w.dataset.when.split('|').some(function(v){return on.indexOf(v)>=0})})}
+ wRenum(fm);
  var rq=fm.querySelector('.wform-req');if(rq)rq.textContent=wReqNow(fm)+' required'});
 /* Validation feedback (the form is novalidate, so the messages are ours and read the same everywhere). A field is checked
    when the visitor leaves it after typing, re-checked live while it shows an error, and every visible field of the step

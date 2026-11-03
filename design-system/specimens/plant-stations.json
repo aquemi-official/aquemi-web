@@ -1,0 +1,46 @@
+{
+ "look": "plant-stations",
+ "component": "PlantStations",
+ "type": "grid",
+ "fields": "h, intro, items [{t, d, link}]. No new fields.",
+ "best_for": "PlantStations draws a grid of points of use as an isometric plant room: the package in the back corner, a dashed route round the room to one numbered station per item, each station's tag keyed once to the numbered row beside the plan.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-personal-care",
+   "slot": 2,
+   "h": "Where water goes in a personal care plant",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "a8d7e66f28",
+   "block": {
+    "type": "grid",
+    "nav": "Where water goes",
+    "anchor": "uses",
+    "h": "Where water goes in a personal care plant",
+    "intro": "One package supplies every point below. Cooling and boiler water are outside Purified Water and have their own limits.",
+    "items": [
+     {
+      "t": "Ingredient water",
+      "d": "The water phase of creams and lotions, and the base of shampoos, gels and rinse-offs"
+     },
+     {
+      "t": "Final rinse",
+      "d": "Tanks, fillers and hoses, and the cleaning rinse your procedure names"
+     },
+     {
+      "t": "Quality control (QC) laboratory",
+      "d": "Glassware rinse and general use; reagent water follows your method's grade"
+     },
+     {
+      "t": "Household and cleaning products",
+      "d": "Liquid soaps, detergents and cleaners made on the same site"
+     }
+    ],
+    "look": "plant-stations"
+   }
+  }
+ ]
+}

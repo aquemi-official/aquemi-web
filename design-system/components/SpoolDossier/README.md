@@ -10,3 +10,5 @@ SpoolDossier sets a document set beside the as-built isometric it indexes: the t
 ## Motion
 
 Motion: IsoKit's timeline draws the spool (lengths back to front, the water once), then the joints dot in order with their numbers and the lot tags print; the parts rise in turn. Once, about 3.4 s; nothing under reduced motion.
+
+Phones (pass 12, audit S9): the spool runs full bleed with its empty margins cropped (top and bottom; the drawing itself already reaches the side edges, so it holds about its size with J-01 and J-06 at the edges), its J- and L- labels at 13.5 units (12-13 px) with a limestone halo, and the four parts in a 2 x 2 grid (28 px numerals, 15 px text). Desktop unchanged.

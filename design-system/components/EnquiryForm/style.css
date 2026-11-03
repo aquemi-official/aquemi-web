@@ -167,3 +167,19 @@
   .aq-form__legend { margin-bottom: var(--space-4); font-size: 18px; line-height: 26px; }
   .aq-form__submit { width: 100%; justify-content: center; }
 }
+
+/* ---------- Pass 12 (visual audit) ----------
+   - Item numbers count only the fields showing (wRenum in parts/EnquiryForm.js); a hidden field's empty ref takes no room.
+   - Fields in a two-column row start at the top of their cell: a neighbour with a help line no longer stretches this
+     field's label row and pushes its input down (contact-locations "Number of visitors", 20 px lower than "Preferred dates").
+   - Phones: short option lists (aq-checks--short: four or more options of 20 characters or fewer) in two columns; the
+     progress list's step names at the 14 px reading floor. */
+.aq-form__ref:empty { display: none; }
+.aq-form__grid > .aq-field { align-content: start; }
+@container (max-width: 860px) {
+  /* two columns only where a cell is 140 px or more (288 px inside the panel at 375 px); one column at 360 px; labels at the 14 px reading floor, where
+     "Troubleshooting" ran past its 136 px cell (pass 12 verify M2) */
+  .aq-form .aq-checks--short { grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(var(--space-32) + var(--space-3))), 1fr)); }
+  .aq-form .aq-checks--short label { gap: var(--space-2); padding-inline: var(--space-2); font-size: var(--aq-read-phone, 14px); line-height: 20px; overflow-wrap: normal; -webkit-hyphens: auto; hyphens: auto; }
+  .aq-form__progress li { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+}

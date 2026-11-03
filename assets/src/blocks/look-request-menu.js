@@ -6,7 +6,8 @@
    joined by " · " gives one line per item; the "When" and "Cost" cells are split the same way when they hold the same
    number of parts, otherwise the whole cell spans the group's lines. A {t, link, intent} cell keeps its link.
    Fields, as a table: cols [situation, what comes back, when, cost] (the column heads, and the phone's field keys), rows,
-   fold, fold_noun. Design system: components/RequestMenu. */
+   fold, fold_noun. Design system: components/RequestMenu.
+   Phones: the table gives way to an accordion of the same rows (div.__phone, PhoneKit), synced to the form's radio. */
 (function(){
 function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
 function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
@@ -39,7 +40,24 @@ LOOKS['request-menu']=function(b,H){var C=b.cols||[],R=b.rows||[],F=b.fold>0&&R.
   return '<tbody class="aq-request-menu__set'+(F&&i>=F?' aq-fold-x':'')+'" style="--n:'+n+'">'+lines+'</tbody>'}).join('');
  var head='<thead><tr>'+[0,1,2,3].map(function(j){return '<th scope="col" class="aq-request-menu__h" data-col="'+j+'">'+(j===2?wIcon('clock','aq-request-menu__ic'):'')+tx(C[j]||'')+'</th>'}).join('')+'</tr></thead>';
  var table='<table class="aq-request-menu__table">'+head+groups+'</table>';
+ /* Phones (pass 12, S11/S12/S18): the same rows as a PhoneKit accordion (the table and the drawing are hidden under
+    860 px). Head: number and situation, 48 px, chevron. Body: one entry per returned item, the item in 15 px with its
+    When and Cost as chips under it (clock chip in mono, cost chip in flow); the column names show once as a key. The
+    item open follows the form's "Where are you starting from?" radio: the situation whose text equals the ticked value
+    opens (see the listener at the end). Without script every body shows. */
+ var chip=function(cls,v){return v==null?'':'<span class="aq-request-menu__chip aq-request-menu__chip--'+cls+'">'+(cls==='when'?wIcon('clock','aq-request-menu__ic'):'')+tcell(v)+'</span>'};
+ var acc='<div class="aq-request-menu__phone"><p class="aq-request-menu__key" aria-hidden="true"><span>'+tx(C[1]||'')+'</span>'+chip('when',C[2]||'When')+chip('cost',C[3]||'Cost')+'</p>'
+  +'<ol class="aq-request-menu__acc" data-pk-picker="accordion" data-pk-open="0">'+R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length,wS=when.length===n,cS=cost.length===n;
+   var sit=r[0]&&typeof r[0]==='object'?r[0].t:r[0];
+   return '<li class="aq-request-menu__item" data-pk-item="'+e(sit)+'"><h3 class="aq-request-menu__ah"><button type="button" class="aq-request-menu__hb" data-pk-head><span class="aq-request-menu__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-request-menu__at">'+tx(sit)+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h3>'
+    +'<div class="aq-request-menu__ab" data-pk-body><ul class="aq-request-menu__gets">'+got.map(function(g,j){var w=wS?when[j]:(j?null:r[2]),c=cS?cost[j]:(j?null:r[3]);
+     return '<li><p class="aq-request-menu__gt">'+tcell(cap(g))+'</p>'+(w!=null||c!=null?'<p class="aq-request-menu__chips"><span class="aq-request-menu__sr">'+tx(C[2]||'When')+': </span>'+chip('when',w)+(c!=null?'<span class="aq-request-menu__sr">'+tx(C[3]||'Cost')+': </span>':'')+chip('cost',c)+'</p>':'')+'</li>'}).join('')+'</ul></div></li>'}).join('')+'</ol></div>';
  return sec('<div class="aq-request-menu-wrap" data-theme="light"><div class="aq-request-menu__mast">'+H+'</div>'
   +'<div class="aq-request-menu"><figure class="aq-request-menu__fig" aria-hidden="true">'+figure()+'</figure>'
-  +'<div class="aq-request-menu__body">'+wFold(b,R.length,table,b.fold_noun||'rows')+'</div></div></div>','aq-band--limestone aq-request-menu-sec')};
+  +'<div class="aq-request-menu__body">'+wFold(b,R.length,table,b.fold_noun||'rows')+acc+'</div></div></div>','aq-band--limestone aq-request-menu-sec')};
+/* The phone accordion follows the form: ticking a situation on the page's form opens the same situation here (a row
+   that is already open stays open: PhoneKit's open() toggles an open accordion row shut) */
+if(typeof document!=='undefined')document.addEventListener('change',function(ev){var x=ev.target;if(!x||x.type!=='radio'||!x.checked||!window.AQpk)return;
+ [].forEach.call(document.querySelectorAll('.aq-request-menu__acc'),function(root){if(!AQpk.on(root))return;
+  [].forEach.call(root.querySelectorAll(':scope > [data-pk-item]'),function(it,i){if(it.getAttribute('data-pk-item')===x.value&&!it.classList.contains('is-pk-open'))AQpk.open(root,i)})})});
 })();

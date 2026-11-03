@@ -1,14 +1,46 @@
 /* ---------- MethodBento: methods compared as a bento of drawn tiles; the missing method is a dashed gap ---------- */
-.aq-method-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row dense; gap: var(--space-4); }
-.aq-method-bento__head { grid-column: 1; grid-row: 1; align-self: end; padding: 0 var(--space-6) var(--space-6) 0; }
+/* Pass 12: desktop reads across. Row 1 the heading; row 2 the hot-water temperature scale as a full-width navy band;
+   then three equal method columns (the hot-water one navy, hanging from the band) whose number, name, drawing and
+   three column rows line up (the paper tiles are subgrids; the hot-water tile and its card are display: contents, its
+   parts placed in column 2 over a navy column drawn by the grid's ::before). */
+.aq-method-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: 0;
+  grid-template-rows: auto auto repeat(6, auto); }
+.aq-method-bento__head { grid-column: 1 / -1; grid-row: 1; padding: 0 0 var(--space-8); }
+.aq-method-bento__head .aq-sec-head { margin-bottom: 0; }
 .aq-method-bento__head .aq-h1 { font-size: 48px; line-height: 52px; font-weight: 300; letter-spacing: -0.025em; }
 .aq-method-bento__tiles { display: contents; list-style: none; }
+.aq-method-bento__seg { display: none; }
+.aq-method-bento__card { display: contents; }
 
-.aq-method-bento__tile { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: var(--surface-raised); border: 1px solid var(--line); min-width: 0; }
-.aq-method-bento__tile.is-hot { grid-column: 2 / span 2; grid-row: 1; background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+.aq-method-bento__tile { grid-row: 3 / span 6; display: grid; grid-template-rows: subgrid; row-gap: 0; padding: var(--space-6); background: var(--surface-raised); border: 1px solid var(--line); min-width: 0; }
+.aq-method-bento__tile:not(.is-hot) .aq-method-bento__t, .aq-method-bento__tile:not(.is-hot) .aq-method-bento__fig { margin-top: var(--space-4); }
+.aq-method-bento__tile:not(.is-hot) .aq-method-bento__dl > div + div { padding-top: var(--space-4); }
+.aq-method-bento__tile.is-a { grid-column: 1; } .aq-method-bento__tile.is-b { grid-column: 2; } .aq-method-bento__tile.is-c { grid-column: 3; }
 .aq-method-bento__no { margin: 0; font: 400 14px/20px var(--font-mono); color: var(--ink-subtle); }
 .aq-method-bento__t { margin: 0; font: 300 36px/40px var(--font-sans); letter-spacing: -0.02em; }
 .is-hot .aq-method-bento__no { color: var(--on-navy-muted); }
+/* the hot-water method: its tile dissolves into the grid; the scale is the band, the rest stacks in column 2 */
+.aq-method-bento.has-band::before { content: ""; grid-column: 2; grid-row: 3 / span 6; background: var(--navy); }
+.aq-method-bento__tile.is-hot, .is-hot > .aq-method-bento__card, .is-hot .aq-method-bento__dl { display: contents; }
+.aq-method-bento__tile.is-hot { color: var(--on-navy); }
+.is-hot .aq-method-bento__card > *, .is-hot .aq-method-bento__dl > div { grid-column: 2; padding-inline: var(--space-6); color: var(--on-navy); }
+.is-hot .aq-method-bento__card > .aq-method-bento__no { grid-row: 3; padding-top: calc(var(--space-6) + 1px); color: var(--on-navy-muted); }
+.is-hot .aq-method-bento__card > .aq-method-bento__t { grid-row: 4; margin-top: var(--space-4); }
+.is-hot .aq-method-bento__card > .aq-method-bento__fig { grid-row: 5; margin-top: var(--space-4); box-sizing: border-box; width: auto; margin-inline: var(--space-6); padding: 0; }
+.is-hot .aq-method-bento__dl > div:nth-child(1) { grid-row: 6; padding-top: var(--space-4); border-top: 1px solid color-mix(in srgb, var(--on-navy) 25%, transparent); }
+.is-hot .aq-method-bento__dl > div:nth-child(2) { grid-row: 7; padding-top: var(--space-4); }
+.is-hot .aq-method-bento__dl > div:nth-child(3) { grid-row: 8; padding-block: var(--space-4) calc(var(--space-6) + 1px); }
+/* the hot-water drawing on navy */
+.is-hot .aq-method-bento__ln, .is-hot .aq-method-bento__th { stroke: var(--on-navy-muted); }
+.is-hot .aq-method-bento__fig .aq-method-bento__fill { fill: var(--navy); stroke: var(--on-navy-muted); }
+.is-hot .aq-method-bento__fl, .is-hot .aq-method-bento__ray { stroke: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); }
+/* the probe's readout sits in the band, at the foot of its left end (clear of the marks) */
+.has-band .aq-method-bento__scale { position: relative; }
+.has-band .aq-method-bento__scale > .aq-method-bento__read { position: absolute; left: calc(var(--space-8) + var(--space-8)); bottom: var(--space-6); margin: 0; max-width: 45%; }
+.has-band .is-hot .aq-method-bento__card > .aq-method-bento__scale { grid-column: 1 / -1; grid-row: 2; margin: 0; padding: var(--space-8) var(--space-8) var(--space-4) calc(var(--space-8) + var(--space-8)); background: var(--navy); }
+.has-band .is-hot .aq-method-bento__scale .aq-method-bento__bulb { left: var(--space-8); top: calc(var(--space-8) + var(--space-2) - 1px); }
+.has-band .is-hot .aq-method-bento__scale .aq-method-bento__probe { left: calc(var(--space-8) + var(--space-8)); right: var(--space-8); top: var(--space-8); }
+.has-band .is-hot .aq-method-bento__card > .aq-method-bento__scale { padding-bottom: var(--space-6); }
 
 /* Drawings */
 .aq-method-bento__fig { display: block; width: 100%; height: auto; aspect-ratio: 240 / 110; margin-block: var(--space-2); }
@@ -37,8 +69,9 @@
 .aq-method-bento__mv { font: 400 24px/28px var(--font-mono); color: var(--on-navy); }
 .aq-method-bento__ml { font: 400 13px/18px var(--font-sans); color: var(--on-navy-muted); }
 
-.aq-method-bento__dl { margin: auto 0 0; display: grid; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--line); }
-.is-hot .aq-method-bento__dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); border-top-color: color-mix(in srgb, var(--on-navy) 25%, transparent); }
+/* the column rows: on paper tiles the dl dissolves so its three rows sit in the tile's subgrid rows */
+.aq-method-bento__dl { margin: 0; display: contents; }
+.aq-method-bento__tile:not(.is-hot) .aq-method-bento__dl > div:first-child { padding-top: var(--space-4); border-top: 1px solid var(--line); }
 .aq-method-bento__dl div { display: grid; gap: var(--space-1); align-content: start; }
 .aq-method-bento__dl dt { font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 .aq-method-bento__dl dd { margin: 0; font: 400 15px/23px var(--font-sans); }
@@ -57,23 +90,53 @@
 .aq-method-bento-sec { overflow: hidden; }
 
 @container (max-width: 1100px) {
-  .aq-method-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .aq-method-bento__head { grid-column: 1 / -1; padding-right: 0; }
-  .aq-method-bento__tile.is-hot { grid-column: 1 / -1; grid-row: auto; }
-}
-@container (max-width: 860px) {
-  .aq-method-bento { grid-template-columns: minmax(0, 1fr); }
-  .aq-method-bento__head .aq-h1 { font-size: 34px; line-height: 40px; }
-  .aq-method-bento__tile { padding: var(--space-4); }
   .aq-method-bento__t { font-size: 30px; line-height: 34px; }
-  .is-hot .aq-method-bento__dl { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+}
+@container (max-width: 900px) {
+  /* Phones (pass 12): a 3-segment switch (PhoneKit chips: the method names, 44 px) over one method card at a time, its
+     drawing or the temperature scale on top of its three rows. Without script every card shows, stacked. */
+  .aq-method-bento { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 0; }
+  .aq-method-bento.has-band::before { display: none; }
+  .aq-method-bento__head { padding-bottom: var(--space-5, 20px); }
+  .aq-method-bento__head .aq-h1 { font-size: 34px; line-height: 40px; }
+  .aq-method-bento__tiles { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding: 0; margin: 0; --pk-cols: 3; }
+  .aq-method-bento__tile, .aq-method-bento__tile.is-a, .aq-method-bento__tile.is-b, .aq-method-bento__tile.is-c { grid-column: auto; grid-row: auto; display: block; padding: 0; background: none; border: 0; }
+  .aq-method-bento__tile.is-hot, .is-hot .aq-method-bento__dl { display: block; }
+  .aq-method-bento__card, .is-hot > .aq-method-bento__card { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); background: var(--surface-raised); border: 1px solid var(--line); }
+  .is-hot > .aq-method-bento__card { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+  .is-hot .aq-method-bento__card > *, .is-hot .aq-method-bento__dl > div { padding-inline: 0; }
+  .is-hot .aq-method-bento__card > .aq-method-bento__no, .is-hot .aq-method-bento__card > .aq-method-bento__t, .is-hot .aq-method-bento__dl > div:nth-child(n) { grid-row: auto; grid-column: auto; padding: 0; margin: 0; border: 0; }
+  .has-band .is-hot .aq-method-bento__card > .aq-method-bento__scale { order: -1; margin: 0 0 var(--space-2); padding: 0 0 0 var(--space-8); background: none; }
+  .has-band .is-hot .aq-method-bento__scale .aq-method-bento__bulb { left: 0; top: calc(var(--space-2) - 1px); }
+  .has-band .is-hot .aq-method-bento__scale .aq-method-bento__probe { left: var(--space-8); right: 0; top: 0; }
+  .has-band .aq-method-bento__scale > .aq-method-bento__read { position: static; max-width: none; margin: var(--space-2) 0 0; }
+  .is-hot .aq-method-bento__card > .aq-method-bento__fig { display: none; }
+  .aq-method-bento__tile:not(.is-hot) .aq-method-bento__t, .aq-method-bento__tile:not(.is-hot) .aq-method-bento__fig { margin-top: 0; }
+  .aq-method-bento__tile:not(.is-hot) .aq-method-bento__dl > div + div { padding-top: 0; }
+  .aq-method-bento__card > .aq-method-bento__fig { order: -1; margin: 0 0 var(--space-1); }
+  .aq-method-bento__dl { display: grid; gap: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--line); }
+  .is-hot .aq-method-bento__dl { display: grid; border-top-color: color-mix(in srgb, var(--on-navy) 25%, transparent); }
+  .aq-method-bento__tile:not(.is-hot) .aq-method-bento__dl > div:first-child { padding-top: 0; border-top: 0; }
+  .aq-method-bento__t { font-size: 28px; line-height: 32px; }
   .aq-method-bento__marks { height: auto; display: flex; flex-direction: column; gap: var(--space-3); }
   .aq-method-bento__mark, .aq-method-bento__mark.is-left { position: static; max-width: none; flex-direction: row; align-items: baseline; gap: var(--space-3);
     padding: 0 0 0 var(--space-3); border: 0; border-left: 2px solid var(--limestone); text-align: left; }
   .aq-method-bento__mark:last-child { border-left-style: dotted; }
   .aq-method-bento__mv { font-size: 18px; line-height: 22px; white-space: nowrap; }
-  .aq-method-bento__ml { font-size: 13px; line-height: 18px; }
+  .aq-method-bento__ml { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
   .aq-method-bento__ghost { font-size: 44px; }
+  .aq-method-bento__gap { grid-column: 1 / -1; order: 2; padding: var(--space-4); }
+  /* the switch: three equal segments joined in one bar */
+  .aq-method-bento-sec .aq-method-bento__tiles[data-pk-on] { gap: 0; }
+  .aq-method-bento-sec .aq-method-bento__tiles[data-pk-on] .aq-method-bento__seg {
+    display: flex; justify-content: center; text-align: center; min-height: 44px; margin: 0; border-radius: 0; color: var(--ink);
+    border: 1px solid var(--line-strong); font: 500 14px/18px var(--font-sans); padding: var(--space-2);
+  }
+  .aq-method-bento-sec .aq-method-bento__tiles[data-pk-on] .aq-method-bento__tile + .aq-method-bento__tile .aq-method-bento__seg { border-left: 0; }
+  .aq-method-bento-sec .aq-method-bento__tiles[data-pk-on] .aq-method-bento__seg[aria-expanded="true"] { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+  /* the active segment also carries a flow bar, so the state reads in dark too (WCAG 1.4.11) */
+  .aq-method-bento-sec .aq-method-bento__tiles[data-pk-on] .aq-method-bento__seg[aria-expanded="true"] { box-shadow: inset 0 -3px 0 var(--flow); }
+  .aq-method-bento-sec .aq-method-bento__tiles[data-pk-on] [data-pk-body] { margin-top: var(--space-3); }
 }
 
 /* The probe (added by motion.js): a needle the visitor drags along the rail, snapping to the marks; a readout below */
@@ -87,6 +150,6 @@
 .aq-method-bento__read { margin: calc(-1 * var(--space-2)) 0 var(--space-4) var(--space-8); display: flex; align-items: baseline; gap: var(--space-3); min-height: var(--space-6); }
 .aq-method-bento__rv { font: 400 16px/24px var(--font-mono); color: var(--limestone); font-variant-numeric: tabular-nums; min-width: 6ch; }
 .aq-method-bento__rl { font: 400 14px/20px var(--font-sans); color: var(--on-navy); }
-@container (max-width: 860px) {
+@container (max-width: 900px) {
   .aq-method-bento__read { margin-left: 0; }
 }

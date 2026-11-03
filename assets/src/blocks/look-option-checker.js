@@ -6,7 +6,9 @@
    the blueprint tile. Concept: research/pass9b/concepts/sys-monitoring.4.png.
    Fields: h, intro (optional; printed under the title in the top cell through wSecHead, as option-taps does), items
    [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
-   option sets; none: no part lights). Phones: the field shortens to two rows over the cells, which stack. */
+   option sets; none: no part lights). Phones: the field shortens to a full-width 4 x 2 band (the blueprint tile
+   centred, a navy and limestone square at each side, set as a true checker through data-r / data-c), then the
+   cells stack with a 44 px numeral (pass 12). */
 var OC_PAT=['n','l','n','s','s','b','b','n','l','b','b','l','n','s','n','l'];
 function ocPlate(){
  var p=function(k,inner){return '<g class="aq-option-checker__part" data-part="'+k+'">'+inner+'</g>'};
@@ -23,7 +25,7 @@ LOOKS['option-checker']=function(b,H){
  var I=b.items||[];if(!I.length)return BLOCKS.options(b,H);
  var tiles=OC_PAT.map(function(k,j){var r=Math.floor(j/4)+1,c=j%4+1;if(k==='b'&&(j!==5))return '';
   return k==='b'?'<div class="aq-option-checker__tile aq-option-checker__tile--b" data-r="2" style="grid-row:2/span 2;grid-column:2/span 2">'+ocPlate()+'</div>'
-   :'<div class="aq-option-checker__tile aq-option-checker__tile--'+k+'" data-r="'+r+'" style="grid-row:'+r+';grid-column:'+c+'"></div>'}).join('');
+   :'<div class="aq-option-checker__tile aq-option-checker__tile--'+k+'" data-r="'+r+'" data-c="'+c+'" style="grid-row:'+r+';grid-column:'+c+'"></div>'}).join('');
  var top=I.length>3?2:I.length,cells=I.map(function(it,i){
   var t=it.link&&wp(it.link)?wlink(it.link,it.t,it.intent).replace('</a>',' <span class="aq-option-checker__arrow" aria-hidden="true">&rarr;</span></a>'):tx(it.t);
   return '<li class="aq-option-checker__cell'+(i<top?' aq-option-checker__cell--wide':'')+'"'+(it.part?' data-part="'+e(it.part)+'"':'')+'>'

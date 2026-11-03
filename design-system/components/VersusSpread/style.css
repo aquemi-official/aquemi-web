@@ -96,3 +96,65 @@
   .aq-fold:not(.is-open) .aq-versus-spread__row.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-versus-spread__table) > .aq-fold__btn { display: flex; }
 }
+
+/* pass 12 phone (audit S7, svc-fat-sat.0): the drawing beside a FAT / SAT switch; the switch lights its boundary (FAT
+   the test bay, SAT the site) and shows only that side's cell in every row and in the conclusion, so the whole table
+   reads in one column with nothing folded. The buttons wear the boundaries' strokes (dashed for the test bay, dotted
+   for the site). Desktop never shows the switch.
+   Verify fix V5: the drawing and the switch are a PhoneKit sticky strip (data-pk-fig, 200 px) held over the rows, so
+   the switch is in reach down to the conclusion and the row on the reading line lights its parts; the root is a block
+   on phones so the strip's parent spans the rows. The side label is said once, by the switch (each cell keeps it for
+   screen readers; the conclusion keeps it on screen). Without script the figure stands static at 160 px.
+   600-860 px (tablets): no switch; both sides side by side under a two-column head that sticks under the strip. */
+.aq-versus-spread__mode { display: none; }
+@container (max-width: 860px) {
+  .aq-versus-spread { display: block; }
+  .aq-versus-spread__fig { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: var(--space-5, 20px); align-items: start; padding-top: var(--space-6); }
+  .aq-versus-spread__art { grid-row: 1 / span 2; width: 160px; }
+  .aq-versus-spread__tag { display: none; }
+  .aq-versus-spread__mode { display: flex; flex-direction: column; gap: var(--space-3); grid-column: 2; grid-row: 1; }
+  .aq-versus-spread__mb {
+    min-height: 48px; padding: var(--space-2) var(--space-3); border: 1.5px dashed var(--line-strong); background: none; color: var(--ink-muted);
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent;
+  }
+  .aq-versus-spread__mb--sat { border-style: dotted; border-width: 2px; }
+  .aq-versus-spread__mb[aria-pressed="true"] { border-color: var(--flow); background: var(--flow-tint); color: var(--ink); }
+  .aq-versus-spread__mb:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .aq-versus-spread__now { display: flex; flex-direction: column; gap: var(--space-1); grid-column: 2; grid-row: 2; min-height: 0; margin-top: var(--space-4); }
+  .aq-versus-spread__now-t { font-size: 15px; line-height: 20px; }
+  .aq-fold:not(.is-open) .aq-versus-spread__row.aq-fold-x { display: grid; }
+  .aq-fold:has(> .aq-versus-spread__table) > .aq-fold__btn { display: none; }
+  .aq-versus-spread__row { row-gap: var(--space-2); padding: var(--space-3) 0; }
+  .aq-versus-spread__c { font-size: 15px; }
+  .aq-versus-spread__row.is-on { background: var(--flow-tint); }
+  /* S12: the side is named once, by the switch (or the tablet head); kept per cell for screen readers */
+  .aq-versus-spread__row .aq-versus-spread__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* the strip (PhoneKit on): drawing at the strip's height, the switch beside it, the position under the switch */
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__fig { padding: var(--space-3) 0; margin-top: var(--space-6); align-content: start; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__art { width: auto; height: calc(var(--pk-h, 200px) - 2 * var(--space-3) - 1px); aspect-ratio: 2 / 3; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__svg { width: 100%; height: 100%; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__now { margin-top: var(--space-3); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__body { padding-top: var(--space-2); }
+}
+@container (max-width: 599px) {
+  .aq-versus-spread[data-side="fat"] .aq-versus-spread__bound--fat { stroke: var(--flow); stroke-width: 2; fill: var(--flow-tint); fill-opacity: 0.6; }
+  .aq-versus-spread[data-side="sat"] .aq-versus-spread__bound--sat { stroke: var(--flow); stroke-width: 2.5; fill: var(--flow-tint); fill-opacity: 0.35; }
+  .aq-versus-spread[data-side="fat"] .aq-versus-spread__c--sat, .aq-versus-spread[data-side="sat"] .aq-versus-spread__c--fat { display: none; }
+  /* in the strip the row name would not fit beside the drawing; the row itself is lit just under it */
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__now-t { display: none; }
+}
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-versus-spread__mode { display: none; }
+  .aq-versus-spread__now { grid-row: 1; margin-top: 0; padding-top: 0; border-top: 0; }
+  .aq-versus-spread__hrow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); position: sticky; z-index: 3;
+    top: calc(var(--pk-top, 0px) + var(--pk-h, 0px) - var(--pk-lift, 0px)); padding-top: var(--space-3); background: var(--surface); }
+  .aq-versus-spread__h:first-child { display: none; }
+  .aq-versus-spread__h:nth-child(2) { padding-left: var(--space-8); }
+  .aq-versus-spread__row, .aq-versus-spread__end { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); }
+  .aq-versus-spread__test { grid-column: 1 / -1; }
+  .aq-versus-spread__c--sat { padding-left: 0; }
+  .aq-versus-spread__c--sat.is-na { margin-left: 0; }
+  .aq-versus-spread__row:first-child { border-top: 0; }
+  .aq-versus-spread__count { font-size: 14px; }
+  .aq-versus-spread__now-t { font-size: 19px; line-height: 26px; }
+}

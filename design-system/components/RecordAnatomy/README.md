@@ -5,7 +5,7 @@ RecordAnatomy explains what a published record carries as a drawing sheet: the t
 - Drawings (`fig`): `figure` an empty bracketed value and a bar under a dashed limit; `method` a loop with three sampling points and sample ticks over a period; `report` a numbered document with a results table; `approval` two signature lines over faint impressions (`__imp`, `__sig`) and a stamp. SVG `<text>` only for the brackets and "No.", aria-hidden.
 - Fields: `h`, `intro`, `points [{t, d, fig}]` (up to four; `fig` defaults by order).
 - Tokens: `aq-band--limestone` section; the sheet keeps light tokens in both themes; `navy` lines and frame, `flow` only for signatures, sampling points, the tick and the lit window; title Geist Light 64 `ink`; title block mono `navy` field names and Geist 16 `ink` text.
-- Phones: the sheet keeps its frame and number band; the title, then the title block with each row's own drawing above its text.
+- Phones (≤ 860 px, pass 12, S14): no frame, zone band or A–C gutter; the title, then the title block as a 2 × 2 grid of cells, each with its own drawing (`__mini`) on top, the number and mono field name on one line, and its line at 15 px under them. projects 1,419 → about 800 px. Desktop unchanged.
 
 ## Motion
 

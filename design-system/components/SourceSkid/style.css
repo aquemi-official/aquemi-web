@@ -47,21 +47,35 @@
 .aq-source-skid__ct { font: 400 16px/22px var(--font-sans); color: var(--ink); }
 .aq-source-skid__by { font: 400 13px/18px var(--font-sans); color: var(--ink-muted); }
 .aq-source-skid .aq-source-skid__by { white-space: normal; }
+.aq-source-skid .aq-source-skid__dots { display: none; }
 
 @container (max-width: 1100px) {
   .aq-source-skid { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
   .aq-source-skid__r { padding-top: 0; }
 }
-/* Phones: cards, then the drawing with numbered pins (leaders off), callouts listed under it */
+/* Phones (pass 12): the people as a scroll-snap row (82 % cards, the next one peeking, count dots under it), then the
+   intro, the skid at full bleed with 28 px numbered chips (a tap scrolls to the legend row), the callouts under it */
 @container (max-width: 860px) {
-  .aq-source-skid__card { padding: var(--space-3) var(--space-4) var(--space-4); }
+  .aq-source-skid__l { gap: var(--space-6); }
+  .aq-source-skid__cards { grid-auto-flow: column; grid-auto-columns: 82%; gap: var(--space-3); overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; margin-inline: calc(var(--space-4) * -1); padding: 0 var(--space-4) var(--space-1); scroll-padding-inline: var(--space-4); scrollbar-width: none; }
+  .aq-source-skid__cards::-webkit-scrollbar { display: none; }
+  .aq-source-skid__card { scroll-snap-align: start; padding: var(--space-3) var(--space-4) var(--space-4); }
+  .aq-source-skid .aq-source-skid__dots { display: flex; justify-content: center; gap: var(--space-2); margin: calc(var(--space-2) * -1) 0 0; }
+  .aq-source-skid__dots span { width: var(--space-2); height: var(--space-2); border-radius: 50%; border: 1px solid var(--ink-subtle); transition: background-color 200ms; }
+  .aq-source-skid__dots span.is-on { background: var(--ink); border-color: var(--ink); }
   .aq-source-skid .aq-source-skid__name { font-size: 19px; line-height: 26px; }
+  .aq-source-skid .aq-source-skid__d { font-size: 15px; line-height: 23px; }
   .aq-source-skid__lead { display: none; }
-  .aq-source-skid__pin { display: grid; }
+  .aq-source-skid__fig { margin-inline: calc(var(--space-4) * -1); }
+  .aq-source-skid__pin { display: grid; min-width: var(--space-8); height: var(--space-8); font-size: 12px; cursor: pointer; }
+  /* the chip is a tap target (it presses its legend row): a 6 px invisible margin makes it 44 px (S6) */
+  .aq-source-skid__pin::after { content: ""; position: absolute; inset: calc(var(--space-2) * -0.75); }
   .aq-source-skid__view { overflow: hidden; }
   .aq-source-skid__plan { width: var(--pw, 100%); }
-  .aq-source-skid__calls { position: static; display: grid; gap: var(--space-1); margin-top: var(--space-4); border-top: 1px solid var(--line); }
+  .aq-source-skid__calls { position: static; display: grid; gap: var(--space-1); margin: var(--space-4) var(--space-4) 0; border-top: 1px solid var(--line); }
   .aq-source-skid__call { position: static; transform: none; border-bottom: 1px solid var(--line); }
-  .aq-source-skid__btn { grid-template-columns: var(--space-8) minmax(0, 1fr); padding: var(--space-2); }
+  .aq-source-skid__btn { grid-template-columns: var(--space-8) minmax(0, 1fr); padding: var(--space-2); scroll-margin-block: var(--space-24); }
   .aq-source-skid__cn { grid-row: 1 / span 2; padding-top: var(--space-1); }
+  .aq-source-skid__by { font-size: 14px; line-height: 20px; }
 }

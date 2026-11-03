@@ -17,7 +17,7 @@
 .aq-cost-skid__pin.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
 .aq-cost-skid__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-.aq-cost-skid .aq-fold { margin-top: var(--space-8); }
+.aq-cost-skid__table { margin-top: var(--space-8); }
 .aq-cost-skid__table { width: 100%; border-collapse: collapse; }
 .aq-cost-skid__table thead th {
   padding: 0 var(--space-4) var(--space-3) 0; text-align: left; font: 400 12px/17px var(--font-mono); color: var(--ink-muted);
@@ -34,19 +34,32 @@
 .aq-cost-skid__k { display: none; }
 .aq-cost-skid__row.is-on > * { background: var(--flow-tint); }
 .aq-cost-skid__row.is-on .aq-cost-skid__n { color: var(--flow); }
-.aq-fold:not(.is-open) .aq-cost-skid__row.aq-fold-x { display: table-row; }
-.aq-fold:has(> .aq-cost-skid__table) > .aq-fold__btn { display: none; }
+
+/* the phone's third-column button (desktop shows the column itself) */
+.aq-cost-skid__why { display: none; }
 
 @container (max-width: 860px) {
   .aq-cost-skid__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
   .aq-cost-skid .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
-  .aq-cost-skid__pin { width: var(--space-6); height: var(--space-6); font-size: 11px; }
+  .aq-cost-skid__pin { width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-cost-skid__table { margin-top: var(--space-6); }
   .aq-cost-skid__table, .aq-cost-skid__table tbody { display: block; }
   .aq-cost-skid__table thead { display: none; }
-  .aq-cost-skid__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); padding-block: var(--space-3); border-bottom: 1px solid var(--line); }
-  .aq-fold:not(.is-open) .aq-cost-skid__row.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-cost-skid__table) > .aq-fold__btn { display: flex; }
-  .aq-cost-skid__row > * { display: block; width: auto; padding: 0 0 var(--space-1); border: 0; }
-  .aq-cost-skid__row > .aq-cost-skid__n { grid-row: span 3; padding-left: 0; }
+  /* pass 12: two compact lines per row (number + item; value + the third column's 44 px button), all rows open */
+  .aq-cost-skid__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr) auto; column-gap: var(--space-2); padding-block: var(--space-3) var(--space-2); border-bottom: 1px solid var(--line); }
+  .aq-cost-skid__row > * { display: block; width: auto; padding: 0; border: 0; }
+  .aq-cost-skid__row > .aq-cost-skid__n { grid-row: 1; grid-column: 1; padding-left: 0; }
+  .aq-cost-skid__row > .aq-cost-skid__p { grid-row: 1; grid-column: 2 / -1; font-size: 16px; line-height: 22px; }
+  .aq-cost-skid__row > .aq-cost-skid__v { grid-row: 2; grid-column: 2; align-self: center; padding-block: var(--space-1); font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+  .aq-cost-skid__row > .aq-cost-skid__why { display: block; grid-row: 2; grid-column: 3; align-self: start; }
+  .aq-cost-skid__row > .aq-cost-skid__m { display: none; grid-row: 3; grid-column: 2 / -1; padding: 0 0 var(--space-2); font-size: 15px; line-height: 22px; }
+  .aq-cost-skid__row.is-open > .aq-cost-skid__m { display: block; }
+  .aq-cost-skid__v .aq-cost-skid__k { display: none; }
   .aq-cost-skid__k { display: block; font: 400 12px/17px var(--font-mono); color: var(--ink-muted); }
+  .aq-cost-skid__wb { display: inline-flex; align-items: center; min-height: 44px; margin: 0 calc(-1 * var(--space-2)) 0 0; padding: 0 0 0 var(--space-2); border: 0; background: none; color: var(--flow); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; cursor: pointer; white-space: nowrap; }
+  .aq-cost-skid__wb .aq-phone-kit__chev { width: 32px; height: 44px; margin-left: 0; }
+  .aq-cost-skid__wb:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  /* a row title that links: a 44 px tall hit box over the line, no visual change */
+  .aq-cost-skid__p a { position: relative; }
+  .aq-cost-skid__p a::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
 }

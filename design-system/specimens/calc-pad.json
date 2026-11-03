@@ -1,0 +1,56 @@
+{
+ "look": "calc-pad",
+ "component": "CalcPad",
+ "type": "table",
+ "fields": "as the grades table: h, intro, cols [class, minimum water, what sets it], rows [[class, minimum, sets]]. No new fields.",
+ "best_for": "CalcPad writes a grade table out as working on a squared calculation pad: one derivation line per product class, the class, an arrow, what sets it, an equals sign, and the minimum water boxed as the answer.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-personal-care",
+   "slot": 1,
+   "h": "Which water each product class needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "fe035950dc",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "nav": "Water by product",
+    "anchor": "grade",
+    "h": "Which water each product class needs",
+    "intro": "Each product's legal class sets the minimum, in each market you sell to. One plant can make all four. Your specification may go higher, never lower.",
+    "cols": [
+     "Your product",
+     "Minimum water",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Cosmetic only: creams, lotions, shampoos, makeup",
+      "Your written specification, or your brand client's",
+      "Health Canada encourages good manufacturing practice (GMP) and endorses ISO 22716"
+     ],
+     [
+      "Natural health product lines",
+      "Potable water at minimum; PW where your specification or a monograph names it",
+      "Health Canada GUI-0158"
+     ],
+     [
+      "Sold in the US as OTC drug-cosmetics: sunscreens, antiperspirants, fluoride toothpaste, hand sanitizers",
+      "Purified Water (PW), under drug GMP",
+      "US drug GMP, 21 CFR 210 and 211"
+     ],
+     [
+      "Drugs with a Canadian drug identification number (DIN)",
+      "PW, under drug GMP",
+      "Health Canada GUI-0001"
+     ]
+    ],
+    "look": "calc-pad"
+   }
+  }
+ ]
+}

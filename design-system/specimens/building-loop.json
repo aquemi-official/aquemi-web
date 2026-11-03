@@ -1,0 +1,64 @@
+{
+ "look": "building-loop",
+ "component": "BuildingLoop",
+ "type": "grid",
+ "fields": "(a grid block, as: \"route\"): h, intro, items [{t, d, draw}]. draw: the fixture at the stop (washer, analyzer, bench, humidifier, hood); without it a bench tap. Up to six stops, placed in flow order on fixed positions (top floor left and right, middle floor right and left, ground floor left and right).",
+ "best_for": "BuildingLoop sets the places a central plant feeds in one building as a building section on a navy band: one pale loop leaves the plant on the ground floor, threads three floors to numbered stops, and returns under the slab; each stop is named in the margin beside it, with a numbered caption per stop under the band.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-hospital-lab",
+   "slot": 3,
+   "h": "Where water goes in a laboratory building",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "a441e9a498",
+   "block": {
+    "type": "grid",
+    "as": "route",
+    "nav": "Laboratories",
+    "anchor": "labs",
+    "h": "Where water goes in a laboratory building",
+    "intro": "University, hospital, quality control, biotech and battery research buildings: one central plant feeds the benches.",
+    "items": [
+     {
+      "t": "Glassware washers and autoclaves",
+      "draw": "washer",
+      "d": "They draw in batches, so storage is sized to carry the peak.",
+      "spot": "storage-tank",
+      "part": "tank"
+     },
+     {
+      "t": "Analyzer feed",
+      "draw": "analyzer",
+      "d": "To the analyzer maker's specification, which governs.",
+      "spot": "toc",
+      "part": "toc"
+     },
+     {
+      "t": "Reagent and buffer preparation",
+      "draw": "bench",
+      "d": "ASTM D1193-24 Type II or III at bench taps, or clinical laboratory reagent water.",
+      "spot": "valve",
+      "part": "loop"
+     },
+     {
+      "t": "Humidifiers",
+      "draw": "humidifier",
+      "d": "Fed from the loop, to the humidifier maker's specification.",
+      "spot": "loop"
+     },
+     {
+      "t": "Cell culture and molecular work",
+      "draw": "hood",
+      "d": "Type I water from a point-of-use polisher at the bench, from its own maker. The loop feeds it to that maker's specification.",
+      "spot": "loop"
+     }
+    ],
+    "look": "building-loop"
+   }
+  }
+ ]
+}

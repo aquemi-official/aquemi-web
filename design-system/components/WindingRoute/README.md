@@ -5,7 +5,7 @@ WindingRoute draws a treatment train as one winding pipe across a navy band, eac
 - Geometry: stop i sits at the centre of column i, 25 % (high) or 75 % (low) down the band (`--band`: `space-32` + `space-24`); the glyph sits on the far side of the curve.
 - Fields: `h`, `stages` (or `items`) `[{t, d, spot | icon, label, fx}]`. `label`: the short stop name in the mono code (default the first word of `t`). `fx: "gas"`: a few bubbles rise over that stop (CO₂ removal). `optional: true` (or a string, the word to show): a stage fitted only on some systems; its stop is drawn dashed (the node ring, and the phone bend) and its code reads "02 / Heat · Where fitted" (DR-018 rule 2: optional equipment is never drawn as standard); the stop gets `is-optional`.
 - Tokens: `navy` ground, `limestone` pipe, `flow` water and node cores, `on-navy` / `on-navy-muted` text. Hover a column: its node grows and its glyph turns `on-navy`.
-- Phones: the pipe turns vertical and winds down the left edge (one bend per stage, each row's `__seg`), the text beside it; glyphs hide.
+- Phones: the pipe turns vertical and winds down the left edge (one bend per stage, each row's `__seg`), the text beside it; the glyphs leave the pipe and stand at 24 px before each stop's code (`span.__cg`, pass 12).
 - Up to eight stages. For a branched or interactive train use ProcessDiagram.
 
 ## Motion

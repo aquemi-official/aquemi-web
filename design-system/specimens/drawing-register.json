@@ -1,0 +1,68 @@
+{
+ "look": "drawing-register",
+ "component": "DrawingRegister",
+ "type": "grid",
+ "fields": "(a grid block, as: \"route\"): h, nav, items [{t, d, draw, link}]. draw: the drawing kind (washer, ultrasonic, sink, endoscope, cart, sterilizer); without it the kind is read from the name. The sheet code is the kind's initials (WD, UC, MS, ER, CW, SF), a drawing label only. Every item's name and line are always in the page (the detail is a visual copy, aria-hidden).",
+ "best_for": "DrawingRegister sets a short list of places water goes as a drawing register on a limestone sheet: a row of framed outline drawings with mono sheet codes, one steel-blue viewfinder over the selected drawing, and under the row that item's drawing at large with its notes and a title block.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-hospital-lab",
+   "slot": 2,
+   "h": "Where water goes in reprocessing",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "610e405aff",
+   "block": {
+    "type": "grid",
+    "as": "route",
+    "nav": "Reprocessing",
+    "anchor": "reprocessing",
+    "h": "Where water goes in reprocessing",
+    "items": [
+     {
+      "t": "Washer-disinfector final rinse",
+      "draw": "washer",
+      "d": "The last water on every instrument before drying. It needs critical water.",
+      "spot": "valve",
+      "part": "outlet"
+     },
+     {
+      "t": "Ultrasonic cleaners",
+      "draw": "ultrasonic",
+      "d": "Filled from the loop, at the grade your program sets for each step.",
+      "spot": "tank"
+     },
+     {
+      "t": "Manual sinks and lumen flushing",
+      "draw": "sink",
+      "d": "Rinsing and flushing channels by hand, from taps on the loop.",
+      "spot": "valve"
+     },
+     {
+      "t": "Endoscope reprocessors",
+      "draw": "endoscope",
+      "d": "They filter their own feed further; the maker's instructions set what goes in.",
+      "spot": "valve",
+      "part": "filter"
+     },
+     {
+      "t": "Cart washers",
+      "draw": "cart",
+      "d": "Utility water is enough here, not critical water.",
+      "spot": "loop"
+     },
+     {
+      "t": "Sterilizer feed",
+      "draw": "sterilizer",
+      "d": "Feed water to the sterilizer maker's specification. We supply the water, not the steam.",
+      "spot": "gauge"
+     }
+    ],
+    "look": "drawing-register"
+   }
+  }
+ ]
+}

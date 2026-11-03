@@ -5,7 +5,10 @@ LoopDock shows a loop's options where they fit on the loop: one isometric storag
 - Fields: `h`, `intro`, `items [{t, d, spot | icon, part, link}]`, `spot` (base glyph), `base` (default "Base skid"), `fold`, `fold_noun`. `part`: an array of drawing ids the option adds: `uv`, `mod`, `cool` (default by position: `uv`; `mod` and `uv`; `cool`). The marker and leader sit on the first id. Order the items left to right along the loop (UV, module, point-of-use cooler) so the leaders never cross.
 - Drawing: IsoKit parts only (tank, skid, pump, hx, analyzer, uv, two outlets, a small hx as the point-of-use cooler), pipes and the overhead return. Leaders drop straight down from the part, then slant to the top-left of their caption column.
 - Pointing at or focusing a caption lights its parts (`is-lit`), its marker and its leader. Fold: phones only.
-- Phones: the band full bleed with its markers (no leaders), the base label under it, captions stacked.
+- Phones: the band full bleed with its markers (no leaders), the base label under the plate, captions stacked. Pass 12
+  (S9): the plate crops to the drawing (`CROP` in the renderer: the loop, skid and every option's marker; `__zoom`
+  sized by `--cw` / `--ch` and offset by `--cl` / `--ct`), so the loop runs about twice the size (about 355 px wide at
+  375); markers 14 px on 28 px tags, base label 13 px. Sys-storage at 375 px: 952 -> 1,068 px.
 
 ## Motion
 

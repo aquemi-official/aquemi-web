@@ -41,22 +41,42 @@
 .aq-colophon .aq-fold__btn { padding-left: calc(var(--cph-w, var(--space-32)) + var(--space-6)); color: var(--on-navy); border-bottom: 0; }
 .aq-colophon .aq-fold__btn:hover { color: var(--on-navy-muted); }
 .aq-colophon > .aq-small { margin-top: var(--space-4); padding-left: calc(var(--cph-w, var(--space-32)) + var(--space-6)); }
+/* the lead starts in the fact column, on the navy (pass 12: it ran over the strip, light on limestone) */
+.aq-colophon__mast .aq-lead { padding-left: calc(var(--cph-w, var(--space-32)) + var(--space-6)); max-width: calc(var(--cph-w, var(--space-32)) + var(--space-6) + 60ch); color: var(--on-navy-muted); }
+/* a phone-only fold (is-phonefold): above the phone width every row shows and the button hides */
+.aq-colophon.is-phonefold .aq-fold:not(.is-open) .aq-colophon__row.aq-fold-x { display: grid; }
+.aq-colophon.is-phonefold .aq-fold > .aq-fold__btn { display: none; }
 
 @container (max-width: 1100px) {
   .aq-colophon { --cph-w: calc(var(--space-24) * 2); }
   .aq-colophon__va { font-size: 18px; line-height: 26px; }
 }
-/* Phones: the strip narrows to the number column; item, fact and evidence stack on the navy beside it */
+/* Phones (pass 12): the strip becomes a 6 px limestone rail at the page edge and the title drops the colour split
+   (one cream headline on the full navy band); each row puts "01 / ITEM" on its first line as a mono label, the fact
+   full width under it and the evidence at 15 px; a link is a full-width 48 px row. Long ledgers fold after 4. */
 @container (max-width: 860px) {
-  .aq-colophon { --cph-w: var(--space-16); --cph-fs: clamp(56px, 19cqi, 96px); }
-  .aq-colophon__mast { margin-bottom: var(--space-12); }
+  .aq-colophon { --cph-w: 0px; --cph-fs: clamp(48px, 14cqi, 72px); }
+  .aq-colophon__strip { top: 0; bottom: calc(var(--space-12) * -1); left: calc(var(--space-4) * -1); width: var(--aq-sheet-rail, 6px); transform: none; }
+  .aq-colophon__ghost { display: none; }
+  .aq-colophon-sec .aq-colophon__mast h2 { max-width: none; color: var(--limestone); }
+  .aq-colophon__mast { margin-bottom: var(--space-8); }
+  .aq-colophon__mast .aq-lead { margin-top: var(--space-4); padding-left: 0; font-size: 16px; line-height: 25px; }
   .aq-colophon__head { display: none; }
-  .aq-colophon__row { grid-template-columns: var(--cph-w, var(--space-16)) minmax(0, 1fr); }
-  .aq-colophon__p { display: contents; }
-  .aq-colophon__n { grid-column: 1; grid-row: 1 / span 3; padding-top: var(--space-4); border-bottom: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); }
-  .aq-colophon__pt { grid-column: 2; padding: var(--space-4) var(--space-4) 0; color: var(--on-navy-muted); }
-  .aq-colophon__v { grid-column: 2; padding: var(--space-2) var(--space-4) 0; border-bottom: 0; }
-  .aq-colophon__m { grid-column: 2; padding: var(--space-2) var(--space-4) var(--space-4); }
-  .aq-colophon__row.is-hl .aq-colophon__va { font-size: 20px; line-height: 28px; }
-  .aq-colophon .aq-fold__btn, .aq-colophon > .aq-small { padding-left: calc(var(--cph-w, var(--space-16)) + var(--space-4)); }
+  .aq-colophon__rows { border-top: 1px solid color-mix(in srgb, var(--on-navy) 35%, transparent); }
+  .aq-colophon__row { display: block; padding: var(--space-4) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 18%, transparent); }
+  .aq-colophon__row > * { padding: 0; border-bottom: 0 !important; }
+  .aq-colophon.is-phonefold .aq-fold:not(.is-open) .aq-colophon__row.aq-fold-x { display: none; }
+  .aq-colophon.is-phonefold .aq-fold > .aq-fold__btn { display: flex; }
+  .aq-colophon__p { display: flex; gap: var(--space-2); align-items: baseline; margin-bottom: var(--space-2); }
+  .aq-colophon__n { color: var(--on-navy-muted); font-size: 12px; }
+  .aq-colophon__pt { font-size: 12px; line-height: 18px; color: var(--limestone); }
+  .aq-colophon__p .aq-ph { background: color-mix(in srgb, var(--limestone) 22%, transparent); color: var(--on-navy); }
+  .aq-colophon__va, .aq-colophon__row.is-hl .aq-colophon__va { font-size: 19px; line-height: 27px; }
+  .aq-colophon__vz { font-size: 15px; line-height: 23px; }
+  .aq-colophon__row:has(.aq-colophon__go) { padding-bottom: 0; }
+  .aq-colophon__row .aq-colophon__m { margin-top: var(--space-3); gap: var(--space-2); align-items: stretch; font-size: 15px; line-height: 23px; }
+  .aq-colophon__go { display: flex; justify-content: space-between; min-height: var(--space-12); padding-block: var(--space-2); font-size: 16px; box-shadow: none;
+    border-top: 1px solid color-mix(in srgb, var(--on-navy) 18%, transparent); }
+  .aq-colophon__row:hover .aq-colophon__v, .aq-colophon__row:hover .aq-colophon__m, .aq-colophon__row:hover .aq-colophon__p { background: none; }
+  .aq-colophon .aq-fold__btn, .aq-colophon > .aq-small { padding-left: 0; }
 }

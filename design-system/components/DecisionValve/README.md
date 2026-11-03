@@ -4,7 +4,12 @@ DecisionValve draws a router table as a multiport valve, a navy object on the pa
 - Markup: `<div class="aq-decision-valve">` (grid: supplies, valve, cards; route rows of equal height) → `p.__colh` column heads (`cols[0]`, `cols[1]`), `div.__valve` (`svg.__lines` stretched over the rows: `__in` and `__out` per route; `svg.__dial`: body, position plate with `__pos` marks and `__posn` numbers, bosses, ticks, `g.__lever` turned by `--a`), then per route `button.__src` (`aria-pressed`, `aria-controls` its card; `--r` its grid row) and `article.__card` (`__cardno` "Position 01", aria-hidden; `h3.__step`; `dl.__dl` the remaining columns under their own labels).
 - Fields: as Router: `cols`, `rows` (cells strings or `{t, link, intent}`). No new fields. The first route is chosen on load; a click on a supply or a card chooses it (the renderer's delegated listener); links inside cards stay links.
 - Tokens (pass 9b: light ground, after concept `research/pass9b/concepts/sys-pretreatment.3.png`, a light decision sheet): the page's paper ground, the valve itself a `navy` object with a `limestone` lever; lines `line-strong`; the chosen supply filled `navy` with `on-navy` text, its lines `flow`, the chosen card outlined `flow` with a flow edge. Supply buttons are at least 64 px tall with a 2 px `focus` ring. The heading is display scale (Geist Light 56 px).
-- Phones: the valve heads the block (200 px), then each supply directly over its card on a short pipe; the stretched lines and column heads drop.
+- Phones: each supply directly over its card on a short pipe; the stretched lines and column heads drop. Pass 12
+  (PhoneKit sticky figure: `data-pk-sticky data-pk-h="120"`, the valve `data-pk-fig`, supplies and cards
+  `data-pk-row`): the valve rides as a 120 px strip under the header, the 104 px dial with its lever and the position
+  in words (`__now`: "Position 03 / 04"; the plate's own numerals would render under 12 px, so they hide). The pair on
+  the reading line turns the lever to its position and lights its card (`pk:change` -> `pick`); a tap on a supply still
+  chooses it. Sys-pretreatment at 375 px: 1,693 -> 1,647 px, and the dial now stays with the pair being read.
 - Use it for two to six exclusive situations that each lead to one answer with two or three properties. For many situations, or ones that lead to another page, use Router or StairRouter.
 
 ## Motion

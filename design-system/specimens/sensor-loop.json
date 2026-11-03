@@ -2,8 +2,8 @@
  "look": "sensor-loop",
  "component": "SensorLoop",
  "type": "spec",
- "fields": "h, caption, cols, rows [{p, v, m, site}], note, fold, fold_noun. site: toc | cond | temp | divert | flow | uv | data (where the balloon sits; a row without one is a card only). Desktop shows every row; the fold applies on phones, where the cards stack under the drawing beside a vertical signal rail.",
- "best_for": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into.",
+ "fields": "h, caption (the eyebrow), intro, rows [{p, v, m, site}], note, fold, fold_noun (phones only). site: flow | uv | cond | toc | temp | divert | data; a row without a site is placed by its words (\"sample\" -> sample tees, \"hose\" / \"point of use\" / \"outlet\" -> the hoses) or is a note only.",
+ "best_for": "SensorLoop draws a spec block of control points or signals where each one sits on one storage and distribution loop: a flat P&ID on a navy sheet, an instrument balloon with its real tag letters over the row number on every measuring point, hoses numbered at their ends, and the rows as keyed notes along the foot.",
  "status": "live",
  "instances": [
   {

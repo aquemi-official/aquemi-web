@@ -5,7 +5,14 @@ OptionTaps shows options where they would join the system, as one limestone draw
 - Fields: `h`, `intro` (optional, under the title), `items [{t, d, spot, at, part, row, r, h}]`, `train [{part, label, r, h, ly}]`, `fold`, `fold_noun`. New optional fields: `train`, the standard parts left to right (IsoKit kinds; `label` a short drawing label; `ly` its vertical offset in px, used to keep neighbouring labels apart); per item `at` (position along the train, fractions between parts), `part` (the IsoKit kind drawn dashed), `row` (`back` above the line, `front` below), `r` / `h` passed to the part.
 - Interaction (in the renderer, so it also works under reduced motion), ported from Subframe Motion "Product tour spotlight" (guided-inspection): pressing a note's number frames its part (the drawing translates and scales 1.6× in 600 ms, clamped to the plate; the other parts dim to 35 %; the part and pin light); pressing it again or Escape lets go; the arrow keys step through the notes. Hover on a note lights its part and pin (colour only). Everything is readable without it.
 - Tokens: `limestone` ground, `on-limestone` frame, rules and ink, IsoKit limestone lines; the pressed pin `navy` with `on-navy`. Square corners; pins are 48 px targets.
-- Phones: the sheet keeps its frame; the drawing (labels off, pins on), then the notes, each with its own dashed part.
+- Phones (pass 12, S9): the sheet keeps its frame and title block; the whole-train overview (under 300 px wide at
+  375, labels and parts unreadable) gives way to a crop of the train at each option's tap point over its note
+  (`span.__crop`, the full column wide and about 2.1 : 1, about 136 px tall at 375: the trunk edge to edge, the
+  standard parts inside the window, cut by its edge like a camera crop, the window slid along the train so it never
+  shows paper past the train's ends; the nearest standard part carries its drawing label `__clab`, under it when the
+  option stands behind the train and over it when in front; a tank on legs gets its tee rising into its foot). The
+  number shows as a plain tag beside the note's title (`__nop`; the camera button is desktop only). Tablets
+  (600-860 px): the notes run two a row. Sys-pretreatment at 375 px: 1,460 -> 1,789 px; ind-process: 1,245 -> 1,421 px.
 - Use it for options that each attach at a known point of one system. For options without a place in a drawing, OptionTags or OptionModules.
 
 ## Motion

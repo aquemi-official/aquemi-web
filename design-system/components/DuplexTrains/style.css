@@ -99,3 +99,7 @@
   .aq-duplex-trains__n { font-size: 32px; line-height: 36px; }
   .aq-duplex-trains__base { display: none; }
 }
+/* pass 12: at 400 px and under, train B's tag sat on its frame's top rail; nudge it up */
+@container (max-width: 400px) {
+  .aq-duplex-trains__tag[data-train="B"] { transform: translate(-50%, calc(-100% - var(--space-6))); }
+}

@@ -136,7 +136,7 @@
      "ASTM D1193-24"
     ]
    ],
-   "look": "clause-crosswalk"
+   "look": "grade-crosswalk"
   },
   {
    "type": "grid",
@@ -147,38 +147,44 @@
    "items": [
     {
      "t": "Washer-disinfector final rinse",
+     "draw": "washer",
      "d": "The last water on every instrument before drying. It needs critical water.",
      "spot": "valve",
      "part": "outlet"
     },
     {
      "t": "Ultrasonic cleaners",
+     "draw": "ultrasonic",
      "d": "Filled from the loop, at the grade your program sets for each step.",
      "spot": "tank"
     },
     {
      "t": "Manual sinks and lumen flushing",
+     "draw": "sink",
      "d": "Rinsing and flushing channels by hand, from taps on the loop.",
      "spot": "valve"
     },
     {
      "t": "Endoscope reprocessors",
+     "draw": "endoscope",
      "d": "They filter their own feed further; the maker's instructions set what goes in.",
      "spot": "valve",
      "part": "filter"
     },
     {
      "t": "Cart washers",
+     "draw": "cart",
      "d": "Utility water is enough here, not critical water.",
      "spot": "loop"
     },
     {
      "t": "Sterilizer feed",
+     "draw": "sterilizer",
      "d": "Feed water to the sterilizer maker's specification. We supply the water, not the steam.",
      "spot": "gauge"
     }
    ],
-   "look": "review-reticles"
+   "look": "drawing-register"
   },
   {
    "type": "grid",
@@ -190,34 +196,39 @@
    "items": [
     {
      "t": "Glassware washers and autoclaves",
+     "draw": "washer",
      "d": "They draw in batches, so storage is sized to carry the peak.",
      "spot": "storage-tank",
      "part": "tank"
     },
     {
      "t": "Analyzer feed",
+     "draw": "analyzer",
      "d": "To the analyzer maker's specification, which governs.",
      "spot": "toc",
      "part": "toc"
     },
     {
      "t": "Reagent and buffer preparation",
+     "draw": "bench",
      "d": "ASTM D1193-24 Type II or III at bench taps, or clinical laboratory reagent water.",
      "spot": "valve",
      "part": "loop"
     },
     {
      "t": "Humidifiers",
+     "draw": "humidifier",
      "d": "Fed from the loop, to the humidifier maker's specification.",
      "spot": "loop"
     },
     {
      "t": "Cell culture and molecular work",
+     "draw": "hood",
      "d": "Type I water from a point-of-use polisher at the bench, from its own maker. The loop feeds it to that maker's specification.",
      "spot": "loop"
     }
    ],
-   "look": "visit-plan"
+   "look": "building-loop"
   },
   {
    "type": "diagram",
@@ -269,7 +280,7 @@
      "d": "[PP loop sanitization method]; residual tested before use. PVC stays upstream, out of the critical-water loop."
     }
    ],
-   "look": "loop-circuit"
+   "look": "train-strip"
   },
   {
    "type": "docs",

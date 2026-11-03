@@ -90,7 +90,7 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
    which the rendered QA reads as text wider than its box ("Distribution loop · PP", 114 > 104 px). At 1:1 or smaller
    every label fits its box and keeps its CSS size. */
 .aq-hero__loop { position: relative; z-index: 1; width: 100%; max-width: calc(var(--space-32) * 3 + var(--space-12) + var(--space-2)); justify-self: end; margin: 0; color: var(--ink-muted); }
-.aq-hero__loop svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-hero__loop svg, .aq-loop__svg { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-loop__pipe { fill: none; stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .aq-loop__lead line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .aq-loop__part { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -261,4 +261,127 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-hero--home > .aq-fx-shader { --fx-amt: 0.16; } }
 @container (max-width: 860px) {
   .aq-hero--home > .aq-fx-shader { -webkit-mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); }
+}
+
+/* ---------- Pass 12: phone figures (visual audit S15, S16, home loop) ----------
+   Desktop is unchanged: the pins, the phone loop and its legend exist only below 860 px.
+   - Pin (aq-hero__pin): a numbered dot, `surface` with a 1.5 px `flow` ring, mono numeral, that keys a part of a
+     drawing to a row of text under it. Used by the equipment figure (S16) and the home loop on phones. */
+.aq-hero__pins, .aq-loop__phone { display: none; }
+.aq-hero__pin {
+  display: inline-grid; place-items: center; flex: none; box-sizing: border-box;
+  width: calc(var(--space-6) - var(--space-1) / 2); height: calc(var(--space-6) - var(--space-1) / 2);
+  border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface);
+  font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.aq-hero__pins > .aq-hero__pin, .aq-loop__band > .aq-hero__pin { position: absolute; transform: translate(-50%, -50%); }
+
+@container (max-width: 860px) {
+  .aq-hero__grid--figure { row-gap: var(--space-6); }
+  /* the facts strip follows a figure without a second empty band */
+  .aq-hero .aq-hero__grid--figure + .aq-key-facts { margin-top: var(--space-6); }
+
+  /* S15 / S16 equipment figure: the drawing first, at full gutter width. Its box takes the drawing's own ratio (--art-r
+     from ART_R in Hero.js, never taller than 5:4), so a wide drawing leaves no empty band above or below it. */
+  .aq-hero__figure { counter-reset: aq-hero-co; }
+  .aq-hero__figure .aq-hero__art { order: -1; aspect-ratio: var(--art-r, 5 / 4); }
+  .aq-hero__art .aq-illustration { inset: 0; }
+  /* S16 (hero--mist): no leaders on phones; numbered pins on the drawing at the leaders' anchors, then the callouts as
+     stacked rows: the pin's number, the label at reading size, the value in mono. */
+  .aq-hero__leaders--narrow { display: none; }
+  .aq-hero__pins { display: block; position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+  .aq-hero__callouts { display: block; margin-top: var(--space-4); border-top: 1px solid var(--line); }
+  .aq-hero__callouts--bottom { margin-top: 0; border-top: 0; }
+  .aq-hero__callout, .aq-hero__callouts--top .aq-hero__callout:nth-child(n), .aq-hero__callouts--bottom .aq-hero__callout:nth-child(n) {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1);
+    padding-block: var(--space-3); border: 0; border-bottom: 1px solid var(--line); text-align: left; counter-increment: aq-hero-co;
+  }
+  .aq-hero__callout::before {
+    content: counter(aq-hero-co); content: counter(aq-hero-co) / ""; grid-row: 1 / span 2; align-self: start;
+    display: grid; place-items: center; box-sizing: border-box;
+    width: calc(var(--space-6) - var(--space-1) / 2); height: calc(var(--space-6) - var(--space-1) / 2);
+    border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface);
+    font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+  }
+  .aq-hero__callout dt { grid-column: 2; font-size: var(--aq-read-phone, 14px); line-height: 20px; text-wrap: pretty; }
+  .aq-hero__callout dd { grid-column: 2; font-size: 18px; line-height: 26px; }
+
+  /* S15 drawn figures (contact pages, careers, news): full gutter width, tags at reading size, and the empty top of
+     the 6:5 frame (the zig-zag's highest vignette starts about 16 % down) pulled up under the actions. */
+  .aq-hero__drawn { width: 100%; }
+  .aq-hero__drawn--spots:not(:has(.aq-hero__drawn-label)) { margin-top: -12%; }
+  /* S15 buying: the proposal card at full width (at most 480 px, so the record rules below always hold), its rows at
+     reading size, no frame below it */
+  .aq-hero__drawn--stamp { aspect-ratio: auto; max-width: calc(var(--space-32) * 3 + var(--space-24)); }
+  .aq-hero__drawn--stamp:has(.aq-hero__drawn-label) { padding-top: var(--space-8); }
+
+  /* S15 contact-service: a call in the actions becomes a full-width outlined call button under the primary (a tel:
+     link once the number is confirmed; until then the same box holds "Call [service phone number]" as text) */
+  .aq-hero__actions:has(> .aq-btn--pending, > a.aq-btn[href^="tel:"]) > .aq-btn { flex: 1 1 100%; justify-content: center; }
+  .aq-hero__actions > .aq-btn.aq-btn--pending, .aq-hero__actions > a.aq-btn[href^="tel:"] {
+    min-height: var(--space-12); padding: var(--space-2) var(--space-4); box-sizing: border-box;
+    border: 1px solid var(--line-strong); border-radius: var(--radius-sm); color: var(--ink); text-align: center;
+  }
+  .aq-hero__actions > a.aq-btn[href^="tel:"] { color: var(--flow); }
+
+  /* Home loop: the drawing between the lead and the actions (the text stack opens into the grid), turned on its side
+     at the full gutter width, numbered pins on its parts and the labels as a 2 x 2 legend at reading size. No caustic
+     layer behind the text on phones. */
+  .aq-hero--home > .aq-fx-shader { display: none; }
+  .aq-hero.aq-hero--home { padding-block: var(--space-8); }
+  .aq-hero--home .aq-stack > h1.aq-display-xl { font-size: 40px; line-height: 42px; }
+  .aq-hero--home .aq-hero__actions { row-gap: 0; }
+  .aq-hero__grid--loop { row-gap: var(--space-4); }
+  .aq-hero__grid--loop > .aq-stack { display: contents; }
+  .aq-hero__grid--loop > .aq-stack > .aq-hero__actions { order: 2; margin-top: var(--space-2); }
+  .aq-hero__grid--loop > .aq-stack > .aq-tags { order: 3; }
+  .aq-hero__grid--loop > .aq-hero__loop { order: 1; width: 100%; max-width: none; margin: var(--space-2) 0 0; justify-self: stretch; }
+  .aq-hero__loop .aq-loop__svg--wide { display: none; }
+  .aq-loop__phone { display: block; }
+  .aq-hero__loop .aq-loop__cap { margin: 0 0 var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .aq-loop__band { position: relative; }
+  .aq-loop__svg--narrow { display: block; width: 100%; height: auto; overflow: visible; }
+  .aq-loop__legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2) var(--space-4); margin: var(--space-4) 0 0; padding: var(--space-3) 0 0; list-style: none; border-top: 1px solid var(--line); }
+  .aq-loop__legend li { display: flex; gap: var(--space-2); align-items: flex-start; min-width: 0; font: 400 var(--aq-read-phone, 14px)/20px var(--font-sans); color: var(--ink); }
+  .aq-loop__legend li > span:last-child { min-width: 0; overflow-wrap: break-word; }
+  .aq-loop__legend .aq-hero__pin { margin-top: -1px; }
+
+  /* Home loop, compact (pass 12 verify M1): the CTA back inside the first phone screen. The drawing at most 132 px tall
+     (its band 132 x 515 / 255 wide, centred, so the pins, percentages of the band, stay on their parts), no caption
+     (the legend names the parts), a tighter legend and top padding. */
+  .aq-hero.aq-hero--home { padding-block: var(--space-6) var(--space-8); }
+  .aq-hero__loop .aq-loop__cap { display: none; }
+  .aq-loop__band { max-width: calc((var(--space-32) + var(--space-1)) * 515 / 255); margin-inline: auto; }
+  .aq-loop__legend { gap: var(--space-1) var(--space-4); padding-top: var(--space-2); }
+
+  /* Tablet (pass 12 verify L5): the phone layouts at 481-860 px keep a phone measure instead of running 736 px wide */
+  .aq-hero__grid--loop > .aq-hero__loop { max-width: calc(var(--space-32) * 4 + var(--space-2)); justify-self: center; }
+  .aq-hero__actions:has(> .aq-btn--pending, > a.aq-btn[href^="tel:"]) > .aq-btn { max-width: calc(var(--space-32) * 3 + var(--space-24)); }
+  .aq-hero__drawn--spots { max-width: calc(var(--space-32) * 4 + var(--space-12)); justify-self: center; }
+  .aq-hero__drawn--spots:not(:has(.aq-hero__drawn-label)) { margin-top: calc(-0.12 * min(100%, calc(var(--space-32) * 4 + var(--space-12)))); }
+}
+/* Desktop (pass 12 verify L8): a top callout whose label itself carries a placeholder (sys-pretreatment, "Hardness,
+   softener outlet · [hardness measurement method]") stacks up past the hero's top edge and was clipped; that hero gets
+   a step more top padding. Gone once the label's fact is confirmed. */
+@container (min-width: 861px) {
+  .aq-hero--mist:has(.aq-hero__callouts--top dt .aq-ph) { padding-top: calc(var(--space-24) + var(--space-16)); }
+}
+/* Inside a drawn figure. The figure is its own size container (container units for its parts), so a query here
+   measures the figure, not the page: under 480 px it is a phone figure. (The older 860 px rules above for its parts,
+   12 px tags, four binder rows, also match the desktop figure, which is 500-600 px wide; the desktop renders with
+   them and is left as it is.) */
+@container (max-width: 480px) {
+  .aq-hero__vig-t { font-size: var(--aq-read-phone, 14px); line-height: 18px; }
+  .aq-hero__vig-t b { font-size: 12px; }
+  .aq-hero__drawn--stamp .aq-hero__record { position: relative; top: auto; left: auto; width: auto; transform: none; padding: var(--space-4); }
+  .aq-hero__drawn--stamp .aq-hero__record-h { font-size: 20px; line-height: 26px; }
+  .aq-hero__drawn--stamp .aq-hero__record li { padding-block: var(--space-3); font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  .aq-hero__drawn--stamp .aq-hero__record li i { width: var(--space-4); height: var(--space-4); }
+  .aq-hero__drawn--stamp .aq-hero__record-foot { margin-top: var(--space-4); }
+  .aq-hero__drawn--stamp .aq-hero__record-status { font-size: 16px; }
+  .aq-hero__drawn--stamp .aq-hero__record-sign { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+}
+/* ind-cdmo (visual audit): at 380 px or less its headline ("every client's auditor") would run to the gutter at 40 px */
+@container (max-width: 380px) {
+  .aq-hero[data-hero="ind-cdmo"] .aq-stack > h1.aq-display { font-size: 36px; line-height: 40px; }
 }

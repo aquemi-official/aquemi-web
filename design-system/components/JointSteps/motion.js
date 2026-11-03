@@ -6,7 +6,8 @@
    Ported from Subframe Motion "Scroll 360 product viewer" (scroll-turntable), MIT, (c) 2026 Subframe
    (kept: scroll progress across the track mapped to an index of views with no easing, a sticky view beside the
    scrolling track, direct selection seeking a view; replaced: the 32 cached canvas frames with six stages of one
-   drawing, the panel's own scroller with the page's scroll). */
+   drawing, the panel's own scroller with the page's scroll). Phones (pass 12): PhoneKit's sticky strip names the step
+   on the reading line instead (the look's script calls AQset), so the scroll story stands down while it is on. */
 AQmotion.fx('JointSteps', function (root, m) {
   root.querySelectorAll('.aq-joint-steps').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
@@ -28,7 +29,7 @@ AQmotion.fx('JointSteps', function (root, m) {
     el.AQset = set;
     if (!rail || !window.ScrollTrigger || steps.length < 2) return;
     m.tw(ScrollTrigger.create({ trigger: rail, start: 'top 55%', end: 'bottom 55%',
-      onUpdate: function (st) { set(Math.floor(st.progress * steps.length)) },
-      onRefresh: function (st) { if (st.progress > 0) set(Math.floor(st.progress * steps.length)) } }));
+      onUpdate: function (st) { if (!el.hasAttribute('data-pk-on')) set(Math.floor(st.progress * steps.length)) },
+      onRefresh: function (st) { if (st.progress > 0 && !el.hasAttribute('data-pk-on')) set(Math.floor(st.progress * steps.length)) } }));
   });
 });

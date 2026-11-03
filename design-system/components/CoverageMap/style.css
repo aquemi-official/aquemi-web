@@ -1,7 +1,7 @@
 /* ---------- CoverageMap: one column per region beside an instrument readout (look coverage-map, pass 9b) ----------
    Desktop: three cells to a row on hairline columns; the readout (limestone survey sheet, data-theme light) takes the top
    right cell: the region in hand, its severity 1 on-site time as the large figure, the seal stamp, the tile map with its
-   tiles lit. Phones: the readout first (the map's tiles choose), then the regions stacked. */
+   tiles lit. Phones: the tile map is the province picker, and only the chosen region's column shows under it. */
 .aq-coverage-map { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-12);
   border-top: 1px solid var(--line-strong); padding-top: var(--space-8); }
 
@@ -55,14 +55,19 @@
 
 /* The tile map under the readout */
 .aq-coverage-map__grid { position: relative; display: grid; grid-template-columns: repeat(var(--cols, 7), minmax(0, 1fr)); grid-template-rows: repeat(var(--rows, 4), auto); gap: var(--space-1); }
-.aq-coverage-map__tile { position: relative; aspect-ratio: 1; min-width: 0; display: flex; align-items: flex-start; padding: var(--space-1); border: 1.5px solid var(--on-limestone-muted); background: var(--surface-raised); color: var(--on-limestone); cursor: pointer; }
-.aq-coverage-map__tile.is-none { cursor: default; border-style: dashed; }
+.aq-coverage-map__tile { position: relative; aspect-ratio: 1; min-width: 0; display: flex; align-items: flex-start; margin: 0; padding: var(--space-1); border: 1.5px solid var(--on-limestone-muted); border-radius: 0; background: var(--surface-raised); color: var(--on-limestone); font: inherit; text-align: left; cursor: pointer; -webkit-appearance: none; appearance: none; }
+.aq-coverage-map__tile.is-none { border-style: dashed; }
+.aq-coverage-map__tile:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; z-index: 1; }
+/* a tile without a row of its own, picked (it puts its named row, or the row for the rest, on the readout) */
+.aq-coverage-map__tile.is-pick.is-none { background: var(--flow-tint); border-color: var(--flow); }
 .aq-coverage-map__code { font: 400 12px/14px var(--font-mono); letter-spacing: 0.02em; }
 .aq-coverage-map__tile.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-navy); }
 .aq-coverage-map__tile.is-home { border-width: 3px; border-color: var(--navy); }
 .aq-coverage-map__tile.is-home::after { content: ""; position: absolute; left: var(--space-1); bottom: var(--space-1); width: var(--space-2); height: var(--space-2); background: var(--navy); }
 .aq-coverage-map__tile.is-home.is-on::after { background: var(--on-navy); }
 .aq-coverage-map__base { position: relative; margin: 0; display: flex; align-items: center; gap: var(--space-3); font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
+.aq-coverage-map__chips { display: none; }
+.aq-coverage-map__say { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 .aq-coverage-map__pin { width: var(--space-4); height: var(--space-4); border: 3px solid var(--navy); position: relative; }
 .aq-coverage-map__pin::after { content: ""; position: absolute; inset: 2px; background: var(--navy); }
 
@@ -72,14 +77,35 @@
   .aq-coverage-map__pick { transition: text-decoration-color 160ms; }
 }
 
+/* Phones (pass 12, S11/S14): the tile map is the province picker. The readout sheet carries the map (one frame, no
+   inner hairline) and the stamp when the region has one; the region's figure and name are not repeated there, because
+   only the chosen region's column shows, straight under the sheet. Tiles are 44 px. */
 @container (max-width: 860px) {
-  .aq-coverage-map { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); padding-top: 0; border-top: 0; }
-  .aq-coverage-map__now { grid-column: 1; grid-row: auto; order: -1; margin-top: 0; padding: var(--space-4) var(--space-3); gap: var(--space-4); }
-  .aq-coverage-map__big { font-size: 56px; }
-  .aq-coverage-map__nb { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
+  .aq-coverage-map { grid-template-columns: minmax(0, 1fr); row-gap: 0; padding-top: 0; border-top: 0; }
+  .aq-coverage-map__now { grid-column: 1; grid-row: auto; order: -1; margin-top: 0; padding: var(--space-4) var(--space-2) var(--space-3); gap: var(--space-3); }
+  .aq-coverage-map__now::before { display: none; }
+  .aq-coverage-map__nh, .aq-coverage-map__big, .aq-coverage-map__nl { display: none; }
+  .aq-coverage-map__faces:not(:has(.aq-coverage-map__stamp)) { display: none; }
+  .aq-coverage-map__nb { grid-template-columns: minmax(0, 1fr); justify-items: end; }
+  .aq-coverage-map__grid { gap: 2px; width: 100%; max-width: 26rem; }
   .aq-coverage-map__tile { min-height: 44px; }
-  .aq-coverage-map__col { padding-left: var(--space-4); }
-  .aq-coverage-map__t { font-size: 26px; line-height: 32px; }
+  .aq-coverage-map__tile.is-none[data-named] { border-style: solid; }
+  /* the regions as chips under the map: the same choice as a tile, named */
+  .aq-coverage-map__chips { display: flex; flex-wrap: wrap; gap: var(--space-1); padding-inline: var(--space-2); }
+  .aq-coverage-map__chip { min-height: 44px; margin: 0; padding: var(--space-1) var(--space-2); border: 1.5px solid var(--on-limestone-muted); border-radius: 0; background: var(--surface-raised);
+    color: var(--on-limestone); font: 400 14px/20px var(--font-sans); text-align: left; cursor: pointer; -webkit-appearance: none; appearance: none; }
+  .aq-coverage-map__chip[aria-pressed="true"] { background: var(--flow); border-color: var(--flow); color: var(--on-navy); }
+  .aq-coverage-map__chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .aq-coverage-map__code { font-size: 13px; }
+  .aq-coverage-map__base { padding-inline: var(--space-2); font-size: 15px; }
+  .aq-coverage-map__col:not(.is-on) { display: none; }
+  .aq-coverage-map__col { padding: var(--space-4) 0 0 var(--space-4); }
+  .aq-coverage-map__i { position: absolute; right: 0; top: var(--space-4); }
+  .aq-coverage-map__t { margin: 0; padding-right: var(--space-12); font-size: 26px; line-height: 32px; }
+  .aq-coverage-map__pick { cursor: default; text-decoration: none; }
+  .aq-coverage-map__dl { margin-top: 0; }
+  .aq-coverage-map__dl dd, .aq-coverage-map__dl > div:first-child dd { font-size: 15px; }
+  .aq-coverage-map__dl .aq-ph { font-size: var(--aq-read-phone, 14px); }
 }
 .aq-coverage-map-sec { overflow: visible; }
 

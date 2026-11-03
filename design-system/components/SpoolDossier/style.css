@@ -62,3 +62,18 @@
 @container (max-width: 860px) {
   .aq-spool-dossier__j text, .aq-spool-dossier__lot text { font-size: 12px; }
 }
+
+/* pass 12 phone (audit S9, svc-fabrication.2): the spool runs full bleed with its empty margins cropped (the drawing
+   itself reaches the bleed edges, so it grows about 1.1x, not more, without cutting J-01 or J-06), labels set at 13.5
+   units (about 13 px) with a limestone halo so they read over the pipes, and the four parts in a 2 x 2 grid. */
+@container (max-width: 860px) {
+  .aq-spool-dossier__fig { margin: var(--space-4) calc(-1 * var(--space-4)) 0; overflow: hidden; }
+  .aq-spool-dossier__fig .aq-iso { display: block; width: 96%; max-width: none; max-height: none; height: auto; margin: -7.6% 0 -2.5% -1%; }
+  .aq-spool-dossier__j text, .aq-spool-dossier__lot text { font-size: 13.5px; paint-order: stroke; stroke: var(--limestone); stroke-width: 3px; stroke-linejoin: round; }
+  .aq-spool-dossier__parts { margin-top: var(--space-6); }
+  .aq-spool-dossier__list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: var(--space-6); }
+  .aq-spool-dossier__item { padding-top: var(--space-3); gap: var(--space-1); }
+  .aq-spool-dossier__n { font-size: 28px; line-height: 32px; }
+  .aq-spool-dossier__t { font-size: 12px; line-height: 16px; letter-spacing: 0.04em; }
+  .aq-spool-dossier__d { font-size: 15px; line-height: 22px; }
+}

@@ -2,7 +2,7 @@
  "look": "joint-macro",
  "component": "JointMacro",
  "type": "spec",
- "fields": "h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold, fold_noun. part (optional): wall, face, exam, bore, mark, or \"none\" (default from the item's words). The fold applies on phones only.",
+ "fields": "h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold, fold_noun. part (optional): wall, face, exam, bore, mark, or \"none\" (default from the item's words). The fold applies on phones only, and not on this look (pass 12, S7: the callouts point at rows 07-10).",
  "best_for": "JointMacro sets a standard beside a traced duotone macro close-up of the thing it governs: the end of a polypropylene pipe fills the left of a navy band, its contours traced in a hairline and numbered to the rows at the right.",
  "status": "live",
  "instances": [

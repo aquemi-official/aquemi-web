@@ -2,8 +2,10 @@
    valve, a navy object on the paper (pass 9b concept sys-pretreatment.3 is a light sheet). Each situation is a supply line on the left; the valve sits in the middle with one numbered
    position per route on its plate; each route leaves the valve on its own line to a card on the right (the step, then
    the other columns under their own labels). Choosing a supply turns the valve's lever to that position and lights the
-   line in and the line out; every card stays readable. Default: the first route. Phones: the valve heads the section,
-   then each supply sits directly over its card on a short pipe.
+   line in and the line out; every card stays readable. Default: the first route. Phones (pass 12, PhoneKit sticky
+   figure): the valve rides as a 120 px strip under the header (the dial with its lever and the position in words) and
+   each supply sits directly over its card on a short pipe; the pair on the reading line turns the lever to its
+   position and lights its card (state, so it holds with reduced motion; a tap on a supply still chooses it).
    Fields (a table block, as: "router"): h, cols [situation, step, ...the rest], rows [[situation, step, ...]]; cells
    may be {t, link, intent} as in every table. No new fields. */
 (function(){
@@ -30,18 +32,22 @@ LOOKS['decision-valve']=function(b,H){
  var C=b.cols||[],R=b.rows||[],n=R.length,k=++N;
  var rows=R.map(function(r,i){var id=K+'-'+k+'-'+i,on=i===0;
   var rest=r.slice(2).map(function(c,j){return '<div class="'+K+'__kv"><dt>'+tx(C[j+2]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('');
-  return '<button type="button" class="'+K+'__src'+(on?' is-on':'')+'" data-i="'+i+'" aria-pressed="'+(on?'true':'false')+'" aria-controls="'+id+'" style="--r:'+(i+2)+'">'
+  return '<button type="button" class="'+K+'__src'+(on?' is-on':'')+'" data-i="'+i+'" data-pk-row="'+i+'" aria-pressed="'+(on?'true':'false')+'" aria-controls="'+id+'" style="--r:'+(i+2)+'">'
     +'<span class="'+K+'__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="'+K+'__srct">'+tcell(r[0])+'</span></button>'
-   +'<article class="'+K+'__card'+(on?' is-on':'')+'" id="'+id+'" data-i="'+i+'" style="--r:'+(i+2)+'">'
+   +'<article class="'+K+'__card'+(on?' is-on':'')+'" id="'+id+'" data-i="'+i+'" data-pk-row="'+i+'" style="--r:'+(i+2)+'">'
     +'<p class="'+K+'__cardno" aria-hidden="true">Position '+(i<9?'0':'')+(i+1)+'</p><h3 class="'+K+'__step">'+tcell(r[1])+'</h3>'
     +(rest?'<dl class="'+K+'__dl">'+rest+'</dl>':'')+'</article>'}).join('');
  var heads='<p class="'+K+'__colh '+K+'__colh--src">'+tx(C[0]||'')+'</p><p class="'+K+'__colh '+K+'__colh--card">'+tx(C[1]||'')+'</p>';
- var mid='<div class="'+K+'__valve">'+lines(n)+dial(n)+'</div>';
- return sec(H+'<div class="'+K+'" style="--n:'+n+'">'+heads+mid+rows+'</div>',K+'-sec')};
+ var mid='<div class="'+K+'__valve" data-pk-fig>'+lines(n)+dial(n)+'<p class="'+K+'__now" aria-hidden="true"><span class="'+K+'__nowk">Position</span> <span class="'+K+'__nown">01</span><span class="'+K+'__nowof"> / '+(n<10?'0':'')+n+'</span></p></div>';
+ return sec(H+'<div class="'+K+'" data-pk-sticky data-pk-h="120" style="--n:'+n+'">'+heads+mid+rows+'</div>',K+'-sec')};
 /* choose a route: the lever turns, the line in and the line out light, the card lights; all cards stay visible */
 function pick(w,i){if(!w)return;var n=+getComputedStyle(w).getPropertyValue('--n')||w.querySelectorAll('.'+K+'__src').length;
  [].forEach.call(w.querySelectorAll('[data-i]'),function(x){var on=+x.getAttribute('data-i')===i;x.classList.toggle('is-on',on);if(x.tagName==='BUTTON')x.setAttribute('aria-pressed',on?'true':'false')});
  var lv=w.querySelector('.'+K+'__lever');if(lv)lv.style.setProperty('--a',ang(i,n)+'deg')}
+/* phone: the pair on the reading line (PhoneKit) turns the valve to its position; switching off restores the first */
+function now(w,i){var x=w.querySelector('.'+K+'__nown');if(x)x.textContent=(i<9?'0':'')+(i+1)}
+if(typeof document!=='undefined')document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains(K))return;
+ var i=ev.detail&&ev.detail.on&&ev.detail.index>=0?+ev.detail.key:0;if(isNaN(i))i=0;pick(w,i);now(w,i)});
 /* fit the lines to the drawn valve: each supply line runs from its button's centre into the inlet boss, each route
    line leaves its own outlet boss (radially, at that position's angle) and lands on its card's centre. The static
    paths above (a 200 x 400 box) are the no-JS fallback; this redraws them in the valve column's real pixels. */
@@ -62,7 +68,7 @@ if(typeof document!=='undefined'){
  if(typeof MutationObserver!=='undefined')new MutationObserver(function(){if(document.querySelector('.'+K+':not([data-dv])')){[].forEach.call(document.querySelectorAll('.'+K+':not([data-dv])'),function(w){w.setAttribute('data-dv','')});soon()}}).observe(document.documentElement,{childList:true,subtree:true});
  if(document.readyState!=='loading')soon();else document.addEventListener('DOMContentLoaded',soon);
  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(soon);
- document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src, .'+K+'__card');if(!t||(ev.target.closest('a')))return;pick(t.closest('.'+K),+t.getAttribute('data-i'))});
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src, .'+K+'__card');if(!t||(ev.target.closest('a')))return;var w=t.closest('.'+K);pick(w,+t.getAttribute('data-i'));now(w,+t.getAttribute('data-i'))});
  document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;var w=t.closest('.'+K);[].forEach.call(w.querySelectorAll('.'+K+'__in, .'+K+'__out'),function(p){p.classList.toggle('is-hint',p.getAttribute('data-i')===t.getAttribute('data-i'))})});
  document.addEventListener('mouseout',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;[].forEach.call(t.closest('.'+K).querySelectorAll('.is-hint'),function(p){p.classList.remove('is-hint')})})}
 })();

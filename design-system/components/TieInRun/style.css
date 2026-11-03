@@ -48,3 +48,31 @@
   .aq-tie-in-run__t { font-size: 18px; line-height: 24px; }
   .aq-tie-in-run__d { font-size: 14px; line-height: 22px; }
 }
+
+/* ---------- Pass 12 phones: PhoneKit holds the drawing as a 200 px strip under the header ----------
+   The strip (data-pk-fig) sticks at the header line; the drawing runs the full width at 1.1x and PhoneKit pans it so
+   the active step's marker sits in the strip (data-pk-zoom); the markers ride with the drawing. The step on the reading line lights (number in flow, the others quieter) and
+   sets the drawing's stage. Steps clear the strip when jumped to (PhoneKit's scroll-margin). */
+@container (max-width: 860px) {
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__fig { padding: 0; margin-bottom: var(--space-2); }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__plate { width: 100%; max-width: none; margin: 0; }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__mk { font-size: 12px; }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__step { padding: var(--space-6) 0 var(--space-8); }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__step:last-child { padding-bottom: var(--space-12); }
+  /* never dim the reading text on phones (the steps under the line are the ones about to be read): the lit number and
+     marker carry the highlight */
+  .aq-tie-in-run[data-pk-on].is-live .aq-tie-in-run__step:not(.is-on) { opacity: 1; }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__step:not(.is-on) .aq-tie-in-run__n { color: var(--ink-subtle); }
+  /* markers of stages not drawn yet step back */
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__mk { transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, opacity 200ms ease; }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__mk.is-future { opacity: 0.35; }
+}
+
+/* Tablets (601-860 px; PhoneKit holds only to 600 px here): steps and the sticky drawing side by side again, the
+   desktop story at a smaller scale, instead of a strip that shows a third of the drawing */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-tie-in-run { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); }
+  .aq-tie-in-run__fig { grid-row: auto; top: var(--space-16); padding: 0; background: none; border-bottom: 0; }
+  .aq-tie-in-run__plate { max-width: none; }
+  .aq-tie-in-run__step:first-child { border-top: 1px solid var(--line); }
+}

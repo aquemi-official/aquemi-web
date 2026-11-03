@@ -47,7 +47,7 @@ AQmotion.fx('MethodBento', function (root, m) {
       var probe = document.createElement('div'); probe.className = 'aq-method-bento__probe';
       probe.innerHTML = '<div class="aq-method-bento__thumb" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal"><span class="aq-method-bento__needle" aria-hidden="true"></span></div>';
       var read = document.createElement('p'); read.className = 'aq-method-bento__read'; read.setAttribute('aria-live', 'polite');
-      sc.appendChild(probe); sc.parentNode.insertBefore(read, sc.nextSibling);
+      sc.appendChild(probe); sc.appendChild(read); /* pass 12: the readout lives in the scale (the desktop band) */
       var th = probe.querySelector('.aq-method-bento__thumb'); th.setAttribute('aria-label', name.trim() + ': try a temperature');
       var val = 50, car = { x: 50 };
       var sp = m.spring(car, { stiffness: 520, damping: 34, mass: 0.45 }, function (o) { th.style.left = o.x + '%' });

@@ -7,7 +7,8 @@
    row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown;
    decoration, aria-hidden), plot (optional: the roles drawn on the trend plot, e.g. ["limit","trend"] when the action
    and alert levels are laboratory results, not online readings; default every role; the table keeps every row). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.
-   Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
+   Phones: every tab stays, as one 44 px segmented strip (pass 12; the tabs are the screen's chrome, not panels), the
+   newest alarm wraps under it with the lamp cluster, the plot shortens, the table rows stack. */
 var HMI_Y={limit:52,action:112,alert:172};
 function hmiTrace(){var d='',x,y,pts=[];
  for(x=0;x<=930;x+=10){var n=Math.sin(x*0.071)*7+Math.sin(x*0.23+1.3)*4+Math.sin(x*0.013+0.4)*5,dr=x>600?Math.pow((x-600)/330,1.6)*58:0;y=262+n-dr;pts.push([x,y])}

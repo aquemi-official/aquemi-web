@@ -3,7 +3,9 @@
    symbol; rows whose next cell links the same page are tied by a header line (junction dots where they join, a line
    break where a header crosses a run it does not join), so the shared destinations read as converging pipework.
    Fields: cols (three labels), rows ([situation, system, start]; each cell a string or {t, link, intent}), nav (drawing
-   caption). Phones: each route runs down as a vertical pipe, situation over system over start, labels shown. */
+   caption). Phones (pass 12, PhoneKit accordion): six tap rows (path number, situation, chevron; 56 px or more), one
+   open at a time; the open row draws one short horizontal pipe, System through its valve to Start with (the start box
+   is the link, 44 px or more). Without script: each route runs down as a vertical pipe, labels shown. */
 LOOKS['pid-routes']=(function(){
  var KINDS=['gate','globe','diaphragm','check','ball'],uid=0;
  function key(c){return c&&typeof c==='object'?(c.link?wsplit(c.link)[0]:String(c.t||'')):String(c||'')}
@@ -39,18 +41,19 @@ LOOKS['pid-routes']=(function(){
   function node(c,i,j){return '<div class="aq-pid-routes__node aq-pid-routes__node--'+(j===1?'sys':'go')+'" data-r="'+i+'"><div class="aq-pid-routes__box">'
    +'<p class="aq-pid-routes__k">'+tx(C[j]||'')+'</p><p class="aq-pid-routes__v">'+tcell(c)+'</p></div></div>'}
   var rows=R.map(function(r,i){var s=r[0]&&typeof r[0]==='object'?r[0].t:r[0];
-   return '<li class="aq-pid-routes__route" role="listitem">'
-    +'<div class="aq-pid-routes__sit" data-r="'+i+'"><div class="aq-pid-routes__box"><p class="aq-pid-routes__tag" aria-hidden="true"><span>Path '+(i<9?'0':'')+(i+1)+'</span></p>'
+   return '<li class="aq-pid-routes__route" role="listitem" data-pk-item="'+i+'">'
+    +'<button type="button" class="aq-pid-routes__tap" data-pk-head><span class="aq-pid-routes__tn" aria-hidden="true">Path '+(i<9?'0':'')+(i+1)+'</span><span class="aq-pid-routes__tt">'+tx(s)+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button>'
+    +'<div class="aq-pid-routes__sit" data-r="'+i+'" data-pk-desk><div class="aq-pid-routes__box"><p class="aq-pid-routes__tag" aria-hidden="true"><span>Path '+(i<9?'0':'')+(i+1)+'</span></p>'
     +'<p class="aq-pid-routes__k aq-pid-routes__k--sit">'+tx(C[0]||'')+'</p><h3 class="aq-pid-routes__t">'+tx(s)+'</h3></div></div>'
-    +run(i,'a',tA[i],KINDS[i%KINDS.length],!tA[i].length&&i%2===0)+node(r[1],i,1)
-    +run(i,'b',tB[i],KINDS[(i+2)%KINDS.length],false)+node(r[2],i,2)+'</li>'}).join('');
+    +'<div class="aq-pid-routes__path" data-pk-body>'+run(i,'a',tA[i],KINDS[i%KINDS.length],!tA[i].length&&i%2===0)+node(r[1],i,1)
+    +run(i,'b',tB[i],KINDS[(i+2)%KINDS.length],false)+node(r[2],i,2)+'</div></li>'}).join('');
   var ruler='<svg class="aq-pid-routes__ruler" aria-hidden="true" focusable="false"><defs><pattern id="pidr-'+k+'" width="64" height="10" patternUnits="userSpaceOnUse">'
    +'<path d="M0.5 0V10 M16.5 6V10 M32.5 3V10 M48.5 6V10"/></pattern></defs><rect width="100%" height="10" fill="url(#pidr-'+k+')"/></svg>';
   var heads='<div class="aq-pid-routes__heads" aria-hidden="true">'+[0,1,2].map(function(j){return '<p class="aq-pid-routes__head"><span>Column 0'+(j+1)+'</span>'+tx(C[j]||'')+'</p>'}).join('<span></span>')+'</div>';
   var cap='<p class="aq-pid-routes__cap" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span><span>P&amp;ID</span></p>';
   return sec(H+'<div class="aq-pid-routes" style="--n:'+R.length+'">'
    +'<span class="aq-pid-routes__mark aq-pid-routes__mark--tl" aria-hidden="true"></span><span class="aq-pid-routes__mark aq-pid-routes__mark--tr" aria-hidden="true"></span>'
-   +heads+ruler+'<ol class="aq-pid-routes__list" role="list">'+rows+'</ol>'+ruler.replace('pidr-'+k,'pidr-'+k+'b').replace('pidr-'+k+')','pidr-'+k+'b)')+cap+'</div>','aq-band--navy aq-pid-routes-band')}
+   +heads+ruler+'<ol class="aq-pid-routes__list" role="list" data-pk-picker="accordion" data-pk-open="0">'+rows+'</ol>'+ruler.replace('pidr-'+k,'pidr-'+k+'b').replace('pidr-'+k+')','pidr-'+k+'b)')+cap+'</div>','aq-band--navy aq-pid-routes-band')}
 })();
 /* Hover or focus on any part of a route lights its whole run (and the header lines it shares); the rest dims */
 (function(){

@@ -9,3 +9,7 @@ Look `clause-crosswalk` (`assets/src/blocks/look-clause-crosswalk.js`) on a four
 - Phones: spines and wires go; each row shows its clauses as chips under how, the two regulations side by side.
 
 Motion: the regulation names slide along their edges and the chips tick in down each spine; then the requirements arrive one at a time and each one's wires run out from it to its clauses on both sides. Once, under 5 s. Hover a requirement to light its wires and clauses, or a clause to light every requirement that cites it.
+
+Phones (pass 12, audit S10): the crosswalk survives as a mini crosswalk per row. The two regulation names head the list once (`div.__pheads`); in each row regulation A's chips stack on a left rail and B's on a right rail (the row's `__ref--a` / `__ref--b`, labels kept for screen readers), short curves (`svg.__mini`, one path per chip, stretched like the desktop wires) run from every chip to the requirement set in a bordered box between them, and how runs full width under. Tapping a row lights its box, curves and chips. Motion: rows rise, then each row's curves draw out from the box to its chips. The page's phone fold still applies. Desktop unchanged.
+
+Verify fixes (pass 12 V8): a rail with one chip draws a straight connector, tagged `.is-straight` and drawn with `shape-rendering: crispEdges` on phones, so it no longer renders speckled beside the curves.

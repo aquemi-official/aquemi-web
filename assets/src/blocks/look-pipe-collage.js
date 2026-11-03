@@ -7,7 +7,9 @@
    Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
    fold, fold_noun. New optional field: pieces, one per row, naming the piece drawn for it: vessel, panel, pipe,
    pellets, weld (each at most once; a row without one has no piece). The fold applies on phones only (desktop shows
-   every block beside the whole collage). Phones: the board gives way to each block led by its own piece. */
+   every block beside the whole collage). Phones (pass 12): the board becomes a full-width 3 x 2 band of square tiles
+   under the heading (each piece cropped to its middle, numbered as its row; a tap brings its row into view, opening
+   the fold if needed); the blocks run in one column with no stair indent. */
 var PC_SLOT={vessel:[0,0,1,2],pipe:[1,1,2,1],pellets:[0,2,1,1],panel:[2,2,1,2],weld:[0,3,2,1]};
 var PC_FILL=[['arc',1,0],['quarter',2,0],['diag',1,2]];
 function pcPiece(k){var r=function(x,y,w,h,c){return '<rect data-f="'+c+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'},
@@ -33,14 +35,25 @@ LOOKS['pipe-collage']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.pieces||[]
  R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&!used[k]){used[k]=1;cells+=pcG(k,0,0,(i<9?'0':'')+(i+1),i)}});
  Object.keys(PC_SLOT).forEach(function(k){if(!used[k])cells+=pcG(k==='weld'?'arc':k==='pellets'?'quarter':'diag',PC_SLOT[k][0],PC_SLOT[k][1])});
  var board='<div class="aq-pipe-collage__board" data-theme="light" aria-hidden="true"><svg viewBox="0 0 300 400" focusable="false">'+cells+'</svg></div>';
+ /* the phone band: six square tiles, 3 x 2, each piece cropped to its middle (numbered as its row) among fillers;
+    a tap on a piece opens the fold if its row is folded and brings the row into view (S7) */
+ var PP=[];R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&used[k]&&PP.every(function(x){return x.k!==k}))PP.push({k:k,i:i})});PP=PP.slice(0,6);
+ var SL=[0,4,2,3,1,5],T=[null,null,null,null,null,null],FL=['arc','quarter','diag','arc','quarter','diag'],fi=0;
+ PP.forEach(function(x,j){T[SL[j]]=x});
+ var band='<div class="aq-pipe-collage__band" data-theme="light" aria-hidden="true">'+T.map(function(x){
+  if(!x){var f=FL[fi++];return '<span class="aq-pipe-collage__tile"><svg viewBox="0 0 100 100" focusable="false">'+pcPiece(f)+'</svg></span>'}
+  var S=PC_SLOT[x.k];return '<span class="aq-pipe-collage__tile is-piece" data-go="'+x.i+'"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" preserveAspectRatio="xMidYMid slice" focusable="false">'+pcPiece(x.k)+'</svg><span class="aq-pipe-collage__tn">'+(x.i<9?'0':'')+(x.i+1)+'</span></span>'}).join('')+'</div>';
  var blocks='<ol class="aq-pipe-collage__blocks" role="list">'+R.map(function(r,i){var k=K[i],S=PC_SLOT[k],th=S&&used[k]?'<span class="aq-pipe-collage__thumb" data-theme="light" aria-hidden="true"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" focusable="false">'+pcPiece(k)+'</svg></span>':'';
   var f=function(j,cls){var c=r[j];if(c==null||c==='')return '';return '<p class="'+cls+'"><span class="aq-pipe-collage__k">'+tx(C[j]||'')+'</span> '+tcell(c)+'</p>'};
   return fli('<li class="aq-pipe-collage__block" data-pc="'+i+'">',b,i)+th
    +idx(i)+'<div class="aq-pipe-collage__head"><h3 class="aq-pipe-collage__std">'+tcell(r[0])+'</h3></div>'
    +'<p class="aq-pipe-collage__how">'+tcell(r[1])+'</p>'+f(2,'aq-pipe-collage__proof')+f(3,'aq-pipe-collage__go')+'</li>'}).join('')+'</ol>';
- return sec(H+'<div class="aq-pipe-collage">'+board+'<div class="aq-pipe-collage__text">'+wFold(b,R.length,blocks,b.fold_noun||'standards')+'</div></div>','aq-pipe-collage-sec')};
+ return sec(H+'<div class="aq-pipe-collage">'+board+(PP.length?band:'')+'<div class="aq-pipe-collage__text">'+wFold(b,R.length,blocks,b.fold_noun||'standards')+'</div></div>','aq-pipe-collage-sec')};
 function pcLight(bl,on){var w=bl&&bl.closest('.aq-pipe-collage');if(!w)return;var c=w.querySelector('.aq-pipe-collage__cell[data-pc="'+bl.getAttribute('data-pc')+'"]');
  if(c)c.classList.toggle('is-on',on);w.classList.toggle('is-focus',on&&!!c)}
 if(typeof document!=='undefined'&&document.addEventListener){
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-pipe-collage__tile[data-go]');if(!t)return;var w=t.closest('.aq-pipe-collage'),bl=w&&w.querySelector('.aq-pipe-collage__block[data-pc="'+t.getAttribute('data-go')+'"]');if(!bl)return;
+  var fd=bl.closest('.aq-fold');if(fd&&!fd.classList.contains('is-open')&&bl.classList.contains('aq-fold-x')){var fb=fd.querySelector('.aq-fold__btn');if(fb)fb.click()}
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;bl.scrollIntoView({block:'center',behavior:rm?'auto':'smooth'});pcLight(bl,true);setTimeout(function(){pcLight(bl,false)},1200)});
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x)pcLight(x,true)})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x&&!(ev.relatedTarget&&x.contains(ev.relatedTarget)))pcLight(x,false)})})}

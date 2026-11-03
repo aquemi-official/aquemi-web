@@ -1,0 +1,93 @@
+{
+ "look": "limit-drawer",
+ "component": "LimitDrawer",
+ "type": "table",
+ "fields": "cols [who writes the limit, what it sets, what to send, where it applies], rows (cells strings or {t, link}). The tab is the writer up to its first number (ASTM D1193-24), else its first word.",
+ "best_for": "LimitDrawer shows who writes each limit and what to send them as a file drawer: one manila folder per limit-writer, its tab at its own cut position so no tab hides another, what the limit sets on the folder, a clipped white slip listing what to send, and a navy index label naming where it applies.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "ind-process",
+   "slot": 1,
+   "h": "Who writes your limit, and what to send",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "90e3a4eec7",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Your limit",
+    "anchor": "limits",
+    "h": "Who writes your limit, and what to send",
+    "intro": "Outside drugs and natural health products, no regulator sets a Purified Water grade for these uses. Your recipe, your process or your equipment maker sets the limit.",
+    "cols": [
+     "Who writes the limit",
+     "What it sets",
+     "What to send",
+     "Where it applies"
+    ],
+    "rows": [
+     [
+      "Recipe or brand specification",
+      "Ingredient water above the potable legal floor: hardness, alkalinity, chlorine, minerals",
+      "Your water profile; feed water analysis",
+      {
+       "t": "Food and beverage",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "Cannabis quality assurance person",
+      "Potable water at minimum (Cannabis Regulations, s. 88.6), plus the methods they approve",
+      "Their water specification; any pharmaceutical standard your site runs",
+      {
+       "t": "Cannabis products",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "Process engineer",
+      "Conductivity in µS/cm at each rinse or process stage",
+      "The limit, its stage and unit; flow at each stage",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "Electrolyser stack maker",
+      "Feed-water limits for the stack",
+      "The stack maker's feed-water specification, with revision",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "Boiler maker or treatment program",
+      "Make-up water quality for the boiler",
+      "The make-up specification; your treatment program's targets",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "ASTM D1193-24 Type II or III",
+      "Laboratory reagent water, by type",
+      "The type and edition your method or customer names",
+      {
+       "t": "Hospitals and laboratories",
+       "link": "ind-hospital-lab#grades"
+      }
+     ]
+    ],
+    "fold_noun": "limits",
+    "ground": "light",
+    "look": "limit-drawer"
+   }
+  }
+ ]
+}

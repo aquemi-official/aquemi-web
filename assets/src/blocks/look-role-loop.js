@@ -9,25 +9,33 @@
    Fields (a table block): h, intro, cols [role, what you do, must have, base and travel, pay and opening], rows
    (strings; the last cell "pay · status"). Best for 1 to 6 roles (one or two rows of three); more roles still draw.
    The pipe is laid out from the rendered cards (ResizeObserver), so it follows wrapping; without it the cards stand
-   alone. Container under 860 px: the cards stack and the loop runs down their left and back up their right. */
+   alone. Phones (pass 12, S11/S12/S14, PhoneKit accordion): the roles are collapsed rows, each a 48 px+ head with the
+   role (the number line gives way to the branch), its status (valve and text) and the last two columns (base, pay) as one line each, marked by the legend over
+   the list that names those two columns once; tapping a row opens what you do and what you must have. The loop is one
+   supply-and-return pair down the left (a single frame), each row's branch and valve off the inner pipe. */
 (function(){
 var NS='http://www.w3.org/2000/svg',P='aq-role-loop'+'__';
 function rlState(s){s=String(s||'').trim();return /^open\b/i.test(s)?'open':/^closed\b/i.test(s)?'closed':'unset'}
 function rlValve(){return '<svg class="'+P+'vk" viewBox="0 0 20 14" aria-hidden="true" focusable="false"><path d="M4 4L16 12V4L4 12Z"/><path d="M10 8V2M7 2H13"/></svg>'}
 LOOKS['role-loop']=function(b,H){var R=b.rows||[],C=b.cols||[],n=R.length;if(!n)return sec(H,'aq-band--navy');
  var num=function(i){return (i<9?'0':'')+(i+1)},last=C.length-1;
+ var sumL=C.length-2;/* the last two columns (base, pay) sum up a role on phones */
  var li=R.map(function(r,i){var cells=r||[],pay=cells[last],stx='',pt=pay;
   if(typeof pay==='string'){var k=pay.lastIndexOf(' · ');if(k>-1){pt=pay.slice(0,k);stx=pay.slice(k+3)}}
   var stt=rlState(stx);
   var dl=C.slice(1).map(function(c,j){var v=j+1===last?pt:cells[j+1];if(v==null||v==='')return '';
-   return '<div class="'+P+'f"><dt>'+tx(c)+'</dt><dd>'+tcell(v)+'</dd></div>'}).join('');
-  return '<li class="'+P+'bay" data-i="'+i+'" data-valve="'+stt+'" style="--i:'+i+'">'
+   return '<div class="'+P+'f'+(j+1>=sumL?' is-sum':'')+'"><dt>'+tx(c)+'</dt><dd>'+tcell(v)+'</dd></div>'}).join('');
+  var sum=[sumL,last].map(function(c,k){var v=c===last?pt:cells[c];return v==null||v===''||c<1?'':'<span class="'+P+'hl is-'+(k?'pay':'base')+'"><span class="'+P+'sr">'+tx(C[c]||'')+': </span>'+tcell(v)+'</span>'}).join('');
+  var head='<h3 class="'+P+'ph"><button type="button" class="'+P+'hd" data-pk-head><span class="'+P+'ht">'+tcell(cells[0])+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span>'
+   +(stx?'<span class="'+P+'st is-'+stt+'">'+rlValve()+'<span>'+tx(stx)+'</span></span>':'')+sum+'</button></h3>';
+  return '<li class="'+P+'bay" data-i="'+i+'" data-pk-item="'+i+'" data-valve="'+stt+'" style="--i:'+i+'">'
    +'<p class="'+P+'no" aria-hidden="true"><span>'+num(i)+'</span> / '+num(n-1)+'</p>'
-   +'<h3 class="'+P+'t">'+tcell(cells[0])+'</h3>'
-   +(stx?'<p class="'+P+'st is-'+stt+'">'+rlValve()+'<span>'+tx(stx)+'</span></p>':'')
-   +'<dl class="'+P+'dl">'+dl+'</dl></li>'}).join('');
+   +head+'<h3 class="'+P+'t" data-pk-desk>'+tcell(cells[0])+'</h3>'
+   +(stx?'<p class="'+P+'st is-'+stt+'" data-pk-desk>'+rlValve()+'<span>'+tx(stx)+'</span></p>':'')
+   +'<div class="'+P+'body" data-pk-body><dl class="'+P+'dl">'+dl+'</dl></div></li>'}).join('');
+ var legend=sumL>0?'<p class="'+P+'legend" aria-hidden="true"><span class="'+P+'hl is-base">'+tx(C[sumL]||'')+'</span><span class="'+P+'hl is-pay">'+tx(C[last]||'')+'</span></p>':'';
  var svg='<svg class="'+P+'pipe" aria-hidden="true" focusable="false"><g class="'+P+'segs"></g><path class="'+P+'wall"/><path class="'+P+'bore"/><path class="'+P+'water"/><g class="'+P+'stubs"></g></svg>';
- return sec(H+'<div class="aq-role-loop">'+svg+'<ol class="'+P+'bays" role="list">'+li+'</ol></div>','aq-band--navy aq-role-loop-sec')};
+ return sec(H+'<div class="aq-role-loop">'+svg+legend+'<ol class="'+P+'bays" role="list" data-pk-picker="accordion" data-pk-open="-1">'+li+'</ol></div>','aq-band--navy aq-role-loop-sec')};
 
 /* rounded polyline: corners cut at radius r with a quadratic through the corner; closed paths start at Q[0], which
    the layout keeps on a straight run */
@@ -46,11 +54,12 @@ function lay(w){var ol=w.querySelector('.'+P+'bays'),svg=w.querySelector('.'+P+'
  var wr=w.getBoundingClientRect();if(!wr.width)return;
  var cards=[].slice.call(ol.children),rc=cards.map(function(c){var r=c.getBoundingClientRect();return {l:r.left-wr.left,r:r.right-wr.left,t:r.top-wr.top,b:r.bottom-wr.top}});
  var rows=[];rc.forEach(function(r,i){var row=null;rows.forEach(function(x){if(Math.abs(x.t-r.t)<4)row=x});if(!row){row={t:r.t,b:r.b,c:[]};rows.push(row)}row.c.push(i);row.b=Math.max(row.b,r.b)});
- var C=rows[0].c.length,a=24,rr=16,Q=[],seg=[],stub=[],cs=getComputedStyle(ol),gx=parseFloat(cs.columnGap)||64,ys=function(i){return rc[i].t+8};
+ var C=rows[0].c.length,a=24,rr=16,Q=[],seg=[],stub=[],cs=getComputedStyle(ol),gx=parseFloat(cs.columnGap)||64,
+  nos=cards.map(function(c){var no=c.querySelector('.'+P+'no');return no&&no.offsetParent!==null?no:null}),ys=function(i){return rc[i].t+(nos[i]?8:22)};
  svg.setAttribute('viewBox','0 0 '+wr.width.toFixed(1)+' '+wr.height.toFixed(1));
- if(C===1){/* stacked: down the cards' left, back up their right */
-  var xL=rc[0].l-32,xR=rc[0].r+a-4,yT=rc[0].t-a,yB=rc[rc.length-1].b+a;
-  Q=[[xL,rc[0].t],[xL,yB],[xR,yB],[xR,yT],[xL,yT]];
+ if(C===1){/* stacked (phones): one supply-and-return pair down the cards' left, a single frame */
+  var xL=rc[0].l-24,xO=xL-12,yT=rc[0].t-a/2,yB=rc[rc.length-1].b+a/2;
+  Q=[[xL,rc[0].t],[xL,yB],[xO,yB],[xO,yT],[xL,yT]];
   rc.forEach(function(r,i){seg[i]=[[xL,r.t-8],[xL,r.b+8]];stub[i]=[xL,ys(i),r.l]});
  }else{/* lanes: verticals in the column gaps (and outside the outer columns), horizontals a quarter row gap off the cards */
   var cols=rows[0].c.map(function(i){return rc[i]}),xv=[cols[0].l-gx/2];
@@ -65,7 +74,7 @@ function lay(w){var ol=w.querySelector('.'+P+'bays'),svg=w.querySelector('.'+P+'
  }
  var d=rlPath(Q,rr,true);['wall','bore','water'].forEach(function(k){svg.querySelector('.'+P+k).setAttribute('d',d)});
  var sg=svg.querySelector('.'+P+'segs'),st=svg.querySelector('.'+P+'stubs');
- cards.forEach(function(card,i){if(!seg[i])return;var v=card.getAttribute('data-valve')||'unset',s=stub[i],no=card.querySelector('.'+P+'no'),x0=s[0]+5,x1=s[2]+(no?parseFloat(getComputedStyle(no).paddingLeft)||0:0)-6,xm=(x0+x1)/2,y=s[1];
+ cards.forEach(function(card,i){if(!seg[i])return;var v=card.getAttribute('data-valve')||'unset',s=stub[i],no=nos[i],x0=s[0]+5,x1=s[2]+(no?parseFloat(getComputedStyle(no).paddingLeft)||0:0)-(no?6:3),xm=(x0+x1)/2,y=s[1];
   rlEl(sg,'path',P+'seg',i).setAttribute('d',rlPath(seg[i],rr,false));
   var g=rlEl(st,'g',P+'stub is-'+v,i);g.setAttribute('class',P+'stub is-'+v);
   g.innerHTML='<path class="'+P+'sw" d="M'+x0+' '+y+'H'+x1+'"/><path class="'+P+'sb" d="M'+x0+' '+y+'H'+x1+'"/>'

@@ -26,7 +26,15 @@ AQmotion.fx('ClauseCrosswalk', function (root, m) {
         }
       });
       tl.call(function () { wires.forEach(function (w) { w.style.removeProperty('stroke-dasharray'); w.style.removeProperty('stroke-dashoffset') }) });
-    } else tl.from(rows, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, 0);
+    } else {
+      /* phones (pass 12): each row rises, then its mini crosswalk's curves run out from the requirement box to its chips */
+      tl.from(rows, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, 0);
+      if (window.DrawSVGPlugin) rows.forEach(function (r, i) {
+        var a = qa('.aq-clause-crosswalk__mini--a path', r), b = qa('.aq-clause-crosswalk__mini--b path', r);
+        if (a.length) tl.fromTo(a, { drawSVG: '100% 100%' }, { drawSVG: '0% 100%', duration: 0.5, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.25 + i * 0.1);
+        if (b.length) tl.fromTo(b, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.5, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.25 + i * 0.1);
+      });
+    }
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });

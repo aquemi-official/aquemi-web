@@ -44,5 +44,7 @@
   .aq-time-card__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-1); }
   .aq-time-card__m { grid-column: 2; }
   .aq-time-card__p { font-size: 19px; line-height: 26px; }
-  .aq-time-card__stamp { font-size: 11px; }
+  .aq-time-card__stamp { font-size: 12px; line-height: 16px; }
+  /* pass 12 (S4): the task and note lines read at 14 px */
+  .aq-time-card .aq-time-card__v, .aq-time-card .aq-time-card__m { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
 }

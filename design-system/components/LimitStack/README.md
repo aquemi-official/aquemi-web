@@ -5,7 +5,7 @@ LimitStack sets a page's water-quality limits as an editorial type stack beside 
 - Row: `p.__p` (index, mono label, an "Action level" chip from `level`), `p.__v` (limit `__n`, unit `__u`, qualifier `__q`, split by `gaugeParse` from blocks/spec.js; a placeholder value prints whole as `__n--open`), `p.__m` (a hairline `__rule` that runs towards the drawing, then the reference).
 - Fields: `h`, `caption` (beside the heading), `intro` (the note on the pipe), `rows [{p, v, m, hl, level}]`, `note`. A row whose `p` says "guaranteed" or "outlet" is the boxed hero step (`is-hero`: flow border on `surface-raised`); `hl` puts the index in flow. The navy collar's lettering is that row's own label (its last comma part: "Skid outlet, guaranteed" reads "Guaranteed") and is left out while the row's value is a `[placeholder]` (DR-018: no guarantee drawn while the copy keeps it open); the collar band is always drawn.
 - Tokens: limestone ground, `on-limestone` / `on-limestone-muted` text, Geist Light display heading, Geist Mono limits, `navy` collar, `flow` water. The figure is sticky beside the stack on desktop.
-- Phones: head, drawing, stack; steps shrink to `space-3`; the reference rules become top hairlines.
+- Phones: head, drawing, stack; steps shrink to `space-3`; the reference rules become top hairlines. Below 600 px (pass 12, S13): no step indent, and the coil drawing is capped at 300 px tall.
 - Use it for one short list of limits (up to six) with a guaranteed value; for many parameters use ParamTiles or SpecTable.
 
 ## Motion
@@ -15,3 +15,5 @@ Motion: one timeline when the stack scrolls in. Each row steps in from the left 
 Pass 9 polish: the section carries `data-theme="light"`, so the limestone sheet keeps its light tokens (white pipe body, flow line, boxed outlet row) in the dark theme. Row labels are Geist, the index and figures Geist Mono.
 
 Pass 9b: each limit rolls up on the core odometer (`m.count`, ported from "Sliding number") as its row is set; pointing at a row rolls its limit once more. Placeholders never roll.
+
+Pass 12 verify fixes: the svg and its lettering (seal, outlet) sit in one box (`__draw`), so the lettering stays on the pipe at any width. Under 860 px the drawing box is capped at 420 px, the intro note leaves the drawing and sits under it at 14 px, the note leader is not drawn and the band it used is pulled up (`--ls-cut`, set by the renderer). Under 600 px the box is 260 px wide, the outlet lettering steps 5 px off the wall and the qualifiers are 14 px.

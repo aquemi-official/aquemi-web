@@ -48,16 +48,32 @@
   .aq-derivation-sheet__num { font-size: 60px; line-height: 60px; }
 }
 
-/* Phones: each line reads down the pad, arrows turned to point down, labels back on every line */
+/* Phones (pass 12, S12/S13): each line one compact card on the pad. The step and its boxed answer share the first row
+   (the answer as a framed chip on the right), "what sets it" runs under them as one 14 px line; no arrows, no number
+   gutter, the margin rule a thin edge rule. Column keys stay on the first line only, as on desktop. */
 @container (max-width: 860px) {
-  .aq-derivation-sheet { margin-top: var(--space-4); padding: var(--space-2) var(--space-4) var(--space-2) var(--space-12); }
-  .aq-derivation-sheet__margin { left: var(--space-8); }
-  .aq-derivation-sheet__line { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); padding: var(--space-6) 0; }
-  .aq-derivation-sheet__no { right: calc(100% + var(--space-6)); top: var(--space-6); font-size: 12px; }
-  .aq-derivation-sheet__set li { font-size: 18px; line-height: 25px; }
-  .aq-derivation-sheet__line + .aq-derivation-sheet__line .aq-derivation-sheet__k { display: block; }
-  .aq-derivation-sheet__op, .aq-derivation-sheet__op.is-imp { grid-column: 1; width: var(--space-8); transform: rotate(90deg); margin: var(--space-1) 0 var(--space-1) var(--space-2); }
-  .aq-derivation-sheet__ans { grid-column: 1; }
-  .aq-derivation-sheet__t { font-size: 20px; line-height: 27px; }
-  .aq-derivation-sheet__num { font-size: 52px; line-height: 56px; }
+  .aq-derivation-sheet { margin-top: var(--space-4); padding: var(--space-1) var(--space-4) var(--space-1) var(--space-6); }
+  .aq-derivation-sheet__margin { left: var(--space-3); width: 2px; border-inline-width: 0.75px; }
+  .aq-derivation-sheet__no, .aq-derivation-sheet__op, .aq-derivation-sheet__op.is-imp { display: none; }
+  .aq-derivation-sheet__line { grid-template-columns: minmax(0, 1fr) minmax(0, 46%); grid-template-areas: "given ans" "lim lim";
+    align-items: start; column-gap: var(--space-3); row-gap: var(--space-2); padding: var(--space-4) 0; }
+  /* long answers (any over 48 characters): every answer sits under its step, boxed to its own width */
+  .aq-derivation-sheet.is-stacked .aq-derivation-sheet__line { grid-template-columns: minmax(0, 1fr); grid-template-areas: "given" "ans" "lim"; }
+  .aq-derivation-sheet.is-stacked .aq-derivation-sheet__ans { justify-self: start; max-width: 100%; }
+  .aq-derivation-sheet__given { grid-area: given; }
+  .aq-derivation-sheet__ans { grid-area: ans; grid-column: auto; padding: var(--space-2) var(--space-3); }
+  .aq-derivation-sheet__lim { grid-area: lim; }
+  .aq-derivation-sheet__line:first-child .aq-derivation-sheet__k { margin-bottom: var(--space-1); }
+  .aq-derivation-sheet__t { font-size: 17px; line-height: 23px; letter-spacing: -0.01em; font-weight: 400; }
+  .aq-derivation-sheet__w { font-size: 15px; line-height: 20px; }
+  .aq-derivation-sheet__box::after { bottom: calc(var(--space-1) * -1); }
+  /* what sets it: one run of text, items joined by a middle dot */
+  .aq-derivation-sheet__set { display: block; }
+  .aq-derivation-sheet__set li { display: inline; padding: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+  .aq-derivation-sheet__set li::before { content: none; }
+  .aq-derivation-sheet__set li + li::before { content: " · "; position: static; border: 0; width: auto; color: var(--flow); }
+  .aq-derivation-sheet__v { display: inline-flex; gap: 0 var(--space-2); }
+  .aq-derivation-sheet__num { font-size: 22px; line-height: 24px; letter-spacing: -0.02em; }
+  .aq-derivation-sheet__u { max-width: none; font-size: 14px; }
+  .aq-derivation-sheet__ref { margin: var(--space-1) 0 0; padding: 0; border: 0; font-size: 13px; }
 }

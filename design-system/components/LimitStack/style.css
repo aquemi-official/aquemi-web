@@ -86,3 +86,27 @@
 .aq-limit-stack__collar .aq-iso__eq { stroke-width: 1.5; }
 .aq-limit-stack__pt { overflow-wrap: anywhere; }
 
+/* The drawing box: the svg and its lettering (seal, outlet), placed as % of this box (pass 12) */
+.aq-limit-stack__draw { position: relative; }
+
+/* Tablets and phones (pass 12, F5, F1): the coil capped at 420 px wide, so it does not fill a screen before the first
+   limit. The box is capped, not the svg, so the lettering placed in % stays on the pipe. The intro note leaves the
+   drawing and sits under it as a 14 px line; its leader is not drawn, and the band of the drawing only the leader used
+   is pulled up under the note (--ls-cut, from the renderer). */
+@container (max-width: 860px) {
+  .aq-limit-stack__fig { width: min(92%, 420px); }
+  .aq-limit-stack__fig svg { display: block; }
+  .aq-limit-stack__fig .aq-iso__leader { display: none; }
+  .aq-limit-stack__draw { margin-bottom: calc(-1 * var(--ls-cut, 0%)); }
+  .aq-limit-stack__note, .aq-limit-stack__note--right { position: static; transform: none; width: auto; max-width: 48ch; margin-top: var(--space-3);
+    text-align: left; font-size: 14px; line-height: 21px; }
+}
+
+/* Small phones (pass 12, S13, F1): no step indent below 600 px; the drawing box 260 px wide (about 300 px tall); the
+   outlet lettering steps 5 px off the pipe wall at this scale; qualifiers at 14 px */
+@container (max-width: 600px) {
+  .aq-limit-stack__row { margin-inline-start: 0; }
+  .aq-limit-stack__fig { width: min(92%, 260px); }
+  .aq-limit-stack__outlet { transform: translate(-50%, -50%) translateY(5px) skewY(30deg); }
+  .aq-limit-stack__q { font-size: 14px; line-height: 21px; }
+}

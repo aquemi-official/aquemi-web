@@ -6,7 +6,9 @@
    level numbered, its name in light display type, what it is set at (a figure in mono display), its basis as mono
    lines (split at ";") and the row's link.
    Fields, as a spec block: h, intro, cols [level, set at, basis], rows [{p, v, m, level, hl, link, link_label}], note.
-   Phones: the drawing stands under the heading and the band rises over its foot; rows stack inside the band. */
+   Phones (pass 12): the plant drawing gives way to a 12-month trend strip on chart paper (cbTrend: the action level
+   as a navy rule labelled with the action row's "set at", the alert level as a dashed rule named by the other row,
+   set from a shaded first stretch), then the navy band with the rows stacked. Desktop unchanged. */
 function cbPlant(){var P='aq-cut-band'+'__',L=function(c,d){return '<path class="'+P+c+'" d="'+d+'"/>'};
  var s=L('frame','M8 8H472V592H8Z');
  /* skid base and feet */
@@ -29,6 +31,21 @@ function cbPlant(){var P='aq-cut-band'+'__',L=function(c,d){return '<path class=
  /* the water in the header and loop */
  s+=L('water','M282 237H306V92H366V116')+L('water','M404 448V430H428V528H72V500');
  return '<svg class="'+P+'svg" viewBox="0 0 480 600" preserveAspectRatio="xMidYMin meet" aria-hidden="true" focusable="false">'+s+'</svg>'}
+/* The phone's trend strip (pass 12, audit svc-cq.4): twelve months of monitoring on chart paper, the levels as ruled
+   lines named from the block's own rows (the action row's "set at", the other row's name). The dots are a drawn
+   pattern, not data: no axis values, no counts. Phases 1 and 2 (a dense first stretch, shaded) set the alert line,
+   which then carries on through the year; one reading rises over it, never to the action line. */
+function cbTrend(R){var act=null,alt=null;R.forEach(function(r){if(!act&&r.level==='action')act=r;else if(!alt)alt=r});if(!act)return '';
+ var P='aq-cut-band'+'__',W=360,Hh=170,x0=6,x1=354,mw=(x1-x0)/12,yA=34,yL=80,yB=158,s='',seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+ for(var m=0;m<=12;m++)s+='<path class="'+P+'tg'+(m%3?'':' is-q')+'" d="M'+(x0+m*mw).toFixed(1)+' 8V'+yB+'"/>';
+ for(var y=yB;y>8;y-=12)s+='<path class="'+P+'tg" d="M'+x0+' '+y+'H'+x1+'"/>';
+ s+='<rect class="'+P+'ph" x="'+x0+'" y="8" width="'+mw.toFixed(1)+'" height="'+(yB-8)+'"/>';
+ var d='';for(var i=0;i<28;i++){var x=x0+3+i*(mw-6)/27,y=112+rnd()*24;d+='<circle class="'+P+'dt is-ph" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="1.6"/>'}
+ for(var j=0;j<44;j++){var xx=x0+mw+6+j*(x1-x0-mw-10)/43,yy=j===14?68:106+rnd()*32;d+='<circle class="'+P+'dt'+(j===14?' is-x':'')+'" cx="'+xx.toFixed(1)+'" cy="'+yy.toFixed(1)+'" r="'+(j===14?2.6:1.9)+'"/>'+(j===14?'<circle class="'+P+'ring" cx="'+xx.toFixed(1)+'" cy="68" r="7"/>':'')}
+ s+='<path class="'+P+'act" d="M'+x0+' '+yA+'H'+x1+'"/>'+(alt?'<path class="'+P+'alt" d="M'+(x0+mw).toFixed(1)+' '+yL+'H'+x1+'"/><path class="'+P+'alt is-set" d="M'+x0+' '+yL+'H'+(x0+mw).toFixed(1)+'"/>':'')+d;
+ var lab=function(c,y,t){return '<span class="'+P+'tl '+P+'tl--'+c+'" style="top:'+(100*y/Hh).toFixed(2)+'%">'+tx(t)+'</span>'};
+ return '<div class="'+P+'trend" data-theme="light" aria-hidden="true"><div class="'+P+'paper" style="aspect-ratio:'+W+' / '+Hh+'"><svg class="'+P+'tsvg" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="none" focusable="false">'+s+'</svg>'
+  +lab('act',yA,act.v||act.p)+(alt?lab('alt',yL,alt.p):'')+'</div></div>'}
 LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var head='<div class="aq-cut-band__cols" aria-hidden="true"><span></span>'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>';
  var rows=R.map(function(r,i){var fig=/\d/.test(String(r.v||''))&&String(r.v).length<24,basis=String(r.m||'').split(/;\s*/).filter(Boolean);
@@ -38,6 +55,6 @@ LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
    +'<h3 class="aq-cut-band__p">'+tx(r.p)+'</h3>'
    +'<p class="aq-cut-band__v'+(fig?' is-fig':'')+'">'+(C[1]?'<span class="aq-cut-band__k">'+tx(C[1])+'</span>':'')+'<span class="aq-cut-band__val">'+tx(r.v)+'</span></p>'
    +'<div class="aq-cut-band__m">'+(C[2]?'<span class="aq-cut-band__k">'+tx(C[2])+'</span>':'')+basis.map(function(x){return '<span class="aq-cut-band__ref">'+tx(x)+'</span>'}).join('')+go+'</div></li>'}).join('');
- return sec('<div class="aq-cut-band"><div class="aq-cut-band__head">'+H+'</div><div class="aq-cut-band__fig">'+cbPlant()+'</div>'
+ return sec('<div class="aq-cut-band"><div class="aq-cut-band__head">'+H+'</div><div class="aq-cut-band__fig">'+cbPlant()+'</div>'+cbTrend(R)
   +'<div class="aq-cut-band__band"><span class="aq-cut-band__occ" aria-hidden="true"><i></i><i></i></span>'+head+'<ol class="aq-cut-band__rows">'+rows+'</ol></div>'
   +(b.note?'<p class="aq-cut-band__note">'+tx(b.note)+'</p>':'')+'</div>','aq-cut-band-sec')};

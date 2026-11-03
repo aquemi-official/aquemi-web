@@ -9,7 +9,9 @@
    signs and labels the sheet's signature boxes (first hold: the left box, second: the right).
    Pass 9b (concept research/pass9b/concepts/cmp-documentation.2.png, its numbered rhythm): steps lead at the left, the
    sheet stands at the right (style.css).
-   Phones: the sheet sits over the steps and plays its marks through once. */
+   Phones (pass 12): the sheet is a 140 px sticky strip under the header (PhoneKit sticky figure): a thumbnail of the
+   whole sheet beside its revision rows, both filling step by step as each step reaches the reading line. Under 600 px
+   only (data-pk-bp): 600-860 px keep the full sheet. */
 LOOKS['revision-sheet']=(function(){
  function P(d,c){return '<path class="aq-revision-sheet'+'__'+(c||'ln')+'" d="'+d+'"/>'}
  function T(x,y,s,c,a){return '<text class="aq-revision-sheet__lbl'+(c?' aq-revision-sheet__lbl--'+c:'')+'" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'}
@@ -50,18 +52,21 @@ LOOKS['revision-sheet']=(function(){
   return '<svg class="aq-revision-sheet__svg" viewBox="0 0 400 520" aria-hidden="true" focusable="false">'+o+'</svg>'}
  return function(b,H){var I=b.items||[],n=I.length,all='';for(var k=1;k<=n;k++)all+=' is-s'+k;
   var steps=I.map(function(it,i){var who=it.hold?String(it.hold):'';
-   return '<li class="aq-revision-sheet__step" data-s="'+(i+1)+'"><span class="aq-revision-sheet__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   return '<li class="aq-revision-sheet__step" data-s="'+(i+1)+'" data-pk-row="'+(i+1)+'"><span class="aq-revision-sheet__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
     +'<div class="aq-revision-sheet__body"><h3 class="aq-revision-sheet__t">'+(it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t))+'</h3>'+(it.d?'<p class="aq-revision-sheet__d">'+tx(it.d)+'</p>':'')
     +(who?'<p class="aq-revision-sheet__hold"><span class="aq-revision-sheet__hk">Hold</span> <span>Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span></p>':'')+'</div></li>'}).join('');
-  return sec(H+'<div class="aq-revision-sheet" data-n="'+n+'"><div class="aq-revision-sheet__fig"><div class="aq-revision-sheet__paperwrap'+all+'" data-theme="light">'+sheet(I)+'</div></div>'
+  /* phone strip: the revision rows beside the thumbnail, one per step (number and a tick as it is done) */
+  var revs='<ol class="aq-revision-sheet__revs" aria-hidden="true">'+I.map(function(it,i){return '<li class="aq-revision-sheet__rv" data-pk-key="'+(i+1)+'"><span>'+(i<9?'0':'')+(i+1)+'</span></li>'}).join('')+'</ol>';
+  return sec(H+'<div class="aq-revision-sheet" data-n="'+n+'" data-pk-sticky data-pk-h="140" data-pk-bp="599"><div class="aq-revision-sheet__fig" data-pk-fig><div class="aq-revision-sheet__paperwrap'+all+'" data-theme="light">'+sheet(I)+'</div>'+revs+'</div>'
    +'<ol class="aq-revision-sheet__steps" role="list">'+steps+'</ol></div>','aq-revision-sheet-sec')}})();
 /* The sheet follows the step nearest the middle of the screen (desktop) or the step pointed at; without script it
    shows every step's marks. */
 function rsSet(w,s){var p=w.querySelector('.aq-revision-sheet__paperwrap'),n=+w.getAttribute('data-n')||0;if(!p||w._rsOn===s)return;w._rsOn=s;
  for(var k=1;k<=n;k++)p.classList.toggle('is-s'+k,k<=s);
- [].forEach.call(w.querySelectorAll('.aq-revision-sheet__step'),function(li){var d=+li.getAttribute('data-s');li.classList.toggle('is-on',d===s);li.classList.toggle('is-past',d<s)})}
+ [].forEach.call(w.querySelectorAll('.aq-revision-sheet__step'),function(li){var d=+li.getAttribute('data-s');li.classList.toggle('is-on',d===s);li.classList.toggle('is-past',d<s)});
+ [].forEach.call(w.querySelectorAll('.aq-revision-sheet__rv'),function(li){li.classList.toggle('is-done',+li.getAttribute('data-pk-key')<=s)})}
 function rsScan(){var mid=innerHeight*0.5;[].forEach.call(document.querySelectorAll('.aq-revision-sheet'),function(w){
- if(w._rsHover||w._rsAuto)return;if(innerWidth<860){rsSet(w,+w.getAttribute('data-n'));return}
+ if(w._rsHover||w._rsAuto||w.hasAttribute('data-pk-on'))return;if(innerWidth<860){rsSet(w,+w.getAttribute('data-n'));return}
  var L=w.querySelectorAll('.aq-revision-sheet__step'),s=0;[].forEach.call(L,function(li){if(li.getBoundingClientRect().top<mid)s=+li.getAttribute('data-s')});
  var r=w.getBoundingClientRect();if(r.bottom<mid)s=L.length;rsSet(w,Math.max(1,s))})}
 if(typeof document!=='undefined'&&document.addEventListener){var rsQ=0;
@@ -70,4 +75,7 @@ if(typeof document!=='undefined'&&document.addEventListener){var rsQ=0;
  document.addEventListener('mouseover',function(ev){var li=ev.target.closest&&ev.target.closest('.aq-revision-sheet__step');if(!li)return;var w=li.closest('.aq-revision-sheet');w._rsHover=1;rsSet(w,+li.getAttribute('data-s'))});
  document.addEventListener('mouseout',function(ev){var li=ev.target.closest&&ev.target.closest('.aq-revision-sheet__step');if(!li||(ev.relatedTarget&&li.contains(ev.relatedTarget)))return;var w=li.closest('.aq-revision-sheet');w._rsHover=0;rsTick()});
  if(typeof MutationObserver!=='undefined')new MutationObserver(rsTick).observe(document.documentElement,{childList:true,subtree:true});
+ /* phones: PhoneKit names the step on its reading line; the strip's sheet takes that step's marks (off: back to the scan) */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-revision-sheet'))return;
+  if(ev.detail&&ev.detail.on&&ev.detail.key){w._rsAuto=0;rsSet(w,+ev.detail.key)}else{w._rsOn=null;rsTick()}});
  window.AQrevsheet={set:rsSet,scan:rsScan}}

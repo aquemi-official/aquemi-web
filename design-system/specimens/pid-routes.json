@@ -2,7 +2,7 @@
  "look": "pid-routes",
  "component": "PidRoutes",
  "type": "table",
- "fields": "cols (three labels), rows ([situation, system, start]; each cell a string or {t, link, intent}), nav (drawing caption).",
+ "fields": "cols (three labels), rows ([situation, system, start]; each cell a string or {t, link, intent}), nav (drawing caption). Phones (pass 12, PhoneKit accordion): six tap rows (path number, situation, chevron; 56 px or more), one open at a time; the open row draws one short horizontal pipe, System through its valve to Start with (the start box is the link, 44 px or more).",
  "best_for": "PidRoutes draws a router table (situation, system, start with) as a P&ID on a navy blueprint ground: each situation is piped through its own valve to its system and on to where to start, and rows that share a destination page are tied by a header line.",
  "status": "live",
  "instances": [

@@ -65,7 +65,7 @@
   .aq-grade-mains__colh { grid-row: 1; align-self: end; margin-bottom: var(--space-3); }
   .aq-grade-mains__lname { grid-column: var(--lc, 2); grid-row: 1; padding: 0 0 var(--space-3); align-self: end; justify-self: center; writing-mode: vertical-rl; transform: rotate(180deg); }
   .aq-grade-mains__lt { font-size: 13px; line-height: 16px; }
-  .aq-grade-mains__ln { font-size: 11px; }
+  .aq-grade-mains__ln { font: 400 14px/18px var(--font-sans); letter-spacing: 0; } /* a claim, not a label: 14 px (S4) */
   .aq-grade-mains__pipe { grid-column: var(--lc, 2); grid-row: 2 / span var(--pspan, 16); align-self: stretch; justify-self: center; width: var(--space-3); height: auto; margin: 0;
     border-block: 0; border-inline: 1.5px solid color-mix(in srgb, var(--on-navy-muted) 70%, transparent); transform-origin: 50% 0; }
   .aq-grade-mains__pipe.is-off { border-inline-style: dashed; }
@@ -78,7 +78,7 @@
   .aq-grade-mains__tap { grid-column: var(--pc, 2); grid-row: var(--pr, 2); margin-top: var(--space-3); transform: none; width: var(--space-6); height: var(--space-4); }
   .aq-grade-mains__foot { grid-column: 1; grid-row: var(--pf, 3); padding: 0 var(--space-3) var(--space-4) var(--space-8); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); }
   .aq-grade-mains__g { flex-direction: row; flex-wrap: wrap; gap: 0 var(--space-2); align-items: baseline; }
-  .aq-grade-mains__note { font-size: 13px; line-height: 20px; }
+  .aq-grade-mains__note { font-size: 14px; line-height: 21px; }
   .aq-fold:not(.is-open) .aq-grade-mains__form.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-grade-mains) > .aq-fold__btn { display: flex; }
 }

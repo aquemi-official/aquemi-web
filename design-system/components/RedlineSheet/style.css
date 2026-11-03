@@ -111,3 +111,35 @@
   .aq-redline-sheet__band { margin: var(--space-6) calc(-1 * var(--space-4)) var(--space-2); }
   .aq-redline-sheet__band svg { width: 200%; margin-left: -50%; }
 }
+
+/* pass 12 phone (audit S8/S14, svc-design.0): the band becomes a PhoneKit sticky strip (data-pk-sticky, 150 px). The
+   plan draws at the strip's full height (about 820 px wide, so PRE, RO, EDI and every point of use stay drawn) and
+   PhoneKit pans it (data-pk-zoom="1") to the pin of the markup on the reading line, which lights; the other pins rest.
+   Phone pins are a bigger twin set (__ppin), labels set at 18 units (about 12 px). The zone ruler and the inner frame
+   go (S14). Without script the strip scrolls sideways. Desktop never shows any of this. */
+.aq-redline-sheet__ppin { display: none; }
+@container (max-width: 860px) {
+  .aq-redline-sheet { padding-top: var(--space-4); outline: 0; }
+  .aq-redline-sheet__zones { display: none; }
+  .aq-redline-sheet__band { height: 150px; margin: 0 calc(-1 * var(--space-4)) var(--space-2); overflow-x: auto; overflow-y: hidden; }
+  .aq-redline-sheet[data-pk-sticky][data-pk-on] .aq-redline-sheet__band { background: var(--navy); border-bottom: 0; overflow: hidden; }
+  .aq-redline-sheet__band svg { width: auto; height: 100%; max-width: none; margin: 0; }
+  .aq-redline-sheet__pin { display: none; }
+  .aq-redline-sheet__ppin { display: inline; transition: opacity 240ms ease; opacity: 0.55; }
+  .aq-redline-sheet__ppin .aq-redline-sheet__pn { font-size: 22px; font-weight: 600; }
+  .aq-redline-sheet__ppin .aq-redline-sheet__ring { stroke-width: 1.5; }
+  .aq-redline-sheet:not([data-pk-on]) .aq-redline-sheet__ppin, .aq-redline-sheet__ppin.is-pk-active { opacity: 1; }
+  .aq-redline-sheet__ppin.is-pk-active .aq-redline-sheet__ring { stroke-dasharray: none; stroke-width: 2.5; }
+  .aq-redline-sheet__ppin.is-pk-active .aq-redline-sheet__ptri { fill: var(--fail); }
+  .aq-redline-sheet__ppin.is-pk-active .aq-redline-sheet__pn { fill: var(--navy); }
+  .aq-redline-sheet__pl { font-size: 18px; }
+  .aq-redline-sheet__cit { transform-box: fill-box; transform-origin: center; transform: scale(1.55); }
+  .aq-redline-sheet__item.is-pk-active .aq-redline-sheet__rev { color: var(--surface-raised); }
+  .aq-redline-sheet__item.is-pk-active .aq-redline-sheet__rev::before { background: var(--fail); }
+  /* verify V3 (S9): the detail drawings render at about 268 px for a 320-unit box, so their labels are set at 15 units
+     (about 12.6 px at 375) */
+  .aq-redline-sheet__fig .aq-redline-sheet__lbl { font-size: 15px; }
+  /* the revision triangle grows with its number, so the digit keeps its margin inside it */
+  .aq-redline-sheet__fig .aq-redline-sheet__tri { transform: scale(1.3); transform-box: fill-box; transform-origin: 50% 60%; }
+}
+@media (prefers-reduced-motion: reduce) { .aq-redline-sheet__ppin { transition: none; } }

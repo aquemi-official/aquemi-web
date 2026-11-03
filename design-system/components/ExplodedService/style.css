@@ -41,13 +41,15 @@
 /* Phones (and narrow desktops, where the shelves get too short for the promises): the drawing full width with
    numbered pins on the leaders, the promises stacked under it */
 @container (max-width: 1040px) {
-  /* the sheet is cropped tight to the pump so the parts read at phone size (viewBox x 226-846, y 40-552 of 1200 x 590;
-     the exploded parts span x 248-818, y 57-538) */
-  .aq-exploded-service__fig { margin-inline: calc(-1 * var(--space-4)); overflow: hidden; aspect-ratio: 620 / 512; border-block: 1px solid var(--line); }
-  .aq-exploded-service__art { width: 193.55%; margin: -6.45% 0 0 -36.45%; }
+  /* the sheet is cropped tight to the pump so the parts read at phone size (viewBox x 226-886, y 40-552 of 1200 x 590;
+     the exploded parts span x 248-818, y 57-538; pass 12: 40 units more on the right, about 24 px at 375, so the signed
+     record sheet and its pin 3 clear the edge) */
+  .aq-exploded-service__fig { margin-inline: calc(-1 * var(--space-4)); overflow: hidden; aspect-ratio: 660 / 512; border-block: 1px solid var(--line); }
+  .aq-exploded-service__art { width: 181.82%; margin: -6.06% 0 0 -34.24%; }
   .aq-exploded-service__pin { display: grid; place-items: center; position: absolute; width: var(--space-6); height: var(--space-6); transform: translate(-50%, -50%);
     border-radius: var(--radius-pill); background: var(--ink); color: var(--surface); font: 500 12px/1 var(--font-mono); }
   .aq-exploded-service__svg .aq-iso__leader-line { display: none; }
+  .aq-exploded-service__svg .aq-iso__sheet-t { display: none; } /* sheet zone letters render at 6 px in the crop (S9) */
   .aq-exploded-service__calls { position: static; display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-4); }
   .aq-exploded-service__call { position: static; transform: none; width: auto !important; padding: var(--space-4) 0 0; border-top: 1px solid var(--line); }
   .aq-exploded-service__n { display: grid; place-items: center; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-pill); background: var(--ink); color: var(--surface); letter-spacing: 0; }

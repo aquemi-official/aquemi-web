@@ -10,13 +10,14 @@
 LOOKS['battery-limit']=function(b,H){
  var R=b.rows||[],C=b.cols||['Item','Typical','Note'],SD=b.sides||['',''],lim=-1;
  R.some(function(r,i){if(r.side==='limit'){lim=i;return true}});
- var kk={package:0,site:0};
+ var kk={package:0,site:0},last=R.length-1;if(last===lim)last--;
  function card(r,i,side){var lk=r.link&&wp(r.link)?'<a class="aq-battery-limit__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
-  var body='<div class="aq-battery-limit__card">'+idx(i)+'<h3 class="aq-battery-limit__p">'+tx(r.p)+'</h3>'
+  var who=side!=='limit'&&SD[side==='package'?0:1]?'<span class="aq-battery-limit__who">'+tx(SD[side==='package'?0:1])+'</span>':'';
+  var body='<div class="aq-battery-limit__card">'+idx(i)+who+'<h3 class="aq-battery-limit__p">'+tx(r.p)+'</h3>'
    +'<dl class="aq-battery-limit__dl"><div><dt>'+tx(C[1]||'')+'</dt><dd class="aq-battery-limit__v">'+tx(r.v)+'</dd></div>'
    +(r.m||lk?'<div><dt>'+tx(C[2]||'')+'</dt><dd class="aq-battery-limit__m">'+(r.m?tx(r.m):'')+(r.m&&lk?' ':'')+lk+'</dd></div>':'')+'</dl></div>';
-  if(side==='limit')return '<div class="aq-battery-limit__limit">'+body+'</div>';
-  return fli('<li class="aq-battery-limit__item" data-r="'+i+'" data-k="'+(kk[side]++)+'">',b,i)+(side==='site'?'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__node"></span><span class="aq-battery-limit__lead"></span></span>'+body
+  if(side==='limit')return '<div class="aq-battery-limit__limit" style="order:'+(10+i)+'"'+(i===R.length-1?' data-last':'')+'>'+body+'</div>';
+  return fli('<li class="aq-battery-limit__item" data-r="'+i+'" data-k="'+(kk[side]++)+'" style="order:'+(10+i)+'"'+(i===last?' data-last':'')+'>',b,i)+(side==='site'?'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__node"></span><span class="aq-battery-limit__lead"></span></span>'+body
    :body+'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__lead"></span><span class="aq-battery-limit__node"></span></span>')+'</li>'}
  var pk='',st='';R.forEach(function(r,i){if(i===lim)return;if(r.side==='package')pk+=card(r,i,'package');else st+=card(r,i,'site')});
  var seam='<span class="aq-battery-limit__navy" aria-hidden="true"></span><svg class="aq-battery-limit__line" aria-hidden="true" focusable="false"><line x1="50%" y1="0" x2="50%" y2="100%"/></svg>'

@@ -10,3 +10,7 @@ FidelityLadder shows design stages as one drawing gaining detail on a navy bluep
 ## Motion
 
 Motion: one timeline. The run extends stage by stage; at each node the sheet lights and its drawing draws on, the number decodes and the text rises; before a hold the valve turns open and the stamp strikes; the freeze stamp strikes on its sheet. About 4.5 s; nothing under reduced motion.
+
+Phones (pass 12, optional item): the sheets at 70 % of the column with less space between stages (about 360 px shorter); the sheet footers stay 12 px. The thumbnails' inner labels are drawing texture, not reading text. Desktop unchanged.
+
+Verify fixes (pass 12 V7): on phones the sheets' inner drawing labels (about 4 px at 70 %) are dropped; the drawing and the 12 px footers stay.

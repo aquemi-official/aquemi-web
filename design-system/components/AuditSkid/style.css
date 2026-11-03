@@ -6,6 +6,7 @@
 /* The drawing in the middle, the pins over it */
 .aq-audit-skid__fig { position: relative; grid-column: 2; grid-row: 1 / span var(--rows, 3); align-self: center; }
 .aq-audit-skid__svg { display: block; width: 100%; height: auto; }
+.aq-audit-skid__pan { position: relative; }
 .aq-audit-skid__svg.aq-iso { --iso-ground: var(--surface-raised); }
 .aq-audit-skid .aq-iso .aq-iso__eq { fill: var(--surface-raised); }
 .aq-audit-skid .aq-iso [data-iso-id] { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
@@ -76,4 +77,19 @@
   .aq-audit-skid__corner.is-l { left: var(--space-4); }
   .aq-audit-skid__corner.is-r { display: none; }
   .aq-audit-skid__fig { margin-inline: calc(var(--space-3) * -1); }
+  /* pass 12: every document shows (S7: each is pinned on the drawing) */
+  .aq-fold:not(.is-open) .aq-audit-skid__doc.aq-fold-x { display: grid; }
+  .aq-audit-skid .aq-fold__btn { display: none; }
+  /* the drawing as a 200 px strip under the header (PhoneKit, zoom 1.8): it pans to the pin of the document being
+     read; pins and ring keep their size against the zoom */
+  .aq-audit-skid[data-pk-on] { display: flex; flex-direction: column; }
+  .aq-audit-skid[data-pk-on] .aq-audit-skid__fig { margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-4)) var(--space-2); background: var(--surface-raised); border-bottom-color: var(--line); }
+  .aq-audit-skid[data-pk-on] .aq-audit-skid__pin { transform: scale(calc(1.2 / var(--pk-s, 1))); }
+  .aq-audit-skid[data-pk-on] .aq-audit-skid__pin.is-on { transform: scale(calc(1.4 / var(--pk-s, 1))); }
+  .aq-audit-skid[data-pk-on] .aq-audit-skid__ring::before { transform: scale(calc(1.2 / var(--pk-s, 1))); }
+  .aq-audit-skid[data-pk-on] .aq-audit-skid__corner.is-l { position: static; order: 9; margin-top: var(--space-2); }
+  .aq-audit-skid[data-pk-on] { padding-bottom: var(--space-6); }
+  .aq-audit-skid[data-pk-on] .aq-audit-skid__doc.is-on { box-shadow: inset 2px 0 0 var(--flow); }
+  /* the reader is about to read the next documents: never quieted on phones */
+  .aq-audit-skid[data-pk-on].is-pointing .aq-audit-skid__doc:not(.is-on) { opacity: 1; }
 }

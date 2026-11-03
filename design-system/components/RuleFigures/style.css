@@ -14,6 +14,13 @@
 .aq-rule-figures__fl.fl-hid { stroke-dasharray: 3 4; }
 .aq-rule-figures__ring { stroke: var(--flow); stroke-width: 1.5; }
 .aq-rule-figures__bub { stroke: var(--line-strong); stroke-width: 1.5; }
+/* sanitemp: the sanitization level along the run as a tinted band, the maximum it is held under as a dashed line */
+.aq-rule-figures svg .aq-rule-figures__band { fill: var(--flow-tint); stroke: none; }
+.aq-rule-figures__lim { stroke: var(--ink-subtle); stroke-width: 1; stroke-dasharray: 5 4; }
+/* sample / pou: a valve the copy has not chosen yet, drawn as an open, dashed seat */
+.aq-rule-figures svg .aq-rule-figures__open { fill: none; stroke: var(--ink-subtle); stroke-width: 1.5; stroke-dasharray: 4 3; }
+/* the phone crop of each figure is phone-only */
+.aq-rule-figures svg.aq-rule-figures__fig--ph { display: none; }
 .aq-rule-figures svg .aq-rule-figures__bub { fill: var(--surface); }
 .aq-rule-figures__bub.is-opt { stroke-dasharray: 4 3; }
 .aq-rule-figures__tx { fill: var(--ink-muted); font: 500 11px/1 var(--font-mono); }
@@ -40,6 +47,8 @@
 .aq-rule-figures__dl div { display: grid; gap: var(--space-1); }
 .aq-rule-figures__dl dt { font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 .aq-rule-figures__dl dd { margin: 0; }
+/* the basis is its own dl after the (phone-only) Basis head, so the dl stays valid; spaced as when it sat inside the first */
+.aq-rule-figures__dl[data-pk-body] { gap: var(--space-1); margin-top: calc(var(--space-3) - var(--space-4)); }
 .aq-rule-figures__v { font: 400 16px/24px var(--font-sans); color: var(--ink); }
 .aq-rule-figures__m { font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
 .aq-rule-figures__link { color: var(--flow); }
@@ -67,14 +76,43 @@
   .aq-rule-figures__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @container (max-width: 860px) {
+  /* Phones (pass 12, S9/S13): the lead text over its pipe, the pipe inside the gutter; then each rule a row: its figure
+     cropped square at 96 px on the left (letters at 12 px or more), number and name, rule figure and design value on
+     the right; the basis behind a "Basis +" head (PhoneKit accordion). The fold still shows the first rules. */
   .aq-rule-figures { gap: var(--space-8); }
   .aq-rule-figures__cap { position: static; }
-  .aq-rule-figures__lead { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .aq-rule-figures__lead-art { margin-right: calc(-1 * var(--space-4)); margin-left: calc(-1 * var(--space-4)); aspect-ratio: 10 / 3; }
-  .aq-rule-figures__no { font-size: 48px; }
-  .aq-rule-figures__lead-p { font-size: 32px; line-height: 38px; }
-  .aq-rule-figures__rule--lead { font-size: 20px; line-height: 28px; }
-  .aq-rule-figures__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
-  .aq-fold:not(.is-open) .aq-rule-figures__card.aq-fold-x { display: none; }
+  .aq-rule-figures__lead { grid-template-columns: minmax(0, 1fr); gap: var(--space-5, 20px); padding-block: var(--space-6); }
+  .aq-rule-figures__lead-art { margin: 0; aspect-ratio: 3 / 1; }
+  .aq-rule-figures__no { font-size: var(--aq-num-phone, 44px); }
+  .aq-rule-figures__lead-p { font-size: 28px; line-height: 34px; }
+  .aq-rule-figures__rule--lead { font-size: 18px; line-height: 26px; }
+  .aq-rule-figures__grid { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .aq-rule-figures__card { display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2); align-content: start; padding: var(--space-4) 0; }
+  .aq-rule-figures__card.is-nofig { grid-template-columns: minmax(0, 1fr); }
+  .aq-rule-figures__card > :not(.aq-rule-figures__figbox) { grid-column: -2 / -1; }
+  .aq-rule-figures__figbox { grid-column: 1; grid-row: 1 / span 3; align-self: start; width: 96px; height: 96px; aspect-ratio: auto; padding: 0; box-sizing: border-box; }
+  .aq-rule-figures__fig { display: none; }
+  .aq-rule-figures svg.aq-rule-figures__fig--ph { display: block; width: 100%; height: 100%; overflow: hidden; }
+  .aq-rule-figures__fig--ph .aq-rule-figures__tx { font-size: 17px; }
+  .aq-rule-figures__fig--ph path, .aq-rule-figures__fig--ph circle { vector-effect: non-scaling-stroke; stroke-width: 1.5px; }
+  .aq-rule-figures__fig--ph .aq-rule-figures__tx.is-mid { font-size: 17px; }
+  .aq-rule-figures__head { gap: var(--space-2); }
+  .aq-rule-figures__n { font-size: 20px; }
+  .aq-rule-figures__p { font-size: 18px; line-height: 24px; }
+  .aq-rule-figures__rule { font-size: 15px; line-height: 22px; }
+  .aq-rule-figures__dl { gap: var(--space-1); }
+  .aq-rule-figures__dl[data-pk-body] { margin-top: 0; }
+  .aq-rule-figures__grid[data-pk-on] .aq-rule-figures__dl > div:first-child dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-rule-figures__grid[data-pk-on] [data-pk-body] > dt { display: none; }
+  .aq-rule-figures__v { font-size: 15px; line-height: 22px; }
+  .aq-rule-figures__m { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-rule-figures-sec .aq-rule-figures__grid[data-pk-on] .aq-rule-figures__bh {
+    width: auto; min-height: 44px; padding: 0; gap: 0; margin: calc(-2 * var(--space-1)) 0 calc(-1 * var(--space-3));
+    font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+  }
+  .aq-rule-figures-sec .aq-rule-figures__grid[data-pk-on] .aq-rule-figures__bh .aq-phone-kit__chev { margin-left: 0; }
+  .aq-rule-figures__link { position: relative; }
+  .aq-rule-figures__link::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; min-height: var(--aq-hit, 44px); transform: translateY(-50%); }
+  .aq-rule-figures .aq-fold:not(.is-open) .aq-rule-figures__card.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-rule-figures__grid) > .aq-fold__btn { display: flex; }
 }

@@ -27,7 +27,7 @@
 .aq-site-tiles__t { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-wrap: balance; }
 .aq-site-tiles__plate { display: flex; align-items: center; justify-content: center; min-height: calc(var(--space-32) + var(--space-12)); padding: var(--space-6) 0; }
 .aq-site-tiles__svg { display: block; width: 100%; max-width: calc(var(--space-32) * 1.6); height: calc(var(--space-32) + var(--space-8)); }
-.aq-site-tiles__spot { color: var(--on-navy); }
+.aq-site-tiles__spot { color: var(--on-navy); background-color: var(--limestone); }
 .aq-site-tiles__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy-muted); }
 .aq-site-tiles .aq-site-tiles__go { margin: var(--space-2) 0 0; align-self: end; }
 .aq-site-tiles__go a { display: inline-flex; align-items: center; min-height: var(--space-12); color: var(--on-navy); font: 500 14px/20px var(--font-sans); text-decoration: none; box-shadow: inset 0 -1px 0 var(--on-navy-muted); }
@@ -51,21 +51,29 @@
   .aq-site-tiles__col:nth-child(n+3) { border-top: 1px solid color-mix(in srgb, var(--on-navy) 30%, transparent); }
   .aq-site-tiles-sec .aq-site-tiles__head .aq-h1 { font-size: 48px; line-height: 52px; }
 }
-/* Phones: one column per row; the drawing sits beside the number and title, the line and link under them */
+/* Phones (pass 12, S14): the sheet drops its frame, inner frame and zone bands (they ate about 50 px of a 343 px
+   column); each column stacks its drawing, 96 px tall and sat on its baseline, above the number and title, then the line and the link. */
 @container (max-width: 860px) {
-  .aq-site-tiles { --st-pad: var(--space-6); padding: var(--space-8) var(--space-6); outline-offset: calc(var(--space-3) * -1); }
-  .aq-site-tiles__band--t, .aq-site-tiles__band--b { height: var(--space-3); font-size: 0; }
-  .aq-site-tiles__band--l, .aq-site-tiles__band--r { display: none; }
+  .aq-site-tiles { --st-pad: 0px; padding: 0; border: 0; outline: 0; }
+  .aq-site-tiles__band { display: none; }
   .aq-site-tiles__head { padding: 0 0 var(--space-8); }
   .aq-site-tiles-sec .aq-site-tiles__head .aq-h1 { font-size: 36px; line-height: 40px; }
   .aq-site-tiles__cols { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
-  .aq-site-tiles__col, .aq-site-tiles__col:nth-child(n) { grid-row: auto; grid-template-rows: none; grid-template-columns: minmax(0, 1fr) minmax(0, 8rem); column-gap: var(--space-4);
-    padding: var(--space-4) 0 var(--space-6); border-left: 0; }
+  .aq-site-tiles__col, .aq-site-tiles__col:nth-child(n) { grid-row: auto; display: flex; flex-direction: column; padding: var(--space-6) 0 var(--space-4); border-left: 0; }
   .aq-site-tiles__col + .aq-site-tiles__col { border-top: 1px solid color-mix(in srgb, var(--on-navy) 30%, transparent); }
-  .aq-site-tiles__n { grid-column: 1; margin-bottom: var(--space-2); }
-  .aq-site-tiles__t { grid-column: 1; font-size: 22px; line-height: 28px; }
-  .aq-site-tiles__plate { grid-column: 2; grid-row: 1 / span 2; min-height: 0; padding: 0; }
-  .aq-site-tiles__svg { height: calc(var(--space-16) + var(--space-8)); }
-  .aq-site-tiles__d, .aq-site-tiles .aq-site-tiles__go { grid-column: 1 / -1; }
-  .aq-site-tiles__d { margin-top: var(--space-3); }
+  /* the spool, stamp and valve drawings carry about 20 px of empty bounds under them, so their plate sits flush on the
+     title; the softener and truck end on their floor line and keep a 16 px gap */
+  .aq-site-tiles__plate { order: -1; justify-content: flex-start; align-items: flex-end; min-height: 0; padding: 0; margin-bottom: 0; }
+  .aq-site-tiles__col.is-softener .aq-site-tiles__plate, .aq-site-tiles__col.is-truck .aq-site-tiles__plate { margin-bottom: var(--space-4); }
+  .aq-site-tiles__svg { width: auto; max-width: 100%; height: calc(var(--space-16) + var(--space-8)); }
+  .aq-site-tiles__spot.aq-spot { width: calc(var(--space-16) + var(--space-2)); height: calc(var(--space-16) + var(--space-2)); }
+  .aq-site-tiles__n { position: absolute; right: 0; top: var(--space-6); margin: 0; }
+  .aq-site-tiles__t { font-size: 22px; line-height: 28px; }
+  .aq-site-tiles__col .aq-site-tiles__d { margin-top: var(--space-2); }
+  .aq-site-tiles .aq-site-tiles__go { align-self: flex-start; margin-top: var(--space-1); }
+}
+/* Tablets (600-860): the stacked columns pair up two by two, so the drawings do not sit beside a page of empty width */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-site-tiles__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-6); }
+  .aq-site-tiles__col:nth-child(-n+2) { border-top: 0; }
 }

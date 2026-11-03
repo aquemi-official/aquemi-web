@@ -4,7 +4,9 @@
    water down the terraces from slab to slab, the loop runs overhead back to the tank, and a cut-paper stream in
    flow-tint runs behind the whole terrace. The stage names hang over their slab as a row of labels whose left
    hairline drops to the part (one leader per stage). The base line (monitoring) is a dashed signal bus along the foot
-   of the terrace. Phones: the labels stack down a vertical pipe, each with its own slab and equipment beside it.
+   of the terrace. Phones (pass 12): the run turns vertical: each stage's slab drawing runs wide, alternating left and
+   right, and one pipe zigzags down between them, in at one corner of a slab and out at the other, then down the page
+   edge past the stage's text to the next slab. The text sits under its slab.
    Fields: stages [{t, d, icon|spot, link, art}], base, base_link, caption. art: what stands on the slab, one of
    feed, pretreatment, generation, storage, loop, outlets (default by position). link: a page id or page#anchor. */
 var SR_ART=['feed','pretreatment','generation','storage','loop','outlets'];
@@ -71,9 +73,14 @@ LOOKS['strata-run']=function(b,H){
  /* labels */
  var items=S.map(function(s,i){var k=SR_ART.indexOf(s.art)>=0?s.art:SR_ART[Math.min(i,5)],m=srScene([{art:k}],true),mb=isoBounds(m.pts,6);
   var mini=isoSvg(Math.round(mb.w),Math.round(mb.h),m.svg,'aq-strata-run__mini',{origin:[-mb.x,-mb.y]});
+  /* phone pipe: where the slab's left and right corners sit (mid-height of the slab), as fractions of the drawing */
+  var sw=k==='generation'?124:k==='outlets'?118:k==='feed'?60:100,sd=k==='generation'?84:70,cl=isoP([-sw/2,sd/2,11]),cr=isoP([sw/2,-sd/2,11]);
+  var pipe='<span class="aq-strata-run__pp aq-strata-run__pp--iv"></span><span class="aq-strata-run__pp aq-strata-run__pp--ih"></span>'
+   +(i<n-1?'<span class="aq-strata-run__pp aq-strata-run__pp--oh"></span><span class="aq-strata-run__pp aq-strata-run__pp--ov"></span>':'');
+  var ly=((cl[1]-mb.y)/mb.h).toFixed(3),ry=((cr[1]-mb.y)/mb.h).toFixed(3);
   var t='<h3 class="aq-strata-run__t">'+(s.link&&wp(s.link)?'<a href="#'+e(s.link)+'" data-wp="'+e(s.link)+'">'+tx(s.t)+'</a>':tx(s.t))+'</h3>';
-  return '<li class="aq-strata-run__stage" data-stage="s'+i+'" data-art="'+k+'">'+idx(i)+t+(s.d?'<p class="aq-strata-run__d">'+tx(s.d)+'</p>':'')
-   +'<span class="aq-strata-run__thumb" aria-hidden="true">'+mini+'</span></li>'}).join('');
+  return '<li class="aq-strata-run__stage" data-stage="s'+i+'" data-art="'+k+'" style="--ly:'+ly+';--ry:'+ry+'">'+idx(i)+t+(s.d?'<p class="aq-strata-run__d">'+tx(s.d)+'</p>':'')
+   +'<span class="aq-strata-run__thumb" aria-hidden="true">'+mini+pipe+'</span></li>'}).join('');
  var base=b.base?'<p class="aq-strata-run__base" data-stage="mon"><span class="aq-strata-run__bus-key" aria-hidden="true"></span>'
   +(b.base_link&&wp(b.base_link)?'<a href="#'+e(b.base_link)+'" data-wp="'+e(b.base_link)+'">'+tx(b.base)+'</a>':'<span>'+tx(b.base)+'</span>')+'</p>':'';
  return sec(H+'<div class="aq-strata-run"><ol class="aq-strata-run__stages" role="list">'+items+'</ol>'

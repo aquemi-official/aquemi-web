@@ -133,9 +133,30 @@
 /* The droplet Closing/motion.js sends through the pipe once */
 .aq-closing__pipe > i { position: absolute; left: 0; top: 50%; width: var(--space-2); height: var(--space-2); margin: calc(-1 * var(--space-1)) 0 0 calc(-1 * var(--space-1)); border-radius: 50%; background: var(--on-navy); opacity: 0; }
 
+/* "Reply within": the words before the turnaround, shown on phones only (on desktop the pipe already says it) */
+.aq-closing__within { display: none; }
+
+/* Call variant (cta.variant "call", contact-proposal): the exchange is a phone call. The middle column is wider; the
+   line's name rides above the pipe as the turnaround does, and the call button (a tel: link, 44 px; until the number
+   is confirmed the Button's pending text) hangs under it. */
+.aq-closing__swap--call { grid-template-columns: minmax(0, 1fr) minmax(calc(var(--space-32) + var(--space-16)), calc(2 * var(--space-32) + var(--space-6))) minmax(0, 1fr); }
+.aq-closing__call { position: absolute; left: 0; right: 0; top: calc(50% + var(--space-3)); display: flex; justify-content: center; padding-inline: var(--space-3); }
+.aq-closing__call .aq-btn { min-height: var(--aq-hit); max-width: 100%; white-space: normal; text-align: center; justify-content: center; }
+/* Until the number is confirmed the Button writes plain pending text (it never pretends to dial); here it keeps the
+   44 px slot the call button will fill, marked by a dashed hairline */
+.aq-closing__call .aq-btn--pending {
+  display: inline-flex; align-items: center; padding-inline: var(--space-3); color: var(--on-navy); font: 500 14px/20px var(--font-sans);
+  background: var(--navy); border: 1px dashed var(--aq-c-line, var(--line-strong)); border-radius: var(--radius-sm);
+}
+.aq-closing__turn--call .aq-closing__turn-t { color: var(--on-navy); }
+/* the band holds no button under the lead in a call: the exchange starts a step closer */
+.aq-closing--call .aq-closing__more { margin-top: var(--space-8); }
+
 @container (max-width: 860px) {
-  /* Phones: compact (it ends every page). Headline, lead, full-width button, then the send rows (four at most), the
-     pipe turned to run down with the turnaround beside it, and the returned sheets (three at most). No proof. */
+  /* Phones (pass 12, S3): compact, but nothing is dropped. Headline, lead, full-width button, then the exchange as a
+     vertical flow down the band: every "what to send" item as a two-column chip grid (a long item takes the row), a
+     centred pipe running down to an arrow with the turnaround as a chip on it ("Reply within [time]"), then every
+     returned document as a row with its drawn sheet. The proof figure stays, smaller. */
   .aq-closing.aq-section { padding-block: calc(var(--space-12) + var(--space-8)) var(--space-12); }
   .aq-closing__mark { width: 90%; }
   .aq-closing__frame { gap: var(--space-4); }
@@ -144,30 +165,65 @@
   .aq-closing__action { width: 100%; }
   .aq-closing__action .aq-btn { width: 100%; justify-content: center; }
   .aq-closing__action .aq-btn--primary { min-height: var(--space-12); }
-  .aq-closing__more { margin-top: var(--space-6); gap: var(--space-4); }
-  .aq-closing__proof { display: none; }
-  .aq-closing__include ol { columns: 1; }
-  .aq-closing__include li:nth-child(n+5), .aq-closing__returns li:nth-child(n+4) { display: none; }
-  .aq-closing__include li { padding-block: var(--space-2); font-size: 14px; line-height: 22px; }
-  .aq-closing__include .aq-index { line-height: 22px; }
-  .aq-closing__swap { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
-  .aq-closing__swap .aq-closing__include li, .aq-closing__swap .aq-closing__returns li { min-height: var(--space-12); padding: var(--space-2) 0 var(--space-2) var(--space-6); font-size: 14px; }
-  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) > .aq-closing__tag { margin: 0 0 0 var(--space-6); }
-  /* both manifolds on the left, one bus down the whole exchange */
-  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li::after, .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li::before { right: auto; left: 0; }
-  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li:last-child::before { bottom: 0; }
-  .aq-closing__swap .aq-closing__returns li:first-child::before { top: 0; }
-  .aq-closing__turn { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--space-3); min-height: var(--space-12); padding: 0; text-align: start; font-size: 12px; }
-  .aq-closing__turn-t { position: static; padding: 0; }
-  .aq-closing__swap { padding-top: 0; }
-  .aq-closing__swap .aq-closing__include > .aq-closing__tag { position: static; }
-  /* the bus runs on past the returns label, so the exchange reads as one line down the band */
-  .aq-closing__swap .aq-closing__returns > .aq-closing__tag { margin: 0; padding: var(--space-2) 0 var(--space-2) var(--space-6); border-left: 1px solid var(--aq-c-line, var(--line-strong)); }
-  .aq-closing__pipe { flex: none; width: var(--space-2); height: auto; align-self: stretch; margin-left: calc(-0.5 * var(--space-2) + 0.5px); border: 0; border-left: 1px solid var(--aq-c-line, var(--line-strong)); border-right: 1px solid var(--aq-c-line, var(--line-strong)); transform-origin: 50% 0; transform: scaleY(var(--aq-pipe, 1)); }
+  .aq-closing__more { margin-top: var(--space-6); gap: var(--space-6); }
+  .aq-closing__value { font-size: 28px; line-height: 34px; }
+
+  /* the send list (and a plain checklist) as chips, two to a row */
+  .aq-closing__include { gap: var(--space-3); }
+  .aq-closing__include:not(.aq-closing__returns) ol,
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) ol {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); columns: auto; border: 0;
+  }
+  .aq-closing__include:not(.aq-closing__returns) li,
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li {
+    display: flex; align-items: flex-start; gap: var(--space-2); min-height: var(--space-12); margin: 0;
+    padding: var(--space-2) var(--space-3); border: 1px solid var(--aq-c-hair, var(--line)); border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--navy) 70%, transparent);
+    font-size: var(--aq-read-phone, 14px); line-height: 20px;
+  }
+  .aq-closing__include:not(.aq-closing__returns) li.is-wide { grid-column: 1 / -1; }
+  .aq-closing__include:not(.aq-closing__returns) li .aq-index { flex: none; line-height: 20px; font-size: 12px; }
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li + li { border-top: 1px solid var(--aq-c-hair, var(--line)); }
+
+  /* the exchange runs down the band */
+  .aq-closing__swap, .aq-closing__swap--call { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding-top: 0; }
+  .aq-closing__swap .aq-closing__include > .aq-closing__tag,
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) > .aq-closing__tag,
+  .aq-closing__swap .aq-closing__returns > .aq-closing__tag { position: static; margin: 0 0 var(--space-1); padding: 0 0 var(--space-2); border: 0; border-bottom: 1px solid var(--aq-c-hair, var(--line)); }
+  /* no manifolds on phones: the pipe in the middle carries the flow */
+  .aq-closing__swap .aq-closing__include li::before, .aq-closing__swap .aq-closing__include li::after { display: none; }
+  .aq-closing__swap .aq-closing__returns ol { columns: 1; border-bottom: 1px solid var(--aq-c-hair, var(--line)); }
+  .aq-closing__swap .aq-closing__returns li {
+    min-height: var(--space-12); padding: var(--space-2) 0; grid-template-columns: var(--space-8) var(--space-8) minmax(0, 1fr);
+    font-size: var(--aq-read-phone, 14px); line-height: 20px;
+  }
+  .aq-closing__swap .aq-closing__returns li + li { border-top: 1px solid var(--aq-c-hair, var(--line)); }
+
+  /* the pipe: centred, running down behind the turnaround chip to an arrow, with a clear run above and below the chip
+     so it reads as a pipe even when the chip wraps to two lines */
+  .aq-closing__turn {
+    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2);
+    min-height: calc(var(--space-16) + var(--space-8)); padding: var(--space-12) 0; text-align: center; font-size: 13px;
+  }
+  .aq-closing__pipe {
+    position: absolute; left: calc(50% - var(--space-1)); top: var(--space-2); bottom: var(--space-3); width: var(--space-2); height: auto;
+    border: 0; border-left: 1px solid var(--aq-c-line, var(--line-strong)); border-right: 1px solid var(--aq-c-line, var(--line-strong));
+    transform-origin: 50% 0; transform: scaleY(var(--aq-pipe, 1));
+  }
   .aq-closing__pipe::before { left: calc(50% - 0.75px); right: auto; top: 0; bottom: 0; width: 1.5px; height: auto; transform-origin: 50% 0; transform: scaleY(var(--aq-water, 1)); }
   .aq-closing__pipe::after { right: auto; left: 50%; top: auto; bottom: calc(-1 * var(--space-1)); transform: translate(-50%, -50%) rotate(135deg); }
   .aq-closing__pipe > i { left: 50%; top: 0; }
-  .aq-closing__swap .aq-closing__returns > .aq-closing__tag { margin-top: 0; }
+  .aq-closing__turn-t {
+    position: relative; z-index: 1; left: auto; right: auto; bottom: auto; max-width: 100%; padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--aq-c-line, var(--line-strong)); border-radius: var(--radius-sm); background: var(--navy);
+    font: 400 var(--aq-read-phone, 14px)/20px var(--font-mono); color: var(--on-navy);
+  }
+  .aq-closing__within { display: inline; font-family: var(--font-sans); font-size: var(--aq-read-phone, 14px); color: var(--on-navy-muted); }
+  /* call: the line's name as the chip, the call button under it on the pipe */
+  .aq-closing__turn--call { padding-bottom: var(--space-8); }
+  .aq-closing__call { position: relative; z-index: 1; top: auto; left: auto; right: auto; padding: 0; width: 100%; }
+  .aq-closing__call .aq-btn { width: 100%; min-height: var(--space-12); }
+  .aq-closing__call .aq-btn--pending { justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .aq-closing__action .aq-btn__arrow { transition: none; } }
 

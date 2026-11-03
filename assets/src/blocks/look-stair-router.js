@@ -8,8 +8,11 @@
    the last sits large on the wedge; decorative, aria-hidden). A card whose cells link somewhere (the last link wins)
    is clickable as a whole through a pointer-only overlay; the real link stays the keyboard target and its intent rides
    on both. A value that opens with a [placeholder] is a pending value: dashed rule and "To confirm".
-   Best for 3 to 7 rows. Design system: components/StairRouter. */
-LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b.labels||[],K=b.kinetic||[],w0=K[0]||'',w1=K.length>1?K[K.length-1]:'';
+   Best for 3 to 7 rows. Design system: components/StairRouter.
+   Phones (pass 12, PhoneKit): a situation picker. With labels, the labels are chips in two columns (01 open first) and
+   the one card shows under them; without labels, the situations are accordion heads with the card under its head. The
+   stair stays as a thin rising rail at the top of the card (this step lit); no indents. */
+LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b.labels||[],K=b.kinetic||[],w0=K[0]||'',w1=K.length>1?K[K.length-1]:'',acc=!L.length;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
  function val(c){return c&&typeof c==='object'?c.t:c}
  function words(side){return '<div class="aq-stair-router__words aq-stair-router__words--'+side+'">'
@@ -22,13 +25,15 @@ LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b
   var dl=(lab?'<div class="aq-stair-router__f is-sit"><dt>'+tx(C[0]||'')+'</dt><dd>'+tx(s)+'</dd></div>':'')
    +st.map(function(c,j){var pend=j!==go&&/^\s*\[/.test(val(c)),cl=['aq-stair-router__f'];if(j===go)cl.push('is-go');if(pend)cl.push('is-pending');
     return '<div class="'+cl.join(' ')+'"><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+(pend?' <span class="aq-stair-router__tbc">To confirm</span>':'')+'</dd></div>'}).join('');
-  return '<li class="aq-stair-router__step'+(to?' is-link':'')+'" style="--i:'+i+'">'
+  var chip='<button type="button" class="aq-stair-router__chip" data-pk-head><span class="aq-stair-router__cn" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-stair-router__cl">'+tx(lab||s)+'</span>'+(acc?'<span class="aq-phone-kit__chev" aria-hidden="true"></span>':'')+'</button>';
+  var rail='<span class="aq-stair-router__rail" aria-hidden="true"><b>'+(i<9?'0':'')+(i+1)+' / '+(n<10?'0':'')+n+'</b><span>'+R.map(function(_,k){return '<i class="'+(k<i?'is-past':k===i?'is-here':'')+'" style="--k:'+k+'"></i>'}).join('')+'</span></span>';
+  return '<li class="aq-stair-router__step'+(to?' is-link':'')+'" style="--i:'+i+'" data-pk-item="'+i+'">'
    +'<span class="aq-stair-router__n" aria-hidden="true"><span class="aq-stair-router__num">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-stair-router__arrow"></span></span>'
    +'<span class="aq-stair-router__tread" aria-hidden="true"></span>'+(i?'<span class="aq-stair-router__riser" aria-hidden="true"></span>':'')
-   +'<div class="aq-stair-router__card">'
+   +chip+'<div class="aq-stair-router__card" data-pk-body>'+rail
    +(to?'<a class="aq-stair-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'"'+(ti?' data-intent="'+e(ti)+'"':'')+' tabindex="-1" aria-hidden="true"></a>':'')
    +'<h3 class="aq-stair-router__t">'+tx(lab||s)+'</h3><dl class="aq-stair-router__dl">'+dl+'</dl></div></li>'}).join('');
  return '<section class="aq-section aq-stair-router-sec">'+type+'<div class="aq-stair-router__wedge" aria-hidden="true"></div>'
   +(w1?'<p class="aq-stair-router__go" aria-hidden="true">'+e(w1)+'</p>':'')
   +'<div class="aq-in"><div class="aq-stair-router" style="--n:'+n+'">'+H
-  +'<ol class="aq-stair-router__flight">'+steps+'</ol><span class="aq-stair-router__drop" aria-hidden="true"></span></div></div></section>'};
+  +'<ol class="aq-stair-router__flight" data-pk-picker="'+(acc?'accordion':'chips')+'" data-pk-open="0">'+steps+'</ol><span class="aq-stair-router__drop" aria-hidden="true"></span></div></div></section>'};

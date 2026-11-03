@@ -2,8 +2,9 @@
    on a navy band (pass 9b concept svc-upgrades.4). The pipe is the process axis: each step owns one run of it, a line
    icon above its run and its number, name and line below; a gate valve sits on every joint between two steps, so a
    step is a stage gate the water passes. Your system's water fills the pipe; a legend over the pipe names it with the
-   block's lane ("Your system"). A step with a hold puts a "Hold" tag on the gate after it (the water waits there for who
-   signs). The step whose line names a (planned) shutdown has a dry run: walls only, dashed, labelled with those words,
+   block's lane ("Your system"). A step with a hold marks the gate after it (is-hold; in motion the water waits there
+   until the hold stamp strikes); the "Hold" stamp with who signs reads once, under that step (pass 12: the gate's
+   own "Hold" tag repeated it and is gone). The step whose line names a (planned) shutdown has a dry run: walls only, dashed, labelled with those words,
    because the system is off while that step is done; the water runs on after it.
    Each step carries its own run and gate, so the same markup reflows: a row of runs at desktop, a vertical pipe down
    the left on phones.
@@ -15,7 +16,7 @@ LOOKS['gate-line']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-gate-line
  var li=I.map(function(it,i){var t=tx(it.t);if(it.link&&wp(it.link))t='<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>';
   var held=i>0&&I[i-1].hold;
   var run='<span class="'+K+'__run" aria-hidden="true"><span class="'+K+'__walls"></span>'+(i===cut?'<span class="'+K+'__dry"><span class="'+K+'__dl">'+e(lab)+'</span></span>':'<span class="'+K+'__water"></span>')
-   +(i>0?'<span class="'+K+'__gate'+(held?' is-hold':'')+'">'+glValve()+(held?'<span class="'+K+'__gk">Hold</span>':'')+'</span>':'')
+   +(i>0?'<span class="'+K+'__gate'+(held?' is-hold':'')+'">'+glValve()+'</span>':'')
    +(i===n-1?'<span class="'+K+'__out"></span>':'')+'</span>';
   return '<li class="'+K+'__step'+(i===cut?' is-cut':'')+(it.hold?' is-hold':'')+'" style="--i:'+i+'">'
    +'<span class="'+K+'__ic" aria-hidden="true">'+(isIcon(it.icon)?wIcon(it.icon):'')+'</span>'+run

@@ -1,0 +1,126 @@
+{
+ "look": "use-matrix",
+ "component": "UseMatrix",
+ "type": "table",
+ "fields": "cols [row label, use 1 … use n] (2 to 6 uses), rows ([industry string or {t, link}, cell …]; a cell \"—\" or \"-\" or \"\" is a blank), intro.",
+ "best_for": "UseMatrix shows an industry-by-use table as one water main: a twin-wall pipe runs along the column heads and tees down into every use column, and each cell is a square on its column's line, navy where a grade is set and open where the cell is a dash.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "industries",
+   "slot": 1,
+   "h": "Industry by water use",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "f901e9cfa6",
+   "block": {
+    "type": "table",
+    "look": "use-matrix",
+    "anchor": "matrix",
+    "nav": "By use",
+    "h": "Industry by water use",
+    "intro": "The minimum grade at each use, and who sets it; a dash where no grade is set. Your specification can go higher. Lab cells: the grade each test method names.",
+    "cols": [
+     "Industry",
+     "In the product",
+     "Final rinse",
+     "Cleaning",
+     "Lab",
+     "Equipment feed"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Drugs and natural health products",
+       "link": "ind-pharma"
+      },
+      "PW (GUI-0001); potable minimum for natural health products (GUI-0158)",
+      "Same grade as the product (EMA)",
+      "Potable for the initial rinse (EMA)",
+      "Meets each test method (GUI-0001)",
+      "—"
+     ],
+     [
+      {
+       "t": "Contract manufacturing",
+       "link": "ind-cdmo"
+      },
+      "PW: stricter of USP and Ph. Eur., plus client limits",
+      "Same grade as each client’s product (EMA)",
+      "Potable for the initial rinse (EMA)",
+      "Meets each test method",
+      "—"
+     ],
+     [
+      {
+       "t": "Medical devices",
+       "link": "ind-meddevice"
+      },
+      "Your specification for reagents and solutions (ISO 13485)",
+      "PW; endotoxin limit by body contact (USP <161>)",
+      "Set by your cleaning validation",
+      "Meets each test method",
+      "—"
+     ],
+     [
+      {
+       "t": "Hospital sterile processing",
+       "link": "ind-hospital-lab#reprocessing"
+      },
+      "—",
+      "Critical water (ANSI/AAMI ST108:2023)",
+      "Utility water (ST108:2023)",
+      "Clinical laboratory reagent water (CLSI GP40)",
+      "Washer and sterilizer maker’s specification"
+     ],
+     [
+      {
+       "t": "Research and quality control laboratories",
+       "link": "ind-hospital-lab#labs"
+      },
+      "—",
+      "—",
+      "—",
+      "ASTM D1193-24 Type II or III, by method",
+      "Washer, autoclave and humidifier maker’s specification"
+     ],
+     [
+      {
+       "t": "Cosmetics and personal care",
+       "link": "ind-personal-care"
+      },
+      "Your written specification; PW for drug lines",
+      "Your written specification",
+      "—",
+      "Meets each test method",
+      "—"
+     ],
+     [
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      },
+      "Potable minimum (Safe Food for Canadians Regulations; 21 CFR 117); your recipe sets the rest",
+      "Potable minimum",
+      "Potable minimum",
+      "Meets each test method",
+      "Boiler maker’s make-up specification"
+     ],
+     [
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      },
+      "Your product specification",
+      "Your process limit",
+      "—",
+      "—",
+      "Electrolyser, boiler or humidifier maker’s limit"
+     ]
+    ]
+   }
+  }
+ ]
+}

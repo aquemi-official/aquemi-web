@@ -1,13 +1,17 @@
 /* RetrofitPlant: the existing plant is drawn and the water runs it once at full strength (IsoKit's choreography, the
    faint "existing" state held off until then), then the plant drops back to existing, the sheet moves in on the picked
    upgrade (CSS transition on the camera group, 0.9 s) and its stages light; the tab list and the panel rise. One timeline, once, under 5 s. Picking another upgrade fades the sheet over
-   (CSS). Phones: the cards rise as they scroll in. */
+   (CSS). Phones (pass 12): the cropped sheet fades in, the chips rise in turn, then the panel; picking a chip moves
+   the camera and the key-plan window as on desktop (CSS transition, none under reduced motion). */
 AQmotion.fx('RetrofitPlant', function (root, m) {
   root.querySelectorAll('.aq-retrofit-plant').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
     var svg = el.querySelector('.aq-retrofit-plant__svg'), q = function (s) { return [].slice.call(el.querySelectorAll(s)) };
-    if (m.narrow()) { q('.aq-retrofit-plant__panel').forEach(function (p) { var t = m.tw(gsap.timeline({ paused: true }));
-      t.from(p, { y: 16, autoAlpha: 0, duration: 0.5, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }); m.on(p, function () { t.play() }, 'top 90%') }); return }
+    if (m.narrow()) { var t = m.tw(gsap.timeline({ paused: true }));
+      t.from(el.querySelector('.aq-retrofit-plant__sheet'), { autoAlpha: 0, duration: 0.5, ease: 'power2.out', clearProps: 'opacity,visibility' }, 0);
+      t.from(q('.aq-retrofit-plant__tab'), { y: 10, autoAlpha: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0.2);
+      t.from(q('.aq-retrofit-plant__panel:not(.is-off) > *'), { y: 14, autoAlpha: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0.4);
+      m.on(el, function () { t.play() }, 'top 80%'); return }
     var tl = window.AQiso && svg ? AQiso.timeline(svg, m, { draw: 1.2, pipe: 0.6, flow: 1.3, stagger: 0.05, keep: true }) : null;
     if (!tl) return;
     function relight() { q('.aq-retrofit-plant__svg .is-lit').forEach(function (x) { x.classList.remove('is-lit') });

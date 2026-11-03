@@ -1,0 +1,79 @@
+{
+ "look": "fit-readout",
+ "component": "FitReadout",
+ "type": "spec",
+ "fields": "h, intro, caption, rows [{p, v, m, link, link_label, hl}], tiles (how many rows are tiles, default 3).",
+ "best_for": "FitReadout shows a fit test read off an instrument: a navy readout plots the loop material's pressure rating falling as it heats up to one limit line, beside the test's numbered rule tiles, with the rows that are not served or answered elsewhere as outlined tags that link their homes.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "industries",
+   "slot": 3,
+   "h": "Where the package fits, in any industry",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "f6841a4",
+   "hash": "81ef590a55",
+   "block": {
+    "type": "spec",
+    "as": "rules",
+    "look": "fit-readout",
+    "anchor": "fit",
+    "nav": "Fit",
+    "h": "Where the package fits, in any industry",
+    "caption": "FIT · EVERY INDUSTRY",
+    "intro": "One test for every industry: an ambient loop, sanitized chemically. Where an industry needs more, its page answers it.",
+    "cols": [
+     "Condition",
+     "Our answer",
+     "Basis or detail"
+    ],
+    "rows": [
+     {
+      "p": "Temperature and pressure",
+      "hl": true,
+      "v": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "m": "The PP maker’s pressure–temperature curve sets every loop’s limits."
+     },
+     {
+      "p": "Hot water",
+      "fig": "sanitize",
+      "v": "Any hot-water cycle stays inside the PP maker’s pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C].",
+      "m": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]."
+     },
+     {
+      "p": "Chemical sanitization",
+      "v": "[PP loop sanitization method]; residual tested before use.",
+      "link": "sys-storage#sanitization",
+      "link_label": "How the loop is sanitized"
+     },
+     {
+      "p": "Standards that name 316L stainless steel",
+      "v": "Not served",
+      "m": "Our loops are polypropylene after PVC pretreatment."
+     },
+     {
+      "p": "Water for Injection and pure steam",
+      "v": "Not supplied",
+      "link": "industries#faq",
+      "link_label": "Why, in the questions below"
+     },
+     {
+      "p": "Hospitals and laboratories",
+      "v": "The grades we design to, and what we do not supply",
+      "link": "ind-hospital-lab#faq",
+      "link_label": "Hospital and lab questions"
+     },
+     {
+      "p": "Food, beverage and industrial",
+      "v": "Where generation fits, and the plants it does not",
+      "link": "ind-process#fit",
+      "link_label": "Process plant fit"
+     }
+    ],
+    "fold_noun": "conditions"
+   }
+  }
+ ]
+}

@@ -9,3 +9,6 @@ Look `review-reticles` (`assets/src/blocks/look-review-reticles.js`) on a `grid`
 - Phones: no zones and no viewer; the register alone, a square viewfinder (2/5) beside each area's name and line.
 
 Motion: the zone strips fade in, register rows rise one by one, the big viewfinder's brackets close in from wide, the first drawing prints up, a scan line sweeps once and the title block lands. Once, about 2 s. Phones: per row, its small viewfinder frames and prints, the text rises. The reel is a port of Subframe Motion project-index.
+
+Phones (pass 12, minor): the viewfinder tiles are 96 px square (were about 130 px, two fifths of the row), corner
+brackets 12 px; the area's name and line take the rest of the width. Desktop unchanged.

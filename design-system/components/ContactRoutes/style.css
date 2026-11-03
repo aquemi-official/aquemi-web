@@ -51,7 +51,11 @@
   clip-path: polygon(0 0, calc(100% - var(--space-4)) 0, 100% 100%, 0 100%);
   font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
 }
-.aq-contact-routes__route.is-urgent .aq-contact-routes__tab { background: var(--line-strong); color: var(--ink); }
+/* The urgent tab: the urgent sheet's own navy ground with its line-strong edge (pass 12 verify L3: the line-strong slate
+   ground gave its 12 px mono 3.9:1 in ink and 2.3:1 in flow) */
+.aq-contact-routes__route.is-urgent .aq-contact-routes__tab { background: var(--navy); box-shadow: inset 1px 1px 0 var(--line-strong); color: var(--ink); }
+.aq-contact-routes__route.is-urgent.is-current .aq-contact-routes__mark { color: var(--ink); }
+.aq-contact-routes__rn-p { display: none; }
 .aq-contact-routes__rn { font-variant-numeric: tabular-nums; }
 .aq-contact-routes__mark { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--ink); }
 .aq-contact-routes__mark::before { content: "·"; content: "·" / ""; color: var(--ink-muted); }
@@ -169,4 +173,85 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
 @media (prefers-reduced-motion: no-preference) {
   a.aq-contact-routes__num { display: inline-block; transition: transform 120ms cubic-bezier(0.2, 0, 0, 1); }
   a.aq-contact-routes__num:active { transform: translateY(1px) scale(0.98); transition-duration: 60ms; }
+}
+
+/* ---------- Pass 12: phones (visual audit S11, about 2,000 px down to under 1,000) ----------
+   Desktop never shows the toggle or the jump row and always shows the steps. Below 860 px:
+   - the urgent route (first in the markup) stays a whole card: its number is a full-width call button (the action
+     fill; a tel: link over the whole box once the number is confirmed), its action an outlined button below;
+   - every route's steps sit behind "How it works" (a toggle that opens the numbered steps under it); the response
+     line keeps its clock mark and drops the "Response" eyebrow (44 px toggle, the shared --aq-hit floor);
+   - the route for this page is one line: its title as a 56 px anchor down to this page's form. */
+.aq-contact-routes__how, .aq-contact-routes__jump { display: none; }
+
+@container (max-width: 860px) {
+  .aq-contact-routes { row-gap: var(--space-4); margin-top: var(--space-4); }
+  .aq-contact-routes__main { padding-block: var(--space-3) var(--space-3); gap: var(--space-1); }
+  .aq-contact-routes__t { font-size: 22px; line-height: 28px; }
+  .aq-contact-routes__d { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  /* phone order: head, call, response line, toggle, steps, action */
+  .aq-contact-routes__clock { order: 3; }
+  .aq-contact-routes__how { order: 4; }
+  .aq-contact-routes__steps { order: 5; }
+  .aq-contact-routes__action { order: 6; }
+  .aq-contact-routes__jump { order: 7; }
+  .aq-contact-routes__action { padding-bottom: var(--space-3); }
+
+  /* Response line: compact, the clock mark small, no rail stub into it */
+  .aq-contact-routes__clock:not(.is-empty) { grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-2); border-top: 1px solid var(--line); }
+  .aq-contact-routes__clock:not(.is-empty)::before { display: none; }
+  .aq-contact-routes__clock .aq-contact-routes__k { display: none; }
+  .aq-contact-routes__end { grid-row: 1; width: var(--space-6); height: var(--space-6); margin-left: 0; }
+  .aq-contact-routes__end .aq-contact-routes__icon { width: 14px; height: 14px; }
+  .aq-contact-routes__v { font-size: 16px; line-height: 24px; }
+  .aq-contact-routes__v .aq-ph { font-size: var(--aq-chip-phone, 13px); line-height: 20px; }
+
+  /* "How it works": a full-width 48 px toggle row with a chevron; the steps show only while it is open */
+  .aq-contact-routes__how {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+    width: auto; min-height: var(--aq-hit, 44px); margin: 0; padding-block: 0; border: 0; border-top: 1px solid var(--line); background: none; cursor: pointer;
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); text-align: left;
+  }
+  .aq-contact-routes__how:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .aq-contact-routes__chev { flex: none; width: 8px; height: 8px; margin-right: var(--space-1); border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg); }
+  .aq-contact-routes__how[aria-expanded="true"] .aq-contact-routes__chev { transform: translateY(2px) rotate(-135deg); }
+  .aq-contact-routes__how[aria-expanded="false"] + .aq-contact-routes__steps { display: none; }
+  .aq-contact-routes__steps { gap: var(--space-4); padding-block: var(--space-2) var(--space-4) !important; border-top: 0; }
+  .aq-contact-routes__steps::before, .aq-contact-routes__steps::after { top: calc(var(--space-2) + 8px); bottom: var(--space-6); }
+  .aq-contact-routes__s { font-size: 15px; line-height: 22px; }
+
+  /* Urgent route: the call as a full-width button in the action fill, the route's own action outlined under it */
+  .aq-contact-routes__call:not(.is-empty) {
+    position: relative; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: var(--space-1) var(--space-2);
+    min-height: 56px; box-sizing: border-box; margin-bottom: var(--space-3) !important; padding: var(--space-3) var(--space-4) !important;
+    background: var(--action); border-color: var(--action); color: var(--on-action); border-radius: var(--radius-sm);
+  }
+  .aq-contact-routes__call .aq-contact-routes__icon { background-color: var(--on-action); }
+  .aq-contact-routes__call .aq-contact-routes__k { font: 500 16px/24px var(--font-sans); letter-spacing: 0; text-transform: none; color: inherit; }
+  .aq-contact-routes__call .aq-contact-routes__num { grid-column: auto; font: 500 18px/24px var(--font-mono); letter-spacing: 0; }
+  .aq-contact-routes__call .aq-contact-routes__num .aq-ph { font-size: var(--aq-read-phone, 14px); line-height: 22px; }
+  /* once the number is a tel: link, the whole button dials */
+  .aq-contact-routes__call a.aq-contact-routes__num::after { content: ""; position: absolute; inset: 0; }
+  .aq-contact-routes__route.is-urgent .aq-contact-routes__action .aq-btn--primary { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
+  .aq-contact-routes__route.is-urgent .aq-contact-routes__action .aq-btn--primary:hover { background: transparent; border-color: var(--ink); }
+
+  /* This page (not urgent): one line, the title as an anchor to the form */
+  .aq-contact-routes__route.is-current:not(.is-urgent) > :not(.aq-contact-routes__tab):not(.aq-contact-routes__jump),
+  .aq-contact-routes__route.is-current:not(.is-urgent) > .aq-contact-routes__body > * { display: none; }
+  .aq-contact-routes__route.is-current:not(.is-urgent) > .aq-contact-routes__jump {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: 56px;
+    font: 400 18px/24px var(--font-sans); color: var(--ink); text-decoration: none;
+  }
+  .aq-contact-routes__jump-arrow { flex: none; color: var(--flow); font-size: 20px; }
+  .aq-contact-routes__jump:hover > span:first-child { text-decoration: underline; text-underline-offset: 4px; }
+  .aq-contact-routes__jump:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+  /* Pass 12 verify: route numbers in phone order (L4); the urgent route tighter (L1): its response line merged under
+     the call with no rule, the call box 56 px with the phone icon alone saying "Call" (the description stays: it
+     carries the severity and the answer time) */
+  .aq-contact-routes__rn-d { display: none; }
+  .aq-contact-routes__rn-p { display: inline; }
+  .aq-contact-routes__route.is-urgent .aq-contact-routes__clock:not(.is-empty) { padding-block: var(--space-1); border-top: 0; }
+  .aq-contact-routes__call:not(.is-empty) { padding-block: var(--space-2) !important; }
+  .aq-contact-routes__call .aq-contact-routes__k { display: none; }
 }

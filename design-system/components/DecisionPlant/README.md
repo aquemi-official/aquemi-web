@@ -10,3 +10,7 @@ DecisionPlant sets an options block of decisions as numbered callouts round one 
 ## Motion
 
 Sheet, then the parts back to front, the pipes draw and the water runs the route once; then the decisions branch out: each leader draws from the part toward its callout and the callout rises in (from 0.96) as it arrives, 0.12 s apart. Once on scroll-in, under 4 s. Port of Subframe process-choreography (connectors drawn source to output, each output scaling in inside its window). Nothing under reduced motion.
+
+## Phones (pass 12)
+
+Under 1100 px (no leaders) each numbered marker on the drawing is a target (44 px hit box): tapping it opens its decision (the fold opens if that decision is folded away), lights the decision and its part, scrolls the decision into view and focuses it. Under 860 px the decision's number sits inline left of its title and each link is a 44 px row. Desktop is unchanged.

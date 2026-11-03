@@ -5,10 +5,14 @@
    switch with a dashed DMZ boundary and firewall). A data riser climbs from plate to plate and a trace crosses each
    plate top; one packet rides it from the instruments to the plant network. Labels alternate right and left of the
    stack, each on a leader from its plate's corner. A stage marked key (the controller that runs on its own) is the
-   navy plate. Phones: the stack fills the width (cropped from the same drawing), the labels list under it.
+   navy plate. Phones: the stack fills the width (cropped from the same drawing) with each plate tagged 01-05, the labels list
+   under it top plate first, so list and drawing read in the same order.
    Fields: stages [{t, d, icon, art, key}], caption. art: instruments | plc | hmi | historian | network (default by
    position). key: true draws that plate navy. */
 var LS_ART=['instruments','plc','hmi','historian','network'],LS_W=170,LS_D=80,LS_T=8,LS_SY=44,LS_SZ=70;
+/* pass 12 phone: the stage number as a tag on the plate's free corner (the fourth hole), shown only on phones, where
+   the leaders are gone and the list runs under the stack (top plate first, so list and drawing read the same way) */
+function lsTag(c,i,key){return '<g class="aq-layer-stack__tag'+(key?' is-key':'')+'" data-ls="'+i+'"><circle cx="'+isoF(c[0])+'" cy="'+isoF(c[1])+'" r="15"/><text x="'+isoF(c[0])+'" y="'+isoF(c[1])+'" text-anchor="middle" dominant-baseline="central">'+String(i+1).padStart(2,'0')+'</text></g>'}
 function lsPath(d,cls){return '<path class="'+cls+'" d="'+d+'"/>'}
 /* one layer: o maps plate-local [x, y, z] (top face at z 0) to world */
 function lsLayer(k,o,key){var W=LS_W,D=LS_D,T=LS_T,P=function(x,y,z){return o([x,y,z])},Q=function(a){return a.map(function(p){return o(p)})};
@@ -54,7 +58,7 @@ LOOKS['layer-stack']=function(b,H){
   at.push(route.length);tr.forEach(function(q){route.push(Pp(q[0],q[1],q[2]))});
   var riser='';if(i<n-1){var a=Pp(12,24,0),r2=isoP(off(i)([12,24,LS_SZ-LS_T]));riser='<path class="aq-layer-stack__riser" d="M'+isoT(a)+'L'+isoT(r2)+'"/>'}
   body+='<g class="aq-layer-stack__layer" data-ls="'+i+'" data-dx="'+isoF(-(isoP(0,-LS_SY*i,0)[0]))+'" data-dy="'+isoF(LS_SZ*i-(LS_T+2)*i+LS_SY*i*0.5)+'">'
-   +lsLayer(k,o,s.key)+'<path class="aq-layer-stack__trace" d="'+trd+'"/></g>'+(riser?'<g class="aq-layer-stack__gap" data-ls="'+i+'">'+riser+'</g>':'');
+   +lsLayer(k,o,s.key)+'<path class="aq-layer-stack__trace" d="'+trd+'"/>'+lsTag(k==='instruments'?Pp(22,38,0):Pp(16,LS_D-16,0),i,s.key)+'</g>'+(riser?'<g class="aq-layer-stack__gap" data-ls="'+i+'">'+riser+'</g>':'');
   /* leader from the plate corner out to its label, right for the even layers, left for the odd */
   var cn=ri?Pp(LS_W,0,0):Pp(0,LS_D,0),ex=ri?bx.x+bx.w+30:bx.x-30;
   lead+='<g class="aq-layer-stack__lead" data-ls="'+i+'"><path d="M'+isoT(cn)+'H'+isoF(ex)+'"/><circle cx="'+isoF(cn[0])+'" cy="'+isoF(cn[1])+'" r="2.4"/></g>';

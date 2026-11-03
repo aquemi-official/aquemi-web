@@ -92,4 +92,8 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-review-reticles__t { grid-column: 2; grid-row: 2; font-size: 22px; line-height: 28px; }
   .aq-review-reticles__pick { min-height: var(--space-12); }
   .aq-review-reticles__d { grid-column: 2; grid-row: 3; font-size: 14px; line-height: 20px; }
+  /* pass 12 (minor): the viewfinder tiles at 96 px (were about 130), so the names and lines get the width */
+  .aq-review-reticles__item { grid-template-columns: 96px minmax(0, 1fr); }
+  .aq-review-reticles__mini .aq-review-reticles__br { width: var(--space-3); height: var(--space-3); }
+  .aq-review-reticles__mini .aq-review-reticles__pic { inset: var(--space-3) var(--space-2) var(--space-2); }
 }

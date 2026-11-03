@@ -5,7 +5,7 @@ SectionTrain draws a pretreatment train as one sectional elevation on a limeston
 - Fields: `h`, `stages [{t, d, link, cut, catch}]`, `base`. New optional per stage: `cut` ("feed", "tank", "media", "softener", "carbon", "cartridge", "out"; default: first feed, last out, else media) picks the column's drawing; `catch` `{g, t}`: the glyph its bed holds (`p` particles, `h` hardness, `c` chlorine, `f` fines) and its short name for the chip.
 - Glyphs: particles solid dots, hardness hexagon crystals, chlorine crosses, fines dust. The feed lens shows all but fines (fines come from the beds); the outlet lens shows clean water only.
 - Drawn inline, not with IsoKit (a flat section, not an isometric view): vessels, beds, lenses, the backflow preventer, the bus. Same stroke family: 1.5 px `on-limestone` walls, 1 px detail, `flow` water.
-- Phones: the elevation is cut into one frame per stage (`__mini`), run down the page on a pipe rail at the left with the text beside each.
+- Phones: the elevation is cut into one frame per stage (`__mini`), run down the page on a pipe rail at the left with the text beside each. Pass 12: the outlet row folds to its lens (no dead paper under it) and stage links are 44 px targets.
 - Use it for a train of four to eight stages where what each stage removes is the point. Where only the order matters use WindingRoute or ProcessDiagram.
 
 ## Motion

@@ -11,3 +11,7 @@ Look `visit-plan` (`assets/src/blocks/look-visit-plan.js`) on a `grid` block wit
 Motion: IsoKit's choreography builds the plant and runs the water once; then a flow dot walks the dashed route, each stop's ring strikes as it arrives (power3.out), its parts light for a moment and its caption prints. Once, under 5 s. Pointing at or focusing a caption lights its stop and parts.
 
 Polish (pass 9): stops closer than half the mean spacing are spread apart along the walk (the plant drawing itself is unchanged).
+
+Phones (pass 12, minor): each stop's drawing keeps a 16 px gutter from the right edge (the art draws past its box);
+the sign-off line is 18 px (was 20) and runs under its drawing across both columns, so it no longer wraps to
+seven lines beside it. Desktop unchanged.

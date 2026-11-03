@@ -8,7 +8,10 @@
    spot picks the drawn part the arc touches: ro-skid -> RO rack, storage-tank -> tank and loop, gauge -> control panel,
    weld -> skid frame (fabrication), binder -> binders; any other spot gets a node with no arc. Zones take the slots left top, right
    top, right bottom, left bottom, bottom in order (five at most on the rings; more stack under the stage).
-   Phones: the plant on top, the zones as a list strung on a vertical orbit line down the left, chips under each title. */
+   Phones: the plant on top, the zones as a list strung on a vertical orbit line down the left, chips under each title.
+   Pass 12 phones: the plant carries a numbered pin (01-05) on the part each zone governs and holds as a 180 px sticky
+   strip under the header (PhoneKit sticky figure, under 600 px; tablets keep the large figure); the zone in view lights
+   its pin. Chips are 44 px, two columns. */
 var SO_PART={'ro-skid':'gen','storage-tank':'sto',gauge:'ctl',weld:'mat',binder:'qual'};
 function soScene(){
  var sk=isoPart('skid',0,0,0,1,{w:150,d:64,id:'mat'}),ro=isoPart('ro',12,10,9,1,{id:'gen'}),
@@ -44,13 +47,16 @@ LOOKS['standards-orbit']=function(b,H){
     +'<circle class="aq-standards-orbit__end" data-so="'+i+'" cx="'+soF(tg[0])+'" cy="'+soF(tg[1])+'" r="4"/>'}
   nodes+='<g class="aq-standards-orbit__node" data-so="'+i+'"><circle class="aq-standards-orbit__halo" cx="'+soF(nd[0])+'" cy="'+soF(nd[1])+'" r="11"/><circle class="aq-standards-orbit__dot" cx="'+soF(nd[0])+'" cy="'+soF(nd[1])+'" r="5"/></g>';
   var to=z.to||'',ttl=to?'<a href="#'+e(WP)+'" data-jump="'+e(to)+'">'+tx(z.t)+'</a>':tx(z.t);
-  lab+='<li class="aq-standards-orbit__zone is-'+sl[1]+'" data-so="'+i+'"'+(pid?' data-part="'+pid+'"':'')+' style="--x:'+(100*nd[0]/SW).toFixed(2)+'%;--y:'+(100*nd[1]/SH).toFixed(2)+'%">'
+  lab+='<li class="aq-standards-orbit__zone is-'+sl[1]+'" data-pk-row="'+i+'" data-so="'+i+'"'+(pid?' data-part="'+pid+'"':'')+' style="--x:'+(100*nd[0]/SW).toFixed(2)+'%;--y:'+(100*nd[1]/SH).toFixed(2)+'%">'
    +'<div class="aq-standards-orbit__head">'+idx(i)+'<h3 class="aq-standards-orbit__t">'+ttl+'</h3></div>'
    +'<ul class="aq-standards-orbit__codes">'+(z.codes||[]).map(function(c){var ct=c&&typeof c==='object'?c.t:c,cto=(c&&typeof c==='object'&&c.to)||to;
     return '<li><a class="aq-standards-orbit__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></li>'});
  var orbit='<svg class="aq-standards-orbit__orbits" viewBox="0 0 '+SW+' '+SH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'+rings+'<g>'+ticks+'</g>'+arcs+nodes+'</svg>';
- var plant='<div class="aq-standards-orbit__plant" aria-hidden="true" style="left:'+(100*px/SW).toFixed(2)+'%;top:'+(100*py/SH).toFixed(2)+'%;width:'+(100*pw/SW).toFixed(2)+'%">'+S.svg+'</div>';
- return sec(H+'<div class="aq-standards-orbit"><div class="aq-standards-orbit__stage" style="--sw:'+SW+';--sh:'+SH+'">'+orbit+plant
+ /* phone pins: one per zone on the part it governs (zones with no drawn part pin the skid frame) */
+ var pins=Z.map(function(z,i){if(!slots[i])return '';var pid=SO_PART[z.spot],a=S.A[pid&&S.A[pid]?pid:'mat'];
+  return '<span class="aq-standards-orbit__pin" data-pk-key="'+i+'" style="left:'+(100*a[0]/S.W).toFixed(2)+'%;top:'+(100*a[1]/S.H).toFixed(2)+'%">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+ var plant='<div class="aq-standards-orbit__plant" aria-hidden="true" data-pk-fig style="left:'+(100*px/SW).toFixed(2)+'%;top:'+(100*py/SH).toFixed(2)+'%;width:'+(100*pw/SW).toFixed(2)+'%"><div class="aq-standards-orbit__pan" style="--so-pw:'+S.W+';--so-ph:'+S.H+'">'+S.svg+pins+'</div></div>';
+ return sec(H+'<div class="aq-standards-orbit" data-pk-sticky data-pk-h="180" data-pk-bp="599"><div class="aq-standards-orbit__stage" style="--sw:'+SW+';--sh:'+SH+'">'+orbit+plant
   +'<ol class="aq-standards-orbit__zones">'+lab+'</ol></div></div>','aq-band--navy aq-standards-orbit-sec')};
 /* Hover or focus a zone: its arc, node and drawn part light (the zone list drives it, so a keyboard reaches it too) */
 function soLight(z,on){var w=z&&z.closest('.aq-standards-orbit');if(!w)return;var i=z.getAttribute('data-so'),p=z.getAttribute('data-part');
@@ -59,4 +65,9 @@ function soLight(z,on){var w=z&&z.closest('.aq-standards-orbit');if(!w)return;va
  w.classList.toggle('is-focus',on)}
 if(typeof document!=='undefined'&&document.addEventListener){
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var z=ev.target.closest&&ev.target.closest('.aq-standards-orbit__zone');if(z)soLight(z,true)})});
+ /* phones (PhoneKit strip): the zone in view lights its drawn part too; switching off clears it */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-standards-orbit'))return;
+  [].forEach.call(w.querySelectorAll('.aq-standards-orbit__plant [data-iso-id].is-lit'),function(el){el.classList.remove('is-lit')});
+  var z=ev.detail&&ev.detail.on&&w.querySelector('.aq-standards-orbit__zone[data-pk-row="'+ev.detail.key+'"]'),p=z&&z.getAttribute('data-part');
+  if(p)[].forEach.call(w.querySelectorAll('.aq-standards-orbit__plant [data-iso-id="'+p+'"]'),function(el){el.classList.add('is-lit')})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var z=ev.target.closest&&ev.target.closest('.aq-standards-orbit__zone');if(z&&!(ev.relatedTarget&&z.contains(ev.relatedTarget)))soLight(z,false)})})}

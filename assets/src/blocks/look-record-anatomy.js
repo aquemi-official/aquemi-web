@@ -8,7 +8,8 @@
    sampling map and a row of sample ticks, the report a numbered document, the approval two signature lines and a
    stamp.
    Fields: h, intro, points [{t, d, fig}]. fig (optional): figure, method, report, approval, the zone's drawing
-   (default by order). Phones: no drawing field; each title-block row carries its own drawing above its text. */
+   (default by order). Phones: no drawing field, frame or zone gutter; the title-block rows form a 2 x 2 grid, each
+   cell carrying its own drawing above its text. */
 (function(){
 function S(inner){return '<svg class="aq-record-anatomy__svg" viewBox="0 0 360 120" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false">'+inner+'</svg>'}
 function P(d,c){return '<path class="aq-record-anatomy'+'__'+(c||'ln')+'" d="'+d+'"/>'}

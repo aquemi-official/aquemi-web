@@ -2,7 +2,7 @@
  "look": "site-tiles",
  "component": "SiteTiles",
  "type": "grid",
- "fields": "h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp, softener, truck; default from icon (gauge -> spool: a PP spool with a valve and a pressure gauge for the test; stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated load, for service and spares), else the item's line icon as a Spot.",
+ "fields": "h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp, softener, truck, valve (pass 12: a flanged spool with a diaphragm valve, drawn on the navy like the others, so a valve icon no longer falls back to a navy-on-navy Spot); default from icon (valve -> valve; gauge -> spool: a PP spool with a valve and a pressure gauge for the test; stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated load, for service and spares), else the item's line icon as a limestone Spot. Phones (pass 12): no inner frame or zone bands; each column stacks its drawing (72 px tall) above the number and title, the line and link under them.",
  "best_for": "SiteTiles sets a short grid of what changes for a site as one navy drawing sheet: a framed sheet with its zone band, the title large in the top left, and one column per item with its number, title, one isometric part (IsoKit) that makes the change visible, its line and its link.",
  "status": "live",
  "instances": [

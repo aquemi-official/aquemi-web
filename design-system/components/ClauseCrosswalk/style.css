@@ -61,3 +61,44 @@
   .aq-clause-crosswalk__refs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-4); }
 }
 .aq-clause-crosswalk-sec { position: relative; }
+
+/* pass 12 phone (audit S10, sys-monitoring.3): the crosswalk survives as a mini crosswalk per row. The rail names head
+   the list once (__pheads); in each row regulation A's chips stack on a left rail and B's on a right rail, short
+   curves (__mini, stretched like the desktop wires) run from every chip to the requirement set in a box between
+   them, and how runs full width under. The rails' own labels stay for screen readers. Desktop never shows these. */
+.aq-clause-crosswalk__pheads, .aq-clause-crosswalk__mini { display: none; }
+@container (max-width: 860px) {
+  .aq-clause-crosswalk__pheads {
+    display: flex; justify-content: space-between; gap: var(--space-4); padding: 0 0 var(--space-2); border-bottom: 1px solid var(--line-strong);
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted);
+  }
+  .aq-clause-crosswalk__pheads span:last-child { text-align: right; }
+  .aq-clause-crosswalk__row, .aq-fold:not(.is-open) .aq-clause-crosswalk__row.aq-fold-x {
+    grid-template-columns: max-content 22px minmax(0, 1fr) 22px max-content; grid-template-areas: "a wa t wb b" "how how how how how";
+    row-gap: var(--space-3); column-gap: 0; align-items: stretch; padding: var(--space-5, 20px) 0;
+  }
+  .aq-fold:not(.is-open) .aq-clause-crosswalk__row.aq-fold-x { display: none; }
+  .aq-clause-crosswalk__row .aq-index { display: none; }
+  .aq-clause-crosswalk__t {
+    grid-area: t; align-self: center; padding: var(--space-2) var(--space-3); border: 1px solid var(--line-strong); background: var(--surface-raised);
+    font-size: 19px; line-height: 23px; text-align: center; text-wrap: balance;
+  }
+  .aq-clause-crosswalk__how { grid-area: how; grid-column: 1 / -1; }
+  .aq-clause-crosswalk__refs { display: contents; }
+  .aq-clause-crosswalk__ref, .aq-clause-crosswalk__ref--a, .aq-clause-crosswalk__ref--b { display: flex; flex-direction: column; justify-content: space-around; align-items: stretch; gap: var(--space-2); }
+  .aq-clause-crosswalk__ref--a { grid-area: a; }
+  .aq-clause-crosswalk__ref--b { grid-area: b; }
+  .aq-clause-crosswalk__rk { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-clause-crosswalk__chip { font-size: 13px; line-height: 26px; background: var(--surface-raised); white-space: nowrap; text-align: center; }
+  .aq-clause-crosswalk__mini { display: block; width: 100%; height: 100%; overflow: visible; }
+  .aq-clause-crosswalk__mini--a { grid-area: wa; }
+  .aq-clause-crosswalk__mini--b { grid-area: wb; }
+  .aq-clause-crosswalk__mini path { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 200ms ease; }
+  .aq-clause-crosswalk__row.is-hot { background: transparent; }
+  .aq-clause-crosswalk__row.is-hot .aq-clause-crosswalk__t { border-color: var(--flow); background: var(--flow-tint); }
+  .aq-clause-crosswalk__row.is-hot .aq-clause-crosswalk__mini path { stroke: var(--flow); }
+  .aq-clause-crosswalk__row.is-hot .aq-clause-crosswalk__chip { border-color: var(--flow); }
+}
+/* verify V8: a rail with one chip draws a straight connector; a 1 px non-scaling stroke at a half-pixel y rendered it
+   speckled (it read as dashed beside the curves), so straight ones snap to the pixel grid. */
+@container (max-width: 860px) { .aq-clause-crosswalk__mini path.is-straight { shape-rendering: crispEdges; } }

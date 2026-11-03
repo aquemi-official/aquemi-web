@@ -61,3 +61,20 @@
   .aq-numeral-index__go { grid-column: 1; }
   .aq-numeral-index__to { font-size: 17px; line-height: 24px; }
 }
+
+/* ---------- Pass 12 phones: compact index rows ----------
+   The numeral sits inline at 40 px to the left of the situation (S13), what you need runs under it as one 14 px line
+   (its term kept for screen readers), and the start-with cell becomes a full-width 48 px row link: term, page, arrow. */
+@container (max-width: 860px) {
+  .aq-numeral-index__row { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-3); padding: var(--space-3) 0 var(--space-4); }
+  .aq-numeral-index__n { grid-column: 1; grid-row: 1; font-size: 40px; line-height: 36px; margin-top: 0; -webkit-text-stroke-width: 1px; }
+  .aq-numeral-index__body { grid-column: 2; grid-row: 1; gap: var(--space-2); padding-top: 0; }
+  .aq-numeral-index__t { font-size: 20px; line-height: 26px; }
+  .aq-numeral-index__need { display: block; padding-top: 0; border-top: 0; font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  .aq-numeral-index__need .aq-numeral-index__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-numeral-index__go { grid-column: 1 / -1; display: flex; align-items: center; gap: var(--space-3); min-height: 48px; padding: var(--space-2) var(--space-4); }
+  .aq-numeral-index__go .aq-numeral-index__k { flex: none; font-size: 11px; line-height: 16px; }
+  .aq-numeral-index__ic { display: none; }
+  .aq-numeral-index__to { flex: 1; min-width: 0; font-size: 15px; line-height: 20px; }
+  .aq-numeral-index__arrow { flex: none; width: var(--space-8); }
+}

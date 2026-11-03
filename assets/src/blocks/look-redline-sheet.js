@@ -5,7 +5,9 @@
    the same figure in flow with what we design in as the markup note.
    Fields, as a table: cols [fails at qualification, design mistake, what we design in], rows (cells strings or {t, link}).
    Optional: figs (one per row: "peak", "deadleg", "setpoint" or "sheet"; default from the row's words), block (title
-   block cells; default ["Aquemi", nav]). Phones: the sheet holds the markups one under the other. */
+   block cells; default ["Aquemi", nav]). Phones: the sheet holds the markups one under the other; the P&ID band is a
+   PhoneKit sticky strip (150 px, the plan at full height, about 820 px wide) that pans to the pin of the markup being
+   read and lights it; no zone ruler. */
 LOOKS['redline-sheet']=(function(){
  function cloud(cx,cy,rx,ry,n){var d='',p=[];for(var i=0;i<=n;i++){var t=-Math.PI/2+i*2*Math.PI/n;p.push([cx+rx*Math.cos(t),cy+ry*Math.sin(t)])}
   d='M'+p[0][0].toFixed(1)+' '+p[0][1].toFixed(1);for(var j=1;j<p.length;j++){var a=p[j-1],c=p[j],ch=Math.hypot(c[0]-a[0],c[1]-a[1]);d+='A'+(ch*0.62).toFixed(1)+' '+(ch*0.62).toFixed(1)+' 0 0 1 '+c[0].toFixed(1)+' '+c[1].toFixed(1)}return d}
@@ -47,22 +49,24 @@ LOOKS['redline-sheet']=(function(){
   g+=L('M70 96H110V144H70ZM76 102V138M104 102V138')+W(90,166,'PRE');
   g+=L('M150 98H230V142H150ZM150 142L230 98')+W(190,166,'RO');
   g+=L('M260 98H320V142H260ZM270 98V142M280 98V142M290 98V142M300 98V142M310 98V142')+W(290,166,'EDI');
-  g+=L('M352 120V100')+'<circle class="aq-redline-sheet__p" cx="352" cy="88" r="12"/>'+W(352,92,'CIT');
+  g+=L('M352 120V100')+'<circle class="aq-redline-sheet__p aq-redline-sheet__cit" cx="352" cy="88" r="12"/>'+W(352,92,'CIT');
   g+=L('M390 112L410 128V112L390 128Z')+L('M400 128V188','w')+chev(400,170,'d')+L('M390 188H410L400 200Z')+W(400,214,'drain');
   g+=L('M470 70Q470 44 500 44Q530 44 530 70V170H470Z')+W(500,192,'TANK');
   g+=L('M530 160H576','w')+'<circle class="aq-redline-sheet__p" cx="590" cy="160" r="14"/>'+L('M583 151L600 160L583 169Z');
   g+=L('M604 160H1150V60H560Q530 60 530 70','w')+chev(800,160)+chev(1150,110,'u')+chev(1000,60,'l');
   [760,880,1000].forEach(function(x,i){var y2=i===1?132:96;g+=L('M'+x+' 60V'+(y2-10),'w')+L('M'+(x-8)+' '+(y2-10)+'L'+(x+8)+' '+(y2+6)+'H'+(x-8)+'L'+(x+8)+' '+(y2-10)+'Z')+W(x,y2+24,'POU')});
   var pins='',spots=[];kinds.forEach(function(k,i){var p=PIN[k]||PIN.sheet;spots.push(p);
-   pins+='<g class="aq-redline-sheet__pin" data-i="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="26"/><path class="aq-redline-sheet__ptri" d="M14 -46L28 -22H0Z"/><text class="aq-redline-sheet__pn" x="14" y="-26" text-anchor="middle">'+(i+1)+'</text></g>'});
-  return '<div class="aq-redline-sheet__band" data-theme="dark" aria-hidden="true" data-spots="'+spots.map(function(p){return p.join(',')}).join(' ')+'"><svg viewBox="0 0 1200 220" focusable="false" preserveAspectRatio="xMidYMid meet"><g class="aq-redline-sheet__cam">'+g+pins+'<path class="aq-redline-sheet__dim" d=""/></g></svg></div>'}
+   pins+='<g class="aq-redline-sheet__pin" data-i="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="26"/><path class="aq-redline-sheet__ptri" d="M14 -46L28 -22H0Z"/><text class="aq-redline-sheet__pn" x="14" y="-26" text-anchor="middle">'+(i+1)+'</text></g>'
+    /* pass 12 phone twin: a bigger pin for the sticky strip (shown only on phones; PhoneKit lights it with its markup) */
+    +'<g class="aq-redline-sheet__ppin" data-pk-key="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="34"/><path class="aq-redline-sheet__ptri" d="M22 -72L44 -34H0Z"/><text class="aq-redline-sheet__pn" x="22" y="-41" text-anchor="middle">'+(i+1)+'</text></g>'});
+  return '<div class="aq-redline-sheet__band" data-theme="dark" aria-hidden="true" data-pk-fig data-spots="'+spots.map(function(p){return p.join(',')}).join(' ')+'"><svg viewBox="0 0 1200 220" focusable="false" preserveAspectRatio="xMidYMid meet"><g class="aq-redline-sheet__cam">'+g+pins+'<path class="aq-redline-sheet__dim" d=""/></g></svg></div>'}
  function pick(r){var s=r.map(function(c){return String(c&&typeof c==='object'?c.t:c||'')}).join(' ');
   return /peak|average|turbulent|demand/i.test(s)?'peak':/dead leg|branch/i.test(s)?'deadleg':/setpoint|divert|drain|interlock/i.test(s)?'setpoint':'sheet'}
  return function(b,H){var C=b.cols||[],R=b.rows||[],F=b.figs||[],blk=(b.block||['Aquemi',b.nav||'']).filter(Boolean);
   var k=function(i,c){return '<p class="aq-redline-sheet__k'+(c?' aq-redline-sheet__k--'+c:'')+'">'+tx(C[i]||'')+'</p>'};
   var zones='<div class="aq-redline-sheet__zones" aria-hidden="true">'+[1,2,3,4,5,6].map(function(z){return '<span>'+z+'</span>'}).join('')+'</div>';
   var list='<ol class="aq-redline-sheet__list" role="list">'+R.map(function(r,i){var f=FIG[F[i]]?F[i]:pick(r),n=String(i+1);
-   return '<li class="aq-redline-sheet__item" style="--i:'+i+'">'
+   return '<li class="aq-redline-sheet__item" style="--i:'+i+'" data-pk-row="'+i+'">'
     +'<div class="aq-redline-sheet__head"><span class="aq-redline-sheet__rev" aria-hidden="true">'+n+'</span>'+k(0,'fail')+'<h3 class="aq-redline-sheet__fail">'+tcell(r[0])+'</h3></div>'
     +'<figure class="aq-redline-sheet__fig" aria-hidden="true"><svg viewBox="0 0 320 190" focusable="false">'+FIG[f](n)+'</svg></figure>'
     +(r[1]!=null?'<div class="aq-redline-sheet__err">'+k(1)+'<p class="aq-redline-sheet__mistake">'+tcell(r[1])+'</p></div>':'')
@@ -70,7 +74,7 @@ LOOKS['redline-sheet']=(function(){
     +'</li>'}).join('')+'</ol>';
   var tb=blk.length?'<div class="aq-redline-sheet__block" aria-hidden="true">'+blk.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'<span>'+R.length+' markups</span></div>':'';
   var kinds=R.map(function(r,i){return FIG[F[i]]?F[i]:pick(r)});
-  return sec(H+'<div class="aq-redline-sheet" data-theme="light">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
+  return sec(H+'<div class="aq-redline-sheet" data-theme="light" data-pk-sticky data-pk-h="150" data-pk-zoom="1">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
 })();
 /* Pointing at a markup column turns the band's camera onto its pin: ported from Subframe Motion "Product tour
    spotlight" (guided-inspection), MIT, (c) 2026 Subframe: the plan scales about the stop (x1.7) and recentres in
@@ -87,7 +91,7 @@ function rsCam(band,i){var cam=band&&band.querySelector('.aq-redline-sheet__cam'
 if(typeof window!=='undefined')window.AQrsCam=rsCam;
 (function(){
  if(typeof document==='undefined')return;
- document.addEventListener('mouseover',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-redline-sheet__item'),sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(!sh||sh.hasAttribute('data-tour'))return;
+ document.addEventListener('mouseover',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-redline-sheet__item'),sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(!sh||sh.hasAttribute('data-tour')||sh.hasAttribute('data-pk-on'))return;
   var list=[].slice.call(sh.querySelectorAll('.aq-redline-sheet__item'));rsCam(sh.querySelector('.aq-redline-sheet__band'),it?list.indexOf(it):null)});
- document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
+ document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour')&&!sh.hasAttribute('data-pk-on'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
 })();

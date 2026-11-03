@@ -85,3 +85,55 @@
 }
 /* Phones: a node the water has passed fills with the flow tint */
 .aq-project-run__node.is-wet { background: var(--flow-tint); }
+.aq-project-run__now { display: none; }
+
+/* Phones with PhoneKit on (pass 12, S8): the stage comes back as a 132 px strip held under the header (a small copy of
+   the desktop stage: drawing, number and stop name, the 6-stop run), and the steps run under it as short rows on the
+   vertical run. Without script the static stack above stays. Scoped to [data-pk-on], so no desktop render changes. */
+@container (max-width: 860px) {
+  .aq-project-run[data-pk-on] { --node: 28px; --pipe: var(--space-2); }
+  .aq-project-run[data-pk-on] .aq-project-run__stage {
+    display: grid; grid-template-columns: 128px minmax(0, 1fr); grid-template-rows: 84px 28px; column-gap: var(--space-4); row-gap: var(--space-1);
+    align-content: center; padding: var(--space-2) var(--space-3); margin-bottom: var(--space-6);
+    border: 1px solid var(--line); border-bottom-color: var(--line-strong); background: var(--surface-raised);
+  }
+  .aq-project-run[data-pk-on] .aq-project-run__arts { grid-column: 1; grid-row: 1; margin: 0; }
+  .aq-project-run[data-pk-on] .aq-project-run__num { position: static; grid-column: 2; grid-row: 1; align-self: center; display: grid;
+    grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: var(--space-2); row-gap: var(--space-1); }
+  .aq-project-run[data-pk-on] .aq-project-run__cur { font-size: 40px; line-height: 40px; letter-spacing: -0.04em; }
+  .aq-project-run[data-pk-on] .aq-project-run__of { font-size: 12px; }
+  .aq-project-run[data-pk-on] .aq-project-run__now { display: block; grid-column: 1 / -1; font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .aq-project-run[data-pk-on] .aq-project-run__run { grid-column: 1 / -1; grid-row: 2; padding-top: var(--space-1); }
+  .aq-project-run[data-pk-on] .aq-project-run__pipe { top: calc(var(--space-1) + var(--space-2) - var(--pipe, var(--space-2)) / 2); }
+  .aq-project-run[data-pk-on] .aq-project-run__dot { width: var(--space-4); height: var(--space-4); }
+  .aq-project-run[data-pk-on] .aq-project-run__lab { display: none; }
+  .aq-project-run[data-pk-on] .aq-project-run__water { transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-project-run[data-pk-on] .aq-project-run__drop { transition: left 400ms cubic-bezier(0.2, 0, 0, 1); }
+
+  /* the steps: short rows on the vertical run (the drawings live in the strip) */
+  .aq-project-run[data-pk-on] .aq-project-run__pic, .aq-project-run[data-pk-on] .aq-project-run__code { display: none; }
+  .aq-project-run[data-pk-on] .aq-project-run__steps { gap: calc(var(--space-4) + var(--space-1)); }
+  .aq-project-run[data-pk-on] .aq-project-run__step { grid-template-columns: var(--node, 28px) minmax(0, 1fr); column-gap: var(--space-3); --w: 0; }
+  .aq-project-run[data-pk-on] .aq-project-run__step.is-past { --w: 1; }
+  .aq-project-run[data-pk-on] .aq-project-run__step:not(:last-child)::before, .aq-project-run[data-pk-on] .aq-project-run__step:not(:last-child)::after {
+    top: calc(var(--node, 28px) / 2 - 1px); height: calc(100% + calc(var(--space-4) + var(--space-1))); }
+  .aq-project-run[data-pk-on] .aq-project-run__step:not(:last-child)::after { transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-project-run[data-pk-on] .aq-project-run__node { grid-column: 1; grid-row: 1; margin-top: -1px; font-size: 12px; transition: background-color 240ms, color 240ms; }
+  .aq-project-run[data-pk-on] .aq-project-run__step.is-on .aq-project-run__node { background: var(--flow); color: var(--surface); }
+  .aq-project-run[data-pk-on] .aq-project-run__text { grid-column: 2; grid-row: 1; padding-top: 0; gap: var(--space-1); }
+  .aq-project-run[data-pk-on] .aq-project-run__t { font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+  .aq-project-run[data-pk-on] .aq-project-run__t a { display: inline-flex; align-items: center; min-height: 44px; margin-block: -9px; } /* a 44 px target that takes no extra row height */
+  .aq-project-run[data-pk-on] .aq-project-run__d { font-size: 15px; line-height: 22px; }
+}
+/* Tablets (600-860 px): the drawing runs the strip's full height on the left, number and run stacked beside it */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-project-run[data-pk-on] .aq-project-run__stage { grid-template-columns: 200px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) 28px; column-gap: var(--space-6); }
+  .aq-project-run[data-pk-on] .aq-project-run__arts { grid-row: 1 / -1; }
+  .aq-project-run[data-pk-on] .aq-project-run__run { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-project-run[data-pk-on] .aq-project-run__art, .aq-project-run[data-pk-on] .aq-project-run__water, .aq-project-run[data-pk-on] .aq-project-run__drop,
+  .aq-project-run[data-pk-on] .aq-project-run__dot, .aq-project-run[data-pk-on] .aq-project-run__node,
+  .aq-project-run[data-pk-on] .aq-project-run__step::after { transition: none; }
+}

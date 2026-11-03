@@ -66,4 +66,12 @@
   .aq-standard-wires__s { font-size: 20px; line-height: 28px; }
   .aq-standard-wires__ans { align-self: center; }
   .aq-standard-wires__cell { border: 0; min-height: var(--space-24); }
+  /* pass 12: the drawing at 120 px, tied to its answer box by a short wire */
+  .aq-standard-wires__cell { min-height: 120px; height: 120px; }
+  /* the plate is 300 x 170 with the part right of centre: drawn 120 px tall (212 px wide) and shifted so the part
+     (centred at 0.6 of the width, 127 px) sits in the middle of the cell */
+  .aq-standard-wires__svg { flex: none; width: 212px; height: 120px; margin-left: calc(50% - 127px); }
+  .aq-standard-wires__chip { display: flex; align-items: center; }
+  .aq-standard-wires__chip::after { content: ""; flex: 1 1 var(--space-4); min-width: var(--space-4); height: 0; margin-right: calc(-1 * var(--space-4)); border-top: 1px solid var(--on-navy-muted); }
+  .aq-standard-wires__a { font-size: 15px; }
 }

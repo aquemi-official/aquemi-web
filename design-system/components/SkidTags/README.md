@@ -12,3 +12,9 @@ SkidTags keys an evidence table to an elevation drawing of a Purified Water skid
 ## Motion
 
 Motion: the elevation is plotted (ground and frame, then each piece in drawing order, strokes drawn on), the water runs the pipe runs in flow order, then each standard is tagged in number order: its dot appears, the leader draws out and the square tag is set at its end; the crosshair ring lands last. The table head fades in and the rows rise 12 px, 80 ms apart, as the table arrives. Both once, under 3 s; nothing under reduced motion (the selection still works, instantly).
+
+## Phones (pass 12)
+
+Under 600 px only for the crop; 600-860 px (tablets) keep the whole skid with its tags. The crop clips sideways only, so a tag on the top edge keeps its full 44 px target.
+
+The drawing is cropped to the tagged parts: from 40 units left of the leftmost tagged anchor or tag to the right edge (`--st-x0`, `--st-cw` on `__stage.is-crop`, set by the look; on compliance, the panel and piping half), so it runs full column at a legible scale with a fade on the cut edge. No readout under the drawing (it stays visually hidden for screen readers). Each tag is a 44 px target that selects its row and scrolls it into view. The fold only takes rows no tag points at (S7); rows run tighter (proof label inline, 15 px reading lines). Desktop unchanged.

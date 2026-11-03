@@ -12,3 +12,7 @@ CutawayRail reads an evidence table beside one sticky drawing: a close isometric
 ## Motion
 
 Motion: when the drawing scrolls in, IsoKit's choreography builds it (sheet, parts back to front, pipes, one run of water through the loop and the cut pipe) and the tag wipes in; at the end the active card's parts light again. Each card slides in from the right as it reaches the viewport, its node popping first and its fields rising after. Drawing under 4 s, each card under 1 s; nothing under reduced motion.
+
+## Phones (pass 12)
+
+Under 768 px the 300 px sticky stage (which covered the active card) gives way to a 112 px strip (PhoneKit sticky figure, `data-pk-bp="767"`, `data-pk-zoom="2"`, the `__draw` layer pans): it zooms to the first part of the card on PhoneKit's reading line, below the strip, so the strip never covers that card; the active tag sits at the strip's foot. Cards folded away carry no `data-pk-row` until the fold opens (a hidden card would read as already passed). The renderer's own 45 % scan stands down while PhoneKit drives. 768 px and up: unchanged (desktop sticky rail).

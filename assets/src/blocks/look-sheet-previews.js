@@ -1,15 +1,38 @@
 /* Look "sheet-previews" -> SheetPreviews (design-system/components/SheetPreviews): a short document list set as a Swiss
-   row of sheets. Each document gets a column: a huge light index numeral, a paper sheet whose thumbnail shows the kind
-   of document it is (a month-by-month basis grid, two projection curves, a logic sequence, a certificate with its seal
-   and lot strip), then its code, name and line. Deciding documents (key) keep DocList's rule: their code turns flow.
+   row of sheets. Each document gets a column: a limestone sheet carrying its light index numeral (/01) and a thumbnail
+   of the kind of document it is, then its code (only a real one: an explicit code or tag, or one the document lookup
+   knows; never initials), name and line. Pass 12 (concept 205, ind-personal-care.records): the numeral moved onto the
+   sheet, four new thumbnails for record kinds (trend, log, binder, signoff), no filler tile; phones list the sheets one
+   per row, the sheet beside its text. The number lives on the sheet only; the eyebrow shows only for a real code.
+   Deciding documents (key) keep DocList's rule: their code turns flow.
    The block link ("Full index") sits at the end of the heading row.
    Fields (a docs block): h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label,
-   intent. New optional per item: sheet: "basis" | "curves" | "logic" | "certificate" (anything else: ruled text). */
+   intent. New optional per item: sheet: "trend" (a reading under its dashed limit lines) | "log" (a ruled log with
+   ticks) | "binder" (a ring binder by its protocol sheets) | "signoff" (an acceptance sheet with its signed box) |
+   "basis" | "curves" | "logic" | "certificate" (anything else: ruled text). */
 (function(){
 var K='aq-sheet-previews';
 function f1(n){return Math.round(n*10)/10}
 function bars(y0,n,w,gap){var d='';for(var i=0;i<n;i++)d+='M24 '+(y0+i*gap)+'H'+(24+w*(i%3===2?0.6:1));return '<path class="'+K+'__txt" d="'+d+'"/>'}
 var THUMB={
+ trend:function(){var o='<path class="'+K+'__ln" d="M30 96V226H186"/>',d='',ys=[200,192,198,184,190,176,186,180,168,178,172,182,170,176];
+  for(var i=0;i<ys.length;i++)d+=(i?'L':'M')+f1(34+i*11.4)+' '+ys[i];
+  o+='<path class="'+K+'__limit" d="M30 132H186"/><path class="'+K+'__limit '+K+'__limit--b" d="M30 150H186"/><path class="'+K+'__curve" d="'+d+'"/>';
+  for(var k=1;k<6;k++)o+='<path class="'+K+'__thin" d="M'+(30+k*26)+' 226v4"/>';
+  return o},
+ log:function(){var o='<rect class="'+K+'__box" x="24" y="96" width="162" height="138"/>',g='M24 116H186',t='',ck='',i;
+  for(i=1;i<6;i++)g+='M24 '+(116+i*20)+'H186';g+='M70 96V234M130 96V234M160 96V234';o+='<path class="'+K+'__ln" d="'+g+'"/>';
+  for(i=0;i<5;i++){var y=126+i*20;t+='M32 '+y+'H'+(58-(i%2)*8)+'M78 '+y+'H'+(118-(i%3)*10);ck+='M165 '+(y-1)+'l4 4l8 -8'}
+  return o+'<path class="'+K+'__txt" d="'+t+'"/><path class="'+K+'__tick" d="'+ck+'"/>'},
+ binder:function(){var o='<rect class="'+K+'__box" x="92" y="100" width="88" height="118"/><rect class="'+K+'__box" x="84" y="108" width="88" height="118"/>';
+  o+='<path class="'+K+'__txt" d="M96 128H160M96 140H150M96 152H160M96 176H140"/>';
+  o+='<rect class="'+K+'__spine" x="30" y="92" width="44" height="146"/><rect class="'+K+'__box" x="38" y="108" width="28" height="44"/>';
+  o+='<circle class="'+K+'__thin" cx="52" cy="196" r="5"/><circle class="'+K+'__thin" cx="52" cy="214" r="5"/>';
+  return o},
+ signoff:function(){var o='<path class="'+K+'__txt" d="M24 104H186M24 116H170M24 128H186M24 140H130"/>';
+  o+='<rect class="'+K+'__box" x="24" y="164" width="162" height="62"/><path class="'+K+'__thin" d="M36 210H130"/>';
+  o+='<path class="'+K+'__sig" d="M44 204C52 180 58 214 66 196S80 186 84 202S100 190 108 198"/><path class="'+K+'__tick" d="M150 186l8 8l16 -16"/>';
+  return o},
  basis:function(){var o='',x0=24,x1=186,y0=86,y1=226,cw=(x1-x0)/12,i;
   o+='<path class="'+K+'__hatch" d="'+[0,11].map(function(c){var d='',xa=x0+c*cw;for(var y=y0;y<y1;y+=6)d+='M'+f1(xa)+' '+(y+6)+'L'+f1(xa+cw)+' '+y;return d}).join('')+'"/>';
   var g='M'+x0+' '+y0+'H'+x1+'V'+y1+'H'+x0+'Z';for(i=1;i<12;i++)g+='M'+f1(x0+i*cw)+' '+y0+'V'+y1;for(i=1;i<7;i++)g+='M'+x0+' '+(y0+i*20)+'H'+x1;
@@ -31,21 +54,21 @@ var THUMB={
   o+='<path class="'+K+'__seal" d="'+s+'Z"/><circle class="'+K+'__thin" cx="150" cy="196" r="11"/>';
   var bc='';for(var j=0;j<26;j++)bc+='M'+(40+j*3+(j%4===0?1:0))+' 186v'+(j%5===0?24:20);
   return o+'<path class="'+K+'__bar" d="'+bc+'"/>'}};
-function sheet(kind,code){var o='<rect class="'+K+'__paper" x="0" y="0" width="210" height="280"/>'
+function sheet(kind,code,num){var cw=Math.max(40,String(code||'').length*8+14),o='<rect class="'+K+'__paper" x="0" y="0" width="210" height="280"/>'
   +'<path class="'+K+'__fold" d="M180 0H210V30Z"/><path class="'+K+'__ln" d="M180 0V30H210"/>'
-  +bars(26,3,110,9)+'<rect class="'+K+'__codebox" x="132" y="22" width="40" height="22"/><text class="'+K+'__code-t" x="152" y="37">'+e(code||'')+'</text>';
- o+=THUMB[kind]?THUMB[kind]():bars(80,14,160,11);
+  +'<text class="'+K+'__nume" x="16" y="62">/'+num+'</text>'
+  +(code?'<rect class="'+K+'__codebox" x="'+(170-cw)+'" y="40" width="'+cw+'" height="22"/><text class="'+K+'__code-t" x="'+f1(170-cw/2)+'" y="55">'+e(code)+'</text>':'');
+ o+=THUMB[kind]?THUMB[kind]():bars(96,12,160,11);
  o+='<path class="'+K+'__thin" d="M24 252H186M120 252V268M150 252V268"/>';
  return '<svg class="'+K+'__svg" viewBox="0 0 210 280" aria-hidden="true" focusable="false">'+o+'</svg>'}
 LOOKS['sheet-previews']=function(b,H){
  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=items.length;
  var marked=items.some(function(x){return x.key}),nk=b.key!=null?+b.key:0;
- var li=items.map(function(x,i){var c=x.code?[x.code,true]:docCode(x.t),key=marked?!!x.key:i<nk,tag=x.tag||c[0];if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
+ var li=items.map(function(x,i){var c=x.code?[x.code,true]:docCode(x.t),key=marked?!!x.key:i<nk,tag=x.tag||(c[1]?c[0]:'');if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
   var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
   return fli('<li class="'+K+'__item'+(key?' is-key':'')+'" style="--i:'+i+'">',b,i)
-   +'<span class="'+K+'__num" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="'+K+'__sheet" data-theme="light">'+sheet(x.sheet,tag)+'</div>'
-   +'<p class="'+K+'__code">'+e(tag)+'</p><h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</li>'}).join('');
+   +'<div class="'+K+'__sheet" data-theme="light">'+sheet(x.sheet,tag,(i<9?'0':'')+(i+1))+'</div>'
+   +'<div class="'+K+'__body">'+(tag?'<p class="'+K+'__code"><span>'+e(tag)+'</span></p>':'')+'<h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</div></li>'}).join('');
  var more=b.link&&wp(b.link)?'<p class="'+K+'__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
  return sec('<div class="'+K+'__top">'+H+more+'</div>'+wFold(b,n,'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>',b.fold_noun||'documents'),K+'-sec')};
 })();

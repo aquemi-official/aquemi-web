@@ -91,5 +91,11 @@
   .aq-section-train__t { font-size: 17px; line-height: 24px; }
   .aq-section-train__base { align-items: flex-start; }
   .aq-section-train__base-mark { width: var(--space-6); margin-top: var(--space-3); }
+  /* pass 12: the outlet row ("To RO") folds to the lens: no dead paper under it, the link a 44 px target beside the lens */
+  .aq-section-train__stage:last-child { padding-bottom: 0; }
+  .aq-section-train__stage:last-child .aq-section-train__mini { margin-bottom: -72px; }
+  .aq-section-train__stage:last-child .aq-section-train__text { padding-top: var(--space-8); gap: 0; }
+  .aq-section-train__t a { display: inline-flex; align-items: center; min-height: 44px; }
+  .aq-section-train__t a::after { content: "\00a0\2192"; }
 }
 .aq-section-train__seep { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-dasharray: 2 5; opacity: 0.7; }

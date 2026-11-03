@@ -2,7 +2,7 @@
  "look": "signal-dial",
  "component": "SignalDial",
  "type": "spec",
- "fields": "h, caption (eyebrow, as SpecTable prints it), cols [signal, value, basis], rows [{p, v, m, link, link_label, intent}], note, fold, fold_noun. Desktop shows every row; the fold applies on phones.",
+ "fields": "h, caption (eyebrow, as SpecTable prints it), cols [signal, value, basis], rows [{p, v, m, link, link_label, intent}], note. Every row shows on every width (pass 12; fold / fold_noun no longer read).",
  "best_for": "SignalDial sets a spec block of signals as the instrument schedule (the real table) beside one multi-channel transmitter dial whose bezel turns to the chosen signal and reads it out: channel number large and light, the signal's name, a limit line, the design value and the basis on an outlined tag.",
  "status": "live",
  "instances": [

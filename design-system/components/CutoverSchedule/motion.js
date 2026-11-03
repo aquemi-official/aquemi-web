@@ -1,12 +1,22 @@
 /* CutoverSchedule: time runs left to right. The water line runs along the top until the shutdown, where it stops, the
    dashed gap opens with its label, and the line runs on after it; in step with it each bar grows from its start as
    the line passes, its row's text rising; the hold diamond strikes and the hold stamp lands. One timeline, once,
-   about 3.5 s. Phones: the same, rows rising as they come. Hover tints a bar (CSS). */
+   about 3.5 s. Phones (the lane hidden): each row has its own trigger and rises as it comes into view. Hover tints a bar (CSS). */
 AQmotion.fx('CutoverSchedule', function (root, m) {
   root.querySelectorAll('.aq-cutover-schedule').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
     var q = function (s) { return [].slice.call(el.querySelectorAll(s)) }, tl = m.tw(gsap.timeline({ paused: true }));
-    var rows = q('.aq-cutover-schedule__row'), water = q('.aq-cutover-schedule__water'), gap = el.querySelector('.aq-cutover-schedule__gap');
+    var rows = q('.aq-cutover-schedule__row'), water = q('.aq-cutover-schedule__lane .aq-cutover-schedule__water'), gap = el.querySelector('.aq-cutover-schedule__gap');
+    var lane = el.querySelector('.aq-cutover-schedule__lane');
+    if (!lane || !lane.offsetWidth) {            /* phones (pass 12): the lane is hidden; each row rises as it comes */
+      rows.forEach(function (r) {
+        var t = m.tw(gsap.timeline({ paused: true }));
+        t.from(r.querySelectorAll('.aq-cutover-schedule__n, .aq-cutover-schedule__t, .aq-cutover-schedule__d, .aq-cutover-schedule__hold'),
+          { y: 12, autoAlpha: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out', clearProps: 'transform,opacity,visibility' });
+        m.on(r, function () { t.play() }, 'top 88%');
+      });
+      return;
+    }
     var per = 0.55, t0 = 0.3, cut = rows.findIndex(function (r) { return r.classList.contains('is-cut') });
     tl.from(q('.aq-cutover-schedule__lk, .aq-cutover-schedule__grid'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
     if (water[0]) tl.from(water[0], { scaleX: 0, duration: cut < 0 ? per * rows.length : per * cut, ease: 'none', clearProps: 'transform' }, t0);

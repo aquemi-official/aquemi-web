@@ -2,7 +2,7 @@
  "look": "cost-skid",
  "component": "CostSkid",
  "type": "spec",
- "fields": "h, intro, cols [item, interval or amount, set by], rows [{p, v, m, link, part}], fold, fold_noun. part: the skid stage(s) the row belongs to, space-separated: panel, gen (RO and EDI), pre (carbon and softener), soft (softener and brine tank), uv, pump, drain. A row without a part has no leader. Desktop shows every row; the fold applies on phones, where the drawing runs full width with its numbers and the rows stack under it.",
+ "fields": "h, intro, cols [item, interval or amount, set by], rows [{p, v, m, link, part}], fold, fold_noun. part: the skid stage(s) the row belongs to, space-separated: panel, gen (RO and EDI), pre (carbon and softener), soft (softener and brine tank), uv, pump, drain. A row without a part has no leader. Every row shows on every width (pass 12, S7: the numbers on the drawing point at them; fold / fold_noun are no longer read).",
  "best_for": "CostSkid reads running costs off the system itself: one Purified Water skid in IsoKit line art beside the title, a numbered leader from each part a cost row belongs to, and the running-cost table under it led by the same numbers.",
  "status": "live",
  "instances": [

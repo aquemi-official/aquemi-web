@@ -14,7 +14,9 @@
   transition: background-color 180ms, color 180ms, border-color 180ms; z-index: 1; }
 .aq-walkdown-pins__pin.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface); z-index: 2; }
 .aq-walkdown-pins__lead .aq-iso__leader-line { stroke: var(--ink-subtle); }
-.aq-walkdown-pins__lab { position: absolute; transform: translate(0, calc(-100% - var(--space-1))); white-space: nowrap; font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted); transition: color 180ms; }
+.aq-walkdown-pins__lab { position: absolute; transform: translate(0, calc(-100% - var(--space-1))); white-space: nowrap; font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted); transition: color 180ms;
+  /* pass 12: the look places every name clear of the markers and the loop pipe, so no knockout is needed */
+  background: none; box-shadow: none; }
 .aq-walkdown-pins__lab--r { transform: translate(-100%, calc(-100% - var(--space-1))); }
 .aq-walkdown-pins__lab.is-on { color: var(--flow); }
 
@@ -32,9 +34,6 @@
 .aq-walkdown-pins__v { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
 .aq-walkdown-pins__m { margin: 0; font: 400 13px/20px var(--font-mono); color: var(--ink-subtle); }
 
-/* the fold is for phones only: desktop shows every check */
-.aq-fold:not(.is-open) .aq-walkdown-pins__row.aq-fold-x { display: grid; }
-.aq-fold:has(> .aq-walkdown-pins__list) > .aq-fold__btn { display: none; }
 
 @container (max-width: 1080px) {
   .aq-walkdown-pins { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
@@ -50,9 +49,29 @@
   .aq-walkdown-pins__lab, .aq-walkdown-pins__lead { display: none; }
   .aq-walkdown-pins__v { font-size: 14px; }
   .aq-walkdown-pins__m { font-size: 12px; line-height: 18px; }
-  .aq-fold:not(.is-open) .aq-walkdown-pins__row.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-walkdown-pins__list) > .aq-fold__btn { display: flex; }
 }
+
+/* Phones (pass 12, PhoneKit sticky figure): every check open; the sheet is a 200 px strip held under the section bar,
+   zoomed 1.8x and panned to the marker of the check on the reading line (PhoneKit sets --pk-x/--pk-y/--pk-s on the
+   sheet). A flex column, not a grid, so the strip's sticky box is the whole look (a grid item sticks only inside its
+   own row). The check in view lights: its number and marker in flow, the row on the raised surface. */
+@container (max-width: 860px) {
+  .aq-walkdown-pins[data-pk-on] { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__fig { order: -1; margin: 0 0 var(--space-2); background: var(--surface-raised); }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__sheet { border: 0; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__pin { min-width: 14px; height: 14px; font-size: 9px; border-width: 0.75px; transform: translate(calc(-50% + var(--k, 0) * 14px), -50%); }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__pin.is-pk-active { background: var(--flow); border-color: var(--flow); color: var(--surface); z-index: 2; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row { padding: var(--space-3) var(--space-2) var(--space-4) 0; transition: background-color 200ms; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row.is-pk-active { background: var(--surface-raised); }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row:not(.is-pk-active) .aq-walkdown-pins__n { color: var(--ink-subtle); }
+}
+/* tablets (columns of 600 px and up): a taller strip at a lower zoom (the look sets data-pk-zoom from the column), so
+   the skid and the loop stay in view around the marker */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-walkdown-pins[data-pk-sticky][data-pk-on] .aq-walkdown-pins__fig { height: 280px; }
+  .aq-walkdown-pins[data-pk-sticky][data-pk-on] .aq-walkdown-pins__row { scroll-margin-top: calc(var(--pk-top, 0px) + 280px + var(--space-4)); }
+}
+@media (prefers-reduced-motion: reduce) { .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row { transition: none; } }
 
 /* section hook (the look marks its section) */
 .aq-walkdown-pins-sec { position: relative; }

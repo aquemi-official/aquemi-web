@@ -58,23 +58,47 @@
   .aq-audit-manifold__v { font-size: 14px; line-height: 22px; }
 }
 
-/* Phones: each row a short vertical run: the auditor, then a riser teeing into what they read and where we answer it */
+/* the NDA tag: only phones show it (under the closed valve) */
+.aq-audit-manifold__nda { display: none; }
+
+/* Phones: one header pipe runs down a left rail through every row; each row takes off it through one valve into the
+   row. On an access table the valve shows the access at a glance: open (on this page), half open (on request, at
+   audit) or closed with an "NDA" tag. The row is the title, one 14 px line and the answer as a full-width 48 px row
+   link; no column keys. */
 @container (max-width: 860px) {
-  .aq-audit-manifold { --cols: var(--space-12) minmax(0, 1fr); }
+  .aq-audit-manifold { --cols: var(--space-12) minmax(0, 1fr); --am-tk: calc(var(--space-4) + 13px); }
   .aq-audit-manifold__colh { display: none; }
-  .aq-audit-manifold__row { grid-template-columns: var(--cols, 1fr); row-gap: var(--space-3); align-items: start; padding-block: var(--space-6); }
-  .aq-audit-manifold__row:first-child { border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
-  .aq-audit-manifold__who { grid-column: 1 / -1; grid-row: 1; }
-  .aq-audit-manifold__read { grid-column: 2; grid-row: 2; }
-  .aq-audit-manifold__go { grid-column: 2; grid-row: 3; }
-  .aq-audit-manifold__pipe { grid-column: 1; margin-block: 0; min-height: var(--space-12); }
-  .aq-audit-manifold__pipe--a { grid-row: 2; margin-top: calc(var(--space-3) * -1); margin-bottom: calc(var(--space-3) * -1); }
-  .aq-audit-manifold__pipe--b { grid-row: 3; }
-  .aq-audit-manifold__row .aq-audit-manifold__pipe--a .aq-audit-manifold__hdr { top: 0; bottom: 0; border-top: 1.5px solid var(--wall, var(--on-navy-muted)); }
-  .aq-audit-manifold__row .aq-audit-manifold__pipe--b .aq-audit-manifold__hdr { top: 0; bottom: 50%; border-top: 0; border-bottom: 1.5px solid var(--wall, var(--on-navy-muted)); }
-  .aq-audit-manifold__pipe--a .aq-audit-manifold__br { top: calc(var(--space-3) + var(--space-6)); }
-  .aq-audit-manifold__pipe--a .aq-audit-manifold__valve, .aq-audit-manifold__pipe--a .aq-audit-manifold__fl { top: calc(var(--space-3) + var(--space-6)); }
-  .aq-audit-manifold__k { display: block; margin-bottom: var(--space-1); }
-  .aq-audit-manifold__t { font-size: 20px; line-height: 26px; }
-  .aq-audit-manifold__v { font-size: 14px; line-height: 22px; }
+  .aq-audit-manifold__rows { border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+  .aq-audit-manifold__row { grid-template-columns: var(--cols, 1fr); column-gap: var(--space-3); row-gap: var(--space-2); align-items: start; padding-block: var(--space-4) 0; }
+  .aq-audit-manifold__who, .aq-audit-manifold__read, .aq-audit-manifold__go { grid-column: 2; }
+  .aq-audit-manifold__who { grid-row: 1; }
+  .aq-audit-manifold__read { grid-row: 2; }
+  .aq-audit-manifold__go { grid-row: 3; }
+  .aq-audit-manifold__pipe--b { display: none; }
+  .aq-audit-manifold__pipe--a { grid-column: 1; grid-row: 1 / span 3; align-self: stretch; margin: calc(var(--space-4) * -1) 0 -1px; min-height: 0; }
+  .aq-audit-manifold__pipe--a .aq-audit-manifold__hdr { left: var(--space-1); top: 0; bottom: 0; border-top: 0; border-bottom: 0; }
+  .aq-audit-manifold__row.is-first .aq-audit-manifold__pipe--a .aq-audit-manifold__hdr { top: var(--am-tk, 29px); border-top: 1.5px solid var(--wall, var(--on-navy-muted)); }
+  .aq-audit-manifold__row.is-last .aq-audit-manifold__pipe--a .aq-audit-manifold__hdr { bottom: auto; height: calc(var(--am-tk, 29px) + var(--space-2) - 2px); border-bottom: 1.5px solid var(--wall, var(--on-navy-muted)); }
+  .aq-audit-manifold__row.is-first.is-last .aq-audit-manifold__pipe--a .aq-audit-manifold__hdr { display: none; }
+  .aq-audit-manifold__pipe--a .aq-audit-manifold__br { left: calc(var(--space-1) + var(--space-3) - 1.5px); right: 0; top: var(--am-tk, 29px); }
+  .aq-audit-manifold__pipe--a .aq-audit-manifold__fl { top: var(--am-tk, 29px); }
+  .aq-audit-manifold__pipe--a .aq-audit-manifold__valve { left: 58%; top: var(--am-tk, 29px); width: 36px; height: 28px; }
+  .aq-audit-manifold__nda { position: absolute; left: var(--space-4); top: calc(var(--am-tk, 29px) + var(--space-4)); display: block; padding: 0 var(--space-1);
+    font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--on-navy); border: 1px solid var(--wall, var(--on-navy-muted)); background: var(--navy); }
+  /* access states: open = solid water in the body, stem turned a quarter; half = the body drawn as a water outline,
+     stem at 45 degrees; closed = dry, with the NDA tag; undecided (access still a placeholder) = a dashed outline */
+  .aq-audit-manifold__row.is-open .aq-audit-manifold__body { fill: var(--water, var(--flow)); stroke: var(--water, var(--flow)); }
+  .aq-audit-manifold__row.is-open .aq-audit-manifold__stem { transform: rotate(90deg); }
+  .aq-audit-manifold__row.is-half .aq-audit-manifold__body { fill: none; stroke: var(--water, var(--flow)); stroke-width: 2; }
+  .aq-audit-manifold__rows.is-access .aq-audit-manifold__row:not(.is-open):not(.is-half):not(.is-closed) .aq-audit-manifold__body { fill: none; stroke-dasharray: 2 2; }
+  .aq-audit-manifold__row.is-half .aq-audit-manifold__stem { transform: rotate(45deg); }
+  .aq-audit-manifold__row.is-closed .aq-audit-manifold__br .aq-audit-manifold__w { opacity: 0.25; }
+  .aq-audit-manifold__k { display: none; }
+  .aq-audit-manifold__no { font-size: 12px; }
+  .aq-audit-manifold__t { font-size: 19px; line-height: 26px; }
+  .aq-audit-manifold__v { font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); }
+  .aq-audit-manifold__go { margin-top: var(--space-1); }
+  .aq-audit-manifold__link { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: var(--space-12); padding-block: var(--space-2);
+    border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); font-size: 16px; line-height: 22px; text-decoration: none; }
+  .aq-audit-manifold__link::after { color: var(--on-navy); }
 }

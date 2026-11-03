@@ -5,7 +5,7 @@ BatteryLimit lays site requirements on a navy and limestone split whose divide i
 - Fields: `h`, `intro`, `cols` (the second and third label each card's value and note), `rows [{p, v, m, side, link, link_label}]`, `sides` ([package label, site label]), `seam` (the line's name), `fold`, `fold_noun`. `side` (new): `limit` (the one row that is the battery limit), `package` or `site` (default). Rows keep their numbers across both sides.
 - Tokens: `navy` half with `on-navy` text and cards outlined in `on-navy-muted`; `limestone` half with `on-limestone` text and `navy` indexes; the line, nodes and the limit card's border in `flow`; the limit card on `surface-raised`. Hover or focus a card: its border, leader and node turn `flow`.
 - Fold: phones only; desktop shows every card.
-- Phones: one column; the navy runs full bleed behind the heading and package cards, the battery-limit card sits on the join, the site cards follow on limestone; leaders and the line go.
+- Phones (pass 12, S7): the navy heading, then every row in list order (inline `order`) down one left spine, the battery limit line drawn dash and dot in `flow`, each card's tie-in node on it (the limit row a solid node and the `flow`-framed card). Each card carries its side's label as a chip (`span.__who`, phone-only: navy card with a limestone chip for the package side, limestone card with an outlined chip for the site side). Column keys sit inline before their values; links get 44 px hit boxes; in dark a site card's link turns dark navy on its limestone with a `flow` underline. Every card shows: the fold no longer hides any (first-system 2,260 to 2,000 px with order fixed; project-plan 1,240 px for 4 of 9 to 1,990 px for all 9). Desktop unchanged.
 
 ## Motion
 

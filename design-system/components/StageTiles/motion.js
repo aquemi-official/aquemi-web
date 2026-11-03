@@ -37,7 +37,8 @@ AQmotion.fx('StageTiles', function (root, m) {
       tl.from(t.querySelector('.aq-stage-tiles__body'), { autoAlpha: 0, y: 12, duration: 0.45, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.35);
       if (rolls[i]) rollIn(tl, rolls[i], at + 0.3);
     });
-    var art = list.querySelector('.aq-stage-tiles__svg');
+    /* the drawing that shows: the IQ tile's on desktop, the band under the heading on phones (pass 12) */
+    var art = [list.querySelector('.aq-stage-tiles__svg'), el.querySelector('.aq-stage-tiles__band .aq-stage-tiles__svg')].filter(function (x) { return x && x.getBoundingClientRect().width > 0 })[0];
     if (art) {
       var at = 0.9;
       if (D) tl.fromTo(art.querySelectorAll('.aq-stage-tiles__pw, .aq-stage-tiles__pi'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.9, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at);

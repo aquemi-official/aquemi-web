@@ -45,6 +45,13 @@ AQmotion.fx('WetRunHmi', function (root, m) {
     tl.from(pts, { autoAlpha: 0, y: 12, duration: 0.5, stagger: 0.15, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.3);
     tl.add(function () { mode(true); slide(true) }, 1.3);
     if (wide) run(tl, 1.35);
+    /* up to tablet width (pass 12): the strip's water runs feed to outlet and its markers pop as it passes */
+    var strip = !wide && fig.querySelector('.aq-wet-run-hmi__strip'), sw2 = strip && strip.querySelector('.aq-wet-run-hmi__water'), smk = strip ? [].slice.call(strip.querySelectorAll('.aq-wet-run-hmi__smk')) : [];
+    function srun(t, t0) {
+      if (D && sw2) t.fromTo(sw2, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.2, ease: 'none', clearProps: 'strokeDasharray,strokeDashoffset' }, t0);
+      smk.forEach(function (k) { var x = +k.querySelector('circle').getAttribute('cx') / 360; t.fromTo(k, { scale: 0.5, transformOrigin: '50% 50%', transformBox: 'fill-box' }, { scale: 1, duration: 0.35, ease: 'back.out(2.2)', clearProps: 'transform' }, t0 + x * 1.2) });
+    }
+    if (strip) srun(tl, 1.35);
     m.on(fig, function () { tl.play() }, 'top 75%');
 
     /* the reader's switch: thumb springs (jumps for keyboard), "with water" runs the water again */
@@ -56,6 +63,7 @@ AQmotion.fx('WetRunHmi', function (root, m) {
       slide(wet, kb);
       if (again) { again.kill(); again = null }
       if (wet && wide && !kb) { again = m.tw(gsap.timeline()); run(again, 0) }
+      else if (wet && strip && !kb) { again = m.tw(gsap.timeline()); srun(again, 0) }
     });
   });
 });

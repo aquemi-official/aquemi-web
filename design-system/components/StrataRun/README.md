@@ -5,7 +5,15 @@ StrataRun draws a process diagram as one water run stepping down a terrace of st
 - Scene (IsoKit): one slab per stage (`g.__stack` of `path.__slab` sheets, the top sheet `is-top`), each a step lower and nearer than the last, so the water runs back to front in DOM order. Equipment per stage (`art`): feed (riser, ball valve, gauge), pretreatment (media filter, carbon), generation (RO rack, EDI), storage (tank), loop (pump, UV, analyser), outlets (three points of use). The distribution header runs over the outlets with a drop to each and returns overhead to the tank. Behind it all, `path.__stream` (flow-tint) with its paper edge `__edge`; along the foot, the dashed monitoring bus `__bus` with a riser to every slab. Leaders `path.__lead` continue each label's left hairline down to its part.
 - Fields: `stages [{t, d, icon|spot, link, art}]`, `base`, `base_link`, `caption`. `link` (new, optional): a page id or `page#anchor`; the stage name becomes the link (44 px target) and hovering or focusing it lights the stage's equipment. `art` (new, optional): what stands on the slab; default by position (feed, pretreatment, generation, storage, loop, outlets). `base_link` (new, optional) links the base line. Up to six stages.
 - Tokens: slabs `surface-raised` tops and `surface-sunken` sheets with `line-strong` 1 px edges; stream `flow-tint` over a `line` edge; leaders and bus `line-strong`; equipment IsoKit default. Labels: mono `flow` index, 17/24 name, 14/21 `ink-muted` text.
-- Phones: the scene goes; the labels stack down a vertical pipe (twin `line-strong` walls, a `flow` water line, a ring at each stage), each with its own slab drawing (`.__mini`) beside it.
+- Phones (pass 12, S10): the run turns vertical. Each stage's slab drawing stands 140 px tall in its own row,
+  alternating left and right, the stage number and name in the free half beside it; one twin-wall pipe (`line-strong`
+  walls, `flow` water) zigzags down: in at the slab's near corner, out at the far corner, across to the page edge and
+  down past the stage's text to the next slab (`span.__pp--iv/ih/oh/ov` in the thumb; `--ly` / `--ry` from the
+  renderer are the slab corners' heights). Every row keeps a pipe lane on both sides, so the text has one left edge
+  whichever side the pipe runs down; beside a left-hand slab the name may run on into the right lane. The text sits
+  under its slab; title links are 44 px targets, their arrow kept to the last word. Tablets (600-860 px): the run keeps
+  a 560 px measure and the slabs stand 180 px tall. Systems at 375 px: 1,425 -> 1,697 px (the slab drawings run about
+  140 px tall instead of about 90 px).
 - Not for: P&ID schematics (ProcessDiagram) or a single machine (Illustration).
 
 ## Motion

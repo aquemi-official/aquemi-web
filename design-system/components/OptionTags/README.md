@@ -6,7 +6,10 @@ OptionTags lays a system's configuration options out as physical tags on a limes
 - Fold: phones only (desktop shows the whole table). Hover or focus picks a tag up: it straightens and lifts.
 - Tokens: `limestone` table, `surface-raised` tags with `line-strong` edges, `navy` strip with `limestone` folders, `flow` stamps and vial liquid lines. No shadows.
 - Phones: one column, tilt reduced, folders on the limestone ground, vials hidden, fold button back.
+- No folder among the items (pass 12): the navy strip is not drawn (`.is-flat`; it would stand empty) and the tags fill three columns on desktop.
 
 ## Motion
 
 Motion: the label card's base line settles first; then each tag drops onto its place from above, turning as it falls and settling at its own tilt, its string pulling out from the eyelet; the stamp strikes a beat later; folders slide in from the right onto the navy strip; the vials roll in last. Under 5 s; folded tags appear whole when opened; nothing under reduced motion.
+
+Pass 12 verify fixes: five options or fewer are never folded (the fold applies to longer lists, phones only); on phones the strings are hidden (tilt and eyelets keep the tag idea). Dark theme: the label lead uses `--ink-muted` (the card turns navy), the fold button the limestone inks.

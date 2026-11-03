@@ -3,7 +3,8 @@
    built the way you would climb it: riser up, tread across, and the card lands on the tread as it is laid, its number
    decoding; one limestone drop climbs with the line and comes to rest at the top step. Last, the end word strikes in
    on the wedge, as soon as both the stair is up and the word is on screen. Under 4 s. Phones (the flight runs down the page): each step lays its tread and lands its card as it
-   scrolls in; the end word strikes when it is reached. Hover lifts a card off its tread (CSS). */
+   scrolls in; the end word strikes when it is reached. Hover lifts a card off its tread (CSS). Phones with the PhoneKit
+   picker (pass 12): the chips rise in turn, and each card a chip opens lands with its rail climbing to its step. */
 AQmotion.fx('StairRouter', function (root, m) {
   var CLEAR = 'transform,opacity,visibility,clipPath';
   [].forEach.call(root.querySelectorAll('.aq-stair-router-sec'), function (sec) {
@@ -12,7 +13,8 @@ AQmotion.fx('StairRouter', function (root, m) {
     var q = function (s, el) { return (el || sec).querySelector(s) }, qa = function (s, el) { return [].slice.call((el || sec).querySelectorAll(s)) };
     var steps = qa('.aq-stair-router__step', flight), go = q('.aq-stair-router__go'), drop = q('.aq-stair-router__drop'), type = q('.aq-stair-router__type');
     [flight, go, drop, type].forEach(function (el) { if (el) m.claim(el) });
-    var stacked = getComputedStyle(flight).display === 'flex';
+    if (window.AQpk) AQpk.scan();
+    var stacked = getComputedStyle(flight).display === 'flex', picker = flight.hasAttribute('data-pk-on');
 
     // Outline type
     var rows = qa('.aq-stair-router__w'), chars = [];
@@ -45,6 +47,23 @@ AQmotion.fx('StairRouter', function (root, m) {
       return t + 0.22;
     }
     var P = steps.map(parts);
+
+    // Phones with the picker (PhoneKit): the chips rise in turn as the flight comes in; the card a chip opens lands on
+    // its rail (the rail's steps climb up to this one). Every card is readable without motion.
+    if (picker) {
+      var chips = qa('.aq-stair-router__chip', flight);
+      if (chars.length) { gsap.set(chars, { autoAlpha: 0 }); m.on(sec, function () { playType(m.tw(gsap.timeline()), 0) }) }
+      if (chips.length) { gsap.set(chips, { autoAlpha: 0, y: 12 }); m.on(flight, function () { m.tw(gsap.to(chips, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power3.out', stagger: 0.05, clearProps: CLEAR })) }, 'top 85%') }
+      flight.addEventListener('pk:change', function (ev) {
+        if (!ev.detail || !ev.detail.on || ev.detail.index < 0) return;
+        var st = steps[ev.detail.index], card = st && q('.aq-stair-router__card', st); if (!card) return;
+        m.tw(gsap.fromTo(card, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out', clearProps: CLEAR }));
+        var ticks = qa('.aq-stair-router__rail i', card).slice(0, ev.detail.index + 1);
+        if (ticks.length) m.tw(gsap.fromTo(ticks, { scaleY: 0, transformOrigin: '50% 100%' }, { scaleY: 1, duration: 0.25, ease: 'power2.out', stagger: 0.03, clearProps: 'transform' }));
+      });
+      if (go) { gsap.set(go, { clipPath: 'inset(0% 100% 0% 0%)' }); m.on(go, function () { strikeGo(m.tw(gsap.timeline()), 0) }, 'top 95%') }
+      return;
+    }
 
     if (!stacked) {
       P.forEach(hide); if (go) gsap.set(go, { clipPath: 'inset(0% 100% 0% 0%)' });

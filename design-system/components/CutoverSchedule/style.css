@@ -32,15 +32,48 @@
 .aq-cutover-schedule__row.is-cut:hover .aq-cutover-schedule__bar { background: var(--ink); }
 .aq-cutover-schedule__nts { margin: var(--space-3) 0 0; text-align: right; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 
+/* the phone strip (mini schedule) is phone-only */
+.aq-cutover-schedule__mini { display: none; }
+
 @container (max-width: 860px) {
+  /* Phones (pass 12): the lane and the per-row tracks give way to one mini schedule held under the header (PhoneKit
+     sticky strip, 96 px): the step number in view on the left, then the water line with its shutdown gap and all the
+     bars stair-stepped, the bar of the row in view filled flow. Rows are compact cards: number, name, line, hold. */
   .aq-cutover-schedule { --cols: var(--space-8) minmax(0, 1fr); }
-  .aq-cutover-schedule__lane { grid-template-columns: var(--cols, auto); }
-  .aq-cutover-schedule__lk { grid-column: 2; text-align: left; margin-bottom: var(--space-8); grid-row: 1; }
-  .aq-cutover-schedule__ltrack { grid-column: 2; grid-row: 2; }
-  .aq-cutover-schedule__txt { padding: var(--space-4) 0 var(--space-2); }
-  .aq-cutover-schedule__n { padding-top: var(--space-4); }
-  .aq-cutover-schedule__track { grid-column: 2; min-height: var(--space-12); margin-bottom: var(--space-2); }
+  .aq-cutover-schedule__lane, .aq-cutover-schedule__track { display: none; }
+  .aq-cutover-schedule__mini {
+    display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-3); align-items: stretch;
+    height: 96px; box-sizing: border-box; padding: var(--space-3) 0; background: var(--surface); border-bottom: 1px solid var(--line-strong);
+    box-shadow: calc(-1 * var(--space-4)) 0 0 var(--surface), var(--space-4) 0 0 var(--surface);
+  }
+  .aq-cutover-schedule__mn { position: relative; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--line); }
+  .aq-cutover-schedule__mn > span { display: none; font: 300 var(--aq-num-phone, 44px)/1 var(--font-sans); letter-spacing: -0.04em; color: var(--flow); font-variant-numeric: tabular-nums; }
+  .aq-cutover-schedule__mn > span:first-child, .aq-cutover-schedule[data-pk-active] .aq-cutover-schedule__mn > span.is-pk-active { display: block; }
+  .aq-cutover-schedule[data-pk-active] .aq-cutover-schedule__mn > span:first-child:not(.is-pk-active) { display: none; }
+  .aq-cutover-schedule__mn small { font: 500 12px/16px var(--font-mono); color: var(--ink-subtle); margin-top: var(--space-1); }
+  .aq-cutover-schedule__mg { position: relative; display: grid; grid-template-rows: 16px 8px minmax(0, 1fr); min-width: 0; }
+  .aq-cutover-schedule__mk { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--flow); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .aq-cutover-schedule__mw { position: relative; }
+  .aq-cutover-schedule__mw .aq-cutover-schedule__water { bottom: 2px; border-top-width: 2px; }
+  .aq-cutover-schedule__mgap { position: absolute; bottom: 0; height: 6px; border: 1px dashed var(--ink-muted); border-bottom: 0; box-sizing: border-box; }
+  .aq-cutover-schedule__mb { position: relative; margin-top: var(--space-1); }
+  .aq-cutover-schedule__mb > span { position: absolute; min-height: 4px; box-sizing: border-box; border: 1px solid var(--ink); background: var(--surface-raised); transition: background-color 200ms ease, border-color 200ms ease; }
+  .aq-cutover-schedule__mb > span.is-cut { background: var(--ink); }
+  .aq-cutover-schedule__mb > span.is-pk-active { background: var(--flow); border-color: var(--flow); }
+  .aq-cutover-schedule__row { grid-template-columns: var(--cols, auto); border-bottom-color: var(--line); }
+  .aq-cutover-schedule__txt { padding: var(--space-4) 0; }
+  .aq-cutover-schedule__n { padding-top: var(--space-4); font-size: 13px; line-height: 26px; transition: color 200ms ease; }
+  .aq-cutover-schedule__row.is-pk-active .aq-cutover-schedule__n { color: var(--flow); }
   .aq-cutover-schedule__t { font-size: 20px; line-height: 26px; }
+  .aq-cutover-schedule__d { margin-top: var(--space-1); font-size: 15px; line-height: 22px; }
+  .aq-cutover-schedule__hold { margin-top: var(--space-2); font-size: 12px; }
+  /* pass 12 verify (S4): the HOLD key stays mono; the sentence after it reads at 14 px */
+  .aq-cutover-schedule__hold > span:last-child { font: 400 14px/20px var(--font-sans); letter-spacing: 0; text-transform: none; }
+  .aq-cutover-schedule__go { position: relative; }
+  .aq-cutover-schedule__go::before { content: ""; position: absolute; inset: 50% auto auto 0; width: 100%; min-height: var(--aq-hit, 44px); transform: translateY(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-cutover-schedule__mb > span, .aq-cutover-schedule__n { transition: none; }
 }
 .aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
 @container (max-width: 860px) { .aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }

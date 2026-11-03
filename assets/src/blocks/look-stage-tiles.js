@@ -7,7 +7,8 @@
    joining method is open (DR-018, FD-18; as JointMacro).
    Fields (a steps block): h, intro, items [{t, d, link, label, art}]. label: a short line over the stage name (shown
    only when the name does not already contain it); art: "piping" for the drawing tile.
-   Container under 1080 px: the heading over a three-column grid; phones: one column, numeral beside the words. */
+   Container under 1080 px: the heading over a three-column grid; phones (pass 12): the pipe-run drawing as a band
+   under the heading, then the stages as a 2-column grid of square tiles (44 px numeral, name, line). */
 function stPiping(){var P='aq-stage-tiles'+'__',run='M-6 34H58Q72 34 72 48V98Q72 112 86 112H148Q162 112 162 98V48Q162 34 176 34H246',br='M118 112V166';
  var g='';for(var x=20;x<240;x+=20)g+='M'+x+' 0V160';for(var y=20;y<160;y+=20)g+='M0 '+y+'H240';
  function jt(x,y,v){return '<path class="'+P+'jt" d="'+(v?'M'+(x-4.5)+' '+y+'H'+(x+4.5):'M'+x+' '+(y-4.5)+'V'+(y+4.5))+'"/>'}
@@ -26,5 +27,7 @@ LOOKS['stage-tiles']=function(b,H){var I=b.items||[],n=I.length;
    +(art?'<div class="aq-stage-tiles__art">'+stPiping()+'</div>':'')
    +'<span class="aq-stage-tiles__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'<i>/</i></span>'
    +'<div class="aq-stage-tiles__body">'+lab+'<h3 class="aq-stage-tiles__t">'+nm+'</h3>'+(it.d?'<p class="aq-stage-tiles__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
- return sec('<div class="aq-stage-tiles'+(n===6?' is-six':'')+'" style="--n:'+n+'"><div class="aq-stage-tiles__head">'+H+'</div>'
+ /* phones: the drawing leaves its tile and runs as a band under the heading (a phone-only copy, aria-hidden) */
+ var band=I.some(function(it){return it.art==='piping'})?'<div class="aq-stage-tiles__band" aria-hidden="true">'+stPiping()+'</div>':'';
+ return sec('<div class="aq-stage-tiles'+(n===6?' is-six':'')+'" style="--n:'+n+'"><div class="aq-stage-tiles__head">'+H+'</div>'+band
   +'<ol class="aq-stage-tiles__list">'+tiles+'</ol></div>','aq-stage-tiles-sec')};

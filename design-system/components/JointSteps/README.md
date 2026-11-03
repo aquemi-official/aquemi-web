@@ -5,7 +5,8 @@ JointSteps tells a fabrication sequence on one joint: a navy title column, a dra
 - Fields (a steps block): `h`, `intro`, `method` (the joint's method; a placeholder while it is open: `[PP joining method]`), `items [{t, d, hold, link, stage}]`. `stage` (optional): `plan`, `receive`, `qualify`, `join`, `test`, `clean` (default from the step's words). The sentence "Witness point." moves out of the text into the step's tag (exact words); a hold step gets the stamp "Hold point · Signed by …".
 - The joint zone is drawn between dashed bounds only (no bead, no socket), so the drawing never asserts the joining method.
 - Tokens: sheet `surface-raised` with `line`; lit stage lines `flow`; rail `line`, active marker and number `flow`.
-- Phones: title block, the sheet (not sticky, the tag at its top left), then the rail.
+- Phones (pass 12, PhoneKit sticky figure: `data-pk-sticky data-pk-bp="600" data-pk-h="180" data-pk-zoom="1"`, steps `data-pk-row`, each stage group `data-pk-key` = the steps that show it): title block, then the sheet as a 180 px strip under the header while the rail scrolls (the sheet wrapper is `display: contents` so it sticks the whole rail). The step on the reading line sets the sheet's stage (`data-st`) and the strip pans to the part that stage draws; the tag stays top left. Works the same with reduced motion; the desktop scroll story stands down while PhoneKit is on. The sheet's SVG labels (zone letters, dimensions) are hidden in the strip, where they would render at 8 px; the strip lifts off with the last step so it is never covered (PhoneKit's `--pk-lift`).
+- Tablets (601-860 px): PhoneKit stays off; title block across, then the sheet sticky beside the rail (two equal columns), the desktop scroll story at a smaller scale.
 
 ## Motion
 

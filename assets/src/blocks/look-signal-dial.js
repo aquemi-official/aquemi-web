@@ -6,8 +6,10 @@
    also a slider (drag, arrow keys, Home, End). The readout copies the chosen row's own cells, so no copy lives here.
    Concept: research/pass9b/concepts/sys-monitoring.2.png (signals table beside a tick-dial readout).
    Fields: h, caption (eyebrow, as SpecTable prints it), cols [signal, value, basis], rows [{p, v, m, link,
-   link_label, intent}], note, fold, fold_noun. Desktop shows every row; the fold applies on phones.
-   Phones: the dial first (smaller), the rows stacked under it. Without JS: channel 01 is shown, the table is whole. */
+   link_label, intent}], note. Every row shows on every width (pass 12; fold / fold_noun no longer read).
+   Phones (pass 12, PhoneKit sticky figure): the dial's top half as a 160 px strip held under the section bar, the
+   channel number at its centre (no names on the face: the rows carry them), the bezel stops as 44 px targets; the row
+   on the reading line turns the dial; rows stacked, the link a 44 px button. Without JS: channel 01, the table whole. */
 var SD_STEP=24;
 function sdDial(n){var C=200,s='',t,a,r1,r2,cls;
  /* the turning bezel: a tick every 3 degrees, a stop every 24 degrees from 12 o'clock for each channel */
@@ -28,19 +30,24 @@ LOOKS['signal-dial']=function(b,H){
  var pad=function(i){return (i<9?'0':'')+(i+1)};
  var rows=R.map(function(r,i){
   var go=r.link&&wp(r.link)?' <span class="aq-signal-dial__go">'+wlink(r.link,r.link_label||'More',r.intent)+'</span>':'';
-  return fli('<tr class="aq-signal-dial__row'+(i?'':' is-on')+'" data-sd="'+i+'"><th scope="row"><button type="button" class="aq-signal-dial__pick" data-sd="'+i+'" aria-pressed="'+(i?'false':'true')+'">'
+  return ('<tr class="aq-signal-dial__row'+(i?'':' is-on')+'" data-sd="'+i+'" data-pk-row="'+i+'"><th scope="row"><button type="button" class="aq-signal-dial__pick" data-sd="'+i+'" aria-pressed="'+(i?'false':'true')+'">'
    +'<span class="aq-signal-dial__n" aria-hidden="true">'+pad(i)+'</span><span class="aq-signal-dial__p">'+tx(r.p)+'</span></button></th>'
-   +'<td class="aq-signal-dial__v">'+tx(r.v||'')+'</td><td class="aq-signal-dial__m">'+(r.m?tx(r.m):'')+go+'</td></tr>',b,i)}).join('');
+   +'<td class="aq-signal-dial__v">'+tx(r.v||'')+'</td><td class="aq-signal-dial__m">'+(r.m?tx(r.m):'')+go+'</td></tr>')}).join('');
  var r0=R[0];
  var read='<div class="aq-signal-dial__read" aria-hidden="true"><span class="aq-signal-dial__ch">CH</span>'
   +'<span class="aq-signal-dial__num"><span class="aq-signal-dial__digits">'+pad(0)+'</span><span class="aq-signal-dial__of">/ '+pad(n-1)+'</span></span>'
   +'<span class="aq-signal-dial__name">'+tx(r0.p)+'</span><span class="aq-signal-dial__lim"></span>'
   +'<span class="aq-signal-dial__val">'+tx(r0.v||'')+'</span><span class="aq-signal-dial__tag"'+(r0.m?'':' hidden')+'>'+(r0.m?tx(r0.m):'')+'</span></div>';
+ /* phones: each bezel stop is a 44 px tap target riding the bezel (a turning layer like the ring); a tap brings that
+    channel's row to the reading line. Pointer conveniences only: the row buttons and the slider are the keyboard path. */
+ var bz='<div class="aq-signal-dial__bz" aria-hidden="true">'+R.map(function(r,i){return '<button type="button" class="aq-signal-dial__chb" data-sd="'+i+'" tabindex="-1" style="--j:'+i+'"><span>'+pad(i)+'</span></button>'}).join('')+'</div>';
  var dial='<div class="aq-signal-dial__dial" role="slider" tabindex="0" aria-label="Signal channel" aria-valuemin="1" aria-valuemax="'+n+'" aria-valuenow="1" aria-valuetext="'+e(pad(0)+' '+r0.p)+'" style="--sd-a:0">'
-  +sdDial(n)+read+'</div>';
- var inner='<div class="aq-signal-dial" data-n="'+n+'" data-step="'+SD_STEP+'"><div class="aq-signal-dial__fig">'+dial+'<p class="aq-signal-dial__hint" aria-hidden="true">Turn the dial or pick a row</p></div>'
+  +sdDial(n)+bz+read+'</div>';
+ /* every row shows on every width: each is a channel on the dial (pass 12, S7: no fold; fold / fold_noun not read).
+    Phones: PhoneKit holds the dial's top half as a 160 px strip and the row on the reading line turns it. */
+ var inner='<div class="aq-signal-dial" data-n="'+n+'" data-step="'+SD_STEP+'" data-pk-sticky data-pk-bp="860" data-pk-h="160"><div class="aq-signal-dial__fig" data-pk-fig>'+dial+'<p class="aq-signal-dial__hint" aria-hidden="true">Turn the dial or pick a row</p></div>'
   +'<table class="aq-signal-dial__table"><thead><tr><th scope="col">'+tx(C[0]||'')+'</th><th scope="col">'+tx(C[1]||'')+'</th><th scope="col">'+tx(C[2]||'')+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
- return sec(H+wFold(b,n,inner,b.fold_noun||'signals')+(b.note?'<p class="aq-signal-dial__note">'+tx(b.note)+'</p>':''),'aq-signal-dial-sec')};
+ return sec(H+inner+(b.note?'<p class="aq-signal-dial__note">'+tx(b.note)+'</p>':''),'aq-signal-dial-sec')};
 /* The dial's behaviour (works without GSAP and under reduced motion; CSS does the turning, and stands still under
    reduced motion). Ported from Subframe Motion "Exposure dial control" (camera-wheel), MIT, (c) 2026 Subframe:
    a role=slider that follows a horizontal drag (54 px a step, the example's scale), snaps to the nearest stop on
@@ -73,7 +80,21 @@ LOOKS['signal-dial']=function(b,H){
   var root=rootOf(d),n=+root.getAttribute('data-n'),i=+(root.getAttribute('data-on')||0),k=ev.key;
   if(['ArrowLeft','ArrowRight','ArrowDown','ArrowUp','Home','End'].indexOf(k)<0)return;ev.preventDefault();
   set(root,k==='Home'?0:k==='End'?n-1:i+(k==='ArrowRight'||k==='ArrowUp'?1:-1))});
+ /* phones (PhoneKit on): the row on the reading line turns the dial; a tapped bezel stop brings its row there */
+ document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-signal-dial')||r._sdHold!=null)return;set(r,ev.detail&&ev.detail.on?ev.detail.index:0)});
+ document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-signal-dial__chb');if(!c)return;var root=rootOf(c),i=+c.getAttribute('data-sd'),tr=root.querySelector('tr[data-sd="'+i+'"]');
+  set(root,i);if(!tr||!window.AQpk||!AQpk.on(root))return;
+  /* the section bar can tuck or untuck during the smooth scroll, which moves the reading line: hold the tapped row
+     until the scroll ends, then re-aim once without animation (pass 12 verify V4) */
+  function yOf(){return Math.max(0,window.scrollY+tr.getBoundingClientRect().top-(AQpk.line(root)-8))}
+  var tok={},done=false;root._sdHold=tok;
+  function end(){if(done)return;done=true;window.removeEventListener('scrollend',end);clearTimeout(t);
+   if(root._sdHold!==tok)return;var y=yOf();if(Math.abs(y-window.scrollY)>2)window.scrollTo({top:y,behavior:'auto'});set(root,i);
+   setTimeout(function(){if(root._sdHold===tok){root._sdHold=null;set(root,i)}},150)}
+  window.addEventListener('scrollend',end);var t=setTimeout(end,900);
+  window.scrollTo({top:yOf(),behavior:AQpk.reduced&&AQpk.reduced()?'auto':'smooth'})});
  document.addEventListener('pointerdown',function(ev){var d=ev.target.closest&&ev.target.closest('.aq-signal-dial__dial');if(!d||ev.button!==0||drag)return;
+  if(window.AQpk&&AQpk.on(rootOf(d)))return;
   ev.preventDefault();d.focus({preventScroll:true});var root=rootOf(d);
   drag={d:d,root:root,x:ev.clientX,v:+(root.getAttribute('data-on')||0),id:ev.pointerId,n:+root.getAttribute('data-n'),st:+root.getAttribute('data-step')};
   d.classList.add('is-drag');try{d.setPointerCapture(ev.pointerId)}catch(x){}});

@@ -86,18 +86,39 @@
 /* motion slides parts in from the side; never let them widen the page */
 .aq-section.aq-proof-folders-sec { overflow-x: clip; }
 
+/* the code strip over the phone row (hidden wider) */
+.aq-proof-folders__tabs { display: none; }
+
+/* Phones (pass 12, S11): a snap row of folders at 85 % (the next one peeking), all standards in the row; a strip of
+   the codes (44 px tabs) over it jumps and follows (look JS, AQsnap). Half the padding; sheets inside the gutter. */
 @container (max-width: 860px) {
   .aq-proof-folders__cols { display: none; }
-  .aq-proof-folders__list { padding-top: var(--space-6); }
-  .aq-proof-folders__row { grid-template-columns: minmax(0, 1fr); }
-  .aq-proof-folders__row + .aq-proof-folders__row { margin-top: var(--space-6); }
+  .aq-proof-folders__tabs { display: flex; gap: var(--space-1); margin: 0 0 var(--space-2); overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .aq-proof-folders__tabs::-webkit-scrollbar { display: none; }
+  .aq-proof-folders__tb { flex: none; min-height: 44px; padding: 0 var(--space-3); border: 1px solid var(--line-strong); border-radius: 0; background: var(--surface-raised); color: var(--ink);
+    font: 500 13px/16px var(--font-mono); letter-spacing: 0.04em; white-space: nowrap; cursor: pointer; }
+  .aq-proof-folders__tb[aria-current="true"] { background: var(--limestone); color: var(--on-limestone); border-color: var(--flow); box-shadow: inset 0 -3px 0 var(--flow); }
+  .aq-proof-folders__tb:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .aq-proof-folders__list { display: flex; gap: var(--space-3); padding-top: 0; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .aq-proof-folders__list::-webkit-scrollbar { display: none; }
+  .aq-fold:not(.is-open) .aq-proof-folders__row.aq-fold-x, .aq-proof-folders__row { display: flex; }
+  .aq-proof-folders__row { flex: 0 0 min(85%, 360px); flex-direction: column; scroll-snap-align: start; }
+  .aq-proof-folders .aq-fold__btn { display: none; }
+  .aq-proof-folders__row + .aq-proof-folders__row { margin-top: 0; }
   .aq-proof-folders__row > .aq-index { top: var(--space-1); }
-  .aq-proof-folders__std { padding: 0 0 var(--space-8) var(--space-8); flex-direction: row; align-items: baseline; gap: var(--space-3); }
+  .aq-proof-folders__std { padding: 0 0 var(--space-8) var(--space-8); flex-direction: column; gap: 0; }
   .aq-proof-folders__code { font-size: 24px; line-height: 30px; }
-  .aq-proof-folders__folder { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); padding: var(--space-4) 0 var(--space-6); min-height: 0; }
-  .aq-proof-folders__folder > div { padding: 0 var(--space-4); }
-  .aq-proof-folders__tab { left: calc(var(--space-4) + var(--i, 0) * 8%); }
-  .aq-proof-folders__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-  .aq-proof-folders__clip { left: auto; right: var(--space-8); }
-  .aq-proof-folders__stamp, .aq-proof-folders__row:nth-child(even) .aq-proof-folders__stamp { bottom: 0; right: var(--space-6); left: auto; }
+  .aq-proof-folders__title { font-size: 14px; line-height: 20px; }
+  .aq-proof-folders__folder { flex: 1; grid-template-columns: minmax(0, 1fr); align-content: start; row-gap: var(--space-4); padding: var(--space-3) 0 var(--space-4); min-height: 0; }
+  .aq-proof-folders__folder > div { padding: 0 var(--space-3); }
+  .aq-proof-folders__tab { left: calc(var(--space-3) + min(var(--i, 0), 4) * 9%); }
+  .aq-proof-folders__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; margin: 0 0 var(--space-1); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+  .aq-proof-folders__slip { padding: var(--space-3) var(--space-3) var(--space-4); font-size: 14px; line-height: 21px; }
+  .aq-proof-folders__sheets { padding-right: var(--space-3); }
+  .aq-proof-folders__sheet { padding: var(--space-2) var(--space-3); transform: rotate(calc(1deg - var(--j, 0) * 1.2deg)) translateX(calc(min(var(--j, 0), 3) * var(--space-1))); }
+  .aq-proof-folders__proof { padding-bottom: var(--space-6) !important; }
+  .aq-proof-folders__clip { left: auto; right: var(--space-6); }
+  .aq-proof-folders__stamp, .aq-proof-folders__row:nth-child(even) .aq-proof-folders__stamp { bottom: 0; right: var(--space-4); left: auto; }
+  .aq-proof-folders__label { padding: var(--space-2) var(--space-3); }
+  .aq-proof-folders__label:has(a) { min-height: 48px; display: flex; align-items: center; }
 }

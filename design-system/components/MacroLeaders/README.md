@@ -5,9 +5,11 @@ MacroLeaders sets a comparison table beside a macro drawing (RO membrane leaves 
 - Leader length per row is `--k` (0 to 1, set by the renderer from the row's place), so the markers stand on an arc.
 - The drawing uses flat tonal fills only (`surface-raised`, `surface-sunken`, `flow-tint`, an 18 % `ink` mix for the pipe's shaded side), `line-strong` edges, `line` hatching (permeate carrier, feed spacer mesh) and `flow` water lines. No gradients. Two short mono drawing labels.
 - Row names in Geist Light 24 px; values 14 px; header in mono. Hover or focus within a row tints it `flow-tint` (the table's one highlighted row) and fills its marker and leader in `flow`.
-- Phones: the macro is a band above the table; rows are records on a vertical rail of markers, each value with its column label.
+- Phones (pass 12, S12/S18): no macro (on a phone it was an unlabelled crop); the value columns are named once in a legend (`p.__legend`, aria-hidden), each with a colour code (column 1 `flow`, 2 `ink`, 3 `caution`, 4 `line-strong`), and each row's values are lines with the same 3 px code rule at 15 px; rows stay records on the vertical rail of markers. Each cell's value is wrapped in `span.__v` so a placeholder never falls into a label column.
 - Not for tables of more than about eight rows (the arc crowds), or without a first column that names the rows.
 
 Motion (`motion.js`): the leaves start pressed together and fan apart back to front, the pipe slides in along its axis, water runs once along each leaf; then row by row the marker pops onto its arc, the leader shoots to the row and the cells arrive as it lands (about 3.4 s). Nothing under reduced motion.
 
 Ported (pass 9b): Subframe Motion "Chart crosshair" (chart-crosshair): a row rule and a column rule snap to the cell under the pointer (200 ms), the column head turns `flow` and the cell takes the flow tint; keyboard focus on a row link snaps the row rule. Wide screens; rules out of the page at rest.
+
+Pass 12 (phones): the second value code is a dashed ink rule in the key and the rows, so the two codes differ by pattern, not only by hue.

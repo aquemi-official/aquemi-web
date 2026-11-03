@@ -70,21 +70,23 @@
   .aq-record-anatomy__row { grid-template-columns: var(--space-8) minmax(0, 7rem) minmax(0, 1fr); }
   .aq-record-anatomy__row > * { padding: var(--space-3); }
 }
-/* Phones: the sheet keeps its frame and band; the title, then the title block, each row with its own drawing */
+/* Phones (pass 12, S14): no frame, zone band or A-C gutter; the title, then the title block as a 2 x 2 grid of
+   cells, each with its own drawing on top, the number and field name, and the line under them */
 @container (max-width: 860px) {
-  .aq-record-anatomy { --ra-pad: var(--space-6); }
-  .aq-record-anatomy__sheet { grid-template-columns: minmax(0, 1fr); padding: var(--space-8) var(--space-4) 0 var(--space-6); }
-  .aq-record-anatomy__band--x { left: var(--space-6); right: var(--space-4); }
-  .aq-record-anatomy__band--y { width: var(--space-4); }
-  .aq-record-anatomy__title { grid-row: 1; padding-bottom: var(--space-8); }
+  .aq-record-anatomy { --ra-pad: 0px; }
+  .aq-record-anatomy__sheet { grid-template-columns: minmax(0, 1fr); padding: 0; border: 0; outline: 0; }
+  .aq-record-anatomy__band { display: none; }
+  .aq-record-anatomy__title { grid-row: 1; padding-bottom: var(--space-6); }
   .aq-record-anatomy-sec .aq-record-anatomy__title .aq-h1 { font-size: 40px; line-height: 44px; }
   .aq-record-anatomy__field { display: none; }
-  .aq-record-anatomy__block { grid-column: 1; grid-row: 2; margin: 0 calc(var(--space-4) * -1) 0 calc(var(--space-6) * -1); border-left: 0; }
-  .aq-record-anatomy__row { grid-template-columns: var(--space-8) minmax(0, 1fr); }
-  .aq-record-anatomy__row > * { padding: var(--space-2) var(--space-3); }
-  .aq-record-anatomy__no-c { grid-row: 1 / span 3; }
-  .aq-record-anatomy__t { border-right: 0; padding-top: var(--space-4); }
-  .aq-record-anatomy__d { padding-bottom: var(--space-4); }
-  .aq-record-anatomy__mini { display: block; grid-column: 2; grid-row: 1; padding: var(--space-4) var(--space-3) 0; }
-  .aq-record-anatomy__mini .aq-record-anatomy__svg { max-width: 18rem; }
+  .aq-record-anatomy__block { grid-column: 1; grid-row: 2; margin: 0; border-left: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-record-anatomy__row, .aq-record-anatomy__row:last-child { grid-template-columns: auto minmax(0, 1fr); align-content: start; align-items: baseline; column-gap: var(--space-2);
+    padding: var(--space-4) var(--space-3) var(--space-6); border-bottom: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
+  .aq-record-anatomy__row:nth-child(odd) { padding-left: 0; border-right: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
+  .aq-record-anatomy__row:nth-child(even) { padding-right: 0; }
+  .aq-record-anatomy__row > * { padding: 0; }
+  .aq-record-anatomy__mini { display: block; grid-column: 1 / -1; grid-row: 1; margin-bottom: var(--space-3); }
+  .aq-record-anatomy__no-c, .aq-record-anatomy__t { grid-row: 2; border-right: 0; line-height: 20px; }
+  .aq-record-anatomy__t { font-size: 12px; }
+  .aq-record-anatomy__row .aq-record-anatomy__d { grid-column: 1 / -1; grid-row: 3; margin-top: var(--space-2); font-size: 15px; line-height: 22px; }
 }

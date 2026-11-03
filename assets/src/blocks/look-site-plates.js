@@ -11,7 +11,11 @@
    links the kind. Fields, as a table: cols, rows, fold, fold_noun, nav (the small line under the title), and optional
    art: one drawing key per row ("office", "shop", "service", "parts"; any other key or none draws an empty sheet).
    Drawings are drawn here from IsoKit parts (building; skid, RO rack and panel; truck; crates are boxes drawn with the
-   kit's box primitive next to a pump and valve). Design system: components/SitePlates. */
+   kit's box primitive next to a pump and valve). Design system: components/SitePlates.
+   Phones (pass 12): title, then the plate as a 200 px strip held under the header (PhoneKit sticky figure) that
+   swaps to the site whose row is on the reading line, then the rows (the plate no longer drops below them: the order
+   now holds with or without a fold). Site names are 44 px links. A table with no drawings (no art) keeps no plate on
+   phones: an empty navy band would be dead space. */
 (function(){
 var spN=0;
 function eq(d){return '<path class="aq-iso__eq" d="'+d+'"/>'}
@@ -38,7 +42,7 @@ LOOKS['site-plates']=function(b,H){var C=b.cols||[],R=b.rows||[],A=b.art||[],k=+
  var head='<thead><tr>'+C.map(function(c){return '<th scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>';
  var body=R.map(function(r,i){var s=sites[i],kh=s.link?wlink(s.link.link,s.kind,s.link.intent):tx(s.kind);
   var cells=[1,2,3].map(function(j){var v=r[j];return '<td class="'+['aq-site-plates__what','aq-site-plates__addr','aq-site-plates__contact'][j-1]+'" data-l="'+e(C[j]||'')+'">'+(v==null||v===''?'':lines(v))+'</td>'}).join('');
-  return fli('<tr class="aq-site-plates__row'+(i?'':' is-on')+'" data-i="'+i+'">',b,i)
+  return fli('<tr class="aq-site-plates__row'+(i?'':' is-on')+'" data-i="'+i+'" data-pk-row="'+i+'">',b,i)
    +'<th scope="row"><div class="aq-site-plates__site"><button type="button" class="aq-site-plates__pick" aria-pressed="'+(i?'false':'true')+'" aria-controls="'+pid+'" aria-label="'+e(s.kind)+'">'+pad(i)+'</button>'
    +'<span class="aq-site-plates__kind">'+kh+'</span>'+(s.place?'<span class="aq-site-plates__place">'+tx(s.place)+'</span>':'')+'</div></th>'+cells+'</tr>'}).join('');
  var table='<table class="aq-site-plates__table">'+head+'<tbody>'+body+'</tbody></table>';
@@ -48,9 +52,10 @@ LOOKS['site-plates']=function(b,H){var C=b.cols||[],R=b.rows||[],A=b.art||[],k=+
    +figure(A[i],w.length)
    +(w.length?'<ol class="aq-site-plates__calls">'+w.map(function(x,j){return '<li><span class="aq-site-plates__pn" aria-hidden="true">'+(j+1)+'</span><span>'+tx(x)+'</span></li>'}).join('')+'</ol>':'')
    +'</figure>'}).join('');
- var plate='<div class="aq-site-plates__plate" id="'+pid+'" data-theme="dark"><div class="aq-site-plates__reel">'+stills+'</div></div>';
+ var art=R.some(function(r,i){return !!SCENES[A[i]]});
+ var plate='<div class="aq-site-plates__plate" id="'+pid+'" data-theme="dark"'+(art?' data-pk-fig':'')+'><div class="aq-site-plates__reel">'+stills+'</div></div>';
  var sub=b.nav?'<p class="aq-site-plates__sub" aria-hidden="true">'+tx(b.nav)+' · '+pad(R.length-1)+'</p>':'';
- return sec('<div class="aq-site-plates"><div class="aq-site-plates__main">'+H+sub+wFold(b,R.length,table,b.fold_noun||'rows')+'</div>'+plate+'</div>','aq-site-plates-sec')};
+ return sec('<div class="aq-site-plates'+(art?'':' is-noart')+'"'+(art?' data-pk-sticky data-pk-h="200"':'')+'><div class="aq-site-plates__main">'+H+sub+wFold(b,R.length,table,b.fold_noun||'rows')+'</div>'+plate+'</div>','aq-site-plates-sec')};
 /* Selection (ported from Subframe Motion "Hover image preview list" (project-index), MIT, (c) 2026 Subframe): pointing
    at a row, focusing into it or pressing its index puts its site on the plate; the reel slides (CSS, 240 ms
    cubic-bezier(.2,.85,.25,1)), instantly for keyboard and under reduced motion. The choice persists. */
@@ -63,5 +68,8 @@ window.AQsitePick=pick;
 function row(ev){var r=ev.target.closest&&ev.target.closest('.aq-site-plates__row');return r&&r.closest('.aq-site-plates')?r:null}
 document.addEventListener('mouseover',function(ev){var r=row(ev);if(r)pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),false)});
 document.addEventListener('focusin',function(ev){var r=row(ev);if(r)pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),true)});
+/* phones: PhoneKit names the row on its reading line; the strip's plate swaps to that site (instant under reduced motion) */
+document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-site-plates')||!(ev.detail&&ev.detail.on))return;
+ pick(w,ev.detail.key,!!(window.AQpk&&AQpk.reduced&&AQpk.reduced()))});
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-site-plates__pick');if(!t)return;var r=t.closest('.aq-site-plates__row');pick(r.closest('.aq-site-plates'),r.getAttribute('data-i'),ev.detail===0)});
 })();

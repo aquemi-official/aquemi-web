@@ -4,8 +4,29 @@
    Numerals rise out of their slot. One timeline, once on scroll-in, under 4.5 s; nothing under reduced motion. */
 AQmotion.fx('ResponseLanes', function (root, m) {
   var CLEAR = 'transform,opacity,visibility';
+  /* Notice calendar (pass 12): the navy timeline draws through the events in order; each pin lands as the line reaches
+     it, its limestone bracket then reaches back from the pin (scaleX from its right end; down the rail on phones),
+     and the notice and the document drop onto it like a slip (8 px). Once on scroll-in, under 4 s; nothing under
+     reduced motion (the static calendar is complete). */
+  function cal(el) {
+    var evs = [].slice.call(el.querySelectorAll('.aq-response-lanes__ev')), phone = m.narrow(), n = evs.length || 1;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), step = Math.min(0.42, 2.6 / n);
+    evs.forEach(function (ev, i) {
+      var at = 0.1 + i * step, q = function (s) { return ev.querySelector(s) };
+      var mark = q('.aq-response-lanes__mark'), pin = q('.aq-response-lanes__pin'), br = q('.aq-response-lanes__br'), t = q('.aq-response-lanes__evt'), slips = [q('.aq-response-lanes__nt'), q('.aq-response-lanes__doc')].filter(Boolean);
+      if (mark) tl.fromTo(mark, { '--aq-line': 0 }, { '--aq-line': 1, duration: step, ease: 'none' }, at);
+      if (pin) tl.fromTo(pin, { scale: 0 }, { scale: 1, duration: 0.3, ease: 'back.out(3)', clearProps: 'transform' }, at + step * 0.85);
+      if (t) tl.fromTo(t, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, clearProps: CLEAR }, at + step * 0.6);
+      if (br) tl.fromTo(br, phone ? { scaleY: 0 } : { scaleX: 0 }, phone ? { scaleY: 1, duration: 0.5, clearProps: 'transform' } : { scaleX: 1, duration: 0.5, clearProps: 'transform' }, at + step + 0.1);
+      if (slips.length) tl.fromTo(slips, { y: -8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, stagger: 0.1, clearProps: CLEAR }, at + step + 0.35);
+      if (mark) tl.set(mark, { clearProps: '--aq-line' }, '>');
+    });
+    var total = tl.duration(); if (total > 4) tl.timeScale(total / 4);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  }
   root.querySelectorAll('.aq-response-lanes').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
+    if (el.classList.contains('is-cal')) return cal(el);
     var rows = [].slice.call(el.querySelectorAll('.aq-response-lanes__row')), phone = m.narrow();
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
     var head = el.querySelector('.aq-response-lanes__head');

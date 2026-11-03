@@ -5,8 +5,10 @@ ReaderSplit sets an evidence table on a band split down the middle: the readers 
 - Fields: `h`, `intro`, `cols`, `rows` [who, read, {t, link, intent}], `fold`, `fold_noun` (all widths: the block's own fold).
 - Column names: `p.__colh` heads the two halves once (aria-hidden). Each row repeats the first two names as `span.__lab` (before `h3.__t` in `__who`, before `p.__read` in `__what`): visually hidden on wide screens, so assistive tech reads every row with its column; shown on phones as small mono labels, where the heads are gone. The third column's name labels each answer (`span.__k`).
 - Hover/focus a row: the tie draws across the seam and the node fills `limestone`.
-- Phones: one column on limestone, each reader a navy bar over its reading, each half led by its column label.
+- Phones (pass 12, S11/S12): one column on limestone. The three column names show once as a key over the rows (navy swatch = the reader, a rule = the reading, a `flow` tick = the answer); the per-row labels stay for screen readers only. The rows are a PhoneKit accordion (`ol.__rows[data-pk-picker=accordion]`, first open): each reader is a 52 px navy head button (`h3.__ph > button.__head-btn`: index, reader, chevron) stacked on 1 px hairlines so the navy line of readers stays in view, and its reading and answer (`div.__what`, the body) open under it; the desktop reader cell is its `data-pk-desk` twin. Rows grow with their text (the old clip on project-plan, a `flex-basis: 100%` label in a column flex box, is gone); reading 15 px, answer 15 px behind a `flow` rule, 44 px link. Without script every row shows open under its navy bar. Heights at 375: project-plan 3,200 to 1,054, urs-guide 2,822 to 1,017, buying 2,641 to 958, first-system 2,148 to 945.
 
 ## Motion
 
 Row by row the reader slides in from the left, the node strikes on the seam, the tie shoots across and the reading arrives from the right. Once on scroll-in, under 3.5 s; folded rows left alone; the heading stays with the core.
+
+Pass 12 (phones): hyphenated words in the accordion heads stay on one line (`__nb`); heads are balanced.

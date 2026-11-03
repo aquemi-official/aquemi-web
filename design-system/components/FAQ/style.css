@@ -71,5 +71,6 @@
   .aq-faq summary .aq-index { line-height: 26px; }
   .aq-faq__sign { margin-block: calc((26px - 44px) / 2); }
   .aq-faq__a { margin: 0 0 0 calc(var(--space-6) + var(--space-3) + var(--space-3)); padding-bottom: var(--space-6); }
-  .aq-faq__a p { font-size: 15px; line-height: 24px; }
+  /* answers at the phone answer size (--aq-faq-phone, 15 px; pass 12 S4), so a [placeholder] chip in them is 13 px */
+  .aq-faq__a p { font-size: var(--aq-faq-phone, 15px); line-height: 24px; }
 }

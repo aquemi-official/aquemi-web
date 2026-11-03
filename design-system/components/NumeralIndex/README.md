@@ -4,7 +4,7 @@ NumeralIndex sets a router table as a Swiss index of situations, each under a hu
 - Markup: `ol.aq-numeral-index` of `li.__row` → `span.__rule` (hairline that draws), `span.__n` (Geist Light 128/104 outline numeral, `-webkit-text-stroke` in `line-strong`, aria-hidden), `div.__body` (`h3.__t` Geist Light 32/40, `p.__need` per middle column with a mono `span.__k` label), and `a.__go` (the last column's link: mono label, page icon, the page name, a drawn arrow).
 - Fields: `cols`, `rows` [situation, need…, {t, link, intent}]. A last cell without a link renders as a dashed, flat cell.
 - Hover/focus: the rule fills with `flow`, the numeral fills `flow`, the go-cell turns `navy` with a limestone icon. Section heading Geist Light 56/60.
-- Phones: numeral 72 px over the row, need stacked, go-cell full width.
+- Phones (pass 12): the numeral inline at 40 px to the left of the situation, what you need under it as one 14 px line (its term kept for screen readers), and the go-cell as a full-width 48 px row link (term, page, arrow; no icon).
 
 ## Motion
 

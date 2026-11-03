@@ -2,6 +2,8 @@
    (aq-band--navy). The steps sit in three rows a side of the ring; each row lines up with its node, joined by a
    leader. Lines on-navy-muted, the water and lit nodes flow (lightened towards on-navy so it reads on navy). ---------- */
 .aq-capa-ring-sec { position: relative; }
+/* clip, not the navy band's hidden: a hidden box would stop the phone strip from sticking */
+.aq-section.aq-capa-ring-sec { overflow: clip; }
 .aq-capa-ring { --ring: calc(var(--space-32) * 3.5); --fl: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); position: relative; }
 .aq-capa-ring__fig { position: absolute; left: 50%; top: 0; width: var(--ring, var(--space-32)); height: var(--ring, var(--space-32)); transform: translateX(-50%); }
 .aq-capa-ring__svg { display: block; width: 100%; height: 100%; overflow: visible; }
@@ -12,6 +14,7 @@
 .aq-capa-ring__lead { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 50%, transparent); stroke-width: 1; stroke-dasharray: 2 4; }
 .aq-capa-ring__dot { fill: var(--navy); stroke: var(--fl, var(--flow)); stroke-width: 2; transition: fill 240ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-capa-ring__no { font: 500 13px var(--font-mono); fill: var(--on-navy); transition: fill 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-capa-ring__no.is-hold-no { display: none; }
 .aq-capa-ring__valve { fill: none; stroke: var(--on-navy); stroke-width: 1.5; stroke-linejoin: round; }
 .aq-capa-ring__node.is-hover .aq-capa-ring__dot { fill: var(--fl, var(--flow)); }
 .aq-capa-ring__node.is-hover .aq-capa-ring__no { fill: var(--navy); }
@@ -51,10 +54,27 @@
   .aq-capa-ring__core { font-size: 44px; }
   .aq-capa-ring__steps { display: block; min-height: 0; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
   .aq-capa-ring__step, .aq-capa-ring__step.is-l {
-    display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); max-width: none; text-align: left;
+    display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); max-width: none; text-align: left; justify-self: stretch;
     padding: var(--space-4) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
   }
   .aq-capa-ring__n { grid-row: 1 / span 3; padding-top: var(--space-1); }
   .aq-capa-ring__t { margin-top: 0; font-size: 20px; line-height: 26px; }
   .aq-capa-ring__hold { justify-self: start; }
+  /* pass 12: every node numbered (a hold keeps its square), the hold stamp full width */
+  .aq-capa-ring__valve { display: none; }
+  .aq-capa-ring__no.is-hold-no { display: inline; }
+  .aq-capa-ring__hold { display: flex; justify-self: stretch; padding: var(--space-2) var(--space-3); font-size: 13px; }
+  /* the ring as a 200 px strip held under the header (PhoneKit) while the steps pass */
+  .aq-capa-ring[data-pk-on] .aq-capa-ring__fig { width: auto; margin: 0 calc(-1 * var(--space-4)) var(--space-2); padding: var(--space-2) 0; background: var(--navy);
+    border-bottom-color: color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+  .aq-capa-ring[data-pk-on] .aq-capa-ring__svg { width: auto; height: 100%; margin: 0 auto; transform: scale(1.18); }
+  /* nodes and their numbers grown so the numbers read at 14 px in the strip (S9) */
+  .aq-capa-ring[data-pk-on] .aq-capa-ring__dot { transform-box: fill-box; transform-origin: center; transform: scale(1.6); }
+  .aq-capa-ring[data-pk-on] .aq-capa-ring__no { font-size: 26px; dominant-baseline: central; transform: translateY(-4.5px); }
+  .aq-capa-ring[data-pk-on] .aq-capa-ring__core { font-size: 30px; line-height: 1; text-align: center; max-width: 5ch; }
+  .aq-capa-ring[data-pk-on] .aq-capa-ring__steps { border-top: 0; }
+  .aq-capa-ring__node.is-pk-active .aq-capa-ring__dot { fill: var(--fl, var(--flow)); }
+  .aq-capa-ring__node.is-pk-active .aq-capa-ring__no { fill: var(--navy); }
+  .aq-capa-ring__node.is-done .aq-capa-ring__dot { fill: color-mix(in srgb, var(--flow) 35%, var(--navy)); }
+  .aq-capa-ring__step.is-pk-active .aq-capa-ring__n { color: var(--fl, var(--flow)); }
 }

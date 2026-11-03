@@ -7,7 +7,10 @@
    Fields as a router table: h, intro, cols [upgrade, what changes, requalification, downtime, start with], rows (the
    last cell {t, link}). parts (optional): one entry per row naming the stage(s) it changes, space-separated (pre,
    gen, tank, loop, uv, toc, panel); a row without parts leaves the whole plant as existing.
-   Phones: no tabs; every upgrade is a card with its terms and its stage drawn small. */
+   Phones (pass 12, audit svc-upgrades.1): the blueprint stays, rendered 552 px wide and cropped to the column round
+   the camera's centre (where the picked upgrade sits), the key plan moved into the crop (CSS, --ky); the tabs become a
+   row of numbered 44 px chips (names kept for screen readers; the panel title names the upgrade); one panel, the
+   picked one. The small per-card stage drawings (vpMini) are no longer shown. */
 var rpN=0;
 /* the camera: a rectangle in sheet units framing the picked upgrade's stages (tx, ty, z) and the key-plan window */
 function rpCam(r,VW,VH,PW,PH){if(!r)return {tx:0,ty:Math.round((VH-PH)/2),z:1};
@@ -30,7 +33,7 @@ LOOKS['retrofit-plant']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[
  var drawing='<g id="'+id+'-plant" transform="scale('+sc.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+order.join('').replace(/<g class="(aq\-iso__(?:part|pipe)[^"]*)"([^>]*?data-iso-(?:id|to)="([^"]+)")/g,function(m,c,rest,k){return on0.indexOf(k)>=0?'<g class="'+c+' is-lit"'+rest:m})+'</g>';
  var sheet=isoSheet(VW,VH,{grid:'iso',gridStep:22,title:false,m:0,band:8,cols:9,rows:3});
  var clip='<defs><clipPath id="'+id+'-clip"><rect x="8" y="8" width="'+(VW-16)+'" height="'+(VH-16)+'"/></clipPath></defs>';
- var key='<g class="'+K+'__key" transform="translate('+kx+' '+ky+')"><rect class="'+K+'__kbox" x="-10" y="-10" width="'+(KW+20)+'" height="'+(KH+34)+'"/>'
+ var key='<g class="'+K+'__key" transform="translate('+kx+' '+ky+')" style="--ky:'+ky+'px"><rect class="'+K+'__kbox" x="-10" y="-10" width="'+(KW+20)+'" height="'+(KH+34)+'"/>'
   +'<g class="'+K+'__kplant" transform="scale('+ks.toFixed(4)+')"><use href="#'+id+'-plant"/></g>'
   +'<rect class="'+K+'__kwin" x="0" y="0" width="1" height="1" vector-effect="non-scaling-stroke" style="'+win(cams[0])+'"/>'
   +'<text class="aq-iso__sheet-t" x="0" y="'+(KH+14)+'" dominant-baseline="central">KEY PLAN</text></g>';

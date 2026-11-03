@@ -5,6 +5,10 @@ CapaRing shows a closed-loop procedure (a defect held, decided, repaired, correc
 - Fields: `h`, `intro`, `items [{t, d, hold, link}]`, `core` (optional centre word; default the first abbreviation in the first step's text, "NCR"). Steps run clockwise from the top right, the first half down the right, the rest back up the left; six fit best.
 - Tokens: `navy` ground; lines `on-navy-muted`; the water and lit nodes `flow` lightened towards `on-navy` (`--fl`); hold tag outlined in `limestone`.
 - Hover/focus: a step lights its node and leader.
-- Phone: the ring (about 76 % of the width) over the steps as a numbered list.
+- Phone: see "Phones (pass 12)" below (sticky 200 px ring).
 - Motion (`motion.js`): rings and ticks draw, the core settles, the water runs clockwise lighting each node and sliding its step in, waits at the hold (the valve jolts), closes the loop and swells once. About 4.5 s.
 - Not for: open-ended sequences (ProcessSteps, HoldTimeline).
+
+## Phones (pass 12)
+
+The ring is a 200 px strip held under the header (PhoneKit sticky figure) over the numbered steps; the step on the reading line fills its node, the nodes before it stay marked done. Every node carries its number on phones (the hold node keeps its square, the number replaces the valve glyph, which desktop keeps); nodes are grown so the numbers read at 14 px. The hold stamp runs full width. The section clips with `overflow: clip` so the strip can stick.

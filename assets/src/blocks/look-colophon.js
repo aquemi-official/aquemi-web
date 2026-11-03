@@ -5,9 +5,11 @@
    ledger: number and item on the strip, the fact and the evidence on the navy. The highlighted row's value is split at
    its first full stop (words unchanged): the first sentence as the fact, the rest under it, quieter.
    Fields: h, caption (eyebrow), intro, cols [item, fact, evidence], rows [{p, v, m, hl, link, link_label, intent}],
-   note, fold, fold_noun. */
+   note, fold, fold_noun. Pass 12: a ledger of more than 6 rows with no fold of its own folds after 4 on phones only
+   (class is-phonefold; desktop shows every row and no button). */
 function cphGo(r){return r.link&&wp(r.link)?'<a class="aq-colophon__go" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'"'+(r.intent?' data-intent="'+e(r.intent)+'"':'')+'>'+tx(r.link_label||wlabel(r.link))+'</a>':''}
 LOOKS['colophon']=function(b,H){var R=b.rows||[],C=b.cols||[],num=function(i){return (i<9?'0':'')+(i+1)};
+ var pf=!(b.fold>0)&&R.length>6;if(pf){var o={};for(var k in b)o[k]=b[k];o.fold=4;b=o}
  var items=R.map(function(r,i){var v=String(r.v||''),a=v,z='';
   if(r.hl){var k=v.search(/\.\s+(?=[A-Z\[])/);if(k>=0){a=v.slice(0,k+1);z=v.slice(k+1).trim()}}
   return fli('<li class="aq-colophon__row'+(r.hl?' is-hl':'')+'" style="--i:'+i+'">',b,i)
@@ -16,6 +18,6 @@ LOOKS['colophon']=function(b,H){var R=b.rows||[],C=b.cols||[],num=function(i){re
    +'<p class="aq-colophon__m">'+(r.m?'<span class="aq-colophon__ev">'+tx(r.m)+'</span>':'')+cphGo(r)+'</p></li>'}).join('');
  var head=C.length?'<div class="aq-colophon__head" aria-hidden="true">'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>':'';
  var list='<ol class="aq-colophon__rows" role="list">'+items+'</ol>';
- return sec('<div class="aq-colophon"><span class="aq-colophon__strip" aria-hidden="true"></span>'
+ return sec('<div class="aq-colophon'+(pf?' is-phonefold':'')+'"><span class="aq-colophon__strip" aria-hidden="true"></span>'
   +'<div class="aq-colophon__mast">'+H+'<p class="aq-colophon__ghost" aria-hidden="true">'+tx(b.h)+'</p></div>'
   +head+wFold(b,R.length,list,b.fold_noun||'facts')+wSpecNote(b)+'</div>','aq-band--navy aq-colophon-sec')};

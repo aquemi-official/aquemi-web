@@ -86,32 +86,66 @@
 .aq-battery-limit__link { color: var(--flow); }
 .is-pkg .aq-battery-limit__link { color: var(--on-navy); text-decoration-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
 .aq-battery-limit__link::after { content: " →"; }
+/* dark (pass 12 verify): the site cards stay limestone, so their link turns dark navy (about 9 : 1) with a flow underline */
+:root[data-theme="dark"] .is-site .aq-battery-limit__link { color: var(--navy); text-decoration-color: var(--flow); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .is-site .aq-battery-limit__link { color: var(--navy); text-decoration-color: var(--flow); } }
 
-/* the fold is for phones; desktop shows every card */
-.aq-fold:not(.is-open) .aq-battery-limit__item.aq-fold-x { display: flex; }
+/* every card shows at every width (S7: never fold a row the line ties in); the fold button never shows */
+.aq-fold .aq-battery-limit__item.aq-fold-x, .aq-fold:not(.is-open) .aq-battery-limit__item.aq-fold-x { display: flex; }
 .aq-fold:has(> .aq-battery-limit) > .aq-fold__btn { display: none; }
+/* the side chip is for phones */
+.aq-battery-limit__who { display: none; }
 
 @container (max-width: 860px) {
-  .aq-battery-limit__navy, .aq-battery-limit__line, .aq-battery-limit__seam-t { display: none; }
-  .aq-battery-limit { grid-template-columns: minmax(0, 1fr); }
-  .aq-battery-limit > *, .aq-battery-limit > .aq-battery-limit__side, .aq-battery-limit > .aq-battery-limit__list { grid-column: 1; grid-row: auto; }
-  .aq-battery-limit__side.is-pkg { order: 1; } .aq-battery-limit__list.is-pkg { order: 2; } .aq-battery-limit__limit { order: 3; }
-  .aq-battery-limit__side.is-site { order: 4; } .aq-battery-limit__list.is-site { order: 5; }
-  .aq-battery-limit__list { grid-row: auto; grid-template-rows: none; gap: var(--space-4); }
-  .aq-battery-limit__list > .aq-battery-limit__item { grid-row: auto; padding-block: 0; }
-  .aq-battery-limit__head, .aq-battery-limit__side.is-pkg, .aq-battery-limit__list.is-pkg {
+  /* Phones (pass 12, S7/S13): the navy head, then one sequence down a left spine (the battery limit line, dash and
+     dot): every row in list order (the limit card, flow-framed with a solid node, first where it is row 01) with a tie-in node on the spine and its
+     side as a chip (navy card: the package's side; limestone card: the site's). Column keys sit inline before values. */
+  .aq-battery-limit__navy, .aq-battery-limit__line, .aq-battery-limit__seam-t, .aq-battery-limit__side { display: none; }
+  .aq-battery-limit { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); }
+  .aq-battery-limit > * { grid-column: 1; grid-row: auto; }
+  .aq-battery-limit__head { order: 0; }
+  .aq-battery-limit__list { display: contents; }
+  .aq-battery-limit__head {
     background: var(--navy); box-shadow: 0 0 0 100vmax var(--navy); clip-path: inset(0 -100vmax);
+    padding: var(--space-12) 0 var(--space-6); margin-bottom: var(--space-3);
   }
   .aq-battery-limit-sec { padding-top: 0; }
-  .aq-battery-limit__head { padding: var(--space-12) 0 var(--space-6); }
-  .aq-battery-limit__list.is-pkg { padding-bottom: var(--space-16); }
-  .aq-battery-limit__side.is-site { padding-left: 0; }
-  /* the seam becomes the battery-limit card, half on each ground */
-  .aq-battery-limit__limit { margin: calc(-1 * var(--space-12)) 0 var(--space-8); width: 100%; }
-  .aq-battery-limit__tie { display: none; }
+  .aq-battery-limit__limit, .aq-battery-limit__item { position: relative; margin: 0 0 0 var(--space-8); width: auto; justify-self: stretch; }
+  /* the spine: a dash-and-dot line in flow down the left, through every card's node */
+  .aq-battery-limit__limit::before, .aq-battery-limit__item::before {
+    content: ""; position: absolute; left: calc(-1 * var(--space-5, 20px)); top: 0; bottom: calc(-1 * var(--space-3)); width: 1.5px;
+    background: repeating-linear-gradient(to bottom, var(--flow) 0 18px, transparent 18px 23px, var(--flow) 23px 26px, transparent 26px 31px);
+  }
+  .aq-battery-limit__limit::before { bottom: calc(-1 * var(--space-3)); }
+  .aq-battery-limit__item[data-last]::before, .aq-battery-limit__limit[data-last]::before { bottom: auto; height: var(--space-6); }
+  .aq-battery-limit__limit::after {
+    content: ""; position: absolute; left: calc(-1 * var(--space-5, 20px) - 7px); top: var(--space-5, 20px); width: 14px; height: 14px;
+    box-sizing: border-box; background: var(--flow); transform: rotate(45deg);
+  }
+  .aq-battery-limit__list > .aq-battery-limit__item { grid-row: auto; padding-block: 0; }
+  .aq-battery-limit__tie { position: absolute; left: calc(-1 * var(--space-5, 20px) - 5px); top: var(--space-5, 20px); display: block; width: 11px; min-width: 0; height: 11px; }
+  .aq-battery-limit__tie .aq-battery-limit__lead { display: none; }
+  .is-pkg .aq-battery-limit__node, .is-site .aq-battery-limit__node { display: block; margin: 0; }
   .aq-battery-limit__item > .aq-battery-limit__card { flex: 1 1 auto; }
-  .aq-fold:not(.is-open) .aq-battery-limit__item.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-battery-limit) > .aq-fold__btn { display: flex; color: var(--on-limestone-muted); }
+  .aq-battery-limit__limit .aq-battery-limit__card { padding: var(--space-4) var(--space-4) var(--space-5, 20px); }
+  .aq-battery-limit__card { padding: var(--space-3) var(--space-4) var(--space-4); grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-items: center; }
+  .aq-battery-limit__card > .aq-index, .aq-battery-limit__card > .aq-battery-limit__who { grid-row: 1; }
+  .aq-battery-limit__card > .aq-battery-limit__p, .aq-battery-limit__card > .aq-battery-limit__dl { grid-column: 1 / -1; }
+  .aq-battery-limit__limit .aq-battery-limit__card > .aq-index { grid-column: 1 / -1; }
+  .is-pkg .aq-battery-limit__card { background: var(--navy); border-color: var(--navy); }
+  .aq-battery-limit__who {
+    display: inline-block; justify-self: end; padding: 2px var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .is-pkg .aq-battery-limit__who { color: var(--navy); background: var(--on-navy); }
+  .is-site .aq-battery-limit__who { color: var(--on-limestone); border: 1px solid color-mix(in srgb, var(--on-limestone-muted) 60%, transparent); }
+  .aq-battery-limit__p { font-size: 17px; line-height: 24px; }
+  .aq-battery-limit__dl { gap: var(--space-1); }
+  .aq-battery-limit__dl > div { display: block; }
+  .aq-battery-limit__dl dt { display: inline; margin-right: var(--space-2); }
+  .aq-battery-limit__dl dd { display: inline; font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-battery-limit__dl dd.aq-battery-limit__v { font-size: 15px; }
+  .aq-battery-limit__link { position: relative; display: inline-block; }
+  .aq-battery-limit__link::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; min-height: var(--aq-hit, 44px); transform: translateY(-50%); }
 }
 
 /* Marks the section as a band of its own ground, so page.js restarts the surface alternation after it. */

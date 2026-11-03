@@ -98,3 +98,25 @@
   .aq-layer-stack__spread > .aq-sec-head .aq-h1 { line-height: 1.02; }
   .aq-layer-stack__sheet { margin: var(--space-8) calc(50% - 50vw) 0; padding: var(--space-8) var(--space-4) var(--space-12); }
 }
+
+/* pass 12 phone (audit S10, sys-monitoring.0): the leaders are gone on phones, so each plate carries its stage number
+   as a tag on its free corner (svg units: 15 r and 18 type render about 23 px and 13.5 px at 343 px), and the list
+   runs top plate first (column-reverse) so list and drawing read in the same order. Pointing at a row lights its
+   plate and tag (the hover set above). Hidden on desktop, where the leaders carry the link. */
+.aq-layer-stack__tag { display: none; }
+@container (max-width: 860px) {
+  .aq-layer-stack__tag { display: inline; pointer-events: none; }
+  .aq-layer-stack__tag circle { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+  .aq-layer-stack__tag text { font: 500 18px/1 var(--font-mono); fill: var(--ink); letter-spacing: 0.02em; }
+  .aq-layer-stack__tag.is-key circle { fill: var(--on-navy); stroke: var(--on-navy); }
+  .aq-layer-stack__tag.is-key text { fill: var(--navy); }
+  .aq-layer-stack__tag.is-hot circle { fill: var(--flow); stroke: var(--flow); }
+  .aq-layer-stack__tag.is-hot text { fill: var(--on-navy); }
+  .aq-layer-stack__list { flex-direction: column-reverse; gap: var(--space-5, 20px); }
+  .aq-layer-stack__item .aq-index { font-size: 13px; color: var(--ink); min-width: 28px; }
+  .aq-layer-stack__item.is-key .aq-index { color: var(--navy); font-weight: 600; }
+}
+@container (max-width: 860px) { .aq-layer-stack__dmz-t { font-size: 14.5px; } }
+/* verify V4: on tablets (600-860) the tags are svg units and grow with the figure; the figure is capped so they stay
+   about 18 px and the drawing about 650 px tall. */
+@container (min-width: 600px) and (max-width: 860px) { .aq-layer-stack__fig { max-width: 460px; margin-inline: auto; } }

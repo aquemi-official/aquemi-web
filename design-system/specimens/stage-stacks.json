@@ -2,7 +2,7 @@
  "look": "stage-stacks",
  "component": "StageStacks",
  "type": "table",
- "fields": "as a table: cols [stage, your step and who approves, documents issued], rows [[stage, step, documents]] (cells strings or {t, link}); stage cells \"Name · clause\" set the clause under the name; documents are split at \";\". fold, fold_noun: on phones only (desktop shows the whole axis).",
+ "fields": "as a table: cols [stage, your step and who approves, documents issued], rows [[stage, step, documents]] (cells strings or {t, link}); stage cells \"Name · clause\" set the clause under the name; documents are split at \";\". fold, fold_noun: kept for the no-script phone fallback only. Phones (pass 12, S10/S11): the same axis, as a snap rail of stage columns about 280 px wide (every stage, the stacks standing on one axis line, name and step under it), the band names once in the first column; over it a 01-06 number rail (44 px) jumps to a stage and follows the swipe (AQsnap, below); the axis nodes keep their 44 px hit box and still hold the file at a stage.",
  "best_for": "StageStacks draws what each project stage issues as the document file building up: the stages stand on one project axis, each stage's documents stacked above it as sheets of paper, its name, clause and who approves under the axis.",
  "status": "live",
  "instances": [

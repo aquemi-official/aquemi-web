@@ -8,7 +8,9 @@
    Added: items[].part ("feed", "membranes", "trains", "tank", "headers", "loop" or "sheet": the title block, for a
    decision that is the specification's own), items[].side ("l" or "r"), items[].row (1-3, the callout's row on its side);
    gate (the title block's word, "URS"; aria-hidden). Concept: pass 9b ind-pharma.3 (central hairline schematic, five
-   decisions as numbered callouts on both sides, leader lines into the plant). */
+   decisions as numbered callouts on both sides, leader lines into the plant).
+   Phones (pass 12): with the leaders gone (under 1100 px), each marker on the drawing is a 44 px target that opens its
+   decision (the fold opens if the decision is folded away), lights it and scrolls it into view; links are 44 px rows. */
 (function(){
 var K='aq-decision-plant',W=760,Hh=372;
 /* anchors in viewBox units: where each part's leader ends */
@@ -75,5 +77,12 @@ LOOKS['decision-plant']=function(b,H){var I=b.items||[],n=I.length,rows={l:0,r:0
  document.addEventListener('focusin',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
  document.addEventListener('focusout',function(ev){var it=at(ev);if(it&&!(ev.relatedTarget&&it.closest('.'+K).contains(ev.relatedTarget)))show(it.closest('.'+K),null)});
  document.addEventListener('click',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
+ /* under 1100 px (no leaders) a marker is a target: it opens its decision (unfolding the list if it is folded away),
+    lights it and brings it into view below the marker's drawing */
+ document.addEventListener('click',function(ev){var mk=ev.target.closest&&ev.target.closest('.'+K+'__mk');if(!mk||getComputedStyle(mk).pointerEvents==='none')return;
+  var w=mk.closest('.'+K),it=w&&w.querySelector('.'+K+'__item[data-i="'+mk.getAttribute('data-i')+'"]');if(!it)return;
+  var f=it.closest('.aq-fold');if(f&&!f.classList.contains('is-open')&&getComputedStyle(it).display==='none'){var bt=f.querySelector('.aq-fold__btn');if(bt)bt.click()}
+  show(w,it);var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  it.scrollIntoView({block:'center',behavior:rm?'auto':'smooth'});try{it.focus({preventScroll:true})}catch(_){}});
 })();
 })();

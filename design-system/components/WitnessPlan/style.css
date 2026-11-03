@@ -7,7 +7,7 @@
 .aq-witness-plan { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: center; }
 .aq-witness-plan__side { position: relative; z-index: 1; min-width: 0; }
 .aq-witness-plan__side .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; }
-.aq-witness-plan__list { position: relative; list-style: none; margin: var(--space-8) 0 0; padding: 0; }
+.aq-witness-plan__list { position: relative; isolation: isolate; list-style: none; margin: var(--space-8) 0 0; padding: 0; }
 .aq-witness-plan__opt { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); width: 100%; min-height: var(--space-12); padding: var(--space-4) var(--space-3) var(--space-4) var(--space-2);
   border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); text-align: left; font: inherit; cursor: pointer; transition: background-color 160ms; }
 .aq-witness-plan__opt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--flow); transform: scaleY(0); transition: transform 160ms; }
@@ -58,3 +58,15 @@
 
 /* section hook */
 .aq-witness-plan-sec { position: relative; }
+
+/* pass 12 phone (audit S8/S9, svc-fat-sat.3): the room's frame and its zone labels are cropped away, and the drawing
+   becomes a PhoneKit sticky strip (220 px) over the ways. PhoneKit zooms the sheet (x1.2, markers and all, so nearly the whole package stays in view) onto the
+   marker of the way on the reading line; that way is chosen (its row, marker and part light). Markers at 24 px with
+   12 px figures. Without script the drawing stands above the ways, room cropped. */
+@container (max-width: 860px) {
+  .aq-witness-plan__svg .aq-witness-plan__bay, .aq-witness-plan__zone { display: none; }
+  .aq-witness-plan__fig { margin: 0 calc(-1 * var(--space-4)); }
+  .aq-witness-plan[data-pk-on] .aq-witness-plan__fig { background: var(--surface); }
+  .aq-witness-plan__mk { min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1); font-size: 12px; }
+  .aq-witness-plan__list > li[data-pk-row].is-pk-active .aq-witness-plan__n { color: var(--flow); }
+}

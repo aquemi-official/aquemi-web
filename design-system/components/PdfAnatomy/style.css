@@ -86,7 +86,7 @@
 .aq-pdf-anatomy__box.is-ping { animation: aq-pdf-ping 700ms cubic-bezier(0.2, 0, 0, 1); }
 @keyframes aq-pdf-ping { 0% { stroke: var(--flow); stroke-width: 3.5; } 100% { stroke-width: 1.5; } }
 .aq-pdf-anatomy__pager { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-1); margin-top: var(--space-3); }
-.aq-pdf-anatomy__pgw { width: calc((var(--space-12) - var(--space-1)) * 5); overflow: hidden; }
+.aq-pdf-anatomy__pgw { flex: none; width: calc((var(--space-12) - var(--space-1)) * 5); overflow: hidden; }
 .aq-pdf-anatomy__pgr { display: flex; transform: translateX(calc(var(--pg-start, 0) * (var(--space-1) - var(--space-12)))); transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .aq-pdf-anatomy__pgn, .aq-pdf-anatomy__pgs {
   flex: 0 0 calc(var(--space-12) - var(--space-1)); width: calc(var(--space-12) - var(--space-1)); height: calc(var(--space-12) - var(--space-1));
@@ -107,7 +107,7 @@
 @container (max-width: 860px) {
   .aq-pdf-anatomy__h { font-size: 24px; line-height: 30px; }
   .aq-pdf-anatomy__crop { overflow: hidden; }
-  .aq-pdf-anatomy__art { width: 128%; margin-left: -28.7%; }
+  .aq-pdf-anatomy__art { width: 128%; margin-left: -28.7%; margin-bottom: -8%; } /* crops the empty band under the plate (about 11.5% of the art) */
   .aq-pdf-anatomy__pin {
     display: grid; place-items: center; position: absolute; width: var(--space-6); height: var(--space-6); transform: translate(-50%, -50%);
     background: var(--flow); color: var(--surface-raised); font: 500 12px/1 var(--font-mono); border-radius: var(--radius-pill);
@@ -115,11 +115,18 @@
   .aq-pdf-anatomy__calls { position: static; width: auto; display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-4); }
   .aq-pdf-anatomy__call { position: static; transform: none; flex-direction: row; align-items: baseline; text-align: left; gap: var(--space-3); padding: 0; font-size: 15px; }
   .aq-pdf-anatomy__side { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
-  .aq-pdf-anatomy__big { font-size: 24px; line-height: 31px; }
-  .aq-pdf-anatomy__sheet { padding: var(--space-8) var(--space-6) calc(var(--space-24) + var(--space-6)); }
-  .aq-pdf-anatomy__frame::before { inset: var(--space-4); }
-  .aq-pdf-anatomy__zb--t, .aq-pdf-anatomy__zb--b { left: var(--space-4); right: var(--space-4); height: var(--space-4); }
-  .aq-pdf-anatomy__zb--l, .aq-pdf-anatomy__zb--r { top: var(--space-4); bottom: var(--space-4); width: var(--space-4); }
-  .aq-pdf-anatomy__tb { right: var(--space-4); bottom: var(--space-4); width: auto; left: var(--space-4); }
+  /* pass 12 (S14): no sheet frame, zone gutter or title block on phones; the page turner stays, centred under the
+     plate (its seven 44 px buttons fit at 343 px); the numbered pins and list replace the leader lines, which would run
+     from the cropped gutter to nothing; display-size values drop to 20 px so placeholders do not wrap to four lines (S5) */
+  .aq-pdf-anatomy__sheet { padding: 0; }
+  .aq-pdf-anatomy__frame { display: none; }
   .aq-pdf-anatomy__pager { justify-content: center; }
+  .aq-pdf-anatomy__lead { display: none; }
+  .aq-pdf-anatomy__side { gap: var(--space-8); }
+  .aq-pdf-anatomy__row > .aq-pdf-anatomy__h { margin-bottom: var(--space-3); }
+  .aq-pdf-anatomy__sigs { gap: var(--space-3); }
+  .aq-pdf-anatomy__sl { height: var(--space-4); }
+  .aq-pdf-anatomy__big { font-size: 20px; line-height: 28px; }
+  .aq-pdf-anatomy__big .aq-ph { font-size: 15px; }
+  .aq-pdf-anatomy__m { margin-top: var(--space-4); }
 }

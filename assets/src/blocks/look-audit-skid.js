@@ -10,7 +10,10 @@
    Added: items[].part (the part the document covers: "ro" generation rack, "sample" sample point, "skid" the skid,
    "analyzer", "outlet" point of use, "tiein" spare tie-in, "tank", "pump", "panel"); corner (short mono word, decorative).
    Concept: pass 9b ind-cdmo.1 (white PP skid centred, the audit-pack documents as numbered callouts on both sides,
-   doc code and period in mono corners). */
+   doc code and period in mono corners).
+   Phones (pass 12): the drawing is a 200 px strip held under the header (PhoneKit sticky figure, zoom 1.8) that pans
+   and zooms to the pin of the document on the reading line, which is selected as on desktop (pin filled, ring, part in
+   flow); every document shows (S7: a pinned row is never folded away); tapping a document selects it too. */
 (function(){
 var K='aq-audit-skid';
 function scene(){var dz=9,o=[],pins={};
@@ -41,13 +44,13 @@ function scene(){var dz=9,o=[],pins={};
  return {inner:o.join(''),pins:pins,w:Math.round(bx.w),h:Math.round(bx.h),org:[-bx.x,-bx.y]}}
 LOOKS['audit-skid']=function(b,H){var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=I.length,half=Math.ceil(n/2),S=scene();
  var pins=I.map(function(x,i){var p=S.pins[x.part]||S.pins.skid,a=isoPct(isoP(p),S.w,S.h,S.org);
-  return '<span class="'+K+'__pin'+(x.key?' is-key':'')+'" data-i="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
- var fig='<div class="'+K+'__fig" aria-hidden="true">'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+pins+'<span class="'+K+'__ring"></span></div>';
+  return '<span class="'+K+'__pin'+(x.key?' is-key':'')+'" data-i="'+i+'" data-pk-key="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+ var fig='<div class="'+K+'__fig" aria-hidden="true" data-pk-fig><div class="'+K+'__pan" data-pk-pan>'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+pins+'<span class="'+K+'__ring"></span></div></div>';
  var docs=I.map(function(x,i){var L=i<half,name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
-  return fli('<li class="'+K+'__doc '+(L?'is-l':'is-r')+(x.key?' is-key':'')+'" tabindex="0" data-i="'+i+'" data-part="'+e(S.pins[x.part]?x.part:'skid')+'" style="--row:'+((L?i:i-half)+1)+'">'
+  return fli('<li class="'+K+'__doc '+(L?'is-l':'is-r')+(x.key?' is-key':'')+'" tabindex="0" data-i="'+i+'" data-pk-row="'+i+'" data-part="'+e(S.pins[x.part]?x.part:'skid')+'" style="--row:'+((L?i:i-half)+1)+'">'
    +'<span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</li>',b,i)}).join('');
  var corners='<span class="'+K+'__corner is-l" aria-hidden="true">'+e(b.nav||'')+' · '+n+' '+e(b.fold_noun||'documents')+'</span>'+(b.corner?'<span class="'+K+'__corner is-r" aria-hidden="true">'+e(b.corner)+'</span>':'');
- var body='<div class="'+K+'" style="--rows:'+half+'">'+fig+wFold(b,n,'<ol class="'+K+'__docs" role="list">'+docs+'</ol>',b.fold_noun)
+ var body='<div class="'+K+'" style="--rows:'+half+'" data-pk-sticky data-pk-h="200" data-pk-zoom="1.8">'+fig+wFold(b,n,'<ol class="'+K+'__docs" role="list">'+docs+'</ol>',b.fold_noun)
   +'<svg class="'+K+'__leads" aria-hidden="true" focusable="false"></svg>'+corners+'</div>';
  return sec(H+body,K+'-sec')};
 /* Leaders and selection (works without motion and under reduced motion; the CSS transitions are dropped there).
@@ -80,5 +83,8 @@ LOOKS['audit-skid']=function(b,H){var I=(b.items||[]).map(function(x){return typ
  document.addEventListener('pointerover',function(ev){var it=at(ev);if(it&&ev.pointerType!=='touch')show(it.closest('.'+K),it)});
  document.addEventListener('focusin',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
  document.addEventListener('click',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
+ /* phones: the document on PhoneKit's reading line is the selection; the strip has already panned to its pin */
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains(K))return;
+  var it=ev.detail&&ev.detail.on&&w.querySelector('.'+K+'__doc[data-i="'+ev.detail.key+'"]');show(w,it||null)});
 })();
 })();

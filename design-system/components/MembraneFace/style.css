@@ -34,6 +34,8 @@
   padding: var(--space-6); background: var(--navy); color: var(--on-navy); min-height: 520px; overflow: hidden; }
 .aq-membrane-face__label { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
 .aq-membrane-face__svg { display: block; width: min(100%, 460px); height: auto; margin: 0 auto; overflow: visible; }
+.aq-membrane-face__dial { position: relative; }
+.aq-membrane-face__jump { display: none; }
 .aq-membrane-face__svg * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
 .aq-membrane-face__ring { fill: none; stroke: var(--limestone); stroke-width: 1.5; }
 .aq-membrane-face__ring--wall { fill: color-mix(in srgb, var(--navy) 88%, var(--on-navy)); }
@@ -55,16 +57,42 @@
   .aq-membrane-face__core { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
   .aq-membrane-face__label { grid-column: 1 / -1; }
   .aq-membrane-face__svg { grid-row: 2 / 4; width: min(100%, 320px); }
+  .aq-membrane-face__dial { grid-row: 2 / 4; }
 }
+/* Phones (pass 12, S10): the element with its ring numbers is the header (the numbers are 44 px buttons over the rim),
+   the targets a scroll-snap row of compact cards; a number brings its card in, the card in view lights its number. */
 @container (max-width: 860px) {
-  .aq-membrane-face { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "core" "t1" "t2" "t3" "t4" "t5" "t6"; gap: var(--space-2); }
-  .aq-membrane-face__head { padding: 0 0 var(--space-4); }
+  .aq-membrane-face { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "core" "tiles"; gap: var(--space-3); }
+  .aq-membrane-face__head { padding: 0 0 var(--space-2); }
   .aq-membrane-face__head .aq-h1 { font-size: 40px; line-height: 44px; }
-  .aq-membrane-face__core { grid-template-columns: 132px minmax(0, 1fr); column-gap: var(--space-4); padding: var(--space-4); }
-  .aq-membrane-face__svg { grid-row: 2; width: 132px; }
+  .aq-membrane-face__core { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-2); padding: var(--space-4); }
+  .aq-membrane-face__dial { width: min(100%, 272px); margin: 0 auto; }
+  .aq-membrane-face__svg { width: 100%; }
   .aq-membrane-face__num { display: none; }
-  .aq-membrane-face__tile { min-height: 0; padding: var(--space-4); }
-  .aq-membrane-face__n { font-size: 44px; line-height: 48px; }
+  .aq-membrane-face__jump { display: grid; place-items: center; position: absolute; z-index: 1; width: 44px; height: 44px; translate: -50% -50%; margin: 0; padding: 0;
+    border: 0; border-radius: var(--radius-pill); background: none; color: var(--on-navy); font: 500 13px/1 var(--font-mono); cursor: pointer;
+    -webkit-tap-highlight-color: transparent; transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-membrane-face__jump::before { content: ""; position: absolute; inset: var(--space-2); border-radius: var(--radius-pill); border: 1px solid var(--on-navy-muted); background: var(--navy); z-index: -1;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-membrane-face__jump.is-in { color: var(--navy); }
+  .aq-membrane-face__jump.is-in::before { background: var(--limestone); border-color: var(--limestone); }
+  .aq-membrane-face__jump:focus-visible { outline: 2px solid var(--on-navy); outline-offset: -2px; }
+  .aq-membrane-face__mark.is-in .aq-membrane-face__pin { fill: var(--limestone); }
+  .aq-membrane-face__mark.is-in .aq-membrane-face__tick { stroke: var(--limestone); }
+  .aq-membrane-face__note { max-width: none; }
+  /* the targets: one row of cards that snaps, the next one peeking */
+  .aq-membrane-face__tiles { grid-area: tiles; display: flex; gap: var(--space-2); overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin-inline: calc(-1 * var(--space-4)); padding: 0 var(--space-4) var(--space-2); scroll-padding-inline: var(--space-4); scrollbar-width: none; }
+  .aq-membrane-face__tiles::-webkit-scrollbar { display: none; }
+  .aq-membrane-face__tile, .aq-membrane-face__tile:nth-child(n) { grid-area: auto; flex: 0 0 min(84%, 320px); scroll-snap-align: start; min-height: 0; padding: var(--space-4); gap: var(--space-2); }
+  .aq-membrane-face__tile.is-in { border-color: var(--flow); }
+  .aq-membrane-face__v { margin-top: var(--space-1); }
+  .aq-membrane-face__n { font-size: 40px; line-height: 44px; }
+  .aq-membrane-face__w { font-size: 20px; line-height: 26px; }
+  .aq-membrane-face__m { margin-top: auto; font-size: 14px; line-height: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-membrane-face__jump, .aq-membrane-face__jump::before { transition: none; }
 }
 
 /* Cutaway (pass 9b): FxCutaway draws the element's body behind the face drawing, running back to the lower right with

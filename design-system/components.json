@@ -140,6 +140,16 @@
    "summary": "Page is the layout every Aquemi page, section and preview sits in: the container, the section rhythm and the type classes."
   },
   {
+   "name": "PhoneKit",
+   "readme": "design-system/components/PhoneKit/README.md",
+   "preview": "design-system/components/PhoneKit/preview.html",
+   "group": "Foundations",
+   "height": "900",
+   "width": "390",
+   "subtitle": "Phone helper at 390 px: an accordion of situations with chevrons and a 48 px start-with row, then chips showing one card",
+   "summary": "PhoneKit is the shared phone behaviour for section looks: a picker or accordion (one situation open at a time) and a sticky compact figure (a drawing strip held under the header that follows the row being read), switched on by data attributes only below a breakpoint."
+  },
+  {
    "name": "Placeholder",
    "readme": "design-system/components/Placeholder/README.md",
    "preview": "design-system/components/Placeholder/preview.html",
@@ -219,6 +229,16 @@
    "summary": "SectionNav is a sticky bar of numbered jump links to the sections of a long technical page, with a quiet page progress readout."
   },
   {
+   "name": "ApplicationWheel",
+   "readme": "design-system/components/ApplicationWheel/README.md",
+   "preview": "design-system/components/ApplicationWheel/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1300",
+   "subtitle": "One PP package in the hub, six industry groups round it, each with its plant uses and its page link",
+   "summary": "ApplicationWheel shows where one Purified Water package goes as an application wheel: the package in the hub inside its loop ring, one numbered segment per industry group round it, and each group's block (name and page link, limit tag, plant uses) beside its segment on a hairline leader."
+  },
+  {
    "name": "ApprovalMerge",
    "readme": "design-system/components/ApprovalMerge/README.md",
    "preview": "design-system/components/ApprovalMerge/preview.html",
@@ -283,9 +303,9 @@
    "readme": "design-system/components/BinderTabs/README.md",
    "preview": "design-system/components/BinderTabs/preview.html",
    "group": "Page sections",
-   "height": "760",
+   "height": "1400",
    "width": "1280",
-   "subtitle": "C&Q: stages filed as signed tab dividers in the open qualification binder",
+   "subtitle": "Ordered items filed as signed tab dividers in the open binder (the URS outline)",
    "summary": "BinderTabs files ordered stages as tab dividers in the open qualification binder, each signed off before the next (look `binder-tabs`, steps block)."
   },
   {
@@ -297,6 +317,26 @@
    "width": "1280",
    "subtitle": "Budget ranges as a Swiss bento: the whole package as the navy lead tile, three modules beside it, what moves the price and what is excluded as chips",
    "summary": "BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row."
+  },
+  {
+   "name": "BuildingLoop",
+   "readme": "design-system/components/BuildingLoop/README.md",
+   "preview": "design-system/components/BuildingLoop/preview.html",
+   "group": "Page sections",
+   "height": "1060",
+   "width": "1280",
+   "subtitle": "Building section on navy: one pale loop threads three floors to numbered stops named at the margins",
+   "summary": "BuildingLoop sets the places a central plant feeds in one building as a building section on a navy band: one pale loop leaves the plant on the ground floor, threads three floors to numbered stops, and returns under the slab; each stop is named in the margin beside it, with a numbered caption per stop under the band."
+  },
+  {
+   "name": "CalcPad",
+   "readme": "design-system/components/CalcPad/README.md",
+   "preview": "design-system/components/CalcPad/preview.html",
+   "group": "Page sections",
+   "height": "780",
+   "width": "1100",
+   "subtitle": "Water by product class as working on a squared pad: class, what sets it, the boxed minimum",
+   "summary": "CalcPad writes a grade table out as working on a squared calculation pad: one derivation line per product class, the class, an arrow, what sets it, an equals sign, and the minimum water boxed as the answer."
   },
   {
    "name": "CapaRing",
@@ -531,6 +571,16 @@
    "summary": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run."
   },
   {
+   "name": "DrawingRegister",
+   "readme": "design-system/components/DrawingRegister/README.md",
+   "preview": "design-system/components/DrawingRegister/preview.html",
+   "group": "Page sections",
+   "height": "960",
+   "width": "1280",
+   "subtitle": "Framed outline drawings with one steel-blue viewfinder over the selected item, its detail and title block",
+   "summary": "DrawingRegister sets a short list of places water goes as a drawing register on a limestone sheet: a row of framed outline drawings with mono sheet codes, one steel-blue viewfinder over the selected drawing, and under the row that item's drawing at large with its notes and a title block."
+  },
+  {
    "name": "DuplexTrains",
    "readme": "design-system/components/DuplexTrains/README.md",
    "preview": "design-system/components/DuplexTrains/preview.html",
@@ -613,6 +663,16 @@
    "summary": "FidelityLadder shows design stages as one drawing gaining detail on a navy blueprint band: every stage is a sheet with the same water package drawn at that stage's level (matrix, block route, P&ID, dimensioned isometric, frozen isometric, spools with their joints), joined by a run with a node per stage and a closed valve and \"Hold point\" stamp where you sign."
   },
   {
+   "name": "FitReadout",
+   "readme": "design-system/components/FitReadout/README.md",
+   "preview": "design-system/components/FitReadout/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1300",
+   "subtitle": "Navy P-T readout with one limit line, three numbered rule tiles and outlined not-served tags",
+   "summary": "FitReadout shows a fit test read off an instrument: a navy readout plots the loop material's pressure rating falling as it heats up to one limit line, beside the test's numbered rule tiles, with the rows that are not served or answered elsewhere as outlined tags that link their homes."
+  },
+  {
    "name": "FusionBench",
    "readme": "design-system/components/FusionBench/README.md",
    "preview": "design-system/components/FusionBench/preview.html",
@@ -633,6 +693,16 @@
    "width": "1100",
    "subtitle": "Upgrade steps on one pipe with gate valves",
    "summary": "GateLine draws a short process as one double-line pipe on a navy band: each step owns a run of pipe with a line icon above and its number, name and line below, and a gate valve sits on every joint between steps."
+  },
+  {
+   "name": "GradeCrosswalk",
+   "readme": "design-system/components/GradeCrosswalk/README.md",
+   "preview": "design-system/components/GradeCrosswalk/preview.html",
+   "group": "Page sections",
+   "height": "1400",
+   "width": "1280",
+   "subtitle": "Water types as navy blocks wired to hospital and laboratory standards, editions in mono",
+   "summary": "GradeCrosswalk sets a grades table that maps water types to two families of standards as a crosswalk: the water types run down the middle as navy blocks, one side's standards stand as chips on the left and the other side's on the right, and hairline wires join every standard to every water that cites it."
   },
   {
    "name": "GradeEditorial",
@@ -761,7 +831,7 @@
    "readme": "design-system/components/IssuedSet/README.md",
    "preview": "design-system/components/IssuedSet/preview.html",
    "group": "Page sections",
-   "height": "800",
+   "height": "860",
    "width": "1100",
    "subtitle": "The documents you receive as an issued set of sheets dealt onto a desk, stamped with the step that uses them",
    "summary": "IssuedSet shows the documents you receive as the issued set itself, dealt onto a desk: each document a sheet of paper at a slight turn with its code large, a miniature of what it looks like, its name and text, and a round stamp of the qualification step that uses it."
@@ -829,6 +899,16 @@
    "summary": "LimitBento sets a page's water-quality limits as a bento of tiles, one limit per tile with its value as an oversized Geist Mono numeral, around a tall navy water column that is filled to the stricter limit with the looser pharmacopoeia value marked high above it."
   },
   {
+   "name": "LimitDrawer",
+   "readme": "design-system/components/LimitDrawer/README.md",
+   "preview": "design-system/components/LimitDrawer/preview.html",
+   "group": "Page sections",
+   "height": "1250",
+   "width": "1300",
+   "subtitle": "A drawer of folders, one per limit-writer, each with its what-to-send slip and where it applies",
+   "summary": "LimitDrawer shows who writes each limit and what to send them as a file drawer: one manila folder per limit-writer, its tab at its own cut position so no tab hides another, what the limit sets on the folder, a clipped white slip listing what to send, and a navy index label naming where it applies."
+  },
+  {
    "name": "LimitStack",
    "readme": "design-system/components/LimitStack/README.md",
    "preview": "design-system/components/LimitStack/preview.html",
@@ -837,6 +917,16 @@
    "width": "1280",
    "subtitle": "Purified Water limits as a stepped type stack beside the outlet pipe and its collar",
    "summary": "LimitStack sets a page's water-quality limits as an editorial type stack beside a sculpted outlet pipe, so the reader sees each limit large, its reference, and the guaranteed skid-outlet value as the stack's last, boxed step."
+  },
+  {
+   "name": "LimitWriters",
+   "readme": "design-system/components/LimitWriters/README.md",
+   "preview": "design-system/components/LimitWriters/preview.html",
+   "group": "Page sections",
+   "height": "1150",
+   "width": "1300",
+   "subtitle": "One package, one pipe teeing into five limit-writer sheets; what stays the same and what changes",
+   "summary": "LimitWriters shows that one package serves many limit-writers: a PP package on its base frame sends one twin-wall pipe to a header that tees into a numbered sheet per limit-writer, and under it the stages split into what stays the same and what changes."
   },
   {
    "name": "LinkGrid",
@@ -945,10 +1035,20 @@
    "readme": "design-system/components/ModulePlinth/README.md",
    "preview": "design-system/components/ModulePlinth/preview.html",
    "group": "Page sections",
-   "height": "930",
+   "height": "760",
    "width": "1100",
-   "subtitle": "Six redundancy options as modules on the shared site loop's plinth, numbered cards beside",
-   "summary": "ModulePlinth draws an options block with a base as modules standing on that base: an isometric plinth on a navy blueprint carries one block per option, each fed by a riser from the loop along the plinth, with numbered cards beside it."
+   "subtitle": "From exchange DI: three options standing on one plinth, risers from one header",
+   "summary": "ModulePlinth draws an options block with a base as the options standing on that base: one plinth on a navy band carries one module per option, level and left to right, one header pipe runs along its front with a riser to every module, and the numbered caption cards sit under the drawing."
+  },
+  {
+   "name": "MultiportRouter",
+   "readme": "design-system/components/MultiportRouter/README.md",
+   "preview": "design-system/components/MultiportRouter/preview.html",
+   "group": "Page sections",
+   "height": "900",
+   "width": "1100",
+   "subtitle": "Where to start as a multiport valve: four situations piped to route cards, the chosen one lit",
+   "summary": "MultiportRouter draws a router table as a multiport valve in plan: the valve in the middle with one numbered port per situation, each port piped to its route card, the chosen card lit steel blue and the valve's lever turned to its port."
   },
   {
    "name": "NcrTiles",
@@ -1079,7 +1179,7 @@
    "group": "Page sections",
    "height": "900",
    "width": "1280",
-   "subtitle": "Router table drawn as a P&ID on navy: five situations piped through valves to a system and a start",
+   "subtitle": "Router table drawn as a P&ID on navy: six situations piped through valves to a system and a start; phone width: tap rows, one short pipe open",
    "summary": "PidRoutes draws a router table (situation, system, start with) as a P&ID on a navy blueprint ground: each situation is piped through its own valve to its system and on to where to start, and rows that share a destination page are tied by a header line."
   },
   {
@@ -1097,7 +1197,7 @@
    "readme": "design-system/components/PlanChecker/README.md",
    "preview": "design-system/components/PlanChecker/preview.html",
    "group": "Page sections",
-   "height": "1150",
+   "height": "1180",
    "width": "1100",
    "subtitle": "Service plans as a checker of navy and limestone tiles, terms aligned across plans",
    "summary": "PlanChecker compares service plans as a checker of square tiles on limestone: one column per plan alternating navy and limestone, a head tile with a huge light slash numeral, the plan name and who it suits, a terms tile whose rows line up across the plans, and each plan's own button."
@@ -1113,6 +1213,16 @@
    "summary": "PlanSheets compares service plans like calibration sheets laid side by side on a navy band: each plan a limestone sheet with a ruled scale strip, a huge light sheet number, the plan name, who it suits set large, its terms as ruled fields and its own button.",
    "retired": true,
    "look": "plan-sheets"
+  },
+  {
+   "name": "PlantStations",
+   "readme": "design-system/components/PlantStations/README.md",
+   "preview": "design-system/components/PlantStations/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1100",
+   "subtitle": "Where water goes: an isometric plant room, the package in a corner, numbered stations keyed to rows",
+   "summary": "PlantStations draws a grid of points of use as an isometric plant room: the package in the back corner, a dashed route round the room to one numbered station per item, each station's tag keyed once to the numbered row beside the plan."
   },
   {
    "name": "PqCalendar",
@@ -1159,7 +1269,7 @@
    "readme": "design-system/components/ProofFolders/README.md",
    "preview": "design-system/components/ProofFolders/preview.html",
    "group": "Page sections",
-   "height": "893",
+   "height": "980",
    "width": "1300",
    "subtitle": "Pharmacopoeias as a drawer of manila folders: typed slip, clipped proof sheets struck with a stamp, navy index label",
    "summary": "ProofFolders shows an evidence table as a drawer of manila folders, one per standard: the standard set large beside its folder, what we design to typed on a slip, the proof as clipped sheets struck with a stamp of the standard's code, and where we show it as the folder's navy index label."
@@ -1397,6 +1507,16 @@
    "summary": "RuleFigures sets a spec block of design rules as a Swiss rule sheet in which every rule is explained by a small engineering figure, the lead rule as a full-width band beside a pipe cut open to show turbulent flow."
   },
   {
+   "name": "ScopeSeam",
+   "readme": "design-system/components/ScopeSeam/README.md",
+   "preview": "design-system/components/ScopeSeam/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1100",
+   "subtitle": "Where polypropylene stops: navy and limestone split, ambient loop inside, hot loop dashed outside",
+   "summary": "ScopeSeam shows where a package fits and where it does not as a band split navy and limestone: the ambient loop the package serves drawn whole in the navy half, a loop it cannot serve dashed in the limestone half, two tie-in nodes on the seam between them, the limit row on the seam itself and each half's rows numbered under its drawing."
+  },
+  {
    "name": "SectionTrain",
    "readme": "design-system/components/SectionTrain/README.md",
    "preview": "design-system/components/SectionTrain/preview.html",
@@ -1411,20 +1531,20 @@
    "readme": "design-system/components/SensorLoop/README.md",
    "preview": "design-system/components/SensorLoop/preview.html",
    "group": "Page sections",
-   "height": "1120",
-   "width": "1280",
-   "subtitle": "Signals drawn where they are measured: an instrumented loop with ISA balloons, schedule cards on leaders, the signal bus",
-   "summary": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into."
+   "height": "1100",
+   "width": "1100",
+   "subtitle": "Microbial control on one loop: flat P&ID on navy, real instrument tags, keyed notes",
+   "summary": "SensorLoop draws a spec block of control points or signals where each one sits on one storage and distribution loop: a flat P&ID on a navy sheet, an instrument balloon with its real tag letters over the row number on every measuring point, hoses numbered at their ends, and the rows as keyed notes along the foot."
   },
   {
    "name": "SheetPreviews",
    "readme": "design-system/components/SheetPreviews/README.md",
    "preview": "design-system/components/SheetPreviews/preview.html",
    "group": "Page sections",
-   "height": "840",
-   "width": "1280",
-   "subtitle": "Pretreatment documents as a Swiss row of sheets, each thumbnail showing its kind",
-   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line."
+   "height": "680",
+   "width": "1100",
+   "subtitle": "Records for your file: limestone sheets with numerals and record thumbnails",
+   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: each limestone sheet carries its light index numeral and a thumbnail of what kind of document it is, then its code, name and line."
   },
   {
    "name": "SheetStack",
@@ -1547,9 +1667,9 @@
    "readme": "design-system/components/SpineShelf/README.md",
    "preview": "design-system/components/SpineShelf/preview.html",
    "group": "Page sections",
-   "height": "1180",
-   "width": "1100",
-   "subtitle": "Turnover package as binder spines on a shelf beside its index that opens",
+   "height": "820",
+   "width": "1280",
+   "subtitle": "Document package as binder spines on a shelf beside its opening index; phones: a numbered rail, key row navy",
    "summary": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents."
   },
   {
@@ -1567,7 +1687,7 @@
    "readme": "design-system/components/StageStacks/README.md",
    "preview": "design-system/components/StageStacks/preview.html",
    "group": "Page sections",
-   "height": "940",
+   "height": "1000",
    "width": "1100",
    "subtitle": "What each stage issues: sheets stacked on the project axis, navy ground",
    "summary": "StageStacks draws what each project stage issues as the document file building up: the stages stand on one project axis, each stage's documents stacked above it as sheets of paper, its name, clause and who approves under the axis."
@@ -1589,7 +1709,7 @@
    "group": "Page sections",
    "height": "1000",
    "width": "1280",
-   "subtitle": "Services: seven situations as a rising stair of cards over outline type, Go on the limestone wedge",
+   "subtitle": "Services: eight situations as a rising stair of cards over outline type, Go on the limestone wedge; phone width: a chip picker showing one card",
    "summary": "StairRouter draws a router table (\"which situation are you in, where do you start\") as a rising staircase of situation cards over huge cropped outline type, every route open at once."
   },
   {
@@ -1669,7 +1789,7 @@
    "group": "Page sections",
    "height": "900",
    "width": "1100",
-   "subtitle": "Five situations as suites fed from one shared loop, each with its start page as the way out",
+   "subtitle": "The situations as suites fed from one shared loop, each with its start page as the way out",
    "summary": "SuiteLoop draws a router table as a plan of one shared loop serving a row of suites: every situation is a room fed by its own drop and valve off the loop, with the start page as the room's way out."
   },
   {
@@ -1767,6 +1887,16 @@
    "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests."
   },
   {
+   "name": "TrainStrip",
+   "readme": "design-system/components/TrainStrip/README.md",
+   "preview": "design-system/components/TrainStrip/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1280",
+   "subtitle": "Treatment train as a navy P&ID strip: PVC pretreatment, duplex RO, tank, UV, filter, PP loop with diaphragm valves",
+   "summary": "TrainStrip sets one treatment train as a P&ID strip on a navy band: PVC pretreatment, duplex RO in parallel, the tank, loop pump and UV, heat exchanger, endotoxin filter and an isolatable PP loop with its points of use, sensors and sanitization port, a numbered marker under each station and a numbered caption per stage below."
+  },
+  {
    "name": "TwinRoute",
    "readme": "design-system/components/TwinRoute/README.md",
    "preview": "design-system/components/TwinRoute/preview.html",
@@ -1789,6 +1919,16 @@
    "summary": "UrsGate sets decisions that must be made before a gate as one project line running into that gate: decisions stand on stems above and below the line with huge light numerals, and the gate is a bar with its word as giant outline type cut by the page edge.",
    "retired": true,
    "look": "urs-gate"
+  },
+  {
+   "name": "UseMatrix",
+   "readme": "design-system/components/UseMatrix/README.md",
+   "preview": "design-system/components/UseMatrix/preview.html",
+   "group": "Page sections",
+   "height": "1200",
+   "width": "1300",
+   "subtitle": "Industry by water use under one pipe header: navy squares where a grade is set, open where none is",
+   "summary": "UseMatrix shows an industry-by-use table as one water main: a twin-wall pipe runs along the column heads and tees down into every use column, and each cell is a square on its column's line, navy where a grade is set and open where the cell is a dash."
   },
   {
    "name": "Versus",

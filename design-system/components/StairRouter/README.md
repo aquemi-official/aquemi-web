@@ -45,11 +45,16 @@ Pass 9 look `stair-router` (`assets/src/blocks/look-stair-router.js`), set with 
 - Navy ground with one limestone wedge (hard diagonal, never a gradient). Cards are `surface-raised` with `ink` text in both themes, so tables of values stay on a plain ground. The outline type is drawn twice and clipped either side of the diagonal so its ink follows the ground.
 - A card whose cells link somewhere (the last link wins, usually "Start with") is clickable as a whole through a pointer-only overlay; the real link stays the keyboard and screen reader target and carries the cell's `intent`.
 - A value opening with a `[placeholder]` is pending: dashed rule and a "To confirm" line.
-- Best for 3 to 7 rows. Desktop puts one column per row; at 1180 px and below the flight runs down the page, each step indented one notch, the stair line along the cards' left edges. Phones keep that, with the end word on a bottom wedge.
+- Best for 3 to 7 rows. Desktop puts one column per row; at 1180 px and below the flight runs down the page, each step indented one notch, the stair line along the cards' left edges. Phones (pass 12, PhoneKit, `data-pk-picker` on the flight) get a situation picker instead:
+  - With `labels`: the labels as chips in two columns on the navy ground (52 px, the open one limestone with navy ink), one card shown under them, 01 first. Without labels: the situations as accordion heads (56 px, chevron), the card under its head, the card title kept for screen readers only. The head's number sits on the title's first line (first-baseline), the chevron centred. The open chip's number is `on-limestone-muted` (the limestone fill marks the chip; flow fails on limestone in dark). The chips are one tab stop (PhoneKit's roving tabindex).
+  - The stair survives as a thin rising rail at the top of the card (`.aq-stair-router__rail`, "01 / 08" and one tread per step, this one in flow, the climbed ones `ink-subtle`, the ones to come `currentColor` at 40 %, so the rail reads in both themes); step numbers, treads, risers and the drop are off; no indents (S13).
+  - The end word stays on its wedge; without one the wedge is a thin sill under the picker. Card text 15 px, the start-with link a 44 px target.
+  - Services: 3,474 px to about 1,080 px at 375 px; ind-hospital-lab: 2,014 to about 980.
+  - Without script the phone keeps the stacked flight, unindented.
 - Hover or focus on a step lifts its card off the tread and lights the tread and riser.
 
 ## Motion
 
-Motion: the outline words slide in from opposite sides while their letters rise; then the stair is climbed, riser up and tread across, each card landing on its tread as it is laid with its number decoding, and one limestone drop climbing with the line to rest at the top step; last, the end word strikes in on the wedge (under 4 s, once). Stacked layouts run each step as it scrolls in. Nothing under reduced motion.
+Motion: the outline words slide in from opposite sides while their letters rise; then the stair is climbed, riser up and tread across, each card landing on its tread as it is laid with its number decoding, and one limestone drop climbing with the line to rest at the top step; last, the end word strikes in on the wedge (under 4 s, once). Stacked layouts run each step as it scrolls in. Phones with the picker: the chips rise in turn as the flight comes in, and each card a chip opens lands with its rail climbing to its step. Nothing under reduced motion.
 
 Ported (pass 9b): Subframe Motion "Relief board" (relief-board): once the stair is up, the card the visitor points at or focuses lifts furthest off its tread and its neighbours lift less with distance (12 px x exp(-d^2/4.4), 300 ms, cubic-bezier(.22,1,.36,1)).

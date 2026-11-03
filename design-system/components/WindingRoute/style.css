@@ -88,3 +88,11 @@
 
 /* phones: the route is vertical and has no droplet; no replay */
 @container (max-width: 860px) { .aq-winding-route__scrub { display: none; } }
+
+/* the stage glyph beside the stop's code: phones only (pass 12) */
+.aq-winding-route__cg { display: none; }
+@container (max-width: 860px) {
+  .aq-winding-route__code:has(.aq-winding-route__cg) { display: flex; align-items: center; gap: var(--space-2); }
+  .aq-winding-route__cg { display: inline-flex; flex: none; width: 24px; height: 24px; }
+  .aq-winding-route__cg .aq-winding-route__pglyph { width: 24px; height: 24px; }
+}

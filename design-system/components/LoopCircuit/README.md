@@ -5,7 +5,11 @@ LoopCircuit draws how a storage and distribution loop works as one blueprint P&I
 - Fields: `h`, `stages` (or `items`) `[{t, d, spot | icon, node}]`. `node`: `gen`, `tank`, `pump`, `hx`, `pou`, `sensors`, `spray` (default by position in that order). The strip is fixed at seven columns of these stations; the captions use the same seven columns so each station stands over its caption.
 - Drawn in the renderer as flat P&ID symbols (bowtie valves, ISA pump circle, shell-and-tube exchanger, instrument bubbles with a dashed AE for TOC, tank in section with the spray ball, and detail A of the spray ball on the return riser), not IsoKit: the strip is a schematic. Tokens only; the section is dark-themed so `flow` is the water.
 - Pointing at a caption lights its station (colour only; all content is visible without it).
-- Phones: the strip gives way to a vertical circuit: stages down a `flow` rail with their glyphs, a dashed return line back up to the tank.
+- Phones (pass 12, S10): a vertical circuit. The supply pipe runs down the left edge through the stations' glyph
+  markers (01 generation to 06 return sensors), turns at the foot (`__bt`) and the return comes back up the right edge
+  (`__rp`) past the spray ball's marker (07, on the return) and over into the tank head (`__tt`, `__ts`). Twin walls
+  `on-navy-muted`, water `flow`, a chevron per straight run (down on the supply, up on the return). The stop text
+  sits between the two pipes. Sys-storage at 375 px: 1,169 -> 1,252 px.
 
 ## Motion
 

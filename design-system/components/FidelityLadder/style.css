@@ -90,3 +90,13 @@
 }
 .aq-section.aq-fidelity-ladder-sec { overflow-x: clip; }
 .aq-fidelity-ladder__j { transform-box: fill-box; transform-origin: center; }
+
+/* pass 12 phone (optional item, svc-design.1): the sheets at 70 % of the column (their footer labels stay 12 px),
+   less space between stages; about 400 px shorter, the ladder reads the same. */
+@container (max-width: 860px) {
+  .aq-fidelity-ladder__sheet { width: 70%; }
+  .aq-fidelity-ladder__st { padding-bottom: var(--space-10, 40px); }
+}
+/* verify V7: at 70 % the sheets' inner drawing labels (PRE, RO, EDI, TANK, ...) render about 4 px; they are sheet
+   texture (the sheets are aria-hidden), so phones drop them and keep the drawing and the 12 px footers. */
+@container (max-width: 860px) { .aq-fidelity-ladder__lbl { display: none; } }

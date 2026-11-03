@@ -18,7 +18,7 @@ AQmotion.fx('JointSpine', function (root, m) {
     var tl = m.tw(gsap.timeline({ paused: true }));
     /* rows wait for their joint */
     rows.forEach(function (r) {
-      var cells = qa(':scope > h3, :scope > p', r), j = r.querySelector('.aq-joint-spine__joint'), no = r.querySelector('.aq-joint-spine__no');
+      var cells = qa(':scope > h3, :scope > p, :scope > .aq-joint-spine__fh > *', r), j = r.querySelector('.aq-joint-spine__joint'), no = r.querySelector('.aq-joint-spine__no');
       r._tl = m.tw(gsap.timeline({ paused: true }));
       if (j) r._tl.from(j, { scaleX: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform' }, 0);
       if (no) r._tl.from(no, { autoAlpha: 0, x: r.classList.contains('is-r') ? -8 : 8, duration: 0.3, ease: 'power3.out', clearProps: 'opacity,visibility,transform' }, 0.05);

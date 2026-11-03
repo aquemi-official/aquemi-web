@@ -8,7 +8,12 @@
    drawing shows the finished, released state. Placeholders in the words stay placeholders.
    Fields, as steps: h, intro, items [{t, d, link}] (the first four drive the drawing's stages).
    Concept: pass 9b ind-cdmo.3 (four numbered steps with placeholder figures in the accent beside a ring of
-   line-drawn modules), with the log's note: show the new outlet being tied in instead of a generic module ring. */
+   line-drawn modules), with the log's note: show the new outlet being tied in instead of a generic module ring.
+   Phones (pass 12, PhoneKit sticky figure): the drawing rides as a 200 px strip under the header and the step on the
+   reading line drives it: that step and its marker light, and the drawing shows that step's stage (stages up to it
+   done, later ones not yet). This is state, not motion, so it holds with reduced motion too; motion.js eases between
+   stages when it runs. The markers of stages not drawn yet step back (is-future). PhoneKit holds to 600 px; from 601 to
+   860 px (tablets) the steps and the sticky drawing sit side by side again, the desktop story at a smaller scale. */
 (function(){
 var K='aq-tie-in-run';
 function scene(){var zH=92,xt=200,yb=48,xo=234,x1=330;
@@ -27,10 +32,16 @@ function scene(){var zH=92,xt=200,yb=48,xo=234,x1=330;
  var bx=isoBounds([[-70,0,zH+4],[x1,0,zH+4],[x1,0,0],[20,18,0],[178,84,0],[272,84,0],[-70,0,40]],18);
  return {inner:inner,mk:mk,w:Math.round(bx.w),h:Math.round(bx.h),org:[-bx.x,-bx.y]}}
 LOOKS['tie-in-run']=function(b,H){var I=b.items||[],n=I.length,S=scene(),m=Math.min(4,n);
- var mks='';for(var i=0;i<m;i++){var a=isoPct(isoP(S.mk[i]),S.w,S.h,S.org);mks+='<span class="'+K+'__mk" data-i="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}
- var fig='<div class="'+K+'__fig"><div class="'+K+'__plate" aria-hidden="true">'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+mks+'</div></div>';
+ var mks='';for(var i=0;i<m;i++){var a=isoPct(isoP(S.mk[i]),S.w,S.h,S.org);mks+='<span class="'+K+'__mk" data-i="'+i+'" data-pk-key="'+i+'" style="left:'+a.left+';top:'+a.top+'">'+(i<9?'0':'')+(i+1)+'</span>'}
+ var fig='<div class="'+K+'__fig" data-pk-fig><div class="'+K+'__plate" aria-hidden="true" style="aspect-ratio:'+S.w+' / '+S.h+'">'+isoSvg(S.w,S.h,S.inner,K+'__svg',{origin:S.org})+mks+'</div></div>';
  var steps=I.map(function(it,i){var lk=it.link&&wp(it.link);
-  return '<li class="'+K+'__step" data-i="'+i+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="'+K+'__t">'+(lk?wlink(it.link,it.t):tx(it.t))+'</h3>'
+  return '<li class="'+K+'__step" data-i="'+i+'" data-pk-row="'+i+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="'+K+'__t">'+(lk?wlink(it.link,it.t):tx(it.t))+'</h3>'
    +(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
- return sec(H+'<div class="'+K+'" data-stage="'+m+'" style="--n:'+n+'"><ol class="'+K+'__steps">'+steps+'</ol>'+fig+'</div>',K+'-sec')};
+ return sec(H+'<div class="'+K+'" data-stage="'+m+'" data-pk-sticky data-pk-bp="600" data-pk-h="200" data-pk-zoom="1.1" style="--n:'+n+'"><ol class="'+K+'__steps">'+steps+'</ol>'+fig+'</div>',K+'-sec')};
+/* PhoneKit's step change sets the stage the drawing shows (motion.js takes this over, eased, when it runs) */
+function stage(el,k){var m=+el.getAttribute('data-stage')||4;for(var i=0;i<4;i++)el.style.setProperty('--p'+i,k<0||i<=k||i>=m?'1':'0');
+ [].forEach.call(el.querySelectorAll('.'+K+'__step,.'+K+'__mk'),function(x){var i=+x.getAttribute('data-i');x.classList.toggle('is-on',k>=0&&i===k);x.classList.toggle('is-future',k>=0&&i>k)});el.classList.toggle('is-live',k>=0)}
+if(typeof document!=='undefined')document.addEventListener('pk:change',function(ev){var el=ev.target;if(!el.classList||!el.classList.contains(K)||el._tirMotion)return;
+ if(ev.detail&&ev.detail.on&&ev.detail.index>=0)stage(el,Math.min(ev.detail.index,(+el.getAttribute('data-stage')||4)-1));
+ else{for(var i=0;i<4;i++)el.style.removeProperty('--p'+i);stage(el,-1)}});
 })();

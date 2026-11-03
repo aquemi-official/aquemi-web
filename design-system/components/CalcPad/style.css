@@ -1,0 +1,59 @@
+/* ---------- CalcPad: a grade table as working on a squared calculation pad ---------- */
+/* The pad: a squared sheet (16 px squares), a double margin rule in flow with the line numbers left of it, and each
+   line's work flowing to an equals sign with its answer boxed at the right. */
+.aq-calc-pad { --pad-margin: var(--space-16); position: relative; padding: var(--space-8) var(--space-8) var(--space-8) calc(var(--pad-margin, var(--space-16)) + var(--space-6));
+  border: 1px solid var(--line-strong); color: var(--ink);
+  background-color: var(--surface-raised);
+  background-image: linear-gradient(color-mix(in srgb, var(--line) 70%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 70%, transparent) 1px, transparent 1px);
+  background-size: var(--space-4) var(--space-4); background-position: -1px -1px; }
+.aq-calc-pad::before { content: ""; position: absolute; top: 0; bottom: 0; left: var(--pad-margin, var(--space-16)); width: var(--space-1);
+  border-left: 1px solid var(--flow); border-right: 1px solid var(--flow); pointer-events: none; }
+.aq-calc-pad__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* The key line: the columns in the derivation's order */
+.aq-calc-pad__key { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0 0 var(--space-8);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-calc-pad__key .aq-calc-pad__op { padding: 0; font: 400 16px/16px var(--font-sans); color: var(--flow); }
+.aq-calc-pad__keybox { padding: var(--space-1) var(--space-2); border: 1px solid var(--line-strong); }
+
+.aq-calc-pad__lines { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-8); }
+.aq-calc-pad__line { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); column-gap: var(--space-6); align-items: start; cursor: default; }
+.aq-calc-pad__no { position: absolute; top: 0; right: calc(100% + var(--space-6) + var(--space-4)); font: 500 15px/32px var(--font-mono); color: var(--ink-muted);
+  transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-calc-pad__line.is-on .aq-calc-pad__no { color: var(--flow); }
+.aq-calc-pad__work { margin: 0; font: 300 24px/32px var(--font-sans); letter-spacing: -0.01em; }
+.aq-calc-pad__class { color: var(--ink); }
+.aq-calc-pad__sets { color: var(--ink-muted); }
+.aq-calc-pad__op { display: inline-block; padding-inline: var(--space-1); font-weight: 400; color: var(--flow); }
+.aq-calc-pad__code { font-family: var(--font-mono); font-size: 0.86em; font-weight: 400; letter-spacing: -0.01em; white-space: nowrap; }
+
+/* The answer box: drawn in ink, lit steel blue on the chosen line */
+.aq-calc-pad__ans { position: relative; margin: 0; padding: calc(var(--space-2) - 2px) var(--space-4); border: 2px solid var(--ink); background: var(--surface-raised);
+  font: 400 18px/28px var(--font-sans); color: var(--ink);
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-calc-pad__line.is-on .aq-calc-pad__ans { border-color: var(--flow); background: var(--flow); color: var(--surface); }
+.aq-calc-pad__line.is-on .aq-calc-pad__ans .aq-ph { color: inherit; }
+
+/* Phones: the margin narrows, each line wraps above a full-width answer box */
+@container (max-width: 860px) {
+  .aq-calc-pad { --pad-margin: var(--space-8); padding: var(--space-6) var(--space-4) var(--space-6) calc(var(--pad-margin, var(--space-16)) + var(--space-4)); }
+  .aq-calc-pad__key { margin-bottom: var(--space-6); }
+  .aq-calc-pad__lines { gap: var(--space-6); }
+  .aq-calc-pad__line { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); }
+  .aq-calc-pad__no { right: calc(100% + var(--space-4) + var(--space-2)); font-size: 13px; line-height: 28px; }
+  .aq-calc-pad__work { font-size: 19px; line-height: 28px; }
+  .aq-calc-pad__ans { font-size: 16px; line-height: 24px; padding-inline: var(--space-3); }
+}
+@container (max-width: 400px) {
+  .aq-calc-pad { --pad-margin: var(--space-6); padding-right: var(--space-3); padding-left: calc(var(--pad-margin, var(--space-16)) + var(--space-3)); }
+  .aq-calc-pad__no { right: calc(100% + var(--space-3) + var(--space-1)); font-size: 12px; }
+  /* what sets it on its own line under the class, smaller, led by its arrow: the derivation order reads by position too */
+  .aq-calc-pad__sets { display: block; font-size: 16px; line-height: 24px; }
+  .aq-calc-pad__sets > .aq-calc-pad__op:first-child { padding-left: 0; }
+  .aq-calc-pad__key { column-gap: var(--space-2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-calc-pad__ans, .aq-calc-pad__no { transition: none; }
+}

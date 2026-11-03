@@ -8,7 +8,11 @@
    fold, fold_noun. New optional fields: parts, one per row: the drawn part its standard governs (vessel, panel, deadleg,
    wall, joint: a plain line across the pipe, no bead profile; a row without one gets no tag); tag, the name of the number column and of the drawing's tag group.
    The drawing is fixed (it names no standard); which row points at which part is data. Desktop shows every row; the
-   fold applies on phones, where a readout under the drawing shows the chosen row. */
+   fold applies on phones (pass 12: only to rows with no tag, S7: a row a tag points at is never folded away).
+   Pass 12 phones: under 600 px the drawing is cropped to the tagged parts (the panel and piping half; the crop starts left of the
+   leftmost tagged part, so a new part never falls outside it) and runs full column at a legible scale (600-860 px keep
+   the whole skid); no readout
+   (it stays for screen readers); each tag is a 44 px target that selects its row and scrolls it into view. */
 var ST_W=840,ST_H=420;
 /* each part: its anchor on the drawing (leader start, ring) and its tag (leader end) in viewBox units */
 var ST_PART={vessel:{a:[156,181],t:[24,181]},panel:{a:[688,152],t:[816,152]},deadleg:{a:[610,46],t:[610,14]},wall:{a:[720,100],t:[720,14]},joint:{a:[510,304],t:[510,406]}};
@@ -60,17 +64,24 @@ LOOKS['skid-tags']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[],K='
  var leads=D.leads.replace(/<g class="aq-skid-tags__lead" data-part="([a-z]+)">.*?<\/g>/g,function(m,k){return used[k]?m:''});
  var svg='<svg class="'+K+'__svg" viewBox="0 0 '+ST_W+' '+ST_H+'" aria-hidden="true" focusable="false"><g class="'+K+'__ground">'+D.floor+'</g><g class="'+K+'__plant">'+D.eq+'</g><g class="'+K+'__water">'+D.flow+'</g>'+leads+'</svg>';
  var first=-1;R.forEach(function(r,i){if(first<0&&ST_PART[P[i]])first=i});
+ /* the phone crop: from left of the leftmost tagged part (anchor or tag) to the drawing's right edge */
+ var x0=ST_W;Object.keys(used).forEach(function(k){var p=ST_PART[k];x0=Math.min(x0,p.a[0]-40,p.t[0]-40)});x0=Math.max(0,Math.round(x0/10)*10);
+ var crop=x0>=200?' style="--st-x0:'+x0+';--st-cw:'+(ST_W-x0)+'"':'';
  var fig='<div class="'+K+'__fig" role="group" aria-label="'+e(b.tag||C[0]||'')+'">'+svg+'<span class="'+K+'__crossbox" aria-hidden="true"><span class="'+K+'__cross"></span></span>'+tags+'</div>'
   +'<p class="'+K+'__detail" aria-live="polite"></p>';
  var head='<thead><tr><th scope="col" class="'+K+'__nh"><span class="'+K+'__vh">'+tx(b.tag||'')+'</span></th>'+C.slice(0,4).map(function(c){return '<th scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>';
- var body='<tbody>'+R.map(function(r,i){var k=P[i],has=!!(ST_PART[k]&&used[k]);
+ /* the fold (phones) only takes rows no tag points at */
+ var hasT=function(i){return !!(ST_PART[P[i]]&&used[P[i]])},fb=b.fold>0?{fold:b.fold}:{},nf=0;
+ if(b.fold>0)R.forEach(function(r,i){if(i>=b.fold&&!hasT(i))nf++});
+ var fr=function(h,i){return b.fold>0&&i>=b.fold&&!hasT(i)?h.replace(/^<tr class="/,'<tr class="aq-fold-x '):h};
+ var body='<tbody>'+R.map(function(r,i){var k=P[i],has=hasT(i);
   var cell=function(j,cls){var c=r[j];return '<td class="'+K+'__'+cls+'"><span class="'+K+'__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+(c==null?'':tcell(c))+'</td>'};
-  return fli('<tr class="'+K+'__row" data-k="'+i+'"'+(has?' data-part="'+k+'"':'')+'>',b,i)
+  return fr('<tr class="'+K+'__row" data-k="'+i+'"'+(has?' data-part="'+k+'"':'')+'>',i)
    +'<td class="'+K+'__n">'+(has?'<button type="button" class="'+K+'__num" data-k="'+i+'" aria-pressed="false" aria-label="'+num(i)+' '+e(stTxt(r[0]))+'"><span>'+num(i)+'</span></button>':'<span class="'+K+'__num-x" aria-hidden="true">'+num(i)+'</span>')+'</td>'
    +'<th scope="row" class="'+K+'__std">'+tcell(r[0])+'</th>'+cell(1,'how')+cell(2,'proof')+cell(3,'go')+'</tr>'}).join('')+'</tbody>';
  var table='<table class="'+K+'__table">'+head+body+'</table>';
- return sec('<div class="'+K+'" data-first="'+first+'"><div class="'+K+'__top">'+H+'<div class="'+K+'__stage">'+fig+'</div></div>'
-  +wFold(b,R.length,table,b.fold_noun||'standards')+'</div>','aq-band--limestone '+K+'-sec" data-theme="light')};
+ return sec('<div class="'+K+'" data-first="'+first+'"><div class="'+K+'__top">'+H+'<div class="'+K+'__stage'+(crop?' is-crop':'')+'"'+crop+'>'+fig+'</div></div>'
+  +(nf?wFold(b,R.length,table,b.fold_noun||'standards'):table)+'</div>','aq-band--limestone '+K+'-sec" data-theme="light')};
 
 // Ported from Subframe Motion "Inside the image" (atlas-hotspots), MIT, (c) 2026 Subframe
 /* One selection shared by the drawing's tags and the table's rows (the library's pins and index): choosing a tag or a
@@ -92,7 +103,10 @@ function stInit(root){[].forEach.call((root||document).querySelectorAll('.aq-ski
 if(typeof document!=='undefined'&&document.addEventListener){
  var stObs=typeof MutationObserver!=='undefined'&&new MutationObserver(function(){if(document.querySelector('.aq-skid-tags:not([data-k])'))stInit()});
  if(stObs)stObs.observe(document.documentElement,{childList:true,subtree:true});
- document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(t)stPick(t.closest('.aq-skid-tags'),t.getAttribute('data-k'))});
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(!t)return;var w=t.closest('.aq-skid-tags');stPick(w,t.getAttribute('data-k'));
+  /* phones: a tag on the drawing takes the reader to its row (the table runs far below the drawing there) */
+  if(t.classList.contains('aq-skid-tags__tag')&&(w.closest('.aq-page')||document.documentElement).clientWidth<=860){var r=w.querySelector('.aq-skid-tags__row[data-k="'+t.getAttribute('data-k')+'"]');
+   if(r&&r.getClientRects().length){var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;r.scrollIntoView({block:'center',behavior:rm?'auto':'smooth'})}}});
  ['pointerover','focusin'].forEach(function(n){document.addEventListener(n,function(ev){if(n==='pointerover'&&ev.pointerType&&ev.pointerType!=='mouse')return;
   var r=ev.target.closest&&ev.target.closest('.aq-skid-tags__row[data-part]');if(r)stPick(r.closest('.aq-skid-tags'),r.getAttribute('data-k'))})});
  document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(!t||['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Home','End'].indexOf(ev.key)<0)return;

@@ -12,12 +12,14 @@ AQmotion.fx('ProjectRun', function (root, m) {
     var steps = qa('.aq-project-run__step'), n = steps.length; if (!n) return;
     if (m.narrow()) {
       // the water fills down the run with the scroll: step i's segment fills as the run's progress passes it
+      // PhoneKit's strip drives the run while it is on (state, set in the look's renderer): the fill stands down
       var nodes = qa('.aq-project-run__node'), fill = function (p) {
+        if (el.hasAttribute('data-pk-on')) { steps.forEach(function (s) { s.style.removeProperty('--w') }); return }
         steps.forEach(function (s, i) { var w = Math.max(0, Math.min(1, p * (n - 1) - i)); s.style.setProperty('--w', w.toFixed(3)); if (nodes[i]) nodes[i].classList.toggle('is-wet', p * (n - 1) >= i - 0.02) }) };
       fill(0);
       m.tw(ScrollTrigger.create({ trigger: el, start: 'top 65%', end: 'bottom 65%', onUpdate: function (st) { fill(st.progress) } }));
       steps.forEach(function (s) {
-        var parts = qa('.aq-project-run__pic, .aq-project-run__text > *', s), nd = s.querySelector('.aq-project-run__node');
+        var parts = qa('.aq-project-run__pic, .aq-project-run__text > *', s).filter(function (x) { return x.offsetParent !== null || !el.hasAttribute('data-pk-on') }), nd = s.querySelector('.aq-project-run__node');
         gsap.set(parts, { y: 18, autoAlpha: 0 });
         m.on(s, function () {
           m.tw(gsap.to(parts, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.07, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }));

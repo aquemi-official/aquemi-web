@@ -63,6 +63,10 @@
   .aq-decision-plant__fig { grid-column: 1 / -1; grid-row: auto; margin-bottom: var(--space-4); }
   .aq-decision-plant__item, .aq-decision-plant__item.is-l, .aq-decision-plant__item.is-r { grid-column: auto; grid-row: auto; }
   .aq-decision-plant__leads { display: none; }
+  /* pass 12: no leaders, so the markers are the way in: each a target (44 px hit box) that opens its decision */
+  .aq-decision-plant__mk { pointer-events: auto; cursor: pointer; }
+  .aq-decision-plant__mk::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--aq-hit, 44px); height: var(--aq-hit, 44px); transform: translate(-50%, -50%); }
+  .aq-decision-plant__mk:hover { background: var(--flow); color: var(--surface-raised); }
 }
 
 /* Phones: drawing, then the decisions in one column; the fold returns */
@@ -73,4 +77,17 @@
   .aq-decision-plant__t { font-size: 18px; line-height: 24px; }
   .aq-fold:not(.is-open) .aq-decision-plant__item.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-decision-plant) > .aq-fold__btn { display: flex; }
+  /* pass 12: links as 44 px rows, the decision's number inline with its title */
+  .aq-decision-plant__link { display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); margin-block: calc(var(--space-2) * -1); }
+  .aq-decision-plant__link::after { margin-left: 0.6ch; }
+  /* reading lines 14 px */
+  .aq-decision-plant__link { font-size: 14px; }
+  .aq-decision-plant__item { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-2); align-items: baseline; }
+  .aq-decision-plant__item > :not(.aq-decision-plant__n) { grid-column: 2; }
+  .aq-decision-plant__item > .aq-decision-plant__link { justify-self: start; }
+  .aq-fold:not(.is-open) .aq-decision-plant__item.aq-fold-x { display: none; }
+}
+/* narrow phones: the title block's word at 12 px or more (27 viewBox units; the drawing scales about 0.45 at 375 px) */
+@container (max-width: 599px) {
+  .aq-decision-plant__gate { font-size: 27px; letter-spacing: 0; }
 }

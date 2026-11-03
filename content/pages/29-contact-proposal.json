@@ -540,7 +540,19 @@
   "h": "Prefer to talk first?",
   "body": "Ask for an engineer, [office hours, time zone].",
   "button": "Call [sales phone number]",
-  "link": "tel:[sales phone number]"
+  "link": "tel:[sales phone number]",
+  "variant": "call",
+  "include_label": "Have ready",
+  "include": [
+   "Your URS, or your product and flow",
+   "Feed water analysis, if any",
+   "Where your site is"
+  ],
+  "turnaround": "An engineer on the line",
+  "returns": [
+   "A written answer from an engineer",
+   "Then a scope review, budget range or proposal"
+  ]
  },
  "todo": [
   "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",

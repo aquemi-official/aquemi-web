@@ -9,3 +9,7 @@ RecordSlips shows each process of a quality system with the record it leaves: th
 - Phone: the slot runs under the process and the slip hangs below it.
 - Motion (`motion.js`): per row, the name rises, the slot drops in, the slip feeds out of the slot (clipped at its edge) and the records tick in. Under 2 s a row.
 - Not for: documents delivered with a system (DocList, IndexSheet).
+
+Phones (pass 12, audit S7): every log field shows (the page's fold is ignored here), each as a compact row: number and field on one line, what it proves under it, and the slip as a short paper strip fed sideways out of a navy slot at its left with its records inline, each with its tick box. The column names head the list once, as on desktop; the per-row labels are not shown. The section is in the concept queue for a new look; this is the S7 fix only. Desktop unchanged.
+
+Verify fixes (pass 12 V7): on phones only the process column head stays; the record head pointed at nothing (the slips sit under their rows) and ran into the edge at 360 px.

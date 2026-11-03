@@ -12,6 +12,7 @@ Concept: pass 9b svc-cq.0 (C&Q stages as tiles with slash numerals, one blueprin
 - Tones run limestone, navy, navy by index so two limestone tiles never meet; navy neighbours get an `on-navy-muted` hairline.
 - Numerals: Geist Mono light 96 px (art tile 40 px), slash in the muted tone; names Geist 21 px, text 14 px.
 - Six stages, page wider than 1080 px: five columns, the heading over 01 to 04, 05 beside the heading, 06 under it (one subgrid over both rows). Otherwise the heading over a three-column grid; phones one column, numeral beside the words.
+- Phones (pass 12, 1,606 to ~1,230 px): the heading band (the intro without its inset frame), the pipe-run drawing as a band under it (`div.__band`, a phone-only aria-hidden copy; the IQ tile's own drawing hides; motion draws whichever shows), then the stages as a 2-column grid of square tiles (equal rows, at least square up to 220 px tall, so tablet tiles do not grow into empty 360 px squares; the heading column aligned left): 44 px numeral, name, line at 14 px. Under 360 px one column. Desktop unchanged.
 - A flow rule draws across a tile's top on hover or focus.
 
 ## Motion
