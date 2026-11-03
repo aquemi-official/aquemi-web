@@ -53,6 +53,11 @@ CHECKPOINTS = [
      'Every page re-read for each industry and buyer role after notebook interviews and a 73-site competitor study: '
      'natural health products get their own door, device QA its supplier block, failure-led routers, drawings that no '
      'longer state open facts, wired form options. Design kept: the section library holds every look, 32 restored.'),
+    ('52711ee', 'Pass 11: commercial lessons, 31 pages',
+     'Every page reworked from 395 supplier decks, proposals, tenders, URSs and award packages: four new pages '
+     '(writing your URS, how a project runs, your first system, buying from Aquemi) and the first technical note; plain '
+     'words for owners and approvers, the buyer\'s own numbering for engineers and QA, honest proof for a new supplier; '
+     'reviewed by the distilled conversion library; 13 retired looks back on the site.'),
 ]
 
 # Not part of the site a visitor loads.

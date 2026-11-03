@@ -1,0 +1,11 @@
+OptionChecker sets an options block as a Swiss grid: a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile of the control system, beside the section title set large and the options as cells under huge light slash numerals.
+
+Look `option-checker` (`assets/src/blocks/look-option-checker.js`) on an `options` block. Used on sys-monitoring, "Options". Concept: `research/pass9b/concepts/sys-monitoring.4.png`. It replaced RailModules (pass 9).
+
+- Markup: `div.aq-option-checker` (two columns) → `div.__field` (aria-hidden, 4 x 4 grid of `__tile--n|l|s` squares placed by inline grid rows and columns, `data-r` = row; one `__tile--b` spans 2 x 2 with `svg.__bp`: `__grid`, parts `g.__part[data-part]` (panel, plc, historian, remote, bus), the operator screen `__fixed`, the dashed `__link`) and `div.__body` → `div.__head` (the section head, title Geist Light 56–104 px, right-aligned) + `ol.__cells` (six-column grid) of `li.__cell` (`--wide` for the first two: span 3; the rest span 2; `data-part`) → `span.__n` (`__num` + `__sl` slash, aria-hidden), `h3.__t` (the option's link, with a flow arrow, when it has one), `p.__d`.
+- Fields: `h`, `intro` (optional, under the title in the top cell, through `wSecHead`), `items [{t, d, link, intent, part}]`. `part`: `plc | historian | remote | bus | panel`, the blueprint part that option sets; pointing at the cell or focusing its link lights it in flow and dims the rest (renderer).
+- Tokens: field `navy`, `limestone`, `surface-sunken`; blueprint lines `on-navy-muted`, lit part `flow` mixed with `on-navy`; 1 px `line-strong` rules; cell hover `flow-tint`.
+- Phones: the field shortens to two rows (the blueprint tile and its neighbours), the title under it left-aligned, the cells stacked with the numeral in a left column.
+- The field is decoration apart from the blueprint tile; do not use for more than about six options (use OptionList).
+
+Motion: ported from Subframe Motion shutter-scene: the squares open top-down like shutters (820 ms, cubic-bezier(0.16, 1, 0.3, 1), 45 ms apart along the diagonals), the blueprint draws on, each cell rises and its numeral rolls up on the odometer. The section head keeps the core's word reveal. Once, under 3.5 s.

@@ -1,0 +1,258 @@
+{
+ "id": "services",
+ "section": "Services",
+ "nav_label": "Services",
+ "title": "Purified Water services, from design to upgrades | Aquemi",
+ "meta": "Design, fabrication, FAT and SAT, IQ/OQ/PQ, service and upgrades for a modular Purified Water package in polypropylene with PVC pretreatment.",
+ "path": "/services/",
+ "eyebrow": "SERVICES · EU GMP ANNEX 15 · GUI-0029",
+ "headline": "Purified Water services, from design to upgrades",
+ "lead": "We design, build and test your Purified Water package in polypropylene, support its qualification, then service it. We trace each requirement to its test.",
+ "primary_cta": "Talk to an engineer",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
+ "secondary_cta": {
+  "label": "System running? See service plans",
+  "link": "svc-service"
+ },
+ "index": true,
+ "blocks": [
+  {
+   "type": "table",
+   "h": "Where to start",
+   "cols": [
+    "Your situation",
+    "Start with",
+    "What to send",
+    "What comes back"
+   ],
+   "rows": [
+    [
+     "New system, user requirement specification (URS) approved or in draft",
+     {
+      "t": "Process design: request a URS gap review",
+      "link": "svc-design"
+     },
+     "Your URS, feed water analysis, peak demand in L/h",
+     "A compliance matrix marking every gap, within [URS review turnaround, working days]"
+    ],
+    [
+     "Design approved",
+     {
+      "t": "Fabrication: request a spec review",
+      "link": "svc-fabrication"
+     },
+     "Approved drawings, piping and material specification, province",
+     "Clauses we meet or would change, a draft inspection plan, within [document review turnaround, working days]"
+    ],
+    [
+     "Skid in build, factory and site acceptance tests (FAT, SAT) ahead",
+     {
+      "t": "FAT and SAT: request a specimen FAT protocol",
+      "link": "svc-fat-sat"
+     },
+     "Your work email",
+     "Test cases with acceptance criteria, within [specimen package response time, working days]"
+    ],
+    [
+     "Installed or arriving, qualification ahead",
+     {
+      "t": "Commissioning and qualification (C&Q): request a plan review",
+      "link": "svc-cq"
+     },
+     "URS, validation master plan, points-of-use list",
+     "Draft C&Q and sampling plans, within [document review turnaround, working days]"
+    ],
+    [
+     "In service and qualified",
+     {
+      "t": "Service: request a plan quote",
+      "link": "svc-service"
+     },
+     "System, age, instruments, standby and ride-through time",
+     "Plan, annual price, first-visit tasks, within [quote response time, working days]"
+    ],
+    [
+     "Aging, out of support, or about to change",
+     {
+      "t": "Upgrades: request a system assessment",
+      "link": "svc-upgrades"
+     },
+     "Drawings, a year of water data, the problem",
+     "Scope and price within [assessment response time, working days], then options with downtime and requalification"
+    ],
+    [
+     "Comparing suppliers",
+     {
+      "t": "Compare quotes and terms",
+      "link": "buying#compare"
+     },
+     "Your supplier questionnaire",
+     "Your questionnaire completed, within [audit request response time, working days]"
+    ],
+    [
+     "Consultant or contractor",
+     {
+      "t": "Writing your URS: notes for specifiers",
+      "link": "urs-guide#specification"
+     },
+     "Your client's URS or specification, and the bid date",
+     "A compliance matrix against it, within [compliance matrix response time, working days]"
+    ]
+   ],
+   "as": "router",
+   "nav": "Where to start",
+   "look": "stair-router",
+   "labels": [
+    "New system",
+    "Design approved",
+    "Skid in build",
+    "Installed",
+    "In service",
+    "Aging",
+    "Comparing suppliers",
+    "Specifying for a client"
+   ],
+   "kinetic": [
+    "Start",
+    "Go"
+   ]
+  },
+  {
+   "type": "steps",
+   "anchor": "durations",
+   "h": "How long each stage takes, and who signs",
+   "intro": "A summary of the full schedule. Weeks count from [lead time start event]; each hold adds your review time.",
+   "items": [
+    {
+     "t": "Design, [design to DQ, weeks]",
+     "hold": "Your quality unit",
+     "link": "project-plan#stages"
+    },
+    {
+     "t": "Fabrication, [approved design to FAT, weeks]",
+     "link": "project-plan#stages"
+    },
+    {
+     "t": "FAT, [FAT duration, days]",
+     "hold": "Both parties",
+     "link": "project-plan#stages"
+    },
+    {
+     "t": "Installation and SAT, [installation and SAT, days]",
+     "hold": "You",
+     "link": "project-plan#stages"
+    },
+    {
+     "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+     "hold": "Your quality unit",
+     "link": "project-plan#stages"
+    },
+    {
+     "t": "Performance qualification (PQ), at least 12 months",
+     "hold": "Your quality unit",
+     "link": "project-plan#stages"
+    }
+   ],
+   "nav": "Stages",
+   "ground": "light",
+   "look": "hold-timeline"
+  },
+  {
+   "type": "faq",
+   "h": "Questions teams ask",
+   "nav": "FAQ",
+   "items": [
+    {
+     "q": "Can the builder also qualify the system?",
+     "a": "Yes, under your control. We draft the protocols and reports; [executing staff: own engineers or named partner] execute them. Your quality unit approves each protocol before it runs and each report after. EU good manufacturing practice (GMP) Annex 15, 2.6, asks your site to confirm a supplier's protocols before approval.",
+     "link": "svc-cq#roles",
+     "link_label": "See who writes, who reviews"
+    },
+    {
+     "q": "Can we buy one stage only?",
+     "a": "[services sold separately, yes or no]. Each service has its own first step and its own documents."
+    },
+    {
+     "q": "Do you work on other makers' systems?",
+     "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment.",
+     "link": "svc-service",
+     "link_label": "See service for other makes"
+    },
+    {
+     "q": "How long from URS to water released?",
+     "a": "Add up the stages on How a project runs, including drawing approval, shipping and your review at each hold. WHO TRS 1033 allows use after at least 2 weeks of sampling, with your quality unit's approval. Sampling continues for a year.",
+     "link": "project-plan#stages",
+     "link_label": "See how a project runs"
+    },
+    {
+     "q": "What if we change something after approving the drawings?",
+     "a": "You get one page first: the reason, the price and the effect on the schedule. Work on that item waits for your written approval [confirm].",
+     "link": "project-plan#changes",
+     "link_label": "How changes are handled"
+    },
+    {
+     "q": "What stays with our team after handover?",
+     "a": "Your operators read the system each day and keep its log. Visits, calibrations and parts follow your service plan.",
+     "link": "svc-service#faq",
+     "link_label": "What your team does"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where buyers go next",
+   "items": [
+    "project-plan",
+    "cmp-documentation",
+    "compliance",
+    "projects"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us where your project stands",
+  "body": "Cost: [fit check cost or free]. Production stopped or water out of specification? Call [service phone number], [service phone hours].",
+  "button": "Talk to an engineer",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer",
+  "include": [
+   "Your URS, if any",
+   "Peak demand in L/h",
+   "Feed water analysis, if any",
+   "Existing system: builder, age, drawings"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "The stage to start at",
+   "Its documents and duration",
+   "Questions on missing data"
+  ]
+ },
+ "todo": [
+  "Proposal response time ([proposal response time, working days]; one figure on every page; FD-01). Until it is set, launch copy reads \"An engineer replies in writing\" (DR-006 rule 7)",
+  "Turnarounds in the router, one per row, same placeholders as each row's page and contact-proposal's requests table: [URS review turnaround, working days] (svc-design), [document review turnaround, working days] (svc-fabrication, svc-cq), [specimen package response time, working days] (svc-fat-sat, cmp-documentation), [quote response time, working days] (svc-service), [assessment response time, working days] (svc-upgrades), [audit request response time, working days] (cmp-quality), [compliance matrix response time, working days] (compliance; row 8, DR-019) (FD-01). At launch an unset time leaves its row (DR-006 rule 7)",
+  "Cost of talking to an engineer ([fit check cost or free]; contact-proposal's requests table names it; FD-02), shown in the closing beside its button (DR-005 rule 4, DR-006 rule 5)",
+  "Router row 3 shows svc-fat-sat's draft offer, a specimen FAT protocol (FD-47). At launch, if no specimen exists, the row takes svc-fat-sat's fallback: \"FAT and SAT: request a FAT test list\", send \"URS or functional specification\", back \"A draft FAT test list, reusable tests marked, within [document review turnaround, working days]\" (DR-006 rule 6)",
+  "Service phone number and hours ([service phone number], [service phone hours]; same names as the nav, svc-service and contact-service; FD-27). The closing's line keeps the urgent-route wording \"Production stopped or water out of specification\" (contact-service, contact-locations)",
+  "Stage durations for a modular PW package, as figures Aquemi commits to (FD-08, DR-005 rule 5): [design to DQ, weeks], [approved design to FAT, weeks], [FAT duration, days] (same name as svc-fat-sat, DR-010), [installation and SAT, days], [IQ/OQ on site, days] (same as svc-cq). Say for each whether it includes the client's review time at the hold point. Pass 11: FAQ 4 no longer repeats the five durations (one home, DR-009: the full stages live on project-plan#stages); it keeps the WHO sentence and \"with your quality unit's approval\", \"Sampling continues for a year\", and links project-plan#stages",
+  "[installation scope]: who installs and makes field joints (Aquemi, the client's contractor or a partner); same name as systems' site requirements (FD-26; issue #2 §4). Pass 11: the durations summary no longer prints it (stage deliverables moved to project-plan#stages, which names it)",
+  "[executing staff: own engineers or named partner]: who executes IQ/OQ; same name as svc-cq (FD-46, DR-004 rule 4)",
+  "[services sold separately, yes or no]: whether each service is sold on its own as well as end to end (FD-25). If yes, the router's \"Design approved\" row may say again \"by us or another firm\"",
+  "[makes and equipment types serviced]: same name on home, svc-service, svc-upgrades, about, contact-service and contact-proposal; the full answers live on svc-service and svc-upgrades (FD-30, DR-009, DR-011). Qualification of systems Aquemi did not build stays off this page until FD-30 answers it",
+  "If Aquemi confirms one named project engineer from URS review to handover (FD-34) and which of the six services are in-house or partnered (FD-25), the headline may state it; \"One team\" was cut because neither is confirmed (DR-004 rule 5)",
+  "Superseded in pass 11 (row now links buying#compare; see the pass 11 integration line): router row 7 (\"Quality: send your questionnaire\", pass 10 review) sent the questionnaire to cmp-quality#audit with the option \"Your questionnaire, completed\"; it waits on cmp-quality's audit readiness (FD-48, DR-006 rule 6); at launch, if that request cannot be answered, the row's next rung is \"Talk to an engineer\"",
+  "Router row 8 (DR-019 rule 1 as amended in pass 11, SITE-PLAN): the consultant and contractor door (situation \"Consultant or contractor\", label \"Specifying for a client\") now starts at urs-guide#specification (\"Writing your URS: notes for specifiers\": Part 1 to 3 of a specification section, what a consultant receives for a basis of design; L-07-15, L-10-12, L-14-22, L-11-2, L-07-16). What to send and what comes back stay: a compliance matrix within [compliance matrix response time, working days] (FD-01), requested from urs-guide's closing or svc-design's. svc-design's FAQ \"Consultant or contractor: what do we receive, and when?\" is now one line and a link to the same anchor. Design-only work and reviews of another firm's design stay [design-only engagements offered, and pricing] (FD-25, FD-02). Launch rule: if urs-guide does not ship, the row returns to svc-design#faq (\"Process design: what specifiers receive\")",
+  "FAQ 4 (pass 11): the durations sum moved to project-plan#stages (SITE-PLAN: durations block keeps a summary and links project-plan; structure-and-sitemap 4.6). It keeps pass C's meaning (\"with your quality unit's approval\", \"Sampling continues for a year\"); \"Add up the stages on How a project runs, including drawing approval, shipping and your review at each hold\" (review finding 2): this page's summary has no drawing-approval or shipping stage, project-plan#stages has both",
+  "Durations (pass 11, SITE-PLAN; structure-and-sitemap 4.6): the block stays as a summary under anchor durations (kept alive as a link target, rule 6); every stage name links project-plan#stages (the hold-timeline item link). Launch rule: if project-plan waits on FD-08, the links render nothing and the block stands alone as before. Pass 11 fix (review finding 1, DR-009 one home): the stage deliverables (the items' d field) left this block; deliverables live on project-plan#stages; the block keeps stage, duration, hold and link; heading \"How long each stage takes, and who signs\"",
+  "[lead time start event] (durations intro; new name, offer section 14 S2; L-06-5, L-15-18, L-03-2; FD-08): what starts the clock. Proposed wording once FD-08 confirms the trigger: \"Weeks count from your order or approved drawings, whichever is later. Each hold adds your review time.\" The same trigger as cmp-quality and buying's lead time row ([lead time from drawing approval, weeks]); the orchestrator reconciles the name with buying",
+  "FAQ 5 \"What if we change something after approving the drawings?\" (pass 11, offer section 14 S4; L-G3-6, L-G3-7, L-15-18, L-12-5; FD-09): one line and a link; the full change rule (who may ask, reply time [change request turnaround, working days] (the name project-plan#changes uses, DR-011), the six fields) lives on project-plan#changes. The [confirm] marks the practice (written approval before work on a changed item); unconfirmed at launch, the second sentence goes",
+  "FAQ 6 \"What stays with our team after handover?\" (pass 11, proof-and-seriousness 5.2 P14, the customer's share after handover; phrasebook change 13's duties, L-12-21, L-14-19, L-01-13): one line and a link to svc-service, whose FAQ holds [operator time, minutes a day] (home there, DR-009). Confirm the daily reading and log are the operator's tasks in the operating manual (FD-27)",
+  "Offer section 14 S1 (\"Who does what, from order to water released\") and the named project lead (L-08-17, L-G1-8; proof 5.2) are not added here: their home is project-plan#who and project-plan's hero ([named project lead role], FD-34), linked from the related block and every durations stage. S5 (training) lives on svc-cq's FAQ (phrasebook change 14), not on this hub",
+  "Offer section 14 S3 (\"Can we buy one stage only?\"): kept as the bare placeholder until FD-25 answers; if yes, the answer becomes \"Yes. Each service is its own line in our proposal, so you can order the package now and add qualification support, a service plan or spares later.\" (L-13-13, L-09-18, L-07-9, L-13-8)",
+  "Related (pass 11): project-plan replaces systems (systems stays in the top bar; its site needs are linked from svc-design and svc-fabrication)",
+  "Hero lead (pass 11 review finding 6): \"support its qualification\" replaces \"qualify\", so the hub does not read as a validated-skid claim; your quality unit approves and [executing staff: own engineers or named partner] execute (FAQ 1, svc-cq#roles; DR-004)",
+  "Pass 11 integration: router row 'Comparing suppliers' now opens buying#compare ('Compare quotes and terms'; new-buying review finding 18); the questionnaire stays in the row's return column and on cmp-quality#audit. Launch rule (DR-026 rule 2): if buying is not published, the cell returns to 'Quality: send your questionnaire' → cmp-quality#audit with intent 'Your questionnaire, completed'",
+  "Pass 11 integration (services-b finding 8): FAQ 6 'What stays with our team after handover?' links svc-service#faq, the home of operator duties (DR-009 rule 1), labelled 'What your team does'"
+ ]
+}

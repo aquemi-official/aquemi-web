@@ -1,0 +1,404 @@
+{
+ "id": "sys-pw",
+ "section": "Systems",
+ "nav_label": "Purified Water (PW) generation",
+ "title": "Purified Water (PW) generation: RO and DI/EDI skid | Aquemi",
+ "meta": "RO and DI or EDI on a polypropylene skid, designed to meet USP <645> and <643> and sized for your coldest feed. No WFI, pure steam or stainless steel.",
+ "path": "/systems/purified-water/",
+ "eyebrow": "PURIFIED WATER · USP <645>, <643> · PH. EUR. 0008",
+ "headline": "Purified Water, sized for your coldest day",
+ "lead": "A polypropylene skid makes Purified Water (PW) by reverse osmosis and deionization, designed to meet USP <645> and <643>. No Water for Injection, pure steam or stainless steel systems.",
+ "primary_cta": "Request a sizing proposal",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have water data, no system yet|Sizing proposal|Purified Water (PW) generation",
+ "secondary_cta": {
+  "label": "See the documentation package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "[minimum–maximum capacity, L/h]",
+   "l": "Per skid · at your coldest feed"
+  },
+  {
+   "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
+   "l": "Skid outlet · measured at FAT"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "spec",
+   "h": "Purified Water limits",
+   "caption": "USP · Ph. Eur.",
+   "note": "Ph. Eur. 0008 as revised in 12.3, in force 1 July 2026. CFU: colony-forming units.",
+   "cols": [
+    "Parameter",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity (USP)",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
+     "m": "USP <645>",
+     "hl": true
+    },
+    {
+     "p": "Conductivity (Ph. Eur.)",
+     "v": "≤ 5.1 µS/cm @ 25 °C",
+     "m": "Ph. Eur. 0008",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon (TOC)",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>; Ph. Eur. 2.2.44",
+     "hl": false
+    },
+    {
+     "p": "Microbial action level",
+     "v": "≤ 100 CFU/mL",
+     "level": "action",
+     "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+     "hl": false
+    },
+    {
+     "p": "Skid outlet, guaranteed",
+     "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
+     "m": "Measured at the factory and site acceptance tests (FAT, SAT)",
+     "hl": false
+    }
+   ],
+   "nav": "Limits",
+   "intro": "Limits apply at each point of use; the skid outlet has its own guarantee.",
+   "as": "gauges",
+   "look": "limit-stack"
+  },
+  {
+   "type": "diagram",
+   "h": "How water moves through the skid",
+   "stages": [
+    {
+     "t": "Softened, dechlorinated feed",
+     "spot": "pretreatment",
+     "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last.",
+     "label": "Feed"
+    },
+    {
+     "t": "Heat exchanger",
+     "spot": "heat-exchanger",
+     "d": "Where fitted, warms winter feed to the membrane design temperature.",
+     "label": "Heat",
+     "optional": true
+    },
+    {
+     "t": "RO pass 1",
+     "spot": "ro-skid",
+     "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria.",
+     "label": "RO 1"
+    },
+    {
+     "t": "CO₂ removal",
+     "icon": "valve",
+     "d": "Strips or converts carbon dioxide, which passes RO as a gas.",
+     "label": "CO₂",
+     "fx": "gas"
+    },
+    {
+     "t": "RO pass 2",
+     "spot": "ro-skid",
+     "d": "Where needed, adds margin on conductivity, TOC and silica.",
+     "label": "RO 2",
+     "optional": "Where needed"
+    },
+    {
+     "t": "DI or EDI",
+     "spot": "edi-stack",
+     "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration].",
+     "label": "DI or EDI"
+    },
+    {
+     "t": "To PW storage",
+     "spot": "storage-tank",
+     "d": "Off-spec water diverts until it recovers.",
+     "label": "Out"
+    }
+   ],
+   "nav": "How it works",
+   "look": "winding-route"
+  },
+  {
+   "type": "spec",
+   "h": "Skid design parameters",
+   "caption": "Design basis",
+   "cols": [
+    "Parameter",
+    "Design value",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "Capacity",
+     "v": "[minimum–maximum capacity, L/h] per skid",
+     "m": "Rated at your coldest feed, not 25 °C; parallel trains above",
+     "hl": true,
+     "at": [
+      14.7,
+      51.5
+     ]
+    },
+    {
+     "p": "Membrane design temperature",
+     "v": "[feed heat exchanger design temperature, °C]",
+     "m": "Otherwise sized at your site minimum",
+     "hl": false,
+     "at": [
+      57.0,
+      12.0
+     ]
+    },
+    {
+     "p": "Sanitization",
+     "v": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]",
+     "m": "Removal of any sanitant proven (WHO TRS 1033, 4.3.6)",
+     "hl": false,
+     "at": [
+      74.8,
+      29.7
+     ]
+    },
+    {
+     "p": "Materials and dead legs",
+     "v": "Unpigmented polypropylene (PP), [PP grade]; dead legs ≤ [dead leg design limit, L/D], sloped to drain",
+     "m": "[PP piping standard]; [PP material certificates]",
+     "hl": false,
+     "at": [
+      23.3,
+      69.2
+     ]
+    },
+    {
+     "p": "Joints, product contact",
+     "v": "[PP joining method]",
+     "m": "[joint inspection method and extent]",
+     "hl": false,
+     "at": [
+      62.8,
+      68.6
+     ]
+    },
+    {
+     "p": "Budget range",
+     "v": "[budget range, CAD] at [reference capacity, L/h]",
+     "m": "Single-pass RO and EDI, city feed",
+     "hl": false,
+     "link": "systems#budget"
+    },
+    {
+     "p": "High-pressure RO section",
+     "v": "[RO high-pressure section material and pressure class]",
+     "m": "Rated for the highest feed pressure at the coldest feed",
+     "hl": false
+    },
+    {
+     "p": "System recovery",
+     "v": "[design recovery, %]",
+     "m": "Concentrate recycled where feed chemistry allows",
+     "hl": false,
+     "link": "svc-service#running-cost"
+    },
+    {
+     "p": "Instruments and controls",
+     "v": "Conductivity and temperature after each stage; [online TOC at the outlet, standard or option]",
+     "m": "Off-spec water diverts at a setpoint below your alert level",
+     "hl": false,
+     "link": "sys-monitoring"
+    },
+    {
+     "p": "Utilities and footprint",
+     "v": "[supply voltage options]; [feed pressure and drain flow, per skid]; [typical footprint, m × m]",
+     "m": "Electrical: [panel certification mark held, or field evaluation used]",
+     "hl": false,
+     "link": "systems#site"
+    }
+   ],
+   "nav": "Skid design",
+   "anchor": "design",
+   "fold": 6,
+   "as": "callouts",
+   "ground": "light",
+   "fold_noun": "parameters",
+   "look": "param-tiles"
+  },
+  {
+   "type": "docs",
+   "h": "Documents with the skid",
+   "items": [
+    {
+     "t": "FAT and SAT protocols and reports",
+     "d": "Deviations closed; SAT run on your feed water",
+     "key": true,
+     "at": [
+      0.12,
+      0.45
+     ]
+    },
+    {
+     "t": "Material certificates",
+     "d": "[PP material certificates]",
+     "key": true,
+     "at": [
+      0.66,
+      0.14
+     ]
+    },
+    {
+     "t": "Joint records",
+     "d": "[PP joining method]; [PP joint records kept]",
+     "key": true,
+     "at": [
+      0.4,
+      0.84
+     ]
+    },
+    {
+     "t": "P&IDs and general arrangement",
+     "d": "Piping and instrumentation diagrams, as built",
+     "key": true,
+     "at": [
+      0.78,
+      0.47
+     ]
+    }
+   ],
+   "link": "cmp-documentation#index",
+   "link_label": "Full index",
+   "nav": "Documents",
+   "look": "doc-hotspots"
+  },
+  {
+   "type": "options",
+   "as": "modules",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Membrane degasser",
+     "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high.",
+     "spot": "ro-membrane"
+    },
+    {
+     "t": "Duplex trains",
+     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
+     "spot": "ro-skid"
+    },
+    {
+     "t": "Recirculation at no demand",
+     "d": "Circulates when storage is full, so water never stands in the membranes.",
+     "spot": "loop",
+     "shape": "round"
+    },
+    {
+     "t": "Ultrafiltration or 254 nm UV",
+     "d": "After DI or EDI, where your microbial target needs more margin. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
+     "spot": "uv-ozone",
+     "shape": "tag"
+    },
+    {
+     "t": "Recovery enhancement",
+     "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
+     "spot": "pump",
+     "shape": "tag"
+    }
+   ],
+   "nav": "Options",
+   "fold": 3,
+   "spot": "ro-skid",
+   "look": "option-tags"
+  },
+  {
+   "type": "faq",
+   "h": "Questions engineers ask",
+   "items": [
+    {
+     "q": "How is the PP skid sanitized?",
+     "a": "Skid sanitization: [sanitization method for the PP skid]; heat-sanitizable RO and EDI: [heat-sanitizable RO and EDI, yes or no]. After any chemical sanitization, removal of the sanitant is proven before use (WHO TRS 1033). Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+     "link": "sys-storage#sanitization",
+     "link_label": "Compare sanitization methods"
+    },
+    {
+     "q": "Single-pass or double-pass RO?",
+     "a": "Single-pass reverse osmosis (RO) with electrodeionization (EDI) suits feed with moderate dissolved solids. Double pass adds margin on conductivity, total organic carbon and silica for high-solids feed."
+    },
+    {
+     "q": "How do you handle cold winter feed?",
+     "a": "Rated at 25 °C, reverse osmosis (RO) can lose a third or more of its output at 5 °C. We size at your coldest feed, or add a heat exchanger."
+    },
+    {
+     "q": "Our supply is chloraminated. What changes?",
+     "a": "Pretreatment removes chloramine before the membranes. We design for the ammonia it releases together with CO₂ control.",
+     "link": "sys-pretreatment#chloramine",
+     "link_label": "How pretreatment handles chloramine"
+    },
+    {
+     "q": "How do we know it will pass IQ/OQ?",
+     "a": "The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT), then installation and operational qualification (IQ/OQ), prove it on your site and feed water. Your quality unit approves the FAT protocol and can witness it once [shop and test bay ready for visits].",
+     "link": "svc-fat-sat",
+     "link_label": "See what FAT proves"
+    }
+   ],
+   "nav": "FAQ"
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "sys-pretreatment",
+    "sys-storage",
+    "sys-monitoring",
+    "svc-service"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your feed water. Get a sized skid.",
+  "body": "An engineer replies in writing. Cost: [proposal cost or free].",
+  "button": "Request a sizing proposal",
+  "link": "contact-proposal",
+  "intent": "I have water data, no system yet|Sizing proposal|Purified Water (PW) generation",
+  "include": [
+   "Feed water analysis, ideally two seasons",
+   "Feed temperature range, °C",
+   "Peak and average demand, L/h",
+   "Pharmacopoeias that apply"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Skid sizing for your coldest feed",
+   "Budget range and its class",
+   "Questions on missing data"
+  ]
+ },
+ "todo": [
+  "Capacity range per skid, L/h ([minimum–maximum capacity, L/h], hero and design table; one range on every page and in proposals; FD-20). Unfilled at launch, the capacity fact goes (DR-010 rule 5)",
+  "[duplex train shares offered]: FD-20/FD-21, for example 50 % or 100 % each; the example stays out of the brackets.",
+  "Guaranteed conductivity at the skid outlet, µS/cm at 25 °C, and how FAT and SAT measure it ([outlet conductivity guarantee, µS/cm @ 25 °C], hero and limits table; same name on home and svc-design; FD-21)",
+  "Membrane design temperature held by the feed heat exchanger, °C ([feed heat exchanger design temperature, °C], same name as sys-pretreatment), and whether that heat exchanger is standard on the skid, an option, or part of pretreatment (sys-pretreatment lists it as an option; the diagram says \"Where fitted\") (FD-21)",
+  "Design system recovery, % ([design recovery, %]; same name as svc-service's running-cost table, which the recovery row links; FD-21)",
+  "Sanitization method for the PP skid ([sanitization method for the PP skid]) and whether the RO elements and EDI modules are rated for hot water ([heat-sanitizable RO and EDI, yes or no]). No temperature through RO and EDI on any page until then (FD-14, DR-013 rule 5). Unfilled at launch, the FAQ's first sentence goes and the answer opens with the sanitant-removal sentence",
+  "Whether Aquemi quotes PVDF loops for routine 80 °C, hot-held or steamed loops, or refers the buyer ([whether we quote PVDF], FAQ 1; same name as sys-storage; FD-15, DR-013 rule 2)",
+  "Unpigmented PP grade, for example PP-R ([PP grade], the canonical name in ops/placeholder-names.md), PP piping standard ([PP piping standard]) and dead leg design limit, L/D ([dead leg design limit, L/D], same as compliance, cmp-documentation and news) (FD-17, FD-19)",
+  "PP joining method ([PP joining method]; IR or bead-and-crevice-free fusion with no socket fusion is the library's recommendation, not a decision), joint inspection method and extent ([joint inspection method and extent]) and the joint records kept, for example the joint map and joining log ([PP joint records kept], same as about, svc-cq and compliance) (FD-18)",
+  "Certificates supplied with the skid's PP product-contact parts ([PP material certificates], same name as compliance and cmp-quality; FD-17)",
+  "Whether both DI and EDI are offered, and for DI whether resin is service exchange or regenerated on site ([DI resin: service exchange or on-site regeneration]; FD-21)",
+  "Online TOC at the skid outlet: standard or option ([online TOC at the outlet, standard or option]; FD-21)",
+  "RO high-pressure section material and pressure class (PN), from its maker's rating; the section may not be PP ([RO high-pressure section material and pressure class]; FD-22). If it needs a CRN, use compliance's name [pressure-rated items in the PW package] (FD-24)",
+  "Per-skid utilities: supply voltage options ([supply voltage options], systems' name; give them as V / phase / Hz), feed pressure and drain flow ([feed pressure and drain flow, per skid]), room temperature range, service clearances, typical footprint by capacity ([typical footprint, m × m]) and service-access sides (FD-26). Package-level site requirements stay on systems#site, which the row links (DR-009 rule 5)",
+  "Electrical approval route for the assembled skid, not a panel-only label: a certified panel shop's mark or a per-unit field evaluation ([panel certification mark held, or field evaluation used], the name systems, sys-monitoring, compliance and cmp-quality use; state only what is held; FD-24)",
+  "PW generation budget band, as on systems' budget table ([budget range, CAD] at [reference capacity, L/h]; one figure on both pages; FD-03, DR-005 rule 3). Once filled it may also be a hero fact (DR-010); unfilled at launch, the row goes",
+  "Whether a sizing proposal is free or charged ([proposal cost or free], the name contact-proposal's requests table uses; FD-02)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page; FD-01)",
+  "Date the shop and test bay are ready for witnessed FAT, in person or remote ([shop and test bay ready for visits], FAQ; same name as home, svc-fat-sat and contact-locations; FD-44). At launch the FAQ's witness clause shows only if this is filled with a date that has passed; otherwise it is removed (DR-004 class 2, DR-006 rule 6)",
+  "Datasheet PDF and typical P&ID; once the datasheet exists it becomes the hero's secondary link (DR-006)",
+  "A real PW project with measured outlet conductivity, TOC and capacity before adding a case study block (FD-42, DR-016)"
+ ]
+}

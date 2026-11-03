@@ -1,0 +1,475 @@
+{
+ "id": "ind-pharma",
+ "section": "Industries",
+ "nav_label": "Pharmaceutical",
+ "title": "Pharmaceutical and natural health product water | Aquemi",
+ "meta": "Water grade by dosage form for Health Canada, FDA and EU filings, and whether a natural health product line needs Purified Water. One polypropylene package; no WFI.",
+ "path": "/industries/pharmaceutical/",
+ "eyebrow": "PHARMACEUTICAL · NATURAL HEALTH PRODUCTS · USP · GUI-0001",
+ "headline": "Water matched to your dosage forms",
+ "lead": "Purified Water (PW) goes into your liquids, creams and coatings, and rinses your equipment. You answer for the product; its water needs records you can file. One polypropylene package, with polyvinyl chloride (PVC) pretreatment.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I know my product, not my water spec|Pharmaceutical drug products",
+ "secondary_cta": {
+  "label": "Answering a water observation",
+  "link": "svc-upgrades#observation"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Where to start",
+   "h": "Your situation and where to start",
+   "cols": [
+    "Your situation",
+    "What you need",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "A new line, or more points of use",
+     "More PW, tied into a qualified plant",
+     {
+      "t": "Upgrades and retrofits",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "An inspection due, an observation, or results out of trend",
+     "GUI-0001 C.02.009 water quality at risk; first, assess design, trends and records",
+     {
+      "t": "After a water observation",
+      "link": "svc-upgrades#observation"
+     }
+    ],
+    [
+     "First export to the US or EU",
+     "Both pharmacopoeias in one specification",
+     {
+      "t": "Purified Water limits",
+      "link": "compliance#limits"
+     }
+    ],
+    [
+     "A new plant, or your first PW system",
+     "Cost, scope and your team’s first year",
+     {
+      "t": "Your first PW system",
+      "link": "first-system"
+     }
+    ],
+    [
+     "Natural health products: does this line need PW?",
+     "Potable at minimum; PW where your specification calls for it",
+     {
+      "t": "Natural health products",
+      "link": "ind-pharma#nhp"
+     }
+    ]
+   ],
+   "look": "checker-router",
+   "draws": [
+    "outlet",
+    "",
+    "",
+    "ro",
+    ""
+   ]
+  },
+  {
+   "type": "table",
+   "as": "grades",
+   "nav": "Grade by dosage form",
+   "anchor": "grades",
+   "h": "Minimum water grade by dosage form",
+   "intro": "Minimum grades from the European Medicines Agency (EMA) water guideline; your product file may go higher, never lower.",
+   "cols": [
+    "Product or process step",
+    "Minimum grade",
+    "Note"
+   ],
+   "rows": [
+    [
+     "Oral preparations and nebulizers",
+     "PW",
+     "Water for Injection (WFI) for sterile, non-pyrogenic nebulizers"
+    ],
+    [
+     "Granulation and tablet coating",
+     "PW",
+     "Even water that leaves during drying"
+    ],
+    [
+     "Non-sterile skin, nasal, ear, rectal and vaginal",
+     "PW",
+     "Potable only where justified, some veterinary products"
+    ],
+    [
+     "Final rinse of equipment and containers",
+     "Same grade as the product",
+     "PW for non-parenterals; WFI for sterile parenterals"
+    ],
+    [
+     "Active substance (API) synthesis before final isolation",
+     "Potable water",
+     "Potable to WFI, by end use"
+    ],
+    [
+     "Parenterals: injections and infusions",
+     "WFI",
+     "Also dialysis and irrigation solutions; we do not supply WFI"
+    ],
+    [
+     "Sterile eye, nose, ear and skin preparations",
+     "PW",
+     "WFI for intra-ocular products (GUI-0001)"
+    ],
+    [
+     "Formulation before sterile lyophilization",
+     "WFI",
+     "PW before non-sterile lyophilization"
+    ]
+   ],
+   "fold": 4,
+   "fold_noun": "steps",
+   "look": "grade-ladder",
+   "lanes": [
+    {
+     "id": "potable",
+     "t": "Potable water",
+     "short": "Potable"
+    },
+    {
+     "id": "pw",
+     "t": "Purified Water (PW)",
+     "short": "PW"
+    },
+    {
+     "id": "wfi",
+     "t": "Water for Injection (WFI)",
+     "note": "We do not supply WFI",
+     "off": true,
+     "short": "WFI"
+    }
+   ],
+   "taps": [
+    [
+     "pw",
+     "wfi?"
+    ],
+    [
+     "pw"
+    ],
+    [
+     "pw",
+     "potable?"
+    ],
+    [
+     "pw?",
+     "wfi?"
+    ],
+    [
+     "potable",
+     "pw?",
+     "wfi?"
+    ],
+    [
+     "wfi"
+    ],
+    [
+     "pw",
+     "wfi?"
+    ],
+    [
+     "wfi",
+     "pw?"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Inspectors",
+   "h": "What each inspector and auditor reads",
+   "cols": [
+    "Who inspects",
+    "What they read",
+    "Where we answer it"
+   ],
+   "rows": [
+    [
+     "Health Canada, all drug sites",
+     "GUI-0001 C.02.009: PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "FDA",
+     "21 CFR 211.65 (non-reactive surfaces); water guide: dead legs, a year's data",
+     {
+      "t": "Good manufacturing practice",
+      "link": "compliance#gmp"
+     }
+    ],
+    [
+     "Health Canada, natural health products",
+     "GUI-0158 s. 45: potable minimum, test records, qualified treatment",
+     {
+      "t": "Natural health products",
+      "link": "ind-pharma#nhp"
+     }
+    ],
+    [
+     "EU authorities and importers",
+     "Ph. Eur. 0008, plus the EMA guideline and Annex 15 qualification",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     }
+    ],
+    [
+     "Sterile sites, or non-sterile sites that adopt it in writing",
+     "GUI-0119 and Annex 1 (EU good manufacturing practice, GMP): PW quality, dead legs, sanitization, trend review",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "Your quality unit, approving a new supplier",
+     "Your user requirement specification (URS) answered row by row, each with its document; audit access; data integrity",
+     {
+      "t": "Checks you can run today",
+      "link": "projects#verify"
+     }
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "inspectors",
+   "look": "binder-spines",
+   "spines": [
+    {
+     "code": "GUI-0001 C.02.009",
+     "read": "PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route"
+    },
+    {
+     "code": "21 CFR 211.65",
+     "read": "Non-reactive surfaces; water guide: dead legs, a year's data"
+    },
+    {
+     "code": "GUI-0158 s. 45",
+     "read": "Potable minimum, test records, qualified treatment"
+    },
+    {
+     "code": "Ph. Eur. 0008",
+     "read": "Plus the EMA guideline and Annex 15 qualification"
+    },
+    {
+     "code": "GUI-0119 and Annex 1",
+     "read": "EU good manufacturing practice (GMP): PW quality, dead legs, sanitization, trend review"
+    },
+    {
+     "code": "Your URS",
+     "read": "Answered row by row, each with its document; audit access; data integrity"
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "nav": "Decisions",
+   "h": "Decide before your requirements (URS) are approved",
+   "items": [
+    {
+     "t": "Product mix in five years",
+     "d": "Generation and headers sized for planned lines, expansion written into the URS.",
+     "part": "headers",
+     "side": "r",
+     "row": 2
+    },
+    {
+     "t": "Where polypropylene stops",
+     "d": "Hot-held loops, steam or routine 80 °C at loop pressure need polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]. A stainless-only standard needs stainless.",
+     "part": "sheet",
+     "side": "r",
+     "row": 3,
+     "link": "urs-guide#allow-pp",
+     "link_label": "Writing the PP rows"
+    },
+    {
+     "t": "Loop sanitization route",
+     "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "link": "sys-storage#sanitization",
+     "part": "loop",
+     "side": "r",
+     "row": 1
+    },
+    {
+     "t": "Canadian feed water",
+     "d": "Near freezing in winter, over 20 °C in summer; membranes sized for the coldest month.",
+     "link": "sys-pretreatment",
+     "part": "membranes",
+     "side": "l",
+     "row": 1
+    },
+    {
+     "t": "Shutdown windows",
+     "d": "Duplex trains and isolable sections let you service without stopping every line.",
+     "part": "trains",
+     "side": "l",
+     "row": 2
+    }
+   ],
+   "fold": 3,
+   "fold_noun": "decisions",
+   "as": "decisions",
+   "look": "decision-plant",
+   "gate": "URS",
+   "intro": "URS templates often make stainless steel and heat sanitization must-have rows. Settle each decision below before your URS is approved."
+  },
+  {
+   "type": "table",
+   "as": "grades",
+   "nav": "Natural health products",
+   "anchor": "nhp",
+   "h": "Natural health products: does this line need Purified Water?",
+   "intro": "Potable water is the minimum; Purified Water only where your specification or a monograph asks. GUI-0158 asks for test records and qualified, monitored treatment.",
+   "cols": [
+    "Product",
+    "Minimum water",
+    "Note"
+   ],
+   "rows": [
+    [
+     "Tablets, capsules and powders",
+     "Potable",
+     "PW only if your specification requires it"
+    ],
+    [
+     "Liquids, creams and lotions",
+     "Potable, or PW where your specification requires it",
+     "The highest microbial risk: limits and shelf life decide"
+    ],
+    [
+     "Homeopathic dilutions",
+     "PW, or another liquid the monograph names",
+     ""
+    ],
+    [
+     "Products sold abroad as drugs",
+     "PW, under the importing market’s drug rules",
+     {
+      "t": "If this is your first system",
+      "link": "first-system"
+     }
+    ]
+   ],
+   "look": "grade-switch",
+   "positions": [
+    {
+     "id": "potable",
+     "t": "Potable"
+    },
+    {
+     "id": "pw",
+     "t": "PW"
+    }
+   ],
+   "switch": [
+    [
+     "potable",
+     "pw?"
+    ],
+    [
+     "potable",
+     "pw?"
+    ],
+    [
+     "pw"
+    ],
+    [
+     "pw"
+    ]
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "How is water qualified for a natural health product line?",
+     "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this: [NHP qualification scope]. Where your quality assurance person requires it, we also run installation, operational and performance qualification (IQ, OQ, PQ).",
+     "link": "contact-proposal",
+     "intent": "I know my product, not my water spec|Natural health products",
+     "link_label": "Request a water scope review"
+    },
+    {
+     "q": "Do you supply WFI, pure steam or stainless steel?",
+     "a": "No. Our scope is one Purified Water (PW) package in polypropylene. Water for Injection (WFI), pure steam, stills and stainless steel systems sit outside it.",
+     "link": "industries#faq",
+     "link_label": "Why we stop at PW"
+    },
+    {
+     "q": "Can one system supply Canada, the United States and Europe?",
+     "a": "Yes. Where USP and Ph. Eur. differ, we design to the stricter value. The functional specification names both, and the factory acceptance test (FAT) checks both where methods allow.",
+     "link": "compliance#limits",
+     "link_label": "See the Purified Water limits"
+    },
+    {
+     "q": "Does a new production line mean full requalification?",
+     "a": "Not normally. GUI-0001 asks that changes are validated before use; a risk assessment sets the scope. Usually: installation and operational qualification (IQ, OQ) of the new section, and extra sampling at its points of use."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "sys-pw",
+    "compliance",
+    "cmp-quality",
+    "projects",
+    "urs-guide"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your dosage forms",
+  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I know my product, not my water spec|Pharmaceutical drug products",
+  "include": [
+   "Dosage forms, now and in five years",
+   "Markets and pharmacopoeias",
+   "Where your site is"
+  ],
+  "turnaround": "[scope review turnaround, working days]",
+  "returns": [
+   "Grade per process step",
+   "The PW package you need",
+   "Your qualification scope"
+  ]
+ },
+ "todo": [
+  "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
+  "Hero secondary: \"Answering a water observation\" (svc-upgrades#observation; renamed in the pass 10 verification; router row 2 keeps \"After a water observation\"; DR-020, SITE-PLAN C1). \"Get a budget range\" to systems#budget once the budget bands are filled (FD-03; DR-006 allows one secondary: choose then). The sample turnover package it once offered does not exist yet (FD-47)",
+  "PW as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it until the owner confirms; the grade table says only that WFI is not supplied",
+  "Natural health products: confirm the segment at launch (FD-38) and whether a scope without a loop is offered for dry-dose lines (FD-20); the section stays a section, not a page (DR-017). The NHP FAQ carries [NHP qualification scope] (FD-46): the GUI-0158 evidence set Aquemi hands over (water criteria, test record templates, calibration and maintenance schedules) and whether a lighter path than IQ, OQ and PQ is offered; at launch an unset scope drops that sentence. Its link is the one door that ticks \"Natural health products\" on the form (SITE-PLAN I11)",
+  "References per segment, or \"none yet\" (FD-41); a pharmaceutical or natural health product case study with a measured outcome only once a client approves it in writing (FD-42, DR-016). No reference offer or case block here before",
+  "Sanitization: this page states the PP rating (DR-013 rule 1) and, in decisions, where PP stops (DR-013 rule 2 conditions: a hot-held loop, steam, or routine 80 °C at loop pressure; a standard naming stainless rules PP out unless it allows exceptions; [whether we quote PVDF]; FD-15); the decision row links sys-storage#sanitization, where the method and the maximum temperature ([maximum loop sanitization temperature for PP, °C]) live (FD-14). No ozone (DR-013 rule 4)",
+  "Shutdown windows (decisions, folded): duplex trains are named as a choice for the URS, with no train shares; if the owner drops duplex trains as a configuration (FD-20, FD-21), the line keeps isolable sections only. Shares stay on sys-pw and ind-cdmo under one placeholder name (DR-011)",
+  "FAT practice (FAQ \"Can one system supply…\"): confirm which USP and Ph. Eur. attributes the factory acceptance test checks, and how (FD-45). The share of skids tested with water is svc-fat-sat's figure, not this page's (DR-010)",
+  "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, first-system, projects#verify, urs-guide#allow-pp and sys-storage#sanitization",
+  "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer; the first-system pointer now closes #nhp itself, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)",
+  "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters",
+  "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 3.4 and § 4.5): router row 4 now opens first-system (was industries#first-system). #nhp's pointer (SITE-PLAN \"If this is your first system\"; label \"Your first PW system\", buttons at most 5 words) now closes #nhp itself: the last row's note is {\"t\": \"If this is your first system\", \"link\": \"first-system\"} (grade-switch renders notes through tcell since the pass 11 integration, industries review finding 11), and the FAQ item 'This is our first water system. Where do we start?' is cut. The row's 'Under the importing market's drug rules' moved into its minimum cell, so no fact is lost. Lessons L-11-15, L-01-13, L-04-25",
+  "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1–2, journeys P1 and P4): decisions intro names the must-have rows default pharmaceutical URS templates carry (L-07-5, L-09-7, L-G2-1, L-G2-5); 'Where polypropylene stops' links urs-guide#allow-pp, the rows to write (pass 11 integration, urs-guide review finding 5). The inspector table gains the buyer's own quality unit: rows answered with documents (L-07-1, L-13-1, L-07-8, L-15-17), audit access (L-15-4), data integrity (L-G2-15)",
+  "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2; SITE-PLAN principle 8, DR-004 rule 1): the quality-unit row links projects#verify ('Checks you can run today'), the checks a new company offers in place of references. No case block until FD-42 (DR-016)",
+  "Final round, pass 11: lead opens with what the water does in the product and the reader's duty, then the package (L-BWT-2, L-BWT-3, L-BWT-25; BWT study § 9 rank 1). Confirm the uses named",
+  "Final round, pass 11: related links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the pharma page)"
+ ]
+}

@@ -1,0 +1,357 @@
+{
+ "id": "svc-upgrades",
+ "section": "Services",
+ "nav_label": "Upgrades and retrofits",
+ "title": "Purified Water system upgrades and retrofits | Aquemi",
+ "meta": "Upgrade a Purified Water system after a water observation, or for capacity or new controls: an on-site assessment, then modules from our polypropylene package, each with its downtime and requalification.",
+ "path": "/services/upgrades-retrofits/",
+ "eyebrow": "UPGRADES · EU GMP ANNEX 15 · GUI-0029",
+ "headline": "Upgrade the system you have",
+ "lead": "We assess your Purified Water (PW) system, then price options from one module to the whole polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: [makes and equipment types serviced].",
+ "tags": [],
+ "primary_cta": "Request a system assessment",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have a system already",
+ "secondary_cta": {
+  "label": "Production stopped? Request urgent service",
+  "link": "contact-service",
+  "intent": "Fault now|Severity 1: production stopped or water out of specification"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "look": "approval-merge",
+   "as": "roles",
+   "anchor": "observation",
+   "nav": "Observation",
+   "h": "After a water observation or out-of-trend results",
+   "intro": "Five FDA warning letters (2024 to 2026) asked for these between them, with 15 working days to reply. Health Canada’s GUI-0023 rates an unqualified PW system a major (Risk 2) observation.",
+   "cols": [
+    "Asked for",
+    "Prepared by",
+    "Approved by"
+   ],
+   "rows": [
+    [
+     {
+      "t": "Design assessment of the system",
+      "link": "contact-proposal",
+      "intent": "I have a system already"
+     },
+     "Aquemi: system assessment",
+     "You"
+    ],
+    [
+     "Remediation plan with dates",
+     "Aquemi: options, including other suppliers'",
+     "You"
+    ],
+    [
+     "Validation after repair, new systems included",
+     "Aquemi: installation and operational qualification (IQ, OQ)",
+     "You"
+    ],
+    [
+     "Monitoring with alert and action levels",
+     "Aquemi: levels from your data",
+     "You"
+    ],
+    [
+     "Lot risk assessment and the written reply",
+     "You",
+     "You"
+    ],
+    [
+     "A qualified consultant, where asked",
+     "Your consultant",
+     "You"
+    ]
+   ],
+   "caption_noun": "requests"
+  },
+  {
+   "type": "table",
+   "look": "retrofit-plant",
+   "as": "router",
+   "nav": "Upgrades",
+   "h": "Common upgrades and their requalification",
+   "cols": [
+    "Upgrade",
+    "What changes",
+    "Requalification",
+    "Site downtime",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "Deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
+     "New skid; the loop usually stays",
+     "IQ/OQ reusing factory test results; intensive, then reduced sampling",
+     "[days]; DI runs until release",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ],
+    [
+     "New pretreatment",
+     "Polyvinyl chloride (PVC) module before the RO",
+     "IQ/OQ; RO inlet chlorine and hardness; downstream sampling",
+     "[days]; existing pretreatment runs until cutover",
+     {
+      "t": "Pretreatment",
+      "link": "sys-pretreatment"
+     }
+    ],
+    [
+     "Distribution loop replacement",
+     "PP loop and pump module; points of use reconnected",
+     "IQ with dead leg register; OQ of flow and [PP loop sanitization method]; every outlet sampled",
+     "[days], planned shutdown",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "Online total organic carbon (TOC) and conductivity",
+     "Analyzer, sample line, historian link",
+     "OQ with USP <643> suitability; lab results in parallel until release",
+     "[days]",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "Controls replacement",
+     "New controller (PLC), operator panel (HMI), supervisory control (SCADA), electronic records",
+     "GAMP 5 validation; factory software test; short sampling",
+     "[days], tank full",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "Capacity increase",
+     "Second RO train, DI/EDI module or pump; PP sub-loops only off ambient, chemically sanitized loops",
+     "IQ/OQ of new equipment; loop flow at the new peak",
+     "[days]; built while running",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ]
+   ],
+   "parts": [
+    "gen",
+    "pre",
+    "loop",
+    "toc",
+    "panel",
+    "gen loop"
+   ],
+   "anchor": "upgrades"
+  },
+  {
+   "type": "table",
+   "look": "strike-gaps",
+   "as": "failures",
+   "nav": "Controls",
+   "h": "Data integrity gaps in older controls",
+   "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out: spares are limited.",
+   "cols": [
+    "Gap",
+    "Requirement it misses",
+    "What the upgrade does"
+   ],
+   "rows": [
+    [
+     "Shared operator login, or none",
+     "21 CFR 11.10(d); Annex 11, 12",
+     "Individual accounts, roles, automatic logoff"
+    ],
+    [
+     "No audit trail on set points or alarms",
+     "21 CFR 11.10(e); Annex 11, 9",
+     "Audit trail of who, what, when and why"
+    ],
+    [
+     "A chart recorder as the release record",
+     "21 CFR 211.68; Annex 11, 4",
+     "Validated historian, or a defined paper record"
+    ],
+    [
+     "Backups never restored",
+     "Annex 11, 7.2",
+     "Restore test at OQ, repeated on a schedule"
+    ],
+    [
+     "Records only in the old system",
+     "21 CFR 211.180; Annex 11, 17",
+     "Verified migration, or old records kept readable"
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "gaps"
+  },
+  {
+   "type": "grid",
+   "look": "review-reticles",
+   "as": "route",
+   "nav": "Assessment",
+   "h": "What the assessment reviews",
+   "items": [
+    {
+     "t": "Records",
+     "d": "Qualification file, changes, drawings, dead leg register.",
+     "spot": "binder"
+    },
+    {
+     "t": "Water quality data",
+     "d": "A year of conductivity, TOC and microbial results.",
+     "spot": "toc"
+    },
+    {
+     "t": "Generation",
+     "d": "Performance on today’s feed, capacity at your coldest feed.",
+     "spot": "ro-skid"
+    },
+    {
+     "t": "Storage and distribution",
+     "d": "Materials, dead legs, slope, flow and fittings.",
+     "spot": "storage-tank"
+    },
+    {
+     "t": "Sanitization",
+     "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
+     "spot": "storage-tank",
+     "part": "outlet"
+    },
+    {
+     "t": "Controls",
+     "d": "Support status, audit trail and backups.",
+     "spot": "cpu"
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "look": "gate-line",
+   "nav": "How it runs",
+   "h": "How an upgrade runs",
+   "items": [
+    {
+     "t": "System assessment",
+     "d": "On site, then a costed options report in [report turnaround, working days].",
+     "icon": "magnifier"
+    },
+    {
+     "t": "Change control",
+     "d": "We draft the change request’s technical content.",
+     "hold": "Your quality unit",
+     "icon": "binder"
+    },
+    {
+     "t": "Design, build, test",
+     "d": "A factory acceptance test (FAT) of modules and software keeps site work short.",
+     "icon": "pid"
+    },
+    {
+     "t": "Cutover",
+     "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested.",
+     "icon": "wrench"
+    },
+    {
+     "t": "Requalification",
+     "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures.",
+     "icon": "gauge"
+    }
+   ],
+   "lane": "Your system"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "Will you upgrade another maker’s system?",
+     "a": "For [makes and equipment types serviced]: we assess it, then add or replace modules from our package. Without drawings, we walk the system down and measure dead legs. Polypropylene (PP) joins other piping by [tie-in method to existing piping]. A hot-held loop, or routine 80 °C sanitization at loop pressure, needs polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]."
+    },
+    {
+     "q": "Will your work void our original maker's warranty?",
+     "a": "It can: some makers void a warranty after third-party work, so check its terms first. Our position goes in the options report: [warranty position on other makers' systems]. Calibrations are traceable via [calibration provider and accreditation held]. You keep every record we write: certificates, installation and operational qualification (IQ and OQ) reports, updated drawings."
+    },
+    {
+     "q": "Will an upgrade restart our performance qualification (PQ)?",
+     "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale.",
+     "link": "contact-service",
+     "link_label": "Plan a requalification",
+     "intent": "Requalification after a change"
+    },
+    {
+     "q": "Can we keep producing water during the upgrade?",
+     "a": "Yes, for generation, pretreatment and capacity upgrades. Each new module goes in beside the old one and is tied in during a short shutdown. If your tank cannot cover it, plan temporary water: [temporary RO or EDI units, flow L/h]. A loop replacement needs a planned shutdown."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after the upgrade",
+   "items": [
+    "svc-cq",
+    "svc-service",
+    "sys-monitoring",
+    "sys-storage"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send the system you have",
+  "body": "An engineer replies. Cost: [assessment price, CAD, credit against upgrade].",
+  "button": "Request a system assessment",
+  "link": "contact-proposal",
+  "intent": "I have a system already",
+  "include": [
+   "Make, model, year; your observation or goal",
+   "Drawings and qualification summary",
+   "A year of water data",
+   "PLC and HMI models, program backup"
+  ],
+  "turnaround": "[assessment response time, working days]",
+  "returns": [
+   "Assessment scope, days on site, price",
+   "Then options with downtime and requalification"
+  ]
+ },
+ "todo": [
+  "[makes and equipment types serviced] (lead, FAQ 1): the makes and equipment types Aquemi assesses and upgrades on systems it did not build, and any exclusions (WFI stills, pure steam generators, stainless loops); same name on home, services, svc-service, svc-cq, about, contact-service and contact-proposal (FD-30, DR-011). FAQ 1 gets its yes or no once FD-30 is answered",
+  "[assessment duration, days] (hero fact, steps): days on site for one system assessment; FD-02 names it, beside the assessment's price",
+  "[report turnaround, working days] (steps): working days from the site visit to the costed options report (FD-01). A different fact from [assessment response time, working days], which ends before the visit; a QA head with 15 working days to answer FDA needs both",
+  "[assessment response time, working days] (closing arrow): first reply to an assessment request, with its scope, days on site and price; the options follow the visit. Same name as services' router row 6 ('Scope and price within…') and contact-proposal's requests table (FD-01)",
+  "[assessment price, CAD, credit against upgrade] (closing body): price in CAD before tax, or free, and whether it is credited against the upgrade; same name as contact-proposal's requests table (FD-02, DR-005 rule 4)",
+  "[days] in the router's Site downtime station (six rows): typical site downtime per upgrade type, from Aquemi's own plans, never a borrowed figure (FD-08; OQ-31)",
+  "[PP loop sanitization method] (router, loop row): same name as home, systems, svc-cq and svc-fat-sat (FD-14, DR-013 rule 3)",
+  "[installation scope] (steps, cutover): who makes the tie-in and field joints (Aquemi, your contractor or a partner); same name as services and systems (FD-26)",
+  "[tie-in method to existing piping] (FAQ 1): how a PP module joins existing stainless, PVDF or PVC piping, and who records the joint (FD-25)",
+  "[whether we quote PVDF] (FAQ 1): same name as sys-storage (FD-15, DR-013 rule 2)",
+  "[temporary RO or EDI units, flow L/h] (FAQ 3): whether temporary units are offered, flow range in L/h and lead time; if none is held, the answer keeps only 'plan temporary water' (FD-25). Flow in L/h per DR-003 rule 5, replacing the m³/h name",
+  "Confirm the upgrade types on other builders' systems: PVC pretreatment, PP loops, online TOC and conductivity, controller (PLC, HMI, SCADA) replacement; remove a router row Aquemi will not deliver (FD-23, FD-30)",
+  "Confirm software is tested before site work, and whether against a simulator ('on a simulator' was cut until FD-23 says so)",
+  "Budget range per option in the assessment report (FD-03): the page says 'costed options' without a figure until Aquemi's costed configurations exist (DR-005 rule 2)",
+  "Future case block: a delivered upgrade with what changed, downtime, requalification time and, for a DI to RO and EDI conversion, payback; only with the client's written approval (FD-42; DR-004 class 3; DR-016 rule 8). The ten-year cost sheet is FD-49",
+  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3).",
+  "Pass 11, phrasebook 21 (L-02-11, L-03-21; PB-02.14): lead now says options run from one module to the whole package; the downtime and requalification sentence and [makes and equipment types serviced] kept",
+  "Pass 11, proof § 5.2 (L-09-15): new FAQ \"Will your work void our original maker's warranty?\" answers the three lock-in fears (warranty, traceable calibration, records issued). [warranty position on other makers' systems] is a new placeholder (FD-07, FD-30); [calibration provider and accreditation held] is svc-service's name (FD-32). If FD-30 says no other make is served, the FAQ goes with FAQ 1's bracket",
+  "Pass 11, offer § 14 training and notice: no new copy here. Training on a changed module (controls replacement especially) follows the svc-cq training FAQ once FD-26 decides training; shutdown dates are the client's plan. project-plan not added to related: an upgrade runs on this page's own steps",
+  "Pass 11 review findings 2 and 5: lead restores \"polypropylene (PP)\" (first use before the upgrades table, DR-003 rule 4); warranty FAQ opens with the answer (\"It can\") and spells out IQ and OQ (DR-003 rules 3 and 4)"
+ ],
+ "facts": [
+  {
+   "v": "[assessment duration, days]",
+   "l": "Assessment on your site · per system"
+  }
+ ]
+}

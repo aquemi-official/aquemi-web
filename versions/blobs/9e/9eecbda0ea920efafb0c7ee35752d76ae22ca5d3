@@ -1,0 +1,307 @@
+{
+ "id": "svc-fat-sat",
+ "section": "Services",
+ "nav_label": "FAT and SAT",
+ "title": "Purified Water system FAT and SAT to EU GMP Annex 15 | Aquemi",
+ "meta": "Factory acceptance test (FAT) of your Purified Water package in polypropylene, to a protocol your quality unit approves, then a site acceptance test (SAT) on your feed water. Protocols written for reuse in IQ/OQ under EU GMP Annex 15, 3.6 and GUI-0029, 8.1.",
+ "path": "/services/fat-sat/",
+ "eyebrow": "FAT · SAT · EU GMP ANNEX 15 · GUI-0029",
+ "headline": "Watch it run on water before it ships",
+ "lead": "Your quality unit approves the protocol; we run the factory acceptance test (FAT) on your Purified Water package. A site acceptance test (SAT) proves the rest on your site.",
+ "tags": [],
+ "primary_cta": "Request a specimen FAT protocol",
+ "secondary_cta": {
+  "label": "Book a test bay visit",
+  "link": "contact-locations#visit",
+  "intent": "Shop tour before shortlisting"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "versus",
+   "nav": "FAT and SAT",
+   "h": "What FAT proves, what SAT proves",
+   "cols": [
+    "Test",
+    "FAT, our test bay",
+    "SAT, your site"
+   ],
+   "rows": [
+    [
+     "Sequences and interlocks",
+     "Every sequence, alarm, interlock and divert, restart after power loss included",
+     "Critical alarms, interlocks and divert on your utilities and water"
+    ],
+    [
+     "Utilities and loop",
+     "Not possible: the skids run on our utilities",
+     "Power, drains, air, any heating or cooling; loop hydraulics at peak demand"
+    ],
+    [
+     "Sanitization",
+     "Full [PP loop sanitization method] cycle, residual tested at the end",
+     "Full cycle on the installed loop, coldest point of use included"
+    ],
+    [
+     "Reverse osmosis (RO) with electrodeionization (EDI) or deionization (DI)",
+     "Flow, recovery and outlet quality on our feed water",
+     "The same on your feed water, in the season you are in"
+    ],
+    [
+     "Instruments and I/O",
+     "Every I/O point; critical instruments against a calibrated reference",
+     "Points to your control and monitoring systems; critical instruments re-checked"
+    ],
+    [
+     "Data integrity",
+     "Roles, audit trail, time sync, backup and restore",
+     "The same on the network, with your accounts and time server"
+    ],
+    [
+     "Piping and instrumentation diagram (P&ID) walkdown",
+     "Every line, valve and tag; skid slopes and dead legs",
+     "Field piping, loop slopes, low points, branch lengths"
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "tests",
+   "conclusion": [
+    "Reuse in IQ/OQ",
+    "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
+    "Feed water, utilities and field piping: proven on site only"
+   ],
+   "look": "versus-spread",
+   "row_parts": [
+    "panel valve",
+    "util loop",
+    "skid tank loop pou",
+    "ro",
+    "inst panel",
+    "panel",
+    "skid pipe loop pou"
+   ]
+  },
+  {
+   "type": "prose",
+   "as": "explainer",
+   "ground": "light",
+   "nav": "Why water",
+   "h": "Water finds faults a dry check misses",
+   "points": [
+    {
+     "t": "Some faults show only with water",
+     "d": "A valve opening at the wrong step; out-of-limit water not sent to drain. Found on site, the fix needs a work permit and a production stop.",
+     "at": [
+      44,
+      40
+     ],
+     "part": "divert"
+    },
+    {
+     "t": "Run it, read at the outlet",
+     "d": "Pumps at working pressure; conductivity and total organic carbon measured at the skid outlet.",
+     "at": [
+      75,
+      58
+     ],
+     "part": "outlet"
+    },
+    {
+     "t": "Evidence your team can reuse",
+     "d": "Approved protocol, calibrated instruments, raw data: results your installation and operational qualification (IQ/OQ) can reuse. A dry checklist is done again in IQ/OQ.",
+     "at": [
+      86,
+      40
+     ],
+     "part": "record"
+    }
+   ],
+   "figure": {
+    "kind": "art",
+    "art": "svc-fat-sat"
+   },
+   "look": "wet-run-hmi",
+   "modes": [
+    "Dry check",
+    "With water"
+   ]
+  },
+  {
+   "type": "steps",
+   "ground": "light",
+   "nav": "Process",
+   "h": "From protocol to release, then SAT",
+   "items": [
+    {
+     "t": "Draft protocol",
+     "d": "From the functional specification, sent [protocol issue before FAT, weeks] ahead. Each test states its acceptance criterion and traces to your user requirement specification (URS)."
+    },
+    {
+     "t": "Your approval",
+     "d": "Your team may add test cases and confirm which IQ/OQ will reuse. Nothing runs before your quality unit signs.",
+     "hold": "Your quality unit"
+    },
+    {
+     "t": "Internal dry run",
+     "d": "We run the full protocol first, so the witnessed FAT confirms rather than debugs [confirm]."
+    },
+    {
+     "t": "Witnessed run",
+     "d": "Date confirmed [FAT witness notice, working days] ahead. Results recorded as found; minor defects go on the punch list."
+    },
+    {
+     "t": "Report and release",
+     "d": "Raw data, deviation log and release decision. Skid drained, then [post-FAT drying and sealing method].",
+     "hold": "Both parties"
+    },
+    {
+     "t": "SAT on your site",
+     "d": "Critical tests re-run on site; the report feeds IQ/OQ. Signed start-up values become your day-one record for later visits [confirm]."
+    }
+   ],
+   "look": "test-sheet"
+  },
+  {
+   "type": "options",
+   "nav": "Witnessing",
+   "h": "How you witness",
+   "intro": "We finish the build before you arrive: the FAT is yours to check, not ours to fix [confirm]. Available once [shop and test bay ready for visits]; cost: [FAT witness costs, included or quoted].",
+   "items": [
+    {
+     "t": "In person",
+     "d": "In our test bay, inside the panels.",
+     "part": "panel"
+    },
+    {
+     "t": "Remote",
+     "d": "Cameras and live protocol.",
+     "part": "camera"
+    },
+    {
+     "t": "Hybrid",
+     "d": "One person attends for physical checks, the rest remote.",
+     "part": "gauge"
+    },
+    {
+     "t": "Your delegate",
+     "d": "A consultant you name witnesses and signs.",
+     "part": "documents"
+    },
+    {
+     "t": "Review only",
+     "d": "Unwitnessed; we send raw data and video.",
+     "part": "analyzer"
+    }
+   ],
+   "look": "witness-plan",
+   "zones": [
+    "Our test bay",
+    "Remote"
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions validation teams ask",
+   "items": [
+    {
+     "q": "Will our quality unit accept FAT results in place of IQ/OQ tests?",
+     "a": "Yes, if it approves the reuse before the factory acceptance test (FAT) and has assessed us (ASTM E2500). Under EU good manufacturing practice (GMP) Annex 15, 3.6, and GUI-0029, 8.1, transport and installation must not change the result. We propose candidate tests for installation and operational qualification (IQ, OQ).",
+     "link": "cmp-quality#audit",
+     "link_label": "Request a supplier audit"
+    },
+    {
+     "q": "What if a test fails while you are watching?",
+     "a": "It is recorded as found, as a deviation. We investigate, fix and retest that case and any case the fix could affect, with you witnessing. Your quality unit approves how it is closed.",
+     "link": "contact-locations#visit",
+     "link_label": "Book a pre-FAT walk-down",
+     "intent": "Pre-FAT walk-down or protocol review"
+    },
+    {
+     "q": "What can stop an acceptance test?",
+     "a": "A test can stop on things outside the process design. Examples: an instrument out of calibration, a missing reagent, an unbooked lab, no one free to sample. Before FAT and SAT, we check each of these with you [confirm]."
+    },
+    {
+     "q": "Is the software we see at FAT the software that ships?",
+     "a": "Its version and checksum are recorded at FAT: [code checksum recorded at FAT, yes or no]. Any later change goes through change control and is shown again at SAT.",
+     "link": "sys-monitoring#data-integrity",
+     "link_label": "How the code is controlled"
+    },
+    {
+     "q": "How long does a FAT take?",
+     "a": "[FAT duration, days] for the full Purified Water package, pretreatment to distribution, and [typical FAT duration, single module, days] for one module. Packages over [largest skid size, m] are tested module by module."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after FAT",
+   "items": [
+    "svc-fabrication",
+    "svc-cq",
+    "cmp-documentation",
+    "project-plan"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Check our criteria against your URS",
+  "body": "Cost: [specimen cost or free].",
+  "button": "Request a specimen FAT protocol",
+  "link": "cmp-documentation#samples",
+  "intent": "FAT protocol: contents and test cases",
+  "include": [
+   "Where your project stands",
+   "Which specimens you want",
+   "Your work email"
+  ],
+  "turnaround": "[specimen package response time, working days]",
+  "returns": [
+   "Protocol table of contents",
+   "Aquemi-written test cases with acceptance criteria"
+  ]
+ },
+ "todo": [
+  "Specimen FAT protocol (FD-47): an Aquemi-written table of contents and test cases with acceptance criteria, shared [openly or under NDA] (the name cmp-documentation uses). It is the hero and closing button, landing on cmp-documentation#samples with \"FAT protocol: contents and test cases\" ticked; that option label must stay on the specimen form",
+  "Launch rule (DR-004 class 2, DR-006 rule 6): the specimen button shows at launch only if the specimen exists (FD-47); otherwise hero and closing become \"Request a FAT test list\" -> contact-proposal, intent \"I have a URS or a draft|Review of another document|URS or functional specification, to draft a factory acceptance test (FAT) list\"; include \"Your URS or functional specification\", \"Your protocol template, if any\", \"Tests your IQ/OQ must reuse\"; returns \"A draft FAT test list, reusable tests marked\"; turnaround [document review turnaround, working days] and body \"Cost: [document review cost].\" (contact-proposal's requests table, \"Review of another document\"). Services' router row 3 takes the same fallback",
+  "Shop and test bay ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44): the witnessing intro. At launch the secondary link and the witnessing block show only if it holds a date that has passed (the bay can host a FAT); otherwise both are removed (DR-004 class 2, DR-006 rule 6). DR-018 (pass 10): the witness-plan drawing shows the PP package in \"Our test bay\" with a camera rig as existing, so the launch rule cuts the whole section, drawing included, while FD-44 is unset; never ship the drawing over an undated intro; and the headline becomes \"Tested on water before it ships\"",
+  "Whether FAT witness time, travel and remote witnessing are included in the price or quoted separately ([FAT witness costs, included or quoted]; FD-44). At launch an unset cost leaves the intro (DR-005 rule 8)",
+  "Wet FAT share: confirm every skid, distribution pump module included, is tested with water at FAT, or state the real share (\"[100 %] · Skids tested with water · at FAT\", the same label as home; FD-45; DR-009 rule 5, DR-010). Field-built loop piping is proven at SAT and IQ. At launch an unset fact goes",
+  "FD-45 practices the page marks [confirm]: an internal dry run before every witnessed FAT (Process, step 3); software version and checksum recorded at FAT (FAQ 4 (FAQ 3 before pass 11); since the pass 11 integration it names sys-monitoring's [code checksum recorded at FAT, yes or no] instead of [confirm], one name per fact, DR-011; the answer regains its opening Yes once confirmed). Also confirm that the comparison table's FAT column (every sequence, I/O point and P&ID line) is the standard protocol scope",
+  "Protocol issue before FAT, weeks ([protocol issue before FAT, weeks]; same name as cmp-documentation; FD-45)",
+  "FAT duration for the full package, pretreatment to distribution ([FAT duration, days]: hero fact and FAQ 5; same name as services, DR-010, DR-011) and for one module ([typical FAT duration, single module, days]) (FD-08, FD-45). At launch an unset fact goes",
+  "PP loop sanitization method run at FAT and SAT ([PP loop sanitization method]; same name as home, systems, svc-cq, svc-upgrades), with its residual test, or its temperature and hold time if a hot cycle is chosen (FD-14; DR-013 wording). Also whether FAT runs the generation skid's own cycle ([sanitization method for the PP skid], DR-013 rule 5): the table's FAT cell names only the loop method",
+  "Test bay location: [shop location, city and province] (FD-33; the name about, careers, cmp-quality, contact-locations, projects and svc-fabrication use), unless the test bay is elsewhere (DR-011 rule 2)",
+  "Test bay feed water source, treatment and typical conductivity (µS/cm) ([feed water source and conductivity, µS/cm])",
+  "Test bay power: voltage, phases, frequency, kW ([voltage, phases, frequency, kW]); how skids for another voltage are tested ([transformer or site test])",
+  "Test bay heating, only if a hot sanitization cycle is offered: medium and capacity (kW), inside the PP maker's pressure-temperature curve (DR-013)",
+  "Largest skid footprint and height ([largest skid size, m], FAQ 5), crane capacity (t) and drain capacity (L/min) (FD-44); same name as about (DR-011 rule 2). If the test bay's water flow is shown, it is [test bay water, L/h], with these test bay limits (FD-44)",
+  "Remote witness platform and connection, and when raw data reach a remote witness (\"raw data the same day\" left the Remote option until FD-44 sets it); electronic signature method ([electronic signature method], as cmp-documentation) and whether it meets 21 CFR Part 11 (FD-23)",
+  "Specimen reply time ([specimen package response time, working days]: the closing turnaround; same name as cmp-documentation and projects; FD-47). At launch an unset time is cut (DR-006 rule 7)",
+  "Specimen cost ([specimen cost or free]: the closing body; FD-02, FD-47; DR-006 rule 5, DR-005 rule 4). A new name: cmp-documentation's specimen form, the offer's home (DR-014 rule 12), should use it if it shows a cost. At launch an unset cost is cut (DR-005 rule 8)",
+  "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block. A closing proof box only with a confirmed figure (website.md closing rule; DR-011): \"0, 50, 100 % · Every analog loop checked at FAT\" went until FD-45",
+  "Test instrument calibration interval and traceability (FD-32)",
+  "Post-FAT drying, capping and any gas blanket used for shipment ([post-FAT drying and sealing method]; FD-45)",
+  "Pass 10, intent I7 (SITE-PLAN 4.5): \"Book a pre-FAT walk-down\" -> contact-locations#visit, intent \"Pre-FAT walk-down or protocol review\", belongs in the witnessing section, but the witness-plan look renders no link field (items [{t, d, part}], intro is plain text). Pass 11: it sits on FAQ 2 (\"What if a test fails while you are watching?\"), the witnessing question. Launch rule (FD-44, DR-006 rule 6): it goes with the witnessing section and the hero secondary while [shop and test bay ready for visits] is unset. Move it to the witnessing section if the look gains a block link (shared code)",
+  "Witnessing intro (pass 11, phrasebook change 16; L-15-10, L-14-16, AP-15): \"We finish the build before you arrive: the FAT is yours to check, not ours to fix [confirm].\" (shortened for the intro budget, 35 words) It rests on the internal dry run (Process, step 3, still [confirm], FD-45): if FD-45 does not confirm a dry run before every witnessed FAT, the sentence goes with it. The launch rule for the whole witnessing section (FD-44) is unchanged. Pass 11 review finding 11: the sentence carries its own [confirm] so the page does not state as fact what step 3 marks unconfirmed",
+  "Witnessed run (pass 11, offer section 14 notice; L-15-10, buyer ask: notice to witness): \"Date confirmed [FAT witness notice, working days] ahead\" uses the canonical name (projects, ops/placeholder-names.md); it replaces the old to-do \"FAT date confirmation lead (weeks) after the dry run\", deleted in pass 11 as a duplicate (FD-44, FD-45). Confirm the name means the notice Aquemi gives the witness; if it means the notice a visitor must give, the orchestrator splits the names",
+  "SAT step, day-one record (pass 11, proof-and-seriousness 5.2; L-14-7): signed start-up values as the baseline that later service visits and any warranty question are measured against [confirm] (FD-45, FD-27, FD-07). svc-service and buying hold how visits and warranty use it; once confirmed, the [confirm] goes. Never imply Aquemi has such a record from a delivered project",
+  "FAQ 3 \"What can stop an acceptance test?\" (was \"What usually trips an acceptance test?\") (pass 11, proof-and-seriousness 5.2, structure-and-sitemap 3.3 B5; L-G3-12, L-G3-13): the pre-test check (calibration certificates current, reagents and consumables bought and by whom, lab booked, staff free to sample) is a practice to confirm (FD-45, FD-46). Evidence is one executed record outside PW (caution in L-G3-12), so the answer names no frequency (\"usually\" and \"often\" were cut in the pass 11 review, finding 12; DR-004), never a rate. Unconfirmed at launch, its last sentence goes",
+  "Related (pass 11, SITE-PLAN; structure-and-sitemap 4.6; L-14-16): project-plan added (stages, notice before FAT, who does what)",
+  "FAQ 2 \"What if a test fails while you are watching?\" (pass 11 review finding 13; L-07-2): \"Your quality unit approves how it is closed.\" names who closes a deviation, as services FAQ 1 does for each report",
+  "Process step 1 \"Draft protocol\" (pass 11 review finding 14; L-09-1): each test states its acceptance criterion before FAT (\"in a traceability matrix\" cut for the step budget, 25 words; the matrix stays on svc-design), matching the closing's returns (\"test cases with acceptance criteria\")"
+ ],
+ "primary_cta_link": "cmp-documentation#samples",
+ "primary_cta_intent": "FAT protocol: contents and test cases",
+ "facts": [
+  {
+   "v": "[100 %]",
+   "l": "Skids tested with water · at FAT"
+  },
+  {
+   "v": "[FAT duration, days]",
+   "l": "Full package FAT · pretreatment to distribution"
+  }
+ ]
+}
