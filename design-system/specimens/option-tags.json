@@ -108,7 +108,7 @@
    "page": "sys-pw",
    "slot": 4,
    "h": "Configurations and options",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -152,6 +152,57 @@
     "spot": "ro-skid",
     "look": "option-tags",
     "intro": "Your proposal states each option's effect on drawings, tests and lead time."
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 4,
+   "h": "Configurations and options",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6b4b1884f8",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Configurations and options",
+    "items": [
+     {
+      "t": "Membrane degasser",
+      "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high. Adds: its datasheet, a P&ID line and a FAT check.",
+      "spot": "ro-membrane"
+     },
+     {
+      "t": "Duplex trains",
+      "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Recirculation at no demand",
+      "d": "Circulates when storage is full, so water does not stand in the membranes. Adds: a control sequence, tested at FAT.",
+      "spot": "loop",
+      "shape": "round"
+     },
+     {
+      "t": "Ultrafiltration or 254 nm UV",
+      "d": "After DI or EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize. Adds: a P&ID line, FAT check.",
+      "spot": "uv-ozone",
+      "shape": "tag"
+     },
+     {
+      "t": "Recovery enhancement",
+      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter. Adds: revised membrane projections and a FAT check.",
+      "spot": "pump",
+      "shape": "tag"
+     }
+    ],
+    "nav": "Options",
+    "fold": 3,
+    "spot": "ro-skid",
+    "look": "option-tags",
+    "intro": "Each tag names what the option adds on paper. Your proposal marks it included or priced, with its lead time effect.",
+    "anchor": "options"
    }
   }
  ]

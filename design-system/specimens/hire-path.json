@@ -92,7 +92,7 @@
    "page": "careers",
    "slot": 2,
    "h": "How we hire",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "19cb29a",
@@ -109,6 +109,48 @@
      {
       "t": "Conversation",
       "d": "A [first call length, minutes]-minute call: role, pay, travel, your questions."
+     },
+     {
+      "t": "Practical interview",
+      "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise.",
+      "icons": [
+       "pid",
+       "loop",
+       "binder",
+       "wrench"
+      ]
+     },
+     {
+      "t": "Visit and decision",
+      "d": "Meet the team where you would work. Written decision within [offer time, working days]."
+     }
+    ],
+    "fig": "Test joint by [PP joining method]",
+    "look": "hire-path"
+   }
+  },
+  {
+   "page": "careers",
+   "slot": 2,
+   "h": "How we hire",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "338794cae4",
+   "block": {
+    "type": "steps",
+    "nav": "Hiring",
+    "anchor": "hiring",
+    "h": "How we hire",
+    "items": [
+     {
+      "t": "Apply",
+      "d": "The form below; the hiring manager replies yes or no."
+     },
+     {
+      "t": "Conversation",
+      "d": "A call of [first call length, minutes]: role, pay, travel, your questions."
      },
      {
       "t": "Practical interview",

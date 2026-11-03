@@ -166,7 +166,7 @@
    "page": "news",
    "slot": 1,
    "h": "Polypropylene or stainless steel for a PW loop",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -222,7 +222,7 @@
    "page": "industries",
    "slot": 1,
    "h": "Grade, limit and inspector by industry",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -294,6 +294,178 @@
       "Health Canada GUI-0119; FDA; EU authorities"
      ]
     ]
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 1,
+   "h": "Industry by water use",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "fe0171c376",
+   "block": {
+    "type": "table",
+    "look": "macro-leaders",
+    "anchor": "matrix",
+    "nav": "By use",
+    "h": "Industry by water use",
+    "intro": "The minimum grade at each use, and who sets it; a dash where no grade is set. Your specification can go higher. Lab cells: the grade each test method names.",
+    "cols": [
+     "Industry",
+     "In the product",
+     "Final rinse",
+     "Cleaning",
+     "Lab",
+     "Equipment feed"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Drugs and natural health products",
+       "link": "ind-pharma"
+      },
+      "PW (GUI-0001); potable minimum for natural health products (GUI-0158)",
+      "Same grade as the product (EMA)",
+      "Potable for the initial rinse (EMA)",
+      "Meets each test method (GUI-0001)",
+      "—"
+     ],
+     [
+      {
+       "t": "Contract manufacturing",
+       "link": "ind-cdmo"
+      },
+      "PW: stricter of USP and Ph. Eur., plus client limits",
+      "Same grade as each client’s product (EMA)",
+      "Potable for the initial rinse (EMA)",
+      "Meets each test method",
+      "—"
+     ],
+     [
+      {
+       "t": "Medical devices",
+       "link": "ind-meddevice"
+      },
+      "Your specification for reagents and solutions (ISO 13485)",
+      "PW; endotoxin limit by body contact (USP <161>)",
+      "Set by your cleaning validation",
+      "Meets each test method",
+      "—"
+     ],
+     [
+      {
+       "t": "Hospital sterile processing",
+       "link": "ind-hospital-lab#reprocessing"
+      },
+      "—",
+      "Critical water (ANSI/AAMI ST108:2023)",
+      "Utility water (ST108:2023)",
+      "Clinical laboratory reagent water (CLSI GP40)",
+      "Washer and sterilizer maker’s specification"
+     ],
+     [
+      {
+       "t": "Research and quality control laboratories",
+       "link": "ind-hospital-lab#labs"
+      },
+      "—",
+      "—",
+      "—",
+      "ASTM D1193-24 Type II or III, by method",
+      "Washer, autoclave and humidifier maker’s specification"
+     ],
+     [
+      {
+       "t": "Cosmetics and personal care",
+       "link": "ind-personal-care"
+      },
+      "Your written specification; PW for drug lines",
+      "Your written specification",
+      "—",
+      "Meets each test method",
+      "—"
+     ],
+     [
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      },
+      "Potable minimum (Safe Food for Canadians Regulations; 21 CFR 117); your recipe sets the rest",
+      "Potable minimum",
+      "Potable minimum",
+      "Meets each test method",
+      "Boiler maker’s make-up specification"
+     ],
+     [
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      },
+      "Your product specification",
+      "Your process limit",
+      "—",
+      "—",
+      "Electrolyser, boiler or humidifier maker’s limit"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "news",
+   "slot": 1,
+   "h": "Polypropylene or stainless steel for a PW loop",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "ba14e93348",
+   "block": {
+    "type": "table",
+    "nav": "PP or stainless",
+    "anchor": "pp-or-stainless",
+    "eyebrow": "Technical note · [note publication month, year] · [note author and reviewer]",
+    "h": "Polypropylene or stainless steel for a PW loop",
+    "intro": "Polypropylene suits an ambient PW loop, sanitized chemically. Water for Injection (WFI) or a stainless standard needs stainless. A hot loop needs PVDF or stainless [whether we quote PVDF]. Limits, sampling and release are unchanged.",
+    "cols": [
+     "What decides it",
+     "Polypropylene (PP) fits when",
+     "Stainless steel is needed when"
+    ],
+    "rows": [
+     [
+      "Water grade",
+      "The loop carries Purified Water (PW) for non-sterile products, rinses and washing.",
+      "The loop carries Water for Injection (WFI), or feeds a pure steam generator."
+     ],
+     [
+      "Loop temperature",
+      "The loop runs at ambient temperature. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "The loop is held hot, or runs routine 80 °C at loop pressure. Polyvinylidene fluoride (PVDF) is the plastic option; [whether we quote PVDF]."
+     ],
+     [
+      "Sanitization",
+      "Chemical sanitization, written as a procedure, with residual tested absent at every outlet before use.",
+      "Your procedure calls for routine hot water or steam sanitization."
+     ],
+     [
+      "Your corporate standard",
+      "It names outcomes: materials compatible with PW and the sanitizing agent, drainable, with no dead legs.",
+      "It names 316L stainless steel for product contact, and a deviation is not an option."
+     ],
+     [
+      "Your clients' audits",
+      "Your auditors accept a plastic loop backed by its maker's ratings and your sanitization records.",
+      "A client's quality agreement names stainless steel for water contact."
+     ],
+     [
+      "A plastic loop failed before",
+      "The cause is known and designed out: joints, supports for expansion, or heat beyond the rating.",
+      "No cause was found, and your engineers will not accept plastic again."
+     ]
+    ],
+    "look": "macro-leaders"
    }
   }
  ]

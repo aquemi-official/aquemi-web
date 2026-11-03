@@ -66,7 +66,7 @@
    "page": "sys-pw",
    "slot": 3,
    "h": "Documents with the skid",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -126,6 +126,73 @@
     "nav": "Documents",
     "look": "doc-hotspots",
     "intro": "What the skid leaves on paper, and the claim each document proves."
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 3,
+   "h": "Documents with the skid",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "413fac23bb",
+   "block": {
+    "type": "docs",
+    "h": "Documents with the skid",
+    "items": [
+     {
+      "t": "FAT and SAT protocols and reports",
+      "d": "Prove outlet quality and every divert; deviations closed; SAT run on your feed water",
+      "key": true,
+      "at": [
+       0.12,
+       0.45
+      ]
+     },
+     {
+      "t": "Membrane projections",
+      "d": "Predict output at your coldest feed and at end of membrane life; FAT and SAT confirm it",
+      "key": true,
+      "at": [
+       0.2,
+       0.33
+      ]
+     },
+     {
+      "t": "Material certificates",
+      "d": "Prove the product-contact grade: [PP material certificates]. Membranes, EDI modules and resin arrive with makers' certificates and serial or lot numbers.",
+      "key": true,
+      "at": [
+       0.66,
+       0.14
+      ]
+     },
+     {
+      "t": "Joint records",
+      "d": "Prove each joint: [PP joining method]; [PP joint records kept]",
+      "key": true,
+      "at": [
+       0.4,
+       0.84
+      ]
+     },
+     {
+      "t": "P&IDs and general arrangement",
+      "d": "Prove the skid as built matches the approved drawings: piping and instrumentation diagrams and general arrangement",
+      "key": true,
+      "at": [
+       0.78,
+       0.47
+      ]
+     }
+    ],
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "nav": "Documents",
+    "look": "doc-hotspots",
+    "intro": "What the skid leaves on paper, and the claim each document proves.",
+    "anchor": "documents"
    }
   }
  ]

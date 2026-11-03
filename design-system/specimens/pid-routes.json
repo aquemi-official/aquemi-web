@@ -165,7 +165,7 @@
    "page": "industries",
    "slot": 0,
    "h": "Your situation and where to start",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -228,6 +228,98 @@
      ],
      [
       "A first PW system, no specification yet",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Your first PW system",
+       "link": "first-system"
+      }
+     ],
+     [
+      "A water observation, or out-of-trend results",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Upgrades: after an observation",
+       "link": "svc-upgrades#observation"
+      }
+     ]
+    ]
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 2,
+   "h": "Your situation and where to start",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "d0aaac0a59",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "look": "pid-routes",
+    "anchor": "start",
+    "nav": "Where to start",
+    "h": "Your situation and where to start",
+    "cols": [
+     "Your situation",
+     "System",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A new oral or topical drug line",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "A new client program with a tech transfer date",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Not drugs or devices? Send the standard you work to",
+      {
+       "t": "The package, to your limit",
+       "link": "systems"
+      },
+      {
+       "t": "Request a water scope review",
+       "link": "contact-proposal",
+       "intent": "I know my product, not my water spec|Another industry"
+      }
+     ],
+     [
+      "Natural health products: does this line need PW?",
+      {
+       "t": "PW generation, if your specification asks",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Pharmaceutical: natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Your first PW system, no specification yet",
       {
        "t": "PW generation",
        "link": "sys-pw"

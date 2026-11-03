@@ -196,6 +196,140 @@
     "fold": 2,
     "fold_noun": "items"
    }
+  },
+  {
+   "page": "ind-process",
+   "slot": 5,
+   "h": "From exchange DI to your own RO and EDI",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6e7c60c7aa",
+   "block": {
+    "type": "spec",
+    "nav": "From exchange DI",
+    "anchor": "from-ion-exchange",
+    "h": "From exchange DI to your own RO and EDI",
+    "intro": "With exchange deionization (DI), tanks are swapped on a schedule. With your own package, water is made on site. Send your daily use and exchange cost to compare.",
+    "cols": [
+     "Item",
+     "With your own package",
+     "Set by"
+    ],
+    "rows": [
+     {
+      "p": "Exchange tank swaps",
+      "v": "None: RO and EDI make the water on site",
+      "m": "Your daily use against your exchange cost",
+      "link": "systems#faq",
+      "part": "gen"
+     },
+     {
+      "p": "Filters, carbon, softener resin and salt",
+      "v": "[filter, media and lamp intervals, months]",
+      "m": "Feed water and run hours",
+      "part": "pre soft"
+     },
+     {
+      "p": "RO membranes and EDI module",
+      "v": "[membrane and resin replacement intervals]",
+      "m": "Feed water and flow",
+      "part": "gen"
+     },
+     {
+      "p": "Water to drain",
+      "v": "RO reject at [design recovery, %] recovery",
+      "m": "Feed water chemistry",
+      "part": "drain",
+      "side": "out"
+     },
+     {
+      "p": "Energy",
+      "v": "[energy use, kWh per m³]",
+      "m": "Flow and feed temperature",
+      "part": "pump"
+     },
+     {
+      "p": "Service plan, with calibration",
+      "v": "From [lowest plan price, CAD per year]",
+      "m": "System, instruments and distance",
+      "link": "svc-service#running-cost",
+      "part": "panel"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "items",
+    "look": "cost-skid"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 4,
+   "h": "Site safety information for your permit",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "403b2b5f4e",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Site safety",
+    "anchor": "safety",
+    "h": "Site safety information for your permit",
+    "intro": "What your safety team needs for a permit or a pre-start review, read off the package itself.",
+    "cols": [
+     "Item",
+     "What you receive",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Chemicals brought on site",
+      "v": "[chemicals brought on site, with SDS]",
+      "m": "Each with its safety data sheet (SDS)",
+      "part": "soft"
+     },
+     {
+      "p": "Discharge to drain",
+      "v": "[discharge to drain per day, pH, temperature]",
+      "m": "Includes reverse osmosis (RO) reject; set by your feed water",
+      "part": "drain"
+     },
+     {
+      "p": "Energies and isolation points",
+      "v": "[isolation points and energies]",
+      "m": "For your lockout procedure",
+      "part": "pump panel"
+     },
+     {
+      "p": "Control panel approval",
+      "v": "[panel certification mark held, or field evaluation used]",
+      "m": "Electrical safety of the control panel",
+      "part": "panel"
+     },
+     {
+      "p": "Pressure equipment",
+      "v": "[pressure-rated items in the PW package]",
+      "m": "Registration where required: Canadian registration number (CRN), CSA B51",
+      "part": "gen"
+     },
+     {
+      "p": "Insurance and workplace safety cover",
+      "v": "Certificate of insurance and Workplace Safety and Insurance Board (WSIB) clearance, before any site visit",
+      "m": "Status listed with our onboarding documents",
+      "link": "buying#onboarding"
+     },
+     {
+      "p": "Visits to your site",
+      "v": "We follow your permits, inductions and lockout rules",
+      "m": "Your safety team sets them before each visit"
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "items"
+   }
   }
  ]
 }

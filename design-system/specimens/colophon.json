@@ -246,7 +246,7 @@
    "page": "ind-meddevice",
    "slot": 1,
    "h": "Qualifying us as your supplier",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -403,7 +403,7 @@
    "page": "news",
    "slot": 3,
    "h": "A published case, read as precedent",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -459,7 +459,7 @@
    "page": "about",
    "slot": 0,
    "h": "Company facts",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -537,6 +537,216 @@
     "note": "A bracketed fact is not yet confirmed.",
     "fold": 8,
     "fold_noun": "facts",
+    "look": "colophon"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 1,
+   "h": "Qualifying us as your supplier",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "f686da551c",
+   "block": {
+    "type": "spec",
+    "nav": "Supplier quality",
+    "anchor": "supplier-quality",
+    "h": "Qualifying us as your supplier",
+    "intro": "ISO 13485:2016 clause 7.4 puts us under your purchasing controls.",
+    "cols": [
+     "Check",
+     "Our answer",
+     "Where"
+    ],
+    "rows": [
+     {
+      "p": "Quality system",
+      "v": "ISO 9001: [ISO 9001 status, registrar and expiry]. ISO 13485: [ISO 13485 status, registrar and expiry].",
+      "link": "cmp-quality#certification"
+     },
+     {
+      "p": "Questionnaire and audit",
+      "v": "Your questionnaire completed; audit on [on-site audit notice, working days] notice.",
+      "link": "cmp-quality#audit",
+      "link_label": "Send your questionnaire",
+      "intent": "Your questionnaire, completed"
+     },
+     {
+      "p": "Quality agreement",
+      "v": "Your template, marked up within [quality agreement mark-up turnaround, working days]."
+     },
+     {
+      "p": "Documents and traceability",
+      "v": "Each turnover document and who approves it",
+      "link": "cmp-documentation#index"
+     },
+     {
+      "p": "What you can read",
+      "v": "Read now, under a non-disclosure agreement, or at audit",
+      "link": "cmp-quality#access",
+      "link_label": "When you can read what"
+     },
+     {
+      "p": "Data integrity",
+      "v": "Audit trail and access control, clause by clause",
+      "link": "sys-monitoring#data-integrity"
+     },
+     {
+      "p": "Clause-by-clause matrix",
+      "v": "Each standard, with the document that proves it",
+      "link": "compliance#map"
+     },
+     {
+      "p": "Change notification",
+      "v": "Changes to parts, materials and software: [change notification to clients: scope and notice]."
+     },
+     {
+      "p": "Our own suppliers",
+      "v": "What we require of the parts and materials we buy",
+      "link": "cmp-quality#suppliers",
+      "link_label": "What we require from suppliers"
+     },
+     {
+      "p": "Supplier evidence",
+      "v": "Questionnaire, audit, factory acceptance test witness and specimen documents, and what you receive from each",
+      "link": "projects#verify",
+      "link_label": "How to qualify us"
+     }
+    ],
+    "look": "colophon"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 0,
+   "h": "Company facts",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "b3cc51e42e",
+   "block": {
+    "type": "spec",
+    "nav": "Company",
+    "anchor": "facts",
+    "h": "Company facts",
+    "cols": [
+     "Item",
+     "Fact",
+     "Evidence"
+    ],
+    "rows": [
+     {
+      "p": "Scope",
+      "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. No Water for Injection, pure steam or stainless steel systems. Not residential or municipal",
+      "m": "Stated in these words in every proposal. Registered activity: [registered business activity, as filed]",
+      "link": "systems",
+      "hl": true
+     },
+     {
+      "p": "Why modular polypropylene",
+      "v": "[why modular PP, in the team's words]",
+      "m": "The team's engineering rationale, signed"
+     },
+     {
+      "p": "Registration and ownership",
+      "v": "[ownership; any equipment maker's stake]",
+      "m": "[corporate registration, jurisdiction and number]"
+     },
+     {
+      "p": "People by discipline",
+      "v": "[headcount by discipline]",
+      "m": "Organization chart, in the questionnaire pack",
+      "link": "cmp-quality#audit"
+     },
+     {
+      "p": "Quality system",
+      "v": "[ISO 9001 status, registrar and expiry]",
+      "m": "Audit with [on-site audit notice, working days] notice",
+      "link": "cmp-quality#certification"
+     },
+     {
+      "p": "Insurance and financial standing",
+      "v": "[general and professional liability limits, CAD] · [financial standing evidence for procurement]",
+      "m": "Certificate: [certificate of insurance status]. Financial evidence on request",
+      "link": "buying#onboarding"
+     },
+     {
+      "p": "Licences and seals",
+      "v": "[P.Eng. seal] in [provinces of licence] · [engineering firm permit, by province]",
+      "m": "[licensing body registers]"
+     },
+     {
+      "p": "Head office",
+      "v": "[head office, city and province]",
+      "m": "Address on the Locations page",
+      "link": "contact-locations#locations"
+     },
+     {
+      "p": "Shop and test bay",
+      "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
+      "m": "Visit with [shop visit notice, working days] notice",
+      "link": "contact-locations#visit"
+     }
+    ],
+    "look": "colophon"
+   }
+  },
+  {
+   "page": "news",
+   "slot": 3,
+   "h": "A published case, read as precedent",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "72d7db876c",
+   "block": {
+    "type": "spec",
+    "anchor": "pp-precedent",
+    "caption": "Published industry case, 2006",
+    "h": "A published case, read as precedent",
+    "intro": "In July/August 2006, Pharmaceutical Engineering described a polypropylene Purified Water loop at a pilot plant. Two of its four authors worked for a water system maker. The article describes another maker's installation.",
+    "cols": [
+     "Item",
+     "What the article reports",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Whose system",
+      "v": "Another maker's installation",
+      "m": "Its sanitizing chemical, USP edition and design are the article's own.",
+      "hl": true
+     },
+     {
+      "p": "The plant",
+      "v": "Small solid-dose pilot plant",
+      "m": "Clinical supplies; water for the product, equipment and washing"
+     },
+     {
+      "p": "The choice",
+      "v": "Polypropylene loop over stainless steel",
+      "m": "Also chosen over PVDF, on cost"
+     },
+     {
+      "p": "The reason",
+      "v": "No routine heat sanitization",
+      "m": "The authors judged a simple PW loop does not need it, so plastic was acceptable"
+     },
+     {
+      "p": "Qualification",
+      "v": "Six weeks of performance qualification",
+      "m": "Samples from every point of use, three days a week. Today, WHO TRS 1033 sets three phases over 12 months."
+     },
+     {
+      "p": "After qualification",
+      "v": "Over a year of weekly release testing",
+      "m": "Each excursion was investigated and closed, with a cause or follow-up tests"
+     }
+    ],
     "look": "colophon"
    }
   }

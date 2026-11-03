@@ -4270,78 +4270,174 @@ AQmotion.fx('MethodBento', function (root, m) {
     });
   });
 });
+/* ModulePlinth: the drawing is built through the IsoKit choreography (sheet, plinth, then each module drawn back to
+   front, risers and loop laid, the water run along the loop and up each riser in turn). As the water reaches a module
+   its marker drops onto it with a small bounce; the cards are dealt in beside the drawing in the same order. One
+   timeline, once on scroll-in, under 5 s; settles static. Folded cards (phones) are left alone. */
+AQmotion.fx('ModulePlinth', function (root, m) {
+  root.querySelectorAll('.aq-module-plinth').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var svg = el.querySelector('svg.aq-iso'), mks = el.querySelectorAll('.aq-module-plinth__mk');
+    var cards = [].filter.call(el.querySelectorAll('.aq-module-plinth__card'), function (c) { return c.offsetParent !== null });
+    var shown = {};
+    var tl = window.AQiso && AQiso.timeline(svg, m, { draw: 1.5, pipe: 0.7, flow: 1.8,
+      onStage: function (els, id) { var k = String(id).replace('m', ''), mk = el.querySelector('.aq-module-plinth__mk[data-k="' + k + '"]'); if (mk && !shown[k]) { shown[k] = 1; gsap.fromTo(mk, { y: -14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }) } } });
+    if (!tl) return;
+    gsap.set(mks, { autoAlpha: 0 });
+    tl.from(el.querySelector('.aq-module-plinth__base'), { autoAlpha: 0, y: 8, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 'pipes');
+    tl.from(cards, { y: 18, autoAlpha: 0, duration: 0.55, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.4);
+    // whatever the water timing, every marker is shown by the end
+    tl.add(function () { gsap.set(mks, { clearProps: 'transform,opacity,visibility' }) }, 'end');
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* NavBar: the phone menu drops like a curtain and pushes the page down, its rows following one after another, the urgent
-   block first; Close lifts it before the page re-renders without it. The section numbers on the wide bar decode once
-   on a new page. Pass 9b, three Subframe Motion ports:
-   - Ported from Subframe Motion "Curtain index" (curtain-index), MIT, (c) 2026 Subframe: the panel opens top-down
+   block first; Close lifts it before the page re-renders without it. On the wide bar the mega panels unroll, switch on
+   one shared backdrop and roll up; the phone menu's groups open as an accordion. Subframe Motion ports:
+   - Ported from Subframe Motion "Curtain index" (curtain-index), MIT, (c) 2026 Subframe: the phone menu opens top-down
      (its height from 0, so the page below is pushed rather than covered) on the example's curtain ease
      (cubic-bezier(0.76, 0, 0.24, 1), 380 ms); the entries fade and slide down 12 px, 100 ms in and 35 ms apart
      (cubic-bezier(0.2, 0.8, 0.2, 1), 300 ms). Close: the entries fade in 120 ms while the curtain lifts (280 ms).
-   - The toggle's two bars turn into a cross (curtain-index's toggle; icon-morph "menu-close"), 220 ms, and back on close.
+     A mega panel's first open uses the same curtain: clip from the top edge down, 240 ms; its columns (head, groups,
+     featured card, foot, tasks row) drop 8 px and fade in, 160 ms, 18 ms apart from 60 ms. Close, a third faster:
+     content fades in 120 ms, the clip rolls up in 160 ms, then the panel is hidden. Opened from the keyboard, the
+     columns do not fade, so focus can land on the overview link at once.
+   - Ported from Subframe Motion "Layered menu" (layered-menu), MIT, (c) 2026 Subframe: switching from one open panel to
+     another keeps one surface: a shared backdrop (aq-mega__bg) springs its height to the new panel, the outgoing
+     content fades and slides 12 px away from the new button's side (120 ms) and the incoming slides in from that side
+     (200 ms, the example's strong ease-out cubic-bezier(0.16, 1, 0.3, 1)). Disclosure buttons, not menu roles.
    - Ported from Subframe Motion "Sliding selection" (sliding-tabs), MIT, (c) 2026 Subframe: on the wide bar one flow
-     rule rests under the current section and slides on its spring (stiffness 460, damping 34) to the link the pointer
-     or keyboard focus is on, then back; on a new page it slides from the section just left to the new one.
-   All current behaviour stays: the urgent "Production stopped?" block, Escape, focus back on the toggle, the jump
-   links closing the menu. Under reduced motion the menu opens and closes at once and the rule just sits. */
+     rule rests under the current section and slides on its spring (stiffness 460, damping 34) to the button the pointer
+     or keyboard focus is on, rests under an open panel's button, then returns; on a new page it slides from the section
+     just left to the new one. The backdrop above springs on the same values.
+   - Ported from Subframe Motion "Spring accordion" (spring-accordion), MIT, (c) 2026 Subframe (adapted from Motion
+     Primitives' accordion, MIT, (c) 2024 ibelick): a phone menu group opens from height 0 to its height in 300 ms with
+     no bounce and fades in, the open sibling closes in parallel; a group opened from the keyboard opens at once, as the
+     example does. The plus turning into a cross is CSS.
+   - The toggle's two bars turn into a cross (curtain-index's toggle; icon-morph "menu-close"), 220 ms, and back on close.
+   NavBar.js owns the state and announces each change (aq:navpanel on the bar, aq:navgroup on the section button); this
+   file takes a change over only when it can animate it (preventDefault), and calls detail.done() when the exit ends, so
+   nothing is left hidden by an interrupted tween. Under reduced motion, or without GSAP, every change is instant and the
+   rule just sits. */
 (function () {
   var closing = false, lastPage = null, lastBox = null;
+  var still = function () { return !window.gsap || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) };
   function ease(n, d) { if (window.CustomEase && !CustomEase.get(n)) CustomEase.create(n, d); return window.CustomEase ? n : 'power3.inOut' }
+  var CURTAIN = 'M0,0 C0.76,0 0.24,1 1,1', SNAP = 'M0,0 C0.2,0.8 0.2,1 1,1', OUT = 'M0,0 C0.16,1 0.3,1 1,1';
   function bars(t, open, dur) {
     var b = t && t.querySelectorAll('.aq-nav__burger > i'); if (!b || b.length < 2) return;
     var on = [{ y: 3, rotation: 45 }, { y: -3, rotation: -45 }], off = [{ y: 0, rotation: 0 }, { y: 0, rotation: 0 }];
-    [0, 1].forEach(function (i) { b[i].style.transition = 'none'; gsap.fromTo(b[i], open ? off[i] : on[i], Object.assign({ duration: dur, ease: ease('aq-snap', 'M0,0 C0.2,0.8 0.2,1 1,1'), clearProps: open ? 'transform,transition' : 'transition' }, open ? on[i] : off[i])) });
+    [0, 1].forEach(function (i) { b[i].style.transition = 'none'; gsap.fromTo(b[i], open ? off[i] : on[i], Object.assign({ duration: dur, ease: ease('aq-snap', SNAP), clearProps: open ? 'transform,transition' : 'transition' }, open ? on[i] : off[i])) });
   }
   // Close: let the curtain lift first, then run the toggle's own handler (which re-renders), then restore focus
   if (typeof document !== 'undefined') document.addEventListener('click', function (ev) {
     var t = ev.target && ev.target.closest && ev.target.closest('#wmenu'), panel = document.getElementById('wmenu-panel');
-    if (!t || !panel || !window.gsap || closing || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || typeof t.onclick !== 'function') return;
+    if (!t || !panel || closing || still() || typeof t.onclick !== 'function') return;
     ev.stopImmediatePropagation(); ev.preventDefault(); closing = true;
-    var fn = t.onclick, rows = panel.querySelectorAll('.aq-menu__urgent, .aq-menu__list li, .aq-menu__label, .aq-menu__cta');
+    var fn = t.onclick, rows = panel.querySelectorAll('.aq-menu__urgent, .aq-menu__list > li, .aq-menu__label, .aq-menu__cta');
     bars(t, false, 0.22);
     gsap.to(rows, { autoAlpha: 0, duration: 0.12, ease: 'power1.out' });
-    gsap.fromTo(panel, { height: panel.offsetHeight, overflow: 'hidden' }, { height: 0, paddingTop: 0, paddingBottom: 0, duration: 0.28, ease: ease('aq-curtain', 'M0,0 C0.76,0 0.24,1 1,1'), onComplete: function () {
+    gsap.fromTo(panel, { height: panel.offsetHeight, overflow: 'hidden' }, { height: 0, paddingTop: 0, paddingBottom: 0, duration: 0.28, ease: ease('aq-curtain', CURTAIN), onComplete: function () {
       closing = false; fn.call(t); var n = document.getElementById('wmenu'); if (n) n.focus();
     } });
   }, true);
 
+  /* ---- Mega panels ---- */
+  var morph = null;   // the running switch: {sp, nav, bg}
+  function cols(p) { return p ? [].slice.call(p.querySelectorAll('.aq-mega__head, .aq-mega__group, .aq-mega__feat, .aq-mega__foot, .aq-mega__tasks')) : [] }
+  function inner(p) { return p ? [].slice.call(p.querySelectorAll('.aq-mega__in, .aq-mega__tasks')) : [] }
+  function reset(nav) {
+    if (morph) { morph.sp.stop(); morph = null }
+    nav.querySelectorAll('.aq-mega').forEach(function (p) { gsap.killTweensOf([p].concat(cols(p), inner(p))); gsap.set([p].concat(cols(p), inner(p)), { clearProps: 'clipPath,opacity,visibility,transform' }) });
+    var bg = nav.querySelector('.aq-mega__bg'); if (bg) { bg.hidden = true; bg.style.height = '' }
+    nav.classList.remove('is-morph');
+  }
+  function side(nav, a, b) { var L = [].slice.call(nav.querySelectorAll('.aq-mega')); return L.indexOf(a) > L.indexOf(b) ? 1 : -1 }
+  document.addEventListener('aq:navpanel', function (ev) {
+    var d = ev.detail, nav = ev.target, M = window.AQmotion && AQmotion.M;
+    if (still() || !M || !nav.querySelector) return;
+    ev.preventDefault();
+    reset(nav); d.others();
+    if (d.open && !d.from) {   // first open: curtain
+      gsap.fromTo(d.open, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.24, ease: ease('aq-curtain', CURTAIN), clearProps: 'clipPath' });
+      if (!d.key) gsap.fromTo(cols(d.open), { y: -8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.16, delay: 0.06, stagger: 0.018, ease: ease('aq-snap', SNAP), clearProps: 'transform,opacity,visibility' });
+      d.done();
+    } else if (!d.open && d.from) {   // close: content out, clip up, then hidden
+      var p = d.from;
+      gsap.to(inner(p), { autoAlpha: 0, duration: 0.12, ease: 'power1.out' });
+      gsap.fromTo(p, { clipPath: 'inset(0% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 100% 0%)', duration: 0.16, ease: ease('aq-curtain', CURTAIN), onComplete: function () {
+        d.done(); gsap.set([p].concat(inner(p)), { clearProps: 'clipPath,opacity,visibility' });
+      } });
+    } else if (d.open && d.from) {   // switch: one backdrop springs between the two heights
+      var bg = nav.querySelector('.aq-mega__bg'), from = d.from, to = d.open, dir = side(nav, to, from);
+      if (!bg) { d.done(); return }
+      var hF = from.offsetHeight, hT = to.offsetHeight;
+      nav.classList.add('is-morph'); bg.hidden = false; bg.style.height = hF + 'px';
+      gsap.to(inner(from), { x: -12 * dir, autoAlpha: 0, duration: 0.12, ease: 'power1.out', onComplete: function () { d.done(); gsap.set(inner(from), { clearProps: 'transform,opacity,visibility' }) } });
+      gsap.fromTo(inner(to), { x: 12 * dir, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.2, ease: ease('aq-out', OUT), clearProps: 'transform,opacity,visibility' });
+      var st = { h: hF }, m = morph = { nav: nav, bg: bg, sp: null };
+      m.sp = M.spring(st, { stiffness: 460, damping: 34, mass: 1 }, function (o) {
+        bg.style.height = o.h.toFixed(1) + 'px';
+        to.style.clipPath = 'inset(0 0 ' + Math.max(0, hT - o.h).toFixed(1) + 'px 0)';
+        from.style.clipPath = 'inset(0 0 ' + Math.max(0, hF - o.h).toFixed(1) + 'px 0)';
+        if (o.h === hT && morph === m) { morph = null; bg.hidden = true; bg.style.height = ''; nav.classList.remove('is-morph'); to.style.clipPath = ''; from.style.clipPath = '' }
+      });
+      m.sp.to({ h: hT });
+    } else d.done();
+  });
+
+  /* ---- Phone menu groups (spring-accordion) ---- */
+  document.addEventListener('aq:navgroup', function (ev) {
+    var d = ev.detail; if (still() || d.key) return;
+    ev.preventDefault();
+    if (d.open) { gsap.killTweensOf(d.open); gsap.fromTo(d.open, { height: 0, autoAlpha: 0, overflow: 'hidden' }, { height: 'auto', autoAlpha: 1, duration: 0.3, ease: ease('aq-snap', SNAP), clearProps: 'height,opacity,visibility,overflow' }) }
+    if (d.from) { var f = d.from; gsap.killTweensOf(f); gsap.fromTo(f, { height: f.offsetHeight, overflow: 'hidden' }, { height: 0, autoAlpha: 0, duration: 0.3, ease: ease('aq-snap', SNAP), onComplete: function () { d.done(); gsap.set(f, { clearProps: 'height,opacity,visibility,overflow' }) } }) }
+    else d.done();
+  });
+
   AQmotion.fx('NavBar', function (root, m) {
+    AQmotion.M = m;
     var nav = root.querySelector('.aq-nav'); if (!nav) return;
     var page = window.AQ ? AQ.page : location.hash, fresh = page !== lastPage; lastPage = page;
     var panel = root.querySelector('#wmenu-panel');
     if (panel) {
       m.claim(panel);
       bars(root.querySelector('#wmenu'), true, 0.22);
-      var rows = [].slice.call(panel.querySelectorAll('.aq-menu__urgent, .aq-menu__list li, .aq-menu__label, .aq-menu__cta'));
+      var rows = [].slice.call(panel.querySelectorAll('.aq-menu__urgent, .aq-menu__list > li, .aq-menu__label, .aq-menu__cta'));
       var tl = m.tw(gsap.timeline());
-      tl.fromTo(panel, { height: 0, overflow: 'hidden' }, { height: 'auto', duration: 0.38, ease: ease('aq-curtain', 'M0,0 C0.76,0 0.24,1 1,1'), clearProps: 'height,overflow' }, 0);
-      if (rows.length) tl.fromTo(rows, { y: -12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, stagger: 0.035, ease: ease('aq-snap', 'M0,0 C0.2,0.8 0.2,1 1,1'), clearProps: 'transform,opacity,visibility' }, 0.1);
+      tl.fromTo(panel, { height: 0, overflow: 'hidden' }, { height: 'auto', duration: 0.38, ease: ease('aq-curtain', CURTAIN), clearProps: 'height,overflow' }, 0);
+      if (rows.length) tl.fromTo(rows, { y: -12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, stagger: 0.035, ease: ease('aq-snap', SNAP), clearProps: 'transform,opacity,visibility' }, 0.1);
     }
-    if (fresh && !m.narrow()) [].forEach.call(nav.querySelectorAll('.aq-nav__links .aq-nav__num'), function (n, i) { m.scramble(n, 0.1 + i * 0.06) });
+    nav.querySelectorAll('.aq-mega').forEach(function (p) { m.claim(p) });
 
-    // The sliding rule on the wide bar
+    // The sliding rule on the wide bar, placed against the bar (the items stay unpositioned for the panels)
     var ul = nav.querySelector('.aq-nav__links'); if (!ul || !ul.offsetParent) return;
+    var TOP = ':scope > .aq-nav__item > .aq-nav__trigger, :scope > .aq-nav__item > a';
     var mark = document.createElement('li'); mark.className = 'aq-nav__mark'; mark.setAttribute('aria-hidden', 'true');
     ul.appendChild(mark); nav.classList.add('has-mark');
-    function box(a) { var r = a.getBoundingClientRect(), o = ul.getBoundingClientRect(); return { x: r.left - o.left, w: r.width } }
+    function box(a) { var r = a.getBoundingClientRect(), o = nav.getBoundingClientRect(); return { x: r.left - o.left, w: r.width } }
+    function topOf(t) { var a = t && t.closest && t.closest('.aq-nav__trigger, .aq-nav__item > a'); return a && a.parentNode.parentNode === ul ? a : null }
     var st = { x: 0, w: 0, k: 0 }, sp = m.spring(st, { stiffness: 460, damping: 34, mass: 1 }, function (o) {
       mark.style.transform = 'translateX(' + o.x.toFixed(1) + 'px) scaleX(' + Math.max(0, o.w / 100).toFixed(4) + ')'; mark.style.opacity = Math.max(0, Math.min(1, o.k)).toFixed(3);
       if (cur) lastBox = { x: o.x, w: o.w };
     });
     m.tw({ kill: sp.stop });
-    var cur = ul.querySelector('a[aria-current="page"]'), rest = cur ? box(cur) : null;
+    var cur = [].filter.call(ul.querySelectorAll(TOP), function (a) { return a.hasAttribute('aria-current') })[0], rest = cur ? box(cur) : null;
     if (rest && lastBox && fresh) { sp.jump({ x: lastBox.x, w: lastBox.w, k: 1 }); sp.to({ x: rest.x, w: rest.w }) }
     else if (rest) sp.jump({ x: rest.x, w: rest.w, k: 1 });
     else sp.jump({ x: 0, w: 0, k: 0 });
+    function home() { var o = ul.querySelector('.aq-nav__trigger[aria-expanded="true"]'); return o ? box(o) : rest }
     function go(a, instant) {
-      var b = a ? box(a) : rest;
+      var b = a ? box(a) : home();
       if (!b) { sp.to({ k: 0 }); return }
       if (!st.k && !rest) { sp.jump({ x: b.x, w: b.w * 0.6 }) }
       (instant ? sp.jump : sp.to)({ x: b.x, w: b.w, k: 1 });
     }
-    ul.addEventListener('pointerover', function (ev) { var a = ev.target.closest && ev.target.closest('a'); if (a && ev.pointerType === 'mouse') go(a) });
+    ul.addEventListener('pointerover', function (ev) { var a = topOf(ev.target); if (a && ev.pointerType === 'mouse') go(a) });
     ul.addEventListener('pointerleave', function () { go(null) });
-    ul.addEventListener('focusin', function (ev) { var a = ev.target.closest && ev.target.closest('a'); if (a && a.matches(':focus-visible')) go(a, true) });
+    ul.addEventListener('focusin', function (ev) { var a = topOf(ev.target); if (a && a.matches(':focus-visible')) go(a, true) });
     ul.addEventListener('focusout', function (ev) { if (!ul.contains(ev.relatedTarget)) go(null, true) });
+    nav.addEventListener('aq:navpanel', function (ev) { go(ev.detail.trigger || null) });
   });
 })();
 /* NcrTiles: the numerals are pressed into their tiles, then the repair is made on the drawing.
@@ -6082,6 +6178,58 @@ AQmotion.fx('SectionTrain', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 70%');
   });
 });
+/* SensorLoop: the loop is drawn and commissioned. The equipment draws back to front and the water runs the loop
+   once (IsoKit's choreography, AQiso.timeline), each stage lighting as the water reaches it; as the water passes a
+   measuring point its balloon strikes on, then every leader runs from its schedule card down (or up) to the balloon
+   and the card prints. Last the bus: the taps drop into it and the data recording balloon lands at its end. Hover a
+   card to light its leader, balloons and tap. One timeline, once, < 5 s. Phones: the cards rise in order. */
+AQmotion.fx('SensorLoop', function (root, m) {
+  root.querySelectorAll('.aq-sensor-loop').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s) { return [].slice.call(el.querySelectorAll(s)) }, svg = el.querySelector('svg.aq-iso');
+    var cards = qa('.aq-sensor-loop__card').filter(function (c) { return !c.classList.contains('aq-fold-x') || !m.narrow() });
+    var balls = qa('.aq-sensor-loop__ball'), leads = qa('.aq-sensor-loop__lead'), bus = qa('.aq-sensor-loop__bus, .aq-sensor-loop__tap, .aq-sensor-loop__node');
+    var tl = svg && window.AQiso ? AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.6, flow: 1.4, stagger: 0.04 }) : null;
+    if (!tl) { tl = m.tw(gsap.timeline({ paused: true })) }
+    var t0 = tl.duration() ? Math.max(1.3, tl.duration() - 1.2) : 0.3;
+    gsap.set(balls, { autoAlpha: 0 }); gsap.set(bus, { autoAlpha: 0 });
+    var flowAt = tl.labels && tl.labels.flow != null ? tl.labels.flow : t0;
+    tl.to(balls, { autoAlpha: 1, duration: 0.25, stagger: 0.09, clearProps: 'opacity,visibility' }, flowAt + 0.2);
+    tl.from(balls, { scale: 1.6, transformOrigin: '50% 50%', duration: 0.35, stagger: 0.09, ease: 'back.out(2)', clearProps: 'transform' }, flowAt + 0.2);
+    if (!m.narrow()) {
+      if (window.DrawSVGPlugin) { leads.forEach(function (l) { l.setAttribute('vector-effect', 'non-scaling-stroke') });
+        tl.fromTo(leads, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.5, stagger: 0.07, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, flowAt + 0.5) }
+      tl.from(cards, { y: function (i, c) { return c.classList.contains('aq-sensor-loop__card--b') ? 12 : -12 }, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, flowAt + 0.6);
+    } else tl.from(cards, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.2);
+    tl.to(bus, { autoAlpha: 1, duration: 0.4, stagger: 0.03, clearProps: 'opacity,visibility' }, flowAt + 1.1);
+    m.on(el, function () { tl.play() }, 'top 70%');
+  });
+});
+/* SheetPreviews: the documents are dealt. The sheets start as one squared stack in the first column and deal out to
+   their columns, the top sheet (the last column) first, each turning flat as it lands; the index numerals rise out of their line; then each thumbnail draws
+   itself (grid, curves, logic, seal) and the code decodes, the text following. Once on scroll-in, under 3 s.
+   Phones: no deal; each sheet rises into place as it scrolls in. */
+AQmotion.fx('SheetPreviews', function (root, m) {
+  root.querySelectorAll('ol.aq-sheet-previews').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var items = [].slice.call(el.querySelectorAll('.aq-sheet-previews__item')), q = function (s, r) { return [].slice.call(r.querySelectorAll(s)) };
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), wide = !m.narrow();
+    var x0 = items[0] ? items[0].getBoundingClientRect().left : 0;
+    items.forEach(function (it, i) {
+      var sh = it.querySelector('.aq-sheet-previews__sheet'), dx = x0 - it.getBoundingClientRect().left, at = 0.25 + (items.length - 1 - i) * 0.12;
+      if (sh) {
+        if (wide) tl.from(sh, { x: dx, y: -i * 6, rotation: (i % 2 ? 1 : -1) * (3 + i), duration: 0.9, ease: 'power3.inOut', clearProps: 'transform' }, at);
+        else tl.from(sh, { y: 24, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, i * 0.1);
+        var lines = q('.aq-sheet-previews__svg path, .aq-sheet-previews__svg rect:not(.aq-sheet-previews__paper)', sh);
+        if (window.DrawSVGPlugin && lines.length) tl.fromTo(lines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.8, stagger: 0.01, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.7);
+      }
+      var num = it.querySelector('.aq-sheet-previews__num'); if (num) tl.from(num, { yPercent: 40, autoAlpha: 0, duration: 0.7, clearProps: 'transform,opacity,visibility' }, i * 0.08);
+      tl.from(q('.aq-sheet-previews__code, .aq-sheet-previews__t, .aq-sheet-previews__d', it), { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.8);
+      var c = it.querySelector('.aq-sheet-previews__code'); if (c) tl.call(function () { m.scramble(c, 0) }, null, at + 0.8);
+    });
+    m.on(el, function () { tl.play() }, 'top 80%');
+  });
+});
 /* SheetStack: the document set arrives as one pile in the middle of the axis, then explodes apart, each sheet rising
    or sinking to its row (top sheet first) and settling; the axis draws out from the middle; the drawings on the sheets
    draw on (the calculation's bars run out past the limit line); each row slides in beside its sheet, its code
@@ -6383,6 +6531,28 @@ AQmotion.fx('SpecTable', function (root, m) {
         if (me && me.textContent.trim()) tl.from(me, { autoAlpha: 0, duration: 0.45 }, rd ? 0.7 : 0.4);
       });
     } }).forEach(m.tw);
+  });
+});
+/* SpineShelf: the package is shelved. The shelf board draws across, the spines drop onto it one after another from
+   the left (a short settle), then the key section's spine is pulled up as its index row opens; the index rows wipe in
+   down the list and the open section's documents deal in. One timeline, once, under 3 s. */
+AQmotion.fx('SpineShelf', function (root, m) {
+  root.querySelectorAll('.aq-spine-shelf').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s) { return [].slice.call(el.querySelectorAll(s)) };
+    var spines = q('.aq-spine-shelf__spine'), board = el.querySelector('.aq-spine-shelf__board'), cap = el.querySelector('.aq-spine-shelf__cap');
+    var rows = q('.aq-spine-shelf__item').filter(function (r) { return r.offsetHeight > 0 });
+    var open = q('details[open] .aq-spine-shelf__docs li');
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (board) tl.from(board, { scaleX: 0, transformOrigin: '0 50%', duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, 0);
+    tl.from(spines, { yPercent: -18, autoAlpha: 0, duration: 0.55, ease: 'back.out(1.4)', stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.25);
+    if (cap) tl.from(cap, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.9);
+    tl.from(rows, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', stagger: 0.05, clearProps: 'clipPath' }, 0.2);
+    var pulled = spines.filter(function (s) { return s.classList.contains('is-open') });
+    pulled.forEach(function (s) { s.classList.remove('is-open') });
+    tl.call(function () { pulled.forEach(function (s) { var it = el.querySelector('.aq-spine-shelf__item[data-i="' + s.getAttribute('data-i') + '"] details'); if (!it || it.open) s.classList.add('is-open') }) }, null, 1.15);
+    if (open.length) tl.from(open, { x: -12, autoAlpha: 0, duration: 0.4, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 1.3);
+    m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
 /* SpoolDossier: the spool is drawn the IsoKit way (lengths back to front, the water through it once), then the joints

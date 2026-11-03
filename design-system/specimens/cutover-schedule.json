@@ -51,7 +51,7 @@
    "page": "project-plan",
    "slot": 0,
    "h": "Stages, what each leaves, and who signs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -107,6 +107,74 @@
      {
       "t": "PQ and first use, at least 12 months",
       "d": "Performance qualification (PQ) in three phases. Use from phase 2, after at least 2 weeks of sampling (WHO TRS 1033).",
+      "hold": "Your quality unit"
+     }
+    ],
+    "lane": "Order to water in use",
+    "ground": "light",
+    "look": "cutover-schedule"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 0,
+   "h": "Stages, what each leaves, and who signs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "3b32621580",
+   "block": {
+    "type": "steps",
+    "anchor": "stages",
+    "nav": "Stages",
+    "h": "Stages, what each leaves, and who signs",
+    "intro": "Total: [order to water in use, weeks] from [lead time start event], plus your review time. Replacing a system? We plan the cutover; production stops only [planned shutdown, hours].",
+    "items": [
+     {
+      "t": "Your approvals, before order",
+      "d": "Your user requirement specification (URS), capital approval and supplier approval. They come before our clock starts, so plan them first.",
+      "hold": "You"
+     },
+     {
+      "t": "Design to DQ, [design to DQ, weeks]",
+      "d": "Basis of design, piping and instrumentation diagrams and functional specification. Under good manufacturing practice (GMP), design qualification (DQ) closes this stage.",
+      "hold": "You, and your quality unit for DQ under GMP"
+     },
+     {
+      "t": "Drawing approval, [submittal review clock, working days]",
+      "d": "You review drawings for fabrication. Lead time to delivery: [lead time from order, weeks] from order, [lead time from drawing approval, weeks] from approval.",
+      "hold": "You or your engineer"
+     },
+     {
+      "t": "Fabrication, [approved design to FAT, weeks]",
+      "d": "Polypropylene (PP) skids built in our shop. Leaves [PP material certificates] and [PP joint records kept].",
+      "link": "svc-fabrication"
+     },
+     {
+      "t": "Factory acceptance test (FAT), [FAT duration, days]",
+      "d": "With water, to the protocol you or your quality unit approved. Leaves raw data, deviation log, report and release to ship.",
+      "hold": "Both parties",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Shipping and storage, [shipping time, weeks]",
+      "d": "Drained after FAT, then shipped. Kept until start-up under [storage conditions before start-up]."
+     },
+     {
+      "t": "Installation and site acceptance tests (SAT), [installation and SAT, days]",
+      "d": "Installation by [installation scope]; site joints and pressure test by [site joints, by whom]. Tie-in during the planned shutdown. Leaves the SAT report.",
+      "hold": "You, or your quality unit under GMP"
+     },
+     {
+      "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+      "d": "To protocols your quality unit approves; leaves reports and draft procedures. Without GMP: commissioning and an acceptance test against your specification.",
+      "hold": "Your quality unit, or you without GMP",
+      "link": "svc-cq"
+     },
+     {
+      "t": "PQ under GMP: three phases, at least 12 months",
+      "d": "Performance qualification (PQ). After at least 2 weeks of sampling, your quality unit releases the water for use (WHO TRS 1033).",
       "hold": "Your quality unit"
      }
     ],

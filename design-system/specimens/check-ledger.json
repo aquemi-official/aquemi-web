@@ -197,7 +197,7 @@
    "page": "projects",
    "slot": 0,
    "h": "Verify before a case study exists",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -306,6 +306,122 @@
       "tee"
      ]
     }
+   }
+  },
+  {
+   "page": "projects",
+   "slot": 3,
+   "h": "Qualify us as your supplier",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "a1d5847100",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Qualify us",
+    "anchor": "verify",
+    "h": "Qualify us as your supplier",
+    "cols": [
+     "What you check",
+     "Route",
+     "What you receive",
+     "Time to arrange"
+    ],
+    "rows": [
+     [
+      {
+       "t": "The engineer who would lead your project",
+       "link": "about#people"
+      },
+      {
+       "t": "Talk to an engineer",
+       "link": "contact-proposal",
+       "intent": "Not sure yet: talk to an engineer"
+      },
+      "A written answer from that engineer",
+      "[proposal response time, working days]"
+     ],
+     [
+      "How we join and trace PP parts, in [shop location, city and province]",
+      {
+       "t": "Shop visit",
+       "link": "contact-locations#visit",
+       "intent": "Shop tour before shortlisting"
+      },
+      "A walk through the shop and test bay, by appointment",
+      "[shop visit notice, working days] notice"
+     ],
+     [
+      "What your turnover package will contain",
+      {
+       "t": "Specimen package",
+       "link": "cmp-documentation#samples",
+       "intent": "Turnover package index"
+      },
+      "The turnover package index and specimen documents",
+      "[specimen package response time, working days]"
+     ],
+     [
+      "How we lay out and document a design",
+      {
+       "t": "Talk to an engineer",
+       "link": "contact-proposal",
+       "intent": "Not sure yet: talk to an engineer"
+      },
+      "A specimen piping and instrumentation diagram (P&ID) and 3D layout, labelled as a specimen",
+      "[specimen design set response time, working days]"
+     ],
+     [
+      "How we test a system before it ships",
+      {
+       "t": "Specimen package",
+       "link": "cmp-documentation#samples",
+       "intent": "FAT protocol: contents and test cases"
+      },
+      "Our factory acceptance test (FAT) protocol template, labelled as a specimen",
+      "[specimen package response time, working days]"
+     ],
+     [
+      "That our quality system works",
+      {
+       "t": "Supplier audit",
+       "link": "cmp-quality#audit",
+       "intent": "On-site supplier audit"
+      },
+      "An audit of our quality system, remote or on site",
+      "[on-site audit notice, working days] notice"
+     ],
+     [
+      "That we read your user requirement specification (URS) line by line",
+      {
+       "t": "Compliance matrix",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft|Compliance matrix"
+      },
+      "A compliance matrix answering each URS line",
+      "[compliance matrix response time, working days]"
+     ],
+     [
+      "Your system's alarms, interlocks and controls, before it ships",
+      {
+       "t": "Factory acceptance test (FAT) witness",
+       "link": "contact-locations#visit",
+       "intent": "Witness the FAT on our project"
+      },
+      "Your team at the FAT, testing alarms and interlocks",
+      "[FAT witness notice, working days] notice"
+     ]
+    ],
+    "look": "check-ledger",
+    "fits": {
+     "1": [
+      "cross",
+      "tee"
+     ]
+    },
+    "intro": "References and site visits are arranged with our commercial lead during qualification."
    }
   }
  ]

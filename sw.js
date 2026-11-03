@@ -5,7 +5,7 @@
      (fonts, icons, illustrations, brand, vendor) are served from the cache once fetched: a new version is a new URL.
    - CACHE is a hash of all of those, stamped by the build, so any change starts a fresh cache and the old one is deleted.
    - Nothing else is touched: other files use the network and the browser's own cache, and versions/ keeps its own worker. */
-const CACHE = 'aquemi-843f14cd78';
+const CACHE = 'aquemi-bda80b473c';
 const STATIC = /^(assets\/(fonts|icons|illustrations|vendor)|brand)\//;
 
 self.addEventListener('install', function () { self.skipWaiting() });

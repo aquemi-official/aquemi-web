@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label, intent.",
  "best_for": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "sys-pretreatment",
@@ -45,6 +45,49 @@
     "fold_noun": "documents",
     "link": "cmp-documentation#index",
     "link_label": "Full index",
+    "look": "sheet-previews"
+   }
+  },
+  {
+   "page": "ind-personal-care",
+   "slot": 6,
+   "h": "Records for your file",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "2e638fcb2c",
+   "block": {
+    "type": "docs",
+    "nav": "Records",
+    "anchor": "records",
+    "h": "Records for your file",
+    "items": [
+     {
+      "t": "Monitoring records",
+      "d": "Conductivity trends, alarms and excursions, by date",
+      "sheet": "curves"
+     },
+     {
+      "t": "Sanitization and calibration",
+      "d": "Each sanitization with its residual test; instrument calibration certificates",
+      "sheet": "basis"
+     },
+     {
+      "t": "Drug lines: qualification",
+      "d": "Installation qualification (IQ), operational qualification (OQ), performance qualification (PQ): protocols and reports",
+      "sheet": "logic",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Cosmetic-only lines: acceptance",
+      "d": "Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+      "sheet": "certificate"
+     }
+    ],
+    "fold_noun": "records",
+    "link": "cmp-documentation#index",
+    "link_label": "Full document index",
     "look": "sheet-previews"
    }
   }

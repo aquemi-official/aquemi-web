@@ -10,9 +10,9 @@
    "page": "ind-pharma",
    "slot": 1,
    "h": "Minimum water grade by dosage form",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "24719fa0c0",
    "block": {
@@ -114,6 +114,126 @@
      ],
      [
       "wfi"
+     ],
+     [
+      "pw",
+      "wfi?"
+     ],
+     [
+      "wfi",
+      "pw?"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "ind-pharma",
+   "slot": 1,
+   "h": "Minimum water grade by dosage form",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "f157e01f59",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "nav": "Grade by dosage form",
+    "anchor": "grades",
+    "h": "Minimum water grade by dosage form",
+    "intro": "Minimum grades from the European Medicines Agency (EMA) water guideline, for human and veterinary drugs. Non-sterile biotech pilot batches read the same rows. Your product file may go higher, never lower.",
+    "cols": [
+     "Product or process step",
+     "Minimum grade",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Oral preparations and nebulizers",
+      "PW",
+      "Water for Injection (WFI) for sterile, non-pyrogenic nebulizers"
+     ],
+     [
+      "Granulation and tablet coating",
+      "PW",
+      "Even water that leaves during drying"
+     ],
+     [
+      "Non-sterile skin, nasal, ear, rectal and vaginal",
+      "PW",
+      "Potable only where justified, some veterinary products"
+     ],
+     [
+      "Final rinse of equipment and containers",
+      "Same grade as the product",
+      "PW for non-parenterals; WFI for sterile parenterals"
+     ],
+     [
+      "Over-the-counter (OTC) drugs",
+      "PW, by dosage form",
+      "Drug good manufacturing practice (GMP) applies, as for prescription drugs: GUI-0001, 21 CFR 211"
+     ],
+     [
+      "Active pharmaceutical ingredients (API) and fine chemicals",
+      "Potable; PW for final isolation where required",
+      "Final isolation water follows the drug's end use, up to WFI"
+     ],
+     [
+      "Sterile eye, nose, ear and skin preparations",
+      "PW",
+      "WFI for intra-ocular products (GUI-0001)"
+     ],
+     [
+      "Injections, infusions, and formulation before sterile lyophilization",
+      "WFI",
+      "Also dialysis and irrigation solutions; PW before non-sterile lyophilization"
+     ]
+    ],
+    "fold": 4,
+    "fold_noun": "steps",
+    "look": "grade-ladder",
+    "lanes": [
+     {
+      "id": "potable",
+      "t": "Potable water",
+      "short": "Potable"
+     },
+     {
+      "id": "pw",
+      "t": "Purified Water (PW)",
+      "short": "PW"
+     },
+     {
+      "id": "wfi",
+      "t": "Water for Injection (WFI)",
+      "note": "We do not supply WFI",
+      "off": true,
+      "short": "WFI"
+     }
+    ],
+    "taps": [
+     [
+      "pw",
+      "wfi?"
+     ],
+     [
+      "pw"
+     ],
+     [
+      "pw",
+      "potable?"
+     ],
+     [
+      "pw?",
+      "wfi?"
+     ],
+     [
+      "pw"
+     ],
+     [
+      "potable",
+      "pw?",
+      "wfi?"
      ],
      [
       "pw",

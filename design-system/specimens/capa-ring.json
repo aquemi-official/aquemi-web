@@ -53,7 +53,7 @@
    "page": "news",
    "slot": 2,
    "h": "Chemical sanitization, proven at every outlet",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -63,6 +63,51 @@
     "anchor": "pp-sanitization",
     "h": "Chemical sanitization, proven at every outlet",
     "intro": "Sanitization is a design choice: the method suits the material. A specifier can accept chemical sanitization of a plastic loop written as a procedure, checked at every outlet.",
+    "core": "PP loop",
+    "items": [
+     {
+      "t": "Isolate",
+      "d": "Bypass or remove the parts the sanitant could harm, as the written procedure lists them."
+     },
+     {
+      "t": "Dose",
+      "d": "Fill the tank and loop: [PP loop sanitization method], at [sanitant concentration]."
+     },
+     {
+      "t": "Prove it arrived",
+      "d": "Measure the sanitant at every outlet before the hold starts, so no branch is missed."
+     },
+     {
+      "t": "Hold",
+      "hold": "the operator, at start and end",
+      "d": "Hold for [contact time, hours], with the tank and loop out of use."
+     },
+     {
+      "t": "Flush",
+      "d": "Flush the tank and loop with Purified Water, outlet by outlet."
+     },
+     {
+      "t": "Prove it gone",
+      "d": "Residual tested before use, at every outlet. The signed record goes to your quality unit."
+     }
+    ],
+    "look": "capa-ring"
+   }
+  },
+  {
+   "page": "news",
+   "slot": 2,
+   "h": "Chemical sanitization, proven at every outlet",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "a14d480d52",
+   "block": {
+    "type": "steps",
+    "anchor": "pp-sanitization",
+    "h": "Chemical sanitization, proven at every outlet",
+    "intro": "Sanitization lowers the microbial count; it does not sterilize. For a PP loop the method is chemical, written as a procedure and checked at every outlet. Your monitoring shows whether the schedule is right.",
     "core": "PP loop",
     "items": [
      {

@@ -4,7 +4,7 @@
  "type": "options",
  "fields": "as options (modules): h, base, items [{t, d, spot, link}], fold, fold_noun (phones only).",
  "best_for": "ModulePlinth draws an options block with a base as modules standing on that base: an isometric plinth on a navy blueprint carries one block per option, each fed by a riser from the loop along the plinth, with numbered cards beside it.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "ind-cdmo",
@@ -53,6 +53,45 @@
       "t": "Room for new programs",
       "spot": "pid",
       "d": "Spare skid space and valved tie-ins for expected programs, qualified with the original system."
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "options",
+    "look": "module-plinth"
+   }
+  },
+  {
+   "page": "ind-personal-care",
+   "slot": 5,
+   "h": "From exchange DI to your own water",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "e93ee8ccc3",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "nav": "From exchange DI",
+    "anchor": "from-di",
+    "h": "From exchange DI to your own water",
+    "base": "Your plant: drinking water, drain, power",
+    "items": [
+     {
+      "t": "Exchange DI tanks",
+      "spot": "storage-tank",
+      "d": "A supplier swaps deionization (DI) tanks. Your plant gives a water feed and space; you test the outlet for microbes."
+     },
+     {
+      "t": "Reverse osmosis (RO) with storage",
+      "spot": "ro-skid",
+      "d": "RO fills a tank you draw from, without a loop: [configurations offered for this use]. Needs drinking water, a drain and power."
+     },
+     {
+      "t": "Full package with loop",
+      "spot": "loop",
+      "d": "Pretreatment, RO, DI or electrodeionization (EDI), storage and a loop to each point of use, with its records. Adds floor space.",
+      "link": "systems"
      }
     ],
     "fold": 3,

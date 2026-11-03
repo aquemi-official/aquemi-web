@@ -138,7 +138,7 @@
    "page": "ind-meddevice",
    "slot": 0,
    "h": "Start from your situation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -192,6 +192,137 @@
       {
        "t": "Your first PW system",
        "link": "first-system"
+      }
+     ]
+    ],
+    "look": "numeral-index"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "2fb0a65d00",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "Endotoxin or bioburden drifting at the washer inlet",
+      "Your rinse water limit at risk; first, assess loop, sample point and trends",
+      {
+       "t": "Out-of-trend results",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "Bioburden rising, a dose audit at risk",
+      "Rinse water bioburden adds to device bioburden (ISO 11737-1, ISO 11137-2); first, assess the supply",
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "A new device or line",
+      "Rinse water limits worked back from your device limits",
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "A supplier questionnaire or audit due",
+      "Our quality system status, audit access and quality agreement",
+      {
+       "t": "Supplier quality",
+       "link": "ind-meddevice#supplier-quality"
+      }
+     ],
+     [
+      "A first PW system for a small plant",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "first-system"
+      }
+     ]
+    ],
+    "look": "numeral-index",
+    "anchor": "start"
+   }
+  },
+  {
+   "page": "projects",
+   "slot": 1,
+   "h": "Where the water goes, by industry",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "b6253b088e",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "By industry",
+    "anchor": "by-industry",
+    "h": "Where the water goes, by industry",
+    "intro": "Many plants draw the same water; the limit and the documents change by industry.",
+    "cols": [
+     "Industry",
+     "Where the water goes",
+     "Industry page"
+    ],
+    "rows": [
+     [
+      "Drugs and natural health products",
+      "Granulation, syrup and cream make-up; final rinse of granulators, kettles and fillers",
+      {
+       "t": "Pharmaceutical",
+       "link": "ind-pharma"
+      }
+     ],
+     [
+      "Medical devices",
+      "Final rinse after cleaning; solution preparation",
+      {
+       "t": "Medical devices",
+       "link": "ind-meddevice"
+      }
+     ],
+     [
+      "Hospitals and laboratories",
+      "Reprocessing final rinse, critical water designed to ANSI/AAMI ST108:2023; reagent preparation; building loops",
+      {
+       "t": "Hospitals and laboratories",
+       "link": "ind-hospital-lab"
+      }
+     ],
+     [
+      "Cosmetics and personal care",
+      "Ingredient water for creams, lotions and rinse-offs; tank and filler rinse",
+      {
+       "t": "Cosmetics and personal care",
+       "link": "ind-personal-care"
+      }
+     ],
+     [
+      "Food, beverage and industrial",
+      "Ingredient and proofing water, precision rinse, make-up water to your limit",
+      {
+       "t": "Food, beverage and industrial",
+       "link": "ind-process"
       }
      ]
     ],

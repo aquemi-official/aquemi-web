@@ -70,9 +70,10 @@
     }
    ],
    "nav": "Limits",
-   "intro": "Limits apply at each point of use; the skid outlet has its own guarantee.",
+   "intro": "Limits apply at each point of use; the skid outlet has its own guarantee. For critical, laboratory or boiler water, the skid is designed to the limit your standard names.",
    "as": "gauges",
-   "look": "limit-stack"
+   "look": "limit-stack",
+   "anchor": "limits"
   },
   {
    "type": "diagram",
@@ -120,12 +121,14 @@
     {
      "t": "To PW storage",
      "spot": "storage-tank",
-     "d": "Water out of specification diverts away from storage, to [divert route: drain or recirculation], until it recovers.",
+     "d": "Water out of specification does not reach storage: it goes to [divert route: drain or recirculation] until it recovers.",
      "label": "Out"
     }
    ],
    "nav": "How it works",
-   "look": "winding-route"
+   "look": "winding-route",
+   "anchor": "process",
+   "intro": "The skid starts at the pretreated feed and ends at the storage inlet. Sample points: [sample point after each stage, confirm design]."
   },
   {
    "type": "spec",
@@ -146,6 +149,14 @@
       14.7,
       51.5
      ]
+    },
+    {
+     "p": "Battery limits and utilities",
+     "v": "Pretreated feed in, PW out to storage, concentrate to drain; [supply voltage options]; [feed pressure and drain flow, per skid]; [typical footprint, m × m]",
+     "m": "Electrical: [panel certification mark held, or field evaluation used]",
+     "hl": false,
+     "link": "systems#site",
+     "link_label": "Site requirements"
     },
     {
      "p": "Membrane design temperature",
@@ -213,13 +224,6 @@
      "m": "Water out of specification diverts at a setpoint below your alert level",
      "hl": false,
      "link": "sys-monitoring"
-    },
-    {
-     "p": "Utilities and footprint",
-     "v": "[supply voltage options]; [feed pressure and drain flow, per skid]; [typical footprint, m × m]",
-     "m": "Electrical: [panel certification mark held, or field evaluation used]",
-     "hl": false,
-     "link": "systems#site"
     }
    ],
    "nav": "Skid design",
@@ -254,7 +258,7 @@
     },
     {
      "t": "Material certificates",
-     "d": "Prove the product-contact grade: [PP material certificates]",
+     "d": "Prove the product-contact grade: [PP material certificates]. Membranes, EDI modules and resin arrive with makers' certificates and serial or lot numbers.",
      "key": true,
      "at": [
       0.66,
@@ -284,7 +288,8 @@
    "link_label": "Full index",
    "nav": "Documents",
    "look": "doc-hotspots",
-   "intro": "What the skid leaves on paper, and the claim each document proves."
+   "intro": "What the skid leaves on paper, and the claim each document proves.",
+   "anchor": "documents"
   },
   {
    "type": "options",
@@ -293,29 +298,29 @@
    "items": [
     {
      "t": "Membrane degasser",
-     "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high.",
+     "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high. Adds: its datasheet, a P&ID line and a FAT check.",
      "spot": "ro-membrane"
     },
     {
      "t": "Duplex trains",
-     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
+     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
      "spot": "ro-skid"
     },
     {
      "t": "Recirculation at no demand",
-     "d": "Circulates when storage is full, so water never stands in the membranes.",
+     "d": "Circulates when storage is full, so water does not stand in the membranes. Adds: a control sequence, tested at FAT.",
      "spot": "loop",
      "shape": "round"
     },
     {
      "t": "Ultrafiltration or 254 nm UV",
-     "d": "After DI or EDI, where your microbial target needs more margin. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
+     "d": "After DI or EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize. Adds: a P&ID line, FAT check.",
      "spot": "uv-ozone",
      "shape": "tag"
     },
     {
      "t": "Recovery enhancement",
-     "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
+     "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter. Adds: revised membrane projections and a FAT check.",
      "spot": "pump",
      "shape": "tag"
     }
@@ -324,7 +329,8 @@
    "fold": 3,
    "spot": "ro-skid",
    "look": "option-tags",
-   "intro": "Your proposal states each option's effect on drawings, tests and lead time."
+   "intro": "Each tag names what the option adds on paper. Your proposal marks it included or priced, with its lead time effect.",
+   "anchor": "options"
   },
   {
    "type": "faq",
@@ -347,8 +353,14 @@
      "a": "Single-pass reverse osmosis (RO) with electrodeionization (EDI) suits feed with moderate dissolved solids. Double pass adds margin on conductivity, total organic carbon and silica for high-solids feed."
     },
     {
+     "q": "Critical water or boiler make-up, not PW: does this skid fit?",
+     "a": "Yes, if your use passes the fit check. For critical water (ANSI/AAMI ST108:2023) or boiler make-up, the RO train is designed to the limit your standard names. Whether DI or EDI is fitted follows that limit: [configurations offered for this use].",
+     "link": "industries#fit",
+     "link_label": "Check your use fits"
+    },
+    {
      "q": "How do you handle cold winter feed?",
-     "a": "Rated at 25 °C, reverse osmosis (RO) can lose a third or more of its output at 5 °C. We size at your coldest feed, or add a heat exchanger."
+     "a": "We size at your coldest feed, or add a heat exchanger. Rated at 25 °C, reverse osmosis (RO) can lose a third or more of its output at 5 °C."
     },
     {
      "q": "Our supply is chloraminated. What changes?",
@@ -358,7 +370,7 @@
     },
     {
      "q": "How do we know it will pass IQ/OQ?",
-     "a": "The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT), then installation and operational qualification (IQ/OQ), prove it on your site and feed water. Your quality unit approves the FAT protocol and can witness it once [shop and test bay ready for visits].",
+     "a": "Two acceptance tests come first. The factory acceptance test (FAT) proves function before shipping. Your quality unit approves its protocol first and can witness it with [FAT witness notice, working days] notice. The site acceptance test (SAT), then installation and operational qualification (IQ/OQ), prove it on your site and feed water.",
      "link": "svc-fat-sat",
      "link_label": "See what FAT proves"
     },
@@ -369,7 +381,8 @@
      "link_label": "See the service plans"
     }
    ],
-   "nav": "FAQ"
+   "nav": "FAQ",
+   "anchor": "faq"
   },
   {
    "type": "related",
@@ -392,7 +405,7 @@
    "Feed water analysis, ideally two seasons",
    "Feed temperature range, °C",
    "Peak and average demand, L/h",
-   "Pharmacopoeias that apply"
+   "Pharmacopoeia or standard that applies"
   ],
   "turnaround": "[proposal response time, working days]",
   "returns": [
@@ -420,15 +433,22 @@
   "PW generation budget band, as on systems' budget table ([budget range, CAD] at [reference capacity, L/h]; one figure on both pages; FD-03, DR-005 rule 3). Once filled it may also be a hero fact (DR-010); unfilled at launch, the row goes",
   "Whether a sizing proposal is free or charged ([proposal cost or free], the name contact-proposal's requests table uses; FD-02)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page; FD-01)",
-  "Date the shop and test bay are ready for witnessed FAT, in person or remote ([shop and test bay ready for visits], FAQ; same name as home, svc-fat-sat and contact-locations; FD-44). At launch the FAQ's witness clause shows only if this is filled with a date that has passed; otherwise it is removed (DR-004 class 2, DR-006 rule 6)",
+  "FAT witness notice, working days ([FAT witness notice, working days], FAQ IQ/OQ answer; same name as svc-fat-sat and home; FD-31, FD-44). The readiness date [shop and test bay ready for visits] is a launch gate, never printed (DR-028 rule 3, R6)",
   "Datasheet PDF and typical P&ID; once the datasheet exists it becomes the hero's secondary link (DR-006)",
-  "A real PW project with measured outlet conductivity, TOC and capacity before adding a case study block (FD-42, DR-016)",
+  "Case study block only with a released project record: measured outlet conductivity, TOC and capacity (FD-42; DR-028). Until then, typical configurations live on projects#configurations",
   "Pass 11 (phrasebook 17, †, L-07-12, L-10-13, L-G2-10, PB-07.12): the capacity hero fact and design row now read \"coldest feed, end of membrane life\"; the design row names [membrane design life, years] (SITE-PLAN rule 4: the term's basis). Owner confirms the package guarantees output at end of membrane life, and for how many years (phrasebook open question 3; FD-20, FD-21). If not, revert both to \"at your coldest feed\". No other page prints the capacity label today; if one is added, use sys-pw's wording (DR-011)",
   "Pass 11 (phrasebook 23, PB-03.21, PB-07.3, PB-G2.2; buyer-requirements § 3.2, L-G2-4, L-07-4; phrasebook § 5.3): the diagram's last stop says out-of-specification water diverts away from storage, to [divert route: drain or recirculation]. Owner confirms the divert route by design (FD-21). sys-monitoring's divert row uses the same placeholder: keep both on one route once decided (DR-011)",
   "Pass 11 (proof § 5.2, P19 and P21; L-02-5, L-13-1, L-15-17): the documents block names what each document does: FAT and SAT reports, certificates, joint records and as-built drawings prove; membrane projections predict the capacity basis, and FAT and SAT confirm it (same document name as sys-pretreatment's). Still missing: datasheet, typical general arrangement and room sheet (P19, Build; no download until the files exist, DR-006 rule 6), and the class line \"process equipment for GMP use, not a medical device\" (P11, wording to confirm before it ships)",
   "Pass 11 (proof P17; L-G1-11, L-04-28): options intro says the proposal states each option's effect on drawings, tests and lead time (same sentence on sys-storage and sys-pretreatment); owner confirms the proposal lists them (DR-005). Values stay off the page until FD-08 sets lead times",
   "Pass 11 (URS FAQ; L-07-5, L-G2-5, L-G2-1, L-15-17; DR-013 rule 1; DESK Q1 explicit limits): the first FAQ answers a stainless or hot-sanitization URS row, says first when PP is the wrong choice (hot loop, stainless product contact), and links urs-guide#clauses (new page, anchor fixed by pass 11 SITE-PLAN). The systems FAQ \"When is polypropylene the wrong choice?\" stays the one home of the full answer (DR-009)",
   "Pass 11 (proof P14; L-02-2, L-G1-10, L-02-23): the customer's-share FAQ names three duties after handover. Daily checks match svc-service's operator FAQ (phrasebook 13); align wording if that answer changes",
-  "Final round, pass 11: RO pass 1 described as one picture sentence (L-BWT-5; BWT study § 9 rank 12)"
+  "Final round, pass 11: RO pass 1 described as one picture sentence (L-BWT-5; BWT study § 9 rank 12)",
+  "Pass 12 (SITE-PLAN sys-pw; IB s4): limits intro adds \"designed to the limit your standard names\"; new FAQ on critical water and boiler make-up says DI or EDI is added only where the grade needs it, links industries#fit (DR-027, DR-013 fit gate). The grade names and editions stay on ind-hospital-lab and ind-process (one home, DR-009)",
+  "Pass 12 (RI 01, RI 05): diagram intro states the skid's battery limits and names sample points as [sample point after each stage, confirm design]; owner confirms the design (FD-21). The look has no per-stage sample marker; drawing one per stop needs a winding-route field (renderer owner)",
+  "Pass 12 (RI 02; SITE-PLAN battery limits line): the utilities row is now row 2 \"Battery limits and utilities\", inside the phone fold, linking systems#site (package-level site requirements stay there, DR-009 rule 5)",
+  "Pass 12 (proof P17): each option names what it adds on paper; intro says the proposal marks it included or priced with its lead time effect. Values stay off the page until FD-08 sets lead times. R2 bars degassing claims on industry pages; the membrane degasser option and the CO₂ stage predate it and stay on this product page unless the owner rules otherwise",
+  "Pass 12 (PB 23): last stop reads \"does not reach storage: it goes to [divert route: drain or recirculation]\"; the route stays a placeholder until FD-21 (same as sys-monitoring)",
+  "Pass 12 anchors: limits, process, design (menu: sys-pw#design), documents, options, faq",
+  "Pass 12 review fixes (reviews/sys-pw.md 1-6, 8): DI/EDI fitting now [configurations offered for this use] (R2); traceable bought parts in the documents block (DR-028 rule 2, same fact as projects FAQ); FAT protocol approval first in the IQ/OQ answer; limits intro names critical, laboratory and boiler water (FD-59). Owner: degasser, duplex, UF/UV and recovery RO options are unconfirmed scope beyond MISSION's offer list (R2)"
  ]
 }

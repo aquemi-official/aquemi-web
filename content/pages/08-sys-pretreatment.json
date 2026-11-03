@@ -2,7 +2,7 @@
  "id": "sys-pretreatment",
  "section": "Systems",
  "nav_label": "Pretreatment",
- "title": "RO pretreatment for pharmaceutical water systems | Aquemi",
+ "title": "RO pretreatment for Purified Water systems | Aquemi",
  "meta": "PVC pretreatment for our polypropylene Purified Water package. It takes drinking water (EPA, EU, Japan or WHO limits) and holds RO feed to chlorine, hardness and SDI targets all year.",
  "path": "/systems/pretreatment/",
  "eyebrow": "SYSTEMS · PVC PRETREATMENT · USP <1231>",
@@ -48,7 +48,7 @@
     {
      "p": "Free and total chlorine",
      "v": "[RO inlet chlorine target, mg/L as Cl₂]",
-     "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed. Membrane makers: typically < 0.1 mg/L free chlorine",
+     "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed",
      "hl": true
     },
     {
@@ -147,7 +147,8 @@
    ],
    "base": "Online monitoring · total chlorine, ORP, pressure drop",
    "nav": "The train",
-   "look": "section-train"
+   "look": "section-train",
+   "anchor": "train"
   },
   {
    "type": "table",
@@ -207,7 +208,9 @@
     "silica",
     "coat",
     "biofilm"
-   ]
+   ],
+   "anchor": "feed-water",
+   "intro": "Feeding a hydrogen electrolyser or boiler make-up? The same train protects your RO and EDI from every cause below."
   },
   {
    "type": "table",
@@ -275,7 +278,8 @@
    "fold_noun": "documents",
    "link": "cmp-documentation#index",
    "link_label": "Full index",
-   "look": "doc-pipe"
+   "look": "doc-pipe",
+   "anchor": "documents"
   },
   {
    "type": "options",
@@ -318,7 +322,7 @@
     },
     {
      "t": "Feed heat exchanger",
-     "d": "Holds RO feed at [feed heat exchanger design temperature, °C] in winter.",
+     "d": "Holds [feed heat exchanger design temperature, °C] in winter. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
      "spot": "heat-exchanger",
      "at": 3.6,
      "part": "hx",
@@ -354,7 +358,8 @@
      "ly": -70
     }
    ],
-   "intro": "Your proposal states each option's effect on drawings, tests and lead time."
+   "intro": "Your proposal states each option's effect on drawings, tests and lead time.",
+   "anchor": "options"
   },
   {
    "type": "faq",
@@ -363,7 +368,7 @@
    "items": [
     {
      "q": "Can you replace our existing pretreatment?",
-     "a": "We assess the system, then replace the train; the existing pretreatment runs until cutover. Makes and equipment: [makes and equipment types serviced].",
+     "a": "Yes, on [makes and equipment types serviced]. We assess the system and replace the train; the existing pretreatment runs until cutover.",
      "link": "svc-upgrades#upgrades"
     },
     {
@@ -381,14 +386,15 @@
     },
     {
      "q": "Is pretreatment part of the validated system?",
-     "a": "Your risk assessment sets the boundary; write it into your user requirement specification (URS). WHO TRS 1033 allows construction to drinking water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope.",
+     "a": "Not necessarily: your risk assessment sets the boundary; write it into your user requirement specification (URS). WHO TRS 1033 allows construction to drinking water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope.",
      "link": "urs-guide#outline",
      "link_label": "Writing your URS"
     },
     {
-     "q": "How do you keep carbon beds clean?",
-     "a": "By backwash and replacement, not hot water. Polyvinyl chloride (PVC) is rated to 60 °C, where it keeps 22 % of its pressure rating. We replace carbon every [carbon replacement interval, months], reset from counts at the sample points around each bed during qualification.",
-     "link": "svc-service#running-cost"
+     "q": "What is replaced, and how often?",
+     "a": "Five items, set from your feed water: cartridges, filter media, carbon, softener resin and salt. Cartridges, media and resin follow [filter, media and lamp intervals, months]; salt follows hardness. Carbon follows [carbon replacement interval, months], reset from your microbial counts. It is replaced, not hot-water sanitized: PVC is rated to 60 °C, at 22 % of its pressure rating.",
+     "link": "svc-service#running-cost",
+     "link_label": "Running cost"
     },
     {
      "q": "What is the pretreatment built from?",
@@ -398,7 +404,8 @@
      "q": "What happens to the ammonia from chloramine?",
      "a": "Some passes the reverse osmosis membranes as ammonia gas, at the pH used to control CO₂. It then loads the electrodeionization stage, so we design chloramine removal and the Purified Water skid together."
     }
-   ]
+   ],
+   "anchor": "faq"
   },
   {
    "type": "related",
@@ -406,8 +413,8 @@
    "items": [
     "sys-pw",
     "svc-upgrades#upgrades",
-    "svc-service",
-    "ind-pharma"
+    "svc-service#visit",
+    "industries"
    ]
   }
  ],
@@ -441,7 +448,7 @@
   "Cartridge filter rating ahead of the RO, µm (FD-21): [cartridge filter rating, µm]. Pass 10 review: the diagram stage and the options drawing's train label read \"Cartridge filter\" (one name, DR-018 rule 5) until it is set; then both may read \"[rating] µm cartridge filter\"",
   "Whether Aquemi tests SDI on site during the feed water review, and with what kit ([on-site SDI testing, standard or option], feed water table; FD-21)",
   "UV dechlorination: the removal-step row is cut until it is offered (FD-21). If restored: the PVC needs a light-tight transition piece at the UV unit (IPEX), and the chlorine analyzer stays downstream",
-  "Carbon replacement interval ([carbon replacement interval, months], feed water table and FAQ), reset from counts during qualification. svc-service's running-cost row holds it inside [filter, media and lamp intervals, months]: one figure in both (FD-21; DR-005 rule 6; DR-011)",
+  "Carbon replacement interval ([carbon replacement interval, months], feed water table and FAQ), reset from microbial counts (qualification counts under GMP). svc-service's running-cost row holds it inside [filter, media and lamp intervals, months]: one figure in both (FD-21; DR-005 rule 6; DR-011)",
   "Months of water history the feed water review asks for ([months of history], FAQ). The closing asks for seasonal data until this is set (DR-011 rule 1)",
   "PVC pipe standard and schedule ([PVC pipe standard and schedule]), and vessel material for media, softener and carbon beds, FRP or stainless ([vessel material for media, softener and carbon beds]) (FD-17)",
   "PVC joining method for the pretreatment pipework, upstream of the RO ([PVC joining method]; FD-18)",
@@ -449,10 +456,14 @@
   "Feed heat exchanger design temperature ([feed heat exchanger design temperature, °C]; keep the same figure as sys-pw; FD-21)",
   "Whether the feed water review is free or charged, CAD ([cost of the feed water review], closing; FD-02): the canonical name, as in contact-proposal's requests table",
   "Feed water review turnaround, working days ([feed water review turnaround, working days], closing; FD-01). contact-proposal's requests table defines it",
-  "Source for the FAQ figure \"polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine\": DuPont's FilmTec BW30HR-440 product data sheet (Form 45-D04847-en, Rev. 0, November 2024) gives \"Free Chlorine Tolerance < 0.1 ppm\" for a polyamide thin-film element; one maker, so \"typically\" stays. Not yet in the library's bibliography",
-  "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block (DR-016)",
+  "Source for the FAQ figure \"polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine\": DuPont's FilmTec BW30HR-440 product data sheet (Form 45-D04847-en, Rev. 0, November 2024) gives \"Free Chlorine Tolerance < 0.1 ppm\" for a polyamide thin-film element; one maker, so \"typically\" stays. To add to the library's bibliography",
+  "Case study block: only with a client's written consent and measured RO inlet data from that system (DR-016, superseded in part by DR-028)",
   "Pass 11 (phrasebook 17 support; buyer-requirements § 3.1, L-07-12, L-10-13): membrane projections now run new and at end of membrane life and predict output (FAT and SAT confirm it); sys-pw's capacity basis names [membrane design life, years]. Same document name on both pages (DR-011). Owner confirms with FD-21",
   "Pass 11 (buyer-requirements § 3.1 and the URS outline, L-09-17, L-07-11): the validated-boundary FAQ tells the reader to write the boundary into the URS and links urs-guide#outline (new page, anchor fixed by pass 11 SITE-PLAN)",
-  "Pass 11 (proof § 5.2 P17, P19; L-G1-11, L-04-28): the options intro says the proposal states each option's effect on drawings, tests and lead time (same sentence as sys-pw and sys-storage; option-taps prints intro through wSecHead though its header comment omits it). The documents block says what each document does: the design basis sets the RO inlet targets, projections predict output. Datasheet, typical general arrangement and room sheet stay Build (DR-006 rule 6)"
+  "Pass 11 (proof § 5.2 P17, P19; L-G1-11, L-04-28): the options intro says the proposal states each option's effect on drawings, tests and lead time (same sentence as sys-pw and sys-storage; option-taps prints intro through wSecHead though its header comment omits it). The documents block says what each document does: the design basis sets the RO inlet targets, projections predict output. Datasheet, typical general arrangement and room sheet stay Build (DR-006 rule 6)",
+  "Pass 12 (SITE-PLAN sys-pretreatment; FD-59, DR-027): title drops \"pharmaceutical\"; the feed water table intro speaks to hydrogen electrolyser and boiler make-up readers in the second person (\"Feeding a hydrogen electrolyser or boiler make-up? … your RO and EDI from every cause below\") (industries-breadth §4); feed water causes stay industry-neutral. No claim that RO replaces boiler chemistry (SITE-PLAN 1.2.4). Related swaps ind-pharma for the industries hub (every group reachable) and points svc-service at #visit (pass 12 review: the FAQ already links #running-cost; the visit checklist is the maintenance lead's other desk need)",
+  "Pass 12 (RI 01 consumables and intervals as a structure; SITE-PLAN 1.4.2 DR-013 rule 1 in the first block that mentions heat): the carbon FAQ became \"What is replaced, and how often?\" with svc-service's existing names ([filter, media and lamp intervals, months], [carbon replacement interval, months]) and the no-hot-water line kept; the feed heat exchanger option carries DR-013 rule 1 verbatim. No new placeholder names. FAQ count stays 8 (budget). If engineering confirms separate cartridge, media and resin intervals, register one name each in ops/placeholder-names.md and update svc-service#running-cost in the same edit (DR-011)",
+  "Pass 12 anchors added for the mega menu and inbound links: train, feed-water, documents, options, faq (inlet and chloramine kept; sys-pw links #chloramine)",
+  "Owner: which consumables the plant's team changes (cartridges, salt) and whether cartridges, media and resin are standard sizes bought locally (FD-21, FD-30). If confirmed, add one sentence to the consumables FAQ within its 60-word cap, or put it on svc-service#spares"
  ]
 }

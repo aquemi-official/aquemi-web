@@ -10,9 +10,9 @@
    "page": "svc-upgrades",
    "slot": 2,
    "h": "Data integrity gaps in older controls",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "cc6c457b40",
    "block": {
@@ -62,7 +62,7 @@
    "page": "urs-guide",
    "slot": 3,
    "h": "Clauses that keep the design open",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -102,6 +102,105 @@
       "A record traceable to each joint, with its examination and acceptance"
      ]
     ]
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 3,
+   "h": "Clauses that keep the design open",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "0567cdf5d1",
+   "block": {
+    "type": "table",
+    "as": "failures",
+    "look": "strike-gaps",
+    "anchor": "clauses",
+    "nav": "Clauses",
+    "h": "Clauses that keep the design open",
+    "intro": "A clause that names hardware decides the design before anyone sees your plant. If you truly need one material or method, say so plainly.",
+    "cols": [
+     "Clause that locks one design",
+     "Topic",
+     "Outcome clause any supplier can answer"
+    ],
+    "rows": [
+     [
+      "An analyser of one named make and model",
+      "Monitoring",
+      "Online conductivity at the loop return within the pharmacopoeia limit, with calibration records"
+     ],
+     [
+      "316L stainless steel for all product-contact parts",
+      "Product contact",
+      "Compatible with Purified Water and your sanitizing agent, with lot certificates, fully drainable, with minimal dead legs"
+     ],
+     [
+      "Hot-water sanitization at 80 °C, weekly",
+      "Sanitization",
+      "Method and frequency to suit the materials, proven effective in every part; any chemical sanitant proven absent before use"
+     ],
+     [
+      "Orbital welds with weld logs and borescope records",
+      "Joints",
+      "A record traceable to each joint, with its examination and acceptance"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 2,
+   "h": "Data integrity gaps in older controls",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "a22004177b",
+   "block": {
+    "type": "table",
+    "look": "strike-gaps",
+    "as": "failures",
+    "nav": "Controls",
+    "h": "Data integrity gaps in older controls",
+    "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out: spares are limited.",
+    "cols": [
+     "Gap",
+     "Requirement it misses",
+     "What the upgrade does"
+    ],
+    "rows": [
+     [
+      "Shared operator login, or none",
+      "21 CFR 11.10(d); Annex 11, 12",
+      "Individual accounts, roles, automatic logoff"
+     ],
+     [
+      "No audit trail on set points or alarms",
+      "21 CFR 11.10(e); Annex 11, 9",
+      "Audit trail of who, what, when and why"
+     ],
+     [
+      "A chart recorder as the release record",
+      "21 CFR 211.68; Annex 11, 4",
+      "Validated historian, or a defined paper record"
+     ],
+     [
+      "Backups never restored",
+      "Annex 11, 7.2",
+      "Restore test at OQ, repeated on a schedule"
+     ],
+     [
+      "Records only in the old system",
+      "21 CFR 211.180; Annex 11, 17",
+      "Verified migration, or old records kept readable"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "gaps",
+    "anchor": "data-integrity-gaps"
    }
   }
  ]

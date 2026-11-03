@@ -257,7 +257,7 @@
    "page": "buying",
    "slot": 3,
    "h": "Comparing quotes on the same lines",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -413,7 +413,7 @@
    "page": "project-plan",
    "slot": 1,
    "h": "Who does what, and what is ready before installation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -477,7 +477,7 @@
    "page": "first-system",
    "slot": 0,
    "h": "Is a polypropylene Purified Water package right for you?",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -537,6 +537,237 @@
       }
      ]
     ]
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 1,
+   "h": "Who does what, and what is ready before installation",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "f4cadd19c1",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "anchor": "who",
+    "nav": "Who does what",
+    "h": "Who does what, and what is ready before installation",
+    "intro": "Your proposal marks every task and hand-off: by us, supplied only, or by you. Installation: [installation scope].",
+    "cols": [
+     "Who, or which hand-off",
+     "Their part",
+     "Ready before installation"
+    ],
+    "rows": [
+     [
+      "You: project manager, site head or safety lead",
+      "Own the schedule, the order and site access. Name one contact who approves drawings and changes.",
+      {
+       "t": "Work permits: chemicals, drain and isolation points for your safety team",
+       "link": "cmp-documentation#safety"
+      }
+     ],
+     [
+      "Your quality unit, under GMP",
+      "Approves the URS, each protocol before it runs and each report after. Decides first use from PQ data.",
+      "Validation master plan; SAT, IQ and OQ protocols approved"
+     ],
+     [
+      "Your engineer and trades",
+      "Your engineer writes or reviews the URS and may witness FAT. Your mechanical, electrical and plumbing trades review our drawings.",
+      "Drawing comments closed in writing before fabrication [confirm]"
+     ],
+     [
+      "Your contractor",
+      "Builds the room and brings utilities to the battery limits.",
+      {
+       "t": "Power, feed water and drain at the battery limits: [standard battery limits, typical scope]",
+       "link": "systems#site"
+      }
+     ],
+     [
+      "Aquemi",
+      "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
+      {
+       "t": "Your site readiness checklist, sent before delivery [confirm]",
+       "link": "project-plan#notice"
+      }
+     ],
+     [
+      "Mechanical hand-off: piping and tie-ins",
+      "[mechanical hand-off: by us, supplied only, by you]",
+      "Tie-in points agreed on the drawings"
+     ],
+     [
+      "Electrical hand-off: power and wiring",
+      "[electrical hand-off: by us, supplied only, by you]",
+      "Supply at the battery limit, sized on the drawings"
+     ],
+     [
+      "Controls hand-off: signals and alarms",
+      "[controls hand-off: by us, supplied only, by you]",
+      "Signals to your plant or building system agreed on the drawings"
+     ]
+    ],
+    "look": "reader-split"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 0,
+   "h": "Is a polypropylene Purified Water package right for you?",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "2a93c722bd",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "reader-split",
+    "nav": "Is it for you",
+    "anchor": "fit",
+    "h": "Is a polypropylene Purified Water package right for you?",
+    "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
+    "cols": [
+     "Wrong choice if",
+     "Fits if",
+     "Read"
+    ],
+    "rows": [
+     [
+      "Your products are injected, or need Water for Injection (WFI)",
+      "Your products are non-sterile: tablets, liquids, creams, cosmetics, or devices rinsed with Purified Water",
+      {
+       "t": "Grade by dosage form",
+       "link": "ind-pharma#grades"
+      }
+     ],
+     [
+      "Every product needs only potable water",
+      "Your specification, a monograph, a drug rule or your recipe asks for Purified Water",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Your loop must be held hot, or sanitized routinely with hot water or steam",
+      "An ambient, chemically sanitized loop suits your products",
+      {
+       "t": "Sanitization methods",
+       "link": "sys-storage#sanitization"
+      }
+     ],
+     [
+      "Your company standard names stainless steel for water piping",
+      "Your specification allows a polypropylene loop, or has no material rule yet",
+      {
+       "t": "When polypropylene is the wrong choice",
+       "link": "urs-guide#pp-rows"
+      }
+     ],
+     [
+      "You need a few litres a day at one lab bench",
+      "You need [minimum–maximum capacity, L/h] for production, rinsing or a lab building",
+      {
+       "t": "Labs and lab buildings",
+       "link": "ind-hospital-lab#labs"
+      }
+     ]
+    ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 3,
+   "h": "Comparing quotes on the same lines",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "a64d16f1de",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Compare",
+    "anchor": "compare",
+    "h": "Comparing quotes on the same lines",
+    "intro": "Level every quote on these lines before you compare prices.",
+    "cols": [
+     "Line to level",
+     "Ask of every quote",
+     "Where ours states it"
+    ],
+    "rows": [
+     [
+      "Pretreatment",
+      "Sized on your water analysis, or on an assumed feed?",
+      {
+       "t": "Pretreatment",
+       "link": "sys-pretreatment"
+      }
+     ],
+     [
+      "Storage and loop",
+      "Tank volume, loop length and every point of use counted?",
+      {
+       "t": "Storage and distribution",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Instruments and controls",
+      "Which readings are recorded, and is the code delivered unlocked?",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Documents",
+      "Which documents, and who writes and signs each?",
+      {
+       "t": "Document index",
+       "link": "cmp-documentation#index"
+      }
+     ],
+     [
+      "FAT",
+      "Run on water, to a protocol you approve first?",
+      {
+       "t": "FAT and SAT",
+       "link": "svc-fat-sat"
+      }
+     ],
+     [
+      "IQ and OQ",
+      "Included, a priced option, or left to you?",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "Warranty start",
+      "Counted from shipment, or from acceptance on your site?",
+      {
+       "t": "Terms at a glance",
+       "link": "buying#terms"
+      }
+     ],
+     [
+      "Running cost",
+      "Per year, at your water and use, with the assumptions written?",
+      {
+       "t": "Running cost",
+       "link": "svc-service#running-cost"
+      }
+     ]
+    ],
+    "look": "reader-split"
    }
   }
  ]

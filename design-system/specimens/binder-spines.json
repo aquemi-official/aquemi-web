@@ -186,7 +186,7 @@
    "page": "ind-pharma",
    "slot": 2,
    "h": "What each inspector and auditor reads",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -280,6 +280,107 @@
       "read": "Answered row by row, each with its document; audit access; data integrity"
      }
     ]
+   }
+  },
+  {
+   "page": "ind-pharma",
+   "slot": 2,
+   "h": "What each inspector and auditor reads",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "ecb2a51079",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Inspectors",
+    "h": "What each inspector and auditor reads",
+    "cols": [
+     "Who inspects",
+     "What they read",
+     "Where we answer it"
+    ],
+    "rows": [
+     [
+      "Health Canada, all drug sites",
+      "GUI-0001 C.02.009: PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "FDA",
+      "21 CFR 211.65 (non-reactive surfaces); water guide: dead legs, a year's data",
+      {
+       "t": "Good manufacturing practice",
+       "link": "compliance#gmp"
+      }
+     ],
+     [
+      "Health Canada, natural health products",
+      "GUI-0158 s. 45: potable minimum, test records, qualified treatment",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "EU authorities and importers",
+      "Ph. Eur. 0008, plus the EMA guideline and Annex 15 qualification",
+      {
+       "t": "Standards we design to",
+       "link": "compliance"
+      }
+     ],
+     [
+      "Sterile sites, or non-sterile sites that adopt it in writing",
+      "GUI-0119 and Annex 1 (EU good manufacturing practice, GMP): PW quality, dead legs, sanitization, trend review",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Your quality unit, approving a supplier",
+      "Your user requirement specification (URS) answered row by row, each with its document; audit access; data integrity",
+      {
+       "t": "How to qualify us",
+       "link": "projects#verify"
+      }
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "inspectors",
+    "look": "binder-spines",
+    "spines": [
+     {
+      "code": "GUI-0001 C.02.009",
+      "read": "PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route"
+     },
+     {
+      "code": "21 CFR 211.65",
+      "read": "Non-reactive surfaces; water guide: dead legs, a year's data"
+     },
+     {
+      "code": "GUI-0158 s. 45",
+      "read": "Potable minimum, test records, qualified treatment"
+     },
+     {
+      "code": "Ph. Eur. 0008",
+      "read": "Plus the EMA guideline and Annex 15 qualification"
+     },
+     {
+      "code": "GUI-0119 and Annex 1",
+      "read": "EU good manufacturing practice (GMP): PW quality, dead legs, sanitization, trend review"
+     },
+     {
+      "code": "Your URS",
+      "read": "Answered row by row, each with its document; audit access; data integrity"
+     }
+    ],
+    "anchor": "inspectors"
    }
   }
  ]

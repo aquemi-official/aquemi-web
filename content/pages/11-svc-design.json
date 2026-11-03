@@ -24,6 +24,7 @@
  "blocks": [
   {
    "type": "table",
+   "anchor": "failures",
    "look": "redline-sheet",
    "as": "failures",
    "h": "Qualification failures that start in design",
@@ -57,6 +58,7 @@
    "anchor": "stages",
    "look": "fidelity-ladder",
    "h": "Design stages, and what you approve",
+   "intro": "Under GMP, two holds below are yours: the basis of design, then DQ. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
    "items": [
     {
      "t": "URS and feed water review",
@@ -89,6 +91,7 @@
   },
   {
    "type": "docs",
+   "anchor": "deliverables",
    "look": "issued-set",
    "h": "What you receive",
    "items": [
@@ -98,8 +101,8 @@
      "d": "How the design meets each requirement; each gap with proposed wording."
     },
     {
-     "t": "P&IDs",
-     "d": "Every line, valve and tag, with slopes, drains and sample points. IQ verifies against them.",
+     "t": "P&IDs and general arrangement drawings",
+     "d": "Every line, valve and tag, with slopes, drains and sample points; the layout with its connections. IQ verifies against them.",
      "use": "IQ"
     },
     {
@@ -113,10 +116,13 @@
      "use": "DQ"
     }
    ],
-   "nav": "What you receive"
+   "nav": "What you receive",
+   "link": "cmp-documentation#samples",
+   "link_label": "Request a specimen package"
   },
   {
    "type": "table",
+   "anchor": "trace",
    "look": "trace-lines",
    "h": "An example: two requirements traced to their tests",
    "cols": [
@@ -162,6 +168,13 @@
      "intent": "I know my product, not my water spec"
     },
     {
+     "q": "We are not under GMP. What do you design from?",
+     "a": "From the specification your use already works to. Hospitals and laboratories: the basis of design from your consultant. Cosmetic-only lines: your written water specification. Food and beverage: your recipe or process specification. Industrial plants: the electrolyser stack or boiler maker's feed water specification. Design qualification (DQ) applies only where a quality unit approves the design.",
+     "link": "contact-proposal",
+     "link_label": "Send your specification",
+     "intent": "I have a URS or a draft|URS gap review"
+    },
+    {
      "q": "Who owns DQ: you or us?",
      "a": "You do. Design qualification (DQ) shows the design meets your requirements and good manufacturing practice (GMP), under EU GMP Annex 15, 3.3. Your quality unit approves it (Health Canada GUI-0029, section 5). We supply the evidence: the design review report, traceability matrix and risk assessment."
     },
@@ -170,10 +183,16 @@
      "a": "[risk assessment method], under ICH Q9(R1), the quality risk management guideline."
     },
     {
-     "q": "Consultant or contractor: what do we receive, and when?",
-     "a": "A compliance matrix against your client's URS, within [compliance matrix response time, working days]. Drawings and specifications follow the design stages above. Contractors: connection points are under Systems; who installs what is under How a project runs. Writing the specification section? Our URS guide has notes for specifiers.",
+     "q": "Consultant: what do we receive, and when?",
+     "a": "A compliance matrix against your client's URS, within [compliance matrix response time, working days]. Drawings and specifications follow the design stages above. Writing the specification section? Our URS guide has notes for specifiers.",
      "link": "urs-guide#specification",
      "link_label": "Notes for specifiers"
+    },
+    {
+     "q": "Consultant or contractor: where does your scope end?",
+     "a": "At the battery limits: the points where our supply ends and your work starts. How a project runs lists the mechanical, electrical and control hand-offs, and who installs what. Connection points are under Systems.",
+     "link": "project-plan#who",
+     "link_label": "See who does what"
     },
     {
      "q": "Is design charged separately from the equipment?",
@@ -201,13 +220,13 @@
   }
  ],
  "cta": {
-  "h": "Send your URS, draft or final",
+  "h": "Send your URS or specification, draft or final",
   "body": "An engineer replies. Cost: [URS review cost].",
   "button": "Request a URS gap review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|URS gap review",
   "include": [
-   "Your URS",
+   "Your URS, basis of design or process specification",
    "Feed water analysis, summer and winter",
    "Points of use and peak demand, L/h",
    "Bid or issue date, if specifying for a client"
@@ -224,7 +243,7 @@
   "[URS review cost] (closing, FAQ): free or charged, in CAD (FD-02); defined in contact-proposal's requests table (DR-005 rule 4, DR-014 rule 3)",
   "[concept estimate class and accuracy] (stages, Concept and route): the AACE 18R-97 class (5 or 4) and the accuracy the concept estimate supports (FD-03; DR-005 rule 1 and its svc-design consequence). Not the same fact as systems' [estimate class and accuracy] for the published bands",
   "[design fees credited, yes or no] (FAQ): whether concept or design fees are credited against an equipment order (FD-02)",
-  "[design-only engagements offered, and pricing] (FAQ, two answers): whether design without the equipment, or a review of another firm's design, is sold, and its price (FD-02, FD-25). Designing the PW package inside an engineering firm's project, as its supplier, stays a plain yes (MISSION: process design is a service)",
+  "[design-only engagements offered, and pricing] (FAQ 7; also services): whether design without the equipment, or a review of another firm's design, is sold, and its price (FD-02, FD-25). Designing the PW package inside an engineering firm's project, as its supplier, stays a plain yes (MISSION: process design is a service)",
   "[P.Eng. seal] (FAQ): who seals drawings and any calculations (P.Eng. or ing.) (FD-24, FD-34). The provinces are about's [provinces of licence] (DR-011 rule 2); if a partner seals where we hold no licence, the answer names that route instead. The answer opens with it: unset at launch, the question goes (DR-005 rule 8)",
   "[drawing formats delivered] (FAQ): which formats come with the drawings, for example PDF and native CAD files, and the design software used (FD-10, FD-47); cmp-documentation's to-do points to this answer",
   "[drawing ownership or licence terms] (FAQ): drawing and native-file ownership or licence (FD-10). Pass 11: the full term lives on buying#terms, row \"Drawings and code\", under the same name (SITE-PLAN moved the terms from cmp-quality, whose #buying is now a one-line pointer); the answer links there (buying#terms, \"See the terms of sale\")",
@@ -235,12 +254,19 @@
   "Client templates: whether Aquemi writes design and qualification documents in the client's own templates (FD-46). \"In your template\" was cut from the DQ and risk-method answers until confirmed",
   "Vessel calculations: cut from Detailed design until Aquemi confirms which package items need pressure calculations, who makes them (in-house or partner) and the CRN route (FD-24; compliance holds the route)",
   "Who pays for design gaps found at DQ or IQ/OQ ([design gap warranty terms]): its home is project-plan#changes, row \"We find an error in our own design\", and buying (FD-07, DR-005 rule 7; pass 11 moved the terms off cmp-quality), not this page",
-  "A real design project (scope, URS lines traced, design-to-DQ duration) before adding a case study block (FD-42, DR-016)",
-  "[compliance matrix response time, working days] (FAQ 4, pass 10, DR-019): same name as compliance's closing and services' router row 8 (FD-01). At launch an unset time leaves the clause (DR-006 rule 7)",
-  "FAQ 4 \"Consultant or contractor: what do we receive, and when?\" (DR-019 rule 2 as amended in pass 11, SITE-PLAN; structure-and-sitemap 4.3 \"Replaces\"): now one line and a link to urs-guide#specification, which holds the specification-section notes and what a consultant receives for a basis of design (L-07-15, L-10-12, L-14-22, L-11-2, L-07-16, DR-019 rule 4). It keeps the compliance matrix time [compliance matrix response time, working days] (FD-01) and points at this page's own stages for when drawings arrive (confirm Aquemi issues them at these holds, FD-46). The contractor's values stay on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26), named in the answer (\"under Systems\"). The compliance-matrix request moved off this answer: the closing's URS gap review and urs-guide's closing carry it. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4). The closing's include \"Bid or issue date, if specifying for a client\" (pass 11, review finding 12) stays. Launch rule: if urs-guide does not ship, the answer returns to its pass 10 text (basis of design at the concept hold, P&IDs and draft functional specification at basic design, approved issues at detailed design) with the compliance matrix link",
+  "Case study block (FD-42, DR-016, DR-028): only with a real design project record (scope, URS lines traced, design-to-DQ duration); until then the stages, documents and traced example carry the proof",
+  "[compliance matrix response time, working days] (FAQ 5, pass 10, DR-019): same name as compliance's closing and services' router row 8 (FD-01). At launch an unset time leaves the clause (DR-006 rule 7)",
+  "FAQ 5 \"Consultant: what do we receive, and when?\" (was FAQ 4 \"Consultant or contractor: what do we receive, and when?\"; pass 12 moved the contractor half to FAQ 6) (DR-019 rule 2 as amended in pass 11, SITE-PLAN; structure-and-sitemap 4.3 \"Replaces\"): now one line and a link to urs-guide#specification, which holds the specification-section notes and what a consultant receives for a basis of design (L-07-15, L-10-12, L-14-22, L-11-2, L-07-16, DR-019 rule 4). It keeps the compliance matrix time [compliance matrix response time, working days] (FD-01) and points at this page's own stages for when drawings arrive (confirm Aquemi issues them at these holds, FD-46). The contractor's values stay on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26), named in the answer (\"under Systems\"). The compliance-matrix request moved off this answer: the closing's URS gap review and urs-guide's closing carry it. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4). The closing's include \"Bid or issue date, if specifying for a client\" (pass 11, review finding 12) stays. Launch rule: if urs-guide does not ship, the answer returns to its pass 10 text (basis of design at the concept hold, P&IDs and draft functional specification at basic design, approved issues at detailed design) with the compliance matrix link",
   "Hero secondary (pass 11, SITE-PLAN; desk Q1 ruling; structure-and-sitemap 4.3 entry links): \"Read our URS guide\" -> urs-guide, replacing \"Request a water scope review\". The no-URS door (pass 10 C7) stays on FAQ 1's link (\"Request a water scope review\", intent \"I know my product, not my water spec\"); founders without a URS also reach first-system from home and industries. Launch rule: if urs-guide does not ship, the secondary returns to the water scope review",
   "Related (pass 11, structure-and-sitemap 4.6 entry links): project-plan replaces svc-fat-sat (svc-fat-sat stays one click away from svc-fabrication and in the Services bar)",
-  "FAQ 4 \"Consultant or contractor\" (pass 11 review finding 8, DR-019 amended rule 4): contractors are sent to Systems for connection points and to How a project runs (project-plan#who) for who installs what; the link stays urs-guide#specification"
+  "FAQ 6 \"Consultant or contractor: where does your scope end?\" (pass 12, SITE-PLAN svc-design, RI 12 consultant should-have-asked; carries pass 11 review finding 8, DR-019 amended rule 4): the interface hand-offs (mechanical, electrical, control; by us, supplied only, by you) live on project-plan#who, which the project-plan editor extends this pass; this answer is one line and that link. Contractors still go to Systems for connection points (systems#site). If project-plan#who ships without the hand-off rows, the answer drops \"the mechanical, electrical and control hand-offs\"",
+  "Pass 12 (SITE-PLAN svc-design; IB §3; DR-027 rule 8; R10): stages intro carries the GMP path and the non-GMP path, one line each; the non-GMP sentence is verbatim DR-027 rule 8 and must stay identical to services, svc-fat-sat, svc-cq, cmp-documentation and the group pages",
+  "Pass 12 FAQ 2 \"We are not under GMP. What do you design from?\" (IB §3 svc-design row; industries-breadth G4-G6): design bases by use (hospitals and laboratories, cosmetic-only lines: written specification, per ind-personal-care#grade, where ISO 22716 is named, not here; food and beverage; industrial), DQ only where a quality unit approves. Hospital and lab grades are named on ind-hospital-lab, not here (one home). The link carries the nearest live intent (URS gap review; services' router row returns the same compliance matrix): re-point it to the contact-proposal option for hospital, laboratory or industrial water once that option ships",
+  "Pass 12 deliverables (FD-58, SITE-PLAN svc-design): the general arrangement drawing appears only as a deliverable; no typical P&ID or GA is offered as a public file until FD-58 releases one (DR-019 rule 4). Confirm Aquemi issues the general arrangement drawing at basic design (FD-46); if not, Basic design and the deliverable revert to P&IDs only",
+  "Pass 12 closing include (FD-59 breadth): \"Your URS, basis of design or process specification\" so a non-GMP reader knows what to send",
+  "Pass 12 anchors (SITE-PLAN block list): failures, deliverables, trace added; stages and faq kept. No inbound link used the old generated ids",
+  "Pass 12 review: deliverables link \"Request a specimen package\" -> cmp-documentation#samples (validation lead asks for a specimen). Specimen package lists FAT and IQ/OQ items, not design documents; add the design review report and traceability matrix there when FD-58/FD-46 allow (cmp-documentation owner). Until then the trace block is the visible design specimen; if the package stays FAT/IQ-OQ only at launch, drop the link",
+  "Pass 12 review: stages intro GMP line is \"two holds below are yours: the basis of design, then DQ\", matching the hold fields (You at Concept and route; Your quality unit at Design review and freeze). Closing heading names URS or specification (FD-59); button text and intent unchanged"
  ],
  "facts": [
   {

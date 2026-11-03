@@ -223,7 +223,7 @@
    "page": "services",
    "slot": 0,
    "h": "Where to start",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -328,6 +328,198 @@
      "Start",
      "Go"
     ]
+   }
+  },
+  {
+   "page": "services",
+   "slot": 0,
+   "h": "Where to start",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "25b3b84853",
+   "block": {
+    "type": "table",
+    "h": "Where to start",
+    "cols": [
+     "Your situation",
+     "Start with",
+     "What to send",
+     "What comes back"
+    ],
+    "rows": [
+     [
+      "New system, user requirement specification (URS) approved or in draft",
+      {
+       "t": "Process design: request a URS gap review",
+       "link": "svc-design"
+      },
+      "Your URS, feed water analysis, peak demand in L/h",
+      "A compliance matrix marking every gap, within [URS review turnaround, working days]"
+     ],
+     [
+      "Not under GMP: a hospital, lab or process specification",
+      {
+       "t": "Process design: request a specification review",
+       "link": "svc-design#faq"
+      },
+      "The standard and its edition, or the equipment maker's specification; feed water analysis",
+      "A compliance matrix against it, within [URS review turnaround, working days]"
+     ],
+     [
+      "Design approved",
+      {
+       "t": "Fabrication: request a spec review",
+       "link": "svc-fabrication"
+      },
+      "Approved drawings, piping and material specification, province",
+      "Clauses we meet or would change, a draft inspection plan, within [document review turnaround, working days]"
+     ],
+     [
+      "Skid in build, factory and site acceptance tests (FAT, SAT) ahead",
+      {
+       "t": "FAT and SAT: request a specimen FAT protocol",
+       "link": "svc-fat-sat"
+      },
+      "Your work email",
+      "Test cases with acceptance criteria, within [specimen package response time, working days]"
+     ],
+     [
+      "Installed or arriving, qualification or acceptance ahead",
+      {
+       "t": "Commissioning and qualification (C&Q): request a plan review",
+       "link": "svc-cq"
+      },
+      "URS or specification, validation master plan if any, points-of-use list",
+      "Draft C&Q and sampling plans, within [document review turnaround, working days]"
+     ],
+     [
+      "In service, qualified or accepted",
+      {
+       "t": "Service: request a plan quote",
+       "link": "svc-service"
+      },
+      "System, age, instruments, standby and ride-through time",
+      "Plan, annual price, first-visit tasks, within [quote response time, working days]"
+     ],
+     [
+      "Aging, out of support, or about to change",
+      {
+       "t": "Upgrades: request a system assessment",
+       "link": "svc-upgrades"
+      },
+      "Drawings, a year of water data, the problem",
+      "Scope and price within [assessment response time, working days], then options with downtime and requalification or a repeat acceptance test"
+     ],
+     [
+      "Consultant or contractor",
+      {
+       "t": "Writing your URS: notes for specifiers",
+       "link": "urs-guide#specification"
+      },
+      "Your client's URS or specification, and the bid date",
+      "A compliance matrix against it, within [compliance matrix response time, working days]"
+     ]
+    ],
+    "as": "router",
+    "nav": "Where to start",
+    "look": "stair-router",
+    "labels": [
+     "New system",
+     "Not under GMP",
+     "Design approved",
+     "Skid in build",
+     "Installed",
+     "In service",
+     "Aging",
+     "Specifying for a client"
+    ],
+    "kinetic": [
+     "Start",
+     "Go"
+    ],
+    "anchor": "start",
+    "intro": "Every project runs in four stages: design; build and test; install and hand over; operate. Find where your project stands below."
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 0,
+   "h": "Start from your project",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "da3dcfc763",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "anchor": "start",
+    "h": "Start from your project",
+    "cols": [
+     "Your project",
+     "What sets the water",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A reprocessing department renovation, or washers added",
+      "Critical water for the final rinse, sized to the washers' fill peaks",
+      {
+       "t": "Where water goes in reprocessing",
+       "link": "ind-hospital-lab#reprocessing"
+      }
+     ],
+     [
+      "A central reverse osmosis (RO) plant failing or ageing",
+      "Your standard, its edition and a year of water records",
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades#assessment"
+      }
+     ],
+     [
+      "A new laboratory building, or a central plant replaced",
+      "Your consultant's basis of design and tap list",
+      {
+       "t": "For consultants and contractors",
+       "link": "ind-hospital-lab#specification"
+      }
+     ],
+     [
+      "Feed water for a clinical analyzer",
+      "The analyzer maker's water specification",
+      {
+       "t": "Send that specification with your request",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft|Laboratory or research"
+      }
+     ],
+     [
+      "A biotech or battery research laboratory",
+      "The grade and edition your methods name",
+      {
+       "t": "Where water goes in a laboratory",
+       "link": "ind-hospital-lab#labs"
+      }
+     ],
+     [
+      "One laboratory, or one washer",
+      "Water at a single point of use",
+      "A point-of-use unit from your equipment supplier fits better"
+     ],
+     [
+      "A public tender or request for proposal",
+      "The tender's grid, standard and edition",
+      {
+       "t": "Your tender, answered line by line",
+       "link": "buying#answer"
+      }
+     ]
+    ],
+    "look": "stair-router"
    }
   }
  ]

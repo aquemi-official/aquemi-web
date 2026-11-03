@@ -195,7 +195,7 @@
    "page": "contact-locations",
    "slot": 1,
    "h": "Where to find us",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -214,6 +214,128 @@
     "rows": [
      [
       "Head office, [head office, city and province]",
+      "[head office functions]",
+      "[mailing address]",
+      "[sales phone number] · [sales email] · [office hours, time zone]"
+     ],
+     [
+      {
+       "t": "Shop and test bay, [shop location, city and province]",
+       "link": "svc-fabrication"
+      },
+      "Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice",
+      "[shop address] · [map link]",
+      "[shop phone number] · [shop hours, time zone]"
+     ],
+     [
+      {
+       "t": "Service bases, [service bases, cities]",
+       "link": "svc-service"
+      },
+      "Field technicians, [critical spares stock]",
+      "[street address, or home-based technicians]",
+      "[service phone number], [service phone hours] · [service email]"
+     ],
+     [
+      "Parts stock, [stock location or locations]",
+      "Spare parts and consumables, [order cut-off and delivery commitment]",
+      "[street address, or shipped from the shop]",
+      "[parts email address] · [parts desk hours, time zone]"
+     ]
+    ],
+    "fold": 4,
+    "fold_noun": "contacts",
+    "look": "site-plates",
+    "art": [
+     "office",
+     "shop"
+    ]
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 2,
+   "h": "Food, beverage and cannabis",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "c1b1d68d53",
+   "block": {
+    "type": "table",
+    "nav": "Food and beverage",
+    "anchor": "food",
+    "h": "Food, beverage and cannabis",
+    "intro": "Potable water is the legal floor for food in Canada and the US. Your recipe or quality person sets the rest. Dairy plants use demineralized water for lab work and boiler make-up.",
+    "cols": [
+     "Plant",
+     "Where the water goes",
+     "Legal floor and limit",
+     "Fit"
+    ],
+    "rows": [
+     [
+      "Distilling, spirits and liqueurs",
+      "Proofing water, ingredient water",
+      "Potable (Safe Food for Canadians Regulations, s. 70; 21 CFR 117.37) · your recipe specification",
+      "Generation sized to your proofing schedule, with storage for batch draws"
+     ],
+     [
+      "Brewing, cider, soft drinks and juices, craft scale",
+      "Ingredient water, quality control lab, boiler make-up",
+      "Potable · your recipe and water profile",
+      {
+       "t": "Craft scale; larger plants: see where it fits",
+       "link": "ind-process#fit"
+      }
+     ],
+     [
+      "Food ingredients, flavours and supplement lines",
+      "Ingredient water, natural health product lines, quality control lab",
+      "Potable · health product lines: their own good manufacturing practice (GMP)",
+      {
+       "t": "Generation to your ingredient specification; supplement lines: natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Cannabis products: extracts, edibles, beverages and topicals",
+      "Water that touches the product, ingredient water, quality control lab",
+      "Potable (Cannabis Regulations, s. 88.6) · your quality assurance person's specification",
+      "Ambient, small flows; Purified Water where your site runs pharmaceutical standards"
+     ]
+    ],
+    "fold": 4,
+    "fold_noun": "plants",
+    "look": "site-plates"
+   }
+  },
+  {
+   "page": "contact-locations",
+   "slot": 1,
+   "h": "Where to find us",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "1c30a048c2",
+   "block": {
+    "type": "table",
+    "anchor": "locations",
+    "nav": "Contacts",
+    "h": "Where to find us",
+    "cols": [
+     "Site",
+     "What happens here",
+     "Address",
+     "Contact and hours"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Head office, [head office, city and province]",
+       "link": "about#facts"
+      },
       "[head office functions]",
       "[mailing address]",
       "[sales phone number] · [sales email] · [office hours, time zone]"

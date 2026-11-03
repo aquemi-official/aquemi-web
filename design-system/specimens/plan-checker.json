@@ -95,9 +95,9 @@
    "page": "svc-service",
    "slot": 0,
    "h": "Service plans: response, scope, price",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "e592388ce3",
    "block": {
@@ -107,6 +107,92 @@
     "nav": "Plans",
     "h": "Service plans: response, scope, price",
     "intro": "Severity 1: production stopped or water out of specification. Severity 2: alarm, reduced capacity or adverse trend. Severity 3: no effect on water quality or supply.",
+    "cols": [
+     "",
+     "[tier 1 plan name]",
+     "[tier 2 plan name]",
+     "[tier 3 plan name]",
+     "No plan"
+    ],
+    "rows": [
+     [
+      "Suits",
+      "Own team and standby",
+      "Production depends on this system",
+      "No standby, little ride-through",
+      "Own team and spares"
+     ],
+     [
+      "Price · minimum term",
+      "[annual price, CAD] · [minimum term, months]",
+      "[annual price, CAD] · [minimum term, months]",
+      "[annual price, CAD] · [minimum term, months]",
+      "[call-out and hourly rates, CAD] · none"
+     ],
+     [
+      "On site, severity 1 · 2, inside [service coverage area]",
+      "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+      "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+      "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+      "Next available technician"
+     ],
+     [
+      "Visits a year · calibration",
+      "[visits per year] · [calibration interval, months]",
+      "[visits per year] · [calibration interval, months]",
+      "[visits per year] · [calibration interval, months]",
+      "On request"
+     ],
+     [
+      "Phone · remote diagnosis",
+      "[service phone hours] · [remote response time, hours]",
+      "[service phone hours] · [remote response time, hours]",
+      "[service phone hours] · [remote response time, hours]",
+      "[service phone hours] · best effort"
+     ],
+     [
+      "Critical spares",
+      "Recommended list only",
+      "[kit held at Aquemi or on site]",
+      "[kit on site, replenished after use]",
+      "Quoted per order"
+     ],
+     [
+      "Unplanned repairs",
+      "[labour discount, %]",
+      "[labour discount, %]",
+      "[repair parts and labour terms]",
+      "Charged in full"
+     ],
+     [
+      "Annual system review",
+      "No",
+      "Yes",
+      "Yes, with a trend review meeting",
+      "No"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "terms"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 0,
+   "h": "Service plans: response, scope, price",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6268bce7f5",
+   "block": {
+    "type": "table",
+    "look": "plan-checker",
+    "as": "plans",
+    "nav": "Plans",
+    "anchor": "plans",
+    "h": "Service plans: response, scope, price",
+    "intro": "For drug, device, hospital, lab, cosmetics and process plants. Severity 1: production stopped or water out of specification. Severity 2: alarm, reduced capacity or adverse trend. Severity 3: no effect on water quality or supply.",
     "cols": [
      "",
      "[tier 1 plan name]",

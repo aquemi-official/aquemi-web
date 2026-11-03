@@ -10,9 +10,9 @@
    "page": "svc-cq",
    "slot": 4,
    "h": "Alert levels come from your data",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "f7f0183363",
    "block": {
@@ -41,6 +41,45 @@
      }
     ],
     "note": "CFU: colony-forming units.",
+    "look": "cut-band"
+   }
+  },
+  {
+   "page": "svc-cq",
+   "slot": 4,
+   "h": "Alert levels come from your data",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "47cc9b2fa6",
+   "block": {
+    "type": "spec",
+    "as": "gauges",
+    "nav": "Alert levels",
+    "anchor": "alert-levels",
+    "h": "Alert levels come from your data",
+    "cols": [
+     "Level",
+     "Set at",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Microbial action level",
+      "v": "≤ 100 CFU/mL",
+      "level": "action",
+      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+      "hl": true,
+      "link": "compliance#limits"
+     },
+     {
+      "p": "Alert level",
+      "v": "From phases 1 and 2, confirmed on the year",
+      "m": "WHO TRS 1033, 11.3, 12.7 and 12.8"
+     }
+    ],
+    "note": "CFU: colony-forming units. The action level shown is for Purified Water; hospital critical water (ST108:2023) has a tighter limit. Alert levels come from your own data either way.",
     "look": "cut-band"
    }
   }

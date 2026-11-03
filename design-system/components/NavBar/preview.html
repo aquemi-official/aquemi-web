@@ -1,17 +1,47 @@
-<!-- @dsCard group="Navigation" height=1080 width=1100 subtitle="Desktop header with the service link; phone menu with the urgent block and section jump" -->
-<div class="aq-page" style="padding:24px 0;min-width:1040px">
+<!-- @dsCard group="Navigation" height=2200 width=1300 subtitle="Desktop header with the Systems panel open; phone menu with the urgent block and the Systems group open" -->
+<div class="aq-page" style="padding:24px 0 600px;min-width:1260px">
   <nav class="aq-nav" aria-label="Main">
     <a class="aq-nav__home" href="#" aria-label="Aquemi home">
       <img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="/_blob/fb683090783d92d27a15de72c481e9b3" alt="aquemi">
       <img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="/_blob/db46389f79ee8231228b037304a6d37b" alt="aquemi">
     </a>
     <ul class="aq-nav__links">
-      <li><a href="#" aria-current="page">Systems</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Industries</a></li>
-      <li><a href="#">Compliance</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Company</a></li>
+      <li class="aq-nav__item"><button type="button" class="aq-nav__trigger" aria-expanded="true" aria-controls="pv-p-systems" aria-current="true">Systems<span class="aq-nav__chev" aria-hidden="true"></span></button>
+        <div class="aq-mega" id="pv-p-systems">
+          <div class="aq-mega__in">
+            <div class="aq-mega__head"><p class="aq-mega__name">Systems</p><p class="aq-mega__lead">One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.</p><a class="aq-mega__all" href="#">Systems overview</a></div>
+            <div class="aq-mega__groups">
+              <div class="aq-mega__group"><p class="aq-mega__label" id="pv-g-1">The package</p><ul aria-labelledby="pv-g-1">
+                <li><a class="aq-mega__link" href="#" aria-current="page"><span class="aq-mega__t">Purified Water (PW) generation</span><span class="aq-mega__d">The RO and DI/EDI skid that makes your water</span></a></li>
+                <li><a class="aq-mega__link" href="#"><span class="aq-mega__t">Storage and distribution loops</span><span class="aq-mega__d">Tanks and loops that keep water moving</span></a></li>
+                <li><a class="aq-mega__link" href="#"><span class="aq-mega__t">Pretreatment</span><span class="aq-mega__d">Protects the RO from your feed water</span></a></li>
+                <li><a class="aq-mega__link" href="#"><span class="aq-mega__t">Monitoring and controls</span><span class="aq-mega__d">Alarms, records and audit trails mapped to Part 11</span></a></li>
+              </ul></div>
+              <div class="aq-mega__group"><p class="aq-mega__label" id="pv-g-2">Plan and budget</p><ul aria-labelledby="pv-g-2">
+                <li><a class="aq-mega__link" href="#"><span class="aq-mega__t">Budget ranges</span><span class="aq-mega__d">What a package costs and what moves it</span></a></li>
+                <li><a class="aq-mega__link" href="#"><span class="aq-mega__t">Site requirements</span><span class="aq-mega__d">Space, utilities and connections you provide</span></a></li>
+                <li><a class="aq-mega__link" href="#"><span class="aq-mega__t">Skid design basis</span><span class="aq-mega__d">Capacity, feed and recovery, each with its basis</span></a></li>
+              </ul></div>
+            </div>
+            <a class="aq-mega__feat" href="#"><span class="aq-spot aq-spot--icon aq-mega__icon" aria-hidden="true" style="-webkit-mask-image:url(assets/icons/loop.svg);mask-image:url(assets/icons/loop.svg)"></span><span class="aq-mega__eyebrow">Technical note</span><span class="aq-mega__t">Polypropylene or <span class="aq-mega__tail">stainless?</span></span><span class="aq-mega__d">When a PP loop fits, and when it doesn't</span></a>
+            <p class="aq-mega__foot">No Water for Injection, pure steam or stainless steel systems. <a class="aq-mega__more" href="#">Why</a></p>
+          </div>
+          <div class="aq-mega__tasks"><div class="aq-mega__tasks-in"><p class="aq-mega__label" id="pv-k">I need to</p><ul aria-labelledby="pv-k">
+            <li><a class="aq-mega__task" href="#">specify a new system</a></li>
+            <li><a class="aq-mega__task" href="#">plan our first system</a></li>
+            <li><a class="aq-mega__task" href="#">answer a water observation</a></li>
+            <li><a class="aq-mega__task" href="#">qualify a supplier</a></li>
+            <li><a class="aq-mega__task" href="#">check cost, time and terms</a></li>
+            <li><a class="aq-mega__task" href="#">fix a stopped system</a></li>
+            <li><a class="aq-mega__task" href="#">check our use fits</a></li>
+          </ul></div></div>
+        </div>
+      </li>
+      <li class="aq-nav__item"><button type="button" class="aq-nav__trigger" aria-expanded="false">Services<span class="aq-nav__chev" aria-hidden="true"></span></button></li>
+      <li class="aq-nav__item"><button type="button" class="aq-nav__trigger" aria-expanded="false">Industries<span class="aq-nav__chev" aria-hidden="true"></span></button></li>
+      <li class="aq-nav__item"><button type="button" class="aq-nav__trigger" aria-expanded="false">Compliance<span class="aq-nav__chev" aria-hidden="true"></span></button></li>
+      <li class="aq-nav__item"><button type="button" class="aq-nav__trigger" aria-expanded="false">Applications<span class="aq-nav__chev" aria-hidden="true"></span></button></li>
+      <li class="aq-nav__item"><button type="button" class="aq-nav__trigger" aria-expanded="false">Company<span class="aq-nav__chev" aria-hidden="true"></span></button></li>
     </ul>
     <span class="aq-nav__spacer"></span>
     <a class="aq-nav__service" href="#">Service request</a>
@@ -26,7 +56,7 @@
       <img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="/_blob/db46389f79ee8231228b037304a6d37b" alt="aquemi">
     </a>
     <span class="aq-nav__spacer"></span>
-    <button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" aria-expanded="true" aria-controls="preview-menu">Close</button>
+    <button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" aria-expanded="true" aria-controls="preview-menu"><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">Close</span></button>
   </nav>
   <div class="aq-menu" id="preview-menu">
     <div class="aq-menu__urgent" data-theme="light">
@@ -35,17 +65,35 @@
       <p class="aq-menu__hours">Answered <span class="aq-ph">[service phone hours]</span></p>
       <a class="aq-menu__service" href="#">Service request</a>
     </div>
-    <nav aria-label="Sections"><ol class="aq-menu__list">
-      <li><a href="#" aria-current="page">Systems</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Industries</a></li>
-      <li><a href="#">Compliance</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Company</a></li>
-    </ol></nav>
+    <nav aria-label="Sections"><ul class="aq-menu__list aq-menu__list--sect">
+      <li><button type="button" class="aq-menu__sect" aria-expanded="true" aria-controls="pv-g-systems">Systems<span class="aq-menu__plus" aria-hidden="true"></span></button>
+        <div class="aq-menu__group" id="pv-g-systems"><div class="aq-menu__group-in">
+          <a class="aq-menu__all" href="#">Systems overview</a>
+          <a class="aq-menu__feat" href="#"><span class="aq-menu__eyebrow">Technical note</span><span class="aq-menu__t">Polypropylene or stainless?</span><span class="aq-menu__d">When a PP loop fits, and when it doesn't</span></a>
+          <div class="aq-menu__ggrid">
+            <div class="aq-menu__gg"><p class="aq-menu__glabel" id="pv-l-1">The package</p><ul aria-labelledby="pv-l-1">
+              <li><a class="aq-menu__link" href="#" aria-current="page"><span class="aq-menu__t">Purified Water (PW) generation</span><span class="aq-menu__d">The RO and DI/EDI skid that makes your water</span></a></li>
+              <li><a class="aq-menu__link" href="#"><span class="aq-menu__t">Storage and distribution loops</span><span class="aq-menu__d">Tanks and loops that keep water moving</span></a></li>
+              <li><a class="aq-menu__link" href="#"><span class="aq-menu__t">Pretreatment</span><span class="aq-menu__d">Protects the RO from your feed water</span></a></li>
+              <li><a class="aq-menu__link" href="#"><span class="aq-menu__t">Monitoring and controls</span><span class="aq-menu__d">Alarms, records and audit trails mapped to Part 11</span></a></li>
+            </ul></div>
+            <div class="aq-menu__gg"><p class="aq-menu__glabel" id="pv-l-2">Plan and budget</p><ul aria-labelledby="pv-l-2">
+              <li><a class="aq-menu__link" href="#"><span class="aq-menu__t">Budget ranges</span><span class="aq-menu__d">What a package costs and what moves it</span></a></li>
+              <li><a class="aq-menu__link" href="#"><span class="aq-menu__t">Site requirements</span><span class="aq-menu__d">Space, utilities and connections you provide</span></a></li>
+            </ul></div>
+          </div>
+          <p class="aq-menu__foot">No Water for Injection, pure steam or stainless steel systems. <a class="aq-menu__more" href="#">Why</a></p>
+        </div></div></li>
+      <li><button type="button" class="aq-menu__sect" aria-expanded="false">Services<span class="aq-menu__plus" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="aq-menu__sect" aria-expanded="false">Industries<span class="aq-menu__plus" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="aq-menu__sect" aria-expanded="false">Compliance<span class="aq-menu__plus" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="aq-menu__sect" aria-expanded="false">Applications<span class="aq-menu__plus" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="aq-menu__sect" aria-expanded="false">Company<span class="aq-menu__plus" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="aq-menu__sect" aria-expanded="false">I need to<span class="aq-menu__plus" aria-hidden="true"></span></button></li>
+    </ul></nav>
     <nav class="aq-menu__jump" aria-labelledby="preview-jump"><p class="aq-menu__label" id="preview-jump">Section jump</p><ol class="aq-menu__list aq-menu__list--jump">
       <li><a href="#">Limits</a></li>
-      <li><a href="#">Choosing a train</a></li>
+      <li><a href="#">How it works</a></li>
       <li><a href="#" aria-current="true">Skid design</a></li>
       <li><a href="#">Documents</a></li>
     </ol></nav>

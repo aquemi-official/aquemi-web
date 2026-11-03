@@ -203,10 +203,10 @@
    "readme": "design-system/components/NavBar/README.md",
    "preview": "design-system/components/NavBar/preview.html",
    "group": "Navigation",
-   "height": "1080",
-   "width": "1100",
-   "subtitle": "Desktop header with the service link; phone menu with the urgent block and section jump",
-   "summary": "The site header: logo, primary sections, a \"Service request\" link and one call to action."
+   "height": "2200",
+   "width": "1300",
+   "subtitle": "Desktop header with the Systems panel open; phone menu with the urgent block and the Systems group open",
+   "summary": "The site header: logo, the six sections as mega menu buttons, a \"Service request\" link and one call to action; on narrow screens a menu with the urgent block and the sections as an accordion."
   },
   {
    "name": "SectionNav",
@@ -948,9 +948,7 @@
    "height": "930",
    "width": "1100",
    "subtitle": "Six redundancy options as modules on the shared site loop's plinth, numbered cards beside",
-   "summary": "ModulePlinth draws an options block with a base as modules standing on that base: an isometric plinth on a navy blueprint carries one block per option, each fed by a riser from the loop along the plinth, with numbered cards beside it.",
-   "retired": true,
-   "look": "module-plinth"
+   "summary": "ModulePlinth draws an options block with a base as modules standing on that base: an isometric plinth on a navy blueprint carries one block per option, each fed by a riser from the loop along the plinth, with numbered cards beside it."
   },
   {
    "name": "NcrTiles",
@@ -1416,9 +1414,7 @@
    "height": "1120",
    "width": "1280",
    "subtitle": "Signals drawn where they are measured: an instrumented loop with ISA balloons, schedule cards on leaders, the signal bus",
-   "summary": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into.",
-   "retired": true,
-   "look": "sensor-loop"
+   "summary": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into."
   },
   {
    "name": "SheetPreviews",
@@ -1428,9 +1424,7 @@
    "height": "840",
    "width": "1280",
    "subtitle": "Pretreatment documents as a Swiss row of sheets, each thumbnail showing its kind",
-   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line.",
-   "retired": true,
-   "look": "sheet-previews"
+   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line."
   },
   {
    "name": "SheetStack",
@@ -1556,9 +1550,7 @@
    "height": "1180",
    "width": "1100",
    "subtitle": "Turnover package as binder spines on a shelf beside its index that opens",
-   "summary": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents.",
-   "retired": true,
-   "look": "spine-shelf"
+   "summary": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents."
   },
   {
    "name": "SpoolDossier",

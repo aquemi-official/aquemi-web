@@ -10,9 +10,9 @@
    "page": "cmp-quality",
    "slot": 0,
    "h": "Each process, and the record it leaves",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "902e13723b",
    "block": {
@@ -30,6 +30,75 @@
       "Change control",
       "Impact assessed before work continues; your approval for documents you approved",
       "Change request with impact assessment; change control register"
+     ],
+     [
+      "Nonconformance and complaints",
+      "Items held and decided; repeat, systemic or client-reported causes get a corrective and preventive action (CAPA)",
+      "Nonconformance report (NCR); CAPA with effectiveness check; complaint log"
+     ],
+     [
+      "Identification and traceability",
+      "Product-contact parts traced by lot or serial number to joint and drawing",
+      "Material log against [PP material certificates]; [PP joint records kept]"
+     ],
+     [
+      "Calibration",
+      "Traceable to national standards through [calibration provider and accreditation held]; an out-of-tolerance result reopens every reading since the last calibration",
+      "Calibration register; as-found and as-left certificates"
+     ],
+     [
+      "Document control",
+      "Only the current approved revision issued; superseded ones withdrawn and kept",
+      "Document register; client comment logs"
+     ],
+     [
+      "Supplier control",
+      "Product-contact and special-process suppliers approved before use, reviewed on a schedule",
+      "Approved supplier list; incoming inspection records"
+     ],
+     [
+      "Internal audit and management review",
+      "Each process audited by someone independent of it; results reviewed by management",
+      "Audit reports; management review minutes"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "processes",
+    "look": "record-sheet"
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 0,
+   "h": "Each process, and the record it leaves",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "759095237f",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Processes",
+    "h": "Each process, and the record it leaves",
+    "cols": [
+     "Process",
+     "What it controls",
+     "Record you can inspect"
+    ],
+    "rows": [
+     [
+      "Change control",
+      "Impact assessed before work continues; your approval for documents you approved",
+      "Change request with impact assessment; change control register"
+     ],
+     [
+      {
+       "t": "Data integrity",
+       "link": "sys-monitoring#data-integrity"
+      },
+      "Control system audit trail, individual accounts with role-based rights, and a configuration baseline changed only under change control",
+      "Audit trail review report; user role list; configuration baseline backup"
      ],
      [
       "Nonconformance and complaints",

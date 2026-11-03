@@ -7,7 +7,7 @@
  "path": "/services/how-a-project-runs/",
  "eyebrow": "PROJECT PLAN · EU GMP ANNEX 15 · WHO TRS 1033",
  "headline": "How a project runs, from order to water in use",
- "lead": "Plan holds and validation time for your polypropylene Purified Water package from one schedule. Each stage names its duration, what it leaves and who signs. Your contact from order to handover: [named project lead role].",
+ "lead": "Plan holds and qualification time for your polypropylene Purified Water package from one schedule, with durations and who signs. Your contact from order to handover: [named project lead role].",
  "primary_cta": "Talk to an engineer",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
@@ -30,7 +30,7 @@
    "anchor": "stages",
    "nav": "Stages",
    "h": "Stages, what each leaves, and who signs",
-   "intro": "Total time: [order to water in use, weeks] from [lead time start event]. Each stage shows its length; your review time adds to it. The next stage starts when its hold is signed.",
+   "intro": "Total: [order to water in use, weeks] from [lead time start event], plus your review time. Replacing a system? We plan the cutover; production stops only [planned shutdown, hours].",
    "items": [
     {
      "t": "Your approvals, before order",
@@ -39,8 +39,8 @@
     },
     {
      "t": "Design to DQ, [design to DQ, weeks]",
-     "d": "Basis of design, piping and instrumentation diagrams, functional specification and design qualification (DQ).",
-     "hold": "Your quality unit"
+     "d": "Basis of design, piping and instrumentation diagrams and functional specification. Under good manufacturing practice (GMP), design qualification (DQ) closes this stage.",
+     "hold": "You, and your quality unit for DQ under GMP"
     },
     {
      "t": "Drawing approval, [submittal review clock, working days]",
@@ -54,7 +54,7 @@
     },
     {
      "t": "Factory acceptance test (FAT), [FAT duration, days]",
-     "d": "With water, to the protocol your quality unit approved. Leaves raw data, deviation log, report and release to ship.",
+     "d": "With water, to the protocol you or your quality unit approved. Leaves raw data, deviation log, report and release to ship.",
      "hold": "Both parties",
      "link": "svc-fat-sat"
     },
@@ -63,19 +63,19 @@
      "d": "Drained after FAT, then shipped. Kept until start-up under [storage conditions before start-up]."
     },
     {
-     "t": "Installation and SAT, [installation and SAT, days]",
-     "d": "Installation by [installation scope]; site joints and pressure test by [site joints, by whom]. Site acceptance tests (SAT) on your utilities; leaves the SAT report.",
-     "hold": "You"
+     "t": "Installation and site acceptance tests (SAT), [installation and SAT, days]",
+     "d": "Installation by [installation scope]; site joints and pressure test by [site joints, by whom]. Tie-in during the planned shutdown. Leaves the SAT report.",
+     "hold": "You, or your quality unit under GMP"
     },
     {
      "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
-     "d": "To protocols your quality unit approves. Leaves reports and draft procedures.",
-     "hold": "Your quality unit",
+     "d": "To protocols your quality unit approves; leaves reports and draft procedures. Without GMP: commissioning and an acceptance test against your specification.",
+     "hold": "Your quality unit, or you without GMP",
      "link": "svc-cq"
     },
     {
-     "t": "PQ and first use, at least 12 months",
-     "d": "Performance qualification (PQ) in three phases. Use from phase 2, after at least 2 weeks of sampling (WHO TRS 1033).",
+     "t": "PQ under GMP: three phases, at least 12 months",
+     "d": "Performance qualification (PQ). After at least 2 weeks of sampling, your quality unit releases the water for use (WHO TRS 1033).",
      "hold": "Your quality unit"
     }
    ],
@@ -89,27 +89,30 @@
    "anchor": "who",
    "nav": "Who does what",
    "h": "Who does what, and what is ready before installation",
-   "intro": "Who installs is [installation scope]. Your proposal lists every task, marked by Aquemi or by others.",
+   "intro": "Your proposal marks every task and hand-off: by us, supplied only, or by you. Installation: [installation scope].",
    "cols": [
-    "Who",
-    "What they do",
+    "Who, or which hand-off",
+    "Their part",
     "Ready before installation"
    ],
    "rows": [
     [
-     "You: project manager or site head",
+     "You: project manager, site head or safety lead",
      "Own the schedule, the order and site access. Name one contact who approves drawings and changes.",
-     "Delivery route and floor for [typical footprint and weight, by capacity]"
+     {
+      "t": "Work permits: chemicals, drain and isolation points for your safety team",
+      "link": "cmp-documentation#safety"
+     }
     ],
     [
-     "Your quality unit",
+     "Your quality unit, under GMP",
      "Approves the URS, each protocol before it runs and each report after. Decides first use from PQ data.",
      "Validation master plan; SAT, IQ and OQ protocols approved"
     ],
     [
-     "Your engineer, in-house or consulting",
-     "Writes or reviews the URS, reviews our drawings and may witness FAT for you.",
-     "Tie-in points agreed on the drawings"
+     "Your engineer and trades",
+     "Your engineer writes or reviews the URS and may witness FAT. Your mechanical, electrical and plumbing trades review our drawings.",
+     "Drawing comments closed in writing before fabrication [confirm]"
     ],
     [
      "Your contractor",
@@ -120,19 +123,27 @@
      }
     ],
     [
-     "Your other trades: mechanical, electrical, plumbing",
-     "Review our drawings before fabrication. Each comment is closed in writing [confirm].",
-     "Comments closed on the drawings before fabrication"
-    ],
-    [
      "Aquemi",
      "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
-     "Site readiness checklist, sent [site checklist before delivery, weeks] before delivery [confirm]"
+     {
+      "t": "Your site readiness checklist, sent before delivery [confirm]",
+      "link": "project-plan#notice"
+     }
     ],
     [
-     "Aquemi, at handover",
-     "Issues as-built drawings [as-built drawings after SAT, working days] after SAT, marked as built.",
-     "Valves, gauges and sample points tagged as on the drawings [confirm]"
+     "Mechanical hand-off: piping and tie-ins",
+     "[mechanical hand-off: by us, supplied only, by you]",
+     "Tie-in points agreed on the drawings"
+    ],
+    [
+     "Electrical hand-off: power and wiring",
+     "[electrical hand-off: by us, supplied only, by you]",
+     "Supply at the battery limit, sized on the drawings"
+    ],
+    [
+     "Controls hand-off: signals and alarms",
+     "[controls hand-off: by us, supplied only, by you]",
+     "Signals to your plant or building system agreed on the drawings"
     ]
    ],
    "look": "reader-split"
@@ -175,9 +186,9 @@
      "Schedule, first water, off-specification water to drain, who attends"
     ],
     [
-     "SAT, IQ and OQ protocols",
+     "SAT, IQ and OQ protocols, or acceptance test",
      "[protocol issue before IQ/OQ, weeks] before testing",
-     "For your quality unit's approval; nothing runs before it signs"
+     "For your approval, or your quality unit's under GMP; nothing runs before it is signed"
     ],
     [
      "Training syllabus",
@@ -263,6 +274,8 @@
      "p": "Submittal log",
      "v": "Updated with every issue",
      "m": "Each document: approved, approved as noted, revise and resubmit, or for information",
+     "link": "cmp-documentation#by-stage",
+     "link_label": "Documents by stage",
      "side": "package"
     },
     {
@@ -280,8 +293,14 @@
     {
      "p": "Design reviews",
      "v": "[design review points]",
-     "m": "Your engineer and quality unit attend",
+     "m": "Your engineer attends; your quality unit too, under GMP",
      "side": "site"
+    },
+    {
+     "p": "As-built drawings",
+     "v": "[as-built drawings after SAT, working days] after SAT",
+     "m": "Marked as built; valves, gauges and sample points tagged as drawn [confirm]",
+     "side": "package"
     }
    ],
    "sides": [
@@ -304,8 +323,12 @@
      "a": "Count them in your plan. Capital approval, supplier qualification and URS sign-off come before our clock starts. Your review time at each hold adds to the durations above, unless a stage says it is included."
     },
     {
+     "q": "Do these stages apply if we are not under GMP?",
+     "a": "Yes. Commissioning and an acceptance test against your specification take the place of qualification. The DQ signature and PQ apply under GMP only; you sign the other holds and release the water."
+    },
+    {
      "q": "What if our site is not ready on time?",
-     "a": "Tell us as soon as you know. We agree a new delivery date and where the skids wait, under [storage conditions before start-up]. Storage and extra visits cost [site delay and storage charges]. The readiness checklist reaches you [site checklist before delivery, weeks] before delivery."
+     "a": "Tell us as soon as you know. We agree a new delivery date and where the skids wait, under [storage conditions before start-up]. Storage and extra visits cost [site delay and storage charges]. The readiness checklist reaches you [site checklist before delivery, weeks] before delivery [confirm]."
     },
     {
      "q": "Can the skids wait through a Canadian winter before start-up?",
@@ -345,7 +368,7 @@
   "include": [
    "Your target date for water in use",
    "Your URS, if any",
-   "New room or an existing system to replace",
+   "New room, or the system you replace and its shutdown windows",
    "Your approval steps before order"
   ],
   "turnaround": "[proposal response time, working days]",
@@ -370,6 +393,6 @@
   "Launch order (DR-026): if buying is not live when this page launches, the hero secondary, FAQ 5 and the related item link cmp-quality#buying ('See payment terms') until it is",
   "Shared looks with the other pass 11 pages (review finding 10, orchestrator): reader-split (B1, also urs-guide, first-system, buying), battery-limit (B4, also first-system), hero route plate (also buying). Keep route here: its stops are a schedule",
   "Pass 11 integration (look reuse, finding 10): hero 'route' plate kept here; buying moved to the 'stamp' plate. Kept reuses after checking every unused look of each type (python tools/specimens.py fit): who on reader-split (also urs-guide, first-system, buying): shop-floor draws our shop, where the client roles do not work, and the other retired table looks draw joints, plans, spares or FAT and SAT. reporting on battery-limit (also first-system#site): no retired spec look draws a two-sided split",
-  "Final round, pass 11: \"Who does what\" gains drawing review by the client's other trades before fabrication and labelled as-built drawings at handover (L-BWT-9, L-BWT-26; BWT study § 9 rank 6; FD-57). Owner confirms comment closure in writing, [as-built drawings after SAT, working days] and the tagging practice"
+  "Pass 12 (SITE-PLAN project-plan; IB §3; RI 02, 07, 12, 13): stages mark DQ and PQ as GMP only and IQ/OQ carries the non-GMP path (DR-027 rule 8 content in FAQ 2, verbatim form not required on project-plan; its explanation home on this page); cutover line in the stages intro with [planned shutdown, hours] (new name, RI 07), and the installation step names the planned shutdown so the cutover-schedule water line breaks there (look reads 'planned shutdown' from the step text); water use after the quality unit's release in the PQ step. who: interface rows (mechanical, electrical, controls) with three-lane placeholders [mechanical hand-off: by us, supplied only, by you], [electrical hand-off: …], [controls hand-off: …] (new names, owner sets each split; RI 12); other trades merged into the engineer row; site-readiness links cmp-documentation#safety (one home for chemicals, drain, isolation; SITE-PLAN 1.5 row 8) and systems#site. As-built drawings and tagging (pass 11 final round, L-BWT-9, L-BWT-26, FD-57) moved from who to reporting: owner confirms comment closure in writing, [as-built drawings after SAT, working days] and the tagging practice. Lead keeps its wording until FD-08 fills; then 'From order to water in use: [order to water in use, weeks].' goes first and 'with durations and who signs' goes (RI 02; one name per fact, DR-011). Pass 12 review applied: DQ and PQ marked GMP only in title and hold; SAT hold, FAT, notice protocol row and design reviews name both paths; PQ release before use; safety link label matches cmp-documentation#safety; site checklist [confirm] in all three places; submittal log links cmp-documentation#by-stage"
  ]
 }

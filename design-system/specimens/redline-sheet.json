@@ -10,13 +10,54 @@
    "page": "svc-design",
    "slot": 0,
    "h": "Qualification failures that start in design",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "f7c6631981",
    "block": {
     "type": "table",
+    "look": "redline-sheet",
+    "as": "failures",
+    "h": "Qualification failures that start in design",
+    "intro": "Each is cheap to fix on paper, expensive in a qualified room.",
+    "cols": [
+     "Fails at qualification",
+     "Design mistake",
+     "What we design in"
+    ],
+    "rows": [
+     [
+      "No turbulent flow at peak demand",
+      "Loop sized on average demand",
+      "Hydraulics checked at peak demand, every operating case"
+     ],
+     [
+      "Dead leg found at installation qualification (IQ)",
+      "Branch drawn without its length",
+      "Every branch dimensioned and listed in a dead leg register"
+     ],
+     [
+      "Send-to-drain deviation at operational qualification (OQ)",
+      "Setpoint missing from the specification",
+      "Every setpoint, alarm and interlock written as a testable sentence"
+     ]
+    ],
+    "nav": "Why design"
+   }
+  },
+  {
+   "page": "svc-design",
+   "slot": 0,
+   "h": "Qualification failures that start in design",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6db6a96220",
+   "block": {
+    "type": "table",
+    "anchor": "failures",
     "look": "redline-sheet",
     "as": "failures",
     "h": "Qualification failures that start in design",

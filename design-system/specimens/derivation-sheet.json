@@ -55,7 +55,7 @@
    "page": "urs-guide",
    "slot": 4,
    "h": "Rows to write if you allow polypropylene",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -106,7 +106,7 @@
    "page": "first-system",
    "slot": 1,
    "h": "Which water your product needs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -156,6 +156,164 @@
       "European Medicines Agency water guideline"
      ]
     ]
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 4,
+   "h": "Rows to write if you allow polypropylene",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "ccf58038de",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "look": "derivation-sheet",
+    "anchor": "allow-pp",
+    "nav": "Polypropylene rows",
+    "h": "Rows to write if you allow polypropylene",
+    "intro": "Written this way, a polypropylene bid can be scored, not excluded. Each row can be checked at installation.",
+    "cols": [
+     "Row",
+     "What to write",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Product-contact material",
+      "Virgin, unpigmented polypropylene, with a material certificate per lot",
+      "Purified Water quality and your sanitizing agent"
+     ],
+     [
+      "Pressure rating and wall",
+      "Pressure class and wall ratio for each line, stated at your highest operating and sanitizing temperature",
+      "Polypropylene's pressure rating falls as it heats"
+     ],
+     [
+      "Joints and records",
+      "A record per joint, with a joint map and examination, replacing stainless weld logs and passivation records",
+      "A copied stainless document list leaves rows nobody can answer"
+     ],
+     [
+      "Sanitization",
+      "A method within the material's temperature and chemical ratings; any sanitant proven absent at every outlet before use",
+      "Your sanitization procedure and the material maker's chemical resistance data"
+     ],
+     [
+      "Installation",
+      "Tank and pipe kept from sunlight, in a heated room, on supports that let the pipe expand",
+      "Unpigmented polypropylene is sensitive to sunlight; plastic pipe moves more with temperature than steel"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 1,
+   "h": "Which water your product needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "f44ef06d68",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "look": "derivation-sheet",
+    "nav": "Your water",
+    "anchor": "grade",
+    "h": "Which water your product needs",
+    "intro": "Purified Water is drinking water treated to written limits on dissolved salts, organic carbon and microbes. Minimums only: your file may go higher, never lower.",
+    "cols": [
+     "Your product",
+     "Minimum water",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Craft beverages and food",
+      "Potable, then treated to your recipe",
+      "Safe Food for Canadians Regulations; your recipe"
+     ],
+     [
+      "Natural health products",
+      "Potable water; Purified Water where your specification asks",
+      "GUI-0158; your microbial limits"
+     ],
+     [
+      "Cosmetics and personal care",
+      "Your written specification; Purified Water for lines sold as drugs",
+      "Your product class; ISO 22716"
+     ],
+     [
+      "Natural health products: homeopathic dilutions, or sold abroad as drugs",
+      "Purified Water, or the liquid a monograph names",
+      "The monograph, or the importing market's drug rules"
+     ],
+     [
+      "Non-sterile drugs: oral, skin and nasal products",
+      "Purified Water",
+      "Health Canada GUI-0001; limits in USP <645> and <643>"
+     ],
+     [
+      "Medical devices: final rinse",
+      "Purified Water, with an endotoxin limit where needed",
+      "USP <161> per device"
+     ],
+     [
+      "Laboratories",
+      "ASTM D1193-24 Type II or III, or CLSI GP40 clinical laboratory reagent water",
+      "Your methods; not Purified Water"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "ind-personal-care",
+   "slot": 1,
+   "h": "Which water each product class needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "2324560bc7",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "nav": "Water by product",
+    "anchor": "grade",
+    "h": "Which water each product class needs",
+    "intro": "Each product's legal class sets the minimum, in each market you sell to. One plant can make all four. Your specification may go higher, never lower.",
+    "cols": [
+     "Your product",
+     "Minimum water",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Cosmetic only: creams, lotions, shampoos, makeup",
+      "Your written specification, or your brand client's",
+      "Health Canada encourages good manufacturing practice (GMP) and endorses ISO 22716"
+     ],
+     [
+      "Natural health product lines",
+      "Potable water at minimum; PW where your specification or a monograph names it",
+      "Health Canada GUI-0158"
+     ],
+     [
+      "Sold in the US as OTC drug-cosmetics: sunscreens, antiperspirants, fluoride toothpaste, hand sanitizers",
+      "Purified Water (PW), under drug GMP",
+      "US drug GMP, 21 CFR 210 and 211"
+     ],
+     [
+      "Drugs with a Canadian drug identification number (DIN)",
+      "PW, under drug GMP",
+      "Health Canada GUI-0001"
+     ]
+    ],
+    "look": "derivation-sheet"
    }
   }
  ]

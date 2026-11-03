@@ -152,7 +152,7 @@
    "page": "ind-pharma",
    "slot": 0,
    "h": "Your situation and where to start",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -217,6 +217,87 @@
      "ro",
      ""
     ]
+   }
+  },
+  {
+   "page": "ind-pharma",
+   "slot": 0,
+   "h": "Your situation and where to start",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "52f61ada73",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Your situation and where to start",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A new line, or more points of use",
+      "More PW, tied into a qualified plant",
+      {
+       "t": "Upgrades and retrofits",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "An inspection due, an observation, or results out of trend",
+      "GUI-0001 C.02.009 water quality at risk; first, assess design, trends and records",
+      {
+       "t": "After a water observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "First export to the US or EU",
+      "Both pharmacopoeias in one specification",
+      {
+       "t": "Purified Water limits",
+       "link": "compliance#limits"
+      }
+     ],
+     [
+      "A new plant, or your first PW system",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "first-system"
+      }
+     ],
+     [
+      "Natural health products: does this line need PW?",
+      "Potable at minimum; PW where your specification calls for it",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Sunscreens, hand sanitizers and other personal care drugs",
+      "The legal class sets the grade: drug, natural health product or cosmetic",
+      {
+       "t": "Cosmetics and personal care",
+       "link": "ind-personal-care#grade"
+      }
+     ]
+    ],
+    "look": "checker-router",
+    "draws": [
+     "outlet",
+     "",
+     "",
+     "ro",
+     "",
+     ""
+    ],
+    "anchor": "start"
    }
   }
  ]

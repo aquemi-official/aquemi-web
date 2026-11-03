@@ -86,9 +86,9 @@
    "page": "sys-monitoring",
    "slot": 3,
    "h": "Data integrity, clause by clause",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "6d6a1066f6",
    "block": {
@@ -157,6 +157,146 @@
     "fold_noun": "requirements",
     "look": "clause-crosswalk",
     "anchor": "data-integrity"
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 3,
+   "h": "Data integrity, clause by clause",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "97a1f0651d",
+   "block": {
+    "type": "table",
+    "h": "Data integrity, clause by clause",
+    "intro": "Health Canada applies EU good manufacturing practice (GMP) Annex 11 through GUI-0050.",
+    "cols": [
+     "Requirement",
+     "What the controls provide",
+     "21 CFR Part 11",
+     "EU GMP Annex 11 (2011)"
+    ],
+    "rows": [
+     [
+      "Audit trail",
+      "Who, when, old and new value and reason; cannot be switched off",
+      "11.10(e)",
+      "9"
+     ],
+     [
+      "Access control",
+      "Individual accounts, role-based rights, automatic logout; each role tested at FAT",
+      "11.10(d), (g)",
+      "12"
+     ],
+     [
+      "Record protection",
+      "No edit or delete; backups every [backup interval], kept [data retention, years]",
+      "11.10(c)",
+      "7; 17"
+     ],
+     [
+      "Electronic signatures",
+      "If used: signer, time and meaning, linked to the record",
+      "11.50, 11.70, 11.100–11.300",
+      "14"
+     ],
+     [
+      "Validation",
+      "GAMP 5 lifecycle documents for your validation, URS to operational qualification (OQ), with a traceability matrix",
+      "11.10(a)",
+      "4"
+     ],
+     [
+      "Accurate copies",
+      "Readable and electronic reports, checked against the stored record",
+      "11.10(b)",
+      "8"
+     ],
+     [
+      "Sequence and device checks",
+      "Steps enforced in order; a failed sensor never reads as good water",
+      "11.10(f), (h)",
+      "5; 6"
+     ],
+     [
+      "Change control and review",
+      "Baseline backup and audit trail review report",
+      "11.10(k)",
+      "10; 11; 13"
+     ]
+    ],
+    "nav": "Data integrity",
+    "as": "evidence",
+    "fold": 3,
+    "fold_noun": "requirements",
+    "look": "clause-crosswalk",
+    "anchor": "data-integrity"
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 1,
+   "h": "Which water each standard asks for",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "48b56d56ed",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Grades",
+    "anchor": "grades",
+    "h": "Which water each standard asks for",
+    "intro": "None of these is Purified Water. Purified Water is held to ≤ 1.3 µS/cm at 25 °C (USP <645> stage 1), with no endotoxin limit.",
+    "cols": [
+     "Water",
+     "How it differs from Purified Water",
+     "Hospital standard",
+     "Laboratory standard"
+    ],
+    "rows": [
+     [
+      "Critical water",
+      "Fewer ions removed, far tighter on microbes, plus an endotoxin limit: < 10 µS/cm, < 10 colony-forming units (CFU)/mL, < 10 endotoxin units/mL",
+      "ANSI/AAMI ST108:2023; CSA Z314:23",
+      ""
+     ],
+     [
+      "Utility water",
+      "Looser: < 500 µS/cm, < 500 CFU/mL. As the final rinse after high-level disinfection: < 10 CFU/mL and < 10 endotoxin units/mL",
+      "ANSI/AAMI ST108:2023",
+      ""
+     ],
+     [
+      "Type II reagent water",
+      "Tighter on ions and organic carbon: < 1 µS/cm at 25 °C, total organic carbon < 50 µg/L",
+      "",
+      "ASTM D1193-24; values from D1193-06"
+     ],
+     [
+      "Type III reagent water",
+      "Tighter on ions than Type II, looser on organic carbon: < 0.25 µS/cm at 25 °C, total organic carbon < 200 µg/L. Not a purity ladder",
+      "",
+      "ASTM D1193-24; values from D1193-06"
+     ],
+     [
+      "Clinical laboratory reagent water",
+      "Defined for medical laboratories; an analyzer maker's specification governs that analyzer's feed",
+      "",
+      "CLSI GP40 5th ed."
+     ],
+     [
+      "Type I reagent water",
+      "Made at the bench by a point-of-use polisher fed from the loop, not by a central loop",
+      "",
+      "ASTM D1193-24"
+     ]
+    ],
+    "look": "clause-crosswalk"
    }
   }
  ]

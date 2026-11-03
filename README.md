@@ -13,7 +13,7 @@ This is for drafting and testing. Every page carries a `noindex` tag. Push to `m
 ## In short
 
 - `design-system/` is the source of truth for everything visual: tokens, component styles, guidelines and previews. The site, the guide page and the Claude design system all read from it.
-- `content/pages/` holds one file per page (31 pages). **Edit copy here**, then run `build`; `content/pages.json` is generated from it.
+- `content/pages/` holds one file per page (34 pages). **Edit copy here**, then run `build`; `content/pages.json` is generated from it.
 - `tools/design_system.py` builds generated files, checks the rules, scaffolds components and stages the system for Claude:
 
 ```bash

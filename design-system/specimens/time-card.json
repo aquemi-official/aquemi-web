@@ -10,9 +10,9 @@
    "page": "careers",
    "slot": 1,
    "h": "Pay, benefits and terms",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "bd3c885454",
    "block": {
@@ -125,6 +125,73 @@
      }
     ],
     "note": "Your quality person sets the sample points and how often."
+   }
+  },
+  {
+   "page": "careers",
+   "slot": 1,
+   "h": "Pay, benefits and terms",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "c2b5e78ac4",
+   "block": {
+    "type": "spec",
+    "nav": "Pay & terms",
+    "anchor": "terms",
+    "h": "Pay, benefits and terms",
+    "cols": [
+     "Item",
+     "Our terms",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Hours",
+      "v": "[standard weekly hours and core hours]",
+      "m": "Hybrid days by role, in the roles table"
+     },
+     {
+      "p": "Travel",
+      "v": "[per diem, accommodation and paid travel time] · [company vehicle for field roles]",
+      "m": "By role, in the roles table"
+     },
+     {
+      "p": "Overtime and shutdown work",
+      "v": "[overtime pay or time off in lieu] · [shutdown scheduling and pay]",
+      "m": ""
+     },
+     {
+      "p": "Health, dental and retirement",
+      "v": "[health and dental plan, waiting period] · [group RRSP or pension, employer match]",
+      "m": ""
+     },
+     {
+      "p": "Vacation",
+      "v": "[paid vacation in year one, weeks]",
+      "m": ""
+     },
+     {
+      "p": "Training and qualification",
+      "v": "[joining qualification paid by Aquemi, yes or no] · [external course budget, CAD per year]",
+      "m": ""
+     },
+     {
+      "p": "Professional licence",
+      "v": "[P.Eng., ing. or CET dues and fees paid] · [supervision for engineers in training]",
+      "m": "Provincial engineering regulator"
+     },
+     {
+      "p": "Working language",
+      "v": "[English, French or both, by role and region]",
+      "m": "Quebec's Charter of the French Language applies to work in Quebec"
+     }
+    ],
+    "note": "The posting and written offer govern.",
+    "fold": 3,
+    "fold_noun": "terms",
+    "look": "time-card"
    }
   }
  ]

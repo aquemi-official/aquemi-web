@@ -10,9 +10,9 @@
    "page": "svc-design",
    "slot": 2,
    "h": "What you receive",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "6911f9d528",
    "block": {
@@ -42,6 +42,47 @@
      }
     ],
     "nav": "What you receive"
+   }
+  },
+  {
+   "page": "svc-design",
+   "slot": 2,
+   "h": "What you receive",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "d60ecb5818",
+   "block": {
+    "type": "docs",
+    "anchor": "deliverables",
+    "look": "issued-set",
+    "h": "What you receive",
+    "items": [
+     {
+      "t": "URS compliance matrix",
+      "code": "CM",
+      "d": "How the design meets each requirement; each gap with proposed wording."
+     },
+     {
+      "t": "P&IDs and general arrangement drawings",
+      "d": "Every line, valve and tag, with slopes, drains and sample points; the layout with its connections. IQ verifies against them.",
+      "use": "IQ"
+     },
+     {
+      "t": "Functional and design specifications",
+      "d": "Setpoints, alarms, interlocks and divert logic, each testable. OQ tests against them.",
+      "use": "OQ"
+     },
+     {
+      "t": "Design review report and traceability matrix",
+      "d": "Evidence the design meets every URS line. Your quality unit approves DQ on it.",
+      "use": "DQ"
+     }
+    ],
+    "nav": "What you receive",
+    "link": "cmp-documentation#samples",
+    "link_label": "Request a specimen package"
    }
   }
  ]

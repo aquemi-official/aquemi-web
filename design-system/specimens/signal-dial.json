@@ -138,9 +138,9 @@
    "page": "svc-service",
    "slot": 2,
    "h": "Instrument calibration",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "a657dd1b79",
    "block": {
@@ -188,7 +188,7 @@
    "page": "sys-monitoring",
    "slot": 2,
    "h": "Sensors and signals",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -268,6 +268,145 @@
     "fold_noun": "signals",
     "as": "callouts",
     "look": "signal-dial"
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 1,
+   "h": "Sensors and signals",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "da9ac05fd6",
+   "block": {
+    "type": "spec",
+    "h": "Sensors and signals",
+    "caption": "MONITORING · WHO TRS 1033",
+    "cols": [
+     "Signal",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "TOC analyzer",
+      "v": "Online; system suitability 85 % to 115 %",
+      "m": "USP <643>",
+      "at": [
+       37.4,
+       46.9
+      ]
+     },
+     {
+      "p": "Conductivity cell",
+      "v": "Cell constant ± 2 %; ± 0.1 µS/cm; temperature ± 2 °C",
+      "m": "USP <645>, uncompensated",
+      "at": [
+       49.4,
+       57.7
+      ]
+     },
+     {
+      "p": "Temperature",
+      "v": "Generation, tank, loop supply and return, coldest sanitization point",
+      "at": [
+       48.9,
+       41.1
+      ],
+      "m": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats."
+     },
+     {
+      "p": "Divert (generation)",
+      "v": "Setpoint below your alert level; to [divert route: drain or recirculation], never to storage",
+      "m": "Value, time and duration recorded; tested at the factory and site acceptance tests (FAT, SAT)",
+      "at": [
+       72.9,
+       37.7
+      ]
+     },
+     {
+      "p": "Restart after power loss",
+      "v": "[restart after power loss: automatic or operator release]",
+      "m": "Tested at FAT"
+     },
+     {
+      "p": "Flow and pressure",
+      "v": "Return flow ≥ [qualified minimum return flow, L/h], alarmed",
+      "m": "WHO TRS 1033, 8.6 and 12.3",
+      "at": [
+       57.4,
+       69.7
+      ]
+     },
+     {
+      "p": "Ultraviolet (UV) units, where fitted",
+      "v": "Intensity at 254 nm, lamp hours, lamp failure"
+     },
+     {
+      "p": "Data recording",
+      "v": "Every quality value at [recording interval, seconds], time-stamped",
+      "m": "One site time source"
+     }
+    ],
+    "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
+    "nav": "Measurements",
+    "fold": 5,
+    "fold_noun": "signals",
+    "as": "callouts",
+    "look": "signal-dial",
+    "anchor": "instruments"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 2,
+   "h": "Instrument calibration",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "f770b6ffea",
+   "block": {
+    "type": "spec",
+    "look": "signal-dial",
+    "nav": "Calibration",
+    "anchor": "calibration",
+    "h": "Instrument calibration",
+    "cols": [
+     "Instrument",
+     "Check and acceptance",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Conductivity cell and transmitter",
+      "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
+      "m": "USP <645>",
+      "hl": true,
+      "link": "contact-service#request",
+      "link_label": "Request a calibration visit",
+      "intent": "Calibration"
+     },
+     {
+      "p": "Online total organic carbon (TOC) analyzer",
+      "v": "System suitability: response efficiency 85 % to 115 %",
+      "m": "USP <643>; Ph. Eur. 2.2.44"
+     },
+     {
+      "p": "Temperature, pressure, flow and level",
+      "v": "Across the working range",
+      "m": "GUI-0001 C.02.005; 21 CFR 211.68"
+     },
+     {
+      "p": "UV lamp intensity [UV, standard or option]",
+      "v": "Against a reference sensor or the maker’s method",
+      "m": "Maker’s procedure"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "instruments",
+    "note": "Certificates show as-found and as-left values. Calibrated by [calibration provider and accreditation held]."
    }
   }
  ]

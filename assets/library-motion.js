@@ -227,27 +227,6 @@ AQmotion.fx('MarketCallouts', function (root, m) {
   document.addEventListener('mouseover', over);
   document.addEventListener('mouseout', function (ev) { var el = ev.target.closest && ev.target.closest('.aq-market-callouts'); if (el && !el.contains(ev.relatedTarget)) set(el, null) });
 })();
-/* ModulePlinth: the drawing is built through the IsoKit choreography (sheet, plinth, then each module drawn back to
-   front, risers and loop laid, the water run along the loop and up each riser in turn). As the water reaches a module
-   its marker drops onto it with a small bounce; the cards are dealt in beside the drawing in the same order. One
-   timeline, once on scroll-in, under 5 s; settles static. Folded cards (phones) are left alone. */
-AQmotion.fx('ModulePlinth', function (root, m) {
-  root.querySelectorAll('.aq-module-plinth').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var svg = el.querySelector('svg.aq-iso'), mks = el.querySelectorAll('.aq-module-plinth__mk');
-    var cards = [].filter.call(el.querySelectorAll('.aq-module-plinth__card'), function (c) { return c.offsetParent !== null });
-    var shown = {};
-    var tl = window.AQiso && AQiso.timeline(svg, m, { draw: 1.5, pipe: 0.7, flow: 1.8,
-      onStage: function (els, id) { var k = String(id).replace('m', ''), mk = el.querySelector('.aq-module-plinth__mk[data-k="' + k + '"]'); if (mk && !shown[k]) { shown[k] = 1; gsap.fromTo(mk, { y: -14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }) } } });
-    if (!tl) return;
-    gsap.set(mks, { autoAlpha: 0 });
-    tl.from(el.querySelector('.aq-module-plinth__base'), { autoAlpha: 0, y: 8, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 'pipes');
-    tl.from(cards, { y: 18, autoAlpha: 0, duration: 0.55, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.4);
-    // whatever the water timing, every marker is shown by the end
-    tl.add(function () { gsap.set(mks, { clearProps: 'transform,opacity,visibility' }) }, 'end');
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
 /* PackMatrix: the packs are dealt onto the matrix in a diagonal sweep (client by period), then one is pulled out of
    its slot and turns navy, the leader runs from it to the sheet, the sheet opens from the left under its strip and the
    documents are laid in, numerals rolling up. One timeline, once on scroll-in, under 4 s. Folded documents (phones)
@@ -324,58 +303,6 @@ AQmotion.fx('RailModules', function (root, m) {
       if (nar) gsap.set(mo, { autoAlpha: 1 });
     });
     m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
-/* SensorLoop: the loop is drawn and commissioned. The equipment draws back to front and the water runs the loop
-   once (IsoKit's choreography, AQiso.timeline), each stage lighting as the water reaches it; as the water passes a
-   measuring point its balloon strikes on, then every leader runs from its schedule card down (or up) to the balloon
-   and the card prints. Last the bus: the taps drop into it and the data recording balloon lands at its end. Hover a
-   card to light its leader, balloons and tap. One timeline, once, < 5 s. Phones: the cards rise in order. */
-AQmotion.fx('SensorLoop', function (root, m) {
-  root.querySelectorAll('.aq-sensor-loop').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var qa = function (s) { return [].slice.call(el.querySelectorAll(s)) }, svg = el.querySelector('svg.aq-iso');
-    var cards = qa('.aq-sensor-loop__card').filter(function (c) { return !c.classList.contains('aq-fold-x') || !m.narrow() });
-    var balls = qa('.aq-sensor-loop__ball'), leads = qa('.aq-sensor-loop__lead'), bus = qa('.aq-sensor-loop__bus, .aq-sensor-loop__tap, .aq-sensor-loop__node');
-    var tl = svg && window.AQiso ? AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.6, flow: 1.4, stagger: 0.04 }) : null;
-    if (!tl) { tl = m.tw(gsap.timeline({ paused: true })) }
-    var t0 = tl.duration() ? Math.max(1.3, tl.duration() - 1.2) : 0.3;
-    gsap.set(balls, { autoAlpha: 0 }); gsap.set(bus, { autoAlpha: 0 });
-    var flowAt = tl.labels && tl.labels.flow != null ? tl.labels.flow : t0;
-    tl.to(balls, { autoAlpha: 1, duration: 0.25, stagger: 0.09, clearProps: 'opacity,visibility' }, flowAt + 0.2);
-    tl.from(balls, { scale: 1.6, transformOrigin: '50% 50%', duration: 0.35, stagger: 0.09, ease: 'back.out(2)', clearProps: 'transform' }, flowAt + 0.2);
-    if (!m.narrow()) {
-      if (window.DrawSVGPlugin) { leads.forEach(function (l) { l.setAttribute('vector-effect', 'non-scaling-stroke') });
-        tl.fromTo(leads, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.5, stagger: 0.07, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, flowAt + 0.5) }
-      tl.from(cards, { y: function (i, c) { return c.classList.contains('aq-sensor-loop__card--b') ? 12 : -12 }, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, flowAt + 0.6);
-    } else tl.from(cards, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.2);
-    tl.to(bus, { autoAlpha: 1, duration: 0.4, stagger: 0.03, clearProps: 'opacity,visibility' }, flowAt + 1.1);
-    m.on(el, function () { tl.play() }, 'top 70%');
-  });
-});
-/* SheetPreviews: the documents are dealt. The sheets start as one squared stack in the first column and deal out to
-   their columns, the top sheet (the last column) first, each turning flat as it lands; the index numerals rise out of their line; then each thumbnail draws
-   itself (grid, curves, logic, seal) and the code decodes, the text following. Once on scroll-in, under 3 s.
-   Phones: no deal; each sheet rises into place as it scrolls in. */
-AQmotion.fx('SheetPreviews', function (root, m) {
-  root.querySelectorAll('ol.aq-sheet-previews').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var items = [].slice.call(el.querySelectorAll('.aq-sheet-previews__item')), q = function (s, r) { return [].slice.call(r.querySelectorAll(s)) };
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), wide = !m.narrow();
-    var x0 = items[0] ? items[0].getBoundingClientRect().left : 0;
-    items.forEach(function (it, i) {
-      var sh = it.querySelector('.aq-sheet-previews__sheet'), dx = x0 - it.getBoundingClientRect().left, at = 0.25 + (items.length - 1 - i) * 0.12;
-      if (sh) {
-        if (wide) tl.from(sh, { x: dx, y: -i * 6, rotation: (i % 2 ? 1 : -1) * (3 + i), duration: 0.9, ease: 'power3.inOut', clearProps: 'transform' }, at);
-        else tl.from(sh, { y: 24, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, i * 0.1);
-        var lines = q('.aq-sheet-previews__svg path, .aq-sheet-previews__svg rect:not(.aq-sheet-previews__paper)', sh);
-        if (window.DrawSVGPlugin && lines.length) tl.fromTo(lines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.8, stagger: 0.01, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.7);
-      }
-      var num = it.querySelector('.aq-sheet-previews__num'); if (num) tl.from(num, { yPercent: 40, autoAlpha: 0, duration: 0.7, clearProps: 'transform,opacity,visibility' }, i * 0.08);
-      tl.from(q('.aq-sheet-previews__code, .aq-sheet-previews__t, .aq-sheet-previews__d', it), { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.8);
-      var c = it.querySelector('.aq-sheet-previews__code'); if (c) tl.call(function () { m.scramble(c, 0) }, null, at + 0.8);
-    });
-    m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
 /* ShopFloor: the shop is drawn, then walked. On scroll-in the floor slab and walls draw, each station's equipment
@@ -486,28 +413,6 @@ AQmotion.fx('SparesKit', function (root, m) {
     gsap.set(el, { clipPath: 'inset(0 0 100% 0)' });
     tl.to(el, { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, 0);
     m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
-/* SpineShelf: the package is shelved. The shelf board draws across, the spines drop onto it one after another from
-   the left (a short settle), then the key section's spine is pulled up as its index row opens; the index rows wipe in
-   down the list and the open section's documents deal in. One timeline, once, under 3 s. */
-AQmotion.fx('SpineShelf', function (root, m) {
-  root.querySelectorAll('.aq-spine-shelf').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var q = function (s) { return [].slice.call(el.querySelectorAll(s)) };
-    var spines = q('.aq-spine-shelf__spine'), board = el.querySelector('.aq-spine-shelf__board'), cap = el.querySelector('.aq-spine-shelf__cap');
-    var rows = q('.aq-spine-shelf__item').filter(function (r) { return r.offsetHeight > 0 });
-    var open = q('details[open] .aq-spine-shelf__docs li');
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    if (board) tl.from(board, { scaleX: 0, transformOrigin: '0 50%', duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, 0);
-    tl.from(spines, { yPercent: -18, autoAlpha: 0, duration: 0.55, ease: 'back.out(1.4)', stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.25);
-    if (cap) tl.from(cap, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.9);
-    tl.from(rows, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', stagger: 0.05, clearProps: 'clipPath' }, 0.2);
-    var pulled = spines.filter(function (s) { return s.classList.contains('is-open') });
-    pulled.forEach(function (s) { s.classList.remove('is-open') });
-    tl.call(function () { pulled.forEach(function (s) { var it = el.querySelector('.aq-spine-shelf__item[data-i="' + s.getAttribute('data-i') + '"] details'); if (!it || it.open) s.classList.add('is-open') }) }, null, 1.15);
-    if (open.length) tl.from(open, { x: -12, autoAlpha: 0, duration: 0.4, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 1.3);
-    m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
 /* TankSection: the blueprint is drawn as a draughtsman would: floor and legs, then the shell's outline, the cut

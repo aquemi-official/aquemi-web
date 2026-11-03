@@ -61,7 +61,7 @@
    "page": "systems",
    "slot": 1,
    "h": "Budget ranges before a quote",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -70,6 +70,59 @@
     "type": "spec",
     "h": "Budget ranges before a quote",
     "caption": "CAD, before tax, as of [month year] · [estimate class and accuracy]",
+    "cols": [
+     "Scope",
+     "Budget range",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Whole package, [reference capacity, L/h]",
+      "v": "[budget range, CAD]",
+      "m": "Supply, [FAT in the price or priced option], [IQ and OQ: included or priced option], turnover package",
+      "hl": true
+     },
+     {
+      "p": "PW generation, [reference capacity, L/h]",
+      "v": "[budget range, CAD]",
+      "m": "Single-pass RO and EDI, city feed",
+      "spot": "ro-skid"
+     },
+     {
+      "p": "Storage tank and loop, [reference tank volume L, points of use]",
+      "v": "[budget range, CAD]",
+      "m": "[PP loop sanitization method]; field piping excluded",
+      "spot": "storage-tank"
+     },
+     {
+      "p": "Pretreatment train, [reference capacity, L/h]",
+      "v": "[budget range, CAD]",
+      "m": "PVC train: multimedia, softener and carbon or bisulfite",
+      "spot": "pretreatment"
+     }
+    ],
+    "note": "Not in this range: installation, tie-ins, utilities, lab testing during qualification and temporary water. Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation.",
+    "note_link": "buying#capital",
+    "nav": "Budget",
+    "anchor": "budget",
+    "look": "budget-bento",
+    "note_link_label": "Build your capital request"
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 1,
+   "h": "Budget ranges before a quote",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6d6a840699",
+   "block": {
+    "type": "spec",
+    "h": "Budget ranges before a quote",
+    "caption": "CAD, before tax, as of [month year] · [estimate class and accuracy]",
+    "intro": "The package is configured to your use: [configurations offered for this use].",
     "cols": [
      "Scope",
      "Budget range",

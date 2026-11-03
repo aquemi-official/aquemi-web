@@ -27,11 +27,21 @@
      "page": "svc-upgrades",
      "slot": 0,
      "h": "After a water observation or out-of-trend results",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "f28b676478"
+    },
+    {
+     "page": "svc-upgrades",
+     "slot": 0,
+     "h": "After a water observation, failed test or accreditation finding",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f019043944"
     }
    ]
   },
@@ -52,9 +62,9 @@
      "page": "ind-meddevice",
      "slot": 5,
      "h": "Who audits your water system",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "9eb4ee6961"
     },
@@ -62,11 +72,31 @@
      "page": "cmp-quality",
      "slot": 5,
      "h": "What you can see, and when",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "536fbda543"
+    },
+    {
+     "page": "ind-meddevice",
+     "slot": 5,
+     "h": "Who audits your water system",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "74849d2772"
+    },
+    {
+     "page": "cmp-quality",
+     "slot": 5,
+     "h": "What you can read, and when",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a26a987be6"
     }
    ]
   },
@@ -101,9 +131,10 @@
    "status": "live",
    "fields": "h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows [{p, v, m, side, link, link_label}] (side: \"limit\" | \"package\" | \"site\"; default site), sides ([package label, site label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card).",
    "best_for": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
-   "held": "7-9",
+   "held": "6-9",
    "pages": [
     "first-system",
+    "ind-personal-care",
     "project-plan"
    ],
    "instances": [
@@ -121,7 +152,7 @@
      "page": "project-plan",
      "slot": 4,
      "h": "How you see progress",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -141,11 +172,41 @@
      "page": "first-system",
      "slot": 2,
      "h": "What your site needs",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "0daefc59d5"
+    },
+    {
+     "page": "project-plan",
+     "slot": 4,
+     "h": "How you see progress",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "0faa7d8e0c"
+    },
+    {
+     "page": "first-system",
+     "slot": 2,
+     "h": "What your site needs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "e0d69fc039"
+    },
+    {
+     "page": "ind-personal-care",
+     "slot": 4,
+     "h": "Where the package fits, and where it does not",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "d91c23fbf9"
     }
    ]
   },
@@ -185,11 +246,21 @@
      "page": "ind-pharma",
      "slot": 2,
      "h": "What each inspector and auditor reads",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "2c855870e5"
+    },
+    {
+     "page": "ind-pharma",
+     "slot": 2,
+     "h": "What each inspector and auditor reads",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ecb2a51079"
     }
    ]
   },
@@ -240,11 +311,21 @@
      "page": "urs-guide",
      "slot": 1,
      "h": "What a Purified Water URS should settle",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "ff699440b9"
+    },
+    {
+     "page": "urs-guide",
+     "slot": 1,
+     "h": "What a Purified Water URS should settle",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f4c7085848"
     }
    ]
   },
@@ -274,11 +355,21 @@
      "page": "systems",
      "slot": 1,
      "h": "Budget ranges before a quote",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "c323edf6e6"
+    },
+    {
+     "page": "systems",
+     "slot": 1,
+     "h": "Budget ranges before a quote",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6d6a840699"
     }
    ]
   },
@@ -308,11 +399,21 @@
      "page": "news",
      "slot": 2,
      "h": "Chemical sanitization, proven at every outlet",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "f2d2ec2519"
+    },
+    {
+     "page": "news",
+     "slot": 2,
+     "h": "Chemical sanitization, proven at every outlet",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a14d480d52"
     }
    ]
   },
@@ -352,11 +453,21 @@
      "page": "cmp-quality",
      "slot": 1,
      "h": "Certification status",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "19cb29a",
      "hash": "af62d1cd44"
+    },
+    {
+     "page": "cmp-quality",
+     "slot": 1,
+     "h": "Certification status",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "4bdfaeadbe"
     }
    ]
   },
@@ -418,11 +529,21 @@
      "page": "projects",
      "slot": 0,
      "h": "Verify before a case study exists",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "ebbb54f08f"
+    },
+    {
+     "page": "projects",
+     "slot": 3,
+     "h": "Qualify us as your supplier",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a1d5847100"
     }
    ]
   },
@@ -433,7 +554,7 @@
    "status": "live",
    "fields": "as the router: cols (situation, what you need, start with), rows [situation, need, {t, link, intent}].",
    "best_for": "CheckerRouter sets a router table (situation, what you need, start with) as a Swiss checker of square navy, limestone and paper tiles, one band of six tiles per situation, the start page as a go tile.",
-   "held": "5",
+   "held": "5-6",
    "pages": [
     "ind-pharma"
    ],
@@ -462,11 +583,21 @@
      "page": "ind-pharma",
      "slot": 0,
      "h": "Your situation and where to start",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "88d09a2c68"
+    },
+    {
+     "page": "ind-pharma",
+     "slot": 0,
+     "h": "Your situation and where to start",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "52f61ada73"
     }
    ]
   },
@@ -477,8 +608,9 @@
    "status": "live",
    "fields": "h, intro, cols [requirement, how, regulation A, regulation B], rows [[t, how, clausesA, clausesB]] (clauses split on \",\" and \";\", a \"(g)\" after \"11.10(d)\" reads 11.10(g)), fold (phones only), fold_noun.",
    "best_for": "ClauseCrosswalk sets a table of requirements against two regulations' clauses as an editorial crosswalk: the requirements large down the middle, each regulation a spine at the outer edge with its name set big and vertical and its clauses as chips, and a wire from every requirement to every clause it cites.",
-   "held": "8",
+   "held": "6-8",
    "pages": [
+    "ind-hospital-lab",
     "sys-monitoring"
    ],
    "instances": [
@@ -496,11 +628,31 @@
      "page": "sys-monitoring",
      "slot": 3,
      "h": "Data integrity, clause by clause",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "6d6a1066f6"
+    },
+    {
+     "page": "sys-monitoring",
+     "slot": 3,
+     "h": "Data integrity, clause by clause",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "97a1f0651d"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 1,
+     "h": "Which water each standard asks for",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "48b56d56ed"
     }
    ]
   },
@@ -530,11 +682,21 @@
      "page": "buying",
      "slot": 5,
      "h": "Onboarding papers and their status",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "31e47d45fa"
+    },
+    {
+     "page": "buying",
+     "slot": 5,
+     "h": "Onboarding papers and their status",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "02ee28c3c2"
     }
    ]
   },
@@ -586,7 +748,7 @@
      "page": "ind-meddevice",
      "slot": 1,
      "h": "Qualifying us as your supplier",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -606,7 +768,7 @@
      "page": "news",
      "slot": 3,
      "h": "A published case, read as precedent",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -616,11 +778,41 @@
      "page": "about",
      "slot": 0,
      "h": "Company facts",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "bd39a969f0"
+    },
+    {
+     "page": "ind-meddevice",
+     "slot": 1,
+     "h": "Qualifying us as your supplier",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f686da551c"
+    },
+    {
+     "page": "about",
+     "slot": 0,
+     "h": "Company facts",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "b3cc51e42e"
+    },
+    {
+     "page": "news",
+     "slot": 3,
+     "h": "A published case, read as precedent",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "72d7db876c"
     }
    ]
   },
@@ -651,7 +843,7 @@
      "page": "first-system",
      "slot": 4,
      "h": "What it costs, all in and per month",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -661,11 +853,31 @@
      "page": "buying",
      "slot": 4,
      "h": "Notes for your capital request",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "ba674014dc"
+    },
+    {
+     "page": "first-system",
+     "slot": 4,
+     "h": "What it costs, all in and per month",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6c883366da"
+    },
+    {
+     "page": "buying",
+     "slot": 4,
+     "h": "How a price is built, for your capital request",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "c320040f35"
     }
    ]
   },
@@ -676,8 +888,10 @@
    "status": "live",
    "fields": "h, intro, cols [item, interval or amount, set by], rows [{p, v, m, link, part}], fold, fold_noun. part: the skid stage(s) the row belongs to, space-separated: panel, gen (RO and EDI), pre (carbon and softener), soft (softener and brine tank), uv, pump, drain. A row without a part has no leader. Desktop shows every row; the fold applies on phones, where the drawing runs full width with its numbers and the rows stack under it.",
    "best_for": "CostSkid reads running costs off the system itself: one Purified Water skid in IsoKit line art beside the title, a numbered leader from each part a cost row belongs to, and the running-cost table under it led by the same numbers.",
-   "held": "6",
+   "held": "6-7",
    "pages": [
+    "cmp-documentation",
+    "ind-process",
     "svc-service"
    ],
    "instances": [
@@ -710,6 +924,26 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "688cb894c9"
+    },
+    {
+     "page": "ind-process",
+     "slot": 5,
+     "h": "From exchange DI to your own RO and EDI",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6e7c60c7aa"
+    },
+    {
+     "page": "cmp-documentation",
+     "slot": 4,
+     "h": "Site safety information for your permit",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "403b2b5f4e"
     }
    ]
   },
@@ -749,11 +983,21 @@
      "page": "contact-locations",
      "slot": 2,
      "h": "Can you support my site?",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "a40b1189b9"
+    },
+    {
+     "page": "contact-locations",
+     "slot": 2,
+     "h": "Can you support my site?",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "1b638014c1"
     }
    ]
   },
@@ -773,11 +1017,21 @@
      "page": "svc-cq",
      "slot": 4,
      "h": "Alert levels come from your data",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "f7f0183363"
+    },
+    {
+     "page": "svc-cq",
+     "slot": 4,
+     "h": "Alert levels come from your data",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "47cc9b2fa6"
     }
    ]
   },
@@ -817,11 +1071,21 @@
      "page": "compliance",
      "slot": 3,
      "h": "Good manufacturing practice (GMP) and qualification",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "19cb29a",
      "hash": "58bf8c5017"
+    },
+    {
+     "page": "compliance",
+     "slot": 3,
+     "h": "Good manufacturing practice (GMP) and qualification",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "19e4fd7a19"
     }
    ]
   },
@@ -851,11 +1115,21 @@
      "page": "project-plan",
      "slot": 0,
      "h": "Stages, what each leaves, and who signs",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "34b41a08d0"
+    },
+    {
+     "page": "project-plan",
+     "slot": 0,
+     "h": "Stages, what each leaves, and who signs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "3b32621580"
     }
    ]
   },
@@ -895,11 +1169,21 @@
      "page": "ind-pharma",
      "slot": 3,
      "h": "Decide before your requirements (URS) are approved",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "58853f5042"
+    },
+    {
+     "page": "ind-pharma",
+     "slot": 3,
+     "h": "Decide before your requirements (URS) are approved",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "00fead061d"
     }
    ]
   },
@@ -912,6 +1196,7 @@
    "best_for": "DecisionValve draws a router table as a multiport valve, a navy object on the paper: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable.",
    "held": "4",
    "pages": [
+    "ind-personal-care",
     "sys-pretreatment"
    ],
    "instances": [
@@ -934,6 +1219,16 @@
      "last_seen": "2026-11-03",
      "commit": "19cb29a",
      "hash": "0f6cfde71c"
+    },
+    {
+     "page": "ind-personal-care",
+     "slot": 0,
+     "h": "Start from your situation",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "d09e35bc55"
     }
    ]
   },
@@ -944,9 +1239,10 @@
    "status": "live",
    "fields": "as the grades table: cols [step, typical water, what sets it], rows, intro.",
    "best_for": "DerivationSheet works a grade table as an engineering derivation on a calculation pad: each row is a numbered line read like an equation, step, what sets it, then the typical water boxed as the answer, with a device limit set as the line's hero figure.",
-   "held": "4-6",
+   "held": "4-7",
    "pages": [
     "first-system",
+    "ind-personal-care",
     "urs-guide"
    ],
    "instances": [
@@ -964,7 +1260,7 @@
      "page": "urs-guide",
      "slot": 4,
      "h": "Rows to write if you allow polypropylene",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -974,11 +1270,41 @@
      "page": "first-system",
      "slot": 1,
      "h": "Which water your product needs",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "8447cc4927"
+    },
+    {
+     "page": "urs-guide",
+     "slot": 4,
+     "h": "Rows to write if you allow polypropylene",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ccf58038de"
+    },
+    {
+     "page": "first-system",
+     "slot": 1,
+     "h": "Which water your product needs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f44ef06d68"
+    },
+    {
+     "page": "ind-personal-care",
+     "slot": 1,
+     "h": "Which water each product class needs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "2324560bc7"
     }
    ]
   },
@@ -1008,11 +1334,21 @@
      "page": "sys-pw",
      "slot": 3,
      "h": "Documents with the skid",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "94cbc6f3fb"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 3,
+     "h": "Documents with the skid",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "413fac23bb"
     }
    ]
   },
@@ -1042,11 +1378,21 @@
      "page": "sys-pretreatment",
      "slot": 4,
      "h": "Documents delivered",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "4a44e243e4"
+    },
+    {
+     "page": "sys-pretreatment",
+     "slot": 4,
+     "h": "Documents delivered",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "1a28ef35ba"
     }
    ]
   },
@@ -1120,11 +1466,21 @@
      "page": "home",
      "slot": 4,
      "h": "Service after handover",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "c887c9cdf9"
+    },
+    {
+     "page": "home",
+     "slot": 4,
+     "h": "Service after handover",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ba4c5cf2d7"
     }
    ]
   },
@@ -1176,11 +1532,21 @@
      "page": "svc-design",
      "slot": 1,
      "h": "Design stages, and what you approve",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "cc0c383c2d"
+    },
+    {
+     "page": "svc-design",
+     "slot": 1,
+     "h": "Design stages, and what you approve",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "9a78699824"
     }
    ]
   },
@@ -1215,6 +1581,7 @@
    "best_for": "GateLine draws a short process as one double-line pipe on a navy band: each step owns a run of pipe with a line icon above and its number, name and line below, and a gate valve sits on every joint between steps.",
    "held": "5",
    "pages": [
+    "ind-hospital-lab",
     "svc-upgrades"
    ],
    "instances": [
@@ -1222,11 +1589,31 @@
      "page": "svc-upgrades",
      "slot": 4,
      "h": "How an upgrade runs",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "734607d686"
+    },
+    {
+     "page": "svc-upgrades",
+     "slot": 4,
+     "h": "How an upgrade runs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6ce0e969f0"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 6,
+     "h": "Validation before first use",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "5016a9e0d5"
     }
    ]
   },
@@ -1276,11 +1663,21 @@
      "page": "industries",
      "slot": 2,
      "h": "Your first Purified Water system",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "6248ff2caa"
+    },
+    {
+     "page": "industries",
+     "slot": 5,
+     "h": "Your first Purified Water system",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "0139834e1d"
     }
    ]
   },
@@ -1300,11 +1697,21 @@
      "page": "ind-pharma",
      "slot": 1,
      "h": "Minimum water grade by dosage form",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "24719fa0c0"
+    },
+    {
+     "page": "ind-pharma",
+     "slot": 1,
+     "h": "Minimum water grade by dosage form",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f157e01f59"
     }
    ]
   },
@@ -1422,11 +1829,21 @@
      "page": "careers",
      "slot": 2,
      "h": "How we hire",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "19cb29a",
      "hash": "a308c309ff"
+    },
+    {
+     "page": "careers",
+     "slot": 2,
+     "h": "How we hire",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "338794cae4"
     }
    ]
   },
@@ -1466,11 +1883,21 @@
      "page": "sys-monitoring",
      "slot": 1,
      "h": "Alert, action and trend",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "2b436c1c39"
+    },
+    {
+     "page": "sys-monitoring",
+     "slot": 2,
+     "h": "Alert, action and trend",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "0f400928f2"
     }
    ]
   },
@@ -1510,11 +1937,21 @@
      "page": "services",
      "slot": 1,
      "h": "How long each stage takes, and who signs",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "80a42d5b09"
+    },
+    {
+     "page": "services",
+     "slot": 1,
+     "h": "How long each stage takes, and who signs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "97761ebca9"
     }
    ]
   },
@@ -1525,7 +1962,7 @@
    "status": "live",
    "fields": "h, intro, nav (the strip over the sheet), items [{t, d, key, link}], fold, fold_noun. key: the section's number and rule in flow. The fold applies on phones only (desktop shows the whole index).",
    "best_for": "IndexSheet shows a document package's index as one printed sheet: a limestone sheet on the navy band with the section title set very large, every section numbered in a ruled two-column grid with all its documents in view, and a folded leaf at the right carrying one isometric line drawing of the system the package comes with.",
-   "held": "12",
+   "held": "12-13",
    "pages": [
     "cmp-documentation"
    ],
@@ -1534,11 +1971,21 @@
      "page": "cmp-documentation",
      "slot": 0,
      "h": "The turnover package, section by section",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "0b32b3b4b3"
+    },
+    {
+     "page": "cmp-documentation",
+     "slot": 0,
+     "h": "The turnover package, section by section",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f3a21bed68"
     }
    ]
   },
@@ -1552,7 +1999,7 @@
    "held": "3-4",
    "pages": [
     "first-system",
-    "home"
+    "ind-personal-care"
    ],
    "instances": [
     {
@@ -1579,7 +2026,7 @@
      "page": "first-system",
      "slot": 6,
      "h": "Making the case inside your company",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -1589,11 +2036,31 @@
      "page": "home",
      "slot": 2,
      "h": "Same PW limits, different evidence by industry",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "9e1af32748"
+    },
+    {
+     "page": "first-system",
+     "slot": 6,
+     "h": "Making the case inside your company",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "51b26fdf71"
+    },
+    {
+     "page": "ind-personal-care",
+     "slot": 2,
+     "h": "Where water goes in a personal care plant",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "d18d6ba3d2"
     }
    ]
   },
@@ -1635,11 +2102,21 @@
      "page": "svc-design",
      "slot": 2,
      "h": "What you receive",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "6911f9d528"
+    },
+    {
+     "page": "svc-design",
+     "slot": 2,
+     "h": "What you receive",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "d60ecb5818"
     }
    ]
   },
@@ -1669,11 +2146,21 @@
      "page": "svc-fabrication",
      "slot": 1,
      "h": "Our fabrication standard",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "836f4c861e"
+    },
+    {
+     "page": "svc-fabrication",
+     "slot": 1,
+     "h": "Our fabrication standard",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f7df03548e"
     }
    ]
   },
@@ -1704,7 +2191,7 @@
      "page": "urs-guide",
      "slot": 2,
      "h": "Must-haves, preferences and how bids answer",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -1724,11 +2211,31 @@
      "page": "buying",
      "slot": 1,
      "h": "What every proposal lists, line by line",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "bc53170c6c"
+    },
+    {
+     "page": "urs-guide",
+     "slot": 2,
+     "h": "Must-haves, preferences and how bids answer",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "b15d44fc41"
+    },
+    {
+     "page": "buying",
+     "slot": 1,
+     "h": "What every proposal lists, line by line",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a066bb55cf"
     }
    ]
   },
@@ -1748,11 +2255,21 @@
      "page": "svc-fabrication",
      "slot": 3,
      "h": "From pipe to turnover",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "7528a8b4af"
+    },
+    {
+     "page": "svc-fabrication",
+     "slot": 3,
+     "h": "From pipe to turnover",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "8a44c4dcaa"
     }
    ]
   },
@@ -1794,11 +2311,21 @@
      "page": "sys-monitoring",
      "slot": 0,
      "h": "How the controls are built",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "6f64307bda"
+    },
+    {
+     "page": "sys-monitoring",
+     "slot": 0,
+     "h": "How the controls are built",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "91f9c0a5eb"
     }
    ]
   },
@@ -1828,11 +2355,21 @@
      "page": "compliance",
      "slot": 0,
      "h": "Purified Water limits",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "4fe8cd28ea"
+    },
+    {
+     "page": "compliance",
+     "slot": 0,
+     "h": "Purified Water limits",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ca7dbd5f22"
     }
    ]
   },
@@ -1872,11 +2409,21 @@
      "page": "sys-pw",
      "slot": 0,
      "h": "Purified Water limits",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "68b2240b8c"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 0,
+     "h": "Purified Water limits",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "68155a951e"
     }
    ]
   },
@@ -1889,6 +2436,7 @@
    "best_for": "LoopCircuit draws how a storage and distribution loop works as one blueprint P&ID strip on a navy band, each station standing over its own numbered caption, under a display-scale headline.",
    "held": "7",
    "pages": [
+    "ind-hospital-lab",
     "sys-storage"
    ],
    "instances": [
@@ -1896,11 +2444,31 @@
      "page": "sys-storage",
      "slot": 1,
      "h": "How a loop works",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "d0be80d015"
+    },
+    {
+     "page": "sys-storage",
+     "slot": 1,
+     "h": "How a loop works",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "7e54e232e9"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 4,
+     "h": "One train, designed to the critical-water limits",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "9cabd1fb67"
     }
    ]
   },
@@ -1930,11 +2498,21 @@
      "page": "sys-storage",
      "slot": 5,
      "h": "Options",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "d851424eb3"
+    },
+    {
+     "page": "sys-storage",
+     "slot": 5,
+     "h": "Options",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "1d073fd56d"
     }
    ]
   },
@@ -1945,7 +2523,7 @@
    "status": "live",
    "fields": "cols (first is the row name), rows (cells, strings or {t, link}). No new fields.",
    "best_for": "MacroLeaders sets a comparison table beside a macro drawing (RO membrane leaves fanned over a plain PP pipe labelled \"PP pipe\"; no weld bead while the joining method is open, FD-18, DR-018) and calls each row out from it with a numbered marker and a leader, so a by-industry table reads as one piece of equipment serving every row.",
-   "held": "6",
+   "held": "6-8",
    "pages": [
     "industries",
     "news"
@@ -1975,7 +2553,7 @@
      "page": "news",
      "slot": 1,
      "h": "Polypropylene or stainless steel for a PW loop",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -1985,11 +2563,31 @@
      "page": "industries",
      "slot": 1,
      "h": "Grade, limit and inspector by industry",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "dc5371c7fb"
+    },
+    {
+     "page": "industries",
+     "slot": 1,
+     "h": "Industry by water use",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "fe0171c376"
+    },
+    {
+     "page": "news",
+     "slot": 1,
+     "h": "Polypropylene or stainless steel for a PW loop",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ba14e93348"
     }
    ]
   },
@@ -2002,7 +2600,8 @@
    "best_for": "ManifoldRouter sets a router table as large type on a limestone sheet, every situation a branch off one manifold: the reader picks a situation, the water runs down to its branch and its route opens beside it.",
    "held": "7-8",
    "pages": [
-    "home"
+    "home",
+    "ind-process"
    ],
    "instances": [
     {
@@ -2039,11 +2638,31 @@
      "page": "home",
      "slot": 1,
      "h": "Start from where your project is",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "14f83645c1"
+    },
+    {
+     "page": "home",
+     "slot": 1,
+     "h": "Start from where your project is",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a17ee41c69"
+    },
+    {
+     "page": "ind-process",
+     "slot": 0,
+     "h": "Start from your plant",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6a92602131"
     }
    ]
   },
@@ -2129,11 +2748,21 @@
      "page": "sys-pretreatment",
      "slot": 2,
      "h": "Canadian feed water and what it does",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "f62b8d8533"
+    },
+    {
+     "page": "sys-pretreatment",
+     "slot": 2,
+     "h": "Canadian feed water and what it does",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "0f3c28438c"
     }
    ]
   },
@@ -2163,11 +2792,21 @@
      "page": "sys-pretreatment",
      "slot": 0,
      "h": "Water at the RO inlet",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "a7784fdade"
+    },
+    {
+     "page": "sys-pretreatment",
+     "slot": 0,
+     "h": "Water at the RO inlet",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "d25ffbf097"
     }
    ]
   },
@@ -2209,11 +2848,13 @@
    "look": "module-plinth",
    "component": "ModulePlinth",
    "type": "options",
-   "status": "retired",
+   "status": "live",
    "fields": "as options (modules): h, base, items [{t, d, spot, link}], fold, fold_noun (phones only).",
    "best_for": "ModulePlinth draws an options block with a base as modules standing on that base: an isometric plinth on a navy blueprint carries one block per option, each fed by a riser from the loop along the plinth, with numbered cards beside it.",
-   "held": "6",
-   "pages": [],
+   "held": "3-6",
+   "pages": [
+    "ind-personal-care"
+   ],
    "instances": [
     {
      "page": "ind-cdmo",
@@ -2224,6 +2865,16 @@
      "last_seen": "2026-11-01",
      "commit": "bb33be2",
      "hash": "50e69cd6e3"
+    },
+    {
+     "page": "ind-personal-care",
+     "slot": 5,
+     "h": "From exchange DI to your own water",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "e93ee8ccc3"
     }
    ]
   },
@@ -2243,11 +2894,21 @@
      "page": "cmp-quality",
      "slot": 2,
      "h": "How a defect is held and closed",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "1bbf29e1a7"
+    },
+    {
+     "page": "cmp-quality",
+     "slot": 2,
+     "h": "How a defect is held and closed",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "622d810ea9"
     }
    ]
   },
@@ -2260,7 +2921,8 @@
    "best_for": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table.",
    "held": "5",
    "pages": [
-    "ind-meddevice"
+    "ind-meddevice",
+    "projects"
    ],
    "instances": [
     {
@@ -2287,11 +2949,31 @@
      "page": "ind-meddevice",
      "slot": 0,
      "h": "Start from your situation",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "fcba09eb19"
+    },
+    {
+     "page": "ind-meddevice",
+     "slot": 0,
+     "h": "Start from your situation",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "2fb0a65d00"
+    },
+    {
+     "page": "projects",
+     "slot": 1,
+     "h": "Where the water goes, by industry",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "b6253b088e"
     }
    ]
   },
@@ -2321,11 +3003,21 @@
      "page": "sys-monitoring",
      "slot": 4,
      "h": "Options",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "79919c0179"
+    },
+    {
+     "page": "sys-monitoring",
+     "slot": 4,
+     "h": "Options",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "21ec835534"
     }
    ]
   },
@@ -2365,11 +3057,21 @@
      "page": "sys-pw",
      "slot": 4,
      "h": "Configurations and options",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "1518dada60"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 4,
+     "h": "Configurations and options",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6b4b1884f8"
     }
    ]
   },
@@ -2380,8 +3082,9 @@
    "status": "live",
    "fields": "h, intro, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun. intro prints under the title through wSecHead.",
    "best_for": "OptionTaps shows options where they would join the system, as one limestone drawing sheet: the standard train drawn solid in isometric line, each option a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, a huge light title, and the options as numbered drawing notes in a narrow column whose numbers frame their part on the drawing.",
-   "held": "5",
+   "held": "3-5",
    "pages": [
+    "ind-process",
     "sys-pretreatment"
    ],
    "instances": [
@@ -2409,11 +3112,31 @@
      "page": "sys-pretreatment",
      "slot": 5,
      "h": "Options",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "f09df9eff6"
+    },
+    {
+     "page": "sys-pretreatment",
+     "slot": 5,
+     "h": "Options",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6df71d5d9c"
+    },
+    {
+     "page": "ind-process",
+     "slot": 4,
+     "h": "Configured to your use",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "2f51d78231"
     }
    ]
   },
@@ -2446,8 +3169,9 @@
    "status": "live",
    "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun.",
    "best_for": "ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles with one blueprint cell of the skid, so each parameter reads as its own panel and the whole grid scans at a glance.",
-   "held": "10",
+   "held": "8-10",
    "pages": [
+    "ind-process",
     "sys-pw"
    ],
    "instances": [
@@ -2475,11 +3199,31 @@
      "page": "sys-pw",
      "slot": 2,
      "h": "Skid design parameters",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "f1a4446711"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 2,
+     "h": "Skid design parameters",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ef2ccc752f"
+    },
+    {
+     "page": "ind-process",
+     "slot": 6,
+     "h": "Where it fits, and what we do not supply",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "52b66a0cf8"
     }
    ]
   },
@@ -2509,11 +3253,21 @@
      "page": "cmp-documentation",
      "slot": 3,
      "h": "Delivery and signatures",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "864829ac39"
+    },
+    {
+     "page": "cmp-documentation",
+     "slot": 3,
+     "h": "Delivery and signatures",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "81fc5c2897"
     }
    ]
   },
@@ -2553,11 +3307,21 @@
      "page": "industries",
      "slot": 0,
      "h": "Your situation and where to start",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "2f9315d047"
+    },
+    {
+     "page": "industries",
+     "slot": 2,
+     "h": "Your situation and where to start",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "d0aaac0a59"
     }
    ]
   },
@@ -2587,11 +3351,21 @@
      "page": "urs-guide",
      "slot": 5,
      "h": "Writing a specification section instead of a URS",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "5f37953897"
+    },
+    {
+     "page": "urs-guide",
+     "slot": 5,
+     "h": "Writing a specification section instead of a URS",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "31c7a7c4de"
     }
    ]
   },
@@ -2621,11 +3395,21 @@
      "page": "svc-service",
      "slot": 0,
      "h": "Service plans: response, scope, price",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "e592388ce3"
+    },
+    {
+     "page": "svc-service",
+     "slot": 0,
+     "h": "Service plans: response, scope, price",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6268bce7f5"
     }
    ]
   },
@@ -2687,11 +3471,21 @@
      "page": "svc-cq",
      "slot": 3,
      "h": "PQ in three phases",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "8850881871"
+    },
+    {
+     "page": "svc-cq",
+     "slot": 3,
+     "h": "PQ in three phases",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "290147de89"
     }
    ]
   },
@@ -2721,11 +3515,21 @@
      "page": "home",
      "slot": 3,
      "h": "From order to water in use",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "8a82f6b3cd"
+    },
+    {
+     "page": "home",
+     "slot": 3,
+     "h": "From order to water in use",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "faed13edb2"
     }
    ]
   },
@@ -2736,9 +3540,10 @@
    "status": "live",
    "fields": "as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}), fold, fold_noun. The code on the tab and the stamp is the standard cell up to its number (\"USP <645>\", \"Ph. Eur. 0008\"), else its first word (\"EMA\"); the rest of the cell is the standard's title under it.",
    "best_for": "ProofFolders shows an evidence table as a drawer of manila folders, one per standard: the standard set large beside its folder, what we design to typed on a slip, the proof as clipped sheets struck with a stamp of the standard's code, and where we show it as the folder's navy index label.",
-   "held": "5",
+   "held": "5-7",
    "pages": [
-    "compliance"
+    "compliance",
+    "ind-process"
    ],
    "instances": [
     {
@@ -2765,11 +3570,31 @@
      "page": "compliance",
      "slot": 2,
      "h": "Pharmacopoeias and their proof",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "19cb29a",
      "hash": "d22726e168"
+    },
+    {
+     "page": "ind-process",
+     "slot": 1,
+     "h": "Who writes your limit, and what to send",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6d3d4ddeaa"
+    },
+    {
+     "page": "compliance",
+     "slot": 2,
+     "h": "Pharmacopoeias and other water standards",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "4e32162d95"
     }
    ]
   },
@@ -2854,7 +3679,7 @@
      "page": "buying",
      "slot": 3,
      "h": "Comparing quotes on the same lines",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -2874,7 +3699,7 @@
      "page": "project-plan",
      "slot": 1,
      "h": "Who does what, and what is ready before installation",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
@@ -2884,11 +3709,41 @@
      "page": "first-system",
      "slot": 0,
      "h": "Is a polypropylene Purified Water package right for you?",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "82307fcae4"
+    },
+    {
+     "page": "project-plan",
+     "slot": 1,
+     "h": "Who does what, and what is ready before installation",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f4cadd19c1"
+    },
+    {
+     "page": "first-system",
+     "slot": 0,
+     "h": "Is a polypropylene Purified Water package right for you?",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "2a93c722bd"
+    },
+    {
+     "page": "buying",
+     "slot": 3,
+     "h": "Comparing quotes on the same lines",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a64d16f1de"
     }
    ]
   },
@@ -2918,11 +3773,21 @@
      "page": "projects",
      "slot": 1,
      "h": "What a case study proves",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "085ba1dc4b"
+    },
+    {
+     "page": "projects",
+     "slot": 2,
+     "h": "What every project record contains",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "59446105cd"
     }
    ]
   },
@@ -2933,7 +3798,7 @@
    "status": "live",
    "fields": "as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}), fold, fold_noun (phones only: desktop shows every process). Records split at \";\".",
    "best_for": "RecordSheet sets each process of a quality system and the records it leaves as a ruled schedule on a drawing sheet, every record followed by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records).",
-   "held": "7",
+   "held": "7-8",
    "pages": [
     "cmp-quality"
    ],
@@ -2942,11 +3807,21 @@
      "page": "cmp-quality",
      "slot": 0,
      "h": "Each process, and the record it leaves",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "902e13723b"
+    },
+    {
+     "page": "cmp-quality",
+     "slot": 0,
+     "h": "Each process, and the record it leaves",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "759095237f"
     }
    ]
   },
@@ -2976,7 +3851,7 @@
      "page": "svc-fabrication",
      "slot": 0,
      "h": "One joint, one log line",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
      "last_seen": "2026-11-03",
      "commit": "b8b6da7",
@@ -2991,6 +3866,16 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "6831d7cdf6"
+    },
+    {
+     "page": "svc-fabrication",
+     "slot": 0,
+     "h": "One joint, one log line",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "4946edd07a"
     }
    ]
   },
@@ -3010,11 +3895,21 @@
      "page": "svc-design",
      "slot": 0,
      "h": "Qualification failures that start in design",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "f7c6631981"
+    },
+    {
+     "page": "svc-design",
+     "slot": 0,
+     "h": "Qualification failures that start in design",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6db6a96220"
     }
    ]
   },
@@ -3065,11 +3960,21 @@
      "page": "first-system",
      "slot": 5,
      "h": "From first call to water you can use",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "010347d8ee"
+    },
+    {
+     "page": "first-system",
+     "slot": 5,
+     "h": "From first call to water you can use",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "7a98e8d97e"
     }
    ]
   },
@@ -3109,11 +4014,21 @@
      "page": "contact-proposal",
      "slot": 2,
      "h": "What each request returns",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "91ab2eaf4a"
+    },
+    {
+     "page": "contact-proposal",
+     "slot": 2,
+     "h": "What each request returns",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ca2c947a06"
     }
    ]
   },
@@ -3153,11 +4068,21 @@
      "page": "svc-service",
      "slot": 5,
      "h": "When something goes wrong",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "60fb35ce81"
+    },
+    {
+     "page": "svc-service",
+     "slot": 5,
+     "h": "When something goes wrong",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "155128424c"
     }
    ]
   },
@@ -3187,11 +4112,21 @@
      "page": "project-plan",
      "slot": 2,
      "h": "Notice before each event",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "a3a62822b0"
+    },
+    {
+     "page": "project-plan",
+     "slot": 2,
+     "h": "Notice before each event",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "fb336366c9"
     }
    ]
   },
@@ -3202,7 +4137,7 @@
    "status": "live",
    "fields": "as a router table: h, intro, cols [upgrade, what changes, requalification, downtime, start with], rows (the last cell {t, link}). parts (optional): one entry per row naming the stage(s) it changes, space-separated (pre, gen, tank, loop, uv, toc, panel); a row without parts leaves the whole plant as existing.",
    "best_for": "RetrofitPlant shows common upgrades on the running plant the way a retrofit drawing does: the existing plant faint on a navy blueprint, the stages an upgrade changes lit, and the upgrades as a tab list with the picked one's terms beside it.",
-   "held": "6",
+   "held": "6-7",
    "pages": [
     "svc-upgrades"
    ],
@@ -3221,11 +4156,21 @@
      "page": "svc-upgrades",
      "slot": 1,
      "h": "Common upgrades and their requalification",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "d113f66002"
+    },
+    {
+     "page": "svc-upgrades",
+     "slot": 1,
+     "h": "Common upgrades and their requalification",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "30e47afe5a"
     }
    ]
   },
@@ -3272,6 +4217,7 @@
    "best_for": "ReviewReticles sets what an assessment reviews as a drawing register on a limestone sheet, with one inspection viewfinder that shows the pointed area's thing in IsoKit line art.",
    "held": "6",
    "pages": [
+    "ind-hospital-lab",
     "svc-upgrades"
    ],
    "instances": [
@@ -3289,11 +4235,31 @@
      "page": "svc-upgrades",
      "slot": 3,
      "h": "What the assessment reviews",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "c22f467ff0"
+    },
+    {
+     "page": "svc-upgrades",
+     "slot": 3,
+     "h": "What the assessment reviews",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6e0a56299d"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 2,
+     "h": "Where water goes in reprocessing",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ccbd36394d"
     }
    ]
   },
@@ -3302,9 +4268,9 @@
    "component": "RevisionRegister",
    "type": "register",
    "status": "live",
-   "fields": "h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold, fold_noun. Never a date that is not given (a dashed mono \"Planned\" status instead); the lead note is the featured one, else the first of the first topic. Filtering shows every matching note, folded or not; notes that stay glide to their new places and new ones fade in.",
+   "fields": "h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold, fold_noun. Never a date that is not given (the dashed page status instead); the lead note is the featured one, else the first of the first topic. Filtering shows every matching note, folded or not; notes that stay glide to their new places and new ones fade in.",
    "best_for": "RevisionRegister keeps technical notes as the numbered notes column of one limestone drawing sheet: the title large and light with the lead note under it, a faint drawing of the page a note is applied on, and the register in mono behind a hairline rule, with a topic filter and a title block carrying the live count.",
-   "held": "25-28",
+   "held": "25-29",
    "pages": [
     "news"
    ],
@@ -3333,11 +4299,21 @@
      "page": "news",
      "slot": 0,
      "h": "The notes register",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "035659ff3c"
+    },
+    {
+     "page": "news",
+     "slot": 0,
+     "h": "The notes register",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "9efe5d1c9b"
     }
    ]
   },
@@ -3357,11 +4333,21 @@
      "page": "cmp-documentation",
      "slot": 2,
      "h": "How each document reaches your file",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "20fbad7b99"
+    },
+    {
+     "page": "cmp-documentation",
+     "slot": 2,
+     "h": "How each document reaches your file",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "cadfe162be"
     }
    ]
   },
@@ -3372,9 +4358,10 @@
    "status": "live",
    "fields": "as a table: cols [your request, first response, what follows], rows [request, first response, what follows], intro, nav. Cells may be {t, link, intent}.",
    "best_for": "RiserValves sets a table of response times by request on a navy sheet with one riser pipe: a valve per request tees into its first response, and a second branch runs under it and turns up into what follows, so the eye goes from request to response to follow-up.",
-   "held": "7",
+   "held": "6-7",
    "pages": [
-    "contact-service"
+    "contact-service",
+    "ind-process"
    ],
    "instances": [
     {
@@ -3431,11 +4418,31 @@
      "page": "contact-service",
      "slot": 1,
      "h": "Response times by request",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "b8900671b0"
+    },
+    {
+     "page": "ind-process",
+     "slot": 3,
+     "h": "Industrial and energy",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "526daf52c7"
+    },
+    {
+     "page": "contact-service",
+     "slot": 1,
+     "h": "Response times by request",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "eedf787a8c"
     }
    ]
   },
@@ -3475,11 +4482,21 @@
      "page": "careers",
      "slot": 0,
      "h": "Roles, base and pay",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "5b947d6f85"
+    },
+    {
+     "page": "careers",
+     "slot": 0,
+     "h": "Roles, base and pay",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "42b93e0ae0"
     }
    ]
   },
@@ -3490,8 +4507,9 @@
    "status": "live",
    "fields": "h, caption, cols, rows [{p, v, m, rule, hl, fig, link, link_label}], fold, fold_noun.",
    "best_for": "RuleFigures sets a spec block of design rules as a Swiss rule sheet in which every rule is explained by a small engineering figure, the lead rule as a full-width band beside a pipe cut open to show turbulent flow.",
-   "held": "7",
+   "held": "7-8",
    "pages": [
+    "industries",
     "sys-storage"
    ],
    "instances": [
@@ -3519,11 +4537,31 @@
      "page": "sys-storage",
      "slot": 0,
      "h": "Loop design rules",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "a96ceaa5d5"
+    },
+    {
+     "page": "sys-storage",
+     "slot": 0,
+     "h": "Microbial control, rule by rule",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a7178a05c8"
+    },
+    {
+     "page": "industries",
+     "slot": 3,
+     "h": "Where the package fits, in any industry",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "685bcf3355"
     }
    ]
   },
@@ -3563,11 +4601,21 @@
      "page": "sys-pretreatment",
      "slot": 1,
      "h": "How the train is built",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "19cb29a",
      "hash": "05a252860b"
+    },
+    {
+     "page": "sys-pretreatment",
+     "slot": 1,
+     "h": "How the train is built",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "181fb5690f"
     }
    ]
   },
@@ -3575,11 +4623,13 @@
    "look": "sensor-loop",
    "component": "SensorLoop",
    "type": "spec",
-   "status": "retired",
+   "status": "live",
    "fields": "h, caption, cols, rows [{p, v, m, site}], note, fold, fold_noun. site: toc | cond | temp | divert | flow | uv | data (where the balloon sits; a row without one is a card only). Desktop shows every row; the fold applies on phones, where the cards stack under the drawing beside a vertical signal rail.",
    "best_for": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into.",
-   "held": "7",
-   "pages": [],
+   "held": "6-7",
+   "pages": [
+    "ind-personal-care"
+   ],
    "instances": [
     {
      "page": "sys-monitoring",
@@ -3590,6 +4640,16 @@
      "last_seen": "2026-11-01",
      "commit": "30040f0",
      "hash": "37b9b65772"
+    },
+    {
+     "page": "ind-personal-care",
+     "slot": 3,
+     "h": "Where microbes get in, and what the package does",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "8518f87f4b"
     }
    ]
   },
@@ -3597,11 +4657,13 @@
    "look": "sheet-previews",
    "component": "SheetPreviews",
    "type": "docs",
-   "status": "retired",
+   "status": "live",
    "fields": "h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label, intent.",
    "best_for": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line.",
    "held": "4",
-   "pages": [],
+   "pages": [
+    "ind-personal-care"
+   ],
    "instances": [
     {
      "page": "sys-pretreatment",
@@ -3612,6 +4674,16 @@
      "last_seen": "2026-11-01",
      "commit": "ae1cda6",
      "hash": "1f5f7f4e00"
+    },
+    {
+     "page": "ind-personal-care",
+     "slot": 6,
+     "h": "Records for your file",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "2e638fcb2c"
     }
    ]
   },
@@ -3641,11 +4713,21 @@
      "page": "sys-storage",
      "slot": 4,
      "h": "Documents with the loop",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "ba22b2da32"
+    },
+    {
+     "page": "sys-storage",
+     "slot": 4,
+     "h": "Documents with the loop",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f7a454d3d3"
     }
    ]
   },
@@ -3730,9 +4812,9 @@
      "page": "svc-service",
      "slot": 2,
      "h": "Instrument calibration",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "a657dd1b79"
     },
@@ -3740,11 +4822,31 @@
      "page": "sys-monitoring",
      "slot": 2,
      "h": "Sensors and signals",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "7ca12ecb76"
+    },
+    {
+     "page": "sys-monitoring",
+     "slot": 1,
+     "h": "Sensors and signals",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "da9ac05fd6"
+    },
+    {
+     "page": "svc-service",
+     "slot": 2,
+     "h": "Instrument calibration",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f770b6ffea"
     }
    ]
   },
@@ -3755,7 +4857,7 @@
    "status": "live",
    "fields": "as the roles table: cols [document, written, reviewed], rows [[document, written, reviewed]] (strings or {t, link}), fold, fold_noun, key (optional [Aquemi, your side, both] labels; default \"Aquemi\", \"Your team\", \"Shared\").",
    "best_for": "SignatureBlocks sets a roles table (who writes, who reviews) as the signature block at the foot of each document, the party in each field shown by its box (look `signature-blocks`, table block `as: \"roles\"`).",
-   "held": "7",
+   "held": "7-8",
    "pages": [
     "svc-cq"
    ],
@@ -3764,11 +4866,21 @@
      "page": "svc-cq",
      "slot": 1,
      "h": "Who writes, who reviews",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "0319234472"
+    },
+    {
+     "page": "svc-cq",
+     "slot": 1,
+     "h": "Who writes, who reviews",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "89f1059883"
     }
    ]
   },
@@ -3781,7 +4893,8 @@
    "best_for": "SitePlates sets a table of sites (site, what happens here, address, contact and hours) as a ledger beside one navy drawing plate: the site you point at, focus or choose is drawn on the plate with numbered callouts for what happens there.",
    "held": "4",
    "pages": [
-    "contact-locations"
+    "contact-locations",
+    "ind-process"
    ],
    "instances": [
     {
@@ -3818,11 +4931,31 @@
      "page": "contact-locations",
      "slot": 1,
      "h": "Where to find us",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "e2c22764eb"
+    },
+    {
+     "page": "ind-process",
+     "slot": 2,
+     "h": "Food, beverage and cannabis",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "c1b1d68d53"
+    },
+    {
+     "page": "contact-locations",
+     "slot": 1,
+     "h": "Where to find us",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "1c30a048c2"
     }
    ]
   },
@@ -3852,11 +4985,21 @@
      "page": "about",
      "slot": 2,
      "h": "What changes for a Canadian site",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "9dca7fd038"
+    },
+    {
+     "page": "about",
+     "slot": 2,
+     "h": "What changes for a Canadian site",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "50884fd191"
     }
    ]
   },
@@ -3920,11 +5063,21 @@
      "page": "about",
      "slot": 1,
      "h": "The people you would work with",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "ab1f9fdbc8"
+    },
+    {
+     "page": "about",
+     "slot": 1,
+     "h": "The people you would work with",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "9da91f0d6e"
     }
    ]
   },
@@ -3954,11 +5107,21 @@
      "page": "svc-service",
      "slot": 4,
      "h": "Like for like, or a change?",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "2d198dbbc3"
+    },
+    {
+     "page": "svc-service",
+     "slot": 4,
+     "h": "Like for like, or a change?",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "2c6abe2713"
     }
    ]
   },
@@ -3988,11 +5151,13 @@
    "look": "spine-shelf",
    "component": "SpineShelf",
    "type": "docs",
-   "status": "retired",
+   "status": "live",
    "fields": "h, intro, items [{t, d, key, docs}], fold, fold_noun. docs (optional): the section's entries as a list; without it they are read from d, split at \";\" or \". \", else at commas outside brackets.",
    "best_for": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents.",
-   "held": "12",
-   "pages": [],
+   "held": "6-12",
+   "pages": [
+    "ind-hospital-lab"
+   ],
    "instances": [
     {
      "page": "cmp-documentation",
@@ -4003,6 +5168,16 @@
      "last_seen": "2026-11-01",
      "commit": "3ad589e",
      "hash": "781e7c01e6"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 5,
+     "h": "For consultants and contractors",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "b3d3d392c8"
     }
    ]
   },
@@ -4032,11 +5207,21 @@
      "page": "svc-fabrication",
      "slot": 2,
      "h": "The fabrication dossier",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "5c5ee5652d"
+    },
+    {
+     "page": "svc-fabrication",
+     "slot": 2,
+     "h": "The fabrication dossier",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "477dd023cf"
     }
    ]
   },
@@ -4066,11 +5251,21 @@
      "page": "cmp-documentation",
      "slot": 1,
      "h": "What each stage issues",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "f8ecaf2a11"
+    },
+    {
+     "page": "cmp-documentation",
+     "slot": 1,
+     "h": "What each stage issues",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "4fc5ba695a"
     }
    ]
   },
@@ -4100,11 +5295,21 @@
      "page": "svc-cq",
      "slot": 0,
      "h": "What each stage proves",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "8b6bd0c303"
+    },
+    {
+     "page": "svc-cq",
+     "slot": 0,
+     "h": "What each stage proves",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "0dbf2cd067"
     }
    ]
   },
@@ -4117,6 +5322,7 @@
    "best_for": "StairRouter draws a router table (\"which situation are you in, where do you start\") as a rising staircase of situation cards over huge cropped outline type, every route open at once.",
    "held": "7-8",
    "pages": [
+    "ind-hospital-lab",
     "services"
    ],
    "instances": [
@@ -4144,11 +5350,31 @@
      "page": "services",
      "slot": 0,
      "h": "Where to start",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "4d310edaf3"
+    },
+    {
+     "page": "services",
+     "slot": 0,
+     "h": "Where to start",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "25b3b84853"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 0,
+     "h": "Start from your project",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "da3dcfc763"
     }
    ]
   },
@@ -4159,9 +5385,11 @@
    "status": "live",
    "fields": "as grid: h, intro, items [{t, d, icon, tag, link}].",
    "best_for": "StandardTiles sets a short grid of linked items as a Swiss tile grid three across: each item a slash-numbered navy or limestone tile carrying its standard or control tag, plus a blueprint tile that draws the item being pointed at and a flow block that sets its tag large.",
-   "held": "4",
+   "held": "4-6",
    "pages": [
-    "ind-meddevice"
+    "home",
+    "ind-meddevice",
+    "projects"
    ],
    "instances": [
     {
@@ -4178,11 +5406,41 @@
      "page": "ind-meddevice",
      "slot": 4,
      "h": "Systems for device plants",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "78d272474f"
+    },
+    {
+     "page": "home",
+     "slot": 2,
+     "h": "Same package, different limits by industry",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "fdcd9a43a7"
+    },
+    {
+     "page": "ind-meddevice",
+     "slot": 4,
+     "h": "Systems for device plants",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "f479b82201"
+    },
+    {
+     "page": "projects",
+     "slot": 0,
+     "h": "Typical configurations · design basis",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "19523536e5"
     }
    ]
   },
@@ -4193,7 +5451,7 @@
    "status": "live",
    "fields": "h, intro, cols (three labels), rows [[standard, asks, {t, link, art}]], fold, fold_noun, nav (plate title). art: analyzer | storage | panel | pretreatment (what the cell draws; default by the link's page).",
    "best_for": "StandardWires sets a table of standards on a navy blueprint and wires each answer to the equipment that answers it, so a reader who starts from a standard sees which part of the system meets it.",
-   "held": "4",
+   "held": "4-7",
    "pages": [
     "systems"
    ],
@@ -4202,11 +5460,21 @@
      "page": "systems",
      "slot": 3,
      "h": "Start from the standard you cite",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "4e0703a2ca"
+    },
+    {
+     "page": "systems",
+     "slot": 3,
+     "h": "Start from the standard you cite",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "119fb5f956"
     }
    ]
   },
@@ -4253,6 +5521,7 @@
    "best_for": "StrataRun draws a process diagram as one water run stepping down a terrace of stacked paper slabs, so the reader sees the whole package from feed water to points of use as a single route through real equipment.",
    "held": "6",
    "pages": [
+    "industries",
     "systems"
    ],
    "instances": [
@@ -4270,11 +5539,31 @@
      "page": "systems",
      "slot": 0,
      "h": "How the systems fit together",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "c6d521ace3"
+    },
+    {
+     "page": "systems",
+     "slot": 0,
+     "h": "How the systems fit together",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "2991e518da"
+    },
+    {
+     "page": "industries",
+     "slot": 4,
+     "h": "Same package, different limit-writer",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "9aa8f624c0"
     }
    ]
   },
@@ -4295,11 +5584,21 @@
      "page": "svc-upgrades",
      "slot": 2,
      "h": "Data integrity gaps in older controls",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "cc6c457b40"
+    },
+    {
+     "page": "urs-guide",
+     "slot": 3,
+     "h": "Clauses that keep the design open",
+     "status": "retired",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bff41e0",
+     "hash": "a2696803bc"
     },
     {
      "page": "urs-guide",
@@ -4308,8 +5607,18 @@
      "status": "live",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
-     "commit": "bff41e0",
-     "hash": "a2696803bc"
+     "commit": "bee7493",
+     "hash": "0567cdf5d1"
+    },
+    {
+     "page": "svc-upgrades",
+     "slot": 2,
+     "h": "Data integrity gaps in older controls",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "a22004177b"
     }
    ]
   },
@@ -4320,7 +5629,7 @@
    "status": "live",
    "fields": "as the router: cols (situation, water, systems, start with), rows (cells: string or {t, link, intent}).",
    "best_for": "SuiteLoop draws a router table as a plan of one shared loop serving a row of suites: every situation is a room fed by its own drop and valve off the loop, with the start page as the room's way out.",
-   "held": "5",
+   "held": "5-6",
    "pages": [
     "ind-cdmo"
    ],
@@ -4339,11 +5648,21 @@
      "page": "ind-cdmo",
      "slot": 0,
      "h": "Start from your situation",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "7ec6e5f6af"
+    },
+    {
+     "page": "ind-cdmo",
+     "slot": 0,
+     "h": "Start from your situation",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "825d240e8e"
     }
    ]
   },
@@ -4363,11 +5682,21 @@
      "page": "home",
      "slot": 0,
      "h": "One package, one water path",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "5af52fdcde"
+    },
+    {
+     "page": "home",
+     "slot": 0,
+     "h": "One package, one water path",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "6b56535bb2"
     }
    ]
   },
@@ -4409,11 +5738,21 @@
      "page": "sys-storage",
      "slot": 3,
      "h": "Tank and pipework",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "86f72b2817"
+    },
+    {
+     "page": "sys-storage",
+     "slot": 3,
+     "h": "Tank and pipework",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "673f47e9b9"
     }
    ]
   },
@@ -4475,7 +5814,7 @@
      "page": "systems",
      "slot": 2,
      "h": "What your site needs before we arrive",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -4485,7 +5824,7 @@
      "page": "cmp-quality",
      "slot": 4,
      "h": "How buying from us works",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -4495,11 +5834,41 @@
      "page": "buying",
      "slot": 0,
      "h": "Terms at a glance",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "68141b01e7"
+    },
+    {
+     "page": "systems",
+     "slot": 2,
+     "h": "What your site needs before we arrive",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "baaa39ad2c"
+    },
+    {
+     "page": "cmp-quality",
+     "slot": 4,
+     "h": "How buying from us works",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "95fba92070"
+    },
+    {
+     "page": "buying",
+     "slot": 0,
+     "h": "Terms at a glance",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "eafb6812de"
     }
    ]
   },
@@ -4529,11 +5898,21 @@
      "page": "svc-fat-sat",
      "slot": 2,
      "h": "From protocol to release, then SAT",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "8161d416e3"
+    },
+    {
+     "page": "svc-fat-sat",
+     "slot": 2,
+     "h": "From protocol to release, then SAT",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "ad597acf34"
     }
    ]
   },
@@ -4553,11 +5932,21 @@
      "page": "ind-cdmo",
      "slot": 3,
      "h": "From signed program to released water",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "2a9e1fa891"
+    },
+    {
+     "page": "ind-cdmo",
+     "slot": 3,
+     "h": "From signed program to released water",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "0e0ae234dd"
     }
    ]
   },
@@ -4578,9 +5967,9 @@
      "page": "careers",
      "slot": 1,
      "h": "Pay, benefits and terms",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "bd3c885454"
     },
@@ -4593,6 +5982,16 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "d1f77fb803"
+    },
+    {
+     "page": "careers",
+     "slot": 1,
+     "h": "Pay, benefits and terms",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "c2b5e78ac4"
     }
    ]
   },
@@ -4644,11 +6043,21 @@
      "page": "svc-design",
      "slot": 3,
      "h": "An example: two requirements traced to their tests",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "9efc94b393"
+    },
+    {
+     "page": "svc-design",
+     "slot": 3,
+     "h": "An example: two requirements traced to their tests",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "3e01c71853"
     }
    ]
   },
@@ -4703,7 +6112,7 @@
    "status": "live",
    "fields": "as a versus table: cols [test, FAT label, SAT label] (the two labels also tag the drawing's boundaries), rows [[test, FAT cell, SAT cell]] (strings or {t, link}), conclusion [label, FAT side, SAT side], fold, fold_noun (the fold applies on phones only), row_parts (optional, one string per row: space-separated drawing parts the test covers, any of skid, ro, pump, panel, inst, valve, pipe, tank, loop, pou, util).",
    "best_for": "VersusSpread sets a FAT versus SAT table as an editorial spread: a navy mast with the heading at display scale, the numbered comparison table, and one line drawing of the installed system whose parts light for the test being read (look `versus-spread`, table block `as: \"versus\"`).",
-   "held": "7",
+   "held": "7-8",
    "pages": [
     "svc-fat-sat"
    ],
@@ -4712,11 +6121,21 @@
      "page": "svc-fat-sat",
      "slot": 0,
      "h": "What FAT proves, what SAT proves",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "f1df61fc39"
+    },
+    {
+     "page": "svc-fat-sat",
+     "slot": 0,
+     "h": "What FAT proves, what SAT proves",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "0bfa85bc90"
     }
    ]
   },
@@ -4727,8 +6146,9 @@
    "status": "live",
    "fields": "(a grid block, as: \"route\"): h, items [{t, d, link, spot, end, part}]. part: the plant stage(s) the stop checks, space-separated: panel, toc, pre, gen, tank, loop, uv, wear, report (no part: a caption without a stop). \"end\": true on the last item draws its stop as the sign-off tick and sets it as the closing line. The drawing is fixed (one PW package); the stops and captions come from the items.",
    "best_for": "VisitPlan shows a service visit as a route around the system on one navy drawing band: the whole PW plant in IsoKit line art, the technician's walk as a dashed route on the floor in front of it with a numbered stop at each part the visit checks, the checks as captions along the base of the band, and the signed report as one limestone line that closes it.",
-   "held": "7",
+   "held": "5-7",
    "pages": [
+    "ind-hospital-lab",
     "svc-service"
    ],
    "instances": [
@@ -4756,11 +6176,31 @@
      "page": "svc-service",
      "slot": 3,
      "h": "What a maintenance visit covers",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "23c2f91741"
+    },
+    {
+     "page": "svc-service",
+     "slot": 3,
+     "h": "What a maintenance visit covers",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "576fa65e66"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 3,
+     "h": "Where water goes in a laboratory building",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "c9ddfd83f8"
     }
    ]
   },
@@ -4780,11 +6220,21 @@
      "page": "svc-cq",
      "slot": 2,
      "h": "IQ and OQ on site",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "921ab3dd4e"
+    },
+    {
+     "page": "svc-cq",
+     "slot": 2,
+     "h": "IQ and OQ on site",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "4b91e4cde2"
     }
    ]
   },
@@ -4804,11 +6254,21 @@
      "page": "ind-meddevice",
      "slot": 3,
      "h": "Where rinse water reaches the device",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "8fe408dbf0"
+    },
+    {
+     "page": "ind-meddevice",
+     "slot": 3,
+     "h": "Where rinse water reaches the device",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "5bf1099405"
     }
    ]
   },
@@ -4838,11 +6298,21 @@
      "page": "svc-fat-sat",
      "slot": 1,
      "h": "Water finds faults a dry check misses",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "8a0b89e0a3"
+    },
+    {
+     "page": "svc-fat-sat",
+     "slot": 1,
+     "h": "Water finds faults a dry check misses",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "d2ff7ec229"
     }
    ]
   },
@@ -4902,11 +6372,21 @@
      "page": "sys-pw",
      "slot": 1,
      "h": "How water moves through the skid",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "0159cb3",
      "hash": "8ef7267ec9"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 1,
+     "h": "How water moves through the skid",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "20ca7fd269"
     }
    ]
   },
@@ -4936,11 +6416,21 @@
      "page": "svc-fat-sat",
      "slot": 3,
      "h": "How you witness",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "cebfffad39"
+    },
+    {
+     "page": "svc-fat-sat",
+     "slot": 3,
+     "h": "How you witness",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "bee7493",
+     "hash": "e5db196551"
     }
    ]
   }

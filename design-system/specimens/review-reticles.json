@@ -65,9 +65,9 @@
    "page": "svc-upgrades",
    "slot": 3,
    "h": "What the assessment reviews",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "c22f467ff0",
    "block": {
@@ -109,6 +109,109 @@
       "spot": "cpu"
      }
     ]
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 3,
+   "h": "What the assessment reviews",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6e0a56299d",
+   "block": {
+    "type": "grid",
+    "look": "review-reticles",
+    "as": "route",
+    "nav": "Assessment",
+    "h": "What the assessment reviews",
+    "items": [
+     {
+      "t": "Records",
+      "d": "Qualification file, changes, drawings, dead leg register.",
+      "spot": "binder"
+     },
+     {
+      "t": "Water quality data",
+      "d": "A year of conductivity, TOC and microbial results.",
+      "spot": "toc"
+     },
+     {
+      "t": "Generation",
+      "d": "Performance on today’s feed, capacity at your coldest feed.",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "Materials, dead legs, slope, flow and fittings.",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Sanitization",
+      "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
+      "spot": "storage-tank",
+      "part": "outlet"
+     },
+     {
+      "t": "Controls",
+      "d": "Support status, audit trail and backups.",
+      "spot": "cpu"
+     }
+    ],
+    "anchor": "assessment"
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 2,
+   "h": "Where water goes in reprocessing",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "ccbd36394d",
+   "block": {
+    "type": "grid",
+    "as": "route",
+    "nav": "Reprocessing",
+    "anchor": "reprocessing",
+    "h": "Where water goes in reprocessing",
+    "items": [
+     {
+      "t": "Washer-disinfector final rinse",
+      "d": "The last water on every instrument before drying. It needs critical water.",
+      "spot": "valve",
+      "part": "outlet"
+     },
+     {
+      "t": "Ultrasonic cleaners",
+      "d": "Filled from the loop, at the grade your program sets for each step.",
+      "spot": "tank"
+     },
+     {
+      "t": "Manual sinks and lumen flushing",
+      "d": "Rinsing and flushing channels by hand, from taps on the loop.",
+      "spot": "valve"
+     },
+     {
+      "t": "Endoscope reprocessors",
+      "d": "They filter their own feed further; the maker's instructions set what goes in.",
+      "spot": "valve",
+      "part": "filter"
+     },
+     {
+      "t": "Cart washers",
+      "d": "Utility water is enough here, not critical water.",
+      "spot": "loop"
+     },
+     {
+      "t": "Sterilizer feed",
+      "d": "Feed water to the sterilizer maker's specification. We supply the water, not the steam.",
+      "spot": "gauge"
+     }
+    ],
+    "look": "review-reticles"
    }
   }
  ]

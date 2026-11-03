@@ -76,7 +76,7 @@
    "page": "urs-guide",
    "slot": 2,
    "h": "Must-haves, preferences and how bids answer",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -195,7 +195,7 @@
    "page": "buying",
    "slot": 1,
    "h": "What every proposal lists, line by line",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -231,6 +231,126 @@
       "Site acceptance test (SAT) and commissioning",
       "[SAT and commissioning: included or option]",
       "Tests on your feed water before qualification starts"
+     ],
+     [
+      "Installation and operational qualification (IQ and OQ)",
+      "[IQ and OQ: included or priced option]",
+      "Who drafts and runs the protocols, and who approves them"
+     ],
+     [
+      "Training",
+      "[training hours and audiences]",
+      "Who is trained, for how long, and the signed record"
+     ],
+     [
+      "Documents",
+      "Included",
+      "Drawings, test and qualification records, operating manual and as-built set [confirm each], each for information or approval"
+     ],
+     [
+      "First-year spares",
+      "[first-year spares: included or priced option]",
+      "Parts and quantities for the first year"
+     ]
+    ],
+    "look": "joint-spine"
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 2,
+   "h": "Must-haves, preferences and how bids answer",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "b15d44fc41",
+   "block": {
+    "type": "table",
+    "look": "joint-spine",
+    "anchor": "priority",
+    "nav": "Must-haves",
+    "h": "Must-haves, preferences and how bids answer",
+    "intro": "Every value in a bid should name the document that proves it.",
+    "cols": [
+     "Practice",
+     "What it does to the bids",
+     "Use it for"
+    ],
+    "rows": [
+     [
+      "Must-have",
+      "One shortfall ends a bid, whatever its price.",
+      "What your product, your inspector or a written standard requires"
+     ],
+     [
+      "Preference",
+      "Scored against the other bids.",
+      "Features you would trade for price, time or service"
+     ],
+     [
+      "Too many must-haves",
+      "Fewer suppliers can bid; sometimes only one.",
+      "Ask of each one: is this the outcome, or one way to reach it?"
+     ],
+     [
+      "One answer format",
+      "Every row answered: meets, meets with a note, or differs.",
+      "Every row of the URS"
+     ],
+     [
+      "One deviation list",
+      "Silence is often read as full compliance, and enforced later.",
+      "Every difference, keyed to your rows, with its reason"
+     ],
+     [
+      "Separate price lines",
+      "Shows what each bid includes; lets you trim options to budget.",
+      "Factory and site tests, documents, start-up, training, spares and options"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 1,
+   "h": "What every proposal lists, line by line",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "a066bb55cf",
+   "block": {
+    "type": "table",
+    "nav": "Proposal",
+    "anchor": "proposal",
+    "h": "What every proposal lists, line by line",
+    "intro": "The same lines, in the same order. Each is marked included, priced option or by others; none is left blank.",
+    "cols": [
+     "Line",
+     "Included, priced option or by others",
+     "What the line states"
+    ],
+    "rows": [
+     [
+      "Package: pretreatment to distribution",
+      "Included",
+      "Each module and each point of use, sized from your water analysis"
+     ],
+     [
+      "Installation support",
+      "[installation scope]",
+      "Who places, connects and fills it, up to the connection points"
+     ],
+     [
+      "Factory acceptance test (FAT)",
+      "[FAT in the price or priced option]",
+      "What is tested in our shop, and how you witness it"
+     ],
+     [
+      "Site acceptance test (SAT) and commissioning",
+      "[SAT and commissioning: included or option]",
+      "Tests on your feed water before qualification or handover"
      ],
      [
       "Installation and operational qualification (IQ and OQ)",

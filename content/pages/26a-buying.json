@@ -7,7 +7,7 @@
  "path": "/company/buying/",
  "eyebrow": "BUYING FROM AQUEMI",
  "headline": "How buying from us works",
- "lead": "Terms for buying our polypropylene Purified Water package, written for procurement, finance and approvers. Every proposal opens with them. Send your contract form: any clause we cannot accept is listed once, with its reason.",
+ "lead": "Terms for buying our polypropylene Purified Water package, for procurement, finance and approvers. Every proposal opens with them. Send your contract form: we list any exceptions once, with reasons.",
  "primary_cta": "Send your RFQ",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have an RFQ or a tender",
@@ -76,7 +76,7 @@
     {
      "p": "Drawings and code",
      "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
-     "m": "What you may change, copy and requalify, in writing"
+     "m": "What you may change and copy, in writing"
     },
     {
      "p": "Your contract form",
@@ -102,10 +102,10 @@
    "nav": "Proposal",
    "anchor": "proposal",
    "h": "What every proposal lists, line by line",
-   "intro": "The same lines, in the same order, every time. Each is marked included, priced option or by others; none is left blank.",
+   "intro": "The same lines, in the same order. Each is marked included, priced option or by others; none is left blank.",
    "cols": [
     "Line",
-    "Included, option or by others",
+    "Included, priced option or by others",
     "What the line states"
    ],
    "rows": [
@@ -127,7 +127,7 @@
     [
      "Site acceptance test (SAT) and commissioning",
      "[SAT and commissioning: included or option]",
-     "Tests on your feed water before qualification starts"
+     "Tests on your feed water before qualification or handover"
     ],
     [
      "Installation and operational qualification (IQ and OQ)",
@@ -199,7 +199,7 @@
    "nav": "Compare",
    "anchor": "compare",
    "h": "Comparing quotes on the same lines",
-   "intro": "Quotes differ most in what they leave out. Level every quote on these lines before you compare prices.",
+   "intro": "Level every quote on these lines before you compare prices.",
    "cols": [
     "Line to level",
     "Ask of every quote",
@@ -277,8 +277,8 @@
    "type": "spec",
    "nav": "Capital request",
    "anchor": "capital",
-   "h": "Notes for your capital request",
-   "intro": "Ask approval for the all-in figure: installed, started and qualified. Each proposal ends with one paragraph your approver can read alone [confirm].",
+   "h": "How a price is built, for your capital request",
+   "intro": "Ask approval for one figure: installed, commissioned, and qualified or accepted. Each proposal ends with one paragraph your approver can read alone [confirm].",
    "cols": [
     "Cost line",
     "Where the figure comes from",
@@ -288,7 +288,7 @@
     {
      "p": "Package and services",
      "v": "Proposal total, each service its own line",
-     "m": "Before a quote: the budget range",
+     "m": "Before a quote: our budget range and its class",
      "link": "systems#budget"
     },
     {
@@ -303,24 +303,24 @@
      "link": "systems#site"
     },
     {
-     "p": "Lab testing during qualification",
+     "p": "Lab testing during qualification or acceptance",
      "v": "Your lab or a contract lab",
-     "m": "The sampling weeks of performance qualification (PQ)",
+     "m": "Sampling weeks of performance qualification (PQ) or acceptance test",
      "link": "svc-cq"
     },
     {
      "p": "Temporary water",
-     "v": "Bought or made until release",
-     "m": "Your cost while PQ sampling runs"
+     "v": "Bought or made until the water is released for use",
+     "m": "Your cost while sampling runs"
     },
     {
      "p": "Purified Water",
      "v": "To your points of use",
-     "m": "What the approval buys: installed, started and qualified",
+     "m": "What the approval buys",
      "side": "out"
     }
    ],
-   "note": "Budget ranges are [estimate class and accuracy]. A proposal holds [proposal validity, days]; until then only [price adjustment triggers after the quote] can move it. Service and consumables are operating budget, shown per year under running cost.",
+   "note": "A budget range states its class, date, valid-until date, lead time in weeks, one-line scope and basis. It comes back within [budget proposal turnaround, working days]. Before the proposal, it moves with your water analysis, flow, loop length, points of use, and documentation and qualification scope. A proposal holds [proposal validity, days]; only [price adjustment triggers after the quote] can move it. Service and consumables are yearly operating budget.",
    "glyphs": [
     "softener",
     "carbon-filter",
@@ -335,7 +335,7 @@
    "nav": "Onboarding",
    "anchor": "onboarding",
    "h": "Onboarding papers and their status",
-   "intro": "Procurement checks these before award. Each shows its status today; ask for any of them with your RFQ.",
+   "intro": "Procurement checks these before award. Each is marked held, on request or in the questionnaire pack. Ask for any with your RFQ.",
    "items": [
     {
      "t": "Corporate registration",
@@ -374,7 +374,7 @@
     },
     {
      "t": "Supplier questionnaire",
-     "d": "Your form completed, or our pack, from [quality system ready for audit, date]",
+     "d": "Your form completed, or our questionnaire pack",
      "code": "SQ",
      "link": "cmp-quality#audit",
      "intent": "Your questionnaire, completed"
@@ -416,7 +416,7 @@
    "items": [
     {
      "q": "Can you sign our contract form?",
-     "a": "Send it with your RFQ. Our proposal lists any clause we cannot accept, once, with the reason. Our standing positions: [contract form positions]."
+     "a": "Yes, with exceptions named: our proposal lists any clause we cannot accept, once, with the reason. Send the form with your request for quotation (RFQ). Our standing positions: [contract form positions]."
     },
     {
      "q": "Do you bid on public tenders paid after acceptance?",
@@ -424,17 +424,17 @@
     },
     {
      "q": "Why pay anything before delivery?",
-     "a": "Each package is built for one site, from your approved drawings. Its material is bought then. Whether a payment falls there: [deposit, if any, and its event]. Every later payment follows an event you can check, such as a passed FAT [confirm]."
+     "a": "Each package is built for one site, from your approved drawings, and its material is bought then. Any payment at that point: [deposit, if any, and its event]. Every later payment follows an event you can check, such as a passed factory acceptance test (FAT) [confirm]."
     },
     {
      "q": "What keeps the warranty valid?",
      "a": "Three conditions, all written in your proposal. Feed water stays inside the design basis, the daily log is kept, and changes are agreed with us first. [warranty conditions to confirm]"
     },
     {
-     "q": "Can you bid where references are required?",
-     "a": "None yet: we are a new company with no client reference to name. Name what the reference should prove, and check that directly. Talk today to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your FAT once [shop and test bay ready for visits].",
+     "q": "What do you submit for a tender's experience or reference section?",
+     "a": "Our bid answers it with the named team and its experience. It adds our quality system and audit access, specimen documents and a witnessed factory acceptance test (FAT). Tell us before the tender closes what the clause must prove. Written answer within [proposal response time, working days]. References and site visits are arranged with our commercial lead during qualification.",
      "link": "projects#verify",
-     "link_label": "See the checks to run"
+     "link_label": "How to qualify us"
     }
    ]
   },
@@ -470,7 +470,7 @@
  },
  "todo": [
   "Page (pass 11, SITE-PLAN new pages; structure-and-sitemap § 4.4; desk Q3): terms only. QA content (audit, certification, NCR and CAPA, suppliers, quality agreement) stays on cmp-quality (DR-001 rule 4 amended: terms move home from cmp-quality to buying; one home per approver question, not an approver page). DR-005 rule 7's home reference changes from cmp-quality#buying to buying#terms (record the amendment). Readers: procurement (R3 on terms), finance, site head, founder as approver; journeys P5, P4, P2",
-  "Launch rule (structure-and-sitemap § 4.4; DR-005 rule 8): draft now; publish when FD-05 to FD-07 are decided (validity, currency, milestones, warranty start). Until then DR-026 rule 2 applies: either cmp-quality#buying restores its terms rows from git, reading \"Set in each proposal\", or buying publishes with its terms values reading \"Set in each proposal\"; orchestrator decides (pass 11 review finding 8). At launch every unfilled bracket goes (DR-004 class 2, DR-024 rule 6); the non-fact blocks (answer, compare, capital method, order) need no owner fact but ship with the page",
+  "Launch rule (structure-and-sitemap § 4.4; DR-005 rule 8): draft now; publish when FD-05 to FD-07 are decided (validity, currency, milestones, warranty start). Until then DR-026 rule 2 applies: either cmp-quality#buying restores its terms rows from git, reading \"Set in each proposal\", or buying publishes with its terms values reading \"Set in each proposal\"; orchestrator decides (pass 11 review finding 8). At launch every unfilled bracket goes (DR-004 class 2, DR-024 rule 6); routes not ready are hidden, never dated (DR-028, R6); the non-fact blocks (answer, compare, capital method, order) need no owner fact but ship with the page",
   "Terms at a glance (anchor terms; spec, look terms-sheet, carried from cmp-quality#buying with its look): rows carried from cmp-quality block 4, unfolded (DR-024 rules 1 and 3: every row a deciding row, no fold). Phrasebook § 6 applied here: change 2 (Proposal v: page one), change 7 (Proposal m: departures or a written \"none\"), change 4 † (Payment milestones m: events you can check), change 3 † (Acceptance and warranty start m: [warranty start event], one warranty text). The \"Set in the proposal\" notes became \"Stated on page one of each proposal\" where the row is a page-one term; at launch a filled row's note becomes \"Unless the proposal states otherwise\" or goes (pass 11 review). The onboarding row moved to the onboarding block below. Lessons L-04-1, L-06-5, L-13-14, L-03-3, L-G3-2, L-08-2, L-08-16, L-04-5, L-05-13, L-G3-16, L-09-13, L-10-10, L-11-11, L-14-2, L-07-8, L-15-17, L-01-1",
   "Terms, proposal validity (FD-05): [proposal validity, days]; currency, tax and duty ([quoting currency], [quoting terms, imported content]; FD-05): quoting currency for Canadian and US buyers, whether prices are before tax, how imported membranes, EDI modules and instruments, their duty and any escalation are stated (carried from cmp-quality's to-do)",
   "Terms, lead time (FD-08; SITE-PLAN rule 4): two clocks, from order ([lead time from order, weeks], new name) and from drawing approval ([lead time from drawing approval, weeks], canonical); [delivery terms] (the Incoterms rule for Canadian projects, FD-08). Only figures Aquemi commits to (DR-005 rule 5)",
@@ -483,14 +483,15 @@
   "Answer block (anchor answer; steps, look binder-tabs, retired since svc-cq 2026-11-01): L-10-1, L-08-13, L-15-17, L-07-8, L-G3-9, L-15-16, L-15-2, L-G3-8, L-12-4, PB-G3.2. Step 6 \"Our answers bind us\" is marked [confirm]: whether proposal answers are offered as contractual (L-15-16) is an owner decision. The bid-form promise (step 5) needs [bid form turnaround, working days] and [bid form cost or free] on contact-proposal#requests if the owner keeps it (offer § 14 P3). Turnaround is the closing's [proposal response time, working days] (DR-014 rule 3: one home for turnarounds). contact-proposal's requests row \"I have an RFQ or a tender\" links here (SITE-PLAN). If the owner declines the commitment in step 6, delete that step rather than leave it with the [confirm] tag: binder-tabs draws a sign-off on every divider (DR-018 rule 2; review finding 17)",
   "Compare block (anchor compare; table as evidence, look reader-split, retired since ind-meddevice 2026-11-01; project-plan, a Services page, also uses it): L-02-22, L-G3-8, L-09-14. Rows capped at 8 (table budget): spares and training left off the compare list; they are proposal lines above. home's router row on comparing quotes and terms links buying#compare (SITE-PLAN)",
   "Capital block (anchor capital; spec, look cost-balance, retired since svc-service 2026-11-01): the costs around the package as streams in; the leaving stream is the Purified Water itself (side out), not an operating cost (DR-018 rule 1; review finding 11: service and consumables moved to the note, running cost linked from compare row 8). L-03-15, L-09-19, L-01-3, L-04-14, L-12-17, L-06-22, L-07-19, PB-03.12. The cost lines outside the package repeat systems' budget note (installation, tie-ins, utilities, lab testing during qualification, temporary water: DR-005 rule 1) and link systems#budget and systems#site, which stay their homes. The intro's \"one paragraph your approver can read alone\" is phrasebook change 12's commitment (†, [confirm]). New name: [price adjustment triggers after the quote] (FD-05: escalation, exchange rate, feed analysis). The glyph train leaves out UV (DR-018 rule 2: optional equipment not drawn as standard). systems' budget block links buying#capital (SITE-PLAN)",
-  "Onboarding block (anchor onboarding; docs, look code-index, retired since svc-fabrication 2026-11-01): moved from cmp-quality's \"Onboarding documents\" row ([onboarding documents and their status] split per paper; the desk Q3 ruling keeps the papers on the page: L-10-9, L-12-10, L-01-2, L-G3-10, L-07-6). New names: [certificate of insurance status], [WSIB clearance status], [tax registration status], [bank reference letter status]; existing: [corporate registration, jurisdiction and number] (about), [ISO 9001 status, registrar and expiry] (cmp-quality), [quality system ready for audit, date]. Insurance limits stay on about#facts (DR-009). List only papers held at launch (FD-12, FD-13, FD-33, FD-51); safety program, COR and contractor-safety platforms (FD-13) join only if held. The questionnaire item shows only if the audit date is filled and has passed (cmp-quality launch rule); otherwise it goes, and the hero secondary goes with it",
+  "Onboarding block (anchor onboarding; docs, look code-index, retired since svc-fabrication 2026-11-01): moved from cmp-quality's \"Onboarding documents\" row ([onboarding documents and their status] split per paper; the desk Q3 ruling keeps the papers on the page: L-10-9, L-12-10, L-01-2, L-G3-10, L-07-6). New names: [certificate of insurance status], [WSIB clearance status], [tax registration status], [bank reference letter status]; existing: [corporate registration, jurisdiction and number] (about), [ISO 9001 status, registrar and expiry] (cmp-quality). Insurance limits stay on about#facts (DR-009). List only papers held at launch (FD-12, FD-13, FD-33, FD-51); safety program, COR and contractor-safety platforms (FD-13) join only if held. Status words per paper: held / on request / in the questionnaire pack (FD-51, pass 12 SITE-PLAN; RI conflict 6). The questionnaire item shows while the questionnaire pack is offered (DR-004 class 2: hide the route if not, with the hero secondary); no readiness date (R6) At launch each item's d ends with one status word (held / on request / in the questionnaire pack); QMS follows the 'list only papers held' rule or reads 'in the questionnaire pack', never a target date (FD-60, R6).",
   "Order block (anchor order; steps, look release-run, retired since ind-cdmo 2026-11-01): L-03-25, L-04-7, L-04-6, offer § 14 Q8. [legal entity name] and [sales phone number] are the footer's, news' and contact-locations' names (FD-33). New name: [order confirmation time, working days]. \"We repeat them on every invoice\" and the confirmation contents are commitments for the owner to confirm",
-  "FAQ: 1 contract form (L-G3-1, L-08-14); 2 public tenders paid after acceptance (L-15-15, L-08-15, AP-08; new name [public tenders paid after acceptance, yes or no]); 3 why pay before delivery (L-08-15, FD-06; new name [deposit, if any, and its event]); 4 phrasebook change 9 † \"What keeps the warranty valid?\" (L-14-2, L-01-11, L-02-10; [warranty conditions to confirm]); 5 references, the honest answer (L-15-3, L-11-6; DR-016: none yet, what to check instead), linking projects#verify, the checks' home. \"Which statements become contract\" is answer step 6, not a second FAQ (DR-009). Bid and performance security (offer § 14 Q7) left off: publish only if the owner wants it public (FD-12, OQ-84). FAQ 2 [confirm]: AP-08, exceptions go through the buyer's question period, never as attached terms; owner to confirm. FAQ 3: risk shared by payment on checkable events (L-01-2), [confirm] with FD-06. FAQ 5's audit and FAT witness are gated on [quality system ready for audit, date] and [shop and test bay ready for visits], as on home and projects. 'None yet' in FAQ 5 and projects' [reference clients available, number] are one fact (DR-011, FD-41); change both together",
+  "FAQ: 1 contract form (L-G3-1, L-08-14; opens \"Yes\" per DR-003 slot rule: owner to confirm the practice with [contract form positions]); 2 public tenders paid after acceptance (L-15-15, L-08-15, AP-08; new name [public tenders paid after acceptance, yes or no]); 3 why pay before delivery (L-08-15, FD-06; new name [deposit, if any, and its event]); 4 phrasebook change 9 † \"What keeps the warranty valid?\" (L-14-2, L-01-11, L-02-10; [warranty conditions to confirm]); 5 the one experience and reference answer on the site (pass 12 newness-sweep §1.1 and §2.3, DR-028 rule 4; L-15-3, L-11-6): answers the tender's experience section with team, quality system and audit access, specimen documents and a witnessed FAT, plus the R5 sentence; links projects#verify ('How to qualify us'). projects' FAQ links here (DR-009). \"Which statements become contract\" is answer step 6, not a second FAQ (DR-009). Bid and performance security (offer § 14 Q7) left off: publish only if the owner wants it public (FD-12, OQ-84). FAQ 2 [confirm]: AP-08, exceptions go through the buyer's question period, never as attached terms; owner to confirm. FAQ 3: risk shared by payment on checkable events (L-01-2), [confirm] with FD-06",
   "Closing door (SITE-PLAN): \"Send your RFQ or supplier questionnaire\" to contact-proposal with intent \"I have an RFQ or a tender\" (switched 2026-11-03: contact-proposal's form has the option). The questionnaire also goes to cmp-quality#audit (hero secondary, intent \"Your questionnaire, completed\"). [proposal cost or free] and [proposal response time, working days] are contact-proposal's names",
   "Entry links other editors set (SITE-PLAN): footer \"Buying from Aquemi\" to buying (orchestrator, Footer.js); about hero secondary; cmp-quality#buying as one line and a link; services router \"Comparing suppliers\"; systems#budget; contact-proposal#requests \"I have an RFQ or a tender\" to buying#answer; projects FAQ on references to buying#faq; home router to buying#compare; svc-design FAQ 6 and sys-monitoring FAQ 4 links to cmp-quality#buying retarget to buying#terms",
   "Related (pass 11 review finding 15): about, cmp-quality, project-plan, projects. Departs from the structure-and-sitemap § 4.4 related list: the renderer shows only nav labels, so systems#budget (capital row 1) and svc-service#running-cost (compare row 8) are linked in context instead; project-plan holds the stages the payment events follow",
   "Onboarding: corporate registration links about#facts, the entity's home (review finding 16; L-01-2). Insurance certificate status is [certificate of insurance status], one name with about#facts' Insurance row, which links buying#onboarding (DR-011; review finding 19, settled by the pass 11 integrator)",
   "Pass 11 integration (look reuse across the four new pages; urs-guide review finding 23, project-plan finding 10): the hero plate is now 'stamp' (page one of a proposal, its rows as buying#terms' Proposal row lists them, accepted and signed by you), so the 'route' plate stays only on project-plan. Kept reuses, each checked against every unused look of its type (python tools/specimens.py fit): compare on reader-split (also urs-guide, project-plan, first-system; the retired table looks draw joints, plans with buttons, the shop, spares or the FAT and SAT scenes, none a list of lines to level), proposal on joint-spine and answer on binder-tabs (also urs-guide; no retired table or steps look draws a document's lines or a returned answer), capital on cost-balance (also first-system; no retired spec look draws a budget), order on release-run (also first-system; capa-ring, fault-knot and shop-route draw a defect loop, a breakdown and a shop route). Revisit if a look for proposals or orders is added",
-  "Final round, pass 11: proposal \"Documents\" line names what you receive (drawings, test and qualification records, operating manual, as-built set) [confirm each]; the full index stays on cmp-documentation (L-BWT-26; BWT study § 9 rank 13)"
+  "Final round, pass 11: proposal \"Documents\" line names what you receive (drawings, test and qualification records, operating manual, as-built set) [confirm each]; the full index stays on cmp-documentation (L-BWT-26; BWT study § 9 rank 13)",
+  "Pass 12 (SITE-PLAN buying; RI 08, 09, 10): capital renamed \"How a price is built\": summary first (installed, commissioned, qualified), the fields of a budget range (DR-005 rule 1), its turnaround [budget proposal turnaround, working days] (systems' closing), what moves the figure before and after the proposal; ranges only when the owner confirms (DR-005). Proposal column reads \"priced option\" (RI 09: never \"available\"). A downloadable requirement grid is offered only when the file exists (FD-58); none linked now. Block order kept (terms first for procurement; finance's summary sits in capital's intro) Pass 12 review fixes: capital's non-GMP path (\"qualified or accepted\", acceptance-test sampling; R10, FD-59); FAQ 5 answer first, codes spelled out in FAQ 1, 3, 5 (DR-003 rules 3, 4); lead cut to 28 words."
  ]
 }

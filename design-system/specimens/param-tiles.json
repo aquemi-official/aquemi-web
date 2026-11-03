@@ -235,7 +235,7 @@
    "page": "sys-pw",
    "slot": 2,
    "h": "Skid design parameters",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -341,6 +341,199 @@
     "as": "callouts",
     "ground": "light",
     "fold_noun": "parameters",
+    "look": "param-tiles"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 2,
+   "h": "Skid design parameters",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "ef2ccc752f",
+   "block": {
+    "type": "spec",
+    "h": "Skid design parameters",
+    "caption": "Design basis",
+    "cols": [
+     "Parameter",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Capacity",
+      "v": "[minimum–maximum capacity, L/h] per skid",
+      "m": "At your coldest feed and end of membrane life ([membrane design life, years]), not 25 °C; parallel trains above",
+      "hl": true,
+      "at": [
+       14.7,
+       51.5
+      ]
+     },
+     {
+      "p": "Battery limits and utilities",
+      "v": "Pretreated feed in, PW out to storage, concentrate to drain; [supply voltage options]; [feed pressure and drain flow, per skid]; [typical footprint, m × m]",
+      "m": "Electrical: [panel certification mark held, or field evaluation used]",
+      "hl": false,
+      "link": "systems#site",
+      "link_label": "Site requirements"
+     },
+     {
+      "p": "Membrane design temperature",
+      "v": "[feed heat exchanger design temperature, °C]",
+      "m": "Otherwise sized at your site minimum",
+      "hl": false,
+      "at": [
+       57.0,
+       12.0
+      ]
+     },
+     {
+      "p": "Sanitization",
+      "v": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]",
+      "m": "Removal of any sanitant proven (WHO TRS 1033, 4.3.6)",
+      "hl": false,
+      "at": [
+       74.8,
+       29.7
+      ]
+     },
+     {
+      "p": "Materials and dead legs",
+      "v": "Unpigmented polypropylene (PP), [PP grade]; dead legs ≤ [dead leg design limit, L/D], sloped to drain",
+      "m": "[PP piping standard]; [PP material certificates]",
+      "hl": false,
+      "at": [
+       23.3,
+       69.2
+      ]
+     },
+     {
+      "p": "Joints, product contact",
+      "v": "[PP joining method]",
+      "m": "[joint inspection method and extent]",
+      "hl": false,
+      "at": [
+       62.8,
+       68.6
+      ]
+     },
+     {
+      "p": "Budget range",
+      "v": "[budget range, CAD] at [reference capacity, L/h]",
+      "m": "Single-pass RO and EDI, city feed",
+      "hl": false,
+      "link": "systems#budget"
+     },
+     {
+      "p": "High-pressure RO section",
+      "v": "[RO high-pressure section material and pressure class]",
+      "m": "Rated for the highest feed pressure at the coldest feed",
+      "hl": false
+     },
+     {
+      "p": "System recovery",
+      "v": "[design recovery, %]",
+      "m": "Concentrate recycled where feed chemistry allows",
+      "hl": false,
+      "link": "svc-service#running-cost"
+     },
+     {
+      "p": "Instruments and controls",
+      "v": "Conductivity and temperature after each stage; [online TOC at the outlet, standard or option]",
+      "m": "Water out of specification diverts at a setpoint below your alert level",
+      "hl": false,
+      "link": "sys-monitoring"
+     }
+    ],
+    "nav": "Skid design",
+    "anchor": "design",
+    "fold": 6,
+    "as": "callouts",
+    "ground": "light",
+    "fold_noun": "parameters",
+    "look": "param-tiles"
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 6,
+   "h": "Where it fits, and what we do not supply",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "52b66a0cf8",
+   "block": {
+    "type": "spec",
+    "as": "callouts",
+    "nav": "Fit",
+    "anchor": "fit",
+    "h": "Where it fits, and what we do not supply",
+    "caption": "Fit",
+    "intro": "One polypropylene (PP) package with PVC pretreatment. No Water for Injection, pure steam or stainless steel systems.",
+    "cols": [
+     "Item",
+     "Fit",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Temperature",
+      "v": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "m": "Ambient or chemically sanitized loops",
+      "hl": true,
+      "link": "industries#fit",
+      "link_label": "Fit rules for every industry"
+     },
+     {
+      "p": "Hot water and steam",
+      "v": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+      "m": "Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C]."
+     },
+     {
+      "p": "Generation skid sanitization",
+      "v": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]",
+      "m": "The same RO and EDI skid, with or without a loop",
+      "link": "sys-pw#design",
+      "link_label": "Generation skid design"
+     },
+     {
+      "p": "Flow",
+      "v": "[minimum–maximum capacity, L/h] per skid",
+      "m": "At your coldest feed water; parallel trains above it"
+     },
+     {
+      "p": "Plant-scale main systems",
+      "v": "Not supplied",
+      "m": "Large hygienic dairy and beverage plants; battery gigafactories"
+     },
+     {
+      "p": "Semiconductor fab ultrapure water",
+      "v": "Not supplied",
+      "m": "ASTM D5127 duties"
+     },
+     {
+      "p": "Bottled water lines",
+      "v": "Not supplied",
+      "m": "Their loop sanitization regime",
+      "link": "sys-storage#sanitization",
+      "link_label": "Sanitization methods"
+     },
+     {
+      "p": "No written limit",
+      "v": "We help you write one",
+      "m": "From where the water goes and what fails when it is wrong",
+      "link": "ind-process#faq",
+      "link_label": "How we draft your limit"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "rules",
+    "ground": "light",
     "look": "param-tiles"
    }
   }

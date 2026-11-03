@@ -43,7 +43,7 @@
     },
     {
      "t": "Visit the shop and test bay",
-     "d": "Tour or factory acceptance test (FAT) witness, once [shop and test bay ready for visits].",
+     "d": "Tour or factory acceptance test (FAT) witness, by appointment.",
      "steps": [
       "Purpose, dates, group",
       "Date and agenda back",
@@ -69,7 +69,10 @@
    ],
    "rows": [
     [
-     "Head office, [head office, city and province]",
+     {
+      "t": "Head office, [head office, city and province]",
+      "link": "about#facts"
+     },
      "[head office functions]",
      "[mailing address]",
      "[sales phone number] · [sales email] · [office hours, time zone]"
@@ -237,14 +240,14 @@
     "c": "ON",
     "label": "Based in Ontario"
    },
-   "intro": "From [service bases, cities] we reach [service coverage area] within [travel time from service base, hours]. Parts for every package we build stay available for [parts availability period, years]."
+   "intro": "From [service bases, cities] we reach [service coverage area] within [travel time from service base, hours]. Parts for every package we build stay available for [parts availability period, years] from handover."
   },
   {
    "type": "form",
    "anchor": "visit",
    "nav": "Visit",
    "h": "Book a shop or test bay visit",
-   "intro": "Visits start once [shop and test bay ready for visits].",
+   "intro": "Visits by appointment, on [shop visit notice, working days] notice.",
    "submit": "Request a visit",
    "note": "Visitors sign [visitor confidentiality and safety terms]. [privacy notice link]",
    "steps": [
@@ -342,14 +345,14 @@
  "todo": [
   "Head office: full address ([mailing address], news' CASL sender address too), sales phone and email ([sales email], news' contact email too), office hours with time zone (same placeholders as about and contact-proposal). Its \"What happens here\" cell is [head office functions] (pass 10) until FD-33 says what happens there (sales and proposals, engineering, or both); the site-plates drawing keeps the office plate",
   "Shop and test bay: address ([shop address]), phone, hours, map link (shop location same as about)",
-  "Shop and test bay ready for visits and witnessed FAT, and from which date ([shop and test bay ready for visits], same name as home, sys-pw, svc-fabrication, svc-fat-sat and projects; FD-44). Route 3 and the form intro both show it. Until then route 3 and the visit form are draft only; at launch they go if not ready, and the next existing check replaces them (DR-004, DR-006 rule 6)",
+  "Visit notice: [shop visit notice, working days] (route 3 and the visit form intro, pass 12 NS rows; FD-44). [shop and test bay ready for visits] is a private launch gate, never printed (R6, DR-028 rule 3): route 3 and the visit form ship when the gate passes, with notice times only, no dates",
   "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
   "Site drawings (DR-018): the service and parts rows draw an empty plate (no truck, no depot) until FD-28 and FD-33 confirm a service base or parts stock at an address; then set art \"service\" and \"parts\" again. The table's nav reads \"Contacts\" (pass 10 review), since a row may be home-based technicians or parts shipped from the shop, not a site (DR-018 rule 6). All four rows show (fold 4, pass 11): the service and parts rows answer procurement's and the maintenance lead's question (DR-024 rule 1)",
   "Parts stock locations, parts email ([parts email address], contact-service's name), parts desk hours, order cut-off and delivery commitment (FD-11, FD-31)",
   "Service coverage area (same as home, svc-service and contact-service); it travels with every severity 1 time (DR-011 rule 4)",
   "Per region (Ontario, Quebec, British Columbia, Alberta, other provinces and territories): centres served, service base or partner, stocking point, severity 1 on-site response in hours or \"visits only\" (FD-27, FD-28). Centres served sit with the time they apply to (DR-011 rule 4)",
   "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, Ontario's coverage row included, per plan on svc-service). Every on-site time on this page carries svc-service's condition \"on a plan, inside [service coverage area]\"; without a plan, a call-out with the next available technician (contact-service). If the owner sets times for every caller, drop \"on a plan\" on all pages at once (DR-011 rules 3 and 4). Route 2's clock is the phone answer time, [severity 1 phone answer time, minutes], as on contact-service and contact-proposal (FD-27)",
-  "Number of service technicians (same headcount as about). If no one holds the role at launch, the whole hero fact goes, not just its number (DR-004 rule 4)",
+  "Hero facts (pass 12, DR-028 rule 1): the technicians count left the hero (no headcount in display type); one fact, as on contact-service and svc-service. [number of service technicians] goes to the questionnaire pack with about's [headcount by discipline] (R7). The parts commitment lives on svc-service#faq (one home, DR-009); the coverage intro repeats it with its start event, \"from handover\" (DR-010)",
   "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove \"or partner\" from the cells if none",
   "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
   "Which components of the PP PW package need a CRN, if any (the coverage table names each province's authority \"where required\"; FD-24, OQ-79)",
@@ -365,7 +368,7 @@
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Cost of the written coverage answer: [fit check cost or free], the \"Not sure yet\" row of contact-proposal's requests table (FD-02; DR-006 rule 5). At launch, \"Free\" or the price; if unset, the cost line goes",
   "LocalBusiness schema per real location only, once addresses are confirmed",
-  "Pass 11 (offer § 14 CL1; L-12-16, L-07-10; FD-44, FD-45): the shop row reads \"Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice\" (ops/placeholder-names.md name, as on svc-fat-sat and projects), two plate callouts (pass 11 review finding 5). At launch the second callout ships only once [shop and test bay ready for visits] has passed (FD-44, DR-004 class 2)",
+  "Pass 11 (offer § 14 CL1; L-12-16, L-07-10; FD-44, FD-45): the shop row reads \"Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice\" (ops/placeholder-names.md name, as on svc-fat-sat and projects), two plate callouts (pass 11 review finding 5). The second callout ships with the private launch gate above (FD-44, DR-004 class 2)",
   "Final round, pass 11: coverage intro states an honest response radius and parts policy: [travel time from service base, hours] and [parts availability period, years]; no map of one dot (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). Owner decides both"
  ],
  "primary_cta_link": "#coverage",
@@ -373,10 +376,6 @@
   {
    "v": "[severity 1 on-site response time, hours]",
    "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
-  },
-  {
-   "v": "[number of service technicians]",
-   "l": "Technicians · based in [service bases, cities]"
   }
  ],
  "hero_index": false,

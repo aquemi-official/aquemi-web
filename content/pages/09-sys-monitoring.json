@@ -3,11 +3,11 @@
  "section": "Systems",
  "nav_label": "Monitoring and controls",
  "title": "Purified Water system monitoring, controls and Part 11 | Aquemi",
- "meta": "Online TOC to USP <643>, uncompensated conductivity to USP <645> stage 1 and audit trails mapped to 21 CFR Part 11 and Annex 11, for a polypropylene PW package.",
+ "meta": "Online TOC (USP <643>), uncompensated conductivity (USP <645>) and audit trails mapped to Part 11 and Annex 11, for a polypropylene Purified Water package.",
  "path": "/systems/monitoring-and-controls/",
  "eyebrow": "SYSTEMS · MONITORING AND CONTROLS · USP <645>, <643>",
  "headline": "Water data you can defend",
- "lead": "Controls and online monitoring for our polypropylene Purified Water package. Audit trails and access control are mapped to 21 CFR Part 11 and Annex 11; your procedures complete them.",
+ "lead": "Monitoring and controls for our polypropylene Purified Water package with polyvinyl chloride (PVC) pretreatment. Audit trails are mapped to 21 CFR Part 11 and Annex 11; your procedures complete them.",
  "primary_cta": "Request a controls specification review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
@@ -51,12 +51,91 @@
     }
    ],
    "nav": "Architecture",
-   "look": "layer-stack"
+   "look": "layer-stack",
+   "anchor": "layers"
+  },
+  {
+   "type": "spec",
+   "h": "Sensors and signals",
+   "caption": "MONITORING · WHO TRS 1033",
+   "cols": [
+    "Signal",
+    "Design value",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "TOC analyzer",
+     "v": "Online; system suitability 85 % to 115 %",
+     "m": "USP <643>",
+     "at": [
+      37.4,
+      46.9
+     ]
+    },
+    {
+     "p": "Conductivity cell",
+     "v": "Cell constant ± 2 %; ± 0.1 µS/cm; temperature ± 2 °C",
+     "m": "USP <645>, uncompensated",
+     "at": [
+      49.4,
+      57.7
+     ]
+    },
+    {
+     "p": "Temperature",
+     "v": "Generation, tank, loop supply and return, coldest sanitization point",
+     "at": [
+      48.9,
+      41.1
+     ],
+     "m": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats."
+    },
+    {
+     "p": "Divert (generation)",
+     "v": "Setpoint below your alert level; to [divert route: drain or recirculation], never to storage",
+     "m": "Value, time and duration recorded; tested at the factory and site acceptance tests (FAT, SAT)",
+     "at": [
+      72.9,
+      37.7
+     ]
+    },
+    {
+     "p": "Restart after power loss",
+     "v": "[restart after power loss: automatic or operator release]",
+     "m": "Tested at FAT"
+    },
+    {
+     "p": "Flow and pressure",
+     "v": "Return flow ≥ [qualified minimum return flow, L/h], alarmed",
+     "m": "WHO TRS 1033, 8.6 and 12.3",
+     "at": [
+      57.4,
+      69.7
+     ]
+    },
+    {
+     "p": "Ultraviolet (UV) units, where fitted",
+     "v": "Intensity at 254 nm, lamp hours, lamp failure"
+    },
+    {
+     "p": "Data recording",
+     "v": "Every quality value at [recording interval, seconds], time-stamped",
+     "m": "One site time source"
+    }
+   ],
+   "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
+   "nav": "Measurements",
+   "fold": 5,
+   "fold_noun": "signals",
+   "as": "callouts",
+   "look": "signal-dial",
+   "anchor": "instruments"
   },
   {
    "type": "table",
    "h": "Alert, action and trend",
-   "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot is a drawing of online readings, not site data.",
+   "intro": "You set the levels with our input. Microbial counts are laboratory results. The screen is a specimen: a drawing of online readings, not site data.",
    "cols": [
     "Line",
     "How it is set",
@@ -97,83 +176,8 @@
    "plot": [
     "limit",
     "trend"
-   ]
-  },
-  {
-   "type": "spec",
-   "h": "Sensors and signals",
-   "caption": "MONITORING · WHO TRS 1033",
-   "cols": [
-    "Signal",
-    "Design value",
-    "Basis"
    ],
-   "rows": [
-    {
-     "p": "TOC analyzer",
-     "v": "Online; system suitability 85 % to 115 %",
-     "m": "USP <643>",
-     "at": [
-      37.4,
-      46.9
-     ]
-    },
-    {
-     "p": "Conductivity cell",
-     "v": "Cell constant ± 2 %; ± 0.1 µS/cm; temperature ± 2 °C",
-     "m": "USP <645>, uncompensated",
-     "at": [
-      49.4,
-      57.7
-     ]
-    },
-    {
-     "p": "Temperature",
-     "v": "Generation, tank, loop supply and return, coldest sanitization point",
-     "at": [
-      48.9,
-      41.1
-     ]
-    },
-    {
-     "p": "Divert",
-     "v": "Setpoint below your alert level; to [divert route: drain or recirculation], never to storage",
-     "m": "Value, time and duration recorded; tested at the factory and site acceptance tests (FAT, SAT)",
-     "at": [
-      72.9,
-      37.7
-     ]
-    },
-    {
-     "p": "Restart after power loss",
-     "v": "[restart after power loss: automatic or operator release]",
-     "m": "Tested at FAT"
-    },
-    {
-     "p": "Flow and pressure",
-     "v": "Return flow ≥ [qualified minimum return flow, L/h], alarmed",
-     "m": "WHO TRS 1033, 8.6 and 12.3",
-     "at": [
-      57.4,
-      69.7
-     ]
-    },
-    {
-     "p": "Ultraviolet (UV) units, where fitted",
-     "v": "Intensity at 254 nm, lamp hours, lamp failure"
-    },
-    {
-     "p": "Data recording",
-     "v": "Every quality value at [recording interval, seconds], time-stamped",
-     "m": "One site time source"
-    }
-   ],
-   "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
-   "nav": "Measurements",
-   "fold": 5,
-   "fold_noun": "signals",
-   "as": "callouts",
-   "look": "signal-dial"
+   "anchor": "alarms"
   },
   {
    "type": "table",
@@ -181,7 +185,7 @@
    "intro": "Health Canada applies EU good manufacturing practice (GMP) Annex 11 through GUI-0050.",
    "cols": [
     "Requirement",
-    "How the controls meet it",
+    "What the controls provide",
     "21 CFR Part 11",
     "EU GMP Annex 11 (2011)"
    ],
@@ -267,7 +271,7 @@
     },
     {
      "t": "Integration",
-     "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant systems.",
+     "d": "[plant network protocols supported] to your plant systems.",
      "spot": "pid",
      "part": "bus"
     },
@@ -283,7 +287,8 @@
    "fold_noun": "options",
    "as": "modules",
    "base": "Controls",
-   "look": "option-checker"
+   "look": "option-checker",
+   "anchor": "options"
   },
   {
    "type": "faq",
@@ -302,7 +307,13 @@
     },
     {
      "q": "Which Part 11 clauses need our procedures?",
-     "a": "No system is Part 11 compliant on its own: your site complies through its validated system and its procedures. Our Part 11 and Annex 11 assessment shows which clauses need a site procedure."
+     "a": "Training (11.10(i)), signature accountability policies (11.10(j)), password controls (11.300) and who holds each role. Your site complies through its validated system and these procedures. Our Part 11 and Annex 11 assessment names the owner of each clause."
+    },
+    {
+     "q": "Do sites outside GMP need the Part 11 procedures?",
+     "a": "No. Sites outside GMP get the same instruments, alarms and records, without the Part 11 procedures. Under ST108:2023, a hospital program checks critical-water conductivity daily and bacteria and endotoxin monthly. The online conductivity record supports the daily check; your program shows compliance.",
+     "link": "ind-hospital-lab#validation",
+     "link_label": "Hospital and laboratory checks"
     },
     {
      "q": "What should our URS say about controls and data?",
@@ -327,6 +338,7 @@
    "h": "Where to go next",
    "items": [
     "svc-fat-sat",
+    "cmp-quality",
     "svc-upgrades#upgrades",
     "svc-service",
     "ind-cdmo#audit-pack"
@@ -340,7 +352,7 @@
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
   "include": [
-   "Your user requirement specification (URS); none yet? What you make",
+   "Your user requirement specification (URS); no URS? Tell us what you make",
    "Water grades and internal limits",
    "Systems to control, new or existing",
    "PLC, SCADA and historian standards",
@@ -353,11 +365,11 @@
   ]
  },
  "todo": [
-  "PLC and SCADA platforms supported, and whether buyers may choose their site standard (FD-23): [PLC and SCADA platforms supported]. If buyers may choose, the options line adds 'or your site standard'. The integration protocols listed follow the platforms: confirm the list once they are set",
+  "PLC and SCADA platforms supported, and whether buyers may choose their site standard (FD-23): [PLC and SCADA platforms supported]. If buyers may choose, the options line adds 'or your site standard'. The Integration option reads [plant network protocols supported] (pass 12 review): examples to confirm once the platforms are set are OPC UA, Modbus TCP, EtherNet/IP and PROFINET, with BACnet kept for hospital and laboratory buildings (FD-59)",
   "Who writes and tests the PLC and HMI code: Aquemi's own engineers or a named partner (FD-23). The validation and documents rows imply in-house",
-  "Whether PLC and HMI application code is delivered unlocked, under which licence or ownership, and escrow for anything delivered locked (FD-10): [code delivered unlocked, and who owns it]. Fill it as the answer's opening yes or no (DR-003 rule 3); unfilled at launch, the question goes. The answer links cmp-quality#buying (\"How buying from us works\"): if that block does not ship, the link goes with it (cmp-quality todo[21])",
+  "Whether PLC and HMI application code is delivered unlocked, under which licence or ownership, and escrow for anything delivered locked (FD-10): [code delivered unlocked, and who owns it]. Fill it as the answer's opening yes or no (DR-003 rule 3); unfilled at launch, the question goes. The answer links buying#terms ('Drawings and code terms').",
   "Code version and checksum recorded at FAT as standard practice (FD-45; at SAT too, FD-10's recommendation): the FAQ answer names [code checksum recorded at FAT, yes or no]; svc-fat-sat's FAQ names the same placeholder since the pass 11 integration (one name per fact, DR-011). Drop the placeholder, or the sentence, once FD-45 is answered. The FAQ links buying#terms (the code row moved there in pass 11). Each access role tested at FAT: the access row, as svc-fat-sat's FAT column states it ('Roles, audit trail, time sync, backup and restore'); confirmed with that column's protocol scope",
-  "Historian recording interval for quality values, seconds (FD-23): [recording interval, seconds]",
+  "Historian recording interval for quality values, seconds (FD-23): [recording interval, seconds]. Trend export formats, if trend export is offered (FD-23; the non-GMP FAQ now says 'records', pass 12 review)",
   "Backup interval and default data retention, years (FD-23): [backup interval], [data retention, years]",
   "Qualified minimum return flow default, L/h (the site's flow unit, DR-003 rule 5), or a note that it is set per loop at qualification (FD-19): [qualified minimum return flow, L/h]",
   "Panel standard and approval route, in compliance's names (FD-24, OQ-78): [panel standard], [panel certification mark held, or field evaluation used]; whether panels are built in-house (FD-23)",
@@ -368,7 +380,7 @@
   "Data-integrity summary PDF (FD-49, data-integrity feature table): make it the hero secondary once it exists; until then 'See the documentation package'",
   "Datasheet PDF; add a download link only once it exists",
   "Software development and change control procedure available for client audit (FD-23, FD-48)",
-  "A real controls project (new or upgrade) with scope and inspection outcome, published only with the client's written consent, before any case study block (FD-42)",
+  "Controls project write-ups (new build or upgrade) with scope and inspection outcome: published only with the client's written consent (FD-42). Reference requests are answered on buying#faq only (DR-028); this page names none",
   "Ozone stays off this page, placeholders included, until the owner offers it on a PP maker's written rating for dissolved and headspace ozone (FD-16, DR-013 rule 4)",
   "Hero facts: none until an Aquemi figure exists, such as the recording interval or default retention once FD-23 sets them, labelled 'what, where · basis' (DR-010)",
   "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3).",
@@ -376,6 +388,13 @@
   "Pass 11 (proof § 5.2 P18; L-G1-14 caution, DR-018): the alarms intro labels the trend plot a drawing, not site data. Specimen HMI, alarm log and audit-trail screens stay Build (FD-47), labelled as specimens when made",
   "Pass 11 (buyer-requirements § 3.2, L-10-14, L-G2-15, L-08-23): new FAQ on what a URS should say about controls and data links urs-guide#outline (new page, anchor fixed by pass 11 SITE-PLAN). Advice only; Aquemi's own retention and backup values stay [data retention, years] and [backup interval]",
   "Pass 11 (proof § 5.2 P17, P23): option effects on documents and lead time are missing; the option-checker look has no intro field (cross-file: orchestrator adds intro through wSecHead, as option-taps does, or accepts the gap; then add sys-pw's options intro sentence). Instrument types and makers named only once chosen (FD-23)",
-  "Pass 11 integration (modules review finding 20): the options block (option-checker) takes the intro 'Your proposal states each option's effect on drawings, tests and lead time.', as sys-pretreatment's options do (finding 5); the look prints intro through wSecHead and its header comment now lists it"
+  "Pass 11 integration (modules review finding 20): the options block (option-checker) takes the intro 'Your proposal states each option's effect on drawings, tests and lead time.', as sys-pretreatment's options do (finding 5); the look prints intro through wSecHead and its header comment now lists it",
+  "Pass 12 (SITE-PLAN sys-monitoring; RI 06 maintenance-lead 3): the instrument list (spec, signal-dial, anchor instruments) now precedes the alarm logic (hmi-trend, anchor alarms). New stable anchors: layers, instruments, alarms, options; inbound data-integrity and remote-access unchanged",
+  "Pass 12 (SITE-PLAN 1.4.2, DR-002 rule 8, DR-021 rule 3): lead names 'our polypropylene Purified Water package with PVC pretreatment'; no exclusion line here. The Temperature row's basis carries DR-013 rule 1 verbatim (first heat mention on the page); never a bare 80 °C, no hot-water sanitization promise, no ozone",
+  "Pass 12 (IB §4 sys-monitoring row; DR-027 rule 8; SITE-PLAN 1.2.6): the non-GMP FAQ is the one home of 'same instruments, alarms and records, without the Part 11 procedures'. The ST108:2023 daily conductivity / monthly bacteria and endotoxin frequencies mirror ind-hospital-lab#validation (home, blocks[6]); change both together (DR-009, DR-011). Links ind-hospital-lab#validation (pass 12 review). 'Trend export' cut from the answer (unconfirmed feature, FD-23)",
+  "Pass 12 (PS P18; RI 05 qc-micro 6): the hmi-trend intro labels the screen a specimen. Real HMI, alarm-log and audit-trail specimen screens stay Build (FD-47)",
+  "Pass 12 (RI 04 qa-head 4): 'data integrity' always spelled out, never a bare 'DI'; the procedures side (change control, configuration control, user roles) lives on cmp-quality, now in related",
+  "Pass 12 (FD-60, DR-028): no sentence on this page may say or imply the company is new or lacks references; the closing reads 'no URS? Tell us what you make' (pass 12 review; avoids the DR-028 'none yet' sweep hit)",
+  "Pass 12 review: FAQ 'Which Part 11 clauses' opens with the clauses that stay with the site (11.10(i), 11.10(j), 11.300; DR-003); the clause-map column reads 'What the controls provide' (no compliance claim); the generation divert row is labelled 'Divert (generation)' to separate it from the alarms table's loop divert/stop"
  ]
 }

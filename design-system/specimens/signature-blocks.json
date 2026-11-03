@@ -10,9 +10,9 @@
    "page": "svc-cq",
    "slot": 1,
    "h": "Who writes, who reviews",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "0319234472",
    "block": {
@@ -42,6 +42,74 @@
       "IQ and OQ execution",
       "Aquemi [executing staff: own engineers or named partner], you witness",
       "Your validation team"
+     ],
+     [
+      "PQ protocol and sampling plan",
+      "You, or Aquemi drafts for you",
+      "Both teams and your laboratory"
+     ],
+     [
+      "PQ sampling and testing",
+      "Your operators and laboratory",
+      "Your quality control"
+     ],
+     [
+      "Alert and action levels",
+      "Aquemi recommends from the data",
+      "Your quality control"
+     ],
+     [
+      "Phase reports and final summary",
+      "Aquemi drafts from executed records",
+      "Your validation team"
+     ]
+    ],
+    "fold": 5,
+    "fold_noun": "documents",
+    "look": "signature-blocks"
+   }
+  },
+  {
+   "page": "svc-cq",
+   "slot": 1,
+   "h": "Who writes, who reviews",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "89f1059883",
+   "block": {
+    "type": "table",
+    "as": "roles",
+    "nav": "Who signs",
+    "anchor": "roles",
+    "h": "Who writes, who reviews",
+    "intro": "The validation master plan stays yours. You approve the C&Q plan before any test runs. IQ and OQ protocols reach you [protocol issue before IQ/OQ, weeks] before testing.",
+    "cols": [
+     "Document or activity",
+     "Written or done by",
+     "Reviewed by"
+    ],
+    "rows": [
+     [
+      "Risk assessment and C&Q plan",
+      "Aquemi drafts from your requirements (URS)",
+      "Your validation team"
+     ],
+     [
+      "FAT, SAT, IQ and OQ protocols",
+      "Aquemi",
+      "Your validation team"
+     ],
+     [
+      "IQ and OQ execution",
+      "Aquemi [executing staff: own engineers or named partner], you witness",
+      "Your validation team"
+     ],
+     [
+      "Deviations and changes, FAT to OQ",
+      "Aquemi logs each one with cause, fix and retest",
+      "Your validation team approves, under your change control"
      ],
      [
       "PQ protocol and sampling plan",

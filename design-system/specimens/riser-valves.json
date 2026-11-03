@@ -310,7 +310,7 @@
    "page": "contact-service",
    "slot": 1,
    "h": "Response times by request",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -350,6 +350,122 @@
       "Requalification after a change",
       "Reply within [requalification support reply time, working days]",
       "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7)"
+     ],
+     [
+      "Parts and consumables",
+      "Quote within [parts quote turnaround, working hours]",
+      "Matched by tag or part number to your qualified parts list, like for like, with certificates"
+     ],
+     [
+      "First service, other make",
+      "Reply within [other-builder request reply time, working days]",
+      "For [makes and equipment types serviced]: a condition survey quote"
+     ]
+    ],
+    "as": "router",
+    "look": "riser-valves"
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 3,
+   "h": "Industrial and energy",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "526daf52c7",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Industrial and energy",
+    "anchor": "industrial",
+    "h": "Industrial and energy",
+    "intro": "Each use takes generation to a written limit. Storage and a loop are added only where several points draw water.",
+    "cols": [
+     "Your use",
+     "Limit, and who sets it",
+     "Fit"
+    ],
+    "rows": [
+     [
+      "Electronics and precision rinse",
+      "Conductivity at each rinse stage, set by your process engineer; ASTM D1193-24 Type II where your customer names it",
+      "Generation to your rinse limit"
+     ],
+     [
+      "Hydrogen electrolyser feed",
+      "The stack maker's feed-water specification",
+      "Generation, checked against the stack limit; no loop or qualification needed"
+     ],
+     [
+      "Chemicals, coatings and adhesives",
+      "Your product specification; drug and health product grades follow pharmaceutical rules",
+      "Generation, with storage where you batch"
+     ],
+     [
+      "Boiler make-up",
+      "Your boiler maker and treatment program",
+      "Generation at ambient temperature; RO does not replace boiler chemistry or blowdown"
+     ],
+     [
+      "Humidifier make-up",
+      "The humidifier maker's specification",
+      "Generation for cleanrooms, labs, grow rooms and device plants"
+     ],
+     [
+      "Metal finishing rinse",
+      "Conductivity at each rinse stage, set by your finish specification",
+      "[industrial water scope]"
+     ]
+    ],
+    "look": "riser-valves"
+   }
+  },
+  {
+   "page": "contact-service",
+   "slot": 1,
+   "h": "Response times by request",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "eedf787a8c",
+   "block": {
+    "type": "table",
+    "nav": "Response times",
+    "h": "Response times by request",
+    "intro": "Times apply on a service plan; otherwise, a call-out with the next available technician. In warranty, call this line with the serial number. [warranty periods: package, service work, consumables] from [warranty start event]; [warranty exclusions].",
+    "cols": [
+     "Your request",
+     "First response",
+     "What follows"
+    ],
+    "rows": [
+     [
+      "Severity 1: production stopped or water out of specification",
+      "Answered within [severity 1 phone answer time, minutes]; remote diagnosis within [remote response time, hours]",
+      "On site within [severity 1 on-site response time, hours], inside [service coverage area]"
+     ],
+     [
+      "Severity 2: alarm, reduced capacity or adverse trend",
+      "Reply within [severity 2 reply time, hours]",
+      "Visit within [severity 2 visit time]"
+     ],
+     [
+      "Severity 3: no effect on water quality or supply",
+      "Reply within [severity 3 reply time, working days]",
+      "Fixed at the next or a booked visit"
+     ],
+     [
+      "Preventive maintenance or calibration",
+      "Date within [maintenance booking reply time, working days]",
+      "Signed report; calibration certificates for instruments checked against USP <645> and <643>"
+     ],
+     [
+      "Requalification or retest after a change",
+      "Reply within [requalification support reply time, working days]",
+      "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7); outside GMP, an acceptance test to your specification"
      ],
      [
       "Parts and consumables",

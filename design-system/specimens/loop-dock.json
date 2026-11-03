@@ -55,7 +55,7 @@
    "page": "sys-storage",
    "slot": 5,
    "h": "Options",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -95,6 +95,53 @@
     "spot": "storage-tank",
     "look": "loop-dock",
     "intro": "Your proposal states each option's effect on drawings, tests and lead time."
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 5,
+   "h": "Options",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "1d073fd56d",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Options",
+    "items": [
+     {
+      "t": "UV on the supply",
+      "d": "After the tank, before the first outlet. [UV, standard or option]",
+      "spot": "uv",
+      "part": [
+       "uv"
+      ]
+     },
+     {
+      "t": "Prefabricated loop modules",
+      "d": "Pump, exchanger, UV and instruments on one skid; [100 %] tested with water before shipping.",
+      "spot": "pump",
+      "part": [
+       "mod",
+       "uv"
+      ]
+     },
+     {
+      "t": "Point-of-use coolers",
+      "d": "Single-user coolers that flush to drain until temperature and time are met.",
+      "spot": "heat-exchanger",
+      "part": [
+       "cool"
+      ]
+     }
+    ],
+    "nav": "Options",
+    "spot": "storage-tank",
+    "look": "loop-dock",
+    "intro": "Your proposal states each option's effect on drawings, tests and lead time.",
+    "anchor": "options"
    }
   }
  ]

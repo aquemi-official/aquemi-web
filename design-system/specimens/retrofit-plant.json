@@ -104,9 +104,9 @@
    "page": "svc-upgrades",
    "slot": 1,
    "h": "Common upgrades and their requalification",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "d113f66002",
    "block": {
@@ -193,6 +193,113 @@
      "gen loop"
     ],
     "anchor": "upgrades"
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 1,
+   "h": "Common upgrades and their requalification",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "30e47afe5a",
+   "block": {
+    "type": "table",
+    "look": "retrofit-plant",
+    "as": "router",
+    "nav": "Upgrades",
+    "h": "Common upgrades and their requalification",
+    "cols": [
+     "Upgrade",
+     "What changes",
+     "Requalification",
+     "Site downtime",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "Deionization (DI) or exchange tanks to reverse osmosis (RO) and electrodeionization (EDI)",
+      "New skid in place of resin beds or exchange tanks (cosmetics, labs, rinse lines); the loop usually stays",
+      "Under GMP: IQ/OQ reusing factory test results, intensive then reduced sampling. Without GMP: acceptance test to your specification",
+      "[days]; DI or exchange tanks run until release",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ],
+     [
+      "New pretreatment",
+      "Polyvinyl chloride (PVC) module before the RO",
+      "IQ/OQ; RO inlet chlorine and hardness; downstream sampling",
+      "[days]; existing pretreatment runs until cutover",
+      {
+       "t": "Pretreatment",
+       "link": "sys-pretreatment"
+      }
+     ],
+     [
+      "Distribution loop replacement",
+      "PP loop and pump module; points of use reconnected",
+      "IQ with dead leg register; OQ of flow and [PP loop sanitization method]; every outlet sampled",
+      "[days], planned shutdown",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Online total organic carbon (TOC) and conductivity",
+      "Analyzer, sample line, historian link",
+      "OQ with USP <643> suitability; lab results in parallel until release",
+      "[days]",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Controls replacement",
+      "New controller (PLC), operator panel (HMI), supervisory control (SCADA), electronic records",
+      "GAMP 5 validation; factory software test; short sampling",
+      "[days], tank full",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Capacity increase",
+      "Second RO train, DI/EDI module or pump; PP sub-loops only off ambient, chemically sanitized loops",
+      "IQ/OQ of new equipment; loop flow at the new peak",
+      "[days]; built while running",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ],
+     [
+      "Hospital reprocessing or lab RO replacement",
+      "New train in place of the failing RO, designed to ST108:2023 critical-water limits or ASTM D1193-24 Type II or III",
+      "Acceptance test against your specification; your water program shows compliance before first use",
+      "[days]; the old unit or temporary water keeps the occupied building supplied",
+      {
+       "t": "Hospitals and laboratories",
+       "link": "ind-hospital-lab"
+      }
+     ]
+    ],
+    "parts": [
+     "gen",
+     "pre",
+     "loop",
+     "toc",
+     "panel",
+     "gen loop",
+     "gen"
+    ],
+    "anchor": "upgrades",
+    "intro": "An ageing system has three routes: replace one module, replace generation and keep the loop, or replace the whole package. Our options report prices each by equipment, site work and requalification, and states its downtime."
    }
   }
  ]

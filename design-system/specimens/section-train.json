@@ -164,7 +164,7 @@
    "page": "sys-pretreatment",
    "slot": 1,
    "h": "How the train is built",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "19cb29a",
@@ -235,6 +235,84 @@
     "base": "Online monitoring · total chlorine, ORP, pressure drop",
     "nav": "The train",
     "look": "section-train"
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 1,
+   "h": "How the train is built",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "181fb5690f",
+   "block": {
+    "type": "diagram",
+    "h": "How the train is built",
+    "stages": [
+     {
+      "t": "Municipal or well water",
+      "icon": "droplet",
+      "d": "City or well drinking water that changes with the season.",
+      "cut": "feed"
+     },
+     {
+      "t": "Backflow preventer and break tank",
+      "spot": "storage-tank",
+      "d": "Protects the public supply and buffers flow.",
+      "cut": "tank"
+     },
+     {
+      "t": "Media filter",
+      "spot": "carbon-filter",
+      "d": "Removes turbidity and particles that raise SDI.",
+      "cut": "media",
+      "catch": {
+       "g": "p",
+       "t": "Particles"
+      }
+     },
+     {
+      "t": "Duplex softener",
+      "icon": "softener",
+      "d": "Removes hardness so membranes don't scale; one bed runs, one regenerates.",
+      "cut": "softener",
+      "catch": {
+       "g": "h",
+       "t": "Hardness"
+      }
+     },
+     {
+      "t": "Carbon bed",
+      "icon": "carbon-filter",
+      "d": "Removes chlorine and chloramine, which oxidize RO membranes.",
+      "cut": "carbon",
+      "catch": {
+       "g": "c",
+       "t": "Chlorine and chloramine"
+      }
+     },
+     {
+      "t": "Cartridge filter",
+      "icon": "ro-membrane",
+      "d": "Catches fines from the beds before the RO.",
+      "cut": "cartridge",
+      "catch": {
+       "g": "f",
+       "t": "Fines"
+      }
+     },
+     {
+      "t": "To RO",
+      "spot": "ro-skid",
+      "link": "sys-pw",
+      "cut": "out"
+     }
+    ],
+    "base": "Online monitoring · total chlorine, ORP, pressure drop",
+    "nav": "The train",
+    "look": "section-train",
+    "anchor": "train"
    }
   }
  ]

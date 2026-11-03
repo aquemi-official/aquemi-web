@@ -1,7 +1,12 @@
 {
- "_about": "Prompt kit for section concepts, from design-system/inspiration/style-atlas/STYLE-ATLAS.md section 8. pre + mid + suf is what Gemini receives; mid comes from section_prompts.py. Edit directions to steer variety; keep the base and negatives in step with the atlas.",
- "pre": "Generate an image. A 1440 px wide desktop website section, flat straight-on UI mockup, no device frame, no people. Aquemi, maker of modular polypropylene Purified Water systems for pharmaceutical plants. Palette: deep navy (#0F2A47) and warm limestone off-white grounds, pure white, one steel-blue accent used as a line or a single figure. Large light-weight sans-serif headline in sentence case, monospace only for figures, units and standard codes. Square corners, hairline 1–1.5 px rules and line drawings, numbered items, generous negative space. Calm, precise, engineered. Show one idea clearly with at most five labelled items. ",
- "suf": " This should look like award-winning web design (Awwwards Site of the Day): genuinely original, one memorable central idea that explains the content, strong typographic hierarchy, bold use of scale and space. Keep text to short labels. Show the whole section. Avoid: no bold or heavy headline, no condensed display type, no italic display, no all-caps headline, no monospace body text, no rounded corners, no pills, no glow, no bloom, no neon, no lens flare, no gradients except a faint ground, no drop shadows, no glossy reflections, no photographs, no stock props, no clipboards, no toolboxes, no laptops, no people, no lab coats, no water splashes, no droplets, no molecules, no globes, no stainless steel, no tri-clamps, no orbital welding, no distillation columns, no steam generators, no red, no green, no orange, no beige, no kraft paper, no device frame, no micro text, no duplicated labels, no slogans, no decorative connector lines, no plain table filling the frame.",
+ "_about": "Prompt kit for section concepts, from design-system/inspiration/style-atlas/STYLE-ATLAS.md section 8. pre + mid + suf is what Gemini receives; mid comes from section_prompts.py. Edit directions to steer variety; keep the base and negatives in step with the atlas. Pass 12 (FD-62): modes desktop|pair|phone assemble the keys listed in modes[mode]; suf_nonblue is appended unless the direction index is 1, 2, 6, 7, 11 or 12; directions 16-17 (weight 0) only by hand; sections = per-type mid modules; extras = hand-written mids.",
+ "pre": "Generate an image. A 1440 px wide desktop website section, flat straight-on UI mockup, no device frame, no people. Aquemi, maker of modular polypropylene Purified Water systems for pharmaceutical and other plants that need Purified Water; its equipment is matte white polypropylene with PVC pretreatment, joined by butt-fusion welds. Palette: deep navy (#0F2A47) and warm limestone off-white grounds, pure white, one steel-blue accent used as a line or a single figure. Large light-weight sans-serif headline in sentence case, monospace only for figures, units and standard codes. Square corners, hairline 1–1.5 px rules and line drawings, numbered items, generous negative space. Calm, precise, engineered. Show one idea clearly with at most five labelled items. ",
+ "pre_pair": "Generate an image. One website section shown twice on a warm limestone canvas, flat straight-on UI mockups, no device frames, no people: on the left, about two thirds of the width, the section at 1440 px desktop width; on the right, past a thin hairline, the same section at 390 px phone width as one tall single-column strip at the same scale, at least 2.5 times taller than wide. Both halves share one visual idea. Aquemi, maker of modular polypropylene Purified Water systems for pharmaceutical and other plants that need Purified Water; its equipment is matte white polypropylene with PVC pretreatment, joined by butt-fusion welds. Palette: deep navy (#0F2A47) and warm limestone off-white grounds, pure white, one steel-blue accent used as a line or a single figure. Large light-weight sans-serif headline in sentence case, monospace only for figures, units and standard codes. Square corners, hairline 1–1.5 px rules and line drawings, numbered items, generous negative space. Calm, precise, engineered. At most five labelled items. ",
+ "pre_phone": "Generate an image. A tall portrait image, about 9:19.5, of one website section at 390 px phone width, flat straight-on UI mockup, no device frame, no status bar, no people. Aquemi, maker of modular polypropylene Purified Water systems for pharmaceutical and other plants that need Purified Water; its equipment is matte white polypropylene with PVC pretreatment, joined by butt-fusion welds. Palette: deep navy (#0F2A47) and warm limestone off-white grounds, pure white, one steel-blue accent used as a line or a single figure. Light-weight sans-serif headline in sentence case, monospace only for figures, units and standard codes. Square corners, hairline rules and line drawings, numbered items, generous space. Calm, precise, engineered. ",
+ "phone_rules": " Phone layout rules: one column with 16 px side margins; nothing side by side except a number tag beside its row; the drawing carries only numbered tags and its words move into the rows below it; a horizontal pipe becomes a vertical riser down the left edge; a split becomes two stacked halves with the seam as a horizontal rule; tiles become at most two columns; a readout comes first at full width; labels at least 14 px; tap targets 44 px; at most two screens tall, with a 'Show all' fold after three rows.",
+ "suf": " This should look like award-winning web design (Awwwards Site of the Day): genuinely original, one memorable central idea that explains the content, strong typographic hierarchy, bold use of scale and space. Keep text to short labels. Show the whole section. Avoid: no bold or heavy headline, no condensed display type, no italic display, no all-caps headline, no monospace body text, no rounded corners, no pills, no glow, no bloom, no neon, no lens flare, no gradients except a faint ground, no drop shadows, no glossy reflections, no photographs, no stock props, no clipboards, no toolboxes, no laptops, no people, no lab coats, no water splashes, no droplets, no molecules, no globes, no stainless steel, no tri-clamps, no orbital welding, no distillation columns, no steam generators, no red, no green, no orange, no beige, no kraft paper, no device frame, no micro text, no duplicated labels, no slogans, no decorative connector lines, no plain table filling the frame, no metallic sheen, no polished reflections, no chrome gauge bezels, no unlinked illustration beside a table, no text laid over a drawing or grid pattern, no empty ruled boxes, no scale whose numbers do not run in order, no dimension line or leader that points at nothing, no client logos, no logo strip, no testimonials, no star ratings, no award badges, no certification seals, no founding year, no project or client counts, no 'new' or 'since' labels, no 'first', 'planned' or 'coming soon' tags, no ozone generator or ozone label, no chlorine or hypochlorite label, no temperature label on the loop, no 'hot water' or steam sanitization label, no dialysis machines, no semiconductor wafers, no bottled-water filling lines, no company or brand name other than Aquemi. Figures as placeholders in [brackets].",
+ "suf_phone": " Also avoid: no device frame, no status bar, no notch, no home indicator, no hamburger icon unless the section is the menu, no side-by-side columns of text, no horizontal scrolling except one labelled strip, no text smaller than 14 px.",
+ "suf_nonblue": " No blueprint grid ground, no navy schematic wallpaper.",
  "directions": [
   "isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching",
   "technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints",
@@ -12,13 +17,88 @@
   "Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing",
   "long page alternating navy drawing bands and limestone reading sheets, each band one picture",
   "one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels",
-  "macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it"
+  "macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it",
+  "keyed drawing and rows: one hairline line drawing of the real white polypropylene part, skid or loop with small filled steel-blue square tags numbered 01 to 05 on hairline leaders; the items as ruled rows on the same limestone sheet, each row starting with the same number, so every row points at its hardware",
+  "Swiss readout grid: square navy and limestone tiles, each tile an instrument readout with one huge light numeral or a [bracketed] placeholder, its unit in mono, a fine tick scale whose numbers run in order and one steel-blue limit line; one tile holds the white line drawing of the polypropylene skid on navy",
+  "sticky drawing with scrolling sheets: on the left 55 %, a pinned navy cutaway of white polypropylene pipework and tank in hairline line art, the part described by the active card outlined in steel blue; on the right, limestone sheets stacked on a thin vertical rail, each with a mono code, a short title and one line, the active one edged in steel blue",
+  "battery-limit split: the section is split at the battery limit, a navy half for what Aquemi supplies and a limestone half for what the site provides; tie-in points are small P&ID nodes on the seam, each labelled in mono; every item sits on the side that supplies it; one light headline crosses the seam",
+  "light editorial figure plate: an oversized light-weight two-line headline stacked at the left, and a figure plate of one line-drawn polypropylene loop or skid with hairline leaders to named parts only; a staircase of light numerals 01 to 05 down the margin",
+  "light kinetic router: one giant light outline word cropped by the frame behind a single steel-blue pipe that carries three to five situation cards from left to right, each card a short title and its first step; the type stays light and outlined, never filled or italic",
+  "one water, many uses: one white polypropylene package at the centre in hairline line art, one steel-blue loop leaving it with five to eight numbered outlets on a circle, each outlet a small material-neutral line drawing of one point of use (mixing vessel, washer-disinfector, lab bench, product filler, rinse tank, boiler or electrolyser feed)",
+  "industry by water-use matrix: a light grid with industries as rows and water uses as columns, a filled steel-blue square where a use applies and an outlined square where it may; above it one line drawing of the shared package; at most six rows and five columns, one- or two-word labels"
  ],
+ "weights": [
+  1,
+  1,
+  0.3,
+  0.5,
+  1.5,
+  1,
+  1.5,
+  0.5,
+  0.4,
+  0.4,
+  2,
+  1.5,
+  0.5,
+  0.5,
+  1,
+  0.5,
+  0,
+  0
+ ],
+ "sections": {
+  "hero": "headline and one lead line on the left, the page's equipment drawing on the right with leader-line callouts to three key figures",
+  "spec": "limits as rows: parameter, mono value with unit, standard reference; one row highlighted in steel blue",
+  "spec.gauges": "each limit as a readout: value, unit, limit line, standard reference in mono",
+  "table": "one drawing of the real part with numbered square tags; each row starts with the same number, so it points at its hardware; never the table alone in a frame",
+  "table.router": "three to five situations on the left, each routed by one line to its system and first step",
+  "table.evidence": "each requirement or standard code in mono, joined by a hairline to the part of the plant it governs and to its proof document",
+  "table.grades": "water grades as lanes or a ladder; each product or step taps the minimum lane it needs",
+  "table.failures": "each failure as a struck or marked row that opens to its cause and its design control",
+  "table.roles": "who prepares and who approves, as ours tinted and yours outlined",
+  "table.versus": "two routes across one spine of factors, a verdict for each",
+  "table.plans": "plans side by side on one label column, one action per plan",
+  "steps": "stages strung along one continuous pipe, numbered 01 to 05, each with a short title and what it leaves behind",
+  "docs": "documents as a register or binder index: code, title, revision, who signs",
+  "options": "options shown on the skid they attach to, each a numbered module on the drawing",
+  "grid": "three to six numbered choices on one routed line, each a title and one line",
+  "diagram": "the process as one continuous route through the real equipment, stations numbered",
+  "prose.explainer": "one drawing explained by numbered callouts, the text in a narrow column beside it",
+  "register": "entries as a revision register: number, title, date placeholder, status",
+  "band": "one large light statement, one measured figure as proof, one action"
+ },
+ "extras": {
+  "nav.mega": "The section is the site header with its mega menu open (desktop) and the phone menu (phone half). Desktop: a 72 px header bar with the logo, six section links (Systems, Services, Industries, Compliance, Projects, Company), a plain 'Service request' link and a 'Request a proposal' button; below it one open full-width panel on a light surface between hairline rules: a head (section name, one lead line, an overview link), two to four groups with small text labels, each link a title, one line of description and a small line icon, one featured card, and across the bottom a sunken band labelled 'I need to' with six short task links with arrows. Phone: a full-height menu sheet: an urgent block first ('Service request' and a [service phone] placeholder) on limestone, then the six sections as expandable rows with plus signs, one open showing its grouped links with one-line descriptions, an 'I need to' row, and a full-width 'Request a proposal' button at the bottom.",
+  "industries.wheel": "The section shows that one Purified Water package serves many industries: use direction 16. Six outlets: Drugs and health products (granulation, syrups); Medical devices and healthcare (final rinse); Personal care (cream water phase); Laboratories (reagent water); Food and beverage (ingredient water); Industrial and energy (boiler and electrolyser feed). Each outlet labelled with the group and one point of use.",
+  "industries.matrix": "The section shows which water uses each industry shares: use direction 17. Rows (image shows six; the built table has eight): Pharma and NHP, Devices, Personal care, Hospitals and labs, Food and beverage, Industrial. Columns: In the product, Final rinse, Cleaning, Lab, Equipment feed. Cells: filled square, outlined square or blank; no grade text in the cells."
+ },
+ "modes": {
+  "desktop": [
+   "pre",
+   "mid",
+   "suf"
+  ],
+  "pair": [
+   "pre_pair",
+   "mid",
+   "phone_rules",
+   "suf"
+  ],
+  "phone": [
+   "pre_phone",
+   "mid",
+   "phone_rules",
+   "suf",
+   "suf_phone"
+  ]
+ },
+ "pre_v9": "Generate an image. A 1440 px wide desktop website section, flat straight-on UI mockup, no device frame, no people. Aquemi, maker of modular polypropylene Purified Water systems for pharmaceutical plants. Palette: deep navy (#0F2A47) and warm limestone off-white grounds, pure white, one steel-blue accent used as a line or a single figure. Large light-weight sans-serif headline in sentence case, monospace only for figures, units and standard codes. Square corners, hairline 1–1.5 px rules and line drawings, numbered items, generous negative space. Calm, precise, engineered. Show one idea clearly with at most five labelled items. ",
  "skip_types": [
   "faq",
   "related",
   "form",
   "contact-routes"
  ],
- "seed": 9
+ "seed": 12
 }

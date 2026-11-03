@@ -144,7 +144,7 @@
    "page": "svc-service",
    "slot": 3,
    "h": "What a maintenance visit covers",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -205,6 +205,124 @@
       "part": "report"
      }
     ]
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 3,
+   "h": "What a maintenance visit covers",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "576fa65e66",
+   "block": {
+    "type": "grid",
+    "look": "visit-plan",
+    "as": "route",
+    "nav": "Visits",
+    "anchor": "visit",
+    "h": "What a maintenance visit covers",
+    "items": [
+     {
+      "t": "Data review",
+      "d": "Conductivity, TOC, temperature and alarms since the last visit; for hospital critical water (ST108), your monitoring results too.",
+      "link": "sys-monitoring",
+      "spot": "toc",
+      "part": "panel toc"
+     },
+     {
+      "t": "Pretreatment",
+      "d": "Softener leakage, carbon or bisulfite, RO inlet chlorine.",
+      "link": "sys-pretreatment",
+      "spot": "pretreatment",
+      "part": "pre"
+     },
+     {
+      "t": "RO and DI/EDI",
+      "d": "Normalized flow, salt passage and pressure drop against baseline. Where two trains are fitted, one supplies while the other is serviced.",
+      "link": "sys-pw",
+      "spot": "ro-skid",
+      "part": "gen"
+     },
+     {
+      "t": "UV, if fitted, and sanitization",
+      "d": "Lamp intensity and hours; last sanitization record checked, residual tested before use.",
+      "link": "sys-storage#sanitization",
+      "spot": "uv",
+      "part": "uv"
+     },
+     {
+      "t": "Loop hydraulics",
+      "d": "Return flow against the qualified or design minimum, pump and valves.",
+      "link": "sys-storage",
+      "spot": "pump",
+      "part": "loop tank"
+     },
+     {
+      "t": "Wearing parts",
+      "d": "Seals and diaphragms like for like, lots recorded; vent filters tested.",
+      "spot": "wrench",
+      "part": "wear"
+     },
+     {
+      "t": "Signed report",
+      "d": "As-found, as-left and return-to-service readings, work done, parts and lots. Signed before we leave, for your quality file.",
+      "end": true,
+      "spot": "stamp",
+      "part": "report"
+     }
+    ],
+    "intro": "A routine visit stops your water for [routine visit downtime, hours] at most, at a time you choose."
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 3,
+   "h": "Where water goes in a laboratory building",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "c9ddfd83f8",
+   "block": {
+    "type": "grid",
+    "as": "route",
+    "nav": "Laboratories",
+    "anchor": "labs",
+    "h": "Where water goes in a laboratory building",
+    "intro": "University, hospital, quality control, biotech and battery research buildings: one central plant feeds the benches.",
+    "items": [
+     {
+      "t": "Glassware washers and autoclaves",
+      "d": "They draw in batches, so storage is sized to carry the peak.",
+      "spot": "storage-tank",
+      "part": "tank"
+     },
+     {
+      "t": "Analyzer feed",
+      "d": "To the analyzer maker's specification, which governs.",
+      "spot": "toc",
+      "part": "toc"
+     },
+     {
+      "t": "Reagent and buffer preparation",
+      "d": "ASTM D1193-24 Type II or III at bench taps, or clinical laboratory reagent water.",
+      "spot": "valve",
+      "part": "loop"
+     },
+     {
+      "t": "Humidifiers",
+      "d": "Fed from the loop, to the humidifier maker's specification.",
+      "spot": "loop"
+     },
+     {
+      "t": "Cell culture and molecular work",
+      "d": "Type I water from a point-of-use polisher at the bench, from its own maker. The loop feeds it to that maker's specification.",
+      "spot": "loop"
+     }
+    ],
+    "look": "visit-plan"
    }
   }
  ]

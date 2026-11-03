@@ -10,9 +10,9 @@
    "page": "sys-storage",
    "slot": 3,
    "h": "Tank and pipework",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "86f72b2817",
    "block": {
@@ -82,6 +82,85 @@
     "fold_noun": "parameters",
     "as": "callouts",
     "look": "tank-tiles"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 3,
+   "h": "Tank and pipework",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "673f47e9b9",
+   "block": {
+    "type": "spec",
+    "h": "Tank and pipework",
+    "caption": "FABRICATION · POLYPROPYLENE",
+    "cols": [
+     "Parameter",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Tank volume",
+      "v": "[tank volume range, L]",
+      "m": "Sized from your demand profile"
+     },
+     {
+      "p": "Product contact",
+      "v": "Unpigmented PP, [PP grade]",
+      "m": "[PP material certificates]"
+     },
+     {
+      "p": "Internal surface",
+      "v": "[PP internal surface specification, Ra µm]",
+      "m": "[basis for the PP surface specification]"
+     },
+     {
+      "p": "Joints",
+      "v": "[PP joining method]; [PP joint records kept]",
+      "m": "[welder qualification standard for thermoplastics]"
+     },
+     {
+      "p": "Budget",
+      "v": "[budget range, CAD] for [reference tank volume L, points of use]",
+      "m": "Before tax, as of [month year]",
+      "link": "systems#budget"
+     },
+     {
+      "p": "Tank design",
+      "v": "[PP tank design: atmospheric or pressure-rated]",
+      "m": "[PP tank design standard]"
+     },
+     {
+      "p": "Cleaning before first use",
+      "v": "[pre-commissioning flush and cleaning procedure for PP]",
+      "m": "PW rinse to conductivity and TOC limits"
+     },
+     {
+      "p": "Heat exchangers",
+      "v": "Double tube sheet [heat exchanger, standard or option]",
+      "m": "FDA high-purity water guide (1993)"
+     },
+     {
+      "p": "Pumps",
+      "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
+      "m": "Sized for the worst-case outlet combination"
+     },
+     {
+      "p": "Spray ball",
+      "v": "Wets head space and walls continuously",
+      "m": "WHO TRS 1033, 9.2; [spray coverage test method]"
+     }
+    ],
+    "nav": "Fabrication",
+    "fold": 5,
+    "fold_noun": "parameters",
+    "as": "callouts",
+    "look": "tank-tiles",
+    "anchor": "tank"
    }
   }
  ]

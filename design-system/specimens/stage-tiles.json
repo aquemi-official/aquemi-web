@@ -61,7 +61,7 @@
    "page": "svc-cq",
    "slot": 0,
    "h": "What each stage proves",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -102,6 +102,58 @@
      {
       "t": "Periodic review",
       "d": "Yearly review of data and changes; requalify where they point.",
+      "label": "Review"
+     }
+    ],
+    "look": "stage-tiles"
+   }
+  },
+  {
+   "page": "svc-cq",
+   "slot": 0,
+   "h": "What each stage proves",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "0dbf2cd067",
+   "block": {
+    "type": "steps",
+    "nav": "Stages",
+    "anchor": "stages",
+    "h": "What each stage proves",
+    "intro": "One commissioning and qualification (C&Q) plan covers every stage, traditional or ASTM E2500. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Commissioning",
+      "d": "Flush, pressure test, sanitization, start-up, punch list.",
+      "label": "Commissioning"
+     },
+     {
+      "t": "Factory and site acceptance tests (FAT and SAT)",
+      "d": "Tested before shipping, then on your utilities.",
+      "link": "svc-fat-sat",
+      "label": "FAT · SAT"
+     },
+     {
+      "t": "Installation qualification (IQ)",
+      "d": "Installed as designed: drawings, materials, joints, slopes, instruments.",
+      "label": "IQ",
+      "art": "piping"
+     },
+     {
+      "t": "Operational qualification (OQ)",
+      "d": "Operating limits and worst case tested.",
+      "label": "OQ"
+     },
+     {
+      "t": "Performance qualification (PQ)",
+      "d": "Required quality, reproducibly, across the seasons.",
+      "label": "PQ"
+     },
+     {
+      "t": "Periodic review",
+      "d": "Yearly review of data and changes, under your change control; requalify where they point.",
       "label": "Review"
      }
     ],

@@ -177,7 +177,7 @@
    "page": "urs-guide",
    "slot": 1,
    "h": "What a Purified Water URS should settle",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -239,6 +239,78 @@
      {
       "t": "Documents, service and spares",
       "d": "A dated document schedule, the handover set, response hours, spares on site, training hours and the warranty start event.",
+      "label": "Handover"
+     }
+    ]
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 1,
+   "h": "What a Purified Water URS should settle",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "f4c7085848",
+   "block": {
+    "type": "steps",
+    "look": "binder-tabs",
+    "anchor": "outline",
+    "nav": "Outline",
+    "h": "What a Purified Water URS should settle",
+    "intro": "Number each requirement, one sentence each; suppliers answer in your numbering. Hospitals and labs issue a basis of design; industrial users send the equipment maker's spec. The same order helps.",
+    "items": [
+     {
+      "t": "Before design",
+      "d": "Feed water, grade, demand and site limits first. Then the loop: scheme, components, check against URS and budget, change or freeze.",
+      "label": "Start"
+     },
+     {
+      "t": "Water grade and system boundary",
+      "d": "Purified Water to USP, Ph. Eur. or both, by edition, or your standard's grade. Where the system starts and ends; what is by others.",
+      "link": "industries#fit",
+      "label": "Grade"
+     },
+     {
+      "t": "Demand and points of use",
+      "d": "Every point of use, washers and humidifiers too: peak draw in L/h, daily volume, temperature and planned growth.",
+      "label": "Demand"
+     },
+     {
+      "t": "Feed water",
+      "d": "Feed water analyses from every season, and the coldest feed temperature: cold feed cuts membrane output.",
+      "label": "Feed"
+     },
+     {
+      "t": "Quality limits and where you prove them",
+      "d": "Name each limit and its pharmacopoeia, where it is measured (online or lab), and who sets alert and action levels.",
+      "label": "Limits"
+     },
+     {
+      "t": "Sanitization, then materials",
+      "d": "Settle the sanitization method first: it decides the materials. Then write materials as performance, unless a standard names one.",
+      "label": "Sanitize",
+      "link": "urs-guide#clauses"
+     },
+     {
+      "t": "Controls, alarms and data",
+      "d": "Where failed water goes, restart after power loss, user access, audit trail, data retention and backup, screen language.",
+      "label": "Controls"
+     },
+     {
+      "t": "Room, utilities and approvals",
+      "d": "Room size and access, power, air, drains, room temperature, and who obtains each Canadian approval, such as pressure registration.",
+      "label": "Site"
+     },
+     {
+      "t": "Testing and acceptance",
+      "d": "Who writes and approves each protocol, and whether factory results count toward qualification. Acceptance: tests, numeric criteria, run length, signatures.",
+      "label": "Tests"
+     },
+     {
+      "t": "Documents, service and spares",
+      "d": "A dated document schedule, handover set, response hours, spares on site, training hours, warranty start event.",
       "label": "Handover"
      }
     ]

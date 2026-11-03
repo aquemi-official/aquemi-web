@@ -88,7 +88,7 @@
    "page": "first-system",
    "slot": 6,
    "h": "Making the case inside your company",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -126,7 +126,7 @@
    "page": "home",
    "slot": 2,
    "h": "Same PW limits, different evidence by industry",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -161,6 +161,84 @@
      }
     ],
     "ground": "light",
+    "look": "industry-feed"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 6,
+   "h": "Making the case inside your company",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "51b26fdf71",
+   "block": {
+    "type": "grid",
+    "look": "industry-feed",
+    "nav": "Your case",
+    "anchor": "case",
+    "h": "Making the case inside your company",
+    "intro": "Four reasons you can paste into a capital request, with the source where one applies.",
+    "items": [
+     {
+      "t": "Product quality",
+      "d": "In creams, liquids and drinks, water is an ingredient. Water made and tested to a written specification protects your limits and shelf life.",
+      "link": "ind-personal-care#grade"
+     },
+     {
+      "t": "Records an inspector reads",
+      "d": "Health Canada's good manufacturing practice guides ask for qualified, monitored water and its test records. GUI-0001 covers drugs; GUI-0158, natural health products.",
+      "tag": "GUI-0001",
+      "link": "ind-pharma#grades"
+     },
+     {
+      "t": "Paperwork to match",
+      "d": "Documentation scales to your product's rules: qualification records for drug lines, an acceptance test against your specification for the rest.",
+      "link": "cmp-documentation"
+     },
+     {
+      "t": "Room to grow",
+      "d": "Sized to the water you use each day; adding lines later is a capacity upgrade.",
+      "link": "svc-upgrades#upgrades"
+     }
+    ],
+    "ground": "light"
+   }
+  },
+  {
+   "page": "ind-personal-care",
+   "slot": 2,
+   "h": "Where water goes in a personal care plant",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "d18d6ba3d2",
+   "block": {
+    "type": "grid",
+    "nav": "Where water goes",
+    "anchor": "uses",
+    "h": "Where water goes in a personal care plant",
+    "intro": "One package supplies every point below. Cooling and boiler water are outside Purified Water and have their own limits.",
+    "items": [
+     {
+      "t": "Ingredient water",
+      "d": "The water phase of creams and lotions, and the base of shampoos, gels and rinse-offs"
+     },
+     {
+      "t": "Final rinse",
+      "d": "Tanks, fillers and hoses, and the cleaning rinse your procedure names"
+     },
+     {
+      "t": "Quality control (QC) laboratory",
+      "d": "Glassware rinse and general use; reagent water follows your method's grade"
+     },
+     {
+      "t": "Household and cleaning products",
+      "d": "Liquid soaps, detergents and cleaners made on the same site"
+     }
+    ],
     "look": "industry-feed"
    }
   }

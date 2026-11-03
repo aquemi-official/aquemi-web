@@ -10,9 +10,9 @@
    "page": "ind-meddevice",
    "slot": 3,
    "h": "Where rinse water reaches the device",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "8fe408dbf0",
    "block": {
@@ -20,6 +20,56 @@
     "as": "explainer",
     "nav": "At the washer",
     "h": "Where rinse water reaches the device",
+    "ground": "light",
+    "figure": {
+     "kind": "art",
+     "art": "ind-meddevice"
+    },
+    "points": [
+     {
+      "t": "Supply from the loop",
+      "at": [
+       86,
+       30
+      ],
+      "d": "Washers filling at once drop loop pressure. We size storage and pumps to your fill profile."
+     },
+     {
+      "t": "Washer inlet",
+      "at": [
+       82,
+       64
+      ],
+      "d": "Specification and sample point here; any point-of-use filter integrity tested, changed on data."
+     },
+     {
+      "t": "Wash chamber",
+      "at": [
+       52,
+       70
+      ],
+      "d": "Warm water standing between batches grows biofilm; validate a drain-and-refill rule."
+     }
+    ],
+    "look": "washer-trace"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 3,
+   "h": "Where rinse water reaches the device",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "5bf1099405",
+   "block": {
+    "type": "prose",
+    "as": "explainer",
+    "nav": "At the washer",
+    "anchor": "rinse",
+    "h": "Where rinse water reaches the device",
+    "intro": "Implants, surgical instruments, catheters and tubing, and ophthalmic devices meet this water after cleaning. The same loop can feed in vitro diagnostic reagent and ophthalmic solution preparation, passivation rinses and steam sterilizer feed: [confirm].",
     "ground": "light",
     "figure": {
      "kind": "art",

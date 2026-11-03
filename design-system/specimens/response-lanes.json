@@ -70,7 +70,7 @@
    "page": "project-plan",
    "slot": 2,
    "h": "Notice before each event",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -116,6 +116,66 @@
       "SAT, IQ and OQ protocols",
       "[protocol issue before IQ/OQ, weeks] before testing",
       "For your quality unit's approval; nothing runs before it signs"
+     ],
+     [
+      "Training syllabus",
+      "[training syllabus notice, weeks] before training",
+      "Topics and hours for your approval: [training hours and audiences]"
+     ]
+    ],
+    "look": "response-lanes"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 2,
+   "h": "Notice before each event",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "fb336366c9",
+   "block": {
+    "type": "table",
+    "anchor": "notice",
+    "nav": "Notice",
+    "h": "Notice before each event",
+    "intro": "Each plan reaches you before its event, so your team can review it, book people and plan any shutdown. A late approval moves the event; the notice period stays the same.",
+    "cols": [
+     "Event",
+     "Notice",
+     "What you receive"
+    ],
+    "rows": [
+     [
+      "FAT protocol",
+      "[protocol issue before FAT, weeks] before FAT",
+      "Draft protocol for your approval; your team may add test cases"
+     ],
+     [
+      "FAT witness",
+      "[FAT witness notice, working days] before FAT",
+      "Date, agenda and who attends"
+     ],
+     [
+      "Site readiness checklist",
+      "[site checklist before delivery, weeks] before delivery",
+      "Utilities, access and floor your site must have ready [confirm]"
+     ],
+     [
+      "Shipping",
+      "[shipping notice, working days] before dispatch",
+      "Delivery date, weights, lifting points and offloading needs"
+     ],
+     [
+      "Commissioning plan",
+      "[commissioning plan notice, working days] before start-up",
+      "Schedule, first water, off-specification water to drain, who attends"
+     ],
+     [
+      "SAT, IQ and OQ protocols, or acceptance test",
+      "[protocol issue before IQ/OQ, weeks] before testing",
+      "For your approval, or your quality unit's under GMP; nothing runs before it is signed"
      ],
      [
       "Training syllabus",

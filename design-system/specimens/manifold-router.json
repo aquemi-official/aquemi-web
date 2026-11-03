@@ -288,7 +288,7 @@
    "page": "home",
    "slot": 1,
    "h": "Start from where your project is",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -377,6 +377,188 @@
        "t": "Service request",
        "link": "contact-service",
        "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 1,
+   "h": "Start from where your project is",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "a17ee41c69",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "anchor": "start",
+    "h": "Start from where your project is",
+    "cols": [
+     "Your situation",
+     "Send us",
+     "What comes back",
+     "Where to start"
+    ],
+    "rows": [
+     [
+      "Planning your first water system",
+      "What you make, and roughly how much water a day",
+      "The grade each step needs, the package and how to estimate cost",
+      {
+       "t": "Your first system and its cost",
+       "link": "first-system"
+      }
+     ],
+     [
+      "Not drugs or devices: hospitals, labs, personal care, food or industrial",
+      "What the water is for, and the limit you work to",
+      "Where the water goes in your industry, and who sets its limit",
+      {
+       "t": "Where our water goes",
+       "link": "industries#map"
+      }
+     ],
+     [
+      "Writing a URS that permits polypropylene",
+      "Nothing yet; your draft when you want it checked",
+      "The order buyers use, and clauses that keep the design open",
+      {
+       "t": "Writing your URS",
+       "link": "urs-guide"
+      }
+     ],
+     [
+      "A URS, approved or in draft",
+      "Your URS and feed water analysis",
+      "A proposal, or a gap review of a draft",
+      {
+       "t": "Send your URS",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft"
+      }
+     ],
+     [
+      "Comparing proposals or qualifying suppliers",
+      "Your bid grid or questionnaire, if you use one",
+      {
+       "t": "The record each process leaves, and how to audit it",
+       "link": "cmp-quality"
+      },
+      {
+       "t": "Buying from Aquemi",
+       "link": "buying#compare"
+      }
+     ],
+     [
+      "Fixing an inspection finding or a water bottleneck",
+      "What to change, or the observation",
+      "Options with their downtime and the requalification each triggers",
+      {
+       "t": "Upgrades and water observations",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Production stopped or water out of specification",
+      "A call to [service phone number], [service phone hours]",
+      "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+      {
+       "t": "Service request",
+       "link": "contact-service",
+       "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 0,
+   "h": "Start from your plant",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6a92602131",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "anchor": "start",
+    "h": "Start from your plant",
+    "cols": [
+     "Your plant",
+     "Where the water goes",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A distillery",
+      "Proofing water that brings spirit to bottling strength; ingredient water",
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "A craft brewery, cidery or soft drink maker",
+      "Ingredient water, adjusted to your recipe",
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "Cannabis extracts, edibles, beverages or topicals",
+      "Water that touches the product; ingredient water",
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "A food company with a natural health product or supplement line",
+      "That line's water, under its own rules",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Electronics or precision parts",
+      "Final rinse and parts washers",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "A hydrogen electrolyser",
+      "Stack feed and make-up water",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "Water-based chemicals, coatings or adhesives",
+      "Water as a raw material; dilution",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "A boiler or humidifiers",
+      "Make-up water to the equipment maker's specification",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
       }
      ]
     ],

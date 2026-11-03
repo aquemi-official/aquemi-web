@@ -6,31 +6,32 @@
    column); on the right, behind a hairline rule, the register as the sheet's numbered notes column in mono (number,
    title as the link, status, topic and standard), with the topic filter above it; a title block closes the sheet at
    the bottom right and carries the live count.
-   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned, and so does
-   one whose date is still a placeholder (opens with "["): it reads "Planned" with its bracketed date beside it and,
-   as the lead, "Next planned", never "Latest". The lead note's link reads "Applied on <page>", or "Read the note" when
+   Counts count what exists (DR-018 rule 6): a note with a date counts as a note; one without, or one whose date is
+   still a placeholder (opens with "["), counts as a topic. A topic's status is its placeholder date, or else the page
+   that answers it (a dashed mono status); as the lead it reads "Featured", never "Latest" (DR-028: no "planned" or
+   "next" wording about our own record). The lead note's link reads "Applied on <page>", or "Read the note" when
    it points at the page the register is on (a note published on news itself). The title
-   block reads "N notes", "N planned" when no note has a date, or "N notes · M planned"; so does the live count after
-   filtering; the "All" filter reads "All N planned" when no note has a date.
+   block reads "N notes", "N topics" when no note has a date, or "N notes · M topics"; so does the live count after
+   filtering; the "All" filter reads "All N topics" when no note has a date.
    Fields (a register block): h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold,
-   fold_noun. Never a date that is not given (a dashed mono "Planned" status instead); the lead note is the featured
+   fold_noun. Never a date that is not given (the dashed page status instead); the lead note is the featured
    one, else the first of the first topic. Filtering shows every matching note, folded or not; notes that stay glide
    to their new places and new ones fade in. Phones: title, lead note, filter, notes; no drawing. */
 (function(){
-/* rrCount: the count words for a set of notes, dated ones as notes and undated ones as planned (DR-018 rule 6) */
-function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+' planned':'';return (a&&z?a+' · '+z:(a||z||'0 notes'))+(t?' in '+t:'')}
+/* rrCount: the count words for a set of notes, dated ones as notes and undated ones as topics (DR-018 rule 6) */
+function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+(p===1?' topic':' topics'):'';return (a&&z?a+' · '+z:(a||z||'0 notes'))+(t?' in '+t:'')}
 var RR_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-storage':'storage-tank','sys-pretreatment':'pretreatment'},P='aq-revision-register'+'__';
 function rrSpot(it){var pg=wsplit(it.link||'')[0],s=it.spot||RR_SPOT[pg]||pageIcon(pg)||'';return isVig(s)?s:''}
 LOOKS['revision-register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
  var dated=function(it){return !!it.date&&!/^\s*\[/.test(String(it.date))};
- var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return dated(it)?tx(it.date):'<span class="'+P+'planned">Planned</span>'+(it.date?'<span>'+tx(it.date)+'</span>':'')};
+ var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){var q=it.link&&wp(it.link);return dated(it)||it.date?tx(it.date):'<span class="'+P+'planned">'+e((q&&q.nav_label)||'Topic')+'</span>'};
  var nd=I.filter(dated).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
  var f=I[fi],fl=f.link&&wp(f.link),fd=dated(f),pg=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0],self=fl&&pg&&wsplit(f.link)[0]===pg.id;
  var tri='<svg class="'+P+'tri" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path d="M12 2L22 20H2Z"/></svg>';
- var tabs='<div class="'+P+'tabs" role="group" aria-label="Filter notes by topic"><button type="button" class="'+P+'tab" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+(nd?'':' planned')+'</span></button>'
+ var tabs='<div class="'+P+'tabs" role="group" aria-label="Filter notes by topic"><button type="button" class="'+P+'tab" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+(nd?'':' topics')+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="'+P+'tab" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
- var lead='<aside class="'+P+'lead" aria-label="'+(fd?'Latest note':'Next planned note')+'">'
-  +'<p class="'+P+'lk">'+tri+'<span>'+(fd?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
+ var lead='<aside class="'+P+'lead" aria-label="'+(fd?'Latest note':'Featured note')+'">'
+  +'<p class="'+P+'lk">'+tri+'<span>'+(fd?'Latest':'Featured')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
   +(f.d?'<blockquote class="'+P+'q"><p>'+tx(f.d)+'</p></blockquote>':'')
   +'<h3 class="'+P+'lt">'+tx(f.t)+'</h3>'+(f.std?'<p class="'+P+'lstd">'+tx(f.std)+'</p>':'')
   +(fl?'<p class="'+P+'go">'+(self?wlink(f.link,'Read the note'):'Applied on '+wlink(f.link))+'</p>':'')+'</aside>';

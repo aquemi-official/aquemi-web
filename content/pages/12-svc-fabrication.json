@@ -71,7 +71,9 @@
    "nav": "Joint log",
    "as": "evidence",
    "fold": 4,
-   "fold_noun": "fields"
+   "fold_noun": "fields",
+   "anchor": "joint-log",
+   "intro": "The same joint log for every industry, under good manufacturing practice (GMP) or not."
   },
   {
    "type": "spec",
@@ -87,8 +89,8 @@
    "rows": [
     {
      "p": "Material",
-     "v": "Unpigmented PP, [PP grade]",
-     "m": "[how PP parts are marked for traceability]",
+     "v": "Natural (unpigmented) PP, [PP grade]. Polyvinyl chloride (PVC) is used in pretreatment only",
+     "m": "[PP piping standard]; [how PP parts are marked for traceability]",
      "at": [
       19,
       21
@@ -96,7 +98,7 @@
     },
     {
      "p": "Joining",
-     "v": "[PP joining method]",
+     "v": "PP is joined by [PP joining method]",
      "m": "[PP joining standard]",
      "at": [
       47,
@@ -131,19 +133,20 @@
      ]
     },
     {
+     "p": "Heat and expansion",
+     "v": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. PP pipe lengthens as it warms; supports and routing take up the movement",
+     "m": "[PP pipe support spacing and expansion design]",
+     "part": "none"
+    },
+    {
      "p": "Material certificates",
      "v": "Each product-contact lot's marking checked against its certificate on receipt",
      "m": "[PP material certificates]; material log"
     },
     {
-     "p": "Procedures and welders",
-     "v": "Written joining procedure; [number of qualified thermoplastic welders] welders",
-     "m": "[welder qualification standard for thermoplastics]"
-    },
-    {
-     "p": "Machines",
-     "v": "[joining machine calibration and data logging]",
-     "m": "[machine calibration interval]"
+     "p": "Procedures, welders and machines",
+     "v": "Written joining procedure; [number of qualified thermoplastic welders] welders; [joining machine calibration and data logging]",
+     "m": "[welder qualification standard for thermoplastics]; [machine calibration interval]"
     },
     {
      "p": "Cleaning before first use",
@@ -157,7 +160,7 @@
     }
    ],
    "nav": "Our standard",
-   "fold": 5,
+   "fold": 6,
    "fold_noun": "rows",
    "as": "callouts"
   },
@@ -187,7 +190,8 @@
      "d": "[PP pressure test standard]; final rinse conductivity and TOC"
     }
    ],
-   "nav": "Dossier"
+   "nav": "Dossier",
+   "anchor": "dossier"
   },
   {
    "type": "steps",
@@ -223,16 +227,17 @@
     }
    ],
    "nav": "Hold points",
-   "intro": "A joint inside a finished skid is hard to re-inspect."
+   "intro": "A joint inside a finished skid is hard to re-inspect.",
+   "anchor": "steps"
   },
   {
    "type": "faq",
-   "h": "Questions quality teams ask",
+   "h": "Questions quality and site teams ask",
    "nav": "FAQ",
    "items": [
     {
-     "q": "Can we audit the shop and see a real joint log?",
-     "a": "Visits start once [shop and test bay ready for visits], in [shop location, city and province]. Audit our quality system from [quality system ready for audit, date]. As a new company, we show a [specimen joint log].",
+     "q": "Can we audit the shop and see a joint log?",
+     "a": "Yes. Visit the shop in [shop location, city and province] by appointment, with [shop visit notice, working days] notice. Audit our quality system on [on-site audit notice, working days] notice. Before you order, we show a [specimen joint log]; your own log is in your dossier.",
      "link": "cmp-quality#audit",
      "link_label": "Request a supplier audit",
      "intent": "On-site supplier audit"
@@ -255,7 +260,8 @@
      "q": "How is a PP loop cleaned before first use?",
      "a": "[pre-commissioning flush and cleaning procedure for PP]. The final rinse is Purified Water (PW), run to conductivity and total organic carbon (TOC) limits and recorded."
     }
-   ]
+   ],
+   "anchor": "faq"
   },
   {
    "type": "related",
@@ -295,21 +301,22 @@
   "[PP joint records kept] (dossier): FD-18, for example the joint maps on the as-built isometrics, repairs included, and the per-joint log; the example stays out of the brackets. The launch gate below still covers the practice the lead and steps state.",
   "Joint acceptance criteria, for example DVS 2202-1, and the share of product-contact joints visually examined ([joint acceptance criteria], [share of product-contact joints visually examined, %]; FD-18)",
   "When test joints are made (shift start, change of welder, machine or pipe lot) and how they are examined, for example a bend or tensile test ([when test joints are made], [test joint examination method]; FD-18)",
-  "PP material: unpigmented resin grade, for example PP-R; how parts are marked for lot traceability; the certificates received per lot: EN 10204 type, 21 CFR 177.1520 conformity, the dated USP <88> Class VI report ([PP grade], [how PP parts are marked for traceability], [PP material certificates], [PP material standard]; FD-17; the names in ops/placeholder-names.md, as on compliance, cmp-quality, sys-pw and svc-cq)",
+  "PP material: unpigmented resin grade, for example PP-R; how parts are marked for lot traceability; the certificates received per lot: EN 10204 type, 21 CFR 177.1520 conformity, the dated USP <88> Class VI report ([PP grade], [how PP parts are marked for traceability], [PP material certificates], [PP material standard], [PP piping standard]; FD-17; the names in ops/placeholder-names.md, as on compliance, cmp-quality, sys-pw and svc-cq)",
   "Joining machines: calibration interval, and whether they log parameters automatically ([joining machine calibration and data logging], [machine calibration interval]; FD-18)",
   "PP internal surface specification (Ra) and its basis ([PP internal surface specification, Ra µm], [basis for the PP surface specification]; as on sys-storage; FD-19)",
   "PP pressure test method (medium, pressure or test factor, hold time) and the standard it follows ([PP pressure test method], as on compliance and cmp-documentation; [PP pressure test standard]; FD-19 recommends hydrostatic only, never air or gas)",
   "Pre-commissioning flush and cleaning procedure for PP ([pre-commissioning flush and cleaning procedure for PP]; as on sys-storage; FD-19)",
   "Whether the joint rejection rate is reported in the dossier ([joint rejection rate reported, yes or no]; FD-18)",
-  "Shop location ([shop location, city and province], FD-33) and the date the shop and test bay are ready for visits ([shop and test bay ready for visits], FD-44). Launch rule (DR-004 class 2, DR-006 rule 6): the hero's \"Book a shop visit\" and the FAQ's visit sentence show only if that date is filled and has passed, and the sentence then drops its \"once\" clause; otherwise both are removed, and the secondary becomes the next check that exists: \"Request a specimen package\" (cmp-documentation#samples, intent \"Joint records extract\"), else \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
-  "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48). Launch rule (DR-004 class 2, DR-006 rule 6): the FAQ's audit sentence and its \"Request a supplier audit\" link show only if that date is filled and has passed, and the sentence then drops its \"from\" clause; otherwise both are removed. If the visit, audit and specimen sentences all go, the answer says \"a new company\" and names the checks that exist (DR-004 rule 1), with the link \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
-  "Aquemi-written specimen joint records extract ([specimen joint log]; FD-47, FD-18; the option \"Joint records extract\" on cmp-documentation's specimen form), shared [openly or under NDA] as cmp-documentation says. Launch rule (DR-004 class 2, DR-006 rule 6, cmp-documentation's own): the FAQ's specimen sentence and the dossier's link to cmp-documentation#samples show only if the specimen exists, the brackets then removed; otherwise both are removed. A redacted project log only after a delivered project, with the client's written consent (DR-004 class 3)",
+  "Shop location ([shop location, city and province], FD-33) and the visit notice ([shop visit notice, working days], FD-31). Visits are offered by appointment with notice (R6, DR-028 rule 3); the readiness date ([shop and test bay ready for visits], FD-44) is a private launch gate, never shown. Launch rule (DR-004 class 2): if the shop cannot take visits at launch, the hero's \"Book a shop visit\" and the FAQ's visit sentence are removed, and the secondary becomes the next check that exists: \"Request a specimen package\" (cmp-documentation#samples, intent \"Joint records extract\"), else \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
+  "Supplier audit notice ([on-site audit notice, working days], FD-48); the readiness date ([quality system ready for audit, date]) is a private launch gate, never shown (R6, NS row 56). Launch rule (DR-004 class 2): if audits cannot be taken at launch, the FAQ's audit sentence and its \"Request a supplier audit\" link are removed. If the visit, audit and specimen sentences all go, the answer offers \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\"); it never describes Aquemi as new or without records (FD-60, DR-028; NS critic B)",
+  "Aquemi-written specimen joint records extract ([specimen joint log]; FD-47, FD-18; the option \"Joint records extract\" on cmp-documentation's specimen form), shared [openly or under NDA] as cmp-documentation says. Launch rule (DR-004 class 2, DR-006 rule 6, cmp-documentation's own): the FAQ's specimen sentence and the dossier's link to cmp-documentation#samples show only if the specimen exists, the brackets then removed; otherwise both are removed. A redacted client log needs the client's written consent (DR-004 class 3)",
   "Document review cost and turnaround ([document review cost], [document review turnaround, working days]; FD-01, FD-02; defined in contact-proposal's requests table). At launch an unset turnaround reads \"An engineer replies in writing\" (DR-006 rule 7)",
   "Before launch, confirm the practice the page states (FD-18, FD-19): every product-contact joint numbered and logged with its welder, settings and material (the headline and lead promise it); each lot's marking checked against its certificate on receipt; test joints before production joints; rejects cut out and remade under a new number ([PP joint repair rule], cmp-quality's name, in FAQ 4); the fabrication and inspection plan agreed before material is ordered, with its hold and witness points; a pressure test, slope survey and dead leg check before cleaning, their extent set in the plan; the final rinse with Purified Water to conductivity and TOC limits, recorded; field joints added to the dossier. A practice not confirmed is bracketed or cut, the headline and lead first (DR-011 rule 1)",
   "Who makes field joints on site ([installation scope], FD-26; the full answer lives on systems#site), and whether they follow the same procedure and log (step 6 says the dossier includes them). FAQ 3 names it and links to systems#site (pass 10 review)",
-  "A real fabrication project (joint count, rejection rate) before adding a case study block (DR-016)",
+  "Case study block (DR-028 rule 7, after FD-42): only with a client's joint count and rejection rate and the client's written consent",
   "Launch wording if FD-18 is still open (pass 10): the standard (#standard) keeps its rows with their brackets in the draft, but at launch a row whose value and standard are both unset is cut (DR-005 rule 8, DR-004 class 2), leaving Material and Material certificates; the lead and headline keep the joint log only if the practice is confirmed (see the launch gate above). The joint log's look (record-slips since pass 10) draws no joint, bead or method; the retired joint-tag look draws a fused bead and stays retired until FD-18 names a fusion method (DR-018 rule 2)",
   "Closing include \"No specification yet? What you make and your flow\" (pass 10, SITE-PLAN C7, DR-006 rule 3): the page's no-URS door, since the hero secondary is the shop visit. C7's \"No URS yet?\" was worded \"specification\" here: the page never spells out URS, and the request asks for a fabrication specification",
-  "Pass 11 integration (bookkeeper note; reverts services-a finding 9): cols[0] is again 'Field in the joint log, and what it proves', the pass 10 fix (64c2110). RecordSlips heads the list on wide screens with cols[0] and cols[2] only; cols[1] ('What it proves in an audit') labels each row on phones only, where the head is hidden, so the two never show together and the desktop proc column needs both words"
+  "Pass 11 integration (bookkeeper note; reverts services-a finding 9): cols[0] is again 'Field in the joint log, and what it proves', the pass 10 fix (64c2110). RecordSlips heads the list on wide screens with cols[0] and cols[2] only; cols[1] ('What it proves in an audit') labels each row on phones only, where the head is hidden, so the two never show together and the desktop proc column needs both words",
+  "Pass 12 (SITE-PLAN svc-fabrication; NS row 49 and §1.2 rows 56-57; IB §3; RI contractor 13): anchors joint-log, dossier, steps, faq added; joint-log intro carries the IB §3 every-industry line and the GMP/non-GMP path in one line (R10); standard: Material row says PVC stays in pretreatment, Joining row reads \"PP is joined by [PP joining method]\", new row \"Heat and expansion\" with DR-013 rule 1 verbatim and [PP pipe support spacing and expansion design] (sys-storage's name, FD-19), part none so the macro draws no leader; fold 5 to 6 so phones show it; to stay at 10 rows, \"Machines\" merged into \"Procedures, welders and machines\" (same placeholders). FAQ 1 per NS row 49 with notice times (R6). IB §3 \"PP chemical resistance for dosing and plating areas\" not added: no PP maker's rating on file, would be an unbacked claim. Pass 12 review applied: GMP and PVC spelled out; Material row \"Natural (unpigmented) PP\" (one resin name with the Heat row); [PP piping standard] added to the Material row's standard cell (FD-17, consultant); FAQ 1 \"by appointment\" and \"Before you order\"; FAQ heading names site teams (FAQ 3 is the contractor's)"
  ]
 }

@@ -6,7 +6,64 @@
 var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
-var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
+/* NAVMENU: the header's six sections, each a mega panel on wide screens and an expandable group in the phone menu
+   (NavBar.js; design-system/components/NavBar/README.md). The one source: NAVSECT derives from it.
+   Section: id, label (the bar's words), sections (the page "section" strings that make it current; default [label]),
+   hub (its overview page, the panel's first link), lead (one line, 14 words or fewer), groups [{h, items}], feat (the
+   featured card: to, eyebrow, t, d, icon), foot (a line under the panel: t, optional to/fallback/link), phoneDrop (ids
+   the phone group leaves out because the urgent block and the menu's button carry them). panel:null makes a plain link.
+   Entry: [target, label or null, descriptor (9 words or fewer), gate]. target: a page id or page#anchor; label null
+   takes wlabel(target). An entry, a group, the featured card and the foot link show only when whas(target), so
+   planned pages and anchors appear once their files exist (as the Footer). gate "filled": shown only once the target
+   block's ISO 9001 row (else any row) holds no [placeholder] (NavBar.js wfilled).
+   NAVTASKS: the "I need to" row, the same in every panel and one more group on phones; [target, words after "I need to"]. */
+var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our first system'],['svc-upgrades#observation','answer a water observation'],
+ ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['industries#fit','check our use fits']];
+var NAVMENU=[
+ {id:'systems',label:'Systems',hub:'systems',lead:'One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.',
+  groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
+     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Alarms, records and audit trails mapped to Part 11']]},
+   {h:'Plan and budget',items:[['systems#budget','Budget ranges','What a package costs and what moves it'],['systems#site','Site requirements','Space, utilities and connections you provide'],
+     ['sys-pw#design','Skid design basis','Capacity, feed and recovery, each with its basis']]}],
+  feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
+  foot:{t:'No Water for Injection, pure steam or stainless steel systems.',to:'industries#faq',link:'Why'}},
+ {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your Purified Water package.',
+  groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what'],['services#durations','Durations','Order to water in use, step by step']]},
+   {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'PP skids and loops, every joint logged'],
+     ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec']]},
+   {h:'Running systems',items:[['svc-service',null,'Response times, visits, calibration and parts'],['svc-upgrades',null,'Options for an ageing system, with downtime'],
+     ['svc-upgrades#observation','After a water observation','The plan your inspector will ask for']]}],
+  feat:{to:'urs-guide',eyebrow:'Guide',t:'Writing your URS',d:'Settle what changes design, price and bidders',icon:'clipboard'}},
+ {id:'industries',label:'Industries',hub:'industries',lead:'Where Purified Water goes in your plant. Many industries share the same water.',
+  groups:[{h:'Regulated life sciences and healthcare',items:[['ind-pharma',null,'Liquids, creams, coatings and equipment rinse'],['ind-pharma#nhp','Natural health products','When your products need Purified Water'],
+     ['ind-cdmo',null,"One water system for every client's auditor"],['ind-meddevice',null,'Final rinse water with records auditors accept'],
+     ['ind-hospital-lab',null,'Reprocessing rinse water and central lab supply']]},
+   {h:'Industrial and commercial',items:[['ind-personal-care',null,'Water phase for creams, lotions and OTC lines'],['ind-process#food','Food, beverage and cannabis','Proofing, ingredient and rinse water to your recipe'],
+     ['ind-process#industrial','Industrial and energy','Rinse, electrolyser and boiler make-up to your limit'],['ind-hospital-lab#labs','Research and QC laboratories','Central reagent water for lab buildings'],
+     ['industries#matrix','All industries and uses','Where the water goes, industry by industry']]}],
+  feat:{to:'first-system',eyebrow:'Plain guide',t:'Your first system',d:'Grade, site, staff time and cost, plainly',icon:'droplet'},
+  foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
+ {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
+  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, Ph. Eur., GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits side by side'],
+     ['sys-monitoring#data-integrity','Data integrity','Audit trails and access, mapped to Part 11']]},
+   {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
+     ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
+   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],['cmp-quality#access','What you can read, and when','Public, under NDA, or at audit'],
+     ['cmp-quality#certification','Certification status','Quality, welding, pressure and panel approvals','filled']]}],
+  feat:{to:'cmp-quality#audit',eyebrow:'Supplier audit',t:'Audit us before you order',d:'Book a supplier audit of our shop and QMS',icon:'magnifier'}},
+ {id:'projects',label:'Applications',sections:['Projects','Applications'],hub:'projects',lead:'Typical Purified Water configurations, and how to qualify us as a supplier.',
+  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water'],['projects#by-industry','By industry','Where the water goes, industry by industry'],
+     ['projects#record','What a project record contains','Figures, methods, reports and approvals you receive']]},
+   {h:'Qualify us',items:[['projects#verify','How to qualify us','Documents, audits and tests you can run'],['cmp-documentation#samples','Specimen documents','See the format before you order']]}],
+  feat:{to:'svc-fat-sat',eyebrow:'Before delivery',t:'Factory acceptance test',d:'Your system tested at our shop, with you',icon:'gauge'}},
+ {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, how buying from us works, and how to reach us.',
+  groups:[{h:'About us',items:[['about','About Aquemi','Our team, company facts and where we work'],['news','Technical notes','Short answers to Purified Water questions'],['careers',null,'Open roles, pay and how we hire']]},
+   {h:'Working with us',items:[['buying#capital','Capital request','How a price is built, for your approver'],['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
+   {h:'Contact',items:[['contact-proposal',null,'Send a URS, tender, product or water data'],['contact-service',null,'Faults, calibration and parts for running systems']]}],
+  phoneDrop:['contact-proposal','contact-service'],
+  feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
+/* NAVSECT: [bar label, hub] per section (Hero.js heroIndex finds a hub by it) */
+var NAVSECT=NAVMENU.map(function(s){return [s.label,s.hub]});
 /* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
    hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
    Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
@@ -65,7 +122,8 @@ var PAGE_ICON={systems:'loop','sys-pw':'ro-membrane','sys-wfi-distillation':'sti
  'sys-pretreatment':'softener','sys-monitoring':'conductivity',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
  'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
  compliance:'shield','cmp-documentation':'binder','cmp-quality':'magnifier',projects:'checklist',about:'people',careers:'briefcase',news:'newspaper',
- 'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin'};
+ 'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin',
+ 'ind-personal-care':'droplet','ind-hospital-lab':'dna','ind-process':'pump'};
 /* pageIcon: PAGE_ICON for a link, looked up by its page part, so page#anchor (systems#budget) shows its page's icon */
 function pageIcon(id){return PAGE_ICON[wsplit(id)[0]]}
 /* Spot: an icon drawn larger in a figure (a diagram stop, an option module, a route stop), design-system/components/Spot.
@@ -285,17 +343,19 @@ document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.targe
  if(wCheck(st).length){ev.preventDefault();ev.stopImmediatePropagation()}},true);
 document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
  if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
-/* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description (where we
-   design, fabricate and test: the shop location) and the contact line (service and sales numbers and the head office);
-   both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap columns in one row, then the legal
-   line under a hairline. Phones show the columns two by two.
-   A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so the pass 11 pages
-   (urs-guide, project-plan, first-system, buying) appear once their files exist, and "Natural health products" (ind-pharma#nhp, DR-017) once
-   ind-pharma has its "nhp" block. Privacy, Terms and Accessibility link once their pages exist. */
-function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','buying','contact-proposal','contact-service','contact-locations']]],
+/* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description (the package,
+   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (service and
+   sales numbers and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
+   columns in one row, then the legal line under a hairline. Phones show the columns two by two.
+   The footer is its own sitemap, separate from the header menu (NAVMENU): every page, grouped in four columns.
+   A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so a page appears
+   once its file exists and "Natural health products" (ind-pharma#nhp) once ind-pharma has its "nhp" block. Labels are
+   each page's nav_label (projects reads "Applications", news "Technical notes"), with two overrides below.
+   Privacy, Terms and Accessibility link once their pages exist. */
+function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring','compliance','cmp-documentation','cmp-quality']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-cdmo','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','projects','buying','news','careers','contact-proposal','contact-service','contact-locations']]],
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
-  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene, for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
+  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene with PVC pretreatment, for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
   +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
   +cols.map(function(c){return '<nav class="aq-footer__col" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead">'+e(c[0])+'</h5>'+c[1].filter(whas).map(function(id){return wlink(id,label[id])}).join('')+'</nav>'}).join('')
   +'</div><div class="aq-footer__legal"><span>© 2026 Aquemi <span class="aq-ph">[legal entity name]</span></span><span>'+legal.map(function(l){return wp(l[0])?wlink(l[0],l[1]):e(l[1])}).join(' · ')+'</span></div>'
@@ -934,33 +994,150 @@ function wKeyFacts(facts){
   return '<div><dt>'+tx(name)+'</dt><dd class="aq-key-facts__value'+(kfLong(f.v)?' is-long':'')+'">'+kfValue(f.v)+'</dd>'+(src?'<dd class="aq-key-facts__src">'+tx(src)+'</dd>':'')+'</div>';
  }).join('')+'</dl>';
 }
-/* NavBar: section links in sentence case, the "Service request" utility link, the proposal button and, on narrow screens,
-   a menu: the urgent block (production stopped: the service number and its hours, then the service request row), the
-   sections and the page's section jump. The menu's jump links come from navJumps() in SectionNav.js, for the page being
-   shown (WP). The service number and hours come from CONTACT (core.js): the number is a tel: link once confirmed and the
-   placeholder until then. The hours always travel with the number, so the block never implies round-the-clock help.
+/* NavBar: the logo, the six sections, the "Service request" utility link and the proposal button; on narrow screens a
+   menu. All of it comes from NAVMENU and NAVTASKS in core.js (design-system/components/NavBar/README.md).
+   Wide bar (mega menu): each section is a disclosure button (aria-expanded, aria-controls) that opens its panel, rendered
+   closed (hidden) inside the button's <li>, so Tab runs button -> panel links -> next button. A panel holds a head (the
+   section's name, one lead line and the overview link: the section's hub, the panel's first link), its groups of links
+   with one-line descriptions, a featured card, an optional foot line and the shared "I need to" row. Group labels are
+   text, not headings, so the page outline never changes. The current section's button carries aria-current="true",
+   the current page's link aria-current="page". A section with panel:null stays a plain link.
+   Panel state is local to the DOM (hidden + aria-expanded), never a re-render: opening one closes any other; a route
+   change re-renders the page, which closes everything by construction. Behaviour (below): click, Enter or Space toggle;
+   a mouse resting 120 ms on a button opens it, and with a panel open another button switches at once; a click on a
+   hover-opened button keeps it open; leaving button and panel closes after 300 ms unless it was clicked open; Escape
+   closes and returns focus to the button when focus was in the panel (a hover-opened panel leaves focus where it was); focus leaving the item, a press outside the bar, the bar scrolling out of
+   view and the bar turning compact close it. Arrow keys: Left/Right/Home/End move between the sections, Down opens a
+   panel at its overview link. Each change is announced to NavBar/motion.js as a cancelable aq:navpanel event on the
+   bar; motion that takes over calls detail.done() when its exit ends (and done runs anyway 400 ms later, so an
+   interrupted exit never leaves a panel showing), so without motion (or GSAP) panels show and hide at once.
+   Phone menu (the toggle, WMENU re-render): the urgent block (production stopped: the service number and its hours,
+   then the service request row), the sections as an accordion (one group open at a time, the current section's open
+   when the menu opens; overview link, featured row, then each group's label and links), the "I need to" group, the
+   page's section jump (navJumps in SectionNav.js) and the proposal button. The accordion is DOM-local too
+   (aq:navgroup for motion). The service number and hours come from CONTACT (core.js): a tel: link once confirmed, the
+   placeholder until then, and the hours always travel with the number, so the block never implies round-the-clock help.
    Launch rule (design-system/website.md, Navigation): while the number is unconfirmed the urgent block goes, the
    "Service request" row stays.
    The toggle carries a two-bar mark (aq-nav__burger, aria-hidden) that turns into a cross while the menu is open; its
    label stays the words "Menu" / "Close" (aq-nav__toggle-t). */
-function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===section})[0]||[])[1],pg=wp(WP),jumps=navJumps(pg);
+/* The section a page belongs to (its "section" string), the entries of a group that exist, and the gate for a link
+   whose block is still all placeholders (certification status) */
+function navOf(section){return NAVMENU.filter(function(s){return (s.sections||[s.label]).indexOf(section)>-1})[0]}
+function wfilled(id){var s=wsplit(id),p=wp(s[0]),B=(p&&p.blocks)||[],b=null;for(var i=0;i<B.length;i++)if((B[i].nav||B[i].anchor)&&jid(B[i],i)===s[1])b=B[i];if(!b)return false;
+ var R=(b.items||b.rows||[]).map(function(r){return JSON.stringify(r)}),iso=R.filter(function(r){return /ISO 9001/.test(r)})[0];
+ return iso!=null?iso.indexOf('[')<0:R.some(function(r){return r.indexOf('[')<0})}
+function navItems(items,drop){return (items||[]).filter(function(x){return whas(x[0])&&(!drop||drop.indexOf(x[0])<0)&&(x[3]!=='filled'||wfilled(x[0]))})}
+function navGroups(s,drop){return (s.groups||[]).map(function(g){return {h:g.h,items:navItems(g.items,drop)}}).filter(function(g){return g.items.length})}
+function navFoot(s){var f=s.foot;if(!f)return null;var to=f.to&&whas(f.to)?f.to:f.fallback&&whas(f.fallback)?f.fallback:'';return {t:f.t,to:to,link:f.link}}
+function navA(to,cls,inner){return '<a class="'+cls+'" href="#'+e(to)+'" data-wp="'+e(to)+'"'+(to===WP?' aria-current="page"':'')+'>'+inner+'</a>'}
+function navTasks(){return NAVTASKS.filter(function(k){return whas(k[0])})}
+function navCap(s){s=String(s);return s.charAt(0).toUpperCase()+s.slice(1)}
+/* A featured title whose last word travels with its arrow (aq-mega__tail, nowrap), so the arrow never wraps alone */
+function navTail(t){t=String(t);var i=t.lastIndexOf(' ');return i<0?'<span class="aq-mega__tail">'+tx(t)+'</span>':tx(t.slice(0,i+1))+'<span class="aq-mega__tail">'+tx(t.slice(i+1))+'</span>'}
+/* Wide bar: one panel */
+function megaPanel(s){var id=s.id,G=navGroups(s),f=s.feat&&whas(s.feat.to)?s.feat:null,ft=navFoot(s),T=navTasks();
+ return '<div class="aq-mega" id="nav-p-'+id+'" hidden><div class="aq-mega__in'+(f?'':' aq-mega__in--nofeat')+'">'
+  +'<div class="aq-mega__head"><p class="aq-mega__name">'+e(s.label)+'</p><p class="aq-mega__lead">'+tx(s.lead)+'</p>'+navA(s.hub,'aq-mega__all',e(s.label)+' overview')+'</div>'
+  +'<div class="aq-mega__groups'+(G.length===1?' aq-mega__groups--n1':G.length===3?' aq-mega__groups--n3':'')+'">'+G.map(function(g,k){var gid='nav-g-'+id+'-'+(k+1);
+    return '<div class="aq-mega__group"><p class="aq-mega__label" id="'+gid+'">'+e(g.h)+'</p><ul aria-labelledby="'+gid+'">'+g.items.map(function(x){
+     return '<li>'+navA(x[0],'aq-mega__link','<span class="aq-mega__t">'+tx(x[1]||wlabel(x[0]))+'</span><span class="aq-mega__d">'+tx(x[2])+'</span>')+'</li>'}).join('')+'</ul></div>'}).join('')+'</div>'
+  +(f?navA(f.to,'aq-mega__feat',wSpot(f.icon,0,'aq-mega__icon')+'<span class="aq-mega__eyebrow">'+tx(f.eyebrow)+'</span><span class="aq-mega__t">'+navTail(f.t)+'</span><span class="aq-mega__d">'+tx(f.d)+'</span>'):'')
+  +(ft?'<p class="aq-mega__foot">'+tx(ft.t)+(ft.to?' '+navA(ft.to,'aq-mega__more',tx(ft.link)):'')+'</p>':'')
+  +'</div>'+(T.length?'<div class="aq-mega__tasks"><div class="aq-mega__tasks-in"><p class="aq-mega__label" id="nav-k-'+id+'">I need to</p><ul aria-labelledby="nav-k-'+id+'">'
+  +T.map(function(k){return '<li>'+navA(k[0],'aq-mega__task',tx(k[1]))+'</li>'}).join('')+'</ul></div></div>':'')+'</div>'}
+/* Phone menu: one section's group (overview link, featured row, the groups, the foot line) */
+function menuGroup(s,open){var id=s.id,G=navGroups(s,s.phoneDrop),f=s.feat&&whas(s.feat.to)?s.feat:null,ft=navFoot(s);
+ return '<li><button type="button" class="aq-menu__sect" id="wm-b-'+id+'" aria-expanded="'+open+'" aria-controls="wm-g-'+id+'">'+e(s.label)+'<span class="aq-menu__plus" aria-hidden="true"></span></button>'
+  +'<div class="aq-menu__group" id="wm-g-'+id+'"'+(open?'':' hidden')+'><div class="aq-menu__group-in">'+navA(s.hub,'aq-menu__all',e(s.label)+' overview')
+  +(f?navA(f.to,'aq-menu__feat','<span class="aq-menu__eyebrow">'+tx(f.eyebrow)+'</span><span class="aq-menu__t">'+tx(f.t)+'</span><span class="aq-menu__d">'+tx(f.d)+'</span>'):'')
+  +'<div class="aq-menu__ggrid">'+G.map(function(g,k){var gid='wm-l-'+id+'-'+(k+1);return '<div class="aq-menu__gg"><p class="aq-menu__glabel" id="'+gid+'">'+e(g.h)+'</p><ul aria-labelledby="'+gid+'">'
+   +g.items.map(function(x){return '<li>'+navA(x[0],'aq-menu__link','<span class="aq-menu__t">'+tx(x[1]||wlabel(x[0]))+'</span><span class="aq-menu__d">'+tx(x[2])+'</span>')+'</li>'}).join('')+'</ul></div>'}).join('')+'</div>'
+  +(ft?'<p class="aq-menu__foot">'+tx(ft.t)+(ft.to?' '+navA(ft.to,'aq-menu__more',tx(ft.link)):'')+'</p>':'')+'</div></div></li>'}
+function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=navTasks();
  var cta=function(extra){return '<span class="aq-nav__frame'+(extra||'')+'"><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a></span>'};
  var svc=function(cls){return '<a class="'+cls+'" href="#contact-service" data-wp="contact-service"'+(WP==='contact-service'?' aria-current="page"':'')+'>Service request</a>'};
  return '<nav class="aq-nav" aria-label="Main"><a class="aq-nav__home" href="#home" data-wp="home" aria-label="Aquemi home"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>'+
-  '<ul class="aq-nav__links">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ul>'+
+  '<ul class="aq-nav__links">'+NAVMENU.map(function(s){var c=s===cs;
+   return s.panel===null?'<li class="aq-nav__item"><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>'
+    :'<li class="aq-nav__item"><button type="button" class="aq-nav__trigger" id="nav-t-'+s.id+'" aria-expanded="false" aria-controls="nav-p-'+s.id+'"'+(c?' aria-current="true"':'')+'>'+e(s.label)+'<span class="aq-nav__chev" aria-hidden="true"></span></button>'+megaPanel(s)+'</li>'}).join('')+'</ul>'+
+  '<div class="aq-mega__bg" aria-hidden="true" hidden></div>'+
   '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
   '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
-  '<nav aria-label="Sections"><ol class="aq-menu__list">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ol></nav>'+
+  '<nav aria-label="Sections"><ul class="aq-menu__list aq-menu__list--sect">'+NAVMENU.map(function(s){var c=s===cs;
+   return s.panel===null?'<li><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>':menuGroup(s,c)}).join('')+
+  (T.length?'<li><button type="button" class="aq-menu__sect" id="wm-b-tasks" aria-expanded="false" aria-controls="wm-g-tasks">I need to<span class="aq-menu__plus" aria-hidden="true"></span></button><div class="aq-menu__group" id="wm-g-tasks" hidden><div class="aq-menu__group-in"><ul class="aq-menu__tasks">'+
+   T.map(function(k){return '<li>'+navA(k[0],'aq-menu__link','<span class="aq-menu__t">'+tx(navCap(k[1]))+'</span>')+'</li>'}).join('')+'</ul></div></div></li>':'')+
+  '</ul></nav>'+
   (jumps.length?'<nav class="aq-menu__jump" aria-labelledby="wmenu-jump"><p class="aq-menu__label" id="wmenu-jump">Section jump</p><ol class="aq-menu__list aq-menu__list--jump">'+jumps.map(function(j,i){return '<li><a href="#'+e(pg.id)+'" data-jump="'+e(j.id)+'">'+e(j.label)+'</a></li>'}).join('')+'</ol></nav>':'')+
   cta(' aq-menu__cta')+'</div>':'')}
 /* Menu behaviour: a section jump closes the menu before the page scrolls; Escape closes it; focus stays on the toggle after it re-renders. */
 if(typeof document!=='undefined'){
+ /* Mega panels (wide bar). MEGA: the open item (<li>), whether it was clicked open (pinned), and the hover timers. */
+ var MEGA={li:null,pin:false,hover:0,leave:0,io:null,ro:null};
+ var megaFine=function(){return !window.matchMedia||matchMedia('(hover: hover) and (pointer: fine)').matches};
+ var megaPanels=function(nav){return nav?[].slice.call(nav.querySelectorAll('.aq-mega')):[]};
+ var megaLive=function(){if(MEGA.li&&!MEGA.li.isConnected){MEGA.li=null;MEGA.pin=false;megaObs(null)}return MEGA.li};
+ function megaObs(nav,btn){if(MEGA.io){MEGA.io.disconnect();MEGA.io=null}if(MEGA.ro){MEGA.ro.disconnect();MEGA.ro=null}if(!nav)return;
+  if(window.IntersectionObserver){MEGA.io=new IntersectionObserver(function(es){if(!es[es.length-1].isIntersecting)megaSet(null)});MEGA.io.observe(nav)}
+  if(window.ResizeObserver){MEGA.ro=new ResizeObserver(function(){if(btn&&!btn.offsetParent)megaSet(null)});MEGA.ro.observe(nav)}}
+ /* megaSet(li, pin, how): open li's panel (null closes), close any other; tell motion; how: 'key' when the keyboard asked */
+ function megaSet(li,pin,how){clearTimeout(MEGA.hover);clearTimeout(MEGA.leave);var old=megaLive();if(li===old){if(li)MEGA.pin=MEGA.pin||!!pin;return}
+  var nav=(li||old).closest('.aq-nav'),from=old&&old.querySelector('.aq-mega'),to=li&&li.querySelector('.aq-mega'),btn=li&&li.querySelector('.aq-nav__trigger');
+  if(old)old.querySelector('.aq-nav__trigger').setAttribute('aria-expanded','false');
+  MEGA.li=li;MEGA.pin=!!(li&&pin);
+  if(li){btn.setAttribute('aria-expanded','true');nav.style.setProperty('--mega-top',Math.max(0,Math.round(nav.getBoundingClientRect().bottom))+'px');to.hidden=false}
+  megaObs(li?nav:null,btn);
+  var done=function(){megaPanels(nav).forEach(function(p){if(!MEGA.li||p!==MEGA.li.querySelector('.aq-mega'))p.hidden=true})};
+  var ev=new CustomEvent('aq:navpanel',{bubbles:true,cancelable:true,detail:{open:to||null,from:from||null,trigger:btn||null,key:how==='key',done:done,
+   others:function(){megaPanels(nav).forEach(function(p){if(p!==to&&p!==from)p.hidden=true})}}});
+  if(nav.dispatchEvent(ev))done();else setTimeout(done,400)}
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-nav__trigger');if(!b)return;var li=b.closest('.aq-nav__item'),o=megaLive();
+  if(o===li){if(MEGA.pin||ev.detail===0)megaSet(null);else MEGA.pin=true}else megaSet(li,true,ev.detail===0?'key':'')});
+ document.addEventListener('pointerover',function(ev){if(ev.pointerType!=='mouse'||!megaFine())return;var o=megaLive(),li=ev.target.closest&&ev.target.closest('.aq-nav__item');
+  if(o&&li===o){clearTimeout(MEGA.leave);return}
+  var b=ev.target.closest&&ev.target.closest('.aq-nav__trigger');if(!b)return;li=b.closest('.aq-nav__item');clearTimeout(MEGA.hover);
+  if(o)megaSet(li,false);else MEGA.hover=setTimeout(function(){if(li.isConnected&&b.offsetParent)megaSet(li,false)},120)});
+ document.addEventListener('pointerout',function(ev){if(ev.pointerType!=='mouse')return;var b=ev.target.closest&&ev.target.closest('.aq-nav__trigger');
+  if(b&&!b.contains(ev.relatedTarget))clearTimeout(MEGA.hover);
+  var o=megaLive();if(!o||MEGA.pin||!o.contains(ev.target)||o.contains(ev.relatedTarget))return;
+  clearTimeout(MEGA.leave);MEGA.leave=setTimeout(function(){if(MEGA.li===o&&!MEGA.pin)megaSet(null)},300)});
+ document.addEventListener('focusout',function(ev){var o=megaLive();if(o&&o.contains(ev.target)&&ev.relatedTarget&&!o.contains(ev.relatedTarget))megaSet(null)});
+ document.addEventListener('pointerdown',function(ev){var o=megaLive();if(o&&!(ev.target.closest&&ev.target.closest('.aq-nav')))megaSet(null)});
+ document.addEventListener('keydown',function(ev){var o=megaLive();
+  if(ev.key==='Escape'&&o){var b=o.querySelector('.aq-nav__trigger'),inside=o.contains(document.activeElement);megaSet(null);if(inside)b.focus();ev.preventDefault();return}
+  var top=ev.target.closest&&ev.target.closest('.aq-nav__links > .aq-nav__item > .aq-nav__trigger, .aq-nav__links > .aq-nav__item > a');if(!top)return;
+  var all=[].slice.call(top.closest('.aq-nav__links').querySelectorAll(':scope > .aq-nav__item > .aq-nav__trigger, :scope > .aq-nav__item > a')),i=all.indexOf(top),k=ev.key,to=-1;
+  if(k==='ArrowRight')to=(i+1)%all.length;else if(k==='ArrowLeft')to=(i-1+all.length)%all.length;else if(k==='Home')to=0;else if(k==='End')to=all.length-1;
+  else if(k==='ArrowDown'&&top.classList.contains('aq-nav__trigger')){ev.preventDefault();megaSet(top.closest('.aq-nav__item'),true,'key');var a=top.parentNode.querySelector('.aq-mega__all');if(a)a.focus();return}
+  if(to>-1){ev.preventDefault();all[to].focus()}});
+
+ /* Width guard: the compact switch is a container query at 1,040 px, sized for today's labels. If longer labels (a
+    translation, a renamed section) no longer fit the bar, the links overflow their row; then the bar takes the compact
+    form anyway (is-tight on .aq-nav, style.css). Overflow into half the bar's gap is tolerated (at 1,056 px today's labels
+    run 6 px into the 16 px gap before "Service request"). Checked when a bar is rendered and on resize. */
+ var NAVFIT={nav:null,raf:0};
+ var navFit=function(){var n=document.querySelector('.aq-nav'),u=n&&n.querySelector('.aq-nav__links');if(!u)return;NAVFIT.nav=n;
+  var was=n.classList.contains('is-tight');if(was)n.classList.remove('is-tight');var tight=!!u.offsetParent&&u.scrollWidth-u.clientWidth>(parseFloat(getComputedStyle(n).columnGap)||16)/2;
+  if(tight){n.classList.add('is-tight');if(megaLive())megaSet(null)}};
+ if(window.MutationObserver)new MutationObserver(function(){var n=document.querySelector('.aq-nav');if(n&&n!==NAVFIT.nav)navFit()}).observe(document.documentElement,{childList:true,subtree:true});
+ window.addEventListener('resize',function(){cancelAnimationFrame(NAVFIT.raf);NAVFIT.raf=requestAnimationFrame(navFit)});
+ /* Phone menu accordion: one group open at a time; the opened row scrolls into view. aq:navgroup tells motion (key: the
+    keyboard opened it, so the height is not tweened, as the spring-accordion example does). */
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-menu__sect');if(!b)return;var list=b.closest('.aq-menu__list'),g=document.getElementById(b.getAttribute('aria-controls'));if(!g)return;
+  var open=b.getAttribute('aria-expanded')!=='true',was=list.querySelector('.aq-menu__sect[aria-expanded="true"]'),from=was&&document.getElementById(was.getAttribute('aria-controls'));
+  if(was)was.setAttribute('aria-expanded','false');
+  if(open){b.setAttribute('aria-expanded','true');g.hidden=false}
+  var to=open?g:null;if(!open)from=g;
+  var done=function(){[].forEach.call(list.querySelectorAll('.aq-menu__group'),function(x){var t=document.querySelector('[aria-controls="'+x.id+'"]');x.hidden=!(t&&t.getAttribute('aria-expanded')==='true')})};
+  if(b.dispatchEvent(new CustomEvent('aq:navgroup',{bubbles:true,cancelable:true,detail:{open:to,from:from&&from!==to?from:null,key:ev.detail===0,done:done}})))done();else setTimeout(done,400);
+  if(open&&b.scrollIntoView)b.scrollIntoView({block:'nearest'})});
  document.addEventListener('click',function(ev){var j=ev.target.closest&&ev.target.closest('.aq-menu a[data-jump]');if(!j||!WMENU)return;
   WMENU=false;var m=document.getElementById('wmenu-panel'),t=document.getElementById('wmenu');if(m)m.remove();if(t){t.setAttribute('aria-expanded','false');t.removeAttribute('aria-controls');var tl=t.querySelector('.aq-nav__toggle-t');if(tl)tl.textContent='Menu';else t.textContent='Menu'}},true);
  document.addEventListener('click',function(ev){var b=ev.target&&ev.target.closest&&ev.target.closest('#wmenu');if(b&&!b.isConnected){var t=document.getElementById('wmenu');if(t)t.focus()}});
- document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&WMENU){var t=document.getElementById('wmenu');if(t){t.click();t=document.getElementById('wmenu');if(t)t.focus()}}});
+ document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&WMENU&&!ev.defaultPrevented){var t=document.getElementById('wmenu');if(t){t.click();t=document.getElementById('wmenu');if(t)t.focus()}}});
 }
 /* ProcessDiagram: a treatment train as an interactive piping flow in a Plate (also drawn by WaterPath).
    Desktop: one row of stations (Spot vignette in a hairline box, index, name) joined by a double-hairline
@@ -3682,6 +3859,43 @@ LOOKS['method-bento']=function(b,H){
  var gap=hasAbs?'<li class="aq-method-bento__tile aq-method-bento__gap"><p class="aq-method-bento__ghost" aria-hidden="true">'+tx(b.absent)+'</p><p class="aq-method-bento__gapt">'+tx(b.intro||'')+'</p></li>':'';
  return sec('<div class="aq-method-bento"><div class="aq-method-bento__head">'+H+'</div><ol class="aq-method-bento__tiles" role="list">'+tiles+gap+'</ol></div>','aq-method-bento-sec')};
 })();
+/* Look "module-plinth" -> ModulePlinth (design-system/components/ModulePlinth): an options block (as: "modules") with a
+   base, drawn as a set of modules standing on that base. On a navy band an isometric plinth (the base, b.base) carries
+   one block per option in a row, each fed by a riser from the loop that runs along the plinth's front (IsoKit
+   primitives on an iso sheet; the kit has no plain module block, so the blocks are drawn here from isoBoxD with a
+   front panel and a nameplate line). A numbered marker floats over each block; the options read as numbered cards
+   beside the drawing, each with its spot. Hovering or focusing a card lights its block and riser and lifts the block.
+   Fields, as options (modules): h, base, items [{t, d, spot, link}], fold, fold_noun (phones only).
+   Concept: sys-pw.4 (tactile objects you pick up) and STYLE-ATLAS hybrid 1 (figure plate with numbered parts). */
+(function(){
+function mpScene(n,base){
+ var gap=64,bw=40,bd=40,ph=12,W=n*gap+24,D=64,Hs=[50,40,58,36,46,42,54,38],py=D+10,pz=6,parts=[],marks=[];
+ var plinth='<g class="aq-iso__part" data-iso="plinth"><path class="aq-iso__eq" d="'+isoBoxD([0,0,0],W,D,ph)+'"/>'
+  +'<path class="aq-iso__thin" d="'+isoPoly([[0,D,ph-4],[W,D,ph-4]])+'"/></g>';
+ for(var i=0;i<n;i++){var x=16+i*gap,y=10,z=ph,h=Hs[i%Hs.length],id='m'+i,fy=y+bd;
+  var face=isoPoly([[x+6,fy,z+8],[x+bw-6,fy,z+8],[x+bw-6,fy,z+h-8],[x+6,fy,z+h-8]],1);
+  var plate=isoPoly([[x+10,fy,z+h-14],[x+bw-10,fy,z+h-14]]);
+  var top=isoPoly([[x+8,y+8,z+h],[x+bw-8,y+8,z+h],[x+bw-8,y+bd-8,z+h],[x+8,y+bd-8,z+h]],1);
+  parts.push('<g class="aq-iso__part aq-module-plinth__blk" data-iso="module" data-iso-id="'+id+'" data-k="'+i+'"><path class="aq-iso__eq" d="'+isoBoxD([x,y,z],bw,bd,h)+'"/>'
+   +'<path class="aq-iso__thin" d="'+face+'"/><path class="aq-iso__acc" d="'+plate+'"/><path class="aq-iso__thin" d="'+top+'"/></g>');
+  var riser=isoPipe([[x+bw/2,py,pz],[x+bw/2,py,z+16],[x+bw/2,fy,z+16]],{r:1.8,to:id,caps:false});
+  parts.push(riser);
+  var lp=isoP([x+bw/2,y+bd/2,z+h]);marks.push({k:i,p:[lp[0],lp[1]-26],s:lp});
+ }
+ var loop=isoPipe([[-34,py,pz],[W+34,py,pz]],{r:2.6,flanges:'ends',caps:true});
+ var bl=isoP([W*0.3,py+44,0]);
+ var inner=plinth+loop+parts.join('')+isoArrow([W+20,py,pz],'x')+marks.map(function(mk){return '<path class="aq-iso__leader-line" d="M'+isoT(mk.s)+'L'+isoT(mk.p)+'"/><circle class="aq-iso__leader-dot" cx="'+isoF(mk.s[0])+'" cy="'+isoF(mk.s[1])+'" r="1.6"/>'}).join('');
+ var bx=isoBounds([[-40,0,0],[W+40,0,0],[-40,py+4,0],[W+40,py+4,0],[0,0,90],[W,0,90]],22),w=Math.round(bx.w),hh=Math.round(bx.h+10),org=[-bx.x,-bx.y+10];
+ var labs=marks.map(function(mk){var a=isoPct(mk.p,w,hh,org);return '<span class="aq-module-plinth__mk" data-k="'+mk.k+'" style="left:'+a.left+';top:'+a.top+'">'+(mk.k<9?'0':'')+(mk.k+1)+'</span>'}).join('');
+ var bp=isoPct(bl,w,hh,org);
+ return '<div class="aq-iso-figure aq-module-plinth__fig" aria-hidden="true">'+isoSvg(w,hh,inner,'aq-iso--navy aq-module-plinth__svg',{origin:org,under:isoSheet(w,hh,{grid:'iso',m:6,band:0,gridStep:22})})+labs
+  +(base?'<span class="aq-module-plinth__base" style="left:'+bp.left+';top:'+bp.top+'">'+e(base)+'</span>':'')+'</div>'}
+LOOKS['module-plinth']=function(b,H){var I=b.items||[],n=I.length;
+ var cards=I.map(function(it,i){var lk=it.link&&wp(it.link),sp=wSpot(it.spot||it.icon,'s','aq-module-plinth__spot');
+  return fli('<li class="aq-module-plinth__card" data-k="'+i+'"><span class="aq-module-plinth__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+sp
+   +'<h3 class="aq-module-plinth__t">'+(lk?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t))+'</h3>'+(it.d?'<p class="aq-module-plinth__d">'+tx(it.d)+'</p>':'')+'</li>',b,i)}).join('');
+ return sec(H+'<div class="aq-module-plinth">'+mpScene(n,b.base)+'<div class="aq-module-plinth__list">'+wFold(b,n,'<ol class="aq-module-plinth__cards">'+cards+'</ol>',b.fold_noun)+'</div></div>','aq-band--navy aq-module-plinth-sec')};
+})();
 /* Look "ncr-tiles" -> NcrTiles (design-system/components/NcrTiles): how a defect is held and closed, as a bento of
    navy and limestone tiles, each led by a huge light slash numeral ("01/"). The first step (the hold) takes the
    oversized tile; a step with `hold` carries a closed-valve tag naming who signs. One tile is a line drawing of the
@@ -4764,31 +4978,32 @@ LOOKS['review-reticles']=function(b,H){var I=b.items||[],K='aq-review-reticles',
    column); on the right, behind a hairline rule, the register as the sheet's numbered notes column in mono (number,
    title as the link, status, topic and standard), with the topic filter above it; a title block closes the sheet at
    the bottom right and carries the live count.
-   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned, and so does
-   one whose date is still a placeholder (opens with "["): it reads "Planned" with its bracketed date beside it and,
-   as the lead, "Next planned", never "Latest". The lead note's link reads "Applied on <page>", or "Read the note" when
+   Counts count what exists (DR-018 rule 6): a note with a date counts as a note; one without, or one whose date is
+   still a placeholder (opens with "["), counts as a topic. A topic's status is its placeholder date, or else the page
+   that answers it (a dashed mono status); as the lead it reads "Featured", never "Latest" (DR-028: no "planned" or
+   "next" wording about our own record). The lead note's link reads "Applied on <page>", or "Read the note" when
    it points at the page the register is on (a note published on news itself). The title
-   block reads "N notes", "N planned" when no note has a date, or "N notes · M planned"; so does the live count after
-   filtering; the "All" filter reads "All N planned" when no note has a date.
+   block reads "N notes", "N topics" when no note has a date, or "N notes · M topics"; so does the live count after
+   filtering; the "All" filter reads "All N topics" when no note has a date.
    Fields (a register block): h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold,
-   fold_noun. Never a date that is not given (a dashed mono "Planned" status instead); the lead note is the featured
+   fold_noun. Never a date that is not given (the dashed page status instead); the lead note is the featured
    one, else the first of the first topic. Filtering shows every matching note, folded or not; notes that stay glide
    to their new places and new ones fade in. Phones: title, lead note, filter, notes; no drawing. */
 (function(){
-/* rrCount: the count words for a set of notes, dated ones as notes and undated ones as planned (DR-018 rule 6) */
-function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+' planned':'';return (a&&z?a+' · '+z:(a||z||'0 notes'))+(t?' in '+t:'')}
+/* rrCount: the count words for a set of notes, dated ones as notes and undated ones as topics (DR-018 rule 6) */
+function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+(p===1?' topic':' topics'):'';return (a&&z?a+' · '+z:(a||z||'0 notes'))+(t?' in '+t:'')}
 var RR_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-storage':'storage-tank','sys-pretreatment':'pretreatment'},P='aq-revision-register'+'__';
 function rrSpot(it){var pg=wsplit(it.link||'')[0],s=it.spot||RR_SPOT[pg]||pageIcon(pg)||'';return isVig(s)?s:''}
 LOOKS['revision-register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
  var dated=function(it){return !!it.date&&!/^\s*\[/.test(String(it.date))};
- var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return dated(it)?tx(it.date):'<span class="'+P+'planned">Planned</span>'+(it.date?'<span>'+tx(it.date)+'</span>':'')};
+ var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){var q=it.link&&wp(it.link);return dated(it)||it.date?tx(it.date):'<span class="'+P+'planned">'+e((q&&q.nav_label)||'Topic')+'</span>'};
  var nd=I.filter(dated).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
  var f=I[fi],fl=f.link&&wp(f.link),fd=dated(f),pg=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0],self=fl&&pg&&wsplit(f.link)[0]===pg.id;
  var tri='<svg class="'+P+'tri" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path d="M12 2L22 20H2Z"/></svg>';
- var tabs='<div class="'+P+'tabs" role="group" aria-label="Filter notes by topic"><button type="button" class="'+P+'tab" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+(nd?'':' planned')+'</span></button>'
+ var tabs='<div class="'+P+'tabs" role="group" aria-label="Filter notes by topic"><button type="button" class="'+P+'tab" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+(nd?'':' topics')+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="'+P+'tab" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
- var lead='<aside class="'+P+'lead" aria-label="'+(fd?'Latest note':'Next planned note')+'">'
-  +'<p class="'+P+'lk">'+tri+'<span>'+(fd?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
+ var lead='<aside class="'+P+'lead" aria-label="'+(fd?'Latest note':'Featured note')+'">'
+  +'<p class="'+P+'lk">'+tri+'<span>'+(fd?'Latest':'Featured')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
   +(f.d?'<blockquote class="'+P+'q"><p>'+tx(f.d)+'</p></blockquote>':'')
   +'<h3 class="'+P+'lt">'+tx(f.t)+'</h3>'+(f.std?'<p class="'+P+'lstd">'+tx(f.std)+'</p>':'')
   +(fl?'<p class="'+P+'go">'+(self?wlink(f.link,'Read the note'):'Applied on '+wlink(f.link))+'</p>':'')+'</aside>';
@@ -5203,6 +5418,150 @@ LOOKS['section-train']=function(b,H){
    +(c&&c.t?'<p class="'+K+'__catch">'+chipGlyph(c.g)+'<span>'+tx(c.t)+'</span></p>':'')+'</div></li>'}).join('');
  var base=b.base?'<p class="'+K+'__base"><span class="'+K+'__base-mark" aria-hidden="true"></span>'+tx(b.base)+'</p>':'';
  return sec(H+'<div class="'+K+'" data-theme="light" style="--n:'+n+'">'+svg+'<ol class="'+K+'__stages">'+li+'</ol>'+base+'</div>','aq-band--limestone '+K+'-sec')};
+})();
+/* Look "sensor-loop" -> SensorLoop (design-system/components/SensorLoop): a spec block of signals (signal, design
+   value, basis) drawn where each one is measured: one storage and distribution loop in IsoKit line art (tank, pump,
+   UV unit, TOC and conductivity analysers on the supply, divert valve with its drain, two points of use, the return
+   overhead to the tank) with an instrument balloon (ISA style, the row's number) on every measuring point, and a
+   dashed signal bus along the foot that every instrument drops into (data recording). The rows are instrument
+   schedule cards in a row above and a row below the drawing, each on a leader to its balloon; a signal measured at
+   several points (temperature) shows its number on each. The caption is the section's eyebrow, as on a plain spec.
+   Fields: h, caption, cols, rows [{p, v, m, site}], note, fold, fold_noun. site: toc | cond | temp | divert | flow |
+   uv | data (where the balloon sits; a row without one is a card only). Desktop shows every row; the fold applies on
+   phones, where the cards stack under the drawing beside a vertical signal rail. */
+function slScene(){var A=58,B=58,st=function(i,dz){return [A*i,-B*i,dz||0]},o={},p=[],b='',bus=[],B0=[];
+ var tk=isoPart('tank',0,0,0,1.05,{id:'tank'}),pu=isoPart('pump',st(1)[0]+6,st(1)[1]+18,0,0.85,{id:'pump'}),uv=isoPart('uv',st(2)[0]-10,st(2)[1]+6,0,0.8,{id:'uv'});
+ var zs=44,zh=112,an1=isoPart('analyzer',st(3)[0]+6,st(3)[1]-16,0,0.9,{id:'toc'}),an2=isoPart('analyzer',st(3)[0]+40,st(3)[1]-16,0,0.9,{id:'cond'});
+ var dv=[st(4)[0]+20,st(4)[1]+8,zs],o1=isoPart('outlet',st(5)[0]+14,st(5)[1]+14,0,0.85,{id:'pou'}),o2=isoPart('outlet',st(6)[0]+14,st(6)[1]+14,0,0.85,{id:'pou'});
+ /* supply: tank -> pump -> UV -> analyser tee -> divert -> header over the outlets */
+ var s1=isoPipe(isoRoute(tk.ports.out,pu.ports.in,'xyz',{via:[[tk.ports.out[0]+10,tk.ports.out[1],tk.ports.out[2]]]}),{r:2.2,to:'pump',caps:false});
+ var s2=isoPipe(isoRoute(pu.ports.out,uv.ports.in,'zxy',{via:[[pu.ports.out[0],pu.ports.out[1],zs]]}).concat([]),{r:2.2,to:'uv',caps:false});
+ var uo=uv.ports.out,sA=[uo[0],uo[1],zs],sB=[dv[0]-9,dv[1],zs];
+ var s3=isoPipe([uo,sA,[sA[0]+14,sA[1],zs],[sA[0]+14,sB[1],zs],sB],{r:2.2,to:'toc',caps:false});
+ var va=isoPart('valve',dv[0],dv[1],dv[2],1.2,{id:'divert'});
+ var hd1=[dv[0]+9,dv[1],zs],hx=o2.ports.in[0]+30;
+ var s4=isoPipe([hd1,[hd1[0]+10,hd1[1],zs],[hd1[0]+10,hd1[1],zh-30],[hd1[0]+10,o1.ports.in[1],zh-30],[o1.ports.in[0]-30,o1.ports.in[1],zh-30]].concat([]),{r:2.2,to:'pou',caps:false});
+ var hy=o1.ports.in[1],hz=zh-30;
+ var hdr=isoPipe([[o1.ports.in[0]-30,hy,hz],[hx,hy,hz]],{r:2.2,to:'pou',caps:false});
+ var drops=[o1,o2].map(function(oo){var q=oo.ports.in;return isoPipe([[q[0],hy,hz],[q[0],q[1],hz],q],{r:1.6,to:'pou',caps:false})}).join('');
+ /* return: from the header end up, then one straight overhead run back along the line of the plant (level on the
+    drawing, as a pipe rack reads, set back behind the equipment) and a short leg into the tank's return nozzle */
+ var tr=tk.ports.ret,RB=90,p0=[hx,hy,zh],p1=[hx,hy-RB,zh],p2=[tr[0],hx+hy-RB-tr[0],zh],rp=[[hx,hy,hz],p0,p1,p2];
+ if(Math.abs(p2[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
+ var ret=isoPipe(rp,{r:2.2,to:'tank',caps:false,cls:'aq-sensor-loop__ret'});
+ /* drain off the divert: a drop to the floor with an arrow */
+ var dr=isoPipe([[dv[0]+5,dv[1],zs],[dv[0]+5,dv[1]+18,zs],[dv[0]+5,dv[1]+18,6]],{r:1.6,caps:'end',cls:'aq-sensor-loop__drain'});
+ /* return instruments on the overhead run, in water order: flow meter, pressure gauge, temperature well */
+ var mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]},rl=Math.hypot(p2[0]-p1[0],p2[1]-p1[1])||1,rd=[(p2[0]-p1[0])/rl,(p2[1]-p1[1])/rl,0];
+ var fm=mid(p1,p2,0.2),gp=mid(p1,p2,0.45),t3=mid(p1,p2,0.72);t3=[t3[0],t3[1],zh+2.2];
+ var ga=isoPart('gauge',gp[0],gp[1],zh+2.4,1,{id:'flow',value:0.5});
+ var fmD=isoCylD([fm[0]-7*rd[0],fm[1]-7*rd[1],fm[2]],rd,14,4.4);
+ /* order: back to front and in water order */
+ b+=tk+s1+pu+s2+uv+an1+an2;
+ b+=s3+dr+va+s4+hdr+o1+o2+drops+ret+ga+'<path class="aq-iso__eq" d="'+fmD[0]+fmD[1]+'"/>';
+ /* temperature wells: small stems on the supply after the pump, on the tank and on the return */
+ var tw=function(q){return '<path class="aq-iso__ln" d="'+isoPoly([q,[q[0],q[1],q[2]+7]])+'"/><path class="aq-iso__eq" d="'+isoRingD([q[0],q[1],q[2]+7],'z',1.6)+'"/>'};
+ var t1=[pu.ports.out[0],pu.ports.out[1],zs+2.2],t2=[tk.ports.top[0]+10,tk.ports.top[1]+10,tk.ports.top[2]-14];
+ b+=tw(t1)+tw(t3);
+ /* measuring points (balloon anchors, 3D) */
+ o.toc=[an1.ports.top];o.cond=[an2.ports.top];o.uv=[uv.ports.top];o.divert=[va.ports.top];
+ o.flow=[[fm[0],fm[1],fm[2]+6],ga.ports.top];o.temp=[[t3[0],t3[1],t3[2]+9],[t1[0],t1[1],t1[2]+9],t2];
+ /* the bus: under the floor line, a dashed riser from every instrument */
+ var fl=function(q){return [q[0],q[1],0]};
+ return {svg:b,pts:o,parts:[tk,pu,uv,an1,an2,o1,o2],ext:[[hx+30,hy,0],[hx,hy,zh+20],[-30,30,0],[tr[0],tr[1],zh+20]]}}
+LOOKS['sensor-loop']=function(b,H){H=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
+ var R=b.rows||[],sc=slScene(),W=1000;
+ /* view box: the scene's bounds, padded for balloons and the bus */
+ var all=[];Object.keys(sc.pts).forEach(function(k){sc.pts[k].forEach(function(q){all.push(q)})});all=all.concat(sc.ext);
+ var bx=isoBounds(all,30),sx=W/bx.w,VH=Math.round(bx.h*sx+40),org=[-bx.x,-bx.y+50/sx];
+ var scale=sx;
+ /* balloons: rows with a site, in screen space of the scaled drawing */
+ var S=function(q){var p=isoP(q);return [(p[0]+org[0])*scale,(p[1]+org[1])*scale]};
+ var used=[],top=[],bot=[];
+ R.forEach(function(r,i){var k=r&&r.site,ps=k==='data'?null:(k&&sc.pts[k]);
+  if(k==='data'){used.push({i:i,p:[W*0.86,VH-30],more:[]});return}
+  if(!ps||!ps.length)return;var a=S(ps[0]);a[1]-=26;used.push({i:i,p:a,more:ps.slice(1).map(function(q){var c=S(q);c[1]-=22;return c})})});
+ /* rows of cards: the higher balloons to the top row, the lower to the bottom; each row sorted left to right */
+ var srt=used.slice().sort(function(a,c){return a.p[1]-c.p[1]}),nt=Math.ceil(used.length/2);
+ srt.forEach(function(u,j){(j<nt?top:bot).push(u)});
+ [top,bot].forEach(function(L){L.sort(function(a,c){return a.p[0]-c.p[0]})});
+ var col={};var lead='',ball='';
+ [[top,'t'],[bot,'b']].forEach(function(z){var L=z[0],n=Math.max(L.length,1);L.forEach(function(u,j){var cx=W*(j+0.5)/n,p=u.p,y0=z[1]==='t'?0:VH,kn=z[1]==='t'?p[1]-30-j*6:p[1]+30+j*6;
+   if(z[1]==='b')kn=Math.max(kn,p[1]+30);
+   col[u.i]={row:z[1],c:j+1,n:n};
+   lead+='<path class="aq-sensor-loop__lead" data-sl="'+u.i+'" d="M'+cx.toFixed(1)+' '+y0+'V'+kn.toFixed(1)+'H'+p[0].toFixed(1)+'V'+(p[1]+(z[1]==='t'?-12:12)).toFixed(1)+'"/>'})});
+ used.forEach(function(u){var num=(u.i<9?'0':'')+(u.i+1);[u.p].concat(u.more).forEach(function(p,k){
+  ball+='<g class="aq-sensor-loop__ball'+(k?' is-more':'')+'" data-sl="'+u.i+'"><path class="aq-sensor-loop__stem" d="M'+p[0].toFixed(1)+' '+(p[1]+12).toFixed(1)+'v'+(k?14:18)+'"/><circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="12"/><path class="aq-sensor-loop__bar" d="M'+(p[0]-12).toFixed(1)+' '+p[1].toFixed(1)+'h24"/><text x="'+p[0].toFixed(1)+'" y="'+(p[1]-2.5).toFixed(1)+'">'+num+'</text></g>'})});
+ /* the bus: along the foot, a dashed drop from each balloon's measuring point */
+ var by=VH-30,bus='<path class="aq-sensor-loop__bus" d="M'+(W*0.04).toFixed(1)+' '+by+'H'+(W*0.86-12).toFixed(1)+'"/>';
+ used.forEach(function(u){if(R[u.i].site==='data')return;var x=u.p[0];bus+='<path class="aq-sensor-loop__tap" data-sl="'+u.i+'" d="M'+x.toFixed(1)+' '+(u.p[1]+30).toFixed(1)+'V'+by+'"/><circle class="aq-sensor-loop__node" cx="'+x.toFixed(1)+'" cy="'+by+'" r="2.5"/>'});
+ var drawing='<g transform="scale('+scale.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+sc.svg+'</g>';
+ var svg='<svg class="aq-iso aq-sensor-loop__svg" viewBox="0 0 '+W+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'
+  +'<g class="aq-sensor-loop__busg">'+bus+'</g>'+drawing+lead+ball+'</svg>';
+ /* cards: data order in the DOM; placed in the top or bottom row column by column */
+ var cards=R.map(function(r,i){var c=col[i],num=(i<9?'0':'')+(i+1),sp=c?Math.round(12/c.n):0,st=c?' style="grid-row:'+(c.row==='t'?1:3)+';grid-column:'+((c.c-1)*sp+1)+' / span '+sp+'"':'';
+  return fli('<li class="aq-sensor-loop__card'+(c?' aq-sensor-loop__card--'+c.row:' aq-sensor-loop__card--free')+'" data-sl="'+i+'"'+st+'><span class="aq-sensor-loop__n" aria-hidden="true">'+num+'</span>'
+   +'<h3 class="aq-sensor-loop__p">'+tx(r.p)+'</h3><p class="aq-sensor-loop__v">'+tx(r.v)+'</p>'+(r.m?'<p class="aq-sensor-loop__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
+ var nt2=top.length||1,nb=bot.length||1;
+ var inner='<div class="aq-sensor-loop" style="--sl-top:'+nt2+';--sl-bot:'+nb+'"><ol class="aq-sensor-loop__cards" role="list">'+cards+'</ol>'
+  +'<div class="aq-sensor-loop__fig">'+svg+'</div></div>';
+ var note=b.note?'<p class="aq-sensor-loop__note">'+tx(b.note)+'</p>':'';
+ return sec(H+wFold(b,R.length,inner,b.fold_noun||'signals')+note,'aq-sensor-loop-sec')};
+(function(){
+ function set(root,i){[].forEach.call(root.querySelectorAll('[data-sl]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-sl')===i)});root.classList.toggle('has-hot',i!=null)}
+ document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-sensor-loop__card'),root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root)set(root,t?t.getAttribute('data-sl'):null)});
+ document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
+})();
+/* Look "sheet-previews" -> SheetPreviews (design-system/components/SheetPreviews): a short document list set as a Swiss
+   row of sheets. Each document gets a column: a huge light index numeral, a paper sheet whose thumbnail shows the kind
+   of document it is (a month-by-month basis grid, two projection curves, a logic sequence, a certificate with its seal
+   and lot strip), then its code, name and line. Deciding documents (key) keep DocList's rule: their code turns flow.
+   The block link ("Full index") sits at the end of the heading row.
+   Fields (a docs block): h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label,
+   intent. New optional per item: sheet: "basis" | "curves" | "logic" | "certificate" (anything else: ruled text). */
+(function(){
+var K='aq-sheet-previews';
+function f1(n){return Math.round(n*10)/10}
+function bars(y0,n,w,gap){var d='';for(var i=0;i<n;i++)d+='M24 '+(y0+i*gap)+'H'+(24+w*(i%3===2?0.6:1));return '<path class="'+K+'__txt" d="'+d+'"/>'}
+var THUMB={
+ basis:function(){var o='',x0=24,x1=186,y0=86,y1=226,cw=(x1-x0)/12,i;
+  o+='<path class="'+K+'__hatch" d="'+[0,11].map(function(c){var d='',xa=x0+c*cw;for(var y=y0;y<y1;y+=6)d+='M'+f1(xa)+' '+(y+6)+'L'+f1(xa+cw)+' '+y;return d}).join('')+'"/>';
+  var g='M'+x0+' '+y0+'H'+x1+'V'+y1+'H'+x0+'Z';for(i=1;i<12;i++)g+='M'+f1(x0+i*cw)+' '+y0+'V'+y1;for(i=1;i<7;i++)g+='M'+x0+' '+(y0+i*20)+'H'+x1;
+  o+='<path class="'+K+'__ln" d="'+g+'"/>';
+  'JFMAMJJASOND'.split('').forEach(function(m,j){o+='<text class="'+K+'__tiny" x="'+f1(x0+j*cw+cw/2)+'" y="'+(y0-6)+'">'+m+'</text>'});
+  return o},
+ curves:function(){var o='<path class="'+K+'__ln" d="M30 70V226H186"/>',d1='',d2='';
+  for(var i=0;i<=20;i++){var x=30+i*7.8,t=i/20;d1+=(i?'L':'M')+f1(x)+' '+f1(210-120*Math.pow(t,0.7));d2+=(i?'L':'M')+f1(x)+' '+f1(214-80*Math.pow(t,0.8))}
+  o+='<path class="'+K+'__curve" d="'+d1+'"/><path class="'+K+'__curve '+K+'__curve--b" d="'+d2+'"/>';
+  for(var k=1;k<5;k++)o+='<path class="'+K+'__thin" d="M'+(30+k*31)+' 226v4M26 '+(226-k*31)+'h4"/>';
+  return o},
+ logic:function(){var o='',b=function(x,y,w,h,r){return '<rect class="'+K+'__box" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(r||0)+'"/>'};
+  o+=b(80,72,50,18,9)+b(70,108,70,20)+'<path class="'+K+'__box" d="M105 146L135 164L105 182L75 164Z"/>'+b(24,200,64,20)+b(122,200,64,20);
+  o+='<path class="'+K+'__ln" d="M105 90V108M105 128V146M75 164H56V200M135 164H154V200M56 220V236H105V250M154 220V236H105M186 210H196V118H140"/>';
+  return o},
+ certificate:function(){var o='<rect class="'+K+'__box" x="20" y="64" width="170" height="170"/><rect class="'+K+'__thin" x="26" y="70" width="158" height="158"/>';
+  o+='<path class="'+K+'__txt" d="M50 92H160M64 104H146M40 128H170M40 140H170M40 152H130"/>';
+  var s='';for(var i=0;i<16;i++){var a=i*Math.PI/8,r=i%2?17:22;s+=(i?'L':'M')+f1(150+r*Math.cos(a))+' '+f1(196+r*Math.sin(a))}
+  o+='<path class="'+K+'__seal" d="'+s+'Z"/><circle class="'+K+'__thin" cx="150" cy="196" r="11"/>';
+  var bc='';for(var j=0;j<26;j++)bc+='M'+(40+j*3+(j%4===0?1:0))+' 186v'+(j%5===0?24:20);
+  return o+'<path class="'+K+'__bar" d="'+bc+'"/>'}};
+function sheet(kind,code){var o='<rect class="'+K+'__paper" x="0" y="0" width="210" height="280"/>'
+  +'<path class="'+K+'__fold" d="M180 0H210V30Z"/><path class="'+K+'__ln" d="M180 0V30H210"/>'
+  +bars(26,3,110,9)+'<rect class="'+K+'__codebox" x="132" y="22" width="40" height="22"/><text class="'+K+'__code-t" x="152" y="37">'+e(code||'')+'</text>';
+ o+=THUMB[kind]?THUMB[kind]():bars(80,14,160,11);
+ o+='<path class="'+K+'__thin" d="M24 252H186M120 252V268M150 252V268"/>';
+ return '<svg class="'+K+'__svg" viewBox="0 0 210 280" aria-hidden="true" focusable="false">'+o+'</svg>'}
+LOOKS['sheet-previews']=function(b,H){
+ var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=items.length;
+ var marked=items.some(function(x){return x.key}),nk=b.key!=null?+b.key:0;
+ var li=items.map(function(x,i){var c=x.code?[x.code,true]:docCode(x.t),key=marked?!!x.key:i<nk,tag=x.tag||c[0];if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
+  var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
+  return fli('<li class="'+K+'__item'+(key?' is-key':'')+'" style="--i:'+i+'">',b,i)
+   +'<span class="'+K+'__num" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<div class="'+K+'__sheet" data-theme="light">'+sheet(x.sheet,tag)+'</div>'
+   +'<p class="'+K+'__code">'+e(tag)+'</p><h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</li>'}).join('');
+ var more=b.link&&wp(b.link)?'<p class="'+K+'__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
+ return sec('<div class="'+K+'__top">'+H+more+'</div>'+wFold(b,n,'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>',b.fold_noun||'documents'),K+'-sec')};
 })();
 /* Look "sheet-stack" -> SheetStack (design-system/components/SheetStack): the documents delivered with a system as an
    exploded stack of drawing sheets. On the left the sheets lie flat in isometric, one above the other along a dashed
@@ -5661,6 +6020,47 @@ function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(Stri
 window.ssPick=ssPick;
 (function(){function go(ev){var s=ev.target.closest&&ev.target.closest('.aq-spare-sheet__row');if(!s)return;ssPick(s.closest('.aq-spare-sheet'),+s.getAttribute('data-i'))}
  document.addEventListener('mouseover',go);document.addEventListener('focusin',go);document.addEventListener('click',go)})();
+/* Look "spine-shelf" -> SpineShelf (design-system/components/SpineShelf): the turnover package as the object on the
+   shelf and its index that opens. Left, the package stands as a row of binder spines on one shelf, one spine per
+   section, numbered, the section's name on its label holder, each spine as thick as the section holds documents; the
+   key section is the navy spine. Right, the package index: each section is a disclosure (number, name, dotted leader)
+   that opens to the documents it holds, one entry per document. Opening a section pulls its spine off the shelf;
+   pointing at a spine or a row lifts the other. The key section opens first.
+   Fields (a docs block): h, intro, items [{t, d, key, docs}], fold, fold_noun. docs (optional): the section's entries
+   as a list; without it they are read from d, split at ";" or ". ", else at commas outside brackets.
+   The fold applies on phones only (desktop shows the whole index; closed rows are one line each).
+   Phones: the shelf is a short band of numbered spines over the index. */
+function ssComma(s){var o=[],d=0,cur='';for(var i=0;i<s.length;i++){var c=s.charAt(i);if(c==='('||c==='[')d++;else if((c===')'||c===']')&&d)d--;
+  if(c===','&&!d){o.push(cur);cur='';continue}cur+=c}o.push(cur);return o}
+function ssDocs(it){var L=it.docs;if(!L){var s=String(it.d||'').trim();L=s.split(/;\s+|\.\s+(?=[A-Z\[])/);if(L.length<2)L=ssComma(s)}
+ return L.map(function(x){x=String(x).trim().replace(/\.$/,'');return x.charAt(0).toUpperCase()+x.slice(1)}).filter(Boolean)}
+LOOKS['spine-shelf']=function(b,H){var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=I.length;
+ var keyAt=-1;I.forEach(function(x,i){if(x.key&&keyAt<0)keyAt=i});if(keyAt<0)keyAt=0;
+ var D=I.map(ssDocs);
+ var spines=I.map(function(x,i){var num=(i<9?'0':'')+(i+1);
+  return '<span class="aq-spine-shelf__spine'+(x.key?' is-key':'')+(i===keyAt?' is-open':'')+'" data-i="'+i+'" style="--w:'+(4+D[i].length)+'">'
+   +'<span class="aq-spine-shelf__body"><span class="aq-spine-shelf__no">'+num+'</span>'
+   +'<span class="aq-spine-shelf__holder"><span class="aq-spine-shelf__name">'+tx(x.t)+'</span></span>'
+   +'<span class="aq-spine-shelf__ring"></span></span></span>'}).join('');
+ var shelf='<div class="aq-spine-shelf__shelf" aria-hidden="true"><div class="aq-spine-shelf__row">'+spines+'</div>'
+  +'<span class="aq-spine-shelf__board"></span><p class="aq-spine-shelf__cap">'+n+' '+e(b.fold_noun||'sections')+'</p></div>';
+ var rows=I.map(function(x,i){var num=(i<9?'0':'')+(i+1);
+  return fli('<li class="aq-spine-shelf__item'+(x.key?' is-key':'')+'" data-i="'+i+'">',b,i)
+   +'<details'+(i===keyAt?' open':'')+'><summary class="aq-spine-shelf__sum"><span class="aq-spine-shelf__n" aria-hidden="true">'+num+'</span>'
+   +'<h3 class="aq-spine-shelf__t">'+tx(x.t)+'</h3><span class="aq-spine-shelf__lead" aria-hidden="true"></span><span class="aq-spine-shelf__mark" aria-hidden="true"></span></summary>'
+   +'<ul class="aq-spine-shelf__docs">'+D[i].map(function(d,j){return '<li style="--j:'+j+'">'+tx(d)+'</li>'}).join('')+'</ul></details></li>'}).join('');
+ return sec(H+'<div class="aq-spine-shelf">'+shelf+'<div class="aq-spine-shelf__index">'+wFold(b,n,'<ol class="aq-spine-shelf__list" role="list">'+rows+'</ol>',b.fold_noun||'sections')+'</div></div>','aq-spine-shelf-sec')};
+/* Index and shelf move together: a section opened or closed pulls or returns its spine; pointing at a row or a spine
+   lifts its pair; a click on a spine opens its section (the summary stays the keyboard control). */
+if(typeof document!=='undefined'&&document.addEventListener){
+ var ssPair=function(el){var w=el.closest('.aq-spine-shelf'),i=el.getAttribute('data-i');return w?[w.querySelector('.aq-spine-shelf__spine[data-i="'+i+'"]'),w.querySelector('.aq-spine-shelf__item[data-i="'+i+'"]')]:[]};
+ document.addEventListener('toggle',function(ev){var d=ev.target;if(!d||!d.closest||!d.closest('.aq-spine-shelf__item'))return;var p=ssPair(d.closest('.aq-spine-shelf__item'));
+  if(p[0])p[0].classList.toggle('is-open',d.open)},true);
+ ['mouseover','focusin','mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var el=ev.target.closest&&ev.target.closest('.aq-spine-shelf__spine,.aq-spine-shelf__item');if(!el)return;
+  if(/out$/.test(t)&&ev.relatedTarget&&el.contains(ev.relatedTarget))return;var on=/over|in$/.test(t);ssPair(el).forEach(function(x){if(x)x.classList.toggle('is-hover',on)})})});
+ document.addEventListener('click',function(ev){var s=ev.target.closest&&ev.target.closest('.aq-spine-shelf__spine');if(!s)return;var it=ssPair(s)[1];if(!it)return;
+  var f=it.closest('.aq-fold');if(it.classList.contains('aq-fold-x')&&f&&!f.classList.contains('is-open')&&getComputedStyle(it).display==='none'){var bt=f.querySelector('.aq-fold__btn');if(bt)bt.click()}
+  var d=it.querySelector('details');if(d){d.open=!d.open;if(d.open&&it.getBoundingClientRect().top>innerHeight*0.8)it.scrollIntoView({block:'center',behavior:'smooth'})}})}
 /* Look "spool-dossier" -> SpoolDossier (design-system/components/SpoolDossier): a dossier set beside the as-built
    isometric it indexes. On a limestone sheet: the title huge and light at the top left, an isometric polypropylene
    spool at the right (IsoKit pipes: a run with a tee and a branch, two bends, flanged ends, each joint dotted and

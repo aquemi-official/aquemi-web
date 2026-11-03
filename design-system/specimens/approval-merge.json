@@ -67,9 +67,9 @@
    "page": "svc-upgrades",
    "slot": 0,
    "h": "After a water observation or out-of-trend results",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "f28b676478",
    "block": {
@@ -103,6 +103,67 @@
      [
       "Validation after repair, new systems included",
       "Aquemi: installation and operational qualification (IQ, OQ)",
+      "You"
+     ],
+     [
+      "Monitoring with alert and action levels",
+      "Aquemi: levels from your data",
+      "You"
+     ],
+     [
+      "Lot risk assessment and the written reply",
+      "You",
+      "You"
+     ],
+     [
+      "A qualified consultant, where asked",
+      "Your consultant",
+      "You"
+     ]
+    ],
+    "caption_noun": "requests"
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 0,
+   "h": "After a water observation, failed test or accreditation finding",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "f019043944",
+   "block": {
+    "type": "table",
+    "look": "approval-merge",
+    "as": "roles",
+    "anchor": "observation",
+    "nav": "Findings",
+    "h": "After a water observation, failed test or accreditation finding",
+    "intro": "Five FDA warning letters (2024 to 2026) asked for these, within 15 working days. Health Canada’s GUI-0023 rates an unqualified PW system a major observation. Outside GMP, verification is an acceptance test against your specification.",
+    "cols": [
+     "Asked for",
+     "Prepared by",
+     "Approved by"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Design assessment of the system",
+       "link": "contact-proposal",
+       "intent": "I have a system already"
+      },
+      "Aquemi: system assessment",
+      "You"
+     ],
+     [
+      "Remediation plan with dates",
+      "Aquemi: options, including other suppliers'",
+      "You"
+     ],
+     [
+      "Validation after repair, new systems included",
+      "Aquemi: installation and operational qualification (IQ, OQ), or an acceptance test",
       "You"
      ],
      [

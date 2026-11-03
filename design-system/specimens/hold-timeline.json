@@ -109,7 +109,7 @@
    "page": "services",
    "slot": 1,
    "h": "How long each stage takes, and who signs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -147,6 +147,56 @@
      {
       "t": "Performance qualification (PQ), at least 12 months",
       "hold": "Your quality unit",
+      "link": "project-plan#stages"
+     }
+    ],
+    "nav": "Stages",
+    "ground": "light",
+    "look": "hold-timeline"
+   }
+  },
+  {
+   "page": "services",
+   "slot": 1,
+   "h": "How long each stage takes, and who signs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "97761ebca9",
+   "block": {
+    "type": "steps",
+    "anchor": "durations",
+    "h": "How long each stage takes, and who signs",
+    "intro": "Weeks count from [lead time start event]. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Design, [design to DQ, weeks]",
+      "hold": "You, or your quality unit under GMP",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Fabrication, [approved design to FAT, weeks]",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "FAT, [FAT duration, days]",
+      "hold": "Both parties",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Installation and SAT, [installation and SAT, days]",
+      "hold": "You",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+      "hold": "Your quality unit, under GMP",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Performance qualification (PQ), at least 12 months",
+      "hold": "Your quality unit, under GMP",
       "link": "project-plan#stages"
      }
     ],

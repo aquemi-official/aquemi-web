@@ -47,7 +47,7 @@
    "page": "projects",
    "slot": 1,
    "h": "What a case study proves",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -78,6 +78,44 @@
     "nav": "Standard",
     "ground": "light",
     "look": "record-anatomy"
+   }
+  },
+  {
+   "page": "projects",
+   "slot": 2,
+   "h": "What every project record contains",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "59446105cd",
+   "block": {
+    "type": "prose",
+    "as": "explainer",
+    "h": "What every project record contains",
+    "intro": "Every figure in a handover record carries four things your team can check.",
+    "points": [
+     {
+      "t": "Figure",
+      "d": "Measured value, unit and temperature, against the pharmacopoeia limit or your specification."
+     },
+     {
+      "t": "Method",
+      "d": "Sampling point, number of samples and period."
+     },
+     {
+      "t": "Report",
+      "d": "Executed acceptance test or qualification report, with its number."
+     },
+     {
+      "t": "Approval",
+      "d": "A second engineer checks it [confirm]; your quality unit approves the report, deviations included."
+     }
+    ],
+    "nav": "Records",
+    "ground": "light",
+    "look": "record-anatomy",
+    "anchor": "record"
    }
   }
  ]

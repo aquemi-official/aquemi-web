@@ -62,7 +62,7 @@
    "page": "sys-monitoring",
    "slot": 4,
    "h": "Options",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -109,6 +109,60 @@
     "as": "modules",
     "base": "Controls",
     "look": "option-checker"
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 4,
+   "h": "Options",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "21ec835534",
+   "block": {
+    "type": "options",
+    "h": "Options",
+    "intro": "Your proposal states each option's effect on drawings, tests and lead time.",
+    "items": [
+     {
+      "t": "PLC and SCADA platform",
+      "d": "[PLC and SCADA platforms supported].",
+      "spot": "cpu",
+      "part": "plc"
+     },
+     {
+      "t": "Historian and Part 11 boundary",
+      "d": "Our historian, or your validated plant historian with ours as a buffer.",
+      "spot": "database",
+      "part": "historian"
+     },
+     {
+      "t": "Remote access",
+      "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
+      "spot": "network",
+      "part": "remote"
+     },
+     {
+      "t": "Integration",
+      "d": "[plant network protocols supported] to your plant systems.",
+      "spot": "pid",
+      "part": "bus"
+     },
+     {
+      "t": "Control panels",
+      "d": "Built to [panel standard] and marked to [panel certification mark held, or field evaluation used].",
+      "spot": "monitor",
+      "link": "compliance#engineering",
+      "part": "panel"
+     }
+    ],
+    "nav": "Options",
+    "fold_noun": "options",
+    "as": "modules",
+    "base": "Controls",
+    "look": "option-checker",
+    "anchor": "options"
    }
   }
  ]

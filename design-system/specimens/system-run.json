@@ -10,9 +10,9 @@
    "page": "home",
    "slot": 0,
    "h": "One package, one water path",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "5af52fdcde",
    "block": {
@@ -31,6 +31,54 @@
      {
       "t": "PW generation",
       "d": "RO and deionization on a PP skid, designed to meet the USP conductivity and organic carbon limits.",
+      "tag": "USP <645>",
+      "link": "sys-pw",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "PP tank and loop: turbulent flow at peak demand, sanitized by [PP loop sanitization method].",
+      "tag": "WHO TRS 1033",
+      "link": "sys-storage",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Monitoring and controls",
+      "d": "Online total organic carbon (TOC) and conductivity, with audit trails.",
+      "tag": "21 CFR Part 11",
+      "link": "sys-monitoring",
+      "icon": "conductivity"
+     }
+    ],
+    "look": "system-run"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 0,
+   "h": "One package, one water path",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6b56535bb2",
+   "block": {
+    "type": "path",
+    "h": "One package, one water path",
+    "intro": "One package makes Purified Water (PW) for your products and final rinses, from drinking water to the point of use.",
+    "from": "Drinking water",
+    "to": "Point of use",
+    "items": [
+     {
+      "t": "Pretreatment",
+      "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
+      "tag": "USP <1231>",
+      "link": "sys-pretreatment",
+      "spot": "pretreatment"
+     },
+     {
+      "t": "PW generation",
+      "d": "RO and deionization on a polypropylene (PP) skid, designed to meet the USP conductivity and organic carbon limits.",
       "tag": "USP <645>",
       "link": "sys-pw",
       "spot": "ro-skid"

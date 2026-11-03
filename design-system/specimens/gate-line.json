@@ -10,9 +10,9 @@
    "page": "svc-upgrades",
    "slot": 4,
    "h": "How an upgrade runs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "734607d686",
    "block": {
@@ -49,6 +49,99 @@
      }
     ],
     "lane": "Your system"
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 4,
+   "h": "How an upgrade runs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "6ce0e969f0",
+   "block": {
+    "type": "steps",
+    "look": "gate-line",
+    "nav": "How it runs",
+    "h": "How an upgrade runs",
+    "items": [
+     {
+      "t": "System assessment",
+      "d": "On site, then a costed options report in [report turnaround, working days].",
+      "icon": "magnifier"
+     },
+     {
+      "t": "Change control",
+      "d": "We draft the change request’s technical content.",
+      "hold": "Your quality unit",
+      "icon": "binder"
+     },
+     {
+      "t": "Design, build, test",
+      "d": "A factory acceptance test (FAT) of modules and software keeps site work short.",
+      "icon": "pid"
+     },
+     {
+      "t": "Cutover",
+      "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested.",
+      "icon": "wrench"
+     },
+     {
+      "t": "Requalification or acceptance",
+      "d": "Under GMP: IQ/OQ of what changed, with agreed sampling. Without GMP: an acceptance test against your specification. Drawings and procedures updated.",
+      "icon": "gauge"
+     }
+    ],
+    "lane": "Your system",
+    "anchor": "steps"
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 6,
+   "h": "Validation before first use",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "5016a9e0d5",
+   "block": {
+    "type": "steps",
+    "nav": "Validation",
+    "anchor": "validation",
+    "h": "Validation before first use",
+    "intro": "Designed to the ST108:2023 critical-water limits; your program shows compliance. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Protocol",
+      "d": "Written to your water management program and approved before any test runs.",
+      "hold": "Your water management team",
+      "icon": "binder"
+     },
+     {
+      "t": "Installation check (IQ)",
+      "d": "Drawings, materials, instruments and calibration checked as installed. Good manufacturing practice (GMP) sites call it installation qualification.",
+      "icon": "pid"
+     },
+     {
+      "t": "Operational check (OQ)",
+      "d": "Flows, alarms, controls and sanitization tested against the protocol. GMP sites call it operational qualification.",
+      "icon": "gauge"
+     },
+     {
+      "t": "Validation sampling",
+      "d": "Hospitals: bacteria and endotoxin at loop out, loop return and each outlet. Laboratories: verification to CLSI GP40.",
+      "icon": "magnifier"
+     },
+     {
+      "t": "Routine monitoring",
+      "d": "Critical water: conductivity daily after the last treatment step. Bacteria and endotoxin monthly at loop out, loop return and each outlet.",
+      "hold": "Your program",
+      "icon": "calendar"
+     }
+    ],
+    "look": "gate-line"
    }
   }
  ]

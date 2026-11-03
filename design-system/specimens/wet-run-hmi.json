@@ -65,7 +65,7 @@
    "page": "svc-fat-sat",
    "slot": 1,
    "h": "Water finds faults a dry check misses",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -75,6 +75,62 @@
     "as": "explainer",
     "ground": "light",
     "nav": "Why water",
+    "h": "Water finds faults a dry check misses",
+    "points": [
+     {
+      "t": "Some faults show only with water",
+      "d": "A valve opening at the wrong step; out-of-limit water not sent to drain. Found on site, the fix needs a work permit and a production stop.",
+      "at": [
+       44,
+       40
+      ],
+      "part": "divert"
+     },
+     {
+      "t": "Run it, read at the outlet",
+      "d": "Pumps at working pressure; conductivity and total organic carbon measured at the skid outlet.",
+      "at": [
+       75,
+       58
+      ],
+      "part": "outlet"
+     },
+     {
+      "t": "Evidence your team can reuse",
+      "d": "Approved protocol, calibrated instruments, raw data: results your installation and operational qualification (IQ/OQ) can reuse. A dry checklist is done again in IQ/OQ.",
+      "at": [
+       86,
+       40
+      ],
+      "part": "record"
+     }
+    ],
+    "figure": {
+     "kind": "art",
+     "art": "svc-fat-sat"
+    },
+    "look": "wet-run-hmi",
+    "modes": [
+     "Dry check",
+     "With water"
+    ]
+   }
+  },
+  {
+   "page": "svc-fat-sat",
+   "slot": 1,
+   "h": "Water finds faults a dry check misses",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "d2ff7ec229",
+   "block": {
+    "type": "prose",
+    "as": "explainer",
+    "ground": "light",
+    "nav": "Why water",
+    "anchor": "wet-run",
     "h": "Water finds faults a dry check misses",
     "points": [
      {

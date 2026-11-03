@@ -3,11 +3,11 @@
  "section": "Home",
  "nav_label": "Home",
  "title": "Purified Water systems: pretreatment, RO, DI/EDI | Aquemi",
- "meta": "A modular Purified Water package in polypropylene with PVC pretreatment, designed in Ontario to meet USP <645> and <643>. No WFI, pure steam or stainless steel.",
+ "meta": "A modular Purified Water package in polypropylene with PVC pretreatment, designed in Ontario to meet USP <645> and <643>. For drug, device, hospital, laboratory, personal care and process plants. No WFI, pure steam or stainless steel.",
  "path": "/",
  "eyebrow": "PURIFIED WATER · USP <645>, <643> · PH. EUR. 0008",
  "headline": "Modular Purified Water systems, from pretreatment to point of use",
- "lead": "For drug, device and natural health product makers who need Purified Water (PW) in products or final rinses. One polypropylene (PP) package, designed in Ontario. No Water for Injection, pure steam or stainless steel systems.",
+ "lead": "For makers of drugs, natural health products and devices; for hospitals, labs, personal care and process plants. One polypropylene Purified Water package, designed in Ontario. No Water for Injection, pure steam or stainless steel systems.",
  "primary_cta": "Talk to an engineer",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
@@ -29,6 +29,7 @@
   {
    "type": "path",
    "h": "One package, one water path",
+   "intro": "One package makes Purified Water (PW) for your products and final rinses, from drinking water to the point of use.",
    "from": "Drinking water",
    "to": "Point of use",
    "items": [
@@ -41,7 +42,7 @@
     },
     {
      "t": "PW generation",
-     "d": "RO and deionization on a PP skid, designed to meet the USP conductivity and organic carbon limits.",
+     "d": "RO and deionization on a polypropylene (PP) skid, designed to meet the USP conductivity and organic carbon limits.",
      "tag": "USP <645>",
      "link": "sys-pw",
      "spot": "ro-skid"
@@ -85,6 +86,15 @@
      }
     ],
     [
+     "Not drugs or devices: hospitals, labs, personal care, food or industrial",
+     "What the water is for, and the limit you work to",
+     "Where the water goes in your industry, and who sets its limit",
+     {
+      "t": "Where our water goes",
+      "link": "industries#map"
+     }
+    ],
+    [
      "Writing a URS that permits polypropylene",
      "Nothing yet; your draft when you want it checked",
      "The order buyers use, and clauses that keep the design open",
@@ -104,30 +114,15 @@
      }
     ],
     [
-     "Comparing proposals on equal terms",
-     "Your bid grid, if you use one",
-     "The lines to level between quotes, and our terms",
+     "Comparing proposals or qualifying suppliers",
+     "Your bid grid or questionnaire, if you use one",
+     {
+      "t": "The record each process leaves, and how to audit it",
+      "link": "cmp-quality"
+     },
      {
       "t": "Buying from Aquemi",
       "link": "buying#compare"
-     }
-    ],
-    [
-     "Qualifying suppliers",
-     "Your questionnaire, if you use one",
-     "The record each process leaves, and how to audit it",
-     {
-      "t": "Quality management",
-      "link": "cmp-quality"
-     }
-    ],
-    [
-     "How long a project takes, and who does what",
-     "Your target date for water in use",
-     "Each stage with its length, notice and who holds it",
-     {
-      "t": "How a project runs",
-      "link": "project-plan"
      }
     ],
     [
@@ -154,38 +149,58 @@
   },
   {
    "type": "grid",
-   "h": "Same PW limits, different evidence by industry",
+   "anchor": "industries",
+   "h": "Same package, different limits by industry",
    "items": [
     {
-     "t": "Pharmaceutical",
-     "d": "In oral liquids, creams and coatings, and the final equipment rinse. Sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
+     "t": "Drugs and natural health products",
+     "d": "In oral liquids, creams, coatings and final equipment rinses. Natural health products (GUI-0158): potable minimum, PW where your specification or monograph calls for it.",
      "tag": "GUI-0001",
-     "link": "ind-pharma"
+     "link": "ind-pharma",
+     "icon": "loop"
+    },
+    {
+     "t": "Contract manufacturing",
+     "d": "In every client's product, from one system: the stricter of USP and Ph. Eur. on each attribute, plus each client's limits.",
+     "tag": "USP · Ph. Eur.",
+     "link": "ind-cdmo",
+     "icon": "loop"
     },
     {
      "t": "Medical devices",
      "d": "The final rinse of components before packaging, with the grade worked back from your device limits.",
      "tag": "USP <161>",
-     "link": "ind-meddevice"
+     "link": "ind-meddevice",
+     "icon": "valve"
     },
     {
-     "t": "Contract manufacturing",
-     "d": "In every client's product, from one system: the stricter of USP and Ph. Eur. on each attribute.",
-     "tag": "USP · Ph. Eur.",
-     "link": "ind-cdmo"
+     "t": "Hospitals and laboratories",
+     "d": "Washer-disinfector final rinse in sterile processing, and reagent water for laboratories. Hospitals name critical water (ST108:2023); labs name ASTM D1193-24 Type II or III.",
+     "tag": "ST108",
+     "link": "ind-hospital-lab",
+     "icon": "conductivity"
     },
     {
-     "t": "Natural health products",
-     "d": "In liquids, creams and some dilutions: potable water at minimum; Purified Water where your specification or a monograph calls for it.",
-     "tag": "GUI-0158",
-     "link": "ind-pharma#nhp"
+     "t": "Cosmetics and personal care",
+     "d": "Ingredient water in creams, lotions and shampoos, and the final rinse of fillers. Cosmetics follow your written spec; over-the-counter drug lines need PW.",
+     "tag": "ISO 22716",
+     "link": "ind-personal-care",
+     "icon": "loop"
+    },
+    {
+     "t": "Food, beverage and industrial",
+     "d": "Proofing and ingredient water, parts and electronics rinse, electrolyser feed and boiler make-up. Your recipe, process or equipment maker sets the limit.",
+     "tag": "Your spec",
+     "link": "ind-process",
+     "icon": "ro-membrane"
     }
    ],
    "ground": "light",
-   "look": "industry-feed"
+   "look": "standard-tiles"
   },
   {
    "type": "steps",
+   "anchor": "steps",
    "h": "From order to water in use",
    "items": [
     {
@@ -221,10 +236,11 @@
     }
    ],
    "look": "project-run",
-   "intro": "Time from order to water in use: [order to water in use, weeks]."
+   "intro": "Order to water in use: [order to water in use, weeks]. Not under good manufacturing practice (GMP)? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification."
   },
   {
    "type": "grid",
+   "anchor": "service",
    "h": "Service after handover",
    "ground": "light",
    "items": [
@@ -251,17 +267,24 @@
   },
   {
    "type": "faq",
+   "anchor": "faq",
    "h": "Questions before the first call",
    "items": [
     {
-     "q": "You are smaller than the global manufacturers. Why take the risk?",
-     "a": "We are new; judge us on checks, not size. The parts are not: [membranes and instruments bought from their makers]. Your design engineer stays your contact after handover [confirm]; if anyone leaves, records carry the system. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test once [shop and test bay ready for visits].",
-     "link": "projects",
-     "link_label": "See what you can check"
+     "q": "Who stands behind the system after handover?",
+     "a": "Your design engineer stays your contact [confirm]. Our team knows pharmaceutical water, controls and modular fabrication. We design and fabricate the package; [membranes and instruments bought from their makers]. You keep as-built drawings, joint records, FAT and qualification reports. Audit our quality system on [on-site audit notice, working days] notice. Witness your FAT with [FAT witness notice, working days] notice.",
+     "link": "projects#verify",
+     "link_label": "How to qualify us"
     },
     {
      "q": "Do you supply WFI or pure steam?",
      "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel."
+    },
+    {
+     "q": "Do you work outside pharmaceutical manufacturing?",
+     "a": "Yes. Hospitals, laboratories, personal care, food, beverage and industrial plants get the same package. It is configured to the limit their standard or process sets. A hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+     "link": "industries#matrix",
+     "link_label": "Industry by water use"
     },
     {
      "q": "We have no URS yet. Is it too early to ask?",
@@ -301,21 +324,24 @@
   "Lowest service plan price, CAD per year ([lowest plan price, CAD per year]; same placeholder as svc-service's running cost, which the 'Running cost' item links; FD-29). Write 'fixed' only if FD-29 makes plans fixed-price (DR-005)",
   "Water scope review turnaround and cost ([scope review turnaround, working days], [scope review cost or free]; same placeholders as industries; FD-01, FD-02)",
   "Confirm reviews carry no obligation and may be used in the client's own tender ([review obligation and use in your tender]; FD-02)",
-  "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48) and date the shop and test bay are ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44). At launch the risk FAQ drops each check whose date is unset (DR-004, DR-006 rule 6)",
-  "Sanitization method for the PP tank and loop ([PP loop sanitization method]; FD-14); any temperature wording follows DR-013",
-  "\"Record each joint\" (How a project runs) repeats svc-fabrication's joint-log practice: it follows that page's FD-18 launch gate, and becomes [PP joint records kept] if the practice is not confirmed",
-  "Confirm the standards in the eyebrow against the standards Aquemi designs to routinely",
-  "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)",
-  "Natural health products tile (Same PW limits, different evidence by industry; DR-017): stays while FD-38 keeps natural health products a launch segment; if FD-38 drops them, remove the tile and the footer item together. Its line keeps the industries grade row's wording (GUI-0158: potable minimum, PW where the specification or a monograph calls for it; DR-017 rule 3)",
-  "Pass 11 (desk Q2, SITE-PLAN home): lead names who it is for before the exclusion sentence, which stays word for word as its last sentence (DR-021); phrasebook 6 (L-04-25, L-08-18, L-10-19, L-13-10, PB-04.6). If FD-38 drops natural health products as a launch segment, the lead drops them with the NHP tile (DR-017)",
+  "Notice times in the 'Who stands behind the system' FAQ: [on-site audit notice, working days] (FD-48) and [FAT witness notice, working days] (FD-44). The readiness dates ([quality system ready for audit, date], [shop and test bay ready for visits]) are private launch gates, never printed (DR-028 rule 3; R6). An offer that is not ready is hidden, not dated (DR-004 class 2)",
+  "Sanitization method for the PP tank and loop ([PP loop sanitization method]; FD-14); any temperature wording follows DR-013. Storage item keeps the short form 'sanitized by [PP loop sanitization method]'; if FD-14 is chemical it becomes DR-013 rule 3's '[PP loop sanitization method]; residual tested before use' (pass 12 home review 12)",
+  "\"Record each joint\" (How a project runs) and 'joint records' (who stands behind FAQ) repeat svc-fabrication's joint-log practice: both follow that page's FD-18 launch gate, and becomes [PP joint records kept] if the practice is not confirmed",
+  "Confirm the standards in the eyebrow against the standards Aquemi designs to routinely, or an industry-neutral eyebrow (FD-59)",
+  "Case studies: a case-study section joins home only with client permission (FD-42). No line on home refers to the record's absence (DR-028)",
+  "Drugs and natural health products tile (pass 12): natural health products share the drugs tile and its link (ind-pharma; the NHP section is ind-pharma#nhp). Its NHP clause keeps the industries grade row's wording (GUI-0158: potable minimum, PW where the specification or a monograph calls for it; DR-017 rule 3). If FD-38 drops NHP as a launch segment, the clause and the lead's NHP mention go together",
+  "Lead (pass 12, SITE-PLAN home; DR-027 rule 9 order; FD-59): names who it is for, drug and device makers first, then hospitals, labs, personal care and process plants; the meta clause uses the same order; the DR-021 exclusion sentence stays word for word as its last sentence (the PP boundary in the first screen). 'Products and final rinses' moved to the water path intro, where Purified Water (PW) is spelled out; PP is spelled out on the PW generation item",
   "Pass 11: router moved to third position, after the water path (desk Q2; DR-020). Rows: first system and early budget → first-system (P2; L-11-15, L-05-14); writing a URS → urs-guide (P1; L-09-7, L-13-19, L-G2-1); comparing quotes and terms → buying#compare (P5; L-02-22, L-G3-8, L-09-14); project timing and roles → project-plan (P5; L-01-5, L-11-8, L-13-9). Folded to 8 rows (the look's limit): the old budget row merges into the first-system row (desk Q2), and 'A project in qualification' leaves the router (the Qualify step still links svc-cq). Kept per desk ruling: upgrade and production-stopped rows",
-  "Pass 11 phrasebook 10 (L-01-1, L-15-18, PB-03.2, PB-09.5): steps heading 'From order to water in use', the duration in the intro ([order to water in use, weeks], project-plan's name, FD-08; the 9-word heading budget keeps the placeholder out of the heading). New step 'Water in use' links project-plan (SITE-PLAN); drawing ind-pharma (a vessel fed from a PW point-of-use valve). Unfilled at launch, the intro goes",
-  "Pass 11 phrasebook 5 (L-15-23, L-01-2, PB-15.18, PB-01.7): 'The parts are not new: [membranes and instruments bought from their makers].' Confirm the RO membranes and instruments are bought from their makers (FD-20 bill of materials); then the bracket becomes 'membranes and instruments come from their makers'. If not, drop the sentence (pass 11 review finding 4)",
-  "Router row 'Comparing quotes and terms' promises the lines to level and Aquemi's terms (buying#compare, buying#terms); the page publishes with FD-05 to FD-07 (SITE-PLAN). Until buying is live, point the row at cmp-quality#buying",
-  "Until project-plan publishes (FD-08; DR-026 rule 2), router row 'How long a project takes' and the 'Water in use' step link services#durations (pass 11 review finding 5)",
-  "Pass 11 review finding 1 (DR-017 rules 3 and 6): lead says 'who need Purified Water (PW) in products or final rinses', so it no longer tells every natural health product maker its products take PW. Finding 2: water is released after PQ phase 1 (project-plan#stages, WHO TRS 1033); PQ spelled out on the 'Water in use' step. Finding 6: router row 1 link text 'Your first system and its cost' (first-system#cost holds the cost)",
-  "Final round, pass 11: router situations in the reader's words where they fit the column: \"Planning your first water system\", \"Writing a URS that permits polypropylene\", \"Comparing proposals on equal terms\", \"Fixing an inspection finding or a water bottleneck\" (authoritative desk review, DESK-plan.md, Q2 ruling). Kept: the URS-in-hand, supplier, project and production-stopped rows (the desk's \"Send your draft URS for line-by-line review\" is an action, not a situation; \"compliant\" and \"built in Ontario\" rejected by the ruling)",
-  "Final round, pass 11: industry grid items open with where Purified Water goes for each segment (L-BWT-16, L-BWT-3; BWT study § 9 rank 3). Confirm the uses named per segment with the engineers before launch",
-  "Final round, pass 11: risk FAQ continuity line: the design engineer stays the contact after handover [confirm], with the key-person answer beside it (L-BWT-29; BWT study § 9 rank 9; the about FAQ on a key person leaving carries the full answer). Owner confirms the continuity promise (FD-34)"
+  "Pass 11 phrasebook 10 (L-01-1, L-15-18, PB-03.2, PB-09.5): steps heading 'From order to water in use', the duration in the intro ([order to water in use, weeks], project-plan's name, FD-08; the 9-word heading budget keeps the placeholder out of the heading). New step 'Water in use' links project-plan (SITE-PLAN); drawing ind-pharma (a vessel fed from a PW point-of-use valve). Unfilled at launch, the duration sentence goes; the non-GMP sentence stays",
+  "'We design and fabricate the package; [membranes and instruments bought from their makers].' Confirm the RO membranes and instruments are bought from their makers (FD-20 bill of materials); then the bracket becomes 'membranes, electrodeionization (EDI) modules and instruments come from their makers' (about#people wording, DR-011). If not, drop the clause after the semicolon. about#people states it as fact while home keeps the FD-20 placeholder: one of the two changes when FD-20 is set",
+  "Router (pass 12): row 'Not drugs or devices' added second, to industries#map (IB section 4; the industries editor owns the anchor). 'Comparing proposals' and 'Qualifying suppliers' merged to stay at 8 rows (the look's limit and the table budget): what comes back links cmp-quality, where to start links buying#compare (the row's click target). Pass 12 review: row 2 names hospitals first (DR-027 rule 9 order); 'How long a project takes' row dropped to meet the plan's 7-row cap, since the steps block on this page carries the duration and the project-plan link (DR-009)",
+  "The 'Water in use' step and the steps intro link and name project-plan's duration; its stage lengths follow FD-08 (the router row was dropped in pass 12)",
+  "Pass 11 review finding 2: water is released after PQ phase 1 (project-plan#stages, WHO TRS 1033); PQ spelled out on the 'Water in use' step. Finding 6: router row 1 link text 'Your first system and its cost' (first-system#cost holds the cost)",
+  "Final round, pass 11: router situations in the reader's words where they fit the column: \"Planning your first water system\", \"Writing a URS that permits polypropylene\", \"Comparing proposals or qualifying suppliers\" (merged with qualifying suppliers, pass 12), \"Fixing an inspection finding or a water bottleneck\" (authoritative desk review, DESK-plan.md, Q2 ruling). Kept: the URS-in-hand, supplier, project and production-stopped rows (the desk's \"Send your draft URS for line-by-line review\" is an action, not a situation; \"compliant\" and \"built in Ontario\" rejected by the ruling)",
+  "Industry grid (pass 12, IB section 4, DR-027): six group tiles in DR-027 rule 9 order, each opening with where the water goes; the tag is whoever writes the limit; each links its group page (ind-hospital-lab, ind-personal-care, ind-process are new pages owned by other editors). Confirm the uses named per group with the engineers before launch. Look: industry-feed tested with six tiles at 1280 (evidence type shrank, titles wrapped to four lines), so the block moved to standard-tiles (specimens.py fit grid; plan's preferred swap). Icons pick the blueprint drawing only (loop, valve, conductivity, ro-membrane); the 3-across grid leaves one empty cell after the plate and the flow block (phase 6 visual pass). Heading 'Same package, different limits by industry' (pass 12 review: hospital and lab grades are not Purified Water; DR-027 rule 3). Tile 6 says 'electrolyser feed' as ind-process does",
+  "'Who stands behind the system after handover?' FAQ (pass 12, newness sweep home rows; DR-028): continuity line (the design engineer stays the contact [confirm]), known parts, the records, then audit and FAT witness with notice times. Owner confirms the continuity promise (FD-34). Link: projects#verify 'How to qualify us'. Pass 12 review: team line by discipline from MISSION (pharmaceutical water systems, controls, modular fabrication; R7, no names or counts)",
+  "Pass 12 FAQ 'Do you work outside pharmaceutical manufacturing?': one line, link industries#matrix (the industries editor owns the anchor). The configuration per use stays on the group pages ([configurations offered for this use]; R2). Fit-gate sentence from industries#fit (DR-013 rule 2; [whether we quote PVDF], FD-15) so food and industrial readers meet the hot-loop limit",
+  "Pass 12 closing: [named contact, role, direct line] (PS section 5.1, FD-34) goes in the shared closing field once the closing renders one; not added to this page's cta by hand",
+  "Pass 12 steps heading: stays 'From order to water in use'; the duration stays in the intro as [order to water in use, weeks] (canonical name; the 9-word heading budget keeps it out of the heading). The intro adds DR-027 rule 8's non-GMP sentence verbatim (pass 12 review 5; home invites non-GMP readers)"
  ]
 }

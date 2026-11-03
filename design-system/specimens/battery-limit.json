@@ -86,7 +86,7 @@
    "page": "project-plan",
    "slot": 4,
    "h": "How you see progress",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -244,7 +244,7 @@
    "page": "first-system",
    "slot": 2,
    "h": "What your site needs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "0159cb3",
@@ -326,6 +326,251 @@
      "Your site provides"
     ],
     "seam": "Where our scope stops"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 4,
+   "h": "How you see progress",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "0faa7d8e0c",
+   "block": {
+    "type": "spec",
+    "anchor": "reporting",
+    "nav": "Progress",
+    "h": "How you see progress",
+    "intro": "We keep the record; your team reviews it on an agreed clock.",
+    "cols": [
+     "Item",
+     "When",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Contacts",
+      "v": "From order to handover",
+      "m": "[named project lead role] and your project manager, named in the order",
+      "side": "limit"
+     },
+     {
+      "p": "Kickoff meeting",
+      "v": "[kickoff after order, working days] after order",
+      "m": "Schedule, holds, contacts and the document list agreed",
+      "side": "package"
+     },
+     {
+      "p": "Document review",
+      "v": "[submittal review clock, working days] per issue",
+      "m": "The schedule assumes this clock; a longer review moves later dates",
+      "side": "site"
+     },
+     {
+      "p": "Hold point signatures",
+      "v": "At each hold in the stages",
+      "m": "The next stage starts after your signature",
+      "link": "project-plan#stages",
+      "link_label": "See the stages",
+      "side": "site"
+     },
+     {
+      "p": "Submittal log",
+      "v": "Updated with every issue",
+      "m": "Each document: approved, approved as noted, revise and resubmit, or for information",
+      "link": "cmp-documentation#by-stage",
+      "link_label": "Documents by stage",
+      "side": "package"
+     },
+     {
+      "p": "Status report",
+      "v": "[status report frequency]",
+      "m": "Progress against the schedule, open holds, risks and changes",
+      "side": "package"
+     },
+     {
+      "p": "Meeting minutes",
+      "v": "[minutes issue after meeting, working days] after each meeting",
+      "m": "Actions with owner and date, for your correction",
+      "side": "package"
+     },
+     {
+      "p": "Design reviews",
+      "v": "[design review points]",
+      "m": "Your engineer attends; your quality unit too, under GMP",
+      "side": "site"
+     },
+     {
+      "p": "As-built drawings",
+      "v": "[as-built drawings after SAT, working days] after SAT",
+      "m": "Marked as built; valves, gauges and sample points tagged as drawn [confirm]",
+      "side": "package"
+     }
+    ],
+    "sides": [
+     "From Aquemi",
+     "From your team"
+    ],
+    "seam": "One contact each side",
+    "fold": 4,
+    "fold_noun": "items",
+    "look": "battery-limit"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 2,
+   "h": "What your site needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "e0d69fc039",
+   "block": {
+    "type": "spec",
+    "look": "battery-limit",
+    "nav": "Your site",
+    "anchor": "site",
+    "h": "What your site needs",
+    "intro": "On your side: a water supply, a drain, power, floor space and a way in.",
+    "cols": [
+     "Item",
+     "What it takes",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Where our scope stops",
+      "v": "[standard battery limits, typical scope]; [installation scope]",
+      "m": "Listed in the proposal: who supplies, installs and connects each item",
+      "side": "limit",
+      "link": "systems#site",
+      "link_label": "Site details"
+     },
+     {
+      "p": "The package",
+      "v": "[typical footprint and weight, by capacity]",
+      "m": "Plus service clearance",
+      "side": "package"
+     },
+     {
+      "p": "Training",
+      "v": "[training hours and audiences]",
+      "m": "For your daily operators",
+      "link": "svc-cq#faq",
+      "link_label": "Training",
+      "side": "package"
+     },
+     {
+      "p": "Water supply",
+      "v": "City or well water, with its latest report",
+      "m": "The report sets the pretreatment",
+      "side": "site"
+     },
+     {
+      "p": "Drain",
+      "v": "[feed and drain flows, L/h]",
+      "m": "Reverse osmosis sends part of the feed to drain",
+      "side": "site"
+     },
+     {
+      "p": "Power",
+      "v": "[supply voltage options]",
+      "m": "To the control panel; the proposal says who brings it",
+      "side": "site"
+     },
+     {
+      "p": "Way in",
+      "v": "Doors and route at least [minimum door and access width, m]",
+      "m": "Measure the narrowest door on the route",
+      "side": "site"
+     },
+     {
+      "p": "Leased units",
+      "v": "Ask your landlord: drain, floor load, wall openings",
+      "m": "Before you order",
+      "side": "site"
+     },
+     {
+      "p": "Device washers and labs",
+      "v": "Drawn at the washer or bench, often in a clean room",
+      "m": "Plan the pipe and sample point there",
+      "side": "site"
+     }
+    ],
+    "sides": [
+     "The package brings",
+     "Your site provides"
+    ],
+    "seam": "Where our scope stops"
+   }
+  },
+  {
+   "page": "ind-personal-care",
+   "slot": 4,
+   "h": "Where the package fits, and where it does not",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "d91c23fbf9",
+   "block": {
+    "type": "spec",
+    "nav": "Fit",
+    "anchor": "fit",
+    "h": "Where the package fits, and where it does not",
+    "intro": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Your loop's temperature decides the material.",
+    "cols": [
+     "Condition",
+     "What applies",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Ambient loop, chemically sanitized",
+      "v": "[PP loop sanitization method]; residual tested before use.",
+      "m": "The duty this package is built for",
+      "side": "package",
+      "link": "industries#fit",
+      "link_label": "Check your use fits"
+     },
+     {
+      "p": "Hot-held loop, steam, or routine 80 °C at loop pressure",
+      "v": "Needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]",
+      "side": "site"
+     },
+     {
+      "p": "A standard that requires stainless steel",
+      "v": "Rules out polypropylene, unless the standard allows exceptions",
+      "side": "site"
+     },
+     {
+      "p": "Hot-water cycles",
+      "v": "Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C].",
+      "side": "limit"
+     },
+     {
+      "p": "Wetted parts",
+      "v": "[PP material certificates]",
+      "m": "For your file: what touches the water",
+      "side": "package"
+     },
+     {
+      "p": "Batch peaks",
+      "v": "Storage sized to your largest batch and its rinses",
+      "m": "From batch size and batches per week",
+      "side": "package"
+     }
+    ],
+    "sides": [
+     "Fits the package",
+     "Needs another material"
+    ],
+    "seam": "Where polypropylene stops",
+    "fold": 4,
+    "fold_noun": "conditions",
+    "look": "battery-limit"
    }
   }
  ]

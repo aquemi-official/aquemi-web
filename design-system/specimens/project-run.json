@@ -52,7 +52,7 @@
    "page": "home",
    "slot": 3,
    "h": "From order to water in use",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -95,6 +95,56 @@
     ],
     "look": "project-run",
     "intro": "Time from order to water in use: [order to water in use, weeks]."
+   }
+  },
+  {
+   "page": "home",
+   "slot": 3,
+   "h": "From order to water in use",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "faed13edb2",
+   "block": {
+    "type": "steps",
+    "anchor": "steps",
+    "h": "From order to water in use",
+    "items": [
+     {
+      "t": "Design",
+      "d": "We turn your user requirement specification (URS) into a design you approve before anything is built.",
+      "link": "svc-design"
+     },
+     {
+      "t": "Fabricate",
+      "d": "We build the PP skids and record each joint.",
+      "link": "svc-fabrication"
+     },
+     {
+      "t": "Test",
+      "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves.",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Qualify",
+      "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves.",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Water in use",
+      "d": "After performance qualification (PQ) phase 1, your quality unit releases the water. The project plan shows each stage's length, notice and who holds it.",
+      "link": "project-plan",
+      "art": "ind-pharma"
+     },
+     {
+      "t": "Support",
+      "d": "PQ support through 12 months of data, then service and spare parts.",
+      "link": "svc-service"
+     }
+    ],
+    "look": "project-run",
+    "intro": "Order to water in use: [order to water in use, weeks]. Not under good manufacturing practice (GMP)? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification."
    }
   }
  ]

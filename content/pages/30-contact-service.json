@@ -5,7 +5,7 @@
  "title": "Service request: faults, calibration and parts | Aquemi",
  "meta": "Production stopped? Call [service phone number], [service phone hours]. Or log a fault, maintenance, USP <645> calibration, parts or requalification request.",
  "path": "/contact/service/",
- "eyebrow": "SERVICE REQUEST · PURIFIED WATER",
+ "eyebrow": "SERVICE REQUEST · FAULTS · CALIBRATION · PARTS",
  "headline": "Service for Aquemi systems and [makes and equipment types serviced]",
  "lead": "Production stopped? Call [service phone number], [service phone hours]. Anything else? The form asks only what your request needs.",
  "primary_cta": "Log a service request",
@@ -97,9 +97,9 @@
      "Signed report; calibration certificates for instruments checked against USP <645> and <643>"
     ],
     [
-     "Requalification after a change",
+     "Requalification or retest after a change",
      "Reply within [requalification support reply time, working days]",
-     "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7)"
+     "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7); outside GMP, an acceptance test to your specification"
     ],
     [
      "Parts and consumables",
@@ -141,7 +141,7 @@
         "Requalification after a change",
         "First service, other make"
        ],
-       "help": "Upgrades and assessments go to the proposal form."
+       "help": "Retest outside GMP? Choose requalification. Upgrades and assessments go to the proposal form."
       },
       {
        "label": "Severity",
@@ -179,7 +179,7 @@
        "required": false,
        "when": "Fault now|Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make",
        "options": [
-        "Purified Water (PW) generation",
+        "Generation: reverse osmosis (RO), deionization (DI) or electrodeionization (EDI)",
         "Storage and distribution loop",
         "Pretreatment",
         "Controls: PLC, HMI or SCADA",
@@ -215,6 +215,7 @@
        "options": [
         "Piping and instrumentation diagrams (P&IDs)",
         "Installation, operational and performance qualification (IQ, OQ, PQ) reports",
+        "Commissioning or acceptance test reports",
         "Bill of materials or spares list",
         "PLC program backup",
         "Manuals",
@@ -254,7 +255,7 @@
        "required": false,
        "unit": "µS/cm",
        "when": "Fault now",
-       "help": "The value not adjusted to 25 °C, for USP <645> stage 1."
+       "help": "The value not adjusted to 25 °C (USP <645> stage 1). Resistivity meter? Put MΩ·cm in Notes."
       },
       {
        "label": "Temperature at the conductivity sensor",
@@ -286,9 +287,9 @@
        "options": [
         "In use or being released",
         "On hold, or production stopped",
-        "No good manufacturing practice (GMP) use now"
+        "Not used for product, patients or tests now"
        ],
-       "help": "Your quality unit decides whether water already used is affected."
+       "help": "Your quality unit, or whoever owns your water specification, decides whether water already used is affected."
       },
       {
        "label": "Is a deviation open?",
@@ -299,7 +300,8 @@
         "Yes, a deviation is open",
         "Being assessed",
         "No deviation"
-       ]
+       ],
+       "help": "Outside GMP: your nonconformance or incident report."
       },
       {
        "label": "Deviation reference and investigation due date",
@@ -463,6 +465,7 @@
         "Input for the change request",
         "IQ and OQ protocols",
         "Protocol execution on site",
+        "Acceptance test to your specification",
         "Sampling plan for return to use"
        ]
       },
@@ -528,6 +531,7 @@
         "Validation",
         "Engineering",
         "Procurement",
+        "Laboratory or sterile processing",
         "Other"
        ]
       },
@@ -535,7 +539,7 @@
        "label": "Site access requirements",
        "kind": "text",
        "required": false,
-       "help": "Induction, good manufacturing practice (GMP) training, gowning, permits."
+       "help": "Induction, good manufacturing practice (GMP) training, gowning, infection control, permits."
       }
      ]
     }
@@ -548,7 +552,7 @@
    "items": [
     {
      "q": "Who decides whether water already used is affected?",
-     "a": "Your quality unit. Our signed service report gives it the facts: when readings left specification, where, what we found and what we did. We do not release water."
+     "a": "Your quality unit, or whoever owns your water specification. Our signed service report gives it the facts: when readings left specification, where, what we found and what we did. We do not release water."
     },
     {
      "q": "We have no service plan. Will you come?",
@@ -583,11 +587,13 @@
   "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [PP material certificates]. The form's option names no material, so it fits any builder's system; the elastomer option names no standard ([elastomer certificates per compound] is cmp-quality's name for what ships; FD-17).",
   "Uploads and privacy (FD-39): [maximum upload size, MB], as on contact-proposal; [privacy notice link], contact-proposal's name, covering PIPEDA and Quebec Law 25 after counsel's check (OQ-81).",
   "Language for the reply (FD-36, DR-012): the field (English, French) returns to step 3 only once a named French-speaking technician or engineer replies within the same times, as on contact-proposal (DR-012 rule 2 and consequences).",
-  "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004).",
+  "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, by appointment with [shop visit notice, working days] notice (FD-44, DR-004, pass 12 R6).",
   "Pass 11 (offer § 14 CS1; L-14-3, L-08-2; FD-07, FD-27): response table intro adds the warranty route, \"In warranty, call the same line with the serial number.\" The offer draft's \"same times\" in warranty is held until FD-07 and FD-27 say warranty calls get plan response times. The intro adds the warranty terms (buying's three names since the pass 11 integration), so a warranty caller reads the basis, not a charged call-out (pass 11 review finding 7; DR-024)",
   "Pass 11 (offer § 14 CS2; L-03-10, L-12-13, L-12-9, L-13-15; FD-29, FD-31): the no-plan FAQ now names what is charged: [call-out and hourly rates, CAD], travel at [travel charge basis] (new name for ops/placeholder-names.md) and parts as quoted, and the signed report after every visit (phrasebook § 3 pattern 15)",
   "Pass 11 (offer § 14 CS3; L-15-20, L-14-1, L-13-5; FD-11): the parts row's What follows reads \"Matched by tag or part number to your qualified parts list, like for like, with certificates\"; the form's \"Parts needed\" help asks for the tag (pass 11 review finding 6: \"Quote\" as a verb beside \"Quote\" as a price read as a contradiction)",
-  "Pass 11 integration (DR-011, one name per fact; placeholder-names Warranty row): the response table intro's warranty line uses buying#terms' three names, [warranty periods: package, service work, consumables], [warranty start event] and [warranty exclusions], replacing the retired [warranty period, start, exclusions]"
+  "Pass 11 integration (DR-011, one name per fact; placeholder-names Warranty row): the response table intro's warranty line uses buying#terms' three names, [warranty periods: package, service work, consumables], [warranty start event] and [warranty exclusions], replacing the retired [warranty period, start, exclusions]",
+  "Pass 12 (FD-59, DR-027 rules 8-9; SITE-PLAN contact-service): breadth without new fields. The systems option names generation by technology (RO, DI, EDI), so a hospital, lab or process plant's system is not misnamed Purified Water (SITE-PLAN 1.2.6); the records list adds commissioning or acceptance test reports; the requalification row and its help list add the non-GMP path (acceptance test to your specification); the water-in-use help and the first FAQ name 'whoever owns your water specification' beside the quality unit. Severity and request-type option names unchanged: svc-service, home, contact-proposal and contact-locations tick them by intent.",
+  "Pass 12 (RI 06, SITE-PLAN contact-service): no industry field added; a fault request needs the system, not the industry, and the maintenance lead's path is phone first, form second. If one is added, it uses the ten DR-027 rule 10 options from contact-proposal. Tap-to-call stays the hero's secondary link (tel:); the sticky phone bar is phase 6 layout work. FD-60: no newness wording on the page ('No service plan yet?' and 'Raised, not yet approved' are the reader's own status)."
  ],
  "hero_index": false,
  "figure": {

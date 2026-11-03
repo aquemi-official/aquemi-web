@@ -55,7 +55,7 @@
    "page": "svc-fat-sat",
    "slot": 2,
    "h": "From protocol to release, then SAT",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -91,6 +91,53 @@
      {
       "t": "SAT on your site",
       "d": "Critical tests re-run on site; the report feeds IQ/OQ. Signed start-up values become your day-one record for later visits [confirm]."
+     }
+    ],
+    "look": "test-sheet"
+   }
+  },
+  {
+   "page": "svc-fat-sat",
+   "slot": 2,
+   "h": "From protocol to release, then SAT",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "ad597acf34",
+   "block": {
+    "type": "steps",
+    "ground": "light",
+    "nav": "Process",
+    "anchor": "steps",
+    "h": "From protocol to release, then SAT",
+    "intro": "Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Draft protocol",
+      "d": "From the functional specification, sent [protocol issue before FAT, weeks] ahead. Each test states its acceptance criterion and traces to your user requirement specification (URS)."
+     },
+     {
+      "t": "Your approval",
+      "d": "Your team may add test cases and confirm which IQ/OQ will reuse. Nothing runs before your quality unit signs.",
+      "hold": "Your quality unit"
+     },
+     {
+      "t": "Internal dry run",
+      "d": "We run the full protocol first, so the witnessed FAT confirms rather than debugs [confirm]."
+     },
+     {
+      "t": "Witnessed run",
+      "d": "You witness each test case. Results are recorded as found, never resampled to pass; minor defects go on the punch list."
+     },
+     {
+      "t": "Report and release",
+      "d": "Raw data, deviation log and release decision. Skid drained, then [post-FAT drying and sealing method].",
+      "hold": "Both parties"
+     },
+     {
+      "t": "SAT on your site",
+      "d": "Critical tests re-run on site; the report feeds IQ/OQ. Signed commissioning values become your day-one record for later visits [confirm]."
      }
     ],
     "look": "test-sheet"

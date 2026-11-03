@@ -10,9 +10,9 @@
    "page": "cmp-quality",
    "slot": 2,
    "h": "How a defect is held and closed",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "1bbf29e1a7",
    "block": {
@@ -23,6 +23,56 @@
      {
       "t": "Identify and hold",
       "d": "Whoever finds it tags and segregates the item, or stops work, and raises an NCR."
+     },
+     {
+      "t": "Disposition",
+      "d": "Reject, rework or accept as is. Accepting as is, or an unapproved repair, needs your approval.",
+      "hold": "You"
+     },
+     {
+      "t": "Repair",
+      "d": "A rejected product-contact joint is cut out and remade to [PP joint repair rule], under a new number."
+     },
+     {
+      "t": "Root cause and CAPA",
+      "d": "Repeat, systemic or client-reported: cause found, procedure, training or supplier changed."
+     },
+     {
+      "t": "Effectiveness check",
+      "d": "Evidence after an agreed period that the action worked, signed before the CAPA closes."
+     },
+     {
+      "t": "Reported to you",
+      "d": "Every NCR logged in your turnover package; one after shipment reaches you within [NCR notice after shipment, working days]."
+     }
+    ],
+    "look": "ncr-tiles",
+    "drawing": {
+     "step": 3,
+     "reject": "Rejected joint",
+     "cut": "Cut out",
+     "remade": "Remade to [PP joint repair rule]",
+     "number": "New number"
+    }
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 2,
+   "h": "How a defect is held and closed",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "622d810ea9",
+   "block": {
+    "type": "steps",
+    "nav": "NCR and CAPA",
+    "h": "How a defect is held and closed",
+    "items": [
+     {
+      "t": "Identify and hold",
+      "d": "Whoever finds it tags and segregates the item or stops work, raising an NCR. A failed test is logged and investigated, never resampled to pass."
      },
      {
       "t": "Disposition",

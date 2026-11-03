@@ -88,7 +88,7 @@
    "page": "svc-service",
    "slot": 5,
    "h": "When something goes wrong",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -115,6 +115,47 @@
      {
       "t": "On site",
       "d": "A technician with the likely parts; water back within limits."
+     },
+     {
+      "t": "Report",
+      "d": "Root cause, parts and lot numbers, for your deviation."
+     }
+    ]
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 5,
+   "h": "When something goes wrong",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bee7493",
+   "hash": "155128424c",
+   "block": {
+    "type": "steps",
+    "look": "response-clock",
+    "nav": "Faults",
+    "anchor": "response",
+    "h": "When something goes wrong",
+    "items": [
+     {
+      "t": "Call",
+      "d": "[service phone number], [service phone hours]. Severity 1: always call. In warranty, call the same line with the serial number."
+     },
+     {
+      "t": "Triage",
+      "d": "We confirm severity and start your plan’s response clock. It stops at [response clock stop event]; a missed time earns [missed response remedy]."
+     },
+     {
+      "t": "Remote diagnosis",
+      "d": "Trends and alarms reviewed within [remote response time, hours]; operators guided to a safe state.",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "On site",
+      "d": "A technician with the likely parts, working under your site’s permits; water back within limits.",
+      "link": "cmp-documentation#safety"
      },
      {
       "t": "Report",
