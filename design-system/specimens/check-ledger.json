@@ -102,9 +102,9 @@
    "page": "projects",
    "slot": 0,
    "h": "Verify before a case study exists",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "ea42e60dbd",
    "block": {
@@ -152,6 +152,121 @@
       },
       "That a project's records are complete",
       "[specimen package response time, working days]"
+     ],
+     [
+      "That our quality system works",
+      {
+       "t": "Supplier audit",
+       "link": "cmp-quality#audit",
+       "intent": "On-site supplier audit"
+      },
+      "A specific system's performance",
+      "[on-site audit notice, working days], from [quality system ready for audit, date]"
+     ],
+     [
+      "That we read your user requirement specification (URS) line by line",
+      {
+       "t": "Compliance matrix",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft|Compliance matrix"
+      },
+      "How the installed system performs",
+      "[compliance matrix response time, working days]"
+     ],
+     [
+      "Your system's alarms, interlocks and controls, before it ships",
+      {
+       "t": "Factory acceptance test (FAT) witness",
+       "link": "contact-locations#visit",
+       "intent": "Witness the FAT on our project"
+      },
+      "Performance on your feed water",
+      "[FAT witness notice, working days], once [shop and test bay ready for visits]"
+     ]
+    ],
+    "look": "check-ledger",
+    "fits": {
+     "1": [
+      "cross",
+      "tee"
+     ]
+    }
+   }
+  },
+  {
+   "page": "projects",
+   "slot": 0,
+   "h": "Verify before a case study exists",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "ebbb54f08f",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Checks",
+    "anchor": "verify",
+    "h": "Verify before a case study exists",
+    "cols": [
+     "What you check",
+     "Route",
+     "What it does not prove",
+     "Time to arrange"
+    ],
+    "rows": [
+     [
+      {
+       "t": "The engineer who would lead your project",
+       "link": "about#people"
+      },
+      {
+       "t": "Talk to an engineer",
+       "link": "contact-proposal",
+       "intent": "Not sure yet: talk to an engineer"
+      },
+      "Delivery on schedule and budget",
+      "[proposal response time, working days]"
+     ],
+     [
+      "How we join and trace PP parts, in [shop location, city and province]",
+      {
+       "t": "Shop visit",
+       "link": "contact-locations#visit",
+       "intent": "Shop tour before shortlisting"
+      },
+      "How your system will perform",
+      "[shop visit notice, working days], once [shop and test bay ready for visits]"
+     ],
+     [
+      "What your turnover package will contain",
+      {
+       "t": "Specimen package",
+       "link": "cmp-documentation#samples",
+       "intent": "Turnover package index"
+      },
+      "That a project's records are complete",
+      "[specimen package response time, working days]"
+     ],
+     [
+      "A specimen design set: piping and instrumentation diagram (P&ID) and 3D layout, labelled a specimen",
+      {
+       "t": "Talk to an engineer",
+       "link": "contact-proposal",
+       "intent": "Not sure yet: talk to an engineer"
+      },
+      "That any installation exists: it is a specimen, not a delivered system",
+      "[specimen design set availability, date]"
+     ],
+     [
+      "Our factory acceptance test (FAT) protocol template, labelled a specimen",
+      {
+       "t": "Specimen package",
+       "link": "cmp-documentation#samples",
+       "intent": "FAT protocol: contents and test cases"
+      },
+      "How the FAT runs on your system",
+      "[FAT protocol template issue date]"
      ],
      [
       "That our quality system works",

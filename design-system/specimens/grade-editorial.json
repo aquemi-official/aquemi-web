@@ -166,7 +166,7 @@
    "page": "industries",
    "slot": 2,
    "h": "Your first Purified Water system",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -181,6 +181,53 @@
      {
       "t": "Your product’s grade",
       "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
+      "link": "ind-pharma#grades",
+      "big": [
+       {
+        "v": "PW",
+        "l": "Non-sterile drugs · Health Canada GUI-0001"
+       },
+       {
+        "v": "Potable",
+        "l": "Natural health products, at minimum · GUI-0158"
+       }
+      ]
+     },
+     {
+      "t": "Your first system, in plain terms",
+      "d": "Whether a packaged system fits, what your site needs, what your team does each week and running cost per month.",
+      "link": "first-system",
+      "panel": true,
+      "list": [
+       "Whether a packaged system fits",
+       "What your site needs",
+       "What your team does each week",
+       "Running cost per month"
+      ]
+     }
+    ],
+    "intro": "It fits when you need Purified Water at [minimum–maximum capacity, L/h] per skid. It does not fit Water for Injection, steam or a hot-held loop."
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 2,
+   "h": "Your first Purified Water system",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "6248ff2caa",
+   "block": {
+    "type": "grid",
+    "look": "grade-editorial",
+    "nav": "First system",
+    "anchor": "first-system",
+    "h": "Your first Purified Water system",
+    "items": [
+     {
+      "t": "Your product’s grade",
+      "d": "Purified Water goes into your product or rinses what touches it. Non-sterile drugs need PW (GUI-0001); natural health products, potable at minimum (GUI-0158).",
       "link": "ind-pharma#grades",
       "big": [
        {

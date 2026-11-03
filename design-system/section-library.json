@@ -101,7 +101,7 @@
    "status": "live",
    "fields": "h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows [{p, v, m, side, link, link_label}] (side: \"limit\" | \"package\" | \"site\"; default site), sides ([package label, site label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card).",
    "best_for": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
-   "held": "7-8",
+   "held": "7-9",
    "pages": [
     "first-system",
     "project-plan"
@@ -131,11 +131,21 @@
      "page": "first-system",
      "slot": 2,
      "h": "What your site needs",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "f04e4c9a6f"
+    },
+    {
+     "page": "first-system",
+     "slot": 2,
+     "h": "What your site needs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "0daefc59d5"
     }
    ]
   },
@@ -190,7 +200,7 @@
    "status": "live",
    "fields": "h, intro, items [{t, d, link, label}]. label: the tab's short text (\"IQ\", \"FAT · SAT\"); without one the tab shows the stage number.",
    "best_for": "BinderTabs files ordered stages as tab dividers in the open qualification binder, each signed off before the next (look `binder-tabs`, steps block).",
-   "held": "6-9",
+   "held": "6-10",
    "pages": [
     "buying",
     "urs-guide"
@@ -210,7 +220,7 @@
      "page": "urs-guide",
      "slot": 1,
      "h": "What a Purified Water URS should settle",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -225,6 +235,16 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "b96c4f5758"
+    },
+    {
+     "page": "urs-guide",
+     "slot": 1,
+     "h": "What a Purified Water URS should settle",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "ff699440b9"
     }
    ]
   },
@@ -369,7 +389,7 @@
    "status": "live",
    "fields": "(a table, as \"router\"): h, intro, cols [check, route, does not prove, time], rows (cells strings or {t, link, intent}), fold, fold_noun.",
    "best_for": "CheckLedger sets a router table of checks a buyer can run before a case study exists as a ledger of tiles: each check is one row headed by a navy slash-numeral tile, then the route to arrange it, what you check, what it does not prove, and the time to arrange in mono at the right edge.",
-   "held": "6",
+   "held": "6-8",
    "pages": [
     "projects"
    ],
@@ -388,11 +408,21 @@
      "page": "projects",
      "slot": 0,
      "h": "Verify before a case study exists",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "ea42e60dbd"
+    },
+    {
+     "page": "projects",
+     "slot": 0,
+     "h": "Verify before a case study exists",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "ebbb54f08f"
     }
    ]
   },
@@ -566,7 +596,7 @@
      "page": "about",
      "slot": 0,
      "h": "Company facts",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -581,6 +611,16 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "037d7f98ba"
+    },
+    {
+     "page": "about",
+     "slot": 0,
+     "h": "Company facts",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "bd39a969f0"
     }
    ]
   },
@@ -699,11 +739,21 @@
      "page": "contact-locations",
      "slot": 2,
      "h": "Can you support my site?",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "c70f10e8f0"
+    },
+    {
+     "page": "contact-locations",
+     "slot": 2,
+     "h": "Can you support my site?",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "a40b1189b9"
     }
    ]
   },
@@ -1216,11 +1266,21 @@
      "page": "industries",
      "slot": 2,
      "h": "Your first Purified Water system",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "946eefc733"
+    },
+    {
+     "page": "industries",
+     "slot": 2,
+     "h": "Your first Purified Water system",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "6248ff2caa"
     }
    ]
   },
@@ -1509,9 +1569,9 @@
      "page": "home",
      "slot": 2,
      "h": "Same PW limits, different evidence by industry",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "166c252f5a"
     },
@@ -1524,6 +1584,16 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "4d32181b1f"
+    },
+    {
+     "page": "home",
+     "slot": 2,
+     "h": "Same PW limits, different evidence by industry",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "9e1af32748"
     }
    ]
   },
@@ -1644,11 +1714,21 @@
      "page": "buying",
      "slot": 1,
      "h": "What every proposal lists, line by line",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "bc44f2b108"
+    },
+    {
+     "page": "buying",
+     "slot": 1,
+     "h": "What every proposal lists, line by line",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "bc53170c6c"
     }
    ]
   },
@@ -1885,9 +1965,9 @@
      "page": "industries",
      "slot": 1,
      "h": "Grade, limit and inspector by industry",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "36cc9a507c"
     },
@@ -1900,6 +1980,16 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "9162457154"
+    },
+    {
+     "page": "industries",
+     "slot": 1,
+     "h": "Grade, limit and inspector by industry",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "dc5371c7fb"
     }
    ]
   },
@@ -1939,11 +2029,21 @@
      "page": "home",
      "slot": 1,
      "h": "Start from where your project is",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "85fe2279d4"
+    },
+    {
+     "page": "home",
+     "slot": 1,
+     "h": "Start from where your project is",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "14f83645c1"
     }
    ]
   },
@@ -2734,7 +2834,7 @@
      "page": "project-plan",
      "slot": 1,
      "h": "Who does what, and what is ready before installation",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -2764,11 +2864,31 @@
      "page": "first-system",
      "slot": 0,
      "h": "Is a packaged system right for your site?",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "a2aef98a96"
+    },
+    {
+     "page": "project-plan",
+     "slot": 1,
+     "h": "Who does what, and what is ready before installation",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "c6071f0455"
+    },
+    {
+     "page": "first-system",
+     "slot": 0,
+     "h": "Is a polypropylene Purified Water package right for you?",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "82307fcae4"
     }
    ]
   },
@@ -2925,7 +3045,7 @@
      "page": "first-system",
      "slot": 5,
      "h": "From first call to water you can use",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -2940,6 +3060,16 @@
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "9d0ebc33f3"
+    },
+    {
+     "page": "first-system",
+     "slot": 5,
+     "h": "From first call to water you can use",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "010347d8ee"
     }
    ]
   },
@@ -3780,11 +3910,21 @@
      "page": "about",
      "slot": 1,
      "h": "The people you would work with",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "c23e8d35dc"
+    },
+    {
+     "page": "about",
+     "slot": 1,
+     "h": "The people you would work with",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "ab1f9fdbc8"
     }
    ]
   },
@@ -4120,11 +4260,21 @@
      "page": "systems",
      "slot": 0,
      "h": "How the systems fit together",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "7bec53a443"
+    },
+    {
+     "page": "systems",
+     "slot": 0,
+     "h": "How the systems fit together",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "c6d521ace3"
     }
    ]
   },
@@ -4742,11 +4892,21 @@
      "page": "sys-pw",
      "slot": 1,
      "h": "How water moves through the skid",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
      "hash": "9df49b581a"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 1,
+     "h": "How water moves through the skid",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "0159cb3",
+     "hash": "8ef7267ec9"
     }
    ]
   },

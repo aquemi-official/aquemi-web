@@ -88,9 +88,9 @@
    "page": "industries",
    "slot": 1,
    "h": "Grade, limit and inspector by industry",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "36cc9a507c",
    "block": {
@@ -216,6 +216,84 @@
      ]
     ],
     "look": "macro-leaders"
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 1,
+   "h": "Grade, limit and inspector by industry",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "dc5371c7fb",
+   "block": {
+    "type": "table",
+    "look": "macro-leaders",
+    "nav": "By industry",
+    "h": "Grade, limit and inspector by industry",
+    "cols": [
+     "Industry",
+     "Where the water goes, and its grade",
+     "Limit that applies",
+     "Inspector"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Pharma, non-sterile",
+       "link": "ind-pharma"
+      },
+      "Into granulation, coatings and oral liquids, and the final equipment rinse: PW",
+      "USP <645> and <643>",
+      "Health Canada GUI-0001; FDA 21 CFR 211"
+     ],
+     [
+      {
+       "t": "Contract manufacturing",
+       "link": "ind-cdmo"
+      },
+      "Into each client's products, from one system: PW per client program",
+      "Stricter of USP and Ph. Eur., per attribute",
+      "Regulators and each client’s quality unit"
+     ],
+     [
+      {
+       "t": "Medical devices",
+       "link": "ind-meddevice"
+      },
+      "The final rinse of components: PW, with an endotoxin limit where needed",
+      "USP <161> per device; ISO 11737-1 bioburden",
+      "Health Canada, through MDSAP (Class II to IV); FDA 21 CFR 820"
+     ],
+     [
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      },
+      "Into liquids, creams and some dilutions: potable at minimum; PW where your specification calls for it",
+      "Your specification (GUI-0158 s. 45)",
+      "Health Canada GUI-0158"
+     ],
+     [
+      {
+       "t": "Cosmetics and personal care",
+       "link": "industries#faq"
+      },
+      "Your written specification; ISO 22716 good manufacturing practice (GMP) encouraged; PW for any drug line",
+      "Each product’s legal class, by market",
+      "Health Canada; FDA for over-the-counter drugs"
+     ],
+     [
+      {
+       "t": "Pharma, sterile",
+       "link": "industries#faq"
+      },
+      "PW for non-sterile steps; we do not supply Water for Injection",
+      "USP <645> and <643>",
+      "Health Canada GUI-0119; FDA; EU authorities"
+     ]
+    ]
    }
   }
  ]

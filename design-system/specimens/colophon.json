@@ -318,7 +318,7 @@
    "page": "about",
    "slot": 0,
    "h": "Company facts",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -452,6 +452,91 @@
       "m": "Each excursion was investigated and closed, with a cause or follow-up tests"
      }
     ],
+    "look": "colophon"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 0,
+   "h": "Company facts",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "bd39a969f0",
+   "block": {
+    "type": "spec",
+    "nav": "Company",
+    "anchor": "facts",
+    "h": "Company facts",
+    "cols": [
+     "Item",
+     "Fact",
+     "Evidence"
+    ],
+    "rows": [
+     {
+      "p": "Scope",
+      "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Not Water for Injection, pure steam or stainless steel systems; not residential or municipal",
+      "m": "Stated in these words in every proposal. Registered activity: [registered business activity, as filed]",
+      "link": "systems",
+      "hl": true
+     },
+     {
+      "p": "Why we started",
+      "v": "[why we started, in the founders' words]",
+      "m": "Founders' statement, [approved] by each founder"
+     },
+     {
+      "p": "Founded and ownership",
+      "v": "[founding year] · [ownership; any equipment maker's stake]",
+      "m": "[corporate registration, jurisdiction and number]"
+     },
+     {
+      "p": "People",
+      "v": "[headcount] in total · [headcount by discipline]",
+      "m": "Organization chart, from [quality system ready for audit, date]",
+      "link": "cmp-quality#audit"
+     },
+     {
+      "p": "Quality system",
+      "v": "[ISO 9001 status, registrar and expiry]",
+      "m": "",
+      "link": "cmp-quality#certification"
+     },
+     {
+      "p": "Insurance and financial standing",
+      "v": "[general and professional liability limits, CAD] · [financial standing evidence for procurement]",
+      "m": "Certificate: [certificate of insurance status]. Financial evidence on request",
+      "link": "buying#onboarding"
+     },
+     {
+      "p": "Professional licences",
+      "v": "[number of licensed engineers] P.Eng. or ing. in [provinces of licence] · [engineering firm permit, by province]",
+      "m": "[licensing body registers]"
+     },
+     {
+      "p": "Head office",
+      "v": "[head office, city and province]",
+      "m": "",
+      "link": "contact-locations#locations"
+     },
+     {
+      "p": "Shop and test bay",
+      "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
+      "m": "Visit once [shop and test bay ready for visits]",
+      "link": "contact-locations#visit"
+     },
+     {
+      "p": "Systems delivered",
+      "v": "[systems delivered, by type and province]",
+      "m": "",
+      "link": "projects"
+     }
+    ],
+    "note": "A bracketed fact is not yet confirmed.",
+    "fold": 8,
+    "fold_noun": "facts",
     "look": "colophon"
    }
   }

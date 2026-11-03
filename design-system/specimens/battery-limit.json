@@ -168,7 +168,7 @@
    "page": "first-system",
    "slot": 2,
    "h": "What your site needs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -230,6 +230,94 @@
       "p": "Way in",
       "v": "Doors and route at least [minimum door and access width, m]",
       "m": "Measure the narrowest door on the route",
+      "side": "site"
+     }
+    ],
+    "sides": [
+     "The package brings",
+     "Your site provides"
+    ],
+    "seam": "Where our scope stops"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 2,
+   "h": "What your site needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "0daefc59d5",
+   "block": {
+    "type": "spec",
+    "look": "battery-limit",
+    "nav": "Your site",
+    "anchor": "site",
+    "h": "What your site needs",
+    "intro": "On your side: a water supply, a drain, power, floor space and a way in.",
+    "cols": [
+     "Item",
+     "What it takes",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Where our scope stops",
+      "v": "[standard battery limits, typical scope]; [installation scope]",
+      "m": "Listed in the proposal: who supplies, installs and connects each item",
+      "side": "limit",
+      "link": "systems#site",
+      "link_label": "Site details"
+     },
+     {
+      "p": "The package",
+      "v": "[typical footprint and weight, by capacity]",
+      "m": "Plus clear space around it for service",
+      "side": "package"
+     },
+     {
+      "p": "Training",
+      "v": "[training hours and audiences]",
+      "m": "For the people who run it each day",
+      "link": "svc-cq#faq",
+      "link_label": "Training",
+      "side": "package"
+     },
+     {
+      "p": "Water supply",
+      "v": "Your city water, with its latest report",
+      "m": "The report sets the pretreatment",
+      "side": "site"
+     },
+     {
+      "p": "Drain",
+      "v": "[feed and drain flows, L/h]",
+      "m": "Reverse osmosis sends part of the feed to drain",
+      "side": "site"
+     },
+     {
+      "p": "Power",
+      "v": "[supply voltage options]",
+      "m": "A supply to the control panel; the proposal says who brings it",
+      "side": "site"
+     },
+     {
+      "p": "Way in",
+      "v": "Doors and route at least [minimum door and access width, m]",
+      "m": "Measure the narrowest door on the route",
+      "side": "site"
+     },
+     {
+      "p": "Natural health product sites",
+      "v": "Often a leased unit: ask your landlord about the drain, floor load and wall openings",
+      "m": "Ask before you order",
+      "side": "site"
+     },
+     {
+      "p": "Medical device sites",
+      "v": "Rinse water is drawn at the washer, often inside a clean room",
+      "m": "Plan the pipe route and a sample point there",
       "side": "site"
      }
     ],

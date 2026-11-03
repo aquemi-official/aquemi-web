@@ -97,8 +97,13 @@
    "anchor": "outline",
    "nav": "Outline",
    "h": "What a Purified Water URS should settle",
-   "intro": "Give every requirement a number and one sentence. Suppliers then answer in your numbering, and your evaluators score the same rows.",
+   "intro": "Number each requirement, one sentence each. Suppliers answer in your numbering; evaluators score the same rows.",
    "items": [
+    {
+     "t": "Before design",
+     "d": "Feed water, grade, demand and site limits first. Then the loop: scheme, components, check against URS and budget, change or freeze.",
+     "label": "Start"
+    },
     {
      "t": "Water grade and system boundary",
      "d": "Purified Water to USP, Ph. Eur. or both, by edition. Say where the system starts and ends, and what is by others.",
@@ -363,7 +368,9 @@
     },
     {
      "q": "Our corporate standard names stainless steel. Can polypropylene still bid?",
-     "a": "Only with a deviation your quality unit approves. If the standard stands, write it as a must-have and ask stainless suppliers. That saves everyone a bid."
+     "a": "Only with a deviation your quality unit approves. If the standard stands, write it as a must-have and ask stainless suppliers. That saves everyone a bid.",
+     "link": "news#pp-or-stainless",
+     "link_label": "Polypropylene or stainless steel"
     },
     {
      "q": "Which standards should our URS cite?",
@@ -423,6 +430,8 @@
   "Closing returns \"Rows that rule out polypropylene, and why\": confirm the URS gap review returns this (FD-02). Open: whether Aquemi drafts a URS for small firms (owner decision; not on the page). French version per DR-012",
   "Before shipping: buyer-panel with process-engineer, consultant, founder, qa-head, validation-lead, procurement; one notebook desk question (urs-starter-draft editor check 8)",
   "Lab and hospital reprocessing water row cut: scope open (FD-25). Restore with the industries wording once the owner decides.",
-  "Pass 11 review fixes (reviews/new-urs-guide.md): folds removed from pp-rows, priority and clauses (DR-003 rule 2: never fold the scope; DR-024 rule 1: gate roles' rows stay open). Clauses reordered so the analyser and product-contact rows lead and 316L and hot water are not the only rows shown (L-11-18 caution). Sanitization outcome clause and allow-pp sanitization row worded method-neutral ([PP loop sanitization method] open, DR-013, FD-14). Three-state answer reads \"meets, meets with a note, or differs\" as on buying and compliance (DR-011). Small-demand row points to [standard platforms and capacity ranges] (FD-20). Specification row restores \"approved issues at detailed design\" from svc-design (DR-009 rule 4; FD-46). Related gains buying (comparing quotes); compliance stays linked from the specification Part 1 row"
+  "Pass 11 review fixes (reviews/new-urs-guide.md): folds removed from pp-rows, priority and clauses (DR-003 rule 2: never fold the scope; DR-024 rule 1: gate roles' rows stay open). Clauses reordered so the analyser and product-contact rows lead and 316L and hot water are not the only rows shown (L-11-18 caution). Sanitization outcome clause and allow-pp sanitization row worded method-neutral ([PP loop sanitization method] open, DR-013, FD-14). Three-state answer reads \"meets, meets with a note, or differs\" as on buying and compliance (DR-011). Small-demand row points to [standard platforms and capacity ranges] (FD-20). Specification row restores \"approved issues at detailed design\" from svc-design (DR-009 rule 4; FD-46). Related gains buying (comparing quotes); compliance stays linked from the specification Part 1 row",
+  "Final round, pass 11: outline opens with the four answers before design (feed water, grade, demand, site limits) and the design loop: scheme, components, check against URS and budget, change or freeze (L-BWT-21; BWT study § 9 rank 2). Outline intro shortened to stay inside the 1,300-word page budget",
+  "Final round, pass 11: the stainless-standard FAQ links technical note 01, \"Polypropylene or stainless steel for a PW loop\" (news#pp-or-stainless) (authoritative desk review, DESK-plan.md, Q1: pair the URS guide with the PP-or-stainless note)"
  ]
 }

@@ -31,7 +31,7 @@
     {
      "t": "PW generation",
      "spot": "ro-skid",
-     "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria.",
+     "d": "RO pushes water through a membrane so fine that most dissolved salts stay behind. Deionization (DI) or electrodeionization (EDI) removes most of the rest.",
      "link": "sys-pw"
     },
     {
@@ -293,6 +293,12 @@
   "Pass 11 phrasebook 12 † (L-12-17, L-07-19, L-06-22, PB-12.15): closing returns 'Sizing basis, and [one-paragraph approver summary, yes or no]'. Owner to confirm the budget reply carries a one-paragraph approver summary (DR-005; same paragraph as buying#capital's); if yes the bracket becomes 'one paragraph for your approver', if no the line ends at 'Sizing basis' (pass 11 review finding 9)",
   "Pass 11 (SITE-PLAN systems; § 4.3 entry links; desk Q1): FAQ 'When is polypropylene the wrong choice?' adds WFI and a stainless standard (urs-guide hero, DR-021 scope) and links urs-guide#pp-rows; the sanitization link stays on the site table's chemicals row; related gains urs-guide",
   "Pass 11 review finding 8: the wrong-choice FAQ's link label is 'Wrong-choice rows for your URS' (urs-guide#pp-rows is 'When polypropylene is the wrong choice'; urs-guide's 'Polypropylene rows' nav is #allow-pp). Finding 11: related gains first-system (journey P2; first-system#cost holds the all-in and monthly costs)",
-  "Pass 11 integration (buying review finding 7, DR-011 one name per fact): the budget block's whole-package basis now names buying#proposal's marks, [FAT in the price or priced option] and [IQ and OQ: included or priced option] (FD-05, FD-26); when the owner sets them, both pages change together. The wrong-choice FAQ's link label is now 'When not to choose PP' (urs-guide review finding 5; anchor #pp-rows kept)"
- ]
+  "Pass 11 integration (buying review finding 7, DR-011 one name per fact): the budget block's whole-package basis now names buying#proposal's marks, [FAT in the price or priced option] and [IQ and OQ: included or priced option] (FD-05, FD-26); when the owner sets them, both pages change together. The wrong-choice FAQ's link label is now 'When not to choose PP' (urs-guide review finding 5; anchor #pp-rows kept)",
+  "Final round, pass 11: hero secondary links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the systems hero)",
+  "Final round, pass 11: PW generation stage gets one picture sentence for RO (L-BWT-5; BWT study § 9 rank 12)"
+ ],
+ "secondary_cta": {
+  "label": "Writing your URS",
+  "link": "urs-guide"
+ }
 }

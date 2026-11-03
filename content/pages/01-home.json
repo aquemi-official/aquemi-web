@@ -76,7 +76,7 @@
    ],
    "rows": [
     [
-     "No URS yet, a first system or an early budget",
+     "Planning your first water system",
      "What you make, and roughly how much water a day",
      "The grade each step needs, the package and how to estimate cost",
      {
@@ -85,7 +85,7 @@
      }
     ],
     [
-     "Writing a URS, alone or with a consultant",
+     "Writing a URS that permits polypropylene",
      "Nothing yet; your draft when you want it checked",
      "The order buyers use, and clauses that keep the design open",
      {
@@ -104,7 +104,7 @@
      }
     ],
     [
-     "Comparing quotes and terms",
+     "Comparing proposals on equal terms",
      "Your bid grid, if you use one",
      "The lines to level between quotes, and our terms",
      {
@@ -131,7 +131,7 @@
      }
     ],
     [
-     "A system to upgrade, or a water observation",
+     "Fixing an inspection finding or a water bottleneck",
      "What to change, or the observation",
      "Options with their downtime and the requalification each triggers",
      {
@@ -158,25 +158,25 @@
    "items": [
     {
      "t": "Pharmaceutical",
-     "d": "PW for oral and topical drugs, at sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
+     "d": "In oral liquids, creams and coatings, and the final equipment rinse. Sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
      "tag": "GUI-0001",
      "link": "ind-pharma"
     },
     {
      "t": "Medical devices",
-     "d": "PW for rinse and process steps, with the grade worked back from your device limits.",
+     "d": "The final rinse of components before packaging, with the grade worked back from your device limits.",
      "tag": "USP <161>",
      "link": "ind-meddevice"
     },
     {
      "t": "Contract manufacturing",
-     "d": "The stricter of USP and Ph. Eur. on each attribute; records any client auditor follows.",
+     "d": "In every client's product, from one system: the stricter of USP and Ph. Eur. on each attribute.",
      "tag": "USP · Ph. Eur.",
      "link": "ind-cdmo"
     },
     {
      "t": "Natural health products",
-     "d": "Potable water at minimum; Purified Water where your specification or a monograph calls for it.",
+     "d": "In liquids, creams and some dilutions: potable water at minimum; Purified Water where your specification or a monograph calls for it.",
      "tag": "GUI-0158",
      "link": "ind-pharma#nhp"
     }
@@ -255,7 +255,7 @@
    "items": [
     {
      "q": "You are smaller than the global manufacturers. Why take the risk?",
-     "a": "We are a new company; judge us on checks, not size. The parts are not new: [membranes and instruments bought from their makers]. Talk today to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits].",
+     "a": "We are new; judge us on checks, not size. The parts are not: [membranes and instruments bought from their makers]. Your design engineer stays your contact after handover [confirm]; if anyone leaves, records carry the system. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test once [shop and test bay ready for visits].",
      "link": "projects",
      "link_label": "See what you can check"
     },
@@ -313,6 +313,9 @@
   "Pass 11 phrasebook 5 (L-15-23, L-01-2, PB-15.18, PB-01.7): 'The parts are not new: [membranes and instruments bought from their makers].' Confirm the RO membranes and instruments are bought from their makers (FD-20 bill of materials); then the bracket becomes 'membranes and instruments come from their makers'. If not, drop the sentence (pass 11 review finding 4)",
   "Router row 'Comparing quotes and terms' promises the lines to level and Aquemi's terms (buying#compare, buying#terms); the page publishes with FD-05 to FD-07 (SITE-PLAN). Until buying is live, point the row at cmp-quality#buying",
   "Until project-plan publishes (FD-08; DR-026 rule 2), router row 'How long a project takes' and the 'Water in use' step link services#durations (pass 11 review finding 5)",
-  "Pass 11 review finding 1 (DR-017 rules 3 and 6): lead says 'who need Purified Water (PW) in products or final rinses', so it no longer tells every natural health product maker its products take PW. Finding 2: water is released after PQ phase 1 (project-plan#stages, WHO TRS 1033); PQ spelled out on the 'Water in use' step. Finding 6: router row 1 link text 'Your first system and its cost' (first-system#cost holds the cost)"
+  "Pass 11 review finding 1 (DR-017 rules 3 and 6): lead says 'who need Purified Water (PW) in products or final rinses', so it no longer tells every natural health product maker its products take PW. Finding 2: water is released after PQ phase 1 (project-plan#stages, WHO TRS 1033); PQ spelled out on the 'Water in use' step. Finding 6: router row 1 link text 'Your first system and its cost' (first-system#cost holds the cost)",
+  "Final round, pass 11: router situations in the reader's words where they fit the column: \"Planning your first water system\", \"Writing a URS that permits polypropylene\", \"Comparing proposals on equal terms\", \"Fixing an inspection finding or a water bottleneck\" (authoritative desk review, DESK-plan.md, Q2 ruling). Kept: the URS-in-hand, supplier, project and production-stopped rows (the desk's \"Send your draft URS for line-by-line review\" is an action, not a situation; \"compliant\" and \"built in Ontario\" rejected by the ruling)",
+  "Final round, pass 11: industry grid items open with where Purified Water goes for each segment (L-BWT-16, L-BWT-3; BWT study § 9 rank 3). Confirm the uses named per segment with the engineers before launch",
+  "Final round, pass 11: risk FAQ continuity line: the design engineer stays the contact after handover [confirm], with the key-person answer beside it (L-BWT-29; BWT study § 9 rank 9; the about FAQ on a key person leaving carries the full answer). Owner confirms the continuity promise (FD-34)"
  ]
 }

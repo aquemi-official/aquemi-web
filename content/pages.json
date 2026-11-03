@@ -78,7 +78,7 @@
      ],
      "rows": [
       [
-       "No URS yet, a first system or an early budget",
+       "Planning your first water system",
        "What you make, and roughly how much water a day",
        "The grade each step needs, the package and how to estimate cost",
        {
@@ -87,7 +87,7 @@
        }
       ],
       [
-       "Writing a URS, alone or with a consultant",
+       "Writing a URS that permits polypropylene",
        "Nothing yet; your draft when you want it checked",
        "The order buyers use, and clauses that keep the design open",
        {
@@ -106,7 +106,7 @@
        }
       ],
       [
-       "Comparing quotes and terms",
+       "Comparing proposals on equal terms",
        "Your bid grid, if you use one",
        "The lines to level between quotes, and our terms",
        {
@@ -133,7 +133,7 @@
        }
       ],
       [
-       "A system to upgrade, or a water observation",
+       "Fixing an inspection finding or a water bottleneck",
        "What to change, or the observation",
        "Options with their downtime and the requalification each triggers",
        {
@@ -160,25 +160,25 @@
      "items": [
       {
        "t": "Pharmaceutical",
-       "d": "PW for oral and topical drugs, at sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
+       "d": "In oral liquids, creams and coatings, and the final equipment rinse. Sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
        "tag": "GUI-0001",
        "link": "ind-pharma"
       },
       {
        "t": "Medical devices",
-       "d": "PW for rinse and process steps, with the grade worked back from your device limits.",
+       "d": "The final rinse of components before packaging, with the grade worked back from your device limits.",
        "tag": "USP <161>",
        "link": "ind-meddevice"
       },
       {
        "t": "Contract manufacturing",
-       "d": "The stricter of USP and Ph. Eur. on each attribute; records any client auditor follows.",
+       "d": "In every client's product, from one system: the stricter of USP and Ph. Eur. on each attribute.",
        "tag": "USP · Ph. Eur.",
        "link": "ind-cdmo"
       },
       {
        "t": "Natural health products",
-       "d": "Potable water at minimum; Purified Water where your specification or a monograph calls for it.",
+       "d": "In liquids, creams and some dilutions: potable water at minimum; Purified Water where your specification or a monograph calls for it.",
        "tag": "GUI-0158",
        "link": "ind-pharma#nhp"
       }
@@ -257,7 +257,7 @@
      "items": [
       {
        "q": "You are smaller than the global manufacturers. Why take the risk?",
-       "a": "We are a new company; judge us on checks, not size. The parts are not new: [membranes and instruments bought from their makers]. Talk today to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits].",
+       "a": "We are new; judge us on checks, not size. The parts are not: [membranes and instruments bought from their makers]. Your design engineer stays your contact after handover [confirm]; if anyone leaves, records carry the system. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test once [shop and test bay ready for visits].",
        "link": "projects",
        "link_label": "See what you can check"
       },
@@ -315,7 +315,10 @@
     "Pass 11 phrasebook 5 (L-15-23, L-01-2, PB-15.18, PB-01.7): 'The parts are not new: [membranes and instruments bought from their makers].' Confirm the RO membranes and instruments are bought from their makers (FD-20 bill of materials); then the bracket becomes 'membranes and instruments come from their makers'. If not, drop the sentence (pass 11 review finding 4)",
     "Router row 'Comparing quotes and terms' promises the lines to level and Aquemi's terms (buying#compare, buying#terms); the page publishes with FD-05 to FD-07 (SITE-PLAN). Until buying is live, point the row at cmp-quality#buying",
     "Until project-plan publishes (FD-08; DR-026 rule 2), router row 'How long a project takes' and the 'Water in use' step link services#durations (pass 11 review finding 5)",
-    "Pass 11 review finding 1 (DR-017 rules 3 and 6): lead says 'who need Purified Water (PW) in products or final rinses', so it no longer tells every natural health product maker its products take PW. Finding 2: water is released after PQ phase 1 (project-plan#stages, WHO TRS 1033); PQ spelled out on the 'Water in use' step. Finding 6: router row 1 link text 'Your first system and its cost' (first-system#cost holds the cost)"
+    "Pass 11 review finding 1 (DR-017 rules 3 and 6): lead says 'who need Purified Water (PW) in products or final rinses', so it no longer tells every natural health product maker its products take PW. Finding 2: water is released after PQ phase 1 (project-plan#stages, WHO TRS 1033); PQ spelled out on the 'Water in use' step. Finding 6: router row 1 link text 'Your first system and its cost' (first-system#cost holds the cost)",
+    "Final round, pass 11: router situations in the reader's words where they fit the column: \"Planning your first water system\", \"Writing a URS that permits polypropylene\", \"Comparing proposals on equal terms\", \"Fixing an inspection finding or a water bottleneck\" (authoritative desk review, DESK-plan.md, Q2 ruling). Kept: the URS-in-hand, supplier, project and production-stopped rows (the desk's \"Send your draft URS for line-by-line review\" is an action, not a situation; \"compliant\" and \"built in Ontario\" rejected by the ruling)",
+    "Final round, pass 11: industry grid items open with where Purified Water goes for each segment (L-BWT-16, L-BWT-3; BWT study § 9 rank 3). Confirm the uses named per segment with the engineers before launch",
+    "Final round, pass 11: risk FAQ continuity line: the design engineer stays the contact after handover [confirm], with the key-person answer beside it (L-BWT-29; BWT study § 9 rank 9; the about FAQ on a key person leaving carries the full answer). Owner confirms the continuity promise (FD-34)"
    ]
   },
   {
@@ -351,7 +354,7 @@
       {
        "t": "PW generation",
        "spot": "ro-skid",
-       "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria.",
+       "d": "RO pushes water through a membrane so fine that most dissolved salts stay behind. Deionization (DI) or electrodeionization (EDI) removes most of the rest.",
        "link": "sys-pw"
       },
       {
@@ -613,8 +616,14 @@
     "Pass 11 phrasebook 12 † (L-12-17, L-07-19, L-06-22, PB-12.15): closing returns 'Sizing basis, and [one-paragraph approver summary, yes or no]'. Owner to confirm the budget reply carries a one-paragraph approver summary (DR-005; same paragraph as buying#capital's); if yes the bracket becomes 'one paragraph for your approver', if no the line ends at 'Sizing basis' (pass 11 review finding 9)",
     "Pass 11 (SITE-PLAN systems; § 4.3 entry links; desk Q1): FAQ 'When is polypropylene the wrong choice?' adds WFI and a stainless standard (urs-guide hero, DR-021 scope) and links urs-guide#pp-rows; the sanitization link stays on the site table's chemicals row; related gains urs-guide",
     "Pass 11 review finding 8: the wrong-choice FAQ's link label is 'Wrong-choice rows for your URS' (urs-guide#pp-rows is 'When polypropylene is the wrong choice'; urs-guide's 'Polypropylene rows' nav is #allow-pp). Finding 11: related gains first-system (journey P2; first-system#cost holds the all-in and monthly costs)",
-    "Pass 11 integration (buying review finding 7, DR-011 one name per fact): the budget block's whole-package basis now names buying#proposal's marks, [FAT in the price or priced option] and [IQ and OQ: included or priced option] (FD-05, FD-26); when the owner sets them, both pages change together. The wrong-choice FAQ's link label is now 'When not to choose PP' (urs-guide review finding 5; anchor #pp-rows kept)"
-   ]
+    "Pass 11 integration (buying review finding 7, DR-011 one name per fact): the budget block's whole-package basis now names buying#proposal's marks, [FAT in the price or priced option] and [IQ and OQ: included or priced option] (FD-05, FD-26); when the owner sets them, both pages change together. The wrong-choice FAQ's link label is now 'When not to choose PP' (urs-guide review finding 5; anchor #pp-rows kept)",
+    "Final round, pass 11: hero secondary links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the systems hero)",
+    "Final round, pass 11: PW generation stage gets one picture sentence for RO (L-BWT-5; BWT study § 9 rank 12)"
+   ],
+   "secondary_cta": {
+    "label": "Writing your URS",
+    "link": "urs-guide"
+   }
   },
   {
    "id": "sys-pw",
@@ -712,7 +721,7 @@
       {
        "t": "RO pass 1",
        "spot": "ro-skid",
-       "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria.",
+       "d": "Reverse osmosis (RO) pushes water through a membrane so fine that most dissolved ions, organics and bacteria stay behind.",
        "label": "RO 1"
       },
       {
@@ -1046,7 +1055,8 @@
     "Pass 11 (proof § 5.2, P19 and P21; L-02-5, L-13-1, L-15-17): the documents block names what each document does: FAT and SAT reports, certificates, joint records and as-built drawings prove; membrane projections predict the capacity basis, and FAT and SAT confirm it (same document name as sys-pretreatment's). Still missing: datasheet, typical general arrangement and room sheet (P19, Build; no download until the files exist, DR-006 rule 6), and the class line \"process equipment for GMP use, not a medical device\" (P11, wording to confirm before it ships)",
     "Pass 11 (proof P17; L-G1-11, L-04-28): options intro says the proposal states each option's effect on drawings, tests and lead time (same sentence on sys-storage and sys-pretreatment); owner confirms the proposal lists them (DR-005). Values stay off the page until FD-08 sets lead times",
     "Pass 11 (URS FAQ; L-07-5, L-G2-5, L-G2-1, L-15-17; DR-013 rule 1; DESK Q1 explicit limits): the first FAQ answers a stainless or hot-sanitization URS row, says first when PP is the wrong choice (hot loop, stainless product contact), and links urs-guide#clauses (new page, anchor fixed by pass 11 SITE-PLAN). The systems FAQ \"When is polypropylene the wrong choice?\" stays the one home of the full answer (DR-009)",
-    "Pass 11 (proof P14; L-02-2, L-G1-10, L-02-23): the customer's-share FAQ names three duties after handover. Daily checks match svc-service's operator FAQ (phrasebook 13); align wording if that answer changes"
+    "Pass 11 (proof P14; L-02-2, L-G1-10, L-02-23): the customer's-share FAQ names three duties after handover. Daily checks match svc-service's operator FAQ (phrasebook 13); align wording if that answer changes",
+    "Final round, pass 11: RO pass 1 described as one picture sentence (L-BWT-5; BWT study § 9 rank 12)"
    ]
   },
   {
@@ -2668,8 +2678,13 @@
      "anchor": "outline",
      "nav": "Outline",
      "h": "What a Purified Water URS should settle",
-     "intro": "Give every requirement a number and one sentence. Suppliers then answer in your numbering, and your evaluators score the same rows.",
+     "intro": "Number each requirement, one sentence each. Suppliers answer in your numbering; evaluators score the same rows.",
      "items": [
+      {
+       "t": "Before design",
+       "d": "Feed water, grade, demand and site limits first. Then the loop: scheme, components, check against URS and budget, change or freeze.",
+       "label": "Start"
+      },
       {
        "t": "Water grade and system boundary",
        "d": "Purified Water to USP, Ph. Eur. or both, by edition. Say where the system starts and ends, and what is by others.",
@@ -2934,7 +2949,9 @@
       },
       {
        "q": "Our corporate standard names stainless steel. Can polypropylene still bid?",
-       "a": "Only with a deviation your quality unit approves. If the standard stands, write it as a must-have and ask stainless suppliers. That saves everyone a bid."
+       "a": "Only with a deviation your quality unit approves. If the standard stands, write it as a must-have and ask stainless suppliers. That saves everyone a bid.",
+       "link": "news#pp-or-stainless",
+       "link_label": "Polypropylene or stainless steel"
       },
       {
        "q": "Which standards should our URS cite?",
@@ -2994,7 +3011,9 @@
     "Closing returns \"Rows that rule out polypropylene, and why\": confirm the URS gap review returns this (FD-02). Open: whether Aquemi drafts a URS for small firms (owner decision; not on the page). French version per DR-012",
     "Before shipping: buyer-panel with process-engineer, consultant, founder, qa-head, validation-lead, procurement; one notebook desk question (urs-starter-draft editor check 8)",
     "Lab and hospital reprocessing water row cut: scope open (FD-25). Restore with the industries wording once the owner decides.",
-    "Pass 11 review fixes (reviews/new-urs-guide.md): folds removed from pp-rows, priority and clauses (DR-003 rule 2: never fold the scope; DR-024 rule 1: gate roles' rows stay open). Clauses reordered so the analyser and product-contact rows lead and 316L and hot water are not the only rows shown (L-11-18 caution). Sanitization outcome clause and allow-pp sanitization row worded method-neutral ([PP loop sanitization method] open, DR-013, FD-14). Three-state answer reads \"meets, meets with a note, or differs\" as on buying and compliance (DR-011). Small-demand row points to [standard platforms and capacity ranges] (FD-20). Specification row restores \"approved issues at detailed design\" from svc-design (DR-009 rule 4; FD-46). Related gains buying (comparing quotes); compliance stays linked from the specification Part 1 row"
+    "Pass 11 review fixes (reviews/new-urs-guide.md): folds removed from pp-rows, priority and clauses (DR-003 rule 2: never fold the scope; DR-024 rule 1: gate roles' rows stay open). Clauses reordered so the analyser and product-contact rows lead and 316L and hot water are not the only rows shown (L-11-18 caution). Sanitization outcome clause and allow-pp sanitization row worded method-neutral ([PP loop sanitization method] open, DR-013, FD-14). Three-state answer reads \"meets, meets with a note, or differs\" as on buying and compliance (DR-011). Small-demand row points to [standard platforms and capacity ranges] (FD-20). Specification row restores \"approved issues at detailed design\" from svc-design (DR-009 rule 4; FD-46). Related gains buying (comparing quotes); compliance stays linked from the specification Part 1 row",
+    "Final round, pass 11: outline opens with the four answers before design (feed water, grade, demand, site limits) and the design loop: scheme, components, check against URS and budget, change or freeze (L-BWT-21; BWT study § 9 rank 2). Outline intro shortened to stay inside the 1,300-word page budget",
+    "Final round, pass 11: the stainless-standard FAQ links technical note 01, \"Polypropylene or stainless steel for a PW loop\" (news#pp-or-stainless) (authoritative desk review, DESK-plan.md, Q1: pair the URS guide with the PP-or-stainless note)"
    ]
   },
   {
@@ -3119,9 +3138,19 @@
        }
       ],
       [
+       "Your other trades: mechanical, electrical, plumbing",
+       "Review our drawings before fabrication. Each comment is closed in writing [confirm].",
+       "Comments closed on the drawings before fabrication"
+      ],
+      [
        "Aquemi",
        "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
        "Site readiness checklist, sent [site checklist before delivery, weeks] before delivery [confirm]"
+      ],
+      [
+       "Aquemi, at handover",
+       "Issues as-built drawings [as-built drawings after SAT, working days] after SAT, marked as built.",
+       "Valves, gauges and sample points tagged as on the drawings [confirm]"
       ]
      ],
      "look": "reader-split"
@@ -3358,7 +3387,8 @@
     "Entry links (other editors and orchestrator): services#durations line and link, home steps block, first-system steps, buying (what starts the clock), svc-design, svc-fat-sat, svc-cq related blocks, footer Services column. Support through first use (L-08-6) stays on svc-cq; acceptance definitions stay on svc-fat-sat and svc-cq; document timing on cmp-documentation",
     "Launch order (DR-026): if buying is not live when this page launches, the hero secondary, FAQ 5 and the related item link cmp-quality#buying ('See payment terms') until it is",
     "Shared looks with the other pass 11 pages (review finding 10, orchestrator): reader-split (B1, also urs-guide, first-system, buying), battery-limit (B4, also first-system), hero route plate (also buying). Keep route here: its stops are a schedule",
-    "Pass 11 integration (look reuse, finding 10): hero 'route' plate kept here; buying moved to the 'stamp' plate. Kept reuses after checking every unused look of each type (python tools/specimens.py fit): who on reader-split (also urs-guide, first-system, buying): shop-floor draws our shop, where the client roles do not work, and the other retired table looks draw joints, plans, spares or FAT and SAT. reporting on battery-limit (also first-system#site): no retired spec look draws a two-sided split"
+    "Pass 11 integration (look reuse, finding 10): hero 'route' plate kept here; buying moved to the 'stamp' plate. Kept reuses after checking every unused look of each type (python tools/specimens.py fit): who on reader-split (also urs-guide, first-system, buying): shop-floor draws our shop, where the client roles do not work, and the other retired table looks draw joints, plans, spares or FAT and SAT. reporting on battery-limit (also first-system#site): no retired spec look draws a two-sided split",
+    "Final round, pass 11: \"Who does what\" gains drawing review by the client's other trades before fabrication and labelled as-built drawings at handover (L-BWT-9, L-BWT-26; BWT study § 9 rank 6; FD-57). Owner confirms comment closure in writing, [as-built drawings after SAT, working days] and the tagging practice"
    ]
   },
   {
@@ -4975,6 +5005,12 @@
        "link": "contact-service#request",
        "link_label": "Book a maintenance visit",
        "intent": "Preventive maintenance"
+      },
+      {
+       "q": "How far away are you, and how long are parts kept?",
+       "a": "We reach [service coverage area] within [travel time from service base, hours]. Parts for every package we build stay available for [parts availability period, years]. Coverage by province is on our locations page.",
+       "link": "contact-locations#coverage",
+       "link_label": "See coverage by province"
       }
      ]
     },
@@ -5033,7 +5069,8 @@
     "Pass 11, phrasebook 22 (L-14-19, L-14-17; PB-14.8): new FAQ \"We stop production for two weeks...\" with [idle-period rules by duration]; confirm the operating manual carries idle-period rules (FD-26). Storage before start-up stays on systems#site or project-plan (L-14-17)",
     "Launch rule (review finding 6): the warranty sentence and the buying#faq link in \"What does our team do between visits?\" ship only when buying launches with FD-07 confirming the daily log as a condition; otherwise both go and the FAQ ends at 'shorter to fix.'",
     "Pass 11, related: project-plan not added; service starts after handover, and project-plan covers delivery (SITE-PLAN svc pages, reviewed; review finding 7). contact-locations stays: a service reader needs coverage more than delivery stages",
-    "Pass 11 review finding 3: idle-period FAQ opens with the answer and adds the release line (restart sampling and release are the client's before reuse). Review finding 8: the FAQ block gains anchor faq, the home of operator duties ([operator time, minutes a day]); services FAQ 6 should link svc-service#faq (cross-file)"
+    "Pass 11 review finding 3: idle-period FAQ opens with the answer and adds the release line (restart sampling and release are the client's before reuse). Review finding 8: the FAQ block gains anchor faq, the home of operator duties ([operator time, minutes a day]); services FAQ 6 should link svc-service#faq (cross-file)",
+    "Final round, pass 11: FAQ on response radius and parts availability, linked to contact-locations#coverage, the fact's home (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). The service lead's quote (same rank) is not added: no service lead is named in MISSION"
    ]
   },
   {
@@ -5503,7 +5540,7 @@
      "h": "Grade, limit and inspector by industry",
      "cols": [
       "Industry",
-      "Grades and uses",
+      "Where the water goes, and its grade",
       "Limit that applies",
       "Inspector"
      ],
@@ -5513,7 +5550,7 @@
         "t": "Pharma, non-sterile",
         "link": "ind-pharma"
        },
-       "PW for granulation, coating and rinse",
+       "Into granulation, coatings and oral liquids, and the final equipment rinse: PW",
        "USP <645> and <643>",
        "Health Canada GUI-0001; FDA 21 CFR 211"
       ],
@@ -5522,7 +5559,7 @@
         "t": "Contract manufacturing",
         "link": "ind-cdmo"
        },
-       "PW per client program",
+       "Into each client's products, from one system: PW per client program",
        "Stricter of USP and Ph. Eur., per attribute",
        "Regulators and each client’s quality unit"
       ],
@@ -5531,7 +5568,7 @@
         "t": "Medical devices",
         "link": "ind-meddevice"
        },
-       "PW final rinse, with an endotoxin limit where needed",
+       "The final rinse of components: PW, with an endotoxin limit where needed",
        "USP <161> per device; ISO 11737-1 bioburden",
        "Health Canada, through MDSAP (Class II to IV); FDA 21 CFR 820"
       ],
@@ -5540,7 +5577,7 @@
         "t": "Natural health products",
         "link": "ind-pharma#nhp"
        },
-       "Potable at minimum; PW where your specification calls for it",
+       "Into liquids, creams and some dilutions: potable at minimum; PW where your specification calls for it",
        "Your specification (GUI-0158 s. 45)",
        "Health Canada GUI-0158"
       ],
@@ -5573,7 +5610,7 @@
      "items": [
       {
        "t": "Your product’s grade",
-       "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
+       "d": "Purified Water goes into your product or rinses what touches it. Non-sterile drugs need PW (GUI-0001); natural health products, potable at minimum (GUI-0158).",
        "link": "ind-pharma#grades",
        "big": [
         {
@@ -5683,19 +5720,21 @@
     "Pass 11 (SITE-PLAN, DR-015 amended): #first-system is now a pointer to the first-system page, look and anchor kept for old links. Item 1 keeps the grade facts and links their home, ind-pharma#grades (DR-009); item 2 links first-system. Cost, running cost, first-year staff time ([staff hours in year one: sampling, logs, sanitization], FD-52), first use after 2 weeks and the people moved to first-system (#cost, #site, FAQ) and svc-cq",
     "First-system intro is phrasebook change 19 (L-11-15, L-03-19, PB-03.25, DR-021), with sys-pw's placeholder name [minimum–maximum capacity, L/h] per skid in place of the phrasebook's draft name (DR-011 rule 2: one range on every page). Unfilled at launch, the first sentence goes and the 'does not fit' sentence stays",
     "Router row 5 \"A first PW system, no specification yet\" and the hero secondary link first-system (desk Q1: first system from home and industries; structure-and-sitemap § 4.5 entry links)",
-    "Pass 11 lead (desk Q2; structure-and-sitemap § 3.1 hub hero: what, for whom, where it stops): the lead names who the package is for first; the DR-021 exclusion stays word for word and last. 'PW limits are the same in every industry' was cut: the grade table's 'Limit that applies' column carries it. #first-system item 2 sits on navy (panel, a look-only field) so the pointer reads as the band's purpose"
+    "Pass 11 lead (desk Q2; structure-and-sitemap § 3.1 hub hero: what, for whom, where it stops): the lead names who the package is for first; the DR-021 exclusion stays word for word and last. 'PW limits are the same in every industry' was cut: the grade table's 'Limit that applies' column carries it. #first-system item 2 sits on navy (panel, a look-only field) so the pointer reads as the band's purpose",
+    "Final round, pass 11: \"By industry\" table: the uses column now opens with where the water goes in each product (L-BWT-23, L-BWT-13, L-BWT-16; BWT study § 9 rank 7, as a column in the existing macro-leaders table, not a new matrix). Cosmetics and sterile rows unchanged. Confirm the uses named",
+    "Final round, pass 11: first-system grade item opens with what the water does (L-BWT-3; BWT study § 9 rank 1, industries#first-system items)"
    ]
   },
   {
    "id": "first-system",
    "section": "Industries",
    "nav_label": "Your first system",
-   "title": "Your first Purified Water system, in plain terms | Aquemi",
+   "title": "Planning your site's first Purified Water system | Aquemi",
    "meta": "For makers of natural health products, non-sterile drugs and medical devices: whether a packaged Purified Water system fits, what your site needs, all-in cost and five steps.",
    "path": "/industries/first-system/",
    "eyebrow": "YOUR FIRST SYSTEM · GUI-0158 · GUI-0001",
-   "headline": "Your first Purified Water system, in plain terms",
-   "lead": "For makers of natural health products, non-sterile drugs and medical devices. Purified Water goes into your product and rinses your equipment. We supply one polypropylene package with polyvinyl chloride pretreatment.",
+   "headline": "Planning your site's first Purified Water system",
+   "lead": "For makers of natural health products, non-sterile drugs and medical devices. Covered here: the water grade you need, site utilities, weekly staff time and all-in cost. We supply one polypropylene package with polyvinyl chloride pretreatment.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec",
@@ -5710,7 +5749,7 @@
      "look": "reader-split",
      "nav": "Is it for you",
      "anchor": "fit",
-     "h": "Is a packaged system right for your site?",
+     "h": "Is a polypropylene Purified Water package right for you?",
      "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
      "cols": [
       "Wrong choice if",
@@ -5864,6 +5903,18 @@
        "v": "Doors and route at least [minimum door and access width, m]",
        "m": "Measure the narrowest door on the route",
        "side": "site"
+      },
+      {
+       "p": "Natural health product sites",
+       "v": "Often a leased unit: ask your landlord about the drain, floor load and wall openings",
+       "m": "Ask before you order",
+       "side": "site"
+      },
+      {
+       "p": "Medical device sites",
+       "v": "Rinse water is drawn at the washer, often inside a clean room",
+       "m": "Plan the pipe route and a sample point there",
+       "side": "site"
       }
      ],
      "sides": [
@@ -5990,7 +6041,7 @@
      "nav": "Steps",
      "anchor": "steps",
      "h": "From first call to water you can use",
-     "intro": "Five steps. Each says what you send or decide.",
+     "intro": "Have four answers: what is in your water, which grade, how much, and what limits your site. Missing one? Send the rest. We draft, check against your budget and revise until you approve.",
      "items": [
       {
        "t": "Scope review",
@@ -6132,7 +6183,10 @@
     "Looks (DR-018, design kept): reader-split, derivation-sheet, battery-limit, cost-balance, release-run (retired, brought back); time-card (careers) and industry-feed (home) live, outside the Industries section. Look-only copy: battery-limit sides and seam ('Where our scope stops' replaces the engineer's 'Battery limit' for an R1 reader)",
     "Pass 11 integration (project-plan cross-file item; services-b finding 11; DR-011): the site block's Training row uses [training hours and audiences], the name on svc-cq, buying and project-plan (FD-26), and links svc-cq#faq",
     "Pass 11 integration (look reuse across the four new pages; urs-guide review finding 23): reuses kept after checking every unused look of each type (python tools/specimens.py fit). fit on reader-split (also urs-guide, project-plan, buying): twin-route draws the FAT bay and the site, plan-sheets gives each column a button and dims the 'No' column, which would bury the wrong-choice lines desk Q3 puts first; the ReaderSplit column labels now show on phones and to assistive tech. grade on derivation-sheet (also urs-guide): it is the grade-table look. site on battery-limit (also project-plan#reporting): the look draws site requirements at the battery limit, this block's subject. cost on cost-balance (also buying#capital): the look draws running costs. steps on release-run (also buying#order): its last column is water released, this block's last step",
-    "Pass 11 integration (first-system review finding 4, cross-file part): ReaderSplit now shows its column names on phones and gives them to assistive tech in every row, so the fit rows lose their 'Wrong choice if' / 'Fits if' openings and the columns carry them ('Wrong choice if', 'Fits if'); the wrong-choice column still comes first (desk Q3)"
+    "Pass 11 integration (first-system review finding 4, cross-file part): ReaderSplit now shows its column names on phones and gives them to assistive tech in every row, so the fit rows lose their 'Wrong choice if' / 'Fits if' openings and the columns carry them ('Wrong choice if', 'Fits if'); the wrong-choice column still comes first (desk Q3)",
+    "Final round, pass 11: headline, lead and first section heading in the spirit of the authoritative desk (\"Planning your site's first Purified Water system\"; the lead names grade, utilities, weekly staff time and all-in cost for NHP, device and non-sterile drug makers; first heading \"Is a polypropylene Purified Water package right for you?\", shortened from \"...for your site?\" to keep the 9-word heading budget) (authoritative desk review, DESK-plan.md, Q3 ruling). The capital-request block already sits low, after cost and steps",
+    "Final round, pass 11: \"What your site needs\" gains natural health product and medical device site constraints (leased unit: drain, floor load, wall openings; rinse water drawn at the washer, often in a clean room) (authoritative desk review, DESK-plan.md, Q1: first-system must cover NHP and device site constraints)",
+    "Final round, pass 11: steps intro: the four questions before design (water, grade, quantity, site) and the short design loop (draft, check against budget, revise until approved) (L-BWT-21, L-BWT-4; BWT study § 9 rank 2)"
    ]
   },
   {
@@ -6144,7 +6198,7 @@
    "path": "/industries/pharmaceutical/",
    "eyebrow": "PHARMACEUTICAL · NATURAL HEALTH PRODUCTS · USP · GUI-0001",
    "headline": "Water matched to your dosage forms",
-   "lead": "Dosage forms set the grade. We supply one Purified Water (PW) package in polypropylene, with polyvinyl chloride (PVC) pretreatment.",
+   "lead": "Purified Water (PW) goes into your liquids, creams and coatings, and rinses your equipment. You answer for the product; its water needs records you can file. One polypropylene package, with polyvinyl chloride (PVC) pretreatment.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec|Pharmaceutical drug products",
@@ -6568,7 +6622,8 @@
       "sys-pw",
       "compliance",
       "cmp-quality",
-      "projects"
+      "projects",
+      "urs-guide"
      ]
     }
    ],
@@ -6604,7 +6659,9 @@
     "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters",
     "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 3.4 and § 4.5): router row 4 now opens first-system (was industries#first-system). #nhp's pointer (SITE-PLAN \"If this is your first system\"; label \"Your first PW system\", buttons at most 5 words) now closes #nhp itself: the last row's note is {\"t\": \"If this is your first system\", \"link\": \"first-system\"} (grade-switch renders notes through tcell since the pass 11 integration, industries review finding 11), and the FAQ item 'This is our first water system. Where do we start?' is cut. The row's 'Under the importing market's drug rules' moved into its minimum cell, so no fact is lost. Lessons L-11-15, L-01-13, L-04-25",
     "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1–2, journeys P1 and P4): decisions intro names the must-have rows default pharmaceutical URS templates carry (L-07-5, L-09-7, L-G2-1, L-G2-5); 'Where polypropylene stops' links urs-guide#allow-pp, the rows to write (pass 11 integration, urs-guide review finding 5). The inspector table gains the buyer's own quality unit: rows answered with documents (L-07-1, L-13-1, L-07-8, L-15-17), audit access (L-15-4), data integrity (L-G2-15)",
-    "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2; SITE-PLAN principle 8, DR-004 rule 1): the quality-unit row links projects#verify ('Checks you can run today'), the checks a new company offers in place of references. No case block until FD-42 (DR-016)"
+    "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2; SITE-PLAN principle 8, DR-004 rule 1): the quality-unit row links projects#verify ('Checks you can run today'), the checks a new company offers in place of references. No case block until FD-42 (DR-016)",
+    "Final round, pass 11: lead opens with what the water does in the product and the reader's duty, then the package (L-BWT-2, L-BWT-3, L-BWT-25; BWT study § 9 rank 1). Confirm the uses named",
+    "Final round, pass 11: related links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the pharma page)"
    ]
   },
   {
@@ -6616,7 +6673,7 @@
    "path": "/industries/medical-devices/",
    "eyebrow": "MEDICAL DEVICES · USP <161>",
    "headline": "Final rinse water you can defend at audit",
-   "lead": "A polypropylene Purified Water (PW) package with PVC pretreatment, built to your endotoxin and bioburden limits at the washer inlet.",
+   "lead": "Purified Water (PW) is the last rinse on your components before packaging. You answer for the device and its rinse records. A polypropylene package, built to your endotoxin and bioburden limits at the washer inlet.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec|Medical devices",
@@ -7012,7 +7069,8 @@
     "Scope line (DR-021 as amended): the lead names the package only; the exclusion lives in the first FAQ (\"Do we need WFI for our final rinse?\"), worded as an envelope with DR-013 rule 1's rating and stills (DR-021 rule 5)",
     "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 4.5 entry links, pass 10 L8 retargeted): router row 5 \"A first PW system for a small plant\" now opens first-system (was industries#first-system)",
     "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1 and § 10, journeys P1 and P4): FAQ \"What should our URS ask of a rinse water supplier?\" gives the URS shape (numbered rows, each marked must-have or preference as on urs-guide#priority, DR-011 rule 3; L-07-1, L-G2-1) and the three-state answer with its document (L-07-8, L-15-17, L-13-1); links urs-guide. Evidence gap: the corpus holds no device maker's water URS, so the device rows (limits at the washer inlet) come from this page's grade table, not from the corpus",
-    "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2, DR-004 rule 1, DR-022): supplier quality gains 'Track record' (the word a device QA head scans for; v says 'We are a new company', so no reference is implied) -> projects#verify. Its value is copy only; it states no reference, count or certificate. Spec rows 9 of 10"
+    "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2, DR-004 rule 1, DR-022): supplier quality gains 'Track record' (the word a device QA head scans for; v says 'We are a new company', so no reference is implied) -> projects#verify. Its value is copy only; it states no reference, count or certificate. Spec rows 9 of 10",
+    "Final round, pass 11: lead opens with what the water does (final rinse before packaging) and the reader's duty, then the package (L-BWT-2, L-BWT-3, L-BWT-25; BWT study § 9 rank 1). PVC pretreatment left to the FAQ to keep the 35-word lead"
    ]
   },
   {
@@ -7024,7 +7082,7 @@
    "path": "/industries/cdmo/",
    "eyebrow": "CONTRACT MANUFACTURING · USP · PH. EUR.",
    "headline": "One water system, every client's auditor",
-   "lead": "Our polypropylene Purified Water package comes with polyvinyl chloride (PVC) pretreatment. It is designed to the stricter of USP and Ph. Eur. on each attribute, and to the client limits written into your specification.",
+   "lead": "Purified Water (PW) goes into every client's product; you answer to each client's auditor. Our polypropylene package is designed to the stricter of USP and Ph. Eur. on each attribute, and to client limits.",
    "primary_cta": "Request a water scope review",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I know my product, not my water spec|CDMO or contract manufacturing",
@@ -7286,7 +7344,8 @@
       "compliance",
       "cmp-quality",
       "projects",
-      "svc-service"
+      "svc-service",
+      "urs-guide"
      ]
     }
    ],
@@ -7333,7 +7392,9 @@
     "Router (DR-020 as amended): rows 3 and 4 name the requirement at risk and the first answer; row 4 starts at its on-page answer (ind-cdmo#redundancy); row 5 links sys-pw. Anchors on this page: audit-pack, redundancy",
     "Pass 11 buyer asks (journeys § 4 client auditor and § 5 operations-head; web/buyer-requirements-from-tenders.md): redundancy intro asks for the two requirements buyer documents write as terms, the outage cap in hours and water during a repair (L-10-17, L-12-3, L-05-4); same words as the closing's include line 'Longest acceptable outage, hours'. No Aquemi figure is given",
     "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2: ind-cdmo lacked a 'new company, here is what you can check' line; DR-004 rule 1; SITE-PLAN principle 8): FAQ \"Our clients will ask about you. What can we show them?\" links projects#verify. The audit date is cmp-quality's placeholder ([quality system ready for audit, date]; FD-48); at launch an unset date drops that clause. Client auditors ask the supplier's support file and audit access (L-05-7, L-15-4)",
-    "First system: no router row here; a contract maker is rarely on a first PW system. The natural health products row keeps ind-pharma#nhp; ind-pharma's FAQ right after #nhp points to first-system (pass 11 SITE-PLAN; see the pass 11 review finding 11 for the in-block link)"
+    "First system: no router row here; a contract maker is rarely on a first PW system. The natural health products row keeps ind-pharma#nhp; ind-pharma's FAQ right after #nhp points to first-system (pass 11 SITE-PLAN; see the pass 11 review finding 11 for the in-block link)",
+    "Final round, pass 11: lead opens with what the water does (every client's product, one system) and the reader's duty, then the package (L-BWT-2, L-BWT-3, L-BWT-25; BWT study § 9 rank 1). PVC pretreatment left to the router and FAQ to keep the 35-word lead",
+    "Final round, pass 11: related links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the CDMO page)"
    ]
   },
   {
@@ -7761,7 +7822,8 @@
       "cmp-documentation",
       "cmp-quality",
       "urs-guide",
-      "ind-cdmo"
+      "ind-cdmo",
+      "project-plan"
      ]
     }
    ],
@@ -7807,7 +7869,8 @@
     "Pass 11 (commercial phrasebook change 8; L-07-8, L-G2-1, L-15-17, PB-G3.2, PB-13.1): the closing body promises each URS line answered in the buyer's numbering, \"meets, meets with a note, or differs\", with its proof; the second return reads \"Exceptions, keyed to your clause numbers\" (offer-and-terms-patterns.md § 14 C2). The compliance matrix must use those three answers and the buyer's clause numbers",
     "Pass 11 (SITE-PLAN, desk Q1): urs-guide linked twice, FAQ \"Does our corporate engineering standard replace yours?\" to urs-guide#pp-rows (label \"When not to choose polypropylene\" since the pass 11 integration: the anchor holds the wrong-choice rows, among them a corporate standard naming 316L stainless steel), and the related row (urs-guide replaces ind-meddevice, which the GMP table's devices row already links). If urs-guide does not ship, both links go and ind-meddevice returns to the related row",
     "Optional, not done in pass 11 (proof-and-seriousness.md § 5.2; L-14-9): \"Is plastic accepted for Purified Water?\" citing a published PP plant as precedent, with its caution; needs the owner and a checked public source before any wording",
-    "Pass 11 integration (urs-guide review finding 5): the corporate-standard FAQ's link label is 'When not to choose polypropylene' (the review's 'When polypropylene is the wrong choice' is 6 words, over the 5-word button rule; systems uses 'When not to choose PP'), naming the block it lands on (urs-guide#pp-rows)"
+    "Pass 11 integration (urs-guide review finding 5): the corporate-standard FAQ's link label is 'When not to choose polypropylene' (the review's 'When polypropylene is the wrong choice' is 6 words, over the 5-word button rule; systems uses 'When not to choose PP'), naming the block it lands on (urs-guide#pp-rows)",
+    "Final round, pass 11: related links How a project runs (authoritative desk review, DESK-plan.md, Q1: project-plan from compliance and company pages)"
    ],
    "figure": {
     "spots": [
@@ -8529,7 +8592,8 @@
       "cmp-documentation",
       "compliance",
       "svc-fabrication",
-      "svc-fat-sat"
+      "svc-fat-sat",
+      "project-plan"
      ]
     }
    ],
@@ -8584,7 +8648,8 @@
     "Change notification to clients (FAQ \"Will you sign our quality agreement?\"; DR-022 rule 4): which changes you notify (parts, materials, software the client approved), how and with what notice ([change notification to clients: scope and notice]; FD-48). Until set, the placeholder stays",
     "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)",
     "Pass 11 (structure-and-sitemap.md § 3.5 B5, proof-and-seriousness.md § 5.2, journeys P4 step 3; L-05-7, L-05-13, L-G3-3; pass 11 review finding 8): block \"What you can see, and when\" (anchor access, before the audit form its rows link to) splits the qualification pack into public, in the pack, under NDA and at audit. Look audit-manifold (an evidence table; also live on ind-meddevice): the retired table looks not used elsewhere (joint-tag, plan-sheets, shop-floor, spares-kit, twin-route) draw joints, plans, shop stations or spares, and reader-split is on four pass 11 pages. New names for the orchestrator's ops/placeholder-names.md: [quality manual: openly or under NDA], [critical supplier names: openly or under NDA] (FD-48). Rows follow the questionnaire pack FAQ and the audit form; a row whose item does not exist at launch leaves (DR-006 rule 6). Six rows, unfolded (DR-024); every note cell is a link, because AuditManifold styles a plain note like a link; the quality manual row links buying#terms, the home of the NDA terms. The warranty split by component class belongs to buying",
-    "Onboarding papers (insurance, registrations, banking and tax forms) and their status live item by item on buying#onboarding, each with its own placeholder (pass 11; DR-009, DR-011). The questionnaire pack FAQ and the terms row point there in words; no onboarding placeholder on this page (pass 11 review finding 7)"
+    "Onboarding papers (insurance, registrations, banking and tax forms) and their status live item by item on buying#onboarding, each with its own placeholder (pass 11; DR-009, DR-011). The questionnaire pack FAQ and the terms row point there in words; no onboarding placeholder on this page (pass 11 review finding 7)",
+    "Final round, pass 11: related links How a project runs (authoritative desk review, DESK-plan.md, Q1: project-plan from compliance and company pages)"
    ],
    "figure": {
     "plate": "stamp",
@@ -8658,6 +8723,26 @@
        },
        "That a project's records are complete",
        "[specimen package response time, working days]"
+      ],
+      [
+       "A specimen design set: piping and instrumentation diagram (P&ID) and 3D layout, labelled a specimen",
+       {
+        "t": "Talk to an engineer",
+        "link": "contact-proposal",
+        "intent": "Not sure yet: talk to an engineer"
+       },
+       "That any installation exists: it is a specimen, not a delivered system",
+       "[specimen design set availability, date]"
+      ],
+      [
+       "Our factory acceptance test (FAT) protocol template, labelled a specimen",
+       {
+        "t": "Specimen package",
+        "link": "cmp-documentation#samples",
+        "intent": "FAT protocol: contents and test cases"
+       },
+       "How the FAT runs on your system",
+       "[FAT protocol template issue date]"
       ],
       [
        "That our quality system works",
@@ -8806,7 +8891,8 @@
     "Pass 11 (proof-and-seriousness.md § 3 and § 4 item 6; L-15-23, PB-15.18): FAQ \"You are a new company. Is the technology new too?\" separates a new company from new technology. It names membranes, EDI modules and resin, the rows the link shows. Its facts are the site's own (cmp-quality#suppliers: makers' certificates with serial or lot numbers for membranes, EDI modules and resin) and MISSION's scope (design, fabrication, FAT). Home's risk FAQ (commercial phrasebook change 5) says the same in one sentence; this answer is the fuller home. Never name a maker or a partner's former projects as references (DR-004, DR-016). Confirm against the bill of materials (FD-20), as home's phrasebook 5 line: a part not bought from its maker leaves the sentence",
     "Pass 11 (SITE-PLAN; structure-and-sitemap.md § 4.4 B7; L-11-6, L-15-3): FAQ \"Can we speak to a client in our segment?\" links buying#faq, where the reference question in a tender is answered honestly (none yet; what to check instead); buying links back to projects#verify, a round trip kept because buying adds the tender advice. The related row links buying in place of cmp-quality#buying, and project-plan (desk Q1: the project plan linked from Projects). If buying does not ship, both buying links return to cmp-quality",
     "Hold (proof-and-seriousness.md § 2.10, P27; L-G1-12; DR-016): the reference table (client type, province, L/h, scope, year, reference call yes or no) stays unbuilt until project 1",
-    "Pass 11 integration (DR-011, one name per fact; placeholder-names Parts sourcing row, FD-20): the new-technology FAQ names the sourcing fact as home's risk FAQ does, [membranes and instruments bought from their makers]; the certificates sentence stays flat (cmp-quality#suppliers). When FD-20 confirms, both brackets become 'membranes and instruments come from their makers' together; if not, both sentences go"
+    "Pass 11 integration (DR-011, one name per fact; placeholder-names Parts sourcing row, FD-20): the new-technology FAQ names the sourcing fact as home's risk FAQ does, [membranes and instruments bought from their makers]; the certificates sentence stays flat (cmp-quality#suppliers). When FD-20 confirms, both brackets become 'membranes and instruments come from their makers' together; if not, both sentences go",
+    "Final round, pass 11: verify table gains a specimen design set (P&ID and 3D layout) and a FAT protocol template, each labelled a specimen, never an installation, with availability bracketed (L-BWT-28, L-BWT-17, L-BWT-10; BWT study § 9 rank 5; FD-47). Owner sets [specimen design set availability, date] and [FAT protocol template issue date]; at launch a row whose date is unset goes"
    ],
    "hero_index": false,
    "figure": {
@@ -8873,6 +8959,11 @@
        "hl": true
       },
       {
+       "p": "Why we started",
+       "v": "[why we started, in the founders' words]",
+       "m": "Founders' statement, [approved] by each founder"
+      },
+      {
        "p": "Founded and ownership",
        "v": "[founding year] · [ownership; any equipment maker's stake]",
        "m": "[corporate registration, jurisdiction and number]"
@@ -8890,15 +8981,10 @@
        "link": "cmp-quality#certification"
       },
       {
-       "p": "Insurance",
-       "v": "[general and professional liability limits, CAD]",
-       "m": "Certificate: [certificate of insurance status]",
+       "p": "Insurance and financial standing",
+       "v": "[general and professional liability limits, CAD] · [financial standing evidence for procurement]",
+       "m": "Certificate: [certificate of insurance status]. Financial evidence on request",
        "link": "buying#onboarding"
-      },
-      {
-       "p": "Financial standing",
-       "v": "[financial standing evidence for procurement]",
-       "m": "On request"
       },
       {
        "p": "Professional licences",
@@ -8938,16 +9024,16 @@
      "items": [
       {
        "t": "Commercial lead",
-       "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts."
+       "d": "[Full name] · [portrait] · [years of relevant experience]. [one sentence in their words, approved]. Ask about scope, terms and company facts."
       },
       {
        "t": "Industrial automation engineer",
-       "d": "[Full name] · [licence or qualification]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity.",
+       "d": "[Full name] · [portrait] · [years in pharmaceutical water]. Direct experience on pharmaceutical water systems. [one sentence in their words, approved]. Ask about controls and data integrity.",
        "link": "sys-monitoring"
       },
       {
        "t": "Modular manufacturing and design specialist",
-       "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
+       "d": "[Full name] · [portrait] · [years in modular fabrication]. [one sentence in their words, approved]. Ask about design, fabrication and joint records.",
        "link": "svc-fabrication"
       }
      ],
@@ -9035,7 +9121,8 @@
       "cmp-quality",
       "buying",
       "projects",
-      "careers"
+      "careers",
+      "project-plan"
      ]
     }
    ],
@@ -9091,7 +9178,10 @@
     "Pass 11 (SITE-PLAN, structure-and-sitemap § 3.6 B4 and § 4.4 entry links): hero secondary \"How buying from us works\" now links the buying page, not cmp-quality#buying; related adds buying. The label is the buying page's own heading; change both together",
     "Pass 11 open (proof-and-seriousness § 5.2; L-02-15): the people grid should say what each partner did within scope, as personal experience, never company references. Waits on FD-34 with consent; no bracket added now, so the page does not read as more unfinished",
     "Launch (pass 11 review finding 2; DR-026 launch rule, FD-05 to FD-07): if buying is not published, the hero secondary returns to cmp-quality#buying, related drops buying, and the Insurance row links cmp-quality#audit",
-    "References question (structure-and-sitemap § 3.6 B3; procurement objection 2; pass 11 review finding 15): one home on buying#faq. about adds no FAQ while the Systems delivered row links projects (DR-009, DR-016). Revisit if the forwarded-about reader still has no route to it once buying launches"
+    "References question (structure-and-sitemap § 3.6 B3; procurement objection 2; pass 11 review finding 15): one home on buying#faq. about adds no FAQ while the Systems delivered row links projects (DR-009, DR-016). Revisit if the forwarded-about reader still has no route to it once buying launches",
+    "Final round, pass 11: related links How a project runs (authoritative desk review, DESK-plan.md, Q1: project-plan from company pages)",
+    "Final round, pass 11: facts gain \"Why we started\" as [why we started, in the founders' words], approved by each founder; never the underserved-small-systems hypothesis as a claim (L-BWT-24; BWT study § 9 rank 8; FD-33). Insurance and financial standing merged into one row to keep the 10-row spec budget",
+    "Final round, pass 11: people cards: structure for name, portrait, years and one sentence each in their own words, all placeholders until each person approves and consents ([Full name], [portrait], [years of relevant experience], [years in pharmaceutical water], [years in modular fabrication], [one sentence in their words, approved]); never invent names, quotes or years; the former employer named only with permission (L-BWT-12, L-BWT-19; BWT study § 9 rank 4; FD-34, FD-35). [licence or qualification] left the cards for the 25-word item budget; licences stay in the facts row \"Professional licences\""
    ],
    "figure": {
     "spots": [
@@ -9246,7 +9336,7 @@
       [
        "Documents",
        "Included",
-       "The document list, each marked for information or for approval"
+       "Drawings, test and qualification records, operating manual and as-built set [confirm each], each for information or approval"
       ],
       [
        "First-year spares",
@@ -9594,7 +9684,8 @@
     "Entry links other editors set (SITE-PLAN): footer \"Buying from Aquemi\" to buying (orchestrator, Footer.js); about hero secondary; cmp-quality#buying as one line and a link; services router \"Comparing suppliers\"; systems#budget; contact-proposal#requests \"I have an RFQ or a tender\" to buying#answer; projects FAQ on references to buying#faq; home router to buying#compare; svc-design FAQ 6 and sys-monitoring FAQ 4 links to cmp-quality#buying retarget to buying#terms",
     "Related (pass 11 review finding 15): about, cmp-quality, project-plan, projects. Departs from the structure-and-sitemap § 4.4 related list: the renderer shows only nav labels, so systems#budget (capital row 1) and svc-service#running-cost (compare row 8) are linked in context instead; project-plan holds the stages the payment events follow",
     "Onboarding: corporate registration links about#facts, the entity's home (review finding 16; L-01-2). Insurance certificate status is [certificate of insurance status], one name with about#facts' Insurance row, which links buying#onboarding (DR-011; review finding 19, settled by the pass 11 integrator)",
-    "Pass 11 integration (look reuse across the four new pages; urs-guide review finding 23, project-plan finding 10): the hero plate is now 'stamp' (page one of a proposal, its rows as buying#terms' Proposal row lists them, accepted and signed by you), so the 'route' plate stays only on project-plan. Kept reuses, each checked against every unused look of its type (python tools/specimens.py fit): compare on reader-split (also urs-guide, project-plan, first-system; the retired table looks draw joints, plans with buttons, the shop, spares or the FAT and SAT scenes, none a list of lines to level), proposal on joint-spine and answer on binder-tabs (also urs-guide; no retired table or steps look draws a document's lines or a returned answer), capital on cost-balance (also first-system; no retired spec look draws a budget), order on release-run (also first-system; capa-ring, fault-knot and shop-route draw a defect loop, a breakdown and a shop route). Revisit if a look for proposals or orders is added"
+    "Pass 11 integration (look reuse across the four new pages; urs-guide review finding 23, project-plan finding 10): the hero plate is now 'stamp' (page one of a proposal, its rows as buying#terms' Proposal row lists them, accepted and signed by you), so the 'route' plate stays only on project-plan. Kept reuses, each checked against every unused look of its type (python tools/specimens.py fit): compare on reader-split (also urs-guide, project-plan, first-system; the retired table looks draw joints, plans with buttons, the shop, spares or the FAT and SAT scenes, none a list of lines to level), proposal on joint-spine and answer on binder-tabs (also urs-guide; no retired table or steps look draws a document's lines or a returned answer), capital on cost-balance (also first-system; no retired spec look draws a budget), order on release-run (also first-system; capa-ring, fault-knot and shop-route draw a defect loop, a breakdown and a shop route). Revisit if a look for proposals or orders is added",
+    "Final round, pass 11: proposal \"Documents\" line names what you receive (drawings, test and qualification records, operating manual, as-built set) [confirm each]; the full index stays on cmp-documentation (L-BWT-26; BWT study § 9 rank 13)"
    ]
   },
   {
@@ -11870,7 +11961,8 @@
      "base": {
       "c": "ON",
       "label": "Based in Ontario"
-     }
+     },
+     "intro": "From [service bases, cities] we reach [service coverage area] within [travel time from service base, hours]. Parts for every package we build stay available for [parts availability period, years]."
     },
     {
      "type": "form",
@@ -11998,7 +12090,8 @@
     "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Cost of the written coverage answer: [fit check cost or free], the \"Not sure yet\" row of contact-proposal's requests table (FD-02; DR-006 rule 5). At launch, \"Free\" or the price; if unset, the cost line goes",
     "LocalBusiness schema per real location only, once addresses are confirmed",
-    "Pass 11 (offer § 14 CL1; L-12-16, L-07-10; FD-44, FD-45): the shop row reads \"Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice\" (ops/placeholder-names.md name, as on svc-fat-sat and projects), two plate callouts (pass 11 review finding 5). At launch the second callout ships only once [shop and test bay ready for visits] has passed (FD-44, DR-004 class 2)"
+    "Pass 11 (offer § 14 CL1; L-12-16, L-07-10; FD-44, FD-45): the shop row reads \"Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice\" (ops/placeholder-names.md name, as on svc-fat-sat and projects), two plate callouts (pass 11 review finding 5). At launch the second callout ships only once [shop and test bay ready for visits] has passed (FD-44, DR-004 class 2)",
+    "Final round, pass 11: coverage intro states an honest response radius and parts policy: [travel time from service base, hours] and [parts availability period, years]; no map of one dot (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). Owner decides both"
    ],
    "primary_cta_link": "#coverage",
    "facts": [

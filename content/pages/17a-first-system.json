@@ -2,12 +2,12 @@
  "id": "first-system",
  "section": "Industries",
  "nav_label": "Your first system",
- "title": "Your first Purified Water system, in plain terms | Aquemi",
+ "title": "Planning your site's first Purified Water system | Aquemi",
  "meta": "For makers of natural health products, non-sterile drugs and medical devices: whether a packaged Purified Water system fits, what your site needs, all-in cost and five steps.",
  "path": "/industries/first-system/",
  "eyebrow": "YOUR FIRST SYSTEM · GUI-0158 · GUI-0001",
- "headline": "Your first Purified Water system, in plain terms",
- "lead": "For makers of natural health products, non-sterile drugs and medical devices. Purified Water goes into your product and rinses your equipment. We supply one polypropylene package with polyvinyl chloride pretreatment.",
+ "headline": "Planning your site's first Purified Water system",
+ "lead": "For makers of natural health products, non-sterile drugs and medical devices. Covered here: the water grade you need, site utilities, weekly staff time and all-in cost. We supply one polypropylene package with polyvinyl chloride pretreatment.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec",
@@ -22,7 +22,7 @@
    "look": "reader-split",
    "nav": "Is it for you",
    "anchor": "fit",
-   "h": "Is a packaged system right for your site?",
+   "h": "Is a polypropylene Purified Water package right for you?",
    "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
    "cols": [
     "Wrong choice if",
@@ -176,6 +176,18 @@
      "v": "Doors and route at least [minimum door and access width, m]",
      "m": "Measure the narrowest door on the route",
      "side": "site"
+    },
+    {
+     "p": "Natural health product sites",
+     "v": "Often a leased unit: ask your landlord about the drain, floor load and wall openings",
+     "m": "Ask before you order",
+     "side": "site"
+    },
+    {
+     "p": "Medical device sites",
+     "v": "Rinse water is drawn at the washer, often inside a clean room",
+     "m": "Plan the pipe route and a sample point there",
+     "side": "site"
     }
    ],
    "sides": [
@@ -302,7 +314,7 @@
    "nav": "Steps",
    "anchor": "steps",
    "h": "From first call to water you can use",
-   "intro": "Five steps. Each says what you send or decide.",
+   "intro": "Have four answers: what is in your water, which grade, how much, and what limits your site. Missing one? Send the rest. We draft, check against your budget and revise until you approve.",
    "items": [
     {
      "t": "Scope review",
@@ -444,6 +456,9 @@
   "Looks (DR-018, design kept): reader-split, derivation-sheet, battery-limit, cost-balance, release-run (retired, brought back); time-card (careers) and industry-feed (home) live, outside the Industries section. Look-only copy: battery-limit sides and seam ('Where our scope stops' replaces the engineer's 'Battery limit' for an R1 reader)",
   "Pass 11 integration (project-plan cross-file item; services-b finding 11; DR-011): the site block's Training row uses [training hours and audiences], the name on svc-cq, buying and project-plan (FD-26), and links svc-cq#faq",
   "Pass 11 integration (look reuse across the four new pages; urs-guide review finding 23): reuses kept after checking every unused look of each type (python tools/specimens.py fit). fit on reader-split (also urs-guide, project-plan, buying): twin-route draws the FAT bay and the site, plan-sheets gives each column a button and dims the 'No' column, which would bury the wrong-choice lines desk Q3 puts first; the ReaderSplit column labels now show on phones and to assistive tech. grade on derivation-sheet (also urs-guide): it is the grade-table look. site on battery-limit (also project-plan#reporting): the look draws site requirements at the battery limit, this block's subject. cost on cost-balance (also buying#capital): the look draws running costs. steps on release-run (also buying#order): its last column is water released, this block's last step",
-  "Pass 11 integration (first-system review finding 4, cross-file part): ReaderSplit now shows its column names on phones and gives them to assistive tech in every row, so the fit rows lose their 'Wrong choice if' / 'Fits if' openings and the columns carry them ('Wrong choice if', 'Fits if'); the wrong-choice column still comes first (desk Q3)"
+  "Pass 11 integration (first-system review finding 4, cross-file part): ReaderSplit now shows its column names on phones and gives them to assistive tech in every row, so the fit rows lose their 'Wrong choice if' / 'Fits if' openings and the columns carry them ('Wrong choice if', 'Fits if'); the wrong-choice column still comes first (desk Q3)",
+  "Final round, pass 11: headline, lead and first section heading in the spirit of the authoritative desk (\"Planning your site's first Purified Water system\"; the lead names grade, utilities, weekly staff time and all-in cost for NHP, device and non-sterile drug makers; first heading \"Is a polypropylene Purified Water package right for you?\", shortened from \"...for your site?\" to keep the 9-word heading budget) (authoritative desk review, DESK-plan.md, Q3 ruling). The capital-request block already sits low, after cost and steps",
+  "Final round, pass 11: \"What your site needs\" gains natural health product and medical device site constraints (leased unit: drain, floor load, wall openings; rinse water drawn at the washer, often in a clean room) (authoritative desk review, DESK-plan.md, Q1: first-system must cover NHP and device site constraints)",
+  "Final round, pass 11: steps intro: the four questions before design (water, grade, quantity, site) and the short design loop (draft, check against budget, revise until approved) (L-BWT-21, L-BWT-4; BWT study § 9 rank 2)"
  ]
 }

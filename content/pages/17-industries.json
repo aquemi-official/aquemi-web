@@ -108,7 +108,7 @@
    "h": "Grade, limit and inspector by industry",
    "cols": [
     "Industry",
-    "Grades and uses",
+    "Where the water goes, and its grade",
     "Limit that applies",
     "Inspector"
    ],
@@ -118,7 +118,7 @@
       "t": "Pharma, non-sterile",
       "link": "ind-pharma"
      },
-     "PW for granulation, coating and rinse",
+     "Into granulation, coatings and oral liquids, and the final equipment rinse: PW",
      "USP <645> and <643>",
      "Health Canada GUI-0001; FDA 21 CFR 211"
     ],
@@ -127,7 +127,7 @@
       "t": "Contract manufacturing",
       "link": "ind-cdmo"
      },
-     "PW per client program",
+     "Into each client's products, from one system: PW per client program",
      "Stricter of USP and Ph. Eur., per attribute",
      "Regulators and each client’s quality unit"
     ],
@@ -136,7 +136,7 @@
       "t": "Medical devices",
       "link": "ind-meddevice"
      },
-     "PW final rinse, with an endotoxin limit where needed",
+     "The final rinse of components: PW, with an endotoxin limit where needed",
      "USP <161> per device; ISO 11737-1 bioburden",
      "Health Canada, through MDSAP (Class II to IV); FDA 21 CFR 820"
     ],
@@ -145,7 +145,7 @@
       "t": "Natural health products",
       "link": "ind-pharma#nhp"
      },
-     "Potable at minimum; PW where your specification calls for it",
+     "Into liquids, creams and some dilutions: potable at minimum; PW where your specification calls for it",
      "Your specification (GUI-0158 s. 45)",
      "Health Canada GUI-0158"
     ],
@@ -178,7 +178,7 @@
    "items": [
     {
      "t": "Your product’s grade",
-     "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
+     "d": "Purified Water goes into your product or rinses what touches it. Non-sterile drugs need PW (GUI-0001); natural health products, potable at minimum (GUI-0158).",
      "link": "ind-pharma#grades",
      "big": [
       {
@@ -288,6 +288,8 @@
   "Pass 11 (SITE-PLAN, DR-015 amended): #first-system is now a pointer to the first-system page, look and anchor kept for old links. Item 1 keeps the grade facts and links their home, ind-pharma#grades (DR-009); item 2 links first-system. Cost, running cost, first-year staff time ([staff hours in year one: sampling, logs, sanitization], FD-52), first use after 2 weeks and the people moved to first-system (#cost, #site, FAQ) and svc-cq",
   "First-system intro is phrasebook change 19 (L-11-15, L-03-19, PB-03.25, DR-021), with sys-pw's placeholder name [minimum–maximum capacity, L/h] per skid in place of the phrasebook's draft name (DR-011 rule 2: one range on every page). Unfilled at launch, the first sentence goes and the 'does not fit' sentence stays",
   "Router row 5 \"A first PW system, no specification yet\" and the hero secondary link first-system (desk Q1: first system from home and industries; structure-and-sitemap § 4.5 entry links)",
-  "Pass 11 lead (desk Q2; structure-and-sitemap § 3.1 hub hero: what, for whom, where it stops): the lead names who the package is for first; the DR-021 exclusion stays word for word and last. 'PW limits are the same in every industry' was cut: the grade table's 'Limit that applies' column carries it. #first-system item 2 sits on navy (panel, a look-only field) so the pointer reads as the band's purpose"
+  "Pass 11 lead (desk Q2; structure-and-sitemap § 3.1 hub hero: what, for whom, where it stops): the lead names who the package is for first; the DR-021 exclusion stays word for word and last. 'PW limits are the same in every industry' was cut: the grade table's 'Limit that applies' column carries it. #first-system item 2 sits on navy (panel, a look-only field) so the pointer reads as the band's purpose",
+  "Final round, pass 11: \"By industry\" table: the uses column now opens with where the water goes in each product (L-BWT-23, L-BWT-13, L-BWT-16; BWT study § 9 rank 7, as a column in the existing macro-leaders table, not a new matrix). Cosmetics and sterile rows unchanged. Confirm the uses named",
+  "Final round, pass 11: first-system grade item opens with what the water does (L-BWT-3; BWT study § 9 rank 1, industries#first-system items)"
  ]
 }

@@ -378,6 +378,12 @@
      "link": "contact-service#request",
      "link_label": "Book a maintenance visit",
      "intent": "Preventive maintenance"
+    },
+    {
+     "q": "How far away are you, and how long are parts kept?",
+     "a": "We reach [service coverage area] within [travel time from service base, hours]. Parts for every package we build stay available for [parts availability period, years]. Coverage by province is on our locations page.",
+     "link": "contact-locations#coverage",
+     "link_label": "See coverage by province"
     }
    ]
   },
@@ -436,6 +442,7 @@
   "Pass 11, phrasebook 22 (L-14-19, L-14-17; PB-14.8): new FAQ \"We stop production for two weeks...\" with [idle-period rules by duration]; confirm the operating manual carries idle-period rules (FD-26). Storage before start-up stays on systems#site or project-plan (L-14-17)",
   "Launch rule (review finding 6): the warranty sentence and the buying#faq link in \"What does our team do between visits?\" ship only when buying launches with FD-07 confirming the daily log as a condition; otherwise both go and the FAQ ends at 'shorter to fix.'",
   "Pass 11, related: project-plan not added; service starts after handover, and project-plan covers delivery (SITE-PLAN svc pages, reviewed; review finding 7). contact-locations stays: a service reader needs coverage more than delivery stages",
-  "Pass 11 review finding 3: idle-period FAQ opens with the answer and adds the release line (restart sampling and release are the client's before reuse). Review finding 8: the FAQ block gains anchor faq, the home of operator duties ([operator time, minutes a day]); services FAQ 6 should link svc-service#faq (cross-file)"
+  "Pass 11 review finding 3: idle-period FAQ opens with the answer and adds the release line (restart sampling and release are the client's before reuse). Review finding 8: the FAQ block gains anchor faq, the home of operator duties ([operator time, minutes a day]); services FAQ 6 should link svc-service#faq (cross-file)",
+  "Final round, pass 11: FAQ on response radius and parts availability, linked to contact-locations#coverage, the fact's home (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). The service lead's quote (same rank) is not added: no service lead is named in MISSION"
  ]
 }

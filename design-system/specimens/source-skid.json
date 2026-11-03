@@ -10,9 +10,9 @@
    "page": "about",
    "slot": 1,
    "h": "The people you would work with",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "c23e8d35dc",
    "block": {
@@ -34,6 +34,57 @@
      {
       "t": "Modular manufacturing and design specialist",
       "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
+      "link": "svc-fabrication"
+     }
+    ],
+    "parts": [
+     {
+      "t": "The package",
+      "by": "We design and fabricate",
+      "part": "package"
+     },
+     {
+      "t": "Instruments",
+      "by": "From their makers",
+      "part": "instruments"
+     },
+     {
+      "t": "Membranes and EDI modules",
+      "by": "From their makers",
+      "part": "modules"
+     }
+    ],
+    "look": "source-skid"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 1,
+   "h": "The people you would work with",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "ab1f9fdbc8",
+   "block": {
+    "type": "grid",
+    "nav": "Team",
+    "anchor": "people",
+    "h": "The people you would work with",
+    "intro": "We design and fabricate the package; membranes, electrodeionization (EDI) modules and instruments come from their makers.",
+    "items": [
+     {
+      "t": "Commercial lead",
+      "d": "[Full name] · [portrait] · [years of relevant experience]. [one sentence in their words, approved]. Ask about scope, terms and company facts."
+     },
+     {
+      "t": "Industrial automation engineer",
+      "d": "[Full name] · [portrait] · [years in pharmaceutical water]. Direct experience on pharmaceutical water systems. [one sentence in their words, approved]. Ask about controls and data integrity.",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Modular manufacturing and design specialist",
+      "d": "[Full name] · [portrait] · [years in modular fabrication]. [one sentence in their words, approved]. Ask about design, fabrication and joint records.",
       "link": "svc-fabrication"
      }
     ],

@@ -197,7 +197,7 @@
    "page": "sys-pw",
    "slot": 1,
    "h": "How water moves through the skid",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -223,6 +223,69 @@
       "t": "RO pass 1",
       "spot": "ro-skid",
       "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria.",
+      "label": "RO 1"
+     },
+     {
+      "t": "CO₂ removal",
+      "icon": "valve",
+      "d": "Strips or converts carbon dioxide, which passes RO as a gas.",
+      "label": "CO₂",
+      "fx": "gas"
+     },
+     {
+      "t": "RO pass 2",
+      "spot": "ro-skid",
+      "d": "Where needed, adds margin on conductivity, TOC and silica.",
+      "label": "RO 2",
+      "optional": "Where needed"
+     },
+     {
+      "t": "DI or EDI",
+      "spot": "edi-stack",
+      "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration].",
+      "label": "DI or EDI"
+     },
+     {
+      "t": "To PW storage",
+      "spot": "storage-tank",
+      "d": "Water out of specification diverts away from storage, to [divert route: drain or recirculation], until it recovers.",
+      "label": "Out"
+     }
+    ],
+    "nav": "How it works",
+    "look": "winding-route"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 1,
+   "h": "How water moves through the skid",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "8ef7267ec9",
+   "block": {
+    "type": "diagram",
+    "h": "How water moves through the skid",
+    "stages": [
+     {
+      "t": "Softened, dechlorinated feed",
+      "spot": "pretreatment",
+      "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last.",
+      "label": "Feed"
+     },
+     {
+      "t": "Heat exchanger",
+      "spot": "heat-exchanger",
+      "d": "Where fitted, warms winter feed to the membrane design temperature.",
+      "label": "Heat",
+      "optional": true
+     },
+     {
+      "t": "RO pass 1",
+      "spot": "ro-skid",
+      "d": "Reverse osmosis (RO) pushes water through a membrane so fine that most dissolved ions, organics and bacteria stay behind.",
       "label": "RO 1"
      },
      {

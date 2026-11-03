@@ -49,6 +49,11 @@
      "hl": true
     },
     {
+     "p": "Why we started",
+     "v": "[why we started, in the founders' words]",
+     "m": "Founders' statement, [approved] by each founder"
+    },
+    {
      "p": "Founded and ownership",
      "v": "[founding year] · [ownership; any equipment maker's stake]",
      "m": "[corporate registration, jurisdiction and number]"
@@ -66,15 +71,10 @@
      "link": "cmp-quality#certification"
     },
     {
-     "p": "Insurance",
-     "v": "[general and professional liability limits, CAD]",
-     "m": "Certificate: [certificate of insurance status]",
+     "p": "Insurance and financial standing",
+     "v": "[general and professional liability limits, CAD] · [financial standing evidence for procurement]",
+     "m": "Certificate: [certificate of insurance status]. Financial evidence on request",
      "link": "buying#onboarding"
-    },
-    {
-     "p": "Financial standing",
-     "v": "[financial standing evidence for procurement]",
-     "m": "On request"
     },
     {
      "p": "Professional licences",
@@ -114,16 +114,16 @@
    "items": [
     {
      "t": "Commercial lead",
-     "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts."
+     "d": "[Full name] · [portrait] · [years of relevant experience]. [one sentence in their words, approved]. Ask about scope, terms and company facts."
     },
     {
      "t": "Industrial automation engineer",
-     "d": "[Full name] · [licence or qualification]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity.",
+     "d": "[Full name] · [portrait] · [years in pharmaceutical water]. Direct experience on pharmaceutical water systems. [one sentence in their words, approved]. Ask about controls and data integrity.",
      "link": "sys-monitoring"
     },
     {
      "t": "Modular manufacturing and design specialist",
-     "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
+     "d": "[Full name] · [portrait] · [years in modular fabrication]. [one sentence in their words, approved]. Ask about design, fabrication and joint records.",
      "link": "svc-fabrication"
     }
    ],
@@ -211,7 +211,8 @@
     "cmp-quality",
     "buying",
     "projects",
-    "careers"
+    "careers",
+    "project-plan"
    ]
   }
  ],
@@ -267,7 +268,10 @@
   "Pass 11 (SITE-PLAN, structure-and-sitemap § 3.6 B4 and § 4.4 entry links): hero secondary \"How buying from us works\" now links the buying page, not cmp-quality#buying; related adds buying. The label is the buying page's own heading; change both together",
   "Pass 11 open (proof-and-seriousness § 5.2; L-02-15): the people grid should say what each partner did within scope, as personal experience, never company references. Waits on FD-34 with consent; no bracket added now, so the page does not read as more unfinished",
   "Launch (pass 11 review finding 2; DR-026 launch rule, FD-05 to FD-07): if buying is not published, the hero secondary returns to cmp-quality#buying, related drops buying, and the Insurance row links cmp-quality#audit",
-  "References question (structure-and-sitemap § 3.6 B3; procurement objection 2; pass 11 review finding 15): one home on buying#faq. about adds no FAQ while the Systems delivered row links projects (DR-009, DR-016). Revisit if the forwarded-about reader still has no route to it once buying launches"
+  "References question (structure-and-sitemap § 3.6 B3; procurement objection 2; pass 11 review finding 15): one home on buying#faq. about adds no FAQ while the Systems delivered row links projects (DR-009, DR-016). Revisit if the forwarded-about reader still has no route to it once buying launches",
+  "Final round, pass 11: related links How a project runs (authoritative desk review, DESK-plan.md, Q1: project-plan from company pages)",
+  "Final round, pass 11: facts gain \"Why we started\" as [why we started, in the founders' words], approved by each founder; never the underserved-small-systems hypothesis as a claim (L-BWT-24; BWT study § 9 rank 8; FD-33). Insurance and financial standing merged into one row to keep the 10-row spec budget",
+  "Final round, pass 11: people cards: structure for name, portrait, years and one sentence each in their own words, all placeholders until each person approves and consents ([Full name], [portrait], [years of relevant experience], [years in pharmaceutical water], [years in modular fabrication], [one sentence in their words, approved]); never invent names, quotes or years; the former employer named only with permission (L-BWT-12, L-BWT-19; BWT study § 9 rank 4; FD-34, FD-35). [licence or qualification] left the cards for the 25-word item budget; licences stay in the facts row \"Professional licences\""
  ],
  "figure": {
   "spots": [

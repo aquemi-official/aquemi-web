@@ -137,7 +137,7 @@
    "page": "project-plan",
    "slot": 1,
    "h": "Who does what, and what is ready before installation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -347,7 +347,7 @@
    "page": "first-system",
    "slot": 0,
    "h": "Is a packaged system right for your site?",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -359,6 +359,136 @@
     "nav": "Is it for you",
     "anchor": "fit",
     "h": "Is a packaged system right for your site?",
+    "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
+    "cols": [
+     "Wrong choice if",
+     "Fits if",
+     "Read"
+    ],
+    "rows": [
+     [
+      "Your products are injected, or need Water for Injection (WFI)",
+      "Your products are non-sterile: tablets, capsules, liquids, creams, or devices rinsed with Purified Water",
+      {
+       "t": "Grade by dosage form",
+       "link": "ind-pharma#grades"
+      }
+     ],
+     [
+      "Every product needs only potable water under your specification",
+      "Your specification, a monograph or a drug rule asks for Purified Water",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Your water loop must be held hot, or sanitized with steam",
+      "An ambient loop, at room temperature, suits your products",
+      {
+       "t": "Sanitization methods",
+       "link": "sys-storage#sanitization"
+      }
+     ],
+     [
+      "Your company standard names stainless steel for water piping",
+      "Your specification allows a polypropylene loop, or has no material rule yet",
+      {
+       "t": "When polypropylene is the wrong choice",
+       "link": "urs-guide#pp-rows"
+      }
+     ],
+     [
+      "You need a few litres a day for a lab bench",
+      "You need [minimum–maximum capacity, L/h] for production and rinsing",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ]
+    ]
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 1,
+   "h": "Who does what, and what is ready before installation",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "c6071f0455",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "anchor": "who",
+    "nav": "Who does what",
+    "h": "Who does what, and what is ready before installation",
+    "intro": "Who installs is [installation scope]. Your proposal lists every task, marked by Aquemi or by others.",
+    "cols": [
+     "Who",
+     "What they do",
+     "Ready before installation"
+    ],
+    "rows": [
+     [
+      "You: project manager or site head",
+      "Own the schedule, the order and site access. Name one contact who approves drawings and changes.",
+      "Delivery route and floor for [typical footprint and weight, by capacity]"
+     ],
+     [
+      "Your quality unit",
+      "Approves the URS, each protocol before it runs and each report after. Decides first use from PQ data.",
+      "Validation master plan; SAT, IQ and OQ protocols approved"
+     ],
+     [
+      "Your engineer, in-house or consulting",
+      "Writes or reviews the URS, reviews our drawings and may witness FAT for you.",
+      "Tie-in points agreed on the drawings"
+     ],
+     [
+      "Your contractor",
+      "Builds the room and brings utilities to the battery limits.",
+      {
+       "t": "Power, feed water and drain at the battery limits: [standard battery limits, typical scope]",
+       "link": "systems#site"
+      }
+     ],
+     [
+      "Your other trades: mechanical, electrical, plumbing",
+      "Review our drawings before fabrication. Each comment is closed in writing [confirm].",
+      "Comments closed on the drawings before fabrication"
+     ],
+     [
+      "Aquemi",
+      "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
+      "Site readiness checklist, sent [site checklist before delivery, weeks] before delivery [confirm]"
+     ],
+     [
+      "Aquemi, at handover",
+      "Issues as-built drawings [as-built drawings after SAT, working days] after SAT, marked as built.",
+      "Valves, gauges and sample points tagged as on the drawings [confirm]"
+     ]
+    ],
+    "look": "reader-split"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 0,
+   "h": "Is a polypropylene Purified Water package right for you?",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "82307fcae4",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "reader-split",
+    "nav": "Is it for you",
+    "anchor": "fit",
+    "h": "Is a polypropylene Purified Water package right for you?",
     "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
     "cols": [
      "Wrong choice if",

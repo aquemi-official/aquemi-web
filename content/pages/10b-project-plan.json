@@ -120,9 +120,19 @@
      }
     ],
     [
+     "Your other trades: mechanical, electrical, plumbing",
+     "Review our drawings before fabrication. Each comment is closed in writing [confirm].",
+     "Comments closed on the drawings before fabrication"
+    ],
+    [
      "Aquemi",
      "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
      "Site readiness checklist, sent [site checklist before delivery, weeks] before delivery [confirm]"
+    ],
+    [
+     "Aquemi, at handover",
+     "Issues as-built drawings [as-built drawings after SAT, working days] after SAT, marked as built.",
+     "Valves, gauges and sample points tagged as on the drawings [confirm]"
     ]
    ],
    "look": "reader-split"
@@ -359,6 +369,7 @@
   "Entry links (other editors and orchestrator): services#durations line and link, home steps block, first-system steps, buying (what starts the clock), svc-design, svc-fat-sat, svc-cq related blocks, footer Services column. Support through first use (L-08-6) stays on svc-cq; acceptance definitions stay on svc-fat-sat and svc-cq; document timing on cmp-documentation",
   "Launch order (DR-026): if buying is not live when this page launches, the hero secondary, FAQ 5 and the related item link cmp-quality#buying ('See payment terms') until it is",
   "Shared looks with the other pass 11 pages (review finding 10, orchestrator): reader-split (B1, also urs-guide, first-system, buying), battery-limit (B4, also first-system), hero route plate (also buying). Keep route here: its stops are a schedule",
-  "Pass 11 integration (look reuse, finding 10): hero 'route' plate kept here; buying moved to the 'stamp' plate. Kept reuses after checking every unused look of each type (python tools/specimens.py fit): who on reader-split (also urs-guide, first-system, buying): shop-floor draws our shop, where the client roles do not work, and the other retired table looks draw joints, plans, spares or FAT and SAT. reporting on battery-limit (also first-system#site): no retired spec look draws a two-sided split"
+  "Pass 11 integration (look reuse, finding 10): hero 'route' plate kept here; buying moved to the 'stamp' plate. Kept reuses after checking every unused look of each type (python tools/specimens.py fit): who on reader-split (also urs-guide, first-system, buying): shop-floor draws our shop, where the client roles do not work, and the other retired table looks draw joints, plans, spares or FAT and SAT. reporting on battery-limit (also first-system#site): no retired spec look draws a two-sided split",
+  "Final round, pass 11: \"Who does what\" gains drawing review by the client's other trades before fabrication and labelled as-built drawings at handover (L-BWT-9, L-BWT-26; BWT study § 9 rank 6; FD-57). Owner confirms comment closure in writing, [as-built drawings after SAT, working days] and the tagging practice"
  ]
 }

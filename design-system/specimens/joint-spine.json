@@ -130,7 +130,7 @@
    "page": "buying",
    "slot": 1,
    "h": "What every proposal lists, line by line",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -181,6 +181,71 @@
       "Documents",
       "Included",
       "The document list, each marked for information or for approval"
+     ],
+     [
+      "First-year spares",
+      "[first-year spares: included or priced option]",
+      "Parts and quantities for the first year"
+     ]
+    ],
+    "look": "joint-spine"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 1,
+   "h": "What every proposal lists, line by line",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "bc53170c6c",
+   "block": {
+    "type": "table",
+    "nav": "Proposal",
+    "anchor": "proposal",
+    "h": "What every proposal lists, line by line",
+    "intro": "The same lines, in the same order, every time. Each is marked included, priced option or by others; none is left blank.",
+    "cols": [
+     "Line",
+     "Included, option or by others",
+     "What the line states"
+    ],
+    "rows": [
+     [
+      "Package: pretreatment to distribution",
+      "Included",
+      "Each module and each point of use, sized from your water analysis"
+     ],
+     [
+      "Installation support",
+      "[installation scope]",
+      "Who places, connects and fills it, up to the connection points"
+     ],
+     [
+      "Factory acceptance test (FAT)",
+      "[FAT in the price or priced option]",
+      "What is tested in our shop, and how you witness it"
+     ],
+     [
+      "Site acceptance test (SAT) and commissioning",
+      "[SAT and commissioning: included or option]",
+      "Tests on your feed water before qualification starts"
+     ],
+     [
+      "Installation and operational qualification (IQ and OQ)",
+      "[IQ and OQ: included or priced option]",
+      "Who drafts and runs the protocols, and who approves them"
+     ],
+     [
+      "Training",
+      "[training hours and audiences]",
+      "Who is trained, for how long, and the signed record"
+     ],
+     [
+      "Documents",
+      "Included",
+      "Drawings, test and qualification records, operating manual and as-built set [confirm each], each for information or approval"
      ],
      [
       "First-year spares",

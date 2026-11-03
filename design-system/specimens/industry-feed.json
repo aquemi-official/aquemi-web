@@ -46,9 +46,9 @@
    "page": "home",
    "slot": 2,
    "h": "Same PW limits, different evidence by industry",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "166c252f5a",
    "block": {
@@ -120,6 +120,48 @@
      }
     ],
     "ground": "light"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 2,
+   "h": "Same PW limits, different evidence by industry",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "9e1af32748",
+   "block": {
+    "type": "grid",
+    "h": "Same PW limits, different evidence by industry",
+    "items": [
+     {
+      "t": "Pharmaceutical",
+      "d": "In oral liquids, creams and coatings, and the final equipment rinse. Sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
+      "tag": "GUI-0001",
+      "link": "ind-pharma"
+     },
+     {
+      "t": "Medical devices",
+      "d": "The final rinse of components before packaging, with the grade worked back from your device limits.",
+      "tag": "USP <161>",
+      "link": "ind-meddevice"
+     },
+     {
+      "t": "Contract manufacturing",
+      "d": "In every client's product, from one system: the stricter of USP and Ph. Eur. on each attribute.",
+      "tag": "USP · Ph. Eur.",
+      "link": "ind-cdmo"
+     },
+     {
+      "t": "Natural health products",
+      "d": "In liquids, creams and some dilutions: potable water at minimum; Purified Water where your specification or a monograph calls for it.",
+      "tag": "GUI-0158",
+      "link": "ind-pharma#nhp"
+     }
+    ],
+    "ground": "light",
+    "look": "industry-feed"
    }
   }
  ]

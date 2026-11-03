@@ -44,7 +44,7 @@
    "page": "first-system",
    "slot": 5,
    "h": "From first call to water you can use",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bff41e0",
@@ -117,6 +117,49 @@
      }
     ],
     "look": "release-run"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 5,
+   "h": "From first call to water you can use",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "0159cb3",
+   "hash": "010347d8ee",
+   "block": {
+    "type": "steps",
+    "look": "release-run",
+    "nav": "Steps",
+    "anchor": "steps",
+    "h": "From first call to water you can use",
+    "intro": "Have four answers: what is in your water, which grade, how much, and what limits your site. Missing one? Send the rest. We draft, check against your budget and revise until you approve.",
+    "items": [
+     {
+      "t": "Scope review",
+      "d": "You send what you make and where you sell it. We return the water each product needs, so you know if you need this."
+     },
+     {
+      "t": "Budget range",
+      "d": "You send roughly how much water you use a day, and your water report. We return a package size and budget range.",
+      "link": "systems#budget"
+     },
+     {
+      "t": "Requirements and order",
+      "d": "You agree a short user requirement specification (URS) and the proposal, so both sides sign the same scope.",
+      "link": "urs-guide"
+     },
+     {
+      "t": "Build and test",
+      "d": "We build the package and test it in our shop, then test it again on your site."
+     },
+     {
+      "t": "Water released for use",
+      "d": "We run the qualification tests with you. Your quality person then approves the water for use.",
+      "link": "svc-cq"
+     }
+    ]
    }
   }
  ]

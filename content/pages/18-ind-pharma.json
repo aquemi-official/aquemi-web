@@ -7,7 +7,7 @@
  "path": "/industries/pharmaceutical/",
  "eyebrow": "PHARMACEUTICAL · NATURAL HEALTH PRODUCTS · USP · GUI-0001",
  "headline": "Water matched to your dosage forms",
- "lead": "Dosage forms set the grade. We supply one Purified Water (PW) package in polypropylene, with polyvinyl chloride (PVC) pretreatment.",
+ "lead": "Purified Water (PW) goes into your liquids, creams and coatings, and rinses your equipment. You answer for the product; its water needs records you can file. One polypropylene package, with polyvinyl chloride (PVC) pretreatment.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec|Pharmaceutical drug products",
@@ -431,7 +431,8 @@
     "sys-pw",
     "compliance",
     "cmp-quality",
-    "projects"
+    "projects",
+    "urs-guide"
    ]
   }
  ],
@@ -467,6 +468,8 @@
   "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters",
   "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 3.4 and § 4.5): router row 4 now opens first-system (was industries#first-system). #nhp's pointer (SITE-PLAN \"If this is your first system\"; label \"Your first PW system\", buttons at most 5 words) now closes #nhp itself: the last row's note is {\"t\": \"If this is your first system\", \"link\": \"first-system\"} (grade-switch renders notes through tcell since the pass 11 integration, industries review finding 11), and the FAQ item 'This is our first water system. Where do we start?' is cut. The row's 'Under the importing market's drug rules' moved into its minimum cell, so no fact is lost. Lessons L-11-15, L-01-13, L-04-25",
   "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1–2, journeys P1 and P4): decisions intro names the must-have rows default pharmaceutical URS templates carry (L-07-5, L-09-7, L-G2-1, L-G2-5); 'Where polypropylene stops' links urs-guide#allow-pp, the rows to write (pass 11 integration, urs-guide review finding 5). The inspector table gains the buyer's own quality unit: rows answered with documents (L-07-1, L-13-1, L-07-8, L-15-17), audit access (L-15-4), data integrity (L-G2-15)",
-  "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2; SITE-PLAN principle 8, DR-004 rule 1): the quality-unit row links projects#verify ('Checks you can run today'), the checks a new company offers in place of references. No case block until FD-42 (DR-016)"
+  "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2; SITE-PLAN principle 8, DR-004 rule 1): the quality-unit row links projects#verify ('Checks you can run today'), the checks a new company offers in place of references. No case block until FD-42 (DR-016)",
+  "Final round, pass 11: lead opens with what the water does in the product and the reader's duty, then the package (L-BWT-2, L-BWT-3, L-BWT-25; BWT study § 9 rank 1). Confirm the uses named",
+  "Final round, pass 11: related links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the pharma page)"
  ]
 }

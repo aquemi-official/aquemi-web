@@ -59,6 +59,26 @@
      "[specimen package response time, working days]"
     ],
     [
+     "A specimen design set: piping and instrumentation diagram (P&ID) and 3D layout, labelled a specimen",
+     {
+      "t": "Talk to an engineer",
+      "link": "contact-proposal",
+      "intent": "Not sure yet: talk to an engineer"
+     },
+     "That any installation exists: it is a specimen, not a delivered system",
+     "[specimen design set availability, date]"
+    ],
+    [
+     "Our factory acceptance test (FAT) protocol template, labelled a specimen",
+     {
+      "t": "Specimen package",
+      "link": "cmp-documentation#samples",
+      "intent": "FAT protocol: contents and test cases"
+     },
+     "How the FAT runs on your system",
+     "[FAT protocol template issue date]"
+    ],
+    [
      "That our quality system works",
      {
       "t": "Supplier audit",
@@ -205,7 +225,8 @@
   "Pass 11 (proof-and-seriousness.md § 3 and § 4 item 6; L-15-23, PB-15.18): FAQ \"You are a new company. Is the technology new too?\" separates a new company from new technology. It names membranes, EDI modules and resin, the rows the link shows. Its facts are the site's own (cmp-quality#suppliers: makers' certificates with serial or lot numbers for membranes, EDI modules and resin) and MISSION's scope (design, fabrication, FAT). Home's risk FAQ (commercial phrasebook change 5) says the same in one sentence; this answer is the fuller home. Never name a maker or a partner's former projects as references (DR-004, DR-016). Confirm against the bill of materials (FD-20), as home's phrasebook 5 line: a part not bought from its maker leaves the sentence",
   "Pass 11 (SITE-PLAN; structure-and-sitemap.md § 4.4 B7; L-11-6, L-15-3): FAQ \"Can we speak to a client in our segment?\" links buying#faq, where the reference question in a tender is answered honestly (none yet; what to check instead); buying links back to projects#verify, a round trip kept because buying adds the tender advice. The related row links buying in place of cmp-quality#buying, and project-plan (desk Q1: the project plan linked from Projects). If buying does not ship, both buying links return to cmp-quality",
   "Hold (proof-and-seriousness.md § 2.10, P27; L-G1-12; DR-016): the reference table (client type, province, L/h, scope, year, reference call yes or no) stays unbuilt until project 1",
-  "Pass 11 integration (DR-011, one name per fact; placeholder-names Parts sourcing row, FD-20): the new-technology FAQ names the sourcing fact as home's risk FAQ does, [membranes and instruments bought from their makers]; the certificates sentence stays flat (cmp-quality#suppliers). When FD-20 confirms, both brackets become 'membranes and instruments come from their makers' together; if not, both sentences go"
+  "Pass 11 integration (DR-011, one name per fact; placeholder-names Parts sourcing row, FD-20): the new-technology FAQ names the sourcing fact as home's risk FAQ does, [membranes and instruments bought from their makers]; the certificates sentence stays flat (cmp-quality#suppliers). When FD-20 confirms, both brackets become 'membranes and instruments come from their makers' together; if not, both sentences go",
+  "Final round, pass 11: verify table gains a specimen design set (P&ID and 3D layout) and a FAT protocol template, each labelled a specimen, never an installation, with availability bracketed (L-BWT-28, L-BWT-17, L-BWT-10; BWT study § 9 rank 5; FD-47). Owner sets [specimen design set availability, date] and [FAT protocol template issue date]; at launch a row whose date is unset goes"
  ],
  "hero_index": false,
  "figure": {
