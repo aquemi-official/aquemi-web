@@ -88,7 +88,11 @@
     display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-6); margin: 0 0 var(--space-4); }
   .aq-role-loop__legend .aq-role-loop__hl { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
   .aq-role-loop__legend .aq-role-loop__hl::before { top: 3px; }
-  .aq-role-loop__bays[data-pk-on] .aq-role-loop__f.is-sum { display: none; }
+  /* pass 12 round C: the head is the role and its status only; base and pay read in the body with the other fields */
+  .aq-role-loop__bays[data-pk-on] .aq-role-loop__hd > .aq-role-loop__hl { display: none; }
+  .aq-role-loop:has(.aq-role-loop__bays[data-pk-on]) .aq-role-loop__legend { display: none; }
+  .aq-role-loop__bays[data-pk-on] .aq-role-loop__ht .aq-ph { font-family: var(--font-mono); font-size: 20px; line-height: 26px; letter-spacing: 0; }
+  .aq-role-loop__bays[data-pk-on] .aq-role-loop__hd { padding-bottom: var(--space-3); }
   .aq-role-loop__bays[data-pk-on] .aq-role-loop__dl { margin: 0; padding: var(--space-1) 0 var(--space-3); }
   .aq-role-loop__bays[data-pk-on] .aq-role-loop__bay:has(> .aq-role-loop__body:not([hidden])) { border-color: var(--flow); }
 }

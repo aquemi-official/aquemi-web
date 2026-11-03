@@ -14,3 +14,5 @@ Look `approval-merge` (`assets/src/blocks/look-approval-merge.js`) on a `table` 
   links has a 44 px hit box. With several approvers each row keeps its own chip, as before. Desktop unchanged.
 
 Motion: the intro figure counts up, lanes run down, each request rises with its node landing and its wire running to the bus; the bus fills and the one stamp strikes. Once, about 3 s. Phones: rows rise in order, each node lands on the rail, the stamp strikes last. Hover (mouse, after the entrance) traces a request's route in ink: its wire (`__lit`), then the bus from that row to the stamp (`__buslit`), and the stamp presses 0.97; the trace fades a third faster on leave (port of Subframe Motion animated-beam).
+
+Round C: desktop wire tint only on rows Aquemi prepares (`:has(.aq-approval-merge__prep.is-ours)`; every row holds an `is-ours` lane track, so the old `:has(.is-ours)` tinted all). Phones: the index sits left of the request on its first line, the actor chip and the role line run on one 14 px line, rows pad 12 + 8 px; 1,496 to about 1,300 px.

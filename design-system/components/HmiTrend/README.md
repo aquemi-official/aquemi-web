@@ -12,3 +12,7 @@ Look `hmi-trend` (`assets/src/blocks/look-hmi-trend.js`) on a `table` block. Use
 Motion: the screen opens from a centre line, tabs decode and lamps test; the grid and limit lines run out with their labels; the reading is written left to right like a live pen; as it passes the trend window it shades, at the rule's mark the flag strikes, the banner flashes twice and the trend row is flagged (it stays flagged); the live dot lands and pulses. Once, under 5 s. Hover a row to isolate its line on the plot.
 
 Pass 12 (under 400 px): tabs take 4 px padding and 0.02em tracking so "Sanitization" fits its third of the strip.
+
+Pass 12 C: at 860 px and below the field labels (`__k`, "How it is set", "What the system does") show on the first card only; on cards 2-4 they are visually hidden and stay in the markup.
+
+Pass 12 C verify (F7): at 860 px and below the table head is visually hidden but stays in the accessibility tree, so a screen reader on a phone still gets each cell with its column name; `__k` stays `aria-hidden`.

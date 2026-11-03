@@ -9,3 +9,5 @@ GradeMains draws a grade table as water mains on a navy blueprint: one horizonta
 ## Motion
 
 The mains are laid from the left (the dashed one too), the steps set in across the top, then column by column the drop falls to its main and the valves seat with an overshoot; the water runs along each supplied main and the grades and notes read in. Once on scroll-in, under 4.5 s; nothing under reduced motion.
+- Band (pass 12 C, look field `band`, DR-018): `"navy"` (default), `"limestone"` (strokes `on-limestone`, the water `flow`, grades in `flow`) or `"plain"` (page surface, `ink`). The look writes its tones through local `--gm-*` properties. ind-meddevice uses `plain`, so the page does not run navy (colophon) into limestone into limestone (washer-trace).
+- Phone head (pass 12 C): the main names lie flat, right-aligned above their mains (farthest main on top, 14 px), each with a leader into its pipe; "Process step" shares the nearest main's line, so the old upright names' dead band goes.

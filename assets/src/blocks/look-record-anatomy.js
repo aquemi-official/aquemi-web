@@ -40,7 +40,7 @@ LOOKS['record-anatomy']=function(b,H){var Pt=(b.points||[]).slice(0,4),num=funct
    +'<h3 class="aq-record-anatomy__t">'+tx(p.t)+'</h3>'+(p.d?'<p class="aq-record-anatomy__d">'+tx(p.d)+'</p>':'')
    +'<div class="aq-record-anatomy__mini" aria-hidden="true">'+S(RA_FIG[figs[i]]())+'</div></li>'}).join('');
  var band=function(n,c,f){var o='';for(var i=0;i<n;i++)o+='<span>'+f(i)+'</span>';return '<div class="aq-record-anatomy__band aq-record-anatomy__band--'+c+'" aria-hidden="true">'+o+'</div>'};
- return sec('<div class="aq-record-anatomy" data-theme="light"><div class="aq-record-anatomy__sheet">'
+ return sec('<div class="aq-record-anatomy" data-theme="light" data-paper><div class="aq-record-anatomy__sheet">'
   +band(6,'x',function(i){return i+1})+band(3,'y',function(i){return 'ABC'[i]})
   +'<div class="aq-record-anatomy__title">'+H+'</div>'
   +'<div class="aq-record-anatomy__field" aria-hidden="true"><span class="aq-record-anatomy__lens"></span>'+zones+'</div>'

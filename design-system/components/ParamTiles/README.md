@@ -6,6 +6,7 @@ ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles w
 - Fold: phones only; desktop shows every tile so the grid stays whole (as DocList). An empty cell left by the count shows the navy field.
 - Tokens: `limestone` tiles with `on-limestone` text, `navy` lead tile and field, Geist Light numbers, Geist Mono values, `flow` links. Hover: the tile number turns `flow`.
 - Phones: one column, the lead tile first, the blueprint after it, the fold button back.
+- Pass 12 C: links 14 px and 44 px tall; the lead (navy) tile's link `on-navy` (flow on navy was 2.41:1). Paper tiles carry `data-theme="light"` so links and placeholders keep their light values in dark mode. When the grid would leave one empty cell in the last row (lead 2 + blueprint 4 + the rest), the last tile takes `is-row`: the full row, laid out across it (head, value, basis). Tile notes 14 px under 600 px. Verify fixes: under 860 px the `is-row` tile is back on the phone tile's flex column (the reset is list-scoped like the base rule); at 861-1100 px (three columns) the blueprint takes rows 2-3, so the lead holds row 1 with the next tile beside it and the grid still closes square.
 
 ## Motion
 

@@ -363,7 +363,8 @@ WORD = re.compile(r'\S*[A-Za-z0-9µ°]\S*')
 # (spot and icon vignettes, intents on links, a file field's accept list, a gauge row's level, which the renderer words;
 # a row's look-only part, the drawing key a look lights for it, and the look name itself)
 NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'fold_noun', 'lean', 'to', 'at', 'icon', 'icons', 'end', 'art', 'key',
-            'spot', 'intent', 'accept', 'caption_noun', 'level', 'note_link', 'part', 'look'}
+            'spot', 'intent', 'accept', 'caption_noun', 'level', 'note_link', 'part', 'look',
+            'band', 'macro', 'panel'}  # pass 12 C: look-only variant keys (seam is not here: scope-seam and battery-limit use it as copy)
 
 
 def words(s):

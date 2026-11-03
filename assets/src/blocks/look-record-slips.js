@@ -13,7 +13,7 @@ LOOKS['record-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
   return fli('<li class="aq-record-slips__row" style="--i:'+i+'">',b,i)
    +'<div class="aq-record-slips__proc">'+idx(i)+'<h3 class="aq-record-slips__name">'+tcell(r[0])+'</h3>'+k(1)+'<p class="aq-record-slips__ctl">'+tcell(r[1])+'</p></div>'
    +'<div class="aq-record-slips__feed"><span class="aq-record-slips__slot" aria-hidden="true"></span>'
-   +'<div class="aq-record-slips__slip" data-theme="light">'+k(2)+'<ul class="aq-record-slips__recs" role="list">'
+   +'<div class="aq-record-slips__slip" data-theme="light" data-paper>'+k(2)+'<ul class="aq-record-slips__recs" role="list">'
    +recs.map(function(x,j){x=x.charAt(0).toUpperCase()+x.slice(1);return '<li style="--j:'+j+'"><span class="aq-record-slips__box" aria-hidden="true"></span><span>'+tx(x)+'</span></li>'}).join('')
    +'</ul></div></div></li>'}).join('');
  var cols='<div class="aq-record-slips__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[2]||'')+'</span></div>';

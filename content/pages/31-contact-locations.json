@@ -382,10 +382,13 @@
  ],
  "hero_index": false,
  "figure": {
-  "spots": [
-   "pretreatment",
-   "ro-skid",
-   "storage-tank"
+  "look": "site-map",
+  "from": "locations",
+  "at": [
+   "office",
+   "shop",
+   "van",
+   "crates"
   ]
  }
 }

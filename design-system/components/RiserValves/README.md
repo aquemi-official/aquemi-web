@@ -9,6 +9,7 @@ Look `riser-valves` (`assets/src/blocks/look-riser-valves.js`), pass 9b; built f
 - States: `data-rv="shut"` (set by motion only) empties the valve body and turns its lever across the pipe. Hover or focus within a row opens its valve (body `on-navy`, lever along the pipe, 200 ms) and shows both branches full in `on-navy`.
 - Phones: the riser runs down a 64 px left gutter; request, first response and what follows stack; both branches are short tees into the zone keys (valve on branch A); the elbows and rises go.
 - Not for timelines with real durations, or tables whose rows are not one route from a request to its answers (use a plain table).
+- Phone under 600 px (pass 12 C, S12): the two answer columns named once in `__legend` under the intro (the valve glyph = column 2, a twin-wall run `__tee` = column 3); the per-row `__k` labels go back to screen-reader only and the branch glyph is the bullet of each cell's first line. Rows pad 16/24.
 
 ## Motion
 

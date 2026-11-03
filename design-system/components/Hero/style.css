@@ -144,8 +144,10 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-hero__folder-n { font: 400 clamp(18px, 4.4cqi, 28px)/1.2 var(--font-sans); letter-spacing: -0.01em; }
 .aq-hero__folder-head .aq-icon { flex: none; width: var(--space-8); height: var(--space-8); background-color: var(--ink-muted); }
 .aq-hero__folder-list { margin: 0; padding: 0; list-style: none; }
-.aq-hero__folder-list li { display: flex; gap: var(--space-3); align-items: baseline; padding-block: clamp(2px, 1cqi, var(--space-2)); border-bottom: 1px solid var(--line); font: 400 clamp(12px, 2.1cqi, 14px)/1.3 var(--font-sans); }
-.aq-hero__folder-list b { font: 400 0.9em/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-hero__folder-list li { display: flex; gap: var(--space-3); align-items: baseline; padding-block: clamp(2px, 1cqi, var(--space-2)); border-bottom: 1px solid var(--line); font: 400 clamp(13px, 2.4cqi, 14px)/1.3 var(--font-sans); }
+.aq-hero__folder-list b { font: 400 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+/* the front sheet's rows share its height, so six rows fill the paper at every width (no band of empty sheet under 06) */
+.aq-hero__folder.is-front .aq-hero__folder-list { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
 .aq-hero__folder-list span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .aq-hero__folder-foot { margin-top: auto; padding-top: var(--space-2); font: 400 12px/16px var(--font-sans); color: var(--ink-muted); }
 
@@ -218,8 +220,7 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   /* Drawn figure: under the actions, compact (312 x 260 at most) */
   .aq-hero__drawn { width: min(100%, calc(var(--space-32) * 2 + var(--space-12) + var(--space-2))); }
   .aq-hero__vig-t { font-size: 12px; line-height: 16px; top: calc(100% + var(--space-1)); max-width: min(104%, var(--tw, 104%)); }
-  /* binder: the first four index rows, title on one line, no icon */
-  .aq-hero__folder-list li:nth-child(n+5) { display: none; }
+  /* binder: title on one line, no icon (the first four index rows only at phone page width: round C, below) */
   .aq-hero__folder-n, .aq-hero__record-h { font-size: 17px; }
   .aq-hero__folder-head .aq-icon { display: none; }
   .aq-hero__folder-body, .aq-hero__record { padding: var(--space-3); }
@@ -386,4 +387,52 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 /* ind-cdmo (visual audit): at 380 px or less its headline ("every client's auditor") would run to the gutter at 40 px */
 @container (max-width: 380px) {
   .aq-hero[data-hero="ind-cdmo"] .aq-stack > h1.aq-display { font-size: 36px; line-height: 40px; }
+}
+
+/* ---------- Pass 12 round C (c03-heroes): hero furniture ----------
+   - Binder (urs-guide, cmp-documentation): the front sheet keeps all six index rows wherever it has the room. The rule
+     that cut it to four sat in the 860 px container query, which the figure (its own 500-600 px container) matched at
+     1,280 too and left about 115 px of empty sheet; only a phone page (600 px and under) cuts it to four now.
+   - H2: a KeyFacts strip that closes the hero is itself the hero's last rule, so the hero ends 32 px sooner under it
+     (home keeps its own padding round the loop).
+   - svc-upgrades (desktop): its one fact sits under the actions in the text column, not a band under the drawing, so
+     the 110 px of empty hero between the actions and the strip closes (the drawing keeps its column). */
+@media (max-width: 600px) {
+  .aq-hero__folder-list li:nth-child(n+5) { display: none; }
+  /* rows at 13 px (S4): a long row wraps to a second line rather than ending in an ellipsis, and the plate stands a
+     little taller (12:13) so four rows and the foot stay inside the front sheet down to 360 px */
+  .aq-hero__drawn--binder { aspect-ratio: 12 / 13; }
+  .aq-hero__folder-list span { white-space: normal; }
+}
+.aq-hero:not(.aq-hero--home):has(> .aq-in > .aq-key-facts:last-child) { padding-bottom: calc(var(--space-16) - var(--space-8)); }
+@container (min-width: 861px) {
+  .aq-hero[data-hero="svc-upgrades"] .aq-hero__grid--figure + .aq-key-facts:last-child {
+    width: calc((100% - var(--space-8)) * 5 / 12); margin-top: calc(-1 * var(--space-6));
+  }
+}
+@container (max-width: 860px) {
+  .aq-hero:not(.aq-hero--home):has(> .aq-in > .aq-key-facts:last-child) { padding-bottom: var(--space-6); }
+}
+@container (max-width: 600px) {
+  /* H2: the strip follows its figure at 16 px (no band under the drawing) */
+  .aq-hero .aq-hero__grid--figure + .aq-key-facts { margin-top: var(--space-4); }
+}
+/* cmp-quality (audit G6 hero, desktop): the shipment record at about 560 px with its rows at reading size, so the
+   card holds its half of the hero instead of floating as a 512 px slip of 13 px rows (the 860 px rules above match
+   the figure's own container on desktop too). Buying's proposal card keeps its size. */
+@container (min-width: 481px) {
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record { left: 2%; width: 96%; padding: var(--space-6) var(--space-8); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-h { font-size: 24px; line-height: 30px; padding-bottom: var(--space-4); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record li { padding-block: var(--space-4); font-size: 16px; line-height: 22px; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record li i { width: calc(var(--space-4) + var(--space-1)); height: calc(var(--space-4) + var(--space-1)); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-foot { margin-top: var(--space-6); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-status { font-size: 20px; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-sign { font-size: 14px; line-height: 20px; }
+}
+/* Round C scenes on company and contact pages (shop-bay, site-map, reply-flow): the drawings are capped at about
+   610 px, so the text keeps half the hero (as the drawn figures they replace did) and a long headline (about) does
+   not wrap to eight lines in a 5-part column. Desktop only: at 860 and under the hero is one column (its :has() would
+   otherwise outweigh the one-column rule). */
+@container (min-width: 861px) {
+  .aq-hero__grid--scene:has(> .aq-hero-scene:is(.aq-hero-scene--bay, .aq-hero-scene--map, .aq-hero-scene--reply)) { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
 }

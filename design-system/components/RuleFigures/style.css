@@ -75,6 +75,10 @@
 @container (max-width: 1100px) {
   .aq-rule-figures__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* Wide (pass 12 C): rules 02-08 in four columns, two rows, so rule 08 no longer stands alone on a third row */
+@container (min-width: 1180px) {
+  .aq-rule-figures__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--space-6); }
+}
 @container (max-width: 860px) {
   /* Phones (pass 12, S9/S13): the lead text over its pipe, the pipe inside the gutter; then each rule a row: its figure
      cropped square at 96 px on the left (letters at 12 px or more), number and name, rule figure and design value on

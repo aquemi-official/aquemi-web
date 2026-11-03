@@ -39,3 +39,8 @@ RelatedLinks closes a page with the pages to read next as tiles hung off one pip
 `motion.js`: on scroll-in the pipe is laid along the top of the row (down the rail on phones); as it passes each tile the node seats, the drop runs down and the tile rises off it, its picture printing up from the bottom and the index, label and title following; then the water runs the pipe once end to end. Under 3 s, once; nothing under reduced motion.
 
 The IsoKit scenes ride the same picture reveal and hover (lines turn `flow`, the drawing lifts); IsoKit's own draw-on is switched off for them. Pass 9b (Subframe Motion `spotlight-card`): on a fine pointer a soft flow light, and the stretch of border nearest it, follow the pointer inside the tile; keyboard focus lights it from the centre. Off under reduced motion and on touch.
+
+## Pass 12 C
+
+- One stroke for every card: the card art ink is `--aq-rel-ink` (`ink-muted`; `on-navy-muted` in both dark scopes, where `ink-muted` was faint on the dark card). The raster equipment drawings (svc-fabrication, svc-service and the other ART pages) take a hairline drop-shadow in the same colour on the picture window, which brings their fine line up to the IsoKit scenes' 1 px weight.
+- `project-plan` (REL_ISO `relPlan`): a ruled schedule board, a header column and five rows; each bar starts while the one above is under way and ends on a milestone diamond, and the last bar runs to a small PP skid standing on the board. Its bounds (113 × 67) match the old scene's size.

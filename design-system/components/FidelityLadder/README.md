@@ -14,3 +14,7 @@ Motion: one timeline. The run extends stage by stage; at each node the sheet lig
 Phones (pass 12, optional item): the sheets at 70 % of the column with less space between stages (about 360 px shorter); the sheet footers stay 12 px. The thumbnails' inner labels are drawing texture, not reading text. Desktop unchanged.
 
 Verify fixes (pass 12 V7): on phones the sheets' inner drawing labels (about 4 px at 70 %) are dropped; the drawing and the 12 px footers stay.
+
+Pass 12 round C (svc-design.1): at 600 px and under each stage is a 120 px / 1fr grid: the sheet as a thumbnail in column 1 (level label 11 px, sheet number and inner labels hidden, DQ stamp 32 px), numeral and title in column 2, body and HOLD stamp full width; stage padding 20 px (first and last flush). 2,258 to 1,435 px at 375.
+
+Pass 12 round C fix round (tablet, 601-860 px, was 3,001 px): the same two-column stage as phones, the sheet a 200 px thumbnail in column 1 (sheet number hidden, the level label kept, freeze stamp 40 px) and the numeral, title, body and HOLD stamp all in column 2 beside it.

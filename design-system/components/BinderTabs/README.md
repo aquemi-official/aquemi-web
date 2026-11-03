@@ -16,3 +16,5 @@ Concept: the C&Q page's own idea (the qualification binder) with 48-concept-role
 
 ## Motion
 The cover unfolds from the spine, the rings close, then each divider drops onto the rings in turn, its tab sliding out, and its sign-off writes itself before the next is filed. Once, under 5 s; on phones each divider as it scrolls in.
+
+Pass 12 C (dark): every tab and phone strip chip takes `--surface-raised` with `--ink` text; the active or hovered tab is navy with a flow underline.

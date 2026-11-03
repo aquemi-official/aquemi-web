@@ -22,6 +22,7 @@
 }
 .aq-riser-valves__colh > span:nth-child(2) { grid-column: 3; }
 .aq-riser-valves__colh > span:nth-child(3) { grid-column: 4; padding-left: var(--space-8); }
+.aq-riser-valves__legend { display: none; }
 .aq-riser-valves__rows { list-style: none; margin: 0; padding: 0; }
 .aq-riser-valves__row { position: relative; padding-block: var(--space-8); border-bottom: 1px solid var(--rv-rule, var(--on-navy-muted)); align-items: stretch; }
 .aq-riser-valves__row.is-break { border-top: 1px solid var(--rv-wall, var(--on-navy-muted)); }
@@ -98,4 +99,21 @@
   .aq-riser-valves__br--a, .aq-riser-valves__run { left: calc(var(--rv-gp, var(--space-16)) / -2 + 5px); right: calc(100% + var(--space-2)); top: 3px; }
   .aq-riser-valves__elb, .aq-riser-valves__rise { display: none; }
   .aq-riser-valves__valve { left: calc(50% - 10px); top: calc(50% - 14px); width: 20px; height: 20px; }
+}
+/* Phones under 600 px (pass 12 C, S12): the two column heads once, as a legend under the intro (the valve = the first
+   answer, a twin-wall run = what follows); the rows drop their repeated mono labels (they stay for screen readers)
+   and each branch glyph becomes the bullet of its cell's first line. */
+@container (max-width: 600px) {
+  .aq-riser-valves__legend { display: flex; flex-direction: column; gap: var(--space-3); margin: 0 0 var(--space-2); padding-bottom: var(--space-4);
+    border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+  .aq-riser-valves__lg { display: flex; align-items: center; gap: var(--space-3);
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .aq-riser-valves__lg svg, .aq-riser-valves__tee { flex: none; overflow: visible; }
+  .aq-riser-valves__legend .aq-riser-valves__valve { position: static; width: 24px; height: 24px; margin-top: 4px; }
+  .aq-riser-valves__tw { fill: none; stroke: var(--rv-wall, var(--on-navy-muted)); stroke-width: 1.5; }
+  .aq-riser-valves__tf { fill: none; stroke: var(--rv-water, var(--flow)); stroke-width: 3; }
+  .aq-riser-valves__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* the glyph sits on the centre of the cell's first 24 px line */
+  .aq-riser-valves__br--a, .aq-riser-valves__run { top: 7px; }
+  .aq-riser-valves__row { row-gap: var(--space-3); padding-block: var(--space-4) var(--space-6); }
 }

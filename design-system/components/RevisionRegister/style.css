@@ -1,14 +1,18 @@
 /* ---------- RevisionRegister: technical notes as the numbered notes column of one limestone drawing sheet ---------- */
 .aq-revision-register-sec { }
+/* The look's rules and hairlines draw in --rr-ink: navy on the limestone sheet; in dark mode the band turns warm stone
+   (RC1), where navy all but vanishes, so the ink lifts to the stone's muted ink (round C verify R1); unset, it is navy */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-band--limestone .aq-revision-register { --rr-ink: var(--on-limestone-muted); } }
+[data-theme="dark"] .aq-band--limestone .aq-revision-register { --rr-ink: var(--on-limestone-muted); }
 .aq-revision-register { position: relative; margin-top: var(--space-2); padding: var(--space-12) var(--space-12) 0; background: var(--limestone); color: var(--on-limestone);
-  border: 1px solid var(--navy); }
+  border: 1px solid var(--rr-ink, var(--navy)); }
 .aq-revision-register__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 5fr); column-gap: var(--space-8); align-items: start; }
 .aq-revision-register__left { min-width: 0; display: flex; flex-direction: column; gap: var(--space-8); }
 .aq-revision-register__left .aq-sec-head { margin: 0; }
 .aq-revision-register .aq-sec-head .aq-h1 { font-size: 64px; line-height: 68px; font-weight: 300; letter-spacing: -0.03em; color: var(--on-limestone); }
 .aq-revision-register .aq-sec-head .aq-lead { color: var(--on-limestone-muted); }
 /* the lead note, as the sheet's general note under the title */
-.aq-revision-register__lead { display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-6); border-top: 1px solid var(--navy); }
+.aq-revision-register__lead { display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-6); border-top: 1px solid var(--rr-ink, var(--navy)); }
 .aq-revision-register .aq-revision-register__lk { margin: 0; display: flex; align-items: center; gap: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
 .aq-revision-register__tri { flex: none; width: var(--space-4); height: var(--space-4); }
 .aq-revision-register__tri path { fill: none; stroke: var(--flow); stroke-width: 1.5px; stroke-linejoin: round; }
@@ -25,33 +29,33 @@
 
 /* the drawing plate between title and notes: faint, it follows the note in hand */
 .aq-revision-register__fig { position: sticky; top: var(--space-24); align-self: start; aspect-ratio: 3 / 4; margin-top: var(--space-16); }
-.aq-revision-register__frame { position: absolute; inset: 0; border: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); }
+.aq-revision-register__frame { position: absolute; inset: 0; border: 1px solid color-mix(in srgb, var(--rr-ink, var(--navy)) 22%, transparent); }
 /* registration marks at the plate's corners */
-.aq-revision-register__frame::before, .aq-revision-register__frame::after { content: ""; position: absolute; width: var(--space-4); height: var(--space-4); border: 0 solid var(--navy); }
+.aq-revision-register__frame::before, .aq-revision-register__frame::after { content: ""; position: absolute; width: var(--space-4); height: var(--space-4); border: 0 solid var(--rr-ink, var(--navy)); }
 .aq-revision-register__frame::before { left: calc(var(--space-2) * -1); top: calc(var(--space-2) * -1); border-width: 1px 0 0 1px; }
 .aq-revision-register__frame::after { right: calc(var(--space-2) * -1); bottom: calc(var(--space-2) * -1); border-width: 0 1px 1px 0; }
 .aq-revision-register__dw { position: absolute; inset: var(--space-8) var(--space-6) var(--space-16); display: none; place-items: center; }
 .aq-revision-register__dw.is-on { display: grid; animation: aq-rr-dw 240ms cubic-bezier(.2, .85, .25, 1); }
 @keyframes aq-rr-dw { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .aq-revision-register__dw.is-on { animation: none; } }
-.aq-revision-register__spot { display: block; width: 100%; height: auto; aspect-ratio: 1; max-width: calc(var(--space-32) * 1.4); color: color-mix(in srgb, var(--navy) 55%, transparent); }
+.aq-revision-register__spot { display: block; width: 100%; height: auto; aspect-ratio: 1; max-width: calc(var(--space-32) * 1.4); color: color-mix(in srgb, var(--rr-ink, var(--navy)) 55%, transparent); }
 .aq-revision-register__figcap { position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); display: grid; }
 .aq-revision-register__figcap span { display: none; font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted); }
 .aq-revision-register__figcap span.is-on { display: block; }
 
 /* the notes column: a hairline rule, the topic filter, then the numbered notes in mono */
-.aq-revision-register__col { min-width: 0; padding-left: var(--space-6); border-left: 2px solid var(--navy); }
+.aq-revision-register__col { min-width: 0; padding-left: var(--space-6); border-left: 2px solid var(--rr-ink, var(--navy)); }
 .aq-revision-register__strip { margin-bottom: var(--space-4); }
 .aq-revision-register__tabs { display: flex; flex-wrap: wrap; gap: 0; }
 .aq-revision-register__tab { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--space-12); padding: 0 var(--space-3); margin: 0 -1px -1px 0; cursor: pointer;
-  background: none; border: 1px solid color-mix(in srgb, var(--navy) 26%, transparent); color: var(--on-limestone); font: 500 13px/18px var(--font-sans); transition: background-color 200ms, color 200ms; }
+  background: none; border: 1px solid color-mix(in srgb, var(--rr-ink, var(--navy)) 26%, transparent); color: var(--on-limestone); font: 500 13px/18px var(--font-sans); transition: background-color 200ms, color 200ms; }
 .aq-revision-register__tab span { font: 400 12px/1 var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__tab:hover { background: color-mix(in srgb, var(--navy) 8%, transparent); }
-.aq-revision-register__tab[aria-pressed="true"] { background: var(--navy); color: var(--limestone); border-color: var(--navy); }
-.aq-revision-register__tab[aria-pressed="true"] span { color: var(--limestone); }
+.aq-revision-register__tab:hover { background: color-mix(in srgb, var(--rr-ink, var(--navy)) 8%, transparent); }
+.aq-revision-register__tab[aria-pressed="true"] { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+.aq-revision-register__tab[aria-pressed="true"] span { color: var(--on-navy); }
 .aq-revision-register__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; position: relative; z-index: 1; }
 .aq-revision-register__notes { list-style: none; margin: 0; padding: 0; }
-.aq-revision-register__note { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); padding: var(--space-3) 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 14%, transparent); }
+.aq-revision-register__note { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); padding: var(--space-3) 0; border-bottom: 1px solid color-mix(in srgb, var(--rr-ink, var(--navy)) 14%, transparent); }
 .aq-revision-register__note[hidden] { display: none; }
 .aq-revision-register__no { display: flex; align-items: flex-start; gap: var(--space-1); font: 400 14px/22px var(--font-mono); color: var(--on-limestone-muted); font-variant-numeric: tabular-nums; transition: color 200ms; }
 .aq-revision-register__no .aq-revision-register__tri { width: var(--space-3); height: var(--space-3); margin-top: var(--space-1); }
@@ -60,7 +64,7 @@
 .aq-revision-register__nt { margin: 0; font: 400 14px/22px var(--font-mono); color: var(--on-limestone); }
 .aq-revision-register__note.is-lead .aq-revision-register__nt { font-weight: 500; }
 .aq-revision-register .aq-revision-register__meta { margin: var(--space-1) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__planned { padding: 0 var(--space-1); border: 1px dashed color-mix(in srgb, var(--navy) 45%, transparent); }
+.aq-revision-register__planned { padding: 0 var(--space-1); border: 1px dashed color-mix(in srgb, var(--rr-ink, var(--navy)) 45%, transparent); }
 .aq-revision-register .aq-fold__btn { color: var(--on-limestone-muted); margin-top: var(--space-3); }
 .aq-revision-register .aq-fold__btn:hover { color: var(--on-limestone); }
 .aq-revision-register .aq-fold.is-filtered .aq-fold-x { display: grid; }
@@ -69,9 +73,9 @@
 
 /* the title block, bottom right, with the live count */
 .aq-revision-register__tb { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; margin: var(--space-12) calc(var(--space-12) * -1) 0 auto; width: min(100% + var(--space-12), calc(var(--space-32) * 4));
-  border-top: 1px solid var(--navy); border-left: 1px solid var(--navy); }
+  border-top: 1px solid var(--rr-ink, var(--navy)); border-left: 1px solid var(--rr-ink, var(--navy)); }
 .aq-revision-register__tb > * { margin: 0; padding: var(--space-3) var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--on-limestone); }
-.aq-revision-register__tb > * + * { border-left: 1px solid var(--navy); }
+.aq-revision-register__tb > * + * { border-left: 1px solid var(--rr-ink, var(--navy)); }
 .aq-revision-register__tb > :first-child { font: 500 14px/18px var(--font-sans); }
 .aq-revision-register .aq-revision-register__count { color: var(--on-limestone-muted); }
 
@@ -95,4 +99,16 @@
   .aq-revision-register__tb { margin: var(--space-8) calc(var(--space-4) * -1) 0; width: auto; }
   .aq-revision-register__tb > :nth-child(2) { display: none; }
   .aq-revision-register__tb { grid-template-columns: auto minmax(0, 1fr); }
+}
+/* Pass 12 round C: the featured note's part (look-only "part") fills the plate, drawn with IsoKit on the limestone */
+.aq-revision-register__part { display: block; width: 100%; height: 100%; max-height: calc(var(--space-32) * 2.2); }
+.aq-revision-register__dw:has(> .aq-revision-register__part) { inset: var(--space-6) var(--space-4) var(--space-12); }
+/* Phones (≤ 600, audit-c group-7 news.0): the filter is one snap row of 44 px chips; notes at 14/21; no inner rule */
+@container (max-width: 600px) {
+  .aq-revision-register__tabs { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(var(--space-4) * -1); padding-inline: var(--space-4); scroll-padding-inline: var(--space-4); }
+  .aq-revision-register__tabs::-webkit-scrollbar { display: none; }
+  .aq-revision-register__tab { flex: none; min-height: var(--aq-hit); scroll-snap-align: start; white-space: nowrap; font-size: 14px; }
+  .aq-revision-register__col { padding-left: 0; border-left: 0; }
+  .aq-revision-register__no, .aq-revision-register__nt { font-size: 14px; line-height: 21px; }
 }

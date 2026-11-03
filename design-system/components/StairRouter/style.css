@@ -118,8 +118,10 @@
   .aq-stair-router__n { font-size: 20px; }
   .aq-stair-router__w { font-size: 44cqw; }
   .aq-stair-router__w--a { top: -0.12em; }
-  .aq-stair-router__go { font-size: 46cqw; }
-  .aq-stair-router-sec { padding-bottom: calc(var(--space-32) + var(--space-8)); }
+  /* pass 12 C: the end word is sized to the foot band, not the page width, and its baseline sits on the section's
+     foot, so the letters stand whole in the band and clear of the open card (was 46cqw, which ran under the card) */
+  .aq-stair-router__go { font-size: 30cqw; bottom: -0.2em; }
+  .aq-stair-router-sec { padding-bottom: calc(22cqw + var(--space-6)); }
 }
 
 /* ---------- Pass 12 phones: a situation picker (PhoneKit, assets/src/parts/PhoneKit.js) ----------
@@ -183,4 +185,10 @@
   .aq-stair-router__flight[data-pk-on] .aq-stair-router__f dd { font-size: 15px; line-height: 22px; }
   .aq-stair-router__flight[data-pk-on] .aq-stair-router__f.is-go dd a { display: inline-flex; align-items: center; min-height: 44px; }
   .aq-stair-router__flight[data-pk-on] .aq-stair-router__f.is-go dd { margin-top: 0; }
+}
+@container (max-width: 600px) {
+  /* pass 12 C: a 48 px foot like every other section; the sill at most 24 px */
+  .aq-stair-router-sec:not(:has(> .aq-stair-router__go)):has(.aq-stair-router__flight[data-pk-on]) { padding-bottom: var(--space-12); }
+  .aq-stair-router-sec:not(:has(> .aq-stair-router__go)):has(.aq-stair-router__flight[data-pk-on]) > .aq-stair-router__wedge {
+    clip-path: polygon(0 calc(100% - var(--space-3)), 100% calc(100% - var(--space-6)), 100% 100%, 0 100%); }
 }

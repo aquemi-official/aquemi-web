@@ -9,3 +9,4 @@ GradeSwitch sets a short grade table as a selector panel: one strip per product,
 ## Motion
 
 The plate is screwed down (screws turn a quarter), the strips wipe in, and on each the knob travels from the first slot to the minimum grade and settles home (aq-settle, no bounce); open slots trace in last. Once on scroll-in, under 3.5 s; nothing under reduced motion.
+- Phones under 600 px (pass 12 C): no tick row under the switch, the plate 8 px inside its frame, "Minimum water" and its value on one line.

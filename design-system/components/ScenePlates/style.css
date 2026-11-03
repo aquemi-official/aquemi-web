@@ -101,7 +101,9 @@
   .aq-scene-plates__uses { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
   .aq-scene-plates__uses li { display: inline-grid; column-gap: var(--space-1); }
   .aq-scene-plates__row > * { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
-  .aq-scene-plates__fit a { display: inline; padding-block: var(--space-3); }
+  /* pass 12 C: a 44 px target (the 12 px pad gave 42 px on a 14/21 line); inline, so a two-line link still wraps in
+     its sentence, the pad growing its hit box without moving the text */
+  .aq-scene-plates__fit a { display: inline; padding-block: 13px; }
   /* the plate as a 220 px strip held under the header (PhoneKit): caption and drawing, the callouts left to the rows */
   .aq-scene-plates[data-pk-on] .aq-scene-plates__plate { margin: 0 calc(-1 * var(--space-4)); background: var(--navy); border-bottom: 0; }
   /* column heads once (S12): the cell labels show on the first row only (kept for screen readers on the others); the

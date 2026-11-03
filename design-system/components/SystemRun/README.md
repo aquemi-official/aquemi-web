@@ -15,3 +15,5 @@ SystemRun shows a modular package as one continuous water line drawn as a navy b
 - Motion: the sheet fades up, the brackets drop in, the equipment draws back to front and the pipes follow (`AQiso.timeline`); then the water runs the whole line once with a droplet at its head and each system lights as the water reaches it (bracket turns flow, column rule fills, number decodes). Phones: each system's drawing builds as it scrolls in while its stretch of the vertical line fills. Once, under 5 s; nothing under reduced motion.
 
 Ported (pass 9b): Subframe Motion "Animated beam" (animated-beam) as `AQbeam` (shared helper in this motion.js; also used by StrataRun and StandardsOrbit). Pointing at a column, or moving across the drawing, runs a travelling gradient beam through that system's water lines and lights its equipment, bracket and column, for as long as the visitor stays. Desktop only; nothing under reduced motion.
+
+Pass 12 C: phones (<= 600 px) cap each vignette at 300 px wide and give each stage a `space-4` foot. Desktop unchanged.

@@ -45,7 +45,7 @@
   border-top: 1px solid color-mix(in srgb, currentColor 35%, transparent); color: inherit; text-decoration: none; transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-binder-spines__to { font: 400 15px/20px var(--font-sans); }
 a.aq-binder-spines__go .aq-binder-spines__to::after { content: " →"; color: var(--limestone); transition: margin 300ms; }
-.aq-binder-spines__book.is-lime a.aq-binder-spines__go .aq-binder-spines__to::after { color: var(--flow); }
+.aq-binder-spines__book.is-lime a.aq-binder-spines__go .aq-binder-spines__to::after { color: var(--on-limestone); }
 a.aq-binder-spines__go:hover { background: color-mix(in srgb, var(--on-navy) 10%, transparent); }
 .aq-binder-spines__book.is-lime a.aq-binder-spines__go:hover { background: color-mix(in srgb, var(--on-navy) 50%, transparent); }
 a.aq-binder-spines__go:hover .aq-binder-spines__to::after { margin-left: var(--space-1); }
@@ -53,12 +53,13 @@ a.aq-binder-spines__go:focus-visible { outline: 2px solid var(--focus); outline-
 
 /* Up to 1600 the shelf takes the full width (six spines at about 190 px, so clause codes stay whole and the books
    are contained by the row) and the plant moves to a band under the shelf: the same drawing, sized so the whole plant
-   above its floor line fills the band (nothing cropped off the top), set to the right edge */
+   whole (its empty margins cropped: the ink runs 18.5 % to 89.3 % of the drawing's height) fills a low band of about
+   260 px, centred under the shelf, so nothing of the plant is clipped */
 @container (max-width: 1600px) {
   .aq-binder-spines.has-plant { grid-template-columns: minmax(0, 1fr); grid-template-areas: "row" "shelf" "fig"; }
   .aq-binder-spines__row { min-height: calc(var(--space-32) * 4); }
-  .aq-binder-spines__fig { height: min(26cqw, calc(var(--space-32) * 3)); margin-top: var(--space-6); }
-  .aq-binder-spines__svg { width: auto; height: calc(100% / var(--drop, 1)); left: auto; right: 0; bottom: 0; }
+  .aq-binder-spines__fig { height: min(22cqw, calc(var(--space-32) * 2 + var(--space-1))); margin-top: var(--space-6); margin-right: 0; }
+  .aq-binder-spines__svg { width: auto; height: 141%; top: -26%; bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
 }
 /* Above 1600 the plant stays beside the shelf; the narrow spines set the clause smaller so codes stay whole */
 @container (min-width: 1601px) {
@@ -86,6 +87,7 @@ a.aq-binder-spines__go:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-fold:not(.is-open) .aq-binder-spines__book.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-binder-spines) > .aq-fold__btn { display: flex; }
   .aq-binder-spines.has-plant { grid-template-columns: minmax(0, 1fr); grid-template-areas: "fig" "row" "shelf"; }
-  .aq-binder-spines__fig { height: calc(var(--space-32) * 1.75); margin: 0 calc(var(--space-4) * -1) var(--space-4) 0; }
-  .aq-binder-spines__svg { width: 200%; bottom: 0; }
+  /* the whole plant, small, above the stacked binders: static, so the 1600 band's centring never applies here */
+  .aq-binder-spines__fig { width: 100%; height: auto; max-width: 440px; margin: 0 auto var(--space-4); } /* width 100%: auto margins would shrink the grid item to the svg's 300 px default */
+  .aq-binder-spines__svg { position: static; display: block; width: 100%; height: auto; left: 0; right: auto; transform: none; margin: -15% 0 -8%; } /* crop the drawing's empty margins */
 }

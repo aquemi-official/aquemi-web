@@ -80,6 +80,15 @@ path.aq-grade-editorial__edge:not(.aq-grade-editorial__w) { fill: none; }
 .aq-grade-editorial__note { margin: var(--space-3) 0 0; font-size: 13px; line-height: 20px; }
 .aq-grade-editorial__d { margin: 0; font: 400 15px/24px var(--font-sans); }
 
+/* Desktop with two blocks or fewer (pass 12 round C): the poster beside them is cropped to a band, so it no longer
+   stands 336 px past the blocks (at 1280: 487 x 325 against the full 588) */
+@container (min-width: 1181px) {
+  /* a whole-row band (round C verify N6): tile rows 1-4 of the 80-unit grid, 3:2, so no row is cut mid-way; the
+     pipe enters at the top edge, runs through the tank and the pump, and leaves at the bottom edge */
+  .aq-grade-editorial:is([data-n="1"], [data-n="2"]) .aq-grade-editorial__art { aspect-ratio: 3 / 2; overflow: hidden; display: block; }
+  .aq-grade-editorial:is([data-n="1"], [data-n="2"]) .aq-grade-editorial__svg { margin-top: -20%; } /* (16 + 80) / 480 of the width */
+}
+
 /* Mid widths: the collage moves above the blocks so each block keeps its measure */
 @container (max-width: 1180px) {
   .aq-grade-editorial { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-12); }
@@ -102,3 +111,10 @@ path.aq-grade-editorial__edge:not(.aq-grade-editorial__w) { fill: none; }
   .aq-grade-editorial__art .aq-grade-editorial__svg { flex: none; }
   .aq-grade-editorial__t a { display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); }
 }
+
+/* pass 12 round C (integrator, RC1): in dark the limestone band is warm stone, where navy display text falls to
+   about 1.2:1. The display values and the span take the band's on-limestone ink there; light mode is unchanged. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-grade-editorial__v, :root:not([data-theme="light"]) .aq-grade-editorial__span { color: var(--on-limestone); }
+}
+[data-theme="dark"] .aq-grade-editorial__v, [data-theme="dark"] .aq-grade-editorial__span { color: var(--on-limestone); }

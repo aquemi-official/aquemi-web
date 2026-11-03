@@ -10,7 +10,9 @@
    pou, sensors, spray (default by position in that order). The strip is fixed (one train); it carries no copy
    except the P&ID material tags PVC and PP and the CE instrument letters.
    Phones: a riser: the pipe down the left with a P&ID symbol per stage on it (RO, tank, pump, exchanger, valve, CE
-   bubble, capped port), one row per stage (number, name, line); every stage shown, no fold. */
+   bubble, capped port), one row per stage (number, name, line); every stage shown, no fold.
+   Look field (DR-018): band ("navy" default; "limestone": strokes on-limestone, the PP loop in flow, PVC grey), so a
+   page can break a run of navy bands. */
 (function(){
 var K='aq-train-strip',NODE=['gen','tank','pump','hx','pou','sensors','spray'];
 var AT={gen:[185,222],tank:[330,250],pump:[505,250],hx:[700,268],pou:[970,290],sensors:[1140,250],spray:[1290,284]};
@@ -56,7 +58,7 @@ var GLYPH={
  sensors:'<circle class="'+K+'__eq" cx="16" cy="16" r="11"/><text class="'+K+'__ce" x="16" y="20">CE</text>',
  spray:'<path class="'+K+'__eq" d="M8 6H24L8 22H24Z"/><path class="'+K+'__ln" d="M24 9a5 5 0 0 1 0 10"/><path class="'+K+'__cap" d="M9 28h14"/>'};
 function no(i){return (i<9?'0':'')+(i+1)}
-LOOKS['train-strip']=function(b,H){var S=b.stages||b.items||[],n=S.length;if(!n)return sec(H,'aq-band--navy '+K+'-sec');
+LOOKS['train-strip']=function(b,H){var S=b.stages||b.items||[],n=S.length,band=b.band==='limestone'?'aq-band--limestone ':'aq-band--navy ';if(!n)return sec(H,band+K+'-sec');
  var nodes=S.map(function(s,i){return s.node&&AT[s.node]?s.node:NODE[i]||null});
  var marks=nodes.map(function(k,i){if(!k)return '';var a=AT[k],x=a[0],y=310;
   return '<g class="'+K+'__mark" data-ts="'+k+'">'+P('M'+x+' '+(a[1]+2)+'V'+(y-18),'lead')+C(x,y,18,'mk')+T(x,y,no(i),'mkn')+'</g>'}).join('');
@@ -65,7 +67,7 @@ LOOKS['train-strip']=function(b,H){var S=b.stages||b.items||[],n=S.length;if(!n)
    +'<span class="'+K+'__glyph" aria-hidden="true">'+(k?'<svg viewBox="0 0 32 32" focusable="false">'+GLYPH[k]+'</svg>':'')+'</span>'
    +'<span class="'+K+'__no" aria-hidden="true">'+no(i)+'</span><h3 class="'+K+'__t">'+tx(s.t)+'</h3>'+(s.d?'<p class="'+K+'__d">'+tx(s.d)+'</p>':'')+'</li>'}).join('');
  var inner='<div class="'+K+'" style="--n:'+n+'"><div class="'+K+'__strip">'+svg+'</div><ol class="'+K+'__stages" role="list">'+rows+'</ol></div>';
- return sec(H+inner,'aq-band--navy '+K+'-sec')};
+ return sec(H+inner,band+K+'-sec')};
 function set(root,k){root.classList.toggle('has-hot',!!k);[].forEach.call(root.querySelectorAll('[data-ts]'),function(el){el.classList.toggle('is-hot',!!k&&el.getAttribute('data-ts')===k)})}
 ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(!root)return;var el=ev.target.closest('[data-ts]');set(root,el?el.getAttribute('data-ts'):null)})});
 document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.'+K);if(root&&!root.contains(ev.relatedTarget))set(root,null)});

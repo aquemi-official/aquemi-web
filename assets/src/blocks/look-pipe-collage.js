@@ -1,6 +1,7 @@
 /* Look "pipe-collage" -> PipeCollage (design-system/components/PipeCollage): an evidence table as a Swiss poster. Left,
    a geometric collage of flat pieces (navy, limestone and sunken tiles; flow only as a line): one piece per row (a
-   pressure vessel with its nameplate, a control panel with its label plate, a flanged elbow with a short branch, a
+   flat-bottom PP vessel on its plinth with its nameplate, a control panel with its label plate, a fused PP elbow (socket
+   sleeves, a butt-fusion bead, a socket branch; pass 12 C, no flange plates), a
    grid of resin pellets, two pipe ends fused at a bead) set among plain filler tiles, each piece numbered as its row.
    Right, the rows as asymmetric editorial blocks hung from hairline brackets: the standard large, what we design to,
    the proof in mono, where we show it as a link. Hovering or focusing a block frames its piece in flow.
@@ -8,16 +9,23 @@
    fold, fold_noun. New optional field: pieces, one per row, naming the piece drawn for it: vessel, panel, pipe,
    pellets, weld (each at most once; a row without one has no piece). The fold applies on phones only (desktop shows
    every block beside the whole collage). Phones (pass 12): the board becomes a full-width 3 x 2 band of square tiles
-   under the heading (each piece cropped to its middle, numbered as its row; a tap brings its row into view, opening
+   under the heading (each piece whole in its tile, xMidYMid meet, pass 12 C; numbered as its row; a tap brings its row into view, opening
    the fold if needed); the blocks run in one column with no stair indent. */
 var PC_SLOT={vessel:[0,0,1,2],pipe:[1,1,2,1],pellets:[0,2,1,1],panel:[2,2,1,2],weld:[0,3,2,1]};
 var PC_FILL=[['arc',1,0],['quarter',2,0],['diag',1,2]];
 function pcPiece(k){var r=function(x,y,w,h,c){return '<rect data-f="'+c+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'},
   c=function(x,y,R,cl){return '<circle data-f="'+cl+'" cx="'+x+'" cy="'+y+'" r="'+R+'"/>'},p=function(d,cl){return '<path data-f="'+cl+'" d="'+d+'"/>'};
  switch(k){
-  case 'vessel':return r(0,0,100,200,'ls')+r(46,10,8,16,'nv')+p('M24 50 A26 22 0 0 1 76 50 V150 A26 22 0 0 1 24 150 Z','nv')+r(36,84,28,20,'sf')+p('M40 91 H60 M40 97 H54','ln')
-   +p('M30 166 L26 190 M70 166 L74 190','lnb')+p('M50 26 V8','fl')+c(50,128,5,'ring');
-  case 'pipe':return r(0,0,200,100,'sk')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','pipe')+r(52,46,8,36,'nv')+r(130,10,32,8,'nv')+r(88,64,14,26,'nv')+r(84,88,22,6,'nv')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','fl');
+  /* pass 12 C (PP read): a flat-bottom vessel with a shallow shoulder, two welded hoop bands, on a plinth; no legs */
+  case 'vessel':return r(0,0,100,200,'ls')+r(45,22,10,16,'nv')+p('M24 50 Q24 38 36 38 H64 Q76 38 76 50 V166 H24 Z','nv')+p('M24 68 H76 M24 148 H76','bead')
+   +r(36,84,28,20,'sf')+p('M40 91 H60 M40 97 H54','ln')+r(16,166,68,12,'sk')+p('M50 22 V6','fl')+c(50,128,5,'ring');
+  /* pass 12 C (PP read): socket-fusion sleeves about 1.3 x the pipe's OD (22) on the run and the riser, a butt-fusion
+     bead before the bend, a socket branch down; no flange plates */
+  case 'pipe':return r(0,0,200,100,'sk')+r(91,70,8,30,'nv')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','pipe')
+   +p('M38 49.5 h16 a2 2 0 0 1 2 2 v25 a2 2 0 0 1 -2 2 h-16 a2 2 0 0 1 -2 -2 v-25 a2 2 0 0 1 2 -2 Z','bead')
+   +p('M133.5 4 h25 a2 2 0 0 1 2 2 v12 a2 2 0 0 1 -2 2 h-25 a2 2 0 0 1 -2 -2 v-12 a2 2 0 0 1 2 -2 Z','bead')
+   +p('M86 74 h18 v10 a2 2 0 0 1 -2 2 h-14 a2 2 0 0 1 -2 -2 Z','bead')
+   +p('M104 51.5 c-3 4 -3 21 0 25 c3 -4 3 -21 0 -25 Z','bead')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','fl');
   case 'panel':return r(0,0,100,200,'nv')+r(18,26,64,148,'ls')+p('M50 26 V174','nvl')+r(24,40,20,16,'sf')+c(62,46,3.5,'nv')+c(70,46,3.5,'nv')+c(62,56,3.5,'dot')
    +p('M24 150 H44 M24 156 H44 M24 162 H44','nvl')+r(56,132,20,14,'sf')+p('M58 132 H76 V146 H58 Z','flb');
   case 'pellets':var s=r(0,0,100,100,'ls');for(var i=0;i<4;i++)for(var j=0;j<4;j++)if(i||j<3)s+=c(20+20*i,20+20*j,6.5,(i*4+j)%7===2?'nv':'ln');return s;
@@ -35,14 +43,18 @@ LOOKS['pipe-collage']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.pieces||[]
  R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&!used[k]){used[k]=1;cells+=pcG(k,0,0,(i<9?'0':'')+(i+1),i)}});
  Object.keys(PC_SLOT).forEach(function(k){if(!used[k])cells+=pcG(k==='weld'?'arc':k==='pellets'?'quarter':'diag',PC_SLOT[k][0],PC_SLOT[k][1])});
  var board='<div class="aq-pipe-collage__board" data-theme="light" aria-hidden="true"><svg viewBox="0 0 300 400" focusable="false">'+cells+'</svg></div>';
- /* the phone band: six square tiles, 3 x 2, each piece cropped to its middle (numbered as its row) among fillers;
+ /* the phone band: six square tiles, 3 x 2, each piece whole in its tile (numbered as its row) among fillers;
     a tap on a piece opens the fold if its row is folded and brings the row into view (S7) */
  var PP=[];R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&used[k]&&PP.every(function(x){return x.k!==k}))PP.push({k:k,i:i})});PP=PP.slice(0,6);
  var SL=[0,4,2,3,1,5],T=[null,null,null,null,null,null],FL=['arc','quarter','diag','arc','quarter','diag'],fi=0;
  PP.forEach(function(x,j){T[SL[j]]=x});
  var band='<div class="aq-pipe-collage__band" data-theme="light" aria-hidden="true">'+T.map(function(x){
   if(!x){var f=FL[fi++];return '<span class="aq-pipe-collage__tile"><svg viewBox="0 0 100 100" focusable="false">'+pcPiece(f)+'</svg></span>'}
-  var S=PC_SLOT[x.k];return '<span class="aq-pipe-collage__tile is-piece" data-go="'+x.i+'"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" preserveAspectRatio="xMidYMid slice" focusable="false">'+pcPiece(x.k)+'</svg><span class="aq-pipe-collage__tn">'+(x.i<9?'0':'')+(x.i+1)+'</span></span>'}).join('')+'</div>';
+  /* pass 12 C (N1): a square viewBox around the piece; a wide piece carries its own ground to the tile's edges, so the
+     pipe shows no two-tone letterbox (tall pieces keep the tile's ground at their sides) */
+  var S=PC_SLOT[x.k],w=S[2]*100,h=S[3]*100,m=Math.max(w,h),ox=(w-m)/2,oy=(h-m)/2,gf={pipe:'sk',weld:'nv'}[x.k],
+   gr=w>h&&gf?'<rect data-f="'+gf+'" data-g="" x="'+ox+'" y="'+oy+'" width="'+m+'" height="'+m+'"/>':'';
+  return '<span class="aq-pipe-collage__tile is-piece" data-go="'+x.i+'"><svg viewBox="'+ox+' '+oy+' '+m+' '+m+'" preserveAspectRatio="xMidYMid meet" focusable="false">'+gr+pcPiece(x.k)+'</svg><span class="aq-pipe-collage__tn">'+(x.i<9?'0':'')+(x.i+1)+'</span></span>'}).join('')+'</div>';
  var blocks='<ol class="aq-pipe-collage__blocks" role="list">'+R.map(function(r,i){var k=K[i],S=PC_SLOT[k],th=S&&used[k]?'<span class="aq-pipe-collage__thumb" data-theme="light" aria-hidden="true"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" focusable="false">'+pcPiece(k)+'</svg></span>':'';
   var f=function(j,cls){var c=r[j];if(c==null||c==='')return '';return '<p class="'+cls+'"><span class="aq-pipe-collage__k">'+tx(C[j]||'')+'</span> '+tcell(c)+'</p>'};
   return fli('<li class="aq-pipe-collage__block" data-pc="'+i+'">',b,i)+th

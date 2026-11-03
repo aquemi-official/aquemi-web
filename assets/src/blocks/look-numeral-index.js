@@ -3,14 +3,17 @@
    what you need under a hairline, and the start page as a square go-cell (page icon, label, arrow) at the right. The
    rules draw across, the numerals fill with flow on hover or focus.
    Fields, as the router: cols (situation, what you need, start with), rows [situation, need, {t, link, intent}].
-   A row with more than three cells shows the middle ones as further "need" lines. Design system: components/NumeralIndex. */
+   A row with more than three cells shows the middle ones as further "need" lines. Design system: components/NumeralIndex.
+   Pass 12 round C: page icons on every row or on none (one row without an icon drops them all); wide, the start cell
+   is a 56 px row link (icon, page, arrow) with its column name shown over row 1 only (CSS). */
 (function(){
 LOOKS['numeral-index']=function(b,H){var C=b.cols||[],R=b.rows||[];
  function lk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c:null}
+ var allIc=R.length&&R.every(function(r){var g=lk(r[r.length-1]);return g&&pageIcon(g.link)});
  var rows=R.map(function(r,i){var last=r[r.length-1],go=lk(last),mid=r.slice(1,r.length-1);
   var need=mid.map(function(c,j){return '<p class="aq-numeral-index__need"><span class="aq-numeral-index__k">'+tx(C[j+1]||'')+'</span>'+tcell(c)+'</p>'}).join('');
   var cell=go?'<a class="aq-numeral-index__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'>'
-    +'<span class="aq-numeral-index__k">'+tx(C[r.length-1]||'')+'</span>'+(pageIcon(go.link)?wIcon(pageIcon(go.link),'aq-numeral-index__ic'):'')
+    +'<span class="aq-numeral-index__k">'+tx(C[r.length-1]||'')+'</span>'+(allIc?wIcon(pageIcon(go.link),'aq-numeral-index__ic'):'')
     +'<span class="aq-numeral-index__to">'+tx(go.t)+'</span><span class="aq-numeral-index__arrow" aria-hidden="true"></span></a>'
    :'<p class="aq-numeral-index__go is-flat"><span class="aq-numeral-index__k">'+tx(C[r.length-1]||'')+'</span><span class="aq-numeral-index__to">'+tcell(last)+'</span></p>';
   return '<li class="aq-numeral-index__row"><span class="aq-numeral-index__rule" aria-hidden="true"></span>'

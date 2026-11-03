@@ -16,14 +16,19 @@
 .aq-skid-sheet__svg .aq-iso__pipe.is-lit .aq-iso__pipe-wall, .aq-skid-sheet__svg .aq-iso__part.is-lit .aq-iso__eq, .aq-skid-sheet__svg .aq-skid-sheet__seams.is-lit .aq-iso__thin { stroke: var(--flow); }
 .aq-skid-sheet__svg .aq-skid-sheet__seams .aq-iso__thin { stroke-width: 1.2; }
 
-/* tags at the leader ends (desktop) and dots on the parts (phones) */
+/* tags at the leader ends (desktop) and dots on the parts (phones). Pass 12 C: the GA-sheet tag shared with TankGa
+   (same declarations in TankGa/style.css): navy with on-navy numerals, flow with on-action when lit (never on-navy over
+   flow, which is about 2 : 1 in the dark theme); in the dark theme a 1 px on-navy-muted outline keeps the navy tag off
+   the dark sheet. */
 .aq-skid-sheet__tag, .aq-skid-sheet__dot {
   position: absolute; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1);
-  transform: translate(0, -50%); border: 1px solid var(--line-strong); background: var(--surface); font: 400 12px/1 var(--font-mono); color: var(--ink);
+  transform: translate(0, -50%); border: 1px solid var(--navy); background: var(--navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; color: var(--on-navy);
   transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease; cursor: default;
 }
 .aq-skid-sheet__tag.is-left { transform: translate(-100%, -50%); }
-.aq-skid-sheet__tag.is-on, .aq-skid-sheet__dot.is-on { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.aq-skid-sheet__tag.is-on, .aq-skid-sheet__dot.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+:root[data-theme="dark"] .aq-skid-sheet__tag, :root[data-theme="dark"] .aq-skid-sheet__dot { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-skid-sheet__tag, :root:not([data-theme="light"]) .aq-skid-sheet__dot { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; } }
 .aq-skid-sheet__dot { display: none; transform: translate(-50%, -50%); }
 /* the ring that settles on the chosen tag (ported from Subframe Motion "Inside the image", atlas-hotspots, MIT) */
 .aq-skid-sheet__ring { position: absolute; left: 0; top: 0; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
@@ -69,23 +74,25 @@
   .aq-skid-sheet__fig { position: static; margin: 0 0 var(--space-4); }
   .aq-skid-sheet__sheet { padding: 0; border: 0; outline: 0; margin: 0; background: none; }
   .aq-skid-sheet__block, .aq-skid-sheet__tag, .aq-skid-sheet__svg .aq-skid-sheet__ld { display: none; }
-  .aq-skid-sheet__dot { display: grid; min-width: var(--space-6); height: var(--space-6); padding: 0; border-radius: 50%; }
-  .aq-skid-sheet__dot.is-pk-active { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+  .aq-skid-sheet__dot { display: grid; box-sizing: border-box; width: var(--space-6); min-width: var(--space-6); height: var(--space-6); padding: 0; border-radius: 50%; }
+  .aq-skid-sheet__dot.is-pk-active { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
   .aq-skid-sheet__ring, .aq-skid-sheet__ring.is-left { translate: none; width: var(--space-8); height: var(--space-8); margin: calc(-1 * var(--space-4)) 0 0 calc(-1 * var(--space-4)); }
   /* PhoneKit strip: the drawing runs full width and pans to the dot of the row on the reading line */
   .aq-skid-sheet[data-pk-on] .aq-skid-sheet__fig { background: var(--surface); }
   /* the rows: two columns, number, parameter and the Basis button | the value; basis and link open under the row */
   .aq-skid-sheet__rows { border-top-color: var(--line-strong); }
-  .aq-skid-sheet__row { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); grid-template-rows: auto 1fr auto auto; column-gap: var(--space-4); padding: var(--space-3) 0 var(--space-2); }
+  /* pass 12 C: the value runs full width under its number and parameter (the Basis button at the end of that first
+     line), so the 13 px mono placeholders get the whole line instead of wrapping four to six times in a 190 px column */
+  .aq-skid-sheet__row { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: none; column-gap: var(--space-3); padding: 0 0 var(--space-3); }
   .aq-skid-sheet__n { display: none; }
   .aq-skid-sheet__pn { display: inline; margin-right: var(--space-2); font: 400 13px/21px var(--font-mono); color: var(--ink-muted); }
   .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__pn { color: var(--flow); }
-  .aq-skid-sheet__p { grid-row: 1 / span 2; grid-column: 1; font-size: 15px; line-height: 21px; }
-  .aq-skid-sheet__v { grid-row: 1 / span 3; grid-column: 2; margin: 0; padding-top: var(--space-1); font-size: var(--aq-read-phone); line-height: 21px; }
-  .aq-skid-sheet__wb { display: inline-flex; grid-row: 3; grid-column: 1; justify-self: start; align-self: end; align-items: center; min-height: var(--aq-hit); margin: 0; padding: 0; border: 0; background: none;
+  .aq-skid-sheet__p { grid-row: 1; grid-column: 1; align-self: center; padding-block: var(--space-3) var(--space-1); font-size: 15px; line-height: 21px; }
+  .aq-skid-sheet__v { grid-row: 2; grid-column: 1 / -1; margin: 0; font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-skid-sheet__wb { display: inline-flex; grid-row: 1; grid-column: 2; justify-self: end; align-self: start; align-items: center; min-height: var(--aq-hit); margin: 0; padding: 0; border: 0; background: none;
     color: var(--flow); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; cursor: pointer; }
   .aq-skid-sheet__wb .aq-phone-kit__chev { width: var(--space-8); height: var(--aq-hit); }
-  .aq-skid-sheet__m { display: none; grid-row: 4; grid-column: 1 / -1; margin: 0 0 var(--space-2); font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-skid-sheet__m { display: none; grid-row: 3; grid-column: 1 / -1; margin: var(--space-2) 0 0; font-size: var(--aq-read-phone); line-height: 21px; }
   .aq-skid-sheet__row.is-open .aq-skid-sheet__m { display: block; }
   .aq-skid-sheet__link { min-height: var(--aq-hit); display: inline-flex; align-items: center; margin: 0; }
   .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__n { color: var(--flow); }

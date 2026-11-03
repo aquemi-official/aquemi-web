@@ -11,3 +11,7 @@ RuleFigures sets a spec block of design rules as a Swiss rule sheet in which eve
 ## Motion
 
 Motion: the lead pipe's walls draw from the left, the turbulent streaks run through one after another and the eddies curl in, the velocity profile's arrows shoot out to their flat front and the envelope traces them; the streaks then flow as a moving dash for three seconds and stop. Each card lands with its figure drawing on (walls first, then the water) and its number decoding. Under 5 s; nothing under reduced motion.
+
+Pass 12 C: from a 1180 px container the rules 02-08 run in four columns (two rows), so rule 08 no longer stands alone on a third row (sys-storage at 1280: 2,192 -> about 1,650 px).
+
+Pass 12 C verify (F8): the `vent` figure draws the PP tank's low-cone roof (flat top under the vent filter), not a dished head.

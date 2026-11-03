@@ -31,6 +31,7 @@
      "link": "news#pp-or-stainless",
      "featured": true,
      "spot": "storage-tank",
+     "part": "pipe",
      "d": "Our standard says stainless steel. Can a polypropylene loop carry our Purified Water?"
     },
     {
@@ -253,7 +254,8 @@
      "No cause was found, and your engineers will not accept plastic again."
     ]
    ],
-   "look": "macro-leaders"
+   "look": "macro-leaders",
+   "macro": "pipe-pair"
   },
   {
    "type": "steps",
@@ -476,9 +478,9 @@
  },
  "figure": {
   "spots": [
-   "edi-stack",
-   "storage-tank",
-   "pretreatment"
+   "pretreatment",
+   "ro-skid",
+   "storage-tank"
   ],
   "label": "One question per note"
  }

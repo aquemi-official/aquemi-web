@@ -8,7 +8,7 @@
    0008"), else its first word ("EMA"); the rest of the cell is the standard's title under it.
    Phones (pass 12, S11): the folders are a snap row at 85 % width (the next folder peeking), every standard in the
    row, folded or not; over it a strip of the folders' codes (44 px tabs) jumps to a folder and follows the swipe
-   (AQsnap, below). Each folder keeps its tab, typed slip, clipped sheets, stamp and navy label, at half the padding,
+   (AQsnap, parts/Snap.js). Each folder keeps its tab, typed slip, clipped sheets, stamp and navy label, at half the padding,
    with the sheets inside the gutter. */
 function pfCode(s){s=String(s||'');var m=s.match(/^(.*?(?:<\d+>|\b\d[\d.]*))\s+(\S.*)$/);return m?[m[1],m[2]]:[s.split(/\s+/)[0],s.slice(s.split(/\s+/)[0].length).trim()]}
 LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
@@ -30,21 +30,17 @@ LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var tabs='<div class="aq-proof-folders__tabs" role="group" aria-label="'+e(String(C[0]&&C[0].t||C[0]||''))+'">'+R.map(function(r,i){var c=pfCode(String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||''));
   return '<button type="button" class="aq-proof-folders__tb" data-snap-to="'+i+'"'+(i?'':' aria-current="true"')+'>'+tx(c[0])+'</button>'}).join('')+'</div>';
  return sec(H+'<div class="aq-proof-folders" data-snap-box>'+heads+tabs+wFold(b,R.length,list,b.fold_noun||'standards')+'</div>','aq-proof-folders-sec')};
-/* Snap rail (phones; pass 12 S11): a [data-snap] scroller whose children snap, and [data-snap-to="i"] buttons (dots or
-   numbers) in the same [data-snap-box]. The child nearest the scroller's start edge gets .is-snap and its button
-   aria-current (a strip of buttons that scrolls keeps it in view); a button scrolls its child to the start. At the
-   rail's end (items that cannot reach the start edge) the tapped child keeps the mark until the reader swipes (_want). State, not motion: it runs with reduced motion (jumps).
-   Shared by several looks; each defines it only if it is missing, so any one of them may be retired. */
-(function(){if(window.AQsnap)return;window.AQsnap=function(r){var it=[].slice.call(r.children),x=r.getBoundingClientRect().left+(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),k=0,b=1e9;
- it.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-x);if(d<b-1){b=d;k=i}});
- if(r.scrollLeft>0&&r.scrollLeft+r.clientWidth>=r.scrollWidth-2)k=r._want!=null&&r._want>=k&&it[r._want]?r._want:it.length-1;
- it.forEach(function(c,i){c.classList.toggle('is-snap',i===k)});
- var bx=r.closest('[data-snap-box]')||r.parentNode;[].forEach.call(bx.querySelectorAll('[data-snap-to]'),function(t){if(+t.getAttribute('data-snap-to')!==k){t.removeAttribute('aria-current');return}t.setAttribute('aria-current','true');
-  var s=t.parentNode;if(s.scrollWidth>s.clientWidth+1){var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;if(a<s.scrollLeft)s.scrollLeft=a;else if(z>s.scrollLeft+s.clientWidth)s.scrollLeft=z-s.clientWidth}});return k};
- var q=null;document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||r.nodeType!==1||!r.hasAttribute('data-snap'))return;if(q!==r){q=r;requestAnimationFrame(function(){window.AQsnap(q);q=null})}},true);
- document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-snap-to]');if(!t)return;var bx=t.closest('[data-snap-box]'),r=bx&&bx.querySelector('[data-snap]');if(!r)return;
-  var c=r.children[+t.getAttribute('data-snap-to')];if(!c)return;r._want=+t.getAttribute('data-snap-to');var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var L=r.scrollLeft+c.getBoundingClientRect().left-r.getBoundingClientRect().left-(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),still=Math.abs(Math.max(0,Math.min(L,r.scrollWidth-r.clientWidth))-r.scrollLeft)<1;
-  r.scrollTo({left:L,behavior:red?'auto':'smooth'});
-  if(red||still)window.AQsnap(r)});
- ['pointerdown','touchstart','wheel','keydown'].forEach(function(n){document.addEventListener(n,function(ev){var r=ev.target.closest&&ev.target.closest('[data-snap]');if(r)r._want=null},{capture:true,passive:true})})})();
+/* Snap rail: AQsnap lives in assets/src/parts/Snap.js (pass 12 round C; this look's copy removed) */
+/* the code strip (phones): is-more while it can still scroll on, so its right edge fades (round C); checked on the
+   strip's own scroll and, through a ResizeObserver on each strip, whenever its size changes. New strips are found as
+   other looks find theirs (decision-valve): the observer only asks for an unmarked strip, so a batch with none costs
+   one querySelector (round C verify F9) */
+(function(){if(typeof document==='undefined'||!document.addEventListener)return;
+ var S='.aq-proof-folders__tabs',RO=typeof ResizeObserver!=='undefined'?new ResizeObserver(function(E){E.forEach(function(x){more(x.target)})}):null,queued=0;
+ function more(t){t.classList.toggle('is-more',t.scrollWidth>t.clientWidth+1&&t.scrollLeft+t.clientWidth<t.scrollWidth-2)}
+ function scan(){queued=0;[].forEach.call(document.querySelectorAll(S+':not([data-pfm])'),function(t){t.setAttribute('data-pfm','');if(RO)RO.observe(t);more(t)})}
+ function soon(){if(!queued){queued=1;requestAnimationFrame(scan)}}
+ document.addEventListener('scroll',function(ev){var t=ev.target;if(t&&t.nodeType===1&&t.classList.contains('aq-proof-folders__tabs'))more(t)},true);
+ if(!RO)addEventListener('resize',function(){[].forEach.call(document.querySelectorAll(S),more)});
+ if(typeof MutationObserver!=='undefined')new MutationObserver(function(){if(!queued&&document.querySelector(S+':not([data-pfm])'))soon()}).observe(document.documentElement,{childList:true,subtree:true});
+ if(document.readyState!=='loading')soon();else document.addEventListener('DOMContentLoaded',soon)})();

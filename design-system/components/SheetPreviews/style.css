@@ -31,6 +31,9 @@
 
 .aq-sheet-previews__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.1em; color: var(--ink-subtle); }
 .aq-sheet-previews__item.is-key .aq-sheet-previews__code { color: var(--flow); }
+/* pass 12 C: the sheet already carries the code in its stamp; the eyebrow is kept for screen readers only (the sheet
+   drawing is aria-hidden) and shows where the stamp is hidden (<= 860) */
+.aq-sheet-previews__code.is-stamped { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .aq-sheet-previews__t { margin: 0; font: 500 18px/25px var(--font-sans); color: var(--ink); }
 .aq-sheet-previews__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
 .aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: flex; }
@@ -60,6 +63,7 @@
   .aq-sheet-previews__d { font-size: 14px; line-height: 21px; }
   /* the code reads in the text beside the sheet; on the small sheet it would fall under 12 px */
   .aq-sheet-previews__codebox, .aq-sheet-previews__code-t { display: none; }
+  .aq-sheet-previews__code.is-stamped { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; }
   .aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-sheet-previews) > .aq-fold__btn { display: flex; }
 }

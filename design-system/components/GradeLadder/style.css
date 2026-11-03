@@ -87,7 +87,7 @@
   .aq-grade-ladder__track { grid-area: track; }
   .aq-grade-ladder__mark { right: auto; bottom: auto; top: var(--space-1); left: calc(var(--m, 0) * 100%); transform: translateX(-50%); align-items: center; text-align: center; }
   .aq-grade-ladder__lt { font-size: 15px; line-height: 20px; }
-  .aq-grade-ladder__ln { font-size: 12px; line-height: 15px; max-width: none; white-space: nowrap; } /* pass 12: tick labels 12 px */
+  .aq-grade-ladder__ln { font-size: 13px; line-height: 16px; max-width: none; white-space: nowrap; } /* pass 12: the not-supplied note 13 px (round C) */
   .aq-grade-ladder__mark:last-child { left: auto; right: 0; transform: none; align-items: flex-end; text-align: right; }
   .aq-grade-ladder__mark.is-alt .aq-grade-ladder__lt::before { left: calc(var(--space-4) * -1); width: var(--space-2); height: var(--space-2); }
   .aq-grade-ladder__ruler i { right: auto; bottom: 0; left: calc(var(--t, 0) * 100%); width: 1px; height: var(--space-2); }

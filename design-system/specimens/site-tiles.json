@@ -2,7 +2,7 @@
  "look": "site-tiles",
  "component": "SiteTiles",
  "type": "grid",
- "fields": "h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp, softener, truck, valve (pass 12: a flanged spool with a diaphragm valve, drawn on the navy like the others, so a valve icon no longer falls back to a navy-on-navy Spot); default from icon (valve -> valve; gauge -> spool: a PP spool with a valve and a pressure gauge for the test; stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated load, for service and spares), else the item's line icon as a limestone Spot. Phones (pass 12): no inner frame or zone bands; each column stacks its drawing (72 px tall) above the number and title, the line and link under them.",
+ "fields": "h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp, softener, truck, valve (pass 12: a plain PP spool, capped ends and no flanges since round C, with a diaphragm valve, drawn on the navy like the others, so a valve icon no longer falls back to a navy-on-navy Spot); default from icon (valve -> valve; gauge -> spool: a PP spool with a valve and a pressure gauge for the test; stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated load, for service and spares), else the item's line icon as a limestone Spot. Phones (pass 12): no inner frame or zone bands; each column stacks its drawing (72 px tall) above the number and title, the line and link under them.",
  "best_for": "SiteTiles sets a short grid of what changes for a site as one navy drawing sheet: a framed sheet with its zone band, the title large in the top left, and one column per item with its number, title, one isometric part (IsoKit) that makes the change visible, its line and its link.",
  "status": "live",
  "instances": [
@@ -94,7 +94,7 @@
    "page": "about",
    "slot": 2,
    "h": "What changes for a Canadian site",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",
@@ -128,6 +128,50 @@
       "d": "From [service bases, cities], with spares in [stock location or locations].",
       "link": "contact-locations#coverage",
       "icon": "valve"
+     }
+    ],
+    "look": "site-tiles"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 2,
+   "h": "What changes for a Canadian site",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "1f4eab0",
+   "hash": "fb3a923341",
+   "block": {
+    "type": "grid",
+    "nav": "Canada",
+    "anchor": "canada",
+    "h": "What changes for a Canadian site",
+    "items": [
+     {
+      "t": "Witness your factory acceptance test (FAT)",
+      "d": "In [shop location, city and province], with [FAT witness notice, working days] notice.",
+      "link": "svc-fat-sat",
+      "icon": "gauge"
+     },
+     {
+      "t": "Registration in your province",
+      "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for [pressure-rated items in the PW package].",
+      "link": "compliance#engineering",
+      "icon": "stamp"
+     },
+     {
+      "t": "Designed for Canadian feed water",
+      "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
+      "link": "sys-pretreatment",
+      "icon": "softener"
+     },
+     {
+      "t": "Service and spares",
+      "d": "From [service bases, cities], with spares in [stock location or locations].",
+      "link": "contact-locations#coverage",
+      "icon": "valve",
+      "fig": "truck"
      }
     ],
     "look": "site-tiles"

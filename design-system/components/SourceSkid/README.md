@@ -10,3 +10,9 @@ SourceSkid sets the people a buyer would work with beside the package they deliv
 ## Motion
 
 Motion: the cards rise in turn; the frame and PP pipework draw on (IsoKit), then the makers' groups are lowered into the frame one after the other (ported from Subframe Motion exploded-camera: parts travel along one axis into place, 600 ms cubic-bezier(.22,1,.36,1)), each callout's leader running out and its label rising as its group lands; the water runs the pipework once. Ends static, under 4.5 s. Pointing at, focusing or pressing a callout lights its group and lifts a maker's group out of the frame with the same curve (CSS on the renderer's selection; instant under reduced motion).
+
+## Pass 12 round C
+
+- Above 860 px the right column runs the section's height and the drawing holds under the header (sticky,
+  `--header-h` + 32 px), so it stays beside cards 02-03.
+- At 860 px and below the legend rows under the drawing rise with the cards (timeline `tc`), not after the parts land.

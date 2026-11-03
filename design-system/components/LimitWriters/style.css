@@ -75,7 +75,7 @@
 @container (max-width: 600px) {
   .aq-limit-writers__fig { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .aq-limit-writers__skid { position: relative; margin-bottom: calc(-1 * var(--space-2)); }
-  .aq-limit-writers__skid .aq-limit-writers__iso { max-height: 240px; }
+  .aq-limit-writers__skid .aq-limit-writers__iso { max-height: 220px; }
   .aq-limit-writers__stub { display: inline; }
   /* IsoKit rounds every iso path's ends; the run must stop square at the elbow */
   .aq-limit-writers__iso .aq-limit-writers__stub path { stroke-linecap: butt; }
@@ -96,4 +96,14 @@
       linear-gradient(var(--line-strong), var(--line-strong)) 0 0 / var(--space-6) 1px no-repeat, linear-gradient(var(--line-strong), var(--line-strong)) 0 100% / var(--space-6) 1px no-repeat, var(--surface); }
   .aq-limit-writers__sheet { min-height: 48px; padding: var(--space-2) var(--space-6) var(--space-2) var(--space-3); gap: var(--space-3); }
   .aq-limit-writers__name { font-size: 15px; line-height: 21px; }
+  /* the stage lists (pass 12 round C): the number inline before the title, no 40 px gutter, the text full width under
+     both, 8 px between items; a title without a link drops the 44 px target height */
+  .aq-limit-writers__rows { gap: var(--space-2); }
+  .aq-limit-writers__row { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); }
+  .aq-limit-writers__row > .aq-limit-writers__d { grid-column: 1 / -1; }
+  .aq-limit-writers__row > .aq-index { align-self: center; line-height: 22px; }
+  /* the title line is 30 px; a linked title keeps its 44 px target as padding that reaches into the space round it */
+  .aq-limit-writers__t { min-height: 0; padding-block: var(--space-1); }
+  .aq-limit-writers__t a { min-height: 0; padding-block: 11px; margin-block: -11px; }
+  .aq-limit-writers__row--base .aq-limit-writers__t { padding-block: var(--space-3) var(--space-1); }
 }

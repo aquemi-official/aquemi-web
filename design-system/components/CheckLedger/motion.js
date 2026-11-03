@@ -36,6 +36,11 @@
         tl.fromTo(n, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.45, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
         if (nv) { gsap.set(nv, { autoAlpha: 0 }); tl.set(nv, { autoAlpha: 1, clearProps: 'opacity,visibility' }, at + 0.2).call(function (nv) { clFlap(nv, 0.44, 0.045) }, [nv], at + 0.2) }
         tl.from(cells, { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, at + 0.15);
+        // phones (PhoneKit accordion, round C): the head's numeral tile wipes in and its text rises
+        var hd = r.querySelector('.aq-check-ledger__hd');
+        if (hd && hd.offsetParent !== null) { var hn = hd.querySelector('.aq-check-ledger__hn'), ht = hd.querySelector('.aq-check-ledger__ht');
+          if (hn) tl.fromTo(hn, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.4, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
+          if (ht) tl.from(ht, { y: 8, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, at + 0.12) }
         var fit = q('.aq-check-ledger__fit', r); if (fit.length) tl.fromTo(fit, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.6, ease: 'power3.inOut', clearProps: 'clipPath' }, at + 0.4);
       });
       m.on(el, function () { tl.play() }, 'top 78%');

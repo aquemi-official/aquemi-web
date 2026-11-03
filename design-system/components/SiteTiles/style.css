@@ -77,3 +77,7 @@
   .aq-site-tiles__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-6); }
   .aq-site-tiles__col:nth-child(-n+2) { border-top: 0; }
 }
+/* Pass 12 round C (audit-c group-7 about.2): small phones, 48 px less ground under tile 04 */
+@container (max-width: 600px) {
+  .aq-section.aq-site-tiles-sec { padding-bottom: 0; }
+}

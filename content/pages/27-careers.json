@@ -354,20 +354,15 @@
  "primary_cta_link": "#roles",
  "hero_index": false,
  "figure": {
-  "spots": [
-   {
-    "spot": "pid",
-    "t": "Design"
-   },
-   {
-    "spot": "ro-skid",
-    "t": "Build"
-   },
-   {
-    "spot": "wrench",
-    "t": "Service"
-   }
-  ],
-  "label": "Design · build · service"
+  "look": "shop-bay",
+  "from": "roles",
+  "at": [
+   "desk",
+   "joint",
+   "stand",
+   "panel",
+   "van",
+   "table"
+  ]
  }
 }

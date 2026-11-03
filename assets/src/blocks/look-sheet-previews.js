@@ -3,7 +3,9 @@
    of the kind of document it is, then its code (only a real one: an explicit code or tag, or one the document lookup
    knows; never initials), name and line. Pass 12 (concept 205, ind-personal-care.records): the numeral moved onto the
    sheet, four new thumbnails for record kinds (trend, log, binder, signoff), no filler tile; phones list the sheets one
-   per row, the sheet beside its text. The number lives on the sheet only; the eyebrow shows only for a real code.
+   per row, the sheet beside its text. The number lives on the sheet only; the eyebrow shows only for a real code, and
+   (pass 12 C) only where the sheet's own stamp is hidden (phones); elsewhere it stays for screen readers only, so the
+   code is not printed twice.
    Deciding documents (key) keep DocList's rule: their code turns flow.
    The block link ("Full index") sits at the end of the heading row.
    Fields (a docs block): h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label,
@@ -68,7 +70,7 @@ LOOKS['sheet-previews']=function(b,H){
   var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
   return fli('<li class="'+K+'__item'+(key?' is-key':'')+'" style="--i:'+i+'">',b,i)
    +'<div class="'+K+'__sheet" data-theme="light">'+sheet(x.sheet,tag,(i<9?'0':'')+(i+1))+'</div>'
-   +'<div class="'+K+'__body">'+(tag?'<p class="'+K+'__code"><span>'+e(tag)+'</span></p>':'')+'<h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</div></li>'}).join('');
+   +'<div class="'+K+'__body">'+(tag?'<p class="'+K+'__code is-stamped"><span>'+e(tag)+'</span></p>':'')+'<h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</div></li>'}).join('');
  var more=b.link&&wp(b.link)?'<p class="'+K+'__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
  return sec('<div class="'+K+'__top">'+H+more+'</div>'+wFold(b,n,'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>',b.fold_noun||'documents'),K+'-sec')};
 })();

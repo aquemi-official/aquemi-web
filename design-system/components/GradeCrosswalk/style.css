@@ -1,7 +1,7 @@
 /* ---------- GradeCrosswalk: water types as navy blocks, two families of standards wired to them (look "grade-crosswalk") ---------- */
-/* Five tracks: chips | wires | navy blocks | wires | chips. The blocks share equal heights (grid-auto-rows 1fr), so
-   block i's centre is at (i + 0.5) / N of the column; each chip sits at its own --p (the look computes it), so the
-   wires (a stretched svg, non-scaling strokes) need no measuring. Phones: blocks with their citation rows under them. */
+/* Five tracks: chips | wires | navy blocks | wires | chips. Each block takes its own height (round C); the look's script
+   measures the row centres on render and resize and sets each chip's --p and the wires (a stretched svg, non-scaling
+   strokes) from them. Without script the chips sit at the equal-row positions. Phones: a filter (see the end). */
 .aq-grade-crosswalk {
   display: grid; grid-template-columns: minmax(0, 2.3fr) minmax(var(--space-12), 1.2fr) minmax(0, 6.5fr) minmax(var(--space-12), 1.2fr) minmax(0, 2.3fr);
   grid-template-rows: auto 1fr; column-gap: 0; row-gap: var(--space-4);
@@ -26,10 +26,10 @@
 .aq-grade-crosswalk__std { padding: var(--space-2) var(--space-3); font: 500 14px/20px var(--font-sans); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .aq-grade-crosswalk__ed { padding: var(--space-2) var(--space-3); border-left: 1px solid var(--line-strong); font: 400 12px/20px var(--font-mono); color: var(--ink-muted); white-space: nowrap; transition: color 200ms ease, border-color 200ms ease; }
 .aq-grade-crosswalk__sep { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.aq-grade-crosswalk__wires { grid-column: 2; display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-grade-crosswalk__wires { grid-column: 2; display: block; width: 100%; height: 100%; overflow: visible; contain: size; } /* no intrinsic height: the rows set the track */
 .aq-grade-crosswalk__wires--b { grid-column: 4; }
 .aq-grade-crosswalk__wire { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 200ms ease, opacity 200ms ease; }
-.aq-grade-crosswalk__rows { grid-column: 3; list-style: none; margin: 0; padding: 0; display: grid; grid-auto-rows: 1fr; min-width: 0; }
+.aq-grade-crosswalk__rows { grid-column: 3; list-style: none; margin: 0; padding: 0; display: grid; grid-auto-rows: auto; min-width: 0; }
 .aq-grade-crosswalk__row { padding: var(--space-1) 0; display: flex; position: relative; }
 .aq-grade-crosswalk__block {
   flex: 1; display: grid; grid-template-columns: var(--space-8) minmax(0, 0.7fr) minmax(0, 1.3fr); column-gap: var(--space-6); row-gap: var(--space-2); align-items: center; align-content: center;
@@ -89,3 +89,55 @@
   .aq-grade-crosswalk__rnote { grid-column: 1 / -1; font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
   .aq-grade-crosswalk__rnote::before { content: "\2192\00a0"; color: var(--flow); }
 }
+
+/* The standards picker is phones only */
+.aq-grade-crosswalk__pick { display: none; }
+
+/* ---------- Pass 12 round C, phones: the crosswalk as a filter ----------
+   A strip of the four standards' chips (PhoneKit chips) with the open one's card (side, full citation, the waters it
+   asks for); the waters it asks for stay navy with a flow edge, the rest step back to paper with ink text (still AA,
+   nothing transparent). Each water's citations fold into one chip line inside its block. */
+@container (max-width: 860px) {
+  .aq-grade-crosswalk__pick { display: block; list-style: none; margin: 0 0 var(--space-4); padding: 0; --pk-cols: 4; }
+  .aq-grade-crosswalk__pick[data-pk-on] { column-gap: var(--space-2); row-gap: 0; }
+  .aq-grade-crosswalk__pick:not([data-pk-on]) > li { padding: var(--space-2) 0; border-bottom: 1px solid var(--line); }
+  .aq-grade-crosswalk__chip { justify-content: center; font: 500 14px/18px var(--font-mono) !important; letter-spacing: 0.02em; color: var(--ink); background: var(--surface-raised) !important; }
+  .aq-grade-crosswalk__chip[aria-expanded="true"] { background: var(--flow) !important; color: var(--surface); }
+  .aq-grade-crosswalk__card { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); padding: var(--space-2) 0 0; }
+  .aq-grade-crosswalk__cside { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+  .aq-grade-crosswalk__cstd { display: inline-flex; align-items: baseline; gap: var(--space-2); }
+  .aq-grade-crosswalk__cstd .aq-grade-crosswalk__std { padding: 0; font: 500 15px/22px var(--font-sans); white-space: normal; color: var(--ink); }
+  .aq-grade-crosswalk__cstd .aq-grade-crosswalk__ed { padding: 0 var(--space-2); border: 1px solid var(--line-strong); font: 400 12px/20px var(--font-mono); color: var(--ink); }
+  /* the waters it asks for, for screen readers (the lit blocks show them) */
+  .aq-grade-crosswalk__cw { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  .aq-grade-crosswalk__rows { gap: var(--space-2); }
+  .aq-grade-crosswalk__row { background: var(--navy); color: var(--on-navy); box-shadow: inset 4px 0 0 transparent; transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease; }
+  .aq-grade-crosswalk__block { background: none; color: inherit; padding: var(--space-3) var(--space-4) var(--space-1); row-gap: var(--space-1); }
+  .aq-grade-crosswalk__t { font-size: 20px; line-height: 26px; color: inherit; }
+  .aq-grade-crosswalk__row .aq-grade-crosswalk__how { line-height: 20px; }
+  /* the citations: one chip line in the block */
+  .aq-grade-crosswalk__refs { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); padding: var(--space-1) var(--space-4) var(--space-3); }
+  .aq-grade-crosswalk__ref, .aq-grade-crosswalk__ref.is-first { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); min-height: 0; padding: 0; border: 0; background: none; }
+  .aq-grade-crosswalk__side { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-grade-crosswalk__cite { display: inline-flex; align-items: stretch; border: 1px solid color-mix(in srgb, currentColor 45%, transparent); }
+  .aq-grade-crosswalk__cite .aq-grade-crosswalk__std { padding: 0 var(--space-2); font: 500 13px/22px var(--font-sans); color: inherit; }
+  .aq-grade-crosswalk__cite .aq-grade-crosswalk__ed { padding: 0 var(--space-2); border: 0; border-left: 1px solid color-mix(in srgb, currentColor 45%, transparent); font: 400 12px/22px var(--font-mono); color: inherit; }
+  .aq-grade-crosswalk__also { font: 400 14px/20px var(--font-mono); color: color-mix(in srgb, currentColor 78%, transparent); }
+  .aq-grade-crosswalk__rnote { order: 1; flex-basis: 100%; font: 400 13px/18px var(--font-mono); color: color-mix(in srgb, currentColor 78%, transparent); }
+  .aq-grade-crosswalk__row .aq-grade-crosswalk__how, .aq-grade-crosswalk__row .aq-index { color: var(--on-navy-muted); }
+  /* filtered: the open standard's waters lit (navy, flow edge), the rest on paper */
+  .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row.is-lit { box-shadow: inset 4px 0 0 var(--flow); }
+  .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row:not(.is-lit) { background: var(--surface-raised); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+  .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row:not(.is-lit) :is(.aq-grade-crosswalk__how, .aq-index) { color: var(--ink-muted); }
+  .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row:not(.is-lit) .aq-grade-crosswalk__rnote::before { color: var(--flow); }
+  /* dark: lit navy and raised paper sit about 1.3:1 apart, so the unlit rows drop to the page ground and the lit ones
+     take a full flow frame */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row:not(.is-lit) { background: transparent; }
+    :root:not([data-theme="light"]) .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row.is-lit { box-shadow: inset 4px 0 0 var(--flow), inset 0 0 0 1px var(--flow); }
+  }
+  :root[data-theme="dark"] .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row:not(.is-lit) { background: transparent; }
+  :root[data-theme="dark"] .aq-grade-crosswalk.is-filtered .aq-grade-crosswalk__row.is-lit { box-shadow: inset 4px 0 0 var(--flow), inset 0 0 0 1px var(--flow); }
+}
+@media (prefers-reduced-motion: reduce) { .aq-grade-crosswalk__row { transition: none; } }

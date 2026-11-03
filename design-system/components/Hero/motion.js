@@ -119,7 +119,8 @@
       return t;
     });
 
-    // Drawn scenes (HeroScene: systems, services, first-system, projects). The IsoKit drawing builds back to front and
+    // Drawn scenes (HeroScene: systems, services, first-system, projects; round C: about and careers (shop-bay),
+    // contact-locations (site-map), contact-proposal (reply-flow), compliance (compliance-matrix)). The IsoKit drawing builds back to front and
     // the water runs its pipes once (AQiso.timeline); each numbered tag and its key row land as the water reaches
     // that part, or in number order where no pipe feeds it (the ring's stations, the room's footprint).
     // Ported from Subframe Motion "Animated workflow diagram" (process-choreography), MIT, (c) 2026 Subframe: the
@@ -138,6 +139,15 @@
         if (row) t.from(row, { autoAlpha: 0, y: 8, duration: 0.4, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.06);
       });
       if (more) t.from(more, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, last + 0.3);
+      // compliance-matrix (round C): the sheet rises, its rows rule in one by one and each row's flow tick lands in its
+      // answer column, before the package under its corner draws (same choreography: the answer arrives, then the proof)
+      var mx = q('.aq-hero-scene__mx', f);
+      if (mx) {
+        t.from(mx, { y: 16, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0);
+        var cells = qa('.aq-hero-scene__mx-grid > span[data-r]', mx), ticks = qa('.aq-hero-scene__tick', mx);
+        if (cells.length) t.from(cells, { autoAlpha: 0, duration: 0.3, stagger: { each: 0.02 }, clearProps: 'opacity,visibility' }, 0.3);
+        if (ticks.length) t.fromTo(ticks, { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.36, stagger: 0.16, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }, 0.6);
+      }
       return t;
     });
 

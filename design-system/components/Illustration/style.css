@@ -8,3 +8,8 @@
 @container (max-width: 860px) {
   .aq-illustration { max-width: 480px; margin-inline: auto; }
 }
+
+/* Pass 12 round C (audit G4): in the dark theme a hero drawing paints in `ink`, not `ink-muted`: thin washer and skid
+   lines on the near-black page fell to about 3.5:1. Light mode is unchanged. */
+[data-theme="dark"] .aq-hero__art .aq-illustration { background-color: var(--ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-hero__art .aq-illustration { background-color: var(--ink); } }

@@ -32,11 +32,13 @@ function wdpScene(){
 LOOKS['walkdown-pins']=function(b,H){var R=b.rows||[],C=b.cols||[],LB=b.labels||{},S=wdpScene(),bx={x:S.bx.x-60,y:S.bx.y-14,w:S.bx.w+120,h:S.bx.h+20},W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y],seen={};
  function key(r){return WDP_PART[r.part]?r.part:'skid'}
  /* the check markers' boxes on the sheet (screen units, about 1 px each on desktop), so no callout name runs under one */
- var pinAt=R.map(function(r,i){var k=key(r),n=seen[k]=(seen[k]||0)+1,p=isoP(S.A[k]);return {i:i,k:k,n:n,p:p}});seen={};
+ /* pass 12 round C: a second check on the same part (06 and 09 on the panel) sits 28 units right of the first in the
+    pin data itself, so the two chips never touch at any scale */
+ var pinAt=R.map(function(r,i){var k=key(r),n=seen[k]=(seen[k]||0)+1,p=isoP(S.A[k]);if(n>1)p=[p[0]+28*(n-1),p[1]];return {i:i,k:k,n:n,p:p}});seen={};
  /* and the drawn loop pipe, sampled every 8 screen units, so a name never sits on the pipe either (pass 12 verify V3) */
  var pipeAt=[];S.pipe.forEach(function(v,k){if(!k)return;var a=isoP(S.pipe[k-1]),c=isoP(v),n=Math.max(1,Math.ceil(Math.hypot(c[0]-a[0],c[1]-a[1])/8));
   for(var t=0;t<=n;t++)pipeAt.push([a[0]+(c[0]-a[0])*t/n,a[1]+(c[1]-a[1])*t/n])});
- function hitsPin(x0,x1,y0,y1){return pinAt.some(function(q){var px=q.p[0]+(q.n-1)*24;return px+14>x0&&px-14<x1&&q.p[1]+14>y0&&q.p[1]-14<y1})
+ function hitsPin(x0,x1,y0,y1){return pinAt.some(function(q){var px=q.p[0];return px+14>x0&&px-14<x1&&q.p[1]+14>y0&&q.p[1]-14<y1})
   ||pipeAt.some(function(q){return q[0]+4>x0&&q[0]-4<x1&&q[1]+4>y0&&q[1]-4<y1})}
  /* leader callouts: one per labelled part, out to the nearer side of the sheet, the name over the shelf, stacked 30
     apart per side. A name never runs under a check marker (pass 12: "Conductivity" sat behind marker 04): the
@@ -55,7 +57,7 @@ LOOKS['walkdown-pins']=function(b,H){var R=b.rows||[],C=b.cols||[],LB=b.labels||
    var at=isoPct([x,o.y],W,Hh,org);labs.push('<span class="aq-walkdown-pins__lab aq-walkdown-pins__lab--'+sd+'" data-part="'+e(o.k)+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(LB[o.k])+'</span>')})});
  var svg=isoSvg(W,Hh,S.inner+leads.join(''),'aq-walkdown-pins__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',m:8,band:0,gridStep:22})});
  var pins=pinAt.map(function(q){var i=q.i,at=isoPct(q.p,W,Hh,org);
-  return '<span class="aq-walkdown-pins__pin" data-row="'+i+'" data-pk-key="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(q.n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+  return '<span class="aq-walkdown-pins__pin" data-row="'+i+'" data-pk-key="'+i+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
  var thead=C.length?'<div class="aq-walkdown-pins__cols" aria-hidden="true"><span></span>'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>':'';
  var rows=R.map(function(r,i){var m=String(r.p||'').match(/^(IQ|OQ|PQ)\s*·\s*(.*)$/),tag=m?m[1]:'',name=m?m[2]:r.p;
   return ('<li class="aq-walkdown-pins__row" data-row="'+i+'" data-pk-row="'+i+'" data-lit="'+e(WDP_PART[key(r)])+'" data-part="'+e(key(r))+'" tabindex="0">'

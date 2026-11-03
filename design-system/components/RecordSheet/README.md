@@ -9,3 +9,4 @@ RecordSheet sets each process of a quality system and the records it leaves as a
 - Phone: sheet border kept; each process stacks number and name, what it controls, its records; the title block runs full width under the list.
 - Motion (`motion.js`): ported from Subframe Motion "Reed in one line" (signature-draw): per row the name and cells rise 8 px and each glyph inks over its impression (0.8 s, cubic-bezier(.37,.12,.28,1), 0.12 s apart, accent after the body). Pointing at a row re-inks its glyphs in 0.45 s.
 - Not for: documents delivered with a system (DocList, IndexSheet).
+- Pass 12 round C (phones): the title block moves to the top of the sheet as a one-line caption ("08 processes · 18 records"), its large title cell hidden (the section title names the sheet).

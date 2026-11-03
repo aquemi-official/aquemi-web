@@ -1,0 +1,14 @@
+/* ---------- Placeholder inside a hero headline (pass 12 round C, audit S5 contact-service) ----------
+   The base chip (base.css) takes 86 % of the text round it: in a 76 px headline that is a three-line block of
+   display-size mono, and on phones it broke off "and" with a 30 px gap. In a hero headline the chip is set at 0.62 em
+   (about 47 px at 1,280, 25 px on phones), keeps its tint on every line (box-decoration-break: clone) and opens its
+   lines to 1.5 so the wrapped chip rows do not touch. With the highlight off (is-clean) it takes the headline's type. */
+.aq-hero h1 .aq-ph { font-size: 0.62em; line-height: 1.5; -webkit-box-decoration-break: clone; box-decoration-break: clone; letter-spacing: -0.01em; }
+.is-clean .aq-hero h1 .aq-ph { font-size: inherit; line-height: inherit; letter-spacing: inherit; }
+/* Phones (audit S5, verify V6): at 0.62 em the chip filled three display lines (about 25 px mono with uneven leading
+   against the 40 px headline); at 600 px and under it is about 18 px and closer set, so it reads as a note in the
+   headline, not a second headline. */
+@media (max-width: 600px) {
+  .aq-hero h1 .aq-ph { font-size: 0.45em; line-height: 1.35; }
+  .is-clean .aq-hero h1 .aq-ph { font-size: inherit; line-height: inherit; }
+}

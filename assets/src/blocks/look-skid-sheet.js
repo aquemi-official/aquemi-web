@@ -47,7 +47,8 @@ function scene(){var z=9,A={},o=[],DW=236,DD=108;
  A.exchanger={p:[100,92,z+30],d:[-60,34]};
  A.edi={p:ed.ports.top,d:[20,-56]};
  A.piping={p:[vx,oy,oz+18],d:[-6,58]};
- A.joints={p:[mx,b2[1]-14,a[2]],d:[22,-70]};
+ /* pd: the phone dot's nudge in screen units (pass 12 C verify F6: 06 sat on 04, the EDI top, at 375) */
+ A.joints={p:[mx,b2[1]-14,a[2]],d:[22,-70],pd:[-8,-12]};
  A.frame={p:[DW*0.6,DD,6],d:[-12,40]};
  A.pump={p:[pump[0],pump[1],z+40],d:[-44,-24]};
  A.drain={p:[r0[0],DD+10,-14],d:[-34,16]};
@@ -62,7 +63,7 @@ LOOKS['skid-sheet']=function(b,H){var R=b.rows||[],sc=scene(),A=sc.A;N++;
  var leads='',tags='',dots='';
  R.forEach(function(r,i){var k=used[i];if(!k)return;var a=A[k],ld=isoLeader(a.p,{dx:a.d[0],dy:a.d[1]},{shelf:8});
   leads+=String(ld).replace('<g class="aq-iso__leader','<g data-r="'+i+'" class="'+K+'__ld aq-iso__leader');
-  var t=isoPct(ld.end,W,Hh,org),d=isoPct(isoP(a.p),W,Hh,org),n=(i<9?'0':'')+(i+1);
+  var t=isoPct(ld.end,W,Hh,org),sp=isoP(a.p),d=isoPct(a.pd?[sp[0]+a.pd[0],sp[1]+a.pd[1]]:sp,W,Hh,org),n=(i<9?'0':'')+(i+1);
   tags+='<span class="'+K+'__tag'+(ld.side==='left'?' is-left':'')+'" data-r="'+i+'" style="left:'+t.left+';top:'+t.top+'" aria-hidden="true">'+n+'</span>';
   dots+='<span class="'+K+'__dot" data-r="'+i+'" data-pk-key="'+i+'" style="left:'+d.left+';top:'+d.top+'" aria-hidden="true">'+n+'</span>'});
  var svg=isoSvg(W,Hh,sc.inner+leads,K+'__svg',{origin:org});

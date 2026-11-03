@@ -8,7 +8,10 @@
    Fields, as a spec block: h, intro, cols [level, set at, basis], rows [{p, v, m, level, hl, link, link_label}], note.
    Phones (pass 12): the plant drawing gives way to a 12-month trend strip on chart paper (cbTrend: the action level
    as a navy rule labelled with the action row's "set at", the alert level as a dashed rule named by the other row,
-   set from a shaded first stretch), then the navy band with the rows stacked. Desktop unchanged. */
+   set from a shaded first stretch), then the navy band with the rows stacked.
+   Pass 12 round C (audit svc-cq.4): desktop shows the same trend card (about 560 x 300) in the right column above the
+   band, in place of the elevation, which said nothing about alert levels. The elevation stays behind a look-only
+   field: art "plant" (class aq-cut-band--plant) brings it back. */
 function cbPlant(){var P='aq-cut-band'+'__',L=function(c,d){return '<path class="'+P+c+'" d="'+d+'"/>'};
  var s=L('frame','M8 8H472V592H8Z');
  /* skid base and feet */
@@ -44,9 +47,9 @@ function cbTrend(R){var act=null,alt=null;R.forEach(function(r){if(!act&&r.level
  for(var j=0;j<44;j++){var xx=x0+mw+6+j*(x1-x0-mw-10)/43,yy=j===14?68:106+rnd()*32;d+='<circle class="'+P+'dt'+(j===14?' is-x':'')+'" cx="'+xx.toFixed(1)+'" cy="'+yy.toFixed(1)+'" r="'+(j===14?2.6:1.9)+'"/>'+(j===14?'<circle class="'+P+'ring" cx="'+xx.toFixed(1)+'" cy="68" r="7"/>':'')}
  s+='<path class="'+P+'act" d="M'+x0+' '+yA+'H'+x1+'"/>'+(alt?'<path class="'+P+'alt" d="M'+(x0+mw).toFixed(1)+' '+yL+'H'+x1+'"/><path class="'+P+'alt is-set" d="M'+x0+' '+yL+'H'+(x0+mw).toFixed(1)+'"/>':'')+d;
  var lab=function(c,y,t){return '<span class="'+P+'tl '+P+'tl--'+c+'" style="top:'+(100*y/Hh).toFixed(2)+'%">'+tx(t)+'</span>'};
- return '<div class="'+P+'trend" data-theme="light" aria-hidden="true"><div class="'+P+'paper" style="aspect-ratio:'+W+' / '+Hh+'"><svg class="'+P+'tsvg" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="none" focusable="false">'+s+'</svg>'
+ return '<div class="'+P+'trend" data-theme="light" data-paper aria-hidden="true"><div class="'+P+'paper" style="aspect-ratio:'+W+' / '+Hh+'"><svg class="'+P+'tsvg" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="none" focusable="false">'+s+'</svg>'
   +lab('act',yA,act.v||act.p)+(alt?lab('alt',yL,alt.p):'')+'</div></div>'}
-LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
+LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[],plant=b.art==='plant';
  var head='<div class="aq-cut-band__cols" aria-hidden="true"><span></span>'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>';
  var rows=R.map(function(r,i){var fig=/\d/.test(String(r.v||''))&&String(r.v).length<24,basis=String(r.m||'').split(/;\s*/).filter(Boolean);
   var go=r.link&&wp(r.link)?'<p class="aq-cut-band__go">'+wBtn(r.link_label||wlabel(r.link),r.link,'link',r.intent)+'</p>':'';
@@ -55,6 +58,6 @@ LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
    +'<h3 class="aq-cut-band__p">'+tx(r.p)+'</h3>'
    +'<p class="aq-cut-band__v'+(fig?' is-fig':'')+'">'+(C[1]?'<span class="aq-cut-band__k">'+tx(C[1])+'</span>':'')+'<span class="aq-cut-band__val">'+tx(r.v)+'</span></p>'
    +'<div class="aq-cut-band__m">'+(C[2]?'<span class="aq-cut-band__k">'+tx(C[2])+'</span>':'')+basis.map(function(x){return '<span class="aq-cut-band__ref">'+tx(x)+'</span>'}).join('')+go+'</div></li>'}).join('');
- return sec('<div class="aq-cut-band"><div class="aq-cut-band__head">'+H+'</div><div class="aq-cut-band__fig">'+cbPlant()+'</div>'+cbTrend(R)
+ return sec('<div class="aq-cut-band'+(plant?' aq-cut-band--plant':'')+'"><div class="aq-cut-band__head">'+H+'</div><div class="aq-cut-band__fig">'+cbPlant()+'</div>'+cbTrend(R)
   +'<div class="aq-cut-band__band"><span class="aq-cut-band__occ" aria-hidden="true"><i></i><i></i></span>'+head+'<ol class="aq-cut-band__rows">'+rows+'</ol></div>'
   +(b.note?'<p class="aq-cut-band__note">'+tx(b.note)+'</p>':'')+'</div>','aq-cut-band-sec')};

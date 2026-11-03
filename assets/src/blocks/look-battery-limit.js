@@ -29,7 +29,8 @@ LOOKS['battery-limit']=function(b,H){
   +(lim>=0?card(R[lim],lim,'limit'):'')
   +(SD[1]?'<p class="aq-battery-limit__side is-site">'+tx(SD[1])+'</p>':'')
   +'<ul class="aq-battery-limit__list is-site" role="list">'+st+'</ul></div>';
- return '<section class="aq-section aq-band--split aq-battery-limit-sec">'+seam+'<div class="aq-in">'+wFold(b,R.length,inner,b.fold_noun)+'</div></section>'};
+ /* pass 12 C: fewer site cards than package cards leaves the site side empty at its foot; the seam's name moves there */
+ return '<section class="aq-section aq-band--split aq-battery-limit-sec'+(b.seam&&kk.site<kk.package?' is-site-short':'')+'">'+seam+'<div class="aq-in">'+wFold(b,R.length,inner,b.fold_noun)+'</div></section>'};
 /* Hover or focus on a card lights its leader and tie-in node */
 (function(){
  function over(ev){var root=ev.target.closest&&ev.target.closest('.aq-battery-limit');if(!root)return;var t=ev.target.closest('.aq-battery-limit__item');

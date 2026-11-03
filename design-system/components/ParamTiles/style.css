@@ -27,10 +27,21 @@
 .aq-param-tiles__m { margin: auto 0 0; padding-top: var(--space-3); border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent);
   display: flex; flex-direction: column; gap: var(--space-2); font: 400 13px/20px var(--font-sans); color: var(--on-limestone-muted); }
 .aq-param-tiles__tile.is-lead .aq-param-tiles__m { color: var(--on-navy-muted); }
-.aq-param-tiles__link { align-self: flex-start; display: inline-flex; align-items: center; min-height: var(--space-6); color: var(--flow); text-decoration: none; font: 500 13px/20px var(--font-sans); }
+.aq-param-tiles__link { align-self: flex-start; display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); color: var(--flow); text-decoration: none; font: 500 14px/20px var(--font-sans); }
+/* pass 12 C: flow on navy read 2.41:1; the lead tile's link is on-navy */
+.aq-param-tiles__tile.is-lead .aq-param-tiles__link { color: var(--on-navy); }
+.aq-param-tiles__tile.is-lead .aq-param-tiles__link:focus-visible { outline-color: var(--on-navy); }
 .aq-param-tiles__link::after { content: "→"; margin-left: var(--space-1); transition: transform 200ms; }
 .aq-param-tiles__link:hover::after { transform: translateX(var(--space-1)); }
 .aq-param-tiles__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* A last tile alone in its row (pass 12 C, ind-process 08): the full row, laid out across it (number and name, the
+   value, the basis and link), so no empty navy cell is left beside it */
+/* (the list-scoped selector outweighs the fold's display:flex on tiles past the phone fold) */
+.aq-param-tiles .aq-param-tiles__list > .aq-param-tiles__tile.is-row { grid-column: 1 / -1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: var(--space-6); align-items: start; }
+.aq-param-tiles__tile.is-row .aq-param-tiles__v { padding-top: var(--space-2); }
+.aq-param-tiles__tile.is-row .aq-param-tiles__m { margin: 0; padding: var(--space-1) 0 0 var(--space-6); border-top: 0; border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
 
 /* Hover: the tile's number turns flow */
 .aq-param-tiles__tile:hover .aq-param-tiles__n { color: var(--flow); }
@@ -39,7 +50,10 @@
 
 @container (max-width: 1100px) {
   .aq-param-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .aq-param-tiles__fig { grid-column: 2 / span 2; }
+  /* pass 12 C verify F5: the blueprint drops to rows 2-3, so the wide lead takes row 1 (with the next tile beside it)
+     instead of falling under the blueprint; the cell count is unchanged, so the grid still closes square */
+  .aq-param-tiles__fig { grid-column: 2 / span 2; grid-row: 2 / span 2; }
+  .aq-param-tiles__tile.is-lead { grid-row: 1; }
   .aq-param-tiles__tile:last-child:nth-child(4n+2):not(.is-lead) { grid-column: auto; }
   .aq-param-tiles__n { font-size: 52px; line-height: 50px; }
 }
@@ -47,12 +61,19 @@
 /* Phones: one column, the lead tile first, the blueprint after it, the fold back on */
 @container (max-width: 860px) {
   .aq-param-tiles { grid-template-columns: minmax(0, 1fr); }
-  .aq-param-tiles__tile.is-lead { grid-column: auto; order: -2; }
+  .aq-param-tiles__tile.is-lead { grid-column: auto; grid-row: auto; order: -2; }
   .aq-param-tiles__fig { grid-column: auto; grid-row: auto; order: -1; padding: var(--space-4); }
   .aq-param-tiles__tile { min-height: 0; padding: var(--space-4) var(--space-4) var(--space-6); }
-  .aq-fold:not(.is-open) .aq-param-tiles__tile.aq-fold-x { display: none; }
+  .aq-fold:not(.is-open) .aq-param-tiles__list > .aq-param-tiles__tile.aq-fold-x { display: none; } /* (0,5,0): outranks the list-scoped is-row reset */
   .aq-fold:has(> .aq-param-tiles) > .aq-fold__btn { display: flex; }
   .aq-param-tiles__n { font-size: 48px; line-height: 46px; }
   .aq-param-tiles__tile.is-lead .aq-param-tiles__v { font-size: 22px; line-height: 30px; }
   .aq-param-tiles__v { font-size: 18px; line-height: 26px; }
+  /* pass 12 C verify F1: the base is-row rule is list-scoped (0,3,0), so the phone reset must be too; back on the tile's flex column */
+  .aq-param-tiles .aq-param-tiles__list > .aq-param-tiles__tile.is-row { display: flex; grid-template-columns: none; row-gap: var(--space-4); align-items: stretch; }
+  .aq-param-tiles__tile.is-row .aq-param-tiles__v { padding-top: 0; }
+  .aq-param-tiles__tile.is-row .aq-param-tiles__m { margin: auto 0 0; padding: var(--space-3) 0 0; border-left: 0; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
+}
+@container (max-width: 600px) {
+  .aq-param-tiles__m { font-size: 14px; line-height: 21px; }
 }

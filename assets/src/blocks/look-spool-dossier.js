@@ -1,6 +1,7 @@
 /* Look "spool-dossier" -> SpoolDossier (design-system/components/SpoolDossier): a dossier set beside the as-built
    isometric it indexes. On a limestone sheet: the title huge and light at the top left, an isometric polypropylene
-   spool at the right (IsoKit pipes: a run with a tee and a branch, two bends, flanged ends, each joint dotted and
+   spool at the right (IsoKit pipes: a run with a tee and a branch, two bends, plain cut ends and a PP end cap, each
+   joint a girth ring at pipe OD (method-neutral, FD-18), dotted and
    numbered J-01 …, each length tagged with its lot L1 …, dimension lines without figures), and the dossier's parts in
    a hairline grid underneath. Pointing at (or focusing) a part shows what it records on the spool: joint records light
    the joints and their numbers, the material log lights each length and its lot tag, the procedure and welder
@@ -17,10 +18,16 @@ LOOKS['spool-dossier']=(function(){
    {id:'L2',p:[[120,0,40],[200,0,40],[200,-60,40]],tag:[160,0,40]},
    {id:'L1',p:[[0,0,40],[80,0,40]],tag:[40,0,40]},
    {id:'L4',p:[[100,0,22],[100,0,-20],[100,60,-20]],tag:[100,34,-20],o:[12,16]}];
-  L.forEach(function(l,i){var f=i===0?'end':i===2?'start':i===3?'end':false;
-   o.push(isoPipe(l.p,{r:R,bend:R*3,flanges:f?'ends':false,caps:false,id:'spool',cls:'aq-spool-dossier__len'}).toString().replace('class="aq-iso__pipe aq-spool-dossier__len"','class="aq-iso__pipe aq-spool-dossier__len" data-lot="'+l.id+'"'));
-   if(i===1)o.push(isoPipe([[78,0,40],[122,0,40]],{r:R+2,caps:true,flow:false,cls:'aq-spool-dossier__fit'})+isoPipe([[100,0,40],[100,0,20]],{r:R+2,caps:'end',flow:false,cls:'aq-spool-dossier__fit'}))});
-  /* the test cap and its gauge on the riser's end */
+  /* joints are method-neutral (FD-18): no flange, collar or bead; plain cut ends at J-01 and J-07, a girth ring at pipe
+     OD at each joint between (two hairline half-ellipses 2 units apart), and a PP end cap at J-06 */
+  L.forEach(function(l,i){var c=i===2?'start':i===3?'end':false;
+   o.push(isoPipe(l.p,{r:R,bend:R*3,flanges:false,caps:c,id:'spool',cls:'aq-spool-dossier__len'}).toString().replace('class="aq-iso__pipe aq-spool-dossier__len"','class="aq-iso__pipe aq-spool-dossier__len" data-lot="'+l.id+'"'));
+   if(i===1)o.push(isoPipe([[100,0,40],[100,0,20]],{r:R,caps:false,flow:false,cls:'aq-spool-dossier__fit'})+isoPipe([[78,0,40],[122,0,40]],{r:R,caps:false,flow:false,cls:'aq-spool-dossier__fit'}))});
+  var gd='';[[[80,0,40],'x'],[[120,0,40],'x'],[[100,0,22],'z'],[[200,-60,40],'y']].forEach(function(g){var a=ISO_AX[g[1]];
+   [-1,1].forEach(function(k){gd+=isoBandD(isoV.add(g[0],isoV.mul(a,k)),g[1],R)})});
+  o.push('<path class="aq-iso__thin" d="'+gd+'"/>');
+  /* J-06: a PP end cap on the riser (a short collar at OD, a low dome), the test gauge on a stub out of it */
+  var cp=isoB(200,-120,110,1);cp.cyl(0,0,0,'z',4,R).vessel(0,0,4,R,0.1,3,0).cyl(0,0,6.6,'z',8,1.3);o.push(cp.done('cap',{id:'cap'}));
   o.push(isoPart('gauge',200,-120,124,1.3,{value:0.55,id:'cap'}));
   /* dimensions, no figures */
   o.push(isoDim([0,0,40],[80,0,40],{off:[0,34,0]}),isoDim([120,0,40],[200,0,40],{off:[0,34,0]}),isoDim([200,-60,40],[200,-120,40],{off:[34,0,0]}));

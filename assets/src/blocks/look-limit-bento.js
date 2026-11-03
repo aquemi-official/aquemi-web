@@ -11,6 +11,8 @@
    "Ph. Eur."). Without any alt the bento has no column and the tiles take three across.
    The basis (m) prints as one tag per ";" part; a level chip prints only when the parameter name does not already say it.
    Phones (pass 12): the tile of the row the column draws folds into the column (no repeat of the same value).
+   Every second tile is limestone paper (is-paper) in the light theme; in the dark theme it takes the raised dark
+   surface like the others (round C: one theme across the three cards).
    Uses gaugeParse / gaugeLevel / gaugeScale / gaugeNum / wGaugeGo (blocks/spec.js). */
 function lbVal(g,v){return g?'<span class="aq-limit-bento__c">'+e(g.c)+'</span><span class="aq-limit-bento__n aq-num">'+e(g.t)+'</span>'+(g.u?' <span class="aq-limit-bento__u">'+tx(g.u)+'</span>':''):'<span class="aq-limit-bento__n">'+tx(v)+'</span>'}
 function lbColumn(r){var g=gaugeParse(r.v),a=gaugeParse(r.alt&&r.alt.v);if(!g||!a)return '';
@@ -34,7 +36,7 @@ LOOKS['limit-bento']=function(b,H){
   /* phones (pass 12): the column already says this row whole (value, condition, its one basis), so its tile folds into
      the column's caption there; a row with more than one basis or a link keeps its tile */
   var folds=i===ci&&!!col&&String(r.m||'').split(/\s*;\s*/).filter(Boolean).length<=1&&!wGaugeGo(r);
-  return '<li class="aq-limit-bento__tile'+(r.hl?' is-hl':'')+(folds?' is-col':'')+'"'+(i%2?' data-theme="light"':'')+'>'
+  return '<li class="aq-limit-bento__tile'+(r.hl?' is-hl':'')+(folds?' is-col':'')+(i%2?' is-paper':'')+'">'
    +'<div class="aq-limit-bento__top">'+idx(i)+'<h3 class="aq-limit-bento__p">'+tx(r.p)+'</h3>'+(isIcon(r.icon)?wIcon(r.icon,'aq-limit-bento__ic'):'')+'</div>'
    +(lvl&&String(r.p||'').toLowerCase().indexOf(lvl.toLowerCase())<0?'<p class="aq-limit-bento__lvl">'+e(lvl)+'</p>':'')
    +'<p class="aq-limit-bento__v">'+lbVal(g,r.v)+'</p>'

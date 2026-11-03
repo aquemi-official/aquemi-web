@@ -20,22 +20,24 @@ AQmotion.fx('ExplodedService', function (root, m) {
     });
     var leadLines = qa('.aq-iso__leader-line', svg), dots = qa('.aq-iso__leader-dot', svg);
     leadLines.forEach(function (s) { s.setAttribute('vector-effect', 'non-scaling-stroke') });
-    function clean(els) { els.forEach(function (s) { s.style.removeProperty('stroke-dasharray'); s.style.removeProperty('stroke-dashoffset') }) }
+    function clean(els) { els.forEach(function (s) { s.style.removeProperty('stroke-dasharray'); s.style.removeProperty('stroke-dashoffset'); s.style.removeProperty('stroke-linecap') }) }
+    // pass 12 C (integrator, IsoKit G-C3): lines wait and draw with butt caps, so a zero-length dash is not painted as a
+    // round dot (the parked-dash specks); clean() hands the kit's round caps back when each draw ends
     var off = pieces.map(function (p) { var v = (p.getAttribute('data-du') || '0,0').split(',').map(Number); return { x: v[0], y: v[1] } });
     var tl = m.tw(gsap.timeline({ paused: true }));
     if (sheet.length) tl.from(sheet, { autoAlpha: 0, duration: 0.5, ease: 'power1.out', clearProps: 'opacity,visibility' }, 0);
     // 1. assembled: every part starts at its place on the shaft
     pieces.forEach(function (p, i) { gsap.set(p, { x: off[i].x, y: off[i].y }) });
-    if (D) tl.fromTo(lines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.9, ease: 'power2.inOut', stagger: { amount: 0.4 }, onComplete: function () { clean(lines) } }, 0.15);
+    if (D) tl.fromTo(lines, { drawSVG: '0%', strokeLinecap: 'butt' }, { drawSVG: '100%', duration: 0.9, ease: 'power2.inOut', stagger: { amount: 0.4 }, onComplete: function () { clean(lines) } }, 0.15);
     else tl.from(lines, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, 0.15);
     tl.fromTo(fills, { fillOpacity: 0 }, { fillOpacity: 1, duration: 0.5, ease: 'power1.out', clearProps: 'fillOpacity' }, 0.75);
     // 2. explode: furthest part first, each settles in place
     var te = 1.35;
     pieces.forEach(function (p, i) { if (off[i].x || off[i].y) tl.to(p, { x: 0, y: 0, duration: 1.1, ease: 'aq-settle', clearProps: 'transform' }, te + i * 0.07) });
-    if (axis) { if (D) tl.fromTo(axis, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1, ease: 'power2.out', onComplete: function () { clean([axis]) } }, te + 0.1); else tl.from(axis, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, te + 0.1) }
+    if (axis) { if (D) tl.fromTo(axis, { drawSVG: '0%', strokeLinecap: 'butt' }, { drawSVG: '100%', duration: 1.1, ease: 'power2.out', onComplete: function () { clean([axis]) } }, te + 0.1); else tl.from(axis, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, te + 0.1) }
     // 3. leaders run out, promises stand up on their shelves
     var tc = te + 1.1;
-    if (!narrow && D && leadLines.length) tl.fromTo(leadLines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, ease: 'power2.inOut', stagger: 0.12, onComplete: function () { clean(leadLines) } }, tc);
+    if (!narrow && D && leadLines.length) tl.fromTo(leadLines, { drawSVG: '0%', strokeLinecap: 'butt' }, { drawSVG: '100%', duration: 0.6, ease: 'power2.inOut', stagger: 0.12, onComplete: function () { clean(leadLines) } }, tc);
     if (dots.length) tl.from(dots, { scale: 0, transformOrigin: '50% 50%', duration: 0.4, ease: 'back.out(3)', stagger: 0.12, clearProps: 'transform' }, tc);
     if (pins.length) tl.from(pins, { scale: 0, duration: 0.4, ease: 'back.out(3)', stagger: 0.12, clearProps: 'transform' }, tc);
     calls.forEach(function (c, i) {

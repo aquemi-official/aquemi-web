@@ -8,7 +8,9 @@
 .aq-option-taps__side { display: flex; flex-direction: column; border-left: 1px solid var(--on-limestone); min-width: 0; }
 
 /* the drawing: a camera that frames one part when a note is chosen */
-.aq-option-taps__fig { position: relative; overflow: hidden; margin-top: auto; }
+/* pass 12 C: the drawing sits a fixed step under the intro (margin-top auto left a ~260 px dead band), and its
+   viewBox is the train's own bounds, so at width 100% it fills the column */
+.aq-option-taps__fig { position: relative; overflow: hidden; margin-top: var(--space-8); }
 .aq-option-taps__cam { position: relative; transform-origin: 0 0; transition: transform 600ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-option-taps__svg { display: block; width: 100%; height: auto; }
 /* optional: every line of the part and its tee dashed; lit (note hovered or chosen) in flow */
@@ -21,6 +23,7 @@
 .aq-option-taps__svg [data-iso-id] { transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-option-taps.is-focus .aq-option-taps__svg [data-iso-id]:not(.is-lit) { opacity: 0.35; }
 .aq-option-taps__label, .aq-option-taps__mark { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; pointer-events: none; }
+.aq-option-taps__label--end { transform: translate(-100%, -100%); }
 .aq-option-taps__label { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone-muted); }
 .aq-option-taps__mark { display: grid; place-items: center; min-width: var(--space-8); height: var(--space-8); padding: 0 var(--space-1);
   border: 1px solid var(--on-limestone); background: var(--limestone); font: 500 13px/1 var(--font-mono); color: var(--on-limestone); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
@@ -45,6 +48,12 @@
 .aq-option-taps__crop, .aq-option-taps__nop { display: none; }
 .aq-fold:not(.is-open) .aq-option-taps__card.aq-fold-x { display: flex; }
 .aq-fold:has(> .aq-option-taps__cards) > .aq-fold__btn { display: none; }
+/* pass 12 C verify F6: on the sheet the notes fill the side column down to the title block, rules spaced evenly
+   (the drawing column sets the height; the notes column had ~325 px of empty paper under its last row) */
+@container (min-width: 861px) {
+  .aq-option-taps__side > .aq-fold { flex: 1 0 auto; display: flex; flex-direction: column; }
+  .aq-option-taps__cards, .aq-option-taps__card { flex: 1 0 auto; }
+}
 
 /* title block */
 .aq-option-taps__block { display: grid; grid-template-columns: minmax(0, 1fr); margin-top: auto; border-top: 1px solid var(--on-limestone); }
@@ -81,6 +90,8 @@
   .aq-option-taps__crop-svg { display: block; width: 100%; height: 100%; overflow: hidden; }
   .aq-option-taps__clab { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; pointer-events: none;
     font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone-muted); background: var(--limestone); padding: 0 var(--space-1); }
+  .aq-option-taps__clab--side { transform: translate(0, -50%); }
+  .aq-option-taps__clab--left { transform: translate(-100%, -50%); }
   .aq-option-taps__t { font-size: 18px; line-height: 24px; }
   .aq-option-taps__d { font-size: 15px; line-height: 22px; }
   .aq-fold:not(.is-open) .aq-option-taps__card.aq-fold-x { display: none; }

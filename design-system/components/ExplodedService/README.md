@@ -8,3 +8,6 @@ ExplodedService pins a few service promises to an exploded view of the part that
 - Motion: the sheet fades up, the pump draws itself assembled and fills, then the parts slide apart along the shaft (casing first and furthest, each settling) while the centre line draws through them; the leaders run out and the promises stand up on their shelves. Once, about 3.5 s.
 
 Ported (pass 9b): Subframe Motion "Exploded camera" (exploded-camera). A secondary button under the drawing ("Assemble the pump" / "Take the pump apart", aria-pressed) slides every part along the shaft line (600 ms, cubic-bezier(.22,1,.36,1); instant from the keyboard), the leaders hiding while assembled. Pointing at or focusing a promise brings its part forward (the others step back). The button exists only when motion runs.
+
+**Draw-in caps (pass 12 round C).** Lines wait and draw with butt caps and `clean()` removes the inline cap when each
+draw ends, so a zero-length dash is never painted as a round dot (the IsoKit parked-dash fix, G-C3).

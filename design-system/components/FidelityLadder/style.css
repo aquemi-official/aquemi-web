@@ -100,3 +100,56 @@
 /* verify V7: at 70 % the sheets' inner drawing labels (PRE, RO, EDI, TANK, ...) render about 4 px; they are sheet
    texture (the sheets are aria-hidden), so phones drop them and keep the drawing and the 12 px footers. */
 @container (max-width: 860px) { .aq-fidelity-ladder__lbl { display: none; } }
+
+/* pass 12 round C (svc-design.1, phone height 2,258 px): at 600 px and under each stage is a two-column grid, the
+   sheet as a 120 px thumbnail in column 1 with the numeral and title beside it in column 2, then the body and the HOLD
+   stamp full width under both. The thumbnail keeps its level label (11 px); the sheet number repeats the numeral
+   beside it, so it drops; the inner drawing labels stay hidden (they would render under 11 px). */
+@container (max-width: 600px) {
+  .aq-fidelity-ladder__st {
+    display: grid; grid-template-columns: 120px minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 12px;
+    align-content: start; padding-block: 20px;
+  }
+  .aq-fidelity-ladder__body { display: contents; }
+  .aq-fidelity-ladder__sheet { grid-column: 1; grid-row: 1 / span 3; width: auto; align-self: start; }
+  .aq-fidelity-ladder__svg { inset: var(--space-1) var(--space-1) 20px; width: calc(100% - 2 * var(--space-1)); height: calc(100% - var(--space-1) - 20px); }
+  .aq-fidelity-ladder__no { display: none; }
+  .aq-fidelity-ladder__lvl { bottom: var(--space-1); right: var(--space-2); font-size: 11px; line-height: 14px; }
+  .aq-fidelity-ladder__frz { width: var(--space-8); height: var(--space-8); border-width: 2px; font-size: 11px; left: 6%; top: 8%; }
+  .aq-fidelity-ladder__n { grid-column: 2; grid-row: 1; align-self: start; }
+  .aq-fidelity-ladder__t { grid-column: 2; grid-row: 2; align-self: start; margin-top: var(--space-1); }
+  .aq-fidelity-ladder__d { grid-column: 1 / -1; grid-row: 4; margin-top: var(--space-2); max-width: none; }
+  .aq-fidelity-ladder__hold { grid-column: 1 / -1; grid-row: 5; margin-top: var(--space-2); }
+  .aq-fidelity-ladder__node { top: 36px; }
+  .aq-fidelity-ladder__valve { top: var(--space-2); }
+  .aq-fidelity-ladder__st.is-hold .aq-fidelity-ladder__node { top: 60px; }
+  .aq-fidelity-ladder__st.is-last .aq-fidelity-ladder__run::before { height: 36px; }
+  /* the first stage starts at the top of the list and the last ends at its foot (the section padding spaces them) */
+  .aq-fidelity-ladder__st:first-child { padding-top: 0; }
+  .aq-fidelity-ladder__st:first-child:not(.is-hold) .aq-fidelity-ladder__node { top: 16px; }
+  .aq-fidelity-ladder__st.is-last { padding-bottom: 0; }
+}
+
+/* pass 12 round C fix round (tablet, 601-860 px, was 3,001 px): the same two-column stage, the sheet a 200 px
+   thumbnail in column 1 and the numeral, title, body and HOLD stamp all in column 2 beside it. */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-fidelity-ladder__st {
+    display: grid; grid-template-columns: 200px minmax(0, 1fr); grid-template-rows: auto auto auto auto 1fr; column-gap: var(--space-6);
+    align-content: start; padding-block: var(--space-8);
+  }
+  .aq-fidelity-ladder__body { display: contents; }
+  .aq-fidelity-ladder__sheet { grid-column: 1; grid-row: 1 / -1; width: auto; align-self: start; }
+  .aq-fidelity-ladder__no { display: none; }
+  .aq-fidelity-ladder__frz { width: var(--space-10, 40px); height: var(--space-10, 40px); border-width: 2px; font-size: 12px; left: 6%; top: 8%; }
+  .aq-fidelity-ladder__n { grid-column: 2; grid-row: 1; }
+  .aq-fidelity-ladder__t { grid-column: 2; grid-row: 2; margin-top: var(--space-1); }
+  .aq-fidelity-ladder__d { grid-column: 2; grid-row: 3; margin-top: var(--space-2); max-width: none; }
+  .aq-fidelity-ladder__hold { grid-column: 2; grid-row: 4; margin-top: var(--space-4); }
+  .aq-fidelity-ladder__node { top: 44px; }
+  .aq-fidelity-ladder__valve { top: var(--space-4); }
+  .aq-fidelity-ladder__st.is-hold .aq-fidelity-ladder__node { top: 68px; }
+  .aq-fidelity-ladder__st.is-last .aq-fidelity-ladder__run::before { height: 44px; }
+  .aq-fidelity-ladder__st:first-child { padding-top: 0; }
+  .aq-fidelity-ladder__st:first-child:not(.is-hold) .aq-fidelity-ladder__node { top: 12px; }
+  .aq-fidelity-ladder__st.is-last { padding-bottom: 0; }
+}

@@ -19,6 +19,8 @@
 .aq-application-wheel__hub { fill: var(--surface); stroke: var(--line); stroke-width: 1px; vector-effect: non-scaling-stroke; }
 .aq-application-wheel__loop { fill: none; stroke: var(--flow); stroke-width: 2px; vector-effect: non-scaling-stroke; stroke-dasharray: 3 7; }
 .aq-application-wheel__pkg { overflow: visible; }
+/* the phone strip's readout (PhoneKit on, 600 px and under); never shown elsewhere */
+.aq-application-wheel__now { display: none; }
 
 .aq-application-wheel__list { display: contents; list-style: none; margin: 0; padding: 0; }
 .aq-application-wheel__grp { position: relative; grid-row: var(--row, auto); min-width: 0; display: flex; flex-direction: column; gap: var(--space-2);
@@ -65,8 +67,45 @@
   .aq-application-wheel__grp:nth-child(even)::before { right: 100%; left: auto; }
   .aq-application-wheel__t { font-size: 17px; line-height: 22px; }
   .aq-application-wheel__link { display: inline-block; min-height: var(--aq-hit, 44px); padding-block: var(--space-2); box-sizing: border-box; }
-  .aq-application-wheel__tag { font-size: 11px; line-height: 16px; }
+  .aq-application-wheel__tag { font-size: 12px; line-height: 18px; }
   .aq-application-wheel__uses li { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
   .aq-application-wheel__ui { display: none; }
   .aq-application-wheel__num { font-size: 22px; }
+}
+
+/* 600 px and under (pass 12 round C): the wheel is a PhoneKit sticky compact figure. A 140 px strip (the wheel at
+   124 px and the name of the group in view) holds under the header; the segment whose list is on the reading line
+   fills with flow. The groups run in one column under it. Without script (PhoneKit off) the 860 px layout above stays. */
+@container (max-width: 600px) {
+  .aq-application-wheel[data-pk-on] { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .aq-application-wheel[data-pk-on]::before { display: none; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__wheel { grid-column: 1; justify-self: stretch; align-self: start; width: auto;
+    display: flex; align-items: center; gap: var(--space-4); padding-block: var(--space-2); }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__svg { flex: none; width: 124px; height: 124px; overflow: hidden; cursor: pointer; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__num { font-size: 40px; font-weight: 500; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__seg.is-pk-active path { fill: var(--flow); stroke: var(--flow); }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__num.is-pk-active { fill: var(--surface); }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__now { display: block; flex: 1; min-width: 0; list-style: none; margin: 0; padding: 0; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__now li { display: none; font: 400 17px/22px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__now li.is-pk-active { display: block; }
+  /* the group's own title still shows under the strip: the readout steps back until it has passed (script) */
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__now { transition: opacity 200ms; }
+  .aq-application-wheel[data-pk-on][data-aw-fresh] .aq-application-wheel__now { opacity: 0; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__now-n { display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--flow); }
+  /* the groups: one column, each under a rule, its number lit while it is the one in view */
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__grp { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: var(--space-2); row-gap: var(--space-1);
+    align-items: baseline; padding: var(--space-3) 0 var(--space-2); }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__n { grid-column: 1; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__t, .aq-application-wheel[data-pk-on] .aq-application-wheel__tag,
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__uses { grid-column: 2; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__tag { justify-self: start; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__grp::before { display: none; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__grp:first-child { border-top-color: transparent; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__grp.is-pk-active .aq-application-wheel__n { color: var(--flow); }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__uses { margin-top: var(--space-1); gap: 2px; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__uses li { font-size: 14px; line-height: 20px; }
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__uses li::before { content: ""; flex: none; width: var(--space-2); height: 1px; margin-top: 10px; background: var(--line-strong); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-application-wheel[data-pk-on] .aq-application-wheel__now { transition: none; }
 }

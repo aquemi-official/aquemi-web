@@ -23,3 +23,7 @@ As a spec block: `cols` [level, set at, basis], `rows` [{`p`, `v`, `m`, `level`,
 
 ## Motion
 The drawing draws, the water runs header and loop; then a navy occluder with flow edges crosses the page, holds over the band, the band and its table switch on under full cover, and the occluder exits right (foreground-occlusion-wipe port). The figure rolls on its odometer. Once, under 4 s; nothing under reduced motion.
+
+Pass 12 round C (svc-cq.4): from 861 px the trend card (`cbTrend`, `.aq-cut-band__trend`, `data-paper`) stands in the right column above the band, about 560 x 286, in place of the elevation; the elevation stays behind the look-only field `art: "plant"` (class `aq-cut-band--plant`). Motion: where the trend shows, its level rules draw and the readings print before the plane cuts.
+
+Pass 12 round C fix round: CutBand claims the trend card (`m.claim`), so the generic line layer no longer draws its rules and grid; the dashed alert level stays dashed after the motion and the grid lines stay static.

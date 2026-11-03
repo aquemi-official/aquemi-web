@@ -2,9 +2,9 @@
  "look": "joint-tag",
  "component": "JointTag",
  "type": "table",
- "fields": "as a table: cols [field, what it proves, record], rows, fold, fold_noun. Optional parts (one per row: num, lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only.",
+ "fields": "as a table: cols [field, what it proves, record], rows, fold, fold_noun, seam (\"plain\"). Optional parts (one per row: num, lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only.",
  "best_for": "JointTag shows a joint log as a traceability tag hanging from the joint it records: a polypropylene pipe in side view, fused at a double-rolled bead, runs off both page edges, and the tag on its wire carries one form box per log field, each field's number pinned on the part of the joint it describes.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "svc-fabrication",
@@ -70,6 +70,75 @@
     "as": "evidence",
     "fold": 4,
     "fold_noun": "fields"
+   }
+  },
+  {
+   "page": "svc-fabrication",
+   "slot": 0,
+   "h": "One joint, one log line",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "1f4eab0",
+   "hash": "6b1657b6a8",
+   "block": {
+    "type": "table",
+    "look": "joint-tag",
+    "seam": "plain",
+    "h": "One joint, one log line",
+    "cols": [
+     "Field in the joint log, and what it proves",
+     "What it proves in an audit",
+     "Record"
+    ],
+    "rows": [
+     [
+      "Joint number",
+      "Where this joint is in your plant",
+      "Joint map; number on the pipe"
+     ],
+     [
+      "Material lot of both parts",
+      "That both parts match their material certificates",
+      "Material log; [PP material certificates]"
+     ],
+     [
+      "Welder and qualification",
+      "That the welder was qualified on the day",
+      "[welder qualification standard for thermoplastics] certificate"
+     ],
+     [
+      "Joining parameters",
+      "That the qualified procedure ran with recorded settings",
+      "[what each joint record holds]"
+     ],
+     [
+      "Visual result",
+      "That the joint meets the acceptance criteria",
+      "[joint acceptance criteria]; inspector sign-off"
+     ],
+     [
+      "Test joint reference",
+      "That the set-up was proven before production joints",
+      "Test joint record; [test joint examination method]"
+     ],
+     [
+      "Date and inspector",
+      "Who accepted it, and when",
+      "Signature or electronic sign-off"
+     ],
+     [
+      "Repair or cut-out",
+      "How a rejected joint was replaced and accepted",
+      "New joint number linked to the original"
+     ]
+    ],
+    "nav": "Joint log",
+    "as": "evidence",
+    "fold": 4,
+    "fold_noun": "fields",
+    "anchor": "joint-log",
+    "intro": "The same joint log for every industry, under good manufacturing practice (GMP) or not."
    }
   }
  ]

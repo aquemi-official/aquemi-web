@@ -119,3 +119,17 @@ a.aq-checker-router__go:focus-visible { outline: 2px solid var(--focus); outline
     --x-bg: var(--limestone); --x-fg: var(--on-limestone); --x-mu: var(--on-limestone-muted);
     --y-bg: var(--navy); --y-fg: var(--on-navy); --y-mu: var(--on-navy-muted); }
 }
+
+/* Pass 12 round C, phones under 600 px: what you need joins the situation tile as one 14 px line under it (no band of
+   its own, no rule), and the numeral tile runs down beside both; the 48 px start-with band stays at the foot */
+@container (max-width: 600px) {
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__num { grid-row: 1 / span 2; }
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__sit { justify-content: flex-start; padding-bottom: var(--space-1); }
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__need { grid-column: 2; grid-row: 2; border-top: 0; padding-top: 0; padding-bottom: var(--space-3); }
+  /* a narrower numeral column gives the situation and its need the width to stay on fewer lines */
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__num { min-width: 0; padding: var(--space-3) var(--space-2) var(--space-3) var(--space-3); }
+  .aq-checker-router__n { font-size: 32px; line-height: 36px; }
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__sit { padding-inline: var(--space-3); }
+  .aq-checker-router .aq-checker-router__row .aq-checker-router__tile.aq-checker-router__need { padding-inline: var(--space-3); }
+  .aq-checker-router { gap: var(--space-2); }
+}

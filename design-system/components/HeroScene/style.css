@@ -47,28 +47,28 @@
 a.aq-hero-scene__row .aq-hero-scene__t::after, .aq-hero-scene__more::after { content: "\2192"; display: inline-block; margin-left: 0.4em; color: var(--flow); transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); }
 a.aq-hero-scene__row:is(:hover, :focus-visible) .aq-hero-scene__t { color: var(--flow); }
 a.aq-hero-scene__row:is(:hover, :focus-visible) .aq-hero-scene__t::after, .aq-hero-scene__more:is(:hover, :focus-visible)::after { transform: translateX(var(--space-1)); }
-:is(a.aq-hero-scene__row:is(:hover, :focus-visible), span.aq-hero-scene__row:hover)::before { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
-a.aq-hero-scene__row:focus-visible, .aq-hero-scene__more:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+:is(a.aq-hero-scene__row, span.aq-hero-scene__row):is(:hover, :focus-visible)::before { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+span.aq-hero-scene__row:focus-visible, a.aq-hero-scene__row:focus-visible, .aq-hero-scene__more:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
 .aq-hero-scene__more { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--space-1); font: 500 15px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
 :where(.aq-page) a.aq-hero-scene__more { color: var(--flow); }
 
 /* Row to drawing: the row under the pointer or focus lights its part and its tag (the room's rows are not links: pointer only) */
-.aq-hero-scene:has(li[data-k="1"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) :is(.aq-iso__part[data-iso-id="k1"], .aq-iso__pipe[data-iso-id="k1"]) :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
-.aq-hero-scene:has(li[data-k="2"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k2"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
-.aq-hero-scene:has(li[data-k="3"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k3"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
-.aq-hero-scene:has(li[data-k="4"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k4"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
-.aq-hero-scene:has(li[data-k="5"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k5"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
-.aq-hero-scene:has(li[data-k="6"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k6"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
-.aq-hero-scene:has(li[data-k="7"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k7"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
-.aq-hero-scene:has(li[data-k="8"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k8"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid) { stroke: var(--flow); }
-.aq-hero-scene:has(li[data-k="1"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="1"],
-.aq-hero-scene:has(li[data-k="2"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="2"],
-.aq-hero-scene:has(li[data-k="3"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="3"],
-.aq-hero-scene:has(li[data-k="4"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="4"],
-.aq-hero-scene:has(li[data-k="5"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="5"],
-.aq-hero-scene:has(li[data-k="6"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="6"],
-.aq-hero-scene:has(li[data-k="7"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="7"],
-.aq-hero-scene:has(li[data-k="8"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="8"] { background: var(--flow); color: var(--on-action); }
+.aq-hero-scene:has(li[data-k="1"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) :is(.aq-iso__part[data-iso-id="k1"], .aq-iso__pipe[data-iso-id="k1"]) :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="2"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-iso__part[data-iso-id="k2"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="3"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-iso__part[data-iso-id="k3"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="4"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-iso__part[data-iso-id="k4"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="5"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-iso__part[data-iso-id="k5"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="6"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-iso__part[data-iso-id="k6"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="7"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-iso__part[data-iso-id="k7"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="8"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-iso__part[data-iso-id="k8"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid) { stroke: var(--flow); }
+.aq-hero-scene:has(li[data-k="1"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="1"],
+.aq-hero-scene:has(li[data-k="2"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="2"],
+.aq-hero-scene:has(li[data-k="3"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="3"],
+.aq-hero-scene:has(li[data-k="4"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="4"],
+.aq-hero-scene:has(li[data-k="5"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="5"],
+.aq-hero-scene:has(li[data-k="6"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="6"],
+.aq-hero-scene:has(li[data-k="7"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="7"],
+.aq-hero-scene:has(li[data-k="8"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:is(:hover, :focus-visible))) .aq-hero-scene__tag[data-k="8"] { background: var(--flow); color: var(--on-action); }
 
 /* Per scene: the line-up's four rows in one column (the system index), the room's key beside a narrower drawing */
 .aq-hero-scene--lineup .aq-hero-scene__key ol { --hs-cols: 2; }
@@ -87,5 +87,107 @@ a.aq-hero-scene__row:focus-visible, .aq-hero-scene__more:focus-visible { outline
 }
 @container (max-width: 480px) {
   /* phones: the wide drawings (line-up, ring, fan) run to the screen edges, so the parts are as large as they can be */
-  .aq-hero-scene:is(.aq-hero-scene--lineup, .aq-hero-scene--ring, .aq-hero-scene--fan) .aq-hero-scene__draw { width: calc(100% + 2 * var(--space-4)); margin-inline: calc(-1 * var(--space-4)); }
+  .aq-hero-scene:is(.aq-hero-scene--lineup, .aq-hero-scene--ring, .aq-hero-scene--fan, .aq-hero-scene--bay, .aq-hero-scene--map, .aq-hero-scene--reply) .aq-hero-scene__draw { width: calc(100% + 2 * var(--space-4)); margin-inline: calc(-1 * var(--space-4)); }
+}
+
+/* ---------- Pass 12 round C (c03-heroes): four more scenes and phone fixes ----------
+   shop-bay (about, careers), site-map (contact-locations), reply-flow (contact-proposal), compliance-matrix (compliance).
+   The span key rows (site-room, shop-bay, site-map, reply-flow) take focus (tabindex 0): focus lights the part. */
+span.aq-hero-scene__row { cursor: default; }
+.aq-hero-scene__key--c2 ol { --hs-cols: 2; }
+.aq-hero-scene__key--c3 ol { --hs-cols: 3; column-gap: var(--space-6); }
+.aq-hero-scene .aq-iso .aq-hero-scene__bay { stroke: var(--line-strong); stroke-dasharray: 6 4; }
+.aq-hero-scene .aq-iso .aq-hero-scene__sheet { fill: var(--limestone); stroke: var(--line-strong); }
+.aq-hero-scene .aq-iso .aq-hero-scene__contour { stroke: color-mix(in srgb, var(--line-strong) 70%, var(--limestone)); }
+.aq-hero-scene .aq-iso .aq-hero-scene__ring { stroke: var(--ink-subtle); stroke-dasharray: 5 4; }
+[data-theme="dark"] .aq-hero-scene .aq-iso .aq-hero-scene__sheet { fill: color-mix(in srgb, var(--limestone) 10%, var(--surface)); }
+[data-theme="dark"] .aq-hero-scene .aq-iso .aq-hero-scene__contour { stroke: var(--line-strong); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-hero-scene .aq-iso .aq-hero-scene__sheet { fill: color-mix(in srgb, var(--limestone) 10%, var(--surface)); }
+  :root:not([data-theme="light"]) .aq-hero-scene .aq-iso .aq-hero-scene__contour { stroke: var(--line-strong); }
+}
+.aq-hero-scene--reply .aq-hero-scene__draw { width: min(100%, calc(var(--space-32) * 5)); justify-self: center; }
+.aq-hero-scene--bay .aq-hero-scene__draw, .aq-hero-scene--map .aq-hero-scene__draw { width: min(100%, calc(var(--space-32) * 4 + var(--space-24))); justify-self: center; }
+
+/* compliance-matrix: a ruled sheet on surface-raised (title, five heads, four numbered rows: the clause and proof cells
+   hold their placeholders, one flow tick per row), the small PP package tucked under its lower-right corner */
+.aq-hero-scene--matrix { position: relative; display: block; padding-bottom: calc(var(--space-24) + var(--space-6)); }
+.aq-hero-scene__mx { position: relative; z-index: 1; width: 84%; box-sizing: border-box; padding: var(--space-6); background: var(--surface-raised); border: 1px solid var(--line-strong); color: var(--ink); }
+.aq-hero-scene__mx-h { margin: 0 0 var(--space-4); font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-hero-scene__mx-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(56px, 0.6fr)) minmax(0, 1.4fr); border-top: 1px solid var(--line-strong); }
+.aq-hero-scene__mx-grid > span { display: flex; align-items: center; min-width: 0; min-height: var(--space-12); box-sizing: border-box; padding: var(--space-2) var(--space-2); border-bottom: 1px solid var(--line); font: 400 15px/20px var(--font-sans); }
+.aq-hero-scene__mx-grid > span:nth-child(5n+1) { padding-left: 0; }
+.aq-hero-scene__mx-grid > .aq-hero-scene__mx-th { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); border-bottom-color: var(--line-strong); }
+.aq-hero-scene__mx-th.is-mark, .aq-hero-scene__mx-m { justify-content: center; text-align: center; border-left: 1px solid var(--line); }
+.aq-hero-scene__mx-c { gap: var(--space-3); }
+.aq-hero-scene__mx-c b { flex: none; font: 400 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-hero-scene__mx-d { border-left: 1px solid var(--line); }
+.aq-hero-scene__tick { width: var(--space-6); height: var(--space-6); fill: none; stroke: var(--flow); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.aq-hero-scene__mx-m.is-on { background: color-mix(in srgb, var(--flow-tint) 70%, transparent); }
+.aq-hero-scene__inset { position: absolute; z-index: 2; right: 0; bottom: 0; width: 38%; }
+.aq-hero-scene__inset .aq-hero-scene__draw { width: 100%; }
+/* the Proof head takes its column's rule and inset, so "Differs" and "Proof" read as two heads */
+.aq-hero-scene__mx-grid > .aq-hero-scene__mx-th:nth-child(5) { border-left: 1px solid var(--line); padding-left: var(--space-2); }
+@container (min-width: 861px) {
+  /* desktop: the package sits clear under the sheet's lower right (the 38 % inset is about 36 % of the scene tall), so
+     it never covers row 04's proof chip */
+  .aq-hero-scene--matrix { padding-bottom: calc(36% - var(--space-6)); }
+}
+@container (min-width: 861px) and (max-width: 1160px) {
+  /* narrow desktop: the sheet takes the full column, row numbers drop, tick columns fixed at 48 px with the phone's
+     12 px sans heads (the mono caps "DIFFERS" overran 48 px), so the clause chip stays in its cell and the proof chip on
+     one line */
+  .aq-hero-scene__mx { width: 100%; }
+  .aq-hero-scene__mx-c b { display: none; }
+  .aq-hero-scene__mx-grid { grid-template-columns: minmax(0, 1fr) repeat(3, 48px) minmax(0, 1.3fr); }
+  .aq-hero-scene__mx-grid > .aq-hero-scene__mx-th { font: 500 12px/14px var(--font-sans); letter-spacing: 0; text-transform: none; }
+  .aq-hero-scene__mx-grid > .aq-hero-scene__mx-th.is-mark { padding-inline: 0; }
+  .aq-hero-scene__mx-d .aq-ph { white-space: nowrap; }
+}
+
+/* Phones (round C) */
+@container (max-width: 860px) {
+  /* use-fan (Applications): the five industries are the next block's rows; the hero shows the drawing only */
+  .aq-hero-scene--fan .aq-hero-scene__key { display: none; }
+  .aq-hero-scene--bay .aq-hero-scene__key ol, .aq-hero-scene--map .aq-hero-scene__key ol, .aq-hero-scene--reply .aq-hero-scene__key ol { --hs-cols: 1; }
+  .aq-hero-scene--reply .aq-hero-scene__draw { width: 100%; }
+  /* the matrix at the full gutter; the package as a 112 px inset at the sheet's top right, beside the title (under the
+     corner it would cover the last row's proof). Its compact rows are phone only (600 below). */
+  .aq-hero-scene--matrix { padding: var(--space-12) 0 0; }
+  .aq-hero-scene__mx { width: 100%; }
+  .aq-hero-scene__inset { top: 0; bottom: auto; right: calc(-1 * var(--space-1)); width: calc(var(--space-32) - var(--space-4)); }
+  /* shop-bay: at most 600 px wide in the 481-860 band */
+  .aq-hero-scene--bay .aq-hero-scene__draw { justify-self: center; }
+}
+@container (min-width: 601px) and (max-width: 860px) {
+  /* shop-bay at tablet width: the full-width drawing keeps a 2-column key */
+  .aq-hero-scene--bay .aq-hero-scene__key ol { --hs-cols: 2; }
+}
+@container (max-width: 600px) {
+  /* compliance-matrix on phones: 343 px at 375, 14 px rows on one line each, 36 px tick columns, 12 px sans heads */
+  .aq-hero-scene__mx { padding: var(--space-2) var(--space-2) var(--space-1); }
+  .aq-hero-scene__mx-h { margin: 0 0 var(--space-2); font-size: 17px; line-height: 24px; }
+  .aq-hero-scene__mx-grid { grid-template-columns: auto repeat(3, 36px) minmax(0, 1fr); }
+  .aq-hero-scene__mx-grid > span { min-height: calc(var(--space-8) - var(--space-1) / 2); padding: var(--space-1); font-size: 14px; line-height: 18px; }
+  .aq-hero-scene__mx-grid > .aq-hero-scene__mx-th { font: 500 12px/14px var(--font-sans); letter-spacing: 0; text-transform: none; }
+  .aq-hero-scene__mx-grid > .aq-hero-scene__mx-th.is-mark { padding-inline: 0; }
+  .aq-hero-scene__mx-c { gap: var(--space-1); }
+  .aq-hero-scene__mx-c b { display: none; }
+  .aq-hero-scene__mx-grid > .aq-hero-scene__mx-d { padding-left: var(--space-2); white-space: nowrap; }
+  .aq-hero-scene__tick { width: var(--space-4); height: var(--space-4); }
+  /* service-ring: the drawing seen through a window cut to its stations (--hs-c*: HeroScene.js hsCrop), so the
+     stations draw larger; tags 15 px */
+  .aq-hero-scene__clip { overflow: hidden; }
+  .aq-hero-scene--ring .aq-hero-scene__clip .aq-hero-scene__draw {
+    width: calc(100% / (1 - var(--hs-cl, 0) - var(--hs-cr, 0)));
+    margin: calc(-100% * var(--hs-ct, 0) * var(--hs-ar, 0.6) / (1 - var(--hs-cl, 0) - var(--hs-cr, 0))) 0 calc(-100% * var(--hs-cb, 0) * var(--hs-ar, 0.6) / (1 - var(--hs-cl, 0) - var(--hs-cr, 0))) calc(-100% * var(--hs-cl, 0) / (1 - var(--hs-cl, 0) - var(--hs-cr, 0)));
+  }
+  .aq-hero-scene--ring .aq-hero-scene__tag { min-width: var(--space-8); height: var(--space-6); font-size: 15px; }
+}
+@container (max-width: 480px) {
+  .aq-hero-scene--ring .aq-hero-scene__clip { width: calc(100% + 2 * var(--space-4)); margin-inline: calc(-1 * var(--space-4)); }
+  .aq-hero-scene--ring .aq-hero-scene__clip .aq-hero-scene__draw {
+    width: calc(100% / (1 - var(--hs-cl, 0) - var(--hs-cr, 0)));
+    margin: calc(-100% * var(--hs-ct, 0) * var(--hs-ar, 0.6) / (1 - var(--hs-cl, 0) - var(--hs-cr, 0))) 0 calc(-100% * var(--hs-cb, 0) * var(--hs-ar, 0.6) / (1 - var(--hs-cl, 0) - var(--hs-cr, 0))) calc(-100% * var(--hs-cl, 0) / (1 - var(--hs-cl, 0) - var(--hs-cr, 0)));
+  }
 }

@@ -13,3 +13,5 @@ LoopDock shows a loop's options where they fit on the loop: one isometric storag
 ## Motion
 
 Motion: the loop draws itself with the shared IsoKit choreography (parts back to front, pipes, then the water from the tank through the module and UV out to the points of use and home overhead); each option's marker drops onto its part as the water reaches it, its leader runs down to the caption row and the caption rises. Under 5 s; nothing under reduced motion.
+
+Pass 12 C: desktop captions take a `space-4` foot, so a closing placeholder chip does not sit on the card's bottom edge.

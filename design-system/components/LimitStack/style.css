@@ -109,4 +109,6 @@
   .aq-limit-stack__fig { width: min(92%, 260px); }
   .aq-limit-stack__outlet { transform: translate(-50%, -50%) translateY(5px) skewY(30deg); }
   .aq-limit-stack__q { font-size: 14px; line-height: 21px; }
+  /* pass 12 C: the uppercase parameter labels ("Total organic carbon (TOC)") at 13 px */
+  .aq-limit-stack__p { font-size: 13px; line-height: 18px; }
 }

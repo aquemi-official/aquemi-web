@@ -595,10 +595,12 @@
  ],
  "hero_index": false,
  "figure": {
-  "spots": [
-   "ro-skid",
-   "edi-stack",
-   "storage-tank"
+  "look": "reply-flow",
+  "from": "requests",
+  "keys": [
+   "I have a URS or a draft",
+   "I have an RFQ or a tender",
+   "A written answer from an engineer"
   ]
  }
 }

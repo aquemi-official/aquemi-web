@@ -14,3 +14,5 @@ Look `retrofit-plant` (`assets/src/blocks/look-retrofit-plant.js`) on a `table` 
 - Keyboard: tabs move with the arrow keys, Home and End.
 
 Motion: the whole plant is drawn and the water runs it once at full strength (IsoKit, `keep: true`), then the plant drops to "existing", the sheet moves in on the picked upgrade (0.9 s CSS transition, key-plan window with it) and its stages light; the tabs and the panel rise. Once, under 5 s. Picking another upgrade fades the sheet over and moves the camera (CSS; none under reduced motion).
+
+Round C, phones (S14): the sheet renders `max(662px, 100%)` wide (about 1.2x on the picked module at phone widths; full column width from about 662 px up, so tablets are never letterboxed) and is clipped back to the 220 px strip (`clip-path: inset(22px 0)`); the sheet's zone refs (1-9, A-C) are hidden; the key plan is an outline locator (plant at 45 %, the camera window, no "KEY PLAN" label), moved into the crop. Desktop unchanged.

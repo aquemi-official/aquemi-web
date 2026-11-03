@@ -20,13 +20,28 @@ function relBars(x,y,w,d,r){var s='';for(var i=0;i<r;i++){var yy=y+d*(i+0.5)/r,a
 function relTicks(x,y,w,d,r){var s='';for(var j=0;j<r;j++){var yy=y+d*(j+0.5)/r,xx=x+w*0.88;s+='M'+isoT(isoP(xx-3,yy-1,0.8))+'L'+isoT(isoP(xx-1,yy+1.5,0.8))+'L'+isoT(isoP(xx+3,yy-2.5,0.8))}return '<path class="aq-iso__acc" d="'+s+'"/>'}
 /* a dashed footprint on the floor */
 function relFoot(x,y,w,d){return '<path class="aq-iso__hid" d="M'+isoT(isoP(x,y,0))+'L'+isoT(isoP(x+w,y,0))+'L'+isoT(isoP(x+w,y+d,0))+'L'+isoT(isoP(x,y+d,0))+'Z"/>'}
+/* project-plan (pass 12 C): a ruled schedule board. A header column with a label rule per row, and five rows, each
+   row's bar starting while the one above is under way and ending on a milestone diamond (design, build, FAT, ship,
+   SAT in order, unlabelled); the last bar runs to a small PP skid standing on the board: the package the schedule
+   delivers. */
+function relQuad(x1,y1,x2,y2,z){return 'M'+isoT(isoP(x1,y1,z))+'L'+isoT(isoP(x2,y1,z))+'L'+isoT(isoP(x2,y2,z))+'L'+isoT(isoP(x1,y2,z))+'Z'}
+function relDia(x,y,z,r){return 'M'+isoT(isoP(x-r,y,z))+'L'+isoT(isoP(x,y-r,z))+'L'+isoT(isoP(x+r,y,z))+'L'+isoT(isoP(x,y+r,z))+'Z'}
+function relPlan(){var x=-50,y=-19,w=96,d=34,z=1.8,n=5,rh=d/n,g='',k='',m='',dm='',i,yc,a,b,hx=x+w*0.16,sx=x+w*0.93;
+ g+='M'+isoT(isoP(hx,y,z))+'L'+isoT(isoP(hx,y+d,z));
+ for(i=1;i<n;i++){yc=y+rh*i;g+='M'+isoT(isoP(x,yc,z))+'L'+isoT(isoP(x+w,yc,z))}
+ for(i=0;i<n;i++){yc=y+rh*(i+0.5);a=hx+w*(0.02+i*0.14);b=i<n-1?a+w*0.16:sx-w*0.08;
+  k+='M'+isoT(isoP(x+w*0.03,yc,z))+'L'+isoT(isoP(x+w*(i%2?0.1:0.13),yc,z));
+  m+=relQuad(a,yc-rh*0.2,b,yc+rh*0.2,z);if(i<n-1)dm+=relDia(b+2.4,yc,z,1.7)}
+ yc=y+rh*(n-0.5);
+ return '<path class="aq-iso__eq aq-iso__eq--sheet" d="'+isoBoxD([x,y,0],w,d,z)+'"/><path class="aq-iso__thin" d="'+g+k+'"/>'
+  +'<path class="aq-iso__eq" d="'+m+dm+'"/>'
+  +isoPart('skid',sx-5,yc-3,z,1,{w:10,d:6})+'<path class="aq-iso__eq" d="'+isoBoxD([sx-3.4,yc-1.8,z+3.2],6.8,3.6,5.4)+'"/>'}
 var REL_ISO={
  systems:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('ro',6,6,6,0.9)},[-48,-58,144,141]],
  services:[function(){return isoPart('desk',0,0,0,1.3)},[-40,-80,79,101]],
  'urs-guide':[function(){return isoPart('clipboard',0,0,0,1.6,{ticks:4})},[-40,-25,80,48]],
  'first-system':[function(){return isoPart('wall',-50,-40,0,1,{w:100,h:52})+relFoot(-34,-12,60,44)+isoPart('module',0,10,0,0.8)},[-57,-97,135,126]],
- 'project-plan':[function(){return relSheet(-40,-28,80,56)+relGrid(-40,-28,80,56,1,5)+relBars(-40,-28,80,56,5)
-  +'<path class="aq-iso__hid" d="M'+isoT(isoP(14,-28,0.8))+'L'+isoT(isoP(14,28,0.8))+'"/>'},[-59,-35,118,69]],
+ 'project-plan':[relPlan,[-56,-36,113,67]],
  'cmp-documentation':[function(){return isoPart('binder',0,0,0,1.5)},[-70,-60,116,85]],
  'cmp-quality':[function(){return relSheet(-34,-22,50,40)+relRule(-34,-22,50,40,5)+isoPart('stamp',22,8,0,1.3)},[-45,-29,78,51]],
  compliance:[function(){return relSheet(-38,-26,76,52)+relGrid(-38,-26,76,52,4,6)+relTicks(-38,-26,76,52,6)},[-55,-33,111,65]],

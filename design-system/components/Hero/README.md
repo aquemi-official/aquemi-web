@@ -121,3 +121,18 @@ The hero must fit about 1.5 phone screens including its facts, and the primary b
 ## Flow mist ground
 
 System pages with an equipment drawing (`sys-*`) carry `aq-hero--mist`: one faint `flow-tint` bloom in the top-right corner behind the drawing, over `surface` (the brand book's Gradient grounds). The headline and lead stay on plain ground; text keeps 6.8:1 or better in both themes. No other hero takes a gradient.
+
+## Pass 12 round C (c03-heroes)
+
+- Binder plate: the front sheet shows all six rows wherever it has room; only a phone page (`@media (max-width: 600px)`)
+  cuts it to four (the 860 px container rule matched the figure's own container at 1,280).
+- A KeyFacts strip that closes the hero ends it 32 px sooner (desktop 64 → 32, phone 48 → 16; home keeps its padding);
+  at 600 px and under the strip follows a figure at 16 px.
+- svc-upgrades (desktop): its one fact sits under the actions in the text column (hero 924 → 807 px at 1,280).
+- cmp-quality (desktop): the shipment record about 560 px wide with 16 px rows; buying's card unchanged.
+- Home loop on phones: sensor 2 moved along the loop so pins 1 and 2 keep about 8 px between them.
+- Verify fixes (round C): the 6/6 grid for the shop-bay, site-map and reply-flow scenes is desktop only (861 px and
+  up), so phones keep one column. Binder rows are 13-14 px with 12 px mono numerals; the front sheet's rows share its
+  height (six rows fill the paper at every width); on phones the plate stands at 12:13 and a long row wraps instead of
+  ending in an ellipsis. A KeyFacts strip closing a phone hero ends it at `space-6`.
+

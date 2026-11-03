@@ -4,7 +4,7 @@ Look `review-reticles` (`assets/src/blocks/look-review-reticles.js`) on a `grid`
 
 - Markup: `section.aq-band--limestone.aq-review-reticles-sec[data-theme=light]` > `div.aq-review-reticles[data-names]` > four `__z` zone strips (aria-hidden) + `__sheet` > `ol.__reg` > `li.__item[data-i]` (`__vf.__mini` phone viewfinder, `__no2`, `__code`, `h3.__t` > `button.__pick[aria-pressed]` or `a.__pick`, `p.__d`) and `div.__view[aria-hidden]` (`__vf.__big` > `__win` > `__reel` > `__still` per area; `__tb` title block: Aquemi, the block's nav, the area, its number).
 - Fields: `h`, `nav`, `items [{t, d, spot, part, code, link}]`. `part`: an IsoKit part kind; without it the spot picks one (binder, toc -> analyzer, ro-skid -> ro, storage-tank -> tank, heat-exchanger -> hx, cpu -> panel), else the spot's icon. New optional `code`: a short mono area code (a drawing label, aria-hidden).
-- Tokens: limestone band; sheet frames and zone ticks `navy` at 45 %; row hairlines `on-limestone-muted` at 25 %; names Geist 300 32 px; numbers and codes mono 13/12 px, `flow` on the picked row with a 3 px `flow` rule; brackets 2 px `navy`.
+- Tokens: limestone band; sheet frames and zone ticks `on-limestone` at 45 % (round C verify: so they follow the warm-dark band in dark); row hairlines `on-limestone-muted` at 25 %; names Geist 300 32 px; numbers and codes mono 13/12 px, `flow` on the picked row with a 3 px `flow` rule; brackets 2 px `on-limestone`.
 - Behaviour (renderer, so it works under reduced motion): mouse pointing, focus or click picks a row; the reel slides to its drawing (240 ms cubic-bezier(.2,.85,.25,1), instant for keyboard and reduced motion), the index and title block follow. JS off: the first area is shown.
 - Phones: no zones and no viewer; the register alone, a square viewfinder (2/5) beside each area's name and line.
 
@@ -12,3 +12,5 @@ Motion: the zone strips fade in, register rows rise one by one, the big viewfind
 
 Phones (pass 12, minor): the viewfinder tiles are 96 px square (were about 130 px, two fifths of the row), corner
 brackets 12 px; the area's name and line take the rest of the width. Desktop unchanged.
+
+Round C: phones, viewfinder tiles 72 px, 16 px between areas, and (with no area code) the number left of the name on its line: 1,084 to about 850 px. Desktop (861 px and up): the viewer is centred in its cell above the title block (`margin-block: auto`), not hung from the top.

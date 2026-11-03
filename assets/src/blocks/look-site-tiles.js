@@ -4,19 +4,19 @@
    one isometric part drawn in IsoKit on the navy (the change made visible), the line and the link. The zone numbers
    over the columns are the columns' numbers, so pointing at a column lights its part and its zone, as on a drawing.
    Fields (a grid block): h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp,
-   softener, truck, valve (pass 12: a flanged spool with a diaphragm valve, drawn on the navy like the others, so a
+   softener, truck, valve (pass 12: a plain PP spool, capped ends and no flanges since round C, with a diaphragm valve, drawn on the navy like the others, so a
    valve icon no longer falls back to a navy-on-navy Spot); default from icon (valve -> valve; gauge -> spool: a PP spool with a valve and a pressure gauge for the test;
    stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated
    load, for service and spares), else the item's line icon as a limestone Spot. Phones (pass 12): no inner frame or
    zone bands; each column stacks its drawing (72 px tall) above the number and title, the line and link under them. */
 (function(){
 var ST_FIG={
- spool:function(){return {inner:isoPipe([[0,0,0],[96,0,0]],{r:5,flanges:'ends',caps:true,flow:false})+isoPart('valve',30,0,0,2.4,{id:'fig'})+isoPart('gauge',68,0,5,2.2,{id:'fig'}),
+ spool:function(){return {inner:isoPipe([[0,0,0],[96,0,0]],{r:5,flanges:false,caps:true,flow:false})+isoPart('valve',30,0,0,2.4,{id:'fig'})+isoPart('gauge',68,0,5,2.2,{id:'fig'}),
   pts:[[-6,-10,-10],[102,10,-10],[66,0,42],[0,0,12],[96,0,12]]}},
  stamp:function(){return {inner:isoPart('stamp',0,0,0,3.4,{id:'fig'}),pts:[[-82,0,0],[30,40,0],[0,-20,0],[0,0,72],[-40,30,0]]}},
  softener:function(){return {inner:isoPart('softener',0,0,0,1.5,{id:'fig'}),pts:[[-34,-40,0],[74,-40,0],[-34,16,0],[0,0,96],[60,-30,70]]}},
  truck:function(){return {inner:isoPart('truck',0,0,0,1.05,{id:'fig',load:true}),pts:[[-4,-6,0],[118,-6,0],[-4,36,0],[118,36,0],[60,15,52]]}},
- valve:function(){return {inner:isoPipe([[0,0,0],[84,0,0]],{r:6,flanges:'ends',caps:true,flow:false})+isoPart('valve',42,0,0,3.2,{id:'fig'}),
+ valve:function(){return {inner:isoPipe([[0,0,0],[84,0,0]],{r:6,flanges:false,caps:true,flow:false})+isoPart('valve',42,0,0,3.2,{id:'fig'}),
   pts:[[-6,-12,-12],[90,12,-12],[42,0,52],[0,0,14],[84,0,14]]}}
 };
 var ST_AUTO={gauge:'spool',stamp:'stamp',softener:'softener',wrench:'truck',valve:'valve'};

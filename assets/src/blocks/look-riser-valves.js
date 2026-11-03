@@ -15,6 +15,10 @@ function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):
 /* drawn parts (fixed size, never scaled): a gate valve with a lever, and the elbow that turns branch B up */
 var VALVE='<svg class="aq-riser-valves__valve" viewBox="-12 -17 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path class="aq-riser-valves__vb" d="M-9 -5L9 5V-5L-9 5Z"/><path class="aq-riser-valves__vs" d="M0 0V-9"/><path class="aq-riser-valves__vl" d="M-6 -10H6"/></svg>';
 var ELBOW='<svg class="aq-riser-valves__elb" viewBox="0 0 15 15" width="15" height="15" aria-hidden="true" focusable="false"><path class="aq-riser-valves__ew" d="M0 15A15 15 0 0 0 15 0M0 5A5 5 0 0 0 5 0"/><path class="aq-riser-valves__ef" pathLength="1" d="M0 10A10 10 0 0 0 10 0"/></svg>';
+/* phone legend (pass 12 C, <= 600 px): the two answer columns named once under the intro, each by its glyph (the valve
+   for branch A, a short twin-wall run for branch B); the rows then drop their mono labels and keep the glyph as the
+   bullet of their first line */
+var TEE='<svg class="aq-riser-valves__tee" viewBox="0 0 24 10" width="24" height="10" aria-hidden="true" focusable="false"><path class="aq-riser-valves__tw" d="M0 .75H24M0 9.25H24"/><path class="aq-riser-valves__tf" d="M0 5H24"/></svg>';
 LOOKS['riser-valves']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false,n=R.length;
  function cell(c,k){return '<div class="aq-riser-valves__cell" data-zone="'+k+'">'
   +(k===1?'<span class="aq-riser-valves__br aq-riser-valves__br--a" aria-hidden="true"><i class="aq-riser-valves__w"></i>'+VALVE+'</span>'
@@ -28,5 +32,6 @@ LOOKS['riser-valves']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false,n=R
    +'<h3 class="aq-riser-valves__t">'+(sev?'<span class="aq-riser-valves__sev">Severity '+sev+'<span class="aq-riser-valves__sr">: </span></span><span class="aq-riser-valves__what">'+tx(cap(m[2]))+'</span>':tcell(r[0]))+'</h3></div>'
    +cell(r[1],1)+cell(r[2],2)+'</li>'}).join('');
  var head='<p class="aq-riser-valves__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span><span>'+tx(C[2]||'')+'</span></p>';
- return sec(H+'<div class="aq-riser-valves">'+head+'<ol class="aq-riser-valves__rows">'+rows+'</ol></div>','aq-band--navy aq-riser-valves-sec')};
+ var leg='<p class="aq-riser-valves__legend" aria-hidden="true"><span class="aq-riser-valves__lg">'+VALVE+'<span>'+tx(C[1]||'')+'</span></span><span class="aq-riser-valves__lg">'+TEE+'<span>'+tx(C[2]||'')+'</span></span></p>';
+ return sec(H+'<div class="aq-riser-valves">'+leg+head+'<ol class="aq-riser-valves__rows">'+rows+'</ol></div>','aq-band--navy aq-riser-valves-sec')};
 })();

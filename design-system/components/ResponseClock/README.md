@@ -12,3 +12,5 @@ Motion: the case draws, the ticks turn in, then the hand sweeps once from twelve
 Phones (pass 12): a step with a link is a single tap target, the whole row (a stretched `::before` on the step name's
 link; the row is the positioning box), so "Remote diagnosis" and "On site" are about 120 px tall targets instead of
 26 px; focus draws the ring round the row. Desktop unchanged.
+
+Round C: the stretched `::before` (`.aq-response-clock__go::before`, so an inline link in a line never adds a second overlay; `inset: 0`, the step `position: relative`) applies at every width, so the whole row is the target on desktop too; the arrow stays `::after`. No visual change.

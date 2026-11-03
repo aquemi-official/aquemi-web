@@ -337,7 +337,7 @@
    "anchor": "engineering",
    "look": "skid-tags",
    "parts": [
-    "",
+    "vessel",
     "panel",
     "deadleg",
     "wall",
@@ -494,11 +494,24 @@
   "Pass 12 (SITE-PLAN compliance; IB §4; RI 04, 15; NS critic A; FD-59, FD-60): pharmacopoeia table retitled 'Pharmacopoeias and other water standards' and given the hospital and laboratory rows (ST108:2023; ASTM D1193-24 and CLSI GP40 5th edition), two rows, gated by [hospital water scope] and [lab water scope], both linking ind-hospital-lab#grades, the hospital row keeping 'your program shows compliance' (pass 12 review finding 1) (never Purified Water, never bare 'Type 2'); limits intro says your quality unit releases the water (RI 04, 15) and the note names the edition basis; GMP devices row proof drops the readiness date; FAQ block gets anchor 'faq'. Hospital and lab scope stays on ind-hospital-lab ([hospital water scope], [lab water scope]); the CLSI GP40 edition and the ASTM D1193-24 types follow industries/pw-quality-and-limits.md §3 and need the same quality review as the other rows"
  ],
  "figure": {
-  "spots": [
-   "pretreatment",
-   "ro-skid",
-   "storage-tank"
+  "look": "compliance-matrix",
+  "title": "Compliance matrix",
+  "cols": [
+   "Your clause",
+   "Meets",
+   "With a note",
+   "Differs",
+   "Proof"
   ],
-  "label": "Pretreatment · generation · storage"
+  "cells": [
+   "[clause]",
+   "[document code]"
+  ],
+  "ticks": [
+   1,
+   1,
+   2,
+   1
+  ]
  }
 }

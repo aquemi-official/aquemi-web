@@ -12,3 +12,4 @@ TieInRun tells ordered steps on one sticky drawing of a qualified loop gaining a
 ## Motion
 
 The page's one scroll-linked story (scrubbed, never pinned). Ported from Subframe Motion "Scroll-driven image reveal" (scroll-window): one scroll progress (the steps list passing 60 % of the viewport) fanned into staggered stage phases, phase = smoothstep((p − i/n) · n · 1.24); the step on the reading line and its marker take the flow colour, the others quiet to 0.55. Nothing under reduced motion.
+- Phone strip (to 600 px; pass 12 C): the step tags are solid `surface` boxes with 12 px numbers; a stage not drawn yet steps back by its ink and border, not by transparency, so the pipes never show through.

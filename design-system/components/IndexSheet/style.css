@@ -34,7 +34,7 @@
 
 /* the folded leaf: a crease down its hinge edge, its back a blank face of the same paper (seen only while it unfolds) */
 .aq-index-sheet__wing { position: relative; transform-style: preserve-3d; transform-origin: 0 50%; padding-left: var(--space-8); border-left: 1px dashed var(--line-strong); }
-.aq-index-sheet__face { position: sticky; top: calc(var(--space-24) + var(--space-4)); backface-visibility: hidden; }
+.aq-index-sheet__face { position: sticky; top: var(--space-24); backface-visibility: hidden; }
 .aq-index-sheet__back {
   position: absolute; inset: 0; background: color-mix(in srgb, var(--limestone) 90%, var(--on-limestone)); border: 1px solid var(--line-strong);
   transform: rotateY(180deg); backface-visibility: hidden; pointer-events: none;
@@ -47,6 +47,25 @@
 .aq-fold:has(> .aq-index-sheet__grid) > .aq-fold__btn { display: none; }
 
 @media (prefers-reduced-motion: reduce) { .aq-index-sheet__n { transition: none; } }
+
+/* round C, wide desktop (over 1100 px): the folded leaf stands beside the title and intro (top right, where the sheet
+   was empty), and the index runs the sheet's full width three across: about 1,300 px tall at 1280, from 1,800. The
+   leaf's drawing stays sticky where it is a column (1100 px and under it is stacked above the index anyway). */
+@container (min-width: 1101px) {
+  .aq-index-sheet__sheet { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 17rem); column-gap: var(--space-8); align-items: start; }
+  .aq-index-sheet__sheet > .aq-sec-head { grid-column: 1; grid-row: 1; }
+  .aq-index-sheet__main { display: contents; }
+  .aq-index-sheet__wing { grid-column: 2; grid-row: 1; align-self: stretch; display: flex; align-items: center; padding-left: var(--space-8); }
+  .aq-index-sheet__face { position: relative; top: auto; width: 100%; }
+  .aq-index-sheet__index { grid-column: 1 / -1; grid-row: 2; margin-top: var(--space-12); }
+  .aq-index-sheet__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aq-index-sheet__cell, .aq-index-sheet__cell:nth-child(even) { padding: var(--space-4) var(--space-6) var(--space-6); border-left: 1px solid var(--line-strong); }
+  .aq-index-sheet__cell:nth-child(3n+1) { padding-left: 0; border-left: 0; }
+  .aq-index-sheet__cell:nth-child(3n) { padding-right: 0; }
+  /* a last section alone on its row runs the full width (two columns of text, no empty two-thirds row) */
+  .aq-index-sheet__cell:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+  .aq-index-sheet__cell:last-child:nth-child(3n+1) .aq-index-sheet__d { max-width: 64ch; }
+}
 
 @container (max-width: 1100px) {
   .aq-index-sheet__sheet .aq-sec-head .aq-h1 { font-size: 64px; line-height: 68px; }

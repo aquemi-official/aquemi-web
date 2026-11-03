@@ -13,3 +13,4 @@ Colophon sets a spec block of company facts as a split ledger: a navy band with 
 ## Motion
 
 Motion: while the title lands (core word reveal) the strip waits off the page edge; then the divider sweeps in to its place (1.1 s power3.inOut) and the title's letters on the strip turn navy as it passes: one divider position drives both the strip and the copy's clip, the mechanism of Subframe Motion image-comparison (`inset(0 (100 - position)% 0 0)`). Then the rows follow: number and item, the fact wiping in, the evidence. Once, under 3 s. Opening the fold grows each new row from no height (ported from expandable-ledger: 210 ms cubic-bezier(.2,.8,.2,1), 30 ms apart; a keyboard press opens instantly). Nothing under reduced motion.
+- Desktop (pass 12 C): a WHERE cell that opens with its link takes a 4 px top pad (not the full one), so the link's text sits within about 2 px of the answer's first line.

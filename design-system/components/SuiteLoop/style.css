@@ -107,3 +107,25 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
   .aq-suite-loop__dot:focus-visible { outline: 2px solid var(--focus); outline-offset: -6px; }
 }
 @media (prefers-reduced-motion: reduce) { .aq-suite-loop__dot::before { transition: none; } }
+
+/* Pass 12 round C: the door swing moves off the way-out link's line. Desktop: a 24 px swing in the right corner of the
+   lower wall, inside the link cell's 24 px foot, so the link keeps the cell's full width (no extra wraps) and the
+   foot shrinks from 32 px. Snap-row layouts (860 px and under, phones and tablets): no door (it crossed the link's first characters). */
+@container (min-width: 861px) {
+  .aq-suite-loop__door, .aq-suite-loop.is-dense .aq-suite-loop__door { left: auto; right: var(--space-3); width: var(--space-6); height: var(--space-6); border-right: 0;
+    border-left: 1.5px solid var(--wall, currentColor); border-top-right-radius: 0; border-top-left-radius: 100%; }
+  .aq-suite-loop__door::after { left: -1.5px; right: 0; }
+  .aq-suite-loop__go, .aq-suite-loop.is-dense .aq-suite-loop__go { min-height: 0; padding: var(--space-4) var(--space-2) var(--space-6) var(--space-4); }
+}
+@container (max-width: 860px) {
+  .aq-suite-loop__door { display: none; }
+  .aq-suite-loop__go { padding-left: var(--space-4); }
+}
+
+/* Dark (RC1 stone band): the rooms take the band's raised stone, not a wash of on-navy, so the ink stays AA */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-suite-loop__suite { background: var(--surface-raised); }
+  :root:not([data-theme="light"]) .aq-suite-loop__suite:is(:hover, :focus-within) { background: color-mix(in srgb, var(--flow) 14%, var(--surface-raised)); }
+}
+:root[data-theme="dark"] .aq-suite-loop__suite { background: var(--surface-raised); }
+:root[data-theme="dark"] .aq-suite-loop__suite:is(:hover, :focus-within) { background: color-mix(in srgb, var(--flow) 14%, var(--surface-raised)); }

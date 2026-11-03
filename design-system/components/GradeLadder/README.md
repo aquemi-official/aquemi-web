@@ -9,3 +9,4 @@ GradeLadder reads a grade table beside one sticky instrument: the row's number s
 ## Motion
 
 Entrance once: ticks run up the scale, labels set in, fill and minimum line rise to the first row's grade, rows rise. Then the page's one scroll-linked story: the row on the reading line (45 % of the viewport; phones just under the band) is shown stepwise; the fader glides 380 ms (.22, 1, .36, 1) and the number ticks in (8 px, 220 ms). Ports of Subframe scroll-turntable (stepwise indexed view in a sticky panel) and elastic-fader (oversized level number, fill scaled from its foot; its overshoot and stretch dropped). Reduced motion: no scroll story; the row in hand still shows, instantly.
+- Phones (pass 12 C): the not-supplied lane's note ("We do not supply WFI") is 13 px.

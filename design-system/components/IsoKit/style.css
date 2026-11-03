@@ -14,6 +14,9 @@
 .aq-iso__acc, .aq-iso__trace { fill: none; stroke-width: 1.5; }
 .aq-iso__needle { stroke-width: 1.5; }
 .aq-iso__flange { stroke-width: 1.25; }
+/* PP joints (isoPipe flanges): a socket-fusion collar over a pipe end, a fusion bead ring after a bend */
+.aq-iso__collar { stroke-width: 1.25; }
+.aq-iso__bead { stroke-width: 1; }
 
 /* Pipes: twin wall over a ground-coloured body, or one centre line; water rides on top */
 .aq-iso__pipe-body { stroke: none; }

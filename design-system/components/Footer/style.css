@@ -1,7 +1,8 @@
 /* ---------- Footer: the site map on navy ---------- */
 /* The brand footer as the site first drew it, with its spacing: navy in both themes; the Limestone logo at 160 px with one line of
    description and the contact line, then four sitemap columns in one row, headed in the eyebrow style in Limestone; the legal
-   line under a faint Limestone hairline. Phones: the head and the columns two by two. */
+   line under a faint Limestone hairline. Tablets: the head and the columns two by two; phones (600 px and under): the
+   columns as disclosures (below). */
 .aq-footer { background: var(--navy); color: var(--on-navy-muted); padding-block: var(--space-16) var(--space-8); }
 .aq-footer__cols { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr)); gap: var(--space-8); }
 .aq-footer__head { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
@@ -9,7 +10,14 @@
 .aq-footer__desc { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-navy-muted); }
 .aq-footer__col { min-width: 0; }
 .aq-footer .aq-footer__colhead { margin: 0 0 var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--limestone); }
-.aq-footer a { display: block; color: var(--on-navy-muted); text-decoration: none; font: 400 14px/28px var(--font-sans); }
+/* Links: 14/20 with 4 px above and below (pass 12 C, G-C1): single-line items keep the 28 px pitch, and a link that wraps
+   sets its two lines 20 px apart, closer than the gap to the next link, so it reads as one item. The 4 px is padding,
+   not margin (round C verify F3), so each link's hit box is the full 28 px on a touch tablet. The column name is a
+   plain heading here; its phone toggle is hidden. */
+.aq-footer__links { display: flex; flex-direction: column; align-items: flex-start; }
+.aq-footer a { display: block; color: var(--on-navy-muted); text-decoration: none; font: 400 14px/20px var(--font-sans); }
+.aq-footer .aq-footer__links a { margin-block: 0; padding-block: var(--space-1); }
+.aq-footer__toggle { display: none; }
 .aq-footer a:hover { color: var(--on-navy); text-decoration: underline; text-underline-offset: 4px; }
 .aq-footer a:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
 
@@ -27,6 +35,39 @@
   font: 400 13px/20px var(--font-sans); color: var(--on-navy-muted);
 }
 
+/* Desktop (round C verify F1): BackToTop shows idle at the page end, 127 x 44 at 32 px from the right and bottom, which
+   is on the legal line. The line keeps 160 px clear at its right end (the button, its inset and a gap), so the
+   Privacy · Terms · Accessibility links sit left of it. No height change. */
+@container (min-width: 861px) {
+  .aq-footer__legal { padding-right: calc(var(--space-32) + var(--space-8)); }
+}
+
 @container (max-width: 860px) {
   .aq-footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* 56 px under the legal line (pass 12 S1): the fixed back-to-top square (16 px inset, 44 px) never covers it */
+  .aq-footer { padding-bottom: calc(56px + var(--space-4) + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Phones, 600 px and under (pass 12 C, G-C1/F1): the brand block full width, then the four columns as disclosures, one
+   under the other. Each head is a 48 px button in the column-head style with the PhoneKit chevron (aria-expanded,
+   Footer.js); Company opens first. An open column shows its links two to a row, each a 44 px target (flex, 20 px line
+   height, so a wrapped label stays one item). The legal links are 44 px too. About 800 px in all, from 1,361. */
+@container (max-width: 600px) {
+  .aq-footer { padding-top: calc(var(--space-8) + var(--space-2)); }
+  .aq-footer__cols { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .aq-footer__cols > :first-child { grid-column: 1 / -1; gap: var(--space-3); padding-bottom: var(--space-4); }
+  .aq-footer__col { border-top: 1px solid color-mix(in srgb, var(--limestone) 18%, transparent); }
+  .aq-footer .aq-footer__colhead { margin: 0; }
+  .aq-footer__colname { display: none; }
+  .aq-footer__toggle {
+    display: flex; align-items: center; width: 100%; min-height: 48px; margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
+    font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-align: left;
+  }
+  .aq-footer__toggle:focus-visible { outline: 2px solid var(--limestone); outline-offset: -2px; }
+  .aq-footer__toggle .aq-phone-kit__chev { margin-right: calc(-1 * var(--space-3)); }
+  .aq-footer__links { display: none; }
+  .aq-footer__col.is-open .aq-footer__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); }
+  .aq-footer .aq-footer__links a { display: flex; align-items: center; min-height: var(--aq-hit); margin: 0; padding-block: 0; line-height: 20px; }
+  .aq-footer__legal { margin-top: 0; padding-top: var(--space-3); gap: 0 var(--space-4); }
+  .aq-footer .aq-footer__legal a { display: inline-flex; align-items: center; min-height: var(--aq-hit); }
 }

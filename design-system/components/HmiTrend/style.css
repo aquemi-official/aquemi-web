@@ -75,7 +75,9 @@
   .aq-hmi-trend__plot { height: calc(var(--space-32) * 1.5); margin: var(--space-12) var(--space-4) var(--space-8); }
   .aq-hmi-trend__ll { left: auto; right: 0; transform: translateY(calc(-100% - var(--space-1))); padding: 0; background: var(--surface); }
   .aq-hmi-trend__flag { transform: translate(-60%, calc(-100% - var(--space-1))); }
-  .aq-hmi-trend__table thead { display: none; }
+  /* visually hidden, still in the accessibility tree: the cells keep their column names for screen readers (the __k
+     labels stay aria-hidden, so nothing is read twice) */
+  .aq-hmi-trend__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .aq-hmi-trend__table, .aq-hmi-trend__table tbody, .aq-hmi-trend__table tr, .aq-hmi-trend__table th, .aq-hmi-trend__table td { display: block; width: auto; }
   .aq-hmi-trend__row { padding: var(--space-4); border-bottom: 1px solid var(--line); }
   .aq-hmi-trend__table tbody th, .aq-hmi-trend__table td { padding: 0; border: 0; white-space: normal; width: auto; }
@@ -84,6 +86,9 @@
 }
 @container (max-width: 860px) {
   .aq-hmi-trend__table td:last-child, .aq-hmi-trend__table tbody th { width: auto; }
+  /* pass 12 C: the field labels ("How it is set", "What the system does") show on the first card only; cards 2-4 keep
+     them visually hidden (still in the markup) */
+  .aq-hmi-trend__row ~ .aq-hmi-trend__row .aq-hmi-trend__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
 .aq-hmi-trend-sec { position: relative; }
 .aq-hmi-trend__run { pointer-events: none; }

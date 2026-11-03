@@ -16,13 +16,19 @@ function nn(i){return (i<9?'0':'')+(i+1)}
 /* port i: even on the left, odd on the right; rows spread over the body's height */
 function port(i,n){var m=Math.ceil(n/2),k=Math.floor(i/2),s=i%2?1:-1,y=m>1?-46+92*k/(m-1):0;return {s:s,y:y,x:s*f1(Math.sqrt(100*100-y*y))}}
 function ang(i,n){var p=port(i,n);return f1(Math.atan2(p.y,p.s*100)*180/Math.PI)}
+/* PP true-union end (pass 12 C, was a bolted flange plate): two 3 px rings (the union's tail and its collar) either side
+   of the hex nut, drawn side-on (three flats); h: along a horizontal port ending at x1 (s its side), v: on the riser */
+function unionH(x1,y,s){var r=function(a,b,hh){return 'M'+f1(a)+' '+f1(y-hh)+'H'+f1(b)+'V'+f1(y+hh)+'H'+f1(a)+'Z'};
+ return '<path class="'+K+'__union" d="'+r(x1-s*13,x1-s*10,15)+r(x1,x1+s*3,15)+'"/><path class="'+K+'__union" d="'+r(x1-s*10,x1,18)+'M'+f1(x1-s*10)+' '+f1(y-6)+'H'+f1(x1)+'M'+f1(x1-s*10)+' '+f1(y+6)+'H'+f1(x1)+'"/>'}
+function unionV(y0,y1,d){var r=function(a,b,ww){return 'M'+(-ww)+' '+f1(a)+'H'+ww+'V'+f1(b)+'H'+(-ww)+'Z'};
+ return '<path class="'+K+'__union" d="'+r(y0-d*3,y0,31)+r(y1,y1+d*3,31)+'"/><path class="'+K+'__union" d="'+r(Math.min(y0,y1),Math.max(y0,y1),36)+'M-12 '+f1(y0)+'V'+f1(y1)+'M12 '+f1(y0)+'V'+f1(y1)+'"/>'}
 function valve(n){var o='',i;
- /* bonnet and foot: the valve stands on its supply riser */
- o+='<path class="'+K+'__foot" d="M-26 96V134H26V96"/><path class="'+K+'__flange" d="M-40 134H40V146H-40Z"/>'
-  +'<path class="'+K+'__bonnet" d="M-30 -96V-124H30V-96"/><path class="'+K+'__flange" d="M-40 -136H40V-124H-40Z"/>';
+ /* bonnet and foot: the valve stands on its supply riser, each joined by a true union */
+ o+='<path class="'+K+'__foot" d="M-26 96V134H26V96"/>'+unionV(134,146,-1)
+  +'<path class="'+K+'__bonnet" d="M-30 -96V-124H30V-96"/>'+unionV(-124,-136,1);
  for(i=0;i<n;i++){var p=port(i,n),x0=p.x-p.s*6,x1=p.s*150,on=i?'':' is-on';
   o+='<path class="'+K+'__boss" d="M'+x0+' '+f1(p.y-13)+'H'+x1+'V'+f1(p.y+13)+'H'+x0+'Z"/>'
-   +'<path class="'+K+'__flange" d="M'+f1(x1-p.s*10)+' '+f1(p.y-19)+'H'+x1+'V'+f1(p.y+19)+'H'+f1(x1-p.s*10)+'Z"/>'
+   +unionH(x1,p.y,p.s)
    +'<text class="'+K+'__pn'+on+'" data-i="'+i+'" x="'+f1((p.x+x1)/2-p.s*4)+'" y="'+f1(p.y<0?p.y-22:p.y+34)+'">'+nn(i)+'</text>'}
  o+='<circle class="'+K+'__body" cx="0" cy="0" r="100"/><circle class="'+K+'__ring" cx="0" cy="0" r="80"/>';
  for(i=0;i<n;i++){var a=ang(i,n)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
@@ -48,7 +54,7 @@ LOOKS['multiport-router']=function(b,H){
 function pick(w,i){if(!w)return;var n=w.querySelectorAll('.'+K+'__route').length;
  [].forEach.call(w.querySelectorAll('[data-i]'),function(x){var on=+x.getAttribute('data-i')===i;x.classList.toggle('is-on',on);if(x.tagName==='BUTTON')x.setAttribute('aria-pressed',on?'true':'false')});
  var lv=w.querySelector('.'+K+'__lever');if(lv)lv.style.setProperty('--a',ang(i,n)+'deg')}
-/* the pipes: from each port's flange, out level, one rounded jog, level again into the card's inner edge at its
+/* the pipes: from each port's union, out level, one rounded jog, level again into the card's inner edge at its
    title line; drawn in the block's own pixels, redrawn on resize */
 function layout(w){var sv=w.querySelector('.'+K+'__pipes'),vs=w.querySelector('.'+K+'__valve');if(!sv||!vs||!sv.getClientRects().length)return;
  var wb=w.getBoundingClientRect(),vr=vs.getBoundingClientRect();if(!vr.width)return;

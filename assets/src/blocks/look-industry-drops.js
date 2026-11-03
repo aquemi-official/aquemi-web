@@ -29,11 +29,9 @@ function idScene(link){var k=String(link||'').split('#')[0],b,g=[],tap,pts,pipe=
   b.line([-29,-12,30],[-29,-12,26],ISO_K.th).line([-32,15,24],[32,15,24],ISO_K.th);
   b.box(-12,-6,24,24,12,14,ISO_K.th);b.line([-12,0,38],[0,0,46],ISO_K.th).line([0,0,46],[12,0,38],ISO_K.th);g.push(b.done('bath',{}));
   tap=[20,-4,70];pipe([tap,[20,-4,34]]);pts=[[-34,-17,0],[34,17,0],[-34,17,0],[34,-17,30],tap]}
- else if(k==='ind-hospital-lab'){/* washer-disinfector: cabinet, vertical glass door with rack shelves, control strip */
-  b=isoB(0,0,0,1);b.box(-20,-17,0,40,34,58);b.line([-20,17,4],[20,17,4],ISO_K.th);
-  b.rect('y',-15,8,15,47,17,ISO_K.glass);b.line([-13,17,20],[13,17,20],ISO_K.th).line([-13,17,33],[13,17,33],ISO_K.th);
-  b.rect('y',-18,50,18,55,17,ISO_K.th);b.rect('y',6,51,14,54,17,ISO_K.alt);b.line([11,17,24],[11,17,32],ISO_K.ln);g.push(b.done('washer',{}));
-  tap=[-6,-6,84];pipe([tap,[-6,-6,58]]);pts=[[-20,-17,0],[20,17,0],[-20,17,0],[20,-17,58],tap]}
+ else if(k==='ind-hospital-lab'){/* washer-disinfector: the kit's washer part (cabinet, door with rack, PW inlet) */
+  var wa=isoPart('washer',0,0,0,1,{w:40,d:34,h:58,inlet:[-6,-6]});g.push(wa);
+  tap=[-6,-6,84];pipe([tap,wa.ports.in]);pts=[[-20,-17,0],[20,17,0],[-20,17,0],[20,-17,58],tap]}
  else if(k==='ind-personal-care'){/* cream kettle on three legs, mixer motor on a bridge */
   b=isoB(0,0,0,1);b.leg(-12,-10,0,22).leg(12,-10,0,22).leg(0,14,0,22).vessel(0,0,20,18,26,6,9).band(0,0,33,'z',18);
   b.noz(0,16,8,'y',4,2).bx(0,0,51,30,8,3).cyl(0,0,54,'z',14,6).cyl(0,0,68,'z',3,3.6);g.push(b.done('kettle',{}));

@@ -6,6 +6,7 @@
 AQmotion.fx('DocHotspots', function (root, m) {
   root.querySelectorAll('.aq-doc-hotspots').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
+    if (window.AQdocHotspots) window.AQdocHotspots.layout(el); // the leaders in the stage's real pixels before DrawSVG measures them
     var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) }, D = window.DrawSVGPlugin;
     var art = el.querySelector('.aq-doc-hotspots__art'), cards = qa('.aq-doc-hotspots__card'), wide = getComputedStyle(el.querySelector('.aq-doc-hotspots__leads') || el).display !== 'none' && !!el.querySelector('.aq-doc-hotspots__leads');
     var sec = el.closest('.aq-section'), more = sec && sec.querySelector('.aq-doc-hotspots__more');

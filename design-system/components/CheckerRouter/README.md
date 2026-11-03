@@ -10,3 +10,4 @@ CheckerRouter sets a router table (situation, what you need, start with) as a Sw
 ## Motion
 
 The empty grid is there first; the tiles blink on in scattered order (steps, no fade), then each row's words rise 10 px into their tiles, top row first. Once on scroll-in, under 2 s. Port of Subframe mosaic-reveal (tiles switching with steps(1, end) after scattered delays); the hover mosaic is the same mechanism in CSS. Nothing under reduced motion.
+- Phones under 600 px (pass 12 C): what you need is a 14 px line under the situation in the same tile (no band or rule of its own); the numeral column (32 px figures) runs down beside both; the 48 px start-with band stays.

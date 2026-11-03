@@ -34,7 +34,7 @@ AQmotion.fx('WasherTrace', function (root, m) {
     tl.fromTo(read, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power2.inOut', clearProps: 'clipPath' }, 0);
     tl.call(function () { show(0); marks.forEach(function (mk) { mk.classList.remove('is-on') }) }, null, 0.01);
     tl.fromTo(read, { '--reach': 0 }, { '--reach': 1, duration: te - tf - 0.1, ease: 'none' }, tf);
-    if (window.DrawSVGPlugin) tl.fromTo(el.querySelectorAll('.aq-washer-trace__lead path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, stagger: 0.12, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 'pipes');
+    if (window.DrawSVGPlugin) tl.fromTo(el.querySelectorAll('.aq-washer-trace__lead path'), { drawSVG: '0%', strokeLinecap: 'butt' }, { drawSVG: '100%', duration: 0.6, stagger: 0.12, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset,strokeLinecap' }, 'pipes');
     tl.from(pts, { autoAlpha: 0, y: 12, duration: 0.5, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 'pipes+=0.3');
     m.on(el, function () { tl.play() }, 'top 70%');
 
@@ -53,7 +53,7 @@ AQmotion.fx('WasherTrace', function (root, m) {
       var st = { r: 1 }, seek = null;
       function apply() {
         var R = st.r * tot;
-        flows.forEach(function (f, i) { var p = Math.max(0, Math.min(1, (R - C[i]) / L[i])); gsap.set(f, { drawSVG: '0% ' + (p * 100).toFixed(2) + '%' }) });
+        flows.forEach(function (f, i) { var p = Math.max(0, Math.min(1, (R - C[i]) / L[i])); gsap.set(f, { drawSVG: '0% ' + (p * 100).toFixed(2) + '%' }); f.style.strokeLinecap = p * L[i] > 0.5 ? '' : 'butt' });
         read.style.setProperty('--reach', st.r.toFixed(4));
         var k = -1; stops.forEach(function (s, i) { if (st.r >= s - 0.002) k = i });
         IDS.slice(0, n).forEach(function (id, i) { AQiso.light(svg, id, i <= k) });
@@ -64,7 +64,7 @@ AQmotion.fx('WasherTrace', function (root, m) {
         if (seek) seek.kill();
         focus(hold ? k : -1);
         seek = m.tw(gsap.to(st, { r: to, duration: d < 0.01 ? 0.01 : 0.5 + 0.4 * Math.min(1, d), ease: 'power2.inOut', onUpdate: apply,
-          onComplete: function () { if (st.r >= 1) flows.forEach(function (f) { f.style.removeProperty('stroke-dasharray'); f.style.removeProperty('stroke-dashoffset') }) } }));
+          onComplete: function () { if (st.r >= 1) flows.forEach(function (f) { f.style.removeProperty('stroke-dasharray'); f.style.removeProperty('stroke-dashoffset'); f.style.removeProperty('stroke-linecap') }) } }));
       }
       pts.forEach(function (p, i) {
         var b = p.querySelector('.aq-washer-trace__go');

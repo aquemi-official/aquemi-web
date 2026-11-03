@@ -11,3 +11,9 @@ RoleLoop sets a table of roles as the bays of one twin-wall pipe loop on the nav
 ## Motion
 
 Motion: the twin wall draws round the cards, then the water runs the loop at one steady rate (ported from Subframe Motion "Score follow", score-follow: the linear playhead at a set tempo, the note under it turning the accent); as it passes a role's branch that bay lights for a beat, the branch shows (water to the valve, through it only when the copy says open) and the card prints in. Once, under 4.5 s. Pointing at a role lights its bay and fills it from end to end in 0.4 s; it fades a third faster. Nothing under reduced motion.
+
+## Pass 12 round C (phones)
+
+With PhoneKit on, each head is the role and its status only; base and pay read in the open body with the other fields
+(the head copies and their legend stay in the markup, hidden). Title placeholders are 20 px mono. careers.0 at 375:
+1,629 → 910 px.

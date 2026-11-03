@@ -22,3 +22,7 @@ Polish (pass 9): desktop sets the blocks two to a row (an odd last block runs th
 Phones (pass 12): the field labels ("Written or done by", "Reviewed by") and the key boxes go from 12 to 13 px with
 0.1em tracking below 860 px; the stamps, the fold (5 of 8 documents, none referenced by a drawing) and desktop are
 unchanged.
+
+Pass 12 round C (svc-cq.1): the look is paper: the section is `data-theme="light"` with `data-paper` (dimmed in the dark theme), limestone ground, on-limestone ink, cards on surface-raised; party rules stamped in navy ink (single, double, dashed), the reviewer's signature in flow ink; key kept. At 600 px and under: labels 12 px at 0.04em on one line, the doer's empty x rule hidden, index beside the name, cards 16 px. Desktop changed on purpose (navy after navy on svc-cq).
+
+Pass 12 round C fix round: per RC1 the section is a full-width `aq-band--limestone` band (warm stone in the dark theme) and each block `li.__b` carries `data-theme="light" data-paper`, so the blocks are the paper objects (dimmed in dark) instead of the whole section; the key stamps sit on the band and switch to `--on-limestone` ink in dark (light mode unchanged, navy). Tablets (601-860 px) set the blocks two to a row again (an odd last block full width); one column stays at 600 px and under.

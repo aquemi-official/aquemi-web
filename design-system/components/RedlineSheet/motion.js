@@ -29,8 +29,11 @@ AQmotion.fx('RedlineSheet', function (root, m) {
       if (D) tl.fromTo(els, { drawSVG: '0%' }, { drawSVG: '100%', duration: dur, ease: 'power2.inOut', stagger: 0.03, clearProps: 'strokeDasharray,strokeDashoffset' }, at);
       else tl.from(els, { autoAlpha: 0, duration: dur, clearProps: 'opacity,visibility' }, at);
     };
+    /* pass 12 round C: on phones (PhoneKit on, no tour) the first card is in view as the sheet enters, so the markups
+       start as the sheet unrolls instead of after the band's tour slot */
+    var ph = el.hasAttribute('data-pk-on');
     qa('.aq-redline-sheet__item').forEach(function (it, i) {
-      var at = 0.7 + T0 + i * 0.75, svg = it.querySelector('svg');
+      var at = ph ? 0.2 + i * 0.6 : 0.7 + T0 + i * 0.75, svg = it.querySelector('svg');
       var head = it.querySelector('.aq-redline-sheet__head'), rev = it.querySelector('.aq-redline-sheet__rev'), err = it.querySelector('.aq-redline-sheet__err'), fix = it.querySelector('.aq-redline-sheet__fix');
       var base = qa('.aq-redline-sheet__ln, .aq-redline-sheet__thin, .aq-redline-sheet__flw', svg), bars = qa('.aq-redline-sheet__bar, .aq-redline-sheet__txt, .aq-redline-sheet__paper, .aq-redline-sheet__avg', svg);
       var marks = qa('.aq-redline-sheet__mark .aq-redline-sheet__cl', svg), mlbl = qa('.aq-redline-sheet__mark text', svg), fixes = qa('.aq-redline-sheet__fixln', svg), flbl = qa('.aq-redline-sheet__fixg text', svg);

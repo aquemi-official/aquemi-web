@@ -1,4 +1,4 @@
-TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid that bleeds off the page's right edge: how you buy it next to what you buy.
+TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid, whole in its column and sticky beside the rows on desktop: how you buy it next to what you buy.
 
 - On the site: a `spec` block with `"look": "terms-sheet"` (renderer `assets/src/blocks/look-terms-sheet.js`), cmp-quality "How buying from us works". Origin: pass 9b concept `cmp-quality.4` (numbered commercial-terms table beside an isometric skid frame bleeding off the right edge).
 - Markup: `<div class="aq-terms-sheet">` (`has-notes` when notes get a column) > `__table` > `__head` (aria-hidden column names) + (Fold) `ol.__list` > `li.__row` > `__n` (aria-hidden), `__c` > `h3.__t`, `__c` > `__k`, `ul.__v`, `p.__m` (> `__mk`) or `__c.__note`, `p.__go`; then `__fig` (aria-hidden) > IsoKit `svg.__svg` (skid, RO rack, panel, tank, one pipe).
@@ -8,3 +8,5 @@ TermsSheet sets commercial terms as a clean numbered terms table beside an isome
 - Phones (pass 12, S18): no drawing (the generic skid has no tie to the rows); rows stack number, term and values; notes 15 px, links 44 px tall. With six terms or more the list is a PhoneKit accordion (none open): the head is the number and term (`h3.__ph > button.__hb`, last in the row's markup so the desktop cells keep their `nth-child` places, ordered first by CSS), the values stay in view under it, and the note and link open on tap (`div.__pb`, a phone-only copy; the desktop note and link cells hide while PhoneKit is on). A row with neither note nor link is not a head. buying 2,611 to 1,619, systems 1,868 to 1,005, cmp-quality 1,299 to 836.
 - Motion (`motion.js`): the head rule wipes across, rows rise 8 px 0.09 s apart; the skid builds with `AQiso.timeline` (parts draw back to front, the pipe, the water runs to the tank). Under 4 s.
 - Not for: specifications with measured values (SpecTable).
+
+Pass 12 C (desktop): the table starts under the heading (grid `align-items: start`); the drawing stays whole in its column (`width: 100%`) and is sticky at 120 px beside the rows.

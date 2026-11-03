@@ -68,3 +68,4 @@ Pass 9b (Subframe Motion `spring-accordion`, `icon-morph`): 0.34 s open, 0.24 s 
 ## Phones (pass 12)
 
 Answers at `--aq-faq-phone` (15/24), so a `[placeholder]` in an answer is a 13 px chip; questions 18/26; the key stays a 44 px square and the answer's one link is a 44 px Button link row. No dial.
+- The answer's link (`.aq-faq__a .aq-btn--link`) is a 44 px inline-flex target at every width (pass 12 C).

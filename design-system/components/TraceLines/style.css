@@ -117,3 +117,30 @@
   .aq-trace-lines__tile { min-height: 0; }
   .aq-trace-lines__num { font-size: 88px; }
 }
+
+/* pass 12 round C (svc-design.3, phone height 1,743 px): on phones the lines are a PhoneKit chips picker. Each line
+   carries a code chip (its head) and a body holding its start and stops; one line shows at a time, under the readout,
+   and the readout follows the open line (pk:change). On desktop the body is display: contents and the chips hide, so
+   the grid is exactly as before; the desktop keys under the readout hide while the chips stand in for them. */
+.aq-trace-lines__body { display: contents; }
+.aq-trace-lines__pick { display: none; }
+.aq-trace-lines__sw { display: inline-block; flex: none; width: var(--space-4); height: 3px; background: var(--lc, var(--flow)); }
+@container (max-width: 860px) {
+  .aq-trace-lines__body { display: block; }
+  .aq-trace-lines-wrap:has(.aq-trace-lines[data-pk-on]) .aq-trace-lines__keys { display: none; }
+  .aq-trace-lines-wrap.has-tile:has(.aq-trace-lines[data-pk-on]) { row-gap: var(--space-4); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__pick {
+    display: flex; justify-content: flex-start; gap: var(--space-3); border-radius: 0; border-color: var(--line-strong); background: var(--surface);
+    color: var(--ink-muted); font: 400 13px/18px var(--font-mono); letter-spacing: 0.02em;
+  }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__pick[aria-expanded="true"] { background: var(--flow-tint); border-color: var(--flow); color: var(--ink); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__body { margin-top: var(--space-6); }
+}
+/* the chip and the readout already name the open line, so its large start code steps aside on phones */
+@container (max-width: 860px) {
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__code { display: none; }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__req { margin-top: 0; }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__head::before { top: var(--space-1); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__head::after { top: var(--space-6); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__body { margin-top: var(--space-4); }
+}

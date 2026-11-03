@@ -13,7 +13,9 @@ AQmotion.fx('BinderSpines', function (root, m) {
       var at = 0.4 + i * 0.16, code = b.querySelector('.aq-binder-spines__code');
       tl.from(b, nar ? { x: -40, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' } : { y: -60, rotation: i % 2 ? 2 : -2, transformOrigin: '50% 100%', autoAlpha: 0, duration: 0.7, ease: 'aq-settle', clearProps: 'transform,opacity,visibility' }, at);
       tl.fromTo(b.querySelector('.aq-binder-spines__label'), { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 0.35);
-      if (code && window.ScrambleTextPlugin) { if (!code.getAttribute('aria-label')) code.setAttribute('aria-label', code.textContent); tl.to(code, { duration: 0.7, scrambleText: { text: code.textContent, chars: '0123456789.-', speed: 0.6 }, ease: 'none' }, at + 0.45) }
+      /* the clause decodes from blank (its final text never shows first); a code with no digit ("Your URS") just prints */
+      if (code && window.ScrambleTextPlugin && /\d/.test(code.textContent)) { var txt = code.textContent; if (!code.getAttribute('aria-label')) code.setAttribute('aria-label', txt);
+        tl.set(code, { textContent: '', immediateRender: false }, at); tl.to(code, { duration: 0.7, scrambleText: { text: txt, chars: '0123456789.-', speed: 0.6 }, ease: 'none' }, at + 0.45) }
       tl.from(b.querySelectorAll('.aq-binder-spines__d, .aq-binder-spines__go'), { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + 0.55);
     });
     m.on(el, function () { tl.play(); if (pt) pt.play() }, 'top 75%');

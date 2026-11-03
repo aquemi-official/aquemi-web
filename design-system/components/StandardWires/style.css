@@ -22,6 +22,8 @@
 .aq-standard-wires__s { margin: 0; font: 400 26px/34px var(--font-mono); letter-spacing: -0.02em; color: var(--on-navy); }
 .aq-standard-wires__s > span:not(.aq-standard-wires__semi) { display: inline; }
 .aq-standard-wires__semi { color: var(--on-navy-muted); }
+/* a code with a hyphen (D1193-24) never breaks at the hyphen */
+.aq-standard-wires__nb { white-space: nowrap; }
 .aq-standard-wires__a { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-navy-muted); }
 .aq-standard-wires__chip { margin: 0; }
 .aq-standard-wires__chip a, .aq-standard-wires__chip > span {
@@ -74,4 +76,20 @@
   .aq-standard-wires__chip { display: flex; align-items: center; }
   .aq-standard-wires__chip::after { content: ""; flex: 1 1 var(--space-4); min-width: var(--space-4); height: 0; margin-right: calc(-1 * var(--space-4)); border-top: 1px solid var(--on-navy-muted); }
   .aq-standard-wires__a { font-size: 15px; }
+}
+/* Phones (pass 12 C): each row tighter. The drawing floats at 88 px beside the standard's code (the plate is 300 x 170
+   with the part centred at 0.6 of the width: drawn 141 x 80 and shifted so the part sits in the middle of the 88 px
+   cell), what it asks runs full width under both, and the answer chip sits inline under that line, without its stub
+   wire. */
+@container (max-width: 600px) {
+  .aq-standard-wires__row { grid-template-columns: minmax(0, 1fr) 88px; column-gap: var(--space-3); padding-bottom: var(--space-4); }
+  .aq-standard-wires__std { grid-column: 1; grid-row: 1; padding: var(--space-4) 0 var(--space-2) var(--space-12); }
+  .aq-standard-wires__n { top: calc(var(--space-4) + var(--space-1)); }
+  .aq-standard-wires__s { font-size: 18px; line-height: 26px; }
+  .aq-standard-wires__cell { grid-column: 2; grid-row: 1; align-self: center; width: 88px; height: 88px; min-height: 88px; margin-top: var(--space-2); }
+  .aq-standard-wires__svg { width: 141px; height: 80px; margin: auto 0 auto calc(50% - 85px); }
+  .aq-standard-wires__ask { grid-column: 1 / -1; grid-row: 2; padding-bottom: var(--space-2); }
+  .aq-standard-wires__ans { grid-column: 1 / -1; grid-row: 3; align-self: start; }
+  .aq-standard-wires__chip { display: block; }
+  .aq-standard-wires__chip::after { content: none; }
 }

@@ -1,6 +1,6 @@
 /* Look "terms-sheet" -> TermsSheet (design-system/components/TermsSheet): how buying works, as a clean numbered terms
    table beside an isometric line drawing of a purified water skid (IsoKit: base frame, reverse osmosis rack, control
-   panel, storage tank) that bleeds off the right edge of the page: the table says how you buy it, the drawing is what
+   panel, storage tank), whole in its column and sticky beside the rows on desktop (pass 12 C): the table says how you buy it, the drawing is what
    you buy. Each row: number (mono), the term, our side of it (a value written "a · b" breaks into lines), and its
    note. The note gets its own column only when at least half the rows have one; otherwise it sits under the values,
    introduced by the third column's name.

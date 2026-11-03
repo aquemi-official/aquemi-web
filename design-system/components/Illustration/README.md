@@ -10,3 +10,4 @@ Illustration shows an isometric line drawing of Aquemi equipment, painted with a
 ## Motion
 
 Motion: an Illustration wipes in bottom to top like a print (the motion core). Where it carries pins or leaders (ParameterCallouts, Explainer art figure, OptionModules base skid) the owning component times the wipe so the drawing arrives first and the pins and leaders follow.
+- Pass 12 round C (audit G4): in both dark scopes a hero drawing (`.aq-hero__art .aq-illustration`) paints in `ink`, not `ink-muted`, so thin lines hold their contrast on the near-black page.

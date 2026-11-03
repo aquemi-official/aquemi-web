@@ -6,6 +6,11 @@
    slides the arrow on. Phones: one column of rows off a rail down the left, the picture small at the right.
    --aq-pipe, --aq-water (on the list) and --aq-drop, --aq-node (on each li) let RelatedLinks/motion.js lay the pipe
    and run the water; all default to 1. */
+/* Card art ink (pass 12 C): ink-muted in light mode; in dark mode the art sits on a dark card, so it takes on-navy-muted,
+   the light line every dark band draws in (it was ink-muted at about 1.5:1 to the card in some scopes, and faint). */
+.aq-related-links { --aq-rel-ink: var(--ink-muted); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-related-links { --aq-rel-ink: var(--on-navy-muted); } }
+[data-theme="dark"] .aq-related-links { --aq-rel-ink: var(--on-navy-muted); }
 .aq-related-links {
   --cols: 4;
   position: relative; display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); column-gap: var(--space-6); row-gap: var(--space-8);
@@ -49,7 +54,7 @@
    fitted into the window; it lights in flow with the tile */
 .aq-related-links__vis.is-iso { padding: var(--space-2) var(--space-4); }
 .aq-related-links__vis > .aq-related-links__iso { width: 100%; height: 100%; max-height: 100%; overflow: hidden; }
-.aq-related-links__iso :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid, .aq-iso__pipe-wall, .aq-iso__pipe-line) { stroke: var(--ink-muted); transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-related-links__iso :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid, .aq-iso__pipe-wall, .aq-iso__pipe-line) { stroke: var(--aq-rel-ink, var(--ink-muted)); transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
 /* lighter than the kit's default, to sit with the raster drawings' fine line (one hand in a row); paper stays the
    tile's white */
 .aq-related-links__iso :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__acc, .aq-iso__trace) { stroke-width: 1; }
@@ -60,8 +65,12 @@
    empty card */
 .aq-related-links__card.is-bare { grid-template-areas: "n g" "t t"; grid-template-rows: auto 1fr; }
 .aq-related-links__card.is-bare .aq-related-links__title { align-self: end; padding-top: var(--space-16); }
-.aq-related-links__art { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; max-width: none; margin: 0; background-color: var(--ink-muted); }
-.aq-related-links__vis .aq-related-links__spot { width: 46%; height: auto; aspect-ratio: 1; background-color: var(--ink-muted); }
+.aq-related-links__art { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; max-width: none; margin: 0; background-color: var(--aq-rel-now, var(--aq-rel-ink, var(--ink-muted))); }
+.aq-related-links__vis .aq-related-links__spot { width: 46%; height: auto; aspect-ratio: 1; background-color: var(--aq-rel-ink, var(--ink-muted)); }
+/* Pass 12 C: one stroke for every card. The equipment drawings (svc-fabrication, svc-service and the other ART pages) are
+   fine raster line masks, paler than the IsoKit scenes' 1 px vector line beside them; a hairline drop-shadow in the same
+   colour, on the picture window (so after the mask), brings them up to that weight. */
+.aq-related-links__vis.is-art { filter: drop-shadow(0 0 0.35px var(--aq-rel-now, var(--aq-rel-ink, var(--ink-muted)))) drop-shadow(0 0 0.35px var(--aq-rel-now, var(--aq-rel-ink, var(--ink-muted)))); }
 .aq-related-links__art, .aq-related-links__vis .aq-related-links__spot { transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), transform 320ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-related-links__title { grid-area: t; align-self: end; font: 400 24px/30px var(--font-sans); letter-spacing: -0.015em; overflow-wrap: break-word; text-wrap: balance; transition: color 200ms; }
 /* Arrow: a real span (aq-related-links__arrow) so it can move; it nudges along on hover and focus */
@@ -72,6 +81,7 @@
 .aq-related-links__iso { transition: transform 320ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__iso { transform: translateY(calc(-1 * var(--space-1))); }
 .aq-related-links__card:is(:hover, :focus-visible) :is(.aq-related-links__art, .aq-related-links__spot) { background-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
+.aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__vis.is-art { --aq-rel-now: var(--flow); }
 .aq-related-links__card:active .aq-related-links__title { transform: translateY(1px); }
 .aq-related-links__card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 /* Spotlight (RelatedLinks/motion.js, spotlight-card): a soft flow light under the content at --aq-sx/--aq-sy, and the
@@ -137,7 +147,7 @@
   .aq-related-links__vis .aq-related-links__spot { width: 70%; }
   /* in the 64 px window the raster drawings fade to grey and the scenes stay crisp: meet in the middle */
   .aq-related-links__iso { opacity: .8; }
-  .aq-related-links__vis.is-art .aq-related-links__art { background-color: var(--ink); }
-  .aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__vis.is-art .aq-related-links__art { background-color: var(--flow); }
+  .aq-related-links__vis.is-art { --aq-rel-now: var(--ink); }
+  .aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__vis.is-art { --aq-rel-now: var(--flow); }
   .aq-related-links__title { font-size: 19px; line-height: 26px; }
 }

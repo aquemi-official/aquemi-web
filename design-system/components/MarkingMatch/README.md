@@ -8,3 +8,5 @@ MarkingMatch shows supplier control as two standing rules set as headline-sized 
 - Phone: facts stack, the gate glyph under its rule; each supply stacks its three cells with labels.
 - Motion (`motion.js`): facts rise 16 px; on the gate the pipe draws, the water runs to the valve and the gate drops shut. Rows rise 8 px, 0.07 s apart, ticks draw. Ported from Subframe Motion "Chart crosshair" (chart-crosshair): pointing at a cell snaps a `flow-tint` band to its row and a `flow` bar under its column head (180 ms), whose name lights; without the script the row tints on hover (CSS).
 - Not for: standards and their proof (ProofFolders, EvidenceMap).
+- Pass 12 round C: a fact is one 32 px line under its eyebrow (26 px on phones), placeholders at 16 px; a single fact runs the full width.
+- Pass 12 round C verify (F7): the fact eyebrow is `ink-muted` (was `ink-subtle`, about 4.2:1 at 12 px).

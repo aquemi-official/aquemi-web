@@ -8,7 +8,7 @@
    bottom right corner a title block (Aquemi, the section's nav name, the area, its number). The scan line is a flow hairline the
    motion sweeps once. Phones: no zones and no viewer; each row has its own small square viewfinder. */
 .aq-review-reticles-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; }
-.aq-review-reticles { --rr-line: color-mix(in srgb, var(--navy) 45%, transparent); --rr-faint: color-mix(in srgb, var(--on-limestone-muted) 25%, transparent); position: relative; padding: var(--space-8); border: 1px solid var(--rr-line, var(--line-strong)); color: var(--on-limestone); }
+.aq-review-reticles { --rr-line: color-mix(in srgb, var(--on-limestone) 45%, transparent); --rr-faint: color-mix(in srgb, var(--on-limestone-muted) 25%, transparent); position: relative; padding: var(--space-8); border: 1px solid var(--rr-line, var(--line-strong)); color: var(--on-limestone); }
 .aq-review-reticles__z { position: absolute; display: flex; font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-limestone-muted); }
 .aq-review-reticles__z span { flex: 1; display: grid; place-items: center; }
 .aq-review-reticles__z--t, .aq-review-reticles__z--b { left: var(--space-8); right: var(--space-8); height: var(--space-8); }
@@ -38,7 +38,7 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
 
 /* viewfinders (the big one in the viewer, the small ones on phones) */
 .aq-review-reticles__vf { --in: var(--space-3); position: relative; display: block; border: 1px solid var(--rr-faint, var(--line)); overflow: hidden; }
-.aq-review-reticles__br { position: absolute; width: var(--space-8); height: var(--space-8); border: 0 solid var(--navy); transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-review-reticles__br { position: absolute; width: var(--space-8); height: var(--space-8); border: 0 solid var(--on-limestone); transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-review-reticles__br--tl { left: var(--in, var(--space-3)); top: var(--in, var(--space-3)); border-left-width: 2px; border-top-width: 2px; }
 .aq-review-reticles__br--tr { right: var(--in, var(--space-3)); top: var(--in, var(--space-3)); border-right-width: 2px; border-top-width: 2px; }
 .aq-review-reticles__br--bl { left: var(--in, var(--space-3)); bottom: var(--in, var(--space-3)); border-left-width: 2px; border-bottom-width: 2px; }
@@ -96,4 +96,22 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-review-reticles__item { grid-template-columns: 96px minmax(0, 1fr); }
   .aq-review-reticles__mini .aq-review-reticles__br { width: var(--space-3); height: var(--space-3); }
   .aq-review-reticles__mini .aq-review-reticles__pic { inset: var(--space-3) var(--space-2) var(--space-2); }
+}
+
+/* Round C. Phones: the viewfinder tiles at 72 px and 16 px between areas (the section about 850 px). Desktop (861 px
+   and up): the viewer sits centred in its cell above the title block, not hung from the top with 190 px under it. */
+@container (max-width: 860px) {
+  .aq-review-reticles__item { grid-template-columns: 72px minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-2); }
+  .aq-review-reticles__mini .aq-review-reticles__br { width: var(--space-2); height: var(--space-2); }
+  .aq-review-reticles__mini .aq-review-reticles__pic { inset: var(--space-2); }
+  /* with no area code, the number sits left of the name on its line (not on a row of its own) */
+  .aq-review-reticles__item:not(:has(.aq-review-reticles__code)) { grid-template-rows: auto 1fr; }
+  .aq-review-reticles__item:not(:has(.aq-review-reticles__code)) .aq-review-reticles__mini { grid-row: 1 / span 2; }
+  .aq-review-reticles__item:not(:has(.aq-review-reticles__code)) .aq-review-reticles__no2 { grid-row: 1; align-self: center; }
+  .aq-review-reticles__item:not(:has(.aq-review-reticles__code)) .aq-review-reticles__t { grid-row: 1; padding-left: var(--space-8); }
+  .aq-review-reticles__item:not(:has(.aq-review-reticles__code)) .aq-review-reticles__d { grid-row: 2; }
+}
+@container (min-width: 861px) {
+  .aq-review-reticles__big { margin-block: auto; }
+  .aq-review-reticles__tb { margin-top: 0; }
 }

@@ -14,7 +14,8 @@
 /* Text: title (the link), capacity chip and design-basis tag, ruled spec lines */
 .aq-config-cards__body { position: relative; display: flex; flex-direction: column; gap: var(--space-3); flex: 1; padding: var(--space-4) var(--space-6) var(--space-6) var(--space-6); }
 .aq-config-cards__t { margin: 0; padding-right: var(--space-8); font: 400 20px/26px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); }
-.aq-config-cards__a { color: inherit; text-decoration: none; }
+/* the title row is a block link, a 44 px target (26 px line + 9 px above and below), the arrow inside it */
+.aq-config-cards__a { display: block; min-height: var(--aq-hit); box-sizing: border-box; padding-block: 9px; margin-block: -9px; color: inherit; text-decoration: none; }
 .aq-config-cards__a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .aq-config-cards__a:focus-visible { outline: none; }
 .aq-config-cards__card:has(.aq-config-cards__a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }

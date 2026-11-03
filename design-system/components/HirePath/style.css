@@ -17,7 +17,8 @@
 .aq-hire-path__jl { fill: none; stroke: var(--navy); stroke-width: 1px; }
 .aq-hire-path__dl { fill: none; stroke: var(--on-navy); stroke-width: 1.2px; stroke-linecap: round; }
 .aq-hire-path__lbl text { fill: var(--on-navy); font: 400 16px var(--font-mono); letter-spacing: 0.04em; }
-.aq-hire-path .aq-hire-path__cap { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.aq-hire-path .aq-hire-path__cap { margin: 0; font: 400 14px/21px var(--font-mono); color: var(--ink-muted); } /* round C: 14 px (was 12) */
+:where(.aq-hire-path__cap) .aq-ph { font-size: 13px; } /* round C verify nit: the placeholder chip at S4's 13 px, not the 12 px base */
 
 /* the rail: one slim line down the steps, a gate tick at each */
 .aq-hire-path__side { position: relative; min-width: 0; padding-top: var(--space-2); }

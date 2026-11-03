@@ -13,3 +13,12 @@ Motion (`motion.js`): the leaves start pressed together and fan apart back to fr
 Ported (pass 9b): Subframe Motion "Chart crosshair" (chart-crosshair): a row rule and a column rule snap to the cell under the pointer (200 ms), the column head turns `flow` and the cell takes the flow tint; keyboard focus on a row link snaps the row rule. Wide screens; rules out of the page at rest.
 
 Pass 12 (phones): the second value code is a dashed ink rule in the key and the rows, so the two codes differ by pattern, not only by hue.
+
+## Pass 12 round C: macro "pipe-pair"
+
+Look-only `"macro": "pipe-pair"` (`.aq-macro-leaders--pair`) draws the PP-or-stainless question: two cut sections of
+the same outside diameter running off the page edge (thick-wall natural PP over thin-wall 316L, hatched walls, the
+bore in flow tint) with the 0-80 °C band of natural PP between them (tinted to 80, dashed beyond). The six markers keep
+their arc at the drawing's right. Motion: the sections slide out of the page edge along their axes. The membrane macro
+stays the default. Used on news.1. The pipe stubs start 2,000 units left of the faces so they leave the page at any
+width; the three labels and the band share one left edge (x 36) so they clear the page edge from 861 px (13 px mono).

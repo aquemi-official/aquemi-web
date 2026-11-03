@@ -15,8 +15,10 @@
   // DrawSVG reads the vector-effect attribute (not CSS) to size its dashes on non-scaling strokes
   function nss(els) { els.forEach(function (el) { el.setAttribute('vector-effect', 'non-scaling-stroke') }); return els }
   var SHAPES = 'path,circle,ellipse,line,polyline,polygon,rect';
+  // a path parked at drawSVG 0% is a zero-length dash: with the kit's round caps it paints as a dot, so each path waits
+  // and draws with butt caps; clean() drops the inline cap at the end, so the kit's round caps return (pass 12 C, G-C3)
   // clearProps leaves DrawSVG's dashes behind here; with non-scaling strokes a stale dash would cut lines on resize
-  function clean(els) { els.forEach(function (el) { el.style.removeProperty('stroke-dasharray'); el.style.removeProperty('stroke-dashoffset') }) }
+  function clean(els) { els.forEach(function (el) { el.style.removeProperty('stroke-dasharray'); el.style.removeProperty('stroke-dashoffset'); el.style.removeProperty('stroke-linecap') }) }
   function done() { clean(this.targets()) }
 
   /* light / unlight a stage by id (parts and pipes carrying data-iso-id) */
@@ -51,7 +53,7 @@
       return { solid: nss(solid), dash: dash, fill: fill };
     }
     function build(set, t, dur) {
-      if (D && set.solid.length) tl.fromTo(set.solid, { drawSVG: '0%' }, { drawSVG: '100%', duration: dur, ease: 'power2.inOut', stagger: { amount: dur * 0.35 }, onComplete: done }, t);
+      if (D && set.solid.length) tl.fromTo(set.solid, { drawSVG: '0%', strokeLinecap: 'butt' }, { drawSVG: '100%', duration: dur, ease: 'power2.inOut', stagger: { amount: dur * 0.35 }, onComplete: done }, t);
       else if (set.solid.length) tl.from(set.solid, { autoAlpha: 0, duration: dur * 0.6, clearProps: 'opacity,visibility' }, t);
       if (set.fill.length) tl.fromTo(set.fill, { fillOpacity: 0 }, { fillOpacity: 1, duration: dur * 0.7, ease: 'power1.out', clearProps: 'fillOpacity' }, t + dur * 0.55);
       if (set.dash.length) tl.from(set.dash, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, t + dur * 0.8);
@@ -77,7 +79,7 @@
     flows.forEach(function (f, i) {
       var d = Math.max(0.12, tFlow * L[i] / tot), drop = f.classList.contains('aq-iso__flow--drop') || dashed(f);
       if (drop) tl.from(f, { autoAlpha: 0, duration: Math.min(0.3, d), clearProps: 'opacity,visibility' }, t);
-      else if (D) { nss([f]); tl.fromTo(f, { drawSVG: '0%' }, { drawSVG: '100%', duration: d, ease: 'none', onComplete: done }, t) }
+      else if (D) { nss([f]); tl.fromTo(f, { drawSVG: '0%', strokeLinecap: 'butt' }, { drawSVG: '100%', duration: d, ease: 'none', onComplete: done }, t) }
       else tl.from(f, { autoAlpha: 0, duration: d, clearProps: 'opacity,visibility' }, t);
       if (MP && o.drop !== false && !drop && L[i] > 8) {
         var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');

@@ -2,7 +2,8 @@
    PP pipework draw on (IsoKit choreography); the parts that come from their makers are lowered into the frame from
    above, one group after the other, each callout's leader running out and its label rising as its group lands; then
    the water runs the pipework once. Ends static, under 4.5 s. Pointing at, focusing or pressing a callout lights its
-   group and lifts a maker's group out of the frame (renderer + CSS). */
+   group and lifts a maker's group out of the frame (renderer + CSS). Phones: the legend rows under the drawing rise
+   with the cards. */
 AQmotion.fx('SourceSkid', function (root, m) {
   root.querySelectorAll('.aq-source-skid').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
@@ -10,6 +11,10 @@ AQmotion.fx('SourceSkid', function (root, m) {
     var cards = q('.aq-source-skid__card'), svg = el.querySelector('svg.aq-iso');
     var tc = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
     tc.from(cards, { y: 16, autoAlpha: 0, duration: 0.6, stagger: 0.12, clearProps: 'transform,opacity,visibility' }, 0);
+    /* phones (round C): the legend rows are text the reader needs, so they arrive with the cards, not after the parts
+       are lowered (about 2.5 s later) */
+    var phone = window.innerWidth <= 860, legend = q('.aq-source-skid__call');
+    if (phone && legend.length) tc.from(legend, { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.3);
     m.on(el.querySelector('.aq-source-skid__cards') || el, function () { tc.play() }, 'top 82%');
     if (!svg || !window.AQiso) return;
     /* Ported from Subframe Motion "Exploded product view" (exploded-camera), MIT, (c) 2026 Subframe
@@ -27,7 +32,7 @@ AQmotion.fx('SourceSkid', function (root, m) {
       var at = j < 0 ? t - 0.2 : t + j * 0.3 + 0.35;
       var ld = byGrp(leads, grp), lp = ld.length ? q('.aq-source-skid__ll', ld[0]) : [];
       if (lp.length && D) tl.fromTo(lp, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.4, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at);
-      tl.from(c, { y: 10, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, at + 0.2);
+      if (!phone) tl.from(c, { y: 10, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, at + 0.2);
       var pn = byGrp(pins, grp); if (pn.length) tl.from(pn, { scale: 0.6, autoAlpha: 0, duration: 0.3, clearProps: 'transform,opacity,visibility' }, at + 0.2);
     });
     m.on(svg, function () { tl.play() }, 'top 78%');

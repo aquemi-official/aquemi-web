@@ -9,6 +9,7 @@ ScenePlates sets a table of plants (or any uses) as a ruled ledger beside one na
 - **Phones** (≤ 860 px): title, then the plate as a 220 px navy strip held under the header (PhoneKit sticky figure; caption and drawing, callouts left to the rows) that swaps to the plant whose row is on the reading line, then the rows as cards: index and plant (17/23), the uses as numbered chips keyed to the strip's pins, floor and limit, fit, all 14/21. Column labels show on the first card only (S12; kept for screen readers on the others). Height at 375: 1,624 px (site-plates here: 1,952). The strip drawing fills the strip width (344 px at 375, 394 px at 768).
 - Tokens: `navy` plate with `on-navy` and `on-navy-muted`, drawing `aq-iso--navy`; ledger `ink`, `ink-muted`, `line`, `line-strong`, `flow`.
 - Not for sites with addresses and contacts (use SitePlates) or for more than about six stations per plant.
+- Pass 12 C: phone fit links pad 13 px (inline), a 44 px target.
 
 ## Motion
 

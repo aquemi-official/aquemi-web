@@ -3,7 +3,7 @@
    the title large in the open left half, the drawing field top right, the title block (the points) in the lower right
    corner against the frame. */
 .aq-record-anatomy-sec { }
-.aq-record-anatomy { color: var(--on-limestone); --ra-pad: var(--space-12); }
+.aq-record-anatomy { color: var(--on-limestone); --ra-pad: var(--space-12); background: var(--limestone); } /* pass 12 C: paints the sheet, so data-paper dims it in dark (light: the band colour, no change) */
 .aq-record-anatomy__sheet { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto; column-gap: var(--space-12);
   padding: var(--ra-pad, var(--space-12)) var(--ra-pad, var(--space-12)) var(--space-2); border: 1px solid var(--navy); outline: 1px solid color-mix(in srgb, var(--navy) 35%, transparent); outline-offset: calc(var(--space-2) * -1 - 1px); }
 /* zone band: numbers across the top edge, letters down the left edge, quiet mono */

@@ -1,8 +1,8 @@
 /* ---------- WalkdownPins: IQ and OQ checks as a table beside the system they inspect (look "walkdown-pins") ----------
    Desktop: the checks as a hairline table on the left (6 of 12: number, check with its IQ or OQ tag, what we verify,
    basis in mono, under a mono column head); the drawing sheet (IsoKit light sheet, iso grid) on the right, held in
-   view while the table scrolls. Each check's number marks its part (a small ruled square; two on one part step
-   apart, --k); a few parts carry a leader callout with their name over the shelf. IQ tags ruled in ink, OQ filled
+   view while the table scrolls. Each check's number marks its part (a small ruled square; a second one on the same
+   part sits 28 units to the right in the pin data, pass 12 round C; --k stays 0); a few parts carry a leader callout with their name over the shelf. IQ tags ruled in ink, OQ filled
    flow (installed versus running). A row pointed at or focused lights its part (aq-iso__part is-lit), its marker
    and its callout. */
 .aq-walkdown-pins { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--space-12); align-items: start; }

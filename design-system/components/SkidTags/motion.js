@@ -19,7 +19,8 @@ AQmotion.fx('SkidTags', function (root, m) {
     var water = qa('.aq-skid-tags__water > *, .aq-skid-tags__plant .aq-skid-tags__fl');
     if (D) tl.fromTo(water, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.8, ease: 'power1.inOut', stagger: 0.2, clearProps: 'strokeDasharray,strokeDashoffset' }, 0.9);
     else tl.from(water, { autoAlpha: 0, duration: 0.5, stagger: 0.2, clearProps: 'opacity,visibility' }, 0.9);
-    qa('.aq-skid-tags__tag').forEach(function (t, i) {
+    /* only the tags drawn at this width take a slot (the phone's vessel edge marker or the desktop vessel tag is hidden) */
+    qa('.aq-skid-tags__tag').filter(function (t) { return t.offsetWidth > 0 }).forEach(function (t, i) {
       var at = 1.6 + i * 0.16, lead = el.querySelector('.aq-skid-tags__lead[data-part="' + t.getAttribute('data-part') + '"]');
       if (lead) {
         var ld = lead.querySelector('.aq-skid-tags__ld'), dot = lead.querySelector('.aq-skid-tags__dot');

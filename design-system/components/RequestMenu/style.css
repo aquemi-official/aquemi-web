@@ -116,3 +116,9 @@
   .aq-request-menu__chip--cost { border-color: var(--flow); color: var(--flow); }
   .aq-request-menu__chip .aq-ph { font-size: var(--aq-chip-phone, 13px); }
 }
+/* Pass 12 round C (audit-c group-7 contact-proposal.2, R1): wide, the head at the shared section-head size (aq-h1
+   40/44) and the skid held 120 px under the top while the menu scrolls past it */
+@container (min-width: 861px) {
+  .aq-request-menu__mast .aq-h1 { font-size: 40px; line-height: 44px; letter-spacing: -0.02em; }
+  .aq-request-menu__fig { position: sticky; top: calc(var(--space-24) + var(--space-6)); align-self: start; }
+}

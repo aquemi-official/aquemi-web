@@ -491,13 +491,11 @@
    "look": "cert-readout",
    "component": "CertReadout",
    "type": "grid",
-   "status": "live",
+   "status": "retired",
    "fields": "h, intro, items [{t, d, tag, icon, link}].",
    "best_for": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's status line set as the giant reading and its standard as a small line, beside the items as mono readout lines whose titles are buttons that put them on the readout.",
    "held": "4-5",
-   "pages": [
-    "cmp-quality"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "cmp-quality",
@@ -533,7 +531,7 @@
      "page": "cmp-quality",
      "slot": 1,
      "h": "Certification status",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -545,11 +543,13 @@
    "look": "cert-seals",
    "component": "CertSeals",
    "type": "grid",
-   "status": "retired",
+   "status": "live",
    "fields": "h, intro, items [{t, d, tag, icon, link}].",
    "best_for": "CertSeals sets certification status as a Swiss row of certificate tiles: a seal (ring of ticks round the item's line icon), the standard or mark it is held to set large and light, what it covers and its status.",
-   "held": "4",
-   "pages": [],
+   "held": "4-5",
+   "pages": [
+    "cmp-quality"
+   ],
    "instances": [
     {
      "page": "cmp-quality",
@@ -560,6 +560,16 @@
      "last_seen": "2026-11-01",
      "commit": "231cde2",
      "hash": "62d35137dd"
+    },
+    {
+     "page": "cmp-quality",
+     "slot": 1,
+     "h": "Certification status",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "1914a05c86"
     }
    ]
   },
@@ -609,11 +619,21 @@
      "page": "projects",
      "slot": 3,
      "h": "Qualify us as your supplier",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "a1d5847100"
+    },
+    {
+     "page": "projects",
+     "slot": 3,
+     "h": "Qualify us as your supplier",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "8b8f962dc3"
     }
    ]
   },
@@ -730,7 +750,7 @@
    "component": "CodeIndex",
    "type": "docs",
    "status": "live",
-   "fields": "h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun.",
+   "fields": "h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun, poster (look-only). Codes come from the DocList lookup (docCode) unless the item names its own.",
    "best_for": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow.",
    "held": "4-7",
    "pages": [
@@ -1435,11 +1455,21 @@
      "page": "sys-pw",
      "slot": 3,
      "h": "Documents with the skid",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "413fac23bb"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 3,
+     "h": "Documents with the skid",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "8e17a64fab"
     }
    ]
   },
@@ -1928,11 +1958,21 @@
      "page": "ind-meddevice",
      "slot": 2,
      "h": "Water grade by process step",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "e81d027d64"
+    },
+    {
+     "page": "ind-meddevice",
+     "slot": 2,
+     "h": "Water grade by process step",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "e32e87b4a5"
     }
    ]
   },
@@ -2205,7 +2245,7 @@
    "component": "IndustryFeed",
    "type": "grid",
    "status": "live",
-   "fields": "h, items [{t, d, tag, link}]. tag is the evidence shown large (keep it short: a standard code); an item without one shows its name large instead. Best for 2 to 4 items.",
+   "fields": "h, items [{t, d, tag, link}]. tag is the evidence shown large (keep it short: a standard code); an item without one shows its number large instead (pass 12 round C: never its name, which the title already carries) and drops the small number line. Best for 2 to 4 items.",
    "best_for": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type.",
    "held": "3-4",
    "pages": [
@@ -2487,11 +2527,13 @@
    "look": "joint-tag",
    "component": "JointTag",
    "type": "table",
-   "status": "retired",
-   "fields": "as a table: cols [field, what it proves, record], rows, fold, fold_noun. Optional parts (one per row: num, lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only.",
+   "status": "live",
+   "fields": "as a table: cols [field, what it proves, record], rows, fold, fold_noun, seam (\"plain\"). Optional parts (one per row: num, lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only.",
    "best_for": "JointTag shows a joint log as a traceability tag hanging from the joint it records: a polypropylene pipe in side view, fused at a double-rolled bead, runs off both page edges, and the tag on its wire carries one form box per log field, each field's number pinned on the part of the joint it describes.",
    "held": "8",
-   "pages": [],
+   "pages": [
+    "svc-fabrication"
+   ],
    "instances": [
     {
      "page": "svc-fabrication",
@@ -2502,6 +2544,16 @@
      "last_seen": "2026-11-01",
      "commit": "fe9516d",
      "hash": "d5c4d698af"
+    },
+    {
+     "page": "svc-fabrication",
+     "slot": 0,
+     "h": "One joint, one log line",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "6b1657b6a8"
     }
    ]
   },
@@ -2885,11 +2937,21 @@
      "page": "news",
      "slot": 1,
      "h": "Polypropylene or stainless steel for a PW loop",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "ba14e93348"
+    },
+    {
+     "page": "news",
+     "slot": 1,
+     "h": "Polypropylene or stainless steel for a PW loop",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "e883ab1a33"
     }
    ]
   },
@@ -2960,11 +3022,21 @@
      "page": "ind-process",
      "slot": 0,
      "h": "Start from your plant",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "6a92602131"
+    },
+    {
+     "page": "ind-process",
+     "slot": 0,
+     "h": "Start from your plant",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "fd7df56ddc"
     }
    ]
   },
@@ -3654,7 +3726,7 @@
    "type": "table",
    "status": "live",
    "fields": "as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}), fold, fold_noun.",
-   "best_for": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a pressure vessel, a control panel, a flanged elbow, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets.",
+   "best_for": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a flat-bottom PP vessel on its plinth, a control panel, a fused PP elbow with socket sleeves and a butt-fusion bead, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets.",
    "held": "5",
    "pages": [
     "urs-guide"
@@ -3872,11 +3944,21 @@
      "page": "home",
      "slot": 3,
      "h": "From order to water in use",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "faed13edb2"
+    },
+    {
+     "page": "home",
+     "slot": 3,
+     "h": "From order to water in use",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "79ac33c485"
     }
    ]
   },
@@ -4175,13 +4257,11 @@
    "look": "record-slips",
    "component": "RecordSlips",
    "type": "table",
-   "status": "live",
+   "status": "retired",
    "fields": "as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}), fold, fold_noun (phones only: desktop shows every process).",
    "best_for": "RecordSlips shows each process of a quality system with the record it leaves: the process set large and light, what it controls under it, and at its right edge a slot from which a paper slip feeds out listing the records you can inspect, each with an empty tick box.",
    "held": "7-8",
-   "pages": [
-    "svc-fabrication"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "cmp-quality",
@@ -4217,7 +4297,7 @@
      "page": "svc-fabrication",
      "slot": 0,
      "h": "One joint, one log line",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -4654,11 +4734,21 @@
      "page": "news",
      "slot": 0,
      "h": "The notes register",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "9efe5d1c9b"
+    },
+    {
+     "page": "news",
+     "slot": 0,
+     "h": "The notes register",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "15deabba02"
     }
    ]
   },
@@ -5399,7 +5489,7 @@
    "component": "SiteTiles",
    "type": "grid",
    "status": "live",
-   "fields": "h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp, softener, truck, valve (pass 12: a flanged spool with a diaphragm valve, drawn on the navy like the others, so a valve icon no longer falls back to a navy-on-navy Spot); default from icon (valve -> valve; gauge -> spool: a PP spool with a valve and a pressure gauge for the test; stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated load, for service and spares), else the item's line icon as a limestone Spot. Phones (pass 12): no inner frame or zone bands; each column stacks its drawing (72 px tall) above the number and title, the line and link under them.",
+   "fields": "h, intro, items [{t, d, link, link_label, icon, fig}]. fig (optional): spool, stamp, softener, truck, valve (pass 12: a plain PP spool, capped ends and no flanges since round C, with a diaphragm valve, drawn on the navy like the others, so a valve icon no longer falls back to a navy-on-navy Spot); default from icon (valve -> valve; gauge -> spool: a PP spool with a valve and a pressure gauge for the test; stamp -> stamp: a registration stamp and its imprint; softener -> softener; wrench -> truck: a truck with a crated load, for service and spares), else the item's line icon as a limestone Spot. Phones (pass 12): no inner frame or zone bands; each column stacks its drawing (72 px tall) above the number and title, the line and link under them.",
    "best_for": "SiteTiles sets a short grid of what changes for a site as one navy drawing sheet: a framed sheet with its zone band, the title large in the top left, and one column per item with its number, title, one isometric part (IsoKit) that makes the change visible, its line and its link.",
    "held": "4",
    "pages": [
@@ -5430,11 +5520,21 @@
      "page": "about",
      "slot": 2,
      "h": "What changes for a Canadian site",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "50884fd191"
+    },
+    {
+     "page": "about",
+     "slot": 2,
+     "h": "What changes for a Canadian site",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "fb3a923341"
     }
    ]
   },
@@ -5478,7 +5578,7 @@
      "page": "compliance",
      "slot": 4,
      "h": "Engineering, materials and pressure equipment",
-     "status": "retired",
+     "status": "live",
      "first_seen": "2026-11-01",
      "last_seen": "2026-11-02",
      "commit": "0efa42f",
@@ -5488,9 +5588,9 @@
      "page": "compliance",
      "slot": 4,
      "h": "Engineering, materials and pressure equipment",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "20a0c584bb"
     }
@@ -5632,11 +5732,21 @@
      "page": "ind-hospital-lab",
      "slot": 5,
      "h": "For consultants and contractors",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "b3d3d392c8"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 5,
+     "h": "For consultants and contractors",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "e1c4e6b7b9"
     }
    ]
   },
@@ -5689,7 +5799,7 @@
    "component": "StageStacks",
    "type": "table",
    "status": "live",
-   "fields": "as a table: cols [stage, your step and who approves, documents issued], rows [[stage, step, documents]] (cells strings or {t, link}); stage cells \"Name · clause\" set the clause under the name; documents are split at \";\". fold, fold_noun: kept for the no-script phone fallback only. Phones (pass 12, S10/S11): the same axis, as a snap rail of stage columns about 280 px wide (every stage, the stacks standing on one axis line, name and step under it), the band names once in the first column; over it a 01-06 number rail (44 px) jumps to a stage and follows the swipe (AQsnap, below); the axis nodes keep their 44 px hit box and still hold the file at a stage.",
+   "fields": "as a table: cols [stage, your step and who approves, documents issued], rows [[stage, step, documents]] (cells strings or {t, link}); stage cells \"Name · clause\" set the clause under the name; documents are split at \";\". fold, fold_noun: kept for the no-script phone fallback only. Phones (pass 12, S10/S11): the same axis, as a snap rail of stage columns about 280 px wide (every stage, the stacks standing on one axis line, name and step under it), the band names once in the first column; over it a 01-06 number rail (44 px) jumps to a stage and follows the swipe (AQsnap, parts/Snap.js); the axis nodes keep their 44 px hit box and still hold the file at a stage.",
    "best_for": "StageStacks draws what each project stage issues as the document file building up: the stages stand on one project axis, each stage's documents stacked above it as sheets of paper, its name, clause and who approves under the axis.",
    "held": "6",
    "pages": [
@@ -5904,7 +6014,7 @@
    "component": "StandardWires",
    "type": "table",
    "status": "live",
-   "fields": "h, intro, cols (three labels), rows [[standard, asks, {t, link, art}]], fold, fold_noun, nav (plate title). art: analyzer | storage | panel | pretreatment (what the cell draws; default by the link's page).",
+   "fields": "h, intro, cols (three labels), rows [[standard, asks, {t, link, art}]], fold, fold_noun, nav (plate title). art: analyzer | storage | panel | pretreatment | generation | outlet (what the cell draws; default by the link's page; outlet is a lab point of use on its drop from the loop).",
    "best_for": "StandardWires sets a table of standards on a navy blueprint and wires each answer to the equipment that answers it, so a reader who starts from a standard sees which part of the system meets it.",
    "held": "4-7",
    "pages": [
@@ -5925,11 +6035,21 @@
      "page": "systems",
      "slot": 3,
      "h": "Start from the standard you cite",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "119fb5f956"
+    },
+    {
+     "page": "systems",
+     "slot": 3,
+     "h": "Start from the standard you cite",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "4a21adcc34"
     }
    ]
   },
@@ -6238,7 +6358,7 @@
    "type": "spec",
    "status": "live",
    "fields": "h, intro, cols [term, ours, note], rows [{p, v, m, link, link_label}], fold, fold_noun (phones only: desktop shows every term). Phones (pass 12): no drawing (S18: the generic skid has no tie to the rows); rows stack number, term and values.",
-   "best_for": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid that bleeds off the page's right edge: how you buy it next to what you buy.",
+   "best_for": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid, whole in its column and sticky beside the rows on desktop: how you buy it next to what you buy.",
    "held": "1-10",
    "pages": [
     "buying",
@@ -6552,11 +6672,21 @@
      "page": "ind-hospital-lab",
      "slot": 4,
      "h": "One train, designed to the critical-water limits",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "f6841a4",
      "hash": "6f16524844"
+    },
+    {
+     "page": "ind-hospital-lab",
+     "slot": 4,
+     "h": "One train, designed to the critical-water limits",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "1f4eab0",
+     "hash": "456be12f95"
     }
    ]
   },

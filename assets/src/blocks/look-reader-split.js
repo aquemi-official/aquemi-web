@@ -15,7 +15,8 @@
 /* pass 12 (F9): a hyphenated word in a phone head is kept on one line ("hand-off", not "hand- / off"); only text
    between tags is touched */
 function rsBind(h){return String(h).replace(/(^|>)([^<]+)/g,function(m,a,t){return a+t.replace(/([A-Za-z]+-[A-Za-z]+)/g,'<span class="aq-reader-split__nb">$1</span>')})}
-LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
+LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,
+  tight=n&&R.every(function(r){return String(r[0]||'').length<=30});/* pass 12 C: short reader names, a 4fr 8fr split */
  var lab=function(j){return C[j]?'<span class="aq-reader-split__lab">'+tx(C[j])+'</span>':''};
  var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
   return fli('<li class="aq-reader-split__row" data-pk-item="'+i+'"><h3 class="aq-reader-split__ph"><button type="button" class="aq-reader-split__head-btn" data-pk-head>'+idx(i)+lab(0)+'<span class="aq-reader-split__pt">'+rsBind(tx(r[0]))+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h3>'
@@ -25,6 +26,6 @@ LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
    +(lk?'<a class="aq-reader-split__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tx(go.t)+'</span></a>'
      :(go?'<p class="aq-reader-split__go"><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tcell(go)+'</span></p>':''))+'</div></li>',b,i)}).join('');
  var colh='<p class="aq-reader-split__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span>'+(C[2]?'<span class="aq-reader-split__colk">'+tx(C[2])+'</span>':'')+'</p>';
- return '<section class="aq-section aq-band--split aq-reader-split-sec"><span class="aq-reader-split__ground" aria-hidden="true"></span><div class="aq-in"><div class="aq-reader-split">'
+ return '<section class="aq-section aq-band--split aq-reader-split-sec'+(tight?' is-tight':'')+'"><span class="aq-reader-split__ground" aria-hidden="true"></span><div class="aq-in"><div class="aq-reader-split">'
   +'<div class="aq-reader-split__head">'+H+'</div>'+colh+wFold(b,n,'<ol class="aq-reader-split__rows" data-pk-picker="accordion" data-pk-open="0">'+rows+'</ol>',b.fold_noun)+'</div></div></section>'};
 })();

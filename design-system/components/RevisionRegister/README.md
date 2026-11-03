@@ -9,3 +9,14 @@ RevisionRegister keeps technical notes as the numbered notes column of one limes
 ## Motion
 
 Motion: the frame rules round the sheet, the column's rule drops, the tabs drop in, the lead's triangle strikes and its quotation rises line by line; each visible note is written in order (number decodes, line rules in left to right); the drawing prints from the bottom and the title block appears. Once, under 3.5 s. Filtering: notes that stay glide to their new places (280 ms, cubic-bezier(.22,1,.36,1)) and new ones fade in (180 ms), ported from Subframe Motion "Filter mosaic" (filter-mosaic); instant under reduced motion. Pointing at or focusing a note shows its page's drawing (240 ms crossfade, the selection persists), ported from "Hover image preview list" (project-index).
+
+## Pass 12 round C
+
+- Look-only `part` on an item (`"pipe"` so far): the featured row carries `data-part`, and the plate draws that part
+  with IsoKit (a PP pipe leaving its socket, cut face towards the reader, at 3× the kit's pipe radius) instead of the
+  page vignette. news.0 sets it on the PP-or-stainless note.
+- At 600 px and below: the topic filter is one nowrap scroll-snap row of 44 px chips, note numbers and titles 14/21,
+  and the notes column has no inner left rule.
+- Dark mode (round C verify R1): the band turns warm stone (RC1), so the look's rules, frame, chip and note borders draw
+  in a local `--rr-ink` (navy by default, `on-limestone-muted` on the dark band); the pressed chip is navy with
+  `on-navy` text in both themes.

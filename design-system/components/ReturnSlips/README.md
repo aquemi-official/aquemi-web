@@ -12,3 +12,5 @@ Look `return-slips` (`assets/src/blocks/look-return-slips.js`), pass 9; adapted 
 ## Motion
 
 Motion (`motion.js`): row by row the situation rises, the pipe lays from it (`--aq-pipe`) and the water runs to the arrow (`--aq-water`), then the slips are dealt out of the pipe one by one, sliding in from the left with a slight turn that settles square. One timeline under 4 s, once on scroll-in; folded rows show as they are. Hover or focus on a row runs its pipe in flow and lifts its slips. Both variables default to 1.
+
+Pass 12 C: a lone slip spans the whole column with When and Cost side by side; on phones the pipe is one inline 20 px arrow (shaft to `bottom: 3px`, meeting the tip). Round C follow-up (desktop): when every row returns one slip, the columns are 4fr / gutter / 8fr.

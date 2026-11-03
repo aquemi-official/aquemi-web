@@ -17,7 +17,7 @@
 .aq-key-facts > div + div { padding-left: var(--space-6); border-left: 1px solid var(--line); }
 
 /* Name */
-.aq-key-facts dt { font: 400 14px/20px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+.aq-key-facts dt { font: 400 14px/21px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
 
 /* Figure with its comparator and unit */
 .aq-key-facts dd { margin: 0; }
@@ -38,7 +38,7 @@
 /* Source standard, on the cell's last line */
 .aq-key-facts dd.aq-key-facts__src {
   margin-top: auto;
-  font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted);
+  font: 400 13px/18px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted);
   overflow-wrap: break-word;
 }
 
@@ -56,7 +56,8 @@
     padding: var(--space-4) 0; border-left: 0; border-top: 1px solid var(--line);
   }
   .aq-key-facts > div:has(> .is-long) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "dt" "v" "src"; }
-  .aq-key-facts dt { grid-area: dt; font-size: 13px; line-height: 18px; }
+  /* pass 12 round C (H2, G4 row): the name at the 14 px reading floor, the source line 13 px mono */
+  .aq-key-facts dt { grid-area: dt; font-size: 14px; line-height: 21px; }
   .aq-key-facts__value, .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { grid-area: v; font-size: 26px; line-height: 1.15; }
   .aq-key-facts dd.is-long { font-size: 17px; line-height: 1.3; }
   .aq-key-facts dd.aq-key-facts__src { grid-area: src; margin-top: 0; text-align: right; }

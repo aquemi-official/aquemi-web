@@ -158,3 +158,27 @@
   .aq-versus-spread__count { font-size: 14px; }
   .aq-versus-spread__now-t { font-size: 19px; line-height: 26px; }
 }
+
+/* pass 12 round C (svc-fat-sat.0, phone strip): the mini drawing was the whole site at about 0.3 scale, hairlines and
+   unreadable labels. Under 600 px, with the strip on, the drawing is cropped to the zone the row on the reading line
+   tests (data-zone, set with the lit parts): the test bay (x 16-244, y 292-580 of the 400 x 600 drawing, with the
+   utilities under it) or the site loop (x 196-400, y 60-392: riser, tank, loop pump and the first point of use). The
+   crop fills the strip's full height (168 x 199 px), strokes 1.5 px whatever the scale, no labels.
+   Fix round (N7): the crop runs over the whole PhoneKit range (to 860 px); tablets drew the whole site at 0.3 scale too. */
+@container (max-width: 860px) {
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__fig { padding: 0; margin-top: var(--space-6); column-gap: var(--space-4); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__art {
+    position: relative; width: 168px; height: calc(var(--pk-h, 200px) - 1px); aspect-ratio: auto; overflow: hidden;
+    border-right: 1px solid var(--line);
+  }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__svg {
+    position: absolute; left: 0; top: 0; aspect-ratio: auto; transform-origin: 0 0;
+    width: 276.4px; height: 414.6px; transform: translate(-5.9px, -201.8px);
+    transition: width 420ms cubic-bezier(0.2, 0, 0, 1), height 420ms cubic-bezier(0.2, 0, 0, 1), transform 420ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .aq-versus-spread[data-pk-on][data-zone="site"] .aq-versus-spread__svg { width: 239.6px; height: 359.4px; transform: translate(-94.6px, -35.9px); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__svg :is(.aq-versus-spread__eq, .aq-versus-spread__thin, .aq-versus-spread__bound) { vector-effect: non-scaling-stroke; stroke-width: 1.5px; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__mode { margin-top: var(--space-3); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__now { margin-bottom: var(--space-3); }
+}
+@media (prefers-reduced-motion: reduce) { .aq-versus-spread__svg { transition: none !important; } }

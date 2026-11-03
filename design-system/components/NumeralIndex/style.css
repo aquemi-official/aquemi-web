@@ -78,3 +78,32 @@
   .aq-numeral-index__to { flex: 1; min-width: 0; font-size: 15px; line-height: 20px; }
   .aq-numeral-index__arrow { flex: none; width: var(--space-8); }
 }
+
+/* ---------- Pass 12 round C, wide (≥ 861): a shorter index (audit-c group-5 ind-meddevice.0, group-6 projects.1) ----------
+   Numerals 64-96 px, rows on space-6, and the start cell as a 56 px row link (icon, page, arrow); its column name is
+   shown once, over row 1, and kept for screen readers on the others. */
+@container (min-width: 861px) {
+  .aq-numeral-index__row { padding: var(--space-6) 0; }
+  .aq-numeral-index__n { margin-top: 0; font-size: clamp(64px, 7cqi, 96px); line-height: 0.84; }
+  .aq-numeral-index-sec .aq-sec-head .aq-h1 { font-size: 40px; line-height: 44px; letter-spacing: -0.02em; max-width: none; }
+  .aq-numeral-index__t { font-size: 28px; line-height: 34px; max-width: none; text-wrap: balance; }
+  .aq-numeral-index__body { gap: var(--space-2); padding-top: 0; }
+  /* what you need: one line under the situation, its column name over row 1 only (kept for screen readers below) */
+  .aq-numeral-index__need { display: block; padding-top: var(--space-2); font-size: 16px; line-height: 24px; max-width: none; }
+  .aq-numeral-index__need .aq-numeral-index__k { display: block; }
+  .aq-numeral-index__row + .aq-numeral-index__row .aq-numeral-index__need .aq-numeral-index__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-numeral-index__go { display: flex; align-items: center; gap: var(--space-3); min-height: 56px; padding: var(--space-2) var(--space-4); align-self: start; }
+  .aq-numeral-index__go .aq-numeral-index__k { position: absolute; left: 0; bottom: calc(100% + var(--space-2)); white-space: nowrap; }
+  .aq-numeral-index__row + .aq-numeral-index__row .aq-numeral-index__go .aq-numeral-index__k { width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .aq-numeral-index__ic { flex: none; width: var(--space-6); height: var(--space-6); align-self: center; }
+  .aq-numeral-index__to { flex: 1; min-width: 0; font-size: 17px; line-height: 22px; }
+  .aq-numeral-index__arrow { flex: none; width: var(--space-8); align-self: center; }
+  .aq-numeral-index__go:hover .aq-numeral-index__k, .aq-numeral-index__go:focus-visible .aq-numeral-index__k { color: var(--ink-subtle); }
+  .aq-numeral-index__row:first-child .aq-numeral-index__go { margin-top: var(--space-6); }
+}
+@container (min-width: 861px) and (max-width: 1100px) {
+  .aq-numeral-index__row:first-child .aq-numeral-index__go { margin-top: var(--space-4); }
+  /* tablet landscape keeps the three columns (round C verify N4): stacking the start cell left the numeral column empty */
+  .aq-numeral-index__row { grid-template-columns: minmax(0, 1fr) minmax(0, 5fr) minmax(0, 3fr); }
+  .aq-numeral-index__go { grid-column: auto; }
+}

@@ -55,8 +55,12 @@ LOOKS['standards-orbit']=function(b,H){
  /* phone pins: one per zone on the part it governs (zones with no drawn part pin the skid frame) */
  var pins=Z.map(function(z,i){if(!slots[i])return '';var pid=SO_PART[z.spot],a=S.A[pid&&S.A[pid]?pid:'mat'];
   return '<span class="aq-standards-orbit__pin" data-pk-key="'+i+'" style="left:'+(100*a[0]/S.W).toFixed(2)+'%;top:'+(100*a[1]/S.H).toFixed(2)+'%">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
- var plant='<div class="aq-standards-orbit__plant" aria-hidden="true" data-pk-fig style="left:'+(100*px/SW).toFixed(2)+'%;top:'+(100*py/SH).toFixed(2)+'%;width:'+(100*pw/SW).toFixed(2)+'%"><div class="aq-standards-orbit__pan" style="--so-pw:'+S.W+';--so-ph:'+S.H+'">'+S.svg+pins+'</div></div>';
- return sec(H+'<div class="aq-standards-orbit" data-pk-sticky data-pk-h="180" data-pk-bp="599"><div class="aq-standards-orbit__stage" style="--sw:'+SW+';--sh:'+SH+'">'+orbit+plant
+ /* phones (round C): the strip shows the drawing cropped to the plant (the viewBox's empty top and foot cut: 8 % above,
+    none below, so the panel and pump bases are whole) and PhoneKit zooms it 1.15x onto the active zone's pin, so the plant
+    reads about 1.25x larger and all five pins stay in the strip for every zone; desktop and tablets draw the whole viewBox */
+ var cy=Math.round(S.H*0.08),ch=Math.round(S.H*0.92);
+ var plant='<div class="aq-standards-orbit__plant" aria-hidden="true" data-pk-fig style="left:'+(100*px/SW).toFixed(2)+'%;top:'+(100*py/SH).toFixed(2)+'%;width:'+(100*pw/SW).toFixed(2)+'%"><div class="aq-standards-orbit__pan" style="--so-pw:'+S.W+';--so-ph:'+S.H+';--so-cy:'+cy+';--so-ch:'+ch+'"><div class="aq-standards-orbit__layer">'+S.svg+pins+'</div></div></div>';
+ return sec(H+'<div class="aq-standards-orbit" data-pk-sticky data-pk-h="180" data-pk-zoom="1.15" data-pk-bp="599"><div class="aq-standards-orbit__stage" style="--sw:'+SW+';--sh:'+SH+'">'+orbit+plant
   +'<ol class="aq-standards-orbit__zones">'+lab+'</ol></div></div>','aq-band--navy aq-standards-orbit-sec')};
 /* Hover or focus a zone: its arc, node and drawn part light (the zone list drives it, so a keyboard reaches it too) */
 function soLight(z,on){var w=z&&z.closest('.aq-standards-orbit');if(!w)return;var i=z.getAttribute('data-so'),p=z.getAttribute('data-part');

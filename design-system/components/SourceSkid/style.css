@@ -79,3 +79,11 @@
   .aq-source-skid__cn { grid-row: 1 / span 2; padding-top: var(--space-1); }
   .aq-source-skid__by { font-size: 14px; line-height: 20px; }
 }
+/* Pass 12 round C (audit-c group-7 about.1): wide, the drawing holds under the header beside the people cards, so the
+   right column is never empty beside cards 02-03 */
+@container (min-width: 861px) {
+  .aq-source-skid__r { align-self: stretch; }
+  /* the column is a flex column, so the figure keeps its full width (align-self: start would shrink it horizontally);
+     it holds at the top of its own column, which now runs the section's height */
+  .aq-source-skid__fig { position: sticky; top: calc(var(--header-h, 72px) + var(--space-8)); }
+}

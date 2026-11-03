@@ -13,3 +13,5 @@ JointSpine shows a log as rows hanging off a pipe: a twin-wall pipe drops in bes
 Motion: ported from Subframe Motion "SVG line drawing animation" (signature-draw). The pipe is inked over its faint impression in one stroke on cubic-bezier(.37,.12,.28,1) (2.1 s plus 40 ms a row, at most 2.6 s): down the drop, round the bend, down the spine and out of the section; as the ink reaches each joint its tick and number strike and the row prints beside it. Once; nothing under reduced motion (the ink is complete without script).
 
 Pass 12 verify fixes (phones): the key keeps its gap under the lead (`.aq-page p` margin reset outranked it) and each key line leads with the mark of the row part it names: a bold dash (field), an outlined box (chip, `.is-chips`) or a muted rule (second line), a thin ink rule (description). Chips always sit on their own line under the field name; without chips the second line is set in 500.
+
+Pass 12 C (phones): no key row; with `.is-chips` the chip (14 px) sits right of the field name on its first line, and drops under the name when it cannot fit beside a 12rem name.

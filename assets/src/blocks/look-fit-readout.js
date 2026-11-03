@@ -7,7 +7,8 @@
    with none, the axis is bare. The caption is the readout's title strip.
    Concept: design-system/inspiration/gemini/193-p12-industries-fit.png (idea only: never its axis figures or tags).
    Fields (a spec block): h, intro, caption, rows [{p, v, m, link, link_label, hl}], tiles (how many rows are tiles,
-   default 3). Phones: the readout first at full width, then the tiles stacked, then the tags stacked. */
+   default 3). Phones: the readout first at full width, then the tiles stacked, then the tags stacked (at 600 px and
+   under, one ruled list: title and stamp, then the link). */
 function frAxis(r){var w=String(r&&r.p||'').split(/\s+and\s+/i),cap=function(s){s=String(s||'').trim();return s.charAt(0).toUpperCase()+s.slice(1)};
  var m=String(r&&r.v||'').match(/(-?\d+(?:[.,]\d+)?)\s*(?:to|–|-)\s*(-?\d+(?:[.,]\d+)?)\s*(°\s?[CF])/);
  return {x:w.length===2?cap(w[0]):'',y:w.length===2?cap(w[1]):'',lo:m?m[1]:'',hi:m?m[2]+' '+m[3].replace(/\s/g,''):''}}
@@ -37,6 +38,8 @@ LOOKS['fit-readout']=function(b,H){var R=b.rows||[],K='aq-fit-readout',T=Math.mi
  var link=function(r,cls){return r.link&&wp(r.link)?'<a class="'+K+'__go'+(cls?' '+cls:'')+'" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':''};
  var readout='<figure class="'+K+'__readout">'+(b.caption?'<p class="'+K+'__cap" aria-hidden="true"><span>'+tx(b.caption)+'</span><span class="'+K+'__led"></span></p>':'')
   +frChart(hl,++frUid)+'</figure>';
+ /* the readout's own column box spans only the tiles' row, so its sticky hold ends with the tiles, never over the tags */
+ readout='<div class="'+K+'__col">'+readout+'</div>';
  var tiles='<ol class="'+K+'__tiles" role="list">'+R.slice(0,T).map(function(r,i){
   return '<li class="'+K+'__tile'+(r===hl?' is-hl':'')+'" style="--i:'+i+'">'+idx(i)+'<h3 class="'+K+'__t">'+tx(r.p)+'</h3>'
    +(r.v?'<p class="'+K+'__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="'+K+'__m">'+tx(r.m)+'</p>':'')+link(r)+'</li>'}).join('')+'</ol>';

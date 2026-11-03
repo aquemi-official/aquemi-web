@@ -12,3 +12,5 @@ ReaderSplit sets an evidence table on a band split down the middle: the readers 
 Row by row the reader slides in from the left, the node strikes on the seam, the tie shoots across and the reading arrives from the right. Once on scroll-in, under 3.5 s; folded rows left alone; the heading stays with the core.
 
 Pass 12 (phones): hyphenated words in the accordion heads stay on one line (`__nb`); heads are balanced.
+
+Pass 12 C (desktop): rows padded `--space-6`. When every reader name is 30 characters or fewer the section gets `.is-tight`: a 4fr 8fr split (ground, seam, ties, column heads and fold button follow) and 24/27 px names on the first line of their reading (live on buying#compare only).

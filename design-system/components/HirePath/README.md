@@ -10,3 +10,5 @@ HirePath sets the steps into a role as one drawing sheet: the section title and 
 ## Motion
 
 Motion: the plate opens on the joint like an aperture (ported from Subframe Motion "Circular image reveal", aperture-reveal: clip-path circle 25 % to 80 % in 850 ms, cubic-bezier(.22,1,.36,1)), then the dimension hairlines draw and their labels print. A playhead walks the dry rail at one tempo (ported from "Score follow", score-follow); each gate it reaches fills and its number turns flow; at the foot the rail fills and the playhead goes. Once, under 4 s. Pointing at a step glides the playhead to its gate (0.3 s) until the pointer leaves the rail. Nothing under reduced motion: the rail, gates and numbers show walked.
+
+Pass 12 round C: the drawing caption ("Test joint by") is 14 px mono (was 12).

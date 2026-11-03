@@ -78,3 +78,14 @@
   .aq-retrofit-plant__go a { display: inline-flex; align-items: center; min-height: 44px; font-size: 22px; line-height: 28px; }
   .aq-retrofit-plant__go a::after { content: "\2192"; margin-left: var(--space-2); }
 }
+
+/* Round C, phones (S14): the crop goes in about 1.2x on the picked module (the sheet rendered 662 px wide, cropped to
+   the column round the camera's centre, and kept at the old 220 px strip height); the sheet's zone refs (1-9, A-C) are hidden; the key plan shrinks to an
+   outline locator: the plant as a faint silhouette, the camera window over it, no "KEY PLAN" label. */
+@container (max-width: 860px) {
+  .aq-retrofit-plant__svg { width: max(662px, 100%); margin: -22px 0 -22px calc((100% - max(662px, 100%)) / 2); clip-path: inset(22px 0); }
+  .aq-retrofit-plant__svg .aq-iso__sheet .aq-iso__sheet-t { display: none; }
+  .aq-retrofit-plant__key { transform: translate(286px, calc(var(--ky, 300px) - 30px)); }
+  .aq-retrofit-plant__key .aq-iso__sheet-t { display: none; }
+  .aq-retrofit-plant__kplant { opacity: 0.45; }
+}

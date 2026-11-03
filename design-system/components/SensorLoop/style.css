@@ -4,7 +4,7 @@
 .aq-sensor-loop { background: var(--navy); color: var(--on-navy); padding: var(--space-8) var(--space-8) var(--space-6); }
 .aq-sensor-loop__fig { margin: 0 0 var(--space-6); }
 .aq-sensor-loop__svg { display: block; width: 100%; height: auto; overflow: visible; }
-.aq-sensor-loop__svg--p { display: none; }
+.aq-sensor-loop__svg--p, .aq-sensor-loop__svg--s { display: none; }
 .aq-sensor-loop__svg * { vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
 /* the pipe: twin wall, the bore the sheet's navy */
 .aq-sensor-loop__wall { fill: none; stroke: var(--on-navy-muted); stroke-width: 8; }
@@ -55,6 +55,27 @@
   .aq-sensor-loop__p { font-size: 16px; line-height: 22px; }
   .aq-fold:not(.is-open) .aq-sensor-loop__card.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-sensor-loop) > .aq-fold__btn { display: flex; }
+}
+/* Phones under 600 px (pass 12 C, S8): the loop as a 180 px strip held under the header (PhoneKit sticky figure), the
+   tall vertical drawing gone; every note open (the strip points at each), the one being read lit on the strip */
+@container (max-width: 600px) {
+  .aq-sensor-loop__svg--p { display: none; }
+  .aq-sensor-loop__svg--s { display: block; width: 100%; height: 180px; max-width: none; }
+  .aq-sensor-loop__fig { margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-2); }
+  .aq-sensor-loop[data-pk-on] .aq-sensor-loop__fig { background: var(--navy); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+  .aq-sensor-loop__tg, .aq-sensor-loop__nu, .aq-sensor-loop__ht { font-size: 13px; }
+  .aq-sensor-loop__ht--s { text-anchor: end; fill: var(--on-navy-muted); }
+  .aq-sensor-loop[data-pk-on] .aq-sensor-loop__cards { border-top: 0; }
+  .aq-fold:not(.is-open) .aq-sensor-loop[data-pk-on] .aq-sensor-loop__card.aq-fold-x { display: flex; }
+  .aq-fold:has(> .aq-sensor-loop[data-pk-on]) > .aq-fold__btn { display: none; }
+  /* the row in view: its marks lit on the strip, its number tag filled */
+  .aq-sensor-loop__ball.is-pk-active circle { fill: var(--flow); stroke: var(--limestone); }
+  .aq-sensor-loop__mk.is-pk-active .aq-sensor-loop__eq, .aq-sensor-loop__mk.is-pk-active .aq-sensor-loop__thin { stroke: var(--limestone); }
+  .aq-sensor-loop__stem.is-pk-active { stroke: var(--limestone); stroke-dasharray: none; }
+  .aq-sensor-loop__ht.is-pk-active { fill: var(--limestone); }
+  .aq-sensor-loop__loop.is-pk-active .aq-sensor-loop__wall { stroke: var(--limestone); }
+  .aq-sensor-loop__card.is-pk-active .aq-sensor-loop__n { color: var(--limestone); }
+  .aq-sensor-loop__card.is-pk-active .aq-sensor-loop__ntag { background: var(--flow); border-color: var(--flow); }
 }
 @media (prefers-reduced-motion: reduce) {
   .aq-sensor-loop__ball, .aq-sensor-loop__mk, .aq-sensor-loop__stem, .aq-sensor-loop__ht { transition: none; }

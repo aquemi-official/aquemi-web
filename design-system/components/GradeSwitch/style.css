@@ -52,3 +52,15 @@
   .aq-grade-switch__t { font-size: 21px; line-height: 28px; }
   .aq-grade-switch__min { font-size: 16px; }
 }
+
+/* Pass 12 round C, phones under 600 px: the 2-tick scale under each switch goes (it says nothing at this size), the
+   plate sits 8 px inside its frame, and "Minimum water" runs on one line with its value */
+@container (max-width: 600px) {
+  .aq-grade-switch { padding: var(--space-6) var(--space-2) calc(var(--space-4) + var(--space-1)); }
+  .aq-grade-switch__ticks { display: none; }
+  .aq-grade-switch__row { row-gap: var(--space-2); padding: var(--space-3) var(--space-2); }
+  .aq-grade-switch__colh { padding-inline: var(--space-2); }
+  .aq-grade-switch__min { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); }
+  .aq-grade-switch__min .aq-grade-switch__k { flex: none; }
+  .aq-grade-switch__txt { gap: var(--space-1); }
+}

@@ -127,9 +127,9 @@
    "page": "ind-meddevice",
    "slot": 2,
    "h": "Water grade by process step",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "e81d027d64",
    "block": {
@@ -167,6 +167,81 @@
      ]
     ],
     "look": "grade-mains",
+    "lanes": [
+     {
+      "id": "pw",
+      "t": "Purified Water (PW)"
+     },
+     {
+      "id": "wfi",
+      "t": "Water for Injection (WFI)",
+      "note": "We do not supply WFI",
+      "off": true
+     }
+    ],
+    "taps": [
+     [
+      "pw"
+     ],
+     [
+      "pw"
+     ],
+     [
+      "pw",
+      "wfi?"
+     ],
+     [
+      "wfi",
+      "pw?"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 2,
+   "h": "Water grade by process step",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "1f4eab0",
+   "hash": "e32e87b4a5",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "nav": "Grade by step",
+    "anchor": "grades",
+    "h": "Water grade by process step",
+    "intro": "Common practice, not a rule: your risk assessment sets the grade per step.",
+    "cols": [
+     "Process step",
+     "Typical water",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Intermediate rinses; final rinse, intact-skin devices",
+      "PW",
+      "Your cleaning validation; ISO 13485 7.5.2"
+     ],
+     [
+      "Final rinse, radiation or ethylene oxide sterilized",
+      "PW with a microbial action level",
+      "ISO 11737-1 bioburden; ISO 11137-2 dose audits; ISO 11135"
+     ],
+     [
+      "Final rinse, blood or lymph contact",
+      "PW with a written endotoxin limit, or Water for Injection (WFI)",
+      "20.0 endotoxin units per device (USP <161>); tested to USP <85>"
+     ],
+     [
+      "Final rinse, cerebrospinal fluid contact",
+      "WFI, or water held to its endotoxin limit",
+      "2.15 endotoxin units per device (USP <161>)"
+     ]
+    ],
+    "look": "grade-mains",
+    "band": "plain",
     "lanes": [
      {
       "id": "pw",

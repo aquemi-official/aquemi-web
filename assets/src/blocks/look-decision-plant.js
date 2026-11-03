@@ -62,6 +62,23 @@ LOOKS['decision-plant']=function(b,H){var I=b.items||[],n=I.length,rows={l:0,r:0
     y=tr.top+Math.min(tr.height,28)/2-wr.top,x0=(L?r.right+8:r.left-8)-wr.left,mx=m.left+m.width/2-wr.left,my=m.top+m.height/2-wr.top;
     var kx=L?Math.max(x0+16,mx-Math.abs(my-y)*0.6-12):Math.min(x0-16,mx+Math.abs(my-y)*0.6+12);
    var d='M'+x0.toFixed(1)+' '+y.toFixed(1)+'H'+kx.toFixed(1)+'L'+mx.toFixed(1)+' '+my.toFixed(1),p=document.createElementNS(NS,'path');
+   /* round C: a diagonal that would pass another marker, or cut through another part (05 through the 04 train on the
+      left), runs square instead: along to just outside its own part, down beside it, then straight into the marker,
+      so leaders never cross a part or meet at a marker */
+   var dx=mx-kx,dy=my-y,near=[].some.call(w.querySelectorAll('.'+K+'__mk'),function(o){if(o===k||o.offsetParent===null)return false;var b=o.getBoundingClientRect(),
+    cx=b.left+b.width/2-wr.left,cy=b.top+b.height/2-wr.top,q=Math.max(0,Math.min(1,((cx-kx)*dx+(cy-y)*dy)/(dx*dx+dy*dy||1)));
+    return Math.hypot(kx+q*dx-cx,y+q*dy-cy)<b.width/2+14})||(function(){var sv=w.querySelector('.'+K+'__svg'),cm=sv&&sv.getScreenCTM&&sv.getScreenCTM();if(!cm||!window.DOMPoint)return false;cm=cm.inverse();
+    /* the closed shapes (vessels, racks, the title block) of every other part: does the diagonal run through one? */
+    var sh=[].filter.call(w.querySelectorAll('.'+K+'__part path'),function(pa){return pa.closest('.'+K+'__part').getAttribute('data-part')!==it.getAttribute('data-part')&&/Z\s*$/i.test(pa.getAttribute('d')||'')&&pa.isPointInFill});
+    for(var q=0.1;q<0.95;q+=0.02){var sp=new DOMPoint(wr.left+kx+q*dx,wr.top+y+q*dy).matrixTransform(cm);for(var z=0;z<sh.length;z++)if(sh[z].isPointInFill(sp))return true}return false})();
+   var g=near&&w.querySelector('.'+K+'__part[data-part="'+it.getAttribute('data-part')+'"]');
+   /* round C verify: the square route runs under every part between the text and the marker, then rises into the
+      marker from below, so it crosses no closed shape and never lies along a process line */
+   if(g){var mh=m.height/2,sb=w.querySelector('.'+K+'__svg').getBoundingClientRect(),lo=0,
+     a=Math.min(x0,mx)+wr.left,z=Math.max(x0,mx)+wr.left;
+    [].forEach.call(w.querySelectorAll('.'+K+'__part'),function(pp){var pb=pp.getBoundingClientRect();if(pb.right>a&&pb.left<z)lo=Math.max(lo,pb.bottom-wr.top)});
+    var ex=L?x0+16:x0-16,uy=Math.min(lo+12,sb.bottom-wr.top-4);
+    d='M'+x0.toFixed(1)+' '+y.toFixed(1)+'H'+ex.toFixed(1)+'V'+uy.toFixed(1)+'H'+mx.toFixed(1)+'V'+(my+mh).toFixed(1)}
    p.setAttribute('d',d);p.setAttribute('class',K+'__lead');p.setAttribute('data-i',i);svg.appendChild(p)})}
  function show(w,it){var i=it?it.getAttribute('data-i'):null,pt=it?it.getAttribute('data-part'):null;w.classList.toggle('is-pointing',!!it);
   [].forEach.call(w.querySelectorAll('.'+K+'__mk, .'+K+'__lead, .'+K+'__item'),function(x){x.classList.toggle('is-on',x.getAttribute('data-i')===i)});

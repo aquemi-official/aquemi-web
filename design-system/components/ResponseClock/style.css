@@ -45,10 +45,12 @@
   .aq-response-clock__step { grid-template-columns: var(--space-12) minmax(0, 1fr); gap: var(--space-3); padding: var(--space-4) 0; }
   .aq-response-clock__n { font-size: 36px; line-height: 40px; }
   .aq-response-clock__t { font-size: 20px; line-height: 26px; }
-  /* pass 12: a step that links is one tap target, the whole row (its name keeps the arrow); pressed, the row tints */
-  .aq-response-clock__step { position: relative; }
-  .aq-response-clock__go::before { content: ""; position: absolute; inset: 0; z-index: 1; }
+  /* pressed, a linking row tints */
   .aq-response-clock__step:has(.aq-response-clock__go):active { background: color-mix(in srgb, var(--on-navy) 6%, transparent); }
-  .aq-response-clock__go:focus-visible { outline: none; }
-  .aq-response-clock__go:focus-visible::before { outline: 2px solid var(--focus); outline-offset: -2px; }
 }
+/* pass 12 (S6; round C at every width): a step that links is one target, the whole row (its name keeps the arrow,
+   ::after); no visual change. */
+.aq-response-clock__step { position: relative; }
+.aq-response-clock__go::before { content: ""; position: absolute; inset: 0; z-index: 1; }
+.aq-response-clock__go:focus-visible { outline: none; }
+.aq-response-clock__go:focus-visible::before { outline: 2px solid var(--focus); outline-offset: -2px; }

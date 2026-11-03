@@ -93,6 +93,11 @@
 .aq-layer-stack__layer { transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1); }
 .aq-layer-stack__layer.is-hot { transform: translateY(-8px); }
 @media (prefers-reduced-motion: reduce) { .aq-layer-stack__layer { transition: none; } .aq-layer-stack__layer.is-hot { transform: none; } }
+/* Desktop (pass 12 C): the section has no bottom padding and the sheet's foot was measured to the drawing, so the 01
+   label that hangs below it ended 12 px from the edge; a deeper foot leaves 68 px under the last label at 1280 */
+@container (min-width: 861px) {
+  .aq-layer-stack__sheet { padding-bottom: calc(var(--space-16) + var(--space-12) + var(--space-2)); }
+}
 @container (max-width: 860px) {
   .aq-layer-stack__spread { --ls-fs: 52px; }
   .aq-layer-stack__spread > .aq-sec-head .aq-h1 { line-height: 1.02; }

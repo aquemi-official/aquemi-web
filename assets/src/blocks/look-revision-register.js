@@ -16,11 +16,23 @@
    Fields (a register block): h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold,
    fold_noun. Never a date that is not given (the dashed page status instead); the lead note is the featured
    one, else the first of the first topic. Filtering shows every matching note, folded or not; notes that stay glide
-   to their new places and new ones fade in. Phones: title, lead note, filter, notes; no drawing. */
+   to their new places and new ones fade in. Phones: title, lead note, filter, notes; no drawing.
+   Pass 12 round C: an item may name the part its note is about (look-only "part": "pipe"); the featured row then carries
+   data-part and the plate draws that part (IsoKit, a PP pipe cut section in a socket at 3x the kit's pipe radius)
+   in place of the page vignette, so the preview opens on the note's own subject. */
 (function(){
 /* rrCount: the count words for a set of notes, dated ones as notes and undated ones as topics (DR-018 rule 6) */
 function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+(p===1?' topic':' topics'):'';return (a&&z?a+' · '+z:(a||z||'0 notes'))+(t?' in '+t:'')}
 var RR_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-storage':'storage-tank','sys-pretreatment':'pretreatment'},P='aq-revision-register'+'__';
+/* rrPart: the part a note is about, drawn with IsoKit (only "pipe" so far): a socket collar, the pipe leaving it towards
+   the viewer, and its cut face (wall annulus over the sunken bore) */
+function rrPart(k){if(k!=='pipe'||typeof isoCylD!=='function')return '';
+ var r=7.2,R=r*1.32,y0=-34,yc=y0+14,y1=30,cl=isoCylD([0,y0,0],'y',14,R),pp=isoCylD([0,yc,0],'y',y1-yc,r);
+ var inner='<path class="aq-iso__eq" d="'+cl[0]+cl[1]+'"/><path class="aq-iso__eq" d="'+pp[0]+pp[1]+'"/>'
+  +'<path class="aq-iso__eq aq-iso__eq--alt" d="'+isoRingD([0,y1,0],'y',r*0.8)+'"/>'
+  +'<path class="aq-iso__thin" d="'+isoBandD([0,yc+2.5,0],'y',r)+'"/>';
+ var bb=isoBounds([[0,y0,R],[0,y0,-R],[R,y0,0],[-R,y0,0],[0,y1,r],[0,y1,-r],[r,y1,0],[-r,y1,0],[0,y0,0],[0,y1,0]],6);
+ return isoSvg(bb.w,bb.h,inner,'aq-iso--limestone '+P+'part',{origin:[-bb.x,-bb.y]})}
 function rrSpot(it){var pg=wsplit(it.link||'')[0],s=it.spot||RR_SPOT[pg]||pageIcon(pg)||'';return isVig(s)?s:''}
 LOOKS['revision-register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
  var dated=function(it){return !!it.date&&!/^\s*\[/.test(String(it.date))};
@@ -36,11 +48,11 @@ LOOKS['revision-register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.
   +'<h3 class="'+P+'lt">'+tx(f.t)+'</h3>'+(f.std?'<p class="'+P+'lstd">'+tx(f.std)+'</p>':'')
   +(fl?'<p class="'+P+'go">'+(self?wlink(f.link,'Read the note'):'Applied on '+wlink(f.link))+'</p>':'')+'</aside>';
  /* the drawing plate: one figure per page a note is applied on, the lead's shown */
- var keys=[],fk=rrSpot(f);I.forEach(function(it){var k=rrSpot(it);if(k&&keys.indexOf(k)<0)keys.push(k)});
- var fig='<div class="'+P+'fig" aria-hidden="true"><span class="'+P+'frame"></span>'+keys.map(function(k){return '<span class="'+P+'dw'+(k===fk?' is-on':'')+'" data-k="'+e(k)+'">'+wSpot(k,'l',P+'spot')+'</span>'}).join('')
+ var keys=[],fpart=f.part&&rrPart(f.part)?String(f.part):'',fk=fpart?'part-'+fpart:rrSpot(f);if(fpart)keys.push(fk);I.forEach(function(it){var k=rrSpot(it);if(k&&keys.indexOf(k)<0)keys.push(k)});
+ var fig='<div class="'+P+'fig" aria-hidden="true"><span class="'+P+'frame"></span>'+keys.map(function(k){return '<span class="'+P+'dw'+(k===fk?' is-on':'')+'" data-k="'+e(k)+'">'+(fpart&&k===fk?rrPart(fpart):wSpot(k,'l',P+'spot'))+'</span>'}).join('')
   +'<span class="'+P+'figcap">'+I.map(function(it,i){var p=it.link&&wp(it.link);return p?'<span data-i="'+i+'"'+(i===fi?' class="is-on"':'')+'>'+no(i)+' · '+e(p.nav_label||'')+'</span>':''}).join('')+'</span></div>';
  var notes=I.map(function(it,i){var tt=it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t);
-  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(rrSpot(it))+'" data-i="'+i+'"'+(dated(it)?' data-dated=""':'')+'>',b,i)
+  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(i===fi&&fpart?fk:rrSpot(it))+'" data-i="'+i+'"'+(i===fi&&fpart?' data-part="'+e(fpart)+'"':'')+(dated(it)?' data-dated=""':'')+'>',b,i)
    +'<span class="'+P+'no">'+no(i)+'.'+(i===fi?tri:'')+'</span><div class="'+P+'nb"><h3 class="'+P+'nt">'+tt+'</h3>'
    +'<p class="'+P+'meta">'+st(it)+(it.topic?'<span>'+tx(it.topic)+'</span>':'')+(it.std?'<span>'+tx(it.std)+'</span>':'')+'</p></div></li>'}).join('');
  var col='<div class="'+P+'col"><div class="'+P+'strip">'+tabs+'</div>'+wFold(b,I.length,'<ul class="'+P+'notes" role="list">'+notes+'</ul>',b.fold_noun||'notes')+'</div>';

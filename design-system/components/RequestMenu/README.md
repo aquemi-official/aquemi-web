@@ -14,3 +14,8 @@ Look `request-menu` (`assets/src/blocks/look-request-menu.js`), pass 9b; built f
 `motion.js`: ported from Subframe Motion "Scroll-driven image reveal" (scroll-window): one scroll progress (sheet top from the viewport foot to 30 % from the top) mapped to a phase with clamp(p × 1.24), eased out, carries the title in from beyond the right edge (26 % of its width; 18 % on phones), so it starts cropped like the concept and lands whole before the menu is read. The page's one scroll-linked story; the words never fade. The skid draws with `AQiso.timeline` (1.3 s lines, then the water runs the route once); the menu's cells follow in reading order (12 px, 0.5 s, 35 ms apart). Ported from Subframe Motion "Chart crosshair tooltip" (chart-crosshair): pointing at or focusing a line snaps a `flow-tint` band under it (no easing), lights its situation's number and the column head under the pointer (a `flow` bar under the head). Nothing under reduced motion except the crosshair, which the visitor drives.
 
 Pass 12: the form-to-accordion sync opens a situation only if it is not already open (PhoneKit open() toggles an open row shut).
+
+## Pass 12 round C (wide)
+
+Above 860 px the head is set at the shared section-head size (40/44) and the skid holds 120 px under the top
+(sticky, `align-self: start`) while the menu scrolls past it.

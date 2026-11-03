@@ -138,3 +138,14 @@
   .aq-joint-macro__now-n { font-size: 15px; }
   .aq-joint-macro__now-t { font-size: 19px; line-height: 26px; }
 }
+
+/* pass 12 round C (svc-fabrication.1). Phones (S4): the placeholder chips in the rows at 13 px on a 15 px box, the
+   value lines at 1.6 so wrapped chips never touch. Desktop: the frame starts at the content gutter (no left bleed),
+   in line with the heading and the rows. */
+@container (max-width: 860px) {
+  .aq-joint-macro__rows .aq-ph { font-size: 13px; line-height: 15px; }
+  .aq-joint-macro__rows .aq-joint-macro__v, .aq-joint-macro__rows .aq-joint-macro__vm .aq-joint-macro__m { line-height: 1.6; }
+}
+@container (min-width: 861px) {
+  .aq-joint-macro__stage { margin-left: 0; }
+}

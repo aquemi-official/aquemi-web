@@ -4,7 +4,7 @@
  "type": "grid",
  "fields": "h, intro, items [{t, d, tag, icon, link}].",
  "best_for": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's status line set as the giant reading and its standard as a small line, beside the items as mono readout lines whose titles are buttons that put them on the readout.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "cmp-quality",
@@ -160,7 +160,7 @@
    "page": "cmp-quality",
    "slot": 1,
    "h": "Certification status",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",

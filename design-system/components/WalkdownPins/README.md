@@ -6,7 +6,7 @@ Concept: pass 9b svc-cq.2 (checks table left, isometric skid right labelled at t
 `<section class="aq-section aq-walkdown-pins-sec">` > section head, `.aq-walkdown-pins` > `__tab` (`__cols` column head, aria-hidden, and the fold wrapping `ol.__list` > `li.__row[data-row][data-lit][tabindex=0]` (`__n`, `h3.__t` with `__tag--iq|oq`, `p.__v`, `p.__m`)) and `__fig` > `__sheet` (IsoKit svg with `isoSheet` and leader callouts `g.__lead`, HTML `span.__lab[data-part]` names and `span.__pin[data-row]` number markers placed by `isoPct`).
 
 ## Fields
-As a spec block: `cols`, `rows` [{`p`, `v`, `m`, `part`}], `labels` {part: short drawing name} (leader callouts, aria-hidden), `fold`, `fold_noun`. `p` "IQ · Joints" splits into the tag and the name. `part`: "branch", "joint", "analyzer", "coldest", "outlets", "panel", "skid", "gauge" (the drawing anchor and the parts that light); default "skid". Two markers on one part step apart.
+As a spec block: `cols`, `rows` [{`p`, `v`, `m`, `part`}], `labels` {part: short drawing name} (leader callouts, aria-hidden), `fold`, `fold_noun`. `p` "IQ · Joints" splits into the tag and the name. `part`: "branch", "joint", "analyzer", "coldest", "outlets", "panel", "skid", "gauge" (the drawing anchor and the parts that light); default "skid". Two markers on one part: the second sits 28 units right of the first in the pin data (pass 12 round C; 06 and 09 on the panel no longer touch).
 
 ## Rules
 - Table 6 of 12 (number in flow mono, check, what we verify, basis in mono), sheet 6 of 12 and sticky. IQ tags ruled in `ink` (installed), OQ tags filled `flow` (running).

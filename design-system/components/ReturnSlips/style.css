@@ -32,7 +32,17 @@
 /* The slips: paper with a folded corner and a ruled header, the returned item, then When and Cost */
 .aq-return-slips__slips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); row-gap: 0; }
 .aq-return-slips__slip:nth-child(n+5) { margin-top: var(--space-4); }
-.aq-return-slips__slip:only-child { grid-column: span 2; }
+.aq-return-slips__slip:only-child { grid-column: 1 / -1; }
+/* pass 12 C: a lone slip spans the column, its When and Cost side by side */
+.aq-return-slips__slip:only-child .aq-return-slips__f { flex-direction: row; gap: var(--space-8); }
+.aq-return-slips__slip:only-child .aq-return-slips__f > div { flex: 1 1 0; min-width: 0; }
+/* pass 12 C (desktop): when every row returns one slip, the situation gets 4 of 12 columns, so its 32 px head wraps
+   to two or three lines beside a lone slip instead of four */
+@container (min-width: 861px) {
+  .aq-return-slips-sec:not(:has(.aq-return-slips__slip:nth-child(2))) .aq-return-slips__row,
+  .aq-return-slips-sec:not(:has(.aq-return-slips__slip:nth-child(2))) .aq-return-slips__cols {
+    grid-template-columns: minmax(0, 4fr) var(--rs-gut, var(--space-16)) minmax(0, 8fr); }
+}
 .aq-return-slips__slip {
   position: relative; display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: var(--space-3); min-width: 0;
   padding: var(--space-4);
@@ -67,15 +77,17 @@
   .aq-return-slips__have { grid-template-columns: var(--space-8) minmax(0, 1fr); padding-right: 0; }
   .aq-return-slips__s { font-size: 24px; line-height: 30px; }
   /* the pipe turns down: from the situation into its slips */
-  .aq-return-slips__pipe { justify-self: start; margin: 0 0 0 calc(var(--space-8) + var(--space-2)); width: var(--space-3); height: var(--space-8);
-    border-block: 0; border-inline: 1.5px solid var(--line-strong); transform: scaleY(var(--aq-pipe, 1)); transform-origin: center top; }
-  .aq-return-slips__pipe i { left: 50%; right: auto; top: 0; bottom: var(--space-2); height: auto; border-top: 0; border-left: 1.5px solid var(--flow);
+  /* pass 12 C: one inline 20 px arrow (was a 32 px twin-wall block) */
+  .aq-return-slips__pipe { justify-self: start; margin: calc(-1 * var(--space-1)) 0 calc(-1 * var(--space-1)) calc(var(--space-8) + var(--space-2)); width: var(--space-3); height: 20px;
+    border-block: 0; border-inline: 0; transform: scaleY(var(--aq-pipe, 1)); transform-origin: center top; }
+  .aq-return-slips__pipe i { left: 50%; right: auto; top: 0; bottom: 3px; height: auto; border-top: 0; border-left: 1.5px solid var(--flow);
     transform: scaleY(var(--aq-water, 1)); transform-origin: center top; }
-  .aq-return-slips__pipe::after { right: auto; left: 50%; top: auto; bottom: calc(-1 * var(--space-1)); transform: translateX(-50%) rotate(135deg); }
+  .aq-return-slips__pipe::after { right: auto; left: 50%; top: auto; bottom: 1px; width: var(--space-2); height: var(--space-2); transform: translateX(-50%) rotate(135deg); }
   .aq-return-slips__slips { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
   .aq-return-slips__slip { display: flex; flex-direction: column; gap: var(--space-3); }
   .aq-return-slips__slip:nth-child(n+5) { margin-top: 0; }
   .aq-return-slips__slip:only-child { grid-column: auto; }
+  .aq-return-slips__slip:only-child .aq-return-slips__f { flex-direction: column; gap: var(--space-2); }
   .aq-return-slips__f > div { display: grid; grid-template-columns: minmax(0, 4.5rem) minmax(0, 1fr); column-gap: var(--space-3); align-items: baseline; }
   .aq-return-slips__t { font-size: 16px; line-height: 24px; }
 }

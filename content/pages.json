@@ -229,7 +229,7 @@
        "t": "Water in use",
        "d": "After performance qualification (PQ) phase 1, your quality unit releases the water. The project plan shows each stage's length, notice and who holds it.",
        "link": "project-plan",
-       "art": "ind-pharma"
+       "art": "sys-storage"
       },
       {
        "t": "Support",
@@ -558,7 +558,7 @@
        {
         "t": "Hospitals and laboratories",
         "link": "ind-hospital-lab#grades",
-        "art": "generation"
+        "art": "outlet"
        }
       ],
       [
@@ -944,8 +944,8 @@
        "d": "Prove outlet quality and every divert; deviations closed; SAT run on your feed water",
        "key": true,
        "at": [
-        0.12,
-        0.45
+        0.2,
+        0.33
        ]
       },
       {
@@ -953,8 +953,8 @@
        "d": "Predict output at your coldest feed and at end of membrane life; FAT and SAT confirm it",
        "key": true,
        "at": [
-        0.2,
-        0.33
+        0.66,
+        0.14
        ]
       },
       {
@@ -962,8 +962,8 @@
        "d": "Prove the product-contact grade: [PP material certificates]. Membranes, EDI modules and resin arrive with makers' certificates and serial or lot numbers.",
        "key": true,
        "at": [
-        0.66,
-        0.14
+        0.12,
+        0.45
        ]
       },
       {
@@ -971,8 +971,8 @@
        "d": "Prove each joint: [PP joining method]; [PP joint records kept]",
        "key": true,
        "at": [
-        0.4,
-        0.84
+        0.91,
+        0.46
        ]
       },
       {
@@ -980,8 +980,8 @@
        "d": "Prove the skid as built matches the approved drawings: piping and instrumentation diagrams and general arrangement",
        "key": true,
        "at": [
-        0.78,
-        0.47
+        0.4,
+        0.84
        ]
       }
      ],
@@ -3898,7 +3898,8 @@
    "blocks": [
     {
      "type": "table",
-     "look": "record-slips",
+     "look": "joint-tag",
+     "seam": "plain",
      "h": "One joint, one log line",
      "cols": [
       "Field in the joint log, and what it proves",
@@ -7403,6 +7404,7 @@
       ]
      ],
      "look": "grade-mains",
+     "band": "plain",
      "lanes": [
       {
        "id": "pw",
@@ -8649,7 +8651,8 @@
        "d": "[PP loop sanitization method]; residual tested before use. PVC stays upstream, out of the critical-water loop."
       }
      ],
-     "look": "train-strip"
+     "look": "train-strip",
+     "band": "limestone"
     },
     {
      "type": "docs",
@@ -8684,7 +8687,6 @@
        "d": "Chemicals brought on site; drain discharge; isolation points"
       }
      ],
-     "fold": 4,
      "fold_noun": "sections",
      "look": "spine-shelf"
     },
@@ -8906,7 +8908,8 @@
        }
       ]
      ],
-     "look": "manifold-router"
+     "look": "manifold-router",
+     "panel": "compact"
     },
     {
      "type": "table",
@@ -9664,7 +9667,7 @@
      "anchor": "engineering",
      "look": "skid-tags",
      "parts": [
-      "",
+      "vessel",
       "panel",
       "deadleg",
       "wall",
@@ -9821,12 +9824,25 @@
     "Pass 12 (SITE-PLAN compliance; IB §4; RI 04, 15; NS critic A; FD-59, FD-60): pharmacopoeia table retitled 'Pharmacopoeias and other water standards' and given the hospital and laboratory rows (ST108:2023; ASTM D1193-24 and CLSI GP40 5th edition), two rows, gated by [hospital water scope] and [lab water scope], both linking ind-hospital-lab#grades, the hospital row keeping 'your program shows compliance' (pass 12 review finding 1) (never Purified Water, never bare 'Type 2'); limits intro says your quality unit releases the water (RI 04, 15) and the note names the edition basis; GMP devices row proof drops the readiness date; FAQ block gets anchor 'faq'. Hospital and lab scope stays on ind-hospital-lab ([hospital water scope], [lab water scope]); the CLSI GP40 edition and the ASTM D1193-24 types follow industries/pw-quality-and-limits.md §3 and need the same quality review as the other rows"
    ],
    "figure": {
-    "spots": [
-     "pretreatment",
-     "ro-skid",
-     "storage-tank"
+    "look": "compliance-matrix",
+    "title": "Compliance matrix",
+    "cols": [
+     "Your clause",
+     "Meets",
+     "With a note",
+     "Differs",
+     "Proof"
     ],
-    "label": "Pretreatment · generation · storage"
+    "cells": [
+     "[clause]",
+     "[document code]"
+    ],
+    "ticks": [
+     1,
+     1,
+     2,
+     1
+    ]
    }
   },
   {
@@ -10346,7 +10362,7 @@
        "icon": "monitor"
       }
      ],
-     "look": "cert-readout"
+     "look": "cert-seals"
     },
     {
      "type": "steps",
@@ -10953,12 +10969,6 @@
       ]
      ],
      "look": "check-ledger",
-     "fits": {
-      "1": [
-       "cross",
-       "tee"
-      ]
-     },
      "intro": "References and site visits are arranged with our commercial lead during qualification."
     },
     {
@@ -11202,7 +11212,8 @@
        "t": "Service and spares",
        "d": "From [service bases, cities], with spares in [stock location or locations].",
        "link": "contact-locations#coverage",
-       "icon": "valve"
+       "icon": "valve",
+       "fig": "truck"
       }
      ],
      "look": "site-tiles"
@@ -11297,12 +11308,13 @@
     "Launch (DR-026 launch rule): if buying is not published, the hero secondary returns to cmp-quality#buying, related drops buying, and the Insurance row links cmp-quality#audit"
    ],
    "figure": {
-    "spots": [
-     "pretreatment",
-     "ro-skid",
-     "edi-stack"
-    ],
-    "label": "Pretreatment · RO · deionization"
+    "look": "shop-bay",
+    "from": "people",
+    "at": [
+     "table",
+     "panel",
+     "desk"
+    ]
    }
   },
   {
@@ -12158,21 +12170,16 @@
    "primary_cta_link": "#roles",
    "hero_index": false,
    "figure": {
-    "spots": [
-     {
-      "spot": "pid",
-      "t": "Design"
-     },
-     {
-      "spot": "ro-skid",
-      "t": "Build"
-     },
-     {
-      "spot": "wrench",
-      "t": "Service"
-     }
-    ],
-    "label": "Design · build · service"
+    "look": "shop-bay",
+    "from": "roles",
+    "at": [
+     "desk",
+     "joint",
+     "stand",
+     "panel",
+     "van",
+     "table"
+    ]
    }
   },
   {
@@ -12208,6 +12215,7 @@
        "link": "news#pp-or-stainless",
        "featured": true,
        "spot": "storage-tank",
+       "part": "pipe",
        "d": "Our standard says stainless steel. Can a polypropylene loop carry our Purified Water?"
       },
       {
@@ -12430,7 +12438,8 @@
        "No cause was found, and your engineers will not accept plastic again."
       ]
      ],
-     "look": "macro-leaders"
+     "look": "macro-leaders",
+     "macro": "pipe-pair"
     },
     {
      "type": "steps",
@@ -12653,9 +12662,9 @@
    },
    "figure": {
     "spots": [
-     "edi-stack",
-     "storage-tank",
-     "pretreatment"
+     "pretreatment",
+     "ro-skid",
+     "storage-tank"
     ],
     "label": "One question per note"
    }
@@ -13257,10 +13266,12 @@
    ],
    "hero_index": false,
    "figure": {
-    "spots": [
-     "ro-skid",
-     "edi-stack",
-     "storage-tank"
+    "look": "reply-flow",
+    "from": "requests",
+    "keys": [
+     "I have a URS or a draft",
+     "I have an RFQ or a tender",
+     "A written answer from an engineer"
     ]
    }
   },
@@ -14263,10 +14274,13 @@
    ],
    "hero_index": false,
    "figure": {
-    "spots": [
-     "pretreatment",
-     "ro-skid",
-     "storage-tank"
+    "look": "site-map",
+    "from": "locations",
+    "at": [
+     "office",
+     "shop",
+     "van",
+     "crates"
     ]
    }
   }

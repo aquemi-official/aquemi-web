@@ -10,3 +10,6 @@ RecordAnatomy explains what a published record carries as a drawing sheet: the t
 ## Motion
 
 Motion: the sheet unrolls and the zone band fades up; then the title block is read row by row: a lit window glides onto the row's drawing, the drawing draws on (the bar rises under its limit, the stamp strikes once), the field name decodes and the text rises; the approval's two signatures ink over their faint impressions (ported from Subframe Motion signature-draw: 0.8 s, cubic-bezier(.37,.12,.28,1)). The window lets go at the end. Once, under 4.5 s. Pointing at or focusing a title-block row glides the lit window onto its drawing while the others quieten (ported from guided-inspection: left, top, width and height 0.55 s cubic-bezier(.22,.75,.22,1), a CSS transition driven by the renderer, instant under reduced motion).
+
+**Dark (pass 12 round C, RC1).** The sheet (`.aq-record-anatomy`) carries `data-paper`, so in dark it stays paper,
+dimmed, and its navy rules and figure label keep their contrast on the stone band. Light mode is unchanged.

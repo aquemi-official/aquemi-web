@@ -74,7 +74,7 @@ LOOKS['redline-sheet']=(function(){
     +'</li>'}).join('')+'</ol>';
   var tb=blk.length?'<div class="aq-redline-sheet__block" aria-hidden="true">'+blk.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'<span>'+R.length+' markups</span></div>':'';
   var kinds=R.map(function(r,i){return FIG[F[i]]?F[i]:pick(r)});
-  return sec(H+'<div class="aq-redline-sheet" data-theme="light" data-pk-sticky data-pk-h="150" data-pk-zoom="1">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
+  return sec(H+'<div class="aq-redline-sheet" data-theme="light" data-paper data-pk-sticky data-pk-h="150" data-pk-zoom="1">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
 })();
 /* Pointing at a markup column turns the band's camera onto its pin: ported from Subframe Motion "Product tour
    spotlight" (guided-inspection), MIT, (c) 2026 Subframe: the plan scales about the stop (x1.7) and recentres in

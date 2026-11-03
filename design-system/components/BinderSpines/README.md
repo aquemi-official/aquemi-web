@@ -12,3 +12,4 @@ BinderSpines sets an evidence table (who inspects, what they read, where we answ
 ## Motion
 
 The plant draws itself (IsoKit choreography, the water once round the loop), the shelf runs out from the left, then the binders are filed onto it one by one (each drops into place with a slight tilt and settles), the paper label prints in, the clause decodes, the reading and the answer follow. Once on scroll-in, under 4.5 s; folded binders left alone; nothing under reduced motion.
+- Pass 12 C: 861-1600 px the plant sits whole and centred in a band of about 260 px under the shelf (its empty margins cropped); phones show the whole plant, small, above the stacked binders (static, margins cropped), capped at 440 px wide and centred, so at 768 the plant is about 300 px tall, not 520. The clause scramble starts from blank as each binder files in, and a clause with no digit ("Your URS") prints plainly. Limestone binders' arrows are `on-limestone`.

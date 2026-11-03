@@ -3,6 +3,9 @@
    one row under both. The readout is a drawing: hairline axes and ticks in on-navy-muted, the curve in on-navy, the
    limit line dashed in on-navy-muted, the field beyond it hatched out. */
 .aq-fit-readout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-12); row-gap: var(--space-12); align-items: start; }
+/* the readout's column: stretched to the tiles' row, so the sticky readout inside it stops where the tiles end (a grid
+   item's own sticky hold runs to the grid's foot and slid over the tags) */
+.aq-fit-readout__col { grid-column: 1; grid-row: 1; align-self: stretch; min-width: 0; }
 .aq-fit-readout__readout { position: sticky; top: var(--space-24); margin: 0; padding: var(--space-4) var(--space-4) var(--space-3); background: var(--navy); color: var(--on-navy);
   border-radius: var(--radius-sm); box-sizing: border-box; }
 .aq-fit-readout__cap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin: 0 0 var(--space-3); padding-bottom: var(--space-2);
@@ -56,8 +59,9 @@
 /* Phones: the readout first at full width, the tiles stacked, then the tags stacked */
 @container (max-width: 860px) {
   .aq-fit-readout { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-fit-readout__col { grid-row: auto; }
   .aq-fit-readout__readout { position: static; padding: var(--space-3); }
-  .aq-fit-readout__lab { font-size: 15px; }
+  .aq-fit-readout__lab { font-size: 16px; }
   .aq-fit-readout__val { font-size: 16px; }
   .aq-fit-readout__tiles { gap: var(--space-3); }
   .aq-fit-readout__tile { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-4); }
@@ -72,6 +76,27 @@
 /* Tablets (601-860): the readout keeps its own column beside the tiles, the tags run two to a row */
 @container (min-width: 601px) and (max-width: 860px) {
   .aq-fit-readout { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-6); }
+  .aq-fit-readout__col { grid-row: 1; }
   .aq-fit-readout__readout { position: sticky; top: var(--space-24); }
   .aq-fit-readout__tags { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* 600 px and under (pass 12 round C): the tags are one ruled list, no card padding; each row is its title with the
+   stamp beside it, then its basis or its link; every secondary line 14 px */
+@container (max-width: 600px) {
+  /* the three tiles are the same ruled list as the tags (no card, numerals kept), so the stack reads as one sheet; the
+     tags' own top rule closes it, so no double rule */
+  .aq-fit-readout__tiles { gap: 0; }
+  .aq-fit-readout__tile { padding: var(--space-3) 0; row-gap: var(--space-1); border: 0; border-top: 1px solid var(--line-strong); border-radius: 0; background: none; }
+  .aq-fit-readout__tile + .aq-fit-readout__tile { border-top-color: var(--line); }
+  .aq-fit-readout__tile .aq-fit-readout__go { margin-block: calc(-1 * var(--space-2)); }
+  .aq-fit-readout__tags { display: block; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+  .aq-fit-readout__tag, .aq-fit-readout__tag.is-not { flex-flow: row wrap; align-items: center; gap: var(--space-1) var(--space-2); padding: var(--space-3) 0;
+    border: 0; border-radius: 0; }
+  .aq-fit-readout__tag + .aq-fit-readout__tag { border-top: 1px solid var(--line); }
+  .aq-fit-readout__tp { flex: 0 1 auto; min-width: 0; }
+  .aq-fit-readout__tv, .aq-fit-readout__tm, .aq-fit-readout__go--tag { flex: 1 0 100%; }
+  .aq-fit-readout__tag.is-not .aq-fit-readout__tv { flex: none; }
+  .aq-fit-readout__tv, .aq-fit-readout__tm { font-size: 14px; line-height: 20px; }
+  .aq-fit-readout__go--tag { margin: calc(-1 * var(--space-2)) 0 calc(-1 * var(--space-3)); font-size: 15px; }
 }

@@ -29,11 +29,21 @@
 .aq-cost-skid__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .aq-cost-skid__row > .aq-cost-skid__n { padding-left: var(--space-3); font: 400 12px/24px var(--font-mono); color: var(--ink-muted); }
 .aq-cost-skid__p { width: 34%; font: 400 17px/24px var(--font-sans); }
-.aq-cost-skid__v { width: 30%; font: 400 14px/22px var(--font-mono); }
+/* round C: values in sans 15/22; only a [bracketed] placeholder is mono (its chip), so a written value never
+   switches the table into mono */
+.aq-cost-skid__v { width: 30%; font: 400 15px/22px var(--font-sans); }
+@container (min-width: 861px) { .aq-cost-skid__v .aq-ph { font-size: 12px; } }
 .aq-cost-skid__m { font-size: 15px; line-height: 22px; color: var(--ink-muted); }
 .aq-cost-skid__k { display: none; }
 .aq-cost-skid__row.is-on > * { background: var(--flow-tint); }
 .aq-cost-skid__row.is-on .aq-cost-skid__n { color: var(--flow); }
+
+/* round C, the "Site safety" use (cmp-documentation, anchor safety): the drawing starts at grid column 6 (5fr / 7fr),
+   so the long heading never runs into it, and the drawing keeps a space-8 clear of the table's header rule. */
+@container (min-width: 861px) {
+  .aq-cost-skid-sec[id="safety"] .aq-cost-skid__top { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .aq-cost-skid-sec[id="safety"] .aq-cost-skid__fig { margin-block-end: var(--space-8); }
+}
 
 /* the phone's third-column button (desktop shows the column itself) */
 .aq-cost-skid__why { display: none; }

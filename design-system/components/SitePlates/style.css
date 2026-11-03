@@ -106,3 +106,11 @@
   .aq-site-plates__place { font-size: var(--aq-read-phone, 14px); }
   .aq-site-plates__row > td a { padding-block: var(--space-3); }
 }
+/* Pass 12 round C (audit-c group-7 contact-locations.1): the phone strip's drawing about 150 px tall on brand navy (the
+   plate's dark scope turned its navy near-black; --sp-navy is resolved outside that scope) */
+.aq-site-plates { --sp-navy: var(--navy); }
+@container (max-width: 860px) {
+  .aq-site-plates[data-pk-on] .aq-site-plates__plate { background: var(--sp-navy, var(--navy)); }
+  .aq-site-plates[data-pk-on] .aq-site-plates__still { gap: var(--space-1); padding: var(--space-2) var(--space-4) var(--space-1); }
+  .aq-site-plates[data-pk-on] .aq-site-plates__cap { padding-bottom: var(--space-1); }
+}

@@ -55,7 +55,7 @@
 .aq-section-train__stage + .aq-section-train__stage { border-left: 1px solid color-mix(in srgb, var(--on-limestone-muted) 35%, transparent); }
 .aq-section-train__mini { display: none; }
 .aq-section-train__text { display: flex; flex-direction: column; gap: var(--space-2); }
-.aq-section-train__no { margin: 0; font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-section-train__no { margin: 0; font: 400 12px/16px var(--font-mono); color: var(--on-limestone); } /* pass 12 C: full ink, 12 px mono needs it */
 .aq-section-train__stage.is-on .aq-section-train__no .aq-index { color: var(--flow); }
 .aq-section-train__t { margin: 0; font: 500 16px/22px var(--font-sans); letter-spacing: -0.005em; color: var(--on-limestone); }
 .aq-section-train__t a { color: var(--flow); text-decoration: underline; text-underline-offset: 3px; }
@@ -69,20 +69,21 @@
   font: 400 13px/20px var(--font-mono); color: var(--on-limestone-muted); }
 .aq-section-train__base-mark { flex: none; width: var(--space-12); height: 0; border-top: 1px dashed var(--on-limestone-muted); }
 
-/* Phones: one frame of the elevation per stage, run down the page on a pipe rail at the left */
+/* Phones: one frame of the elevation per stage, run down the page on a pipe rail at the left (pass 12 C: frames
+   76 px wide, scale 0.38 of the 200-unit column, so rail, offsets and the outlet fold scale with them) */
 @container (max-width: 860px) {
   .aq-section-train__svg { display: none; }
   .aq-section-train__stages { grid-template-columns: minmax(0, 1fr); }
-  .aq-section-train__stage { display: grid; grid-template-columns: 104px minmax(0, 1fr); column-gap: var(--space-4); align-items: start;
-    padding: 0 0 var(--space-6); border: 0; }
+  .aq-section-train__stage { display: grid; grid-template-columns: 76px minmax(0, 1fr); column-gap: var(--space-4); align-items: start;
+    padding: 0 0 var(--space-4); border: 0; }
   .aq-section-train__stage + .aq-section-train__stage { border-left: 0; }
-  .aq-section-train__stage::before { content: ""; position: absolute; left: 52px; top: 0; bottom: 0; width: 3px; transform: translateX(-50%);
+  .aq-section-train__stage::before { content: ""; position: absolute; left: 38px; top: 0; bottom: 0; width: 3px; transform: translateX(-50%);
     border-inline: 1px solid var(--on-limestone); background: var(--surface-raised); z-index: 0; }
   /* the rail is the pipe: it starts at the feed lens, runs behind every vessel (their walls and beds are filled, the
      paper round them is not) and ends at the outlet lens */
-  .aq-section-train__stage:first-child::before { top: 78px; }
-  .aq-section-train__stage:last-child::before { bottom: auto; height: 78px; }
-  .aq-section-train__mini { display: block; position: relative; z-index: 1; width: 104px; height: auto; background: transparent; }
+  .aq-section-train__stage:first-child::before { top: 57px; }
+  .aq-section-train__stage:last-child::before { bottom: auto; height: 57px; }
+  .aq-section-train__mini { display: block; position: relative; z-index: 1; width: 76px; height: auto; background: transparent; }
   /* the backflow preventer turns onto the rail; the outlet's arrowhead is the rail's end, so it goes */
   .aq-section-train__mini .aq-section-train__valve { transform-box: fill-box; transform-origin: center; transform: translate(52px, 0) rotate(90deg); }
   .aq-section-train__mini .aq-section-train__arrow, .aq-section-train__mini .aq-section-train__dot { display: none; }
@@ -93,7 +94,7 @@
   .aq-section-train__base-mark { width: var(--space-6); margin-top: var(--space-3); }
   /* pass 12: the outlet row ("To RO") folds to the lens: no dead paper under it, the link a 44 px target beside the lens */
   .aq-section-train__stage:last-child { padding-bottom: 0; }
-  .aq-section-train__stage:last-child .aq-section-train__mini { margin-bottom: -72px; }
+  .aq-section-train__stage:last-child .aq-section-train__mini { margin-bottom: -52px; }
   .aq-section-train__stage:last-child .aq-section-train__text { padding-top: var(--space-8); gap: 0; }
   .aq-section-train__t a { display: inline-flex; align-items: center; min-height: 44px; }
   .aq-section-train__t a::after { content: "\00a0\2192"; }

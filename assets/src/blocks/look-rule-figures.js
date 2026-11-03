@@ -6,7 +6,7 @@
    the design value and basis under the column names. Figures are line art drawn here (fig field):
    "turbulent" (lead), "slope" (a falling run to a low-point drain, slope triangle), "deadleg" (a branch off the main
    with its L and D dimensions), "sanitize" (the loop with a thermometer at its coldest point), "valve" (a zero-static
-   point-of-use valve on the main), "vent" (tank head with its vent filter), "monitor" (instrument bubbles on the
+   point-of-use valve on the main), "vent" (the PP tank's low-cone roof with its vent filter; pass 12 C: no dished head), "monitor" (instrument bubbles on the
    return: CE, TE, FE and a dashed AE for TOC). A row without fig gets the figure its name asks for
    (pass 12: "sanitiz" -> "sanitemp", the sanitization level along the run checked at the coldest point; "point of use"
    -> "valve", or "pou" (an open, dashed seat) while the row's value is still a placeholder; "sample" -> "sample", a
@@ -34,7 +34,7 @@ var FIG={
   +p('M222 34V96M232 34V96M222 34A5 5 0 0 1 232 34','ln')+'<circle class="aq-rule-figures__fill" cx="227" cy="104" r="9"/>'+p('M227 98V56','fl')},
  valve:function(){return p('M10 30H230M10 46H104M136 46H230','ln')+p('M104 46H136V70H104Z','fill')+p('M108 60Q120 50 132 60','th')
   +p('M136 58H160M160 46V70','ln')+p('M114 70V94M126 70V94M110 94H130','ln')+p('M10 38H230','fl')+p('M120 50V92','fl fl-hid')+p('M120 102q-3 4 0 6q3-2 0-6','fl')},
- vent:function(){return p('M24 120V94C24 68 70 54 120 54C170 54 216 68 216 94V120','ln')+p('M112 54V40M128 54V40M104 40H136','ln')
+ vent:function(){return p('M24 120V84L112 64H128L216 84V120','ln')+p('M112 64V40M128 64V40M104 40H136','ln')
   +p('M106 10H134V40H106Z','fill')+p('M112 14V36M116 14V36M120 14V36M124 14V36M128 14V36','th')+p('M150 30V8M145 13L150 8L155 13','dim')
   +p('M30 104H210','fl fl-hid')},
  /* pass 12: the sanitization level along the run (temperature or dose): high where it enters, lowest at the far

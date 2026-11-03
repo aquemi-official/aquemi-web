@@ -1,8 +1,8 @@
 /* ---------- TermsSheet: how buying works (look "terms-sheet"). A clean numbered terms table (navy head rule, line row
-   rules, mono numbers, flow dashes before values) beside an IsoKit skid drawing that bleeds off the page's right edge
-   (the section clips it, so the page never scrolls sideways). ---------- */
+   rules, mono numbers, flow dashes before values) beside an IsoKit skid drawing, whole in its column and sticky beside
+   the rows on desktop (pass 12 C; it used to bleed off the page's right edge). ---------- */
 .aq-terms-sheet-sec { position: relative; overflow-x: clip; }
-.aq-terms-sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); align-items: center; }
+.aq-terms-sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); align-items: start; }
 .aq-terms-sheet__table { min-width: 0; }
 .aq-terms-sheet__head, .aq-terms-sheet__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 6fr); }
 .aq-terms-sheet.has-notes .aq-terms-sheet__head, .aq-terms-sheet.has-notes .aq-terms-sheet__row { grid-template-columns: var(--space-12) minmax(0, 3fr) minmax(0, 4fr) minmax(0, 4fr); }
@@ -28,9 +28,10 @@
 .aq-terms-sheet__go { margin: var(--space-3) 0 0; }
 .aq-terms-sheet__row:hover .aq-terms-sheet__n { color: var(--flow); }
 
-/* the drawing: wider than its column, so it runs off the page's right edge */
-.aq-terms-sheet__fig { position: relative; min-width: 0; }
-.aq-terms-sheet__fig .aq-terms-sheet__svg { display: block; width: 150%; max-width: none; height: auto; }
+/* the drawing (pass 12 C): whole inside its column (the tank is no longer cut at the page edge), riding beside the rows
+   from the table head; the table starts straight under the heading (was centred against the tall drawing) */
+.aq-terms-sheet__fig { position: sticky; top: 120px; align-self: start; min-width: 0; }
+.aq-terms-sheet__fig .aq-terms-sheet__svg { display: block; width: 100%; max-width: 100%; height: auto; }
 
 /* Fold: desktop shows every term; the fold works on phones only */
 .aq-fold:not(.is-open) .aq-terms-sheet__row.aq-fold-x { display: grid; }

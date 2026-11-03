@@ -12,3 +12,7 @@ SkidSheet reads a skid's design parameters off the skid itself: one RO and EDI s
 ## Motion
 
 The sheet draws itself through `AQiso.timeline` (parts back to front, pipes and leaders, the water runs the skid once), then the tags strike in number order at their leader ends (phones: the dots on their parts); rows rise as they scroll in. Once, under 5 s. The hover ring is ported from Subframe Motion "Inside the image" (atlas-hotspots), MIT, (c) 2026 Subframe: it travels 250 ms `cubic-bezier(0.2, 0.8, 0.2, 1)` and the chosen tag darkens in 180 ms. Reduced motion: the finished sheet; the ring jumps without travel.
+
+Pass 12 C: phones (<= 600 px) list each row in one column: number and parameter, the value full width under it, then the Basis button (the 4/6 two-column key wrapped the mono placeholders four to six times). Tags and dots take the GA-sheet tag shared with TankGa: navy with on-navy numerals, flow with on-action when lit (never on-navy over flow), and in the dark theme a 1 px on-navy-muted outline.
+
+Pass 12 C verify (F6): phone dots are fixed 24 px circles, and a part can nudge its phone dot (`pd`, screen units): `joints` moves 8 left and 12 up so dot 06 no longer sits on dot 04 at 375.

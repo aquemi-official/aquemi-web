@@ -67,6 +67,21 @@ function isoB(x,y,z,s,rot){var out=[],b={s:s};rot=((rot||0)%4+4)%4;
  b.noz=function(u,v,w,ax,L,r,cls){var a=isoAx(ax),e=isoV.mul(a,L);b.cyl(u,v,w,ax,L,r,cls);
   var fl=Math.max(0.9,r*0.32),q=[u+e[0]-(a[0]*fl),v+e[1]-(a[1]*fl),w+e[2]-(a[2]*fl)];
   return b.cyl(q[0],q[1],q[2],ax,fl,r*1.55,cls)};
+ /* PP nozzle stub: a welded stub with a socket-fusion collar (1.3 x r) at its free end, no flange */
+ b.stub=function(u,v,w,ax,L,r,cls){var a=isoAx(ax),e=isoV.mul(a,L),cl=Math.min(L*0.45,Math.max(1.2,r*0.9)),q=[u+e[0]-a[0]*cl,v+e[1]-a[1]*cl,w+e[2]-a[2]*cl];
+  b.cyl(u,v,w,ax,L-cl,r,cls);return b.cyl(q[0],q[1],q[2],ax,cl,r*1.3,cls)};
+ /* convex or near-convex solid from faces (lists of local points): faces turned away from the viewer are dropped, the
+    rest painted far to near */
+ b.solid=function(faces,cls){var W=faces.map(function(f){return f.map(function(q){return b.p(q[0],q[1],q[2])})}),all=[].concat.apply([],W),
+   m=isoV.mul(all.reduce(function(a,q){return isoV.add(a,q)},[0,0,0]),1/all.length);
+  W.map(function(f){var c=isoV.mul(f.reduce(function(a,q){return isoV.add(a,q)},[0,0,0]),1/f.length),n=isoV.crs(isoV.sub(f[1],f[0]),isoV.sub(f[2],f[0]));
+   if(isoV.dot(n,isoV.sub(c,m))<0){f=f.slice().reverse();n=isoV.mul(n,-1)}return {f:f,vis:isoV.dot(n,[1,1,1])>1e-6,z:isoV.dot(c,[1,1,1])}})
+   .filter(function(q){return q.vis}).sort(function(a,c){return a.z-c.z}).forEach(function(q){b.add(isoPath(isoPoly(q.f,1),cls||ISO_K.eq))});
+  return b};
+ /* prism: a profile [[u,w]...] in the u-w plane, extruded along v from v0 to v1 */
+ b.prism=function(pr,v0,v1,cls){var n=pr.length,F=[pr.map(function(q){return [q[0],v0,q[1]]}),pr.map(function(q){return [q[0],v1,q[1]]})];
+  for(var i=0;i<n;i++){var a=pr[i],c=pr[(i+1)%n];F.push([[a[0],v0,a[1]],[c[0],v0,c[1]],[c[0],v1,c[1]],[a[0],v1,a[1]]])}
+  return b.solid(F,cls)};
  b.ring=function(u,v,w,ax,r,cls){return b.add(isoPath(isoRingD(b.p(u,v,w),b.ax(ax),r*s),cls||ISO_K.th))};
  b.band=function(u,v,w,ax,r,cls){return b.add(isoPath(isoBandD(b.p(u,v,w),b.ax(ax),r*s),cls||ISO_K.th))};
  b.line=function(a,c,cls){return b.add(isoPath(isoPoly([b.p(a[0],a[1],a[2]),b.p(c[0],c[1],c[2])]),cls||ISO_K.ln))};
@@ -102,21 +117,22 @@ function isoDial(b,u,v,w,ax,r,val){var a=b.ax(ax),pp=isoV.perp(a),c=b.p(u,v,w),i
  return b}
 
 var ISO_PARTS={
- /* storage tank: domed vertical vessel on four legs, manway, vent, inlet and return on top, outlet low, sight glass */
- tank:function(b,o){var r=20,h=56,z0=16,top=z0+h,kt=9;
-  b.leg(-14,-14,0,z0+6);b.leg(14,-14,0,z0+6);b.leg(-14,14,0,z0+6);
-  b.vessel(0,0,z0,r,h,kt,5);
-  b.band(0,0,z0+h*0.5,'z',r);
-  b.cyl(-7,-4,top+b.dome(r,kt,8)-1,'z',5,1.4);
-  b.noz(3,4,top+b.dome(r,kt,5)-1.5,'z',5.5,5.2);
-  b.noz(10,-3,top+b.dome(r,kt,10.4)-1,'z',6,2.4);b.port.in=[10,-3,top+b.dome(r,kt,10.4)+5];
-  b.noz(-3,12,top+b.dome(r,kt,12.4)-1,'z',6,2.2);b.port.ret=[-3,12,top+b.dome(r,kt,12.4)+5];
-  b.noz(r-1.5,0,z0+7,'x',9,2.6);b.port.out=[r+7.5,0,z0+7];
-  b.cyl(r-1,5,z0+12,'x',3.6,0.7).cyl(r-1,5,top-10,'x',3.6,0.7);b.cyl(r+2.6,5,z0+10,'z',top-z0-18,1.1);
-  b.leg(14,14,0,z0+6);b.port.top=[0,0,top+kt+4];b.port.base=[0,0,0]},
- /* media filter: slim domed vessel, multiport head with gauge, graded bed lines (hidden) */
+ /* storage tank (PP): flat-bottom cylinder on a round plinth, weld bands at each quarter of the shell, a low-cone roof
+    with PP nozzle stubs (inlet, return, vent at the apex), outlet stub low, level sight tube; no legs, dished head or manway */
+ tank:function(b,o){var r=20,z0=4,top=76,cn=6,ap=top+cn,rf=function(q){return top+cn*(1-q/r)},S2=Math.SQRT1_2*r;
+  b.cyl(0,0,0,'z',z0,r+1.4);
+  b.vessel(0,0,z0,r,top-z0,0,0);
+  [0.25,0.5,0.75].forEach(function(f){b.band(0,0,z0+(top-z0)*f,'z',r)});
+  b.add(isoPath(isoPoly([b.p(-S2,S2,top),b.p(0,0,ap),b.p(S2,-S2,top)])+isoPoly([b.p(0,0,ap),b.p(S2,S2,top)]),ISO_K.th));
+  b.stub(0,0,ap-0.6,'z',3.6,1.6);
+  b.stub(10,-3,rf(10.44)-0.6,'z',84.7-rf(10.44)+0.6,2.4);b.port.in=[10,-3,84.7];
+  b.stub(-3,12,rf(12.37)-0.6,'z',84.1-rf(12.37)+0.6,2.2);b.port.ret=[-3,12,84.1];
+  b.stub(r-1.5,0,z0+19,'x',9,2.6);b.port.out=[r+7.5,0,z0+19];
+  b.cyl(r-1,5,28,'x',3.6,0.7).cyl(r-1,5,62,'x',3.6,0.7);b.cyl(r+2.6,5,26,'z',38,1.1);
+  b.port.top=[0,0,85];b.port.base=[0,0,0]},
+ /* media filter: slim domed FRP vessel on a base skirt, multiport head with gauge, graded bed lines (hidden) */
  filter:function(b,o){var r=o.r||11,h=o.h||58,z0=10,top=z0+h,kt=7,bed=o.bed||[0.3,0.48];
-  b.leg(-7,-7,0,z0+4,1.8);b.leg(7,-7,0,z0+4,1.8);b.leg(-7,7,0,z0+4,1.8);
+  b.cyl(0,0,0,'z',z0-2,r*0.78);b.band(0,0,1.6,'z',r*0.78);
   b.vessel(0,0,z0,r,h,kt,5);
   bed.forEach(function(f){b.band(0,0,z0+h*f,'z',r,ISO_K.hid)});
   b.band(0,0,top-6,'z',r);
@@ -124,10 +140,10 @@ var ISO_PARTS={
   b.cyl(1.5,2,top+kt+4.5,'z',2.5,0.6);b.cyl(1.5,1.5,top+kt+7,'y',1.4,2.6);isoDial(b,1.5,2.9,top+kt+7,'y',2.6,0.55);
   b.port.in=[-11.5,0,top+kt+1.5];b.port.out=[11.5,0,top+kt+1.5];
   b.noz(r*0.5,r*0.5,z0+3,'y',r*0.6,1.2);
-  b.leg(7,7,0,z0+4,1.8);b.port.top=[0,0,top+kt+11];b.port.base=[0,0,0]},
- /* activated carbon vessel: wider, one bed line, side handhole and sample valve */
+  b.port.top=[0,0,top+kt+11];b.port.base=[0,0,0]},
+ /* activated carbon vessel: wider, on a base skirt, one bed line, side handhole and sample valve */
  carbon:function(b,o){var r=13,h=50,z0=10,top=z0+h,kt=8;
-  b.leg(-8,-8,0,z0+4,2);b.leg(8,-8,0,z0+4,2);b.leg(-8,8,0,z0+4,2);
+  b.cyl(0,0,0,'z',z0-2,r*0.78);b.band(0,0,1.6,'z',r*0.78);
   b.vessel(0,0,z0,r,h,kt,5);
   b.band(0,0,z0+h*0.62,'z',r,ISO_K.hid);
   b.ring(r*0.62,r*0.62,z0+h*0.3,[1,1,0],3.6,ISO_K.th).ring(r*0.62,r*0.62,z0+h*0.3,[1,1,0],2.6,ISO_K.th);
@@ -135,31 +151,33 @@ var ISO_PARTS={
   b.noz(-6,-4,top+b.dome(r,kt,7.2)-1,'-x',8,2);b.port.in=[-14,-4,top+b.dome(r,kt,7.2)-1];
   b.noz(r-1,0,z0+6,'x',7,2);b.port.out=[r+6,0,z0+6];
   b.noz(0,r-1,z0+h*0.5,'y',3,0.9);b.bx(0,r+2.4,z0+h*0.5-0.9,1.6,1.6,1.8);b.line([0,r+2.4,z0+h*0.5+0.9],[0,r+2.4,z0+h*0.5+3.4]);
-  b.leg(8,8,0,z0+4,2);b.port.top=[0,0,top+kt+5];b.port.base=[0,0,0]},
- /* water softener: twin resin vessels with control heads, brine tank behind */
+  b.port.top=[0,0,top+kt+5];b.port.base=[0,0,0]},
+ /* water softener: twin resin vessels on base skirts with control heads, brine tank behind */
  softener:function(b,o){var r=9,h=48,z0=8,top=z0+h,kt=6;
   b.vessel(34,-18,0,12,34,0,0);b.ring(34,-18,34,'z',6,ISO_K.th);b.band(34,-18,22,'z',12,ISO_K.hid);
   b.line([34,-6,26],[34,-6,30]);
-  [-12,10].forEach(function(u,i){b.leg(u-5,-5,0,z0+3,1.6);b.leg(u+5,-5,0,z0+3,1.6);b.leg(u-5,5,0,z0+3,1.6);
+  [-12,10].forEach(function(u,i){b.cyl(u,0,0,'z',z0-1.5,r*0.78);
    b.vessel(u,0,z0,r,h,kt,4);b.band(u,0,z0+h*0.35,'z',r,ISO_K.hid);
    b.bx(u,0,top+kt-1.5,8,8,5.5);b.bx(u,0,top+kt+4,5,5,2.2,ISO_K.alt);
-   b.leg(u+5,5,0,z0+3,1.6)});
+   });
   b.noz(-16,0,top+kt+1.5,'-x',6,1.8);b.cyl(-8,0,top+kt+1.5,'x',14,1.5);b.noz(14,0,top+kt+1.5,'x',8,1.8);
   b.add(isoPath(isoPoly([b.p(12,-3,top+kt+1),b.p(30,-3,top+kt+1),b.p(30,-14,top+kt+1),b.p(30,-14,34)]),ISO_K.ln));b.bx(30,-14,34,2.4,2.4,1.2);
   b.port.in=[-22,0,top+kt+1.5];b.port.out=[22,0,top+kt+1.5];b.port.top=[0,0,top+kt+9];b.port.base=[0,0,0]},
- /* reverse osmosis rack: square-tube frame, four membrane housings with end headers, vertical multistage pump, panel */
- ro:function(b,o){var W=112,D=26,H=64,t=2.6,zs=[16,28,40,52],y0=13,pr=5.2;
-  function frame(y){b.box(0,y,0,W,t,t);b.box(0,y,H-t,W,t,t);[0,W/2-t/2,W-t].forEach(function(u){b.box(u,y,t,t,t,H-2*t)})}
-  frame(0);b.box(0,0,0,t,D,t);b.box(0,0,H-t,t,D,t);
-  b.cyl(5,y0,10,'z',zs[3]-6,1.6);
-  zs.forEach(function(z){b.cyl(5,y0,z,'x',2.5,1.2);b.cyl(7,y0,z,'x',W-16,pr);
-   b.band(13,y0,z,'x',pr);b.band(W-15,y0,z,'x',pr);b.ring(W-9,y0,z,'x',pr*0.62);b.cyl(W-9,y0,z,'x',3,1.2)});
-  b.cyl(W-6,y0,10,'z',zs[3]-6,1.6);b.noz(W-6,y0,zs[1]+6,'x',10,1.7);
-  b.box(W/2-t/2,0,0,t,D,t);b.box(W-t,0,0,t,D,t);b.box(W-t,0,H-t,t,D,t);b.box(W/2-t/2,0,H-t,t,D,t);
-  frame(D-t);
+ /* reverse osmosis rack (PP): square PP box-section frame with welded corners on a closed PP base plate (no bracing,
+    gussets or bolted feet), four FRP membrane housings with end caps and headers, vertical multistage pump, local panel */
+ ro:function(b,o){var W=112,D=26,H=64,t=4.4,pz=3,zs=[16,28,40,52],y0=13,pr=5.2,px=26,py=D+16;
+  function post(u,v){b.box(u,v,pz,t,t,H-pz-t)}
+  b.box(0,0,0,W,D,pz);b.line([0,D,pz*0.5],[W,D,pz*0.5],ISO_K.th);
+  post(0,0);post(W-t,0);b.box(0,0,H-t,W,t,t);b.box(0,t,H-t,t,D-2*t,t);
+  b.cyl(5,y0,pz,'z',zs[3]-pz+4,1.6);
+  zs.forEach(function(z){b.cyl(5,y0,z,'x',2.5,1.2);b.cyl(7,y0,z,'x',4,pr*1.08);b.cyl(11,y0,z,'x',W-26,pr);
+   b.band(W/2-14,y0,z,'x',pr);b.band(W/2+14,y0,z,'x',pr);b.cyl(W-15,y0,z,'x',4,pr*1.08);b.cyl(W-11,y0,z,'x',2.5,1.2)});
+  b.cyl(W-8,y0,pz,'z',zs[3]-pz+4,1.6);b.stub(W-8,y0,zs[1]+6,'x',12,1.7);
+  b.box(W-t,t,H-t,t,D-2*t,t);
+  post(0,D-t);post(W*0.62+8,D-t);post(W-t,D-t);b.box(0,D-t,H-t,W,t,t);
   b.box(W*0.62,D,24,20,4,26);b.rect('y',W*0.62+2.5,38,W*0.62+12.5,46.5,D+4,ISO_K.glass);
   [W*0.62+15.5,W*0.62+17.5].forEach(function(u){b.ring(u,D+4,44,'y',0.7)});b.line([W*0.62+16.5,D+4,27],[W*0.62+16.5,D+4,34]);
-  var px=26,py=D+16;b.bx(px,py,0,14,14,2.2);b.cyl(px,py,2.2,'z',20,4.4);
+  b.bx(px,py,0,14,14,2.2);b.cyl(px,py,2.2,'z',20,4.4);
   [7,11,15,19].forEach(function(z){b.band(px,py,2.2+z,'z',4.4)});
   b.cyl(px,py,22.2,'z',3,3);b.vessel(px,py,25,6.4,15,3,0,ISO_K.eq);for(var i=0;i<4;i++)b.band(px,py,28+i*3,'z',6.4);
   b.noz(px-4,py,6,'-x',6,1.8);b.noz(px+4,py,6,'x',5,1.8);
@@ -207,15 +225,17 @@ var ISO_PARTS={
   b.box(18,-4,z+7.6,9,8,5);b.cyl(22.5,4,z+10,'y',2.2,1);
   b.cyl(38,0,z,'x',6,8);b.ring(44,0,z,'x',5.5).ring(44,0,z,'x',3).ring(44,0,z,'x',1);
   b.port.in=[-14,0,z];b.port.out=[-2,-4,z+18];b.port.top=[18,0,z+16];b.port.base=[16,0,0]},
- /* diaphragm valve (handwheel) or ball valve (o.type 'ball', lever); anchor on the pipe centreline, along x */
+ /* PP diaphragm valve (the default): socket-fusion ends, bow-tie body, a domed bonnet with a small position indicator,
+    no handwheel and no flanges; or a PP ball valve (o.type 'ball', lever, union ends). Anchor on the pipe centreline,
+    along x */
  valve:function(b,o){var r=o.r||2.6;
-  if(o.type==='ball'){b.noz(-3,0,0,'-x',4,r);b.cyl(-3,0,0,'x',6,r*1.7);b.band(0,0,0,'x',r*1.7);b.noz(3,0,0,'x',4,r);
+  if(o.type==='ball'){b.cyl(-7,0,0,'x',3.4,r*1.3);b.cyl(-3.6,0,0,'x',1.2,r*1.55);b.cyl(-3,0,0,'x',6,r*1.7);b.band(0,0,0,'x',r*1.7);b.cyl(2.4,0,0,'x',1.2,r*1.55);b.cyl(4.1,0,0,'x',3.4,r*1.3);
    b.cyl(0,0,r*1.5,'z',2.4,0.9);b.bx(0,0,r*1.5+2.4,3,3,1.4);b.box(-1,-0.8,r*1.5+3,12,1.6,1.1);b.port.top=[0,0,r*2+6]}
-  else{b.noz(-3,0,0,'-x',4,r);b.cyl(-3.5,0,0,'x',7,r*1.12);b.box(-3,-2.6,-r*1.25,6,5.2,r*1.25+r*1.1);b.noz(3.5,0,0,'x',4,r);
-   b.box(-4.2,-3.6,r*1.1,8.4,7.2,1.4);b.box(-3.5,-3,r*1.1+1.4,7,6,4.2);b.cyl(0,0,r*1.1+5.6,'z',3.2,0.9);
-   b.cyl(0,0,r*1.1+8.4,'z',1.2,5.4);var c=r*1.1+9.6,d='';b.ring(0,0,c,'z',4.3);
-   [0,1,2,3].forEach(function(i){var t=i*Math.PI/2+0.3;d+=isoPoly([b.p(Math.cos(t)*1.3,Math.sin(t)*1.3,c),b.p(Math.cos(t)*4.3,Math.sin(t)*4.3,c)])});b.add(isoPath(d,ISO_K.th));
-   b.cyl(0,0,c-0.4,'z',1.4,1.3);b.port.top=[0,0,c+3]}
+  else{var e=r*1.45,m=r*1.08,hw=r*1.25,zb=e+0.9;
+   b.cyl(-7,0,0,'x',3.2,r*1.3);
+   b.prism([[-4.4,-e],[0,-m],[4.4,-e],[4.4,e],[0,m],[-4.4,e]],-hw,hw);
+   b.bx(0,0,e,7.4,6.4,0.9);b.vessel(0,0,zb,3.3,2.2,2.6,0);b.cyl(0,0,zb+4.5,'z',1.3,0.8);
+   b.cyl(4.3,0,0,'x',3.2,r*1.3);b.port.top=[0,0,r*1.1+12.6]}
   b.port.a=[-7,0,0];b.port.b=[7.5,0,0]},
  /* pressure gauge: stem and socket, case facing the front (o.face 'y' or 'x'), dial with ticks and needle (o.value 0..1) */
  gauge:function(b,o){var R=o.r||5,ax=o.face==='x'?'x':'y',v=ax==='y'?[0,1,0]:[1,0,0];
@@ -244,18 +264,15 @@ var ISO_PARTS={
   b.rect('y',3,8,13,14,f);
   var d='';for(var z=8;z<16;z+=2)d+=isoPoly([b.p(W/2,-4,z),b.p(W/2,4,z)]);b.add(isoPath(d,ISO_K.th));
   b.port.top=[0,0,H+8];b.port.base=[0,0,0]},
- /* skid base frame: channel perimeter, cross members, lifting lugs, levelling feet (o.w length, o.d depth) */
- skid:function(b,o){var W=o.w||120,D=o.d||60,h=6,t=4,z=3,n=Math.max(1,Math.round(W/45));
-  [[0,0],[W,0],[0,D],[W,D]].forEach(function(q,i){if(i<3){b.cyl(q[0]+(q[0]?-3:3),q[1]+(q[1]?-3:3),0,'z',z,1.6);b.bx(q[0]+(q[0]?-3:3),q[1]+(q[1]?-3:3),0,6,6,0.8)}});
-  b.box(0,0,z,W,t,h);b.box(0,t,z,t,D-2*t,h);
-  for(var i=1;i<n;i++)b.box(W*i/n-t/2,t,z,t,D-2*t,h*0.7);
-  b.box(W-t,t,z,t,D-2*t,h);
-  b.cyl(W-3,D-3,0,'z',z,1.6);b.bx(W-3,D-3,0,6,6,0.8);
-  b.box(0,D-t,z,W,t,h);b.line([1,D,z+1.1],[W-1,D,z+1.1],ISO_K.th).line([1,D,z+h-1.1],[W-1,D,z+h-1.1],ISO_K.th);
-  b.line([W,D-t+1,z+1.1],[W,1,z+1.1],ISO_K.th);
-  [W*0.15,W*0.85].forEach(function(u){b.poly([[u-3,D,z+h],[u+3,D,z+h],[u+2,D,z+h+4],[u-2,D,z+h+4]],ISO_K.eq);b.ring(u,D,z+h+2,'y',1)});
+ /* skid base (PP): a closed PP base plate on a welded box-section perimeter frame, set back a little under the plate;
+    fork pockets in the frame (no lugs, bracing or bolted feet) (o.w length, o.d depth) */
+ skid:function(b,o){var W=o.w||120,D=o.d||60,h=6,z=3,pt=3,fz=z+h-pt,ins=1.4,pw=Math.min(14,W*0.12),ph=Math.min(3,fz-1.6);
+  b.box(ins,ins,0,W-2*ins,D-2*ins,fz);
+  [W*0.24,W*0.76].forEach(function(u){b.rect('y',u-pw/2,0.8,u+pw/2,0.8+ph,D-ins,ISO_K.alt)});
+  [D*0.5].forEach(function(v){b.rect('x',v-Math.min(pw,D*0.3)/2,0.8,v+Math.min(pw,D*0.3)/2,0.8+ph,W-ins,ISO_K.alt)});
+  b.box(0,0,fz,W,D,pt);b.line([1.5,D,fz+pt*0.5],[W-1.5,D,fz+pt*0.5],ISO_K.th);
   b.port.deck=[0,0,z+h];b.port.top=[W/2,D/2,z+h];b.port.base=[W/2,D/2,0]},
- /* point of use: drop from above, diaphragm valve with handwheel, gooseneck spout, sink cabinet; the falling water is a flow */
+ /* point of use: drop from above, PP diaphragm valve (domed bonnet, no handwheel), gooseneck spout, sink cabinet; the falling water is a flow */
  outlet:function(b,o){var W=30,D=20,H=28,id='isoc'+(Math.random()*1e6|0).toString(36)+(++isoUid);
   b.box(-W/2,-D/2,0,W,D,H);b.box(-W/2-1,-D/2-1,H,W+2,D+2,1.6);
   var hz=H+1.6,hole=[b.p(-W/2+3,-D/2+3,hz),b.p(W/2-3,-D/2+3,hz),b.p(W/2-3,D/2-3,hz),b.p(-W/2+3,D/2-3,hz)];
@@ -265,7 +282,7 @@ var ISO_PARTS={
   b.ring(2,3,hz-6.9,'z',1.6);
   b.line([-W/2+2,D/2+1,H-6],[W/2-2,D/2+1,H-6],ISO_K.th);b.rect('y',-W/2+2.5,3,W/2-2.5,H-8,D/2);b.line([0,D/2,3],[0,D/2,H-8],ISO_K.th);
   b.bx(2,-8,hz,6,6,1.2);b.cyl(2,-8,hz+1.2,'z',30,1.8);b.noz(2,-8,hz+27,'z',5,1.8);
-  var sp=hz+13;b.bx(2,-8,sp-3,5.4,5.4,6.5);b.cyl(4.7,-8,sp+0.2,'x',3,0.8);b.cyl(7.7,-8,sp+0.2,'x',1.2,3.6);b.ring(8.9,-8,sp+0.2,'x',2.4);
+  var sp=hz+13;b.bx(2,-8,sp-3,5.4,5.4,6.5);b.cyl(4.7,-8,sp+0.2,'x',0.8,2.6);b.cyl(5.5,-8,sp+0.2,'x',1.6,2.2);b.cyl(7.1,-8,sp+0.2,'x',0.9,1.4);b.cyl(8,-8,sp+0.2,'x',1,0.6);
   b.add(isoPipe([b.p(2,-5.3,sp-1),b.p(2,3,sp-1),b.p(2,3,sp-5)],{r:1.3*b.s,bend:2.6*b.s,flow:false,caps:'end'}));sp-=1;
   b.add('<path class="aq-iso__flow aq-iso__flow--drop" d="'+isoPoly([b.p(2,3,sp-4.6),b.p(2,3,hz-6.5)])+'"'+(o.to?' data-iso-to="'+o.to+'"':'')+'/>');
   b.port.in=[2,-8,hz+32];b.port.top=[2,-8,hz+34];b.port.base=[0,0,0]},
@@ -340,6 +357,22 @@ ISO_PARTS.module=function(b,o){var W=o.w||40,D=o.d||40,H=o.h||50,f=D/2;
  b.line([-W/2+10,f,H-14],[W/2-10,f,H-14],ISO_K.acc);
  b.rect('z',-W/2+8,-D/2+8,W/2-8,D/2-8,H);
  b.port.in=[0,f,16];b.port.out=[W/2,0,16];b.port.top=[0,0,H];b.port.base=[0,0,0]};
+/* washer: a cabinet washer-disinfector, anchored at the centre of its footprint (o.w x o.d x o.h; 40 x 34 x 58): cabinet
+   and top cap, control strip with display and status line, door with a window and the rack shelves behind it, louvres
+   on the side, and the PW inlet, a PP stub on the top (port in; o.inlet [u, v] places it, else back left). o.open draws the door open (the opening only, sunken;
+   the look draws the chamber through it from ports doorA, doorB: the opening's lower-left and upper-right corners). */
+ISO_PARTS.washer=function(b,o){var W=o.w||40,D=o.d||34,H=o.h||58,f=D/2,x0=-W/2,x1=W/2,c=Math.max(1.2,H*0.03),iw=W*0.1;
+ b.bx(0,0,0,W,D,H-c);b.bx(0,0,H-c,W+Math.max(1.6,W*0.04),D+Math.max(1.6,W*0.04),c);
+ var s0=H*0.85,s1=H-c-H*0.025,sm=(s0+s1)/2,sh=(s1-s0)*0.22;
+ b.rect('y',x0+iw,s0,x1-iw,s1,f);b.rect('y',x0+iw+W*0.05,s0+sh,x0+W*0.42,s1-sh,f,ISO_K.glass);b.line([x0+W*0.6,f,sm],[x1-iw-W*0.05,f,sm],ISO_K.acc);
+ var d0=H*0.07,d1=H*0.8;b.rect('y',x0+iw,d0,x1-iw,d1,f);
+ if(o.open){var a0=x0+iw+W*0.04,a1=x1-iw-W*0.04,e0=d0+H*0.035,e1=d1-H*0.02;b.rect('y',a0,e0,a1,e1,f,ISO_K.alt);b.port.doorA=[a0,f,e0];b.port.doorB=[a1,f,e1]}
+ else{var g0=x0+iw+W*0.07,g1=x1-iw-W*0.09,h0=d0+H*0.1,h1=d1-H*0.08;b.rect('y',g0,h0,g1,h1,f,ISO_K.glass);
+  [0.36,0.68].forEach(function(t){var z=h0+(h1-h0)*t;b.line([g0+W*0.03,f,z],[g1-W*0.03,f,z],ISO_K.th)});
+  b.line([x1-iw-W*0.045,f,d0+(d1-d0)*0.4],[x1-iw-W*0.045,f,d0+(d1-d0)*0.6])}
+ var dl='',st=Math.max(2.2,H*0.055);for(var z=H*0.16;z<H*0.44;z+=st)dl+=isoPoly([b.p(x1,-D/2+D*0.2,z),b.p(x1,D/2-D*0.2,z)]);b.add(isoPath(dl,ISO_K.th));
+ var iu=o.inlet?o.inlet[0]:x0+W*0.25,iv=o.inlet?o.inlet[1]:-D*0.18,L=Math.max(4,H*0.06),r=Math.max(1.2,W*0.03);b.stub(iu,iv,H-0.4,'z',L+0.4,r);
+ b.port.in=[iu,iv,H+L];b.port.top=[0,0,H+L];b.port.base=[0,0,0]};
 ISO_PARTS.board=ISO_PARTS.desk;ISO_PARTS.documents=ISO_PARTS.binder;ISO_PARTS.cleanroom=ISO_PARTS.wall;
 ISO_PARTS.vessel=ISO_PARTS.tank;ISO_PARTS.instrument=ISO_PARTS.analyzer;
 
@@ -352,7 +385,9 @@ function isoPart(kind,x,y,z,s,o){o=o||{};var f=ISO_PARTS[kind];if(!f)return isoR
 /* isoPipe(points3d, opts): a pipe run with rounded elbows.
    opts: r (radius, 2.4), bend (elbow radius, 3 x r), wall (twin-wall, default true; false draws one centre line),
    flow (default true: the water path, class aq-iso__flow, motion draws it along the run), to (stage id the water lights
-   on arrival), from, flanges ('ends' | 'all' | false), caps (pipe-end rings: true, 'start', 'end', false), cls.
+   on arrival), from, flanges ('ends': socket-fusion collars at the ends | 'all': also a fusion bead after each bend |
+   false), metal (true: those joints as bolted flange discs, only where a PP system has one: a pump or an instrument),
+   caps (pipe-end rings: true, 'start', 'end', false), cls.
    Returns a string-like object with .d (centreline path data), .start, .end (2D). */
 function isoPipe(pts,o){o=o||{};var r=o.r||2.4,bend=o.bend||r*3,n=pts.length,i,V=isoV;if(n<2)return isoR('',{});
  var cl='M'+isoT(isoP(pts[0])),samp=[isoP(pts[0])],corners=[];
@@ -375,9 +410,14 @@ function isoPipe(pts,o){o=o||{};var r=o.r||2.4,bend=o.bend||r*3,n=pts.length,i,V
   out+=isoPath(pl(L)+pl(Rt.slice().reverse()).replace('M','L')+'Z','aq-iso__pipe-body')+isoPath(pl(L),'aq-iso__pipe-wall')+isoPath(pl(Rt),'aq-iso__pipe-wall')}
  else out+=isoPath(cl,'aq-iso__pipe-line');
  var caps=o.caps==null?(o.wall!==false):o.caps,fl=o.flanges;
+ /* joints. PP (default): a socket-fusion collar (1.3 x r) over each end, a butt-fusion bead ring (1.15 x r) after each
+    bend; o.metal: the old bolted flange discs (r x 1.6), for a pump or instrument connection only */
+ var CL=Math.max(1.6,r*1.4);
  function flange(p,d){var c=isoCylD(V.sub(p,V.mul(d,0.6)),d,1.2,r*1.6);return isoPath(c[0]+c[1],'aq-iso__eq aq-iso__flange')}
- if(fl==='ends'||fl==='all'||fl===true){out+=flange(pts[0],dir0)+flange(pts[n-1],dir1);
-  if(fl==='all')for(i=1;i<n-1;i++){var q=pts[i],dd=V.nrm(V.sub(pts[i+1],q)),R2=Math.min(bend,V.len(V.sub(pts[i+1],q))/2);out+=flange(V.add(q,V.mul(dd,R2+r*0.8)),dd)}}
+ function collar(p,d,end){var c=isoCylD(end?V.sub(p,V.mul(d,CL)):p,d,CL,r*1.3);return isoPath(c[0]+c[1],'aq-iso__eq aq-iso__flange aq-iso__collar')}
+ function bead(p,d){var c=isoCylD(V.sub(p,V.mul(d,0.35)),d,0.7,r*1.15);return isoPath(c[0]+c[1],'aq-iso__eq aq-iso__flange aq-iso__bead')}
+ if(fl==='ends'||fl==='all'||fl===true){out+=o.metal?flange(pts[0],dir0)+flange(pts[n-1],dir1):collar(pts[0],dir0)+collar(pts[n-1],dir1,1);
+  if(fl==='all')for(i=1;i<n-1;i++){var q=pts[i],dd=V.nrm(V.sub(pts[i+1],q)),R2=Math.min(bend,V.len(V.sub(pts[i+1],q))/2),jp=V.add(q,V.mul(dd,R2+r*0.8));out+=o.metal?flange(jp,dd):bead(jp,dd)}}
  else if(caps&&o.wall!==false){if(caps!=='end')out+=isoPath(isoRingD(pts[0],dir0,r),'aq-iso__eq');if(caps!=='start')out+=isoPath(isoRingD(pts[n-1],dir1,r),'aq-iso__eq')}
  if(o.flow!==false)out+='<path class="aq-iso__flow'+(o.wall===false?' aq-iso__flow--line':'')+'" d="'+cl+'"'+to+from+'/>';
  return isoR('<g class="aq-iso__pipe'+(o.cls?' '+o.cls:'')+'"'+id+to+'>'+out+'</g>',{d:cl,start:isoP(pts[0]),end:isoP(pts[n-1])})}

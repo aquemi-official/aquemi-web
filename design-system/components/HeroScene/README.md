@@ -15,6 +15,10 @@ fields only: page ids and the names of rows the page already has. No new copy, n
 | `service-ring` | services | the PP package on its skid at the centre of a shop floor, one station per services page on a dashed ring round it, numbered clockwise from the top: URS desk, planning board, drafting board, fusion bench, test cart, binder table, service truck, lifting gantry over a module | the services index (`"index": true`) |
 | `site-room` | first-system | an empty room: the package's footprint dashed on the floor and its outline dashed in the air, the water stub with its valve out of the left wall (the room's one flow line), a floor drain, an isolator box on the right wall, the door open into the room with a dashed way in to the footprint | `"from": "site"` (a block anchor on the page) and `"keys"`: the names of five of that block's rows, in tag order (`["The package", "Water supply", "Drain", "Power", "Way in"]`); a link to that block (its heading) closes the key. site-room numbers its tags and rows with the block's own row numbers (so the key reads 02 · 04 · 05 · 06 · 07 when those are the rows), and stays in step if the block is reordered |
 | `use-fan` | projects (Applications) | the package at the back corner; one PP loop runs up out of it, along one edge of a quarter floor, round its rim and back; the floor is split into one sector per use, and a drop from the loop feeds each scene (make-up kettle, washer-disinfector, lab sink, filler over a conveyor, rinse conveyor through a spray arch) | `"uses"`: industry page ids in tag order; titles are each page's `nav_label` |
+| `shop-bay` | about, careers | the shop floor: the package on its test stand (box-section PP posts, skid, membrane rack, a flat-top PP tank, panel), hosed to a flat-top PP test tank on its plinth; round it a drafting desk, a panel bench and a joining bench (method neutral, FD-18: two PP lengths butted on cradles, one plain girth line and a stencilled tag; no heater plate, bead or fusion machine), plus the binder table and the service van where a row keys them (service-ring builders reused) | `"from"`: a block anchor (`people` on about, `roles` on careers) and `"at"`: one station per row of that block in row order (`desk`, `panel`, `joint`, `stand`, `table`, `van`; `""` for none). Tags and rows carry the block's own row numbers; a link to the block closes the key |
+| `site-map` | contact-locations | the sites on a limestone contour sheet: the office and the shop with its test-bay skid at the centre, two dashed travel rings round them, the service van on the outer ring, parts crates on a pallet | `"from": "locations"`, `"at"`: `office`, `shop`, `van`, `crates` per row; the row names are cut before a `, [placeholder]` tail ("Head office") |
+| `reply-flow` | contact-proposal | paper in, paper out: a stack of URS sheets and a tender form on a clipboard, dashed routes into the engineer's desk, the reply out of it with the stamp beside its imprint | `"from": "requests"`, `"keys"`: three cells of that table as they stand (URS row, tender row, the written answer) |
+| `compliance-matrix` | compliance (concept 234) | a ruled compliance matrix sheet (HTML: title, five heads, four numbered rows with the clause and proof placeholders and one flow tick per row) with a small PP package under its lower-right corner: a flat-top PP tank on its plinth, bead-ringed PP pipe to a generation module, the water leaving to the loop (not the concept's domed vessels). Decoration (`aria-hidden`) | look-only `title`, `cols` (5 heads, page words), `cells` (the clause and proof placeholders), `ticks` (answer column per row, 1-3). No key |
 
 A scene whose key finds fewer rows than it needs (an index under 2 or 3 pages, a missing row name) renders nothing and
 the hero falls back to its usual right-hand part.
@@ -78,3 +82,24 @@ that part, or in number order where no pipe feeds it. Ported from Subframe Motio
 - Detail pages with an equipment drawing keep the equipment figure; pages whose figure is a document keep the drawn
   binder, stamp or route.
 - Never add a scene that names a part or a use the page does not: the key must come from the page's own index or rows.
+
+## Round C (pass 12, c03-heroes)
+
+- Four scenes above (shop-bay, site-map, reply-flow, compliance-matrix) replace the generic three-icon line on about,
+  careers, contact-locations, contact-proposal and compliance (audit-c §8 H1, group-6 compliance).
+- Span key rows (site-room, shop-bay, site-map, reply-flow) take focus (`tabindex="0"`); focus lights the part as hover
+  does, with the 2 px `focus` ring. `hsKey` option `cols` sets the desktop columns as a class (`__key--c2`, `__key--c3`).
+- use-fan: scene 01 (ind-pharma) is a flat-top PP make-up tank on a plinth, not a dished kettle on legs; at 860 px and
+  under the key is hidden (the next block lists the same five industries; projects phone hero 1,177 → 920 px).
+- service-ring at 600 px and under: the drawing shows through a window cut to the stations and their tags (`hsCrop`,
+  `--hs-cl/-cr/-ct/-cb`), tags 15 px.
+- compliance-matrix phones: the sheet at the full gutter, rows 14 px on one line, the package as a 112 px inset at the
+  sheet's top right (compliance phone hero 785 → 756 px).
+- Motion (Hero/motion.js): the new scenes run the same AQiso choreography; the matrix sheet rises, its rows rule in and
+  each tick lands in its column.
+- Verify fixes (round C): the compliance package sits clear under the sheet's lower right on desktop (scene
+  `padding-bottom: 36% - space-6`, so it never covers row 04's proof chip); from 861 to 1,160 px the sheet takes the full
+  column with 48 px tick columns, 12 px sans heads and no row numbers; the compact phone rows apply at 600 px and under
+  only (601-860 keeps the desktop rows with the top-right inset); the Proof head carries its column rule. hsCrop keeps
+  2 % of the frame as margin on each side so the end stations clear the screen edge. shop-bay keeps a 2-column key from
+  601 to 860 px.

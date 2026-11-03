@@ -20,3 +20,5 @@ TankGa reads a spec block of fabrication parameters off one general arrangement 
 - The title block closes the sheet: the brand on one mono line (the caption cell is dropped: it repeats the eyebrow), the budget as a full-width navy card with its link as a 44 px target.
 - Under 600 px the sheet gives its width back (S14): no side frame, the paper runs edge to edge and the text keeps the 16 px gutter.
 - Without script the phone shows the drawing full width above the key.
+
+Pass 12 C: the tag is the GA-sheet tag shared with SkidSheet (navy, on-navy numerals; flow with on-action when lit); in the dark theme it takes a 1 px on-navy-muted outline so the navy tag stays visible on the dark sheet.

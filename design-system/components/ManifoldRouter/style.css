@@ -96,3 +96,10 @@
   .aq-manifold-router__chev { display: block; align-self: center; width: var(--space-8); margin-right: calc(-1 * var(--space-2)); color: var(--on-limestone-muted); }
   .aq-manifold-router__opt[aria-expanded="true"] .aq-manifold-router__chev { color: var(--on-limestone); }
 }
+/* panel "compact" (look-only field, pass 12 C): the route sheet as tall as its steps, the water line between them
+   capped, so an 8-row list does not stretch "Where the water goes" to "Start with" across ~330 px */
+.aq-manifold-router--compact .aq-manifold-router__route { align-self: start; }
+/* verify F4: the sheet follows the open row's third (the route spans every row, so align-self moves it) */
+.aq-manifold-router--compact.is-mid .aq-manifold-router__route { align-self: center; }
+.aq-manifold-router--compact.is-low .aq-manifold-router__route { align-self: end; }
+.aq-manifold-router--compact .aq-manifold-router__st:not(:last-child)::after { max-height: var(--space-24); }

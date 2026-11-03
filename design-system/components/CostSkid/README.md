@@ -13,3 +13,5 @@ Look `cost-skid` (`assets/src/blocks/look-cost-skid.js`) on a `spec` block. Used
   svc-service (running cost), ind-process (from exchange DI) and cmp-documentation (site safety, 7 rows).
 
 Motion: the skid draws itself with IsoKit's choreography (parts back to front, pipes and leaders, the water runs the train once), then each cost row is wired in: its number strikes at the part (scale 1.6 to 1, 0.35 s), the row prints and its parts light for a moment. One timeline, under 5 s. Hover or focus on a row lights its parts, leader and number (repeats).
+
+Round C: values set in sans 15/22; only a `[bracketed]` placeholder (its `.aq-ph` chip) is mono, so a written value ("None: RO and EDI make the water on site", "Certificate of insurance ...") no longer switches the column into mono. The "Site safety" use (`section#safety`, cmp-documentation) puts the drawing from grid column 6 (5fr / 7fr at 861 px and up), so the long heading never runs into it, with `space-8` under the drawing above the table's header rule (861 px and up only); svc-service and ind-process keep 4fr / 8fr. The pretreatment vessels are IsoKit parts (owner: IsoKit).

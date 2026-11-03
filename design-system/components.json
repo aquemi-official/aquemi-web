@@ -126,7 +126,7 @@
    "group": "Foundations",
    "height": "1500",
    "width": "1200",
-   "subtitle": "Isometric line-drawing kit: every part, a pretreatment-to-point-of-use scene with its water path, and the navy ground",
+   "subtitle": "Isometric line-drawing kit in the PP drawing language: every part, a pretreatment-to-point-of-use scene with its water path, and the navy ground",
    "summary": "IsoKit is the shared isometric line-drawing kit: equipment, pipes, water flow, dimensions, leaders and drawing-sheet furniture in fine 1.5 px technical line art, so every section that draws a system reads as drawn by one hand."
   },
   {
@@ -366,7 +366,9 @@
    "height": "640",
    "width": "1100",
    "subtitle": "Certification status as a ruler-framed readout beside mono readout lines",
-   "summary": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's status line set as the giant reading and its standard as a small line, beside the items as mono readout lines whose titles are buttons that put them on the readout."
+   "summary": "CertReadout shows certification status as an instrument readout: a navy ruler-framed box with the selected item's status line set as the giant reading and its standard as a small line, beside the items as mono readout lines whose titles are buttons that put them on the readout.",
+   "retired": true,
+   "look": "cert-readout"
   },
   {
    "name": "CertSeals",
@@ -376,9 +378,7 @@
    "height": "620",
    "width": "1100",
    "subtitle": "Certification status as sealed certificate tiles",
-   "summary": "CertSeals sets certification status as a Swiss row of certificate tiles: a seal (ring of ticks round the item's line icon), the standard or mark it is held to set large and light, what it covers and its status.",
-   "retired": true,
-   "look": "cert-seals"
+   "summary": "CertSeals sets certification status as a Swiss row of certificate tiles: a seal (ring of ticks round the item's line icon), the standard or mark it is held to set large and light, what it covers and its status."
   },
   {
    "name": "CheckLedger",
@@ -701,7 +701,7 @@
    "group": "Page sections",
    "height": "560",
    "width": "1100",
-   "subtitle": "Upgrade steps on one pipe with gate valves",
+   "subtitle": "Upgrade steps on one pipe with diaphragm valves",
    "summary": "GateLine draws a short process as one double-line pipe on a navy band: each step owns a run of pipe with a line icon above and its number, name and line below, and a gate valve sits on every joint between steps."
   },
   {
@@ -914,9 +914,7 @@
    "height": "1180",
    "width": "1100",
    "subtitle": "The joint log as a traceability tag hanging from the fused joint it records",
-   "summary": "JointTag shows a joint log as a traceability tag hanging from the joint it records: a polypropylene pipe in side view, fused at a double-rolled bead, runs off both page edges, and the tag on its wire carries one form box per log field, each field's number pinned on the part of the joint it describes.",
-   "retired": true,
-   "look": "joint-tag"
+   "summary": "JointTag shows a joint log as a traceability tag hanging from the joint it records: a polypropylene pipe in side view, fused at a double-rolled bead, runs off both page edges, and the tag on its wire carries one form box per log field, each field's number pinned on the part of the joint it describes."
   },
   {
    "name": "LayerStack",
@@ -1254,7 +1252,7 @@
    "height": "1455",
    "width": "1300",
    "subtitle": "Engineering standards as a Swiss poster: a geometric collage, one numbered piece per standard, editorial blocks on brackets",
-   "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a pressure vessel, a control panel, a flanged elbow, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets."
+   "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a flat-bottom PP vessel on its plinth, a control panel, a fused PP elbow with socket sleeves and a butt-fusion bead, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets."
   },
   {
    "name": "PlanChecker",
@@ -1408,7 +1406,9 @@
    "height": "1420",
    "width": "1100",
    "subtitle": "Each process and the record slip it feeds out of its slot",
-   "summary": "RecordSlips shows each process of a quality system with the record it leaves: the process set large and light, what it controls under it, and at its right edge a slot from which a paper slip feeds out listing the records you can inspect, each with an empty tick box."
+   "summary": "RecordSlips shows each process of a quality system with the record it leaves: the process set large and light, what it controls under it, and at its right edge a slot from which a paper slip feeds out listing the records you can inspect, each with an empty tick box.",
+   "retired": true,
+   "look": "record-slips"
   },
   {
    "name": "RedlineSheet",
@@ -1940,7 +1940,7 @@
    "height": "960",
    "width": "1100",
    "subtitle": "Numbered terms table beside an isometric skid that bleeds off the page",
-   "summary": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid that bleeds off the page's right edge: how you buy it next to what you buy."
+   "summary": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid, whole in its column and sticky beside the rows on desktop: how you buy it next to what you buy."
   },
   {
    "name": "TestSheet",

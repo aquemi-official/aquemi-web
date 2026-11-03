@@ -1,7 +1,9 @@
 /* Look "cert-seals" -> CertSeals (design-system/components/CertSeals): certification status as a row of certificate
    tiles, Swiss in build. Each tile carries a seal (a ring of ticks round the item's line icon), the standard or mark
    it is held to (the item's tag) set large and light, what it covers, and its status. The first tile is navy, the
-   rest limestone in two shades (paper: data-theme="light", so placeholders keep their light chip in the dark theme). A tile with a link is the link (an arrow at its foot). Long tags (placeholders) set
+   rest limestone in two shades (paper: is-paper; in the dark theme they take the raised dark surface, as LimitBento's
+   paper tiles do, round C verify F6). A tile with a link is the link: it names where it goes (the linked page's nav
+   label or block heading, wlabel, round C verify F4) over an arrow. Long tags (placeholders) set
    smaller so the tile keeps its shape.
    The navy tile carries a certificate's engraved rosette, drawn by FxGuilloche (ambient WebGL, aria-hidden, faint).
    Fields (a grid block): h, intro, items [{t, d, tag, icon, link}]. Phones: tiles two a row, then one. */
@@ -11,6 +13,6 @@ LOOKS['cert-seals']=function(b,H){var I=b.items||[];
   +'<circle class="aq-cert-seals__ring" cx="32" cy="32" r="22"/></svg>'+(ic&&isIcon(ic)?wIcon(ic,'aq-cert-seals__icon'):'')+'</span>'};
  var tiles=I.map(function(it,i){var tag=String(it.tag||''),long=tag.length>14,lk=it.link&&wp(it.link),fx=i?'':' aq-fx-host';
   var inner=(i?'':'<canvas class="aq-fx-shader" data-gl="guilloche" aria-hidden="true"></canvas>')+seal(it.icon)+(tag?'<p class="aq-cert-seals__tag'+(long?' is-long':'')+'">'+tx(tag)+'</p>':'')
-   +'<h3 class="aq-cert-seals__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-cert-seals__d">'+tx(it.d)+'</p>':'')+(lk?'<span class="aq-cert-seals__go" aria-hidden="true"></span>':'');
-  return '<li class="aq-cert-seals__item" style="--i:'+i+'"'+(i?' data-theme="light"':'')+'>'+(lk?'<a class="aq-cert-seals__tile'+fx+'" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-cert-seals__tile'+fx+'">'+inner+'</div>')+'</li>'}).join('');
+   +'<h3 class="aq-cert-seals__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-cert-seals__d">'+tx(it.d)+'</p>':'')+(lk?'<span class="aq-cert-seals__to">'+tx(wlabel(it.link))+'</span><span class="aq-cert-seals__go" aria-hidden="true"></span>':'');
+  return '<li class="aq-cert-seals__item'+(i?' is-paper':'')+'" style="--i:'+i+'">'+(lk?'<a class="aq-cert-seals__tile'+fx+'" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-cert-seals__tile'+fx+'">'+inner+'</div>')+'</li>'}).join('');
  return sec(H+'<div class="aq-cert-seals"><ol class="aq-cert-seals__list" role="list" style="--n:'+I.length+'">'+tiles+'</ol></div>','aq-cert-seals-sec')};

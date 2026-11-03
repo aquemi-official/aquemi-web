@@ -11,7 +11,7 @@ AQmotion.fx('DecisionValve', function (root, m) {
     var lever = el.querySelector('.aq-decision-valve__lever'), dial = el.querySelector('.aq-decision-valve__dial'), ins = q('.aq-decision-valve__in'), outs = q('.aq-decision-valve__out');
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), wide = !m.narrow();
     tl.from(q('.aq-decision-valve__colh'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0)
-      .from(q('.aq-decision-valve__src'), { x: wide ? -32 : 0, y: wide ? 0 : 12, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.05);
+      .from(q('.aq-decision-valve__src'), { x: wide ? -32 : 0, y: wide ? 0 : 12, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, wide ? 0.05 : 0);
     if (dial) tl.from(dial, { autoAlpha: 0, rotation: -30, transformOrigin: '50% 50%', duration: 0.9, clearProps: 'transform,opacity,visibility' }, 0.3)
       .from(dial.querySelectorAll('.aq-decision-valve__posn'), { autoAlpha: 0, duration: 0.3, stagger: 0.08, clearProps: 'opacity,visibility' }, 0.8);
     if (window.DrawSVGPlugin && wide) {
@@ -22,7 +22,7 @@ AQmotion.fx('DecisionValve', function (root, m) {
       var end = lever.style.getPropertyValue('--a') || '0deg';
       tl.set(lever, { transition: 'none' }, 0).fromTo(lever, { '--a': '-170deg' }, { '--a': end, duration: 1.1, ease: 'aq-settle' }, 0.7).set(lever, { clearProps: 'transition' });
     }
-    tl.from(q('.aq-decision-valve__card'), { x: wide ? 32 : 0, y: wide ? 0 : 12, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.6);
+    tl.from(q('.aq-decision-valve__card'), { x: wide ? 32 : 0, y: wide ? 0 : 12, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, wide ? 1.6 : 0.5); // phone: no line draw to wait for
     m.on(el, function () { tl.play() }, 'top 75%');
     // a choice: water runs the new route, in then out
     el.addEventListener('click', function (ev) {

@@ -73,7 +73,7 @@ LOOKS['layer-stack']=function(b,H){
  var crop='--ls-zoom:'+(VW/(bx.w)).toFixed(3)+';--ls-shift:'+(-(side-0)/bx.w*100).toFixed(2)+'%';
  /* pass 9b (concept sys-monitoring.0): the title set huge and light on a navy field, cropped by a limestone drawing
     sheet that holds the stack and its numbered callouts and runs off the right and bottom edges */
- return sec('<div class="aq-layer-stack__spread">'+H+'<div class="aq-layer-stack__sheet" data-theme="light"><div class="aq-layer-stack" data-at="'+fr+'" style="'+crop+'"><div class="aq-layer-stack__fig">'+svg+'</div>'
+ return sec('<div class="aq-layer-stack__spread">'+H+'<div class="aq-layer-stack__sheet" data-theme="light" data-paper><div class="aq-layer-stack" data-at="'+fr+'" style="'+crop+'"><div class="aq-layer-stack__fig">'+svg+'</div>'
   +'<ol class="aq-layer-stack__list" role="list">'+items+'</ol></div>'+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':'')+'</div></div>','aq-band--navy aq-layer-stack-sec')};
 /* Pointing at a label or a plate lights both and lifts the plate off the stack (style.css: the lift ported from
    Subframe Motion "Exploded product view" (exploded-camera), MIT, (c) 2026 Subframe: parts glide 600 ms on

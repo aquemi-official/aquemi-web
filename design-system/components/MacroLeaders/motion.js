@@ -2,7 +2,8 @@
    The leaves start pressed together and fan apart back to front; the PP pipe slides in along its own axis and the
    weld bead swells into place; water runs once along every leaf. Then, row by row, the numbered marker pops onto its
    arc, the leader shoots right from it to the row, and the row's cells arrive as the line lands. About 3.4 s.
-   Phones: the band fans the same way; markers drop onto the rail and their rows follow. */
+   Phones: the band fans the same way; markers drop onto the rail and their rows follow. Pipe-pair (pass 12 round C):
+   the two cut sections slide out of the page edge along their axes, the band between, then the same row callouts. */
 AQmotion.fx('MacroLeaders', function (root, m) {
   root.querySelectorAll('.aq-macro-leaders').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
@@ -11,7 +12,13 @@ AQmotion.fx('MacroLeaders', function (root, m) {
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
     var layers = qa('.aq-macro-leaders__layer');
     // leaves: pressed onto the middle leaf, then fanned out, back to front
-    layers.forEach(function (g, i) {
+    var pair = el.classList.contains('aq-macro-leaders--pair');
+    /* pipe-pair: each cut section slides out along its own pipe axis (from the left page edge), the band between them
+       after the first */
+    if (pair) layers.forEach(function (g, i) {
+      tl.from(g, { x: g.classList.contains('aq-macro-leaders__temp') ? -24 : -90, autoAlpha: 0, duration: 1, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.05 + i * 0.16);
+    });
+    else layers.forEach(function (g, i) {
       var dy = (2 - i) * 70;
       tl.from(g, { y: dy, rotation: (2 - i) * 2.2, svgOrigin: '560 380', autoAlpha: 0, duration: 1.1, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.05 + (4 - i) * 0.07);
     });

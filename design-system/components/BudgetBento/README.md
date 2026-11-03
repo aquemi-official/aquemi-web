@@ -12,3 +12,5 @@ BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole pac
 Motion: the lead tile prints up from its foot and its numeral slides into the crop; module tiles slide in beside it, numerals first, icons wiping up; every ruler's ticks rise and the band opens from its centre, the brackets dropping on its ends; the included items tick in; the chip rows follow (drivers, then exclusions) and the link. Under 5 s; nothing under reduced motion.
 
 Ported (pass 9b): Subframe Motion "Spotlight card" (spotlight-card): a soft `flow` light follows a mouse pointer inside the tile being read (quickTo 0.45 s), fading in over 200 ms and out a third faster; out of the page (display none) at rest.
+
+Pass 12 C: in the dark theme the navy lead tile takes an inset 1 px `line-strong` edge, so it keeps its shape on the near-black page.

@@ -152,7 +152,8 @@
      "t": "Service and spares",
      "d": "From [service bases, cities], with spares in [stock location or locations].",
      "link": "contact-locations#coverage",
-     "icon": "valve"
+     "icon": "valve",
+     "fig": "truck"
     }
    ],
    "look": "site-tiles"
@@ -247,11 +248,12 @@
   "Launch (DR-026 launch rule): if buying is not published, the hero secondary returns to cmp-quality#buying, related drops buying, and the Insurance row links cmp-quality#audit"
  ],
  "figure": {
-  "spots": [
-   "pretreatment",
-   "ro-skid",
-   "edi-stack"
-  ],
-  "label": "Pretreatment · RO · deionization"
+  "look": "shop-bay",
+  "from": "people",
+  "at": [
+   "table",
+   "panel",
+   "desk"
+  ]
  }
 }

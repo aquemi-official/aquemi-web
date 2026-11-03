@@ -7,7 +7,7 @@
    sheet (optional): matrix, pid, spec or report (default from the name). use (optional): the qualification step the
    item's own text names as using it ("IQ"), shown as the stamp. Codes come from the DocList lookup (docCode).
    Mid widths: two sheets a row. Phones (pass 12, S11): the set is a snap deck on the desk, each sheet 78 % wide with
-   the next one peeking, turn and stamp kept; dots under the deck jump between sheets (AQsnap, below). */
+   the next one peeking, turn and stamp kept; dots under the deck jump between sheets (AQsnap, parts/Snap.js). */
 LOOKS['issued-set']=(function(){
  function P(d,c){return '<path class="aq-issued-set'+'__'+(c||'ln')+'" d="'+d+'"/>'}
  function lines(x,y,n,step,w){var o='';for(var i=0;i<n;i++)o+=P('M'+x+' '+(y+i*step)+'H'+(x+w-((i*37)%(w*0.45))),'txt');return o}
@@ -41,21 +41,3 @@ LOOKS['issued-set']=(function(){
   var dots=n>1?'<div class="aq-issued-set__dots" role="group" aria-label="'+e(String(b.h||'Documents'))+'">'+items.map(function(x,i){return '<button type="button" class="aq-issued-set__dot" data-snap-to="'+i+'"'+(i?'':' aria-current="true"')+' aria-label="'+e(String(x.t||''))+'"></button>'}).join('')+'</div>':'';
   return sec(H+'<div class="aq-issued-set" data-snap-box>'+wFold(b,n,'<ol class="aq-issued-set__desk" data-snap style="--n:'+Math.min(n,4)+'">'+li+'</ol>',b.fold_noun||'documents')+dots+more+'</div>','aq-issued-set-sec')}
 })();
-/* Snap rail (phones; pass 12 S11): a [data-snap] scroller whose children snap, and [data-snap-to="i"] buttons (dots or
-   numbers) in the same [data-snap-box]. The child nearest the scroller's start edge gets .is-snap and its button
-   aria-current (a strip of buttons that scrolls keeps it in view); a button scrolls its child to the start. At the
-   rail's end (items that cannot reach the start edge) the tapped child keeps the mark until the reader swipes (_want). State, not motion: it runs with reduced motion (jumps).
-   Shared by several looks; each defines it only if it is missing, so any one of them may be retired. */
-(function(){if(window.AQsnap)return;window.AQsnap=function(r){var it=[].slice.call(r.children),x=r.getBoundingClientRect().left+(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),k=0,b=1e9;
- it.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-x);if(d<b-1){b=d;k=i}});
- if(r.scrollLeft>0&&r.scrollLeft+r.clientWidth>=r.scrollWidth-2)k=r._want!=null&&r._want>=k&&it[r._want]?r._want:it.length-1;
- it.forEach(function(c,i){c.classList.toggle('is-snap',i===k)});
- var bx=r.closest('[data-snap-box]')||r.parentNode;[].forEach.call(bx.querySelectorAll('[data-snap-to]'),function(t){if(+t.getAttribute('data-snap-to')!==k){t.removeAttribute('aria-current');return}t.setAttribute('aria-current','true');
-  var s=t.parentNode;if(s.scrollWidth>s.clientWidth+1){var a=t.getBoundingClientRect().left-s.getBoundingClientRect().left+s.scrollLeft,z=a+t.offsetWidth;if(a<s.scrollLeft)s.scrollLeft=a;else if(z>s.scrollLeft+s.clientWidth)s.scrollLeft=z-s.clientWidth}});return k};
- var q=null;document.addEventListener('scroll',function(ev){var r=ev.target;if(!r||r.nodeType!==1||!r.hasAttribute('data-snap'))return;if(q!==r){q=r;requestAnimationFrame(function(){window.AQsnap(q);q=null})}},true);
- document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-snap-to]');if(!t)return;var bx=t.closest('[data-snap-box]'),r=bx&&bx.querySelector('[data-snap]');if(!r)return;
-  var c=r.children[+t.getAttribute('data-snap-to')];if(!c)return;r._want=+t.getAttribute('data-snap-to');var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var L=r.scrollLeft+c.getBoundingClientRect().left-r.getBoundingClientRect().left-(parseFloat(getComputedStyle(r).scrollPaddingLeft)||0),still=Math.abs(Math.max(0,Math.min(L,r.scrollWidth-r.clientWidth))-r.scrollLeft)<1;
-  r.scrollTo({left:L,behavior:red?'auto':'smooth'});
-  if(red||still)window.AQsnap(r)});
- ['pointerdown','touchstart','wheel','keydown'].forEach(function(n){document.addEventListener(n,function(ev){var r=ev.target.closest&&ev.target.closest('[data-snap]');if(r)r._want=null},{capture:true,passive:true})})})();

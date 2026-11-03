@@ -7,7 +7,7 @@ function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var
  return '<nav class="aq-section-nav" aria-label="On this page"><div class="aq-in"><span class="aq-section-nav__label" aria-hidden="true">On this page <span>↓</span></span><ol class="aq-section-nav__links">'+
   j.map(function(x,i){return '<li><a href="#'+e(p.id)+'" data-jump="'+e(x.id)+'"><span class="aq-section-nav__num" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+e(x.label)+'</a></li>'}).join('')+'</ol>'+
   '<div class="aq-section-nav__progress"><span class="aq-section-nav__progress-label" aria-hidden="true">Page progress</span><span class="aq-section-nav__readout"><span class="aq-section-nav__meter" role="progressbar" aria-label="Page progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">'+segs+'</span><span class="aq-section-nav__pct" aria-hidden="true">0%</span></span></div></div></nav>'}
-/* Scroll-spy, progress and (phones) tuck-on-scroll-down: one passive scroll listener, batched to one update per frame; re-runs when the page re-renders. */
+/* Scroll-spy, progress, (phones) tuck-on-scroll-down and hide-at-footer: one passive scroll listener, batched to one update per frame; re-runs when the page re-renders. */
 (function(){if(typeof window==='undefined'||!window.addEventListener||!window.requestAnimationFrame)return;
  var q=0,lastY=0,rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null,ph=window.matchMedia?window.matchMedia('(max-width: 860px)'):null;
  function sched(){if(!q)q=requestAnimationFrame(function(){q=0;spy()})}
@@ -19,6 +19,8 @@ function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var
   /* nothing is current until the bar has stuck, i.e. the reader has scrolled past the hero */
   /* Phones: the stuck bar tucks away while the reader scrolls down and comes back on any scroll up */
   var stuck=bar.getBoundingClientRect().top<=1&&y>0;bar.classList.toggle('is-tucked',!!(ph&&ph.matches&&stuck&&(y>lastY+4||(bar.classList.contains('is-tucked')&&y>=lastY-4))));lastY=y;
+  /* Pass 12 C (F2): the bar steps away while the footer is in view, so it never sits over the footer's links; it stays if it holds focus */
+  var ft=document.querySelector('.aq-footer');bar.classList.toggle('is-footed',!!(ft&&ft.getBoundingClientRect().top<vh&&!bar.contains(document.activeElement)));
   if(bar.getBoundingClientRect().top<=1)links.forEach(function(a){var s=document.getElementById(a.dataset.jump);if(s&&s.getBoundingClientRect().top<=line)act=a.dataset.jump});
   if(links.length&&max>0&&y>=max-2){var l=links[links.length-1],ls=document.getElementById(l.dataset.jump);if(ls&&ls.getBoundingClientRect().top<vh)act=l.dataset.jump}
   document.querySelectorAll('.aq-section-nav a[data-jump], .aq-menu a[data-jump]').forEach(function(a){var on=a.dataset.jump===act;

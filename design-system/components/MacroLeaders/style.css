@@ -115,3 +115,18 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   .aq-macro-leaders td[data-c="2"] { border-left-style: dashed; }
   .aq-macro-leaders__legend span[data-c="2"]::before { background: repeating-linear-gradient(to bottom, var(--ink) 0 4px, transparent 4px 7px); }
 }
+/* Pass 12 round C, macro "pipe-pair" (.aq-macro-leaders--pair): two cut sections (thick-wall natural PP over thin-wall
+   316L) and the 0-80 °C band of natural PP between them. The stubs run off the page to the left (overflow visible,
+   clipped by the section). */
+.aq-macro-leaders--pair .aq-macro-leaders__svg, .aq-macro-leaders__svg--pair { overflow: visible; }
+.aq-macro-leaders__sec, .aq-macro-leaders__temp { pointer-events: none; }
+.aq-macro-leaders__face { fill: var(--surface-raised); stroke: none; }
+.aq-macro-leaders__face-ol { fill: none; }
+.aq-macro-leaders__bore { fill: var(--flow-tint); stroke: var(--line-strong); stroke-width: 1; }
+.aq-macro-leaders--pair .aq-macro-leaders__tex { opacity: 1; }
+.aq-macro-leaders--pair .aq-macro-leaders__hatch { stroke: var(--line-strong); }
+.aq-macro-leaders--pair .aq-macro-leaders__water { stroke-width: 2; opacity: 1; }
+.aq-macro-leaders__band { fill: var(--flow-tint); stroke: none; }
+.aq-macro-leaders__beyond { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 4 4; }
+.aq-macro-leaders--pair .aq-macro-leaders__lbl { font-size: 13px; fill: var(--ink-muted); }
+.aq-macro-leaders--pair .aq-macro-leaders__tick { letter-spacing: 0; }

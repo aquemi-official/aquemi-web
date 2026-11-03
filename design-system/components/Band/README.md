@@ -50,3 +50,8 @@ Origin: concept P in `design-system/inspiration/`, generated in Gemini and rebui
 ## Motion
 
 Motion: no own choreography. The navy, sunken and limestone grounds are static; the statement band's pipework motif draws on through the generic motion layer, and the Closing on the navy band has its own (`Closing/motion.js`).
+
+## Pass 12 C
+
+- **Navy-to-navy seam (V1).** Two navy bands in a row (news capa-ring then colophon, contact-service routes then riser-valves, cmp-documentation index-sheet then stage-stacks) are told apart by a Limestone hairline at 18 % on the second band's top edge and 16 px more top padding (80 px desktop, 64 px phones). The Closing keeps its own padding.
+- **Dark limestone (provisional ruling RC1, owner to confirm).** In dark mode (system setting or `data-theme="dark"`) a full-width `.aq-band--limestone` re-declares the colour tokens as the warm dark stone set from tokens.json: `--limestone` and `--surface` take `stone` (#2B2722), `--on-limestone`, `--ink` take `on-stone`, the muted and subtle inks, raised and sunken fills and the lines take their stone values; every other colour token is inherited from the page. A band pinned `data-theme="light"`, and any pinned-light wrapper inside a band, takes the same dark set (pinning was the old way to keep dark ink on the light band). Paper stays paper: an object marked `data-paper` (redline-sheet, record-slips, spare-sheet, joint-tag, signature-blocks, cut-band) keeps its light tokens and, in dark mode anywhere on the page, is dimmed to `paper-dim` (#D9CEC3) with `paper-dim-raised` (#ECE6E0) fills. Navy blocks inside a band stay navy. Light mode is unchanged. To reverse, delete the dark blocks in `Band/style.css`.

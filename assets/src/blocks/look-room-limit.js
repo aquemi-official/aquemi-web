@@ -6,7 +6,10 @@
    Desktop: title over the drawing (left) and the keyed rows (right) in three groups: the limit row, what the package
    brings, what the site provides. Pointing at or focusing a row glides a ring to its point on the drawing.
    Phones: the drawing cropped to the line and its tie-ins (the walls' empty tops cut away), the limit row, then the
-   two sides as a two-column checklist of squares keyed to the drawing.
+   two sides as a two-column checklist of squares keyed to the drawing. With script (pass 12 round C) the crop is a
+   PhoneKit sticky compact figure: held under the header while the rows pass, it zooms to the pin of the row on the
+   reading line (lit as on desktop) and shows today's whole crop while the heading is read; the sides run one column
+   so every row reaches the reading line on its own.
    Concept: pass 12 image 228, design-system/inspiration/gemini/228-p12-first-system-site.png (its invented row words,
    mono [placeholder] rows and title block are not used: the rows are the block's own).
    Motion idea ported from Subframe Motion "Inside the image" (atlas-hotspots), MIT, (c) 2026 Subframe: one selection
@@ -89,10 +92,10 @@ LOOKS['room-limit']=function(b,H){var R=b.rows||[],C=b.cols||['Item','What it ta
   return '<span class="aq-iso-figure__label '+(q.left?'aq-iso-figure__label--left ':'')+K+'__pin" data-r="'+q.i+'" data-k="'+q.k+'" data-x="'+pt.left+'" data-y="'+pt.top+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+no(q.i)+'</span>'}).join('');
  var lab=function(cls,p,t){var at=isoPct(isoP(p),W,Hh,org);return t?'<span class="'+K+'__lab '+cls+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(t)+'</span>':''};
  var labs=lab('is-pkg',[L[0]+38,L[3]-20,0],SD[0])+lab('is-site',[L[0]+14,L[3]+30,0],SD[1]);
- var fig='<figure class="aq-iso-figure '+K+'__fig" style="'+crop+'"><div class="'+K+'__pan">'+svg+sq+labs+'<span class="'+K+'__ringl" aria-hidden="true"><span class="'+K+'__ring"></span></span></div></figure>';
+ var fig='<figure class="aq-iso-figure '+K+'__fig" data-pk-fig style="'+crop+'"><div class="'+K+'__pan">'+svg+sq+labs+'<span class="'+K+'__ringl" aria-hidden="true"><span class="'+K+'__ring"></span></span></div></figure>';
  var pinOf={};pins.forEach(function(q){pinOf[q.i]=1});
  function item(r,i,tag){var lk=r.link&&wp(r.link)?'<a class="'+K+'__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
-  return '<'+tag+' class="'+K+'__item'+(r.side==='limit'?' is-limit':'')+'" data-r="'+i+'"'+(pinOf[i]?' tabindex="0"':'')+'>'
+  return '<'+tag+' class="'+K+'__item'+(r.side==='limit'?' is-limit':'')+'" data-r="'+i+'" data-pk-row="'+i+'"'+(pinOf[i]?' tabindex="0"':'')+'>'
    +'<span class="'+K+'__no'+(pinOf[i]?'':' is-free')+'" aria-hidden="true">'+no(i)+'</span>'
    +'<h3 class="'+K+'__p">'+tx(r.p)+'</h3>'
    +'<p class="'+K+'__v"><span class="'+K+'__sr">'+tx(C[1]||'')+': </span>'+tx(r.v)+'</p>'
@@ -102,7 +105,7 @@ LOOKS['room-limit']=function(b,H){var R=b.rows||[],C=b.cols||['Item','What it ta
  var list='<div class="'+K+'__rows">'+lim
   +(pk?(SD[0]?'<p class="'+K+'__side is-pkg">'+tx(SD[0])+'</p>':'')+'<ol class="'+K+'__list is-pkg" role="list">'+pk+'</ol>':'')
   +(st?(SD[1]?'<p class="'+K+'__side is-site">'+tx(SD[1])+'</p>':'')+'<ol class="'+K+'__list is-site" role="list">'+st+'</ol>':'')+'</div>';
- return sec('<div class="'+K+'"><div class="'+K+'__head">'+H+'</div>'+fig+list+'</div>',K+'-sec')};
+ return sec('<div class="'+K+'" data-pk-sticky data-pk-h="180"><div class="'+K+'__head" data-pk-row="h">'+H+'</div>'+fig+list+'</div>',K+'-sec')};
 /* One selection shared by the rows and the drawing (atlas-hotspots): pointing at or focusing a row glides the ring to
    its point and lights its number, leader and node; leaving the section clears it. */
 function rlPick(root,i){if(!root)return;var on=i!=null&&i!=='';
@@ -114,8 +117,25 @@ function rlPick(root,i){if(!root)return;var on=i!=null&&i!=='';
  root.setAttribute('data-rl',pin.getAttribute('data-k'))}
 window.rlPick=rlPick;
 (function(){function hit(ev){return ev.target.closest&&ev.target.closest('.aq-room-limit__item[tabindex], .aq-room-limit__pin')}
- function over(ev){var t=hit(ev);if(!t)return;rlPick(t.closest('.aq-room-limit'),t.getAttribute('data-r'))}
- function out(ev){var t=hit(ev);if(!t||t.contains(ev.relatedTarget))return;var root=t.closest('.aq-room-limit'),n=ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-room-limit__item[tabindex], .aq-room-limit__pin');
+ /* on phones (PhoneKit on) the strip owns the selection: a tap or focus never splits the lit row from the zoom */
+ function over(ev){var t=hit(ev);if(!t)return;var root=t.closest('.aq-room-limit');if(!root||root.hasAttribute('data-pk-on'))return;rlPick(root,t.getAttribute('data-r'))}
+ function out(ev){var t=hit(ev);if(!t||t.contains(ev.relatedTarget))return;var root=t.closest('.aq-room-limit');if(!root||root.hasAttribute('data-pk-on'))return;var n=ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-room-limit__item[tabindex], .aq-room-limit__pin');
   if(!n||!root.contains(n))rlPick(root,null)}
  document.addEventListener('mouseover',over);document.addEventListener('focusin',over);document.addEventListener('mouseout',out);document.addEventListener('focusout',out);
+})();
+/* Phones (PhoneKit sticky figure on): the row on the reading line is chosen as on desktop (its pin, leader, node and
+   row light, the ring rides to it) and the drawing zooms so that pin and its tie-in sit mid-strip at 1.6x, kept
+   inside the drawing; while the heading is read (row "h") or PhoneKit is off, the crop is today's, unzoomed. The
+   transform lives on the pan layer (--rl-zx/zy/zs), so PhoneKit's lift transform on the strip stays free. */
+(function(){var Z=1.6;
+ function zoom(root,i){var fig=root.querySelector('.aq-room-limit__fig'),pan=fig&&fig.querySelector('.aq-room-limit__pan'),pin=i!=null&&root.querySelector('.aq-room-limit__pin[data-r="'+i+'"]');
+  if(!pan||!pin){['--rl-zx','--rl-zy','--rl-zs'].forEach(function(v){root.style.removeProperty(v)});return}
+  var pw=pan.offsetWidth,ph=pan.offsetHeight,ox=pan.offsetLeft,oy=pan.offsetTop,fw=fig.clientWidth,fh=fig.clientHeight;if(!pw||!fw)return;
+  /* aim between the pin's square (the leader's end) and its tie-in point, so both stay in the strip */
+  var lx=parseFloat(pin.style.left)/100,ly=parseFloat(pin.style.top)/100,px=parseFloat(pin.getAttribute('data-x'))/100,py=parseFloat(pin.getAttribute('data-y'))/100;
+  var cx=(lx+px)/2*pw,cy=(ly+py)/2*ph,x=fw/2-ox-Z*cx,y=fh/2-oy-Z*cy;
+  x=Math.min(-ox,Math.max(fw-ox-Z*pw,x));y=Math.min(-oy,Math.max(fh-oy-Z*ph,y));
+  root.style.setProperty('--rl-zs',String(Z));root.style.setProperty('--rl-zx',Math.round(x)+'px');root.style.setProperty('--rl-zy',Math.round(y)+'px')}
+ document.addEventListener('pk:change',function(ev){var root=ev.target;if(!root||!root.classList||!root.classList.contains('aq-room-limit'))return;
+  var d=ev.detail||{},k=d.on&&d.key!=='h'?d.key:null;rlPick(root,k);zoom(root,k)});
 })();

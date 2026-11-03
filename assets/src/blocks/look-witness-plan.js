@@ -67,8 +67,14 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],S=wpSce
   var li=t.closest('[data-pk-row]');if(ev.isTrusted&&li&&w.hasAttribute('data-pk-on')&&window.AQpk&&!li.classList.contains('is-pk-active')){
    var y=window.scrollY+li.getBoundingClientRect().top-window.AQpk.line(w)+2,rm=window.AQpk.reduced&&window.AQpk.reduced();window.scrollTo({top:Math.max(0,y),behavior:rm?'auto':'smooth'})}});
  /* phones: the way on the reading line is the chosen way (PhoneKit sticky) */
- document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-witness-plan')||!ev.detail.on)return;
-  var li=w.querySelector('[data-pk-row="'+ev.detail.key+'"]'),o=li&&li.querySelector('.aq-witness-plan__opt');if(o&&o.getAttribute('aria-pressed')!=='true')o.click()});
+ /* pass 12 round C (S9): a marker the strip's crop cuts is faded out (.is-clip), so no half chip shows at the strip's
+    edge; the chosen way's marker always shows. Checked when the pan settles (and at once with reduced motion). */
+ function clip(w){var f=w.querySelector('.aq-witness-plan__fig');if(!f)return;var on=w.hasAttribute('data-pk-on'),F=f.getBoundingClientRect();
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__mk'),function(m){var r=m.getBoundingClientRect(),cut=on&&!m.classList.contains('is-on')&&(r.top<F.top||r.bottom>F.bottom||r.left<F.left||r.right>F.right);m.classList.toggle('is-clip',cut)})}
+ document.addEventListener('transitionend',function(ev){var t=ev.target;if(t&&t.classList&&t.classList.contains('aq-witness-plan__sheet')){var w=t.closest('.aq-witness-plan');if(w)clip(w)}});
+ document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-witness-plan'))return;
+  setTimeout(function(){clip(w)},460);if(!ev.detail.on)return;
+  var li=w.querySelector('[data-pk-row="'+ev.detail.key+'"]'),o=li&&li.querySelector('.aq-witness-plan__opt');if(o&&o.getAttribute('aria-pressed')!=='true')o.click();clip(w)});
  document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
   var w=t.closest('.aq-witness-plan');show(w,w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]'))});

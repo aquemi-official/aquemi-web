@@ -16,7 +16,14 @@
 /* the trunk starts at the first drop (the industry column has no tee), capped there */
 .aq-use-matrix__h0::before { display: none; }
 .aq-use-matrix__h0 + .aq-use-matrix__h::before { border-left: 3px double var(--line-strong); }
-.aq-use-matrix__h:last-child::before { width: calc((var(--sq, var(--space-4)) + var(--pipe, var(--space-3))) / 2); }
+/* the trunk runs across every use column (all --c of them, whatever the count) and turns down at the table's right edge
+   as the loop's return, so the last column is framed like the others (pass 12 round C; it used to stop at its drop) */
+.aq-use-matrix__h:last-child::before { width: 100%; border-right: 1px solid var(--line-strong); }
+.aq-use-matrix__h:last-child::after { content: ""; position: absolute; right: 0; top: calc(-1 * var(--fall, var(--space-12)) + var(--pipe, var(--space-3)) / 2 - 1px);
+  bottom: calc(-1 * var(--space-3)); width: var(--pipe, var(--space-3)); border-inline: 1px solid var(--line-strong); box-sizing: border-box; z-index: 1;
+  /* the water turns the corner: a level stub from the left wall to the centre, then the fall */
+  background: linear-gradient(var(--flow), var(--flow)) 0 0 / calc(50% + 1px) 2px no-repeat,
+    linear-gradient(var(--flow), var(--flow)) 50% 0 / 2px 100% no-repeat var(--surface-sunken); }
 /* the tee: the drop's twin wall starts at the trunk's water line (its ground hides the trunk's lower wall) and falls to the name */
 .aq-use-matrix__drop { position: absolute; left: calc((var(--sq, var(--space-4)) - var(--pipe, var(--space-3))) / 2); top: calc(-1 * var(--fall, var(--space-12)) + var(--pipe, var(--space-3)) / 2 - 1px);
   bottom: calc(-1 * var(--space-3)); width: var(--pipe, var(--space-3)); border-inline: 1px solid var(--line-strong); background: var(--surface-sunken); box-sizing: border-box; z-index: 1; }

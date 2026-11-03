@@ -40,6 +40,10 @@
 .aq-industry-drops__go:hover::after, .aq-industry-drops__item.is-on .aq-industry-drops__go::after { transform: translateX(var(--space-1)); }
 .aq-industry-drops__go:focus-visible { outline: none; }
 .aq-industry-drops__go:focus-visible::before { outline: 2px solid var(--focus); outline-offset: 0; }
+/* desktop: the title link itself is a 44 px target (26 px line + 9 px above and below), the line layout unchanged */
+@container (min-width: 861px) {
+  .aq-industry-drops__go { padding-block: 9px; margin-block: -9px; }
+}
 .aq-industry-drops__d { margin: 0 0 var(--space-3); max-width: 34ch; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
 .aq-industry-drops__tag {
   display: inline-block; padding: 2px var(--space-2); border: 1px solid var(--line-strong); color: var(--ink);

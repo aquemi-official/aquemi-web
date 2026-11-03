@@ -5,7 +5,16 @@
 .aq-pdf-anatomy-sec { position: relative; }
 .aq-pdf-anatomy__front, .aq-pdf-anatomy__stack, .aq-pdf-anatomy__search { transform-box: fill-box; }
 .aq-pdf-anatomy__go { margin: var(--space-4) 0 0; }
-.aq-pdf-anatomy { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); column-gap: var(--space-12); align-items: start; }
+/* round C: a 2x2 on desktop: the plate and its pager top left, the signatures under it, the other rows on the right */
+.aq-pdf-anatomy { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "plate side" "under side"; column-gap: var(--space-12); row-gap: var(--space-8); align-items: start; }
+.aq-pdf-anatomy__plate { grid-area: plate; }
+.aq-pdf-anatomy__under { grid-area: under; }
+.aq-pdf-anatomy__side { grid-area: side; }
+.aq-pdf-anatomy__gl { display: none; }
+.aq-pdf-anatomy__gl { width: var(--space-16); height: var(--space-16); overflow: visible; }
+.aq-pdf-anatomy__gl .aq-pdf-anatomy__ln, .aq-pdf-anatomy__gl .aq-pdf-anatomy__rule, .aq-pdf-anatomy__gl .aq-pdf-anatomy__gl { stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-pdf-anatomy__gl .aq-pdf-anatomy__ln { fill: var(--surface-raised); }
+.aq-pdf-anatomy__gl .aq-pdf-anatomy__gl { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linecap: round; }
 .aq-pdf-anatomy__plate { margin: 0; }
 .aq-pdf-anatomy__cap { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: var(--space-4); margin-bottom: var(--space-4); }
 .aq-pdf-anatomy__cap .aq-pdf-anatomy__k { grid-column: 1 / -1; }
@@ -42,22 +51,24 @@
 .aq-pdf-anatomy__pin { display: none; }
 
 /* the other rows */
-.aq-pdf-anatomy__side { display: flex; flex-direction: column; gap: var(--space-12); padding-top: var(--space-12); }
+.aq-pdf-anatomy__side { display: flex; flex-direction: column; gap: var(--space-8); }
 .aq-pdf-anatomy__row { border-top: 1px solid var(--line-strong); padding-top: var(--space-4); }
-.aq-pdf-anatomy__row > .aq-pdf-anatomy__h { margin-bottom: var(--space-6); }
-.aq-pdf-anatomy__sigs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-6); }
+.aq-pdf-anatomy__row > .aq-pdf-anatomy__h { margin-bottom: var(--space-4); }
+/* signatures: three lines across under the plate */
+.aq-pdf-anatomy__sigs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
 .aq-pdf-anatomy__sigs li { display: flex; flex-direction: column; gap: var(--space-2); }
 .aq-pdf-anatomy__sl { display: block; height: var(--space-6); border-bottom: 1.5px solid var(--line-strong); position: relative; }
 .aq-pdf-anatomy__sl::before { content: "×"; position: absolute; left: 0; bottom: var(--space-1); font: 400 14px/1 var(--font-mono); color: var(--ink-subtle); }
 .aq-pdf-anatomy__sv { font: 400 15px/22px var(--font-sans); color: var(--ink); }
 .aq-pdf-anatomy__or { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-pdf-anatomy__big { margin: 0; font: 300 30px/38px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
-.aq-pdf-anatomy__m { margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px dashed var(--line); }
+.aq-pdf-anatomy__big { margin: 0; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; }
+.aq-pdf-anatomy__big .aq-ph { font-size: 15px; }
+.aq-pdf-anatomy__m { margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px dashed var(--line); }
 .aq-pdf-anatomy__m p:last-child { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
 
 /* pass 9b (concept cmp-documentation.3): the section drawn on a sheet. Zone band with numbers across and letters down,
    a title block repeating the section title over blank number and revision fields. All aria-hidden furniture. */
-.aq-pdf-anatomy__sheet { position: relative; padding: var(--space-12) var(--space-12) var(--space-24); }
+.aq-pdf-anatomy__sheet { position: relative; padding: var(--space-12) var(--space-12) var(--space-16); }
 .aq-pdf-anatomy__frame { position: absolute; inset: 0; border: 1px solid var(--line-strong); pointer-events: none; }
 .aq-pdf-anatomy__frame::before { content: ""; position: absolute; inset: var(--space-6); border: 1px solid var(--line-strong); }
 .aq-pdf-anatomy__zb { position: absolute; display: grid; font: 500 12px/1 var(--font-mono); color: var(--ink-subtle); }
@@ -101,13 +112,13 @@
 @media (prefers-reduced-motion: reduce) { .aq-pdf-anatomy__cur, .aq-pdf-anatomy__hit, .aq-pdf-anatomy__pgr { transition: none; } .aq-pdf-anatomy__box.is-ping { animation: none; } }
 
 @container (max-width: 1100px) {
-  .aq-pdf-anatomy { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-pdf-anatomy { grid-template-columns: minmax(0, 1fr); grid-template-areas: "plate" "under" "side"; row-gap: var(--space-8); }
   .aq-pdf-anatomy__side { padding-top: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8); }
 }
 @container (max-width: 860px) {
   .aq-pdf-anatomy__h { font-size: 24px; line-height: 30px; }
   .aq-pdf-anatomy__crop { overflow: hidden; }
-  .aq-pdf-anatomy__art { width: 128%; margin-left: -28.7%; margin-bottom: -8%; } /* crops the empty band under the plate (about 11.5% of the art) */
+  .aq-pdf-anatomy__art { width: 128%; margin-left: -28.7%; } /* crops the callout gutter (the viewBox already ends under the plate) */
   .aq-pdf-anatomy__pin {
     display: grid; place-items: center; position: absolute; width: var(--space-6); height: var(--space-6); transform: translate(-50%, -50%);
     background: var(--flow); color: var(--surface-raised); font: 500 12px/1 var(--font-mono); border-radius: var(--radius-pill);
@@ -123,10 +134,24 @@
   .aq-pdf-anatomy__pager { justify-content: center; }
   .aq-pdf-anatomy__lead { display: none; }
   .aq-pdf-anatomy__side { gap: var(--space-8); }
-  .aq-pdf-anatomy__row > .aq-pdf-anatomy__h { margin-bottom: var(--space-3); }
-  .aq-pdf-anatomy__sigs { gap: var(--space-3); }
-  .aq-pdf-anatomy__sl { height: var(--space-4); }
-  .aq-pdf-anatomy__big { font-size: 20px; line-height: 28px; }
-  .aq-pdf-anatomy__big .aq-ph { font-size: 15px; }
+  /* round C: the column name once (on the plate); signatures as three rows, each method written on its line at 16 px;
+     a 64 px line glyph beside each zone's title */
+  .aq-pdf-anatomy__row > .aq-pdf-anatomy__k { display: none; }
+  .aq-pdf-anatomy__row { display: grid; grid-template-columns: minmax(0, 1fr) var(--space-16); column-gap: var(--space-4); }
+  .aq-pdf-anatomy__row > * { grid-column: 1 / -1; }
+  .aq-pdf-anatomy__row > .aq-pdf-anatomy__h { grid-column: 1; grid-row: 1; align-self: center; margin-bottom: 0; }
+  .aq-pdf-anatomy__row > .aq-pdf-anatomy__sigs, .aq-pdf-anatomy__row > .aq-pdf-anatomy__big { grid-column: 1; grid-row: 2; margin-top: var(--space-3); }
+  .aq-pdf-anatomy__gl { display: block; grid-column: 2; grid-row: 1 / span 2; align-self: start; }
+  .aq-pdf-anatomy__sigs { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .aq-pdf-anatomy__sigs li { position: relative; flex-direction: row; align-items: baseline; gap: var(--space-3); min-height: var(--space-12); padding: var(--space-4) 0 var(--space-2); }
+  .aq-pdf-anatomy__sl { position: absolute; left: 0; right: 0; bottom: 0; height: 0; }
+  .aq-pdf-anatomy__sl::before { left: 0; bottom: var(--space-2); }
+  .aq-pdf-anatomy__sv { padding-left: var(--space-6); font-size: 16px; line-height: 24px; }
   .aq-pdf-anatomy__m { margin-top: var(--space-4); }
+}
+/* round C verify F3: tablets (600 to 860 px) took the phone stack with the plate at full width (about 700 by 520 px),
+   so the section ran taller than on a phone; the plate is held to 520 px and centred, and Timing and Retention sit two up */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-pdf-anatomy__crop { max-inline-size: 520px; margin-inline: auto; }
+  .aq-pdf-anatomy__side { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

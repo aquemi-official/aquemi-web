@@ -123,6 +123,20 @@
   .aq-cost-balance.is-strip[data-pk-on] .aq-cost-balance__water.is-pk-active { opacity: 1; }
   .aq-cost-balance.is-strip[data-pk-on] .aq-cost-balance__s.is-pk-active .aq-cost-balance__n { color: var(--flow); }
 }
+/* ---- Desktop, pass 12 round C: the "First year, all in" total is the same navy card as on phones, set in the right
+   column under the leaving stream (line 08), its foot on the balance's foot (inside .aq-in's space-8 gutter). Its width
+   keeps it a space-12 clear of the boundary between 861 and ~1000 px (288 px from ~1100 px up). Taken out of flow, so it fills the empty
+   space beside the boundary and adds no height. ---- */
+@container (min-width: 861px) {
+  .aq-cost-balance-sec > .aq-in:has(> .aq-cost-balance + .aq-cost-balance__note.is-total) { position: relative; }
+  .aq-cost-balance-sec .aq-cost-balance + .aq-cost-balance__note.is-total { position: absolute; right: var(--space-8); bottom: 0; width: min(calc(var(--space-8) + 16rem), calc((100% - 2 * var(--space-8)) * 4 / 12 - var(--space-12)));
+    box-sizing: border-box; display: grid; gap: var(--space-2); max-width: none; margin: 0; padding: calc(var(--space-4) + var(--space-1)) var(--space-4);
+    background: var(--navy); color: var(--on-navy-muted, var(--on-navy)); font: 400 15px/23px var(--font-sans); }
+  .aq-cost-balance + .aq-cost-balance__note.is-total .aq-cost-balance__tl { font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+  .aq-cost-balance + .aq-cost-balance__note.is-total .aq-cost-balance__colon { display: none; }
+  .aq-cost-balance + .aq-cost-balance__note.is-total .aq-cost-balance__tr { display: block; }
+  .aq-cost-balance + .aq-cost-balance__note.is-total .aq-cost-balance__tr::first-letter { text-transform: uppercase; }
+}
 @media (prefers-reduced-motion: reduce) {
   .aq-cost-balance__edge, .aq-cost-balance__arr, .aq-cost-balance__g, .aq-cost-balance__ic, .aq-cost-balance__water { transition: none !important; }
 }

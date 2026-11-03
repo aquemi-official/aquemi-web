@@ -8,7 +8,7 @@ AQmotion.fx('CertSeals', function (root, m) {
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
     tiles.forEach(function (t, i) {
       var at = i * 0.3, ring = t.querySelector('.aq-cert-seals__ring'), ticks = t.querySelector('.aq-cert-seals__ticks'), icon = t.querySelector('.aq-cert-seals__icon'),
-        words = t.querySelectorAll('.aq-cert-seals__tag, .aq-cert-seals__t, .aq-cert-seals__d, .aq-cert-seals__go');
+        words = t.querySelectorAll('.aq-cert-seals__tag, .aq-cert-seals__t, .aq-cert-seals__d, .aq-cert-seals__to, .aq-cert-seals__go');
       tl.from(t, { y: 40, autoAlpha: 0, duration: 0.7, clearProps: 'transform,opacity,visibility' }, at);
       if (ring && D) tl.from(ring, { drawSVG: '0%', duration: 0.6, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.25);
       if (ticks) tl.from(ticks, { rotation: -60, svgOrigin: '32 32', autoAlpha: 0, duration: 0.8, clearProps: 'transform,opacity,visibility' }, at + 0.25);

@@ -76,3 +76,11 @@
   .aq-tie-in-run__plate { max-width: none; }
   .aq-tie-in-run__step:first-child { border-top: 1px solid var(--line); }
 }
+
+/* Pass 12 round C, phone strip (to 600 px): the tags are solid boxes on the surface, so the pipes never show through
+   them; a stage not drawn yet steps back by its ink, not by transparency. 12 px numbers. */
+@container (max-width: 600px) {
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__mk, .aq-tie-in-run__mk { background: var(--surface); font-size: 12px; z-index: 1; }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__mk.is-future { opacity: 1; color: var(--ink-subtle); border-color: var(--line); }
+  .aq-tie-in-run[data-pk-on] .aq-tie-in-run__mk.is-on { background: var(--flow); color: var(--surface); border-color: var(--flow); }
+}

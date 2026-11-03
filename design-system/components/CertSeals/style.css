@@ -31,6 +31,9 @@ a.aq-cert-seals__tile:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-cert-seals__t { margin: auto 0 0; padding-top: var(--space-4); border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); font: 500 17px/24px var(--font-sans); }
 .aq-cert-seals__d { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-limestone-muted); }
 .aq-cert-seals__item:first-child .aq-cert-seals__d { color: var(--on-navy-muted); }
+/* where a linked tile goes (round C verify F4): the linked page's own label, under the status */
+.aq-cert-seals__to { margin: 0; padding-top: var(--space-1); font: 400 14px/20px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-cert-seals__item:first-child .aq-cert-seals__to { color: var(--on-navy-muted); }
 .aq-cert-seals__go { position: absolute; right: var(--space-6); top: var(--space-8); width: var(--space-4); height: var(--space-4); border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); }
 a.aq-cert-seals__tile:hover .aq-cert-seals__go { transform: translateX(var(--space-1)) rotate(45deg); }
 a.aq-cert-seals__tile:hover .aq-cert-seals__t { text-decoration: underline; text-underline-offset: 4px; }
@@ -40,18 +43,47 @@ a.aq-cert-seals__tile:hover .aq-cert-seals__seal svg { transform: rotate(10deg);
 
 @container (max-width: 1100px) {
   .aq-cert-seals__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .aq-cert-seals__tile { min-height: calc(var(--space-32) * 2.5); }
+  /* round C verify F2: tiles take their content's height (rows still match), and an odd last tile spans the row as a
+     wide row tile (seal left, words right), so five tiles leave no empty cell at 561 to 1100 px */
+  .aq-cert-seals__tile { min-height: 0; }
+}
+@container (min-width: 561px) and (max-width: 1100px) {
+  .aq-cert-seals__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .aq-cert-seals__item:last-child:nth-child(odd) .aq-cert-seals__tile { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); column-gap: var(--space-6); row-gap: var(--space-2); align-content: start; }
+  .aq-cert-seals__item:last-child:nth-child(odd) .aq-cert-seals__seal { grid-row: 1 / span 3; margin: 0; }
+  .aq-cert-seals__item:last-child:nth-child(odd) .aq-cert-seals__t { margin: 0; }
+  .aq-cert-seals__item:last-child:nth-child(odd) .aq-cert-seals__to { grid-column: 2; }
 }
 @container (max-width: 560px) {
   .aq-cert-seals__list { grid-template-columns: minmax(0, 1fr); }
-  .aq-cert-seals__tile { min-height: 0; padding: var(--space-6) var(--space-4); display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2); }
+  .aq-cert-seals__tile { min-height: 0; padding: var(--space-4) var(--space-8) var(--space-4) var(--space-4); display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2); }
   .aq-cert-seals__seal { grid-row: 1 / span 3; width: var(--space-16); height: var(--space-16); margin: 0; }
   .aq-cert-seals__icon { width: var(--space-6); height: var(--space-6); }
   .aq-cert-seals__tag { font-size: 32px; line-height: 36px; }
-  .aq-cert-seals__tag.is-long { font-size: 18px; line-height: 25px; }
+  .aq-cert-seals__tag.is-long { font-size: 16px; line-height: 23px; } /* pass 12 round C: cmp-quality's placeholders, about 900 px for five tiles */
   .aq-cert-seals__t { margin: 0; padding-top: var(--space-2); }
-  .aq-cert-seals__go { top: var(--space-6); right: var(--space-4); }
+  /* phones: the destination stays in the tile's accessible name but is not printed (it added about 160 px to five
+     tiles already over the 900 px aim); the arrow marks the link */
+  .aq-cert-seals__to { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-cert-seals__go { top: var(--space-6); right: var(--space-4); width: var(--space-3); height: var(--space-3); }
 }
+
+/* Dark theme (round C verify F6): the paper tiles take the raised dark surface, as LimitBento's do, so the row reads
+   navy plus one dark surface, not three themes; the alternate shade is a touch of ink over it. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-cert-seals__list { background: var(--line); border-color: var(--line); }
+  :root:not([data-theme="light"]) .aq-cert-seals__item.is-paper .aq-cert-seals__tile { background: var(--surface-raised); color: var(--ink); }
+  :root:not([data-theme="light"]) .aq-cert-seals__item.is-paper:nth-child(odd) .aq-cert-seals__tile { background: color-mix(in srgb, var(--surface-raised) 94%, var(--ink)); }
+  :root:not([data-theme="light"]) .aq-cert-seals__item.is-paper .aq-cert-seals__seal { color: var(--ink); }
+  :root:not([data-theme="light"]) .aq-cert-seals__item.is-paper .aq-cert-seals__d,
+  :root:not([data-theme="light"]) .aq-cert-seals__item.is-paper .aq-cert-seals__to { color: var(--ink-muted); }
+}
+[data-theme="dark"] .aq-cert-seals__list { background: var(--line); border-color: var(--line); }
+[data-theme="dark"] .aq-cert-seals__item.is-paper .aq-cert-seals__tile { background: var(--surface-raised); color: var(--ink); }
+[data-theme="dark"] .aq-cert-seals__item.is-paper:nth-child(odd) .aq-cert-seals__tile { background: color-mix(in srgb, var(--surface-raised) 94%, var(--ink)); }
+[data-theme="dark"] .aq-cert-seals__item.is-paper .aq-cert-seals__seal { color: var(--ink); }
+[data-theme="dark"] .aq-cert-seals__item.is-paper .aq-cert-seals__d,
+[data-theme="dark"] .aq-cert-seals__item.is-paper .aq-cert-seals__to { color: var(--ink-muted); }
 
 /* Engraving (pass 9b): FxGuilloche's rosette on the navy tile, centred low and right so it sits behind the tag and
    lines as a certificate's security print; on-navy at a ninth, so the white type keeps its contrast. */

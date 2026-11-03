@@ -96,3 +96,34 @@
   .aq-spare-sheet[data-pk-on] .aq-spare-sheet__row.is-wide > td { grid-column: 1 / -1; }
   .aq-spare-sheet__tb { display: none; }
 }
+
+/* Round C, phones (labels): the phone column names are labels, set 12 px uppercase mono; the values stay 15 px. */
+@container (max-width: 860px) {
+  .aq-spare-sheet__k { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+  .aq-spare-sheet__row td { font-size: 15px; line-height: 22px; }
+}
+/* Round C, 600 px and under (S11, S14): the seven parts are a PhoneKit accordion (the tbody, data-pk-bp 600; one open,
+   the first at load). Each head is the part name with its number and a chevron (48 px); the open part shows its three
+   fields and is drawn on the sticky strip (pk:change from the tbody -> ssPick). The sheet loses its inner frame and
+   its deep foot, so the parts start right under the strip. */
+.aq-spare-sheet__head { display: none; }
+@container (max-width: 600px) {
+  .aq-spare-sheet { outline: 0; padding: var(--space-6) var(--space-4) var(--space-4); }
+  .aq-spare-sheet[data-pk-on] { padding-bottom: var(--space-4); }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__row { padding-bottom: 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__row:not(.is-pk-open) > td { display: none; }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__row.is-pk-open { padding-bottom: var(--space-4); }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__head {
+    gap: var(--space-3); align-items: center; min-height: 48px; padding: var(--space-1) 0 var(--space-1) var(--space-3);
+    border-left: 2px solid transparent; color: var(--on-limestone); font: 400 16px/22px var(--font-sans);
+  }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__head .aq-spare-sheet__p { flex: 1 1 auto; min-width: 0; }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__head .aq-phone-kit__chev { margin-left: 0; }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__head[aria-expanded="true"] { border-left-color: var(--flow); background: var(--flow-tint); }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__head[aria-expanded="true"] .aq-spare-sheet__n { color: var(--flow); }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__row.is-pk-open > td:first-of-type { padding-top: var(--space-3); }
+  /* round C verify F1: the open part's three fields stack in one column, so a label that wraps never pushes its
+     value a line below its neighbour's */
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__row.is-pk-open > td { grid-column: 1 / -1; }
+  .aq-spare-sheet tbody[data-pk-on] .aq-spare-sheet__row.is-pk-open > td + td { padding-top: var(--space-2); }
+}

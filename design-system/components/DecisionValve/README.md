@@ -11,6 +11,7 @@ DecisionValve draws a router table as a multiport valve, a navy object on the pa
   the reading line turns the lever to its position and lights its card (`pk:change` -> `pick`); a tap on a supply still
   chooses it. Sys-pretreatment at 375 px: 1,693 -> 1,647 px, and the dial now stays with the pair being read.
 - Use it for two to six exclusive situations that each lead to one answer with two or three properties. For many situations, or ones that lead to another page, use Router or StairRouter.
+- Pass 12 C: on phones (no line draw) the sources start at 0 and the cards at 0.5 s, so nothing stays blank under the lit bar; the desktop timeline (cards at 1.6 s) is unchanged.
 
 ## Motion
 

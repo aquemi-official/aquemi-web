@@ -80,3 +80,9 @@
   .aq-colophon__row:hover .aq-colophon__v, .aq-colophon__row:hover .aq-colophon__m, .aq-colophon__row:hover .aq-colophon__p { background: none; }
   .aq-colophon .aq-fold__btn, .aq-colophon > .aq-small { padding-left: 0; }
 }
+
+/* Pass 12 round C, desktop: a WHERE cell that opens with its link takes a 4 px top pad (not the full one), so the link's text (centred
+   in its 48 px target) sits on the answer's first line instead of about 10 px under it */
+@container (min-width: 861px) {
+  .aq-colophon__m:has(> .aq-colophon__go:first-child) { padding-top: var(--space-1); }
+}

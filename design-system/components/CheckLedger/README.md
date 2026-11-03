@@ -10,3 +10,12 @@ CheckLedger sets a router table of checks a buyer can run before a case study ex
 ## Motion
 
 Motion: the column names decode; each row's navy tile wipes in and its numeral turns over on split-flap leaves (ported from Subframe Motion departure-board: rotateX 0 to -180 deg, 440 ms, cubic-bezier(.4,0,.2,1), 45 ms apart; the real text is restored); the row's tiles rise left to right and fitting tiles wipe up. Once, under 3 s. Pointing at a row turns its numeral over again (0.3 s). Pointing at a tile lays a crosshair over the grid (ported from chart-crosshair: row rule and column rule glide 200 ms power3, the column name lights, the tile tints `flow-tint`); keyboard focus on a route snaps the row rule. Nothing under reduced motion.
+
+## Pass 12 round C
+
+- Phones: a PhoneKit accordion (`data-pk-picker="accordion"`, first row open). Head (48 px+): a navy numeral tile and
+  what you check at 16 px; body: the route as a 48 px `aq-phone-kit__go` row link (and the check's own link when it has
+  one, named by the page section it opens (`wlabel`), so it never repeats the head), then what you receive and the time to arrange, each under a 12 px mono eyebrow, values 15 px. The desktop tiles
+  are the same nodes (`div.__body` is `display: contents` there). projects.3 at 375: 3,280 → 1,147 px.
+- Above 860 px the in-cell column names are visually hidden (the header row names the columns).
+- projects.3 no longer sets `fits` (the field and its drawings stay available).

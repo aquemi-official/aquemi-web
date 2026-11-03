@@ -100,3 +100,26 @@
 }
 /* tablet (pass 12 verify): centre the cropped drawing in the wider single column */
 @container (min-width: 600px) and (max-width: 860px) { .aq-room-limit__fig { width: 100%; margin-inline: auto; } }
+
+/* Phones with script (pass 12 round C): the crop becomes a PhoneKit sticky compact figure. It keeps today's crop (its
+   own aspect ratio, about 180 px at 375; PhoneKit's fixed strip height is set back to auto) and is held under the
+   header; the pan layer zooms to the chosen pin (look-room-limit.js). On wider tablets the strip is capped at 220 px
+   tall. The sides run one column, so each row reaches the reading line by itself; the chosen row keeps its tint. */
+@container (max-width: 860px) {
+  .aq-room-limit[data-pk-sticky][data-pk-on] .aq-room-limit__fig { height: auto; aspect-ratio: var(--rl-ar, 1.6); max-width: min(560px, calc(220px * var(--rl-ar, 1.6)));
+    width: auto; justify-self: stretch; z-index: 3; }
+  .aq-room-limit[data-pk-on] .aq-room-limit__pan { transform-origin: 0 0; transform: translate(var(--rl-zx, 0px), var(--rl-zy, 0px)) scale(var(--rl-zs, 1));
+    transition: transform 420ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-room-limit[data-pk-on] .aq-room-limit__list { grid-template-columns: minmax(0, 1fr); }
+  .aq-room-limit[data-pk-on] .aq-room-limit__list .aq-room-limit__item { grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-3);
+    row-gap: 2px; padding: var(--space-2) var(--space-2) var(--space-3); margin-inline: calc(-1 * var(--space-2)); }
+  .aq-room-limit[data-pk-on] .aq-room-limit__list .aq-room-limit__no { align-self: start; }
+  .aq-room-limit[data-pk-on] .aq-room-limit__go { margin-block: calc(-1 * var(--space-2)); }
+  .aq-room-limit[data-pk-on] .aq-room-limit__side { padding-top: var(--space-4); }
+  .aq-room-limit[data-pk-on] .aq-room-limit__list .aq-room-limit__item > :not(.aq-room-limit__no) { grid-column: 2; }
+  .aq-room-limit[data-pk-on] .aq-room-limit__list .aq-room-limit__v { margin-top: 0; }
+}
+/* tablets: the capped strip is centred; its ground runs out to both edges so rows never show beside it */
+@container (min-width: 600px) and (max-width: 860px) { .aq-room-limit[data-pk-sticky][data-pk-on] .aq-room-limit__fig { justify-self: center; width: 100%;
+  box-shadow: 0 0 0 100vmax var(--surface); clip-path: inset(0 -100vmax); } }
+@media (prefers-reduced-motion: reduce) { .aq-room-limit[data-pk-on] .aq-room-limit__pan { transition: none; } }

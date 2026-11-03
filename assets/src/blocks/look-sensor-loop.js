@@ -6,7 +6,8 @@
    to the tank. Every measuring point carries an instrument balloon with its real tag letters over the row number
    (FIT flow, CIT conductivity, AIT TOC, TIT temperature, XV divert valve, SP sample point; the UV unit is tagged UV);
    hoses carry the row number at their ends. The rows are keyed notes along the foot, each with its number and tag.
-   Pointing at a note lights its marks. Phones: the same loop recomposed vertically (the supply a riser, balloons left
+   Pointing at a note lights its marks. Under 600 px (pass 12 C): a 180 px strip of the loop held under the header
+   (PhoneKit sticky figure) lights the tag of the row in view; 600-860 px: the same loop recomposed vertically (the supply a riser, balloons left
    of it, branches and hoses to the right, the return up the left edge), then every note in one column.
    Fields: h, caption (the eyebrow), intro, rows [{p, v, m, site}], note, fold, fold_noun (phones only). site: flow |
    uv | cond | toc | temp | divert | data; a row without a site is placed by its words ("sample" -> sample tees,
@@ -68,12 +69,46 @@ function scene(R,ph){var P=plan(R),M=P.M,at=P.at,n=M.length;
    +'<text class="aq-sensor-loop__ht" data-sl="'+at.data+'" x="'+f1(rx+50)+'" y="'+f1(ry-8)+'">'+nn(at.data)+'</text>'}
  var vb=ph?'0 0 340 '+f1(end+48):'0 30 1160 '+(at.pou!=null?400:300);
  return '<svg class="aq-sensor-loop__svg aq-sensor-loop__svg--'+(ph?'p':'d')+'" viewBox="'+vb+'" aria-hidden="true" focusable="false">'+o+b+tags+'</svg>'}
+/* Phones under 600 px (pass 12 C, S8): the loop as a 180 px strip held under the header (PhoneKit sticky compact
+   figure), drawn 1:1 in a 360 x 180 box so its tags render at 13 px: the tank at the left, the supply along the foot
+   (the pump, then each measuring point the rows name with its balloon, sample tees and the points of use under the
+   run), the return along the head with the flow element. One row of balloons runs across the middle of the loop, each
+   stemmed to its own run. The balloon (or outlet) of the row being read lights; a row that names no point (the loop as
+   a whole: sanitization) lights the loop itself. The tall vertical drawing is not shown at this width. */
+function strip(R){var P=plan(R),at=P.at,o='',b='',W=360,X0=30,X1=336,YR=34,YS=146,YB=92,r=19;
+ var keyed={};Object.keys(at).forEach(function(k){keyed[at[k]]=1});
+ var loose=R.map(function(x,i){return i}).filter(function(i){return !keyed[i]&&!siteOf(R[i])});
+ var pk=function(i){return ' data-sl="'+i+'" data-pk-key="'+i+'"'};
+ var pipe='M'+X0+' 128V'+YS+'H'+X1+'V'+YR+'H'+X0+'V54';
+ o+='<g class="aq-sensor-loop__loop"'+(loose.length?' data-pk-key="'+loose.join(' ')+'"':'')+'><path class="aq-sensor-loop__wall" d="'+pipe+'"/><path class="aq-sensor-loop__bore" d="'+pipe+'"/></g>';
+ o+='<rect class="aq-sensor-loop__tank" x="12" y="54" width="36" height="74" rx="10"/>';
+ o+='<path class="aq-sensor-loop__arrow" transform="translate(96 '+YS+')" d="M-5 -5L3 0L-5 5"/><path class="aq-sensor-loop__arrow" transform="matrix(-1 0 0 -1 160 '+YR+')" d="M-5 -5L3 0L-5 5"/>';
+ b+='<g class="aq-sensor-loop__mk" transform="translate(66 '+YS+')"><circle class="aq-sensor-loop__eq" cx="0" cy="0" r="11"/><path class="aq-sensor-loop__ink" d="M-4.5 -6.5L7 0L-4.5 6.5Z"/></g>';
+ var B=[];SUP.forEach(function(k){if(at[k]!=null)B.push({k:k,i:at[k]})});if(at.sample!=null)B.push({k:'sample',i:at.sample});if(at.flow!=null)B.push({k:'flow',i:at.flow});
+ var xa=118,xb=X1-34,step=B.length>1?(xb-xa)/(B.length-1):0;
+ B.forEach(function(m,j){var x=f1(B.length>1?xa+j*step:(xa+xb)/2),k=m.k,ret=k==='flow',yp=ret?YR:YS,sh='';
+  if(k==='uv')sh='<rect class="aq-sensor-loop__eq" x="-15" y="-8" width="30" height="16"/><path class="aq-sensor-loop__thin" d="M-10 0H10"/>';
+  else if(k==='cond')sh='<rect class="aq-sensor-loop__eq" x="-7" y="-7" width="14" height="14"/>';
+  else if(k==='toc')sh='<rect class="aq-sensor-loop__eq" x="-8" y="-20" width="16" height="12"/><path class="aq-sensor-loop__thin" d="M0 -8V0"/>';
+  else if(k==='temp')sh='<circle class="aq-sensor-loop__eq" cx="0" cy="-9" r="3.5"/>';
+  else if(k==='divert')sh='<path class="aq-sensor-loop__eq" d="M-9 -6L9 6V-6L-9 6Z"/>';
+  else if(k==='sample')sh='<path class="aq-sensor-loop__thin" d="M0 0V14"/><path class="aq-sensor-loop__eq" d="M-6 14L6 26H-6L6 14Z"/>';
+  else if(k==='flow')sh='<rect class="aq-sensor-loop__eq" x="-11" y="-7" width="22" height="14"/><path class="aq-sensor-loop__thin" d="M-11 7L11 -7"/>';
+  b+='<g class="aq-sensor-loop__mk" transform="translate('+x+' '+yp+')"'+pk(m.i)+'>'+sh+'</g>';
+  b+='<path class="aq-sensor-loop__stem"'+pk(m.i)+' d="M'+x+' '+(ret?YR+8:YS-9)+'V'+(ret?YB-r:YB+r)+'"/>';
+  b+='<g class="aq-sensor-loop__ball"'+pk(m.i)+'><circle cx="'+x+'" cy="'+YB+'" r="'+r+'"/><path class="aq-sensor-loop__bar" d="M'+f1(x-r)+' '+YB+'h'+(2*r)+'"/>'
+   +'<text class="aq-sensor-loop__tg" x="'+x+'" y="'+(YB-5)+'">'+TAG[k]+'</text><text class="aq-sensor-loop__nu" x="'+x+'" y="'+(YB+14)+'">'+nn(m.i)+'</text></g>'});
+ /* the points of use: two outlets under the supply, short of the riser, the row number beside them */
+ if(at.pou!=null){var xp=X1-24;
+  b+='<g class="aq-sensor-loop__mk"'+pk(at.pou)+'>'+[xp-30,xp].map(function(x){return '<path class="aq-sensor-loop__thin" d="M'+x+' '+YS+'V'+(YS+12)+'"/><path class="aq-sensor-loop__eq" d="M'+(x-6)+' '+(YS+12)+'L'+(x+6)+' '+(YS+24)+'H'+(x-6)+'L'+(x+6)+' '+(YS+12)+'Z"/>'}).join('')+'</g>'
+   +'<text class="aq-sensor-loop__ht aq-sensor-loop__ht--s"'+pk(at.pou)+' x="'+(xp-42)+'" y="'+(YS+23)+'">'+nn(at.pou)+'</text>'}
+ return '<svg class="aq-sensor-loop__svg aq-sensor-loop__svg--s" viewBox="0 0 '+W+' 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'+o+b+'</svg>'}
 LOOKS['sensor-loop']=function(b,H){H=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
  var R=b.rows||[];
  var notes=R.map(function(r,i){var s=siteOf(r),tg=TAG[s]||'';
-  return fli('<li class="aq-sensor-loop__card" data-sl="'+i+'"><p class="aq-sensor-loop__n" aria-hidden="true"><span>'+nn(i)+'</span>'+(tg?'<span class="aq-sensor-loop__ntag">'+tg+'</span>':'')+'</p>'
+  return fli('<li class="aq-sensor-loop__card" data-sl="'+i+'" data-pk-row="'+i+'"><p class="aq-sensor-loop__n" aria-hidden="true"><span>'+nn(i)+'</span>'+(tg?'<span class="aq-sensor-loop__ntag">'+tg+'</span>':'')+'</p>'
    +'<h3 class="aq-sensor-loop__p">'+tx(r.p)+'</h3>'+(r.v?'<p class="aq-sensor-loop__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="aq-sensor-loop__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
- var inner='<div class="aq-sensor-loop"><div class="aq-sensor-loop__fig">'+scene(R,false)+scene(R,true)+'</div><ol class="aq-sensor-loop__cards" role="list">'+notes+'</ol></div>';
+ var inner='<div class="aq-sensor-loop" data-pk-sticky data-pk-bp="600" data-pk-h="180"><div class="aq-sensor-loop__fig" data-pk-fig>'+scene(R,false)+scene(R,true)+strip(R)+'</div><ol class="aq-sensor-loop__cards" role="list">'+notes+'</ol></div>';
  var note=b.note?'<p class="aq-sensor-loop__note">'+tx(b.note)+'</p>':'';
  return sec(H+wFold(b,R.length,inner,b.fold_noun||'signals')+note,'aq-sensor-loop-sec')};
 /* pointing at a note (or a mark) lights the note and its marks */

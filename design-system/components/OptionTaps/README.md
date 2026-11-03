@@ -14,6 +14,7 @@ OptionTaps shows options where they would join the system, as one limestone draw
   number shows as a plain tag beside the note's title (`__nop`; the camera button is desktop only). Tablets
   (600-860 px): the notes run two a row. Sys-pretreatment at 375 px: 1,460 -> 1,789 px; ind-process: 1,245 -> 1,421 px.
 - Use it for options that each attach at a known point of one system. For options without a place in a drawing, OptionTags or OptionModules.
+- Pass 12 C: desktop drawing viewBox is the train's own bounds (parts, trunk, pins, labels), drawn at width 100% up to 1:1 (`__cam` max-width), `__fig` a fixed `space-8` under the intro. A label that would run under a pin's part ends left of that pin (`__label--end`). Phone crops are 2.55 times as wide as tall (about 112 px), captioned with the option's own title beside its dashed part (`__clab--side` / `__clab--left`, 12 px mono) only where the caption fits unclamped; otherwise the crop has no caption (the h3 under it names the option, and a clamped caption covered the part). Pins' bounds pad 56 units, so a 32 px tag is not clipped down to 0.6 scale. Above 860 px the notes fill the side column down to the title block, rules spaced evenly.
 
 ## Motion
 

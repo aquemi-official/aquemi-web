@@ -9,6 +9,8 @@
    situation, each other cell a string or {t, link, intent}). A route whose cells link somewhere (the last link wins) is
    clickable as a whole through a pointer-only overlay; the real link stays the keyboard target, its intent rides on
    both. A value that opens with a [placeholder] is pending: dashed rule and "To confirm" (as Router). Best for 3 to 8 rows.
+   Look-only field panel: "compact" (pass 12 C, ind-process) sizes the route sheet to its content and caps the water
+   line between its steps at 96 px, so a long list of situations leaves no tall empty line in the sheet.
    Ground: faint pipe tiles (FxTruchet, ambient WebGL, aria-hidden) drift behind the sheet, masked off the manifold. */
 var mfN=0;
 LOOKS['manifold-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,k=++mfN;
@@ -27,7 +29,9 @@ LOOKS['manifold-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,
    +'<ol class="aq-manifold-router__stations">'+st.map(function(c,j){var pend=j!==go&&/^\s*\[/.test(val(c)),cl=['aq-manifold-router__st'];if(j===go)cl.push('is-go');if(pend)cl.push('is-pending');
     return '<li class="'+cl.join(' ')+'"><p class="aq-manifold-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-manifold-router__v">'+tcell(c)+(pend?' <span class="aq-manifold-router__tbc">To confirm</span>':'')+'</p></li>'}).join('')
    +'</ol></div>'}).join('');
- return '<section class="aq-section aq-band--limestone aq-manifold-router-sec aq-fx-host"><canvas class="aq-fx-shader" data-gl="truchet" aria-hidden="true"></canvas><div class="aq-in aq-stack-l">'+H+'<div class="aq-manifold-router" style="--n:'+n+'">'+inner+'</div></div></section>'};
+ return '<section class="aq-section aq-band--limestone aq-manifold-router-sec aq-fx-host"><canvas class="aq-fx-shader" data-gl="truchet" aria-hidden="true"></canvas><div class="aq-in aq-stack-l">'+H+'<div class="aq-manifold-router'+(b.panel==='compact'?' aq-manifold-router--compact':'')+'" style="--n:'+n+'">'+inner+'</div></div></section>'};
 /* One open at a time: the picked branch opens its route; the water fills the manifold down to it */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-manifold-router__opt');if(!t)return;var w=t.closest('.aq-manifold-router'),O=[].slice.call(w.querySelectorAll('.aq-manifold-router__opt')),k=O.indexOf(t);
- O.forEach(function(o,i){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');o.classList.toggle('is-wet',i<=k);document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});
+ O.forEach(function(o,i){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');o.classList.toggle('is-wet',i<=k);document.getElementById(o.getAttribute('aria-controls')).hidden=!on});
+ /* compact (pass 12 C verify F4): the short route sheet moves beside the open third, so the open row's flow rule meets it */
+ if(w.classList.contains('aq-manifold-router--compact')){w.classList.toggle('is-mid',k>=O.length/3&&k<2*O.length/3);w.classList.toggle('is-low',k>=2*O.length/3)}});

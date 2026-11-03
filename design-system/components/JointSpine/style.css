@@ -118,6 +118,11 @@
   /* without chips the two body lines differ in weight as well as tone: the second column in 500 muted, the description
      in 400 ink */
   .aq-joint-spine:not(.is-chips) .aq-joint-spine__p { font-weight: 500; }
-  /* F6: the chip always on its own line under the field name, so every row reads the same way down the spine */
-  .aq-joint-spine.is-chips .aq-joint-spine__fh > h3 { flex: 1 0 100%; }
+  /* pass 12 C (replaces F6): the chip at the right of the field name, on its first line; the name takes the rest of
+     the row (at least 12rem), so a chip too long to fit beside it (a placeholder) drops under the name, at the left */
+  .aq-joint-spine.is-chips .aq-joint-spine__fh { flex-wrap: wrap; align-items: first baseline; column-gap: var(--space-3); }
+  .aq-joint-spine.is-chips .aq-joint-spine__fh > h3 { flex: 1 1 12rem; min-width: 0; }
+  .aq-joint-spine.is-chips .aq-joint-spine__fh > p { flex: 0 1 auto; min-width: 0; font-size: 14px; }
+  /* no key row: the per-row labels stay for screen readers, the description needs no key */
+  .aq-joint-spine .aq-joint-spine__legend { display: none; }
 }

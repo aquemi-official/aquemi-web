@@ -1,7 +1,7 @@
 /* ---------- MultiportRouter: a router table as a multiport valve in plan, its ports piped to route cards ---------- */
 /* Three columns: cards on the left, the valve, cards on the right. The cards and the valve are grid items (the list and
    its rows are display: contents on desktop); the pipes are one SVG over the whole block, drawn by the renderer in the
-   block's own pixels from each port's flange to its card's inner edge. */
+   block's own pixels from each port's union to its card's inner edge. */
 .aq-multiport-router { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 300px) minmax(0, 1fr);
   grid-template-rows: repeat(var(--m, 2), auto); column-gap: var(--space-16); row-gap: var(--space-12); align-items: stretch; color: var(--ink); }
 .aq-multiport-router__routes, .aq-multiport-router__route { display: contents; }
@@ -21,7 +21,7 @@
 /* The valve: a light line drawing, the lever in ink */
 .aq-multiport-router__valve { width: 100%; max-width: 300px; height: auto; overflow: visible; }
 .aq-multiport-router__valve * { stroke-linejoin: round; stroke-linecap: round; }
-.aq-multiport-router__body, .aq-multiport-router__boss, .aq-multiport-router__flange, .aq-multiport-router__foot, .aq-multiport-router__bonnet {
+.aq-multiport-router__body, .aq-multiport-router__boss, .aq-multiport-router__union, .aq-multiport-router__foot, .aq-multiport-router__bonnet {
   fill: var(--surface-raised); stroke: var(--ink); stroke-width: 1.5; }
 .aq-multiport-router__ring { fill: none; stroke: var(--line-strong); stroke-width: 1.25; }
 .aq-multiport-router__ring--in { stroke-dasharray: 2 4; }

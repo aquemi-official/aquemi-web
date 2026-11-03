@@ -42,12 +42,15 @@ LOOKS['option-taps']=function(b,H){
   var box=function(k){var c=pos(k);return [[c[0]-44,c[1]-44,0],[c[0]+44,c[1]+44,0],[c[0]-44,c[1]+44,170],[c[0]+44,c[1]-44,170]]};
   var pts=[line(j-0.75),line(j+0.75),[p[0]-34,p[1]-34,0],[p[0]+34,p[1]+34,0],[p[0]-34,p[1]+34,150],[p[0]+34,p[1]-34,150]];
   ks.forEach(function(k){pts=pts.concat(box(k))});
-  var under=row==='back',kn=Math.min(T.length-1,Math.max(0,Math.round(j))),lk=ks.filter(function(k){return k===kn||ks.length===1});
-  var la=lk.map(function(k){var c=isoP(pos(k));return {k:k,q:under?[c[0],c[1]+36+36]:[labels[k].at[0],labels[k].at[1]-14]}});
-  var bx=isoBounds(pts,10),foot=function(b){var y=b.y+b.h;la.forEach(function(l){y=Math.max(y,l.q[1]+6)});return y};
-  /* the window: twice as wide as it is tall (a phone column at about 140 px), slid along the train so it never shows
-     paper past the train's ends; the neighbouring parts it takes in are cut by its edge, like a camera crop */
-  var Wt=Math.max(bx.w,(foot(bx)-bx.y)*2.1),cx=bx.x+bx.w/2,xL=cx-Wt/2,xR=cx+Wt/2,HX=82,nb=[];
+  /* pass 12 C: the caption is the option's own title (it was the nearest standard part's label, which read as the
+     option's name), beside its dashed part at mid height, so it adds no height to the crop */
+  var pz=row==='front'?14:it.part==='tank'?95:60,pm=isoP([p[0],p[1],pz]),pr=isoP([p[0]+34,p[1]-34,pz]),pl=isoP([p[0]-34,p[1]+34,pz]);
+  var la=[{t:it.t,q:[pr[0]+6,pm[1]],l:[pl[0]-6,pm[1]]}];
+  var bx=isoBounds(pts,10),foot=function(b){return b.y+b.h};
+  /* the window: 2.55 times as wide as it is tall (a phone column at about 112 px, pass 12 C), slid along the train so
+     it never shows paper past the train's ends; the neighbouring parts it takes in are cut by its edge, like a camera
+     crop */
+  var Wt=Math.max(bx.w,(foot(bx)-bx.y)*2.55),cx=bx.x+bx.w/2,xL=cx-Wt/2,xR=cx+Wt/2,HX=82,nb=[];
   var eL=Math.min(isoP(line(j0))[0]-10,-HX-10,bx.x),eR=Math.max(isoP(line(j1))[0]+10,isoP(pos(T.length-1))[0]+HX+10,bx.x+bx.w);
   if(eR-eL<=Wt){xL=(eL+eR-Wt)/2;xR=xL+Wt}else if(xL<eL){xR+=eL-xL;xL=eL}else if(xR>eR){xL-=xR-eR;xR=eR}
   T.forEach(function(t,k){if(ks.indexOf(k)>=0||!tp[k])return;var sx=isoP(pos(k))[0];if(sx+HX>xL&&sx-HX<xR){nb.push(k);pts=pts.concat(box(k))}});
@@ -56,19 +59,46 @@ LOOKS['option-taps']=function(b,H){
   var segC=isoPipe([line(tA),line(tB)],{r:4,caps:tA===j0&&tB===j1?true:tA===j0?'start':tB===j1?'end':false,flanges:false});
   var std=ks.concat(nb).sort(function(x,y){return x-y}).map(function(k){return tp[k]}).join('');
   var csvg=isoSvg(cw,ch,row==='back'?teeC+pt+segC+std:segC+std+teeC+pt,'aq-iso--limestone '+K+'__crop-svg',{origin:corg});
-  var clab=la.map(function(l){var q=isoPct(l.q,cw,ch,corg);return '<span class="'+K+'__clab" style="left:'+q.left+';top:'+q.top+'">'+tx(labels[l.k].t||'')+'</span>'}).join('');
+  /* the caption is 12 px mono (about 7.9 px a character): it starts just right of the part, clamped so it never runs
+     past the crop's right edge (it then lies over the trunk on its paper ground) */
+  /* when it would not fit right of the part (the crop renders about 311 px wide on a phone), it ends left of it */
+  /* pass 12 C verify F2: placed only where it fits unclamped (a clamped caption slid over the dashed part it names);
+     otherwise dropped, since the h3 directly under the crop names the option */
+  var clab=la.map(function(l){var fw=Math.ceil(String(l.t||'').length*7.92)+12,fu=fw*cw/311,
+    fitR=l.q[0]+fu<=xR,fitL=l.l[0]-fu>=xL;if(!fitR&&!fitL)return '';
+    var left=!fitR,q=isoPct(left?l.l:l.q,cw,ch,corg);
+    return '<span class="'+K+'__clab '+K+'__clab--'+(left?'left':'side')+'" style="left:'+q.left+';top:'+q.top+'">'+tx(l.t||'')+'</span>'}).join('');
   crops[i]='<span class="'+K+'__crop" aria-hidden="true" style="aspect-ratio:'+cw+' / '+ch+'">'+csvg+clab+'</span>'});
  var inner=back+trunk+main+isoArrow(line(j0+0.25),[1,-1,0],{size:8})+isoArrow(line(j1-0.1),[1,-1,0],{size:8})+front;
- var Wd=1180,Hd=500,org=[150,310];
+ /* pass 12 C: the viewBox is the drawing's own bounds (it was a fixed 1180 x 500 sheet with paper round the train),
+    so at width 100% the train fills the column. Parts are boxed generously (the RO rack is wide and offset); the pins
+    (32 px tags over their part) and the labels (12 px mono over theirs) are in the bounds too. */
+ var bp=[line(j0),line(j1)];
+ T.forEach(function(t,k){var c=pos(k),ro=t.part==='ro',a=ro?70:44,ox=ro?-50:0;bp.push([c[0]+ox-a,c[1]-a,0],[c[0]+ox+a,c[1]+a,0],[c[0]+ox-a,c[1]+a,ro?120:170],[c[0]+ox+a,c[1]-a,ro?120:170])});
+ I.forEach(function(it,i){var row=it.row||(i%2?'front':'back'),j=it.at!=null?+it.at:i,d=row==='back'?-95:95,c=pos(j);c=[c[0]+d,c[1]+d,0];var z=it.part==='tank'?190:150;
+  bp.push([c[0]-34,c[1]-34,0],[c[0]+34,c[1]+34,0],[c[0]-34,c[1]+34,z],[c[0]+34,c[1]-34,z])});
+ var bb=isoBounds(bp,12),x0=bb.x,y0=bb.y,x1=bb.x+bb.w,y1=bb.y+bb.h;
+ /* pass 12 C verify F3: a 32 px tag needs 56 units of head room down to 0.6 scale (36 clipped tag 02 at 0.79) */
+ marks.forEach(function(m){x0=Math.min(x0,m.at[0]-20);x1=Math.max(x1,m.at[0]+20);y0=Math.min(y0,m.at[1]-22-56)});
+ labels.forEach(function(l){var w=String(l.t||'').length*3.96+4,y=l.at[1]+(l.dy!=null?+l.dy:-14);x0=Math.min(x0,l.at[0]-w);x1=Math.max(x1,l.at[0]+w);y0=Math.min(y0,y-20)});
+ y1+=8;var Wd=Math.round(x1-x0),Hd=Math.round(y1-y0),org=[-x0,-y0];
  var svg=isoSvg(Wd,Hd,inner,'aq-iso--limestone '+K+'__svg',{origin:org});
  var pc=function(p,dy){var q=isoPct([p[0],p[1]+(dy||0)],Wd,Hd,org);return 'left:'+q.left+';top:'+q.top};
- var lab=labels.map(function(l){return '<span class="'+K+'__label" aria-hidden="true" style="'+pc(l.at,l.dy!=null?+l.dy:-14)+'">'+tx(l.t||'')+'</span>'}).join('');
+ /* a label that would run under a pin (pass 12 C: "Duplex softener" under tag 03) ends 8 units left of that pin instead */
+ var lab=labels.map(function(l){var dy=l.dy!=null?+l.dy:-14,y=l.at[1]+dy,w=String(l.t||'').length*7.92,x=l.at[0],hit=null;
+  /* the drawing renders at about 0.8 of its units on a 1280 screen: the label's span in units is its px width / 0.8;
+     a tag "hits" a label when the label runs under the tag's column, within the part the tag pins (90 units down) */
+  w/=0.8;marks.forEach(function(m){var mx=m.at[0],my=m.at[1]-22;if(x+w/2>mx-20&&x-w/2<mx+20&&y>my-40&&y-20<my+90)hit=hit&&hit.at[0]<mx?hit:m});
+  if(hit)return '<span class="'+K+'__label '+K+'__label--end" aria-hidden="true" style="'+pc([hit.at[0]-26,l.at[1]],dy)+'">'+tx(l.t||'')+'</span>';
+  return '<span class="'+K+'__label" aria-hidden="true" style="'+pc(l.at,dy)+'">'+tx(l.t||'')+'</span>'}).join('');
  var mk=marks.map(function(m){return '<span class="'+K+'__mark" data-i="'+m.i+'" aria-hidden="true" style="'+pc(m.at,-22)+'">'+(m.i<9?'0':'')+(m.i+1)+'</span>'}).join('');
  var pg=wp(WP),head=wSecHead({eyebrow:pg&&pg.nav_label,h:b.h,intro:b.intro});
  var notes=I.map(function(it,i){var no=(i<9?'0':'')+(i+1);return fli('<li class="'+K+'__card" data-i="'+i+'">',b,i)
   +'<p class="'+K+'__no"><button type="button" class="'+K+'__pin" data-i="'+i+'" aria-pressed="false" aria-label="'+no+': show on the drawing">'+no+'</button><span class="'+K+'__nop">'+no+'</span></p>'
   +(crops[i]||'')+'<h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
- var fig='<div class="'+K+'__fig"><div class="'+K+'__cam">'+svg+lab+mk+'</div></div>';
+ /* the drawing fills the column but never past 1:1 (its labels and tags are set in px; a short train stays at its
+    drawn scale instead of swelling the sheet) */
+ var fig='<div class="'+K+'__fig"><div class="'+K+'__cam" style="max-width:'+Wd+'px">'+svg+lab+mk+'</div></div>';
  var block='<div class="'+K+'__block" aria-hidden="true"><span>Aquemi</span><span>'+tx((pg&&pg.nav_label)||'')+'</span><span>'+tx(b.h||'')+'</span></div>';
  var inner='<div class="'+K+'" style="--n:'+I.length+'"><div class="'+K+'__main">'+head+fig+'</div>'
   +'<div class="'+K+'__side">'+wFold(b,I.length,'<ol class="'+K+'__cards" role="list">'+notes+'</ol>',b.fold_noun)+block+'</div></div>';

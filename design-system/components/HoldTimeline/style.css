@@ -69,11 +69,18 @@
   margin: 0 var(--space-1); vertical-align: -0.12em;
 }
 .aq-hold-timeline__d { margin: var(--space-2) 0 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
-.aq-hold-timeline__hold { margin: var(--space-3) 0 0; font: 400 13px/20px var(--font-sans); color: var(--ink); }
+/* pass 12 C: 14 px; the signer wraps in its own column beside the HOLD chip, never back under it (all widths) */
+.aq-hold-timeline__hold { margin: var(--space-3) 0 0; font: 400 14px/20px var(--font-sans); color: var(--ink);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); align-items: baseline; }
 .aq-hold-timeline__hk {
-  display: inline-block; margin-right: var(--space-1); padding: 0 var(--space-2); border: 1px solid var(--flow);
+  display: inline-block; margin-right: 0; padding: 0 var(--space-2); border: 1px solid var(--flow);
   font: 500 12px/18px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow);
 }
+/* pass 12 C (R1): up stages are right-aligned; size the signer column to its text and pack both against the pole, so
+   the chip stays 8 px from a short signer instead of being stranded across a wide 1fr track */
+.aq-hold-timeline__st.is-up .aq-hold-timeline__hold { grid-template-columns: auto minmax(0, max-content); justify-content: end; }
+/* the signer is one grid item, so a [placeholder] span inside it stays on the chip's line (L1) */
+.aq-hold-timeline__hw { min-width: 0; }
 /* hover a stage: its node swells, its pole lights */
 .aq-hold-timeline__st:hover > .aq-hold-timeline__node { transform: scale(1.35); }
 .aq-hold-timeline__st:hover > .aq-hold-timeline__pole { background: var(--flow); }
@@ -91,11 +98,13 @@
   .aq-hold-timeline__macro { opacity: 0.3; }
   .aq-hold-timeline__list { display: flex; flex-direction: column; gap: var(--space-8); padding-left: var(--space-8); }
   .aq-hold-timeline__list::before { content: ""; position: absolute; left: var(--space-3); top: var(--space-3); bottom: 0; width: 2px; margin-left: -1px; background: var(--flow); }
-  .aq-hold-timeline__st, .aq-hold-timeline__st.is-up, .aq-hold-timeline__st.is-down { width: auto; margin: 0; padding: 0; border: 0; text-align: left; }
+  /* align-self: stretch, or the desktop "align-self: end" of the up stages survives in the flex column and indents them */
+  .aq-hold-timeline__st, .aq-hold-timeline__st.is-up, .aq-hold-timeline__st.is-down { width: auto; margin: 0; padding: 0; border: 0; text-align: left; align-self: stretch; }
   .is-up > .aq-hold-timeline__node, .is-down > .aq-hold-timeline__node {
     left: calc(var(--space-3) - var(--space-8) - var(--d, 12px) / 2); right: auto; top: calc(14px - var(--d, 12px) / 2); bottom: auto;
   }
   .aq-hold-timeline__band, .aq-hold-timeline__pole { display: none; }
+  .aq-hold-timeline__st.is-up .aq-hold-timeline__hold { justify-content: start; }
   .aq-hold-timeline__t { font-size: 20px; }
   .aq-hold-timeline__num { font-size: 56px; line-height: 56px; }
 }

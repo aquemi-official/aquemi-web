@@ -100,7 +100,7 @@ function wHeroIndex(x){var n=x.items.length;
    box, so it runs the full gutter width at about 170 px tall; its SVG labels would paint at 7 px there, so the parts
    carry numbered pins (HTML, LOOP_PINS in percent of that box) and the labels move to a 2 x 2 legend under the drawing,
    at reading size, under a caption naming the loop. Both drawings are in the markup; CSS shows one. */
-var LOOP_PINS=[[19.6,7.1,'CE · USP <645>'],[28.2,7.1,'TOC · USP <643>'],[68.5,94.1,'[heat exchanger, standard or option]'],[91.1,67.5,'Furthest point of use']];
+var LOOP_PINS=[[19.6,7.1,'CE · USP <645>'],[31.1,7.1,'TOC · USP <643>'],[68.5,94.1,'[heat exchanger, standard or option]'],[91.1,67.5,'Furthest point of use']];
 function wHomeLoop(){
  var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
  var label=function(x,y,s,a,c){return '<text'+(c?' class="'+c+'"':'')+' x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
@@ -109,10 +109,11 @@ function wHomeLoop(){
   '<g class="aq-loop__part"><rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
   '<line x1="300" y1="Y1" x2="324" y2="Y1"/><circle cx="336" cy="Y1" r="12"/><line x1="300" y1="Y2" x2="324" y2="Y2"/><circle cx="336" cy="Y2" r="12"/>'+
   '<path d="M220,470 L220,480 M206,480 L206,492 L234,480 L234,492 Z"/></g>';
- /* the sensors sit 34 apart on the wide drawing, 44 apart on the phone one so their pins do not touch */
+ /* the sensors sit 34 apart on the wide drawing, 59 apart on the phone one so their pins keep about 8 px between them
+    (pass 12 round C: at 44 apart the two 23 px pins touched at the top of the loop) */
  var sensors=function(a,b){return pipe.replace(/Y1/g,a).replace(/Y2/g,b)};
  var phone='<div class="aq-loop__phone"><p class="aq-loop__cap">Distribution loop · PP</p><div class="aq-loop__band">'+
-  '<svg class="aq-loop__svg aq-loop__svg--narrow" viewBox="12 86 515 255" aria-hidden="true" focusable="false"><g transform="matrix(0 -1 1 0 0 440)">'+sensors(113,157)+'</g></svg>'+
+  '<svg class="aq-loop__svg aq-loop__svg--narrow" viewBox="12 86 515 255" aria-hidden="true" focusable="false"><g transform="matrix(0 -1 1 0 0 440)">'+sensors(113,172)+'</g></svg>'+
   LOOP_PINS.map(function(q,i){return '<span class="aq-hero__pin" style="left:'+q[0]+'%;top:'+q[1]+'%">'+(i+1)+'</span>'}).join('')+'</div>'+
   '<ol class="aq-loop__legend">'+LOOP_PINS.map(function(q,i){return '<li><span class="aq-hero__pin">'+(i+1)+'</span><span>'+tx(q[2])+'</span></li>'}).join('')+'</ol></div>';
  return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a heat exchanger on the loop, standard or option still to be confirmed, conductivity and TOC sensors on the return, a valve at the furthest point of use, and flow arrows.">'+

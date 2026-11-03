@@ -5,7 +5,8 @@
    IsoKit line art; a leader runs from the chip across to the cell and on to the part. Two rows that link the same page
    show the part of it that answers each (the analyser for limits, the panel for records).
    Fields: h, intro, cols (three labels), rows [[standard, asks, {t, link, art}]], fold, fold_noun, nav (plate title).
-   art: analyzer | storage | panel | pretreatment (what the cell draws; default by the link's page). Phones: rows
+   art: analyzer | storage | panel | pretreatment | generation | outlet (what the cell draws; default by the link's
+   page; outlet is a lab point of use on its drop from the loop). Phones: rows
    stack, the drawing beside the answer, the leader dropped. */
 var SW_ART={'sys-monitoring':'analyzer','sys-storage':'storage','sys-pretreatment':'pretreatment','sys-pw':'generation'};
 function swArt(k,id){var P=function(kind,x,y,s,o){o=o||{};o.id=id;return isoPart(kind,x,y,0,s,o)},parts=[],tgt;
@@ -13,11 +14,16 @@ function swArt(k,id){var P=function(kind,x,y,s,o){o=o||{};o.id=id;return isoPart
   parts=[t,isoPipe(isoRoute(t.ports.out,pu.ports.in,'xyz'),{r:2,id:id,caps:false}),pu,isoPipe([pu.ports.out,[pu.ports.out[0],pu.ports.out[1],96],[t.ports.ret[0],pu.ports.out[1],96],[t.ports.ret[0],t.ports.ret[1],96],t.ports.ret],{r:2,id:id,caps:false})];tgt=t.ports.top}
  else if(k==='panel'){var pn=P('panel',0,0,1.15),an=P('analyzer',44,10,0.9);parts=[pn,an];tgt=[pn.ports.top[0]-10,pn.ports.top[1]+8,pn.ports.top[2]-26]}
  else if(k==='pretreatment'){var f=P('filter',-18,0,1),c=P('carbon',22,4,1);parts=[f,isoPipe(isoRoute(f.ports.out,c.ports.in,'xyz',{via:[[f.ports.out[0]+6,f.ports.out[1],f.ports.out[2]]]}),{r:1.8,id:id,caps:false}),c];tgt=f.ports.top}
+ else if(k==='outlet'){/* a lab point of use: the PP outlet on a short drop from the loop main above it */
+  var o=P('outlet',0,0,1.2),ip=o.ports.in,zm=ip[2]+14;
+  parts=[isoPipe([[ip[0]-46,ip[1],zm],[ip[0]+46,ip[1],zm]],{r:2.2,id:id,caps:true}),isoPipe([[ip[0],ip[1],zm],ip],{r:1.4,id:id,caps:false}),o];tgt=o.ports.top}
  else if(k==='generation'){var ro=P('ro',-56,-13,0.9);parts=[ro];tgt=ro.ports.top}
  else {var a=P('analyzer',0,0,1.25),pi=isoPipe([[-48,26,10],[60,26,10]],{r:2.4,id:id,caps:true});parts=[pi,a,isoPipe([a.ports.sample,[a.ports.sample[0],26,a.ports.sample[2]],[a.ports.sample[0],26,12.4]],{r:1,id:id,caps:false,wall:false})];tgt=[0,0,40]}
  var str=parts.join(''),pts=[],re=/[ML]\s*(-?[\d.]+)[ ,](-?[\d.]+)/g,m;while((m=re.exec(str)))pts.push([+m[1],+m[2]]);
  var x0=Math.min.apply(0,pts.map(function(p){return p[0]})),x1=Math.max.apply(0,pts.map(function(p){return p[0]})),y0=Math.min.apply(0,pts.map(function(p){return p[1]})),y1=Math.max.apply(0,pts.map(function(p){return p[1]}));
  return {svg:str,box:[x0,y0,x1,y1],tgt:isoP(tgt)}}
+/* a code token with a hyphen (D1193-24) never breaks at the hyphen; text with a placeholder is set as is */
+function swNb(x){return /[\[\]]/.test(x)?tx(x):x.split(/(\s+)/).map(function(t){return /\S-\S/.test(t)?'<span class="aq-standard-wires__nb">'+tx(t)+'</span>':tx(t)}).join('')}
 LOOKS['standard-wires']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var rows=R.map(function(r,i){var go=r[2]&&typeof r[2]==='object'?r[2]:{t:r[2]},k=go.art||SW_ART[wsplit(go.link||'')[0]]||'analyzer',id='sw'+i;
   var A=swArt(k,id),pad=10,W=300,Hh=170,bw=A.box[2]-A.box[0],bh=A.box[3]-A.box[1],sc=Math.min((W*0.7)/bw,(Hh-2*pad)/bh,2);
@@ -29,7 +35,7 @@ LOOKS['standard-wires']=function(b,H){var C=b.cols||[],R=b.rows||[];
   var std=String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||'');
   return fli('<li class="aq-standard-wires__row" data-sw="'+id+'">',b,i)
    +'<div class="aq-standard-wires__std"><span class="aq-standard-wires__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<p class="aq-standard-wires__k">'+tx(C[0]||'')+'</p><h3 class="aq-standard-wires__s">'+std.split(/;\s*/).map(function(x){return '<span>'+tx(x)+'</span>'}).join('<span class="aq-standard-wires__semi">; </span>')+'</h3></div>'
+   +'<p class="aq-standard-wires__k">'+tx(C[0]||'')+'</p><h3 class="aq-standard-wires__s">'+std.split(/;\s*/).map(function(x){return '<span>'+swNb(x)+'</span>'}).join('<span class="aq-standard-wires__semi">; </span>')+'</h3></div>'
    +'<div class="aq-standard-wires__ask"><p class="aq-standard-wires__k">'+tx(C[1]||'')+'</p><p class="aq-standard-wires__a">'+tcell(r[1])+'</p></div>'
    +'<div class="aq-standard-wires__ans"><p class="aq-standard-wires__k">'+tx(C[2]||'')+'</p><p class="aq-standard-wires__chip">'+tcell(go)+'</p></div>'
    +'<span class="aq-standard-wires__run" aria-hidden="true"></span>'

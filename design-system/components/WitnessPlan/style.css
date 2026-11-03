@@ -29,7 +29,7 @@
 .aq-witness-plan__svg { display: block; width: 100%; height: auto; }
 .aq-witness-plan__svg .aq-witness-plan__bay { stroke: var(--line-strong); }
 .aq-witness-plan__mk { position: absolute; z-index: 2; transform: translate(calc(-50% + var(--k, 0) * var(--space-6)), -50%); display: inline-flex; align-items: center; justify-content: center; min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1);
-  background: var(--surface); border: 1px solid var(--line-strong); color: var(--ink-muted); font: 500 12px/1 var(--font-mono); transition: background-color 160ms, color 160ms, border-color 160ms; }
+  background: var(--surface); border: 1px solid var(--line-strong); color: var(--ink-muted); font: 500 12px/1 var(--font-mono); transition: background-color 160ms, color 160ms, border-color 160ms, opacity 200ms; }
 .aq-witness-plan__mk.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface); }
 .aq-witness-plan__zone { position: absolute; transform: translate(0, calc(-100% - var(--space-2))); white-space: nowrap; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 .aq-witness-plan__zone.is-cam { transform: translate(var(--space-2), calc(-100% - var(--space-2))); }
@@ -70,3 +70,7 @@
   .aq-witness-plan__mk { min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1); font-size: 12px; }
   .aq-witness-plan__list > li[data-pk-row].is-pk-active .aq-witness-plan__n { color: var(--flow); }
 }
+
+/* pass 12 round C (svc-fat-sat.3): a marker the strip's crop cuts fades out (set by the look's script while PhoneKit
+   is on), so no half chip shows at the strip's foot; the chosen way's marker never fades. */
+@container (max-width: 860px) { .aq-witness-plan[data-pk-on] .aq-witness-plan__mk.is-clip { opacity: 0 !important; } }

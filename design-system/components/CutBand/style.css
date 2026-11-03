@@ -88,3 +88,16 @@
   .aq-cut-band__ref { font-size: 13px; }
   .aq-cut-band__note { margin-top: var(--space-4); }
 }
+
+/* pass 12 round C (audit svc-cq.4, desktop): the trend card stands in the right column above the band, about
+   560 x 300, in place of the elevation (which said nothing about alert levels and left the column empty under the
+   heading). The elevation stays behind art "plant" (.aq-cut-band--plant). */
+@container (min-width: 861px) {
+  .aq-cut-band:not(.aq-cut-band--plant) { grid-template-rows: auto auto auto; }
+  .aq-cut-band:not(.aq-cut-band--plant) .aq-cut-band__fig { display: none; }
+  .aq-cut-band:not(.aq-cut-band--plant) .aq-cut-band__trend {
+    display: block; grid-column: 2; grid-row: 1; align-self: end; justify-self: end; width: min(100%, 560px); box-sizing: border-box;
+    margin-bottom: var(--space-8); padding: var(--space-4) var(--space-3) var(--space-4); border-top: 1px solid var(--line-strong); background: var(--surface-raised);
+  }
+  .aq-cut-band:not(.aq-cut-band--plant) .aq-cut-band__head { padding-bottom: var(--space-8); }
+}

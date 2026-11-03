@@ -77,3 +77,8 @@
   .aq-derivation-sheet__u { max-width: none; font-size: 14px; }
   .aq-derivation-sheet__ref { margin: var(--space-1) 0 0; padding: 0; border: 0; font-size: 13px; }
 }
+/* 600 px and under (pass 12 round C, optional item): lines 12 px above and below (from 16), so the pad runs shorter
+   without changing a line's own composition */
+@container (max-width: 600px) {
+  .aq-derivation-sheet__line { padding-block: var(--space-3); }
+}

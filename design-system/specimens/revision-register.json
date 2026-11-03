@@ -589,7 +589,7 @@
    "page": "news",
    "slot": 0,
    "h": "The notes register",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",
@@ -615,6 +615,216 @@
       "link": "news#pp-or-stainless",
       "featured": true,
       "spot": "storage-tank",
+      "d": "Our standard says stainless steel. Can a polypropylene loop carry our Purified Water?"
+     },
+     {
+      "t": "After a water observation: what inspectors ask for",
+      "topic": "Standards",
+      "std": "GUI-0001; 21 CFR 211",
+      "link": "svc-upgrades#observation",
+      "spot": "magnifier",
+      "d": "An inspector cited our water system. What will the response need?"
+     },
+     {
+      "t": "Conductivity rising in the loop",
+      "topic": "Troubleshooting",
+      "std": "USP <645>; WHO TRS 1033, 12.3, 12.7",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "A total organic carbon (TOC) excursion on an online analyzer",
+      "topic": "Troubleshooting",
+      "std": "USP <643>",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Microbial counts at one point of use only",
+      "topic": "Troubleshooting",
+      "std": "WHO TRS 1033, 12.5; FDA high-purity water guide (1993)",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Exchange deionization (DI) or a PW package: when to switch",
+      "topic": "Design",
+      "std": "USP <1231>",
+      "link": "systems#faq"
+     },
+     {
+      "t": "Rinse-line water: exchange DI or your own reverse osmosis (RO) and EDI",
+      "topic": "Design",
+      "std": "Your process water specification; USP <1231> for method",
+      "link": "ind-process#from-ion-exchange"
+     },
+     {
+      "t": "USP <645> stage 1: why the reading must be uncompensated",
+      "topic": "Standards",
+      "std": "USP <645>",
+      "link": "sys-monitoring",
+      "d": "Our transmitters show temperature-compensated conductivity. Can we release water on that reading?"
+     },
+     {
+      "t": "Device manufacturing water: no grade is named, so you specify it",
+      "topic": "Standards",
+      "std": "ISO 13485:2016, 7.5.2; 21 CFR 820 (QMSR, 2026)",
+      "link": "ind-meddevice#grades"
+     },
+     {
+      "t": "Natural health products: does this line need Purified Water?",
+      "topic": "Standards",
+      "std": "GUI-0158",
+      "link": "ind-pharma#nhp"
+     },
+     {
+      "t": "USP <1231> is informational: what does it ask of you?",
+      "topic": "Standards",
+      "std": "USP <1231>",
+      "link": "compliance#pharmacopoeia"
+     },
+     {
+      "t": "Dead legs in a PW loop: how L/D is measured",
+      "topic": "Standards",
+      "std": "WHO TRS 1033, 8.6; FDA high-purity water guide, IX",
+      "link": "sys-storage"
+     },
+     {
+      "t": "CSA B51 and the Canadian registration number (CRN) for imported equipment",
+      "topic": "Standards",
+      "std": "CSA B51",
+      "link": "compliance#engineering"
+     },
+     {
+      "t": "Ph. Eur. 12.3: what changed for water",
+      "topic": "Standards",
+      "std": "Ph. Eur. 0008, 2.2.44",
+      "link": "sys-pw"
+     },
+     {
+      "t": "FDA computer software assurance and water system controls",
+      "topic": "Standards",
+      "std": "FDA computer software assurance (devices); GAMP 5 (2022)",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Reverse osmosis (RO) with electrodeionization (EDI) or with DI",
+      "topic": "Design",
+      "std": "WHO TRS 1033, 4.3.3; USP <1231>; ISPE Baseline Guide Vol. 4",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Storage tank size for a PW loop",
+      "topic": "Design",
+      "std": "WHO TRS 1033, 9.2; USP <1231>; ISPE Baseline Guide Vol. 4",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Sanitization options for a polypropylene (PP) loop",
+      "topic": "Design",
+      "std": "WHO TRS 1033, 4.3.7, 8.4; USP <1231>; ISPE Baseline Guide Vol. 4",
+      "link": "sys-storage#sanitization"
+     },
+     {
+      "t": "Chloramine in municipal feed water",
+      "topic": "Design",
+      "std": "USP <1231>; Guidelines for Canadian Drinking Water Quality",
+      "link": "sys-pretreatment"
+     },
+     {
+      "t": "Cold feed water and RO output in a Canadian winter",
+      "topic": "Design",
+      "std": "Design practice; no standard sets a limit",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Questions to ask when comparing water system proposals",
+      "topic": "Design",
+      "std": "EU GMP Annex 15, 3.2; GUI-0029, 8.1",
+      "link": "contact-proposal#requests"
+     },
+     {
+      "t": "What factory acceptance test (FAT) results can replace at installation and operational qualification (IQ, OQ)",
+      "topic": "Qualification",
+      "std": "EU GMP Annex 15, 3.6; GUI-0029, 8.1; ASTM E2500",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Who owns design qualification (DQ)",
+      "topic": "Qualification",
+      "std": "EU GMP Annex 15, 3.3; GUI-0029, 5; ASTM E2500",
+      "link": "svc-design"
+     },
+     {
+      "t": "The three-phase performance qualification (PQ)",
+      "topic": "Qualification",
+      "std": "WHO TRS 1033, 11.3; FDA high-purity water guide (1993)",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Alert and action levels from qualification data",
+      "topic": "Qualification",
+      "std": "WHO TRS 1033, 11.3, 12.7, 12.8; USP <1231>",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Does an upgrade restart PQ?",
+      "topic": "Qualification",
+      "std": "WHO TRS 1033, 11.3; EU GMP Annex 15, 11; GUI-0029, 7",
+      "link": "svc-upgrades"
+     },
+     {
+      "t": "Why is my RO producing less water?",
+      "topic": "Troubleshooting",
+      "std": "Membrane manufacturer data; USP <1231>",
+      "link": "svc-service"
+     },
+     {
+      "t": "Chlorine breakthrough to the RO membranes",
+      "topic": "Troubleshooting",
+      "std": "Membrane manufacturer data; USP <1231>",
+      "link": "sys-pretreatment"
+     },
+     {
+      "t": "EU GMP Annex 1 (2022): what applies to PW at sterile sites",
+      "topic": "Standards",
+      "std": "EU GMP Annex 1; GUI-0119 (sterile sites, or non-sterile sites that adopt it in writing)",
+      "link": "compliance#gmp"
+     }
+    ],
+    "fold": 6,
+    "fold_noun": "notes",
+    "look": "revision-register"
+   }
+  },
+  {
+   "page": "news",
+   "slot": 0,
+   "h": "The notes register",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "1f4eab0",
+   "hash": "15deabba02",
+   "block": {
+    "type": "register",
+    "nav": "Notes",
+    "anchor": "notes",
+    "h": "The notes register",
+    "intro": "Each title opens its note, or the page that answers it.",
+    "topics": [
+     "Standards",
+     "Design",
+     "Qualification",
+     "Troubleshooting"
+    ],
+    "items": [
+     {
+      "t": "Polypropylene or stainless steel for a PW loop",
+      "topic": "Design",
+      "std": "WHO TRS 1033, 7.2.1, 8.4; USP <1231>",
+      "date": "[note publication month, year]",
+      "link": "news#pp-or-stainless",
+      "featured": true,
+      "spot": "storage-tank",
+      "part": "pipe",
       "d": "Our standard says stainless steel. Can a polypropylene loop carry our Purified Water?"
      },
      {

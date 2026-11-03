@@ -17,3 +17,5 @@ Pass 9 polish: the section carries `data-theme="light"`, so the limestone sheet 
 Pass 9b: each limit rolls up on the core odometer (`m.count`, ported from "Sliding number") as its row is set; pointing at a row rolls its limit once more. Placeholders never roll.
 
 Pass 12 verify fixes: the svg and its lettering (seal, outlet) sit in one box (`__draw`), so the lettering stays on the pipe at any width. Under 860 px the drawing box is capped at 420 px, the intro note leaves the drawing and sits under it at 14 px, the note leader is not drawn and the band it used is pulled up (`--ls-cut`, set by the renderer). Under 600 px the box is 260 px wide, the outlet lettering steps 5 px off the wall and the qualifiers are 14 px.
+
+Pass 12 C: under 600 px the uppercase parameter labels are 13 px (they were 12 px).

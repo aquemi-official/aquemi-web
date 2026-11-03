@@ -10,8 +10,9 @@
    (strings; the last cell "pay · status"). Best for 1 to 6 roles (one or two rows of three); more roles still draw.
    The pipe is laid out from the rendered cards (ResizeObserver), so it follows wrapping; without it the cards stand
    alone. Phones (pass 12, S11/S12/S14, PhoneKit accordion): the roles are collapsed rows, each a 48 px+ head with the
-   role (the number line gives way to the branch), its status (valve and text) and the last two columns (base, pay) as one line each, marked by the legend over
-   the list that names those two columns once; tapping a row opens what you do and what you must have. The loop is one
+   role (the number line gives way to the branch) and its status (valve and text); tapping a row opens every field, base
+   and pay included (round C: the head's base and pay lines and their legend stay in the markup, hidden while PhoneKit
+   is on; title placeholders set 20 px mono). The loop is one
    supply-and-return pair down the left (a single frame), each row's branch and valve off the inner pipe. */
 (function(){
 var NS='http://www.w3.org/2000/svg',P='aq-role-loop'+'__';

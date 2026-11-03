@@ -1,6 +1,7 @@
 /* ---------- BackToTop: a quiet floating button that returns to the top of a long page ---------- */
 /* Fixed bottom right. Hidden (and out of the tab order) until the reader is two screens down; then armed (tabbable,
-   still invisible), and it fades in while they scroll back up or tab to it; it fades out again while they read on.
+   still invisible). It fades in once the page has been still for about 600 ms after a scroll up (or at the page end), or
+   when it is tabbed to, and fades out on the next scroll in either direction (BackToTop.js).
    A control, so radius-sm and a line-strong rule; it floats, so it takes shadow-overlay (the brand book's one shadow). */
 .aq-back-to-top {
   position: fixed; right: var(--space-8); bottom: var(--space-8); z-index: 30;
@@ -25,7 +26,8 @@
 
 /* Phones (pass 12, S1): the arrow alone in a 44 px square on the solid page ground, 16 px in from the edge and kept
    inside a 56 px bottom safe area (16 px inset plus the device's own inset, so it clears a home bar). BackToTop.js shows
-   it only while the reader scrolls back up, so it never parks over a line being read. The label stays for screen
+   it only when the page is still, and hides it on the next scroll, so it never slides over a line being read; the
+   footer keeps 56 px clear under its legal line for it. The label stays for screen
    readers. */
 @container (max-width: 860px) {
   .aq-back-to-top {

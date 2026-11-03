@@ -103,3 +103,16 @@ AuditSkid, BinderTabs, BudgetBento, CapaRing, CostBalance, CutawayRail, CutoverS
 Added in build round B (integrator, 2026-11-03): IndustryDrops (chips), LimitFolders (accordion), LimitPlan, ScenePlates,
 SkidSheet and TankGa (sticky figure). RoomLimit, WasherZones, GhostSkid, ConfigCards and HeroScene design their phone
 versions without PhoneKit (a two-column checklist, AQsnap rails and a full-width drawing); each README says why.
+
+Added in build round C (integrator, 2026-11-03):
+- sticky figure: SensorLoop (`data-pk-bp="600"`, a 180 px strip), ApplicationWheel (`data-pk-bp="600"`, a 140 px wheel
+  strip; a tap on a segment scrolls to its group) and RoomLimit (now PhoneKit, replacing its own crop; zooms 1.6x onto
+  the active pin). StandardsOrbit's strip now zooms about 1.25x onto the active zone (`data-pk-zoom` 1.15 on a layer
+  already cropped to the plant).
+- chips: TraceLines (one code chip per line; the readout dial follows `pk:change`) and GradeCrosswalk (one chip per
+  standard; its waters light on `pk:change`).
+- accordion: CheckLedger (first row open, route as an `aq-phone-kit__go` row link) and SpareSheet (a nested root: the
+  `tbody` accordion at 600 inside the sticky figure root at 860; `pk:change` from the accordion draws the open part).
+- CutawayRail keys each card twice (a marker 12 % of the reading window above the card, and the card's top) to move
+  its switch earlier than PhoneKit's 30 % line. A `data-pk-line="<fraction>"` option here would replace that workaround
+  (open, no owner this round).

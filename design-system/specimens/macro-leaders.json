@@ -416,7 +416,7 @@
    "page": "news",
    "slot": 1,
    "h": "Polypropylene or stainless steel for a PW loop",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",
@@ -466,6 +466,63 @@
      ]
     ],
     "look": "macro-leaders"
+   }
+  },
+  {
+   "page": "news",
+   "slot": 1,
+   "h": "Polypropylene or stainless steel for a PW loop",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "1f4eab0",
+   "hash": "e883ab1a33",
+   "block": {
+    "type": "table",
+    "nav": "PP or stainless",
+    "anchor": "pp-or-stainless",
+    "eyebrow": "Technical note · [note publication month, year] · [note author and reviewer]",
+    "h": "Polypropylene or stainless steel for a PW loop",
+    "intro": "Polypropylene suits an ambient PW loop, sanitized chemically. Water for Injection (WFI) or a stainless standard needs stainless. A hot loop needs PVDF or stainless [whether we quote PVDF]. Limits, sampling and release are unchanged.",
+    "cols": [
+     "What decides it",
+     "Polypropylene (PP) fits when",
+     "Stainless steel is needed when"
+    ],
+    "rows": [
+     [
+      "Water grade",
+      "The loop carries Purified Water (PW) for non-sterile products, rinses and washing.",
+      "The loop carries Water for Injection (WFI), or feeds a pure steam generator."
+     ],
+     [
+      "Loop temperature",
+      "The loop runs at ambient temperature. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "The loop is held hot, or runs routine 80 °C at loop pressure. Polyvinylidene fluoride (PVDF) is the plastic option; [whether we quote PVDF]."
+     ],
+     [
+      "Sanitization",
+      "Chemical sanitization, written as a procedure, with residual tested absent at every outlet before use.",
+      "Your procedure calls for routine hot water or steam sanitization."
+     ],
+     [
+      "Your corporate standard",
+      "It names outcomes: materials compatible with PW and the sanitizing agent, drainable, with no dead legs.",
+      "It names 316L stainless steel for product contact, and a deviation is not an option."
+     ],
+     [
+      "Your clients' audits",
+      "Your auditors accept a plastic loop backed by its maker's ratings and your sanitization records.",
+      "A client's quality agreement names stainless steel for water contact."
+     ],
+     [
+      "A plastic loop failed before",
+      "The cause is known and designed out: joints, supports for expansion, or heat beyond the rating.",
+      "No cause was found, and your engineers will not accept plastic again."
+     ]
+    ],
+    "look": "macro-leaders",
+    "macro": "pipe-pair"
    }
   }
  ]

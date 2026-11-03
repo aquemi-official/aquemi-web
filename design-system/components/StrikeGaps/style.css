@@ -37,9 +37,19 @@
    note beside the headline's last line, on a flow hairline, like a note on a drawing */
 .aq-strike-gaps-sec .aq-sec-head { display: grid; grid-template-columns: auto minmax(0, 30ch); align-items: end; justify-content: start; column-gap: var(--space-12); max-width: none; }
 .aq-strike-gaps-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 13ch; }
-.aq-strike-gaps-sec .aq-sec-head .aq-lead { margin: 0 0 var(--space-2); padding-left: var(--space-4); border-left: 1.5px solid var(--flow); max-width: none; font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
+.aq-strike-gaps-sec .aq-sec-head .aq-lead { margin: 0 0 var(--space-2); padding-left: var(--space-4); border-left: 1.5px solid var(--flow); max-width: none; font: 400 14px/22px var(--font-mono); color: var(--ink-muted); }
 @container (max-width: 860px) {
   .aq-strike-gaps-sec .aq-sec-head { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
   .aq-strike-gaps-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
   .aq-strike-gaps-sec .aq-sec-head .aq-lead { margin: 0; }
+}
+/* pass 12 C: the fold is a phone measure only; from 861 px every gap shows and the button goes (the block's fold
+   field stays for phones) */
+@container (min-width: 861px) {
+  .aq-strike-gaps-sec .aq-fold:not(.is-open) .aq-fold-x { display: grid; }
+  .aq-strike-gaps-sec .aq-fold > .aq-fold__btn { display: none; }
+}
+/* reading text at 14 px on phones (S4) */
+@container (max-width: 600px) {
+  .aq-strike-gaps__rt { font-size: 14px; line-height: 20px; }
 }

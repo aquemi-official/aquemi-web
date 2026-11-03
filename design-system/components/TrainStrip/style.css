@@ -1,38 +1,42 @@
 /* ---------- TrainStrip: one treatment train as a P&ID strip on a navy band, numbered captions under it (look "train-strip") ---------- */
-.aq-train-strip-sec .aq-sec-head .aq-h1 { font: 300 64px/68px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); }
+/* Tones: navy by default; look field band "limestone" re-inks it (strokes on-limestone, the PP loop in flow, PVC grey) */
+.aq-train-strip-sec { --ts-bg: var(--navy); --ts-fg: var(--on-navy); --ts-mu: var(--on-navy-muted); --ts-hi: var(--limestone); --ts-pp: var(--limestone); --ts-pvc: var(--on-navy-muted); }
+.aq-train-strip-sec.aq-band--limestone { --ts-bg: var(--limestone); --ts-fg: var(--on-limestone); --ts-mu: var(--on-limestone-muted); --ts-hi: var(--on-limestone); --ts-pp: var(--flow);
+  --ts-pvc: var(--line-strong); --ts-pvc-o: 0.8; }
+.aq-train-strip-sec .aq-sec-head .aq-h1 { font: 300 64px/68px var(--font-sans); letter-spacing: -0.03em; color: var(--ts-fg, var(--on-navy)); }
 .aq-train-strip { display: flex; flex-direction: column; gap: var(--space-6); }
-.aq-train-strip__strip { border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); padding-top: var(--space-8); }
+.aq-train-strip__strip { border-top: 1px solid color-mix(in srgb, var(--ts-mu, var(--on-navy-muted)) 30%, transparent); padding-top: var(--space-8); }
 .aq-train-strip__svg { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-train-strip svg path, .aq-train-strip svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.aq-train-strip__pvc { stroke: var(--on-navy-muted); stroke-width: 6; opacity: 0.55; }
-.aq-train-strip__pp { stroke: var(--limestone); stroke-width: 3; }
-.aq-train-strip svg .aq-train-strip__eq { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.6; }
-.aq-train-strip svg .aq-train-strip__pvceq { stroke: var(--on-navy-muted); }
-.aq-train-strip__ln { stroke: var(--on-navy); stroke-width: 1.6; }
-.aq-train-strip__cap { stroke: var(--on-navy); stroke-width: 3; }
+.aq-train-strip__pvc { stroke: var(--ts-pvc, var(--on-navy-muted)); stroke-width: 6; opacity: var(--ts-pvc-o, 0.55); }
+.aq-train-strip__pp { stroke: var(--ts-pp, var(--limestone)); stroke-width: 3; }
+.aq-train-strip svg .aq-train-strip__eq { fill: var(--ts-bg, var(--navy)); stroke: var(--ts-fg, var(--on-navy)); stroke-width: 1.6; }
+.aq-train-strip svg .aq-train-strip__pvceq { stroke: var(--ts-pvc, var(--on-navy-muted)); }
+.aq-train-strip__ln { stroke: var(--ts-fg, var(--on-navy)); stroke-width: 1.6; }
+.aq-train-strip__cap { stroke: var(--ts-fg, var(--on-navy)); stroke-width: 3; }
 .aq-train-strip__level { stroke: var(--flow); stroke-width: 1.6; stroke-dasharray: 5 4; }
-.aq-train-strip__chev { stroke: var(--limestone); stroke-width: 2; }
-.aq-train-strip__lead { stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 2 4; }
-.aq-train-strip svg .aq-train-strip__mk { fill: var(--navy); stroke: var(--limestone); stroke-width: 1.6; }
+.aq-train-strip__chev { stroke: var(--ts-pp, var(--limestone)); stroke-width: 2; }
+.aq-train-strip__lead { stroke: var(--ts-mu, var(--on-navy-muted)); stroke-width: 1; stroke-dasharray: 2 4; }
+.aq-train-strip svg .aq-train-strip__mk { fill: var(--ts-bg, var(--navy)); stroke: var(--ts-hi, var(--limestone)); stroke-width: 1.6; }
 /* SVG label sizes are in viewBox units (1400 wide): 14 renders ~12 px at 1280 */
-.aq-train-strip__tag { fill: var(--on-navy-muted); font: 500 14px/1 var(--font-mono); letter-spacing: 0.08em; }
-.aq-train-strip__ce { fill: var(--on-navy); font: 500 13px/1 var(--font-mono); text-anchor: middle; }
-.aq-train-strip__mkn { fill: var(--on-navy); font: 500 14px/1 var(--font-mono); text-anchor: middle; dominant-baseline: central; }
+.aq-train-strip__tag { fill: var(--ts-mu, var(--on-navy-muted)); font: 500 14px/1 var(--font-mono); letter-spacing: 0.08em; }
+.aq-train-strip__ce { fill: var(--ts-fg, var(--on-navy)); font: 500 13px/1 var(--font-mono); text-anchor: middle; }
+.aq-train-strip__mkn { fill: var(--ts-fg, var(--on-navy)); font: 500 14px/1 var(--font-mono); text-anchor: middle; dominant-baseline: central; }
 .aq-train-strip svg * { transition: stroke 200ms ease, fill 200ms ease; }
 .aq-train-strip__node.is-hot .aq-train-strip__eq, .aq-train-strip__node.is-hot .aq-train-strip__ln { stroke: var(--flow); }
-.aq-train-strip__mark.is-hot .aq-train-strip__mk { fill: var(--flow); stroke: var(--on-navy); }
+.aq-train-strip__mark.is-hot .aq-train-strip__mk { fill: var(--flow); stroke: var(--ts-fg, var(--on-navy)); }
 .aq-train-strip__mark.is-hot .aq-train-strip__lead { stroke: var(--flow); stroke-dasharray: none; }
 /* captions: one column per stage on hairlines */
-.aq-train-strip__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
-.aq-train-strip__stage { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-4) 0; border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); position: relative; }
+.aq-train-strip__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); border-top: 1px solid color-mix(in srgb, var(--ts-mu, var(--on-navy-muted)) 40%, transparent); }
+.aq-train-strip__stage { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-4) 0; border-left: 1px solid color-mix(in srgb, var(--ts-mu, var(--on-navy-muted)) 30%, transparent); position: relative; }
 .aq-train-strip__stage:first-child { border-left: 0; padding-left: 0; }
 .aq-train-strip__stage::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; border-top: 2px solid var(--flow); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-train-strip__stage.is-hot::before { transform: scaleX(1); }
 .aq-train-strip__glyph { display: none; }
-.aq-train-strip__no { font: 400 28px/32px var(--font-mono); color: var(--on-navy); font-variant-numeric: tabular-nums; transition: color 200ms ease; }
+.aq-train-strip__no { font: 400 28px/32px var(--font-mono); color: var(--ts-fg, var(--on-navy)); font-variant-numeric: tabular-nums; transition: color 200ms ease; }
 .aq-train-strip__stage.is-hot .aq-train-strip__no { color: var(--flow); }
-.aq-train-strip__t { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-navy); }
-.aq-train-strip__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-navy-muted); }
+.aq-train-strip__t { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--ts-fg, var(--on-navy)); }
+.aq-train-strip__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ts-mu, var(--on-navy-muted)); }
 .aq-train-strip-sec { overflow: hidden; }
 
 @container (max-width: 1100px) {
@@ -44,7 +48,7 @@
   .aq-train-strip__ce { font-size: 16px; }
   .aq-train-strip__stages { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: var(--space-6); }
   .aq-train-strip__stage:nth-child(4n+1) { border-left: 0; padding-left: 0; }
-  .aq-train-strip__stage:nth-child(n+5) { border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+  .aq-train-strip__stage:nth-child(n+5) { border-top: 1px solid color-mix(in srgb, var(--ts-mu, var(--on-navy-muted)) 40%, transparent); }
   .aq-train-strip__d { overflow-wrap: anywhere; hyphens: auto; }
 }
 /* Phones: a riser: the pipe down the left with each stage's P&ID symbol on it, one row per stage */
@@ -52,14 +56,23 @@
   .aq-train-strip-sec .aq-sec-head .aq-h1 { font-size: 34px; line-height: 40px; }
   .aq-train-strip__strip { display: none; }
   .aq-train-strip__stages { display: block; position: relative; border-top: 0; padding-left: calc(var(--space-16) + var(--space-1)); }
-  .aq-train-strip__stages::before { content: ""; position: absolute; left: calc(var(--space-6) - 1px); top: var(--space-4); bottom: var(--space-8); border-left: 3px solid var(--limestone); }
+  .aq-train-strip__stages::before { content: ""; position: absolute; left: calc(var(--space-6) - 1px); top: var(--space-4); bottom: var(--space-8); border-left: 3px solid var(--ts-hi, var(--limestone)); }
   .aq-train-strip__stage, .aq-train-strip__stage:first-child { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-items: baseline; position: relative; border-left: 0; padding: 0 0 var(--space-6); }
   .aq-train-strip__stage::before { display: none; }
   .aq-train-strip__stage:nth-child(n+5) { border-top: 0; }
-  .aq-train-strip__glyph { display: block; position: absolute; left: calc(-1 * (var(--space-16) + var(--space-1)) + var(--space-1)); top: calc(-1 * var(--space-1)); width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2)); background: var(--navy); }
+  .aq-train-strip__glyph { display: block; position: absolute; left: calc(-1 * (var(--space-16) + var(--space-1)) + var(--space-1)); top: calc(-1 * var(--space-1)); width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2)); background: var(--ts-bg, var(--navy)); }
   .aq-train-strip__glyph .aq-train-strip__ce { font-size: 11px; }
   .aq-train-strip__glyph svg { display: block; width: 100%; height: 100%; overflow: visible; }
-  .aq-train-strip__no { font-size: 15px; line-height: 24px; color: var(--on-navy-muted); }
+  .aq-train-strip__no { font-size: 15px; line-height: 24px; color: var(--ts-mu, var(--on-navy-muted)); }
   .aq-train-strip__t { font-size: 17px; line-height: 24px; }
   .aq-train-strip__d { grid-column: 1 / -1; font-size: var(--aq-read-phone, 14px); }
+}
+
+/* Pass 12 round C, phones: the riser is a 2 px pipe, and an arrow on it between each pair of symbol boxes shows the
+   water running down the train, so the boxes read as one line, not a list */
+@container (max-width: 860px) {
+  .aq-train-strip__stages::before { left: calc(var(--space-6) - 1px); border-left: 2px solid var(--ts-pp, var(--limestone)); }
+  .aq-train-strip__stage:not(:last-child)::before { content: ""; display: block; position: absolute; transform: rotate(45deg); right: auto; border: 0;
+    box-sizing: border-box; left: calc(-1 * (var(--space-16) + var(--space-1)) + var(--space-6) - 5px); top: calc(50% + var(--space-4) - 7px); width: 10px; height: 10px;
+    border-right: 2px solid var(--ts-pp, var(--limestone)); border-bottom: 2px solid var(--ts-pp, var(--limestone)); transition: none; }
 }

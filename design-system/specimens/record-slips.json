@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}), fold, fold_noun (phones only: desktop shows every process).",
  "best_for": "RecordSlips shows each process of a quality system with the record it leaves: the process set large and light, what it controls under it, and at its right edge a slot from which a paper slip feeds out listing the records you can inspect, each with an empty tick box.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "cmp-quality",
@@ -203,7 +203,7 @@
    "page": "svc-fabrication",
    "slot": 0,
    "h": "One joint, one log line",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",

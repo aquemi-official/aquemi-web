@@ -10,8 +10,12 @@
    serves. Every block also carries its citations as text (visually hidden on desktop), so nothing depends on wires.
    Fields (a table block): h, intro, cols [water, how, standards A, standards B], rows [[water, how, citesA, citesB]]
    (cites split on ";"; an empty cell means none on that side).
-   Phones: one navy block per water with its citation rows under it (side, standard, edition, note, and "also 02 · 06":
-   the other blocks citing the same standard); no wires. */
+   Desktop (round C): rows take their own heights; the chips and wires are laid from the measured row centres (on
+   render and on every resize), so a short water no longer carries the tallest row's empty navy.
+   Phones (round C): the crosswalk becomes a filter. A strip of the standards' chips (the code of each: Z314, ST108,
+   D1193, GP40) is a PhoneKit chips picker; its card names the side and the full citation, and the open chip lights the
+   waters it asks for (navy) while the rest step back to paper (ink, still AA). Each water's citations fold into one
+   chip line in its block (standard and edition, "also 02 · 06", the note); no wires. */
 function gcSeg(c){var out=[];String(c&&typeof c==='object'?c.t:c||'').split(/\s*;\s*/).forEach(function(s){s=s.trim();if(!s)return;
   if(/^[a-z]/.test(s)&&out.length){out[out.length-1].note=s;return}
   var m=s.match(/^(.*?)((?::\d{2,4})|(?:-\d{2})|(?:\s+\d+(?:st|nd|rd|th)\s+ed\.?))$/);
@@ -45,9 +49,36 @@ LOOKS['grade-crosswalk']=function(b,H){var K='aq-grade-crosswalk',C=b.cols||[],R
    +(notes.length?'<p class="'+K+'__note" aria-hidden="true">'+notes.map(tx).join(' · ')+'</p>':'')+'</div>'
    +(refs?'<ul class="'+K+'__refs" role="list">'+refs+'</ul>':'')+'</li>'}).join('');
  var heads='<div class="'+K+'__head '+K+'__head--a" aria-hidden="true">'+tx(C[2])+'</div><div class="'+K+'__head '+K+'__head--m" aria-hidden="true"><span>'+tx(C[0])+'</span><span>'+tx(C[1])+'</span></div><div class="'+K+'__head '+K+'__head--b" aria-hidden="true">'+tx(C[3])+'</div>';
- var inner='<div class="'+K+'" style="--n:'+N+'">'+heads+rail(0)+wires(0)+'<ol class="'+K+'__rows" role="list">'+rows+'</ol>'+wires(1)+rail(1)+'</div>';
+ /* phones: the standards as a chips picker (rail order: side A then side B); the open chip lights its waters */
+ var pick=[0,1].map(function(s){return sides[s].map(function(o){var code=String(o.c.n).split(/[\s\/]+/).pop(),ws=o.rows.map(function(i){return (i<9?'0':'')+(i+1)+' '+String(R[i][0]&&R[i][0].t||R[i][0]||'')}).join(' · ');
+  return '<li class="'+K+'__pi" data-pk-item="'+e(code.toLowerCase())+'" data-rows="'+o.rows.join(' ')+'"><button type="button" class="'+K+'__chip" data-pk-head>'+tx(code)+'</button>'
+   +'<div class="'+K+'__card" data-pk-body><span class="'+K+'__cside">'+tx(C[2+s])+'</span><span class="'+K+'__cstd">'+gcChip(o.c,K)+'</span><span class="'+K+'__cw">'+e(ws)+'</span></div></li>'}).join('')}).join('');
+ var picker='<ol class="'+K+'__pick" data-pk-picker="chips" data-pk-open="0" data-pk-bp="860" role="list">'+pick+'</ol>';
+ var inner='<div class="'+K+'" style="--n:'+N+'">'+heads+picker+rail(0)+wires(0)+'<ol class="'+K+'__rows" role="list">'+rows+'</ol>'+wires(1)+rail(1)+'</div>';
  return sec(H+inner,K+'-sec')};
-(function(){var K='aq-grade-crosswalk';
+(function(){var K='aq-grade-crosswalk',Y=1000;
+ /* desktop: chips and wires from the measured row centres (rows take their own heights) */
+ function lay(root){var rows=root.querySelector('.'+K+'__rows'),rail=root.querySelector('.'+K+'__rail');if(!rows||!rail||getComputedStyle(rail).display==='none')return;
+  var rb=rows.getBoundingClientRect(),H=rb.height;if(!(H>0))return;
+  var c=[].map.call(root.querySelectorAll('.'+K+'__row'),function(r){var b=r.getBoundingClientRect();return (b.top+b.height/2-rb.top)/H});
+  ['a','b'].forEach(function(sd){var L=[].map.call(root.querySelectorAll('.'+K+'__rail--'+sd+' .'+K+'__node'),function(n){var rs=n.getAttribute('data-rows').split(' ').map(Number),m=0;
+    rs.forEach(function(i){m+=c[i]||0});return {n:n,p:m/rs.length,h:n.offsetHeight/H}});
+   L.sort(function(a,b){return a.p-b.p});
+   for(var i=1;i<L.length;i++){var g=(L[i-1].h+L[i].h)/2+12/H;if(L[i].p-L[i-1].p<g)L[i].p=L[i-1].p+g}
+   var last=L[L.length-1],over=last?last.p+last.h/2-1:0;if(over>0)L.forEach(function(o){o.p=Math.max(o.h/2,o.p-over)});
+   L.forEach(function(o){o.n.style.setProperty('--p',o.p.toFixed(4));o.n._gp=o.p});
+   [].forEach.call(root.querySelectorAll('.'+K+'__wires--'+sd+' .'+K+'__wire'),function(w){var n=root.querySelector('.'+K+'__node[data-gcn="'+w.getAttribute('data-gcn')+'"]'),i=+w.getAttribute('data-gc');
+    if(!n||n._gp==null||c[i]==null)return;var ny=(n._gp*Y).toFixed(1),ry=(c[i]*Y).toFixed(1);
+    w.setAttribute('d',sd==='a'?'M0 '+ny+'C55 '+ny+' 45 '+ry+' 100 '+ry:'M0 '+ry+'C55 '+ry+' 45 '+ny+' 100 '+ny)})})}
+ if(window.ResizeObserver&&window.MutationObserver){var ro=new ResizeObserver(function(es){es.forEach(function(en){var r=en.target.closest('.'+K);if(r)lay(r)})});
+  var scan=function(n){if(n.nodeType!==1)return;(n.matches('.'+K)?[n]:[].slice.call(n.querySelectorAll('.'+K))).forEach(function(r){if(r.__gcl)return;r.__gcl=1;ro.observe(r);var rw=r.querySelector('.'+K+'__rows');if(rw)ro.observe(rw)})};
+  new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,scan)})}).observe(document.documentElement,{childList:true,subtree:true});
+  if(document.body)scan(document.body)}
+ /* phones: the open standard chip lights the waters it asks for; switching off clears the filter */
+ document.addEventListener('pk:change',function(ev){var pk=ev.target;if(!pk.classList||!pk.classList.contains(K+'__pick'))return;var root=pk.closest('.'+K);if(!root)return;
+  var it=ev.detail&&ev.detail.on&&ev.detail.index>=0?pk.querySelectorAll('[data-pk-item]')[ev.detail.index]:null,lit=it?it.getAttribute('data-rows').split(' '):null;
+  root.classList.toggle('is-filtered',!!lit);
+  [].forEach.call(root.querySelectorAll('.'+K+'__row'),function(r){r.classList.toggle('is-lit',!!lit&&lit.indexOf(r.getAttribute('data-gc'))>=0)})});
  function set(root,rows,nodes){var on=rows||nodes;root.classList.toggle('has-hot',!!on);
   [].forEach.call(root.querySelectorAll('[data-gc],[data-gcn]'),function(el){var r=el.getAttribute('data-gc'),n=el.getAttribute('data-gcn'),rs=el.getAttribute('data-rows');
    var hot=!!on&&((rows&&r!=null&&rows.indexOf(r)>=0)||(nodes&&n!=null&&nodes.indexOf(n)>=0)||(rows&&rs&&rs.split(' ').some(function(x){return rows.indexOf(x)>=0})));el.classList.toggle('is-hot',hot)})}

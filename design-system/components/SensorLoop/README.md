@@ -8,6 +8,7 @@ SensorLoop draws a spec block of control points or signals where each one sits o
 - Pointing at a note (or a mark) lights its balloons, stems and symbols (`flow` fill, `limestone` lines).
 - Text: balloon and hose labels 13 px mono at 1:1 on desktop, 13.5 px in a 340-unit phone drawing (12.4 px rendered); notes 17/24 titles, 15/22 values, 14/20 notes.
 - **Phones** (≤ 860 px): the loop recomposed vertically: the tank at the top, the supply a riser with the balloons to its left and the branches and hoses to its right, the return up the left edge with its FIT balloon; then every note in one column. About 1,900 px with six rows (the old phone drawing was 120 px tall with 5 px labels).
+- Phone under 600 px (pass 12 C, S8): PhoneKit sticky compact figure (`data-pk-sticky data-pk-bp="600" data-pk-h="180"`). A third drawing, `__svg--s`, draws the loop as a 360 x 180 strip at 1:1 (tags 13 px): the tank left, the supply along the foot with the pump, one row of balloons across the middle stemmed to their runs (supply points, SP, then FIT on the return), the points of use under the supply. Cards are `data-pk-row`; marks carry `data-pk-key`; a row that names no point (sanitization) lights the loop itself. Every note stays open while PhoneKit drives the strip. 600-860 px keeps the vertical loop; desktop is unchanged.
 
 ## Motion
 

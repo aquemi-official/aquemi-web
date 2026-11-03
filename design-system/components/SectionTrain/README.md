@@ -7,6 +7,7 @@ SectionTrain draws a pretreatment train as one sectional elevation on a limeston
 - Drawn inline, not with IsoKit (a flat section, not an isometric view): vessels, beds, lenses, the backflow preventer, the bus. Same stroke family: 1.5 px `on-limestone` walls, 1 px detail, `flow` water.
 - Phones: the elevation is cut into one frame per stage (`__mini`), run down the page on a pipe rail at the left with the text beside each. Pass 12: the outlet row folds to its lens (no dead paper under it) and stage links are 44 px targets.
 - Use it for a train of four to eight stages where what each stage removes is the point. Where only the order matters use WindingRoute or ProcessDiagram.
+- Pass 12 C phone (<= 860): mini frames 76 px (scale 0.38), rail at 38 px, first/last rail offsets 57 px, outlet fold -52 px, stage pad `space-4`. Stage numerals in `on-limestone` (12 px mono, the muted ink was 4.16:1).
 
 ## Motion
 

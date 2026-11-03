@@ -7,6 +7,7 @@ SheetPreviews sets a short document list as a Swiss row of sheets: each limeston
 - **Phones** (≤ 860 px): one sheet per row, the sheet (30 %, at least 96 px) beside its name (17/23) and line (14/21), rows ruled; the code box is left off the small sheet (it reads in the text); title links 44 px. About 950 px for four records (two columns of narrow text were 1,270). Tablets (600–860 px): two rows of two, the sheet capped at 128 px beside its text (about 590 px at 768).
 - The number shows on the sheet only (/01); the eyebrow above the title shows only for a real code (CAL), never a bare repeat of the number.
 - Use it for three to six documents a reader should recognise at a glance. For long registers use DocList; for documents tied to parts of a drawing, DocHotspots.
+- Pass 12 C: the code eyebrow (`__code.is-stamped`) is screen-reader only where the sheet's stamp shows it (> 860 px) and visible on phones, where the stamp is hidden.
 
 ## Motion
 

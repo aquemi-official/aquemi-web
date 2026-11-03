@@ -14,12 +14,17 @@
 .aq-doc-hotspots__hot > span { display: grid; place-items: center; width: var(--space-4); height: var(--space-4); border-radius: var(--radius-pill);
   background: var(--flow); border: 2px solid var(--on-navy); font: 500 0px/1 var(--font-mono); color: var(--on-navy); transition: transform 250ms cubic-bezier(0.2, 0, 0, 1); }
 
-.aq-doc-hotspots__cards { list-style: none; margin: 0; padding: 0; }
-.aq-doc-hotspots__card { position: absolute; width: 25%; display: flex; flex-direction: column; gap: var(--space-2);
+/* Pass 12 C: the cards run in two in-flow columns (left in grid column 1, right in column 3, one row per pair, a
+   space-4 gap), from 4 % down the stage. A long card pushes the one below it down instead of running under it, and the
+   stage grows past 2:1 when the set needs it (aspect-ratio is only its minimum). The layout pass in the renderer
+   (AQdocHotspots.layout, on resize) ends each leader on its card's code line. */
+.aq-doc-hotspots__cards { list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: 25% minmax(0, 1fr) 25%; row-gap: var(--space-4); align-items: start;
+  padding-top: calc(var(--space-6) - 1px); pointer-events: none; }
+.aq-doc-hotspots__card { position: relative; grid-row: var(--row, auto); pointer-events: auto; display: flex; flex-direction: column; gap: var(--space-2);
   padding: var(--space-6) var(--space-6) var(--space-6); background: var(--limestone); color: var(--on-limestone);
   border-top: 2px solid var(--limestone); transition: border-color 250ms, transform 250ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-doc-hotspots__card--l { left: 0; }
-.aq-doc-hotspots__card--r { right: 0; }
+.aq-doc-hotspots__card--l { grid-column: 1; }
+.aq-doc-hotspots__card--r { grid-column: 3; }
 .aq-doc-hotspots__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
 .aq-doc-hotspots__card.is-key .aq-doc-hotspots__code span:last-child { color: var(--flow); }
 .aq-doc-hotspots__t { margin: 0; font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; }
@@ -51,14 +56,16 @@
   .aq-doc-hotspots__leads { display: none; }
   .aq-doc-hotspots__fig { position: relative; left: auto; top: auto; width: min(100%, calc(var(--space-32) * 4)); margin-inline: auto; }
   .aq-doc-hotspots__hot > span { width: var(--space-6); height: var(--space-6); font-size: 12px; }
-  .aq-doc-hotspots__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
-  .aq-doc-hotspots__card { position: relative; width: auto; top: auto !important; left: auto; right: auto; }
+  .aq-doc-hotspots__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); padding-top: 0; pointer-events: auto; }
+  .aq-doc-hotspots__card { position: relative; width: auto; grid-column: auto; grid-row: auto; }
   .aq-doc-hotspots__num { display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-pill); background: var(--flow); color: var(--on-navy); letter-spacing: 0; }
 }
 
 @container (max-width: 860px) {
   .aq-doc-hotspots { gap: var(--space-6); }
-  .aq-doc-hotspots__fig { width: 100%; max-width: none; }
+  /* the box matches the art (capped at 480 px by the global .aq-illustration rule), so hotspots placed as fractions
+     of the box stay on the drawing at 601-860 px (pass 12 C verify, F3) */
+  .aq-doc-hotspots__fig { width: min(100%, 480px); max-width: none; margin-inline: auto; }
   .aq-doc-hotspots__cards { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
   .aq-doc-hotspots__card { padding: var(--space-3) var(--space-4) var(--space-4); }
   .aq-doc-hotspots__t { font-size: 19px; line-height: 26px; }

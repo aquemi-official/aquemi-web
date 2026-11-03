@@ -37,7 +37,7 @@ LOOKS['hold-timeline']=function(b,H){var I=b.items||[],n=I.length,G=holdGeo(n);
    +'<h3 class="aq-hold-timeline__t"><span class="aq-hold-timeline__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+' /</span> '+nm+'</h3>'
    +(dur?(fig?'<p class="aq-hold-timeline__fig">'+tx(dur).replace(/(\d+(?:[.,]\d+)?)/,'<span class="aq-hold-timeline__num">$1</span>')+'</p>':'<p class="aq-hold-timeline__dur">'+tx(dur)+'</p>'):'')
    +(it.d?'<p class="aq-hold-timeline__d">'+tx(it.d)+'</p>':'')
-   +(it.hold?'<p class="aq-hold-timeline__hold"><span class="aq-hold-timeline__hk">Hold point</span> Signed by '+who(it.hold)+'</p>':'')
+   +(it.hold?'<p class="aq-hold-timeline__hold"><span class="aq-hold-timeline__hk">Hold point</span> <span class="aq-hold-timeline__hw">Signed by '+who(it.hold)+'</span></p>':'')
    +'</div></li>'}).join('');
  return '<section class="aq-section aq-hold-timeline-sec">'+(b.macro===false?'':holdMacro())+'<div class="aq-in aq-stack-l">'+H
   +'<div class="aq-hold-timeline" style="--n:'+n+';--w:'+G.w+'%">'

@@ -5,13 +5,29 @@
    traceability tag hangs from the joint on its wire: the log line as a printed form, one box per field (number, field,
    what it proves, the record). Each field's number is also pinned on the part of the joint it describes; pointing at a
    field lights its pin.
-   Fields, as a table: cols [field, what it proves, record], rows, fold, fold_noun. Optional parts (one per row: num,
+   Pass 12 round C: seam "plain" (look-only) draws the joint method-neutral (FD-18): one continuous length with a
+   hairline girth line where the joint is and the stencilled joint number beside it; no bead, curl, fused band or test
+   coupon (the coupon's pin moves under the joint with the other record pins).
+   Fields, as a table: cols [field, what it proves, record], rows, fold, fold_noun, seam ("plain"). Optional parts (one per row: num,
    lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only. */
 LOOKS['joint-tag']=(function(){
  var PIN={num:[810,76],lot:[560,118],welder:[770,262],bead:[640,36],visual:[640,262],coupon:[372,303],sign:[770,316],cut:[940,118]};
  function pick(s){s=String(s||'');return /joint number/i.test(s)?'num':/material|lot/i.test(s)?'lot':/welder/i.test(s)?'welder':/parameter|setting/i.test(s)?'bead':/visual|examin/i.test(s)?'visual':/test joint/i.test(s)?'coupon':/repair|cut/i.test(s)?'cut':'sign'}
  function str(c){return String(c&&typeof c==='object'?c.t:c==null?'':c)}
  function dots(x0,y,w){var o='';for(var x=x0;x<x0+w;x+=9)o+='<rect x="'+x+'" y="'+(y+((x/9)%3===0?3:0))+'" width="5" height="'+((x/9)%4===1?9:5)+'"/>';return '<g class="aq-joint-tag__print">'+o+'</g>'}
+ /* seam "plain": the pins of the parts the plain joint does not draw move onto the joint, the four record pins in one
+    row under it either side of the wire (clear of the tag's top edge); the number pin rises clear of the phone's
+    enlarged stencil */
+ var PINP={num:[810,60],bead:[700,36],visual:[588,262],coupon:[646,262],welder:[800,262],sign:[858,262]};
+ function plain(){var o='';
+  o+='<rect class="aq-joint-tag__body" x="-600" y="70" width="2600" height="160"/><rect class="aq-joint-tag__shade" x="-600" y="182" width="2600" height="48"/>'
+   +'<path class="aq-joint-tag__hi" d="M-600 92H2000"/><path class="aq-joint-tag__edge" d="M-600 70H2000M-600 230H2000"/>'
+   +'<path class="aq-joint-tag__girth" d="M700 70C705 110 705 190 700 230"/>';
+  o+=dots(300,140,320)+dots(860,140,200)
+   +'<g class="aq-joint-tag__sten"><rect x="772" y="104" width="76" height="30"/><text x="810" y="125" text-anchor="middle">J-01</text></g>'
+   +'<path class="aq-joint-tag__cut" d="M940 52V248"/><path class="aq-joint-tag__cutm" d="M930 44L950 60M950 44L930 60M930 240L950 256M950 240L930 256"/>'
+   +'<path class="aq-joint-tag__wire" d="M742 70C758 70 758 230 742 230M742 230C718 236 716 252 724 262C730 270 730 284 724 300V340"/>';
+  return o}
  function pipe(){var o='';
   /* two lengths, flat tonal fills: body, the shaded underside, a highlight; the left runs off the page edge */
   o+='<rect class="aq-joint-tag__body" x="-600" y="70" width="1288" height="160"/><rect class="aq-joint-tag__shade" x="-600" y="182" width="1288" height="48"/>'
@@ -37,20 +53,20 @@ LOOKS['joint-tag']=(function(){
    +'<path class="aq-joint-tag__cbd" d="M468 291C465 282 470 278 476 280C482 278 487 282 484 291Z"/><path class="aq-joint-tag__cbd" d="M468 315C465 324 470 328 476 326C482 328 487 324 484 315Z"/>'
    +'<path class="aq-joint-tag__seam" d="M476 291V315"/></g>';
   return o}
- return function(b,H){var C=b.cols||[],R=b.rows||[],Pt=b.parts||[];
+ return function(b,H){var C=b.cols||[],R=b.rows||[],Pt=b.parts||[],pl=b.seam==='plain';
   var parts=R.map(function(r,i){return PIN[Pt[i]]?Pt[i]:pick(str(r[0]))}),pins='',used={};
-  parts.forEach(function(p,i){var q=PIN[p].slice(),u=used[p]=(used[p]||0)+1;if(u>1)q=[q[0]+34*(u-1),q[1]];
+  parts.forEach(function(p,i){var q=(pl&&PINP[p]||PIN[p]).slice(),u=used[p]=(used[p]||0)+1;if(u>1)q=[q[0]+34*(u-1),q[1]];
    pins+='<g class="aq-joint-tag__pin" data-k="'+i+'"><circle cx="'+q[0]+'" cy="'+q[1]+'" r="15"/><text x="'+q[0]+'" y="'+q[1]+'" text-anchor="middle" dominant-baseline="central">'+(i<9?'0':'')+(i+1)+'</text></g>'});
-  var svg='<div class="aq-joint-tag__pipe" aria-hidden="true"><svg viewBox="0 0 1200 340" focusable="false">'+pipe()+pins+'</svg></div>';
+  var svg='<div class="aq-joint-tag__pipe" aria-hidden="true"><svg viewBox="0 0 1200 340" focusable="false">'+(pl?plain():pipe())+pins+'</svg></div>';
   var k=function(i){return C[i]?'<p class="aq-joint-tag__k">'+tx(C[i])+'</p>':''};
   var list='<ol class="aq-joint-tag__fields" role="list">'+R.map(function(r,i){
    return fli('<li class="aq-joint-tag__field" data-k="'+i+'">',b,i)+idx(i)
     +'<h3 class="aq-joint-tag__name">'+tcell(r[0])+'</h3>'
     +(r[1]!=null?'<div class="aq-joint-tag__proves">'+k(1).replace('__k"','__k aq-joint-tag__k--sr"')+'<p>'+tcell(r[1])+'</p></div>':'')
     +(r[2]!=null?'<div class="aq-joint-tag__rec">'+k(2)+'<p>'+tcell(r[2])+'</p></div>':'')+'</li>'}).join('')+'</ol>';
-  var tag='<div class="aq-joint-tag__tag" data-theme="light"><span class="aq-joint-tag__eye" aria-hidden="true"></span>'
+  var tag='<div class="aq-joint-tag__tag" data-theme="light" data-paper><span class="aq-joint-tag__eye" aria-hidden="true"></span>'
    +'<p class="aq-joint-tag__th" aria-hidden="true"><span>'+tx(C[0]||'')+'</span>'+(C[1]?'<span class="aq-joint-tag__lg">'+tx(C[1])+'</span>':'')+'<span>J-01</span></p>'+wFold(b,R.length,list,b.fold_noun||'fields')+'</div>';
-  return sec(H+'<div class="aq-joint-tag">'+svg+tag+'</div>','aq-joint-tag-sec')}
+  return sec(H+'<div class="aq-joint-tag'+(pl?' aq-joint-tag--plain':'')+'">'+svg+tag+'</div>','aq-joint-tag-sec')}
 })();
 /* JointTag: pointing at (or focusing into) a field lights its pin on the joint */
 (function(){function hl(ev,on){var f=ev.target.closest&&ev.target.closest('.aq-joint-tag__field');if(!f)return;var r=f.closest('.aq-joint-tag'),k=f.getAttribute('data-k');

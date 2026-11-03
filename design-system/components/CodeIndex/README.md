@@ -10,3 +10,14 @@ CodeIndex shows a short document set as an index in huge type: each document's f
 ## Motion
 
 Motion: one timeline per row as it comes into view: the code slides in from its own edge and decodes, then the number, name and text rise. Under 1.6 s each; nothing under reduced motion.
+
+## Pass 12 round C: compact by default
+
+- Every width: the code is a 48 px outline tab chip (`span.__code`, flow outline for key documents) at the left of the
+  title, with the status line under it. Wide: two columns filled down (`--rows` from the renderer, 4 + 3 for seven);
+  the renderer marks the row that ends column 1 `.is-colend` (it carries the column's bottom rule), and with a `fold`
+  the folded view has its own `--rows-f`, `.is-colend-f` and `.is-end-f` (last shown row) until opened; phones: one row
+  each. The number keeps `01`; its `/ CODE` part (`span.__nc`) shows only on the poster.
+- The pre-round-C poster (huge outline codes cropped by the page edge) is kept behind the look-only field
+  `"poster": true` → `.aq-code-index--poster` (looks are never deleted).
+- buying.5: 1,979 → 827 px at 1280.

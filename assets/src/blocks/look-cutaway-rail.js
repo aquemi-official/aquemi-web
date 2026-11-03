@@ -14,7 +14,11 @@
    Pass 12 phones (under 768 px): the 300 px sticky stage gives way to a 112 px strip (PhoneKit sticky figure, zoom 2)
    that pans to the first part of the card being read, with the active tag over it; the strip never covers that card
    (PhoneKit's reading line sits below it). Cards folded away carry no row key until the fold opens. 768 px and up
-   (the desktop rail) is unchanged. */
+   (the desktop rail) is unchanged.
+   Pass 12 round C: each card carries its row key on two markers, not on the card. The first sits a set distance above
+   the card's top (CSS), so the strip names a card once it fills the upper part of the reading window (about 40 % down
+   the view under the strip, not PhoneKit's 30 % line: the label lagged a card behind); the second sits on the card's
+   top, so the strip still lifts off with the last card at the right moment. */
 function crScene(){
  var tk=isoPart('tank',0,0,0,1.2,{id:'loop'}),pn=isoPart('panel',150,-30,0,1.15,{id:'ctl'});
  var o=tk.ports.out,y1=96,x2=230,z=o[2];
@@ -42,7 +46,9 @@ LOOKS['cutaway-rail']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[],
  var cards='<ol class="aq-cutaway-rail__cards" role="list">'+R.map(function(r,i){
   var parts=String(P[i]||'').trim(),name=String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||''),code=name.split(/;|\s\(|,\s/)[0];
   var cell=function(j,cls){var c=r[j];if(c==null||c==='')return '';return '<div class="aq-cutaway-rail__f aq-cutaway-rail__f--'+cls+'"><p class="aq-cutaway-rail__k">'+tx(C[j]||'')+'</p><p class="aq-cutaway-rail__v">'+(cls==='go'?tcell(c):tcell(c))+'</p></div>'};
-  return fli('<li class="aq-cutaway-rail__card"'+(b.fold&&i>=b.fold?'':' data-pk-row="'+i+'"')+' data-i="'+i+'" data-parts="'+e(parts)+'" data-code="'+e(code)+'" data-theme="light">',b,i)
+  var rk=b.fold&&i>=b.fold?'':' data-pk-row="'+i+'"';
+  return fli('<li class="aq-cutaway-rail__card" data-i="'+i+'" data-parts="'+e(parts)+'" data-code="'+e(code)+'" data-theme="light">',b,i)
+   +'<span class="aq-cutaway-rail__key" aria-hidden="true"'+rk+'></span><span class="aq-cutaway-rail__key aq-cutaway-rail__key--top" aria-hidden="true"'+rk+'></span>'
    +'<span class="aq-cutaway-rail__node" aria-hidden="true"></span>'
    +idx(i)+'<div class="aq-cutaway-rail__std"><h3 class="aq-cutaway-rail__name">'+tcell(r[0])+'</h3></div>'
    +cell(1,'how')+cell(2,'proof')+cell(3,'go')+'</li>'}).join('')+'</ol>';
@@ -53,7 +59,8 @@ LOOKS['cutaway-rail']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[],
  var pins=Object.keys(S.A).map(function(k){return '<span class="aq-cutaway-rail__pin" data-part="'+k+'"'+(first[k]?' data-pk-key="'+first[k].join(' ')+'"':'')+' style="left:'+S.A[k].left+';top:'+S.A[k].top+'"></span>'}).join('');
  var fig='<figure class="aq-cutaway-rail__fig" aria-hidden="true" data-pk-fig><div class="aq-cutaway-rail__draw" data-pk-pan>'+S.svg+pins+'<span class="aq-cutaway-rail__call"></span></div>'
   +'<p class="aq-cutaway-rail__tag">'+(b.tag?'<span class="aq-cutaway-rail__tag-k">'+tx(b.tag)+'</span> ':'')+'<span class="aq-cutaway-rail__tag-v"></span></p></figure>';
- return sec(H+'<div class="aq-cutaway-rail" data-pk-sticky data-pk-h="112" data-pk-zoom="2" data-pk-bp="767">'+fig+'<div class="aq-cutaway-rail__rail">'+wFold(b,R.length,cards,b.fold_noun||'standards')+'</div></div>','aq-band--navy aq-cutaway-rail-sec')};
+ /* the strip height is written once: PhoneKit reads data-pk-h, the cards' early row key reads --cr-strip (verify F10) */
+ var SH=112;return sec(H+'<div class="aq-cutaway-rail" data-pk-sticky data-pk-h="'+SH+'" data-pk-zoom="2" data-pk-bp="767" style="--cr-strip:'+SH+'px">'+fig+'<div class="aq-cutaway-rail__rail">'+wFold(b,R.length,cards,b.fold_noun||'standards')+'</div></div>','aq-band--navy aq-cutaway-rail-sec')};
 /* Active card: the one crossing 45 % of the viewport height (or under the pointer or focus) lights its parts */
 function crSet(w,card){if(!w||!card||w._crOn===card)return;w._crOn=card;
  [].forEach.call(w.querySelectorAll('.aq-cutaway-rail__card.is-on'),function(c){c.classList.remove('is-on')});card.classList.add('is-on');
@@ -72,7 +79,7 @@ if(typeof document!=='undefined'&&document.addEventListener){var crQ=0;
  addEventListener('scroll',crTick,{passive:true});addEventListener('resize',crTick);
  /* the fold: cards it shows become strip rows (a hidden card would read as already passed); closing takes them out again */
  document.addEventListener('click',function(ev){var bt=ev.target.closest&&ev.target.closest('.aq-cutaway-rail .aq-fold__btn');if(!bt)return;setTimeout(function(){
-  var f=bt.closest('.aq-fold'),open=f&&f.classList.contains('is-open');if(f)[].forEach.call(f.querySelectorAll('.aq-cutaway-rail__card.aq-fold-x'),function(c){if(open)c.setAttribute('data-pk-row',c.getAttribute('data-i'));else c.removeAttribute('data-pk-row')});
+  var f=bt.closest('.aq-fold'),open=f&&f.classList.contains('is-open');if(f)[].forEach.call(f.querySelectorAll('.aq-cutaway-rail__card.aq-fold-x'),function(c){[].forEach.call(c.querySelectorAll('.aq-cutaway-rail__key'),function(k){if(open)k.setAttribute('data-pk-row',c.getAttribute('data-i'));else k.removeAttribute('data-pk-row')})});
   crScan();if(window.AQpk)AQpk.scan()},0)});
  /* phones: PhoneKit's strip names the card on its reading line; the card, its parts, pins and tag follow */
  document.addEventListener('pk:change',function(ev){var w=ev.target;if(!w.classList||!w.classList.contains('aq-cutaway-rail'))return;

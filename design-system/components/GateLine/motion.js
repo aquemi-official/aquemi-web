@@ -1,5 +1,5 @@
 /* GateLine: the water runs the pipe step by step. Every gate starts shut (filled bowtie); as the water reaches a joint
-   the gate opens (fill clears, the handwheel turns) and the next run fills. At the gate after a hold step the water
+   the gate opens (fill clears, the diaphragm valve's bonnet lifts) and the next run fills. At the gate after a hold step the water
    waits: that step's hold stamp strikes, then the gate opens. The shutdown step's run
    stays dry: its dashed bore and label print while the water stands, and the water picks up again after it. Each
    step's number, name and line rise as its run fills. One timeline, once, about 4 s. Phones: the same per step as
@@ -16,7 +16,7 @@ AQmotion.fx('GateLine', function (root, m) {
     function gateOpen(tl, s, at) {
       var g = G(s, '.aq-gate-line__gate'); if (!g) return;
       tl.fromTo(G(g, '.aq-gate-line__vfill'), { fillOpacity: 1 }, { fillOpacity: 0, duration: 0.25, ease: 'power2.out', clearProps: 'fillOpacity' }, at);
-      tl.fromTo(G(g, '.aq-gate-line__vh'), { rotation: -90 }, { rotation: 0, duration: 0.3, ease: 'power2.inOut', clearProps: 'transform' }, at);
+      var bon = G(g, '.aq-gate-line__vh'); if (bon) tl.fromTo(bon, { y: 2 }, { y: 0, duration: 0.3, ease: 'power2.inOut', clearProps: 'transform' }, at);
     }
     function stepIn(tl, s, i, at) {
       var w = G(s, '.aq-gate-line__water'), dry = G(s, '.aq-gate-line__dry'), prev = steps[i - 1];

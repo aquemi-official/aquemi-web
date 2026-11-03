@@ -8,3 +8,5 @@ Look `strike-gaps` (`assets/src/blocks/look-strike-gaps.js`) on a `table` block 
 - Phones: each row stacks: struck gap, the requirement beside a short down arrow, the fix.
 
 Motion: row by row as they scroll in: the gap is set and its strike darkens through it, the arrow runs out, the fix is inserted word by word at its end (sentence-diff-motion: each word rises 12 px, 260 ms, cubic-bezier(.22,.72,.15,1)). Once per row, about 1.6 s. Hover dims the gap and turns the fix flow.
+
+Pass 12 C: the fold is phones only (from 861 px every row shows and the button is hidden, whatever the block's `fold`); the side note is 14/22 px mono at every width; requirement lines 14 px under 600 px.

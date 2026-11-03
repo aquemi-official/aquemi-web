@@ -26,6 +26,9 @@
 .aq-loop-dock__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-8) 0 var(--space-6); color: var(--on-limestone); text-decoration: none;
   border-left: 1px solid var(--on-limestone-muted); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-loop-dock__card.is-on .aq-loop-dock__body { border-left-color: var(--flow); }
+/* pass 12 C: a space-4 foot under each caption on desktop, so a closing placeholder chip does not sit on the edge
+   (phones keep their own padding, below) */
+.aq-loop-dock__body { padding-bottom: var(--space-4); }
 .aq-loop-dock__no { margin: 0; display: flex; align-items: center; justify-content: space-between; font: 400 24px/1 var(--font-mono); color: var(--on-limestone-muted); }
 .aq-loop-dock__card.is-on .aq-loop-dock__no span { color: var(--flow); }
 .aq-loop-dock__glyph.aq-spot { width: var(--space-6); height: var(--space-6); background-color: var(--on-limestone-muted); }

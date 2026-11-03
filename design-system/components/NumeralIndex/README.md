@@ -9,3 +9,12 @@ NumeralIndex sets a router table as a Swiss index of situations, each under a hu
 ## Motion
 
 Rows follow one another down the index: each rule draws from the left, the numeral rolls up out of its slot while its digits decode (ScrambleText), the situation and need rise in, the go-cell wipes open from the left. Once on scroll-in, under 4 s; nothing under reduced motion.
+
+## Pass 12 round C (wide)
+
+Above 860 px: numerals 64-96 px, rows on `space-6`, the section head at 40/44, what you need as one line with its
+column name over row 1 only, and the start cell as a 56 px row link (icon, page, arrow) with its column name over row
+1 only (both kept for screen readers on the other rows). Page icons are drawn on every row or on none. projects.1:
+1,511 → 970 px; ind-meddevice.0: 1,388 → 896 px.
+From 861 to 1,100 px the row keeps three columns (1 : 5 : 3) rather than stacking the start cell under the text
+(round C verify N4): at 900 px projects.1 is 1,065 px (was 1,385) and ind-meddevice.0 1,046 px (was 1,312).

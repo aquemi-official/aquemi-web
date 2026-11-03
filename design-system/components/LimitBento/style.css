@@ -1,7 +1,7 @@
 /* ---------- LimitBento: limits as a bento, one oversized numeral per tile, a navy water column through the middle
    (look "limit-bento"). Desktop: three columns, heading and the first tile left, the column through both rows in the
-   middle, the other tiles right. Tiles alternate surface-raised and limestone (limestone tiles carry data-theme="light"
-   so their tags and text keep contrast in the dark theme). ---------- */
+   middle, the other tiles right. Tiles alternate surface-raised and limestone (is-paper). In the dark theme the paper tiles take the raised
+   dark surface too (round C), so the cards read as one theme beside the navy column. ---------- */
 .aq-limit-bento {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr) minmax(0, 1fr);
   grid-auto-rows: minmax(0, auto); gap: var(--space-4);
@@ -16,7 +16,7 @@
   position: relative; display: flex; flex-direction: column; gap: var(--space-2); min-height: 0;
   padding: var(--space-6); background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line);
 }
-.aq-limit-bento__tile[data-theme="light"] { background: var(--limestone); color: var(--on-limestone); border-color: transparent; }
+.aq-limit-bento__tile.is-paper { background: var(--limestone); color: var(--on-limestone); border-color: transparent; }
 .aq-limit-bento__tile:nth-child(1) { grid-column: 1; grid-row: 2; }
 .aq-limit-bento__tile:nth-child(2) { grid-column: 3; grid-row: 1; }
 .aq-limit-bento__tile:nth-child(3) { grid-column: 3; grid-row: 2; }
@@ -31,13 +31,13 @@
 .aq-limit-bento__lvl { align-self: flex-start; margin: 0; padding: 0 var(--space-2); border: 1px solid currentColor; font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
 .aq-limit-bento__v { margin: var(--space-6) 0 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .aq-limit-bento__c { font: 300 48px/1 var(--font-mono); color: var(--flow); }
-.aq-limit-bento__tile[data-theme="light"] .aq-limit-bento__c { color: var(--navy); }
+.aq-limit-bento__tile.is-paper .aq-limit-bento__c { color: var(--navy); }
 .aq-limit-bento__n { font: 300 72px/1 var(--font-mono); letter-spacing: -0.04em; }
 .aq-limit-bento__u { font: 400 24px/1.2 var(--font-mono); }
 .aq-limit-bento__q { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
-.aq-limit-bento__tile[data-theme="light"] .aq-limit-bento__q { color: var(--on-limestone-muted); }
+.aq-limit-bento__tile.is-paper .aq-limit-bento__q { color: var(--on-limestone-muted); }
 .aq-limit-bento__m { margin: auto 0 0; padding-top: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
-.aq-limit-bento__tile[data-theme="light"] .aq-limit-bento__m { border-top-color: color-mix(in srgb, var(--on-limestone) 18%, transparent); }
+.aq-limit-bento__tile.is-paper .aq-limit-bento__m { border-top-color: color-mix(in srgb, var(--on-limestone) 18%, transparent); }
 .aq-limit-bento__m .aq-limit-gauges__mt { color: inherit; }
 .aq-limit-bento__tile .aq-limit-gauges__go { margin: 0; }
 
@@ -102,3 +102,15 @@
   /* pass 12: the column's own row is not repeated as a tile under it */
   .aq-limit-bento__tile.is-col { display: none; }
 }
+
+/* round C, dark theme: the paper tiles take the raised dark surface of the others (both dark scopes) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper { background: var(--surface-raised); color: var(--ink); border-color: var(--line); }
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper .aq-limit-bento__c { color: var(--flow); }
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper .aq-limit-bento__q { color: var(--ink-muted); }
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper .aq-limit-bento__m { border-top-color: var(--line); }
+}
+[data-theme="dark"] .aq-limit-bento__tile.is-paper { background: var(--surface-raised); color: var(--ink); border-color: var(--line); }
+[data-theme="dark"] .aq-limit-bento__tile.is-paper .aq-limit-bento__c { color: var(--flow); }
+[data-theme="dark"] .aq-limit-bento__tile.is-paper .aq-limit-bento__q { color: var(--ink-muted); }
+[data-theme="dark"] .aq-limit-bento__tile.is-paper .aq-limit-bento__m { border-top-color: var(--line); }

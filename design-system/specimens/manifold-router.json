@@ -480,7 +480,7 @@
    "page": "ind-process",
    "slot": 0,
    "h": "Start from your plant",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",
@@ -563,6 +563,96 @@
      ]
     ],
     "look": "manifold-router"
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 0,
+   "h": "Start from your plant",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "1f4eab0",
+   "hash": "fd7df56ddc",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "anchor": "start",
+    "h": "Start from your plant",
+    "cols": [
+     "Your plant",
+     "Where the water goes",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A distillery",
+      "Proofing water that brings spirit to bottling strength; ingredient water",
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "A craft brewery, cidery or soft drink maker",
+      "Ingredient water, adjusted to your recipe",
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "Cannabis extracts, edibles, beverages or topicals",
+      "Water that touches the product; ingredient water",
+      {
+       "t": "Food, beverage and cannabis",
+       "link": "ind-process#food"
+      }
+     ],
+     [
+      "A food company with a natural health product or supplement line",
+      "That line's water, under its own rules",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Electronics or precision parts",
+      "Final rinse and parts washers",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "A hydrogen electrolyser",
+      "Stack feed and make-up water",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "Water-based chemicals, coatings or adhesives",
+      "Water as a raw material; dilution",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ],
+     [
+      "A boiler or humidifiers",
+      "Make-up water to the equipment maker's specification",
+      {
+       "t": "Industrial and energy",
+       "link": "ind-process#industrial"
+      }
+     ]
+    ],
+    "look": "manifold-router",
+    "panel": "compact"
    }
   }
  ]

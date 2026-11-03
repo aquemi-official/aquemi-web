@@ -4,7 +4,7 @@
    lines and oblique ticks, a balloon with its row number). Under them the real table keeps its four columns, headed
    1 to 4 as drawing notes: part, like for like when, a change when, what follows a change. Choosing a row (pointing,
    focus, or its part button) draws that part on the sheet. Drawings, flat line art: an RO membrane element, a probe
-   with its transmitter, a program memory card, a gasket and a diaphragm, an EDI module, a UV lamp, a vent filter
+   with its transmitter, a program memory card, a gasket and a diaphragm, an EDI module, a UV lamp in its quartz sleeve (round C), a vent filter
    cartridge (matched from the part's name, or b.kit[i]); a part with no drawing gets a plain outline.
    Concept: research/pass9b/concepts/svc-service.4.png (dimensioned part drawing on a limestone sheet, part list boxed,
    title block), with the live table's four-column like-for-like logic restored.
@@ -14,12 +14,12 @@
    px, letters and balloon number 12 px as seen) and redrawn for the row on the reading line; rows stack with their
    column names; no title block. */
 var SS_ART={
- membrane:{b:[22,36,218,64],a:'<rect x="22" y="36" width="196" height="28"/><path d="M34 36v28M206 36v28M70 36v28M118 36v28M166 36v28"/><path class="k-t" d="M22 50h-10M218 50h10"/><circle class="k-t" cx="28" cy="50" r="3"/>'},
+ membrane:{b:[4,30,236,70],a:'<rect x="26" y="34" width="188" height="32" rx="2"/><path d="M26 34h10v32H26M204 34h10v32h-10"/><path class="k-t" d="M50 34l18 32M80 34l18 32M110 34l18 32M140 34l18 32M170 34l18 32"/><path d="M38 34v-4h8v4M38 66v4h8v-4"/><rect x="12" y="45" width="14" height="10"/><rect x="214" y="45" width="14" height="10"/><path class="k-a" d="M4 50h8M228 50h8"/><circle class="k-t" cx="19" cy="50" r="2.5"/><circle class="k-t" cx="221" cy="50" r="2.5"/>'},
  probe:{b:[14,40,180,92],a:'<rect x="30" y="40" width="58" height="20"/><path d="M88 46h70v8H88"/><path class="k-t" d="M158 48h22M158 52h22"/><path d="M30 50C14 50 14 78 40 78h38"/><rect x="78" y="70" width="40" height="22"/><path class="k-t" d="M84 76h28M84 81h20"/><circle class="k-a" cx="112" cy="86" r="2"/>'},
  card:{b:[70,26,170,86],a:'<path d="M70 26h84l16 16v44H70Z"/><path class="k-t" d="M154 26v16h16"/><path d="M82 86V70M92 86V70M102 86V70M112 86V70M122 86V70M132 86V70"/><rect class="k-a" x="86" y="38" width="44" height="18"/>'},
  seal:{b:[44,22,198,82],a:'<circle cx="74" cy="52" r="30"/><circle cx="74" cy="52" r="20"/><circle cx="168" cy="52" r="30"/><circle class="k-t" cx="168" cy="52" r="7"/><path class="k-t" d="M168 22v-6M168 82v6M138 52h-6M198 52h6"/><circle class="k-t" cx="150" cy="31" r="2"/><circle class="k-t" cx="186" cy="31" r="2"/><circle class="k-t" cx="150" cy="73" r="2"/><circle class="k-t" cx="186" cy="73" r="2"/>'},
  edi:{b:[36,14,204,78],a:'<rect x="40" y="26" width="16" height="52"/><rect x="184" y="26" width="16" height="52"/><rect x="56" y="32" width="128" height="40"/><path class="k-t" d="M64 32v40M72 32v40M80 32v40M88 32v40M96 32v40M104 32v40M112 32v40M120 32v40M128 32v40M136 32v40M144 32v40M152 32v40M160 32v40M168 32v40M176 32v40"/><path d="M36 30h168M36 74h168"/><rect class="k-a" x="104" y="14" width="32" height="12"/>'},
- lamp:{b:[18,42,222,58],a:'<rect x="30" y="42" width="180" height="16" rx="8"/><path class="k-t" d="M44 50h152"/><path d="M210 46h12M210 54h12M30 46h-12M30 54h-12"/><path class="k-a" d="M60 50h120"/>'},
+ lamp:{b:[14,38,226,62],a:'<rect x="26" y="38" width="188" height="24" rx="12"/><rect class="k-t" x="34" y="44" width="172" height="12" rx="6"/><path class="k-a" d="M48 50h144"/><rect x="14" y="44" width="12" height="12"/><path d="M214 46h12M214 54h12"/><path class="k-t" d="M30 42v16M210 42v16"/>'},
  cartridge:{b:[74,20,166,94],a:'<rect x="74" y="20" width="92" height="12"/><rect x="80" y="32" width="80" height="48"/><path class="k-t" d="M88 32v48M96 32v48M104 32v48M112 32v48M120 32v48M128 32v48M136 32v48M144 32v48M152 32v48"/><rect x="74" y="80" width="92" height="8"/><path d="M112 88v6h16v-6"/>'}};
 var SS_MATCH=[[/membrane/i,'membrane'],[/instrument|probe|sensor/i,'probe'],[/software|program/i,'card'],[/gasket|diaphragm|seal/i,'seal'],[/\bEDI\b|electrodeioni/i,'edi'],[/lamp/i,'lamp'],[/vent|cartridge/i,'cartridge']];
 function ssKind(name,kind){if(kind&&SS_ART[kind])return kind;var s=String(name&&name.t||name||'');kind='';SS_MATCH.some(function(m){if(m[0].test(s)){kind=m[1];return true}});return kind}
@@ -43,14 +43,15 @@ LOOKS['spare-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-spare-she
  var body=R.map(function(r,i){var no=(i<9?'0':'')+(i+1);
   /* a row whose answer holds a long word (16+ letters) stacks its two answers on phones, so the word is not split */
   var wide=[1,2].some(function(j){var c=r[j];return /[^\s\/-]{16,}/.test(String(c&&c.t||c||''))});
-  return '<tr class="'+K+'__row'+(i?'':' is-on')+(wide?' is-wide':'')+'" data-i="'+i+'" data-pk-row="'+i+'">'
-   +'<th scope="row"><button type="button" class="'+K+'__pick" data-i="'+i+'" aria-pressed="'+(i?'false':'true')+'"><span class="'+K+'__n" aria-hidden="true">'+no+'</span><span class="'+K+'__p">'+tcell(r[0])+'</span></button></th>'
+  return '<tr class="'+K+'__row'+(i?'':' is-on')+(wide?' is-wide':'')+'" data-i="'+i+'" data-pk-row="'+i+'" data-pk-item="'+i+'">'
+   +'<th scope="row"><button type="button" class="'+K+'__pick" data-i="'+i+'" aria-pressed="'+(i?'false':'true')+'" data-pk-desk><span class="'+K+'__n" aria-hidden="true">'+no+'</span><span class="'+K+'__p">'+tcell(r[0])+'</span></button>'
+   +'<button type="button" class="'+K+'__head" data-pk-head><span class="'+K+'__n" aria-hidden="true">'+no+'</span><span class="'+K+'__p">'+tcell(r[0])+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button></th>'
    +[1,2,3].map(function(j){return '<td><span class="'+K+'__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+tcell(r[j])+'</td>'}).join('')+'</tr>'}).join('');
  var tb='<div class="'+K+'__tb" aria-hidden="true"><span class="'+K+'__tbn">'+R.map(function(r,i){return '<span class="'+K+'__tbp'+(i?'':' is-on')+'" data-i="'+i+'">'+tcell(r[0])+'</span>'}).join('')+'</span><span class="'+K+'__tbs">Part <span class="'+K+'__tbi">01</span> / '+tot+'</span></div>';
  /* every part shows on every width: each has its drawing and balloon (pass 12, S7: no fold; fold / fold_noun not
     read). Phones: PhoneKit holds the drawing as a 180 px strip and the part on the reading line is drawn. */
- var sheet='<div class="'+K+'" data-theme="light" data-pk-sticky data-pk-bp="860" data-pk-h="180"><div class="'+K+'__top">'+H+'<figure class="'+K+'__fig" data-pk-fig>'+svg+'</figure></div>'
-  +'<table class="'+K+'__table">'+head+'<tbody>'+body+'</tbody></table>'+tb+'</div>';
+ var sheet='<div class="'+K+'" data-theme="light" data-paper data-pk-sticky data-pk-bp="860" data-pk-h="180"><div class="'+K+'__top">'+H+'<figure class="'+K+'__fig" data-pk-fig>'+svg+'</figure></div>'
+  +'<table class="'+K+'__table">'+head+'<tbody data-pk-picker="accordion" data-pk-bp="600" data-pk-open="0">'+body+'</tbody></table>'+tb+'</div>';
  return sec(sheet,K+'-sec')};
 /* Choosing a row (pointer, focus, or its button) draws that part on the sheet */
 function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(String(i)===cur)return;r.setAttribute('data-on',i);
@@ -58,7 +59,10 @@ function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(Stri
  var t=r.querySelector('.aq-spare-sheet__tbi');if(t)t.textContent=(i<9?'0':'')+(+i+1);
  if(window.AQspareDraw)AQspareDraw(r,i)}
 window.ssPick=ssPick;
-/* phones (PhoneKit on): the part on the reading line is drawn on the strip */
-document.addEventListener('pk:change',function(ev){var r=ev.target;if(!r.classList||!r.classList.contains('aq-spare-sheet'))return;ssPick(r,ev.detail&&ev.detail.on?ev.detail.index:0)});
-(function(){function go(ev){var s=ev.target.closest&&ev.target.closest('.aq-spare-sheet__row');if(!s)return;ssPick(s.closest('.aq-spare-sheet'),+s.getAttribute('data-i'))}
+/* phones (PhoneKit on): the part on the reading line is drawn on the strip; at 600 px and under (round C) the parts are
+   an accordion (one open) and the strip draws the open part instead of the one on the reading line */
+document.addEventListener('pk:change',function(ev){var t=ev.target,d=ev.detail||{};if(!t.classList)return;
+ if(t.classList.contains('aq-spare-sheet')){var a=t.querySelector('tbody[data-pk-on]');if(a)return;ssPick(t,d.on?d.index:0);return}
+ if(t.tagName==='TBODY'&&t.closest('.aq-spare-sheet')){var r=t.closest('.aq-spare-sheet');if(!d.on)return;if(d.index>=0)ssPick(r,d.index)}});
+(function(){function go(ev){var s=ev.target.closest&&ev.target.closest('.aq-spare-sheet__row');if(!s)return;if(s.closest('tbody[data-pk-on]'))return;ssPick(s.closest('.aq-spare-sheet'),+s.getAttribute('data-i'))}
  document.addEventListener('mouseover',go);document.addEventListener('focusin',go);document.addEventListener('click',go)})();

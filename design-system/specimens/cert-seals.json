@@ -4,7 +4,7 @@
  "type": "grid",
  "fields": "h, intro, items [{t, d, tag, icon, link}].",
  "best_for": "CertSeals sets certification status as a Swiss row of certificate tiles: a seal (ring of ticks round the item's line icon), the standard or mark it is held to set large and light, what it covers and its status.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "cmp-quality",
@@ -33,6 +33,58 @@
       "tag": "[welder qualification standard for thermoplastics]",
       "link": "svc-fabrication",
       "icon": "weld"
+     },
+     {
+      "t": "Pressure equipment",
+      "d": "[pressure vessel certificate holder or certified vessel partner]",
+      "tag": "CSA B51",
+      "link": "compliance#engineering",
+      "icon": "tank"
+     },
+     {
+      "t": "Control panels",
+      "d": "[panel certification mark held, or field evaluation used]",
+      "tag": "[panel standard]",
+      "link": "compliance#engineering",
+      "icon": "monitor"
+     }
+    ],
+    "look": "cert-seals"
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 1,
+   "h": "Certification status",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "1f4eab0",
+   "hash": "1914a05c86",
+   "block": {
+    "type": "grid",
+    "nav": "Certification",
+    "anchor": "certification",
+    "h": "Certification status",
+    "items": [
+     {
+      "t": "Quality system",
+      "d": "[ISO 9001 status, registrar and expiry]",
+      "tag": "ISO 9001",
+      "icon": "stamp"
+     },
+     {
+      "t": "Device quality system",
+      "d": "[ISO 13485 status, registrar and expiry]",
+      "tag": "ISO 13485",
+      "icon": "stamp"
+     },
+     {
+      "t": "PP joining",
+      "d": "[thermoplastic welder qualification status and expiry]",
+      "tag": "[welder qualification standard for thermoplastics]",
+      "link": "svc-fabrication",
+      "icon": "loop"
      },
      {
       "t": "Pressure equipment",

@@ -17,3 +17,8 @@ Pass 9b (concept `research/pass9b/concepts/sys-monitoring.0.png`): the section i
 Phones (pass 12, audit S10): the leaders are gone, so each plate carries its stage number as a tag on its free corner (`g.__tag`, svg units 15 r / 18 type, about 13 px at 343 px; the key plate's tag inverts), and the list runs top plate first (`column-reverse`), so list and drawing read in the same order (05 at the top, 01 at the bottom). Pointing at a row lights its plate and tag. The DMZ label is set at 14.5 units (about 12 px). Desktop unchanged.
 
 Verify fixes (pass 12 V4): at 600-860 px the figure is capped at 460 px and centred, so the stage tags stay about 18 px and the drawing about 650 px tall (it was about 1,150).
+
+Pass 12 C: from 861 px the sheet's foot is `space-16 + space-12 + space-2`, which leaves 68 px under the 01 label that hangs below the drawing at 1280.
+
+**Dark (pass 12 round C, RC1).** The drawing sheet carries `data-paper`, so in dark it is the dimmed paper
+(`--paper-dim`) instead of a full-bright limestone slab on the navy band. Light mode is unchanged.

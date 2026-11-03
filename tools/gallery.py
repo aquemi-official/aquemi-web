@@ -49,7 +49,9 @@ GEMINI_USE = {
     # pass 12 build B (2026-11-03): concept queue for weak sections and generic heroes (221, 226, 231: superseded takes)
     '217': 'LimitFolders', '218': 'ScenePlates', '219': 'IndustryDrops', '220': 'LimitPlan', '222': 'HeroScene',
     '223': 'GhostSkid', '224': 'SkidSheet', '225': 'HeroScene', '227': 'WasherZones', '228': 'RoomLimit',
-    '229': 'HeroScene', '230': 'TankGa', '232': 'ConfigCards', '233': 'HeroScene'}
+    '229': 'HeroScene', '230': 'TankGa', '232': 'ConfigCards', '233': 'HeroScene',
+    # pass 12 build C: compliance hero, drawn as the compliance-matrix HeroScene
+    '234': 'HeroScene'}
 GEMINI_REFERENCE = {'58'}
 RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
 # Equipment drawings redrawn on 2026-10-31 to match the offer (polypropylene PW package: no stainless piping, no sterile

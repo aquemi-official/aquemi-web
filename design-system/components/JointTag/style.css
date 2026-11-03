@@ -88,3 +88,50 @@
   .aq-fold:not(.is-open) .aq-joint-tag__field.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-joint-tag__fields) > .aq-fold__btn { display: flex; }
 }
+
+/* pass 12 round C, seam "plain" (method-neutral, FD-18): one continuous length; the joint is a hairline girth line,
+   bowed a little so it reads round the pipe, with the stencilled joint number beside it. */
+.aq-joint-tag--plain .aq-joint-tag__girth { fill: none; stroke: var(--on-limestone); stroke-width: 1.5; }
+
+/* pass 12 round C phone (audit S7: never fold a field a pin points at): every field shows, each a compact row, the
+   number beside the name and what it proves and the record under the name; the tag's legend names the proves column
+   once, so the per-field label goes back to screen readers only. */
+@container (max-width: 860px) {
+  .aq-fold:not(.is-open) .aq-joint-tag__field.aq-fold-x { display: grid; }
+  .aq-fold:has(> .aq-joint-tag__fields) > .aq-fold__btn { display: none; }
+  .aq-joint-tag__th span:last-child { white-space: nowrap; }
+  .aq-joint-tag__field, .aq-fold:not(.is-open) .aq-joint-tag__field.aq-fold-x {
+    display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: 0; row-gap: var(--space-1); padding: var(--space-3) var(--space-4) var(--space-4) var(--space-3);
+  }
+  .aq-joint-tag__field > .aq-index { grid-column: 1; grid-row: 1; align-self: baseline; margin: 0; }
+  .aq-joint-tag__name { grid-column: 2; grid-row: 1; }
+  .aq-joint-tag__proves, .aq-joint-tag__rec { grid-column: 2; }
+  .aq-joint-tag__k--sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-joint-tag__rec { margin-top: var(--space-2); padding-top: 0; }
+  .aq-joint-tag__rec .aq-joint-tag__k { margin-bottom: 0; }
+  .aq-joint-tag__proves p { line-height: 21px; }
+  .aq-joint-tag__tag { padding-bottom: var(--space-4); }
+}
+
+/* pass 12 round C fix round: the stencilled joint number is the drawing's main mark, so on phones (drawing at about
+   0.54 scale) it is drawn 1.3 x (about 13 px); the plain seam's number pin sits higher to clear it. */
+@container (max-width: 600px) {
+  .aq-joint-tag--plain .aq-joint-tag__sten { transform: scale(1.3); transform-box: view-box; transform-origin: 810px 119px; }
+}
+/* tablets (601-860): a gentler crop (140 %, about 0.86 scale), smaller pins and the fields two to a row */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-joint-tag__pipe { width: 140%; margin: 0 0 0 -30%; }
+  .aq-joint-tag__eye { left: 54.47%; }
+  .aq-joint-tag__pin circle { r: 18px; }
+  .aq-joint-tag__pin text { font-size: 15px; }
+  .aq-joint-tag__fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-joint-tag__field:nth-child(-n+2) { border-top: 1px solid var(--line); }
+  .aq-joint-tag__field, .aq-fold:not(.is-open) .aq-joint-tag__field.aq-fold-x { align-content: start; }
+}
+/* dark: the pins and cut marks off the pipe sit on the dark page, so the disc ring and the marks take light ink */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-joint-tag__pin circle { stroke: var(--on-navy-muted); }
+  :root:not([data-theme="light"]) .aq-joint-tag__cutm { stroke: var(--ink-muted); }
+}
+:root[data-theme="dark"] .aq-joint-tag__pin circle { stroke: var(--on-navy-muted); }
+:root[data-theme="dark"] .aq-joint-tag__cutm { stroke: var(--ink-muted); }

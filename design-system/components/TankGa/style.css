@@ -23,6 +23,11 @@
   background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em;
   transition: background-color 180ms ease, transform 180ms ease; }
 .aq-tank-ga__tag.is-on { background: var(--flow); color: var(--on-action); transform: scale(1.12); }
+/* Pass 12 C: the GA-sheet tag shared with SkidSheet (same declarations in SkidSheet/style.css): navy with on-navy
+   numerals, flow with on-action when lit; in the dark theme a 1 px on-navy-muted outline keeps the navy tag off the
+   dark sheet. */
+:root[data-theme="dark"] .aq-tank-ga__tag { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-tank-ga__tag { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; } }
 
 /* The key: one ruled row per tag */
 .aq-tank-ga__rows { grid-column: 2; grid-row: 1 / span 2; list-style: none; margin: 0; padding: 0 0 var(--space-8); border-top: 1px solid var(--line-strong); align-self: start; }

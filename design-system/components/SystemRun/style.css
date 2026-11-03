@@ -91,6 +91,12 @@
   .aq-system-run__pend--in::before { top: 50%; bottom: 0; border-top: 1px solid var(--on-navy-muted); }
   .aq-system-run__pend--out::before { top: 0; height: 50%; border-bottom: 1px solid var(--on-navy-muted); }
 }
+/* Phones (pass 12 C): each vignette capped at 248 px wide (the 300 px the audit named is the column width at 375,
+   so it changed nothing) and a space-4 foot under each stage; the tee still lands on the drawing's inlet */
+@container (max-width: 600px) {
+  .aq-system-run__mini-wrap { max-width: 248px; }
+  .aq-system-run__stage { padding-bottom: var(--space-4); }
+}
 /* Tablets (600-860 px): each system's drawing on the left beside its text, so the column has no empty navy beside
    every drawing (the tee still lands on the drawing's inlet) */
 @container (min-width: 600px) and (max-width: 860px) {

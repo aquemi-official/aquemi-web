@@ -14,3 +14,4 @@ Sheet, then the parts back to front, the pipes draw and the water runs the route
 ## Phones (pass 12)
 
 Under 1100 px (no leaders) each numbered marker on the drawing is a target (44 px hit box): tapping it opens its decision (the fold opens if that decision is folded away), lights the decision and its part, scrolls the decision into view and focuses it. Under 860 px the decision's number sits inline left of its title and each link is a 44 px row. Desktop is unchanged.
+- Leaders (pass 12 C): a diagonal leader that would pass another marker or cut through another part's closed shapes runs square instead: 16 px out from its text, down under every part between the text and the marker, across, then up into the marker from below. So on ind-pharma 05 no longer cuts through the 04 train, the feed vessel, or along the dashed feed line.

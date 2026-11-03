@@ -16,19 +16,18 @@ var P='aq-config-cards'+'__';
 function ccPack(){var sk=isoPart('skid',0,0,0,1,{w:72,d:36}),ro=isoPart('ro',4,3,9,0.56,{id:'pk'});return {svg:sk+''+ro,out:ro.ports.out}}
 function ccRun(pts,to,o){o=o||{};return isoPipe(pts,{r:1.7,bend:4.5,caps:o.caps==null?false:o.caps,to:to,flow:o.flow})}
 /* custom pieces drawn from the kit's builder (same primitives and classes as IsoKit parts) */
-function ccBowl(x,y,id){var b=isoB(x,y,0,1);[[-10,-10],[10,-10],[-10,10]].forEach(function(q){b.leg(q[0],q[1],0,20,1.8)});
- b.vessel(0,0,20,15,12,0,8);b.band(0,0,26,'z',15);b.cyl(0,0,32,'z',3,5.5);b.cyl(0,0,35,'z',9,3.6);b.leg(10,10,0,20,1.8);
- b.port.in=[-6,0,32];b.port.top=[0,0,44];b.port.base=[0,0,0];return b.done('bowl',{id:id})}
-function ccVat(x,y,id){var b=isoB(x,y,0,1);[[-13,-13],[13,-13],[-13,13]].forEach(function(q){b.leg(q[0],q[1],0,14,2)});
- b.vessel(0,0,14,20,30,7,9);b.band(0,0,29,'z',20);b.noz(-7,6,51,'z',4,2.2);b.cyl(6,-5,50,'z',4,4);b.leg(13,13,0,14,2);
- b.noz(19,0,18,'x',6,2);b.port.in=[-7,6,55];b.port.top=[0,0,58];b.port.base=[0,0,0];return b.done('vat',{id:id})}
-function ccWasher(x,y,id){var b=isoB(x,y,0,1),W=34,D=30,H=42;b.bx(0,0,0,W,D,H);b.rect('y',-W/2+3,3,W/2-3,H-4,D/2);
- b.rect('y',-W/2+5,5,W/2-5,H-11,D/2,'aq-iso__eq aq-iso__eq--glass');[16,27].forEach(function(z){b.line([-W/2+7,D/2,z],[W/2-7,D/2,z],'aq-iso__thin')});
- b.rect('y',-W/2+5,H-8,W/2-5,H-5,D/2);b.rect('z',-W/2+4,-D/2+4,W/2-4,D/2-4,H);
- b.port.in=[-6,-4,H];b.port.top=[0,0,H];b.port.base=[0,0,0];return b.done('washer',{id:id})}
-function ccBatch(x,y,id){var b=isoB(x,y,0,1);[[-12,-12],[12,-12],[-12,12]].forEach(function(q){b.leg(q[0],q[1],0,12,1.8)});
- b.vessel(0,0,12,17,24,0,10);b.band(0,0,24,'z',17);b.bx(0,0,36,10,10,7);b.cyl(0,0,43,'z',8,3.2);b.leg(12,12,0,12,1.8);
- b.noz(-9,6,36,'z',4,1.8);b.port.in=[-9,6,40];b.port.top=[0,0,51];b.port.base=[0,0,0];return b.done('batch',{id:id})}
+/* customer vessels as flat-bottom PP vessels on a plinth (weld bands, nozzle stubs; no legs or dished heads), kept lower and squatter than the storage tank so they read as the customer's machines */
+function ccBowl(x,y,id){var b=isoB(x,y,0,1);b.cyl(0,0,0,'z',4,18.2);b.vessel(0,0,4,17,14,0,0);b.band(0,0,11,'z',17);
+ b.cyl(0,0,18,'z',3,5.5);b.cyl(0,0,21,'z',9,3.6);
+ b.port.in=[-6,0,18];b.port.top=[0,0,30];b.port.base=[0,0,0];return b.done('bowl',{id:id})}
+function ccVat(x,y,id){var b=isoB(x,y,0,1);b.cyl(0,0,0,'z',4,21.4);b.vessel(0,0,4,20,30,0,0);b.band(0,0,19,'z',20);
+ b.stub(-7,6,33.6,'z',7.4,2.2);b.cyl(6,-5,33.6,'z',4.4,4);
+ b.stub(19,0,14,'x',6,2);b.port.in=[-7,6,41];b.port.top=[0,0,44];b.port.base=[0,0,0];return b.done('vat',{id:id})}
+/* the washer is the kit's washer part */
+function ccWasher(x,y,id){return isoPart('washer',x,y,0,1,{id:id,w:34,d:30,h:42})}
+function ccBatch(x,y,id){var b=isoB(x,y,0,1);b.cyl(0,0,0,'z',4,18.2);b.vessel(0,0,4,17,32,0,0);[12,20,28].forEach(function(z){b.band(0,0,z,'z',17)});
+ b.bx(0,0,36,10,10,7);b.cyl(0,0,43,'z',8,3.2);
+ b.stub(-9,6,35.6,'z',4.4,1.8);b.port.in=[-9,6,40];b.port.top=[0,0,51];b.port.base=[0,0,0];return b.done('batch',{id:id})}
 function ccFiller(x,y,id){var b=isoB(x,y,0,1),W=34,D=18;b.bx(0,0,0,W,D,20);b.rect('y',-W/2+3,3,W/2-3,16,D/2);
  b.bx(0,0,20,W,4,2);[-10,0,10].forEach(function(u){b.cyl(u,0,10,'z',10,1.4);b.bx(u,5,20,5,8,6,'aq-iso__eq aq-iso__eq--alt')});
  b.cyl(0,-2,22,'z',10,2.2);b.port.in=[0,-2,32];b.port.top=[0,0,32];b.port.base=[0,0,0];return b.done('filler',{id:id})}
@@ -71,13 +70,13 @@ function ccLines(d){return String(d||'').replace(/\.\s+(?=[A-Z\[])/g,'.\u0001').
 LOOKS['config-cards']=function(b,H){H=String(H).replace(/ · /g,'&nbsp;· ');var I=b.items||[],n=I.length,lab=b.spec_labels||['Use','System','Checks'];
  var cards=I.map(function(it,i){var labs=it.spec_labels||lab,k=it.scene||SCENE[it.link]||'osd',ls=ccLines(it.d),cap='',rest=[],no=(i<9?'0':'')+(i+1),lk=it.link&&wp(it.link);
   ls.forEach(function(s){if(!cap&&/^\[[^\]]*capacity[^\]]*\]\.?$/i.test(s))cap=s.replace(/\.$/,'');else rest.push(s)});
-  var t=lk?'<a class="'+P+'a" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
+  var t=lk?'<a class="'+P+'a" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'<span class="'+P+'go" aria-hidden="true"></span></a>':tx(it.t);
   return '<li class="'+P+'card" data-k="'+i+'" data-scene="'+e(k)+'">'
    +'<div class="'+P+'fig" aria-hidden="true">'+ccSvg(k)+'<span class="'+P+'no">'+no+'</span></div>'
    +'<div class="'+P+'body"><h3 class="'+P+'t">'+t+'</h3>'
    +((cap||it.tag)?'<p class="'+P+'meta">'+(cap?'<span class="'+P+'cap">'+tx(cap)+'</span>':'')+(it.tag?'<span class="'+P+'tag">'+tx(it.tag)+'</span>':'')+'</p>':'')
    +(rest.length?'<dl class="'+P+'spec">'+rest.map(function(s,j){return '<div class="'+P+'row">'+(labs[j]?'<dt>'+tx(labs[j])+'</dt>':'<dt aria-hidden="true"></dt>')+'<dd>'+tx(s)+'</dd></div>'}).join('')+'</dl>':'')
-   +(lk?'<span class="'+P+'go" aria-hidden="true"></span>':'')+'</div></li>'}).join('');
+   +'</div></li>'}).join('');
  var ctl='<div class="'+P+'ctl"><span class="'+P+'hint" aria-hidden="true">Swipe</span><span class="'+P+'count" aria-live="polite"><span class="'+P+'at">01</span> / '+(n<10?'0':'')+n+'</span>'
   +'<button type="button" class="'+P+'btn '+P+'prev" aria-label="Previous configuration" disabled></button><button type="button" class="'+P+'btn '+P+'next" aria-label="Next configuration"></button>'
   +'<button type="button" class="'+P+'all" aria-pressed="false">Show all '+n+'</button></div>';
