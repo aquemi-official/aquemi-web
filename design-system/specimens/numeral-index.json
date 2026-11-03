@@ -74,9 +74,9 @@
    "page": "ind-meddevice",
    "slot": 0,
    "h": "Start from your situation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "853c9da91c",
    "block": {
@@ -128,6 +128,70 @@
       {
        "t": "Your first PW system",
        "link": "industries#first-system"
+      }
+     ]
+    ],
+    "look": "numeral-index"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "fcba09eb19",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "Endotoxin or bioburden drifting at the washer inlet",
+      "Your rinse water limit at risk; first, assess loop, sample point and trends",
+      {
+       "t": "Out-of-trend results",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "Bioburden rising, a dose audit at risk",
+      "Rinse water bioburden adds to device bioburden (ISO 11737-1, ISO 11137-2); first, assess the supply",
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "A new device or line",
+      "Rinse water limits worked back from your device limits",
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "A supplier questionnaire or audit due",
+      "Our quality system status, audit access and quality agreement",
+      {
+       "t": "Supplier quality",
+       "link": "ind-meddevice#supplier-quality"
+      }
+     ],
+     [
+      "A first PW system for a small plant",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "first-system"
       }
      ]
     ],

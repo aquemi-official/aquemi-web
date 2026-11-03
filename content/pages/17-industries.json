@@ -7,13 +7,13 @@
  "path": "/industries/",
  "eyebrow": "INDUSTRIES · USP · PH. EUR.",
  "headline": "Your product sets the grade",
- "lead": "One Purified Water (PW) package in polypropylene, with polyvinyl chloride (PVC) pretreatment. No Water for Injection, pure steam or stainless steel systems. PW limits are the same in every industry.",
+ "lead": "For makers of drugs, natural health products and medical devices. One Purified Water (PW) package in polypropylene, with polyvinyl chloride (PVC) pretreatment. No Water for Injection, pure steam or stainless steel systems.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec",
  "secondary_cta": {
   "label": "Plan your first PW system",
-  "link": "industries#first-system"
+  "link": "first-system"
  },
  "index": [
   "ind-pharma",
@@ -75,6 +75,17 @@
      {
       "t": "Pharmaceutical: natural health products",
       "link": "ind-pharma#nhp"
+     }
+    ],
+    [
+     "A first PW system, no specification yet",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Your first PW system",
+      "link": "first-system"
      }
     ],
     [
@@ -181,40 +192,19 @@
      ]
     },
     {
-     "t": "What it covers and costs",
-     "d": "Incoming water to every outlet, design to qualification; budget ranges by configuration.",
-     "link": "systems#budget",
-     "span": [
-      "Incoming water",
-      "Every outlet"
-     ],
+     "t": "Your first system, in plain terms",
+     "d": "Whether a packaged system fits, what your site needs, what your team does each week and running cost per month.",
+     "link": "first-system",
+     "panel": true,
      "list": [
-      "Design to qualification",
-      "Budget ranges by configuration"
+      "Whether a packaged system fits",
+      "What your site needs",
+      "What your team does each week",
+      "Running cost per month"
      ]
-    },
-    {
-     "t": "Running cost",
-     "d": "Service plan, consumables, energy and water to drain.",
-     "link": "svc-service#running-cost",
-     "list": [
-      "Service plan",
-      "Consumables",
-      "Energy",
-      "Water to drain"
-     ]
-    },
-    {
-     "t": "Your team’s first year",
-     "d": "Staff time: [staff hours in year one: sampling, logs, sanitization]. Drug lines: first use after at least 2 weeks’ daily sampling and quality unit approval.",
-     "link": "svc-cq"
-    },
-    {
-     "t": "Who you work with",
-     "d": "New Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
-     "link": "about#people"
     }
-   ]
+   ],
+   "intro": "It fits when you need Purified Water at [minimum–maximum capacity, L/h] per skid. It does not fit Water for Injection, steam or a hot-held loop."
   },
   {
    "type": "options",
@@ -288,13 +278,16 @@
   "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
   "One scope sentence per adjacent use (FD-25, DR-002 rule 6), opening that use's row and in the same words on ind-meddevice and about: [hospital water scope] (for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor), [lab water scope], [industrial water scope]",
   "Laboratory Type I water: [whether Aquemi integrates third-party polishers] (DR-002 rule 5)",
-  "Staff time in year one for sampling, logs and sanitization ([staff hours in year one: sampling, logs, sanitization], first-system path); FD-52 (DR-015). At launch, if FD-52 is unset, the item opens with the drug-lines sentence and the staff-time clause goes",
   "WFI wording (FAQ, sterile row): Aquemi supplies PW only (MISSION). PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it until the owner confirms",
   "References per segment, or 'none yet' (FD-41): no reference call or case block here until a client agrees in writing (DR-004, DR-016); link projects per industry once a case study exists (FD-42)",
-  "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002; router and grade table), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005 rule 1), svc-service#running-cost (DR-005 rule 6; the path's running-cost row), industries#faq (the cosmetics grade row lands on the cosmetics answer, DR-023). Until a block carries its anchor, the link opens that page at the top",
+  "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002; router and grade table), svc-upgrades#observation (the water observation block, DR-015), first-system (hero secondary, router row 5, #first-system item 2), ind-pharma#grades (#first-system item 1, the grade facts' home), industries#faq (the cosmetics grade row lands on the cosmetics answer, DR-023). Until a block carries its anchor, the link opens that page at the top",
   "Device inspector cell: Health Canada requires an ISO 13485 certificate from an MDSAP audit for Class II to IV licences (IMD-70; IMD-22, IMD-28). Keep the cell word for word with ind-meddevice's auditor table",
   "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if your specification asks' and links sys-pw, the same wording as ind-cdmo's row (DR-011 rule 3)",
   "Cosmetics (DR-023): row and FAQ only, no page, tile or router row until FD-38 confirms personal-care makers with drug or natural health product lines as a launch segment; no recall statistics or microbial fear copy on the site. The FAQ's natural health products line is unlinked: the FAQ allows one link, used for intent I10; the grade row and router row link ind-pharma#nhp (departure from DR-023 rule 3's 'one line + link')",
-  "Adjacent uses (#adjacent) render as a plain options list while hospital, lab and industrial scope is open (DR-018; FD-25): the market-callouts look drew one PW package serving each use, which DR-002 rule 4 cut; its specimen stays in the section library for reuse once FD-25 confirms a shared scope"
+  "Adjacent uses (#adjacent) render as a plain options list while hospital, lab and industrial scope is open (DR-018; FD-25): the market-callouts look drew one PW package serving each use, which DR-002 rule 4 cut; its specimen stays in the section library for reuse once FD-25 confirms a shared scope",
+  "Pass 11 (SITE-PLAN, DR-015 amended): #first-system is now a pointer to the first-system page, look and anchor kept for old links. Item 1 keeps the grade facts and links their home, ind-pharma#grades (DR-009); item 2 links first-system. Cost, running cost, first-year staff time ([staff hours in year one: sampling, logs, sanitization], FD-52), first use after 2 weeks and the people moved to first-system (#cost, #site, FAQ) and svc-cq",
+  "First-system intro is phrasebook change 19 (L-11-15, L-03-19, PB-03.25, DR-021), with sys-pw's placeholder name [minimum–maximum capacity, L/h] per skid in place of the phrasebook's draft name (DR-011 rule 2: one range on every page). Unfilled at launch, the first sentence goes and the 'does not fit' sentence stays",
+  "Router row 5 \"A first PW system, no specification yet\" and the hero secondary link first-system (desk Q1: first system from home and industries; structure-and-sitemap § 4.5 entry links)",
+  "Pass 11 lead (desk Q2; structure-and-sitemap § 3.1 hub hero: what, for whom, where it stops): the lead names who the package is for first; the DR-021 exclusion stays word for word and last. 'PW limits are the same in every industry' was cut: the grade table's 'Limit that applies' column carries it. #first-system item 2 sits on navy (panel, a look-only field) so the pointer reads as the band's purpose"
  ]
 }

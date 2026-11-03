@@ -71,6 +71,83 @@
     "fold_noun": "auditors",
     "look": "audit-manifold"
    }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 5,
+   "h": "What you can see, and when",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "536fbda543",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Access",
+    "anchor": "access",
+    "h": "What you can see, and when",
+    "intro": "Each part of our qualification pack, and who can see it.",
+    "cols": [
+     "Item",
+     "Who can see it",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Certification status",
+      "Anyone, on this page",
+      {
+       "t": "See certification status",
+       "link": "cmp-quality#certification"
+      }
+     ],
+     [
+      "Procedure list and organization chart",
+      "In the questionnaire pack, from [quality system ready for audit, date]",
+      {
+       "t": "Request the pack",
+       "link": "cmp-quality#audit",
+       "intent": "Quality questionnaire pack"
+      }
+     ],
+     [
+      "Specimen records: nonconformance, CAPA, change request",
+      "In the questionnaire pack, as Aquemi-written specimens",
+      {
+       "t": "Request the pack",
+       "link": "cmp-quality#audit",
+       "intent": "Quality questionnaire pack"
+      }
+     ],
+     [
+      "Quality manual",
+      "[quality manual: openly or under NDA]",
+      {
+       "t": "Non-disclosure agreement (NDA) terms",
+       "link": "buying#terms"
+      }
+     ],
+     [
+      "Critical supplier names",
+      "[critical supplier names: openly or under NDA]",
+      {
+       "t": "See supplier requirements",
+       "link": "cmp-quality#suppliers"
+      }
+     ],
+     [
+      "Live records and the shop",
+      "At audit, from [quality system ready for audit, date]",
+      {
+       "t": "Request an audit",
+       "link": "cmp-quality#audit",
+       "intent": "On-site supplier audit"
+      }
+     ]
+    ],
+    "look": "audit-manifold"
+   }
   }
  ]
 }

@@ -4,7 +4,7 @@
  "type": "steps",
  "fields": "(a steps block with holds): h, items [{t, d, hold, link}], ground, lane (optional: the water line's label, a drawing label, aria-hidden). A link makes the step's name the link.",
  "best_for": "CutoverSchedule sets how an upgrade runs as a schedule: each step a row with its bar on one shared, not-to-scale timeline, a hold diamond where someone signs, and your system's water line above, broken only at the step that names a planned shutdown.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "svc-upgrades",
@@ -45,6 +45,74 @@
      }
     ],
     "lane": "Your system"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 0,
+   "h": "Stages, what each leaves, and who signs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "34b41a08d0",
+   "block": {
+    "type": "steps",
+    "anchor": "stages",
+    "nav": "Stages",
+    "h": "Stages, what each leaves, and who signs",
+    "intro": "Total time: [order to water in use, weeks] from [lead time start event]. Each stage shows its length; your review time adds to it. The next stage starts when its hold is signed.",
+    "items": [
+     {
+      "t": "Your approvals, before order",
+      "d": "Your user requirement specification (URS), capital approval and supplier approval. They come before our clock starts, so plan them first.",
+      "hold": "You"
+     },
+     {
+      "t": "Design to DQ, [design to DQ, weeks]",
+      "d": "Basis of design, piping and instrumentation diagrams, functional specification and design qualification (DQ).",
+      "hold": "Your quality unit"
+     },
+     {
+      "t": "Drawing approval, [submittal review clock, working days]",
+      "d": "You review drawings for fabrication. Lead time to delivery: [lead time from order, weeks] from order, [lead time from drawing approval, weeks] from approval.",
+      "hold": "You or your engineer"
+     },
+     {
+      "t": "Fabrication, [approved design to FAT, weeks]",
+      "d": "Polypropylene (PP) skids built in our shop. Leaves [PP material certificates] and [PP joint records kept].",
+      "link": "svc-fabrication"
+     },
+     {
+      "t": "Factory acceptance test (FAT), [FAT duration, days]",
+      "d": "With water, to the protocol your quality unit approved. Leaves raw data, deviation log, report and release to ship.",
+      "hold": "Both parties",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Shipping and storage, [shipping time, weeks]",
+      "d": "Drained after FAT, then shipped. Kept until start-up under [storage conditions before start-up]."
+     },
+     {
+      "t": "Installation and SAT, [installation and SAT, days]",
+      "d": "Installation by [installation scope]; site joints and pressure test by [site joints, by whom]. Site acceptance tests (SAT) on your utilities; leaves the SAT report.",
+      "hold": "You"
+     },
+     {
+      "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+      "d": "To protocols your quality unit approves. Leaves reports and draft procedures.",
+      "hold": "Your quality unit",
+      "link": "svc-cq"
+     },
+     {
+      "t": "PQ and first use, at least 12 months",
+      "d": "Performance qualification (PQ) in three phases. Use from phase 2, after at least 2 weeks of sampling (WHO TRS 1033).",
+      "hold": "Your quality unit"
+     }
+    ],
+    "lane": "Order to water in use",
+    "ground": "light",
+    "look": "cutover-schedule"
    }
   }
  ]

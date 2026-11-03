@@ -6,7 +6,10 @@
    column); on the right, behind a hairline rule, the register as the sheet's numbered notes column in mono (number,
    title as the link, status, topic and standard), with the topic filter above it; a title block closes the sheet at
    the bottom right and carries the live count.
-   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned. The title
+   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned, and so does
+   one whose date is still a placeholder (opens with "["): it reads "Planned" with its bracketed date beside it and,
+   as the lead, "Next planned", never "Latest". The lead note's link reads "Applied on <page>", or "Read the note" when
+   it points at the page the register is on (a note published on news itself). The title
    block reads "N notes", "N planned" when no note has a date, or "N notes · M planned"; so does the live count after
    filtering; the "All" filter reads "All N planned" when no note has a date.
    Fields (a register block): h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold,
@@ -19,23 +22,24 @@ function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+' planned':'
 var RR_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-storage':'storage-tank','sys-pretreatment':'pretreatment'},P='aq-revision-register'+'__';
 function rrSpot(it){var pg=wsplit(it.link||'')[0],s=it.spot||RR_SPOT[pg]||pageIcon(pg)||'';return isVig(s)?s:''}
 LOOKS['revision-register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
- var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return it.date?tx(it.date):'<span class="'+P+'planned">Planned</span>'};
- var nd=I.filter(function(it){return it.date}).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
- var f=I[fi],fl=f.link&&wp(f.link);
+ var dated=function(it){return !!it.date&&!/^\s*\[/.test(String(it.date))};
+ var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return dated(it)?tx(it.date):'<span class="'+P+'planned">Planned</span>'+(it.date?'<span>'+tx(it.date)+'</span>':'')};
+ var nd=I.filter(dated).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
+ var f=I[fi],fl=f.link&&wp(f.link),fd=dated(f),pg=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0],self=fl&&pg&&wsplit(f.link)[0]===pg.id;
  var tri='<svg class="'+P+'tri" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path d="M12 2L22 20H2Z"/></svg>';
  var tabs='<div class="'+P+'tabs" role="group" aria-label="Filter notes by topic"><button type="button" class="'+P+'tab" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+(nd?'':' planned')+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="'+P+'tab" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
- var lead='<aside class="'+P+'lead" aria-label="'+(f.date?'Latest note':'Next planned note')+'">'
-  +'<p class="'+P+'lk">'+tri+'<span>'+(f.date?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
+ var lead='<aside class="'+P+'lead" aria-label="'+(fd?'Latest note':'Next planned note')+'">'
+  +'<p class="'+P+'lk">'+tri+'<span>'+(fd?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
   +(f.d?'<blockquote class="'+P+'q"><p>'+tx(f.d)+'</p></blockquote>':'')
   +'<h3 class="'+P+'lt">'+tx(f.t)+'</h3>'+(f.std?'<p class="'+P+'lstd">'+tx(f.std)+'</p>':'')
-  +(fl?'<p class="'+P+'go">Applied on '+wlink(f.link)+'</p>':'')+'</aside>';
+  +(fl?'<p class="'+P+'go">'+(self?wlink(f.link,'Read the note'):'Applied on '+wlink(f.link))+'</p>':'')+'</aside>';
  /* the drawing plate: one figure per page a note is applied on, the lead's shown */
  var keys=[],fk=rrSpot(f);I.forEach(function(it){var k=rrSpot(it);if(k&&keys.indexOf(k)<0)keys.push(k)});
  var fig='<div class="'+P+'fig" aria-hidden="true"><span class="'+P+'frame"></span>'+keys.map(function(k){return '<span class="'+P+'dw'+(k===fk?' is-on':'')+'" data-k="'+e(k)+'">'+wSpot(k,'l',P+'spot')+'</span>'}).join('')
   +'<span class="'+P+'figcap">'+I.map(function(it,i){var p=it.link&&wp(it.link);return p?'<span data-i="'+i+'"'+(i===fi?' class="is-on"':'')+'>'+no(i)+' · '+e(p.nav_label||'')+'</span>':''}).join('')+'</span></div>';
  var notes=I.map(function(it,i){var tt=it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t);
-  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(rrSpot(it))+'" data-i="'+i+'"'+(it.date?' data-dated=""':'')+'>',b,i)
+  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(rrSpot(it))+'" data-i="'+i+'"'+(dated(it)?' data-dated=""':'')+'>',b,i)
    +'<span class="'+P+'no">'+no(i)+'.'+(i===fi?tri:'')+'</span><div class="'+P+'nb"><h3 class="'+P+'nt">'+tt+'</h3>'
    +'<p class="'+P+'meta">'+st(it)+(it.topic?'<span>'+tx(it.topic)+'</span>':'')+(it.std?'<span>'+tx(it.std)+'</span>':'')+'</p></div></li>'}).join('');
  var col='<div class="'+P+'col"><div class="'+P+'strip">'+tabs+'</div>'+wFold(b,I.length,'<ul class="'+P+'notes" role="list">'+notes+'</ul>',b.fold_noun||'notes')+'</div>';

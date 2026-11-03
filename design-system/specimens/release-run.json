@@ -4,7 +4,7 @@
  "type": "steps",
  "fields": "as steps: h, intro, items [{t, d, link}].",
  "best_for": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "ind-cdmo",
@@ -35,6 +35,85 @@
      {
       "t": "Release",
       "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
+     }
+    ],
+    "look": "release-run"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 5,
+   "h": "From first call to water you can use",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "6dd07e5670",
+   "block": {
+    "type": "steps",
+    "look": "release-run",
+    "nav": "Steps",
+    "anchor": "steps",
+    "h": "From first call to water you can use",
+    "intro": "Five steps. Each says what you send or decide.",
+    "items": [
+     {
+      "t": "Scope review",
+      "d": "You send what you make and where you sell it. We return the water each product needs, so you know if you need this."
+     },
+     {
+      "t": "Budget range",
+      "d": "You send roughly how much water you use a day, and your water report. We return a package size and budget range.",
+      "link": "systems#budget"
+     },
+     {
+      "t": "Requirements and order",
+      "d": "You agree a short user requirement specification (URS) and the proposal, so both sides sign the same scope.",
+      "link": "urs-guide"
+     },
+     {
+      "t": "Build and test",
+      "d": "We build the package and test it in our shop, then test it again on your site."
+     },
+     {
+      "t": "Water released for use",
+      "d": "We run the qualification tests with you. Your quality person then approves the water for use.",
+      "link": "svc-cq"
+     }
+    ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 6,
+   "h": "Placing an order",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "9d0ebc33f3",
+   "block": {
+    "type": "steps",
+    "nav": "Order",
+    "anchor": "order",
+    "h": "Placing an order",
+    "intro": "Four steps, from your purchase order to the start of the lead-time clock. Our bank details never change by email: call [sales phone number] before acting on such a request.",
+    "items": [
+     {
+      "t": "Address the order",
+      "d": "Make the purchase order (PO) out to [legal entity name]. Quote our proposal number, so price and scope carry over."
+     },
+     {
+      "t": "Add your references",
+      "d": "Public buyers: add your PO, tender and project numbers. We repeat them on every invoice."
+     },
+     {
+      "t": "We confirm in writing",
+      "d": "Within [order confirmation time, working days]: order accepted, drawing schedule and one named contact."
+     },
+     {
+      "t": "The lead-time clock starts",
+      "d": "Lead time counts from your order and from approved drawings, as page one states."
      }
     ],
     "look": "release-run"

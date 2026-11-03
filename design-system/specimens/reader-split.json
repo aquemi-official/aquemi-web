@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as the evidence table: h, intro, cols, rows [who, read, {t, link, intent}], fold, fold_noun.",
  "best_for": "ReaderSplit sets an evidence table on a band split down the middle: the readers (auditors, inspectors) on the navy half, what each reads and where we answer it across the seam on the limestone half, row against row.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "ind-meddevice",
@@ -70,6 +70,343 @@
     "fold": 2,
     "fold_noun": "auditors",
     "look": "reader-split"
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 0,
+   "h": "When polypropylene is the wrong choice",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "b6a5fc9664",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "reader-split",
+    "anchor": "pp-rows",
+    "nav": "Wrong choice",
+    "h": "When polypropylene is the wrong choice",
+    "intro": "Our package is polypropylene (PP) with polyvinyl chloride (PVC) pretreatment. If your URS needs any row below, our package does not fit as written. We will tell you early.",
+    "cols": [
+     "If your URS needs",
+     "Why polypropylene does not fit",
+     "Look instead for"
+    ],
+    "rows": [
+     [
+      "Water for Injection (WFI), pure steam or a sterile-product loop",
+      "Outside this package's scope.",
+      "A WFI or stainless steel system supplier"
+     ],
+     [
+      "A loop held hot, routine 80 °C sanitization at loop pressure, or steam sterilization",
+      "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "A polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]"
+     ],
+     [
+      "A chlorine or hypochlorite sanitization you cannot change",
+      "Polypropylene is not recommended for chlorinated service.",
+      "Another chemical method, if your procedures allow it"
+     ],
+     [
+      "A corporate or client standard that names 316L stainless steel",
+      "A policy, not a technical question. A deviation needs your quality unit's approval.",
+      "A stainless steel system supplier"
+     ],
+     [
+      "An extension of a hot-sanitized stainless system",
+      "The two parts could not share one sanitization regime.",
+      "The existing material"
+     ],
+     [
+      "Very small or occasional demand",
+      "A generation skid and a loop would be oversized. Our range: [standard platforms and capacity ranges].",
+      "Service deionization (exchange tanks) or a laboratory polisher"
+     ],
+     [
+      "Equipment outdoors, in an unheated room, or pipe in return-air plenums",
+      "Unpigmented PP is sensitive to sunlight, and PP is combustible. Some components need a heated room.",
+      "A heated indoor plant room, on a route your code accepts"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 1,
+   "h": "Who does what, and what is ready before installation",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "b695d5d3dc",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "anchor": "who",
+    "nav": "Who does what",
+    "h": "Who does what, and what is ready before installation",
+    "intro": "Who installs is [installation scope]. Your proposal lists every task, marked by Aquemi or by others.",
+    "cols": [
+     "Who",
+     "What they do",
+     "Ready before installation"
+    ],
+    "rows": [
+     [
+      "You: project manager or site head",
+      "Own the schedule, the order and site access. Name one contact who approves drawings and changes.",
+      "Delivery route and floor for [typical footprint and weight, by capacity]"
+     ],
+     [
+      "Your quality unit",
+      "Approves the URS, each protocol before it runs and each report after. Decides first use from PQ data.",
+      "Validation master plan; SAT, IQ and OQ protocols approved"
+     ],
+     [
+      "Your engineer, in-house or consulting",
+      "Writes or reviews the URS, reviews our drawings and may witness FAT for you.",
+      "Tie-in points agreed on the drawings"
+     ],
+     [
+      "Your contractor",
+      "Builds the room and brings utilities to the battery limits.",
+      {
+       "t": "Power, feed water and drain at the battery limits: [standard battery limits, typical scope]",
+       "link": "systems#site"
+      }
+     ],
+     [
+      "Aquemi",
+      "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
+      "Site readiness checklist, sent [site checklist before delivery, weeks] before delivery [confirm]"
+     ]
+    ],
+    "look": "reader-split"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 0,
+   "h": "Is a packaged system right for your site?",
+   "status": "retired",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "7d7a371c0e",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "reader-split",
+    "nav": "Is it for you",
+    "anchor": "fit",
+    "h": "Is a packaged system right for your site?",
+    "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
+    "cols": [
+     "Wrong choice",
+     "Fits",
+     "Read"
+    ],
+    "rows": [
+     [
+      "Wrong choice if your products are injected, or need Water for Injection (WFI)",
+      "Fits if your products are non-sterile: tablets, capsules, liquids, creams, or devices rinsed with Purified Water",
+      {
+       "t": "Grade by dosage form",
+       "link": "ind-pharma#grades"
+      }
+     ],
+     [
+      "Wrong choice if every product needs only potable water under your specification",
+      "Fits if your specification, a monograph or a drug rule asks for Purified Water",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Wrong choice if your water loop must be held hot, or sanitized with steam",
+      "Fits if an ambient loop, at room temperature, suits your products",
+      {
+       "t": "Sanitization methods",
+       "link": "sys-storage#sanitization"
+      }
+     ],
+     [
+      "Wrong choice if your company standard names stainless steel for water piping",
+      "Fits if your specification allows a polypropylene loop, or has no material rule yet",
+      {
+       "t": "When polypropylene is the wrong choice",
+       "link": "urs-guide#pp-rows"
+      }
+     ],
+     [
+      "Wrong choice if you need a few litres a day for a lab bench",
+      "Fits if you need [minimum–maximum capacity, L/h] for production and rinsing",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ]
+    ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 3,
+   "h": "Comparing quotes on the same lines",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "ce4dadc971",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Compare",
+    "anchor": "compare",
+    "h": "Comparing quotes on the same lines",
+    "intro": "Quotes differ most in what they leave out. Level every quote on these lines before you compare prices.",
+    "cols": [
+     "Line to level",
+     "Ask of every quote",
+     "Where ours states it"
+    ],
+    "rows": [
+     [
+      "Pretreatment",
+      "Sized on your water analysis, or on an assumed feed?",
+      {
+       "t": "Pretreatment",
+       "link": "sys-pretreatment"
+      }
+     ],
+     [
+      "Storage and loop",
+      "Tank volume, loop length and every point of use counted?",
+      {
+       "t": "Storage and distribution",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Instruments and controls",
+      "Which readings are recorded, and is the code delivered unlocked?",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Documents",
+      "Which documents, and who writes and signs each?",
+      {
+       "t": "Document index",
+       "link": "cmp-documentation#index"
+      }
+     ],
+     [
+      "FAT",
+      "Run on water, to a protocol you approve first?",
+      {
+       "t": "FAT and SAT",
+       "link": "svc-fat-sat"
+      }
+     ],
+     [
+      "IQ and OQ",
+      "Included, a priced option, or left to you?",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "Warranty start",
+      "Counted from shipment, or from acceptance on your site?",
+      {
+       "t": "Terms at a glance",
+       "link": "buying#terms"
+      }
+     ],
+     [
+      "Running cost",
+      "Per year, at your water and use, with the assumptions written?",
+      {
+       "t": "Running cost",
+       "link": "svc-service#running-cost"
+      }
+     ]
+    ],
+    "look": "reader-split"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 0,
+   "h": "Is a packaged system right for your site?",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "a2aef98a96",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "reader-split",
+    "nav": "Is it for you",
+    "anchor": "fit",
+    "h": "Is a packaged system right for your site?",
+    "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
+    "cols": [
+     "Wrong choice if",
+     "Fits if",
+     "Read"
+    ],
+    "rows": [
+     [
+      "Your products are injected, or need Water for Injection (WFI)",
+      "Your products are non-sterile: tablets, capsules, liquids, creams, or devices rinsed with Purified Water",
+      {
+       "t": "Grade by dosage form",
+       "link": "ind-pharma#grades"
+      }
+     ],
+     [
+      "Every product needs only potable water under your specification",
+      "Your specification, a monograph or a drug rule asks for Purified Water",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Your water loop must be held hot, or sanitized with steam",
+      "An ambient loop, at room temperature, suits your products",
+      {
+       "t": "Sanitization methods",
+       "link": "sys-storage#sanitization"
+      }
+     ],
+     [
+      "Your company standard names stainless steel for water piping",
+      "Your specification allows a polypropylene loop, or has no material rule yet",
+      {
+       "t": "When polypropylene is the wrong choice",
+       "link": "urs-guide#pp-rows"
+      }
+     ],
+     [
+      "You need a few litres a day for a lab bench",
+      "You need [minimum–maximum capacity, L/h] for production and rinsing",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ]
+    ]
    }
   }
  ]

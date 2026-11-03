@@ -56,7 +56,7 @@
      "Cost, scope and your team’s first year",
      {
       "t": "Your first PW system",
-      "link": "industries#first-system"
+      "link": "first-system"
      }
     ],
     [
@@ -191,7 +191,7 @@
    "type": "table",
    "as": "evidence",
    "nav": "Inspectors",
-   "h": "What each inspector reads",
+   "h": "What each inspector and auditor reads",
    "cols": [
     "Who inspects",
     "What they read",
@@ -237,6 +237,14 @@
       "t": "Storage and distribution loops",
       "link": "sys-storage"
      }
+    ],
+    [
+     "Your quality unit, approving a new supplier",
+     "Your user requirement specification (URS) answered row by row, each with its document; audit access; data integrity",
+     {
+      "t": "Checks you can run today",
+      "link": "projects#verify"
+     }
     ]
    ],
    "fold": 3,
@@ -262,6 +270,10 @@
     {
      "code": "GUI-0119 and Annex 1",
      "read": "EU good manufacturing practice (GMP): PW quality, dead legs, sanitization, trend review"
+    },
+    {
+     "code": "Your URS",
+     "read": "Answered row by row, each with its document; audit access; data integrity"
     }
    ]
   },
@@ -282,7 +294,9 @@
      "d": "Hot-held loops, steam or routine 80 °C at loop pressure need polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]. A stainless-only standard needs stainless.",
      "part": "sheet",
      "side": "r",
-     "row": 3
+     "row": 3,
+     "link": "urs-guide#allow-pp",
+     "link_label": "Writing the PP rows"
     },
     {
      "t": "Loop sanitization route",
@@ -312,7 +326,8 @@
    "fold_noun": "decisions",
    "as": "decisions",
    "look": "decision-plant",
-   "gate": "URS"
+   "gate": "URS",
+   "intro": "URS templates often make stainless steel and heat sanitization must-have rows. Settle each decision below before your URS is approved."
   },
   {
    "type": "table",
@@ -344,8 +359,11 @@
     ],
     [
      "Products sold abroad as drugs",
-     "PW",
-     "Under the importing market’s drug rules"
+     "PW, under the importing market’s drug rules",
+     {
+      "t": "If this is your first system",
+      "link": "first-system"
+     }
     ]
    ],
    "look": "grade-switch",
@@ -444,8 +462,11 @@
   "Sanitization: this page states the PP rating (DR-013 rule 1) and, in decisions, where PP stops (DR-013 rule 2 conditions: a hot-held loop, steam, or routine 80 °C at loop pressure; a standard naming stainless rules PP out unless it allows exceptions; [whether we quote PVDF]; FD-15); the decision row links sys-storage#sanitization, where the method and the maximum temperature ([maximum loop sanitization temperature for PP, °C]) live (FD-14). No ozone (DR-013 rule 4)",
   "Shutdown windows (decisions, folded): duplex trains are named as a choice for the URS, with no train shares; if the owner drops duplex trains as a configuration (FD-20, FD-21), the line keeps isolable sections only. Shares stay on sys-pw and ind-cdmo under one placeholder name (DR-011)",
   "FAT practice (FAQ \"Can one system supply…\"): confirm which USP and Ph. Eur. attributes the factory acceptance test checks, and how (FD-45). The share of skids tested with water is svc-fat-sat's figure, not this page's (DR-010)",
-  "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, industries#first-system and sys-storage#sanitization",
-  "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)",
-  "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters"
+  "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, first-system, projects#verify, urs-guide#allow-pp and sys-storage#sanitization",
+  "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer; the first-system pointer now closes #nhp itself, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)",
+  "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters",
+  "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 3.4 and § 4.5): router row 4 now opens first-system (was industries#first-system). #nhp's pointer (SITE-PLAN \"If this is your first system\"; label \"Your first PW system\", buttons at most 5 words) now closes #nhp itself: the last row's note is {\"t\": \"If this is your first system\", \"link\": \"first-system\"} (grade-switch renders notes through tcell since the pass 11 integration, industries review finding 11), and the FAQ item 'This is our first water system. Where do we start?' is cut. The row's 'Under the importing market's drug rules' moved into its minimum cell, so no fact is lost. Lessons L-11-15, L-01-13, L-04-25",
+  "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1–2, journeys P1 and P4): decisions intro names the must-have rows default pharmaceutical URS templates carry (L-07-5, L-09-7, L-G2-1, L-G2-5); 'Where polypropylene stops' links urs-guide#allow-pp, the rows to write (pass 11 integration, urs-guide review finding 5). The inspector table gains the buyer's own quality unit: rows answered with documents (L-07-1, L-13-1, L-07-8, L-15-17), audit access (L-15-4), data integrity (L-G2-15)",
+  "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2; SITE-PLAN principle 8, DR-004 rule 1): the quality-unit row links projects#verify ('Checks you can run today'), the checks a new company offers in place of references. No case block until FD-42 (DR-016)"
  ]
 }

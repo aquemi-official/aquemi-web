@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [situation, what comes back, when, cost] (labels used as the slip field names), rows, fold, fold_noun. Each slip's ruled header has one mark per slip in its row, its own in flow (slip 2 of 4 lights the second).",
  "best_for": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "contact-proposal",
@@ -67,6 +67,50 @@
       "A written answer from an engineer",
       "[proposal response time, working days]",
       "[fit check cost or free]"
+     ]
+    ],
+    "look": "return-slips"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 3,
+   "h": "Changes after you approve",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "7a8053470c",
+   "block": {
+    "type": "table",
+    "anchor": "changes",
+    "nav": "Changes",
+    "h": "Changes after you approve",
+    "intro": "Only the contact named in your order may ask for a change. Each request states reason, description, price, schedule effect, payment and your approval. Work starts after you sign it [confirm].",
+    "cols": [
+     "Situation",
+     "What comes back",
+     "When",
+     "Cost"
+    ],
+    "rows": [
+     [
+      "You change an approved drawing or specification",
+      "A change request with price, schedule effect and revised drawings",
+      "[change request turnaround, working days]",
+      "[change pricing basis]"
+     ],
+     [
+      "Feed water or site data differ from the design basis",
+      "A change request, once we have checked the new data with you",
+      "[change request turnaround, working days]",
+      "[change pricing basis]"
+     ],
+     [
+      "We find an error in our own design",
+      "Corrected drawings for your approval again",
+      "[design correction turnaround, working days]",
+      "[design gap warranty terms]"
      ]
     ],
     "look": "return-slips"

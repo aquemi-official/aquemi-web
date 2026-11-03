@@ -62,15 +62,71 @@
    "page": "sys-monitoring",
    "slot": 1,
    "h": "Alert, action and trend",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "aafb938a64",
    "block": {
     "type": "table",
     "h": "Alert, action and trend",
     "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot shows online readings.",
+    "cols": [
+     "Line",
+     "How it is set",
+     "What the system does"
+    ],
+    "rows": [
+     [
+      "Specification",
+      {
+       "t": "Compendial limit, or your tighter internal limit",
+       "link": "compliance#limits"
+      },
+      "Diverts or stops supply; alarm needs a reason"
+     ],
+     [
+      "Action level",
+      "Qualification data; ≤ 100 CFU/mL (colony-forming units; USP <1231>; GUI-0001 C.02.009)",
+      "Quality alarm to your quality unit, logged"
+     ],
+     [
+      "Alert level",
+      "Qualification data; reassessed after investigations",
+      "Alarm with a comment, counted for trends"
+     ],
+     [
+      "Trend rule",
+      "Agreed with your quality unit, such as rising readings",
+      "Flags drift before any limit"
+     ]
+    ],
+    "nav": "Alarms",
+    "look": "hmi-trend",
+    "tabs": [
+     "Trends",
+     "Alarms",
+     "Sanitization"
+    ],
+    "plot": [
+     "limit",
+     "trend"
+    ]
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 1,
+   "h": "Alert, action and trend",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "2b436c1c39",
+   "block": {
+    "type": "table",
+    "h": "Alert, action and trend",
+    "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot is a drawing of online readings, not site data.",
     "cols": [
      "Line",
      "How it is set",

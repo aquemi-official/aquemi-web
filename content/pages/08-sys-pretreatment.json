@@ -171,7 +171,7 @@
     [
      "Spring runoff and fall turnover",
      "Turbidity and organics raise SDI and foul membranes",
-     "Media filter sized for the worst month; on-site SDI test [confirm]"
+     "Media filter sized for the worst month; [on-site SDI testing, standard or option]"
     ],
     [
      "Hardness and alkalinity, highest in groundwater",
@@ -256,11 +256,11 @@
    "items": [
     {
      "t": "Feed water review and design basis",
-     "d": "Data used, design months and RO inlet targets"
+     "d": "Sets the RO inlet targets: data used and design months"
     },
     {
      "t": "Membrane projections",
-     "d": "At coldest and warmest feed"
+     "d": "Predict output at coldest and warmest feed, new and at end of membrane life"
     },
     {
      "t": "Functional specification",
@@ -353,7 +353,8 @@
      "label": "To RO",
      "ly": -70
     }
-   ]
+   ],
+   "intro": "Your proposal states each option's effect on drawings, tests and lead time."
   },
   {
    "type": "faq",
@@ -380,7 +381,9 @@
     },
     {
      "q": "Is pretreatment part of the validated system?",
-     "a": "Your risk assessment sets the boundary. WHO TRS 1033 allows construction to drinking water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope."
+     "a": "Your risk assessment sets the boundary; write it into your user requirement specification (URS). WHO TRS 1033 allows construction to drinking water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope.",
+     "link": "urs-guide#outline",
+     "link_label": "Writing your URS"
     },
     {
      "q": "How do you keep carbon beds clean?",
@@ -436,7 +439,7 @@
   "Whether bisulfite dosing is offered instead of carbon: the feed water table and the removal-step router show it (FD-21). Pass 11: the diagram's carbon bed stage no longer says \"Bisulfite dosing can replace it\" (it repeated the router and stated the open item in the standard train); restore it only if bisulfite is offered and the train should teach it. Pass 10: the stage is named \"Carbon bed\", as the section-train look draws a bed and has no neutral stage drawing (DR-018); the options drawing's train label matches it (DR-018 rule 5)",
   "Softener on demand is an option, not the standard scope (moved here from sys-pw). Confirm whether the online hardness analyzer at the softener outlet is standard or comes only with that option (FD-21): [hardness measurement method] (hero fact label and inlet row). Pass 10 review: until FD-21 answers, the hero fact and inlet row show the placeholder and the diagram's monitoring line names no hardness analyzer (DR-018 rule 2); if standard, fill \"Online analyzer\" and restore \"hardness\" in the monitoring line",
   "Cartridge filter rating ahead of the RO, µm (FD-21): [cartridge filter rating, µm]. Pass 10 review: the diagram stage and the options drawing's train label read \"Cartridge filter\" (one name, DR-018 rule 5) until it is set; then both may read \"[rating] µm cartridge filter\"",
-  "Whether Aquemi tests SDI on site during the feed water review, and with what kit (\"on-site SDI test [confirm]\", feed water table; FD-21)",
+  "Whether Aquemi tests SDI on site during the feed water review, and with what kit ([on-site SDI testing, standard or option], feed water table; FD-21)",
   "UV dechlorination: the removal-step row is cut until it is offered (FD-21). If restored: the PVC needs a light-tight transition piece at the UV unit (IPEX), and the chlorine analyzer stays downstream",
   "Carbon replacement interval ([carbon replacement interval, months], feed water table and FAQ), reset from counts during qualification. svc-service's running-cost row holds it inside [filter, media and lamp intervals, months]: one figure in both (FD-21; DR-005 rule 6; DR-011)",
   "Months of water history the feed water review asks for ([months of history], FAQ). The closing asks for seasonal data until this is set (DR-011 rule 1)",
@@ -447,6 +450,9 @@
   "Whether the feed water review is free or charged, CAD ([cost of the feed water review], closing; FD-02): the canonical name, as in contact-proposal's requests table",
   "Feed water review turnaround, working days ([feed water review turnaround, working days], closing; FD-01). contact-proposal's requests table defines it",
   "Source for the FAQ figure \"polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine\": DuPont's FilmTec BW30HR-440 product data sheet (Form 45-D04847-en, Rev. 0, November 2024) gives \"Free Chlorine Tolerance < 0.1 ppm\" for a polyamide thin-film element; one maker, so \"typically\" stays. Not yet in the library's bibliography",
-  "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block (DR-016)"
+  "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block (DR-016)",
+  "Pass 11 (phrasebook 17 support; buyer-requirements § 3.1, L-07-12, L-10-13): membrane projections now run new and at end of membrane life and predict output (FAT and SAT confirm it); sys-pw's capacity basis names [membrane design life, years]. Same document name on both pages (DR-011). Owner confirms with FD-21",
+  "Pass 11 (buyer-requirements § 3.1 and the URS outline, L-09-17, L-07-11): the validated-boundary FAQ tells the reader to write the boundary into the URS and links urs-guide#outline (new page, anchor fixed by pass 11 SITE-PLAN)",
+  "Pass 11 (proof § 5.2 P17, P19; L-G1-11, L-04-28): the options intro says the proposal states each option's effect on drawings, tests and lead time (same sentence as sys-pw and sys-storage; option-taps prints intro through wSecHead though its header comment omits it). The documents block says what each document does: the design basis sets the RO inlet targets, projections predict output. Datasheet, typical general arrangement and room sheet stay Build (DR-006 rule 6)"
  ]
 }

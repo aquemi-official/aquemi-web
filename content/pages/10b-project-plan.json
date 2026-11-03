@@ -1,0 +1,364 @@
+{
+ "id": "project-plan",
+ "section": "Services",
+ "nav_label": "How a project runs",
+ "title": "How a Purified Water project runs, from order to water in use | Aquemi",
+ "meta": "Stages, hold points and durations for a polypropylene Purified Water package: who does what, notice before each event, changes after approval and progress reporting.",
+ "path": "/services/how-a-project-runs/",
+ "eyebrow": "PROJECT PLAN · EU GMP ANNEX 15 · WHO TRS 1033",
+ "headline": "How a project runs, from order to water in use",
+ "lead": "Plan holds and validation time for your polypropylene Purified Water package from one schedule. Each stage names its duration, what it leaves and who signs. Your contact from order to handover: [named project lead role].",
+ "primary_cta": "Talk to an engineer",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
+ "secondary_cta": {
+  "label": "Payment events and terms",
+  "link": "buying#terms"
+ },
+ "figure": {
+  "plate": "route",
+  "stops": [
+   "Your order",
+   "FAT and release",
+   "Water in use"
+  ],
+  "label": "Order to water in use"
+ },
+ "blocks": [
+  {
+   "type": "steps",
+   "anchor": "stages",
+   "nav": "Stages",
+   "h": "Stages, what each leaves, and who signs",
+   "intro": "Total time: [order to water in use, weeks] from [lead time start event]. Each stage shows its length; your review time adds to it. The next stage starts when its hold is signed.",
+   "items": [
+    {
+     "t": "Your approvals, before order",
+     "d": "Your user requirement specification (URS), capital approval and supplier approval. They come before our clock starts, so plan them first.",
+     "hold": "You"
+    },
+    {
+     "t": "Design to DQ, [design to DQ, weeks]",
+     "d": "Basis of design, piping and instrumentation diagrams, functional specification and design qualification (DQ).",
+     "hold": "Your quality unit"
+    },
+    {
+     "t": "Drawing approval, [submittal review clock, working days]",
+     "d": "You review drawings for fabrication. Lead time to delivery: [lead time from order, weeks] from order, [lead time from drawing approval, weeks] from approval.",
+     "hold": "You or your engineer"
+    },
+    {
+     "t": "Fabrication, [approved design to FAT, weeks]",
+     "d": "Polypropylene (PP) skids built in our shop. Leaves [PP material certificates] and [PP joint records kept].",
+     "link": "svc-fabrication"
+    },
+    {
+     "t": "Factory acceptance test (FAT), [FAT duration, days]",
+     "d": "With water, to the protocol your quality unit approved. Leaves raw data, deviation log, report and release to ship.",
+     "hold": "Both parties",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Shipping and storage, [shipping time, weeks]",
+     "d": "Drained after FAT, then shipped. Kept until start-up under [storage conditions before start-up]."
+    },
+    {
+     "t": "Installation and SAT, [installation and SAT, days]",
+     "d": "Installation by [installation scope]; site joints and pressure test by [site joints, by whom]. Site acceptance tests (SAT) on your utilities; leaves the SAT report.",
+     "hold": "You"
+    },
+    {
+     "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+     "d": "To protocols your quality unit approves. Leaves reports and draft procedures.",
+     "hold": "Your quality unit",
+     "link": "svc-cq"
+    },
+    {
+     "t": "PQ and first use, at least 12 months",
+     "d": "Performance qualification (PQ) in three phases. Use from phase 2, after at least 2 weeks of sampling (WHO TRS 1033).",
+     "hold": "Your quality unit"
+    }
+   ],
+   "lane": "Order to water in use",
+   "ground": "light",
+   "look": "cutover-schedule"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "anchor": "who",
+   "nav": "Who does what",
+   "h": "Who does what, and what is ready before installation",
+   "intro": "Who installs is [installation scope]. Your proposal lists every task, marked by Aquemi or by others.",
+   "cols": [
+    "Who",
+    "What they do",
+    "Ready before installation"
+   ],
+   "rows": [
+    [
+     "You: project manager or site head",
+     "Own the schedule, the order and site access. Name one contact who approves drawings and changes.",
+     "Delivery route and floor for [typical footprint and weight, by capacity]"
+    ],
+    [
+     "Your quality unit",
+     "Approves the URS, each protocol before it runs and each report after. Decides first use from PQ data.",
+     "Validation master plan; SAT, IQ and OQ protocols approved"
+    ],
+    [
+     "Your engineer, in-house or consulting",
+     "Writes or reviews the URS, reviews our drawings and may witness FAT for you.",
+     "Tie-in points agreed on the drawings"
+    ],
+    [
+     "Your contractor",
+     "Builds the room and brings utilities to the battery limits.",
+     {
+      "t": "Power, feed water and drain at the battery limits: [standard battery limits, typical scope]",
+      "link": "systems#site"
+     }
+    ],
+    [
+     "Aquemi",
+     "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
+     "Site readiness checklist, sent [site checklist before delivery, weeks] before delivery [confirm]"
+    ]
+   ],
+   "look": "reader-split"
+  },
+  {
+   "type": "table",
+   "anchor": "notice",
+   "nav": "Notice",
+   "h": "Notice before each event",
+   "intro": "Each plan reaches you before its event, so your team can review it, book people and plan any shutdown. A late approval moves the event; the notice period stays the same.",
+   "cols": [
+    "Event",
+    "Notice",
+    "What you receive"
+   ],
+   "rows": [
+    [
+     "FAT protocol",
+     "[protocol issue before FAT, weeks] before FAT",
+     "Draft protocol for your approval; your team may add test cases"
+    ],
+    [
+     "FAT witness",
+     "[FAT witness notice, working days] before FAT",
+     "Date, agenda and who attends"
+    ],
+    [
+     "Site readiness checklist",
+     "[site checklist before delivery, weeks] before delivery",
+     "Utilities, access and floor your site must have ready [confirm]"
+    ],
+    [
+     "Shipping",
+     "[shipping notice, working days] before dispatch",
+     "Delivery date, weights, lifting points and offloading needs"
+    ],
+    [
+     "Commissioning plan",
+     "[commissioning plan notice, working days] before start-up",
+     "Schedule, first water, off-specification water to drain, who attends"
+    ],
+    [
+     "SAT, IQ and OQ protocols",
+     "[protocol issue before IQ/OQ, weeks] before testing",
+     "For your quality unit's approval; nothing runs before it signs"
+    ],
+    [
+     "Training syllabus",
+     "[training syllabus notice, weeks] before training",
+     "Topics and hours for your approval: [training hours and audiences]"
+    ]
+   ],
+   "look": "response-lanes"
+  },
+  {
+   "type": "table",
+   "anchor": "changes",
+   "nav": "Changes",
+   "h": "Changes after you approve",
+   "intro": "Only the contact named in your order may ask for a change. Each request states reason, description, price, schedule effect, payment and your approval. Work starts after you sign it [confirm].",
+   "cols": [
+    "Situation",
+    "What comes back",
+    "When",
+    "Cost"
+   ],
+   "rows": [
+    [
+     "You change an approved drawing or specification",
+     "A change request with price, schedule effect and revised drawings",
+     "[change request turnaround, working days]",
+     "[change pricing basis]"
+    ],
+    [
+     "Feed water or site data differ from the design basis",
+     "A change request, once we have checked the new data with you",
+     "[change request turnaround, working days]",
+     "[change pricing basis]"
+    ],
+    [
+     "We find an error in our own design",
+     "Corrected drawings for your approval again",
+     "[design correction turnaround, working days]",
+     "[design gap warranty terms]"
+    ]
+   ],
+   "look": "return-slips"
+  },
+  {
+   "type": "spec",
+   "anchor": "reporting",
+   "nav": "Progress",
+   "h": "How you see progress",
+   "intro": "We keep the record; your team reviews it on an agreed clock.",
+   "cols": [
+    "Item",
+    "When",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Contacts",
+     "v": "From order to handover",
+     "m": "[named project lead role] and your project manager, named in the order",
+     "side": "limit"
+    },
+    {
+     "p": "Kickoff meeting",
+     "v": "[kickoff after order, working days] after order",
+     "m": "Schedule, holds, contacts and the document list agreed",
+     "side": "package"
+    },
+    {
+     "p": "Document review",
+     "v": "[submittal review clock, working days] per issue",
+     "m": "The schedule assumes this clock; a longer review moves later dates",
+     "side": "site"
+    },
+    {
+     "p": "Hold point signatures",
+     "v": "At each hold in the stages",
+     "m": "The next stage starts after your signature",
+     "link": "project-plan#stages",
+     "link_label": "See the stages",
+     "side": "site"
+    },
+    {
+     "p": "Submittal log",
+     "v": "Updated with every issue",
+     "m": "Each document: approved, approved as noted, revise and resubmit, or for information",
+     "side": "package"
+    },
+    {
+     "p": "Status report",
+     "v": "[status report frequency]",
+     "m": "Progress against the schedule, open holds, risks and changes",
+     "side": "package"
+    },
+    {
+     "p": "Meeting minutes",
+     "v": "[minutes issue after meeting, working days] after each meeting",
+     "m": "Actions with owner and date, for your correction",
+     "side": "package"
+    },
+    {
+     "p": "Design reviews",
+     "v": "[design review points]",
+     "m": "Your engineer and quality unit attend",
+     "side": "site"
+    }
+   ],
+   "sides": [
+    "From Aquemi",
+    "From your team"
+   ],
+   "seam": "One contact each side",
+   "fold": 4,
+   "fold_noun": "items",
+   "look": "battery-limit"
+  },
+  {
+   "type": "faq",
+   "anchor": "faq",
+   "nav": "FAQ",
+   "h": "Questions project managers ask",
+   "items": [
+    {
+     "q": "How long do our own approvals add?",
+     "a": "Count them in your plan. Capital approval, supplier qualification and URS sign-off come before our clock starts. Your review time at each hold adds to the durations above, unless a stage says it is included."
+    },
+    {
+     "q": "What if our site is not ready on time?",
+     "a": "Tell us as soon as you know. We agree a new delivery date and where the skids wait, under [storage conditions before start-up]. Storage and extra visits cost [site delay and storage charges]. The readiness checklist reaches you [site checklist before delivery, weeks] before delivery."
+    },
+    {
+     "q": "Can the skids wait through a Canadian winter before start-up?",
+     "a": "Only under [storage conditions before start-up]. Frozen or dried-out reverse osmosis membranes may need replacing before start-up. Plan indoor storage if delivery comes before your room is ready."
+    },
+    {
+     "q": "Why a full FAT before IQ and OQ?",
+     "a": "A fault found in our test bay costs days. A fault found on site costs your validation team's time. A complete FAT and commissioning keep IQ and OQ to testing, not troubleshooting.",
+     "link": "svc-fat-sat",
+     "link_label": "What FAT proves"
+    },
+    {
+     "q": "What do we pay at each stage?",
+     "a": "Payment follows events, not dates: [milestone structure]. The terms are on Buying from Aquemi.",
+     "link": "buying#terms",
+     "link_label": "See payment terms"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after each stage",
+   "items": [
+    "services",
+    "svc-fat-sat",
+    "svc-cq",
+    "buying"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us your target date for water in use",
+  "body": "An engineer works back from it to your order date and holds. Cost: [fit check cost or free].",
+  "button": "Talk to an engineer",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer",
+  "include": [
+   "Your target date for water in use",
+   "Your URS, if any",
+   "New room or an existing system to replace",
+   "Your approval steps before order"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "A schedule worked back from your date",
+   "Your holds and review time",
+   "What your site must have ready"
+  ]
+ },
+ "todo": [
+  "Launch rule (structure-and-sitemap § 4.6): publish when FD-08 gives at least ranges; until then services#durations stays and this page waits. Every duration is bracketed (FD-08): [design to DQ, weeks], [approved design to FAT, weeks], [FAT duration, days], [installation and SAT, days], [IQ/OQ on site, days] (same names as services, svc-fat-sat, svc-cq), plus [shipping time, weeks], and the two lead time clocks [lead time from order, weeks] and [lead time from drawing approval, weeks] (buying's names; SITE-PLAN rule 4). The stages intro carries the total [order to water in use, weeks] (placeholder-names row 99: project-plan is its home) from [lead time start event] (services' name, FD-08). Say for each whether it includes the client's review time at the hold point (DR-005 rule 5). No hero facts until filled (DR-010 rule 5: lead-time facts stay off)",
+  "Stages block (anchor stages) takes the durations home from services#durations (DR-009 amended: durations -> project-plan#stages); services keeps a summary and a link (services editor). Stage order and holds follow L-03-2, L-06-2, L-12-16, L-13-9, L-G1-8; the buyer's own approvals come first (L-13-9). PQ wording kept from services (WHO TRS 1033: use from phase 2 after at least 2 weeks)",
+  "[named project lead role]: one named project lead from order to handover (FD-34; L-08-17, L-05-2). Until confirmed the lead reads 'Your contact', not 'one contact' (services todo: 'One team' was cut for the same reason)",
+  "Who does what (anchor who): owner / quality unit / engineer / contractor / Aquemi responsibility split (L-11-8, L-10-11, L-03-1) with installation prerequisites (desk Q1 ruling). [installation scope] FD-26; [site joints, by whom] (new name, FD-26; installation stage, contractor's question who makes site joints); [executing staff: own engineers or named partner] FD-46; [typical footprint and weight, by capacity] and [standard battery limits, typical scope] are systems#site's names. The plain site list lives on first-system#site; this block holds who is responsible (DR-009). The contractor's third cell links systems#site, where the battery-limit values live",
+  "Site readiness checklist before delivery is a proposed practice (L-08-10, L-05-11), marked [confirm] on who and notice (DR-011, one status per fact): confirm Aquemi will issue one and when ([site checklist before delivery, weeks]); drop the [confirm] marks when set",
+  "Notice block (anchor notice): L-08-10, L-11-9, L-15-10, L-08-9. New placeholders for FD-08/FD-45/FD-46: [shipping notice, working days], [commissioning plan notice, working days], [protocol issue before IQ/OQ, weeks], [training syllabus notice, weeks], and [training hours and audiences] (svc-cq's name, DR-011). Training syllabus row follows svc-cq's training FAQ (FD-26): if Aquemi does not train, the row goes. FAT witness row follows svc-fat-sat's witnessing launch rule (FD-44): no witnessing mode (remote or in person) is offered here until it is set. [protocol issue before FAT, weeks] and [FAT witness notice, working days] are svc-fat-sat's names. Look: response-lanes (retired, last contact-service) replaces time-card so the four new pages do not share it (review finding 10); its lanes show order, never a time scale, which suits bracketed notice periods; it has no fold, so every notice shows",
+  "Changes block (anchor changes): who may ask, six-field request, written approval before work (L-G3-6, L-G3-7, L-15-18, L-12-5). Owner to confirm the rule 'work starts after you sign it' (marked [confirm], the same status as services FAQ 5, DR-011) and set [change request turnaround, working days], [change pricing basis], [design correction turnaround, working days]. [design gap warranty terms] is svc-design's and cmp-quality's name (now buying's home, FD-07)",
+  "Reporting block (anchor reporting): kickoff, design reviews, submittal log with four statuses, status report, minutes (L-15-18, L-G3-8, L-08-17). Open: [kickoff after order, working days], [status report frequency], [minutes issue after meeting, working days], [design review points], [submittal review clock, working days] (the client's review time the schedule assumes; L-15-18). Rows ordered so phones (fold 4) show two cards per side, the client's review clock and hold signatures among them. Look reuse: battery-limit is also on first-system#site (its native subject); no other spec look fits a two-sided reporting split, so it stays here until the orchestrator hands it out (review finding 10)",
+  "FAQ: own approvals (L-13-9; no public-tender timeline stated, it is not private pharma's), site late (L-05-11; [site delay and storage charges], [storage conditions before start-up]), winter storage (L-14-17), full FAT before IQ/OQ (L-14-16; no Aquemi duration claimed), payment events (one line and a link; home is buying#terms, [milestone structure] FD-06)",
+  "Closing door per DR-006 rule 2 (S1 talk to an engineer) with the target date for water in use (structure-and-sitemap § 4.6 C). [fit check cost or free] FD-02; [proposal response time, working days] FD-01",
+  "Entry links (other editors and orchestrator): services#durations line and link, home steps block, first-system steps, buying (what starts the clock), svc-design, svc-fat-sat, svc-cq related blocks, footer Services column. Support through first use (L-08-6) stays on svc-cq; acceptance definitions stay on svc-fat-sat and svc-cq; document timing on cmp-documentation",
+  "Launch order (DR-026): if buying is not live when this page launches, the hero secondary, FAQ 5 and the related item link cmp-quality#buying ('See payment terms') until it is",
+  "Shared looks with the other pass 11 pages (review finding 10, orchestrator): reader-split (B1, also urs-guide, first-system, buying), battery-limit (B4, also first-system), hero route plate (also buying). Keep route here: its stops are a schedule",
+  "Pass 11 integration (look reuse, finding 10): hero 'route' plate kept here; buying moved to the 'stamp' plate. Kept reuses after checking every unused look of each type (python tools/specimens.py fit): who on reader-split (also urs-guide, first-system, buying): shop-floor draws our shop, where the client roles do not work, and the other retired table looks draw joints, plans, spares or FAT and SAT. reporting on battery-limit (also first-system#site): no retired spec look draws a two-sided split"
+ ]
+}

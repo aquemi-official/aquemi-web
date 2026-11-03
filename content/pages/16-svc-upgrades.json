@@ -7,7 +7,7 @@
  "path": "/services/upgrades-retrofits/",
  "eyebrow": "UPGRADES · EU GMP ANNEX 15 · GUI-0029",
  "headline": "Upgrade the system you have",
- "lead": "We assess and upgrade Purified Water (PW) systems with modules from our polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: [makes and equipment types serviced].",
+ "lead": "We assess your Purified Water (PW) system, then price options from one module to the whole polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: [makes and equipment types serviced].",
  "tags": [],
  "primary_cta": "Request a system assessment",
  "primary_cta_link": "contact-proposal",
@@ -281,6 +281,10 @@
      "a": "For [makes and equipment types serviced]: we assess it, then add or replace modules from our package. Without drawings, we walk the system down and measure dead legs. Polypropylene (PP) joins other piping by [tie-in method to existing piping]. A hot-held loop, or routine 80 °C sanitization at loop pressure, needs polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]."
     },
     {
+     "q": "Will your work void our original maker's warranty?",
+     "a": "It can: some makers void a warranty after third-party work, so check its terms first. Our position goes in the options report: [warranty position on other makers' systems]. Calibrations are traceable via [calibration provider and accreditation held]. You keep every record we write: certificates, installation and operational qualification (IQ and OQ) reports, updated drawings."
+    },
+    {
      "q": "Will an upgrade restart our performance qualification (PQ)?",
      "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale.",
      "link": "contact-service",
@@ -338,7 +342,11 @@
   "Confirm software is tested before site work, and whether against a simulator ('on a simulator' was cut until FD-23 says so)",
   "Budget range per option in the assessment report (FD-03): the page says 'costed options' without a figure until Aquemi's costed configurations exist (DR-005 rule 2)",
   "Future case block: a delivered upgrade with what changed, downtime, requalification time and, for a DI to RO and EDI conversion, payback; only with the client's written approval (FD-42; DR-004 class 3; DR-016 rule 8). The ten-year cost sheet is FD-49",
-  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3)."
+  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3).",
+  "Pass 11, phrasebook 21 (L-02-11, L-03-21; PB-02.14): lead now says options run from one module to the whole package; the downtime and requalification sentence and [makes and equipment types serviced] kept",
+  "Pass 11, proof § 5.2 (L-09-15): new FAQ \"Will your work void our original maker's warranty?\" answers the three lock-in fears (warranty, traceable calibration, records issued). [warranty position on other makers' systems] is a new placeholder (FD-07, FD-30); [calibration provider and accreditation held] is svc-service's name (FD-32). If FD-30 says no other make is served, the FAQ goes with FAQ 1's bracket",
+  "Pass 11, offer § 14 training and notice: no new copy here. Training on a changed module (controls replacement especially) follows the svc-cq training FAQ once FD-26 decides training; shutdown dates are the client's plan. project-plan not added to related: an upgrade runs on this page's own steps",
+  "Pass 11 review findings 2 and 5: lead restores \"polypropylene (PP)\" (first use before the upgrades table, DR-003 rule 4); warranty FAQ opens with the answer (\"It can\") and spells out IQ and OQ (DR-003 rules 3 and 4)"
  ],
  "facts": [
   {

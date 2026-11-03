@@ -6,7 +6,8 @@
    or in front of the train. A numbered pin sits on each dashed part; the notes carry the same numbers. A note's number
    is a button: pressing it brings that part into focus on the drawing (motion.js); Escape or pressing it again lets
    go, the arrow keys step through the notes.
-   Fields (an options block): h, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun.
+   Fields (an options block): h, intro, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun.
+   intro prints under the title through wSecHead.
    New optional fields: train: the standard train left to right (part: an IsoKit kind, label: a short drawing label);
    per item: at (position along the train, 0 = first part, fractions between), part (the IsoKit kind drawn dashed;
    default filter), row ("back" or "front", default alternating).

@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun.",
  "best_for": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "svc-fabrication",
@@ -41,6 +41,68 @@
      }
     ],
     "nav": "Dossier"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 5,
+   "h": "Onboarding papers and their status",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "31e47d45fa",
+   "block": {
+    "type": "docs",
+    "nav": "Onboarding",
+    "anchor": "onboarding",
+    "h": "Onboarding papers and their status",
+    "intro": "Procurement checks these before award. Each shows its status today; ask for any of them with your RFQ.",
+    "items": [
+     {
+      "t": "Corporate registration",
+      "d": "[corporate registration, jurisdiction and number]",
+      "code": "REG",
+      "key": true,
+      "link": "about#facts"
+     },
+     {
+      "t": "Certificate of insurance",
+      "d": "Status: [certificate of insurance status]. Limits are in our company facts.",
+      "code": "INS",
+      "key": true,
+      "link": "about#facts"
+     },
+     {
+      "t": "Workers' compensation clearance",
+      "d": "Workplace Safety and Insurance Board (WSIB), Ontario: [WSIB clearance status]",
+      "code": "WSIB"
+     },
+     {
+      "t": "Tax registration",
+      "d": "Business number and sales tax account: [tax registration status]",
+      "code": "TAX"
+     },
+     {
+      "t": "Bank letter",
+      "d": "[bank reference letter status]",
+      "code": "BNK"
+     },
+     {
+      "t": "Quality system status",
+      "d": "[ISO 9001 status, registrar and expiry]",
+      "code": "QMS",
+      "link": "cmp-quality#certification"
+     },
+     {
+      "t": "Supplier questionnaire",
+      "d": "Your form completed, or our pack, from [quality system ready for audit, date]",
+      "code": "SQ",
+      "link": "cmp-quality#audit",
+      "intent": "Your questionnaire, completed"
+     }
+    ],
+    "look": "code-index"
    }
   }
  ]

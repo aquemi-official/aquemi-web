@@ -4,7 +4,8 @@
    its one-way exit, the plant bus. Right, the section title large in the top cell, then the options as cells (two
    wide, then three) under huge light slash numerals. Pointing at an option (or focusing its link) lights its part in
    the blueprint tile. Concept: research/pass9b/concepts/sys-monitoring.4.png.
-   Fields: h, items [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
+   Fields: h, intro (optional; printed under the title in the top cell through wSecHead, as option-taps does), items
+   [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
    option sets; none: no part lights). Phones: the field shortens to two rows over the cells, which stack. */
 var OC_PAT=['n','l','n','s','s','b','b','n','l','b','b','l','n','s','n','l'];
 function ocPlate(){

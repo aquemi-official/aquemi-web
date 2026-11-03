@@ -101,7 +101,7 @@
    "type": "prose",
    "as": "explainer",
    "h": "What a case study proves",
-   "intro": "Each published figure will carry four things your team can check.",
+   "intro": "Each published figure will carry four things your team can check. Each case also states what was hard and how it was handled [confirm].",
    "points": [
     {
      "t": "Figure",
@@ -135,7 +135,15 @@
     },
     {
      "q": "Can we speak to a client in our segment?",
-     "a": "[reference clients available, number]. Speaking to a client needs one in your segment who agrees in writing. Until then, run the checks above or talk to the engineer who would lead your project."
+     "a": "None yet. A reference call needs a client in your segment who agrees in writing. If your tender requires references, ask us before it closes. We say what exists and what to check instead.",
+     "link": "buying#faq",
+     "link_label": "References in a tender"
+    },
+    {
+     "q": "You are a new company. Is the technology new too?",
+     "a": "No. The company is new; the parts are not: [membranes and instruments bought from their makers]. Membranes, electrodeionization (EDI) modules and resin arrive with makers' certificates and serial or lot numbers. Our work is the design, the joints and the tests. Each leaves a record you can check.",
+     "link": "cmp-quality#suppliers",
+     "link_label": "See our supplier requirements"
     },
     {
      "q": "Are the figures from your tests or from the client?",
@@ -154,9 +162,10 @@
    "h": "Where to check us next",
    "items": [
     "about",
-    "cmp-quality#buying",
+    "buying",
     "cmp-documentation",
-    "compliance"
+    "compliance",
+    "project-plan"
    ]
   }
  ],
@@ -183,7 +192,7 @@
   "KEY (DR-016 rule 8; FD-42): after the first delivered project is accepted and its client approves text and figures in writing, add one case record in language/register.md E13's pattern: \"[client segment, province]: [problem in plain words], [measured outcome with unit] in [weeks]\", then capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), each with method and report number; system as supplied, including [PP loop sanitization method]; timeline from order to PQ; equipment new or replaced; deviations raised and closed. The template record taken off the page in pass A is in git at aquemi-web dbee6fc (block \"The record each case study fills\"); the CaseStudy component renders it",
   "After project 1 (DR-016 rule 8): nav_label may revert; one measured hero figure may return (DR-010); a reference-call row and button only once [reference clients available, number] is 1 or more (FD-41), with [reference call lead time, working days]",
   "Launch (DR-004 class 2; DR-006 rule 6): keep each check row only once it exists, else drop it: shop visit and FAT witness ([shop and test bay ready for visits], FD-44), specimen package (FD-47), supplier audit ([quality system ready for audit, date], FD-48). A kept row loses its \"once\" or \"from\" clause. The hero and closing button becomes the first check that exists, shop visit first; until one exists, \"Talk to an engineer\" (DR-016 rule 5)",
-  "References (FD-41): [reference clients available, number], per segment, for the FAQ answer; once answered, the number by segment or \"Not yet.\"; never \"we can offer\" (DR-016 rule 7)",
+  "References (FD-41): the FAQ answer \"Can we speak to a client in our segment?\" opens \"None yet.\", the same status as buying#faq (\"Can you bid where references are required?\"): one status on both pages (DR-011; pass 11 review finding 10). Once FD-41 gives [reference clients available, number] of 1 or more, both pages change together, by segment; never \"we can offer\" (DR-016 rule 7)",
   "Confirm as Aquemi practice: second engineer checks each published figure ([confirm] in \"The approval\"); the client may withdraw approval; deviations stated in each case; case updated at each milestone; a redacted FAT protocol and report can be shown",
   "Times in working days, one name each: [shop visit notice, working days], [FAT witness notice, working days] (FD-44), [specimen package response time, working days] (cmp-documentation), [on-site audit notice, working days] (cmp-quality), [compliance matrix response time, working days] (compliance), first reply [proposal response time, working days] (every page). At launch an unset time is cut (DR-006 rule 7)",
   "Fit check cost ([fit check cost or free], FD-02; contact-proposal's requests table): \"Free\" or the figure in CAD beside the closing button (DR-005 rule 4); unset at launch, the cost line goes (DR-005 rule 8)",
@@ -191,7 +200,12 @@
   "Whether a prospect may witness another client's FAT before award, and on what terms (NDA, that client's written permission) (FD-44)",
   "Project photographs for each published case (with the client's permission)",
   "Industry and system filter, once there are enough published case studies",
-  "Terms (pass A open question 2, reopened by the buyer panel of 2026-10-31: site head and procurement): once cmp-quality's terms block ships (DR-005 rule 8), add one FAQ line, \"What happens if you fail mid-project?\", in its rows' words and names ([milestone structure]; [drawing ownership or licence terms]; [code delivered unlocked, and who owns it]), linked to cmp-quality#buying (\"How buying from us works\"; DR-009 rule 1). Not before: today it would add a visible question for an answer of three placeholders"
+  "Terms (pass A open question 2, reopened by the buyer panel of 2026-10-31: site head and procurement): once the buying page's terms ship (DR-005 rule 8; pass 11 moved them from cmp-quality#buying), add one FAQ line, \"What happens if you fail mid-project?\", in its rows' words and names ([milestone structure]; [drawing ownership or licence terms]; [code delivered unlocked, and who owns it]), linked to buying#terms (\"How buying from us works\"; DR-009 rule 1). Not before: today it would add a visible question for an answer of three placeholders",
+  "Pass 11 (proof-and-seriousness.md § 2.10, § 4 item 8, § 5.2; L-G3-11 [UBC-REF]): the case standard's intro adds \"what was hard and how it was handled\" as a fifth thing a published case carries. RecordAnatomy draws four points only, so it sits in the intro, not as a fifth point. Confirm as Aquemi practice with the other case rules (FD-42); the intro sentence carries [confirm] until then (DR-016 rule 3)",
+  "Pass 11 (proof-and-seriousness.md § 3 and § 4 item 6; L-15-23, PB-15.18): FAQ \"You are a new company. Is the technology new too?\" separates a new company from new technology. It names membranes, EDI modules and resin, the rows the link shows. Its facts are the site's own (cmp-quality#suppliers: makers' certificates with serial or lot numbers for membranes, EDI modules and resin) and MISSION's scope (design, fabrication, FAT). Home's risk FAQ (commercial phrasebook change 5) says the same in one sentence; this answer is the fuller home. Never name a maker or a partner's former projects as references (DR-004, DR-016). Confirm against the bill of materials (FD-20), as home's phrasebook 5 line: a part not bought from its maker leaves the sentence",
+  "Pass 11 (SITE-PLAN; structure-and-sitemap.md § 4.4 B7; L-11-6, L-15-3): FAQ \"Can we speak to a client in our segment?\" links buying#faq, where the reference question in a tender is answered honestly (none yet; what to check instead); buying links back to projects#verify, a round trip kept because buying adds the tender advice. The related row links buying in place of cmp-quality#buying, and project-plan (desk Q1: the project plan linked from Projects). If buying does not ship, both buying links return to cmp-quality",
+  "Hold (proof-and-seriousness.md § 2.10, P27; L-G1-12; DR-016): the reference table (client type, province, L/h, scope, year, reference call yes or no) stays unbuilt until project 1",
+  "Pass 11 integration (DR-011, one name per fact; placeholder-names Parts sourcing row, FD-20): the new-technology FAQ names the sourcing fact as home's risk FAQ does, [membranes and instruments bought from their makers]; the certificates sentence stays flat (cmp-quality#suppliers). When FD-20 confirms, both brackets become 'membranes and instruments come from their makers' together; if not, both sentences go"
  ],
  "hero_index": false,
  "figure": {

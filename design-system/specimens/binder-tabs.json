@@ -4,7 +4,7 @@
  "type": "steps",
  "fields": "h, intro, items [{t, d, link, label}]. label: the tab's short text (\"IQ\", \"FAT · SAT\"); without one the tab shows the stage number.",
  "best_for": "BinderTabs files ordered stages as tab dividers in the open qualification binder, each signed off before the next (look `binder-tabs`, steps block).",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "svc-cq",
@@ -51,6 +51,123 @@
       "t": "Periodic review",
       "d": "Yearly review of data and changes; requalify where they point.",
       "label": "Review"
+     }
+    ],
+    "look": "binder-tabs"
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 1,
+   "h": "What a Purified Water URS should settle",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "64d48e08b1",
+   "block": {
+    "type": "steps",
+    "look": "binder-tabs",
+    "anchor": "outline",
+    "nav": "Outline",
+    "h": "What a Purified Water URS should settle",
+    "intro": "Give every requirement a number and one sentence. Suppliers then answer in your numbering, and your evaluators score the same rows.",
+    "items": [
+     {
+      "t": "Water grade and system boundary",
+      "d": "Purified Water to USP, Ph. Eur. or both, by edition. Say where the system starts and ends, and what is by others.",
+      "label": "Grade"
+     },
+     {
+      "t": "Demand and points of use",
+      "d": "List every point of use, washers and humidifiers too. Give peak draw in L/h, daily volume, temperature and planned growth.",
+      "label": "Demand"
+     },
+     {
+      "t": "Feed water",
+      "d": "Attach feed water analyses from every season, and the coldest feed temperature. Cold feed cuts membrane output.",
+      "label": "Feed"
+     },
+     {
+      "t": "Quality limits and where you prove them",
+      "d": "Name each limit and its pharmacopoeia. Say where it is measured, online or in the lab, and who sets alert and action levels.",
+      "label": "Limits"
+     },
+     {
+      "t": "Sanitization, then materials",
+      "d": "Settle the sanitization method first: it decides the materials. Then write materials as performance, unless a standard names one.",
+      "label": "Sanitize",
+      "link": "urs-guide#clauses"
+     },
+     {
+      "t": "Controls, alarms and data",
+      "d": "Where failed water goes, restart after a power cut, user access, audit trail, data retention and backup, and screen language.",
+      "label": "Controls"
+     },
+     {
+      "t": "Room, utilities and approvals",
+      "d": "Room size and access, power, air, drains and room temperature. Name who obtains each Canadian approval, such as pressure registration.",
+      "label": "Site"
+     },
+     {
+      "t": "Testing and acceptance",
+      "d": "Who writes and approves each protocol, and whether factory test results count toward qualification. Define acceptance: tests, run length, signatures.",
+      "label": "Tests"
+     },
+     {
+      "t": "Documents, service and spares",
+      "d": "A dated document schedule, the handover set, response hours, spares on site, training hours and the warranty start event.",
+      "label": "Handover"
+     }
+    ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 2,
+   "h": "Your URS or RFQ, answered line by line",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "b96c4f5758",
+   "block": {
+    "type": "steps",
+    "nav": "Your RFQ",
+    "anchor": "answer",
+    "h": "Your URS or RFQ, answered line by line",
+    "intro": "Send your user requirements specification (URS), request for quotation (RFQ) or tender. It comes back answered in your own numbering.",
+    "items": [
+     {
+      "t": "Your numbering kept",
+      "d": "Every clause answered where you wrote it. Nothing renumbered, merged or skipped.",
+      "label": "Clauses"
+     },
+     {
+      "t": "One answer per line",
+      "d": "Meets, meets with a note, or differs. A line that does not apply says why.",
+      "label": "Answer"
+     },
+     {
+      "t": "The proof beside it",
+      "d": "Each answer names the document and page that shows it.",
+      "link": "cmp-documentation#index",
+      "label": "Proof"
+     },
+     {
+      "t": "Departures on one page",
+      "d": "Every departure from your specification, with its reason. If there is none, the page says \"none\".",
+      "label": "Departures"
+     },
+     {
+      "t": "Your bid form, filled in",
+      "d": "Every field answered, none left blank. Send the form or comparison grid with your RFQ.",
+      "label": "Bid form"
+     },
+     {
+      "t": "Our answers bind us",
+      "d": "What the answers state can go into your purchase order as written [confirm].",
+      "label": "Contract"
      }
     ],
     "look": "binder-tabs"

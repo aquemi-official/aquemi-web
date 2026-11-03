@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: h, cols [field, what it proves, record], rows, fold, fold_noun. The column names show once as the log's legend (in each row for screen readers; shown per row on phones). The fold applies on phones only.",
  "best_for": "JointSpine shows a log as rows hanging off a pipe: a twin-wall pipe drops in beside the title, bends and runs down the log as its spine, and each row sits level with a numbered joint on it.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "svc-fabrication",
@@ -70,6 +70,125 @@
     "as": "evidence",
     "fold": 4,
     "fold_noun": "fields"
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 2,
+   "h": "Must-haves, preferences and how bids answer",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "17cc4ccc4e",
+   "block": {
+    "type": "table",
+    "look": "joint-spine",
+    "anchor": "priority",
+    "nav": "Must-haves",
+    "h": "Must-haves, preferences and how bids answer",
+    "cols": [
+     "Practice",
+     "What it does to the bids",
+     "Use it for"
+    ],
+    "rows": [
+     [
+      "Must-have",
+      "One shortfall ends a bid, whatever its price.",
+      "What your product, your inspector or a written standard requires"
+     ],
+     [
+      "Preference",
+      "Scored against the other bids.",
+      "Features you would trade for price, time or service"
+     ],
+     [
+      "Too many must-haves",
+      "Fewer suppliers can bid; sometimes only one is left.",
+      "Ask of each one: is this the outcome, or one way to reach it?"
+     ],
+     [
+      "One answer format",
+      "Every row answered: meets, meets with a note, or differs, with the proving document.",
+      "Every row of the URS"
+     ],
+     [
+      "One deviation list",
+      "Silence is often read as full compliance, and enforced later.",
+      "Every difference, keyed to your row numbers, with its reason"
+     ],
+     [
+      "Separate price lines",
+      "Shows what each bid includes, and lets you trim options to your budget.",
+      "Factory and site tests, documents, start-up, training, spares and options"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 1,
+   "h": "What every proposal lists, line by line",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "bc44f2b108",
+   "block": {
+    "type": "table",
+    "nav": "Proposal",
+    "anchor": "proposal",
+    "h": "What every proposal lists, line by line",
+    "intro": "The same lines, in the same order, every time. Each is marked included, priced option or by others; none is left blank.",
+    "cols": [
+     "Line",
+     "Included, option or by others",
+     "What the line states"
+    ],
+    "rows": [
+     [
+      "Package: pretreatment to distribution",
+      "Included",
+      "Each module and each point of use, sized from your water analysis"
+     ],
+     [
+      "Installation support",
+      "[installation scope]",
+      "Who places, connects and fills it, up to the connection points"
+     ],
+     [
+      "Factory acceptance test (FAT)",
+      "[FAT in the price or priced option]",
+      "What is tested in our shop, and how you witness it"
+     ],
+     [
+      "Site acceptance test (SAT) and commissioning",
+      "[SAT and commissioning: included or option]",
+      "Tests on your feed water before qualification starts"
+     ],
+     [
+      "Installation and operational qualification (IQ and OQ)",
+      "[IQ and OQ: included or priced option]",
+      "Who drafts and runs the protocols, and who approves them"
+     ],
+     [
+      "Training",
+      "[training hours and audiences]",
+      "Who is trained, for how long, and the signed record"
+     ],
+     [
+      "Documents",
+      "Included",
+      "The document list, each marked for information or for approval"
+     ],
+     [
+      "First-year spares",
+      "[first-year spares: included or priced option]",
+      "Parts and quantities for the first year"
+     ]
+    ],
+    "look": "joint-spine"
    }
   }
  ]

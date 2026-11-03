@@ -99,9 +99,9 @@
    "page": "home",
    "slot": 4,
    "h": "Start from where your project is",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "dcd00a4289",
    "block": {
@@ -160,6 +160,105 @@
       {
        "t": "Commissioning and qualification",
        "link": "svc-cq"
+      }
+     ],
+     [
+      "A system to upgrade, or a water observation",
+      "What to change, or the observation",
+      "Options with their downtime and the requalification each triggers",
+      {
+       "t": "Upgrades and water observations",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Production stopped or water out of specification",
+      "A call to [service phone number], [service phone hours]",
+      "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+      {
+       "t": "Service request",
+       "link": "contact-service",
+       "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 1,
+   "h": "Start from where your project is",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "85fe2279d4",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "anchor": "start",
+    "h": "Start from where your project is",
+    "cols": [
+     "Your situation",
+     "Send us",
+     "What comes back",
+     "Where to start"
+    ],
+    "rows": [
+     [
+      "No URS yet, a first system or an early budget",
+      "What you make, and roughly how much water a day",
+      "The grade each step needs, the package and how to estimate cost",
+      {
+       "t": "Your first system and its cost",
+       "link": "first-system"
+      }
+     ],
+     [
+      "Writing a URS, alone or with a consultant",
+      "Nothing yet; your draft when you want it checked",
+      "The order buyers use, and clauses that keep the design open",
+      {
+       "t": "Writing your URS",
+       "link": "urs-guide"
+      }
+     ],
+     [
+      "A URS, approved or in draft",
+      "Your URS and feed water analysis",
+      "A proposal, or a gap review of a draft",
+      {
+       "t": "Send your URS",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft"
+      }
+     ],
+     [
+      "Comparing quotes and terms",
+      "Your bid grid, if you use one",
+      "The lines to level between quotes, and our terms",
+      {
+       "t": "Buying from Aquemi",
+       "link": "buying#compare"
+      }
+     ],
+     [
+      "Qualifying suppliers",
+      "Your questionnaire, if you use one",
+      "The record each process leaves, and how to audit it",
+      {
+       "t": "Quality management",
+       "link": "cmp-quality"
+      }
+     ],
+     [
+      "How long a project takes, and who does what",
+      "Your target date for water in use",
+      "Each stage with its length, notice and who holds it",
+      {
+       "t": "How a project runs",
+       "link": "project-plan"
       }
      ],
      [

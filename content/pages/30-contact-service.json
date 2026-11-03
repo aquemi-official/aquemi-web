@@ -69,7 +69,7 @@
    "type": "table",
    "nav": "Response times",
    "h": "Response times by request",
-   "intro": "Times apply on a service plan; without one, a call-out with the next available technician.",
+   "intro": "Times apply on a service plan; otherwise, a call-out with the next available technician. In warranty, call this line with the serial number. [warranty periods: package, service work, consumables] from [warranty start event]; [warranty exclusions].",
    "cols": [
     "Your request",
     "First response",
@@ -104,7 +104,7 @@
     [
      "Parts and consumables",
      "Quote within [parts quote turnaround, working hours]",
-     "Checked like for like against your qualified parts list, with certificates"
+     "Matched by tag or part number to your qualified parts list, like for like, with certificates"
     ],
     [
      "First service, other make",
@@ -552,7 +552,7 @@
     },
     {
      "q": "We have no service plan. Will you come?",
-     "a": "Yes, inside [service coverage area], as a call-out with the next available technician, at [call-out and hourly rates, CAD]."
+     "a": "Yes, inside [service coverage area], as a call-out with the next available technician. You pay [call-out and hourly rates, CAD], travel at [travel charge basis] and parts as quoted. Every visit ends with a signed report."
     }
    ]
   }
@@ -583,7 +583,11 @@
   "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [PP material certificates]. The form's option names no material, so it fits any builder's system; the elastomer option names no standard ([elastomer certificates per compound] is cmp-quality's name for what ships; FD-17).",
   "Uploads and privacy (FD-39): [maximum upload size, MB], as on contact-proposal; [privacy notice link], contact-proposal's name, covering PIPEDA and Quebec Law 25 after counsel's check (OQ-81).",
   "Language for the reply (FD-36, DR-012): the field (English, French) returns to step 3 only once a named French-speaking technician or engineer replies within the same times, as on contact-proposal (DR-012 rule 2 and consequences).",
-  "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004)."
+  "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004).",
+  "Pass 11 (offer § 14 CS1; L-14-3, L-08-2; FD-07, FD-27): response table intro adds the warranty route, \"In warranty, call the same line with the serial number.\" The offer draft's \"same times\" in warranty is held until FD-07 and FD-27 say warranty calls get plan response times. The intro adds the warranty terms (buying's three names since the pass 11 integration), so a warranty caller reads the basis, not a charged call-out (pass 11 review finding 7; DR-024)",
+  "Pass 11 (offer § 14 CS2; L-03-10, L-12-13, L-12-9, L-13-15; FD-29, FD-31): the no-plan FAQ now names what is charged: [call-out and hourly rates, CAD], travel at [travel charge basis] (new name for ops/placeholder-names.md) and parts as quoted, and the signed report after every visit (phrasebook § 3 pattern 15)",
+  "Pass 11 (offer § 14 CS3; L-15-20, L-14-1, L-13-5; FD-11): the parts row's What follows reads \"Matched by tag or part number to your qualified parts list, like for like, with certificates\"; the form's \"Parts needed\" help asks for the tag (pass 11 review finding 6: \"Quote\" as a verb beside \"Quote\" as a price read as a contradiction)",
+  "Pass 11 integration (DR-011, one name per fact; placeholder-names Warranty row): the response table intro's warranty line uses buying#terms' three names, [warranty periods: package, service work, consumables], [warranty start event] and [warranty exclusions], replacing the retired [warranty period, start, exclusions]"
  ],
  "hero_index": false,
  "figure": {

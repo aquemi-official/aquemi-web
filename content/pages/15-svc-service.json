@@ -7,7 +7,7 @@
  "path": "/services/service-spare-parts/",
  "eyebrow": "SERVICE AND SPARE PARTS · USP <645>",
  "headline": "Service that keeps your system qualified",
- "lead": "For our polypropylene package and [makes and equipment types serviced]: response times by severity, like-for-like parts, calibrations and signed reports.",
+ "lead": "Service in writing: response times by severity, like-for-like parts, calibrations and a signed report after every visit. For our polypropylene package and [makes and equipment types serviced].",
  "tags": [
   "GUI-0001",
   "EU GMP Annex 15",
@@ -109,6 +109,7 @@
    "nav": "Running cost",
    "anchor": "running-cost",
    "h": "What it costs to run",
+   "intro": "Intervals depend on your feed water and daily draw; we set the first schedule from your water analysis.",
    "cols": [
     "Item",
     "Interval or amount",
@@ -246,7 +247,7 @@
     },
     {
      "t": "Signed report",
-     "d": "As-found, as-left and return-to-service results, signed before we leave.",
+     "d": "As-found, as-left and return-to-service readings, work done, parts and lots. Signed before we leave, for your quality file.",
      "end": true,
      "spot": "stamp",
      "part": "report"
@@ -320,7 +321,7 @@
    "items": [
     {
      "t": "Call",
-     "d": "[service phone number], [service phone hours]. Severity 1: always call."
+     "d": "[service phone number], [service phone hours]. Severity 1: always call. In warranty, call the same line with the serial number."
     },
     {
      "t": "Triage",
@@ -344,6 +345,7 @@
   {
    "type": "faq",
    "nav": "FAQ",
+   "anchor": "faq",
    "h": "Common questions",
    "items": [
     {
@@ -354,6 +356,16 @@
      "intent": "Parts and consumables"
     },
     {
+     "q": "What does our team do between visits?",
+     "a": "[operator time, minutes a day]: read conductivity and alarms, keep the daily log and top up softener salt. Call at the first odd reading; a fault reported early is shorter to fix. The daily log is also one of your warranty conditions.",
+     "link": "buying#faq",
+     "link_label": "What keeps the warranty valid"
+    },
+    {
+     "q": "We stop production for two weeks. What does the system need?",
+     "a": "It depends on how long the system stands: [idle-period rules by duration]. Your operating manual carries the steps. Before the water goes back into use, your restart sampling and release apply. Tell us the dates if you want a visit for the restart."
+    },
+    {
      "q": "Do you service other makers' systems?",
      "a": "For [makes and equipment types serviced]: we start with a condition survey and a review of drawings, records and spares, then quote a plan. Missing records do not stop a visit. Parts for other makes: [parts supplied for other makes].",
      "link": "contact-service#request",
@@ -362,7 +374,7 @@
     },
     {
      "q": "Will you work to our SOPs and forms?",
-     "a": "On request, we follow your standard operating procedures (SOPs) and fill in your work orders and logbooks. We take your site induction and good manufacturing practice (GMP) training.",
+     "a": "On request, we follow your standard operating procedures (SOPs) and fill in your work orders and logbooks. We take your site induction and good manufacturing practice (GMP) training. Planned visits are booked [planned visit notice, working days] ahead, so your permits and induction are ready.",
      "link": "contact-service#request",
      "link_label": "Book a maintenance visit",
      "intent": "Preventive maintenance"
@@ -414,6 +426,16 @@
   "Pass 10 intents (SITE-PLAN 4.5): calibration (I1) on the conductivity row of \"Instrument calibration\"; parts (I3) on FAQ 1, maintenance (I2) on the SOPs FAQ and first service on another make (I5) on the other-makers FAQ, all to contact-service#request. I2 and I3 belong to the visit and like-for-like sections, but visit-plan items and spare-sheet carry no intent; move them there if those looks gain one (shared code). Launch rule: I5 goes, with the FAQ's bracket, if FD-30 answers that no other make is served",
   "Drawings, launch blocker (DR-018 rule 2; FD-16, FD-21): pass 10 removed the leaders from the UV lamp (row 3 now points at pretreatment only) and from the RO and EDI or DI row (EDI or DI is open), but cost-skid's fixed drawing still shows a UV unit and an EDI stack, visit-plan's drawing a UV unit, an EDI stack and a diaphragm valve (item 4 points at the UV unit), and spare-sheet's match art EDI and lamp glyphs, as standard parts. Shared code (a SITE-PLAN 5 X-row for CostSkid and VisitPlan, spare-sheet's glyphs with them): UV dashed while [UV, standard or option] is open, the generation stack as one neutral RO and DI/EDI rack, the point-of-use valve neutral as in X9. None of the three looks ships until that lands or FD-16 and FD-21 confirm UV and EDI as standard",
   "Calibration look (pass 10): signal-dial kept over the retired tolerance-scales, which honours hl but prints no link (I1) and sets the USP <645> tolerances as the largest figures (DR-018 rule 3); signal-dial opens on channel 01, the USP <645> conductivity row, so that row still leads",
-  "Pass 10 cut the FAQ \"What does a service plan cost?\" (DR-009): its answer repeated the running-cost row (\"From [lowest plan price, CAD per year]\", set by system, instruments and distance) and the plans table's price row. [lowest plan price, CAD per year] keeps its home in the running-cost row"
+  "Pass 10 cut the FAQ \"What does a service plan cost?\" (DR-009): its answer repeated the running-cost row (\"From [lowest plan price, CAD per year]\", set by system, instruments and distance) and the plans table's price row. [lowest plan price, CAD per year] keeps its home in the running-cost row",
+  "Pass 11, phrasebook 24 (L-12-2, L-G1-7; PB-12.19, PB-10.10): lead opens \"Service in writing\" and promises a signed report after every visit (the visit route's last stop says the same)",
+  "Pass 11, phrasebook 15 (L-13-18, L-12-12, L-06-11; PB-13.11): running-cost intro \"we set the first schedule from your water analysis\": confirm as Aquemi practice (FD-21, FD-29). A first-year service calendar (L-12-14) and what Aquemi stands behind on running cost (L-09-14) wait on the plan shapes (FD-29; structure-and-sitemap § 4.8, svc-plans)",
+  "Pass 11, offer § 14 visit report (L-13-15): the Signed report stop lists readings as found and as left, work done, parts and lots, for the client's quality file. A specimen field service report waits on FD-47 (no specimen exists); whether the client countersigns is FD-31",
+  "Pass 11, offer § 14 response clock (offer § 9 and § 14 CS1; L-14-3, L-08-2), owner decision: Call step \"In warranty, call the same line with the serial number\", contact-service's response intro word for word (review finding 1, DR-011; FD-07, FD-27). One wording on both pages",
+  "Pass 11, offer § 14 notice (L-12-2): SOPs FAQ adds \"Planned visits are booked [planned visit notice, working days] ahead\" (new placeholder, FD-27 or FD-31; add to ops/placeholder-names.md, Notice times row)",
+  "Pass 11, phrasebook 13 (L-12-21, L-14-19, L-01-13, L-05-12; PB-14.3) and warranty conditions to keep (L-G3-4, L-14-2; PB-14.5), owner decision: new FAQ \"What does our team do between visits?\" with [operator time, minutes a day] (FD-52 neighbour; a different fact from first-system's staff hours in year one). The daily-log sentence and its link point at the warranty conditions' one home, buying#faq (phrasebook 9, SITE-PLAN buying); confirm the daily log as a warranty condition (FD-07)",
+  "Pass 11, phrasebook 22 (L-14-19, L-14-17; PB-14.8): new FAQ \"We stop production for two weeks...\" with [idle-period rules by duration]; confirm the operating manual carries idle-period rules (FD-26). Storage before start-up stays on systems#site or project-plan (L-14-17)",
+  "Launch rule (review finding 6): the warranty sentence and the buying#faq link in \"What does our team do between visits?\" ship only when buying launches with FD-07 confirming the daily log as a condition; otherwise both go and the FAQ ends at 'shorter to fix.'",
+  "Pass 11, related: project-plan not added; service starts after handover, and project-plan covers delivery (SITE-PLAN svc pages, reviewed; review finding 7). contact-locations stays: a service reader needs coverage more than delivery stages",
+  "Pass 11 review finding 3: idle-period FAQ opens with the answer and adds the release line (restart sampling and release are the client's before reuse). Review finding 8: the FAQ block gains anchor faq, the home of operator duties ([operator time, minutes a day]); services FAQ 6 should link svc-service#faq (cross-file)"
  ]
 }

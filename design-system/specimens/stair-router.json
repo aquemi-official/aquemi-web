@@ -111,9 +111,9 @@
    "page": "services",
    "slot": 0,
    "h": "Where to start",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "f0b01dd8b3",
    "block": {
@@ -195,6 +195,117 @@
       {
        "t": "Process design: what specifiers receive",
        "link": "svc-design#faq"
+      },
+      "Your client's URS or specification, and the bid date",
+      "A compliance matrix against it, within [compliance matrix response time, working days]"
+     ]
+    ],
+    "as": "router",
+    "nav": "Where to start",
+    "look": "stair-router",
+    "labels": [
+     "New system",
+     "Design approved",
+     "Skid in build",
+     "Installed",
+     "In service",
+     "Aging",
+     "Comparing suppliers",
+     "Specifying for a client"
+    ],
+    "kinetic": [
+     "Start",
+     "Go"
+    ]
+   }
+  },
+  {
+   "page": "services",
+   "slot": 0,
+   "h": "Where to start",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "4d310edaf3",
+   "block": {
+    "type": "table",
+    "h": "Where to start",
+    "cols": [
+     "Your situation",
+     "Start with",
+     "What to send",
+     "What comes back"
+    ],
+    "rows": [
+     [
+      "New system, user requirement specification (URS) approved or in draft",
+      {
+       "t": "Process design: request a URS gap review",
+       "link": "svc-design"
+      },
+      "Your URS, feed water analysis, peak demand in L/h",
+      "A compliance matrix marking every gap, within [URS review turnaround, working days]"
+     ],
+     [
+      "Design approved",
+      {
+       "t": "Fabrication: request a spec review",
+       "link": "svc-fabrication"
+      },
+      "Approved drawings, piping and material specification, province",
+      "Clauses we meet or would change, a draft inspection plan, within [document review turnaround, working days]"
+     ],
+     [
+      "Skid in build, factory and site acceptance tests (FAT, SAT) ahead",
+      {
+       "t": "FAT and SAT: request a specimen FAT protocol",
+       "link": "svc-fat-sat"
+      },
+      "Your work email",
+      "Test cases with acceptance criteria, within [specimen package response time, working days]"
+     ],
+     [
+      "Installed or arriving, qualification ahead",
+      {
+       "t": "Commissioning and qualification (C&Q): request a plan review",
+       "link": "svc-cq"
+      },
+      "URS, validation master plan, points-of-use list",
+      "Draft C&Q and sampling plans, within [document review turnaround, working days]"
+     ],
+     [
+      "In service and qualified",
+      {
+       "t": "Service: request a plan quote",
+       "link": "svc-service"
+      },
+      "System, age, instruments, standby and ride-through time",
+      "Plan, annual price, first-visit tasks, within [quote response time, working days]"
+     ],
+     [
+      "Aging, out of support, or about to change",
+      {
+       "t": "Upgrades: request a system assessment",
+       "link": "svc-upgrades"
+      },
+      "Drawings, a year of water data, the problem",
+      "Scope and price within [assessment response time, working days], then options with downtime and requalification"
+     ],
+     [
+      "Comparing suppliers",
+      {
+       "t": "Compare quotes and terms",
+       "link": "buying#compare"
+      },
+      "Your supplier questionnaire",
+      "Your questionnaire completed, within [audit request response time, working days]"
+     ],
+     [
+      "Consultant or contractor",
+      {
+       "t": "Writing your URS: notes for specifiers",
+       "link": "urs-guide#specification"
       },
       "Your client's URS or specification, and the bid date",
       "A compliance matrix against it, within [compliance matrix response time, working days]"

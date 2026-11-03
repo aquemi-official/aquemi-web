@@ -2,7 +2,7 @@
  "look": "grade-switch",
  "component": "GradeSwitch",
  "type": "table",
- "fields": "as the grades table: cols, rows [product, minimum, note].",
+ "fields": "as the grades table: cols, rows [product, minimum, note]. A note may be {t, link} (rendered through tcell), so a row can close with a pointer, e.g. the last row's {\"t\": \"If this is your first system\", \"link\": \"first-system\"}.",
  "best_for": "GradeSwitch sets a short grade table as a selector panel: one strip per product, a selector with one slot per water grade, the knob in the minimum and a dashed open slot where your specification may call for more.",
  "status": "live",
  "instances": [
@@ -82,9 +82,9 @@
    "page": "ind-pharma",
    "slot": 4,
    "h": "Natural health products: does this line need Purified Water?",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "002c022fd9",
    "block": {
@@ -119,6 +119,81 @@
       "Products sold abroad as drugs",
       "PW",
       "Under the importing market’s drug rules"
+     ]
+    ],
+    "look": "grade-switch",
+    "positions": [
+     {
+      "id": "potable",
+      "t": "Potable"
+     },
+     {
+      "id": "pw",
+      "t": "PW"
+     }
+    ],
+    "switch": [
+     [
+      "potable",
+      "pw?"
+     ],
+     [
+      "potable",
+      "pw?"
+     ],
+     [
+      "pw"
+     ],
+     [
+      "pw"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "ind-pharma",
+   "slot": 4,
+   "h": "Natural health products: does this line need Purified Water?",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "c98ef25499",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "nav": "Natural health products",
+    "anchor": "nhp",
+    "h": "Natural health products: does this line need Purified Water?",
+    "intro": "Potable water is the minimum; Purified Water only where your specification or a monograph asks. GUI-0158 asks for test records and qualified, monitored treatment.",
+    "cols": [
+     "Product",
+     "Minimum water",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Tablets, capsules and powders",
+      "Potable",
+      "PW only if your specification requires it"
+     ],
+     [
+      "Liquids, creams and lotions",
+      "Potable, or PW where your specification requires it",
+      "The highest microbial risk: limits and shelf life decide"
+     ],
+     [
+      "Homeopathic dilutions",
+      "PW, or another liquid the monograph names",
+      ""
+     ],
+     [
+      "Products sold abroad as drugs",
+      "PW, under the importing market’s drug rules",
+      {
+       "t": "If this is your first system",
+       "link": "first-system"
+      }
      ]
     ],
     "look": "grade-switch",

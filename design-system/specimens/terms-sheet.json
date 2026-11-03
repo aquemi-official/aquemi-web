@@ -139,9 +139,9 @@
    "page": "cmp-quality",
    "slot": 4,
    "h": "How buying from us works",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "a291065ef7",
    "block": {
@@ -203,7 +203,7 @@
    "page": "systems",
    "slot": 2,
    "h": "What changes on your site",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "19cb29a",
@@ -266,6 +266,185 @@
     ],
     "nav": "Site",
     "anchor": "site",
+    "look": "terms-sheet"
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 2,
+   "h": "What your site needs before we arrive",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "da5e208828",
+   "block": {
+    "type": "spec",
+    "h": "What your site needs before we arrive",
+    "cols": [
+     "Item",
+     "Typical",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Connection points (battery limits)",
+      "v": "[standard battery limits, typical scope]",
+      "m": "Listed in the proposal, with who supplies each"
+     },
+     {
+      "p": "Footprint and weight",
+      "v": "[typical footprint and weight, by capacity]",
+      "m": "On the general arrangement drawings"
+     },
+     {
+      "p": "Power, feed water and drain",
+      "v": "[supply voltage options]; [feed and drain flows, L/h]",
+      "m": "RO reject and rinse water to drain; [sanitization waste to drain: pH, temperature]"
+     },
+     {
+      "p": "Installation and field joints",
+      "v": "[installation scope]",
+      "m": "Joined by [PP joining method]; scope set in the proposal",
+      "link": "svc-fabrication#standard",
+      "link_label": "Our fabrication standard"
+     },
+     {
+      "p": "Electrical and pressure approvals",
+      "v": "Electrical: [panel certification mark held, or field evaluation used]",
+      "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
+      "link": "compliance#engineering",
+      "link_label": "Pressure and electrical approvals"
+     },
+     {
+      "p": "Tie-in and shutdown",
+      "v": "[typical shutdown for tie-in, days]",
+      "m": "Plan temporary water if production cannot stop"
+     },
+     {
+      "p": "Sanitizing chemicals",
+      "v": "[PP loop sanitization method]; residual tested before use",
+      "m": "[who supplies sanitizing chemicals and safety data sheets]; listed in the proposal",
+      "link": "sys-storage#sanitization",
+      "link_label": "Sanitization methods"
+     },
+     {
+      "p": "Isolation and lockout",
+      "v": "[lockable isolation points and lockout diagram]",
+      "m": "Marked on the drawings, for your lockout procedure"
+     }
+    ],
+    "nav": "Site",
+    "anchor": "site",
+    "look": "terms-sheet"
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 4,
+   "h": "How buying from us works",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "682ef30162",
+   "block": {
+    "type": "spec",
+    "nav": "Terms",
+    "anchor": "buying",
+    "h": "How buying from us works",
+    "cols": [
+     "Terms",
+     "What the buying page covers",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Terms of sale",
+      "v": "Proposal and validity · Lead time · Payment milestones · Warranty start and cover · Drawings and code · Your contract form",
+      "link": "buying#terms",
+      "link_label": "See the terms of sale",
+      "m": "Onboarding papers and their status are on the same page."
+     }
+    ],
+    "look": "terms-sheet"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 0,
+   "h": "Terms at a glance",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "68141b01e7",
+   "block": {
+    "type": "spec",
+    "nav": "Terms",
+    "anchor": "terms",
+    "h": "Terms at a glance",
+    "intro": "Every proposal opens with these terms, in this order. FAT and SAT are the factory and site acceptance tests.",
+    "cols": [
+     "Term",
+     "Ours",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Proposal",
+      "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid [proposal validity, days] · Lead time in weeks · Exclusions",
+      "m": "Ends with every departure from your specification and its reason, or a written \"none\"",
+      "link": "buying#proposal",
+      "link_label": "See the proposal lines"
+     },
+     {
+      "p": "Currency, tax and duty",
+      "v": "[quoting currency] · [quoting terms, imported content]",
+      "m": "Stated on page one of each proposal"
+     },
+     {
+      "p": "Delivery and lead time",
+      "v": "[delivery terms] · [lead time from order, weeks] · [lead time from drawing approval, weeks]",
+      "m": "Two clocks, stated separately: from your order and from approved drawings"
+     },
+     {
+      "p": "Payment milestones",
+      "v": "[milestone structure]",
+      "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT"
+     },
+     {
+      "p": "Acceptance and warranty start",
+      "v": "[warranty start event]",
+      "m": "Not from shipment. One warranty text in proposal, manual and contract"
+     },
+     {
+      "p": "What the warranty covers",
+      "v": "[warranty periods: package, service work, consumables] · [warranty exclusions]",
+      "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]"
+     },
+     {
+      "p": "Drawings and code",
+      "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
+      "m": "What you may change, copy and requalify, in writing"
+     },
+     {
+      "p": "Your contract form",
+      "v": "[contract form positions]",
+      "m": "Any clause we cannot accept is listed once in our proposal, with the reason"
+     },
+     {
+      "p": "Changes after order",
+      "v": "A signed change request before work starts [confirm]",
+      "m": "Price, schedule effect and payment on one page",
+      "link": "project-plan#changes",
+      "link_label": "See how changes work"
+     },
+     {
+      "p": "Non-disclosure agreement",
+      "v": "[NDA turnaround, working days] from receipt"
+     }
+    ],
     "look": "terms-sheet"
    }
   }

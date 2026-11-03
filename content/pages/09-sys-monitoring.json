@@ -56,7 +56,7 @@
   {
    "type": "table",
    "h": "Alert, action and trend",
-   "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot shows online readings.",
+   "intro": "You set the levels with our input. Microbial counts are laboratory results; the plot is a drawing of online readings, not site data.",
    "cols": [
     "Line",
     "How it is set",
@@ -137,12 +137,17 @@
     },
     {
      "p": "Divert",
-     "v": "Setpoint below your alert level; to drain or recirculation",
-     "m": "Value, time and duration recorded",
+     "v": "Setpoint below your alert level; to [divert route: drain or recirculation], never to storage",
+     "m": "Value, time and duration recorded; tested at the factory and site acceptance tests (FAT, SAT)",
      "at": [
       72.9,
       37.7
      ]
+    },
+    {
+     "p": "Restart after power loss",
+     "v": "[restart after power loss: automatic or operator release]",
+     "m": "Tested at FAT"
     },
     {
      "p": "Flow and pressure",
@@ -240,6 +245,7 @@
   {
    "type": "options",
    "h": "Options",
+   "intro": "Your proposal states each option's effect on drawings, tests and lead time.",
    "items": [
     {
      "t": "PLC and SCADA platform",
@@ -299,10 +305,16 @@
      "a": "No system is Part 11 compliant on its own: your site complies through its validated system and its procedures. Our Part 11 and Annex 11 assessment shows which clauses need a site procedure."
     },
     {
+     "q": "What should our URS say about controls and data?",
+     "a": "Rows you can test, not a brand. In your user requirement specification (URS), name the access levels and an audit trail that cannot be switched off. State data retention in years and restore time in hours. Add your site's controller (PLC) standard, if you have one.",
+     "link": "urs-guide#outline",
+     "link_label": "Writing your URS"
+    },
+    {
      "q": "Do we get full access to the PLC and HMI code?",
-     "a": "[code delivered unlocked, and who owns it]. The code's version and checksum are recorded at the factory acceptance test (FAT) [confirm]. You can then show the running code is the tested code.",
-     "link": "cmp-quality#buying",
-     "link_label": "How buying from us works"
+     "a": "[code delivered unlocked, and who owns it]. The code's version and checksum are recorded at the factory acceptance test (FAT): [code checksum recorded at FAT, yes or no]. You can then show the running code is the tested code.",
+     "link": "buying#terms",
+     "link_label": "Drawings and code terms"
     },
     {
      "q": "Our IT team allows no remote access to GMP equipment.",
@@ -344,7 +356,7 @@
   "PLC and SCADA platforms supported, and whether buyers may choose their site standard (FD-23): [PLC and SCADA platforms supported]. If buyers may choose, the options line adds 'or your site standard'. The integration protocols listed follow the platforms: confirm the list once they are set",
   "Who writes and tests the PLC and HMI code: Aquemi's own engineers or a named partner (FD-23). The validation and documents rows imply in-house",
   "Whether PLC and HMI application code is delivered unlocked, under which licence or ownership, and escrow for anything delivered locked (FD-10): [code delivered unlocked, and who owns it]. Fill it as the answer's opening yes or no (DR-003 rule 3); unfilled at launch, the question goes. The answer links cmp-quality#buying (\"How buying from us works\"): if that block does not ship, the link goes with it (cmp-quality todo[21])",
-  "Code version and checksum recorded at FAT as standard practice (FD-45; at SAT too, FD-10's recommendation): the FAQ answer marks it [confirm], as svc-fat-sat's FAQ does; drop the marker, or the sentence, once FD-45 is answered. Each access role tested at FAT: the access row, as svc-fat-sat's FAT column states it ('Roles, audit trail, time sync, backup and restore'); confirmed with that column's protocol scope",
+  "Code version and checksum recorded at FAT as standard practice (FD-45; at SAT too, FD-10's recommendation): the FAQ answer names [code checksum recorded at FAT, yes or no]; svc-fat-sat's FAQ names the same placeholder since the pass 11 integration (one name per fact, DR-011). Drop the placeholder, or the sentence, once FD-45 is answered. The FAQ links buying#terms (the code row moved there in pass 11). Each access role tested at FAT: the access row, as svc-fat-sat's FAT column states it ('Roles, audit trail, time sync, backup and restore'); confirmed with that column's protocol scope",
   "Historian recording interval for quality values, seconds (FD-23): [recording interval, seconds]",
   "Backup interval and default data retention, years (FD-23): [backup interval], [data retention, years]",
   "Qualified minimum return flow default, L/h (the site's flow unit, DR-003 rule 5), or a note that it is set per loop at qualification (FD-19): [qualified minimum return flow, L/h]",
@@ -359,6 +371,11 @@
   "A real controls project (new or upgrade) with scope and inspection outcome, published only with the client's written consent, before any case study block (FD-42)",
   "Ozone stays off this page, placeholders included, until the owner offers it on a PP maker's written rating for dissolved and headspace ozone (FD-16, DR-013 rule 4)",
   "Hero facts: none until an Aquemi figure exists, such as the recording interval or default retention once FD-23 sets them, labelled 'what, where · basis' (DR-010)",
-  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3)."
+  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3).",
+  "Pass 11 (phrasebook 23 alignment; buyer-requirements § 3.2, L-G2-4, L-07-4; phrasebook § 5.3): the divert row reads \"to [divert route: drain or recirculation], never to storage\", the same placeholder as sys-pw's diagram (FD-21, DR-011). A restart row is added: [restart after power loss: automatic or operator release] (FD-23); buyers often ask that the system fail safe and wait for the operator. FAT covers restart after power loss (svc-fat-sat's FAT column)",
+  "Pass 11 (proof § 5.2 P18; L-G1-14 caution, DR-018): the alarms intro labels the trend plot a drawing, not site data. Specimen HMI, alarm log and audit-trail screens stay Build (FD-47), labelled as specimens when made",
+  "Pass 11 (buyer-requirements § 3.2, L-10-14, L-G2-15, L-08-23): new FAQ on what a URS should say about controls and data links urs-guide#outline (new page, anchor fixed by pass 11 SITE-PLAN). Advice only; Aquemi's own retention and backup values stay [data retention, years] and [backup interval]",
+  "Pass 11 (proof § 5.2 P17, P23): option effects on documents and lead time are missing; the option-checker look has no intro field (cross-file: orchestrator adds intro through wSecHead, as option-taps does, or accepts the gap; then add sys-pw's options intro sentence). Instrument types and makers named only once chosen (FD-23)",
+  "Pass 11 integration (modules review finding 20): the options block (option-checker) takes the intro 'Your proposal states each option's effect on drawings, tests and lead time.', as sys-pretreatment's options do (finding 5); the look prints intro through wSecHead and its header comment now lists it"
  ]
 }

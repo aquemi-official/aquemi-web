@@ -47,7 +47,9 @@ LOOKS['record-anatomy']=function(b,H){var Pt=(b.points||[]).slice(0,4),num=funct
 /* Ported from Subframe Motion "Guided inspection" (guided-inspection), MIT, (c) 2026 Subframe
    The lit window: pointing at or focusing a title-block row glides a framed window onto that row's drawing (left,
    top, width, height, 0.55 s cubic-bezier(.22,.75,.22,1), the library's values, as a CSS transition so it is
-   instant under reduced motion) and the other drawings quieten; leaving the block lets the window go. */
+   instant under reduced motion) and the other drawings quieten; leaving the block lets the window go: raOff fades
+   it out and, once faded (its 200 ms opacity transition) and not relit, clears its inline place and size, so the hidden window collapses
+   back to nothing (0 by 0) instead of keeping the last drawing's box. */
 function raLens(w,i){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.querySelector('.aq-record-anatomy__lens');if(!L)return;
  var z=i==null?null:f.querySelector('.aq-record-anatomy__zone[data-z="'+i+'"]');
  [].forEach.call(f.querySelectorAll('.aq-record-anatomy__zone'),function(el){el.classList.toggle('is-on',el===z)});
@@ -55,7 +57,8 @@ function raLens(w,i){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.q
  f.classList.toggle('is-guided',!!z);if(!z)return;
  if(!f.classList.contains('has-lens')){L.style.transition='none';requestAnimationFrame(function(){L.style.transition=''})}
  f.classList.add('has-lens');L.style.left=z.offsetLeft+'px';L.style.top=z.offsetTop+'px';L.style.width=z.offsetWidth+'px';L.style.height=z.offsetHeight+'px'}
-function raOff(w){var f=w.querySelector('.aq-record-anatomy__field');raLens(w,null);if(f)f.classList.remove('has-lens')}
+function raOff(w){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.querySelector('.aq-record-anatomy__lens');raLens(w,null);if(!f)return;
+ f.classList.remove('has-lens');if(L)setTimeout(function(){if(f.classList.contains('has-lens'))return;L.style.transition='none';L.style.left=L.style.top=L.style.width=L.style.height='';void L.offsetWidth;L.style.transition=''},220)}
 if(typeof document!=='undefined'&&document.addEventListener){
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-record-anatomy__row');if(!r)return;var w=r.closest('.aq-record-anatomy');if(w._raTour)return;raLens(w,r.getAttribute('data-z'))})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-record-anatomy__block');if(!r||(ev.relatedTarget&&r.contains(ev.relatedTarget)))return;var w=r.closest('.aq-record-anatomy');if(w._raTour)return;raOff(w)})});

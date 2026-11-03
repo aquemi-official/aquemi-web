@@ -289,11 +289,11 @@ document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classLis
    design, fabricate and test: the shop location) and the contact line (service and sales numbers and the head office);
    both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap columns in one row, then the legal
    line under a hairline. Phones show the columns two by two.
-   A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so "Buying from
-   Aquemi" appears once cmp-quality has its "buying" block and "Natural health products" (ind-pharma#nhp, DR-017) once
+   A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so the pass 11 pages
+   (urs-guide, project-plan, first-system, buying) appear once their files exist, and "Natural health products" (ind-pharma#nhp, DR-017) once
    ind-pharma has its "nhp" block. Privacy, Terms and Accessibility link once their pages exist. */
-function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-pharma#nhp','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','cmp-quality#buying','contact-proposal','contact-service','contact-locations']]],
-  label={'ind-pharma#nhp':'Natural health products','cmp-quality#buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
+function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','buying','contact-proposal','contact-service','contact-locations']]],
+  label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene, for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
   +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
@@ -1512,6 +1512,44 @@ LOOKS['audit-skid']=function(b,H){var I=(b.items||[]).map(function(x){return typ
  document.addEventListener('click',function(ev){var it=at(ev);if(it)show(it.closest('.'+K),it)});
 })();
 })();
+/* Look "battery-limit" -> BatteryLimit (design-system/components/BatteryLimit): a spec block of site requirements on a
+   split band, navy on the left and limestone on the right; the divide is the battery limit, drawn as a P&ID battery
+   limit line (dash and dot) with its name set vertically. The row that is the battery limit itself sits on the seam,
+   across both grounds. Every other row is a card on its side, the package's on the navy, the site's on the limestone,
+   each tied to the seam by a leader that ends in a tie-in node, so the line reads as the list of connection points.
+   Site cards hang half a step lower than the package's, so the nodes alternate down the line like a zip.
+   Fields: h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows
+   [{p, v, m, side, link, link_label}] (side: "limit" | "package" | "site"; default site), sides ([package label, site
+   label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card). */
+LOOKS['battery-limit']=function(b,H){
+ var R=b.rows||[],C=b.cols||['Item','Typical','Note'],SD=b.sides||['',''],lim=-1;
+ R.some(function(r,i){if(r.side==='limit'){lim=i;return true}});
+ var kk={package:0,site:0};
+ function card(r,i,side){var lk=r.link&&wp(r.link)?'<a class="aq-battery-limit__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
+  var body='<div class="aq-battery-limit__card">'+idx(i)+'<h3 class="aq-battery-limit__p">'+tx(r.p)+'</h3>'
+   +'<dl class="aq-battery-limit__dl"><div><dt>'+tx(C[1]||'')+'</dt><dd class="aq-battery-limit__v">'+tx(r.v)+'</dd></div>'
+   +(r.m||lk?'<div><dt>'+tx(C[2]||'')+'</dt><dd class="aq-battery-limit__m">'+(r.m?tx(r.m):'')+(r.m&&lk?' ':'')+lk+'</dd></div>':'')+'</dl></div>';
+  if(side==='limit')return '<div class="aq-battery-limit__limit">'+body+'</div>';
+  return fli('<li class="aq-battery-limit__item" data-r="'+i+'" data-k="'+(kk[side]++)+'">',b,i)+(side==='site'?'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__node"></span><span class="aq-battery-limit__lead"></span></span>'+body
+   :body+'<span class="aq-battery-limit__tie" aria-hidden="true"><span class="aq-battery-limit__lead"></span><span class="aq-battery-limit__node"></span></span>')+'</li>'}
+ var pk='',st='';R.forEach(function(r,i){if(i===lim)return;if(r.side==='package')pk+=card(r,i,'package');else st+=card(r,i,'site')});
+ var seam='<span class="aq-battery-limit__navy" aria-hidden="true"></span><svg class="aq-battery-limit__line" aria-hidden="true" focusable="false"><line x1="50%" y1="0" x2="50%" y2="100%"/></svg>'
+  +(b.seam?'<span class="aq-battery-limit__seam-t" aria-hidden="true">'+tx(b.seam)+'</span>':'');
+ var inner='<div class="aq-battery-limit">'
+  +'<div class="aq-battery-limit__head">'+H+'</div>'
+  +(SD[0]?'<p class="aq-battery-limit__side is-pkg">'+tx(SD[0])+'</p>':'')
+  +'<ul class="aq-battery-limit__list is-pkg" role="list">'+pk+'</ul>'
+  +(lim>=0?card(R[lim],lim,'limit'):'')
+  +(SD[1]?'<p class="aq-battery-limit__side is-site">'+tx(SD[1])+'</p>':'')
+  +'<ul class="aq-battery-limit__list is-site" role="list">'+st+'</ul></div>';
+ return '<section class="aq-section aq-band--split aq-battery-limit-sec">'+seam+'<div class="aq-in">'+wFold(b,R.length,inner,b.fold_noun)+'</div></section>'};
+/* Hover or focus on a card lights its leader and tie-in node */
+(function(){
+ function over(ev){var root=ev.target.closest&&ev.target.closest('.aq-battery-limit');if(!root)return;var t=ev.target.closest('.aq-battery-limit__item');
+  [].forEach.call(root.querySelectorAll('.aq-battery-limit__item.is-hot'),function(el){if(el!==t)el.classList.remove('is-hot')});if(t)t.classList.add('is-hot')}
+ function out(ev){var root=ev.target.closest&&ev.target.closest('.aq-battery-limit');if(root&&!root.contains(ev.relatedTarget))[].forEach.call(root.querySelectorAll('.is-hot'),function(el){el.classList.remove('is-hot')})}
+ document.addEventListener('mouseover',over);document.addEventListener('focusin',over);document.addEventListener('mouseout',out);document.addEventListener('focusout',out);
+})();
 /* Look "binder-spines" -> BinderSpines (design-system/components/BinderSpines): an evidence table (as: "evidence":
    who, what they read, where we answer it) as the QA shelf, one ring binder per inspector standing on it, beside the
    plant they inspect: a large IsoKit drawing of a polypropylene PW package that stands on the shelf's floor line and
@@ -1553,6 +1591,29 @@ LOOKS['binder-spines']=function(b,H){var C=b.cols||[],R=b.rows||[],S=b.spines||[
  var shelf='<div class="aq-binder-spines'+(fig?' has-plant':'')+'">'+fig+'<ol class="aq-binder-spines__row" style="--n:'+n+'">'+books+'</ol><span class="aq-binder-spines__shelf" aria-hidden="true"></span></div>';
  return sec(H+wFold(b,n,shelf,b.fold_noun),'aq-binder-spines-sec')};
 })();
+/* Look "binder-tabs" -> BinderTabs (design-system/components/BinderTabs): ordered stages filed as the qualification
+   binder. The binder lies open: its navy cover on the left carries the section heading in a label holder; on the
+   right, one tab divider per stage is filed on the rings, each with its tab standing proud of the stack (the stage's
+   short label, stepping down the edge like real index tabs), the stage name and what it proves, and a sign-off line
+   at its foot. The stages read as a sequence of signatures: each divider is signed before the next is opened.
+   Fields (a steps block): h, intro, items [{t, d, link, label}]. label: the tab's short text ("IQ", "FAT · SAT");
+   without one the tab shows the stage number.
+   Phones: the cover becomes a band over the stack; tabs sit at the right end of each divider. */
+var BT_SIG=['M2 14C8 4 12 4 11 11S16 18 21 9 28 3 31 11 36 16 42 8 48 6 54 12',
+ 'M2 12C6 5 11 3 12 10S18 17 24 8 31 4 35 12 42 15 50 7',
+ 'M2 13C9 3 14 6 13 12S20 16 26 9 30 5 36 11 44 14 52 9'];
+LOOKS['binder-tabs']=function(b,H){var I=b.items||[],n=I.length;
+ var tabs=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
+  return '<li class="aq-binder-tabs__div" style="--i:'+i+'">'
+   +'<span class="aq-binder-tabs__holes" aria-hidden="true"></span>'
+   +'<span class="aq-binder-tabs__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<div class="aq-binder-tabs__body"><h3 class="aq-binder-tabs__t">'+nm+'</h3>'+(it.d?'<p class="aq-binder-tabs__d">'+tx(it.d)+'</p>':'')+'</div>'
+   +'<span class="aq-binder-tabs__sign" aria-hidden="true"><svg viewBox="0 0 56 20" focusable="false"><path d="'+BT_SIG[i%BT_SIG.length]+'"/></svg></span>'
+   +'<span class="aq-binder-tabs__tab" aria-hidden="true"><span>'+(it.label?tx(it.label):(i<9?'0':'')+(i+1))+'</span></span></li>'}).join('');
+ return sec('<div class="aq-binder-tabs" style="--n:'+n+'">'
+  +'<div class="aq-binder-tabs__cover"><div class="aq-binder-tabs__holder">'+H+'</div><span class="aq-binder-tabs__spine" aria-hidden="true"></span></div>'
+  +'<div class="aq-binder-tabs__stack"><span class="aq-binder-tabs__rings" aria-hidden="true"><i></i><i></i><i></i></span>'
+  +'<ol class="aq-binder-tabs__list">'+tabs+'</ol></div></div>','aq-binder-tabs-sec')};
 /* Look "budget-bento" -> BudgetBento (design-system/components/BudgetBento): a spec block of budget ranges as a Swiss
    bento of numbered tiles, set like a price sheet rather than a table. The first highlighted row (the whole package) is
    the tall navy lead tile: a huge cropped numeral, the scope, the range set large in mono over a range bracket (a
@@ -1586,6 +1647,38 @@ LOOKS['budget-bento']=function(b,H){
    +'<div class="aq-budget-bento__val"><p class="aq-budget-bento__k">'+tx(C[1]||'')+'</p><p class="aq-budget-bento__v">'+tx(r.v)+'</p>'+bbRange(L)+'</div>'
    +(r.m?'<div class="aq-budget-bento__basis"><p class="aq-budget-bento__k">'+tx(C[2]||'')+'</p>'+basis+'</div>':'')+link(r)+'</div></li>'}).join('');
  return sec(wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'<div class="aq-budget-bento"><ol class="aq-budget-bento__grid" role="list">'+tiles+'</ol>'+bbNote(b)+'</div>','aq-budget-bento-sec')};
+/* Look "capa-ring" -> CapaRing (design-system/components/CapaRing): a defect's way from hold to close as one loop that
+   closes. On a navy ground the steps sit around a ring, clockwise from the top right: the first three down the right,
+   the rest back up the left, each joined to its node by a short leader. A hold step's node is drawn as a closed valve
+   and its text names who signs. The water runs the ring once, waits at the hold, lights each node as it arrives and
+   closes the loop back at the first: what the steps mean together (nothing is left open). The ring's centre carries the
+   record's short name, taken from the first step's text (the abbreviation in it, e.g. "NCR"), or the block's "core".
+   Fields (a steps block): h, intro, items [{t, d, hold, link}], core (optional centre word). Six steps fit best (three
+   a side); any count works. Pointing at a step lights its node.
+   Phones: the ring sits over the steps, which follow as a numbered list. */
+LOOKS['capa-ring']=function(b,H){var I=b.items||[],n=I.length,half=Math.ceil(n/2),cx=200,cy=200,r=148;
+ var core=b.core||((String(I[0]&&I[0].d||'').match(/\b[A-Z]{3,5}\b/)||[''])[0]);
+ var ang=function(i){return (-90+(i+0.5)*360/n)*Math.PI/180},pt=function(i,rr){return [cx+(rr||r)*Math.cos(ang(i)),cy+(rr||r)*Math.sin(ang(i))]};
+ var f=function(v){return v.toFixed(1)};
+ /* the flow: a full circle from node 1, clockwise, as two arcs */
+ var s0=pt(0),opp=[2*cx-s0[0],2*cy-s0[1]],ring='M'+f(s0[0])+' '+f(s0[1])+'A'+r+' '+r+' 0 0 1 '+f(opp[0])+' '+f(opp[1])+'A'+r+' '+r+' 0 0 1 '+f(s0[0])+' '+f(s0[1]);
+ var svg='<svg class="aq-capa-ring__svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">'
+  +'<circle class="aq-capa-ring__far" cx="200" cy="200" r="186"/><circle class="aq-capa-ring__base" cx="200" cy="200" r="'+r+'"/>'
+  +'<path class="aq-capa-ring__flow" d="'+ring+'"/>';
+ for(var t=0;t<72;t++){var a=t*5*Math.PI/180,r1=180,r2=t%6?184:190;svg+='<path class="aq-capa-ring__tick" d="M'+f(cx+r1*Math.cos(a))+' '+f(cy+r1*Math.sin(a))+'L'+f(cx+r2*Math.cos(a))+' '+f(cy+r2*Math.sin(a))+'"/>'}
+ I.forEach(function(it,i){var p=pt(i),right=Math.cos(ang(i))>=0,ex=right?400:0;
+  svg+='<g class="aq-capa-ring__node'+(it.hold?' is-hold':'')+'" data-i="'+i+'"><path class="aq-capa-ring__lead" d="M'+f(p[0]+(right?16:-16))+' '+f(p[1])+'H'+ex+'"/>'
+   +(it.hold?'<rect class="aq-capa-ring__dot" x="'+f(p[0]-15)+'" y="'+f(p[1]-15)+'" width="30" height="30"/><path class="aq-capa-ring__valve" d="M'+f(p[0]-8)+' '+f(p[1]-6)+'L'+f(p[0]+8)+' '+f(p[1]+6)+'V'+f(p[1]-6)+'L'+f(p[0]-8)+' '+f(p[1]+6)+'Z"/>'
+    :'<circle class="aq-capa-ring__dot" cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="15"/><text class="aq-capa-ring__no" x="'+f(p[0])+'" y="'+f(p[1]+4.5)+'" text-anchor="middle">'+(i+1)+'</text>')+'</g>'});
+ svg+='</svg>';
+ var steps=I.map(function(it,i){var who=it.hold?String(it.hold):'',side=i<half?'r':'l',row=i<half?i+1:n-i;
+  return '<li class="aq-capa-ring__step is-'+side+(it.hold?' is-hold':'')+'" data-i="'+i+'" style="--row:'+row+'"><span class="aq-capa-ring__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<h3 class="aq-capa-ring__t">'+(it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t))+'</h3>'+(it.d?'<p class="aq-capa-ring__d">'+tx(it.d)+'</p>':'')
+   +(who?'<p class="aq-capa-ring__hold"><span class="aq-capa-ring__hk">Hold</span> <span>Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span></p>':'')+'</li>'}).join('');
+ return sec(H+'<div class="aq-capa-ring" style="--rows:'+half+'"><div class="aq-capa-ring__fig">'+svg+(core?'<span class="aq-capa-ring__core" aria-hidden="true">'+e(core)+'</span>':'')+'</div>'
+  +'<ol class="aq-capa-ring__steps" role="list">'+steps+'</ol></div>','aq-band--navy aq-capa-ring-sec')};
+if(typeof document!=='undefined'&&document.addEventListener)['mouseover','mouseout','focusin','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var s=ev.target.closest&&ev.target.closest('.aq-capa-ring__step');if(!s)return;
+ if(/out$/.test(t)&&ev.relatedTarget&&s.contains(ev.relatedTarget))return;var g=s.closest('.aq-capa-ring').querySelector('.aq-capa-ring__node[data-i="'+s.getAttribute('data-i')+'"]');if(g)g.classList.toggle('is-hover',/over|in$/.test(t))})});
 /* Look "cert-readout" -> CertReadout (design-system/components/CertReadout): certification status read like an
    instrument. At the left a navy readout box framed by rulers (ticks along the top and foot, a vertical scale at the
    right edge with a marker at the selected line), the selected item's status line (its d) set as the giant reading,
@@ -1734,6 +1827,22 @@ LOOKS['clause-crosswalk']=function(b,H){
   if(row)set(root,[row.getAttribute('data-cw')],null);else if(node)set(root,node.getAttribute('data-rows').split(' '),[node.getAttribute('data-cwn')]);else set(root,null,null)});
  document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-clause-crosswalk');if(root&&!root.contains(ev.relatedTarget))set(root,null,null)});
 })();
+/* Look "code-index" -> CodeIndex (design-system/components/CodeIndex): a short set of documents as an index set in
+   huge type. Each document's filing code (JNT, MAT …) runs as oversized outline mono across its row, cropped by the
+   page edge and alternating sides, with the document's number, name and what it holds set beside it; the deciding
+   documents' codes are drawn in flow.
+   Fields (a docs block): h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun.
+   Codes come from the DocList lookup (docCode) unless the item names its own. Phones: code over text, one column. */
+LOOKS['code-index']=function(b,H){
+ var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=items.length;
+ var li=items.map(function(x,i){var t=String(x.t||''),c=x.code||docCode(t)[0],num=(i<9?'0':'')+(i+1);
+  var name=x.link&&wp(x.link)?wlink(x.link,t,x.intent):tx(t);
+  return fli('<li class="aq-code-index__row'+(x.key?' is-key':'')+(i%2?' is-r':'')+'" style="--i:'+i+'">',b,i)
+   +'<span class="aq-code-index__code" aria-hidden="true">'+e(c)+'</span>'
+   +'<div class="aq-code-index__text"><span class="aq-code-index__n" aria-hidden="true">'+num+' / '+e(c)+'</span><h3 class="aq-code-index__t">'+name+'</h3>'+(x.d?'<p class="aq-code-index__d">'+tx(x.d)+'</p>':'')+'</div>'
+   +'</li>'}).join('');
+ var more=b.link&&wp(b.link)?'<p class="aq-code-index__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
+ return sec(H+'<div class="aq-code-index">'+wFold(b,n,'<ol class="aq-code-index__list" role="list">'+li+'</ol>',b.fold_noun||'documents')+more+'</div>','aq-code-index-sec')};
 /* Look "colophon" -> Colophon (design-system/components/Colophon): a spec block of company facts set as a split
    ledger (pass 9b, concept about.0). A navy band with a limestone strip down its left edge; the section title is set
    very large and straddles the edge of the strip, so the colour split runs through the headline (limestone type on
@@ -1755,6 +1864,29 @@ LOOKS['colophon']=function(b,H){var R=b.rows||[],C=b.cols||[],num=function(i){re
  return sec('<div class="aq-colophon"><span class="aq-colophon__strip" aria-hidden="true"></span>'
   +'<div class="aq-colophon__mast">'+H+'<p class="aq-colophon__ghost" aria-hidden="true">'+tx(b.h)+'</p></div>'
   +head+wFold(b,R.length,list,b.fold_noun||'facts')+wSpecNote(b)+'</div>','aq-band--navy aq-colophon-sec')};
+/* Look "cost-balance" -> CostBalance (design-system/components/CostBalance): what it costs to run, drawn as a balance
+   around the system, the way a process engineer draws a mass balance. A dashed system boundary stands in the middle
+   with the treatment train inside it as a row of flat line glyphs on one water line; every running cost is a stream
+   crossing the boundary: the items that go in (plan, membranes, media, energy, chemicals) arrive from the left on
+   ruled wires with an arrowhead at the boundary, the item that leaves (water to drain) runs out to the right as water.
+   Each stream carries the item, its interval or amount in mono, and what sets it.
+   Fields as a spec block: h, cols, rows [{p, v, m, link, side}], fold, fold_noun, note. side: "out" puts a row on the
+   leaving side (default: in). glyphs (optional): icon names for the train inside the boundary (default softener,
+   carbon-filter, ro-membrane, edi, uv, tank). A row's link makes its name the link. Desktop shows every stream; the
+   fold applies on phones, where the balance runs top to bottom: streams in, the boundary, streams out. */
+LOOKS['cost-balance']=function(b,H){var R=b.rows||[],C=b.cols||[],K='aq-cost-balance';
+ var G=(b.glyphs||['softener','carbon-filter','ro-membrane','edi','uv','tank']).filter(isIcon);
+ var setBy=C[2]||'',item=function(r,i,side){var nm=r.link&&wp(r.link)?wlink(r.link,r.p):tx(r.p);
+  return fli('<li class="'+K+'__s '+K+'__s--'+side+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<div class="'+K+'__txt"><h3 class="'+K+'__p">'+nm+'</h3><p class="'+K+'__v">'+tx(r.v)+'</p>'
+   +(r.m?'<p class="'+K+'__m">'+(setBy?'<span class="'+K+'__mk">'+tx(setBy)+'</span> ':'')+tx(r.m)+'</p>':'')+'</div>'
+   +'<span class="'+K+'__wire" aria-hidden="true"><span class="'+K+'__line"></span><span class="'+K+'__head"></span></span></li>',b,i)};
+ var ins='',outs='';R.forEach(function(r,i){if(r&&r.side==='out')outs+=item(r,i,'out');else ins+=item(r,i,'in')});
+ var train='<div class="'+K+'__sys" aria-hidden="true"><span class="'+K+'__edge"></span><div class="'+K+'__train"><span class="'+K+'__water"></span>'
+  +G.map(function(g){return '<span class="'+K+'__g">'+wIcon(g,K+'__ic')+'</span>'}).join('')+'</div></div>';
+ var inner='<div class="'+K+'"><ol class="'+K+'__in" role="list">'+ins+'</ol>'+train+'<ol class="'+K+'__out" role="list">'+outs+'</ol></div>';
+ var note=b.note?'<p class="'+K+'__note">'+tx(b.note)+'</p>':'';
+ return sec(H+wFold(b,R.length,inner,b.fold_noun||'items')+note,K+'-sec')};
 /* Look "cost-skid" -> CostSkid (design-system/components/CostSkid): what it costs to run, read off the system itself.
    The title top left; top right one Purified Water skid drawn in IsoKit line art (softener with its brine tank, carbon
    vessel, RO rack, EDI stack, loop pump, UV unit and control panel on a base frame, the reject line to drain off the
@@ -1986,6 +2118,29 @@ if(typeof document!=='undefined'&&document.addEventListener){var crQ=0;
  if(typeof MutationObserver!=='undefined')new MutationObserver(crTick).observe(document.documentElement,{childList:true,subtree:true});
  window.AQcutaway={scan:function(){[].forEach.call(document.querySelectorAll('.aq-cutaway-rail'),function(w){w._crOn=null});crScan()}};
  if(document.readyState!=='loading')setTimeout(crScan,0);else document.addEventListener('DOMContentLoaded',crScan)}
+/* Look "cutover-schedule" -> CutoverSchedule (design-system/components/CutoverSchedule): how an upgrade runs, set as a
+   schedule. Each step is a row: its number, name and what happens on the left; on the right its bar on one shared
+   timeline, each bar starting where the last one ends (drawn not to scale: the page gives no durations, so every bar
+   is the same length and the sheet says so). A step with a hold ends in a hold diamond with who signs. Above the
+   rows runs your system's water line, unbroken through every step except the one whose text names a planned
+   shutdown, where the line breaks and the gap is labelled with those words; that step's bar is filled.
+   Fields (a steps block with holds): h, items [{t, d, hold, link}], ground, lane (optional: the water line's label,
+   a drawing label, aria-hidden). A link makes the step's name the link.
+   Phones: the same rows stacked, each bar on the shared timeline under its step. */
+LOOKS['cutover-schedule']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-cutover-schedule',w=100/n;
+ var cut=-1,lab='';I.forEach(function(it,i){var m=String(it.d||'').match(/planned shutdown|shutdown/i);if(cut<0&&m){cut=i;lab=m[0].charAt(0).toUpperCase()+m[0].slice(1)}});
+ var seg=function(a,c){return '<span class="'+K+'__water" style="left:'+a.toFixed(3)+'%;width:'+(c-a).toFixed(3)+'%"></span>'};
+ var lane='<div class="'+K+'__lane" aria-hidden="true"><span class="'+K+'__lk">'+tx(b.lane||'')+'</span><span class="'+K+'__ltrack">'
+  +(cut<0?seg(0,100):seg(0,cut*w)+'<span class="'+K+'__gap" style="left:'+(cut*w).toFixed(3)+'%;width:'+w.toFixed(3)+'%"><span class="'+K+'__gl">'+e(lab)+'</span></span>'+seg((cut+1)*w,100))
+  +'</span></div>';
+ var grid='<span class="'+K+'__grid" aria-hidden="true">'+I.map(function(it,i){return '<span style="left:'+(i*w).toFixed(3)+'%"></span>'}).join('')+'</span>';
+ var rows=I.map(function(it,i){var t=tx(it.t);if(it.link&&wp(it.link))t='<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>';
+  return '<li class="'+K+'__row'+(i===cut?' is-cut':'')+(it.hold?' is-hold':'')+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<div class="'+K+'__txt"><h3 class="'+K+'__t">'+t+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')
+   +(it.hold?'<p class="'+K+'__hold"><span class="'+K+'__hk">Hold</span> <span>Signed by '+stepWho(it.hold)+'</span></p>':'')+'</div>'
+   +'<div class="'+K+'__track" aria-hidden="true">'+grid+'<span class="'+K+'__bar" style="left:'+(i*w).toFixed(3)+'%;width:'+w.toFixed(3)+'%">'+(it.hold?'<span class="'+K+'__diamond"></span>':'')+'</span></div></li>'}).join('');
+ var foot='<p class="'+K+'__nts" aria-hidden="true">Not to scale</p>';
+ return sec(H+'<div class="'+K+'" style="--n:'+n+'">'+lane+'<ol class="'+K+'__rows" role="list">'+rows+'</ol>'+foot+'</div>',K+'-sec')};
 /* Look "decision-plant" -> DecisionPlant (design-system/components/DecisionPlant): an options block of decisions set
    round one hairline process schematic of the plant they size (a flat elevation drawn here, IsoKit has no elevations:
    feed and pretreatment vessel, the membrane train, a second train drawn dashed as the option, the storage tank, the
@@ -2132,6 +2287,31 @@ if(typeof document!=='undefined'){
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src, .'+K+'__card');if(!t||(ev.target.closest('a')))return;pick(t.closest('.'+K),+t.getAttribute('data-i'))});
  document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;var w=t.closest('.'+K);[].forEach.call(w.querySelectorAll('.'+K+'__in, .'+K+'__out'),function(p){p.classList.toggle('is-hint',p.getAttribute('data-i')===t.getAttribute('data-i'))})});
  document.addEventListener('mouseout',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;[].forEach.call(t.closest('.'+K).querySelectorAll('.is-hint'),function(p){p.classList.remove('is-hint')})})}
+})();
+/* Look "derivation-sheet" -> DerivationSheet (design-system/components/DerivationSheet): a grade table (as: "grades")
+   worked as an engineering derivation on a calculation pad. Each row is a numbered line read left to right like an
+   equation: the process step, an arrow, what sets it, a double arrow, and the typical water as the boxed answer. A
+   "what sets it" cell that opens with a number and its unit ("20.0 endotoxin units per device (USP <161>); tested to
+   USP <85>") is set as the line's hero figure: the number large in Geist Mono Light, the unit beside it, the reference
+   and any rest under it. Lines run from the loosest step to the strictest, as the table orders them.
+   Fields, as the grades table: cols [step, typical water, what sets it], rows, intro. Concept: sys-pw.0 (numbers as
+   heroes, stepping type) on a calculation sheet; the pass 9 "measured editorial" spine. */
+(function(){
+var NUM=/^(\d+(?:\.\d+)?)\s+([^(;]+?)\s*(?:\(([^)]+)\))?\s*(?:;\s*(.*))?$/;
+var GRID='<svg class="aq-derivation-sheet__grid" aria-hidden="true" focusable="false"><defs><pattern id="dsgrid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16"/></pattern>'
+ +'<pattern id="dsgrid5" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80"/></pattern></defs><rect width="100%" height="100%" fill="url(#dsgrid)"/><rect class="aq-derivation-sheet__g5" width="100%" height="100%" fill="url(#dsgrid5)"/></svg>';
+LOOKS['derivation-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var lines=R.map(function(r,i){var set=String(r[2]||''),m=set.match(NUM);
+  var lim=m?'<p class="aq-derivation-sheet__v"><span class="aq-derivation-sheet__num">'+tx(m[1])+'</span><span class="aq-derivation-sheet__u">'+tx(m[2])+'</span></p>'
+    +(m[3]||m[4]?'<p class="aq-derivation-sheet__ref">'+[m[3],m[4]].filter(Boolean).map(tx).join('<span aria-hidden="true"> · </span>')+'</p>':'')
+   :'<ul class="aq-derivation-sheet__set">'+set.split(/;\s*/).filter(Boolean).map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>';
+  return '<li class="aq-derivation-sheet__line'+(m?' is-figure':'')+'"><span class="aq-derivation-sheet__no" aria-hidden="true">('+(i+1)+')</span>'
+   +'<div class="aq-derivation-sheet__given"><span class="aq-derivation-sheet__k">'+tx(C[0]||'')+'</span><h3 class="aq-derivation-sheet__t">'+tx(r[0])+'</h3></div>'
+   +'<span class="aq-derivation-sheet__op" aria-hidden="true"><svg viewBox="0 0 48 16" focusable="false"><path d="M2 8H44M37 2L45 8L37 14"/></svg></span>'
+   +'<div class="aq-derivation-sheet__lim"><span class="aq-derivation-sheet__k">'+tx(C[2]||'')+'</span>'+lim+'</div>'
+   +'<span class="aq-derivation-sheet__op is-imp" aria-hidden="true"><svg viewBox="0 0 48 16" focusable="false"><path d="M2 5H42M2 11H42M36 1L46 8L36 15"/></svg></span>'
+   +'<div class="aq-derivation-sheet__ans"><span class="aq-derivation-sheet__k">'+tx(C[1]||'')+'</span><p class="aq-derivation-sheet__w">'+tx(r[1])+'</p><span class="aq-derivation-sheet__box" aria-hidden="true"></span></div></li>'}).join('');
+ return sec(H+'<div class="aq-derivation-sheet">'+GRID+'<span class="aq-derivation-sheet__margin" aria-hidden="true"></span><ol class="aq-derivation-sheet__lines">'+lines+'</ol></div>','aq-derivation-sheet-sec')};
 })();
 /* Look "doc-hotspots" -> DocHotspots (design-system/components/DocHotspots): the documents delivered with a system,
    each pinned to the part of the skid it covers. On a navy band the page's equipment drawing (assets/illustrations/
@@ -2564,7 +2744,8 @@ LOOKS['grade-mains']=function(b,H){var R=b.rows||[],L=b.lanes||[],T=b.taps||[],n
    a selector panel on the page ground (the core's alternating surface; the URS line above sits on the sunken ground). Each product is a strip on one plate: its name, a selector with one slot per
    water grade (the knob sits in the minimum; a slot your specification may call for shows as a dashed open slot), then
    the minimum as written and the note. The selector is a picture of the row (aria-hidden); the words carry it.
-   Fields, as the grades table: cols, rows [product, minimum, note].
+   Fields, as the grades table: cols, rows [product, minimum, note]. A note may be {t, link} (rendered through tcell),
+   so a row can close with a pointer, e.g. the last row's {"t": "If this is your first system", "link": "first-system"}.
    Added: positions [{id, t}] (the selector's slots, left to right), switch [["potable", "pw?"], …] (one list per row:
    slot ids; "?" = where your specification or the monograph calls for it, drawn open). Concept sys-pw.4 (tactile
    option tags) and the HMI selector of 50-concept-limit-gauges. */
@@ -2578,7 +2759,7 @@ LOOKS['grade-switch']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.positions|
    +'<span class="aq-grade-switch__ticks">'+P.map(function(){return '<i></i>'}).join('')+'</span></div>';
   return '<li class="aq-grade-switch__row"><div class="aq-grade-switch__prod">'+idx(i)+'<h3 class="aq-grade-switch__t">'+tx(r[0])+'</h3></div>'+sw
    +'<div class="aq-grade-switch__txt"><p class="aq-grade-switch__min"><span class="aq-grade-switch__k">'+tx(C[1]||'')+'</span>'+tx(r[1])+'</p>'
-   +(r[2]?'<p class="aq-grade-switch__note">'+tx(r[2])+'</p>':'')+'</div></li>'}).join('');
+   +(r[2]?'<p class="aq-grade-switch__note">'+tcell(r[2])+'</p>':'')+'</div></li>'}).join('');
  var screws='<span class="aq-grade-switch__screw" aria-hidden="true"></span>'.repeat(4);
  return sec(H+'<div class="aq-grade-switch">'+screws+'<p class="aq-grade-switch__colh"><span>'+tx(C[0]||'')+'</span><span aria-hidden="true">'+P.map(function(p){return e(p.t)}).join(' · ')+'</span></p><ol class="aq-grade-switch__rows">'+rows+'</ol></div>','aq-grade-switch-sec')};
 })();
@@ -2873,6 +3054,35 @@ LOOKS['joint-macro']=(function(){
   if(!on&&ev.relatedTarget&&row.contains(ev.relatedTarget))return;set(row,on&&row.hasAttribute('data-crop'))}}
  document.addEventListener('mouseover',h(true));document.addEventListener('mouseout',h(false));
  document.addEventListener('focusin',h(true));document.addEventListener('focusout',h(false))})();
+/* Look "joint-spine" -> JointSpine (design-system/components/JointSpine): a log whose rows hang off a pipe. A twin-wall
+   pipe drops in from the top of the section beside the title, bends and runs down the left of the log as its spine;
+   each row of the log sits level with a joint on the spine (the piping-isometric joint mark: a tick across the pipe
+   and a dot), and the row's number is written at the joint, alternating sides, as joint numbers are on a drawing.
+   The pipe runs on past the last row and out of the section. Pointing at a row lights its joint.
+   Fields, as a table: h, cols [field, what it proves, record], rows, fold, fold_noun. The column names show once as
+   the log's legend (in each row for screen readers; shown per row on phones). The fold applies on phones only.
+   Phones: no drop or bend; the spine runs down a narrow rail at the left, numbers beside it. */
+LOOKS['joint-spine']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var k=function(i){return C[i]?'<span class="aq-joint-spine__k">'+tx(C[i])+'</span>':''};
+ /* the bend from the drop into the spine: a 13-wide wall stroke with a 10-wide ground stroke over it leaves two 1.5
+    px walls; the water is the centre line. Impression (faint) under, ink over. */
+ var d='M14 0V14Q14 34 34 34H140Q160 34 160 54V72';
+ var bend='<svg class="aq-joint-spine__bend" viewBox="0 0 240 72" aria-hidden="true" focusable="false">'
+  +'<path class="aq-joint-spine__w aq-joint-spine__w--imp" d="'+d+'"/><path class="aq-joint-spine__g" d="'+d+'"/>'
+  +'<g class="aq-joint-spine__bink"><path class="aq-joint-spine__w" d="'+d+'"/><path class="aq-joint-spine__g" d="'+d+'"/><path class="aq-joint-spine__h2o" d="'+d+'"/></g></svg>';
+ var legend='<p class="aq-joint-spine__legend" aria-hidden="true">'+[0,1,2].map(function(i){return '<span>'+tx(C[i]||'')+'</span>'}).join('')+'</p>';
+ var pipe=function(cls,inner){return '<span class="aq-joint-spine__pipe'+(cls?' '+cls:'')+'" aria-hidden="true"><i class="aq-joint-spine__ink"></i>'+(inner||'')+'</span>'};
+ var rows=R.map(function(r,i){var n=(i<9?'0':'')+(i+1);
+  return fli('<li class="aq-joint-spine__row'+(i%2?' is-r':'')+'" data-k="'+i+'">',b,i)
+   +pipe('',('<span class="aq-joint-spine__joint"></span><span class="aq-joint-spine__no">'+n+'</span>'))
+   +'<h3 class="aq-joint-spine__f">'+tcell(r[0])+'</h3>'
+   +(r[1]!=null?'<p class="aq-joint-spine__p">'+k(1)+tcell(r[1])+'</p>':'')
+   +(r[2]!=null?'<p class="aq-joint-spine__r">'+k(2)+tcell(r[2])+'</p>':'')+'</li>'}).join('');
+ var log='<ol class="aq-joint-spine__log" role="list">'+rows+'</ol>';
+ return sec('<div class="aq-joint-spine">'
+  +'<div class="aq-joint-spine__lead">'+pipe('aq-joint-spine__drop')+H+bend+legend+'</div>'
+  +wFold(b,R.length,log,b.fold_noun||'fields')+pipe('aq-joint-spine__tail')
+  +'</div>','aq-joint-spine-sec')};
 /* Look "joint-steps" -> JointSteps (design-system/components/JointSteps): a fabrication sequence told on one joint. A
    navy title column at the left (title and intro), a drawing sheet in the middle with one joint drawn large in
    isometric (IsoKit: two pipe lengths meeting at joint J-01, the joint zone between dashed bounds, the lot marking
@@ -3539,7 +3749,8 @@ LOOKS['numeral-index']=function(b,H){var C=b.cols||[],R=b.rows||[];
    its one-way exit, the plant bus. Right, the section title large in the top cell, then the options as cells (two
    wide, then three) under huge light slash numerals. Pointing at an option (or focusing its link) lights its part in
    the blueprint tile. Concept: research/pass9b/concepts/sys-monitoring.4.png.
-   Fields: h, items [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
+   Fields: h, intro (optional; printed under the title in the top cell through wSecHead, as option-taps does), items
+   [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
    option sets; none: no part lights). Phones: the field shortens to two rows over the cells, which stack. */
 var OC_PAT=['n','l','n','s','s','b','b','n','l','b','b','l','n','s','n','l'];
 function ocPlate(){
@@ -3609,7 +3820,8 @@ LOOKS['option-tags']=function(b,H){
    or in front of the train. A numbered pin sits on each dashed part; the notes carry the same numbers. A note's number
    is a button: pressing it brings that part into focus on the drawing (motion.js); Escape or pressing it again lets
    go, the arrow keys step through the notes.
-   Fields (an options block): h, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun.
+   Fields (an options block): h, intro, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun.
+   intro prints under the title through wSecHead.
    New optional fields: train: the standard train left to right (part: an IsoKit kind, label: a short drawing label);
    per item: at (position along the train, 0 = first part, fractions between), part (the IsoKit kind drawn dashed;
    default filter), row ("back" or "front", default alternating).
@@ -3847,6 +4059,52 @@ LOOKS['pid-routes']=(function(){
  document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-pid-routes');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
  document.addEventListener('focusout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-pid-routes');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
 })();
+/* Look "pipe-collage" -> PipeCollage (design-system/components/PipeCollage): an evidence table as a Swiss poster. Left,
+   a geometric collage of flat pieces (navy, limestone and sunken tiles; flow only as a line): one piece per row (a
+   pressure vessel with its nameplate, a control panel with its label plate, a flanged elbow with a short branch, a
+   grid of resin pellets, two pipe ends fused at a bead) set among plain filler tiles, each piece numbered as its row.
+   Right, the rows as asymmetric editorial blocks hung from hairline brackets: the standard large, what we design to,
+   the proof in mono, where we show it as a link. Hovering or focusing a block frames its piece in flow.
+   Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
+   fold, fold_noun. New optional field: pieces, one per row, naming the piece drawn for it: vessel, panel, pipe,
+   pellets, weld (each at most once; a row without one has no piece). The fold applies on phones only (desktop shows
+   every block beside the whole collage). Phones: the board gives way to each block led by its own piece. */
+var PC_SLOT={vessel:[0,0,1,2],pipe:[1,1,2,1],pellets:[0,2,1,1],panel:[2,2,1,2],weld:[0,3,2,1]};
+var PC_FILL=[['arc',1,0],['quarter',2,0],['diag',1,2]];
+function pcPiece(k){var r=function(x,y,w,h,c){return '<rect data-f="'+c+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'},
+  c=function(x,y,R,cl){return '<circle data-f="'+cl+'" cx="'+x+'" cy="'+y+'" r="'+R+'"/>'},p=function(d,cl){return '<path data-f="'+cl+'" d="'+d+'"/>'};
+ switch(k){
+  case 'vessel':return r(0,0,100,200,'ls')+r(46,10,8,16,'nv')+p('M24 50 A26 22 0 0 1 76 50 V150 A26 22 0 0 1 24 150 Z','nv')+r(36,84,28,20,'sf')+p('M40 91 H60 M40 97 H54','ln')
+   +p('M30 166 L26 190 M70 166 L74 190','lnb')+p('M50 26 V8','fl')+c(50,128,5,'ring');
+  case 'pipe':return r(0,0,200,100,'sk')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','pipe')+r(52,46,8,36,'nv')+r(130,10,32,8,'nv')+r(88,64,14,26,'nv')+r(84,88,22,6,'nv')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','fl');
+  case 'panel':return r(0,0,100,200,'nv')+r(18,26,64,148,'ls')+p('M50 26 V174','nvl')+r(24,40,20,16,'sf')+c(62,46,3.5,'nv')+c(70,46,3.5,'nv')+c(62,56,3.5,'dot')
+   +p('M24 150 H44 M24 156 H44 M24 162 H44','nvl')+r(56,132,20,14,'sf')+p('M58 132 H76 V146 H58 Z','flb');
+  case 'pellets':var s=r(0,0,100,100,'ls');for(var i=0;i<4;i++)for(var j=0;j<4;j++)if(i||j<3)s+=c(20+20*i,20+20*j,6.5,(i*4+j)%7===2?'nv':'ln');return s;
+  case 'weld':return r(0,0,200,100,'nv')+r(14,32,78,36,'ls')+r(108,32,78,36,'ls')+p('M100 22 C93 34 93 66 100 78 C107 66 107 34 100 22 Z','bead')+p('M14 50 H186','flo')+p('M92 26 V74 M108 26 V74','nvl');
+  case 'arc':return r(0,0,100,100,'sf')+p('M0 70 A30 30 0 0 1 30 100 M0 50 A50 50 0 0 1 50 100 M0 30 A70 70 0 0 1 70 100 M0 10 A90 90 0 0 1 90 100','fl');
+  case 'quarter':return r(0,0,100,100,'ls')+p('M100 0 H0 A100 100 0 0 0 100 100 Z','nv')+c(78,22,8,'lsf');
+  case 'diag':return r(0,0,100,100,'sk')+p('M0 100 L100 0 V100 Z','nv')+c(70,72,12,'lsf');
+ }return ''}
+function pcG(k,x,y,lab,i){var g=2,S=PC_SLOT[k]||[x,y,1,1],w=S[2]*100,h=S[3]*100;
+ return '<g transform="translate('+(S[0]*100+g)+' '+(S[1]*100+g)+') scale('+((w-2*g)/w).toFixed(4)+' '+((h-2*g)/h).toFixed(4)+')"><g class="aq-pipe-collage__cell'+(i!=null?' is-piece':'')+'"'+(i!=null?' data-pc="'+i+'"':'')+' data-edge="'+(S[0]===0?'l':S[0]+S[2]>=3?'r':'t')+'">'
+  +pcPiece(k)+(i!=null?'<rect class="aq-pipe-collage__frame" x="1" y="1" width="'+(w-2)+'" height="'+(h-2)+'"/>':'')
+  +(lab?(k==='vessel'?'<text class="aq-pipe-collage__n" x="'+(w-8)+'" y="20" text-anchor="end">':'<text class="aq-pipe-collage__n" x="8" y="'+(h-10)+'">')+lab+'</text>':'')+'</g></g>'}
+LOOKS['pipe-collage']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.pieces||[],used={};
+ var cells=PC_FILL.map(function(f){return pcG(f[0],f[1],f[2])}).join('');
+ R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&!used[k]){used[k]=1;cells+=pcG(k,0,0,(i<9?'0':'')+(i+1),i)}});
+ Object.keys(PC_SLOT).forEach(function(k){if(!used[k])cells+=pcG(k==='weld'?'arc':k==='pellets'?'quarter':'diag',PC_SLOT[k][0],PC_SLOT[k][1])});
+ var board='<div class="aq-pipe-collage__board" data-theme="light" aria-hidden="true"><svg viewBox="0 0 300 400" focusable="false">'+cells+'</svg></div>';
+ var blocks='<ol class="aq-pipe-collage__blocks" role="list">'+R.map(function(r,i){var k=K[i],S=PC_SLOT[k],th=S&&used[k]?'<span class="aq-pipe-collage__thumb" data-theme="light" aria-hidden="true"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" focusable="false">'+pcPiece(k)+'</svg></span>':'';
+  var f=function(j,cls){var c=r[j];if(c==null||c==='')return '';return '<p class="'+cls+'"><span class="aq-pipe-collage__k">'+tx(C[j]||'')+'</span> '+tcell(c)+'</p>'};
+  return fli('<li class="aq-pipe-collage__block" data-pc="'+i+'">',b,i)+th
+   +idx(i)+'<div class="aq-pipe-collage__head"><h3 class="aq-pipe-collage__std">'+tcell(r[0])+'</h3></div>'
+   +'<p class="aq-pipe-collage__how">'+tcell(r[1])+'</p>'+f(2,'aq-pipe-collage__proof')+f(3,'aq-pipe-collage__go')+'</li>'}).join('')+'</ol>';
+ return sec(H+'<div class="aq-pipe-collage">'+board+'<div class="aq-pipe-collage__text">'+wFold(b,R.length,blocks,b.fold_noun||'standards')+'</div></div>','aq-pipe-collage-sec')};
+function pcLight(bl,on){var w=bl&&bl.closest('.aq-pipe-collage');if(!w)return;var c=w.querySelector('.aq-pipe-collage__cell[data-pc="'+bl.getAttribute('data-pc')+'"]');
+ if(c)c.classList.toggle('is-on',on);w.classList.toggle('is-focus',on&&!!c)}
+if(typeof document!=='undefined'&&document.addEventListener){
+ ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x)pcLight(x,true)})});
+ ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x&&!(ev.relatedTarget&&x.contains(ev.relatedTarget)))pcLight(x,false)})})}
 /* Look "plan-checker" -> PlanChecker (design-system/components/PlanChecker): service plans as a checker of square-cornered
    tiles on limestone, no table rules. One column per plan, alternating navy and limestone; each column is two tiles:
    the head (a huge light slash numeral "01/", the plan name, who it suits) and the terms (each value set first, its
@@ -3994,6 +4252,29 @@ LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
     +(go?'<div class="aq-proof-folders__go">'+k(3)+'<p class="aq-proof-folders__label">'+go+'</p></div>':'')
    +'</div></li>'}).join('')+'</ol>';
  return sec(H+'<div class="aq-proof-folders">'+heads+wFold(b,R.length,list,b.fold_noun||'standards')+'</div>','aq-proof-folders-sec')};
+/* Look "reader-split" -> ReaderSplit (design-system/components/ReaderSplit): an evidence table (who, what they read,
+   where we answer it) on a band split down the middle: the readers stand on the navy half, what each one reads and
+   where we answer it sit across the seam on the limestone half, row against row. The seam is a drawn line with one
+   node per row; hovering a row lights its node and draws a tie across the seam.
+   Fields, as the evidence table: h, intro, cols, rows [who, read, {t, link, intent}], fold, fold_noun.
+   The first two column names head the halves once (aria-hidden) and are repeated in each row as a label before the
+   reader and before the reading: visually hidden on wide screens (read by assistive tech), shown on phones, where the
+   halves stack and the heads are gone. The third column's name already labels each answer.
+   Concept: systems.2 (navy/limestone split where the seam is the boundary; STYLE-ATLAS hybrid 4, "battery-limit split,
+   calm", in light type). */
+(function(){
+LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
+ var lab=function(j){return C[j]?'<span class="aq-reader-split__lab">'+tx(C[j])+'</span>':''};
+ var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
+  return fli('<li class="aq-reader-split__row"><div class="aq-reader-split__who">'+idx(i)+lab(0)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
+   +'<span class="aq-reader-split__tie" aria-hidden="true"><span class="aq-reader-split__node"></span></span>'
+   +'<div class="aq-reader-split__what">'+lab(1)+'<p class="aq-reader-split__read">'+tx(r[1])+'</p>'
+   +(lk?'<a class="aq-reader-split__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tx(go.t)+'</span></a>'
+     :(go?'<p class="aq-reader-split__go"><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tcell(go)+'</span></p>':''))+'</div></li>',b,i)}).join('');
+ var colh='<p class="aq-reader-split__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
+ return '<section class="aq-section aq-band--split aq-reader-split-sec"><span class="aq-reader-split__ground" aria-hidden="true"></span><div class="aq-in"><div class="aq-reader-split">'
+  +'<div class="aq-reader-split__head">'+H+'</div>'+colh+wFold(b,n,'<ol class="aq-reader-split__rows">'+rows+'</ol>',b.fold_noun)+'</div></div></section>'};
+})();
 /* Look "record-anatomy" -> RecordAnatomy (design-system/components/RecordAnatomy): an explainer (prose, as
    "explainer") of what a published record carries, set as a drawing sheet (pass 9b, concept projects.1): a sparse
    limestone sheet with a zone band, the section title large in its open left half, a drawing field of four specimen
@@ -4043,7 +4324,9 @@ LOOKS['record-anatomy']=function(b,H){var Pt=(b.points||[]).slice(0,4),num=funct
 /* Ported from Subframe Motion "Guided inspection" (guided-inspection), MIT, (c) 2026 Subframe
    The lit window: pointing at or focusing a title-block row glides a framed window onto that row's drawing (left,
    top, width, height, 0.55 s cubic-bezier(.22,.75,.22,1), the library's values, as a CSS transition so it is
-   instant under reduced motion) and the other drawings quieten; leaving the block lets the window go. */
+   instant under reduced motion) and the other drawings quieten; leaving the block lets the window go: raOff fades
+   it out and, once faded (its 200 ms opacity transition) and not relit, clears its inline place and size, so the hidden window collapses
+   back to nothing (0 by 0) instead of keeping the last drawing's box. */
 function raLens(w,i){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.querySelector('.aq-record-anatomy__lens');if(!L)return;
  var z=i==null?null:f.querySelector('.aq-record-anatomy__zone[data-z="'+i+'"]');
  [].forEach.call(f.querySelectorAll('.aq-record-anatomy__zone'),function(el){el.classList.toggle('is-on',el===z)});
@@ -4051,7 +4334,8 @@ function raLens(w,i){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.q
  f.classList.toggle('is-guided',!!z);if(!z)return;
  if(!f.classList.contains('has-lens')){L.style.transition='none';requestAnimationFrame(function(){L.style.transition=''})}
  f.classList.add('has-lens');L.style.left=z.offsetLeft+'px';L.style.top=z.offsetTop+'px';L.style.width=z.offsetWidth+'px';L.style.height=z.offsetHeight+'px'}
-function raOff(w){var f=w.querySelector('.aq-record-anatomy__field');raLens(w,null);if(f)f.classList.remove('has-lens')}
+function raOff(w){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.querySelector('.aq-record-anatomy__lens');raLens(w,null);if(!f)return;
+ f.classList.remove('has-lens');if(L)setTimeout(function(){if(f.classList.contains('has-lens'))return;L.style.transition='none';L.style.left=L.style.top=L.style.width=L.style.height='';void L.offsetWidth;L.style.transition=''},220)}
 if(typeof document!=='undefined'&&document.addEventListener){
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-record-anatomy__row');if(!r)return;var w=r.closest('.aq-record-anatomy');if(w._raTour)return;raLens(w,r.getAttribute('data-z'))})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-record-anatomy__block');if(!r||(ev.relatedTarget&&r.contains(ev.relatedTarget)))return;var w=r.closest('.aq-record-anatomy');if(w._raTour)return;raOff(w)})});
@@ -4214,6 +4498,20 @@ if(typeof window!=='undefined')window.AQrsCam=rsCam;
   var list=[].slice.call(sh.querySelectorAll('.aq-redline-sheet__item'));rsCam(sh.querySelector('.aq-redline-sheet__band'),it?list.indexOf(it):null)});
  document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
 })();
+/* Look "release-run" -> ReleaseRun (design-system/components/ReleaseRun): ordered steps (steps block) set as Swiss
+   columns under one water line. A twin-wall line runs across the top of the columns, a node where each step starts;
+   each column carries its step number as a huge light numeral, the title and the step's words; the last step is the
+   navy column, where the line ends (the water is released there). Placeholders in the words stay placeholders.
+   Fields, as steps: h, intro, items [{t, d, link}]. Concept: services.1 (nodes on one rising line to a boxed result)
+   and sys-pw.2 (Swiss tiles, huge numerals) in the measured editorial spine. */
+(function(){
+LOOKS['release-run']=function(b,H){var I=b.items||[],n=I.length;
+ var cols=I.map(function(it,i){var lk=it.link&&wp(it.link);
+  return '<li class="aq-release-run__col'+(i===n-1?' is-end':'')+'"><span class="aq-release-run__node" aria-hidden="true"></span>'
+   +'<span class="aq-release-run__n" aria-hidden="true">'+(i+1)+'</span><h3 class="aq-release-run__t">'+(lk?wlink(it.link,it.t):tx(it.t))+'</h3>'
+   +(it.d?'<p class="aq-release-run__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+ return sec(H+'<div class="aq-release-run" style="--n:'+n+'"><span class="aq-release-run__line" aria-hidden="true"><span class="aq-release-run__water"></span></span><ol class="aq-release-run__cols">'+cols+'</ol></div>','aq-release-run-sec')};
+})();
 /* Look "request-menu" -> RequestMenu (design-system/components/RequestMenu): a table of what each request returns, set
    as a short menu on a limestone sheet (pass 9b concept contact-proposal.2). The section title runs oversized across the
    top right; an isometric line drawing of a packaged skid stands at the left (sticky on desktop) and the menu sits beside
@@ -4290,6 +4588,35 @@ LOOKS['response-clock']=function(b,H){var I=b.items||[],n=I.length,K='aq-respons
  [].forEach.call(r.querySelectorAll('[data-i="'+s.getAttribute('data-i')+'"]'),function(el){el.classList.toggle('is-on',on)})}
  document.addEventListener('mouseover',function(ev){go(ev,true)});document.addEventListener('mouseout',function(ev){go(ev,false)});
  document.addEventListener('focusin',function(ev){go(ev,true)});document.addEventListener('focusout',function(ev){go(ev,false)})})();
+/* Look "response-lanes" -> ResponseLanes (design-system/components/ResponseLanes): a table of response times by request
+   (your request, first response, what follows) drawn as lanes on one clock. Each request is a lane: it starts where you
+   call or send and runs right through its first response (one stop per clause of that cell, split at "; ") and on into
+   what follows (the same), every stop a node on the line with its clock beneath it, placeholders and all. A request
+   written "Severity N: …" is set with N as a huge light numeral, so the four severities read as a calm scale from
+   production stopped down to routine; the other requests follow under a stronger rule with no numeral. Severity 1's
+   lane is drawn in flow. Stops sit at even spacing: the lanes show the order of events, never a time scale.
+   Fields, as a table: cols [your request, first response, what follows] (the two value labels head the lane zones),
+   rows [request, first response, what follows], intro, nav. Cells may be {t, link, intent}. Design system:
+   components/ResponseLanes. */
+(function(){
+/* clauses: a cell split at "; " outside brackets and parentheses ("Annex 15, 11; GUI-0029, 7" inside a parenthesis stays one) */
+function clauses(c){if(c&&typeof c==='object')return [c];var s=String(c==null?'':c),o=[],d=0,st=0;
+ for(var i=0;i<s.length;i++){var ch=s[i];if(ch==='('||ch==='[')d++;else if((ch===')'||ch===']')&&d)d--;else if(ch===';'&&!d&&/\s/.test(s[i+1]||'')){o.push(s.slice(st,i));st=i+1}}
+ o.push(s.slice(st));return o.map(function(x){return x.trim()}).filter(function(x){return x!==''})}
+function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
+LOOKS['response-lanes']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false;
+ var rows=R.map(function(r,i){var t=r[0]&&typeof r[0]==='object'?r[0].t:String(r[0]||''),m=t.match(/^Severity\s+(\d+):\s*(.*)$/),sev=m?+m[1]:0;
+  var brk=!sev&&!seen&&i>0;if(!sev)seen=true;
+  function zone(c,k){var E=clauses(c);return '<div class="aq-response-lanes__zone" data-zone="'+k+'"><p class="aq-response-lanes__zk">'+tx(C[k]||'')+'</p><ol class="aq-response-lanes__stops">'
+   +E.map(function(x){return '<li><span class="aq-response-lanes__node" aria-hidden="true"></span><span class="aq-response-lanes__v">'+tcell(cap(x))+'</span></li>'}).join('')+'</ol></div>'}
+  return '<li class="aq-response-lanes__row'+(sev===1?' is-first':'')+(sev?' is-sev':'')+(brk?' is-break':'')+'"'+(sev?' data-sev="'+sev+'"':'')+'>'
+   +'<div class="aq-response-lanes__req">'
+    +(sev?'<span class="aq-response-lanes__num" aria-hidden="true">'+sev+'</span>':'')
+    +'<h3 class="aq-response-lanes__t">'+(sev?'<span class="aq-response-lanes__sev">Severity '+sev+'<span class="aq-response-lanes__sr">: </span></span><span class="aq-response-lanes__what">'+tx(cap(m[2]))+'</span>':tcell(r[0]))+'</h3></div>'
+   +'<div class="aq-response-lanes__lane"><span class="aq-response-lanes__line" aria-hidden="true"><i></i></span><span class="aq-response-lanes__start" aria-hidden="true"></span>'+zone(r[1],1)+zone(r[2],2)+'</div></li>'}).join('');
+ var head='<p class="aq-response-lanes__head" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+wIcon('clock','aq-response-lanes__ic')+tx(C[1]||'')+'</span><span>'+tx(C[2]||'')+'</span></p>';
+ return sec(H+'<div class="aq-response-lanes">'+head+'<ol class="aq-response-lanes__rows">'+rows+'</ol></div>','aq-response-lanes-sec')};
+})();
 /* Look "retrofit-plant" -> RetrofitPlant (design-system/components/RetrofitPlant): common upgrades shown on the running
    plant, drawn the way a retrofit drawing is: existing equipment faint, the new work bold. A navy blueprint sheet
    carries the whole PW plant (IsoKit, the scene shared with look "visit-plan"); under it the upgrades are a tab list
@@ -4347,6 +4674,35 @@ function rpAim(s){var c=s.querySelector('.aq-retrofit-plant__cam'),w=s.querySele
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-retrofit-plant__tab');if(t)pick(t)});
  document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-retrofit-plant__tab');if(!t||['ArrowDown','ArrowUp','ArrowRight','ArrowLeft','Home','End'].indexOf(ev.key)<0)return;
   var a=[].slice.call(t.parentNode.querySelectorAll('.aq-retrofit-plant__tab')),i=a.indexOf(t),n=ev.key==='Home'?0:ev.key==='End'?a.length-1:(i+(/Down|Right/.test(ev.key)?1:a.length-1))%a.length;ev.preventDefault();a[n].focus();pick(a[n])});
+})();
+/* Look "return-slips" -> ReturnSlips (design-system/components/ReturnSlips): a table of what each request returns, set as
+   an exchange on a limestone band. Each row is one situation: what you have, set large and light on the left; a short
+   pipe with its arrow carries it across; on the right, what comes back is dealt out as paper slips, one per returned
+   item, each with its own "When" and "Cost" fields. A "What comes back" cell holding several items joined by " · " gives
+   one slip per item, and the "When" and "Cost" cells are split the same way when they hold the same number of parts
+   (otherwise each slip shows the whole cell). A {t, link, intent} cell becomes a slip whose title is the link.
+   Fields, as a table: cols [situation, what comes back, when, cost] (labels used as the slip field names), rows, fold,
+   fold_noun. Each slip's ruled header has one mark per slip in its row, its own in flow (slip 2 of 4 lights the second).
+   Hover or focus on a row runs its pipe in flow and lifts its slips. Design system: components/ReturnSlips. */
+(function(){
+function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
+function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
+LOOKS['return-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var rows=R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length;
+  var wSplit=when.length===n,cSplit=cost.length===n;
+  var slips=got.map(function(g,k){var w=wSplit?when[k]:r[2],c=cSplit?cost[k]:r[3];
+   return '<li class="aq-return-slips__slip" style="--k:'+k+'"><span class="aq-return-slips__ruling" aria-hidden="true">'+got.map(function(_,j){return '<i'+(j===k?' class="is-k"':'')+'></i>'}).join('')+'</span>'
+    +'<p class="aq-return-slips__t">'+tcell(cap(g))+'</p>'
+    +'<dl class="aq-return-slips__f">'
+     +(w!=null&&w!==''?'<div><dt>'+wIcon('clock','aq-return-slips__ic')+tx(C[2]||'When')+'</dt><dd>'+tcell(w)+'</dd></div>':'')
+     +(c!=null&&c!==''?'<div><dt>'+tx(C[3]||'Cost')+'</dt><dd>'+tcell(c)+'</dd></div>':'')
+    +'</dl></li>'}).join('');
+  return fli('<li class="aq-return-slips__row" style="--n:'+n+'">',b,i)
+   +'<div class="aq-return-slips__have"><span class="aq-return-slips__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-return-slips__s">'+tcell(r[0])+'</h3></div>'
+   +'<span class="aq-return-slips__pipe" aria-hidden="true"><i></i></span>'
+   +'<ol class="aq-return-slips__slips" aria-label="'+e(C[1]||'What comes back')+'">'+slips+'</ol></li>'}).join('');
+ var head='<p class="aq-return-slips__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
+ return sec('<div class="aq-return-slips-wrap" data-theme="light">'+H+'<div class="aq-return-slips">'+head+wFold(b,R.length,'<ol class="aq-return-slips__rows">'+rows+'</ol>',b.fold_noun||'rows')+'</div></div>','aq-band--limestone aq-return-slips-sec')};
 })();
 /* Look "review-reticles" -> ReviewReticles (design-system/components/ReviewReticles): what an assessment reviews, set
    as a drawing register on a limestone sheet (pass 9b concept svc-upgrades.3: numbered rows with mono area codes,
@@ -4408,7 +4764,10 @@ LOOKS['review-reticles']=function(b,H){var I=b.items||[],K='aq-review-reticles',
    column); on the right, behind a hairline rule, the register as the sheet's numbered notes column in mono (number,
    title as the link, status, topic and standard), with the topic filter above it; a title block closes the sheet at
    the bottom right and carries the live count.
-   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned. The title
+   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned, and so does
+   one whose date is still a placeholder (opens with "["): it reads "Planned" with its bracketed date beside it and,
+   as the lead, "Next planned", never "Latest". The lead note's link reads "Applied on <page>", or "Read the note" when
+   it points at the page the register is on (a note published on news itself). The title
    block reads "N notes", "N planned" when no note has a date, or "N notes · M planned"; so does the live count after
    filtering; the "All" filter reads "All N planned" when no note has a date.
    Fields (a register block): h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold,
@@ -4421,23 +4780,24 @@ function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+' planned':'
 var RR_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-storage':'storage-tank','sys-pretreatment':'pretreatment'},P='aq-revision-register'+'__';
 function rrSpot(it){var pg=wsplit(it.link||'')[0],s=it.spot||RR_SPOT[pg]||pageIcon(pg)||'';return isVig(s)?s:''}
 LOOKS['revision-register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
- var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return it.date?tx(it.date):'<span class="'+P+'planned">Planned</span>'};
- var nd=I.filter(function(it){return it.date}).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
- var f=I[fi],fl=f.link&&wp(f.link);
+ var dated=function(it){return !!it.date&&!/^\s*\[/.test(String(it.date))};
+ var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return dated(it)?tx(it.date):'<span class="'+P+'planned">Planned</span>'+(it.date?'<span>'+tx(it.date)+'</span>':'')};
+ var nd=I.filter(dated).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
+ var f=I[fi],fl=f.link&&wp(f.link),fd=dated(f),pg=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0],self=fl&&pg&&wsplit(f.link)[0]===pg.id;
  var tri='<svg class="'+P+'tri" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path d="M12 2L22 20H2Z"/></svg>';
  var tabs='<div class="'+P+'tabs" role="group" aria-label="Filter notes by topic"><button type="button" class="'+P+'tab" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+(nd?'':' planned')+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="'+P+'tab" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
- var lead='<aside class="'+P+'lead" aria-label="'+(f.date?'Latest note':'Next planned note')+'">'
-  +'<p class="'+P+'lk">'+tri+'<span>'+(f.date?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
+ var lead='<aside class="'+P+'lead" aria-label="'+(fd?'Latest note':'Next planned note')+'">'
+  +'<p class="'+P+'lk">'+tri+'<span>'+(fd?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
   +(f.d?'<blockquote class="'+P+'q"><p>'+tx(f.d)+'</p></blockquote>':'')
   +'<h3 class="'+P+'lt">'+tx(f.t)+'</h3>'+(f.std?'<p class="'+P+'lstd">'+tx(f.std)+'</p>':'')
-  +(fl?'<p class="'+P+'go">Applied on '+wlink(f.link)+'</p>':'')+'</aside>';
+  +(fl?'<p class="'+P+'go">'+(self?wlink(f.link,'Read the note'):'Applied on '+wlink(f.link))+'</p>':'')+'</aside>';
  /* the drawing plate: one figure per page a note is applied on, the lead's shown */
  var keys=[],fk=rrSpot(f);I.forEach(function(it){var k=rrSpot(it);if(k&&keys.indexOf(k)<0)keys.push(k)});
  var fig='<div class="'+P+'fig" aria-hidden="true"><span class="'+P+'frame"></span>'+keys.map(function(k){return '<span class="'+P+'dw'+(k===fk?' is-on':'')+'" data-k="'+e(k)+'">'+wSpot(k,'l',P+'spot')+'</span>'}).join('')
   +'<span class="'+P+'figcap">'+I.map(function(it,i){var p=it.link&&wp(it.link);return p?'<span data-i="'+i+'"'+(i===fi?' class="is-on"':'')+'>'+no(i)+' · '+e(p.nav_label||'')+'</span>':''}).join('')+'</span></div>';
  var notes=I.map(function(it,i){var tt=it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t);
-  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(rrSpot(it))+'" data-i="'+i+'"'+(it.date?' data-dated=""':'')+'>',b,i)
+  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(rrSpot(it))+'" data-i="'+i+'"'+(dated(it)?' data-dated=""':'')+'>',b,i)
    +'<span class="'+P+'no">'+no(i)+'.'+(i===fi?tri:'')+'</span><div class="'+P+'nb"><h3 class="'+P+'nt">'+tt+'</h3>'
    +'<p class="'+P+'meta">'+st(it)+(it.topic?'<span>'+tx(it.topic)+'</span>':'')+(it.std?'<span>'+tx(it.std)+'</span>':'')+'</p></div></li>'}).join('');
  var col='<div class="'+P+'col"><div class="'+P+'strip">'+tabs+'</div>'+wFold(b,I.length,'<ul class="'+P+'notes" role="list">'+notes+'</ul>',b.fold_noun||'notes')+'</div>';

@@ -2,7 +2,7 @@
  "look": "hold-timeline",
  "component": "HoldTimeline",
  "type": "steps",
- "fields": "seen in its blocks: h, intro, items, ground (items: t, d, hold).",
+ "fields": "seen in its blocks: h, intro, items, ground (items: t, d, hold, link).",
  "best_for": "HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a PP pipe, each stage's duration and deliverables hung off its node.",
  "status": "live",
  "instances": [
@@ -59,9 +59,9 @@
    "page": "services",
    "slot": 1,
    "h": "How long each stage takes, and what it leaves",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "a851503c9f",
    "block": {
@@ -98,6 +98,56 @@
       "t": "Performance qualification (PQ), at least 12 months",
       "d": "Protocol, sampling plan, phase reports, alert and action levels. Use from phase 2, after at least 2 weeks (WHO TRS 1033).",
       "hold": "Your quality unit"
+     }
+    ],
+    "nav": "Stages",
+    "ground": "light",
+    "look": "hold-timeline"
+   }
+  },
+  {
+   "page": "services",
+   "slot": 1,
+   "h": "How long each stage takes, and who signs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "80a42d5b09",
+   "block": {
+    "type": "steps",
+    "anchor": "durations",
+    "h": "How long each stage takes, and who signs",
+    "intro": "A summary of the full schedule. Weeks count from [lead time start event]; each hold adds your review time.",
+    "items": [
+     {
+      "t": "Design, [design to DQ, weeks]",
+      "hold": "Your quality unit",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Fabrication, [approved design to FAT, weeks]",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "FAT, [FAT duration, days]",
+      "hold": "Both parties",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Installation and SAT, [installation and SAT, days]",
+      "hold": "You",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+      "hold": "Your quality unit",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Performance qualification (PQ), at least 12 months",
+      "hold": "Your quality unit",
+      "link": "project-plan#stages"
      }
     ],
     "nav": "Stages",

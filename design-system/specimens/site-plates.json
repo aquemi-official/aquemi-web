@@ -134,7 +134,7 @@
    "page": "contact-locations",
    "slot": 1,
    "h": "Where to find us",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "19cb29a",
@@ -163,6 +163,67 @@
        "link": "svc-fabrication"
       },
       "Skid and piping fabrication, FAT",
+      "[shop address] · [map link]",
+      "[shop phone number] · [shop hours, time zone]"
+     ],
+     [
+      {
+       "t": "Service bases, [service bases, cities]",
+       "link": "svc-service"
+      },
+      "Field technicians, [critical spares stock]",
+      "[street address, or home-based technicians]",
+      "[service phone number], [service phone hours] · [service email]"
+     ],
+     [
+      "Parts stock, [stock location or locations]",
+      "Spare parts and consumables, [order cut-off and delivery commitment]",
+      "[street address, or shipped from the shop]",
+      "[parts email address] · [parts desk hours, time zone]"
+     ]
+    ],
+    "fold": 4,
+    "fold_noun": "contacts",
+    "look": "site-plates",
+    "art": [
+     "office",
+     "shop"
+    ]
+   }
+  },
+  {
+   "page": "contact-locations",
+   "slot": 1,
+   "h": "Where to find us",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "e2c22764eb",
+   "block": {
+    "type": "table",
+    "anchor": "locations",
+    "nav": "Contacts",
+    "h": "Where to find us",
+    "cols": [
+     "Site",
+     "What happens here",
+     "Address",
+     "Contact and hours"
+    ],
+    "rows": [
+     [
+      "Head office, [head office, city and province]",
+      "[head office functions]",
+      "[mailing address]",
+      "[sales phone number] · [sales email] · [office hours, time zone]"
+     ],
+     [
+      {
+       "t": "Shop and test bay, [shop location, city and province]",
+       "link": "svc-fabrication"
+      },
+      "Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice",
       "[shop address] · [map link]",
       "[shop phone number] · [shop hours, time zone]"
      ],

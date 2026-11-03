@@ -4,7 +4,7 @@
  "type": "steps",
  "fields": "h, intro, items [{t, d, hold, link}], core (optional centre word). Six steps fit best (three a side); any count works. Pointing at a step lights its node.",
  "best_for": "CapaRing shows a closed-loop procedure (a defect held, decided, repaired, corrected, checked and reported) as steps around one ring that the water runs once and closes, the hold step drawn as a closed valve.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "cmp-quality",
@@ -44,6 +44,51 @@
      {
       "t": "Reported to you",
       "d": "Every NCR logged in your turnover package; one after shipment reaches you within [NCR notice after shipment, working days]."
+     }
+    ],
+    "look": "capa-ring"
+   }
+  },
+  {
+   "page": "news",
+   "slot": 2,
+   "h": "Chemical sanitization, proven at every outlet",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "f2d2ec2519",
+   "block": {
+    "type": "steps",
+    "anchor": "pp-sanitization",
+    "h": "Chemical sanitization, proven at every outlet",
+    "intro": "Sanitization is a design choice: the method suits the material. A specifier can accept chemical sanitization of a plastic loop written as a procedure, checked at every outlet.",
+    "core": "PP loop",
+    "items": [
+     {
+      "t": "Isolate",
+      "d": "Bypass or remove the parts the sanitant could harm, as the written procedure lists them."
+     },
+     {
+      "t": "Dose",
+      "d": "Fill the tank and loop: [PP loop sanitization method], at [sanitant concentration]."
+     },
+     {
+      "t": "Prove it arrived",
+      "d": "Measure the sanitant at every outlet before the hold starts, so no branch is missed."
+     },
+     {
+      "t": "Hold",
+      "hold": "the operator, at start and end",
+      "d": "Hold for [contact time, hours], with the tank and loop out of use."
+     },
+     {
+      "t": "Flush",
+      "d": "Flush the tank and loop with Purified Water, outlet by outlet."
+     },
+     {
+      "t": "Prove it gone",
+      "d": "Residual tested before use, at every outlet. The signed record goes to your quality unit."
      }
     ],
     "look": "capa-ring"

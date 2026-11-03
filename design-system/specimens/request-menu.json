@@ -76,9 +76,9 @@
    "page": "contact-proposal",
    "slot": 2,
    "h": "What each request returns",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "684613007f",
    "block": {
@@ -110,6 +110,81 @@
      [
       "I have water data, no system yet",
       "Feed water review · modules, budget range and its class · sizing proposal",
+      "[feed water review turnaround, working days] · [budget proposal turnaround, working days] · [proposal response time, working days]",
+      "[cost of the feed water review] · [budget range cost or free] · [proposal cost or free]"
+     ],
+     [
+      "I have a system already",
+      "Scope and price, then options with downtime and requalification",
+      "[assessment response time, working days]",
+      "[assessment price, CAD, credit against upgrade]"
+     ],
+     [
+      "I am qualifying suppliers",
+      {
+       "t": "Audit or questionnaire pack, on Quality management",
+       "link": "cmp-quality#audit"
+      },
+      "Reply within [audit request response time, working days]",
+      "Before an order: [supplier audit before order, free or charged]"
+     ],
+     [
+      "Not sure yet: talk to an engineer",
+      "A written answer from an engineer",
+      "Written reply within [proposal response time, working days]",
+      "[fit check cost or free]"
+     ]
+    ],
+    "look": "request-menu"
+   }
+  },
+  {
+   "page": "contact-proposal",
+   "slot": 2,
+   "h": "What each request returns",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "91ab2eaf4a",
+   "block": {
+    "type": "table",
+    "anchor": "requests",
+    "nav": "Requests",
+    "h": "What each request returns",
+    "fold": 7,
+    "fold_noun": "requests",
+    "cols": [
+     "Situation",
+     "What comes back",
+     "When",
+     "Cost"
+    ],
+    "rows": [
+     [
+      "I have a URS or a draft",
+      "Gap review · compliance matrix · proposal · other document review",
+      "[URS review turnaround, working days] · [compliance matrix response time, working days] · [proposal response time, working days] · [document review turnaround, working days]",
+      "[URS review cost] · [compliance matrix cost or free] · [proposal cost or free] · [document review cost]"
+     ],
+     [
+      "I have an RFQ or a tender",
+      {
+       "t": "Proposal in your numbering, with your bid form filled in",
+       "link": "buying#answer"
+      },
+      "[proposal response time, working days]",
+      "[proposal cost or free]"
+     ],
+     [
+      "I know my product, not my water spec",
+      "Water scope review: grade per step, package, qualification scope",
+      "[scope review turnaround, working days]",
+      "[scope review cost or free]"
+     ],
+     [
+      "I have water data, no system yet",
+      "Feed water review · modules, budget range and its class, from rough numbers · sizing proposal and firm price, from full analysis",
       "[feed water review turnaround, working days] · [budget proposal turnaround, working days] · [proposal response time, working days]",
       "[cost of the feed water review] · [budget range cost or free] · [proposal cost or free]"
      ],

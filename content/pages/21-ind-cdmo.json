@@ -196,7 +196,8 @@
     "runs",
     "sanitized",
     "Swap trains"
-   ]
+   ],
+   "intro": "Write two requirements into your specification: the longest outage you accept, in hours, and how clients get water during repairs."
   },
   {
    "type": "steps",
@@ -246,6 +247,12 @@
     {
      "q": "Can you attend our clients' audits?",
      "a": "Your clients audit the water system as part of your site. Our attendance as your supplier, in person or by video: [client audit attendance and terms]."
+    },
+    {
+     "q": "Our clients will ask about you. What can we show them?",
+     "a": "We are a new company, so we offer checks, not a client list. Your clients can meet the engineer who would lead your project. They can audit our quality system from [quality system ready for audit, date]. Each check says what it does not prove.",
+     "link": "projects#verify",
+     "link_label": "Checks you can run today"
     },
     {
      "q": "Our system is another maker's, with paper records. Where do we start?",
@@ -306,6 +313,9 @@
   "WFI: the scope line moved from the lead to the first FAQ, worded as the scope (DR-021 as amended by the pass 10 desk ruling); its full answer is industries#faq. PW sized as feed to a client's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it",
   "Makes and equipment types assessed on other builders' systems ([makes and equipment types serviced]; FAQ 5; same name on home, services, svc-service, svc-upgrades, svc-cq, about, contact-service and contact-proposal; FD-30). The full answer lives on svc-upgrades",
   "Redundancy: the \"Sanitize between campaigns\" card lights the loop; \"tank\" duplicated \"Storage autonomy\", and the train out of service would imply duplex (DR-018 rule 1). Its train clause went (FD-20 open; DR-018). Launch rule: if FD-20 says duplex trains are not offered, drop the duplex card and set the look's trains field to [] so the \"Swap trains\" control is not drawn, and cut \", duplex trains\" from router row 4",
-  "Router (DR-020 as amended): rows 3 and 4 name the requirement at risk and the first answer; row 4 starts at its on-page answer (ind-cdmo#redundancy); row 5 links sys-pw. Anchors on this page: audit-pack, redundancy"
+  "Router (DR-020 as amended): rows 3 and 4 name the requirement at risk and the first answer; row 4 starts at its on-page answer (ind-cdmo#redundancy); row 5 links sys-pw. Anchors on this page: audit-pack, redundancy",
+  "Pass 11 buyer asks (journeys § 4 client auditor and § 5 operations-head; web/buyer-requirements-from-tenders.md): redundancy intro asks for the two requirements buyer documents write as terms, the outage cap in hours and water during a repair (L-10-17, L-12-3, L-05-4); same words as the closing's include line 'Longest acceptable outage, hours'. No Aquemi figure is given",
+  "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2: ind-cdmo lacked a 'new company, here is what you can check' line; DR-004 rule 1; SITE-PLAN principle 8): FAQ \"Our clients will ask about you. What can we show them?\" links projects#verify. The audit date is cmp-quality's placeholder ([quality system ready for audit, date]; FD-48); at launch an unset date drops that clause. Client auditors ask the supplier's support file and audit access (L-05-7, L-15-4)",
+  "First system: no router row here; a contract maker is rarely on a first PW system. The natural health products row keeps ind-pharma#nhp; ind-pharma's FAQ right after #nhp points to first-system (pass 11 SITE-PLAN; see the pass 11 review finding 11 for the in-block link)"
  ]
 }

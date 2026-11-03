@@ -3,14 +3,18 @@
    where we answer it sit across the seam on the limestone half, row against row. The seam is a drawn line with one
    node per row; hovering a row lights its node and draws a tie across the seam.
    Fields, as the evidence table: h, intro, cols, rows [who, read, {t, link, intent}], fold, fold_noun.
+   The first two column names head the halves once (aria-hidden) and are repeated in each row as a label before the
+   reader and before the reading: visually hidden on wide screens (read by assistive tech), shown on phones, where the
+   halves stack and the heads are gone. The third column's name already labels each answer.
    Concept: systems.2 (navy/limestone split where the seam is the boundary; STYLE-ATLAS hybrid 4, "battery-limit split,
    calm", in light type). */
 (function(){
 LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
+ var lab=function(j){return C[j]?'<span class="aq-reader-split__lab">'+tx(C[j])+'</span>':''};
  var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
-  return fli('<li class="aq-reader-split__row"><div class="aq-reader-split__who">'+idx(i)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
+  return fli('<li class="aq-reader-split__row"><div class="aq-reader-split__who">'+idx(i)+lab(0)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
    +'<span class="aq-reader-split__tie" aria-hidden="true"><span class="aq-reader-split__node"></span></span>'
-   +'<div class="aq-reader-split__what"><p class="aq-reader-split__read">'+tx(r[1])+'</p>'
+   +'<div class="aq-reader-split__what">'+lab(1)+'<p class="aq-reader-split__read">'+tx(r[1])+'</p>'
    +(lk?'<a class="aq-reader-split__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tx(go.t)+'</span></a>'
      :(go?'<p class="aq-reader-split__go"><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tcell(go)+'</span></p>':''))+'</div></li>',b,i)}).join('');
  var colh='<p class="aq-reader-split__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';

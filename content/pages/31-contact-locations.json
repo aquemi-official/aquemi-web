@@ -79,7 +79,7 @@
       "t": "Shop and test bay, [shop location, city and province]",
       "link": "svc-fabrication"
      },
-     "Skid and piping fabrication, FAT",
+     "Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice",
      "[shop address] · [map link]",
      "[shop phone number] · [shop hours, time zone]"
     ],
@@ -363,7 +363,8 @@
   "Shipping: drain and drying method after the FAT, crating standard and shock or tilt indicators, transit time to main centres (days)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Cost of the written coverage answer: [fit check cost or free], the \"Not sure yet\" row of contact-proposal's requests table (FD-02; DR-006 rule 5). At launch, \"Free\" or the price; if unset, the cost line goes",
-  "LocalBusiness schema per real location only, once addresses are confirmed"
+  "LocalBusiness schema per real location only, once addresses are confirmed",
+  "Pass 11 (offer § 14 CL1; L-12-16, L-07-10; FD-44, FD-45): the shop row reads \"Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice\" (ops/placeholder-names.md name, as on svc-fat-sat and projects), two plate callouts (pass 11 review finding 5). At launch the second callout ships only once [shop and test bay ready for visits] has passed (FD-44, DR-004 class 2)"
  ],
  "primary_cta_link": "#coverage",
  "facts": [

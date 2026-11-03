@@ -11,7 +11,7 @@
      The versioned URLs (?v=<content hash>) are written by tools/design_system.py build; don't edit them by hand. -->
 <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="content/pages.min.json?v=e951430a7c" as="fetch" crossorigin>
+<link rel="preload" href="content/pages.min.json?v=817afc27b5" as="fetch" crossorigin>
 <style>
 /* Geist and Geist Mono, self-hosted (SIL Open Font License 1.1), latin and latin-ext, variable weight 300-500 */
 @font-face{font-family:'Geist';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
@@ -21,14 +21,14 @@
 </style>
 <!-- The Aquemi design system: tokens, then components (the minified site copy). Site chrome last. -->
 <link rel="stylesheet" href="design-system/tokens.css?v=f52cebc0ff">
-<link rel="stylesheet" href="design-system/components/bundle.min.css?v=ddad74ce57">
+<link rel="stylesheet" href="design-system/components/bundle.min.css?v=77cd2d0b87">
 <link rel="stylesheet" href="assets/site.css?v=d06f0e5c4b">
 <script>
 /* Boot: start the page content now, in parallel with the CSS and scripts (the preload above makes it one request),
    preload this page's equipment drawing so the hero never waits for it (crossorigin: CSS mask-image fetches in CORS mode, so a plain preload would go unused), and register the caching service worker. */
 (function(){
  var ART=['ind-biotech','ind-cdmo','ind-meddevice','ind-pharma','svc-cq','svc-design','svc-fabrication','svc-fat-sat','svc-service','svc-upgrades','sys-monitoring','sys-pretreatment','sys-pure-steam','sys-pw','sys-storage','sys-wfi-distillation','sys-wfi-membrane'];
- window.AQBOOT={pages:fetch('content/pages.min.json?v=e951430a7c',{credentials:'same-origin',mode:'cors'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})};
+ window.AQBOOT={pages:fetch('content/pages.min.json?v=817afc27b5',{credentials:'same-origin',mode:'cors'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})};
  var id=location.hash.slice(1).split('#')[0];
  if(ART.indexOf(id)>-1){var l=document.createElement('link');l.rel='preload';l.as='image';l.crossOrigin='anonymous';l.href='assets/illustrations/'+id+'.webp';document.head.appendChild(l)}
  if('serviceWorker' in navigator&&location.protocol==='https:')addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
@@ -48,8 +48,8 @@
 <div class="todo" id="wtodolist" hidden></div>
 <!-- All scripts are deferred: they download in parallel and never block the parser; they run in this order -->
 <script defer src="assets/vendor/gsap-3.13.0.min.js?v=53ecac42c6"></script>
-<script defer src="assets/aquemi-site.js?v=ea3dab9103"></script>
-<script defer src="assets/motion.js?v=05a24ca04e"></script>
+<script defer src="assets/aquemi-site.js?v=8bf8f3b842"></script>
+<script defer src="assets/motion.js?v=739fc98dcd"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
 var $=function(id){return document.getElementById(id)},e=AQ.e;

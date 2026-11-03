@@ -2,17 +2,17 @@
  "id": "cmp-quality",
  "section": "Compliance",
  "nav_label": "Quality management",
- "title": "Quality management, supplier audits and terms of sale | Aquemi",
- "meta": "How our quality management system controls changes, nonconformances, traceability, calibration and suppliers, how to audit it, and our terms of sale.",
+ "title": "Quality management and supplier audits | Aquemi",
+ "meta": "How our quality management system controls changes, nonconformances, traceability, calibration and suppliers, and how to audit it before you order.",
  "path": "/compliance/quality/",
  "eyebrow": "QUALITY · SUPPLIER AUDIT",
  "headline": "Audit our quality system before you award",
- "lead": "Our quality management system, the record each process leaves, and our terms of sale.",
+ "lead": "Our quality management system, the record each process leaves, and how to audit it before you order.",
  "primary_cta": "Request a supplier audit",
  "primary_cta_link": "#audit",
  "secondary_cta": {
   "label": "How buying from us works",
-  "link": "#buying"
+  "link": "buying"
  },
  "blocks": [
   {
@@ -202,53 +202,87 @@
    "anchor": "buying",
    "h": "How buying from us works",
    "cols": [
-    "Term",
-    "Ours",
+    "Terms",
+    "What the buying page covers",
     "Note"
    ],
    "rows": [
     {
-     "p": "Proposal",
-     "v": "[proposal contents and line items] · valid [proposal validity, days] from issue"
-    },
-    {
-     "p": "Currency, tax and duty",
-     "v": "[quoting currency] · [quoting terms, imported content]",
-     "m": "Set in the proposal"
-    },
-    {
-     "p": "Payment milestones",
-     "v": "[milestone structure]",
-     "m": "Set in the proposal"
-    },
-    {
-     "p": "Acceptance and warranty start",
-     "v": "[warranty period, start, exclusions]",
-     "m": "Set in the proposal"
-    },
-    {
-     "p": "Delivery and lead time",
-     "v": "[delivery terms] · [lead time from drawing approval, weeks]",
-     "m": "Set in the proposal"
-    },
-    {
-     "p": "Drawings and code",
-     "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
-     "m": "Set in the proposal"
-    },
-    {
-     "p": "Onboarding documents",
-     "v": "[onboarding documents and their status]",
-     "m": "In the quality questionnaire pack, from [quality system ready for audit, date]",
-     "link": "about#facts",
-     "link_label": "See insurance and financial standing"
-    },
-    {
-     "p": "Non-disclosure agreement",
-     "v": "[NDA turnaround, working days] from receipt"
+     "p": "Terms of sale",
+     "v": "Proposal and validity · Lead time · Payment milestones · Warranty start and cover · Drawings and code · Your contract form",
+     "link": "buying#terms",
+     "link_label": "See the terms of sale",
+     "m": "Onboarding papers and their status are on the same page."
     }
    ],
    "look": "terms-sheet"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Access",
+   "anchor": "access",
+   "h": "What you can see, and when",
+   "intro": "Each part of our qualification pack, and who can see it.",
+   "cols": [
+    "Item",
+    "Who can see it",
+    "Note"
+   ],
+   "rows": [
+    [
+     "Certification status",
+     "Anyone, on this page",
+     {
+      "t": "See certification status",
+      "link": "cmp-quality#certification"
+     }
+    ],
+    [
+     "Procedure list and organization chart",
+     "In the questionnaire pack, from [quality system ready for audit, date]",
+     {
+      "t": "Request the pack",
+      "link": "cmp-quality#audit",
+      "intent": "Quality questionnaire pack"
+     }
+    ],
+    [
+     "Specimen records: nonconformance, CAPA, change request",
+     "In the questionnaire pack, as Aquemi-written specimens",
+     {
+      "t": "Request the pack",
+      "link": "cmp-quality#audit",
+      "intent": "Quality questionnaire pack"
+     }
+    ],
+    [
+     "Quality manual",
+     "[quality manual: openly or under NDA]",
+     {
+      "t": "Non-disclosure agreement (NDA) terms",
+      "link": "buying#terms"
+     }
+    ],
+    [
+     "Critical supplier names",
+     "[critical supplier names: openly or under NDA]",
+     {
+      "t": "See supplier requirements",
+      "link": "cmp-quality#suppliers"
+     }
+    ],
+    [
+     "Live records and the shop",
+     "At audit, from [quality system ready for audit, date]",
+     {
+      "t": "Request an audit",
+      "link": "cmp-quality#audit",
+      "intent": "On-site supplier audit"
+     }
+    ]
+   ],
+   "look": "audit-manifold"
   },
   {
    "type": "form",
@@ -315,7 +349,7 @@
     },
     {
      "q": "What is in the questionnaire pack?",
-     "a": "From [quality system ready for audit, date]: our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. [onboarding documents and their status].",
+     "a": "From [quality system ready for audit, date]: our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. Onboarding papers and their status are on our buying page.",
      "link": "cmp-quality#audit",
      "link_label": "Request the pack",
      "intent": "Quality questionnaire pack"
@@ -384,16 +418,8 @@
   "Pressure equipment: certificate of authorization holder, or the certified vessel fabricator used ([pressure vessel certificate holder or certified vessel partner]; FD-24)",
   "Control panels: [panel standard] and [panel certification mark held, or field evaluation used], compliance's names (FD-24, OQ-78). The standard the certification body applies (CSA C22.2 No. 14 or No. 286) and whether UL 508A applies for US sites, in writing from the certification body before the page names one (DR-007 rule 4)",
   "PP joining status: [number of qualified thermoplastic welders] and [welder qualification standard for thermoplastics], svc-fabrication's names (FD-18). Was \"PP joining qualification held\" and \"PP joining standard\" here. The item's icon is a neutral pipe run (\"loop\"), not a weld bead, while the joining method is open (pass 11 review; DR-018 rule 2, as careers); a joining icon may return once FD-18 names the method",
-  "Terms block \"How buying from us works\" (anchor buying; DR-005 rule 7): kept with placeholders in the draft; at launch it ships only once proposal validity, currency, payment milestones and warranty start are decided, and any other row still unset goes (DR-005 rule 8). While it ships, the footer shows \"Buying from Aquemi\" (Footer.js, shared code); if it does not ship, the hero secondary becomes \"See the documentation package\" (cmp-documentation), and in the same commit about's hero secondary \"How buying from us works\" goes and the cmp-quality#buying links in svc-design's FAQ 6 and sys-monitoring's FAQ 4 change (DR-006 rule 6). At launch (DR-005 rule 8: the values are filled), each \"Set in the proposal\" note beside a stated term becomes \"Unless the proposal states otherwise\" or goes, so a filled term does not read as negotiable (pass 11 review)",
-  "Terms, proposal: what a proposal contains and its line items (for example equipment, installation, commissioning and qualification, documentation, training, spares) ([proposal contents and line items]); validity in days ([proposal validity, days]; FD-05)",
-  "Terms, currency, tax and duty (FD-05): quoting currency for Canadian and US buyers ([quoting currency]; about no longer states a currency, so this row is its one home, DR-005); whether prices are before tax; how imported membranes, EDI modules and instruments, their duty and any escalation are stated ([quoting terms, imported content])",
-  "Terms, payment (FD-06): milestone events and shares, deposit, holdback ([milestone structure]); counsel on the Ontario Construction Act holdback (OQ-80)",
-  "Terms, acceptance and warranty (FD-07): period, start event (for example a signed SAT report or acceptance), coverage, exclusions, claim response ([warranty period, start, exclusions]); include who pays for design gaps found at DQ or IQ/OQ (svc-design's [design gap warranty terms] points here)",
-  "Terms, delivery (FD-08): delivery terms for Canadian projects, for example the Incoterms rule ([delivery terms]); lead time in weeks from drawing approval ([lead time from drawing approval, weeks])",
-  "Terms, drawings and code (FD-10): one name each, set here. Drawings and native files: [drawing ownership or licence terms] (svc-design's name; cmp-documentation's to-do uses it too). Application code: [code delivered unlocked, and who owns it] (sys-monitoring's name; web/site-jobs.md § 5's \"code ownership policy\" takes it); escrow for anything delivered locked",
-  "Terms, onboarding documents ([onboarding documents and their status], in the terms row and the pack FAQ): corporate registration and business number (FD-33), certificates of insurance (limits are about's [general and professional liability limits, CAD]; FD-12), workers' compensation (WSIB) clearance, safety program and COR, contractor-safety platforms such as Avetta, ISNetworld or ComplyWorks (FD-13), bank reference (FD-12). List only the documents held (FD-12, FD-13, FD-33). The row's note \"In the quality questionnaire pack, from [quality system ready for audit, date]\" (about's wording for its pack lines) shows at launch only if that date is filled and has passed; otherwise it goes (pass B relay launch rule). The row links about#facts (insurance, financial standing), the home of those facts, for procurement arriving at #buying (pass 10 review)",
-  "Terms, non-disclosure agreement: whose form is signed (Aquemi's mutual NDA or the buyer's) and the turnaround ([NDA turnaround, working days]; FD-01, FD-47)",
-  "Quality manual and critical supplier names shared openly or under NDA (same as svc-design: openly or under NDA)",
+  "Terms block \"How buying from us works\" (anchor buying kept; look terms-sheet shortened to one row; pass 11 SITE-PLAN, desk Q1, DR-001 rule 4 and DR-005 rule 7 as amended, DR-009): the eight terms rows and their to-do lines (proposal, currency, payment, warranty, delivery, drawings and code, onboarding documents, NDA; FD-05 to FD-08, FD-10, FD-12, FD-13, FD-33) moved to buying (26a-buying.json, buying#terms), where commercial phrasebook changes 2, 3, 4, 7 and 9 land. The full block and its to-dos are in git at aquemi-web bff41e0. The row names the subjects only, no values, so the terms keep one home. The hero secondary now links buying. Launch: if buying does not ship (its rule: FD-05 to FD-07 decided), restore the block from bff41e0 and the hero secondary returns to #buying. Links still pointing here to retarget by their editors: about hero secondary, svc-design FAQ 6, sys-monitoring FAQ 4; the footer's \"Buying from Aquemi\" (Footer.js, orchestrator). The row names buying#terms' subjects in its rows' order (proposal, lead time, payment, warranty start and cover, drawings and code, contract form); its note points at buying#onboarding (pass 11 review finding 6)",
+  "Quality manual and critical supplier names shared openly or under NDA (same as svc-design: openly or under NDA): the access block's [quality manual: openly or under NDA] and [critical supplier names: openly or under NDA] (FD-48)",
   "Questionnaire turnaround (working days); whether quality agreement mark-ups come back with the quote (yes or no: the FAQ leaves it out until confirmed) and the mark-up turnaround ([quality agreement mark-up turnaround, working days]); compliance's to-do asks the same (FD-48)",
   "Remote audit: offered, notice (working days), whether a live shop view is possible",
   "On-site audit notice ([on-site audit notice, working days], the name projects uses); shop and office location ([shop location, city and province], same as svc-fabrication, svc-design, about); whether supplier audits before order are free of charge ([supplier audit before order, free or charged], the name contact-proposal's requests table uses)",
@@ -404,7 +430,9 @@
   "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)",
   "FAQ 6 \"What should we ask any Purified Water supplier?\": the data integrity check reads \"A list of each data integrity requirement and the control that meets it\" (plain words for procurement, pass 11 review). Its home is sys-monitoring#data-integrity (\"Data integrity, clause by clause\"); the FAQ carries one link, to cmp-documentation#index. If that index link moves or the FAQ gains a second link, the data integrity check links sys-monitoring#data-integrity",
   "Change notification to clients (FAQ \"Will you sign our quality agreement?\"; DR-022 rule 4): which changes you notify (parts, materials, software the client approved), how and with what notice ([change notification to clients: scope and notice]; FD-48). Until set, the placeholder stays",
-  "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)"
+  "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)",
+  "Pass 11 (structure-and-sitemap.md § 3.5 B5, proof-and-seriousness.md § 5.2, journeys P4 step 3; L-05-7, L-05-13, L-G3-3; pass 11 review finding 8): block \"What you can see, and when\" (anchor access, before the audit form its rows link to) splits the qualification pack into public, in the pack, under NDA and at audit. Look audit-manifold (an evidence table; also live on ind-meddevice): the retired table looks not used elsewhere (joint-tag, plan-sheets, shop-floor, spares-kit, twin-route) draw joints, plans, shop stations or spares, and reader-split is on four pass 11 pages. New names for the orchestrator's ops/placeholder-names.md: [quality manual: openly or under NDA], [critical supplier names: openly or under NDA] (FD-48). Rows follow the questionnaire pack FAQ and the audit form; a row whose item does not exist at launch leaves (DR-006 rule 6). Six rows, unfolded (DR-024); every note cell is a link, because AuditManifold styles a plain note like a link; the quality manual row links buying#terms, the home of the NDA terms. The warranty split by component class belongs to buying",
+  "Onboarding papers (insurance, registrations, banking and tax forms) and their status live item by item on buying#onboarding, each with its own placeholder (pass 11; DR-009, DR-011). The questionnaire pack FAQ and the terms row point there in words; no onboarding placeholder on this page (pass 11 review finding 7)"
  ],
  "figure": {
   "plate": "stamp",

@@ -20,7 +20,7 @@
    "type": "steps",
    "nav": "Stages",
    "h": "What each stage proves",
-   "intro": "One commissioning and qualification (C&Q) plan covers every stage.",
+   "intro": "One commissioning and qualification (C&Q) plan covers every stage. IQ and OQ protocols reach your validation team [protocol issue before IQ/OQ, weeks] before testing.",
    "items": [
     {
      "t": "Commissioning",
@@ -189,7 +189,7 @@
    "type": "steps",
    "nav": "PQ",
    "h": "PQ in three phases",
-   "intro": "Conductivity, total organic carbon and microbial count. For example, 12 sample points over 28 days make 336 samples.",
+   "intro": "Your lab tests conductivity, total organic carbon and microbial count. For example, 12 sample points over 28 days make 336 samples: book lab hours before PQ starts.",
    "items": [
     {
      "t": "Phase 1",
@@ -254,7 +254,7 @@
    "type": "faq",
    "nav": "FAQ",
    "anchor": "faq",
-   "h": "Questions validation teams ask",
+   "h": "Questions on qualification and handover",
    "items": [
     {
      "q": "Do we really have to wait a year before using the water?",
@@ -266,6 +266,10 @@
      "link": "cmp-documentation#samples",
      "link_label": "Request the IQ/OQ contents",
      "intent": "IQ and OQ protocol contents"
+    },
+    {
+     "q": "What counts as passing IQ and OQ?",
+     "a": "The criteria written in each protocol, which your validation team approves before testing starts. The summary lists every test as met or not met. Each miss carries its deviation number, action and owner. Your quality unit decides release."
     },
     {
      "q": "We work to ASTM E2500, not IQ/OQ/PQ. Can you?",
@@ -285,6 +289,10 @@
      "a": "GUI-0158's water sections (45 and 46) do not name IQ, OQ and PQ. They ask for criteria to qualify and monitor treated water, test records, and calibrated, maintained equipment. Our scope for that evidence: [NHP qualification scope]. Where your quality assurance person (QAP) asks for IQ, OQ and PQ, the path on this page applies.",
      "link": "ind-pharma#nhp",
      "link_label": "Water by product line"
+    },
+    {
+     "q": "Do you train the people who will run it?",
+     "a": "Yes, on your system after start-up: [training hours and audiences]. Training ends when your operators can run the system and clear its usual alarms. Each trainee signs a record, tied to the manual chapter covered, for your quality file."
     }
    ]
   },
@@ -293,8 +301,8 @@
    "h": "Before and after qualification",
    "items": [
     "svc-fat-sat",
+    "project-plan",
     "sys-monitoring",
-    "svc-upgrades",
     "cmp-documentation"
    ]
   }
@@ -331,7 +339,14 @@
   "PP loop sanitization method proven at OQ, with its contact time and residual test ([PP loop sanitization method]; FD-14, DR-013)",
   "A real qualification project (phase dates, deviations, water release date) before any case block (DR-016, FD-42)",
   "NHP qualification scope ([NHP qualification scope]; FD-46; new in pass 10, SITE-PLAN 7): what Aquemi delivers for a natural health product site under GUI-0158 sections 45 and 46 (qualification criteria for the treated water, test record templates, calibration and maintenance SOPs for the purification system). IQ/OQ/PQ is an Aquemi service (MISSION), so the FAQ's last sentence stands without FD-46. The FAQ states GUI-0158's own terms (checked against industries/natural-health-products.md, IPH-02, IPH-05, desk ruling Q9); \"dry-dose lines need only documented rinse control\" waits on FD-20 and stays off this page. At launch an unset scope drops that sentence, the rest of the answer stands",
-  "Pass 10, intent I6 (SITE-PLAN 4.5): \"Request the IQ/OQ contents\" (cmp-documentation#samples, \"IQ and OQ protocol contents\") sits on the FAQ \"Can IQ and OQ be combined\" because the walkdown-pins look of \"IQ and OQ on site\" renders no link. Specimens wait on FD-47: at launch, with no specimen, the FAQ link goes (DR-006 rule 6)"
+  "Pass 10, intent I6 (SITE-PLAN 4.5): \"Request the IQ/OQ contents\" (cmp-documentation#samples, \"IQ and OQ protocol contents\") sits on the FAQ \"Can IQ and OQ be combined\" because the walkdown-pins look of \"IQ and OQ on site\" renders no link. Specimens wait on FD-47: at launch, with no specimen, the FAQ link goes (DR-006 rule 6)",
+  "Pass 11, phrasebook 18 (L-03-27, PB-03.24): PQ intro says your lab tests and to book lab hours before PQ starts (review finding 9: calm, no \"now\"); matches the roles table (your operators and laboratory sample and test). Stays true until FD-46 says Aquemi samples",
+  "Pass 11, offer § 14 notice (L-08-10, L-11-9): stages intro \"IQ and OQ protocols reach your validation team [protocol issue before IQ/OQ, weeks] before testing\", project-plan#notice's name for the same fact (its home for every notice period; one figure on both pages, DR-011; FD-45, FD-46). At launch an unset value drops the sentence",
+  "Pass 11, proof § 5.2 (L-G3-13, L-14-8): new FAQ \"What counts as passing IQ and OQ?\" states the acceptance definition and the met / not met summary with action and owner per miss. The specimen acceptance summary with a \"not met, action\" row waits on FD-47 (no specimen exists; no download promised)",
+  "Pass 11, phrasebook 14 and offer § 14 S5 (L-08-9, L-10-15, L-11-10, L-14-5; PB-08.8, PB-08.9, PB-10.21), owner decision: new FAQ \"Do you train the people who will run it?\" with [training hours and audiences] (offer § 14's name; one name, DR-011). MISSION lists commissioning, not training, so whether training is a priced line, its audiences, hours and sign-off standard are FD-26 (phrasebook open question 2). If Aquemi does not train, the FAQ goes at launch. One home: this FAQ; a services row or project-plan line links here rather than repeating it (DR-009)",
+  "Pass 11, related (SITE-PLAN, svc pages): project-plan replaces svc-upgrades (still linked from the FAQ \"Can you qualify a system you did not build?\"). Related: if project-plan has not launched (FD-08), svc-upgrades returns in its place (pass 11 review finding 13)",
+  "Pass 11, proof § 5.2 open (L-10-16): a handover sampling plan in plain words (for the first [weeks] we sample at [points] and send you the results) waits on FD-46 (who samples); the PQ intro carries the plain-words version for now",
+  "Pass 11 review findings 4 and 10: training FAQ opens \"Yes, on your system after start-up\" (offer § 14 S5's when). 'Yes' stands only with FD-26; repeat sessions ([repeat training policy], offer § 14 S5, L-11-10) wait on the same decision. FAQ heading now \"Questions on qualification and handover\" so operations and maintenance readers find the training answer"
  ],
  "facts": [
   {

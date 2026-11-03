@@ -18,9 +18,8 @@
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have a URS or a draft|URS gap review",
  "secondary_cta": {
-  "label": "Request a water scope review",
-  "link": "contact-proposal",
-  "intent": "I know my product, not my water spec"
+  "label": "Read our URS guide",
+  "link": "urs-guide"
  },
  "blocks": [
   {
@@ -172,10 +171,9 @@
     },
     {
      "q": "Consultant or contractor: what do we receive, and when?",
-     "a": "Consultants receive a compliance matrix against your client's URS within [compliance matrix response time, working days]. The basis of design follows at the concept hold. P&IDs and a draft functional specification follow at basic design, approved issues at detailed design. Contractors: connection points come in the proposal; footprint, weight, utilities, tie-ins and field joints are in our site requirements (Systems).",
-     "link": "contact-proposal",
-     "link_label": "Request a compliance matrix",
-     "intent": "I have a URS or a draft|Compliance matrix"
+     "a": "A compliance matrix against your client's URS, within [compliance matrix response time, working days]. Drawings and specifications follow the design stages above. Contractors: connection points are under Systems; who installs what is under How a project runs. Writing the specification section? Our URS guide has notes for specifiers.",
+     "link": "urs-guide#specification",
+     "link_label": "Notes for specifiers"
     },
     {
      "q": "Is design charged separately from the equipment?",
@@ -186,8 +184,8 @@
     {
      "q": "Who seals drawings, and do we get native CAD files?",
      "a": "[P.Eng. seal] in [provinces of licence]. Drawings come as [drawing formats delivered], under [drawing ownership or licence terms].",
-     "link": "cmp-quality#buying",
-     "link_label": "How buying from us works"
+     "link": "buying#terms",
+     "link_label": "See the terms of sale"
     }
    ]
   },
@@ -196,9 +194,9 @@
    "h": "Where the design goes next",
    "items": [
     "svc-fabrication",
-    "svc-fat-sat",
     "svc-cq",
-    "cmp-documentation"
+    "cmp-documentation",
+    "project-plan"
    ]
   }
  ],
@@ -229,17 +227,20 @@
   "[design-only engagements offered, and pricing] (FAQ, two answers): whether design without the equipment, or a review of another firm's design, is sold, and its price (FD-02, FD-25). Designing the PW package inside an engineering firm's project, as its supplier, stays a plain yes (MISSION: process design is a service)",
   "[P.Eng. seal] (FAQ): who seals drawings and any calculations (P.Eng. or ing.) (FD-24, FD-34). The provinces are about's [provinces of licence] (DR-011 rule 2); if a partner seals where we hold no licence, the answer names that route instead. The answer opens with it: unset at launch, the question goes (DR-005 rule 8)",
   "[drawing formats delivered] (FAQ): which formats come with the drawings, for example PDF and native CAD files, and the design software used (FD-10, FD-47); cmp-documentation's to-do points to this answer",
-  "[drawing ownership or licence terms] (FAQ): drawing and native-file ownership or licence (FD-10). The full term lives in cmp-quality's \"How buying from us works\" (DR-005 rule 7) under the same name; the answer links there (cmp-quality#buying)",
+  "[drawing ownership or licence terms] (FAQ): drawing and native-file ownership or licence (FD-10). Pass 11: the full term lives on buying#terms, row \"Drawings and code\", under the same name (SITE-PLAN moved the terms from cmp-quality, whose #buying is now a one-line pointer); the answer links there (buying#terms, \"See the terms of sale\")",
   "[risk assessment method] (FAQ): the method Aquemi uses for the system risk assessment, and whether it is run with the client's quality and engineering leads (FD-46; same name as compliance). \"Run with your quality and engineering leads\" was cut from the answer until confirmed. Never fill it with FMEA because a notebook suggested it (DR-011). The answer opens with it: unset at launch, the question goes (DR-005 rule 8)",
   "[outlet conductivity guarantee, µS/cm @ 25 °C] (traceability example): same placeholder as home and sys-pw (FD-21)",
   "[PP point-of-use valve type] (traceability example): the valve that holds URS-027's L/D ≤ 2; same name as sys-storage (FD-19). The example's \"Met\" assumes the PP loop can hold L/D ≤ 2: check it against [dead leg design limit, L/D] on sys-pw",
   "Confirm that Aquemi writes the commissioning and qualification plan at detailed design (stages) (FD-46)",
   "Client templates: whether Aquemi writes design and qualification documents in the client's own templates (FD-46). \"In your template\" was cut from the DQ and risk-method answers until confirmed",
   "Vessel calculations: cut from Detailed design until Aquemi confirms which package items need pressure calculations, who makes them (in-house or partner) and the CRN route (FD-24; compliance holds the route)",
-  "Who pays for design gaps found at DQ or IQ/OQ ([design gap warranty terms]): its home is cmp-quality's \"How buying from us works\" (FD-07, DR-005 rule 7), not this page",
+  "Who pays for design gaps found at DQ or IQ/OQ ([design gap warranty terms]): its home is project-plan#changes, row \"We find an error in our own design\", and buying (FD-07, DR-005 rule 7; pass 11 moved the terms off cmp-quality), not this page",
   "A real design project (scope, URS lines traced, design-to-DQ duration) before adding a case study block (FD-42, DR-016)",
   "[compliance matrix response time, working days] (FAQ 4, pass 10, DR-019): same name as compliance's closing and services' router row 8 (FD-01). At launch an unset time leaves the clause (DR-006 rule 7)",
-  "FAQ 4 \"Consultant or contractor: what do we receive, and when?\" (DR-019 with the desk ruling, pass 10) answers consultants and contractors now; their open values stay in brackets: design-only work and reviews of another firm's design are FAQ 5's [design-only engagements offered, and pricing] (FD-25, FD-02), seal and file formats in FAQ 6 (FD-34, FD-10), the contractor's values on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26). Its timing mirrors the stages above (pass 10 review): basis of design at the concept hold, P&IDs and a draft functional specification at basic design, approved issues at detailed design; confirm Aquemi issues them at these holds (FD-46). Its link asks for a compliance matrix (contact-proposal option \"Compliance matrix\"), the request services' row 8 promises; the contractor's site requirements are named in the answer (\"(Systems)\") and linked from svc-fabrication's FAQ. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4). The closing's include \"Bid or issue date, if specifying for a client\" (pass 11, review finding 12) asks for the bid date that services' row 8 names (DR-019 rule 1); contact-proposal has no date field for it, so it arrives in the message"
+  "FAQ 4 \"Consultant or contractor: what do we receive, and when?\" (DR-019 rule 2 as amended in pass 11, SITE-PLAN; structure-and-sitemap 4.3 \"Replaces\"): now one line and a link to urs-guide#specification, which holds the specification-section notes and what a consultant receives for a basis of design (L-07-15, L-10-12, L-14-22, L-11-2, L-07-16, DR-019 rule 4). It keeps the compliance matrix time [compliance matrix response time, working days] (FD-01) and points at this page's own stages for when drawings arrive (confirm Aquemi issues them at these holds, FD-46). The contractor's values stay on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26), named in the answer (\"under Systems\"). The compliance-matrix request moved off this answer: the closing's URS gap review and urs-guide's closing carry it. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4). The closing's include \"Bid or issue date, if specifying for a client\" (pass 11, review finding 12) stays. Launch rule: if urs-guide does not ship, the answer returns to its pass 10 text (basis of design at the concept hold, P&IDs and draft functional specification at basic design, approved issues at detailed design) with the compliance matrix link",
+  "Hero secondary (pass 11, SITE-PLAN; desk Q1 ruling; structure-and-sitemap 4.3 entry links): \"Read our URS guide\" -> urs-guide, replacing \"Request a water scope review\". The no-URS door (pass 10 C7) stays on FAQ 1's link (\"Request a water scope review\", intent \"I know my product, not my water spec\"); founders without a URS also reach first-system from home and industries. Launch rule: if urs-guide does not ship, the secondary returns to the water scope review",
+  "Related (pass 11, structure-and-sitemap 4.6 entry links): project-plan replaces svc-fat-sat (svc-fat-sat stays one click away from svc-fabrication and in the Services bar)",
+  "FAQ 4 \"Consultant or contractor\" (pass 11 review finding 8, DR-019 amended rule 4): contractors are sent to Systems for connection points and to How a project runs (project-plan#who) for who installs what; the link stays urs-guide#specification"
  ],
  "facts": [
   {

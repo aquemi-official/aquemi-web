@@ -291,11 +291,11 @@ document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classLis
    design, fabricate and test: the shop location) and the contact line (service and sales numbers and the head office);
    both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap columns in one row, then the legal
    line under a hairline. Phones show the columns two by two.
-   A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so "Buying from
-   Aquemi" appears once cmp-quality has its "buying" block and "Natural health products" (ind-pharma#nhp, DR-017) once
+   A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so the pass 11 pages
+   (urs-guide, project-plan, first-system, buying) appear once their files exist, and "Natural health products" (ind-pharma#nhp, DR-017) once
    ind-pharma has its "nhp" block. Privacy, Terms and Accessibility link once their pages exist. */
-function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-pharma#nhp','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','cmp-quality#buying','contact-proposal','contact-service','contact-locations']]],
-  label={'ind-pharma#nhp':'Natural health products','cmp-quality#buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
+function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','buying','contact-proposal','contact-service','contact-locations']]],
+  label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene, for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
   +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
@@ -2882,7 +2882,8 @@ LOOKS['grade-mains']=function(b,H){var R=b.rows||[],L=b.lanes||[],T=b.taps||[],n
    a selector panel on the page ground (the core's alternating surface; the URS line above sits on the sunken ground). Each product is a strip on one plate: its name, a selector with one slot per
    water grade (the knob sits in the minimum; a slot your specification may call for shows as a dashed open slot), then
    the minimum as written and the note. The selector is a picture of the row (aria-hidden); the words carry it.
-   Fields, as the grades table: cols, rows [product, minimum, note].
+   Fields, as the grades table: cols, rows [product, minimum, note]. A note may be {t, link} (rendered through tcell),
+   so a row can close with a pointer, e.g. the last row's {"t": "If this is your first system", "link": "first-system"}.
    Added: positions [{id, t}] (the selector's slots, left to right), switch [["potable", "pw?"], …] (one list per row:
    slot ids; "?" = where your specification or the monograph calls for it, drawn open). Concept sys-pw.4 (tactile
    option tags) and the HMI selector of 50-concept-limit-gauges. */
@@ -2896,7 +2897,7 @@ LOOKS['grade-switch']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.positions|
    +'<span class="aq-grade-switch__ticks">'+P.map(function(){return '<i></i>'}).join('')+'</span></div>';
   return '<li class="aq-grade-switch__row"><div class="aq-grade-switch__prod">'+idx(i)+'<h3 class="aq-grade-switch__t">'+tx(r[0])+'</h3></div>'+sw
    +'<div class="aq-grade-switch__txt"><p class="aq-grade-switch__min"><span class="aq-grade-switch__k">'+tx(C[1]||'')+'</span>'+tx(r[1])+'</p>'
-   +(r[2]?'<p class="aq-grade-switch__note">'+tx(r[2])+'</p>':'')+'</div></li>'}).join('');
+   +(r[2]?'<p class="aq-grade-switch__note">'+tcell(r[2])+'</p>':'')+'</div></li>'}).join('');
  var screws='<span class="aq-grade-switch__screw" aria-hidden="true"></span>'.repeat(4);
  return sec(H+'<div class="aq-grade-switch">'+screws+'<p class="aq-grade-switch__colh"><span>'+tx(C[0]||'')+'</span><span aria-hidden="true">'+P.map(function(p){return e(p.t)}).join(' · ')+'</span></p><ol class="aq-grade-switch__rows">'+rows+'</ol></div>','aq-grade-switch-sec')};
 })();
@@ -4068,7 +4069,8 @@ LOOKS['numeral-index']=function(b,H){var C=b.cols||[],R=b.rows||[];
    its one-way exit, the plant bus. Right, the section title large in the top cell, then the options as cells (two
    wide, then three) under huge light slash numerals. Pointing at an option (or focusing its link) lights its part in
    the blueprint tile. Concept: research/pass9b/concepts/sys-monitoring.4.png.
-   Fields: h, items [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
+   Fields: h, intro (optional; printed under the title in the top cell through wSecHead, as option-taps does), items
+   [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
    option sets; none: no part lights). Phones: the field shortens to two rows over the cells, which stack. */
 var OC_PAT=['n','l','n','s','s','b','b','n','l','b','b','l','n','s','n','l'];
 function ocPlate(){
@@ -4138,7 +4140,8 @@ LOOKS['option-tags']=function(b,H){
    or in front of the train. A numbered pin sits on each dashed part; the notes carry the same numbers. A note's number
    is a button: pressing it brings that part into focus on the drawing (motion.js); Escape or pressing it again lets
    go, the arrow keys step through the notes.
-   Fields (an options block): h, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun.
+   Fields (an options block): h, intro, items [{t, d, spot, at, part, row}], train [{part, label}], fold, fold_noun.
+   intro prints under the title through wSecHead.
    New optional fields: train: the standard train left to right (part: an IsoKit kind, label: a short drawing label);
    per item: at (position along the train, 0 = first part, fractions between), part (the IsoKit kind drawn dashed;
    default filter), row ("back" or "front", default alternating).
@@ -4656,14 +4659,18 @@ LOOKS['rail-modules']=function(b,H){
    where we answer it sit across the seam on the limestone half, row against row. The seam is a drawn line with one
    node per row; hovering a row lights its node and draws a tie across the seam.
    Fields, as the evidence table: h, intro, cols, rows [who, read, {t, link, intent}], fold, fold_noun.
+   The first two column names head the halves once (aria-hidden) and are repeated in each row as a label before the
+   reader and before the reading: visually hidden on wide screens (read by assistive tech), shown on phones, where the
+   halves stack and the heads are gone. The third column's name already labels each answer.
    Concept: systems.2 (navy/limestone split where the seam is the boundary; STYLE-ATLAS hybrid 4, "battery-limit split,
    calm", in light type). */
 (function(){
 LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
+ var lab=function(j){return C[j]?'<span class="aq-reader-split__lab">'+tx(C[j])+'</span>':''};
  var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
-  return fli('<li class="aq-reader-split__row"><div class="aq-reader-split__who">'+idx(i)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
+  return fli('<li class="aq-reader-split__row"><div class="aq-reader-split__who">'+idx(i)+lab(0)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
    +'<span class="aq-reader-split__tie" aria-hidden="true"><span class="aq-reader-split__node"></span></span>'
-   +'<div class="aq-reader-split__what"><p class="aq-reader-split__read">'+tx(r[1])+'</p>'
+   +'<div class="aq-reader-split__what">'+lab(1)+'<p class="aq-reader-split__read">'+tx(r[1])+'</p>'
    +(lk?'<a class="aq-reader-split__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tx(go.t)+'</span></a>'
      :(go?'<p class="aq-reader-split__go"><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tcell(go)+'</span></p>':''))+'</div></li>',b,i)}).join('');
  var colh='<p class="aq-reader-split__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
@@ -4719,7 +4726,9 @@ LOOKS['record-anatomy']=function(b,H){var Pt=(b.points||[]).slice(0,4),num=funct
 /* Ported from Subframe Motion "Guided inspection" (guided-inspection), MIT, (c) 2026 Subframe
    The lit window: pointing at or focusing a title-block row glides a framed window onto that row's drawing (left,
    top, width, height, 0.55 s cubic-bezier(.22,.75,.22,1), the library's values, as a CSS transition so it is
-   instant under reduced motion) and the other drawings quieten; leaving the block lets the window go. */
+   instant under reduced motion) and the other drawings quieten; leaving the block lets the window go: raOff fades
+   it out and, once faded (its 200 ms opacity transition) and not relit, clears its inline place and size, so the hidden window collapses
+   back to nothing (0 by 0) instead of keeping the last drawing's box. */
 function raLens(w,i){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.querySelector('.aq-record-anatomy__lens');if(!L)return;
  var z=i==null?null:f.querySelector('.aq-record-anatomy__zone[data-z="'+i+'"]');
  [].forEach.call(f.querySelectorAll('.aq-record-anatomy__zone'),function(el){el.classList.toggle('is-on',el===z)});
@@ -4727,7 +4736,8 @@ function raLens(w,i){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.q
  f.classList.toggle('is-guided',!!z);if(!z)return;
  if(!f.classList.contains('has-lens')){L.style.transition='none';requestAnimationFrame(function(){L.style.transition=''})}
  f.classList.add('has-lens');L.style.left=z.offsetLeft+'px';L.style.top=z.offsetTop+'px';L.style.width=z.offsetWidth+'px';L.style.height=z.offsetHeight+'px'}
-function raOff(w){var f=w.querySelector('.aq-record-anatomy__field');raLens(w,null);if(f)f.classList.remove('has-lens')}
+function raOff(w){var f=w.querySelector('.aq-record-anatomy__field'),L=f&&f.querySelector('.aq-record-anatomy__lens');raLens(w,null);if(!f)return;
+ f.classList.remove('has-lens');if(L)setTimeout(function(){if(f.classList.contains('has-lens'))return;L.style.transition='none';L.style.left=L.style.top=L.style.width=L.style.height='';void L.offsetWidth;L.style.transition=''},220)}
 if(typeof document!=='undefined'&&document.addEventListener){
  ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-record-anatomy__row');if(!r)return;var w=r.closest('.aq-record-anatomy');if(w._raTour)return;raLens(w,r.getAttribute('data-z'))})});
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-record-anatomy__block');if(!r||(ev.relatedTarget&&r.contains(ev.relatedTarget)))return;var w=r.closest('.aq-record-anatomy');if(w._raTour)return;raOff(w)})});
@@ -5156,7 +5166,10 @@ LOOKS['review-reticles']=function(b,H){var I=b.items||[],K='aq-review-reticles',
    column); on the right, behind a hairline rule, the register as the sheet's numbered notes column in mono (number,
    title as the link, status, topic and standard), with the topic filter above it; a title block closes the sheet at
    the bottom right and carries the live count.
-   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned. The title
+   Counts count what exists (DR-018 rule 6): a note with a date counts as a note, one without as planned, and so does
+   one whose date is still a placeholder (opens with "["): it reads "Planned" with its bracketed date beside it and,
+   as the lead, "Next planned", never "Latest". The lead note's link reads "Applied on <page>", or "Read the note" when
+   it points at the page the register is on (a note published on news itself). The title
    block reads "N notes", "N planned" when no note has a date, or "N notes · M planned"; so does the live count after
    filtering; the "All" filter reads "All N planned" when no note has a date.
    Fields (a register block): h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold,
@@ -5169,23 +5182,24 @@ function rrCount(d,p,t){var a=d?d+(d===1?' note':' notes'):'',z=p?p+' planned':'
 var RR_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-storage':'storage-tank','sys-pretreatment':'pretreatment'},P='aq-revision-register'+'__';
 function rrSpot(it){var pg=wsplit(it.link||'')[0],s=it.spot||RR_SPOT[pg]||pageIcon(pg)||'';return isVig(s)?s:''}
 LOOKS['revision-register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
- var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return it.date?tx(it.date):'<span class="'+P+'planned">Planned</span>'};
- var nd=I.filter(function(it){return it.date}).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
- var f=I[fi],fl=f.link&&wp(f.link);
+ var dated=function(it){return !!it.date&&!/^\s*\[/.test(String(it.date))};
+ var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return dated(it)?tx(it.date):'<span class="'+P+'planned">Planned</span>'+(it.date?'<span>'+tx(it.date)+'</span>':'')};
+ var nd=I.filter(dated).length,fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
+ var f=I[fi],fl=f.link&&wp(f.link),fd=dated(f),pg=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0],self=fl&&pg&&wsplit(f.link)[0]===pg.id;
  var tri='<svg class="'+P+'tri" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path d="M12 2L22 20H2Z"/></svg>';
  var tabs='<div class="'+P+'tabs" role="group" aria-label="Filter notes by topic"><button type="button" class="'+P+'tab" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+(nd?'':' planned')+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="'+P+'tab" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
- var lead='<aside class="'+P+'lead" aria-label="'+(f.date?'Latest note':'Next planned note')+'">'
-  +'<p class="'+P+'lk">'+tri+'<span>'+(f.date?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
+ var lead='<aside class="'+P+'lead" aria-label="'+(fd?'Latest note':'Next planned note')+'">'
+  +'<p class="'+P+'lk">'+tri+'<span>'+(fd?'Latest':'Next planned')+'</span><span>'+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
   +(f.d?'<blockquote class="'+P+'q"><p>'+tx(f.d)+'</p></blockquote>':'')
   +'<h3 class="'+P+'lt">'+tx(f.t)+'</h3>'+(f.std?'<p class="'+P+'lstd">'+tx(f.std)+'</p>':'')
-  +(fl?'<p class="'+P+'go">Applied on '+wlink(f.link)+'</p>':'')+'</aside>';
+  +(fl?'<p class="'+P+'go">'+(self?wlink(f.link,'Read the note'):'Applied on '+wlink(f.link))+'</p>':'')+'</aside>';
  /* the drawing plate: one figure per page a note is applied on, the lead's shown */
  var keys=[],fk=rrSpot(f);I.forEach(function(it){var k=rrSpot(it);if(k&&keys.indexOf(k)<0)keys.push(k)});
  var fig='<div class="'+P+'fig" aria-hidden="true"><span class="'+P+'frame"></span>'+keys.map(function(k){return '<span class="'+P+'dw'+(k===fk?' is-on':'')+'" data-k="'+e(k)+'">'+wSpot(k,'l',P+'spot')+'</span>'}).join('')
   +'<span class="'+P+'figcap">'+I.map(function(it,i){var p=it.link&&wp(it.link);return p?'<span data-i="'+i+'"'+(i===fi?' class="is-on"':'')+'>'+no(i)+' · '+e(p.nav_label||'')+'</span>':''}).join('')+'</span></div>';
  var notes=I.map(function(it,i){var tt=it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t);
-  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(rrSpot(it))+'" data-i="'+i+'"'+(it.date?' data-dated=""':'')+'>',b,i)
+  return fli('<li class="'+P+'note'+(i===fi?' is-lead':'')+'" data-topic="'+e(it.topic||'')+'" data-k="'+e(rrSpot(it))+'" data-i="'+i+'"'+(dated(it)?' data-dated=""':'')+'>',b,i)
    +'<span class="'+P+'no">'+no(i)+'.'+(i===fi?tri:'')+'</span><div class="'+P+'nb"><h3 class="'+P+'nt">'+tt+'</h3>'
    +'<p class="'+P+'meta">'+st(it)+(it.topic?'<span>'+tx(it.topic)+'</span>':'')+(it.std?'<span>'+tx(it.std)+'</span>':'')+'</p></div></li>'}).join('');
  var col='<div class="'+P+'col"><div class="'+P+'strip">'+tabs+'</div>'+wFold(b,I.length,'<ul class="'+P+'notes" role="list">'+notes+'</ul>',b.fold_noun||'notes')+'</div>';

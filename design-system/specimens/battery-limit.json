@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows [{p, v, m, side, link, link_label}] (side: \"limit\" | \"package\" | \"site\"; default site), sides ([package label, site label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card).",
  "best_for": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "systems",
@@ -80,6 +80,164 @@
      "Your site"
     ],
     "seam": "Battery limit"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 4,
+   "h": "How you see progress",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "a77628290b",
+   "block": {
+    "type": "spec",
+    "anchor": "reporting",
+    "nav": "Progress",
+    "h": "How you see progress",
+    "intro": "We keep the record; your team reviews it on an agreed clock.",
+    "cols": [
+     "Item",
+     "When",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Contacts",
+      "v": "From order to handover",
+      "m": "[named project lead role] and your project manager, named in the order",
+      "side": "limit"
+     },
+     {
+      "p": "Kickoff meeting",
+      "v": "[kickoff after order, working days] after order",
+      "m": "Schedule, holds, contacts and the document list agreed",
+      "side": "package"
+     },
+     {
+      "p": "Document review",
+      "v": "[submittal review clock, working days] per issue",
+      "m": "The schedule assumes this clock; a longer review moves later dates",
+      "side": "site"
+     },
+     {
+      "p": "Hold point signatures",
+      "v": "At each hold in the stages",
+      "m": "The next stage starts after your signature",
+      "link": "project-plan#stages",
+      "link_label": "See the stages",
+      "side": "site"
+     },
+     {
+      "p": "Submittal log",
+      "v": "Updated with every issue",
+      "m": "Each document: approved, approved as noted, revise and resubmit, or for information",
+      "side": "package"
+     },
+     {
+      "p": "Status report",
+      "v": "[status report frequency]",
+      "m": "Progress against the schedule, open holds, risks and changes",
+      "side": "package"
+     },
+     {
+      "p": "Meeting minutes",
+      "v": "[minutes issue after meeting, working days] after each meeting",
+      "m": "Actions with owner and date, for your correction",
+      "side": "package"
+     },
+     {
+      "p": "Design reviews",
+      "v": "[design review points]",
+      "m": "Your engineer and quality unit attend",
+      "side": "site"
+     }
+    ],
+    "sides": [
+     "From Aquemi",
+     "From your team"
+    ],
+    "seam": "One contact each side",
+    "fold": 4,
+    "fold_noun": "items",
+    "look": "battery-limit"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 2,
+   "h": "What your site needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "f04e4c9a6f",
+   "block": {
+    "type": "spec",
+    "look": "battery-limit",
+    "nav": "Your site",
+    "anchor": "site",
+    "h": "What your site needs",
+    "intro": "On your side: a water supply, a drain, power, floor space and a way in.",
+    "cols": [
+     "Item",
+     "What it takes",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Where our scope stops",
+      "v": "[standard battery limits, typical scope]; [installation scope]",
+      "m": "Listed in the proposal: who supplies, installs and connects each item",
+      "side": "limit",
+      "link": "systems#site",
+      "link_label": "Site details"
+     },
+     {
+      "p": "The package",
+      "v": "[typical footprint and weight, by capacity]",
+      "m": "Plus clear space around it for service",
+      "side": "package"
+     },
+     {
+      "p": "Training",
+      "v": "[training hours and audiences]",
+      "m": "For the people who run it each day",
+      "link": "svc-cq#faq",
+      "link_label": "Training",
+      "side": "package"
+     },
+     {
+      "p": "Water supply",
+      "v": "Your city water, with its latest report",
+      "m": "The report sets the pretreatment",
+      "side": "site"
+     },
+     {
+      "p": "Drain",
+      "v": "[feed and drain flows, L/h]",
+      "m": "Reverse osmosis sends part of the feed to drain",
+      "side": "site"
+     },
+     {
+      "p": "Power",
+      "v": "[supply voltage options]",
+      "m": "A supply to the control panel; the proposal says who brings it",
+      "side": "site"
+     },
+     {
+      "p": "Way in",
+      "v": "Doors and route at least [minimum door and access width, m]",
+      "m": "Measure the narrowest door on the route",
+      "side": "site"
+     }
+    ],
+    "sides": [
+     "The package brings",
+     "Your site provides"
+    ],
+    "seam": "Where our scope stops"
    }
   }
  ]

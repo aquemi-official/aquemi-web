@@ -3,11 +3,11 @@
  "section": "Contact",
  "nav_label": "Request a proposal",
  "title": "Request a proposal, review or assessment | Aquemi",
- "meta": "Start with a URS, your product, water data or a running system. An engineer replies in writing within [proposal response time, working days].",
+ "meta": "Start with a URS, a tender, your product, water data or a running system. An engineer replies in writing within [proposal response time, working days].",
  "path": "/contact/proposal/",
  "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
  "headline": "Tell us what you need. An engineer replies.",
- "lead": "Start with what you have: a user requirement specification (URS), your product, water data or a running system.",
+ "lead": "Start with what you have: a user requirement specification (URS), a tender, your product, water data or a running system.",
  "primary_cta": "Choose your request",
  "blocks": [
   {
@@ -81,12 +81,28 @@
        "required": true,
        "options": [
         "I have a URS or a draft",
+        "I have an RFQ or a tender",
         "I know my product, not my water spec",
         "I have water data, no system yet",
         "I have a system already",
         "I am qualifying suppliers",
         "Not sure yet: talk to an engineer"
-       ]
+       ],
+       "help": "RFQ: request for quotation."
+      },
+      {
+       "kind": "note",
+       "when": "I have a URS or a draft",
+       "label": "Drafting? Our guide lists the rows to write and when polypropylene is the wrong choice.",
+       "link": "urs-guide",
+       "action": "Writing your URS"
+      },
+      {
+       "kind": "note",
+       "when": "I have an RFQ or a tender",
+       "label": "Your tender or request for quotation (RFQ), answered line by line; departures with their reasons.",
+       "link": "buying#answer",
+       "action": "How we answer a tender"
       },
       {
        "kind": "note",
@@ -115,6 +131,13 @@
         "Review of another document"
        ],
        "help": "A gap review marks each gap; a compliance matrix shows how each line is met."
+      },
+      {
+       "kind": "note",
+       "when": "Proposal against your URS|Sizing proposal",
+       "label": "Every proposal lists the same lines, each marked included, priced option or by others.",
+       "link": "buying#proposal",
+       "action": "What every proposal contains"
       },
       {
        "label": "Which document?",
@@ -256,7 +279,7 @@
        "label": "Target date for water on site",
        "kind": "select",
        "required": false,
-       "when": "I have a URS or a draft|I know my product, not my water spec|I have water data, no system yet",
+       "when": "I have a URS or a draft|I have an RFQ or a tender|I know my product, not my water spec|I have water data, no system yet",
        "options": [
         "Under 3 months",
         "3 to 6 months",
@@ -269,7 +292,7 @@
        "label": "Systems in scope",
        "kind": "checkbox-group",
        "required": false,
-       "when": "Proposal against your URS|Modules and a budget range|Sizing proposal|I have a system already",
+       "when": "Proposal against your URS|I have an RFQ or a tender|Modules and a budget range|Sizing proposal|I have a system already",
        "options": [
         "Purified Water (PW) generation",
         "Storage and distribution loop",
@@ -291,6 +314,19 @@
        "kind": "number",
        "required": false,
        "when": "Modules and a budget range|Sizing proposal"
+      },
+      {
+       "label": "Who will run it day to day?",
+       "kind": "radio",
+       "required": false,
+       "when": "I know my product, not my water spec|Modules and a budget range|Sizing proposal",
+       "options": [
+        "Production staff, part of a shift",
+        "A maintenance technician",
+        "A contractor",
+        "Not decided yet"
+       ],
+       "help": "Sets the controls and alarms we propose."
       },
       {
        "label": "Feed water source",
@@ -353,7 +389,7 @@
        "label": "Documents",
        "kind": "file",
        "required": false,
-       "help": "URS, water analysis or drawings, up to [maximum upload size, MB]. Or email them later."
+       "help": "URS, tender documents, water analysis or drawings, up to [maximum upload size, MB]. Or email them later."
       },
       {
        "label": "Notes or questions",
@@ -433,7 +469,7 @@
    "anchor": "requests",
    "nav": "Requests",
    "h": "What each request returns",
-   "fold": 6,
+   "fold": 7,
    "fold_noun": "requests",
    "cols": [
     "Situation",
@@ -449,6 +485,15 @@
      "[URS review cost] · [compliance matrix cost or free] · [proposal cost or free] · [document review cost]"
     ],
     [
+     "I have an RFQ or a tender",
+     {
+      "t": "Proposal in your numbering, with your bid form filled in",
+      "link": "buying#answer"
+     },
+     "[proposal response time, working days]",
+     "[proposal cost or free]"
+    ],
+    [
      "I know my product, not my water spec",
      "Water scope review: grade per step, package, qualification scope",
      "[scope review turnaround, working days]",
@@ -456,7 +501,7 @@
     ],
     [
      "I have water data, no system yet",
-     "Feed water review · modules, budget range and its class · sizing proposal",
+     "Feed water review · modules, budget range and its class, from rough numbers · sizing proposal and firm price, from full analysis",
      "[feed water review turnaround, working days] · [budget proposal turnaround, working days] · [proposal response time, working days]",
      "[cost of the feed water review] · [budget range cost or free] · [proposal cost or free]"
     ],
@@ -509,7 +554,16 @@
   "What the reply says when a request needs WFI or pure steam: Aquemi supplies the PW package only; PW as feed to the client's still stays [confirm] (FD-25, DR-002 rule 7); whether Aquemi refers that scope elsewhere",
   "Fabrication or piping specification review: which PP and PVC piping standards and joining methods Aquemi reviews against ([PP piping standard], [PP joining method]; FD-17, FD-18)",
   "Regions served outside Canada (FD-28, FD-37)",
-  "Log the answers to \"How did you hear about us?\" with the request and review them monthly (market/how-buyers-find-suppliers.md)"
+  "Log the answers to \"How did you hear about us?\" with the request and review them monthly (market/how-buyers-find-suppliers.md)",
+  "Pass 11 (SITE-PLAN contact pages; structure-and-sitemap § 3.7, § 4.4 entry links; offer § 14 P3; L-G3-8, L-12-4, L-13-1, L-15-17, L-08-13): new situation \"I have an RFQ or a tender\" in the form and the requests table (DR-014 rule 3: one row per situation), linking buying#answer. The row returns a proposal in the buyer's numbering with the bid form filled in, on buying's own names, [proposal response time, working days] and [proposal cost or free] (pass 11 review finding 3; DR-011 rule 1, DR-014 rule 3). The note says \"departures\", buying#answer's term; the situation radio's help expands RFQ at first use (DR-003 rule 4; finding 10). The buying page's closing should send intent \"I have an RFQ or a tender\"",
+  "Pass 11 (SITE-PLAN: the URS row keeps its intent and mentions urs-guide): the request-menu look takes one link per cell and the URS row has four items, so the mention is a form note under the situation, linking urs-guide (\"Writing your URS\"). The row and option text are unchanged",
+  "Pass 11 (offer § 14 P1, proof P22; L-01-1, L-12-17, L-03-5, L-15-17): \"What every proposal contains\" has one home, buying#proposal (DR-009, SITE-PLAN anchors). This page carries a form note to it where a proposal is asked for, not a second block. The note repeats buying#proposal's intro (included, priced option or by others); change both together. The note shows for a proposal against a URS or a sizing proposal only; the RFQ situation has its own note (pass 11 review finding 11)",
+  "Pass 11 (offer § 14 P2; L-01-6, L-03-15, L-04-14, L-09-16): the water-data row now says budget range from rough numbers (the form intro's words), firm price from a full analysis (with coldest feed temperature, room, door and power, which the form asks). Budget against firm is the estimate class (FD-03). The budget range keeps \"with its class\" (pass 11 review finding 4; L-09-16)",
+  "Pass 11 held (offer § 14 P4; L-01-3, L-07-10, L-G3-11): target-date help \"Include your approval time; we hold the price that long.\" ships only if FD-05 commits to holding the price for the buyer's approval time",
+  "Requests table fold is 7 (all rows) after the RFQ row, per DR-024 rule 5",
+  "Pass 11 (structure-and-sitemap § 3.7 B1; journey P2 exit; L-05-20; pass 11 review finding 9): optional step 2 field \"Who will run it day to day?\" for a scope review, modules and budget, or sizing proposal (DR-014 rules 4 and 5). The training question waits until training is a decided, priced line (phrasebook open question 2)",
+  "Launch (pass 11 review finding 2; DR-026 launch rule, FD-05 to FD-07): if buying is not published, the RFQ and proposal notes go, and the RFQ row's cell becomes plain text with no link. The row stays",
+  "DR-014 amendment (pass 11 review finding 13; orchestrator): rule 2 adds \"I have an RFQ or a tender\", answered with a proposal in the buyer's numbering and the bid form filled in (buying#answer); rule 3's table gains its row. SITE-PLAN authorizes the situation; keep it until the record is amended"
  ],
  "primary_cta_link": "#intake",
  "facts": [

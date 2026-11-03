@@ -73,7 +73,7 @@
    "h": "One joint, one log line",
    "status": "live",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "1cba98e092",
    "block": {
@@ -82,6 +82,72 @@
     "h": "One joint, one log line",
     "cols": [
      "Field in the joint log, and what it proves",
+     "What it proves in an audit",
+     "Record"
+    ],
+    "rows": [
+     [
+      "Joint number",
+      "Where this joint is in your plant",
+      "Joint map; number on the pipe"
+     ],
+     [
+      "Material lot of both parts",
+      "That both parts match their material certificates",
+      "Material log; [PP material certificates]"
+     ],
+     [
+      "Welder and qualification",
+      "That the welder was qualified on the day",
+      "[welder qualification standard for thermoplastics] certificate"
+     ],
+     [
+      "Joining parameters",
+      "That the qualified procedure ran with recorded settings",
+      "[what each joint record holds]"
+     ],
+     [
+      "Visual result",
+      "That the joint meets the acceptance criteria",
+      "[joint acceptance criteria]; inspector sign-off"
+     ],
+     [
+      "Test joint reference",
+      "That the set-up was proven before production joints",
+      "Test joint record; [test joint examination method]"
+     ],
+     [
+      "Date and inspector",
+      "Who accepted it, and when",
+      "Signature or electronic sign-off"
+     ],
+     [
+      "Repair or cut-out",
+      "How a rejected joint was replaced and accepted",
+      "New joint number linked to the original"
+     ]
+    ],
+    "nav": "Joint log",
+    "as": "evidence",
+    "fold": 4,
+    "fold_noun": "fields"
+   }
+  },
+  {
+   "page": "svc-fabrication",
+   "slot": 0,
+   "h": "One joint, one log line",
+   "status": "retired",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "6831d7cdf6",
+   "block": {
+    "type": "table",
+    "look": "record-slips",
+    "h": "One joint, one log line",
+    "cols": [
+     "Field in the joint log",
      "What it proves in an audit",
      "Record"
     ],

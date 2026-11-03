@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as the grades table: cols [step, typical water, what sets it], rows, intro.",
  "best_for": "DerivationSheet works a grade table as an engineering derivation on a calculation pad: each row is a numbered line read like an equation, step, what sets it, then the typical water boxed as the answer, with a device limit set as the line's hero figure.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "ind-meddevice",
@@ -49,6 +49,113 @@
      ]
     ],
     "look": "derivation-sheet"
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 4,
+   "h": "Rows to write if you allow polypropylene",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "cdf0d13321",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "look": "derivation-sheet",
+    "anchor": "allow-pp",
+    "nav": "Polypropylene rows",
+    "h": "Rows to write if you allow polypropylene",
+    "intro": "Written this way, a polypropylene bid can be scored, not excluded. Each row can be checked at installation.",
+    "cols": [
+     "Row",
+     "What to write",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Product-contact material",
+      "Virgin, unpigmented polypropylene, with a material certificate per lot",
+      "Purified Water quality and your sanitizing agent"
+     ],
+     [
+      "Pressure rating and wall",
+      "Pressure class and wall ratio for each line, stated at your highest operating and sanitizing temperature",
+      "Polypropylene's pressure rating falls as it heats"
+     ],
+     [
+      "Joints and records",
+      "A record per joint, with a joint map and examination, replacing stainless weld logs and passivation records",
+      "A stainless document list copied into a plastic URS leaves rows nobody can answer"
+     ],
+     [
+      "Sanitization",
+      "A method within the material's temperature and chemical ratings; any sanitant proven absent at every outlet before use",
+      "Your sanitization procedure and the material maker's chemical resistance data"
+     ],
+     [
+      "Installation",
+      "Tank and pipe kept from sunlight, in a heated room, on supports that let the pipe expand",
+      "Unpigmented polypropylene is sensitive to sunlight; plastic pipe moves more with temperature than steel"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 1,
+   "h": "Which water your product needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "8447cc4927",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "look": "derivation-sheet",
+    "nav": "Your water",
+    "anchor": "grade",
+    "h": "Which water your product needs",
+    "intro": "Minimums only: your product file may go higher, never lower. The full tables are on the pharmaceutical page.",
+    "cols": [
+     "Your product",
+     "Minimum water",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Natural health products: tablets, capsules, powders",
+      "Potable water",
+      "Health Canada GUI-0158; Purified Water only if your specification asks"
+     ],
+     [
+      "Natural health products: liquids, creams, lotions",
+      "Potable, or Purified Water where your specification asks",
+      "Your microbial limits and shelf life"
+     ],
+     [
+      "Natural health products: homeopathic dilutions, or sold abroad as drugs",
+      "Purified Water, or the liquid a monograph names",
+      "The monograph, or the importing market's drug rules"
+     ],
+     [
+      "Non-sterile drugs: oral, skin and nasal products",
+      "Purified Water",
+      "Health Canada GUI-0001; limits in USP <645> and <643>"
+     ],
+     [
+      "Medical devices: final rinse",
+      "Purified Water, with an endotoxin limit where needed",
+      "USP <161> per device"
+     ],
+     [
+      "Injections and other sterile parenterals",
+      "WFI: we do not supply it",
+      "European Medicines Agency water guideline"
+     ]
+    ]
    }
   }
  ]

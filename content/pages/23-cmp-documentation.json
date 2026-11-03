@@ -174,6 +174,11 @@
      "m": "[Part 11 and Annex 11 controls]"
     },
     {
+     "p": "Timing",
+     "v": "Document list agreed at kickoff, [kickoff after order, working days] after order",
+     "m": "Drawings, certificates and FAT records reach you before the skid ships [confirm]. Never held back against an unpaid invoice [confirm]."
+    },
+    {
      "p": "Retention",
      "v": "Aquemi keeps a copy for [retention period, years]",
      "m": "Lost documents reissued on request"
@@ -261,7 +266,8 @@
     "svc-design",
     "svc-fabrication",
     "svc-fat-sat",
-    "svc-cq"
+    "svc-cq",
+    "project-plan"
    ]
   }
  ],
@@ -303,10 +309,11 @@
   "First reply and cost ([proposal response time, working days], one figure on every page; [proposal cost or free], contact-proposal's requests table; FD-01, FD-02)",
   "Practice the page states, to confirm (FD-46, FD-47): the 12-section index; each comment answered in a log kept with the document; open items at turnover on the punch list; protocols in the client's template and numbering (the closing asks for them; svc-cq and svc-design cut \"in your template\" until FD-46 confirms it); Aquemi drafts procedures and the PQ protocol and proposes alert and action levels from the data (svc-cq's roles table)",
   "Who signs fabrication records for Aquemi (DR-004 rule 4; FD-34): the page names no role until a person holds it",
-  "Native files ([drawing formats delivered], for example PDF and native CAD; [drawing ownership or licence terms]; svc-design's names, cmp-quality sets the terms; FD-10, FD-47): drawing, spreadsheet and word processing formats; raw data export format for trends, alarms and events (FD-23)",
+  "Native files ([drawing formats delivered], for example PDF and native CAD; [drawing ownership or licence terms]; svc-design's names, buying sets the terms (cmp-quality until pass 11); FD-10, FD-47): drawing, spreadsheet and word processing formats; raw data export format for trends, alarms and events (FD-23)",
   "French documents (FD-36; DR-012): which documents are offered in French, how translations are controlled, French documentation cost per project. Nothing on the page until FD-36 is answered",
   "Transfer and paper ([secure transfer method or portal]; FD-47): number of paper sets, if any",
-  "Device validation basis in the lead (DR-022 rule 5): checked against industries/medical-devices.md (ISO 13485:2016, 7.5.6 validation of production processes; FDA expects IQ/OQ/PQ of a device maker's water system [IMD-17][IMD-19][IMD-21]); the site's split stays as ind-meddevice states it: the device maker validates the process, the water system is qualified"
+  "Device validation basis in the lead (DR-022 rule 5): checked against industries/medical-devices.md (ISO 13485:2016, 7.5.6 validation of production processes; FDA expects IQ/OQ/PQ of a device maker's water system [IMD-17][IMD-19][IMD-21]); the site's split stays as ind-meddevice states it: the device maker validates the process, the water system is qualified",
+  "Pass 11 (commercial phrasebook change 20, owner decision; L-09-2, PB-09.6, PB-15.8, AP-06): \"Timing\" row in Delivery and signatures. The value is project-plan's kickoff (its \"Kickoff meeting\" row agrees the document list [kickoff after order, working days] after order): one event, one name (DR-011), so a change there changes it here. Two commitments to decide before launch (FD-47): whether drawings, certificates and FAT records always reach the client before the skid ships (the pre-shipment set, not the turnover package, which completes at handover), and whether documents are never withheld against an unpaid invoice. Each [confirm] goes once the owner agrees; a commitment the owner does not make leaves the note, and the note goes if neither is made. PdfAnatomy sets this value large, so it holds only the placeholder name, never an unconfirmed commitment (DR-018 rule 3); no semicolon in the value (PdfAnatomy sets a value with semicolons as signature choices). The related row adds project-plan, where the document list and submittal log are kept (pass 11 review findings 1 to 3, 16)"
  ],
  "primary_cta_link": "#samples",
  "figure": {

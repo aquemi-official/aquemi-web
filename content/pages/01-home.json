@@ -7,7 +7,7 @@
  "path": "/",
  "eyebrow": "PURIFIED WATER · USP <645>, <643> · PH. EUR. 0008",
  "headline": "Modular Purified Water systems, from pretreatment to point of use",
- "lead": "One polypropylene (PP) package turns drinking water into Purified Water (PW). Designed in Ontario. No Water for Injection, pure steam or stainless steel systems.",
+ "lead": "For drug, device and natural health product makers who need Purified Water (PW) in products or final rinses. One polypropylene (PP) package, designed in Ontario. No Water for Injection, pure steam or stainless steel systems.",
  "primary_cta": "Talk to an engineer",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
@@ -64,6 +64,95 @@
    "look": "system-run"
   },
   {
+   "type": "table",
+   "as": "router",
+   "anchor": "start",
+   "h": "Start from where your project is",
+   "cols": [
+    "Your situation",
+    "Send us",
+    "What comes back",
+    "Where to start"
+   ],
+   "rows": [
+    [
+     "No URS yet, a first system or an early budget",
+     "What you make, and roughly how much water a day",
+     "The grade each step needs, the package and how to estimate cost",
+     {
+      "t": "Your first system and its cost",
+      "link": "first-system"
+     }
+    ],
+    [
+     "Writing a URS, alone or with a consultant",
+     "Nothing yet; your draft when you want it checked",
+     "The order buyers use, and clauses that keep the design open",
+     {
+      "t": "Writing your URS",
+      "link": "urs-guide"
+     }
+    ],
+    [
+     "A URS, approved or in draft",
+     "Your URS and feed water analysis",
+     "A proposal, or a gap review of a draft",
+     {
+      "t": "Send your URS",
+      "link": "contact-proposal",
+      "intent": "I have a URS or a draft"
+     }
+    ],
+    [
+     "Comparing quotes and terms",
+     "Your bid grid, if you use one",
+     "The lines to level between quotes, and our terms",
+     {
+      "t": "Buying from Aquemi",
+      "link": "buying#compare"
+     }
+    ],
+    [
+     "Qualifying suppliers",
+     "Your questionnaire, if you use one",
+     "The record each process leaves, and how to audit it",
+     {
+      "t": "Quality management",
+      "link": "cmp-quality"
+     }
+    ],
+    [
+     "How long a project takes, and who does what",
+     "Your target date for water in use",
+     "Each stage with its length, notice and who holds it",
+     {
+      "t": "How a project runs",
+      "link": "project-plan"
+     }
+    ],
+    [
+     "A system to upgrade, or a water observation",
+     "What to change, or the observation",
+     "Options with their downtime and the requalification each triggers",
+     {
+      "t": "Upgrades and water observations",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "Production stopped or water out of specification",
+     "A call to [service phone number], [service phone hours]",
+     "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+     {
+      "t": "Service request",
+      "link": "contact-service",
+      "intent": "Fault now|Severity 1: production stopped or water out of specification"
+     }
+    ]
+   ],
+   "look": "manifold-router"
+  },
+  {
    "type": "grid",
    "h": "Same PW limits, different evidence by industry",
    "items": [
@@ -97,7 +186,7 @@
   },
   {
    "type": "steps",
-   "h": "How a project runs",
+   "h": "From order to water in use",
    "items": [
     {
      "t": "Design",
@@ -120,12 +209,19 @@
      "link": "svc-cq"
     },
     {
+     "t": "Water in use",
+     "d": "After performance qualification (PQ) phase 1, your quality unit releases the water. The project plan shows each stage's length, notice and who holds it.",
+     "link": "project-plan",
+     "art": "ind-pharma"
+    },
+    {
      "t": "Support",
-     "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts.",
+     "d": "PQ support through 12 months of data, then service and spare parts.",
      "link": "svc-service"
     }
    ],
-   "look": "project-run"
+   "look": "project-run",
+   "intro": "Time from order to water in use: [order to water in use, weeks]."
   },
   {
    "type": "grid",
@@ -154,92 +250,12 @@
    "look": "exploded-service"
   },
   {
-   "type": "table",
-   "as": "router",
-   "anchor": "start",
-   "h": "Start from where your project is",
-   "cols": [
-    "Your situation",
-    "Send us",
-    "What comes back",
-    "Where to start"
-   ],
-   "rows": [
-    [
-     "No URS yet, or a first PW system",
-     "What you make",
-     "The grade each step needs and the package",
-     {
-      "t": "Plan your first PW system",
-      "link": "industries#first-system"
-     }
-    ],
-    [
-     "A budget before a URS",
-     "Peak demand in L/h and feed water source",
-     "The modules and a budget range, with its estimate class",
-     {
-      "t": "Get a budget range",
-      "link": "systems#budget"
-     }
-    ],
-    [
-     "A URS, approved or in draft",
-     "Your URS and feed water analysis",
-     "A proposal, or a gap review of a draft",
-     {
-      "t": "Send your URS",
-      "link": "contact-proposal",
-      "intent": "I have a URS or a draft"
-     }
-    ],
-    [
-     "Comparing or qualifying suppliers",
-     "Your questionnaire, if you use one",
-     "The record each process leaves, and how to audit it",
-     {
-      "t": "Quality management",
-      "link": "cmp-quality"
-     }
-    ],
-    [
-     "A project in qualification",
-     "Your commissioning and qualification plan",
-     "IQ and OQ test list, FAT tests to reuse, PQ sampling plan",
-     {
-      "t": "Commissioning and qualification",
-      "link": "svc-cq"
-     }
-    ],
-    [
-     "A system to upgrade, or a water observation",
-     "What to change, or the observation",
-     "Options with their downtime and the requalification each triggers",
-     {
-      "t": "Upgrades and water observations",
-      "link": "svc-upgrades"
-     }
-    ],
-    [
-     "Production stopped or water out of specification",
-     "A call to [service phone number], [service phone hours]",
-     "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
-     {
-      "t": "Service request",
-      "link": "contact-service",
-      "intent": "Fault now|Severity 1: production stopped or water out of specification"
-     }
-    ]
-   ],
-   "look": "manifold-router"
-  },
-  {
    "type": "faq",
    "h": "Questions before the first call",
    "items": [
     {
      "q": "You are smaller than the global manufacturers. Why take the risk?",
-     "a": "We are a new company, so judge us on checks, not size. Today, talk to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits].",
+     "a": "We are a new company; judge us on checks, not size. The parts are not new: [membranes and instruments bought from their makers]. Talk today to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits].",
      "link": "projects",
      "link_label": "See what you can check"
     },
@@ -290,6 +306,13 @@
   "\"Record each joint\" (How a project runs) repeats svc-fabrication's joint-log practice: it follows that page's FD-18 launch gate, and becomes [PP joint records kept] if the practice is not confirmed",
   "Confirm the standards in the eyebrow against the standards Aquemi designs to routinely",
   "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)",
-  "Natural health products tile (Same PW limits, different evidence by industry; DR-017): stays while FD-38 keeps natural health products a launch segment; if FD-38 drops them, remove the tile and the footer item together. Its line keeps the industries grade row's wording (GUI-0158: potable minimum, PW where the specification or a monograph calls for it; DR-017 rule 3)"
+  "Natural health products tile (Same PW limits, different evidence by industry; DR-017): stays while FD-38 keeps natural health products a launch segment; if FD-38 drops them, remove the tile and the footer item together. Its line keeps the industries grade row's wording (GUI-0158: potable minimum, PW where the specification or a monograph calls for it; DR-017 rule 3)",
+  "Pass 11 (desk Q2, SITE-PLAN home): lead names who it is for before the exclusion sentence, which stays word for word as its last sentence (DR-021); phrasebook 6 (L-04-25, L-08-18, L-10-19, L-13-10, PB-04.6). If FD-38 drops natural health products as a launch segment, the lead drops them with the NHP tile (DR-017)",
+  "Pass 11: router moved to third position, after the water path (desk Q2; DR-020). Rows: first system and early budget → first-system (P2; L-11-15, L-05-14); writing a URS → urs-guide (P1; L-09-7, L-13-19, L-G2-1); comparing quotes and terms → buying#compare (P5; L-02-22, L-G3-8, L-09-14); project timing and roles → project-plan (P5; L-01-5, L-11-8, L-13-9). Folded to 8 rows (the look's limit): the old budget row merges into the first-system row (desk Q2), and 'A project in qualification' leaves the router (the Qualify step still links svc-cq). Kept per desk ruling: upgrade and production-stopped rows",
+  "Pass 11 phrasebook 10 (L-01-1, L-15-18, PB-03.2, PB-09.5): steps heading 'From order to water in use', the duration in the intro ([order to water in use, weeks], project-plan's name, FD-08; the 9-word heading budget keeps the placeholder out of the heading). New step 'Water in use' links project-plan (SITE-PLAN); drawing ind-pharma (a vessel fed from a PW point-of-use valve). Unfilled at launch, the intro goes",
+  "Pass 11 phrasebook 5 (L-15-23, L-01-2, PB-15.18, PB-01.7): 'The parts are not new: [membranes and instruments bought from their makers].' Confirm the RO membranes and instruments are bought from their makers (FD-20 bill of materials); then the bracket becomes 'membranes and instruments come from their makers'. If not, drop the sentence (pass 11 review finding 4)",
+  "Router row 'Comparing quotes and terms' promises the lines to level and Aquemi's terms (buying#compare, buying#terms); the page publishes with FD-05 to FD-07 (SITE-PLAN). Until buying is live, point the row at cmp-quality#buying",
+  "Until project-plan publishes (FD-08; DR-026 rule 2), router row 'How long a project takes' and the 'Water in use' step link services#durations (pass 11 review finding 5)",
+  "Pass 11 review finding 1 (DR-017 rules 3 and 6): lead says 'who need Purified Water (PW) in products or final rinses', so it no longer tells every natural health product maker its products take PW. Finding 2: water is released after PQ phase 1 (project-plan#stages, WHO TRS 1033); PQ spelled out on the 'Water in use' step. Finding 6: router row 1 link text 'Your first system and its cost' (first-system#cost holds the cost)"
  ]
 }

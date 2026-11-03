@@ -71,6 +71,61 @@
     "fold_noun": "terms",
     "look": "time-card"
    }
+  },
+  {
+   "page": "first-system",
+   "slot": 3,
+   "h": "What your team does each week",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "d1f77fb803",
+   "block": {
+    "type": "spec",
+    "look": "time-card",
+    "nav": "Your team",
+    "anchor": "team",
+    "h": "What your team does each week",
+    "cols": [
+     "Task",
+     "What it means",
+     "How often"
+    ],
+    "rows": [
+     {
+      "p": "Check and log",
+      "v": "Read conductivity, the purity reading, and the others on the panel; sign the log",
+      "m": "[operator rounds: how often, minutes each]"
+     },
+     {
+      "p": "Samples",
+      "v": "Draw water at the outlets for your lab or a contract lab",
+      "m": "Your sampling plan sets how often"
+     },
+     {
+      "p": "Filters and salt",
+      "v": "Change filter cartridges; top up softener salt",
+      "m": "[filter, media and lamp intervals, months]"
+     },
+     {
+      "p": "Sanitization",
+      "v": "[PP loop sanitization method]; residual tested before use",
+      "m": "[sanitization frequency]"
+     },
+     {
+      "p": "First weeks, drug lines",
+      "v": "Sample daily for at least 2 weeks; your quality unit approves first use",
+      "m": "At start-up. Sampling then continues for a year."
+     },
+     {
+      "p": "Year one in total",
+      "v": "[staff hours in year one: sampling, logs, sanitization]",
+      "m": "Plan these hours before you order"
+     }
+    ],
+    "note": "Your quality person sets the sample points and how often."
+   }
   }
  ]
 }

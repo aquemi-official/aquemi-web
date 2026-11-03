@@ -64,7 +64,7 @@
      "Cost, scope and your team’s first year",
      {
       "t": "Your first PW system",
-      "link": "industries#first-system"
+      "link": "first-system"
      }
     ]
    ],
@@ -122,6 +122,12 @@
      "v": "What we require of the parts and materials we buy",
      "link": "cmp-quality#suppliers",
      "link_label": "What we require from suppliers"
+    },
+    {
+     "p": "Track record",
+     "v": "We are a new company: checks you can run today, and what each does not prove",
+     "link": "projects#verify",
+     "link_label": "Checks you can run today"
     }
    ],
    "look": "colophon"
@@ -334,6 +340,12 @@
      "a": "Not on its own. The Purified Water (PW) monograph sets no endotoxin limit, and its microbial action level (USP <1231>) is guidance only. Write both into your water specification and sample at the washer inlet."
     },
     {
+     "q": "What should our URS ask of a rinse water supplier?",
+     "a": "Write your user requirement specification (URS) as numbered rows, each marked must-have or preference. Put the limits, sample points and alert and action levels at the washer inlet. Then ask for each row answered: meets, meets with a note, or differs, with the document that proves it.",
+     "link": "urs-guide",
+     "link_label": "Writing your URS"
+    },
+    {
      "q": "Is the water system validated or qualified?",
      "a": "Qualified. You validate the cleaning process (ISO 13485:2016, 7.5.6), for example to ASTM F3127. The water system is qualified by installation and operational qualification (IQ, OQ), then performance qualification (PQ) from routine sampling.",
      "link": "svc-cq#roles",
@@ -388,6 +400,9 @@
   "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (IMD-71, IMD-70, IMD-72 in the library's sources/IMD.json); the QMSR took effect on 2 February 2026 (IMD-17); re-check at each new edition",
   "Supplier quality block (DR-022): [quality system ready for audit, date] (cmp-quality's name; FD-48), [quality agreement mark-up turnaround, working days] (FD-48) and [change notification to clients: scope and notice] (FD-48, SITE-PLAN section 7). At launch a row whose value is still a bracket drops (DR-004 class 2, DR-024 rule 6), except the quality system row: it is the first check a device QA head makes (desk Q5, DR-022), so it stays and FD-48 must set its status line before launch. Its links go to each answer's home, never a copy (DR-009): cmp-quality#certification, cmp-quality#audit (intent \"Your questionnaire, completed\"), cmp-quality#suppliers (what we require from suppliers), cmp-documentation#index, sys-monitoring#data-integrity, compliance#map",
   "Router (DR-020 as amended): the dose-audit row carries the cut FAQ's answer (ISO 11737-1, ISO 11137-2); the drifting row lands on svc-upgrades#observation, labelled \"Out-of-trend results\"; the supplier row names what the reader checks rather than repeating the block intro (DR-009). Anchors on this page: grades, supplier-quality",
-  "Scope line (DR-021 as amended): the lead names the package only; the exclusion lives in the first FAQ (\"Do we need WFI for our final rinse?\"), worded as an envelope with DR-013 rule 1's rating and stills (DR-021 rule 5)"
+  "Scope line (DR-021 as amended): the lead names the package only; the exclusion lives in the first FAQ (\"Do we need WFI for our final rinse?\"), worded as an envelope with DR-013 rule 1's rating and stills (DR-021 rule 5)",
+  "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 4.5 entry links, pass 10 L8 retargeted): router row 5 \"A first PW system for a small plant\" now opens first-system (was industries#first-system)",
+  "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1 and § 10, journeys P1 and P4): FAQ \"What should our URS ask of a rinse water supplier?\" gives the URS shape (numbered rows, each marked must-have or preference as on urs-guide#priority, DR-011 rule 3; L-07-1, L-G2-1) and the three-state answer with its document (L-07-8, L-15-17, L-13-1); links urs-guide. Evidence gap: the corpus holds no device maker's water URS, so the device rows (limits at the washer inlet) come from this page's grade table, not from the corpus",
+  "Pass 11 proof at the point of doubt (web/proof-and-seriousness.md § 5.2, DR-004 rule 1, DR-022): supplier quality gains 'Track record' (the word a device QA head scans for; v says 'We are a new company', so no reference is implied) -> projects#verify. Its value is copy only; it states no reference, count or certificate. Spec rows 9 of 10"
  ]
 }

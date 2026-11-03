@@ -10,9 +10,9 @@
    "page": "sys-pretreatment",
    "slot": 4,
    "h": "Documents delivered",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "74e959129d",
    "block": {
@@ -27,6 +27,44 @@
      {
       "t": "Membrane projections",
       "d": "At coldest and warmest feed"
+     },
+     {
+      "t": "Functional specification",
+      "d": "Regeneration, backwash, alarms and interlocks"
+     },
+     {
+      "t": "Media, resin and material certificates",
+      "d": "Lot numbers; [certificates supplied for PVC parts]"
+     }
+    ],
+    "nav": "Documents",
+    "fold_noun": "documents",
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "look": "doc-pipe"
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 4,
+   "h": "Documents delivered",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "4a44e243e4",
+   "block": {
+    "type": "docs",
+    "h": "Documents delivered",
+    "key": 2,
+    "items": [
+     {
+      "t": "Feed water review and design basis",
+      "d": "Sets the RO inlet targets: data used and design months"
+     },
+     {
+      "t": "Membrane projections",
+      "d": "Predict output at coldest and warmest feed, new and at end of membrane life"
      },
      {
       "t": "Functional specification",

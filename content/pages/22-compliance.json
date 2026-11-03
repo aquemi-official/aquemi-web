@@ -404,7 +404,9 @@
     },
     {
      "q": "Does our corporate engineering standard replace yours?",
-     "a": "No, it adds to this list. We write it into the functional specification and flag any conflicting clause before detailed design, not at installation qualification (IQ). A standard that requires stainless rules out polypropylene, unless it allows exceptions."
+     "a": "No, it adds to this list. We write it into the functional specification and flag any conflicting clause before detailed design, not at installation qualification (IQ). A standard that requires stainless rules out polypropylene, unless it allows exceptions.",
+     "link": "urs-guide#pp-rows",
+     "link_label": "When not to choose polypropylene"
     },
     {
      "q": "Who registers our pressure equipment, and when?",
@@ -420,14 +422,14 @@
    "items": [
     "cmp-documentation",
     "cmp-quality",
-    "ind-meddevice",
+    "urs-guide",
     "ind-cdmo"
    ]
   }
  ],
  "cta": {
   "h": "Send your requirements (URS). We return a compliance matrix.",
-  "body": "An engineer maps each requirement to a standard, design feature and test. Cost: [compliance matrix cost or free].",
+  "body": "Each URS line answered in your numbering: meets, meets with a note, or differs, with its proof. Cost: [compliance matrix cost or free].",
   "button": "Request a compliance matrix",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Compliance matrix",
@@ -439,7 +441,7 @@
   ],
   "returns": [
    "Compliance matrix",
-   "List of exceptions, if any"
+   "Exceptions, keyed to your clause numbers"
   ],
   "turnaround": "[compliance matrix response time, working days]"
  },
@@ -463,7 +465,11 @@
   "Quality review of each standard row (edition, clause numbers, limits) before publication, GUI-0001's current version included (the clause references were read in the 2018 edition, version 3 of 2020)",
   "Medical devices row (GMP table, DR-022 rule 3): links ind-meddevice#supplier-quality, the block the ind-meddevice editor adds in pass 10; the proof cell's questionnaire pack is cmp-quality's, available from [quality system ready for audit, date] (FD-48)",
   "GUI-0158 (natural health products) is named in the GUI-0001 row's standard cell; its one home is ind-pharma#nhp (DR-017), reached from the footer. A cell holds one link, so the row keeps its Fabrication proof link",
-  "Scope envelope (FAQ 1, DR-021 as amended): the lead names the ambient PP package; confirm 'ambient' against the sanitization regime once FD-14 is answered"
+  "Scope envelope (FAQ 1, DR-021 as amended): the lead names the ambient PP package; confirm 'ambient' against the sanitization regime once FD-14 is answered",
+  "Pass 11 (commercial phrasebook change 8; L-07-8, L-G2-1, L-15-17, PB-G3.2, PB-13.1): the closing body promises each URS line answered in the buyer's numbering, \"meets, meets with a note, or differs\", with its proof; the second return reads \"Exceptions, keyed to your clause numbers\" (offer-and-terms-patterns.md § 14 C2). The compliance matrix must use those three answers and the buyer's clause numbers",
+  "Pass 11 (SITE-PLAN, desk Q1): urs-guide linked twice, FAQ \"Does our corporate engineering standard replace yours?\" to urs-guide#pp-rows (label \"When not to choose polypropylene\" since the pass 11 integration: the anchor holds the wrong-choice rows, among them a corporate standard naming 316L stainless steel), and the related row (urs-guide replaces ind-meddevice, which the GMP table's devices row already links). If urs-guide does not ship, both links go and ind-meddevice returns to the related row",
+  "Optional, not done in pass 11 (proof-and-seriousness.md § 5.2; L-14-9): \"Is plastic accepted for Purified Water?\" citing a published PP plant as precedent, with its caution; needs the owner and a checked public source before any wording",
+  "Pass 11 integration (urs-guide review finding 5): the corporate-standard FAQ's link label is 'When not to choose polypropylene' (the review's 'When polypropylene is the wrong choice' is 6 words, over the 5-word button rule; systems uses 'When not to choose PP'), naming the block it lands on (urs-guide#pp-rows)"
  ],
  "figure": {
   "spots": [

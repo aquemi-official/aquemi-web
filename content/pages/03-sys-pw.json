@@ -18,7 +18,7 @@
  "facts": [
   {
    "v": "[minimum–maximum capacity, L/h]",
-   "l": "Per skid · at your coldest feed"
+   "l": "Per skid · coldest feed, end of membrane life"
   },
   {
    "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
@@ -65,7 +65,7 @@
     {
      "p": "Skid outlet, guaranteed",
      "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
-     "m": "Measured at the factory and site acceptance tests (FAT, SAT)",
+     "m": "Proven at the factory and site acceptance tests (FAT, SAT)",
      "hl": false
     }
    ],
@@ -120,7 +120,7 @@
     {
      "t": "To PW storage",
      "spot": "storage-tank",
-     "d": "Off-spec water diverts until it recovers.",
+     "d": "Water out of specification diverts away from storage, to [divert route: drain or recirculation], until it recovers.",
      "label": "Out"
     }
    ],
@@ -140,7 +140,7 @@
     {
      "p": "Capacity",
      "v": "[minimum–maximum capacity, L/h] per skid",
-     "m": "Rated at your coldest feed, not 25 °C; parallel trains above",
+     "m": "At your coldest feed and end of membrane life ([membrane design life, years]), not 25 °C; parallel trains above",
      "hl": true,
      "at": [
       14.7,
@@ -210,7 +210,7 @@
     {
      "p": "Instruments and controls",
      "v": "Conductivity and temperature after each stage; [online TOC at the outlet, standard or option]",
-     "m": "Off-spec water diverts at a setpoint below your alert level",
+     "m": "Water out of specification diverts at a setpoint below your alert level",
      "hl": false,
      "link": "sys-monitoring"
     },
@@ -236,7 +236,7 @@
    "items": [
     {
      "t": "FAT and SAT protocols and reports",
-     "d": "Deviations closed; SAT run on your feed water",
+     "d": "Prove outlet quality and every divert; deviations closed; SAT run on your feed water",
      "key": true,
      "at": [
       0.12,
@@ -244,8 +244,17 @@
      ]
     },
     {
+     "t": "Membrane projections",
+     "d": "Predict output at your coldest feed and at end of membrane life; FAT and SAT confirm it",
+     "key": true,
+     "at": [
+      0.2,
+      0.33
+     ]
+    },
+    {
      "t": "Material certificates",
-     "d": "[PP material certificates]",
+     "d": "Prove the product-contact grade: [PP material certificates]",
      "key": true,
      "at": [
       0.66,
@@ -254,7 +263,7 @@
     },
     {
      "t": "Joint records",
-     "d": "[PP joining method]; [PP joint records kept]",
+     "d": "Prove each joint: [PP joining method]; [PP joint records kept]",
      "key": true,
      "at": [
       0.4,
@@ -263,7 +272,7 @@
     },
     {
      "t": "P&IDs and general arrangement",
-     "d": "Piping and instrumentation diagrams, as built",
+     "d": "Prove the skid as built matches the approved drawings: piping and instrumentation diagrams and general arrangement",
      "key": true,
      "at": [
       0.78,
@@ -274,7 +283,8 @@
    "link": "cmp-documentation#index",
    "link_label": "Full index",
    "nav": "Documents",
-   "look": "doc-hotspots"
+   "look": "doc-hotspots",
+   "intro": "What the skid leaves on paper, and the claim each document proves."
   },
   {
    "type": "options",
@@ -313,12 +323,19 @@
    "nav": "Options",
    "fold": 3,
    "spot": "ro-skid",
-   "look": "option-tags"
+   "look": "option-tags",
+   "intro": "Your proposal states each option's effect on drawings, tests and lead time."
   },
   {
    "type": "faq",
    "h": "Questions engineers ask",
    "items": [
+    {
+     "q": "Our draft URS names stainless steel and hot sanitization. Does PP fit?",
+     "a": "Not as written. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. If you need a hot loop or stainless product contact, PP is the wrong choice. Otherwise, rewrite those rows in your user requirement specification (URS) as outcomes you can test. Where we still differ, our proposal says where and why.",
+     "link": "urs-guide#clauses",
+     "link_label": "Write outcome clauses"
+    },
     {
      "q": "How is the PP skid sanitized?",
      "a": "Skid sanitization: [sanitization method for the PP skid]; heat-sanitizable RO and EDI: [heat-sanitizable RO and EDI, yes or no]. After any chemical sanitization, removal of the sanitant is proven before use (WHO TRS 1033). Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
@@ -344,6 +361,12 @@
      "a": "The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT), then installation and operational qualification (IQ/OQ), prove it on your site and feed water. Your quality unit approves the FAT protocol and can witness it once [shop and test bay ready for visits].",
      "link": "svc-fat-sat",
      "link_label": "See what FAT proves"
+    },
+    {
+     "q": "What keeps the water in specification after handover?",
+     "a": "Three things on your side: sanitization on the agreed schedule, daily conductivity and alarm checks, and a kept log. The operating manual sets each one. A service plan adds our visits and calibrations.",
+     "link": "svc-service",
+     "link_label": "See the service plans"
     }
    ],
    "nav": "FAQ"
@@ -399,6 +422,12 @@
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page; FD-01)",
   "Date the shop and test bay are ready for witnessed FAT, in person or remote ([shop and test bay ready for visits], FAQ; same name as home, svc-fat-sat and contact-locations; FD-44). At launch the FAQ's witness clause shows only if this is filled with a date that has passed; otherwise it is removed (DR-004 class 2, DR-006 rule 6)",
   "Datasheet PDF and typical P&ID; once the datasheet exists it becomes the hero's secondary link (DR-006)",
-  "A real PW project with measured outlet conductivity, TOC and capacity before adding a case study block (FD-42, DR-016)"
+  "A real PW project with measured outlet conductivity, TOC and capacity before adding a case study block (FD-42, DR-016)",
+  "Pass 11 (phrasebook 17, †, L-07-12, L-10-13, L-G2-10, PB-07.12): the capacity hero fact and design row now read \"coldest feed, end of membrane life\"; the design row names [membrane design life, years] (SITE-PLAN rule 4: the term's basis). Owner confirms the package guarantees output at end of membrane life, and for how many years (phrasebook open question 3; FD-20, FD-21). If not, revert both to \"at your coldest feed\". No other page prints the capacity label today; if one is added, use sys-pw's wording (DR-011)",
+  "Pass 11 (phrasebook 23, PB-03.21, PB-07.3, PB-G2.2; buyer-requirements § 3.2, L-G2-4, L-07-4; phrasebook § 5.3): the diagram's last stop says out-of-specification water diverts away from storage, to [divert route: drain or recirculation]. Owner confirms the divert route by design (FD-21). sys-monitoring's divert row uses the same placeholder: keep both on one route once decided (DR-011)",
+  "Pass 11 (proof § 5.2, P19 and P21; L-02-5, L-13-1, L-15-17): the documents block names what each document does: FAT and SAT reports, certificates, joint records and as-built drawings prove; membrane projections predict the capacity basis, and FAT and SAT confirm it (same document name as sys-pretreatment's). Still missing: datasheet, typical general arrangement and room sheet (P19, Build; no download until the files exist, DR-006 rule 6), and the class line \"process equipment for GMP use, not a medical device\" (P11, wording to confirm before it ships)",
+  "Pass 11 (proof P17; L-G1-11, L-04-28): options intro says the proposal states each option's effect on drawings, tests and lead time (same sentence on sys-storage and sys-pretreatment); owner confirms the proposal lists them (DR-005). Values stay off the page until FD-08 sets lead times",
+  "Pass 11 (URS FAQ; L-07-5, L-G2-5, L-G2-1, L-15-17; DR-013 rule 1; DESK Q1 explicit limits): the first FAQ answers a stainless or hot-sanitization URS row, says first when PP is the wrong choice (hot loop, stainless product contact), and links urs-guide#clauses (new page, anchor fixed by pass 11 SITE-PLAN). The systems FAQ \"When is polypropylene the wrong choice?\" stays the one home of the full answer (DR-009)",
+  "Pass 11 (proof P14; L-02-2, L-G1-10, L-02-23): the customer's-share FAQ names three duties after handover. Daily checks match svc-service's operator FAQ (phrasebook 13); align wording if that answer changes"
  ]
 }

@@ -68,7 +68,7 @@
     {
      "p": "Whole package, [reference capacity, L/h]",
      "v": "[budget range, CAD]",
-     "m": "Supply, factory acceptance test (FAT), installation and operational qualification (IQ/OQ) protocols, turnover package",
+     "m": "Supply, [FAT in the price or priced option], [IQ and OQ: included or priced option], turnover package",
      "hl": true
     },
     {
@@ -90,15 +90,16 @@
      "spot": "pretreatment"
     }
    ],
-   "note": "Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation. Not included: installation, tie-ins, utilities, lab testing during qualification and temporary water.",
-   "note_link": "svc-service#running-cost",
+   "note": "Not in this range: installation, tie-ins, utilities, lab testing during qualification and temporary water. Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation.",
+   "note_link": "buying#capital",
    "nav": "Budget",
    "anchor": "budget",
-   "look": "budget-bento"
+   "look": "budget-bento",
+   "note_link_label": "Build your capital request"
   },
   {
    "type": "spec",
-   "h": "What changes on your site",
+   "h": "What your site needs before we arrive",
    "cols": [
     "Item",
     "Typical",
@@ -215,9 +216,9 @@
    "items": [
     {
      "q": "When is polypropylene the wrong choice?",
-     "a": "When the loop needs routine 80 °C at loop pressure, hot holding or steam. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
-     "link": "sys-storage#sanitization",
-     "link_label": "Compare sanitization methods"
+     "a": "When the loop needs routine 80 °C at loop pressure, hot holding or steam. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. Also when the grade is Water for Injection (WFI), or your standard requires stainless product contact.",
+     "link": "urs-guide#pp-rows",
+     "link_label": "When not to choose PP"
     },
     {
      "q": "We pay for exchange DI. When does a package make sense?",
@@ -244,6 +245,8 @@
    "items": [
     "services",
     "svc-design",
+    "urs-guide",
+    "first-system",
     "cmp-documentation",
     "svc-service"
    ]
@@ -265,7 +268,7 @@
   "returns": [
    "Modules your water needs",
    "Budget range and its class",
-   "Sizing basis"
+   "Sizing basis, and [one-paragraph approver summary, yes or no]"
   ]
  },
  "todo": [
@@ -284,6 +287,12 @@
   "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms and capacity ranges], FAQ; FD-20; the lead time is cmp-quality's [lead time from drawing approval, weeks], FD-08). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
   "Whether single modules (pretreatment, RO and DI/EDI skid, distribution) are supplied alone or only as the full package ([Whether single modules are supplied alone], FAQ; FD-20). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
   "Standard the PP piping and loop are designed to (dead legs, drainability); the ASME BPE row was removed",
-  "Once the project-facts sheet exists (DR-001 rule 5), it becomes the hero's secondary link (DR-006)"
+  "Once the project-facts sheet exists (DR-001 rule 5), it becomes the hero's secondary link (DR-006)",
+  "Pass 11 phrasebook 1 (L-03-15, L-09-19, L-05-21, PB-03.12): the note leads with what the range leaves out, labelled 'Not in this range' so the look still strikes the exclusions as chips (DR-018); the capital-request framing moved to the note link ('Build your capital request'), which now points at buying#capital (SITE-PLAN; was svc-service#running-cost, still linked from the exchange DI FAQ). Until buying is live, point it back at svc-service#running-cost",
+  "Pass 11 phrasebook 11 (L-01-13, L-06-4, L-05-11, L-12-7, PB-07.18, PB-08.11): site table heading 'What your site needs before we arrive'",
+  "Pass 11 phrasebook 12 † (L-12-17, L-07-19, L-06-22, PB-12.15): closing returns 'Sizing basis, and [one-paragraph approver summary, yes or no]'. Owner to confirm the budget reply carries a one-paragraph approver summary (DR-005; same paragraph as buying#capital's); if yes the bracket becomes 'one paragraph for your approver', if no the line ends at 'Sizing basis' (pass 11 review finding 9)",
+  "Pass 11 (SITE-PLAN systems; § 4.3 entry links; desk Q1): FAQ 'When is polypropylene the wrong choice?' adds WFI and a stainless standard (urs-guide hero, DR-021 scope) and links urs-guide#pp-rows; the sanitization link stays on the site table's chemicals row; related gains urs-guide",
+  "Pass 11 review finding 8: the wrong-choice FAQ's link label is 'Wrong-choice rows for your URS' (urs-guide#pp-rows is 'When polypropylene is the wrong choice'; urs-guide's 'Polypropylene rows' nav is #allow-pp). Finding 11: related gains first-system (journey P2; first-system#cost holds the all-in and monthly costs)",
+  "Pass 11 integration (buying review finding 7, DR-011 one name per fact): the budget block's whole-package basis now names buying#proposal's marks, [FAT in the price or priced option] and [IQ and OQ: included or priced option] (FD-05, FD-26); when the owner sets them, both pages change together. The wrong-choice FAQ's link label is now 'When not to choose PP' (urs-guide review finding 5; anchor #pp-rows kept)"
  ]
 }

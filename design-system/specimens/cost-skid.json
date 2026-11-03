@@ -74,9 +74,9 @@
    "page": "svc-service",
    "slot": 1,
    "h": "What it costs to run",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "db9f635d2c",
    "block": {
@@ -85,6 +85,70 @@
     "nav": "Running cost",
     "anchor": "running-cost",
     "h": "What it costs to run",
+    "cols": [
+     "Item",
+     "Interval or amount",
+     "Set by"
+    ],
+    "rows": [
+     {
+      "p": "Service plan, with calibration",
+      "v": "From [lowest plan price, CAD per year]",
+      "m": "System, instruments and distance",
+      "part": "panel"
+     },
+     {
+      "p": "Reverse osmosis (RO) membranes; electrodeionization (EDI) module or deionization (DI) resin",
+      "v": "[membrane and resin replacement intervals]",
+      "m": "Feed water and flow"
+     },
+     {
+      "p": "Filters, carbon, softener resin, ultraviolet (UV) lamp",
+      "v": "[filter, media and lamp intervals, months]",
+      "m": "Feed water and run hours",
+      "part": "pre"
+     },
+     {
+      "p": "Water to drain",
+      "v": "RO reject at [design recovery, %] recovery",
+      "m": "Feed water chemistry",
+      "part": "drain",
+      "link": "sys-pw",
+      "side": "out"
+     },
+     {
+      "p": "Energy",
+      "v": "[energy use, kWh per m³]",
+      "m": "Flow and feed temperature",
+      "part": "pump"
+     },
+     {
+      "p": "Sanitant and softener salt",
+      "v": "[PP loop sanitization method], [sanitization frequency]",
+      "m": "Your microbial trends; feed hardness",
+      "part": "soft"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "items"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 1,
+   "h": "What it costs to run",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "688cb894c9",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Running cost",
+    "anchor": "running-cost",
+    "h": "What it costs to run",
+    "intro": "Intervals depend on your feed water and daily draw; we set the first schedule from your water analysis.",
     "cols": [
      "Item",
      "Interval or amount",

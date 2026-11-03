@@ -141,7 +141,7 @@
    "page": "ind-cdmo",
    "slot": 2,
    "h": "Redundancy that keeps clients supplied",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "19cb29a",
@@ -201,6 +201,73 @@
      "sanitized",
      "Swap trains"
     ]
+   }
+  },
+  {
+   "page": "ind-cdmo",
+   "slot": 2,
+   "h": "Redundancy that keeps clients supplied",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "bff41e0",
+   "hash": "7fd28cf30a",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "nav": "Redundancy",
+    "anchor": "redundancy",
+    "h": "Redundancy that keeps clients supplied",
+    "base": "Shared site loop",
+    "items": [
+     {
+      "t": "Duplex generation",
+      "spot": "ro-skid",
+      "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
+      "part": "trains"
+     },
+     {
+      "t": "N+1 pumps",
+      "spot": "pump",
+      "d": "Standby pump on each loop, automatic changeover: [duty and standby pumps, standard or option].",
+      "part": "pumps"
+     },
+     {
+      "t": "Storage autonomy",
+      "spot": "storage-tank",
+      "d": "Tank sized from peak demand and your longest credible repair, in hours of supply.",
+      "part": "tank"
+     },
+     {
+      "t": "Sanitize between campaigns",
+      "spot": "loop",
+      "d": "[PP loop sanitization method] in campaign gaps, residual tested before use.",
+      "link": "sys-storage#sanitization",
+      "part": "loop"
+     },
+     {
+      "t": "Spares on your site",
+      "spot": "wrench",
+      "d": "Critical spares on a service plan: [kit on site, replenished after use].",
+      "link": "svc-service",
+      "part": "spares"
+     },
+     {
+      "t": "Room for new programs",
+      "spot": "pid",
+      "d": "Spare skid space and valved tie-ins for expected programs, qualified with the original system.",
+      "part": "tiein"
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "options",
+    "look": "duplex-trains",
+    "trains": [
+     "runs",
+     "sanitized",
+     "Swap trains"
+    ],
+    "intro": "Write two requirements into your specification: the longest outage you accept, in hours, and how clients get water during repairs."
    }
   }
  ]

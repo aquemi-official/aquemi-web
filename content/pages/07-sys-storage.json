@@ -44,7 +44,7 @@
     {
      "p": "Flow regime",
      "v": "Turbulent in every section at peak demand",
-     "m": "WHO TRS 1033, 8.6; return flow alarmed",
+     "m": "WHO TRS 1033, 8.6; return flow alarmed, recorded at SAT",
      "hl": true,
      "rule": "≥ [design minimum return velocity, m/s]",
      "fig": "turbulent"
@@ -265,12 +265,12 @@
    "items": [
     {
      "t": "Hydraulic calculation",
-     "d": "Velocity and Reynolds number, every section and case",
+     "d": "Shows turbulent flow by design: velocity and Reynolds number, every section and case",
      "key": true
     },
     {
      "t": "Dead leg register",
-     "d": "L/D for every branch, instrument tee and sample valve",
+     "d": "Proves every branch is short: L/D for each tee and sample valve",
      "key": true
     },
     {
@@ -319,7 +319,8 @@
    ],
    "nav": "Options",
    "spot": "storage-tank",
-   "look": "loop-dock"
+   "look": "loop-dock",
+   "intro": "Your proposal states each option's effect on drawings, tests and lead time."
   },
   {
    "type": "faq",
@@ -328,7 +329,15 @@
    "items": [
     {
      "q": "How hot can a PP loop be sanitized?",
-     "a": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C]. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]."
+     "a": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C]. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+     "link": "news#pp-or-stainless",
+     "link_label": "PP or stainless for loops"
+    },
+    {
+     "q": "We had a plastic loop fail before. What is different?",
+     "a": "Three design rows answer it: joints, supports and heat. Joints: [PP joining method], each one logged in [PP joint records kept]. Supports: [PP pipe support spacing and expansion design]. Heat: any hot-water cycle stays inside the PP maker's pressure–temperature curve. Tell us what failed in yours; we check our design against it.",
+     "link": "svc-fabrication",
+     "link_label": "How joints are logged"
     },
     {
      "q": "How do you measure L/D?",
@@ -403,6 +412,12 @@
   "Whether the loop sizing proposal is free or charged ([proposal cost or free], closing; the name in contact-proposal's requests table; FD-02)",
   "Intent 'I have water data, no system yet|Sizing proposal|Storage and distribution loop' (hero and closing) must match contact-proposal's labels (DR-014 rules 2 and 11)",
   "Datasheet PDF; add a download link only once it exists (DR-006 rule 6)",
-  "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block (DR-004 class 3)"
+  "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block (DR-004 class 3)",
+  "Pass 11 (proof § 5.2 P12; L-11-16, caution: one anecdote, no stated cause, do not hide from it): new FAQ \"We had a plastic loop fail before\" answers with the joint, support and heat rows and asks what failed in the reader's loop. New placeholder [PP pipe support spacing and expansion design] (FD-19): support spacing at loop temperature and how expansion is taken up. Add it to ops/placeholder-names.md if another page uses it",
+  "Pass 11 (proof § 5.2 P12; L-03-19): a neutral authority on ambient storage (ISPE Baseline Guide, by name and edition, paraphrased) is still missing; add it only after the edition and text are checked against the guide itself, cited as industry guidance, never as Aquemi proof (DR-004)",
+  "Pass 11 (SITE-PLAN): done. The sanitization FAQ links the PP-or-stainless note, news#pp-or-stainless, which ships in the same release dated [first note publication month, year] (FD-53). The method-bento look has no link field, so the FAQ carries the link. If the orchestrator rules the link waits for FD-53, revert to the urs-guide#pp-rows link (\"When not to choose PP\")",
+  "Pass 11 (proof P21, P19; L-13-1): the rules table's flow row names the SAT record; the hydraulic calculation shows turbulent flow by design and the dead leg register proves each L/D (measured). Still missing: datasheet, typical general arrangement and room sheet (P19, Build)",
+  "Pass 11 (proof P17; L-G1-11, L-04-28): options intro says the proposal states each option's effect on drawings, tests and lead time (same sentence as sys-pw and sys-pretreatment); owner confirms (DR-005, FD-08)",
+  "Pass 11 (buyer-requirements § 3.3, L-15-7, L-G2-6): the sanitization FAQ linked urs-guide#pp-rows; that link gave way to the news note (one link per FAQ item). urs-guide stays linked from sys-pw, sys-pretreatment, sys-monitoring and systems' wrong-choice FAQ"
  ]
 }
