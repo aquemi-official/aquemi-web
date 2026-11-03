@@ -84,9 +84,9 @@
    "page": "compliance",
    "slot": 2,
    "h": "Pharmacopoeias and their proof",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "a559136b0a",
    "block": {
@@ -134,6 +134,80 @@
      [
       "USP <1231> Water for pharmaceutical purposes (informational)",
       "Microbial control: sampling plan; alert and action levels from performance qualification data",
+      "Sampling plan; alert and action level rationale",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "EMA guideline on water for pharmaceutical use",
+      "PW minimum for most non-sterile dosage forms; WFI, which we do not supply, for parenterals",
+      "Water grade per point of use in the basis of design",
+      {
+       "t": "Pharmaceutical",
+       "link": "ind-pharma"
+      }
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "standards"
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 2,
+   "h": "Pharmacopoeias and their proof",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "19cb29a",
+   "hash": "d22726e168",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Pharmacopoeia",
+    "anchor": "pharmacopoeia",
+    "look": "proof-folders",
+    "ground": "light",
+    "h": "Pharmacopoeias and their proof",
+    "cols": [
+     "Standard",
+     "What we design to",
+     "Proof",
+     "Where we show it"
+    ],
+    "rows": [
+     [
+      "USP <645> Water conductivity",
+      "Stage 1, uncompensated; cell constant ± 2 %, instrument ± 0.1 µS/cm",
+      "Calibration certificates; FAT, SAT and OQ uncompensated readings",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "USP <643> Total organic carbon",
+      "System suitability: response efficiency 85 % to 115 %",
+      "Suitability records; analyzer calibration; OQ report",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Ph. Eur. 0008 Purified water",
+      "As revised in 12.3, in force 1 July 2026",
+      "Functional specification",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ],
+     [
+      "USP <1231> Water for pharmaceutical purposes (informational)",
+      "Microbial control: sampling plan; alert and action levels proposed from performance qualification data",
       "Sampling plan; alert and action level rationale",
       {
        "t": "Commissioning and qualification",

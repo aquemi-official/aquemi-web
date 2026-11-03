@@ -10,9 +10,9 @@
    "page": "svc-service",
    "slot": 3,
    "h": "What a maintenance visit covers",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "e2126693ba",
    "block": {
@@ -45,6 +45,73 @@
      },
      {
       "t": "Ultraviolet (UV) and sanitization",
+      "d": "Lamp intensity and hours; sanitization verified at the coldest point.",
+      "link": "sys-storage#sanitization",
+      "spot": "uv",
+      "part": "uv"
+     },
+     {
+      "t": "Loop hydraulics",
+      "d": "Return flow against the qualified minimum, pump and valves.",
+      "link": "sys-storage",
+      "spot": "pump",
+      "part": "loop tank"
+     },
+     {
+      "t": "Wearing parts",
+      "d": "Seals and diaphragms like for like, lots recorded; vent filters tested.",
+      "spot": "wrench",
+      "part": "wear"
+     },
+     {
+      "t": "Signed report",
+      "d": "As-found, as-left and return-to-service results, signed before we leave.",
+      "end": true,
+      "spot": "stamp",
+      "part": "report"
+     }
+    ]
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 3,
+   "h": "What a maintenance visit covers",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "19cb29a",
+   "hash": "831c656e00",
+   "block": {
+    "type": "grid",
+    "look": "visit-plan",
+    "as": "route",
+    "nav": "Visits",
+    "h": "What a maintenance visit covers",
+    "items": [
+     {
+      "t": "Data review",
+      "d": "Conductivity, TOC, temperature and alarms since the last visit.",
+      "link": "sys-monitoring",
+      "spot": "toc",
+      "part": "panel toc"
+     },
+     {
+      "t": "Pretreatment",
+      "d": "Softener leakage, carbon or bisulfite, RO inlet chlorine.",
+      "link": "sys-pretreatment",
+      "spot": "pretreatment",
+      "part": "pre"
+     },
+     {
+      "t": "RO and DI/EDI",
+      "d": "Normalized flow, salt passage and pressure drop against baseline.",
+      "link": "sys-pw",
+      "spot": "ro-skid",
+      "part": "gen"
+     },
+     {
+      "t": "UV, if fitted, and sanitization",
       "d": "Lamp intensity and hours; sanitization verified at the coldest point.",
       "link": "sys-storage#sanitization",
       "spot": "uv",

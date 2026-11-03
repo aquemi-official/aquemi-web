@@ -233,11 +233,21 @@
      "page": "cmp-quality",
      "slot": 1,
      "h": "Certification status",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "cbc70a08e7"
+    },
+    {
+     "page": "cmp-quality",
+     "slot": 1,
+     "h": "Certification status",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "af62d1cd44"
     }
    ]
   },
@@ -572,11 +582,21 @@
      "page": "compliance",
      "slot": 3,
      "h": "Good manufacturing practice (GMP) and qualification",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "be24785345"
+    },
+    {
+     "page": "compliance",
+     "slot": 3,
+     "h": "Good manufacturing practice (GMP) and qualification",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "58bf8c5017"
     }
    ]
   },
@@ -652,11 +672,21 @@
      "page": "sys-pretreatment",
      "slot": 3,
      "h": "Chlorine or chloramine: the removal step",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "a4638c0982"
+    },
+    {
+     "page": "sys-pretreatment",
+     "slot": 3,
+     "h": "Chlorine or chloramine: the removal step",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "0f6cfde71c"
     }
    ]
   },
@@ -756,11 +786,21 @@
      "page": "ind-cdmo",
      "slot": 2,
      "h": "Redundancy that keeps clients supplied",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "8d430bc11e"
+    },
+    {
+     "page": "ind-cdmo",
+     "slot": 2,
+     "h": "Redundancy that keeps clients supplied",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "0c3047b43f"
     }
    ]
   },
@@ -1042,11 +1082,21 @@
      "page": "careers",
      "slot": 2,
      "h": "How we hire",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "2d30e32748"
+    },
+    {
+     "page": "careers",
+     "slot": 2,
+     "h": "How we hire",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "a308c309ff"
     }
    ]
   },
@@ -2128,11 +2178,21 @@
      "page": "compliance",
      "slot": 2,
      "h": "Pharmacopoeias and their proof",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "a559136b0a"
+    },
+    {
+     "page": "compliance",
+     "slot": 2,
+     "h": "Pharmacopoeias and their proof",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "d22726e168"
     }
    ]
   },
@@ -2572,11 +2632,21 @@
      "page": "contact-service",
      "slot": 1,
      "h": "Response times by request",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "4f106f31b6"
+    },
+    {
+     "page": "contact-service",
+     "slot": 1,
+     "h": "Response times by request",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "95990d0505"
     }
    ]
   },
@@ -2674,11 +2744,21 @@
      "page": "sys-pretreatment",
      "slot": 1,
      "h": "How the train is built",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "ba4f46269d"
+    },
+    {
+     "page": "sys-pretreatment",
+     "slot": 1,
+     "h": "How the train is built",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "05a252860b"
     }
    ]
   },
@@ -2889,11 +2969,21 @@
      "page": "contact-locations",
      "slot": 1,
      "h": "Where to find us",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "928efe7f9d"
+    },
+    {
+     "page": "contact-locations",
+     "slot": 1,
+     "h": "Where to find us",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "1776b3d682"
     }
    ]
   },
@@ -3464,9 +3554,9 @@
      "page": "systems",
      "slot": 2,
      "h": "What changes on your site",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "89c6df0f73"
     },
@@ -3479,6 +3569,16 @@
      "last_seen": "2026-11-02",
      "commit": "b8b6da7",
      "hash": "a291065ef7"
+    },
+    {
+     "page": "systems",
+     "slot": 2,
+     "h": "What changes on your site",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "89c9e9a633"
     }
    ]
   },
@@ -3694,11 +3794,21 @@
      "page": "svc-service",
      "slot": 3,
      "h": "What a maintenance visit covers",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-01",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "0efa42f",
      "hash": "e2126693ba"
+    },
+    {
+     "page": "svc-service",
+     "slot": 3,
+     "h": "What a maintenance visit covers",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "831c656e00"
     }
    ]
   },
@@ -3800,11 +3910,21 @@
      "page": "sys-pw",
      "slot": 1,
      "h": "How water moves through the skid",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "e4fc5b9d37"
+    },
+    {
+     "page": "sys-pw",
+     "slot": 1,
+     "h": "How water moves through the skid",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "19cb29a",
+     "hash": "ac4ce91348"
     }
    ]
   },

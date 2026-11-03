@@ -89,7 +89,7 @@
      "d": "[number of qualified thermoplastic welders]",
      "tag": "[welder qualification standard for thermoplastics]",
      "link": "svc-fabrication",
-     "icon": "weld"
+     "icon": "loop"
     },
     {
      "t": "Pressure equipment",
@@ -330,7 +330,7 @@
     },
     {
      "q": "What should we ask any Purified Water supplier?",
-     "a": "Five things make proposals comparable. The document index, with who writes and who signs each document. A factory acceptance test (FAT) that runs the system on water. The record kept for each product-contact joint. Access to audit the quality system before you order. A map from each data integrity requirement to the control that meets it.",
+     "a": "Five things make proposals comparable. The document index, with who writes and who signs each document. A factory acceptance test (FAT) that runs the system on water. The record kept for each product-contact joint. Access to audit the quality system before you order. A list of each data integrity requirement and the control that meets it.",
      "link": "cmp-documentation#index",
      "link_label": "See our document index"
     }
@@ -383,8 +383,8 @@
   "Joint inspector qualification for PP joints, if any",
   "Pressure equipment: certificate of authorization holder, or the certified vessel fabricator used ([pressure vessel certificate holder or certified vessel partner]; FD-24)",
   "Control panels: [panel standard] and [panel certification mark held, or field evaluation used], compliance's names (FD-24, OQ-78). The standard the certification body applies (CSA C22.2 No. 14 or No. 286) and whether UL 508A applies for US sites, in writing from the certification body before the page names one (DR-007 rule 4)",
-  "PP joining status: [number of qualified thermoplastic welders] and [welder qualification standard for thermoplastics], svc-fabrication's names (FD-18). Was \"PP joining qualification held\" and \"PP joining standard\" here",
-  "Terms block \"How buying from us works\" (anchor buying; DR-005 rule 7): kept with placeholders in the draft; at launch it ships only once proposal validity, currency, payment milestones and warranty start are decided, and any other row still unset goes (DR-005 rule 8). While it ships, the footer shows \"Buying from Aquemi\" (Footer.js, shared code); if it does not ship, the hero secondary becomes \"See the documentation package\" (cmp-documentation), and in the same commit about's hero secondary \"How buying from us works\" goes and the cmp-quality#buying links in svc-design's FAQ 6 and sys-monitoring's FAQ 4 change (DR-006 rule 6)",
+  "PP joining status: [number of qualified thermoplastic welders] and [welder qualification standard for thermoplastics], svc-fabrication's names (FD-18). Was \"PP joining qualification held\" and \"PP joining standard\" here. The item's icon is a neutral pipe run (\"loop\"), not a weld bead, while the joining method is open (pass 11 review; DR-018 rule 2, as careers); a joining icon may return once FD-18 names the method",
+  "Terms block \"How buying from us works\" (anchor buying; DR-005 rule 7): kept with placeholders in the draft; at launch it ships only once proposal validity, currency, payment milestones and warranty start are decided, and any other row still unset goes (DR-005 rule 8). While it ships, the footer shows \"Buying from Aquemi\" (Footer.js, shared code); if it does not ship, the hero secondary becomes \"See the documentation package\" (cmp-documentation), and in the same commit about's hero secondary \"How buying from us works\" goes and the cmp-quality#buying links in svc-design's FAQ 6 and sys-monitoring's FAQ 4 change (DR-006 rule 6). At launch (DR-005 rule 8: the values are filled), each \"Set in the proposal\" note beside a stated term becomes \"Unless the proposal states otherwise\" or goes, so a filled term does not read as negotiable (pass 11 review)",
   "Terms, proposal: what a proposal contains and its line items (for example equipment, installation, commissioning and qualification, documentation, training, spares) ([proposal contents and line items]); validity in days ([proposal validity, days]; FD-05)",
   "Terms, currency, tax and duty (FD-05): quoting currency for Canadian and US buyers ([quoting currency]; about no longer states a currency, so this row is its one home, DR-005); whether prices are before tax; how imported membranes, EDI modules and instruments, their duty and any escalation are stated ([quoting terms, imported content])",
   "Terms, payment (FD-06): milestone events and shares, deposit, holdback ([milestone structure]); counsel on the Ontario Construction Act holdback (OQ-80)",
@@ -402,6 +402,7 @@
   "Quality record retention (years); turnover package copy retention is on cmp-documentation",
   "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, certification status, organization chart, specimen NCR, CAPA and change records (Aquemi-written; redacted real records only once they exist, never from a client project without written consent: DR-004), calibration certificate and training matrix extract, and the onboarding documents. The pack FAQ offers it from [quality system ready for audit, date] (launch rule above)",
   "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)",
+  "FAQ 6 \"What should we ask any Purified Water supplier?\": the data integrity check reads \"A list of each data integrity requirement and the control that meets it\" (plain words for procurement, pass 11 review). Its home is sys-monitoring#data-integrity (\"Data integrity, clause by clause\"); the FAQ carries one link, to cmp-documentation#index. If that index link moves or the FAQ gains a second link, the data integrity check links sys-monitoring#data-integrity",
   "Change notification to clients (FAQ \"Will you sign our quality agreement?\"; DR-022 rule 4): which changes you notify (parts, materials, software the client approved), how and with what notice ([change notification to clients: scope and notice]; FD-48). Until set, the placeholder stays",
   "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)"
  ],

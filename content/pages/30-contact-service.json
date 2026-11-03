@@ -94,7 +94,7 @@
     [
      "Preventive maintenance or calibration",
      "Date within [maintenance booking reply time, working days]",
-     "Signed report; calibration certificates, instruments checked against USP <645> and <643>"
+     "Signed report; calibration certificates for instruments checked against USP <645> and <643>"
     ],
     [
      "Requalification after a change",
@@ -574,7 +574,7 @@
   "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer, dispatcher or nobody; if nobody, route 2 and the phone menu say so, with the form note's [out-of-hours form review time, hours] (buyer panel 2026-10-31).",
   "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition, here and on contact-proposal and contact-locations.",
   "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",
-  "Severity definitions (FD-27): svc-service is their home (DR-009, DR-011). This page's form offers three severities; its table row 4 is \"Preventive maintenance or calibration\" (the form's request types), so the riser-valves look no longer stamps a fourth severity (pass 10, drift audit group 3). svc-service still defines \"Severity 4: maintenance or calibration\": the owner sets one wording for both pages (three severities plus routine requests, or four); the form options keep their names so other pages' intents still match.",
+  "Severity definitions (FD-27): svc-service is their home (DR-009, DR-011). This page's form offers three severities; its table row 4 is \"Preventive maintenance or calibration\" (the form's request types), so the riser-valves look no longer stamps a fourth severity (pass 10, drift audit group 3). svc-service now matches: three severities, with maintenance and calibration as request types (pass 10 review cut its \"Severity 4\"). The owner confirms that one wording for both pages; the form options keep their names so other pages' intents still match.",
   "Call-out and hourly rates without a plan (FD-29): [call-out and hourly rates, CAD], svc-service's name.",
   "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] (contact-locations uses it too) and who receives parts orders.",
   "Reply times (FD-31): [maintenance booking reply time, working days], one time for maintenance and calibration unless you set two; [requalification support reply time, working days]; [other-builder request reply time, working days]; [parts quote turnaround, working hours].",

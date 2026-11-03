@@ -2,8 +2,8 @@
  "id": "ind-pharma",
  "section": "Industries",
  "nav_label": "Pharmaceutical",
- "title": "Pharmaceutical and natural health product water: Purified Water | Aquemi",
- "meta": "The water grade each dosage form needs for Health Canada, FDA and EU filings, and whether a natural health product line needs Purified Water. One polypropylene package; no WFI.",
+ "title": "Pharmaceutical and natural health product water | Aquemi",
+ "meta": "Water grade by dosage form for Health Canada, FDA and EU filings, and whether a natural health product line needs Purified Water. One polypropylene package; no WFI.",
  "path": "/industries/pharmaceutical/",
  "eyebrow": "PHARMACEUTICAL · NATURAL HEALTH PRODUCTS · USP · GUI-0001",
  "headline": "Water matched to your dosage forms",
@@ -383,7 +383,7 @@
    "items": [
     {
      "q": "How is water qualified for a natural health product line?",
-     "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this: [NHP qualification scope]. Installation, operational and performance qualification (IQ, OQ, PQ) where your quality assurance person asks for it.",
+     "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this: [NHP qualification scope]. Where your quality assurance person requires it, we also run installation, operational and performance qualification (IQ, OQ, PQ).",
      "link": "contact-proposal",
      "intent": "I know my product, not my water spec|Natural health products",
      "link_label": "Request a water scope review"
@@ -437,7 +437,7 @@
  },
  "todo": [
   "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
-  "Hero secondary: \"After a water observation\" (svc-upgrades#observation; DR-020, SITE-PLAN C1). \"Get a budget range\" to systems#budget once the budget bands are filled (FD-03; DR-006 allows one secondary: choose then). The sample turnover package it once offered does not exist yet (FD-47)",
+  "Hero secondary: \"Answering a water observation\" (svc-upgrades#observation; renamed in the pass 10 verification; router row 2 keeps \"After a water observation\"; DR-020, SITE-PLAN C1). \"Get a budget range\" to systems#budget once the budget bands are filled (FD-03; DR-006 allows one secondary: choose then). The sample turnover package it once offered does not exist yet (FD-47)",
   "PW as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it until the owner confirms; the grade table says only that WFI is not supplied",
   "Natural health products: confirm the segment at launch (FD-38) and whether a scope without a loop is offered for dry-dose lines (FD-20); the section stays a section, not a page (DR-017). The NHP FAQ carries [NHP qualification scope] (FD-46): the GUI-0158 evidence set Aquemi hands over (water criteria, test record templates, calibration and maintenance schedules) and whether a lighter path than IQ, OQ and PQ is offered; at launch an unset scope drops that sentence. Its link is the one door that ticks \"Natural health products\" on the form (SITE-PLAN I11)",
   "References per segment, or \"none yet\" (FD-41); a pharmaceutical or natural health product case study with a measured outcome only once a client approves it in writing (FD-42, DR-016). No reference offer or case block here before",
@@ -445,6 +445,7 @@
   "Shutdown windows (decisions, folded): duplex trains are named as a choice for the URS, with no train shares; if the owner drops duplex trains as a configuration (FD-20, FD-21), the line keeps isolable sections only. Shares stay on sys-pw and ind-cdmo under one placeholder name (DR-011)",
   "FAT practice (FAQ \"Can one system supply…\"): confirm which USP and Ph. Eur. attributes the factory acceptance test checks, and how (FD-45). The share of skids tested with water is svc-fat-sat's figure, not this page's (DR-010)",
   "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, industries#first-system and sys-storage#sanitization",
-  "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)"
+  "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)",
+  "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters"
  ]
 }

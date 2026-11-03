@@ -10,9 +10,9 @@
    "page": "sys-pretreatment",
    "slot": 3,
    "h": "Chlorine or chloramine: the removal step",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "0efa42f",
    "hash": "a4638c0982",
    "block": {
@@ -52,6 +52,56 @@
     ],
     "nav": "Chlorine or chloramine",
     "as": "router",
+    "look": "decision-valve"
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 3,
+   "h": "Chlorine or chloramine: the removal step",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "19cb29a",
+   "hash": "0f6cfde71c",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Chlorine or chloramine",
+    "anchor": "chloramine",
+    "h": "Chlorine or chloramine: the removal step",
+    "cols": [
+     "Your supply",
+     "Removal step",
+     "Removes",
+     "Watch for"
+    ],
+    "rows": [
+     [
+      "Your utility chloraminates",
+      "Catalytic carbon",
+      "Chlorine and chloramine, with less contact time",
+      "Sized at peak flow and winter temperature"
+     ],
+     [
+      "Chloramine, with a breakthrough check",
+      "Two carbon beds in series",
+      "Both; a sample point between beds",
+      "Two beds to backwash and replace"
+     ],
+     [
+      "Free chlorine only, no dosed chemicals",
+      "Granular activated carbon",
+      "Free chlorine and some organics; chloramine only slowly",
+      "Biofilm; needs regular backwash and replacement"
+     ],
+     [
+      "Little floor space, or no carbon bed",
+      "Sodium bisulfite dosing",
+      "Both, by chemical reduction, fast",
+      "Overdose feeds bacteria; verify on ORP"
+     ]
+    ],
     "look": "decision-valve"
    }
   }

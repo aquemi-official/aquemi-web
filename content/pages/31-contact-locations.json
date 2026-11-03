@@ -99,8 +99,8 @@
      "[parts email address] · [parts desk hours, time zone]"
     ]
    ],
-   "fold": 2,
-   "fold_noun": "sites",
+   "fold": 4,
+   "fold_noun": "contacts",
    "look": "site-plates",
    "art": [
     "office",
@@ -343,7 +343,7 @@
   "Shop and test bay: address ([shop address]), phone, hours, map link (shop location same as about)",
   "Shop and test bay ready for visits and witnessed FAT, and from which date ([shop and test bay ready for visits], same name as home, sys-pw, svc-fabrication, svc-fat-sat and projects; FD-44). Route 3 and the form intro both show it. Until then route 3 and the visit form are draft only; at launch they go if not ready, and the next existing check replaces them (DR-004, DR-006 rule 6)",
   "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
-  "Site drawings (DR-018): the service and parts rows draw an empty plate (no truck, no depot) until FD-28 and FD-33 confirm a service base or parts stock at an address; then set art \"service\" and \"parts\" again. The table's nav reads \"Contacts\" (pass 10 review), since a row may be home-based technicians or parts shipped from the shop, not a site (DR-018 rule 6)",
+  "Site drawings (DR-018): the service and parts rows draw an empty plate (no truck, no depot) until FD-28 and FD-33 confirm a service base or parts stock at an address; then set art \"service\" and \"parts\" again. The table's nav reads \"Contacts\" (pass 10 review), since a row may be home-based technicians or parts shipped from the shop, not a site (DR-018 rule 6). All four rows show (fold 4, pass 11): the service and parts rows answer procurement's and the maintenance lead's question (DR-024 rule 1)",
   "Parts stock locations, parts email ([parts email address], contact-service's name), parts desk hours, order cut-off and delivery commitment (FD-11, FD-31)",
   "Service coverage area (same as home, svc-service and contact-service); it travels with every severity 1 time (DR-011 rule 4)",
   "Per region (Ontario, Quebec, British Columbia, Alberta, other provinces and territories): centres served, service base or partner, stocking point, severity 1 on-site response in hours or \"visits only\" (FD-27, FD-28). Centres served sit with the time they apply to (DR-011 rule 4)",

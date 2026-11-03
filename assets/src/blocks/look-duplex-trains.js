@@ -7,13 +7,13 @@
    Below, the options as numbered cards in one band over a navy strip; pointing at or focusing a card takes the flow
    fill and lights its parts in the drawing (the sanitize card lights the train out of service).
    Fields, as options (modules): h, base, items [{t, d, spot, link}], fold, fold_noun (phones only).
-   Added: items[].part ("trains", "pumps", "tank", "sanitize", "spares", "tiein"); trains: [run word, sanitize word,
+   Added: items[].part ("trains", "pumps", "tank", "sanitize", "spares", "tiein", "loop"); trains: [run word, sanitize word,
    button label] (short drawing words, from the first option's copy). base is the loop's drawing label.
    Concept: pass 9b ind-cdmo.2 (huge stacked headline, isometric drawing of twin duplex trains in a frame, numbered
    redundancy cards in a band with one card in steel blue). */
 (function(){
 var K='aq-duplex-trains';
-var PARTS={trains:'trainA trainB',pumps:'pumpA pumpB',tank:'tank',sanitize:'off',spares:'spares',tiein:'tiein'};
+var PARTS={trains:'trainA trainB',pumps:'pumpA pumpB',tank:'tank',sanitize:'off',spares:'spares',tiein:'tiein',loop:'loop'};
 function scene(base){var o=[],lab={};
  var A=isoPart('ro',0,0,0,1,{id:'trainA'}),B=isoPart('ro',0,96,0,1,{id:'trainB'});
  var ta=A.ports.out,tb=B.ports.out,xj=ta[0]+18,yj=(ta[1]+tb[1])/2,zj=ta[2];

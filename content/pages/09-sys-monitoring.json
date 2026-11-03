@@ -281,8 +281,9 @@
   },
   {
    "type": "faq",
-   "h": "Questions quality and IT teams ask",
    "nav": "FAQ",
+   "anchor": "remote-access",
+   "h": "Questions quality and IT teams ask",
    "items": [
     {
      "q": "Can we release water on online TOC and conductivity?",
@@ -327,7 +328,7 @@
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
   "include": [
-   "Your user requirement specification (URS), or what you make and your flow",
+   "Your user requirement specification (URS); none yet? What you make",
    "Water grades and internal limits",
    "Systems to control, new or existing",
    "PLC, SCADA and historian standards",

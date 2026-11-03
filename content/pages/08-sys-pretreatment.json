@@ -121,7 +121,7 @@
     {
      "t": "Carbon bed",
      "icon": "carbon-filter",
-     "d": "Removes chlorine and chloramine, which oxidize RO membranes. Bisulfite dosing can replace it.",
+     "d": "Removes chlorine and chloramine, which oxidize RO membranes.",
      "cut": "carbon",
      "catch": {
       "g": "c",
@@ -211,6 +211,9 @@
   },
   {
    "type": "table",
+   "as": "router",
+   "nav": "Chlorine or chloramine",
+   "anchor": "chloramine",
    "h": "Chlorine or chloramine: the removal step",
    "cols": [
     "Your supply",
@@ -244,8 +247,6 @@
      "Overdose feeds bacteria; verify on ORP"
     ]
    ],
-   "nav": "Chlorine or chloramine",
-   "as": "router",
    "look": "decision-valve"
   },
   {
@@ -361,7 +362,7 @@
    "items": [
     {
      "q": "Can you replace our existing pretreatment?",
-     "a": "For [makes and equipment types serviced]: we assess the system, then replace the train; the existing pretreatment runs until cutover.",
+     "a": "We assess the system, then replace the train; the existing pretreatment runs until cutover. Makes and equipment: [makes and equipment types serviced].",
      "link": "svc-upgrades#upgrades"
     },
     {
@@ -417,7 +418,8 @@
    "Utility or well, and disinfectant",
    "Water analyses from several seasons",
    "Coldest and warmest feed, °C",
-   "Peak demand, L/h"
+   "Peak demand, L/h",
+   "Your current train and its problems, if replacing one"
   ],
   "turnaround": "[feed water review turnaround, working days]",
   "returns": [
@@ -431,7 +433,7 @@
   "Pretreatment capacity range per train, L/h of RO feed at the coldest feed ([pretreatment capacity range, L/h], hero fact; FD-20). Unfilled at launch, the fact goes (DR-010 rule 5)",
   "Budget band for the pretreatment train: [budget range, CAD] at [reference capacity, L/h], as of [month year], the systems budget row word for word (FAQ, linked to systems#budget; DR-005 rules 1 and 3; FD-03). Unfilled at launch, the cost question goes (DR-005 rule 8)",
   "Which makes and equipment types Aquemi replaces pretreatment on ([makes and equipment types serviced], FAQ; FD-30). The full answer lives on svc-upgrades. Unfilled at launch, the question goes (DR-011 rule 1)",
-  "Whether bisulfite dosing is offered instead of carbon: the diagram's carbon bed stage (\"Bisulfite dosing can replace it\"), the feed water table and the removal-step router all show it (FD-21). Pass 10: the stage is named \"Carbon bed\", as the section-train look draws a bed and has no neutral stage drawing (DR-018); the options drawing's train label matches it (DR-018 rule 5)",
+  "Whether bisulfite dosing is offered instead of carbon: the feed water table and the removal-step router show it (FD-21). Pass 11: the diagram's carbon bed stage no longer says \"Bisulfite dosing can replace it\" (it repeated the router and stated the open item in the standard train); restore it only if bisulfite is offered and the train should teach it. Pass 10: the stage is named \"Carbon bed\", as the section-train look draws a bed and has no neutral stage drawing (DR-018); the options drawing's train label matches it (DR-018 rule 5)",
   "Softener on demand is an option, not the standard scope (moved here from sys-pw). Confirm whether the online hardness analyzer at the softener outlet is standard or comes only with that option (FD-21): [hardness measurement method] (hero fact label and inlet row). Pass 10 review: until FD-21 answers, the hero fact and inlet row show the placeholder and the diagram's monitoring line names no hardness analyzer (DR-018 rule 2); if standard, fill \"Online analyzer\" and restore \"hardness\" in the monitoring line",
   "Cartridge filter rating ahead of the RO, µm (FD-21): [cartridge filter rating, µm]. Pass 10 review: the diagram stage and the options drawing's train label read \"Cartridge filter\" (one name, DR-018 rule 5) until it is set; then both may read \"[rating] µm cartridge filter\"",
   "Whether Aquemi tests SDI on site during the feed water review, and with what kit (\"on-site SDI test [confirm]\", feed water table; FD-21)",

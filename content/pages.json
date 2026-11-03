@@ -410,7 +410,7 @@
       {
        "p": "Footprint and weight",
        "v": "[typical footprint and weight, by capacity]",
-       "m": "Per capacity; on the general arrangement drawings"
+       "m": "On the general arrangement drawings"
       },
       {
        "p": "Power, feed water and drain",
@@ -512,7 +512,7 @@
      "items": [
       {
        "q": "When is polypropylene the wrong choice?",
-       "a": "When the loop must run hot. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+       "a": "When the loop needs routine 80 °C at loop pressure, hot holding or steam. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
        "link": "sys-storage#sanitization",
        "link_label": "Compare sanitization methods"
       },
@@ -695,7 +695,7 @@
        "spot": "ro-skid",
        "d": "Where needed, adds margin on conductivity, TOC and silica.",
        "label": "RO 2",
-       "optional": true
+       "optional": "Where needed"
       },
       {
        "t": "DI or EDI",
@@ -922,7 +922,7 @@
       {
        "q": "Our supply is chloraminated. What changes?",
        "a": "Pretreatment removes chloramine before the membranes. We design for the ammonia it releases together with CO₂ control.",
-       "link": "sys-pretreatment",
+       "link": "sys-pretreatment#chloramine",
        "link_label": "How pretreatment handles chloramine"
       },
       {
@@ -1519,7 +1519,7 @@
       {
        "t": "Carbon bed",
        "icon": "carbon-filter",
-       "d": "Removes chlorine and chloramine, which oxidize RO membranes. Bisulfite dosing can replace it.",
+       "d": "Removes chlorine and chloramine, which oxidize RO membranes.",
        "cut": "carbon",
        "catch": {
         "g": "c",
@@ -1609,6 +1609,9 @@
     },
     {
      "type": "table",
+     "as": "router",
+     "nav": "Chlorine or chloramine",
+     "anchor": "chloramine",
      "h": "Chlorine or chloramine: the removal step",
      "cols": [
       "Your supply",
@@ -1642,8 +1645,6 @@
        "Overdose feeds bacteria; verify on ORP"
       ]
      ],
-     "nav": "Chlorine or chloramine",
-     "as": "router",
      "look": "decision-valve"
     },
     {
@@ -1759,7 +1760,7 @@
      "items": [
       {
        "q": "Can you replace our existing pretreatment?",
-       "a": "For [makes and equipment types serviced]: we assess the system, then replace the train; the existing pretreatment runs until cutover.",
+       "a": "We assess the system, then replace the train; the existing pretreatment runs until cutover. Makes and equipment: [makes and equipment types serviced].",
        "link": "svc-upgrades#upgrades"
       },
       {
@@ -1815,7 +1816,8 @@
      "Utility or well, and disinfectant",
      "Water analyses from several seasons",
      "Coldest and warmest feed, °C",
-     "Peak demand, L/h"
+     "Peak demand, L/h",
+     "Your current train and its problems, if replacing one"
     ],
     "turnaround": "[feed water review turnaround, working days]",
     "returns": [
@@ -1829,7 +1831,7 @@
     "Pretreatment capacity range per train, L/h of RO feed at the coldest feed ([pretreatment capacity range, L/h], hero fact; FD-20). Unfilled at launch, the fact goes (DR-010 rule 5)",
     "Budget band for the pretreatment train: [budget range, CAD] at [reference capacity, L/h], as of [month year], the systems budget row word for word (FAQ, linked to systems#budget; DR-005 rules 1 and 3; FD-03). Unfilled at launch, the cost question goes (DR-005 rule 8)",
     "Which makes and equipment types Aquemi replaces pretreatment on ([makes and equipment types serviced], FAQ; FD-30). The full answer lives on svc-upgrades. Unfilled at launch, the question goes (DR-011 rule 1)",
-    "Whether bisulfite dosing is offered instead of carbon: the diagram's carbon bed stage (\"Bisulfite dosing can replace it\"), the feed water table and the removal-step router all show it (FD-21). Pass 10: the stage is named \"Carbon bed\", as the section-train look draws a bed and has no neutral stage drawing (DR-018); the options drawing's train label matches it (DR-018 rule 5)",
+    "Whether bisulfite dosing is offered instead of carbon: the feed water table and the removal-step router show it (FD-21). Pass 11: the diagram's carbon bed stage no longer says \"Bisulfite dosing can replace it\" (it repeated the router and stated the open item in the standard train); restore it only if bisulfite is offered and the train should teach it. Pass 10: the stage is named \"Carbon bed\", as the section-train look draws a bed and has no neutral stage drawing (DR-018); the options drawing's train label matches it (DR-018 rule 5)",
     "Softener on demand is an option, not the standard scope (moved here from sys-pw). Confirm whether the online hardness analyzer at the softener outlet is standard or comes only with that option (FD-21): [hardness measurement method] (hero fact label and inlet row). Pass 10 review: until FD-21 answers, the hero fact and inlet row show the placeholder and the diagram's monitoring line names no hardness analyzer (DR-018 rule 2); if standard, fill \"Online analyzer\" and restore \"hardness\" in the monitoring line",
     "Cartridge filter rating ahead of the RO, µm (FD-21): [cartridge filter rating, µm]. Pass 10 review: the diagram stage and the options drawing's train label read \"Cartridge filter\" (one name, DR-018 rule 5) until it is set; then both may read \"[rating] µm cartridge filter\"",
     "Whether Aquemi tests SDI on site during the feed water review, and with what kit (\"on-site SDI test [confirm]\", feed water table; FD-21)",
@@ -2129,8 +2131,9 @@
     },
     {
      "type": "faq",
-     "h": "Questions quality and IT teams ask",
      "nav": "FAQ",
+     "anchor": "remote-access",
+     "h": "Questions quality and IT teams ask",
      "items": [
       {
        "q": "Can we release water on online TOC and conductivity?",
@@ -2175,7 +2178,7 @@
     "link": "contact-proposal",
     "intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
     "include": [
-     "Your user requirement specification (URS), or what you make and your flow",
+     "Your user requirement specification (URS); none yet? What you make",
      "Water grades and internal limits",
      "Systems to control, new or existing",
      "PLC, SCADA and historian standards",
@@ -2657,7 +2660,8 @@
     "include": [
      "Your URS",
      "Feed water analysis, summer and winter",
-     "Points of use and peak demand, L/h"
+     "Points of use and peak demand, L/h",
+     "Bid or issue date, if specifying for a client"
     ],
     "turnaround": "[URS review turnaround, working days]",
     "returns": [
@@ -2684,7 +2688,7 @@
     "Who pays for design gaps found at DQ or IQ/OQ ([design gap warranty terms]): its home is cmp-quality's \"How buying from us works\" (FD-07, DR-005 rule 7), not this page",
     "A real design project (scope, URS lines traced, design-to-DQ duration) before adding a case study block (FD-42, DR-016)",
     "[compliance matrix response time, working days] (FAQ 4, pass 10, DR-019): same name as compliance's closing and services' router row 8 (FD-01). At launch an unset time leaves the clause (DR-006 rule 7)",
-    "FAQ 4 \"Consultant or contractor: what do we receive, and when?\" (DR-019 with the desk ruling, pass 10) answers consultants and contractors now; their open values stay in brackets: design-only work and reviews of another firm's design are FAQ 5's [design-only engagements offered, and pricing] (FD-25, FD-02), seal and file formats in FAQ 6 (FD-34, FD-10), the contractor's values on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26). Its timing mirrors the stages above (pass 10 review): basis of design at the concept hold, P&IDs and a draft functional specification at basic design, approved issues at detailed design; confirm Aquemi issues them at these holds (FD-46). Its link asks for a compliance matrix (contact-proposal option \"Compliance matrix\"), the request services' row 8 promises; the contractor's site requirements are named in the answer (\"(Systems)\") and linked from svc-fabrication's FAQ. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4)"
+    "FAQ 4 \"Consultant or contractor: what do we receive, and when?\" (DR-019 with the desk ruling, pass 10) answers consultants and contractors now; their open values stay in brackets: design-only work and reviews of another firm's design are FAQ 5's [design-only engagements offered, and pricing] (FD-25, FD-02), seal and file formats in FAQ 6 (FD-34, FD-10), the contractor's values on systems#site ([standard battery limits, typical scope], [typical footprint and weight, by capacity], [installation scope]; FD-26). Its timing mirrors the stages above (pass 10 review): basis of design at the concept hold, P&IDs and a draft functional specification at basic design, approved issues at detailed design; confirm Aquemi issues them at these holds (FD-46). Its link asks for a compliance matrix (contact-proposal option \"Compliance matrix\"), the request services' row 8 promises; the contractor's site requirements are named in the answer (\"(Systems)\") and linked from svc-fabrication's FAQ. No spec text, datasheet, typical P&ID or GA is offered until one exists (DR-019 rule 4). The closing's include \"Bid or issue date, if specifying for a client\" (pass 11, review finding 12) asks for the bid date that services' row 8 names (DR-019 rule 1); contact-proposal has no date field for it, so it arrives in the message"
    ],
    "facts": [
     {
@@ -2958,7 +2962,7 @@
     },
     {
      "type": "related",
-     "h": "Before and after fabrication",
+     "h": "Where to go next",
      "items": [
       "svc-design",
       "svc-fat-sat",
@@ -3226,7 +3230,10 @@
       },
       {
        "q": "What if a test fails while you are watching?",
-       "a": "It is recorded as found, as a deviation. We investigate, fix and retest that case and any case the fix could affect, with you witnessing."
+       "a": "It is recorded as found, as a deviation. We investigate, fix and retest that case and any case the fix could affect, with you witnessing.",
+       "link": "contact-locations#visit",
+       "link_label": "Book a pre-FAT walk-down",
+       "intent": "Pre-FAT walk-down or protocol review"
       },
       {
        "q": "Is the software we see at FAT the software that ships?",
@@ -3289,7 +3296,7 @@
     "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block. A closing proof box only with a confirmed figure (website.md closing rule; DR-011): \"0, 50, 100 % · Every analog loop checked at FAT\" went until FD-45",
     "Test instrument calibration interval and traceability (FD-32)",
     "Post-FAT drying, capping and any gas blanket used for shipment ([post-FAT drying and sealing method]; FD-45)",
-    "Pass 10, intent I7 (SITE-PLAN 4.5): \"Book a pre-FAT walk-down\" -> contact-locations#visit, intent \"Pre-FAT walk-down or protocol review\", belongs in the witnessing section, but the witness-plan look renders no link field (items [{t, d, part}], intro is plain text). Wire it when the look gains a block link (shared code), or on launch with the witnessing section; no other block here fits it"
+    "Pass 10, intent I7 (SITE-PLAN 4.5): \"Book a pre-FAT walk-down\" -> contact-locations#visit, intent \"Pre-FAT walk-down or protocol review\", belongs in the witnessing section, but the witness-plan look renders no link field (items [{t, d, part}], intro is plain text). Pass 11: it sits on FAQ 2 (\"What if a test fails while you are watching?\"), the witnessing question. Launch rule (FD-44, DR-006 rule 6): it goes with the witnessing section and the hero secondary while [shop and test bay ready for visits] is unset. Move it to the witnessing section if the look gains a block link (shared code)"
    ],
    "primary_cta_link": "cmp-documentation#samples",
    "primary_cta_intent": "FAT protocol: contents and test cases",
@@ -3636,7 +3643,7 @@
     "Material certificates verified at IQ ([PP material certificates], [certificates supplied for PVC parts]; the names compliance, cmp-quality and sys-pretreatment use; FD-17)",
     "PP loop sanitization method proven at OQ, with its contact time and residual test ([PP loop sanitization method]; FD-14, DR-013)",
     "A real qualification project (phase dates, deviations, water release date) before any case block (DR-016, FD-42)",
-    "NHP qualification scope ([NHP qualification scope]; FD-46; new in pass 10, SITE-PLAN 7): what Aquemi delivers for a natural health product site under GUI-0158 sections 45 and 46 (qualification criteria for the treated water, test record templates, calibration and maintenance SOPs for the purification system), and whether the drug IQ/OQ/PQ path is offered when the QAP asks for it. The FAQ states GUI-0158's own terms (checked against industries/natural-health-products.md, IPH-02, IPH-05, desk ruling Q9); \"dry-dose lines need only documented rinse control\" waits on FD-20 and stays off this page. At launch an unset scope drops that sentence, the rest of the answer stands",
+    "NHP qualification scope ([NHP qualification scope]; FD-46; new in pass 10, SITE-PLAN 7): what Aquemi delivers for a natural health product site under GUI-0158 sections 45 and 46 (qualification criteria for the treated water, test record templates, calibration and maintenance SOPs for the purification system). IQ/OQ/PQ is an Aquemi service (MISSION), so the FAQ's last sentence stands without FD-46. The FAQ states GUI-0158's own terms (checked against industries/natural-health-products.md, IPH-02, IPH-05, desk ruling Q9); \"dry-dose lines need only documented rinse control\" waits on FD-20 and stays off this page. At launch an unset scope drops that sentence, the rest of the answer stands",
     "Pass 10, intent I6 (SITE-PLAN 4.5): \"Request the IQ/OQ contents\" (cmp-documentation#samples, \"IQ and OQ protocol contents\") sits on the FAQ \"Can IQ and OQ be combined\" because the walkdown-pins look of \"IQ and OQ on site\" renders no link. Specimens wait on FD-47: at launch, with no specimen, the FAQ link goes (DR-006 rule 6)"
    ],
    "facts": [
@@ -3873,7 +3880,7 @@
        "part": "gen"
       },
       {
-       "t": "Ultraviolet (UV) and sanitization",
+       "t": "UV, if fitted, and sanitization",
        "d": "Lamp intensity and hours; sanitization verified at the coldest point.",
        "link": "sys-storage#sanitization",
        "spot": "uv",
@@ -4047,7 +4054,7 @@
     ]
    },
    "todo": [
-    "Plans and prices (FD-29): [tier 1 plan name], [tier 2 plan name], [tier 3 plan name]; [annual price, CAD] and [minimum term, months] per tier; [call-out and hourly rates, CAD] without a plan (contact-service uses the same name); [lowest plan price, CAD per year], the name on home, shown here in the running-cost row and the FAQ (DR-005 rule 6). Write \"fixed\" price only if FD-29 makes plans fixed-price (DR-005).",
+    "Plans and prices (FD-29): [tier 1 plan name], [tier 2 plan name], [tier 3 plan name]; [annual price, CAD] and [minimum term, months] per tier; [call-out and hourly rates, CAD] without a plan (contact-service uses the same name); [lowest plan price, CAD per year], the name on home, shown here in the running-cost row (DR-005 rule 6). Write \"fixed\" price only if FD-29 makes plans fixed-price (DR-005).",
     "Plan scope (FD-29, FD-32): [visits per year] and [calibration interval, months] per tier, separately for quality-critical and process instruments if they differ; critical spares kit terms for tiers 2 and 3 ([kit held at Aquemi or on site], [kit on site, replenished after use]); unplanned repair terms ([labour discount, %], [repair parts and labour terms]).",
     "Response model (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use, and who answers out of hours (service engineer or dispatcher); [remote response time, hours]; [severity 1 on-site response time, hours] and [severity 2 visit time] per tier (one figure on every page that shows it); where the clock stops ([response clock stop event]); the remedy for a missed time ([missed response remedy]).",
     "Severity definitions (FD-27, DR-009 row 16, DR-011 rule 3): this page is their home, now in one place, the plans intro, with three severities, as contact-service's form, word for word; routine requests (maintenance, calibration) are request types, not severities (pass 10 review cut \"Severity 4\", which contact-service's form does not offer; pass 10 cut FAQ 2, which repeated the severities; the clock's start, stop and missed-time remedy moved to the Triage step). The owner confirms one wording for both pages; contact-service's form options keep their names (the hero's urgent link ticks \"Fault now\" and severity 1, both buttons \"Service plan quote\").",
@@ -4056,7 +4063,7 @@
     "UV (FD-16, DR-013): [UV, standard or option], sys-storage's name. If UV is not in the package, drop the UV items in the running cost, calibration, visit and like-for-like blocks. Ozone stays off this page until a PP maker's written rating for dissolved and headspace ozone exists (DR-013 rule 4).",
     "Calibration (FD-32): [calibration provider and accreditation held], the name svc-cq, cmp-documentation and cmp-quality also use (DR-011 rule 2): Aquemi or a named laboratory, and its accreditation (for example ISO/IEC 17025).",
     "Plan quote and service desk (FD-02, FD-31, FD-11): [quote response time, working days], the plan quote's turnaround (services' router row uses the same name; it is not the first reply, [proposal response time, working days]), and [plan quote cost or free] beside the closing button (DR-006 rule 5); who replies to a plan quote (the closing says an engineer, DR-006 rule 7); the fault report's turnaround and whether a second Aquemi reviewer signs service reports; spares stock location, order cut-off and delivery, before any stocking claim.",
-    "Working to the client's SOPs and forms (FAQ 4, \"On request\"; contact-service's \"Whose forms do we work to?\" takes the choice) and taking each site's induction and GMP training: confirm as Aquemi practice (DR-011 rule 1). No FD row yet; nearest FD-31",
+    "Working to the client's SOPs and forms (FAQ 3, \"On request\"; contact-service's \"Whose forms do we work to?\" takes the choice) and taking each site's induction and GMP training: confirm as Aquemi practice (DR-011 rule 1). No FD row yet; nearest FD-31",
     "Other builders' systems (FD-30): [makes and equipment types serviced] (same name on services, svc-cq, svc-upgrades, sys-pretreatment, ind-cdmo, about, contact-service and contact-proposal); [parts supplied for other makes]; whether WFI stills, pure steam generators or stainless loops by others are excluded; qualification of systems Aquemi did not build stays off this page until FD-30 answers it. If none are served, the lead and FAQ drop the bracket and the FAQ answers \"No\".",
     "Proof (DR-004 class 3): a real service record (response times achieved, uptime) only with the client's written permission, before any proof or case block.",
     "Pass 10 intents (SITE-PLAN 4.5): calibration (I1) on the conductivity row of \"Instrument calibration\"; parts (I3) on FAQ 1, maintenance (I2) on the SOPs FAQ and first service on another make (I5) on the other-makers FAQ, all to contact-service#request. I2 and I3 belong to the visit and like-for-like sections, but visit-plan items and spare-sheet carry no intent; move them there if those looks gain one (shared code). Launch rule: I5 goes, with the FAQ's bracket, if FD-30 answers that no other make is served",
@@ -4664,7 +4671,7 @@
       },
       {
        "q": "Do cosmetics need Purified Water (PW)?",
-       "a": "It depends on each product’s legal class. Cosmetic-only lines follow your written specification; Health Canada encourages ISO 22716 GMP. Drug lines (a Canadian drug identification number, or US over-the-counter drug-cosmetics) need PW under drug GMP. Natural health product lines: potable water at minimum under GUI-0158; PW where your specification or a monograph calls for it.",
+       "a": "It depends on each product’s legal class. Cosmetic-only lines follow your written specification; Health Canada encourages ISO 22716 GMP. Drug lines (with a Canadian drug identification number, or sold as US over-the-counter drug-cosmetics) need PW under drug GMP. Natural health product lines: potable water at minimum under GUI-0158; PW where your specification or a monograph calls for it.",
        "link": "contact-proposal",
        "link_label": "Request a water scope review",
        "intent": "I know my product, not my water spec|Cosmetics or personal care"
@@ -4718,8 +4725,8 @@
    "id": "ind-pharma",
    "section": "Industries",
    "nav_label": "Pharmaceutical",
-   "title": "Pharmaceutical and natural health product water: Purified Water | Aquemi",
-   "meta": "The water grade each dosage form needs for Health Canada, FDA and EU filings, and whether a natural health product line needs Purified Water. One polypropylene package; no WFI.",
+   "title": "Pharmaceutical and natural health product water | Aquemi",
+   "meta": "Water grade by dosage form for Health Canada, FDA and EU filings, and whether a natural health product line needs Purified Water. One polypropylene package; no WFI.",
    "path": "/industries/pharmaceutical/",
    "eyebrow": "PHARMACEUTICAL · NATURAL HEALTH PRODUCTS · USP · GUI-0001",
    "headline": "Water matched to your dosage forms",
@@ -5099,7 +5106,7 @@
      "items": [
       {
        "q": "How is water qualified for a natural health product line?",
-       "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this: [NHP qualification scope]. Installation, operational and performance qualification (IQ, OQ, PQ) where your quality assurance person asks for it.",
+       "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this: [NHP qualification scope]. Where your quality assurance person requires it, we also run installation, operational and performance qualification (IQ, OQ, PQ).",
        "link": "contact-proposal",
        "intent": "I know my product, not my water spec|Natural health products",
        "link_label": "Request a water scope review"
@@ -5153,7 +5160,7 @@
    },
    "todo": [
     "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
-    "Hero secondary: \"After a water observation\" (svc-upgrades#observation; DR-020, SITE-PLAN C1). \"Get a budget range\" to systems#budget once the budget bands are filled (FD-03; DR-006 allows one secondary: choose then). The sample turnover package it once offered does not exist yet (FD-47)",
+    "Hero secondary: \"Answering a water observation\" (svc-upgrades#observation; renamed in the pass 10 verification; router row 2 keeps \"After a water observation\"; DR-020, SITE-PLAN C1). \"Get a budget range\" to systems#budget once the budget bands are filled (FD-03; DR-006 allows one secondary: choose then). The sample turnover package it once offered does not exist yet (FD-47)",
     "PW as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it until the owner confirms; the grade table says only that WFI is not supplied",
     "Natural health products: confirm the segment at launch (FD-38) and whether a scope without a loop is offered for dry-dose lines (FD-20); the section stays a section, not a page (DR-017). The NHP FAQ carries [NHP qualification scope] (FD-46): the GUI-0158 evidence set Aquemi hands over (water criteria, test record templates, calibration and maintenance schedules) and whether a lighter path than IQ, OQ and PQ is offered; at launch an unset scope drops that sentence. Its link is the one door that ticks \"Natural health products\" on the form (SITE-PLAN I11)",
     "References per segment, or \"none yet\" (FD-41); a pharmaceutical or natural health product case study with a measured outcome only once a client approves it in writing (FD-42, DR-016). No reference offer or case block here before",
@@ -5161,7 +5168,8 @@
     "Shutdown windows (decisions, folded): duplex trains are named as a choice for the URS, with no train shares; if the owner drops duplex trains as a configuration (FD-20, FD-21), the line keeps isolable sections only. Shares stay on sys-pw and ind-cdmo under one placeholder name (DR-011)",
     "FAT practice (FAQ \"Can one system supply…\"): confirm which USP and Ph. Eur. attributes the factory acceptance test checks, and how (FD-45). The share of skids tested with water is svc-fat-sat's figure, not this page's (DR-010)",
     "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, industries#first-system and sys-storage#sanitization",
-    "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)"
+    "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)",
+    "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters"
    ]
   },
   {
@@ -5552,7 +5560,7 @@
     "PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it",
     "Point-of-use filters or ultrafiltration at the washer inlet (explainer; FD-21, 'point-of-use UF for device rinse'): whether the package supplies them; sys-pw lists ultrafiltration after deionization as an option",
     "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (IMD-71, IMD-70, IMD-72 in the library's sources/IMD.json); the QMSR took effect on 2 February 2026 (IMD-17); re-check at each new edition",
-    "Supplier quality block (DR-022): [quality system ready for audit, date] (cmp-quality's name; FD-48), [quality agreement mark-up turnaround, working days] (FD-48) and [change notification to clients: scope and notice] (FD-48, SITE-PLAN section 7). At launch a row whose value is still a bracket drops (DR-004 class 2, DR-024 rule 6), except the quality system row: it is the first check a device QA head makes (desk Q5, DR-022), so it stays and FD-48 must set its status line before launch. Its links go to each answer's home, never a copy (DR-009): cmp-quality#certification, cmp-quality#audit (intent \"Your questionnaire, completed\"), cmp-quality (what we require from suppliers: the page top until cmp-quality anchors that table, then link the anchor), cmp-documentation#index, sys-monitoring#data-integrity, compliance#map",
+    "Supplier quality block (DR-022): [quality system ready for audit, date] (cmp-quality's name; FD-48), [quality agreement mark-up turnaround, working days] (FD-48) and [change notification to clients: scope and notice] (FD-48, SITE-PLAN section 7). At launch a row whose value is still a bracket drops (DR-004 class 2, DR-024 rule 6), except the quality system row: it is the first check a device QA head makes (desk Q5, DR-022), so it stays and FD-48 must set its status line before launch. Its links go to each answer's home, never a copy (DR-009): cmp-quality#certification, cmp-quality#audit (intent \"Your questionnaire, completed\"), cmp-quality#suppliers (what we require from suppliers), cmp-documentation#index, sys-monitoring#data-integrity, compliance#map",
     "Router (DR-020 as amended): the dose-audit row carries the cut FAQ's answer (ISO 11737-1, ISO 11137-2); the drifting row lands on svc-upgrades#observation, labelled \"Out-of-trend results\"; the supplier row names what the reader checks rather than repeating the block intro (DR-009). Anchors on this page: grades, supplier-quality",
     "Scope line (DR-021 as amended): the lead names the package only; the exclusion lives in the first FAQ (\"Do we need WFI for our final rinse?\"), worded as an envelope with DR-013 rule 1's rating and stills (DR-021 rule 5)"
    ]
@@ -5732,7 +5740,7 @@
        "spot": "loop",
        "d": "[PP loop sanitization method] in campaign gaps, residual tested before use.",
        "link": "sys-storage#sanitization",
-       "part": "tank"
+       "part": "loop"
       },
       {
        "t": "Spares on your site",
@@ -5788,7 +5796,7 @@
      "items": [
       {
        "q": "A client needs WFI, stainless or a hot-held loop. What then?",
-       "a": "We supply Purified Water (PW) in polypropylene only: no Water for Injection (WFI), pure steam or stainless steel systems. A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]. A standard requiring stainless rules out polypropylene, unless it allows exceptions.",
+       "a": "We supply Purified Water (PW) in polypropylene only: no Water for Injection (WFI), pure steam, stills or stainless steel systems. Steam, a hot-held loop or routine 80 °C at loop pressure needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]. A standard requiring stainless rules out polypropylene, unless it allows exceptions.",
        "link": "sys-storage#sanitization",
        "link_label": "Compare sanitization methods"
       },
@@ -5799,8 +5807,8 @@
       {
        "q": "Who owns the water data, us or our clients?",
        "a": "Usually you: the water system is a site utility. Each quality agreement sets what that client receives (GUI-0001 C.02.012). Per-client reports: [reporting by suite, outlet and date].",
-       "link": "sys-monitoring",
-       "link_label": "No remote access needed"
+       "link": "sys-monitoring#remote-access",
+       "link_label": "Remote access options"
       },
       {
        "q": "Can you attend our clients' audits?",
@@ -5852,19 +5860,19 @@
     "Duplex train shares ([duplex train shares offered], redundancy option 1; sys-pw's duplex option carries the same name in the same sentence; FD-20, FD-21): the share of peak demand each train covers, for example 50 % or 100 %, and whether both are offered. One wording on both pages (DR-011)",
     "Duty and standby pumps, standard or option ([duty and standby pumps, standard or option]; same name as sys-storage; FD-21)",
     "Loop sanitization method used in campaign gaps ([PP loop sanitization method]; same name as home, systems and sys-storage; FD-14). Any temperature wording follows DR-013",
-    "[whether we quote PVDF] (FAQ 4): whether Aquemi quotes a PVDF loop where a client needs a hot-held loop, or refers the buyer; same name as sys-storage and svc-upgrades (FD-15, DR-013 rule 2)",
+    "[whether we quote PVDF] (FAQ 1, with stills and DR-013 rule 2's three conditions: steam, a hot-held loop, routine 80 °C at loop pressure): whether Aquemi quotes a PVDF loop where a client needs a hot-held loop, or refers the buyer; same name as sys-storage and svc-upgrades (FD-15, DR-013 rule 2)",
     "Critical spares kit on site ([kit on site, replenished after use], redundancy option 5): svc-service's name, its plans table's tier 3 term (tier 2: [kit held at Aquemi or on site]). Which plans include an on-site kit and on what terms, one wording with svc-service (FD-11, FD-29; DR-011). At launch an unset kit drops the option (DR-004 class 2)",
     "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer step 4; FD-08). Only a figure Aquemi commits to (DR-005 rule 5)",
-    "Reporting by suite, outlet and date, and how one client's data is kept from another's ([reporting by suite, outlet and date]; audit pack intro, FAQ 2; FD-23). Align with sys-monitoring",
+    "Reporting by suite, outlet and date, and how one client's data is kept from another's ([reporting by suite, outlet and date]; audit pack intro, FAQ 3; FD-23). Align with sys-monitoring",
     "Client audit pack: part of the handover scope or an option, and whether service plans refresh its trend reports (FD-47). A specimen pack (Aquemi-written, so named until a delivered system exists), once written, becomes the hero secondary's target (DR-006 rule 6); until then the secondary jumps to the block",
     "Change package (tech transfer step 2): which documents Aquemi drafts for the change control and for each affected client (FD-46); a specimen change package once written (FD-47)",
-    "Client audit attendance: whether Aquemi attends clients' audits and inspections as the supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ 3; FD-48). At launch the question goes if unset (DR-004 class 2, DR-006 rule 6). The answer keeps its basis (clients audit the water system as part of the site) around the bracket (DR-024 as extended by the desk ruling)",
+    "Client audit attendance: whether Aquemi attends clients' audits and inspections as the supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ 4; FD-48). At launch the question goes if unset (DR-004 class 2, DR-006 rule 6). The answer keeps its basis (clients audit the water system as part of the site) around the bracket (DR-024 as extended by the desk ruling)",
     "Capability sheet and questionnaire support for CDMO business development, and whether service plans include it (FD-48). Not offered on the page until it exists",
     "References at contract manufacturers: 'none yet' until a client agrees in writing (FD-41). No reference call or case block on this page until then (DR-004, DR-016)",
     "A contract manufacturing case study with a measured outcome, published only with the client's written approval; then add a case block (FD-42, DR-016)",
     "WFI: the scope line moved from the lead to the first FAQ, worded as the scope (DR-021 as amended by the pass 10 desk ruling); its full answer is industries#faq. PW sized as feed to a client's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it",
     "Makes and equipment types assessed on other builders' systems ([makes and equipment types serviced]; FAQ 5; same name on home, services, svc-service, svc-upgrades, svc-cq, about, contact-service and contact-proposal; FD-30). The full answer lives on svc-upgrades",
-    "Redundancy: the \"Sanitize between campaigns\" card now lights the storage tank and loop side, not the train out of service, and its train clause went (FD-20 open; DR-018). Launch rule: if FD-20 says duplex trains are not offered, drop the duplex card and set the look's trains field to [] so the \"Swap trains\" control is not drawn, and cut \", duplex trains\" from router row 4",
+    "Redundancy: the \"Sanitize between campaigns\" card lights the loop; \"tank\" duplicated \"Storage autonomy\", and the train out of service would imply duplex (DR-018 rule 1). Its train clause went (FD-20 open; DR-018). Launch rule: if FD-20 says duplex trains are not offered, drop the duplex card and set the look's trains field to [] so the \"Swap trains\" control is not drawn, and cut \", duplex trains\" from router row 4",
     "Router (DR-020 as amended): rows 3 and 4 name the requirement at risk and the first answer; row 4 starts at its on-page answer (ind-cdmo#redundancy); row 5 links sys-pw. Anchors on this page: audit-pack, redundancy"
    ]
   },
@@ -6060,7 +6068,7 @@
       ],
       [
        "USP <1231> Water for pharmaceutical purposes (informational)",
-       "Microbial control: sampling plan; alert and action levels from performance qualification data",
+       "Microbial control: sampling plan; alert and action levels proposed from performance qualification data",
        "Sampling plan; alert and action level rationale",
        {
         "t": "Commissioning and qualification",
@@ -6161,7 +6169,7 @@
       ],
       [
        "Medical devices: ISO 13485:2016; FDA QMSR (21 CFR 820)",
-       "7.4 purchasing: you qualify us as a supplier. 7.5.6: our qualification reports support your validation of production processes",
+       "Supplier controls under 7.4; qualification reports for your process validation (7.5.6)",
        "Questionnaire pack from [quality system ready for audit, date]; qualification reports",
        {
         "t": "Medical devices",
@@ -6353,7 +6361,7 @@
    "path": "/compliance/documentation/",
    "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GUI-0029 · GAMP 5",
    "headline": "Every document your auditor asks for",
-   "lead": "We write each document as we design, build and test your polypropylene Purified Water package. Each line of your user requirement specification (URS) traces to proof. Device makers validate processes with them (ISO 13485:2016, 7.5.6).",
+   "lead": "We write each document as we design, build and test your polypropylene Purified Water package. Each user requirement specification (URS) line traces to its proving document. Device makers validate processes with them (ISO 13485:2016, 7.5.6).",
    "primary_cta": "Request a specimen package",
    "secondary_cta": {
     "label": "See what each document proves",
@@ -6760,7 +6768,7 @@
        "d": "[number of qualified thermoplastic welders]",
        "tag": "[welder qualification standard for thermoplastics]",
        "link": "svc-fabrication",
-       "icon": "weld"
+       "icon": "loop"
       },
       {
        "t": "Pressure equipment",
@@ -7001,7 +7009,7 @@
       },
       {
        "q": "What should we ask any Purified Water supplier?",
-       "a": "Five things make proposals comparable. The document index, with who writes and who signs each document. A factory acceptance test (FAT) that runs the system on water. The record kept for each product-contact joint. Access to audit the quality system before you order. A map from each data integrity requirement to the control that meets it.",
+       "a": "Five things make proposals comparable. The document index, with who writes and who signs each document. A factory acceptance test (FAT) that runs the system on water. The record kept for each product-contact joint. Access to audit the quality system before you order. A list of each data integrity requirement and the control that meets it.",
        "link": "cmp-documentation#index",
        "link_label": "See our document index"
       }
@@ -7054,8 +7062,8 @@
     "Joint inspector qualification for PP joints, if any",
     "Pressure equipment: certificate of authorization holder, or the certified vessel fabricator used ([pressure vessel certificate holder or certified vessel partner]; FD-24)",
     "Control panels: [panel standard] and [panel certification mark held, or field evaluation used], compliance's names (FD-24, OQ-78). The standard the certification body applies (CSA C22.2 No. 14 or No. 286) and whether UL 508A applies for US sites, in writing from the certification body before the page names one (DR-007 rule 4)",
-    "PP joining status: [number of qualified thermoplastic welders] and [welder qualification standard for thermoplastics], svc-fabrication's names (FD-18). Was \"PP joining qualification held\" and \"PP joining standard\" here",
-    "Terms block \"How buying from us works\" (anchor buying; DR-005 rule 7): kept with placeholders in the draft; at launch it ships only once proposal validity, currency, payment milestones and warranty start are decided, and any other row still unset goes (DR-005 rule 8). While it ships, the footer shows \"Buying from Aquemi\" (Footer.js, shared code); if it does not ship, the hero secondary becomes \"See the documentation package\" (cmp-documentation), and in the same commit about's hero secondary \"How buying from us works\" goes and the cmp-quality#buying links in svc-design's FAQ 6 and sys-monitoring's FAQ 4 change (DR-006 rule 6)",
+    "PP joining status: [number of qualified thermoplastic welders] and [welder qualification standard for thermoplastics], svc-fabrication's names (FD-18). Was \"PP joining qualification held\" and \"PP joining standard\" here. The item's icon is a neutral pipe run (\"loop\"), not a weld bead, while the joining method is open (pass 11 review; DR-018 rule 2, as careers); a joining icon may return once FD-18 names the method",
+    "Terms block \"How buying from us works\" (anchor buying; DR-005 rule 7): kept with placeholders in the draft; at launch it ships only once proposal validity, currency, payment milestones and warranty start are decided, and any other row still unset goes (DR-005 rule 8). While it ships, the footer shows \"Buying from Aquemi\" (Footer.js, shared code); if it does not ship, the hero secondary becomes \"See the documentation package\" (cmp-documentation), and in the same commit about's hero secondary \"How buying from us works\" goes and the cmp-quality#buying links in svc-design's FAQ 6 and sys-monitoring's FAQ 4 change (DR-006 rule 6). At launch (DR-005 rule 8: the values are filled), each \"Set in the proposal\" note beside a stated term becomes \"Unless the proposal states otherwise\" or goes, so a filled term does not read as negotiable (pass 11 review)",
     "Terms, proposal: what a proposal contains and its line items (for example equipment, installation, commissioning and qualification, documentation, training, spares) ([proposal contents and line items]); validity in days ([proposal validity, days]; FD-05)",
     "Terms, currency, tax and duty (FD-05): quoting currency for Canadian and US buyers ([quoting currency]; about no longer states a currency, so this row is its one home, DR-005); whether prices are before tax; how imported membranes, EDI modules and instruments, their duty and any escalation are stated ([quoting terms, imported content])",
     "Terms, payment (FD-06): milestone events and shares, deposit, holdback ([milestone structure]); counsel on the Ontario Construction Act holdback (OQ-80)",
@@ -7073,6 +7081,7 @@
     "Quality record retention (years); turnover package copy retention is on cmp-documentation",
     "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, certification status, organization chart, specimen NCR, CAPA and change records (Aquemi-written; redacted real records only once they exist, never from a client project without written consent: DR-004), calibration certificate and training matrix extract, and the onboarding documents. The pack FAQ offers it from [quality system ready for audit, date] (launch rule above)",
     "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)",
+    "FAQ 6 \"What should we ask any Purified Water supplier?\": the data integrity check reads \"A list of each data integrity requirement and the control that meets it\" (plain words for procurement, pass 11 review). Its home is sys-monitoring#data-integrity (\"Data integrity, clause by clause\"); the FAQ carries one link, to cmp-documentation#index. If that index link moves or the FAQ gains a second link, the data integrity check links sys-monitoring#data-integrity",
     "Change notification to clients (FAQ \"Will you sign our quality agreement?\"; DR-022 rule 4): which changes you notify (parts, materials, software the client approved), how and with what notice ([change notification to clients: scope and notice]; FD-48). Until set, the placeholder stays",
     "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)"
    ],
@@ -7270,6 +7279,7 @@
     "turnaround": "[proposal response time, working days]"
    },
    "todo": [
+    "Natural health products in the lead (FD-38; DR-017): the lead names the segments in the footer description's order (assets/src/parts/Footer.js, N2). If FD-38 drops natural health products from the launch segments, remove them from this lead and the footer together, never one alone",
     "KEY (DR-016 rule 8; FD-42): after the first delivered project is accepted and its client approves text and figures in writing, add one case record in language/register.md E13's pattern: \"[client segment, province]: [problem in plain words], [measured outcome with unit] in [weeks]\", then capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), each with method and report number; system as supplied, including [PP loop sanitization method]; timeline from order to PQ; equipment new or replaced; deviations raised and closed. The template record taken off the page in pass A is in git at aquemi-web dbee6fc (block \"The record each case study fills\"); the CaseStudy component renders it",
     "After project 1 (DR-016 rule 8): nav_label may revert; one measured hero figure may return (DR-010); a reference-call row and button only once [reference clients available, number] is 1 or more (FD-41), with [reference call lead time, working days]",
     "Launch (DR-004 class 2; DR-006 rule 6): keep each check row only once it exists, else drop it: shop visit and FAT witness ([shop and test bay ready for visits], FD-44), specimen package (FD-47), supplier audit ([quality system ready for audit, date], FD-48). A kept row loses its \"once\" or \"from\" clause. The hero and closing button becomes the first check that exists, shop visit first; until one exists, \"Talk to an engineer\" (DR-016 rule 5)",
@@ -7305,7 +7315,7 @@
    "meta": "A new Ontario company that designs and builds one Purified Water package in polypropylene with PVC pretreatment. Company facts, the people you would work with, and how to check us.",
    "path": "/company/about/",
    "eyebrow": "ABOUT AQUEMI",
-   "headline": "A new Ontario company, one Purified Water package in polypropylene",
+   "headline": "A new Ontario company, one Purified Water package in polypropylene with PVC pretreatment",
    "lead": "Built for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers. Our team: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
    "facts": [
     {
@@ -7559,7 +7569,8 @@
     "Segments in the lead (\"Built for makers of pharmaceuticals, medical devices and natural health products, and for contract manufacturers\", the footer's short form word for word, DR-011 rule 3; DR-002 order, DR-017): natural health products stay named only if FD-38 confirms them as a launch segment; the footer description and ind-pharma#nhp change in the same commit",
     "Service and spares tile (Canada block) shows a valve, not the look's default service truck, until FD-28 says how service reaches sites (vehicles and bases); then the icon may return to \"wrench\" (DR-018)",
     "Scope row envelope (DR-021 as amended by the desk Q2 ruling; DR-013 rule 1; FD-14): \"Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.\" replaced \"Ambient Purified Water only\" (FD-14: never \"ambient\" alone). Once FD-14 names the sanitization regime and its frequency, the row adds it in the same words as sys-pw and compliance",
-    "DI or EDI (FD-21): the hero drawing label reads \"Pretreatment · RO · deionization\", which covers MISSION's DI/EDI without choosing one (DR-018 rule 2; \"DI/EDI\" as a label would need DI spelled out in the reading text, DR-003). Once FD-21 says DI, EDI or both, align the label, the people intro \"membranes, electrodeionization (EDI) modules\" and the parts label \"Membranes and EDI modules\" in one commit"
+    "DI or EDI (FD-21): the hero drawing label reads \"Pretreatment · RO · deionization\", which covers MISSION's DI/EDI without choosing one (DR-018 rule 2; \"DI/EDI\" as a label would need DI spelled out in the reading text, DR-003). Once FD-21 says DI, EDI or both, align the label, the people intro \"membranes, electrodeionization (EDI) modules\" and the parts label \"Membranes and EDI modules\" in one commit",
+    "Headline names the whole package, \"one Purified Water package in polypropylene with PVC pretreatment\" (pass 11 review; DR-021 as amended by the desk Q2 ruling: on about the claim layer names the package, the exclusion sits in the scope row as an envelope). The lead has no word room (34 of 35), so the headline and the meta carry it; PVC is spelled out in the scope row"
    ],
    "figure": {
     "spots": [
@@ -7716,7 +7727,7 @@
        "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise.",
        "icons": [
         "pid",
-        "gauge",
+        "loop",
         "binder",
         "wrench"
        ]
@@ -7909,7 +7920,7 @@
     "Work permit (LMIA) policy; co-op and apprenticeship programs",
     "Privacy: [privacy notice link], contact-proposal's name, covering applicants (PIPEDA, Quebec Law 25; FD-39, counsel OQ-81); retention period for applications (months); careers inbox or applicant tracking system behind the form",
     "Legal review of the posting template against BC Pay Transparency Act and Ontario ESA rules (pay range, AI disclosure, existing-vacancy statement, no Canadian experience requirement, record retention) (OQ-87)",
-    "Practical interview icons show a gauge for the test joint, not a weld bead, while the joining method is open (FD-18; DR-018); a joining icon may return once FD-18 names the method",
+    "Practical interview icons show a neutral pipe run (\"loop\") for the test joint, not a weld bead, while the joining method is open (FD-18; DR-018). Was a gauge until the pass 11 review: beside the wrench it read as a second instrument exercise. cmp-quality's PP joining item uses the same icon; a joining icon may return on both once FD-18 names the method",
     "Hero (pass 10 review): the headline \"Build systems that pass inspection\" read as an outcome claim no delivered system backs yet (DR-016); it now names the work, as the hero drawing does. The lead dropped \"for drug and medical device plants\", which told a different who-it-is-for story from about and the footer; the segments live in their short form on about and the footer (DR-011 rule 3), and the lead budget (35 words) has no room for it. Title and meta say \"package\" or \"Purified Water\", not \"systems\" (DR-011 rule 3)"
    ],
    "facts": [
@@ -8895,7 +8906,7 @@
       [
        "Preventive maintenance or calibration",
        "Date within [maintenance booking reply time, working days]",
-       "Signed report; calibration certificates, instruments checked against USP <645> and <643>"
+       "Signed report; calibration certificates for instruments checked against USP <645> and <643>"
       ],
       [
        "Requalification after a change",
@@ -9375,7 +9386,7 @@
     "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer, dispatcher or nobody; if nobody, route 2 and the phone menu say so, with the form note's [out-of-hours form review time, hours] (buyer panel 2026-10-31).",
     "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition, here and on contact-proposal and contact-locations.",
     "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",
-    "Severity definitions (FD-27): svc-service is their home (DR-009, DR-011). This page's form offers three severities; its table row 4 is \"Preventive maintenance or calibration\" (the form's request types), so the riser-valves look no longer stamps a fourth severity (pass 10, drift audit group 3). svc-service still defines \"Severity 4: maintenance or calibration\": the owner sets one wording for both pages (three severities plus routine requests, or four); the form options keep their names so other pages' intents still match.",
+    "Severity definitions (FD-27): svc-service is their home (DR-009, DR-011). This page's form offers three severities; its table row 4 is \"Preventive maintenance or calibration\" (the form's request types), so the riser-valves look no longer stamps a fourth severity (pass 10, drift audit group 3). svc-service now matches: three severities, with maintenance and calibration as request types (pass 10 review cut its \"Severity 4\"). The owner confirms that one wording for both pages; the form options keep their names so other pages' intents still match.",
     "Call-out and hourly rates without a plan (FD-29): [call-out and hourly rates, CAD], svc-service's name.",
     "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] (contact-locations uses it too) and who receives parts orders.",
     "Reply times (FD-31): [maintenance booking reply time, working days], one time for maintenance and calibration unless you set two; [requalification support reply time, working days]; [other-builder request reply time, working days]; [parts quote turnaround, working hours].",
@@ -9505,8 +9516,8 @@
        "[parts email address] · [parts desk hours, time zone]"
       ]
      ],
-     "fold": 2,
-     "fold_noun": "sites",
+     "fold": 4,
+     "fold_noun": "contacts",
      "look": "site-plates",
      "art": [
       "office",
@@ -9749,7 +9760,7 @@
     "Shop and test bay: address ([shop address]), phone, hours, map link (shop location same as about)",
     "Shop and test bay ready for visits and witnessed FAT, and from which date ([shop and test bay ready for visits], same name as home, sys-pw, svc-fabrication, svc-fat-sat and projects; FD-44). Route 3 and the form intro both show it. Until then route 3 and the visit form are draft only; at launch they go if not ready, and the next existing check replaces them (DR-004, DR-006 rule 6)",
     "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
-    "Site drawings (DR-018): the service and parts rows draw an empty plate (no truck, no depot) until FD-28 and FD-33 confirm a service base or parts stock at an address; then set art \"service\" and \"parts\" again. The table's nav reads \"Contacts\" (pass 10 review), since a row may be home-based technicians or parts shipped from the shop, not a site (DR-018 rule 6)",
+    "Site drawings (DR-018): the service and parts rows draw an empty plate (no truck, no depot) until FD-28 and FD-33 confirm a service base or parts stock at an address; then set art \"service\" and \"parts\" again. The table's nav reads \"Contacts\" (pass 10 review), since a row may be home-based technicians or parts shipped from the shop, not a site (DR-018 rule 6). All four rows show (fold 4, pass 11): the service and parts rows answer procurement's and the maintenance lead's question (DR-024 rule 1)",
     "Parts stock locations, parts email ([parts email address], contact-service's name), parts desk hours, order cut-off and delivery commitment (FD-11, FD-31)",
     "Service coverage area (same as home, svc-service and contact-service); it travels with every severity 1 time (DR-011 rule 4)",
     "Per region (Ontario, Quebec, British Columbia, Alberta, other provinces and territories): centres served, service base or partner, stocking point, severity 1 on-site response in hours or \"visits only\" (FD-27, FD-28). Centres served sit with the time they apply to (DR-011 rule 4)",

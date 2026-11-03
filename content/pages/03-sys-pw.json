@@ -109,7 +109,7 @@
      "spot": "ro-skid",
      "d": "Where needed, adds margin on conductivity, TOC and silica.",
      "label": "RO 2",
-     "optional": true
+     "optional": "Where needed"
     },
     {
      "t": "DI or EDI",
@@ -336,7 +336,7 @@
     {
      "q": "Our supply is chloraminated. What changes?",
      "a": "Pretreatment removes chloramine before the membranes. We design for the ammonia it releases together with CO₂ control.",
-     "link": "sys-pretreatment",
+     "link": "sys-pretreatment#chloramine",
      "link_label": "How pretreatment handles chloramine"
     },
     {
