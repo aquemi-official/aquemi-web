@@ -51,7 +51,12 @@ GEMINI_USE = {
     '223': 'GhostSkid', '224': 'SkidSheet', '225': 'HeroScene', '227': 'WasherZones', '228': 'RoomLimit',
     '229': 'HeroScene', '230': 'TankGa', '232': 'ConfigCards', '233': 'HeroScene',
     # pass 12 build C: compliance hero, drawn as the compliance-matrix HeroScene
-    '234': 'HeroScene'}
+    '234': 'HeroScene',
+    # pass 12 build D: hero drawings (235, 236, 239; 246 redrawn in code) and new looks (241, 244, 248: superseded takes;
+    # 238 is ind-process's weaker take of 237's envelope, used for its phone half)
+    '235': 'Hero', '236': 'Hero', '237': 'FitEnvelope', '238': 'FitEnvelope', '239': 'Hero', '240': 'RecordTrail',
+    '242': 'ReceivingBench', '243': 'ContractFolders', '245': 'BidRoute', '246': 'Hero', '247': 'CapitalRequest',
+    '249': 'ClauseTabs', '250': 'LevellingSheet'}
 GEMINI_REFERENCE = {'58'}
 RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
 # Equipment drawings redrawn on 2026-10-31 to match the offer (polypropylene PW package: no stainless piping, no sterile

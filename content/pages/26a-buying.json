@@ -46,56 +46,66 @@
      "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid [proposal validity, days] · Lead time in weeks · Exclusions",
      "m": "Ends with every departure from your specification and its reason, or a written \"none\"",
      "link": "buying#proposal",
-     "link_label": "See the proposal lines"
+     "link_label": "See the proposal lines",
+     "part": "scope"
     },
     {
      "p": "Currency, tax and duty",
      "v": "[quoting currency] · [quoting terms, imported content]",
-     "m": "Stated on page one of each proposal"
+     "m": "Stated on page one of each proposal",
+     "part": "scope"
     },
     {
      "p": "Delivery and lead time",
      "v": "[delivery terms] · [lead time from order, weeks] · [lead time from drawing approval, weeks]",
-     "m": "Two clocks, stated separately: from your order and from approved drawings"
+     "m": "Two clocks, stated separately: from your order and from approved drawings",
+     "part": "base"
     },
     {
      "p": "Payment milestones",
      "v": "[milestone structure]",
-     "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT"
+     "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT",
+     "part": "scope"
     },
     {
      "p": "Acceptance and warranty start",
      "v": "[warranty start event]",
-     "m": "Not from shipment. One warranty text in proposal, manual and contract"
+     "m": "Not from shipment. One warranty text in proposal, manual and contract",
+     "part": "valve"
     },
     {
      "p": "What the warranty covers",
      "v": "[warranty periods: package, service work, consumables] · [warranty exclusions]",
-     "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]"
+     "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]",
+     "part": "ro"
     },
     {
      "p": "Drawings and code",
      "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
-     "m": "What you may change and copy, in writing"
+     "m": "What you may change and copy, in writing",
+     "part": "panel"
     },
     {
      "p": "Your contract form",
      "v": "[contract form positions]",
-     "m": "Any clause we cannot accept is listed once in our proposal, with the reason"
+     "m": "Any clause we cannot accept is listed once in our proposal, with the reason",
+     "part": "scope"
     },
     {
      "p": "Changes after order",
      "v": "A signed change request before work starts [confirm]",
      "m": "Price, schedule effect and payment on one page",
      "link": "project-plan#changes",
-     "link_label": "See how changes work"
+     "link_label": "See how changes work",
+     "part": "option"
     },
     {
      "p": "Non-disclosure agreement",
-     "v": "[NDA turnaround, working days] from receipt"
+     "v": "[NDA turnaround, working days] from receipt",
+     "part": "scope"
     }
    ],
-   "look": "terms-sheet"
+   "look": "clause-tabs"
   },
   {
    "type": "table",
@@ -271,7 +281,7 @@
      }
     ]
    ],
-   "look": "reader-split"
+   "look": "levelling-sheet"
   },
   {
    "type": "spec",

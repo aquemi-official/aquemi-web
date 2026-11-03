@@ -1,0 +1,68 @@
+{
+ "look": "receiving-bench",
+ "component": "ReceivingBench",
+ "type": "table",
+ "fields": "as a table: facts [{k, v}] (the standing rule, shown as one line over the rows), cols [supply, what we require, how we verify it], rows (cells strings or {t, link}; up to five drawn supplies, in this order), fold, fold_noun (phones only). The circle labels come from the page's own words: \"Lot marking\" and \"Certificate\".",
+ "best_for": "ReceivingBench sets supplier control as a receiving bench: an isometric bench with the supplies the block lists, each tagged with its row number, and a magnifier pair that joins the pipe's lot marking to the certificate's lot line.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-quality",
+   "slot": 3,
+   "h": "What we require from suppliers",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "7f6820b",
+   "hash": "05df88d5b5",
+   "block": {
+    "type": "table",
+    "nav": "Suppliers",
+    "h": "What we require from suppliers",
+    "intro": "An open corrective action (CAPA) on a supplier stops new orders to it [confirm].",
+    "facts": [
+     {
+      "k": "Supplier review",
+      "v": "Reviewed every [supplier review interval, months]"
+     }
+    ],
+    "cols": [
+     "Supply",
+     "What we require",
+     "How we verify it"
+    ],
+    "rows": [
+     [
+      "Polypropylene (PP) pipe, fittings and valves",
+      "PP to [PP piping standard], [PP material certificates] per lot",
+      "Lot marking checked against the certificate at receipt"
+     ],
+     [
+      "Elastomers and gaskets",
+      "[elastomer certificates per compound]",
+      "Compound and grade checked; like-for-like replacement only"
+     ],
+     [
+      "Pretreatment piping",
+      "Polyvinyl chloride (PVC) to [PVC pipe standard and schedule], [certificates supplied for PVC parts]",
+      "Markings checked against the order at receipt"
+     ],
+     [
+      "Membranes, electrodeionization (EDI) modules and resin",
+      "Manufacturer's certificates with serial or lot numbers",
+      "Serial and lot numbers recorded at receipt and installation"
+     ],
+     [
+      "Pressure vessels and panels",
+      "[pressure-rated items in the PW package] with a Canadian registration number (CRN) under CSA B51; panels to [panel standard]",
+      "Data reports reviewed; panel label checked"
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "supply categories",
+    "look": "receiving-bench",
+    "anchor": "suppliers"
+   }
+  }
+ ]
+}

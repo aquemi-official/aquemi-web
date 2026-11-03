@@ -72,7 +72,7 @@
    ],
    "fold": 3,
    "fold_noun": "processes",
-   "look": "record-sheet"
+   "look": "record-trail"
   },
   {
    "type": "grid",
@@ -201,7 +201,7 @@
    ],
    "fold": 2,
    "fold_noun": "supply categories",
-   "look": "marking-match",
+   "look": "receiving-bench",
    "anchor": "suppliers"
   },
   {
@@ -229,7 +229,7 @@
      "m": "Each marked held, on request or in the questionnaire pack."
     }
    ],
-   "look": "terms-sheet"
+   "look": "contract-folders"
   },
   {
    "type": "table",
@@ -456,6 +456,7 @@
   "Pass 12 FAQ \"Can we audit you before we order?\" opens with \"Yes.\" (SITE-PLAN 1.4: answers open with yes, no or the number): true only while the launch gate holds; if the audit route is hidden, the FAQ goes with it"
  ],
  "figure": {
+  "art": "cmp-quality",
   "plate": "stamp",
   "label": "Recorded",
   "title": "Shipment record",

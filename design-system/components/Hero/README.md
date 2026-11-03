@@ -26,6 +26,7 @@ What changed for every hero, calm enough to open all 27 pages:
 | `sys-*`, `svc-*`, `ind-*` without a drawing | Photograph placeholder | `aq-hero__grid` |
 | Pages without a drawing that set `figure` (compliance, cmp-*, about, careers, news, contact-*) | Drawn figure: spots cluster, binder, stamp or route | `aq-hero__grid--figure aq-hero__grid--drawn` |
 | Hub pages that set `figure.look` (systems, services, first-system, projects) | Drawn scene (HeroScene): an isometric scene with numbered tags and its key | `aq-hero__grid--figure aq-hero__grid--scene` |
+| Pages without an `ART` drawing that set `figure.art` (cmp-quality, project-plan) | Hero drawing: a line drawing like the equipment figure, no callouts | `aq-hero__grid--figure` + `aq-hero__figure--drawing` |
 | Hub and company pages (everything else) | Section index | `aq-hero__grid--index` |
 
 `wHero` in `assets/src/parts/Hero.js` picks the variant from the page id; content files need no extra fields (except `hero_index: false` and the opt-in `index`, below).
@@ -40,6 +41,32 @@ The equipment drawing large beside the headline, its key facts as quiet callouts
 - Phones (pass 12, S15/S16): the drawing comes first, at the full gutter width, in a box of the drawing's own ratio (`ART_R` in `Hero.js`, never taller than 5:4, so a wide drawing leaves no empty band). No leaders: numbered pins (`aq-hero__pin`, `surface` with a 1.5 px `flow` ring, mono numeral) sit on the drawing at the leaders' anchors, and the callouts follow as stacked rows: the pin's number, the label at 14 px, the value in mono 18/26. The `aq-hero__leaders--narrow` SVG stays in the markup but is not shown. A system page's box may go down to square (`heroBoxR`), so a near-square drawing also runs the full width (S9). Pins take `HERO_AT_P[page]` where the generic `HERO_AT` slot would mark the wrong part (sys-storage: dead leg on a branch valve, storage tank on the tank; sys-pw: skid outlet on the outlet pipe; sys-pretreatment: SDI at the RO-side connections), placed in the drawing's own square box (`heroPins`); the desktop leaders keep `HERO_AT`. Desktop: a hero--mist whose top callout label itself carries a placeholder (sys-pretreatment) gets `space-16` more top padding so the stacked label is not clipped by the hero's edge. Headline as every other hero on phones.
 - **Adding a drawing**: put the mask in `assets/illustrations/<page id>.png` (see Illustration), run `python tools/images.py`, then add one line to `ART` in `assets/src/parts/Hero.js` (the text is the drawing's `aria-label`, naming only what is drawn, in the site's Canadian spelling) and its width / height ratio to `ART_R`. Then `python tools/design_system.py build`.
 - Pages listed today: every `sys-*`, `svc-*` and `ind-*` page. Pass 12 added `ind-personal-care` (gallery 197), `ind-hospital-lab` (206, the plant-room floor outlines kept as the cue that the loop rises to the floor above) and `ind-process` (214), made with `tools/line_art.py`; the concept images' wording never reaches the page.
+
+## Hero drawing (opt-in hero field `figure.art`, pass 12 round D)
+
+`"figure": {"art": "cmp-quality"}`: a page that is not an equipment page takes a line drawing as its hero, rendered as
+the equipment figure (same Illustration mask in `ink-muted`, `ink` in dark, the `flow` scan line, no callouts or pins).
+The drawing is `assets/illustrations/<id>.png` (+ `.webp`), its `aria-label` in `HERO_ART` in `Hero.js` and its ratio
+in `ART_R`. It is kept out of `ART` on purpose: related cards, project-run and the other `ART` readers keep their own
+drawing for these pages. `art` wins over any other figure fields, which stay so the page can switch back (cmp-quality
+keeps its stamp plate fields, project-plan its route plate fields; `wHero` skips the drawn figure while `art` is set).
+The stamp, route and other figure kinds stay in the library for any page that sets them.
+- On today: `cmp-quality` (audit table: quality manual, nonconformance register, a pipe length with a fused joint, a
+  shipment record; Gemini 239) and `project-plan` (schedule board: nine stage bars stepping down a ruled sheet, a hold
+  diamond at each start, the package (a flat-bottom tank on its plinth beside a small frame) on a pallet at FAT, a
+  truck at shipping, the handover binder after PQ; redrawn in code from Gemini 246, which baked the stage names into
+  its bars). The pallet and the truck sit in the open field past the next row's bar, tied to their own bar by a dashed
+  hairline, so no object crosses the staircase.
+- Desktop: `aq-hero__figure--drawing` insets the drawing 2 % 4 % (not 10 %), so a near-square drawing holds its half
+  of the hero.
+- Phone: the box takes the drawing's own ratio at the full gutter width (`heroBoxR` allows down to square for these,
+  as for `sys-*` and for `ART_FULL` pages: svc-upgrades), so there is no band above or below. cmp-quality crops to the
+  table top on small phones (to 560 px: mask 139 % at 46 % 26 %, box 1.31) so the four records read at about 1.4x;
+  from 561 px the whole table shows.
+- Tablet (561 to 860 px): the drawing figure is at most 600 px wide and centred, so a near-square drawing does not
+  make the hero 1,100 px tall.
+- New drawings follow the PP drawing rules (BUILD-PLAN-C §0) and the stroke weight of the other masks (about 2 px at
+  900 px; `tools/line_art.py` output).
 
 ## Drawn scene (opt-in hero field `figure.look`, pass 12 round B)
 
@@ -116,7 +143,7 @@ The hero must fit about 1.5 phone screens including its facts, and the primary b
 
 ## Motion
 
-`motion.js`: one timeline, cause before effect. The headline lines rise out of their mask while the eyebrow decodes, the lead and actions follow; then the right-hand part builds the way it would be drawn: the equipment drawing prints up behind the flow scan line and each leader grows out of its anchor to its callout; the index rail is laid down the left, each row's tee and node seat as it passes and the row slides off the tee, then the water runs down the rail once; the home loop draws and four flow dots travel it once; drawn figures build piece by piece. Under 5 s; nothing under reduced motion; a re-render that only opened the phone menu keeps the hero still. Phones (pass 12): the equipment figure's pins pop onto the drawing in order and the callout rows follow; the home loop animates whichever drawing is showing (the side-on one on phones, its flow dots run inside its rotated group), then its pins and legend rows land.
+`motion.js`: one timeline, cause before effect. The headline lines rise out of their mask while the eyebrow decodes, the lead and actions follow; then the right-hand part builds the way it would be drawn: the equipment drawing prints up behind the flow scan line (a hero drawing set with `figure.art` prints top-down instead, so the project-plan schedule fills in stage order) and each leader grows out of its anchor to its callout; the index rail is laid down the left, each row's tee and node seat as it passes and the row slides off the tee, then the water runs down the rail once; the home loop draws and four flow dots travel it once; drawn figures build piece by piece. Under 5 s; nothing under reduced motion; a re-render that only opened the phone menu keeps the hero still. Phones (pass 12): the equipment figure's pins pop onto the drawing in order and the callout rows follow; the home loop animates whichever drawing is showing (the side-on one on phones, its flow dots run inside its rotated group), then its pins and legend rows land.
 
 ## Flow mist ground
 

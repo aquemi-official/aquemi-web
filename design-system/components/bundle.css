@@ -1812,6 +1812,86 @@ a.aq-menu__call:hover { text-decoration: underline; text-underline-offset: 4px; 
   background: linear-gradient(to left, var(--bl-beam, var(--flow)), var(--flow), transparent); }
 .is-pkg .aq-battery-limit__light { --bl-beam: var(--on-navy); }
 
+/* ---------- BidRoute: one route through numbered stations, one per row, the rows as cards under their stations ---------- */
+/* Desktop: the route runs the full width (a twin-wall pipe, the water its centre line) with one pictogram per row; a
+   drop leaves each station and turns into its card's number. Cards sit in as many columns as rows. Up to 1100 px and
+   on phones: the route becomes a riser down the left, each row beside its number with its own pictogram. */
+.aq-bid-route { margin-top: var(--space-6); }
+.aq-bid-route__fig { position: relative; }
+.aq-bid-route__svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* line art: one weight, ground-filled so what stands in front hides the route */
+.aq-bid-route__w { fill: none; stroke: var(--line-strong); stroke-width: 13; }
+.aq-bid-route__g { fill: none; stroke: var(--surface); stroke-width: 10; }
+.aq-bid-route__h2o { fill: none; stroke: var(--flow); stroke-width: 2; }
+.aq-bid-route__eq { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-bid-route__pa { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__nv { fill: var(--action); stroke: var(--action); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-bid-route__ln, .aq-bid-route__wl { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__th { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__mk { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__gr { fill: var(--surface); stroke: none; }
+.aq-bid-route__drop { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-bid-route__st { transition: translate 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-bid-route__st.is-hot { translate: 0 -4px; }
+/* the pinch is part of the route: it lights in place, so its throat never lifts off the pipe */
+.aq-bid-route__st.is-pinch.is-hot { translate: none; }
+.aq-bid-route__drop.is-hot { stroke: var(--flow); }
+.aq-bid-route__ring { fill: var(--surface); stroke: var(--flow); stroke-width: 2; }
+.aq-bid-route__st.is-hot .aq-bid-route__eq, .aq-bid-route__st.is-hot .aq-bid-route__pa, .aq-bid-route__st.is-hot .aq-bid-route__ln, .aq-bid-route__st.is-hot .aq-bid-route__th,
+.aq-bid-route__st.is-hot .aq-bid-route__wl { stroke: var(--flow); }
+
+/* the cards, one column per station, each opening on its number where its drop lands */
+.aq-bid-route__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); grid-template-rows: repeat(4, auto); }
+/* each card spans the row's four lines (number, practice, effect, use it for) on a subgrid, so the "Use it for" rules
+   line up across all six cards */
+.aq-bid-route__card { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: var(--space-2); align-content: start; padding: 0 var(--space-3) 0 var(--space-3); color: var(--ink); }
+.aq-bid-route__no { align-self: start; justify-self: start; display: grid; place-items: center; width: 28px; height: 28px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--line-strong);
+  background: var(--surface); font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-bid-route__card.is-hot .aq-bid-route__no { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-bid-route__mini { display: none; }
+.aq-bid-route__t { margin: var(--space-1) 0 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; text-wrap: balance; }
+.aq-bid-route__e { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-bid-route__u { align-self: start; margin: var(--space-1) 0 0; padding-top: var(--space-2); border-top: 1px solid var(--line); font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-bid-route__k { display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-bid-route__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* up to 1100 px and phones: a riser down the left; each row beside its number, its pictogram at the right of its title */
+@container (max-width: 1100px) {
+  .aq-bid-route__fig { display: none; }
+  .aq-bid-route__cards { position: relative; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: var(--space-6); max-width: 720px; padding-left: 44px; }
+  /* the riser: the same twin-wall pipe, standing, its water the centre line */
+  .aq-bid-route__cards::before { content: ""; position: absolute; left: 7px; top: var(--space-3); bottom: var(--space-3); width: 13px; box-sizing: border-box;
+    border-inline: 1.5px solid var(--line-strong); background: linear-gradient(90deg, transparent 4.5px, var(--flow) 4.5px, var(--flow) 6.5px, transparent 6.5px); }
+  .aq-bid-route__card { position: relative; display: block; grid-row: auto; padding: 0; }
+  .aq-bid-route__no { position: absolute; left: -44px; top: 0; }
+  .aq-bid-route__mini { display: block; float: right; width: 88px; margin: 0 0 var(--space-1) var(--space-3); }
+  .aq-bid-route__mini svg { display: block; width: 100%; height: auto; }
+  .aq-bid-route__t { margin: 0 0 var(--space-2); padding-top: 2px; }
+  .aq-bid-route__e { margin-bottom: var(--space-2); }
+}
+@container (max-width: 860px) {
+  .aq-bid-route__cards { row-gap: var(--space-6); }
+  .aq-bid-route__mini { width: 76px; }
+  .aq-bid-route__e { margin-bottom: var(--space-1); }
+  .aq-bid-route__u { padding-top: var(--space-1); border-top: 0; }
+  .aq-bid-route__u .aq-bid-route__k { display: inline; margin-right: var(--space-2); }
+  .aq-bid-route__t { font-size: 16px; line-height: 22px; }
+  .aq-bid-route__e, .aq-bid-route__u { font-size: var(--aq-read-phone); line-height: 21px; }
+}
+/* 561-1100 px: the pictogram in a column at the left of the text, next to its row, not floated to the far edge */
+@container (min-width: 561px) and (max-width: 1100px) {
+  .aq-bid-route__card { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); grid-template-rows: none; column-gap: var(--space-4); align-content: start; }
+  .aq-bid-route__mini { float: none; grid-column: 1; grid-row: 1 / span 3; align-self: start; width: var(--space-24); margin: 0; }
+  .aq-bid-route__t, .aq-bid-route__e, .aq-bid-route__u { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-bid-route__st, .aq-bid-route__drop, .aq-bid-route__no { transition: none; }
+}
+.aq-bid-route-sec { overflow: clip; }
+.aq-bid-route__run { pointer-events: none; }
+
 /* ---------- BinderSpines: an evidence table as ring binders standing on the QA shelf, one per inspector ---------- */
 .aq-binder-spines-sec { position: relative; }
 .aq-binder-spines { position: relative; margin-top: var(--space-8); }
@@ -2392,6 +2472,123 @@ a.aq-binder-spines__go:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-capa-ring__node.is-pk-active .aq-capa-ring__no { fill: var(--navy); }
   .aq-capa-ring__node.is-done .aq-capa-ring__dot { fill: color-mix(in srgb, var(--flow) 35%, var(--navy)); }
   .aq-capa-ring__step.is-pk-active .aq-capa-ring__n { color: var(--fl, var(--flow)); }
+}
+
+/* ---------- CapitalRequest: the reasons as a filled-in capital request form (look "capital-request", pass 12 D,
+   concept 247). One flat paper sheet (data-theme="light", so the paper stays paper in the dark theme) with a folded
+   top-right corner; a sheet title over a rule; numbered fields (boxed number, label, typed text, field line, an
+   "Attach" link with a paperclip). References stand as mono boxes in the left margin beside their field. Ink is ink
+   and line-strong; flow marks only the Attach links and the caret. ---------- */
+.aq-capital-request-sec { position: relative; }
+.aq-capital-request {
+  --cr-margin: var(--space-32);
+  --cr-fold: calc(var(--space-8) + var(--space-2));
+  --cr-pad: var(--space-12);
+  --cr-num: calc(var(--space-8) + var(--space-3));
+  padding-left: var(--cr-margin, var(--space-32));
+}
+.aq-capital-request__sheet {
+  position: relative; isolation: isolate; max-width: calc(var(--space-32) * 7);
+  padding: var(--space-8) var(--cr-pad, var(--space-12)) var(--space-8) var(--cr-pad, var(--space-12)); color: var(--ink);
+}
+/* the paper is its own layer, so the corner can be cut without clipping the margin codes */
+.aq-capital-request__sheet::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--surface-raised); border: 1px solid var(--line-strong);
+  clip-path: polygon(0 0, calc(100% - var(--cr-fold, var(--space-8))) 0, 100% var(--cr-fold, var(--space-8)), 100% 100%, 0 100%);
+}
+/* the folded corner: the flap (the sheet's back) and its crease, drawn over the clipped corner */
+.aq-capital-request__fold {
+  position: absolute; top: 0; right: 0; width: var(--cr-fold, var(--space-8)); height: var(--cr-fold, var(--space-8)); overflow: visible; display: block;
+}
+.aq-capital-request__flap { fill: var(--surface-sunken); stroke: var(--line-strong); stroke-width: 1; stroke-linejoin: miter; vector-effect: non-scaling-stroke; }
+.aq-capital-request__crease { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.aq-capital-request__title {
+  margin: 0 var(--cr-fold, var(--space-8)) 0 0; padding-bottom: var(--space-4); border-bottom: 1px solid var(--line-strong);
+  font: 300 24px/32px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); max-width: none;
+}
+
+.aq-capital-request__fields {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8);
+  margin: 0; padding: 0; list-style: none;
+}
+.aq-capital-request__field {
+  position: relative; grid-column: 1 / -1;
+  display: grid; grid-template-columns: var(--cr-num, var(--space-8)) minmax(0, 1fr); grid-template-rows: auto auto auto 1fr;
+  column-gap: var(--space-4); padding: var(--space-6) 0 calc(var(--space-2) + 1px);
+}
+.aq-capital-request__field.is-half { grid-column: auto; }
+
+.aq-capital-request__n {
+  grid-column: 1; grid-row: 1; align-self: center;
+  display: flex; align-items: center; justify-content: center; width: var(--cr-num, var(--space-8)); height: calc(var(--space-8) + var(--space-1));
+  border: 1px solid var(--line-strong); font: 400 14px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.aq-capital-request__t {
+  grid-column: 2; grid-row: 1; align-self: center; position: relative; justify-self: start;
+  margin: 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.005em; color: var(--ink);
+}
+.aq-capital-request__type { display: inline-block; }
+.aq-capital-request__caret {
+  position: absolute; left: 0; top: 50%; width: 2px; height: 1.05em; margin-top: -0.525em; background: var(--flow); display: none; pointer-events: none;
+}
+.aq-capital-request__d {
+  grid-column: 2; grid-row: 3; margin: var(--space-3) 0 0; max-width: 68ch;
+  font: 400 15px/23px var(--font-sans); color: var(--ink);
+}
+.aq-capital-request__attach {
+  grid-column: 2; grid-row: 4; align-self: end; justify-self: end; display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: var(--aq-hit); margin-top: var(--space-1); padding: 0 0 0 var(--space-3);
+  font: 400 14px/20px var(--font-sans); color: var(--flow); text-decoration: none;
+}
+.aq-capital-request__clip { width: var(--space-4); height: var(--space-4); fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; transition: transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-capital-request__attach:hover { color: var(--action-hover); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.aq-capital-request__attach:hover .aq-capital-request__clip { transform: rotate(-12deg); }
+.aq-capital-request__attach:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-capital-request__sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.aq-capital-request__rule { position: absolute; left: 0; right: 0; bottom: 0; display: block; height: 1px; background: var(--line-strong); transform-origin: 0 50%; }
+.aq-capital-request__field:not(:has(.aq-capital-request__attach)) { padding-bottom: var(--space-6); }
+
+/* references in the margin, beside their field's label */
+.aq-capital-request__codes {
+  position: absolute; top: var(--space-6); right: calc(100% + var(--cr-pad, var(--space-12)) + var(--space-4));
+  display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-1); margin: 0; padding: 0; list-style: none;
+}
+.aq-capital-request__code {
+  display: block; padding: calc(var(--space-1) / 2) var(--space-2); border: 1px solid var(--line-strong); background: var(--surface-raised);
+  font: 400 13px/18px var(--font-mono); letter-spacing: 0.02em; color: var(--ink); white-space: nowrap;
+}
+
+/* wide sheets: on full-width fields Attach sits at the right of the text's last line (concept 247), not on a row of
+   its own; phones and the half fields keep it on its own row */
+@container (min-width: 861px) {
+  .aq-capital-request__field:not(.is-half) { grid-template-columns: var(--cr-num, var(--space-8)) minmax(0, 1fr) auto; }
+  .aq-capital-request__field:not(.is-half) .aq-capital-request__attach { grid-column: 3; grid-row: 3; margin-top: 0; }
+}
+
+@container (max-width: 1100px) {
+  .aq-capital-request { --cr-margin: calc(var(--space-24) + var(--space-4)); --cr-pad: var(--space-8); }
+}
+
+@container (max-width: 860px) {
+  /* phones and narrow tablets: the same form one column wide; the references come in from the margin and sit
+     inline under their field's label as a row of mono boxes */
+  .aq-capital-request { --cr-margin: 0; --cr-pad: var(--space-6); --cr-fold: var(--space-8); --cr-num: var(--space-8); }
+  .aq-capital-request__sheet { padding-top: var(--space-6); padding-bottom: var(--space-6); max-width: none; }
+  .aq-capital-request__title { font-size: 22px; line-height: 28px; }
+  .aq-capital-request__field { column-gap: var(--space-3); padding-top: var(--space-6); }
+  .aq-capital-request__n { height: var(--space-8); }
+  .aq-capital-request__t { font-size: 18px; line-height: 24px; }
+  .aq-capital-request__codes { position: static; grid-column: 2; grid-row: 2; flex-direction: row; flex-wrap: wrap; align-items: center; margin: var(--space-3) 0 var(--space-1); }
+  .aq-capital-request__code { font-size: 14px; line-height: 20px; }
+  .aq-capital-request__d { font-size: 15px; line-height: 23px; }
+}
+@container (max-width: 600px) {
+  .aq-capital-request { --cr-pad: var(--space-4); }
+  .aq-capital-request__fields { grid-template-columns: minmax(0, 1fr); }
+  .aq-capital-request__field.is-half { grid-column: 1 / -1; }
+  .aq-capital-request__title { font-size: 20px; line-height: 26px; }
+  .aq-capital-request__kind { display: block; }
 }
 
 /* ---------- CaseStudy: facts beside one large measured-outcome figure ---------- */
@@ -3028,6 +3225,135 @@ a.aq-checker-router__go:focus-visible { outline: 2px solid var(--focus); outline
 /* verify V8: a rail with one chip draws a straight connector; a 1 px non-scaling stroke at a half-pixel y rendered it
    speckled (it read as dashed beside the curves), so straight ones snap to the pixel grid. */
 @container (max-width: 860px) { .aq-clause-crosswalk__mini path.is-straight { shape-rendering: crispEdges; } }
+
+/* ---------- ClauseTabs: the terms as proposal page one on a clipboard, a numbered tab per clause on the page's edge,
+   leaders from the tabs to what each clause governs on a small IsoKit PP package (look "clause-tabs", pass 12 D).
+   The board is sunken ground with a navy clip; the page is raised paper; tabs, tags and leaders are hairline until a
+   clause is pointed at or focused, then that one turns flow. ---------- */
+.aq-clause-tabs-sec { position: relative; overflow-x: clip; }
+.aq-clause-tabs { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: var(--space-16); align-items: center; }
+
+/* the clipboard: board, clip with its ring, the page on it */
+.aq-clause-tabs__board { position: relative; min-width: 0; padding: var(--space-12) var(--space-3) var(--space-3); background: var(--surface-sunken); border: 1px solid var(--line-strong); border-radius: var(--radius-md); }
+.aq-clause-tabs__clip { position: absolute; z-index: 1; top: var(--space-3); left: 50%; width: calc(var(--space-32) + var(--space-8)); height: var(--space-12); transform: translateX(-50%); background: var(--navy); border-radius: var(--radius-md) var(--radius-md) var(--radius-sm) var(--radius-sm); }
+.aq-clause-tabs__clip::after { content: ""; position: absolute; left: 50%; top: var(--space-2); width: var(--space-4); height: var(--space-4); transform: translateX(-50%); border-radius: var(--radius-pill); background: var(--surface-sunken); }
+.aq-clause-tabs__page { position: relative; padding: var(--space-8) var(--space-8) var(--space-6); background: var(--surface-raised); box-shadow: var(--shadow-overlay); }
+.aq-clause-tabs__head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--space-6); margin: 0; padding-bottom: var(--space-2); border-bottom: 1.5px solid var(--ink); }
+.aq-clause-tabs__head span { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+.aq-clause-tabs__list { list-style: none; margin: 0; padding: 0; }
+.aq-clause-tabs__row { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto 1fr; column-gap: var(--space-6); padding: var(--space-4) 0; border-bottom: 1px solid var(--line); }
+.aq-clause-tabs__row:last-child { border-bottom: 0; }
+.aq-clause-tabs__t { grid-column: 1; grid-row: 1; margin: 0; font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; transition: color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-clause-tabs__n { display: none; }
+.aq-clause-tabs__ours { grid-column: 2; grid-row: 1 / span 2; min-width: 0; }
+.aq-clause-tabs__body { grid-column: 1; grid-row: 2; min-width: 0; }
+.aq-clause-tabs__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-clause-tabs__v { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-clause-tabs__v li { position: relative; padding-left: var(--space-4); font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-clause-tabs__v li::before { content: ""; position: absolute; left: 0; top: calc(var(--space-3) - 1px); width: var(--space-2); border-top: 1.5px solid var(--flow); }
+.aq-clause-tabs__m { margin: var(--space-2) 0 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-clause-tabs__go { margin: var(--space-2) 0 0; font: 400 14px/21px var(--font-sans); }
+
+/* the tab: a numbered index tab standing out of the page's right edge, level with its clause */
+.aq-clause-tabs__tab { position: absolute; z-index: 1; top: var(--space-4); left: calc(100% + var(--space-8)); display: flex; align-items: center; justify-content: center; width: var(--space-12); height: calc(var(--space-6) + var(--space-1)); box-sizing: border-box;
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-left: 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font: 500 13px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted);
+  transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1), color 150ms cubic-bezier(0.2, 0, 0, 1), border-color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-clause-tabs__row.is-on .aq-clause-tabs__tab { background: var(--flow); border-color: var(--flow); color: var(--surface-raised); }
+.aq-clause-tabs__row.is-on .aq-clause-tabs__t { color: var(--flow); }
+
+/* the drawing: tags sit on the parts; leaders run over the drawing, tags over the leaders */
+.aq-clause-tabs__fig { position: relative; min-width: 0; }
+.aq-clause-tabs__sheet { position: relative; }
+.aq-clause-tabs__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-clause-tabs__dash { stroke-dasharray: 5 4; }
+.aq-clause-tabs__ghost .aq-iso__eq, .aq-clause-tabs__ghost .aq-iso__thin, .aq-clause-tabs__ghost .aq-iso__ln, .aq-clause-tabs__ghost .aq-iso__acc { stroke-dasharray: 3 3; }
+.aq-clause-tabs__svg .is-hot .aq-iso__eq, .aq-clause-tabs__svg .is-hot .aq-iso__ln, .aq-clause-tabs__svg .is-hot .aq-iso__thin, .aq-clause-tabs__svg .is-hot .aq-iso__pipe-wall { stroke: var(--flow); }
+.aq-clause-tabs__svg .is-hot .aq-clause-tabs__dash { stroke-width: 1.5; }
+.aq-clause-tabs__tag { position: absolute; z-index: 3; display: flex; align-items: center; justify-content: center; min-width: calc(var(--space-6) + var(--space-1)); height: var(--space-6); padding: 0 var(--space-1); box-sizing: border-box; transform: translate(-50%, -50%);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+  transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1), color 150ms cubic-bezier(0.2, 0, 0, 1), border-color 150ms cubic-bezier(0.2, 0, 0, 1), transform 180ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-clause-tabs__tag.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface-raised); transform: translate(-50%, -50%) scale(1.12); }
+.aq-clause-tabs__leads { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-clause-tabs__lead { fill: none; stroke: var(--line-strong); stroke-width: 1; transition: stroke 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-clause-tabs__lead.is-on { stroke: var(--flow); stroke-width: 1.5; }
+
+/* phone-only heads stay out of the desktop render, wrapper and all (PhoneKit shows them when it switches the list on;
+   an h3 left in place round a hidden button would be an empty heading) */
+.aq-clause-tabs__ph { display: none; margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-clause-tabs__tab, .aq-clause-tabs__tag, .aq-clause-tabs__lead, .aq-clause-tabs__t { transition: none; }
+}
+
+/* Narrow desktop and tablet: the drawing over the page, no leaders; the numbers pair the clauses and the tags */
+@container (max-width: 1080px) {
+  .aq-clause-tabs { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-clause-tabs__fig { order: -1; width: 100%; max-width: calc(var(--space-32) * 4.5); justify-self: center; }
+  .aq-clause-tabs__leads, .aq-clause-tabs__tab { display: none; }
+  .aq-clause-tabs__t { display: flex; gap: var(--space-3); }
+  .aq-clause-tabs__n { display: block; flex: none; min-width: calc(var(--space-6) + var(--space-1)); font: 500 13px/24px var(--font-mono); color: var(--ink-subtle); font-variant-numeric: tabular-nums; }
+  .aq-clause-tabs__row.is-on .aq-clause-tabs__n { color: var(--flow); }
+}
+
+/* Phones: the drawing full width with its tags; the page holds an accordion of the clauses (value in view, note and
+   link on tap) */
+@container (max-width: 860px) {
+  .aq-clause-tabs { row-gap: var(--space-4); }
+  .aq-clause-tabs__tag { min-width: var(--space-6); height: calc(var(--space-4) + var(--space-1)); font-size: 12px; }
+  .aq-clause-tabs__board { padding: var(--space-6) var(--space-1) var(--space-1); }
+  .aq-clause-tabs__clip { top: var(--space-1); width: var(--space-24); height: var(--space-8); }
+  .aq-clause-tabs__clip::after { top: var(--space-1); width: var(--space-3); height: var(--space-3); }
+  .aq-clause-tabs__page { padding: var(--space-3) var(--space-3) var(--space-1); }
+  .aq-clause-tabs__head { display: none; }
+  .aq-clause-tabs__row { grid-template-columns: calc(var(--space-8) + var(--space-2)) minmax(0, 1fr); grid-template-rows: none; column-gap: 0; padding: var(--space-3) 0; }
+  .aq-clause-tabs__t { grid-column: 1 / -1; font-size: 17px; line-height: 24px; gap: 0; }
+  .aq-clause-tabs__n { min-width: calc(var(--space-8) + var(--space-2)); }
+  .aq-clause-tabs__ours, .aq-clause-tabs__body { grid-column: 2; grid-row: auto; }
+  .aq-clause-tabs__ours { padding-top: 0; }
+  .aq-clause-tabs__v { gap: 2px; }
+  .aq-clause-tabs__v li { font-size: 14px; line-height: 20px; }
+  .aq-clause-tabs__v li::before { top: calc(var(--space-2) + 1px); }
+  .aq-clause-tabs__m, .aq-clause-tabs__go { font-size: 15px; line-height: 22px; }
+  .aq-clause-tabs__go a { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* the accordion (PhoneKit on the list): head = tab chip and term, 48 px */
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__ph { display: block; grid-column: 1 / -1; order: -1; }
+  .aq-clause-tabs__list[data-pk-on] [data-pk-item] { padding: 0 0 var(--space-2); }
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__hb { min-height: 48px; gap: 0; padding: var(--space-1) 0; font: 400 17px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+  .aq-clause-tabs__hn { flex: none; display: inline-flex; align-items: center; justify-content: center; width: var(--space-8); height: var(--space-6); margin-right: var(--space-2); box-sizing: border-box;
+    border: 1px solid var(--line-strong); font: 500 12px/1 var(--font-mono); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+  .aq-clause-tabs__hb[aria-expanded="true"] .aq-clause-tabs__hn { background: var(--flow); border-color: var(--flow); color: var(--surface-raised); }
+  .aq-clause-tabs__ht { min-width: 0; text-wrap: balance; }
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__body { padding-top: var(--space-1); }
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__m { margin-top: var(--space-1); padding-top: var(--space-2); border-top: 1px dashed var(--line-strong); }
+  /* the plain row (no note, no link) keeps its number as a chip too */
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__n { display: inline-flex; align-items: center; justify-content: center; min-width: 0; width: var(--space-8); height: var(--space-6); margin: var(--space-3) var(--space-2) var(--space-2) 0; box-sizing: border-box; border: 1px solid var(--line-strong); font-size: 12px; line-height: 1; color: var(--ink-muted); }
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__t:not([data-pk-desk]) { align-items: center; }
+  /* the clause the strip shows (reading line or tap): its number chip turns flow, the drawing-to-text link */
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__row.is-on .aq-clause-tabs__hn, .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__row.is-on .aq-clause-tabs__n { border-color: var(--flow); color: var(--flow); }
+  .aq-clause-tabs__list[data-pk-on] .aq-clause-tabs__row.is-on .aq-clause-tabs__hb[aria-expanded="true"] .aq-clause-tabs__hn { color: var(--surface-raised); }
+}
+
+/* Phones: the drawing full bleed (tablets keep it centred at its desktop width) */
+@container (max-width: 600px) {
+  .aq-clause-tabs__fig { max-width: none; justify-self: stretch; margin: 0 calc(-1 * var(--space-4)); width: auto; }
+}
+
+/* PhoneKit sticky strip (860 and under, with script): the drawing held under the header at 180 px, full width of the
+   column, the sheet fitted to the strip's height and panned and zoomed to the lit tag; the tags keep their 12 px size
+   through the zoom (a counter-scale). The root stacks as a flex column (the strip first): a grid item's sticky box is
+   held inside its own grid row, a flex item's inside the whole column, so the strip holds over every clause. */
+.aq-clause-tabs[data-pk-on] { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-4); }
+.aq-clause-tabs[data-pk-on] .aq-clause-tabs__fig { order: -1; max-width: none; width: auto; margin: 0; }
+.aq-clause-tabs[data-pk-on] .aq-clause-tabs__sheet { height: 100%; width: auto; aspect-ratio: var(--ct-ar, 3 / 2); margin: 0 auto; }
+.aq-clause-tabs[data-pk-on] .aq-clause-tabs__svg { width: 100%; height: 100%; }
+.aq-clause-tabs[data-pk-on] .aq-clause-tabs__tag { transform: translate(-50%, -50%) scale(calc(1 / var(--pk-s, 1))); }
+.aq-clause-tabs[data-pk-on] .aq-clause-tabs__tag.is-on { transform: translate(-50%, -50%) scale(calc(1.12 / var(--pk-s, 1))); }
+@container (max-width: 600px) {
+  .aq-clause-tabs[data-pk-on] .aq-clause-tabs__fig { margin: 0 calc(-1 * var(--space-4)); }
+}
 
 /* ---------- Closing: the call to action at the end of every page, on the navy band ---------- */
 /* The brand's closing band: one centred headline at display size, a lead sentence and a large Limestone primary
@@ -3791,6 +4117,83 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
   .aq-contact-routes__route.is-urgent .aq-contact-routes__clock:not(.is-empty) { padding-block: var(--space-1); border-top: 0; }
   .aq-contact-routes__call:not(.is-empty) { padding-block: var(--space-2) !important; }
   .aq-contact-routes__call .aq-contact-routes__k { display: none; }
+}
+
+/* ---------- ContractFolders: how buying works as the folders a buyer is handed (look "contract-folders", pass 12
+   concept 243). Limestone folders with the subject on the tab, a raised sheet inside: index tabs (terms) or a form
+   with empty mark boxes, a signature line and a pen (onboarding). The link under each folder is a full-width row.
+   Flow only for the pen, the link arrow and the pointed folder. ---------- */
+.aq-contract-folders-sec { position: relative; }
+.aq-contract-folders { position: relative; }
+.aq-contract-folders__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-12); row-gap: var(--space-12); align-items: stretch; list-style: none; margin: 0; padding: 0; }
+.aq-contract-folders__f { display: flex; flex-direction: column; min-width: 0; }
+/* the shorter folder's cover runs deeper below its sheet, so both links share one line */
+.aq-contract-folders__f > .aq-contract-folders__folder { flex: 1 0 auto; }
+
+/* the folder: limestone cover with its tab */
+.aq-contract-folders__folder { position: relative; margin-top: 44px; padding: var(--space-4) var(--space-4) var(--space-6); background: var(--limestone); border: 1px solid var(--on-limestone-muted); border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md); }
+.aq-contract-folders__tab { position: absolute; left: -1px; bottom: calc(100% - 1px); display: flex; align-items: baseline; gap: var(--space-3); max-width: calc(100% - var(--space-8)); margin: 0; padding: var(--space-2) var(--space-6) var(--space-2) var(--space-4); background: var(--limestone); border: 1px solid var(--on-limestone-muted); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-contract-folders__n { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-limestone-muted); }
+
+/* the sheet inside */
+.aq-contract-folders__sheet { position: relative; padding: var(--space-6) var(--space-6) var(--space-4); background: var(--surface-raised); border: 1px solid var(--on-limestone-muted); box-shadow: 3px 3px 0 0 var(--paper-dim); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.aq-contract-folders__sheet .aq-contract-folders__k { margin: 0 0 var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-contract-folders__items { list-style: none; margin: 0; padding: 0; }
+.aq-contract-folders__items li { position: relative; display: grid; align-items: center; min-height: 40px; border-top: 1px solid var(--line); font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-contract-folders__items li:last-child { border-bottom: 1px solid var(--line); }
+.aq-contract-folders__it { min-width: 0; padding: var(--space-2) 0; text-wrap: pretty; }
+.aq-contract-folders__sheet .aq-contract-folders__m { margin: var(--space-3) 0 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* tabs: each item an index tab standing out of the sheet's right edge */
+.is-tabs .aq-contract-folders__sheet { margin-right: var(--space-8); }
+.is-tabs .aq-contract-folders__items li { grid-template-columns: minmax(0, 1fr); }
+.aq-contract-folders__ix { position: absolute; top: 3px; bottom: 3px; left: calc(100% + var(--space-6) + 1px); display: grid; place-items: center; width: var(--space-8); border: 1px solid var(--on-limestone-muted); border-left: 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--surface-raised); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), color 160ms linear; }
+.is-tabs .aq-contract-folders__items li:nth-child(even) .aq-contract-folders__ix { background: var(--surface-sunken); }
+
+/* form: ruled lines with an empty mark box, then the signature line and the pen */
+.is-form .aq-contract-folders__items li { grid-template-columns: minmax(0, max-content) minmax(var(--space-4), 1fr) auto; column-gap: var(--space-2); }
+/* printed form boxes, not UI checkboxes: small, square-cornered, ink-subtle, on a dotted leader from the paper's name */
+.aq-contract-folders__box { display: block; width: 12px; height: 12px; border: 1px solid var(--ink-subtle); border-radius: 0; }
+.aq-contract-folders__ld { display: block; align-self: center; height: 12px; border-bottom: 1px dotted var(--line-strong); }
+.aq-contract-folders__sign { position: relative; height: 56px; margin-top: var(--space-4); }
+.aq-contract-folders__sl { position: absolute; left: 0; right: 30%; bottom: var(--space-3); border-bottom: 1.25px solid var(--ink); }
+.aq-contract-folders__pen { position: absolute; right: 0; bottom: var(--space-1); width: 132px; height: 31px; overflow: visible; transform: rotate(-14deg); transform-origin: 10% 50%; }
+.aq-contract-folders__pb { fill: var(--surface-raised); stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-contract-folders__pd { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+/* the link under the folder: a full-width row */
+.aq-contract-folders__go { margin: 0; }
+.aq-contract-folders__go a { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--aq-hit); padding: var(--space-2) 0; border-bottom: 1px solid var(--line-strong); font: 400 16px/22px var(--font-sans); color: var(--action); text-decoration: none; }
+.aq-contract-folders__go a::after { content: "→"; font-family: var(--font-mono); transition: transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-contract-folders__go a:hover { color: var(--action-hover); }
+.aq-contract-folders__go a:hover::after { transform: translateX(4px); }
+.aq-contract-folders__go a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* pointed folder: the sheet lifts, the tabs fan out */
+.aq-contract-folders__f:hover .aq-contract-folders__sheet, .aq-contract-folders__f:focus-within .aq-contract-folders__sheet { transform: translateY(-4px); }
+.aq-contract-folders__f:hover .aq-contract-folders__ix, .aq-contract-folders__f:focus-within .aq-contract-folders__ix { transform: translateX(calc(var(--j, 0) * 1px + 2px)); color: var(--flow); }
+
+@media (prefers-reduced-motion: reduce) { .aq-contract-folders__sheet, .aq-contract-folders__ix, .aq-contract-folders__go a::after { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-contract-folders__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-contract-folders__f { display: block; }
+  .aq-contract-folders__folder { margin-top: 40px; padding: var(--space-3) var(--space-3) var(--space-4); }
+  .aq-contract-folders__tab { font-size: 17px; line-height: 24px; }
+  .aq-contract-folders__sheet { padding: var(--space-4) var(--space-4) var(--space-3); }
+  .is-tabs .aq-contract-folders__sheet { margin-right: 0; }
+  .aq-contract-folders__items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); }
+  .aq-contract-folders__items li, .aq-contract-folders__items li:last-child { min-height: 0; border-bottom: 0; font-size: var(--aq-read-phone); line-height: 20px; }
+  .is-tabs .aq-contract-folders__items li { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); align-items: baseline; }
+  .aq-contract-folders__ix { position: static; display: inline; width: auto; border: 0; background: none; font-size: 12px; }
+  .is-tabs .aq-contract-folders__items li:nth-child(even) .aq-contract-folders__ix { background: none; }
+  .is-form .aq-contract-folders__items li { column-gap: var(--space-2); }
+  .aq-contract-folders__box { width: 12px; height: 12px; }
+  .aq-contract-folders__sheet .aq-contract-folders__m { font-size: var(--aq-read-phone); }
+  .aq-contract-folders__sign { height: 48px; }
+  .aq-contract-folders__pen { width: 112px; height: 26px; }
+  .aq-contract-folders__go a { min-height: 48px; font-size: 15px; }
+  .aq-contract-folders__f:hover .aq-contract-folders__sheet { transform: none; }
 }
 
 /* ---------- CostBalance: running costs as streams across a system boundary (look "cost-balance") ----------
@@ -5605,6 +6008,146 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
   .aq-fidelity-ladder__st.is-last { padding-bottom: 0; }
 }
 
+/* ---------- FitEnvelope: the package inside a dashed fit envelope, each exclusion a numbered tag tied outside it ---------- */
+/* Desktop: heading, then the envelope (left, 5 of 12; its drawing and band held sticky while the tags pass) and the
+   tags (right), each tag tied to the envelope's right edge by a cord through its eyelet. Wide: a tag reads across as
+   the table did (need, why, instead), under one key line. 861-1100 px: the envelope full width on top, then the tags,
+   the need over why and instead, on one cord from the envelope's foot through every eyelet. Phones: the same chain as
+   accordion heads (PhoneKit). */
+.aq-fit-envelope-sec { overflow: clip; }
+.aq-fit-envelope { --fe-gap: var(--space-12); --fe-stub: var(--space-16); --fe-cut: 16px; --fe-eye-y: 30px;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--fe-gap, 48px); margin-top: var(--space-8); align-items: stretch; }
+
+/* the envelope: a dashed boundary on the paper surface, its label at the top left */
+.aq-fit-envelope__env { --surface: var(--surface-sunken); position: relative; border: 1.5px dashed var(--line-strong); padding: var(--space-12) var(--space-6) var(--space-6); }
+.aq-fit-envelope__fits { position: absolute; left: var(--space-4); top: var(--space-3); margin: 0; font: 500 13px/20px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted); }
+.aq-fit-envelope__hold { position: sticky; top: max(var(--space-16), calc(50vh - 280px)); }
+.aq-fit-envelope__fig { margin: 0 auto; max-width: 460px; }
+.aq-fit-envelope__svg { display: block; width: 100%; height: auto; }
+.aq-fit-envelope__fig .aq-iso__part[data-iso="drum"] .aq-iso__eq { fill: var(--surface-raised); }
+
+/* the rated range: a steel-blue bar at the envelope's foot, its two ends under it */
+.aq-fit-envelope__band { display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: var(--space-6); font: 500 13px/20px var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.aq-fit-envelope__bar { flex: 0 0 100%; height: 8px; margin-bottom: var(--space-2); background: var(--flow); border-radius: var(--radius-sm); transform-origin: 0 50%; }
+.aq-fit-envelope__end { white-space: nowrap; }
+/* what fits (spec rows with "in": true, ind-process): each row its own block, the need bold, why (ink) and instead
+   (muted) each on its own line, then the link on its own line with a 44 px target that adds no layout */
+.aq-fit-envelope__in { list-style: none; margin: var(--space-6) 0 0; padding: var(--space-4) 0 0; border-top: 1px solid var(--line); display: grid; gap: var(--space-4); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-fit-envelope__in > li { display: grid; align-content: start; justify-items: start; row-gap: var(--space-1); }
+.aq-fit-envelope__ip { color: var(--ink); font-weight: 500; }
+.aq-fit-envelope__iw { color: var(--ink); }
+.aq-fit-envelope__im { color: var(--ink-muted); }
+.aq-fit-envelope__in a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; margin-block: calc(var(--space-3) * -1); }
+
+/* the key: the three column names once, over the tags' columns */
+.aq-fit-envelope__tags { min-width: 0; }
+.aq-fit-envelope__key { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); margin: 0 0 var(--space-3); padding: 0 var(--space-4) 0 calc(var(--fe-stub, 64px) + var(--space-4));
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* the tags */
+.aq-fit-envelope__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-fit-envelope__tag { position: relative; display: grid; grid-template-columns: var(--fe-stub, 64px) minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6);
+  align-items: start; padding-right: var(--space-4); color: var(--ink); transform-origin: calc(var(--fe-stub, 64px) / 2) var(--fe-eye-y, 30px); }
+/* the tag's outline and paper: two clipped layers (a 1 px line-strong rim, the paper inside), the eyelet end cut */
+.aq-fit-envelope__tag::before, .aq-fit-envelope__tag::after { content: ""; position: absolute; z-index: 0; pointer-events: none;
+  clip-path: polygon(var(--fe-cut, 16px) 0, 100% 0, 100% 100%, var(--fe-cut, 16px) 100%, 0 calc(100% - var(--fe-cut, 16px)), 0 var(--fe-cut, 16px)); }
+.aq-fit-envelope__tag::before { inset: 0; background: var(--line-strong); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fit-envelope__tag::after { inset: 1px; background: var(--surface-raised);
+  clip-path: polygon(calc(var(--fe-cut, 16px) - 0.6px) 0, 100% 0, 100% 100%, calc(var(--fe-cut, 16px) - 0.6px) 100%, 0 calc(100% - var(--fe-cut, 16px) + 0.6px), 0 calc(var(--fe-cut, 16px) - 0.6px)); }
+.aq-fit-envelope__tag.is-hot::before { background: var(--flow); }
+.aq-fit-envelope__tag > *, .aq-fit-envelope__desk > *, .aq-fit-envelope__body > * { position: relative; z-index: 1; }
+
+/* the cord: from the envelope's dashed edge, across the gap, through the eyelet; a knot where it meets the edge */
+.aq-fit-envelope__cord { position: absolute; z-index: 2; left: calc(-1 * var(--fe-gap, 48px) - 1px); top: var(--fe-eye-y, 30px); width: calc(var(--fe-gap, 48px) + var(--fe-stub, 64px) / 2); height: 0;
+  border-top: 1.5px solid var(--line-strong); pointer-events: none; transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fit-envelope__cord::before { content: ""; position: absolute; left: -3px; top: -4.5px; width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fit-envelope__tag.is-hot .aq-fit-envelope__cord { border-top-color: var(--flow); }
+.aq-fit-envelope__tag.is-hot .aq-fit-envelope__cord::before { background: var(--flow); }
+
+/* the stub: eyelet and number, a perforation between it and the tag's text */
+.aq-fit-envelope__desk, .aq-fit-envelope__body { display: contents; }
+.aq-fit-envelope__stub { grid-column: 1; grid-row: 1 / span 3; align-self: stretch; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: calc(var(--fe-eye-y, 30px) - 8px) 0 var(--space-3);
+  border-right: 1px dashed var(--line-strong); }
+.aq-fit-envelope__eye { position: relative; z-index: 3; width: 16px; height: 16px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--surface-sunken); }
+.aq-fit-envelope__no { font: 500 15px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+.aq-fit-envelope__t { grid-column: 2; margin: 0; padding: var(--space-4) 0; font: 400 17px/24px var(--font-sans); letter-spacing: -0.005em; text-wrap: pretty; }
+.aq-fit-envelope__ph { display: none; }
+.aq-fit-envelope__why, .aq-fit-envelope__inst { margin: 0; padding: var(--space-4) 0; font: 400 15px/22px var(--font-sans); }
+.aq-fit-envelope__why { grid-column: 3; color: var(--ink-muted); }
+.aq-fit-envelope__inst { grid-column: 4; color: var(--ink); }
+.aq-fit-envelope__more { grid-column: 2 / -1; margin: calc(-1 * var(--space-2)) 0 var(--space-3); font: 400 15px/22px var(--font-sans); }
+.aq-fit-envelope__more a, .aq-fit-envelope__iv a { display: inline-flex; align-items: center; min-height: 44px; margin-block: -11px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 4px; }
+.aq-fit-envelope__lab.is-shown { display: none; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-fit-envelope__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* folded tags show on desktop; the fold is for phones */
+.aq-fold:not(.is-open) .aq-fit-envelope__tag.aq-fold-x { display: grid; }
+.aq-fit-envelope__tags .aq-fold__btn { display: none; }
+
+/* 861-1100 px: the envelope full width on top (a narrow column would leave a tall empty box), the tags under it on one
+   cord from the envelope's foot through every eyelet; the need across the tag, why and instead under it, each labelled */
+@container (max-width: 1100px) {
+  .aq-fit-envelope { --fe-gap: var(--space-8); grid-template-columns: minmax(0, 1fr); row-gap: var(--fe-gap, 32px); }
+  .aq-fit-envelope__hold { position: static; }
+  .aq-fit-envelope__fig { max-width: 420px; }
+  .aq-fit-envelope__list { position: relative; }
+  .aq-fit-envelope__list::before { content: ""; position: absolute; z-index: 0; left: calc(var(--fe-stub, 64px) / 2 - 0.75px); top: calc(-1 * var(--fe-gap, 32px) - 1px); bottom: var(--space-6);
+    border-left: 1.5px solid var(--line-strong); }
+  .aq-fit-envelope__cord { display: none; }
+  /* the cord threads into the eyelet and out again (4 px above and below the ring), never across it */
+  .aq-fit-envelope__eye::before, .aq-fit-envelope__eye::after { content: ""; position: absolute; left: 50%; height: 4px; margin-left: -0.75px; border-left: 1.5px solid var(--line-strong); }
+  .aq-fit-envelope__eye::before { top: -6px; }
+  .aq-fit-envelope__eye::after { bottom: -6px; }
+  .aq-fit-envelope__key { display: none; }
+  .aq-fit-envelope__tag { grid-template-columns: var(--fe-stub, 64px) minmax(0, 1fr) minmax(0, 1fr); }
+  .aq-fit-envelope__t { grid-column: 2 / -1; padding-bottom: 0; }
+  .aq-fit-envelope__why { grid-column: 2; }
+  .aq-fit-envelope__inst { grid-column: 3; }
+  .aq-fit-envelope__why, .aq-fit-envelope__inst { padding-top: var(--space-2); }
+  .aq-fit-envelope__lab.is-shown { display: block; }
+}
+
+/* Phones: envelope first, then one chain of tags on one cord from the envelope's foot */
+@container (max-width: 860px) {
+  .aq-fit-envelope { --fe-gap: var(--space-6); --fe-stub: 52px; --fe-cut: 12px; --fe-eye-y: 22px; grid-template-columns: minmax(0, 1fr); row-gap: var(--fe-gap, 48px); margin-top: var(--space-6); }
+  .aq-fit-envelope__env { padding: var(--space-6) var(--space-4) var(--space-4); }
+  .aq-fit-envelope__fits { left: var(--space-3); top: var(--space-1); }
+  .aq-fit-envelope__fig { max-width: 250px; }
+  .aq-fit-envelope__band { margin-top: var(--space-3); }
+  .aq-fit-envelope__list { position: relative; gap: var(--space-2); }
+  .aq-fit-envelope__tag { grid-template-columns: var(--fe-stub, 52px) minmax(0, 1fr); column-gap: var(--space-3); padding-right: var(--space-4); }
+  .aq-fit-envelope__stub { grid-row: 1 / span 4; }
+  .aq-fit-envelope__t { grid-column: 2; padding: var(--space-3) 0; font-size: 16px; line-height: 22px; }
+  .aq-fit-envelope__why, .aq-fit-envelope__inst, .aq-fit-envelope__more { grid-column: 2; padding: 0 0 var(--space-3); font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-fit-envelope__more { margin: 0; }
+  /* PhoneKit on: the stub and the need are the head; why and instead open under it */
+  [data-pk-on] .aq-fit-envelope__ph { display: block; grid-column: 1 / -1; margin: 0 calc(-1 * var(--space-4)) 0 0; }
+  .aq-fit-envelope__list[data-pk-on] .aq-fit-envelope__head { display: grid; grid-template-columns: var(--fe-stub, 52px) minmax(0, 1fr) 44px; align-items: stretch; gap: 0; min-height: 52px; padding: 0; }
+  .aq-fit-envelope__head .aq-fit-envelope__stub { grid-row: auto; padding-bottom: var(--space-2); }
+  .aq-fit-envelope__pt { align-self: center; padding: var(--space-3) var(--space-1) var(--space-3) var(--space-3); font: 400 15px/21px var(--font-sans); color: var(--ink); }
+  .aq-fit-envelope__head .aq-phone-kit__chev { align-self: center; color: var(--ink-muted); }
+  .aq-fit-envelope__list[data-pk-on] .aq-fit-envelope__body { display: grid; grid-column: 2; padding-right: 0; }
+  .aq-fit-envelope__list[data-pk-on] .aq-fit-envelope__body .aq-fit-envelope__why { padding-top: 0; }
+  .aq-fit-envelope__head[aria-expanded="true"] .aq-fit-envelope__eye { border-color: var(--flow); }
+  .aq-fit-envelope__head[aria-expanded="true"] .aq-fit-envelope__no { color: var(--flow); }
+  .aq-fold:not(.is-open) .aq-fit-envelope__tag.aq-fold-x { display: none; }
+  .aq-fit-envelope__tags .aq-fold__btn { display: flex; }
+}
+/* 561-860 px: the envelope is wide; let the drawing fill more of it */
+@container (min-width: 561px) and (max-width: 860px) { .aq-fit-envelope__fig { max-width: 400px; } }
+/* with a fits list (ind-process): wide, the tags hang at mid-height of the envelope and the drawing is a little smaller;
+   from 861 px the fits list runs in two columns (a short measure, and the envelope no taller than its tags need). Tables without "in" rows are unchanged. */
+@container (min-width: 1101px) {
+  .aq-fit-envelope:has(.aq-fit-envelope__in) .aq-fit-envelope__tags { align-self: center; }
+  .aq-fit-envelope:has(.aq-fit-envelope__in) .aq-fit-envelope__fig { max-width: 340px; }
+  .aq-fit-envelope:has(.aq-fit-envelope__in) .aq-fit-envelope__list { gap: var(--space-6); }
+}
+@container (min-width: 861px) {
+  .aq-fit-envelope__in { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-fit-envelope__tag::before, .aq-fit-envelope__cord, .aq-fit-envelope__cord::before { transition: none; }
+}
+
 /* ---------- FitReadout: a fit test read off an instrument ---------- */
 /* Desktop: the navy readout on the left (5 of 12), the numbered rule tiles stacked on the right, the outlined tags in
    one row under both. The readout is a drawing: hairline axes and ticks in on-navy-muted, the curve in on-navy, the
@@ -6933,6 +7476,29 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero__grid--scene:has(> .aq-hero-scene:is(.aq-hero-scene--bay, .aq-hero-scene--map, .aq-hero-scene--reply)) { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
 }
 
+/* ---------- Pass 12 round D: hero-only drawings (hero field figure: {"art": "<id>"}, HERO_ART in Hero.js) ----------
+   cmp-quality's audit table and project-plan's schedule board are line drawings like the equipment heroes (the same
+   Illustration mask, ink-muted, no callouts). Desktop: the near-square drawing takes a little more of the 6:5 figure
+   (inset 2 % 4 %, not 10 %), so it holds its half of the hero as the stamp and route plates it replaces did. Phone: the
+   box takes the drawing's own ratio at full gutter width (heroBoxR), no band above or below. */
+.aq-hero__figure--drawing .aq-hero__art .aq-illustration { inset: 2% 4%; }
+@container (max-width: 860px) {
+  .aq-hero__figure--drawing .aq-hero__art .aq-illustration { inset: 0; }
+}
+/* Tablet (561 to 860, verify fix 6): the drawing at most 600 px wide and centred, so the near-square sheet does not
+   blow up to 721 px (project-plan's hero was 1,101 px tall at 768); its objects stay at about 0.8x desktop size. */
+@container (min-width: 561px) and (max-width: 860px) {
+  .aq-hero__figure--drawing { width: 100%; max-width: 600px; margin-inline: auto; }
+}
+@container (max-width: 560px) {
+  /* cmp-quality, small phones only (verify fix 3): the audit table is cropped to its top, so the four records
+     (manual, register, the fused joint, the shipment record) read at about 1.4x instead of sharing 343 px with the
+     legs. The box is the crop's ratio; mask size and position place the table top in it, the shipment record's lower
+     corner inside the box. From 561 px the whole table shows in its own 1.11 box. */
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.31; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 139% auto; mask-size: 139% auto; -webkit-mask-position: 46% 26%; mask-position: 46% 26%; }
+}
+
 /* ---------- HeroScene ---------- */
 /* A hub hero's drawn scene: one IsoKit line drawing with numbered tags, and a key whose rows carry the same numbers.
    Tags: a mono numeral on an ink chip (the drawing's only filled marks; ink-inverse text, so both themes hold); hover or focus on a key row lights its part
@@ -7636,86 +8202,6 @@ span.aq-hero-scene__row { cursor: default; }
 @media (prefers-reduced-motion: reduce) {
   .aq-industry-drops__wall.is-on, .aq-industry-drops__wall.aq-industry-drops__drop, .aq-industry-drops__go::after { transition: none; }
 }
-
-/* ---------- IndustryFeed: one water line feeding a few destinations, set as editorial type ---------- */
-/* A twin-wall pipe (two line-strong hairlines over the ground, water in flow down its middle) enters from the page
-   edge and runs across under the heading; at each column it tees down into that column. The evidence (a standard
-   code) is the hero type: Geist Mono Light, large, in ink. Square tees, no curves. */
-.aq-industry-feed { --pipe: var(--space-3); --gap: var(--space-8); --fall: var(--space-12);
-  position: relative; padding-top: var(--fall, var(--space-12)); }
-.aq-industry-feed__trunk { position: absolute; top: 0; height: var(--pipe, var(--space-3)); left: calc((100% - 100cqw) / 2);
-  width: calc((100cqw - 100%) / 2 + (100% - (var(--n, 3) - 1) * var(--gap, var(--space-8))) / var(--n, 3) * (var(--n, 3) - 1) + (var(--n, 3) - 1) * var(--gap, var(--space-8)) + var(--pipe, var(--space-3)));
-  border-block: 1px solid var(--line-strong); background: var(--surface); box-sizing: border-box; }
-.aq-industry-feed__water { position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--flow); transform-origin: 0 50%; }
-.aq-industry-feed__drip { position: absolute; left: 0; top: calc(var(--pipe, var(--space-3)) / 2); width: var(--space-3); height: var(--space-3); margin: calc(var(--space-3) / -2) 0 0 calc(var(--space-3) / -2);
-  border-radius: var(--radius-pill); background: var(--flow); border: 2px solid var(--surface); opacity: 0; pointer-events: none; z-index: 2; }
-
-.aq-industry-feed__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); column-gap: var(--gap, var(--space-8)); }
-.aq-industry-feed__item { position: relative; min-width: 0; display: flex; }
-.aq-industry-feed__card { position: relative; display: flex; flex-direction: column; gap: var(--space-3); width: 100%;
-  padding: var(--space-4) 0 var(--space-4) calc(var(--pipe, var(--space-3)) + var(--space-6)); color: var(--ink); text-decoration: none; transition: opacity 300ms; }
-/* The tee: the drop's twin wall starts inside the trunk (its ground hides the trunk's lower wall) and falls to the node */
-.aq-industry-feed__drop { position: absolute; left: 0; top: calc(-1 * var(--fall, var(--space-12)) + 1px); width: var(--pipe, var(--space-3)); height: calc(var(--fall, var(--space-12)) + var(--space-16) + var(--space-3));
-  border-inline: 1px solid var(--line-strong); background: var(--surface); box-sizing: border-box; }
-.aq-industry-feed__drop .aq-industry-feed__water { left: 50%; right: auto; top: 0; bottom: 0; width: 2px; height: auto; margin: 0 0 0 -1px; transform-origin: 50% 0; }
-.aq-industry-feed__node { position: absolute; left: calc(var(--pipe, var(--space-3)) / 2); top: calc(var(--space-16) + var(--space-3)); width: var(--space-4); height: var(--space-4);
-  margin: calc(var(--space-4) / -2) 0 0 calc(var(--space-4) / -2); border-radius: var(--radius-pill); background: var(--surface); border: 2px solid var(--flow);
-  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1), background-color 300ms; }
-.aq-industry-feed__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--ink-subtle); }
-.aq-industry-feed__ev { --colw: calc((min(100cqw, var(--content-max)) - 2 * var(--space-8) - (var(--n, 3) - 1) * var(--gap, var(--space-8))) / var(--n, 3) - var(--pipe, var(--space-3)) - var(--space-6));
-  margin: var(--space-6) 0 var(--space-2); font: 300 min(56px, calc(var(--colw, 20rem) / (var(--len, 8) * 0.6)))/1.1 var(--font-mono); white-space: nowrap; letter-spacing: -0.04em; color: var(--ink); overflow-wrap: anywhere; }
-/* an item with no tag: its number is the evidence (pass 12 round C), set where a tagged item's code line and evidence
-   sit, so the big type lines up across the columns; muted, as an ordinal and not a standard */
-.aq-industry-feed__ev.is-num { margin-top: calc(var(--space-6) + var(--space-1)); color: var(--ink-muted); }
-.aq-industry-feed__t { margin: 0; font: 400 26px/32px var(--font-sans); letter-spacing: -0.015em; }
-.aq-industry-feed__t::after { content: "\00a0\2192"; display: inline-block; color: var(--flow); transition: transform 200ms; }
-.aq-industry-feed__d { margin: 0; font: 400 16px/26px var(--font-sans); color: var(--ink-muted); max-width: 38ch; }
-
-/* Pointing at one destination: its line and node light, the others step back */
-.aq-industry-feed__list:hover .aq-industry-feed__card:not(:hover) { opacity: 0.5; }
-.aq-industry-feed__card:hover .aq-industry-feed__node, .aq-industry-feed__card:focus-visible .aq-industry-feed__node { transform: scale(1.3); background: var(--flow); }
-.aq-industry-feed__card:hover .aq-industry-feed__t::after { transform: translateX(var(--space-1)); }
-.aq-industry-feed__card:hover .aq-industry-feed__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--flow); }
-.aq-industry-feed__card:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-2); }
-
-@container (max-width: 1100px) {
-  .aq-industry-feed { --gap: var(--space-6); }
-  .aq-industry-feed__t { font-size: 22px; line-height: 28px; }
-}
-
-/* Phones: the pipe runs down the left edge, each item tees off it to the right */
-@container (max-width: 860px) {
-  .aq-industry-feed { padding-top: 0; }
-  .aq-industry-feed__trunk, .aq-industry-feed__drip { display: none; }
-  .aq-industry-feed__list { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
-  .aq-industry-feed__card { padding: var(--space-4) 0 var(--space-8) calc(var(--pipe, var(--space-3)) + var(--space-8)); }
-  .aq-industry-feed__drop { top: 0; height: 100%; }
-  .aq-industry-feed__item:first-child .aq-industry-feed__drop { top: calc(-1 * var(--space-6)); height: calc(100% + var(--space-6)); }
-  /* the node sits level with the evidence line (--ny, its centre), on a tagged item and on a numbered one alike; the
-     last drop ends at its node */
-  .aq-industry-feed__card { --ny: 66px; }
-  .aq-industry-feed__card:has(> .aq-industry-feed__ev.is-num) { --ny: 42px; }
-  .aq-industry-feed__item:last-child .aq-industry-feed__drop { height: var(--ny, 66px); }
-  .aq-industry-feed__node { left: calc(var(--pipe, var(--space-3)) + var(--space-3)); top: var(--ny, 66px); }
-  .aq-industry-feed__node::before { content: ""; position: absolute; right: 100%; top: 50%; width: var(--space-3); height: 2px; margin-top: -1px; background: var(--flow); }
-  .aq-industry-feed__ev { --colw: calc(100cqw - 2 * var(--space-4) - var(--pipe, var(--space-3)) - var(--space-8)); margin-top: var(--space-2); font-size: min(40px, calc(var(--colw, 20rem) / (var(--len, 8) * 0.6))); }
-  .aq-industry-feed__t { font-size: 22px; line-height: 28px; }
-  .aq-industry-feed__ev.is-num { margin-top: var(--space-2); font-size: 32px; line-height: 36px; }
-  .aq-industry-feed__list:hover .aq-industry-feed__card:not(:hover) { opacity: 1; }
-}
-
-/* the trunk bleeds to the page edge: clip it there, never a horizontal scroll */
-.aq-industry-feed-sec { overflow-x: clip; }
-
-/* Split-flap board (motion only, ported from Subframe Motion "Departure board"): while the evidence turns over, each
-   character is a cell; a leaf turns over the cell's centre line. At rest the evidence is plain text again. */
-.aq-industry-feed__sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
-.aq-flap { position: relative; display: inline-block; perspective: 500px; }
-.aq-flap__s { display: inline-block; }
-.aq-flap__leaf { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 50% 50%; }
-.aq-flap__f, .aq-flap__b { position: absolute; inset: 0; backface-visibility: hidden; background: var(--surface); color: var(--ink-muted); }
-.aq-flap__b { transform: rotateX(180deg); color: var(--ink); }
-.aq-flap__seam { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); pointer-events: none; }
 
 /* ---------- IssuedSet: the documents you receive as an issued set of sheets dealt onto a desk (look "issued-set").
    The desk is a surface-sunken panel; each sheet is light paper (data-theme="light") at a slight turn (--i picks it),
@@ -8465,6 +8951,105 @@ span.aq-hero-scene__row { cursor: default; }
 /* verify V4: on tablets (600-860) the tags are svg units and grow with the figure; the figure is capped so they stay
    about 18 px and the drawing about 650 px tall. */
 @container (min-width: 600px) and (max-width: 860px) { .aq-layer-stack__fig { max-width: 460px; margin-inline: auto; } }
+
+/* ---------- LevellingSheet: quotes levelled on the same ruled lines (look "levelling-sheet", pass 12 D). On the
+   limestone (alt) ground: the lines and their questions on the left; three raised sheets (Quote A, Quote B, ours) on the
+   same rules; gaps on A and B hatched, written lines as two grey strokes; ours ticked in flow with the link to where we
+   state it; a navy straightedge across the line in hand. Phones: one checklist, A and B as small boxes. ---------- */
+.aq-levelling-sheet { position: relative; display: grid; grid-template-columns: minmax(0, 4.2fr) minmax(0, 1.45fr) minmax(0, 1.45fr) minmax(0, 2.7fr);
+  grid-template-rows: auto repeat(var(--ls-n, 8), auto) var(--space-6); column-gap: var(--space-6); }
+.aq-levelling-sheet-sec { position: relative; }
+
+/* the three sheets: raised paper behind their column, from the head to below the last rule */
+.aq-levelling-sheet__paper { grid-row: 1 / -1; background: var(--surface-raised); box-shadow: var(--shadow-overlay); border-radius: var(--radius-sm); }
+.aq-levelling-sheet__paper.is-a, .aq-levelling-sheet__h.is-a { grid-column: 2; }
+.aq-levelling-sheet__paper.is-b, .aq-levelling-sheet__h.is-b { grid-column: 3; }
+.aq-levelling-sheet__paper.is-ours, .aq-levelling-sheet__h.is-ours { grid-column: 4; }
+.aq-levelling-sheet__h { grid-row: 1; z-index: 1; margin: 0; padding: var(--space-6) var(--space-4) var(--space-3); border-bottom: 1.5px solid var(--ink);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-levelling-sheet__h.is-line { grid-column: 1; align-self: end; padding-left: 0; color: var(--ink-subtle); }
+.aq-levelling-sheet__h.is-line span { display: block; }
+.aq-levelling-sheet__h.is-line span + span { color: var(--ink-muted); }
+.aq-levelling-sheet__h.is-ours { color: var(--ink); }
+
+/* the rows: one subgrid row per line, ruled across the whole sheet (gaps between the sheets included) */
+.aq-levelling-sheet__rows { grid-column: 1 / -1; grid-row: 2 / span var(--ls-n, 8); display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; list-style: none; margin: 0; padding: 0; z-index: 1; }
+.aq-levelling-sheet__row { position: relative; grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: auto 1fr; border-bottom: 1px solid var(--line-strong); }
+.aq-levelling-sheet__line { grid-column: 1; grid-row: 1; display: flex; align-items: baseline; gap: var(--space-3); padding-top: var(--space-4); }
+.aq-levelling-sheet__line .aq-index { transition: color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-levelling-sheet__row.is-on .aq-levelling-sheet__line .aq-index { color: var(--flow); }
+.aq-levelling-sheet__t { margin: 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-levelling-sheet__ask { grid-column: 1; grid-row: 2; margin: var(--space-1) 0 0; padding: 0 0 var(--space-4) calc(var(--space-6) + var(--space-3)); font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-levelling-sheet__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* a quote's cell: written (two strokes) or a gap (hatched blank) */
+.aq-levelling-sheet__c { grid-row: 1 / span 2; position: relative; display: flex; flex-direction: column; justify-content: center; gap: var(--space-2); padding: var(--space-4); min-width: 0; }
+.aq-levelling-sheet__q { display: none; }
+.aq-levelling-sheet__c i { display: block; height: 2px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--line-strong) 70%, transparent); }
+.aq-levelling-sheet__c i:first-of-type { width: 78%; }
+.aq-levelling-sheet__c i:last-of-type { width: 48%; }
+.aq-levelling-sheet__c.is-gap i { display: none; }
+.aq-levelling-sheet__c.is-gap::before { content: ""; position: absolute; inset: var(--space-3) var(--space-3); border: 1px solid color-mix(in srgb, var(--line-strong) 60%, transparent);
+  background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--line-strong) 55%, transparent) 0 1px, transparent 1px 7px); }
+/* ours: a flow tick and the link to where we state it */
+.aq-levelling-sheet__c.is-ours { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--space-3); }
+.aq-levelling-sheet__tick { position: relative; flex: none; width: var(--space-4); height: var(--space-4); border: 1.5px solid var(--flow); border-radius: var(--radius-sm); box-sizing: border-box; }
+.aq-levelling-sheet__tick::after { content: ""; position: absolute; left: 4px; top: 1px; width: 4px; height: 8px; border-right: 1.5px solid var(--flow); border-bottom: 1.5px solid var(--flow); transform: rotate(45deg); }
+.aq-levelling-sheet__go { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink); text-decoration: none; }
+a.aq-levelling-sheet__go .aq-levelling-sheet__gt { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size 200ms cubic-bezier(0.2, 0, 0, 1); }
+a.aq-levelling-sheet__go::after { content: "\2192"; margin-left: var(--space-2); color: var(--flow); }
+a.aq-levelling-sheet__go:hover .aq-levelling-sheet__gt, a.aq-levelling-sheet__go:focus-visible .aq-levelling-sheet__gt { background-size: 100% 1px; }
+/* the whole cell is the target (the whole row on phones) */
+.aq-levelling-sheet__c.is-ours { position: relative; }
+a.aq-levelling-sheet__go::before { content: ""; position: absolute; inset: 0; z-index: 1; }
+a.aq-levelling-sheet__go:focus-visible { outline: none; }
+a.aq-levelling-sheet__go:focus-visible::before { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* the straightedge: across the three sheets, its foot on the rule of the line in hand */
+.aq-levelling-sheet__edge { position: absolute; z-index: 2; grid-column: 2 / -1; grid-row: 1 / -1; top: 0; left: calc(-1 * var(--space-6)); right: calc(-1 * var(--space-3)); height: calc(var(--space-3) + 2px);
+  transform: translateY(calc(var(--ls-y, -100px) - 50%)); background: var(--navy); border-radius: var(--radius-sm); box-shadow: 0 0 0 1px color-mix(in srgb, var(--on-navy) 22%, transparent), var(--shadow-overlay); pointer-events: none;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.aq-levelling-sheet__edge::before { content: ""; position: absolute; left: var(--space-2); right: var(--space-2); top: 0; height: 5px;
+  background: repeating-linear-gradient(90deg, var(--on-navy-muted) 0 1px, transparent 1px 8px); opacity: 0.8; }
+.aq-levelling-sheet__edge::after { content: ""; position: absolute; left: var(--space-2); right: var(--space-2); top: 0; height: 8px;
+  background: repeating-linear-gradient(90deg, var(--on-navy) 0 1px, transparent 1px 40px); opacity: 0.8; }
+.aq-levelling-sheet__edge.is-jump { transition: none; }
+.aq-levelling-sheet:not([data-on]) .aq-levelling-sheet__edge { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-levelling-sheet__edge, .aq-levelling-sheet__line .aq-index, a.aq-levelling-sheet__go .aq-levelling-sheet__gt { transition: none; }
+}
+
+/* Tablet: narrower sheets */
+@container (max-width: 1080px) {
+  .aq-levelling-sheet { grid-template-columns: minmax(0, 3.6fr) minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 2.6fr); column-gap: var(--space-4); }
+  .aq-levelling-sheet__h { padding-left: var(--space-3); padding-right: var(--space-3); }
+}
+
+/* Phones (700 and under; tablets in portrait keep the three sheets): one checklist (number and line, A and B boxes at
+   the right, the ask, ours as the row's link) */
+@container (max-width: 700px) {
+  .aq-levelling-sheet { display: block; }
+  .aq-levelling-sheet__paper, .aq-levelling-sheet__h, .aq-levelling-sheet__edge { display: none !important; }
+  .aq-levelling-sheet__rows { display: block; border-top: 1.5px solid var(--ink); }
+  .aq-levelling-sheet__row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; grid-template-rows: auto; column-gap: var(--space-2); padding: var(--space-2) 0 var(--space-3); }
+  .aq-levelling-sheet__line { grid-column: 1; grid-row: 1; align-items: center; gap: var(--space-2); padding: 0; min-width: 0; }
+  .aq-levelling-sheet__t { font-size: 17px; line-height: 24px; }
+  .aq-levelling-sheet__ask { grid-column: 1 / -1; grid-row: 2; margin: var(--space-1) 0 0; padding: 0; font-size: 14px; line-height: 20px; }
+  .aq-levelling-sheet__c { grid-row: 1; padding: 0; }
+  .aq-levelling-sheet__c.is-a { grid-column: 2; }
+  .aq-levelling-sheet__c.is-b { grid-column: 3; }
+  .aq-levelling-sheet__c.is-a, .aq-levelling-sheet__c.is-b { flex-direction: row; align-items: center; justify-content: flex-start; gap: 0; width: calc(var(--space-8) + var(--space-3)); height: var(--space-6); box-sizing: border-box;
+    padding-left: var(--space-1); border: 1px solid var(--line-strong); background: var(--surface-raised); }
+  .aq-levelling-sheet__q { display: block; font: 500 12px/1 var(--font-mono); color: var(--ink-muted); }
+  .aq-levelling-sheet__c i { display: none; }
+  .aq-levelling-sheet__c.is-gap::before { inset: 3px 3px 3px calc(var(--space-4) + 2px); border: 0; }
+  .aq-levelling-sheet__c.is-said::after { content: ""; position: absolute; left: calc(var(--space-6) - 2px); top: 4px; width: 5px; height: 10px; border-right: 1.5px solid var(--ink-muted); border-bottom: 1.5px solid var(--ink-muted); transform: rotate(45deg); }
+  .aq-levelling-sheet__c.is-ours { grid-column: 1 / -1; grid-row: 3; position: static; margin-top: var(--space-1); gap: var(--space-2); }
+  .aq-levelling-sheet__tick { width: calc(var(--space-4) + 2px); height: calc(var(--space-4) + 2px); }
+  .aq-levelling-sheet__go { font-size: 15px; line-height: 22px; font-weight: 500; }
+  /* the whole row is the link (well over 44 px): the cell is static here, so the target stretches to the row */
+}
 
 /* ---------- LimitBento: limits as a bento, one oversized numeral per tile, a navy water column through the middle
    (look "limit-bento"). Desktop: three columns, heading and the first tile left, the column through both rows in the
@@ -9447,85 +10032,6 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
 .aq-manifold-router--compact.is-mid .aq-manifold-router__route { align-self: center; }
 .aq-manifold-router--compact.is-low .aq-manifold-router__route { align-self: end; }
 .aq-manifold-router--compact .aq-manifold-router__st:not(:last-child)::after { max-height: var(--space-24); }
-
-/* ---------- MarkingMatch: supplier control (look "marking-match"). Two standing rules as headline-sized facts, then a
-   clean ruled schedule between vertical hairlines. Flow only for the ticks, the gate glyph's water and the crosshair
-   (the band under the pointed row, the bar under the pointed column's head). ---------- */
-.aq-marking-match-sec { position: relative; }
-.aq-marking-match { position: relative; }
-
-/* the two facts */
-.aq-marking-match__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-16); margin-bottom: var(--space-12); }
-.aq-marking-match__fact { position: relative; min-width: 0; }
-.aq-marking-match__fact.has-glyph { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-8); align-items: end; }
-.aq-marking-match__fact.has-glyph .aq-marking-match__fk { grid-column: 1 / -1; }
-.aq-marking-match__fk { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); } /* round C verify F7: ink-muted, not ink-subtle (4.2:1 at 12 px) */
-/* round C: a fact is one 32 px line under its eyebrow (the 48 px display set placeholders on a line of their own) */
-.aq-marking-match__fv { margin: 0; font: 300 32px/40px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: pretty; }
-.aq-marking-match__fv .aq-ph { font-size: 16px; line-height: 1.4; vertical-align: middle; }
-.aq-marking-match__facts:has(> .aq-marking-match__fact:only-child) { grid-template-columns: minmax(0, 1fr); }
-.aq-marking-match__gate { display: block; width: calc(var(--space-32) + var(--space-8)); height: auto; overflow: visible; }
-.aq-marking-match__gate path { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.aq-marking-match__pw, .aq-marking-match__vb, .aq-marking-match__vs { stroke: var(--line-strong); }
-.aq-marking-match__wf { stroke: var(--flow); }
-.aq-marking-match__gt { stroke: var(--ink); }
-
-/* the schedule */
-.aq-marking-match__table { position: relative; }
-.aq-marking-match__head, .aq-marking-match__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr); }
-.aq-marking-match__head { position: relative; border-bottom: 1.5px solid var(--navy); }
-.aq-marking-match__head span { padding: 0 var(--space-6) var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); transition: color 150ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-marking-match__head span:first-child { padding-left: 0; }
-.aq-marking-match__colbar { position: absolute; left: 0; bottom: -1.5px; width: calc(100% / 3); border-bottom: 2px solid var(--flow); opacity: 0; transform: translateX(calc(100% * var(--hc, 0))); transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 150ms linear; }
-.aq-marking-match__list { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; }
-.aq-marking-match__row { border-bottom: 1px solid var(--line); }
-.aq-marking-match__c { min-width: 0; padding: var(--space-4) var(--space-6); }
-.aq-marking-match__c[data-c="0"] { padding-left: 0; }
-.aq-marking-match__c + .aq-marking-match__c { border-left: 1px solid var(--line); }
-.aq-marking-match__name { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: 0; margin: 0; font: 400 17px/26px var(--font-sans); color: var(--ink); text-wrap: pretty; }
-.aq-marking-match__n { font: 400 13px/26px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-subtle); white-space: nowrap; }
-.aq-marking-match__c p { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
-.aq-marking-match__how { display: grid; grid-template-columns: var(--space-4) minmax(0, 1fr); column-gap: var(--space-3); }
-.aq-marking-match__ok { width: var(--space-4); height: var(--space-4); margin-top: var(--space-1); overflow: visible; }
-.aq-marking-match__ok path { fill: none; stroke: var(--flow); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-/* column names: for screen readers on desktop, shown per supply on phones */
-.aq-marking-match__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
-
-/* crosshair: the band glides under the pointed row; the column head lights (motion.js sets --hy, --hh, --hc) */
-.aq-marking-match__band {
-  position: absolute; left: 0; right: 0; top: 0; height: var(--hh, 0); background: var(--flow-tint); opacity: 0; pointer-events: none;
-  transform: translateY(var(--hy, 0)); transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), height 180ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 150ms linear;
-}
-.aq-marking-match__table.is-x .aq-marking-match__band, .aq-marking-match__table.is-x .aq-marking-match__colbar { opacity: 1; }
-.aq-marking-match__table[data-hc="0"] .aq-marking-match__head span[data-c="0"],
-.aq-marking-match__table[data-hc="1"] .aq-marking-match__head span[data-c="1"],
-.aq-marking-match__table[data-hc="2"] .aq-marking-match__head span[data-c="2"] { color: var(--flow); }
-/* without motion.js: the pointed row still lifts onto flow-tint */
-.aq-marking-match__table:not(.is-live) .aq-marking-match__row:hover { background: var(--flow-tint); }
-
-/* Fold: desktop shows every supply; the fold works on phones only */
-.aq-fold:not(.is-open) .aq-marking-match__row.aq-fold-x { display: grid; }
-.aq-fold:has(> .aq-marking-match__list) > .aq-fold__btn { display: none; }
-
-@media (prefers-reduced-motion: reduce) { .aq-marking-match__band, .aq-marking-match__colbar, .aq-marking-match__head span { transition: none; } }
-
-@container (max-width: 860px) {
-  .aq-marking-match__facts { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); margin-bottom: var(--space-8); }
-  .aq-marking-match__fv { font-size: 26px; line-height: 34px; }
-  .aq-marking-match__fv .aq-ph { font-size: 15px; }
-  .aq-marking-match__fact.has-glyph { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
-  .aq-marking-match__gate { width: calc(var(--space-24) + var(--space-8)); }
-  .aq-marking-match__head { display: none; }
-  .aq-marking-match__list { border-top: 1.5px solid var(--navy); }
-  .aq-marking-match__row { grid-template-columns: minmax(0, 1fr); padding: var(--space-4) 0 var(--space-6); }
-  .aq-marking-match__c, .aq-marking-match__c[data-c="0"] { padding: 0 0 var(--space-3); }
-  .aq-marking-match__c + .aq-marking-match__c { border-left: 0; padding-left: var(--space-12); }
-  .aq-marking-match__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); } /* round C verify F7: ink-muted, not ink-subtle (4.2:1 at 12 px) */
-  .aq-marking-match__c[data-c="0"] .aq-marking-match__k { display: none; }
-  .aq-marking-match__band, .aq-marking-match__colbar { display: none; }
-  .aq-fold:not(.is-open) .aq-marking-match__row.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-marking-match__list) > .aq-fold__btn { display: flex; }
-}
 
 /* ---------- MembraneAtlas: feed conditions as a numbered table, each row headed by a navy numeral tile ---------- */
 /* Four columns: the navy tile (huge light slash numeral over a soft micrograph), then condition, effect and design.
@@ -10646,86 +11152,6 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
 }
 @media (prefers-reduced-motion: reduce) {
   .aq-option-taps__cam, .aq-option-taps__svg [data-iso-id] { transition: none; }
-}
-
-/* ---------- ParamTiles: design parameters as a Swiss grid of numbered tiles, one cell a blueprint of the skid ---------- */
-/* Four columns on a navy field with hairline gutters: limestone tiles, the lead tile wide and navy, the blueprint two by
-   two. An empty cell left by the count shows the navy field (the concept's checkerboard). */
-.aq-param-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: row dense; gap: 1px;
-  background: var(--navy); border: 1px solid var(--navy); margin-top: var(--space-4); }
-.aq-param-tiles__list { display: contents; list-style: none; }
-.aq-param-tiles__fig { grid-column: 3 / span 2; grid-row: 1 / span 2; background: var(--navy); display: grid; place-items: center; padding: var(--space-6); overflow: hidden; }
-.aq-param-tiles__svg { width: 100%; max-height: 100%; }
-.aq-param-tiles__svg .aq-iso__flow { stroke: var(--on-navy); }
-
-.aq-param-tiles__tile { position: relative; display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; min-height: calc(var(--space-32) * 2);
-  padding: var(--space-6); background: var(--limestone); color: var(--on-limestone); transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-fold:not(.is-open) .aq-param-tiles__tile.aq-fold-x { display: flex; }
-.aq-fold:has(> .aq-param-tiles) > .aq-fold__btn { display: none; }
-.aq-param-tiles__tile.is-lead { grid-column: 1 / span 2; background: var(--navy); color: var(--on-navy); }
-
-.aq-param-tiles__head { display: flex; align-items: flex-start; gap: var(--space-2); }
-.aq-param-tiles__n { display: block; overflow: hidden; flex: none; font: 300 64px/60px var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
-.aq-param-tiles__n > span { display: block; }
-.aq-param-tiles__slash { flex: none; width: 1px; height: var(--space-12); margin-inline: var(--space-1) var(--space-2); background: currentColor; transform: skewX(-18deg); opacity: 0.6; }
-.aq-param-tiles__p { margin: 0; padding-top: var(--space-1); font: 500 12px/16px var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; }
-/* The value in Geist Light (mono stays for the placeholders and figures inside it) */
-.aq-param-tiles__v { margin: 0; font: 300 22px/30px var(--font-sans); letter-spacing: -0.01em; overflow-wrap: anywhere; }
-/* A count that leaves one cell empty in the last row: the last tile takes it, so the grid closes square */
-.aq-param-tiles__tile:last-child:nth-child(4n+2):not(.is-lead) { grid-column: span 2; }
-.aq-param-tiles__tile.is-lead .aq-param-tiles__v { font-size: 32px; line-height: 42px; font-weight: 300; }
-.aq-param-tiles__m { margin: auto 0 0; padding-top: var(--space-3); border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent);
-  display: flex; flex-direction: column; gap: var(--space-2); font: 400 13px/20px var(--font-sans); color: var(--on-limestone-muted); }
-.aq-param-tiles__tile.is-lead .aq-param-tiles__m { color: var(--on-navy-muted); }
-.aq-param-tiles__link { align-self: flex-start; display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); color: var(--flow); text-decoration: none; font: 500 14px/20px var(--font-sans); }
-/* pass 12 C: flow on navy read 2.41:1; the lead tile's link is on-navy */
-.aq-param-tiles__tile.is-lead .aq-param-tiles__link { color: var(--on-navy); }
-.aq-param-tiles__tile.is-lead .aq-param-tiles__link:focus-visible { outline-color: var(--on-navy); }
-.aq-param-tiles__link::after { content: "→"; margin-left: var(--space-1); transition: transform 200ms; }
-.aq-param-tiles__link:hover::after { transform: translateX(var(--space-1)); }
-.aq-param-tiles__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-
-/* A last tile alone in its row (pass 12 C, ind-process 08): the full row, laid out across it (number and name, the
-   value, the basis and link), so no empty navy cell is left beside it */
-/* (the list-scoped selector outweighs the fold's display:flex on tiles past the phone fold) */
-.aq-param-tiles .aq-param-tiles__list > .aq-param-tiles__tile.is-row { grid-column: 1 / -1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: var(--space-6); align-items: start; }
-.aq-param-tiles__tile.is-row .aq-param-tiles__v { padding-top: var(--space-2); }
-.aq-param-tiles__tile.is-row .aq-param-tiles__m { margin: 0; padding: var(--space-1) 0 0 var(--space-6); border-top: 0; border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
-
-/* Hover: the tile's number turns flow */
-.aq-param-tiles__tile:hover .aq-param-tiles__n { color: var(--flow); }
-.aq-param-tiles__tile.is-lead:hover .aq-param-tiles__n { color: var(--limestone); }
-.aq-param-tiles__n { transition: color 300ms; }
-
-@container (max-width: 1100px) {
-  .aq-param-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  /* pass 12 C verify F5: the blueprint drops to rows 2-3, so the wide lead takes row 1 (with the next tile beside it)
-     instead of falling under the blueprint; the cell count is unchanged, so the grid still closes square */
-  .aq-param-tiles__fig { grid-column: 2 / span 2; grid-row: 2 / span 2; }
-  .aq-param-tiles__tile.is-lead { grid-row: 1; }
-  .aq-param-tiles__tile:last-child:nth-child(4n+2):not(.is-lead) { grid-column: auto; }
-  .aq-param-tiles__n { font-size: 52px; line-height: 50px; }
-}
-
-/* Phones: one column, the lead tile first, the blueprint after it, the fold back on */
-@container (max-width: 860px) {
-  .aq-param-tiles { grid-template-columns: minmax(0, 1fr); }
-  .aq-param-tiles__tile.is-lead { grid-column: auto; grid-row: auto; order: -2; }
-  .aq-param-tiles__fig { grid-column: auto; grid-row: auto; order: -1; padding: var(--space-4); }
-  .aq-param-tiles__tile { min-height: 0; padding: var(--space-4) var(--space-4) var(--space-6); }
-  .aq-fold:not(.is-open) .aq-param-tiles__list > .aq-param-tiles__tile.aq-fold-x { display: none; } /* (0,5,0): outranks the list-scoped is-row reset */
-  .aq-fold:has(> .aq-param-tiles) > .aq-fold__btn { display: flex; }
-  .aq-param-tiles__n { font-size: 48px; line-height: 46px; }
-  .aq-param-tiles__tile.is-lead .aq-param-tiles__v { font-size: 22px; line-height: 30px; }
-  .aq-param-tiles__v { font-size: 18px; line-height: 26px; }
-  /* pass 12 C verify F1: the base is-row rule is list-scoped (0,3,0), so the phone reset must be too; back on the tile's flex column */
-  .aq-param-tiles .aq-param-tiles__list > .aq-param-tiles__tile.is-row { display: flex; grid-template-columns: none; row-gap: var(--space-4); align-items: stretch; }
-  .aq-param-tiles__tile.is-row .aq-param-tiles__v { padding-top: 0; }
-  .aq-param-tiles__tile.is-row .aq-param-tiles__m { margin: auto 0 0; padding: var(--space-3) 0 0; border-left: 0; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
-}
-@container (max-width: 600px) {
-  .aq-param-tiles__m { font-size: 14px; line-height: 21px; }
 }
 
 /* ---------- ParameterCallouts ---------- */
@@ -12055,6 +12481,124 @@ a.aq-reader-split__go:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-readout__ref, .aq-readout__caption { grid-column: 1; grid-row: auto; }
 }
 
+/* ---------- ReceivingBench: supplier control as a receiving bench (look "receiving-bench", pass 12 concept 242). An
+   IsoKit bench with five tagged supplies, a magnifier pair (pipe lot marking joined to the certificate's lot line),
+   and the supply rows beside it. Navy tags, line-strong line work, flow only for the lot boxes, the join, the ticks and
+   the pointed supply. ---------- */
+.aq-receiving-bench-sec { position: relative; }
+.aq-receiving-bench { display: grid; grid-template-columns: minmax(0, 10fr) minmax(0, 11fr); column-gap: var(--space-12); align-items: start; }
+.aq-receiving-bench__fig { position: sticky; top: calc(var(--space-24) + var(--space-4)); min-width: 0; }
+.aq-receiving-bench__bench { pointer-events: none; }
+.aq-receiving-bench__world, .aq-receiving-bench__tags { cursor: default; }
+.aq-receiving-bench__mag, .aq-receiving-bench__lens, .aq-receiving-bench__join { transform-box: view-box; }
+.aq-receiving-bench__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-receiving-bench__pair { display: none; }
+
+/* bench and supplies (IsoKit classes do the line work) */
+.aq-iso .aq-receiving-bench__print { stroke: var(--ink-subtle); }
+.aq-iso .aq-receiving-bench__lot { stroke: var(--flow); stroke-width: 3.5; stroke-linecap: round; }
+.aq-receiving-bench__tl { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__td { fill: var(--line-strong); }
+.aq-receiving-bench__tag rect { fill: var(--navy); transition: fill 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-receiving-bench__tag text { font: 500 12px var(--font-mono); letter-spacing: 0.04em; fill: var(--on-navy); }
+
+/* the magnifier pair */
+.aq-receiving-bench__ml { fill: none; stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__md { fill: var(--flow); }
+.aq-receiving-bench__glass { fill: var(--surface-raised); }
+.aq-receiving-bench__rim { fill: none; stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__pipe { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__hl { fill: none; stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__chars { fill: none; stroke: var(--ink-subtle); stroke-width: 3; stroke-linecap: round; }
+.aq-receiving-bench__chars--lot { stroke: var(--ink); }
+.aq-receiving-bench__box { fill: var(--flow-tint); stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__cert { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.25; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__lines { fill: none; stroke: var(--ink-subtle); stroke-width: 2; stroke-linecap: round; }
+.aq-receiving-bench__seal { fill: none; stroke: var(--line-strong); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__jl { fill: none; stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__tk { fill: var(--surface-raised); stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-receiving-bench__tick { fill: none; stroke: var(--flow); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.aq-receiving-bench__lab { font: 500 13px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; fill: var(--ink-muted); }
+
+/* the schedule */
+.aq-receiving-bench__sched { min-width: 0; }
+.aq-receiving-bench__facts { margin: 0 0 var(--space-6); }
+.aq-receiving-bench__fact { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); margin: 0; }
+.aq-receiving-bench__fk { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-receiving-bench__fv { font: 400 19px/28px var(--font-sans); color: var(--ink); }
+.aq-receiving-bench__fv .aq-ph { font-size: 14px; }
+.aq-receiving-bench__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-4); padding: 0 0 var(--space-2) var(--space-12); border-bottom: 1.5px solid var(--navy); }
+.aq-receiving-bench__head span { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-receiving-bench__list { list-style: none; margin: 0; padding: 0; }
+.aq-receiving-bench__row { position: relative; display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2); padding: var(--space-4) 0; border-bottom: 1px solid var(--line); transition: background-color 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-receiving-bench__name { grid-column: 1 / -1; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: start; margin: 0; }
+.aq-receiving-bench__n { margin-top: 1px; display: inline-grid; place-items: center; width: 30px; height: 22px; border-radius: 2px; background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; transition: background-color 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-receiving-bench__name > span:last-child { font: 400 17px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-receiving-bench__c { grid-row: 2; min-width: 0; }
+.aq-receiving-bench__c:nth-of-type(1) { grid-column: 2; }
+.aq-receiving-bench__c:nth-of-type(2) { grid-column: 3; }
+.aq-receiving-bench__c p { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-receiving-bench__how { display: grid; grid-template-columns: var(--space-4) minmax(0, 1fr); column-gap: var(--space-2); }
+.aq-receiving-bench__c .aq-receiving-bench__how { color: var(--ink); }
+.aq-receiving-bench__ok { width: var(--space-4); height: var(--space-4); margin-top: var(--space-1); overflow: visible; }
+.aq-receiving-bench__ok path { fill: none; stroke: var(--flow); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.aq-receiving-bench__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+
+/* pointed supply: row on flow-tint, its tag and its part on the bench in flow */
+.aq-receiving-bench__row.is-on { background: var(--flow-tint); }
+.aq-receiving-bench__row.is-on .aq-receiving-bench__n, .aq-receiving-bench__tag.is-on rect { background: var(--flow); fill: var(--flow); }
+.aq-receiving-bench__row:hover { background: var(--flow-tint); }
+
+/* Fold: desktop shows every supply; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-receiving-bench__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-receiving-bench__list) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .aq-receiving-bench__row, .aq-receiving-bench__n, .aq-receiving-bench__tag rect { transition: none; } }
+
+@container (max-width: 1100px) and (min-width: 861px) {
+  .aq-receiving-bench { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-8); }
+  .aq-receiving-bench__head { display: none; }
+  .aq-receiving-bench__row { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-receiving-bench__c:nth-of-type(1), .aq-receiving-bench__c:nth-of-type(2) { grid-column: 2; grid-row: auto; }
+}
+
+@container (max-width: 860px) {
+  .aq-receiving-bench { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-receiving-bench__fig { position: static; }
+  .aq-receiving-bench__svg { display: none; }
+  .aq-receiving-bench__pair { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto; overflow: visible; }
+  .aq-receiving-bench__facts { margin-bottom: var(--space-4); }
+  .aq-receiving-bench__fv { font-size: 17px; line-height: 26px; }
+  .aq-receiving-bench__head { display: none; }
+  .aq-receiving-bench__list { border-top: 1.5px solid var(--navy); }
+  .aq-receiving-bench__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-3); padding: var(--space-4) 0 var(--space-6); }
+  .aq-receiving-bench__c:nth-of-type(1), .aq-receiving-bench__c:nth-of-type(2) { grid-column: 2; grid-row: auto; }
+  .aq-receiving-bench__c .aq-receiving-bench__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .aq-receiving-bench__c p { font-size: 15px; }
+  .aq-receiving-bench__row:hover { background: none; }
+  .aq-fold:not(.is-open) .aq-receiving-bench__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-receiving-bench__list) > .aq-fold__btn { display: flex; }
+}
+
+/* tablet (600 to 860): the bench stays, centred over the rows, so the navy tags 01 to 05 still point at their supplies */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-receiving-bench__svg { display: block; max-width: 560px; margin: 0 auto; }
+  .aq-receiving-bench__pair { display: none; }
+}
+
+/* dark: navy tag chips on the near-black band get a hairline so the chip shape reads */
+:root[data-theme="dark"] .aq-receiving-bench__tag rect { stroke: var(--on-navy-muted, var(--line-strong)); stroke-width: 1; }
+:root[data-theme="dark"] .aq-receiving-bench__n { box-shadow: inset 0 0 0 1px var(--on-navy-muted, var(--line-strong)); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-receiving-bench__tag rect { stroke: var(--on-navy-muted, var(--line-strong)); stroke-width: 1; }
+  :root:not([data-theme="light"]) .aq-receiving-bench__n { box-shadow: inset 0 0 0 1px var(--on-navy-muted, var(--line-strong)); }
+}
+
+/* the spotlight on the bench that follows the pointed row (motion.js moves it; ported from guided-inspection) */
+.aq-receiving-bench__spot { fill: var(--flow-tint); fill-opacity: 0.45; stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; display: none; opacity: 0.85; transform: translate(var(--rb-x, 0px), var(--rb-y, 0px)); transition: transform 550ms cubic-bezier(0.22, 0.75, 0.22, 1); pointer-events: none; }
+.aq-receiving-bench__svg.is-spot .aq-receiving-bench__spot { display: inline; }
+@media (prefers-reduced-motion: reduce) { .aq-receiving-bench__spot { transition: none; } }
+
 /* ---------- RecordAnatomy: what a published record carries, as a drawing sheet with a title block (pass 9b) ---------- */
 /* Limestone band; the sheet keeps the light tokens in both themes (data-theme="light" on .aq-record-anatomy). Wide:
    the title large in the open left half, the drawing field top right, the title block (the points) in the lower right
@@ -12148,93 +12692,121 @@ a.aq-reader-split__go:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-record-anatomy__row .aq-record-anatomy__d { grid-column: 1 / -1; grid-row: 3; margin-top: var(--space-2); font-size: 15px; line-height: 22px; }
 }
 
-/* ---------- RecordSheet: each process and the record it leaves (look "record-sheet"). A ruled schedule on a drawing
-   sheet: three columns between vertical hairlines, a numbered-notes margin at the right, a title block at the foot.
-   Every record carries a hairline glyph of its kind (ink in line-strong, its accent in flow), over a faint offset
-   impression of itself. ---------- */
-.aq-record-sheet-sec { position: relative; }
-.aq-record-sheet {
-  position: relative; background: var(--surface-sunken); border: 1px solid var(--line-strong);
-  box-shadow: inset 0 0 0 var(--space-2) var(--surface-sunken), inset 0 0 0 calc(var(--space-2) + 1px) var(--line);
-  padding: var(--space-8) 0 0 var(--space-8);
+/* ---------- RecordTrail: the quality system as one record trail (look "record-trail", pass 12 concept 240). Stations on
+   a single 1.5 px rail, each dropping its record sheet on a cord; the rail turns down the right lane and back along the
+   gutter between rows, and ends in a stack of sheets. Ink and line-strong for the line work, flow only for the pointed
+   or arriving station and the glyph accents. ---------- */
+.aq-record-trail-sec { position: relative; }
+.aq-record-trail { --rt-gap: var(--space-8); --rt-row: var(--space-16); --rt-lane: var(--space-8); --rt-r: 12px; --rt-line: var(--line-strong); position: relative; }
+
+/* key: what node, text and sheet stand for (the block's column names) */
+.aq-record-trail .aq-record-trail__key { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); margin: 0 0 var(--space-8); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-record-trail__key span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.aq-record-trail__key i { display: block; flex: none; }
+.aq-record-trail__kn i { width: 12px; height: 12px; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--surface); }
+.aq-record-trail__kc i { width: 16px; height: 9px; background: repeating-linear-gradient(to bottom, var(--ink-subtle) 0 1px, transparent 1px 4px); }
+.aq-record-trail__ks i { width: 12px; height: 15px; border: 1px solid var(--rt-line, var(--line-strong)); background: linear-gradient(225deg, var(--surface-sunken) 3px, var(--rt-line, var(--line-strong)) 3px 4px, var(--surface-raised) 4px); }
+
+/* the run: the list of stations plus a right lane for the turns and the stack */
+.aq-record-trail__run { position: relative; padding-right: var(--rt-lane, var(--space-8)); }
+.aq-record-trail__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--rt-gap, var(--space-8)); row-gap: var(--rt-row, var(--space-16)); list-style: none; margin: 0; padding: 0; }
+.aq-record-trail__st { position: relative; display: flex; flex-direction: column; min-width: 0; padding-top: 20px; }
+
+/* the rail: node to next node; a row's last station hands over to the turn */
+.aq-record-trail__rail { position: absolute; top: 11.25px; left: 8px; right: calc(-1 * var(--rt-gap, var(--space-8)) - 8px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); transform-origin: 0 50%; }
+.aq-record-trail__st.is-row-end .aq-record-trail__rail { right: calc(-0.5 * var(--rt-lane, var(--space-8))); }
+.aq-record-trail__st.is-last .aq-record-trail__rail { display: none; }
+.aq-record-trail__node { position: absolute; top: 5px; left: 1px; z-index: 2; width: 14px; height: 14px; box-sizing: border-box; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--surface); transition: border-color 160ms cubic-bezier(0.2, 0, 0, 1), background-color 160ms cubic-bezier(0.2, 0, 0, 1), transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* the turn: down the right lane, back along the gutter, down into the next row's first node */
+.aq-record-trail__turn { position: absolute; top: 11.25px; left: calc(8px - 300% - 3 * var(--rt-gap, var(--space-8))); right: calc(-0.5 * var(--rt-lane, var(--space-8))); bottom: calc(-0.5 * var(--rt-row, var(--space-16))); pointer-events: none; }
+.aq-record-trail__tr { position: absolute; top: 0; right: 0; bottom: 0; width: calc(var(--rt-lane, var(--space-8)) + var(--rt-r, 12px)); border: 1.5px solid var(--rt-line, var(--line-strong)); border-left: 0; border-radius: 0 var(--rt-r, 12px) var(--rt-r, 12px) 0; }
+.aq-record-trail__tl { position: absolute; top: calc(100% - 1.5px); left: -0.75px; right: calc(var(--rt-lane, var(--space-8)) + var(--rt-r, 12px)); height: calc(0.5 * var(--rt-row, var(--space-16)) + 2px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); border-left: 1.5px solid var(--rt-line, var(--line-strong)); border-top-left-radius: var(--rt-r, 12px); }
+/* the end: from the last station across and down the lane to the stack */
+.aq-record-trail__end { position: absolute; top: 11.25px; left: 8px; right: calc(-0.5 * var(--rt-lane, var(--space-8)) - var(--rt-rest, 0) * (100% + var(--rt-gap, var(--space-8)))); bottom: calc(-1 * var(--space-8) - 32px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); border-right: 1.5px solid var(--rt-line, var(--line-strong)); border-top-right-radius: var(--rt-r, 12px); pointer-events: none; }
+
+/* the hanging part: name and what it controls on the cord */
+.aq-record-trail__hang { position: relative; flex: 1 0 auto; margin-left: 7.25px; padding: var(--space-3) 0 var(--space-6) calc(var(--space-6) - 7.25px); border-left: 1.5px solid var(--rt-line, var(--line-strong)); transition: border-color 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-record-trail__hang::after { content: ""; position: absolute; left: -6px; bottom: -6px; z-index: 2; width: 10.5px; height: 8px; border: 1.5px solid var(--rt-line, var(--line-strong)); border-radius: 2px; background: var(--surface); }
+.aq-record-trail__name { margin: 0 0 var(--space-3); font: 400 19px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; }
+.aq-record-trail__n { display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-muted); }
+.aq-record-trail__ctl { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* the record sheet: paper with a folded corner, its records ruled with a glyph each */
+.aq-record-trail__sheet { position: relative; padding: var(--space-3) var(--space-4) var(--space-2); background: linear-gradient(225deg, var(--surface-sunken) 9px, var(--rt-line, var(--line-strong)) 9px 10px, var(--surface-raised) 10px); border: 1px solid var(--rt-line, var(--line-strong)); clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-record-trail__sheet ul { list-style: none; margin: 0; padding: 0; }
+.aq-record-trail__sheet li { display: grid; grid-template-columns: minmax(0, 1fr) 28px; column-gap: var(--space-3); align-items: start; padding: var(--space-2) 0; font: 400 14px/20px var(--font-sans); color: var(--ink); }
+.aq-record-trail__sheet li + li { border-top: 1px solid var(--line); }
+.aq-record-trail__sk { margin: 0; }
+.aq-record-trail__g { width: 28px; height: 22px; overflow: visible; }
+.aq-record-trail__g path { fill: none; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-record-trail__ink { stroke: var(--ink-subtle); }
+.aq-record-trail__acc { stroke: var(--flow); }
+/* column names: read by screen readers, the key shows them once */
+.aq-record-trail__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* the stack the trail ends in */
+.aq-record-trail__stack { position: relative; display: flex; justify-content: flex-end; align-items: center; gap: var(--space-4); height: 64px; margin-top: var(--space-8); }
+.aq-record-trail__stack::after { content: ""; position: absolute; top: 32px; right: calc(-0.5 * var(--rt-lane, var(--space-8))); width: calc(0.5 * var(--rt-lane, var(--space-8)) + 6px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); }
+.aq-record-trail__pile { width: 120px; height: 64px; overflow: visible; }
+.aq-record-trail__ps { fill: var(--surface-raised); stroke: var(--rt-line, var(--line-strong)); stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-record-trail__pr { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-record-trail__count { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-muted); white-space: nowrap; }
+
+/* pointed or arriving station */
+.aq-record-trail__st:hover .aq-record-trail__node, .aq-record-trail__st:focus-within .aq-record-trail__node, .aq-record-trail__st.is-lit .aq-record-trail__node { border-color: var(--flow); background: var(--flow-tint); transform: scale(1.15); }
+.aq-record-trail__st:hover .aq-record-trail__hang, .aq-record-trail__st:focus-within .aq-record-trail__hang { border-left-color: var(--flow); }
+.aq-record-trail__st:hover .aq-record-trail__sheet, .aq-record-trail__st:focus-within .aq-record-trail__sheet { transform: translateY(-3px); border-color: var(--flow); }
+
+/* Fold: desktop shows every station; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-record-trail__st.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-record-trail__list) > .aq-fold__btn { display: none; }
+
+/* desktop entrance: a station's cord and clip wait for the rail to arrive (motion.js sets is-pending, then is-run per station) */
+.aq-record-trail.is-pending .aq-record-trail__st:not(.is-run) .aq-record-trail__hang { border-left-color: transparent; }
+.aq-record-trail.is-pending .aq-record-trail__st:not(.is-run) .aq-record-trail__hang::after { opacity: 0; }
+.aq-record-trail__hang::after { transition: opacity 160ms cubic-bezier(0.2, 0, 0, 1); }
+
+@media (prefers-reduced-motion: reduce) { .aq-record-trail__node, .aq-record-trail__hang, .aq-record-trail__sheet { transition: none; } }
+
+/* between 861 and 1100: three stations would crowd; the trail keeps four columns but tighter type */
+@container (max-width: 1100px) and (min-width: 861px) {
+  .aq-record-trail { --rt-gap: var(--space-6); }
+  .aq-record-trail__name { font-size: 17px; line-height: 24px; }
 }
-.aq-record-sheet__cols, .aq-record-sheet__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 5fr) var(--space-16); }
-.aq-record-sheet__cols { font: 400 16px/24px var(--font-sans); color: var(--ink); padding-bottom: var(--space-4); }
-.aq-record-sheet__cols span { padding: 0 var(--space-6); }
-.aq-record-sheet__cols span:first-child { padding-left: 0; }
-.aq-record-sheet__cols span:nth-child(2), .aq-record-sheet__cols span:nth-child(3) { border-left: 1px solid var(--line-strong); }
-.aq-record-sheet__cols span:last-child { border-left: 1px solid var(--line-strong); }
-.aq-record-sheet__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
-.aq-record-sheet__row { transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-record-sheet__c { padding: var(--space-4) var(--space-6); border-bottom: 1px solid var(--line); }
-.aq-record-sheet__proc { padding-left: 0; }
-.aq-record-sheet__ctl, .aq-record-sheet__recs { border-left: 1px solid var(--line-strong); }
-.aq-record-sheet__pn { display: none; }
-.aq-record-sheet__name { margin: 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-record-sheet__name a { color: inherit; }
-.aq-record-sheet__ctl p { margin: 0; max-width: 46ch; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
-/* column names: read by screen readers on desktop (the visible head is aria-hidden), shown per row on phones */
-.aq-record-sheet__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
-.aq-record-sheet__recs ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
-.aq-record-sheet__recs li { display: grid; grid-template-columns: minmax(0, 1fr) var(--space-8); column-gap: var(--space-4); align-items: center; font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
-.aq-record-sheet__no {
-  display: flex; align-items: flex-start; justify-content: center; padding-top: var(--space-4);
-  border-left: 1px solid var(--line-strong); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: var(--ink-subtle);
-}
-
-/* the glyph: faint offset impression, then the ink (and its flow accent) over it */
-.aq-record-sheet__g { display: block; width: var(--space-8); height: auto; overflow: visible; }
-.aq-record-sheet__g path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.aq-record-sheet__imp { stroke: var(--line-strong); stroke-width: 1.5; opacity: 0.22; }
-.aq-record-sheet__ink { stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 1 1; stroke-dashoffset: 0; }
-.aq-record-sheet__acc { stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 1 1; stroke-dashoffset: 0; }
-
-/* pointing at a process: the row lifts onto flow-tint, its name and glyph ink turn flow */
-.aq-record-sheet__row:hover { background: var(--flow-tint); }
-.aq-record-sheet__row:hover .aq-record-sheet__name { color: var(--flow); }
-.aq-record-sheet__row:hover .aq-record-sheet__ink { stroke: var(--flow); }
-.aq-record-sheet__row:hover .aq-record-sheet__no { color: var(--flow); }
-
-/* title block: closes the sheet under the notes margin */
-.aq-record-sheet__tb {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; margin: 0 0 0 auto; width: min(100%, calc(var(--space-16) * 6));
-  border-left: 1px solid var(--line-strong); border-top: 1px solid var(--line-strong); margin-top: var(--space-8);
-  font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle);
-}
-.aq-record-sheet__tb > span { padding: var(--space-2) var(--space-4); border-bottom: 1px solid var(--line); }
-.aq-record-sheet__tb > span:nth-child(3) { border-left: 1px solid var(--line); }
-.aq-record-sheet__tb > .aq-record-sheet__tbt { grid-column: 1 / -1; font: 300 28px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); padding: var(--space-4); }
-
-/* Fold: desktop shows every process; the fold works on phones only */
-.aq-fold:not(.is-open) .aq-record-sheet__row.aq-fold-x { display: grid; }
-.aq-fold:has(> .aq-record-sheet__list) > .aq-fold__btn { display: none; }
-
-@media (prefers-reduced-motion: reduce) { .aq-record-sheet__row, .aq-record-sheet__name { transition: none; } }
 
 @container (max-width: 860px) {
-  .aq-record-sheet { padding: var(--space-6) var(--space-4) 0; box-shadow: none; }
-  .aq-record-sheet__cols { display: none; }
-  .aq-record-sheet__row { grid-template-columns: minmax(0, 1fr); padding: var(--space-6) 0; border-bottom: 1px solid var(--line-strong); }
-  .aq-record-sheet__c { padding: 0; border: 0; }
-  .aq-record-sheet__proc { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-2); align-items: baseline; padding-bottom: var(--space-3); }
-  .aq-record-sheet__pn { display: block; font: 400 13px/16px var(--font-mono); color: var(--ink-subtle); }
-  .aq-record-sheet__name { font-size: 22px; line-height: 28px; }
-  .aq-record-sheet__ctl, .aq-record-sheet__recs { padding-left: calc(var(--space-8) + var(--space-2)); }
-  .aq-record-sheet__recs { padding-top: var(--space-4); }
-  .aq-record-sheet__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
-  .aq-record-sheet__proc .aq-record-sheet__k { display: none; }
-  .aq-record-sheet__recs li { font-size: 15px; line-height: 22px; }
-  .aq-record-sheet__no { display: none; }
-  /* round C: the title block moves to the top of the sheet as a one-line caption ("08 processes · 18 records"); the
-     section title already names the sheet, so its large title cell drops */
-  .aq-record-sheet { display: flex; flex-direction: column; }
-  .aq-record-sheet__tb { order: -1; display: flex; flex-wrap: wrap; width: auto; margin: 0 0 var(--space-2); border: 0; font-size: 12px; color: var(--ink-muted); }
-  .aq-record-sheet__tb > span { padding: 0; border: 0; }
-  .aq-record-sheet__tb > span:nth-child(3) { border: 0; }
-  .aq-record-sheet__tb > span:nth-child(3)::before { content: "\a0\b7\a0"; }
-  .aq-record-sheet__tb > .aq-record-sheet__tbt { display: none; }
-  .aq-fold:not(.is-open) .aq-record-sheet__row.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-record-sheet__list) > .aq-fold__btn { display: flex; }
+  .aq-record-trail { --rt-row: 0px; }
+  .aq-record-trail .aq-record-trail__key { gap: var(--space-2) var(--space-4); margin-bottom: var(--space-8); }
+  .aq-record-trail__run { padding-right: 0; }
+  .aq-record-trail__list { grid-template-columns: minmax(0, 1fr); }
+  .aq-record-trail__st { padding: 0 0 var(--space-8) var(--space-8); }
+  .aq-record-trail__node { top: 6px; }
+  .aq-record-trail__rail { top: 20px; bottom: -6px; left: 7.25px; right: auto; width: 0; border-top: 0; border-left: 1.5px solid var(--rt-line, var(--line-strong)); transform-origin: 50% 0; }
+  .aq-record-trail__st.is-row-end .aq-record-trail__rail { right: auto; }
+  .aq-record-trail__turn { display: none; }
+  .aq-record-trail__end { top: 20px; left: 7.25px; right: auto; width: var(--space-4); bottom: -32px; border-top: 0; border-right: 0; border-left: 1.5px solid var(--rt-line, var(--line-strong)); border-bottom: 1.5px solid var(--rt-line, var(--line-strong)); border-radius: 0 0 0 var(--rt-r, 12px); }
+  .aq-record-trail__hang { margin-left: 0; padding: 0 0 var(--space-4); border-left: 0; }
+  .aq-record-trail__hang::after { display: none; }
+  .aq-record-trail__name { margin-bottom: var(--space-2); font-size: 18px; line-height: 26px; }
+  .aq-record-trail__n { display: inline; margin: 0 var(--space-2) 0 0; }
+  .aq-record-trail__ctl { font-size: 15px; line-height: 23px; }
+  .aq-record-trail__sheet { padding: var(--space-2) var(--space-3) var(--space-1); }
+  .aq-record-trail__sheet li { font-size: var(--aq-read-phone); }
+  .aq-record-trail__stack { justify-content: flex-start; flex-direction: row-reverse; margin: 0 0 0 var(--space-8); }
+  .aq-record-trail__stack::after { display: none; }
+  .aq-record-trail__st:hover .aq-record-trail__sheet { transform: none; }
+  .aq-fold:not(.is-open) .aq-record-trail__st.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-record-trail__list) > .aq-fold__btn { display: flex; margin-left: var(--space-8); width: calc(100% - var(--space-8)); box-sizing: border-box; }
+  /* the rail's end curl closes the trail on phones; the stack would sit after the fold button */
+  .aq-record-trail__stack { display: none; }
+  .aq-record-trail__end { bottom: var(--space-2); }
+}
+
+/* tablet (600 to 860): the sheet hangs beside its station, as in the concept's phone strip */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-record-trail__st { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); align-items: start; }
+  .aq-record-trail__sheet { margin-top: var(--space-1); }
 }
 
 /* ---------- RedlineSheet: qualification failures as design-review markups on one limestone drawing sheet (look
@@ -17007,90 +17579,6 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 /* Small phones: the sheet gives its width back (S14): no side frame, the paper runs edge to edge under the gutters */
 @container (max-width: 600px) {
   .aq-tank-ga { margin-inline: calc(var(--space-4) * -1); border-inline-width: 0; }
-}
-
-/* ---------- TermsSheet: how buying works (look "terms-sheet"). A clean numbered terms table (navy head rule, line row
-   rules, mono numbers, flow dashes before values) beside an IsoKit skid drawing, whole in its column and sticky beside
-   the rows on desktop (pass 12 C; it used to bleed off the page's right edge). ---------- */
-.aq-terms-sheet-sec { position: relative; overflow-x: clip; }
-.aq-terms-sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); align-items: start; }
-.aq-terms-sheet__table { min-width: 0; }
-.aq-terms-sheet__head, .aq-terms-sheet__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 6fr); }
-.aq-terms-sheet.has-notes .aq-terms-sheet__head, .aq-terms-sheet.has-notes .aq-terms-sheet__row { grid-template-columns: var(--space-12) minmax(0, 3fr) minmax(0, 4fr) minmax(0, 4fr); }
-.aq-terms-sheet__head { border-bottom: 1.5px solid var(--navy); }
-.aq-terms-sheet__head span { padding: 0 var(--space-4) var(--space-3); font: 400 15px/24px var(--font-sans); color: var(--ink); }
-.aq-terms-sheet__head span:nth-child(3) { border-left: 1px solid var(--line-strong); }
-.aq-terms-sheet__head span:nth-child(2) { padding-left: 0; }
-.aq-terms-sheet__list { list-style: none; margin: 0; padding: 0; }
-.aq-terms-sheet__row { border-bottom: 1px solid var(--line-strong); }
-.aq-terms-sheet__n { padding-top: var(--space-4); font: 400 15px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); transition: color 150ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-terms-sheet__c { min-width: 0; padding: var(--space-4); }
-.aq-terms-sheet__c:nth-child(2) { padding-left: 0; }
-.aq-terms-sheet__c:nth-child(3) { border-left: 1px solid var(--line-strong); }
-.aq-terms-sheet__note { border-left: 1px solid var(--line-strong); }
-.aq-terms-sheet__note p:last-child { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
-.aq-terms-sheet__t { margin: 0; font: 300 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
-.aq-terms-sheet__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
-.aq-terms-sheet__v { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
-.aq-terms-sheet__v li { position: relative; padding-left: var(--space-4); font: 400 15px/23px var(--font-sans); color: var(--ink); }
-.aq-terms-sheet__v li::before { content: ""; position: absolute; left: 0; top: calc(var(--space-3) - 1px); width: var(--space-2); border-top: 1.5px solid var(--flow); }
-.aq-terms-sheet__m { margin: var(--space-3) 0 0; padding-top: var(--space-2); border-top: 1px dashed var(--line-strong); font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
-.aq-terms-sheet__mk { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
-.aq-terms-sheet__go { margin: var(--space-3) 0 0; }
-.aq-terms-sheet__row:hover .aq-terms-sheet__n { color: var(--flow); }
-
-/* the drawing (pass 12 C): whole inside its column (the tank is no longer cut at the page edge), riding beside the rows
-   from the table head; the table starts straight under the heading (was centred against the tall drawing) */
-.aq-terms-sheet__fig { position: sticky; top: 120px; align-self: start; min-width: 0; }
-.aq-terms-sheet__fig .aq-terms-sheet__svg { display: block; width: 100%; max-width: 100%; height: auto; }
-
-/* Fold: desktop shows every term; the fold works on phones only */
-.aq-fold:not(.is-open) .aq-terms-sheet__row.aq-fold-x { display: grid; }
-.aq-fold:has(> .aq-terms-sheet__list) > .aq-fold__btn { display: none; }
-
-@media (prefers-reduced-motion: reduce) { .aq-terms-sheet__n { transition: none; } }
-
-/* phone-only parts (pass 12) stay out of the desktop render */
-.aq-terms-sheet__ph, .aq-terms-sheet__pb { display: none; }
-
-@container (max-width: 860px) {
-  .aq-terms-sheet, .aq-terms-sheet.has-notes { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
-  /* S18: the generic skid has no tie to the rows; it stays on desktop only */
-  .aq-terms-sheet__fig { display: none !important; }
-  .aq-terms-sheet__head, .aq-terms-sheet__row, .aq-terms-sheet.has-notes .aq-terms-sheet__row { grid-template-columns: var(--space-8) minmax(0, 1fr); }
-  .aq-terms-sheet__fig { order: -1; margin: 0 calc(-1 * var(--space-4)); overflow: hidden; }
-  .aq-terms-sheet__fig .aq-terms-sheet__svg { width: 125%; margin-left: 0; }
-  .aq-terms-sheet__head { display: none; }
-  .aq-terms-sheet__list { border-top: 1.5px solid var(--navy); }
-  .aq-terms-sheet__row { padding: var(--space-4) 0; }
-  .aq-terms-sheet__n { padding-top: 0; font-size: 13px; line-height: 26px; }
-  .aq-terms-sheet__c, .aq-terms-sheet__c:nth-child(2) { padding: 0; border: 0; }
-  .aq-terms-sheet__c:nth-child(n+3), .aq-terms-sheet__note { grid-column: 2; border: 0; padding-top: var(--space-2); }
-  .aq-terms-sheet__note:empty { display: none; }
-  .aq-terms-sheet__t { font-size: 18px; line-height: 26px; }
-  .aq-fold:not(.is-open) .aq-terms-sheet__row.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-terms-sheet__list) > .aq-fold__btn { display: flex; margin-top: var(--space-4); }
-}
-
-/* Phones (pass 12): 14 px floor for notes, 44 px links; six terms or more become an accordion (PhoneKit): the head is
-   the number and term, the values stay in view under it, the note and the link open on tap */
-@container (max-width: 860px) {
-  .aq-terms-sheet__m, .aq-terms-sheet__note p:last-child { font-size: 15px; line-height: 22px; }
-  .aq-terms-sheet__mk { font-size: 12px; }
-  .aq-terms-sheet__go a, .aq-terms-sheet__pgo a { display: inline-flex; align-items: center; min-height: 44px; }
-  .aq-terms-sheet__list[data-pk-on] .aq-terms-sheet__ph { display: block; order: -1; grid-column: 1 / -1; margin: 0; }
-  .aq-terms-sheet__list[data-pk-on] .aq-terms-sheet__pb { display: block; grid-column: 2; padding-top: var(--space-2); }
-  .aq-terms-sheet__list[data-pk-on] [data-pk-item] .aq-terms-sheet__note,
-  .aq-terms-sheet__list[data-pk-on] [data-pk-item] .aq-terms-sheet__m,
-  .aq-terms-sheet__list[data-pk-on] [data-pk-item] .aq-terms-sheet__go { display: none; }
-  .aq-terms-sheet__list[data-pk-on] [data-pk-item] { padding: 0 0 var(--space-3); }
-  .aq-terms-sheet__list[data-pk-on] .aq-terms-sheet__hb { min-height: 48px; gap: 0; padding: var(--space-2) 0; font: 300 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
-  .aq-terms-sheet__hn { flex: none; width: var(--space-8); font: 400 13px/24px var(--font-mono); color: var(--ink-subtle); font-variant-numeric: tabular-nums; }
-  .aq-terms-sheet__hb[aria-expanded="true"] .aq-terms-sheet__hn { color: var(--flow); }
-  .aq-terms-sheet__ht { min-width: 0; text-wrap: balance; }
-  .aq-terms-sheet__list[data-pk-on] [data-pk-item] > .aq-terms-sheet__c:nth-child(n+3) { padding-top: 0; }
-  .aq-terms-sheet__pm { margin: 0; padding-top: var(--space-2); border-top: 1px dashed var(--line-strong); font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
-  .aq-terms-sheet__pgo { margin: var(--space-1) 0 0; }
 }
 
 /* ---------- TestSheet: the protocol as a signed test sheet on a limestone table (look "test-sheet") ----------

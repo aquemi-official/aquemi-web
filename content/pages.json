@@ -2802,7 +2802,7 @@
     {
      "type": "table",
      "as": "evidence",
-     "look": "reader-split",
+     "look": "fit-envelope",
      "anchor": "pp-rows",
      "nav": "Wrong choice",
      "h": "When polypropylene is the wrong choice",
@@ -2848,7 +2848,14 @@
        "Unpigmented PP is sensitive to sunlight, and PP is combustible. Some components need a heated room.",
        "A heated indoor plant room, on a route your code accepts"
       ]
-     ]
+     ],
+     "scale": {
+      "from": 0,
+      "to": 80,
+      "unit": "°C",
+      "label": "Fits"
+     },
+     "fold": 3
     },
     {
      "type": "steps",
@@ -2914,7 +2921,7 @@
     },
     {
      "type": "table",
-     "look": "joint-spine",
+     "look": "bid-route",
      "anchor": "priority",
      "nav": "Must-haves",
      "h": "Must-haves, preferences and how bids answer",
@@ -2955,6 +2962,14 @@
        "Shows what each bid includes; lets you trim options to budget.",
        "Factory and site tests, documents, start-up, training, spares and options"
       ]
+     ],
+     "icons": [
+      "gate",
+      "beam",
+      "pinch",
+      "sheet",
+      "slip",
+      "strips"
      ]
     },
     {
@@ -3216,6 +3231,7 @@
     "link": "buying#terms"
    },
    "figure": {
+    "art": "project-plan",
     "plate": "route",
     "stops": [
      "Your order",
@@ -6600,11 +6616,12 @@
     },
     {
      "type": "grid",
-     "look": "industry-feed",
+     "look": "capital-request",
      "nav": "Your case",
      "anchor": "case",
      "h": "Making the case inside your company",
      "intro": "Four reasons you can paste into a capital request, with the source where one applies.",
+     "sheet": "Capital request: Purified Water system",
      "items": [
       {
        "t": "Product quality",
@@ -6615,7 +6632,11 @@
        "t": "Records an inspector reads",
        "d": "Health Canada's good manufacturing practice guides ask for qualified, monitored water and its test records. GUI-0001 covers drugs; GUI-0158, natural health products.",
        "tag": "GUI-0001",
-       "link": "ind-pharma#grades"
+       "link": "ind-pharma#grades",
+       "codes": [
+        "GUI-0001",
+        "GUI-0158"
+       ]
       },
       {
        "t": "Paperwork to match",
@@ -9205,7 +9226,8 @@
        "m": "Ambient or chemically sanitized loops",
        "hl": true,
        "link": "industries#fit",
-       "link_label": "Fit rules for every industry"
+       "link_label": "Fit rules for every industry",
+       "in": true
       },
       {
        "p": "Hot water and steam",
@@ -9217,12 +9239,14 @@
        "v": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]",
        "m": "The same RO and EDI skid, with or without a loop",
        "link": "sys-pw#design",
-       "link_label": "Generation skid design"
+       "link_label": "Generation skid design",
+       "in": true
       },
       {
        "p": "Flow",
        "v": "[minimum–maximum capacity, L/h] per skid",
-       "m": "At your coldest feed water; parallel trains above it"
+       "m": "At your coldest feed water; parallel trains above it",
+       "in": true
       },
       {
        "p": "Plant-scale main systems",
@@ -9246,13 +9270,20 @@
        "v": "We help you write one",
        "m": "From where the water goes and what fails when it is wrong",
        "link": "ind-process#faq",
-       "link_label": "How we draft your limit"
+       "link_label": "How we draft your limit",
+       "in": true
       }
      ],
      "fold": 4,
      "fold_noun": "rules",
      "ground": "light",
-     "look": "param-tiles"
+     "look": "fit-envelope",
+     "scale": {
+      "from": 0,
+      "to": 80,
+      "unit": "°C",
+      "label": "Fits"
+     }
     },
     {
      "type": "faq",
@@ -10320,7 +10351,7 @@
      ],
      "fold": 3,
      "fold_noun": "processes",
-     "look": "record-sheet"
+     "look": "record-trail"
     },
     {
      "type": "grid",
@@ -10449,7 +10480,7 @@
      ],
      "fold": 2,
      "fold_noun": "supply categories",
-     "look": "marking-match",
+     "look": "receiving-bench",
      "anchor": "suppliers"
     },
     {
@@ -10477,7 +10508,7 @@
        "m": "Each marked held, on request or in the questionnaire pack."
       }
      ],
-     "look": "terms-sheet"
+     "look": "contract-folders"
     },
     {
      "type": "table",
@@ -10704,6 +10735,7 @@
     "Pass 12 FAQ \"Can we audit you before we order?\" opens with \"Yes.\" (SITE-PLAN 1.4: answers open with yes, no or the number): true only while the launch gate holds; if the audit route is hidden, the FAQ goes with it"
    ],
    "figure": {
+    "art": "cmp-quality",
     "plate": "stamp",
     "label": "Recorded",
     "title": "Shipment record",
@@ -11365,56 +11397,66 @@
        "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid [proposal validity, days] · Lead time in weeks · Exclusions",
        "m": "Ends with every departure from your specification and its reason, or a written \"none\"",
        "link": "buying#proposal",
-       "link_label": "See the proposal lines"
+       "link_label": "See the proposal lines",
+       "part": "scope"
       },
       {
        "p": "Currency, tax and duty",
        "v": "[quoting currency] · [quoting terms, imported content]",
-       "m": "Stated on page one of each proposal"
+       "m": "Stated on page one of each proposal",
+       "part": "scope"
       },
       {
        "p": "Delivery and lead time",
        "v": "[delivery terms] · [lead time from order, weeks] · [lead time from drawing approval, weeks]",
-       "m": "Two clocks, stated separately: from your order and from approved drawings"
+       "m": "Two clocks, stated separately: from your order and from approved drawings",
+       "part": "base"
       },
       {
        "p": "Payment milestones",
        "v": "[milestone structure]",
-       "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT"
+       "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT",
+       "part": "scope"
       },
       {
        "p": "Acceptance and warranty start",
        "v": "[warranty start event]",
-       "m": "Not from shipment. One warranty text in proposal, manual and contract"
+       "m": "Not from shipment. One warranty text in proposal, manual and contract",
+       "part": "valve"
       },
       {
        "p": "What the warranty covers",
        "v": "[warranty periods: package, service work, consumables] · [warranty exclusions]",
-       "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]"
+       "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]",
+       "part": "ro"
       },
       {
        "p": "Drawings and code",
        "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
-       "m": "What you may change and copy, in writing"
+       "m": "What you may change and copy, in writing",
+       "part": "panel"
       },
       {
        "p": "Your contract form",
        "v": "[contract form positions]",
-       "m": "Any clause we cannot accept is listed once in our proposal, with the reason"
+       "m": "Any clause we cannot accept is listed once in our proposal, with the reason",
+       "part": "scope"
       },
       {
        "p": "Changes after order",
        "v": "A signed change request before work starts [confirm]",
        "m": "Price, schedule effect and payment on one page",
        "link": "project-plan#changes",
-       "link_label": "See how changes work"
+       "link_label": "See how changes work",
+       "part": "option"
       },
       {
        "p": "Non-disclosure agreement",
-       "v": "[NDA turnaround, working days] from receipt"
+       "v": "[NDA turnaround, working days] from receipt",
+       "part": "scope"
       }
      ],
-     "look": "terms-sheet"
+     "look": "clause-tabs"
     },
     {
      "type": "table",
@@ -11590,7 +11632,7 @@
        }
       ]
      ],
-     "look": "reader-split"
+     "look": "levelling-sheet"
     },
     {
      "type": "spec",

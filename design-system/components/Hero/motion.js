@@ -1,6 +1,6 @@
 /* Hero: one timeline, cause before effect. The headline lines rise out of their mask while the eyebrow decodes, the
    lead and actions follow; then the right-hand drawing builds itself the way it would be drawn:
-   - equipment figure: the drawing wipes up like a print, each leader grows out of its anchor on the drawing towards
+   - equipment figure: the drawing wipes up like a print (a hero drawing, figure.art, wipes down), each leader grows out of its anchor on the drawing towards
      its callout, and the callout's reading appears when the line arrives
    - home loop: the guides fade in, the pipe draws round the figure of eight, the parts and labels land as the pipe
      passes them, then four flow dots travel the loop once and fade (all done in under 5 s)
@@ -43,10 +43,12 @@
     // Equipment figure: print wipe, then leaders out of the drawing to the callouts
     figure(q('.aq-hero__figure'), function () {
       var f = q('.aq-hero__figure'), art = q('.aq-illustration', f), t = m.tw(gsap.timeline({ defaults: { ease: 'power3.out' } }));
-      if (art) { gsap.set(art, { clipPath: 'inset(100% 0 0 0)' }); t.to(art, { clipPath: 'inset(0% 0 0 0)', duration: 1.3, ease: 'power3.inOut', clearProps: 'clipPath' }, 0) }
-      // the flow scan line rides the print edge up the drawing, then fades
+      // a hero drawing (figure.art: schedule board, audit table) prints top-down, so a schedule fills in its own order
+      var down = f.classList.contains('aq-hero__figure--drawing');
+      if (art) { gsap.set(art, { clipPath: down ? 'inset(0 0 100% 0)' : 'inset(100% 0 0 0)' }); t.to(art, { clipPath: down ? 'inset(0 0 0% 0)' : 'inset(0% 0 0 0)', duration: 1.3, ease: 'power3.inOut', clearProps: 'clipPath' }, 0) }
+      // the flow scan line rides the print edge across the drawing, then fades
       var scan = q('.aq-hero__scan', f);
-      if (art && scan) t.fromTo(scan, { autoAlpha: 1, top: '98%' }, { top: '2%', duration: 1.3, ease: 'power3.inOut' }, 0).to(scan, { autoAlpha: 0, duration: 0.35, clearProps: 'top' }, 1.3);
+      if (art && scan) t.fromTo(scan, { autoAlpha: 1, top: down ? '2%' : '98%' }, { top: down ? '98%' : '2%', duration: 1.3, ease: 'power3.inOut' }, 0).to(scan, { autoAlpha: 0, duration: 0.35, clearProps: 'top' }, 1.3);
       // phones (pass 12): no leaders; the numbered pins pop onto the drawing, then the callout rows follow in order
       var svg = narrow ? null : q('.aq-hero__leaders--wide', f), co = qa('.aq-hero__callout', f), pins = narrow ? qa('.aq-hero__pins > .aq-hero__pin', f) : [];
       if (pins.length) t.from(pins, { scale: 0, autoAlpha: 0, duration: 0.4, stagger: 0.12, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }, 0.95);

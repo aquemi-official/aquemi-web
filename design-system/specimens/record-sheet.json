@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}), fold, fold_noun (phones only: desktop shows every process). Records split at \";\".",
  "best_for": "RecordSheet sets each process of a quality system and the records it leaves as a ruled schedule on a drawing sheet, every record followed by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records).",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "cmp-quality",
@@ -71,7 +71,7 @@
    "page": "cmp-quality",
    "slot": 0,
    "h": "Each process, and the record it leaves",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",

@@ -1,0 +1,79 @@
+{
+ "look": "record-trail",
+ "component": "RecordTrail",
+ "type": "table",
+ "fields": "as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}), nav, fold, fold_noun (phones only: desktop shows every station). Records split at \";\".",
+ "best_for": "RecordTrail sets the processes of a quality system as stations on one record trail, each station dropping the record sheet it leaves on a cord, the trail ending in a stack of sheets.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-quality",
+   "slot": 0,
+   "h": "Each process, and the record it leaves",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "7f6820b",
+   "hash": "8f3a01ed6a",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Processes",
+    "h": "Each process, and the record it leaves",
+    "cols": [
+     "Process",
+     "What it controls",
+     "Record you can inspect"
+    ],
+    "rows": [
+     [
+      "Change control",
+      "Impact assessed before work continues; your approval for documents you approved",
+      "Change request with impact assessment; change control register"
+     ],
+     [
+      {
+       "t": "Data integrity",
+       "link": "sys-monitoring#data-integrity"
+      },
+      "Control system audit trail, individual accounts with role-based rights, and a configuration baseline changed only under change control",
+      "Audit trail review report; user role list; configuration baseline backup"
+     ],
+     [
+      "Nonconformance and complaints",
+      "Items held and decided; repeat, systemic or client-reported causes get a corrective and preventive action (CAPA)",
+      "Nonconformance report (NCR); CAPA with effectiveness check; complaint log"
+     ],
+     [
+      "Identification and traceability",
+      "Product-contact parts traced by lot or serial number to joint and drawing",
+      "Material log against [PP material certificates]; [PP joint records kept]"
+     ],
+     [
+      "Calibration",
+      "Traceable to national standards through [calibration provider and accreditation held]; an out-of-tolerance result reopens every reading since the last calibration",
+      "Calibration register; as-found and as-left certificates"
+     ],
+     [
+      "Document control",
+      "Only the current approved revision issued; superseded ones withdrawn and kept",
+      "Document register; client comment logs"
+     ],
+     [
+      "Supplier control",
+      "Product-contact and special-process suppliers approved before use, reviewed on a schedule",
+      "Approved supplier list; incoming inspection records"
+     ],
+     [
+      "Internal audit and management review",
+      "Each process audited by someone independent of it; results reviewed by management",
+      "Audit reports; management review minutes"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "processes",
+    "look": "record-trail"
+   }
+  }
+ ]
+}

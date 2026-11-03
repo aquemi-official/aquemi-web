@@ -1,0 +1,73 @@
+{
+ "look": "bid-route",
+ "component": "BidRoute",
+ "type": "table",
+ "fields": "as a table: h, intro, cols [practice, what it does to the bids, use it for], rows [[practice, effect, use]], icons (look-only, one per row, in row order): gate | beam | pinch | sheet | slip | strips (default: that order). A row without a known icon gets a plain station (a ring on the route).",
+ "best_for": "BidRoute draws how a bid travels through a URS as one route through numbered stations, one per table row, each station a line pictogram of what that practice does to the bids, with the rows as cards under their stations.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "urs-guide",
+   "slot": 2,
+   "h": "Must-haves, preferences and how bids answer",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "7f6820b",
+   "hash": "df4c873d18",
+   "block": {
+    "type": "table",
+    "look": "bid-route",
+    "anchor": "priority",
+    "nav": "Must-haves",
+    "h": "Must-haves, preferences and how bids answer",
+    "intro": "Every value in a bid should name the document that proves it.",
+    "cols": [
+     "Practice",
+     "What it does to the bids",
+     "Use it for"
+    ],
+    "rows": [
+     [
+      "Must-have",
+      "One shortfall ends a bid, whatever its price.",
+      "What your product, your inspector or a written standard requires"
+     ],
+     [
+      "Preference",
+      "Scored against the other bids.",
+      "Features you would trade for price, time or service"
+     ],
+     [
+      "Too many must-haves",
+      "Fewer suppliers can bid; sometimes only one.",
+      "Ask of each one: is this the outcome, or one way to reach it?"
+     ],
+     [
+      "One answer format",
+      "Every row answered: meets, meets with a note, or differs.",
+      "Every row of the URS"
+     ],
+     [
+      "One deviation list",
+      "Silence is often read as full compliance, and enforced later.",
+      "Every difference, keyed to your rows, with its reason"
+     ],
+     [
+      "Separate price lines",
+      "Shows what each bid includes; lets you trim options to budget.",
+      "Factory and site tests, documents, start-up, training, spares and options"
+     ]
+    ],
+    "icons": [
+     "gate",
+     "beam",
+     "pinch",
+     "sheet",
+     "slip",
+     "strips"
+    ]
+   }
+  }
+ ]
+}

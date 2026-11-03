@@ -233,6 +233,30 @@
    ]
   },
   {
+   "look": "bid-route",
+   "component": "BidRoute",
+   "type": "table",
+   "status": "live",
+   "fields": "as a table: h, intro, cols [practice, what it does to the bids, use it for], rows [[practice, effect, use]], icons (look-only, one per row, in row order): gate | beam | pinch | sheet | slip | strips (default: that order). A row without a known icon gets a plain station (a ring on the route).",
+   "best_for": "BidRoute draws how a bid travels through a URS as one route through numbered stations, one per table row, each station a line pictogram of what that practice does to the bids, with the rows as cards under their stations.",
+   "held": "6",
+   "pages": [
+    "urs-guide"
+   ],
+   "instances": [
+    {
+     "page": "urs-guide",
+     "slot": 2,
+     "h": "Must-haves, preferences and how bids answer",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "df4c873d18"
+    }
+   ]
+  },
+  {
    "look": "binder-spines",
    "component": "BinderSpines",
    "type": "table",
@@ -484,6 +508,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "a14d480d52"
+    }
+   ]
+  },
+  {
+   "look": "capital-request",
+   "component": "CapitalRequest",
+   "type": "grid",
+   "status": "live",
+   "fields": "h, intro (section head), sheet (look-only: the form's title, default \"Capital request\"; on phones it breaks after its colon), items [{t, d, link, tag, codes}]. codes: the references to set in the margin (each must appear in that item's d); without codes, an item's tag stands there alone.",
+   "best_for": "CapitalRequest sets a page's reasons to buy as a capital request form already filled in: one paper sheet with a folded corner, a numbered field per reason with its text typed on the field line, an \"Attach\" link to the page that holds the source, and the references a reason rests on as mono boxes in the margin.",
+   "held": "4",
+   "pages": [
+    "first-system"
+   ],
+   "instances": [
+    {
+     "page": "first-system",
+     "slot": 6,
+     "h": "Making the case inside your company",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "751ff1b846"
     }
    ]
   },
@@ -746,6 +794,30 @@
    ]
   },
   {
+   "look": "clause-tabs",
+   "component": "ClauseTabs",
+   "type": "spec",
+   "status": "live",
+   "fields": "(a spec block, as terms-sheet): h, intro, cols [term, ours, note], rows [{p, v, m, link, link_label, part}]. part (look-only): what the clause governs on the drawing: \"scope\" (default), \"base\", \"ro\", \"panel\", \"valve\" or \"option\". A tag sits beside a small part (the valve), never on it, so the lit part stays in view; no leader runs through the rack, its pump or the panel on its way to another part's tag. A value written \"a · b\" breaks into lines.",
+   "best_for": "ClauseTabs shows commercial terms as page one of a proposal on a clipboard, with a numbered tab on each clause and a leader from every tab to what that clause governs on a small isometric PP package (look `clause-tabs`, a spec block).",
+   "held": "10",
+   "pages": [
+    "buying"
+   ],
+   "instances": [
+    {
+     "page": "buying",
+     "slot": 0,
+     "h": "Terms at a glance",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "a7a9fc88cc"
+    }
+   ]
+  },
+  {
    "look": "code-index",
    "component": "CodeIndex",
    "type": "docs",
@@ -926,6 +998,30 @@
      "last_seen": "2026-11-03",
      "commit": "281a059",
      "hash": "6e79adee19"
+    }
+   ]
+  },
+  {
+   "look": "contract-folders",
+   "component": "ContractFolders",
+   "type": "spec",
+   "status": "live",
+   "fields": "h, intro, cols [subject, what the page covers, note], rows [{p, v (\"a · b · c\"), m, link, link_label}].",
+   "best_for": "ContractFolders sets \"how buying works\" as the folders a buyer is handed: each row a limestone folder with its subject on the tab and a sheet inside listing what the linked page covers, the link as a full-width row under it.",
+   "held": "2",
+   "pages": [
+    "cmp-quality"
+   ],
+   "instances": [
+    {
+     "page": "cmp-quality",
+     "slot": 4,
+     "h": "How buying from us works",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "2dcbef18c6"
     }
    ]
   },
@@ -1696,6 +1792,41 @@
    ]
   },
   {
+   "look": "fit-envelope",
+   "component": "FitEnvelope",
+   "type": "spec",
+   "status": "live",
+   "fields": "- a table (urs-guide): h, intro, cols [need, why, instead], rows [[need, why, instead | {t, link, intent}]]; - or a spec (as: callouts, ind-process): rows [{p, v, m, link, link_label, in}] read as need = p, why = v, instead = m; a row with \"in\": true is not a tag: it is listed inside the envelope, under the band, as what fits (need bold, then why and instead each on its own line, then the link on its own line); - scale (look-only, DR-018): {from, to, unit, label}: the band's ends (from-to unit) and the envelope's label (\"Fits\"). Its figures must be stated by a reading field of the same block.",
+   "best_for": "FitEnvelope draws where the package fits and what it does not take as a boundary: our polypropylene package stands inside a dashed \"fits\" envelope with its rated temperature range as a steel-blue band at the foot, and every exclusion hangs outside the envelope as a numbered tag tied to its edge.",
+   "held": "7-8",
+   "pages": [
+    "ind-process",
+    "urs-guide"
+   ],
+   "instances": [
+    {
+     "page": "urs-guide",
+     "slot": 0,
+     "h": "When polypropylene is the wrong choice",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "2392e35df3"
+    },
+    {
+     "page": "ind-process",
+     "slot": 6,
+     "h": "Where it fits, and what we do not supply",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "5354fb0137"
+    }
+   ]
+  },
+  {
    "look": "fit-readout",
    "component": "FitReadout",
    "type": "spec",
@@ -2244,13 +2375,11 @@
    "look": "industry-feed",
    "component": "IndustryFeed",
    "type": "grid",
-   "status": "live",
+   "status": "retired",
    "fields": "h, items [{t, d, tag, link}]. tag is the evidence shown large (keep it short: a standard code); an item without one shows its number large instead (pass 12 round C: never its name, which the title already carries) and drops the small number line. Best for 2 to 4 items.",
    "best_for": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type.",
    "held": "3-4",
-   "pages": [
-    "first-system"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "home",
@@ -2296,7 +2425,7 @@
      "page": "first-system",
      "slot": 6,
      "h": "Making the case inside your company",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -2423,8 +2552,7 @@
    "best_for": "JointSpine shows a log as rows hanging off a pipe: a twin-wall pipe drops in beside the title, bends and runs down the log as its spine, and each row sits level with a numbered joint on it.",
    "held": "6-8",
    "pages": [
-    "buying",
-    "urs-guide"
+    "buying"
    ],
    "instances": [
     {
@@ -2471,7 +2599,7 @@
      "page": "urs-guide",
      "slot": 2,
      "h": "Must-haves, preferences and how bids answer",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -2588,6 +2716,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "91f9c0a5eb"
+    }
+   ]
+  },
+  {
+   "look": "levelling-sheet",
+   "component": "LevellingSheet",
+   "type": "table",
+   "status": "live",
+   "fields": "as the evidence table: h, intro, cols [line, ask, where ours states it], rows [line, ask, {t, link, intent}]. quotes (look-only, optional): the two other quotes' sheet labels, default [\"Quote A\", \"Quote B\"] (a French page sets its own; the field needs adding to NOT_COPY before a page uses it).",
+   "best_for": "LevellingSheet lays quotes side by side on the same ruled lines, so a buyer sees which lines each quote leaves blank before comparing prices (look `levelling-sheet`, an evidence table).",
+   "held": "8",
+   "pages": [
+    "buying"
+   ],
+   "instances": [
+    {
+     "page": "buying",
+     "slot": 3,
+     "h": "Comparing quotes on the same lines",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "08775b0d06"
     }
    ]
   },
@@ -3066,13 +3218,11 @@
    "look": "marking-match",
    "component": "MarkingMatch",
    "type": "table",
-   "status": "live",
+   "status": "retired",
    "fields": "as a table: facts [{k (short label), v (the rule; [placeholders] allowed), glyph (\"gate\", optional)}], cols [supply, what we require, how we verify it], rows (cells strings or {t, link}), fold, fold_noun (phones only).",
    "best_for": "MarkingMatch shows supplier control as two standing rules set as headline-sized facts over a clean ruled schedule of supplies, what we require and how we verify it.",
    "held": "5",
-   "pages": [
-    "cmp-quality"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "cmp-quality",
@@ -3088,9 +3238,9 @@
      "page": "cmp-quality",
      "slot": 3,
      "h": "What we require from suppliers",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-02",
-     "last_seen": "2026-11-02",
+     "last_seen": "2026-11-03",
      "commit": "b8b6da7",
      "hash": "c0580901ba"
     }
@@ -3562,13 +3712,11 @@
    "look": "param-tiles",
    "component": "ParamTiles",
    "type": "spec",
-   "status": "live",
+   "status": "retired",
    "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun.",
    "best_for": "ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles with one blueprint cell of the skid, so each parameter reads as its own panel and the whole grid scans at a glance.",
    "held": "8-10",
-   "pages": [
-    "ind-process"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "sys-pw",
@@ -3614,7 +3762,7 @@
      "page": "ind-process",
      "slot": 6,
      "h": "Where it fits, and what we do not supply",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -4057,10 +4205,8 @@
    "best_for": "ReaderSplit sets an evidence table on a band split down the middle: the readers (auditors, inspectors) on the navy half, what each reads and where we answer it across the seam on the limestone half, row against row.",
    "held": "5-8",
    "pages": [
-    "buying",
     "first-system",
-    "project-plan",
-    "urs-guide"
+    "project-plan"
    ],
    "instances": [
     {
@@ -4077,7 +4223,7 @@
      "page": "urs-guide",
      "slot": 0,
      "h": "When polypropylene is the wrong choice",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bff41e0",
@@ -4167,11 +4313,35 @@
      "page": "buying",
      "slot": 3,
      "h": "Comparing quotes on the same lines",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "a64d16f1de"
+    }
+   ]
+  },
+  {
+   "look": "receiving-bench",
+   "component": "ReceivingBench",
+   "type": "table",
+   "status": "live",
+   "fields": "as a table: facts [{k, v}] (the standing rule, shown as one line over the rows), cols [supply, what we require, how we verify it], rows (cells strings or {t, link}; up to five drawn supplies, in this order), fold, fold_noun (phones only). The circle labels come from the page's own words: \"Lot marking\" and \"Certificate\".",
+   "best_for": "ReceivingBench sets supplier control as a receiving bench: an isometric bench with the supplies the block lists, each tagged with its row number, and a magnifier pair that joins the pipe's lot marking to the certificate's lot line.",
+   "held": "5",
+   "pages": [
+    "cmp-quality"
+   ],
+   "instances": [
+    {
+     "page": "cmp-quality",
+     "slot": 3,
+     "h": "What we require from suppliers",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "05df88d5b5"
     }
    ]
   },
@@ -4223,13 +4393,11 @@
    "look": "record-sheet",
    "component": "RecordSheet",
    "type": "table",
-   "status": "live",
+   "status": "retired",
    "fields": "as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}), fold, fold_noun (phones only: desktop shows every process). Records split at \";\".",
    "best_for": "RecordSheet sets each process of a quality system and the records it leaves as a ruled schedule on a drawing sheet, every record followed by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records).",
    "held": "7-8",
-   "pages": [
-    "cmp-quality"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "cmp-quality",
@@ -4245,7 +4413,7 @@
      "page": "cmp-quality",
      "slot": 0,
      "h": "Each process, and the record it leaves",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -4302,6 +4470,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "4946edd07a"
+    }
+   ]
+  },
+  {
+   "look": "record-trail",
+   "component": "RecordTrail",
+   "type": "table",
+   "status": "live",
+   "fields": "as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}), nav, fold, fold_noun (phones only: desktop shows every station). Records split at \";\".",
+   "best_for": "RecordTrail sets the processes of a quality system as stations on one record trail, each station dropping the record sheet it leaves on a cord, the trail ending in a stack of sheets.",
+   "held": "8",
+   "pages": [
+    "cmp-quality"
+   ],
+   "instances": [
+    {
+     "page": "cmp-quality",
+     "slot": 0,
+     "h": "Each process, and the record it leaves",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "7f6820b",
+     "hash": "8f3a01ed6a"
     }
    ]
   },
@@ -6356,14 +6548,11 @@
    "look": "terms-sheet",
    "component": "TermsSheet",
    "type": "spec",
-   "status": "live",
+   "status": "retired",
    "fields": "h, intro, cols [term, ours, note], rows [{p, v, m, link, link_label}], fold, fold_noun (phones only: desktop shows every term). Phones (pass 12): no drawing (S18: the generic skid has no tie to the rows); rows stack number, term and values.",
    "best_for": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid, whole in its column and sticky beside the rows on desktop: how you buy it next to what you buy.",
    "held": "1-10",
-   "pages": [
-    "buying",
-    "cmp-quality"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "cmp-quality",
@@ -6449,7 +6638,7 @@
      "page": "cmp-quality",
      "slot": 4,
      "h": "How buying from us works",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -6459,7 +6648,7 @@
      "page": "buying",
      "slot": 0,
      "h": "Terms at a glance",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",

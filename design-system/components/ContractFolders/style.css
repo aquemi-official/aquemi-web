@@ -1,0 +1,76 @@
+/* ---------- ContractFolders: how buying works as the folders a buyer is handed (look "contract-folders", pass 12
+   concept 243). Limestone folders with the subject on the tab, a raised sheet inside: index tabs (terms) or a form
+   with empty mark boxes, a signature line and a pen (onboarding). The link under each folder is a full-width row.
+   Flow only for the pen, the link arrow and the pointed folder. ---------- */
+.aq-contract-folders-sec { position: relative; }
+.aq-contract-folders { position: relative; }
+.aq-contract-folders__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-12); row-gap: var(--space-12); align-items: stretch; list-style: none; margin: 0; padding: 0; }
+.aq-contract-folders__f { display: flex; flex-direction: column; min-width: 0; }
+/* the shorter folder's cover runs deeper below its sheet, so both links share one line */
+.aq-contract-folders__f > .aq-contract-folders__folder { flex: 1 0 auto; }
+
+/* the folder: limestone cover with its tab */
+.aq-contract-folders__folder { position: relative; margin-top: 44px; padding: var(--space-4) var(--space-4) var(--space-6); background: var(--limestone); border: 1px solid var(--on-limestone-muted); border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md); }
+.aq-contract-folders__tab { position: absolute; left: -1px; bottom: calc(100% - 1px); display: flex; align-items: baseline; gap: var(--space-3); max-width: calc(100% - var(--space-8)); margin: 0; padding: var(--space-2) var(--space-6) var(--space-2) var(--space-4); background: var(--limestone); border: 1px solid var(--on-limestone-muted); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-contract-folders__n { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-limestone-muted); }
+
+/* the sheet inside */
+.aq-contract-folders__sheet { position: relative; padding: var(--space-6) var(--space-6) var(--space-4); background: var(--surface-raised); border: 1px solid var(--on-limestone-muted); box-shadow: 3px 3px 0 0 var(--paper-dim); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.aq-contract-folders__sheet .aq-contract-folders__k { margin: 0 0 var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-contract-folders__items { list-style: none; margin: 0; padding: 0; }
+.aq-contract-folders__items li { position: relative; display: grid; align-items: center; min-height: 40px; border-top: 1px solid var(--line); font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-contract-folders__items li:last-child { border-bottom: 1px solid var(--line); }
+.aq-contract-folders__it { min-width: 0; padding: var(--space-2) 0; text-wrap: pretty; }
+.aq-contract-folders__sheet .aq-contract-folders__m { margin: var(--space-3) 0 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* tabs: each item an index tab standing out of the sheet's right edge */
+.is-tabs .aq-contract-folders__sheet { margin-right: var(--space-8); }
+.is-tabs .aq-contract-folders__items li { grid-template-columns: minmax(0, 1fr); }
+.aq-contract-folders__ix { position: absolute; top: 3px; bottom: 3px; left: calc(100% + var(--space-6) + 1px); display: grid; place-items: center; width: var(--space-8); border: 1px solid var(--on-limestone-muted); border-left: 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--surface-raised); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), color 160ms linear; }
+.is-tabs .aq-contract-folders__items li:nth-child(even) .aq-contract-folders__ix { background: var(--surface-sunken); }
+
+/* form: ruled lines with an empty mark box, then the signature line and the pen */
+.is-form .aq-contract-folders__items li { grid-template-columns: minmax(0, max-content) minmax(var(--space-4), 1fr) auto; column-gap: var(--space-2); }
+/* printed form boxes, not UI checkboxes: small, square-cornered, ink-subtle, on a dotted leader from the paper's name */
+.aq-contract-folders__box { display: block; width: 12px; height: 12px; border: 1px solid var(--ink-subtle); border-radius: 0; }
+.aq-contract-folders__ld { display: block; align-self: center; height: 12px; border-bottom: 1px dotted var(--line-strong); }
+.aq-contract-folders__sign { position: relative; height: 56px; margin-top: var(--space-4); }
+.aq-contract-folders__sl { position: absolute; left: 0; right: 30%; bottom: var(--space-3); border-bottom: 1.25px solid var(--ink); }
+.aq-contract-folders__pen { position: absolute; right: 0; bottom: var(--space-1); width: 132px; height: 31px; overflow: visible; transform: rotate(-14deg); transform-origin: 10% 50%; }
+.aq-contract-folders__pb { fill: var(--surface-raised); stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-contract-folders__pd { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+/* the link under the folder: a full-width row */
+.aq-contract-folders__go { margin: 0; }
+.aq-contract-folders__go a { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--aq-hit); padding: var(--space-2) 0; border-bottom: 1px solid var(--line-strong); font: 400 16px/22px var(--font-sans); color: var(--action); text-decoration: none; }
+.aq-contract-folders__go a::after { content: "→"; font-family: var(--font-mono); transition: transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-contract-folders__go a:hover { color: var(--action-hover); }
+.aq-contract-folders__go a:hover::after { transform: translateX(4px); }
+.aq-contract-folders__go a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* pointed folder: the sheet lifts, the tabs fan out */
+.aq-contract-folders__f:hover .aq-contract-folders__sheet, .aq-contract-folders__f:focus-within .aq-contract-folders__sheet { transform: translateY(-4px); }
+.aq-contract-folders__f:hover .aq-contract-folders__ix, .aq-contract-folders__f:focus-within .aq-contract-folders__ix { transform: translateX(calc(var(--j, 0) * 1px + 2px)); color: var(--flow); }
+
+@media (prefers-reduced-motion: reduce) { .aq-contract-folders__sheet, .aq-contract-folders__ix, .aq-contract-folders__go a::after { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-contract-folders__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-contract-folders__f { display: block; }
+  .aq-contract-folders__folder { margin-top: 40px; padding: var(--space-3) var(--space-3) var(--space-4); }
+  .aq-contract-folders__tab { font-size: 17px; line-height: 24px; }
+  .aq-contract-folders__sheet { padding: var(--space-4) var(--space-4) var(--space-3); }
+  .is-tabs .aq-contract-folders__sheet { margin-right: 0; }
+  .aq-contract-folders__items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); }
+  .aq-contract-folders__items li, .aq-contract-folders__items li:last-child { min-height: 0; border-bottom: 0; font-size: var(--aq-read-phone); line-height: 20px; }
+  .is-tabs .aq-contract-folders__items li { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); align-items: baseline; }
+  .aq-contract-folders__ix { position: static; display: inline; width: auto; border: 0; background: none; font-size: 12px; }
+  .is-tabs .aq-contract-folders__items li:nth-child(even) .aq-contract-folders__ix { background: none; }
+  .is-form .aq-contract-folders__items li { column-gap: var(--space-2); }
+  .aq-contract-folders__box { width: 12px; height: 12px; }
+  .aq-contract-folders__sheet .aq-contract-folders__m { font-size: var(--aq-read-phone); }
+  .aq-contract-folders__sign { height: 48px; }
+  .aq-contract-folders__pen { width: 112px; height: 26px; }
+  .aq-contract-folders__go a { min-height: 48px; font-size: 15px; }
+  .aq-contract-folders__f:hover .aq-contract-folders__sheet { transform: none; }
+}

@@ -38,7 +38,9 @@ with reduced motion) and `style.css` here. Pass 12 audit patterns S11 (situation
   follows focus, as in tabs).
 - `data-pk-open`: the index open at first (default `0`; `-1` for an accordion with none open).
 - Heads (`[data-pk-head]`) are hidden until the root is on; give a desktop-only twin `data-pk-desk` and it hides while
-  the root is on. A body may be `display: contents` on desktop: once closed it is `display: none` whatever the look says.
+  the root is on. PhoneKit hides only the head itself: a wrapper round a head (an `h3` holding the button, say) must
+  hide with it in the look's CSS (`display: none` until `[data-pk-on]`), or the desktop keeps an empty heading
+  (ClauseTabs `__ph`, round D). A body may be `display: contents` on desktop: once closed it is `display: none` whatever the look says.
 - The script writes `aria-expanded` and `aria-controls` on each head (and an id on each body), and Enter and Space open
   a head that is not a button. Use a real `<button type="button">` for heads.
 - A start-with link in a body or a head row: `class="aq-phone-kit__go"`, a full-width row link at least 48 px with the
@@ -116,3 +118,15 @@ Added in build round C (integrator, 2026-11-03):
 - CutawayRail keys each card twice (a marker 12 % of the reading window above the card, and the card's top) to move
   its switch earlier than PhoneKit's 30 % line. A `data-pk-line="<fraction>"` option here would replace that workaround
   (open, no owner this round).
+
+Added in build round D (integrator, 2026-11-03):
+- accordion plus sticky figure (nested roots, as SpareSheet): ClauseTabs (buying terms). The clause list is the
+  accordion (`data-pk-open="-1"`); the root is a sticky figure (`data-pk-bp="860" data-pk-h="180" data-pk-zoom="1.6"`)
+  whose `data-pk-key` sits on the tags only, so the zoom centres on the tag; the tags counter-scale (`scale(1 /
+  --pk-s)`); a tapped clause (`pk:change`) wins over the reading line while its row is in view. The root is a flex
+  column while PhoneKit is on, because a grid item's sticky box holds only inside its own row.
+- accordion: FitEnvelope (urs-guide pp-rows, ind-process fit): the lockout tags are heads on one cord, none open at
+  first, `fold: 3` on urs-guide.
+- Designed without PhoneKit (each README says why): LevellingSheet (a plain CSS checklist, each row one link),
+  BidRoute (an always-open riser: the route is the idea), CapitalRequest (a form, nothing to pick), RecordTrail,
+  ReceivingBench and ContractFolders (each station, row or folder already one readable unit).

@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: facts [{k (short label), v (the rule; [placeholders] allowed), glyph (\"gate\", optional)}], cols [supply, what we require, how we verify it], rows (cells strings or {t, link}), fold, fold_noun (phones only).",
  "best_for": "MarkingMatch shows supplier control as two standing rules set as headline-sized facts over a clean ruled schedule of supplies, what we require and how we verify it.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "cmp-quality",
@@ -71,9 +71,9 @@
    "page": "cmp-quality",
    "slot": 3,
    "h": "What we require from suppliers",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-03",
    "commit": "b8b6da7",
    "hash": "c0580901ba",
    "block": {

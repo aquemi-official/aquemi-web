@@ -436,3 +436,26 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 @container (min-width: 861px) {
   .aq-hero__grid--scene:has(> .aq-hero-scene:is(.aq-hero-scene--bay, .aq-hero-scene--map, .aq-hero-scene--reply)) { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
 }
+
+/* ---------- Pass 12 round D: hero-only drawings (hero field figure: {"art": "<id>"}, HERO_ART in Hero.js) ----------
+   cmp-quality's audit table and project-plan's schedule board are line drawings like the equipment heroes (the same
+   Illustration mask, ink-muted, no callouts). Desktop: the near-square drawing takes a little more of the 6:5 figure
+   (inset 2 % 4 %, not 10 %), so it holds its half of the hero as the stamp and route plates it replaces did. Phone: the
+   box takes the drawing's own ratio at full gutter width (heroBoxR), no band above or below. */
+.aq-hero__figure--drawing .aq-hero__art .aq-illustration { inset: 2% 4%; }
+@container (max-width: 860px) {
+  .aq-hero__figure--drawing .aq-hero__art .aq-illustration { inset: 0; }
+}
+/* Tablet (561 to 860, verify fix 6): the drawing at most 600 px wide and centred, so the near-square sheet does not
+   blow up to 721 px (project-plan's hero was 1,101 px tall at 768); its objects stay at about 0.8x desktop size. */
+@container (min-width: 561px) and (max-width: 860px) {
+  .aq-hero__figure--drawing { width: 100%; max-width: 600px; margin-inline: auto; }
+}
+@container (max-width: 560px) {
+  /* cmp-quality, small phones only (verify fix 3): the audit table is cropped to its top, so the four records
+     (manual, register, the fused joint, the shipment record) read at about 1.4x instead of sharing 343 px with the
+     legs. The box is the crop's ratio; mask size and position place the table top in it, the shipment record's lower
+     corner inside the box. From 561 px the whole table shows in its own 1.11 box. */
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.31; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 139% auto; mask-size: 139% auto; -webkit-mask-position: 46% 26%; mask-position: 46% 26%; }
+}

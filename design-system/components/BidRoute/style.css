@@ -1,0 +1,79 @@
+/* ---------- BidRoute: one route through numbered stations, one per row, the rows as cards under their stations ---------- */
+/* Desktop: the route runs the full width (a twin-wall pipe, the water its centre line) with one pictogram per row; a
+   drop leaves each station and turns into its card's number. Cards sit in as many columns as rows. Up to 1100 px and
+   on phones: the route becomes a riser down the left, each row beside its number with its own pictogram. */
+.aq-bid-route { margin-top: var(--space-6); }
+.aq-bid-route__fig { position: relative; }
+.aq-bid-route__svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* line art: one weight, ground-filled so what stands in front hides the route */
+.aq-bid-route__w { fill: none; stroke: var(--line-strong); stroke-width: 13; }
+.aq-bid-route__g { fill: none; stroke: var(--surface); stroke-width: 10; }
+.aq-bid-route__h2o { fill: none; stroke: var(--flow); stroke-width: 2; }
+.aq-bid-route__eq { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-bid-route__pa { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__nv { fill: var(--action); stroke: var(--action); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-bid-route__ln, .aq-bid-route__wl { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__th { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__mk { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-bid-route__gr { fill: var(--surface); stroke: none; }
+.aq-bid-route__drop { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-bid-route__st { transition: translate 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-bid-route__st.is-hot { translate: 0 -4px; }
+/* the pinch is part of the route: it lights in place, so its throat never lifts off the pipe */
+.aq-bid-route__st.is-pinch.is-hot { translate: none; }
+.aq-bid-route__drop.is-hot { stroke: var(--flow); }
+.aq-bid-route__ring { fill: var(--surface); stroke: var(--flow); stroke-width: 2; }
+.aq-bid-route__st.is-hot .aq-bid-route__eq, .aq-bid-route__st.is-hot .aq-bid-route__pa, .aq-bid-route__st.is-hot .aq-bid-route__ln, .aq-bid-route__st.is-hot .aq-bid-route__th,
+.aq-bid-route__st.is-hot .aq-bid-route__wl { stroke: var(--flow); }
+
+/* the cards, one column per station, each opening on its number where its drop lands */
+.aq-bid-route__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); grid-template-rows: repeat(4, auto); }
+/* each card spans the row's four lines (number, practice, effect, use it for) on a subgrid, so the "Use it for" rules
+   line up across all six cards */
+.aq-bid-route__card { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: var(--space-2); align-content: start; padding: 0 var(--space-3) 0 var(--space-3); color: var(--ink); }
+.aq-bid-route__no { align-self: start; justify-self: start; display: grid; place-items: center; width: 28px; height: 28px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--line-strong);
+  background: var(--surface); font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-bid-route__card.is-hot .aq-bid-route__no { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-bid-route__mini { display: none; }
+.aq-bid-route__t { margin: var(--space-1) 0 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; text-wrap: balance; }
+.aq-bid-route__e { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-bid-route__u { align-self: start; margin: var(--space-1) 0 0; padding-top: var(--space-2); border-top: 1px solid var(--line); font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-bid-route__k { display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-bid-route__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* up to 1100 px and phones: a riser down the left; each row beside its number, its pictogram at the right of its title */
+@container (max-width: 1100px) {
+  .aq-bid-route__fig { display: none; }
+  .aq-bid-route__cards { position: relative; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: var(--space-6); max-width: 720px; padding-left: 44px; }
+  /* the riser: the same twin-wall pipe, standing, its water the centre line */
+  .aq-bid-route__cards::before { content: ""; position: absolute; left: 7px; top: var(--space-3); bottom: var(--space-3); width: 13px; box-sizing: border-box;
+    border-inline: 1.5px solid var(--line-strong); background: linear-gradient(90deg, transparent 4.5px, var(--flow) 4.5px, var(--flow) 6.5px, transparent 6.5px); }
+  .aq-bid-route__card { position: relative; display: block; grid-row: auto; padding: 0; }
+  .aq-bid-route__no { position: absolute; left: -44px; top: 0; }
+  .aq-bid-route__mini { display: block; float: right; width: 88px; margin: 0 0 var(--space-1) var(--space-3); }
+  .aq-bid-route__mini svg { display: block; width: 100%; height: auto; }
+  .aq-bid-route__t { margin: 0 0 var(--space-2); padding-top: 2px; }
+  .aq-bid-route__e { margin-bottom: var(--space-2); }
+}
+@container (max-width: 860px) {
+  .aq-bid-route__cards { row-gap: var(--space-6); }
+  .aq-bid-route__mini { width: 76px; }
+  .aq-bid-route__e { margin-bottom: var(--space-1); }
+  .aq-bid-route__u { padding-top: var(--space-1); border-top: 0; }
+  .aq-bid-route__u .aq-bid-route__k { display: inline; margin-right: var(--space-2); }
+  .aq-bid-route__t { font-size: 16px; line-height: 22px; }
+  .aq-bid-route__e, .aq-bid-route__u { font-size: var(--aq-read-phone); line-height: 21px; }
+}
+/* 561-1100 px: the pictogram in a column at the left of the text, next to its row, not floated to the far edge */
+@container (min-width: 561px) and (max-width: 1100px) {
+  .aq-bid-route__card { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); grid-template-rows: none; column-gap: var(--space-4); align-content: start; }
+  .aq-bid-route__mini { float: none; grid-column: 1; grid-row: 1 / span 3; align-self: start; width: var(--space-24); margin: 0; }
+  .aq-bid-route__t, .aq-bid-route__e, .aq-bid-route__u { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-bid-route__st, .aq-bid-route__drop, .aq-bid-route__no { transition: none; }
+}
+.aq-bid-route-sec { overflow: clip; }
+.aq-bid-route__run { pointer-events: none; }

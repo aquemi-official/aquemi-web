@@ -1,0 +1,57 @@
+{
+ "look": "capital-request",
+ "component": "CapitalRequest",
+ "type": "grid",
+ "fields": "h, intro (section head), sheet (look-only: the form's title, default \"Capital request\"; on phones it breaks after its colon), items [{t, d, link, tag, codes}]. codes: the references to set in the margin (each must appear in that item's d); without codes, an item's tag stands there alone.",
+ "best_for": "CapitalRequest sets a page's reasons to buy as a capital request form already filled in: one paper sheet with a folded corner, a numbered field per reason with its text typed on the field line, an \"Attach\" link to the page that holds the source, and the references a reason rests on as mono boxes in the margin.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "first-system",
+   "slot": 6,
+   "h": "Making the case inside your company",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "7f6820b",
+   "hash": "751ff1b846",
+   "block": {
+    "type": "grid",
+    "look": "capital-request",
+    "nav": "Your case",
+    "anchor": "case",
+    "h": "Making the case inside your company",
+    "intro": "Four reasons you can paste into a capital request, with the source where one applies.",
+    "sheet": "Capital request: Purified Water system",
+    "items": [
+     {
+      "t": "Product quality",
+      "d": "In creams, liquids and drinks, water is an ingredient. Water made and tested to a written specification protects your limits and shelf life.",
+      "link": "ind-personal-care#grade"
+     },
+     {
+      "t": "Records an inspector reads",
+      "d": "Health Canada's good manufacturing practice guides ask for qualified, monitored water and its test records. GUI-0001 covers drugs; GUI-0158, natural health products.",
+      "tag": "GUI-0001",
+      "link": "ind-pharma#grades",
+      "codes": [
+       "GUI-0001",
+       "GUI-0158"
+      ]
+     },
+     {
+      "t": "Paperwork to match",
+      "d": "Documentation scales to your product's rules: qualification records for drug lines, an acceptance test against your specification for the rest.",
+      "link": "cmp-documentation"
+     },
+     {
+      "t": "Room to grow",
+      "d": "Sized to the water you use each day; adding lines later is a capacity upgrade.",
+      "link": "svc-upgrades#upgrades"
+     }
+    ],
+    "ground": "light"
+   }
+  }
+ ]
+}

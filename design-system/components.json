@@ -289,6 +289,16 @@
    "summary": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site."
   },
   {
+   "name": "BidRoute",
+   "readme": "design-system/components/BidRoute/README.md",
+   "preview": "design-system/components/BidRoute/preview.html",
+   "group": "Page sections",
+   "height": "800",
+   "width": "1200",
+   "subtitle": "Must-haves, preferences and how bids answer: one route through six stations keyed to the rows",
+   "summary": "BidRoute draws how a bid travels through a URS as one route through numbered stations, one per table row, each station a line pictogram of what that practice does to the bids, with the rows as cards under their stations."
+  },
+  {
    "name": "BinderSpines",
    "readme": "design-system/components/BinderSpines/README.md",
    "preview": "design-system/components/BinderSpines/preview.html",
@@ -347,6 +357,16 @@
    "width": "1100",
    "subtitle": "NCR to CAPA close as one ring that closes, navy ground",
    "summary": "CapaRing shows a closed-loop procedure (a defect held, decided, repaired, corrected, checked and reported) as steps around one ring that the water runs once and closes, the hold step drawn as a closed valve."
+  },
+  {
+   "name": "CapitalRequest",
+   "readme": "design-system/components/CapitalRequest/README.md",
+   "preview": "design-system/components/CapitalRequest/preview.html",
+   "group": "Page sections",
+   "height": "980",
+   "width": "1280",
+   "subtitle": "First system: the reasons to buy as a filled-in capital request form, sources as Attach links, references in the margin",
+   "summary": "CapitalRequest sets a page's reasons to buy as a capital request form already filled in: one paper sheet with a folded corner, a numbered field per reason with its text typed on the field line, an \"Attach\" link to the page that holds the source, and the references a reason rests on as mono boxes in the margin."
   },
   {
    "name": "CaseStudy",
@@ -411,6 +431,16 @@
    "summary": "ClauseCrosswalk sets a table of requirements against two regulations' clauses as an editorial crosswalk: the requirements large down the middle, each regulation a spine at the outer edge with its name set big and vertical and its clauses as chips, and a wire from every requirement to every clause it cites."
   },
   {
+   "name": "ClauseTabs",
+   "readme": "design-system/components/ClauseTabs/README.md",
+   "preview": "design-system/components/ClauseTabs/preview.html",
+   "group": "Page sections",
+   "height": "1500",
+   "width": "1100",
+   "subtitle": "Buying terms as proposal page one on a clipboard, each clause tab leader-lined to what it governs on a PP package",
+   "summary": "ClauseTabs shows commercial terms as page one of a proposal on a clipboard, with a numbered tab on each clause and a leader from every tab to what that clause governs on a small isometric PP package (look `clause-tabs`, a spec block)."
+  },
+  {
    "name": "Closing",
    "readme": "design-system/components/Closing/README.md",
    "preview": "design-system/components/Closing/preview.html",
@@ -459,6 +489,16 @@
    "width": "1100",
    "subtitle": "Three ways in as route sheets on a navy band: proposal (this page) and supplier audit on limestone, urgent service as the dark sheet with its call bar; each a numbered water rail ending at its response clock",
    "summary": "ContactRoutes deals the ways into Aquemi onto a navy band as route sheets, each showing what happens after you act as a numbered sequence on a water rail that ends at its response clock, so a buyer on a contact page sees which route fits and what follows before the form."
+  },
+  {
+   "name": "ContractFolders",
+   "readme": "design-system/components/ContractFolders/README.md",
+   "preview": "design-system/components/ContractFolders/preview.html",
+   "group": "Page sections",
+   "height": "820",
+   "width": "1100",
+   "subtitle": "How buying works as two folders: tabbed terms of sale and the onboarding papers with a signature line",
+   "summary": "ContractFolders sets \"how buying works\" as the folders a buyer is handed: each row a limestone folder with its subject on the tab and a sheet inside listing what the linked page covers, the link as a full-width row under it."
   },
   {
    "name": "CostBalance",
@@ -673,6 +713,16 @@
    "summary": "FidelityLadder shows design stages as one drawing gaining detail on a navy blueprint band: every stage is a sheet with the same water package drawn at that stage's level (matrix, block route, P&ID, dimensioned isometric, frozen isometric, spools with their joints), joined by a run with a node per stage and a closed valve and \"Hold point\" stamp where you sign."
   },
   {
+   "name": "FitEnvelope",
+   "readme": "design-system/components/FitEnvelope/README.md",
+   "preview": "design-system/components/FitEnvelope/preview.html",
+   "group": "Page sections",
+   "height": "1400",
+   "width": "1200",
+   "subtitle": "When polypropylene is the wrong choice: the package inside a dashed fit envelope, seven exclusion tags tied outside",
+   "summary": "FitEnvelope draws where the package fits and what it does not take as a boundary: our polypropylene package stands inside a dashed \"fits\" envelope with its rated temperature range as a steel-blue band at the foot, and every exclusion hangs outside the envelope as a numbered tag tied to its edge."
+  },
+  {
    "name": "FitReadout",
    "readme": "design-system/components/FitReadout/README.md",
    "preview": "design-system/components/FitReadout/preview.html",
@@ -852,7 +902,9 @@
    "height": "620",
    "width": "1280",
    "subtitle": "Home: one water line teeing into three industries, each standard set large as the evidence",
-   "summary": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type."
+   "summary": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type.",
+   "retired": true,
+   "look": "industry-feed"
   },
   {
    "name": "InstrumentLimits",
@@ -925,6 +977,16 @@
    "width": "1100",
    "subtitle": "Huge title on navy cropped by a limestone sheet holding the exploded stack of control layers",
    "summary": "LayerStack shows the layers of one system (field instruments up to the plant network) as an exploded isometric stack of machined plates, each carrying its equipment, with the labels on leaders from the plate corners."
+  },
+  {
+   "name": "LevellingSheet",
+   "readme": "design-system/components/LevellingSheet/README.md",
+   "preview": "design-system/components/LevellingSheet/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "Comparing quotes: Quote A, Quote B and ours on the same ruled lines, gaps hatched, a straightedge across",
+   "summary": "LevellingSheet lays quotes side by side on the same ruled lines, so a buyer sees which lines each quote leaves blank before comparing prices (look `levelling-sheet`, an evidence table)."
   },
   {
    "name": "LimitBento",
@@ -1058,7 +1120,9 @@
    "height": "860",
    "width": "1100",
    "subtitle": "Two supplier rules as headline facts over a clean ruled schedule",
-   "summary": "MarkingMatch shows supplier control as two standing rules set as headline-sized facts over a clean ruled schedule of supplies, what we require and how we verify it."
+   "summary": "MarkingMatch shows supplier control as two standing rules set as headline-sized facts over a clean ruled schedule of supplies, what we require and how we verify it.",
+   "retired": true,
+   "look": "marking-match"
   },
   {
    "name": "MembraneAtlas",
@@ -1212,7 +1276,9 @@
    "height": "1560",
    "width": "1280",
    "subtitle": "Ten skid design parameters as numbered Swiss tiles with a blueprint cell",
-   "summary": "ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles with one blueprint cell of the skid, so each parameter reads as its own panel and the whole grid scans at a glance."
+   "summary": "ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles with one blueprint cell of the skid, so each parameter reads as its own panel and the whole grid scans at a glance.",
+   "retired": true,
+   "look": "param-tiles"
   },
   {
    "name": "ParameterCallouts",
@@ -1379,6 +1445,16 @@
    "summary": "Readout sets the page's one highlighted figure: the number large in Geist Mono Light in `flow` with its unit, the method on a limit tag, and a short caption."
   },
   {
+   "name": "ReceivingBench",
+   "readme": "design-system/components/ReceivingBench/README.md",
+   "preview": "design-system/components/ReceivingBench/preview.html",
+   "group": "Page sections",
+   "height": "1080",
+   "width": "1100",
+   "subtitle": "Supplier control as a receiving bench: tagged supplies, the pipe lot marking joined to its certificate",
+   "summary": "ReceivingBench sets supplier control as a receiving bench: an isometric bench with the supplies the block lists, each tagged with its row number, and a magnifier pair that joins the pipe's lot marking to the certificate's lot line."
+  },
+  {
    "name": "RecordAnatomy",
    "readme": "design-system/components/RecordAnatomy/README.md",
    "preview": "design-system/components/RecordAnatomy/preview.html",
@@ -1396,7 +1472,9 @@
    "height": "1180",
    "width": "1100",
    "subtitle": "Each process and the records it leaves, ruled on a drawing sheet with a glyph per record",
-   "summary": "RecordSheet sets each process of a quality system and the records it leaves as a ruled schedule on a drawing sheet, every record followed by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records)."
+   "summary": "RecordSheet sets each process of a quality system and the records it leaves as a ruled schedule on a drawing sheet, every record followed by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records).",
+   "retired": true,
+   "look": "record-sheet"
   },
   {
    "name": "RecordSlips",
@@ -1409,6 +1487,16 @@
    "summary": "RecordSlips shows each process of a quality system with the record it leaves: the process set large and light, what it controls under it, and at its right edge a slot from which a paper slip feeds out listing the records you can inspect, each with an empty tick box.",
    "retired": true,
    "look": "record-slips"
+  },
+  {
+   "name": "RecordTrail",
+   "readme": "design-system/components/RecordTrail/README.md",
+   "preview": "design-system/components/RecordTrail/preview.html",
+   "group": "Page sections",
+   "height": "1250",
+   "width": "1100",
+   "subtitle": "Eight quality processes as stations on one record trail, each dropping the record sheet it leaves onto the stack",
+   "summary": "RecordTrail sets the processes of a quality system as stations on one record trail, each station dropping the record sheet it leaves on a cord, the trail ending in a stack of sheets."
   },
   {
    "name": "RedlineSheet",
@@ -1940,7 +2028,9 @@
    "height": "960",
    "width": "1100",
    "subtitle": "Numbered terms table beside an isometric skid that bleeds off the page",
-   "summary": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid, whole in its column and sticky beside the rows on desktop: how you buy it next to what you buy."
+   "summary": "TermsSheet sets commercial terms as a clean numbered terms table beside an isometric line drawing of a purified water skid, whole in its column and sticky beside the rows on desktop: how you buy it next to what you buy.",
+   "retired": true,
+   "look": "terms-sheet"
   },
   {
    "name": "TestSheet",

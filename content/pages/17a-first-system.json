@@ -368,11 +368,12 @@
   },
   {
    "type": "grid",
-   "look": "industry-feed",
+   "look": "capital-request",
    "nav": "Your case",
    "anchor": "case",
    "h": "Making the case inside your company",
    "intro": "Four reasons you can paste into a capital request, with the source where one applies.",
+   "sheet": "Capital request: Purified Water system",
    "items": [
     {
      "t": "Product quality",
@@ -383,7 +384,11 @@
      "t": "Records an inspector reads",
      "d": "Health Canada's good manufacturing practice guides ask for qualified, monitored water and its test records. GUI-0001 covers drugs; GUI-0158, natural health products.",
      "tag": "GUI-0001",
-     "link": "ind-pharma#grades"
+     "link": "ind-pharma#grades",
+     "codes": [
+      "GUI-0001",
+      "GUI-0158"
+     ]
     },
     {
      "t": "Paperwork to match",

@@ -1,0 +1,116 @@
+/* ---------- RecordTrail: the quality system as one record trail (look "record-trail", pass 12 concept 240). Stations on
+   a single 1.5 px rail, each dropping its record sheet on a cord; the rail turns down the right lane and back along the
+   gutter between rows, and ends in a stack of sheets. Ink and line-strong for the line work, flow only for the pointed
+   or arriving station and the glyph accents. ---------- */
+.aq-record-trail-sec { position: relative; }
+.aq-record-trail { --rt-gap: var(--space-8); --rt-row: var(--space-16); --rt-lane: var(--space-8); --rt-r: 12px; --rt-line: var(--line-strong); position: relative; }
+
+/* key: what node, text and sheet stand for (the block's column names) */
+.aq-record-trail .aq-record-trail__key { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); margin: 0 0 var(--space-8); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-record-trail__key span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.aq-record-trail__key i { display: block; flex: none; }
+.aq-record-trail__kn i { width: 12px; height: 12px; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--surface); }
+.aq-record-trail__kc i { width: 16px; height: 9px; background: repeating-linear-gradient(to bottom, var(--ink-subtle) 0 1px, transparent 1px 4px); }
+.aq-record-trail__ks i { width: 12px; height: 15px; border: 1px solid var(--rt-line, var(--line-strong)); background: linear-gradient(225deg, var(--surface-sunken) 3px, var(--rt-line, var(--line-strong)) 3px 4px, var(--surface-raised) 4px); }
+
+/* the run: the list of stations plus a right lane for the turns and the stack */
+.aq-record-trail__run { position: relative; padding-right: var(--rt-lane, var(--space-8)); }
+.aq-record-trail__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--rt-gap, var(--space-8)); row-gap: var(--rt-row, var(--space-16)); list-style: none; margin: 0; padding: 0; }
+.aq-record-trail__st { position: relative; display: flex; flex-direction: column; min-width: 0; padding-top: 20px; }
+
+/* the rail: node to next node; a row's last station hands over to the turn */
+.aq-record-trail__rail { position: absolute; top: 11.25px; left: 8px; right: calc(-1 * var(--rt-gap, var(--space-8)) - 8px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); transform-origin: 0 50%; }
+.aq-record-trail__st.is-row-end .aq-record-trail__rail { right: calc(-0.5 * var(--rt-lane, var(--space-8))); }
+.aq-record-trail__st.is-last .aq-record-trail__rail { display: none; }
+.aq-record-trail__node { position: absolute; top: 5px; left: 1px; z-index: 2; width: 14px; height: 14px; box-sizing: border-box; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--surface); transition: border-color 160ms cubic-bezier(0.2, 0, 0, 1), background-color 160ms cubic-bezier(0.2, 0, 0, 1), transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* the turn: down the right lane, back along the gutter, down into the next row's first node */
+.aq-record-trail__turn { position: absolute; top: 11.25px; left: calc(8px - 300% - 3 * var(--rt-gap, var(--space-8))); right: calc(-0.5 * var(--rt-lane, var(--space-8))); bottom: calc(-0.5 * var(--rt-row, var(--space-16))); pointer-events: none; }
+.aq-record-trail__tr { position: absolute; top: 0; right: 0; bottom: 0; width: calc(var(--rt-lane, var(--space-8)) + var(--rt-r, 12px)); border: 1.5px solid var(--rt-line, var(--line-strong)); border-left: 0; border-radius: 0 var(--rt-r, 12px) var(--rt-r, 12px) 0; }
+.aq-record-trail__tl { position: absolute; top: calc(100% - 1.5px); left: -0.75px; right: calc(var(--rt-lane, var(--space-8)) + var(--rt-r, 12px)); height: calc(0.5 * var(--rt-row, var(--space-16)) + 2px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); border-left: 1.5px solid var(--rt-line, var(--line-strong)); border-top-left-radius: var(--rt-r, 12px); }
+/* the end: from the last station across and down the lane to the stack */
+.aq-record-trail__end { position: absolute; top: 11.25px; left: 8px; right: calc(-0.5 * var(--rt-lane, var(--space-8)) - var(--rt-rest, 0) * (100% + var(--rt-gap, var(--space-8)))); bottom: calc(-1 * var(--space-8) - 32px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); border-right: 1.5px solid var(--rt-line, var(--line-strong)); border-top-right-radius: var(--rt-r, 12px); pointer-events: none; }
+
+/* the hanging part: name and what it controls on the cord */
+.aq-record-trail__hang { position: relative; flex: 1 0 auto; margin-left: 7.25px; padding: var(--space-3) 0 var(--space-6) calc(var(--space-6) - 7.25px); border-left: 1.5px solid var(--rt-line, var(--line-strong)); transition: border-color 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-record-trail__hang::after { content: ""; position: absolute; left: -6px; bottom: -6px; z-index: 2; width: 10.5px; height: 8px; border: 1.5px solid var(--rt-line, var(--line-strong)); border-radius: 2px; background: var(--surface); }
+.aq-record-trail__name { margin: 0 0 var(--space-3); font: 400 19px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; }
+.aq-record-trail__n { display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-muted); }
+.aq-record-trail__ctl { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* the record sheet: paper with a folded corner, its records ruled with a glyph each */
+.aq-record-trail__sheet { position: relative; padding: var(--space-3) var(--space-4) var(--space-2); background: linear-gradient(225deg, var(--surface-sunken) 9px, var(--rt-line, var(--line-strong)) 9px 10px, var(--surface-raised) 10px); border: 1px solid var(--rt-line, var(--line-strong)); clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-record-trail__sheet ul { list-style: none; margin: 0; padding: 0; }
+.aq-record-trail__sheet li { display: grid; grid-template-columns: minmax(0, 1fr) 28px; column-gap: var(--space-3); align-items: start; padding: var(--space-2) 0; font: 400 14px/20px var(--font-sans); color: var(--ink); }
+.aq-record-trail__sheet li + li { border-top: 1px solid var(--line); }
+.aq-record-trail__sk { margin: 0; }
+.aq-record-trail__g { width: 28px; height: 22px; overflow: visible; }
+.aq-record-trail__g path { fill: none; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-record-trail__ink { stroke: var(--ink-subtle); }
+.aq-record-trail__acc { stroke: var(--flow); }
+/* column names: read by screen readers, the key shows them once */
+.aq-record-trail__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* the stack the trail ends in */
+.aq-record-trail__stack { position: relative; display: flex; justify-content: flex-end; align-items: center; gap: var(--space-4); height: 64px; margin-top: var(--space-8); }
+.aq-record-trail__stack::after { content: ""; position: absolute; top: 32px; right: calc(-0.5 * var(--rt-lane, var(--space-8))); width: calc(0.5 * var(--rt-lane, var(--space-8)) + 6px); border-top: 1.5px solid var(--rt-line, var(--line-strong)); }
+.aq-record-trail__pile { width: 120px; height: 64px; overflow: visible; }
+.aq-record-trail__ps { fill: var(--surface-raised); stroke: var(--rt-line, var(--line-strong)); stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-record-trail__pr { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-record-trail__count { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-muted); white-space: nowrap; }
+
+/* pointed or arriving station */
+.aq-record-trail__st:hover .aq-record-trail__node, .aq-record-trail__st:focus-within .aq-record-trail__node, .aq-record-trail__st.is-lit .aq-record-trail__node { border-color: var(--flow); background: var(--flow-tint); transform: scale(1.15); }
+.aq-record-trail__st:hover .aq-record-trail__hang, .aq-record-trail__st:focus-within .aq-record-trail__hang { border-left-color: var(--flow); }
+.aq-record-trail__st:hover .aq-record-trail__sheet, .aq-record-trail__st:focus-within .aq-record-trail__sheet { transform: translateY(-3px); border-color: var(--flow); }
+
+/* Fold: desktop shows every station; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-record-trail__st.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-record-trail__list) > .aq-fold__btn { display: none; }
+
+/* desktop entrance: a station's cord and clip wait for the rail to arrive (motion.js sets is-pending, then is-run per station) */
+.aq-record-trail.is-pending .aq-record-trail__st:not(.is-run) .aq-record-trail__hang { border-left-color: transparent; }
+.aq-record-trail.is-pending .aq-record-trail__st:not(.is-run) .aq-record-trail__hang::after { opacity: 0; }
+.aq-record-trail__hang::after { transition: opacity 160ms cubic-bezier(0.2, 0, 0, 1); }
+
+@media (prefers-reduced-motion: reduce) { .aq-record-trail__node, .aq-record-trail__hang, .aq-record-trail__sheet { transition: none; } }
+
+/* between 861 and 1100: three stations would crowd; the trail keeps four columns but tighter type */
+@container (max-width: 1100px) and (min-width: 861px) {
+  .aq-record-trail { --rt-gap: var(--space-6); }
+  .aq-record-trail__name { font-size: 17px; line-height: 24px; }
+}
+
+@container (max-width: 860px) {
+  .aq-record-trail { --rt-row: 0px; }
+  .aq-record-trail .aq-record-trail__key { gap: var(--space-2) var(--space-4); margin-bottom: var(--space-8); }
+  .aq-record-trail__run { padding-right: 0; }
+  .aq-record-trail__list { grid-template-columns: minmax(0, 1fr); }
+  .aq-record-trail__st { padding: 0 0 var(--space-8) var(--space-8); }
+  .aq-record-trail__node { top: 6px; }
+  .aq-record-trail__rail { top: 20px; bottom: -6px; left: 7.25px; right: auto; width: 0; border-top: 0; border-left: 1.5px solid var(--rt-line, var(--line-strong)); transform-origin: 50% 0; }
+  .aq-record-trail__st.is-row-end .aq-record-trail__rail { right: auto; }
+  .aq-record-trail__turn { display: none; }
+  .aq-record-trail__end { top: 20px; left: 7.25px; right: auto; width: var(--space-4); bottom: -32px; border-top: 0; border-right: 0; border-left: 1.5px solid var(--rt-line, var(--line-strong)); border-bottom: 1.5px solid var(--rt-line, var(--line-strong)); border-radius: 0 0 0 var(--rt-r, 12px); }
+  .aq-record-trail__hang { margin-left: 0; padding: 0 0 var(--space-4); border-left: 0; }
+  .aq-record-trail__hang::after { display: none; }
+  .aq-record-trail__name { margin-bottom: var(--space-2); font-size: 18px; line-height: 26px; }
+  .aq-record-trail__n { display: inline; margin: 0 var(--space-2) 0 0; }
+  .aq-record-trail__ctl { font-size: 15px; line-height: 23px; }
+  .aq-record-trail__sheet { padding: var(--space-2) var(--space-3) var(--space-1); }
+  .aq-record-trail__sheet li { font-size: var(--aq-read-phone); }
+  .aq-record-trail__stack { justify-content: flex-start; flex-direction: row-reverse; margin: 0 0 0 var(--space-8); }
+  .aq-record-trail__stack::after { display: none; }
+  .aq-record-trail__st:hover .aq-record-trail__sheet { transform: none; }
+  .aq-fold:not(.is-open) .aq-record-trail__st.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-record-trail__list) > .aq-fold__btn { display: flex; margin-left: var(--space-8); width: calc(100% - var(--space-8)); box-sizing: border-box; }
+  /* the rail's end curl closes the trail on phones; the stack would sit after the fold button */
+  .aq-record-trail__stack { display: none; }
+  .aq-record-trail__end { bottom: var(--space-2); }
+}
+
+/* tablet (600 to 860): the sheet hangs beside its station, as in the concept's phone strip */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-record-trail__st { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); align-items: start; }
+  .aq-record-trail__sheet { margin-top: var(--space-1); }
+}

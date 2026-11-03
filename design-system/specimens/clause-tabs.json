@@ -1,0 +1,98 @@
+{
+ "look": "clause-tabs",
+ "component": "ClauseTabs",
+ "type": "spec",
+ "fields": "(a spec block, as terms-sheet): h, intro, cols [term, ours, note], rows [{p, v, m, link, link_label, part}]. part (look-only): what the clause governs on the drawing: \"scope\" (default), \"base\", \"ro\", \"panel\", \"valve\" or \"option\". A tag sits beside a small part (the valve), never on it, so the lit part stays in view; no leader runs through the rack, its pump or the panel on its way to another part's tag. A value written \"a · b\" breaks into lines.",
+ "best_for": "ClauseTabs shows commercial terms as page one of a proposal on a clipboard, with a numbered tab on each clause and a leader from every tab to what that clause governs on a small isometric PP package (look `clause-tabs`, a spec block).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "buying",
+   "slot": 0,
+   "h": "Terms at a glance",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "7f6820b",
+   "hash": "a7a9fc88cc",
+   "block": {
+    "type": "spec",
+    "nav": "Terms",
+    "anchor": "terms",
+    "h": "Terms at a glance",
+    "intro": "Every proposal opens with these terms, in this order. FAT and SAT are the factory and site acceptance tests.",
+    "cols": [
+     "Term",
+     "Ours",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Proposal",
+      "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid [proposal validity, days] · Lead time in weeks · Exclusions",
+      "m": "Ends with every departure from your specification and its reason, or a written \"none\"",
+      "link": "buying#proposal",
+      "link_label": "See the proposal lines",
+      "part": "scope"
+     },
+     {
+      "p": "Currency, tax and duty",
+      "v": "[quoting currency] · [quoting terms, imported content]",
+      "m": "Stated on page one of each proposal",
+      "part": "scope"
+     },
+     {
+      "p": "Delivery and lead time",
+      "v": "[delivery terms] · [lead time from order, weeks] · [lead time from drawing approval, weeks]",
+      "m": "Two clocks, stated separately: from your order and from approved drawings",
+      "part": "base"
+     },
+     {
+      "p": "Payment milestones",
+      "v": "[milestone structure]",
+      "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT",
+      "part": "scope"
+     },
+     {
+      "p": "Acceptance and warranty start",
+      "v": "[warranty start event]",
+      "m": "Not from shipment. One warranty text in proposal, manual and contract",
+      "part": "valve"
+     },
+     {
+      "p": "What the warranty covers",
+      "v": "[warranty periods: package, service work, consumables] · [warranty exclusions]",
+      "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]",
+      "part": "ro"
+     },
+     {
+      "p": "Drawings and code",
+      "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
+      "m": "What you may change and copy, in writing",
+      "part": "panel"
+     },
+     {
+      "p": "Your contract form",
+      "v": "[contract form positions]",
+      "m": "Any clause we cannot accept is listed once in our proposal, with the reason",
+      "part": "scope"
+     },
+     {
+      "p": "Changes after order",
+      "v": "A signed change request before work starts [confirm]",
+      "m": "Price, schedule effect and payment on one page",
+      "link": "project-plan#changes",
+      "link_label": "See how changes work",
+      "part": "option"
+     },
+     {
+      "p": "Non-disclosure agreement",
+      "v": "[NDA turnaround, working days] from receipt",
+      "part": "scope"
+     }
+    ],
+    "look": "clause-tabs"
+   }
+  }
+ ]
+}

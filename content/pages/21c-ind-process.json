@@ -390,7 +390,8 @@
      "m": "Ambient or chemically sanitized loops",
      "hl": true,
      "link": "industries#fit",
-     "link_label": "Fit rules for every industry"
+     "link_label": "Fit rules for every industry",
+     "in": true
     },
     {
      "p": "Hot water and steam",
@@ -402,12 +403,14 @@
      "v": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]",
      "m": "The same RO and EDI skid, with or without a loop",
      "link": "sys-pw#design",
-     "link_label": "Generation skid design"
+     "link_label": "Generation skid design",
+     "in": true
     },
     {
      "p": "Flow",
      "v": "[minimum–maximum capacity, L/h] per skid",
-     "m": "At your coldest feed water; parallel trains above it"
+     "m": "At your coldest feed water; parallel trains above it",
+     "in": true
     },
     {
      "p": "Plant-scale main systems",
@@ -431,13 +434,20 @@
      "v": "We help you write one",
      "m": "From where the water goes and what fails when it is wrong",
      "link": "ind-process#faq",
-     "link_label": "How we draft your limit"
+     "link_label": "How we draft your limit",
+     "in": true
     }
    ],
    "fold": 4,
    "fold_noun": "rules",
    "ground": "light",
-   "look": "param-tiles"
+   "look": "fit-envelope",
+   "scale": {
+    "from": 0,
+    "to": 80,
+    "unit": "°C",
+    "label": "Fits"
+   }
   },
   {
    "type": "faq",

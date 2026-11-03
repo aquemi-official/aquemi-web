@@ -1,0 +1,100 @@
+{
+ "look": "levelling-sheet",
+ "component": "LevellingSheet",
+ "type": "table",
+ "fields": "as the evidence table: h, intro, cols [line, ask, where ours states it], rows [line, ask, {t, link, intent}]. quotes (look-only, optional): the two other quotes' sheet labels, default [\"Quote A\", \"Quote B\"] (a French page sets its own; the field needs adding to NOT_COPY before a page uses it).",
+ "best_for": "LevellingSheet lays quotes side by side on the same ruled lines, so a buyer sees which lines each quote leaves blank before comparing prices (look `levelling-sheet`, an evidence table).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "buying",
+   "slot": 3,
+   "h": "Comparing quotes on the same lines",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "7f6820b",
+   "hash": "08775b0d06",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Compare",
+    "anchor": "compare",
+    "h": "Comparing quotes on the same lines",
+    "intro": "Level every quote on these lines before you compare prices.",
+    "cols": [
+     "Line to level",
+     "Ask of every quote",
+     "Where ours states it"
+    ],
+    "rows": [
+     [
+      "Pretreatment",
+      "Sized on your water analysis, or on an assumed feed?",
+      {
+       "t": "Pretreatment",
+       "link": "sys-pretreatment"
+      }
+     ],
+     [
+      "Storage and loop",
+      "Tank volume, loop length and every point of use counted?",
+      {
+       "t": "Storage and distribution",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Instruments and controls",
+      "Which readings are recorded, and is the code delivered unlocked?",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Documents",
+      "Which documents, and who writes and signs each?",
+      {
+       "t": "Document index",
+       "link": "cmp-documentation#index"
+      }
+     ],
+     [
+      "FAT",
+      "Run on water, to a protocol you approve first?",
+      {
+       "t": "FAT and SAT",
+       "link": "svc-fat-sat"
+      }
+     ],
+     [
+      "IQ and OQ",
+      "Included, a priced option, or left to you?",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "Warranty start",
+      "Counted from shipment, or from acceptance on your site?",
+      {
+       "t": "Terms at a glance",
+       "link": "buying#terms"
+      }
+     ],
+     [
+      "Running cost",
+      "Per year, at your water and use, with the assumptions written?",
+      {
+       "t": "Running cost",
+       "link": "svc-service#running-cost"
+      }
+     ]
+    ],
+    "look": "levelling-sheet"
+   }
+  }
+ ]
+}

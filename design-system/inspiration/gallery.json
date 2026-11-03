@@ -2530,6 +2530,86 @@
 "kb": 289
 },
 {
+"src": "design-system/inspiration/gemini/235-p12-svc-upgrades-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__235-p12-svc-upgrades-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 svc upgrades hero",
+"note": "svc-upgrades.hero (hero mode): Hero in PP: existing flat-bottom PP tank on a plinth joined to a new skid module on a PP-clad base, butt-fused spool in a soft sling on the hoist, diaphragm valve at the tie-in → flat-bottom cylindrical tank on a concrete plinth, socket-collared pipe to a knob diaphragm valve, a butt-fused elbow spool hanging in a strap sling from a chain hoist over a dashed drop line, new skid with a vertical multistage pump and two cartridge housings on a tray base",
+"component": "Hero",
+"group": null,
+"order": 235,
+"size": [
+1024,
+1024
+],
+"kb": 204
+},
+{
+"src": "design-system/inspiration/gemini/236-p12-sys-monitoring-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__236-p12-sys-monitoring-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 sys monitoring hero",
+"note": "sys-monitoring.hero (hero mode): Hero edit in PP: the analyzer panel kept, its header redrawn as PP with fusion beads, socket tees, diaphragm valves and soft sample tubing → the same wall panel, cable tray, cabinets and sensor heads; the bottom header redrawn as plain pipe with socket collars and two knob-topped block valves, a variable-area meter, thin sample lines; no ferrules, no handwheels",
+"component": "Hero",
+"group": null,
+"order": 236,
+"size": [
+702,
+1024
+],
+"kb": 345
+},
+{
+"src": "design-system/inspiration/gemini/237-p12-urs-guide-pp-rows.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__237-p12-urs-guide-pp-rows.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 urs guide pp rows",
+"note": "urs-guide.pp-rows (pairx mode): Fit envelope (URS guide): PP package inside a dashed Fits envelope with a 0-80 C band and a sanitant drum, seven numbered lockout tags outside, one per exclusion → dashed 'Fits' envelope around a two-vessel skid and a drum, a steel-blue 0-80 °C band along its foot, seven numbered lockout tags hanging on cords at its right edge; phone: headline, envelope, three tag rows, Show all",
+"component": "FitEnvelope",
+"group": null,
+"order": 237,
+"size": [
+1024,
+572
+],
+"kb": 355
+},
+{
+"src": "design-system/inspiration/gemini/238-p12-ind-process-fit.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__238-p12-ind-process-fit.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 ind process fit",
+"note": "ind-process.fit (pairx mode): Fit envelope (process): PP package inside a dashed Fits envelope with a 0-80 C band and a sanitant drum, four numbered lockout tags outside → big flat-bottom tank on a plinth with a drum inside a dashed Fits box over a 0-80 °C band; four (plus one garbled) punched tags dangling on long cords from the top; phone: envelope then four numbered rows",
+"component": "FitEnvelope",
+"group": null,
+"order": 238,
+"size": [
+1024,
+572
+],
+"kb": 371
+},
+{
+"src": "design-system/inspiration/gemini/239-p12-cmp-quality-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__239-p12-cmp-quality-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 cmp quality hero",
+"note": "cmp-quality.hero (pair mode): Hero: isometric audit table in the shop (quality manual, NCR register, a PP fused joint with a lot tag, a Recorded shipment record) keyed to a four-row index → isometric work table with an open manual (01), a ring-bound register (02), a pipe length with a collar joint and a lot tag (03) and a ruled shipment record with a small Recorded stamp (04), a pipe rack behind; index 01-04 at the left; phone: the four objects with tags, then headline and index",
+"component": "Hero",
+"group": null,
+"order": 239,
+"size": [
+1024,
+572
+],
+"kb": 511
+},
+{
 "src": "design-system/inspiration/gemini/24-art-svc-cq.png",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__24-art-svc-cq.jpg",
 "cat": "gemini",
@@ -2546,6 +2626,166 @@
 "kb": 330
 },
 {
+"src": "design-system/inspiration/gemini/240-p12-cmp-quality-record-sheet.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__240-p12-cmp-quality-record-sheet.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 cmp quality record sheet",
+"note": "cmp-quality.record-sheet (pair mode): Record trail: eight numbered QMS stations on one path, each dropping its record sheet onto one stack → steel-blue rail across the section with stations 01-08 named above it, each dropping a white record sheet on a cord (change request ... audit report), the last sheets landing on a stack; phone: rail down the left with process and record-sheet per row",
+"component": "RecordTrail",
+"group": null,
+"order": 240,
+"size": [
+1024,
+572
+],
+"kb": 373
+},
+{
+"src": "design-system/inspiration/gemini/241-p12-cmp-quality-suppliers.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__241-p12-cmp-quality-suppliers.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 cmp quality suppliers",
+"note": "cmp-quality.suppliers (pair mode): Receiving bench: a PP pipe lot print and its certificate under two magnifier circles joined by one line, five numbered supply tags keyed to rows → small isometric bench with a pipe, one [lot] magnifier circle and a certificate sheet, five plain numbered rows below; phone: bench with two small circles, three rows, Show all",
+"component": null,
+"group": null,
+"order": 241,
+"size": [
+1024,
+572
+],
+"kb": 390
+},
+{
+"src": "design-system/inspiration/gemini/242-p12-cmp-quality-suppliers-take2.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__242-p12-cmp-quality-suppliers-take2.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 cmp quality suppliers take2",
+"note": "cmp-quality.suppliers (pair mode): Receiving bench: a PP pipe lot print and its certificate under two magnifier circles joined by one line, five numbered supply tags keyed to rows → isometric bench with five tagged supplies 01-05, a large [lot] magnifier circle joined by a steel-blue leader to a certificate circle, a second certificate circle under the bench, five rows 'checked at receipt'; phone: the two circles side by side then five rows",
+"component": "ReceivingBench",
+"group": null,
+"order": 242,
+"size": [
+1024,
+572
+],
+"kb": 462
+},
+{
+"src": "design-system/inspiration/gemini/243-p12-cmp-quality-buying.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__243-p12-cmp-quality-buying.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 cmp quality buying",
+"note": "cmp-quality.buying (pair mode): Open contract folder: terms-of-sale tabs on the left page, onboarding codes with status on the right, a signature line and pen → two flat folders side by side: 01 Terms of sale with six tiny side tabs and blank pages, 02 Onboarding papers with REG ... SQ in mono and a bracketed status each, a signature line and a steel-blue pen; 'See ...' link under each; phone: the two folders stacked with their links",
+"component": "ContractFolders",
+"group": null,
+"order": 243,
+"size": [
+1024,
+572
+],
+"kb": 270
+},
+{
+"src": "design-system/inspiration/gemini/244-p12-urs-guide-priority.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__244-p12-urs-guide-priority.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 urs guide priority",
+"note": "urs-guide.priority (pair mode): Bid scoring: navy pass/fail gate, balance-beam preferences, answer sheet with three tick columns, deviation slip and itemised price strips, six callouts → six numbered pictograms in a row (barrier, balance beam, gates, tick sheet, slip, price strips) above six empty numbered rules; phone: pictograms 3-up then empty rows with Show all",
+"component": null,
+"group": null,
+"order": 244,
+"size": [
+1024,
+572
+],
+"kb": 234
+},
+{
+"src": "design-system/inspiration/gemini/245-p12-urs-guide-priority-take2.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__245-p12-urs-guide-priority-take2.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 urs guide priority take2",
+"note": "urs-guide.priority (pair mode): Bid scoring: navy pass/fail gate, balance-beam preferences, answer sheet with three tick columns, deviation slip and itemised price strips, six callouts → thick steel-blue route from a navy barrier gate through a balance beam, a pinch (03), a tick sheet (04), a slip (05) to fanned price strips (06), numbered circles; lorem rows below; phone: the route as a zigzag riser with the six drawings and a Show all bar",
+"component": "BidRoute",
+"group": null,
+"order": 245,
+"size": [
+1024,
+572
+],
+"kb": 424
+},
+{
+"src": "design-system/inspiration/gemini/246-p12-project-plan-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__246-p12-project-plan-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 project plan hero",
+"note": "project-plan.hero (pair mode): Hero: isometric schedule board, nine stage bars with hold diamonds, a PP skid on a pallet at FAT, a truck at shipping, a handover binder at the end → navy hero with the headline over an isometric ruled sheet; nine labelled stage bars stepping down left to right with diamonds, a crate on a pallet at FAT, a box truck at Shipping, a closed binder past PQ; phone (in a device frame): a diamond rail of nine stages with the pallet, truck and binder",
+"component": "Hero",
+"group": null,
+"order": 246,
+"size": [
+1024,
+572
+],
+"kb": 473
+},
+{
+"src": "design-system/inspiration/gemini/247-p12-first-system-case.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__247-p12-first-system-case.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 first system case",
+"note": "first-system.case (pair mode): Capital request form: four numbered justification fields filled, GUI-0001 and GUI-0158 mono codes in the margin, an Attach link per field → flat capital-request sheet with a folded corner: 01 Product quality, 02 Records an inspector reads (GUI-0001 / GUI-0158 mono boxes in the left margin), 03 Paperwork to match, 04 Room to grow, each with a lorem line and a steel-blue Attach link with a paperclip; phone: the same form stacked",
+"component": "CapitalRequest",
+"group": null,
+"order": 247,
+"size": [
+1024,
+572
+],
+"kb": 316
+},
+{
+"src": "design-system/inspiration/gemini/248-p12-buying-terms.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__248-p12-buying-terms.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 buying terms",
+"note": "buying.terms (pair mode): Proposal page one with six clause tabs leader-lined to what each governs on a small skid → proposal page with six tab rows at its right edge, hairline leaders from the tabs into an isometric open-frame skid with bracketed tags; phone: the skid then three term rows with [value] and Show all",
+"component": null,
+"group": null,
+"order": 248,
+"size": [
+1024,
+572
+],
+"kb": 348
+},
+{
+"src": "design-system/inspiration/gemini/249-p12-buying-terms-take2.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__249-p12-buying-terms-take2.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 buying terms take2",
+"note": "buying.terms (pair mode): Proposal page one with six clause tabs leader-lined to what each governs on a small skid → a folded-corner page with six numbered clause tabs (Proposal ... Changes after order), hairline leaders to blank square tags on a compact package (vessel, panel, sample valve, dashed option box) on a pallet; phone: the package with numbered tags, six term rows with [value], Show all",
+"component": "ClauseTabs",
+"group": null,
+"order": 249,
+"size": [
+1024,
+572
+],
+"kb": 409
+},
+{
 "src": "design-system/inspiration/gemini/25-art-ind-meddevice.png",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__25-art-ind-meddevice.jpg",
 "cat": "gemini",
@@ -2560,6 +2800,22 @@
 1024
 ],
 "kb": 417
+},
+{
+"src": "design-system/inspiration/gemini/250-p12-buying-compare.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__250-p12-buying-compare.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 buying compare",
+"note": "buying.compare (pair mode): Levelling sheet: Quote A, Quote B and our page one on eight shared lines, gaps hatched, a straightedge across → three white pages (QUOTE A, QUOTE B, OUR PAGE ONE) on shared ruled lines with hatched blanks and small blue marks, a navy ruler across them; phone: eight checklist rows with A / B / Ours boxes",
+"component": "LevellingSheet",
+"group": null,
+"order": 250,
+"size": [
+1024,
+572
+],
+"kb": 405
 },
 {
 "src": "design-system/inspiration/gemini/26-concept-readout.png",
@@ -5106,6 +5362,22 @@
 "kb": 13
 },
 {
+"src": "assets/illustrations/cmp-quality.png",
+"thumb": "design-system/inspiration/thumbs/assets__illustrations__cmp-quality.jpg",
+"cat": "drawing",
+"status": "live",
+"title": "cmp quality",
+"note": "assets/illustrations/cmp-quality.png",
+"component": "Illustration",
+"group": null,
+"order": 0,
+"size": [
+814,
+734
+],
+"kb": 102
+},
+{
 "src": "assets/illustrations/ind-biotech.png",
 "thumb": "design-system/inspiration/thumbs/assets__illustrations__ind-biotech.jpg",
 "cat": "drawing",
@@ -5218,6 +5490,22 @@
 "kb": 112
 },
 {
+"src": "assets/illustrations/project-plan.png",
+"thumb": "design-system/inspiration/thumbs/assets__illustrations__project-plan.jpg",
+"cat": "drawing",
+"status": "live",
+"title": "project plan",
+"note": "assets/illustrations/project-plan.png",
+"component": "Illustration",
+"group": null,
+"order": 0,
+"size": [
+900,
+871
+],
+"kb": 127
+},
+{
 "src": "assets/illustrations/svc-cq.png",
 "thumb": "design-system/inspiration/thumbs/assets__illustrations__svc-cq.jpg",
 "cat": "drawing",
@@ -5308,10 +5596,10 @@
 "group": null,
 "order": 0,
 "size": [
-837,
-799
+900,
+775
 ],
-"kb": 126
+"kb": 87
 },
 {
 "src": "assets/illustrations/sys-monitoring.png",
@@ -5324,10 +5612,10 @@
 "group": null,
 "order": 0,
 "size": [
-600,
-875
+598,
+900
 ],
-"kb": 117
+"kb": 155
 },
 {
 "src": "assets/illustrations/sys-pretreatment.png",
