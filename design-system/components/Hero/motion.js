@@ -5,6 +5,8 @@
    - home loop: the guides fade in, the pipe draws round the figure of eight, the parts and labels land as the pipe
      passes them, then four flow dots travel the loop once and fade (all done in under 5 s)
    - index: the spine runs down and each numbered entry slides onto it
+   - drawn scenes (HeroScene): the isometric scene draws back to front, the water runs its pipes once, and each
+     numbered tag pops onto its part with its key row as the water reaches it
    - drawn figures: the pipe runs vignette to vignette (each wipes in as it is reached), folders slide into the
      binder back to front, the release record rises, its boxes tick and the stamp strikes; the route draws stop by stop
    The KeyFacts strip under the hero has its own choreography (KeyFacts/motion.js).
@@ -114,6 +116,28 @@
         if (rows[i]) t.to(rows[i], { x: 0, autoAlpha: 1, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.15);
       });
       t.to(ol, { '--aq-water': 1, duration: 0.9 + li.length * 0.05, ease: 'power1.inOut' }, run * 0.6);
+      return t;
+    });
+
+    // Drawn scenes (HeroScene: systems, services, first-system, projects). The IsoKit drawing builds back to front and
+    // the water runs its pipes once (AQiso.timeline); each numbered tag and its key row land as the water reaches
+    // that part, or in number order where no pipe feeds it (the ring's stations, the room's footprint).
+    // Ported from Subframe Motion "Animated workflow diagram" (process-choreography), MIT, (c) 2026 Subframe: the
+    // connectors draw toward each output, then each output fades up and scales in (cubic ease-out) as its connector
+    // arrives. Reduced motion: no timeline, the scene is complete.
+    figure(q('.aq-hero-scene'), function () {
+      var f = q('.aq-hero-scene'), svg = q('svg.aq-iso', f);
+      var t = svg && window.AQiso ? AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.6, flow: 1.3 }) : null;
+      if (!t) return null;
+      var arrive = t.data.arrive, base = t.labels.pipes || 1, lab = q('.aq-hero-scene__label', f), more = q('.aq-hero-scene__more', f), last = base;
+      if (lab) { t.from(lab, { autoAlpha: 0, duration: 0.25, clearProps: 'opacity,visibility' }, 0.2); t.add(function () { m.scramble(lab, 0) }, 0.2) }
+      qa('.aq-hero-scene__tag', f).forEach(function (tag) {
+        var k = tag.getAttribute('data-k'), at = arrive['k' + k] != null ? arrive['k' + k] : base + (k - 1) * 0.14, row = q('.aq-hero-scene__key li[data-k="' + k + '"]', f);
+        last = Math.max(last, at);
+        t.fromTo(tag, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.36, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at);
+        if (row) t.from(row, { autoAlpha: 0, y: 8, duration: 0.4, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.06);
+      });
+      if (more) t.from(more, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, last + 0.3);
       return t;
     });
 

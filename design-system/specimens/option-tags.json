@@ -4,7 +4,7 @@
  "type": "options",
  "fields": "h, intro, items [{t, d, spot | icon, shape}], spot (base glyph), base, fold, fold_noun. shape: \"tag\" (default), \"round\" or \"folder\"; folders sit on the navy strip (desktop). With no folder the strip is left out (.is-flat) and the tags fill three columns.",
  "best_for": "OptionTags lays a system's configuration options out as physical tags on a limestone table, so each option reads as a separate item the buyer can add to the base skid.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pw",
@@ -158,7 +158,7 @@
    "page": "sys-pw",
    "slot": 4,
    "h": "Configurations and options",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",

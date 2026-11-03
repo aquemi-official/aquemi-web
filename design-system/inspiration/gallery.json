@@ -168,9 +168,9 @@
 "status": "built",
 "title": "P9b sys storage 4",
 "note": "'Documents with the loop' (sys-storage), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → white PP loop skid in soft 3D with leader lines to each document it ships with",
-"component": null,
+"component": "SheetStack",
 "group": null,
-"order": 10,
+"order": 100,
 "size": [
 1024,
 637
@@ -184,9 +184,9 @@
 "status": "built",
 "title": "P9b sys storage 5",
 "note": "'Options' (sys-storage), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → one navy schematic band of the loop with leader lines out to three option captions",
-"component": null,
+"component": "LoopDock",
 "group": null,
-"order": 10,
+"order": 101,
 "size": [
 1024,
 637
@@ -200,9 +200,9 @@
 "status": "built",
 "title": "P9b sys pretreatment 0",
 "note": "'Water at the RO inlet' (sys-pretreatment), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → RO feed targets as a table on a navy drawing sheet with zone border and title block",
-"component": null,
+"component": "MembraneFace",
 "group": null,
-"order": 10,
+"order": 102,
 "size": [
 1024,
 572
@@ -218,7 +218,7 @@
 "note": "'Water at the RO inlet' (sys-pretreatment), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → RO feed targets as a table on a navy drawing sheet with zone border and title block",
 "component": null,
 "group": null,
-"order": 10,
+"order": 103,
 "size": [
 1024,
 572
@@ -234,7 +234,7 @@
 "note": "'How the train is built' (sys-pretreatment), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → duotone macro of a PP butt-fusion bead beside a 7-step numbered train list",
 "component": null,
 "group": null,
-"order": 10,
+"order": 104,
 "size": [
 1024,
 572
@@ -248,9 +248,9 @@
 "status": "built",
 "title": "P9b sys pretreatment 1 take2",
 "note": "'How the train is built' (sys-pretreatment), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → duotone macro of a PP butt-fusion bead beside a 7-step numbered train list",
-"component": null,
+"component": "SectionTrain",
 "group": null,
-"order": 10,
+"order": 105,
 "size": [
 1024,
 637
@@ -264,9 +264,9 @@
 "status": "built",
 "title": "P9b sys pretreatment 2",
 "note": "'Canadian feed water and what it does' (sys-pretreatment), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → condition-effect-design table led by huge slash numerals in navy square tiles",
-"component": null,
+"component": "MembraneAtlas",
 "group": null,
-"order": 10,
+"order": 106,
 "size": [
 1024,
 572
@@ -280,9 +280,9 @@
 "status": "built",
 "title": "P9b sys pretreatment 3",
 "note": "'Chlorine or chloramine: the removal step' (sys-pretreatment), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → decision table with carbon-bed vessels drawn inside it, numbered pins linking rows to vessels",
-"component": null,
+"component": "DecisionValve",
 "group": null,
-"order": 10,
+"order": 107,
 "size": [
 1024,
 637
@@ -296,9 +296,9 @@
 "status": "built",
 "title": "P9b sys pretreatment 4",
 "note": "'Documents delivered' (sys-pretreatment), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → one double-line steel-blue pipe with valves snakes through five numbered document stops",
-"component": null,
+"component": "DocPipe",
 "group": null,
-"order": 10,
+"order": 108,
 "size": [
 1024,
 420
@@ -312,9 +312,9 @@
 "status": "built",
 "title": "P9b sys pretreatment 5",
 "note": "'Options' (sys-pretreatment), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → limestone drawing sheet: huge light title, navy hairline schematic, five notes in a narrow column",
-"component": null,
+"component": "OptionTaps",
 "group": null,
-"order": 10,
+"order": 109,
 "size": [
 1024,
 572
@@ -346,7 +346,7 @@
 "note": "'How the controls are built' (sys-monitoring), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → giant cropped headline on navy over a limestone sheet holding the PLC-HMI-SCADA-DMZ architecture",
 "component": null,
 "group": null,
-"order": 11,
+"order": 110,
 "size": [
 1024,
 565
@@ -360,9 +360,9 @@
 "status": "built",
 "title": "P9b sys monitoring 0 take2",
 "note": "'How the controls are built' (sys-monitoring), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → giant cropped headline on navy over a limestone sheet holding the PLC-HMI-SCADA-DMZ architecture",
-"component": null,
+"component": "LayerStack",
 "group": null,
-"order": 11,
+"order": 111,
 "size": [
 1024,
 572
@@ -378,7 +378,7 @@
 "note": "'Alert, action and trend' (sys-monitoring), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → levels table whose rows run leader lines into a soft-3D white PP skid",
 "component": null,
 "group": null,
-"order": 11,
+"order": 112,
 "size": [
 1024,
 637
@@ -392,9 +392,9 @@
 "status": "built",
 "title": "P9b sys monitoring 1 take2",
 "note": "'Alert, action and trend' (sys-monitoring), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → levels table whose rows run leader lines into a soft-3D white PP skid",
-"component": null,
+"component": "HmiTrend",
 "group": null,
-"order": 11,
+"order": 113,
 "size": [
 1024,
 637
@@ -408,9 +408,9 @@
 "status": "built",
 "title": "P9b sys monitoring 2",
 "note": "'Sensors and signals' (sys-monitoring), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → signals table beside a circular tick-dial readout with a big light conductivity numeral and limit tag",
-"component": null,
+"component": "SignalDial",
 "group": null,
-"order": 11,
+"order": 114,
 "size": [
 1024,
 637
@@ -424,9 +424,9 @@
 "status": "built",
 "title": "P9b sys monitoring 3",
 "note": "'Data integrity, clause by clause' (sys-monitoring), art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching → clause crosswalk table on navy with leaders from rows into an isometric skid line drawing in a white card",
-"component": null,
+"component": "ClauseCrosswalk",
 "group": null,
-"order": 11,
+"order": 115,
 "size": [
 1024,
 637
@@ -440,9 +440,9 @@
 "status": "built",
 "title": "P9b sys monitoring 4",
 "note": "'Options' (sys-monitoring), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → navy-limestone checkerboard field on the left, five big slash-numbered option cells on the right",
-"component": null,
+"component": "OptionChecker",
 "group": null,
-"order": 11,
+"order": 116,
 "size": [
 1024,
 565
@@ -456,9 +456,9 @@
 "status": "built",
 "title": "P9b svc design 0",
 "note": "'Qualification failures that start in design' (svc-design), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → navy P&ID band above a three-column failure / mistake / design-in table with slash numerals",
-"component": null,
+"component": "RedlineSheet",
 "group": null,
-"order": 11,
+"order": 117,
 "size": [
 1024,
 572
@@ -472,9 +472,9 @@
 "status": "built",
 "title": "P9b svc design 1",
 "note": "'Design stages, and what you approve' (svc-design), art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching → five numbered stage cards on navy, each with a mono doc code, beside an isometric plant with one blue route",
-"component": null,
+"component": "FidelityLadder",
 "group": null,
-"order": 11,
+"order": 118,
 "size": [
 1024,
 572
@@ -488,9 +488,9 @@
 "status": "built",
 "title": "P9b svc design 2",
 "note": "'What you receive' (svc-design), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → limestone drawing sheet: dimensioned plant elevation, four deliverables as drawing notes, title block",
-"component": null,
+"component": "IssuedSet",
 "group": null,
-"order": 11,
+"order": 119,
 "size": [
 1024,
 572
@@ -520,9 +520,9 @@
 "status": "built",
 "title": "P9b svc design 3",
 "note": "'An example: two requirements traced to their tests' (svc-design), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → trace table beside a steel-blue readout tile: huge 1.3 uS/cm, tick scale, outlined limit tag",
-"component": null,
+"component": "TraceLines",
 "group": null,
-"order": 12,
+"order": 120,
 "size": [
 1024,
 495
@@ -536,9 +536,9 @@
 "status": "built",
 "title": "P9b svc fabrication 0",
 "note": "'One joint, one log line' (svc-fabrication), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → vertical double-line pipe with joints tagged J-081..J-085 runs beside the joint-log table",
-"component": null,
+"component": "JointSpine",
 "group": null,
-"order": 12,
+"order": 121,
 "size": [
 1024,
 637
@@ -552,9 +552,9 @@
 "status": "built",
 "title": "P9b svc fabrication 1",
 "note": "'Our fabrication standard' (svc-fabrication), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → full-bleed duotone macro of a fusion bead, its contour traced and numbered, standard table at right",
-"component": null,
+"component": "JointMacro",
 "group": null,
-"order": 12,
+"order": 122,
 "size": [
 1024,
 637
@@ -568,9 +568,9 @@
 "status": "built",
 "title": "P9b svc fabrication 2",
 "note": "'The fabrication dossier' (svc-fabrication), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → huge light headline, dimensioned isometric PP pipe spool, four dossier parts in a split hairline grid",
-"component": null,
+"component": "SpoolDossier",
 "group": null,
-"order": 12,
+"order": 123,
 "size": [
 1024,
 637
@@ -584,9 +584,9 @@
 "status": "built",
 "title": "P9b svc fabrication 3",
 "note": "'From pipe to turnover' (svc-fabrication), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → navy title column, big dimensioned line drawing of one PP butt-fusion joint tagged J-01, five numbered steps with WP marks",
-"component": null,
+"component": "JointSteps",
 "group": null,
-"order": 12,
+"order": 124,
 "size": [
 1024,
 637
@@ -600,9 +600,9 @@
 "status": "built",
 "title": "P9b svc fat sat 0",
 "note": "'What FAT proves, what SAT proves' (svc-fat-sat), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → navy headline block cropped by the frame, numbered FAT/SAT comparison rows, a line-drawn loop at right",
-"component": null,
+"component": "VersusSpread",
 "group": null,
-"order": 12,
+"order": 125,
 "size": [
 1024,
 572
@@ -616,9 +616,9 @@
 "status": "built",
 "title": "P9b svc fat sat 1",
 "note": "'Water finds faults a dry check misses' (svc-fat-sat), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → one double-line pipe route with valves, pump and meters threads five numbered test points on navy",
-"component": null,
+"component": "WetRunHmi",
 "group": null,
-"order": 12,
+"order": 126,
 "size": [
 1024,
 637
@@ -632,9 +632,9 @@
 "status": "built",
 "title": "P9b svc fat sat 2",
 "note": "'From protocol to release, then SAT' (svc-fat-sat), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → near-empty limestone drawing sheet: big light title, abstract hairline routing, six steps in a notes column",
-"component": null,
+"component": "TestSheet",
 "group": null,
-"order": 12,
+"order": 127,
 "size": [
 1024,
 572
@@ -650,7 +650,7 @@
 "note": "'From protocol to release, then SAT' (svc-fat-sat), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → near-empty limestone drawing sheet: big light title, abstract hairline routing, six steps in a notes column",
 "component": null,
 "group": null,
-"order": 12,
+"order": 128,
 "size": [
 1024,
 572
@@ -664,9 +664,9 @@
 "status": "built",
 "title": "P9b svc fat sat 3",
 "note": "'How you witness' (svc-fat-sat), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → five witness modes as ruled rows whose leader lines run into a white PP skid in its frame",
-"component": null,
+"component": "WitnessPlan",
 "group": null,
-"order": 12,
+"order": 129,
 "size": [
 1024,
 420
@@ -698,7 +698,7 @@
 "note": "'How you witness' (svc-fat-sat), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → five witness modes as ruled rows whose leader lines run into a white PP skid in its frame",
 "component": null,
 "group": null,
-"order": 13,
+"order": 130,
 "size": [
 1024,
 572
@@ -712,9 +712,9 @@
 "status": "built",
 "title": "P9b svc cq 0",
 "note": "'What each stage proves' (svc-cq), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → C&Q stages as a row of navy/limestone tiles with huge slash numerals, one blueprint pipe tile",
-"component": null,
+"component": "StageTiles",
 "group": null,
-"order": 13,
+"order": 131,
 "size": [
 1024,
 572
@@ -728,9 +728,9 @@
 "status": "built",
 "title": "P9b svc cq 1",
 "note": "'Who writes, who reviews' (svc-cq), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → responsibility table on a navy drawing sheet with zone border and an AQ-CQ-001 title block",
-"component": null,
+"component": "SignatureBlocks",
 "group": null,
-"order": 13,
+"order": 132,
 "size": [
 1024,
 572
@@ -746,7 +746,7 @@
 "note": "'Who writes, who reviews' (svc-cq), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → responsibility table on a navy drawing sheet with zone border and an AQ-CQ-001 title block",
 "component": null,
 "group": null,
-"order": 13,
+"order": 133,
 "size": [
 1024,
 572
@@ -760,9 +760,9 @@
 "status": "built",
 "title": "P9b svc cq 2",
 "note": "'IQ and OQ on site' (svc-cq), art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching → IQ/OQ checks table beside a detailed isometric line drawing of the skid with a few labelled check points",
-"component": null,
+"component": "WalkdownPins",
 "group": null,
-"order": 13,
+"order": 134,
 "size": [
 1024,
 637
@@ -776,9 +776,9 @@
 "status": "built",
 "title": "P9b svc cq 3",
 "note": "'PQ in three phases' (svc-cq), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → three slash-numbered phase rows beside a readout panel: giant light 336 SAMPLES, tick scale, limit tag",
-"component": null,
+"component": "PqCalendar",
 "group": null,
-"order": 13,
+"order": 135,
 "size": [
 1024,
 637
@@ -792,9 +792,9 @@
 "status": "built",
 "title": "P9b svc cq 4",
 "note": "'Alert levels come from your data' (svc-cq), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → full-width navy band carrying the two-level table slices across a hairline skid drawing on limestone",
-"component": null,
+"component": "CutBand",
 "group": null,
-"order": 13,
+"order": 136,
 "size": [
 1024,
 637
@@ -808,9 +808,9 @@
 "status": "built",
 "title": "P9b svc service 0",
 "note": "'Service plans: response, scope, price' (svc-service), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → four plan columns as alternating navy/limestone tiles, huge slash numerals, price/response tiles below",
-"component": null,
+"component": "PlanChecker",
 "group": null,
-"order": 13,
+"order": 137,
 "size": [
 1024,
 637
@@ -824,9 +824,9 @@
 "status": "built",
 "title": "P9b svc service 1",
 "note": "'What it costs to run' (svc-service), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → white RO skid in soft 3D with numbered leaders dropping into the running-cost table below",
-"component": null,
+"component": "CostSkid",
 "group": null,
-"order": 13,
+"order": 138,
 "size": [
 1024,
 637
@@ -840,9 +840,9 @@
 "status": "built",
 "title": "P9b svc service 2",
 "note": "'Instrument calibration' (svc-service), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → calibration table beside a tick-ring dial with a big steel-blue tolerance figure and two outlined limit tags",
-"component": null,
+"component": "SignalDial",
 "group": null,
-"order": 13,
+"order": 139,
 "size": [
 1024,
 687
@@ -872,9 +872,9 @@
 "status": "built",
 "title": "P9b svc service 3",
 "note": "'What a maintenance visit covers' (svc-service), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → navy band with a line-drawn skid and visit checks along its base, the signed report as a closing limestone line",
-"component": null,
+"component": "VisitPlan",
 "group": null,
-"order": 14,
+"order": 140,
 "size": [
 1024,
 572
@@ -888,9 +888,9 @@
 "status": "built",
 "title": "P9b svc service 4",
 "note": "'Like for like, or a change?' (svc-service), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → limestone drawing sheet: dimensioned membrane-housing drawing, part list boxed at right, title block",
-"component": null,
+"component": "SpareSheet",
 "group": null,
-"order": 14,
+"order": 141,
 "size": [
 1024,
 572
@@ -904,9 +904,9 @@
 "status": "built",
 "title": "P9b svc service 5",
 "note": "'When something goes wrong' (svc-service), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → giant cropped headline spanning navy and limestone halves, a tangled pipe knot figure, five slash-numbered steps",
-"component": null,
+"component": "FaultKnot",
 "group": null,
-"order": 14,
+"order": 142,
 "size": [
 1024,
 506
@@ -920,9 +920,9 @@
 "status": "built",
 "title": "P9b svc upgrades 0",
 "note": "'After a water observation or out-of-trend results' (svc-upgrades), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → who-does-what table on limestone, half-page navy panel with an annotated fusion-weld close-up",
-"component": null,
+"component": "ApprovalMerge",
 "group": null,
-"order": 14,
+"order": 143,
 "size": [
 1024,
 637
@@ -936,9 +936,9 @@
 "status": "built",
 "title": "P9b svc upgrades 1",
 "note": "'Common upgrades and their requalification' (svc-upgrades), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → navy header band with a P&ID-style plant line drawing over a 5-column upgrade table",
-"component": null,
+"component": "RetrofitPlant",
 "group": null,
-"order": 14,
+"order": 144,
 "size": [
 1024,
 637
@@ -952,9 +952,9 @@
 "status": "built",
 "title": "P9b svc upgrades 2",
 "note": "'Data integrity gaps in older controls' (svc-upgrades), art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching → gap table with mono clause codes beside an isometric skid line drawing; obsolete-PLC note set in mono next to the headline",
-"component": null,
+"component": "StrikeGaps",
 "group": null,
-"order": 14,
+"order": 145,
 "size": [
 1024,
 637
@@ -968,9 +968,9 @@
 "status": "built",
 "title": "P9b svc upgrades 3",
 "note": "'What the assessment reviews' (svc-upgrades), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → review areas as a drawing register: numbered rows with mono codes (01_REC...) on a navy zone-bordered sheet",
-"component": null,
+"component": "ReviewReticles",
 "group": null,
-"order": 14,
+"order": 146,
 "size": [
 1024,
 572
@@ -986,7 +986,7 @@
 "note": "'What the assessment reviews' (svc-upgrades), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → review areas as a drawing register: numbered rows with mono codes (01_REC...) on a navy zone-bordered sheet",
 "component": null,
 "group": null,
-"order": 14,
+"order": 147,
 "size": [
 1024,
 572
@@ -1000,9 +1000,9 @@
 "status": "built",
 "title": "P9b svc upgrades 4",
 "note": "'How an upgrade runs' (svc-upgrades), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → horizontal double-line pipe with valves as a timeline; a line icon above each of five steps",
-"component": null,
+"component": "GateLine",
 "group": null,
-"order": 14,
+"order": 148,
 "size": [
 1024,
 637
@@ -1016,9 +1016,9 @@
 "status": "built",
 "title": "P9b ind pharma 0",
 "note": "'Your situation and where to start' (ind-pharma), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → situation-need-start rows as a checker grid of navy/limestone tiles with slash numerals and two blueprint tiles",
-"component": null,
+"component": "CheckerRouter",
 "group": null,
-"order": 14,
+"order": 149,
 "size": [
 1024,
 637
@@ -1048,9 +1048,9 @@
 "status": "built",
 "title": "P9b ind pharma 1",
 "note": "'Minimum water grade by dosage form' (ind-pharma), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → vertical grade scale (potable-PW-WFI) with a 'minimum' limit line and big numeral beside the dosage-form table",
-"component": "FAQ",
+"component": "GradeLadder",
 "group": null,
-"order": 15,
+"order": 150,
 "size": [
 1024,
 637
@@ -1064,9 +1064,9 @@
 "status": "built",
 "title": "P9b ind pharma 2",
 "note": "'What each inspector reads' (ind-pharma), art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching → inspector/reads/answer table with mono codes beside a large isometric PP plant drawing bleeding off the right edge",
-"component": "FAQ",
+"component": "BinderSpines",
 "group": null,
-"order": 15,
+"order": 151,
 "size": [
 1024,
 637
@@ -1080,9 +1080,9 @@
 "status": "built",
 "title": "P9b ind pharma 3",
 "note": "'Decide before your requirements (URS) are approved' (ind-pharma), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → central hairline process schematic with five decisions as numbered callouts on both sides, leader lines into the plant",
-"component": "FAQ",
+"component": "DecisionPlant",
 "group": null,
-"order": 15,
+"order": 152,
 "size": [
 1024,
 687
@@ -1096,9 +1096,9 @@
 "status": "built",
 "title": "P9b ind pharma 4",
 "note": "'Natural health products: does this line need Purified Water?' (ind-pharma), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → soft-3D translucent PP column skid with leaders on the left, product/minimum-water table on the right",
-"component": "FAQ",
+"component": "GradeSwitch",
 "group": null,
-"order": 15,
+"order": 153,
 "size": [
 1024,
 572
@@ -1112,9 +1112,9 @@
 "status": "built",
 "title": "P9b ind meddevice 0",
 "note": "'Water grade by process step' (ind-meddevice), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → navy panel with a dimensioned line-mesh fusion bead beside the process-step / water-grade table",
-"component": "FAQ",
+"component": "DerivationSheet",
 "group": null,
-"order": 15,
+"order": 154,
 "size": [
 1024,
 637
@@ -1128,9 +1128,9 @@
 "status": "built",
 "title": "P9b ind meddevice 0 take2",
 "note": "'Water grade by process step' (ind-meddevice), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → navy panel with a dimensioned line-mesh fusion bead beside the process-step / water-grade table",
-"component": "FAQ",
+"component": null,
 "group": null,
-"order": 15,
+"order": 155,
 "size": [
 1024,
 572
@@ -1144,9 +1144,9 @@
 "status": "built",
 "title": "P9b ind meddevice 1",
 "note": "'Where rinse water reaches the device' (ind-meddevice), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → loop-to-washer line schematic with 3 numbered stations under a navy flow readout (big 12.5 m3/h, ticks, limit tag)",
-"component": "FAQ",
+"component": "WasherTrace",
 "group": null,
-"order": 15,
+"order": 156,
 "size": [
 1024,
 572
@@ -1160,9 +1160,9 @@
 "status": "built",
 "title": "P9b ind meddevice 2",
 "note": "'Systems for device plants' (ind-meddevice), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → four system links as slash-numbered navy/limestone tiles, one blueprint tile and one abstract steel-blue tile",
-"component": "FAQ",
+"component": "StandardTiles",
 "group": null,
-"order": 15,
+"order": 157,
 "size": [
 1024,
 637
@@ -1176,9 +1176,9 @@
 "status": "built",
 "title": "P9b ind meddevice 3",
 "note": "'Who audits your water system' (ind-meddevice), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → auditor table on navy blueprint grid; double-line pipe manifolds with valves feed each row across the columns",
-"component": "FAQ",
+"component": "AuditManifold",
 "group": null,
-"order": 15,
+"order": 158,
 "size": [
 1024,
 637
@@ -1192,9 +1192,9 @@
 "status": "built",
 "title": "P9b ind cdmo 0",
 "note": "'Start from your situation' (ind-cdmo), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → 4-column situation router table on a navy zone-bordered drawing sheet with title block",
-"component": "FAQ",
+"component": "SuiteLoop",
 "group": null,
-"order": 15,
+"order": 159,
 "size": [
 1024,
 572
@@ -1224,9 +1224,9 @@
 "status": "built",
 "title": "P9b ind cdmo 0 take2",
 "note": "'Start from your situation' (ind-cdmo), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → 4-column situation router table on a navy zone-bordered drawing sheet with title block",
-"component": "ProcessSteps",
+"component": null,
 "group": null,
-"order": 16,
+"order": 160,
 "size": [
 1024,
 572
@@ -1240,9 +1240,9 @@
 "status": "built",
 "title": "P9b ind cdmo 1",
 "note": "'The client audit pack' (ind-cdmo), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → white PP skid in soft 3D centred, the five audit-pack parts as numbered callouts on both sides",
-"component": "ProcessSteps",
+"component": "AuditSkid",
 "group": null,
-"order": 16,
+"order": 161,
 "size": [
 1024,
 637
@@ -1256,9 +1256,9 @@
 "status": "built",
 "title": "P9b ind cdmo 2",
 "note": "'Redundancy that keeps clients supplied' (ind-cdmo), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → huge stacked headline, isometric drawing of twin duplex trains, five numbered redundancy cards in a band with mono codes",
-"component": "ProcessSteps",
+"component": "DuplexTrains",
 "group": null,
-"order": 16,
+"order": 162,
 "size": [
 1024,
 637
@@ -1272,9 +1272,9 @@
 "status": "built",
 "title": "P9b ind cdmo 3",
 "note": "'From signed program to released water' (ind-cdmo), art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching → four numbered steps with steel-blue placeholder figures beside a ring of isometric line-drawn PP modules",
-"component": "ProcessSteps",
+"component": "TieInRun",
 "group": null,
-"order": 16,
+"order": 163,
 "size": [
 1024,
 637
@@ -1288,9 +1288,9 @@
 "status": "built",
 "title": "P9b compliance 4",
 "note": "'Engineering, materials and pressure equipment' (compliance), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → skid elevation drawing with five numbered square tags above a 4-column standards table whose rows carry the same numbers",
-"component": "ProcessSteps",
+"component": "SkidTags",
 "group": null,
-"order": 16,
+"order": 164,
 "size": [
 1024,
 765
@@ -1304,9 +1304,9 @@
 "status": "built",
 "title": "P9b cmp documentation 0",
 "note": "'The turnover package, section by section' (cmp-documentation), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → limestone sheet on navy: huge headline, five numbered package sections in a ruled grid, isometric pipe-frame drawing",
-"component": "ProcessSteps",
+"component": "IndexSheet",
 "group": null,
-"order": 16,
+"order": 165,
 "size": [
 1024,
 572
@@ -1320,9 +1320,9 @@
 "status": "built",
 "title": "P9b cmp documentation 1",
 "note": "'What each stage issues' (cmp-documentation), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → duotone fusion-joint line drawing with dimension ticks beside a stage / approver / documents table",
-"component": "ProcessSteps",
+"component": "StageStacks",
 "group": null,
-"order": 16,
+"order": 166,
 "size": [
 1024,
 637
@@ -1336,9 +1336,9 @@
 "status": "built",
 "title": "P9b cmp documentation 2",
 "note": "'How each document reaches your file' (cmp-documentation), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → five numbered document-lifecycle steps with leader lines into a white soft-3D RO skid",
-"component": "ProcessSteps",
+"component": "RevisionSheet",
 "group": null,
-"order": 16,
+"order": 167,
 "size": [
 1024,
 572
@@ -1352,9 +1352,9 @@
 "status": "built",
 "title": "P9b cmp documentation 3",
 "note": "'Delivery and signatures' (cmp-documentation), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → 3-row delivery table on a navy zone-bordered drawing sheet with doc code DS-001-A and an AQ-DP-04 title block",
-"component": "ProcessSteps",
+"component": "PdfAnatomy",
 "group": null,
-"order": 16,
+"order": 168,
 "size": [
 1024,
 572
@@ -1368,9 +1368,9 @@
 "status": "built",
 "title": "P9b cmp documentation 3 take2",
 "note": "'Delivery and signatures' (cmp-documentation), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → 3-row delivery table on a navy zone-bordered drawing sheet with doc code DS-001-A and an AQ-DP-04 title block",
-"component": "ProcessSteps",
+"component": null,
 "group": null,
-"order": 16,
+"order": 169,
 "size": [
 1024,
 572
@@ -1400,9 +1400,9 @@
 "status": "built",
 "title": "P9b cmp quality 0",
 "note": "'Each process, and the record it leaves' (cmp-quality), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → three ruled columns on a limestone drawing sheet, each entry followed by a tiny hairline record glyph",
-"component": "RelatedLinks",
+"component": "RecordSheet",
 "group": null,
-"order": 17,
+"order": 170,
 "size": [
 1024,
 572
@@ -1416,9 +1416,9 @@
 "status": "built",
 "title": "P9b cmp quality 0 take2",
 "note": "'Each process, and the record it leaves' (cmp-quality), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → three ruled columns on a limestone drawing sheet, each entry followed by a tiny hairline record glyph",
-"component": "RelatedLinks",
+"component": null,
 "group": null,
-"order": 17,
+"order": 171,
 "size": [
 1024,
 572
@@ -1432,9 +1432,9 @@
 "status": "built",
 "title": "P9b cmp quality 1",
 "note": "'How a defect is held and closed' (cmp-quality), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → six NCR steps as navy/limestone tiles with huge slash numerals; one tile is a dimensioned joint-repair drawing with 'defective region' tags",
-"component": "RelatedLinks",
+"component": "NcrTiles",
 "group": null,
-"order": 17,
+"order": 172,
 "size": [
 1024,
 637
@@ -1448,9 +1448,9 @@
 "status": "built",
 "title": "P9b cmp quality 2",
 "note": "'What we require from suppliers' (cmp-quality), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → two lead facts (big '12 months' review interval, 'open CAPA stops orders') above a supplier requirements table",
-"component": "RelatedLinks",
+"component": "MarkingMatch",
 "group": null,
-"order": 17,
+"order": 173,
 "size": [
 1024,
 572
@@ -1464,9 +1464,9 @@
 "status": "built",
 "title": "P9b cmp quality 3",
 "note": "'Certification status' (cmp-quality), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → ruler-framed readout box with a giant light numeral and REQ tag, certifications as a 2x2 grid of mono status lines",
-"component": "RelatedLinks",
+"component": "CertReadout",
 "group": null,
-"order": 17,
+"order": 174,
 "size": [
 1024,
 637
@@ -1480,9 +1480,9 @@
 "status": "built",
 "title": "P9b cmp quality 4",
 "note": "'How buying from us works' (cmp-quality), art direction: long page alternating navy drawing bands and limestone reading sheets, each band one picture → numbered commercial-terms table beside an isometric skid frame bleeding off the right edge",
-"component": "RelatedLinks",
+"component": "TermsSheet",
 "group": null,
-"order": 17,
+"order": 175,
 "size": [
 1024,
 637
@@ -1496,9 +1496,9 @@
 "status": "built",
 "title": "P9b projects 0",
 "note": "'Verify before a case study exists' (projects), art direction: Swiss International Typographic Style, strict modular grid of square navy and limestone tiles, huge light numerals with slash, one tile holds a blueprint drawing → five verification routes as rows of tiles: navy slash-numeral tile, route, check, not-proved, mono time-to-arrange",
-"component": "RelatedLinks",
+"component": "CheckLedger",
 "group": null,
-"order": 17,
+"order": 176,
 "size": [
 1024,
 572
@@ -1512,9 +1512,9 @@
 "status": "built",
 "title": "P9b projects 1",
 "note": "'What a case study proves' (projects), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → sparse limestone drawing sheet whose title block rows read Figure / Method / Report / Approval",
-"component": "RelatedLinks",
+"component": "RecordAnatomy",
 "group": null,
-"order": 17,
+"order": 177,
 "size": [
 1024,
 572
@@ -1528,9 +1528,9 @@
 "status": "built",
 "title": "P9b about 0",
 "note": "'Company facts' (about), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → giant cropped 'Company facts' headline straddling a limestone/navy split, fact table across it, small skid line drawing",
-"component": "RelatedLinks",
+"component": "Colophon",
 "group": null,
-"order": 17,
+"order": 178,
 "size": [
 1024,
 637
@@ -1544,9 +1544,9 @@
 "status": "built",
 "title": "P9b about 1",
 "note": "'The people you would work with' (about), art direction: one matte white polypropylene skid in soft 3D isometric render, even studio light, translucent pale-blue water, hairline leader lines to labels → three numbered people cards beside a soft-3D skid whose leaders split 'designed by Aquemi' from 'maker-sourced' parts",
-"component": "RelatedLinks",
+"component": "SourceSkid",
 "group": null,
-"order": 17,
+"order": 179,
 "size": [
 1024,
 637
@@ -1576,9 +1576,9 @@
 "status": "built",
 "title": "P9b about 2",
 "note": "'What changes for a Canadian site' (about), art direction: engineering drawing sheet on navy, zone-reference border and title block, mono document codes, hairline table rules → navy drawing sheet: four columns, each with one line-drawn part (flange, pipe spool, vessel pair, tank), title block AQ-SEC-CAN-04",
-"component": "Closing",
+"component": "SiteTiles",
 "group": null,
-"order": 18,
+"order": 180,
 "size": [
 1024,
 637
@@ -1592,9 +1592,9 @@
 "status": "built",
 "title": "P9b careers 0",
 "note": "'Roles, base and pay' (careers), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → role cards set inside the bends of one double-line pipe loop with valves; open/closed status after each title",
-"component": "Closing",
+"component": "RoleLoop",
 "group": null,
-"order": 18,
+"order": 181,
 "size": [
 1024,
 637
@@ -1608,9 +1608,9 @@
 "status": "built",
 "title": "P9b careers 1",
 "note": "'Pay, benefits and terms' (careers), art direction: isometric technical line drawing of white polypropylene equipment, catalogue illustration, uniform hairline strokes, isolated on the ground, no shading, no hatching → numbered terms list (title + mono detail line) beside an isometric PP plant line drawing",
-"component": "Closing",
+"component": "TimeCard",
 "group": null,
-"order": 18,
+"order": 182,
 "size": [
 1024,
 637
@@ -1624,9 +1624,9 @@
 "status": "built",
 "title": "P9b careers 2",
 "note": "'How we hire' (careers), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → dimensioned duotone macro of a PP fusion joint beside a vertical four-step rail with gate ticks",
-"component": "Closing",
+"component": "HirePath",
 "group": null,
-"order": 18,
+"order": 183,
 "size": [
 1024,
 572
@@ -1640,9 +1640,9 @@
 "status": "built",
 "title": "P9b news 0",
 "note": "'The notes register' (news), art direction: limestone paper drawing sheet with a fine navy border, title block bottom right, navy hairline diagram, numbered notes in a narrow column → limestone drawing sheet: big title left, notes as the sheet's numbered notes column in mono, faint schematic between",
-"component": "Closing",
+"component": "RevisionRegister",
 "group": null,
-"order": 18,
+"order": 184,
 "size": [
 1024,
 572
@@ -1656,9 +1656,9 @@
 "status": "built",
 "title": "P9b contact proposal 2",
 "note": "'What each request returns' (contact-proposal), art direction: editorial magazine spread, dramatic asymmetric layout, oversized light-weight headline cropped by the frame, one striking line-drawn figure, hairline rules → headline cropped off the top-right edge, isometric skid line drawing left, situation / returns / when / cost table with mono turnaround",
-"component": "Closing",
+"component": "RequestMenu",
 "group": null,
-"order": 18,
+"order": 185,
 "size": [
 1024,
 572
@@ -1672,9 +1672,9 @@
 "status": "built",
 "title": "P9b contact service 2",
 "note": "'Response times by request' (contact-service), art direction: technical blueprint on deep navy, pale blue-white hairline line art, one continuous double-line pipe in steel blue linking every item, P&ID valve symbols at the joints → steel-blue riser pipe with a valve per severity row branching out to the response and follow-up columns",
-"component": "Closing",
+"component": "RiserValves",
 "group": null,
-"order": 18,
+"order": 186,
 "size": [
 1024,
 637
@@ -1688,9 +1688,9 @@
 "status": "built",
 "title": "P9b contact locations 1",
 "note": "'Where to find us' (contact-locations), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → limestone sites table beside a dimensioned duotone fusion-joint macro panel",
-"component": "Closing",
+"component": "SitePlates",
 "group": null,
-"order": 18,
+"order": 187,
 "size": [
 1024,
 637
@@ -1704,9 +1704,9 @@
 "status": "built",
 "title": "P9b contact locations 1 take2",
 "note": "'Where to find us' (contact-locations), art direction: macro close-up of a polypropylene butt-fusion weld or membrane, duotone navy and limestone, shallow depth of field, crisp hairline annotations over it → limestone sites table beside a dimensioned duotone fusion-joint macro panel",
-"component": "Closing",
+"component": null,
 "group": null,
-"order": 18,
+"order": 188,
 "size": [
 1024,
 637
@@ -1720,9 +1720,9 @@
 "status": "built",
 "title": "P9b contact locations 2",
 "note": "'Can you support my site?' (contact-locations), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → three region columns (ON, QC, BC), each with mono Severity-1 hours, plus one big '04 HR' readout with tick scale and MAX tag",
-"component": "Closing",
+"component": "CoverageMap",
 "group": null,
-"order": 18,
+"order": 189,
 "size": [
 1024,
 637
@@ -1752,9 +1752,9 @@
 "status": "built",
 "title": "P9b contact locations 2 take2",
 "note": "'Can you support my site?' (contact-locations), art direction: instrument-panel readout: one oversized light numeral with its unit, a fine tick scale and a single limit line with a small outlined limit tag → three region columns (ON, QC, BC), each with mono Severity-1 hours, plus one big '04 HR' readout with tick scale and MAX tag",
-"component": "CaseStudy",
+"component": null,
 "group": null,
-"order": 19,
+"order": 190,
 "size": [
 1024,
 637
@@ -1768,9 +1768,9 @@
 "status": "built",
 "title": "P12 industries map",
 "note": "industries.map (pair mode): Application wheel: one PP package at the centre, six group segments around it, each with 4–5 mono-numbered plant uses on hairline leaders → application wheel: package at the centre, six petal segments with numbered uses on leaders, group index column at right; phone: package, riser, 2-column group grid, Show all fold",
-"component": "CaseStudy",
+"component": "ApplicationWheel",
 "group": null,
-"order": 19,
+"order": 191,
 "size": [
 1024,
 572
@@ -1784,9 +1784,9 @@
 "status": "built",
 "title": "P12 industries matrix",
 "note": "industries.matrix (pair mode): Swiss matrix on limestone: 8 industry rows by 5 water-use columns, filled cells as navy squares with mono grade tags, blank cells left open, one pipe header along the column heads → plain matrix under a pipe header with invented rows (chemical, mining) and columns (cooling, wastewater), all cells filled; phone: cards on a vertical riser",
-"component": "CaseStudy",
+"component": null,
 "group": null,
-"order": 19,
+"order": 192,
 "size": [
 1024,
 572
@@ -1800,9 +1800,9 @@
 "status": "built",
 "title": "P12 industries fit",
 "note": "industries.fit (pair mode): Instrument readout: PP pressure–temperature curve with one limit line beside three numbered rule tiles and outlined \"not served\" tags → navy P-T readout with one limit tag, three numbered rule tiles, outlined not-served tags, small skid line drawing; phone: readout first, tiles 2-up, tags wrapped",
-"component": "CaseStudy",
+"component": "FitReadout",
 "group": null,
-"order": 19,
+"order": 193,
 "size": [
 1024,
 687
@@ -1816,9 +1816,9 @@
 "status": "built",
 "title": "P12 industries matrix take2",
 "note": "industries.matrix (pair mode): Swiss matrix on limestone: 8 industry rows by 5 water-use columns, filled cells as navy squares with mono grade tags, blank cells left open, one pipe header along the column heads → 6x5 matrix of navy squares with [grade] tags under a steel-blue header pipe teeing into each column from a package drawing; phone: industry cards on a riser, Show all fold",
-"component": "CaseStudy",
+"component": "UseMatrix",
 "group": null,
-"order": 19,
+"order": 194,
 "size": [
 1024,
 572
@@ -1832,9 +1832,9 @@
 "status": "built",
 "title": "P12 industries same water",
 "note": "industries.same-water (pair mode): One double-line pipe from one skid tees into five limit-writer sheets (pharmacopoeia, ST108, ASTM, recipe, maker's sheet), mono numbers → isometric skid at left, one steel-blue pipe fans into five numbered limit-writer sheets with [limit]; phone: skid on top, riser down the left with the five sheets branching",
-"component": "CaseStudy",
+"component": "LimitWriters",
 "group": null,
-"order": 19,
+"order": 195,
 "size": [
 1024,
 572
@@ -1848,9 +1848,9 @@
 "status": "built",
 "title": "P12 ind personal care start",
 "note": "ind-personal-care.start (pair mode): Multiport valve router: four numbered lever positions, each lighting a route card → large multiport valve drawing at the centre, four numbered ports piped to route cards (title + [step]), card 02 lit steel blue; phone: small valve on a riser, four stacked cards, Show all",
-"component": "CaseStudy",
+"component": "MultiportRouter",
 "group": null,
-"order": 19,
+"order": 196,
 "size": [
 1024,
 572
@@ -1864,9 +1864,9 @@
 "status": "built",
 "title": "P12 ind personal care hero",
 "note": "ind-personal-care.hero (hero mode): Black-on-white hero drawing: PP skid feeding a plain-outline batching vessel and a filler, hose reel at the point of use → isometric line drawing: RO skid with cartridge housings and tank piped to a mixer batching vessel, then a bottle filler; hose reel on the wall",
-"component": "CaseStudy",
+"component": "Hero",
 "group": null,
-"order": 19,
+"order": 197,
 "size": [
 1024,
 1024
@@ -1880,9 +1880,9 @@
 "status": "built",
 "title": "P12 ind personal care grade",
 "note": "ind-personal-care.grade (pair mode): Calculation pad: four product classes as numbered lines, the minimum water boxed as each answer → four numbered product-class rows with tick-scale bars ending in empty [ ] boxes, one navy skid tile; phone: 2-column tile mosaic",
-"component": "CaseStudy",
+"component": null,
 "group": null,
-"order": 19,
+"order": 198,
 "size": [
 1024,
 572
@@ -1896,9 +1896,9 @@
 "status": "built",
 "title": "P12 ind personal care uses",
 "note": "ind-personal-care.uses (pair mode): Isometric plan of a small personal-care plant, six numbered stations (emulsion vessel, filler, hose station, cleaning, QC lab, household line), dashed route → isometric slab with a dashed route and five tags led to empty numbered rows; phone: small plan then empty numbered cards",
-"component": "CaseStudy",
+"component": null,
 "group": null,
-"order": 19,
+"order": 199,
 "size": [
 1024,
 572
@@ -1928,9 +1928,9 @@
 "status": "built",
 "title": "P12 ind personal care grade take2",
 "note": "ind-personal-care.grade (pair mode): Calculation pad: four product classes as numbered lines, the minimum water boxed as each answer → squared calc sheet: four mono derivation lines (class -> contact -> risk =) ending in boxed [grade], line 03 filled steel blue; phone: each line wraps above a full-width answer box",
-"component": null,
+"component": "CalcPad",
 "group": null,
-"order": 20,
+"order": 200,
 "size": [
 1024,
 572
@@ -1944,9 +1944,9 @@
 "status": "built",
 "title": "P12 ind personal care uses take2",
 "note": "ind-personal-care.uses (pair mode): Isometric plan of a small personal-care plant, six numbered stations (emulsion vessel, filler, hose station, cleaning, QC lab, household line), dashed route → isometric cutaway plant room: package in a corner, dashed route to six tagged stations; six ruled rows with label + [mono] line; phone: cropped plan then three rows and Show all [3]",
-"component": null,
+"component": "PlantStations",
 "group": null,
-"order": 20,
+"order": 201,
 "size": [
 1024,
 572
@@ -1960,9 +1960,9 @@
 "status": "built",
 "title": "P12 ind personal care microbes",
 "note": "ind-personal-care.microbes (pair mode): Instrumented PP loop with ISA balloons at circulation, UV, conductivity and sample ports, hoses drawn at the outlets → navy P&ID loop: pump, UV, conductivity cell with instrument balloons, two sample tees with hanging hoses, five keyed notes along the foot; phone: vertical riser with balloons, three notes, Show all",
-"component": null,
+"component": "SensorLoop",
 "group": null,
-"order": 20,
+"order": 202,
 "size": [
 1024,
 572
@@ -1976,9 +1976,9 @@
 "status": "built",
 "title": "P12 ind personal care fit",
 "note": "ind-personal-care.fit (pair mode): Battery-limit split: ambient PP loop inside the seam, hot-held loop outlined outside, navy and limestone halves → navy/limestone split: ambient loop schematic in the navy half, dashed hot-held loop 'outside scope' in the limestone half, two tie-in nodes on the seam, numbered lists on each side; phone: navy block over limestone with the seam as a rule carrying the nodes",
-"component": null,
+"component": "ScopeSeam",
 "group": null,
-"order": 20,
+"order": 203,
 "size": [
 1024,
 572
@@ -1992,9 +1992,9 @@
 "status": "built",
 "title": "P12 ind personal care from di",
 "note": "ind-personal-care.from-di (pair mode): Three modules on one plinth: exchange DI tanks, RO with tank, full package with loop, risers from one header → three isometric modules (exchange tanks, RO with tank, full package) on plinths fed by risers from one header pipe, numbered captions below; phone: header as a vertical line with the modules branching off it",
-"component": null,
+"component": "ModulePlinth",
 "group": null,
-"order": 20,
+"order": 204,
 "size": [
 1024,
 572
@@ -2008,9 +2008,9 @@
 "status": "built",
 "title": "P12 ind personal care records",
 "note": "ind-personal-care.records (pair mode): Swiss row of four sheets with thumbnails: specimen trend, sanitization log, IQ/OQ binder, acceptance sheet → four limestone record sheets with /01-/04 light numerals and thumbnails (trend with limit line, ruled log, binder spine, signed box), one filler blueprint tile; phone: 2x2 sheets",
-"component": null,
+"component": "SheetPreviews",
 "group": null,
-"order": 20,
+"order": 205,
 "size": [
 1024,
 572
@@ -2024,9 +2024,9 @@
 "status": "built",
 "title": "P12 ind hospital lab hero",
 "note": "ind-hospital-lab.hero (hero mode): Black-on-white plant room: central RO and tank, loop rising to a washer-disinfector outline and a lab bench → isometric plant room: RO skid with cartridge rack and pumps beside a PP tank, loop rising to an upper floor with a washer-disinfector cabinet and a lab bench with sink",
-"component": null,
+"component": "Hero",
 "group": null,
-"order": 20,
+"order": 206,
 "size": [
 1024,
 1024
@@ -2042,7 +2042,7 @@
 "note": "ind-hospital-lab.start (pair mode): Rising staircase of six situation cards over cropped outline type → steel-blue pipe climbs as a staircase carrying six numbered situation cards over a giant outline 'SITUATION'; phone: cards on a vertical riser, Show all",
 "component": null,
 "group": null,
-"order": 20,
+"order": 207,
 "size": [
 1024,
 572
@@ -2056,9 +2056,9 @@
 "status": "built",
 "title": "P12 ind hospital lab grades",
 "note": "ind-hospital-lab.grades (pair mode): Crosswalk: water types down the middle, hospital standards spine left, lab standards spine right, wires to clause chips with editions → crosswalk: navy water-type blocks in the middle, hospital clause chips left and lab clause chips right on hairline wires; phone: one navy block per type with its clause rows under it",
-"component": null,
+"component": "GradeCrosswalk",
 "group": null,
-"order": 20,
+"order": 208,
 "size": [
 1024,
 572
@@ -2072,9 +2072,9 @@
 "status": "built",
 "title": "P12 ind hospital lab reprocessing",
 "note": "ind-hospital-lab.reprocessing (pair mode): Drawing register with one viewfinder over a washer-disinfector, ultrasonic tank, sink with lumen flush and endoscope reprocessor, plain outlines → drawing register: four framed outline drawings with mono codes, a steel-blue viewfinder square over the washer-disinfector, its dimensioned view and notes below, title block; phone: 2x2 drawings then the viewfinder block",
-"component": null,
+"component": "DrawingRegister",
 "group": null,
-"order": 20,
+"order": 209,
 "size": [
 1024,
 572
@@ -2104,9 +2104,9 @@
 "status": "built",
 "title": "P12 ind hospital lab labs",
 "note": "ind-hospital-lab.labs (pair mode): Navy band: lab-building loop with numbered stops at reagent prep, analyzer, glassware washer, autoclave, humidifier, culture hood → navy band: three-storey lab building section with one pale loop threading the floors to six numbered stops labelled at the margins; phone: riser with six rows and a Show all fold",
-"component": "EnquiryForm",
+"component": "BuildingLoop",
 "group": null,
-"order": 21,
+"order": 210,
 "size": [
 1024,
 572
@@ -2120,9 +2120,9 @@
 "status": "built",
 "title": "P12 ind hospital lab train",
 "note": "ind-hospital-lab.train (pair mode): P&ID strip on navy: PVC pretreatment, duplex RO, tank, UV, endotoxin filter, isolatable PP loop, numbered stations → navy P&ID strip: pretreatment, duplex RO in parallel, tank, UV, endotoxin filter, valved loop, numbered captions under each; phone: riser with valve symbols and six rows, Show all after three",
-"component": "EnquiryForm",
+"component": "TrainStrip",
 "group": null,
-"order": 21,
+"order": 211,
 "size": [
 1024,
 687
@@ -2136,9 +2136,9 @@
 "status": "built",
 "title": "P12 ind hospital lab specification",
 "note": "ind-hospital-lab.specification (pair mode): Binder spines on one shelf: specification text, basis of design, battery limits, panel approval, changeover plan; key spine navy → five binder spines on one shelf, Battery limits spine navy, huge light cropped headline left with the list; phone: navy row first then outlined rows on a numbered rail",
-"component": "EnquiryForm",
+"component": "SpineShelf",
 "group": null,
-"order": 21,
+"order": 212,
 "size": [
 1024,
 572
@@ -2152,9 +2152,9 @@
 "status": "built",
 "title": "P12 ind hospital lab validation",
 "note": "ind-hospital-lab.validation (pair mode): Gate-line pipe, five steps with gate valves, sample marks at loop out, return and taps → navy band: one straight double-line pipe with five numbered gate valves and small sample marks, each step titled with what it leaves; phone: valves down a vertical riser beside five rows",
-"component": "EnquiryForm",
+"component": null,
 "group": null,
-"order": 21,
+"order": 213,
 "size": [
 1024,
 572
@@ -2168,9 +2168,9 @@
 "status": "built",
 "title": "P12 ind process hero",
 "note": "ind-process.hero (hero mode): Black-on-white: RO/EDI skid on a plinth feeding a proofing tank, a rinse tank and an electrolyser stack, plain outlines → isometric RO/EDI skid with membrane rack and two filter vessels on a plinth, one pipe teeing to a proofing cabinet, an open rinse tank and a plate-stack electrolyser",
-"component": "EnquiryForm",
+"component": "Hero",
 "group": null,
-"order": 21,
+"order": 214,
 "size": [
 1024,
 1024
@@ -2184,9 +2184,9 @@
 "status": "built",
 "title": "P12 ind process start",
 "note": "ind-process.start (pair mode): Manifold router on a limestone sheet: eight branches, the chosen one filling with water → header pipe with eight hanging numbered branch tags, branch 05 lit steel blue and opening a card, giant outline word behind; phone: riser with eight rows, the chosen one expanded",
-"component": "EnquiryForm",
+"component": null,
 "group": null,
-"order": 21,
+"order": 215,
 "size": [
 1024,
 572
@@ -2200,14 +2200,62 @@
 "status": "built",
 "title": "P12 ind process limits",
 "note": "ind-process.limits (pair mode): Drawer of manila folders, one per limit-writer, each slip naming what to send → stack of folder tabs with mono codes (01-F, 02-E ...), each with a 'send ... spec' slip; phone: one folder per row with its slip",
-"component": "EnquiryForm",
+"component": "LimitDrawer",
 "group": null,
-"order": 21,
+"order": 216,
 "size": [
 1024,
 572
 ],
 "kb": 486
+},
+{
+"src": "design-system/inspiration/gemini/217-p12-ind-process-limits-take2.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__217-p12-ind-process-limits-take2.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 ind process limits take2",
+"note": "ind-process.limits (pair mode): Retake: file drawer of five folders with tabs at separate cut positions, a clipped what-to-send slip and a navy where-it-applies label on each → five upright folders 01-05 with tabs at their own cut positions and navy Food and beverage / Industrial labels, a clipped white what-to-send slip on each; phone: one folder per row with its slip, Show all after three",
+"component": "LimitFolders",
+"group": null,
+"order": 217,
+"size": [
+1025,
+687
+],
+"kb": 466
+},
+{
+"src": "design-system/inspiration/gemini/218-p12-ind-process-food.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__218-p12-ind-process-food.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 ind process food",
+"note": "ind-process.food (pair mode): Site ledger beside a navy plate: proofing-tank water point with numbered callouts, plus thumbnail plates for a bottle rinser and a CIP final-rinse spray ball → ruled ledger 01-05 beside a navy plate: drop pipe and valve over a plain-outline proofing tank with callouts 01 point of use, 02 sample valve, 03 hose, 04 drain, two thumbnail plates below; phone: plate first, thumbnails 2-up, three ledger cards and Show all",
+"component": "ScenePlates",
+"group": null,
+"order": 218,
+"size": [
+1025,
+572
+],
+"kb": 292
+},
+{
+"src": "design-system/inspiration/gemini/219-p12-home-industries.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__219-p12-home-industries.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 home industries",
+"note": "home.industries (pair mode): One PW header main with six labelled drops, each ending in a point-of-use vignette with a [standard] tag → isometric package at left, double-line header main with arrow drops to five numbered vignettes (granulation bowl, suite drops, rinse bath, washer-disinfector, cream kettle) each with its industry; phone: main as a riser down the left, 2-column vignette tiles",
+"component": "IndustryDrops",
+"group": null,
+"order": 219,
+"size": [
+1025,
+572
+],
+"kb": 413
 },
 {
 "src": "design-system/inspiration/gemini/22-art-ind-pharma.png",
@@ -2226,6 +2274,166 @@
 "kb": 500
 },
 {
+"src": "design-system/inspiration/gemini/220-p12-systems-site.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__220-p12-systems-site.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 systems site",
+"note": "systems.site (pair mode): Battery-limits plan: skid footprint inside a dashed line, seven numbered connection points keyed to rows → plan of the skid footprint inside a dashed battery-limit line with square number nodes on the line, seven ruled rows 01-07 with [typical value]; phone: plan with numbers only, three rows and Show all",
+"component": "LimitPlan",
+"group": null,
+"order": 220,
+"size": [
+1025,
+572
+],
+"kb": 364
+},
+{
+"src": "design-system/inspiration/gemini/221-p12-systems-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__221-p12-systems-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 systems hero",
+"note": "systems.hero (pair mode): Hero: the four modules as one isometric line-up on stepped plinths, numbered to the index rows → headline and four-row index at left; four canisters on plinths stepping up to the right with number tags and a loose pipe; phone: line-up thumbnail above headline and index",
+"component": null,
+"group": null,
+"order": 221,
+"size": [
+1025,
+572
+],
+"kb": 351
+},
+{
+"src": "design-system/inspiration/gemini/222-p12-systems-hero-take2.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__222-p12-systems-hero-take2.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 systems hero take2",
+"note": "systems.hero (pair mode): Hero: the four modules as one isometric line-up on stepped plinths, numbered to the index rows → flat elevation in a framed plate: PVC filter vessels, membrane rack, tank on legs, control cabinet stepping up on one pipe with tags 01-04; four-row index under the headline; phone: plate strip above headline and index",
+"component": "HeroScene",
+"group": null,
+"order": 222,
+"size": [
+1025,
+572
+],
+"kb": 319
+},
+{
+"src": "design-system/inspiration/gemini/223-p12-sys-pw-options.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__223-p12-sys-pw-options.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 sys pw options",
+"note": "sys-pw.options (pair mode): Base skid drawn solid, five options as dashed ghost modules clipped on at their places, keyed to rows → isometric RO skid on a navy base frame, dashed ghost boxes for degasser and second train, tags 01-05, five ruled option rows; phone: skid with tags then five rows",
+"component": "GhostSkid",
+"group": null,
+"order": 223,
+"size": [
+1025,
+572
+],
+"kb": 434
+},
+{
+"src": "design-system/inspiration/gemini/224-p12-sys-pw-design.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__224-p12-sys-pw-design.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 sys pw design",
+"note": "sys-pw.design (pair mode): Skid elevation with five parameter leaders, each ending on the part it governs, keyed to value rows → isometric RO skid on a GA sheet with title block, tags 01-05 on leaders, five ruled rows with [placeholder] values; phone: skid with tags then five rows",
+"component": "SkidSheet",
+"group": null,
+"order": 224,
+"size": [
+1025,
+572
+],
+"kb": 421
+},
+{
+"src": "design-system/inspiration/gemini/225-p12-services-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__225-p12-services-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 services hero",
+"note": "services.hero (pair mode): Hero: skid at the centre of a shop floor ringed by six numbered service stations keyed to the index → isometric shop floor: framed skid at the centre, drawing desk, welding bench, test tank, binder shelf, van at a door, lifting gantry over an older skid, tags keyed to a six-row index with number chips; phone: cropped skid and two stations, three index rows and Show all",
+"component": "HeroScene",
+"group": null,
+"order": 225,
+"size": [
+1025,
+572
+],
+"kb": 420
+},
+{
+"src": "design-system/inspiration/gemini/226-p12-ind-meddevice-systems.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__226-p12-ind-meddevice-systems.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 ind meddevice systems",
+"note": "ind-meddevice.systems (pair mode): Package feeding a cabinet washer, four numbered zones keyed to tiles with [standard] chips → flat elevation: filter vessels, cartridges and tank on a base, panel and filter, piped to a cabinet washer; four bare tiles 01-04; phone: drawing then four rows",
+"component": null,
+"group": null,
+"order": 226,
+"size": [
+1025,
+572
+],
+"kb": 321
+},
+{
+"src": "design-system/inspiration/gemini/227-p12-ind-meddevice-systems-take2.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__227-p12-ind-meddevice-systems-take2.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 ind meddevice systems take2",
+"note": "ind-meddevice.systems (pair mode): Package feeding a cabinet washer, four numbered zones keyed to tiles with [standard] chips → isometric framed skid with tank piped to a cabinet washer, two dashed zone frames with tags 01-04 on their corners, four outlined tiles with [standard] chips; phone: thumbnail then four tiles",
+"component": "WasherZones",
+"group": null,
+"order": 227,
+"size": [
+1025,
+572
+],
+"kb": 442
+},
+{
+"src": "design-system/inspiration/gemini/228-p12-first-system-site.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__228-p12-first-system-site.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 first system site",
+"note": "first-system.site (pair mode): Isometric room plan: package inside a dashed battery-limit line, five numbered tie-ins keyed to rows → isometric room cutaway: package and filter vessels inside a dashed line, tags 01-05 on water stub, drain, outlet, door and floor, five ruled rows; title block; phone: room thumbnail with tags then five rows",
+"component": "RoomLimit",
+"group": null,
+"order": 228,
+"size": [
+1025,
+572
+],
+"kb": 383
+},
+{
+"src": "design-system/inspiration/gemini/229-p12-first-system-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__229-p12-first-system-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 first system hero",
+"note": "first-system.hero (pair mode): Hero: empty production room with the dashed package footprint, water and drain stubs and the door as the way in → isometric empty room: dashed package footprint on the floor, tap, floor drain, wall outlet, door with a dashed access path, tags 1-5 with a key; five-row link rail; phone: room thumbnail, key, five rail rows",
+"component": "HeroScene",
+"group": null,
+"order": 229,
+"size": [
+1025,
+572
+],
+"kb": 357
+},
+{
 "src": "design-system/inspiration/gemini/23-concept-standards.png",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__23-concept-standards.jpg",
 "cat": "gemini",
@@ -2240,6 +2448,86 @@
 768
 ],
 "kb": 1127
+},
+{
+"src": "design-system/inspiration/gemini/230-p12-sys-storage-tank.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__230-p12-sys-storage-tank.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 sys storage tank",
+"note": "sys-storage.tank (pair mode): Tank and pipework GA sheet: PP tank, spray ball, vent, pump and exchanger spool, eight leaders keyed to rows → tank elevation with dome vent, spray ball, pump and flanged exchanger spool, tags 01-08 on leaders, eight ruled rows with [design value] [budget range]; phone: drawing with tags, three rows, Show all",
+"component": "TankGa",
+"group": null,
+"order": 230,
+"size": [
+1025,
+572
+],
+"kb": 382
+},
+{
+"src": "design-system/inspiration/gemini/231-p12-projects-configurations.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__231-p12-projects-configurations.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 projects configurations",
+"note": "projects.configurations (pair mode): Six typical-configuration cards, each the same package drawn in its own arrangement, with a capacity tag and Design basis label → 3x2 grid of numbered cards, each a small loop vignette with product icons, title, [capacity] and Design basis, ruled lines; phone: swipe strip of cards with Show all",
+"component": null,
+"group": null,
+"order": 231,
+"size": [
+1025,
+572
+],
+"kb": 453
+},
+{
+"src": "design-system/inspiration/gemini/232-p12-projects-configurations-take2.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__232-p12-projects-configurations-take2.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 projects configurations take2",
+"note": "projects.configurations (pair mode): Six typical-configuration cards, each the same package drawn in its own arrangement, with a capacity tag and Design basis label → 3x2 cards, each the identical membrane skid at left piped to its use (granulation bowl, proofing tank, washer, three suite drops, kettle and filler, lab floors), number tag, [reference capacity, L/h], Design basis; phone: one card with the next peeking, Swipe",
+"component": "ConfigCards",
+"group": null,
+"order": 232,
+"size": [
+1025,
+572
+],
+"kb": 388
+},
+{
+"src": "design-system/inspiration/gemini/233-p12-projects-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__233-p12-projects-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 projects hero",
+"note": "projects.hero (pair mode): Hero: one loop drop fanning into four numbered use scenes → a white box with a double-line loop dropping onto a quarter-circle floor split into four sectors (filler, lab bench, batching tank, rinse conveyor) with tags; phone: riser at the left, 2x2 scene tiles, headline, four keyed rows, Show all",
+"component": "HeroScene",
+"group": null,
+"order": 233,
+"size": [
+1025,
+572
+],
+"kb": 374
+},
+{
+"src": "design-system/inspiration/gemini/234-p12-compliance-hero.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__234-p12-compliance-hero.jpg",
+"cat": "gemini",
+"status": "built",
+"title": "P12 compliance hero",
+"note": "compliance.hero (pair mode): Hero: compliance matrix sheet with clause rows, meets / with a note / differs ticks and proof codes, small skid beside → headline over a ruled table: [clause] rows, Meets / With a note / Differs tick columns, [doc code] column, small metal-looking skid overlapping the corner; phone: rounded card with four rows above the headline",
+"component": null,
+"group": null,
+"order": 234,
+"size": [
+1025,
+572
+],
+"kb": 289
 },
 {
 "src": "design-system/inspiration/gemini/24-art-svc-cq.png",

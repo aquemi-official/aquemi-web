@@ -1,0 +1,136 @@
+/* ---------- IndustryDrops: one PW header main, a drop per served industry, each ending in a point-of-use vignette ---------- */
+.aq-industry-drops {
+  position: relative; display: grid; grid-template-columns: minmax(10rem, 19rem) minmax(0, 1fr); column-gap: var(--space-8);
+  align-items: start;
+}
+/* the measured main and drops (look-industry-drops.js): wall, bore and water strokes on one path, walls first */
+.aq-industry-drops__main { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+.aq-industry-drops__main path { fill: none; stroke-linejoin: round; }
+.aq-industry-drops__wall { stroke: var(--line-strong); stroke-width: 7; }
+.aq-industry-drops__bore { stroke: var(--surface); stroke-width: 4; }
+.aq-industry-drops__water { stroke: var(--flow); stroke-width: 1.5; }
+.aq-industry-drops__head { stroke: var(--flow); stroke-width: 1.5; stroke-linecap: round; }
+.aq-industry-drops__wall.is-on { stroke: var(--flow); transition: stroke 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-industry-drops__wall.aq-industry-drops__drop { transition: stroke 240ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* the package (aria-hidden): its supply and return tips are where the main starts and ends */
+.aq-industry-drops__pkg { position: relative; z-index: 1; align-self: center; }
+.aq-industry-drops__pkg svg { display: block; width: 100%; height: auto; }
+.aq-industry-drops__out, .aq-industry-drops__ret, .aq-industry-drops__tap { position: absolute; width: 0; height: 0; pointer-events: none; }
+
+/* the outlets: rows of three, each item hung from the header by its drop */
+.aq-industry-drops__list {
+  position: relative; z-index: 1; list-style: none; margin: 0 var(--space-4) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-6);
+}
+.aq-industry-drops__item { position: relative; padding-top: var(--space-12); }
+.aq-industry-drops__body { position: relative; }
+.aq-industry-drops__fig { position: relative; width: 12rem; max-width: 100%; aspect-ratio: 150 / 106; margin-bottom: var(--space-4); }
+.aq-industry-drops__fig svg { display: block; width: 100%; height: 100%; }
+.aq-industry-drops__no {
+  display: inline-block; padding: 2px var(--space-2); background: var(--navy); color: var(--on-navy);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em;
+}
+.aq-industry-drops__t { margin: var(--space-3) 0 var(--space-2); font: 500 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-industry-drops__go { color: inherit; text-decoration: none; }
+/* the whole outlet is the link on desktop */
+.aq-industry-drops__go::before { content: ""; position: absolute; inset: calc(-1 * var(--space-12)) calc(-1 * var(--space-3)) calc(-1 * var(--space-3)); }
+.aq-industry-drops__go::after { content: "\2192"; margin-left: 0.3em; color: var(--flow); display: inline-block; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-industry-drops__go:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.aq-industry-drops__go:hover::after, .aq-industry-drops__item.is-on .aq-industry-drops__go::after { transform: translateX(var(--space-1)); }
+.aq-industry-drops__go:focus-visible { outline: none; }
+.aq-industry-drops__go:focus-visible::before { outline: 2px solid var(--focus); outline-offset: 0; }
+.aq-industry-drops__d { margin: 0 0 var(--space-3); max-width: 34ch; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-industry-drops__tag {
+  display: inline-block; padding: 2px var(--space-2); border: 1px solid var(--line-strong); color: var(--ink);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; white-space: nowrap;
+}
+.aq-industry-drops__item.is-on .aq-industry-drops__fig .aq-iso__eq,
+.aq-industry-drops__item.is-on .aq-industry-drops__fig .aq-iso__pipe-wall { stroke: var(--flow); }
+
+/* phone-only chips are PhoneKit heads: hidden until PhoneKit switches the list on */
+.aq-industry-drops__chip { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-industry-drops { grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr); column-gap: var(--space-8); }
+  .aq-industry-drops__list { column-gap: var(--space-6); }
+  .aq-industry-drops__t { font-size: 18px; line-height: 24px; }
+}
+
+/* Phone: the main runs down the left edge; the outlets are a 2-column grid of tiles teed off it (PhoneKit chips) and the
+   open tile's card runs full width under them. Without PhoneKit every card shows, stacked beside the main. */
+@container (max-width: 860px) {
+  .aq-industry-drops { display: block; padding-left: calc(var(--space-8) + var(--space-3)); }
+  .aq-industry-drops__main, .aq-industry-drops__pkg { display: none; }
+  /* a U-loop: supply down the outside rail, return up the inside one; the tiles tee off the return */
+  .aq-industry-drops::before {
+    content: ""; position: absolute; left: var(--space-2); top: 0; bottom: var(--space-6); width: calc(4px + var(--space-3));
+    border: 1.5px solid var(--line-strong); border-top: 0; border-radius: 0 0 var(--space-2) var(--space-2);
+    background: linear-gradient(90deg, transparent 1.25px, var(--flow) 1.25px, var(--flow) 2.75px, transparent 2.75px,
+      transparent calc(100% - 2.75px), var(--flow) calc(100% - 2.75px), var(--flow) calc(100% - 1.25px), transparent calc(100% - 1.25px));
+  }
+  /* the inlet at the top of the main: a flow arrowhead pointing down */
+  .aq-industry-drops::after {
+    content: ""; position: absolute; left: calc(var(--space-2) + 1px); top: calc(-1 * var(--space-2)); width: 7px; height: 7px;
+    border-right: 1.5px solid var(--flow); border-bottom: 1.5px solid var(--flow); transform: rotate(45deg);
+  }
+  .aq-industry-drops__list { display: block; margin-right: 0; }
+  .aq-industry-drops__item { padding-top: 0; margin-bottom: var(--space-4); }
+  .aq-industry-drops__fig, .aq-industry-drops__body > .aq-industry-drops__no { display: none; }
+  .aq-industry-drops__t { margin-top: 0; font-size: 17px; line-height: 24px; }
+  .aq-industry-drops__go::before { content: none; }
+  .aq-industry-drops__d { max-width: none; font-size: 15px; line-height: 23px; }
+
+  /* PhoneKit on: chips */
+  .aq-industry-drops__list[data-pk-on] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item { margin: 0; }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__chip {
+    position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1);
+    padding: var(--space-2) var(--space-3) var(--space-3); border: 1px solid var(--line-strong); border-radius: 0;
+    background: var(--surface); color: var(--ink); font: 500 14px/18px var(--font-sans);
+  }
+  .aq-industry-drops__list[data-pk-picker][data-pk-on] .aq-industry-drops__chip[aria-expanded="true"] {
+    border-color: var(--flow); background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 1px var(--flow);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__chip[aria-expanded="true"] .aq-industry-drops__no { background: var(--flow); color: var(--surface); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__chip[aria-expanded="true"] .aq-iso { color: var(--flow); }
+  .aq-industry-drops__mini { display: block; width: 100%; height: 76px; color: var(--ink-muted); }
+  .aq-industry-drops__mini svg { display: block; width: 100%; height: 100%; }
+  .aq-industry-drops__ct { text-wrap: balance; }
+  /* the tee: the main feeds each row through its left tile, a short spool carries on across the gap */
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(odd) > .aq-industry-drops__chip::before,
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(even) > .aq-industry-drops__chip::before {
+    content: ""; position: absolute; top: var(--space-6); height: 4px; box-sizing: content-box;
+    border-top: 1.5px solid var(--line-strong); border-bottom: 1.5px solid var(--line-strong);
+    background: linear-gradient(transparent 1.25px, var(--flow) 1.25px, var(--flow) 2.75px, transparent 2.75px);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(odd) > .aq-industry-drops__chip::before {
+    left: calc(-1 * var(--space-6) - 1px); width: var(--space-6);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(even) > .aq-industry-drops__chip::before {
+    left: calc(-1 * var(--space-2) - 1px); width: var(--space-2);
+  }
+  /* the open card */
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__body {
+    padding: 0 var(--space-4) var(--space-4); border: 1px solid var(--flow); background: var(--surface-raised);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__t { margin: 0 calc(-1 * var(--space-4)) var(--space-2); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__go {
+    display: flex; align-items: center; gap: var(--space-3); min-height: 48px; padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--line); box-sizing: border-box;
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__go::after { margin-left: auto; }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__go:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+}
+
+/* Tablet (container 600-860 px): three tiles a row; each row is teed from the main through its first tile */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-industry-drops__list[data-pk-on] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(odd) > .aq-industry-drops__chip::before,
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(even) > .aq-industry-drops__chip::before { left: calc(-1 * var(--space-2) - 1px); width: var(--space-2); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(3n+1) > .aq-industry-drops__chip::before { left: calc(-1 * var(--space-6) - 1px); width: var(--space-6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-industry-drops__wall.is-on, .aq-industry-drops__wall.aq-industry-drops__drop, .aq-industry-drops__go::after { transition: none; }
+}

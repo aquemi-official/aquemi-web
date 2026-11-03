@@ -24,7 +24,8 @@ What changed for every hero, calm enough to open all 27 pages:
 | `home` | Loop drawing | `aq-hero__grid--loop` |
 | `sys-*`, `svc-*`, `ind-*` with a drawing in `ART` | Equipment figure with callouts | `aq-hero__grid--figure` |
 | `sys-*`, `svc-*`, `ind-*` without a drawing | Photograph placeholder | `aq-hero__grid` |
-| Pages without a drawing that set `figure` (compliance, cmp-*, projects, about, careers, news, contact-*) | Drawn figure: spots cluster, binder, stamp or route | `aq-hero__grid--figure aq-hero__grid--drawn` |
+| Pages without a drawing that set `figure` (compliance, cmp-*, about, careers, news, contact-*) | Drawn figure: spots cluster, binder, stamp or route | `aq-hero__grid--figure aq-hero__grid--drawn` |
+| Hub pages that set `figure.look` (systems, services, first-system, projects) | Drawn scene (HeroScene): an isometric scene with numbered tags and its key | `aq-hero__grid--figure aq-hero__grid--scene` |
 | Hub and company pages (everything else) | Section index | `aq-hero__grid--index` |
 
 `wHero` in `assets/src/parts/Hero.js` picks the variant from the page id; content files need no extra fields (except `hero_index: false` and the opt-in `index`, below).
@@ -40,9 +41,19 @@ The equipment drawing large beside the headline, its key facts as quiet callouts
 - **Adding a drawing**: put the mask in `assets/illustrations/<page id>.png` (see Illustration), run `python tools/images.py`, then add one line to `ART` in `assets/src/parts/Hero.js` (the text is the drawing's `aria-label`, naming only what is drawn, in the site's Canadian spelling) and its width / height ratio to `ART_R`. Then `python tools/design_system.py build`.
 - Pages listed today: every `sys-*`, `svc-*` and `ind-*` page. Pass 12 added `ind-personal-care` (gallery 197), `ind-hospital-lab` (206, the plant-room floor outlines kept as the cue that the loop rises to the floor above) and `ind-process` (214), made with `tools/line_art.py`; the concept images' wording never reaches the page.
 
+## Drawn scene (opt-in hero field `figure.look`, pass 12 round B)
+
+`"figure": {"look": "module-lineup" | "service-ring" | "site-room" | "use-fan", …}`: a hub page's own isometric scene
+with numbered tags, and a key whose rows carry the same numbers (the page's index, the named rows of one of its blocks,
+or a list of industry pages). Markup, data, phone and motion: `design-system/components/HeroScene/README.md`. On today:
+`systems` (module-lineup; its `index` lists the four system pages in water order), `services` (service-ring, keyed to
+the services index), `first-system` (site-room, keyed to the "What your site needs" rows) and `projects` (use-fan,
+keyed to the five industry pages). A scene replaces the big index or the section index: the key is that index.
+`figure.look` wins over the other `figure` kinds, `index` and `hero_index`; ignored on `home` and pages in `ART`.
+
 ## Drawn figure (opt-in hero field `figure`)
 
-For pages with no equipment drawing, a quiet line-art figure in place of the index, built from what the system already has (Spots, Icons, SVG and CSS; no new raster art). On today: `compliance`, `cmp-documentation`, `cmp-quality`, `projects`, `about`, `careers`, `news`, `contact-proposal`, `contact-service`, `contact-locations`.
+For pages with no equipment drawing, a quiet line-art figure in place of the index, built from what the system already has (Spots, Icons, SVG and CSS; no new raster art). On today: `compliance`, `cmp-documentation`, `cmp-quality`, `about`, `careers`, `news`, `contact-proposal`, `contact-service`, `contact-locations`.
 
 - Data, one of:
   - `"figure": {"spots": ["ro-skid", "storage-tank", "pretreatment"], "label": "Generation · storage · pretreatment"}`: 2–4 Spot vignettes in a zig-zag, joined along their bases by one drawn `flow` pipe ending in an arrow, each tagged `01 Reverse osmosis skid` (number in `ink-subtle` mono, name Geist 13/18 sentence case in `ink-muted` on a `surface` chip so the pipe passes behind). An entry may be `{"spot": "pid", "t": "Design"}`; an Icon name falls back to the icon (as `wSpot`). Names come from `SPOT_NAME` in `Hero.js`, in plain words: "Reverse osmosis skid", "Electrodeionization stack" (a figure tag may be the only place a page names that equipment; a page that wants the short form names the entry, `{"spot": "ro-skid", "t": "RO skid"}`); `uv-ozone` reads "UV", since no ozone option is offered (DR-013).
@@ -76,7 +87,7 @@ For pages with no equipment drawing, a quiet line-art figure in place of the ind
 
 ## System index (opt-in hero field `index`)
 
-The hub's child pages as a larger numbered index beside the headline. On today: `systems`, `services`, `industries`, `compliance`.
+The hub's child pages as a larger numbered index beside the headline. On today: `industries`, `compliance` (`systems` and `services` show it as their scene's key, above).
 
 - Data: `"index": true` lists the other pages of this page's `section` in `pages.json` order (as the section index); `"index": ["sys-pw", "sys-storage"]` lists those page ids in that order (unknown ids are skipped). Titles are each page's `nav_label`; every entry links to its page. `index` wins over `hero_index`. Ignored on `home` and on `sys-*`, `svc-*`, `ind-*` detail pages. Built by `heroBigIndex(p)` in `Hero.js`; nothing else in the hero changes.
 - Markup: the section index markup with `aq-hero__index aq-hero__index--big` on the nav and `aq-hero__grid--big-index` added to the grid (text and index 6 parts each); the label reads "Systems index · 7 pages".

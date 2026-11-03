@@ -16,7 +16,7 @@ LOOKS['limit-drawer']=function(b,H){var C=b.cols||[],R=(b.rows||[]).filter(funct
  var folders=R.map(function(r,i){var who=cell(r[0]),send=cell(r[2]).split(/\s*;\s*/).filter(Boolean),go=r[3]!=null?r[3]:null,num=(i<9?'0':'')+(i+1);
   var label=go&&typeof go==='object'&&go.link&&wp(go.link)?'<a class="'+K+'__label" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"><span class="'+K+'__lk">'+tx(C[3]||'')+'</span>'+tx(go.t)+'</a>'
    :(go?'<p class="'+K+'__label"><span class="'+K+'__lk">'+tx(C[3]||'')+'</span>'+tx(cell(go))+'</p>':'');
-  return '<li class="'+K+'__f" data-pk-item="'+i+'" style="--i:'+i+';--cut:'+(i%3)+'">'
+  return '<li class="'+K+'__f" data-pk-item="'+i+'" data-cut="'+(i%3)+'" style="--i:'+i+';--cut:'+(i%3)+'">'
    +'<span class="'+K+'__tab" aria-hidden="true"><span>'+num+'</span>'+tx(ldCode(who))+'</span>'
    +'<div class="'+K+'__body" data-theme="light">'
     +'<button type="button" class="'+K+'__head" data-pk-head><span class="'+K+'__ht">'+tx(who)+'</span><span class="aq-phone-kit__chev" aria-hidden="true"></span></button>'

@@ -1,0 +1,71 @@
+{
+ "look": "industry-drops",
+ "component": "IndustryDrops",
+ "type": "grid",
+ "fields": "as grid: h, intro, items [{t, d, tag, link}].",
+ "best_for": "IndustryDrops draws one Purified Water header main with one drop per industry or use it serves, each drop ending in a small isometric point-of-use vignette.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "home",
+   "slot": 2,
+   "h": "Same package, different limits by industry",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "281a059",
+   "hash": "88666d6dab",
+   "block": {
+    "type": "grid",
+    "anchor": "industries",
+    "h": "Same package, different limits by industry",
+    "items": [
+     {
+      "t": "Drugs and natural health products",
+      "d": "In oral liquids, creams, coatings and final equipment rinses. Natural health products (GUI-0158): potable minimum, PW where your specification or monograph calls for it.",
+      "tag": "GUI-0001",
+      "link": "ind-pharma",
+      "icon": "loop"
+     },
+     {
+      "t": "Contract manufacturing",
+      "d": "In every client's product, from one system: the stricter of USP and Ph. Eur. on each attribute, plus each client's limits.",
+      "tag": "USP · Ph. Eur.",
+      "link": "ind-cdmo",
+      "icon": "loop"
+     },
+     {
+      "t": "Medical devices",
+      "d": "The final rinse of components before packaging, with the grade worked back from your device limits.",
+      "tag": "USP <161>",
+      "link": "ind-meddevice",
+      "icon": "valve"
+     },
+     {
+      "t": "Hospitals and laboratories",
+      "d": "Washer-disinfector final rinse in sterile processing, and reagent water for laboratories. Hospitals name critical water (ST108:2023); labs name ASTM D1193-24 Type II or III.",
+      "tag": "ST108",
+      "link": "ind-hospital-lab",
+      "icon": "conductivity"
+     },
+     {
+      "t": "Cosmetics and personal care",
+      "d": "Ingredient water in creams, lotions and shampoos, and the final rinse of fillers. Cosmetics follow your written spec; over-the-counter drug lines need PW.",
+      "tag": "ISO 22716",
+      "link": "ind-personal-care",
+      "icon": "loop"
+     },
+     {
+      "t": "Food, beverage and industrial",
+      "d": "Proofing and ingredient water, parts and electronics rinse, electrolyser feed and boiler make-up. Your recipe, process or equipment maker sets the limit.",
+      "tag": "Your spec",
+      "link": "ind-process",
+      "icon": "ro-membrane"
+     }
+    ],
+    "ground": "light",
+    "look": "industry-drops"
+   }
+  }
+ ]
+}

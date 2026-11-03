@@ -1,0 +1,75 @@
+{
+ "look": "limit-plan",
+ "component": "LimitPlan",
+ "type": "spec",
+ "fields": "h, intro, cols [item, typical, note], rows [{p, v, m, link, link_label, at}]. Look-only: rows[].at names the connection a row is keyed to: limit | footprint | utilities | joint | tag | tiein | isolation (default: that order, row by row); a row whose at is unknown or \"none\" gets no node. Values written \"a · b\" break into lines. fold and fold_noun are not read: every row shows (S7, the drawing points at every row).",
+ "best_for": "LimitPlan shows what a site provides before the package arrives as a battery-limits plan: an isometric drawing of the package footprint inside a dashed battery-limit line, with a numbered square node on each connection keyed to the row of the same number beside it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "systems",
+   "slot": 2,
+   "h": "What your site needs before we arrive",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "281a059",
+   "hash": "c6f44a473b",
+   "block": {
+    "type": "spec",
+    "h": "What your site needs before we arrive",
+    "cols": [
+     "Item",
+     "Typical",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Connection points (battery limits)",
+      "v": "[standard battery limits, typical scope]",
+      "m": "Listed in the proposal, with who supplies each"
+     },
+     {
+      "p": "Footprint and weight",
+      "v": "[typical footprint and weight, by capacity]",
+      "m": "On the general arrangement drawings"
+     },
+     {
+      "p": "Power, feed water and drain",
+      "v": "[supply voltage options]; [feed and drain flows, L/h]",
+      "m": "RO reject and rinse water to drain"
+     },
+     {
+      "p": "Installation and field joints",
+      "v": "[installation scope]",
+      "m": "Joined by [PP joining method]; scope set in the proposal",
+      "link": "svc-fabrication#standard",
+      "link_label": "Our fabrication standard"
+     },
+     {
+      "p": "Electrical and pressure approvals",
+      "v": "Electrical: [panel certification mark held, or field evaluation used]",
+      "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
+      "link": "compliance#engineering",
+      "link_label": "Pressure and electrical approvals"
+     },
+     {
+      "p": "Tie-in and shutdown",
+      "v": "[typical shutdown for tie-in, days]",
+      "m": "Plan temporary water if production cannot stop"
+     },
+     {
+      "p": "Chemicals, drain discharge and isolation",
+      "v": "Sanitizing: [PP loop sanitization method]; residual tested before use",
+      "m": "One list for your permit: chemicals with safety data sheets, discharge, isolation points",
+      "link": "cmp-documentation#safety",
+      "link_label": "Site safety information"
+     }
+    ],
+    "nav": "Site",
+    "anchor": "site",
+    "look": "limit-plan"
+   }
+  }
+ ]
+}

@@ -148,7 +148,8 @@
      "at": [
       14.7,
       51.5
-     ]
+     ],
+     "part": "membranes"
     },
     {
      "p": "Battery limits and utilities",
@@ -156,7 +157,8 @@
      "m": "Electrical: [panel certification mark held, or field evaluation used]",
      "hl": false,
      "link": "systems#site",
-     "link_label": "Site requirements"
+     "link_label": "Site requirements",
+     "part": "utilities"
     },
     {
      "p": "Membrane design temperature",
@@ -166,7 +168,8 @@
      "at": [
       57.0,
       12.0
-     ]
+     ],
+     "part": "exchanger"
     },
     {
      "p": "Sanitization",
@@ -176,7 +179,8 @@
      "at": [
       74.8,
       29.7
-     ]
+     ],
+     "part": "edi"
     },
     {
      "p": "Materials and dead legs",
@@ -186,7 +190,8 @@
      "at": [
       23.3,
       69.2
-     ]
+     ],
+     "part": "piping"
     },
     {
      "p": "Joints, product contact",
@@ -196,34 +201,39 @@
      "at": [
       62.8,
       68.6
-     ]
+     ],
+     "part": "joints"
     },
     {
      "p": "Budget range",
      "v": "[budget range, CAD] at [reference capacity, L/h]",
      "m": "Single-pass RO and EDI, city feed",
      "hl": false,
-     "link": "systems#budget"
+     "link": "systems#budget",
+     "part": "frame"
     },
     {
      "p": "High-pressure RO section",
      "v": "[RO high-pressure section material and pressure class]",
      "m": "Rated for the highest feed pressure at the coldest feed",
-     "hl": false
+     "hl": false,
+     "part": "pump"
     },
     {
      "p": "System recovery",
      "v": "[design recovery, %]",
      "m": "Concentrate recycled where feed chemistry allows",
      "hl": false,
-     "link": "svc-service#running-cost"
+     "link": "svc-service#running-cost",
+     "part": "drain"
     },
     {
      "p": "Instruments and controls",
      "v": "Conductivity and temperature after each stage; [online TOC at the outlet, standard or option]",
      "m": "Water out of specification diverts at a setpoint below your alert level",
      "hl": false,
-     "link": "sys-monitoring"
+     "link": "sys-monitoring",
+     "part": "panel"
     }
    ],
    "nav": "Skid design",
@@ -232,7 +242,7 @@
    "as": "callouts",
    "ground": "light",
    "fold_noun": "parameters",
-   "look": "param-tiles"
+   "look": "skid-sheet"
   },
   {
    "type": "docs",
@@ -299,36 +309,41 @@
     {
      "t": "Membrane degasser",
      "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high. Adds: its datasheet, a P&ID line and a FAT check.",
-     "spot": "ro-membrane"
+     "spot": "ro-membrane",
+     "part": "degasser"
     },
     {
      "t": "Duplex trains",
      "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
-     "spot": "ro-skid"
+     "spot": "ro-skid",
+     "part": "duplex"
     },
     {
      "t": "Recirculation at no demand",
      "d": "Circulates when storage is full, so water does not stand in the membranes. Adds: a control sequence, tested at FAT.",
      "spot": "loop",
-     "shape": "round"
+     "shape": "round",
+     "part": "recirc"
     },
     {
      "t": "Ultrafiltration or 254 nm UV",
      "d": "After DI or EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize. Adds: a P&ID line, FAT check.",
      "spot": "uv-ozone",
-     "shape": "tag"
+     "shape": "tag",
+     "part": "polish"
     },
     {
      "t": "Recovery enhancement",
      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter. Adds: revised membrane projections and a FAT check.",
      "spot": "pump",
-     "shape": "tag"
+     "shape": "tag",
+     "part": "recovery"
     }
    ],
    "nav": "Options",
    "fold": 3,
    "spot": "ro-skid",
-   "look": "option-tags",
+   "look": "ghost-skid",
    "intro": "Each tag names what the option adds on paper. Your proposal marks it included or priced, with its lead time effect.",
    "anchor": "options"
   },

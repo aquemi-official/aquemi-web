@@ -441,6 +441,16 @@
    "summary": "Colophon sets a spec block of company facts as a split ledger: a navy band with a limestone strip down its left edge, the section title set very large across the strip's edge so the colour split runs through the type and on down through the facts (item on the strip, fact and evidence on the navy)."
   },
   {
+   "name": "ConfigCards",
+   "readme": "design-system/components/ConfigCards/README.md",
+   "preview": "design-system/components/ConfigCards/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1200",
+   "subtitle": "Typical configurations: the same PP package piped to its use, a capacity chip, the design-basis tag and ruled spec lines (phone: a scroll-snap rail)",
+   "summary": "ConfigCards sets typical configurations as design-basis cards: every card draws the same polypropylene (PP) package piped to the use it feeds, with the reference capacity, the design-basis tag and the configuration's spec lines under it."
+  },
+  {
    "name": "ContactRoutes",
    "readme": "design-system/components/ContactRoutes/README.md",
    "preview": "design-system/components/ContactRoutes/preview.html",
@@ -695,6 +705,16 @@
    "summary": "GateLine draws a short process as one double-line pipe on a navy band: each step owns a run of pipe with a line icon above and its number, name and line below, and a gate valve sits on every joint between steps."
   },
   {
+   "name": "GhostSkid",
+   "readme": "design-system/components/GhostSkid/README.md",
+   "preview": "design-system/components/GhostSkid/preview.html",
+   "group": "Page sections",
+   "height": "820",
+   "width": "1100",
+   "subtitle": "Configurations and options: five dashed ghost modules clipped onto the solid base skid, keyed to the option list",
+   "summary": "GhostSkid shows a system's configuration options where they would go on the base skid: the base Purified Water skid drawn solid in IsoKit line art on the limestone band, each option a dashed \"ghost\" module clipped on at its place, numbered to a ruled list of the options."
+  },
+  {
    "name": "GradeCrosswalk",
    "readme": "design-system/components/GradeCrosswalk/README.md",
    "preview": "design-system/components/GradeCrosswalk/preview.html",
@@ -765,6 +785,16 @@
    "summary": "Hero opens every page: eyebrow, one display headline, one lead sentence, one primary button and one link."
   },
   {
+   "name": "HeroScene",
+   "readme": "design-system/components/HeroScene/README.md",
+   "preview": "design-system/components/HeroScene/preview.html",
+   "group": "Page sections",
+   "height": "3000",
+   "width": "1280",
+   "subtitle": "Four hub hero scenes: modules on stepped plinths, services ringed round the package, the empty room waiting for it, one loop feeding five uses; each tag keyed to its row",
+   "summary": "HeroScene is a hub hero's drawn scene: one isometric line drawing (IsoKit) with numbered tags, and a key under it whose rows carry the same numbers and link to what each tag is."
+  },
+  {
    "name": "HirePath",
    "readme": "design-system/components/HirePath/README.md",
    "preview": "design-system/components/HirePath/preview.html",
@@ -803,6 +833,16 @@
    "width": "1200",
    "subtitle": "Turnover package index as a ruled numbered sheet on navy with a folded leaf carrying a pipe-frame drawing",
    "summary": "IndexSheet shows a document package's index as one printed sheet: a limestone sheet on the navy band with the section title set very large, every section numbered in a ruled two-column grid with all its documents in view, and a folded leaf at the right carrying one isometric line drawing of the system the package comes with."
+  },
+  {
+   "name": "IndustryDrops",
+   "readme": "design-system/components/IndustryDrops/README.md",
+   "preview": "design-system/components/IndustryDrops/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1200",
+   "subtitle": "The package, one PW header main and three drops, each ending in its point-of-use vignette",
+   "summary": "IndustryDrops draws one Purified Water header main with one drop per industry or use it serves, each drop ending in a small isometric point-of-use vignette."
   },
   {
    "name": "IndustryFeed",
@@ -906,7 +946,29 @@
    "height": "1250",
    "width": "1300",
    "subtitle": "A drawer of folders, one per limit-writer, each with its what-to-send slip and where it applies",
-   "summary": "LimitDrawer shows who writes each limit and what to send them as a file drawer: one manila folder per limit-writer, its tab at its own cut position so no tab hides another, what the limit sets on the folder, a clipped white slip listing what to send, and a navy index label naming where it applies."
+   "summary": "LimitDrawer shows who writes each limit and what to send them as a file drawer: one manila folder per limit-writer, its tab at its own cut position so no tab hides another, what the limit sets on the folder, a clipped white slip listing what to send, and a navy index label naming where it applies.",
+   "retired": true,
+   "look": "limit-drawer"
+  },
+  {
+   "name": "LimitFolders",
+   "readme": "design-system/components/LimitFolders/README.md",
+   "preview": "design-system/components/LimitFolders/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "One open drawer: a folder per limit-writer, each with its what-to-send slip and where it applies",
+   "summary": "LimitFolders shows who writes each limit and what to send them as one open file drawer: a folder per limit-writer standing side by side, its tab at its own cut, what the limit sets on the front leaf, a clipped white slip listing what to send, and a navy index label naming where it applies."
+  },
+  {
+   "name": "LimitPlan",
+   "readme": "design-system/components/LimitPlan/README.md",
+   "preview": "design-system/components/LimitPlan/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1200",
+   "subtitle": "Battery-limits plan: the package footprint inside a dashed limit, numbered connections keyed to the rows",
+   "summary": "LimitPlan shows what a site provides before the package arrives as a battery-limits plan: an isometric drawing of the package footprint inside a dashed battery-limit line, with a numbered square node on each connection keyed to the row of the same number beside it."
   },
   {
    "name": "LimitStack",
@@ -1118,7 +1180,9 @@
    "height": "1120",
    "width": "1280",
    "subtitle": "Five PW skid options as shipping tags, a round tag and folders on a limestone table",
-   "summary": "OptionTags lays a system's configuration options out as physical tags on a limestone table, so each option reads as a separate item the buyer can add to the base skid."
+   "summary": "OptionTags lays a system's configuration options out as physical tags on a limestone table, so each option reads as a separate item the buyer can add to the base skid.",
+   "retired": true,
+   "look": "option-tags"
   },
   {
    "name": "OptionTaps",
@@ -1487,6 +1551,16 @@
    "summary": "RoleMatrix shows who writes, does and approves each document, like the signature blocks on a controlled document, so the split between our work and your sign-off is visible at a glance."
   },
   {
+   "name": "RoomLimit",
+   "readme": "design-system/components/RoomLimit/README.md",
+   "preview": "design-system/components/RoomLimit/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1280",
+   "subtitle": "Site requirements as the room the package goes in: battery-limit line on the floor, tie-ins keyed to rows",
+   "summary": "RoomLimit sets what a site provides for a Purified Water package as the room the package goes in: an isometric cutaway of the room with the package on its base frame, a dash-and-dot battery-limit line on the floor round it, and every connection the site provides as a tie-in where its run crosses the line, numbered to the rows beside the drawing."
+  },
+  {
    "name": "Router",
    "readme": "design-system/components/Router/README.md",
    "preview": "design-system/components/Router/preview.html",
@@ -1505,6 +1579,16 @@
    "width": "1100",
    "subtitle": "Seven PW loop design rules, each with its engineering figure; turbulent flow as the lead",
    "summary": "RuleFigures sets a spec block of design rules as a Swiss rule sheet in which every rule is explained by a small engineering figure, the lead rule as a full-width band beside a pipe cut open to show turbulent flow."
+  },
+  {
+   "name": "ScenePlates",
+   "readme": "design-system/components/ScenePlates/README.md",
+   "preview": "design-system/components/ScenePlates/preview.html",
+   "group": "Page sections",
+   "height": "1200",
+   "width": "1100",
+   "subtitle": "A plants ledger beside a navy plate drawing where the water goes in the plant in hand",
+   "summary": "ScenePlates sets a table of plants (or any uses) as a ruled ledger beside one navy drawing plate: the plant you point at, focus or choose is drawn on the plate as one water header with a drop to each of its points of use, numbered as the ledger's \"where the water goes\" list."
   },
   {
    "name": "ScopeSeam",
@@ -1621,6 +1705,16 @@
    "summary": "SiteTiles sets a short grid of what changes for a site as one navy drawing sheet: a framed sheet with its zone band, the title large in the top left, and one column per item with its number, title, one isometric part (IsoKit) that makes the change visible, its line and its link."
   },
   {
+   "name": "SkidSheet",
+   "readme": "design-system/components/SkidSheet/README.md",
+   "preview": "design-system/components/SkidSheet/preview.html",
+   "group": "Page sections",
+   "height": "1500",
+   "width": "1100",
+   "subtitle": "Skid design parameters: ten values tagged to the parts of the RO and EDI skid they govern, on a GA sheet",
+   "summary": "SkidSheet reads a skid's design parameters off the skid itself: one RO and EDI skid in IsoKit line art on a framed general-arrangement sheet, a numbered tag on a leader from each part to the parameter it governs, and the parameter rows beside the sheet under the same numbers."
+  },
+  {
    "name": "SkidTags",
    "readme": "design-system/components/SkidTags/README.md",
    "preview": "design-system/components/SkidTags/preview.html",
@@ -1720,7 +1814,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "Four slash-numbered system tiles, the blueprint tile and the flow block",
-   "summary": "StandardTiles sets a short grid of linked items as a Swiss tile grid three across: each item a slash-numbered navy or limestone tile carrying its standard or control tag, plus a blueprint tile that draws the item being pointed at and a flow block that sets its tag large."
+   "summary": "StandardTiles sets a short grid of linked items as a Swiss tile grid three across: each item a slash-numbered navy or limestone tile carrying its standard or control tag, plus a blueprint tile that draws the item being pointed at and a flow block that sets its tag large.",
+   "retired": true,
+   "look": "standard-tiles"
   },
   {
    "name": "StandardWires",
@@ -1803,6 +1899,16 @@
    "summary": "SystemRun shows a modular package as one continuous water line drawn as a navy blueprint: drinking water enters at the left, runs through each system's equipment in order and leaves at the point of use, with a column per system under the drawing."
   },
   {
+   "name": "TankGa",
+   "readme": "design-system/components/TankGa/README.md",
+   "preview": "design-system/components/TankGa/preview.html",
+   "group": "Page sections",
+   "height": "1180",
+   "width": "1280",
+   "subtitle": "Tank and pipework parameters keyed to numbered tags on one GA sheet of the PP storage set, budget in the title block",
+   "summary": "TankGa reads a spec block of fabrication parameters off one general arrangement (GA) sheet: an isometric line drawing of the PP storage set with a numbered tag on a leader for each parameter, the parameters as a ruled key beside it, and the budget in the title block."
+  },
+  {
    "name": "TankSection",
    "readme": "design-system/components/TankSection/README.md",
    "preview": "design-system/components/TankSection/preview.html",
@@ -1822,7 +1928,9 @@
    "height": "1060",
    "width": "1100",
    "subtitle": "Tank and pipework on a navy and limestone checkerboard, one blueprint tile",
-   "summary": "TankTiles sets a spec block's parameters on a Swiss checkerboard of square navy and limestone tiles, each led by a huge light slash numeral, with one steel-blue blueprint tile of the storage tank as the anchor."
+   "summary": "TankTiles sets a spec block's parameters on a Swiss checkerboard of square navy and limestone tiles, each led by a huge light slash numeral, with one steel-blue blueprint tile of the storage tank as the anchor.",
+   "retired": true,
+   "look": "tank-tiles"
   },
   {
    "name": "TermsSheet",
@@ -1989,6 +2097,16 @@
    "width": "1100",
    "subtitle": "The loop-to-washer route drawn in IsoKit with three callouts and the navy readout",
    "summary": "WasherTrace tells an explainer as the water's way from the loop into a washer: one IsoKit line drawing on a limestone band, the points as callouts on leaders from their parts, and a navy readout that shows where along the route the water has reached."
+  },
+  {
+   "name": "WasherZones",
+   "readme": "design-system/components/WasherZones/README.md",
+   "preview": "design-system/components/WasherZones/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1300",
+   "subtitle": "A package feeding a cabinet washer: four dashed zones tagged 01-04, keyed to four system rows with their standard chips",
+   "summary": "WasherZones draws one package feeding a cabinet washer as an isometric line drawing with four dashed, numbered zones keyed to four rows of systems, each row carrying its standard as a navy chip."
   },
   {
    "name": "WaterPath",

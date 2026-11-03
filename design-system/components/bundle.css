@@ -3116,6 +3116,95 @@ a.aq-checker-router__go:focus-visible { outline: 2px solid var(--focus); outline
   .aq-colophon .aq-fold__btn, .aq-colophon > .aq-small { padding-left: 0; }
 }
 
+/* ---------- ConfigCards: typical configurations as design-basis cards, each the same package piped to its use ---------- */
+.aq-config-cards-sec { position: relative; }
+.aq-config-cards { margin-top: var(--space-8); }
+.aq-config-cards__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+.aq-config-cards__card { position: relative; display: flex; flex-direction: column; min-width: 0; background: var(--surface-raised); border: 1px solid var(--line-strong);
+  transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* Drawing: the package at the left of every card, piped to its use; the number tag on the drawing's lower right */
+.aq-config-cards__fig { position: relative; padding: var(--space-6) var(--space-4) var(--space-4); border-bottom: 1px solid var(--line); overflow: hidden; }
+.aq-config-cards__fig svg { display: block; width: 100%; height: auto; }
+.aq-config-cards__no { position: absolute; right: 0; bottom: 0; min-width: var(--space-8); padding: var(--space-1) var(--space-2); background: var(--ink); color: var(--ink-inverse);
+  font: 500 13px/20px var(--font-mono); letter-spacing: 0.04em; text-align: center; }
+
+/* Text: title (the link), capacity chip and design-basis tag, ruled spec lines */
+.aq-config-cards__body { position: relative; display: flex; flex-direction: column; gap: var(--space-3); flex: 1; padding: var(--space-4) var(--space-6) var(--space-6) var(--space-6); }
+.aq-config-cards__t { margin: 0; padding-right: var(--space-8); font: 400 20px/26px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); }
+.aq-config-cards__a { color: inherit; text-decoration: none; }
+.aq-config-cards__a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.aq-config-cards__a:focus-visible { outline: none; }
+.aq-config-cards__card:has(.aq-config-cards__a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-config-cards__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 0; }
+.aq-config-cards__cap { font: 400 14px/20px var(--font-mono); }
+.aq-config-cards__tag { padding: 0 var(--space-2); border: 1px solid var(--line-strong); font: 500 11px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+.aq-config-cards__spec { margin: 0; display: flex; flex-direction: column; }
+.aq-config-cards__row { display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-2); border-top: 1px solid var(--line); }
+.aq-config-cards__row dt { font: 500 11px/22px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-config-cards__row dd { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-config-cards__go { position: absolute; right: var(--space-6); top: var(--space-4); display: block; width: var(--space-6); height: var(--space-6); color: var(--flow); }
+.aq-config-cards__go::before { content: ""; position: absolute; left: 0; right: 1px; top: 50%; height: 1.5px; background: currentColor; transform: scaleX(0.55); transform-origin: 100% 50%;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-config-cards__go::after { content: ""; position: absolute; right: 1px; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor;
+  transform: translateY(-50%) rotate(45deg); }
+
+/* Hover: the card's frame and title go flow, the arrow runs out */
+.aq-config-cards__card:has(.aq-config-cards__a:hover) { border-color: var(--flow); }
+.aq-config-cards__card:has(.aq-config-cards__a:hover) .aq-config-cards__t { color: var(--flow); }
+.aq-config-cards__card:has(.aq-config-cards__a:hover) .aq-config-cards__go::before { transform: scaleX(1); }
+
+/* Shutter (motion.js inserts it; never present without script or under reduced motion) */
+.aq-config-cards__shutter { position: absolute; inset: 0; z-index: 1; display: flex; pointer-events: none; }
+.aq-config-cards__shutter i { flex: 1; background: var(--navy); transform-origin: 50% 0; }
+
+/* Rail controls: phones only */
+.aq-config-cards__ctl { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-config-cards__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Phones: a scroll-snap rail, one card at 85 % with the next peeking, Previous / Next, a count, Show all */
+@container (max-width: 860px) {
+  .aq-config-cards { margin-top: var(--space-6); }
+  .aq-config-cards__list { display: flex; gap: var(--space-3); margin-inline: calc(var(--space-4) * -1); padding: 0 var(--space-4) var(--space-2); overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--space-4); scrollbar-width: none; }
+  .aq-config-cards__list::-webkit-scrollbar { display: none; }
+  .aq-config-cards__card { flex: 0 0 85%; scroll-snap-align: start; }
+  .aq-config-cards__fig { padding: var(--space-4) var(--space-2) var(--space-3); }
+  .aq-config-cards__body { padding: var(--space-4); gap: var(--space-2); }
+  .aq-config-cards__t { font-size: 19px; line-height: 25px; }
+  .aq-config-cards__go { right: var(--space-4); top: var(--space-4); }
+  .aq-config-cards__cap { font-size: var(--aq-read-phone); }
+  .aq-config-cards__row { grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); }
+  .aq-config-cards__row dd { font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-config-cards__ctl { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-3); }
+  .aq-config-cards__hint { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+  .aq-config-cards__count { margin-right: auto; font: 400 14px/20px var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+  .aq-config-cards__btn { position: relative; width: var(--aq-hit); height: var(--aq-hit); padding: 0; border: 1px solid var(--line-strong); background: var(--surface-raised); color: var(--ink); cursor: pointer; }
+  .aq-config-cards__btn::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor;
+    transform: translate(-65%, -50%) rotate(45deg); }
+  .aq-config-cards__prev::after { transform: translate(-35%, -50%) rotate(-135deg); }
+  .aq-config-cards__btn:disabled { color: var(--ink-subtle); border-color: var(--line); cursor: default; }
+  .aq-config-cards__btn:focus-visible, .aq-config-cards__all:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .aq-config-cards__all { min-height: var(--aq-hit); padding: 0 var(--space-3); border: 0; background: none; color: var(--flow); font: 500 14px/20px var(--font-sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  /* Show all: the cards stacked, the arrows and the count put away */
+  .aq-config-cards.is-all .aq-config-cards__list { flex-direction: column; overflow: visible; margin-inline: 0; padding: 0; scroll-snap-type: none; }
+  .aq-config-cards.is-all .aq-config-cards__card { flex: none; }
+  .aq-config-cards.is-all .aq-config-cards__hint, .aq-config-cards.is-all .aq-config-cards__count, .aq-config-cards.is-all .aq-config-cards__btn { display: none; }
+  .aq-config-cards.is-all .aq-config-cards__ctl { justify-content: flex-start; }
+}
+
+/* Tablets: the same rail, two cards with the third peeking, so the drawing stays at the phone's scale */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-config-cards__card { flex-basis: 46%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-config-cards__card, .aq-config-cards__go::before { transition: none; }
+}
+
 /* ---------- ContactRoutes: the ways in, as route sheets on a navy band (block contact-routes) ----------
    After 62-concept-contact-routes: a route line under the heading drops into each sheet's folder tab; each sheet shows
    what happens after you act as a sequence (numbered steps on a water rail) ending at its response clock, then the
@@ -5217,6 +5306,100 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
   .aq-gate-line__t { font-size: 20px; line-height: 26px; }
 }
 
+/* ---------- GhostSkid: options as dashed ghost modules on the base skid (look "ghost-skid") ----------
+   Limestone band. Desktop: the title and intro over the drawing at the left (7 of 12), the options as a ruled numbered
+   list at the right; the base skid in solid on-limestone line, every option dashed and half-filled at its place, its
+   number tag on a leader. A pointed or focused option fills its ghost with flow, runs its dashes (motion.js) and
+   darkens its tag. Phones: the drawing full width, then the options as a swipe row of cards. */
+.aq-ghost-skid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "head head" "draw list"; column-gap: var(--space-12); row-gap: var(--space-8); align-items: start; color: var(--on-limestone); }
+.aq-ghost-skid__head { grid-area: head; }
+.aq-ghost-skid__head .aq-sec-head .aq-lead { max-width: 60ch; }
+.aq-ghost-skid__draw { grid-area: draw; min-width: 0; }
+.aq-ghost-skid__fig { position: relative; width: 100%; margin: 0; }
+.aq-ghost-skid__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-ghost-skid__svg .aq-iso__leader-line { stroke: var(--on-limestone-muted); }
+.aq-ghost-skid__svg .aq-iso__leader-dot { fill: var(--on-limestone-muted); }
+/* glass and alternate fills stay on the band in both themes (the limestone band does not turn dark) */
+.aq-ghost-skid__svg .aq-iso__eq--glass, .aq-ghost-skid__svg .aq-iso__eq--alt { fill: color-mix(in srgb, var(--on-limestone) 8%, var(--limestone)); }
+
+/* the ghosts: dashed lines, the band's ground at half strength so the base reads through */
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__ln, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__thin,
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__pipe-wall, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__flange {
+  stroke: var(--on-limestone); stroke-dasharray: 4 3; transition: stroke 180ms ease, fill 180ms ease; }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__pipe-body { fill: color-mix(in srgb, var(--limestone) 55%, transparent); }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__acc, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__trace { stroke-dasharray: 2 3; }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__ln, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__thin,
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__pipe-wall, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__flange { stroke: var(--flow); stroke-width: 1.5; }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__pipe-body { fill: color-mix(in srgb, var(--flow) 12%, var(--limestone)); }
+.aq-ghost-skid__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-ghost-skid__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
+
+/* tags at the leader ends */
+.aq-ghost-skid__tag { position: absolute; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1); transform: translate(0, -50%);
+  border: 1px dashed var(--on-limestone); background: var(--limestone); font: 400 12px/1 var(--font-mono); color: var(--on-limestone);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.aq-ghost-skid__tag.is-left { transform: translate(-100%, -50%); }
+.aq-ghost-skid__tag.is-on { border-style: solid; border-color: var(--navy); background: var(--navy); color: var(--on-navy); }
+
+/* legend: solid = base skid, dashed = option */
+.aq-ghost-skid__legend { display: flex; align-items: center; gap: var(--space-2); margin: var(--space-3) 0 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-ghost-skid__sw { display: inline-block; width: var(--space-6); height: 0; border-top: 1.5px solid var(--on-limestone-muted); }
+.aq-ghost-skid__sw.is-ghost { margin-left: var(--space-4); border-top-style: dashed; border-top-color: var(--on-limestone); }
+
+/* the options: a ruled, numbered list */
+.aq-ghost-skid__list { grid-area: list; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--on-limestone); }
+.aq-ghost-skid__item { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--on-limestone) 28%, transparent); outline: none; transition: background-color 160ms ease; }
+.aq-ghost-skid__item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-ghost-skid__item.is-on { background: color-mix(in srgb, var(--flow) 10%, var(--limestone)); }
+.aq-ghost-skid__n { grid-row: 1 / span 3; padding-left: var(--space-3); font: 400 13px/24px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-ghost-skid__item.is-on .aq-ghost-skid__n { color: var(--flow); }
+.aq-ghost-skid__t { grid-column: 2; margin: 0; font: 500 17px/24px var(--font-sans); color: var(--on-limestone); }
+.aq-ghost-skid__d { grid-column: 2; margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-ghost-skid__link { grid-column: 2; justify-self: start; margin-top: var(--space-2); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.aq-ghost-skid__link::after { content: " \2192"; }
+.aq-ghost-skid__link:hover { text-decoration: underline; }
+
+@container (max-width: 1100px) {
+  .aq-ghost-skid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-8); }
+}
+
+@container (max-width: 860px) {
+  .aq-ghost-skid { display: block; }
+  .aq-ghost-skid__head { margin-bottom: var(--space-6); }
+  .aq-ghost-skid__draw { margin: 0 calc(-1 * var(--space-2)); }
+  .aq-ghost-skid__tag { min-width: var(--space-8); height: var(--space-6); font-size: 12px; }
+  .aq-ghost-skid__legend { margin: var(--space-2) var(--space-2) 0; }
+  /* the swipe row: one card at 82 % with the next peeking, snapped; the card in view lights its ghost */
+  .aq-ghost-skid__list { display: flex; gap: var(--space-3); margin: var(--space-6) calc(-1 * var(--space-4)) 0; padding: 0 var(--space-4) var(--space-4); border: 0;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--space-4); overscroll-behavior-x: contain; scrollbar-width: thin; }
+  .aq-ghost-skid__item { flex: 0 0 82%; scroll-snap-align: start; grid-template-columns: minmax(0, 1fr); align-content: start; padding: var(--space-4); border: 1px dashed var(--on-limestone); background: var(--limestone); }
+  .aq-ghost-skid__item.is-on { border-style: solid; border-color: var(--navy); background: var(--limestone); }
+  .aq-ghost-skid__n { grid-row: auto; justify-self: start; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); margin-bottom: var(--space-3); padding: 0 var(--space-1);
+    border: 1px dashed var(--on-limestone); font-size: 12px; line-height: 1; color: var(--on-limestone); }
+  .aq-ghost-skid__item.is-on .aq-ghost-skid__n { border-style: solid; border-color: var(--navy); background: var(--navy); color: var(--on-navy); }
+  .aq-ghost-skid__t, .aq-ghost-skid__d, .aq-ghost-skid__link { grid-column: 1; }
+  .aq-ghost-skid__t { font-size: 16px; line-height: 22px; }
+  .aq-ghost-skid__d { font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-ghost-skid__link { min-height: var(--aq-hit); display: inline-flex; align-items: center; margin: 0; }
+}
+
+/* the tablet band (601-860 px): two cards in view, not one long line */
+@container (min-width: 601px) and (max-width: 860px) { .aq-ghost-skid__item { flex-basis: 46%; } }
+
+/* placeholder chips stay a light caution chip on the band in both themes (the band does not turn dark) */
+.aq-ghost-skid .aq-ph { background: color-mix(in srgb, var(--caution) 16%, var(--limestone)); color: var(--on-limestone); }
+
+/* pointing at an option sets its ghost's dashes running (visitor feedback; none under reduced motion) */
+/* ported from Subframe Motion "SVG line drawing animation" (signature-draw), MIT, (c) 2026 Subframe */
+@keyframes aq-ghost-skid-run { to { stroke-dashoffset: -14; } }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__ln,
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__thin, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__pipe-wall { animation: aq-ghost-skid-run 0.9s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on * { animation: none; }
+  .aq-ghost-skid__tag, .aq-ghost-skid__item { transition: none; }
+}
+
 /* ---------- GradeCrosswalk: water types as navy blocks, two families of standards wired to them (look "grade-crosswalk") ---------- */
 /* Five tracks: chips | wires | navy blocks | wires | chips. The blocks share equal heights (grid-auto-rows 1fr), so
    block i's centre is at (i + 0.5) / N of the column; each chip sits at its own --p (the look computes it), so the
@@ -5843,6 +6026,8 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-hero__drawn { position: relative; z-index: 1; margin: 0; aspect-ratio: 6 / 5; container-type: inline-size; }
 .aq-hero__drawn-label { position: absolute; z-index: 2; top: 0; left: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-hero__grid--drawn { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: center; }
+/* Drawn scene (HeroScene, hero field figure.look): text 5 parts, the scene and its key 7 */
+.aq-hero__grid--scene { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; }
 .aq-hero__drawn svg.aq-hero__route, .aq-hero__drawn svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .aq-hero__drawn svg :is(path, line, circle, rect) { vector-effect: non-scaling-stroke; }
 
@@ -6118,6 +6303,98 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 /* ind-cdmo (visual audit): at 380 px or less its headline ("every client's auditor") would run to the gutter at 40 px */
 @container (max-width: 380px) {
   .aq-hero[data-hero="ind-cdmo"] .aq-stack > h1.aq-display { font-size: 36px; line-height: 40px; }
+}
+
+/* ---------- HeroScene ---------- */
+/* A hub hero's drawn scene: one IsoKit line drawing with numbered tags, and a key whose rows carry the same numbers.
+   Tags: a mono numeral on an ink chip (the drawing's only filled marks; ink-inverse text, so both themes hold); hover or focus on a key row lights its part
+   of the drawing in flow and fills its tag with flow (CSS :has, k1 to k8). */
+.aq-hero-scene { position: relative; z-index: 1; margin: 0; display: grid; row-gap: var(--space-6); min-width: 0; }
+.aq-hero-scene__draw { position: relative; width: 100%; aspect-ratio: var(--hs-r, 2 / 1); }
+.aq-hero-scene__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-hero-scene__tag {
+  position: absolute; z-index: 2; transform: translate(-50%, -100%); box-sizing: border-box;
+  min-width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) - var(--space-1) / 2); padding: 0 var(--space-1);
+  display: grid; place-items: center; border-radius: var(--radius-sm); background: var(--ink); color: var(--ink-inverse);
+  font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums;
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), transform 240ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-hero-scene__tag--plinth, .aq-hero-scene__tag--floor { transform: translate(-50%, -50%); }
+.aq-hero-scene__sub { stroke-width: inherit; }
+.aq-hero-scene .aq-iso .aq-hero-scene__route { stroke: var(--ink-subtle); stroke-dasharray: 5 4; }
+.aq-hero-scene .aq-iso .aq-hero-scene__arrow { stroke: var(--ink-subtle); }
+.aq-hero-scene .aq-iso .aq-hero-scene__foot { stroke: var(--ink-muted); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.aq-hero-scene .aq-iso .aq-hero-scene__floor { fill: var(--surface-sunken); stroke: var(--line-strong); }
+.aq-hero-scene .aq-iso .aq-hero-scene__div { stroke: var(--line-strong); stroke-dasharray: 3 3; }
+
+/* the package (ring, fan), the plinths (line-up) and the room's walls and floor stay quiet: they carry the scene */
+.aq-hero-scene .aq-iso :is(.aq-hero-scene__pkg, .aq-hero-scene__plinth, .aq-hero-scene__shell) { stroke-width: 1.5; }
+
+/* Key: numbered rows (CSS counter, the same numbers as the tags), hairlines between, 44 px targets */
+.aq-hero-scene__label { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-hero-scene__key ol {
+  counter-reset: aq-hero-scene; margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(var(--hs-cols, 2), minmax(0, 1fr)); column-gap: var(--space-8);
+}
+.aq-hero-scene__key li { counter-increment: aq-hero-scene; border-bottom: 1px solid var(--line); min-width: 0; }
+.aq-hero-scene__row {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--space-3);
+  min-height: 44px; padding-block: var(--space-2); box-sizing: border-box; color: var(--ink); text-decoration: none;
+}
+:where(.aq-page) a.aq-hero-scene__row { color: var(--ink); }
+.aq-hero-scene__row::before {
+  content: counter(aq-hero-scene, decimal-leading-zero);
+  content: counter(aq-hero-scene, decimal-leading-zero) / "";
+  display: grid; place-items: center; box-sizing: border-box; min-width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) - var(--space-1) / 2);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted);
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-hero-scene__t { font: 400 15px/20px var(--font-sans); overflow-wrap: break-word; transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+a.aq-hero-scene__row .aq-hero-scene__t::after, .aq-hero-scene__more::after { content: "\2192"; display: inline-block; margin-left: 0.4em; color: var(--flow); transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); }
+a.aq-hero-scene__row:is(:hover, :focus-visible) .aq-hero-scene__t { color: var(--flow); }
+a.aq-hero-scene__row:is(:hover, :focus-visible) .aq-hero-scene__t::after, .aq-hero-scene__more:is(:hover, :focus-visible)::after { transform: translateX(var(--space-1)); }
+:is(a.aq-hero-scene__row:is(:hover, :focus-visible), span.aq-hero-scene__row:hover)::before { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+a.aq-hero-scene__row:focus-visible, .aq-hero-scene__more:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+.aq-hero-scene__more { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--space-1); font: 500 15px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+:where(.aq-page) a.aq-hero-scene__more { color: var(--flow); }
+
+/* Row to drawing: the row under the pointer or focus lights its part and its tag (the room's rows are not links: pointer only) */
+.aq-hero-scene:has(li[data-k="1"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) :is(.aq-iso__part[data-iso-id="k1"], .aq-iso__pipe[data-iso-id="k1"]) :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="2"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k2"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="3"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k3"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="4"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k4"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="5"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k5"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="6"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k6"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="7"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k7"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid),
+.aq-hero-scene:has(li[data-k="8"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-iso__part[data-iso-id="k8"] :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid) { stroke: var(--flow); }
+.aq-hero-scene:has(li[data-k="1"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="1"],
+.aq-hero-scene:has(li[data-k="2"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="2"],
+.aq-hero-scene:has(li[data-k="3"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="3"],
+.aq-hero-scene:has(li[data-k="4"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="4"],
+.aq-hero-scene:has(li[data-k="5"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="5"],
+.aq-hero-scene:has(li[data-k="6"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="6"],
+.aq-hero-scene:has(li[data-k="7"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="7"],
+.aq-hero-scene:has(li[data-k="8"] :is(a:hover, a:focus-visible, span.aq-hero-scene__row:hover)) .aq-hero-scene__tag[data-k="8"] { background: var(--flow); color: var(--on-action); }
+
+/* Per scene: the line-up's four rows in one column (the system index), the room's key beside a narrower drawing */
+.aq-hero-scene--lineup .aq-hero-scene__key ol { --hs-cols: 2; }
+.aq-hero-scene--room .aq-hero-scene__draw { width: min(100%, calc(var(--space-32) * 4)); justify-self: center; }
+.aq-hero-scene--room .aq-hero-scene__key ol { --hs-cols: 3; column-gap: var(--space-6); }
+.aq-hero-scene--fan .aq-hero-scene__key ol { --hs-cols: 2; }
+
+@container (max-width: 860px) {
+  /* Phones: the drawing at the full gutter width under the actions, tags at 13 px, the key one row per line at
+     reading size (15 px, 44 px rows); the room key in two columns (short names) */
+  .aq-hero-scene { row-gap: var(--space-4); }
+  .aq-hero-scene__tag { font-size: 13px; }
+  .aq-hero-scene__key ol, .aq-hero-scene--lineup .aq-hero-scene__key ol, .aq-hero-scene--fan .aq-hero-scene__key ol { --hs-cols: 1; }
+  .aq-hero-scene--room .aq-hero-scene__key ol { --hs-cols: 2; column-gap: var(--space-4); }
+  .aq-hero-scene--room .aq-hero-scene__draw { width: min(100%, calc(var(--space-32) * 4)); }
+}
+@container (max-width: 480px) {
+  /* phones: the wide drawings (line-up, ring, fan) run to the screen edges, so the parts are as large as they can be */
+  .aq-hero-scene:is(.aq-hero-scene--lineup, .aq-hero-scene--ring, .aq-hero-scene--fan) .aq-hero-scene__draw { width: calc(100% + 2 * var(--space-4)); margin-inline: calc(-1 * var(--space-4)); }
 }
 
 /* ---------- HirePath: how we hire as one drawing sheet, the test joint as the plate and the steps on a slim vertical rail ---------- */
@@ -6453,6 +6730,143 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-index-sheet__n { font-size: 18px; line-height: 22px; }
   .aq-fold:not(.is-open) .aq-index-sheet__cell.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-index-sheet__grid) > .aq-fold__btn { display: flex; margin-top: var(--space-2); }
+}
+
+/* ---------- IndustryDrops: one PW header main, a drop per served industry, each ending in a point-of-use vignette ---------- */
+.aq-industry-drops {
+  position: relative; display: grid; grid-template-columns: minmax(10rem, 19rem) minmax(0, 1fr); column-gap: var(--space-8);
+  align-items: start;
+}
+/* the measured main and drops (look-industry-drops.js): wall, bore and water strokes on one path, walls first */
+.aq-industry-drops__main { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+.aq-industry-drops__main path { fill: none; stroke-linejoin: round; }
+.aq-industry-drops__wall { stroke: var(--line-strong); stroke-width: 7; }
+.aq-industry-drops__bore { stroke: var(--surface); stroke-width: 4; }
+.aq-industry-drops__water { stroke: var(--flow); stroke-width: 1.5; }
+.aq-industry-drops__head { stroke: var(--flow); stroke-width: 1.5; stroke-linecap: round; }
+.aq-industry-drops__wall.is-on { stroke: var(--flow); transition: stroke 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-industry-drops__wall.aq-industry-drops__drop { transition: stroke 240ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* the package (aria-hidden): its supply and return tips are where the main starts and ends */
+.aq-industry-drops__pkg { position: relative; z-index: 1; align-self: center; }
+.aq-industry-drops__pkg svg { display: block; width: 100%; height: auto; }
+.aq-industry-drops__out, .aq-industry-drops__ret, .aq-industry-drops__tap { position: absolute; width: 0; height: 0; pointer-events: none; }
+
+/* the outlets: rows of three, each item hung from the header by its drop */
+.aq-industry-drops__list {
+  position: relative; z-index: 1; list-style: none; margin: 0 var(--space-4) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-6);
+}
+.aq-industry-drops__item { position: relative; padding-top: var(--space-12); }
+.aq-industry-drops__body { position: relative; }
+.aq-industry-drops__fig { position: relative; width: 12rem; max-width: 100%; aspect-ratio: 150 / 106; margin-bottom: var(--space-4); }
+.aq-industry-drops__fig svg { display: block; width: 100%; height: 100%; }
+.aq-industry-drops__no {
+  display: inline-block; padding: 2px var(--space-2); background: var(--navy); color: var(--on-navy);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em;
+}
+.aq-industry-drops__t { margin: var(--space-3) 0 var(--space-2); font: 500 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-industry-drops__go { color: inherit; text-decoration: none; }
+/* the whole outlet is the link on desktop */
+.aq-industry-drops__go::before { content: ""; position: absolute; inset: calc(-1 * var(--space-12)) calc(-1 * var(--space-3)) calc(-1 * var(--space-3)); }
+.aq-industry-drops__go::after { content: "\2192"; margin-left: 0.3em; color: var(--flow); display: inline-block; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-industry-drops__go:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.aq-industry-drops__go:hover::after, .aq-industry-drops__item.is-on .aq-industry-drops__go::after { transform: translateX(var(--space-1)); }
+.aq-industry-drops__go:focus-visible { outline: none; }
+.aq-industry-drops__go:focus-visible::before { outline: 2px solid var(--focus); outline-offset: 0; }
+.aq-industry-drops__d { margin: 0 0 var(--space-3); max-width: 34ch; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-industry-drops__tag {
+  display: inline-block; padding: 2px var(--space-2); border: 1px solid var(--line-strong); color: var(--ink);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; white-space: nowrap;
+}
+.aq-industry-drops__item.is-on .aq-industry-drops__fig .aq-iso__eq,
+.aq-industry-drops__item.is-on .aq-industry-drops__fig .aq-iso__pipe-wall { stroke: var(--flow); }
+
+/* phone-only chips are PhoneKit heads: hidden until PhoneKit switches the list on */
+.aq-industry-drops__chip { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-industry-drops { grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr); column-gap: var(--space-8); }
+  .aq-industry-drops__list { column-gap: var(--space-6); }
+  .aq-industry-drops__t { font-size: 18px; line-height: 24px; }
+}
+
+/* Phone: the main runs down the left edge; the outlets are a 2-column grid of tiles teed off it (PhoneKit chips) and the
+   open tile's card runs full width under them. Without PhoneKit every card shows, stacked beside the main. */
+@container (max-width: 860px) {
+  .aq-industry-drops { display: block; padding-left: calc(var(--space-8) + var(--space-3)); }
+  .aq-industry-drops__main, .aq-industry-drops__pkg { display: none; }
+  /* a U-loop: supply down the outside rail, return up the inside one; the tiles tee off the return */
+  .aq-industry-drops::before {
+    content: ""; position: absolute; left: var(--space-2); top: 0; bottom: var(--space-6); width: calc(4px + var(--space-3));
+    border: 1.5px solid var(--line-strong); border-top: 0; border-radius: 0 0 var(--space-2) var(--space-2);
+    background: linear-gradient(90deg, transparent 1.25px, var(--flow) 1.25px, var(--flow) 2.75px, transparent 2.75px,
+      transparent calc(100% - 2.75px), var(--flow) calc(100% - 2.75px), var(--flow) calc(100% - 1.25px), transparent calc(100% - 1.25px));
+  }
+  /* the inlet at the top of the main: a flow arrowhead pointing down */
+  .aq-industry-drops::after {
+    content: ""; position: absolute; left: calc(var(--space-2) + 1px); top: calc(-1 * var(--space-2)); width: 7px; height: 7px;
+    border-right: 1.5px solid var(--flow); border-bottom: 1.5px solid var(--flow); transform: rotate(45deg);
+  }
+  .aq-industry-drops__list { display: block; margin-right: 0; }
+  .aq-industry-drops__item { padding-top: 0; margin-bottom: var(--space-4); }
+  .aq-industry-drops__fig, .aq-industry-drops__body > .aq-industry-drops__no { display: none; }
+  .aq-industry-drops__t { margin-top: 0; font-size: 17px; line-height: 24px; }
+  .aq-industry-drops__go::before { content: none; }
+  .aq-industry-drops__d { max-width: none; font-size: 15px; line-height: 23px; }
+
+  /* PhoneKit on: chips */
+  .aq-industry-drops__list[data-pk-on] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item { margin: 0; }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__chip {
+    position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1);
+    padding: var(--space-2) var(--space-3) var(--space-3); border: 1px solid var(--line-strong); border-radius: 0;
+    background: var(--surface); color: var(--ink); font: 500 14px/18px var(--font-sans);
+  }
+  .aq-industry-drops__list[data-pk-picker][data-pk-on] .aq-industry-drops__chip[aria-expanded="true"] {
+    border-color: var(--flow); background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 1px var(--flow);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__chip[aria-expanded="true"] .aq-industry-drops__no { background: var(--flow); color: var(--surface); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__chip[aria-expanded="true"] .aq-iso { color: var(--flow); }
+  .aq-industry-drops__mini { display: block; width: 100%; height: 76px; color: var(--ink-muted); }
+  .aq-industry-drops__mini svg { display: block; width: 100%; height: 100%; }
+  .aq-industry-drops__ct { text-wrap: balance; }
+  /* the tee: the main feeds each row through its left tile, a short spool carries on across the gap */
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(odd) > .aq-industry-drops__chip::before,
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(even) > .aq-industry-drops__chip::before {
+    content: ""; position: absolute; top: var(--space-6); height: 4px; box-sizing: content-box;
+    border-top: 1.5px solid var(--line-strong); border-bottom: 1.5px solid var(--line-strong);
+    background: linear-gradient(transparent 1.25px, var(--flow) 1.25px, var(--flow) 2.75px, transparent 2.75px);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(odd) > .aq-industry-drops__chip::before {
+    left: calc(-1 * var(--space-6) - 1px); width: var(--space-6);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(even) > .aq-industry-drops__chip::before {
+    left: calc(-1 * var(--space-2) - 1px); width: var(--space-2);
+  }
+  /* the open card */
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__body {
+    padding: 0 var(--space-4) var(--space-4); border: 1px solid var(--flow); background: var(--surface-raised);
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__t { margin: 0 calc(-1 * var(--space-4)) var(--space-2); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__go {
+    display: flex; align-items: center; gap: var(--space-3); min-height: 48px; padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--line); box-sizing: border-box;
+  }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__go::after { margin-left: auto; }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__go:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+}
+
+/* Tablet (container 600-860 px): three tiles a row; each row is teed from the main through its first tile */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-industry-drops__list[data-pk-on] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(odd) > .aq-industry-drops__chip::before,
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(even) > .aq-industry-drops__chip::before { left: calc(-1 * var(--space-2) - 1px); width: var(--space-2); }
+  .aq-industry-drops__list[data-pk-on] .aq-industry-drops__item:nth-child(3n+1) > .aq-industry-drops__chip::before { left: calc(-1 * var(--space-6) - 1px); width: var(--space-6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-industry-drops__wall.is-on, .aq-industry-drops__wall.aq-industry-drops__drop, .aq-industry-drops__go::after { transition: none; }
 }
 
 /* ---------- IndustryFeed: one water line feeding a few destinations, set as editorial type ---------- */
@@ -7222,83 +7636,227 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-limit-bento__tile.is-col { display: none; }
 }
 
-/* ---------- LimitDrawer: who writes your limit, and what to send, as a file drawer ---------- */
-/* Three folders to a row. Each folder's tab sits at its own cut (--cut 0, 1, 2: left, middle, right third), so across a
-   row the tabs step along the drawer and none hides another. Folders are limestone (every second a shade deeper),
-   the slip is raised paper with a hairline edge and a clip, the index label is navy. No shadows. */
-.aq-limit-drawer { position: relative; }
-.aq-limit-drawer__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-6); row-gap: var(--space-8); }
-.aq-limit-drawer__f { --tab: 30px; position: relative; display: flex; flex-direction: column; min-width: 0; padding-top: var(--tab, 30px); }
-.aq-limit-drawer__tab { position: absolute; top: 0; left: calc(var(--cut, 0) * 33.333%); min-width: 33.333%; max-width: 62%; height: calc(var(--tab, 30px) + 1px); box-sizing: border-box;
+/* ---------- LimitFolders: who writes your limit, and what to send, as one open file drawer ---------- */
+/* Every limit-writer's folder stands in the drawer side by side (all in one row from 1,100 px, three to a row below).
+   A folder is a back leaf (a shade deeper) carrying its tab, and a front leaf set a step lower, so the back's top edge
+   shows above it, as in a real drawer. Tabs step left, middle, right (data-cut 0, 1, 2; never a [style*=] match, as GSAP rewrites the inline style). The slip is raised paper with a
+   hairline edge and a clip; the index label is navy. The drawer's walls and front rail with its pull close the set.
+   No shadows. */
+.aq-limit-folders { --tab: 30px; --step: var(--space-3); --leaf: color-mix(in srgb, var(--limestone) 82%, var(--on-limestone)); position: relative; }
+.aq-limit-folders__drawer { overflow: hidden; padding: var(--space-6) var(--space-4) 0; border: 2px solid var(--line-strong); border-bottom: 0;
+  background: color-mix(in srgb, var(--limestone) 35%, var(--surface)); }
+.aq-limit-folders__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); column-gap: var(--space-2); align-items: stretch; }
+.aq-limit-folders__f { position: relative; display: flex; flex-direction: column; min-width: 0; padding-top: var(--tab, 30px); }
+/* the back leaf, under the tab */
+.aq-limit-folders__f::before { content: ""; position: absolute; left: 0; right: 0; top: var(--tab, 30px); bottom: 0; background: var(--leaf, var(--limestone));
+  border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.aq-limit-folders__f[data-cut="0"]::before { border-top-left-radius: 0; }
+.aq-limit-folders__f[data-cut="2"]::before { border-top-right-radius: 0; }
+.aq-limit-folders__tab { position: absolute; top: 0; left: calc(var(--cut, 0) * 22%); min-width: 56%; max-width: calc(100% - var(--cut, 0) * 22%); height: calc(var(--tab, 30px) + 1px); box-sizing: border-box;
   display: flex; align-items: center; gap: var(--space-2); padding: 0 var(--space-3); overflow: hidden; white-space: nowrap;
-  background: var(--fc, var(--limestone)); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: var(--leaf, var(--limestone)); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone); z-index: 1; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
-.aq-limit-drawer__tab span { color: var(--on-limestone-muted); }
-.aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__tab { left: auto; right: 0; }
-.aq-limit-drawer__f:nth-child(even) { --fc: color-mix(in srgb, var(--limestone) 86%, var(--on-limestone)); }
-.aq-limit-drawer__body { flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-6) var(--space-4);
-  background: var(--fc, var(--limestone)); color: var(--on-limestone); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm); }
-.aq-limit-drawer__f[style*="--cut:1"] .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__body { border-radius: var(--radius-sm); }
-/* the phone head shows only while PhoneKit is on (below 860 px); on desktop the body's parts sit straight in the folder */
-.aq-limit-drawer__more { display: contents; }
-.aq-limit-drawer__who { margin: 0 0 var(--space-2); font: 400 22px/28px var(--font-sans); letter-spacing: -0.015em; color: var(--on-limestone); }
-.aq-limit-drawer__k, .aq-limit-drawer__sk { margin: 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-limit-drawer__sets { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
-.aq-limit-drawer__slip { position: relative; margin: var(--space-3) 0 var(--space-4); padding: var(--space-4) var(--space-4) var(--space-3); background: var(--surface-raised); color: var(--ink);
-  border: 1px solid var(--line); transform: rotate(-0.6deg); transform-origin: 20% 0; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
-.aq-limit-drawer__f:nth-child(even) .aq-limit-drawer__slip { transform: rotate(0.5deg); }
-.aq-limit-drawer__clip { position: absolute; top: calc(-1 * var(--space-2)); right: var(--space-6); width: var(--space-3); height: var(--space-6); box-sizing: border-box;
-  border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); }
-.aq-limit-drawer__sk { color: var(--flow); margin-bottom: var(--space-1); }
-.aq-limit-drawer__send { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
-.aq-limit-drawer__send li { position: relative; padding-left: var(--space-4); font: 400 15px/22px var(--font-sans); color: var(--ink); }
-.aq-limit-drawer__send li::before { content: ""; position: absolute; left: 0; top: 10px; width: var(--space-2); height: 1px; background: var(--flow); }
-.aq-limit-drawer__label { margin: auto 0 0; display: flex; flex-direction: column; gap: 2px; min-height: 48px; box-sizing: border-box; padding: var(--space-2) var(--space-3);
-  background: var(--navy); color: var(--on-navy); text-decoration: none; font: 500 15px/20px var(--font-sans); border-radius: var(--radius-sm); }
-.aq-limit-drawer__lk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
-a.aq-limit-drawer__label::after { content: "\2192"; align-self: flex-end; margin-top: calc(-1 * var(--space-6)); color: var(--flow-tint); transition: transform 200ms; }
-a.aq-limit-drawer__label:hover::after { transform: translateX(var(--space-1)); }
-a.aq-limit-drawer__label:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-/* pointing at a folder lifts its tab and pulls its slip out a little */
-.aq-limit-drawer__f:hover .aq-limit-drawer__tab, .aq-limit-drawer__f:focus-within .aq-limit-drawer__tab { transform: translateY(calc(-1 * var(--space-1))); }
-.aq-limit-drawer__f:hover .aq-limit-drawer__slip, .aq-limit-drawer__f:focus-within .aq-limit-drawer__slip { transform: rotate(0deg) translateY(calc(-1 * var(--space-1))); }
+.aq-limit-folders__f[data-cut="2"] .aq-limit-folders__tab { left: auto; right: 0; max-width: 100%; }
+.aq-limit-folders__tn { color: var(--on-limestone-muted); font-variant-numeric: tabular-nums; }
+.aq-limit-folders__tc { overflow: hidden; text-overflow: ellipsis; }
+.aq-limit-folders__tw { display: none; }
+/* the front leaf: a step lower than the back, down to the drawer floor */
+.aq-limit-folders__front { position: relative; z-index: 2; flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--step, 12px);
+  padding: var(--space-4) var(--space-4) var(--space-4); background: var(--limestone); color: var(--on-limestone);
+  border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.aq-limit-folders__more { display: contents; }
+.aq-limit-folders__who { order: 0; margin: 0 0 var(--space-1); font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); text-wrap: balance; }
+.aq-limit-folders__nb { white-space: nowrap; }
+.aq-limit-folders__k, .aq-limit-folders__sk { margin: 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-limit-folders__k { order: 1; }
+.aq-limit-folders__sets { order: 1; margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-limestone); overflow-wrap: break-word; }
+/* the slip, clipped to the front leaf */
+.aq-limit-folders__slip { order: 2; position: relative; margin: var(--space-3) 0 var(--space-4); padding: var(--space-4) var(--space-3) var(--space-3); background: var(--surface-raised); color: var(--ink);
+  border: 1px solid var(--line); transform: rotate(-0.8deg); transform-origin: 30% 0; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-limit-folders__f:nth-child(even) .aq-limit-folders__slip { transform: rotate(0.6deg); }
+.aq-limit-folders__clip { position: absolute; top: calc(-1 * var(--space-3)); left: var(--space-4); width: var(--space-3); height: var(--space-6); box-sizing: border-box;
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--surface-raised) 60%, transparent); }
+.aq-limit-folders__sk { color: var(--flow); margin-bottom: var(--space-1); }
+.aq-limit-folders__send { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.aq-limit-folders__send li { position: relative; padding-left: var(--space-3); font: 400 14px/21px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-limit-folders__send li::before { content: ""; position: absolute; left: 0; top: 10px; width: var(--space-2); height: 1px; background: var(--flow); }
+/* the navy index label at the foot */
+.aq-limit-folders__label { order: 3; position: relative; margin: auto 0 0; display: flex; flex-direction: column; gap: 2px; min-height: 48px; box-sizing: border-box; padding: var(--space-2) var(--space-6) var(--space-2) var(--space-3);
+  background: var(--navy); color: var(--on-navy); text-decoration: none; font: 500 14px/19px var(--font-sans); border-radius: var(--radius-sm); }
+.aq-limit-folders__lk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+a.aq-limit-folders__label::after { content: "\2192"; position: absolute; right: var(--space-2); bottom: var(--space-2); color: var(--flow-tint); transition: transform 200ms; }
+a.aq-limit-folders__label:hover::after { transform: translateX(var(--space-1)); }
+a.aq-limit-folders__label:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* pointing at a folder lifts it out of the drawer a little, tab first, and draws its slip a step out */
+.aq-limit-folders__f:hover .aq-limit-folders__tab, .aq-limit-folders__f:focus-within .aq-limit-folders__tab { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-limit-folders__f:hover .aq-limit-folders__slip, .aq-limit-folders__f:focus-within .aq-limit-folders__slip { transform: rotate(0deg) translateY(calc(-1 * var(--space-1))); }
 /* the drawer's front rail and pull */
-.aq-limit-drawer__front { position: relative; height: var(--space-6); margin-top: var(--space-6); border-top: 2px solid var(--line-strong); border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--limestone) 60%, var(--surface)); }
-.aq-limit-drawer__pull { position: absolute; left: 50%; top: 50%; width: var(--space-24); height: var(--space-2); margin: calc(var(--space-2) / -2) 0 0 calc(var(--space-24) / -2);
-  border: 1px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface); box-sizing: border-box; }
+.aq-limit-folders__rail { position: relative; height: var(--space-8); border: 2px solid var(--line-strong); background: color-mix(in srgb, var(--limestone) 60%, var(--surface)); }
+.aq-limit-folders__pull { position: absolute; left: 50%; top: 50%; width: var(--space-24); height: var(--space-3); margin: calc(var(--space-3) / -2) 0 0 calc(var(--space-24) / -2);
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface); box-sizing: border-box; }
 
+/* below 1,100 px: three to a row, each row standing on its own drawer floor line */
 @container (max-width: 1100px) {
-  .aq-limit-drawer__list { column-gap: var(--space-4); }
-  .aq-limit-drawer__body { padding: var(--space-4); }
-  .aq-limit-drawer__who { font-size: 19px; line-height: 25px; }
+  .aq-limit-folders__list { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: var(--space-6); }
+  .aq-limit-folders__front { border-bottom: 1px solid var(--line-strong); border-radius: var(--radius-sm); }
+  .aq-limit-folders__f::before { bottom: 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-limit-folders__who { font-size: 18px; line-height: 24px; }
 }
 
-/* Phones and tablets: one folder per row. Without script every folder is open with its tab on the left; with PhoneKit on,
-   the tabs keep their stepped cuts and each folder closes to a 48 px head, one open at a time. */
+/* Phones and tablets: one folder per row, every slip on show. The tab names where it applies; with PhoneKit on, the
+   writer is a 48 px head that opens what the limit sets and the navy label link (none open at first). Without script
+   every folder stays open. */
 @container (max-width: 860px) {
-  .aq-limit-drawer__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
-  .aq-limit-drawer__f { --tab: 28px; }
-  .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__tab, .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__tab {
-    left: 0; right: auto; min-width: 0; max-width: 80%; }
-  .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:1"] .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__body { padding: var(--space-4); gap: var(--space-1); }
-  .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__body { border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm); }
-  .aq-limit-drawer__who { font-size: 19px; line-height: 25px; }
-  .aq-limit-drawer__sets { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
-  .aq-limit-drawer__slip, .aq-limit-drawer__f:nth-child(even) .aq-limit-drawer__slip { transform: none; margin: var(--space-3) 0; padding: var(--space-3); }
-  .aq-limit-drawer__send li { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
-  .aq-limit-drawer__label { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; column-gap: var(--space-2); }
-  .aq-limit-drawer__lk { flex-basis: 100%; }
-  a.aq-limit-drawer__label::after { margin-top: calc(-1 * var(--space-4)); }
-  .aq-limit-drawer__front { margin-top: var(--space-4); }
-  /* the accordion: folders closer together, a closed folder is its tab and its 48 px head */
-  .aq-limit-drawer__list[data-pk-on] { row-gap: var(--space-2); }
-  .aq-limit-drawer__list[data-pk-on] .aq-limit-drawer__body { padding-block: 0; }
-  .aq-limit-drawer__list[data-pk-on] .is-pk-open .aq-limit-drawer__body { padding-bottom: var(--space-4); }
-  .aq-limit-drawer__list[data-pk-on] .aq-limit-drawer__head { padding-block: var(--space-2); font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
-  .aq-limit-drawer__ht { flex: 1 1 auto; min-width: 0; }
-  .aq-limit-drawer__head .aq-phone-kit__chev { margin-right: calc(-1 * var(--space-3)); }
-  .aq-limit-drawer__list[data-pk-on] .aq-limit-drawer__slip { margin-top: var(--space-2); }
+  .aq-limit-folders { --tab: 24px; --step: 6px; }
+  .aq-limit-folders__drawer { padding: var(--space-3) var(--space-2) var(--space-2); border-width: 1.5px; margin-inline: calc(-1 * var(--space-2)); }
+  .aq-limit-folders__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); }
+  .aq-limit-folders__tab { min-width: 0; max-width: 78%; padding: 0 var(--space-2); font-size: 12px; }
+  .aq-limit-folders__f[data-cut] .aq-limit-folders__tab { max-width: 78%; }
+  .aq-limit-folders__f[data-cut="1"] .aq-limit-folders__tab { left: 50%; transform: translateX(-50%); }
+  .aq-limit-folders__f[data-cut="1"]:hover .aq-limit-folders__tab, .aq-limit-folders__f[data-cut="1"]:focus-within .aq-limit-folders__tab { transform: translateX(-50%); }
+  .aq-limit-folders__tc { display: none; }
+  .aq-limit-folders__tw { display: block; overflow: hidden; text-overflow: ellipsis; }
+  .aq-limit-folders__front { gap: var(--space-1); padding: var(--space-3) var(--space-3) var(--space-3); }
+  .aq-limit-folders__who { font-size: 17px; line-height: 23px; }
+  .aq-limit-folders__head { order: 0; }
+  .aq-limit-folders__slip, .aq-limit-folders__f:nth-child(even) .aq-limit-folders__slip { order: 1; transform: none; margin: var(--space-2) 0 var(--space-1); padding: var(--space-3) var(--space-3) var(--space-2); }
+  .aq-limit-folders__clip { left: auto; right: var(--space-4); }
+  .aq-limit-folders__k, .aq-limit-folders__sets, .aq-limit-folders__label { order: 2; }
+  .aq-limit-folders__k { margin-top: var(--space-2); }
+  .aq-limit-folders__label { margin-top: var(--space-2); flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: var(--space-2); }
+  .aq-limit-folders__lk { flex-basis: 100%; }
+  a.aq-limit-folders__label::after { bottom: 50%; transform: translateY(50%); }
+  a.aq-limit-folders__label:hover::after { transform: translate(var(--space-1), 50%); }
+  .aq-limit-folders__rail { height: var(--space-6); border-width: 1.5px; margin-inline: calc(-1 * var(--space-2)); }
+  .aq-limit-folders__pull { width: var(--space-16); height: var(--space-2); margin: calc(var(--space-2) / -2) 0 0 calc(var(--space-16) / -2); }
+  /* the accordion: a closed folder is its tab, its 48 px head and its slip */
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__front { padding-top: 0; }
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__head { min-height: 48px; padding-block: 2px; font: 400 17px/22px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+  .aq-limit-folders__ht { flex: 1 1 auto; min-width: 0; }
+  .aq-limit-folders__head .aq-phone-kit__chev { margin-right: calc(-1 * var(--space-3)); }
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__slip { margin-top: var(--space-1); }
+  /* column heads once (S12): the slip's "what to send" kicker shows on the first folder only; the others keep it for
+     screen readers */
+  .aq-limit-folders__f + .aq-limit-folders__f .aq-limit-folders__sk { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-limit-folders__f + .aq-limit-folders__f .aq-limit-folders__slip { padding-top: var(--space-3); }
+  .aq-limit-folders__send { gap: 2px; }
+  .aq-limit-folders__list[data-pk-on] { row-gap: var(--space-2); }
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__front { padding-bottom: var(--space-2); }
+  .aq-limit-folders__list[data-pk-on] .is-pk-open .aq-limit-folders__front { padding-bottom: var(--space-3); }
+}
+
+/* ---------- LimitPlan: what the site provides, as a battery-limits plan (look "limit-plan"). An IsoKit drawing of the
+   package footprint inside a dashed battery-limit line, numbered square nodes on each connection, keyed to the rows
+   beside it. Pointing at a row or a node lights both, the matching parts turn flow and a ring glides to the node. ---------- */
+.aq-limit-plan-sec { position: relative; }
+.aq-limit-plan { display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 13fr); column-gap: var(--space-12); align-items: start; }
+
+/* the plan: framed like a sheet, held in view while the rows pass */
+.aq-limit-plan__fig { position: sticky; top: var(--space-24); margin: 0; padding: var(--space-6) var(--space-4); border: 1px solid var(--line-strong); background: var(--surface); }
+.aq-limit-plan__plan { position: relative; }
+.aq-limit-plan__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-limit-plan__floor { fill: var(--flow-tint); stroke: none; }
+.aq-limit-plan__line { fill: none; stroke: var(--flow); stroke-width: 2; stroke-dasharray: 16 5 3 5; vector-effect: non-scaling-stroke; transition: stroke-width 180ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-limit-plan__cable { fill: none; stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-limit-plan__plate { fill: var(--flow-tint); stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-plan__lead { fill: none; stroke: var(--ink-subtle); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-plan__dot { fill: var(--ink-subtle); }
+.aq-limit-plan__header .aq-iso__pipe-body { fill: var(--surface-sunken); }
+
+/* the lit connection: its parts, cable, leader and line turn flow */
+.aq-limit-plan__g.is-on .aq-iso__eq, .aq-limit-plan__g.is-on .aq-iso__ln, .aq-limit-plan__g.is-on .aq-iso__thin, .aq-limit-plan__g.is-on .aq-iso__hid,
+.aq-limit-plan__g.is-on .aq-iso__pipe-wall, .aq-limit-plan__g.is-on .aq-iso__dim-line, .aq-limit-plan__g.is-on .aq-limit-plan__cable,
+.aq-limit-plan__lead.is-on { stroke: var(--flow); }
+.aq-limit-plan__dot.is-on { fill: var(--flow); }
+.aq-limit-plan__g.is-on .aq-limit-plan__line { stroke-width: 3; }
+/* pipes are flow at rest, so a lit pipe thickens and fills: rows 03 and 06 answer in the drawing too */
+.aq-limit-plan__g.is-on .aq-iso__pipe-wall { stroke-width: 2.5; }
+.aq-limit-plan__g.is-on .aq-iso__pipe-body { fill: var(--flow-tint); }
+.aq-limit-plan__g .aq-iso__eq, .aq-limit-plan__g .aq-iso__hid, .aq-limit-plan__g .aq-iso__dim-line, .aq-limit-plan__g .aq-iso__pipe-wall, .aq-limit-plan__g .aq-iso__pipe-body,
+.aq-limit-plan__cable, .aq-limit-plan__lead { transition: stroke 180ms cubic-bezier(0.2, 0, 0, 1), stroke-width 180ms cubic-bezier(0.2, 0, 0, 1), fill 180ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* numbered nodes (HTML over the drawing, so they stay legible at any size) */
+.aq-limit-plan__node, .aq-limit-plan__no {
+  display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: var(--radius-sm);
+  background: var(--action); color: var(--on-action); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+.aq-limit-plan__node { position: absolute; z-index: 2; translate: -50% -50%; cursor: default; }
+.aq-limit-plan__node.is-on { background: var(--flow); color: var(--ink-inverse); transform: scale(1.12); }
+.aq-limit-plan__no.is-plain { background: none; color: var(--ink-subtle); }
+.aq-limit-plan__row.is-on .aq-limit-plan__no { background: var(--flow); color: var(--ink-inverse); }
+/* the ring that glides to the lit node: a zero-size point that travels, its circle drawn by ::after */
+.aq-limit-plan__ring {
+  position: absolute; z-index: 1; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none;
+  transition: left 250ms cubic-bezier(0.2, 0.8, 0.2, 1), top 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.aq-limit-plan__ring::after {
+  content: ""; position: absolute; left: 0; top: 0; width: 44px; height: 44px; border: 1.5px solid var(--flow); border-radius: 50%;
+  opacity: 0; translate: -50% -50%; transform: scale(0.6); transition: opacity 180ms ease, transform 180ms ease;
+}
+.aq-limit-plan__ring.is-on::after { opacity: 1; transform: none; }
+
+/* the rows */
+.aq-limit-plan__table { min-width: 0; }
+.aq-limit-plan__head, .aq-limit-plan__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 5fr) minmax(0, 7fr); }
+.aq-limit-plan__head { border-bottom: 1.5px solid var(--action); }
+.aq-limit-plan__head span { padding: 0 var(--space-4) var(--space-3) 0; font: 400 15px/24px var(--font-sans); color: var(--ink); }
+.aq-limit-plan__head span:first-child { grid-column: 2; }
+.aq-limit-plan__list { list-style: none; margin: 0; padding: 0; }
+.aq-limit-plan__row { padding: var(--space-4) 0; border-bottom: 1px solid var(--line-strong); }
+.aq-limit-plan__no { margin-top: 1px; }
+.aq-limit-plan__t { min-width: 0; padding-right: var(--space-4); }
+.aq-limit-plan__p { margin: 0; font: 300 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-limit-plan__c { min-width: 0; }
+.aq-limit-plan__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-limit-plan__v { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-limit-plan__v li { position: relative; padding-left: var(--space-4); font: 400 15px/23px var(--font-sans); color: var(--ink); }
+.aq-limit-plan__v li::before { content: ""; position: absolute; left: 0; top: calc(var(--space-3) - 1px); width: var(--space-2); border-top: 1.5px solid var(--flow); }
+.aq-limit-plan__m { margin: var(--space-2) 0 0; padding-left: var(--space-4); font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-limit-plan__go { margin: var(--space-2) 0 0; padding-left: var(--space-4); font: 400 15px/23px var(--font-sans); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-limit-plan__ring, .aq-limit-plan__ring::after, .aq-limit-plan__node, .aq-limit-plan__no, .aq-limit-plan__line,
+  .aq-limit-plan__g .aq-iso__eq, .aq-limit-plan__g .aq-iso__hid, .aq-limit-plan__g .aq-iso__dim-line, .aq-limit-plan__g .aq-iso__pipe-wall, .aq-limit-plan__g .aq-iso__pipe-body,
+  .aq-limit-plan__cable, .aq-limit-plan__lead { transition: none; }
+}
+
+/* Tablets: the plan on top, full width, then the rows */
+@container (max-width: 1080px) {
+  .aq-limit-plan { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-limit-plan__fig { position: relative; top: auto; max-width: 720px; }
+}
+
+/* Phones: a PhoneKit sticky compact figure (S8). The plan becomes a 200 px strip held under the section bar, panned and
+   zoomed to the node of the row on the reading line; every row stays open under it (number and item, the typical
+   value, the note, the link). Without script: the whole plan at full gutter width, then every row open. */
+@container (max-width: 860px) {
+  .aq-limit-plan { row-gap: var(--space-6); }
+  .aq-limit-plan__fig { max-width: none; padding: var(--space-3) var(--space-2); }
+  .aq-limit-plan__node { width: 24px; height: 24px; font-size: 12px; }
+  .aq-limit-plan__ring::after { width: 40px; height: 40px; }
+  .aq-limit-plan__head { display: none; }
+  .aq-limit-plan__list { border-top: 1.5px solid var(--action); }
+  .aq-limit-plan__row { grid-template-columns: calc(var(--space-8) + var(--space-2)) minmax(0, 1fr); padding: var(--space-3) 0; }
+  .aq-limit-plan__no { width: 24px; height: 24px; }
+  .aq-limit-plan__t { padding: 0; }
+  .aq-limit-plan__p { font-size: 18px; line-height: 24px; }
+  .aq-limit-plan__c { grid-column: 2; padding-top: var(--space-2); }
+  .aq-limit-plan__v li { font-size: 15px; line-height: 22px; }
+  .aq-limit-plan__v li::before { top: calc(var(--space-3) - 2px); }
+  .aq-limit-plan__m { font-size: 14px; line-height: 21px; }
+  .aq-limit-plan__go a { display: inline-flex; align-items: center; min-height: var(--aq-hit); }
+  .aq-limit-plan__go { margin-top: 0; }
+
+  /* the strip: PhoneKit holds it (sticky, 200 px, its own rule underneath); the plan fits its height, centred, and is
+     the layer PhoneKit pans and zooms; nodes and ring keep their size against the zoom so numbers read at 12 px */
+  .aq-limit-plan[data-pk-on] { row-gap: var(--space-2); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__fig { padding: 0; border: 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__plan { width: min(100%, calc(var(--pk-h, 200px) * var(--lp-r, 1.6))); aspect-ratio: var(--lp-ar, 8 / 5); margin: 0 auto; }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__svg { width: 100%; height: 100%; }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__node { width: calc(24px / var(--pk-s, 1)); height: calc(24px / var(--pk-s, 1)); font-size: calc(12px / var(--pk-s, 1)); border-radius: calc(var(--radius-sm) / var(--pk-s, 1)); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__ring::after { width: calc(40px / var(--pk-s, 1)); height: calc(40px / var(--pk-s, 1)); border-width: calc(1.5px / var(--pk-s, 1)); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__list { border-top: 0; }
 }
 
 /* ---------- LimitStack: limits as an editorial type stack beside a sculpted outlet pipe ---------- */
@@ -8964,113 +9522,6 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
 
   .aq-fold:not(.is-open) .aq-option-modules__m.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-option-modules) > .aq-fold__btn { display: flex; }
-}
-
-/* ---------- OptionTags: options as physical tags laid out on a limestone table ---------- */
-/* Three columns: the label card and the tags in the first two, folders on a navy strip that runs off the right edge. */
-.aq-option-tags-sec { overflow: hidden; }
-.aq-option-tags { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row dense;
-  column-gap: var(--space-12); row-gap: var(--space-16); align-items: start; padding-block: var(--space-4); }
-.aq-option-tags::before { content: ""; position: absolute; z-index: 0; top: calc(-1 * var(--space-32)); bottom: calc(-1 * var(--space-32));
-  left: calc(200% / 3 + var(--space-4)); right: calc(-1 * var(--space-32) * 4); background: var(--navy); }
-.aq-option-tags__list { display: contents; list-style: none; }
-/* no folder among the options: no navy strip (it would stand empty), the tags take the third column (pass 12) */
-.aq-option-tags.is-flat::before { content: none; }
-
-/* Label card: the section heading on a printed label */
-.aq-option-tags__label { position: relative; z-index: 1; grid-column: 1; grid-row: 1; display: flex; flex-direction: column; gap: var(--space-6);
-  padding: var(--space-6); background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line-strong); transform: rotate(-1deg); }
-.aq-option-tags__label .aq-h1 { font-size: 34px; line-height: 40px; }
-.aq-option-tags__base { margin: 0; display: flex; align-items: center; gap: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--line);
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
-.aq-option-tags__base .aq-option-tags__base-ic { width: var(--space-8); height: var(--space-8); }
-
-/* A tag: string from the eyelet, kraft-free paper (surface-raised), tilted by --r; hover picks it up */
-.aq-option-tags__item { grid-column: var(--c, auto); grid-row: var(--rw, auto); position: relative; z-index: 1; transform: rotate(var(--r, 0deg)); transition: transform 350ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-option-tags__item:hover, .aq-option-tags__item:focus-within { transform: rotate(0deg) translateY(calc(-1 * var(--space-2))); z-index: 2; }
-.aq-option-tags__tag { position: relative; }
-.aq-option-tags__body { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-height: calc(var(--space-32) + var(--space-24));
-  padding: var(--space-6) var(--space-6) var(--space-4) var(--space-16); background: var(--surface-raised); color: var(--ink); text-decoration: none;
-  border: 1px solid var(--line-strong);
-  clip-path: polygon(var(--space-8) 0, 100% 0, 100% 100%, var(--space-8) 100%, 0 calc(100% - var(--space-8)), 0 var(--space-8)); }
-.aq-option-tags__eyelet { position: absolute; z-index: 2; left: var(--space-6); top: 50%; width: var(--space-4); height: var(--space-4); transform: translate(-50%, -50%);
-  border-radius: var(--radius-pill); background: var(--limestone); border: 3px solid var(--line-strong); }
-.aq-option-tags__string { position: absolute; z-index: 0; right: calc(100% - var(--space-6)); top: 50%; width: var(--space-24); height: var(--space-16); transform: translateY(-40%); overflow: visible; pointer-events: none; }
-.aq-option-tags__string path { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
-
-.aq-option-tags__t { margin: 0; font: 500 22px/28px var(--font-sans); letter-spacing: -0.01em; }
-.aq-option-tags__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
-.aq-option-tags__foot { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; }
-.aq-option-tags__no { font: 400 20px/1 var(--font-mono); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
-.aq-option-tags__stamp { display: grid; place-items: center; width: var(--space-12); height: var(--space-12); border: 1.5px solid var(--flow); border-radius: var(--radius-pill); transform: rotate(-12deg); }
-.aq-option-tags__glyph.aq-spot.aq-spot--icon { width: var(--space-8); height: var(--space-8); background-color: var(--flow); }
-
-/* Round tag: string from the top */
-.aq-option-tags__item--round { justify-self: center; width: min(100%, calc(var(--space-32) * 2 + var(--space-16))); margin-top: var(--space-8); }
-.aq-option-tags__item--round .aq-option-tags__body { aspect-ratio: 1; border-radius: var(--radius-pill); clip-path: none; align-items: center; justify-content: center; text-align: center;
-  padding: var(--space-12) var(--space-8) var(--space-8); }
-.aq-option-tags__item--round .aq-option-tags__foot { margin-top: var(--space-2); flex-direction: column; align-items: center; gap: var(--space-2); }
-.aq-option-tags__item--round .aq-option-tags__eyelet { left: 50%; top: var(--space-6); }
-.aq-option-tags__item--round .aq-option-tags__string { right: auto; left: 50%; top: auto; bottom: calc(100% - var(--space-6)); width: var(--space-8); height: var(--space-16); transform: translateX(-50%); }
-
-/* Folder: a manila folder with a tab, on the navy strip */
-.aq-option-tags__item--folder { margin-top: var(--space-6); }
-.aq-option-tags__item--folder .aq-option-tags__body { clip-path: none; padding: var(--space-6); background: var(--limestone); color: var(--on-limestone); border-color: var(--limestone); }
-.aq-option-tags__item--folder .aq-option-tags__d, .aq-option-tags__item--folder .aq-option-tags__no { color: var(--on-limestone-muted); }
-.aq-option-tags__item--folder .aq-option-tags__tag::before { content: ""; position: absolute; left: 0; bottom: 100%; width: 40%; height: var(--space-6); background: var(--limestone);
-  clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%); }
-.aq-option-tags__item--folder .aq-option-tags__tag::after { content: ""; position: absolute; left: var(--space-3); right: calc(-1 * var(--space-2)); top: calc(-1 * var(--space-2)); bottom: var(--space-3);
-  z-index: -1; background: color-mix(in srgb, var(--limestone) 70%, var(--navy)); }
-
-.aq-option-tags__body:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-
-/* Vials: decoration between the tags */
-.aq-option-tags__vial { position: absolute; z-index: 0; width: var(--space-8); height: auto; pointer-events: none; overflow: visible; }
-.aq-option-tags__vial path, .aq-option-tags__vial rect { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
-.aq-option-tags__vial .aq-option-tags__cap { fill: var(--on-limestone-muted); }
-.aq-option-tags__vial .aq-option-tags__liquid { stroke: var(--flow); }
-.aq-option-tags__vial .aq-option-tags__hair { stroke-width: 1; }
-.aq-option-tags__vial--a { left: 31%; top: 50%; transform: rotate(-24deg); }
-.aq-option-tags__vial--b { left: 2%; bottom: -4%; transform: rotate(-78deg); }
-
-@container (max-width: 1100px) {
-  .aq-option-tags { column-gap: var(--space-8); }
-  .aq-option-tags__body { padding-left: var(--space-12); }
-  .aq-option-tags__t { font-size: 19px; line-height: 26px; }
-}
-
-/* Phones: one column of tags, alternating a slight tilt; folders on the limestone ground; the fold back on */
-@container (max-width: 860px) {
-  .aq-option-tags { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); padding-inline: var(--space-2); }
-  .aq-option-tags::before, .aq-option-tags__vial { display: none; }
-  .aq-option-tags__item, .aq-option-tags__item--folder { grid-column: 1; grid-row: auto; margin-top: 0; transform: rotate(calc(var(--r, 0deg) * 0.4)); }
-  .aq-option-tags__item--round { width: 86%; }
-  .aq-option-tags__item--folder { margin-top: var(--space-6); }
-  .aq-option-tags__item--folder .aq-option-tags__body { border-color: var(--line-strong); background: var(--surface-raised); color: var(--ink); }
-  .aq-option-tags__item--folder .aq-option-tags__tag::before { background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; }
-  .aq-option-tags__item--folder .aq-option-tags__tag::after { display: none; }
-  .aq-option-tags__label .aq-h1 { font-size: 30px; line-height: 36px; }
-  .aq-option-tags__body { min-height: 0; padding: var(--space-4) var(--space-4) var(--space-4) var(--space-12); }
-  .aq-option-tags__string { width: var(--space-8); }
-}
-.aq-fold:not(.is-open) .aq-option-tags__item.aq-fold-x { display: block; }
-.aq-fold:has(> .aq-option-tags) > .aq-fold__btn { display: none; }
-@container (max-width: 860px) {
-  .aq-fold:not(.is-open) .aq-option-tags__item.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-option-tags) > .aq-fold__btn { display: flex; }
-}
-.aq-option-tags__vial .aq-option-tags__lab { stroke-width: 1; }
-
-/* Dark theme (pass 12, F3): the label card turns navy with --surface-raised, so its lead takes the card's own muted ink;
-   the fold button sits on limestone, so it takes the limestone inks */
-.aq-option-tags__label .aq-lead { color: var(--ink-muted); }
-.aq-option-tags-sec .aq-fold__btn { color: var(--on-limestone-muted); }
-.aq-option-tags-sec .aq-fold__btn:hover { color: var(--on-limestone); }
-
-/* Phones (pass 12, F7): the strings and vials dangle with nothing to tie to in one column, so they go; the tilt and the
-   eyelets keep the tag idea. (The fold is not drawn for five options or fewer; see the renderer.) */
-@container (max-width: 860px) {
-  .aq-option-tags__string { display: none; }
 }
 
 /* ---------- OptionTaps: options as dashed parts on dashed tees off the standard train, one limestone drawing sheet ---------- */
@@ -12118,6 +12569,109 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-roles__stamp { padding-left: var(--space-2); font-size: 14px; line-height: 20px; }
 }
 
+/* ---------- RoomLimit: the room a package goes in, its battery limit on the floor, tie-ins keyed to rows (look "room-limit") ----------
+   Desktop: title across the top; the IsoKit room cutaway left (held in view while the rows pass), the keyed rows right
+   in three groups (the limit, the package's side, the site's side). The battery limit is a flow dash-and-dot line;
+   tie-in nodes sit on it; numbered navy squares on leaders key each point to its row. A pointed row lights its square,
+   leader and node, and a flow ring rides to its point (atlas-hotspots). Phones: the drawing cropped to the line, then
+   the limit row, then each side as a two-column checklist. */
+.aq-room-limit { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); row-gap: var(--space-8); align-items: start; }
+.aq-room-limit__head { grid-column: 1 / -1; max-width: 760px; }
+.aq-room-limit__fig { grid-column: 1; margin: 0; position: sticky; top: var(--space-24); }
+.aq-room-limit__pan { position: relative; }
+.aq-room-limit__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-room-limit__svg .aq-room-limit__wall { fill: var(--surface-sunken); }
+.aq-room-limit__svg .aq-room-limit__bl { fill: none; stroke: var(--flow); stroke-width: 2; stroke-dasharray: 16 5 3 5; vector-effect: non-scaling-stroke; }
+.aq-room-limit__svg .aq-room-limit__node { fill: var(--surface); stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; transition: fill 180ms ease-out; }
+.aq-room-limit__svg .aq-room-limit__node.is-rl { fill: var(--flow); }
+.aq-room-limit__svg .aq-room-limit__cable .aq-iso__pipe-line, .aq-room-limit__svg .aq-room-limit__cable path { stroke: var(--ink-muted); stroke-dasharray: none; }
+.aq-room-limit__svg .aq-iso__leader-line { stroke: var(--ink-muted); }
+.aq-room-limit__svg .aq-iso__leader-dot { fill: var(--ink-muted); }
+.aq-room-limit__svg .is-rl .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-room-limit__svg .is-rl .aq-iso__leader-dot { fill: var(--flow); }
+
+/* numbered squares on the drawing and in the rows: the same navy key */
+.aq-room-limit__pin, .aq-room-limit__no {
+  display: grid; place-items: center; width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) + var(--space-1));
+  background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em;
+  transition: background-color 180ms ease-out, transform 180ms ease-out;
+}
+.aq-room-limit__pin { margin-inline: var(--space-1); }
+.aq-room-limit__pin.is-rl { background: var(--flow); color: var(--on-action); transform: translate(0, -50%) scale(1.12); }
+.aq-room-limit__pin.aq-iso-figure__label--left.is-rl { transform: translate(-100%, -50%) scale(1.12); }
+.aq-room-limit__no.is-free { background: transparent; color: var(--ink-muted); box-shadow: inset 0 0 0 1px var(--line-strong); }
+
+/* the two sides and the line, named on the drawing */
+.aq-room-limit__lab { position: absolute; font: 500 12px/16px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; pointer-events: none; }
+.aq-room-limit__lab { transform: rotate(30deg) translate(0, -50%); transform-origin: 0 0; }
+.aq-room-limit__lab.is-pkg { color: var(--flow); }
+
+/* the ring: a full-size layer carries it to the chosen point (atlas-hotspots, 250 ms ease-out) */
+.aq-room-limit__ringl { position: absolute; inset: 0; pointer-events: none; transform: translate(var(--rl-rx, 50%), var(--rl-ry, 50%)); transition: transform 250ms ease-out; }
+.aq-room-limit__ring { display: none; position: absolute; left: calc(-1 * (var(--space-4) + var(--space-1))); top: calc(-1 * (var(--space-4) + var(--space-1))); width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2)); border: 1.5px solid var(--flow); border-radius: 50%; transition: opacity 180ms ease-out, transform 180ms ease-out; }
+/* the ring exists only while a row is chosen; it scales in from 60 % on its first frame */
+.aq-room-limit[data-rl] .aq-room-limit__ring { display: block; opacity: 1; transform: none; }
+@starting-style { .aq-room-limit[data-rl] .aq-room-limit__ring { opacity: 0; transform: scale(0.6); } }
+
+/* the rows */
+.aq-room-limit__rows { grid-column: 2; border-top: 1px solid var(--line-strong); }
+.aq-room-limit__list { margin: 0; padding: 0; list-style: none; }
+.aq-room-limit__item { display: grid; grid-template-columns: calc(var(--space-6) + var(--space-1)) minmax(0, 1fr); column-gap: var(--space-4); padding: var(--space-4) var(--space-2) var(--space-4) 0; border-bottom: 1px solid var(--line); align-content: start; outline: none; transition: background-color 160ms ease-out; }
+.aq-room-limit__item > :not(.aq-room-limit__no) { grid-column: 2; }
+.aq-room-limit__no { grid-column: 1; grid-row: 1 / span 4; align-self: start; }
+.aq-room-limit__item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-room-limit__item.is-rl { background: var(--flow-tint); }
+.aq-room-limit__item.is-rl .aq-room-limit__no { background: var(--flow); color: var(--on-action); }
+.aq-room-limit__p { margin: 0; font: 500 17px/24px var(--font-sans); color: var(--ink); }
+.aq-room-limit__v { margin: var(--space-1) 0 0; font-size: 15px; line-height: 22px; color: var(--ink); }
+.aq-room-limit__m { margin: var(--space-1) 0 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.aq-room-limit__go { margin: var(--space-2) 0 0; font-size: 14px; line-height: 20px; }
+.aq-room-limit__link { color: var(--flow); }
+.aq-room-limit__link::after { content: "\2192"; display: inline-block; margin-left: var(--space-1); text-decoration: none; }
+.aq-room-limit__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* the limit row reads as the line itself: dash-and-dot rules above and below on the flow tint */
+.aq-room-limit__item.is-limit { position: relative; padding-inline-start: var(--space-3); background: var(--flow-tint); border-bottom: 0; margin-bottom: var(--space-2); }
+.aq-room-limit__item.is-limit::before, .aq-room-limit__item.is-limit::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--flow) 0 16px, transparent 16px 21px, var(--flow) 21px 24px, transparent 24px 29px);
+}
+.aq-room-limit__item.is-limit::before { top: -1px; }
+.aq-room-limit__item.is-limit::after { bottom: 0; }
+/* dark (pass 12 verify): navy is close to flow-tint, so the limit row's square takes a flow edge */
+:root[data-theme="dark"] .aq-room-limit__item.is-limit .aq-room-limit__no { box-shadow: inset 0 0 0 1px var(--flow); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-room-limit__item.is-limit .aq-room-limit__no { box-shadow: inset 0 0 0 1px var(--flow); } }
+.aq-room-limit__side { margin: 0; padding: var(--space-6) 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); border-bottom: 1px solid var(--line-strong); }
+.aq-room-limit__side.is-pkg { color: var(--flow); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-room-limit__ringl, .aq-room-limit__ring, .aq-room-limit__pin, .aq-room-limit__no, .aq-room-limit__item { transition: none; }
+}
+
+@container (max-width: 860px) {
+  .aq-room-limit { grid-template-columns: minmax(0, 1fr); row-gap: calc(var(--space-4) + var(--space-1)); }
+  .aq-room-limit__fig { grid-column: 1; position: relative; top: auto; overflow: hidden; aspect-ratio: var(--rl-ar, 1.6); max-width: 560px; margin-inline: calc(-1 * var(--space-2)); }
+  .aq-room-limit__pan { position: absolute; width: var(--rl-w, 100%); left: var(--rl-x, 0); top: var(--rl-y, 0); }
+  .aq-room-limit__pin { width: var(--space-6); height: var(--space-6); font-size: 12px; margin-inline: 0; }
+  .aq-room-limit__lab { display: none; }
+  .aq-room-limit__ring { left: calc(-1 * var(--space-4)); top: calc(-1 * var(--space-4)); width: var(--space-8); height: var(--space-8); }
+  .aq-room-limit__rows { grid-column: 1; border-top: 0; }
+  .aq-room-limit__item.is-limit { margin-bottom: 0; padding: var(--space-4) var(--space-3); }
+  .aq-room-limit__item.is-limit .aq-room-limit__p { font-size: 17px; line-height: 24px; }
+  /* each side: a two-column checklist of keyed squares */
+  .aq-room-limit__list { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-3); }
+  .aq-room-limit__list .aq-room-limit__item { grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-3) 0 var(--space-4); }
+  .aq-room-limit__list .aq-room-limit__item > :not(.aq-room-limit__no) { grid-column: 1 / -1; }
+  .aq-room-limit__list .aq-room-limit__item > .aq-room-limit__p { grid-column: 2; grid-row: 1; align-self: center; }
+  .aq-room-limit__list .aq-room-limit__no { grid-row: 1; width: var(--space-6); height: var(--space-6); }
+  .aq-room-limit__p { font-size: 15px; line-height: 20px; font-weight: 600; }
+  .aq-room-limit__v { margin-top: var(--space-2); font-size: 14px; line-height: 20px; }
+  .aq-room-limit__m { font-size: 14px; line-height: 20px; }
+  .aq-room-limit__go { margin-top: var(--space-1); }
+  .aq-room-limit__link { display: inline-flex; align-items: center; min-height: 44px; }
+}
+/* tablet (pass 12 verify): centre the cropped drawing in the wider single column */
+@container (min-width: 600px) and (max-width: 860px) { .aq-room-limit__fig { width: 100%; margin-inline: auto; } }
+
 /* ---------- Router: pick your situation, see one route (table block with as: "router", blocks/router.js) ----------
    On a plate (wPlate). Desktop: situations as rows on hairlines on the left, each with the shared mono index; the
    chosen one is the plate's one flow-tint row with a 2 px flow line on its left and a flow line with an arrowhead into
@@ -12332,6 +12886,127 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-rule-figures__link::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; min-height: var(--aq-hit, 44px); transform: translateY(-50%); }
   .aq-rule-figures .aq-fold:not(.is-open) .aq-rule-figures__card.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-rule-figures__grid) > .aq-fold__btn { display: flex; }
+}
+
+/* ---------- ScenePlates: a plants ledger beside one navy plate drawing where the water goes (look scene-plates) ----------
+   Left: the title set large and light, then the ledger (a real table in sans on hairlines: the plant with its index
+   button, where the water goes as a numbered list keyed to the plate's pins, the legal floor and limit, the fit).
+   Right: the navy plate, held in view while the ledger scrolls, a window over a reel of one scene per plant (index and
+   plant, an IsoKit drawing of one water header with a drop to each numbered point of use, the numbered callouts). The
+   row in hand slides the reel. Phones: title, the plate as a 220 px strip held under the header, then the rows. */
+.aq-scene-plates { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); align-items: start; }
+.aq-scene-plates__main { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
+.aq-scene-plates__main .aq-sec-head { max-width: none; }
+.aq-scene-plates__main .aq-h1 { margin: 0; font-size: clamp(44px, 6cqi, 80px); line-height: 1.02; font-weight: 300; letter-spacing: -0.035em; text-wrap: balance; }
+.aq-scene-plates__side { position: sticky; top: var(--space-24); min-width: 0; }
+
+/* The ledger */
+.aq-scene-plates__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-scene-plates__table thead th { padding: 0 var(--space-3) var(--space-3) 0; border-bottom: 1px solid var(--line-strong); text-align: left; vertical-align: bottom;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-scene-plates__table thead th:first-child { width: 25%; }
+.aq-scene-plates__table thead th:nth-child(2) { width: 25%; }
+.aq-scene-plates__table thead th + th { padding-left: var(--space-3); }
+.aq-scene-plates__row > * { position: relative; padding: var(--space-4) var(--space-3) var(--space-6) 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top;
+  font: 400 14px/21px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-scene-plates__row > * + * { padding-left: var(--space-3); }
+.aq-scene-plates__row > th { font-weight: inherit; }
+.aq-scene-plates__plant { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-1); align-items: start; }
+.aq-scene-plates__pick { min-width: 44px; min-height: 44px; margin: calc(-1 * var(--space-3)) 0 0 calc(-1 * var(--space-2)); padding: 0 var(--space-2);
+  border: 0; background: none; cursor: pointer; text-align: left; font: 500 13px/44px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+.aq-scene-plates__pick:hover, .aq-scene-plates__row.is-on .aq-scene-plates__pick { color: var(--flow); }
+.aq-scene-plates__pick:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-scene-plates__name { font: 400 17px/24px var(--font-sans); color: var(--ink); text-wrap: balance; }
+.aq-scene-plates__name a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--flow); }
+/* the row in hand: a flow rule along its foot, its index lit, its numbers filled */
+.aq-scene-plates__row.is-on > * { border-bottom-color: var(--flow); box-shadow: inset 0 -1px 0 var(--flow); }
+.aq-scene-plates__uses { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.aq-scene-plates__uses li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); align-items: start; }
+.aq-scene-plates__un, .aq-scene-plates__pn, .aq-scene-plates__pin { display: inline-grid; place-items: center; box-sizing: border-box; width: 20px; height: 20px; font: 500 11px/1 var(--font-mono); font-variant-numeric: tabular-nums; }
+.aq-scene-plates__un { margin-top: 1px; border: 1px solid var(--line-strong); color: var(--ink-muted); }
+.aq-scene-plates__row.is-on .aq-scene-plates__un { border-color: var(--navy); background: var(--navy); color: var(--on-navy); }
+.aq-scene-plates__ln { display: block; }
+.aq-scene-plates__ln--then { margin-top: var(--space-1); color: var(--ink-muted); }
+.aq-scene-plates__fit a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--flow); }
+.aq-scene-plates__fit a:hover { color: var(--flow); }
+.aq-scene-plates-sec .aq-fold__btn { margin-top: var(--space-6); }
+
+/* The plate: navy, a window over the reel of scenes */
+.aq-scene-plates__plate { position: relative; overflow: hidden; background: var(--navy); color: var(--on-navy); }
+.aq-scene-plates__plate::before { content: ""; position: absolute; inset: var(--space-2); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); pointer-events: none; z-index: 1; }
+.aq-scene-plates__reel { display: grid; }
+.aq-scene-plates__still { grid-area: 1 / 1; margin: 0; display: grid; grid-template-rows: auto auto auto; gap: var(--space-4); padding: var(--space-6) var(--space-6) var(--space-6); min-width: 0;
+  transform: translateY(calc(var(--d, 0) * 100%)); }
+.aq-scene-plates__cap { display: flex; align-items: baseline; gap: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-scene-plates__ci { flex: none; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--on-navy-muted); }
+.aq-scene-plates__ck { min-width: 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); text-wrap: balance; }
+/* drawing area: the drawing box keeps its own ratio so the pins stay on their stations */
+.aq-scene-plates__area { container-type: inline-size; display: grid; place-items: center; }
+.aq-scene-plates__fig { position: relative; width: min(100cqw, calc(var(--space-32) * 3 * var(--ar, 1.4))); aspect-ratio: var(--ar, 1.4); }
+.aq-scene-plates__svg { display: block; width: 100%; height: 100%; }
+.aq-scene-plates__pin { position: absolute; width: var(--space-6); height: var(--space-6); transform: translate(-50%, -50%); border: 1.5px solid var(--on-navy); background: var(--navy); color: var(--on-navy); font-size: 12px; }
+.aq-scene-plates__still.is-on .aq-scene-plates__pin { background: var(--on-navy); color: var(--navy); }
+.aq-scene-plates__pn { width: var(--space-6); height: var(--space-6); border: 1.5px solid var(--on-navy); color: var(--on-navy); font-size: 12px; }
+.aq-scene-plates__calls { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.aq-scene-plates__calls li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); align-items: center; padding-block: var(--space-2); border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
+  font: 400 15px/22px var(--font-sans); color: var(--on-navy); overflow-wrap: break-word; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .aq-scene-plates__still { transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
+  .aq-scene-plates__plate.is-instant .aq-scene-plates__still { transition: none; }
+  .aq-scene-plates__row > * { transition: border-color 240ms, box-shadow 240ms; }
+  .aq-scene-plates__pick, .aq-scene-plates__un { transition: color 160ms, background-color 160ms, border-color 160ms; }
+}
+
+@container (max-width: 1100px) {
+  .aq-scene-plates { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); column-gap: var(--space-6); }
+  .aq-scene-plates__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .aq-scene-plates__table, .aq-scene-plates__table tbody, .aq-scene-plates__row { display: block; }
+  .aq-scene-plates__row { padding: var(--space-3) 0 var(--space-4); border-bottom: 1px solid var(--line); }
+  .aq-scene-plates__row > *, .aq-scene-plates__row > * + * { display: block; padding: var(--space-1) 0 var(--space-1) var(--space-12); border: 0; }
+  .aq-scene-plates__row > th { padding-left: 0; }
+  .aq-scene-plates__row.is-on { box-shadow: inset 0 -2px 0 var(--flow); }
+  .aq-scene-plates__row.is-on > * { box-shadow: none; }
+  .aq-scene-plates__row > td::before { content: attr(data-l); display: block; margin-bottom: var(--space-1); font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+  .aq-scene-plates__row > td:empty { display: none; }
+}
+
+@container (max-width: 860px) {
+  .aq-scene-plates { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-scene-plates__main, .aq-scene-plates__side { display: contents; }
+  .aq-scene-plates__main .aq-h1 { font-size: clamp(38px, 11cqi, 52px); }
+  .aq-scene-plates__plate { order: 2; }
+  .aq-scene-plates-sec .aq-fold, .aq-scene-plates__table { order: 3; }
+  .aq-scene-plates__still { padding: var(--space-6) var(--space-4); }
+  .aq-scene-plates__ck { font-size: 19px; line-height: 25px; }
+  /* rows as compact cards: the index and plant, the numbered uses (keyed to the strip's pins), floor and limit, fit */
+  .aq-scene-plates__row { padding: var(--space-2) 0 var(--space-4); }
+  /* no hanging indent (S13): the cells start under the index numeral, so the reading column is the full card */
+  .aq-scene-plates__row > *, .aq-scene-plates__row > * + * { padding-left: var(--space-3); }
+  .aq-scene-plates__row.is-on { box-shadow: inset 2px 0 0 var(--flow); }
+  .aq-scene-plates__row > th { padding: 0 0 0 var(--space-2); }
+  .aq-scene-plates__plant { align-items: center; }
+  .aq-scene-plates__pick { margin-top: 0; }
+  .aq-scene-plates__name { font-size: 17px; line-height: 23px; padding-top: 0; align-self: center; }
+  .aq-scene-plates__uses { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
+  .aq-scene-plates__uses li { display: inline-grid; column-gap: var(--space-1); }
+  .aq-scene-plates__row > * { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-scene-plates__fit a { display: inline; padding-block: var(--space-3); }
+  /* the plate as a 220 px strip held under the header (PhoneKit): caption and drawing, the callouts left to the rows */
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__plate { margin: 0 calc(-1 * var(--space-4)); background: var(--navy); border-bottom: 0; }
+  /* column heads once (S12): the cell labels show on the first row only (kept for screen readers on the others); the
+     uses need none after it, their numbers are the strip's pins */
+  .aq-scene-plates__row + .aq-scene-plates__row > td::before { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+  .aq-scene-plates__row + .aq-scene-plates__row > td + td { margin-top: var(--space-1); }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__plate::before { inset: var(--space-1); }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__reel { height: 100%; }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__still { grid-template-rows: auto minmax(0, 1fr); gap: var(--space-1); padding: var(--space-2) var(--space-4) var(--space-2); }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__calls { display: none; }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__cap { padding-bottom: var(--space-1); }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__ck { font-size: 15px; line-height: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__area { container-type: size; min-height: 0; height: 100%; }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__fig { width: min(100cqw, calc(100cqh * var(--ar, 1.4))); }
+  .aq-scene-plates[data-pk-on] .aq-scene-plates__pin { width: 20px; height: 20px; }
 }
 
 /* ---------- ScopeSeam: what fits the package and what does not, on a navy / limestone split with the seam between ---------- */
@@ -13129,6 +13804,103 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
 @container (min-width: 600px) and (max-width: 860px) {
   .aq-site-tiles__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-6); }
   .aq-site-tiles__col:nth-child(-n+2) { border-top: 0; }
+}
+
+/* ---------- SkidSheet: a skid's design parameters on its GA sheet (look "skid-sheet") ----------
+   Desktop: the framed drawing sheet (double rule, title block) holds sticky at the left while the numbered parameter
+   rows run down the right on hairlines. Each tag on the drawing carries its row's number; a pointed or focused row
+   turns its tag, leader and part flow and a ring settles on its tag (motion.js glides it). Tablets (601-860 px): the
+   full sheet stacked above the rows. Phones (<= 600 px): PhoneKit's sticky
+   strip (no frame, numbered dots), then the rows as a two-column key and value list, the basis behind a 44 px button. */
+.aq-skid-sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+.aq-skid-sheet__fig { position: sticky; top: var(--space-24); margin: 0; min-width: 0; }
+.aq-skid-sheet__sheet { position: relative; padding: var(--space-8) var(--space-6) var(--space-16); border: 1px solid var(--line-strong); outline: 1px solid var(--line); outline-offset: var(--space-2); background: var(--surface); margin: var(--space-2); }
+.aq-skid-sheet__art { position: relative; width: 100%; }
+.aq-skid-sheet__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-skid-sheet__svg .aq-iso__leader-line { stroke: var(--ink-muted); }
+.aq-skid-sheet__svg .aq-iso__leader-dot { fill: var(--ink-muted); }
+.aq-skid-sheet__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-skid-sheet__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
+.aq-skid-sheet__svg .aq-iso__pipe.is-lit .aq-iso__pipe-wall, .aq-skid-sheet__svg .aq-iso__part.is-lit .aq-iso__eq, .aq-skid-sheet__svg .aq-skid-sheet__seams.is-lit .aq-iso__thin { stroke: var(--flow); }
+.aq-skid-sheet__svg .aq-skid-sheet__seams .aq-iso__thin { stroke-width: 1.2; }
+
+/* tags at the leader ends (desktop) and dots on the parts (phones) */
+.aq-skid-sheet__tag, .aq-skid-sheet__dot {
+  position: absolute; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1);
+  transform: translate(0, -50%); border: 1px solid var(--line-strong); background: var(--surface); font: 400 12px/1 var(--font-mono); color: var(--ink);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease; cursor: default;
+}
+.aq-skid-sheet__tag.is-left { transform: translate(-100%, -50%); }
+.aq-skid-sheet__tag.is-on, .aq-skid-sheet__dot.is-on { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.aq-skid-sheet__dot { display: none; transform: translate(-50%, -50%); }
+/* the ring that settles on the chosen tag (ported from Subframe Motion "Inside the image", atlas-hotspots, MIT) */
+.aq-skid-sheet__ring { position: absolute; left: 0; top: 0; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
+  border: 1px solid var(--flow); border-radius: 50%; opacity: 0; scale: 0; pointer-events: none; transition: left 250ms cubic-bezier(0.2, 0.8, 0.2, 1), top 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms ease, scale 180ms ease; }
+.aq-skid-sheet__ring.is-on { opacity: 1; scale: 1; }
+/* the ring sits on the tag's centre: tags hang right of their point (left ones to its left) */
+.aq-skid-sheet__ring { translate: var(--space-4) 0; }
+.aq-skid-sheet__ring.is-left { translate: calc(-1 * var(--space-4)) 0; }
+
+/* title block: the bottom-right corner of the sheet */
+.aq-skid-sheet__block { position: absolute; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, auto); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong); }
+.aq-skid-sheet__block > span { padding: var(--space-2) var(--space-3); font: 400 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-skid-sheet__block > span + span { border-left: 1px solid var(--line); }
+
+/* the rows: number, parameter, value in mono, basis and link under a hairline */
+.aq-skid-sheet__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-skid-sheet__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 160ms ease; }
+.aq-skid-sheet__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-skid-sheet__row.is-on { background: var(--flow-tint); }
+.aq-skid-sheet__n { grid-row: 1 / span 3; padding-left: var(--space-3); font: 400 13px/24px var(--font-mono); color: var(--ink-muted); }
+.aq-skid-sheet__row.is-on .aq-skid-sheet__n { color: var(--flow); }
+.aq-skid-sheet__p { grid-column: 2; margin: 0; font: 500 17px/24px var(--font-sans); color: var(--ink); }
+.aq-skid-sheet__v { grid-column: 2; margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-skid-sheet__m { grid-column: 2; margin-top: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-skid-sheet__m p { margin: 0; }
+.aq-skid-sheet__link { display: inline-block; margin-top: var(--space-1); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.aq-skid-sheet__link::after { content: " \2192"; }
+.aq-skid-sheet__link:hover { text-decoration: underline; }
+.aq-skid-sheet__wb, .aq-skid-sheet__pn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-skid-sheet { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); }
+}
+
+/* tablets (601-860 px): the full sheet with its tags and leaders, stacked above the rows */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-skid-sheet { display: block; }
+  .aq-skid-sheet__fig { position: static; margin-bottom: var(--space-6); }
+}
+
+@container (max-width: 600px) {
+  .aq-skid-sheet { display: block; }
+  .aq-skid-sheet__fig { position: static; margin: 0 0 var(--space-4); }
+  .aq-skid-sheet__sheet { padding: 0; border: 0; outline: 0; margin: 0; background: none; }
+  .aq-skid-sheet__block, .aq-skid-sheet__tag, .aq-skid-sheet__svg .aq-skid-sheet__ld { display: none; }
+  .aq-skid-sheet__dot { display: grid; min-width: var(--space-6); height: var(--space-6); padding: 0; border-radius: 50%; }
+  .aq-skid-sheet__dot.is-pk-active { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+  .aq-skid-sheet__ring, .aq-skid-sheet__ring.is-left { translate: none; width: var(--space-8); height: var(--space-8); margin: calc(-1 * var(--space-4)) 0 0 calc(-1 * var(--space-4)); }
+  /* PhoneKit strip: the drawing runs full width and pans to the dot of the row on the reading line */
+  .aq-skid-sheet[data-pk-on] .aq-skid-sheet__fig { background: var(--surface); }
+  /* the rows: two columns, number, parameter and the Basis button | the value; basis and link open under the row */
+  .aq-skid-sheet__rows { border-top-color: var(--line-strong); }
+  .aq-skid-sheet__row { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); grid-template-rows: auto 1fr auto auto; column-gap: var(--space-4); padding: var(--space-3) 0 var(--space-2); }
+  .aq-skid-sheet__n { display: none; }
+  .aq-skid-sheet__pn { display: inline; margin-right: var(--space-2); font: 400 13px/21px var(--font-mono); color: var(--ink-muted); }
+  .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__pn { color: var(--flow); }
+  .aq-skid-sheet__p { grid-row: 1 / span 2; grid-column: 1; font-size: 15px; line-height: 21px; }
+  .aq-skid-sheet__v { grid-row: 1 / span 3; grid-column: 2; margin: 0; padding-top: var(--space-1); font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-skid-sheet__wb { display: inline-flex; grid-row: 3; grid-column: 1; justify-self: start; align-self: end; align-items: center; min-height: var(--aq-hit); margin: 0; padding: 0; border: 0; background: none;
+    color: var(--flow); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; cursor: pointer; }
+  .aq-skid-sheet__wb .aq-phone-kit__chev { width: var(--space-8); height: var(--aq-hit); }
+  .aq-skid-sheet__m { display: none; grid-row: 4; grid-column: 1 / -1; margin: 0 0 var(--space-2); font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-skid-sheet__row.is-open .aq-skid-sheet__m { display: block; }
+  .aq-skid-sheet__link { min-height: var(--aq-hit); display: inline-flex; align-items: center; margin: 0; }
+  .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__n { color: var(--flow); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-skid-sheet__ring, .aq-skid-sheet__tag, .aq-skid-sheet__dot, .aq-skid-sheet__row { transition: none; }
 }
 
 /* ---------- SkidTags: an evidence table keyed to an elevation drawing of the skid (look "skid-tags"). Limestone band
@@ -14026,80 +14798,6 @@ details[open] > .aq-spine-shelf__sum .aq-spine-shelf__t { font-weight: 400; }
   .aq-stair-router__flight[data-pk-on] .aq-stair-router__f.is-go dd { margin-top: 0; }
 }
 
-/* ---------- StandardTiles: a Swiss grid of slash-numbered link tiles, a blueprint tile and a flow block ---------- */
-.aq-standard-tiles-sec { position: relative; }
-.aq-standard-tiles { list-style: none; margin: var(--space-8) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
-.aq-standard-tiles__tile, .aq-standard-tiles__plate, .aq-standard-tiles__block { position: relative; min-width: 0; min-height: calc(var(--space-32) * 2.5); overflow: hidden; }
-.aq-standard-tiles__tile.is-navy, .aq-standard-tiles__plate, .aq-standard-tiles__block { background: var(--navy); color: var(--on-navy); }
-.aq-standard-tiles__tile.is-stone { background: var(--limestone); color: var(--on-limestone); }
-
-.aq-standard-tiles__in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr auto; column-gap: var(--space-4); height: 100%;
-  padding: var(--space-6); color: inherit; text-decoration: none; transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-standard-tiles__no { grid-column: 1; grid-row: 1; display: inline-flex; align-items: baseline; font: 300 88px/80px var(--font-mono); letter-spacing: -0.06em; }
-.aq-standard-tiles__sl { display: inline-block; margin-left: var(--space-1); transform-origin: 50% 60%; transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
-.aq-standard-tiles__tag { grid-column: 2; grid-row: 1; align-self: start; padding: var(--space-1) var(--space-2); border: 1px solid currentColor; font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; white-space: nowrap; opacity: 0.85; }
-.aq-standard-tiles__body { grid-column: 1 / -1; grid-row: 3; display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); padding-right: var(--space-12);
-  border-top: 1px solid color-mix(in srgb, currentColor 35%, transparent); }
-.aq-standard-tiles__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.02em; }
-.aq-standard-tiles__d { font: 400 15px/23px var(--font-sans); }
-.is-navy .aq-standard-tiles__d { color: var(--on-navy-muted); }
-.is-stone .aq-standard-tiles__d { color: var(--on-limestone-muted); }
-.aq-standard-tiles__arrow { position: absolute; right: var(--space-6); bottom: var(--space-6); display: block; width: var(--space-8); height: var(--space-4); }
-.aq-standard-tiles__arrow::before { content: ""; position: absolute; left: 0; right: 1px; top: 50%; height: 1.5px; background: currentColor; transform: scaleX(0.4); transform-origin: 100% 50%;
-  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-standard-tiles__arrow::after { content: ""; position: absolute; right: 1px; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid currentColor;
-  border-right: 1.5px solid currentColor; transform: translateY(-50%) rotate(45deg); }
-
-/* Hover and focus: the ground steps, the slash turns upright, the arrow runs out */
-.is-navy a.aq-standard-tiles__in:hover, .is-navy a.aq-standard-tiles__in:focus-visible, .is-navy.is-on a.aq-standard-tiles__in { background: color-mix(in srgb, var(--navy) 86%, var(--on-navy)); }
-.is-stone a.aq-standard-tiles__in:hover, .is-stone a.aq-standard-tiles__in:focus-visible, .is-stone.is-on a.aq-standard-tiles__in { background: color-mix(in srgb, var(--limestone) 80%, var(--surface-raised)); }
-a.aq-standard-tiles__in:hover .aq-standard-tiles__sl, a.aq-standard-tiles__in:focus-visible .aq-standard-tiles__sl { transform: rotate(-22deg); }
-a.aq-standard-tiles__in:hover .aq-standard-tiles__arrow::before, a.aq-standard-tiles__in:focus-visible .aq-standard-tiles__arrow::before { transform: scaleX(1); }
-.is-navy a.aq-standard-tiles__in:focus-visible { outline: 2px solid var(--on-navy); outline-offset: calc(var(--space-1) * -2); }
-.is-stone a.aq-standard-tiles__in:focus-visible { outline: 2px solid var(--on-limestone); outline-offset: calc(var(--space-1) * -2); }
-
-/* Blueprint tile: the pointed system drawn in line on navy, inside a drawing frame */
-.aq-standard-tiles__frame { position: absolute; inset: var(--space-4); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); pointer-events: none; }
-.aq-standard-tiles__frame::before, .aq-standard-tiles__frame::after { content: ""; position: absolute; left: 50%; width: 1px; height: var(--space-2); background: color-mix(in srgb, var(--on-navy-muted) 60%, transparent); }
-.aq-standard-tiles__frame::before { top: 0; }
-.aq-standard-tiles__frame::after { bottom: 0; }
-/* layers not shown are clipped away (not faded), the shown one slides up into its frame */
-.aq-standard-tiles__layer { position: absolute; inset: var(--space-8); display: grid; place-items: center; clip-path: inset(0 0 100% 0); transform: translateY(var(--space-2));
-  transition: clip-path 240ms cubic-bezier(0.2, 0.85, 0.25, 1), transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
-.aq-standard-tiles__layer.is-on { clip-path: inset(0); transform: none; }
-.aq-standard-tiles__layer svg { width: 100%; height: 100%; }
-
-/* Flow block: a steel-blue square on navy, the pointed item's tag set large under it */
-.aq-standard-tiles__wedge { position: absolute; top: 0; right: 0; width: 58%; height: 62%; background: var(--flow); transform-origin: 100% 0; }
-.aq-standard-tiles__big { position: absolute; left: var(--space-6); bottom: var(--space-6); right: var(--space-6); font: 300 40px/44px var(--font-mono); letter-spacing: -0.04em; color: var(--limestone); overflow-wrap: anywhere; }
-.aq-standard-tiles__big.is-tick { animation: aq-st-tick 220ms cubic-bezier(0.2, 0, 0, 1); }
-@keyframes aq-st-tick { from { opacity: 0.2; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
-
-@container (max-width: 1100px) {
-  .aq-standard-tiles__no { font-size: 64px; line-height: 60px; }
-  .aq-standard-tiles__t { font-size: 20px; line-height: 26px; }
-  .aq-standard-tiles__big { font-size: 30px; line-height: 34px; }
-}
-
-/* Phones: the four tiles stacked, the blueprint tile and the flow block side by side under them */
-@container (max-width: 860px) {
-  .aq-standard-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); margin-top: var(--space-4); }
-  .aq-standard-tiles__tile { grid-column: 1 / -1; min-height: 0; }
-  .aq-standard-tiles__plate, .aq-standard-tiles__block { min-height: calc(var(--space-32) * 1.3); }
-  .aq-standard-tiles__in { padding: var(--space-4) var(--space-4) var(--space-6); row-gap: var(--space-6); }
-  .aq-standard-tiles__no { font-size: 56px; line-height: 52px; }
-  .aq-standard-tiles__arrow { right: var(--space-4); bottom: var(--space-6); }
-  .aq-standard-tiles__t { font-size: 20px; line-height: 26px; }
-  .aq-standard-tiles__d { font-size: 16px; line-height: 25px; }
-  .aq-standard-tiles__layer { inset: var(--space-6); }
-  .aq-standard-tiles__big { left: var(--space-4); right: var(--space-4); bottom: var(--space-4); font-size: 22px; line-height: 26px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aq-standard-tiles__layer, .aq-standard-tiles__sl, .aq-standard-tiles__in, .aq-standard-tiles__arrow::before { transition: none; }
-  .aq-standard-tiles__big.is-tick { animation: none; }
-}
-
 /* ---------- StandardWires: standards wired to the equipment that answers them (look "standard-wires") ----------
    Navy blueprint band. Desktop: one grid of five tracks shared by the header and every row (standard | asks | answer
    chip | wire run | drawing cell). The drawing cells stack into one plate (a framed column with a title block); the
@@ -14863,88 +15561,107 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 .aq-system-run__stage.is-hot .aq-system-run__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--sr-flow, var(--flow)); }
 .aq-system-run__fig { cursor: crosshair; }
 
-/* ---------- TankTiles: fabrication parameters on a navy and limestone checkerboard of square tiles ---------- */
-/* Four columns of square tiles, no gutters (the checkerboard is the grid). The head sits in the first navy tile, the
-   steel-blue blueprint of the tank in the third; each row is a tile led by a huge light slash numeral. */
-.aq-tank-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; }
-.aq-tank-tiles__list { display: contents; list-style: none; margin: 0; padding: 0; }
-.aq-tank-tiles__head, .aq-tank-tiles__tile, .aq-tank-tiles__bp { aspect-ratio: 1 / 1; min-width: 0; box-sizing: border-box; padding: var(--space-6); }
-.aq-tank-tiles__head { grid-column: 1; grid-row: 1; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; }
-.aq-tank-tiles__head .aq-sec-head { margin: 0; }
-.aq-tank-tiles__head .aq-eyebrow { color: var(--on-navy-muted); }
-.aq-tank-tiles__head .aq-h1 { font: 300 44px/48px var(--font-sans); letter-spacing: -0.025em; color: var(--on-navy); max-width: none; }
-.aq-tank-tiles__head .aq-lead, .aq-tank-tiles__head p { color: var(--on-navy-muted); }
+/* ---------- TankGa: tank and pipework parameters read off one GA sheet ---------- */
+/* One paper sheet: head and drawing on the left, the ruled key on the right, the title block across the foot */
+.aq-tank-ga { position: relative; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); grid-template-rows: auto 1fr auto;
+  column-gap: var(--space-12); padding: var(--space-8) var(--space-8) 0; border: 1px solid var(--line-strong); background: var(--surface-raised); }
+.aq-tank-ga__head { grid-column: 1; grid-row: 1; }
+.aq-tank-ga__head .aq-sec-head { margin: 0; }
+.aq-tank-ga__head .aq-h1 { font-weight: 300; }
 
-/* the blueprint tile: steel blue ground, limestone hairlines, a fine drafting grid */
-.aq-tank-tiles__bp { grid-column: 3; grid-row: 1; position: relative; padding: var(--space-4); overflow: hidden;
-  background-color: color-mix(in srgb, var(--flow) 60%, var(--navy));
-  background-image: linear-gradient(color-mix(in srgb, var(--limestone) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--limestone) 14%, transparent) 1px, transparent 1px);
-  background-size: var(--space-6) var(--space-6); background-position: -1px -1px; }
-.aq-tank-tiles__svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.aq-tank-tiles__svg path, .aq-tank-tiles__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.aq-tank-tiles__ln { stroke: var(--limestone); stroke-width: 1.5; }
-.aq-tank-tiles__thin, .aq-tank-tiles__dim { stroke: var(--limestone); stroke-width: 1; opacity: 0.75; }
-.aq-tank-tiles__hl { stroke: var(--limestone); stroke-width: 1; opacity: 0.6; }
-.aq-tank-tiles__svg .aq-tank-tiles__eq { fill: color-mix(in srgb, var(--flow) 60%, var(--navy)); stroke: var(--limestone); stroke-width: 1.5; }
-.aq-tank-tiles__level { stroke: var(--limestone); stroke-width: 1.5; }
-.aq-tank-tiles__water { stroke: var(--limestone); stroke-width: 1; opacity: 0.3; }
-.aq-tank-tiles__jet { stroke: var(--limestone); stroke-width: 1; stroke-dasharray: 2 4; }
-.aq-tank-tiles__tx { fill: var(--limestone); font: 400 11px/1 var(--font-mono); text-anchor: middle; }
-.aq-tank-tiles__bpt { position: absolute; left: var(--space-4); bottom: var(--space-3); font: 400 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--limestone); }
+/* The drawing and its numbered tags */
+.aq-tank-ga__fig { position: relative; grid-column: 1; grid-row: 2; align-self: center; padding: var(--space-4) 0 var(--space-8); }
+.aq-tank-ga__pan { position: relative; }
+.aq-tank-ga__svg { display: block; width: 100%; height: auto; }
+.aq-tank-ga .aq-iso [data-iso-id] { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-tank-ga .aq-iso .is-on .aq-iso__eq, .aq-tank-ga .aq-iso .is-on .aq-iso__ln, .aq-tank-ga .aq-iso .is-on .aq-iso__thin, .aq-tank-ga .aq-iso .is-on .aq-iso__hid,
+.aq-tank-ga .aq-iso .is-on .aq-iso__pipe-wall, .aq-tank-ga .aq-iso .is-on.aq-iso__eq { stroke: var(--flow); }
+.aq-tank-ga .aq-iso .is-on .aq-iso__eq { fill: var(--flow-tint); }
+.aq-tank-ga .aq-iso .aq-tank-ga__inside .aq-iso__eq { fill: var(--surface-raised); stroke-width: 1; }
+.aq-tank-ga__lead path { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 180ms ease; }
+.aq-tank-ga__lead circle { fill: var(--line-strong); stroke: none; transition: fill 180ms ease; }
+.aq-tank-ga__lead.is-on path { stroke: var(--flow); stroke-width: 1.5; }
+.aq-tank-ga__lead.is-on circle { fill: var(--flow); }
+.aq-tank-ga__tag { position: absolute; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); margin: calc(var(--space-6) / -2) 0 0 calc(var(--space-6) / -2);
+  background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em;
+  transition: background-color 180ms ease, transform 180ms ease; }
+.aq-tank-ga__tag.is-on { background: var(--flow); color: var(--on-action); transform: scale(1.12); }
 
-/* row tiles */
-.aq-tank-tiles__tile { display: flex; flex-direction: column; gap: var(--space-2); }
-.aq-tank-tiles__tile.is-navy { background: var(--navy); color: var(--on-navy); }
-.aq-tank-tiles__tile.is-stone { background: var(--limestone); color: var(--on-limestone); }
-.aq-tank-tiles__n { margin: 0 0 auto; font: 300 72px/1 var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
-.aq-tank-tiles__sl { margin-left: 0.04em; }
-.is-navy .aq-tank-tiles__sl { color: var(--on-navy-muted); }
-.is-stone .aq-tank-tiles__sl { color: var(--on-limestone-muted); }
-.aq-tank-tiles__p { margin: var(--space-4) 0 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; }
-.aq-tank-tiles__v { margin: 0; font: 400 14px/22px var(--font-sans); }
-.aq-tank-tiles__m { margin: var(--space-1) 0 0; padding-top: var(--space-2); display: flex; flex-direction: column; gap: var(--space-1); font: 400 13px/20px var(--font-sans); }
-.is-navy .aq-tank-tiles__m { color: var(--on-navy-muted); border-top: 1px solid color-mix(in srgb, var(--on-navy) 25%, transparent); }
-.is-stone .aq-tank-tiles__m { color: var(--on-limestone-muted); border-top: 1px solid color-mix(in srgb, var(--on-limestone) 25%, transparent); }
-.aq-tank-tiles__link { color: inherit; text-decoration: underline; text-underline-offset: 3px; min-height: var(--space-6); display: inline-flex; align-items: center; }
-.is-navy .aq-tank-tiles__link { color: var(--on-navy); }
-.is-stone .aq-tank-tiles__link { color: var(--on-limestone); }
-.aq-tank-tiles__tile:hover .aq-tank-tiles__sl { color: var(--flow); }
-.is-navy:hover .aq-tank-tiles__sl { color: var(--limestone); }
+/* The key: one ruled row per tag */
+.aq-tank-ga__rows { grid-column: 2; grid-row: 1 / span 2; list-style: none; margin: 0; padding: 0 0 var(--space-8); border-top: 1px solid var(--line-strong); align-self: start; }
+.aq-tank-ga__row { display: grid; grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-4); row-gap: 0; padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--line); cursor: default; outline: none; transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1), background-color 180ms ease; }
+.aq-tank-ga__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-tank-ga__n { grid-row: 1 / span 3; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); border: 1px solid var(--ink-muted); color: var(--ink);
+  font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.aq-tank-ga__p { grid-column: 2; margin: 0 0 var(--space-1); font: 400 17px/22px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-tank-ga__v { grid-column: 2; margin: 0; font: 400 15px/21px var(--font-sans); color: var(--ink); }
+.aq-tank-ga__m { grid-column: 2; margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-tank-ga__row.is-on { background: var(--flow-tint); }
+.aq-tank-ga__row.is-on .aq-tank-ga__n { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+.aq-tank-ga.is-pointing .aq-tank-ga__row:not(.is-on) { opacity: 0.62; }
 
-/* Desktop shows every tile; the fold is for phones */
-.aq-fold:not(.is-open) .aq-tank-tiles__tile.aq-fold-x { display: flex; }
-.aq-fold:has(> .aq-tank-tiles) > .aq-fold__btn { display: none; }
+/* The title block: brand, caption, and the budget (the one parameter that names no part) */
+.aq-tank-ga__block { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 2.4fr);
+  margin: 0 calc(var(--space-8) * -1); border-top: 1px solid var(--line-strong); }
+.aq-tank-ga__block > * { padding: var(--space-4) var(--space-6); }
+.aq-tank-ga__block > * + * { border-left: 1px solid var(--line-strong); }
+.aq-tank-ga__brand, .aq-tank-ga__cap { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-tank-ga__brand { color: var(--ink); }
+.aq-tank-ga__brand, .aq-tank-ga__cap { display: flex; align-items: center; }
+.aq-tank-ga__budget { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-6); row-gap: 0; align-items: baseline; background: var(--navy); color: var(--on-navy); }
+.aq-tank-ga__bl { grid-row: 1 / span 2; margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-tank-ga__bv { grid-column: 2; margin: 0; font: 400 17px/24px var(--font-sans); color: var(--on-navy); }
+.aq-tank-ga__bm { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-navy-muted); }
+.aq-tank-ga__budget .aq-tank-ga__link { display: inline-flex; align-items: center; min-height: var(--aq-hit); color: var(--on-navy);
+  font: 400 14px/20px var(--font-sans); text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 3px; }
+.aq-tank-ga__m .aq-tank-ga__link { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 3px; }
 
+@media (prefers-reduced-motion: reduce) {
+  .aq-tank-ga__tag, .aq-tank-ga__row, .aq-tank-ga__n, .aq-tank-ga__lead path, .aq-tank-ga__lead circle, .aq-tank-ga .aq-iso [data-iso-id] { transition: none; }
+}
+
+/* Mid widths: the drawing above, the key under it in two columns */
 @container (max-width: 1100px) {
-  .aq-tank-tiles__head, .aq-tank-tiles__tile { padding: var(--space-4); }
-  .aq-tank-tiles__n { font-size: 56px; }
-  .aq-tank-tiles__head .aq-h1 { font-size: 36px; line-height: 42px; }
-  .aq-tank-tiles__p { font-size: 18px; line-height: 24px; }
+  .aq-tank-ga { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .aq-tank-ga__head, .aq-tank-ga__fig, .aq-tank-ga__rows, .aq-tank-ga__block { grid-column: 1; grid-row: auto; }
+  .aq-tank-ga__fig { max-width: calc(var(--space-32) * 5); width: 100%; justify-self: center; }
+  .aq-tank-ga__rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-6); }
 }
-/* Phones: one column; head, blueprint band, then the tiles alternating navy and limestone, the fold back on */
+
+/* Phones: head, the drawing as a sticky strip (PhoneKit), the compact key, the title block as a closing card */
 @container (max-width: 860px) {
-  .aq-tank-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .aq-tank-tiles__head { grid-column: 1 / -1; grid-row: auto; aspect-ratio: auto; padding: var(--space-6) var(--space-4); }
-  .aq-tank-tiles__bp { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 2 / 1; }
-  .aq-tank-tiles__tile { grid-column: 1 / -1; aspect-ratio: auto; padding: var(--space-6) var(--space-4); }
-  .aq-tank-tiles__tile:nth-child(odd) { background: var(--limestone); color: var(--on-limestone); }
-  .aq-tank-tiles__tile:nth-child(even) { background: var(--navy); color: var(--on-navy); }
-  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__m { color: var(--on-limestone-muted); border-top-color: color-mix(in srgb, var(--on-limestone) 25%, transparent); }
-  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__m { color: var(--on-navy-muted); border-top-color: color-mix(in srgb, var(--on-navy) 25%, transparent); }
-  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__sl { color: var(--on-limestone-muted); }
-  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__sl { color: var(--on-navy-muted); }
-  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__link { color: var(--on-limestone); }
-  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__link { color: var(--on-navy); }
-  .aq-tank-tiles__n { font-size: 48px; }
-  .aq-tank-tiles__bpt { display: none; }
-  .aq-fold:not(.is-open) .aq-tank-tiles__tile.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-tank-tiles) > .aq-fold__btn { display: flex; }
+  .aq-tank-ga { display: flex; flex-direction: column; padding: var(--space-6) var(--space-4) 0; }
+  .aq-tank-ga__fig { padding: var(--space-4) 0; margin-inline: calc(var(--space-4) * -1); max-width: none; width: auto; align-self: stretch; }
+  .aq-tank-ga__rows { display: block; padding-bottom: var(--space-6); align-self: stretch; }
+  .aq-tank-ga__row { column-gap: var(--space-3); padding: var(--space-3) 0; }
+  .aq-tank-ga__p { font-size: 16px; line-height: 22px; }
+  .aq-tank-ga__v { font-size: var(--aq-read-phone); line-height: 20px; }
+  .aq-tank-ga__m { font-size: var(--aq-read-phone); line-height: 20px; }
+  .aq-tank-ga__v .aq-ph, .aq-tank-ga__m .aq-ph, .aq-tank-ga__bv .aq-ph { font-size: var(--aq-chip-phone); }
+  .aq-tank-ga__block { display: flex; flex-wrap: wrap; margin: 0 calc(var(--space-4) * -1); }
+  .aq-tank-ga__block > * { padding: var(--space-3) var(--space-4); }
+  .aq-tank-ga__block > .aq-tank-ga__cap { display: none; }
+  .aq-tank-ga__block > .aq-tank-ga__budget { flex: 1 1 100%; grid-template-columns: minmax(0, 1fr); border-left: 0; border-top: 1px solid var(--line-strong); padding: var(--space-4); }
+  .aq-tank-ga__bl, .aq-tank-ga__bv, .aq-tank-ga__bm { grid-column: 1; grid-row: auto; }
+  .aq-tank-ga__bv { font-size: 16px; line-height: 22px; }
+  .aq-tank-ga__bm { font-size: var(--aq-read-phone); }
+  /* the strip: held under the header, the whole set fitted to its height; the tag and part of the row on the reading line lit */
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__fig { padding: 0; margin-top: var(--space-4); background: var(--surface-raised); border-top: 1px solid var(--line); border-bottom-color: var(--line); }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__pan { height: 100%; width: max-content; margin-inline: auto; }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__svg { height: 100%; width: auto; }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__tag { transform: scale(calc(1 / var(--pk-s, 1))); }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__tag.is-on { transform: scale(calc(1.2 / var(--pk-s, 1))); }
+  /* the reader is about to read the next rows: never quieted on phones */
+  .aq-tank-ga.is-pointing .aq-tank-ga__row:not(.is-on) { opacity: 1; }
+  .aq-tank-ga__row.is-on { background: none; box-shadow: inset 2px 0 0 var(--flow); }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__row.is-on { padding-left: var(--space-2); }
 }
-/* Shutter slats (added by motion.js for the entrance, removed when it ends) */
-.aq-tank-tiles__head, .aq-tank-tiles__tile, .aq-tank-tiles__bp { position: relative; }
-.aq-tank-tiles__blinds { position: absolute; inset: 0; display: flex; pointer-events: none; z-index: 1; }
-.aq-tank-tiles__blinds span { flex: 1; background: var(--navy); }
-.aq-tank-tiles__blinds.is-on-navy span { background: var(--limestone); }
+
+/* Small phones: the sheet gives its width back (S14): no side frame, the paper runs edge to edge under the gutters */
+@container (max-width: 600px) {
+  .aq-tank-ga { margin-inline: calc(var(--space-4) * -1); border-inline-width: 0; }
+}
 
 /* ---------- TermsSheet: how buying works (look "terms-sheet"). A clean numbered terms table (navy head rule, line row
    rules, mono numbers, flow dashes before values) beside an IsoKit skid drawing that bleeds off the page's right edge
@@ -16096,6 +16813,86 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-washer-trace__pt, .aq-washer-trace__pt.is-left { position: relative; left: auto; right: auto; top: auto; width: auto; transform: none; padding: var(--space-4) 0 0; border-top: 1px solid var(--on-limestone-muted); }
   .aq-washer-trace__t { font-size: 20px; line-height: 26px; }
   .aq-washer-trace__d { font-size: 16px; line-height: 25px; }
+}
+
+/* ---------- WasherZones: one package feeding a cabinet washer, dashed zones tagged and keyed to rows ---------- */
+.aq-washer-zones-sec { position: relative; }
+.aq-washer-zones { margin-top: 0; }
+
+/* The drawing: dashed zone frames over an IsoKit line drawing, a navy tag on each frame's top right corner (zone 2's bottom left, clear of the riser) */
+.aq-washer-zones__fig { position: relative; overflow: hidden; --wz-phone: 0; }
+.aq-washer-zones__cam { position: relative; width: min(100%, calc(var(--space-32) * 3.6 * var(--ar, 2))); margin: 0 auto; transform-origin: 0 0; }
+.aq-washer-zones__svg { display: block; width: 100%; height: auto; }
+.aq-washer-zones__z { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones[data-on] .aq-washer-zones__z:not(.is-on) { opacity: 0.3; }
+.aq-washer-zones__z.is-on .aq-iso__eq, .aq-washer-zones__z.is-on .aq-iso__ln, .aq-washer-zones__z.is-on .aq-iso__thin { stroke: var(--flow); }
+.aq-washer-zones__frames { pointer-events: none; }
+.aq-washer-zones__z--loop { pointer-events: none; }
+.aq-washer-zones__frame { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke;
+  transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__frame.is-on { stroke: var(--flow); stroke-width: 1.5; }
+.aq-washer-zones__tag { position: absolute; transform: translate(-100%, 0); transform-origin: 100% 0; padding: var(--space-1) var(--space-2);
+  background: var(--navy); color: var(--on-navy); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; pointer-events: none;
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__tag.is-on { background: var(--flow); color: var(--surface); }
+.aq-washer-zones__tag--bl { transform: translate(0, -100%); transform-origin: 0 100%; }
+
+/* The rows: four outlined cards, number and standard chip on top, title, line, arrow */
+.aq-washer-zones__rows { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--space-3); }
+.aq-washer-zones__row { position: relative; min-width: 0; border: 1px solid var(--line-strong); background: var(--surface); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__row::before { content: ""; position: absolute; left: -1px; right: -1px; top: -1px; height: 3px; background: var(--flow); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
+.aq-washer-zones__row.is-on { border-color: var(--flow); }
+.aq-washer-zones__row.is-on::before { transform: scaleX(1); }
+.aq-washer-zones__in { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto 1fr; gap: var(--space-2) var(--space-3); height: 100%;
+  padding: var(--space-4) var(--space-4) calc(var(--space-8) + var(--space-2)); color: var(--ink); text-decoration: none; }
+.aq-washer-zones__no { grid-column: 1; grid-row: 1; font: 300 32px/36px var(--font-mono); letter-spacing: -0.04em; color: var(--ink); }
+.aq-washer-zones__chip { grid-column: 2; grid-row: 1; align-self: start; padding: 2px var(--space-2); background: var(--navy); color: var(--on-navy);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; white-space: nowrap; }
+.aq-washer-zones__t { grid-column: 1 / -1; grid-row: 2; margin: var(--space-2) 0 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+.aq-washer-zones__d { grid-column: 1 / -1; grid-row: 3; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-washer-zones__arrow { position: absolute; right: var(--space-4); bottom: var(--space-4); width: var(--space-8); height: var(--space-4); }
+.aq-washer-zones__arrow::before { content: ""; position: absolute; left: 0; right: 1px; top: 50%; height: 1.5px; background: currentColor; transform: scaleX(0.4); transform-origin: 100% 50%;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__arrow::after { content: ""; position: absolute; right: 1px; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor; transform: translateY(-50%) rotate(45deg); }
+a.aq-washer-zones__in:hover .aq-washer-zones__arrow::before, a.aq-washer-zones__in:focus-visible .aq-washer-zones__arrow::before { transform: scaleX(1); }
+a.aq-washer-zones__in:hover .aq-washer-zones__t { color: var(--flow); }
+a.aq-washer-zones__in:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+.aq-washer-zones__dots { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-washer-zones__rows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Phones: the drawing as a strip that frames the zone of the card in view (camera, look JS); the rows a swipe rail of
+   cards, one zone per card, the next card peeking; numbered dots under the rail jump between cards (AQsnap). */
+@container (max-width: 860px) {
+  .aq-washer-zones { margin-top: var(--space-4); }
+  .aq-washer-zones__fig { --wz-phone: 1; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .aq-washer-zones__cam { transform: translate(var(--zx, 0px), var(--zy, 0px)) scale(var(--zs, 1)); transition: transform 550ms cubic-bezier(0.22, 0.75, 0.22, 1); }
+  .aq-washer-zones__cam { width: 100%; }
+  .aq-washer-zones__tag { transform: translate(-100%, 0) scale(calc(1 / var(--zs, 1))); }
+  .aq-washer-zones__tag--bl { transform: translate(0, -100%) scale(calc(1 / var(--zs, 1))); }
+  .aq-washer-zones__rows { display: flex; gap: var(--space-3); margin-top: var(--space-4); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scrollbar-width: none; }
+  .aq-washer-zones__rows::-webkit-scrollbar { display: none; }
+  .aq-washer-zones__row { flex: 0 0 min(84%, 340px); scroll-snap-align: start; }
+  .aq-washer-zones__in { padding: var(--space-4) var(--space-4) calc(var(--space-8) + var(--space-2)); }
+  .aq-washer-zones__no { font-size: 28px; line-height: 32px; }
+  .aq-washer-zones__t { font-size: 18px; line-height: 24px; margin-top: var(--space-1); }
+  .aq-washer-zones__d { font-size: 15px; line-height: 22px; }
+  .aq-washer-zones__dots { display: flex; justify-content: center; gap: var(--space-1); margin-top: var(--space-2); }
+  .aq-washer-zones__dot { min-width: var(--aq-hit); height: var(--aq-hit); padding: 0; border: 0; background: none; color: var(--ink-muted); cursor: pointer;
+    display: grid; place-items: center; font: 500 12px/16px var(--font-mono); }
+  .aq-washer-zones__dot span { display: block; padding: 2px var(--space-2); border: 1px solid currentColor; }
+  .aq-washer-zones__dot[aria-current="true"] { color: var(--on-navy); }
+  .aq-washer-zones__dot[aria-current="true"] span { background: var(--navy); border-color: var(--navy); }
+  .aq-washer-zones__dot:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-washer-zones__cam, .aq-washer-zones__z, .aq-washer-zones__frame, .aq-washer-zones__tag, .aq-washer-zones__row, .aq-washer-zones__row::before { transition: none; }
 }
 
 /* ---------- WaterPath: the system families on one pipe, feed to point of use ----------

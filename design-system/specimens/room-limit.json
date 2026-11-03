@@ -1,0 +1,107 @@
+{
+ "look": "room-limit",
+ "component": "RoomLimit",
+ "type": "spec",
+ "fields": "h, intro, cols ([item, what it takes, note]: read by screen readers), rows [{p, v, m, side, link, link_label, part}] (side \"limit\" | \"package\" | \"site\", default site), sides [package label, site label] (named on the floor inside and outside the line, desktop). seam and fold are not read. part (look-only): where the row sits on the drawing, one of line, package, panel, water, drain, power, door, floor, use; without one the row's words choose (\"drain\", \"power\", \"door\"/\"way in\", \"water\", \"floor\"/\"landlord\", \"washer\"/\"bench\"/\"lab\", \"training\"/\"operator\" -> panel), else no point.",
+ "best_for": "RoomLimit sets what a site provides for a Purified Water package as the room the package goes in: an isometric cutaway of the room with the package on its base frame, a dash-and-dot battery-limit line on the floor round it, and every connection the site provides as a tie-in where its run crosses the line, numbered to the rows beside the drawing.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "first-system",
+   "slot": 2,
+   "h": "What your site needs",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "281a059",
+   "hash": "7161878814",
+   "block": {
+    "type": "spec",
+    "look": "room-limit",
+    "nav": "Your site",
+    "anchor": "site",
+    "h": "What your site needs",
+    "intro": "On your side: a water supply, a drain, power, floor space and a way in.",
+    "cols": [
+     "Item",
+     "What it takes",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Where our scope stops",
+      "v": "[standard battery limits, typical scope]; [installation scope]",
+      "m": "Listed in the proposal: who supplies, installs and connects each item",
+      "side": "limit",
+      "link": "systems#site",
+      "link_label": "Site details",
+      "part": "line"
+     },
+     {
+      "p": "The package",
+      "v": "[typical footprint and weight, by capacity]",
+      "m": "Plus service clearance",
+      "side": "package",
+      "part": "package"
+     },
+     {
+      "p": "Training",
+      "v": "[training hours and audiences]",
+      "m": "For your daily operators",
+      "link": "svc-cq#faq",
+      "link_label": "Training",
+      "side": "package",
+      "part": "panel"
+     },
+     {
+      "p": "Water supply",
+      "v": "City or well water, with its latest report",
+      "m": "The report sets the pretreatment",
+      "side": "site",
+      "part": "water"
+     },
+     {
+      "p": "Drain",
+      "v": "[feed and drain flows, L/h]",
+      "m": "Reverse osmosis sends part of the feed to drain",
+      "side": "site",
+      "part": "drain"
+     },
+     {
+      "p": "Power",
+      "v": "[supply voltage options]",
+      "m": "To the control panel; the proposal says who brings it",
+      "side": "site",
+      "part": "power"
+     },
+     {
+      "p": "Way in",
+      "v": "Doors and route at least [minimum door and access width, m]",
+      "m": "Measure the narrowest door on the route",
+      "side": "site",
+      "part": "door"
+     },
+     {
+      "p": "Leased units",
+      "v": "Ask your landlord: drain, floor load, wall openings",
+      "m": "Before you order",
+      "side": "site",
+      "part": "floor"
+     },
+     {
+      "p": "Device washers and labs",
+      "v": "Drawn at the washer or bench, often in a clean room",
+      "m": "Plan the pipe and sample point there",
+      "side": "site",
+      "part": "use"
+     }
+    ],
+    "sides": [
+     "The package brings",
+     "Your site provides"
+    ],
+    "seam": "Where our scope stops"
+   }
+  }
+ ]
+}

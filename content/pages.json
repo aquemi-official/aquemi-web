@@ -198,7 +198,7 @@
       }
      ],
      "ground": "light",
-     "look": "standard-tiles"
+     "look": "industry-drops"
     },
     {
      "type": "steps",
@@ -360,7 +360,15 @@
    "primary_cta": "Get a budget range",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
-   "index": true,
+   "index": [
+    "sys-pretreatment",
+    "sys-pw",
+    "sys-storage",
+    "sys-monitoring"
+   ],
+   "figure": {
+    "look": "module-lineup"
+   },
    "blocks": [
     {
      "type": "diagram",
@@ -503,7 +511,7 @@
      ],
      "nav": "Site",
      "anchor": "site",
-     "look": "terms-sheet"
+     "look": "limit-plan"
     },
     {
      "type": "table",
@@ -831,7 +839,8 @@
        "at": [
         14.7,
         51.5
-       ]
+       ],
+       "part": "membranes"
       },
       {
        "p": "Battery limits and utilities",
@@ -839,7 +848,8 @@
        "m": "Electrical: [panel certification mark held, or field evaluation used]",
        "hl": false,
        "link": "systems#site",
-       "link_label": "Site requirements"
+       "link_label": "Site requirements",
+       "part": "utilities"
       },
       {
        "p": "Membrane design temperature",
@@ -849,7 +859,8 @@
        "at": [
         57.0,
         12.0
-       ]
+       ],
+       "part": "exchanger"
       },
       {
        "p": "Sanitization",
@@ -859,7 +870,8 @@
        "at": [
         74.8,
         29.7
-       ]
+       ],
+       "part": "edi"
       },
       {
        "p": "Materials and dead legs",
@@ -869,7 +881,8 @@
        "at": [
         23.3,
         69.2
-       ]
+       ],
+       "part": "piping"
       },
       {
        "p": "Joints, product contact",
@@ -879,34 +892,39 @@
        "at": [
         62.8,
         68.6
-       ]
+       ],
+       "part": "joints"
       },
       {
        "p": "Budget range",
        "v": "[budget range, CAD] at [reference capacity, L/h]",
        "m": "Single-pass RO and EDI, city feed",
        "hl": false,
-       "link": "systems#budget"
+       "link": "systems#budget",
+       "part": "frame"
       },
       {
        "p": "High-pressure RO section",
        "v": "[RO high-pressure section material and pressure class]",
        "m": "Rated for the highest feed pressure at the coldest feed",
-       "hl": false
+       "hl": false,
+       "part": "pump"
       },
       {
        "p": "System recovery",
        "v": "[design recovery, %]",
        "m": "Concentrate recycled where feed chemistry allows",
        "hl": false,
-       "link": "svc-service#running-cost"
+       "link": "svc-service#running-cost",
+       "part": "drain"
       },
       {
        "p": "Instruments and controls",
        "v": "Conductivity and temperature after each stage; [online TOC at the outlet, standard or option]",
        "m": "Water out of specification diverts at a setpoint below your alert level",
        "hl": false,
-       "link": "sys-monitoring"
+       "link": "sys-monitoring",
+       "part": "panel"
       }
      ],
      "nav": "Skid design",
@@ -915,7 +933,7 @@
      "as": "callouts",
      "ground": "light",
      "fold_noun": "parameters",
-     "look": "param-tiles"
+     "look": "skid-sheet"
     },
     {
      "type": "docs",
@@ -982,36 +1000,41 @@
       {
        "t": "Membrane degasser",
        "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high. Adds: its datasheet, a P&ID line and a FAT check.",
-       "spot": "ro-membrane"
+       "spot": "ro-membrane",
+       "part": "degasser"
       },
       {
        "t": "Duplex trains",
        "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
-       "spot": "ro-skid"
+       "spot": "ro-skid",
+       "part": "duplex"
       },
       {
        "t": "Recirculation at no demand",
        "d": "Circulates when storage is full, so water does not stand in the membranes. Adds: a control sequence, tested at FAT.",
        "spot": "loop",
-       "shape": "round"
+       "shape": "round",
+       "part": "recirc"
       },
       {
        "t": "Ultrafiltration or 254 nm UV",
        "d": "After DI or EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize. Adds: a P&ID line, FAT check.",
        "spot": "uv-ozone",
-       "shape": "tag"
+       "shape": "tag",
+       "part": "polish"
       },
       {
        "t": "Recovery enhancement",
        "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter. Adds: revised membrane projections and a FAT check.",
        "spot": "pump",
-       "shape": "tag"
+       "shape": "tag",
+       "part": "recovery"
       }
      ],
      "nav": "Options",
      "fold": 3,
      "spot": "ro-skid",
-     "look": "option-tags",
+     "look": "ghost-skid",
      "intro": "Each tag names what the option adds on paper. Your proposal marks it included or priced, with its lead time effect.",
      "anchor": "options"
     },
@@ -1347,60 +1370,70 @@
       {
        "p": "Tank volume",
        "v": "[tank volume range, L]",
-       "m": "Sized from your demand profile"
+       "m": "Sized from your demand profile",
+       "part": "volume"
       },
       {
        "p": "Product contact",
        "v": "Unpigmented PP, [PP grade]",
-       "m": "[PP material certificates]"
+       "m": "[PP material certificates]",
+       "part": "contact"
       },
       {
        "p": "Internal surface",
        "v": "[PP internal surface specification, Ra µm]",
-       "m": "[basis for the PP surface specification]"
+       "m": "[basis for the PP surface specification]",
+       "part": "surface"
       },
       {
        "p": "Joints",
        "v": "[PP joining method]; [PP joint records kept]",
-       "m": "[welder qualification standard for thermoplastics]"
+       "m": "[welder qualification standard for thermoplastics]",
+       "part": "joint"
       },
       {
        "p": "Budget",
        "v": "[budget range, CAD] for [reference tank volume L, points of use]",
        "m": "Before tax, as of [month year]",
-       "link": "systems#budget"
+       "link": "systems#budget",
+       "part": "budget"
       },
       {
        "p": "Tank design",
        "v": "[PP tank design: atmospheric or pressure-rated]",
-       "m": "[PP tank design standard]"
+       "m": "[PP tank design standard]",
+       "part": "design"
       },
       {
        "p": "Cleaning before first use",
        "v": "[pre-commissioning flush and cleaning procedure for PP]",
-       "m": "PW rinse to conductivity and TOC limits"
+       "m": "PW rinse to conductivity and TOC limits",
+       "part": "flush"
       },
       {
        "p": "Heat exchangers",
        "v": "Double tube sheet [heat exchanger, standard or option]",
-       "m": "FDA high-purity water guide (1993)"
+       "m": "FDA high-purity water guide (1993)",
+       "part": "hx"
       },
       {
        "p": "Pumps",
        "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
-       "m": "Sized for the worst-case outlet combination"
+       "m": "Sized for the worst-case outlet combination",
+       "part": "pump"
       },
       {
        "p": "Spray ball",
        "v": "Wets head space and walls continuously",
-       "m": "WHO TRS 1033, 9.2; [spray coverage test method]"
+       "m": "WHO TRS 1033, 9.2; [spray coverage test method]",
+       "part": "spray"
       }
      ],
      "nav": "Fabrication",
      "fold": 5,
      "fold_noun": "parameters",
      "as": "callouts",
-     "look": "tank-tiles",
+     "look": "tank-ga",
      "anchor": "tank"
     },
     {
@@ -2469,6 +2502,9 @@
     "link": "svc-service"
    },
    "index": true,
+   "figure": {
+    "look": "service-ring"
+   },
    "blocks": [
     {
      "type": "table",
@@ -6210,6 +6246,17 @@
     "label": "Which water your product needs",
     "link": "#grade"
    },
+   "figure": {
+    "look": "site-room",
+    "from": "site",
+    "keys": [
+     "The package",
+     "Water supply",
+     "Drain",
+     "Power",
+     "Way in"
+    ]
+   },
    "blocks": [
     {
      "type": "table",
@@ -6320,7 +6367,7 @@
     },
     {
      "type": "spec",
-     "look": "battery-limit",
+     "look": "room-limit",
      "nav": "Your site",
      "anchor": "site",
      "h": "What your site needs",
@@ -6337,13 +6384,15 @@
        "m": "Listed in the proposal: who supplies, installs and connects each item",
        "side": "limit",
        "link": "systems#site",
-       "link_label": "Site details"
+       "link_label": "Site details",
+       "part": "line"
       },
       {
        "p": "The package",
        "v": "[typical footprint and weight, by capacity]",
        "m": "Plus service clearance",
-       "side": "package"
+       "side": "package",
+       "part": "package"
       },
       {
        "p": "Training",
@@ -6351,43 +6400,50 @@
        "m": "For your daily operators",
        "link": "svc-cq#faq",
        "link_label": "Training",
-       "side": "package"
+       "side": "package",
+       "part": "panel"
       },
       {
        "p": "Water supply",
        "v": "City or well water, with its latest report",
        "m": "The report sets the pretreatment",
-       "side": "site"
+       "side": "site",
+       "part": "water"
       },
       {
        "p": "Drain",
        "v": "[feed and drain flows, L/h]",
        "m": "Reverse osmosis sends part of the feed to drain",
-       "side": "site"
+       "side": "site",
+       "part": "drain"
       },
       {
        "p": "Power",
        "v": "[supply voltage options]",
        "m": "To the control panel; the proposal says who brings it",
-       "side": "site"
+       "side": "site",
+       "part": "power"
       },
       {
        "p": "Way in",
        "v": "Doors and route at least [minimum door and access width, m]",
        "m": "Measure the narrowest door on the route",
-       "side": "site"
+       "side": "site",
+       "part": "door"
       },
       {
        "p": "Leased units",
        "v": "Ask your landlord: drain, floor load, wall openings",
        "m": "Before you order",
-       "side": "site"
+       "side": "site",
+       "part": "floor"
       },
       {
        "p": "Device washers and labs",
        "v": "Drawn at the washer or bench, often in a clean room",
        "m": "Plan the pipe and sample point there",
-       "side": "site"
+       "side": "site",
+       "part": "use"
       }
      ],
      "sides": [
@@ -7451,7 +7507,7 @@
        "link": "svc-upgrades"
       }
      ],
-     "look": "standard-tiles"
+     "look": "washer-zones"
     },
     {
      "type": "table",
@@ -8923,7 +8979,7 @@
      ],
      "fold_noun": "limits",
      "ground": "light",
-     "look": "limit-drawer"
+     "look": "limit-folders"
     },
     {
      "type": "table",
@@ -8971,7 +9027,7 @@
      ],
      "fold": 4,
      "fold_noun": "plants",
-     "look": "site-plates"
+     "look": "scene-plates"
     },
     {
      "type": "table",
@@ -10705,10 +10761,15 @@
        "d": "Central loop designed to ASTM D1193-24 Type II or III. [reference capacity, L/h]. [configurations offered for this use]; [PP loop sanitization method]. Commissioning and acceptance.",
        "icon": "conductivity",
        "tag": "Design basis",
-       "link": "ind-hospital-lab"
+       "link": "ind-hospital-lab",
+       "spec_labels": [
+        "Grade",
+        "System",
+        "Checks"
+       ]
       }
      ],
-     "look": "standard-tiles"
+     "look": "config-cards"
     },
     {
      "type": "table",
@@ -10973,12 +11034,14 @@
    ],
    "hero_index": false,
    "figure": {
-    "spots": [
-     "ro-skid",
-     "edi-stack",
-     "storage-tank"
-    ],
-    "label": "Figure · method · report"
+    "look": "use-fan",
+    "uses": [
+     "ind-pharma",
+     "ind-meddevice",
+     "ind-hospital-lab",
+     "ind-personal-care",
+     "ind-process"
+    ]
    },
    "secondary_cta": {
     "label": "See sample documents",

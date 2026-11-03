@@ -4,13 +4,13 @@
  "type": "table",
  "fields": "cols [who writes the limit, what it sets, what to send, where it applies], rows (cells strings or {t, link}). The tab is the writer up to its first number (ASTM D1193-24), else its first word.",
  "best_for": "LimitDrawer shows who writes each limit and what to send them as a file drawer: one manila folder per limit-writer, its tab at its own cut position so no tab hides another, what the limit sets on the folder, a clipped white slip listing what to send, and a navy index label naming where it applies.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-process",
    "slot": 1,
    "h": "Who writes your limit, and what to send",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "f6841a4",

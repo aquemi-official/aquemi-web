@@ -1,0 +1,108 @@
+/* ---------- LimitFolders: who writes your limit, and what to send, as one open file drawer ---------- */
+/* Every limit-writer's folder stands in the drawer side by side (all in one row from 1,100 px, three to a row below).
+   A folder is a back leaf (a shade deeper) carrying its tab, and a front leaf set a step lower, so the back's top edge
+   shows above it, as in a real drawer. Tabs step left, middle, right (data-cut 0, 1, 2; never a [style*=] match, as GSAP rewrites the inline style). The slip is raised paper with a
+   hairline edge and a clip; the index label is navy. The drawer's walls and front rail with its pull close the set.
+   No shadows. */
+.aq-limit-folders { --tab: 30px; --step: var(--space-3); --leaf: color-mix(in srgb, var(--limestone) 82%, var(--on-limestone)); position: relative; }
+.aq-limit-folders__drawer { overflow: hidden; padding: var(--space-6) var(--space-4) 0; border: 2px solid var(--line-strong); border-bottom: 0;
+  background: color-mix(in srgb, var(--limestone) 35%, var(--surface)); }
+.aq-limit-folders__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); column-gap: var(--space-2); align-items: stretch; }
+.aq-limit-folders__f { position: relative; display: flex; flex-direction: column; min-width: 0; padding-top: var(--tab, 30px); }
+/* the back leaf, under the tab */
+.aq-limit-folders__f::before { content: ""; position: absolute; left: 0; right: 0; top: var(--tab, 30px); bottom: 0; background: var(--leaf, var(--limestone));
+  border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.aq-limit-folders__f[data-cut="0"]::before { border-top-left-radius: 0; }
+.aq-limit-folders__f[data-cut="2"]::before { border-top-right-radius: 0; }
+.aq-limit-folders__tab { position: absolute; top: 0; left: calc(var(--cut, 0) * 22%); min-width: 56%; max-width: calc(100% - var(--cut, 0) * 22%); height: calc(var(--tab, 30px) + 1px); box-sizing: border-box;
+  display: flex; align-items: center; gap: var(--space-2); padding: 0 var(--space-3); overflow: hidden; white-space: nowrap;
+  background: var(--leaf, var(--limestone)); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone); z-index: 1; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-limit-folders__f[data-cut="2"] .aq-limit-folders__tab { left: auto; right: 0; max-width: 100%; }
+.aq-limit-folders__tn { color: var(--on-limestone-muted); font-variant-numeric: tabular-nums; }
+.aq-limit-folders__tc { overflow: hidden; text-overflow: ellipsis; }
+.aq-limit-folders__tw { display: none; }
+/* the front leaf: a step lower than the back, down to the drawer floor */
+.aq-limit-folders__front { position: relative; z-index: 2; flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--step, 12px);
+  padding: var(--space-4) var(--space-4) var(--space-4); background: var(--limestone); color: var(--on-limestone);
+  border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.aq-limit-folders__more { display: contents; }
+.aq-limit-folders__who { order: 0; margin: 0 0 var(--space-1); font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); text-wrap: balance; }
+.aq-limit-folders__nb { white-space: nowrap; }
+.aq-limit-folders__k, .aq-limit-folders__sk { margin: 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-limit-folders__k { order: 1; }
+.aq-limit-folders__sets { order: 1; margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-limestone); overflow-wrap: break-word; }
+/* the slip, clipped to the front leaf */
+.aq-limit-folders__slip { order: 2; position: relative; margin: var(--space-3) 0 var(--space-4); padding: var(--space-4) var(--space-3) var(--space-3); background: var(--surface-raised); color: var(--ink);
+  border: 1px solid var(--line); transform: rotate(-0.8deg); transform-origin: 30% 0; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-limit-folders__f:nth-child(even) .aq-limit-folders__slip { transform: rotate(0.6deg); }
+.aq-limit-folders__clip { position: absolute; top: calc(-1 * var(--space-3)); left: var(--space-4); width: var(--space-3); height: var(--space-6); box-sizing: border-box;
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--surface-raised) 60%, transparent); }
+.aq-limit-folders__sk { color: var(--flow); margin-bottom: var(--space-1); }
+.aq-limit-folders__send { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.aq-limit-folders__send li { position: relative; padding-left: var(--space-3); font: 400 14px/21px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-limit-folders__send li::before { content: ""; position: absolute; left: 0; top: 10px; width: var(--space-2); height: 1px; background: var(--flow); }
+/* the navy index label at the foot */
+.aq-limit-folders__label { order: 3; position: relative; margin: auto 0 0; display: flex; flex-direction: column; gap: 2px; min-height: 48px; box-sizing: border-box; padding: var(--space-2) var(--space-6) var(--space-2) var(--space-3);
+  background: var(--navy); color: var(--on-navy); text-decoration: none; font: 500 14px/19px var(--font-sans); border-radius: var(--radius-sm); }
+.aq-limit-folders__lk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+a.aq-limit-folders__label::after { content: "\2192"; position: absolute; right: var(--space-2); bottom: var(--space-2); color: var(--flow-tint); transition: transform 200ms; }
+a.aq-limit-folders__label:hover::after { transform: translateX(var(--space-1)); }
+a.aq-limit-folders__label:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* pointing at a folder lifts it out of the drawer a little, tab first, and draws its slip a step out */
+.aq-limit-folders__f:hover .aq-limit-folders__tab, .aq-limit-folders__f:focus-within .aq-limit-folders__tab { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-limit-folders__f:hover .aq-limit-folders__slip, .aq-limit-folders__f:focus-within .aq-limit-folders__slip { transform: rotate(0deg) translateY(calc(-1 * var(--space-1))); }
+/* the drawer's front rail and pull */
+.aq-limit-folders__rail { position: relative; height: var(--space-8); border: 2px solid var(--line-strong); background: color-mix(in srgb, var(--limestone) 60%, var(--surface)); }
+.aq-limit-folders__pull { position: absolute; left: 50%; top: 50%; width: var(--space-24); height: var(--space-3); margin: calc(var(--space-3) / -2) 0 0 calc(var(--space-24) / -2);
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface); box-sizing: border-box; }
+
+/* below 1,100 px: three to a row, each row standing on its own drawer floor line */
+@container (max-width: 1100px) {
+  .aq-limit-folders__list { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: var(--space-6); }
+  .aq-limit-folders__front { border-bottom: 1px solid var(--line-strong); border-radius: var(--radius-sm); }
+  .aq-limit-folders__f::before { bottom: 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-limit-folders__who { font-size: 18px; line-height: 24px; }
+}
+
+/* Phones and tablets: one folder per row, every slip on show. The tab names where it applies; with PhoneKit on, the
+   writer is a 48 px head that opens what the limit sets and the navy label link (none open at first). Without script
+   every folder stays open. */
+@container (max-width: 860px) {
+  .aq-limit-folders { --tab: 24px; --step: 6px; }
+  .aq-limit-folders__drawer { padding: var(--space-3) var(--space-2) var(--space-2); border-width: 1.5px; margin-inline: calc(-1 * var(--space-2)); }
+  .aq-limit-folders__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); }
+  .aq-limit-folders__tab { min-width: 0; max-width: 78%; padding: 0 var(--space-2); font-size: 12px; }
+  .aq-limit-folders__f[data-cut] .aq-limit-folders__tab { max-width: 78%; }
+  .aq-limit-folders__f[data-cut="1"] .aq-limit-folders__tab { left: 50%; transform: translateX(-50%); }
+  .aq-limit-folders__f[data-cut="1"]:hover .aq-limit-folders__tab, .aq-limit-folders__f[data-cut="1"]:focus-within .aq-limit-folders__tab { transform: translateX(-50%); }
+  .aq-limit-folders__tc { display: none; }
+  .aq-limit-folders__tw { display: block; overflow: hidden; text-overflow: ellipsis; }
+  .aq-limit-folders__front { gap: var(--space-1); padding: var(--space-3) var(--space-3) var(--space-3); }
+  .aq-limit-folders__who { font-size: 17px; line-height: 23px; }
+  .aq-limit-folders__head { order: 0; }
+  .aq-limit-folders__slip, .aq-limit-folders__f:nth-child(even) .aq-limit-folders__slip { order: 1; transform: none; margin: var(--space-2) 0 var(--space-1); padding: var(--space-3) var(--space-3) var(--space-2); }
+  .aq-limit-folders__clip { left: auto; right: var(--space-4); }
+  .aq-limit-folders__k, .aq-limit-folders__sets, .aq-limit-folders__label { order: 2; }
+  .aq-limit-folders__k { margin-top: var(--space-2); }
+  .aq-limit-folders__label { margin-top: var(--space-2); flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: var(--space-2); }
+  .aq-limit-folders__lk { flex-basis: 100%; }
+  a.aq-limit-folders__label::after { bottom: 50%; transform: translateY(50%); }
+  a.aq-limit-folders__label:hover::after { transform: translate(var(--space-1), 50%); }
+  .aq-limit-folders__rail { height: var(--space-6); border-width: 1.5px; margin-inline: calc(-1 * var(--space-2)); }
+  .aq-limit-folders__pull { width: var(--space-16); height: var(--space-2); margin: calc(var(--space-2) / -2) 0 0 calc(var(--space-16) / -2); }
+  /* the accordion: a closed folder is its tab, its 48 px head and its slip */
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__front { padding-top: 0; }
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__head { min-height: 48px; padding-block: 2px; font: 400 17px/22px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+  .aq-limit-folders__ht { flex: 1 1 auto; min-width: 0; }
+  .aq-limit-folders__head .aq-phone-kit__chev { margin-right: calc(-1 * var(--space-3)); }
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__slip { margin-top: var(--space-1); }
+  /* column heads once (S12): the slip's "what to send" kicker shows on the first folder only; the others keep it for
+     screen readers */
+  .aq-limit-folders__f + .aq-limit-folders__f .aq-limit-folders__sk { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-limit-folders__f + .aq-limit-folders__f .aq-limit-folders__slip { padding-top: var(--space-3); }
+  .aq-limit-folders__send { gap: 2px; }
+  .aq-limit-folders__list[data-pk-on] { row-gap: var(--space-2); }
+  .aq-limit-folders__list[data-pk-on] .aq-limit-folders__front { padding-bottom: var(--space-2); }
+  .aq-limit-folders__list[data-pk-on] .is-pk-open .aq-limit-folders__front { padding-bottom: var(--space-3); }
+}

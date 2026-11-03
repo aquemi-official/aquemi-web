@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption (eyebrow), intro, rows [{p, v, m, link, link_label}], fold, fold_noun.",
  "best_for": "TankTiles sets a spec block's parameters on a Swiss checkerboard of square navy and limestone tiles, each led by a huge light slash numeral, with one steel-blue blueprint tile of the storage tank as the anchor.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-storage",
@@ -88,7 +88,7 @@
    "page": "sys-storage",
    "slot": 3,
    "h": "Tank and pipework",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",

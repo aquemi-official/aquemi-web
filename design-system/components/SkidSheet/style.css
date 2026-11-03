@@ -1,0 +1,96 @@
+/* ---------- SkidSheet: a skid's design parameters on its GA sheet (look "skid-sheet") ----------
+   Desktop: the framed drawing sheet (double rule, title block) holds sticky at the left while the numbered parameter
+   rows run down the right on hairlines. Each tag on the drawing carries its row's number; a pointed or focused row
+   turns its tag, leader and part flow and a ring settles on its tag (motion.js glides it). Tablets (601-860 px): the
+   full sheet stacked above the rows. Phones (<= 600 px): PhoneKit's sticky
+   strip (no frame, numbered dots), then the rows as a two-column key and value list, the basis behind a 44 px button. */
+.aq-skid-sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+.aq-skid-sheet__fig { position: sticky; top: var(--space-24); margin: 0; min-width: 0; }
+.aq-skid-sheet__sheet { position: relative; padding: var(--space-8) var(--space-6) var(--space-16); border: 1px solid var(--line-strong); outline: 1px solid var(--line); outline-offset: var(--space-2); background: var(--surface); margin: var(--space-2); }
+.aq-skid-sheet__art { position: relative; width: 100%; }
+.aq-skid-sheet__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-skid-sheet__svg .aq-iso__leader-line { stroke: var(--ink-muted); }
+.aq-skid-sheet__svg .aq-iso__leader-dot { fill: var(--ink-muted); }
+.aq-skid-sheet__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-skid-sheet__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
+.aq-skid-sheet__svg .aq-iso__pipe.is-lit .aq-iso__pipe-wall, .aq-skid-sheet__svg .aq-iso__part.is-lit .aq-iso__eq, .aq-skid-sheet__svg .aq-skid-sheet__seams.is-lit .aq-iso__thin { stroke: var(--flow); }
+.aq-skid-sheet__svg .aq-skid-sheet__seams .aq-iso__thin { stroke-width: 1.2; }
+
+/* tags at the leader ends (desktop) and dots on the parts (phones) */
+.aq-skid-sheet__tag, .aq-skid-sheet__dot {
+  position: absolute; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1);
+  transform: translate(0, -50%); border: 1px solid var(--line-strong); background: var(--surface); font: 400 12px/1 var(--font-mono); color: var(--ink);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease; cursor: default;
+}
+.aq-skid-sheet__tag.is-left { transform: translate(-100%, -50%); }
+.aq-skid-sheet__tag.is-on, .aq-skid-sheet__dot.is-on { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.aq-skid-sheet__dot { display: none; transform: translate(-50%, -50%); }
+/* the ring that settles on the chosen tag (ported from Subframe Motion "Inside the image", atlas-hotspots, MIT) */
+.aq-skid-sheet__ring { position: absolute; left: 0; top: 0; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
+  border: 1px solid var(--flow); border-radius: 50%; opacity: 0; scale: 0; pointer-events: none; transition: left 250ms cubic-bezier(0.2, 0.8, 0.2, 1), top 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms ease, scale 180ms ease; }
+.aq-skid-sheet__ring.is-on { opacity: 1; scale: 1; }
+/* the ring sits on the tag's centre: tags hang right of their point (left ones to its left) */
+.aq-skid-sheet__ring { translate: var(--space-4) 0; }
+.aq-skid-sheet__ring.is-left { translate: calc(-1 * var(--space-4)) 0; }
+
+/* title block: the bottom-right corner of the sheet */
+.aq-skid-sheet__block { position: absolute; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, auto); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong); }
+.aq-skid-sheet__block > span { padding: var(--space-2) var(--space-3); font: 400 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-skid-sheet__block > span + span { border-left: 1px solid var(--line); }
+
+/* the rows: number, parameter, value in mono, basis and link under a hairline */
+.aq-skid-sheet__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-skid-sheet__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 160ms ease; }
+.aq-skid-sheet__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-skid-sheet__row.is-on { background: var(--flow-tint); }
+.aq-skid-sheet__n { grid-row: 1 / span 3; padding-left: var(--space-3); font: 400 13px/24px var(--font-mono); color: var(--ink-muted); }
+.aq-skid-sheet__row.is-on .aq-skid-sheet__n { color: var(--flow); }
+.aq-skid-sheet__p { grid-column: 2; margin: 0; font: 500 17px/24px var(--font-sans); color: var(--ink); }
+.aq-skid-sheet__v { grid-column: 2; margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-skid-sheet__m { grid-column: 2; margin-top: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-skid-sheet__m p { margin: 0; }
+.aq-skid-sheet__link { display: inline-block; margin-top: var(--space-1); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.aq-skid-sheet__link::after { content: " \2192"; }
+.aq-skid-sheet__link:hover { text-decoration: underline; }
+.aq-skid-sheet__wb, .aq-skid-sheet__pn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-skid-sheet { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); }
+}
+
+/* tablets (601-860 px): the full sheet with its tags and leaders, stacked above the rows */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-skid-sheet { display: block; }
+  .aq-skid-sheet__fig { position: static; margin-bottom: var(--space-6); }
+}
+
+@container (max-width: 600px) {
+  .aq-skid-sheet { display: block; }
+  .aq-skid-sheet__fig { position: static; margin: 0 0 var(--space-4); }
+  .aq-skid-sheet__sheet { padding: 0; border: 0; outline: 0; margin: 0; background: none; }
+  .aq-skid-sheet__block, .aq-skid-sheet__tag, .aq-skid-sheet__svg .aq-skid-sheet__ld { display: none; }
+  .aq-skid-sheet__dot { display: grid; min-width: var(--space-6); height: var(--space-6); padding: 0; border-radius: 50%; }
+  .aq-skid-sheet__dot.is-pk-active { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+  .aq-skid-sheet__ring, .aq-skid-sheet__ring.is-left { translate: none; width: var(--space-8); height: var(--space-8); margin: calc(-1 * var(--space-4)) 0 0 calc(-1 * var(--space-4)); }
+  /* PhoneKit strip: the drawing runs full width and pans to the dot of the row on the reading line */
+  .aq-skid-sheet[data-pk-on] .aq-skid-sheet__fig { background: var(--surface); }
+  /* the rows: two columns, number, parameter and the Basis button | the value; basis and link open under the row */
+  .aq-skid-sheet__rows { border-top-color: var(--line-strong); }
+  .aq-skid-sheet__row { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); grid-template-rows: auto 1fr auto auto; column-gap: var(--space-4); padding: var(--space-3) 0 var(--space-2); }
+  .aq-skid-sheet__n { display: none; }
+  .aq-skid-sheet__pn { display: inline; margin-right: var(--space-2); font: 400 13px/21px var(--font-mono); color: var(--ink-muted); }
+  .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__pn { color: var(--flow); }
+  .aq-skid-sheet__p { grid-row: 1 / span 2; grid-column: 1; font-size: 15px; line-height: 21px; }
+  .aq-skid-sheet__v { grid-row: 1 / span 3; grid-column: 2; margin: 0; padding-top: var(--space-1); font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-skid-sheet__wb { display: inline-flex; grid-row: 3; grid-column: 1; justify-self: start; align-self: end; align-items: center; min-height: var(--aq-hit); margin: 0; padding: 0; border: 0; background: none;
+    color: var(--flow); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; cursor: pointer; }
+  .aq-skid-sheet__wb .aq-phone-kit__chev { width: var(--space-8); height: var(--aq-hit); }
+  .aq-skid-sheet__m { display: none; grid-row: 4; grid-column: 1 / -1; margin: 0 0 var(--space-2); font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-skid-sheet__row.is-open .aq-skid-sheet__m { display: block; }
+  .aq-skid-sheet__link { min-height: var(--aq-hit); display: inline-flex; align-items: center; margin: 0; }
+  .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__n { color: var(--flow); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-skid-sheet__ring, .aq-skid-sheet__tag, .aq-skid-sheet__dot, .aq-skid-sheet__row { transition: none; }
+}

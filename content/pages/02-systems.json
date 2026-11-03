@@ -11,7 +11,15 @@
  "primary_cta": "Get a budget range",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
- "index": true,
+ "index": [
+  "sys-pretreatment",
+  "sys-pw",
+  "sys-storage",
+  "sys-monitoring"
+ ],
+ "figure": {
+  "look": "module-lineup"
+ },
  "blocks": [
   {
    "type": "diagram",
@@ -154,7 +162,7 @@
    ],
    "nav": "Site",
    "anchor": "site",
-   "look": "terms-sheet"
+   "look": "limit-plan"
   },
   {
    "type": "table",

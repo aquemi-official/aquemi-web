@@ -1,0 +1,77 @@
+{
+ "look": "config-cards",
+ "component": "ConfigCards",
+ "type": "grid",
+ "fields": "as grid: h, intro, items [{t, d, tag, link, icon}]. Look-only fields: item \"scene\" (osd | proof | washer | suites | batch | lab) picks the drawing, else it follows the link page (ind-pharma, ind-process, ind-meddevice, ind-cdmo, ind-personal-care, ind-hospital-lab); block \"spec_labels\" (default Use, System, Checks) labels the spec lines in order, and an item's own \"spec_labels\" overrides it for that card.",
+ "best_for": "ConfigCards sets typical configurations as design-basis cards: every card draws the same polypropylene (PP) package piped to the use it feeds, with the reference capacity, the design-basis tag and the configuration's spec lines under it.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "projects",
+   "slot": 0,
+   "h": "Typical configurations · design basis",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "281a059",
+   "hash": "6e79adee19",
+   "block": {
+    "type": "grid",
+    "nav": "Configurations",
+    "anchor": "configurations",
+    "h": "Typical configurations · design basis",
+    "intro": "Each card is sized to your demand for municipal feed, chlorinated or chloraminated, at its coldest temperature.",
+    "items": [
+     {
+      "t": "Oral solid dose site",
+      "d": "Granulation water and equipment final rinse. [reference capacity, L/h]. Pretreatment, reverse osmosis (RO), electrodeionization (EDI), tank and loop; [PP loop sanitization method]. Qualification (IQ/OQ/PQ).",
+      "icon": "ro-membrane",
+      "tag": "Design basis",
+      "link": "ind-pharma"
+     },
+     {
+      "t": "Spirits proofing and process rinse",
+      "d": "Proofing water and precision rinse, to the limit your process sets. [reference capacity, L/h]. [configurations offered for this use]. Commissioning and acceptance.",
+      "icon": "ro-membrane",
+      "tag": "Design basis",
+      "link": "ind-process"
+     },
+     {
+      "t": "Medical device final rinse",
+      "d": "Washer final rinse to your written endotoxin limit. [reference capacity, L/h]. Pretreatment, RO, EDI, tank and loop; [PP loop sanitization method]. IQ/OQ/PQ.",
+      "icon": "valve",
+      "tag": "Design basis",
+      "link": "ind-meddevice"
+     },
+     {
+      "t": "Contract manufacturing multi-product loop",
+      "d": "One loop feeding several suites and client programs. [reference capacity, L/h]. Pretreatment, RO, EDI, tank and loop; [PP loop sanitization method]. IQ/OQ/PQ.",
+      "icon": "conductivity",
+      "tag": "Design basis",
+      "link": "ind-cdmo"
+     },
+     {
+      "t": "Cosmetics batching and filler rinse",
+      "d": "Cream water phase, filler rinse. [reference capacity, L/h]. [configurations offered for this use]; [PP loop sanitization method]. Commissioning and acceptance; IQ/OQ/PQ for over-the-counter drugs.",
+      "icon": "loop",
+      "tag": "Design basis",
+      "link": "ind-personal-care"
+     },
+     {
+      "t": "Laboratory building central loop",
+      "d": "Central loop designed to ASTM D1193-24 Type II or III. [reference capacity, L/h]. [configurations offered for this use]; [PP loop sanitization method]. Commissioning and acceptance.",
+      "icon": "conductivity",
+      "tag": "Design basis",
+      "link": "ind-hospital-lab",
+      "spec_labels": [
+       "Grade",
+       "System",
+       "Checks"
+      ]
+     }
+    ],
+    "look": "config-cards"
+   }
+  }
+ ]
+}

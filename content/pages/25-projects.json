@@ -59,10 +59,15 @@
      "d": "Central loop designed to ASTM D1193-24 Type II or III. [reference capacity, L/h]. [configurations offered for this use]; [PP loop sanitization method]. Commissioning and acceptance.",
      "icon": "conductivity",
      "tag": "Design basis",
-     "link": "ind-hospital-lab"
+     "link": "ind-hospital-lab",
+     "spec_labels": [
+      "Grade",
+      "System",
+      "Checks"
+     ]
     }
    ],
-   "look": "standard-tiles"
+   "look": "config-cards"
   },
   {
    "type": "table",
@@ -327,12 +332,14 @@
  ],
  "hero_index": false,
  "figure": {
-  "spots": [
-   "ro-skid",
-   "edi-stack",
-   "storage-tank"
-  ],
-  "label": "Figure · method · report"
+  "look": "use-fan",
+  "uses": [
+   "ind-pharma",
+   "ind-meddevice",
+   "ind-hospital-lab",
+   "ind-personal-care",
+   "ind-process"
+  ]
  },
  "secondary_cta": {
   "label": "See sample documents",

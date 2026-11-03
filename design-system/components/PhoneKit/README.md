@@ -99,3 +99,7 @@ TieInRun and JointSteps (sticky figure).
 
 All looks that opt in after build round A (integrator, 2026-11-03; each look's README says which behaviour it uses):
 AuditSkid, BinderTabs, BudgetBento, CapaRing, CostBalance, CutawayRail, CutoverSchedule, DecisionValve, JointMacro, JointSteps, LimitDrawer, ManifoldRouter, MethodBento, MultiportRouter, PidRoutes, ProjectRun, ReaderSplit, RedlineSheet, RequestMenu, RevisionSheet, RoleLoop, RuleFigures, SignalDial, SitePlates, SpareSheet, StairRouter, StandardsOrbit, TermsSheet, TieInRun, UseMatrix, VersusSpread, WalkdownPins, WitnessPlan.
+
+Added in build round B (integrator, 2026-11-03): IndustryDrops (chips), LimitFolders (accordion), LimitPlan, ScenePlates,
+SkidSheet and TankGa (sticky figure). RoomLimit, WasherZones, GhostSkid, ConfigCards and HeroScene design their phone
+versions without PhoneKit (a two-column checklist, AQsnap rails and a full-width drawing); each README says why.

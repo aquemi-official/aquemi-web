@@ -1,0 +1,99 @@
+{
+ "look": "tank-ga",
+ "component": "TankGa",
+ "type": "spec",
+ "fields": "h, caption (eyebrow and title block), rows [{p, v, m, link, link_label}], anchor, nav.",
+ "best_for": "TankGa reads a spec block of fabrication parameters off one general arrangement (GA) sheet: an isometric line drawing of the PP storage set with a numbered tag on a leader for each parameter, the parameters as a ruled key beside it, and the budget in the title block.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-storage",
+   "slot": 3,
+   "h": "Tank and pipework",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "281a059",
+   "hash": "d61bca8325",
+   "block": {
+    "type": "spec",
+    "h": "Tank and pipework",
+    "caption": "FABRICATION · POLYPROPYLENE",
+    "cols": [
+     "Parameter",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Tank volume",
+      "v": "[tank volume range, L]",
+      "m": "Sized from your demand profile",
+      "part": "volume"
+     },
+     {
+      "p": "Product contact",
+      "v": "Unpigmented PP, [PP grade]",
+      "m": "[PP material certificates]",
+      "part": "contact"
+     },
+     {
+      "p": "Internal surface",
+      "v": "[PP internal surface specification, Ra µm]",
+      "m": "[basis for the PP surface specification]",
+      "part": "surface"
+     },
+     {
+      "p": "Joints",
+      "v": "[PP joining method]; [PP joint records kept]",
+      "m": "[welder qualification standard for thermoplastics]",
+      "part": "joint"
+     },
+     {
+      "p": "Budget",
+      "v": "[budget range, CAD] for [reference tank volume L, points of use]",
+      "m": "Before tax, as of [month year]",
+      "link": "systems#budget",
+      "part": "budget"
+     },
+     {
+      "p": "Tank design",
+      "v": "[PP tank design: atmospheric or pressure-rated]",
+      "m": "[PP tank design standard]",
+      "part": "design"
+     },
+     {
+      "p": "Cleaning before first use",
+      "v": "[pre-commissioning flush and cleaning procedure for PP]",
+      "m": "PW rinse to conductivity and TOC limits",
+      "part": "flush"
+     },
+     {
+      "p": "Heat exchangers",
+      "v": "Double tube sheet [heat exchanger, standard or option]",
+      "m": "FDA high-purity water guide (1993)",
+      "part": "hx"
+     },
+     {
+      "p": "Pumps",
+      "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
+      "m": "Sized for the worst-case outlet combination",
+      "part": "pump"
+     },
+     {
+      "p": "Spray ball",
+      "v": "Wets head space and walls continuously",
+      "m": "WHO TRS 1033, 9.2; [spray coverage test method]",
+      "part": "spray"
+     }
+    ],
+    "nav": "Fabrication",
+    "fold": 5,
+    "fold_noun": "parameters",
+    "as": "callouts",
+    "look": "tank-ga",
+    "anchor": "tank"
+   }
+  }
+ ]
+}

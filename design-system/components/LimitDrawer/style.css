@@ -10,11 +10,11 @@
   background: var(--fc, var(--limestone)); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone); z-index: 1; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
 .aq-limit-drawer__tab span { color: var(--on-limestone-muted); }
-.aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__tab { left: auto; right: 0; }
+.aq-limit-drawer__f[data-cut="2"] .aq-limit-drawer__tab { left: auto; right: 0; }
 .aq-limit-drawer__f:nth-child(even) { --fc: color-mix(in srgb, var(--limestone) 86%, var(--on-limestone)); }
 .aq-limit-drawer__body { flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-6) var(--space-4);
   background: var(--fc, var(--limestone)); color: var(--on-limestone); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm); }
-.aq-limit-drawer__f[style*="--cut:1"] .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__body { border-radius: var(--radius-sm); }
+.aq-limit-drawer__f[data-cut="1"] .aq-limit-drawer__body, .aq-limit-drawer__f[data-cut="2"] .aq-limit-drawer__body { border-radius: var(--radius-sm); }
 /* the phone head shows only while PhoneKit is on (below 860 px); on desktop the body's parts sit straight in the folder */
 .aq-limit-drawer__more { display: contents; }
 .aq-limit-drawer__who { margin: 0 0 var(--space-2); font: 400 22px/28px var(--font-sans); letter-spacing: -0.015em; color: var(--on-limestone); }
@@ -55,9 +55,9 @@ a.aq-limit-drawer__label:focus-visible { outline: 2px solid var(--focus); outlin
 @container (max-width: 860px) {
   .aq-limit-drawer__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
   .aq-limit-drawer__f { --tab: 28px; }
-  .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__tab, .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__tab {
+  .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__tab, .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__f[data-cut="2"] .aq-limit-drawer__tab {
     left: 0; right: auto; min-width: 0; max-width: 80%; }
-  .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:1"] .aq-limit-drawer__body, .aq-limit-drawer__f[style*="--cut:2"] .aq-limit-drawer__body { padding: var(--space-4); gap: var(--space-1); }
+  .aq-limit-drawer__body, .aq-limit-drawer__f[data-cut="1"] .aq-limit-drawer__body, .aq-limit-drawer__f[data-cut="2"] .aq-limit-drawer__body { padding: var(--space-4); gap: var(--space-1); }
   .aq-limit-drawer__list:not([data-pk-on]) .aq-limit-drawer__body { border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm); }
   .aq-limit-drawer__who { font-size: 19px; line-height: 25px; }
   .aq-limit-drawer__sets { font-size: var(--aq-read-phone, 14px); line-height: 21px; }

@@ -45,7 +45,11 @@ GEMINI_USE = {
     '191': 'ApplicationWheel', '193': 'FitReadout', '194': 'UseMatrix', '195': 'LimitWriters', '196': 'MultiportRouter',
     '197': 'Hero', '200': 'CalcPad', '201': 'PlantStations', '202': 'SensorLoop', '203': 'ScopeSeam', '204': 'ModulePlinth',
     '205': 'SheetPreviews', '206': 'Hero', '208': 'GradeCrosswalk', '209': 'DrawingRegister', '210': 'BuildingLoop',
-    '211': 'TrainStrip', '212': 'SpineShelf', '214': 'Hero', '216': 'LimitDrawer'}
+    '211': 'TrainStrip', '212': 'SpineShelf', '214': 'Hero', '216': 'LimitDrawer',
+    # pass 12 build B (2026-11-03): concept queue for weak sections and generic heroes (221, 226, 231: superseded takes)
+    '217': 'LimitFolders', '218': 'ScenePlates', '219': 'IndustryDrops', '220': 'LimitPlan', '222': 'HeroScene',
+    '223': 'GhostSkid', '224': 'SkidSheet', '225': 'HeroScene', '227': 'WasherZones', '228': 'RoomLimit',
+    '229': 'HeroScene', '230': 'TankGa', '232': 'ConfigCards', '233': 'HeroScene'}
 GEMINI_REFERENCE = {'58'}
 RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
 # Equipment drawings redrawn on 2026-10-31 to match the offer (polypropylene PW package: no stainless piping, no sterile
@@ -232,7 +236,7 @@ def build():
 
     for f in sorted(glob.glob(os.path.join(INS, 'gemini', '*.png'))):
         name = os.path.basename(f)[:-4]
-        num = name[:2]
+        num = re.match(r'\d+', name).group(0)  # 2 or 3 digits (01-99, 100+)
         prompt, became = rows.get(name + '.png', ('', ''))
         if '-art-' in name:
             pid = name.split('-art-')[1]

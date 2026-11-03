@@ -157,7 +157,6 @@
    "best_for": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
    "held": "6-9",
    "pages": [
-    "first-system",
     "project-plan"
    ],
    "instances": [
@@ -215,7 +214,7 @@
      "page": "first-system",
      "slot": 2,
      "h": "What your site needs",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -883,6 +882,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "72d7db876c"
+    }
+   ]
+  },
+  {
+   "look": "config-cards",
+   "component": "ConfigCards",
+   "type": "grid",
+   "status": "live",
+   "fields": "as grid: h, intro, items [{t, d, tag, link, icon}]. Look-only fields: item \"scene\" (osd | proof | washer | suites | batch | lab) picks the drawing, else it follows the link page (ind-pharma, ind-process, ind-meddevice, ind-cdmo, ind-personal-care, ind-hospital-lab); block \"spec_labels\" (default Use, System, Checks) labels the spec lines in order, and an item's own \"spec_labels\" overrides it for that card.",
+   "best_for": "ConfigCards sets typical configurations as design-basis cards: every card draws the same polypropylene (PP) package piped to the use it feeds, with the reference capacity, the design-basis tag and the configuration's spec lines under it.",
+   "held": "6",
+   "pages": [
+    "projects"
+   ],
+   "instances": [
+    {
+     "page": "projects",
+     "slot": 0,
+     "h": "Typical configurations · design basis",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "6e79adee19"
     }
    ]
   },
@@ -1734,6 +1757,30 @@
    ]
   },
   {
+   "look": "ghost-skid",
+   "component": "GhostSkid",
+   "type": "options",
+   "status": "live",
+   "fields": "h, intro, items [{t, d, part, link, link_label}], fold, fold_noun (not read: every option shows, the tags on the drawing point at them). part (look-only): the ghost an option draws: degasser (membrane contactors on the RO to EDI line), duplex (a second train on its own frame beside the base), recirc (a return line from the outlet back to the RO feed), polish (a UV or UF unit on the product line after EDI), recovery (a concentrate RO housing on the reject line). Default by position in that order. An unknown part draws no ghost (the option still lists).",
+   "best_for": "GhostSkid shows a system's configuration options where they would go on the base skid: the base Purified Water skid drawn solid in IsoKit line art on the limestone band, each option a dashed \"ghost\" module clipped on at its place, numbered to a ruled list of the options.",
+   "held": "5",
+   "pages": [
+    "sys-pw"
+   ],
+   "instances": [
+    {
+     "page": "sys-pw",
+     "slot": 4,
+     "h": "Configurations and options",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "a7810abdd4"
+    }
+   ]
+  },
+  {
    "look": "grade-crosswalk",
    "component": "GradeCrosswalk",
    "type": "table",
@@ -2130,6 +2177,30 @@
    ]
   },
   {
+   "look": "industry-drops",
+   "component": "IndustryDrops",
+   "type": "grid",
+   "status": "live",
+   "fields": "as grid: h, intro, items [{t, d, tag, link}].",
+   "best_for": "IndustryDrops draws one Purified Water header main with one drop per industry or use it serves, each drop ending in a small isometric point-of-use vignette.",
+   "held": "6",
+   "pages": [
+    "home"
+   ],
+   "instances": [
+    {
+     "page": "home",
+     "slot": 2,
+     "h": "Same package, different limits by industry",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "88666d6dab"
+    }
+   ]
+  },
+  {
    "look": "industry-feed",
    "component": "IndustryFeed",
    "type": "grid",
@@ -2516,9 +2587,31 @@
    "look": "limit-drawer",
    "component": "LimitDrawer",
    "type": "table",
-   "status": "live",
+   "status": "retired",
    "fields": "cols [who writes the limit, what it sets, what to send, where it applies], rows (cells strings or {t, link}). The tab is the writer up to its first number (ASTM D1193-24), else its first word.",
    "best_for": "LimitDrawer shows who writes each limit and what to send them as a file drawer: one manila folder per limit-writer, its tab at its own cut position so no tab hides another, what the limit sets on the folder, a clipped white slip listing what to send, and a navy index label naming where it applies.",
+   "held": "6",
+   "pages": [],
+   "instances": [
+    {
+     "page": "ind-process",
+     "slot": 1,
+     "h": "Who writes your limit, and what to send",
+     "status": "retired",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "f6841a4",
+     "hash": "90e3a4eec7"
+    }
+   ]
+  },
+  {
+   "look": "limit-folders",
+   "component": "LimitFolders",
+   "type": "table",
+   "status": "live",
+   "fields": "cols [who writes the limit, what it sets, what to send, where it applies], rows (cells strings or {t, link}). The tab's short name is the writer up to its first number (ASTM D1193-24), else its first word.",
+   "best_for": "LimitFolders shows who writes each limit and what to send them as one open file drawer: a folder per limit-writer standing side by side, its tab at its own cut, what the limit sets on the front leaf, a clipped white slip listing what to send, and a navy index label naming where it applies.",
    "held": "6",
    "pages": [
     "ind-process"
@@ -2531,8 +2624,32 @@
      "status": "live",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
-     "commit": "f6841a4",
-     "hash": "90e3a4eec7"
+     "commit": "281a059",
+     "hash": "5be03ebe8b"
+    }
+   ]
+  },
+  {
+   "look": "limit-plan",
+   "component": "LimitPlan",
+   "type": "spec",
+   "status": "live",
+   "fields": "h, intro, cols [item, typical, note], rows [{p, v, m, link, link_label, at}]. Look-only: rows[].at names the connection a row is keyed to: limit | footprint | utilities | joint | tag | tiein | isolation (default: that order, row by row); a row whose at is unknown or \"none\" gets no node. Values written \"a · b\" break into lines. fold and fold_noun are not read: every row shows (S7, the drawing points at every row).",
+   "best_for": "LimitPlan shows what a site provides before the package arrives as a battery-limits plan: an isometric drawing of the package footprint inside a dashed battery-limit line, with a numbered square node on each connection keyed to the row of the same number beside it.",
+   "held": "7",
+   "pages": [
+    "systems"
+   ],
+   "instances": [
+    {
+     "page": "systems",
+     "slot": 2,
+     "h": "What your site needs before we arrive",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "c6f44a473b"
     }
    ]
   },
@@ -3234,13 +3351,11 @@
    "look": "option-tags",
    "component": "OptionTags",
    "type": "options",
-   "status": "live",
+   "status": "retired",
    "fields": "h, intro, items [{t, d, spot | icon, shape}], spot (base glyph), base, fold, fold_noun. shape: \"tag\" (default), \"round\" or \"folder\"; folders sit on the navy strip (desktop). With no folder the strip is left out (.is-flat) and the tags fill three columns.",
    "best_for": "OptionTags lays a system's configuration options out as physical tags on a limestone table, so each option reads as a separate item the buyer can add to the base skid.",
    "held": "5",
-   "pages": [
-    "sys-pw"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "sys-pw",
@@ -3276,7 +3391,7 @@
      "page": "sys-pw",
      "slot": 4,
      "h": "Configurations and options",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -3380,8 +3495,7 @@
    "best_for": "ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles with one blueprint cell of the skid, so each parameter reads as its own panel and the whole grid scans at a glance.",
    "held": "8-10",
    "pages": [
-    "ind-process",
-    "sys-pw"
+    "ind-process"
    ],
    "instances": [
     {
@@ -3418,7 +3532,7 @@
      "page": "sys-pw",
      "slot": 2,
      "h": "Skid design parameters",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -4732,6 +4846,30 @@
    ]
   },
   {
+   "look": "room-limit",
+   "component": "RoomLimit",
+   "type": "spec",
+   "status": "live",
+   "fields": "h, intro, cols ([item, what it takes, note]: read by screen readers), rows [{p, v, m, side, link, link_label, part}] (side \"limit\" | \"package\" | \"site\", default site), sides [package label, site label] (named on the floor inside and outside the line, desktop). seam and fold are not read. part (look-only): where the row sits on the drawing, one of line, package, panel, water, drain, power, door, floor, use; without one the row's words choose (\"drain\", \"power\", \"door\"/\"way in\", \"water\", \"floor\"/\"landlord\", \"washer\"/\"bench\"/\"lab\", \"training\"/\"operator\" -> panel), else no point.",
+   "best_for": "RoomLimit sets what a site provides for a Purified Water package as the room the package goes in: an isometric cutaway of the room with the package on its base frame, a dash-and-dot battery-limit line on the floor round it, and every connection the site provides as a tie-in where its run crosses the line, numbered to the rows beside the drawing.",
+   "held": "9",
+   "pages": [
+    "first-system"
+   ],
+   "instances": [
+    {
+     "page": "first-system",
+     "slot": 2,
+     "h": "What your site needs",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "7161878814"
+    }
+   ]
+  },
+  {
    "look": "rule-figures",
    "component": "RuleFigures",
    "type": "spec",
@@ -4792,6 +4930,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "685bcf3355"
+    }
+   ]
+  },
+  {
+   "look": "scene-plates",
+   "component": "ScenePlates",
+   "type": "table",
+   "status": "live",
+   "fields": "as a table: cols, rows (cells strings or {t, link}), fold, fold_noun (nav is the page-nav label, not printed), and optional art (look-only): per row, one station key per \"where the water goes\" item (\"proof\", \"batch\", \"lab\", \"boiler\", \"line\"). Without art each item picks its station from its words (proofing, laboratory or lab, boiler, product lines or touches the product, else a batch kettle).",
+   "best_for": "ScenePlates sets a table of plants (or any uses) as a ruled ledger beside one navy drawing plate: the plant you point at, focus or choose is drawn on the plate as one water header with a drop to each of its points of use, numbered as the ledger's \"where the water goes\" list.",
+   "held": "4",
+   "pages": [
+    "ind-process"
+   ],
+   "instances": [
+    {
+     "page": "ind-process",
+     "slot": 2,
+     "h": "Food, beverage and cannabis",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "c1cf563e6d"
     }
    ]
   },
@@ -5157,8 +5319,7 @@
    "best_for": "SitePlates sets a table of sites (site, what happens here, address, contact and hours) as a ledger beside one navy drawing plate: the site you point at, focus or choose is drawn on the plate with numbered callouts for what happens there.",
    "held": "4",
    "pages": [
-    "contact-locations",
-    "ind-process"
+    "contact-locations"
    ],
    "instances": [
     {
@@ -5205,7 +5366,7 @@
      "page": "ind-process",
      "slot": 2,
      "h": "Food, beverage and cannabis",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -5274,6 +5435,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "50884fd191"
+    }
+   ]
+  },
+  {
+   "look": "skid-sheet",
+   "component": "SkidSheet",
+   "type": "spec",
+   "status": "live",
+   "fields": "h, caption (eyebrow), intro, rows [{p, v, m, link, link_label, part}], note. part (look-only): the drawn part the row governs, one of membranes, utilities, exchanger, edi, piping, joints, frame, pump, drain, panel. A row without a part has no tag (it still lists). Every row shows on every width (S7).",
+   "best_for": "SkidSheet reads a skid's design parameters off the skid itself: one RO and EDI skid in IsoKit line art on a framed general-arrangement sheet, a numbered tag on a leader from each part to the parameter it governs, and the parameter rows beside the sheet under the same numbers.",
+   "held": "10",
+   "pages": [
+    "sys-pw"
+   ],
+   "instances": [
+    {
+     "page": "sys-pw",
+     "slot": 2,
+     "h": "Skid design parameters",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "31e5150024"
     }
    ]
   },
@@ -5656,15 +5841,11 @@
    "look": "standard-tiles",
    "component": "StandardTiles",
    "type": "grid",
-   "status": "live",
+   "status": "retired",
    "fields": "as grid: h, intro, items [{t, d, icon, tag, link}].",
    "best_for": "StandardTiles sets a short grid of linked items as a Swiss tile grid three across: each item a slash-numbered navy or limestone tile carrying its standard or control tag, plus a blueprint tile that draws the item being pointed at and a flow block that sets its tag large.",
    "held": "4-6",
-   "pages": [
-    "home",
-    "ind-meddevice",
-    "projects"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "ind-meddevice",
@@ -5690,7 +5871,7 @@
      "page": "home",
      "slot": 2,
      "h": "Same package, different limits by industry",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -5700,7 +5881,7 @@
      "page": "ind-meddevice",
      "slot": 4,
      "h": "Systems for device plants",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -5710,7 +5891,7 @@
      "page": "projects",
      "slot": 0,
      "h": "Typical configurations · design basis",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -5974,6 +6155,30 @@
    ]
   },
   {
+   "look": "tank-ga",
+   "component": "TankGa",
+   "type": "spec",
+   "status": "live",
+   "fields": "h, caption (eyebrow and title block), rows [{p, v, m, link, link_label}], anchor, nav.",
+   "best_for": "TankGa reads a spec block of fabrication parameters off one general arrangement (GA) sheet: an isometric line drawing of the PP storage set with a numbered tag on a leader for each parameter, the parameters as a ruled key beside it, and the budget in the title block.",
+   "held": "10",
+   "pages": [
+    "sys-storage"
+   ],
+   "instances": [
+    {
+     "page": "sys-storage",
+     "slot": 3,
+     "h": "Tank and pipework",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "d61bca8325"
+    }
+   ]
+  },
+  {
    "look": "tank-section",
    "component": "TankSection",
    "type": "spec",
@@ -5999,13 +6204,11 @@
    "look": "tank-tiles",
    "component": "TankTiles",
    "type": "spec",
-   "status": "live",
+   "status": "retired",
    "fields": "h, caption (eyebrow), intro, rows [{p, v, m, link, link_label}], fold, fold_noun.",
    "best_for": "TankTiles sets a spec block's parameters on a Swiss checkerboard of square navy and limestone tiles, each led by a huge light slash numeral, with one steel-blue blueprint tile of the storage tank as the anchor.",
    "held": "10",
-   "pages": [
-    "sys-storage"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "sys-storage",
@@ -6021,7 +6224,7 @@
      "page": "sys-storage",
      "slot": 3,
      "h": "Tank and pipework",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -6039,8 +6242,7 @@
    "held": "1-10",
    "pages": [
     "buying",
-    "cmp-quality",
-    "systems"
+    "cmp-quality"
    ],
    "instances": [
     {
@@ -6117,7 +6319,7 @@
      "page": "systems",
      "slot": 2,
      "h": "What your site needs before we arrive",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -6589,6 +6791,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "5bf1099405"
+    }
+   ]
+  },
+  {
+   "look": "washer-zones",
+   "component": "WasherZones",
+   "type": "grid",
+   "status": "live",
+   "fields": "as grid: h, intro, items [{t, d, icon, tag, link}] (four).",
+   "best_for": "WasherZones draws one package feeding a cabinet washer as an isometric line drawing with four dashed, numbered zones keyed to four rows of systems, each row carrying its standard as a navy chip.",
+   "held": "4",
+   "pages": [
+    "ind-meddevice"
+   ],
+   "instances": [
+    {
+     "page": "ind-meddevice",
+     "slot": 4,
+     "h": "Systems for device plants",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "281a059",
+     "hash": "4f9ba68c98"
     }
    ]
   },

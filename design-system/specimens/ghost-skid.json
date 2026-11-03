@@ -1,0 +1,66 @@
+{
+ "look": "ghost-skid",
+ "component": "GhostSkid",
+ "type": "options",
+ "fields": "h, intro, items [{t, d, part, link, link_label}], fold, fold_noun (not read: every option shows, the tags on the drawing point at them). part (look-only): the ghost an option draws: degasser (membrane contactors on the RO to EDI line), duplex (a second train on its own frame beside the base), recirc (a return line from the outlet back to the RO feed), polish (a UV or UF unit on the product line after EDI), recovery (a concentrate RO housing on the reject line). Default by position in that order. An unknown part draws no ghost (the option still lists).",
+ "best_for": "GhostSkid shows a system's configuration options where they would go on the base skid: the base Purified Water skid drawn solid in IsoKit line art on the limestone band, each option a dashed \"ghost\" module clipped on at its place, numbered to a ruled list of the options.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "sys-pw",
+   "slot": 4,
+   "h": "Configurations and options",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "281a059",
+   "hash": "a7810abdd4",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Configurations and options",
+    "items": [
+     {
+      "t": "Membrane degasser",
+      "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high. Adds: its datasheet, a P&ID line and a FAT check.",
+      "spot": "ro-membrane",
+      "part": "degasser"
+     },
+     {
+      "t": "Duplex trains",
+      "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
+      "spot": "ro-skid",
+      "part": "duplex"
+     },
+     {
+      "t": "Recirculation at no demand",
+      "d": "Circulates when storage is full, so water does not stand in the membranes. Adds: a control sequence, tested at FAT.",
+      "spot": "loop",
+      "shape": "round",
+      "part": "recirc"
+     },
+     {
+      "t": "Ultrafiltration or 254 nm UV",
+      "d": "After DI or EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize. Adds: a P&ID line, FAT check.",
+      "spot": "uv-ozone",
+      "shape": "tag",
+      "part": "polish"
+     },
+     {
+      "t": "Recovery enhancement",
+      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter. Adds: revised membrane projections and a FAT check.",
+      "spot": "pump",
+      "shape": "tag",
+      "part": "recovery"
+     }
+    ],
+    "nav": "Options",
+    "fold": 3,
+    "spot": "ro-skid",
+    "look": "ghost-skid",
+    "intro": "Each tag names what the option adds on paper. Your proposal marks it included or priced, with its lead time effect.",
+    "anchor": "options"
+   }
+  }
+ ]
+}

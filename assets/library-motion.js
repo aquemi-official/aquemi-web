@@ -157,6 +157,28 @@ AQmotion.fx('JointTag', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 70%');
   });
 });
+/* LimitDrawer: the folders come up out of the drawer, then their slips.
+   Ported from Subframe Motion "Folder open animation" (archive-folder), MIT, (c) 2026 Subframe. Kept: the paper coming
+   out of the folder on the library's document curve (cubic-bezier(.22,1,.36,1), 480 ms) with a short stagger;
+   pointing at a folder lifts its tab and draws its slip a step out (CSS, 240 ms, the same curve), settling back on
+   leave. Entry: folders rise row by row (left to right), each tab a beat before its body, then the slip slides up out
+   of the folder to its resting angle. Once; reduced motion: the drawer as drawn. */
+AQmotion.fx('LimitDrawer', function (root, m) {
+  root.querySelectorAll('.aq-limit-drawer').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var ease = window.CustomEase ? (CustomEase.get('aq-relief') || CustomEase.create('aq-relief', 'M0,0 C0.22,1 0.36,1 1,1')) : 'power3.out';
+    [].slice.call(el.querySelectorAll('.aq-limit-drawer__f')).forEach(function (f, i) {
+      var tab = f.querySelector('.aq-limit-drawer__tab'), body = f.querySelector('.aq-limit-drawer__body'), slip = f.querySelector('.aq-limit-drawer__slip');
+      gsap.set([tab, body].filter(Boolean), { autoAlpha: 0, y: 28 }); if (slip) gsap.set(slip, { autoAlpha: 0, y: 18 });
+      m.on(f, function () {
+        var tl = m.tw(gsap.timeline({ delay: (i % 3) * 0.08 }));
+        if (tab) tl.to(tab, { autoAlpha: 1, y: 0, duration: 0.48, ease: ease, clearProps: 'transform,opacity,visibility' }, 0);
+        if (body) tl.to(body, { autoAlpha: 1, y: 0, duration: 0.48, ease: ease, clearProps: 'transform,opacity,visibility' }, 0.06);
+        if (slip) tl.to(slip, { autoAlpha: 1, y: 0, duration: 0.48, ease: ease, clearProps: 'transform,opacity,visibility' }, 0.3);
+      }, 'top 90%');
+    });
+  });
+});
 /* MarketCallouts: the machine is built, the water runs through it once, then each market is called off the part it
    is about. The skid and equipment draw back to front and settle solid (IsoKit
    timeline); the water drops down the feed riser and runs the route, lighting each stage as it arrives. Then, per
@@ -227,6 +249,37 @@ AQmotion.fx('MarketCallouts', function (root, m) {
   document.addEventListener('mouseover', over);
   document.addEventListener('mouseout', function (ev) { var el = ev.target.closest && ev.target.closest('.aq-market-callouts'); if (el && !el.contains(ev.relatedTarget)) set(el, null) });
 })();
+/* OptionTags: the options are laid on the table. The label card is set down first; then each tag drops onto its place
+   from above, turning as it falls and settling at its own tilt, its string pulling out from the eyelet; the round
+   stamp strikes a beat later; the folders slide in from the right onto the navy strip; the two vials roll in last.
+   Hover picks a tag up (CSS). One timeline, once, under 5 s. Folded tiles (phones) appear whole when opened. */
+AQmotion.fx('OptionTags', function (root, m) {
+  root.querySelectorAll('.aq-option-tags').forEach(function (el) {
+    if (!m.free(el)) return;
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var items = qa('.aq-option-tags__item').filter(function (t) { return t.offsetParent !== null }), label = el.querySelector('.aq-option-tags__label');
+    qa('.aq-option-tags__list, .aq-option-tags__vial').forEach(m.claim);
+    if (label) m.claim(label.querySelector('.aq-option-tags__base'));
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), short = m.narrow() ? 0.75 : 1;
+    if (label) tl.from(label.querySelector('.aq-option-tags__base'), { autoAlpha: 0, y: 8, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.4);
+    var k = 0;
+    items.forEach(function (it, i) {
+      var folder = it.classList.contains('aq-option-tags__item--folder'), r = parseFloat(it.style.getPropertyValue('--r')) || 0;
+      var at = 0.2 + i * 0.28 * short, str = it.querySelector('.aq-option-tags__string'), stamp = it.querySelector('.aq-option-tags__stamp');
+      if (folder) tl.from(it, { x: 160, rotation: r + 6, autoAlpha: 0, duration: 0.9, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at);
+      else tl.from(it, { y: -110, rotation: r + (k++ % 2 ? 14 : -12), autoAlpha: 0, duration: 0.85, ease: 'back.out(1.3)', clearProps: 'transform,opacity,visibility' }, at);
+      if (str) {
+        var round = it.classList.contains('aq-option-tags__item--round');
+        tl.fromTo(str, { clipPath: round ? 'inset(100% -50% 0 -50%)' : 'inset(-50% 0 -50% 100%)' }, { clipPath: round ? 'inset(0% -50% 0 -50%)' : 'inset(-50% 0 -50% 0%)', duration: 0.5, ease: 'power2.out', clearProps: 'clipPath' }, at + 0.45);
+      }
+      if (stamp) tl.from(stamp, { scale: 2.2, autoAlpha: 0, duration: 0.3, ease: 'power4.in', clearProps: 'transform,opacity,visibility' }, at + 0.6)
+        .fromTo(stamp, { scale: 1 }, { scale: 1.08, duration: 0.08, yoyo: true, repeat: 1, ease: 'power1.out', clearProps: 'transform' }, at + 0.9);
+    });
+    var vials = qa('.aq-option-tags__vial').filter(function (v) { return v.offsetParent !== null || getComputedStyle(v).display !== 'none' });
+    if (vials.length) tl.from(vials, { x: -60, autoAlpha: 0, duration: 0.9, stagger: 0.15, ease: 'power2.out', clearProps: 'opacity,visibility' }, 0.6 + items.length * 0.2);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* PackMatrix: the packs are dealt onto the matrix in a diagonal sweep (client by period), then one is pulled out of
    its slot and turns navy, the leader runs from it to the sheet, the sheet opens from the left under its strip and the
    documents are laid in, numerals rolling up. One timeline, once on scroll-in, under 4 s. Folded documents (phones)
@@ -415,6 +468,32 @@ AQmotion.fx('SparesKit', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
+/* StandardTiles: the grid is cut in along its diagonals (each tile wipes down from the top, 70 ms apart by row + column),
+   the slash numerals roll up on odometer wheels (sliding-number, m.count), the flow block's square opens from its
+   corner, and the blueprint tile draws its first system the IsoKit way. One timeline, once on scroll-in, under 3 s.
+   The pointer/focus selection (project-index port) lives in the renderer so it also works under reduced motion. */
+AQmotion.fx('StandardTiles', function (root, m) {
+  root.querySelectorAll('.aq-standard-tiles').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var cells = [].slice.call(el.children), cols = m.narrow() ? 1 : 3;
+    cells.forEach(function (c, i) {
+      var at = ((i % cols) + Math.floor(i / cols)) * 0.07;
+      tl.fromTo(c, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
+      var no = c.querySelector('.aq-standard-tiles__no');
+      if (no) tl.call(function () { m.count(no, { now: true, duration: 0.9 }) }, null, at + 0.2);
+      var rise = c.querySelectorAll('.aq-standard-tiles__tag, .aq-standard-tiles__body, .aq-standard-tiles__arrow');
+      if (rise.length) tl.from(rise, { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.35);
+    });
+    var wedge = el.querySelector('.aq-standard-tiles__wedge');
+    if (wedge) tl.from(wedge, { scale: 0, duration: 0.8, ease: 'power3.inOut', clearProps: 'transform' }, 0.45);
+    var big = el.querySelector('.aq-standard-tiles__big');
+    if (big) tl.from(big, { y: 12, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.9);
+    var svg = el.querySelector('.aq-standard-tiles__layer.is-on svg.aq-iso');
+    if (svg && window.AQiso) { var it = AQiso.timeline(svg, m, { draw: 1, pipe: 0.5, flow: 0.8, drop: false }); if (it) { it.paused(false); tl.add(it, 0.5) } }
+    m.on(el, function () { tl.play() }, 'top 80%');
+  });
+});
 /* TankSection: the blueprint is drawn as a draughtsman would: floor and legs, then the shell's outline, the cut
    wall's hatching fills in, the head's nozzles and vent filter, the outlet pipe; the water level rises and the spray
    ball's jets open. The two detail circles strike out from their marks; then each callout's leader runs from the
@@ -446,6 +525,37 @@ AQmotion.fx('TankSection', function (root, m) {
     var rows = qa('.aq-tank-section__sched tbody tr').filter(function (r) { return r.offsetParent !== null });
     if (rows.length) tl.from(rows, { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 2.6);
     m.on(el, function () { tl.play() }, 'top 70%');
+  });
+});
+/* TankTiles: the checkerboard opens like shutters. Every tile is covered by slats of the opposite tone that retract
+   upward in a diagonal wave from the head tile (the blueprint tile with seven slats, the others with four); as a tile
+   opens its slash numeral rolls up on the odometer and the tank's lines draw on. Once, about 2 s; the slats are
+   removed at the end. Reduced motion: nothing runs, the grid is complete.
+   Ported from Subframe Motion "Staggered shutter reveal" (shutter-scene), MIT, (c) 2026 Subframe
+   (kept: the slats retracting with scaleY from the top, 820 ms on cubic-bezier(.16,1,.3,1), 45 ms between slats;
+   replaced: the scene swap button with a once-on-scroll wave across the tile grid). */
+AQmotion.fx('TankTiles', function (root, m) {
+  root.querySelectorAll('.aq-tank-tiles').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var ease = window.CustomEase ? (CustomEase.get('aq-shutter') || CustomEase.create('aq-shutter', '.16,1,.3,1')) : 'expo.out';
+    var cells = [el.querySelector('.aq-tank-tiles__head'), el.querySelector('.aq-tank-tiles__bp')].concat(qa('.aq-tank-tiles__tile')).filter(function (c) { return c && c.offsetParent !== null });
+    var x0 = el.getBoundingClientRect(), W = (x0.width / 4) || 1;
+    var tl = m.tw(gsap.timeline({ paused: true })), D = !!window.DrawSVGPlugin, blinds = [];
+    cells.forEach(function (c) {
+      var r = c.getBoundingClientRect(), col = Math.round((r.left - x0.left) / W), row = Math.round((r.top - x0.top) / (r.height || W)), at = Math.min(1.2, (col + row) * 0.09);
+      var bp = c.classList.contains('aq-tank-tiles__bp'), n = bp ? 7 : 4, navy = c.classList.contains('is-navy') || c.classList.contains('aq-tank-tiles__head');
+      var b = document.createElement('div'); b.className = 'aq-tank-tiles__blinds' + (navy || bp ? ' is-on-navy' : ''); b.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) b.appendChild(document.createElement('span'));
+      c.appendChild(b); blinds.push(b);
+      tl.fromTo(b.children, { scaleY: 1 }, { scaleY: 0, transformOrigin: '50% 0%', duration: 0.82, ease: ease, stagger: 0.045 }, at);
+      var num = c.querySelector('.aq-tank-tiles__n');
+      if (num && m.count) tl.add(function () { m.count(num, { duration: 0.8 }) }, at + 0.15);
+      if (bp && D) tl.from(qa('.aq-tank-tiles__ln, .aq-tank-tiles__dim, .aq-tank-tiles__thin, .aq-tank-tiles__level', c), { drawSVG: '0%', duration: 0.9, stagger: 0.03, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.2);
+      if (bp) tl.from(qa('.aq-tank-tiles__jet, .aq-tank-tiles__tx', c), { autoAlpha: 0, duration: 0.3, stagger: 0.03, clearProps: 'opacity,visibility' }, at + 0.9);
+    });
+    tl.add(function () { blinds.forEach(function (b) { if (b.parentNode) b.parentNode.removeChild(b) }) });
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* ToleranceScales: each instrument row calibrates as it scrolls in. The name rises, the ruler's ticks run out from
