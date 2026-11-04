@@ -4,7 +4,7 @@
  "type": "register",
  "fields": "h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold, fold_noun. Never a date that is not given (the dashed page status instead); the lead note is the featured one, else the first of the first topic. Filtering shows every matching note, folded or not; notes that stay glide to their new places and new ones fade in.",
  "best_for": "RevisionRegister keeps technical notes as the numbered notes column of one limestone drawing sheet: the title large and light with the lead note under it, a faint drawing of the page a note is applied on, and the register in mono behind a hairline rule, with a topic filter and a title block carrying the live count.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "news",
@@ -798,7 +798,7 @@
    "page": "news",
    "slot": 0,
    "h": "The notes register",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "1f4eab0",

@@ -933,7 +933,7 @@
      "as": "callouts",
      "ground": "light",
      "fold_noun": "parameters",
-     "look": "skid-sheet"
+     "look": "ortho-sheet"
     },
     {
      "type": "docs",
@@ -10068,7 +10068,7 @@
        "m": "Lost documents reissued on request"
       }
      ],
-     "look": "pdf-anatomy",
+     "look": "title-block",
      "anchor": "delivery"
     },
     {
@@ -11741,7 +11741,7 @@
        "intent": "Your questionnaire, completed"
       }
      ],
-     "look": "code-index"
+     "look": "onboarding-fan"
     },
     {
      "type": "steps",
@@ -12434,7 +12434,7 @@
      ],
      "fold": 6,
      "fold_noun": "notes",
-     "look": "revision-register"
+     "look": "note-sheet"
     },
     {
      "type": "table",
@@ -12703,6 +12703,7 @@
     "link": "#subscribe"
    },
    "figure": {
+    "art": "news",
     "spots": [
      "pretreatment",
      "ro-skid",

@@ -458,7 +458,9 @@
    "height": "1100",
    "width": "1100",
    "subtitle": "The fabrication dossier as an index in huge outline filing codes",
-   "summary": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow."
+   "summary": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow.",
+   "retired": true,
+   "look": "code-index"
   },
   {
    "name": "Colophon",
@@ -1185,6 +1187,16 @@
    "summary": "NcrTiles shows how a defect is held and closed as a bento of navy and limestone tiles, each led by a huge light slash numeral, the hold step oversized, with one tile drawing the repair step in isometric line art."
   },
   {
+   "name": "NoteSheet",
+   "readme": "design-system/components/NoteSheet/README.md",
+   "preview": "design-system/components/NoteSheet/preview.html",
+   "group": "Page sections",
+   "height": "1040",
+   "width": "1280",
+   "subtitle": "The notes register with its featured note as a tall drawing sheet, row 01 led into it",
+   "summary": "NoteSheet is the notes register with its featured note previewed as a tall folded-corner drawing sheet beside the numbered rows, one flow leader joining the sheet to the note's row (pass 12 E, concept 254)."
+  },
+  {
    "name": "NotesRegister",
    "readme": "design-system/components/NotesRegister/README.md",
    "preview": "design-system/components/NotesRegister/preview.html",
@@ -1203,6 +1215,16 @@
    "width": "1100",
    "subtitle": "Five situations as a Swiss index under huge outline numerals, each with its start page",
    "summary": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table."
+  },
+  {
+   "name": "OnboardingFan",
+   "readme": "design-system/components/OnboardingFan/README.md",
+   "preview": "design-system/components/OnboardingFan/preview.html",
+   "group": "Page sections",
+   "height": "780",
+   "width": "1240",
+   "subtitle": "Onboarding papers fanned out of an open folder: a tab per paper with its code, a status-stamp slot on each",
+   "summary": "OnboardingFan shows a supplier-onboarding set as an open folder with one tabbed paper fanned out per item, each paper carrying a status-stamp slot, so procurement sees every paper it checks before award and the status of each at a glance (look `onboarding-fan`, a docs block)."
   },
   {
    "name": "OptionChecker",
@@ -1257,6 +1279,16 @@
    "summary": "OptionTaps shows options where they would join the system, as one limestone drawing sheet: the standard train drawn solid in isometric line, each option a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, a huge light title, and the options as numbered drawing notes in a narrow column whose numbers frame their part on the drawing."
   },
   {
+   "name": "OrthoSheet",
+   "readme": "design-system/components/OrthoSheet/README.md",
+   "preview": "design-system/components/OrthoSheet/preview.html",
+   "group": "Page sections",
+   "height": "1500",
+   "width": "1100",
+   "subtitle": "Skid design parameters: ten values tagged to the parts of the RO and EDI skid they govern, on an orthographic GA sheet (front elevation over plan)",
+   "summary": "OrthoSheet reads a skid's design parameters off an orthographic general-arrangement sheet: one RO and EDI skid drawn flat in two views, the front elevation over the plan, with a numbered tag on a leader from each part to the parameter it governs and the parameter rows beside the sheet under the same numbers."
+  },
+  {
    "name": "PackMatrix",
    "readme": "design-system/components/PackMatrix/README.md",
    "preview": "design-system/components/PackMatrix/preview.html",
@@ -1298,7 +1330,9 @@
    "height": "930",
    "width": "1100",
    "subtitle": "Delivery terms as a figure plate of the delivered PDF, callouts on leaders",
-   "summary": "PdfAnatomy sets delivery terms as a figure plate of the delivered document: a PDF open in a viewer (bookmark pane, a search hit, the number and revision box in the footer of every page of the stack) with each part of the highlighted row's value as a callout on a leader, and the other rows beside it as signature lines or a large statement."
+   "summary": "PdfAnatomy sets delivery terms as a figure plate of the delivered document: a PDF open in a viewer (bookmark pane, a search hit, the number and revision box in the footer of every page of the stack) with each part of the highlighted row's value as a callout on a leader, and the other rows beside it as signature lines or a large statement.",
+   "retired": true,
+   "look": "pdf-anatomy"
   },
   {
    "name": "PidRoutes",
@@ -1596,7 +1630,9 @@
    "height": "1100",
    "width": "1100",
    "subtitle": "The notes register as the numbered notes column of a drawing sheet",
-   "summary": "RevisionRegister keeps technical notes as the numbered notes column of one limestone drawing sheet: the title large and light with the lead note under it, a faint drawing of the page a note is applied on, and the register in mono behind a hairline rule, with a topic filter and a title block carrying the live count."
+   "summary": "RevisionRegister keeps technical notes as the numbered notes column of one limestone drawing sheet: the title large and light with the lead note under it, a faint drawing of the page a note is applied on, and the register in mono behind a hairline rule, with a topic filter and a title block carrying the live count.",
+   "retired": true,
+   "look": "revision-register"
   },
   {
    "name": "RevisionSheet",
@@ -1800,7 +1836,9 @@
    "height": "1500",
    "width": "1100",
    "subtitle": "Skid design parameters: ten values tagged to the parts of the RO and EDI skid they govern, on a GA sheet",
-   "summary": "SkidSheet reads a skid's design parameters off the skid itself: one RO and EDI skid in IsoKit line art on a framed general-arrangement sheet, a numbered tag on a leader from each part to the parameter it governs, and the parameter rows beside the sheet under the same numbers."
+   "summary": "SkidSheet reads a skid's design parameters off the skid itself: one RO and EDI skid in IsoKit line art on a framed general-arrangement sheet, a numbered tag on a leader from each part to the parameter it governs, and the parameter rows beside the sheet under the same numbers.",
+   "retired": true,
+   "look": "skid-sheet"
   },
   {
    "name": "SkidTags",
@@ -2061,6 +2099,16 @@
    "width": "1100",
    "subtitle": "Pay, benefits and terms as the shop's time card",
    "summary": "TimeCard sets a spec block of working terms as the shop's time card: a limestone card with its hang hole, a column header, one ruled line per term with a punch slot and number, and the block's note stamped at its foot, so pay and terms read as the paper a person on the floor handles each week."
+  },
+  {
+   "name": "TitleBlock",
+   "readme": "design-system/components/TitleBlock/README.md",
+   "preview": "design-system/components/TitleBlock/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "Delivery terms as the ruled zones of a drawing title block, an IsoKit drawing in each zone",
+   "summary": "TitleBlock sets delivery terms as the ruled title block of a drawing sheet: each row one zone with a numbered tag, its name, a small IsoKit drawing of what it delivers, the value and the note."
   },
   {
    "name": "ToleranceScales",

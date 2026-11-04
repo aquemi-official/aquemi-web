@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun, poster (look-only). Codes come from the DocList lookup (docCode) unless the item names its own.",
  "best_for": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-fabrication",
@@ -109,7 +109,7 @@
    "page": "buying",
    "slot": 5,
    "h": "Onboarding papers and their status",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "bee7493",

@@ -1,0 +1,136 @@
+/* ---------- NoteSheet: the notes register with its featured note previewed as a tall folded-corner drawing sheet
+   (look "note-sheet", pass 12 E, concept 254). On the limestone band: the sheet at the left (the note's drawing, its
+   question, title and standard), the topic line and numbered rows at the right; the featured row sits between two
+   flow rules and one flow leader runs from it into the sheet. Phones: the sheet as a compact card above the list, the
+   leader turning down the left edge to row 01. ---------- */
+.aq-note-sheet { --ns-fold: 40px; --ns-th: calc(var(--aq-hit) + var(--space-2) + 2px);
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); column-gap: var(--space-16); align-items: start; margin-top: var(--space-4); }
+
+/* the section: the sheet's sticky top clears the section bar */
+.aq-note-sheet-sec { position: relative; }
+
+/* the sheet: paper with the top-right corner folded down; its outline is the 1 px line-strong ground showing round it */
+.aq-note-sheet__sheet { position: sticky; top: var(--space-24); z-index: 0; padding: 1px; background: var(--line-strong);
+  clip-path: polygon(0 0, calc(100% - var(--ns-fold, 40px)) 0, 100% var(--ns-fold, 40px), 100% 100%, 0 100%); }
+.aq-note-sheet__paper { position: relative; display: flex; flex-direction: column; gap: var(--space-3); box-sizing: border-box;
+  padding: var(--space-12) var(--space-8) var(--space-8); background: var(--surface-raised);
+  clip-path: polygon(0 0, calc(100% - var(--ns-fold, 40px) + 0.6px) 0, 100% calc(var(--ns-fold, 40px) - 0.6px), 100% 100%, 0 100%); }
+.aq-note-sheet__paper::after { content: ""; position: absolute; top: 0; right: 0; width: var(--ns-fold, 40px); height: var(--ns-fold, 40px); box-sizing: border-box;
+  border-left: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+  background: linear-gradient(45deg, var(--surface-sunken) 50%, transparent 50%); pointer-events: none; }
+.aq-note-sheet__fig { display: flex; align-items: flex-end; justify-content: center; margin: 0 0 var(--space-6); padding-bottom: var(--space-2); }
+.aq-note-sheet__fig svg { display: block; width: 72%; max-width: 260px; height: auto; }
+.aq-note-sheet__spot { width: 160px; height: 160px; }
+.aq-note-sheet__sk { display: flex; gap: var(--space-3); margin: auto 0 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-note-sheet__sn { color: var(--flow); }
+.aq-note-sheet__q { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-note-sheet__st { margin: 0; font: 500 21px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-note-sheet__st a { color: inherit; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px;
+  background-position: 0 100%; background-repeat: no-repeat; transition: background-size 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-note-sheet__st a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.aq-note-sheet__st a:hover, .aq-note-sheet__st a:focus-visible { background-size: 100% 1px; }
+.aq-note-sheet__st a:focus-visible { outline: none; }
+.aq-note-sheet__st a:focus-visible::after { outline: 2px solid var(--focus); outline-offset: -4px; }
+.aq-note-sheet__go { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-note-sheet__go::after { content: "\2192"; margin-left: var(--space-2); color: var(--flow); }
+.aq-note-sheet__std { margin: var(--space-3) 0 0; padding-top: var(--space-3); border-top: 1px solid var(--line); font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
+
+/* the register: topic line over a strong rule, then the numbered rows */
+.aq-note-sheet__list { position: relative; min-width: 0; }
+.aq-note-sheet__topics { display: flex; flex-wrap: wrap; column-gap: var(--space-8); border-bottom: 2px solid var(--line-strong); }
+.aq-note-sheet__tab { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--aq-hit); min-width: var(--aq-hit); justify-content: center; padding: 0; margin-bottom: -2px;
+  background: none; border: 0; border-bottom: 2px solid transparent; font: 500 17px/24px var(--font-sans); color: var(--ink-muted); cursor: pointer;
+  transition: color 150ms cubic-bezier(0.2, 0, 0, 1), border-color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-note-sheet__tab span { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
+.aq-note-sheet__tab:hover { color: var(--ink); }
+.aq-note-sheet__tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--flow); }
+.aq-note-sheet__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-note-sheet__count { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-note-sheet__rows { list-style: none; margin: 0; padding: 0; }
+.aq-note-sheet__row { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr) minmax(0, 18rem); column-gap: var(--space-4);
+  align-items: baseline; padding: var(--space-4) 0; border-bottom: 1px solid var(--line-strong); transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-note-sheet__row:hover { background: color-mix(in srgb, var(--surface-raised) 55%, transparent); }
+.aq-note-sheet__row.is-lead { border-top: 2px solid var(--flow); border-bottom: 2px solid var(--flow); margin-top: -2px; }
+.aq-note-sheet__no { font: 400 15px/26px var(--font-mono); color: var(--ink-subtle); }
+.aq-note-sheet__row.is-lead .aq-note-sheet__no { color: var(--flow); }
+.aq-note-sheet__t { margin: 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); }
+.aq-note-sheet__t a { color: inherit; text-decoration: none; }
+.aq-note-sheet__t a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.aq-note-sheet__row:hover .aq-note-sheet__t a, .aq-note-sheet__t a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.aq-note-sheet__t a:focus-visible { outline: none; }
+.aq-note-sheet__t a:focus-visible::after { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-note-sheet__meta { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-1); margin: 0; text-align: right; }
+.aq-note-sheet__tp { font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-note-sheet__code, .aq-note-sheet__date { font: 400 13px/20px var(--font-mono); color: var(--ink-muted); text-wrap: pretty; }
+/* a standard code never breaks inside itself: each '; '-separated code is one unbroken segment */
+.aq-note-sheet__seg { white-space: nowrap; }
+.aq-note-sheet__date { color: var(--ink); }
+
+/* the leader: from the featured row across the gutter into the sheet, ending on a dot */
+.aq-note-sheet__ld { position: absolute; z-index: 2; right: 100%; top: 50%; width: var(--space-16); height: 0;
+  border-top: 1.5px solid var(--flow); transform-origin: 100% 50%; pointer-events: none; }
+.aq-note-sheet__ld::before { content: ""; position: absolute; left: -4px; top: -4.75px; width: 8px; height: 8px; border-radius: 50%; background: var(--flow); }
+.aq-note-sheet__ld i { position: absolute; top: -2px; left: 0; width: 40%; height: 3px; display: none;
+  background: linear-gradient(90deg, transparent, var(--flow-tint), transparent); }
+.aq-note-sheet .aq-fold > .aq-fold__btn { margin-top: var(--space-2); }
+/* a chosen topic shows every match, folded or not, and hides Show all */
+.aq-note-sheet .aq-fold.is-filtered .aq-note-sheet__row.aq-fold-x:not([hidden]) { display: grid; }
+.aq-note-sheet .aq-fold.is-filtered > .aq-fold__btn { display: none; }
+
+/* small desktops (861-1120 px): a narrower gutter and the topic and standard under the title, so titles keep their width */
+@container (min-width: 861px) and (max-width: 1120px) {
+  .aq-note-sheet { column-gap: var(--space-12); }
+  .aq-note-sheet__topics { column-gap: var(--space-4); }
+  .aq-note-sheet__tab { font-size: 15px; }
+  .aq-note-sheet__row { grid-template-columns: var(--space-12) minmax(0, 1fr); }
+  .aq-note-sheet__meta { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: baseline;
+    column-gap: var(--space-3); row-gap: 0; margin-top: var(--space-1); text-align: left; }
+  .aq-note-sheet__date { flex-basis: 100%; }
+  .aq-note-sheet__ld { width: var(--space-12); }
+}
+/* the narrowest desktops: a 1:2 split keeps the topic line on one line */
+@container (min-width: 861px) and (max-width: 920px) {
+  .aq-note-sheet { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+}
+
+/* tablets and phones: the sheet as a compact card above the list; the leader turns down the left edge to row 01 */
+@container (max-width: 860px) {
+  .aq-note-sheet { --ns-fold: 28px; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); margin-top: 0; }
+  .aq-note-sheet__sheet { position: relative; top: auto; }
+  .aq-note-sheet__paper { min-height: 0; gap: var(--space-2); padding: var(--space-4) var(--space-4) var(--space-4); }
+  .aq-note-sheet__fig { height: 168px; margin: 0 0 var(--space-2); padding: var(--space-2) 0 0; border-bottom: 1px solid var(--line); }
+  .aq-note-sheet__fig svg { width: auto; max-width: 100%; height: 100%; }
+  .aq-note-sheet__spot { width: 120px; height: 120px; }
+  .aq-note-sheet__sk { margin-top: var(--space-1); }
+  .aq-note-sheet__q { display: none; }
+  .aq-note-sheet__st { font-size: 18px; line-height: 25px; }
+  .aq-note-sheet__std { margin-top: var(--space-1); padding-top: var(--space-2); font-size: 14px; line-height: 21px; }
+  .aq-note-sheet__go { font-size: 14px; line-height: 21px; }
+
+  .aq-note-sheet__topics { flex-wrap: nowrap; column-gap: var(--space-6); box-sizing: border-box; height: var(--ns-th, 54px); padding: 0 var(--space-4) 0 var(--space-6);
+    overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .aq-note-sheet__topics::-webkit-scrollbar { display: none; }
+  .aq-note-sheet__tab { flex: none; white-space: nowrap; font-size: 16px; }
+  .aq-note-sheet__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-4) 0 var(--space-4) var(--space-6); }
+  .aq-note-sheet__t { font-size: 17px; line-height: 24px; }
+  .aq-note-sheet__meta { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); row-gap: 0; margin-top: var(--space-1); text-align: left; }
+  .aq-note-sheet__tp { font-size: 14px; line-height: 21px; }
+  .aq-note-sheet__code, .aq-note-sheet__date { font-size: 14px; line-height: 21px; }
+  .aq-note-sheet__date { flex-basis: 100%; }
+  .aq-note-sheet__ld { display: none; }
+  .aq-note-sheet__row.is-lead:first-child .aq-note-sheet__ld { display: block; right: auto; left: var(--space-2); top: auto; bottom: calc(100% + 2px); width: 0;
+    height: calc(var(--ns-th, 54px) + var(--space-6)); border-top: 0; border-left: 1.5px solid var(--flow); transform-origin: 50% 100%; }
+  .aq-note-sheet__row.is-lead:first-child .aq-note-sheet__ld::before { left: -4.75px; top: -4px; }
+  .aq-note-sheet__ld i { top: 0; left: -2px; width: 3px; height: 40%; background: linear-gradient(180deg, transparent, var(--flow-tint), transparent); }
+}
+/* tablets (601-860 px): the card in two columns, the drawing at the left beside its text, not a wide empty strip */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-note-sheet__paper { display: grid; grid-template-columns: 200px minmax(0, 1fr); column-gap: var(--space-6); align-content: end; }
+  .aq-note-sheet__fig { grid-row: 1 / span 4; height: 200px; margin: 0; padding: 0 var(--space-4) 0 0;
+    border-bottom: 0; border-right: 1px solid var(--line); }
+}
+@container (max-width: 600px) {
+  .aq-note-sheet__fig { height: 180px; }
+  /* under "All", rows 01-03; Show all opens the rest (a chosen topic shows every match) */
+  .aq-note-sheet .aq-fold:not(.is-open):not(.is-filtered) .aq-note-sheet__row:nth-child(n+4) { display: none; }
+}

@@ -56,7 +56,12 @@ GEMINI_USE = {
     # 238 is ind-process's weaker take of 237's envelope, used for its phone half)
     '235': 'Hero', '236': 'Hero', '237': 'FitEnvelope', '238': 'FitEnvelope', '239': 'Hero', '240': 'RecordTrail',
     '242': 'ReceivingBench', '243': 'ContractFolders', '245': 'BidRoute', '246': 'Hero', '247': 'CapitalRequest',
-    '249': 'ClauseTabs', '250': 'LevellingSheet'}
+    '249': 'ClauseTabs', '250': 'LevellingSheet',
+    # pass 12 build E: hero drawings at native 1024 px (251 replaces 239 on cmp-quality, 258 replaces the code-drawn
+    # 246 board on project-plan; 239 and 246 stay mapped as the round D record) and new looks. 253, 257 and 265 are
+    # superseded or refused takes; 259 stays a concept only (compliance keeps its HeroScene)
+    '251': 'Hero', '252': 'Hero', '254': 'NoteSheet', '255': 'OnboardingFan', '256': 'TitleBlock', '258': 'Hero',
+    '260': 'OrthoSheet', '261': 'Hero', '262': 'Hero', '263': 'Hero', '264': 'Hero'}
 GEMINI_REFERENCE = {'58'}
 RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
 # Equipment drawings redrawn on 2026-10-31 to match the offer (polypropylene PW package: no stainless piping, no sterile

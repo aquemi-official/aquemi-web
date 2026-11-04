@@ -821,13 +821,11 @@
    "look": "code-index",
    "component": "CodeIndex",
    "type": "docs",
-   "status": "live",
+   "status": "retired",
    "fields": "h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun, poster (look-only). Codes come from the DocList lookup (docCode) unless the item names its own.",
    "best_for": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow.",
    "held": "4-7",
-   "pages": [
-    "buying"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "svc-fabrication",
@@ -853,7 +851,7 @@
      "page": "buying",
      "slot": 5,
      "h": "Onboarding papers and their status",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -3461,6 +3459,30 @@
    ]
   },
   {
+   "look": "note-sheet",
+   "component": "NoteSheet",
+   "type": "register",
+   "status": "live",
+   "fields": "h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold, fold_noun.",
+   "best_for": "NoteSheet is the notes register with its featured note previewed as a tall folded-corner drawing sheet beside the numbered rows, one flow leader joining the sheet to the note's row (pass 12 E, concept 254).",
+   "held": "29",
+   "pages": [
+    "news"
+   ],
+   "instances": [
+    {
+     "page": "news",
+     "slot": 0,
+     "h": "The notes register",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "541f27b",
+     "hash": "20faa7f66e"
+    }
+   ]
+  },
+  {
    "look": "numeral-index",
    "component": "NumeralIndex",
    "type": "table",
@@ -3522,6 +3544,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "b6253b088e"
+    }
+   ]
+  },
+  {
+   "look": "onboarding-fan",
+   "component": "OnboardingFan",
+   "type": "docs",
+   "status": "live",
+   "fields": "h, intro, items [{t, d, code, key, link, intent}]. Codes come from the DocList lookup (docCode) unless the item names its own.",
+   "best_for": "OnboardingFan shows a supplier-onboarding set as an open folder with one tabbed paper fanned out per item, each paper carrying a status-stamp slot, so procurement sees every paper it checks before award and the status of each at a glance (look `onboarding-fan`, a docs block).",
+   "held": "7",
+   "pages": [
+    "buying"
+   ],
+   "instances": [
+    {
+     "page": "buying",
+     "slot": 5,
+     "h": "Onboarding papers and their status",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "541f27b",
+     "hash": "db637aab19"
     }
    ]
   },
@@ -3687,6 +3733,30 @@
    ]
   },
   {
+   "look": "ortho-sheet",
+   "component": "OrthoSheet",
+   "type": "spec",
+   "status": "live",
+   "fields": "(a spec block, as skid-sheet): h, caption (eyebrow and a title block cell), intro, rows [{p, v, m, link, link_label, part}], note, cols[2] (the basis button's word). part (look-only): membranes, utilities, exchanger, edi, piping, joints, frame, pump, drain, panel. A row without a part lists with no tag. Every row shows on every width.",
+   "best_for": "OrthoSheet reads a skid's design parameters off an orthographic general-arrangement sheet: one RO and EDI skid drawn flat in two views, the front elevation over the plan, with a numbered tag on a leader from each part to the parameter it governs and the parameter rows beside the sheet under the same numbers.",
+   "held": "10",
+   "pages": [
+    "sys-pw"
+   ],
+   "instances": [
+    {
+     "page": "sys-pw",
+     "slot": 2,
+     "h": "Skid design parameters",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "541f27b",
+     "hash": "98a1e53440"
+    }
+   ]
+  },
+  {
    "look": "pack-matrix",
    "component": "PackMatrix",
    "type": "docs",
@@ -3774,13 +3844,11 @@
    "look": "pdf-anatomy",
    "component": "PdfAnatomy",
    "type": "spec",
-   "status": "live",
+   "status": "retired",
    "fields": "h, intro, cols [item, how we deliver it, note], rows [{p, v, m, hl, part}]. Callouts find their part by their words (search, bookmark, else number/revision/page: the footer); rows[].parts (optional) names them in order (\"search\", \"mark\", \"foot\").",
    "best_for": "PdfAnatomy sets delivery terms as a figure plate of the delivered document: a PDF open in a viewer (bookmark pane, a search hit, the number and revision box in the footer of every page of the stack) with each part of the highlighted row's value as a callout on a leader, and the other rows beside it as signature lines or a large statement.",
    "held": "3-4",
-   "pages": [
-    "cmp-documentation"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "cmp-documentation",
@@ -3806,7 +3874,7 @@
      "page": "cmp-documentation",
      "slot": 3,
      "h": "Delivery and signatures",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "bee7493",
@@ -4884,13 +4952,11 @@
    "look": "revision-register",
    "component": "RevisionRegister",
    "type": "register",
-   "status": "live",
+   "status": "retired",
    "fields": "h, intro, topics, items [{t, topic, std, date, link, featured, spot, d}], fold, fold_noun. Never a date that is not given (the dashed page status instead); the lead note is the featured one, else the first of the first topic. Filtering shows every matching note, folded or not; notes that stay glide to their new places and new ones fade in.",
    "best_for": "RevisionRegister keeps technical notes as the numbered notes column of one limestone drawing sheet: the title large and light with the lead note under it, a faint drawing of the page a note is applied on, and the register in mono behind a hairline rule, with a topic filter and a title block carrying the live count.",
    "held": "25-29",
-   "pages": [
-    "news"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "news",
@@ -4936,7 +5002,7 @@
      "page": "news",
      "slot": 0,
      "h": "The notes register",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "1f4eab0",
@@ -5734,19 +5800,17 @@
    "look": "skid-sheet",
    "component": "SkidSheet",
    "type": "spec",
-   "status": "live",
+   "status": "retired",
    "fields": "h, caption (eyebrow), intro, rows [{p, v, m, link, link_label, part}], note. part (look-only): the drawn part the row governs, one of membranes, utilities, exchanger, edi, piping, joints, frame, pump, drain, panel. A row without a part has no tag (it still lists). Every row shows on every width (S7).",
    "best_for": "SkidSheet reads a skid's design parameters off the skid itself: one RO and EDI skid in IsoKit line art on a framed general-arrangement sheet, a numbered tag on a leader from each part to the parameter it governs, and the parameter rows beside the sheet under the same numbers.",
    "held": "10",
-   "pages": [
-    "sys-pw"
-   ],
+   "pages": [],
    "instances": [
     {
      "page": "sys-pw",
      "slot": 2,
      "h": "Skid design parameters",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-03",
      "last_seen": "2026-11-03",
      "commit": "281a059",
@@ -6776,6 +6840,30 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "c2b5e78ac4"
+    }
+   ]
+  },
+  {
+   "look": "title-block",
+   "component": "TitleBlock",
+   "type": "spec",
+   "status": "live",
+   "fields": "h, intro, cols [item, how we deliver it, note], rows [{p, v, m, hl, link, link_label}]; rows[].draw (look-only, optional): \"page\", \"sign\", \"time\" or \"box\" picks the zone's drawing; otherwise it is guessed from the row's name and value (sign for choices, then documents/format, timing/kickoff, retention/archive).",
+   "best_for": "TitleBlock sets delivery terms as the ruled title block of a drawing sheet: each row one zone with a numbered tag, its name, a small IsoKit drawing of what it delivers, the value and the note.",
+   "held": "4",
+   "pages": [
+    "cmp-documentation"
+   ],
+   "instances": [
+    {
+     "page": "cmp-documentation",
+     "slot": 3,
+     "h": "Delivery and signatures",
+     "status": "live",
+     "first_seen": "2026-11-03",
+     "last_seen": "2026-11-03",
+     "commit": "541f27b",
+     "hash": "7b3d15c980"
     }
    ]
   },

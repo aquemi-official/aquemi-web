@@ -451,11 +451,24 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 @container (min-width: 561px) and (max-width: 860px) {
   .aq-hero__figure--drawing { width: 100%; max-width: 600px; margin-inline: auto; }
 }
+/* Tablet (561 to 860), round E verify: an ART_FULL equipment drawing (box ratio below 5:4) at most 600 px tall,
+   centred, so svc-service, ind-hospital-lab and svc-fat-sat do not grow to 1,170-1,450 px heroes at 768. */
+@container (min-width: 561px) and (max-width: 860px) {
+  .aq-hero[data-hero="svc-service"] .aq-hero__figure .aq-hero__art,
+  .aq-hero[data-hero="ind-hospital-lab"] .aq-hero__figure .aq-hero__art,
+  .aq-hero[data-hero="svc-fat-sat"] .aq-hero__figure .aq-hero__art { width: 100%; max-width: calc(var(--art-r, 1) * 600px); margin-inline: auto; }
+}
 @container (max-width: 560px) {
-  /* cmp-quality, small phones only (verify fix 3): the audit table is cropped to its top, so the four records
-     (manual, register, the fused joint, the shipment record) read at about 1.4x instead of sharing 343 px with the
-     legs. The box is the crop's ratio; mask size and position place the table top in it, the shipment record's lower
-     corner inside the box. From 561 px the whole table shows in its own 1.11 box. */
-  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.31; }
-  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 139% auto; mask-size: 139% auto; -webkit-mask-position: 46% 26%; mask-position: 46% 26%; }
+  /* Small phones, round E: two hero-only drawings stand on furniture whose lower half carries no idea, so the box
+     stops at the furniture's top and the drawing starts at the box's top edge (mask from the top, the rest clipped).
+     - cmp-quality (251, 874 x 900): the table top with its four records and the pipe rack; the legs end at the box
+       edge (source rows 0 to 700, box 874 / 700).
+     - news (252, 786 x 900, line_art --inset 0): the drafting board with the note sheet and the loop sketch, its
+       left edge and the tray's right end inside; the stand drops out (mask x 12 to 775, rows 0 to 640, box 763 / 640,
+       mask 786 / 763 = 103 % wide, placed 12 px in: 50 %).
+     From 561 px both show whole in their own box (ART_R). */
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.249; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 100% auto; mask-size: 100% auto; -webkit-mask-position: 50% 0; mask-position: 50% 0; }
+  .aq-hero[data-hero="news"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.192; }
+  .aq-hero[data-hero="news"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 103% auto; mask-size: 103% auto; -webkit-mask-position: 50% 0; mask-position: 50% 0; }
 }

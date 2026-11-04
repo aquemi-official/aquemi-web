@@ -11,28 +11,29 @@ var ART={
  'sys-monitoring':'Wall-mounted analyzer panel: TOC and conductivity transmitters, controller and sample lines from a polypropylene header',
  'svc-design':'Skid design: a 3D frame model standing on its P&ID sheet, with scale rule and pencil',
  'svc-fabrication':'Butt-fusion machine joining two polypropylene pipes, with heater plate, facing tool and a finished spool',
- 'svc-fat-sat':'Water treatment skid hosed to a wheeled test cart with gauges, flow meter and laptop',
- 'svc-service':'Field service kit: open toolbox, wrenches, spare filter cartridge, replacement pump and tri-clamp',
+ 'svc-fat-sat':'Factory acceptance test in the shop: a polypropylene skid with membrane housings, cartridge filters and a control box, looped by fused test pipe through true-union valves to a test tank on a plinth, and a cart with a handheld meter and the open protocol binder',
+ 'svc-service':'Service visit at a polypropylene skid: membrane housings and a control box on its back panel, a cartridge housing with a spare bowl and a new cartridge set beside it, an open toolbox with hand tools and a handheld meter, and the service log binder',
  'svc-upgrades':'Existing polypropylene tank on its plinth, a new pump and filter module beside it, and the fused spool that joins them on the hoist',
  'svc-cq':'Qualification kit: tabbed protocol binder, checklist clipboard and calibrated temperature probe',
  'ind-pharma':'Mixing vessel for oral liquids and creams, fed from a Purified Water point-of-use valve',
  'ind-biotech':'Jacketed bioprocess vessel with agitator drive, sanitary piping, valves and control box',
  'ind-meddevice':'Washer-disinfector with instrument racks and spray arms, fed by a purified water line',
  'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop',
- 'ind-personal-care':'Water treatment skid with cartridge filters, membrane housings and a tank, piped to a mixing vessel with agitator and a bottle filler, a hose reel on the wall',
- 'ind-hospital-lab':'Plant room with a membrane skid, pumps and a storage tank, its loop rising to a washer-disinfector and a lab bench sink on the floor above',
+ 'ind-personal-care':'Polypropylene water treatment skid with membrane housings, cartridge filters and a tank on a plinth, piped to a batching vessel with a top mixer and a bottle filler, a hose reel on the wall',
+ 'ind-hospital-lab':'Plant room with a polypropylene membrane skid, cartridge filters and a storage tank on a plinth, its loop rising through the slab to the floor above, where a washer-disinfector and a lab bench with a sink stand',
  'ind-process':'Membrane skid with filter vessels on a plinth, one pipe teeing to a cabinet, an open rinse tank and a plate-stack unit'
 };
 /* Width / height of each drawing in ART (the PNG mask's own ratio). On phones the hero's drawing box takes this ratio,
    never taller than 5:4 (ART_R below 1.25 keeps the 5:4 box), so a wide drawing runs the full gutter width with no
    empty band above or below it. A page missing here keeps the 5:4 box. */
-var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':1.05,'ind-meddevice':0.91,'ind-personal-care':1.74,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.51,'svc-service':1,'svc-upgrades':1.16,'sys-monitoring':0.66,'sys-pretreatment':1.18,'sys-pure-steam':0.65,'sys-pw':0.93,'sys-storage':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'cmp-quality':1.11,'project-plan':1.03};
+var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':0.94,'ind-meddevice':0.91,'ind-personal-care':1.57,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.08,'svc-service':0.86,'svc-upgrades':1.16,'sys-monitoring':0.66,'sys-pretreatment':1.18,'sys-pure-steam':0.65,'sys-pw':0.93,'sys-storage':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'cmp-quality':0.97,'project-plan':1.15,'news':0.87};
 /* Hero-only drawings (pass 12 round D): pages that are not equipment pages but take a line drawing as their hero
    figure, opted in with the hero field "figure": {"art": "<id>"} (assets/illustrations/<id>.png, ratio in ART_R).
    Kept out of ART so related cards, project-run and the other ART readers keep what they draw for these pages. */
 var HERO_ART={
- 'cmp-quality':'Audit table: an open quality manual, the nonconformance register, a pipe length with a fused joint and a shipment record',
- 'project-plan':'Schedule board: nine stage bars stepping down a ruled sheet, each starting at a hold diamond, the package on a pallet at FAT, a truck at shipping and the handover binder after the last stage'
+ 'cmp-quality':'Audit table in the shop: an open quality manual, the nonconformance register, a pipe length with a fused joint and a tag, and a shipment record, with fused pipe lengths on a rack behind',
+ 'project-plan':'One schedule in three steps: the signed order with a pen, the package on a pallet for its factory test, then a point-of-use valve over a sink with the handover binder; a hold diamond where each step drops',
+ 'news':'Drafting board: a pinned note sheet with three numbered answer lines, earlier notes tabbed behind it, and a pencil sketch of a polypropylene loop with a diaphragm valve'
 };
 function heroArtId(p){var f=p.figure;return f&&typeof f==='object'&&HERO_ART[f.art]?f.art:''}
 function artMask(id){var u='url(assets/illustrations/'+id+'.webp)';return '-webkit-mask-image:'+u+';mask-image:'+u}
@@ -67,9 +68,11 @@ function heroPins(n,id,R){var at=HERO_AT_P[id]||HERO_AT,r=ART_R[id]||1,w=r>=R?1:
 /* The phone box: the drawing's own ratio, never taller than 5:4; a system page's drawing (hero--mist, pins on it) may
    go down to square, so a near-square drawing runs the full gutter width (S9). So may the hero-only drawings
    (HERO_ART) and the pages in ART_FULL (pass 12 round D: svc-upgrades, 1.16, lost an 18 px band above and below in
-   the 5:4 box). */
-var ART_FULL={'svc-upgrades':1};
-function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,/^sys-/.test(id)||HERO_ART[id]||ART_FULL[id]?1:1.25):1.25}
+   the 5:4 box). ART_FULL's value is the lowest box ratio that page's drawing may take (round E: the near-square and
+   upright PP redraws of svc-service 0.86, ind-hospital-lab 0.94 and svc-fat-sat 1.02 run the full gutter width, their
+   box as tall as the drawing, so no side bands either). */
+var ART_FULL={'svc-upgrades':1,'svc-service':0.86,'ind-hospital-lab':0.94,'svc-fat-sat':1};
+function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,ART_FULL[id]||(/^sys-/.test(id)||HERO_ART[id]?1:1.25)):1.25}
 function wHeroFigure(p,facts,id){id=id||p.id;var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'},r=ART_R[id],R=heroBoxR(id);
  return '<figure class="aq-hero__figure'+(HERO_ART[id]?' aq-hero__figure--drawing':'')+'"'+(r?' style="--art-r:'+R+'"':'')+'>'
   +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')

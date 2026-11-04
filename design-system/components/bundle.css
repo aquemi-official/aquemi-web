@@ -3590,98 +3590,6 @@ a.aq-checker-router__go:focus-visible { outline: 2px solid var(--focus); outline
 [data-theme="dark"] .aq-closing > .aq-fx-shader { --fx-amt: 0.17; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-closing > .aq-fx-shader { --fx-amt: 0.17; } }
 
-/* ---------- CodeIndex: a short document set as a filing index (look "code-index") ----------
-   Compact (default, pass 12 round C): each row is a 48 px outline tab chip carrying the filing code, the title and the
-   status line beside it; wide: two columns filled down (--rows from the renderer, 4 + 3 for seven); phones: one row
-   each. Key documents (.is-key) draw their chip in flow.
-   Poster (.aq-code-index--poster, look-only "poster": true): the code as huge outline Geist Mono (text-stroke under a
-   ground-coloured fill) cropped by the page edge, alternating sides (.is-r), the text beside it. ---------- */
-.aq-section.aq-code-index-sec { overflow-x: clip; }
-.aq-code-index { position: relative; }
-.aq-code-index__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
-.aq-code-index__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
-.aq-code-index__t a { color: inherit; text-decoration: none; }
-.aq-code-index__t a::after { content: "\a0\2192"; color: var(--flow); }
-.aq-code-index__t a:hover { color: var(--flow); }
-.aq-code-index__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.aq-code-index__d { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
-.aq-code-index__more { margin: var(--space-8) 0 0; }
-
-/* Compact rows */
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__list {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(var(--rows, 4), auto); grid-auto-flow: column; column-gap: var(--space-12);
-  border-top: 0;
-}
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__row {
-  display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-4); align-items: start;
-  padding: var(--space-4) 0 var(--space-6); border-top: 1px solid var(--line-strong);
-}
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__code {
-  display: grid; place-items: center; box-sizing: border-box; width: var(--space-12); height: var(--space-12); padding: 0 2px;
-  border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface);
-  font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--ink); white-space: nowrap; user-select: none;
-  transition: background-color 200ms, color 200ms, border-color 200ms;
-}
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__row.is-key .aq-code-index__code { border-color: var(--flow); color: var(--flow); }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__row:hover .aq-code-index__code { background: var(--surface-sunken); }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__row.is-key:hover .aq-code-index__code { background: var(--flow-tint); }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__text { min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__n { font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-subtle); }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__row.is-key .aq-code-index__n { color: var(--flow); }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__nc { display: none; }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__list > :last-child,
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__row.is-colend { border-bottom: 1px solid var(--line-strong); }
-/* folded (fold set, not yet opened): the columns hold the shown rows only, so column 1 ends earlier (--rows-f) */
-.aq-code-index:not(.aq-code-index--poster) .aq-fold:not(.is-open) > .aq-code-index__list { --rows: var(--rows-f, 4); }
-.aq-code-index:not(.aq-code-index--poster) .aq-fold:not(.is-open) .aq-code-index__row.is-colend { border-bottom: 0; }
-.aq-code-index:not(.aq-code-index--poster) .aq-fold:not(.is-open) .aq-code-index__row.is-colend-f,
-.aq-code-index:not(.aq-code-index--poster) .aq-fold:not(.is-open) .aq-code-index__row.is-end-f { border-bottom: 1px solid var(--line-strong); }
-@container (max-width: 860px) {
-  .aq-code-index:not(.aq-code-index--poster) .aq-code-index__list { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; }
-  .aq-code-index:not(.aq-code-index--poster) .aq-code-index__row { padding: var(--space-3) 0; column-gap: var(--space-3); }
-  .aq-code-index__d { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
-  .aq-code-index:not(.aq-code-index--poster) .aq-code-index__row.is-colend:not(:last-child),
-  .aq-code-index:not(.aq-code-index--poster) .aq-fold:not(.is-open) .aq-code-index__row.is-colend-f:not(.is-end-f) { border-bottom: 0; }
-  .aq-code-index:not(.aq-code-index--poster) .aq-code-index__n { display: none; }
-  .aq-code-index__t { font-size: 17px; line-height: 23px; }
-}
-
-/* Poster (look-only "poster": true): the pre-round-C huge outline codes */
-.aq-code-index--poster .aq-code-index__row {
-  position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; column-gap: var(--space-8);
-  min-height: var(--space-32); padding: var(--space-6) 0; border-bottom: 1px solid var(--line-strong);
-}
-.aq-code-index--poster .aq-code-index__code {
-  font: 300 208px/0.9 var(--font-mono); letter-spacing: -0.07em; white-space: nowrap;
-  /* the stroke is painted under a ground-coloured fill: only its outer half shows, so the variable font's overlapping
-     contours (inside N, Q, R) stay hidden; 3 px reads as a 1.5 px outline */
-  color: var(--surface); -webkit-text-stroke: 3px var(--line-strong); paint-order: stroke fill; margin-left: calc(-1 * var(--space-8)); transition: color 300ms cubic-bezier(0.2, 0, 0, 1);
-  user-select: none;
-}
-.aq-code-index--poster .aq-code-index__row.is-key .aq-code-index__code { -webkit-text-stroke-color: var(--flow); }
-.aq-code-index--poster .aq-code-index__row.is-r { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
-.aq-code-index--poster .aq-code-index__row.is-r .aq-code-index__code { order: 2; justify-self: end; margin-left: 0; margin-right: calc(-1 * var(--space-8)); }
-.aq-code-index--poster .aq-code-index__row:hover .aq-code-index__code { color: var(--surface-sunken); }
-.aq-code-index--poster .aq-code-index__row.is-key:hover .aq-code-index__code { color: var(--flow-tint); }
-.aq-code-index--poster .aq-code-index__text { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-2); max-width: 46ch; }
-.aq-code-index--poster .aq-code-index__n { font: 400 13px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-subtle); }
-.aq-code-index--poster .aq-code-index__row.is-key .aq-code-index__n { color: var(--flow); }
-.aq-code-index--poster .aq-code-index__t { font-size: 28px; line-height: 34px; letter-spacing: -0.015em; }
-.aq-code-index--poster .aq-code-index__d { font-size: 16px; line-height: 25px; }
-@container (max-width: 1100px) {
-  .aq-code-index--poster .aq-code-index__code { font-size: 140px; margin-left: calc(-1 * var(--space-4)); }
-  .aq-code-index--poster .aq-code-index__row.is-r .aq-code-index__code { margin-right: calc(-1 * var(--space-4)); }
-}
-@container (max-width: 860px) {
-  .aq-code-index--poster .aq-code-index__row, .aq-code-index--poster .aq-code-index__row.is-r { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); min-height: 0; padding: var(--space-4) 0 var(--space-8); }
-  .aq-code-index--poster .aq-code-index__code, .aq-code-index--poster .aq-code-index__row.is-r .aq-code-index__code { order: 0; justify-self: start; font-size: 76px; margin: 0 0 0 calc(-1 * var(--space-1)); }
-  .aq-code-index--poster .aq-code-index__row.is-r .aq-code-index__code { justify-self: end; margin: 0 calc(-1 * var(--space-1)) 0 0; }
-  .aq-code-index--poster .aq-code-index__t { font-size: 22px; line-height: 28px; }
-}
-/* compact: a linked title stretches its hit area over the whole row (at least 48 px tall: the chip) */
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__row { position: relative; }
-.aq-code-index:not(.aq-code-index--poster) .aq-code-index__t a::before { content: ""; position: absolute; inset: 0; }
-
 /* ---------- Colophon: company facts as a split ledger (pass 9b) ---------- */
 /* A navy band with a limestone strip down its left edge (out to the page edge). The title, very large and light,
    straddles the strip's edge: the real heading is limestone on navy; an aria-hidden copy in navy is clipped to the
@@ -7490,13 +7398,26 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 @container (min-width: 561px) and (max-width: 860px) {
   .aq-hero__figure--drawing { width: 100%; max-width: 600px; margin-inline: auto; }
 }
+/* Tablet (561 to 860), round E verify: an ART_FULL equipment drawing (box ratio below 5:4) at most 600 px tall,
+   centred, so svc-service, ind-hospital-lab and svc-fat-sat do not grow to 1,170-1,450 px heroes at 768. */
+@container (min-width: 561px) and (max-width: 860px) {
+  .aq-hero[data-hero="svc-service"] .aq-hero__figure .aq-hero__art,
+  .aq-hero[data-hero="ind-hospital-lab"] .aq-hero__figure .aq-hero__art,
+  .aq-hero[data-hero="svc-fat-sat"] .aq-hero__figure .aq-hero__art { width: 100%; max-width: calc(var(--art-r, 1) * 600px); margin-inline: auto; }
+}
 @container (max-width: 560px) {
-  /* cmp-quality, small phones only (verify fix 3): the audit table is cropped to its top, so the four records
-     (manual, register, the fused joint, the shipment record) read at about 1.4x instead of sharing 343 px with the
-     legs. The box is the crop's ratio; mask size and position place the table top in it, the shipment record's lower
-     corner inside the box. From 561 px the whole table shows in its own 1.11 box. */
-  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.31; }
-  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 139% auto; mask-size: 139% auto; -webkit-mask-position: 46% 26%; mask-position: 46% 26%; }
+  /* Small phones, round E: two hero-only drawings stand on furniture whose lower half carries no idea, so the box
+     stops at the furniture's top and the drawing starts at the box's top edge (mask from the top, the rest clipped).
+     - cmp-quality (251, 874 x 900): the table top with its four records and the pipe rack; the legs end at the box
+       edge (source rows 0 to 700, box 874 / 700).
+     - news (252, 786 x 900, line_art --inset 0): the drafting board with the note sheet and the loop sketch, its
+       left edge and the tray's right end inside; the stand drops out (mask x 12 to 775, rows 0 to 640, box 763 / 640,
+       mask 786 / 763 = 103 % wide, placed 12 px in: 50 %).
+     From 561 px both show whole in their own box (ART_R). */
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.249; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 100% auto; mask-size: 100% auto; -webkit-mask-position: 50% 0; mask-position: 50% 0; }
+  .aq-hero[data-hero="news"] .aq-hero__figure--drawing .aq-hero__art { aspect-ratio: 1.192; }
+  .aq-hero[data-hero="news"] .aq-hero__figure--drawing .aq-illustration { -webkit-mask-size: 103% auto; mask-size: 103% auto; -webkit-mask-position: 50% 0; mask-position: 50% 0; }
 }
 
 /* ---------- HeroScene ---------- */
@@ -10643,6 +10564,143 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   .aq-ncr-tiles__fig { max-width: 34rem; margin-inline: auto; }
 }
 
+/* ---------- NoteSheet: the notes register with its featured note previewed as a tall folded-corner drawing sheet
+   (look "note-sheet", pass 12 E, concept 254). On the limestone band: the sheet at the left (the note's drawing, its
+   question, title and standard), the topic line and numbered rows at the right; the featured row sits between two
+   flow rules and one flow leader runs from it into the sheet. Phones: the sheet as a compact card above the list, the
+   leader turning down the left edge to row 01. ---------- */
+.aq-note-sheet { --ns-fold: 40px; --ns-th: calc(var(--aq-hit) + var(--space-2) + 2px);
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); column-gap: var(--space-16); align-items: start; margin-top: var(--space-4); }
+
+/* the section: the sheet's sticky top clears the section bar */
+.aq-note-sheet-sec { position: relative; }
+
+/* the sheet: paper with the top-right corner folded down; its outline is the 1 px line-strong ground showing round it */
+.aq-note-sheet__sheet { position: sticky; top: var(--space-24); z-index: 0; padding: 1px; background: var(--line-strong);
+  clip-path: polygon(0 0, calc(100% - var(--ns-fold, 40px)) 0, 100% var(--ns-fold, 40px), 100% 100%, 0 100%); }
+.aq-note-sheet__paper { position: relative; display: flex; flex-direction: column; gap: var(--space-3); box-sizing: border-box;
+  padding: var(--space-12) var(--space-8) var(--space-8); background: var(--surface-raised);
+  clip-path: polygon(0 0, calc(100% - var(--ns-fold, 40px) + 0.6px) 0, 100% calc(var(--ns-fold, 40px) - 0.6px), 100% 100%, 0 100%); }
+.aq-note-sheet__paper::after { content: ""; position: absolute; top: 0; right: 0; width: var(--ns-fold, 40px); height: var(--ns-fold, 40px); box-sizing: border-box;
+  border-left: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+  background: linear-gradient(45deg, var(--surface-sunken) 50%, transparent 50%); pointer-events: none; }
+.aq-note-sheet__fig { display: flex; align-items: flex-end; justify-content: center; margin: 0 0 var(--space-6); padding-bottom: var(--space-2); }
+.aq-note-sheet__fig svg { display: block; width: 72%; max-width: 260px; height: auto; }
+.aq-note-sheet__spot { width: 160px; height: 160px; }
+.aq-note-sheet__sk { display: flex; gap: var(--space-3); margin: auto 0 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-note-sheet__sn { color: var(--flow); }
+.aq-note-sheet__q { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-note-sheet__st { margin: 0; font: 500 21px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-note-sheet__st a { color: inherit; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px;
+  background-position: 0 100%; background-repeat: no-repeat; transition: background-size 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-note-sheet__st a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.aq-note-sheet__st a:hover, .aq-note-sheet__st a:focus-visible { background-size: 100% 1px; }
+.aq-note-sheet__st a:focus-visible { outline: none; }
+.aq-note-sheet__st a:focus-visible::after { outline: 2px solid var(--focus); outline-offset: -4px; }
+.aq-note-sheet__go { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-note-sheet__go::after { content: "\2192"; margin-left: var(--space-2); color: var(--flow); }
+.aq-note-sheet__std { margin: var(--space-3) 0 0; padding-top: var(--space-3); border-top: 1px solid var(--line); font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
+
+/* the register: topic line over a strong rule, then the numbered rows */
+.aq-note-sheet__list { position: relative; min-width: 0; }
+.aq-note-sheet__topics { display: flex; flex-wrap: wrap; column-gap: var(--space-8); border-bottom: 2px solid var(--line-strong); }
+.aq-note-sheet__tab { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--aq-hit); min-width: var(--aq-hit); justify-content: center; padding: 0; margin-bottom: -2px;
+  background: none; border: 0; border-bottom: 2px solid transparent; font: 500 17px/24px var(--font-sans); color: var(--ink-muted); cursor: pointer;
+  transition: color 150ms cubic-bezier(0.2, 0, 0, 1), border-color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-note-sheet__tab span { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
+.aq-note-sheet__tab:hover { color: var(--ink); }
+.aq-note-sheet__tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--flow); }
+.aq-note-sheet__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-note-sheet__count { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-note-sheet__rows { list-style: none; margin: 0; padding: 0; }
+.aq-note-sheet__row { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr) minmax(0, 18rem); column-gap: var(--space-4);
+  align-items: baseline; padding: var(--space-4) 0; border-bottom: 1px solid var(--line-strong); transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-note-sheet__row:hover { background: color-mix(in srgb, var(--surface-raised) 55%, transparent); }
+.aq-note-sheet__row.is-lead { border-top: 2px solid var(--flow); border-bottom: 2px solid var(--flow); margin-top: -2px; }
+.aq-note-sheet__no { font: 400 15px/26px var(--font-mono); color: var(--ink-subtle); }
+.aq-note-sheet__row.is-lead .aq-note-sheet__no { color: var(--flow); }
+.aq-note-sheet__t { margin: 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); }
+.aq-note-sheet__t a { color: inherit; text-decoration: none; }
+.aq-note-sheet__t a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.aq-note-sheet__row:hover .aq-note-sheet__t a, .aq-note-sheet__t a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.aq-note-sheet__t a:focus-visible { outline: none; }
+.aq-note-sheet__t a:focus-visible::after { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-note-sheet__meta { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-1); margin: 0; text-align: right; }
+.aq-note-sheet__tp { font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-note-sheet__code, .aq-note-sheet__date { font: 400 13px/20px var(--font-mono); color: var(--ink-muted); text-wrap: pretty; }
+/* a standard code never breaks inside itself: each '; '-separated code is one unbroken segment */
+.aq-note-sheet__seg { white-space: nowrap; }
+.aq-note-sheet__date { color: var(--ink); }
+
+/* the leader: from the featured row across the gutter into the sheet, ending on a dot */
+.aq-note-sheet__ld { position: absolute; z-index: 2; right: 100%; top: 50%; width: var(--space-16); height: 0;
+  border-top: 1.5px solid var(--flow); transform-origin: 100% 50%; pointer-events: none; }
+.aq-note-sheet__ld::before { content: ""; position: absolute; left: -4px; top: -4.75px; width: 8px; height: 8px; border-radius: 50%; background: var(--flow); }
+.aq-note-sheet__ld i { position: absolute; top: -2px; left: 0; width: 40%; height: 3px; display: none;
+  background: linear-gradient(90deg, transparent, var(--flow-tint), transparent); }
+.aq-note-sheet .aq-fold > .aq-fold__btn { margin-top: var(--space-2); }
+/* a chosen topic shows every match, folded or not, and hides Show all */
+.aq-note-sheet .aq-fold.is-filtered .aq-note-sheet__row.aq-fold-x:not([hidden]) { display: grid; }
+.aq-note-sheet .aq-fold.is-filtered > .aq-fold__btn { display: none; }
+
+/* small desktops (861-1120 px): a narrower gutter and the topic and standard under the title, so titles keep their width */
+@container (min-width: 861px) and (max-width: 1120px) {
+  .aq-note-sheet { column-gap: var(--space-12); }
+  .aq-note-sheet__topics { column-gap: var(--space-4); }
+  .aq-note-sheet__tab { font-size: 15px; }
+  .aq-note-sheet__row { grid-template-columns: var(--space-12) minmax(0, 1fr); }
+  .aq-note-sheet__meta { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: baseline;
+    column-gap: var(--space-3); row-gap: 0; margin-top: var(--space-1); text-align: left; }
+  .aq-note-sheet__date { flex-basis: 100%; }
+  .aq-note-sheet__ld { width: var(--space-12); }
+}
+/* the narrowest desktops: a 1:2 split keeps the topic line on one line */
+@container (min-width: 861px) and (max-width: 920px) {
+  .aq-note-sheet { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+}
+
+/* tablets and phones: the sheet as a compact card above the list; the leader turns down the left edge to row 01 */
+@container (max-width: 860px) {
+  .aq-note-sheet { --ns-fold: 28px; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); margin-top: 0; }
+  .aq-note-sheet__sheet { position: relative; top: auto; }
+  .aq-note-sheet__paper { min-height: 0; gap: var(--space-2); padding: var(--space-4) var(--space-4) var(--space-4); }
+  .aq-note-sheet__fig { height: 168px; margin: 0 0 var(--space-2); padding: var(--space-2) 0 0; border-bottom: 1px solid var(--line); }
+  .aq-note-sheet__fig svg { width: auto; max-width: 100%; height: 100%; }
+  .aq-note-sheet__spot { width: 120px; height: 120px; }
+  .aq-note-sheet__sk { margin-top: var(--space-1); }
+  .aq-note-sheet__q { display: none; }
+  .aq-note-sheet__st { font-size: 18px; line-height: 25px; }
+  .aq-note-sheet__std { margin-top: var(--space-1); padding-top: var(--space-2); font-size: 14px; line-height: 21px; }
+  .aq-note-sheet__go { font-size: 14px; line-height: 21px; }
+
+  .aq-note-sheet__topics { flex-wrap: nowrap; column-gap: var(--space-6); box-sizing: border-box; height: var(--ns-th, 54px); padding: 0 var(--space-4) 0 var(--space-6);
+    overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .aq-note-sheet__topics::-webkit-scrollbar { display: none; }
+  .aq-note-sheet__tab { flex: none; white-space: nowrap; font-size: 16px; }
+  .aq-note-sheet__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-4) 0 var(--space-4) var(--space-6); }
+  .aq-note-sheet__t { font-size: 17px; line-height: 24px; }
+  .aq-note-sheet__meta { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); row-gap: 0; margin-top: var(--space-1); text-align: left; }
+  .aq-note-sheet__tp { font-size: 14px; line-height: 21px; }
+  .aq-note-sheet__code, .aq-note-sheet__date { font-size: 14px; line-height: 21px; }
+  .aq-note-sheet__date { flex-basis: 100%; }
+  .aq-note-sheet__ld { display: none; }
+  .aq-note-sheet__row.is-lead:first-child .aq-note-sheet__ld { display: block; right: auto; left: var(--space-2); top: auto; bottom: calc(100% + 2px); width: 0;
+    height: calc(var(--ns-th, 54px) + var(--space-6)); border-top: 0; border-left: 1.5px solid var(--flow); transform-origin: 50% 100%; }
+  .aq-note-sheet__row.is-lead:first-child .aq-note-sheet__ld::before { left: -4.75px; top: -4px; }
+  .aq-note-sheet__ld i { top: 0; left: -2px; width: 3px; height: 40%; background: linear-gradient(180deg, transparent, var(--flow-tint), transparent); }
+}
+/* tablets (601-860 px): the card in two columns, the drawing at the left beside its text, not a wide empty strip */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-note-sheet__paper { display: grid; grid-template-columns: 200px minmax(0, 1fr); column-gap: var(--space-6); align-content: end; }
+  .aq-note-sheet__fig { grid-row: 1 / span 4; height: 200px; margin: 0; padding: 0 var(--space-4) 0 0;
+    border-bottom: 0; border-right: 1px solid var(--line); }
+}
+@container (max-width: 600px) {
+  .aq-note-sheet__fig { height: 180px; }
+  /* under "All", rows 01-03; Show all opens the rest (a chosen topic shows every match) */
+  .aq-note-sheet .aq-fold:not(.is-open):not(.is-filtered) .aq-note-sheet__row:nth-child(n+4) { display: none; }
+}
+
 /* ---------- NotesRegister: technical notes as a register (block "register") ----------
    On the page ground, no plate. Desktop: a row of topic filter chips across the top (quiet controls, radius-sm);
    the featured note on a surface-raised panel on the left with a flow top hairline and an equipment Spot vignette;
@@ -10850,6 +10908,145 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   /* tablet landscape keeps the three columns (round C verify N4): stacking the start cell left the numeral column empty */
   .aq-numeral-index__row { grid-template-columns: minmax(0, 1fr) minmax(0, 5fr) minmax(0, 3fr); }
   .aq-numeral-index__go { grid-column: auto; }
+}
+
+/* ---------- OnboardingFan: an onboarding folder fanned open, one tabbed paper per item (look "onboarding-fan") ----------
+   Wide: a limestone folder (back panel with its tab, and a front lip) holds one fan of papers. Each paper leans by
+   its offset from the middle (--o, 2.4 deg a step) about its bottom centre, its tab cut at its own
+   place along the top edge (--t, 0 at the left paper to 1 at the right). Key items (.is-key) edge their tab in flow.
+   A paper lifts out of the folder when pointed at or focused. Containers of 1,100 px and under: two fans (4 + 3),
+   leaning by --o2. Phones (640 and under): compact rows inside the folder (tab chip, title, what the paper is, the
+   stamp), under a small fan of tab tops. Papers and the folder are data-paper objects: paper stays paper in dark. ---------- */
+.aq-section.aq-onboarding-fan-sec { overflow-x: clip; }
+.aq-onboarding-fan { --of-tab: 30px; --of-lip: 76px; position: relative; padding-top: calc(var(--of-tab, 30px) + var(--space-6)); }
+.aq-onboarding-fan__crown { display: none; }
+
+/* the folder: back panel with its tab, front lip (wide: the tab stands in the 80 px gutter left of the fan) */
+.aq-onboarding-fan__back {
+  position: absolute; left: 0; right: 0; top: 34%; bottom: 0; z-index: 0;
+  background: var(--limestone); border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm) var(--radius-md) var(--radius-md) var(--radius-md);
+}
+.aq-onboarding-fan__back::before {
+  content: ""; position: absolute; left: -1.5px; bottom: 100%; width: var(--space-8); height: var(--space-6);
+  background: var(--limestone); border: 1.5px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0;
+  margin-bottom: -1.5px; clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+}
+.aq-onboarding-fan__front {
+  position: absolute; left: 0; right: 0; bottom: 0; height: var(--of-lip, 76px); z-index: 2; pointer-events: none;
+  background: var(--limestone); border: 1.5px solid var(--line-strong); border-radius: 0 0 var(--radius-md) var(--radius-md);
+  -webkit-mask: radial-gradient(circle at 50% 0, transparent calc(var(--space-6) - 2px), black calc(var(--space-6) - 1.5px));
+  mask: radial-gradient(circle at 50% 0, transparent calc(var(--space-6) - 2px), black calc(var(--space-6) - 1.5px));
+}
+/* the thumb cut in the folder's front: the papers show through it */
+.aq-onboarding-fan__front::after {
+  content: ""; position: absolute; top: -1.5px; left: 50%; width: var(--space-12); height: var(--space-6); box-sizing: border-box; transform: translateX(-50%);
+  border: 1.5px solid var(--line-strong); border-top: 0; border-radius: 0 0 var(--space-6) var(--space-6);
+}
+
+/* the papers */
+.aq-onboarding-fan__papers {
+  position: relative; z-index: 1; list-style: none; margin: 0; padding: 0 calc(var(--space-16) + var(--space-4)) var(--space-3);
+  display: flex; align-items: stretch;
+}
+.aq-onboarding-fan__paper {
+  position: relative; flex: 1 1 0; min-width: 0; margin: 0 calc(var(--space-1) * -1); box-sizing: border-box;
+  display: flex; flex-direction: column; gap: var(--space-2); min-height: 380px;
+  padding: var(--space-4) var(--space-4) calc(var(--of-lip, 76px) + var(--space-3));
+  background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm);
+  transform-origin: 50% 100%;
+  transform: rotate(calc(var(--o, 0) * 2.4deg));
+  transition: transform 220ms cubic-bezier(.22, 1, .36, 1), box-shadow 200ms;
+}
+.aq-onboarding-fan.is-fanning .aq-onboarding-fan__paper { transition: none; }
+.aq-onboarding-fan__paper:hover, .aq-onboarding-fan__paper:focus-within {
+  z-index: 3; transform: translateY(calc(var(--space-4) * -1)) rotate(0deg); box-shadow: var(--shadow-overlay);
+}
+.aq-onboarding-fan__tab {
+  position: absolute; bottom: 100%; left: calc(var(--t, 0) * (100% - 64px)); width: 64px; height: var(--of-tab, 30px); margin-bottom: -1px;
+  display: grid; place-items: center; box-sizing: border-box;
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.aq-onboarding-fan__paper.is-key .aq-onboarding-fan__tab { border-top: 3px solid var(--flow); }
+.aq-onboarding-fan__code { font: 500 13px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--ink); white-space: nowrap; }
+.aq-onboarding-fan__paper.is-key .aq-onboarding-fan__code { color: var(--flow); }
+.aq-onboarding-fan__t { margin: 0; font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; overflow-wrap: break-word; hyphens: auto; }
+.aq-onboarding-fan__t a { color: inherit; text-decoration: none; }
+.aq-onboarding-fan__t a::before { content: ""; position: absolute; inset: 0; z-index: 1; }
+.aq-onboarding-fan__t a::after { content: "\a0\2192"; color: var(--flow); }
+.aq-onboarding-fan__t a:hover { color: var(--flow); }
+.aq-onboarding-fan__t a:focus-visible { outline: none; }
+.aq-onboarding-fan__paper:has(a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-onboarding-fan__d { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* the status-stamp slot: a dashed rubber-stamp outline, set at a stamp's slant */
+.aq-onboarding-fan__stamp {
+  padding: var(--space-2) var(--space-3); display: flex; flex-direction: column; gap: var(--space-1);
+  border: 1.5px dashed var(--line-strong); border-radius: var(--radius-sm); transform: rotate(-2deg); transform-origin: 0 100%;
+}
+.aq-onboarding-fan__paper > .aq-onboarding-fan__stamp { margin: auto 0 0; }
+.aq-onboarding-fan__paper.is-key .aq-onboarding-fan__stamp { border-color: var(--flow); }
+.aq-onboarding-fan__sk { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-onboarding-fan__sv { font: 400 14px/20px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-onboarding-fan__sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+/* two fans (4 + 3) */
+@container (max-width: 1100px) {
+  .aq-onboarding-fan__back { top: calc(var(--of-tab, 30px) + var(--space-16)); }
+  .aq-onboarding-fan__papers { flex-wrap: wrap; row-gap: calc(var(--of-tab, 30px) + var(--space-4)); padding: 0 var(--space-6) var(--space-3); }
+  .aq-onboarding-fan__paper {
+    flex: 0 0 calc(100% / var(--n1, 4) + var(--space-2)); min-height: 300px;
+    transform: rotate(calc(var(--o2, 0) * 1.6deg));
+  }
+  .aq-onboarding-fan__paper { padding: var(--space-4) var(--space-3); }
+  .aq-onboarding-fan__paper > .aq-onboarding-fan__stamp { padding-inline: var(--space-2); }
+  .aq-onboarding-fan__paper.is-row2, .aq-onboarding-fan__paper.is-row2 ~ .aq-onboarding-fan__paper { padding-bottom: calc(var(--of-lip, 76px) + var(--space-3)); }
+  .aq-onboarding-fan__paper.is-row2 { margin-left: calc(100% / (var(--n1, 4) * 2) - var(--space-1)); }
+  .aq-onboarding-fan__tab { left: calc(var(--t2, 0) * (100% - 64px)); }
+  .aq-onboarding-fan__paper:hover, .aq-onboarding-fan__paper:focus-within { transform: translateY(calc(var(--space-2) * -1)) rotate(0deg); }
+}
+
+/* phones: the folder holds compact rows (tab chip and title, then the stamp) under a small fan of tab tops */
+@container (max-width: 640px) {
+  .aq-onboarding-fan { padding-top: 0; }
+  .aq-onboarding-fan__crown {
+    display: flex; justify-content: center; height: var(--space-12); margin: 0 var(--space-4) calc(var(--space-4) * -1) 34%; position: relative; z-index: 0;
+  }
+  .aq-onboarding-fan__crown i {
+    position: relative; flex: 0 1 var(--space-8); height: var(--space-16); margin: 0 calc(var(--space-1) * -1); box-sizing: border-box;
+    background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) 0 0;
+    transform-origin: 50% 100%; transform: translateY(calc(var(--o, 0) * var(--o, 0) * 1.5px + var(--space-1))) rotate(calc(var(--o, 0) * 4deg));
+  }
+  .aq-onboarding-fan__crown i::before {
+    content: ""; position: absolute; bottom: 100%; left: calc(var(--t, 0) * (100% - 20px)); width: 20px; height: 8px; margin-bottom: -1px;
+    background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+  .aq-onboarding-fan__crown i.is-key::before { border-top: 2px solid var(--flow); }
+  .aq-onboarding-fan__back { top: var(--space-8); }
+  .aq-onboarding-fan__back::before { width: 30%; }
+  .aq-onboarding-fan__front { display: none; }
+  .aq-onboarding-fan__papers { display: block; padding: var(--space-2); }
+  .aq-onboarding-fan__paper,
+  .aq-onboarding-fan__paper.is-row2, .aq-onboarding-fan__paper.is-row2 ~ .aq-onboarding-fan__paper {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-items: center;
+    min-height: 0; margin: 0 0 -1px; padding: var(--space-2) var(--space-3) var(--space-3); border-radius: 0; transform: none;
+  }
+  .aq-onboarding-fan__paper:hover, .aq-onboarding-fan__paper:focus-within { transform: none; box-shadow: none; z-index: 1; }
+  .aq-onboarding-fan__tab {
+    position: static; width: auto; min-width: var(--space-12); height: 26px; margin: 0; padding: 0 var(--space-2);
+    border: 1px solid var(--line-strong); border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .aq-onboarding-fan__paper.is-key .aq-onboarding-fan__tab { border-top: 3px solid var(--flow); }
+  .aq-onboarding-fan__code { font-size: 12px; }
+  .aq-onboarding-fan__t { font-size: 16px; line-height: 22px; }
+  .aq-onboarding-fan__d, .aq-onboarding-fan__stamp { grid-column: 1 / -1; }
+  .aq-onboarding-fan__d { font-size: var(--aq-read-phone, 14px); }
+  .aq-onboarding-fan__paper > .aq-onboarding-fan__stamp { justify-self: start; margin: 0; padding: 0 var(--space-2); transform: rotate(-0.8deg); }
+  .aq-onboarding-fan__sk { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .aq-onboarding-fan__sv { font-size: var(--aq-read-phone, 14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-onboarding-fan__paper { transition: none; }
 }
 
 /* ---------- OptionChecker: options as a Swiss grid beside a checkerboard field with one blueprint tile (look "option-checker") ---------- */
@@ -11154,6 +11351,107 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
   .aq-option-taps__cam, .aq-option-taps__svg [data-iso-id] { transition: none; }
 }
 
+/* ---------- OrthoSheet: a skid's design parameters on its orthographic GA sheet (look "ortho-sheet") ----------
+   Desktop: the framed sheet (double rule, title block) carries the front elevation over the plan and holds sticky at
+   the left while the numbered parameter rows run down the right on hairlines. Each tag carries its row's number; a
+   pointed or focused row turns its tag, leader and part flow in both views and a ring settles on its tag.
+   Tablets (601-860 px): the full sheet stacked above the rows. Phones (<= 600 px): PhoneKit's sticky strip shows the
+   elevation alone with numbered dots, then the rows (number and parameter, the value full width, a 44 px Basis button). */
+.aq-ortho-sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+.aq-ortho-sheet__fig { position: sticky; top: var(--space-24); margin: 0; min-width: 0; }
+.aq-ortho-sheet__sheet { position: relative; display: grid; gap: var(--space-2); padding: var(--space-6) var(--space-4) var(--space-12); border: 1px solid var(--line-strong); outline: 1px solid var(--line); outline-offset: var(--space-2); background: var(--surface); margin: var(--space-2); }
+/* a hairline between the two views, short of the sheet's edges */
+.aq-ortho-sheet__art--p { border-top: 1px dashed var(--line); padding-top: var(--space-2); }
+.aq-ortho-sheet__art { position: relative; width: 100%; }
+.aq-ortho-sheet__art--p { box-sizing: content-box; }
+.aq-ortho-sheet__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-ortho-sheet__art--p .aq-ortho-sheet__svg { top: var(--space-2); height: calc(100% - var(--space-2)); }
+.aq-ortho-sheet__cl { fill: none; stroke: var(--line-strong); stroke-opacity: 0.6; stroke-width: 1; stroke-dasharray: 10 3 2 3; }
+.aq-ortho-sheet__svg .aq-iso__leader-line { stroke: var(--ink-muted); }
+.aq-ortho-sheet__svg .aq-iso__leader-dot { fill: var(--ink-muted); }
+.aq-ortho-sheet__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-ortho-sheet__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
+
+/* tags at the leader ends (desktop) and dots on the parts (phones): the GA-sheet tag shared with SkidSheet and TankGa
+   (navy with on-navy numerals, flow with on-action when lit; in the dark theme a 1 px on-navy-muted outline) */
+.aq-ortho-sheet__tag, .aq-ortho-sheet__dot {
+  position: absolute; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1);
+  transform: translate(-50%, -50%); border: 1px solid var(--navy); background: var(--navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; color: var(--on-navy);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; cursor: default;
+}
+.aq-ortho-sheet__tag.is-on, .aq-ortho-sheet__dot.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+:root[data-theme="dark"] .aq-ortho-sheet__tag, :root[data-theme="dark"] .aq-ortho-sheet__dot { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-ortho-sheet__tag, :root:not([data-theme="light"]) .aq-ortho-sheet__dot { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; } }
+.aq-ortho-sheet__dot { display: none; }
+/* the ring that settles on the chosen tag (ported from Subframe Motion "Inside the image", atlas-hotspots, MIT) */
+.aq-ortho-sheet__ring { position: absolute; left: 0; top: 0; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
+  border: 1px solid var(--flow); border-radius: 50%; opacity: 0; scale: 0; pointer-events: none; transition: left 250ms cubic-bezier(0.2, 0.8, 0.2, 1), top 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms ease, scale 180ms ease; }
+.aq-ortho-sheet__ring.is-on { opacity: 1; scale: 1; }
+.aq-ortho-sheet__art--p .aq-ortho-sheet__ring { translate: 0 var(--space-2); }
+.aq-ortho-sheet__art--p .aq-ortho-sheet__tag { margin-top: var(--space-2); }
+
+/* title block: the bottom-right corner of the sheet */
+.aq-ortho-sheet__block { position: absolute; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, auto); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong); }
+.aq-ortho-sheet__block > span { padding: var(--space-2) var(--space-3); font: 400 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-ortho-sheet__block > span + span { border-left: 1px solid var(--line); }
+
+/* the rows: number, parameter, value, basis and link under a hairline */
+.aq-ortho-sheet__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-ortho-sheet__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 160ms ease; }
+.aq-ortho-sheet__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-ortho-sheet__row.is-on { background: var(--flow-tint); }
+.aq-ortho-sheet__n { grid-row: 1 / span 3; padding-left: var(--space-3); font: 400 13px/24px var(--font-mono); color: var(--ink-muted); }
+.aq-ortho-sheet__row.is-on .aq-ortho-sheet__n { color: var(--flow); }
+.aq-ortho-sheet__p { grid-column: 2; margin: 0; font: 500 17px/24px var(--font-sans); color: var(--ink); }
+.aq-ortho-sheet__v { grid-column: 2; margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-ortho-sheet__m { grid-column: 2; margin-top: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-ortho-sheet__m p { margin: 0; }
+.aq-ortho-sheet__link { display: inline-block; margin-top: var(--space-1); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.aq-ortho-sheet__link::after { content: " \2192"; }
+.aq-ortho-sheet__link:hover { text-decoration: underline; }
+.aq-ortho-sheet__wb, .aq-ortho-sheet__pn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-ortho-sheet { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); }
+}
+
+/* tablets (601-860 px): the full sheet with both views, stacked above the rows */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-ortho-sheet { display: block; }
+  .aq-ortho-sheet__fig { position: static; margin-bottom: var(--space-6); }
+}
+
+@container (max-width: 600px) {
+  .aq-ortho-sheet { display: block; }
+  .aq-ortho-sheet__fig { position: static; margin: 0 0 var(--space-4); overflow: hidden; }
+  .aq-ortho-sheet__sheet { display: block; padding: 0; border: 0; outline: 0; margin: 0; background: none; }
+  /* the elevation alone, cropped to the skid: the tag margins (x -110 to -46 and 700 to 750, y -44 to 0 of the
+     860 x 374 view) fall outside the strip; the dots sit in the same per-cent frame, so they stay on their parts */
+  .aq-ortho-sheet__art--e { width: 115.3%; margin: -5.9% 0 0 -8.58%; }
+  .aq-ortho-sheet__art--p, .aq-ortho-sheet__block, .aq-ortho-sheet__tag, .aq-ortho-sheet__svg .aq-ortho-sheet__ld { display: none; }
+  .aq-ortho-sheet__dot { display: grid; box-sizing: border-box; width: var(--space-6); min-width: var(--space-6); height: var(--space-6); padding: 0; border-radius: 50%; }
+  .aq-ortho-sheet__dot.is-pk-active { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+  .aq-ortho-sheet__ring { width: var(--space-8); height: var(--space-8); margin: calc(-1 * var(--space-4)) 0 0 calc(-1 * var(--space-4)); }
+  .aq-ortho-sheet[data-pk-on] .aq-ortho-sheet__fig { background: var(--surface); }
+  .aq-ortho-sheet__rows { border-top-color: var(--line-strong); }
+  .aq-ortho-sheet__row { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: none; column-gap: var(--space-3); padding: 0 0 var(--space-3); }
+  .aq-ortho-sheet__n { display: none; }
+  .aq-ortho-sheet__pn { display: inline; margin-right: var(--space-2); font: 400 13px/21px var(--font-mono); color: var(--ink-muted); }
+  .aq-ortho-sheet__row.is-pk-active .aq-ortho-sheet__pn { color: var(--flow); }
+  .aq-ortho-sheet__p { grid-row: 1; grid-column: 1; align-self: center; padding-block: var(--space-3) var(--space-1); font-size: 15px; line-height: 21px; }
+  .aq-ortho-sheet__v { grid-row: 2; grid-column: 1 / -1; margin: 0; font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-ortho-sheet__wb { display: inline-flex; grid-row: 1; grid-column: 2; justify-self: end; align-self: start; align-items: center; min-height: var(--aq-hit); margin: 0; padding: 0; border: 0; background: none;
+    color: var(--flow); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; cursor: pointer; }
+  .aq-ortho-sheet__wb .aq-phone-kit__chev { width: var(--space-8); height: var(--aq-hit); }
+  .aq-ortho-sheet__m { display: none; grid-row: 3; grid-column: 1 / -1; margin: var(--space-2) 0 0; font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-ortho-sheet__row.is-open .aq-ortho-sheet__m { display: block; }
+  .aq-ortho-sheet__link { min-height: var(--aq-hit); display: inline-flex; align-items: center; margin: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-ortho-sheet__ring, .aq-ortho-sheet__tag, .aq-ortho-sheet__dot, .aq-ortho-sheet__row { transition: none; }
+}
+
 /* ---------- ParameterCallouts ---------- */
 /* Design parameters called out on the page's equipment drawing. Desktop: a 2:1 figure (viewBox 200 x 100 for the
    leaders): label columns 0-25 % and 75-100 %, the drawing a centred square between them on the plain section ground.
@@ -11196,164 +11494,6 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
   .aq-parameter-callouts__p { font: 400 16px/24px var(--font-sans); }
   .aq-parameter-callouts__v { font-size: 14px; line-height: 22px; letter-spacing: 0; }
   .aq-parameter-callouts__m { font-size: 12px; line-height: 18px; }
-}
-
-/* ---------- PdfAnatomy: delivery terms as a figure plate of the delivered document (look "pdf-anatomy"). The plate is
-   line art on surface-raised (line-strong frame, line text bars, flow for what the callouts point at); callouts sit in
-   the plate's left column on hairline leaders. The other rows stand beside it: choices as signature lines, a single
-   value set large in light type. ---------- */
-.aq-pdf-anatomy-sec { position: relative; }
-.aq-pdf-anatomy__front, .aq-pdf-anatomy__stack, .aq-pdf-anatomy__search { transform-box: fill-box; }
-.aq-pdf-anatomy__go { margin: var(--space-4) 0 0; }
-/* round C: a 2x2 on desktop: the plate and its pager top left, the signatures under it, the other rows on the right */
-.aq-pdf-anatomy { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "plate side" "under side"; column-gap: var(--space-12); row-gap: var(--space-8); align-items: start; }
-.aq-pdf-anatomy__plate { grid-area: plate; }
-.aq-pdf-anatomy__under { grid-area: under; }
-.aq-pdf-anatomy__side { grid-area: side; }
-.aq-pdf-anatomy__gl { display: none; }
-.aq-pdf-anatomy__gl { width: var(--space-16); height: var(--space-16); overflow: visible; }
-.aq-pdf-anatomy__gl .aq-pdf-anatomy__ln, .aq-pdf-anatomy__gl .aq-pdf-anatomy__rule, .aq-pdf-anatomy__gl .aq-pdf-anatomy__gl { stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.aq-pdf-anatomy__gl .aq-pdf-anatomy__ln { fill: var(--surface-raised); }
-.aq-pdf-anatomy__gl .aq-pdf-anatomy__gl { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linecap: round; }
-.aq-pdf-anatomy__plate { margin: 0; }
-.aq-pdf-anatomy__cap { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: var(--space-4); margin-bottom: var(--space-4); }
-.aq-pdf-anatomy__cap .aq-pdf-anatomy__k { grid-column: 1 / -1; }
-.aq-pdf-anatomy__k { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-pdf-anatomy__h { margin: 0; font: 300 28px/34px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); }
-.aq-pdf-anatomy__note { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
-
-/* the plate */
-.aq-pdf-anatomy__draw { position: relative; }
-.aq-pdf-anatomy__crop { position: relative; }
-.aq-pdf-anatomy__art { position: relative; }
-.aq-pdf-anatomy__svg { display: block; width: 100%; height: auto; }
-.aq-pdf-anatomy__win { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1.5; }
-.aq-pdf-anatomy__rule { fill: none; stroke: var(--line); stroke-width: 1; }
-.aq-pdf-anatomy__ln { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linecap: round; }
-.aq-pdf-anatomy__txt { fill: none; stroke: var(--line); stroke-width: 4; }
-.aq-pdf-anatomy__txtf { fill: none; stroke: var(--flow); stroke-width: 4; }
-.aq-pdf-anatomy__tri { fill: none; stroke: var(--ink-subtle); stroke-width: 1; }
-.aq-pdf-anatomy__field { fill: var(--surface); stroke: var(--flow); stroke-width: 1.5; }
-.aq-pdf-anatomy__cur { fill: var(--flow-tint); }
-.aq-pdf-anatomy__page { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1; }
-.aq-pdf-anatomy__logo { fill: var(--ink); }
-.aq-pdf-anatomy__hit { fill: var(--flow-tint); stroke: var(--flow); stroke-width: 1.5; }
-.aq-pdf-anatomy__box { fill: none; stroke: var(--line-strong); stroke-width: 1; }
-.aq-pdf-anatomy__box.is-on { stroke: var(--flow); stroke-width: 1.5; }
-.aq-pdf-anatomy__leader { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
-.aq-pdf-anatomy__dot { fill: var(--flow); }
-.aq-pdf-anatomy__lead.is-on .aq-pdf-anatomy__leader { stroke: var(--flow); stroke-width: 1.5; }
-
-/* callouts: in the plate's left column, each at its leader's height */
-.aq-pdf-anatomy__calls { list-style: none; margin: 0; padding: 0; position: absolute; left: 0; top: 0; bottom: 0; width: 21.5%; }
-.aq-pdf-anatomy__call { position: absolute; left: 0; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: var(--space-1); padding-right: var(--space-2); font: 400 16px/22px var(--font-sans); color: var(--ink); text-wrap: balance; cursor: default; }
-.aq-pdf-anatomy__cn { font: 500 12px/16px var(--font-mono); color: var(--flow); }
-.aq-pdf-anatomy__pin { display: none; }
-
-/* the other rows */
-.aq-pdf-anatomy__side { display: flex; flex-direction: column; gap: var(--space-8); }
-.aq-pdf-anatomy__row { border-top: 1px solid var(--line-strong); padding-top: var(--space-4); }
-.aq-pdf-anatomy__row > .aq-pdf-anatomy__h { margin-bottom: var(--space-4); }
-/* signatures: three lines across under the plate */
-.aq-pdf-anatomy__sigs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
-.aq-pdf-anatomy__sigs li { display: flex; flex-direction: column; gap: var(--space-2); }
-.aq-pdf-anatomy__sl { display: block; height: var(--space-6); border-bottom: 1.5px solid var(--line-strong); position: relative; }
-.aq-pdf-anatomy__sl::before { content: "×"; position: absolute; left: 0; bottom: var(--space-1); font: 400 14px/1 var(--font-mono); color: var(--ink-subtle); }
-.aq-pdf-anatomy__sv { font: 400 15px/22px var(--font-sans); color: var(--ink); }
-.aq-pdf-anatomy__or { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-pdf-anatomy__big { margin: 0; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; }
-.aq-pdf-anatomy__big .aq-ph { font-size: 15px; }
-.aq-pdf-anatomy__m { margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px dashed var(--line); }
-.aq-pdf-anatomy__m p:last-child { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
-
-/* pass 9b (concept cmp-documentation.3): the section drawn on a sheet. Zone band with numbers across and letters down,
-   a title block repeating the section title over blank number and revision fields. All aria-hidden furniture. */
-.aq-pdf-anatomy__sheet { position: relative; padding: var(--space-12) var(--space-12) var(--space-16); }
-.aq-pdf-anatomy__frame { position: absolute; inset: 0; border: 1px solid var(--line-strong); pointer-events: none; }
-.aq-pdf-anatomy__frame::before { content: ""; position: absolute; inset: var(--space-6); border: 1px solid var(--line-strong); }
-.aq-pdf-anatomy__zb { position: absolute; display: grid; font: 500 12px/1 var(--font-mono); color: var(--ink-subtle); }
-.aq-pdf-anatomy__zb span { display: grid; place-items: center; }
-.aq-pdf-anatomy__zb--t, .aq-pdf-anatomy__zb--b { left: var(--space-6); right: var(--space-6); height: var(--space-6); grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.aq-pdf-anatomy__zb--t { top: 0; }
-.aq-pdf-anatomy__zb--b { bottom: 0; }
-.aq-pdf-anatomy__zb--t span + span, .aq-pdf-anatomy__zb--b span + span { border-left: 1px solid var(--line-strong); }
-.aq-pdf-anatomy__zb--l, .aq-pdf-anatomy__zb--r { top: var(--space-6); bottom: var(--space-6); width: var(--space-6); grid-template-rows: repeat(4, minmax(0, 1fr)); }
-.aq-pdf-anatomy__zb--l { left: 0; }
-.aq-pdf-anatomy__zb--r { right: 0; }
-.aq-pdf-anatomy__zb--l span + span, .aq-pdf-anatomy__zb--r span + span { border-top: 1px solid var(--line-strong); }
-.aq-pdf-anatomy__tb {
-  position: absolute; right: var(--space-6); bottom: var(--space-6); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: calc(var(--space-32) * 2.5); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong);
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle);
-}
-.aq-pdf-anatomy__tb > span { padding: var(--space-2) var(--space-3); }
-.aq-pdf-anatomy__tb > span + span { border-top: 1px solid var(--line-strong); }
-.aq-pdf-anatomy__tb > span:last-child { border-left: 1px solid var(--line-strong); }
-.aq-pdf-anatomy__tbh { grid-column: 1 / -1; color: var(--ink); }
-
-/* page turner (compact-pagination): a five-wide window of page numbers slides with the current page */
-.aq-pdf-anatomy__pgno { font: 500 12px var(--font-mono); fill: var(--ink-muted); }
-.aq-pdf-anatomy__cur, .aq-pdf-anatomy__hit { transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1); }
-.aq-pdf-anatomy__box.is-ping { animation: aq-pdf-ping 700ms cubic-bezier(0.2, 0, 0, 1); }
-@keyframes aq-pdf-ping { 0% { stroke: var(--flow); stroke-width: 3.5; } 100% { stroke-width: 1.5; } }
-.aq-pdf-anatomy__pager { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-1); margin-top: var(--space-3); }
-.aq-pdf-anatomy__pgw { flex: none; width: calc((var(--space-12) - var(--space-1)) * 5); overflow: hidden; }
-.aq-pdf-anatomy__pgr { display: flex; transform: translateX(calc(var(--pg-start, 0) * (var(--space-1) - var(--space-12)))); transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1); }
-.aq-pdf-anatomy__pgn, .aq-pdf-anatomy__pgs {
-  flex: 0 0 calc(var(--space-12) - var(--space-1)); width: calc(var(--space-12) - var(--space-1)); height: calc(var(--space-12) - var(--space-1));
-  margin: 0; padding: 0; border: 0; border-radius: 0; background: none; cursor: pointer;
-  font: 500 13px/1 var(--font-mono); color: var(--ink-muted); transition: background 150ms cubic-bezier(0.2, 0, 0, 1), color 150ms cubic-bezier(0.2, 0, 0, 1);
-}
-.aq-pdf-anatomy__pgs { font-size: 22px; }
-.aq-pdf-anatomy__pgn:hover, .aq-pdf-anatomy__pgs:hover:not(:disabled) { color: var(--ink); background: var(--surface-sunken); }
-.aq-pdf-anatomy__pgn[aria-current="page"] { background: var(--flow-tint); color: var(--flow); }
-.aq-pdf-anatomy__pgn:focus-visible, .aq-pdf-anatomy__pgs:focus-visible { outline: 2px solid var(--focus); outline-offset: calc(-1 * var(--space-1)); }
-.aq-pdf-anatomy__pgs:disabled { opacity: 0.4; cursor: default; }
-@media (prefers-reduced-motion: reduce) { .aq-pdf-anatomy__cur, .aq-pdf-anatomy__hit, .aq-pdf-anatomy__pgr { transition: none; } .aq-pdf-anatomy__box.is-ping { animation: none; } }
-
-@container (max-width: 1100px) {
-  .aq-pdf-anatomy { grid-template-columns: minmax(0, 1fr); grid-template-areas: "plate" "under" "side"; row-gap: var(--space-8); }
-  .aq-pdf-anatomy__side { padding-top: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8); }
-}
-@container (max-width: 860px) {
-  .aq-pdf-anatomy__h { font-size: 24px; line-height: 30px; }
-  .aq-pdf-anatomy__crop { overflow: hidden; }
-  .aq-pdf-anatomy__art { width: 128%; margin-left: -28.7%; } /* crops the callout gutter (the viewBox already ends under the plate) */
-  .aq-pdf-anatomy__pin {
-    display: grid; place-items: center; position: absolute; width: var(--space-6); height: var(--space-6); transform: translate(-50%, -50%);
-    background: var(--flow); color: var(--surface-raised); font: 500 12px/1 var(--font-mono); border-radius: var(--radius-pill);
-  }
-  .aq-pdf-anatomy__calls { position: static; width: auto; display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-4); }
-  .aq-pdf-anatomy__call { position: static; transform: none; flex-direction: row; align-items: baseline; text-align: left; gap: var(--space-3); padding: 0; font-size: 15px; }
-  .aq-pdf-anatomy__side { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
-  /* pass 12 (S14): no sheet frame, zone gutter or title block on phones; the page turner stays, centred under the
-     plate (its seven 44 px buttons fit at 343 px); the numbered pins and list replace the leader lines, which would run
-     from the cropped gutter to nothing; display-size values drop to 20 px so placeholders do not wrap to four lines (S5) */
-  .aq-pdf-anatomy__sheet { padding: 0; }
-  .aq-pdf-anatomy__frame { display: none; }
-  .aq-pdf-anatomy__pager { justify-content: center; }
-  .aq-pdf-anatomy__lead { display: none; }
-  .aq-pdf-anatomy__side { gap: var(--space-8); }
-  /* round C: the column name once (on the plate); signatures as three rows, each method written on its line at 16 px;
-     a 64 px line glyph beside each zone's title */
-  .aq-pdf-anatomy__row > .aq-pdf-anatomy__k { display: none; }
-  .aq-pdf-anatomy__row { display: grid; grid-template-columns: minmax(0, 1fr) var(--space-16); column-gap: var(--space-4); }
-  .aq-pdf-anatomy__row > * { grid-column: 1 / -1; }
-  .aq-pdf-anatomy__row > .aq-pdf-anatomy__h { grid-column: 1; grid-row: 1; align-self: center; margin-bottom: 0; }
-  .aq-pdf-anatomy__row > .aq-pdf-anatomy__sigs, .aq-pdf-anatomy__row > .aq-pdf-anatomy__big { grid-column: 1; grid-row: 2; margin-top: var(--space-3); }
-  .aq-pdf-anatomy__gl { display: block; grid-column: 2; grid-row: 1 / span 2; align-self: start; }
-  .aq-pdf-anatomy__sigs { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .aq-pdf-anatomy__sigs li { position: relative; flex-direction: row; align-items: baseline; gap: var(--space-3); min-height: var(--space-12); padding: var(--space-4) 0 var(--space-2); }
-  .aq-pdf-anatomy__sl { position: absolute; left: 0; right: 0; bottom: 0; height: 0; }
-  .aq-pdf-anatomy__sl::before { left: 0; bottom: var(--space-2); }
-  .aq-pdf-anatomy__sv { padding-left: var(--space-6); font-size: 16px; line-height: 24px; }
-  .aq-pdf-anatomy__m { margin-top: var(--space-4); }
-}
-/* round C verify F3: tablets (600 to 860 px) took the phone stack with the plate at full width (about 700 by 520 px),
-   so the section ran taller than on a phone; the plate is held to 520 px and centred, and Timing and Retention sit two up */
-@container (min-width: 600px) and (max-width: 860px) {
-  .aq-pdf-anatomy__crop { max-inline-size: 520px; margin-inline: auto; }
-  .aq-pdf-anatomy__side { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- PidRoutes: a router drawn as a P&ID on a navy blueprint ground (look "pid-routes") ----------
@@ -13797,121 +13937,6 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-review-reticles__tb { margin-top: 0; }
 }
 
-/* ---------- RevisionRegister: technical notes as the numbered notes column of one limestone drawing sheet ---------- */
-.aq-revision-register-sec { }
-/* The look's rules and hairlines draw in --rr-ink: navy on the limestone sheet; in dark mode the band turns warm stone
-   (RC1), where navy all but vanishes, so the ink lifts to the stone's muted ink (round C verify R1); unset, it is navy */
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-band--limestone .aq-revision-register { --rr-ink: var(--on-limestone-muted); } }
-[data-theme="dark"] .aq-band--limestone .aq-revision-register { --rr-ink: var(--on-limestone-muted); }
-.aq-revision-register { position: relative; margin-top: var(--space-2); padding: var(--space-12) var(--space-12) 0; background: var(--limestone); color: var(--on-limestone);
-  border: 1px solid var(--rr-ink, var(--navy)); }
-.aq-revision-register__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 5fr); column-gap: var(--space-8); align-items: start; }
-.aq-revision-register__left { min-width: 0; display: flex; flex-direction: column; gap: var(--space-8); }
-.aq-revision-register__left .aq-sec-head { margin: 0; }
-.aq-revision-register .aq-sec-head .aq-h1 { font-size: 64px; line-height: 68px; font-weight: 300; letter-spacing: -0.03em; color: var(--on-limestone); }
-.aq-revision-register .aq-sec-head .aq-lead { color: var(--on-limestone-muted); }
-/* the lead note, as the sheet's general note under the title */
-.aq-revision-register__lead { display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-6); border-top: 1px solid var(--rr-ink, var(--navy)); }
-.aq-revision-register .aq-revision-register__lk { margin: 0; display: flex; align-items: center; gap: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-revision-register__tri { flex: none; width: var(--space-4); height: var(--space-4); }
-.aq-revision-register__tri path { fill: none; stroke: var(--flow); stroke-width: 1.5px; stroke-linejoin: round; }
-.aq-revision-register__q { margin: 0; padding-left: var(--space-4); border-left: 2px solid var(--flow); }
-.aq-revision-register__q p { margin: 0; font: 300 24px/32px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); text-wrap: pretty; }
-.aq-revision-register__q p::before { content: "“"; }
-.aq-revision-register__q p::after { content: "”"; }
-.aq-revision-register__lt { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--on-limestone); }
-.aq-revision-register .aq-revision-register__lstd { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register .aq-revision-register__go { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-limestone-muted); }
-.aq-revision-register a { color: var(--flow); text-decoration-color: color-mix(in srgb, var(--flow) 40%, transparent); text-underline-offset: 3px; }
-.aq-revision-register a:hover { text-decoration-color: currentColor; }
-.aq-revision-register a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-
-/* the drawing plate between title and notes: faint, it follows the note in hand */
-.aq-revision-register__fig { position: sticky; top: var(--space-24); align-self: start; aspect-ratio: 3 / 4; margin-top: var(--space-16); }
-.aq-revision-register__frame { position: absolute; inset: 0; border: 1px solid color-mix(in srgb, var(--rr-ink, var(--navy)) 22%, transparent); }
-/* registration marks at the plate's corners */
-.aq-revision-register__frame::before, .aq-revision-register__frame::after { content: ""; position: absolute; width: var(--space-4); height: var(--space-4); border: 0 solid var(--rr-ink, var(--navy)); }
-.aq-revision-register__frame::before { left: calc(var(--space-2) * -1); top: calc(var(--space-2) * -1); border-width: 1px 0 0 1px; }
-.aq-revision-register__frame::after { right: calc(var(--space-2) * -1); bottom: calc(var(--space-2) * -1); border-width: 0 1px 1px 0; }
-.aq-revision-register__dw { position: absolute; inset: var(--space-8) var(--space-6) var(--space-16); display: none; place-items: center; }
-.aq-revision-register__dw.is-on { display: grid; animation: aq-rr-dw 240ms cubic-bezier(.2, .85, .25, 1); }
-@keyframes aq-rr-dw { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .aq-revision-register__dw.is-on { animation: none; } }
-.aq-revision-register__spot { display: block; width: 100%; height: auto; aspect-ratio: 1; max-width: calc(var(--space-32) * 1.4); color: color-mix(in srgb, var(--rr-ink, var(--navy)) 55%, transparent); }
-.aq-revision-register__figcap { position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); display: grid; }
-.aq-revision-register__figcap span { display: none; font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__figcap span.is-on { display: block; }
-
-/* the notes column: a hairline rule, the topic filter, then the numbered notes in mono */
-.aq-revision-register__col { min-width: 0; padding-left: var(--space-6); border-left: 2px solid var(--rr-ink, var(--navy)); }
-.aq-revision-register__strip { margin-bottom: var(--space-4); }
-.aq-revision-register__tabs { display: flex; flex-wrap: wrap; gap: 0; }
-.aq-revision-register__tab { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--space-12); padding: 0 var(--space-3); margin: 0 -1px -1px 0; cursor: pointer;
-  background: none; border: 1px solid color-mix(in srgb, var(--rr-ink, var(--navy)) 26%, transparent); color: var(--on-limestone); font: 500 13px/18px var(--font-sans); transition: background-color 200ms, color 200ms; }
-.aq-revision-register__tab span { font: 400 12px/1 var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__tab:hover { background: color-mix(in srgb, var(--rr-ink, var(--navy)) 8%, transparent); }
-.aq-revision-register__tab[aria-pressed="true"] { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
-.aq-revision-register__tab[aria-pressed="true"] span { color: var(--on-navy); }
-.aq-revision-register__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; position: relative; z-index: 1; }
-.aq-revision-register__notes { list-style: none; margin: 0; padding: 0; }
-.aq-revision-register__note { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); padding: var(--space-3) 0; border-bottom: 1px solid color-mix(in srgb, var(--rr-ink, var(--navy)) 14%, transparent); }
-.aq-revision-register__note[hidden] { display: none; }
-.aq-revision-register__no { display: flex; align-items: flex-start; gap: var(--space-1); font: 400 14px/22px var(--font-mono); color: var(--on-limestone-muted); font-variant-numeric: tabular-nums; transition: color 200ms; }
-.aq-revision-register__no .aq-revision-register__tri { width: var(--space-3); height: var(--space-3); margin-top: var(--space-1); }
-.aq-revision-register__note.is-pick .aq-revision-register__no { color: var(--on-limestone); }
-.aq-revision-register__nb { min-width: 0; }
-.aq-revision-register__nt { margin: 0; font: 400 14px/22px var(--font-mono); color: var(--on-limestone); }
-.aq-revision-register__note.is-lead .aq-revision-register__nt { font-weight: 500; }
-.aq-revision-register .aq-revision-register__meta { margin: var(--space-1) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__planned { padding: 0 var(--space-1); border: 1px dashed color-mix(in srgb, var(--rr-ink, var(--navy)) 45%, transparent); }
-.aq-revision-register .aq-fold__btn { color: var(--on-limestone-muted); margin-top: var(--space-3); }
-.aq-revision-register .aq-fold__btn:hover { color: var(--on-limestone); }
-.aq-revision-register .aq-fold.is-filtered .aq-fold-x { display: grid; }
-.aq-revision-register .aq-fold.is-filtered .aq-fold-x[hidden] { display: none; }
-.aq-revision-register .aq-fold.is-filtered .aq-fold__btn { display: none; }
-
-/* the title block, bottom right, with the live count */
-.aq-revision-register__tb { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; margin: var(--space-12) calc(var(--space-12) * -1) 0 auto; width: min(100% + var(--space-12), calc(var(--space-32) * 4));
-  border-top: 1px solid var(--rr-ink, var(--navy)); border-left: 1px solid var(--rr-ink, var(--navy)); }
-.aq-revision-register__tb > * { margin: 0; padding: var(--space-3) var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--on-limestone); }
-.aq-revision-register__tb > * + * { border-left: 1px solid var(--rr-ink, var(--navy)); }
-.aq-revision-register__tb > :first-child { font: 500 14px/18px var(--font-sans); }
-.aq-revision-register .aq-revision-register__count { color: var(--on-limestone-muted); }
-
-@container (max-width: 1100px) {
-  .aq-revision-register { padding: var(--space-8) var(--space-8) 0; }
-  .aq-revision-register__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); row-gap: var(--space-8); }
-  .aq-revision-register__fig { display: none; }
-  .aq-revision-register .aq-sec-head .aq-h1 { font-size: 52px; line-height: 56px; }
-  .aq-revision-register__tb { margin-right: calc(var(--space-8) * -1); width: min(100% + var(--space-8), calc(var(--space-32) * 4)); }
-}
-/* Phones: title, lead note, filter, notes; the title block spans the foot */
-@container (max-width: 860px) {
-  .aq-revision-register { padding: var(--space-6) var(--space-4) 0; }
-  .aq-revision-register__grid { grid-template-columns: minmax(0, 1fr); }
-  .aq-revision-register .aq-sec-head .aq-h1 { font-size: 40px; line-height: 44px; }
-  .aq-revision-register__q p { font-size: 20px; line-height: 28px; }
-  .aq-revision-register__col { padding-left: var(--space-4); }
-  .aq-revision-register__note { grid-template-columns: var(--space-8) minmax(0, 1fr); }
-  .aq-revision-register__no { font-size: 13px; flex-direction: column; }
-  .aq-revision-register__nt { font-size: 13px; line-height: 20px; }
-  .aq-revision-register__tb { margin: var(--space-8) calc(var(--space-4) * -1) 0; width: auto; }
-  .aq-revision-register__tb > :nth-child(2) { display: none; }
-  .aq-revision-register__tb { grid-template-columns: auto minmax(0, 1fr); }
-}
-/* Pass 12 round C: the featured note's part (look-only "part") fills the plate, drawn with IsoKit on the limestone */
-.aq-revision-register__part { display: block; width: 100%; height: 100%; max-height: calc(var(--space-32) * 2.2); }
-.aq-revision-register__dw:has(> .aq-revision-register__part) { inset: var(--space-6) var(--space-4) var(--space-12); }
-/* Phones (≤ 600, audit-c group-7 news.0): the filter is one snap row of 44 px chips; notes at 14/21; no inner rule */
-@container (max-width: 600px) {
-  .aq-revision-register__tabs { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
-    margin-inline: calc(var(--space-4) * -1); padding-inline: var(--space-4); scroll-padding-inline: var(--space-4); }
-  .aq-revision-register__tabs::-webkit-scrollbar { display: none; }
-  .aq-revision-register__tab { flex: none; min-height: var(--aq-hit); scroll-snap-align: start; white-space: nowrap; font-size: 14px; }
-  .aq-revision-register__col { padding-left: 0; border-left: 0; }
-  .aq-revision-register__no, .aq-revision-register__nt { font-size: 14px; line-height: 21px; }
-}
-
 /* ---------- RevisionSheet: one document's way to your file (look "revision-sheet"). A pinned paper sheet
    (data-theme="light", so the paper stays paper in the dark theme) takes each step's marks as the steps scroll past;
    classes is-s1 … is-sN on the paper wrap switch the step layers on, cumulatively. Ink is line-strong and ink-muted;
@@ -15590,110 +15615,6 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
 /* Pass 12 round C (audit-c group-7 about.2): small phones, 48 px less ground under tile 04 */
 @container (max-width: 600px) {
   .aq-section.aq-site-tiles-sec { padding-bottom: 0; }
-}
-
-/* ---------- SkidSheet: a skid's design parameters on its GA sheet (look "skid-sheet") ----------
-   Desktop: the framed drawing sheet (double rule, title block) holds sticky at the left while the numbered parameter
-   rows run down the right on hairlines. Each tag on the drawing carries its row's number; a pointed or focused row
-   turns its tag, leader and part flow and a ring settles on its tag (motion.js glides it). Tablets (601-860 px): the
-   full sheet stacked above the rows. Phones (<= 600 px): PhoneKit's sticky
-   strip (no frame, numbered dots), then the rows as a two-column key and value list, the basis behind a 44 px button. */
-.aq-skid-sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
-.aq-skid-sheet__fig { position: sticky; top: var(--space-24); margin: 0; min-width: 0; }
-.aq-skid-sheet__sheet { position: relative; padding: var(--space-8) var(--space-6) var(--space-16); border: 1px solid var(--line-strong); outline: 1px solid var(--line); outline-offset: var(--space-2); background: var(--surface); margin: var(--space-2); }
-.aq-skid-sheet__art { position: relative; width: 100%; }
-.aq-skid-sheet__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.aq-skid-sheet__svg .aq-iso__leader-line { stroke: var(--ink-muted); }
-.aq-skid-sheet__svg .aq-iso__leader-dot { fill: var(--ink-muted); }
-.aq-skid-sheet__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
-.aq-skid-sheet__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
-.aq-skid-sheet__svg .aq-iso__pipe.is-lit .aq-iso__pipe-wall, .aq-skid-sheet__svg .aq-iso__part.is-lit .aq-iso__eq, .aq-skid-sheet__svg .aq-skid-sheet__seams.is-lit .aq-iso__thin { stroke: var(--flow); }
-.aq-skid-sheet__svg .aq-skid-sheet__seams .aq-iso__thin { stroke-width: 1.2; }
-
-/* tags at the leader ends (desktop) and dots on the parts (phones). Pass 12 C: the GA-sheet tag shared with TankGa
-   (same declarations in TankGa/style.css): navy with on-navy numerals, flow with on-action when lit (never on-navy over
-   flow, which is about 2 : 1 in the dark theme); in the dark theme a 1 px on-navy-muted outline keeps the navy tag off
-   the dark sheet. */
-.aq-skid-sheet__tag, .aq-skid-sheet__dot {
-  position: absolute; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1);
-  transform: translate(0, -50%); border: 1px solid var(--navy); background: var(--navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; color: var(--on-navy);
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease; cursor: default;
-}
-.aq-skid-sheet__tag.is-left { transform: translate(-100%, -50%); }
-.aq-skid-sheet__tag.is-on, .aq-skid-sheet__dot.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
-:root[data-theme="dark"] .aq-skid-sheet__tag, :root[data-theme="dark"] .aq-skid-sheet__dot { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-skid-sheet__tag, :root:not([data-theme="light"]) .aq-skid-sheet__dot { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; } }
-.aq-skid-sheet__dot { display: none; transform: translate(-50%, -50%); }
-/* the ring that settles on the chosen tag (ported from Subframe Motion "Inside the image", atlas-hotspots, MIT) */
-.aq-skid-sheet__ring { position: absolute; left: 0; top: 0; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
-  border: 1px solid var(--flow); border-radius: 50%; opacity: 0; scale: 0; pointer-events: none; transition: left 250ms cubic-bezier(0.2, 0.8, 0.2, 1), top 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms ease, scale 180ms ease; }
-.aq-skid-sheet__ring.is-on { opacity: 1; scale: 1; }
-/* the ring sits on the tag's centre: tags hang right of their point (left ones to its left) */
-.aq-skid-sheet__ring { translate: var(--space-4) 0; }
-.aq-skid-sheet__ring.is-left { translate: calc(-1 * var(--space-4)) 0; }
-
-/* title block: the bottom-right corner of the sheet */
-.aq-skid-sheet__block { position: absolute; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, auto); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong); }
-.aq-skid-sheet__block > span { padding: var(--space-2) var(--space-3); font: 400 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
-.aq-skid-sheet__block > span + span { border-left: 1px solid var(--line); }
-
-/* the rows: number, parameter, value in mono, basis and link under a hairline */
-.aq-skid-sheet__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
-.aq-skid-sheet__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 160ms ease; }
-.aq-skid-sheet__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
-.aq-skid-sheet__row.is-on { background: var(--flow-tint); }
-.aq-skid-sheet__n { grid-row: 1 / span 3; padding-left: var(--space-3); font: 400 13px/24px var(--font-mono); color: var(--ink-muted); }
-.aq-skid-sheet__row.is-on .aq-skid-sheet__n { color: var(--flow); }
-.aq-skid-sheet__p { grid-column: 2; margin: 0; font: 500 17px/24px var(--font-sans); color: var(--ink); }
-.aq-skid-sheet__v { grid-column: 2; margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink); }
-.aq-skid-sheet__m { grid-column: 2; margin-top: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
-.aq-skid-sheet__m p { margin: 0; }
-.aq-skid-sheet__link { display: inline-block; margin-top: var(--space-1); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
-.aq-skid-sheet__link::after { content: " \2192"; }
-.aq-skid-sheet__link:hover { text-decoration: underline; }
-.aq-skid-sheet__wb, .aq-skid-sheet__pn { display: none; }
-
-@container (max-width: 1100px) {
-  .aq-skid-sheet { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); }
-}
-
-/* tablets (601-860 px): the full sheet with its tags and leaders, stacked above the rows */
-@container (min-width: 601px) and (max-width: 860px) {
-  .aq-skid-sheet { display: block; }
-  .aq-skid-sheet__fig { position: static; margin-bottom: var(--space-6); }
-}
-
-@container (max-width: 600px) {
-  .aq-skid-sheet { display: block; }
-  .aq-skid-sheet__fig { position: static; margin: 0 0 var(--space-4); }
-  .aq-skid-sheet__sheet { padding: 0; border: 0; outline: 0; margin: 0; background: none; }
-  .aq-skid-sheet__block, .aq-skid-sheet__tag, .aq-skid-sheet__svg .aq-skid-sheet__ld { display: none; }
-  .aq-skid-sheet__dot { display: grid; box-sizing: border-box; width: var(--space-6); min-width: var(--space-6); height: var(--space-6); padding: 0; border-radius: 50%; }
-  .aq-skid-sheet__dot.is-pk-active { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
-  .aq-skid-sheet__ring, .aq-skid-sheet__ring.is-left { translate: none; width: var(--space-8); height: var(--space-8); margin: calc(-1 * var(--space-4)) 0 0 calc(-1 * var(--space-4)); }
-  /* PhoneKit strip: the drawing runs full width and pans to the dot of the row on the reading line */
-  .aq-skid-sheet[data-pk-on] .aq-skid-sheet__fig { background: var(--surface); }
-  /* the rows: two columns, number, parameter and the Basis button | the value; basis and link open under the row */
-  .aq-skid-sheet__rows { border-top-color: var(--line-strong); }
-  /* pass 12 C: the value runs full width under its number and parameter (the Basis button at the end of that first
-     line), so the 13 px mono placeholders get the whole line instead of wrapping four to six times in a 190 px column */
-  .aq-skid-sheet__row { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: none; column-gap: var(--space-3); padding: 0 0 var(--space-3); }
-  .aq-skid-sheet__n { display: none; }
-  .aq-skid-sheet__pn { display: inline; margin-right: var(--space-2); font: 400 13px/21px var(--font-mono); color: var(--ink-muted); }
-  .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__pn { color: var(--flow); }
-  .aq-skid-sheet__p { grid-row: 1; grid-column: 1; align-self: center; padding-block: var(--space-3) var(--space-1); font-size: 15px; line-height: 21px; }
-  .aq-skid-sheet__v { grid-row: 2; grid-column: 1 / -1; margin: 0; font-size: var(--aq-read-phone); line-height: 21px; }
-  .aq-skid-sheet__wb { display: inline-flex; grid-row: 1; grid-column: 2; justify-self: end; align-self: start; align-items: center; min-height: var(--aq-hit); margin: 0; padding: 0; border: 0; background: none;
-    color: var(--flow); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; cursor: pointer; }
-  .aq-skid-sheet__wb .aq-phone-kit__chev { width: var(--space-8); height: var(--aq-hit); }
-  .aq-skid-sheet__m { display: none; grid-row: 3; grid-column: 1 / -1; margin: var(--space-2) 0 0; font-size: var(--aq-read-phone); line-height: 21px; }
-  .aq-skid-sheet__row.is-open .aq-skid-sheet__m { display: block; }
-  .aq-skid-sheet__link { min-height: var(--aq-hit); display: inline-flex; align-items: center; margin: 0; }
-  .aq-skid-sheet__row.is-pk-active .aq-skid-sheet__n { color: var(--flow); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aq-skid-sheet__ring, .aq-skid-sheet__tag, .aq-skid-sheet__dot, .aq-skid-sheet__row { transition: none; }
 }
 
 /* ---------- SkidTags: an evidence table keyed to an elevation drawing of the skid (look "skid-tags"). Limestone band
@@ -17786,6 +17707,108 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
   /* pass 12 (S4): the task and note lines read at 14 px */
   .aq-time-card .aq-time-card__v, .aq-time-card .aq-time-card__m { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
 }
+
+/* ---------- TitleBlock: delivery terms as the ruled title block of a drawing sheet (look "title-block"). Zones on
+   surface-raised between line-strong rules, a numbered square tag and the row's name in each zone's corner, an IsoKit
+   drawing at the zone's right, the value under the column name, the note under a dashed rule. Desktop 2x2, closed by
+   a strip with the section title over blank number and revision fields; phones stack the zones edge to edge of the
+   column. ---------- */
+.aq-title-block-sec { position: relative; }
+.aq-title-block { container-type: inline-size; }
+.aq-title-block__sheet { border: 1.5px solid var(--line-strong); background: var(--surface-raised); }
+.aq-title-block__zones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.aq-title-block__zones.is-odd > .aq-title-block__zone:last-child { grid-column: 1 / -1; }
+
+/* one zone: corner head and drawing on top, the value and the note under them */
+.aq-title-block__zone {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 15rem); grid-template-areas: "hd fig" "bd fig" "bd .";
+  grid-template-rows: auto auto 1fr; column-gap: var(--space-6); padding: var(--space-6) var(--space-8) var(--space-8);
+  border-top: 1px solid var(--line-strong);
+}
+.aq-title-block__zone:nth-child(-n+2) { border-top: 0; }
+.aq-title-block__zone:nth-child(2n) { border-left: 1px solid var(--line-strong); }
+.aq-title-block__hd { grid-area: hd; display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); }
+.aq-title-block__tag {
+  flex: none; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); margin-top: var(--space-1);
+  border: 1px solid var(--line-strong); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted);
+}
+.aq-title-block__zone.is-hl .aq-title-block__tag { background: var(--flow); border-color: var(--flow); color: var(--surface-raised); }
+.aq-title-block__h { margin: 0; font: 300 26px/34px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.aq-title-block__fig { grid-area: fig; align-self: start; display: flex; justify-content: flex-end; }
+.aq-title-block__svg { width: 100%; max-width: 15rem; max-height: 12rem; }
+.aq-title-block__bd { grid-area: bd; min-width: 0; }
+.aq-title-block__k { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-title-block__v { margin: 0; font: 400 19px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; }
+.aq-title-block__v .aq-ph { font-size: 15px; }
+/* placeholders stay reading size wherever they sit: on a signature line and in the notes */
+.aq-title-block__sv .aq-ph { font-size: 15px; }
+.aq-title-block__mt .aq-ph { font-size: 14px; }
+/* the drawn row's value, part by part (search, bookmark, footer number boxes) */
+.aq-title-block__parts { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.aq-title-block__parts li { position: relative; padding-left: var(--space-6); font: 400 19px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-title-block__parts li::before { content: ""; position: absolute; left: 0; top: 11px; width: var(--space-2); height: var(--space-2); border: 1.5px solid var(--flow); }
+/* choices as signature lines: x at the start, nothing signed */
+.aq-title-block__sigs { list-style: none; margin: 0; padding: 0; display: grid; }
+.aq-title-block__sigs li { display: flex; align-items: baseline; gap: var(--space-3); min-height: var(--space-12); padding: var(--space-3) 0 var(--space-2); border-bottom: 1.5px solid var(--line-strong); }
+.aq-title-block__sx { flex: none; font: 400 14px/1 var(--font-mono); color: var(--ink-subtle); }
+.aq-title-block__sv { font: 400 16px/24px var(--font-sans); color: var(--ink); }
+.aq-title-block__or { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-title-block__m { margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px dashed var(--line); }
+.aq-title-block__mt { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-title-block__go { margin: var(--space-4) 0 0; }
+
+/* drawing accents on IsoKit: an ink block (the page header), a flow-tint mark (bookmark ribbon, kickoff marker) */
+.aq-title-block__svg .aq-title-block__ink { fill: var(--ink); stroke: var(--ink); }
+.aq-title-block__svg .aq-title-block__mark { fill: var(--flow-tint); stroke: var(--flow); }
+.aq-title-block__svg .aq-title-block__hit { fill: var(--flow-tint); }
+.aq-title-block__svg .aq-title-block__sl { stroke: var(--ink-muted); }
+
+/* the closing strip: section title over blank number and revision fields (aria-hidden furniture) */
+.aq-title-block__tb {
+  display: grid; grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 7rem)); margin-left: 50%;
+  border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle);
+}
+.aq-title-block__tb > span { padding: var(--space-2) var(--space-3); }
+.aq-title-block__tb > span + span { border-left: 1px solid var(--line-strong); }
+.aq-title-block__tbh { color: var(--ink); }
+
+@container (max-width: 1040px) {
+  .aq-title-block__zone { grid-template-columns: minmax(0, 1fr) minmax(0, 10rem); grid-template-areas: "hd fig" "bd bd"; grid-template-rows: auto 1fr; padding: var(--space-6); }
+  .aq-title-block__svg { max-height: 8rem; }
+  .aq-title-block__tb { margin-left: 0; border-left: 0; }
+}
+/* tablet pairs: the zones share their heading row (subgrid), so values in a pair start level */
+@container (min-width: 601px) and (max-width: 1040px) {
+  .aq-title-block__zones { grid-auto-rows: auto; }
+  .aq-title-block__zone { grid-row: span 2; grid-template-rows: subgrid; }
+}
+/* phones: no outer frame or gutter, the zones stacked between full-width rules, the drawing beside the zone's name */
+@container (max-width: 600px) {
+  .aq-title-block__sheet { border: 0; border-top: 1.5px solid var(--line-strong); border-bottom: 1.5px solid var(--line-strong); background: none; }
+  .aq-title-block__zones { grid-template-columns: minmax(0, 1fr); }
+  .aq-title-block__zones.is-odd > .aq-title-block__zone:last-child { grid-column: auto; }
+  .aq-title-block__zone { grid-template-columns: minmax(0, 1fr) minmax(0, 10rem); column-gap: var(--space-4); padding: var(--space-6) 0; }
+  .aq-title-block__zone:nth-child(2) { border-top: 1px solid var(--line-strong); }
+  .aq-title-block__zone:nth-child(2n) { border-left: 0; }
+  .aq-title-block__hd { flex-direction: row; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+  .aq-title-block__tag { margin-top: 0; }
+  .aq-title-block__h { font-size: 24px; line-height: 30px; }
+  .aq-title-block__svg { max-height: 7rem; }
+  .aq-title-block__fig { align-self: center; }
+  .aq-title-block__v, .aq-title-block__parts li { font-size: 18px; line-height: 27px; }
+  .aq-title-block__parts li::before { top: 10px; }
+  /* the column name once, on the first zone */
+  .aq-title-block__zone + .aq-title-block__zone .aq-title-block__bd > .aq-title-block__k { display: none; }
+  .aq-title-block__mt { font-size: 15px; line-height: 23px; }
+  .aq-title-block__tb { display: none; }
+  /* timing: the strip under the name at the column's width, so the skid at its end reads */
+  .aq-title-block__zone.is-time { grid-template-areas: "hd hd" "fig fig" "bd bd"; }
+  .aq-title-block__zone.is-time .aq-title-block__fig { justify-content: flex-start; margin-bottom: var(--space-4); }
+  .aq-title-block__zone.is-time .aq-title-block__svg { width: auto; max-width: 100%; height: 7.5rem; max-height: none; }
+}
+/* the kickoff-to-documents run on the timing strip (motion draws it from the kickoff marker) */
+.aq-title-block__svg .aq-title-block__run { stroke-linecap: butt; }
 
 /* ---------- TraceLines: a traceability table as transit lines (look "trace-lines"). One grid: the documents down the
    first column (station names, drawn), then one column per requirement line (--col). The wrappers are display:

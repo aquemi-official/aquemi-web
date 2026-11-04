@@ -24,9 +24,9 @@ What changed for every hero, calm enough to open all 27 pages:
 | `home` | Loop drawing | `aq-hero__grid--loop` |
 | `sys-*`, `svc-*`, `ind-*` with a drawing in `ART` | Equipment figure with callouts | `aq-hero__grid--figure` |
 | `sys-*`, `svc-*`, `ind-*` without a drawing | Photograph placeholder | `aq-hero__grid` |
-| Pages without a drawing that set `figure` (compliance, cmp-*, about, careers, news, contact-*) | Drawn figure: spots cluster, binder, stamp or route | `aq-hero__grid--figure aq-hero__grid--drawn` |
+| Pages without a drawing that set `figure` (compliance, cmp-documentation, about, careers, contact-*) | Drawn figure: spots cluster, binder, stamp or route | `aq-hero__grid--figure aq-hero__grid--drawn` |
 | Hub pages that set `figure.look` (systems, services, first-system, projects) | Drawn scene (HeroScene): an isometric scene with numbered tags and its key | `aq-hero__grid--figure aq-hero__grid--scene` |
-| Pages without an `ART` drawing that set `figure.art` (cmp-quality, project-plan) | Hero drawing: a line drawing like the equipment figure, no callouts | `aq-hero__grid--figure` + `aq-hero__figure--drawing` |
+| Pages without an `ART` drawing that set `figure.art` (cmp-quality, project-plan, news) | Hero drawing: a line drawing like the equipment figure, no callouts | `aq-hero__grid--figure` + `aq-hero__figure--drawing` |
 | Hub and company pages (everything else) | Section index | `aq-hero__grid--index` |
 
 `wHero` in `assets/src/parts/Hero.js` picks the variant from the page id; content files need no extra fields (except `hero_index: false` and the opt-in `index`, below).
@@ -51,22 +51,33 @@ in `ART_R`. It is kept out of `ART` on purpose: related cards, project-run and t
 drawing for these pages. `art` wins over any other figure fields, which stay so the page can switch back (cmp-quality
 keeps its stamp plate fields, project-plan its route plate fields; `wHero` skips the drawn figure while `art` is set).
 The stamp, route and other figure kinds stay in the library for any page that sets them.
-- On today: `cmp-quality` (audit table: quality manual, nonconformance register, a pipe length with a fused joint, a
-  shipment record; Gemini 239) and `project-plan` (schedule board: nine stage bars stepping down a ruled sheet, a hold
-  diamond at each start, the package (a flat-bottom tank on its plinth beside a small frame) on a pallet at FAT, a
-  truck at shipping, the handover binder after PQ; redrawn in code from Gemini 246, which baked the stage names into
-  its bars). The pallet and the truck sit in the open field past the next row's bar, tied to their own bar by a dashed
-  hairline, so no object crosses the staircase.
+- On today (pass 12 round E, square PP line drawings from the window-4 concepts at their native 1024 px):
+  `cmp-quality` (audit table in the shop: open quality manual, ring-bound nonconformance register, a pipe length with a
+  fused collar joint and a tag, a shipment record, fused pipe lengths on a rack behind; Gemini 251, ratio 0.97),
+  `project-plan` (one schedule in three steps of a block: the order sheet with a pen, the PP package on a pallet for
+  its factory test, a point-of-use valve over a sink with the handover binder; a hold diamond on each step's drop;
+  Gemini 258, whose rows of small square marks were erased and redrawn as the two diamonds, ratio 1.15) and `news`
+  (drafting board: a pinned note sheet with three numbered answer lines, earlier notes tabbed behind it, a pencil
+  sketch of a PP loop with a diaphragm valve; Gemini 252, ratio 0.87; its old spots fields stay). Round D's code-drawn
+  schedule board (`build-d/heroes-src/plan.py`) and the 239 cut-out are in the scratchpad backups and the git history.
 - Desktop: `aq-hero__figure--drawing` insets the drawing 2 % 4 % (not 10 %), so a near-square drawing holds its half
   of the hero.
 - Phone: the box takes the drawing's own ratio at the full gutter width (`heroBoxR` allows down to square for these,
-  as for `sys-*` and for `ART_FULL` pages: svc-upgrades), so there is no band above or below. cmp-quality crops to the
-  table top on small phones (to 560 px: mask 139 % at 46 % 26 %, box 1.31) so the four records read at about 1.4x;
-  from 561 px the whole table shows.
+  as for `sys-*`), so there is no band above or below. `ART_FULL` (equipment pages) gives a page's lowest box ratio:
+  svc-upgrades 1, svc-fat-sat 1, ind-hospital-lab 0.94, svc-service 0.86, so their near-square and upright drawings
+  also run the full gutter width with no side bands. On small phones (to 560 px) two hero drawings stop at the top of
+  their furniture: cmp-quality shows the table top and rack (box 1.249, mask 100 % from the top; the legs end at the
+  box edge) and news the drafting board (box 1.19, mask 103 % at 50 % 0; the board's left edge and the tray's right end
+  inside, the stand drops out). From 561 px both show whole.
 - Tablet (561 to 860 px): the drawing figure is at most 600 px wide and centred, so a near-square drawing does not
-  make the hero 1,100 px tall.
-- New drawings follow the PP drawing rules (BUILD-PLAN-C §0) and the stroke weight of the other masks (about 2 px at
-  900 px; `tools/line_art.py` output).
+  make the hero 1,100 px tall. The three `ART_FULL` equipment drawings below 5:4 (svc-service, ind-hospital-lab,
+  svc-fat-sat) are at most 600 px tall there, centred, so they do not grow 1,170 to 1,450 px heroes at 768.
+- New drawings follow the PP drawing rules (BUILD-PLAN-C §0) and the stroke weight of the other masks (an alpha-weighted
+  stroke of about 1.4 to 1.7 px at 900 px; `tools/line_art.py` output). Gemini PNGs have no capture border: run
+  `line_art.py` with `--inset 0`, so ink near the edge is not cut (round E verify: svc-fat-sat, news,
+  ind-personal-care). Gemini's 1024 px pen comes out heavier (alpha-weighted stroke 1.9 to 2.3 px
+  against 1.4 to 1.7 on the masks), so round E thins it first with a 15 to 30 % blend of a 3 px lightening
+  (`aquemi-library/ops/pass12/build-e/heroes-src/prep.py`).
 
 ## Drawn scene (opt-in hero field `figure.look`, pass 12 round B)
 
@@ -80,7 +91,7 @@ keyed to the five industry pages). A scene replaces the big index or the section
 
 ## Drawn figure (opt-in hero field `figure`)
 
-For pages with no equipment drawing, a quiet line-art figure in place of the index, built from what the system already has (Spots, Icons, SVG and CSS; no new raster art). On today: `compliance`, `cmp-documentation`, `cmp-quality`, `about`, `careers`, `news`, `contact-proposal`, `contact-service`, `contact-locations`.
+For pages with no equipment drawing, a quiet line-art figure in place of the index, built from what the system already has (Spots, Icons, SVG and CSS; no new raster art). On today: `compliance`, `cmp-documentation`, `about`, `careers`, `contact-proposal`, `contact-service`, `contact-locations`.
 
 - Data, one of:
   - `"figure": {"spots": ["ro-skid", "storage-tank", "pretreatment"], "label": "Generation · storage · pretreatment"}`: 2–4 Spot vignettes in a zig-zag, joined along their bases by one drawn `flow` pipe ending in an arrow, each tagged `01 Reverse osmosis skid` (number in `ink-subtle` mono, name Geist 13/18 sentence case in `ink-muted` on a `surface` chip so the pipe passes behind). An entry may be `{"spot": "pid", "t": "Design"}`; an Icon name falls back to the icon (as `wSpot`). Names come from `SPOT_NAME` in `Hero.js`, in plain words: "Reverse osmosis skid", "Electrodeionization stack" (a figure tag may be the only place a page names that equipment; a page that wants the short form names the entry, `{"spot": "ro-skid", "t": "RO skid"}`); `uv-ozone` reads "UV", since no ozone option is offered (DR-013).

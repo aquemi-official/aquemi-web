@@ -1,0 +1,54 @@
+{
+ "look": "title-block",
+ "component": "TitleBlock",
+ "type": "spec",
+ "fields": "h, intro, cols [item, how we deliver it, note], rows [{p, v, m, hl, link, link_label}]; rows[].draw (look-only, optional): \"page\", \"sign\", \"time\" or \"box\" picks the zone's drawing; otherwise it is guessed from the row's name and value (sign for choices, then documents/format, timing/kickoff, retention/archive).",
+ "best_for": "TitleBlock sets delivery terms as the ruled title block of a drawing sheet: each row one zone with a numbered tag, its name, a small IsoKit drawing of what it delivers, the value and the note.",
+ "status": "live",
+ "instances": [
+  {
+   "page": "cmp-documentation",
+   "slot": 3,
+   "h": "Delivery and signatures",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "541f27b",
+   "hash": "7b3d15c980",
+   "block": {
+    "type": "spec",
+    "nav": "Delivery",
+    "h": "Delivery and signatures",
+    "cols": [
+     "Item",
+     "How we deliver it",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Documents we write",
+      "v": "Searchable PDF, bookmarked, number and revision on every page",
+      "hl": true
+     },
+     {
+      "p": "Signatures",
+      "v": "[electronic signature method]; wet ink, scanned; or your validation system",
+      "m": "[Part 11 and Annex 11 controls]"
+     },
+     {
+      "p": "Timing",
+      "v": "Document list agreed at kickoff, [kickoff after order, working days] after order",
+      "m": "Drawings, certificates and FAT records reach you before the skid ships [confirm]. Never held back against an unpaid invoice [confirm]."
+     },
+     {
+      "p": "Retention",
+      "v": "Aquemi keeps a copy for [retention period, years]",
+      "m": "Lost documents reissued on request"
+     }
+    ],
+    "look": "title-block",
+    "anchor": "delivery"
+   }
+  }
+ ]
+}

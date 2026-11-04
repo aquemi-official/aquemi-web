@@ -1,0 +1,72 @@
+{
+ "look": "onboarding-fan",
+ "component": "OnboardingFan",
+ "type": "docs",
+ "fields": "h, intro, items [{t, d, code, key, link, intent}]. Codes come from the DocList lookup (docCode) unless the item names its own.",
+ "best_for": "OnboardingFan shows a supplier-onboarding set as an open folder with one tabbed paper fanned out per item, each paper carrying a status-stamp slot, so procurement sees every paper it checks before award and the status of each at a glance (look `onboarding-fan`, a docs block).",
+ "status": "live",
+ "instances": [
+  {
+   "page": "buying",
+   "slot": 5,
+   "h": "Onboarding papers and their status",
+   "status": "live",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "commit": "541f27b",
+   "hash": "db637aab19",
+   "block": {
+    "type": "docs",
+    "nav": "Onboarding",
+    "anchor": "onboarding",
+    "h": "Onboarding papers and their status",
+    "intro": "Procurement checks these before award. Each is marked held, on request or in the questionnaire pack. Ask for any with your RFQ.",
+    "items": [
+     {
+      "t": "Corporate registration",
+      "d": "[corporate registration, jurisdiction and number]",
+      "code": "REG",
+      "key": true,
+      "link": "about#facts"
+     },
+     {
+      "t": "Certificate of insurance",
+      "d": "Status: [certificate of insurance status]. Limits are in our company facts.",
+      "code": "INS",
+      "key": true,
+      "link": "about#facts"
+     },
+     {
+      "t": "Workers' compensation clearance",
+      "d": "Workplace Safety and Insurance Board (WSIB), Ontario: [WSIB clearance status]",
+      "code": "WSIB"
+     },
+     {
+      "t": "Tax registration",
+      "d": "Business number and sales tax account: [tax registration status]",
+      "code": "TAX"
+     },
+     {
+      "t": "Bank letter",
+      "d": "[bank reference letter status]",
+      "code": "BNK"
+     },
+     {
+      "t": "Quality system status",
+      "d": "[ISO 9001 status, registrar and expiry]",
+      "code": "QMS",
+      "link": "cmp-quality#certification"
+     },
+     {
+      "t": "Supplier questionnaire",
+      "d": "Your form completed, or our questionnaire pack",
+      "code": "SQ",
+      "link": "cmp-quality#audit",
+      "intent": "Your questionnaire, completed"
+     }
+    ],
+    "look": "onboarding-fan"
+   }
+  }
+ ]
+}

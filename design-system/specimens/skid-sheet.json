@@ -4,13 +4,13 @@
  "type": "spec",
  "fields": "h, caption (eyebrow), intro, rows [{p, v, m, link, link_label, part}], note. part (look-only): the drawn part the row governs, one of membranes, utilities, exchanger, edi, piping, joints, frame, pump, drain, panel. A row without a part has no tag (it still lists). Every row shows on every width (S7).",
  "best_for": "SkidSheet reads a skid's design parameters off the skid itself: one RO and EDI skid in IsoKit line art on a framed general-arrangement sheet, a numbered tag on a leader from each part to the parameter it governs, and the parameter rows beside the sheet under the same numbers.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pw",
    "slot": 2,
    "h": "Skid design parameters",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
    "last_seen": "2026-11-03",
    "commit": "281a059",

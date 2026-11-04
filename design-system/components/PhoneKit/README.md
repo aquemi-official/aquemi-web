@@ -130,3 +130,11 @@ Added in build round D (integrator, 2026-11-03):
 - Designed without PhoneKit (each README says why): LevellingSheet (a plain CSS checklist, each row one link),
   BidRoute (an always-open riser: the route is the idea), CapitalRequest (a form, nothing to pick), RecordTrail,
   ReceivingBench and ContractFolders (each station, row or folder already one readable unit).
+
+Added in build round E (integrator, 2026-11-03):
+- sticky figure: OrthoSheet (sys-pw design; `data-pk-bp="600" data-pk-h="150"`, no zoom: the front elevation alone,
+  cropped to the skid, with a 24 px numbered dot on each part, `data-pk-key` on the dots; the row on the reading line
+  lights its dot and part on `pk:change`). It replaces SkidSheet (retired), which needed a 220 px strip zoomed 1.15x.
+- Designed without PhoneKit (each README says why): NoteSheet (one link per row and a compact featured card; the topic
+  filter is its own 44 px chip row), TitleBlock (each ruled zone already one unit with its own drawing) and
+  OnboardingFan (compact rows inside the folder, each row one short unit and one link).
