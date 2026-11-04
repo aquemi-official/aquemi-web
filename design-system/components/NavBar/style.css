@@ -35,6 +35,27 @@
 .aq-nav__frame { display: inline-flex; }
 .aq-nav__toggle { display: none; }
 
+/* Theme switch: a quiet 44 px icon button between the service link and the proposal button, kept in the compact bar
+   beside the menu toggle. It shows the theme it switches to: a moon in light, a sun in dark (the same selector pattern
+   as the logo swap in base.css). Strokes in currentColor, ink-muted turning ink on hover like the section labels. */
+.aq-nav__theme {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: var(--aq-hit); height: var(--aq-hit); margin: 0 calc(-1 * var(--space-2)); padding: 0;
+  background: none; border: 0; border-radius: var(--radius-sm); color: var(--ink-muted); cursor: pointer;
+  transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-nav__theme:hover { color: var(--ink); }
+.aq-nav__theme:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-nav__theme svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.aq-nav__sun { display: none; }
+[data-theme="dark"] .aq-nav__moon { display: none; }
+[data-theme="dark"] .aq-nav__sun { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-nav__moon { display: none; }
+  :root:not([data-theme="light"]) .aq-nav__sun { display: block; }
+}
+@media (prefers-reduced-motion: reduce) { .aq-nav__theme { transition: none; } }
+
 /* Menu: the urgent block, the sections, the page's section jump, then the proposal button, on surface */
 .aq-menu { display: none; }
 .aq-menu__list { display: grid; margin: 0; padding: 0; list-style: none; }

@@ -58,6 +58,17 @@ function menuGroup(s,open){var id=s.id,G=navGroups(s,s.phoneDrop),f=s.feat&&whas
   +'<div class="aq-menu__ggrid">'+G.map(function(g,k){var gid='wm-l-'+id+'-'+(k+1);return '<div class="aq-menu__gg"><p class="aq-menu__glabel" id="'+gid+'">'+e(g.h)+'</p><ul aria-labelledby="'+gid+'">'
    +g.items.map(function(x){return '<li>'+navA(x[0],'aq-menu__link','<span class="aq-menu__t">'+tx(x[1]||wlabel(x[0]))+'</span><span class="aq-menu__d">'+tx(x[2])+'</span>')+'</li>'}).join('')+'</ul></div>'}).join('')+'</div>'
   +(ft?'<p class="aq-menu__foot">'+tx(ft.t)+(ft.to?' '+navA(ft.to,'aq-menu__more',tx(ft.link)):'')+'</p>':'')+'</div></div></li>'}
+/* Theme switch (aq-nav__theme): every load follows the system setting (no data-theme on <html>, so tokens.css's
+   prefers-color-scheme rules apply). Pressing it sets data-theme on <html> to the other theme for the rest of the
+   visit; route changes keep it (the attribute lives on <html>, outside the re-rendered page), a reload goes back to
+   the system. The icon shows the theme it switches to (a moon in light, a sun in dark), swapped by CSS like the logo;
+   the label names the action and is refreshed at each render, each press and each system change. */
+function navTheme(){var a=typeof document!=='undefined'&&document.documentElement.getAttribute('data-theme');
+ return a||(typeof window!=='undefined'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function navThemeLabel(){return navTheme()==='dark'?'Switch to light theme':'Switch to dark theme'}
+function navThemeBtn(){return '<button class="aq-nav__theme" type="button" id="wtheme" aria-label="'+navThemeLabel()+'" title="'+navThemeLabel()+'">'
+ +'<svg class="aq-nav__moon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M16.5 12.2A6.75 6.75 0 0 1 7.8 3.5a6.75 6.75 0 1 0 8.7 8.7Z"/></svg>'
+ +'<svg class="aq-nav__sun" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.75v2M10 16.25v2M1.75 10h2M16.25 10h2M4.17 4.17l1.41 1.41M14.42 14.42l1.41 1.41M4.17 15.83l1.41-1.41M14.42 5.58l1.41-1.41"/></svg></button>'}
 function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=navTasks();
  var cta=function(extra){return '<span class="aq-nav__frame'+(extra||'')+'"><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a></span>'};
  var svc=function(cls){return '<a class="'+cls+'" href="#contact-service" data-wp="contact-service"'+(WP==='contact-service'?' aria-current="page"':'')+'>Service request</a>'};
@@ -66,7 +77,7 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
    return s.panel===null?'<li class="aq-nav__item"><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>'
     :'<li class="aq-nav__item"><button type="button" class="aq-nav__trigger" id="nav-t-'+s.id+'" aria-expanded="false" aria-controls="nav-p-'+s.id+'"'+(c?' aria-current="true"':'')+'>'+e(s.label)+'<span class="aq-nav__chev" aria-hidden="true"></span></button>'+megaPanel(s)+'</li>'}).join('')+'</ul>'+
   '<div class="aq-mega__bg" aria-hidden="true" hidden></div>'+
-  '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+cta()+
+  '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+navThemeBtn()+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
   '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
@@ -79,6 +90,11 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
   cta(' aq-menu__cta')+'</div>':'')}
 /* Menu behaviour: a section jump closes the menu before the page scrolls; Escape closes it; focus stays on the toggle after it re-renders. */
 if(typeof document!=='undefined'){
+ /* Theme switch: press flips the page's theme; a system change while no choice was made refreshes the label */
+ var navThemeSync=function(){var b=document.getElementById('wtheme');if(b){var l=navThemeLabel();b.setAttribute('aria-label',l);b.setAttribute('title',l)}};
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('#wtheme');if(!b)return;
+  document.documentElement.setAttribute('data-theme',navTheme()==='dark'?'light':'dark');navThemeSync()});
+ if(window.matchMedia){var navMq=matchMedia('(prefers-color-scheme: dark)');if(navMq.addEventListener)navMq.addEventListener('change',navThemeSync);else if(navMq.addListener)navMq.addListener(navThemeSync)}
  /* Mega panels (wide bar). MEGA: the open item (<li>), whether it was clicked open (pinned), and the hover timers. */
  var MEGA={li:null,pin:false,hover:0,leave:0,io:null,ro:null};
  var megaFine=function(){return !window.matchMedia||matchMedia('(hover: hover) and (pointer: fine)').matches};

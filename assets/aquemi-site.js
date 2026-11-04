@@ -173,36 +173,31 @@ var TABLE_AS={};
 var BLOCKS={};
 /* Section looks (pass 9): LOOKS[name] = function(block, heading) -> section HTML, chosen by a block's look field. */
 var LOOKS={};
-/* BackToTop: a floating button that returns the reader to the top. Pass 12 (S1, round C): it never sits on a line
-   being read or scrolled past. It is hidden until the reader is two screens down; from there it shows only once the
-   page has been still for about 600 ms, and only if the reader was last scrolling up (looking for the top) or has
-   reached the page end (the footer's bottom in view, not its top: mid-footer it would park on the phone disclosure
-   chevrons; at the end the footer keeps clear room for it); the next scroll, in either direction, hides it again at once. Two screens down it is also armed:
-   in the tab order but invisible, so a keyboard reader tabbing past the footer reaches it and it appears while it has
-   focus. It moves focus to the logo link, so keyboard and screen-reader users land at the start of the page too.
+/* BackToTop: a floating button that returns the reader to the top. It shows as soon as the reader is one screen down
+   and stays while they scroll on, in either direction, so the top is always one press away; back within the first
+   screen it fades out. On phones and tablets (the 44 px square) it steps aside while the footer is partly in view, so
+   it never sits on the footer's disclosure chevrons, and comes back at the page end (the footer keeps clear room for
+   it there). It moves focus to the logo link, so keyboard and screen-reader users land at the start of the page too.
    Smooth scroll unless reduced motion is set. One scroll listener for the whole site, batched to one update per frame;
    each render writes a fresh button. */
 function wBackToTop(){return '<button class="aq-back-to-top" type="button" id="wtop"><span class="aq-back-to-top__arrow" aria-hidden="true">↑</span><span class="aq-back-to-top__label">Back to top</span></button>'}
 if(typeof document!=='undefined'){
- var topY=0,topUp=false,topQ=0,topIdle=0,topRest=false;
- var topSync=function(){topQ=0;var b=document.getElementById('wtop'),y=window.scrollY||0,dy=y-topY,f=document.querySelector('.aq-footer');
-  /* direction with a small dead band, so a finger's jitter does not flicker it */
-  if(dy>6){topUp=false;topY=y}else if(dy<-6){topUp=true;topY=y}
-  var fr=f&&f.getBoundingClientRect(),armed=y>window.innerHeight*2,foot=fr&&fr.bottom<=window.innerHeight+2,
-   /* phones and tablets (the 44 px square): mid-footer, in either direction, the square would sit on the disclosure
-      chevrons, so it waits for the page end (or for the footer to leave the view) */
-   midFoot=b&&fr&&!foot&&fr.top<window.innerHeight&&b.offsetWidth<=48;
-  if(b){b.classList.toggle('is-armed',armed);b.classList.toggle('is-shown',armed&&((topRest&&(topUp||foot)&&!midFoot)||document.activeElement===b))}};
+ var topQ=0,topHold=false;
+ var topSync=function(){topQ=0;var b=document.getElementById('wtop');if(!b)return;var y=window.scrollY||0,f=document.querySelector('.aq-footer'),
+   fr=f&&f.getBoundingClientRect(),on=y>window.innerHeight,foot=fr&&fr.bottom<=window.innerHeight+2,
+   midFoot=fr&&!foot&&fr.top<window.innerHeight&&b.offsetWidth<=48;
+  /* after a press it stays down for the trip to the top */
+  if(!on)topHold=false;
+  b.classList.toggle('is-shown',(on&&!midFoot&&!topHold)||document.activeElement===b)};
  var topSched=function(){if(!topQ)topQ=window.requestAnimationFrame?requestAnimationFrame(topSync):(topSync(),0)};
- /* every scroll hides it and restarts the 600 ms rest timer; the timer's end shows it (if armed and wanted) */
- var topScroll=function(){topRest=false;clearTimeout(topIdle);topIdle=setTimeout(function(){topRest=true;topSched()},600);topSched()};
- window.addEventListener('scroll',topScroll,{passive:true});window.addEventListener('resize',topSched);
+ window.addEventListener('scroll',topSched,{passive:true});window.addEventListener('resize',topSched);
+ if(window.MutationObserver)new MutationObserver(function(){var b=document.getElementById('wtop');if(b&&!b.hasAttribute('data-seen')){b.setAttribute('data-seen','');topSched()}}).observe(document.documentElement,{childList:true,subtree:true});
  document.addEventListener('focusin',function(ev){if(ev.target&&ev.target.id==='wtop')topSched()});
  document.addEventListener('focusout',function(ev){if(ev.target&&ev.target.id==='wtop')setTimeout(topSched,0)});
  document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('#wtop');if(!b)return;
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
-  var home=document.querySelector('.aq-nav__home');if(home)home.focus({preventScroll:true});topUp=false;topRest=false;b.classList.remove('is-shown')});
+  var home=document.querySelector('.aq-nav__home');if(home)home.focus({preventScroll:true});topHold=true;b.classList.remove('is-shown')});
 }
 /* Button: the hero's primary and secondary links (kind "link"), the closing, the contact routes, FAQ links and form
    notes all use it.
@@ -1509,6 +1504,17 @@ function menuGroup(s,open){var id=s.id,G=navGroups(s,s.phoneDrop),f=s.feat&&whas
   +'<div class="aq-menu__ggrid">'+G.map(function(g,k){var gid='wm-l-'+id+'-'+(k+1);return '<div class="aq-menu__gg"><p class="aq-menu__glabel" id="'+gid+'">'+e(g.h)+'</p><ul aria-labelledby="'+gid+'">'
    +g.items.map(function(x){return '<li>'+navA(x[0],'aq-menu__link','<span class="aq-menu__t">'+tx(x[1]||wlabel(x[0]))+'</span><span class="aq-menu__d">'+tx(x[2])+'</span>')+'</li>'}).join('')+'</ul></div>'}).join('')+'</div>'
   +(ft?'<p class="aq-menu__foot">'+tx(ft.t)+(ft.to?' '+navA(ft.to,'aq-menu__more',tx(ft.link)):'')+'</p>':'')+'</div></div></li>'}
+/* Theme switch (aq-nav__theme): every load follows the system setting (no data-theme on <html>, so tokens.css's
+   prefers-color-scheme rules apply). Pressing it sets data-theme on <html> to the other theme for the rest of the
+   visit; route changes keep it (the attribute lives on <html>, outside the re-rendered page), a reload goes back to
+   the system. The icon shows the theme it switches to (a moon in light, a sun in dark), swapped by CSS like the logo;
+   the label names the action and is refreshed at each render, each press and each system change. */
+function navTheme(){var a=typeof document!=='undefined'&&document.documentElement.getAttribute('data-theme');
+ return a||(typeof window!=='undefined'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function navThemeLabel(){return navTheme()==='dark'?'Switch to light theme':'Switch to dark theme'}
+function navThemeBtn(){return '<button class="aq-nav__theme" type="button" id="wtheme" aria-label="'+navThemeLabel()+'" title="'+navThemeLabel()+'">'
+ +'<svg class="aq-nav__moon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M16.5 12.2A6.75 6.75 0 0 1 7.8 3.5a6.75 6.75 0 1 0 8.7 8.7Z"/></svg>'
+ +'<svg class="aq-nav__sun" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.75v2M10 16.25v2M1.75 10h2M16.25 10h2M4.17 4.17l1.41 1.41M14.42 14.42l1.41 1.41M4.17 15.83l1.41-1.41M14.42 5.58l1.41-1.41"/></svg></button>'}
 function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=navTasks();
  var cta=function(extra){return '<span class="aq-nav__frame'+(extra||'')+'"><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a></span>'};
  var svc=function(cls){return '<a class="'+cls+'" href="#contact-service" data-wp="contact-service"'+(WP==='contact-service'?' aria-current="page"':'')+'>Service request</a>'};
@@ -1517,7 +1523,7 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
    return s.panel===null?'<li class="aq-nav__item"><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>'
     :'<li class="aq-nav__item"><button type="button" class="aq-nav__trigger" id="nav-t-'+s.id+'" aria-expanded="false" aria-controls="nav-p-'+s.id+'"'+(c?' aria-current="true"':'')+'>'+e(s.label)+'<span class="aq-nav__chev" aria-hidden="true"></span></button>'+megaPanel(s)+'</li>'}).join('')+'</ul>'+
   '<div class="aq-mega__bg" aria-hidden="true" hidden></div>'+
-  '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+cta()+
+  '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+navThemeBtn()+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
   '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
@@ -1530,6 +1536,11 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
   cta(' aq-menu__cta')+'</div>':'')}
 /* Menu behaviour: a section jump closes the menu before the page scrolls; Escape closes it; focus stays on the toggle after it re-renders. */
 if(typeof document!=='undefined'){
+ /* Theme switch: press flips the page's theme; a system change while no choice was made refreshes the label */
+ var navThemeSync=function(){var b=document.getElementById('wtheme');if(b){var l=navThemeLabel();b.setAttribute('aria-label',l);b.setAttribute('title',l)}};
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('#wtheme');if(!b)return;
+  document.documentElement.setAttribute('data-theme',navTheme()==='dark'?'light':'dark');navThemeSync()});
+ if(window.matchMedia){var navMq=matchMedia('(prefers-color-scheme: dark)');if(navMq.addEventListener)navMq.addEventListener('change',navThemeSync);else if(navMq.addListener)navMq.addListener(navThemeSync)}
  /* Mega panels (wide bar). MEGA: the open item (<li>), whether it was clicked open (pinned), and the hover timers. */
  var MEGA={li:null,pin:false,hover:0,leave:0,io:null,ro:null};
  var megaFine=function(){return !window.matchMedia||matchMedia('(hover: hover) and (pointer: fine)').matches};
