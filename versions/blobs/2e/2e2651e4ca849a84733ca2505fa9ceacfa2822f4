@@ -1,0 +1,106 @@
+/* ---------- TankGa: tank and pipework parameters read off one GA sheet ---------- */
+/* One paper sheet: head and drawing on the left, the ruled key on the right, the title block across the foot */
+.aq-tank-ga { position: relative; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); grid-template-rows: auto 1fr auto;
+  column-gap: var(--space-12); padding: var(--space-8) var(--space-8) 0; border: 1px solid var(--line-strong); background: var(--surface-raised); }
+.aq-tank-ga__head { grid-column: 1; grid-row: 1; }
+.aq-tank-ga__head .aq-sec-head { margin: 0; }
+.aq-tank-ga__head .aq-h1 { font-weight: 300; }
+
+/* The drawing and its numbered tags */
+.aq-tank-ga__fig { position: relative; grid-column: 1; grid-row: 2; align-self: center; padding: var(--space-4) 0 var(--space-8); }
+.aq-tank-ga__pan { position: relative; }
+.aq-tank-ga__svg { display: block; width: 100%; height: auto; }
+.aq-tank-ga .aq-iso [data-iso-id] { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-tank-ga .aq-iso .is-on .aq-iso__eq, .aq-tank-ga .aq-iso .is-on .aq-iso__ln, .aq-tank-ga .aq-iso .is-on .aq-iso__thin, .aq-tank-ga .aq-iso .is-on .aq-iso__hid,
+.aq-tank-ga .aq-iso .is-on .aq-iso__pipe-wall, .aq-tank-ga .aq-iso .is-on.aq-iso__eq { stroke: var(--flow); }
+.aq-tank-ga .aq-iso .is-on .aq-iso__eq { fill: var(--flow-tint); }
+.aq-tank-ga .aq-iso .aq-tank-ga__inside .aq-iso__eq { fill: var(--surface-raised); stroke-width: 1; }
+.aq-tank-ga__lead path { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 180ms ease; }
+.aq-tank-ga__lead circle { fill: var(--line-strong); stroke: none; transition: fill 180ms ease; }
+.aq-tank-ga__lead.is-on path { stroke: var(--flow); stroke-width: 1.5; }
+.aq-tank-ga__lead.is-on circle { fill: var(--flow); }
+.aq-tank-ga__tag { position: absolute; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); margin: calc(var(--space-6) / -2) 0 0 calc(var(--space-6) / -2);
+  background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em;
+  transition: background-color 180ms ease, transform 180ms ease; }
+.aq-tank-ga__tag.is-on { background: var(--flow); color: var(--on-action); transform: scale(1.12); }
+/* Pass 12 C: the GA-sheet tag shared with SkidSheet (same declarations in SkidSheet/style.css): navy with on-navy
+   numerals, flow with on-action when lit; in the dark theme a 1 px on-navy-muted outline keeps the navy tag off the
+   dark sheet. */
+:root[data-theme="dark"] .aq-tank-ga__tag { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-tank-ga__tag { outline: 1px solid var(--on-navy-muted); outline-offset: -1px; } }
+
+/* The key: one ruled row per tag */
+.aq-tank-ga__rows { grid-column: 2; grid-row: 1 / span 2; list-style: none; margin: 0; padding: 0 0 var(--space-8); border-top: 1px solid var(--line-strong); align-self: start; }
+.aq-tank-ga__row { display: grid; grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-4); row-gap: 0; padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--line); cursor: default; outline: none; transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1), background-color 180ms ease; }
+.aq-tank-ga__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-tank-ga__n { grid-row: 1 / span 3; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); border: 1px solid var(--ink-muted); color: var(--ink);
+  font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.aq-tank-ga__p { grid-column: 2; margin: 0 0 var(--space-1); font: 400 17px/22px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-tank-ga__v { grid-column: 2; margin: 0; font: 400 15px/21px var(--font-sans); color: var(--ink); }
+.aq-tank-ga__m { grid-column: 2; margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-tank-ga__row.is-on { background: var(--flow-tint); }
+.aq-tank-ga__row.is-on .aq-tank-ga__n { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+.aq-tank-ga.is-pointing .aq-tank-ga__row:not(.is-on) { opacity: 0.62; }
+
+/* The title block: brand, caption, and the budget (the one parameter that names no part) */
+.aq-tank-ga__block { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 2.4fr);
+  margin: 0 calc(var(--space-8) * -1); border-top: 1px solid var(--line-strong); }
+.aq-tank-ga__block > * { padding: var(--space-4) var(--space-6); }
+.aq-tank-ga__block > * + * { border-left: 1px solid var(--line-strong); }
+.aq-tank-ga__brand, .aq-tank-ga__cap { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-tank-ga__brand { color: var(--ink); }
+.aq-tank-ga__brand, .aq-tank-ga__cap { display: flex; align-items: center; }
+.aq-tank-ga__budget { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-6); row-gap: 0; align-items: baseline; background: var(--navy); color: var(--on-navy); }
+.aq-tank-ga__bl { grid-row: 1 / span 2; margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-tank-ga__bv { grid-column: 2; margin: 0; font: 400 17px/24px var(--font-sans); color: var(--on-navy); }
+.aq-tank-ga__bm { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-navy-muted); }
+.aq-tank-ga__budget .aq-tank-ga__link { display: inline-flex; align-items: center; min-height: var(--aq-hit); color: var(--on-navy);
+  font: 400 14px/20px var(--font-sans); text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 3px; }
+.aq-tank-ga__m .aq-tank-ga__link { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-tank-ga__tag, .aq-tank-ga__row, .aq-tank-ga__n, .aq-tank-ga__lead path, .aq-tank-ga__lead circle, .aq-tank-ga .aq-iso [data-iso-id] { transition: none; }
+}
+
+/* Mid widths: the drawing above, the key under it in two columns */
+@container (max-width: 1100px) {
+  .aq-tank-ga { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .aq-tank-ga__head, .aq-tank-ga__fig, .aq-tank-ga__rows, .aq-tank-ga__block { grid-column: 1; grid-row: auto; }
+  .aq-tank-ga__fig { max-width: calc(var(--space-32) * 5); width: 100%; justify-self: center; }
+  .aq-tank-ga__rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-6); }
+}
+
+/* Phones: head, the drawing as a sticky strip (PhoneKit), the compact key, the title block as a closing card */
+@container (max-width: 860px) {
+  .aq-tank-ga { display: flex; flex-direction: column; padding: var(--space-6) var(--space-4) 0; }
+  .aq-tank-ga__fig { padding: var(--space-4) 0; margin-inline: calc(var(--space-4) * -1); max-width: none; width: auto; align-self: stretch; }
+  .aq-tank-ga__rows { display: block; padding-bottom: var(--space-6); align-self: stretch; }
+  .aq-tank-ga__row { column-gap: var(--space-3); padding: var(--space-3) 0; }
+  .aq-tank-ga__p { font-size: 16px; line-height: 22px; }
+  .aq-tank-ga__v { font-size: var(--aq-read-phone); line-height: 20px; }
+  .aq-tank-ga__m { font-size: var(--aq-read-phone); line-height: 20px; }
+  .aq-tank-ga__v .aq-ph, .aq-tank-ga__m .aq-ph, .aq-tank-ga__bv .aq-ph { font-size: var(--aq-chip-phone); }
+  .aq-tank-ga__block { display: flex; flex-wrap: wrap; margin: 0 calc(var(--space-4) * -1); }
+  .aq-tank-ga__block > * { padding: var(--space-3) var(--space-4); }
+  .aq-tank-ga__block > .aq-tank-ga__cap { display: none; }
+  .aq-tank-ga__block > .aq-tank-ga__budget { flex: 1 1 100%; grid-template-columns: minmax(0, 1fr); border-left: 0; border-top: 1px solid var(--line-strong); padding: var(--space-4); }
+  .aq-tank-ga__bl, .aq-tank-ga__bv, .aq-tank-ga__bm { grid-column: 1; grid-row: auto; }
+  .aq-tank-ga__bv { font-size: 16px; line-height: 22px; }
+  .aq-tank-ga__bm { font-size: var(--aq-read-phone); }
+  /* the strip: held under the header, the whole set fitted to its height; the tag and part of the row on the reading line lit */
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__fig { padding: 0; margin-top: var(--space-4); background: var(--surface-raised); border-top: 1px solid var(--line); border-bottom-color: var(--line); }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__pan { height: 100%; width: max-content; margin-inline: auto; }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__svg { height: 100%; width: auto; }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__tag { transform: scale(calc(1 / var(--pk-s, 1))); }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__tag.is-on { transform: scale(calc(1.2 / var(--pk-s, 1))); }
+  /* the reader is about to read the next rows: never quieted on phones */
+  .aq-tank-ga.is-pointing .aq-tank-ga__row:not(.is-on) { opacity: 1; }
+  .aq-tank-ga__row.is-on { background: none; box-shadow: inset 2px 0 0 var(--flow); }
+  .aq-tank-ga[data-pk-on] .aq-tank-ga__row.is-on { padding-left: var(--space-2); }
+}
+
+/* Small phones: the sheet gives its width back (S14): no side frame, the paper runs edge to edge under the gutters */
+@container (max-width: 600px) {
+  .aq-tank-ga { margin-inline: calc(var(--space-4) * -1); border-inline-width: 0; }
+}

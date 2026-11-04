@@ -1,0 +1,15 @@
+/* ---------- Illustration: line art painted with a colour token through a mask ---------- */
+.aq-illustration { display: block; width: 100%; aspect-ratio: var(--ratio, 1); background-color: var(--ink-muted); -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+/* The drawing comes in through an inline mask-image so its URL resolves against the page, not this stylesheet. */
+.aq-illustration--ink { background-color: var(--ink); }
+.aq-illustration--flow { background-color: var(--flow); }
+.aq-illustration--on-navy { background-color: var(--on-navy-muted); }
+
+@container (max-width: 860px) {
+  .aq-illustration { max-width: 480px; margin-inline: auto; }
+}
+
+/* Pass 12 round C (audit G4): in the dark theme a hero drawing paints in `ink`, not `ink-muted`: thin washer and skid
+   lines on the near-black page fell to about 3.5:1. Light mode is unchanged. */
+[data-theme="dark"] .aq-hero__art .aq-illustration { background-color: var(--ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-hero__art .aq-illustration { background-color: var(--ink); } }

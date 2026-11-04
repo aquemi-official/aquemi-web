@@ -1,0 +1,109 @@
+/* ---------- IsoKit: shared isometric line drawing (equipment, pipes, water, sheet furniture) ---------- */
+/* Lines stay 1.5 px at any size (non-scaling strokes); details 1 px. Every solid is filled with the ground colour so
+   what stands in front hides what is behind. One modifier on the svg re-grounds the whole drawing (colour rules below). */
+.aq-iso { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-iso * { vector-effect: non-scaling-stroke; }
+.aq-iso path, .aq-iso circle { stroke-linecap: round; stroke-linejoin: round; }
+
+/* Equipment: filled solids and lines */
+.aq-iso__eq { stroke-width: 1.5; }
+.aq-iso__eq--glass { stroke-width: 1; }
+.aq-iso__ln { fill: none; stroke-width: 1.5; }
+.aq-iso__thin { fill: none; stroke-width: 1; }
+.aq-iso__hid { fill: none; stroke-width: 1; stroke-dasharray: 4 3; }
+.aq-iso__acc, .aq-iso__trace { fill: none; stroke-width: 1.5; }
+.aq-iso__needle { stroke-width: 1.5; }
+.aq-iso__flange { stroke-width: 1.25; }
+/* PP joints (isoPipe flanges): a socket-fusion collar over a pipe end, a fusion bead ring after a bend */
+.aq-iso__collar { stroke-width: 1.25; }
+.aq-iso__bead { stroke-width: 1; }
+
+/* Pipes: twin wall over a ground-coloured body, or one centre line; water rides on top */
+.aq-iso__pipe-body { stroke: none; }
+.aq-iso__pipe-wall, .aq-iso__pipe-line { fill: none; stroke-width: 1.5; }
+.aq-iso__flow { fill: none; stroke-width: 1.5; }
+.aq-iso__flow--line { stroke-width: 2; }
+.aq-iso__flow--drop { stroke-width: 2; stroke-dasharray: 2 3; }
+.aq-iso__arrow { fill: none; stroke-width: 1.5; }
+.aq-iso__drop { stroke: none; }
+
+/* Annotation: dimensions and leaders in thin ink, short drawing labels in mono */
+.aq-iso__dim-line, .aq-iso__leader-line { fill: none; stroke-width: 1; }
+.aq-iso__leader-dot { stroke: none; }
+.aq-iso__label, .aq-iso__sheet-t { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; stroke: none; }
+
+/* Drawing-sheet furniture: the quietest layer */
+.aq-iso__sheet, .aq-iso__dim, .aq-iso__leader { pointer-events: none; }
+.aq-iso__sheet-line { fill: none; stroke-width: 1; }
+.aq-iso__sheet-mark { stroke: none; }
+.aq-iso__grid { fill: none; stroke-width: 0.75; stroke-dasharray: 1 5; }
+
+/* A stage the water has reached turns flow (motion adds is-lit; looks may keep it) */
+.aq-iso__part .aq-iso__eq, .aq-iso__part .aq-iso__ln, .aq-iso__part .aq-iso__thin, .aq-iso__pipe-wall { transition: stroke 400ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* Colours per ground. Equipment line-strong, furniture line, water and highlights flow; fills surface, limestone or navy */
+/* Default: a light sheet */
+.aq-iso .aq-iso__eq, .aq-iso .aq-iso__ln, .aq-iso .aq-iso__thin, .aq-iso .aq-iso__hid, .aq-iso .aq-iso__pipe-wall, .aq-iso .aq-iso__pipe-line, .aq-iso .aq-iso__dim-line, .aq-iso .aq-iso__leader-line { stroke: var(--line-strong); }
+.aq-iso .aq-iso__leader-dot { fill: var(--line-strong); }
+.aq-iso .aq-iso__eq, .aq-iso .aq-iso__pipe-body { fill: var(--surface); }
+.aq-iso .aq-iso__eq--alt { fill: var(--surface-sunken); }
+.aq-iso .aq-iso__eq--glass { fill: var(--surface-sunken); }
+.aq-iso .aq-iso__eq--sheet { fill: var(--surface-raised); }
+.aq-iso .aq-iso__flow, .aq-iso .aq-iso__acc, .aq-iso .aq-iso__trace, .aq-iso .aq-iso__arrow { stroke: var(--flow); }
+.aq-iso .aq-iso__drop { fill: var(--flow); }
+.aq-iso .aq-iso__sheet-line, .aq-iso .aq-iso__grid { stroke: var(--line); }
+.aq-iso .aq-iso__sheet-mark { fill: var(--line); }
+.aq-iso .aq-iso__label, .aq-iso .aq-iso__sheet-t { fill: var(--ink-subtle); }
+.aq-iso .aq-iso__part.is-lit .aq-iso__eq, .aq-iso .aq-iso__part.is-lit .aq-iso__ln, .aq-iso .aq-iso__part.is-lit .aq-iso__thin, .aq-iso .aq-iso__pipe.is-lit .aq-iso__pipe-wall { stroke: var(--flow); }
+/* On surface-raised */
+.aq-iso--raised .aq-iso__eq, .aq-iso--raised .aq-iso__pipe-body { fill: var(--surface-raised); }
+.aq-iso--raised .aq-iso__eq--alt { fill: var(--surface-sunken); }
+.aq-iso--raised .aq-iso__eq--glass { fill: var(--surface-sunken); }
+.aq-iso--raised .aq-iso__eq--sheet { fill: var(--surface); }
+/* On surface-sunken */
+.aq-iso--sunken .aq-iso__eq, .aq-iso--sunken .aq-iso__pipe-body { fill: var(--surface-sunken); }
+.aq-iso--sunken .aq-iso__eq--alt { fill: var(--surface); }
+.aq-iso--sunken .aq-iso__eq--glass { fill: var(--surface); }
+.aq-iso--sunken .aq-iso__eq--sheet { fill: var(--surface-raised); }
+/* On a limestone band */
+.aq-iso--limestone .aq-iso__eq, .aq-iso--limestone .aq-iso__ln, .aq-iso--limestone .aq-iso__thin, .aq-iso--limestone .aq-iso__hid, .aq-iso--limestone .aq-iso__pipe-wall, .aq-iso--limestone .aq-iso__pipe-line, .aq-iso--limestone .aq-iso__dim-line, .aq-iso--limestone .aq-iso__leader-line { stroke: var(--on-limestone-muted); }
+.aq-iso--limestone .aq-iso__leader-dot { fill: var(--on-limestone-muted); }
+.aq-iso--limestone .aq-iso__eq, .aq-iso--limestone .aq-iso__pipe-body { fill: var(--limestone); }
+.aq-iso--limestone .aq-iso__eq--alt { fill: var(--surface-sunken); }
+.aq-iso--limestone .aq-iso__eq--glass { fill: var(--surface-sunken); }
+.aq-iso--limestone .aq-iso__eq--sheet { fill: var(--surface); }
+.aq-iso--limestone .aq-iso__sheet-line, .aq-iso--limestone .aq-iso__grid { stroke: color-mix(in srgb, var(--on-limestone-muted) 22%, transparent); }
+.aq-iso--limestone .aq-iso__sheet-mark { fill: color-mix(in srgb, var(--on-limestone-muted) 22%, transparent); }
+.aq-iso--limestone .aq-iso__label, .aq-iso--limestone .aq-iso__sheet-t { fill: var(--on-limestone-muted); }
+/* On navy (blueprint): on-navy lines, water lightened towards on-navy */
+.aq-iso--navy .aq-iso__eq, .aq-iso--navy .aq-iso__ln, .aq-iso--navy .aq-iso__thin, .aq-iso--navy .aq-iso__hid, .aq-iso--navy .aq-iso__pipe-wall, .aq-iso--navy .aq-iso__pipe-line, .aq-iso--navy .aq-iso__dim-line, .aq-iso--navy .aq-iso__leader-line { stroke: var(--on-navy-muted); }
+.aq-iso--navy .aq-iso__leader-dot { fill: var(--on-navy-muted); }
+.aq-iso--navy .aq-iso__eq, .aq-iso--navy .aq-iso__pipe-body { fill: var(--navy); }
+.aq-iso--navy .aq-iso__eq--alt { fill: color-mix(in srgb, var(--navy) 88%, var(--on-navy)); }
+.aq-iso--navy .aq-iso__eq--glass { fill: color-mix(in srgb, var(--navy) 82%, var(--on-navy)); }
+.aq-iso--navy .aq-iso__eq--sheet { fill: color-mix(in srgb, var(--navy) 92%, var(--on-navy)); }
+.aq-iso--navy .aq-iso__flow, .aq-iso--navy .aq-iso__acc, .aq-iso--navy .aq-iso__trace, .aq-iso--navy .aq-iso__arrow { stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-iso--navy .aq-iso__drop { fill: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-iso--navy .aq-iso__sheet-line, .aq-iso--navy .aq-iso__grid { stroke: color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+.aq-iso--navy .aq-iso__sheet-mark { fill: color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+.aq-iso--navy .aq-iso__label, .aq-iso--navy .aq-iso__sheet-t { fill: var(--on-navy-muted); }
+.aq-iso--navy .aq-iso__part.is-lit .aq-iso__eq, .aq-iso--navy .aq-iso__part.is-lit .aq-iso__ln, .aq-iso--navy .aq-iso__part.is-lit .aq-iso__thin, .aq-iso--navy .aq-iso__pipe.is-lit .aq-iso__pipe-wall { stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+/* Stronger lines for small drawings */
+.aq-iso--ink .aq-iso__eq, .aq-iso--ink .aq-iso__ln, .aq-iso--ink .aq-iso__thin, .aq-iso--ink .aq-iso__hid, .aq-iso--ink .aq-iso__pipe-wall, .aq-iso--ink .aq-iso__pipe-line, .aq-iso--ink .aq-iso__dim-line, .aq-iso--ink .aq-iso__leader-line { stroke: var(--ink-muted); }
+.aq-iso--ink .aq-iso__leader-dot { fill: var(--ink-muted); }
+/* Lines follow the text colour */
+.aq-iso--current .aq-iso__eq, .aq-iso--current .aq-iso__ln, .aq-iso--current .aq-iso__thin, .aq-iso--current .aq-iso__hid, .aq-iso--current .aq-iso__pipe-wall, .aq-iso--current .aq-iso__pipe-line, .aq-iso--current .aq-iso__dim-line, .aq-iso--current .aq-iso__leader-line { stroke: currentColor; }
+.aq-iso--current .aq-iso__leader-dot { fill: currentColor; }
+
+/* Figure wrapper for HTML labels over a drawing (left/top from isoPct) */
+.aq-iso-figure { position: relative; }
+.aq-iso-figure__label { position: absolute; transform: translate(0, -50%); white-space: nowrap; }
+.aq-iso-figure__label--left { transform: translate(-100%, -50%); text-align: right; }
+/* on a navy ground: labels in on-navy */
+.aq-iso-figure--navy { background: var(--navy); color: var(--on-navy); }
+.aq-iso-figure--navy .aq-iso-figure__label { color: var(--on-navy-muted); }
+.aq-iso-figure__label--above { transform: translate(-50%, -100%); text-align: center; }
+
+@container (max-width: 860px) {
+  .aq-iso-figure__label { white-space: normal; max-width: 40%; }
+}

@@ -1,0 +1,124 @@
+/* ---------- RequestMenu: what each request returns, as a short menu on a limestone sheet (look request-menu) ----------
+   The section title oversized across the top right; a packaged skid drawn in isometric line art at the left (sticky on
+   desktop); the menu beside it as a real table: a numbered situation heads each group, then one line per returned item
+   with its When (mono) and Cost (flow). The wrapper carries data-theme="light" so the sheet keeps light tokens on the
+   limestone ground in both themes. */
+.aq-request-menu-sec { overflow-x: clip; }
+.aq-request-menu-wrap { display: flex; flex-direction: column; gap: var(--space-12); color: var(--on-limestone); }
+
+/* The mast: the section title set oversized and light, starting at the third column, running to the right edge */
+.aq-request-menu__mast { padding-left: 33%; }
+.aq-request-menu__mast .aq-sec-head { max-width: none; }
+.aq-request-menu__mast .aq-h1 { margin: 0; font-size: clamp(48px, 8.2cqi, 124px); line-height: 0.98; font-weight: 300; letter-spacing: -0.035em; color: var(--on-limestone); text-wrap: balance; }
+
+.aq-request-menu { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 17fr); column-gap: var(--space-12); align-items: start; }
+.aq-request-menu__fig { position: sticky; top: calc(var(--space-24) + var(--space-4)); margin: 0; }
+.aq-request-menu__svg { display: block; width: 100%; height: auto; max-height: 72vh; }
+.aq-request-menu__body { min-width: 0; }
+
+/* The menu */
+.aq-request-menu__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-request-menu__h {
+  padding: 0 var(--space-4) var(--space-3) 0; text-align: left; vertical-align: bottom; border-bottom: 1px solid var(--line-strong);
+  font: 400 15px/20px var(--font-sans); color: var(--on-limestone-muted); position: relative;
+}
+.aq-request-menu__h[data-col="0"] { width: 28%; padding-left: var(--space-12); }
+.aq-request-menu__h[data-col="1"] { width: 30%; }
+.aq-request-menu__h[data-col="2"], .aq-request-menu__h[data-col="3"] { width: 21%; }
+.aq-request-menu__h::after { content: ""; position: absolute; left: 0; right: var(--space-4); bottom: -1px; height: 2px; background: var(--flow); transform: scaleX(0); transform-origin: left center; }
+.aq-request-menu__h[data-col="0"]::after { left: var(--space-12); }
+.aq-request-menu__h.is-on { color: var(--on-limestone); }
+.aq-request-menu__h.is-on::after { transform: scaleX(1); }
+.aq-request-menu__ic { width: 14px; height: 14px; margin-right: var(--space-2); vertical-align: -2px; background-color: var(--on-limestone-muted); }
+
+.aq-request-menu__set { border-bottom: 1px solid var(--line-strong); }
+.aq-request-menu__line > * { padding: var(--space-3) var(--space-4) var(--space-3) 0; text-align: left; vertical-align: top; font: 400 16px/24px var(--font-sans); color: var(--on-limestone); overflow-wrap: break-word; }
+.aq-request-menu__line:first-child > * { padding-top: var(--space-6); }
+.aq-request-menu__line:last-child > * { padding-bottom: var(--space-6); }
+.aq-request-menu__line + .aq-request-menu__line > td { border-top: 1px dashed var(--line-strong); }
+.aq-request-menu__s { font-weight: 300; }
+.aq-request-menu__no { float: left; width: var(--space-12); font: 400 14px/24px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--on-limestone-muted); }
+.aq-request-menu__st { display: block; margin-left: var(--space-12); font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; text-wrap: balance; }
+.aq-request-menu__st a, .aq-request-menu__got a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.aq-request-menu__got a { display: inline-block; min-height: var(--space-6); color: var(--flow); }
+.aq-request-menu__got a:focus-visible, .aq-request-menu__st a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-request-menu__when .aq-request-menu__v { font: 400 14px/24px var(--font-mono); }
+.aq-request-menu__cost .aq-request-menu__v { color: var(--flow); }
+.aq-request-menu__v .aq-ph { font-size: 13px; }
+.aq-request-menu__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Crosshair: the pointed line takes a flow-tint band (snaps, no easing), its group's number lights */
+.aq-request-menu__line:hover > td, .aq-request-menu__line:focus-within > td { background: var(--flow-tint); }
+.aq-request-menu__set:hover .aq-request-menu__no, .aq-request-menu__set:focus-within .aq-request-menu__no { color: var(--flow); }
+
+.aq-request-menu-sec .aq-fold__btn { color: var(--on-limestone-muted); }
+.aq-request-menu-sec .aq-fold__btn:hover { color: var(--on-limestone); }
+
+/* The phone accordion (pass 12): out of the desktop render */
+.aq-request-menu__phone { display: none; }
+.aq-request-menu__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@container (max-width: 860px) {
+  .aq-request-menu-wrap { gap: var(--space-8); }
+  .aq-request-menu__mast { padding-left: 0; }
+  .aq-request-menu__mast .aq-h1 { font-size: clamp(40px, 12cqi, 56px); }
+  .aq-request-menu { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-request-menu__fig { position: static; width: 72%; justify-self: center; }
+  .aq-request-menu__svg { max-height: none; }
+  .aq-request-menu__table, .aq-request-menu__table tbody, .aq-request-menu__line, .aq-request-menu__line > * { display: block; width: auto; }
+  .aq-request-menu__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .aq-fold:not(.is-open) .aq-request-menu__set.aq-fold-x { display: none; }
+  .aq-request-menu__table tbody:first-of-type { border-top: 1px solid var(--line-strong); }
+  .aq-request-menu__line { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-4); padding-bottom: var(--space-3); }
+  .aq-request-menu__line > * { padding: 0; }
+  .aq-request-menu__line:first-child > *, .aq-request-menu__line:last-child > * { padding-top: 0; padding-bottom: 0; }
+  .aq-request-menu__line:first-child { padding-top: var(--space-6); }
+  .aq-request-menu__line:last-child { padding-bottom: var(--space-6); }
+  .aq-request-menu__line + .aq-request-menu__line { border-top: 1px dashed var(--line-strong); padding-top: var(--space-3); }
+  .aq-request-menu__line + .aq-request-menu__line > td { border-top: 0; }
+  .aq-request-menu__s, .aq-request-menu__got { grid-column: 1 / -1; }
+  .aq-request-menu__line > .aq-request-menu__s { padding-bottom: var(--space-4); }
+  .aq-request-menu__line > .aq-request-menu__got { padding-bottom: var(--space-2); }
+  .aq-request-menu__no { width: var(--space-8); }
+  .aq-request-menu__st { margin-left: var(--space-8); font-size: 20px; line-height: 26px; }
+  .aq-request-menu__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: block;
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+  .aq-request-menu__line:hover > td, .aq-request-menu__line:focus-within > td { background: none; }
+}
+
+/* Phones (pass 12, S11/S12/S18): no drawing, no table; the rows as an accordion of situations (PhoneKit), each body
+   the returned items with When and Cost as chips; the column names once, as a key over the list */
+@container (max-width: 860px) {
+  .aq-request-menu__fig, .aq-request-menu__body > .aq-request-menu__table, .aq-request-menu__body > .aq-fold { display: none; }
+  .aq-request-menu { row-gap: 0; }
+  .aq-request-menu__phone { display: block; }
+  .aq-request-menu__key { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 0 0 var(--space-3);
+    font: 400 14px/20px var(--font-sans); color: var(--on-limestone-muted); }
+  .aq-request-menu__key > span:first-child { margin-right: var(--space-1); }
+  .aq-request-menu__acc { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+  .aq-request-menu__item { border-bottom: 1px solid var(--line-strong); }
+  .aq-request-menu__ah { margin: 0; font: inherit; }
+  .aq-request-menu__acc[data-pk-on] .aq-request-menu__hb { min-height: 56px; gap: var(--space-3); padding: var(--space-2) 0; font: 400 18px/24px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+  .aq-request-menu__hb .aq-request-menu__no { float: none; flex: none; width: var(--space-6); font: 400 13px/24px var(--font-mono); }
+  .aq-request-menu__hb[aria-expanded="true"] .aq-request-menu__no { color: var(--flow); }
+  .aq-request-menu__at { min-width: 0; text-wrap: balance; }
+  .aq-request-menu__ab { padding: 0 0 var(--space-4) calc(var(--space-6) + var(--space-3)); }
+  .aq-request-menu__acc:not([data-pk-on]) .aq-request-menu__ab { padding-top: var(--space-4); }
+  .aq-request-menu__gets { list-style: none; margin: 0; padding: 0; }
+  .aq-request-menu__gets > li { padding: var(--space-3) 0; }
+  .aq-request-menu__gets > li + li { border-top: 1px dashed var(--line-strong); }
+  .aq-request-menu__gt { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
+  .aq-request-menu__gt a { display: inline-flex; align-items: center; min-height: 44px; color: var(--flow); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .aq-request-menu__chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 0; }
+  .aq-request-menu__chip { display: inline-flex; align-items: center; gap: var(--space-1); max-width: 100%; box-sizing: border-box; padding: 2px var(--space-2);
+    border: 1px solid var(--line-strong); border-radius: var(--radius-sm, 4px); font: 400 var(--aq-chip-phone, 13px)/20px var(--font-mono); color: var(--on-limestone); }
+  .aq-request-menu__chip .aq-request-menu__ic { flex: none; margin: 0; width: 12px; height: 12px; }
+  .aq-request-menu__chip--cost { border-color: var(--flow); color: var(--flow); }
+  .aq-request-menu__chip .aq-ph { font-size: var(--aq-chip-phone, 13px); }
+}
+/* Pass 12 round C (audit-c group-7 contact-proposal.2, R1): wide, the head at the shared section-head size (aq-h1
+   40/44) and the skid held 120 px under the top while the menu scrolls past it */
+@container (min-width: 861px) {
+  .aq-request-menu__mast .aq-h1 { font-size: 40px; line-height: 44px; letter-spacing: -0.02em; }
+  .aq-request-menu__fig { position: sticky; top: calc(var(--space-24) + var(--space-6)); align-self: start; }
+}

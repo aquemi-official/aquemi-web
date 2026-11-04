@@ -1,0 +1,120 @@
+/* ---------- GradeEditorial: a short path as an editorial spread (look "grade-editorial") ----------
+   A limestone band whose head is a full-bleed navy mast (the heading at display scale). Below: a geometric pipe
+   collage (left, 5 of 12 columns) facing an asymmetric grid of fact blocks (right, 6 sub-columns): the first two on top
+   (3 + 3), the next three below (2 + 2 + 2, the last on a navy panel). Grade words and figures are set huge and light;
+   labels in mono. Limestone stays light in dark mode, so every colour here is limestone, navy or their on- tokens. */
+.aq-grade-editorial-band { overflow-x: clip; }
+.aq-grade-editorial-band > .aq-in { gap: var(--space-12); }
+.aq-grade-editorial__mast {
+  margin-top: calc(-1 * var(--space-16)); padding: var(--space-16) 0 var(--space-12);
+  background: var(--navy); color: var(--on-navy); box-shadow: 0 0 0 100vmax var(--navy); clip-path: inset(0 -100vmax);
+}
+.aq-grade-editorial__mast .aq-h1 { max-width: 16ch; font-size: clamp(48px, 7.5cqi, 96px); line-height: 1; font-weight: 300; letter-spacing: -0.03em; color: var(--on-navy); }
+.aq-grade-editorial__mast .aq-eyebrow, .aq-grade-editorial__mast .aq-lead { color: var(--on-navy-muted); }
+
+.aq-grade-editorial { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-12); align-items: start; color: var(--on-limestone); }
+.aq-grade-editorial__art { margin: 0; }
+.aq-grade-editorial__tile, .aq-grade-editorial__eq, .aq-grade-editorial__pipe, .aq-grade-editorial__pump, .aq-grade-editorial__tank { pointer-events: none; }
+.aq-grade-editorial__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-grade-editorial__n { fill: var(--navy); }
+.aq-grade-editorial__w { fill: var(--on-navy); }
+.aq-grade-editorial__f { fill: color-mix(in srgb, var(--navy) 16%, var(--limestone)); }
+.aq-grade-editorial__s { fill: none; stroke: var(--navy); stroke-width: 3; }
+.aq-grade-editorial__sw { fill: none; stroke: var(--on-navy); stroke-width: 3; }
+.aq-grade-editorial__edge { stroke: var(--navy); stroke-width: 3; }
+path.aq-grade-editorial__edge:not(.aq-grade-editorial__w) { fill: none; }
+.aq-grade-editorial__lvl { fill: none; stroke: color-mix(in srgb, var(--flow) 60%, var(--navy)); stroke-width: 2; stroke-dasharray: 6 5; }
+.aq-grade-editorial__po { fill: none; stroke: var(--navy); stroke-width: 22; stroke-linejoin: round; }
+.aq-grade-editorial__pi { fill: none; stroke: var(--limestone); stroke-width: 13; stroke-linejoin: round; }
+.aq-grade-editorial__water { fill: none; stroke: color-mix(in srgb, var(--flow) 60%, var(--navy)); stroke-width: 3; stroke-linejoin: round; }
+.aq-grade-editorial__drop { fill: color-mix(in srgb, var(--flow) 60%, var(--navy)); }
+
+/* Fact blocks */
+.aq-grade-editorial__grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: var(--space-6); row-gap: var(--space-12); }
+.aq-grade-editorial__item { position: relative; grid-column: span 3; min-width: 0; padding-left: var(--space-4); border-left: 1px solid color-mix(in srgb, var(--on-limestone-muted) 45%, transparent); }
+.aq-grade-editorial[data-n="5"] .aq-grade-editorial__item:nth-child(n+3) { grid-column: span 2; }
+.aq-grade-editorial__item--panel { padding: var(--space-6) var(--space-4); border-left: 0; background: var(--navy); color: var(--on-navy); align-self: stretch; }
+.aq-grade-editorial__t { margin: 0 0 var(--space-4); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-grade-editorial__t a { padding-block: var(--space-3); color: inherit; text-decoration: none; }
+.aq-grade-editorial__t a::after { content: "\a0\2192"; }
+.aq-grade-editorial__t a:hover { color: var(--on-limestone); text-decoration: underline; text-underline-offset: 3px; }
+.aq-grade-editorial__t a:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+.aq-grade-editorial__item--panel .aq-grade-editorial__t { color: var(--on-navy-muted); }
+.aq-grade-editorial__item--panel .aq-grade-editorial__t a:hover { color: var(--on-navy); }
+.aq-grade-editorial__item--panel .aq-grade-editorial__t a:focus-visible { outline-color: var(--on-navy); }
+
+.aq-grade-editorial__big + .aq-grade-editorial__big { margin-top: var(--space-6); }
+.aq-grade-editorial__word { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; column-gap: var(--space-3); }
+.aq-grade-editorial__v { font: 300 clamp(44px, 6cqi, 76px)/0.95 var(--font-sans); letter-spacing: -0.04em; color: var(--navy); white-space: nowrap; }
+.aq-grade-editorial__item:not([data-i="0"]) .aq-grade-editorial__v { font-size: clamp(40px, 4.4cqi, 56px); }
+.aq-grade-editorial__pre { order: -1; width: 100%; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-grade-editorial__l { margin: var(--space-2) 0 0; font: 400 14px/21px var(--font-sans); color: var(--on-limestone-muted); }
+
+/* Scope: a drawn run from one end to the other */
+.aq-grade-editorial__span { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); font: 300 32px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--navy); }
+.aq-grade-editorial__span .aq-grade-editorial__end:last-child { justify-self: end; }
+.aq-grade-editorial__run { position: relative; height: 12px; }
+.aq-grade-editorial__run::before { content: ""; position: absolute; left: 0; right: 6px; top: 50%; height: 2px; margin-top: -1px; background: var(--navy); }
+.aq-grade-editorial__run::after { content: ""; position: absolute; right: 0; top: 0; width: 8px; height: 12px; background: var(--navy); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.aq-grade-editorial__run i { position: absolute; left: 0; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: var(--radius-pill); background: var(--navy); }
+
+/* Lists: a breakdown on leader rules off one spine */
+.aq-grade-editorial__list { position: relative; list-style: none; margin: 0; padding: 0 0 0 var(--space-8); font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
+.aq-grade-editorial__list::before { content: ""; position: absolute; left: 0; top: var(--space-1); bottom: 11px; width: 1px; background: var(--on-limestone-muted); }
+.aq-grade-editorial__list li { position: relative; padding-block: var(--space-2); border-bottom: 1px solid color-mix(in srgb, var(--on-limestone-muted) 30%, transparent); }
+.aq-grade-editorial__list li::before { content: ""; position: absolute; left: calc(-1 * var(--space-8)); top: 50%; width: var(--space-6); height: 1px; background: var(--on-limestone-muted); }
+.aq-grade-editorial__list--plain { margin-top: var(--space-4); padding-left: 0; font: 400 15px/22px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-grade-editorial__list--plain::before, .aq-grade-editorial__list--plain li::before { display: none; }
+.aq-grade-editorial__list--plain li { border-bottom: 0; padding-block: var(--space-1); }
+.aq-grade-editorial__item--panel .aq-grade-editorial__list { padding-left: 0; color: var(--on-navy); counter-reset: aq-ge; }
+.aq-grade-editorial__item--panel .aq-grade-editorial__list::before, .aq-grade-editorial__item--panel .aq-grade-editorial__list li::before { display: none; }
+.aq-grade-editorial__item--panel .aq-grade-editorial__list li { padding: var(--space-3) 0 var(--space-3) var(--space-8); border-bottom-color: color-mix(in srgb, var(--on-navy-muted) 30%, transparent); counter-increment: aq-ge; }
+.aq-grade-editorial__item--panel .aq-grade-editorial__list li::after { content: "0" counter(aq-ge); position: absolute; left: 0; top: var(--space-3); font: 400 13px/22px var(--font-mono); color: var(--on-navy-muted); }
+.aq-grade-editorial__kicker { margin: 0 0 var(--space-2); font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+
+/* Small bars whose values are still to come: dashed empty tracks, the placeholder under them */
+.aq-grade-editorial__bars { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; grid-template-columns: max-content minmax(var(--space-12), 1fr); gap: var(--space-2) var(--space-3); }
+.aq-grade-editorial__bars li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; column-gap: var(--space-3); }
+.aq-grade-editorial__bl { font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-grade-editorial__track { display: block; height: 10px; border: 1px dashed var(--on-limestone-muted); border-radius: 0; transform-origin: 0% 50%; }
+.aq-grade-editorial__note { margin: var(--space-3) 0 0; font-size: 13px; line-height: 20px; }
+.aq-grade-editorial__d { margin: 0; font: 400 15px/24px var(--font-sans); }
+
+/* Desktop with two blocks or fewer (pass 12 round C): the poster beside them is cropped to a band, so it no longer
+   stands 336 px past the blocks (at 1280: 487 x 325 against the full 588) */
+@container (min-width: 1181px) {
+  /* a whole-row band (round C verify N6): tile rows 1-4 of the 80-unit grid, 3:2, so no row is cut mid-way; the
+     pipe enters at the top edge, runs through the tank and the pump, and leaves at the bottom edge */
+  .aq-grade-editorial:is([data-n="1"], [data-n="2"]) .aq-grade-editorial__art { aspect-ratio: 3 / 2; overflow: hidden; display: block; }
+  .aq-grade-editorial:is([data-n="1"], [data-n="2"]) .aq-grade-editorial__svg { margin-top: -20%; } /* (16 + 80) / 480 of the width */
+}
+
+/* Mid widths: the collage moves above the blocks so each block keeps its measure */
+@container (max-width: 1180px) {
+  .aq-grade-editorial { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-12); }
+  .aq-grade-editorial__art { width: min(100%, 420px); }
+}
+
+@container (max-width: 860px) {
+  .aq-grade-editorial-band > .aq-in { gap: var(--space-8); }
+  .aq-grade-editorial__mast { margin-top: calc(-1 * var(--space-12)); padding: var(--space-12) 0 var(--space-8); }
+  .aq-grade-editorial__mast .aq-h1 { font-size: 44px; line-height: 48px; }
+  .aq-grade-editorial { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-grade-editorial__art { width: min(100%, 360px); }
+  .aq-grade-editorial__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-grade-editorial__item, .aq-grade-editorial[data-n="5"] .aq-grade-editorial__item:nth-child(n+3) { grid-column: auto; }
+  .aq-grade-editorial__v { font-size: 64px; }
+  .aq-grade-editorial__item:not([data-i="0"]) .aq-grade-editorial__v { font-size: 48px; }
+  .aq-grade-editorial__span { font-size: 26px; line-height: 30px; }
+  /* pass 12: the poster as a 4:3 band at full width, cropped through its middle */
+  .aq-grade-editorial__art { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; display: flex; align-items: center; }
+  .aq-grade-editorial__art .aq-grade-editorial__svg { flex: none; }
+  .aq-grade-editorial__t a { display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); }
+}
+
+/* pass 12 round C (integrator, RC1): in dark the limestone band is warm stone, where navy display text falls to
+   about 1.2:1. The display values and the span take the band's on-limestone ink there; light mode is unchanged. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-grade-editorial__v, :root:not([data-theme="light"]) .aq-grade-editorial__span { color: var(--on-limestone); }
+}
+[data-theme="dark"] .aq-grade-editorial__v, [data-theme="dark"] .aq-grade-editorial__span { color: var(--on-limestone); }

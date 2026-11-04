@@ -1,0 +1,66 @@
+/* ---------- GradeSwitch: a grade table as a selector panel, one strip per product, the knob in the minimum ---------- */
+.aq-grade-switch-sec .aq-sec-head .aq-lead { color: var(--ink-muted); }
+.aq-grade-switch { position: relative; margin-top: var(--space-8); padding: var(--space-8) var(--space-12) var(--space-6); background: var(--surface-raised); color: var(--ink);
+  border: 1px solid var(--line-strong); }
+.aq-grade-switch__screw { position: absolute; width: var(--space-3); height: var(--space-3); border-radius: 50%; border: 1px solid var(--line-strong); }
+.aq-grade-switch__screw::after { content: ""; position: absolute; left: 15%; right: 15%; top: 50%; height: 1px; background: var(--line-strong); transform: rotate(-35deg); }
+.aq-grade-switch__screw:nth-child(1) { left: var(--space-4); top: var(--space-4); }
+.aq-grade-switch__screw:nth-child(2) { right: var(--space-4); top: var(--space-4); }
+.aq-grade-switch__screw:nth-child(3) { left: var(--space-4); bottom: var(--space-4); }
+.aq-grade-switch__screw:nth-child(4) { right: var(--space-4); bottom: var(--space-4); }
+.aq-grade-switch__colh { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr); column-gap: var(--space-8); margin: 0 0 var(--space-3);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-grade-switch__rows { list-style: none; margin: 0; padding: 0; }
+
+.aq-grade-switch__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr); column-gap: var(--space-8); align-items: center;
+  padding: var(--space-6) 0; border-top: 1px solid var(--line); }
+.aq-grade-switch__prod { display: flex; gap: var(--space-3); align-items: baseline; }
+.aq-grade-switch__prod .aq-index { color: var(--ink-subtle); }
+.aq-grade-switch__t { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.02em; }
+
+/* The selector: a recessed track with one slot per grade, a navy knob in the minimum, open slots dashed */
+.aq-grade-switch__sw { display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-grade-switch__track { position: relative; display: grid; grid-template-columns: repeat(var(--np, 2), minmax(0, 1fr)); height: var(--space-12); padding: var(--space-1);
+  background: var(--surface-sunken); border: 1px solid var(--line-strong); }
+.aq-grade-switch__slot { display: grid; place-items: center; margin: 0; font: 500 13px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
+.aq-grade-switch__slot.is-alt { border: 1.5px dashed var(--flow); color: var(--flow); margin: 1px; }
+.aq-grade-switch__knob { position: absolute; top: var(--space-1); bottom: var(--space-1); left: calc(var(--space-1) + (100% - var(--space-2)) / var(--np, 2) * var(--k, 0));
+  width: calc((100% - var(--space-2)) / var(--np, 2)); display: grid; place-items: center; background: var(--navy); color: var(--on-navy);
+  font: 500 13px/16px var(--font-mono); letter-spacing: 0.04em; }
+.aq-grade-switch__knob::before, .aq-grade-switch__knob::after { content: ""; position: absolute; top: 25%; bottom: 25%; width: 1px; background: color-mix(in srgb, var(--on-navy) 40%, transparent); }
+.aq-grade-switch__knob::before { left: var(--space-2); }
+.aq-grade-switch__knob::after { right: var(--space-2); }
+.aq-grade-switch__ticks { display: grid; grid-template-columns: repeat(var(--np, 2), minmax(0, 1fr)); height: var(--space-2); }
+.aq-grade-switch__ticks i { justify-self: center; width: 1px; background: var(--line-strong); }
+
+.aq-grade-switch__txt { display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-grade-switch__min { margin: 0; display: flex; flex-direction: column; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--flow); }
+.aq-grade-switch__k { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-grade-switch__note { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-grade-switch__row:hover .aq-grade-switch__track { border-color: var(--flow); }
+
+/* Phones: name, selector, then the words; the plate loses its side margins */
+@container (max-width: 860px) {
+  .aq-grade-switch { margin-top: var(--space-4); padding: var(--space-6) var(--space-4) var(--space-4); }
+  .aq-grade-switch__screw:nth-child(1), .aq-grade-switch__screw:nth-child(2) { top: var(--space-2); }
+  .aq-grade-switch__screw:nth-child(3), .aq-grade-switch__screw:nth-child(4) { bottom: var(--space-2); }
+  .aq-grade-switch__screw:nth-child(odd) { left: var(--space-2); }
+  .aq-grade-switch__screw:nth-child(even) { right: var(--space-2); }
+  .aq-grade-switch__colh { grid-template-columns: minmax(0, 1fr); }
+  .aq-grade-switch__colh span + span { display: none; }
+  .aq-grade-switch__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); padding: var(--space-4) 0; }
+  .aq-grade-switch__t { font-size: 21px; line-height: 28px; }
+  .aq-grade-switch__min { font-size: 16px; }
+}
+
+/* Pass 12 round C, phones under 600 px: the 2-tick scale under each switch goes (it says nothing at this size), the
+   plate sits 8 px inside its frame, and "Minimum water" runs on one line with its value */
+@container (max-width: 600px) {
+  .aq-grade-switch { padding: var(--space-6) var(--space-2) calc(var(--space-4) + var(--space-1)); }
+  .aq-grade-switch__ticks { display: none; }
+  .aq-grade-switch__row { row-gap: var(--space-2); padding: var(--space-3) var(--space-2); }
+  .aq-grade-switch__colh { padding-inline: var(--space-2); }
+  .aq-grade-switch__min { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); }
+  .aq-grade-switch__min .aq-grade-switch__k { flex: none; }
+  .aq-grade-switch__txt { gap: var(--space-1); }
+}

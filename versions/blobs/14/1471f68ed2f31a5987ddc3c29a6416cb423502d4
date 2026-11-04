@@ -1,0 +1,106 @@
+/* ---------- OptionTags: options as physical tags laid out on a limestone table ---------- */
+/* Three columns: the label card and the tags in the first two, folders on a navy strip that runs off the right edge. */
+.aq-option-tags-sec { overflow: hidden; }
+.aq-option-tags { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row dense;
+  column-gap: var(--space-12); row-gap: var(--space-16); align-items: start; padding-block: var(--space-4); }
+.aq-option-tags::before { content: ""; position: absolute; z-index: 0; top: calc(-1 * var(--space-32)); bottom: calc(-1 * var(--space-32));
+  left: calc(200% / 3 + var(--space-4)); right: calc(-1 * var(--space-32) * 4); background: var(--navy); }
+.aq-option-tags__list { display: contents; list-style: none; }
+/* no folder among the options: no navy strip (it would stand empty), the tags take the third column (pass 12) */
+.aq-option-tags.is-flat::before { content: none; }
+
+/* Label card: the section heading on a printed label */
+.aq-option-tags__label { position: relative; z-index: 1; grid-column: 1; grid-row: 1; display: flex; flex-direction: column; gap: var(--space-6);
+  padding: var(--space-6); background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line-strong); transform: rotate(-1deg); }
+.aq-option-tags__label .aq-h1 { font-size: 34px; line-height: 40px; }
+.aq-option-tags__base { margin: 0; display: flex; align-items: center; gap: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--line);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-option-tags__base .aq-option-tags__base-ic { width: var(--space-8); height: var(--space-8); }
+
+/* A tag: string from the eyelet, kraft-free paper (surface-raised), tilted by --r; hover picks it up */
+.aq-option-tags__item { grid-column: var(--c, auto); grid-row: var(--rw, auto); position: relative; z-index: 1; transform: rotate(var(--r, 0deg)); transition: transform 350ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-option-tags__item:hover, .aq-option-tags__item:focus-within { transform: rotate(0deg) translateY(calc(-1 * var(--space-2))); z-index: 2; }
+.aq-option-tags__tag { position: relative; }
+.aq-option-tags__body { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-height: calc(var(--space-32) + var(--space-24));
+  padding: var(--space-6) var(--space-6) var(--space-4) var(--space-16); background: var(--surface-raised); color: var(--ink); text-decoration: none;
+  border: 1px solid var(--line-strong);
+  clip-path: polygon(var(--space-8) 0, 100% 0, 100% 100%, var(--space-8) 100%, 0 calc(100% - var(--space-8)), 0 var(--space-8)); }
+.aq-option-tags__eyelet { position: absolute; z-index: 2; left: var(--space-6); top: 50%; width: var(--space-4); height: var(--space-4); transform: translate(-50%, -50%);
+  border-radius: var(--radius-pill); background: var(--limestone); border: 3px solid var(--line-strong); }
+.aq-option-tags__string { position: absolute; z-index: 0; right: calc(100% - var(--space-6)); top: 50%; width: var(--space-24); height: var(--space-16); transform: translateY(-40%); overflow: visible; pointer-events: none; }
+.aq-option-tags__string path { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+.aq-option-tags__t { margin: 0; font: 500 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-option-tags__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-option-tags__foot { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; }
+.aq-option-tags__no { font: 400 20px/1 var(--font-mono); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.aq-option-tags__stamp { display: grid; place-items: center; width: var(--space-12); height: var(--space-12); border: 1.5px solid var(--flow); border-radius: var(--radius-pill); transform: rotate(-12deg); }
+.aq-option-tags__glyph.aq-spot.aq-spot--icon { width: var(--space-8); height: var(--space-8); background-color: var(--flow); }
+
+/* Round tag: string from the top */
+.aq-option-tags__item--round { justify-self: center; width: min(100%, calc(var(--space-32) * 2 + var(--space-16))); margin-top: var(--space-8); }
+.aq-option-tags__item--round .aq-option-tags__body { aspect-ratio: 1; border-radius: var(--radius-pill); clip-path: none; align-items: center; justify-content: center; text-align: center;
+  padding: var(--space-12) var(--space-8) var(--space-8); }
+.aq-option-tags__item--round .aq-option-tags__foot { margin-top: var(--space-2); flex-direction: column; align-items: center; gap: var(--space-2); }
+.aq-option-tags__item--round .aq-option-tags__eyelet { left: 50%; top: var(--space-6); }
+.aq-option-tags__item--round .aq-option-tags__string { right: auto; left: 50%; top: auto; bottom: calc(100% - var(--space-6)); width: var(--space-8); height: var(--space-16); transform: translateX(-50%); }
+
+/* Folder: a manila folder with a tab, on the navy strip */
+.aq-option-tags__item--folder { margin-top: var(--space-6); }
+.aq-option-tags__item--folder .aq-option-tags__body { clip-path: none; padding: var(--space-6); background: var(--limestone); color: var(--on-limestone); border-color: var(--limestone); }
+.aq-option-tags__item--folder .aq-option-tags__d, .aq-option-tags__item--folder .aq-option-tags__no { color: var(--on-limestone-muted); }
+.aq-option-tags__item--folder .aq-option-tags__tag::before { content: ""; position: absolute; left: 0; bottom: 100%; width: 40%; height: var(--space-6); background: var(--limestone);
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%); }
+.aq-option-tags__item--folder .aq-option-tags__tag::after { content: ""; position: absolute; left: var(--space-3); right: calc(-1 * var(--space-2)); top: calc(-1 * var(--space-2)); bottom: var(--space-3);
+  z-index: -1; background: color-mix(in srgb, var(--limestone) 70%, var(--navy)); }
+
+.aq-option-tags__body:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* Vials: decoration between the tags */
+.aq-option-tags__vial { position: absolute; z-index: 0; width: var(--space-8); height: auto; pointer-events: none; overflow: visible; }
+.aq-option-tags__vial path, .aq-option-tags__vial rect { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.aq-option-tags__vial .aq-option-tags__cap { fill: var(--on-limestone-muted); }
+.aq-option-tags__vial .aq-option-tags__liquid { stroke: var(--flow); }
+.aq-option-tags__vial .aq-option-tags__hair { stroke-width: 1; }
+.aq-option-tags__vial--a { left: 31%; top: 50%; transform: rotate(-24deg); }
+.aq-option-tags__vial--b { left: 2%; bottom: -4%; transform: rotate(-78deg); }
+
+@container (max-width: 1100px) {
+  .aq-option-tags { column-gap: var(--space-8); }
+  .aq-option-tags__body { padding-left: var(--space-12); }
+  .aq-option-tags__t { font-size: 19px; line-height: 26px; }
+}
+
+/* Phones: one column of tags, alternating a slight tilt; folders on the limestone ground; the fold back on */
+@container (max-width: 860px) {
+  .aq-option-tags { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); padding-inline: var(--space-2); }
+  .aq-option-tags::before, .aq-option-tags__vial { display: none; }
+  .aq-option-tags__item, .aq-option-tags__item--folder { grid-column: 1; grid-row: auto; margin-top: 0; transform: rotate(calc(var(--r, 0deg) * 0.4)); }
+  .aq-option-tags__item--round { width: 86%; }
+  .aq-option-tags__item--folder { margin-top: var(--space-6); }
+  .aq-option-tags__item--folder .aq-option-tags__body { border-color: var(--line-strong); background: var(--surface-raised); color: var(--ink); }
+  .aq-option-tags__item--folder .aq-option-tags__tag::before { background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; }
+  .aq-option-tags__item--folder .aq-option-tags__tag::after { display: none; }
+  .aq-option-tags__label .aq-h1 { font-size: 30px; line-height: 36px; }
+  .aq-option-tags__body { min-height: 0; padding: var(--space-4) var(--space-4) var(--space-4) var(--space-12); }
+  .aq-option-tags__string { width: var(--space-8); }
+}
+.aq-fold:not(.is-open) .aq-option-tags__item.aq-fold-x { display: block; }
+.aq-fold:has(> .aq-option-tags) > .aq-fold__btn { display: none; }
+@container (max-width: 860px) {
+  .aq-fold:not(.is-open) .aq-option-tags__item.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-option-tags) > .aq-fold__btn { display: flex; }
+}
+.aq-option-tags__vial .aq-option-tags__lab { stroke-width: 1; }
+
+/* Dark theme (pass 12, F3): the label card turns navy with --surface-raised, so its lead takes the card's own muted ink;
+   the fold button sits on limestone, so it takes the limestone inks */
+.aq-option-tags__label .aq-lead { color: var(--ink-muted); }
+.aq-option-tags-sec .aq-fold__btn { color: var(--on-limestone-muted); }
+.aq-option-tags-sec .aq-fold__btn:hover { color: var(--on-limestone); }
+
+/* Phones (pass 12, F7): the strings and vials dangle with nothing to tie to in one column, so they go; the tilt and the
+   eyelets keep the tag idea. (The fold is not drawn for five options or fewer; see the renderer.) */
+@container (max-width: 860px) {
+  .aq-option-tags__string { display: none; }
+}

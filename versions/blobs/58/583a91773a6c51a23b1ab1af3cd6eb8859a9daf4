@@ -1,0 +1,101 @@
+/* ---------- WetRunHmi: the explainer read along the test bay's water route, dry or with water (look "wet-run-hmi") ----------
+   A navy section (data-theme="dark" on the section, so every token inside takes its dark value in both themes).
+   Desktop: the heading at display scale in light type with the two-position switch at its right; under it the route
+   drawing across the full width: a double-wall pipe (a 10-unit line-strong wall with a navy bore, so two hairline
+   walls), the water a 3-unit flow line inside it, flat symbols in 1.5-unit line-strong. The points are HTML blocks
+   placed in % of the drawing beside their stations (inline left/top); numbered markers sit on the stations. State lives on
+   the root: is-wet (default, complete without script) or is-dry. Up to a 1080 px container the route turns vertical:
+   one CSS pipe down the left, the numbers on it, the points beside it. */
+.aq-wet-run-hmi-sec, .aq-section--alt.aq-wet-run-hmi-sec { background: var(--navy); color: var(--ink); }
+.aq-wet-run-hmi { display: flex; flex-direction: column; gap: var(--space-12); }
+.aq-wet-run-hmi__head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-8); }
+.aq-wet-run-hmi__head .aq-sec-head { margin: 0; }
+.aq-wet-run-hmi__head .aq-h1 { max-width: 15ch; font-size: clamp(44px, 5.4cqi, 72px); line-height: 1.02; font-weight: 300; letter-spacing: -0.03em; color: var(--ink); }
+
+/* the switch: a sliding thumb under two buttons (ported from sliding-tabs; motion.js springs it) */
+.aq-wet-run-hmi__switch { position: relative; flex: none; display: inline-grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line-strong); isolation: isolate; }
+.aq-wet-run-hmi__thumb { position: absolute; z-index: -1; top: 0; bottom: 0; left: 0; width: 50%; background: var(--flow); transform: translateX(100%); }
+.is-dry .aq-wet-run-hmi__thumb { transform: translateX(0); background: var(--line-strong); }
+.aq-wet-run-hmi__mode { min-height: 44px; min-width: 128px; padding: 0 var(--space-4); border: 0; background: transparent; color: var(--ink-muted); cursor: pointer;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; transition: color 150ms; }
+.aq-wet-run-hmi__mode[aria-pressed="true"] { color: var(--navy); }
+.is-dry .aq-wet-run-hmi__mode[aria-pressed="true"] { color: var(--ink); }
+.aq-wet-run-hmi__mode:hover:not([aria-pressed="true"]) { color: var(--ink); }
+.aq-wet-run-hmi__mode:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* the route */
+.aq-wet-run-hmi__fig { position: relative; }
+.aq-wet-run-hmi__svg { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 460; overflow: visible; }
+.aq-wet-run-hmi__wall { fill: none; stroke: var(--line-strong); stroke-width: 10; stroke-linejoin: round; }
+.aq-wet-run-hmi__bore { fill: none; stroke: var(--navy); stroke-width: 7; stroke-linejoin: round; }
+.aq-wet-run-hmi__water { fill: none; stroke: var(--flow); stroke-width: 3; stroke-linejoin: round; transition: opacity 300ms; }
+.aq-wet-run-hmi__eq { fill: var(--navy); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-wet-run-hmi__thin { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.aq-wet-run-hmi__tag { font: 500 13px/1 var(--font-mono); letter-spacing: 0.08em; fill: var(--ink-subtle); }
+.aq-wet-run-hmi__rd { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-wet-run-hmi__rdv { fill: var(--flow); transform-box: fill-box; transform-origin: 0 50%; transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-wet-run-hmi__trend { fill: none; stroke: var(--flow); stroke-width: 2; stroke-linejoin: round; transition: opacity 300ms; }
+.aq-wet-run-hmi__flat { fill: none; stroke: var(--ink-subtle); stroke-width: 1.5; stroke-dasharray: 4 4; opacity: 0; transition: opacity 300ms; }
+.aq-wet-run-hmi__log { fill: none; stroke: var(--ink-subtle); stroke-width: 4; transition: opacity 300ms; }
+.aq-wet-run-hmi__mk { position: absolute; transform: translate(-50%, -50%); display: inline-flex; align-items: center; justify-content: center; width: var(--space-8); height: var(--space-8);
+  border-radius: 50%; background: var(--flow); color: var(--navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em;
+  box-shadow: 0 0 0 var(--space-1) var(--navy), 0 0 0 calc(var(--space-1) + 1.5px) var(--flow); transition: background-color 300ms, color 300ms, box-shadow 300ms, transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* the points, beside their stations */
+.aq-wet-run-hmi__pts { list-style: none; margin: 0; padding: 0; }
+.aq-wet-run-hmi__pt { position: absolute; width: 28%; outline: none; }
+.aq-wet-run-hmi__pt:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-2); }
+.aq-wet-run-hmi__n { display: inline-flex; align-items: center; justify-content: center; width: var(--space-8); height: var(--space-8); margin-bottom: var(--space-3);
+  border: 1.5px solid var(--flow); color: var(--flow); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; transition: background-color 150ms, color 150ms; }
+.aq-wet-run-hmi__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-wet-run-hmi__d { margin: var(--space-2) 0 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-wet-run-hmi__pt:hover .aq-wet-run-hmi__n, .aq-wet-run-hmi__pt:focus-visible .aq-wet-run-hmi__n { background: var(--flow); color: var(--navy); }
+
+/* dry: empty pipe, blank readouts, stations unlit */
+.is-dry .aq-wet-run-hmi__water, .is-dry .aq-wet-run-hmi__trend { opacity: 0; }
+.is-dry .aq-wet-run-hmi__flat { opacity: 1; }
+.is-dry .aq-wet-run-hmi__log { opacity: 0.25; }
+.is-dry .aq-wet-run-hmi__rdv { transform: scaleX(0); }
+.is-dry .aq-wet-run-hmi__mk { background: var(--navy); color: var(--ink-subtle); box-shadow: 0 0 0 var(--space-1) var(--navy), 0 0 0 calc(var(--space-1) + 1.5px) var(--line-strong); }
+/* pointing at a point swells its station's marker */
+.aq-wet-run-hmi:has(.aq-wet-run-hmi__pt[data-part="divert"]:is(:hover, :focus-visible)) .aq-wet-run-hmi__mk[data-part="divert"],
+.aq-wet-run-hmi:has(.aq-wet-run-hmi__pt[data-part="outlet"]:is(:hover, :focus-visible)) .aq-wet-run-hmi__mk[data-part="outlet"],
+.aq-wet-run-hmi:has(.aq-wet-run-hmi__pt[data-part="record"]:is(:hover, :focus-visible)) .aq-wet-run-hmi__mk[data-part="record"] { transform: translate(-50%, -50%) scale(1.35); }
+
+/* tablet and phone: the route turns vertical */
+@container (max-width: 1080px) {
+  .aq-wet-run-hmi__svg, .aq-wet-run-hmi__mk { display: none; }
+  .aq-wet-run-hmi__pts { position: relative; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-2) 0 var(--space-2) var(--space-16); }
+  .aq-wet-run-hmi__pts::before { content: ""; position: absolute; left: var(--space-4); top: 0; bottom: 0; width: var(--space-2); border-inline: 1.5px solid var(--line-strong); }
+  .aq-wet-run-hmi__pts::after { content: ""; position: absolute; left: calc(var(--space-4) + var(--space-1) - 1.5px); top: 0; bottom: 0; border-left: 3px solid var(--flow); transform-origin: 50% 0; transition: transform 600ms cubic-bezier(0.2, 0, 0, 1); }
+  .is-dry .aq-wet-run-hmi__pts::after { transform: scaleY(0); }
+  .aq-wet-run-hmi__pt { position: relative; left: auto !important; top: auto !important; width: auto; max-width: 60ch; }
+  .aq-wet-run-hmi__n { position: absolute; left: calc(-1 * var(--space-16) + var(--space-1)); top: 0; margin: 0; border-radius: 50%; background: var(--flow); color: var(--navy); box-shadow: 0 0 0 var(--space-1) var(--navy); }
+  .is-dry .aq-wet-run-hmi__n { background: var(--navy); color: var(--ink-subtle); border-color: var(--line-strong); }
+  .aq-wet-run-hmi__t { padding-top: var(--space-1); }
+}
+@container (max-width: 860px) {
+  .aq-wet-run-hmi { gap: var(--space-8); }
+  .aq-wet-run-hmi__head { flex-direction: column; align-items: stretch; gap: var(--space-6); }
+  .aq-wet-run-hmi__head .aq-h1 { font-size: 40px; line-height: 44px; }
+  .aq-wet-run-hmi__mode { min-width: 0; }
+  .aq-wet-run-hmi__t { font-size: 18px; line-height: 24px; }
+  .aq-wet-run-hmi__d { font-size: 14px; line-height: 22px; }
+}
+
+/* pass 12 (audit S10, svc-fat-sat.1): up to tablet width a compact strip of the skid (wrhStrip, 360 x 150 units, about
+   150 px high on a phone) sits over the points: pump, RO, divert valve and drain, COND and TOC with their readouts, the
+   logger and its trend, and the points' numbers on their stations. Dry empties the pipe, blanks the readouts and the
+   trend and unlights the numbers; with water fills them (the same is-dry hooks as the wide route). */
+.aq-wet-run-hmi__strip { display: none; }
+@container (max-width: 1080px) {
+  .aq-wet-run-hmi__strip { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 0 var(--space-8); overflow: visible; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__wall { stroke-width: 7; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__bore { stroke-width: 4.5; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__water { stroke-width: 2; }
+  .aq-wet-run-hmi__strip .aq-wet-run-hmi__tag { font-size: 13.5px; letter-spacing: 0.03em; }
+  .aq-wet-run-hmi__smk circle { fill: var(--flow); stroke: var(--navy); stroke-width: 3; paint-order: stroke; transition: fill 300ms, stroke 300ms; }
+  .aq-wet-run-hmi__smk text { font: 500 13.5px/1 var(--font-mono); fill: var(--navy); transition: fill 300ms; }
+  .is-dry .aq-wet-run-hmi__smk circle { fill: var(--navy); stroke: var(--line-strong); stroke-width: 1.5; }
+  .is-dry .aq-wet-run-hmi__smk text { fill: var(--ink-subtle); }
+}

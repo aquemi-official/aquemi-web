@@ -1,0 +1,105 @@
+/* ---------- CutawayRail: a sticky cutaway drawing beside a rail of standard cards (look "cutaway-rail"). Navy band;
+   the drawing stays in view while the cards pass; the active card lights its parts (is-lit), its pins and the callout.
+   Cards are limestone paper (data-theme="light"). Desktop shows every card; the fold applies on phones only. ---------- */
+.aq-band--navy.aq-cutaway-rail-sec { overflow: visible; }
+.aq-cutaway-rail-sec .aq-sec-head .aq-h1 { color: var(--on-navy); max-width: 24ch; }
+.aq-cutaway-rail { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-8); align-items: start; color: var(--on-navy); }
+
+/* The drawing */
+.aq-cutaway-rail__fig { position: sticky; top: calc(var(--space-16) + var(--space-8)); margin: 0; border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+.aq-cutaway-rail__draw { position: relative; }
+.aq-cutaway-rail__svg { display: block; width: 100%; height: auto; }
+.aq-cutaway-rail__tag {
+  position: absolute; top: var(--space-4); left: var(--space-4); margin: 0; display: flex; gap: var(--space-2); align-items: center;
+  padding: var(--space-2) var(--space-3); background: var(--navy); border: 1px solid color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy);
+}
+.aq-cutaway-rail__tag-k { text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-cutaway-rail__tag-k::before { content: ""; display: inline-block; width: var(--space-2); height: var(--space-2); margin-right: var(--space-2); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-cutaway-rail__tag-v:empty { display: none; }
+.aq-cutaway-rail__pin { position: absolute; width: var(--space-3); height: var(--space-3); margin: calc(-1 * var(--space-3) / 2) 0 0 calc(-1 * var(--space-3) / 2); border-radius: var(--radius-pill); border: 1.5px solid color-mix(in srgb, var(--on-navy-muted) 60%, transparent); background: var(--navy); transform: scale(0); }
+.aq-cutaway-rail__pin.is-on { transform: none; border-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); box-shadow: 0 0 0 var(--space-1) color-mix(in srgb, var(--flow) 30%, transparent); }
+.aq-cutaway-rail__call {
+  position: absolute; transform: translate(var(--space-6), calc(-100% - var(--space-6))); padding: var(--space-1) var(--space-2); white-space: nowrap;
+  background: var(--limestone); color: var(--on-limestone); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; clip-path: inset(50%); pointer-events: none;
+}
+.aq-cutaway-rail__call::before { content: ""; position: absolute; left: calc(-1 * var(--space-6)); bottom: calc(-1 * var(--space-6)); width: var(--space-6); height: var(--space-6); border-left: 1px solid var(--limestone); transform: skewX(45deg); transform-origin: bottom left; }
+.aq-cutaway-rail__call.is-on { clip-path: none; }
+/* a part on the right half: the callout hangs to its left */
+.aq-cutaway-rail__call.is-left { transform: translate(calc(-100% - var(--space-6)), calc(-100% - var(--space-6))); }
+.aq-cutaway-rail__call.is-left::before { left: auto; right: calc(-1 * var(--space-6)); border-left: 0; border-right: 1px solid var(--limestone); transform: skewX(-45deg); transform-origin: bottom right; }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-cutaway-rail__call { transition: left 380ms cubic-bezier(0.2, 0, 0, 1), top 380ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-cutaway-rail__pin, .aq-cutaway-rail__card, .aq-cutaway-rail__node { transition: opacity 200ms, border-color 200ms, background-color 200ms, transform 240ms; }
+  .aq-cutaway-rail .aq-iso__eq, .aq-cutaway-rail .aq-iso__ln, .aq-cutaway-rail .aq-iso__thin, .aq-cutaway-rail .aq-iso__pipe-wall { transition: stroke 240ms; }
+}
+
+/* The rail */
+.aq-cutaway-rail__rail { position: relative; padding-left: var(--space-8); }
+.aq-cutaway-rail__rail::before { content: ""; position: absolute; left: var(--space-2); top: 0; bottom: 0; width: 1px; background: color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+.aq-cutaway-rail__cards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-6); }
+.aq-cutaway-rail__card {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4) var(--space-6);
+  padding: var(--space-6); background: var(--limestone); color: var(--on-limestone); border-left: 3px solid transparent;
+}
+.aq-cutaway-rail__card.is-on { border-left-color: var(--flow); transform: translateX(calc(-1 * var(--space-2))); }
+.aq-cutaway-rail__node { position: absolute; left: calc(-1 * var(--space-8) + var(--space-1) - 1px); top: var(--space-8); width: var(--space-3); height: var(--space-3); border-radius: var(--radius-pill); border: 1.5px solid var(--on-navy-muted); background: var(--navy); box-sizing: border-box; }
+.aq-cutaway-rail__node::after { content: ""; position: absolute; left: 100%; top: 50%; width: calc(var(--space-6) - var(--space-1)); height: 1px; background: color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+.aq-cutaway-rail__card.is-on .aq-cutaway-rail__node { background: var(--limestone); border-color: var(--limestone); }
+.aq-cutaway-rail__card.is-on .aq-cutaway-rail__node::after { background: var(--limestone); }
+.aq-cutaway-rail__card > .aq-index { position: absolute; right: var(--space-4); top: var(--space-3); color: var(--on-limestone-muted); } /* 6:1 on the card (ink-subtle was 4.2:1) */
+/* the card's row keys for the phone strip (PhoneKit rows): one on the card's top, one 12 % of the reading window above
+   it, so the strip names the card once it fills the upper part of the view; no box, no effect on desktop. The strip
+   height comes from the look (--cr-strip, the same number as data-pk-h; verify F10) */
+.aq-cutaway-rail__key { position: absolute; left: 0; top: calc((100svh - var(--cr-strip, 112px)) * -0.12); width: 0; height: 0; pointer-events: none; }
+.aq-cutaway-rail__key--top { top: 0; }
+.aq-cutaway-rail__std { grid-column: 1 / -1; display: flex; align-items: baseline; gap: var(--space-3); padding-right: var(--space-6); }
+.aq-cutaway-rail__name { margin: 0; font: 400 19px/26px var(--font-sans); letter-spacing: -0.01em; text-wrap: pretty; }
+.aq-cutaway-rail__f--how { grid-column: 1 / -1; }
+.aq-cutaway-rail__k { margin: 0 0 var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-cutaway-rail__v { margin: 0; font: 400 15px/22px var(--font-sans); text-wrap: pretty; }
+.aq-cutaway-rail__f--how .aq-cutaway-rail__v { font-size: 15px; line-height: 23px; text-wrap: pretty; }
+.aq-cutaway-rail__f--go a { position: relative; display: inline-block; padding-block: var(--space-3); min-height: 44px; color: var(--flow); text-decoration: none; font-weight: 500; }
+.aq-cutaway-rail__f--go a::after { content: "\a0\2192"; }
+.aq-cutaway-rail__f--go a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-cutaway-rail__f--go a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* desktop: every card shows; the fold is for phones */
+.aq-cutaway-rail .aq-fold:not(.is-open) .aq-cutaway-rail__card.aq-fold-x { display: grid; }
+.aq-cutaway-rail .aq-fold__btn { display: none; }
+
+/* motion slides parts in from the side; never let them widen the page */
+.aq-section.aq-cutaway-rail-sec { overflow-x: clip; }
+
+@container (max-width: 860px) {
+  .aq-cutaway-rail { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-cutaway-rail__fig { top: calc(var(--space-16) + var(--space-2)); z-index: 2; background: var(--navy); }
+  .aq-cutaway-rail__tag { top: var(--space-2); left: var(--space-2); }
+  .aq-cutaway-rail__call { display: none; }
+  .aq-cutaway-rail__svg { max-height: 30vh; margin: 0 auto; }
+  .aq-cutaway-rail__rail { padding-left: var(--space-6); }
+  .aq-cutaway-rail__rail::before { left: var(--space-1); }
+  .aq-cutaway-rail__node { left: calc(-1 * var(--space-6) - 1px); }
+  .aq-cutaway-rail__node::after { width: var(--space-3); }
+  .aq-cutaway-rail__card { grid-template-columns: minmax(0, 1fr); padding: var(--space-4); }
+  .aq-cutaway-rail__card.is-on { transform: none; }
+  .aq-cutaway-rail .aq-fold:not(.is-open) .aq-cutaway-rail__card.aq-fold-x { display: none; }
+  .aq-cutaway-rail .aq-fold__btn { display: flex; color: var(--on-navy); border-bottom-color: color-mix(in srgb, var(--on-navy-muted) 40%, transparent); margin-top: var(--space-4); }
+}
+.aq-cutaway-rail__f { min-width: 0; }
+/* the active card's parts: a stronger line than IsoKit's own lit state, so the change reads at a glance */
+.aq-cutaway-rail .aq-iso .aq-iso__part.is-lit .aq-iso__eq, .aq-cutaway-rail .aq-iso .aq-iso__part.is-lit .aq-iso__ln, .aq-cutaway-rail .aq-iso .aq-iso__pipe.is-lit .aq-iso__pipe-wall { stroke: color-mix(in srgb, var(--flow) 60%, var(--on-navy)); stroke-width: 2; }
+
+/* Pass 12 phones (under 768 px): no 300 px stage over the cards. The figure is a 112 px strip held under the header
+   (PhoneKit sticky figure, data-pk-bp 767) that pans and zooms (x2) to the first part of the card on the reading
+   line, the active tag over its corner; the strip spans the column edge to edge on the navy band. 768 px and up keep
+   the rail exactly as before. */
+@container (max-width: 767px) {
+  .aq-cutaway-rail[data-pk-on] { gap: var(--space-4); }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__fig { margin: 0 calc(-1 * var(--space-4)); border: 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent);
+    border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); background: var(--navy); }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__svg { max-height: none; }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__tag { top: auto; bottom: var(--space-2); left: var(--space-4); z-index: 2; padding: var(--space-1) var(--space-2); }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__tag-v { font-size: 13px; }
+  .aq-cutaway-rail[data-pk-on] .aq-cutaway-rail__pin.is-on { box-shadow: 0 0 0 var(--space-1) color-mix(in srgb, var(--flow) 40%, transparent); }
+  /* the card being read (is-on, set from the strip's pk:change): its rule and node fill as on desktop */
+}

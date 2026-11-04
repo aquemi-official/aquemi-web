@@ -1,0 +1,151 @@
+/* ---------- JointMacro: a standard as a traced macro close-up of a pipe end on the navy band, and its rows beside it
+   (look "joint-macro"). Duotone: flat planes mixed from navy and on-navy, hairline traces in limestone. The macro is
+   drawn twice: a context copy that fades while a row is pointed at, and an aperture copy clipped to the crop frame
+   (inset from --t --r --b --l; the whole drawing when no row is pointed at). ---------- */
+.aq-section.aq-joint-macro-sec { overflow: clip; }
+.aq-joint-macro {
+  --jm-side: color-mix(in srgb, var(--on-navy) 16%, var(--navy)); --jm-shade: color-mix(in srgb, var(--on-navy) 9%, var(--navy));
+  --jm-face: color-mix(in srgb, var(--on-navy) 30%, var(--navy)); --jm-wall: color-mix(in srgb, var(--on-navy) 12%, var(--navy));
+  --jm-deep: color-mix(in srgb, var(--navy) 80%, var(--ink)); --jm-ln: color-mix(in srgb, var(--limestone) 70%, transparent);
+  --jm-ease: cubic-bezier(0.22, 0.8, 0.18, 1);
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); column-gap: var(--space-12); align-items: start;
+}
+.aq-joint-macro__head { grid-column: 1 / -1; margin-bottom: var(--space-12); }
+.aq-joint-macro__cap { margin: 0 0 var(--space-4); color: var(--on-navy-muted); }
+.aq-joint-macro__head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; }
+
+/* the macro: square-ish, bleeding off the left edge of the content */
+.aq-joint-macro__stage { position: sticky; top: var(--space-24); margin-left: calc(-1 * var(--space-8)); }
+.aq-joint-macro__fig { --t: 0%; --r: 0%; --b: 0%; --l: 0%; position: relative; aspect-ratio: 720 / 640; }
+.aq-joint-macro__ctx, .aq-joint-macro__ap { position: absolute; inset: 0; }
+.aq-joint-macro__ctx { opacity: 0.06; transition: opacity 620ms var(--jm-ease, ease-out); }
+.aq-joint-macro__fig.is-crop .aq-joint-macro__ctx { opacity: 0.22; }
+.aq-joint-macro__ap { clip-path: inset(var(--t, 0%) var(--r, 0%) var(--b, 0%) var(--l, 0%)); transition: clip-path 620ms var(--jm-ease, ease-out); }
+.aq-joint-macro__fig svg { display: block; width: 100%; height: 100%; overflow: hidden; }
+.aq-joint-macro__fig svg * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.aq-joint-macro__side { fill: var(--jm-side, var(--navy)); }
+.aq-joint-macro__shade { fill: var(--jm-shade, var(--navy)); }
+.aq-joint-macro__hi { fill: none; stroke: color-mix(in srgb, var(--on-navy) 34%, var(--navy)); stroke-width: 6; }
+.aq-joint-macro__edge { fill: none; stroke: var(--jm-ln, var(--limestone)); stroke-width: 1; }
+.aq-joint-macro__print { fill: none; stroke: color-mix(in srgb, var(--on-navy) 46%, var(--navy)); stroke-width: 5; stroke-dasharray: 7 4 2 4 12 5; }
+.aq-joint-macro__print--b { stroke-width: 3; stroke-dasharray: 3 5; }
+.aq-joint-macro__face { fill: var(--jm-face, var(--navy)); }
+.aq-joint-macro__wallin { fill: var(--jm-wall, var(--navy)); }
+.aq-joint-macro__deep { fill: var(--jm-deep, var(--navy)); }
+.aq-joint-macro__ln { fill: none; stroke: var(--jm-ln, var(--limestone)); stroke-width: 1; }
+.aq-joint-macro__far { fill: none; stroke: color-mix(in srgb, var(--limestone) 40%, transparent); stroke-width: 1; stroke-dasharray: 3 4; }
+.aq-joint-macro__trace { fill: none; stroke: var(--limestone); stroke-width: 1.25; }
+.aq-joint-macro__dim { fill: none; stroke: var(--limestone); stroke-width: 1; }
+.aq-joint-macro__lead path { fill: none; stroke: var(--limestone); stroke-width: 1; transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-joint-macro__lead circle { fill: var(--limestone); }
+.aq-joint-macro__no {
+  position: absolute; transform: translate(-50%, -50%); padding: var(--space-1) var(--space-2); background: var(--navy); border: 1px solid var(--jm-ln, var(--limestone));
+  font: 500 13px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy); transition: background 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-joint-macro__no.is-on { background: var(--limestone); color: var(--navy); border-color: var(--limestone); }
+/* crop marks: four corners riding the aperture's edges */
+.aq-joint-macro__crop { position: absolute; inset: 0; pointer-events: none; }
+.aq-joint-macro__crop i { position: absolute; width: var(--space-4); height: var(--space-4); border: 0 solid var(--limestone); transition: left 620ms var(--jm-ease, ease-out), right 620ms var(--jm-ease, ease-out), top 620ms var(--jm-ease, ease-out), bottom 620ms var(--jm-ease, ease-out); }
+.aq-joint-macro__crop i:nth-child(1) { left: var(--l, 0%); top: var(--t, 0%); border-left-width: 1.5px; border-top-width: 1.5px; }
+.aq-joint-macro__crop i:nth-child(2) { right: var(--r, 0%); top: var(--t, 0%); border-right-width: 1.5px; border-top-width: 1.5px; }
+.aq-joint-macro__crop i:nth-child(3) { left: var(--l, 0%); bottom: var(--b, 0%); border-left-width: 1.5px; border-bottom-width: 1.5px; }
+.aq-joint-macro__crop i:nth-child(4) { right: var(--r, 0%); bottom: var(--b, 0%); border-right-width: 1.5px; border-bottom-width: 1.5px; }
+
+/* the rows */
+.aq-joint-macro__legend {
+  display: grid; grid-template-columns: var(--space-12) minmax(0, 0.8fr) minmax(0, 1.5fr); margin: 0; padding-bottom: var(--space-3); border-bottom: 1px solid var(--on-navy-muted);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-navy-muted);
+}
+.aq-joint-macro__legend span:first-child { grid-column: 2; }
+.aq-joint-macro__rows { list-style: none; margin: 0; padding: 0; }
+.aq-joint-macro__row {
+  display: grid; grid-template-columns: var(--space-12) minmax(0, 0.8fr) minmax(0, 1.5fr); padding: var(--space-4) 0 var(--space-6);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 22%, transparent); transition: background 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-joint-macro__row.is-pinned { cursor: crosshair; }
+.aq-joint-macro__row:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
+.aq-joint-macro__row.is-on { background: color-mix(in srgb, var(--on-navy) 8%, transparent); }
+.aq-joint-macro__n { font: 500 15px/24px var(--font-mono); color: var(--on-navy-muted); transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-joint-macro__row.is-on .aq-joint-macro__n { color: var(--limestone); }
+.aq-joint-macro__p { margin: 0; padding-right: var(--space-4); font: 500 17px/24px var(--font-sans); color: var(--on-navy); text-wrap: balance; }
+.aq-joint-macro__vm p { margin: 0; text-wrap: pretty; }
+.aq-joint-macro__v { font: 400 15px/24px var(--font-sans); color: var(--on-navy); }
+.aq-joint-macro__vm .aq-joint-macro__m { margin-top: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--on-navy-muted); }
+.aq-joint-macro__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Fold: desktop shows every row; phones fold */
+.aq-fold:not(.is-open) .aq-joint-macro__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-joint-macro__rows) > .aq-fold__btn { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-joint-macro__ctx, .aq-joint-macro__ap, .aq-joint-macro__crop i { transition: none; }
+}
+@container (max-width: 860px) {
+  .aq-joint-macro { grid-template-columns: minmax(0, 1fr); }
+  .aq-joint-macro__head { margin-bottom: var(--space-6); }
+  .aq-joint-macro__head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  .aq-joint-macro__stage { position: relative; top: 0; margin: 0 calc(-1 * var(--space-4)) var(--space-8); }
+  .aq-joint-macro__legend { display: none; }
+  .aq-joint-macro__row { grid-template-columns: var(--space-12) minmax(0, 1fr); row-gap: var(--space-2); }
+  .aq-joint-macro__vm { grid-column: 2; }
+  .aq-joint-macro__k { position: static; display: block; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .aq-joint-macro__no { font-size: 12px; }
+  .aq-fold:not(.is-open) .aq-joint-macro__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-joint-macro__rows) > .aq-fold__btn { display: flex; }
+}
+.aq-joint-macro__body { min-width: 0; }
+
+/* pass 12 phone (audit S7/S8, svc-fabrication.1): no fold (callouts 07, 09 and 10 point at the last rows), compact
+   rows (number and item on one line, what we do and the record under it; the column labels stay for screen readers),
+   and the macro as a PhoneKit sticky strip, 220 px (verify V6): the whole drawing at the strip's height (so every callout, 07 at
+   the right included, stays inside), the callout of the row being read lit (no crop frame at this size; the crop marks
+   stay at the corners), the other leaders quieter, and that row's number and item named beside the drawing. Without script the stage stays the full-width macro. */
+.aq-joint-macro__now { display: none; }
+@container (max-width: 860px) {
+  .aq-fold:not(.is-open) .aq-joint-macro__row.aq-fold-x { display: grid; }
+  .aq-fold:has(> .aq-joint-macro__rows) > .aq-fold__btn { display: none; }
+  .aq-joint-macro__row { grid-template-columns: var(--space-10, 40px) minmax(0, 1fr); row-gap: var(--space-1); padding: var(--space-4) 0; }
+  .aq-joint-macro__n { font-size: 14px; }
+  .aq-joint-macro__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+  .aq-joint-macro__vm .aq-joint-macro__m { margin-top: var(--space-1); }
+  .aq-joint-macro__row.is-on { background: transparent; }
+  .aq-joint-macro__n { justify-self: start; align-self: start; padding: 0 var(--space-1); }
+  .aq-joint-macro__row.is-pk-active .aq-joint-macro__n { background: var(--limestone); color: var(--navy); }
+  .aq-joint-macro[data-pk-sticky][data-pk-on] .aq-joint-macro__stage {
+    display: flex; align-items: center; gap: var(--space-4); margin: 0 calc(-1 * var(--space-4)) var(--space-4); padding: 0 var(--space-4) 0 var(--space-2);
+    background: var(--navy); border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 30%, transparent);
+  }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__fig { flex: none; height: 100%; width: auto; }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__ctx { opacity: 0.18; }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__now { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; margin: 0; }
+  .aq-joint-macro__now-n { font: 500 14px/20px var(--font-mono); color: var(--limestone); }
+  .aq-joint-macro__now-t { font: 500 16px/22px var(--font-sans); color: var(--on-navy); text-wrap: balance; }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__no { font-size: 12px; padding: 2px 4px; }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__lead path { stroke: color-mix(in srgb, var(--limestone) 45%, transparent); }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__lead.is-on path { stroke: var(--limestone); stroke-width: 2; }
+}
+/* verify V6: a row with no part on the drawing (no callout) quiets every callout; on tablets (600-860) the macro and
+   the row's name are one centred pair, the name set larger, so the strip is not mostly empty navy. */
+@container (max-width: 860px) {
+  .aq-joint-macro[data-pk-on].is-pk-none .aq-joint-macro__lead, .aq-joint-macro[data-pk-on].is-pk-none .aq-joint-macro__no { opacity: 0.35; }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__lead { transition: opacity 240ms ease; }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__no { transition: opacity 240ms ease, background 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+}
+@media (prefers-reduced-motion: reduce) { @container (max-width: 860px) { .aq-joint-macro[data-pk-on] .aq-joint-macro__lead, .aq-joint-macro[data-pk-on] .aq-joint-macro__no { transition: none; } } }
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-joint-macro[data-pk-sticky][data-pk-on] .aq-joint-macro__stage { justify-content: center; gap: var(--space-8); }
+  .aq-joint-macro[data-pk-on] .aq-joint-macro__now { flex: 0 1 300px; }
+  .aq-joint-macro__now-n { font-size: 15px; }
+  .aq-joint-macro__now-t { font-size: 19px; line-height: 26px; }
+}
+
+/* pass 12 round C (svc-fabrication.1). Phones (S4): the placeholder chips in the rows at 13 px on a 15 px box, the
+   value lines at 1.6 so wrapped chips never touch. Desktop: the frame starts at the content gutter (no left bleed),
+   in line with the heading and the rows. */
+@container (max-width: 860px) {
+  .aq-joint-macro__rows .aq-ph { font-size: 13px; line-height: 15px; }
+  .aq-joint-macro__rows .aq-joint-macro__v, .aq-joint-macro__rows .aq-joint-macro__vm .aq-joint-macro__m { line-height: 1.6; }
+}
+@container (min-width: 861px) {
+  .aq-joint-macro__stage { margin-left: 0; }
+}

@@ -1,0 +1,162 @@
+/* ---------- BatteryLimit: site requirements on a navy / limestone split; the divide is the battery limit (look "battery-limit") ----------
+   Desktop: the section is limestone with a navy left half (a real element, so motion can open it from the seam); the
+   seam is a dash-and-dot battery limit line at the centre, which is also the centre of the content column. Two grid
+   columns meet exactly on it: package cards on the left reach right to it, site cards on the right reach left to it.
+   The battery-limit row sits on the seam across both grounds. Phones: one column; the navy runs full bleed behind the
+   heading and the package cards, the seam turns into the battery-limit card, the limestone carries the site cards. */
+.aq-battery-limit-sec { position: relative; overflow: hidden; background: var(--limestone); color: var(--on-limestone); border-top: 0; }
+.aq-section + .aq-battery-limit-sec { border-top: 0; }
+.aq-battery-limit__navy { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: var(--navy); pointer-events: none; }
+.aq-battery-limit__line { position: absolute; left: calc(50% - var(--space-2)); top: 0; height: 100%; width: var(--space-4); overflow: visible; pointer-events: none; }
+.aq-battery-limit__line line { stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 18 5 3 5; }
+.aq-battery-limit__seam-t {
+  /* set on the navy side of the line, near the foot, where no card or leader crosses it (at the top the limit card
+     covered it) */
+  position: absolute; right: calc(50% + var(--space-3)); bottom: var(--space-6); writing-mode: vertical-rl; transform: rotate(180deg);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-navy-muted);
+}
+.aq-battery-limit-sec > .aq-in { position: relative; }
+.aq-battery-limit {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 0;
+}
+/* desktop placement: the two lists share one set of rows (subgrid), each card spanning two; site cards start a row
+   lower, so the tie-in nodes alternate down the seam like a zip (up to seven cards a side) */
+.aq-battery-limit__head { grid-row: 1; grid-column: 1; }
+.aq-battery-limit__limit { grid-row: 2; grid-column: 1 / -1; }
+.aq-battery-limit__side.is-pkg { grid-row: 3; grid-column: 1; }
+.aq-battery-limit__side.is-site { grid-row: 3; grid-column: 2; }
+.aq-battery-limit__list { grid-row: 4 / span 16; grid-template-rows: subgrid; row-gap: 0; }
+.aq-battery-limit__list.is-pkg { grid-column: 1; }
+.aq-battery-limit__list.is-site { grid-column: 2; }
+.aq-battery-limit__item { padding-block: var(--space-3); }
+.is-pkg > [data-k="0"] { grid-row: 1 / span 2; } .is-site > [data-k="0"] { grid-row: 2 / span 2; }
+.is-pkg > [data-k="1"] { grid-row: 3 / span 2; } .is-site > [data-k="1"] { grid-row: 4 / span 2; }
+.is-pkg > [data-k="2"] { grid-row: 5 / span 2; } .is-site > [data-k="2"] { grid-row: 6 / span 2; }
+.is-pkg > [data-k="3"] { grid-row: 7 / span 2; } .is-site > [data-k="3"] { grid-row: 8 / span 2; }
+.is-pkg > [data-k="4"] { grid-row: 9 / span 2; } .is-site > [data-k="4"] { grid-row: 10 / span 2; }
+.is-pkg > [data-k="5"] { grid-row: 11 / span 2; } .is-site > [data-k="5"] { grid-row: 12 / span 2; }
+.is-pkg > [data-k="6"] { grid-row: 13 / span 2; } .is-site > [data-k="6"] { grid-row: 14 / span 2; }
+.aq-battery-limit__head { padding-right: var(--space-12); padding-bottom: var(--space-8); }
+.aq-battery-limit__head .aq-h1 { color: var(--on-navy); }
+.aq-battery-limit__head .aq-lead, .aq-battery-limit__head .aq-eyebrow { color: var(--on-navy-muted); }
+
+/* the battery limit itself: one card across the seam */
+.aq-battery-limit__limit { justify-self: center; width: min(100%, 34rem); position: relative; z-index: 1; margin-bottom: var(--space-12); }
+.aq-battery-limit__limit .aq-battery-limit__card { background: var(--surface-raised); color: var(--ink); border: 1.5px solid var(--flow); padding: var(--space-6); }
+.aq-battery-limit__limit .aq-battery-limit__card dt { color: var(--ink-muted); }
+.aq-battery-limit__limit .aq-battery-limit__m { color: var(--ink-muted); }
+
+.aq-battery-limit__side { margin: 0 0 var(--space-4); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-battery-limit__side.is-pkg { color: var(--on-navy-muted); }
+.aq-battery-limit__side.is-site { color: var(--on-limestone-muted); padding-left: var(--space-12); }
+.aq-battery-limit__list { list-style: none; margin: 0; padding: 0; display: grid; }
+
+/* a card and its leader to the seam */
+.aq-battery-limit__item { display: flex; align-items: center; }
+.aq-battery-limit__item > .aq-battery-limit__card { flex: 0 1 26rem; min-width: 0; }
+.aq-battery-limit__tie { flex: 1 1 var(--space-12); min-width: var(--space-12); display: flex; align-items: center; position: relative; align-self: stretch; }
+.aq-battery-limit__lead { flex: 1; height: 0; border-top: 1px solid var(--on-navy-muted); transform-origin: left center; transition: border-color 200ms ease; }
+.is-site .aq-battery-limit__lead { border-top-color: var(--on-limestone-muted); transform-origin: right center; }
+.aq-battery-limit__node {
+  width: 11px; height: 11px; flex: none; border: 1.5px solid var(--flow); background: var(--surface-raised); transform: rotate(45deg);
+  transition: background-color 200ms ease;
+}
+.is-pkg .aq-battery-limit__node { margin-right: -6px; }
+.is-site .aq-battery-limit__node { margin-left: -6px; }
+.aq-battery-limit__item.is-hot .aq-battery-limit__lead { border-top-color: var(--flow); border-top-width: 1.5px; }
+.aq-battery-limit__item.is-hot .aq-battery-limit__node { background: var(--flow); }
+.is-pkg .aq-battery-limit__card { border: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); color: var(--on-navy); }
+.is-site .aq-battery-limit__card { border: 1px solid color-mix(in srgb, var(--on-limestone-muted) 45%, transparent); color: var(--on-limestone); }
+.aq-battery-limit__item.is-hot .aq-battery-limit__card { border-color: var(--flow); }
+.is-pkg .aq-battery-limit__item.is-hot .aq-battery-limit__card { border-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+
+.aq-battery-limit__card { padding: var(--space-4) var(--space-6) var(--space-6); display: grid; gap: var(--space-2); transition: border-color 200ms ease; }
+.aq-battery-limit__card .aq-index { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--flow); }
+.is-site .aq-battery-limit__card .aq-index { color: var(--navy); }
+.is-pkg .aq-battery-limit__card .aq-index { color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-battery-limit__p { margin: 0; font: 500 17px/24px var(--font-sans); }
+.aq-battery-limit__dl { margin: 0; display: grid; gap: var(--space-2); }
+.aq-battery-limit__dl dt { font: 400 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.is-pkg .aq-battery-limit__dl dt { color: var(--on-navy-muted); }
+.is-site .aq-battery-limit__dl dt { color: var(--on-limestone-muted); }
+.aq-battery-limit__dl dd { margin: 0; font: 400 15px/22px var(--font-sans); }
+.aq-battery-limit__v { overflow-wrap: anywhere; }
+.is-pkg .aq-battery-limit__m { color: var(--on-navy-muted); }
+.is-site .aq-battery-limit__m { color: var(--on-limestone-muted); }
+.aq-battery-limit__link { color: var(--flow); }
+.is-pkg .aq-battery-limit__link { color: var(--on-navy); text-decoration-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-battery-limit__link::after { content: " →"; }
+/* dark (pass 12 verify): the site cards stay limestone, so their link turns dark navy (about 9 : 1) with a flow underline */
+:root[data-theme="dark"] .is-site .aq-battery-limit__link { color: var(--navy); text-decoration-color: var(--flow); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .is-site .aq-battery-limit__link { color: var(--navy); text-decoration-color: var(--flow); } }
+
+/* every card shows at every width (S7: never fold a row the line ties in); the fold button never shows */
+.aq-fold .aq-battery-limit__item.aq-fold-x, .aq-fold:not(.is-open) .aq-battery-limit__item.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-battery-limit) > .aq-fold__btn { display: none; }
+/* the side chip is for phones */
+.aq-battery-limit__who { display: none; }
+
+@container (max-width: 860px) {
+  /* Phones (pass 12, S7/S13): the navy head, then one sequence down a left spine (the battery limit line, dash and
+     dot): every row in list order (the limit card, flow-framed with a solid node, first where it is row 01) with a tie-in node on the spine and its
+     side as a chip (navy card: the package's side; limestone card: the site's). Column keys sit inline before values. */
+  .aq-battery-limit__navy, .aq-battery-limit__line, .aq-battery-limit__seam-t, .aq-battery-limit__side { display: none; }
+  .aq-battery-limit { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); }
+  .aq-battery-limit > * { grid-column: 1; grid-row: auto; }
+  .aq-battery-limit__head { order: 0; }
+  .aq-battery-limit__list { display: contents; }
+  .aq-battery-limit__head {
+    background: var(--navy); box-shadow: 0 0 0 100vmax var(--navy); clip-path: inset(0 -100vmax);
+    padding: var(--space-12) 0 var(--space-6); margin-bottom: var(--space-3);
+  }
+  .aq-battery-limit-sec { padding-top: 0; }
+  .aq-battery-limit__limit, .aq-battery-limit__item { position: relative; margin: 0 0 0 var(--space-8); width: auto; justify-self: stretch; }
+  /* the spine: a dash-and-dot line in flow down the left, through every card's node */
+  .aq-battery-limit__limit::before, .aq-battery-limit__item::before {
+    content: ""; position: absolute; left: calc(-1 * var(--space-5, 20px)); top: 0; bottom: calc(-1 * var(--space-3)); width: 1.5px;
+    background: repeating-linear-gradient(to bottom, var(--flow) 0 18px, transparent 18px 23px, var(--flow) 23px 26px, transparent 26px 31px);
+  }
+  .aq-battery-limit__limit::before { bottom: calc(-1 * var(--space-3)); }
+  .aq-battery-limit__item[data-last]::before, .aq-battery-limit__limit[data-last]::before { bottom: auto; height: var(--space-6); }
+  .aq-battery-limit__limit::after {
+    content: ""; position: absolute; left: calc(-1 * var(--space-5, 20px) - 7px); top: var(--space-5, 20px); width: 14px; height: 14px;
+    box-sizing: border-box; background: var(--flow); transform: rotate(45deg);
+  }
+  .aq-battery-limit__list > .aq-battery-limit__item { grid-row: auto; padding-block: 0; }
+  .aq-battery-limit__tie { position: absolute; left: calc(-1 * var(--space-5, 20px) - 5px); top: var(--space-5, 20px); display: block; width: 11px; min-width: 0; height: 11px; }
+  .aq-battery-limit__tie .aq-battery-limit__lead { display: none; }
+  .is-pkg .aq-battery-limit__node, .is-site .aq-battery-limit__node { display: block; margin: 0; }
+  .aq-battery-limit__item > .aq-battery-limit__card { flex: 1 1 auto; }
+  .aq-battery-limit__limit .aq-battery-limit__card { padding: var(--space-4) var(--space-4) var(--space-5, 20px); }
+  .aq-battery-limit__card { padding: var(--space-3) var(--space-4) var(--space-4); grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-items: center; }
+  .aq-battery-limit__card > .aq-index, .aq-battery-limit__card > .aq-battery-limit__who { grid-row: 1; }
+  .aq-battery-limit__card > .aq-battery-limit__p, .aq-battery-limit__card > .aq-battery-limit__dl { grid-column: 1 / -1; }
+  .aq-battery-limit__limit .aq-battery-limit__card > .aq-index { grid-column: 1 / -1; }
+  .is-pkg .aq-battery-limit__card { background: var(--navy); border-color: var(--navy); }
+  .aq-battery-limit__who {
+    display: inline-block; justify-self: end; padding: 2px var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .is-pkg .aq-battery-limit__who { color: var(--navy); background: var(--on-navy); }
+  .is-site .aq-battery-limit__who { color: var(--on-limestone); border: 1px solid color-mix(in srgb, var(--on-limestone-muted) 60%, transparent); }
+  .aq-battery-limit__p { font-size: 17px; line-height: 24px; }
+  .aq-battery-limit__dl { gap: var(--space-1); }
+  .aq-battery-limit__dl > div { display: block; }
+  .aq-battery-limit__dl dt { display: inline; margin-right: var(--space-2); }
+  .aq-battery-limit__dl dd { display: inline; font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-battery-limit__dl dd.aq-battery-limit__v { font-size: 15px; }
+  .aq-battery-limit__link { position: relative; display: inline-block; }
+  .aq-battery-limit__link::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; min-height: var(--aq-hit, 44px); transform: translateY(-50%); }
+}
+
+/* Marks the section as a band of its own ground, so page.js restarts the surface alternation after it. */
+.aq-band--split { position: relative; }
+
+/* Border beam (motion only, ported from Subframe Motion "Border beam"): a small light runs round the edge of the card
+   the visitor points at. A border-wide ring masks a square of light that travels the card's outline (offset-path). */
+.aq-battery-limit__card { position: relative; }
+.aq-battery-limit__beam { position: absolute; inset: -1.5px; padding: 2px; pointer-events: none; display: none; visibility: hidden; opacity: 0; overflow: hidden;
+  -webkit-mask: linear-gradient(var(--ink) 0 0) content-box, linear-gradient(var(--ink) 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(var(--ink) 0 0) content-box exclude, linear-gradient(var(--ink) 0 0); }
+.aq-battery-limit__light { position: absolute; width: var(--space-24, 6rem); height: var(--space-24, 6rem); offset-path: rect(0 auto auto 0); offset-distance: 0%;
+  background: linear-gradient(to left, var(--bl-beam, var(--flow)), var(--flow), transparent); }
+.is-pkg .aq-battery-limit__light { --bl-beam: var(--on-navy); }

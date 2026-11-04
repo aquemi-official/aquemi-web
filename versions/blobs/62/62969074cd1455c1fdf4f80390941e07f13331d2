@@ -1,0 +1,116 @@
+/* ---------- HoldTimeline: stages as nodes on one rising line over a macro pipe joint (look "hold-timeline") ----------
+   A calm light section on the page's alternate ground (the bead is filled with --surface, which --alt sets). Behind
+   it, the macro: a fused pipe drawn huge and cropped, its round body in engraving lines, the weld bead across it, water
+   as a dashed flow centre line. In front, the line climbs left to right in steps of --rise; each callout hangs off its
+   node on a hairline pole (odd stages above-left, even stages below-right), so the line never crosses text.
+   Geometry: the list is a three-row grid (callouts above, the band, callouts below). A callout's negative margin lets
+   it reach into the band to its node: the node of stage i sits (n - 0.5 - i) rises below the band's top. */
+.aq-hold-timeline-sec, .aq-section--alt.aq-hold-timeline-sec {
+  --rise: var(--space-12); --dot: 12px;
+  position: relative; overflow: clip; background: var(--surface); color: var(--ink);
+}
+.aq-hold-timeline-sec > .aq-in { position: relative; z-index: 1; }
+.aq-hold-timeline-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 16ch; }
+
+/* the macro close-up */
+.aq-hold-timeline__macro { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.34; }
+.aq-hold-timeline__macro svg { display: block; width: 100%; height: 100%; }
+.aq-hold-timeline__edge { fill: none; stroke: var(--line-strong); stroke-width: 2.2; }
+.aq-hold-timeline__ct { fill: none; stroke: var(--line-strong); stroke-width: 1.1; opacity: 0.6; }
+.aq-hold-timeline__water { fill: none; stroke: var(--flow); stroke-width: 2; stroke-dasharray: 16 20; opacity: 0.75; }
+.aq-hold-timeline__bead { fill: var(--surface); stroke: var(--ink-muted); stroke-width: 2; }
+.aq-hold-timeline__seam { fill: none; stroke: var(--ink-muted); stroke-width: 1.4; }
+
+/* the rising line */
+.aq-hold-timeline { position: relative; }
+.aq-hold-timeline__list {
+  list-style: none; margin: 0; padding: 0; position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto calc(var(--n, 6) * var(--rise, var(--space-12))) auto;
+}
+.aq-hold-timeline__st { grid-column: 1; position: relative; width: var(--w, 25%); min-width: 0; --d: var(--dot, 12px); }
+.aq-hold-timeline__st.is-up {
+  grid-row: 1; align-self: end; justify-self: start; text-align: right;
+  margin-left: calc(var(--x, 0%) - var(--w, 25%)); margin-bottom: calc((var(--i, 0) + 0.5 - var(--n, 6)) * var(--rise, var(--space-12)));
+  padding: 0 var(--space-4) var(--space-6) 0;
+}
+.aq-hold-timeline__st.is-down {
+  grid-row: 3; align-self: start; justify-self: start;
+  margin-left: var(--x, 0%); margin-top: calc(-1 * (var(--i, 0) + 0.5) * var(--rise, var(--space-12)));
+  padding: var(--space-6) 0 0 var(--space-4);
+}
+/* the pole: a hairline from the node along the callout's near edge */
+.aq-hold-timeline__pole { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line-strong); }
+.is-up > .aq-hold-timeline__pole { right: 0; transform-origin: 50% 100%; }
+.is-down > .aq-hold-timeline__pole { left: 0; transform-origin: 50% 0; }
+.aq-hold-timeline__st.is-hold { --d: 22px; }
+.aq-hold-timeline__node {
+  position: absolute; z-index: 2; width: var(--d, 12px); height: var(--d, 12px); border-radius: var(--radius-pill); background: var(--flow);
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.is-up > .aq-hold-timeline__node { right: calc(var(--d, 12px) / -2); bottom: calc(var(--d, 12px) / -2); }
+.is-down > .aq-hold-timeline__node { left: calc(var(--d, 12px) / -2); top: calc(var(--d, 12px) / -2); }
+.is-hold > .aq-hold-timeline__node { border: 5px solid var(--surface); outline: 1.5px solid var(--flow); }
+.aq-hold-timeline__halo { display: none; position: absolute; inset: calc(-1 * var(--space-3)); border: 1px solid var(--flow); border-radius: var(--radius-pill); opacity: 0.45; }
+.is-hold .aq-hold-timeline__halo { display: block; }
+
+.aq-hold-timeline__c { position: relative; }
+.aq-hold-timeline__t { margin: 0; font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-hold-timeline__t a { color: inherit; text-decoration: none; }
+.aq-hold-timeline__t a::after { content: "\a0\2192"; color: var(--flow); }
+.aq-hold-timeline__t a:hover { color: var(--flow); }
+.aq-hold-timeline__n { font: 400 14px/28px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-hold-timeline__dur { margin: var(--space-2) 0 0; font: 400 14px/20px var(--font-mono); color: var(--ink-muted); }
+.aq-hold-timeline__fig {
+  display: inline-block; margin: var(--space-3) 0 0; padding: var(--space-2) var(--space-4) var(--space-3); border: 1px solid var(--flow);
+  font: 400 15px/20px var(--font-sans); color: var(--ink-muted); text-align: left;
+}
+.aq-hold-timeline__num {
+  font: 300 72px/72px var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--ink);
+  margin: 0 var(--space-1); vertical-align: -0.12em;
+}
+.aq-hold-timeline__d { margin: var(--space-2) 0 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+/* pass 12 C: 14 px; the signer wraps in its own column beside the HOLD chip, never back under it (all widths) */
+.aq-hold-timeline__hold { margin: var(--space-3) 0 0; font: 400 14px/20px var(--font-sans); color: var(--ink);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); align-items: baseline; }
+.aq-hold-timeline__hk {
+  display: inline-block; margin-right: 0; padding: 0 var(--space-2); border: 1px solid var(--flow);
+  font: 500 12px/18px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow);
+}
+/* pass 12 C (R1): up stages are right-aligned; size the signer column to its text and pack both against the pole, so
+   the chip stays 8 px from a short signer instead of being stranded across a wide 1fr track */
+.aq-hold-timeline__st.is-up .aq-hold-timeline__hold { grid-template-columns: auto minmax(0, max-content); justify-content: end; }
+/* the signer is one grid item, so a [placeholder] span inside it stays on the chip's line (L1) */
+.aq-hold-timeline__hw { min-width: 0; }
+/* hover a stage: its node swells, its pole lights */
+.aq-hold-timeline__st:hover > .aq-hold-timeline__node { transform: scale(1.35); }
+.aq-hold-timeline__st:hover > .aq-hold-timeline__pole { background: var(--flow); }
+
+.aq-hold-timeline__band { grid-row: 2; grid-column: 1; position: relative; pointer-events: none; }
+.aq-hold-timeline__band svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.aq-hold-timeline__rail { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 2 6; vector-effect: non-scaling-stroke; }
+.aq-hold-timeline__run { fill: none; stroke: var(--flow); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+/* the water drop rests where the line leaves the frame */
+.aq-hold-timeline__drop { position: absolute; top: 0; right: 0; width: 10px; height: 10px; margin: -5px -5px 0 0; border-radius: var(--radius-pill); background: var(--flow); }
+
+/* Phones: one vertical line down the left, the stages along it; the macro stays as the ground */
+@container (max-width: 860px) {
+  .aq-hold-timeline-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  .aq-hold-timeline__macro { opacity: 0.3; }
+  .aq-hold-timeline__list { display: flex; flex-direction: column; gap: var(--space-8); padding-left: var(--space-8); }
+  .aq-hold-timeline__list::before { content: ""; position: absolute; left: var(--space-3); top: var(--space-3); bottom: 0; width: 2px; margin-left: -1px; background: var(--flow); }
+  /* align-self: stretch, or the desktop "align-self: end" of the up stages survives in the flex column and indents them */
+  .aq-hold-timeline__st, .aq-hold-timeline__st.is-up, .aq-hold-timeline__st.is-down { width: auto; margin: 0; padding: 0; border: 0; text-align: left; align-self: stretch; }
+  .is-up > .aq-hold-timeline__node, .is-down > .aq-hold-timeline__node {
+    left: calc(var(--space-3) - var(--space-8) - var(--d, 12px) / 2); right: auto; top: calc(14px - var(--d, 12px) / 2); bottom: auto;
+  }
+  .aq-hold-timeline__band, .aq-hold-timeline__pole { display: none; }
+  .aq-hold-timeline__st.is-up .aq-hold-timeline__hold { justify-content: start; }
+  .aq-hold-timeline__t { font-size: 20px; }
+  .aq-hold-timeline__num { font-size: 56px; line-height: 56px; }
+}
+
+/* Seek (motion only, ported from Subframe Motion "Cue scrubber"): stages still ahead of the one the visitor points
+   at step back while the water waits at its node */
+.aq-hold-timeline__st { transition: opacity 200ms; }
+.aq-hold-timeline__st.is-ahead { opacity: 0.4; }
+.aq-hold-timeline__st.is-cue .aq-hold-timeline__node { transform: scale(1.3); }

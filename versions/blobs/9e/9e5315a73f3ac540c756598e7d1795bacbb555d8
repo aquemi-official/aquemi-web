@@ -1,0 +1,184 @@
+/* ---------- VersusSpread: FAT versus SAT as an editorial spread (look "versus-spread") ----------
+   Desktop: a navy mast (8 of 12 columns) bleeds off the page's left edge from the section's top, the heading in it at
+   display scale, light weight; the comparison table under it on the page ground; the line drawing of the installed
+   system sticks beside the table (4 of 12) with its two boundaries (site: fine dots, test bay: long dashes) and a
+   caption naming the test on show. Rows are hairline-ruled, numbered in mono; the conclusion row closes on a 1.5 px
+   ink rule with the reuse label as a navy tile. Lit parts turn flow with a flow-tint fill; the rest of the drawing
+   steps back. The reading lens (script) is a flow-tint band with a flow edge behind the row in focus. */
+.aq-versus-spread-sec { overflow-x: clip; }
+.aq-versus-spread { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); grid-template-areas: "mast ." "body fig"; column-gap: var(--space-12); align-items: start; }
+
+/* the mast */
+.aq-versus-spread__mast { grid-area: mast; position: relative; margin-top: calc(-1 * var(--space-16)); padding: var(--space-8) var(--space-8) var(--space-12) 0; background: var(--navy); color: var(--on-navy); }
+.aq-versus-spread__mast::before { content: ""; position: absolute; top: 0; bottom: 0; right: 100%; width: 100vmax; background: var(--navy); }
+.aq-versus-spread__top { display: flex; justify-content: space-between; gap: var(--space-4); padding-bottom: var(--space-3); margin-bottom: var(--space-12);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 28%, transparent); font: 400 14px/20px var(--font-sans); color: var(--on-navy-muted); }
+.aq-versus-spread__mast .aq-sec-head { margin: 0; }
+.aq-versus-spread__mast .aq-h1 { max-width: none; margin: 0; font-size: clamp(52px, 6.6cqi, 92px); line-height: 0.98; font-weight: 300; letter-spacing: -0.035em; color: var(--on-navy); }
+.aq-versus-spread__mast .aq-eyebrow, .aq-versus-spread__mast .aq-lead { color: var(--on-navy-muted); }
+
+/* the table */
+.aq-versus-spread__body { grid-area: body; padding-top: var(--space-12); }
+.aq-versus-spread__hrow, .aq-versus-spread__row, .aq-versus-spread__end { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); }
+.aq-versus-spread__hrow { padding-bottom: var(--space-3); border-bottom: 1px solid var(--ink); }
+.aq-versus-spread__h { font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-versus-spread__h:first-child { padding-left: var(--space-8); }
+.aq-versus-spread__rows { position: relative; isolation: isolate; }
+.aq-versus-spread__row { position: relative; padding: var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: opacity 200ms; }
+.aq-versus-spread__row:focus-visible, .aq-versus-spread__end:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-versus-spread__row::before { content: ""; position: absolute; left: calc(-1 * var(--space-4)); top: -1px; bottom: -1px; width: 2px; background: var(--flow); opacity: 0; transition: opacity 150ms; }
+.aq-versus-spread:not([data-lens]) .aq-versus-spread__row.is-on::before { opacity: 1; }
+.aq-versus-spread__test { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); align-items: baseline; }
+.aq-versus-spread__n { font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-subtle); transition: color 150ms; }
+.aq-versus-spread__row.is-on .aq-versus-spread__n { color: var(--flow); }
+.aq-versus-spread__tn { font: 500 16px/24px var(--font-sans); color: var(--ink); }
+.aq-versus-spread__c { font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-versus-spread__c.is-na { padding-left: var(--space-3); border-left: 1.5px dashed var(--line-strong); color: var(--ink-subtle); }
+.aq-versus-spread__k { display: none; }
+.aq-versus-spread__lens { position: absolute; z-index: -1; left: calc(-1 * var(--space-4)); right: calc(-1 * var(--space-4)); top: 0; height: 0; background: var(--flow-tint);
+  border-left: 2px solid var(--flow); opacity: 0; pointer-events: none; transition: opacity 200ms; }
+.aq-versus-spread[data-lens] .aq-versus-spread__lens.is-live { opacity: 1; }
+/* the conclusion */
+.aq-versus-spread__end { padding: var(--space-6) 0 var(--space-4); border-top: 1.5px solid var(--ink); margin-top: -1px; outline: none; }
+.aq-versus-spread__end .aq-versus-spread__test { display: block; }
+.aq-versus-spread__reuse { display: inline-block; padding: var(--space-2) var(--space-3); background: var(--navy); color: var(--on-navy); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-versus-spread__end .aq-versus-spread__c { color: var(--ink); }
+.aq-versus-spread__end.is-on .aq-versus-spread__reuse { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--flow); }
+
+/* the drawing */
+.aq-versus-spread__fig { grid-area: fig; position: sticky; top: var(--space-24); margin: 0; padding-top: var(--space-12); }
+.aq-versus-spread__art { position: relative; }
+.aq-versus-spread__svg { display: block; width: 100%; height: auto; aspect-ratio: 400 / 600; overflow: visible; }
+.aq-versus-spread__eq { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; transition: fill 200ms, stroke 200ms; }
+.aq-versus-spread__thin { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; transition: stroke 200ms; }
+.aq-versus-spread__wall { fill: none; stroke: var(--line-strong); stroke-width: 7; stroke-linejoin: round; transition: stroke 200ms; }
+.aq-versus-spread__bore { fill: none; stroke: var(--surface); stroke-width: 4; stroke-linejoin: round; }
+.aq-versus-spread__water { fill: none; stroke: var(--flow); stroke-width: 2; stroke-linejoin: round; }
+.aq-versus-spread__bound { fill: none; stroke: var(--line-strong); stroke-width: 1; transition: stroke 200ms, fill 200ms; }
+.aq-versus-spread__bound--sat { stroke-dasharray: 1 4; stroke-linecap: round; stroke-width: 1.5; }
+.aq-versus-spread__bound--fat { stroke-dasharray: 8 5; stroke: var(--ink-subtle); }
+.aq-versus-spread__part { transition: opacity 200ms; }
+.aq-versus-spread.has-on .aq-versus-spread__part:not(.is-on) { opacity: 0.32; }
+.aq-versus-spread__part.is-on .aq-versus-spread__eq { stroke: var(--flow); fill: var(--flow-tint); }
+.aq-versus-spread__part.is-on .aq-versus-spread__thin, .aq-versus-spread__part.is-on .aq-versus-spread__wall { stroke: var(--flow); }
+.aq-versus-spread__bound--fat.is-on { stroke: var(--flow); stroke-width: 2; fill: var(--flow-tint); fill-opacity: 0.6; }
+.aq-versus-spread__tag { position: absolute; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+.aq-versus-spread__tag--sat { left: 2%; top: 0; }
+.aq-versus-spread__tag--fat { left: 8.5%; top: 51.2%; }
+.aq-versus-spread__now { display: flex; align-items: baseline; gap: var(--space-3); min-height: var(--space-12); margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--line); }
+.aq-versus-spread__count { flex: none; font: 400 13px/20px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-subtle); }
+.aq-versus-spread__now-t { font: 500 15px/20px var(--font-sans); color: var(--flow); }
+
+/* the fold is for phones only: desktop shows every test */
+.aq-fold:not(.is-open) .aq-versus-spread__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-versus-spread__table) > .aq-fold__btn { display: none; }
+
+@container (max-width: 860px) {
+  .aq-versus-spread { grid-template-columns: minmax(0, 1fr); grid-template-areas: "mast" "fig" "body"; }
+  .aq-versus-spread__mast { margin-top: calc(-1 * var(--space-12)); padding: var(--space-6) 0 var(--space-8); }
+  .aq-versus-spread__mast::after { content: ""; position: absolute; top: 0; bottom: 0; left: 100%; width: 100vmax; background: var(--navy); }
+  .aq-versus-spread__top { margin-bottom: var(--space-8); font-size: 13px; }
+  .aq-versus-spread__mast .aq-h1 { font-size: 44px; line-height: 46px; }
+  .aq-versus-spread__fig { position: static; padding-top: var(--space-8); }
+  .aq-versus-spread__art { width: 100%; }
+  .aq-versus-spread__tag { letter-spacing: 0.02em; }
+  .aq-versus-spread__tag--fat { top: 50.6%; }
+  .aq-versus-spread__now { display: none; }
+  .aq-versus-spread__body { padding-top: var(--space-6); }
+  .aq-versus-spread__hrow { display: none; }
+  .aq-versus-spread__row, .aq-versus-spread__end { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); }
+  .aq-versus-spread__row:first-child { border-top: 1px solid var(--ink); }
+  .aq-versus-spread__row::before { display: none; }
+  .aq-versus-spread__c { padding-left: var(--space-8); font-size: 14px; line-height: 22px; }
+  .aq-versus-spread__c.is-na { margin-left: var(--space-8); padding-left: var(--space-3); }
+  .aq-versus-spread__k { display: block; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+  .aq-versus-spread__end .aq-versus-spread__c { padding-left: 0; }
+  .aq-fold:not(.is-open) .aq-versus-spread__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-versus-spread__table) > .aq-fold__btn { display: flex; }
+}
+
+/* pass 12 phone (audit S7, svc-fat-sat.0): the drawing beside a FAT / SAT switch; the switch lights its boundary (FAT
+   the test bay, SAT the site) and shows only that side's cell in every row and in the conclusion, so the whole table
+   reads in one column with nothing folded. The buttons wear the boundaries' strokes (dashed for the test bay, dotted
+   for the site). Desktop never shows the switch.
+   Verify fix V5: the drawing and the switch are a PhoneKit sticky strip (data-pk-fig, 200 px) held over the rows, so
+   the switch is in reach down to the conclusion and the row on the reading line lights its parts; the root is a block
+   on phones so the strip's parent spans the rows. The side label is said once, by the switch (each cell keeps it for
+   screen readers; the conclusion keeps it on screen). Without script the figure stands static at 160 px.
+   600-860 px (tablets): no switch; both sides side by side under a two-column head that sticks under the strip. */
+.aq-versus-spread__mode { display: none; }
+@container (max-width: 860px) {
+  .aq-versus-spread { display: block; }
+  .aq-versus-spread__fig { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: var(--space-5, 20px); align-items: start; padding-top: var(--space-6); }
+  .aq-versus-spread__art { grid-row: 1 / span 2; width: 160px; }
+  .aq-versus-spread__tag { display: none; }
+  .aq-versus-spread__mode { display: flex; flex-direction: column; gap: var(--space-3); grid-column: 2; grid-row: 1; }
+  .aq-versus-spread__mb {
+    min-height: 48px; padding: var(--space-2) var(--space-3); border: 1.5px dashed var(--line-strong); background: none; color: var(--ink-muted);
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent;
+  }
+  .aq-versus-spread__mb--sat { border-style: dotted; border-width: 2px; }
+  .aq-versus-spread__mb[aria-pressed="true"] { border-color: var(--flow); background: var(--flow-tint); color: var(--ink); }
+  .aq-versus-spread__mb:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .aq-versus-spread__now { display: flex; flex-direction: column; gap: var(--space-1); grid-column: 2; grid-row: 2; min-height: 0; margin-top: var(--space-4); }
+  .aq-versus-spread__now-t { font-size: 15px; line-height: 20px; }
+  .aq-fold:not(.is-open) .aq-versus-spread__row.aq-fold-x { display: grid; }
+  .aq-fold:has(> .aq-versus-spread__table) > .aq-fold__btn { display: none; }
+  .aq-versus-spread__row { row-gap: var(--space-2); padding: var(--space-3) 0; }
+  .aq-versus-spread__c { font-size: 15px; }
+  .aq-versus-spread__row.is-on { background: var(--flow-tint); }
+  /* S12: the side is named once, by the switch (or the tablet head); kept per cell for screen readers */
+  .aq-versus-spread__row .aq-versus-spread__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* the strip (PhoneKit on): drawing at the strip's height, the switch beside it, the position under the switch */
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__fig { padding: var(--space-3) 0; margin-top: var(--space-6); align-content: start; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__art { width: auto; height: calc(var(--pk-h, 200px) - 2 * var(--space-3) - 1px); aspect-ratio: 2 / 3; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__svg { width: 100%; height: 100%; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__now { margin-top: var(--space-3); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__body { padding-top: var(--space-2); }
+}
+@container (max-width: 599px) {
+  .aq-versus-spread[data-side="fat"] .aq-versus-spread__bound--fat { stroke: var(--flow); stroke-width: 2; fill: var(--flow-tint); fill-opacity: 0.6; }
+  .aq-versus-spread[data-side="sat"] .aq-versus-spread__bound--sat { stroke: var(--flow); stroke-width: 2.5; fill: var(--flow-tint); fill-opacity: 0.35; }
+  .aq-versus-spread[data-side="fat"] .aq-versus-spread__c--sat, .aq-versus-spread[data-side="sat"] .aq-versus-spread__c--fat { display: none; }
+  /* in the strip the row name would not fit beside the drawing; the row itself is lit just under it */
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__now-t { display: none; }
+}
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-versus-spread__mode { display: none; }
+  .aq-versus-spread__now { grid-row: 1; margin-top: 0; padding-top: 0; border-top: 0; }
+  .aq-versus-spread__hrow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); position: sticky; z-index: 3;
+    top: calc(var(--pk-top, 0px) + var(--pk-h, 0px) - var(--pk-lift, 0px)); padding-top: var(--space-3); background: var(--surface); }
+  .aq-versus-spread__h:first-child { display: none; }
+  .aq-versus-spread__h:nth-child(2) { padding-left: var(--space-8); }
+  .aq-versus-spread__row, .aq-versus-spread__end { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); }
+  .aq-versus-spread__test { grid-column: 1 / -1; }
+  .aq-versus-spread__c--sat { padding-left: 0; }
+  .aq-versus-spread__c--sat.is-na { margin-left: 0; }
+  .aq-versus-spread__row:first-child { border-top: 0; }
+  .aq-versus-spread__count { font-size: 14px; }
+  .aq-versus-spread__now-t { font-size: 19px; line-height: 26px; }
+}
+
+/* pass 12 round C (svc-fat-sat.0, phone strip): the mini drawing was the whole site at about 0.3 scale, hairlines and
+   unreadable labels. Under 600 px, with the strip on, the drawing is cropped to the zone the row on the reading line
+   tests (data-zone, set with the lit parts): the test bay (x 16-244, y 292-580 of the 400 x 600 drawing, with the
+   utilities under it) or the site loop (x 196-400, y 60-392: riser, tank, loop pump and the first point of use). The
+   crop fills the strip's full height (168 x 199 px), strokes 1.5 px whatever the scale, no labels.
+   Fix round (N7): the crop runs over the whole PhoneKit range (to 860 px); tablets drew the whole site at 0.3 scale too. */
+@container (max-width: 860px) {
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__fig { padding: 0; margin-top: var(--space-6); column-gap: var(--space-4); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__art {
+    position: relative; width: 168px; height: calc(var(--pk-h, 200px) - 1px); aspect-ratio: auto; overflow: hidden;
+    border-right: 1px solid var(--line);
+  }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__svg {
+    position: absolute; left: 0; top: 0; aspect-ratio: auto; transform-origin: 0 0;
+    width: 276.4px; height: 414.6px; transform: translate(-5.9px, -201.8px);
+    transition: width 420ms cubic-bezier(0.2, 0, 0, 1), height 420ms cubic-bezier(0.2, 0, 0, 1), transform 420ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .aq-versus-spread[data-pk-on][data-zone="site"] .aq-versus-spread__svg { width: 239.6px; height: 359.4px; transform: translate(-94.6px, -35.9px); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__svg :is(.aq-versus-spread__eq, .aq-versus-spread__thin, .aq-versus-spread__bound) { vector-effect: non-scaling-stroke; stroke-width: 1.5px; }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__mode { margin-top: var(--space-3); }
+  .aq-versus-spread[data-pk-on] .aq-versus-spread__now { margin-bottom: var(--space-3); }
+}
+@media (prefers-reduced-motion: reduce) { .aq-versus-spread__svg { transition: none !important; } }

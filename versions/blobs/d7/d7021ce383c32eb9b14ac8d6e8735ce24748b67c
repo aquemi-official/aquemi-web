@@ -1,0 +1,55 @@
+/* ---------- StrikeGaps: before struck, after set (look "strike-gaps") ----------
+   Rows on hairlines in a 12-column split: index, the gap (5 columns, light 26 px in ink-muted, struck through with
+   an ink rule), the requirement (3 columns, mono 13 px over an arrow in flow), the fix (4 columns, light
+   26 px in ink). Column names in mono over the rows; inside rows they are visually hidden labels for screen readers. */
+.aq-strike-gaps { position: relative; }
+.aq-strike-gaps__heads, .aq-strike-gaps__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr); column-gap: var(--space-6); }
+.aq-strike-gaps__heads { padding-bottom: var(--space-2); border-bottom: 1px solid var(--line-strong); }
+.aq-strike-gaps__heads span { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-strike-gaps__heads span:first-child { grid-column: 2; }
+.aq-strike-gaps__rows { list-style: none; margin: 0; padding: 0; }
+.aq-strike-gaps__row { align-items: start; padding: var(--space-8) 0; border-bottom: 1px solid var(--line); }
+.aq-strike-gaps__row > .aq-index { line-height: 32px; }
+.aq-strike-gaps__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.aq-strike-gaps__was, .aq-strike-gaps__now { margin: 0; font: 300 28px/34px var(--font-sans); letter-spacing: -0.02em; text-wrap: balance; }
+.aq-strike-gaps__was { color: var(--ink-muted); }
+.aq-strike-gaps__wt { text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: var(--ink); }
+.aq-strike-gaps__now { color: var(--ink); }
+.aq-strike-gaps__req { position: relative; margin: 0; padding-top: var(--space-1); }
+.aq-strike-gaps__rt { display: block; font: 400 13px/18px var(--font-mono); color: var(--ink); }
+.aq-strike-gaps__arrow { position: relative; display: block; height: var(--space-4); margin-top: var(--space-2); }
+.aq-strike-gaps__shaft { position: absolute; left: 0; right: var(--space-1); top: 50%; border-top: 1.5px solid var(--flow); transform-origin: 0 50%; }
+.aq-strike-gaps__tip { position: absolute; right: 1px; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid var(--flow); border-right: 1.5px solid var(--flow); transform: translateY(-50%) rotate(45deg); }
+.aq-strike-gaps__row:hover .aq-strike-gaps__was { color: var(--ink-subtle); }
+.aq-strike-gaps__row:hover .aq-strike-gaps__now { color: var(--flow); }
+
+@container (max-width: 860px) {
+  .aq-strike-gaps__heads { display: none; }
+  .aq-strike-gaps__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-3); padding: var(--space-6) 0; }
+  .aq-strike-gaps__was, .aq-strike-gaps__req, .aq-strike-gaps__now { grid-column: 2; }
+  .aq-strike-gaps__was, .aq-strike-gaps__now { font-size: 22px; line-height: 28px; }
+  .aq-strike-gaps__req { display: flex; align-items: center; gap: var(--space-3); }
+  .aq-strike-gaps__arrow { order: -1; flex: none; width: var(--space-4); height: var(--space-8); margin: 0; }
+  .aq-strike-gaps__shaft { left: 50%; right: auto; top: 0; bottom: var(--space-1); border-top: 0; border-left: 1.5px solid var(--flow); transform-origin: 50% 0; }
+  .aq-strike-gaps__tip { right: auto; left: 50%; top: auto; bottom: 1px; transform: translateX(-50%) rotate(135deg); }
+}
+/* the head (pass 9b concept svc-upgrades.2): the intro, which names the discontinued controllers, set as a mono side
+   note beside the headline's last line, on a flow hairline, like a note on a drawing */
+.aq-strike-gaps-sec .aq-sec-head { display: grid; grid-template-columns: auto minmax(0, 30ch); align-items: end; justify-content: start; column-gap: var(--space-12); max-width: none; }
+.aq-strike-gaps-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 13ch; }
+.aq-strike-gaps-sec .aq-sec-head .aq-lead { margin: 0 0 var(--space-2); padding-left: var(--space-4); border-left: 1.5px solid var(--flow); max-width: none; font: 400 14px/22px var(--font-mono); color: var(--ink-muted); }
+@container (max-width: 860px) {
+  .aq-strike-gaps-sec .aq-sec-head { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
+  .aq-strike-gaps-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  .aq-strike-gaps-sec .aq-sec-head .aq-lead { margin: 0; }
+}
+/* pass 12 C: the fold is a phone measure only; from 861 px every gap shows and the button goes (the block's fold
+   field stays for phones) */
+@container (min-width: 861px) {
+  .aq-strike-gaps-sec .aq-fold:not(.is-open) .aq-fold-x { display: grid; }
+  .aq-strike-gaps-sec .aq-fold > .aq-fold__btn { display: none; }
+}
+/* reading text at 14 px on phones (S4) */
+@container (max-width: 600px) {
+  .aq-strike-gaps__rt { font-size: 14px; line-height: 20px; }
+}

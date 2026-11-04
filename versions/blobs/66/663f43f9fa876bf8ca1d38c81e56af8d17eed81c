@@ -1,0 +1,79 @@
+/* ---------- ParamTiles: design parameters as a Swiss grid of numbered tiles, one cell a blueprint of the skid ---------- */
+/* Four columns on a navy field with hairline gutters: limestone tiles, the lead tile wide and navy, the blueprint two by
+   two. An empty cell left by the count shows the navy field (the concept's checkerboard). */
+.aq-param-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: row dense; gap: 1px;
+  background: var(--navy); border: 1px solid var(--navy); margin-top: var(--space-4); }
+.aq-param-tiles__list { display: contents; list-style: none; }
+.aq-param-tiles__fig { grid-column: 3 / span 2; grid-row: 1 / span 2; background: var(--navy); display: grid; place-items: center; padding: var(--space-6); overflow: hidden; }
+.aq-param-tiles__svg { width: 100%; max-height: 100%; }
+.aq-param-tiles__svg .aq-iso__flow { stroke: var(--on-navy); }
+
+.aq-param-tiles__tile { position: relative; display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; min-height: calc(var(--space-32) * 2);
+  padding: var(--space-6); background: var(--limestone); color: var(--on-limestone); transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fold:not(.is-open) .aq-param-tiles__tile.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-param-tiles) > .aq-fold__btn { display: none; }
+.aq-param-tiles__tile.is-lead { grid-column: 1 / span 2; background: var(--navy); color: var(--on-navy); }
+
+.aq-param-tiles__head { display: flex; align-items: flex-start; gap: var(--space-2); }
+.aq-param-tiles__n { display: block; overflow: hidden; flex: none; font: 300 64px/60px var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.aq-param-tiles__n > span { display: block; }
+.aq-param-tiles__slash { flex: none; width: 1px; height: var(--space-12); margin-inline: var(--space-1) var(--space-2); background: currentColor; transform: skewX(-18deg); opacity: 0.6; }
+.aq-param-tiles__p { margin: 0; padding-top: var(--space-1); font: 500 12px/16px var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; }
+/* The value in Geist Light (mono stays for the placeholders and figures inside it) */
+.aq-param-tiles__v { margin: 0; font: 300 22px/30px var(--font-sans); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+/* A count that leaves one cell empty in the last row: the last tile takes it, so the grid closes square */
+.aq-param-tiles__tile:last-child:nth-child(4n+2):not(.is-lead) { grid-column: span 2; }
+.aq-param-tiles__tile.is-lead .aq-param-tiles__v { font-size: 32px; line-height: 42px; font-weight: 300; }
+.aq-param-tiles__m { margin: auto 0 0; padding-top: var(--space-3); border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  display: flex; flex-direction: column; gap: var(--space-2); font: 400 13px/20px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-param-tiles__tile.is-lead .aq-param-tiles__m { color: var(--on-navy-muted); }
+.aq-param-tiles__link { align-self: flex-start; display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); color: var(--flow); text-decoration: none; font: 500 14px/20px var(--font-sans); }
+/* pass 12 C: flow on navy read 2.41:1; the lead tile's link is on-navy */
+.aq-param-tiles__tile.is-lead .aq-param-tiles__link { color: var(--on-navy); }
+.aq-param-tiles__tile.is-lead .aq-param-tiles__link:focus-visible { outline-color: var(--on-navy); }
+.aq-param-tiles__link::after { content: "→"; margin-left: var(--space-1); transition: transform 200ms; }
+.aq-param-tiles__link:hover::after { transform: translateX(var(--space-1)); }
+.aq-param-tiles__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* A last tile alone in its row (pass 12 C, ind-process 08): the full row, laid out across it (number and name, the
+   value, the basis and link), so no empty navy cell is left beside it */
+/* (the list-scoped selector outweighs the fold's display:flex on tiles past the phone fold) */
+.aq-param-tiles .aq-param-tiles__list > .aq-param-tiles__tile.is-row { grid-column: 1 / -1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: var(--space-6); align-items: start; }
+.aq-param-tiles__tile.is-row .aq-param-tiles__v { padding-top: var(--space-2); }
+.aq-param-tiles__tile.is-row .aq-param-tiles__m { margin: 0; padding: var(--space-1) 0 0 var(--space-6); border-top: 0; border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
+
+/* Hover: the tile's number turns flow */
+.aq-param-tiles__tile:hover .aq-param-tiles__n { color: var(--flow); }
+.aq-param-tiles__tile.is-lead:hover .aq-param-tiles__n { color: var(--limestone); }
+.aq-param-tiles__n { transition: color 300ms; }
+
+@container (max-width: 1100px) {
+  .aq-param-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  /* pass 12 C verify F5: the blueprint drops to rows 2-3, so the wide lead takes row 1 (with the next tile beside it)
+     instead of falling under the blueprint; the cell count is unchanged, so the grid still closes square */
+  .aq-param-tiles__fig { grid-column: 2 / span 2; grid-row: 2 / span 2; }
+  .aq-param-tiles__tile.is-lead { grid-row: 1; }
+  .aq-param-tiles__tile:last-child:nth-child(4n+2):not(.is-lead) { grid-column: auto; }
+  .aq-param-tiles__n { font-size: 52px; line-height: 50px; }
+}
+
+/* Phones: one column, the lead tile first, the blueprint after it, the fold back on */
+@container (max-width: 860px) {
+  .aq-param-tiles { grid-template-columns: minmax(0, 1fr); }
+  .aq-param-tiles__tile.is-lead { grid-column: auto; grid-row: auto; order: -2; }
+  .aq-param-tiles__fig { grid-column: auto; grid-row: auto; order: -1; padding: var(--space-4); }
+  .aq-param-tiles__tile { min-height: 0; padding: var(--space-4) var(--space-4) var(--space-6); }
+  .aq-fold:not(.is-open) .aq-param-tiles__list > .aq-param-tiles__tile.aq-fold-x { display: none; } /* (0,5,0): outranks the list-scoped is-row reset */
+  .aq-fold:has(> .aq-param-tiles) > .aq-fold__btn { display: flex; }
+  .aq-param-tiles__n { font-size: 48px; line-height: 46px; }
+  .aq-param-tiles__tile.is-lead .aq-param-tiles__v { font-size: 22px; line-height: 30px; }
+  .aq-param-tiles__v { font-size: 18px; line-height: 26px; }
+  /* pass 12 C verify F1: the base is-row rule is list-scoped (0,3,0), so the phone reset must be too; back on the tile's flex column */
+  .aq-param-tiles .aq-param-tiles__list > .aq-param-tiles__tile.is-row { display: flex; grid-template-columns: none; row-gap: var(--space-4); align-items: stretch; }
+  .aq-param-tiles__tile.is-row .aq-param-tiles__v { padding-top: 0; }
+  .aq-param-tiles__tile.is-row .aq-param-tiles__m { margin: auto 0 0; padding: var(--space-3) 0 0; border-left: 0; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
+}
+@container (max-width: 600px) {
+  .aq-param-tiles__m { font-size: 14px; line-height: 21px; }
+}

@@ -1,0 +1,95 @@
+/* ---------- LoopCircuit: the loop as one blueprint P&ID strip on a navy band, a station over each caption ---------- */
+/* The section carries data-theme="dark", so flow is the light water blue and ink the light line colour. */
+.aq-loop-circuit-sec .aq-sec-head .aq-h1 { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; max-width: none; color: var(--on-navy); }
+.aq-loop-circuit { display: flex; flex-direction: column; gap: 0; --col: calc(100% / var(--n, 7)); }
+.aq-loop-circuit__strip { position: relative; border-top: 1px solid var(--line); padding-top: var(--space-8); }
+.aq-loop-circuit__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-loop-circuit__svg path, .aq-loop-circuit__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-loop-circuit__col { stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.22; }
+.aq-loop-circuit__pipe { stroke: var(--line-strong); stroke-width: 7; }
+.aq-loop-circuit__flow { stroke: var(--flow); stroke-width: 2; }
+.aq-loop-circuit__route { stroke: none; }
+.aq-loop-circuit__chev { stroke: var(--navy); stroke-width: 2.5; }
+.aq-loop-circuit__svg .aq-loop-circuit__eq { fill: var(--navy); stroke: var(--on-navy-muted); stroke-width: 1.5; }
+.aq-loop-circuit__svg .aq-loop-circuit__det { fill: var(--navy); stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 3 4; }
+.aq-loop-circuit__svg .aq-loop-circuit__pt { fill: var(--on-navy-muted); stroke: none; }
+.aq-loop-circuit__eq.is-opt { stroke-dasharray: 5 4; }
+.aq-loop-circuit__ln { stroke: var(--on-navy-muted); stroke-width: 1.5; }
+.aq-loop-circuit__thin { stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.7; }
+.aq-loop-circuit__hid { stroke: var(--on-navy-muted); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.aq-loop-circuit__level { stroke: var(--flow); stroke-width: 1.5; }
+.aq-loop-circuit__hatch { stroke: var(--flow); stroke-width: 1; opacity: 0.4; }
+.aq-loop-circuit__jet { stroke: var(--flow); stroke-width: 1.2; stroke-dasharray: 2 5; }
+.aq-loop-circuit__drop { stroke: var(--flow); stroke-width: 1.5; }
+.aq-loop-circuit__tx { fill: var(--on-navy); font: 400 11px/1 var(--font-mono); text-anchor: middle; }
+.aq-loop-circuit__svg .aq-loop-circuit__mk { fill: var(--navy); stroke: var(--flow); stroke-width: 2; }
+.aq-loop-circuit__svg .aq-loop-circuit__mk-dot { fill: var(--flow); stroke: none; }
+.aq-loop-circuit__node.is-hot .aq-loop-circuit__eq, .aq-loop-circuit__node.is-hot .aq-loop-circuit__ln,
+.aq-loop-circuit__node.is-on .aq-loop-circuit__eq { stroke: var(--flow); }
+.aq-loop-circuit__svg * { transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1), fill 200ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* Captions: one column per station, the rule continues the strip's column lines */
+.aq-loop-circuit__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line-strong); }
+.aq-loop-circuit__stage { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-4) 0; border-left: 1px solid var(--line); position: relative; }
+.aq-loop-circuit__stage:first-child { border-left: 0; padding-left: 0; }
+.aq-loop-circuit__stage::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; border-top: 2px solid var(--flow); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-circuit__stage.is-hot::before, .aq-loop-circuit__stage.is-on::before { transform: scaleX(1); }
+.aq-loop-circuit__mark { display: none; }
+.aq-loop-circuit__no { margin: 0; font: 400 14px/20px var(--font-mono); color: var(--on-navy-muted); font-variant-numeric: tabular-nums; transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-circuit__stage.is-on .aq-loop-circuit__no, .aq-loop-circuit__stage.is-hot .aq-loop-circuit__no { color: var(--flow); }
+.aq-loop-circuit__t { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-navy); }
+.aq-loop-circuit__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-navy-muted); }
+
+.aq-loop-circuit-sec { overflow: hidden; }
+.aq-loop-circuit__spray, .aq-loop-circuit__water { pointer-events: none; }
+
+@container (max-width: 1100px) {
+  .aq-loop-circuit-sec .aq-sec-head .aq-h1 { font-size: 56px; line-height: 60px; }
+  .aq-loop-circuit__stage { padding-left: var(--space-3); padding-right: var(--space-2); }
+  .aq-loop-circuit__d { font-size: 13px; line-height: 20px; }
+}
+.aq-loop-circuit__sp, .aq-loop-circuit__rp, .aq-loop-circuit__tt, .aq-loop-circuit__ts, .aq-loop-circuit__bt { display: none; }
+
+/* Phones (pass 12, S10): a vertical circuit. Supply down the left edge through each station's marker (stations 01-06),
+   a turn at the foot, the return up the right edge past the spray ball's marker (07) and over into the tank head.
+   The stop text sits between the pipes. Pipes are twin walls (on-navy-muted) with the water down the middle (flow);
+   chevrons give the direction. */
+@container (max-width: 860px) {
+  .aq-loop-circuit-sec .aq-sec-head .aq-h1 { font-size: 44px; line-height: 50px; }
+  .aq-loop-circuit__strip { display: none; }
+  .aq-loop-circuit__stages { position: relative; grid-template-columns: minmax(0, 1fr); gap: 0; padding: var(--space-6) 0 0 var(--space-16); border-top: 0; }
+  .aq-loop-circuit__stage, .aq-loop-circuit__stage:first-child { position: relative; border-left: 0; padding: 0 var(--space-8) var(--space-6) 0; }
+  .aq-loop-circuit__stage[data-node="spray"] { padding-right: var(--space-16); }
+  .aq-loop-circuit__stage::before { display: none; }
+  .aq-loop-circuit__mark { display: grid; place-items: center; position: absolute; z-index: 1; left: calc(-1 * var(--space-16)); top: 0; width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2));
+    box-sizing: border-box; background: var(--navy); border: 1.5px solid var(--flow); }
+  .aq-loop-circuit__stage[data-node="spray"] .aq-loop-circuit__mark { left: auto; right: 0; }
+  .aq-loop-circuit__glyph.aq-spot { width: var(--space-6); height: var(--space-6); }
+  .aq-loop-circuit__no { font-size: 13px; }
+  .aq-loop-circuit__d { font-size: 15px; line-height: 23px; }
+
+  /* the pipes (positions from the li: the left pipe's centre 44 px left of the text, the right pipe's 20 px in from the edge) */
+  .aq-loop-circuit__sp, .aq-loop-circuit__rp, .aq-loop-circuit__ts, .aq-loop-circuit__tt, .aq-loop-circuit__bt { display: block; position: absolute; box-sizing: border-box; border: 0 solid var(--on-navy-muted); }
+  .aq-loop-circuit__sp, .aq-loop-circuit__rp, .aq-loop-circuit__ts { width: 10px; border-inline-width: 1px; background: linear-gradient(var(--flow), var(--flow)) 50% 0 / 2px 100% no-repeat; }
+  .aq-loop-circuit__tt, .aq-loop-circuit__bt { height: 10px; border-block-width: 1px; background: linear-gradient(var(--flow), var(--flow)) 0 50% / 100% 2px no-repeat; }
+  .aq-loop-circuit__sp { left: calc(-1 * var(--space-16) + 15px); top: 0; bottom: 0; }
+  .aq-loop-circuit__stage:first-child .aq-loop-circuit__sp { top: var(--space-4); }
+  .aq-loop-circuit__stage[data-node="spray"] .aq-loop-circuit__sp { display: none; }
+  .aq-loop-circuit__rp { right: 15px; top: 0; bottom: 0; }
+  .aq-loop-circuit__stage:first-child .aq-loop-circuit__rp { display: none; }
+  .aq-loop-circuit__stage[data-node="tank"] .aq-loop-circuit__rp { top: -17px; }
+  /* the return into the tank head: across the gap above the tank, then down into its marker beside the supply */
+  .aq-loop-circuit__tt { left: calc(-1 * var(--space-16) + 29px); right: 15px; top: -17px; border-right-width: 1px; }
+  .aq-loop-circuit__ts { left: calc(-1 * var(--space-16) + 29px); top: -17px; height: 18px; border-top-width: 1px; }
+  /* the turn at the foot: supply over to the return (the last row's pipes stop at it) */
+  .aq-loop-circuit__stage:last-child .aq-loop-circuit__sp, .aq-loop-circuit__stage:last-child .aq-loop-circuit__rp { bottom: var(--space-2); }
+  .aq-loop-circuit__stage:last-child[data-node="spray"] .aq-loop-circuit__sp { display: block; }
+  .aq-loop-circuit__stage:last-child[data-node="spray"] .aq-loop-circuit__rp { top: var(--space-8); }
+  .aq-loop-circuit__bt { left: calc(-1 * var(--space-16) + 15px); right: 15px; bottom: var(--space-2); border-inline-width: 1px; }
+  /* direction: a chevron on each straight run (down on the supply, up on the return) */
+  .aq-loop-circuit__sp::after, .aq-loop-circuit__rp::after { content: ""; position: absolute; left: 50%; top: 55%; width: 6px; height: 6px; margin: -4px 0 0 -4px;
+    border: solid var(--flow); border-width: 0 2px 2px 0; transform: rotate(45deg); background: var(--navy); }
+  .aq-loop-circuit__rp::after { transform: rotate(225deg); top: 45%; }
+  .aq-loop-circuit__stage:first-child .aq-loop-circuit__sp::after { display: none; }
+}
+.aq-loop-circuit__flow--feed, .aq-loop-circuit__flow--loop { fill: none; }

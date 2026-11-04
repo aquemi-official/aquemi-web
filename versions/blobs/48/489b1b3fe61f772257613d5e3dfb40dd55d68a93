@@ -1,0 +1,59 @@
+/* ---------- LoopDock: options on one isometric loop drawn on a navy band, leaders down to captions on limestone ---------- */
+.aq-loop-dock-sec .aq-sec-head .aq-h1 { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; }
+.aq-loop-dock { display: flex; flex-direction: column; gap: 0; }
+.aq-loop-dock__band { position: relative; background: var(--navy); }
+.aq-loop-dock__plane { position: relative; aspect-ratio: 1200 / 560; }
+.aq-loop-dock__zoom { position: absolute; inset: 0; }
+.aq-loop-dock__svg, .aq-loop-dock__leads { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-loop-dock__leads { overflow: visible; pointer-events: none; }
+.aq-loop-dock__lead { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__dot { fill: var(--on-navy); stroke: none; transition: fill 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__lead.is-on { stroke: var(--flow); stroke-width: 2; }
+.aq-loop-dock__dot.is-on { fill: var(--flow); }
+.aq-loop-dock__mk { position: absolute; z-index: 1; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); translate: -50% -130%;
+  background: var(--limestone); color: var(--on-limestone); font: 500 12px/1 var(--font-mono); transition: translate 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__mk::after { content: ""; position: absolute; left: 50%; top: 100%; height: var(--space-3); border-left: 1px solid var(--limestone); }
+.aq-loop-dock__mk.is-on { background: var(--flow); color: var(--navy); translate: -50% -150%; }
+.aq-loop-dock__mk.is-on::after { border-color: var(--flow); }
+/* The base's name left of the tank: glyph over the words, both set flush right against the tank */
+.aq-loop-dock__base { position: absolute; display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2); translate: calc(-100% - var(--space-6)) -50%; width: max-content; max-width: calc(var(--space-32) + var(--space-8)); text-align: right;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-loop-dock__bic.aq-spot { width: var(--space-6); height: var(--space-6); }
+
+/* Captions on the limestone below, one column each; the leader lands on each column's top-left */
+.aq-loop-dock__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0; }
+.aq-loop-dock__card { display: flex; }
+.aq-loop-dock__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-8) 0 var(--space-6); color: var(--on-limestone); text-decoration: none;
+  border-left: 1px solid var(--on-limestone-muted); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__card.is-on .aq-loop-dock__body { border-left-color: var(--flow); }
+.aq-loop-dock__no { margin: 0; display: flex; align-items: center; justify-content: space-between; font: 400 24px/1 var(--font-mono); color: var(--on-limestone-muted); }
+.aq-loop-dock__card.is-on .aq-loop-dock__no span { color: var(--flow); }
+.aq-loop-dock__glyph.aq-spot { width: var(--space-6); height: var(--space-6); background-color: var(--on-limestone-muted); }
+.aq-loop-dock__t { margin: var(--space-2) 0 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.01em; }
+.aq-loop-dock__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-limestone-muted); max-width: 36ch; }
+a.aq-loop-dock__body:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Desktop shows every option; the fold is for phones */
+.aq-fold:not(.is-open) .aq-loop-dock__card.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-loop-dock) > .aq-fold__btn { display: none; }
+
+.aq-loop-dock-sec { overflow: hidden; }
+
+@container (max-width: 1100px) {
+  .aq-loop-dock-sec .aq-sec-head .aq-h1 { font-size: 56px; line-height: 60px; }
+}
+@container (max-width: 860px) {
+  .aq-loop-dock-sec .aq-sec-head .aq-h1 { font-size: 44px; line-height: 50px; }
+  .aq-loop-dock__band { margin-inline: calc(-1 * var(--space-4)); padding: var(--space-6) 0 var(--space-4); }
+  .aq-loop-dock__leads { display: none; }
+  /* the plate crops to the drawing (--ca, --cl, --ct, --cw, --ch from the renderer): about twice the size at 375 px */
+  .aq-loop-dock__plane { aspect-ratio: var(--ca, 1200 / 560); overflow: hidden; }
+  .aq-loop-dock__zoom { inset: auto; left: calc(-1 * var(--cl, 0%)); top: calc(-1 * var(--ct, 0%)); width: var(--cw, 100%); height: var(--ch, 100%); }
+  .aq-loop-dock__mk { width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) + var(--space-1)); font-size: 14px; }
+  .aq-loop-dock__base { font-size: 13px; }
+  .aq-loop-dock__base { position: static; translate: none; white-space: normal; margin: var(--space-2) var(--space-4) 0; flex-direction: row; align-items: center; width: auto; max-width: none; text-align: left; }
+  .aq-loop-dock__cards { grid-template-columns: minmax(0, 1fr); }
+  .aq-loop-dock__body { padding: var(--space-6) 0 0 var(--space-4); }
+  .aq-fold:not(.is-open) .aq-loop-dock__card.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-loop-dock) > .aq-fold__btn { display: flex; }
+}

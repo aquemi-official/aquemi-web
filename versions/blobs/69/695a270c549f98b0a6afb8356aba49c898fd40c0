@@ -1,0 +1,116 @@
+/* ---------- SitePlates: a sites ledger beside one navy drawing plate (look site-plates, pass 9b) ----------
+   Left: the title set large and light, the ledger (a real table, mono addresses and contacts on hairlines). Right: the
+   navy plate, a window over a reel of one figure per site (index and kind, IsoKit drawing with numbered pins, what
+   happens here as numbered callouts); the row in hand slides the reel. Phones: title, plate, then the rows as cards. */
+.aq-site-plates { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); column-gap: var(--space-12); align-items: stretch; }
+.aq-site-plates__main { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
+.aq-site-plates__main .aq-sec-head { max-width: none; }
+.aq-site-plates__main .aq-h1 { margin: 0; font-size: clamp(48px, 7cqi, 96px); line-height: 1; font-weight: 300; letter-spacing: -0.035em; text-wrap: balance; }
+.aq-site-plates__sub { margin: calc(-1 * var(--space-3)) 0 var(--space-4); font: 500 13px/20px var(--font-mono); letter-spacing: 0.04em; color: var(--flow); }
+
+/* The ledger */
+.aq-site-plates__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-site-plates__table thead th { padding: 0 var(--space-4) var(--space-3) 0; border-bottom: 1px solid var(--line-strong); text-align: left; vertical-align: bottom;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-site-plates__table thead th:first-child { width: 30%; }
+.aq-site-plates__table thead th + th { padding-left: var(--space-4); border-left: 1px solid var(--line); }
+.aq-site-plates__row > * { position: relative; padding: var(--space-4) var(--space-4) var(--space-6) 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.aq-site-plates__row > * + * { padding-left: var(--space-4); border-left: 1px solid var(--line); }
+.aq-site-plates__row > th { font-weight: inherit; }
+.aq-site-plates__site { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); row-gap: var(--space-1); align-items: baseline; }
+/* the row in hand: a flow rule along its foot, its index lit */
+.aq-site-plates__row.is-on > * { border-bottom-color: var(--flow); box-shadow: inset 0 -1px 0 var(--flow); }
+.aq-site-plates__pick { grid-row: 1 / span 2; align-self: start; min-width: 44px; min-height: 44px; margin: calc(-1 * var(--space-3)) 0 0 calc(-1 * var(--space-2)); padding: 0 var(--space-2);
+  border: 0; background: none; cursor: pointer; text-align: left; font: 500 13px/44px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+.aq-site-plates__pick:hover, .aq-site-plates__row.is-on .aq-site-plates__pick { color: var(--flow); }
+.aq-site-plates__pick:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-site-plates__kind { font: 400 17px/24px var(--font-sans); color: var(--ink); }
+.aq-site-plates__kind a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--flow); }
+.aq-site-plates__kind a:hover { color: var(--flow); }
+.aq-site-plates__place { grid-column: 2; font: 400 13px/20px var(--font-mono); color: var(--ink-muted); overflow-wrap: break-word; }
+.aq-site-plates__row > td { font: 400 13px/20px var(--font-mono); color: var(--ink); overflow-wrap: break-word; }
+.aq-site-plates__row > td > span { display: block; }
+.aq-site-plates__row > td > span + span { margin-top: var(--space-1); }
+.aq-site-plates__addr, .aq-site-plates__contact { font-variant-numeric: tabular-nums; }
+.aq-site-plates__row > td.aq-site-plates__what { font-family: var(--font-sans); font-size: 15px; line-height: 22px; }
+.aq-site-plates-sec .aq-fold__btn { margin-top: var(--space-6); }
+
+/* The plate: navy, a window over the reel of figures */
+.aq-site-plates__plate { position: relative; overflow: hidden; background: var(--navy); color: var(--on-navy); min-height: 100%; }
+.aq-site-plates__plate::before { content: ""; position: absolute; inset: var(--space-2); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); pointer-events: none; z-index: 1; }
+.aq-site-plates__reel { display: grid; height: 100%; }
+.aq-site-plates__still { grid-area: 1 / 1; margin: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: var(--space-4); padding: var(--space-8) var(--space-6); min-width: 0;
+  transform: translateY(calc(var(--d, 0) * 100%)); }
+.aq-site-plates__cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-site-plates__ci { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--on-navy-muted); }
+.aq-site-plates__ck { font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-site-plates__cp { flex-basis: 100%; font: 400 13px/20px var(--font-mono); color: var(--on-navy-muted); }
+/* drawing area: a size container so the drawing box keeps its own ratio and the pins stay on their parts */
+.aq-site-plates__area { container-type: size; min-height: calc(var(--space-32) + var(--space-16)); display: grid; place-items: center; }
+.aq-site-plates__fig { width: min(100cqw, calc(100cqh * var(--ar, 1.4))); aspect-ratio: var(--ar, 1.4); }
+.aq-site-plates__svg { display: block; width: 100%; height: 100%; }
+.aq-site-plates__pin, .aq-site-plates__pn { display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border: 1.5px solid var(--on-navy); background: var(--navy);
+  font: 500 12px/1 var(--font-mono); color: var(--on-navy); }
+.aq-site-plates__pin { position: absolute; transform: translate(-50%, -50%); }
+.aq-site-plates__still.is-on .aq-site-plates__pin { background: var(--on-navy); color: var(--navy); }
+.aq-site-plates__calls { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.aq-site-plates__calls li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); align-items: start; padding-block: var(--space-2); border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
+  font: 400 15px/22px var(--font-sans); color: var(--on-navy); overflow-wrap: break-word; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .aq-site-plates__still { transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
+  .aq-site-plates__plate.is-instant .aq-site-plates__still { transition: none; }
+  .aq-site-plates__row > * { transition: border-color 240ms, box-shadow 240ms; }
+  .aq-site-plates__pick { transition: color 160ms; }
+}
+
+@container (max-width: 860px) {
+  .aq-site-plates { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-site-plates__main { display: contents; }
+  .aq-site-plates__main .aq-h1 { font-size: clamp(40px, 12cqi, 56px); }
+  .aq-site-plates__sub { margin: calc(-1 * var(--space-4)) 0 0; }
+  .aq-site-plates-sec .aq-fold { order: 3; }
+  .aq-site-plates__plate { order: 2; }
+  .aq-site-plates__still { padding: var(--space-6) var(--space-4); }
+  .aq-site-plates__area { min-height: calc(var(--space-32) + var(--space-8)); }
+  .aq-site-plates__table, .aq-site-plates__table tbody, .aq-site-plates__row { display: block; }
+  .aq-site-plates__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .aq-site-plates__row { position: relative; padding: var(--space-2) 0 var(--space-4) var(--space-3); border-bottom: 1px solid var(--line); }
+  .aq-site-plates__row > * , .aq-site-plates__row > * + * { display: grid; padding: var(--space-2) 0; border: 0; }
+  .aq-site-plates__row > th { display: block; padding-top: var(--space-4); }
+  .aq-site-plates__row.is-on { box-shadow: inset 2px 0 0 var(--flow); }
+  .aq-site-plates__row.is-on > * { box-shadow: none; }
+  .aq-site-plates__row > td { padding-left: calc(var(--space-12) - var(--space-1)); }
+  .aq-site-plates__row > td:empty { display: none; }
+  .aq-site-plates__row > td::before { content: attr(data-l); margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+  /* pass 12: the order holds with or without the fold wrapper (the table was never wrapped when nothing folds, so the
+     plate dropped to the bottom) */
+  .aq-site-plates__table { order: 3; }
+  .aq-site-plates.is-noart .aq-site-plates__plate { display: none; }
+  /* the plate as a 200 px strip held under the header (PhoneKit): caption and drawing, the callouts left to the rows */
+  .aq-site-plates[data-pk-on] .aq-site-plates__plate { min-height: 0; margin: 0 calc(-1 * var(--space-4)); border-bottom: 0; }
+  .aq-site-plates[data-pk-on] .aq-site-plates__plate::before { inset: var(--space-1); }
+  .aq-site-plates[data-pk-on] .aq-site-plates__still { grid-template-rows: auto minmax(0, 1fr); grid-template-columns: minmax(0, 1fr); gap: var(--space-2); padding: var(--space-3) var(--space-4); }
+  .aq-site-plates[data-pk-on] .aq-site-plates__calls { display: none; }
+  .aq-site-plates[data-pk-on] .aq-site-plates__cap { padding-bottom: var(--space-2); flex-wrap: nowrap; }
+  .aq-site-plates[data-pk-on] .aq-site-plates__ck { font-size: 20px; line-height: 24px; white-space: nowrap; }
+  .aq-site-plates[data-pk-on] .aq-site-plates__cp { flex-basis: auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+  .aq-site-plates[data-pk-on] .aq-site-plates__area { min-height: 0; height: 100%; }
+  .aq-site-plates[data-pk-on] .aq-site-plates__ci { white-space: nowrap; }
+  /* a site with no drawing: its callouts fill the strip instead of an empty sheet */
+  .aq-site-plates[data-pk-on] .aq-site-plates__area:empty { display: none; }
+  .aq-site-plates[data-pk-on] .aq-site-plates__still:not(:has(.aq-site-plates__fig)) .aq-site-plates__calls { display: flex; align-self: start; }
+  /* site names as 44 px links; reading lines 14 px; a link inside a cell gets a taller hit box without moving a line */
+  .aq-site-plates__kind a { position: relative; z-index: 1; display: inline-flex; align-items: center; min-height: var(--aq-hit, 44px); margin-block: calc(-1 * var(--space-3)); }
+  .aq-site-plates__row > td { font-size: var(--aq-read-phone, 14px); line-height: 21px; }
+  .aq-site-plates__place { font-size: var(--aq-read-phone, 14px); }
+  .aq-site-plates__row > td a { padding-block: var(--space-3); }
+}
+/* Pass 12 round C (audit-c group-7 contact-locations.1): the phone strip's drawing about 150 px tall on brand navy (the
+   plate's dark scope turned its navy near-black; --sp-navy is resolved outside that scope) */
+.aq-site-plates { --sp-navy: var(--navy); }
+@container (max-width: 860px) {
+  .aq-site-plates[data-pk-on] .aq-site-plates__plate { background: var(--sp-navy, var(--navy)); }
+  .aq-site-plates[data-pk-on] .aq-site-plates__still { gap: var(--space-1); padding: var(--space-2) var(--space-4) var(--space-1); }
+  .aq-site-plates[data-pk-on] .aq-site-plates__cap { padding-bottom: var(--space-1); }
+}

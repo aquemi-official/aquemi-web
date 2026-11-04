@@ -1,0 +1,88 @@
+/* ---------- Colophon: company facts as a split ledger (pass 9b) ---------- */
+/* A navy band with a limestone strip down its left edge (out to the page edge). The title, very large and light,
+   straddles the strip's edge: the real heading is limestone on navy; an aria-hidden copy in navy is clipped to the
+   strip, so the colour split runs through the type. --cph-p (0 to 1) is the divider's position (motion sweeps it in). */
+.aq-colophon-sec { }
+.aq-colophon { position: relative; --cph-w: calc(var(--space-32) * 2); --cph-fs: clamp(64px, 15cqi, 184px); --cph-p: 1;
+  --cph-e: calc(var(--cph-w, var(--space-32)) + (var(--cph-p, 1) - 1) * (var(--cph-w, var(--space-32)) + 50vw)); }
+.aq-colophon__strip { position: absolute; z-index: 0; top: calc(var(--cph-fs, 64px) * 0.5); bottom: calc(var(--space-16) * -1); left: -100vw; width: calc(100vw + var(--cph-w, var(--space-32)));
+  background: var(--limestone); transform: translateX(calc((var(--cph-p, 1) - 1) * (var(--cph-w, var(--space-32)) + 50vw))); pointer-events: none; }
+.aq-colophon > *:not(.aq-colophon__strip) { position: relative; z-index: 1; }
+.aq-colophon__mast { margin-bottom: var(--space-16); }
+.aq-colophon__mast .aq-sec-head { margin: 0; max-width: none; }
+.aq-colophon-sec .aq-colophon__mast h2, .aq-colophon__ghost { margin: 0; max-width: 5.4em; font: 300 var(--cph-fs, 64px)/0.92 var(--font-sans); letter-spacing: -0.05em; text-wrap: balance; }
+.aq-colophon-sec .aq-colophon__mast h2 { color: var(--limestone); }
+.aq-colophon__ghost { position: absolute; left: 0; top: 0; width: 100%; color: var(--navy); pointer-events: none;
+  clip-path: inset(calc(var(--cph-fs, 64px) * 0.5) max(0px, calc(100% - var(--cph-e, 100%))) 0 0); }
+
+/* the ledger: item on the strip, fact and evidence on the navy */
+.aq-colophon__head, .aq-colophon__row { display: grid; grid-template-columns: var(--cph-w, var(--space-32)) minmax(0, 1.35fr) minmax(0, 1fr); }
+.aq-colophon__head span { padding: 0 var(--space-6) var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 35%, transparent); }
+.aq-colophon__head span:first-child { padding-left: 0; color: var(--on-limestone-muted); border-bottom-color: color-mix(in srgb, var(--navy) 40%, transparent); }
+.aq-colophon__rows { list-style: none; margin: 0; padding: 0; }
+.aq-colophon__row > * { padding: var(--space-4) var(--space-6) var(--space-6); margin: 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 18%, transparent); transition: background-color 200ms; }
+.aq-colophon__p { display: flex; gap: var(--space-3); align-items: baseline; padding-left: 0 !important; border-bottom-color: color-mix(in srgb, var(--navy) 22%, transparent) !important; }
+.aq-colophon__n { flex: none; font: 400 13px/20px var(--font-mono); color: var(--on-limestone-muted); font-variant-numeric: tabular-nums; }
+.aq-colophon__pt { margin: 0; font: 500 13px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone); }
+.aq-colophon__va { margin: 0; font: 300 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); text-wrap: pretty; }
+.aq-colophon__row.is-hl .aq-colophon__va { font-size: 24px; line-height: 32px; }
+.aq-colophon__vz { margin: var(--space-2) 0 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy-muted); }
+.aq-colophon__m { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); font: 400 14px/22px var(--font-sans); color: var(--on-navy-muted); }
+.aq-colophon__ev { }
+.aq-colophon__go { display: inline-flex; align-items: center; min-height: var(--space-12); color: var(--on-navy); font: 500 14px/20px var(--font-sans); text-decoration: none; box-shadow: inset 0 -1px 0 var(--on-navy-muted); }
+.aq-colophon__go::after { content: "→"; margin-left: var(--space-2); transition: transform 200ms; }
+.aq-colophon__go:hover::after { transform: translateX(var(--space-1)); }
+.aq-colophon a:focus-visible, .aq-colophon .aq-fold__btn:focus-visible { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+.aq-colophon__row:hover .aq-colophon__v, .aq-colophon__row:hover .aq-colophon__m { background: color-mix(in srgb, var(--on-navy) 5%, transparent); }
+.aq-colophon__row:hover .aq-colophon__p { background: color-mix(in srgb, var(--navy) 6%, transparent); }
+.aq-colophon .aq-ph { background: color-mix(in srgb, var(--limestone) 22%, transparent); color: var(--on-navy); }
+.aq-colophon__p .aq-ph { background: color-mix(in srgb, var(--navy) 12%, transparent); color: var(--on-limestone); }
+.aq-colophon .aq-fold__btn { padding-left: calc(var(--cph-w, var(--space-32)) + var(--space-6)); color: var(--on-navy); border-bottom: 0; }
+.aq-colophon .aq-fold__btn:hover { color: var(--on-navy-muted); }
+.aq-colophon > .aq-small { margin-top: var(--space-4); padding-left: calc(var(--cph-w, var(--space-32)) + var(--space-6)); }
+/* the lead starts in the fact column, on the navy (pass 12: it ran over the strip, light on limestone) */
+.aq-colophon__mast .aq-lead { padding-left: calc(var(--cph-w, var(--space-32)) + var(--space-6)); max-width: calc(var(--cph-w, var(--space-32)) + var(--space-6) + 60ch); color: var(--on-navy-muted); }
+/* a phone-only fold (is-phonefold): above the phone width every row shows and the button hides */
+.aq-colophon.is-phonefold .aq-fold:not(.is-open) .aq-colophon__row.aq-fold-x { display: grid; }
+.aq-colophon.is-phonefold .aq-fold > .aq-fold__btn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-colophon { --cph-w: calc(var(--space-24) * 2); }
+  .aq-colophon__va { font-size: 18px; line-height: 26px; }
+}
+/* Phones (pass 12): the strip becomes a 6 px limestone rail at the page edge and the title drops the colour split
+   (one cream headline on the full navy band); each row puts "01 / ITEM" on its first line as a mono label, the fact
+   full width under it and the evidence at 15 px; a link is a full-width 48 px row. Long ledgers fold after 4. */
+@container (max-width: 860px) {
+  .aq-colophon { --cph-w: 0px; --cph-fs: clamp(48px, 14cqi, 72px); }
+  .aq-colophon__strip { top: 0; bottom: calc(var(--space-12) * -1); left: calc(var(--space-4) * -1); width: var(--aq-sheet-rail, 6px); transform: none; }
+  .aq-colophon__ghost { display: none; }
+  .aq-colophon-sec .aq-colophon__mast h2 { max-width: none; color: var(--limestone); }
+  .aq-colophon__mast { margin-bottom: var(--space-8); }
+  .aq-colophon__mast .aq-lead { margin-top: var(--space-4); padding-left: 0; font-size: 16px; line-height: 25px; }
+  .aq-colophon__head { display: none; }
+  .aq-colophon__rows { border-top: 1px solid color-mix(in srgb, var(--on-navy) 35%, transparent); }
+  .aq-colophon__row { display: block; padding: var(--space-4) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 18%, transparent); }
+  .aq-colophon__row > * { padding: 0; border-bottom: 0 !important; }
+  .aq-colophon.is-phonefold .aq-fold:not(.is-open) .aq-colophon__row.aq-fold-x { display: none; }
+  .aq-colophon.is-phonefold .aq-fold > .aq-fold__btn { display: flex; }
+  .aq-colophon__p { display: flex; gap: var(--space-2); align-items: baseline; margin-bottom: var(--space-2); }
+  .aq-colophon__n { color: var(--on-navy-muted); font-size: 12px; }
+  .aq-colophon__pt { font-size: 12px; line-height: 18px; color: var(--limestone); }
+  .aq-colophon__p .aq-ph { background: color-mix(in srgb, var(--limestone) 22%, transparent); color: var(--on-navy); }
+  .aq-colophon__va, .aq-colophon__row.is-hl .aq-colophon__va { font-size: 19px; line-height: 27px; }
+  .aq-colophon__vz { font-size: 15px; line-height: 23px; }
+  .aq-colophon__row:has(.aq-colophon__go) { padding-bottom: 0; }
+  .aq-colophon__row .aq-colophon__m { margin-top: var(--space-3); gap: var(--space-2); align-items: stretch; font-size: 15px; line-height: 23px; }
+  .aq-colophon__go { display: flex; justify-content: space-between; min-height: var(--space-12); padding-block: var(--space-2); font-size: 16px; box-shadow: none;
+    border-top: 1px solid color-mix(in srgb, var(--on-navy) 18%, transparent); }
+  .aq-colophon__row:hover .aq-colophon__v, .aq-colophon__row:hover .aq-colophon__m, .aq-colophon__row:hover .aq-colophon__p { background: none; }
+  .aq-colophon .aq-fold__btn, .aq-colophon > .aq-small { padding-left: 0; }
+}
+
+/* Pass 12 round C, desktop: a WHERE cell that opens with its link takes a 4 px top pad (not the full one), so the link's text (centred
+   in its 48 px target) sits on the answer's first line instead of about 10 px under it */
+@container (min-width: 861px) {
+  .aq-colophon__m:has(> .aq-colophon__go:first-child) { padding-top: var(--space-1); }
+}

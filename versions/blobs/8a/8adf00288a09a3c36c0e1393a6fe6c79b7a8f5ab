@@ -1,0 +1,145 @@
+/* ---------- RedlineSheet: qualification failures as design-review markups on one limestone drawing sheet (look
+   "redline-sheet"). The sheet is data-theme="light" paper so it keeps light-theme contrast in the dark theme. Each
+   column: revision triangle + what fails (fail ink: qualification status, always with its words), the figure with the
+   mistake clouded in fail and the correction drawn in flow, the mistake struck through, the fix as the flow note. ---------- */
+.aq-redline-sheet {
+  position: relative; background: var(--limestone); color: var(--on-limestone);
+  padding: var(--space-12) var(--space-8) var(--space-16);
+  border: 1px solid color-mix(in srgb, var(--on-limestone) 26%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--on-limestone) 14%, transparent); outline-offset: calc(-1 * var(--space-3));
+}
+/* zone numbers along the top border, as on a drawing sheet */
+.aq-redline-sheet__zones { position: absolute; top: var(--space-3); left: var(--space-3); right: var(--space-3); display: flex; pointer-events: none; }
+.aq-redline-sheet__zones span {
+  flex: 1; padding: var(--space-1) 0; text-align: center; font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted);
+  border-left: 1px solid color-mix(in srgb, var(--on-limestone) 14%, transparent);
+}
+.aq-redline-sheet__zones span:first-child { border-left: 0; }
+.aq-redline-sheet__list { list-style: none; margin: 0; padding: var(--space-8) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aq-redline-sheet__list { grid-template-rows: repeat(4, auto); row-gap: var(--space-4); }
+.aq-redline-sheet__item { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; padding: 0 var(--space-6); min-width: 0; }
+.aq-redline-sheet__item + .aq-redline-sheet__item { border-left: 1px solid color-mix(in srgb, var(--on-limestone) 16%, transparent); }
+
+/* what fails, with its revision triangle */
+.aq-redline-sheet__head { position: relative; padding-left: var(--space-12); min-height: var(--space-24); }
+.aq-redline-sheet__rev {
+  position: absolute; left: 0; top: 0; width: var(--space-8); height: var(--space-8); display: grid; place-items: end center;
+  padding-bottom: var(--space-1); box-sizing: border-box; font: 500 12px/16px var(--font-mono); color: var(--fail);
+  background: var(--fail); clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.aq-redline-sheet__rev::before { content: ""; position: absolute; inset: 0; background: var(--limestone); clip-path: polygon(50% 9%, 93% 95%, 7% 95%); }
+.aq-redline-sheet__rev { isolation: isolate; }
+.aq-redline-sheet__rev::before { z-index: -1; }
+.aq-redline-sheet__k { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-redline-sheet__k--fail { color: var(--fail); }
+.aq-redline-sheet__k--flow { color: var(--flow); }
+.aq-redline-sheet__fail { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--on-limestone); text-wrap: balance; }
+
+/* the figure: the design as drawn, marked up */
+.aq-redline-sheet__fig { margin: 0; padding: var(--space-3); background: color-mix(in srgb, var(--limestone) 70%, var(--surface-raised)); border: 1px solid color-mix(in srgb, var(--on-limestone) 14%, transparent); }
+.aq-redline-sheet__fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-redline-sheet__fig * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.aq-redline-sheet__ln { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; }
+.aq-redline-sheet__thin { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-redline-sheet__txt { fill: none; stroke: color-mix(in srgb, var(--on-limestone) 30%, transparent); stroke-width: 4; stroke-linecap: butt; }
+.aq-redline-sheet__gap { fill: none; stroke: var(--fail); stroke-width: 1; stroke-dasharray: 3 3; }
+.aq-redline-sheet__paper { fill: var(--surface-raised); stroke: color-mix(in srgb, var(--on-limestone) 22%, transparent); stroke-width: 1; }
+.aq-redline-sheet__bar { fill: color-mix(in srgb, var(--on-limestone) 18%, transparent); }
+.aq-redline-sheet__avg { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; stroke-dasharray: 5 4; }
+.aq-redline-sheet__flw { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.5; }
+.aq-redline-sheet__cl { fill: none; stroke: var(--fail); stroke-width: 1.5; }
+.aq-redline-sheet__tri .aq-redline-sheet__cl { fill: var(--limestone); }
+.aq-redline-sheet__fixln { fill: none; stroke: var(--flow); stroke-width: 2; }
+.aq-redline-sheet__lbl { font: 400 11px/1 var(--font-mono); fill: var(--on-limestone-muted); stroke: none; letter-spacing: 0.04em; }
+.aq-redline-sheet__lbl--fail { fill: var(--fail); font-weight: 500; }
+.aq-redline-sheet__lbl--flow { fill: var(--flow); font-weight: 500; }
+
+/* the mistake, struck through in fail; the fix, a flow markup note */
+.aq-redline-sheet__err { padding-left: var(--space-3); border-left: 2px solid var(--fail); }
+.aq-redline-sheet__mistake { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--on-limestone); text-decoration: line-through; text-decoration-color: var(--fail); text-decoration-thickness: 1.5px; text-wrap: pretty; }
+.aq-redline-sheet__fix { padding-left: var(--space-3); border-left: 2px solid var(--flow); }
+.aq-redline-sheet__note { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--on-limestone); text-wrap: pretty; }
+
+/* title block, bottom right */
+.aq-redline-sheet__block {
+  position: absolute; right: var(--space-3); bottom: var(--space-3); display: flex;
+  border: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted);
+}
+.aq-redline-sheet__block span { padding: var(--space-1) var(--space-3); }
+.aq-redline-sheet__block span + span { border-left: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); }
+
+/* hover: the markup being read inks harder */
+.aq-redline-sheet__item:hover .aq-redline-sheet__cl { stroke-width: 2.25; }
+.aq-redline-sheet__item:hover .aq-redline-sheet__fixln { stroke-width: 2.75; }
+
+@container (max-width: 860px) {
+  .aq-redline-sheet { padding: var(--space-12) var(--space-4) var(--space-16); }
+  .aq-redline-sheet__zones span:nth-child(n+4) { display: none; }
+  .aq-redline-sheet__list { grid-template-columns: minmax(0, 1fr); padding-top: var(--space-4); }
+  .aq-redline-sheet__item { grid-row: auto; grid-template-rows: none; row-gap: var(--space-4); padding: var(--space-8) 0; }
+  .aq-redline-sheet__item:first-child { padding-top: var(--space-4); }
+  .aq-redline-sheet__item + .aq-redline-sheet__item { border-left: 0; border-top: 1px solid color-mix(in srgb, var(--on-limestone) 16%, transparent); }
+  .aq-redline-sheet__head { min-height: 0; }
+  .aq-redline-sheet__fail { font-size: 22px; line-height: 28px; }
+  .aq-redline-sheet__block span:nth-child(2) { display: none; }
+}
+.aq-section.aq-redline-sheet-sec { overflow-x: clip; }
+.aq-redline-sheet__mark, .aq-redline-sheet__fixg { transform-box: fill-box; }
+
+/* pass 9b, concept svc-design.0: the plant's P&ID as a navy band across the head of the sheet (data-theme dark, so
+   the fail and flow inks stay readable on navy in both themes), each failure pinned where it happens. The camera
+   (__cam) zooms onto a pin while a markup column is pointed at; a spotlight (__dim) dims the rest. */
+.aq-redline-sheet__band { position: relative; margin: var(--space-8) 0 var(--space-4); background: var(--navy); overflow: hidden; }
+.aq-redline-sheet__band svg { display: block; width: 100%; height: auto; }
+.aq-redline-sheet__cam { transform-box: view-box; transform-origin: 0 0; transition: transform 550ms cubic-bezier(0.22, 0.75, 0.22, 1); }
+.aq-redline-sheet__band * { vector-effect: non-scaling-stroke; }
+.aq-redline-sheet__grid { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.1; }
+.aq-redline-sheet__p { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.25; stroke-linejoin: round; stroke-linecap: round; }
+.aq-redline-sheet__p--w { stroke: var(--flow); stroke-width: 1.75; }
+.aq-redline-sheet__p--chev { stroke: var(--flow); stroke-width: 1.5; }
+.aq-redline-sheet__pl { font: 400 11px var(--font-mono); fill: var(--on-navy-muted); letter-spacing: 0.04em; }
+.aq-redline-sheet__ring { fill: none; stroke: var(--fail); stroke-width: 1.25; stroke-dasharray: 4 3; }
+.aq-redline-sheet__ptri { fill: var(--navy); stroke: var(--fail); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-redline-sheet__pn { font: 500 12px var(--font-mono); fill: var(--fail); }
+.aq-redline-sheet__pin.is-on .aq-redline-sheet__ring { stroke-dasharray: none; stroke-width: 2; }
+.aq-redline-sheet__dim { fill: var(--navy); fill-rule: evenodd; opacity: 0; transition: opacity 550ms cubic-bezier(0.22, 0.75, 0.22, 1); pointer-events: none; }
+.aq-redline-sheet__band.is-zoom .aq-redline-sheet__dim { opacity: 0.55; }
+.aq-redline-sheet__item { transition: background-color 200ms ease; }
+.aq-redline-sheet__item:hover { background: color-mix(in srgb, var(--on-limestone) 4%, transparent); }
+@media (prefers-reduced-motion: reduce) { .aq-redline-sheet__cam, .aq-redline-sheet__dim { transition: none; } }
+@container (max-width: 860px) {
+  .aq-redline-sheet__band { margin: var(--space-6) calc(-1 * var(--space-4)) var(--space-2); }
+  .aq-redline-sheet__band svg { width: 200%; margin-left: -50%; }
+}
+
+/* pass 12 phone (audit S8/S14, svc-design.0): the band becomes a PhoneKit sticky strip (data-pk-sticky, 150 px). The
+   plan draws at the strip's full height (about 820 px wide, so PRE, RO, EDI and every point of use stay drawn) and
+   PhoneKit pans it (data-pk-zoom="1") to the pin of the markup on the reading line, which lights; the other pins rest.
+   Phone pins are a bigger twin set (__ppin), labels set at 18 units (about 12 px). The zone ruler and the inner frame
+   go (S14). Without script the strip scrolls sideways. Desktop never shows any of this. */
+.aq-redline-sheet__ppin { display: none; }
+@container (max-width: 860px) {
+  .aq-redline-sheet { padding-top: var(--space-4); outline: 0; }
+  .aq-redline-sheet__zones { display: none; }
+  .aq-redline-sheet__band { height: 150px; margin: 0 calc(-1 * var(--space-4)) var(--space-2); overflow-x: auto; overflow-y: hidden; }
+  .aq-redline-sheet[data-pk-sticky][data-pk-on] .aq-redline-sheet__band { background: var(--navy); border-bottom: 0; overflow: hidden; }
+  .aq-redline-sheet__band svg { width: auto; height: 100%; max-width: none; margin: 0; }
+  .aq-redline-sheet__pin { display: none; }
+  .aq-redline-sheet__ppin { display: inline; transition: opacity 240ms ease; opacity: 0.55; }
+  .aq-redline-sheet__ppin .aq-redline-sheet__pn { font-size: 22px; font-weight: 600; }
+  .aq-redline-sheet__ppin .aq-redline-sheet__ring { stroke-width: 1.5; }
+  .aq-redline-sheet:not([data-pk-on]) .aq-redline-sheet__ppin, .aq-redline-sheet__ppin.is-pk-active { opacity: 1; }
+  .aq-redline-sheet__ppin.is-pk-active .aq-redline-sheet__ring { stroke-dasharray: none; stroke-width: 2.5; }
+  .aq-redline-sheet__ppin.is-pk-active .aq-redline-sheet__ptri { fill: var(--fail); }
+  .aq-redline-sheet__ppin.is-pk-active .aq-redline-sheet__pn { fill: var(--navy); }
+  .aq-redline-sheet__pl { font-size: 18px; }
+  .aq-redline-sheet__cit { transform-box: fill-box; transform-origin: center; transform: scale(1.55); }
+  .aq-redline-sheet__item.is-pk-active .aq-redline-sheet__rev { color: var(--surface-raised); }
+  .aq-redline-sheet__item.is-pk-active .aq-redline-sheet__rev::before { background: var(--fail); }
+  /* verify V3 (S9): the detail drawings render at about 268 px for a 320-unit box, so their labels are set at 15 units
+     (about 12.6 px at 375) */
+  .aq-redline-sheet__fig .aq-redline-sheet__lbl { font-size: 15px; }
+  /* the revision triangle grows with its number, so the digit keeps its margin inside it */
+  .aq-redline-sheet__fig .aq-redline-sheet__tri { transform: scale(1.3); transform-box: fill-box; transform-origin: 50% 60%; }
+}
+@media (prefers-reduced-motion: reduce) { .aq-redline-sheet__ppin { transition: none; } }

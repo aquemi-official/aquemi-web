@@ -1,0 +1,146 @@
+/* ---------- TraceLines: a traceability table as transit lines (look "trace-lines"). One grid: the documents down the
+   first column (station names, drawn), then one column per requirement line (--col). The wrappers are display:
+   contents so every head and stop sits on the shared rows, each row a hairline across like an interchange. Each line
+   has its colour --lc (flow for the first, ink for the second); its rail runs down the left of its column. ---------- */
+.aq-trace-lines {
+  display: grid; grid-template-columns: minmax(0, 0.75fr) repeat(var(--k, 2), minmax(0, 1.5fr)); column-gap: var(--space-8);
+  grid-template-rows: auto; position: relative;
+}
+.aq-trace-lines__docs, .aq-trace-lines__line, .aq-trace-lines__stops { display: contents; }
+.aq-trace-lines__line { --lc: var(--flow); }
+.aq-trace-lines__line[data-line="1"] { --lc: var(--ink); }
+.aq-trace-lines__line[data-line="2"] { --lc: var(--line-strong); }
+.aq-trace-lines__stops { list-style: none; }
+
+/* station names */
+.aq-trace-lines__dh, .aq-trace-lines__doc { grid-column: 1; }
+.aq-trace-lines__dh { align-self: end; padding-bottom: var(--space-4); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-trace-lines__doc {
+  display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-6) 0; border-top: 1px solid var(--line-strong);
+  font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink);
+}
+.aq-trace-lines__dn { font: 400 13px/16px var(--font-mono); color: var(--ink-subtle); }
+
+/* the line's start: its code large, the requirement under it */
+.aq-trace-lines__head { grid-column: var(--col, 2); position: relative; padding: 0 0 var(--space-8) var(--space-12); }
+.aq-trace-lines__code { display: block; font: 300 44px/48px var(--font-mono); letter-spacing: -0.03em; color: var(--lc, var(--flow)); white-space: nowrap; }
+.aq-trace-lines__req { margin: var(--space-2) 0 0; font: 400 17px/24px var(--font-sans); color: var(--ink); text-wrap: balance; }
+.aq-trace-lines__head::before {
+  content: ""; position: absolute; left: var(--space-4); top: var(--space-4); width: var(--space-4); height: var(--space-4); transform: translateX(-50%) translateX(1.5px);
+  border-radius: 50%; border: 3px solid var(--lc, var(--flow)); background: var(--surface); box-sizing: border-box; z-index: 1;
+}
+.aq-trace-lines__head::after { content: ""; position: absolute; left: var(--space-4); top: var(--space-8); bottom: 0; border-left: 3px solid var(--lc, var(--flow)); }
+
+/* stops */
+.aq-trace-lines__st { grid-column: var(--col, 2); position: relative; padding: var(--space-6) 0 var(--space-6) var(--space-12); border-top: 1px solid var(--line-strong); min-width: 0; }
+.aq-trace-lines__st::before { content: ""; position: absolute; left: var(--space-4); top: -1px; bottom: 0; border-left: 3px solid var(--lc, var(--flow)); }
+.aq-trace-lines__st::after {
+  content: ""; position: absolute; left: var(--space-4); top: calc(var(--space-6) + var(--space-1)); width: var(--space-4); height: var(--space-4);
+  transform: translateX(-50%) translateX(1.5px); border-radius: 50%; border: 3px solid var(--lc, var(--flow)); background: var(--surface); box-sizing: border-box;
+}
+.aq-trace-lines__st.is-end::before { bottom: auto; height: calc(var(--space-6) + var(--space-3)); }
+.aq-trace-lines__st.is-end::after { border-radius: 0; background: var(--lc, var(--flow)); width: var(--space-6); height: var(--space-3); top: calc(var(--space-6) + var(--space-2)); }
+/* not answered here: the line passes dashed, no stop */
+.aq-trace-lines__st.is-na::before { border-left-style: dashed; opacity: 0.6; }
+.aq-trace-lines__st.is-na::after { display: none; }
+.aq-trace-lines__st.is-na .aq-trace-lines__p { color: var(--ink-subtle); font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; }
+.aq-trace-lines__p { margin: 0; font: 400 16px/25px var(--font-sans); color: var(--ink); text-wrap: pretty; max-width: 48ch; }
+.aq-trace-lines__met {
+  display: inline-block; margin-right: var(--space-1); padding: 0 var(--space-2); border: 1px solid var(--pass); color: var(--pass);
+  font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 1px;
+}
+/* test steps branch off the line */
+.aq-trace-lines__tests { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-trace-lines__tests li { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); align-items: baseline; font: 400 16px/25px var(--font-sans); }
+.aq-trace-lines__tests li::before { content: ""; position: absolute; right: 100%; top: var(--space-3); width: calc(var(--space-8) - var(--space-1)); border-top: 2px solid var(--lc, var(--flow)); }
+.aq-trace-lines__step {
+  padding: 0 var(--space-2); border: 2px solid var(--lc, var(--flow)); color: var(--ink); background: var(--surface); font: 500 12px/20px var(--font-mono); letter-spacing: 0.06em; white-space: nowrap;
+}
+/* station name inside each stop: read by screen readers on desktop (the left column draws them), shown on phones */
+.aq-trace-lines__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* pointing at one line dims the other */
+.aq-trace-lines__head, .aq-trace-lines__st { transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-trace-lines:has(.aq-trace-lines__line:hover) .aq-trace-lines__line:not(:hover) :is(.aq-trace-lines__head, .aq-trace-lines__st) { opacity: 0.4; }
+
+@container (max-width: 860px) {
+  .aq-trace-lines { display: block; }
+  .aq-trace-lines__docs { display: none; }
+  .aq-trace-lines__line { display: block; }
+  .aq-trace-lines__line + .aq-trace-lines__line { margin-top: var(--space-12); }
+  .aq-trace-lines__stops { display: block; margin: 0; padding: 0; }
+  .aq-trace-lines__head { padding-bottom: var(--space-6); }
+  .aq-trace-lines__code { font-size: 34px; line-height: 40px; }
+  .aq-trace-lines__st { border-top: 0; padding: var(--space-3) 0 var(--space-6) var(--space-12); }
+  .aq-trace-lines__st::after { top: calc(var(--space-3) + var(--space-1)); }
+  .aq-trace-lines__st.is-end::after { top: calc(var(--space-3) + var(--space-2)); }
+  .aq-trace-lines__st.is-end::before { height: calc(var(--space-3) + var(--space-3)); }
+  .aq-trace-lines__k { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+}
+.aq-section.aq-trace-lines-sec { overflow-x: clip; }
+
+/* pass 9b, concept svc-design.3: the readout tile beside the lines. The tile is data-theme light, so its flow ground
+   and on-navy figure keep their contrast in both page themes; pipe ghosts (line hairlines) sit behind it. */
+.aq-trace-lines-wrap.has-tile { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); column-gap: var(--space-12); align-items: start; }
+.aq-trace-lines__panel { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-16); }
+.aq-trace-lines__ghost { position: absolute; inset: 0 calc(-1 * var(--space-8)) calc(-1 * var(--space-16)) calc(-1 * var(--space-8)); width: calc(100% + 2 * var(--space-8)); height: calc(100% + var(--space-16)); fill: none; stroke: var(--line-strong); stroke-width: 1; opacity: 0.45; pointer-events: none; }
+.aq-trace-lines__tile { position: relative; background: var(--flow); color: var(--on-navy); padding: var(--space-6) var(--space-6) var(--space-8); min-height: 300px; }
+.aq-trace-lines__face { display: flex; flex-direction: column; gap: var(--space-4); }
+.aq-trace-lines__face[hidden] { display: none; }
+.aq-trace-lines__face.is-tick > :not(.aq-trace-lines__meter) { animation: aq-tl-tick 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+@keyframes aq-tl-tick { from { opacity: 0.2; transform: translateY(var(--tl-dir, 8px)); } to { opacity: 1; transform: none; } }
+.aq-trace-lines__rk { margin: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy); }
+.aq-trace-lines__fig { margin: var(--space-6) 0 0; display: flex; align-items: baseline; gap: var(--space-3); white-space: nowrap; }
+.aq-trace-lines__num { font: 300 112px/0.9 var(--font-sans); letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.aq-trace-lines__unit { font: 400 24px/1 var(--font-sans); letter-spacing: -0.01em; }
+.aq-trace-lines__scale { display: flex; justify-content: space-between; align-items: end; height: var(--space-4); border-bottom: 1px solid var(--on-navy-muted); }
+.aq-trace-lines__scale i { width: 1px; height: 30%; background: var(--on-navy-muted); }
+.aq-trace-lines__scale i.is-major { height: 60%; }
+.aq-trace-lines__scale i.is-lim { height: 100%; width: 2px; background: var(--on-navy); }
+.aq-trace-lines__meter { position: relative; padding-bottom: var(--space-16); }
+.aq-trace-lines__tag { position: absolute; top: calc(100% - var(--space-16) + var(--space-2)); left: 75%; margin: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: var(--space-1); white-space: nowrap; }
+.aq-trace-lines__tag > span:first-child { padding: 0 var(--space-2); border: 1px solid var(--on-navy); font: 400 13px/22px var(--font-mono); }
+.aq-trace-lines__at { font: 400 12px/16px var(--font-mono); color: var(--on-navy); }
+.aq-trace-lines__keys { position: relative; display: flex; gap: var(--space-2); }
+.aq-trace-lines__key {
+  min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-muted);
+  font: 400 13px/1 var(--font-mono); cursor: pointer; transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.aq-trace-lines__key:hover { border-color: var(--flow); color: var(--ink); }
+.aq-trace-lines__key[aria-pressed="true"] { background: var(--flow-tint); border-color: var(--flow); color: var(--ink); }
+.aq-trace-lines__key:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .aq-trace-lines__face.is-tick > :not(.aq-trace-lines__meter) { animation: none; } }
+@container (max-width: 860px) {
+  .aq-trace-lines-wrap.has-tile { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-trace-lines__panel { order: -1; padding-top: 0; }
+  .aq-trace-lines__ghost { display: none; }
+  .aq-trace-lines__tile { min-height: 0; }
+  .aq-trace-lines__num { font-size: 88px; }
+}
+
+/* pass 12 round C (svc-design.3, phone height 1,743 px): on phones the lines are a PhoneKit chips picker. Each line
+   carries a code chip (its head) and a body holding its start and stops; one line shows at a time, under the readout,
+   and the readout follows the open line (pk:change). On desktop the body is display: contents and the chips hide, so
+   the grid is exactly as before; the desktop keys under the readout hide while the chips stand in for them. */
+.aq-trace-lines__body { display: contents; }
+.aq-trace-lines__pick { display: none; }
+.aq-trace-lines__sw { display: inline-block; flex: none; width: var(--space-4); height: 3px; background: var(--lc, var(--flow)); }
+@container (max-width: 860px) {
+  .aq-trace-lines__body { display: block; }
+  .aq-trace-lines-wrap:has(.aq-trace-lines[data-pk-on]) .aq-trace-lines__keys { display: none; }
+  .aq-trace-lines-wrap.has-tile:has(.aq-trace-lines[data-pk-on]) { row-gap: var(--space-4); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__pick {
+    display: flex; justify-content: flex-start; gap: var(--space-3); border-radius: 0; border-color: var(--line-strong); background: var(--surface);
+    color: var(--ink-muted); font: 400 13px/18px var(--font-mono); letter-spacing: 0.02em;
+  }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__pick[aria-expanded="true"] { background: var(--flow-tint); border-color: var(--flow); color: var(--ink); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__body { margin-top: var(--space-6); }
+}
+/* the chip and the readout already name the open line, so its large start code steps aside on phones */
+@container (max-width: 860px) {
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__code { display: none; }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__req { margin-top: 0; }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__head::before { top: var(--space-1); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__head::after { top: var(--space-6); }
+  .aq-trace-lines[data-pk-on] .aq-trace-lines__body { margin-top: var(--space-4); }
+}

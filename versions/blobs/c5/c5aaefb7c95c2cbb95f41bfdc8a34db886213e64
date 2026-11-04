@@ -1,0 +1,115 @@
+/* ---------- Band ---------- */
+/* Ground modifiers: change the section ground for one section. Used on their own by StandardsGrid and DocList (sunken)
+   and Closing (navy), and together with .aq-band for the statement band. */
+.aq-band--sunken { background: var(--surface-sunken); }
+.aq-band--limestone { background: var(--limestone); color: var(--on-limestone); }
+.aq-band--limestone .aq-lead, .aq-band--limestone .aq-small { color: var(--on-limestone-muted); }
+.aq-band--navy { background: var(--navy); color: var(--on-navy); position: relative; overflow: hidden; }
+.aq-band--navy .aq-lead, .aq-band--navy .aq-small { color: var(--on-navy-muted); }
+.aq-band--navy .aq-btn--primary { background: var(--limestone); color: var(--navy); }
+.aq-band--navy .aq-btn--primary:hover { background: var(--on-navy); }
+.aq-band--navy .aq-arc__outer { stroke: var(--on-navy-muted); opacity: 0.5; }
+.aq-band--navy .aq-arc__inner { stroke: var(--limestone); }
+
+/* Navy-to-navy seam (pass 12 C, V1): two navy bands in a row (news capa-ring -> colophon, contact-service routes ->
+   riser-valves, cmp-documentation index-sheet -> stage-stacks) read as one long navy block. The second takes a faint
+   Limestone hairline and 16 px more top padding, so the reader sees where one section ends. */
+.aq-band--navy + .aq-band--navy { border-top: 1px solid color-mix(in srgb, var(--limestone) 18%, transparent); }
+.aq-band--navy + .aq-band--navy:not(.aq-closing) { padding-top: calc(var(--space-16) + var(--space-4)); }
+
+/* Dark theme: limestone bands turn warm dark (pass 12 C, provisional ruling RC1; owner to confirm).
+   In light mode a limestone band is the warm light ground. In dark mode it kept its light value, so every limestone band
+   was a bright strip between near-black sections. Now, under both dark selectors (the system setting and the explicit
+   data-theme="dark"), a full-width .aq-band--limestone section re-declares the colour tokens as a warm dark stone set:
+   --limestone becomes the stone token (the band ground), light --on-limestone and --on-limestone-muted, and warm surfaces, lines and
+   inks for what the look draws inside it. Looks keep writing var(--limestone) and var(--on-limestone) and follow.
+   - A band section pinned data-theme="light" (the old way to keep its ink dark on the light band) takes the warm dark
+     too, and so does every pinned-light wrapper inside a band, unless it is paper.
+   - Paper: an object marked data-paper (a sheet, a slip) stays paper. In dark mode it is dimmed (paper-dim ground,
+     paper-dim-raised fill), wherever it sits. Pinned-light objects outside limestone bands are not touched.
+   - Navy stays navy: a navy block, tab or stamp in a band reads as navy on the stone, as it does on limestone. A look
+     that writes navy text straight on the band (or limestone text on a navy chip) must switch it to --on-limestone in
+     dark mode; the build-c report lists those.
+   To reverse: delete the two dark blocks below (and the data-paper rule). Light mode is unchanged.
+   The band takes the stone tokens; every other colour token it inherits from the page (so a band or wrapper pinned
+   data-theme="light" gets the dark values back), and a pinned-light wrapper inside the band inherits all of them. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-band--limestone {
+    --limestone: var(--stone); --on-limestone: var(--on-stone); --on-limestone-muted: var(--on-stone-muted);
+    --surface: var(--stone); --surface-raised: var(--stone-raised); --surface-sunken: var(--stone-sunken);
+    --ink: var(--on-stone); --ink-muted: var(--on-stone-muted); --ink-subtle: var(--on-stone-subtle);
+    --line: var(--stone-line); --line-strong: var(--stone-line-strong);
+    color-scheme: dark;
+    --ink-inverse: inherit; --action: inherit; --action-hover: inherit; --on-action: inherit;
+    --flow: inherit; --flow-tint: inherit; --focus: inherit; --pass: inherit; --caution: inherit; --fail: inherit;
+    --caution-tint: inherit; --on-navy: inherit; --on-navy-muted: inherit; --shadow-overlay: inherit; --navy: inherit;
+  }
+  :root:not([data-theme="light"]) .aq-band--limestone [data-theme="light"]:not([data-paper], [data-paper] *) {
+    --navy: inherit; --ink-inverse: inherit; --action: inherit; --action-hover: inherit; --on-action: inherit;
+    --flow: inherit; --flow-tint: inherit; --focus: inherit; --pass: inherit; --caution: inherit; --fail: inherit;
+    --caution-tint: inherit; --on-navy: inherit; --on-navy-muted: inherit; --shadow-overlay: inherit;
+    --limestone: inherit; --on-limestone: inherit; --on-limestone-muted: inherit; --surface: inherit; --surface-raised: inherit;
+    --surface-sunken: inherit; --ink: inherit; --ink-muted: inherit; --ink-subtle: inherit; --line: inherit; --line-strong: inherit;
+    color-scheme: dark;
+  }
+  :root:not([data-theme="light"]) [data-theme="light"][data-paper] { --limestone: var(--paper-dim); --surface-raised: var(--paper-dim-raised); }
+}
+[data-theme="dark"] .aq-band--limestone {
+  --limestone: var(--stone); --on-limestone: var(--on-stone); --on-limestone-muted: var(--on-stone-muted);
+  --surface: var(--stone); --surface-raised: var(--stone-raised); --surface-sunken: var(--stone-sunken);
+  --ink: var(--on-stone); --ink-muted: var(--on-stone-muted); --ink-subtle: var(--on-stone-subtle);
+  --line: var(--stone-line); --line-strong: var(--stone-line-strong);
+  color-scheme: dark;
+  --ink-inverse: inherit; --action: inherit; --action-hover: inherit; --on-action: inherit;
+  --flow: inherit; --flow-tint: inherit; --focus: inherit; --pass: inherit; --caution: inherit; --fail: inherit;
+  --caution-tint: inherit; --on-navy: inherit; --on-navy-muted: inherit; --shadow-overlay: inherit; --navy: inherit;
+}
+[data-theme="dark"] .aq-band--limestone [data-theme="light"]:not([data-paper], [data-paper] *) {
+  --navy: inherit; --ink-inverse: inherit; --action: inherit; --action-hover: inherit; --on-action: inherit;
+  --flow: inherit; --flow-tint: inherit; --focus: inherit; --pass: inherit; --caution: inherit; --fail: inherit;
+  --caution-tint: inherit; --on-navy: inherit; --on-navy-muted: inherit; --shadow-overlay: inherit;
+  --limestone: inherit; --on-limestone: inherit; --on-limestone-muted: inherit; --surface: inherit; --surface-raised: inherit;
+  --surface-sunken: inherit; --ink: inherit; --ink-muted: inherit; --ink-subtle: inherit; --line: inherit; --line-strong: inherit;
+  color-scheme: dark;
+}
+[data-theme="dark"] [data-theme="light"][data-paper] { --limestone: var(--paper-dim); --surface-raised: var(--paper-dim-raised); }
+
+/* ---------- Statement band: one sentence set large on a quiet ground ---------- */
+/* No frame: the band's ground is the separation. The statement in Geist Light (display scale), a supporting line,
+   and a faint line drawing of pipework at the right, drawn in currentColor so it follows every ground and theme. */
+.aq-band__frame { position: relative; isolation: isolate; padding-block: var(--space-8); }
+
+.aq-band__text { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-6); max-width: 64%; }
+.aq-band__h {
+  margin: 0; max-width: 20ch;
+  font: 300 56px/60px var(--font-sans); letter-spacing: -0.025em;
+  color: inherit; text-wrap: balance; overflow-wrap: break-word;
+}
+.aq-band__lead { margin: 0; }
+
+/* Mark: one word or phrase named by the content, underlined with a flow hairline */
+.aq-band__mark {
+  text-decoration: underline; text-decoration-color: var(--flow); text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
+/* Pipework drawing: decoration only (aria-hidden), quiet, kept clear of the text */
+.aq-band__motif {
+  position: absolute; z-index: 0; right: 0; top: 0;
+  width: 28%; height: 100%;
+  fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke;
+  opacity: 0.3; pointer-events: none;
+}
+.aq-band__motif * { vector-effect: non-scaling-stroke; }
+.aq-band__motif path, .aq-band__motif rect { stroke: currentColor; }
+.aq-band__motif-fine { display: none; }
+
+@container (max-width: 860px) {
+  .aq-band--navy + .aq-band--navy:not(.aq-closing) { padding-top: calc(var(--space-12) + var(--space-4)); }
+  .aq-band__frame { padding-block: 0; }
+  .aq-band__text { max-width: none; gap: var(--space-4); }
+  .aq-band__h { font-size: 38px; line-height: 44px; }
+  .aq-band__lead { font-size: 16px; line-height: 24px; }
+  /* The drawing is dropped on phones: the statement needs the full width */
+  .aq-band__motif { display: none; }
+}

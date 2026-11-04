@@ -1,0 +1,94 @@
+/* ---------- MultiportRouter: a router table as a multiport valve in plan, its ports piped to route cards ---------- */
+/* Three columns: cards on the left, the valve, cards on the right. The cards and the valve are grid items (the list and
+   its rows are display: contents on desktop); the pipes are one SVG over the whole block, drawn by the renderer in the
+   block's own pixels from each port's flange to its card's inner edge. */
+.aq-multiport-router { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 300px) minmax(0, 1fr);
+  grid-template-rows: repeat(var(--m, 2), auto); column-gap: var(--space-16); row-gap: var(--space-12); align-items: stretch; color: var(--ink); }
+.aq-multiport-router__routes, .aq-multiport-router__route { display: contents; }
+.aq-multiport-router__routes { margin: 0; padding: 0; list-style: none; }
+.aq-multiport-router__plant { grid-column: 2; grid-row: 1 / span var(--m, 2); align-self: center; position: relative; z-index: 1; display: grid; place-items: center; }
+.aq-multiport-router__pipes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+
+/* The pipes: twin-wall (a wall stroke, a lighter bore over it); the chosen route's bore fills with water */
+.aq-multiport-router__pipes path { fill: none; stroke-linejoin: round; }
+.aq-multiport-router__wall { stroke: var(--line-strong); stroke-width: 10; transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-multiport-router__bore { stroke: var(--surface-raised); stroke-width: 6; }
+.aq-multiport-router__water { stroke: var(--flow); stroke-width: 6; stroke-opacity: 0; transition: stroke-opacity 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-multiport-router__pipe.is-hint .aq-multiport-router__wall { stroke: var(--ink-muted); }
+.aq-multiport-router__pipe.is-on .aq-multiport-router__wall { stroke: var(--flow); }
+.aq-multiport-router__pipe.is-on .aq-multiport-router__water { stroke-opacity: 1; }
+
+/* The valve: a light line drawing, the lever in ink */
+.aq-multiport-router__valve { width: 100%; max-width: 300px; height: auto; overflow: visible; }
+.aq-multiport-router__valve * { stroke-linejoin: round; stroke-linecap: round; }
+.aq-multiport-router__body, .aq-multiport-router__boss, .aq-multiport-router__flange, .aq-multiport-router__foot, .aq-multiport-router__bonnet {
+  fill: var(--surface-raised); stroke: var(--ink); stroke-width: 1.5; }
+.aq-multiport-router__ring { fill: none; stroke: var(--line-strong); stroke-width: 1.25; }
+.aq-multiport-router__ring--in { stroke-dasharray: 2 4; }
+.aq-multiport-router__mark { stroke: var(--line-strong); stroke-width: 2; transition: stroke 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-multiport-router__mark.is-on { stroke: var(--flow); stroke-width: 4; }
+.aq-multiport-router__pn { font: 500 15px/1 var(--font-mono); fill: var(--ink-muted); text-anchor: middle; transition: fill 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-multiport-router__pn.is-on { fill: var(--flow); }
+.aq-multiport-router__lever { transform-box: view-box; transform-origin: 0 0; transform: rotate(var(--a, 0deg)); transition: transform 500ms cubic-bezier(0.2, 0, 0, 1); }
+/* the lever in ink (near navy in light, light in dark) so it reads on the valve face in both themes */
+.aq-multiport-router__arm, .aq-multiport-router__hub { fill: var(--ink); stroke: var(--ink); stroke-width: 1.5; }
+.aq-multiport-router__nut { fill: none; stroke: var(--surface-raised); stroke-width: 1.5; }
+.aq-multiport-router__grip { stroke: var(--surface-sunken); stroke-width: 1.25; }
+
+/* Route cards: all readable; the chosen one lit steel blue */
+.aq-multiport-router__card { grid-column: var(--c, 1); grid-row: var(--r, auto); position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-6); border: 1px solid var(--line-strong); background: var(--surface-raised); cursor: pointer;
+  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms cubic-bezier(0.2, 0, 0, 1), box-shadow 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-multiport-router__card:hover { border-color: var(--ink-muted); }
+.aq-multiport-router__card.is-on { border-color: var(--flow); background: var(--flow-tint); box-shadow: inset var(--space-1) 0 0 var(--flow); }
+.aq-multiport-router__no { margin: 0; font: 500 13px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted); }
+.aq-multiport-router__card.is-on .aq-multiport-router__no { color: var(--flow); }
+.aq-multiport-router__sit { margin: 0; }
+.aq-multiport-router__pick { display: block; width: 100%; min-height: 44px; margin: 0; padding: 0; border: 0; background: none; color: inherit; text-align: left;
+  font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; cursor: pointer; }
+.aq-multiport-router__pick:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+.aq-multiport-router__dl { margin: 0; display: grid; gap: var(--space-3); }
+.aq-multiport-router__kv { display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-multiport-router__kv dt { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-multiport-router__kv dd { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-multiport-router__card.is-on .aq-multiport-router__kv dd { color: var(--ink); }
+.aq-multiport-router__kv.is-go dd a { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; color: var(--ink); font-weight: 500;
+  text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+.aq-multiport-router__kv.is-go dd a::after { content: "\2192"; color: var(--flow); text-decoration: none; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-multiport-router__kv.is-go dd a:hover { text-decoration-color: var(--flow); }
+.aq-multiport-router__kv.is-go dd a:hover::after { transform: translateX(var(--space-1)); }
+
+
+/* Phones: a small valve on its riser heads the block; the situations hang off a header rule as 48 px chips (PhoneKit,
+   one column); the chosen chip is lit steel blue and its card opens under the chips */
+@container (max-width: 860px) {
+  .aq-multiport-router { display: block; }
+  .aq-multiport-router__pipes { display: none; }
+  .aq-multiport-router__plant { position: relative; padding-bottom: var(--space-6); }
+  .aq-multiport-router__plant::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 6px; height: var(--space-6); margin-left: -5px;
+    border: 2px solid var(--line-strong); border-block: 0; background: var(--flow); }
+  .aq-multiport-router__valve { width: 168px; }
+  .aq-multiport-router__pn { font-size: 26px; }
+  .aq-multiport-router__routes { display: block; --pk-cols: 1; border-top: 2px solid var(--line-strong); padding-top: var(--space-4); }
+  .aq-multiport-router__route { display: block; }
+  .aq-multiport-router__routes:not([data-pk-on]) .aq-multiport-router__card { margin-bottom: var(--space-4); }
+  .aq-multiport-router__routes[data-pk-on] { display: grid; gap: var(--space-2); }
+  .aq-multiport-router__routes[data-pk-on] .aq-multiport-router__chip { min-height: 48px; padding: var(--space-3) var(--space-4); gap: var(--space-3); align-items: baseline;
+    border: 1px solid var(--line-strong); border-radius: 0; background: var(--surface-raised); color: var(--ink); font: 400 15px/21px var(--font-sans); }
+  .aq-multiport-router__chipn { flex: none; font: 500 13px/21px var(--font-mono); color: var(--ink-muted); }
+  .aq-multiport-router__routes[data-pk-on] .aq-multiport-router__chip[aria-expanded="true"] { border-color: var(--flow); background: var(--flow); color: var(--surface); }
+  .aq-multiport-router__routes[data-pk-on] .aq-multiport-router__chip[aria-expanded="true"] .aq-multiport-router__chipn { color: var(--surface); }
+  .aq-multiport-router__chip a { color: inherit; text-decoration: none; pointer-events: none; }
+  .aq-multiport-router__card { grid-column: 1 / -1; grid-row: auto; padding: var(--space-4) var(--space-4) var(--space-2); cursor: auto; }
+  .aq-multiport-router__routes[data-pk-on] .aq-multiport-router__card { margin-top: var(--space-2); border-color: var(--flow); background: var(--flow-tint); box-shadow: inset var(--space-1) 0 0 var(--flow); }
+  .aq-multiport-router__routes[data-pk-on] .aq-multiport-router__no { color: var(--flow); }
+  .aq-multiport-router__routes[data-pk-on] .aq-multiport-router__kv dd { color: var(--ink); }
+  .aq-multiport-router__pick { font-size: 19px; line-height: 25px; }
+  .aq-multiport-router__kv.is-go dd a { display: flex; min-height: 48px; }
+  .aq-multiport-router__kv.is-go dd a::after { margin-left: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-multiport-router__lever, .aq-multiport-router__card, .aq-multiport-router__water, .aq-multiport-router__wall, .aq-multiport-router__mark,
+  .aq-multiport-router__pn, .aq-multiport-router__kv.is-go dd a::after { transition: none; }
+}

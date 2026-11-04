@@ -1,0 +1,79 @@
+/* ---------- SpoolDossier: a dossier beside the as-built isometric it indexes, on the limestone band (look
+   "spool-dossier"). Title huge and light at the top left, the spool (IsoKit, aq-iso--limestone) at the right, the
+   parts in a hairline grid underneath. The figure's data-layer (joints, lots, quals, test) shows what the pointed part
+   records; layers change in 240 ms. ---------- */
+.aq-spool-dossier {
+  --sd-ease: cubic-bezier(0.2, 0.85, 0.25, 1);
+  display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); column-gap: var(--space-8); align-items: center;
+}
+.aq-spool-dossier__head .aq-h1 { font: 300 80px/82px var(--font-sans); letter-spacing: -0.035em; max-width: 9ch; color: var(--on-limestone); }
+.aq-spool-dossier__head .aq-lead { color: var(--on-limestone-muted); }
+.aq-spool-dossier__fig { position: relative; }
+.aq-spool-dossier__fig .aq-iso { max-height: 520px; }
+
+/* drawing labels */
+.aq-spool-dossier__j text, .aq-spool-dossier__lot text { font: 500 10px/1 var(--font-mono); letter-spacing: 0.06em; fill: var(--on-limestone-muted); transition: fill 240ms var(--sd-ease, ease-out); }
+.aq-spool-dossier__dot { fill: var(--on-limestone); transition: fill 240ms var(--sd-ease, ease-out), r 240ms var(--sd-ease, ease-out); }
+.aq-spool-dossier__ring { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-opacity: 0; transform-box: fill-box; transform-origin: 50% 50%; transform: scale(0.4); transition: stroke-opacity 240ms var(--sd-ease, ease-out), transform 240ms var(--sd-ease, ease-out); }
+.aq-spool-dossier__lot text { font-size: 11px; }
+.aq-spool-dossier__svg .aq-iso__flow { transition: stroke-width 240ms var(--sd-ease, ease-out), opacity 240ms var(--sd-ease, ease-out); opacity: 0.45; }
+.aq-spool-dossier__svg .aq-iso__pipe-wall { transition: stroke 240ms var(--sd-ease, ease-out); }
+
+/* layers */
+.aq-spool-dossier__fig[data-layer="joints"] .aq-spool-dossier__dot { fill: var(--flow); r: 6px; }
+.aq-spool-dossier__fig[data-layer="joints"] .aq-spool-dossier__j text { fill: var(--flow); }
+.aq-spool-dossier__fig[data-layer="quals"] .aq-spool-dossier__ring { stroke-opacity: 1; transform: scale(1); }
+.aq-spool-dossier__fig[data-layer="quals"] .aq-spool-dossier__dot { fill: var(--flow); }
+.aq-spool-dossier__fig[data-layer="lots"] .aq-spool-dossier__len .aq-iso__pipe-wall { stroke: var(--flow); }
+.aq-spool-dossier__fig[data-layer="lots"] .aq-spool-dossier__lot text { fill: var(--flow); }
+.aq-spool-dossier__fig[data-layer="test"] .aq-iso__flow { stroke-width: 4; opacity: 1; }
+.aq-spool-dossier__fig[data-layer="test"] [data-iso-id="cap"] .aq-iso__eq, .aq-spool-dossier__fig[data-layer="test"] [data-iso-id="cap"] .aq-iso__ln { stroke: var(--flow); }
+
+/* the parts: a hairline grid */
+.aq-spool-dossier__parts { grid-column: 1 / -1; margin-top: var(--space-12); }
+.aq-spool-dossier__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(min(var(--n, 4), 4), minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-8); }
+.aq-spool-dossier__item {
+  display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); border-top: 1px solid var(--on-limestone-muted);
+  outline-offset: var(--space-2); transition: border-color 240ms var(--sd-ease, ease-out);
+}
+.aq-spool-dossier__item[data-layer] { cursor: default; }
+.aq-spool-dossier__item:focus-visible { outline: 2px solid var(--focus); }
+.aq-spool-dossier__item.is-on { border-top-color: var(--flow); box-shadow: inset 0 1px 0 var(--flow); }
+.aq-spool-dossier__n { font: 400 32px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--on-limestone); }
+.aq-spool-dossier__item.is-key .aq-spool-dossier__n, .aq-spool-dossier__item.is-on .aq-spool-dossier__n { color: var(--flow); }
+.aq-spool-dossier__t { margin: var(--space-2) 0 0; font: 500 13px/18px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone); text-wrap: balance; }
+.aq-spool-dossier__t a { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 0.2em; }
+.aq-spool-dossier__t a::after { content: " \2192"; }
+.aq-spool-dossier__d { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--on-limestone-muted); text-wrap: pretty; }
+.aq-spool-dossier__more { margin: var(--space-8) 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-spool-dossier * { transition: none !important; }
+}
+@container (max-width: 860px) {
+  .aq-spool-dossier { grid-template-columns: minmax(0, 1fr); }
+  .aq-spool-dossier__head .aq-h1 { font: 300 44px/48px var(--font-sans); }
+  .aq-spool-dossier__fig { margin-top: var(--space-6); }
+  .aq-spool-dossier__parts { margin-top: var(--space-8); }
+  .aq-spool-dossier__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+}
+.aq-spool-dossier-sec .aq-spool-dossier { position: relative; }
+.aq-spool-dossier__fit .aq-iso__pipe-wall { stroke-width: 1.5; }
+@container (max-width: 860px) {
+  .aq-spool-dossier__j text, .aq-spool-dossier__lot text { font-size: 12px; }
+}
+
+/* pass 12 phone (audit S9, svc-fabrication.2): the spool runs full bleed with its empty margins cropped (the drawing
+   itself reaches the bleed edges, so it grows about 1.1x, not more, without cutting J-01 or J-06), labels set at 13.5
+   units (about 13 px) with a limestone halo so they read over the pipes, and the four parts in a 2 x 2 grid. */
+@container (max-width: 860px) {
+  .aq-spool-dossier__fig { margin: var(--space-4) calc(-1 * var(--space-4)) 0; overflow: hidden; }
+  .aq-spool-dossier__fig .aq-iso { display: block; width: 96%; max-width: none; max-height: none; height: auto; margin: -7.6% 0 -2.5% -1%; }
+  .aq-spool-dossier__j text, .aq-spool-dossier__lot text { font-size: 13.5px; paint-order: stroke; stroke: var(--limestone); stroke-width: 3px; stroke-linejoin: round; }
+  .aq-spool-dossier__parts { margin-top: var(--space-6); }
+  .aq-spool-dossier__list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: var(--space-6); }
+  .aq-spool-dossier__item { padding-top: var(--space-3); gap: var(--space-1); }
+  .aq-spool-dossier__n { font-size: 28px; line-height: 32px; }
+  .aq-spool-dossier__t { font-size: 12px; line-height: 16px; letter-spacing: 0.04em; }
+  .aq-spool-dossier__d { font-size: 15px; line-height: 22px; }
+}

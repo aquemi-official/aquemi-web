@@ -1,0 +1,23 @@
+VersusSpread sets a FAT versus SAT table as an editorial spread: a navy mast with the heading at display scale, the numbered comparison table, and one line drawing of the installed system whose parts light for the test being read (look `versus-spread`, table block `as: "versus"`).
+
+Concept: pass 9b `svc-fat-sat.0` (editorial magazine spread: an oversized light headline on a navy block cropped by the page edge, a hairline comparison sheet, one line-drawn loop as the only figure). The loop became a real elevation of the system with the two test boundaries, so the figure explains the table.
+
+## Markup
+`<section class="aq-section aq-versus-spread-sec">` > `.aq-in` > `.aq-versus-spread` > `__mast[data-theme=dark]` (`__top` aria-hidden: nav label and count; the section head), `figure.__fig` (`__art`: the svg with `g.__part[data-p]`, `rect.__bound--sat`, `rect.__bound--fat[data-p=fat]`, and two HTML `__tag`s; `figcaption.__now` aria-hidden: `__count`, `__now-t`), `__body` (the fold wrapper with `__table[role=table]` > `__hrow` (column headers) and `__rows[role=rowgroup]` > `__lens` and `__row[role=row][tabindex=0][data-i][data-parts]` (`__test` with `__n`, `__tn`; two `__c` cells with a phone-only `__k` key); then `__end`, the conclusion row, `data-parts="fat"`).
+
+## Fields
+As a versus table: `cols` [test, FAT label, SAT label] (the labels also tag the boundaries), `rows` [[test, FAT, SAT]] (strings or {t, link}), `conclusion` [label, FAT side, SAT side], `fold`, `fold_noun` (fold on phones only). New, optional: `row_parts`, one string per row, the drawing parts the test covers, space-separated, any of `skid ro pump panel inst valve pipe tank loop pou util`.
+
+## Rules
+- Mast: `navy`, bleeds off the left edge (a pseudo-element), heading light 300 at `clamp(52px, 6.6cqi, 92px)`. Phone: full bleed both sides, 44 px.
+- Table: hairline rules, mono row numbers, sans test names; a cell starting "Not possible" gets a dashed `line-strong` left rule and `ink-subtle`. Conclusion: 1.5 px ink rule, the reuse label as a navy tile.
+- Drawing: flat elevation, 1.5 px `line-strong`, pipes as a double wall with a `flow` water line. Lit parts turn `flow` with a `flow-tint` fill, the others step back to 0.32. The FAT boundary is long-dashed, the site's dotted. Tags are HTML (12 px mono), aria-hidden: the table carries the words.
+- Pointing at or focusing a row (rows are focusable) lights its parts and names it under the drawing; it works without GSAP and under reduced motion (renderer).
+- Phone: mast, drawing (not sticky), rows stacked with "FAT, our test bay" / "SAT, your site" keys; the fold applies.
+
+## Motion
+The mast slides in from the page edge; the boundaries fade up, equipment and pipe walls draw, the water runs skid piping, riser and loop; rows follow. Then the page's one scroll-linked story (desktop): a reading lens, ported from Subframe Motion `reading-lens` (MIT): the row at a focus line 45 % down the viewport is in focus, a flow-tint band springs behind it (core spring 460 / 34), its parts light and the caption reads "03 / 07 Sanitization"; rows further away fall to strength 1 - (d - 1) * 0.14, floor 0.6. Never pins; reduced motion: no lens.
+
+Phones (pass 12, audit S7): under the mast the drawing stands at 240 px beside a FAT / SAT switch (`div.__mode`, two 48 px buttons wearing the boundaries' strokes: dashed for the test bay, dotted for the site). The switch sets `data-side` on the root: it lights that boundary and shows only that side's cell in every row and in the conclusion, so the table reads in one column and all rows show (no fold). The caption under the switch names a tapped row (whose parts light). State lives in the renderer, so it works with motion off. Desktop never shows the switch.
+
+Phones, verify fixes (pass 12 V5): the drawing and the switch are a PhoneKit sticky strip (`data-pk-sticky`, `data-pk-h="200"` on the root, `data-pk-fig` on the figure, `data-pk-row` on every row and the conclusion; the root is a block under 860 px so the strip's parent spans the rows). The switch stays in reach down to the conclusion, and the row on the reading line lights its parts (`pk:change` drives `vsShow`; the conclusion lights the test bay); the strip shows the position ("04 / 08"). The per-row side label is said once, by the switch: each cell keeps it for screen readers only, the conclusion keeps it on screen. 600-860 px: no switch; both sides show side by side under a two-column head that sticks under the strip, and the strip names the row being read. Without script the figure stands static (160 px drawing beside the switch).

@@ -1,0 +1,79 @@
+/* ---------- SectionNav ---------- */
+/* A quiet sticky bar: eyebrow label, numbered jump links (the one being read is underlined in `flow`), page progress. */
+.aq-section-nav { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-section-nav .aq-in { display: flex; align-items: stretch; min-height: 56px; }
+.aq-section-nav__label {
+  display: flex; align-items: center; gap: var(--space-1); flex: none;
+  padding-right: var(--space-4); border-right: 1px solid var(--line);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap;
+}
+.aq-section-nav__links {
+  display: flex; align-items: center; gap: var(--space-1); flex: 1; min-width: 0;
+  margin: 0; padding: 0 var(--space-3); list-style: none;
+  overflow-x: auto; scrollbar-width: none; white-space: nowrap;
+}
+.aq-section-nav__links::-webkit-scrollbar { display: none; }
+.aq-section-nav__links li { flex: none; }
+.aq-section-nav__links a {
+  display: inline-flex; align-items: baseline; gap: var(--space-2);
+  padding: var(--space-2) var(--space-3); border-bottom: 1px solid transparent;
+  font: 400 14px/20px var(--font-sans); color: var(--ink-muted); text-decoration: none;
+  transition: color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-section-nav__num { font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-subtle); font-variant-numeric: tabular-nums; }
+.aq-section-nav__links a:hover { color: var(--ink); }
+.aq-section-nav__links a[aria-current="true"] { color: var(--ink); border-bottom-color: var(--flow); }
+.aq-section-nav__links a:focus-visible { outline-offset: 0; }
+
+/* At the footer (pass 12 C, F2): SectionNav.js sets is-footed while the footer is in view; the bar slides up out of
+   sight and leaves the tab order once it has gone, and comes back as soon as the footer leaves the view. */
+.aq-section-nav.is-footed { transform: translateY(calc(-100% - 2px)); visibility: hidden; transition: transform 240ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 240ms; }
+
+/* Page progress: ten hairline segments and a percentage, updated on scroll */
+.aq-section-nav__progress {
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: var(--space-1); flex: none;
+  padding-left: var(--space-4); border-left: 1px solid var(--line);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+}
+.aq-section-nav__readout { display: flex; align-items: center; gap: var(--space-2); }
+.aq-section-nav__meter { display: inline-flex; gap: calc(var(--space-1) / 2); }
+.aq-section-nav__seg { display: block; width: var(--space-2); height: 2px; background: var(--line); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-section-nav__seg.is-on { background: var(--flow); }
+.aq-section-nav__pct { min-width: 4ch; text-align: right; letter-spacing: 0.02em; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+
+/* Jumped-to sections clear the sticky bar (56 px desktop, 44 px phones) with room above the heading */
+.aq-page:has(.aq-section-nav) section[id] { scroll-margin-top: var(--space-16); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-section-nav, .aq-section-nav__links a, .aq-section-nav__seg { transition: none; }
+}
+
+/* Motion marker (SectionNav/motion.js adds has-mark): one flow bar along the bottom edge that slides to the link being
+   read. It is 100 px wide and scaled to the link's width, so it moves on transforms only. */
+.aq-section-nav__links { position: relative; }
+.aq-section-nav__links > .aq-section-nav__mark { position: absolute; left: 0; bottom: 0; width: 100px; height: 1px; background: var(--flow); pointer-events: none; }
+.aq-section-nav.has-mark .aq-section-nav__links a[aria-current="true"] { box-shadow: none; text-decoration: none; border-color: transparent; }
+/* Hover highlight (fluid-tab-rail): a flow-tint plate that glides under the link the pointer is on; it sits behind the
+   links (they stack above it) and is sized and placed by SectionNav/motion.js. Height 0 while it is not showing. */
+.aq-section-nav__links > .aq-section-nav__glow { position: absolute; left: 0; top: 0; width: 0; height: 0; border-radius: var(--radius-sm); background: var(--flow-tint); pointer-events: none; opacity: 0; }
+.aq-section-nav__links > li:not(.aq-section-nav__glow, .aq-section-nav__mark) { position: relative; z-index: 1; }
+.aq-section-nav__links > .aq-section-nav__mark { z-index: 2; }
+
+@container (max-width: 860px) {
+  /* Phones: a slim 44 px strip of links; the progress meter becomes a 2 px flow line along its bottom edge, and
+     the bar tucks away while the reader scrolls down (is-tucked, set by SectionNav.js), so it never sits on content. */
+  .aq-section-nav { border-bottom-color: var(--line); }
+  .aq-section-nav.is-tucked { transform: translateY(calc(-100% - 2px)); }
+  .aq-section-nav .aq-in { position: relative; min-height: 44px; padding-inline: 0; }
+  .aq-section-nav__label, .aq-section-nav__progress-label, .aq-section-nav__pct { display: none; }
+  .aq-section-nav__links { padding: 0 var(--space-2); gap: 0; }
+  .aq-section-nav__links a { align-items: center; min-height: 44px; padding: 0 var(--space-3); font-size: 13px; line-height: 18px; }
+  .aq-section-nav__links a[aria-current="true"] { border-bottom-color: var(--ink); }
+  .aq-section-nav__progress { position: absolute; left: 0; right: 0; bottom: -1px; padding: 0; border: 0; pointer-events: none; }
+  .aq-section-nav__readout { width: 100%; }
+  .aq-section-nav__meter { display: flex; flex: 1; gap: 0; padding: 0; border: 0; }
+  .aq-section-nav__seg { flex: 1; width: auto; height: 2px; background: transparent; }
+  .aq-section-nav__seg.is-on { background: var(--flow); }
+  .aq-page:has(.aq-section-nav) section[id] { scroll-margin-top: var(--space-12); }
+}
+@container (max-width: 860px) { .aq-section-nav.has-mark .aq-section-nav__links a[aria-current="true"] { border-bottom-color: transparent; } }

@@ -1,0 +1,19 @@
+LayerStack shows the layers of one system (field instruments up to the plant network) as an exploded isometric stack of machined plates, each carrying its equipment, with the labels on leaders from the plate corners.
+
+Look `layer-stack` (`assets/src/blocks/look-layer-stack.js`) on a `diagram` block. Used on sys-monitoring, "How the controls are built". Concept adapted: home.3 (exploded part view with leader callouts), recast as a soft render of plates (tonal faces, no drawing sheet).
+
+- Markup: `<div class="aq-layer-stack" data-at="…" style="--ls-zoom;--ls-shift">` > `__fig` (one `svg.aq-layer-stack__svg`: per stage a `g.__layer` with `g.__plate` (`__front`, `__side`, `__top`, `__inset`, `__hole`), `g.__eqp` (IsoKit parts and inline line art) and `__trace`; `g.__gap` risers between plates; `__axis`; `g.__lead` per label; `__route` (hidden) and `__packet`) + `ol.__list` of `li.__item(--r|--l)` (index, `h3.__t`, `p.__d`) positioned over the figure at percentages the renderer computed.
+- Stages draw bottom up: the first stage is the lowest plate, each next one higher and further back; labels alternate right (even) and left (odd).
+- Fields: `stages [{t, d, icon, art, key}]`, `caption`. `art`: `instruments` (three analysers on a process pipe), `plc` (rack of I/O modules on a backplate), `hmi` (operator panel on a pedestal with a trend), `historian` (server rack and three drums), `network` (switch, dashed DMZ boundary with firewall, cable out); default by position. `key: true` draws that plate navy (the controller that keeps running when every layer above fails).
+- Tokens: plates `surface-raised` top, `line` / `line-strong` mixes for front and side, `navy` for the key plate; signal and packet `flow`; labels `ink` / `ink-muted`, leaders `line-strong`.
+- Drawn inline (not in IsoKit): the plates, the PLC rack, the HMI screen, the historian rack and drums, the network switch, firewall and DMZ. Analysers and pipes are IsoKit.
+- Phones: the svg is zoomed to the stack (`--ls-zoom`, `--ls-shift` from the renderer) and the labels list under it in stage order.
+- Not for a flow of process stages (use WindingRoute or StrataRun) or more than six layers.
+
+Motion: the plates arrive pressed together and lift apart to their places, lowest first; equipment settles onto each, risers and axis appear, water runs the instrument pipe, leaders draw and labels slide in from their side; then one packet rides the data route from the instruments to the plant network, lighting each plate's leader and label as it passes (they settle after). Once, under 5 s. Hover a label to light its plate.
+
+Pass 9b (concept `research/pass9b/concepts/sys-monitoring.0.png`): the section is a navy band (`aq-band--navy`); `div.__spread` holds the section head with the title huge and light (`--ls-fs`, 56–136 px, an inline navy box per line) and `div.__sheet` (limestone, `data-theme="light"`) that tucks under the title's last line and runs off the right and bottom edges, holding the stack and its callouts. Pointing at a callout or a plate lights both and lifts the plate 8 px (600 ms, cubic-bezier(0.22, 1, 0.36, 1), ported from Subframe Motion exploded-camera); still under reduced motion. Phones: title on navy, the sheet full width under it.
+
+Phones (pass 12, audit S10): the leaders are gone, so each plate carries its stage number as a tag on its free corner (`g.__tag`, svg units 15 r / 18 type, about 13 px at 343 px; the key plate's tag inverts), and the list runs top plate first (`column-reverse`), so list and drawing read in the same order (05 at the top, 01 at the bottom). Pointing at a row lights its plate and tag. The DMZ label is set at 14.5 units (about 12 px). Desktop unchanged.
+
+Verify fixes (pass 12 V4): at 600-860 px the figure is capped at 460 px and centred, so the stage tags stay about 18 px and the drawing about 650 px tall (it was about 1,150).

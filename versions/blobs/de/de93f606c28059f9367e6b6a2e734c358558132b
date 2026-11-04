@@ -1,0 +1,117 @@
+/* ---------- MacroLeaders: a table read off a macro drawing (look "macro-leaders") ----------
+   Desktop: the macro (membrane leaves over a PP pipe and weld bead, flat tonal fills, no gradients) bleeds off the left
+   page edge; the table sits right. Each row's name cell carries a leader that runs left over the drawing to a numbered
+   marker; leader lengths follow an arc (--k, 0 to 1, from the renderer) so the markers stand on a curve.
+   Phones: the macro is a band above the table; rows are records on a rail of markers. */
+.aq-macro-leaders-sec { overflow-x: clip; }
+.aq-macro-leaders { position: relative; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--space-8); align-items: stretch; }
+.aq-macro-leaders__fig { margin: 0; }
+/* the drawing is placed against the whole component (the fig stays static) so it can bleed to the viewport's left edge */
+.aq-macro-leaders__svg { position: absolute; top: calc(-1 * var(--space-8)); bottom: calc(-1 * var(--space-8)); left: calc(50% - 50vw); width: calc(50vw - 50% + (100% - var(--space-8)) / 3); height: calc(100% + 2 * var(--space-8)); }
+.aq-macro-leaders__svg path, .aq-macro-leaders__svg ellipse { vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.aq-macro-leaders__layer, .aq-macro-leaders__pipe, .aq-macro-leaders__bead { pointer-events: none; }
+.aq-macro-leaders__leaf { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1; }
+.aq-macro-leaders__leaf--spacer { fill: var(--flow-tint); }
+.aq-macro-leaders__edge { fill: var(--surface-sunken); stroke: var(--line-strong); stroke-width: 1; }
+.aq-macro-leaders__tex { stroke: none; opacity: 0.55; }
+.aq-macro-leaders__hatch { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-macro-leaders__leaf--spacer + .aq-macro-leaders__tex { opacity: 0.8; }
+.aq-macro-leaders__water { fill: none; stroke: var(--flow); stroke-width: 1.5; opacity: 0.7; }
+.aq-macro-leaders__pp { fill: var(--surface-sunken); stroke: none; }
+.aq-macro-leaders__hi { fill: var(--surface-raised); stroke: none; }
+.aq-macro-leaders__lo { fill: color-mix(in srgb, var(--surface-sunken) 82%, var(--ink)); stroke: none; }
+.aq-macro-leaders__ol { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken); }
+.aq-macro-leaders__seam { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-macro-leaders__lbl { font: 500 11px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink-muted); }
+
+/* Table */
+.aq-macro-leaders__table { position: relative; z-index: 1; width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-macro-leaders__table thead th { padding: 0 var(--space-3) var(--space-3) 0; text-align: left; vertical-align: bottom; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); border-bottom: 1px solid var(--line-strong); }
+.aq-macro-leaders__table thead th:first-child { width: 29%; }
+.aq-macro-leaders__table thead th:nth-child(2) { width: 25%; }
+.aq-macro-leaders__table thead th:nth-child(3) { width: 22%; }
+.aq-macro-leaders__table tbody tr { border-bottom: 1px solid var(--line); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-macro-leaders__table tbody th, .aq-macro-leaders__table td { padding: var(--space-4) var(--space-3) var(--space-4) 0; text-align: left; vertical-align: top; }
+.aq-macro-leaders__table td { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; }
+.aq-macro-leaders__table td:nth-child(2) { color: var(--ink); }
+.aq-macro-leaders__ind { position: relative; padding-left: var(--space-3) !important; }
+.aq-macro-leaders__name { display: block; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.aq-macro-leaders__name a { color: var(--ink); text-decoration: none; }
+.aq-macro-leaders__name a::after { content: "\a0\2192"; font-size: 0.7em; color: var(--flow); }
+.aq-macro-leaders__name a:hover { color: var(--flow); }
+.aq-macro-leaders__name a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-macro-leaders__k { display: none; }
+
+/* Leader and marker: from the left edge of the name cell, back over the drawing */
+.aq-macro-leaders__lead {
+  position: absolute; right: 100%; top: calc(var(--space-4) + 15px); height: 1px;
+  width: calc(var(--space-12) + var(--k, 0) * var(--space-24)); background: var(--ink-muted); transform-origin: 0% 50%;
+}
+.aq-macro-leaders__lead::after { content: ""; position: absolute; right: 0; top: -2px; width: 5px; height: 5px; border-radius: var(--radius-pill); background: var(--ink-muted); }
+.aq-macro-leaders__mk {
+  position: absolute; left: 0; top: 50%; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); margin: calc(-1 * var(--space-4)) 0 0 calc(-1 * var(--space-4));
+  border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface); box-sizing: border-box;
+  font: 500 12px/1 var(--font-mono); color: var(--flow); font-variant-numeric: tabular-nums;
+}
+.aq-macro-leaders__table tbody tr:hover, .aq-macro-leaders__table tbody tr:focus-within { background: var(--flow-tint); }
+.aq-macro-leaders__table tbody tr:hover .aq-macro-leaders__lead, .aq-macro-leaders__table tbody tr:focus-within .aq-macro-leaders__lead,
+.aq-macro-leaders__table tbody tr:hover .aq-macro-leaders__lead::after, .aq-macro-leaders__table tbody tr:focus-within .aq-macro-leaders__lead::after { background: var(--flow); }
+.aq-macro-leaders__table tbody tr:hover .aq-macro-leaders__mk, .aq-macro-leaders__table tbody tr:focus-within .aq-macro-leaders__mk { background: var(--flow); color: var(--surface); }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-macro-leaders__mk { transition: background-color 200ms, color 200ms, transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-macro-leaders__table tbody tr:hover .aq-macro-leaders__mk { transform: scale(1.12); }
+}
+
+/* Crosshair (motion only, ported from Subframe Motion "Chart crosshair"): a row rule and a column rule snap to the cell
+   under the pointer; the column head lights and the cell takes the flow tint */
+.aq-macro-leaders__xh, .aq-macro-leaders__xv { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; display: none; opacity: 0; visibility: hidden; background: var(--flow); }
+.aq-macro-leaders__xh { height: 1px; }
+.aq-macro-leaders__xv { width: 1px; }
+.aq-macro-leaders__table thead th { transition: color 150ms; }
+.aq-macro-leaders__table thead th.is-col { color: var(--flow); }
+.aq-macro-leaders__table .is-cell { background: color-mix(in srgb, var(--flow-tint) 60%, transparent); }
+
+@container (max-width: 1180px) {
+  .aq-macro-leaders { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); column-gap: var(--space-6); }
+  .aq-macro-leaders__svg { width: calc(50vw - 50% + (100% - var(--space-6)) / 4); }
+  .aq-macro-leaders__name { font-size: 20px; line-height: 26px; }
+}
+
+@container (max-width: 860px) {
+  .aq-macro-leaders { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-macro-leaders__fig { position: relative; height: calc(var(--space-32) + var(--space-16)); margin-inline: calc(-1 * var(--space-4)); overflow: hidden; }
+  .aq-macro-leaders__svg { inset: 0; width: 100%; height: 100%; }
+  .aq-macro-leaders__table, .aq-macro-leaders__table tbody, .aq-macro-leaders__table tr, .aq-macro-leaders__table th, .aq-macro-leaders__table td { display: block; width: auto !important; }
+  .aq-macro-leaders__table thead { display: none; }
+  .aq-macro-leaders__table tbody { position: relative; }
+  .aq-macro-leaders__table tbody::before { content: ""; position: absolute; left: calc(var(--space-4) - 0.5px); top: var(--space-6); bottom: var(--space-6); width: 1px; background: var(--line-strong); }
+  .aq-macro-leaders__table tbody tr { position: relative; padding: var(--space-4) 0 var(--space-4) var(--space-12); }
+  .aq-macro-leaders__table tbody th, .aq-macro-leaders__table td { padding: 0; }
+  .aq-macro-leaders__ind { position: static; padding-left: 0 !important; margin-bottom: var(--space-2); }
+  .aq-macro-leaders__name { font-size: 22px; line-height: 28px; }
+  .aq-macro-leaders__lead { right: auto; left: var(--space-4); top: calc(var(--space-4) + 14px); width: var(--space-6); }
+  .aq-macro-leaders__lead::after { display: none; }
+  .aq-macro-leaders__mk { left: 0; }
+  /* pass 12: no macro crop; one legend; each value a colour-coded line */
+  .aq-macro-leaders__fig { display: none; }
+  .aq-macro-leaders__legend { display: flex; flex-direction: column; gap: var(--space-2); margin: 0; padding: var(--space-3) 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-macro-leaders__legend span { display: flex; align-items: center; gap: var(--space-2); font: 500 14px/20px var(--font-sans); color: var(--ink); }
+  .aq-macro-leaders__legend span::before { content: ""; flex: none; width: 3px; height: 18px; background: var(--ml-c, var(--flow)); }
+  .aq-macro-leaders__table td { padding: var(--space-1) 0 var(--space-1) var(--space-3); margin-top: var(--space-1); border-left: 3px solid var(--ml-c, var(--flow)); font-size: 15px; line-height: 22px; color: var(--ink); }
+  .aq-macro-leaders [data-c="1"] { --ml-c: var(--flow); }
+  .aq-macro-leaders [data-c="2"] { --ml-c: var(--ink); }
+  .aq-macro-leaders [data-c="3"] { --ml-c: var(--caution); }
+  .aq-macro-leaders [data-c="4"] { --ml-c: var(--line-strong); }
+  .aq-macro-leaders__table td:nth-child(2) { color: var(--ink); }
+  .aq-macro-leaders__k { display: none; }
+}
+.aq-macro-leaders__legend { display: none; }
+@container (max-width: 860px) { .aq-macro-leaders__legend { display: flex; } }
+.aq-macro-leaders__v { min-width: 0; }
+/* Phones (pass 12, F8): the second value's code is a dashed ink rule (in the key and in the rows), so the two codes
+   differ by pattern as well as hue (flow and ink read close on paper) */
+@container (max-width: 860px) {
+  .aq-macro-leaders td[data-c="2"] { border-left-style: dashed; }
+  .aq-macro-leaders__legend span[data-c="2"]::before { background: repeating-linear-gradient(to bottom, var(--ink) 0 4px, transparent 4px 7px); }
+}

@@ -1,0 +1,122 @@
+/* ---------- LayerStack: a system's layers as an exploded isometric stack of plates (look "layer-stack") ---------- */
+/* One svg spans the figure (the stack in the middle, room for labels both sides); labels sit over it at the
+   percentages the renderer computed from each plate's corner, alternating right and left. Plates are tonal solids
+   (top raised, front and side shaded from line tokens); the key plate is navy. Phones: the svg is zoomed to the stack
+   (--ls-zoom, --ls-shift) and the labels list under it. */
+.aq-layer-stack { position: relative; }
+.aq-layer-stack__fig { position: relative; }
+.aq-layer-stack__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-layer-stack__top { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1; }
+.aq-layer-stack__front { fill: color-mix(in srgb, var(--line) 70%, var(--surface-raised)); stroke: var(--line-strong); stroke-width: 1; }
+.aq-layer-stack__side { fill: color-mix(in srgb, var(--line-strong) 45%, var(--surface-raised)); stroke: var(--line-strong); stroke-width: 1; }
+.aq-layer-stack__inset { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-layer-stack__hole { fill: var(--surface-sunken); stroke: var(--line-strong); stroke-width: 1; }
+/* the key plate: navy, its equipment in on-navy lines */
+.aq-layer-stack__plate.is-key .aq-layer-stack__top { fill: var(--navy); stroke: var(--navy); }
+.aq-layer-stack__plate.is-key .aq-layer-stack__front { fill: color-mix(in srgb, var(--navy) 80%, var(--ink)); stroke: var(--navy); }
+.aq-layer-stack__plate.is-key .aq-layer-stack__side { fill: color-mix(in srgb, var(--navy) 62%, var(--ink)); stroke: var(--navy); }
+.aq-layer-stack__plate.is-key .aq-layer-stack__inset { stroke: color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+.aq-layer-stack__plate.is-key .aq-layer-stack__hole { fill: var(--navy); stroke: var(--on-navy-muted); }
+.aq-layer-stack__plate.is-key + .aq-layer-stack__eqp .aq-iso__eq { fill: var(--navy); stroke: var(--on-navy-muted); }
+.aq-layer-stack__plate.is-key + .aq-layer-stack__eqp .aq-iso__eq--alt { fill: color-mix(in srgb, var(--navy) 85%, var(--on-navy)); }
+.aq-layer-stack__plate.is-key + .aq-layer-stack__eqp .aq-iso__eq--glass { fill: color-mix(in srgb, var(--navy) 78%, var(--on-navy)); }
+.aq-layer-stack__plate.is-key + .aq-layer-stack__eqp .aq-iso__thin { stroke: var(--on-navy-muted); }
+.aq-layer-stack__plate.is-key + .aq-layer-stack__eqp .aq-iso__acc { stroke: color-mix(in srgb, var(--flow) 40%, var(--on-navy)); }
+/* signal: the riser between plates, the trace across each plate, the packet that rides them */
+.aq-layer-stack__riser { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.aq-layer-stack__trace { fill: none; stroke: var(--flow); stroke-width: 1.25; opacity: 0.55; }
+.aq-layer-stack__plate.is-key ~ .aq-layer-stack__trace { stroke: color-mix(in srgb, var(--flow) 40%, var(--on-navy)); opacity: 1; }
+.aq-layer-stack__route { fill: none; stroke: none; }
+.aq-layer-stack__packet { fill: var(--flow); stroke: var(--surface); stroke-width: 2; opacity: 0; }
+.aq-layer-stack__axis { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 14 4 2 4; opacity: 0.7; }
+.aq-layer-stack__dmz { stroke: var(--flow); stroke-dasharray: 5 3; }
+.aq-layer-stack__dmz-t { fill: var(--flow); font-size: 9px; }
+.aq-layer-stack__lead path { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-layer-stack__lead circle { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-layer-stack__lead.is-hot path, .aq-layer-stack__lead.is-on path { stroke: var(--flow); }
+.aq-layer-stack__lead.is-hot circle, .aq-layer-stack__lead.is-on circle { stroke: var(--flow); fill: var(--flow); }
+.aq-layer-stack__layer.is-hot .aq-layer-stack__plate:not(.is-key) .aq-layer-stack__top { fill: var(--flow-tint); }
+.aq-layer-stack__layer.is-hot .aq-layer-stack__top, .aq-layer-stack__layer.is-hot .aq-layer-stack__front, .aq-layer-stack__layer.is-hot .aq-layer-stack__side { stroke: var(--flow); }
+.aq-layer-stack__layer .aq-layer-stack__top { transition: fill 200ms ease, stroke 200ms ease; }
+
+/* labels over the figure */
+.aq-layer-stack__list { list-style: none; margin: 0; padding: 0; }
+.aq-layer-stack__item {
+  position: absolute; width: var(--ls-w, 30%); padding-top: var(--space-3); border-top: 1px solid var(--line-strong);
+  display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-3); align-items: baseline;
+  transition: border-color 200ms ease;
+}
+.aq-layer-stack__item--l { text-align: right; grid-template-columns: 1fr auto; }
+.aq-layer-stack__item--l .aq-index { order: 2; }
+.aq-layer-stack__item .aq-index { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); transition: color 200ms ease; }
+.aq-layer-stack__t { margin: 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.aq-layer-stack .aq-layer-stack__d { grid-column: 1 / -1; margin: var(--space-2) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-layer-stack__item.is-hot, .aq-layer-stack__item.is-on { border-top-color: var(--flow); }
+.aq-layer-stack__item.is-hot .aq-index, .aq-layer-stack__item.is-on .aq-index { color: var(--flow); }
+.aq-layer-stack__item.is-key .aq-layer-stack__t { font-weight: 500; }
+
+@container (max-width: 860px) {
+  .aq-layer-stack__fig { overflow: hidden; }
+  .aq-layer-stack__svg { width: calc(var(--ls-zoom, 1) * 100%); max-width: none; margin-left: var(--ls-shift, 0%); }
+  .aq-layer-stack__lead { display: none; }
+  .aq-layer-stack__list { display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-6); }
+  .aq-layer-stack__item, .aq-layer-stack__item--l { position: static; width: auto; text-align: left; grid-template-columns: auto 1fr; }
+  .aq-layer-stack__item--l .aq-index { order: 0; }
+  .aq-layer-stack__t { font-size: 20px; line-height: 26px; }
+}
+.aq-layer-stack__item--l .aq-layer-stack__t { grid-row: 1; grid-column: 1; }
+.aq-layer-stack__item--l .aq-index { grid-row: 1; grid-column: 2; }
+@container (max-width: 860px) {
+  .aq-layer-stack__item--l .aq-layer-stack__t { grid-column: 2; }
+  .aq-layer-stack__item--l .aq-index { grid-column: 1; }
+}
+.aq-layer-stack-sec { position: relative; }
+.aq-layer-stack__gap, .aq-layer-stack__water, .aq-layer-stack__wire { pointer-events: none; }
+
+/* pass 9b, concept sys-monitoring.0: a navy field with the title huge and light, cropped by a limestone sheet that
+   holds the stack and runs off the right and bottom edges. The title's second line keeps a navy box over the sheet's
+   corner (inline background, one box per line). The sheet is data-theme light, so the stack draws as on paper. */
+.aq-section.aq-layer-stack-sec { padding-bottom: 0; }
+.aq-layer-stack__spread { --ls-fs: clamp(56px, 9.4vw, 136px); position: relative; }
+.aq-layer-stack__spread > .aq-sec-head { position: relative; z-index: 1; display: block; font-size: var(--ls-fs, 120px); max-width: 7.6em; }
+.aq-layer-stack__spread > .aq-sec-head .aq-h1 {
+  display: inline; font-size: 1em; line-height: 0.98; font-weight: 300; letter-spacing: -0.04em; color: var(--on-navy);
+  background: var(--navy); -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 0.18em 0.12em 0;
+}
+.aq-layer-stack__spread > .aq-sec-head::after { content: ""; display: block; }
+.aq-layer-stack__sheet {
+  position: relative; margin: calc(-1.05 * var(--ls-fs, 120px)) calc(50% - 50vw) 0 18%;
+  padding: calc(1.05 * var(--ls-fs, 120px) + var(--space-4)) var(--space-12) var(--space-16);
+  background: var(--limestone); color: var(--on-limestone); --surface: var(--limestone);
+}
+.aq-layer-stack__sheet > .aq-layer-stack { max-width: calc(var(--content-max) * 0.82); }
+.aq-layer-stack__layer { transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1); }
+.aq-layer-stack__layer.is-hot { transform: translateY(-8px); }
+@media (prefers-reduced-motion: reduce) { .aq-layer-stack__layer { transition: none; } .aq-layer-stack__layer.is-hot { transform: none; } }
+@container (max-width: 860px) {
+  .aq-layer-stack__spread { --ls-fs: 52px; }
+  .aq-layer-stack__spread > .aq-sec-head .aq-h1 { line-height: 1.02; }
+  .aq-layer-stack__sheet { margin: var(--space-8) calc(50% - 50vw) 0; padding: var(--space-8) var(--space-4) var(--space-12); }
+}
+
+/* pass 12 phone (audit S10, sys-monitoring.0): the leaders are gone on phones, so each plate carries its stage number
+   as a tag on its free corner (svg units: 15 r and 18 type render about 23 px and 13.5 px at 343 px), and the list
+   runs top plate first (column-reverse) so list and drawing read in the same order. Pointing at a row lights its
+   plate and tag (the hover set above). Hidden on desktop, where the leaders carry the link. */
+.aq-layer-stack__tag { display: none; }
+@container (max-width: 860px) {
+  .aq-layer-stack__tag { display: inline; pointer-events: none; }
+  .aq-layer-stack__tag circle { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+  .aq-layer-stack__tag text { font: 500 18px/1 var(--font-mono); fill: var(--ink); letter-spacing: 0.02em; }
+  .aq-layer-stack__tag.is-key circle { fill: var(--on-navy); stroke: var(--on-navy); }
+  .aq-layer-stack__tag.is-key text { fill: var(--navy); }
+  .aq-layer-stack__tag.is-hot circle { fill: var(--flow); stroke: var(--flow); }
+  .aq-layer-stack__tag.is-hot text { fill: var(--on-navy); }
+  .aq-layer-stack__list { flex-direction: column-reverse; gap: var(--space-5, 20px); }
+  .aq-layer-stack__item .aq-index { font-size: 13px; color: var(--ink); min-width: 28px; }
+  .aq-layer-stack__item.is-key .aq-index { color: var(--navy); font-weight: 600; }
+}
+@container (max-width: 860px) { .aq-layer-stack__dmz-t { font-size: 14.5px; } }
+/* verify V4: on tablets (600-860) the tags are svg units and grow with the figure; the figure is capped so they stay
+   about 18 px and the drawing about 650 px tall. */
+@container (min-width: 600px) and (max-width: 860px) { .aq-layer-stack__fig { max-width: 460px; margin-inline: auto; } }

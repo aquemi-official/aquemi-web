@@ -1,0 +1,24 @@
+SitePlates sets a table of sites (site, what happens here, address, contact and hours) as a ledger beside one navy drawing plate: the site you point at, focus or choose is drawn on the plate with numbered callouts for what happens there.
+
+Look `site-plates` (`assets/src/blocks/look-site-plates.js`); pass 9 built it as figure plates two to a row, pass 9b rebuilt it from concept `contact-locations.1` (a limestone sites ledger beside a dimensioned duotone panel). The concept's weld close-up had nothing to do with locations, so the panel draws the site in hand instead.
+
+- Data: a `table` block with `"look": "site-plates"`. `cols`: [site, what happens here, address, contact and hours] (the ledger's column heads). `rows`: the first cell is split at its first ", " into the kind ("Shop and test bay") and the place ("[shop location, city and province]"); a `{t, link, intent}` first cell links the kind. Other cells: each " · " part on its own line; an empty cell stays empty. `fold`, `fold_noun` as everywhere (folded rows are `tr.aq-fold-x`). `nav` (optional) prints under the title with the count ("Sites · 04", aria-hidden).
+- Optional `art`: one drawing key per row: `office` (building), `shop` (skid with RO rack and panel), `service` (truck, no load), `parts` (crates drawn with IsoKit's box primitive, a pump and a valve). Any other key draws an empty plate. Each scene names the parts its callouts point at, in order (shop: the RO rack, the panel; service: the cab, the deck; parts: the crates; office: none).
+- Layout (`__main` 8 / `__plate` 4): the section title in Geist 300 up to 96 px; the ledger a real `table` (`__table`): mono column heads over a `line-strong` rule, cells on `line` hairlines with vertical hairlines between columns; the site cell has the index (`__pick`, a 44 px button, `aria-pressed`, named by the kind) beside the kind and the place in mono; what happens here in Geist 15/22 (`__what`); address (`__addr`) and contact lines (`__contact`) in mono 13/20. The row in hand has a `flow` foot rule and a `flow` index.
+- Plate (`__plate`, `navy`, `data-theme="dark"`, inner hairline frame): a window over a reel (`__reel`) of one `figure` per site (`__still`, stacked in one grid cell, each moved by `--d`, its distance from the choice, × 100 %). Each still: caption (index "02 / 04", the kind in Geist 300 24/30, the place), the drawing (IsoKit `aq-iso--navy` in a size container so the drawing keeps its ratio and the numbered pins `__pin` stay on their parts), then what happens here split at ", " (never inside a `[placeholder]`) as a numbered callout list (`__calls`). Stills off the window are `aria-hidden`.
+- Behaviour (look file): pointing at a row, focusing into it or pressing its index chooses the site; the choice persists (`aria-pressed`). The reel slides 240 ms cubic-bezier(.2,.85,.25,1) (CSS), instantly for keyboard and under reduced motion. The wrapper hears `aqsitepick` ({i, instant}).
+- Phones: title, then the plate, then the rows as stacked cards (column heads visually hidden, each cell labelled from `data-l`; empty cells dropped); the row in hand has a `flow` rule down its left edge.
+- Not for the coverage of regions (CoverageMap) or for a list of contacts without places.
+
+## Motion
+
+Motion (`motion.js`): the ledger's head rule draws across and the rows rise in one after another; the navy plate wipes in from the right and the site in hand is drawn on it (`AQiso.timeline`, lines back to front), its caption and callouts rise and its pins strike. One timeline under 3 s, once on scroll-in. Choosing another site (project-index port, see the look file): the reel slides, then the arriving figure's pins strike (scale 1.6 to 1, 0.24 s) and its callouts rise 8 px (0.3 s); visitor-driven, may repeat; not for keyboard choices. Nothing under reduced motion.
+
+## Phones (pass 12)
+
+Bug fixed: the plate dropped below the rows when nothing folds (no `.aq-fold` wrapper, so its `order` never applied); the table now carries `order: 3` itself. The plate is a 200 px strip held under the header (PhoneKit sticky figure) that swaps to the site whose row is on the reading line (caption and drawing; a site with no drawing shows its callouts instead of an empty sheet). A table with no `art` at all (ind-process) keeps no plate on phones. Site names are 44 px links, cell text 14 px, links in cells get a 44 px hit box without moving a line.
+
+## Pass 12 round C (phones)
+
+The 200 px sticky strip gives its drawing about 154 px (tighter caption padding) on brand navy (`--sp-navy`, resolved
+outside the plate's dark scope, which had turned it near-black).

@@ -1,0 +1,77 @@
+/* ---------- StandardWires: standards wired to the equipment that answers them (look "standard-wires") ----------
+   Navy blueprint band. Desktop: one grid of five tracks shared by the header and every row (standard | asks | answer
+   chip | wire run | drawing cell). The drawing cells stack into one plate (a framed column with a title block); the
+   run is a hairline from the chip to the plate edge, where the svg's own wire picks it up at mid height and steps to the
+   part. Phones: each row stacks (standard, asks, then the chip beside its drawing); the run and header go. */
+.aq-standard-wires-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-standard-wires { color: var(--on-navy); position: relative; }
+.aq-standard-wires__heads, .aq-standard-wires__row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(var(--space-6), 0.35fr) minmax(0, 1.15fr); column-gap: var(--space-6); }
+.aq-standard-wires__heads { padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+.aq-standard-wires__heads p { margin: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-standard-wires__heads p span { opacity: 0.7; }
+.aq-standard-wires__heads p:last-child { padding-left: var(--space-4); }
+.aq-standard-wires__list { list-style: none; margin: 0; padding: 0; }
+.aq-standard-wires__row { align-items: center; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); position: relative; }
+.aq-standard-wires__std { position: relative; padding: var(--space-6) 0 var(--space-6) var(--space-12); }
+.aq-standard-wires__n {
+  position: absolute; left: 0; top: var(--space-6); min-width: var(--space-8); padding: 0 var(--space-1);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 50%, transparent);
+  font: 400 11px/20px var(--font-mono); text-align: center; color: var(--on-navy-muted);
+}
+.aq-standard-wires__k { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.aq-standard-wires__s { margin: 0; font: 400 26px/34px var(--font-mono); letter-spacing: -0.02em; color: var(--on-navy); }
+.aq-standard-wires__s > span:not(.aq-standard-wires__semi) { display: inline; }
+.aq-standard-wires__semi { color: var(--on-navy-muted); }
+.aq-standard-wires__a { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-navy-muted); }
+.aq-standard-wires__chip { margin: 0; }
+.aq-standard-wires__chip a, .aq-standard-wires__chip > span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: var(--space-2) var(--space-3);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 55%, transparent);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy); text-decoration: none;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.aq-standard-wires__chip a:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
+.aq-standard-wires__run { align-self: center; height: 0; border-top: 1px solid var(--on-navy-muted); transform-origin: left center; margin-left: calc(-1 * var(--space-6)); margin-right: calc(-1 * var(--space-6)); position: relative; }
+.aq-standard-wires__run::before { content: ""; position: absolute; left: 0; top: -3.5px; width: 6px; height: 6px; border-radius: 50%; background: var(--on-navy-muted); }
+/* the drawing plate: one framed column, a cell per row */
+.aq-standard-wires__cell {
+  align-self: stretch; display: flex; min-height: calc(var(--space-32) + var(--space-8));
+  border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); border-right: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+}
+.aq-standard-wires__svg { width: 100%; height: 100%; flex: 1; overflow: visible; }
+.aq-standard-wires__wire { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 200ms ease; }
+.aq-standard-wires__end { fill: var(--on-navy-muted); transition: fill 200ms ease; }
+.aq-standard-wires__foot { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(var(--space-6), 0.35fr) minmax(0, 1.15fr); column-gap: var(--space-6); }
+.aq-standard-wires__title {
+  grid-column: 5; display: grid; grid-template-columns: auto 1fr auto; margin: 0;
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); border-top: 0;
+  font: 400 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted);
+}
+.aq-standard-wires__title span { padding: var(--space-2) var(--space-3); }
+.aq-standard-wires__title span + span { border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+/* hover or focus: the chip fills, its wire and part turn flow */
+.aq-standard-wires__row.is-hot .aq-standard-wires__chip a { background: color-mix(in srgb, var(--flow) 35%, var(--navy)); border-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-standard-wires__row.is-hot .aq-standard-wires__run { border-top-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-standard-wires__row.is-hot .aq-standard-wires__wire { stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-standard-wires__row.is-hot .aq-standard-wires__end { fill: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-standard-wires .aq-fold__btn { color: var(--on-navy-muted); }
+.aq-standard-wires .aq-fold__btn:hover { color: var(--on-navy); }
+
+@container (max-width: 860px) {
+  .aq-standard-wires__heads, .aq-standard-wires__run, .aq-standard-wires__foot, .aq-standard-wires__wire, .aq-standard-wires__end { display: none; }
+  .aq-standard-wires__row { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); column-gap: var(--space-4); padding-bottom: var(--space-4); }
+  .aq-standard-wires__std, .aq-standard-wires__ask { grid-column: 1 / -1; }
+  .aq-standard-wires__std { padding: var(--space-6) 0 var(--space-3) var(--space-12); }
+  .aq-standard-wires__ask { padding-bottom: var(--space-2); }
+  .aq-standard-wires__s { font-size: 20px; line-height: 28px; }
+  .aq-standard-wires__ans { align-self: center; }
+  .aq-standard-wires__cell { border: 0; min-height: var(--space-24); }
+  /* pass 12: the drawing at 120 px, tied to its answer box by a short wire */
+  .aq-standard-wires__cell { min-height: 120px; height: 120px; }
+  /* the plate is 300 x 170 with the part right of centre: drawn 120 px tall (212 px wide) and shifted so the part
+     (centred at 0.6 of the width, 127 px) sits in the middle of the cell */
+  .aq-standard-wires__svg { flex: none; width: 212px; height: 120px; margin-left: calc(50% - 127px); }
+  .aq-standard-wires__chip { display: flex; align-items: center; }
+  .aq-standard-wires__chip::after { content: ""; flex: 1 1 var(--space-4); min-width: var(--space-4); height: 0; margin-right: calc(-1 * var(--space-4)); border-top: 1px solid var(--on-navy-muted); }
+  .aq-standard-wires__a { font-size: 15px; }
+}

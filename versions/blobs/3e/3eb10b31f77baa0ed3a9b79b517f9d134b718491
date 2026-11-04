@@ -1,0 +1,77 @@
+/* ---------- WalkdownPins: IQ and OQ checks as a table beside the system they inspect (look "walkdown-pins") ----------
+   Desktop: the checks as a hairline table on the left (6 of 12: number, check with its IQ or OQ tag, what we verify,
+   basis in mono, under a mono column head); the drawing sheet (IsoKit light sheet, iso grid) on the right, held in
+   view while the table scrolls. Each check's number marks its part (a small ruled square; a second one on the same
+   part sits 28 units to the right in the pin data, pass 12 round C; --k stays 0); a few parts carry a leader callout with their name over the shelf. IQ tags ruled in ink, OQ filled
+   flow (installed versus running). A row pointed at or focused lights its part (aq-iso__part is-lit), its marker
+   and its callout. */
+.aq-walkdown-pins { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--space-12); align-items: start; }
+.aq-walkdown-pins__fig { position: sticky; top: var(--space-24); }
+.aq-walkdown-pins__sheet { position: relative; background: var(--surface-raised); border: 1px solid var(--line); }
+.aq-walkdown-pins__svg { display: block; width: 100%; height: auto; }
+.aq-walkdown-pins__pin { position: absolute; transform: translate(calc(-50% + var(--k, 0) * var(--space-6)), -50%); display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1); background: var(--surface); border: 1px solid var(--navy); color: var(--ink); font: 500 12px/1 var(--font-mono);
+  transition: background-color 180ms, color 180ms, border-color 180ms; z-index: 1; }
+.aq-walkdown-pins__pin.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface); z-index: 2; }
+.aq-walkdown-pins__lead .aq-iso__leader-line { stroke: var(--ink-subtle); }
+.aq-walkdown-pins__lab { position: absolute; transform: translate(0, calc(-100% - var(--space-1))); white-space: nowrap; font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted); transition: color 180ms;
+  /* pass 12: the look places every name clear of the markers and the loop pipe, so no knockout is needed */
+  background: none; box-shadow: none; }
+.aq-walkdown-pins__lab--r { transform: translate(-100%, calc(-100% - var(--space-1))); }
+.aq-walkdown-pins__lab.is-on { color: var(--flow); }
+
+.aq-walkdown-pins__cols, .aq-walkdown-pins__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr); column-gap: var(--space-4); }
+.aq-walkdown-pins__cols { padding-bottom: var(--space-2); border-bottom: 1px solid var(--line-strong); font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
+.aq-walkdown-pins__tab { min-width: 0; }
+.aq-walkdown-pins__list { list-style: none; margin: 0; padding: 0; }
+.aq-walkdown-pins__row { align-items: start; padding: var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 180ms; }
+.aq-walkdown-pins__row:hover, .aq-walkdown-pins__row:focus-visible { background: var(--surface-raised); }
+.aq-walkdown-pins__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-walkdown-pins__n { font: 400 13px/22px var(--font-mono); color: var(--flow); padding-left: var(--space-1); }
+.aq-walkdown-pins__t { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-1) var(--space-2); font: 500 15px/22px var(--font-sans); color: var(--ink); }
+.aq-walkdown-pins__tag { padding: 0 var(--space-1); font: 500 12px/18px var(--font-mono); letter-spacing: 0.08em; border: 1px solid var(--ink); color: var(--ink); }
+.aq-walkdown-pins__tag--oq { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-walkdown-pins__v { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-walkdown-pins__m { margin: 0; font: 400 13px/20px var(--font-mono); color: var(--ink-subtle); }
+
+
+@container (max-width: 1080px) {
+  .aq-walkdown-pins { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .aq-walkdown-pins__fig { position: static; order: -1; }
+}
+@container (max-width: 860px) {
+  .aq-walkdown-pins { gap: var(--space-6); }
+  .aq-walkdown-pins__cols { display: none; }
+  .aq-walkdown-pins__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-1); }
+  .aq-walkdown-pins__row > :not(.aq-walkdown-pins__n) { grid-column: 2; }
+  .aq-walkdown-pins__n { grid-row: 1; }
+  .aq-walkdown-pins__pin { min-width: var(--space-4); height: var(--space-4); padding: 0; font-size: 12px; transform: translate(calc(-50% + var(--k, 0) * var(--space-4)), -50%); }
+  .aq-walkdown-pins__lab, .aq-walkdown-pins__lead { display: none; }
+  .aq-walkdown-pins__v { font-size: 14px; }
+  .aq-walkdown-pins__m { font-size: 12px; line-height: 18px; }
+}
+
+/* Phones (pass 12, PhoneKit sticky figure): every check open; the sheet is a 200 px strip held under the section bar,
+   zoomed 1.8x and panned to the marker of the check on the reading line (PhoneKit sets --pk-x/--pk-y/--pk-s on the
+   sheet). A flex column, not a grid, so the strip's sticky box is the whole look (a grid item sticks only inside its
+   own row). The check in view lights: its number and marker in flow, the row on the raised surface. */
+@container (max-width: 860px) {
+  .aq-walkdown-pins[data-pk-on] { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__fig { order: -1; margin: 0 0 var(--space-2); background: var(--surface-raised); }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__sheet { border: 0; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__pin { min-width: 14px; height: 14px; font-size: 9px; border-width: 0.75px; transform: translate(calc(-50% + var(--k, 0) * 14px), -50%); }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__pin.is-pk-active { background: var(--flow); border-color: var(--flow); color: var(--surface); z-index: 2; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row { padding: var(--space-3) var(--space-2) var(--space-4) 0; transition: background-color 200ms; }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row.is-pk-active { background: var(--surface-raised); }
+  .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row:not(.is-pk-active) .aq-walkdown-pins__n { color: var(--ink-subtle); }
+}
+/* tablets (columns of 600 px and up): a taller strip at a lower zoom (the look sets data-pk-zoom from the column), so
+   the skid and the loop stay in view around the marker */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-walkdown-pins[data-pk-sticky][data-pk-on] .aq-walkdown-pins__fig { height: 280px; }
+  .aq-walkdown-pins[data-pk-sticky][data-pk-on] .aq-walkdown-pins__row { scroll-margin-top: calc(var(--pk-top, 0px) + 280px + var(--space-4)); }
+}
+@media (prefers-reduced-motion: reduce) { .aq-walkdown-pins[data-pk-on] .aq-walkdown-pins__row { transition: none; } }
+
+/* section hook (the look marks its section) */
+.aq-walkdown-pins-sec { position: relative; }

@@ -1,0 +1,80 @@
+/* ---------- RetrofitPlant: upgrades on the running plant, existing faint and new bold (look "retrofit-plant") ----------
+   A navy band; the ink tokens take on-navy values inside. The sheet: IsoKit on navy (aq-iso--navy) with the existing
+   plant dropped to 40 % and the picked upgrade's stages lit (is-lit, flow lines), a legend under it. Below, 5/7: the
+   tab list (huge light index, upgrade name; the selected tab carries a limestone rule and full-strength text) and the
+   panel (terms as a three-column definition list with mono keys, then where to start as a link). Phones (pass 12):
+   the sheet cropped to the column at 552 px, the key plan moved into the crop, numbered chips, one panel. */
+.aq-retrofit-plant-sec {
+  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted); --ink-subtle: var(--on-navy-muted);
+  --line: color-mix(in srgb, var(--on-navy) 18%, transparent); --line-strong: color-mix(in srgb, var(--on-navy) 45%, transparent);
+  --rp-flow: color-mix(in srgb, var(--flow) 40%, var(--on-navy));
+}
+.aq-retrofit-plant-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); max-width: 20ch; }
+.aq-retrofit-plant-sec .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+.aq-retrofit-plant { position: relative; }
+.aq-retrofit-plant__sheet { position: relative; border: 1px solid var(--line); }
+.aq-retrofit-plant__svg { display: block; width: 100%; height: auto; }
+.aq-retrofit-plant__svg.is-retro .aq-iso__part, .aq-retrofit-plant__svg.is-retro .aq-iso__pipe { transition: opacity 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-retrofit-plant__svg.is-retro .aq-iso__part:not(.is-lit), .aq-retrofit-plant__svg.is-retro .aq-iso__pipe:not(.is-lit) { opacity: 0.28; }
+.aq-retrofit-plant__svg .aq-iso__part.is-lit .aq-iso__eq, .aq-retrofit-plant__svg .aq-iso__part.is-lit .aq-iso__ln { stroke-width: 2; }
+.aq-retrofit-plant__cam { transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1); }
+.aq-retrofit-plant__kbox { fill: var(--navy); stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-retrofit-plant__kplant use { fill: var(--navy); stroke: var(--on-navy-muted); }
+/* the clone does not match the navy-sheet rules (their ancestor is outside its shadow tree): it inherits these */
+.aq-retrofit-plant__kwin { fill: color-mix(in srgb, var(--rp-flow, var(--flow)) 12%, transparent); stroke: var(--rp-flow, var(--flow)); stroke-width: 1.5; transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1); }
+@media (prefers-reduced-motion: reduce) { .aq-retrofit-plant__cam, .aq-retrofit-plant__kwin { transition: none; } }
+.aq-retrofit-plant__legend { position: absolute; right: 0; top: 100%; margin: var(--space-2) 0 0; display: flex; align-items: center; gap: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-retrofit-plant__sw { display: inline-block; width: var(--space-6); border-top: 1.5px solid var(--on-navy-muted); opacity: 0.5; }
+.aq-retrofit-plant__sw--new { border-top: 2px solid var(--rp-flow, var(--flow)); opacity: 1; margin-left: var(--space-4); }
+.aq-retrofit-plant__pick { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); margin-top: var(--space-8); }
+.aq-retrofit-plant__tabs { display: flex; flex-direction: column; border-top: 1px solid var(--line-strong); }
+.aq-retrofit-plant__tab { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: baseline; gap: var(--space-3); min-height: 44px; padding: var(--space-4) var(--space-4) var(--space-4) 0; background: none; border: 0; border-bottom: 1px solid var(--line); border-left: 2px solid transparent; color: var(--on-navy-muted); text-align: left; cursor: pointer; transition: color 200ms ease, border-color 200ms ease, padding 200ms ease; }
+.aq-retrofit-plant__tab:hover { color: var(--on-navy); }
+.aq-retrofit-plant__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-retrofit-plant__tab[aria-selected="true"] { color: var(--on-navy); border-left-color: var(--limestone); padding-left: var(--space-4); }
+.aq-retrofit-plant__tn { font: 500 12px/16px var(--font-mono); color: var(--on-navy-muted); }
+.aq-retrofit-plant__tt { font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; text-wrap: balance; }
+.aq-retrofit-plant__panel { padding-top: var(--space-2); }
+.aq-retrofit-plant__panel.is-off { display: none; }
+.aq-retrofit-plant__mfig { display: none; }
+.aq-retrofit-plant__pt { display: none; }
+.aq-retrofit-plant__terms { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); border-top: 1px solid var(--line-strong); padding-top: var(--space-4); }
+.aq-retrofit-plant__term dt { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-retrofit-plant__term dd { margin: var(--space-2) 0 0; font: 400 16px/24px var(--font-sans); color: var(--on-navy); text-wrap: pretty; }
+.aq-retrofit-plant__term--3 dd { font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; }
+.aq-retrofit-plant .aq-retrofit-plant__go { margin: var(--space-8) 0 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-retrofit-plant__gk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-retrofit-plant__go a { font: 300 28px/34px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-decoration: none; }
+.aq-retrofit-plant__go a::after { content: " →"; color: var(--rp-flow, var(--flow)); }
+.aq-retrofit-plant__go a:hover { color: var(--rp-flow, var(--flow)); }
+
+@container (max-width: 860px) {
+  .aq-retrofit-plant-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  /* pass 12 (audit svc-upgrades.1, S10): the blueprint stays. A 552 px wide render of the sheet cropped to the
+     column (centred, where the camera puts the picked upgrade), the key plan moved into the crop; a row of numbered
+     chips (the tabs, 44 px) under it; one panel, the picked upgrade's. */
+  .aq-retrofit-plant__sheet { overflow: hidden; border-inline: 0; }
+  .aq-retrofit-plant__svg { width: 552px; max-width: none; margin-left: calc((100% - 552px) / 2); }
+  .aq-retrofit-plant__key { transform: translate(232px, calc(var(--ky, 300px) - 36px)) scale(1.3); }
+  .aq-retrofit-plant__legend { position: static; justify-content: flex-end; margin: var(--space-2) 0 0; font-size: 12px; }
+  .aq-retrofit-plant__pick { display: block; margin-top: var(--space-4); }
+  .aq-retrofit-plant__tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); gap: var(--space-1); border-top: 0; }
+  .aq-retrofit-plant__tab {
+    display: flex; justify-content: center; align-items: center; min-height: 44px; padding: 0; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+    color: var(--on-navy-muted);
+  }
+  .aq-retrofit-plant__tab[aria-selected="true"] { padding: 0; border-color: var(--limestone); background: var(--limestone); color: var(--navy); }
+  .aq-retrofit-plant__tab .aq-retrofit-plant__tn { font: 500 14px/1 var(--font-mono); color: inherit; }
+  .aq-retrofit-plant__tab .aq-retrofit-plant__tt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-retrofit-plant__panel { padding: var(--space-6) 0 0; }
+  .aq-retrofit-plant__pt { display: flex; flex-direction: column; gap: var(--space-1); margin: 0; font: 300 22px/28px var(--font-sans); color: var(--on-navy); }
+  .aq-retrofit-plant__pt .aq-retrofit-plant__tn { font-size: 13px; }
+  .aq-retrofit-plant__terms { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); margin-top: var(--space-4); }
+  .aq-retrofit-plant__term dt { font-size: 12px; }
+  .aq-retrofit-plant__term dd { font-size: 15px; line-height: 22px; }
+  .aq-retrofit-plant__term--3 dd { font-size: 20px; line-height: 26px; }
+  .aq-retrofit-plant .aq-retrofit-plant__go { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--line); }
+  .aq-retrofit-plant__gk { font-size: 12px; }
+  .aq-retrofit-plant__go a { display: inline-flex; align-items: center; min-height: 44px; font-size: 22px; line-height: 28px; }
+  .aq-retrofit-plant__go a::after { content: "\2192"; margin-left: var(--space-2); }
+}

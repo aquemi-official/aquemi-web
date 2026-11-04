@@ -1,0 +1,139 @@
+/* ---------- FitEnvelope: the package inside a dashed fit envelope, each exclusion a numbered tag tied outside it ---------- */
+/* Desktop: heading, then the envelope (left, 5 of 12; its drawing and band held sticky while the tags pass) and the
+   tags (right), each tag tied to the envelope's right edge by a cord through its eyelet. Wide: a tag reads across as
+   the table did (need, why, instead), under one key line. 861-1100 px: the envelope full width on top, then the tags,
+   the need over why and instead, on one cord from the envelope's foot through every eyelet. Phones: the same chain as
+   accordion heads (PhoneKit). */
+.aq-fit-envelope-sec { overflow: clip; }
+.aq-fit-envelope { --fe-gap: var(--space-12); --fe-stub: var(--space-16); --fe-cut: 16px; --fe-eye-y: 30px;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--fe-gap, 48px); margin-top: var(--space-8); align-items: stretch; }
+
+/* the envelope: a dashed boundary on the paper surface, its label at the top left */
+.aq-fit-envelope__env { --surface: var(--surface-sunken); position: relative; border: 1.5px dashed var(--line-strong); padding: var(--space-12) var(--space-6) var(--space-6); }
+.aq-fit-envelope__fits { position: absolute; left: var(--space-4); top: var(--space-3); margin: 0; font: 500 13px/20px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted); }
+.aq-fit-envelope__hold { position: sticky; top: max(var(--space-16), calc(50vh - 280px)); }
+.aq-fit-envelope__fig { margin: 0 auto; max-width: 460px; }
+.aq-fit-envelope__svg { display: block; width: 100%; height: auto; }
+.aq-fit-envelope__fig .aq-iso__part[data-iso="drum"] .aq-iso__eq { fill: var(--surface-raised); }
+
+/* the rated range: a steel-blue bar at the envelope's foot, its two ends under it */
+.aq-fit-envelope__band { display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: var(--space-6); font: 500 13px/20px var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.aq-fit-envelope__bar { flex: 0 0 100%; height: 8px; margin-bottom: var(--space-2); background: var(--flow); border-radius: var(--radius-sm); transform-origin: 0 50%; }
+.aq-fit-envelope__end { white-space: nowrap; }
+/* what fits (spec rows with "in": true, ind-process): each row its own block, the need bold, why (ink) and instead
+   (muted) each on its own line, then the link on its own line with a 44 px target that adds no layout */
+.aq-fit-envelope__in { list-style: none; margin: var(--space-6) 0 0; padding: var(--space-4) 0 0; border-top: 1px solid var(--line); display: grid; gap: var(--space-4); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-fit-envelope__in > li { display: grid; align-content: start; justify-items: start; row-gap: var(--space-1); }
+.aq-fit-envelope__ip { color: var(--ink); font-weight: 500; }
+.aq-fit-envelope__iw { color: var(--ink); }
+.aq-fit-envelope__im { color: var(--ink-muted); }
+.aq-fit-envelope__in a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; margin-block: calc(var(--space-3) * -1); }
+
+/* the key: the three column names once, over the tags' columns */
+.aq-fit-envelope__tags { min-width: 0; }
+.aq-fit-envelope__key { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); margin: 0 0 var(--space-3); padding: 0 var(--space-4) 0 calc(var(--fe-stub, 64px) + var(--space-4));
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* the tags */
+.aq-fit-envelope__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-fit-envelope__tag { position: relative; display: grid; grid-template-columns: var(--fe-stub, 64px) minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6);
+  align-items: start; padding-right: var(--space-4); color: var(--ink); transform-origin: calc(var(--fe-stub, 64px) / 2) var(--fe-eye-y, 30px); }
+/* the tag's outline and paper: two clipped layers (a 1 px line-strong rim, the paper inside), the eyelet end cut */
+.aq-fit-envelope__tag::before, .aq-fit-envelope__tag::after { content: ""; position: absolute; z-index: 0; pointer-events: none;
+  clip-path: polygon(var(--fe-cut, 16px) 0, 100% 0, 100% 100%, var(--fe-cut, 16px) 100%, 0 calc(100% - var(--fe-cut, 16px)), 0 var(--fe-cut, 16px)); }
+.aq-fit-envelope__tag::before { inset: 0; background: var(--line-strong); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fit-envelope__tag::after { inset: 1px; background: var(--surface-raised);
+  clip-path: polygon(calc(var(--fe-cut, 16px) - 0.6px) 0, 100% 0, 100% 100%, calc(var(--fe-cut, 16px) - 0.6px) 100%, 0 calc(100% - var(--fe-cut, 16px) + 0.6px), 0 calc(var(--fe-cut, 16px) - 0.6px)); }
+.aq-fit-envelope__tag.is-hot::before { background: var(--flow); }
+.aq-fit-envelope__tag > *, .aq-fit-envelope__desk > *, .aq-fit-envelope__body > * { position: relative; z-index: 1; }
+
+/* the cord: from the envelope's dashed edge, across the gap, through the eyelet; a knot where it meets the edge */
+.aq-fit-envelope__cord { position: absolute; z-index: 2; left: calc(-1 * var(--fe-gap, 48px) - 1px); top: var(--fe-eye-y, 30px); width: calc(var(--fe-gap, 48px) + var(--fe-stub, 64px) / 2); height: 0;
+  border-top: 1.5px solid var(--line-strong); pointer-events: none; transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fit-envelope__cord::before { content: ""; position: absolute; left: -3px; top: -4.5px; width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-fit-envelope__tag.is-hot .aq-fit-envelope__cord { border-top-color: var(--flow); }
+.aq-fit-envelope__tag.is-hot .aq-fit-envelope__cord::before { background: var(--flow); }
+
+/* the stub: eyelet and number, a perforation between it and the tag's text */
+.aq-fit-envelope__desk, .aq-fit-envelope__body { display: contents; }
+.aq-fit-envelope__stub { grid-column: 1; grid-row: 1 / span 3; align-self: stretch; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: calc(var(--fe-eye-y, 30px) - 8px) 0 var(--space-3);
+  border-right: 1px dashed var(--line-strong); }
+.aq-fit-envelope__eye { position: relative; z-index: 3; width: 16px; height: 16px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--surface-sunken); }
+.aq-fit-envelope__no { font: 500 15px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+.aq-fit-envelope__t { grid-column: 2; margin: 0; padding: var(--space-4) 0; font: 400 17px/24px var(--font-sans); letter-spacing: -0.005em; text-wrap: pretty; }
+.aq-fit-envelope__ph { display: none; }
+.aq-fit-envelope__why, .aq-fit-envelope__inst { margin: 0; padding: var(--space-4) 0; font: 400 15px/22px var(--font-sans); }
+.aq-fit-envelope__why { grid-column: 3; color: var(--ink-muted); }
+.aq-fit-envelope__inst { grid-column: 4; color: var(--ink); }
+.aq-fit-envelope__more { grid-column: 2 / -1; margin: calc(-1 * var(--space-2)) 0 var(--space-3); font: 400 15px/22px var(--font-sans); }
+.aq-fit-envelope__more a, .aq-fit-envelope__iv a { display: inline-flex; align-items: center; min-height: 44px; margin-block: -11px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 4px; }
+.aq-fit-envelope__lab.is-shown { display: none; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-fit-envelope__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* folded tags show on desktop; the fold is for phones */
+.aq-fold:not(.is-open) .aq-fit-envelope__tag.aq-fold-x { display: grid; }
+.aq-fit-envelope__tags .aq-fold__btn { display: none; }
+
+/* 861-1100 px: the envelope full width on top (a narrow column would leave a tall empty box), the tags under it on one
+   cord from the envelope's foot through every eyelet; the need across the tag, why and instead under it, each labelled */
+@container (max-width: 1100px) {
+  .aq-fit-envelope { --fe-gap: var(--space-8); grid-template-columns: minmax(0, 1fr); row-gap: var(--fe-gap, 32px); }
+  .aq-fit-envelope__hold { position: static; }
+  .aq-fit-envelope__fig { max-width: 420px; }
+  .aq-fit-envelope__list { position: relative; }
+  .aq-fit-envelope__list::before { content: ""; position: absolute; z-index: 0; left: calc(var(--fe-stub, 64px) / 2 - 0.75px); top: calc(-1 * var(--fe-gap, 32px) - 1px); bottom: var(--space-6);
+    border-left: 1.5px solid var(--line-strong); }
+  .aq-fit-envelope__cord { display: none; }
+  /* the cord threads into the eyelet and out again (4 px above and below the ring), never across it */
+  .aq-fit-envelope__eye::before, .aq-fit-envelope__eye::after { content: ""; position: absolute; left: 50%; height: 4px; margin-left: -0.75px; border-left: 1.5px solid var(--line-strong); }
+  .aq-fit-envelope__eye::before { top: -6px; }
+  .aq-fit-envelope__eye::after { bottom: -6px; }
+  .aq-fit-envelope__key { display: none; }
+  .aq-fit-envelope__tag { grid-template-columns: var(--fe-stub, 64px) minmax(0, 1fr) minmax(0, 1fr); }
+  .aq-fit-envelope__t { grid-column: 2 / -1; padding-bottom: 0; }
+  .aq-fit-envelope__why { grid-column: 2; }
+  .aq-fit-envelope__inst { grid-column: 3; }
+  .aq-fit-envelope__why, .aq-fit-envelope__inst { padding-top: var(--space-2); }
+  .aq-fit-envelope__lab.is-shown { display: block; }
+}
+
+/* Phones: envelope first, then one chain of tags on one cord from the envelope's foot */
+@container (max-width: 860px) {
+  .aq-fit-envelope { --fe-gap: var(--space-6); --fe-stub: 52px; --fe-cut: 12px; --fe-eye-y: 22px; grid-template-columns: minmax(0, 1fr); row-gap: var(--fe-gap, 48px); margin-top: var(--space-6); }
+  .aq-fit-envelope__env { padding: var(--space-6) var(--space-4) var(--space-4); }
+  .aq-fit-envelope__fits { left: var(--space-3); top: var(--space-1); }
+  .aq-fit-envelope__fig { max-width: 250px; }
+  .aq-fit-envelope__band { margin-top: var(--space-3); }
+  .aq-fit-envelope__list { position: relative; gap: var(--space-2); }
+  .aq-fit-envelope__tag { grid-template-columns: var(--fe-stub, 52px) minmax(0, 1fr); column-gap: var(--space-3); padding-right: var(--space-4); }
+  .aq-fit-envelope__stub { grid-row: 1 / span 4; }
+  .aq-fit-envelope__t { grid-column: 2; padding: var(--space-3) 0; font-size: 16px; line-height: 22px; }
+  .aq-fit-envelope__why, .aq-fit-envelope__inst, .aq-fit-envelope__more { grid-column: 2; padding: 0 0 var(--space-3); font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-fit-envelope__more { margin: 0; }
+  /* PhoneKit on: the stub and the need are the head; why and instead open under it */
+  [data-pk-on] .aq-fit-envelope__ph { display: block; grid-column: 1 / -1; margin: 0 calc(-1 * var(--space-4)) 0 0; }
+  .aq-fit-envelope__list[data-pk-on] .aq-fit-envelope__head { display: grid; grid-template-columns: var(--fe-stub, 52px) minmax(0, 1fr) 44px; align-items: stretch; gap: 0; min-height: 52px; padding: 0; }
+  .aq-fit-envelope__head .aq-fit-envelope__stub { grid-row: auto; padding-bottom: var(--space-2); }
+  .aq-fit-envelope__pt { align-self: center; padding: var(--space-3) var(--space-1) var(--space-3) var(--space-3); font: 400 15px/21px var(--font-sans); color: var(--ink); }
+  .aq-fit-envelope__head .aq-phone-kit__chev { align-self: center; color: var(--ink-muted); }
+  .aq-fit-envelope__list[data-pk-on] .aq-fit-envelope__body { display: grid; grid-column: 2; padding-right: 0; }
+  .aq-fit-envelope__list[data-pk-on] .aq-fit-envelope__body .aq-fit-envelope__why { padding-top: 0; }
+  .aq-fit-envelope__head[aria-expanded="true"] .aq-fit-envelope__eye { border-color: var(--flow); }
+  .aq-fit-envelope__head[aria-expanded="true"] .aq-fit-envelope__no { color: var(--flow); }
+  .aq-fold:not(.is-open) .aq-fit-envelope__tag.aq-fold-x { display: none; }
+  .aq-fit-envelope__tags .aq-fold__btn { display: flex; }
+}
+/* 561-860 px: the envelope is wide; let the drawing fill more of it */
+@container (min-width: 561px) and (max-width: 860px) { .aq-fit-envelope__fig { max-width: 400px; } }
+/* with a fits list (ind-process): wide, the tags hang at mid-height of the envelope and the drawing is a little smaller;
+   from 861 px the fits list runs in two columns (a short measure, and the envelope no taller than its tags need). Tables without "in" rows are unchanged. */
+@container (min-width: 1101px) {
+  .aq-fit-envelope:has(.aq-fit-envelope__in) .aq-fit-envelope__tags { align-self: center; }
+  .aq-fit-envelope:has(.aq-fit-envelope__in) .aq-fit-envelope__fig { max-width: 340px; }
+  .aq-fit-envelope:has(.aq-fit-envelope__in) .aq-fit-envelope__list { gap: var(--space-6); }
+}
+@container (min-width: 861px) {
+  .aq-fit-envelope__in { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-fit-envelope__tag::before, .aq-fit-envelope__cord, .aq-fit-envelope__cord::before { transition: none; }
+}

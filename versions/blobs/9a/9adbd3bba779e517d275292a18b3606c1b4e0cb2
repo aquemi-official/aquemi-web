@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap");
+
+/* ---------- Base ---------- */
+.aq-root {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  -webkit-font-smoothing: antialiased;
+}
+.aq-root *:focus-visible, .aq-page *:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Logo: the navy file in light mode, the limestone file in dark mode (explicit theme or system setting) */
+.aq-logo--on-dark { display: none; }
+[data-theme="dark"] .aq-logo--on-light { display: none; }
+[data-theme="dark"] .aq-logo--on-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-logo--on-light { display: none; }
+  :root:not([data-theme="light"]) .aq-logo--on-dark { display: block; }
+}
+
+/* ---------- Page layout and type ---------- */
+.aq-page { container-type: inline-size; background: var(--surface); color: var(--ink); font: 400 16px/26px var(--font-sans); -webkit-font-smoothing: antialiased; }
+:where(.aq-page) *, :where(.aq-page) *::before, :where(.aq-page) *::after { box-sizing: border-box; }
+:where(.aq-page) a { color: var(--flow); }
+.aq-page h1, .aq-page h2, .aq-page h3, .aq-page h5, .aq-page p { margin: 0; }
+.aq-page h1, .aq-page h2, .aq-page h3 { text-wrap: balance; }
+.aq-in { max-width: var(--content-max); margin: 0 auto; padding-inline: var(--space-8); }
+.aq-section { padding-block: var(--space-16); }
+.aq-section + .aq-section { border-top: 1px solid var(--line); }
+/* Alternating ground (page.js wPage): every second plain section on surface-sunken, as the brand book's "alternating
+   sections". Inside it, surface means this ground, so components that paint the page ground (line masks, node fills)
+   match it. Raised panels and tables stay surface-raised and so stand out more, not less. */
+.aq-section--alt { background: var(--surface-sunken); --surface: var(--surface-sunken); }
+/* ---------- Plate: the frame a figure sits in inside a section (core.js wPlate) ----------
+   A `line` hairline round the drawing on `surface-raised`, generous padding, and an optional caption bottom right
+   in `ink-subtle` mono. Nothing else: no ruler ticks, no registration marks. */
+.aq-plate, .aq-plate--block { position: relative; border: 1px solid var(--line); padding: var(--space-8); background: var(--surface-raised); color: var(--ink); }
+.aq-plate__block {
+  display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-6);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle);
+}
+.aq-plate__block span + span::before { content: "·"; content: "·" / ""; margin-right: var(--space-3); }
+/* ---------- Fold: secondary rows behind "Show all N" (core.js wFold, block field fold) ---------- */
+.aq-fold:not(.is-open) .aq-fold-x { display: none; }
+.aq-fold__btn {
+  display: flex; align-items: center; gap: var(--space-2); width: 100%; min-height: 44px; margin: 0; padding: var(--space-3) 0;
+  background: none; border: 0; border-bottom: 1px solid var(--line); cursor: pointer;
+  font: 500 13px/20px var(--font-mono); letter-spacing: 0.04em; color: var(--flow); text-align: left;
+}
+.aq-fold__btn::before { content: "+"; display: inline-grid; place-items: center; width: 20px; height: 20px; border: 1px solid currentColor; border-radius: var(--radius-sm); font: 400 14px/1 var(--font-mono); }
+.aq-fold.is-open .aq-fold__btn::before { content: "−"; }
+.aq-fold__btn:hover { color: var(--ink); }
+/* Pass 12 (S6): the fold control is a real button on every look: never under the 44 px tap target, even where a look
+   restyles it (the child selector outranks a look's plain .aq-fold__btn rule) */
+.aq-fold > .aq-fold__btn { min-height: var(--aq-hit); }
+.aq-stack { display: flex; flex-direction: column; gap: var(--space-4); }
+.aq-stack-l { display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-eyebrow { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); text-wrap: balance; }
+.aq-lead { font: 400 18px/28px var(--font-sans); color: var(--ink-muted); max-width: var(--text-max); }
+.aq-small { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-display-xl { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; text-wrap: balance; }
+.aq-display { font: 300 56px/60px var(--font-sans); letter-spacing: -0.025em; text-wrap: balance; }
+.aq-h1 { font: 400 40px/46px var(--font-sans); letter-spacing: -0.02em; text-wrap: balance; max-width: 22ch; }
+.aq-h2 { font: 400 28px/34px var(--font-sans); letter-spacing: -0.01em; }
+.aq-h3 { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
+
+/* Placeholder: a fact only Aquemi can supply, written [in square brackets] until confirmed.
+   Pass 12 (S5): a chip that wraps keeps its tint, padding and corners on every line (box-decoration-break: clone), so
+   the highlight never splits into a ragged half; a hair of block padding gives wrapped lines room. On phones (below)
+   it stays between 13 px (--aq-chip-phone) and 16 px, so a placeholder inside a display-size figure or headline never
+   wraps to four lines of 40 px mono; the layout around it must hold the real value (is-clean shows it). */
+.aq-ph {
+  background: var(--caution-tint); color: var(--ink); font-family: var(--font-mono); font-size: max(12px, 0.86em); padding: 0.06em 3px; border-radius: var(--radius-sm);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.is-clean .aq-ph { background: none; color: inherit; font-family: inherit; font-size: inherit; padding: 0; }
+
+/* ---------- Section head: optional eyebrow, h2, optional one-sentence intro (core.js wSecHead) ---------- */
+.aq-sec-head { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.aq-sec-head > .aq-eyebrow { margin: 0; }
+.aq-sec-head > .aq-lead { margin-top: var(--space-1); }
+
+/* ---------- Index: the one numbering style ("01"), mono, ink-subtle, in the left column of a row ---------- */
+.aq-index { font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); white-space: nowrap; }
+
+/* ---------- Rows: the one list grammar. Hairline-separated rows; index column, title, one line of detail ----------
+   Desktop: index | title | detail on one line (and an optional drawing at the right). Phones: index | title, detail below. */
+.aq-rows { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.aq-rows > li { border-top: 1px solid var(--line); min-width: 0; }
+.aq-rows__row {
+  display: grid; grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 7fr);
+  column-gap: var(--space-6); align-items: baseline;
+  padding-block: var(--space-4); color: var(--ink); text-decoration: none;
+}
+.aq-rows:has(.aq-rows__art) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 7fr) var(--space-12); }
+.aq-rows__t { margin: 0; min-width: 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-rows__d { grid-column: 3; margin: 0; min-width: 0; max-width: var(--text-max); font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-rows__d .aq-tags { margin-top: var(--space-2); }
+.aq-rows__art { grid-column: 4; grid-row: 1; align-self: start; justify-self: end; }
+:where(.aq-page) a.aq-rows__row { color: var(--ink); }
+a.aq-rows__row .aq-rows__t::after { content: "\a0\2192"; color: var(--flow); }
+a.aq-rows__row:hover .aq-rows__t { color: var(--flow); }
+a.aq-rows__row:hover .aq-rows__art { background-color: var(--flow); }
+a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+@container (max-width: 860px) {
+  .aq-in { padding-inline: var(--space-4); }
+  .aq-section { padding-block: var(--space-12); }
+  .aq-plate { padding: var(--space-6) var(--space-4); }
+  .aq-display-xl { font-size: 44px; line-height: 50px; }
+  .aq-display { font-size: 38px; line-height: 44px; }
+  .aq-h1 { font-size: 30px; line-height: 36px; }
+  .aq-rows__row, .aq-rows:has(.aq-rows__art) .aq-rows__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); padding-block: var(--space-3); }
+  .aq-rows__t { font-size: 16px; line-height: 24px; }
+  .aq-rows__d { grid-column: 2; font-size: 14px; line-height: 22px; }
+  .aq-rows__art { display: none; }
+}
+
+/* A micro sign inside uppercase labels stays µ (µS/cm), never M */
+.aq-unit { text-transform: none; }
+
+/* ---------- Phone floor (pass 12, visual-audit §2 S4, S5, S6, S13, S14) ----------
+   Tokens (tokens.json, family "phone"; looks read them as var(--name, fallback) so they never wait on this file):
+   --aq-read-phone 14px  the floor for every reading line on phones (notes, basis lines, list detail, captions);
+                         mono labels and eyebrows may stay 11-12 px
+   --aq-faq-phone  15px  FAQ answers and other answer text
+   --aq-chip-phone 13px  a [placeholder] chip set in 15 px body
+   --aq-num-phone  44px  a big numeral set inline to the left of its title (40-48 px), never 76-100 px above it
+   --aq-hit        44px  the minimum tap target
+   --aq-sheet-rail 6px   a drawing-sheet strip or frame on phones under 600 px
+   Rules every look follows in its own CSS: below 600 px, step indents and stair offsets drop to zero (S13). A look that
+   sets a plain (class-less) link in its text to flex, inline-flex or inline-block, or pads it itself, lists that link's
+   parent in the hit-padding reset below or gives the link a class: the automatic inline hit padding is for inline
+   links only. */
+
+/* .aq-hit (S6): a 44 px hit box on a small link or control with no visual change. An invisible ::after, centred on the
+   element and at least --aq-hit square, takes the tap; the element is its containing block. Put it on inline "→" links,
+   step-title links and chips whose ::after is free (a look that already draws with ::after uses .aq-hit--before). */
+.aq-hit, .aq-hit--before { position: relative; }
+.aq-hit::after, .aq-hit--before::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--aq-hit)); height: max(100%, var(--aq-hit));
+  transform: translate(-50%, -50%); background: none; pointer-events: auto;
+}
+/* Plain links in running text inside a section (no class: the links a look writes into a sentence or a note) reach
+   44 px the inline way: block padding on an inline box widens what takes the tap without moving a line or a pixel of
+   ink, so no pseudo-element and no counter-margin are needed and a look's own ::after arrow is left alone. A look's
+   own padding for its links still wins (base loads first). */
+:where(.aq-section, .aq-hero) :where(p, li, dd, td, th, span, small, figcaption, h3, h4) > a:not([class]) {
+  --aq-hit-pad: max(0px, calc((var(--aq-hit) - 1.1em) / 2));
+  padding-block: var(--aq-hit-pad, 0px);
+}
+/* Looks that lay their plain links out as boxes (flex / inline-flex / inline-block, or a min-height of their own) keep
+   their own sizing: the inline hit padding would grow them. A look that does this adds its link's parent here or gives
+   the link a class (and .aq-hit where it is under 44 px). */
+:where(.aq-strata-run__base, .aq-standard-wires__chip, .aq-source-skid__go, .aq-site-tiles__go,
+       .aq-cert-readout__go, .aq-pipe-collage__go, .aq-request-menu__got) > a:not([class]) { --aq-hit-pad: 0px; }
+
+/* .aq-sheetframe (S14): a drawing-sheet frame (outer border, inner frame, A-D zone gutters, a colophon strip) that
+   gives its whole width back to the drawing on phones. Hooks: the frame itself, __inner (the inner frame), __zones
+   (zone number or letter gutters and rulers), __strip (the colophon or title strip down one edge). Desktop: nothing
+   changes. Below 600 px: no inner frame, no zone gutters, and the strip becomes a --aq-sheet-rail edge rail (its
+   text kept for screen readers). */
+@container (max-width: 600px) {
+  .aq-sheetframe { padding: 0; border-width: 0; outline: 0; }
+  .aq-sheetframe .aq-sheetframe__inner { margin: 0; padding: 0; border: 0; outline: 0; box-shadow: none; }
+  .aq-sheetframe .aq-sheetframe__zones { display: none; }
+  .aq-sheetframe .aq-sheetframe__strip {
+    flex: none; width: var(--aq-sheet-rail); min-width: 0; max-width: var(--aq-sheet-rail); padding: 0; overflow: hidden;
+    color: transparent; font-size: 0; line-height: 0; writing-mode: horizontal-tb;
+  }
+  .aq-sheetframe .aq-sheetframe__strip > * { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+@container (max-width: 860px) {
+  /* S5: placeholders between 13 px and 16 px on phones, whatever the size of the text around them */
+  .aq-ph { font-size: max(var(--aq-chip-phone), min(0.86em, 16px)); }
+  /* S6: the fold control as a full-width 44 px button with a 24 px key and 14 px words */
+  .aq-fold > .aq-fold__btn { min-height: var(--aq-hit); padding-block: var(--space-2); font-size: 14px; }
+  .aq-fold > .aq-fold__btn::before { width: var(--space-6); height: var(--space-6); flex: none; }
+}

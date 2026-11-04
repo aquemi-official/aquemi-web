@@ -1,0 +1,99 @@
+/* ---------- ReviewReticles: assessment areas as a drawing register with one viewfinder (look "review-reticles") ----------
+   A limestone band (data-theme="light" on the section: paper in both themes). The sheet: an outer navy hairline frame,
+   a zone band with numbers (top, bottom) and letters (sides), an inner frame. Inside, the register (7 of 12) and the
+   viewer (5 of 12) split by a hairline. Register rows: number and area code in mono, the name light 32 px (the
+   control), the line 15 px; the picked row has a flow rule on its left and its number in flow. The viewer: a square
+   viewfinder (navy corner brackets, faint crosshair, "01 / 06" in mono) whose window holds a vertical reel of the
+   drawings, slid to the picked one (240 ms cubic-bezier(.2,.85,.25,1), instant for keyboard and reduced motion); in the sheet's
+   bottom right corner a title block (Aquemi, the section's nav name, the area, its number). The scan line is a flow hairline the
+   motion sweeps once. Phones: no zones and no viewer; each row has its own small square viewfinder. */
+.aq-review-reticles-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; }
+.aq-review-reticles { --rr-line: color-mix(in srgb, var(--navy) 45%, transparent); --rr-faint: color-mix(in srgb, var(--on-limestone-muted) 25%, transparent); position: relative; padding: var(--space-8); border: 1px solid var(--rr-line, var(--line-strong)); color: var(--on-limestone); }
+.aq-review-reticles__z { position: absolute; display: flex; font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-limestone-muted); }
+.aq-review-reticles__z span { flex: 1; display: grid; place-items: center; }
+.aq-review-reticles__z--t, .aq-review-reticles__z--b { left: var(--space-8); right: var(--space-8); height: var(--space-8); }
+.aq-review-reticles__z--t { top: 0; }
+.aq-review-reticles__z--b { bottom: 0; }
+.aq-review-reticles__z--t span + span, .aq-review-reticles__z--b span + span { border-left: 1px solid var(--rr-line, var(--line-strong)); }
+.aq-review-reticles__z--l, .aq-review-reticles__z--r { top: var(--space-8); bottom: var(--space-8); width: var(--space-8); flex-direction: column; }
+.aq-review-reticles__z--l { left: 0; }
+.aq-review-reticles__z--r { right: 0; }
+.aq-review-reticles__z--l span + span, .aq-review-reticles__z--r span + span { border-top: 1px solid var(--rr-line, var(--line-strong)); }
+.aq-review-reticles__sheet { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border: 1px solid var(--rr-line, var(--line-strong)); }
+
+/* the register */
+.aq-review-reticles__reg { list-style: none; margin: 0; padding: var(--space-6) var(--space-8) var(--space-8); }
+.aq-review-reticles__item { position: relative; display: grid; grid-template-columns: var(--space-12) var(--space-16) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-4) 0; border-bottom: 1px solid var(--rr-faint, var(--line)); }
+.aq-review-reticles__item::before { content: ""; position: absolute; left: calc(-1 * var(--space-8)); top: -1px; bottom: -1px; border-left: 3px solid var(--flow); transform: scaleY(0); transform-origin: 50% 0; transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
+.aq-review-reticles__item.is-on::before { transform: none; }
+.aq-review-reticles__no2, .aq-review-reticles__code { grid-row: 1; padding-top: var(--space-3); font: 500 13px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); transition: color 160ms ease; }
+.aq-review-reticles__no2 { grid-column: 1; }
+.aq-review-reticles__code { grid-column: 2; font-size: 12px; letter-spacing: 0.08em; }
+.aq-review-reticles__item.is-on .aq-review-reticles__no2, .aq-review-reticles__item.is-on .aq-review-reticles__code { color: var(--flow); }
+.aq-review-reticles__t { grid-column: 3; grid-row: 1; margin: 0; font: 300 32px/40px var(--font-sans); letter-spacing: -0.02em; }
+.aq-review-reticles__pick { display: block; width: 100%; min-height: var(--space-12); margin: 0; padding: 0; border: 0; background: none; font: inherit; letter-spacing: inherit; color: var(--on-limestone); text-align: left; text-decoration: none; cursor: pointer; }
+.aq-review-reticles__pick:focus-visible { outline: 2px solid var(--flow); outline-offset: var(--space-1); }
+a.aq-review-reticles__pick:hover { color: var(--flow); }
+.aq-review-reticles__d { grid-column: 3; grid-row: 2; margin: 0; max-width: 46ch; font: 400 15px/22px var(--font-sans); color: var(--on-limestone-muted); text-wrap: pretty; }
+
+/* viewfinders (the big one in the viewer, the small ones on phones) */
+.aq-review-reticles__vf { --in: var(--space-3); position: relative; display: block; border: 1px solid var(--rr-faint, var(--line)); overflow: hidden; }
+.aq-review-reticles__br { position: absolute; width: var(--space-8); height: var(--space-8); border: 0 solid var(--navy); transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-review-reticles__br--tl { left: var(--in, var(--space-3)); top: var(--in, var(--space-3)); border-left-width: 2px; border-top-width: 2px; }
+.aq-review-reticles__br--tr { right: var(--in, var(--space-3)); top: var(--in, var(--space-3)); border-right-width: 2px; border-top-width: 2px; }
+.aq-review-reticles__br--bl { left: var(--in, var(--space-3)); bottom: var(--in, var(--space-3)); border-left-width: 2px; border-bottom-width: 2px; }
+.aq-review-reticles__br--br { right: var(--in, var(--space-3)); bottom: var(--in, var(--space-3)); border-right-width: 2px; border-bottom-width: 2px; }
+.aq-review-reticles__sheet:hover .aq-review-reticles__big .aq-review-reticles__br--tl { transform: translate(var(--space-2), var(--space-2)); }
+.aq-review-reticles__sheet:hover .aq-review-reticles__big .aq-review-reticles__br--tr { transform: translate(calc(-1 * var(--space-2)), var(--space-2)); }
+.aq-review-reticles__sheet:hover .aq-review-reticles__big .aq-review-reticles__br--bl { transform: translate(var(--space-2), calc(-1 * var(--space-2))); }
+.aq-review-reticles__sheet:hover .aq-review-reticles__big .aq-review-reticles__br--br { transform: translate(calc(-1 * var(--space-2)), calc(-1 * var(--space-2))); }
+.aq-review-reticles__cross { position: absolute; inset: 0; }
+.aq-review-reticles__cross::before, .aq-review-reticles__cross::after { content: ""; position: absolute; background: color-mix(in srgb, var(--on-limestone-muted) 22%, transparent); }
+.aq-review-reticles__cross::before { left: 50%; top: var(--space-6); bottom: var(--space-6); width: 1px; }
+.aq-review-reticles__cross::after { top: 50%; left: var(--space-6); right: var(--space-6); height: 1px; }
+.aq-review-reticles__no { position: absolute; left: calc(var(--in, var(--space-3)) + var(--space-3)); top: calc(var(--in, var(--space-3)) + var(--space-2)); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-limestone-muted); }
+.aq-review-reticles__sel { color: var(--flow); }
+.aq-review-reticles__pic { position: absolute; inset: 0; display: grid; place-items: center; }
+.aq-review-reticles__iso { display: block; width: 100%; height: 100%; }
+.aq-review-reticles__ic { width: var(--space-16); height: var(--space-16); background: var(--navy); }
+.aq-review-reticles__scan { position: absolute; left: 0; right: 0; top: 0; border-top: 1.5px solid var(--flow); opacity: 0; }
+
+/* the viewer: the reel in the big viewfinder, the title block under it */
+.aq-review-reticles__view { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-8) var(--space-8) 0; border-left: 1px solid var(--rr-line, var(--line-strong)); }
+.aq-review-reticles__big { aspect-ratio: 1 / 1; }
+.aq-review-reticles__win { position: absolute; inset: var(--space-12) var(--space-16); overflow: hidden; }
+.aq-review-reticles__reel { display: block; height: calc(var(--n, 1) * 100%); transform: translateY(calc(var(--sel, 0) * -100% / var(--n, 1))); transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
+.aq-review-reticles[data-still] .aq-review-reticles__reel, .aq-review-reticles[data-still] .aq-review-reticles__item::before { transition: none; }
+.aq-review-reticles__still { position: relative; display: block; height: calc(100% / var(--n, 1)); }
+.aq-review-reticles__tb { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; margin: auto calc(-1 * var(--space-8)) 0; border-top: 1px solid var(--rr-line, var(--line-strong)); }
+.aq-review-reticles__tb span { padding: var(--space-2) var(--space-3); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.aq-review-reticles__tb span + span { border-left: 1px solid var(--rr-line, var(--line-strong)); }
+.aq-review-reticles__tb .aq-review-reticles__tbt { font: 400 13px/16px var(--font-sans); letter-spacing: 0; text-transform: none; color: var(--on-limestone); }
+.aq-review-reticles__mini { display: none; }
+@media (prefers-reduced-motion: reduce) { .aq-review-reticles__reel, .aq-review-reticles__item::before, .aq-review-reticles__br { transition: none; } }
+
+@container (max-width: 1000px) { .aq-review-reticles__t { font-size: 26px; line-height: 32px; } .aq-review-reticles__win { inset: var(--space-12); } }
+@container (max-width: 860px) {
+  .aq-review-reticles-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+  /* phones: the register alone, a square viewfinder beside each area's name and line */
+  .aq-review-reticles { padding: 0; border: 0; }
+  .aq-review-reticles__z, .aq-review-reticles__view, .aq-review-reticles__item::before { display: none; }
+  .aq-review-reticles__sheet { display: block; border: 0; }
+  .aq-review-reticles__reg { padding: 0; border-top: 1px solid var(--rr-faint, var(--line)); }
+  .aq-review-reticles__item { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); grid-template-rows: auto auto 1fr; column-gap: var(--space-4); row-gap: var(--space-1); }
+  .aq-review-reticles__mini { --in: var(--space-1); display: block; grid-column: 1; grid-row: 1 / span 3; aspect-ratio: 1 / 1; }
+  .aq-review-reticles__mini .aq-review-reticles__br { width: var(--space-4); height: var(--space-4); }
+  .aq-review-reticles__mini .aq-review-reticles__pic { inset: var(--space-4) var(--space-3) var(--space-3); }
+  .aq-review-reticles__mini .aq-review-reticles__cross::before { top: var(--space-3); bottom: var(--space-3); }
+  .aq-review-reticles__mini .aq-review-reticles__cross::after { left: var(--space-3); right: var(--space-3); }
+  .aq-review-reticles__no2, .aq-review-reticles__code { grid-column: 2; grid-row: 1; padding-top: 0; }
+  .aq-review-reticles__code { margin-left: var(--space-8); }
+  .aq-review-reticles__item.is-on .aq-review-reticles__no2, .aq-review-reticles__item.is-on .aq-review-reticles__code { color: var(--on-limestone-muted); }
+  .aq-review-reticles__t { grid-column: 2; grid-row: 2; font-size: 22px; line-height: 28px; }
+  .aq-review-reticles__pick { min-height: var(--space-12); }
+  .aq-review-reticles__d { grid-column: 2; grid-row: 3; font-size: 14px; line-height: 20px; }
+  /* pass 12 (minor): the viewfinder tiles at 96 px (were about 130), so the names and lines get the width */
+  .aq-review-reticles__item { grid-template-columns: 96px minmax(0, 1fr); }
+  .aq-review-reticles__mini .aq-review-reticles__br { width: var(--space-3); height: var(--space-3); }
+  .aq-review-reticles__mini .aq-review-reticles__pic { inset: var(--space-3) var(--space-2) var(--space-2); }
+}

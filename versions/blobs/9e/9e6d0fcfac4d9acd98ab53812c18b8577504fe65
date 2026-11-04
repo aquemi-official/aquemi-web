@@ -1,0 +1,65 @@
+/* ---------- CostSkid: running costs wired to the parts of one skid (look "cost-skid") ----------
+   Title left, the IsoKit skid right (limestone-ink line art on the section ground, no sheet), numbered leaders to a
+   number column at its right; the running-cost table under it on hairlines: mono number, item, value, set by. A
+   pointed row turns its parts, leader and number flow and takes a flow-tint ground. */
+.aq-cost-skid__top { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-8); align-items: center; }
+.aq-cost-skid .aq-sec-head .aq-h1 { font-weight: 300; font-size: 64px; line-height: 68px; letter-spacing: -0.035em; }
+.aq-cost-skid__fig { margin: 0; }
+.aq-cost-skid__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-cost-skid__svg .aq-iso__leader-line { stroke: var(--ink-muted); }
+.aq-cost-skid__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-cost-skid__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
+.aq-cost-skid__pin {
+  display: grid; place-items: center; width: var(--space-8); height: var(--space-8); margin-left: var(--space-1);
+  border: 1px solid var(--line-strong); background: var(--surface); font: 400 12px/1 var(--font-mono); color: var(--ink);
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.aq-cost-skid__pin.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+.aq-cost-skid__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.aq-cost-skid__table { margin-top: var(--space-8); }
+.aq-cost-skid__table { width: 100%; border-collapse: collapse; }
+.aq-cost-skid__table thead th {
+  padding: 0 var(--space-4) var(--space-3) 0; text-align: left; font: 400 12px/17px var(--font-mono); color: var(--ink-muted);
+  border-bottom: 1px solid var(--line-strong);
+}
+.aq-cost-skid__table thead th:first-child { width: var(--space-12); }
+.aq-cost-skid__row > * { padding: var(--space-4) var(--space-4) var(--space-4) 0; vertical-align: top; text-align: left; border-bottom: 1px solid var(--line); transition: background-color 160ms ease; }
+.aq-cost-skid__row { outline: none; }
+.aq-cost-skid__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-cost-skid__row > .aq-cost-skid__n { padding-left: var(--space-3); font: 400 12px/24px var(--font-mono); color: var(--ink-muted); }
+.aq-cost-skid__p { width: 34%; font: 400 17px/24px var(--font-sans); }
+.aq-cost-skid__v { width: 30%; font: 400 14px/22px var(--font-mono); }
+.aq-cost-skid__m { font-size: 15px; line-height: 22px; color: var(--ink-muted); }
+.aq-cost-skid__k { display: none; }
+.aq-cost-skid__row.is-on > * { background: var(--flow-tint); }
+.aq-cost-skid__row.is-on .aq-cost-skid__n { color: var(--flow); }
+
+/* the phone's third-column button (desktop shows the column itself) */
+.aq-cost-skid__why { display: none; }
+
+@container (max-width: 860px) {
+  .aq-cost-skid__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-cost-skid .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-cost-skid__pin { width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-cost-skid__table { margin-top: var(--space-6); }
+  .aq-cost-skid__table, .aq-cost-skid__table tbody { display: block; }
+  .aq-cost-skid__table thead { display: none; }
+  /* pass 12: two compact lines per row (number + item; value + the third column's 44 px button), all rows open */
+  .aq-cost-skid__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr) auto; column-gap: var(--space-2); padding-block: var(--space-3) var(--space-2); border-bottom: 1px solid var(--line); }
+  .aq-cost-skid__row > * { display: block; width: auto; padding: 0; border: 0; }
+  .aq-cost-skid__row > .aq-cost-skid__n { grid-row: 1; grid-column: 1; padding-left: 0; }
+  .aq-cost-skid__row > .aq-cost-skid__p { grid-row: 1; grid-column: 2 / -1; font-size: 16px; line-height: 22px; }
+  .aq-cost-skid__row > .aq-cost-skid__v { grid-row: 2; grid-column: 2; align-self: center; padding-block: var(--space-1); font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+  .aq-cost-skid__row > .aq-cost-skid__why { display: block; grid-row: 2; grid-column: 3; align-self: start; }
+  .aq-cost-skid__row > .aq-cost-skid__m { display: none; grid-row: 3; grid-column: 2 / -1; padding: 0 0 var(--space-2); font-size: 15px; line-height: 22px; }
+  .aq-cost-skid__row.is-open > .aq-cost-skid__m { display: block; }
+  .aq-cost-skid__v .aq-cost-skid__k { display: none; }
+  .aq-cost-skid__k { display: block; font: 400 12px/17px var(--font-mono); color: var(--ink-muted); }
+  .aq-cost-skid__wb { display: inline-flex; align-items: center; min-height: 44px; margin: 0 calc(-1 * var(--space-2)) 0 0; padding: 0 0 0 var(--space-2); border: 0; background: none; color: var(--flow); font: 400 13px/16px var(--font-mono); letter-spacing: 0.04em; cursor: pointer; white-space: nowrap; }
+  .aq-cost-skid__wb .aq-phone-kit__chev { width: 32px; height: 44px; margin-left: 0; }
+  .aq-cost-skid__wb:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  /* a row title that links: a 44 px tall hit box over the line, no visual change */
+  .aq-cost-skid__p a { position: relative; }
+  .aq-cost-skid__p a::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+}

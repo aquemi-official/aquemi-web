@@ -1,0 +1,79 @@
+/* ---------- CutoverSchedule: an upgrade as a schedule with your system's water line (look "cutover-schedule") ----------
+   Rows in a 12-column split: number (mono), the step (5 columns: name in light 24 px, line, hold stamp), the track
+   (6 columns, a faint column rule per step). Bars are hairline-framed boxes on the track; the shutdown step's bar is
+   navy (on-site work with the system down), a hold bar ends in a diamond on its right end. Above, the water line in
+   flow across the track, broken at the shutdown with a dashed bracket and its label. "Not to scale" in mono at
+   the foot. Phones: the step's text over its track. */
+.aq-cutover-schedule { --cols: var(--space-8) minmax(0, 5fr) minmax(0, 6fr); }
+.aq-cutover-schedule__lane, .aq-cutover-schedule__row { display: grid; grid-template-columns: var(--cols, auto); column-gap: var(--space-6); }
+.aq-cutover-schedule__lane { align-items: end; padding-bottom: var(--space-4); border-bottom: 1px solid var(--line-strong); }
+.aq-cutover-schedule__lk { grid-column: 2; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow); text-align: right; }
+.aq-cutover-schedule__ltrack { grid-column: 3; position: relative; height: var(--space-12); }
+.aq-cutover-schedule__water { position: absolute; bottom: var(--space-2); height: 0; border-top: 3px solid var(--flow); transform-origin: 0 50%; }
+.aq-cutover-schedule__gap { position: absolute; bottom: 0; height: var(--space-6); border: 1.5px dashed var(--ink-muted); border-bottom: 0; }
+.aq-cutover-schedule__gl { position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); margin-bottom: var(--space-1); white-space: nowrap; font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+.aq-cutover-schedule__rows { list-style: none; margin: 0; padding: 0; }
+.aq-cutover-schedule__row { align-items: stretch; border-bottom: 1px solid var(--line); }
+.aq-cutover-schedule__n { padding-top: var(--space-6); font: 500 12px/30px var(--font-mono); color: var(--ink-subtle); }
+.aq-cutover-schedule__txt { padding: var(--space-6) 0; }
+.aq-cutover-schedule__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); }
+.aq-cutover-schedule__go { color: inherit; text-decoration: none; }
+.aq-cutover-schedule__go::after { content: " →"; color: var(--flow); }
+.aq-cutover-schedule__d { margin: var(--space-2) 0 0; max-width: 46ch; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-cutover-schedule__hold { display: inline-flex; gap: var(--space-2); align-items: center; margin: var(--space-3) 0 0; padding: var(--space-1) var(--space-2); border: 1.5px solid var(--ink); font: 500 12px/16px var(--font-mono); color: var(--ink); }
+.aq-cutover-schedule__hk { padding-right: var(--space-2); border-right: 1px solid var(--ink); text-transform: uppercase; letter-spacing: 0.08em; }
+.aq-cutover-schedule__track { position: relative; min-height: var(--space-16); }
+.aq-cutover-schedule__grid span { position: absolute; top: 0; bottom: 0; border-left: 1px dashed var(--line); }
+.aq-cutover-schedule__bar { position: absolute; top: 50%; height: var(--space-6); margin-top: calc(-1 * var(--space-3)); border: 1.5px solid var(--ink); background: var(--surface-raised); transform-origin: 0 50%; transition: background-color 200ms ease; }
+.aq-section--alt .aq-cutover-schedule__bar { background: var(--surface); }
+.aq-cutover-schedule__row.is-cut .aq-cutover-schedule__bar { background: var(--ink); border-color: var(--ink); }
+.aq-cutover-schedule__diamond { position: absolute; right: calc(-1 * var(--space-3)); top: 50%; width: var(--space-4); height: var(--space-4); margin-top: calc(-1 * var(--space-2)); background: var(--surface); border: 2px solid var(--ink); transform: rotate(45deg); }
+.aq-cutover-schedule__row:hover .aq-cutover-schedule__bar { background: var(--flow-tint); border-color: var(--flow); }
+.aq-cutover-schedule__row.is-cut:hover .aq-cutover-schedule__bar { background: var(--ink); }
+.aq-cutover-schedule__nts { margin: var(--space-3) 0 0; text-align: right; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* the phone strip (mini schedule) is phone-only */
+.aq-cutover-schedule__mini { display: none; }
+
+@container (max-width: 860px) {
+  /* Phones (pass 12): the lane and the per-row tracks give way to one mini schedule held under the header (PhoneKit
+     sticky strip, 96 px): the step number in view on the left, then the water line with its shutdown gap and all the
+     bars stair-stepped, the bar of the row in view filled flow. Rows are compact cards: number, name, line, hold. */
+  .aq-cutover-schedule { --cols: var(--space-8) minmax(0, 1fr); }
+  .aq-cutover-schedule__lane, .aq-cutover-schedule__track { display: none; }
+  .aq-cutover-schedule__mini {
+    display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-3); align-items: stretch;
+    height: 96px; box-sizing: border-box; padding: var(--space-3) 0; background: var(--surface); border-bottom: 1px solid var(--line-strong);
+    box-shadow: calc(-1 * var(--space-4)) 0 0 var(--surface), var(--space-4) 0 0 var(--surface);
+  }
+  .aq-cutover-schedule__mn { position: relative; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--line); }
+  .aq-cutover-schedule__mn > span { display: none; font: 300 var(--aq-num-phone, 44px)/1 var(--font-sans); letter-spacing: -0.04em; color: var(--flow); font-variant-numeric: tabular-nums; }
+  .aq-cutover-schedule__mn > span:first-child, .aq-cutover-schedule[data-pk-active] .aq-cutover-schedule__mn > span.is-pk-active { display: block; }
+  .aq-cutover-schedule[data-pk-active] .aq-cutover-schedule__mn > span:first-child:not(.is-pk-active) { display: none; }
+  .aq-cutover-schedule__mn small { font: 500 12px/16px var(--font-mono); color: var(--ink-subtle); margin-top: var(--space-1); }
+  .aq-cutover-schedule__mg { position: relative; display: grid; grid-template-rows: 16px 8px minmax(0, 1fr); min-width: 0; }
+  .aq-cutover-schedule__mk { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--flow); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .aq-cutover-schedule__mw { position: relative; }
+  .aq-cutover-schedule__mw .aq-cutover-schedule__water { bottom: 2px; border-top-width: 2px; }
+  .aq-cutover-schedule__mgap { position: absolute; bottom: 0; height: 6px; border: 1px dashed var(--ink-muted); border-bottom: 0; box-sizing: border-box; }
+  .aq-cutover-schedule__mb { position: relative; margin-top: var(--space-1); }
+  .aq-cutover-schedule__mb > span { position: absolute; min-height: 4px; box-sizing: border-box; border: 1px solid var(--ink); background: var(--surface-raised); transition: background-color 200ms ease, border-color 200ms ease; }
+  .aq-cutover-schedule__mb > span.is-cut { background: var(--ink); }
+  .aq-cutover-schedule__mb > span.is-pk-active { background: var(--flow); border-color: var(--flow); }
+  .aq-cutover-schedule__row { grid-template-columns: var(--cols, auto); border-bottom-color: var(--line); }
+  .aq-cutover-schedule__txt { padding: var(--space-4) 0; }
+  .aq-cutover-schedule__n { padding-top: var(--space-4); font-size: 13px; line-height: 26px; transition: color 200ms ease; }
+  .aq-cutover-schedule__row.is-pk-active .aq-cutover-schedule__n { color: var(--flow); }
+  .aq-cutover-schedule__t { font-size: 20px; line-height: 26px; }
+  .aq-cutover-schedule__d { margin-top: var(--space-1); font-size: 15px; line-height: 22px; }
+  .aq-cutover-schedule__hold { margin-top: var(--space-2); font-size: 12px; }
+  /* pass 12 verify (S4): the HOLD key stays mono; the sentence after it reads at 14 px */
+  .aq-cutover-schedule__hold > span:last-child { font: 400 14px/20px var(--font-sans); letter-spacing: 0; text-transform: none; }
+  .aq-cutover-schedule__go { position: relative; }
+  .aq-cutover-schedule__go::before { content: ""; position: absolute; inset: 50% auto auto 0; width: 100%; min-height: var(--aq-hit, 44px); transform: translateY(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-cutover-schedule__mb > span, .aq-cutover-schedule__n { transition: none; }
+}
+.aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
+@container (max-width: 860px) { .aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }

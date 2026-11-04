@@ -1,0 +1,116 @@
+/* ---------- LimitBento: limits as a bento, one oversized numeral per tile, a navy water column through the middle
+   (look "limit-bento"). Desktop: three columns, heading and the first tile left, the column through both rows in the
+   middle, the other tiles right. Tiles alternate surface-raised and limestone (is-paper). In the dark theme the paper tiles take the raised
+   dark surface too (round C), so the cards read as one theme beside the navy column. ---------- */
+.aq-limit-bento {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr) minmax(0, 1fr);
+  grid-auto-rows: minmax(0, auto); gap: var(--space-4);
+}
+.aq-limit-bento__head { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: var(--space-4); padding: var(--space-2) var(--space-4) var(--space-6) 0; }
+.aq-limit-bento__head .aq-h1 { font-size: 48px; line-height: 52px; max-width: 12ch; }
+.aq-limit-bento__chip { align-self: flex-start; margin: 0; padding: var(--space-1) var(--space-3); background: var(--navy); color: var(--on-navy); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-limit-bento__tiles { display: contents; list-style: none; margin: 0; padding: 0; }
+
+/* Tile */
+.aq-limit-bento__tile {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-2); min-height: 0;
+  padding: var(--space-6); background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line);
+}
+.aq-limit-bento__tile.is-paper { background: var(--limestone); color: var(--on-limestone); border-color: transparent; }
+.aq-limit-bento__tile:nth-child(1) { grid-column: 1; grid-row: 2; }
+.aq-limit-bento__tile:nth-child(2) { grid-column: 3; grid-row: 1; }
+.aq-limit-bento__tile:nth-child(3) { grid-column: 3; grid-row: 2; }
+.aq-limit-bento__tile:nth-child(n+4) { grid-column: auto; grid-row: auto; }
+/* corner crosses, as on a cut sheet */
+.aq-limit-bento__tile::before, .aq-limit-bento__tile::after { content: ""; position: absolute; top: var(--space-3); right: var(--space-3); width: var(--space-3); height: 1px; background: var(--line-strong); }
+.aq-limit-bento__tile::after { width: 1px; height: var(--space-3); right: calc(var(--space-3) + var(--space-3) / 2); }
+.aq-limit-bento__tile::before { top: calc(var(--space-3) + var(--space-3) / 2); }
+.aq-limit-bento__top { display: flex; align-items: baseline; gap: var(--space-3); padding-right: var(--space-8); }
+.aq-limit-bento__p { margin: 0; font: 500 13px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-limit-bento__ic { position: absolute; right: var(--space-6); top: var(--space-12); width: var(--space-8); height: var(--space-8); background: var(--line-strong); }
+.aq-limit-bento__lvl { align-self: flex-start; margin: 0; padding: 0 var(--space-2); border: 1px solid currentColor; font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-limit-bento__v { margin: var(--space-6) 0 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.aq-limit-bento__c { font: 300 48px/1 var(--font-mono); color: var(--flow); }
+.aq-limit-bento__tile.is-paper .aq-limit-bento__c { color: var(--navy); }
+.aq-limit-bento__n { font: 300 72px/1 var(--font-mono); letter-spacing: -0.04em; }
+.aq-limit-bento__u { font: 400 24px/1.2 var(--font-mono); }
+.aq-limit-bento__q { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-limit-bento__tile.is-paper .aq-limit-bento__q { color: var(--on-limestone-muted); }
+.aq-limit-bento__m { margin: auto 0 0; padding-top: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
+.aq-limit-bento__tile.is-paper .aq-limit-bento__m { border-top-color: color-mix(in srgb, var(--on-limestone) 18%, transparent); }
+.aq-limit-bento__m .aq-limit-gauges__mt { color: inherit; }
+.aq-limit-bento__tile .aq-limit-gauges__go { margin: 0; }
+
+/* Water column: navy, a glass tank with a scale, filled to the limit, the looser value dashed above */
+.aq-limit-bento__col {
+  grid-column: 2; grid-row: 1 / span 2; position: relative; margin: 0; display: flex; flex-direction: column;
+  min-height: calc(var(--space-32) * 4.6); padding: var(--space-6); background: var(--navy); color: var(--on-navy); overflow: hidden;
+}
+.aq-limit-bento__cap { display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-limit-bento__cap-p { font: 500 13px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-limit-bento__cap-q { font: 400 13px/20px var(--font-mono); color: var(--on-navy-muted); }
+.aq-limit-bento__tank { position: relative; flex: 1; margin: var(--space-6) 0 0 var(--space-8); border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 50%, transparent); }
+.aq-limit-bento__scale { position: absolute; inset: 0 auto 0 calc(-1 * var(--space-8)); width: var(--space-8); list-style: none; margin: 0; padding: 0; }
+.aq-limit-bento__scale li { position: absolute; right: 0; width: var(--space-3); height: 1px; background: var(--on-navy-muted); }
+.aq-limit-bento__scale li.is-minor { width: var(--space-2); opacity: 0.6; }
+.aq-limit-bento__scale span { position: absolute; right: calc(100% + var(--space-1)); top: calc(-1 * var(--space-2)); font: 400 12px/16px var(--font-mono); color: var(--on-navy-muted); }
+.aq-limit-bento__water { position: absolute; left: 0; right: calc(-1 * var(--space-6)); bottom: 0; height: calc(var(--lim, 0) * 100%); background: color-mix(in srgb, var(--flow) 55%, var(--navy)); }
+.aq-limit-bento__wave { position: absolute; left: 0; bottom: calc(100% - var(--space-3)); width: 100%; height: var(--space-6); overflow: visible; }
+.aq-limit-bento__wbody { fill: color-mix(in srgb, var(--flow) 55%, var(--navy)); }
+.aq-limit-bento__wline { fill: none; stroke: var(--on-navy); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-limit-bento__mark { position: absolute; left: var(--space-4); right: 0; display: flex; flex-direction: column; }
+.aq-limit-bento__mark::before { content: ""; position: absolute; left: calc(-1 * var(--space-4)); right: calc(-1 * var(--space-6)); }
+.aq-limit-bento__mark--alt { bottom: calc(var(--alt, 0) * 100%); padding-bottom: var(--space-2); }
+.aq-limit-bento__mark--alt::before { bottom: 0; border-top: 1px dashed var(--on-navy-muted); }
+.aq-limit-bento__mark--lim { bottom: calc(var(--lim, 0) * 100% + var(--space-6)); padding-bottom: var(--space-2); }
+.aq-limit-bento__mv { margin: 0; font: 400 15px/20px var(--font-mono); color: var(--on-navy-muted); }
+.aq-limit-bento__mv span { font-variant-numeric: tabular-nums; }
+.aq-limit-bento__mm { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-limit-bento__mark--lim .aq-limit-bento__mv { color: var(--on-navy); font-size: 28px; line-height: 34px; font-weight: 300; }
+.aq-limit-bento__mark--lim .aq-limit-bento__mm { color: var(--on-navy); }
+.aq-limit-bento-sec .aq-limit-bento + .aq-small { margin-top: var(--space-6); max-width: var(--text-max); }
+
+/* the distance between the two values: a dimension line with arrow ends, right of the marks */
+.aq-limit-bento__gap { position: absolute; right: var(--space-2); bottom: calc(var(--lim, 0) * 100% + var(--space-2)); height: calc((var(--alt, 0) - var(--lim, 0)) * 100% - var(--space-2)); width: 1px; background: color-mix(in srgb, var(--on-navy-muted) 60%, transparent); }
+.aq-limit-bento__gap::before, .aq-limit-bento__gap::after { content: ""; position: absolute; left: calc(-1 * var(--space-1)); width: var(--space-2); height: var(--space-2); border: solid var(--on-navy-muted); border-width: 1px 0 0 1px; transform: rotate(45deg); }
+.aq-limit-bento__gap::before { top: 0; }
+.aq-limit-bento__gap::after { bottom: 0; transform: rotate(225deg); }
+
+/* No column: three tiles across under the heading */
+.aq-limit-bento.is-plain .aq-limit-bento__head { grid-column: 1 / -1; }
+.aq-limit-bento.is-plain .aq-limit-bento__tile { grid-column: auto; grid-row: auto; }
+
+.aq-limit-bento .aq-num { font-variant-numeric: tabular-nums; }
+
+/* motion slides parts in from the side; never let them widen the page */
+.aq-section.aq-limit-bento-sec { overflow-x: clip; }
+
+@container (max-width: 860px) {
+  .aq-limit-bento { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+  .aq-limit-bento__head, .aq-limit-bento__col, .aq-limit-bento__tile:nth-child(n) { grid-column: 1; grid-row: auto; }
+  .aq-limit-bento__head { padding: 0 0 var(--space-4); }
+  .aq-limit-bento__head .aq-h1 { font-size: 34px; line-height: 40px; }
+  .aq-limit-bento__col { min-height: calc(var(--space-32) * 2.6); padding: var(--space-4); }
+  .aq-limit-bento__tank { margin-top: var(--space-4); }
+  .aq-limit-bento__tile { padding: var(--space-4); }
+  .aq-limit-bento__v { margin-top: var(--space-3); }
+  .aq-limit-bento__c { font-size: 36px; }
+  .aq-limit-bento__n { font-size: 56px; }
+  .aq-limit-bento__u { font-size: 20px; }
+  .aq-limit-bento__ic { top: var(--space-4); right: var(--space-4); width: var(--space-6); height: var(--space-6); }
+  .aq-limit-bento__tile::before, .aq-limit-bento__tile::after { display: none; }
+  /* pass 12: the column's own row is not repeated as a tile under it */
+  .aq-limit-bento__tile.is-col { display: none; }
+}
+
+/* round C, dark theme: the paper tiles take the raised dark surface of the others (both dark scopes) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper { background: var(--surface-raised); color: var(--ink); border-color: var(--line); }
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper .aq-limit-bento__c { color: var(--flow); }
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper .aq-limit-bento__q { color: var(--ink-muted); }
+  :root:not([data-theme="light"]) .aq-limit-bento__tile.is-paper .aq-limit-bento__m { border-top-color: var(--line); }
+}
+[data-theme="dark"] .aq-limit-bento__tile.is-paper { background: var(--surface-raised); color: var(--ink); border-color: var(--line); }
+[data-theme="dark"] .aq-limit-bento__tile.is-paper .aq-limit-bento__c { color: var(--flow); }
+[data-theme="dark"] .aq-limit-bento__tile.is-paper .aq-limit-bento__q { color: var(--ink-muted); }
+[data-theme="dark"] .aq-limit-bento__tile.is-paper .aq-limit-bento__m { border-top-color: var(--line); }

@@ -1,0 +1,123 @@
+/* ---------- SystemRun: the package as one continuous water line, a navy blueprint of the four systems ---------- */
+/* The drawing spans the content width (IsoKit, aq-iso--navy) with a bracket over each system; one column per system
+   under it. Water on navy is flow lightened towards on-navy (the IsoKit navy rule), kept in --sr-flow. */
+.aq-system-run { --sr-flow: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); --sr-rule: color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
+  position: relative; display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-system-run__fig { position: relative; margin-inline: calc(-1 * var(--space-4)); }
+.aq-system-run__svg { width: 100%; }
+
+/* Brackets over each system: index and name on a hairline with end ticks */
+.aq-system-run__brackets { position: absolute; inset: 0; pointer-events: none; }
+.aq-system-run__bracket { position: absolute; top: 7%; display: flex; gap: var(--space-2); align-items: baseline; justify-content: center;
+  padding-top: var(--space-3); border-top: 1px solid var(--sr-rule, var(--line));
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); white-space: nowrap;
+  transition: color 300ms, border-color 300ms; }
+.aq-system-run__bracket::before, .aq-system-run__bracket::after { content: ""; position: absolute; top: calc(-1 * var(--space-2)); width: 1px; height: var(--space-4); background: var(--sr-rule, var(--line)); }
+.aq-system-run__bracket::before { left: 0; }
+.aq-system-run__bracket::after { right: 0; }
+.aq-system-run__bn { color: var(--on-navy); }
+.aq-system-run__bracket.is-on { color: var(--on-navy); border-top-color: var(--sr-flow, var(--flow)); }
+.aq-system-run__bracket.is-on .aq-system-run__bn { color: var(--sr-flow, var(--flow)); }
+
+/* Ends of the run: where drinking water enters, where Purified Water leaves */
+.aq-system-run__end { position: absolute; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); white-space: nowrap; }
+.aq-system-run__end--in { transform: translate(0, calc(-100% - var(--space-3))); }
+.aq-system-run__end--out { right: var(--space-4); bottom: 8%; color: var(--sr-flow, var(--flow)); }
+.aq-system-run__end--in::after, .aq-system-run__end--out::after { content: "\00a0\2192"; }
+
+/* Columns: one per system, a hairline on top that fills with water when the system lights */
+.aq-system-run__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--space-6); }
+.aq-system-run__item { min-width: 0; display: flex; }
+.aq-system-run__stage { position: relative; display: flex; flex-direction: column; gap: var(--space-3); width: 100%; min-height: 44px;
+  padding-top: var(--space-6); border-top: 1px solid var(--sr-rule, var(--line)); color: var(--on-navy); text-decoration: none; }
+.aq-system-run__mark { position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--sr-flow, var(--flow)); transform: scaleX(0); transform-origin: 0 50%; transition: transform 500ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-system-run__stage.is-on .aq-system-run__mark, .aq-system-run__stage:hover .aq-system-run__mark, .aq-system-run__stage:focus-visible .aq-system-run__mark { transform: scaleX(1); }
+.aq-system-run__stage:focus-visible { outline: 2px solid var(--on-navy); outline-offset: var(--space-2); }
+.aq-system-run__mini-wrap { display: none; }
+.aq-system-run__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--on-navy-muted); }
+.aq-system-run__t { margin: 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); }
+.aq-system-run__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy-muted); }
+.aq-system-run__foot { margin: auto 0 0; padding-top: var(--space-2); display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.aq-system-run .aq-tag { color: var(--on-navy); border-color: var(--on-navy-muted); }
+.aq-system-run__go { font: 500 14px/20px var(--font-sans); color: var(--sr-flow, var(--flow)); }
+.aq-system-run__go::after { content: "\00a0\2192"; display: inline-block; transition: transform 200ms; }
+.aq-system-run__stage:hover .aq-system-run__go::after { transform: translateX(var(--space-1)); }
+.aq-system-run__stage:hover .aq-system-run__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--sr-flow, var(--flow)); }
+
+@container (max-width: 1100px) {
+  .aq-system-run__bracket { font-size: 11px; letter-spacing: 0.04em; }
+  .aq-system-run__t { font-size: 20px; line-height: 26px; }
+  .aq-system-run__d { font-size: 14px; line-height: 22px; }
+}
+
+.aq-system-run__pend, .aq-system-run__tee { display: none; }
+
+/* Phones: one drawing per system down one vertical pipe at the left (pass 12): a twin-wall rail runs from "Drinking
+   water" to "Point of use" with the water down its middle (each system's stretch is its __mark), and a tee leaves the
+   rail for each drawing at the drawing's own inlet pipe. Drawings are cropped tight (no dead band), full column width. */
+@container (max-width: 860px) {
+  .aq-system-run { --sr-rail: var(--space-3); --sr-in: var(--space-6); gap: 0; }
+  .aq-system-run__fig { display: none; }
+  .aq-system-run__stages { position: relative; grid-template-columns: minmax(0, 1fr); row-gap: 0; margin-left: var(--space-1); }
+  .aq-system-run__stages::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--sr-rail, var(--space-3)); box-sizing: border-box;
+    border-inline: 1px solid var(--on-navy-muted); pointer-events: none; }
+  .aq-system-run__stage { border-top: 0; gap: var(--space-2); padding: var(--space-4) 0 var(--space-6) calc(var(--sr-rail, var(--space-3)) + var(--sr-in, var(--space-6))); }
+  .aq-system-run__mark { left: calc(var(--sr-rail, var(--space-3)) / 2 - 1px); right: auto; top: 0; bottom: 0; width: 2px; height: auto; transform: scaleY(1); transform-origin: 50% 0; }
+  .aq-system-run__stage::before { content: none; }
+  .aq-system-run__mini-wrap { display: block; position: relative; max-width: 420px; margin-bottom: var(--space-1); }
+  .aq-system-run__mini { display: block; width: 100%; height: auto; max-height: none; }
+  /* the tee: a short twin-wall branch from the rail to the drawing's inlet, a node where it leaves the rail */
+  .aq-system-run__tee { display: block; position: absolute; left: calc(-1 * (var(--sr-rail, var(--space-3)) + var(--sr-in, var(--space-6))) + 1px);
+    width: calc(var(--sr-rail, var(--space-3)) + var(--sr-in, var(--space-6)) - 1px + var(--tx, 0%)); height: var(--space-2); margin-top: calc(-1 * var(--space-1));
+    box-sizing: border-box; border-block: 1px solid var(--on-navy-muted); background: linear-gradient(var(--sr-flow, var(--flow)), var(--sr-flow, var(--flow))) 0 50% / 100% 2px no-repeat; }
+  .aq-system-run__tee::before { content: ""; position: absolute; left: calc(var(--sr-rail, var(--space-3)) / 2 - var(--space-2)); top: 50%; width: var(--space-4); height: var(--space-4);
+    margin-top: calc(-1 * var(--space-2)); box-sizing: border-box; border-radius: var(--radius-pill); background: var(--navy); border: 2px solid var(--sr-flow, var(--flow)); }
+  .aq-system-run__t { font-size: 22px; line-height: 28px; }
+  .aq-system-run__d { font-size: 15px; line-height: 23px; }
+  /* tag and link on one row; when both do not fit, the link takes the next row whole, its arrow kept to the last word */
+  .aq-system-run__foot { flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); min-height: 44px; padding-top: 0; }
+  .aq-system-run__foot .aq-tag { flex: none; }
+  .aq-system-run__go { min-width: 0; }
+  .aq-system-run__go::after { display: inline; }
+  /* the run's two ends, on the rail */
+  .aq-system-run__pend { display: block; position: relative; margin: 0 0 0 var(--space-1); padding-left: calc(var(--sr-rail, var(--space-3)) + var(--sr-in, var(--space-6)));
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .aq-system-run__pend--in { padding-bottom: var(--space-3); }
+  .aq-system-run__pend--in::after { content: "\00a0\2193"; }
+  .aq-system-run__pend--out { padding-top: var(--space-3); color: var(--sr-flow, var(--flow)); }
+  .aq-system-run__pend--out::after { content: "\00a0\2192"; }
+  .aq-system-run__pend::before { content: ""; position: absolute; left: 0; width: var(--sr-rail, var(--space-3)); box-sizing: border-box; border-inline: 1px solid var(--on-navy-muted);
+    background: linear-gradient(var(--sr-flow, var(--flow)), var(--sr-flow, var(--flow))) 50% 0 / 2px 100% no-repeat; }
+  .aq-system-run__pend--in::before { top: 50%; bottom: 0; border-top: 1px solid var(--on-navy-muted); }
+  .aq-system-run__pend--out::before { top: 0; height: 50%; border-bottom: 1px solid var(--on-navy-muted); }
+}
+/* Phones (pass 12 C): each vignette capped at 248 px wide (the 300 px the audit named is the column width at 375,
+   so it changed nothing) and a space-4 foot under each stage; the tee still lands on the drawing's inlet */
+@container (max-width: 600px) {
+  .aq-system-run__mini-wrap { max-width: 248px; }
+  .aq-system-run__stage { padding-bottom: var(--space-4); }
+}
+/* Tablets (600-860 px): each system's drawing on the left beside its text, so the column has no empty navy beside
+   every drawing (the tee still lands on the drawing's inlet) */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-system-run__stage { display: grid; grid-template-columns: minmax(0, min(420px, 55%)) minmax(0, 1fr); grid-template-rows: repeat(4, min-content) 1fr;
+    column-gap: var(--space-6); row-gap: var(--space-2); align-content: start; }
+  .aq-system-run__mini-wrap { grid-column: 1; grid-row: 1 / -1; align-self: start; margin-bottom: 0; }
+  .aq-system-run__code, .aq-system-run__t, .aq-system-run__d, .aq-system-run__foot { grid-column: 2; }
+  .aq-system-run__foot { margin-top: 0; }
+}
+
+/* the drawing may run a step past the content width: the band clips it */
+.aq-system-run-sec { overflow-x: clip; }
+
+/* Animated beam (AQbeam, ported from Subframe Motion "Animated beam"; shared by SystemRun, BatteryLimit, PidRoutes):
+   the moving highlight that traces a water line while the visitor points at it. A hard bright head, a fading tail. */
+.aq-beam, .aq-iso .aq-beam { stroke-width: var(--beam-w, 4); stroke-linecap: round; fill: none; pointer-events: none; vector-effect: none; }
+.aq-beam__stop { stop-color: var(--beam, var(--flow)); }
+.aq-beam__stop--0, .aq-beam__stop--3 { stop-opacity: 0; }
+.aq-beam__stop--2, .aq-beam__stop--3 { stop-color: var(--beam-tail, var(--beam, var(--flow))); }
+.aq-system-run { --beam: var(--on-navy); --beam-tail: var(--sr-flow, var(--flow)); }
+/* the column of the system the visitor is pointing at in the drawing */
+.aq-system-run__stage.is-hot .aq-system-run__mark { transform: scaleX(1); }
+.aq-system-run__stage.is-hot .aq-system-run__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--sr-flow, var(--flow)); }
+.aq-system-run__fig { cursor: crosshair; }

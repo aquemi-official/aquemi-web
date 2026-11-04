@@ -1,0 +1,13 @@
+ModulePlinth draws an options block with a base as the options standing on that base: one plinth on a navy band carries one module per option, level and left to right, one header pipe runs along its front with a riser to every module, and the numbered caption cards sit under the drawing.
+
+- On the site: an `options` block (`"as": "modules"`) with `"look": "module-plinth"` (renderer `assets/src/blocks/look-module-plinth.js`); live on ind-personal-care "From exchange DI to your own water"; specimen content from ind-cdmo ("Redundancy that keeps clients supplied") still renders. Pass 12 rebuild after concept 204 (`design-system/inspiration/gemini/204-p12-ind-personal-care-from-di.png`): one plinth (not the concept's three), real equipment, no blueprint sheet, the base caption inside the column; its "full compliance" captions are never used.
+- Drawing: IsoKit on `aq-iso--navy`. The plinth runs level on screen (u along world (1,−1), v toward the viewer), modules stay isometric. A module is drawn by its item's `spot`: `storage-tank` two exchange vessels (`filter` parts), `ro-skid` an RO rack and its tank, `loop` a tank, its pump and a point of use; anything else a plain equipment module. HTML tags `span.__mk` stand over the modules (13 px mono).
+- Markup: `div.aq-module-plinth` (`--n` columns: the count, or 3 past four options) → `div.aq-iso-figure.__fig`, `p.__base`, `div.__list` → `ol.__cards` of `li.__card[data-k]` (`span.__mini` a small drawing for phones, `span.__n`, `h3.__t` with the link, `p.__d`).
+- Fields: `h`, `base`, `items [{t, d, spot, link}]`, `fold`, `fold_noun` (phones only).
+- Pointing at or focusing a card lifts its module 6 px, lights it and its riser (`is-lit`), fills its tag `limestone` and runs its card rule full width.
+- **Phones** (≤ 860 px): the big drawing gives way to a vertical header line down the left; each option branches off it (a double line meeting its own small drawing's header, at `--hy`) with the drawing (up to 200 px; the plinth cropped to the module plus a short margin, shallower than the desktop slab, and the box trimmed to the module's height) over its number, title and line. About 1,210 px for three options. Linked titles keep a 44 px target with a negative block margin at every width, so they line up with plain titles.
+- Use it for two to six options that share one supply. For options without a shared base, OptionTaps or a plain options list.
+
+## Motion
+
+The drawing builds through `AQiso.timeline` (plinth, modules, risers and header, then the water along the header and up each riser); each tag drops onto its module as the water reaches it; the cards deal in under the drawing. Once, under 5 s; nothing under reduced motion.

@@ -1,0 +1,94 @@
+/* ---------- IssuedSet: the documents you receive as an issued set of sheets dealt onto a desk (look "issued-set").
+   The desk is a surface-sunken panel; each sheet is light paper (data-theme="light") at a slight turn (--i picks it),
+   with its code, a miniature of the document, name, text, an optional round stamp of the step that uses it and a
+   small title block. Hovering a sheet straightens and lifts it. ---------- */
+.aq-issued-set { position: relative; }
+.aq-issued-set__desk {
+  list-style: none; margin: 0; padding: var(--space-16) var(--space-12) var(--space-16);
+  display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); column-gap: var(--space-6); row-gap: var(--space-12);
+  background: var(--surface-sunken); border: 1px solid var(--line);
+}
+.aq-issued-set__sheet {
+  --r: -1.6deg; --y: 0;
+  position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; min-height: 100%; box-sizing: border-box;
+  padding: var(--space-4) var(--space-4) var(--space-12); background: var(--surface-raised); color: var(--ink);
+  border: 1px solid var(--line); outline: 1px solid color-mix(in srgb, var(--line-strong) 30%, transparent); outline-offset: calc(-1 * var(--space-2));
+  transform: translateY(var(--y, 0px)) rotate(var(--r, 0deg)); transition: transform 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-issued-set__sheet:nth-child(4n+2) { --r: 1.2deg; --y: var(--space-6); }
+.aq-issued-set__sheet:nth-child(4n+3) { --r: -0.8deg; --y: calc(-1 * var(--space-2)); }
+.aq-issued-set__sheet:nth-child(4n+4) { --r: 1.8deg; --y: var(--space-4); }
+.aq-issued-set__sheet:hover, .aq-issued-set__sheet:focus-within { transform: translateY(calc(var(--y, 0px) - var(--space-2))) rotate(0deg); z-index: 1; }
+
+/* header: the code large, the sheet number */
+.aq-issued-set__hd { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); padding: var(--space-2) var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); }
+.aq-issued-set__code { font: 300 34px/38px var(--font-mono); letter-spacing: -0.03em; color: var(--ink); white-space: nowrap; }
+.aq-issued-set__sheet.is-key .aq-issued-set__code { color: var(--flow); }
+.aq-issued-set__no { font: 400 12px/16px var(--font-mono); color: var(--ink-subtle); letter-spacing: 0.06em; white-space: nowrap; }
+
+/* the miniature */
+.aq-issued-set__fig { position: relative; }
+.aq-issued-set__mini { display: block; width: 100%; height: auto; margin: var(--space-2) 0; padding: var(--space-2); box-sizing: border-box; background: var(--surface); border: 1px solid var(--line); }
+.aq-issued-set__mini * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.aq-issued-set__ln { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-issued-set__thin { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-issued-set__grid { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-issued-set__txt { fill: none; stroke: color-mix(in srgb, var(--ink) 18%, transparent); stroke-width: 4; stroke-linecap: butt; }
+.aq-issued-set__flow { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+.aq-issued-set__box { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+
+.aq-issued-set__t { margin: 0; padding: 0 var(--space-2); font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; text-wrap: balance; }
+.aq-issued-set__t a { color: inherit; }
+.aq-issued-set__d { margin: 0; padding: 0 var(--space-2); font: 400 15px/23px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* the stamp: the qualification step that uses this document */
+.aq-issued-set__use {
+  position: absolute; right: calc(-1 * var(--space-2)); bottom: calc(-1 * var(--space-4)); width: var(--space-16); height: var(--space-16); display: grid; place-items: center;
+  border-radius: 50%; border: 3px double var(--flow); color: var(--flow); font: 500 18px/1 var(--font-mono); letter-spacing: 0.06em;
+  transform: rotate(-14deg); opacity: 0.9; mix-blend-mode: multiply; pointer-events: none;
+}
+.aq-issued-set__sheet:nth-child(even) .aq-issued-set__use { transform: rotate(9deg); }
+/* title block */
+.aq-issued-set__tb { position: absolute; left: var(--space-4); bottom: var(--space-4); display: flex; border: 1px solid var(--line); font: 400 12px/16px var(--font-mono); color: var(--ink-subtle); }
+.aq-issued-set__tb span { padding: 0 var(--space-2); }
+.aq-issued-set__tb span + span { border-left: 1px solid var(--line); }
+.aq-issued-set__more { margin: var(--space-8) 0 0; }
+/* desktop: the text link's hit box grows to 44 px without moving anything (phones get min-height from Button) */
+@container (min-width: 861px) { .aq-issued-set__more .aq-btn--link { padding-block: var(--space-3); margin-block: calc(-1 * var(--space-3)); } }
+.aq-section.aq-issued-set-sec { overflow-x: clip; }
+
+@container (max-width: 1100px) {
+  .aq-issued-set__desk { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: var(--space-12) var(--space-8); }
+  .aq-issued-set__sheet:nth-child(odd) { --y: 0; }
+  .aq-issued-set__sheet:nth-child(even) { --y: var(--space-4); }
+}
+/* the dots under the phone deck (hidden wider) */
+.aq-issued-set__dots { display: none; }
+
+/* Phones (pass 12, S11): a snap deck on the desk, sheets 78 % wide with the next one peeking; turn and stamp kept,
+   the miniature shorter; dots under the deck (look JS, AQsnap). */
+@container (max-width: 860px) {
+  .aq-issued-set__desk { display: flex; gap: var(--space-4); margin-inline: calc(-1 * var(--space-4)); padding: var(--space-8) var(--space-4) var(--space-8); border-inline: 0;
+    overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--space-4); scrollbar-width: none; }
+  .aq-issued-set__desk::-webkit-scrollbar { display: none; }
+  .aq-fold:not(.is-open) .aq-issued-set__sheet.aq-fold-x, .aq-issued-set__sheet { display: flex; }
+  .aq-fold:has(> .aq-issued-set__desk) > .aq-fold__btn { display: none; }
+  .aq-issued-set__sheet { flex: 0 0 min(78%, 320px); min-height: 0; scroll-snap-align: start; gap: var(--space-2); padding: var(--space-3) var(--space-3) var(--space-12); }
+  .aq-issued-set__sheet, .aq-issued-set__sheet:nth-child(n) { --y: 0; --r: -1.2deg; }
+  .aq-issued-set__sheet:nth-child(even) { --r: 1deg; }
+  .aq-issued-set__code { font-size: 28px; line-height: 32px; }
+  .aq-issued-set__hd { padding: var(--space-1) var(--space-1) var(--space-2); }
+  .aq-issued-set__mini { margin: var(--space-1) 0; aspect-ratio: 240 / 110; object-fit: cover; }
+  .aq-issued-set__use { width: var(--space-12); height: var(--space-12); font-size: 15px; right: calc(-1 * var(--space-1)); bottom: calc(-1 * var(--space-3)); }
+  .aq-issued-set__t { padding: 0 var(--space-1); font-size: 16px; line-height: 22px; }
+  .aq-issued-set__d { padding: 0 var(--space-1); font-size: 14px; line-height: 21px; }
+  .aq-issued-set__tb { left: var(--space-3); bottom: var(--space-3); }
+  .aq-issued-set__dots { display: flex; justify-content: center; margin-top: var(--space-1); }
+  .aq-issued-set__dot { position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: none; color: var(--ink-muted); cursor: pointer; }
+  .aq-issued-set__dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; box-sizing: border-box; border: 1.5px solid currentColor; border-radius: 50%;
+    transition: width 200ms cubic-bezier(0.2, 0, 0, 1), margin 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms; }
+  .aq-issued-set__dot[aria-current="true"]::before { width: 20px; margin-left: -10px; border-radius: 4px; border-color: var(--flow); background: var(--flow); }
+  .aq-issued-set__dot:focus-visible { outline: 2px solid var(--focus); outline-offset: -6px; }
+  .aq-issued-set__more { margin-top: var(--space-2); }
+}
+@media (prefers-reduced-motion: reduce) { .aq-issued-set__dot::before { transition: none; } }

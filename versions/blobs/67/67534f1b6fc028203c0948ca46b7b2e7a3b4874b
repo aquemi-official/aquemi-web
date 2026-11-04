@@ -1,0 +1,13 @@
+SheetPreviews sets a short document list as a Swiss row of sheets: each limestone sheet carries its light index numeral and a thumbnail of what kind of document it is, then its code, name and line.
+
+- On the site: a `docs` block with `"look": "sheet-previews"` (renderer `assets/src/blocks/look-sheet-previews.js`); live on ind-personal-care "Records for your file"; specimen content from sys-pretreatment "Documents delivered" still renders. Pass 12 after concept 205 (`design-system/inspiration/gemini/205-p12-ind-personal-care-records.png`): the numeral (/01) moved onto the sheet, record thumbnails added, the concept's filler blueprint tile left out.
+- Markup: `div.__top` (section head, then the block link, 44 px) and `ol.aq-sheet-previews` (one column per item) of `li.__item` → `div.__sheet` (`data-theme="light"`; `svg.__svg`: limestone paper, dog-ear, `__nume` numeral, the code in a box when there is one, the thumbnail, a title-block rule) and `div.__body` (`p.__code` with `__no` and the code, `h3.__t` a link when the item has one, `p.__d`).
+- Fields: as DocList: `h`, `items [{t, d, code, key, link, intent, tag, sheet}]`, `key`, `fold`, `fold_noun`, `link`, `link_label`, `intent`. Codes: an explicit `code` or `tag`, or one DocList's lookup knows (CAL, IQ, FAT …); never initials made up from the name. `sheet` (a look field): `trend` (a reading under dashed alert and action lines), `log` (a ruled log with ticks), `binder` (a ring binder by its protocol sheets), `signoff` (an acceptance sheet with a signed box and tick), `basis`, `curves`, `logic`, `certificate`; anything else ruled text.
+- Key documents keep DocList's rule: the code in `flow`, the numeral in `on-limestone`. Thumbnails carry no values; the text carries the meaning.
+- **Phones** (≤ 860 px): one sheet per row, the sheet (30 %, at least 96 px) beside its name (17/23) and line (14/21), rows ruled; the code box is left off the small sheet (it reads in the text); title links 44 px. About 950 px for four records (two columns of narrow text were 1,270). Tablets (600–860 px): two rows of two, the sheet capped at 128 px beside its text (about 590 px at 768).
+- The number shows on the sheet only (/01); the eyebrow above the title shows only for a real code (CAL), never a bare repeat of the number.
+- Use it for three to six documents a reader should recognise at a glance. For long registers use DocList; for documents tied to parts of a drawing, DocHotspots.
+
+## Motion
+
+On scroll-in the sheets start as one squared stack in the first column and deal out to their columns, turning flat as they land; each thumbnail draws itself and its code decodes, the text following. Under 3 s. Phones: each sheet rises into place. Hover lifts a sheet (CSS). Nothing under reduced motion.

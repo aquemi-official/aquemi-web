@@ -1,0 +1,102 @@
+/* ---------- SectionTrain: a pretreatment train as one sectional elevation, each bed holding what it caught ---------- */
+/* Limestone sheet (the component sets data-theme="light" so flow keeps its light value on the fixed limestone ground).
+   The svg spans the content width; the stage columns under it share its 200-unit column grid. */
+.aq-section-train-sec .aq-sec-head .aq-h1 { color: var(--on-limestone); }
+.aq-section-train { position: relative; display: flex; flex-direction: column; gap: var(--space-6); color: var(--on-limestone); background: transparent; }
+.aq-section-train__defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.aq-section-train__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-section-train svg * { vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+
+/* Drawing: walls cut and hatched, interiors on the raised paper, beds in fine marks */
+.aq-section-train__hatch-bg { fill: var(--limestone); }
+.aq-section-train__hatch { stroke: var(--on-limestone-muted); stroke-width: 0.75; vector-effect: none; }
+.aq-section-train__wall { stroke: var(--on-limestone); stroke-width: 1.5; }
+.aq-section-train__in { fill: var(--surface-raised); stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-section-train__head { fill: var(--surface-raised); stroke: var(--on-limestone); stroke-width: 1.5; }
+.aq-section-train__level { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.aq-section-train__ripple { fill: none; stroke: var(--flow); stroke-width: 1; opacity: 0.55; }
+.aq-section-train__gap { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-section-train__valve { fill: var(--surface-raised); stroke: var(--on-limestone); stroke-width: 1.5; }
+.aq-section-train__sand { fill: var(--on-limestone-muted); }
+.aq-section-train__pebble, .aq-section-train__bead, .aq-section-train__grain { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-section-train__grain { fill: var(--limestone); }
+.aq-section-train__bed--idle { opacity: 0.45; }
+.aq-section-train__regen { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1.25; }
+.aq-section-train__pleat, .aq-section-train__core, .aq-section-train__drain { fill: none; stroke: var(--on-limestone); stroke-width: 1; }
+
+/* The pipe: a twin wall (a wide dark stroke under a narrower paper one) and the water as a flow line */
+.aq-section-train__pipe { fill: none; stroke: var(--on-limestone); stroke-width: 12; vector-effect: none; stroke-linejoin: round; }
+.aq-section-train__bore { fill: none; stroke: var(--surface-raised); stroke-width: 9; vector-effect: none; stroke-linejoin: round; }
+.aq-section-train__flow { fill: none; stroke: var(--flow); stroke-width: 2; }
+.aq-section-train__drop { fill: var(--flow); opacity: 0; }
+.aq-section-train__arrow { fill: none; stroke: var(--flow); stroke-width: 2; }
+.aq-section-train__swarm { display: none; }
+
+/* What the water carries: particles solid, hardness hexagons, chlorine crosses, fines dust */
+.aq-section-train__g--p, .aq-section-train__g--f { fill: var(--on-limestone); }
+.aq-section-train__g--h { fill: var(--surface-raised); stroke: var(--on-limestone); stroke-width: 1.25; }
+.aq-section-train__g--c { fill: none; stroke: var(--on-limestone); stroke-width: 1.5; }
+
+/* Lenses: a magnified sample of the water, at the feed and at the RO */
+.aq-section-train__lens-rim { fill: var(--limestone); stroke: var(--on-limestone); stroke-width: 1.5; }
+.aq-section-train__lens-face { fill: var(--surface-raised); stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-section-train__lens-water { fill: none; stroke: var(--flow); stroke-width: 1; opacity: 0.6; }
+.aq-section-train__lead { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; stroke-dasharray: 2 3; }
+.aq-section-train__dot { fill: var(--on-limestone); }
+
+/* Monitoring bus: a dashed signal line with instrument bubbles tapped off the pipe */
+.aq-section-train__bus { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; stroke-dasharray: 6 3 1 3; }
+.aq-section-train__tap { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; }
+.aq-section-train__bubble { fill: var(--surface-raised); stroke: var(--on-limestone); stroke-width: 1.25; }
+
+/* Stage columns under the drawing */
+.aq-section-train__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); }
+.aq-section-train__stage { position: relative; padding: var(--space-4) var(--space-3) 0; border-top: 1px solid var(--on-limestone-muted); }
+.aq-section-train__stage + .aq-section-train__stage { border-left: 1px solid color-mix(in srgb, var(--on-limestone-muted) 35%, transparent); }
+.aq-section-train__mini { display: none; }
+.aq-section-train__text { display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-section-train__no { margin: 0; font: 400 12px/16px var(--font-mono); color: var(--on-limestone); } /* pass 12 C: full ink, 12 px mono needs it */
+.aq-section-train__stage.is-on .aq-section-train__no .aq-index { color: var(--flow); }
+.aq-section-train__t { margin: 0; font: 500 16px/22px var(--font-sans); letter-spacing: -0.005em; color: var(--on-limestone); }
+.aq-section-train__t a { color: var(--flow); text-decoration: underline; text-underline-offset: 3px; }
+.aq-section-train__t a::after { content: " \2192"; }
+.aq-section-train__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-section-train__catch { display: inline-flex; align-self: flex-start; align-items: center; gap: var(--space-2); margin: var(--space-1) 0 0;
+  padding: var(--space-1) var(--space-2); border: 1px solid var(--on-limestone); background: var(--surface-raised);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--on-limestone); }
+.aq-section-train__cg { width: 14px; height: 14px; flex: none; overflow: visible; }
+.aq-section-train__base { margin: 0; display: flex; align-items: center; gap: var(--space-3); padding-top: var(--space-3);
+  font: 400 13px/20px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-section-train__base-mark { flex: none; width: var(--space-12); height: 0; border-top: 1px dashed var(--on-limestone-muted); }
+
+/* Phones: one frame of the elevation per stage, run down the page on a pipe rail at the left (pass 12 C: frames
+   76 px wide, scale 0.38 of the 200-unit column, so rail, offsets and the outlet fold scale with them) */
+@container (max-width: 860px) {
+  .aq-section-train__svg { display: none; }
+  .aq-section-train__stages { grid-template-columns: minmax(0, 1fr); }
+  .aq-section-train__stage { display: grid; grid-template-columns: 76px minmax(0, 1fr); column-gap: var(--space-4); align-items: start;
+    padding: 0 0 var(--space-4); border: 0; }
+  .aq-section-train__stage + .aq-section-train__stage { border-left: 0; }
+  .aq-section-train__stage::before { content: ""; position: absolute; left: 38px; top: 0; bottom: 0; width: 3px; transform: translateX(-50%);
+    border-inline: 1px solid var(--on-limestone); background: var(--surface-raised); z-index: 0; }
+  /* the rail is the pipe: it starts at the feed lens, runs behind every vessel (their walls and beds are filled, the
+     paper round them is not) and ends at the outlet lens */
+  .aq-section-train__stage:first-child::before { top: 57px; }
+  .aq-section-train__stage:last-child::before { bottom: auto; height: 57px; }
+  .aq-section-train__mini { display: block; position: relative; z-index: 1; width: 76px; height: auto; background: transparent; }
+  /* the backflow preventer turns onto the rail; the outlet's arrowhead is the rail's end, so it goes */
+  .aq-section-train__mini .aq-section-train__valve { transform-box: fill-box; transform-origin: center; transform: translate(52px, 0) rotate(90deg); }
+  .aq-section-train__mini .aq-section-train__arrow, .aq-section-train__mini .aq-section-train__dot { display: none; }
+  .aq-section-train__mini .aq-section-train__lead { display: none; }
+  .aq-section-train__text { padding-top: var(--space-4); }
+  .aq-section-train__t { font-size: 17px; line-height: 24px; }
+  .aq-section-train__base { align-items: flex-start; }
+  .aq-section-train__base-mark { width: var(--space-6); margin-top: var(--space-3); }
+  /* pass 12: the outlet row ("To RO") folds to the lens: no dead paper under it, the link a 44 px target beside the lens */
+  .aq-section-train__stage:last-child { padding-bottom: 0; }
+  .aq-section-train__stage:last-child .aq-section-train__mini { margin-bottom: -52px; }
+  .aq-section-train__stage:last-child .aq-section-train__text { padding-top: var(--space-8); gap: 0; }
+  .aq-section-train__t a { display: inline-flex; align-items: center; min-height: 44px; }
+  .aq-section-train__t a::after { content: "\00a0\2192"; }
+}
+.aq-section-train__seep { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-dasharray: 2 5; opacity: 0.7; }

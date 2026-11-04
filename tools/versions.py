@@ -58,6 +58,11 @@ CHECKPOINTS = [
      '(writing your URS, how a project runs, your first system, buying from Aquemi) and the first technical note; plain '
      'words for owners and approvers, the buyer\'s own numbering for engineers and QA, honest proof for a new supplier; '
      'reviewed by the distilled conversion library; 13 retired looks back on the site.'),
+    ('ba5fd31', 'Pass 12: every industry, mega menu, phones',
+     'Every industry the package serves (three new industry pages, an industries hub by water use), an established voice '
+     '(Applications with typical configurations, Technical notes), pages reworked from role interviews with the conversion '
+     'library, a mega menu, and five build rounds from 75 new Gemini concepts: a phone pass on every section, about 40 '
+     'new looks, polypropylene hero drawings; strong desktop sections kept.'),
 ]
 
 # Not part of the site a visitor loads.

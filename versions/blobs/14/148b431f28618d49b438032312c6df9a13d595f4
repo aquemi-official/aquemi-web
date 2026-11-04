@@ -1,0 +1,98 @@
+/* ---------- WindingRoute: a treatment train as one winding pipe across a navy band, a stop per stage ---------- */
+/* The pipe is one svg stretched over the stops' band (preserveAspectRatio none, non-scaling strokes), so stop i sits at
+   the centre of column i, 25 % (high) or 75 % (low) down the band. Text in columns under the band. */
+.aq-winding-route { --band: calc(var(--space-32) + var(--space-24)); --wr-y: calc(var(--space-6) + var(--space-4) + var(--space-2) + var(--space-3)); position: relative; margin-top: var(--space-8); }
+.aq-winding-route__line { position: absolute; left: 0; top: 0; width: 100%; height: var(--band, calc(var(--space-32) + var(--space-24))); overflow: visible; pointer-events: none; }
+.aq-winding-route__line path { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.aq-winding-route__pipe { stroke: var(--limestone); stroke-width: 14; }
+.aq-winding-route__flow { stroke: var(--flow); stroke-width: 2; }
+.aq-winding-route__fan { stroke: var(--on-navy-muted); stroke-width: 1.5; opacity: 0.7; }
+.aq-winding-route__drop { position: absolute; left: 0; top: 0; width: var(--space-3); height: var(--space-3); border-radius: var(--radius-pill);
+  background: var(--flow); border: 2px solid var(--on-navy); display: none; pointer-events: none; z-index: 2; }
+
+.aq-winding-route__stops { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); column-gap: var(--space-4); }
+.aq-winding-route__stop { position: relative; display: flex; flex-direction: column; min-width: 0; }
+.aq-winding-route__mark { position: relative; height: var(--band, calc(var(--space-32) + var(--space-24))); }
+.aq-winding-route__seg, .aq-winding-route__tail { display: none; }
+.aq-winding-route__node { position: absolute; left: 50%; top: 75%; z-index: 1; width: var(--space-8); height: var(--space-8); transform: translate(-50%, -50%);
+  border-radius: var(--radius-pill); background: var(--navy); border: 2px solid var(--limestone);
+  box-shadow: 0 0 0 var(--space-1) color-mix(in srgb, var(--limestone) 22%, transparent);
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms; }
+.aq-winding-route__node::after { content: ""; position: absolute; inset: 0; margin: auto; width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--flow); }
+.is-first .aq-winding-route__node::after, .is-last .aq-winding-route__node::after { width: var(--space-2); height: var(--space-2); border-radius: 0; background: none;
+  border-top: 2px solid var(--on-navy); border-right: 2px solid var(--on-navy); transform: translateX(-1px) rotate(45deg); }
+.is-high .aq-winding-route__node { top: 25%; }
+.aq-winding-route__glyph { position: absolute; left: 50%; transform: translateX(-50%); top: 0; transition: background-color 300ms; }
+.is-high .aq-winding-route__glyph { top: auto; bottom: 0; }
+
+/* Rising bubbles over a stage that strips gas (fx: "gas") */
+.aq-winding-route__gas { position: absolute; left: 50%; top: 75%; width: 0; height: 0; }
+.is-high .aq-winding-route__gas { top: 25%; }
+.aq-winding-route__gas i { position: absolute; width: var(--space-1); height: var(--space-1); border-radius: var(--radius-pill); background: var(--on-navy-muted);
+  transform: translate(calc(var(--gx, 0) * 1px), calc(var(--gy, 0) * 0.6px)); opacity: 0.6; }
+.aq-winding-route__gas i:nth-child(3n) { width: var(--space-2); height: var(--space-2); opacity: 0.35; }
+
+.aq-winding-route__text { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-6); border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-winding-route__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-winding-route__code span { color: var(--on-navy); }
+.aq-winding-route__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-winding-route__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-navy-muted); }
+
+/* Hover: the stop the reader points at lights */
+.aq-winding-route__stop:hover .aq-winding-route__node { transform: translate(-50%, -50%) scale(1.25); border-color: var(--on-navy); }
+.aq-winding-route__stop:hover .aq-winding-route__glyph { background-color: var(--on-navy); }
+.aq-winding-route__stop:hover .aq-winding-route__text { border-top-color: var(--on-navy); }
+
+/* Replay (motion only, ported from Subframe Motion "Race replay"): the visitor scrubs the water along the route. Stages
+   the water has not reached yet step back; the one it has just reached is marked. */
+.aq-winding-route__stop { transition: opacity 200ms; }
+.aq-winding-route__stop.is-dry { opacity: 0.45; }
+.aq-winding-route__stop.is-cur .aq-winding-route__text { border-top-color: var(--on-navy); }
+.aq-winding-route__stop.is-cur .aq-winding-route__node { border-color: var(--on-navy); }
+.aq-winding-route__scrub { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-8); max-width: 32rem;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-winding-route__scrub input { flex: 1; min-width: 0; min-height: 44px; margin: 0; accent-color: var(--flow); cursor: pointer; background: transparent; }
+.aq-winding-route__scrub input:focus-visible { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+
+@container (max-width: 1100px) {
+  .aq-winding-route__stops { column-gap: var(--space-3); }
+  .aq-winding-route__t { font-size: 17px; line-height: 24px; }
+  .aq-winding-route__d { font-size: 13px; line-height: 20px; }
+}
+
+/* Phones: the pipe winds down the left edge, one bend per stage (each stop draws its own segment) */
+@container (max-width: 860px) {
+  .aq-winding-route { margin-top: var(--space-4); }
+  .aq-winding-route__line, .aq-winding-route__drop { display: none; }
+  .aq-winding-route__stops { grid-template-columns: minmax(0, 1fr); }
+  .aq-winding-route__stop { display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-4); }
+  .aq-winding-route__mark { height: auto; }
+  /* The bend peaks level with the stage name (--wr-y: text padding + code line + gap + half the name line); a straight
+     tail carries the pipe on down the rest of the stop */
+  .aq-winding-route__seg { display: block; position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--wr-y, var(--space-16)) * 2); overflow: visible; }
+  .aq-winding-route__tail { display: block; position: absolute; left: calc(50% - var(--space-1) - var(--space-1) / 4); top: calc(var(--wr-y, var(--space-16)) * 2); bottom: 0;
+    width: calc(var(--space-2) + var(--space-1) / 2); background: var(--limestone); }
+  .aq-winding-route__seg path { fill: none; stroke: var(--limestone); stroke-width: 10; vector-effect: non-scaling-stroke; stroke-linecap: butt; }
+  .aq-winding-route__node, .is-high .aq-winding-route__node { top: var(--wr-y, var(--space-16)); left: 30%; width: var(--space-6); height: var(--space-6); }
+  .is-high .aq-winding-route__node { left: 70%; }
+  .aq-winding-route__glyph { display: none; }
+  .aq-winding-route__gas, .is-high .aq-winding-route__gas { top: var(--wr-y, var(--space-16)); left: 30%; }
+  .is-high .aq-winding-route__gas { left: 70%; }
+  .aq-winding-route__text { border-top: 0; padding-block: var(--space-6); }
+  .aq-winding-route__t { font-size: 18px; line-height: 26px; }
+  .aq-winding-route__d { font-size: 14px; line-height: 22px; }
+}
+@container (max-width: 860px) { .aq-winding-route__gas { transform: scale(0.45); } }
+.aq-winding-route-sec { isolation: isolate; }
+.aq-winding-route__fan--out { opacity: 0.9; }
+
+/* phones: the route is vertical and has no droplet; no replay */
+@container (max-width: 860px) { .aq-winding-route__scrub { display: none; } }
+
+/* the stage glyph beside the stop's code: phones only (pass 12) */
+.aq-winding-route__cg { display: none; }
+@container (max-width: 860px) {
+  .aq-winding-route__code:has(.aq-winding-route__cg) { display: flex; align-items: center; gap: var(--space-2); }
+  .aq-winding-route__cg { display: inline-flex; flex: none; width: 24px; height: 24px; }
+  .aq-winding-route__cg .aq-winding-route__pglyph { width: 24px; height: 24px; }
+}

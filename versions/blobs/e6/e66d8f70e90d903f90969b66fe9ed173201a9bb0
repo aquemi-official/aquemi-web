@@ -1,0 +1,121 @@
+/* ---------- ScopeSeam: what fits the package and what does not, on a navy / limestone split with the seam between ---------- */
+/* Desktop: the section is limestone with a navy left half (::before); the seam is the divide at 50 %, with a flow
+   rule on it. Two equal columns; the two drawings meet at the seam, so their tie-in lines and nodes line up. */
+.aq-scope-seam-sec { position: relative; background: var(--limestone); color: var(--on-limestone); overflow: hidden; }
+.aq-scope-seam-sec::before { content: ""; position: absolute; inset: 0 50% 0 0; background: var(--navy); }
+.aq-scope-seam-sec::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: var(--flow); opacity: 0.8; }
+.aq-scope-seam-sec > .aq-in { position: relative; z-index: 1; }
+.aq-scope-seam { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto auto auto auto; column-gap: 0; align-items: start; }
+.aq-scope-seam__in, .aq-scope-seam__out { display: contents; }
+
+.aq-scope-seam__head { grid-column: 1; grid-row: 1; padding: 0 var(--space-12) var(--space-8) 0; color: var(--on-navy); }
+.aq-scope-seam__head .aq-h1 { color: var(--on-navy); }
+.aq-scope-seam__head .aq-lead, .aq-scope-seam__head .aq-eyebrow { color: var(--on-navy-muted); }
+.aq-scope-seam__side { grid-row: 2; margin: 0 0 var(--space-4); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.aq-scope-seam__side.is-in { grid-column: 1; color: var(--on-navy-muted); padding-right: var(--space-12); }
+.aq-scope-seam__side.is-out { grid-column: 2; color: var(--on-limestone-muted); padding-left: var(--space-12); }
+
+/* The drawings: same box on both sides of the seam, so the tie-in lines meet the nodes */
+.aq-scope-seam__fig { grid-row: 3; position: relative; margin: 0; }
+.aq-scope-seam__fig.is-in { grid-column: 1; }
+.aq-scope-seam__fig.is-out { grid-column: 2; }
+.aq-scope-seam__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-scope-seam__svg * { fill: none; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.aq-scope-seam__svg .is-p { display: none; } /* phone-only pipes (the branches turn down through the seam) */
+.aq-scope-seam__fig.is-in .aq-scope-seam__svg { color: var(--on-navy); }
+.aq-scope-seam__loop, .aq-scope-seam__tank, .aq-scope-seam__pump, .aq-scope-seam__tankl { stroke: var(--on-navy); stroke-width: 1.5; }
+.aq-scope-seam__tankl { stroke: var(--on-navy-muted); stroke-dasharray: 3 4; }
+.aq-scope-seam__pumpt { fill: var(--on-navy); stroke: none; }
+.aq-scope-seam__valve { stroke: var(--on-navy); stroke-width: 1.5; fill: var(--navy); }
+.aq-scope-seam__arrow { stroke: var(--flow); stroke-width: 2; }
+.aq-scope-seam__fig.is-in .aq-scope-seam__arrow { stroke: var(--limestone); }
+.aq-scope-seam__node { fill: var(--flow); stroke: var(--on-navy); stroke-width: 1.5; }
+.aq-scope-seam__dash, .aq-scope-seam__hx, .aq-scope-seam__hxz { stroke: var(--on-limestone); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.aq-scope-seam__hxz { stroke-dasharray: none; stroke: var(--on-limestone-muted); }
+/* each loop named by its half's first row, inside the loop */
+.aq-scope-seam__lab { position: absolute; top: 33%; left: 30%; right: 18%; margin: 0; font: 400 16px/22px var(--font-sans); text-wrap: balance; }
+.aq-scope-seam__fig.is-in .aq-scope-seam__lab { color: var(--on-navy); }
+.aq-scope-seam__fig.is-out .aq-scope-seam__lab { left: 34%; right: 22%; color: var(--on-limestone); }
+
+/* The seam's name: a chip on the seam, over the drawings; the nodes are drawn in the navy drawing */
+.aq-scope-seam__seam { grid-column: 1 / -1; grid-row: 4; justify-self: center; align-self: start; position: relative; z-index: 2; margin-top: var(--space-8); }
+.aq-scope-seam__nodes { display: none; }
+.aq-scope-seam__seamt { margin: 0; padding: var(--space-1) var(--space-3); border: 1px solid var(--flow); background: var(--surface-raised); color: var(--ink);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+
+/* The limit: the condition that is the seam itself, across both grounds */
+.aq-scope-seam__limit { grid-column: 1 / -1; grid-row: 4; justify-self: center; width: min(100%, 600px); margin: calc(var(--space-8) + var(--space-6)) 0 var(--space-12); padding: var(--space-6);
+  border: 1px solid var(--flow); box-shadow: inset 0 var(--space-1) 0 var(--flow); background: var(--surface-raised); color: var(--ink); }
+.aq-scope-seam__limit .aq-scope-seam__p { color: var(--ink); }
+.aq-scope-seam__limit .aq-scope-seam__v { color: var(--ink); }
+.aq-scope-seam__limit .aq-scope-seam__m { color: var(--ink-muted); }
+
+/* The two numbered lists */
+.aq-scope-seam__list { grid-row: 5; margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-6); align-content: start; }
+.aq-scope-seam__list.is-in { grid-column: 1; padding-right: var(--space-12); color: var(--on-navy); }
+.aq-scope-seam__list.is-out { grid-column: 2; padding-left: var(--space-12); color: var(--on-limestone); }
+.aq-scope-seam__item { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: baseline; }
+.aq-scope-seam__no { font: 400 20px/28px var(--font-mono); }
+.aq-scope-seam__list.is-in .aq-scope-seam__no { color: var(--on-navy-muted); }
+.aq-scope-seam__list.is-out .aq-scope-seam__no { color: var(--on-limestone); } /* limestone stays light in dark; --flow would flip to 1.6:1 */
+.aq-scope-seam__body { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+.aq-scope-seam__p { margin: 0; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-scope-seam__v { margin: 0; font: 400 15px/22px var(--font-sans); }
+.aq-scope-seam__m { margin: 0; font: 400 14px/20px var(--font-sans); }
+.aq-scope-seam__list.is-in .aq-scope-seam__v { color: var(--on-navy); }
+.aq-scope-seam__list.is-in .aq-scope-seam__m { color: var(--on-navy-muted); }
+.aq-scope-seam__list.is-out .aq-scope-seam__m { color: var(--on-limestone-muted); }
+.aq-scope-seam__link { display: inline-flex; align-items: center; gap: var(--space-2); align-self: flex-start; min-height: 44px; color: inherit; font: 500 15px/20px var(--font-sans);
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
+.aq-scope-seam__link::after { content: "\2192"; text-decoration: none; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-scope-seam__link:hover::after { transform: translateX(var(--space-1)); }
+.aq-scope-seam__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Phones: the navy block over the limestone block. The ambient loop sits last in the navy block, right on the seam;
+   its two branches turn down through the seam rule's two nodes into the dashed loop, so the meeting reads as on desktop.
+   --fw is the drawings' width (both the same, left aligned), so the nodes sit at 90 % and 95 % of it, over the pipes. */
+@container (max-width: 860px) {
+  .aq-scope-seam-sec { background: var(--navy); padding-bottom: 0; }
+  .aq-scope-seam-sec::before, .aq-scope-seam-sec::after { display: none; }
+  .aq-scope-seam { --fw: 100%; display: block; }
+  .aq-scope-seam__in, .aq-scope-seam__out { display: flex; flex-direction: column; }
+  /* limestone full bleed to the sides (border-image outset, nothing above the seam); the clip keeps the dashed tie-ins'
+     overrun under the seam, with room for the nodes' upper half */
+  .aq-scope-seam__out { position: relative; margin-top: 0; padding-bottom: var(--space-16); background: var(--limestone);
+    border-image: conic-gradient(var(--limestone) 0 0) fill 0 / / 0 100vmax 100vmax; clip-path: inset(-8px -100vmax -100vmax); }
+  .aq-scope-seam__head { padding: 0 0 var(--space-6); }
+  .aq-scope-seam__side.is-in, .aq-scope-seam__side.is-out { padding: 0; margin-bottom: var(--space-3); }
+  .aq-scope-seam__fig { width: 100%; max-width: var(--fw, 100%); margin: 0 0 var(--space-6); }
+  .aq-scope-seam__fig.is-in { order: 3; margin: var(--space-8) 0 0; }
+  .aq-scope-seam__list.is-in { order: 2; }
+  .aq-scope-seam__svg .is-d, .aq-scope-seam__fig.is-in .aq-scope-seam__node { display: none; }
+  .aq-scope-seam__svg .is-p { display: inline; }
+  .aq-scope-seam__seam { order: 0; }
+  .aq-scope-seam__side.is-out { order: 1; }
+  .aq-scope-seam__fig.is-out { order: 2; }
+  .aq-scope-seam__limit { order: 3; }
+  .aq-scope-seam__list.is-out { order: 4; }
+  .aq-scope-seam__lab { font-size: 14px; line-height: 18px; top: 32%; left: 30%; right: 14%; }
+  .aq-scope-seam__fig.is-out .aq-scope-seam__lab { left: 32%; right: 18%; }
+  .aq-scope-seam__list.is-in, .aq-scope-seam__list.is-out { padding: 0; gap: var(--space-4); }
+  .aq-scope-seam__item { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-scope-seam__no { font-size: 15px; line-height: 24px; }
+  .aq-scope-seam__p { font-size: 18px; line-height: 24px; }
+  /* the seam: a flow rule across the top of the limestone, the two tie-in nodes on it, its name under it */
+  .aq-scope-seam__seam { position: relative; align-self: stretch; margin: 0; padding-top: var(--space-4); }
+  .aq-scope-seam__seam::before { content: ""; position: absolute; left: -100vmax; right: -100vmax; top: -1px; height: 2px; background: var(--flow); }
+  .aq-scope-seam__nodes { display: block; position: absolute; z-index: 2; top: 0; left: 0; right: 0; height: 0; }
+  .aq-scope-seam__nd { position: absolute; top: -7px; width: 14px; height: 14px; box-sizing: border-box; background: var(--flow); border: 1.5px solid var(--navy); }
+  .aq-scope-seam__nd:first-child { left: calc(var(--fw, 100%) * 0.9 - 7px); }
+  .aq-scope-seam__nd:last-child { left: calc(var(--fw, 100%) * 0.95 - 7px); }
+  .aq-scope-seam__seamt { display: inline-block; padding: 0; border: 0; background: none; color: var(--on-limestone-muted); white-space: normal; }
+  .aq-scope-seam__limit { width: auto; margin: 0 0 var(--space-8); padding: var(--space-4); }
+}
+/* Tablets: the drawings capped (a full-width drawing ran 250 px tall and mostly empty at 768) */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-scope-seam { --fw: 420px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-scope-seam__link::after { transition: none; }
+}

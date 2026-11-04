@@ -1,0 +1,72 @@
+/* ---------- WitnessPlan: ways to witness as ruled rows whose leaders run into the package (look "witness-plan") ----------
+   Desktop: rows on the left (5 of 12) under the heading, the IsoKit light drawing of the package in the test bay's
+   open frame on the right (7 of 12). The leaders svg covers the whole look (aria-hidden, no pointer events): each
+   leader is its row's underline carried on into the drawing and up to the part's marker; the chosen way's leader,
+   marker and part turn flow. The sliding indicator (a flow edge on a raised ground) springs between rows.
+   Container under 1080 px: the drawing above the rows, leaders off, rows ruled; numbered markers pair them. */
+.aq-witness-plan { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: center; }
+.aq-witness-plan__side { position: relative; z-index: 1; min-width: 0; }
+.aq-witness-plan__side .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; }
+.aq-witness-plan__list { position: relative; isolation: isolate; list-style: none; margin: var(--space-8) 0 0; padding: 0; }
+.aq-witness-plan__opt { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); width: 100%; min-height: var(--space-12); padding: var(--space-4) var(--space-3) var(--space-4) var(--space-2);
+  border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); text-align: left; font: inherit; cursor: pointer; transition: background-color 160ms; }
+.aq-witness-plan__opt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--flow); transform: scaleY(0); transition: transform 160ms; }
+.aq-witness-plan__opt[aria-pressed="true"] { background: var(--surface-raised); }
+.aq-witness-plan__opt[aria-pressed="true"]::before { transform: scaleY(1); }
+.aq-witness-plan__opt:hover { background: var(--surface-raised); }
+.aq-witness-plan__opt:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-witness-plan__n { grid-row: 1 / span 2; font: 400 14px/24px var(--font-mono); color: var(--ink-subtle); }
+.aq-witness-plan__opt[aria-pressed="true"] .aq-witness-plan__n { color: var(--flow); }
+.aq-witness-plan__t { font: 400 19px/24px var(--font-sans); letter-spacing: -0.01em; }
+.aq-witness-plan__d { margin-top: var(--space-1); font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-witness-plan__list > .aq-witness-plan__ind { display: none; position: absolute; z-index: -1; left: 0; right: 0; top: 0; height: 0; border-left: 3px solid var(--flow); background: var(--surface-raised); pointer-events: none; }
+.aq-witness-plan__list.has-ind > .aq-witness-plan__ind { display: block; }
+.aq-witness-plan__list.has-ind .aq-witness-plan__opt[aria-pressed="true"], .aq-witness-plan__list.has-ind .aq-witness-plan__opt:hover { background: transparent; }
+.aq-witness-plan__list.has-ind .aq-witness-plan__opt::before { display: none; }
+
+.aq-witness-plan__fig { position: relative; z-index: 0; min-width: 0; }
+.aq-witness-plan__sheet { position: relative; }
+.aq-witness-plan__svg { display: block; width: 100%; height: auto; }
+.aq-witness-plan__svg .aq-witness-plan__bay { stroke: var(--line-strong); }
+.aq-witness-plan__mk { position: absolute; z-index: 2; transform: translate(calc(-50% + var(--k, 0) * var(--space-6)), -50%); display: inline-flex; align-items: center; justify-content: center; min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1);
+  background: var(--surface); border: 1px solid var(--line-strong); color: var(--ink-muted); font: 500 12px/1 var(--font-mono); transition: background-color 160ms, color 160ms, border-color 160ms; }
+.aq-witness-plan__mk.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-witness-plan__zone { position: absolute; transform: translate(0, calc(-100% - var(--space-2))); white-space: nowrap; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-witness-plan__zone.is-cam { transform: translate(var(--space-2), calc(-100% - var(--space-2))); }
+
+.aq-witness-plan__leads { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-witness-plan__lead { fill: none; stroke: var(--line-strong); stroke-width: 1; transition: stroke 160ms; }
+.aq-witness-plan__lead.is-on { stroke: var(--flow); stroke-width: 1.5; }
+.aq-witness-plan__beam { fill: none; stroke: var(--flow); stroke-width: 3; stroke-linecap: round; }
+@container (min-width: 1081px) { .aq-witness-plan__opt { border-bottom-color: transparent; } }
+
+@container (max-width: 1080px) {
+  .aq-witness-plan { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-witness-plan__side { display: contents; }
+  .aq-witness-plan__side > .aq-sec-head { order: 0; }
+  .aq-witness-plan__fig { order: 1; }
+  .aq-witness-plan__list { order: 2; margin-top: 0; }
+  .aq-witness-plan__leads { display: none; }
+}
+@container (max-width: 860px) {
+  .aq-witness-plan__side .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-witness-plan__list { margin-top: var(--space-6); }
+  .aq-witness-plan__opt { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-witness-plan__t { font-size: 17px; }
+  .aq-witness-plan__mk { min-width: var(--space-4); height: var(--space-4); padding: 0; font-size: 12px; }
+}
+
+/* section hook */
+.aq-witness-plan-sec { position: relative; }
+
+/* pass 12 phone (audit S8/S9, svc-fat-sat.3): the room's frame and its zone labels are cropped away, and the drawing
+   becomes a PhoneKit sticky strip (220 px) over the ways. PhoneKit zooms the sheet (x1.2, markers and all, so nearly the whole package stays in view) onto the
+   marker of the way on the reading line; that way is chosen (its row, marker and part light). Markers at 24 px with
+   12 px figures. Without script the drawing stands above the ways, room cropped. */
+@container (max-width: 860px) {
+  .aq-witness-plan__svg .aq-witness-plan__bay, .aq-witness-plan__zone { display: none; }
+  .aq-witness-plan__fig { margin: 0 calc(-1 * var(--space-4)); }
+  .aq-witness-plan[data-pk-on] .aq-witness-plan__fig { background: var(--surface); }
+  .aq-witness-plan__mk { min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1); font-size: 12px; }
+  .aq-witness-plan__list > li[data-pk-row].is-pk-active .aq-witness-plan__n { color: var(--flow); }
+}

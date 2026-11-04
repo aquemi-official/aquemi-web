@@ -1,0 +1,113 @@
+/* ---------- LimitPlan: what the site provides, as a battery-limits plan (look "limit-plan"). An IsoKit drawing of the
+   package footprint inside a dashed battery-limit line, numbered square nodes on each connection, keyed to the rows
+   beside it. Pointing at a row or a node lights both, the matching parts turn flow and a ring glides to the node. ---------- */
+.aq-limit-plan-sec { position: relative; }
+.aq-limit-plan { display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 13fr); column-gap: var(--space-12); align-items: start; }
+
+/* the plan: framed like a sheet, held in view while the rows pass */
+.aq-limit-plan__fig { position: sticky; top: var(--space-24); margin: 0; padding: var(--space-6) var(--space-4); border: 1px solid var(--line-strong); background: var(--surface); }
+.aq-limit-plan__plan { position: relative; }
+.aq-limit-plan__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-limit-plan__floor { fill: var(--flow-tint); stroke: none; }
+.aq-limit-plan__line { fill: none; stroke: var(--flow); stroke-width: 2; stroke-dasharray: 16 5 3 5; vector-effect: non-scaling-stroke; transition: stroke-width 180ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-limit-plan__cable { fill: none; stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-limit-plan__plate { fill: var(--flow-tint); stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-plan__lead { fill: none; stroke: var(--ink-subtle); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-plan__dot { fill: var(--ink-subtle); }
+.aq-limit-plan__header .aq-iso__pipe-body { fill: var(--surface-sunken); }
+
+/* the lit connection: its parts, cable, leader and line turn flow */
+.aq-limit-plan__g.is-on .aq-iso__eq, .aq-limit-plan__g.is-on .aq-iso__ln, .aq-limit-plan__g.is-on .aq-iso__thin, .aq-limit-plan__g.is-on .aq-iso__hid,
+.aq-limit-plan__g.is-on .aq-iso__pipe-wall, .aq-limit-plan__g.is-on .aq-iso__dim-line, .aq-limit-plan__g.is-on .aq-limit-plan__cable,
+.aq-limit-plan__lead.is-on { stroke: var(--flow); }
+.aq-limit-plan__dot.is-on { fill: var(--flow); }
+.aq-limit-plan__g.is-on .aq-limit-plan__line { stroke-width: 3; }
+/* pipes are flow at rest, so a lit pipe thickens and fills: rows 03 and 06 answer in the drawing too */
+.aq-limit-plan__g.is-on .aq-iso__pipe-wall { stroke-width: 2.5; }
+.aq-limit-plan__g.is-on .aq-iso__pipe-body { fill: var(--flow-tint); }
+.aq-limit-plan__g .aq-iso__eq, .aq-limit-plan__g .aq-iso__hid, .aq-limit-plan__g .aq-iso__dim-line, .aq-limit-plan__g .aq-iso__pipe-wall, .aq-limit-plan__g .aq-iso__pipe-body,
+.aq-limit-plan__cable, .aq-limit-plan__lead { transition: stroke 180ms cubic-bezier(0.2, 0, 0, 1), stroke-width 180ms cubic-bezier(0.2, 0, 0, 1), fill 180ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* numbered nodes (HTML over the drawing, so they stay legible at any size) */
+.aq-limit-plan__node, .aq-limit-plan__no {
+  display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: var(--radius-sm);
+  background: var(--action); color: var(--on-action); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+.aq-limit-plan__node { position: absolute; z-index: 2; translate: -50% -50%; cursor: default; }
+.aq-limit-plan__node.is-on { background: var(--flow); color: var(--ink-inverse); transform: scale(1.12); }
+.aq-limit-plan__no.is-plain { background: none; color: var(--ink-subtle); }
+.aq-limit-plan__row.is-on .aq-limit-plan__no { background: var(--flow); color: var(--ink-inverse); }
+/* the ring that glides to the lit node: a zero-size point that travels, its circle drawn by ::after */
+.aq-limit-plan__ring {
+  position: absolute; z-index: 1; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none;
+  transition: left 250ms cubic-bezier(0.2, 0.8, 0.2, 1), top 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.aq-limit-plan__ring::after {
+  content: ""; position: absolute; left: 0; top: 0; width: 44px; height: 44px; border: 1.5px solid var(--flow); border-radius: 50%;
+  opacity: 0; translate: -50% -50%; transform: scale(0.6); transition: opacity 180ms ease, transform 180ms ease;
+}
+.aq-limit-plan__ring.is-on::after { opacity: 1; transform: none; }
+
+/* the rows */
+.aq-limit-plan__table { min-width: 0; }
+.aq-limit-plan__head, .aq-limit-plan__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 5fr) minmax(0, 7fr); }
+.aq-limit-plan__head { border-bottom: 1.5px solid var(--action); }
+.aq-limit-plan__head span { padding: 0 var(--space-4) var(--space-3) 0; font: 400 15px/24px var(--font-sans); color: var(--ink); }
+.aq-limit-plan__head span:first-child { grid-column: 2; }
+.aq-limit-plan__list { list-style: none; margin: 0; padding: 0; }
+.aq-limit-plan__row { padding: var(--space-4) 0; border-bottom: 1px solid var(--line-strong); }
+.aq-limit-plan__no { margin-top: 1px; }
+.aq-limit-plan__t { min-width: 0; padding-right: var(--space-4); }
+.aq-limit-plan__p { margin: 0; font: 300 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-limit-plan__c { min-width: 0; }
+.aq-limit-plan__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-limit-plan__v { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-limit-plan__v li { position: relative; padding-left: var(--space-4); font: 400 15px/23px var(--font-sans); color: var(--ink); }
+.aq-limit-plan__v li::before { content: ""; position: absolute; left: 0; top: calc(var(--space-3) - 1px); width: var(--space-2); border-top: 1.5px solid var(--flow); }
+.aq-limit-plan__m { margin: var(--space-2) 0 0; padding-left: var(--space-4); font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-limit-plan__go { margin: var(--space-2) 0 0; padding-left: var(--space-4); font: 400 15px/23px var(--font-sans); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-limit-plan__ring, .aq-limit-plan__ring::after, .aq-limit-plan__node, .aq-limit-plan__no, .aq-limit-plan__line,
+  .aq-limit-plan__g .aq-iso__eq, .aq-limit-plan__g .aq-iso__hid, .aq-limit-plan__g .aq-iso__dim-line, .aq-limit-plan__g .aq-iso__pipe-wall, .aq-limit-plan__g .aq-iso__pipe-body,
+  .aq-limit-plan__cable, .aq-limit-plan__lead { transition: none; }
+}
+
+/* Tablets: the plan on top, full width, then the rows */
+@container (max-width: 1080px) {
+  .aq-limit-plan { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-limit-plan__fig { position: relative; top: auto; max-width: 720px; }
+}
+
+/* Phones: a PhoneKit sticky compact figure (S8). The plan becomes a 200 px strip held under the section bar, panned and
+   zoomed to the node of the row on the reading line; every row stays open under it (number and item, the typical
+   value, the note, the link). Without script: the whole plan at full gutter width, then every row open. */
+@container (max-width: 860px) {
+  .aq-limit-plan { row-gap: var(--space-6); }
+  .aq-limit-plan__fig { max-width: none; padding: var(--space-3) var(--space-2); }
+  .aq-limit-plan__node { width: 24px; height: 24px; font-size: 12px; }
+  .aq-limit-plan__ring::after { width: 40px; height: 40px; }
+  .aq-limit-plan__head { display: none; }
+  .aq-limit-plan__list { border-top: 1.5px solid var(--action); }
+  .aq-limit-plan__row { grid-template-columns: calc(var(--space-8) + var(--space-2)) minmax(0, 1fr); padding: var(--space-3) 0; }
+  .aq-limit-plan__no { width: 24px; height: 24px; }
+  .aq-limit-plan__t { padding: 0; }
+  .aq-limit-plan__p { font-size: 18px; line-height: 24px; }
+  .aq-limit-plan__c { grid-column: 2; padding-top: var(--space-2); }
+  .aq-limit-plan__v li { font-size: 15px; line-height: 22px; }
+  .aq-limit-plan__v li::before { top: calc(var(--space-3) - 2px); }
+  .aq-limit-plan__m { font-size: 14px; line-height: 21px; }
+  .aq-limit-plan__go a { display: inline-flex; align-items: center; min-height: var(--aq-hit); }
+  .aq-limit-plan__go { margin-top: 0; }
+
+  /* the strip: PhoneKit holds it (sticky, 200 px, its own rule underneath); the plan fits its height, centred, and is
+     the layer PhoneKit pans and zooms; nodes and ring keep their size against the zoom so numbers read at 12 px */
+  .aq-limit-plan[data-pk-on] { row-gap: var(--space-2); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__fig { padding: 0; border: 0; border-bottom: 1px solid var(--line-strong); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__plan { width: min(100%, calc(var(--pk-h, 200px) * var(--lp-r, 1.6))); aspect-ratio: var(--lp-ar, 8 / 5); margin: 0 auto; }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__svg { width: 100%; height: 100%; }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__node { width: calc(24px / var(--pk-s, 1)); height: calc(24px / var(--pk-s, 1)); font-size: calc(12px / var(--pk-s, 1)); border-radius: calc(var(--radius-sm) / var(--pk-s, 1)); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__ring::after { width: calc(40px / var(--pk-s, 1)); height: calc(40px / var(--pk-s, 1)); border-width: calc(1.5px / var(--pk-s, 1)); }
+  .aq-limit-plan[data-pk-on] .aq-limit-plan__list { border-top: 0; }
+}

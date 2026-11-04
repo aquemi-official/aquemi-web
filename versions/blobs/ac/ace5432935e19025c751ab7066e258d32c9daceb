@@ -1,0 +1,77 @@
+/* ---------- PhoneKit: shared phone behaviour (assets/src/parts/PhoneKit.js) ----------
+   Everything here keys off [data-pk-on], which the script sets only while a root's page container is at or under the
+   root's breakpoint, so none of it reaches a desktop render. A look styles its own parts on top of these defaults
+   (the defaults use currentColor, so they sit on navy, limestone or paper alike). */
+
+/* A body the script has closed stays closed, even where the look sets it display: contents or grid */
+[data-pk-body][hidden] { display: none !important; }
+/* Phone-only heads are hidden until the script switches the root on; desktop twins hide once it has */
+[data-pk-picker]:not([data-pk-on]) [data-pk-head] { display: none; }
+[data-pk-picker][data-pk-on] [data-pk-desk] { display: none; }
+
+/* ---- Accordion: full-width heads, at least 48 px, a chevron at the right ---- */
+[data-pk-picker][data-pk-on] [data-pk-head] {
+  position: relative; display: flex; align-items: center; gap: var(--space-3); width: 100%; min-height: 48px; margin: 0;
+  padding: var(--space-3) 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+[data-pk-picker][data-pk-on] [data-pk-head]:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* The chevron: a 44 px cue box at the end of a head, pointing down when closed, up when open. Usable outside PhoneKit
+   (ManifoldRouter uses it on its own accordion). */
+.aq-phone-kit__chev { position: relative; flex: none; width: 44px; height: 44px; margin-left: auto; color: inherit; }
+.aq-phone-kit__chev::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -7px 0 0 -5px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg);
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), margin 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+[aria-expanded="true"] > .aq-phone-kit__chev::before, [aria-expanded="true"] .aq-phone-kit__chev::before { margin-top: -2px; transform: rotate(225deg); }
+/* the "+" variant: a plus that turns into a minus */
+.aq-phone-kit__chev--plus::before { width: 12px; height: 1.5px; margin: -1px 0 0 -6px; border: 0; background: currentColor; transform: none; }
+.aq-phone-kit__chev--plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.5px; height: 12px; margin: -6px 0 0 -1px; background: currentColor;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+[aria-expanded="true"] .aq-phone-kit__chev--plus::before { margin-top: -1px; transform: none; }
+[aria-expanded="true"] .aq-phone-kit__chev--plus::after { transform: scaleY(0); }
+
+/* ---- Chips: the root becomes a grid of chips (2 columns, --pk-cols to change) with the one open card under them ---- */
+[data-pk-picker="chips"][data-pk-on] { display: grid; grid-template-columns: repeat(var(--pk-cols, 2), minmax(0, 1fr)); gap: var(--space-2); }
+[data-pk-picker="chips"][data-pk-on] > [data-pk-item] { display: contents; }
+[data-pk-picker="chips"][data-pk-on] [data-pk-head] {
+  order: 0; min-height: 44px; padding: var(--space-2) var(--space-3); align-items: center; gap: var(--space-2);
+  border: 1px solid color-mix(in srgb, currentColor 35%, transparent); border-radius: var(--radius-sm);
+  font: 400 14px/18px var(--font-sans); transition: background-color 160ms, border-color 160ms, color 160ms;
+}
+[data-pk-picker="chips"][data-pk-on] [data-pk-head][aria-expanded="true"] { border-color: var(--flow); background: var(--flow); color: var(--surface); }
+[data-pk-picker="chips"][data-pk-on] [data-pk-body] { order: 1; grid-column: 1 / -1; margin-top: var(--space-2); }
+
+/* ---- A start-with link inside a head row or a body: a full-width row link, at least 48 px ---- */
+.aq-phone-kit__go {
+  display: flex; align-items: center; gap: var(--space-3); min-height: 48px; padding: var(--space-2) var(--space-4); box-sizing: border-box;
+  color: inherit; text-decoration: none; font: 500 15px/20px var(--font-sans);
+}
+.aq-phone-kit__go::after { content: "\2192"; margin-left: auto; color: var(--flow); transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-phone-kit__go:hover::after { transform: translateX(var(--space-1)); }
+.aq-phone-kit__go:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* ---- Sticky compact figure: the strip holds under the header while the rows scroll ---- */
+[data-pk-sticky][data-pk-on] [data-pk-fig] {
+  position: sticky; top: var(--pk-top, 0px); z-index: 4; height: var(--pk-h, 160px); box-sizing: border-box; overflow: hidden;
+  background: var(--surface); border-bottom: 1px solid var(--line-strong);
+  transition: top 240ms cubic-bezier(0.2, 0, 0, 1);
+  /* the strip lifts off with the last row (PhoneKit sets --pk-lift each frame; no transition, it follows the scroll) */
+  transform: translateY(calc(-1 * var(--pk-lift, 0px)));
+}
+/* a jump to a row lands below the strip, never under it */
+[data-pk-sticky][data-pk-on] [data-pk-row] { scroll-margin-top: calc(var(--pk-top, 0px) + var(--pk-h, 160px) + var(--space-4)); }
+/* opt-in quieting (data-pk-dim on the root): rows off the reading line step back */
+[data-pk-sticky][data-pk-dim][data-pk-on] [data-pk-row]:not(.is-pk-active) { opacity: 0.55; transition: opacity 240ms cubic-bezier(0.2, 0, 0, 1); }
+/* opt-in pan and zoom (data-pk-zoom on the root): the [data-pk-pan] layer moves to the active target */
+[data-pk-sticky][data-pk-zoom][data-pk-on] [data-pk-pan] {
+  transform-origin: 0 0; transform: translate(var(--pk-x, 0px), var(--pk-y, 0px)) scale(var(--pk-s, 1));
+  transition: transform 420ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-pk-sticky][data-pk-on] [data-pk-fig], [data-pk-sticky][data-pk-zoom][data-pk-on] [data-pk-pan], [data-pk-sticky][data-pk-dim][data-pk-on] [data-pk-row],
+  [data-pk-picker="chips"][data-pk-on] [data-pk-head], .aq-phone-kit__chev::before, .aq-phone-kit__chev::after, .aq-phone-kit__go::after { transition: none; }
+}

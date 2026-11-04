@@ -1,0 +1,342 @@
+{
+ "id": "systems",
+ "section": "Systems",
+ "nav_label": "All systems",
+ "title": "Purified Water system modules and budget ranges | Aquemi",
+ "meta": "One modular Purified Water package in polypropylene with PVC pretreatment, designed to meet USP <645> and <643>: modules, budget ranges and site requirements.",
+ "path": "/systems/",
+ "eyebrow": "SYSTEMS · PW · RO · DI/EDI",
+ "headline": "Purified Water systems, designed to meet USP limits",
+ "lead": "One modular polypropylene package, with polyvinyl chloride (PVC) pretreatment, makes Purified Water (PW) for every point of use. No Water for Injection, pure steam or stainless steel systems.",
+ "primary_cta": "Get a budget range",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
+ "index": [
+  "sys-pretreatment",
+  "sys-pw",
+  "sys-storage",
+  "sys-monitoring"
+ ],
+ "figure": {
+  "look": "module-lineup"
+ },
+ "blocks": [
+  {
+   "type": "diagram",
+   "anchor": "modules",
+   "nav": "Modules",
+   "h": "How the systems fit together",
+   "stages": [
+    {
+     "t": "Feed water",
+     "icon": "droplet",
+     "d": "City or well drinking water that changes with the season."
+    },
+    {
+     "t": "Pretreatment",
+     "spot": "pretreatment",
+     "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "PW generation",
+     "spot": "ro-skid",
+     "d": "RO pushes water through a membrane so fine that most dissolved salts stay behind. Deionization (DI) or electrodeionization (EDI) removes most of the rest. Per skid, at your coldest feed: [minimum–maximum capacity, L/h].",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Storage",
+     "spot": "storage-tank",
+     "d": "Buffers generation against peak demand.",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Distribution loop",
+     "spot": "loop",
+     "d": "Keeps water moving from the tank to every outlet and back.",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Points of use",
+     "icon": "valve"
+    }
+   ],
+   "base": "Monitoring and controls · conductivity and total organic carbon (TOC)",
+   "look": "strata-run",
+   "base_link": "sys-monitoring",
+   "caption": "After the PVC pretreatment, the package is polypropylene (PP). Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats."
+  },
+  {
+   "type": "spec",
+   "h": "Budget ranges before a quote",
+   "caption": "CAD, before tax, as of [month year] · [estimate class and accuracy]",
+   "intro": "The package is configured to your use: [configurations offered for this use].",
+   "cols": [
+    "Scope",
+    "Budget range",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "Whole package, [reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Supply, [FAT in the price or priced option], [IQ and OQ: included or priced option], turnover package",
+     "hl": true
+    },
+    {
+     "p": "PW generation, [reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Single-pass RO and EDI, city feed",
+     "spot": "ro-skid"
+    },
+    {
+     "p": "Storage tank and loop, [reference tank volume L, points of use]",
+     "v": "[budget range, CAD]",
+     "m": "[PP loop sanitization method]; field piping excluded",
+     "spot": "storage-tank"
+    },
+    {
+     "p": "Pretreatment train, [reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "PVC train: multimedia, softener and carbon or bisulfite",
+     "spot": "pretreatment"
+    }
+   ],
+   "note": "Not in this range: installation, tie-ins, utilities, lab testing during qualification and temporary water. Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation.",
+   "note_link": "buying#capital",
+   "nav": "Budget",
+   "anchor": "budget",
+   "look": "budget-bento",
+   "note_link_label": "Build your capital request"
+  },
+  {
+   "type": "spec",
+   "h": "What your site needs before we arrive",
+   "cols": [
+    "Item",
+    "Typical",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Connection points (battery limits)",
+     "v": "[standard battery limits, typical scope]",
+     "m": "Listed in the proposal, with who supplies each"
+    },
+    {
+     "p": "Footprint and weight",
+     "v": "[typical footprint and weight, by capacity]",
+     "m": "On the general arrangement drawings"
+    },
+    {
+     "p": "Power, feed water and drain",
+     "v": "[supply voltage options]; [feed and drain flows, L/h]",
+     "m": "RO reject and rinse water to drain"
+    },
+    {
+     "p": "Installation and field joints",
+     "v": "[installation scope]",
+     "m": "Joined by [PP joining method]; scope set in the proposal",
+     "link": "svc-fabrication#standard",
+     "link_label": "Our fabrication standard"
+    },
+    {
+     "p": "Electrical and pressure approvals",
+     "v": "Electrical: [panel certification mark held, or field evaluation used]",
+     "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
+     "link": "compliance#engineering",
+     "link_label": "Pressure and electrical approvals"
+    },
+    {
+     "p": "Tie-in and shutdown",
+     "v": "[typical shutdown for tie-in, days]",
+     "m": "Plan temporary water if production cannot stop"
+    },
+    {
+     "p": "Chemicals, drain discharge and isolation",
+     "v": "Sanitizing: [PP loop sanitization method]; residual tested before use",
+     "m": "One list for your permit: chemicals with safety data sheets, discharge, isolation points",
+     "link": "cmp-documentation#safety",
+     "link_label": "Site safety information"
+    }
+   ],
+   "nav": "Site",
+   "anchor": "site",
+   "look": "limit-plan"
+  },
+  {
+   "type": "table",
+   "h": "Start from the standard you cite",
+   "anchor": "standards",
+   "nav": "By standard",
+   "cols": [
+    "Standard",
+    "What it asks",
+    "Where we answer it"
+   ],
+   "intro": "Purified Water is one grade. Critical water and laboratory reagent water are others, with their own limits.",
+   "rows": [
+    [
+     "USP <645>, <643>; Ph. Eur. 0008",
+     "Uncompensated conductivity; total organic carbon (TOC) ≤ 0.50 mg/L (500 ppb)",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring",
+      "art": "analyzer"
+     }
+    ],
+    [
+     "21 CFR Part 11; EU GMP Annex 11",
+     "Audit trails, secure electronic records and signatures, validated control software",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring",
+      "art": "panel"
+     }
+    ],
+    [
+     "ANSI/AAMI ST108:2023; CSA Z314:23",
+     "Critical water for reprocessing medical devices: bacteria and endotoxin limits, conductivity checked daily",
+     {
+      "t": "Hospitals and laboratories",
+      "link": "ind-hospital-lab#grades",
+      "art": "storage"
+     }
+    ],
+    [
+     "ASTM D1193-24; CLSI GP40, 5th edition",
+     "Laboratory reagent water: four ASTM types plus microbial grades, or clinical laboratory reagent water (CLRW)",
+     {
+      "t": "Hospitals and laboratories",
+      "link": "ind-hospital-lab#grades",
+      "art": "generation"
+     }
+    ],
+    [
+     "Your process or equipment maker's specification",
+     "The limits your recipe, process or equipment maker sets for the water",
+     {
+      "t": "Food, beverage and industrial",
+      "link": "ind-process#limits",
+      "art": "generation"
+     }
+    ],
+    [
+     "WHO TRS 1033",
+     "Turbulent flow; storage that limits microbial growth; online conductivity and TOC",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage",
+      "art": "storage"
+     }
+    ],
+    [
+     "USP <1231>",
+     "Guidance: drinking water feed; pretreatment that protects the RO without adding bioburden",
+     {
+      "t": "Pretreatment",
+      "link": "sys-pretreatment",
+      "art": "pretreatment"
+     }
+    ]
+   ],
+   "as": "evidence",
+   "fold": 5,
+   "look": "standard-wires"
+  },
+  {
+   "type": "faq",
+   "h": "Questions teams ask first",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "items": [
+    {
+     "q": "When is polypropylene the wrong choice?",
+     "a": "When the loop needs routine 80 °C at loop pressure, hot holding or steam. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. Also when the grade is Water for Injection (WFI), or your standard requires stainless product contact.",
+     "link": "urs-guide#pp-rows",
+     "link_label": "When not to choose PP"
+    },
+    {
+     "q": "We pay for exchange DI. When does a package make sense?",
+     "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request.",
+     "link": "svc-service#running-cost"
+    },
+    {
+     "q": "Can you supply one part, or should one supplier design it all?",
+     "a": "Configurations we supply: [configurations offered for this use]. When we supply the whole package, we design pretreatment, generation and distribution together. Interface limits go in the functional specification; we test our scope at the factory acceptance test (FAT)."
+    },
+    {
+     "q": "How do we size generation against storage?",
+     "a": "From your point-of-use demand over a full production day. Generation covers average demand plus sanitization and tank refill; the tank covers the peaks. We share the calculation."
+    },
+    {
+     "q": "Do you build to standard platforms or to order?",
+     "a": "[standard platforms and capacity ranges]; [lead time from drawing approval, weeks]. Either way, we adapt instruments and controls to your user requirement specification (URS)."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "services",
+    "svc-design",
+    "urs-guide",
+    "first-system",
+    "cmp-documentation",
+    "svc-service"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your flow; get modules and a budget range.",
+  "body": "Rough numbers are fine. An engineer replies in writing. Cost: [budget range cost or free].",
+  "button": "Get a budget range",
+  "link": "contact-proposal",
+  "intent": "I have water data, no system yet|Modules and a budget range",
+  "include": [
+   "Peak and average demand, L/h",
+   "Number of points of use",
+   "What you make, and where you sell it",
+   "Feed water source, and any analysis"
+  ],
+  "turnaround": "[budget proposal turnaround, working days]",
+  "returns": [
+   "Modules your water needs",
+   "Budget range and its class",
+   "Sizing basis, and [one-paragraph approver summary, yes or no]"
+  ]
+ },
+ "todo": [
+  "Budget bands (FD-03, DR-005): a whole-package row, then three module rows, each a CAD range costed from Aquemi's own configuration at its reference size ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use]); the table's estimate class and accuracy ([estimate class and accuracy]) and price date ([month year]); never MISSION's internal band. Unfilled at launch: the table goes, the two note lines and \"Get a budget range\" stay (DR-005 rule 8), and the title and meta drop \"budget ranges\"",
+  "Confirm the band boundary in the whole-package row (supply, FAT, IQ/OQ protocols, turnover package) and the exclusions in the note (installation, tie-ins, utilities, PQ lab testing, temporary water) (FD-03)",
+  "Smallest project quoted, if the owner publishes one: one plain line under the budget table (FD-04, DR-005 rule 2)",
+  "Whether the budget range is free or charged ([budget range cost or free], closing; FD-02)",
+  "Budget proposal turnaround, working days ([budget proposal turnaround, working days], closing; the figure contact-proposal's requests table defines; FD-01)",
+  "Intent \"I have water data, no system yet|Modules and a budget range\" (hero and closing) must match contact-proposal's situation and follow-up labels (DR-014 rules 2 and 11)",
+  "Site requirements (FD-20, FD-21, FD-24, FD-26): [standard battery limits, typical scope]; [typical footprint and weight, by capacity]; [supply voltage options]; [feed and drain flows, L/h]; [installation scope] (who installs and makes field joints); [panel certification mark held, or field evaluation used] (compliance's and sys-monitoring's name: a certified panel shop or a per-unit field evaluation, FD-24); [pressure-rated items in the PW package] (same as compliance and cmp-quality); [typical shutdown for tie-in, days]",
+  "Pass 12 (SITE-PLAN systems; §1.5 conflict 8, one home cmp-documentation#safety): the chemicals, sanitization-waste and isolation rows became one row 'Chemicals, drain discharge and isolation' linking cmp-documentation#safety. [who supplies sanitizing chemicals and safety data sheets], [sanitization waste to drain: pH, temperature] and [lockable isolation points and lockout diagram] left this page; their facts live in cmp-documentation's [chemicals brought on site, with SDS], [discharge to drain per day, pH, temperature] and [isolation points and energies] (FD-26). The site table shows all seven rows unfolded (DR-024) in the neutral terms-sheet look; restore battery-limit only once every row's side is a fact (DR-018; FD-24, FD-14). The sanitization link (sys-storage#sanitization) now reaches readers through the loop stage and cmp-documentation#safety",
+  "Sanitization method for the PP tank and loop ([PP loop sanitization method], budget table and the site safety row; FD-14, DR-013)",
+  "Exchange DI breakeven, L/day, from the ten-year cost sheet ([exchange DI breakeven, L/day], FAQ; FD-49, DR-015)",
+  "Check USP <1231> §5.1.6 in the texts official 1 Dec 2021 and 1 Apr 2027.",
+  "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms and capacity ranges], FAQ; FD-20; the lead time is cmp-quality's [lead time from drawing approval, weeks], FD-08). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
+  "Configurations offered for this use ([configurations offered for this use], budget intro and FAQ 'Can you supply one part'; R2, FD-20; replaces [Whether single modules are supplied alone]): which modules (pretreatment, RO and DI/EDI skid, distribution) are supplied alone and whether generation ships without storage and loop. One value for both slots, shared with the group pages and projects. The FAQ answer opens 'Configurations we supply: [configurations offered for this use]' (review finding 1): unfilled at launch, the question and the budget intro line go (DR-003 rule 3, DR-005 rule 8)",
+  "Standard the PP piping and loop are designed to (dead legs, drainability); the ASME BPE row was removed",
+  "Once the project-facts sheet exists (DR-001 rule 5), it becomes the hero's secondary link (DR-006)",
+  "Pass 11 phrasebook 1 (L-03-15, L-09-19, L-05-21, PB-03.12): the note leads with what the range leaves out, labelled 'Not in this range' so the look still strikes the exclusions as chips (DR-018); the capital-request framing moved to the note link ('Build your capital request'), which now points at buying#capital (SITE-PLAN; was svc-service#running-cost, still linked from the exchange DI FAQ). Until buying is live, point it back at svc-service#running-cost",
+  "Pass 11 phrasebook 11 (L-01-13, L-06-4, L-05-11, L-12-7, PB-07.18, PB-08.11): site table heading 'What your site needs before we arrive'",
+  "Pass 11 phrasebook 12 † (L-12-17, L-07-19, L-06-22, PB-12.15): closing returns 'Sizing basis, and [one-paragraph approver summary, yes or no]'. Owner to confirm the budget reply carries a one-paragraph approver summary (DR-005; same paragraph as buying#capital's); if yes the bracket becomes 'one paragraph for your approver', if no the line ends at 'Sizing basis' (pass 11 review finding 9)",
+  "Pass 11 (SITE-PLAN systems; § 4.3 entry links; desk Q1): FAQ 'When is polypropylene the wrong choice?' adds WFI and a stainless standard (urs-guide hero, DR-021 scope) and links urs-guide#pp-rows; the sanitization link stays on the site table's chemicals row; related gains urs-guide",
+  "Pass 11 review finding 8: the wrong-choice FAQ's link label is 'Wrong-choice rows for your URS' (urs-guide#pp-rows is 'When polypropylene is the wrong choice'; urs-guide's 'Polypropylene rows' nav is #allow-pp). Finding 11: related gains first-system (journey P2; first-system#cost holds the all-in and monthly costs)",
+  "Pass 11 integration (buying review finding 7, DR-011 one name per fact): the budget block's whole-package basis now names buying#proposal's marks, [FAT in the price or priced option] and [IQ and OQ: included or priced option] (FD-05, FD-26); when the owner sets them, both pages change together. The wrong-choice FAQ's link label is now 'When not to choose PP' (urs-guide review finding 5; anchor #pp-rows kept)",
+  "Final round, pass 11: hero secondary links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the systems hero)",
+  "Final round, pass 11: PW generation stage gets one picture sentence for RO (L-BWT-5; BWT study § 9 rank 12)",
+  "Pass 12 (SITE-PLAN systems; IB §4; SITE-PLAN §1.2.6; review findings 3 and 5): the standards table (anchor standards) adds ANSI/AAMI ST108:2023 with CSA Z314:23 (one row), ASTM D1193-24 with CLSI GP40 (5th ed.) (one row), both linking ind-hospital-lab#grades, and the process or equipment maker's specification row linking ind-process#limits (wording matches that page's limits intro); 7 rows in DR-027 rule 9 order (drug group first: USP/Ph. Eur., Part 11/Annex 11), fold 5 so one row per reader group shows before the fold. No numeric limits printed: D1193-24 tables and GP40 CLRW values are unread (pw-quality-and-limits §3)",
+  "Pass 12 (SITE-PLAN systems; PS §5.2; DR-013 rule 1): the diagram (anchor modules) carries the PP rating sentence in its caption, and the PW generation card a capacity label with its basis, 'Per skid, at your coldest feed: [minimum–maximum capacity, L/h]' (FD-20; same basis as sys-pw facts; review finding 2). Still open: WFI and pure steam drawn greyed outside the package boundary (no stills label, DR-021 rule 5) needs a strata-run look change (phase 6 build), not copy",
+  "Pass 12 (SITE-PLAN systems; R2): budget intro 'The package is configured to your use: [configurations offered for this use].'"
+ ],
+ "secondary_cta": {
+  "label": "Writing your URS",
+  "link": "urs-guide"
+ }
+}

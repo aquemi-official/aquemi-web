@@ -1,0 +1,112 @@
+/* ---------- LimitStack: limits as an editorial type stack beside a sculpted outlet pipe ---------- */
+/* Limestone sheet. Left: the heading at display scale, the caption beside it, the rows stepping down and in. Right: the
+   outlet pipe (IsoKit, limestone ground) coiling once, a navy collar on the outlet run reading "Guaranteed". */
+.aq-limit-stack { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+.aq-limit-stack__text { display: flex; flex-direction: column; gap: var(--space-12); min-width: 0; }
+
+/* Heading: display scale, the caption set beside its last line */
+.aq-limit-stack .aq-sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: var(--space-6); row-gap: var(--space-3); }
+.aq-limit-stack .aq-sec-head .aq-h1 { order: 0; max-width: 9ch; font: 300 104px/96px var(--font-sans); letter-spacing: -0.045em; color: var(--on-limestone); }
+.aq-limit-stack .aq-sec-head .aq-eyebrow { order: 1; padding-bottom: var(--space-2); color: var(--on-limestone-muted); }
+
+/* Stack: each row one step further in; the hairline runs from its value to the drawing */
+.aq-limit-stack__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.aq-limit-stack__row { --step: var(--space-8); position: relative; display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-1);
+  margin-inline-start: calc(var(--i, 0) * var(--step, var(--space-8))); padding-block: var(--space-4) var(--space-3); }
+.aq-limit-stack__p { margin: 0; display: flex; align-items: baseline; gap: var(--space-3); flex-wrap: wrap;
+  font: 500 12px/16px var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-limit-stack__p .aq-index { color: var(--on-limestone-muted); font-family: var(--font-mono); }
+.aq-limit-stack__lvl { padding: 0 var(--space-2); border: 1px solid var(--on-limestone-muted); letter-spacing: 0.06em; }
+.aq-limit-stack__v { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); color: var(--on-limestone); }
+.aq-limit-stack__n { font: 300 44px/52px var(--font-mono); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.aq-limit-stack__n--open { font-size: 24px; line-height: 34px; letter-spacing: 0; }
+.aq-limit-stack__u { font: 300 28px/36px var(--font-mono); letter-spacing: -0.02em; }
+.aq-limit-stack__q { font: 400 13px/20px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-limit-stack__m { margin: 0; display: flex; align-items: center; gap: var(--space-3);
+  font: 400 13px/20px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-limit-stack__rule { flex: 1 1 auto; min-width: var(--space-8); height: 1px; background: var(--on-limestone-muted); opacity: 0.45; transform-origin: 0 50%; order: 1; }
+.aq-limit-stack__mt { flex: none; max-width: 70%; text-align: right; order: 2; }
+.aq-limit-stack__m::before { content: ""; flex: none; width: var(--space-3); height: 1px; background: var(--on-limestone-muted); order: 0; }
+
+/* The leading limit: index in flow */
+.aq-limit-stack__row.is-hl .aq-index { color: var(--flow); }
+/* The guaranteed outlet: the stack's last step, boxed, in flow */
+.aq-limit-stack__row.is-hero { margin-block-start: var(--space-4); padding: var(--space-4) var(--space-6) var(--space-6); border: 1px solid var(--flow); background: var(--surface-raised); }
+.aq-limit-stack__row.is-hero .aq-limit-stack__p, .aq-limit-stack__row.is-hero .aq-index { color: var(--flow); }
+.aq-limit-stack__row.is-hero .aq-limit-stack__n { font-size: 52px; line-height: 64px; }
+.aq-limit-stack__row.is-hero .aq-limit-stack__n--open { font-size: 28px; line-height: 40px; }
+.aq-limit-stack__row.is-hero .aq-limit-stack__v, .aq-limit-stack__row.is-hero .aq-limit-stack__m { color: var(--ink); }
+.aq-limit-stack__row.is-hero .aq-limit-stack__m { color: var(--ink-muted); }
+.aq-limit-stack__row.is-hero .aq-limit-stack__rule, .aq-limit-stack__row.is-hero .aq-limit-stack__m::before { background: var(--flow); opacity: 1; }
+.aq-limit-stack__text > .aq-small { margin: 0; max-width: var(--text-max); color: var(--on-limestone-muted); }
+
+/* Drawing: the pipe, the collar's lettering on the iso face (skewY 30deg follows the x axis), the intro as a note */
+.aq-limit-stack__fig { position: sticky; top: var(--space-24); margin: 0; margin-top: var(--space-16); color: var(--on-limestone-muted); }
+.aq-limit-stack__svg .aq-iso__pipe-body { fill: var(--surface-raised); }
+.aq-limit-stack__svg .aq-iso__pipe-wall { stroke: var(--on-limestone); }
+.aq-limit-stack__svg .aq-limit-stack__band { fill: var(--navy); stroke: var(--navy); }
+.aq-limit-stack__svg .aq-iso__flow { stroke-width: 2; }
+.aq-limit-stack__seal, .aq-limit-stack__outlet { position: absolute; white-space: nowrap; pointer-events: none;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase;
+  transform: translate(-50%, -50%) skewY(30deg); }
+.aq-limit-stack__seal { padding: var(--space-1) var(--space-2); background: var(--navy); color: var(--on-navy); }
+.aq-limit-stack__outlet { color: var(--on-limestone-muted); }
+.aq-limit-stack__note { position: absolute; width: 24ch; margin: 0; transform: translate(calc(-100% - var(--space-2)), -50%); text-align: right;
+  font: 400 14px/22px var(--font-sans); color: var(--on-limestone); }
+.aq-limit-stack__note--right { transform: translate(var(--space-2), -50%); text-align: left; }
+
+@container (max-width: 1100px) {
+  .aq-limit-stack .aq-sec-head .aq-h1 { font-size: 80px; line-height: 76px; }
+  .aq-limit-stack__row { --step: var(--space-4); }
+  .aq-limit-stack__n { font-size: 36px; line-height: 44px; }
+}
+
+@container (max-width: 860px) {
+  .aq-limit-stack { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-limit-stack__text { display: contents; }
+  .aq-limit-stack .aq-sec-head { order: 0; }
+  .aq-limit-stack__fig { order: 1; position: relative; top: auto; margin: 0 auto; width: 92%; }
+  .aq-limit-stack__list { order: 2; }
+  .aq-limit-stack__text > .aq-small { order: 3; }
+  .aq-limit-stack .aq-sec-head .aq-h1 { font-size: 56px; line-height: 56px; letter-spacing: -0.04em; }
+  .aq-limit-stack__row { --step: var(--space-3); }
+  .aq-limit-stack__n { font-size: 30px; line-height: 36px; }
+  .aq-limit-stack__u { font-size: 20px; line-height: 28px; }
+  .aq-limit-stack__row.is-hero { padding: var(--space-4); }
+  .aq-limit-stack__row.is-hero .aq-limit-stack__n { font-size: 30px; line-height: 36px; }
+  .aq-limit-stack__n--open, .aq-limit-stack__row.is-hero .aq-limit-stack__n--open { font-size: 20px; line-height: 30px; }
+  .aq-limit-stack__mt { flex: 1 1 auto; min-width: 0; max-width: none; text-align: left; order: 0; }
+  .aq-limit-stack__rule, .aq-limit-stack__m::before { display: none; }
+  .aq-limit-stack__m { padding-top: var(--space-2); border-top: 1px solid color-mix(in srgb, var(--on-limestone-muted) 45%, transparent); }
+  .aq-limit-stack__row.is-hero .aq-limit-stack__m { border-top-color: var(--flow); }
+  .aq-limit-stack__note { width: 18ch; font-size: 12px; line-height: 18px; }
+  .aq-limit-stack__seal, .aq-limit-stack__outlet { font-size: 12px; letter-spacing: 0.1em; }
+}
+.aq-limit-stack-sec { isolation: isolate; }
+.aq-limit-stack__collar .aq-iso__eq { stroke-width: 1.5; }
+.aq-limit-stack__pt { overflow-wrap: anywhere; }
+
+/* The drawing box: the svg and its lettering (seal, outlet), placed as % of this box (pass 12) */
+.aq-limit-stack__draw { position: relative; }
+
+/* Tablets and phones (pass 12, F5, F1): the coil capped at 420 px wide, so it does not fill a screen before the first
+   limit. The box is capped, not the svg, so the lettering placed in % stays on the pipe. The intro note leaves the
+   drawing and sits under it as a 14 px line; its leader is not drawn, and the band of the drawing only the leader used
+   is pulled up under the note (--ls-cut, from the renderer). */
+@container (max-width: 860px) {
+  .aq-limit-stack__fig { width: min(92%, 420px); }
+  .aq-limit-stack__fig svg { display: block; }
+  .aq-limit-stack__fig .aq-iso__leader { display: none; }
+  .aq-limit-stack__draw { margin-bottom: calc(-1 * var(--ls-cut, 0%)); }
+  .aq-limit-stack__note, .aq-limit-stack__note--right { position: static; transform: none; width: auto; max-width: 48ch; margin-top: var(--space-3);
+    text-align: left; font-size: 14px; line-height: 21px; }
+}
+
+/* Small phones (pass 12, S13, F1): no step indent below 600 px; the drawing box 260 px wide (about 300 px tall); the
+   outlet lettering steps 5 px off the pipe wall at this scale; qualifiers at 14 px */
+@container (max-width: 600px) {
+  .aq-limit-stack__row { margin-inline-start: 0; }
+  .aq-limit-stack__fig { width: min(92%, 260px); }
+  .aq-limit-stack__outlet { transform: translate(-50%, -50%) translateY(5px) skewY(30deg); }
+  .aq-limit-stack__q { font-size: 14px; line-height: 21px; }
+}

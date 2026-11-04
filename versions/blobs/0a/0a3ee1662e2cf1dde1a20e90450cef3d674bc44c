@@ -1,0 +1,160 @@
+/* ---------- PidRoutes: a router drawn as a P&ID on a navy blueprint ground (look "pid-routes") ----------
+   Desktop: one grid, five tracks (situation | run | system | run | start with). Every route is one grid row (its li is
+   display: contents); runs stretch to the row so pipes meet the boxes at their middle. Pipe lines are a stretched svg
+   with non-scaling 1.5 px strokes; valve, instrument, port, junction and arrow symbols are fixed-size and centred on it.
+   Phones: each route stacks and its runs turn vertical (the horizontal line hides, the vertical shows). */
+.aq-pid-routes-band .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-pid-routes {
+  position: relative; padding: var(--space-6) var(--space-6) var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent);
+  color: var(--on-navy);
+}
+/* registration marks in two corners */
+.aq-pid-routes__mark { position: absolute; top: calc(-1 * var(--space-2)); width: var(--space-4); height: var(--space-4); pointer-events: none; }
+.aq-pid-routes__mark::before, .aq-pid-routes__mark::after { content: ""; position: absolute; background: var(--on-navy-muted); }
+.aq-pid-routes__mark::before { left: 50%; top: 0; width: 1px; height: 100%; }
+.aq-pid-routes__mark::after { top: 50%; left: 0; height: 1px; width: 100%; }
+.aq-pid-routes__mark--tl { left: calc(-1 * var(--space-2)); }
+.aq-pid-routes__mark--tr { right: calc(-1 * var(--space-2)); }
+
+.aq-pid-routes__heads, .aq-pid-routes__list {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.62fr) minmax(0, 1fr);
+}
+.aq-pid-routes__head { margin: 0; padding-bottom: var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy); }
+.aq-pid-routes__head span { display: block; color: var(--on-navy-muted); opacity: 0.8; }
+.aq-pid-routes__ruler { display: block; width: 100%; height: 10px; margin-bottom: var(--space-4); }
+.aq-pid-routes__ruler path { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 45%, transparent); stroke-width: 1; }
+.aq-pid-routes__list + .aq-pid-routes__ruler { margin: var(--space-4) 0 0; transform: scaleY(-1); }
+
+.aq-pid-routes__list { list-style: none; margin: 0; padding: 0; }
+.aq-pid-routes__route { display: contents; }
+.aq-pid-routes__sit, .aq-pid-routes__node, .aq-pid-routes__run { position: relative; padding-block: var(--space-3); }
+.aq-pid-routes__box { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+
+/* Situation: a double-framed tag box with its path number on the frame */
+.aq-pid-routes__sit .aq-pid-routes__box {
+  min-height: calc(var(--space-16) + var(--space-2)); padding: var(--space-4) var(--space-4) var(--space-3);
+  border: 1px solid var(--on-navy-muted);
+  box-shadow: 0 0 0 3px var(--navy), 0 0 0 4px color-mix(in srgb, var(--on-navy-muted) 40%, transparent);
+  background: var(--navy);
+}
+.aq-pid-routes__tag { position: absolute; top: calc(-1 * var(--space-2)); left: var(--space-3); right: var(--space-3); display: flex; justify-content: space-between; margin: 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-pid-routes__tag span { padding: 0 var(--space-1); background: var(--navy); }
+.aq-pid-routes__t { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--on-navy); text-wrap: pretty; }
+
+/* System and start: single-line boxes with a port dot on the inlet side */
+.aq-pid-routes__node .aq-pid-routes__box { padding: var(--space-3) var(--space-4) var(--space-3) var(--space-8); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 70%, transparent); background: var(--navy); }
+.aq-pid-routes__node .aq-pid-routes__box::before {
+  content: ""; position: absolute; left: var(--space-3); top: 50%; width: var(--space-2); height: var(--space-2); margin-top: calc(-1 * var(--space-1));
+  border-radius: var(--radius-pill); border: 1.5px solid var(--on-navy-muted); box-sizing: border-box;
+}
+.aq-pid-routes__node--go .aq-pid-routes__box::before { background: var(--on-navy-muted); }
+.aq-pid-routes__v { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-navy); text-wrap: pretty; }
+.aq-pid-routes__v a { color: var(--on-navy); text-decoration: none; }
+.aq-pid-routes__node--go .aq-pid-routes__v a::after { content: "\a0\2192"; }
+.aq-pid-routes__v a::before { content: ""; position: absolute; inset: 0; }
+.aq-pid-routes__v a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-pid-routes__v a:focus-visible { outline: none; }
+.aq-pid-routes__node:has(a:focus-visible) .aq-pid-routes__box { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+.aq-pid-routes__node:has(a) .aq-pid-routes__box:hover { border-color: var(--on-navy); }
+/* column labels: read by screen readers on desktop (the drawn heads are aria-hidden), shown on phones */
+.aq-pid-routes__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+
+/* Runs: the pipe svg fills the cell; symbols sit on its centre line */
+.aq-pid-routes__run { padding: 0; min-height: var(--space-16); }
+.aq-pid-routes__pipe { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.aq-pid-routes__pipe line { vector-effect: non-scaling-stroke; fill: none; stroke-width: 1.5; stroke-linecap: round; }
+.aq-pid-routes__ln { stroke: var(--on-navy-muted); }
+.aq-pid-routes__ln--v { display: none; }
+.aq-pid-routes__tie { stroke: color-mix(in srgb, var(--on-navy-muted) 75%, transparent); }
+.aq-pid-routes__valve { position: absolute; left: 58%; top: 50%; width: 28px; height: 28px; margin: -14px 0 0 -14px; overflow: visible; }
+.aq-pid-routes__run--b .aq-pid-routes__valve { left: 62%; }
+.aq-pid-routes__vb { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-pid-routes__vs { fill: none; stroke: var(--on-navy); stroke-width: 1.5; stroke-linecap: round; }
+.aq-pid-routes__vf { fill: var(--on-navy); stroke: none; }
+.aq-pid-routes__inst { position: absolute; left: 82%; bottom: 50%; width: 20px; height: 30px; margin-left: -10px; overflow: visible; }
+.aq-pid-routes__inst path, .aq-pid-routes__inst circle { fill: var(--navy); stroke: var(--on-navy-muted); stroke-width: 1.25; }
+.aq-pid-routes__port { position: absolute; left: 0; top: 50%; width: var(--space-2); height: var(--space-2); margin: calc(-1 * var(--space-1)) 0 0 calc(-1 * var(--space-1)); border-radius: var(--radius-pill); background: var(--on-navy); }
+.aq-pid-routes__jn { position: absolute; top: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: var(--radius-pill); background: var(--on-navy-muted); }
+.aq-pid-routes__arrow { position: absolute; right: 1px; top: 50%; width: 10px; height: 10px; margin-top: -5px; }
+.aq-pid-routes__arrow path { fill: var(--on-navy); }
+
+/* Drawing caption (decorative title block) */
+.aq-pid-routes__cap { display: flex; justify-content: flex-end; gap: var(--space-3); margin: var(--space-3) 0 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-pid-routes__cap span + span::before { content: "·"; content: "·" / ""; margin-right: var(--space-3); }
+
+/* Hover or focus lights one route in water-blue; the others step back */
+.aq-pid-routes [data-r], .aq-pid-routes [data-rs] { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-pid-routes.has-hot [data-r]:not(.is-hot) { opacity: 0.38; }
+.aq-pid-routes.has-hot .aq-pid-routes__tie:not(.is-hot), .aq-pid-routes.has-hot .aq-pid-routes__jn:not(.is-hot) { opacity: 0.3; }
+.aq-pid-routes .is-hot .aq-pid-routes__ln, .aq-pid-routes .aq-pid-routes__tie.is-hot { stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); stroke-width: 2; }
+.aq-pid-routes .is-hot .aq-pid-routes__vb, .aq-pid-routes .is-hot .aq-pid-routes__vs { stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-pid-routes .aq-pid-routes__jn.is-hot, .aq-pid-routes .is-hot .aq-pid-routes__port { background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-pid-routes .is-hot .aq-pid-routes__arrow path { fill: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-pid-routes__node.is-hot .aq-pid-routes__box, .aq-pid-routes__node.is-lit .aq-pid-routes__box, .aq-pid-routes__sit.is-hot .aq-pid-routes__box { border-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-pid-routes__node.is-hot .aq-pid-routes__box::before, .aq-pid-routes__node.is-lit .aq-pid-routes__box::before { border-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-pid-routes__node .aq-pid-routes__box { transition: border-color 300ms cubic-bezier(0.2, 0, 0, 1); }
+/* motion: the droplet that rides a run (created and removed by motion.js) */
+.aq-pid-routes__drop { position: absolute; left: 0; top: 50%; width: var(--space-2); height: var(--space-2); margin: calc(-1 * var(--space-1)) 0 0 calc(-1 * var(--space-1)); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); pointer-events: none; }
+
+/* Beam (motion only, ported from Subframe Motion "Animated beam"): the water running a pointed-at route; a bright head
+   with a fading tail slides along the run's line, clipped to the run */
+.aq-pid-routes__beam { position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; overflow: hidden; pointer-events: none; }
+.aq-pid-routes__beam i { position: absolute; left: 0; top: 0; bottom: 0; width: 40%; transform: translateX(-100%);
+  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--flow) 60%, var(--on-navy)) 67.5%, var(--on-navy) 99%, transparent); }
+
+@container (max-width: 860px) {
+  .aq-pid-routes { padding: var(--space-4) var(--space-3) var(--space-3); }
+  .aq-pid-routes__heads, .aq-pid-routes__ruler { display: none; }
+  .aq-pid-routes__list { grid-template-columns: minmax(0, 1fr); }
+  .aq-pid-routes__route { display: block; padding-bottom: var(--space-6); }
+  .aq-pid-routes__route + .aq-pid-routes__route { padding-top: var(--space-4); border-top: 1px dashed color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+  .aq-pid-routes__sit, .aq-pid-routes__node { padding-block: 0; }
+  .aq-pid-routes__sit .aq-pid-routes__box { min-height: 0; padding: var(--space-4) var(--space-3) var(--space-3); }
+  .aq-pid-routes__node { margin-left: var(--space-6); }
+  .aq-pid-routes__node .aq-pid-routes__box { padding: var(--space-2) var(--space-3) var(--space-2) var(--space-6); }
+  .aq-pid-routes__k:not(.aq-pid-routes__k--sit) {
+    position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal;
+    font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted);
+  }
+  /* the run turns vertical, down the left of the node it feeds */
+  .aq-pid-routes__run { min-height: var(--space-12); margin-left: calc(var(--space-6) + var(--space-1)); width: var(--space-6); }
+  .aq-pid-routes__ln--h, .aq-pid-routes__tie, .aq-pid-routes__jn, .aq-pid-routes__inst { display: none; }
+  .aq-pid-routes__ln--v { display: inline; }
+  .aq-pid-routes__valve, .aq-pid-routes__run--b .aq-pid-routes__valve { left: 50%; top: 50%; transform: rotate(90deg); }
+  .aq-pid-routes__port { left: 50%; top: 0; margin-top: 0; }
+  .aq-pid-routes__arrow { right: auto; left: 50%; top: auto; bottom: 1px; margin: 0 0 0 -5px; transform: rotate(90deg); }
+  .aq-pid-routes__drop { left: 50%; top: 0; }
+  .aq-pid-routes__cap { justify-content: flex-start; flex-wrap: wrap; }
+}
+
+/* ---------- Pass 12 phones: a situation picker (PhoneKit accordion) ----------
+   Six tap rows (path number, situation, chevron), at least 56 px, one open at a time. The open row draws one short
+   horizontal pipe: System, a valve and an arrow, Start with (the start box is the link, at least 44 px). The route
+   wrapper is display: contents on wider screens, so the desktop grid never sees it. */
+.aq-pid-routes__path { display: contents; }
+@container (max-width: 860px) {
+  .aq-pid-routes__list[data-pk-on] { border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__route { padding: 0; border-top: 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__route + .aq-pid-routes__route { padding-top: 0; border-top: 0; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__tap { min-height: 56px; padding: var(--space-3) 0; gap: var(--space-3); align-items: center; color: var(--on-navy); }
+  .aq-pid-routes__tn { flex: none; width: 4.5ch; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .aq-pid-routes__tt { flex: 1; min-width: 0; font: 400 16px/22px var(--font-sans); text-wrap: pretty; }
+  .aq-pid-routes__tap .aq-phone-kit__chev { margin-right: calc(-1 * var(--space-3)); color: var(--on-navy-muted); }
+  .aq-pid-routes__tap[aria-expanded="true"] .aq-pid-routes__tn, .aq-pid-routes__tap[aria-expanded="true"] .aq-phone-kit__chev { color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+
+  /* the open route: System -> valve -> Start with, on one line */
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__path { display: grid; grid-template-columns: minmax(0, 1fr) var(--space-12) minmax(0, 1fr); align-items: stretch; padding: 0 0 var(--space-4) calc(4.5ch + var(--space-3)); }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__run--a { display: none; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__node { margin: 0; padding: 0; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__node .aq-pid-routes__box { min-height: 64px; padding: var(--space-2) var(--space-3); justify-content: flex-start; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__node .aq-pid-routes__box::before { display: none; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__node--go .aq-pid-routes__box { border-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__v { font-size: 14px; line-height: 20px; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__run--b { min-height: 0; margin: 0; width: auto; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__run--b .aq-pid-routes__ln--h { display: inline; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__run--b .aq-pid-routes__ln--v { display: none; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__run--b .aq-pid-routes__valve { left: 50%; top: 50%; transform: none; }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__run--b .aq-pid-routes__port { left: 0; top: 50%; margin: calc(-1 * var(--space-1)) 0 0 calc(-1 * var(--space-1)); }
+  .aq-pid-routes__list[data-pk-on] .aq-pid-routes__run--b .aq-pid-routes__arrow { left: auto; right: 1px; top: 50%; bottom: auto; margin: -5px 0 0; transform: none; }
+}

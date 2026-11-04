@@ -1,0 +1,488 @@
+{
+ "id": "news",
+ "section": "Company",
+ "nav_label": "Technical notes",
+ "title": "Purified Water technical notes | Aquemi",
+ "meta": "Answer-first notes on USP <645>, <643>, <1231>, Ph. Eur. 12.3, WHO TRS 1033 and CSA B51 for Purified Water (PW) systems. Get each one by email.",
+ "path": "/company/news/",
+ "eyebrow": "TECHNICAL NOTES · PURIFIED WATER",
+ "headline": "Water questions, answered in three sentences",
+ "lead": "For teams running or planning Purified Water (PW) systems: one question per note, answered first, clause named. Latest: polypropylene or stainless steel for a PW loop.",
+ "primary_cta": "Talk to an engineer",
+ "blocks": [
+  {
+   "type": "register",
+   "nav": "Notes",
+   "anchor": "notes",
+   "h": "The notes register",
+   "intro": "Each title opens its note, or the page that answers it.",
+   "topics": [
+    "Standards",
+    "Design",
+    "Qualification",
+    "Troubleshooting"
+   ],
+   "items": [
+    {
+     "t": "Polypropylene or stainless steel for a PW loop",
+     "topic": "Design",
+     "std": "WHO TRS 1033, 7.2.1, 8.4; USP <1231>",
+     "date": "[note publication month, year]",
+     "link": "news#pp-or-stainless",
+     "featured": true,
+     "spot": "storage-tank",
+     "part": "pipe",
+     "d": "Our standard says stainless steel. Can a polypropylene loop carry our Purified Water?"
+    },
+    {
+     "t": "After a water observation: what inspectors ask for",
+     "topic": "Standards",
+     "std": "GUI-0001; 21 CFR 211",
+     "link": "svc-upgrades#observation",
+     "spot": "magnifier",
+     "d": "An inspector cited our water system. What will the response need?"
+    },
+    {
+     "t": "Conductivity rising in the loop",
+     "topic": "Troubleshooting",
+     "std": "USP <645>; WHO TRS 1033, 12.3, 12.7",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "A total organic carbon (TOC) excursion on an online analyzer",
+     "topic": "Troubleshooting",
+     "std": "USP <643>",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Microbial counts at one point of use only",
+     "topic": "Troubleshooting",
+     "std": "WHO TRS 1033, 12.5; FDA high-purity water guide (1993)",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Exchange deionization (DI) or a PW package: when to switch",
+     "topic": "Design",
+     "std": "USP <1231>",
+     "link": "systems#faq"
+    },
+    {
+     "t": "Rinse-line water: exchange DI or your own reverse osmosis (RO) and EDI",
+     "topic": "Design",
+     "std": "Your process water specification; USP <1231> for method",
+     "link": "ind-process#from-ion-exchange"
+    },
+    {
+     "t": "USP <645> stage 1: why the reading must be uncompensated",
+     "topic": "Standards",
+     "std": "USP <645>",
+     "link": "sys-monitoring",
+     "d": "Our transmitters show temperature-compensated conductivity. Can we release water on that reading?"
+    },
+    {
+     "t": "Device manufacturing water: no grade is named, so you specify it",
+     "topic": "Standards",
+     "std": "ISO 13485:2016, 7.5.2; 21 CFR 820 (QMSR, 2026)",
+     "link": "ind-meddevice#grades"
+    },
+    {
+     "t": "Natural health products: does this line need Purified Water?",
+     "topic": "Standards",
+     "std": "GUI-0158",
+     "link": "ind-pharma#nhp"
+    },
+    {
+     "t": "USP <1231> is informational: what does it ask of you?",
+     "topic": "Standards",
+     "std": "USP <1231>",
+     "link": "compliance#pharmacopoeia"
+    },
+    {
+     "t": "Dead legs in a PW loop: how L/D is measured",
+     "topic": "Standards",
+     "std": "WHO TRS 1033, 8.6; FDA high-purity water guide, IX",
+     "link": "sys-storage"
+    },
+    {
+     "t": "CSA B51 and the Canadian registration number (CRN) for imported equipment",
+     "topic": "Standards",
+     "std": "CSA B51",
+     "link": "compliance#engineering"
+    },
+    {
+     "t": "Ph. Eur. 12.3: what changed for water",
+     "topic": "Standards",
+     "std": "Ph. Eur. 0008, 2.2.44",
+     "link": "sys-pw"
+    },
+    {
+     "t": "FDA computer software assurance and water system controls",
+     "topic": "Standards",
+     "std": "FDA computer software assurance (devices); GAMP 5 (2022)",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Reverse osmosis (RO) with electrodeionization (EDI) or with DI",
+     "topic": "Design",
+     "std": "WHO TRS 1033, 4.3.3; USP <1231>; ISPE Baseline Guide Vol. 4",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Storage tank size for a PW loop",
+     "topic": "Design",
+     "std": "WHO TRS 1033, 9.2; USP <1231>; ISPE Baseline Guide Vol. 4",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Sanitization options for a polypropylene (PP) loop",
+     "topic": "Design",
+     "std": "WHO TRS 1033, 4.3.7, 8.4; USP <1231>; ISPE Baseline Guide Vol. 4",
+     "link": "sys-storage#sanitization"
+    },
+    {
+     "t": "Chloramine in municipal feed water",
+     "topic": "Design",
+     "std": "USP <1231>; Guidelines for Canadian Drinking Water Quality",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Cold feed water and RO output in a Canadian winter",
+     "topic": "Design",
+     "std": "Design practice; no standard sets a limit",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Questions to ask when comparing water system proposals",
+     "topic": "Design",
+     "std": "EU GMP Annex 15, 3.2; GUI-0029, 8.1",
+     "link": "contact-proposal#requests"
+    },
+    {
+     "t": "What factory acceptance test (FAT) results can replace at installation and operational qualification (IQ, OQ)",
+     "topic": "Qualification",
+     "std": "EU GMP Annex 15, 3.6; GUI-0029, 8.1; ASTM E2500",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Who owns design qualification (DQ)",
+     "topic": "Qualification",
+     "std": "EU GMP Annex 15, 3.3; GUI-0029, 5; ASTM E2500",
+     "link": "svc-design"
+    },
+    {
+     "t": "The three-phase performance qualification (PQ)",
+     "topic": "Qualification",
+     "std": "WHO TRS 1033, 11.3; FDA high-purity water guide (1993)",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Alert and action levels from qualification data",
+     "topic": "Qualification",
+     "std": "WHO TRS 1033, 11.3, 12.7, 12.8; USP <1231>",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Does an upgrade restart PQ?",
+     "topic": "Qualification",
+     "std": "WHO TRS 1033, 11.3; EU GMP Annex 15, 11; GUI-0029, 7",
+     "link": "svc-upgrades"
+    },
+    {
+     "t": "Why is my RO producing less water?",
+     "topic": "Troubleshooting",
+     "std": "Membrane manufacturer data; USP <1231>",
+     "link": "svc-service"
+    },
+    {
+     "t": "Chlorine breakthrough to the RO membranes",
+     "topic": "Troubleshooting",
+     "std": "Membrane manufacturer data; USP <1231>",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "EU GMP Annex 1 (2022): what applies to PW at sterile sites",
+     "topic": "Standards",
+     "std": "EU GMP Annex 1; GUI-0119 (sterile sites, or non-sterile sites that adopt it in writing)",
+     "link": "compliance#gmp"
+    }
+   ],
+   "fold": 6,
+   "fold_noun": "notes",
+   "look": "note-sheet"
+  },
+  {
+   "type": "table",
+   "nav": "PP or stainless",
+   "anchor": "pp-or-stainless",
+   "eyebrow": "Technical note · [note publication month, year] · [note author and reviewer]",
+   "h": "Polypropylene or stainless steel for a PW loop",
+   "intro": "Polypropylene suits an ambient PW loop, sanitized chemically. Water for Injection (WFI) or a stainless standard needs stainless. A hot loop needs PVDF or stainless [whether we quote PVDF]. Limits, sampling and release are unchanged.",
+   "cols": [
+    "What decides it",
+    "Polypropylene (PP) fits when",
+    "Stainless steel is needed when"
+   ],
+   "rows": [
+    [
+     "Water grade",
+     "The loop carries Purified Water (PW) for non-sterile products, rinses and washing.",
+     "The loop carries Water for Injection (WFI), or feeds a pure steam generator."
+    ],
+    [
+     "Loop temperature",
+     "The loop runs at ambient temperature. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "The loop is held hot, or runs routine 80 °C at loop pressure. Polyvinylidene fluoride (PVDF) is the plastic option; [whether we quote PVDF]."
+    ],
+    [
+     "Sanitization",
+     "Chemical sanitization, written as a procedure, with residual tested absent at every outlet before use.",
+     "Your procedure calls for routine hot water or steam sanitization."
+    ],
+    [
+     "Your corporate standard",
+     "It names outcomes: materials compatible with PW and the sanitizing agent, drainable, with no dead legs.",
+     "It names 316L stainless steel for product contact, and a deviation is not an option."
+    ],
+    [
+     "Your clients' audits",
+     "Your auditors accept a plastic loop backed by its maker's ratings and your sanitization records.",
+     "A client's quality agreement names stainless steel for water contact."
+    ],
+    [
+     "A plastic loop failed before",
+     "The cause is known and designed out: joints, supports for expansion, or heat beyond the rating.",
+     "No cause was found, and your engineers will not accept plastic again."
+    ]
+   ],
+   "look": "macro-leaders",
+   "macro": "pipe-pair"
+  },
+  {
+   "type": "steps",
+   "anchor": "pp-sanitization",
+   "h": "Chemical sanitization, proven at every outlet",
+   "intro": "Sanitization lowers the microbial count; it does not sterilize. For a PP loop the method is chemical, written as a procedure and checked at every outlet. Your monitoring shows whether the schedule is right.",
+   "core": "PP loop",
+   "items": [
+    {
+     "t": "Isolate",
+     "d": "Bypass or remove the parts the sanitant could harm, as the written procedure lists them."
+    },
+    {
+     "t": "Dose",
+     "d": "Fill the tank and loop: [PP loop sanitization method], at [sanitant concentration]."
+    },
+    {
+     "t": "Prove it arrived",
+     "d": "Measure the sanitant at every outlet before the hold starts, so no branch is missed."
+    },
+    {
+     "t": "Hold",
+     "hold": "the operator, at start and end",
+     "d": "Hold for [contact time, hours], with the tank and loop out of use."
+    },
+    {
+     "t": "Flush",
+     "d": "Flush the tank and loop with Purified Water, outlet by outlet."
+    },
+    {
+     "t": "Prove it gone",
+     "d": "Residual tested before use, at every outlet. The signed record goes to your quality unit."
+    }
+   ],
+   "look": "capa-ring"
+  },
+  {
+   "type": "spec",
+   "anchor": "pp-precedent",
+   "caption": "Published industry case, 2006",
+   "h": "A published case, read as precedent",
+   "intro": "In July/August 2006, Pharmaceutical Engineering described a polypropylene Purified Water loop at a pilot plant. Two of its four authors worked for a water system maker. The article describes another maker's installation.",
+   "cols": [
+    "Item",
+    "What the article reports",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Whose system",
+     "v": "Another maker's installation",
+     "m": "Its sanitizing chemical, USP edition and design are the article's own.",
+     "hl": true
+    },
+    {
+     "p": "The plant",
+     "v": "Small solid-dose pilot plant",
+     "m": "Clinical supplies; water for the product, equipment and washing"
+    },
+    {
+     "p": "The choice",
+     "v": "Polypropylene loop over stainless steel",
+     "m": "Also chosen over PVDF, on cost"
+    },
+    {
+     "p": "The reason",
+     "v": "No routine heat sanitization",
+     "m": "The authors judged a simple PW loop does not need it, so plastic was acceptable"
+    },
+    {
+     "p": "Qualification",
+     "v": "Six weeks of performance qualification",
+     "m": "Samples from every point of use, three days a week. Today, WHO TRS 1033 sets three phases over 12 months."
+    },
+    {
+     "p": "After qualification",
+     "v": "Over a year of weekly release testing",
+     "m": "Each excursion was investigated and closed, with a cause or follow-up tests"
+    }
+   ],
+   "look": "colophon"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions before you subscribe",
+   "items": [
+    {
+     "q": "How is each note written and reviewed?",
+     "a": "A named engineer writes each note from a real question; a named reviewer checks it before publication. Each claim names standard, clause and edition. [named author and reviewer, by topic group]"
+    },
+    {
+     "q": "Can we cite a note in our validation documents?",
+     "a": "No: cite the standard, not the note. A note is our reading of the clause; your quality unit decides how it applies to your site."
+    },
+    {
+     "q": "What happens when a standard changes?",
+     "a": "We review and update the note and its review date. If the answer changes, the note says what and when. Errors get a dated correction line."
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "nav": "Subscribe",
+   "anchor": "subscribe",
+   "h": "Get each technical note by email",
+   "intro": "[send frequency, emails per month at most]; confirmed by email first; no sales mail; your address never shared.",
+   "submit": "Subscribe",
+   "steps": [
+    {
+     "title": "Topics",
+     "next": "Continue",
+     "fields": [
+      {
+       "label": "Email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Topics",
+       "kind": "checkbox-group",
+       "required": false,
+       "options": [
+        "Standards",
+        "Design",
+        "Qualification",
+        "Troubleshooting",
+        "Company news"
+       ],
+       "help": "Leave all unticked to receive every technical note."
+      }
+     ]
+    },
+    {
+     "title": "About you",
+     "fields": [
+      {
+       "label": "Role",
+       "kind": "select",
+       "required": false,
+       "options": [
+        "Process or project engineering",
+        "Validation",
+        "Quality",
+        "Operations or maintenance",
+        "Laboratory",
+        "Other"
+       ]
+      },
+      {
+       "label": "A question you would like answered",
+       "kind": "textarea",
+       "required": false,
+       "help": "Its answer may become a public note, unnamed, with your permission."
+      },
+      {
+       "label": "Consent",
+       "kind": "checkbox-group",
+       "required": true,
+       "options": [
+        "Yes, [legal entity name] may email me technical notes and, if ticked above, company news. I can withdraw consent at any time."
+       ],
+       "help": "Sent by [legal entity name], [mailing address], [sales email]. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: [privacy notice link]."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "A question you want answered now",
+  "body": "An engineer replies. Cost: [fit check cost or free].",
+  "include": [
+   "Your question",
+   "Your system details",
+   "Water data or documents, if any"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "A written answer from an engineer",
+   "A public note, unnamed, with your permission"
+  ],
+  "button": "Talk to an engineer",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer"
+ },
+ "todo": [
+  "Publication month of the PP-or-stainless note ([note publication month, year]; FD-53) and a target month for each other register topic (add a date per row once set); publish only notes that have passed review",
+  "Named author (engineer, with role) and named reviewer for each topic group ([named author and reviewer, by topic group]); whether bylines may name a partner's former employer (FD-34, FD-35)",
+  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231> (revision official 1 April 2027); Ph. Eur. 0008, 2.2.44 (12.3); WHO TRS 1033; GUI-0001, GUI-0029; 21 CFR 211; EU GMP Annex 15; CSA B51; FDA computer software assurance guidance (final, 3 February 2026; medical-device production and quality system software under 21 CFR 820, not drug GMP: say so in the note); GAMP 5; GUI-0158 (natural health products note: potable minimum, PW where the product's specification or a monograph calls for it, DR-002 rule 2); ISO 13485:2016 7.5.2 and 21 CFR 820 as amended (QMSR, effective 2 February 2026) for the device-water note; Annex 1 and GUI-0119 for the sterile-site note only. ISPE Baseline Guide Vol. 4 (2019) is named, not read: read the chapters a note relies on before writing it (DR-007 rule 3)",
+  "Send frequency ([send frequency, emails per month at most]; FD-39). The value opens the form's intro: fill it as a phrase, for example \"At most 2 emails a month\"",
+  "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe (FD-39)",
+  "CASL sender identification: [legal entity name] (the footer's name), [mailing address] and [sales email], contact-locations' head office address and email (issue #2 §2; FD-33); unsubscribe processing time (10 business days at most; CASL s. 11 not read by the library: counsel, OQ-81)",
+  "Privacy notice link ([privacy notice link]; PIPEDA, Quebec Law 25) covering subscriber data (FD-39)",
+  "Proposal response time and the cost of a question ([proposal response time, working days]; [fit check cost or free]), as in contact-proposal's requests table (FD-01, FD-02)",
+  "Company news items, each with the client's written permission where a project is named",
+  "Sanitization methods offered for the PP loop ([PP loop sanitization method]; [maximum loop sanitization temperature for PP, °C]) before writing the sanitization note; ozone only with DR-013 rule 4's line (FD-14, FD-16)",
+  "Dead-leg limit ([dead leg design limit, L/D]) before writing the dead-legs note (FD-19)",
+  "Exchange DI breakeven ([exchange DI breakeven, L/day], systems FAQ; FD-49) before writing the exchange-DI note",
+  "Note on PW as feed to your own WFI still: off the register until FD-25 confirms that scope (DR-002 rule 7)",
+  "Once the PP-or-stainless note has passed review and carries its date: hero button \"Subscribe to technical notes\" (#subscribe) as primary, \"Talk to an engineer\" as secondary (DR-006); the page it applies on links it in one line (DR-009 rule 1; DR-015 rule 5)",
+  "Schema: Article markup on each published note; FAQPage on this page",
+  "Pass 11 (SITE-PLAN; structure-and-sitemap § 4.7): technical note 'Polypropylene or stainless steel for a PW loop', the register's first row (dated [note publication month, year], featured; FD-53) and three blocks on this page (#pp-or-stainless, #pp-sanitization, #pp-precedent). Evidence: L-01-8, L-01-9, L-03-19, L-04-21, L-04-22, L-06-20, L-07-5, L-09-7, L-11-16, L-14-9, L-15-7, L-G1-1, L-G1-2, L-G2-5, L-G2-6. DR-013 kept: no hot-water or ozone capability for PP, the 0 to 80 °C rating always with its pressure condition, chemical wording per rule 3; never PP equals 316L (L-07-5)",
+  "Note review before publication (DR-007 rule 3): a named engineer and reviewer check the note; confirm the comparison rows are criteria, not Aquemi claims; '[PP loop sanitization method]' (FD-14), '[sanitant concentration]', '[contact time, hours]'. Unfilled at launch, the sanitization block keeps its steps and drops the placeholders' clauses, or the note waits",
+  "Precedent block (L-14-9; DR-004 class 1, sourced public fact): Pharmaceutical Engineering (ISPE), July/August 2006, Vol. 26 No. 4, 'Design, Qualification, and Performance of a Cost-Effective Water Purification System for a GMP Pilot Plant', pp. 1-7 of the reprint [953d9e6a57:p33-39]. Cited as industry precedent, never as Aquemi proof; its sanitizing chemical is excluded for Aquemi's PP loop (DR-013 rule 3) and is not named; no figures borrowed beyond its own durations. Re-check the paraphrase against the article before publication; the publication may be named, the authors and their employers are not",
+  "Register row links news#pp-or-stainless (the note lives on this page); the look's lead reads 'Read the note' for it (the link is on this page). Once the note is published, sys-storage#sanitization and the systems FAQ link the note in one line (DR-009 rule 1, DR-015 rule 5), and the hero button returns to 'Subscribe to technical notes' (todo above)",
+  "Pass 11 review findings 12 to 19: register std names the note's clauses (WHO TRS 1033, 7.2.1 materials, 8.4 sanitization; USP <1231>; the clauses compliance cites): confirm clause numbers at note review (DR-007 rule 3). Eyebrow carries [note author and reviewer] (FD-34, FD-35; same review as the FAQ's [named author and reviewer, by topic group]). PVDF line paired with [whether we quote PVDF] (DR-013 rule 2; FD-15)",
+  "Precedent block (review findings 15 to 17, 19): look swapped from param-tiles to colophon, which draws no equipment (param-tiles always drew an RO and EDI skid, which beside a third party's system implied that system or ours: DR-018 rules 1, 2). Intro discloses that two of the four authors worked for a water system maker (DR-004: evidence class travels with the claim); the maker stays unnamed. Owner accepts that the citation leads readers to that maker (DR-026 rule 4). Row 'Whose system' (was 'What it does not prove', pass 12 FD-60) makes no claim about Aquemi's chemical or design (FD-14, FD-20 open). Run specimens.py snapshot (colophon gets a news instance)",
+  "Pass 12 (ops/pass12/SITE-PLAN.md § 3 news; R8; DR-028): nav label and title 'Technical notes'; lead 'Latest:' replaces 'First note'; placeholders renamed [note publication month, year] and [note author and reviewer]; register intro without 'planned'; precedent caption, intro end and first row reworded (NS rows, critic A); FAQ anchor 'faq'; register row 'Rinse-line water: exchange DI or your own reverse osmosis (RO) and EDI' (process water specification first) links ind-process#from-ion-exchange (FD-59 breadth, one industry-neutral topic). Owner question NS 5 (keep the published case): default keep, labelled as another maker's installation",
+  "Pass 12 open (look, not page copy): look-revision-register prints 'Planned', 'Next planned' and 'N planned' for rows whose date is absent or a placeholder (DR-018 rule 6), which FD-60 / DR-028 rule 1 bans as rendered copy; the look needs unpublished rows to read as topics (status the applied page, lead label 'Latest' or 'Featured', count 'N topics'). Owner of the look file decides; this page cannot fix it with data without faking a date. When it lands, set blocks[0].fold_noun 'topics' (pass 12 review #6)",
+  "Pass 12 images (SITE-PLAN image queue 56-58): pp-or-stainless (PP loop beside criteria rows, matte white pipe, no metal; macro-leaders reads as stainless here), pp-sanitization (ring of steps closing at an outlet, residual test as the closing valve), pp-precedent (journal page outline, year, 'another maker's installation' label)",
+  "Pass 12 review (reviews/news.md #2-#5): PP-or-stainless intro now says a hot loop needs PVDF or stainless [whether we quote PVDF] (DR-013 rule 2), WFI or a stainless standard needs stainless; sanitization intro states it lowers the count and does not sterilize, monitoring judges the schedule; precedent intro ends 'The article describes another maker's installation.'"
+ ],
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
+ "secondary_cta": {
+  "label": "Subscribe to technical notes",
+  "link": "#subscribe"
+ },
+ "figure": {
+  "art": "news",
+  "spots": [
+   "pretreatment",
+   "ro-skid",
+   "storage-tank"
+  ],
+  "label": "One question per note"
+ }
+}

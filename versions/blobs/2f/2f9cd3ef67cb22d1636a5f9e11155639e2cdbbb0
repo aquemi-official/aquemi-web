@@ -1,0 +1,79 @@
+/* ---------- WasherTrace: the water's way from the loop into the washer, one line drawing under a navy readout ---------- */
+.aq-washer-trace-sec { overflow: clip; }
+.aq-washer-trace { position: relative; margin-top: var(--space-4); }
+.aq-washer-trace__fig, .aq-washer-trace__draw { position: relative; }
+.aq-washer-trace__svg { display: block; width: 100%; height: auto; }
+/* water reads on limestone in both themes */
+.aq-washer-trace-sec .aq-iso .aq-iso__flow, .aq-washer-trace-sec .aq-iso .aq-iso__arrow, .aq-washer-trace-sec .aq-iso .aq-iso__acc { stroke: color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); }
+.aq-washer-trace-sec .aq-iso .aq-iso__flow { stroke-width: 2.5; }
+/* sunken fills (chamber, display) stay on the limestone scale in the dark theme too */
+.aq-washer-trace-sec .aq-iso .aq-iso__eq--alt, .aq-washer-trace-sec .aq-iso .aq-iso__eq--glass { fill: color-mix(in srgb, var(--limestone) 86%, var(--on-limestone)); }
+.aq-washer-trace-sec .aq-iso .aq-iso__part.is-lit .aq-iso__eq, .aq-washer-trace-sec .aq-iso .aq-iso__part.is-lit .aq-iso__ln, .aq-washer-trace-sec .aq-iso .aq-iso__part.is-lit .aq-iso__thin,
+.aq-washer-trace-sec .aq-iso .aq-iso__pipe.is-lit .aq-iso__pipe-wall { stroke: color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); }
+.aq-washer-trace__lead path { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 160ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-trace__lead circle { fill: var(--on-limestone); transition: fill 160ms; }
+.aq-washer-trace__lead.is-on path { stroke: var(--on-limestone); stroke-width: 1.5; }
+.aq-washer-trace__lead.is-on circle { fill: color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); }
+.aq-washer-trace__pin { display: none; }
+
+/* The readout: a navy instrument face over the top right of the drawing */
+.aq-washer-trace__read { position: absolute; top: 0; right: 0; width: 41.5%; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-6);
+  background: var(--navy); color: var(--on-navy); }
+.aq-washer-trace__ruler { position: relative; height: var(--space-8); margin-top: var(--space-1); }
+.aq-washer-trace__ruler svg { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: var(--space-4); overflow: visible; }
+.aq-washer-trace__ruler path { stroke: var(--on-navy-muted); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-washer-trace__mark { position: absolute; top: 0; transform: translateX(-50%); font: 500 11px/14px var(--font-mono); letter-spacing: 0.08em; color: var(--on-navy-muted); transition: color 200ms; }
+.aq-washer-trace__mark.is-on { color: var(--on-navy); }
+.aq-washer-trace__cur { position: absolute; left: calc(var(--reach, 1) * 100%); bottom: calc(var(--space-1) * -1); width: 2px; height: var(--space-6); margin-left: -1px;
+  background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-washer-trace__big { display: flex; align-items: baseline; gap: var(--space-3); margin: 0; }
+.aq-washer-trace__rn { display: inline-block; font: 300 104px/96px var(--font-mono); letter-spacing: -0.04em; color: var(--on-navy); font-variant-numeric: tabular-nums; }
+.aq-washer-trace__of { font: 400 22px/28px var(--font-mono); color: var(--on-navy-muted); }
+.aq-washer-trace__tag { align-self: flex-end; margin: 0; padding: var(--space-1) var(--space-3); border: 1px solid var(--on-navy-muted);
+  font: 500 12px/18px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-navy); }
+.aq-washer-trace__rn.is-tick, .aq-washer-trace__tag.is-tick { animation: aq-wt-tick 220ms cubic-bezier(0.2, 0, 0, 1); }
+@keyframes aq-wt-tick { from { opacity: 0.2; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
+
+/* The points: callouts at the ends of their leaders */
+.aq-washer-trace__pts { position: absolute; inset: 0; list-style: none; margin: 0; padding: 0; pointer-events: none; }
+.aq-washer-trace__pt { position: absolute; left: var(--x, 0%); top: var(--y, 0%); width: 23%; display: flex; flex-direction: column; gap: var(--space-1);
+  padding-left: var(--space-3); transform: translateY(calc(var(--space-6) * -1)); pointer-events: auto; }
+.aq-washer-trace__pt.is-left { left: auto; right: calc(100% - var(--x, 0%)); width: 26%; padding: 0 var(--space-3) 0 0; }
+.aq-washer-trace__n { font: 500 13px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--on-limestone-muted); }
+.aq-washer-trace__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-washer-trace__go { all: unset; box-sizing: border-box; display: inline-flex; align-items: center; min-height: calc(var(--space-12) - var(--space-1)); cursor: pointer;
+  text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: text-decoration-color 160ms; }
+.aq-washer-trace__go:hover, .aq-washer-trace__pt.is-on .aq-washer-trace__go { text-decoration-color: color-mix(in srgb, var(--flow) 72%, var(--on-limestone)); }
+.aq-washer-trace__go:focus-visible { outline: 2px solid var(--on-limestone); outline-offset: var(--space-1); }
+.aq-washer-trace__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-washer-trace__pt.is-on .aq-washer-trace__n { color: var(--on-limestone); }
+
+@container (max-width: 1100px) {
+  .aq-washer-trace__rn { font-size: 72px; line-height: 68px; }
+  .aq-washer-trace__read { padding: var(--space-3) var(--space-4) var(--space-4); }
+  .aq-washer-trace__t { font-size: 18px; line-height: 24px; }
+  .aq-washer-trace__d { font-size: 14px; line-height: 21px; }
+}
+
+/* Phones: the readout on top, the drawing with numbered pins, the points as a numbered run under it */
+@container (max-width: 860px) {
+  .aq-washer-trace__fig { display: flex; flex-direction: column; gap: var(--space-4); }
+  /* pass 12: the readout is a slim bar (ruler over one line: the reached point "03 / 03" and its tag) */
+  .aq-washer-trace__read { position: relative; width: auto; order: -1; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-2) var(--space-4);
+    padding: var(--space-3) var(--space-4); }
+  .aq-washer-trace__ruler { grid-column: 1 / -1; height: var(--space-8); margin: 0; }
+  .aq-washer-trace__cur { height: calc(var(--space-4) + var(--space-1)); } /* the reached tick stops under the label row (labels end at 14 px) */
+  .aq-washer-trace__big { gap: var(--space-2); }
+  .aq-washer-trace__rn { font-size: 32px; line-height: 32px; }
+  .aq-washer-trace__of { font-size: 15px; line-height: 20px; }
+  .aq-washer-trace__tag { justify-self: end; align-self: center; }
+  .aq-washer-trace__leads { display: none; }
+  .aq-washer-trace__fig { overflow: hidden; }
+  .aq-washer-trace__draw { width: 185%; margin-left: -30%; }
+  .aq-washer-trace__pin { position: absolute; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); margin: calc(var(--space-3) * -1) 0 0 calc(var(--space-3) * -1);
+    border-radius: 50%; background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); }
+  .aq-washer-trace__pts { position: static; display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-6); }
+  .aq-washer-trace__pt, .aq-washer-trace__pt.is-left { position: relative; left: auto; right: auto; top: auto; width: auto; transform: none; padding: var(--space-4) 0 0; border-top: 1px solid var(--on-limestone-muted); }
+  .aq-washer-trace__t { font-size: 20px; line-height: 26px; }
+  .aq-washer-trace__d { font-size: 16px; line-height: 25px; }
+}

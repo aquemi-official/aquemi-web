@@ -1,0 +1,93 @@
+/* ---------- GhostSkid: options as dashed ghost modules on the base skid (look "ghost-skid") ----------
+   Limestone band. Desktop: the title and intro over the drawing at the left (7 of 12), the options as a ruled numbered
+   list at the right; the base skid in solid on-limestone line, every option dashed and half-filled at its place, its
+   number tag on a leader. A pointed or focused option fills its ghost with flow, runs its dashes (motion.js) and
+   darkens its tag. Phones: the drawing full width, then the options as a swipe row of cards. */
+.aq-ghost-skid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "head head" "draw list"; column-gap: var(--space-12); row-gap: var(--space-8); align-items: start; color: var(--on-limestone); }
+.aq-ghost-skid__head { grid-area: head; }
+.aq-ghost-skid__head .aq-sec-head .aq-lead { max-width: 60ch; }
+.aq-ghost-skid__draw { grid-area: draw; min-width: 0; }
+.aq-ghost-skid__fig { position: relative; width: 100%; margin: 0; }
+.aq-ghost-skid__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-ghost-skid__svg .aq-iso__leader-line { stroke: var(--on-limestone-muted); }
+.aq-ghost-skid__svg .aq-iso__leader-dot { fill: var(--on-limestone-muted); }
+/* glass and alternate fills stay on the band in both themes (the limestone band does not turn dark) */
+.aq-ghost-skid__svg .aq-iso__eq--glass, .aq-ghost-skid__svg .aq-iso__eq--alt { fill: color-mix(in srgb, var(--on-limestone) 8%, var(--limestone)); }
+
+/* the ghosts: dashed lines, the band's ground at half strength so the base reads through */
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__ln, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__thin,
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__pipe-wall, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__flange {
+  stroke: var(--on-limestone); stroke-dasharray: 4 3; transition: stroke 180ms ease, fill 180ms ease; }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__pipe-body { fill: color-mix(in srgb, var(--limestone) 55%, transparent); }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__acc, .aq-ghost-skid__svg .aq-ghost-skid__ghost .aq-iso__trace { stroke-dasharray: 2 3; }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__ln, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__thin,
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__pipe-wall, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__flange { stroke: var(--flow); stroke-width: 1.5; }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__pipe-body { fill: color-mix(in srgb, var(--flow) 12%, var(--limestone)); }
+.aq-ghost-skid__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-ghost-skid__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
+
+/* tags at the leader ends */
+.aq-ghost-skid__tag { position: absolute; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1); transform: translate(0, -50%);
+  border: 1px dashed var(--on-limestone); background: var(--limestone); font: 400 12px/1 var(--font-mono); color: var(--on-limestone);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.aq-ghost-skid__tag.is-left { transform: translate(-100%, -50%); }
+.aq-ghost-skid__tag.is-on { border-style: solid; border-color: var(--navy); background: var(--navy); color: var(--on-navy); }
+
+/* legend: solid = base skid, dashed = option */
+.aq-ghost-skid__legend { display: flex; align-items: center; gap: var(--space-2); margin: var(--space-3) 0 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-ghost-skid__sw { display: inline-block; width: var(--space-6); height: 0; border-top: 1.5px solid var(--on-limestone-muted); }
+.aq-ghost-skid__sw.is-ghost { margin-left: var(--space-4); border-top-style: dashed; border-top-color: var(--on-limestone); }
+
+/* the options: a ruled, numbered list */
+.aq-ghost-skid__list { grid-area: list; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--on-limestone); }
+.aq-ghost-skid__item { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--on-limestone) 28%, transparent); outline: none; transition: background-color 160ms ease; }
+.aq-ghost-skid__item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-ghost-skid__item.is-on { background: color-mix(in srgb, var(--flow) 10%, var(--limestone)); }
+.aq-ghost-skid__n { grid-row: 1 / span 3; padding-left: var(--space-3); font: 400 13px/24px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-ghost-skid__item.is-on .aq-ghost-skid__n { color: var(--flow); }
+.aq-ghost-skid__t { grid-column: 2; margin: 0; font: 500 17px/24px var(--font-sans); color: var(--on-limestone); }
+.aq-ghost-skid__d { grid-column: 2; margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-ghost-skid__link { grid-column: 2; justify-self: start; margin-top: var(--space-2); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.aq-ghost-skid__link::after { content: " \2192"; }
+.aq-ghost-skid__link:hover { text-decoration: underline; }
+
+@container (max-width: 1100px) {
+  .aq-ghost-skid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-8); }
+}
+
+@container (max-width: 860px) {
+  .aq-ghost-skid { display: block; }
+  .aq-ghost-skid__head { margin-bottom: var(--space-6); }
+  .aq-ghost-skid__draw { margin: 0 calc(-1 * var(--space-2)); }
+  .aq-ghost-skid__tag { min-width: var(--space-8); height: var(--space-6); font-size: 12px; }
+  .aq-ghost-skid__legend { margin: var(--space-2) var(--space-2) 0; }
+  /* the swipe row: one card at 82 % with the next peeking, snapped; the card in view lights its ghost */
+  .aq-ghost-skid__list { display: flex; gap: var(--space-3); margin: var(--space-6) calc(-1 * var(--space-4)) 0; padding: 0 var(--space-4) var(--space-4); border: 0;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--space-4); overscroll-behavior-x: contain; scrollbar-width: thin; }
+  .aq-ghost-skid__item { flex: 0 0 82%; scroll-snap-align: start; grid-template-columns: minmax(0, 1fr); align-content: start; padding: var(--space-4); border: 1px dashed var(--on-limestone); background: var(--limestone); }
+  .aq-ghost-skid__item.is-on { border-style: solid; border-color: var(--navy); background: var(--limestone); }
+  .aq-ghost-skid__n { grid-row: auto; justify-self: start; display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6); margin-bottom: var(--space-3); padding: 0 var(--space-1);
+    border: 1px dashed var(--on-limestone); font-size: 12px; line-height: 1; color: var(--on-limestone); }
+  .aq-ghost-skid__item.is-on .aq-ghost-skid__n { border-style: solid; border-color: var(--navy); background: var(--navy); color: var(--on-navy); }
+  .aq-ghost-skid__t, .aq-ghost-skid__d, .aq-ghost-skid__link { grid-column: 1; }
+  .aq-ghost-skid__t { font-size: 16px; line-height: 22px; }
+  .aq-ghost-skid__d { font-size: var(--aq-read-phone); line-height: 21px; }
+  .aq-ghost-skid__link { min-height: var(--aq-hit); display: inline-flex; align-items: center; margin: 0; }
+}
+
+/* the tablet band (601-860 px): two cards in view, not one long line */
+@container (min-width: 601px) and (max-width: 860px) { .aq-ghost-skid__item { flex-basis: 46%; } }
+
+/* placeholder chips stay a light caution chip on the band in both themes (the band does not turn dark) */
+.aq-ghost-skid .aq-ph { background: color-mix(in srgb, var(--caution) 16%, var(--limestone)); color: var(--on-limestone); }
+
+/* pointing at an option sets its ghost's dashes running (visitor feedback; none under reduced motion) */
+/* ported from Subframe Motion "SVG line drawing animation" (signature-draw), MIT, (c) 2026 Subframe */
+@keyframes aq-ghost-skid-run { to { stroke-dashoffset: -14; } }
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__eq, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__ln,
+.aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__thin, .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on .aq-iso__pipe-wall { animation: aq-ghost-skid-run 0.9s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .aq-ghost-skid__svg .aq-ghost-skid__ghost.is-on * { animation: none; }
+  .aq-ghost-skid__tag, .aq-ghost-skid__item { transition: none; }
+}

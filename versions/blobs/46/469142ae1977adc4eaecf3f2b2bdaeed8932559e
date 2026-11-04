@@ -1,0 +1,155 @@
+/* ---------- FidelityLadder: design stages as one drawing gaining detail, on a navy blueprint band (look
+   "fidelity-ladder"). A grid of sheets (--cols per row), each the same package drawn at its stage's level; under each,
+   the run with its node (a closed valve before a hold station), then number, name, text and the hold stamp. ---------- */
+.aq-fidelity-ladder {
+  list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  column-gap: var(--space-6); row-gap: var(--space-16); counter-reset: none;
+}
+.aq-fidelity-ladder__st { position: relative; display: flex; flex-direction: column; min-width: 0; }
+
+/* the sheet */
+.aq-fidelity-ladder__sheet {
+  position: relative; aspect-ratio: 9 / 5; background: color-mix(in srgb, var(--navy) 90%, var(--on-navy));
+  border: 1px solid color-mix(in srgb, var(--on-navy) 26%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--on-navy) 12%, transparent); outline-offset: calc(-1 * var(--space-2));
+}
+.aq-fidelity-ladder__svg { position: absolute; inset: var(--space-3) var(--space-3) var(--space-6); width: calc(100% - 2 * var(--space-3)); height: calc(100% - var(--space-3) - var(--space-6)); overflow: visible; }
+.aq-fidelity-ladder__svg * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.aq-fidelity-ladder__ln { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.5; }
+.aq-fidelity-ladder__thin { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; }
+.aq-fidelity-ladder__hid { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.aq-fidelity-ladder__grid { fill: none; stroke: color-mix(in srgb, var(--on-navy) 26%, transparent); stroke-width: 1; }
+.aq-fidelity-ladder__txt { fill: none; stroke: color-mix(in srgb, var(--on-navy) 30%, transparent); stroke-width: 4; stroke-linecap: butt; }
+.aq-fidelity-ladder__flow { fill: none; stroke: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); stroke-width: 2; }
+.aq-fidelity-ladder__box { fill: color-mix(in srgb, var(--navy) 90%, var(--on-navy)); stroke: var(--on-navy-muted); stroke-width: 1.5; }
+.aq-fidelity-ladder__alt { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.aq-fidelity-ladder__lbl { font: 400 11px/1 var(--font-mono); fill: var(--on-navy-muted); stroke: none; letter-spacing: 0.04em; }
+.aq-fidelity-ladder__jc { fill: color-mix(in srgb, var(--navy) 90%, var(--on-navy)); stroke: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); stroke-width: 1.5; }
+.aq-fidelity-ladder__no, .aq-fidelity-ladder__lvl {
+  position: absolute; bottom: var(--space-2); font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy-muted); text-transform: uppercase;
+}
+.aq-fidelity-ladder__no { left: var(--space-3); }
+.aq-fidelity-ladder__lvl { right: var(--space-3); color: var(--on-navy); }
+/* the freeze stamp on the approved sheet */
+.aq-fidelity-ladder__frz {
+  position: absolute; left: 8%; top: 12%; width: var(--space-16); height: var(--space-16); display: grid; place-items: center; border-radius: 50%;
+  border: 3px double var(--limestone); color: var(--limestone); font: 500 16px/1 var(--font-mono); letter-spacing: 0.08em; transform: rotate(-12deg);
+}
+
+/* the run: a line across the top of the text, a node per stage, a closed valve before a hold station */
+.aq-fidelity-ladder__run { position: relative; display: block; height: var(--space-12); }
+.aq-fidelity-ladder__run::before {
+  content: ""; position: absolute; left: 0; right: calc(-1 * var(--space-6)); top: 50%; border-top: 2px solid color-mix(in srgb, var(--flow) 55%, var(--on-navy));
+}
+.aq-fidelity-ladder__st.is-eol .aq-fidelity-ladder__run::before, .aq-fidelity-ladder__st.is-last .aq-fidelity-ladder__run::before { right: 0; }
+.aq-fidelity-ladder__st.is-eol .aq-fidelity-ladder__run::after {
+  content: ""; position: absolute; right: 0; top: 50%; width: var(--space-2); height: var(--space-2); margin-top: calc(-1 * var(--space-1));
+  border-top: 2px solid color-mix(in srgb, var(--flow) 55%, var(--on-navy)); border-right: 2px solid color-mix(in srgb, var(--flow) 55%, var(--on-navy)); transform: translateY(-1px) rotate(45deg);
+}
+.aq-fidelity-ladder__node {
+  position: absolute; left: var(--space-8); top: 50%; width: var(--space-3); height: var(--space-3); transform: translate(-50%, -50%); border-radius: 50%;
+  background: var(--navy); border: 2px solid var(--on-navy);
+}
+.aq-fidelity-ladder__st.is-hold .aq-fidelity-ladder__node { background: var(--limestone); border-color: var(--limestone); }
+.aq-fidelity-ladder__valve {
+  position: absolute; left: 0; top: 50%; width: var(--space-6); height: var(--space-6); transform: translateY(-62%);
+  fill: var(--navy); stroke: var(--limestone); stroke-width: 1.5; stroke-linejoin: round; overflow: visible;
+}
+
+/* the text */
+.aq-fidelity-ladder__body { display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-8); }
+.aq-fidelity-ladder__n { font: 400 13px/16px var(--font-mono); color: var(--on-navy-muted); letter-spacing: 0.04em; }
+.aq-fidelity-ladder__t { margin: 0; font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-fidelity-ladder__t a { color: inherit; text-decoration: none; }
+.aq-fidelity-ladder__t a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-fidelity-ladder__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; max-width: 42ch; }
+.aq-fidelity-ladder__hold { margin: var(--space-2) 0 0; }
+.aq-fidelity-ladder__stamp {
+  display: inline-flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); align-items: baseline; padding: var(--space-1) var(--space-3);
+  border: 1.5px solid var(--limestone); color: var(--limestone); font: 400 13px/18px var(--font-mono); transform: rotate(-1.5deg); transform-origin: 0 50%;
+}
+.aq-fidelity-ladder__stamp-k { font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
+
+/* hover: the sheet being read lifts its lines to full strength */
+.aq-fidelity-ladder__st:hover .aq-fidelity-ladder__sheet { border-color: var(--on-navy-muted); }
+.aq-fidelity-ladder__st:hover .aq-fidelity-ladder__node { background: var(--on-navy); }
+
+@container (max-width: 860px) {
+  .aq-fidelity-ladder { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .aq-fidelity-ladder__st { padding: 0 0 var(--space-12) var(--space-8); }
+  /* the run turns vertical down the left edge */
+  .aq-fidelity-ladder__run { position: absolute; left: 0; top: 0; bottom: 0; width: var(--space-6); height: auto; }
+  .aq-fidelity-ladder__run::before { left: 50%; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px solid color-mix(in srgb, var(--flow) 55%, var(--on-navy)); }
+  .aq-fidelity-ladder__st.is-last .aq-fidelity-ladder__run::before { bottom: auto; height: var(--space-6); }
+  .aq-fidelity-ladder__st.is-eol .aq-fidelity-ladder__run::after { display: none; }
+  .aq-fidelity-ladder__node { left: 50%; top: var(--space-6); }
+  .aq-fidelity-ladder__valve { left: 0; top: 0; transform: rotate(90deg); background: var(--navy); }
+  .aq-fidelity-ladder__st.is-hold .aq-fidelity-ladder__node { top: calc(var(--space-6) + var(--space-4)); }
+  .aq-fidelity-ladder__body { padding: var(--space-4) 0 0; }
+  .aq-fidelity-ladder__t { font-size: 20px; line-height: 26px; }
+}
+.aq-section.aq-fidelity-ladder-sec { overflow-x: clip; }
+.aq-fidelity-ladder__j { transform-box: fill-box; transform-origin: center; }
+
+/* pass 12 phone (optional item, svc-design.1): the sheets at 70 % of the column (their footer labels stay 12 px),
+   less space between stages; about 400 px shorter, the ladder reads the same. */
+@container (max-width: 860px) {
+  .aq-fidelity-ladder__sheet { width: 70%; }
+  .aq-fidelity-ladder__st { padding-bottom: var(--space-10, 40px); }
+}
+/* verify V7: at 70 % the sheets' inner drawing labels (PRE, RO, EDI, TANK, ...) render about 4 px; they are sheet
+   texture (the sheets are aria-hidden), so phones drop them and keep the drawing and the 12 px footers. */
+@container (max-width: 860px) { .aq-fidelity-ladder__lbl { display: none; } }
+
+/* pass 12 round C (svc-design.1, phone height 2,258 px): at 600 px and under each stage is a two-column grid, the
+   sheet as a 120 px thumbnail in column 1 with the numeral and title beside it in column 2, then the body and the HOLD
+   stamp full width under both. The thumbnail keeps its level label (11 px); the sheet number repeats the numeral
+   beside it, so it drops; the inner drawing labels stay hidden (they would render under 11 px). */
+@container (max-width: 600px) {
+  .aq-fidelity-ladder__st {
+    display: grid; grid-template-columns: 120px minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 12px;
+    align-content: start; padding-block: 20px;
+  }
+  .aq-fidelity-ladder__body { display: contents; }
+  .aq-fidelity-ladder__sheet { grid-column: 1; grid-row: 1 / span 3; width: auto; align-self: start; }
+  .aq-fidelity-ladder__svg { inset: var(--space-1) var(--space-1) 20px; width: calc(100% - 2 * var(--space-1)); height: calc(100% - var(--space-1) - 20px); }
+  .aq-fidelity-ladder__no { display: none; }
+  .aq-fidelity-ladder__lvl { bottom: var(--space-1); right: var(--space-2); font-size: 11px; line-height: 14px; }
+  .aq-fidelity-ladder__frz { width: var(--space-8); height: var(--space-8); border-width: 2px; font-size: 11px; left: 6%; top: 8%; }
+  .aq-fidelity-ladder__n { grid-column: 2; grid-row: 1; align-self: start; }
+  .aq-fidelity-ladder__t { grid-column: 2; grid-row: 2; align-self: start; margin-top: var(--space-1); }
+  .aq-fidelity-ladder__d { grid-column: 1 / -1; grid-row: 4; margin-top: var(--space-2); max-width: none; }
+  .aq-fidelity-ladder__hold { grid-column: 1 / -1; grid-row: 5; margin-top: var(--space-2); }
+  .aq-fidelity-ladder__node { top: 36px; }
+  .aq-fidelity-ladder__valve { top: var(--space-2); }
+  .aq-fidelity-ladder__st.is-hold .aq-fidelity-ladder__node { top: 60px; }
+  .aq-fidelity-ladder__st.is-last .aq-fidelity-ladder__run::before { height: 36px; }
+  /* the first stage starts at the top of the list and the last ends at its foot (the section padding spaces them) */
+  .aq-fidelity-ladder__st:first-child { padding-top: 0; }
+  .aq-fidelity-ladder__st:first-child:not(.is-hold) .aq-fidelity-ladder__node { top: 16px; }
+  .aq-fidelity-ladder__st.is-last { padding-bottom: 0; }
+}
+
+/* pass 12 round C fix round (tablet, 601-860 px, was 3,001 px): the same two-column stage, the sheet a 200 px
+   thumbnail in column 1 and the numeral, title, body and HOLD stamp all in column 2 beside it. */
+@container (min-width: 601px) and (max-width: 860px) {
+  .aq-fidelity-ladder__st {
+    display: grid; grid-template-columns: 200px minmax(0, 1fr); grid-template-rows: auto auto auto auto 1fr; column-gap: var(--space-6);
+    align-content: start; padding-block: var(--space-8);
+  }
+  .aq-fidelity-ladder__body { display: contents; }
+  .aq-fidelity-ladder__sheet { grid-column: 1; grid-row: 1 / -1; width: auto; align-self: start; }
+  .aq-fidelity-ladder__no { display: none; }
+  .aq-fidelity-ladder__frz { width: var(--space-10, 40px); height: var(--space-10, 40px); border-width: 2px; font-size: 12px; left: 6%; top: 8%; }
+  .aq-fidelity-ladder__n { grid-column: 2; grid-row: 1; }
+  .aq-fidelity-ladder__t { grid-column: 2; grid-row: 2; margin-top: var(--space-1); }
+  .aq-fidelity-ladder__d { grid-column: 2; grid-row: 3; margin-top: var(--space-2); max-width: none; }
+  .aq-fidelity-ladder__hold { grid-column: 2; grid-row: 4; margin-top: var(--space-4); }
+  .aq-fidelity-ladder__node { top: 44px; }
+  .aq-fidelity-ladder__valve { top: var(--space-4); }
+  .aq-fidelity-ladder__st.is-hold .aq-fidelity-ladder__node { top: 68px; }
+  .aq-fidelity-ladder__st.is-last .aq-fidelity-ladder__run::before { height: 44px; }
+  .aq-fidelity-ladder__st:first-child { padding-top: 0; }
+  .aq-fidelity-ladder__st:first-child:not(.is-hold) .aq-fidelity-ladder__node { top: 12px; }
+  .aq-fidelity-ladder__st.is-last { padding-bottom: 0; }
+}

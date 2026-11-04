@@ -1,0 +1,486 @@
+{
+  "name": "Aquemi",
+  "version": 1,
+  "color": {
+    "themes": [
+      {
+        "id": "light",
+        "name": "Light"
+      },
+      {
+        "id": "dark",
+        "name": "Dark"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "navy",
+        "value": {
+          "light": "#0F2A47",
+          "dark": "#163659"
+        },
+        "usage": "Aquemi Navy, the colour of the wordmark. Primary brand colour: the logo, primary buttons, full-bleed brand bands and the footer. In dark mode it lifts slightly so bands still separate from `surface`."
+      },
+      {
+        "name": "limestone",
+        "value": {
+          "light": "#EBDFD6",
+          "dark": "#EBDFD6"
+        },
+        "usage": "Limestone, the warm ground the wordmark was drawn on. Secondary brand colour: quiet section bands, the reversed logo on `navy`, and the primary button fill in dark mode. Never a page background behind long text in `ink-subtle`."
+      },
+      {
+        "name": "surface",
+        "value": {
+          "light": "#FAF8F6",
+          "dark": "#0A1626"
+        },
+        "usage": "Default page background."
+      },
+      {
+        "name": "surface-raised",
+        "value": {
+          "light": "#FFFFFF",
+          "dark": "#10223A"
+        },
+        "usage": "Panels, tables, form fields and menus that sit above `surface`."
+      },
+      {
+        "name": "surface-sunken",
+        "value": {
+          "light": "#F1EBE5",
+          "dark": "#07111E"
+        },
+        "usage": "Recessed areas: table header rows, code and spec blocks, alternating sections."
+      },
+      {
+        "name": "ink",
+        "value": {
+          "light": "#0B1B2D",
+          "dark": "#EEE8E2"
+        },
+        "usage": "Headlines and body copy on `surface`, `surface-raised`, `surface-sunken` and `limestone`. 13:1 or better in both themes."
+      },
+      {
+        "name": "ink-muted",
+        "value": {
+          "light": "#46535F",
+          "dark": "#B4BDC7"
+        },
+        "usage": "Secondary copy, captions and table labels on every surface, `limestone` included (6:1+)."
+      },
+      {
+        "name": "ink-subtle",
+        "value": {
+          "light": "#5F6B77",
+          "dark": "#95A1AD"
+        },
+        "usage": "Metadata, timestamps, placeholder text on `surface` and `surface-raised` only (4.6:1+). Too weak on `limestone` (4.2:1): use `ink-muted` there."
+      },
+      {
+        "name": "ink-inverse",
+        "value": {
+          "light": "#FAF8F6",
+          "dark": "#0B1B2D"
+        },
+        "usage": "Text on `navy` fills in light mode and on `limestone` button fills in dark mode."
+      },
+      {
+        "name": "line",
+        "value": {
+          "light": "#E1D9D1",
+          "dark": "#1E3350"
+        },
+        "usage": "Hairline dividers and table rules. Decorative only, never the sole boundary of a control."
+      },
+      {
+        "name": "line-strong",
+        "value": {
+          "light": "#8F857C",
+          "dark": "#637589"
+        },
+        "usage": "Form-field borders, diagram strokes and any border that must be seen (3:1+ on `surface` and `surface-raised`). Falls to 2.8:1 on `limestone`: don't put fields there."
+      },
+      {
+        "name": "action",
+        "value": {
+          "light": "#0F2A47",
+          "dark": "#EBDFD6"
+        },
+        "usage": "Primary button fill and selected states. Navy in light mode, Limestone in dark mode. Pair with `on-action`."
+      },
+      {
+        "name": "action-hover",
+        "value": {
+          "light": "#1C3D63",
+          "dark": "#F6EEE8"
+        },
+        "usage": "Primary button hover fill."
+      },
+      {
+        "name": "on-action",
+        "value": {
+          "light": "#FAF8F6",
+          "dark": "#0F2A47"
+        },
+        "usage": "Label colour on `action` and `action-hover` (11:1+)."
+      },
+      {
+        "name": "flow",
+        "value": {
+          "light": "#24679A",
+          "dark": "#84B9DE"
+        },
+        "usage": "Flow Blue, the single accent. Inline links, chart lines, live readings and the one highlighted figure on a page. Never a large fill. 5.6:1+ on `surface` in both themes."
+      },
+      {
+        "name": "flow-tint",
+        "value": {
+          "light": "#E3EEF6",
+          "dark": "#12304A"
+        },
+        "usage": "Background of a selected table row or highlighted spec. Text on it stays `ink`."
+      },
+      {
+        "name": "focus",
+        "value": {
+          "light": "#24679A",
+          "dark": "#84B9DE"
+        },
+        "usage": "Focus ring: 2px solid, 2px offset. 3:1+ on every surface in both themes."
+      },
+      {
+        "name": "pass",
+        "value": {
+          "light": "#1D6B45",
+          "dark": "#6CC79A"
+        },
+        "usage": "In-spec results and completed qualification steps. Always paired with the word (Pass, In spec) or a check icon."
+      },
+      {
+        "name": "caution",
+        "value": {
+          "light": "#8A5A00",
+          "dark": "#E3B45C"
+        },
+        "usage": "Alert-limit readings and pending items. Always with a word or icon."
+      },
+      {
+        "name": "fail",
+        "value": {
+          "light": "#A52A21",
+          "dark": "#F08A80"
+        },
+        "usage": "Action-limit excursions and errors. Always with a word or icon; differs from `pass` in lightness as well as hue."
+      },
+      {
+        "name": "caution-tint",
+        "value": {
+          "light": "#F6ECD9",
+          "dark": "#33280F"
+        },
+        "usage": "Background behind draft placeholders and alert-limit notes. Text on it uses `ink`."
+      },
+      {
+        "name": "on-navy",
+        "value": {
+          "light": "#FAF8F6",
+          "dark": "#FAF8F6"
+        },
+        "usage": "Headings and body text on `navy` bands and the footer, in both themes."
+      },
+      {
+        "name": "on-navy-muted",
+        "value": {
+          "light": "#C9D2DC",
+          "dark": "#C9D2DC"
+        },
+        "usage": "Lead text, links and captions on `navy` bands and the footer (9:1 on navy)."
+      },
+      {
+        "name": "on-limestone",
+        "value": {
+          "light": "#0B1B2D",
+          "dark": "#0B1B2D"
+        },
+        "usage": "Text on `limestone` bands. Limestone stays light in dark mode, so this stays dark."
+      },
+      {
+        "name": "on-limestone-muted",
+        "value": {
+          "light": "#46535F",
+          "dark": "#46535F"
+        },
+        "usage": "Lead text on `limestone` bands (6.4:1)."
+      }
+    ]
+  },
+  "type": {
+    "fonts": [],
+    "families": {
+      "sans": "\"Geist\", \"Helvetica Neue\", Arial, system-ui, sans-serif",
+      "mono": "\"Geist Mono\", \"SFMono-Regular\", Menlo, Consolas, monospace"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "display-xl",
+            "fontSize": "72px",
+            "lineHeight": "76px",
+            "fontWeight": 300,
+            "letterSpacing": "-0.03em",
+            "sample": "Water you can validate.",
+            "usage": "Home page hero only. One per page."
+          },
+          {
+            "name": "display",
+            "fontSize": "56px",
+            "lineHeight": "60px",
+            "fontWeight": 300,
+            "letterSpacing": "-0.025em",
+            "sample": "Water for Injection",
+            "usage": "Solution page heroes and campaign headlines."
+          },
+          {
+            "name": "h1",
+            "fontSize": "40px",
+            "lineHeight": "46px",
+            "fontWeight": 400,
+            "letterSpacing": "-0.02em",
+            "sample": "Built to ASME BPE, documented to GAMP 5",
+            "usage": "Section openers."
+          },
+          {
+            "name": "h2",
+            "fontSize": "28px",
+            "lineHeight": "34px",
+            "fontWeight": 400,
+            "letterSpacing": "-0.01em",
+            "sample": "Storage and distribution",
+            "usage": "Sub-sections and panel titles."
+          },
+          {
+            "name": "h3",
+            "fontSize": "20px",
+            "lineHeight": "28px",
+            "fontWeight": 500,
+            "letterSpacing": "-0.005em",
+            "sample": "Hot sanitization at 80 °C",
+            "usage": "Item titles in lists and grids."
+          }
+        ]
+      },
+      {
+        "name": "Text",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "body-lg",
+            "fontSize": "18px",
+            "lineHeight": "28px",
+            "fontWeight": 400,
+            "sample": "Every skid is designed, fabricated and tested under one roof, so the system you validate is the system we built.",
+            "usage": "Lead paragraphs under a headline."
+          },
+          {
+            "name": "body",
+            "fontSize": "16px",
+            "lineHeight": "26px",
+            "fontWeight": 400,
+            "sample": "The loop holds 80 °C with a return velocity above 1 m/s.",
+            "usage": "Default running text. Keep lines near 65 characters."
+          },
+          {
+            "name": "small",
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": 400,
+            "sample": "Drawings issued for approval within 10 working days.",
+            "usage": "Captions, footnotes, form help text."
+          },
+          {
+            "name": "label",
+            "fontSize": "14px",
+            "lineHeight": "20px",
+            "fontWeight": 500,
+            "sample": "Request a proposal",
+            "usage": "Buttons, nav items, field labels."
+          }
+        ]
+      },
+      {
+        "name": "Data",
+        "family": "mono",
+        "styles": [
+          {
+            "name": "eyebrow",
+            "fontSize": "12px",
+            "lineHeight": "16px",
+            "fontWeight": 500,
+            "letterSpacing": "0.08em",
+            "sample": "PURIFIED WATER · USP <645>",
+            "usage": "Uppercase kicker above a headline. The only uppercase text in the system."
+          },
+          {
+            "name": "data",
+            "fontSize": "14px",
+            "lineHeight": "20px",
+            "fontWeight": 400,
+            "sample": "0.62 µS/cm @ 25 °C",
+            "usage": "Values in spec tables. Tabular figures on."
+          },
+          {
+            "name": "readout",
+            "fontSize": "40px",
+            "lineHeight": "44px",
+            "fontWeight": 300,
+            "letterSpacing": "-0.02em",
+            "sample": "< 0.1 EU/mL",
+            "usage": "One headline measurement per section, with its unit and test method beside it."
+          }
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "tokens": [
+      {
+        "name": "space-1",
+        "value": "4px",
+        "usage": "Icon-to-label gap, tight inline gaps."
+      },
+      {
+        "name": "space-2",
+        "value": "8px",
+        "usage": "Gaps inside controls and between tags."
+      },
+      {
+        "name": "space-3",
+        "value": "12px",
+        "usage": "Table cell vertical padding."
+      },
+      {
+        "name": "space-4",
+        "value": "16px",
+        "usage": "Mobile side gutter; padding inside fields and buttons."
+      },
+      {
+        "name": "space-6",
+        "value": "24px",
+        "usage": "Grid gutter; padding inside panels."
+      },
+      {
+        "name": "space-8",
+        "value": "32px",
+        "usage": "Desktop side gutter; heading to body gap."
+      },
+      {
+        "name": "space-12",
+        "value": "48px",
+        "usage": "Gap between related blocks in a section."
+      },
+      {
+        "name": "space-16",
+        "value": "64px",
+        "usage": "Section padding on mobile."
+      },
+      {
+        "name": "space-24",
+        "value": "96px",
+        "usage": "Section padding on desktop."
+      },
+      {
+        "name": "space-32",
+        "value": "128px",
+        "usage": "Space above and below the hero."
+      }
+    ]
+  },
+  "radius": {
+    "tokens": [
+      {
+        "name": "radius-0",
+        "value": "0px",
+        "usage": "Brand bands, images, tables. The default: Aquemi is square-edged."
+      },
+      {
+        "name": "radius-sm",
+        "value": "2px",
+        "usage": "Buttons, inputs, panels."
+      },
+      {
+        "name": "radius-md",
+        "value": "4px",
+        "usage": "Menus and popovers."
+      },
+      {
+        "name": "radius-pill",
+        "value": "999px",
+        "usage": "Standard tags only (USP, EP, ASME BPE)."
+      }
+    ]
+  },
+  "shadow": {
+    "tokens": [
+      {
+        "name": "shadow-overlay",
+        "value": {
+          "light": "0 12px 32px rgba(11, 27, 45, 0.12)",
+          "dark": "0 12px 32px rgba(0, 0, 0, 0.45)"
+        },
+        "usage": "Menus, dialogs and popovers only. Everything else separates with `line`, not shadow."
+      }
+    ]
+  },
+  "phone": {
+    "tokens": [
+      {
+        "name": "aq-read-phone",
+        "value": "14px",
+        "usage": "Phones (pass 12, S4): the floor for any reading line (notes, basis lines, list detail, captions). Mono labels and eyebrows may stay 11-12 px; nothing a reader must read goes below this."
+      },
+      {
+        "name": "aq-faq-phone",
+        "value": "15px",
+        "usage": "Phones: FAQ answers and other answer text under a question (S4)."
+      },
+      {
+        "name": "aq-chip-phone",
+        "value": "13px",
+        "usage": "Phones: a [placeholder] chip set in 15 px body (Placeholder, S5). Chips never grow to display size on phones."
+      },
+      {
+        "name": "aq-num-phone",
+        "value": "44px",
+        "usage": "Phones: a big numeral set inline to the left of its title instead of above it (40-48 px, S13)."
+      },
+      {
+        "name": "aq-hit",
+        "value": "44px",
+        "usage": "The minimum tap target on any width: buttons, row links, fold controls; inline links reach it with the .aq-hit box (S6)."
+      },
+      {
+        "name": "aq-sheet-rail",
+        "value": "6px",
+        "usage": "Phones under 600 px: what a drawing-sheet colophon strip or frame becomes, a thin edge rail (.aq-sheetframe, S14)."
+      }
+    ]
+  },
+  "layout": {
+    "tokens": [
+      {
+        "name": "content-max",
+        "value": "1280px",
+        "usage": "Max width of the 12-column page grid."
+      },
+      {
+        "name": "text-max",
+        "value": "680px",
+        "usage": "Max width of running text (about 65 characters of `body`)."
+      }
+    ]
+  }
+}

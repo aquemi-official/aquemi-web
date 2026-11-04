@@ -1,0 +1,128 @@
+/* ---------- JointSpine: a log whose rows hang off a pipe (look "joint-spine"). A twin-wall pipe drops in from the
+   section top beside the title, bends (the 240 x 72 svg, drawn 1:1) and runs down a 240-wide rail as the log's spine;
+   each row's joint sits on the spine level with the row's first line. Walls are 1.5 px line-strong (the ink) over a
+   faint line copy (the impression), the water a flow centre line. ---------- */
+.aq-section.aq-joint-spine-sec { overflow: clip; }
+.aq-joint-spine { --js-g: var(--surface); --js-rail: 240px; --js-x: 160px; --js-jy: calc(var(--space-6) + 12px); position: relative; }
+.aq-section--alt .aq-joint-spine { --js-g: var(--surface-sunken); }
+
+/* pipe pieces: a 13-wide channel, walls as borders */
+.aq-joint-spine__pipe { position: absolute; top: 0; bottom: 0; left: calc(var(--js-x, 160px) - 6.5px); width: 13px; box-sizing: border-box; border-left: 1.5px solid var(--line); border-right: 1.5px solid var(--line); pointer-events: none; }
+.aq-joint-spine__ink { position: absolute; top: 0; bottom: 0; left: -1.5px; right: -1.5px; border-left: 1.5px solid var(--line-strong); border-right: 1.5px solid var(--line-strong); transform-origin: 50% 0; }
+.aq-joint-spine__ink::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: var(--flow); opacity: 0.55; }
+
+/* the lead: the drop beside the title, the bend, the legend level with the bend's run */
+.aq-joint-spine__lead { position: relative; }
+.aq-joint-spine__lead .aq-sec-head { padding-left: var(--space-16); }
+.aq-joint-spine__drop { top: -100vh; bottom: 72px; left: 7.5px; }
+.aq-joint-spine__bend { position: absolute; left: 0; bottom: 0; width: 240px; height: 72px; overflow: visible; }
+.aq-joint-spine__bend path { fill: none; stroke-linecap: butt; stroke-linejoin: round; }
+.aq-joint-spine__w { stroke: var(--line-strong); stroke-width: 13; }
+.aq-joint-spine__w--imp { stroke: var(--line); }
+.aq-joint-spine__g { stroke: var(--js-g, var(--surface)); stroke-width: 10; }
+.aq-joint-spine__h2o { stroke: var(--flow); stroke-width: 2; opacity: 0.55; }
+.aq-joint-spine__legend {
+  display: grid; grid-template-columns: var(--js-rail, 240px) minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr); align-items: end;
+  min-height: 72px; margin: var(--space-8) 0 0; box-sizing: border-box;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle);
+}
+.aq-joint-spine__legend span { padding: 0 var(--space-6) var(--space-3) 0; border-bottom: 1px solid var(--ink); }
+.aq-joint-spine__legend span:first-child { grid-column: 2; }
+
+/* the log */
+.aq-joint-spine__log { list-style: none; margin: 0; padding: 0; }
+.aq-joint-spine__row { position: relative; display: grid; grid-template-columns: var(--js-rail, 240px) minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr); }
+.aq-joint-spine__row > h3, .aq-joint-spine__row > p, .aq-joint-spine__fh > h3, .aq-joint-spine__fh > p {
+  margin: 0; padding: var(--space-6) var(--space-6) var(--space-6) 0; border-bottom: 1px solid var(--line); min-width: 0; text-wrap: pretty;
+  transition: background 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-joint-spine__row > h3, .aq-joint-spine__fh > h3 { grid-column: 2; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: balance; }
+.aq-joint-spine__p { font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-joint-spine__r { font: 400 15px/24px var(--font-sans); color: var(--ink); }
+.aq-joint-spine__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* the joint: a tick across the pipe and a dot on its centre line, the number beside it */
+.aq-joint-spine__joint { position: absolute; left: 50%; top: var(--js-jy, 36px); width: 31px; height: 1.5px; transform: translate(-50%, -50%); background: var(--line-strong); transition: background 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-joint-spine__joint::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; border-radius: 50%; transform: translate(-50%, -50%);
+  background: var(--line-strong); box-shadow: 0 0 0 2px var(--js-g, var(--surface)); transition: background 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-joint-spine__no {
+  position: absolute; top: var(--js-jy, 36px); right: calc(100% + var(--space-6)); transform: translateY(-50%);
+  font: 500 13px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted); white-space: nowrap; transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-joint-spine__row.is-r .aq-joint-spine__no { right: auto; left: calc(100% + var(--space-6)); }
+.aq-joint-spine__row:hover > h3, .aq-joint-spine__row:hover > p, .aq-joint-spine__row:hover .aq-joint-spine__fh > * { background: var(--flow-tint); }
+.aq-joint-spine__row:hover .aq-joint-spine__joint, .aq-joint-spine__row:hover .aq-joint-spine__joint::after { background: var(--flow); }
+.aq-joint-spine__row:hover .aq-joint-spine__joint::after { transform: translate(-50%, -50%) scale(1.45); }
+.aq-joint-spine__row:hover .aq-joint-spine__no { color: var(--flow); }
+
+/* the pipe runs on past the last row and out of the section */
+.aq-joint-spine__tail { top: 100%; bottom: auto; height: 100vh; }
+
+/* Fold: desktop shows the whole log; phones fold */
+.aq-fold:not(.is-open) .aq-joint-spine__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-joint-spine__log) > .aq-fold__btn { display: none; }
+
+/* Phones (pass 12, S12): no drop or bend; a 48 px rail with the spine at the left and the numbers beside the joints.
+   The column names show once as a key above the log (the per-row labels stay for screen readers); with .is-chips the
+   second column (a status or a placeholder) is a chip beside the field name and the third column one 15 px line. */
+@container (max-width: 860px) {
+  .aq-joint-spine { --js-rail: 48px; --js-x: 30px; --js-jy: calc(var(--space-3) + 12px); }
+  .aq-joint-spine__drop, .aq-joint-spine__bend { display: none; }
+  .aq-joint-spine__lead { padding-bottom: var(--space-4); }
+  .aq-joint-spine__lead .aq-sec-head { padding-left: 0; }
+  .aq-joint-spine__legend { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); min-height: 0; margin: var(--space-6) 0 0; padding-left: var(--js-rail, 48px); font-size: 12px; letter-spacing: 0.04em; }
+  .aq-joint-spine__legend span { padding: 0; border: 0; }
+  .aq-joint-spine__legend span:last-child { align-self: stretch; padding-bottom: var(--space-3); border-bottom: 1px solid var(--ink); }
+  .aq-joint-spine__row { grid-template-columns: var(--js-rail, 48px) minmax(0, 1fr); border-top: 1px solid var(--line); padding: var(--space-3) 0 var(--space-4); row-gap: var(--space-1); }
+  .aq-joint-spine__row:first-child { border-top: 0; }
+  .aq-joint-spine__fh { display: block; grid-column: 2; min-width: 0; }
+  .aq-joint-spine__fh > h3, .aq-joint-spine__fh > p, .aq-joint-spine__row > p { grid-column: 2; padding: 0; border: 0; margin: 0; }
+  .aq-joint-spine__fh > h3 { font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: balance; }
+  .aq-joint-spine__fh > p { margin-top: var(--space-1); }
+  .aq-joint-spine__p, .aq-joint-spine__r { font-size: 15px; line-height: 22px; }
+  .aq-joint-spine__no, .aq-joint-spine__row.is-r .aq-joint-spine__no { left: auto; right: calc(100% + 6px); font-size: 12px; }
+  .aq-joint-spine__joint { width: 17px; }
+  .aq-joint-spine__row:hover .aq-joint-spine__fh > h3, .aq-joint-spine__row:hover .aq-joint-spine__fh > p { background: none; }
+  /* status chips on the title row */
+  .aq-joint-spine.is-chips .aq-joint-spine__fh { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-2); }
+  .aq-joint-spine.is-chips .aq-joint-spine__fh > h3 { flex: 0 1 auto; }
+  .aq-joint-spine.is-chips .aq-joint-spine__fh > p { margin: 0; padding: 1px var(--space-2); border: 1px solid var(--line-strong); border-radius: var(--radius-sm, 4px);
+    font: 500 var(--aq-chip-phone, 13px)/20px var(--font-mono); letter-spacing: 0; color: var(--ink); background: var(--surface); }
+  .aq-fold:not(.is-open) .aq-joint-spine__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-joint-spine__log) > .aq-fold__btn { display: flex; margin-left: var(--js-rail, 240px); max-width: calc(100% - var(--js-rail, 240px)); box-sizing: border-box; }
+}
+
+/* the title set large and light, beside the drop */
+.aq-joint-spine__lead .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; }
+@container (max-width: 860px) {
+  .aq-joint-spine__lead .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
+}
+.aq-joint-spine__f { min-width: 0; }
+/* the field and its second column: one wrapper that the desktop grid sees through */
+.aq-joint-spine__fh { display: contents; }
+.aq-joint-spine__bink { pointer-events: none; }
+
+/* Phone key (pass 12, F4): the legend is a <p>, so .aq-page p { margin: 0 } outranks its own margin; this restores the
+   gap under the lead. Each key line leads with the mark of the row part it names: a bold dash for the field, an
+   outlined box for the chip (.is-chips) or a muted rule for the second line, a thin ink rule for the description. */
+@container (max-width: 860px) {
+  .aq-joint-spine .aq-joint-spine__legend { margin-top: var(--space-6); }
+  .aq-joint-spine__legend span { display: flex; align-items: center; gap: var(--space-2); }
+  .aq-joint-spine__legend span::before { content: ""; flex: none; box-sizing: border-box; width: 14px; }
+  .aq-joint-spine__legend span:nth-child(1)::before { height: 3px; background: var(--ink); }
+  .aq-joint-spine__legend span:nth-child(2)::before { height: 2px; background: var(--ink-muted); }
+  .aq-joint-spine.is-chips .aq-joint-spine__legend span:nth-child(2)::before { height: 10px; background: none; border: 1px solid var(--line-strong); border-radius: 2px; }
+  .aq-joint-spine__legend span:nth-child(3)::before { height: 1px; background: var(--ink); }
+  /* without chips the two body lines differ in weight as well as tone: the second column in 500 muted, the description
+     in 400 ink */
+  .aq-joint-spine:not(.is-chips) .aq-joint-spine__p { font-weight: 500; }
+  /* pass 12 C (replaces F6): the chip at the right of the field name, on its first line; the name takes the rest of
+     the row (at least 12rem), so a chip too long to fit beside it (a placeholder) drops under the name, at the left */
+  .aq-joint-spine.is-chips .aq-joint-spine__fh { flex-wrap: wrap; align-items: first baseline; column-gap: var(--space-3); }
+  .aq-joint-spine.is-chips .aq-joint-spine__fh > h3 { flex: 1 1 12rem; min-width: 0; }
+  .aq-joint-spine.is-chips .aq-joint-spine__fh > p { flex: 0 1 auto; min-width: 0; font-size: 14px; }
+  /* no key row: the per-row labels stay for screen readers, the description needs no key */
+  .aq-joint-spine .aq-joint-spine__legend { display: none; }
+}

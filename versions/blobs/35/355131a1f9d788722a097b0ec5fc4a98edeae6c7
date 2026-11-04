@@ -1,0 +1,86 @@
+/* ---------- DocHotspots: documents pinned by hotspots to the part of the skid they cover ---------- */
+/* Desktop: a 2:1 stage. The drawing's box is 44 % wide and centred (DH_FIG in the renderer); cards 25 % wide sit at the
+   left and right edges at the tops the renderer sets; leaders (one svg over the stage, 100 x 50 units) run from each
+   hotspot to its card's inner edge. */
+.aq-doc-hotspots { position: relative; aspect-ratio: 2 / 1; margin-top: var(--space-6); }
+.aq-doc-hotspots__fig { position: absolute; left: 28%; width: 44%; top: 3%; }
+.aq-doc-hotspots__art { --ratio: 817 / 874; background-color: var(--limestone); }
+.aq-doc-hotspots__leads { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-doc-hotspots__leads path { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 250ms; }
+.aq-doc-hotspots__leads circle { fill: var(--on-navy-muted); transition: fill 250ms; }
+
+.aq-doc-hotspots__hot { position: absolute; z-index: 1; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); transform: translate(-50%, -50%);
+  border-radius: var(--radius-pill); background: color-mix(in srgb, var(--flow) 30%, transparent); }
+.aq-doc-hotspots__hot > span { display: grid; place-items: center; width: var(--space-4); height: var(--space-4); border-radius: var(--radius-pill);
+  background: var(--flow); border: 2px solid var(--on-navy); font: 500 0px/1 var(--font-mono); color: var(--on-navy); transition: transform 250ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* Pass 12 C: the cards run in two in-flow columns (left in grid column 1, right in column 3, one row per pair, a
+   space-4 gap), from 4 % down the stage. A long card pushes the one below it down instead of running under it, and the
+   stage grows past 2:1 when the set needs it (aspect-ratio is only its minimum). The layout pass in the renderer
+   (AQdocHotspots.layout, on resize) ends each leader on its card's code line. */
+.aq-doc-hotspots__cards { list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: 25% minmax(0, 1fr) 25%; row-gap: var(--space-4); align-items: start;
+  padding-top: calc(var(--space-6) - 1px); pointer-events: none; }
+.aq-doc-hotspots__card { position: relative; grid-row: var(--row, auto); pointer-events: auto; display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-6) var(--space-6) var(--space-6); background: var(--limestone); color: var(--on-limestone);
+  border-top: 2px solid var(--limestone); transition: border-color 250ms, transform 250ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-doc-hotspots__card--l { grid-column: 1; }
+.aq-doc-hotspots__card--r { grid-column: 3; }
+.aq-doc-hotspots__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-doc-hotspots__card.is-key .aq-doc-hotspots__code span:last-child { color: var(--flow); }
+.aq-doc-hotspots__t { margin: 0; font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-doc-hotspots__t a { color: inherit; }
+.aq-doc-hotspots__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-doc-hotspots__card::after { content: "+"; position: absolute; top: var(--space-4); right: var(--space-4); font: 300 20px/1 var(--font-mono); color: var(--on-limestone-muted); }
+
+/* Hover a card: its hotspot and leader light */
+.aq-doc-hotspots__card:hover { border-top-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="0"]:hover) [data-k="0"] > span,
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="1"]:hover) [data-k="1"] > span,
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="2"]:hover) [data-k="2"] > span,
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="3"]:hover) [data-k="3"] > span,
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="4"]:hover) [data-k="4"] > span,
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="5"]:hover) [data-k="5"] > span { transform: scale(1.5); }
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="0"]:hover) path[data-k="0"],
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="1"]:hover) path[data-k="1"],
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="2"]:hover) path[data-k="2"],
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="3"]:hover) path[data-k="3"],
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="4"]:hover) path[data-k="4"],
+.aq-doc-hotspots:has(.aq-doc-hotspots__card[data-k="5"]:hover) path[data-k="5"] { stroke: var(--on-navy); }
+
+.aq-doc-hotspots__more { margin: var(--space-6) 0 0; }
+.aq-doc-hotspots-sec .aq-doc-hotspots__more .aq-btn { color: var(--on-navy); }
+
+/* Narrower: drawing on top with numbered hotspots, cards in a grid below, no leaders */
+@container (max-width: 1080px) {
+  .aq-doc-hotspots { aspect-ratio: auto; display: flex; flex-direction: column; gap: var(--space-8); }
+  .aq-doc-hotspots__leads { display: none; }
+  .aq-doc-hotspots__fig { position: relative; left: auto; top: auto; width: min(100%, calc(var(--space-32) * 4)); margin-inline: auto; }
+  .aq-doc-hotspots__hot > span { width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-doc-hotspots__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); padding-top: 0; pointer-events: auto; }
+  .aq-doc-hotspots__card { position: relative; width: auto; grid-column: auto; grid-row: auto; }
+  .aq-doc-hotspots__num { display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-pill); background: var(--flow); color: var(--on-navy); letter-spacing: 0; }
+}
+
+@container (max-width: 860px) {
+  .aq-doc-hotspots { gap: var(--space-6); }
+  /* the box matches the art (capped at 480 px by the global .aq-illustration rule), so hotspots placed as fractions
+     of the box stay on the drawing at 601-860 px (pass 12 C verify, F3) */
+  .aq-doc-hotspots__fig { width: min(100%, 480px); max-width: none; margin-inline: auto; }
+  .aq-doc-hotspots__cards { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+  .aq-doc-hotspots__card { padding: var(--space-3) var(--space-4) var(--space-4); }
+  .aq-doc-hotspots__t { font-size: 19px; line-height: 26px; }
+}
+
+/* Shared selection (motion only, ported from Subframe Motion "Atlas hotspots"): a crosshair ring glides to the marker
+   of the document being read; that marker lifts, its card and leader light, the other documents step back. */
+.aq-doc-hotspots__hot { pointer-events: auto; }
+.aq-doc-hotspots__cross { position: absolute; left: 0; top: 0; z-index: 2; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
+  border: 1px solid var(--on-navy); border-radius: var(--radius-pill); pointer-events: none; display: none; opacity: 0; visibility: hidden; }
+.aq-doc-hotspots__cross::before, .aq-doc-hotspots__cross::after { content: ""; position: absolute; background: var(--on-navy); }
+.aq-doc-hotspots__cross::before { left: 50%; top: calc(-1 * var(--space-2)); bottom: calc(-1 * var(--space-2)); width: 1px; -webkit-mask: linear-gradient(var(--ink) 0 0) top / 1px var(--space-3) no-repeat, linear-gradient(var(--ink) 0 0) bottom / 1px var(--space-3) no-repeat; mask: linear-gradient(var(--ink) 0 0) top / 1px var(--space-3) no-repeat, linear-gradient(var(--ink) 0 0) bottom / 1px var(--space-3) no-repeat; }
+.aq-doc-hotspots__cross::after { top: 50%; left: calc(-1 * var(--space-2)); right: calc(-1 * var(--space-2)); height: 1px; -webkit-mask: linear-gradient(var(--ink) 0 0) left / var(--space-3) 1px no-repeat, linear-gradient(var(--ink) 0 0) right / var(--space-3) 1px no-repeat; mask: linear-gradient(var(--ink) 0 0) left / var(--space-3) 1px no-repeat, linear-gradient(var(--ink) 0 0) right / var(--space-3) 1px no-repeat; }
+.aq-doc-hotspots__hot.is-pick > span { transform: scale(1.5); }
+.aq-doc-hotspots__card { transition: border-color 250ms, transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 200ms; }
+.aq-doc-hotspots.has-pick .aq-doc-hotspots__card:not(.is-pick) { opacity: 0.6; }
+.aq-doc-hotspots__card.is-pick { border-top-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
+.aq-doc-hotspots__leads path.is-pick { stroke: var(--on-navy); }

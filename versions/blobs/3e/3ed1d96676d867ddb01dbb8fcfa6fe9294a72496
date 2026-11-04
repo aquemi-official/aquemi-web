@@ -1,0 +1,153 @@
+/* ---------- RelatedLinks: the pages to read next, hung off one pipe ---------- */
+/* Pass 9. Desktop: one pipe runs along the top of the row (twin line-strong walls, the water line in flow in its bore)
+   and each page hangs off it by a drop and a node, as a tile (surface-raised, 1 px line): the index and the section
+   label, the target page's picture (its equipment drawing, else its icon drawn large; ink-muted) and its title with a
+   flow arrow. Hover or focus lights the tile's drop, node, border, picture and title in flow, lifts the picture and
+   slides the arrow on. Phones: one column of rows off a rail down the left, the picture small at the right.
+   --aq-pipe, --aq-water (on the list) and --aq-drop, --aq-node (on each li) let RelatedLinks/motion.js lay the pipe
+   and run the water; all default to 1. */
+/* Card art ink (pass 12 C): ink-muted in light mode; in dark mode the art sits on a dark card, so it takes on-navy-muted,
+   the light line every dark band draws in (it was ink-muted at about 1.5:1 to the card in some scopes, and faint). */
+.aq-related-links { --aq-rel-ink: var(--ink-muted); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-related-links { --aq-rel-ink: var(--on-navy-muted); } }
+[data-theme="dark"] .aq-related-links { --aq-rel-ink: var(--on-navy-muted); }
+.aq-related-links {
+  --cols: 4;
+  position: relative; display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); column-gap: var(--space-6); row-gap: var(--space-8);
+  margin: 0; padding: var(--space-12) 0 0; list-style: none;
+  grid-auto-rows: 1fr; /* every row of tiles the same height, so the drops and titles line up across rows */
+}
+/* Pass 12 (S2): one row for up to five (five across, no empty sixth slot), six as two rows of three, seven or more four
+   to a row; two or three fill the row */
+.aq-related-links:not(:has(> :nth-child(4))) { --cols: 3; }
+.aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) { --cols: 5; }
+.aq-related-links:has(> :nth-child(6)):not(:has(> :nth-child(7))) { --cols: 3; }
+.aq-related-links:not(:has(> :nth-child(3))) { --cols: 2; }
+/* the pipe and its water */
+.aq-related-links::before, .aq-related-links::after { content: ""; position: absolute; left: 0; right: 0; transform-origin: 0 50%; pointer-events: none; }
+.aq-related-links::before { top: 0; height: var(--space-2); box-sizing: border-box; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); transform: scaleX(var(--aq-pipe, 1)); }
+.aq-related-links::after { top: calc(var(--space-1) - 0.75px); height: 1.5px; background: var(--flow); transform: scaleX(var(--aq-water, 1)); }
+.aq-related-links > li { position: relative; min-width: 0; display: flex; }
+/* the drop from the pipe into the tile, and the node where it leaves the pipe */
+.aq-related-links > li::before { content: ""; position: absolute; left: var(--space-8); top: calc(var(--space-2) - var(--space-12)); height: calc(var(--space-12) - var(--space-2)); width: 1px; background: var(--line-strong); transform-origin: 50% 0; transform: scaleY(var(--aq-drop, 1)); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-related-links > li::after { content: ""; position: absolute; left: calc(var(--space-8) - 4px); top: calc(var(--space-1) - var(--space-12) - 4px); width: 9px; height: 9px; box-sizing: border-box; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--surface); transform: scale(var(--aq-node, 1)); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-related-links > li:has(> a:is(:hover, :focus-visible))::before { background: var(--flow); }
+.aq-related-links > li:has(> a:is(:hover, :focus-visible))::after { background: var(--flow); border-color: var(--flow); }
+
+.aq-related-links__card {
+  flex: 1; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "n g" "v v" "t t"; grid-template-rows: auto minmax(0, 1fr) auto;
+  align-items: start; align-content: stretch; row-gap: var(--space-4);
+  min-height: 44px; padding: var(--space-4) var(--space-6) var(--space-6);
+  background: var(--surface-raised); border: 1px solid var(--line);
+  color: var(--ink); text-decoration: none;
+  transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+:where(.aq-page) a.aq-related-links__card { color: var(--ink); }
+.aq-related-links__n { grid-area: n; font: 400 13px/16px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-related-links__group { grid-area: g; justify-self: end; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-related-links__group > span { display: none; }
+/* the picture: a fixed window (pass 12: 152 px, so a tile is about 300 px tall at any column width), the drawing or the
+   large icon centred in it */
+.aq-related-links__vis { grid-area: v; position: relative; display: grid; place-items: center; height: calc(var(--space-32) + var(--space-6)); margin-inline: calc(-1 * var(--space-2)); overflow: hidden; }
+/* An IsoKit scene (pages without an equipment drawing, related.js REL_ISO): the same ink-muted line as the drawings,
+   fitted into the window; it lights in flow with the tile */
+.aq-related-links__vis.is-iso { padding: var(--space-2) var(--space-4); }
+.aq-related-links__vis > .aq-related-links__iso { width: 100%; height: 100%; max-height: 100%; overflow: hidden; }
+.aq-related-links__iso :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid, .aq-iso__pipe-wall, .aq-iso__pipe-line) { stroke: var(--aq-rel-ink, var(--ink-muted)); transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+/* lighter than the kit's default, to sit with the raster drawings' fine line (one hand in a row); paper stays the
+   tile's white */
+.aq-related-links__iso :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__acc, .aq-iso__trace) { stroke-width: 1; }
+.aq-related-links__iso :is(.aq-iso__thin, .aq-iso__hid) { stroke-width: .75; }
+.aq-related-links__iso .aq-iso__eq--sheet { fill: var(--surface-raised); }
+.aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__iso :is(.aq-iso__eq, .aq-iso__ln, .aq-iso__thin, .aq-iso__hid, .aq-iso__pipe-wall, .aq-iso__pipe-line) { stroke: var(--flow); }
+/* A page with no picture at all keeps its title at the bottom of the tile, under the label, never at the top of an
+   empty card */
+.aq-related-links__card.is-bare { grid-template-areas: "n g" "t t"; grid-template-rows: auto 1fr; }
+.aq-related-links__card.is-bare .aq-related-links__title { align-self: end; padding-top: var(--space-16); }
+.aq-related-links__art { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; max-width: none; margin: 0; background-color: var(--aq-rel-now, var(--aq-rel-ink, var(--ink-muted))); }
+.aq-related-links__vis .aq-related-links__spot { width: 46%; height: auto; aspect-ratio: 1; background-color: var(--aq-rel-ink, var(--ink-muted)); }
+/* Pass 12 C: one stroke for every card. The equipment drawings (svc-fabrication, svc-service and the other ART pages) are
+   fine raster line masks, paler than the IsoKit scenes' 1 px vector line beside them; a hairline drop-shadow in the same
+   colour, on the picture window (so after the mask), brings them up to that weight. */
+.aq-related-links__vis.is-art { filter: drop-shadow(0 0 0.35px var(--aq-rel-now, var(--aq-rel-ink, var(--ink-muted)))) drop-shadow(0 0 0.35px var(--aq-rel-now, var(--aq-rel-ink, var(--ink-muted)))); }
+.aq-related-links__art, .aq-related-links__vis .aq-related-links__spot { transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), transform 320ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-related-links__title { grid-area: t; align-self: end; font: 400 24px/30px var(--font-sans); letter-spacing: -0.015em; overflow-wrap: break-word; text-wrap: balance; transition: color 200ms; }
+/* Arrow: a real span (aq-related-links__arrow) so it can move; it nudges along on hover and focus */
+.aq-related-links__arrow { display: inline-block; margin-left: 0.3em; color: var(--flow); transition: transform 220ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-related-links__card:is(:hover, :focus-visible) { border-color: var(--flow); }
+.aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__arrow { transform: translateX(var(--space-2)); }
+.aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__title { color: var(--flow); }
+.aq-related-links__iso { transition: transform 320ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__iso { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-related-links__card:is(:hover, :focus-visible) :is(.aq-related-links__art, .aq-related-links__spot) { background-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
+.aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__vis.is-art { --aq-rel-now: var(--flow); }
+.aq-related-links__card:active .aq-related-links__title { transform: translateY(1px); }
+.aq-related-links__card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* Spotlight (RelatedLinks/motion.js, spotlight-card): a soft flow light under the content at --aq-sx/--aq-sy, and the
+   stretch of the border nearest it lit in flow. Off at rest; on while a fine pointer is over the tile (is-lit), from the
+   centre on keyboard focus. Opacity only in CSS; the position is driven by the pointer. */
+.aq-related-links__card { position: relative; isolation: isolate; }
+.aq-related-links__card::before, .aq-related-links__card::after {
+  content: ""; position: absolute; pointer-events: none; opacity: 0;
+  transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-related-links__card::before {
+  inset: 0; z-index: -1;
+  background: radial-gradient(circle 220px at var(--aq-sx, 50%) var(--aq-sy, 50%), color-mix(in srgb, var(--flow) 14%, transparent), transparent 70%);
+}
+.aq-related-links__card::after {
+  inset: -1px; border: 1px solid transparent;
+  background: radial-gradient(circle 140px at calc(var(--aq-sx, 50%) + 1px) calc(var(--aq-sy, 50%) + 1px), var(--flow), transparent 75%) border-box;
+  -webkit-mask: linear-gradient(black, black) padding-box, linear-gradient(black, black) border-box; -webkit-mask-composite: xor;
+  mask: linear-gradient(black, black) padding-box exclude, linear-gradient(black, black) border-box;
+}
+.aq-related-links__card.is-lit::before, .aq-related-links__card.is-lit::after { opacity: 1; transition-duration: 200ms; }
+.aq-related-links__card:not(.is-lit)::before, .aq-related-links__card:not(.is-lit)::after { transition-duration: 140ms; }
+.aq-related-links__card:focus-visible::before { opacity: 0.8; }
+@media (hover: none) { .aq-related-links__card::before, .aq-related-links__card::after { display: none; } }
+@media (prefers-reduced-motion: reduce) { .aq-related-links__card.is-lit::before, .aq-related-links__card.is-lit::after { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .aq-related-links__arrow, .aq-related-links__art, .aq-related-links__spot, .aq-related-links__iso, .aq-related-links__iso *, .aq-related-links__title, .aq-related-links__card, .aq-related-links > li::before, .aq-related-links > li::after { transition: none; }
+}
+/* Five across: a narrower tile, so the title steps down to 20/26 */
+.aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) .aq-related-links__title { font-size: 20px; line-height: 26px; }
+/* Between the phone and a full desktop row, five go 3 + 2 on a six-column grid (the last two wider): no empty slot */
+@container (min-width: 861px) and (max-width: 1100px) {
+  .aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) > li { grid-column: span 2; }
+  .aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) > li:nth-child(n+4) { grid-column: span 3; }
+  /* the wider second row would hang its drops from mid-tile: the pipe feeds the first row only */
+  .aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) > li:nth-child(n+4)::before,
+  .aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) > li:nth-child(n+4)::after { display: none; }
+}
+
+@container (max-width: 860px) {
+  /* Phones: one column of rows off a rail down the left; label and title at the left, the picture small at the right */
+  .aq-related-links { --cols: 1; row-gap: var(--space-3); padding: 0 0 0 var(--space-6); grid-auto-rows: auto; }
+  .aq-related-links:not(:has(> :nth-child(4))), .aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(7))),
+  .aq-related-links:not(:has(> :nth-child(3))) { --cols: 1; }
+  .aq-related-links::before { top: 0; bottom: 0; left: 0; right: auto; width: var(--space-2); height: auto; border: 0; border-left: 1px solid var(--line-strong); border-right: 1px solid var(--line-strong); transform-origin: 50% 0; transform: scaleY(var(--aq-pipe, 1)); }
+  .aq-related-links::after { top: 0; bottom: 0; left: calc(var(--space-1) - 0.75px); right: auto; width: 1.5px; height: auto; transform-origin: 50% 0; transform: scaleY(var(--aq-water, 1)); }
+  .aq-related-links > li::before { left: calc(var(--space-2) - var(--space-6)); top: 50%; width: calc(var(--space-6) - var(--space-2)); height: 1px; transform-origin: 0 50%; transform: scaleX(var(--aq-drop, 1)); }
+  .aq-related-links > li::after { left: calc(var(--space-1) - var(--space-6) - 4px); top: calc(50% - 4px); }
+  .aq-related-links__card {
+    padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4); column-gap: var(--space-3); row-gap: var(--space-1);
+    grid-template-columns: minmax(0, 1fr) var(--space-16); grid-template-areas: "g v" "t v"; align-items: center;
+  }
+  .aq-related-links__n { display: none; }
+  .aq-related-links__group { justify-self: start; }
+  .aq-related-links__group > span { display: inline; }
+  .aq-related-links__vis { margin: 0; width: var(--space-16); height: var(--space-16); aspect-ratio: 1; }
+  .aq-related-links__vis.is-iso { padding: var(--space-1); }
+  .aq-related-links__card { grid-template-rows: auto auto; }
+  .aq-related-links__card.is-bare { grid-template-columns: minmax(0, 1fr); grid-template-areas: "g" "t"; }
+  .aq-related-links__card.is-bare .aq-related-links__title { padding-top: 0; }
+  .aq-related-links:has(> :nth-child(5)):not(:has(> :nth-child(6))) .aq-related-links__title { font-size: 19px; line-height: 26px; }
+  .aq-related-links__vis .aq-related-links__spot { width: 70%; }
+  /* in the 64 px window the raster drawings fade to grey and the scenes stay crisp: meet in the middle */
+  .aq-related-links__iso { opacity: .8; }
+  .aq-related-links__vis.is-art { --aq-rel-now: var(--ink); }
+  .aq-related-links__card:is(:hover, :focus-visible) .aq-related-links__vis.is-art { --aq-rel-now: var(--flow); }
+  .aq-related-links__title { font-size: 19px; line-height: 26px; }
+}

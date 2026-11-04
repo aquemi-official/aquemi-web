@@ -1,0 +1,72 @@
+/* ---------- ApplicationWheel: where one water goes, as an application wheel ---------- */
+/* Desktop: a three-column grid, the wheel in the middle spanning every row, the groups' blocks in the side columns,
+   one per row, centred on their row. Each block's leader is a hairline drawn from its inner edge towards the wheel's
+   centre, under the wheel: the wheel's disc is filled with the ground, so the line stops exactly at the segment's
+   outer edge whatever the block's height. */
+.aq-application-wheel { --wheel: min(42cqw, 580px); --gap: var(--space-8);
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--wheel, 480px) minmax(0, 1fr);
+  grid-template-rows: repeat(var(--rows, 3), auto); column-gap: var(--gap, var(--space-8)); row-gap: var(--space-8); align-items: center; }
+.aq-application-wheel__wheel { grid-column: 2; grid-row: 1 / span var(--rows, 3); position: relative; z-index: 1; align-self: center; }
+.aq-application-wheel__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-application-wheel__disc { fill: var(--surface); stroke: none; }
+.aq-application-wheel__seg { cursor: pointer; }
+.aq-application-wheel__seg path { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1px; vector-effect: non-scaling-stroke;
+  transition: fill 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-application-wheel__seg:nth-child(odd of .aq-application-wheel__seg) path { fill: color-mix(in srgb, var(--line) 60%, var(--surface)); }
+.aq-application-wheel__seg.is-hot path { fill: var(--flow-tint); }
+.aq-application-wheel__num { font: 400 16px/1 var(--font-mono); letter-spacing: 0.04em; fill: var(--ink-muted); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.aq-application-wheel__num.is-hot { fill: var(--ink); }
+.aq-application-wheel__hub { fill: var(--surface); stroke: var(--line); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.aq-application-wheel__loop { fill: none; stroke: var(--flow); stroke-width: 2px; vector-effect: non-scaling-stroke; stroke-dasharray: 3 7; }
+.aq-application-wheel__pkg { overflow: visible; }
+
+.aq-application-wheel__list { display: contents; list-style: none; margin: 0; padding: 0; }
+.aq-application-wheel__grp { position: relative; grid-row: var(--row, auto); min-width: 0; display: flex; flex-direction: column; gap: var(--space-2);
+  padding-block: var(--space-2); }
+.aq-application-wheel__grp--r { grid-column: 3; padding-left: var(--space-6); border-left: 1px solid var(--line-strong); }
+.aq-application-wheel__grp--l { grid-column: 1; padding-right: var(--space-6); border-right: 1px solid var(--line-strong); }
+/* the leaders: laid out by the look's script in one layer over the whole figure (pixel viewBox), under the wheel */
+.aq-application-wheel__leads { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 2; }
+.aq-application-wheel__lead path { fill: none; stroke: var(--line-strong); stroke-width: 1px; transition: stroke 200ms; }
+.aq-application-wheel__lead circle { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1px; transition: fill 200ms, stroke 200ms; }
+.aq-application-wheel__lead.is-hot path { stroke: var(--flow); }
+.aq-application-wheel__lead.is-hot circle { fill: var(--flow); stroke: var(--flow); }
+
+.aq-application-wheel__n { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--ink-subtle); }
+.aq-application-wheel__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-application-wheel__link { color: inherit; text-decoration: none; }
+.aq-application-wheel__link::after { content: "\00a0\2192"; color: var(--flow); display: inline-block; transition: transform 200ms; }
+.aq-application-wheel__link:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--flow); }
+.aq-application-wheel__link:hover::after { transform: translateX(var(--space-1)); }
+.aq-application-wheel__link:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+.aq-application-wheel__tag { align-self: flex-start; margin: 0; padding: 1px var(--space-2); border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  font: 400 12px/18px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted); }
+.aq-application-wheel__uses { list-style: none; margin: var(--space-1) 0 0; padding: 0; display: grid; gap: 2px; }
+.aq-application-wheel__uses li { display: flex; gap: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-application-wheel__ui { flex: none; min-width: 3.4em; font: 400 11px/20px var(--font-mono); color: var(--ink-subtle); }
+
+@container (max-width: 1100px) {
+  .aq-application-wheel { --wheel: min(38cqw, 420px); --gap: var(--space-6); }
+  .aq-application-wheel__t { font-size: 18px; line-height: 24px; }
+}
+
+/* Phones: the wheel on top, a riser down the middle from it, the groups as a two-column grid branching off it */
+@container (max-width: 860px) {
+  .aq-application-wheel { --gap: var(--space-6); grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; row-gap: var(--space-8); align-items: start; }
+  .aq-application-wheel__wheel { grid-column: 1 / -1; grid-row: auto; justify-self: center; width: min(100%, 320px); }
+  /* the riser: a twin-wall line from the wheel's foot down the column gap */
+  .aq-application-wheel::before { content: ""; position: absolute; left: 50%; top: min(100cqw, 320px); bottom: var(--space-8); width: var(--space-2); margin-left: calc(var(--space-2) / -2);
+    border-inline: 1px solid var(--line-strong); background: linear-gradient(var(--flow), var(--flow)) center / 2px 100% no-repeat; box-sizing: border-box; }
+  .aq-application-wheel__grp, .aq-application-wheel__grp--r, .aq-application-wheel__grp--l { grid-column: auto; grid-row: auto; padding: var(--space-3) 0 0; border: 0; border-top: 1px solid var(--line-strong); }
+  /* the branch: a stub from the riser to the block's top rule */
+  .aq-application-wheel__leads { display: none; }
+  .aq-application-wheel__grp::before { content: ""; position: absolute; top: -1px; height: 1px; width: calc(var(--gap, var(--space-8)) / 2); background: var(--line-strong); }
+  .aq-application-wheel__grp:nth-child(odd)::before { left: 100%; right: auto; }
+  .aq-application-wheel__grp:nth-child(even)::before { right: 100%; left: auto; }
+  .aq-application-wheel__t { font-size: 17px; line-height: 22px; }
+  .aq-application-wheel__link { display: inline-block; min-height: var(--aq-hit, 44px); padding-block: var(--space-2); box-sizing: border-box; }
+  .aq-application-wheel__tag { font-size: 11px; line-height: 16px; }
+  .aq-application-wheel__uses li { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  .aq-application-wheel__ui { display: none; }
+  .aq-application-wheel__num { font-size: 22px; }
+}

@@ -1,0 +1,145 @@
+/* ---------- BudgetBento: budget ranges as a Swiss bento of numbered tiles (look "budget-bento") ----------
+   Desktop: two columns; the lead tile (navy) fills the left column at full height, the module tiles stack on the right
+   as wide rows (numeral and icon | scope and range | basis). Hairline grid, square corners, no shadows. Every tile keys
+   its fields with the table's column names in mono, so the sheet still reads as scope / range / basis. */
+.aq-budget-bento-sec .aq-sec-head { max-width: var(--text-max); }
+.aq-budget-bento { display: grid; gap: var(--space-6); }
+.aq-budget-bento__grid {
+  list-style: none; margin: 0; padding: 0; display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-auto-rows: auto;
+  border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong);
+}
+.aq-budget-bento__tile {
+  position: relative; overflow: hidden; display: grid; background: var(--surface-raised); border-right: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+  grid-template-columns: var(--space-24) minmax(0, 1fr); column-gap: var(--space-6);
+  padding: var(--space-6); min-height: 0;
+}
+.aq-budget-bento__tile.is-lead { grid-row: span 3; grid-template-columns: minmax(0, 1fr); background: var(--navy); color: var(--on-navy); padding: var(--space-8); align-content: end; }
+/* dark (pass 12 C): the navy lead tile on the near-black page keeps an edge (a line-strong hairline inside it) */
+:root[data-theme="dark"] .aq-budget-bento__tile.is-lead { box-shadow: inset 0 0 0 1px var(--line-strong); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-budget-bento__tile.is-lead { box-shadow: inset 0 0 0 1px var(--line-strong); } }
+.aq-budget-bento__n {
+  font: 300 64px/0.9 var(--font-sans); letter-spacing: -0.04em; color: var(--ink-subtle); font-variant-numeric: tabular-nums;
+  grid-row: 1; grid-column: 1; align-self: start;
+}
+.aq-budget-bento__tile.is-lead .aq-budget-bento__n {
+  position: absolute; top: calc(-1 * var(--space-6)); right: calc(-1 * var(--space-4)); font-size: 240px; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--on-navy-muted) 45%, transparent); pointer-events: none;
+}
+.aq-budget-bento__spot { grid-row: 1; grid-column: 1; align-self: end; width: var(--space-16); height: var(--space-16); background-color: var(--ink-muted); margin-top: var(--space-12); }
+.aq-budget-bento__body { grid-column: 2; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: var(--space-6); row-gap: var(--space-3); align-content: start; }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__body { grid-column: 1; grid-template-columns: minmax(0, 1fr); position: relative; row-gap: var(--space-6); padding-top: var(--space-32); }
+.aq-budget-bento__k { margin: 0 0 var(--space-1); font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__k { color: var(--on-navy-muted); }
+.aq-budget-bento__p { margin: 0; grid-column: 1 / -1; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__p { font-size: 28px; line-height: 36px; font-weight: 300; color: var(--on-navy); }
+.aq-budget-bento__val { min-width: 0; }
+.aq-budget-bento__v { margin: 0; font: 400 20px/28px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__v { font-size: 30px; line-height: 40px; color: var(--on-navy); }
+.aq-budget-bento__v .aq-ph { font-size: 0.8em; }
+.aq-budget-bento__m { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-budget-bento__basis { min-width: 0; }
+/* lead basis: what the band includes, ticked */
+.aq-budget-bento__incl { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.aq-budget-bento__incl li { position: relative; padding-left: var(--space-6); font: 400 15px/22px var(--font-sans); color: var(--on-navy); }
+.aq-budget-bento__incl li::before {
+  content: ""; position: absolute; left: 0; top: 5px; width: 10px; height: 6px;
+  border-left: 1.5px solid var(--on-navy-muted); border-bottom: 1.5px solid var(--on-navy-muted); transform: rotate(-45deg);
+}
+/* the range bracket: ruler ticks, the band marked between brackets */
+.aq-budget-bento__range { position: relative; display: block; height: var(--space-6); margin-top: var(--space-2); }
+.aq-budget-bento__ruler { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.aq-budget-bento__ruler .aq-budget-bento__base { stroke-width: 1; }
+.aq-budget-bento__ruler line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__ruler line { stroke: color-mix(in srgb, var(--on-navy-muted) 50%, transparent); }
+.aq-budget-bento__band { position: absolute; left: 22%; right: 30%; top: 11px; height: 7px; background: var(--flow-tint); border-top: 2px solid var(--flow); }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__band { background: color-mix(in srgb, var(--flow) 30%, var(--navy)); border-top-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); left: 18%; right: 26%; }
+.aq-budget-bento__bk { position: absolute; left: 0; top: -9px; width: 1.5px; height: 16px; background: var(--flow); }
+.aq-budget-bento__bk.is-r { left: auto; right: 0; }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__bk { background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+.aq-budget-bento__link { grid-column: 1 / -1; color: var(--flow); font: 400 14px/21px var(--font-sans); }
+
+/* the note as chips: what moves the price, what is not included (struck), then the link */
+.aq-budget-bento__notes { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-6); row-gap: var(--space-3); align-items: baseline; }
+.aq-budget-bento__note { display: contents; }
+.aq-budget-bento__nk { margin: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-budget-bento__chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.aq-budget-bento__chip {
+  display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--line-strong); font: 400 14px/20px var(--font-sans); color: var(--ink);
+}
+.aq-budget-bento__cg { width: 9px; height: 12px; flex: none; position: relative; }
+.aq-budget-bento__cg::before, .aq-budget-bento__cg::after { content: ""; position: absolute; left: 1px; width: 5px; height: 5px; border-left: 1.5px solid var(--flow); border-top: 1.5px solid var(--flow); }
+.aq-budget-bento__cg::before { top: 1px; transform: rotate(45deg); }
+.aq-budget-bento__cg::after { bottom: 1px; transform: rotate(-135deg); }
+.aq-budget-bento__note.is-out .aq-budget-bento__chip { border-style: dashed; color: var(--ink-muted); }
+.aq-budget-bento__note.is-out .aq-budget-bento__cg::before { top: 50%; left: 0; width: 9px; height: 0; border: 0; border-top: 1.5px solid var(--ink-muted); transform: none; }
+.aq-budget-bento__note.is-out .aq-budget-bento__cg::after { display: none; }
+.aq-budget-bento__more { grid-column: 2; margin: 0; }
+.aq-budget-bento__go { display: inline-flex; align-items: center; min-height: 44px; color: var(--flow); font: 400 15px/22px var(--font-sans); text-decoration: none; }
+.aq-budget-bento__go::after { content: "→"; margin-left: var(--space-2); transition: transform 200ms ease; }
+.aq-budget-bento__go:hover::after, .aq-budget-bento__go:focus-visible::after { transform: translateX(3px); }
+
+/* hover: a tile's band and brackets go flow-strong, the numeral steps in */
+.aq-budget-bento__tile { transition: background-color 200ms ease; }
+.aq-budget-bento__tile:not(.is-lead):hover { background: var(--surface); }
+.aq-budget-bento__tile:not(.is-lead):hover .aq-budget-bento__n { color: var(--flow); }
+
+@container (max-width: 860px) {
+  /* Phones (pass 12, S13/S4): a short navy lead card with its numeral whole in the corner; the modules as compact rows
+     (40 px numeral inline with the scope, the range with its bracket beside the "Basis +" head); every basis behind its
+     head (PhoneKit accordion, closed at first); the two chip rows scroll sideways. ~1,000 px for four rows. */
+  .aq-budget-bento { gap: var(--space-5, 20px); }
+  .aq-budget-bento__grid { grid-template-columns: minmax(0, 1fr); }
+  .aq-budget-bento__tile.is-lead { grid-row: auto; padding: var(--space-5, 20px); }
+  .aq-budget-bento__tile.is-lead .aq-budget-bento__n { top: var(--space-4); right: var(--space-4); font-size: 72px; line-height: 0.9; }
+  .aq-budget-bento__tile.is-lead .aq-budget-bento__body { padding-top: 0; row-gap: var(--space-3); }
+  .aq-budget-bento__tile.is-lead .aq-budget-bento__p { font-size: 22px; line-height: 30px; padding-right: 80px; }
+  .aq-budget-bento__tile.is-lead .aq-budget-bento__v { font-size: 20px; line-height: 28px; }
+  .aq-budget-bento__tile { grid-template-columns: max-content minmax(0, 1fr) max-content; column-gap: var(--space-3); row-gap: var(--space-2); padding: var(--space-4); align-items: start; }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__body { display: contents; }
+  .aq-budget-bento__n { grid-row: 1; grid-column: 1; font-size: var(--aq-num-phone, 44px); line-height: 36px; min-width: 48px; }
+  .aq-budget-bento__spot { grid-row: 2 / span 2; grid-column: 1; width: var(--space-8); height: var(--space-8); margin: var(--space-1) 0 0; justify-self: start; }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__p { grid-row: 1; grid-column: 2 / -1; font-size: 18px; line-height: 26px; padding-top: var(--space-1); }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__val { display: contents; }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__val > .aq-budget-bento__k { display: none; }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__v { grid-row: 2; grid-column: 2 / -1; font-size: 16px; line-height: 24px; }
+  .aq-budget-bento__v .aq-ph { font-size: var(--aq-chip-phone, 13px); }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__range { grid-row: 3; grid-column: 2; align-self: center; height: var(--space-5, 20px); margin: 0; }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__basis { grid-row: 4; grid-column: 2 / -1; }
+  .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__link { grid-column: 2 / -1; }
+  .aq-budget-bento__m { font-size: var(--aq-read-phone, 14px); }
+  .aq-budget-bento__body { grid-template-columns: minmax(0, 1fr); }
+  /* the "Basis +" head: the column label in mono with the plus box; on a module it sits at the end of the range row */
+  .aq-budget-bento-sec .aq-budget-bento__grid[data-pk-on] .aq-budget-bento__bh {
+    width: auto; min-height: 44px; padding: 0 0 0 var(--space-2); gap: 0; justify-content: flex-end;
+    font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+  }
+  .aq-budget-bento-sec .aq-budget-bento__tile:not(.is-lead) .aq-budget-bento__bh { grid-row: 3; grid-column: 3; align-self: center; margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-3)) calc(-1 * var(--space-2)) 0; }
+  .aq-budget-bento-sec .aq-budget-bento__grid[data-pk-on] .is-lead .aq-budget-bento__bh {
+    width: 100%; justify-content: space-between; padding-left: 0; margin-bottom: calc(-1 * var(--space-3)); color: var(--on-navy-muted);
+    border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
+  }
+  .aq-budget-bento__grid[data-pk-on] .aq-budget-bento__basis > .aq-budget-bento__k { display: none; }
+  .aq-budget-bento__tile.is-lead .aq-budget-bento__basis { padding-bottom: var(--space-3); }
+  .aq-budget-bento__incl li { font-size: var(--aq-read-phone, 14px); }
+  /* the chip rows: a label, then one row that scrolls sideways (the last chip fades at the gutter) */
+  .aq-budget-bento__notes { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); }
+  .aq-budget-bento__nk:not(:first-child) { margin-top: var(--space-3); }
+  .aq-budget-bento__chips {
+    flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; scroll-snap-type: x proximity;
+    margin-right: calc(-1 * var(--space-4)); padding-right: var(--space-8);
+    -webkit-mask-image: linear-gradient(90deg, var(--ink) calc(100% - var(--space-8)), transparent); mask-image: linear-gradient(90deg, var(--ink) calc(100% - var(--space-8)), transparent);
+  }
+  .aq-budget-bento__chips::-webkit-scrollbar { display: none; }
+  .aq-budget-bento__chip { flex: none; white-space: nowrap; scroll-snap-align: start; }
+  .aq-budget-bento__more { grid-column: 1; }
+}
+
+/* Spotlight (motion only, ported from Subframe Motion "Spotlight card"): a soft flow light under the pointer, behind the
+   tile's type; on the navy lead tile it is the water's lightened flow */
+.aq-budget-bento__tile { position: relative; overflow: hidden; isolation: isolate; }
+.aq-budget-bento__spot-light { position: absolute; left: calc(-1 * var(--space-32, 8rem)); top: calc(-1 * var(--space-32, 8rem)); width: calc(2 * var(--space-32, 8rem)); height: calc(2 * var(--space-32, 8rem));
+  border-radius: var(--radius-pill); pointer-events: none; display: none; opacity: 0; z-index: -1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--flow) 22%, transparent) 0%, color-mix(in srgb, var(--flow) 9%, transparent) 35%, transparent 70%); }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__spot-light { background: radial-gradient(circle, color-mix(in srgb, var(--flow) 40%, transparent) 0%, color-mix(in srgb, var(--flow) 16%, transparent) 35%, transparent 70%); }

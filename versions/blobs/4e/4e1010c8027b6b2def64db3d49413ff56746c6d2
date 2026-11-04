@@ -1,0 +1,438 @@
+/* ---------- Hero ---------- */
+/* On `surface`, generous white space, one light display headline. The right-hand part is line art: single-weight
+   strokes, `flow` only where it marks the water path or a leader. No frames, grids, crosses or stamps. */
+.aq-hero { position: relative; overflow: hidden; padding-block: var(--space-24) var(--space-16); background: var(--surface); }
+.aq-hero--home { padding-block: var(--space-32) var(--space-24); }
+/* Flow mist (brand book, Gradient grounds): one faint flow-tint bloom in the top-right corner, where a system page's
+   equipment drawing sits; the headline stays on plain surface */
+.aq-hero--mist { background: radial-gradient(ellipse 60% 70% at 100% 0%, color-mix(in srgb, var(--flow-tint) 90%, transparent) 0%, transparent 70%), var(--surface); }
+.aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
+.aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
+.aq-hero .aq-tags { margin-top: var(--space-2); }
+.aq-photo { position: relative; z-index: 1; aspect-ratio: 4 / 3; min-height: 100%; max-width: 100%; background-color: var(--surface-sunken); border: 1px solid var(--line); display: flex; align-items: flex-end; padding: var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.aq-arc { position: absolute; right: -1px; bottom: -1px; width: min(38%, 420px); height: auto; pointer-events: none; }
+.aq-arc__outer { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-arc__inner { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+
+/* Figure: the equipment drawing large beside the headline, the page's key facts as quiet callouts in the four corners,
+   each joined to the drawing by a hairline leader ending in a small flow dot.
+   The box is 6:5 (viewBox 120 x 100 for the leaders); the drawing is a centred square 96 % of its height. */
+.aq-hero__grid--figure { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; column-gap: var(--space-8); }
+.aq-hero__figure { position: relative; z-index: 1; margin: 0; aspect-ratio: 6 / 5; }
+.aq-hero__art { position: absolute; inset: 0; }
+.aq-hero__art .aq-illustration { position: absolute; inset: 2% 10%; width: auto; max-width: none; aspect-ratio: auto; margin: 0; }
+.aq-hero__leaders { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-hero__leaders line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-hero__leaders circle { fill: var(--flow); }
+.aq-hero__leaders circle.is-start { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-hero__leaders--narrow { display: none; }
+.aq-hero__callouts { position: absolute; inset: 0; z-index: 2; margin: 0; pointer-events: none; }
+.aq-hero__callout {
+  position: absolute; width: 27%; height: 13%; display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-1);
+  padding-block: var(--space-2); border-bottom: 1px solid var(--line); pointer-events: auto;
+}
+.aq-hero__callouts--top .aq-hero__callout:nth-child(1) { top: 0; left: 0; }
+.aq-hero__callouts--top .aq-hero__callout:nth-child(2) { top: 0; right: 0; text-align: right; }
+.aq-hero__callouts--bottom .aq-hero__callout { bottom: 0; justify-content: flex-start; border-bottom: 0; border-top: 1px solid var(--line); }
+.aq-hero__callouts--bottom .aq-hero__callout:nth-child(1) { left: 0; }
+.aq-hero__callouts--bottom .aq-hero__callout:nth-child(2) { right: 0; text-align: right; }
+.aq-hero__callout dt { font: 400 13px/18px var(--font-sans); color: var(--ink-muted); }
+.aq-hero__callout dd { margin: 0; font: 300 clamp(16px, 1.9cqi, 26px)/1.2 var(--font-mono); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
+
+/* Index (hub and company pages): the other pages of this section as numbered rows between `line` hairlines, hung off
+   one pipe rail down the left (pass 9): a twin-wall pipe in line-strong with the water line (flow) in its bore, a tee
+   and a node into every row. Numbers come from a CSS counter; each linked row ends in the page's icon and a flow arrow.
+   Hover or focus lights the row's tee, node, number and icon in flow and slides the arrow one step on.
+   --aq-rail and --aq-water (0-1) let Hero/motion.js draw the rail and run the water; both default to 1. */
+.aq-hero__grid--index { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
+.aq-hero__index { position: relative; z-index: 1; min-width: 0; }
+.aq-hero__index-label { margin: 0 0 var(--space-3); padding-left: var(--space-8); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-hero__index ol { position: relative; counter-reset: aq-hero-index; margin: 0; padding: 0 0 0 var(--space-8); list-style: none; }
+.aq-hero__index ol::before, .aq-hero__index ol::after { content: ""; position: absolute; top: 0; bottom: 0; transform-origin: 50% 0; pointer-events: none; }
+.aq-hero__index ol::before { left: 0; width: var(--space-2); box-sizing: border-box; border: 1px solid var(--line-strong); border-top: 0; transform: scaleY(var(--aq-rail, 1)); }
+.aq-hero__index ol::after { left: calc(var(--space-1) - 0.75px); width: 1.5px; background: var(--flow); transform: scaleY(var(--aq-water, 1)); }
+.aq-hero__index li { position: relative; counter-increment: aq-hero-index; border-bottom: 1px solid var(--line); }
+.aq-hero__index li:first-child { border-top: 1px solid var(--line); }
+/* tee from the rail into the row, and its node */
+.aq-hero__index li::before { content: ""; position: absolute; top: 50%; left: calc(var(--space-2) - var(--space-8)); width: calc(var(--space-8) - var(--space-2) - var(--space-1)); height: 1px; background: var(--line-strong); transform-origin: 0 50%; transform: scaleX(var(--aq-tee, 1)); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-hero__index li::after { content: ""; position: absolute; top: 50%; left: calc(-1 * var(--space-1) - 3.5px); width: 7px; height: 7px; margin-top: -3.5px; box-sizing: border-box; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--surface); transform: scale(var(--aq-node, 1)); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-hero__index-item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: var(--space-4); min-height: 44px; padding-block: var(--space-3); color: var(--ink); text-decoration: none; }
+:where(.aq-page) a.aq-hero__index-item { color: var(--ink); }
+.aq-hero__index-item::before {
+  content: counter(aq-hero-index, decimal-leading-zero);
+  content: counter(aq-hero-index, decimal-leading-zero) / "";
+  min-width: 2ch; font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle);
+  transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-hero__index-t { min-width: 0; font: 400 16px/24px var(--font-sans); overflow-wrap: break-word; transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+a.aq-hero__index-item .aq-hero__index-t::after { content: "\2192"; display: inline-block; margin-left: 0.4em; color: var(--flow); transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-hero__index-ic { width: var(--space-6); height: var(--space-6); background-color: var(--ink-subtle); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), transform 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-hero__index li:has(> a:is(:hover, :focus-visible))::before { background: var(--flow); }
+.aq-hero__index li:has(> a:is(:hover, :focus-visible))::after { background: var(--flow); border-color: var(--flow); }
+a.aq-hero__index-item:is(:hover, :focus-visible) .aq-hero__index-t, a.aq-hero__index-item:is(:hover, :focus-visible)::before { color: var(--flow); }
+a.aq-hero__index-item:is(:hover, :focus-visible) .aq-hero__index-t::after { transform: translateX(var(--space-2)); }
+a.aq-hero__index-item:is(:hover, :focus-visible) .aq-hero__index-ic { background-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
+a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+
+/* System index (hero field "index"): the same rail at catalogue size: big light numerals, h3-size titles, larger icons. */
+.aq-hero__grid--big-index { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+.aq-hero__index--big { align-self: center; }
+.aq-hero__index--big .aq-hero__index-item { padding-block: var(--space-4); column-gap: var(--space-6); }
+.aq-hero__index--big .aq-hero__index-item::before { min-width: 2ch; font: 300 34px/32px var(--font-sans); letter-spacing: -0.03em; }
+.aq-hero__index--big .aq-hero__index-t { font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-hero__index--big .aq-hero__index-ic { width: var(--space-8); height: var(--space-8); }
+
+/* Home: fine-line drawing of a figure-eight distribution loop. Pipe in `flow` (the water path), parts and leaders in
+   line-strong / ink-muted, part fills `surface` so the pipe breaks behind them, annotations in small Geist. */
+.aq-hero__grid--loop { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
+/* Never drawn larger than its viewBox (440 x 520): at most 440 px wide, set to the column's end. Scaled up (480 px in
+   the 1,280 px grid) its 11 px labels painted 12 px and ran past their own SVG box (the label's user-space extent),
+   which the rendered QA reads as text wider than its box ("Distribution loop · PP", 114 > 104 px). At 1:1 or smaller
+   every label fits its box and keeps its CSS size. */
+.aq-hero__loop { position: relative; z-index: 1; width: 100%; max-width: calc(var(--space-32) * 3 + var(--space-12) + var(--space-2)); justify-self: end; margin: 0; color: var(--ink-muted); }
+.aq-hero__loop svg, .aq-loop__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-loop__pipe { fill: none; stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-loop__lead line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-loop__part { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-loop__part rect, .aq-loop__part circle { fill: var(--surface); }
+.aq-loop__arrow { fill: var(--flow); }
+.aq-loop__text text { fill: var(--ink-muted); font: 400 11px var(--font-sans); }
+.aq-loop__text .aq-loop__tag { fill: var(--ink); font: 400 8px var(--font-mono); }
+/* A placeholder in the drawing ("[heat exchanger, standard or option]"): the Placeholder's mono and ink, brackets
+   kept (SVG text has no ground for the caution-tint chip); with the site's placeholder highlight off (is-clean) it reads
+   like the other labels */
+.aq-loop__text .aq-loop__ph { fill: var(--ink); font: 400 9px var(--font-mono); }
+.is-clean .aq-loop__text .aq-loop__ph { fill: var(--ink-muted); font: 400 11px var(--font-sans); }
+
+/* Drawn figure (hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area on
+   `surface`, no frame. Decorative: aria-hidden. */
+.aq-hero__drawn { position: relative; z-index: 1; margin: 0; aspect-ratio: 6 / 5; container-type: inline-size; }
+.aq-hero__drawn-label { position: absolute; z-index: 2; top: 0; left: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-hero__grid--drawn { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: center; }
+/* Drawn scene (HeroScene, hero field figure.look): text 5 parts, the scene and its key 7 */
+.aq-hero__grid--scene { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; }
+.aq-hero__drawn svg.aq-hero__route, .aq-hero__drawn svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.aq-hero__drawn svg :is(path, line, circle, rect) { vector-effect: non-scaling-stroke; }
+
+/* Spots: vignettes in a zig-zag, joined along their bases by one flow pipe ending in an arrow */
+.aq-hero__pipe-run { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-hero__pipe-arrow, .aq-hero__pipe circle { fill: var(--flow); }
+.aq-hero__vig { position: absolute; z-index: 1; width: var(--w, 33%); transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; }
+.aq-hero__vig .aq-spot, .aq-hero__vig .aq-spot--l { width: 100%; height: auto; aspect-ratio: 1; }
+.aq-hero__vig .aq-spot.aq-spot--icon { width: 56%; height: auto; margin-block: 22%; }
+/* --tw (set by wHeroSpots on a vignette with a riser beside its tag) keeps the tag inside the gap between the risers */
+.aq-hero__vig-t { position: absolute; top: calc(100% + var(--space-2)); left: 50%; transform: translateX(-50%); width: max-content; max-width: min(130%, var(--tw, 130%)); padding: 0 var(--space-1); background: var(--surface); text-align: center; font: 400 13px/18px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+.aq-hero__vig-t b { font: 400 12px/18px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+
+/* Binder: a stack of folders drawn in hairlines on surface tones, divider tabs staggered up and right, the front folder
+   holding the index. --k: 0 for the front folder, 1.. behind it. */
+.aq-hero__binder { position: absolute; inset: 9% 7% 7% 5%; background: none; }
+.aq-hero__folder {
+  position: absolute; left: calc(var(--k, 0) * 7%); bottom: calc(var(--k, 0) * 8%); width: 76%; height: 74%;
+  background: var(--surface-raised); border: 1px solid var(--line-strong);
+}
+.aq-hero__folder-tab {
+  position: absolute; bottom: 100%; left: calc(var(--space-4) + var(--k, 0) * 18%); margin-bottom: -1px; height: var(--space-6); padding: 0 var(--space-6) 0 var(--space-3); display: flex; align-items: center;
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0;
+  font: 400 12px/16px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted);
+}
+.aq-hero__folder:not(.is-front), .aq-hero__folder:not(.is-front) > .aq-hero__folder-tab { background: var(--surface-sunken); }
+.aq-hero__folder.is-front { z-index: 1; display: flex; }
+.aq-hero__folder.is-front > .aq-hero__folder-tab { color: var(--ink); border-top-color: var(--flow); }
+.aq-hero__folder-body { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: var(--space-6); color: var(--ink); }
+.aq-hero__folder-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); }
+.aq-hero__folder-n { font: 400 clamp(18px, 4.4cqi, 28px)/1.2 var(--font-sans); letter-spacing: -0.01em; }
+.aq-hero__folder-head .aq-icon { flex: none; width: var(--space-8); height: var(--space-8); background-color: var(--ink-muted); }
+.aq-hero__folder-list { margin: 0; padding: 0; list-style: none; }
+.aq-hero__folder-list li { display: flex; gap: var(--space-3); align-items: baseline; padding-block: clamp(2px, 1cqi, var(--space-2)); border-bottom: 1px solid var(--line); font: 400 clamp(13px, 2.4cqi, 14px)/1.3 var(--font-sans); }
+.aq-hero__folder-list b { font: 400 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+/* the front sheet's rows share its height, so six rows fill the paper at every width (no band of empty sheet under 06) */
+.aq-hero__folder.is-front .aq-hero__folder-list { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.aq-hero__folder-list span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.aq-hero__folder-foot { margin-top: auto; padding-top: var(--space-2); font: 400 12px/16px var(--font-sans); color: var(--ink-muted); }
+
+/* Release record: a sheet on surface-raised whose rows end in ticked boxes, closed by a quiet status line
+   (a flow tick and the word, e.g. "Released · QA"). */
+.aq-hero__record {
+  position: absolute; top: 50%; left: 12%; width: 76%; transform: translateY(-50%); display: flex; flex-direction: column; padding: var(--space-6);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); color: var(--ink);
+}
+.aq-hero__record-h { padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); font: 400 clamp(18px, 4.4cqi, 28px)/1.2 var(--font-sans); letter-spacing: -0.01em; }
+.aq-hero__record ul { margin: 0; padding: 0; list-style: none; }
+.aq-hero__record li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding-block: clamp(4px, 1.6cqi, var(--space-3)); border-bottom: 1px solid var(--line); font: 400 clamp(12px, 2.1cqi, 14px)/1.3 var(--font-sans); }
+/* a ticked box at the end of each row */
+.aq-hero__record li i { position: relative; flex: none; width: var(--space-4); height: var(--space-4); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); }
+.aq-hero__record li i::after { content: ""; position: absolute; left: 30%; top: 0; width: 35%; height: 70%; border: solid var(--flow); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
+.aq-hero__record-foot { margin-top: var(--space-6); display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); }
+.aq-hero__record-status { display: inline-flex; align-items: center; gap: var(--space-2); font: 500 clamp(14px, 3cqi, 18px)/1.3 var(--font-sans); color: var(--flow); }
+.aq-hero__record-status svg { position: static; flex: none; width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.aq-hero__record-sign { font: 400 12px/16px var(--font-sans); color: var(--ink-muted); }
+
+/* Route: one flow line from a start node through three numbered stops to an arrow */
+.aq-hero__route-run { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-hero__route-guide { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-hero__route-start { fill: var(--surface); stroke: var(--flow); stroke-width: 1.5; }
+.aq-hero__route-arrow { fill: var(--flow); }
+.aq-hero__stop { position: absolute; z-index: 1; width: 0; height: 0; }
+.aq-hero__stop b {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: grid; place-items: center;
+  width: clamp(44px, 12cqi, 72px); aspect-ratio: 1; border-radius: var(--radius-pill); border: 1px solid var(--line-strong); background: var(--surface);
+  font: 300 clamp(20px, 5.5cqi, 32px)/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.aq-hero__stop > span { position: absolute; width: max-content; max-width: 32cqi; font: 400 clamp(13px, 2.8cqi, 16px)/1.35 var(--font-sans); color: var(--ink); text-wrap: balance; }
+.aq-hero__stop--r > span { left: clamp(32px, 8.5cqi, 50px); top: 0; transform: translateY(-50%); }
+.aq-hero__stop--b > span { top: clamp(32px, 8.5cqi, 50px); left: 0; transform: translateX(-50%); text-align: center; }
+.aq-hero__stop--t > span { bottom: clamp(32px, 8.5cqi, 50px); right: 0; text-align: right; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-hero__index-t { transition: none; }
+}
+
+@container (max-width: 860px) {
+  /* Phones: the hero fits about 1.5 screens with its facts. Headline sized for 375 px, the drawing after the actions,
+     callouts as a compact 2 x 2 grid. Every label 12 px or more. */
+  .aq-hero, .aq-hero--home { padding-block: var(--space-12); }
+  .aq-hero .aq-display { font-size: 34px; line-height: 38px; letter-spacing: -0.02em; }
+  .aq-hero .aq-display-xl { font-size: 40px; line-height: 44px; }
+  .aq-hero .aq-lead { font-size: 17px; line-height: 26px; }
+  .aq-hero__grid { row-gap: var(--space-8); }
+  .aq-hero__grid, .aq-hero__grid--figure, .aq-hero__grid--index, .aq-hero__grid--loop, .aq-hero__grid--big-index { grid-template-columns: minmax(0, 1fr); }
+  .aq-photo { min-height: 0; aspect-ratio: 2 / 1; }
+  /* Figure on phones: the top pair of callouts, the drawing row (5:4) with its own leaders, then the bottom pair. */
+  .aq-hero__figure { aspect-ratio: auto; margin: 0; display: flex; flex-direction: column; }
+  .aq-hero__art { position: relative; inset: auto; aspect-ratio: 5 / 4; }
+  .aq-hero__art .aq-illustration { inset: 0 10%; }
+  .aq-hero__leaders--wide { display: none; }
+  .aq-hero__leaders--narrow { display: block; }
+  .aq-hero__callouts { position: relative; inset: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 6%; }
+  .aq-hero__callout, .aq-hero__callouts--top .aq-hero__callout:nth-child(n), .aq-hero__callouts--bottom .aq-hero__callout:nth-child(n) { position: static; width: auto; height: auto; }
+  .aq-hero__callout dt { font-size: 13px; line-height: 18px; text-wrap: balance; }
+  .aq-hero__callout dd { font-size: 20px; line-height: 24px; }
+  /* Index rows under the actions */
+  .aq-hero__index ol, .aq-hero__index-label { padding-left: var(--space-6); }
+  .aq-hero__index li::before { left: calc(var(--space-2) - var(--space-6)); width: calc(var(--space-6) - var(--space-2) - var(--space-1)); }
+  .aq-hero__index-item, .aq-hero__index--big .aq-hero__index-item { column-gap: var(--space-3); padding-block: var(--space-2); }
+  .aq-hero__index--big .aq-hero__index-item::before { font-size: 20px; line-height: 24px; }
+  .aq-hero__index--big .aq-hero__index-t { font-size: 17px; line-height: 24px; }
+  .aq-hero__index--big .aq-hero__index-ic { width: var(--space-6); height: var(--space-6); }
+  /* Loop drawing: below the actions, capped so annotations stay legible */
+  .aq-hero__loop { width: min(100%, calc(var(--space-32) + var(--space-24))); margin-inline: auto; }
+  /* Drawn figure: under the actions, compact (312 x 260 at most) */
+  .aq-hero__drawn { width: min(100%, calc(var(--space-32) * 2 + var(--space-12) + var(--space-2))); }
+  .aq-hero__vig-t { font-size: 12px; line-height: 16px; top: calc(100% + var(--space-1)); max-width: min(104%, var(--tw, 104%)); }
+  /* binder: title on one line, no icon (the first four index rows only at phone page width: round C, below) */
+  .aq-hero__folder-n, .aq-hero__record-h { font-size: 17px; }
+  .aq-hero__folder-head .aq-icon { display: none; }
+  .aq-hero__folder-body, .aq-hero__record { padding: var(--space-3); }
+  .aq-hero__record { left: 6%; width: 88%; }
+  .aq-hero__folder-tab { height: var(--space-4); padding: 0 var(--space-3) 0 var(--space-2); left: calc(var(--space-2) + var(--k, 0) * 18%); }
+  .aq-hero__folder-head { padding-bottom: var(--space-2); }
+  .aq-hero__record li i { width: var(--space-3); height: var(--space-3); }
+}
+
+/* Flow dots added by assets/motion.js on the home loop (decoration) */
+.aq-loop__dot { fill: var(--flow); }
+
+/* ---------- Pass 9: the first screen of a premium product site ----------
+   - Sheet: a faint drawing-sheet ground (aq-hero__sheet, aria-hidden svg): small registration crosses on a 48 px grid
+     in `line`, masked so they gather at the top right, behind the figure, and are gone before the headline.
+   - Type: the headline steps up to a catalogue size (display 48-76 px, display-xl 56-104 px on home, tracked tight),
+     the eyebrow is led by a short flow rule, the water line that runs through the rest of the page.
+   - Scan: the equipment drawing prints up behind a flow scan line (aq-hero__scan, motion only; hidden without it). */
+.aq-hero__sheet { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 70% 90% at 82% 30%, var(--ink) 0%, transparent 72%); mask-image: radial-gradient(ellipse 70% 90% at 82% 30%, var(--ink) 0%, transparent 72%); }
+.aq-hero__sheet path { fill: none; stroke: var(--line-strong); stroke-width: 1; opacity: 0.55; }
+.aq-hero > .aq-in { position: relative; }
+.aq-hero .aq-stack > h1.aq-display { font-size: clamp(48px, 5.4cqi, 76px); line-height: 1.02; letter-spacing: -0.035em; }
+.aq-hero .aq-stack > h1.aq-display-xl { font-size: clamp(56px, 6.4cqi, 88px); line-height: 1; letter-spacing: -0.04em; }
+.aq-hero .aq-stack > .aq-eyebrow { display: flex; align-items: flex-start; gap: var(--space-3); }
+.aq-hero .aq-stack > .aq-eyebrow::before { content: ""; flex: none; width: var(--space-8); height: 1.5px; margin-top: calc(var(--space-2) - 0.75px); background: var(--flow); }
+.aq-hero .aq-stack > .aq-lead { max-width: 56ch; }
+.aq-hero__scan { position: absolute; left: 6%; right: 6%; top: 98%; height: 1.5px; background: var(--flow); opacity: 0; pointer-events: none; }
+
+@container (max-width: 860px) {
+  .aq-hero__sheet { -webkit-mask-image: radial-gradient(ellipse 90% 40% at 90% 0%, var(--ink) 0%, transparent 80%); mask-image: radial-gradient(ellipse 90% 40% at 90% 0%, var(--ink) 0%, transparent 80%); }
+  .aq-hero .aq-stack > h1.aq-display { font-size: 40px; line-height: 42px; letter-spacing: -0.03em; overflow-wrap: break-word; }
+  .aq-hero .aq-stack > h1.aq-display-xl { font-size: 46px; line-height: 46px; letter-spacing: -0.035em; overflow-wrap: break-word; }
+  .aq-hero .aq-stack > .aq-eyebrow::before { width: var(--space-6); }
+}
+
+/* Home water (pass 9b): the FxCaustics layer behind the loop drawing. Faint: its brightest ridge is a fifth of flow on
+   the surface (dark theme a sixth), masked so it gathers on the right and is gone before the headline and lead. */
+.aq-hero--home > .aq-fx-shader { --fx-amt: 0.2; -webkit-mask-image: radial-gradient(ellipse 55% 75% at 78% 45%, var(--ink) 25%, transparent 80%); mask-image: radial-gradient(ellipse 55% 75% at 78% 45%, var(--ink) 25%, transparent 80%); }
+[data-theme="dark"] .aq-hero--home > .aq-fx-shader { --fx-amt: 0.16; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-hero--home > .aq-fx-shader { --fx-amt: 0.16; } }
+@container (max-width: 860px) {
+  .aq-hero--home > .aq-fx-shader { -webkit-mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); }
+}
+
+/* ---------- Pass 12: phone figures (visual audit S15, S16, home loop) ----------
+   Desktop is unchanged: the pins, the phone loop and its legend exist only below 860 px.
+   - Pin (aq-hero__pin): a numbered dot, `surface` with a 1.5 px `flow` ring, mono numeral, that keys a part of a
+     drawing to a row of text under it. Used by the equipment figure (S16) and the home loop on phones. */
+.aq-hero__pins, .aq-loop__phone { display: none; }
+.aq-hero__pin {
+  display: inline-grid; place-items: center; flex: none; box-sizing: border-box;
+  width: calc(var(--space-6) - var(--space-1) / 2); height: calc(var(--space-6) - var(--space-1) / 2);
+  border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface);
+  font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.aq-hero__pins > .aq-hero__pin, .aq-loop__band > .aq-hero__pin { position: absolute; transform: translate(-50%, -50%); }
+
+@container (max-width: 860px) {
+  .aq-hero__grid--figure { row-gap: var(--space-6); }
+  /* the facts strip follows a figure without a second empty band */
+  .aq-hero .aq-hero__grid--figure + .aq-key-facts { margin-top: var(--space-6); }
+
+  /* S15 / S16 equipment figure: the drawing first, at full gutter width. Its box takes the drawing's own ratio (--art-r
+     from ART_R in Hero.js, never taller than 5:4), so a wide drawing leaves no empty band above or below it. */
+  .aq-hero__figure { counter-reset: aq-hero-co; }
+  .aq-hero__figure .aq-hero__art { order: -1; aspect-ratio: var(--art-r, 5 / 4); }
+  .aq-hero__art .aq-illustration { inset: 0; }
+  /* S16 (hero--mist): no leaders on phones; numbered pins on the drawing at the leaders' anchors, then the callouts as
+     stacked rows: the pin's number, the label at reading size, the value in mono. */
+  .aq-hero__leaders--narrow { display: none; }
+  .aq-hero__pins { display: block; position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+  .aq-hero__callouts { display: block; margin-top: var(--space-4); border-top: 1px solid var(--line); }
+  .aq-hero__callouts--bottom { margin-top: 0; border-top: 0; }
+  .aq-hero__callout, .aq-hero__callouts--top .aq-hero__callout:nth-child(n), .aq-hero__callouts--bottom .aq-hero__callout:nth-child(n) {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1);
+    padding-block: var(--space-3); border: 0; border-bottom: 1px solid var(--line); text-align: left; counter-increment: aq-hero-co;
+  }
+  .aq-hero__callout::before {
+    content: counter(aq-hero-co); content: counter(aq-hero-co) / ""; grid-row: 1 / span 2; align-self: start;
+    display: grid; place-items: center; box-sizing: border-box;
+    width: calc(var(--space-6) - var(--space-1) / 2); height: calc(var(--space-6) - var(--space-1) / 2);
+    border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface);
+    font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink);
+  }
+  .aq-hero__callout dt { grid-column: 2; font-size: var(--aq-read-phone, 14px); line-height: 20px; text-wrap: pretty; }
+  .aq-hero__callout dd { grid-column: 2; font-size: 18px; line-height: 26px; }
+
+  /* S15 drawn figures (contact pages, careers, news): full gutter width, tags at reading size, and the empty top of
+     the 6:5 frame (the zig-zag's highest vignette starts about 16 % down) pulled up under the actions. */
+  .aq-hero__drawn { width: 100%; }
+  .aq-hero__drawn--spots:not(:has(.aq-hero__drawn-label)) { margin-top: -12%; }
+  /* S15 buying: the proposal card at full width (at most 480 px, so the record rules below always hold), its rows at
+     reading size, no frame below it */
+  .aq-hero__drawn--stamp { aspect-ratio: auto; max-width: calc(var(--space-32) * 3 + var(--space-24)); }
+  .aq-hero__drawn--stamp:has(.aq-hero__drawn-label) { padding-top: var(--space-8); }
+
+  /* S15 contact-service: a call in the actions becomes a full-width outlined call button under the primary (a tel:
+     link once the number is confirmed; until then the same box holds "Call [service phone number]" as text) */
+  .aq-hero__actions:has(> .aq-btn--pending, > a.aq-btn[href^="tel:"]) > .aq-btn { flex: 1 1 100%; justify-content: center; }
+  .aq-hero__actions > .aq-btn.aq-btn--pending, .aq-hero__actions > a.aq-btn[href^="tel:"] {
+    min-height: var(--space-12); padding: var(--space-2) var(--space-4); box-sizing: border-box;
+    border: 1px solid var(--line-strong); border-radius: var(--radius-sm); color: var(--ink); text-align: center;
+  }
+  .aq-hero__actions > a.aq-btn[href^="tel:"] { color: var(--flow); }
+
+  /* Home loop: the drawing between the lead and the actions (the text stack opens into the grid), turned on its side
+     at the full gutter width, numbered pins on its parts and the labels as a 2 x 2 legend at reading size. No caustic
+     layer behind the text on phones. */
+  .aq-hero--home > .aq-fx-shader { display: none; }
+  .aq-hero.aq-hero--home { padding-block: var(--space-8); }
+  .aq-hero--home .aq-stack > h1.aq-display-xl { font-size: 40px; line-height: 42px; }
+  .aq-hero--home .aq-hero__actions { row-gap: 0; }
+  .aq-hero__grid--loop { row-gap: var(--space-4); }
+  .aq-hero__grid--loop > .aq-stack { display: contents; }
+  .aq-hero__grid--loop > .aq-stack > .aq-hero__actions { order: 2; margin-top: var(--space-2); }
+  .aq-hero__grid--loop > .aq-stack > .aq-tags { order: 3; }
+  .aq-hero__grid--loop > .aq-hero__loop { order: 1; width: 100%; max-width: none; margin: var(--space-2) 0 0; justify-self: stretch; }
+  .aq-hero__loop .aq-loop__svg--wide { display: none; }
+  .aq-loop__phone { display: block; }
+  .aq-hero__loop .aq-loop__cap { margin: 0 0 var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .aq-loop__band { position: relative; }
+  .aq-loop__svg--narrow { display: block; width: 100%; height: auto; overflow: visible; }
+  .aq-loop__legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2) var(--space-4); margin: var(--space-4) 0 0; padding: var(--space-3) 0 0; list-style: none; border-top: 1px solid var(--line); }
+  .aq-loop__legend li { display: flex; gap: var(--space-2); align-items: flex-start; min-width: 0; font: 400 var(--aq-read-phone, 14px)/20px var(--font-sans); color: var(--ink); }
+  .aq-loop__legend li > span:last-child { min-width: 0; overflow-wrap: break-word; }
+  .aq-loop__legend .aq-hero__pin { margin-top: -1px; }
+
+  /* Home loop, compact (pass 12 verify M1): the CTA back inside the first phone screen. The drawing at most 132 px tall
+     (its band 132 x 515 / 255 wide, centred, so the pins, percentages of the band, stay on their parts), no caption
+     (the legend names the parts), a tighter legend and top padding. */
+  .aq-hero.aq-hero--home { padding-block: var(--space-6) var(--space-8); }
+  .aq-hero__loop .aq-loop__cap { display: none; }
+  .aq-loop__band { max-width: calc((var(--space-32) + var(--space-1)) * 515 / 255); margin-inline: auto; }
+  .aq-loop__legend { gap: var(--space-1) var(--space-4); padding-top: var(--space-2); }
+
+  /* Tablet (pass 12 verify L5): the phone layouts at 481-860 px keep a phone measure instead of running 736 px wide */
+  .aq-hero__grid--loop > .aq-hero__loop { max-width: calc(var(--space-32) * 4 + var(--space-2)); justify-self: center; }
+  .aq-hero__actions:has(> .aq-btn--pending, > a.aq-btn[href^="tel:"]) > .aq-btn { max-width: calc(var(--space-32) * 3 + var(--space-24)); }
+  .aq-hero__drawn--spots { max-width: calc(var(--space-32) * 4 + var(--space-12)); justify-self: center; }
+  .aq-hero__drawn--spots:not(:has(.aq-hero__drawn-label)) { margin-top: calc(-0.12 * min(100%, calc(var(--space-32) * 4 + var(--space-12)))); }
+}
+/* Desktop (pass 12 verify L8): a top callout whose label itself carries a placeholder (sys-pretreatment, "Hardness,
+   softener outlet · [hardness measurement method]") stacks up past the hero's top edge and was clipped; that hero gets
+   a step more top padding. Gone once the label's fact is confirmed. */
+@container (min-width: 861px) {
+  .aq-hero--mist:has(.aq-hero__callouts--top dt .aq-ph) { padding-top: calc(var(--space-24) + var(--space-16)); }
+}
+/* Inside a drawn figure. The figure is its own size container (container units for its parts), so a query here
+   measures the figure, not the page: under 480 px it is a phone figure. (The older 860 px rules above for its parts,
+   12 px tags, four binder rows, also match the desktop figure, which is 500-600 px wide; the desktop renders with
+   them and is left as it is.) */
+@container (max-width: 480px) {
+  .aq-hero__vig-t { font-size: var(--aq-read-phone, 14px); line-height: 18px; }
+  .aq-hero__vig-t b { font-size: 12px; }
+  .aq-hero__drawn--stamp .aq-hero__record { position: relative; top: auto; left: auto; width: auto; transform: none; padding: var(--space-4); }
+  .aq-hero__drawn--stamp .aq-hero__record-h { font-size: 20px; line-height: 26px; }
+  .aq-hero__drawn--stamp .aq-hero__record li { padding-block: var(--space-3); font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  .aq-hero__drawn--stamp .aq-hero__record li i { width: var(--space-4); height: var(--space-4); }
+  .aq-hero__drawn--stamp .aq-hero__record-foot { margin-top: var(--space-4); }
+  .aq-hero__drawn--stamp .aq-hero__record-status { font-size: 16px; }
+  .aq-hero__drawn--stamp .aq-hero__record-sign { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+}
+/* ind-cdmo (visual audit): at 380 px or less its headline ("every client's auditor") would run to the gutter at 40 px */
+@container (max-width: 380px) {
+  .aq-hero[data-hero="ind-cdmo"] .aq-stack > h1.aq-display { font-size: 36px; line-height: 40px; }
+}
+
+/* ---------- Pass 12 round C (c03-heroes): hero furniture ----------
+   - Binder (urs-guide, cmp-documentation): the front sheet keeps all six index rows wherever it has the room. The rule
+     that cut it to four sat in the 860 px container query, which the figure (its own 500-600 px container) matched at
+     1,280 too and left about 115 px of empty sheet; only a phone page (600 px and under) cuts it to four now.
+   - H2: a KeyFacts strip that closes the hero is itself the hero's last rule, so the hero ends 32 px sooner under it
+     (home keeps its own padding round the loop).
+   - svc-upgrades (desktop): its one fact sits under the actions in the text column, not a band under the drawing, so
+     the 110 px of empty hero between the actions and the strip closes (the drawing keeps its column). */
+@media (max-width: 600px) {
+  .aq-hero__folder-list li:nth-child(n+5) { display: none; }
+  /* rows at 13 px (S4): a long row wraps to a second line rather than ending in an ellipsis, and the plate stands a
+     little taller (12:13) so four rows and the foot stay inside the front sheet down to 360 px */
+  .aq-hero__drawn--binder { aspect-ratio: 12 / 13; }
+  .aq-hero__folder-list span { white-space: normal; }
+}
+.aq-hero:not(.aq-hero--home):has(> .aq-in > .aq-key-facts:last-child) { padding-bottom: calc(var(--space-16) - var(--space-8)); }
+@container (min-width: 861px) {
+  .aq-hero[data-hero="svc-upgrades"] .aq-hero__grid--figure + .aq-key-facts:last-child {
+    width: calc((100% - var(--space-8)) * 5 / 12); margin-top: calc(-1 * var(--space-6));
+  }
+}
+@container (max-width: 860px) {
+  .aq-hero:not(.aq-hero--home):has(> .aq-in > .aq-key-facts:last-child) { padding-bottom: var(--space-6); }
+}
+@container (max-width: 600px) {
+  /* H2: the strip follows its figure at 16 px (no band under the drawing) */
+  .aq-hero .aq-hero__grid--figure + .aq-key-facts { margin-top: var(--space-4); }
+}
+/* cmp-quality (audit G6 hero, desktop): the shipment record at about 560 px with its rows at reading size, so the
+   card holds its half of the hero instead of floating as a 512 px slip of 13 px rows (the 860 px rules above match
+   the figure's own container on desktop too). Buying's proposal card keeps its size. */
+@container (min-width: 481px) {
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record { left: 2%; width: 96%; padding: var(--space-6) var(--space-8); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-h { font-size: 24px; line-height: 30px; padding-bottom: var(--space-4); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record li { padding-block: var(--space-4); font-size: 16px; line-height: 22px; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record li i { width: calc(var(--space-4) + var(--space-1)); height: calc(var(--space-4) + var(--space-1)); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-foot { margin-top: var(--space-6); }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-status { font-size: 20px; }
+  .aq-hero[data-hero="cmp-quality"] .aq-hero__drawn--stamp .aq-hero__record-sign { font-size: 14px; line-height: 20px; }
+}
+/* Round C scenes on company and contact pages (shop-bay, site-map, reply-flow): the drawings are capped at about
+   610 px, so the text keeps half the hero (as the drawn figures they replace did) and a long headline (about) does
+   not wrap to eight lines in a 5-part column. Desktop only: at 860 and under the hero is one column (its :has() would
+   otherwise outweigh the one-column rule). */
+@container (min-width: 861px) {
+  .aq-hero__grid--scene:has(> .aq-hero-scene:is(.aq-hero-scene--bay, .aq-hero-scene--map, .aq-hero-scene--reply)) { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+}

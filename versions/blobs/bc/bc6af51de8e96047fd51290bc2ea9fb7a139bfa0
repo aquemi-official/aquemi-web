@@ -1,0 +1,105 @@
+/* ---------- ManifoldRouter: situations as branches off one manifold, large type on a limestone sheet ---------- */
+/* Left: the manifold, a twin-wall pipe (on-limestone-muted hairlines over the limestone ground) with one branch per
+   situation, the situation set large beside its branch. The water (flow) fills the manifold down to the open
+   situation and along its branch. Right: the open route on a raised sheet, its left edge in flow where the branch
+   meets it. Each option segment draws its own piece of the manifold, so rows of any height join up. */
+.aq-manifold-router { --pipe: var(--space-4); --reach: var(--space-12); position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: start; padding-top: var(--space-8); }
+.aq-manifold-router__opt { grid-column: 1; position: relative; display: flex; align-items: baseline; gap: var(--space-4); width: 100%; min-height: 44px; margin: 0;
+  padding: var(--space-4) var(--space-8) var(--space-4) calc(var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-4)); border: 0; background: none; text-align: left; cursor: pointer;
+  font: inherit; color: var(--on-limestone-muted); transition: color 300ms; }
+/* the pipe reads as a pipe, not a comb: its bore is a shade deeper than the sheet, and each branch ends in a flange */
+.aq-manifold-router { --bore: color-mix(in srgb, var(--on-limestone) 8%, var(--limestone)); }
+.aq-manifold-router__seg { position: absolute; left: 0; top: 0; bottom: 0; width: var(--pipe, var(--space-4)); box-sizing: border-box; border-inline: 1.5px solid var(--on-limestone-muted); background: var(--bore, var(--limestone)); }
+.aq-manifold-router__opt.is-first .aq-manifold-router__seg { top: calc(-1 * var(--space-8)); }
+.aq-manifold-router__opt.is-first .aq-manifold-router__seg::before { content: ""; position: absolute; left: 50%; top: 0; width: var(--space-2); height: var(--space-2); border-right: 2px solid var(--flow); border-bottom: 2px solid var(--flow); transform: translate(-50%, -60%) rotate(45deg); }
+.aq-manifold-router__opt.is-last .aq-manifold-router__seg { bottom: calc(50% - var(--pipe, var(--space-4)) / 2); border-bottom: 1.5px solid var(--on-limestone-muted); }
+.aq-manifold-router__branch { position: absolute; left: calc(var(--pipe, var(--space-4)) - 1px); top: calc(50% - var(--pipe, var(--space-4)) / 2); width: var(--reach, var(--space-12)); height: var(--pipe, var(--space-4)); box-sizing: border-box;
+  border-block: 1.5px solid var(--on-limestone-muted); background: var(--bore, var(--limestone)); transition: border-color 300ms; }
+.aq-manifold-router__branch::after { content: ""; position: absolute; right: 0; top: calc(-1 * var(--space-1) - 1.5px); bottom: calc(-1 * var(--space-1) - 1.5px); width: var(--space-1);
+  box-sizing: border-box; border: 1.5px solid; border-color: inherit; background: var(--bore, var(--limestone)); }
+.aq-manifold-router__water { position: absolute; background: var(--flow); transition: transform 450ms cubic-bezier(0.65, 0, 0.35, 1); }
+.aq-manifold-router__seg .aq-manifold-router__water { left: 50%; width: 2px; margin-left: -1px; top: 0; bottom: 0; transform: scaleY(0); transform-origin: 50% 0; }
+.aq-manifold-router__branch .aq-manifold-router__water { top: 50%; height: 2px; margin-top: -1px; left: 0; right: 0; transform: scaleX(0); transform-origin: 0 50%; transition-delay: 200ms; }
+.aq-manifold-router__opt.is-wet .aq-manifold-router__seg .aq-manifold-router__water { transform: scaleY(1); }
+.aq-manifold-router__opt[aria-expanded="true"] .aq-manifold-router__seg .aq-manifold-router__water { bottom: 50%; }
+.aq-manifold-router__opt[aria-expanded="true"] .aq-manifold-router__branch .aq-manifold-router__water { transform: scaleX(1); }
+.aq-manifold-router__n { flex: none; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--on-limestone-muted); }
+.aq-manifold-router__t { font: 300 30px/36px var(--font-sans); letter-spacing: -0.02em; text-wrap: balance; }
+.aq-manifold-router__opt::after { content: ""; position: absolute; left: calc(var(--pipe, var(--space-4)) + var(--reach, var(--space-12))); right: 0; bottom: 0; height: 1px; background: color-mix(in srgb, var(--on-limestone-muted) 30%, transparent); }
+.aq-manifold-router__opt[aria-expanded="true"] { color: var(--on-limestone); }
+.aq-manifold-router__opt[aria-expanded="true"]::after { height: 2px; background: var(--flow); }
+.aq-manifold-router__opt[aria-expanded="true"] .aq-manifold-router__branch { border-color: var(--on-limestone); }
+.aq-manifold-router__opt:hover { color: var(--on-limestone); }
+.aq-manifold-router__opt:hover .aq-manifold-router__branch { border-color: var(--on-limestone); }
+.aq-manifold-router__opt:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* The open route: a raised sheet, flow on the edge the branch runs into */
+.aq-manifold-router__route { grid-column: 2; align-self: stretch; position: relative; display: flex; flex-direction: column; gap: var(--space-6);
+  padding: var(--space-8); background: var(--surface-raised); color: var(--ink); border-left: 2px solid var(--flow); }
+.aq-manifold-router__route[hidden] { display: none; }
+.aq-manifold-router__hit { position: absolute; inset: 0; z-index: 0; }
+.aq-manifold-router__sit { margin: 0; font: 500 12px/18px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-manifold-router__stations { list-style: none; margin: 0; padding: 0; flex: 1; display: flex; flex-direction: column; }
+.aq-manifold-router__st { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-2); pointer-events: none; }
+.aq-manifold-router__st a { pointer-events: auto; }
+/* between stations the water runs down a line that takes the free height, an arrowhead into the next */
+.aq-manifold-router__st:not(:last-child) { flex: 1; }
+.aq-manifold-router__st:not(:last-child)::after { content: ""; flex: 1; min-height: var(--space-8); width: 1px; margin: var(--space-3) 0 var(--space-3) var(--space-2); background: var(--flow); transform-origin: 50% 0; }
+.aq-manifold-router__st + .aq-manifold-router__st::before { content: ""; position: absolute; left: var(--space-2); top: calc(-1 * var(--space-3)); width: var(--space-2); height: var(--space-2); border-right: 1px solid var(--flow); border-bottom: 1px solid var(--flow); transform: translate(-50%, -50%) rotate(45deg); }
+.aq-manifold-router__k { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-manifold-router__v { margin: 0; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-manifold-router__st.is-go .aq-manifold-router__v { font: 300 32px/38px var(--font-sans); letter-spacing: -0.02em; }
+.aq-manifold-router__st.is-go a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; text-decoration-color: var(--flow); }
+.aq-manifold-router__st.is-go a::after { content: "\00a0\2192"; display: inline-block; color: var(--flow); transition: transform 200ms; }
+.aq-manifold-router__route.is-link:hover .aq-manifold-router__st.is-go a::after { transform: translateX(var(--space-2)); }
+.aq-manifold-router__st a:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+.aq-manifold-router__st.is-pending .aq-manifold-router__v { padding-top: var(--space-2); border-top: 1px dashed var(--line-strong); }
+.aq-manifold-router__tbc { display: inline-block; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+@container (max-width: 1100px) {
+  .aq-manifold-router__t { font-size: 24px; line-height: 30px; }
+  .aq-manifold-router__st.is-go .aq-manifold-router__v { font-size: 26px; line-height: 32px; }
+}
+
+/* Phones: the route opens under its situation; the manifold runs on past it */
+@container (max-width: 860px) {
+  .aq-manifold-router { --reach: var(--space-6); grid-template-columns: minmax(0, 1fr); padding-top: var(--space-6); }
+  .aq-manifold-router__opt { padding: var(--space-4) 0 var(--space-4) calc(var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-3)); gap: var(--space-3); }
+  .aq-manifold-router__opt.is-first .aq-manifold-router__seg { top: calc(-1 * var(--space-6)); }
+  .aq-manifold-router__t { font-size: 20px; line-height: 26px; }
+  .aq-manifold-router__route { grid-column: 1; grid-row: auto !important; margin-left: calc(var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-3)); padding: var(--space-6) var(--space-4); }
+  .aq-manifold-router__route::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(-1 * (var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-3)) - 2px); width: var(--pipe, var(--space-4)); box-sizing: border-box; border-inline: 1.5px solid var(--on-limestone-muted); background: var(--bore, var(--limestone)); }
+  .aq-manifold-router__opt.is-last + .aq-manifold-router__route::before { display: none; }
+  .aq-manifold-router__sit { display: none; }
+  .aq-manifold-router__st:not(:last-child)::after { min-height: var(--space-6); }
+  .aq-manifold-router__v { font-size: 18px; line-height: 26px; }
+  .aq-manifold-router__st.is-go .aq-manifold-router__v { font-size: 24px; line-height: 30px; }
+}
+
+/* the heading on the limestone sheet takes the on-limestone ink */
+.aq-manifold-router-sec .aq-sec-head .aq-h1 { color: var(--on-limestone); }
+
+/* Pipework ground (pass 9b): FxTruchet's twin-wall pipe tiles in on-limestone-muted, faint, masked so they run behind
+   the route sheet and the band's right side and are gone before the manifold and the situations (one pipe reads as
+   the pipe). */
+.aq-manifold-router-sec > .aq-fx-shader { --fx-amt: 0.16;
+  -webkit-mask-image: linear-gradient(to right, transparent 38%, var(--ink) 62%); mask-image: linear-gradient(to right, transparent 38%, var(--ink) 62%); }
+@container (max-width: 860px) {
+  .aq-manifold-router-sec > .aq-fx-shader { -webkit-mask-image: radial-gradient(circle at 100% 0, var(--ink), transparent 32%); mask-image: radial-gradient(circle at 100% 0, var(--ink), transparent 32%); }
+}
+
+/* Pass 12: an open/close cue on phones (PhoneKit's chevron, 44 px box at the row's end); none on wider screens */
+.aq-manifold-router__chev { display: none; }
+@container (max-width: 860px) {
+  .aq-manifold-router__opt { padding-right: 0; }
+  .aq-manifold-router__chev { display: block; align-self: center; width: var(--space-8); margin-right: calc(-1 * var(--space-2)); color: var(--on-limestone-muted); }
+  .aq-manifold-router__opt[aria-expanded="true"] .aq-manifold-router__chev { color: var(--on-limestone); }
+}
+/* panel "compact" (look-only field, pass 12 C): the route sheet as tall as its steps, the water line between them
+   capped, so an 8-row list does not stretch "Where the water goes" to "Start with" across ~330 px */
+.aq-manifold-router--compact .aq-manifold-router__route { align-self: start; }
+/* verify F4: the sheet follows the open row's third (the route spans every row, so align-self moves it) */
+.aq-manifold-router--compact.is-mid .aq-manifold-router__route { align-self: center; }
+.aq-manifold-router--compact.is-low .aq-manifold-router__route { align-self: end; }
+.aq-manifold-router--compact .aq-manifold-router__st:not(:last-child)::after { max-height: var(--space-24); }

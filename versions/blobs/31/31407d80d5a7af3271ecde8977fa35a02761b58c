@@ -1,0 +1,67 @@
+/* ---------- KeyFacts: the numbers a page stands on, as a quiet measurement strip ---------- */
+/* A row of cells between two `line` hairlines, divided by `line` hairlines, on the section's own ground. Each fact:
+   the name in Geist sentence case, the figure in Geist Mono light with its unit beside it in `ink-muted`, and the source
+   standard in small mono at the foot. No frame, rulers, fixings or dials. */
+.aq-key-facts {
+  position: relative; margin: 0;
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.aq-key-facts > div {
+  position: relative; min-width: 0;
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-6) var(--space-6) var(--space-6) 0;
+}
+.aq-key-facts > div + div { padding-left: var(--space-6); border-left: 1px solid var(--line); }
+
+/* Name */
+.aq-key-facts dt { font: 400 14px/21px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+
+/* Figure with its comparator and unit */
+.aq-key-facts dd { margin: 0; }
+.aq-key-facts__value, .aq-key-facts dd:first-of-type {
+  display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.25em;
+  font: 300 clamp(28px, 3.2cqi, 40px)/1.15 var(--font-mono); letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.aq-key-facts:has(> :nth-child(5)) dd:first-of-type { font-size: clamp(24px, 2.4cqi, 32px); }
+.aq-key-facts dd.is-long { font-size: clamp(20px, 2cqi, 24px); line-height: 1.25; letter-spacing: -0.01em; }
+.aq-key-facts dd.is-long .aq-ph { font-size: 0.8em; }
+.aq-key-facts__fig { overflow-wrap: normal; word-break: normal; hyphens: none; }
+/* Unconfirmed ranges ("[500–20,000]") are long: set them smaller so they stay on one line in a narrow cell */
+.aq-key-facts__fig .aq-ph { font-size: 0.55em; letter-spacing: 0; vertical-align: 0.2em; }
+.aq-key-facts__cmp { font-size: 0.8em; letter-spacing: 0; color: var(--ink-muted); }
+.aq-key-facts__unit { font: 400 max(14px, 0.42em)/1.3 var(--font-mono); letter-spacing: 0; color: var(--ink-muted); }
+
+/* Source standard, on the cell's last line */
+.aq-key-facts dd.aq-key-facts__src {
+  margin-top: auto;
+  font: 400 13px/18px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted);
+  overflow-wrap: break-word;
+}
+
+.aq-hero .aq-key-facts { margin-top: var(--space-16); }
+
+@container (max-width: 860px) {
+  /* Phones: one fact per row between `line` hairlines; the name on top, then the figure left and the source right.
+     The figure's column is as wide as the figure, the source takes the rest and wraps in it, so a long source never
+     squeezes a short figure. A long value (is-long: words or a placeholder) takes the row and its source sits under
+     it, left-aligned. Every label 12 px or more. */
+  .aq-key-facts { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); border-top: 0; }
+  .aq-key-facts > div, .aq-key-facts > div + div {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "dt dt" "v src";
+    align-items: baseline; column-gap: var(--space-3); row-gap: var(--space-1);
+    padding: var(--space-4) 0; border-left: 0; border-top: 1px solid var(--line);
+  }
+  .aq-key-facts > div:has(> .is-long) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "dt" "v" "src"; }
+  /* pass 12 round C (H2, G4 row): the name at the 14 px reading floor, the source line 13 px mono */
+  .aq-key-facts dt { grid-area: dt; font-size: 14px; line-height: 21px; }
+  .aq-key-facts__value, .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { grid-area: v; font-size: 26px; line-height: 1.15; }
+  .aq-key-facts dd.is-long { font-size: 17px; line-height: 1.3; }
+  .aq-key-facts dd.aq-key-facts__src { grid-area: src; margin-top: 0; text-align: right; }
+  .aq-key-facts > div:has(> .is-long) dd.aq-key-facts__src { text-align: left; }
+  .aq-key-facts__unit { font-size: 13px; }
+  .aq-hero .aq-key-facts { margin-top: var(--space-8); }
+}

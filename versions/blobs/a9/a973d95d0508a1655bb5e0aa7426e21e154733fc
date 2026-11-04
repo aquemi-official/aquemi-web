@@ -1,0 +1,79 @@
+/* ---------- WasherZones: one package feeding a cabinet washer, dashed zones tagged and keyed to rows ---------- */
+.aq-washer-zones-sec { position: relative; }
+.aq-washer-zones { margin-top: 0; }
+
+/* The drawing: dashed zone frames over an IsoKit line drawing, a navy tag on each frame's top right corner (zone 2's bottom left, clear of the riser) */
+.aq-washer-zones__fig { position: relative; overflow: hidden; --wz-phone: 0; }
+.aq-washer-zones__cam { position: relative; width: min(100%, calc(var(--space-32) * 3.6 * var(--ar, 2))); margin: 0 auto; transform-origin: 0 0; }
+.aq-washer-zones__svg { display: block; width: 100%; height: auto; }
+.aq-washer-zones__z { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones[data-on] .aq-washer-zones__z:not(.is-on) { opacity: 0.3; }
+.aq-washer-zones__z.is-on .aq-iso__eq, .aq-washer-zones__z.is-on .aq-iso__ln, .aq-washer-zones__z.is-on .aq-iso__thin { stroke: var(--flow); }
+.aq-washer-zones__frames { pointer-events: none; }
+.aq-washer-zones__z--loop { pointer-events: none; }
+.aq-washer-zones__frame { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke;
+  transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__frame.is-on { stroke: var(--flow); stroke-width: 1.5; }
+.aq-washer-zones__tag { position: absolute; transform: translate(-100%, 0); transform-origin: 100% 0; padding: var(--space-1) var(--space-2);
+  background: var(--navy); color: var(--on-navy); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; pointer-events: none;
+  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__tag.is-on { background: var(--flow); color: var(--surface); }
+.aq-washer-zones__tag--bl { transform: translate(0, -100%); transform-origin: 0 100%; }
+
+/* The rows: four outlined cards, number and standard chip on top, title, line, arrow */
+.aq-washer-zones__rows { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--space-3); }
+.aq-washer-zones__row { position: relative; min-width: 0; border: 1px solid var(--line-strong); background: var(--surface); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__row::before { content: ""; position: absolute; left: -1px; right: -1px; top: -1px; height: 3px; background: var(--flow); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 240ms cubic-bezier(0.2, 0.85, 0.25, 1); }
+.aq-washer-zones__row.is-on { border-color: var(--flow); }
+.aq-washer-zones__row.is-on::before { transform: scaleX(1); }
+.aq-washer-zones__in { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto 1fr; gap: var(--space-2) var(--space-3); height: 100%;
+  padding: var(--space-4) var(--space-4) calc(var(--space-8) + var(--space-2)); color: var(--ink); text-decoration: none; }
+.aq-washer-zones__no { grid-column: 1; grid-row: 1; font: 300 32px/36px var(--font-mono); letter-spacing: -0.04em; color: var(--ink); }
+.aq-washer-zones__chip { grid-column: 2; grid-row: 1; align-self: start; padding: 2px var(--space-2); background: var(--navy); color: var(--on-navy);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; white-space: nowrap; }
+.aq-washer-zones__t { grid-column: 1 / -1; grid-row: 2; margin: var(--space-2) 0 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+.aq-washer-zones__d { grid-column: 1 / -1; grid-row: 3; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-washer-zones__arrow { position: absolute; right: var(--space-4); bottom: var(--space-4); width: var(--space-8); height: var(--space-4); }
+.aq-washer-zones__arrow::before { content: ""; position: absolute; left: 0; right: 1px; top: 50%; height: 1.5px; background: currentColor; transform: scaleX(0.4); transform-origin: 100% 50%;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-zones__arrow::after { content: ""; position: absolute; right: 1px; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor; transform: translateY(-50%) rotate(45deg); }
+a.aq-washer-zones__in:hover .aq-washer-zones__arrow::before, a.aq-washer-zones__in:focus-visible .aq-washer-zones__arrow::before { transform: scaleX(1); }
+a.aq-washer-zones__in:hover .aq-washer-zones__t { color: var(--flow); }
+a.aq-washer-zones__in:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+.aq-washer-zones__dots { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-washer-zones__rows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Phones: the drawing as a strip that frames the zone of the card in view (camera, look JS); the rows a swipe rail of
+   cards, one zone per card, the next card peeking; numbered dots under the rail jump between cards (AQsnap). */
+@container (max-width: 860px) {
+  .aq-washer-zones { margin-top: var(--space-4); }
+  .aq-washer-zones__fig { --wz-phone: 1; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .aq-washer-zones__cam { transform: translate(var(--zx, 0px), var(--zy, 0px)) scale(var(--zs, 1)); transition: transform 550ms cubic-bezier(0.22, 0.75, 0.22, 1); }
+  .aq-washer-zones__cam { width: 100%; }
+  .aq-washer-zones__tag { transform: translate(-100%, 0) scale(calc(1 / var(--zs, 1))); }
+  .aq-washer-zones__tag--bl { transform: translate(0, -100%) scale(calc(1 / var(--zs, 1))); }
+  .aq-washer-zones__rows { display: flex; gap: var(--space-3); margin-top: var(--space-4); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scrollbar-width: none; }
+  .aq-washer-zones__rows::-webkit-scrollbar { display: none; }
+  .aq-washer-zones__row { flex: 0 0 min(84%, 340px); scroll-snap-align: start; }
+  .aq-washer-zones__in { padding: var(--space-4) var(--space-4) calc(var(--space-8) + var(--space-2)); }
+  .aq-washer-zones__no { font-size: 28px; line-height: 32px; }
+  .aq-washer-zones__t { font-size: 18px; line-height: 24px; margin-top: var(--space-1); }
+  .aq-washer-zones__d { font-size: 15px; line-height: 22px; }
+  .aq-washer-zones__dots { display: flex; justify-content: center; gap: var(--space-1); margin-top: var(--space-2); }
+  .aq-washer-zones__dot { min-width: var(--aq-hit); height: var(--aq-hit); padding: 0; border: 0; background: none; color: var(--ink-muted); cursor: pointer;
+    display: grid; place-items: center; font: 500 12px/16px var(--font-mono); }
+  .aq-washer-zones__dot span { display: block; padding: 2px var(--space-2); border: 1px solid currentColor; }
+  .aq-washer-zones__dot[aria-current="true"] { color: var(--on-navy); }
+  .aq-washer-zones__dot[aria-current="true"] span { background: var(--navy); border-color: var(--navy); }
+  .aq-washer-zones__dot:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-washer-zones__cam, .aq-washer-zones__z, .aq-washer-zones__frame, .aq-washer-zones__tag, .aq-washer-zones__row, .aq-washer-zones__row::before { transition: none; }
+}

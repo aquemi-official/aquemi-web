@@ -1,0 +1,17 @@
+VisitPlan shows a service visit as a route around the system on one navy drawing band: the whole PW plant in IsoKit line art, the technician's walk as a dashed route on the floor in front of it with a numbered stop at each part the visit checks, the checks as captions along the base of the band, and the signed report as one limestone line that closes it.
+
+Look `visit-plan` (`assets/src/blocks/look-visit-plan.js`) on a `grid` block with `as: "route"`. Used on svc-service, "What a maintenance visit covers". Concept: research/pass9b/concepts/svc-service.3.png (navy band with a line-drawn system, visit checks along its base, the signed report as a closing limestone line); the walk and stops come from pass 9 (56-concept-visit-route).
+
+- Markup: `section.aq-band--navy.aq-visit-plan-sec` > `div.aq-visit-plan[style=--n,--cols]` > `__sheet` (`svg.aq-iso.aq-iso--navy.__svg`: the plant, `path.__walk`, `g.__mark[data-stop][data-f]` with `__pin`, circle, number or `__tick`) + `ol.__stops` > `li.__stop[data-stop][data-parts]` (`is-end` on the sign-off item, which spans the band as the closing line) > `a|div.__body` (`__fig` with `svg.__mini` and `__n`, `__cap`, `h3.__t`, `p.__d`).
+- The scene `vpPlant()` (shared with RetrofitPlant): control panel, media filter, carbon, softener, RO rack, EDI stack, tank, loop pump, UV, loop supply with TOC analyser and its tee to a point of use, the return overhead with its diaphragm valve, report binders and stamp. Stage ids: panel, pre, gen, tank, loop, uv, toc, wear, report. Drawn inline (not in IsoKit): the walk and the stop pins.
+- Fields: `h`, `items [{t, d, link, spot, end, part}]`; optional `part`: the stage(s) a stop checks, space-separated; `end: true` on the last item draws its stop as the sign-off tick and makes it the closing line. Spots are not drawn (the plant replaces them).
+- Tokens: navy band with `ink` / `ink-muted` remapped to on-navy; captions on on-navy hairlines; lit stops and parts in a flow lightened towards on-navy; the closing line `limestone` with its text in `navy` / `on-limestone`, 300 at 28 px.
+- Phones: no big drawing; the walk runs down the left, each caption a row with its stage drawn small; the closing line last, full width.
+
+Motion: IsoKit's choreography builds the plant and runs the water once; then a flow dot walks the dashed route, each stop's ring strikes as it arrives (power3.out), its parts light for a moment and its caption prints. Once, under 5 s. Pointing at or focusing a caption lights its stop and parts.
+
+Polish (pass 9): stops closer than half the mean spacing are spread apart along the walk (the plant drawing itself is unchanged).
+
+Phones (pass 12, minor): each stop's drawing keeps a 16 px gutter from the right edge (the art draws past its box);
+the sign-off line is 18 px (was 20) and runs under its drawing across both columns, so it no longer wraps to
+seven lines beside it. Desktop unchanged.

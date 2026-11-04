@@ -1,0 +1,257 @@
+/* ---------- ContactRoutes: the ways in, as route sheets on a navy band (block contact-routes) ----------
+   After 62-concept-contact-routes: a route line under the heading drops into each sheet's folder tab; each sheet shows
+   what happens after you act as a sequence (numbered steps on a water rail) ending at its response clock, then the
+   action. Ordinary routes are limestone sheets (data-theme light); the urgent route is the dark sheet with the call bar
+   (data-theme dark). The sheets share one subgrid (tab, head, call, steps, clock, action) so the rows line up.
+   Desktop keeps the data order (--o); phones stack in markup order, urgent first, on a riser down the left. */
+.aq-contact-routes-sec { --cr-line: color-mix(in srgb, var(--on-navy-muted) 55%, var(--navy)); }
+.aq-contact-routes {
+  --cr-tab: var(--space-8);
+  position: relative; list-style: none; margin: var(--space-12) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(var(--routes, 3), minmax(0, 1fr)); grid-template-rows: repeat(6, auto);
+  column-gap: var(--space-6);
+}
+/* The route line: runs under the heading and across the band, one drop into each sheet's tab */
+.aq-contact-routes::before {
+  content: ""; position: absolute; left: 0; right: calc(100% / var(--routes, 3) - var(--space-12)); top: calc(-1 * var(--space-6));
+  height: 0; border-top: 1.5px dashed var(--cr-line, var(--on-navy-muted));
+  transform: scaleX(var(--aq-riser, 1)); transform-origin: left center;
+}
+.aq-contact-routes__route {
+  order: var(--o, 0); position: relative; min-width: 0;
+  grid-row: span 6; display: grid; grid-template-rows: subgrid; row-gap: 0;
+  color: var(--ink); background: none;
+}
+/* The sheet: everything under the tab */
+.aq-contact-routes__route::before {
+  content: ""; position: absolute; inset: var(--cr-tab, var(--space-8)) 0 0 0; z-index: 0;
+  background: var(--limestone); border: 1px solid transparent;
+}
+.aq-contact-routes__route.is-urgent::before { background: var(--navy); border-color: var(--line-strong); }
+/* The drop from the route line into the tab */
+.aq-contact-routes__route::after {
+  content: ""; position: absolute; left: var(--space-6); top: calc(-1 * var(--space-6)); height: var(--space-6); width: 0;
+  border-left: 1.5px dashed var(--cr-line, var(--on-navy-muted)); transform: scaleY(var(--aq-stub, 1)); transform-origin: center top;
+}
+.aq-contact-routes__route > *, .aq-contact-routes__body > * { position: relative; z-index: 1; min-width: 0; margin: 0; padding-inline: var(--space-6); }
+/* The body opens into the sheet's subgrid: head, call bar, steps, clock and action are rows shared by every sheet, so
+   the step rails, clocks and actions line up across the band (a route without a call bar leaves that row open). */
+.aq-contact-routes__route > .aq-contact-routes__body { display: contents; }
+.aq-contact-routes__tab { grid-row: 1; }
+.aq-contact-routes__main { grid-row: 2; }
+.aq-contact-routes__call { grid-row: 3; }
+.aq-contact-routes__steps { grid-row: 4; }
+.aq-contact-routes__clock { grid-row: 5; }
+.aq-contact-routes__action { grid-row: 6; }
+
+/* Folder tab: Route N · Urgent · This page */
+.aq-contact-routes__tab {
+  justify-self: start; height: var(--cr-tab, var(--space-8)); display: flex; align-items: center; gap: var(--space-2);
+  padding-inline: var(--space-4) var(--space-8) !important; background: var(--limestone);
+  clip-path: polygon(0 0, calc(100% - var(--space-4)) 0, 100% 100%, 0 100%);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+}
+/* The urgent tab: the urgent sheet's own navy ground with its line-strong edge (pass 12 verify L3: the line-strong slate
+   ground gave its 12 px mono 3.9:1 in ink and 2.3:1 in flow) */
+.aq-contact-routes__route.is-urgent .aq-contact-routes__tab { background: var(--navy); box-shadow: inset 1px 1px 0 var(--line-strong); color: var(--ink); }
+.aq-contact-routes__route.is-urgent.is-current .aq-contact-routes__mark { color: var(--ink); }
+.aq-contact-routes__rn-p { display: none; }
+.aq-contact-routes__rn { font-variant-numeric: tabular-nums; }
+.aq-contact-routes__mark { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--ink); }
+.aq-contact-routes__mark::before { content: "·"; content: "·" / ""; color: var(--ink-muted); }
+.aq-contact-routes__route.is-current .aq-contact-routes__mark { color: var(--flow); }
+.aq-contact-routes__route.is-current::before { box-shadow: inset 0 3px 0 var(--flow); }
+
+/* Head: the situation, large and light, and one line */
+.aq-contact-routes__main { display: flex; flex-direction: column; gap: var(--space-3); padding-block: var(--space-6) var(--space-6); }
+.aq-contact-routes__t { margin: 0; font: 300 30px/36px var(--font-sans); letter-spacing: -0.02em; color: inherit; overflow-wrap: break-word; text-wrap: balance; }
+.aq-contact-routes__route.is-urgent .aq-contact-routes__t { color: var(--flow); }
+.aq-contact-routes__d { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+/* Call bar: the urgent route's number, large in mono */
+.aq-contact-routes__call { padding-bottom: var(--space-6); }
+.aq-contact-routes__call:not(.is-empty) {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--space-3); row-gap: var(--space-1);
+  margin-inline: var(--space-6) !important; margin-bottom: var(--space-6) !important; padding: var(--space-4) !important;
+  border: 1px solid var(--line-strong); background: transparent; color: var(--ink);
+}
+.aq-contact-routes__call .aq-contact-routes__icon { width: 20px; height: 20px; background-color: var(--flow); }
+.aq-contact-routes__num { grid-column: 1 / -1; font: 300 36px/44px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: inherit; text-decoration: none; overflow-wrap: anywhere; }
+.aq-contact-routes__num .aq-ph { font-size: 0.5em; line-height: 1.4; }
+a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+
+.aq-contact-routes__k { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-contact-routes__icon { width: 16px; height: 16px; background-color: var(--ink-muted); }
+
+/* Steps: numbered stops on the water rail */
+.aq-contact-routes__steps {
+  --cr-x: calc(var(--space-6) + 7px);
+  flex: 1 1 auto; list-style: none; display: flex; flex-direction: column; gap: var(--space-6);
+  padding-top: var(--space-6) !important; border-top: 1px solid var(--line);
+  margin-inline: 0 !important;
+}
+.aq-contact-routes__steps::before, .aq-contact-routes__steps::after {
+  content: ""; position: absolute; left: var(--cr-x, var(--space-8)); top: calc(var(--space-6) + 8px); bottom: 0; width: 0; border-left: 1.5px solid var(--line-strong);
+}
+.aq-contact-routes__steps::after { border-left-color: var(--flow); transform: scaleY(var(--aq-line, 1)); transform-origin: center top; }
+.aq-contact-routes__steps > li { position: relative; display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); grid-template-rows: auto auto; column-gap: var(--space-3); }
+.aq-contact-routes__node {
+  grid-row: 1 / span 2; align-self: start; margin-top: 1px; width: 15px; height: 15px; border-radius: 50%;
+  border: 1.5px solid var(--flow); background: var(--limestone); z-index: 1;
+}
+.aq-contact-routes__route.is-urgent .aq-contact-routes__node { background: var(--navy); }
+.aq-contact-routes__steps > li:first-child .aq-contact-routes__node { background: var(--flow); }
+.aq-contact-routes__n { font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+.aq-contact-routes__s { font: 400 17px/24px var(--font-sans); color: inherit; overflow-wrap: break-word; text-wrap: pretty; }
+
+/* Terminus: the response clock where the rail ends */
+.aq-contact-routes__clock:not(.is-empty) {
+  display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-items: start;
+  padding-block: var(--space-6) var(--space-6);
+}
+.aq-contact-routes__clock:not(.is-empty)::before {
+  content: ""; position: absolute; left: calc(var(--space-6) + 7px); top: 0; height: var(--space-6); width: 0; border-left: 1.5px solid var(--flow);
+  transform: scaleY(var(--aq-line, 1)); transform-origin: center top;
+}
+.aq-contact-routes__end {
+  grid-row: 1 / span 2; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); margin-left: calc(-1 * var(--space-2));
+  border: 1.5px solid var(--flow); background: var(--limestone);
+}
+.aq-contact-routes__route.is-urgent .aq-contact-routes__end { background: var(--navy); }
+.aq-contact-routes__end .aq-contact-routes__icon { background-color: var(--flow); }
+.aq-contact-routes__v { font: 300 20px/28px var(--font-sans); letter-spacing: -0.01em; color: inherit; overflow-wrap: break-word; text-wrap: pretty; }
+.aq-contact-routes__v .aq-ph { font-size: 13px; line-height: 20px; }
+
+/* Action at the foot of the sheet */
+.aq-contact-routes__action { padding-bottom: var(--space-6); align-self: end; }
+.aq-contact-routes__route .aq-btn--primary { background: var(--action); color: var(--on-action); }
+.aq-contact-routes__route .aq-btn--primary:hover { background: var(--action-hover); }
+.aq-contact-routes__action .aq-btn { width: 100%; height: auto; min-height: 44px; padding-block: var(--space-2); justify-content: center; text-align: center; white-space: normal; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .aq-contact-routes__tab { transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-contact-routes__node { transition: background-color 200ms, transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-contact-routes__route:hover .aq-contact-routes__tab, .aq-contact-routes__route:focus-within .aq-contact-routes__tab { transform: translateY(calc(-1 * var(--space-1))); }
+  .aq-contact-routes__route:hover .aq-contact-routes__node, .aq-contact-routes__route:focus-within .aq-contact-routes__node { background: var(--flow); }
+  .aq-contact-routes__action .aq-btn__arrow { display: inline-block; transition: transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-contact-routes__action .aq-btn:hover .aq-btn__arrow { transform: translateY(2px); }
+}
+
+@container (max-width: 860px) {
+  .aq-contact-routes { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: var(--space-8); margin-top: var(--space-8); padding-left: var(--space-4); }
+  /* the route line turns into a riser down the left, a stub into each tab */
+  .aq-contact-routes::before { left: 0; right: auto; top: calc(var(--cr-tab, var(--space-8)) / 2); bottom: var(--space-12); height: auto; border-top: 0; border-left: 1.5px dashed var(--cr-line, var(--on-navy-muted));
+    transform: scaleY(var(--aq-riser, 1)); transform-origin: center top; }
+  .aq-contact-routes__route { order: 0; grid-row: auto; display: flex; flex-direction: column; }
+  .aq-contact-routes__route::after { left: calc(-1 * var(--space-4)); top: calc(var(--cr-tab, var(--space-8)) / 2); width: var(--space-4); height: 0; border-left: 0; border-top: 1.5px dashed var(--cr-line, var(--on-navy-muted));
+    transform: scaleX(var(--aq-stub, 1)); transform-origin: left center; }
+  .aq-contact-routes__route > *, .aq-contact-routes__body > * { padding-inline: var(--space-4); }
+  .aq-contact-routes__call:not(.is-empty) { margin-inline: var(--space-4) !important; }
+  .aq-contact-routes__clock.is-empty { display: none; }
+  .aq-contact-routes__steps { flex: none; }
+  .aq-contact-routes__steps { --cr-x: calc(var(--space-4) + 7px); }
+  .aq-contact-routes__clock:not(.is-empty)::before { left: calc(var(--space-4) + 7px); }
+  .aq-contact-routes__main { padding-block: var(--space-4); }
+  .aq-contact-routes__t { font-size: 24px; line-height: 30px; }
+  .aq-contact-routes__d { font-size: 15px; line-height: 24px; }
+  .aq-contact-routes__s { font-size: 16px; line-height: 24px; }
+  .aq-contact-routes__v { font-size: 18px; line-height: 26px; }
+  .aq-contact-routes__num { font-size: 28px; line-height: 36px; }
+  .aq-contact-routes__action { padding-bottom: var(--space-4); align-self: stretch; }
+  .aq-contact-routes__tab { align-self: flex-start; }
+}
+
+/* Pass 9b (ContactRoutes/motion.js, animated-beam): the beam that runs a sheet's step rail, a short flow highlight
+   5 px wide, a limestone glint with a flow rim and glow, brightest at its head; placed and moved by the motion layer, removed when it arrives. */
+.aq-contact-routes__route > .aq-contact-routes__pulse {
+  position: absolute; z-index: 2; width: 5px; height: 56px; padding: 0; border-radius: var(--radius-pill); pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--limestone) 70%, transparent) 60%, var(--limestone));
+  box-shadow: 0 0 0 1.5px var(--flow), 0 6px 14px color-mix(in srgb, var(--flow) 55%, transparent);
+}
+.aq-contact-routes__route .aq-contact-routes__node, .aq-contact-routes__route .aq-contact-routes__end { transform-origin: 50% 50%; }
+/* Press on the urgent call line once its number is a real link */
+@media (prefers-reduced-motion: no-preference) {
+  a.aq-contact-routes__num { display: inline-block; transition: transform 120ms cubic-bezier(0.2, 0, 0, 1); }
+  a.aq-contact-routes__num:active { transform: translateY(1px) scale(0.98); transition-duration: 60ms; }
+}
+
+/* ---------- Pass 12: phones (visual audit S11, about 2,000 px down to under 1,000) ----------
+   Desktop never shows the toggle or the jump row and always shows the steps. Below 860 px:
+   - the urgent route (first in the markup) stays a whole card: its number is a full-width call button (the action
+     fill; a tel: link over the whole box once the number is confirmed), its action an outlined button below;
+   - every route's steps sit behind "How it works" (a toggle that opens the numbered steps under it); the response
+     line keeps its clock mark and drops the "Response" eyebrow (44 px toggle, the shared --aq-hit floor);
+   - the route for this page is one line: its title as a 56 px anchor down to this page's form. */
+.aq-contact-routes__how, .aq-contact-routes__jump { display: none; }
+
+@container (max-width: 860px) {
+  .aq-contact-routes { row-gap: var(--space-4); margin-top: var(--space-4); }
+  .aq-contact-routes__main { padding-block: var(--space-3) var(--space-3); gap: var(--space-1); }
+  .aq-contact-routes__t { font-size: 22px; line-height: 28px; }
+  .aq-contact-routes__d { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+  /* phone order: head, call, response line, toggle, steps, action */
+  .aq-contact-routes__clock { order: 3; }
+  .aq-contact-routes__how { order: 4; }
+  .aq-contact-routes__steps { order: 5; }
+  .aq-contact-routes__action { order: 6; }
+  .aq-contact-routes__jump { order: 7; }
+  .aq-contact-routes__action { padding-bottom: var(--space-3); }
+
+  /* Response line: compact, the clock mark small, no rail stub into it */
+  .aq-contact-routes__clock:not(.is-empty) { grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-2); border-top: 1px solid var(--line); }
+  .aq-contact-routes__clock:not(.is-empty)::before { display: none; }
+  .aq-contact-routes__clock .aq-contact-routes__k { display: none; }
+  .aq-contact-routes__end { grid-row: 1; width: var(--space-6); height: var(--space-6); margin-left: 0; }
+  .aq-contact-routes__end .aq-contact-routes__icon { width: 14px; height: 14px; }
+  .aq-contact-routes__v { font-size: 16px; line-height: 24px; }
+  .aq-contact-routes__v .aq-ph { font-size: var(--aq-chip-phone, 13px); line-height: 20px; }
+
+  /* "How it works": a full-width 48 px toggle row with a chevron; the steps show only while it is open */
+  .aq-contact-routes__how {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+    width: auto; min-height: var(--aq-hit, 44px); margin: 0; padding-block: 0; border: 0; border-top: 1px solid var(--line); background: none; cursor: pointer;
+    font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); text-align: left;
+  }
+  .aq-contact-routes__how:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .aq-contact-routes__chev { flex: none; width: 8px; height: 8px; margin-right: var(--space-1); border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg); }
+  .aq-contact-routes__how[aria-expanded="true"] .aq-contact-routes__chev { transform: translateY(2px) rotate(-135deg); }
+  .aq-contact-routes__how[aria-expanded="false"] + .aq-contact-routes__steps { display: none; }
+  .aq-contact-routes__steps { gap: var(--space-4); padding-block: var(--space-2) var(--space-4) !important; border-top: 0; }
+  .aq-contact-routes__steps::before, .aq-contact-routes__steps::after { top: calc(var(--space-2) + 8px); bottom: var(--space-6); }
+  .aq-contact-routes__s { font-size: 15px; line-height: 22px; }
+
+  /* Urgent route: the call as a full-width button in the action fill, the route's own action outlined under it */
+  .aq-contact-routes__call:not(.is-empty) {
+    position: relative; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: var(--space-1) var(--space-2);
+    min-height: 56px; box-sizing: border-box; margin-bottom: var(--space-3) !important; padding: var(--space-3) var(--space-4) !important;
+    background: var(--action); border-color: var(--action); color: var(--on-action); border-radius: var(--radius-sm);
+  }
+  .aq-contact-routes__call .aq-contact-routes__icon { background-color: var(--on-action); }
+  .aq-contact-routes__call .aq-contact-routes__k { font: 500 16px/24px var(--font-sans); letter-spacing: 0; text-transform: none; color: inherit; }
+  .aq-contact-routes__call .aq-contact-routes__num { grid-column: auto; font: 500 18px/24px var(--font-mono); letter-spacing: 0; }
+  .aq-contact-routes__call .aq-contact-routes__num .aq-ph { font-size: var(--aq-read-phone, 14px); line-height: 22px; }
+  /* once the number is a tel: link, the whole button dials */
+  .aq-contact-routes__call a.aq-contact-routes__num::after { content: ""; position: absolute; inset: 0; }
+  .aq-contact-routes__route.is-urgent .aq-contact-routes__action .aq-btn--primary { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
+  .aq-contact-routes__route.is-urgent .aq-contact-routes__action .aq-btn--primary:hover { background: transparent; border-color: var(--ink); }
+
+  /* This page (not urgent): one line, the title as an anchor to the form */
+  .aq-contact-routes__route.is-current:not(.is-urgent) > :not(.aq-contact-routes__tab):not(.aq-contact-routes__jump),
+  .aq-contact-routes__route.is-current:not(.is-urgent) > .aq-contact-routes__body > * { display: none; }
+  .aq-contact-routes__route.is-current:not(.is-urgent) > .aq-contact-routes__jump {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: 56px;
+    font: 400 18px/24px var(--font-sans); color: var(--ink); text-decoration: none;
+  }
+  .aq-contact-routes__jump-arrow { flex: none; color: var(--flow); font-size: 20px; }
+  .aq-contact-routes__jump:hover > span:first-child { text-decoration: underline; text-underline-offset: 4px; }
+  .aq-contact-routes__jump:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+  /* Pass 12 verify: route numbers in phone order (L4); the urgent route tighter (L1): its response line merged under
+     the call with no rule, the call box 56 px with the phone icon alone saying "Call" (the description stays: it
+     carries the severity and the answer time) */
+  .aq-contact-routes__rn-d { display: none; }
+  .aq-contact-routes__rn-p { display: inline; }
+  .aq-contact-routes__route.is-urgent .aq-contact-routes__clock:not(.is-empty) { padding-block: var(--space-1); border-top: 0; }
+  .aq-contact-routes__call:not(.is-empty) { padding-block: var(--space-2) !important; }
+  .aq-contact-routes__call .aq-contact-routes__k { display: none; }
+}

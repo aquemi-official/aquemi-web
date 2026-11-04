@@ -1,0 +1,604 @@
+{
+ "id": "contact-proposal",
+ "section": "Contact",
+ "nav_label": "Request a proposal",
+ "title": "Request a proposal, review or assessment | Aquemi",
+ "meta": "Start with a URS, a tender, your product, water data or a running system. An engineer replies in writing within [proposal response time, working days].",
+ "path": "/contact/proposal/",
+ "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
+ "headline": "Tell us what you need. An engineer replies.",
+ "lead": "Start with what you have: a user requirement specification (URS), a tender, your product, water data or a running system.",
+ "primary_cta": "Choose your request",
+ "blocks": [
+  {
+   "type": "contact-routes",
+   "h": "Three ways in",
+   "routes": [
+    {
+     "t": "Request a proposal or review",
+     "d": "New system, upgrade or document review.",
+     "steps": [
+      "Send what you have",
+      "An engineer reads it",
+      "Written answer, then a proposal"
+     ],
+     "clock": "Written reply within [proposal response time, working days]",
+     "link": "contact-proposal",
+     "action": "Choose your request",
+     "current": true
+    },
+    {
+     "t": "Production stopped or water out of specification",
+     "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
+     "phone": "[service phone number]",
+     "steps": [
+      "Call the service line",
+      "Triage confirms severity",
+      "Remote diagnosis, then on site"
+     ],
+     "clock": "Answered within [severity 1 phone answer time, minutes]",
+     "link": "contact-service",
+     "intent": "Fault now|Severity 1: production stopped or water out of specification",
+     "urgent": true,
+     "action": "Log a service request"
+    },
+    {
+     "t": "Qualify us as a supplier",
+     "d": "Audit our quality system, or receive our questionnaire pack.",
+     "steps": [
+      "Your questionnaire or scope",
+      "Pack, or audit dates and agenda",
+      "Questionnaire completed or audit held"
+     ],
+     "clock": "Reply within [audit request response time, working days]",
+     "link": "cmp-quality#audit",
+     "action": "Request an audit or pack"
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "anchor": "intake",
+   "nav": "Send",
+   "h": "Send what you have",
+   "intro": "Rough numbers are fine; leave unknowns blank.",
+   "submit": "Send to an engineer",
+   "note": "Files kept [file storage location and retention, months]. [privacy notice link]",
+   "steps": [
+    {
+     "title": "Your request",
+     "next": "Continue to the details",
+     "fields": [
+      {
+       "kind": "note",
+       "label": "What each request returns, and its cost",
+       "link": "contact-proposal#requests",
+       "action": "See the table"
+      },
+      {
+       "label": "Where are you starting from?",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "I have a URS or a draft",
+        "I have an RFQ or a tender",
+        "I know my product, not my water spec",
+        "I have water data, no system yet",
+        "I have a system already",
+        "I am qualifying suppliers",
+        "Not sure yet: talk to an engineer"
+       ],
+       "help": "RFQ: request for quotation."
+      },
+      {
+       "kind": "note",
+       "when": "I have a URS or a draft",
+       "label": "Drafting? Our guide lists the rows to write and when polypropylene is the wrong choice.",
+       "link": "urs-guide",
+       "action": "Writing your URS"
+      },
+      {
+       "kind": "note",
+       "when": "I have an RFQ or a tender",
+       "label": "Your tender or request for quotation (RFQ), answered line by line; departures with their reasons.",
+       "link": "buying#answer",
+       "action": "How we answer a tender"
+      },
+      {
+       "kind": "note",
+       "when": "I have a system already",
+       "label": "A fault to fix now?",
+       "link": "contact-service#request",
+       "action": "Log a service request",
+       "intent": "Fault now"
+      },
+      {
+       "kind": "note",
+       "when": "I am qualifying suppliers",
+       "label": "Supplier audits and questionnaire packs have their own request on Quality management.",
+       "link": "cmp-quality#audit",
+       "action": "Request an audit or pack"
+      },
+      {
+       "label": "What do you need?",
+       "kind": "radio",
+       "required": true,
+       "when": "I have a URS or a draft",
+       "options": [
+        "URS gap review",
+        "Compliance matrix",
+        "Proposal against your URS",
+        "Review of another document"
+       ],
+       "help": "A gap review marks each gap; a compliance matrix shows how each line is met."
+      },
+      {
+       "kind": "note",
+       "when": "Proposal against your URS|Sizing proposal",
+       "label": "Every proposal lists the same lines, each marked included, priced option or by others.",
+       "link": "buying#proposal",
+       "action": "What every proposal contains"
+      },
+      {
+       "label": "Which document?",
+       "kind": "radio",
+       "required": true,
+       "when": "Review of another document",
+       "options": [
+        "Points-of-use list or loop design",
+        "Controls URS or functional specification",
+        "Fabrication or piping specification",
+        "Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
+        "URS or functional specification, to draft a factory acceptance test (FAT) list"
+       ],
+       "help": "Draft or approved. We mark up each gap against its standard."
+      },
+      {
+       "label": "What do you need first?",
+       "kind": "radio",
+       "required": true,
+       "when": "I have water data, no system yet",
+       "options": [
+        "Feed water review",
+        "Modules and a budget range",
+        "Sizing proposal"
+       ],
+       "help": "A feed water review names the pretreatment your water needs."
+      }
+     ]
+    },
+    {
+     "title": "Details",
+     "next": "Continue to contact details",
+     "fields": [
+      {
+       "label": "What do you make?",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "Pharmaceutical drug products",
+        "Contract manufacturing (CDMO)",
+        "Medical devices",
+        "Natural health products",
+        "Hospital sterile processing",
+        "Laboratory or research",
+        "Cosmetics or personal care",
+        "Food, beverage or cannabis",
+        "Industrial or energy process",
+        "Another industry"
+       ],
+       "help": "Or what your site runs, such as sterile processing or a lab."
+      },
+      {
+       "label": "Dosage forms",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Pharmaceutical drug products|Contract manufacturing (CDMO)",
+       "options": [
+        "Parenteral (injectable)",
+        "Sterile ophthalmic or nasal",
+        "Inhalation",
+        "Oral liquid",
+        "Oral solid",
+        "Topical",
+        "Active substance (API)"
+       ],
+       "help": "Sets the minimum grade (European Medicines Agency). We supply Purified Water, not Water for Injection."
+      },
+      {
+       "label": "Client and market mix",
+       "kind": "textarea",
+       "required": false,
+       "when": "Contract manufacturing (CDMO)",
+       "help": "As a contract development and manufacturing organization: markets, regulators, stricter client limits; no client names."
+      },
+      {
+       "label": "Highest device class",
+       "kind": "radio",
+       "required": false,
+       "when": "Medical devices",
+       "options": [
+        "Class I",
+        "Class II",
+        "Class III",
+        "Class IV (Health Canada)",
+        "Not sure of the class"
+       ]
+      },
+      {
+       "label": "Sterilization method",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Medical devices",
+       "options": [
+        "Ethylene oxide (ISO 11135)",
+        "Radiation (ISO 11137)",
+        "Moist heat (ISO 17665)",
+        "Supplied non-sterile",
+        "Other method"
+       ]
+      },
+      {
+       "label": "Release limits on the device",
+       "kind": "text",
+       "required": false,
+       "when": "Medical devices",
+       "help": "For example endotoxin per device (USP <161>) or bioburden (ISO 11737-1)."
+      },
+      {
+       "label": "Do any lines make drugs or natural health products?",
+       "kind": "radio",
+       "required": false,
+       "when": "Cosmetics or personal care",
+       "options": [
+        "Yes, drugs",
+        "Yes, natural health products",
+        "Yes, both",
+        "No, cosmetics only",
+        "Not sure yet"
+       ],
+       "help": "Over-the-counter drugs count. Drug lines need Purified Water; cosmetic-only lines follow your specification."
+      },
+      {
+       "label": "Standard, edition and grade, or your equipment maker's specification",
+       "kind": "text",
+       "required": false,
+       "when": "Hospital sterile processing|Laboratory or research|Food, beverage or cannabis|Industrial or energy process|Another industry|No, cosmetics only",
+       "help": "For example critical water (ST108:2023), ASTM D1193-24 Type II, your product specification or your equipment maker's feed-water specification. Add how many taps."
+      },
+      {
+       "label": "Which pharmacopoeias apply?",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Pharmaceutical drug products|Contract manufacturing (CDMO)|Medical devices|Natural health products|Yes, drugs|Yes, natural health products|Yes, both",
+       "options": [
+        "United States Pharmacopeia (USP)",
+        "European Pharmacopoeia (Ph. Eur.)",
+        "Japanese Pharmacopoeia (JP)",
+        "None",
+        "Not sure yet"
+       ]
+      },
+      {
+       "label": "Target date for water on site",
+       "kind": "select",
+       "required": false,
+       "when": "I have a URS or a draft|I have an RFQ or a tender|I know my product, not my water spec|I have water data, no system yet",
+       "options": [
+        "Under 3 months",
+        "3 to 6 months",
+        "6 to 12 months",
+        "More than 12 months",
+        "No date yet"
+       ]
+      },
+      {
+       "label": "Systems in scope",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Proposal against your URS|I have an RFQ or a tender|Modules and a budget range|Sizing proposal|I have a system already",
+       "options": [
+        "Purified Water (PW) generation",
+        "Storage and distribution loop",
+        "Pretreatment",
+        "Monitoring and controls",
+        "Not sure yet"
+       ]
+      },
+      {
+       "label": "Peak demand",
+       "kind": "number",
+       "unit": "L/h",
+       "required": false,
+       "when": "Feed water review|Modules and a budget range|Sizing proposal",
+       "help": "Flow with the most outlets open at once, in L/h."
+      },
+      {
+       "label": "Number of points of use",
+       "kind": "number",
+       "required": false,
+       "when": "Modules and a budget range|Sizing proposal"
+      },
+      {
+       "label": "Who will run it day to day?",
+       "kind": "radio",
+       "required": false,
+       "when": "I know my product, not my water spec|Modules and a budget range|Sizing proposal",
+       "options": [
+        "Production staff, part of a shift",
+        "A maintenance technician",
+        "A contractor",
+        "Not decided yet"
+       ],
+       "help": "Sets the controls and alarms we propose."
+      },
+      {
+       "label": "Feed water source",
+       "kind": "radio",
+       "required": false,
+       "when": "Feed water review|Modules and a budget range|Sizing proposal",
+       "options": [
+        "Municipal, chlorinated",
+        "Municipal, chloraminated",
+        "Changes between chlorine and chloramine",
+        "Well water",
+        "Already pretreated supply",
+        "Not sure yet"
+       ],
+       "help": "Disinfectant, hardness and silica set the pretreatment. Attach utility reports if you have them."
+      },
+      {
+       "label": "Coldest and warmest feed water temperature",
+       "kind": "text",
+       "required": false,
+       "when": "Feed water review|Sizing proposal",
+       "help": "In °C. Membranes are sized at your coldest month."
+      },
+      {
+       "label": "Control system standard",
+       "kind": "text",
+       "required": false,
+       "when": "Controls URS or functional specification",
+       "help": "Programmable logic controller (PLC) and supervisory control (SCADA) makes and versions your site standardizes on."
+      },
+      {
+       "label": "Material, joining and inspection you specify",
+       "kind": "text",
+       "required": false,
+       "when": "Fabrication or piping specification",
+       "help": "For example piping material and standard, joining method or joint inspection."
+      },
+      {
+       "label": "Make, model and year installed",
+       "kind": "text",
+       "required": true,
+       "when": "I have a system already",
+       "help": "From the nameplate, or \"unknown\". Assessments cover [makes and equipment types serviced]."
+      },
+      {
+       "label": "What should the assessment solve?",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "I have a system already",
+       "options": [
+        "More capacity or points of use",
+        "Out-of-specification water or alarms",
+        "Obsolete controller (PLC) or operator panel (HMI)",
+        "Dead legs or sanitization",
+        "Energy, water or chemical use",
+        "Replace or relocate"
+       ]
+      },
+      {
+       "label": "Documents",
+       "kind": "file",
+       "required": false,
+       "help": "URS, tender documents, water analysis or drawings, up to [maximum upload size, MB]. Or email them later."
+      },
+      {
+       "label": "Notes or questions",
+       "kind": "textarea",
+       "required": false
+      }
+     ]
+    },
+    {
+     "title": "Contact",
+     "fields": [
+      {
+       "label": "Full name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Work email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Company",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Role",
+       "kind": "select",
+       "required": true,
+       "options": [
+        "Owner or general management",
+        "Process or project engineering",
+        "Production or operations",
+        "Quality",
+        "Validation",
+        "Facilities or maintenance",
+        "Sterile processing or laboratory",
+        "Procurement",
+        "Finance",
+        "Consultant acting for a client",
+        "Contractor or installer",
+        "Other"
+       ]
+      },
+      {
+       "label": "Site province, state or country",
+       "kind": "text",
+       "required": true,
+       "help": "Sets pressure-equipment registration and service coverage."
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false
+      },
+      {
+       "label": "How should we reply?",
+       "kind": "radio",
+       "required": false,
+       "options": [
+        "By email",
+        "By phone",
+        "Under a non-disclosure agreement (NDA)"
+       ]
+      },
+      {
+       "label": "How did you hear about us?",
+       "kind": "text",
+       "required": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "anchor": "requests",
+   "nav": "Requests",
+   "h": "What each request returns",
+   "fold": 7,
+   "fold_noun": "requests",
+   "cols": [
+    "Situation",
+    "What comes back",
+    "When",
+    "Cost"
+   ],
+   "rows": [
+    [
+     "I have a URS or a draft",
+     "Gap review · compliance matrix · proposal · other document review",
+     "[URS review turnaround, working days] · [compliance matrix response time, working days] · [proposal response time, working days] · [document review turnaround, working days]",
+     "[URS review cost] · [compliance matrix cost or free] · [proposal cost or free] · [document review cost]"
+    ],
+    [
+     "I have an RFQ or a tender",
+     {
+      "t": "Proposal in your numbering, with your bid form filled in",
+      "link": "buying#answer"
+     },
+     "[proposal response time, working days]",
+     "[proposal cost or free]"
+    ],
+    [
+     "I know my product, not my water spec",
+     "Water scope review: grade or standard per use, package, qualification or acceptance test scope",
+     "[scope review turnaround, working days]",
+     "[scope review cost or free]"
+    ],
+    [
+     "I have water data, no system yet",
+     "Feed water review · modules, budget range and its class, from rough numbers · sizing proposal and firm price, from full analysis",
+     "[feed water review turnaround, working days] · [budget proposal turnaround, working days] · [proposal response time, working days]",
+     "[cost of the feed water review] · [budget range cost or free] · [proposal cost or free]"
+    ],
+    [
+     "I have a system already",
+     "Scope and price, then options with downtime and requalification or retest",
+     "[assessment response time, working days]",
+     "[assessment price, CAD, credit against upgrade]"
+    ],
+    [
+     "I am qualifying suppliers",
+     {
+      "t": "Audit or questionnaire pack, on Quality management",
+      "link": "cmp-quality#audit"
+     },
+     "Reply within [audit request response time, working days]",
+     "Before an order: [supplier audit before order, free or charged]"
+    ],
+    [
+     "Not sure yet: talk to an engineer",
+     "A written answer from an engineer",
+     "Written reply within [proposal response time, working days]",
+     "[fit check cost or free]"
+    ]
+   ],
+   "look": "request-menu",
+   "intro": "Every proposal opens with a summary: one-line scope, price, quote date, valid until, lead time, departures with reasons or \"none\"."
+  }
+ ],
+ "cta": {
+  "h": "Prefer to talk first?",
+  "body": "Ask for an engineer, [office hours, time zone].",
+  "button": "Call [sales phone number]",
+  "link": "tel:[sales phone number]",
+  "variant": "call",
+  "include_label": "Have ready",
+  "include": [
+   "Your URS, or your product and flow",
+   "Feed water analysis, if any",
+   "Where your site is"
+  ],
+  "turnaround": "An engineer on the line",
+  "returns": [
+   "A written answer from an engineer",
+   "Then a scope review, budget range or proposal"
+  ]
+ },
+ "todo": [
+  "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
+  "Turnaround per request, for the requests table: URS review, compliance matrix, document review (one figure for loop, controls, fabrication, C&Q plan and FAT list reviews), scope review, feed water review, budget proposal, assessment, audit request (FD-01). Once filled, name each figure in its cell (gap review, matrix, proposal, document review), since the placeholder names then disappear",
+  "Cost per request, free or CAD, and whether a fee is credited against an order: URS review, compliance matrix, proposals, document review, scope review, feed water review ([cost of the feed water review], the canonical name in ops/placeholder-names.md), budget range, assessment, supplier audit, fit check (FD-02). The requests table shows all six rows (DR-024 rule 5). At launch a cost FD-02 has not set drops its row (DR-024 rule 6, DR-005 rule 8); \"Free\" only where FD-02 says so",
+  "Confirm reviews carry no obligation, and whether they may be used in the client's own tender ([review obligation and use in your tender], home's name; FD-02). Once confirmed, the lead may end \"Nothing commits you to buy.\"",
+  "Whether a budget range comes in the first reply, and what the modules-and-budget answer contains for the PW package (pretreatment, RO, DI or EDI, distribution) (FD-02, FD-03)",
+  "Sales phone number and office hours with time zone (same names as contact-locations and CONTACT.sales; FD-33). The closing button dials once the number is filled in its label and its tel: link, in one commit. Unfilled at launch, it becomes \"Talk to an engineer\" to #intake (DR-006 rule 6)",
+  "Who reads and answers requests and sales calls; time zone and holiday cover (FD-34)",
+  "NDA turnaround, working days; confidentiality terms for submitted specifications (FD-01, FD-47). Their home is cmp-quality's terms block (DR-005 rule 7); once confirmed, the form note may open with one line on them (\"Specifications stay confidential\" was cut as unconfirmed)",
+  "Privacy notice (PIPEDA, Quebec Law 25, CASL): what is collected, who receives it, why, how long; file storage location and retention, months; maximum upload size, MB, or a secure upload link; counsel's check before launch (FD-39, OQ-81)",
+  "Form back end before launch: submission; on-screen and email acknowledgement naming the next step, who replies and by when; file storage; routing by intent (situation|follow-up) and source page (DR-014 rules 10 and 11; orchestrator)",
+  "Language for the reply (English, French) returns to step 3 only once a named French-speaking engineer replies within the same time (FD-36, DR-012 rule 2)",
+  "Visits (shop tour, test bay, factory acceptance test witness) are offered on contact-locations, by appointment with [shop visit notice, working days] notice (R6, DR-028 rule 3); this page keeps three routes. Reference requests have one answer, buying#faq (DR-028 rule 4); no reference route or field here",
+  "Makes and equipment types assessed on systems from other builders ([makes and equipment types serviced]; same name on home, services, svc-service, svc-upgrades, about, contact-service; FD-30)",
+  "Contact routes: service phone number and hours, severity 1 phone answer time ([severity 1 phone answer time, minutes], route 2's clock, as on contact-service and contact-locations; FD-27); audit request response time (same as cmp-quality; FD-48). Route 3 states the audit and the questionnaire pack with no date (pass 12 newness sweep; DR-028 rule 3, DR-004 class 2): [quality system ready for audit, date] is a private launch gate, never printed",
+  "What the reply says when a request needs WFI or pure steam: Aquemi supplies the PW package only; PW as feed to the client's still stays [confirm] (FD-25, DR-002 rule 7); whether Aquemi refers that scope elsewhere",
+  "Fabrication or piping specification review: which PP and PVC piping standards and joining methods Aquemi reviews against ([PP piping standard], [PP joining method]; FD-17, FD-18)",
+  "Regions served outside Canada (FD-28, FD-37)",
+  "Log the answers to \"How did you hear about us?\" with the request and review them monthly (market/how-buyers-find-suppliers.md)",
+  "Pass 11 (SITE-PLAN contact pages; structure-and-sitemap § 3.7, § 4.4 entry links; offer § 14 P3; L-G3-8, L-12-4, L-13-1, L-15-17, L-08-13): new situation \"I have an RFQ or a tender\" in the form and the requests table (DR-014 rule 3: one row per situation), linking buying#answer. The row returns a proposal in the buyer's numbering with the bid form filled in, on buying's own names, [proposal response time, working days] and [proposal cost or free] (pass 11 review finding 3; DR-011 rule 1, DR-014 rule 3). The note says \"departures\", buying#answer's term; the situation radio's help expands RFQ at first use (DR-003 rule 4; finding 10). The buying page's closing should send intent \"I have an RFQ or a tender\"",
+  "Pass 11 (SITE-PLAN: the URS row keeps its intent and mentions urs-guide): the request-menu look takes one link per cell and the URS row has four items, so the mention is a form note under the situation, linking urs-guide (\"Writing your URS\"). The row and option text are unchanged",
+  "Pass 11 (offer § 14 P1, proof P22; L-01-1, L-12-17, L-03-5, L-15-17): \"What every proposal contains\" has one home, buying#proposal (DR-009, SITE-PLAN anchors). This page carries a form note to it where a proposal is asked for, not a second block. The note repeats buying#proposal's intro (included, priced option or by others); change both together. The note shows for a proposal against a URS or a sizing proposal only; the RFQ situation has its own note (pass 11 review finding 11)",
+  "Pass 11 (offer § 14 P2; L-01-6, L-03-15, L-04-14, L-09-16): the water-data row now says budget range from rough numbers (the form intro's words), firm price from a full analysis (with coldest feed temperature, room, door and power, which the form asks). Budget against firm is the estimate class (FD-03). The budget range keeps \"with its class\" (pass 11 review finding 4; L-09-16)",
+  "Pass 11 held (offer § 14 P4; L-01-3, L-07-10, L-G3-11): target-date help \"Include your approval time; we hold the price that long.\" ships only if FD-05 commits to holding the price for the buyer's approval time",
+  "Requests table fold is 7 (all rows) after the RFQ row, per DR-024 rule 5",
+  "Pass 11 (structure-and-sitemap § 3.7 B1; journey P2 exit; L-05-20; pass 11 review finding 9): optional step 2 field \"Who will run it day to day?\" for a scope review, modules and budget, or sizing proposal (DR-014 rules 4 and 5). The training question waits until training is a decided, priced line (phrasebook open question 2)",
+  "Launch (pass 11 review finding 2; DR-026 launch rule, FD-05 to FD-07): if buying is not published, the RFQ and proposal notes go, and the RFQ row's cell becomes plain text with no link. The row stays",
+  "DR-014 amendment (pass 11 review finding 13; orchestrator): rule 2 adds \"I have an RFQ or a tender\", answered with a proposal in the buyer's numbering and the bid form filled in (buying#answer); rule 3's table gains its row. SITE-PLAN authorizes the situation; keep it until the record is amended",
+  "Pass 12 (SITE-PLAN contact-proposal; DR-027 rules 9 and 10): \"What do you make?\" has the ten options in the regulated-then-industrial order. The CDMO option reads \"Contract manufacturing (CDMO)\" (DR-027 rule 10), the same string ind-cdmo's two intents send (exact-match tick; renamed together by the pass 12 integrator). \"Hospital reprocessing, laboratory or industrial water\" split into hospital, laboratory, food and industrial options; the standard field shows for those four and \"Another industry\", its help naming ST108:2023 critical water and ASTM D1193-24 Type II (no bare \"Type 2\"; SITE-PLAN 1.2.6). Group pages may send intents \"…|Hospital sterile processing\", \"…|Laboratory or research\", \"…|Food, beverage or cannabis\", \"…|Industrial or energy process\"; the DR-023 intent \"I know my product, not my water spec|Cosmetics or personal care\" still matches",
+  "Pass 12 (proof-and-seriousness 5.2 P22; SITE-PLAN contact-proposal): the requests intro promises the proposal summary (scope line, price, quote date, valid until, lead time, departures with reasons or \"none\"). \"Departures\" is buying#answer's term; buying#proposal stays the one home of the line items. The approver paragraph and lead time to FAT, delivery and water released wait on FD-05 to FD-07 (DR-005); values never printed as ranges",
+  "Pass 12 phase 6 (role interviews, contact-proposal row): single-column form and 16 px inputs on phones are a style change in components/EnquiryForm, not page copy"
+ ],
+ "primary_cta_link": "#intake",
+ "facts": [
+  {
+   "v": "[proposal response time, working days]",
+   "l": "Written reply from an engineer · from receipt"
+  }
+ ],
+ "hero_index": false,
+ "figure": {
+  "spots": [
+   "ro-skid",
+   "edi-stack",
+   "storage-tank"
+  ]
+ }
+}

@@ -1,0 +1,65 @@
+/* ---------- ExplodedService: promises as callouts on an exploded view, a light drawing sheet ---------- */
+/* The drawing is IsoKit line art on the section ground (line-strong, the part a promise names turns flow); the sheet
+   furniture (border, zones, title block) is the quietest layer. Callouts are real HTML set on the leaders' shelves:
+   the shelf is the callout's baseline rule, the title and line stand on it. */
+.aq-exploded-service { position: relative; }
+.aq-exploded-service__fig { position: relative; }
+.aq-exploded-service__art { position: relative; }
+.aq-exploded-service__svg { width: 100%; }
+/* one part of the exploded pump (motion slides it from its assembled place, data-du) and a promise's leader */
+.aq-exploded-service__piece { transform-box: view-box; }
+.aq-exploded-service__lead { pointer-events: none; }
+.aq-exploded-service__axis { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 14 4 2 4; }
+.aq-exploded-service__svg [data-lead] .aq-iso__leader-line, .aq-exploded-service__svg [data-lead] .aq-iso__leader-dot { transition: stroke 300ms, fill 300ms; }
+.aq-exploded-service__svg [data-lead].is-lit .aq-iso__leader-line { stroke: var(--flow); }
+.aq-exploded-service__svg [data-lead].is-lit .aq-iso__leader-dot { fill: var(--flow); }
+.aq-exploded-service__pin { display: none; }
+
+.aq-exploded-service__calls { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; }
+.aq-exploded-service__call { position: absolute; transform: translate(0, -100%); display: flex; flex-direction: column; gap: var(--space-2);
+  padding-bottom: var(--space-3); pointer-events: auto; }
+.aq-exploded-service__code { margin: 0; display: flex; align-items: center; gap: var(--space-3); }
+.aq-exploded-service__n { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--ink-subtle); }
+/* desktop: the leaders tie each promise to its part, so the list numbers (which would read 02, 03, 01 across the
+   sheet) are left to phones, where they key the pins */
+.aq-exploded-service__n { display: none; }
+.aq-exploded-service__ic { width: var(--space-6); height: var(--space-6); background-color: var(--ink-muted); }
+.aq-exploded-service__t { margin: 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.015em; }
+.aq-exploded-service__t a { color: var(--ink); text-decoration: none; display: inline-block; min-height: 44px; line-height: 30px; padding-block: var(--space-1) 0; }
+.aq-exploded-service__t a::after { content: "\00a0\2192"; display: inline-block; color: var(--flow); transition: transform 200ms; }
+.aq-exploded-service__t a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--flow); }
+.aq-exploded-service__t a:hover::after { transform: translateX(var(--space-1)); }
+.aq-exploded-service__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+.aq-exploded-service__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-exploded-service__call:hover .aq-exploded-service__ic { background-color: var(--flow); }
+
+@container (max-width: 1100px) {
+  .aq-exploded-service__t { font-size: 20px; line-height: 26px; }
+  .aq-exploded-service__d { font-size: 14px; line-height: 22px; }
+}
+
+/* Phones (and narrow desktops, where the shelves get too short for the promises): the drawing full width with
+   numbered pins on the leaders, the promises stacked under it */
+@container (max-width: 1040px) {
+  /* the sheet is cropped tight to the pump so the parts read at phone size (viewBox x 226-886, y 40-552 of 1200 x 590;
+     the exploded parts span x 248-818, y 57-538; pass 12: 40 units more on the right, about 24 px at 375, so the signed
+     record sheet and its pin 3 clear the edge) */
+  .aq-exploded-service__fig { margin-inline: calc(-1 * var(--space-4)); overflow: hidden; aspect-ratio: 660 / 512; border-block: 1px solid var(--line); }
+  .aq-exploded-service__art { width: 181.82%; margin: -6.06% 0 0 -34.24%; }
+  .aq-exploded-service__pin { display: grid; place-items: center; position: absolute; width: var(--space-6); height: var(--space-6); transform: translate(-50%, -50%);
+    border-radius: var(--radius-pill); background: var(--ink); color: var(--surface); font: 500 12px/1 var(--font-mono); }
+  .aq-exploded-service__svg .aq-iso__leader-line { display: none; }
+  .aq-exploded-service__svg .aq-iso__sheet-t { display: none; } /* sheet zone letters render at 6 px in the crop (S9) */
+  .aq-exploded-service__calls { position: static; display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-4); }
+  .aq-exploded-service__call { position: static; transform: none; width: auto !important; padding: var(--space-4) 0 0; border-top: 1px solid var(--line); }
+  .aq-exploded-service__n { display: grid; place-items: center; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-pill); background: var(--ink); color: var(--surface); letter-spacing: 0; }
+}
+
+/* Narrow desktops and tablets: the cropped drawing centred at a readable size, the three promises side by side */
+@container (min-width: 861px) and (max-width: 1040px) {
+  .aq-exploded-service__fig { width: min(100%, 40rem); margin-inline: auto; border: 1px solid var(--line); }
+  .aq-exploded-service__calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8); margin-top: var(--space-8); }
+}
+
+/* Assemble / take apart (motion only, ported from Subframe Motion "Exploded camera"): a press under the drawing */
+.aq-exploded-service__toggle { margin-top: var(--space-4); }

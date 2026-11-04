@@ -1,0 +1,82 @@
+/* ---------- SensorLoop: control points drawn where they sit on one loop, a flat P&ID on a navy sheet (look "sensor-loop") ---------- */
+/* Desktop: the navy sheet holds the drawing (horizontal loop) over the keyed notes in three columns. Phones: the same
+   loop drawn vertically, then the notes in one column. Balloons: tag letters over the bar, row number under it. */
+.aq-sensor-loop { background: var(--navy); color: var(--on-navy); padding: var(--space-8) var(--space-8) var(--space-6); }
+.aq-sensor-loop__fig { margin: 0 0 var(--space-6); }
+.aq-sensor-loop__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-sensor-loop__svg--p, .aq-sensor-loop__svg--s { display: none; }
+.aq-sensor-loop__svg * { vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+/* the pipe: twin wall, the bore the sheet's navy */
+.aq-sensor-loop__wall { fill: none; stroke: var(--on-navy-muted); stroke-width: 8; }
+.aq-sensor-loop__bore { fill: none; stroke: var(--navy); stroke-width: 5; }
+.aq-sensor-loop__arrow { fill: none; stroke: var(--limestone); stroke-width: 1.5; }
+.aq-sensor-loop__tank { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; }
+.aq-sensor-loop__eq { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; }
+.aq-sensor-loop__ink { fill: var(--on-navy); stroke: none; }
+.aq-sensor-loop__thin { fill: none; stroke: var(--on-navy); stroke-width: 1.25; }
+.aq-sensor-loop__hose { fill: none; stroke: var(--on-navy-muted); stroke-width: 3; }
+.aq-sensor-loop__stem { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.aq-sensor-loop__bus { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 6 4; }
+.aq-sensor-loop__ball circle { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; }
+.aq-sensor-loop__ball.is-more circle { stroke-dasharray: 4 3; }
+.aq-sensor-loop__bar { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; }
+.aq-sensor-loop__tg, .aq-sensor-loop__nu, .aq-sensor-loop__ht { font: 500 13px/1 var(--font-mono); fill: var(--on-navy); text-anchor: middle; }
+.aq-sensor-loop__nu { fill: var(--on-navy-muted); }
+.aq-sensor-loop__ht { fill: var(--limestone); }
+/* lit: the note pointed at and its marks */
+.aq-sensor-loop__ball, .aq-sensor-loop__mk, .aq-sensor-loop__stem, .aq-sensor-loop__ht { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-sensor-loop__ball.is-hot circle { fill: var(--flow); stroke: var(--limestone); }
+.aq-sensor-loop__ball.is-hot .aq-sensor-loop__nu, .aq-sensor-loop__ball.is-hot .aq-sensor-loop__tg { fill: var(--on-navy); }
+.aq-sensor-loop__mk.is-hot .aq-sensor-loop__eq, .aq-sensor-loop__mk.is-hot .aq-sensor-loop__thin, .aq-sensor-loop__mk.is-hot .aq-sensor-loop__hose { stroke: var(--limestone); }
+.aq-sensor-loop__stem.is-hot { stroke: var(--limestone); stroke-dasharray: none; }
+
+/* the keyed notes along the foot */
+.aq-sensor-loop__cards { margin: 0; padding: var(--space-6) 0 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6) var(--space-8);
+  border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+.aq-sensor-loop__card { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; padding-top: var(--space-1); }
+.aq-sensor-loop__n { display: flex; align-items: center; gap: var(--space-2); margin: 0 0 var(--space-1); font: 500 13px/16px var(--font-mono); color: var(--on-navy-muted); }
+.aq-sensor-loop__ntag { padding: 2px var(--space-1); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 60%, transparent); border-radius: var(--radius-pill); color: var(--on-navy); }
+.aq-sensor-loop__card.is-hot .aq-sensor-loop__n { color: var(--limestone); }
+.aq-sensor-loop__card.is-hot .aq-sensor-loop__ntag { background: var(--flow); border-color: var(--flow); }
+.aq-sensor-loop__p { margin: 0; font: 500 17px/24px var(--font-sans); color: var(--on-navy); }
+.aq-sensor-loop .aq-sensor-loop__v { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-navy); text-wrap: pretty; }
+.aq-sensor-loop .aq-sensor-loop__m { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-navy-muted); }
+.aq-fold:not(.is-open) .aq-sensor-loop__card.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-sensor-loop) > .aq-fold__btn { display: none; }
+.aq-sensor-loop-sec .aq-sensor-loop__note { margin-top: var(--space-4); max-width: var(--text-max); font: 400 15px/22px var(--font-sans); color: var(--ink-muted); padding-left: var(--space-4); border-left: 2px solid var(--flow); }
+
+@container (max-width: 860px) {
+  .aq-sensor-loop { padding: var(--space-4) var(--space-4) var(--space-6); margin-inline: calc(-1 * var(--space-2)); }
+  .aq-sensor-loop__svg--d { display: none; }
+  .aq-sensor-loop__svg--p { display: block; max-width: 340px; margin-inline: auto; }
+  .aq-sensor-loop__tg, .aq-sensor-loop__nu, .aq-sensor-loop__ht { font-size: 13.5px; }
+  .aq-sensor-loop__fig { margin-bottom: var(--space-4); }
+  .aq-sensor-loop__cards { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding-top: var(--space-4); }
+  .aq-sensor-loop__p { font-size: 16px; line-height: 22px; }
+  .aq-fold:not(.is-open) .aq-sensor-loop__card.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-sensor-loop) > .aq-fold__btn { display: flex; }
+}
+/* Phones under 600 px (pass 12 C, S8): the loop as a 180 px strip held under the header (PhoneKit sticky figure), the
+   tall vertical drawing gone; every note open (the strip points at each), the one being read lit on the strip */
+@container (max-width: 600px) {
+  .aq-sensor-loop__svg--p { display: none; }
+  .aq-sensor-loop__svg--s { display: block; width: 100%; height: 180px; max-width: none; }
+  .aq-sensor-loop__fig { margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-2); }
+  .aq-sensor-loop[data-pk-on] .aq-sensor-loop__fig { background: var(--navy); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+  .aq-sensor-loop__tg, .aq-sensor-loop__nu, .aq-sensor-loop__ht { font-size: 13px; }
+  .aq-sensor-loop__ht--s { text-anchor: end; fill: var(--on-navy-muted); }
+  .aq-sensor-loop[data-pk-on] .aq-sensor-loop__cards { border-top: 0; }
+  .aq-fold:not(.is-open) .aq-sensor-loop[data-pk-on] .aq-sensor-loop__card.aq-fold-x { display: flex; }
+  .aq-fold:has(> .aq-sensor-loop[data-pk-on]) > .aq-fold__btn { display: none; }
+  /* the row in view: its marks lit on the strip, its number tag filled */
+  .aq-sensor-loop__ball.is-pk-active circle { fill: var(--flow); stroke: var(--limestone); }
+  .aq-sensor-loop__mk.is-pk-active .aq-sensor-loop__eq, .aq-sensor-loop__mk.is-pk-active .aq-sensor-loop__thin { stroke: var(--limestone); }
+  .aq-sensor-loop__stem.is-pk-active { stroke: var(--limestone); stroke-dasharray: none; }
+  .aq-sensor-loop__ht.is-pk-active { fill: var(--limestone); }
+  .aq-sensor-loop__loop.is-pk-active .aq-sensor-loop__wall { stroke: var(--limestone); }
+  .aq-sensor-loop__card.is-pk-active .aq-sensor-loop__n { color: var(--limestone); }
+  .aq-sensor-loop__card.is-pk-active .aq-sensor-loop__ntag { background: var(--flow); border-color: var(--flow); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-sensor-loop__ball, .aq-sensor-loop__mk, .aq-sensor-loop__stem, .aq-sensor-loop__ht { transition: none; }
+}

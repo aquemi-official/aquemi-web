@@ -1,0 +1,101 @@
+/* ---------- TitleBlock: delivery terms as the ruled title block of a drawing sheet (look "title-block"). Zones on
+   surface-raised between line-strong rules, a numbered square tag and the row's name in each zone's corner, an IsoKit
+   drawing at the zone's right, the value under the column name, the note under a dashed rule. Desktop 2x2, closed by
+   a strip with the section title over blank number and revision fields; phones stack the zones edge to edge of the
+   column. ---------- */
+.aq-title-block-sec { position: relative; }
+.aq-title-block { container-type: inline-size; }
+.aq-title-block__sheet { border: 1.5px solid var(--line-strong); background: var(--surface-raised); }
+.aq-title-block__zones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.aq-title-block__zones.is-odd > .aq-title-block__zone:last-child { grid-column: 1 / -1; }
+
+/* one zone: corner head and drawing on top, the value and the note under them */
+.aq-title-block__zone {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 15rem); grid-template-areas: "hd fig" "bd fig" "bd .";
+  grid-template-rows: auto auto 1fr; column-gap: var(--space-6); padding: var(--space-6) var(--space-8) var(--space-8);
+  border-top: 1px solid var(--line-strong);
+}
+.aq-title-block__zone:nth-child(-n+2) { border-top: 0; }
+.aq-title-block__zone:nth-child(2n) { border-left: 1px solid var(--line-strong); }
+.aq-title-block__hd { grid-area: hd; display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); }
+.aq-title-block__tag {
+  flex: none; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); margin-top: var(--space-1);
+  border: 1px solid var(--line-strong); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted);
+}
+.aq-title-block__zone.is-hl .aq-title-block__tag { background: var(--flow); border-color: var(--flow); color: var(--surface-raised); }
+.aq-title-block__h { margin: 0; font: 300 26px/34px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.aq-title-block__fig { grid-area: fig; align-self: start; display: flex; justify-content: flex-end; }
+.aq-title-block__svg { width: 100%; max-width: 15rem; max-height: 12rem; }
+.aq-title-block__bd { grid-area: bd; min-width: 0; }
+.aq-title-block__k { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-title-block__v { margin: 0; font: 400 19px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; }
+.aq-title-block__v .aq-ph { font-size: 15px; }
+/* placeholders stay reading size wherever they sit: on a signature line and in the notes */
+.aq-title-block__sv .aq-ph { font-size: 15px; }
+.aq-title-block__mt .aq-ph { font-size: 14px; }
+/* the drawn row's value, part by part (search, bookmark, footer number boxes) */
+.aq-title-block__parts { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.aq-title-block__parts li { position: relative; padding-left: var(--space-6); font: 400 19px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-title-block__parts li::before { content: ""; position: absolute; left: 0; top: 11px; width: var(--space-2); height: var(--space-2); border: 1.5px solid var(--flow); }
+/* choices as signature lines: x at the start, nothing signed */
+.aq-title-block__sigs { list-style: none; margin: 0; padding: 0; display: grid; }
+.aq-title-block__sigs li { display: flex; align-items: baseline; gap: var(--space-3); min-height: var(--space-12); padding: var(--space-3) 0 var(--space-2); border-bottom: 1.5px solid var(--line-strong); }
+.aq-title-block__sx { flex: none; font: 400 14px/1 var(--font-mono); color: var(--ink-subtle); }
+.aq-title-block__sv { font: 400 16px/24px var(--font-sans); color: var(--ink); }
+.aq-title-block__or { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-title-block__m { margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px dashed var(--line); }
+.aq-title-block__mt { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-title-block__go { margin: var(--space-4) 0 0; }
+
+/* drawing accents on IsoKit: an ink block (the page header), a flow-tint mark (bookmark ribbon, kickoff marker) */
+.aq-title-block__svg .aq-title-block__ink { fill: var(--ink); stroke: var(--ink); }
+.aq-title-block__svg .aq-title-block__mark { fill: var(--flow-tint); stroke: var(--flow); }
+.aq-title-block__svg .aq-title-block__hit { fill: var(--flow-tint); }
+.aq-title-block__svg .aq-title-block__sl { stroke: var(--ink-muted); }
+
+/* the closing strip: section title over blank number and revision fields (aria-hidden furniture) */
+.aq-title-block__tb {
+  display: grid; grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 7rem)); margin-left: 50%;
+  border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle);
+}
+.aq-title-block__tb > span { padding: var(--space-2) var(--space-3); }
+.aq-title-block__tb > span + span { border-left: 1px solid var(--line-strong); }
+.aq-title-block__tbh { color: var(--ink); }
+
+@container (max-width: 1040px) {
+  .aq-title-block__zone { grid-template-columns: minmax(0, 1fr) minmax(0, 10rem); grid-template-areas: "hd fig" "bd bd"; grid-template-rows: auto 1fr; padding: var(--space-6); }
+  .aq-title-block__svg { max-height: 8rem; }
+  .aq-title-block__tb { margin-left: 0; border-left: 0; }
+}
+/* tablet pairs: the zones share their heading row (subgrid), so values in a pair start level */
+@container (min-width: 601px) and (max-width: 1040px) {
+  .aq-title-block__zones { grid-auto-rows: auto; }
+  .aq-title-block__zone { grid-row: span 2; grid-template-rows: subgrid; }
+}
+/* phones: no outer frame or gutter, the zones stacked between full-width rules, the drawing beside the zone's name */
+@container (max-width: 600px) {
+  .aq-title-block__sheet { border: 0; border-top: 1.5px solid var(--line-strong); border-bottom: 1.5px solid var(--line-strong); background: none; }
+  .aq-title-block__zones { grid-template-columns: minmax(0, 1fr); }
+  .aq-title-block__zones.is-odd > .aq-title-block__zone:last-child { grid-column: auto; }
+  .aq-title-block__zone { grid-template-columns: minmax(0, 1fr) minmax(0, 10rem); column-gap: var(--space-4); padding: var(--space-6) 0; }
+  .aq-title-block__zone:nth-child(2) { border-top: 1px solid var(--line-strong); }
+  .aq-title-block__zone:nth-child(2n) { border-left: 0; }
+  .aq-title-block__hd { flex-direction: row; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+  .aq-title-block__tag { margin-top: 0; }
+  .aq-title-block__h { font-size: 24px; line-height: 30px; }
+  .aq-title-block__svg { max-height: 7rem; }
+  .aq-title-block__fig { align-self: center; }
+  .aq-title-block__v, .aq-title-block__parts li { font-size: 18px; line-height: 27px; }
+  .aq-title-block__parts li::before { top: 10px; }
+  /* the column name once, on the first zone */
+  .aq-title-block__zone + .aq-title-block__zone .aq-title-block__bd > .aq-title-block__k { display: none; }
+  .aq-title-block__mt { font-size: 15px; line-height: 23px; }
+  .aq-title-block__tb { display: none; }
+  /* timing: the strip under the name at the column's width, so the skid at its end reads */
+  .aq-title-block__zone.is-time { grid-template-areas: "hd hd" "fig fig" "bd bd"; }
+  .aq-title-block__zone.is-time .aq-title-block__fig { justify-content: flex-start; margin-bottom: var(--space-4); }
+  .aq-title-block__zone.is-time .aq-title-block__svg { width: auto; max-width: 100%; height: 7.5rem; max-height: none; }
+}
+/* the kickoff-to-documents run on the timing strip (motion draws it from the kickoff marker) */
+.aq-title-block__svg .aq-title-block__run { stroke-linecap: butt; }

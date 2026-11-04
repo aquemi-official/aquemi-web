@@ -1,0 +1,66 @@
+/* ---------- OptionChecker: options as a Swiss grid beside a checkerboard field with one blueprint tile (look "option-checker") ---------- */
+/* The field (left, 4 x 4 squares) is decoration except the blueprint tile, whose parts light with their option.
+   The body (right): the section head in the top cell, then the option cells (two wide, three narrow) on 1 px rules. */
+.aq-option-checker {
+  display: grid; grid-template-columns: minmax(0, 34fr) minmax(0, 66fr);
+  border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+}
+.aq-option-checker__field { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.aq-option-checker__tile { min-height: var(--space-16); }
+.aq-option-checker__tile--n { background: var(--navy); }
+.aq-option-checker__tile--l { background: var(--limestone); }
+.aq-option-checker__tile--s { background: var(--surface-sunken); }
+.aq-option-checker__tile--b { background: var(--navy); position: relative; outline: 1px solid var(--flow); outline-offset: -1px; }
+.aq-option-checker__bp { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-option-checker__bp * { vector-effect: non-scaling-stroke; }
+.aq-option-checker__grid { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.12; }
+.aq-option-checker__part, .aq-option-checker__fixed, .aq-option-checker__link { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 200ms ease, opacity 200ms ease; }
+.aq-option-checker__part circle { fill: var(--on-navy-muted); stroke: none; transition: fill 200ms ease; }
+.aq-option-checker__link { stroke-dasharray: 3 3; }
+.aq-option-checker.has-hot .aq-option-checker__part:not(.is-hot), .aq-option-checker.has-hot .aq-option-checker__fixed { opacity: 0.35; }
+.aq-option-checker__part.is-hot { stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); stroke-width: 2; }
+.aq-option-checker__part.is-hot circle { fill: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); }
+
+.aq-option-checker__body { display: flex; flex-direction: column; border-left: 1px solid var(--line-strong); }
+.aq-option-checker__head { padding: var(--space-8) var(--space-8) var(--space-6); display: flex; justify-content: flex-end; border-bottom: 1px solid var(--line-strong); }
+.aq-option-checker__head .aq-sec-head { margin: 0; }
+.aq-option-checker__head .aq-h1 { font-size: clamp(56px, 7vw, 104px); line-height: 1; font-weight: 300; letter-spacing: -0.03em; }
+.aq-option-checker__cells { list-style: none; margin: 0; padding: 0; flex: 1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.aq-option-checker__cell {
+  grid-column: span 2; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6) var(--space-6) var(--space-8);
+  border-left: 1px solid var(--line-strong); border-top: 1px solid var(--line-strong); margin: 0 0 0 -1px; transition: background-color 200ms ease;
+}
+.aq-option-checker__cell--wide { grid-column: span 3; border-top: 0; }
+.aq-option-checker__cell:hover, .aq-option-checker__cell:focus-within { background: var(--flow-tint); }
+.aq-option-checker__n { display: flex; align-items: baseline; font: 300 clamp(56px, 6vw, 88px)/1 var(--font-sans); letter-spacing: -0.04em; color: var(--ink); margin-bottom: var(--space-4); }
+.aq-option-checker__sl { color: var(--line-strong); }
+.aq-option-checker__cell:hover .aq-option-checker__sl, .aq-option-checker__cell:focus-within .aq-option-checker__sl { color: var(--flow); }
+.aq-option-checker__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-option-checker__t a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 0.2em; }
+.aq-option-checker__t a:hover { text-decoration-color: var(--flow); }
+.aq-option-checker__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+.aq-option-checker__arrow { color: var(--flow); }
+.aq-option-checker__d { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+
+@container (max-width: 860px) {
+  .aq-option-checker { grid-template-columns: minmax(0, 1fr); }
+  .aq-option-checker__field { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  .aq-option-checker__tile { aspect-ratio: 1; min-height: 0; }
+  .aq-option-checker__tile[data-r="1"], .aq-option-checker__tile[data-r="4"] { display: none; }
+  .aq-option-checker__tile--b { grid-row: 1 / span 2 !important; }
+  .aq-option-checker__tile[data-r="2"]:not(.aq-option-checker__tile--b) { grid-row: 1 !important; }
+  .aq-option-checker__tile[data-r="3"] { grid-row: 2 !important; }
+  /* pass 12: a full-width band, the blueprint tile centred between a navy/limestone checker at each side */
+  .aq-option-checker__field { border-top: 1px solid var(--line-strong); }
+  .aq-option-checker__tile[data-r="2"][data-c="1"], .aq-option-checker__tile[data-r="3"][data-c="4"] { background: var(--navy); }
+  .aq-option-checker__tile[data-r="2"][data-c="4"], .aq-option-checker__tile[data-r="3"][data-c="1"] { background: var(--limestone); }
+  .aq-option-checker__body { border-left: 0; }
+  .aq-option-checker__head { justify-content: flex-start; padding: var(--space-6) 0; border-top: 1px solid var(--line-strong); }
+  .aq-option-checker__cells { grid-template-columns: minmax(0, 1fr); }
+  .aq-option-checker__cell, .aq-option-checker__cell--wide { grid-column: 1; border-left: 0; border-top: 1px solid var(--line-strong); margin: 0; padding: var(--space-6) 0;
+    display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-2); padding: var(--space-4) 0 var(--space-6); }
+  .aq-option-checker__n { grid-row: 1 / span 2; font-size: var(--aq-num-phone, 44px); margin: 0; }
+  .aq-option-checker__t { font-size: 18px; line-height: 24px; }
+}
+.aq-option-checker-sec { position: relative; }
+.aq-option-checker__num { font-variant-numeric: tabular-nums; }

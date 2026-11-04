@@ -1,0 +1,194 @@
+/* ---------- StairRouter: situations as a rising staircase of cards over huge cropped outline type (look "stair-router") ----------
+   Navy ground with a limestone wedge bottom right (a hard diagonal, no gradient). Behind everything, the block's
+   kinetic word runs as outline type cropped by the section edges; it is drawn twice, clipped to each side of the
+   diagonal, so its ink turns from on-navy to navy where it crosses onto the limestone. The end word sits solid on
+   the wedge. Desktop: one column per situation, each card on a tread one rise higher than the last; treads and
+   risers make one continuous stair line. The heading sits in the empty top-left corner above the low steps. */
+.aq-stair-router-sec, .aq-section--alt.aq-stair-router-sec {
+  --rise: var(--space-12);
+  --stair: color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+  position: relative; overflow: clip; background: var(--navy); color: var(--on-navy);
+}
+.aq-stair-router-sec > .aq-in { position: relative; z-index: 2; }
+.aq-stair-router__wedge { position: absolute; inset: 0; z-index: 0; background: var(--limestone); clip-path: polygon(100% 16%, 100% 100%, 56% 100%); }
+.aq-stair-router__type { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.aq-stair-router__words { position: absolute; inset: 0; }
+.aq-stair-router__words--navy { clip-path: polygon(0 0, 100% 0, 100% 16%, 56% 100%, 0 100%); opacity: 0.46; }
+.aq-stair-router__words--lime { clip-path: polygon(100% 16%, 100% 100%, 56% 100%); opacity: 0.3; }
+.aq-stair-router__w {
+  position: absolute; white-space: nowrap; font: 500 24cqw/0.8 var(--font-sans); letter-spacing: -0.05em; color: transparent;
+  -webkit-text-stroke: 1.5px var(--on-navy-muted);
+}
+.aq-stair-router__words--lime .aq-stair-router__w { -webkit-text-stroke-color: var(--navy); }
+.aq-stair-router__w--a { top: -0.16em; right: -0.08em; }
+.aq-stair-router__w--b { left: -0.1em; top: 50%; }
+.aq-stair-router__w--c { left: -0.1em; top: calc(50% + 0.82em); }
+.aq-stair-router__go {
+  position: absolute; right: -0.03em; bottom: -0.2em; z-index: 1; margin: 0; pointer-events: none;
+  font: 500 25cqw/1 var(--font-sans); letter-spacing: -0.06em; color: var(--navy);
+}
+
+.aq-stair-router { position: relative; display: grid; }
+.aq-stair-router > .aq-sec-head { grid-area: 1 / 1; align-self: start; position: relative; z-index: 3; max-width: 40%; }
+.aq-stair-router .aq-sec-head .aq-h1 { font: 300 64px/68px var(--font-sans); letter-spacing: -0.035em; color: var(--on-navy); max-width: none; }
+.aq-stair-router .aq-sec-head .aq-eyebrow, .aq-stair-router .aq-sec-head .aq-lead { color: var(--on-navy-muted); }
+
+.aq-stair-router__flight {
+  grid-area: 1 / 1; list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); align-items: start;
+}
+.aq-stair-router__step { position: relative; min-width: 0; margin-top: calc((var(--n, 6) - 1 - var(--i, 0)) * var(--rise, var(--space-12))); padding-top: var(--rise, var(--space-12)); }
+.aq-stair-router__n {
+  position: absolute; top: 0; left: 0; height: var(--rise, var(--space-12)); display: flex; align-items: center; gap: var(--space-2);
+  font: 400 22px/1 var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; color: var(--on-navy);
+}
+.aq-stair-router__num { display: inline-block; min-width: 2ch; }
+.aq-stair-router__arrow {
+  display: block; width: var(--space-6); height: 9px; background: var(--stair, var(--on-navy-muted));
+  clip-path: polygon(0 4px, calc(100% - 7px) 4px, calc(100% - 7px) 0, 100% 50%, calc(100% - 7px) 100%, calc(100% - 7px) 5px, 0 5px);
+}
+.aq-stair-router__tread { position: absolute; top: var(--rise, var(--space-12)); left: 0; right: 0; height: 2px; margin-top: -1px; background: var(--stair, var(--on-navy-muted)); transform-origin: 0 50%; }
+.aq-stair-router__riser { position: absolute; top: var(--rise, var(--space-12)); left: 0; width: 2px; height: var(--rise, var(--space-12)); margin-left: -1px; background: var(--stair, var(--on-navy-muted)); transform-origin: 50% 100%; }
+.aq-stair-router__card {
+  position: relative; margin: var(--space-2) var(--space-2) 0 var(--space-2); padding: var(--space-4) var(--space-3) var(--space-4);
+  background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line);
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms;
+}
+.aq-stair-router__step:first-child .aq-stair-router__card { margin-left: 0; }
+.aq-stair-router__hit { position: absolute; inset: 0; z-index: 0; }
+.aq-stair-router__t, .aq-stair-router__dl { position: relative; z-index: 1; pointer-events: none; }
+.aq-stair-router__dl a { pointer-events: auto; }
+.aq-stair-router__t { margin: 0 0 var(--space-3); font: 500 17px/22px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: balance; }
+.aq-stair-router__dl { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-stair-router__f dt {
+  padding-top: var(--space-2); border-top: 1px solid var(--line);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted);
+}
+.aq-stair-router__f dd { margin: var(--space-1) 0 0; font: 400 14px/20px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+/* the situation under its short title: a subtitle, its term ("Your situation") kept for screen readers only */
+.aq-stair-router__f.is-sit dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; padding: 0; border: 0; }
+.aq-stair-router__f.is-sit dd { margin: 0; color: var(--ink-muted); }
+.aq-stair-router__t:has(+ .aq-stair-router__dl > .is-sit:first-child) { margin-bottom: var(--space-1); }
+.aq-stair-router__f.is-go dt { border-top: 2px solid var(--flow); color: var(--flow); }
+.aq-stair-router__f.is-go dd a { font-weight: 500; text-decoration: none; }
+.aq-stair-router__f.is-go dd a::after { content: "\a0\2192"; }
+.aq-stair-router__f.is-pending dt { border-top-style: dashed; }
+.aq-stair-router__tbc { display: block; margin-top: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+/* the water: one flow dot at the top of the stair (motion climbs it there) */
+.aq-stair-router__drop {
+  position: absolute; top: var(--rise, var(--space-12)); right: 0; width: 10px; height: 10px; margin: -5px -5px 0 0; z-index: 2;
+  border-radius: var(--radius-pill); background: var(--limestone); pointer-events: none;
+}
+/* hover or focus on a step: the card lifts off its tread, the tread and riser light */
+.aq-stair-router__step:hover .aq-stair-router__card, .aq-stair-router__step:focus-within .aq-stair-router__card { transform: translateY(calc(-1 * var(--space-1))); border-color: var(--line-strong); }
+.aq-stair-router__step:hover .aq-stair-router__tread, .aq-stair-router__step:hover .aq-stair-router__riser,
+.aq-stair-router__step:focus-within .aq-stair-router__tread, .aq-stair-router__step:focus-within .aq-stair-router__riser { background: var(--limestone); }
+.aq-stair-router__step.is-link:hover .is-go a { text-decoration: underline; }
+.aq-stair-router__step:hover .aq-stair-router__arrow { background: var(--limestone); }
+
+/* Narrower than the seven-column stair: the flight runs down the page, each step indented one notch further, its
+   tread and riser drawing the stair along the cards' left edges */
+@container (max-width: 1180px) {
+  .aq-stair-router { display: block; }
+  .aq-stair-router > .aq-sec-head { max-width: none; margin-bottom: var(--space-4); }
+  .aq-stair-router__flight { display: flex; flex-direction: column; }
+  .aq-stair-router__step { margin-top: 0; margin-left: calc(var(--i, 0) * var(--space-3)); }
+  .aq-stair-router__riser { top: 0; height: var(--rise, var(--space-12)); }
+  .aq-stair-router__tread { left: calc(-1 * var(--space-3)); }
+  .aq-stair-router__step:first-child .aq-stair-router__tread { left: 0; }
+  .aq-stair-router__card { margin: 0; }
+  .aq-stair-router__dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3) var(--space-6); }
+  .aq-stair-router__drop { top: auto; bottom: 0; right: auto; left: calc((var(--n, 6) - 1) * var(--space-3)); margin: 0 0 -5px -5px; }
+  .aq-stair-router-sec { padding-bottom: calc(var(--space-32) + var(--space-12)); }
+  .aq-stair-router__wedge { clip-path: polygon(0 93%, 100% 84%, 100% 100%, 0 100%); }
+  .aq-stair-router__words--navy { clip-path: polygon(0 0, 100% 0, 100% 84%, 0 93%); }
+  .aq-stair-router__words--lime { clip-path: polygon(0 93%, 100% 84%, 100% 100%, 0 100%); }
+  .aq-stair-router__w { font-size: 30cqw; }
+  .aq-stair-router__w--b { top: 34%; }
+  .aq-stair-router__w--c { top: calc(34% + 0.82em); }
+  .aq-stair-router__go { font-size: 34cqw; bottom: -0.22em; }
+}
+@container (max-width: 860px) {
+  .aq-stair-router-sec, .aq-section--alt.aq-stair-router-sec { --rise: var(--space-12); }
+  .aq-stair-router .aq-sec-head .aq-h1 { font: 300 44px/48px var(--font-sans); letter-spacing: -0.03em; }
+  .aq-stair-router__step { margin-left: calc(var(--i, 0) * var(--space-2)); }
+  .aq-stair-router__tread { left: calc(-1 * var(--space-2)); }
+  .aq-stair-router__drop { left: calc((var(--n, 6) - 1) * var(--space-2)); }
+  .aq-stair-router__dl { display: flex; }
+  .aq-stair-router__n { font-size: 20px; }
+  .aq-stair-router__w { font-size: 44cqw; }
+  .aq-stair-router__w--a { top: -0.12em; }
+  /* pass 12 C: the end word is sized to the foot band, not the page width, and its baseline sits on the section's
+     foot, so the letters stand whole in the band and clear of the open card (was 46cqw, which ran under the card) */
+  .aq-stair-router__go { font-size: 30cqw; bottom: -0.2em; }
+  .aq-stair-router-sec { padding-bottom: calc(22cqw + var(--space-6)); }
+}
+
+/* ---------- Pass 12 phones: a situation picker (PhoneKit, assets/src/parts/PhoneKit.js) ----------
+   With labels: the labels as chips in two columns on the navy ground, the open one in limestone, and the one card
+   under them. Without labels: the situations as accordion heads, the card under its head. The stair survives as a thin
+   rising rail at the top of the card (this step in flow, the steps climbed in ink-subtle). No indents (S13). Without
+   script the phone keeps the stacked flight, unindented. */
+.aq-stair-router__rail { display: none; }
+@container (max-width: 860px) {
+  .aq-stair-router__step { margin-left: 0; }
+  .aq-stair-router__tread { left: 0; }
+  .aq-stair-router__drop { left: 0; }
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__n, .aq-stair-router__flight[data-pk-on] .aq-stair-router__tread,
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__riser, .aq-stair-router:has(> .aq-stair-router__flight[data-pk-on]) > .aq-stair-router__drop { display: none; }
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__step { margin: 0; padding: 0; }
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__card { margin: 0; padding: var(--space-4); }
+  .aq-stair-router:has(> .aq-stair-router__flight[data-pk-on]) > .aq-sec-head { margin-bottom: var(--space-6); }
+  .aq-stair-router__flight[data-pk-on] { align-items: stretch; }
+  /* no end word: the wedge is a thin limestone sill under the picker, not a dead band */
+  .aq-stair-router-sec:not(:has(> .aq-stair-router__go)):has(.aq-stair-router__flight[data-pk-on]) { padding-bottom: var(--space-24); }
+  .aq-stair-router-sec:not(:has(> .aq-stair-router__go)):has(.aq-stair-router__flight[data-pk-on]) > .aq-stair-router__wedge {
+    clip-path: polygon(0 calc(100% - var(--space-8)), 100% calc(100% - var(--space-16)), 100% 100%, 0 100%); }
+
+  /* chips */
+  .aq-stair-router__flight[data-pk-picker="chips"][data-pk-on] { gap: var(--space-2); }
+  .aq-stair-router__flight[data-pk-picker="chips"][data-pk-on] .aq-stair-router__chip {
+    min-height: 52px; padding: var(--space-2) var(--space-3); color: var(--on-navy); background: var(--navy);
+    border-color: color-mix(in srgb, var(--on-navy-muted) 55%, transparent); font: 400 15px/20px var(--font-sans); }
+  .aq-stair-router__flight[data-pk-picker="chips"][data-pk-on] .aq-stair-router__chip[aria-expanded="true"] { background: var(--limestone); border-color: var(--limestone); color: var(--navy); }
+  .aq-stair-router__flight[data-pk-picker="chips"][data-pk-on] .aq-stair-router__card { margin-top: var(--space-4); }
+
+  /* accordion (no labels) */
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] { border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__chip {
+    min-height: 56px; padding: var(--space-4) 0; align-items: first baseline; color: var(--on-navy); font: 400 17px/24px var(--font-sans);
+    border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+  /* the number shares the title's first line (one line or two); the chevron stays centred in the head */
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__chip .aq-stair-router__cn { align-self: first baseline; }
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__chip[aria-expanded="true"] { border-bottom-color: transparent; }
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__chip .aq-phone-kit__chev { align-self: center; margin-block: -10px; margin-right: calc(-1 * var(--space-3)); color: var(--on-navy-muted); }
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__chip[aria-expanded="true"] .aq-phone-kit__chev { color: var(--limestone); }
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__card { margin-bottom: var(--space-4); }
+  /* the head already says the situation: the card title stays for screen readers only */
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+  .aq-stair-router__flight[data-pk-picker="accordion"][data-pk-on] .aq-stair-router__dl { margin-top: 0; }
+
+  .aq-stair-router__cn { flex: none; align-self: baseline; font: 500 12px/20px var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy-muted); }
+  .aq-stair-router__chip[aria-expanded="true"] .aq-stair-router__cn { color: var(--on-limestone-muted); }
+  .aq-stair-router__flight[data-pk-picker="accordion"] .aq-stair-router__chip[aria-expanded="true"] .aq-stair-router__cn { color: var(--limestone); }
+  .aq-stair-router__cl { min-width: 0; text-wrap: balance; }
+
+  /* the stair as a thin rail on the card */
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__rail { position: relative; z-index: 1; display: flex; align-items: flex-end; gap: var(--space-3); margin-bottom: var(--space-3); pointer-events: none; }
+  .aq-stair-router__rail b { flex: none; font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-muted); }
+  .aq-stair-router__rail > span { flex: 1; display: flex; align-items: flex-end; gap: 2px; height: var(--space-4); }
+  .aq-stair-router__rail i { flex: 1; height: calc((var(--k, 0) + 1) / var(--n, 8) * 100%); min-height: 2px; background: color-mix(in srgb, currentColor 40%, transparent); }
+  .aq-stair-router__rail i.is-past { background: var(--ink-subtle); }
+  .aq-stair-router__rail i.is-here { background: var(--flow); }
+
+  /* reading text at 14 px or more; the start-with link a 44 px target */
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__f dd { font-size: 15px; line-height: 22px; }
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__f.is-go dd a { display: inline-flex; align-items: center; min-height: 44px; }
+  .aq-stair-router__flight[data-pk-on] .aq-stair-router__f.is-go dd { margin-top: 0; }
+}
+@container (max-width: 600px) {
+  /* pass 12 C: a 48 px foot like every other section; the sill at most 24 px */
+  .aq-stair-router-sec:not(:has(> .aq-stair-router__go)):has(.aq-stair-router__flight[data-pk-on]) { padding-bottom: var(--space-12); }
+  .aq-stair-router-sec:not(:has(> .aq-stair-router__go)):has(.aq-stair-router__flight[data-pk-on]) > .aq-stair-router__wedge {
+    clip-path: polygon(0 calc(100% - var(--space-3)), 100% calc(100% - var(--space-6)), 100% 100%, 0 100%); }
+}

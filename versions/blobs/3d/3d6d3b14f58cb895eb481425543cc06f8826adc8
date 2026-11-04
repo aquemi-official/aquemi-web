@@ -1,0 +1,185 @@
+/* ---------- EnquiryForm: the enquiry as a numbered data sheet ---------- */
+/* A quiet panel (surface-raised, one line hairline) holding an eyebrow title row, numbered fieldsets (1.0, 2.0)
+   with numbered items (1.1, 1.2) and one submit band. Separation by hairlines only. */
+.aq-form {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8);
+  max-width: 880px; min-width: 0; box-sizing: border-box;
+  padding: 0 var(--space-8) var(--space-8);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+}
+.aq-form .aq-field { max-width: none; }
+.aq-form__full { grid-column: 1 / -1; }
+
+/* Title row (pass 9): the sheet's navy title strip, flush with the panel's top edge, led by a short flow rule
+   (scoped under .aq-form so the page's p reset does not undo its bleed) */
+.aq-form .aq-form__title {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-6);
+  margin: -1px calc(-1 * var(--space-8) - 1px) 0; padding: var(--space-4) var(--space-8);
+  background: var(--navy); color: var(--on-navy-muted);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+.aq-form__title > span:first-child { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--on-navy); }
+.aq-form__title > span:first-child::before { content: ""; width: var(--space-6); height: 1.5px; background: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); }
+
+/* Numbered sections */
+.aq-form__section { border: 0; margin: 0; padding: 0; min-width: 0; }
+.aq-form__legend {
+  float: left; width: 100%; box-sizing: border-box;
+  display: flex; align-items: baseline; gap: var(--space-3);
+  margin: 0 0 var(--space-6); padding: 0;
+  font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; color: var(--ink);
+}
+.aq-form__num { font: 300 30px/28px var(--font-sans); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--flow); }
+.aq-form__grid { clear: both; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+.aq-form__ref {
+  margin-right: var(--space-2);
+  font: 400 12px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle);
+}
+
+/* Checkbox groups: each option is a 44 px row cell; a ticked cell takes a flow border */
+.aq-form .aq-checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: var(--space-2); }
+.aq-form .aq-checks label {
+  display: flex; gap: var(--space-3); align-items: center;
+  min-height: 44px; box-sizing: border-box; padding: var(--space-2) var(--space-3);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  cursor: pointer; overflow-wrap: anywhere;
+}
+.aq-form .aq-checks label:hover { border-color: var(--ink-muted); }
+.aq-form .aq-checks label { transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1), box-shadow 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-form .aq-checks label:has(:checked) { border-color: var(--flow); background: var(--flow-tint); box-shadow: inset 3px 0 0 var(--flow); color: var(--ink); }
+.aq-form .aq-checks input { flex: none; width: var(--space-4); height: var(--space-4); margin: 0; accent-color: var(--flow); }
+.aq-form .aq-checks input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* A [placeholder] in an option: in a checkbox or radio cell the label text sits in one span and the placeholder is the
+   Placeholder's chip inside it; a select option holds text only, so an option with a placeholder takes aq-ph itself
+   (the browser's list draws its ground where it can) and the closed select shows the chosen one on the same mono and
+   caution-tint ground. The site's placeholder switch (is-clean) turns it back to a plain field. */
+.aq-form select.aq-field__input:has(> option.aq-ph:checked) { font-family: var(--font-mono); background-color: var(--caution-tint); }
+.is-clean .aq-form select.aq-field__input:has(> option.aq-ph:checked) { font-family: var(--font-sans); background-color: var(--surface-raised); }
+
+/* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form while its option
+   is ticked. A full-width row like an option cell (surface, line border, radius-sm): the line in ink-muted, then the
+   Button link variant (flow, arrow). Not a field: no number, no label, nothing to validate. */
+.aq-form__elsewhere {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-1) var(--space-6);
+  padding: var(--space-3) var(--space-4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+}
+.aq-form__elsewhere-t { flex: 1 1 20rem; margin: 0; max-width: var(--text-max); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+
+/* Hidden conditional fields, file upload */
+.aq-form [hidden] { display: none; }
+/* The drop zone: a sunken field with a line border; the browser's button drawn as aq-btn--secondary, the chosen file names
+   (or "No file chosen") in mono beside it */
+.aq-field__file { font: 400 13px/20px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted); padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-sm); width: 100%; min-width: 0; background: var(--surface-sunken); cursor: pointer; }
+.aq-field__file::file-selector-button {
+  height: 44px; margin-right: var(--space-4); padding: 0 var(--space-6);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink);
+  font: 500 14px/20px var(--font-sans); letter-spacing: 0; cursor: pointer;
+  transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-field__file:hover::file-selector-button { border-color: var(--ink); }
+.aq-field__file:hover { border-color: var(--ink-subtle); }
+.aq-field__file:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* A required upload left empty (careers' CV): TextField's error, the fail border and its 3 px fail edge */
+.aq-field.is-error .aq-field__file { border-color: var(--fail); box-shadow: inset 3px 0 0 var(--fail); }
+@media (prefers-reduced-motion: reduce) { .aq-field__file::file-selector-button { transition: none; } }
+
+/* Stepped variant (pass 9): the progress list is a pipeline under the title strip. Each step is a numbered square node
+   on one line; the line runs flow as far as the current step (steps passed take a flow node), the current node is
+   filled with the action colour, steps ahead stay line-strong. Each step's name sits under its node. */
+.aq-form--steps { gap: var(--space-6); }
+.aq-form__progress { display: flex; margin: 0; padding: 0; list-style: none; counter-reset: aq-form-step; }
+.aq-form__progress li {
+  position: relative; flex: 1 1 0; min-width: 0; counter-increment: aq-form-step;
+  display: flex; flex-direction: column; gap: var(--space-2); padding-right: var(--space-3);
+  font: 500 14px/20px var(--font-sans); color: var(--ink-subtle);
+}
+.aq-form__progress li::before {
+  content: counter(aq-form-step); position: relative; z-index: 1; display: grid; place-items: center;
+  width: var(--space-8); height: var(--space-8); box-sizing: border-box; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: var(--surface-raised); font: 400 13px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted);
+  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms cubic-bezier(0.2, 0, 0, 1), color 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* the line from this node to the next */
+.aq-form__progress li:not(:last-child)::after {
+  content: ""; position: absolute; left: var(--space-8); right: 0; top: calc(var(--space-4) - 0.5px); height: 1px; background: var(--line-strong);
+  transform-origin: 0 50%; transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-form__progress li:has(~ li[aria-current="step"])::before { border-color: var(--flow); color: var(--flow); }
+.aq-form__progress li:has(~ li[aria-current="step"])::after { height: 1.5px; background: var(--flow); transform: scaleX(var(--aq-fill, 1)); }
+.aq-form__progress li:has(~ li[aria-current="step"]) { color: var(--ink-muted); }
+.aq-form__progress li[aria-current="step"] { color: var(--ink); }
+.aq-form__progress li[aria-current="step"]::before { background: var(--action); border-color: var(--action); color: var(--on-action); }
+.aq-form__step[hidden] { display: none; }
+.aq-form__step > .aq-form__actions { margin-top: var(--space-8); }
+/* The block note under the last step's actions, space-4 below the buttons (scoped so the page's p reset, .aq-page p,
+   does not set it flush against them) */
+.aq-form .aq-form__note { margin: var(--space-4) 0 0; }
+.aq-form__step > .wform-msg { display: block; margin-top: var(--space-2); }
+
+/* Submit band */
+.aq-form__actions {
+  display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap;
+  padding-top: var(--space-6); border-top: 1px solid var(--line);
+}
+/* A single sheet's block note (the privacy notice link) sits in its submit band, on its own line under the button:
+   space-4 below it, as a stepped form's note under its last step's actions */
+.aq-form .aq-form__actions > .aq-form__note { flex: 1 0 100%; margin: 0; }
+/* Until it has something to say, the band's status line takes no place (out of the flex flow, still a live region), so
+   on phones, where the button fills the line, it adds no empty row above the note */
+.aq-form__actions > .wform-msg:empty { position: absolute; }
+
+/* With motion the current step also wears a ring (aq-form__mark, made by EnquiryForm/motion.js) that slides to the
+   new step's node with Flip, as the water reaches it. */
+.aq-form__mark { position: absolute; z-index: 2; left: calc(-1 * var(--space-1)); top: calc(-1 * var(--space-1)); width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2)); box-sizing: border-box; border: 1.5px solid var(--flow); border-radius: var(--radius-sm); pointer-events: none; }
+.aq-form__actions .aq-btn--primary { min-height: var(--space-12); padding-inline: var(--space-6); }
+@media (prefers-reduced-motion: reduce) { .aq-form__progress li::before, .aq-form__progress li::after, .aq-form .aq-checks label { transition: none; } }
+/* Pass 9b feedback (EnquiryForm/motion.js, ported from Subframe Motion).
+   task-steps: a passed step's node shows a tick instead of its number and springs in (--aq-pop, 0.8 to 1). */
+.aq-form__progress li:has(~ li[aria-current="step"])::before { content: "\2713"; content: "\2713" / ""; font-size: 15px; transform: scale(var(--aq-pop, 1)); }
+/* border-beam: one lap of a flow light round the group being filled in (a conic light in a 1 px ring, just outside it) */
+.wform .aq-field, .wform .aq-fieldset { position: relative; }
+.aq-form__beam {
+  position: absolute; inset: calc(-1 * var(--space-2)); border-radius: var(--radius-md); pointer-events: none; opacity: 0;
+  padding: 1px; background: conic-gradient(from var(--aq-a, 0deg), transparent 0 70%, color-mix(in srgb, var(--flow) 40%, transparent) 84%, var(--flow) 94%, transparent 100%);
+  -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black); -webkit-mask-composite: xor;
+  mask: linear-gradient(black, black) content-box exclude, linear-gradient(black, black);
+}
+/* address-check: the field's border turns over 150 ms; a field put right shows a pass tick after its label */
+.wform .aq-field__input { transition: border-color 150ms cubic-bezier(0.2, 0, 0, 1), box-shadow 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-form__ok { display: inline-grid; place-items: center; vertical-align: -2px; margin-left: var(--space-2); color: var(--pass); }
+/* loading-button: the submit's faces share one grid cell, so the button keeps its width through pending and error */
+.aq-form__faces { display: inline-grid; align-items: center; justify-items: center; }
+.aq-form__face { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: var(--space-2); }
+.aq-form__face.is-pending, .aq-form__face.is-error { opacity: 0; visibility: hidden; }
+.aq-form__submit[data-face="error"] { background: var(--fail); border-color: var(--fail); color: var(--surface); }
+@media (prefers-reduced-motion: reduce) { .wform .aq-field__input { transition: none; } }
+
+@container (max-width: 860px) {
+  /* Phones: tighter panel, one column, full-width submit */
+  .aq-form { gap: var(--space-6); padding: 0 var(--space-4) var(--space-6); }
+  .aq-form .aq-form__title { margin-inline: calc(-1 * var(--space-4) - 1px); padding: var(--space-3) var(--space-4); }
+  .aq-form__progress li { font-size: 13px; line-height: 18px; padding-right: var(--space-2); }
+  .aq-form__num { font-size: 22px; line-height: 26px; }
+  .aq-form__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-form__legend { margin-bottom: var(--space-4); font-size: 18px; line-height: 26px; }
+  .aq-form__submit { width: 100%; justify-content: center; }
+}
+
+/* ---------- Pass 12 (visual audit) ----------
+   - Item numbers count only the fields showing (wRenum in parts/EnquiryForm.js); a hidden field's empty ref takes no room.
+   - Fields in a two-column row start at the top of their cell: a neighbour with a help line no longer stretches this
+     field's label row and pushes its input down (contact-locations "Number of visitors", 20 px lower than "Preferred dates").
+   - Phones: short option lists (aq-checks--short: four or more options of 20 characters or fewer) in two columns; the
+     progress list's step names at the 14 px reading floor. */
+.aq-form__ref:empty { display: none; }
+.aq-form__grid > .aq-field { align-content: start; }
+@container (max-width: 860px) {
+  /* two columns only where a cell is 140 px or more (288 px inside the panel at 375 px); one column at 360 px; labels at the 14 px reading floor, where
+     "Troubleshooting" ran past its 136 px cell (pass 12 verify M2) */
+  .aq-form .aq-checks--short { grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(var(--space-32) + var(--space-3))), 1fr)); }
+  .aq-form .aq-checks--short label { gap: var(--space-2); padding-inline: var(--space-2); font-size: var(--aq-read-phone, 14px); line-height: 20px; overflow-wrap: normal; -webkit-hyphens: auto; hyphens: auto; }
+  .aq-form__progress li { font-size: var(--aq-read-phone, 14px); line-height: 20px; }
+}

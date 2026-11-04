@@ -1,0 +1,234 @@
+/* ---------- Closing: the call to action at the end of every page, on the navy band ---------- */
+/* The brand's closing band: one centred headline at display size, a lead sentence and a large Limestone primary
+   button, with the brand mark large and faint (Limestone at 6 %), cut by the top-left corner, fading into the navy.
+   The only centred text on the site. Below the button, the exchange is drawn as a small process on the navy: what you
+   send feeds a manifold, one pipe carries it across with the turnaround as its label, and what comes back leaves as
+   drawn sheets. Hairlines on navy are on-navy-muted at 30 % strength; drawing lines at 55 %; water in flow lifted
+   towards on-navy (--aq-c-water), so it reads on the dark ground in both themes. */
+.aq-closing {
+  --aq-c-hair: color-mix(in srgb, var(--on-navy-muted) 30%, transparent);
+  --aq-c-line: color-mix(in srgb, var(--on-navy-muted) 55%, transparent);
+  --aq-c-water: color-mix(in srgb, var(--flow) 55%, var(--on-navy));
+  position: relative; overflow: hidden; text-align: center;
+}
+/* A little more room above the headline, clear of the mark in the corner */
+.aq-closing.aq-section { padding-top: calc(var(--space-24) + var(--space-8)); padding-bottom: var(--space-24); }
+/* Navy depth (brand book, Gradient grounds): navy lifting slightly at the top left and deepening to the bottom right */
+.aq-closing.aq-band--navy { background: linear-gradient(160deg, color-mix(in srgb, var(--navy) 88%, var(--on-navy)) 0%, var(--navy) 45%, color-mix(in srgb, var(--navy) 70%, var(--on-limestone)) 100%); }
+/* The mark: the supplied brand mark at min(44%, 640px), its centre 15 % of its width inside the band's top-left
+   corner, so the corner cuts the three outer dots about in half and the wave and lower-right dot show whole. Limestone
+   at 6 %, with a radial mask that fades it away from the corner; it ends before the headline. */
+.aq-closing__mark {
+  position: absolute; left: 0; top: 0; width: min(44%, 640px); height: auto; transform: translate(-35%, -35%);
+  fill: var(--limestone); opacity: 0.06; pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle at 35% 35%, var(--navy) 0%, var(--navy) 30%, transparent 75%);
+  mask-image: radial-gradient(circle at 35% 35%, var(--navy) 0%, var(--navy) 30%, transparent 75%);
+}
+/* The water line: one flow hairline along the band's top edge (Closing/motion.js runs it in from the left) */
+.aq-closing::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1.5px; background: var(--aq-c-water, var(--flow));
+  transform-origin: 0 50%; transform: scaleX(var(--aq-c-run, 1)); pointer-events: none;
+}
+.aq-closing__frame { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+
+/* Headline: display size, light and tracked tight, in on-navy (stays light on navy in both themes) */
+.aq-closing__h {
+  max-width: 20ch; margin: 0; font: 300 clamp(40px, 4.8cqi, 68px)/1.04 var(--font-sans); letter-spacing: -0.035em;
+  color: var(--on-navy); overflow-wrap: break-word; text-wrap: balance;
+}
+.aq-closing .aq-closing__lead { max-width: 52ch; margin: 0 auto; color: var(--on-navy-muted); }
+.aq-closing__action { display: flex; justify-content: center; min-width: 0; max-width: 100%; margin-top: var(--space-2); }
+/* The one large button on the site: taller and wider than a section's, the Limestone primary of aq-band--navy */
+.aq-closing__action .aq-btn--primary { min-height: var(--space-16); padding-inline: var(--space-8); font-size: 16px; gap: var(--space-3); }
+.aq-closing__action .aq-btn__arrow { transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-closing__action .aq-btn--primary:hover .aq-btn__arrow, .aq-closing__action .aq-btn--primary:focus-visible .aq-btn__arrow { transform: translateX(var(--space-1)); }
+
+/* Below the button: the checklist or exchange, then the proof, left-aligned in a centred column */
+.aq-closing__more {
+  display: flex; flex-direction: column; gap: var(--space-8); width: 100%; max-width: 1040px; margin-top: var(--space-12);
+  text-align: start;
+}
+
+/* Proof: one confirmed figure from the page, in mono, under a hairline */
+.aq-closing__proof {
+  display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; max-width: 100%;
+  padding-top: var(--space-3); border-top: 1px solid var(--aq-c-hair, var(--line));
+}
+.aq-closing__tag { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-closing__value {
+  font: 300 40px/44px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  color: var(--on-navy); overflow-wrap: break-word;
+}
+.aq-closing__label { font: 400 14px/22px var(--font-sans); color: var(--on-navy-muted); }
+
+/* Checklist (cta.include): what to send us, as numbered rows on faint hairlines */
+.aq-closing__include { display: flex; flex-direction: column; gap: var(--space-3); width: 100%; max-width: var(--text-max); min-width: 0; margin-inline: auto; }
+.aq-closing__include ol {
+  list-style: none; margin: 0; padding: 0; columns: 2; column-gap: var(--space-8);
+  border-bottom: 1px solid var(--aq-c-hair, var(--line));
+}
+.aq-closing__include li {
+  position: relative; break-inside: avoid; display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); align-items: baseline;
+  padding-block: var(--space-3); border-top: 1px solid var(--aq-c-hair, var(--line));
+  font: 400 16px/24px var(--font-sans); color: var(--on-navy);
+}
+.aq-closing__include .aq-index { color: var(--on-navy-muted); line-height: 24px; }
+.aq-closing__t { min-width: 0; overflow-wrap: break-word; }
+
+/* Exchange (cta.include + cta.returns): send rows → manifold → pipe with the turnaround → manifold → returned sheets */
+.aq-closing__plate { width: 100%; min-width: 0; }
+.aq-closing__swap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(var(--space-32), 200px) minmax(0, 1fr); column-gap: 0; align-items: center; }
+.aq-closing__swap .aq-closing__include { max-width: none; margin: 0; }
+.aq-closing__swap .aq-closing__include ol { columns: 1; border: 0; }
+.aq-closing__swap .aq-closing__include li {
+  min-height: var(--space-12); box-sizing: border-box; align-items: center; padding: var(--space-2) var(--space-6) var(--space-2) 0;
+  border-top: 0; font-size: 15px; line-height: 22px;
+}
+.aq-closing__swap .aq-closing__include li + li { border-top: 1px solid var(--aq-c-hair, var(--line)); }
+.aq-closing__swap .aq-index { line-height: 22px; }
+/* Manifolds: a stub from each row to a bus down the list's inner edge (send: right; returns: left) */
+.aq-closing__swap .aq-closing__include li::before, .aq-closing__swap .aq-closing__include li::after { content: ""; position: absolute; pointer-events: none; }
+.aq-closing__swap .aq-closing__include li::after { top: 50%; height: 1px; width: var(--space-4); background: var(--aq-c-line, var(--line-strong)); transform: scaleX(var(--aq-stub, 1)); }
+.aq-closing__swap .aq-closing__include li::before { top: 0; bottom: 0; width: 1px; background: var(--aq-c-line, var(--line-strong)); transform-origin: 50% 0; transform: scaleY(var(--aq-bus, 1)); }
+.aq-closing__swap .aq-closing__include li:first-child::before { top: 50%; }
+.aq-closing__swap .aq-closing__include li:last-child::before { bottom: 50%; }
+.aq-closing__swap .aq-closing__include li:only-child::before { display: none; }
+.aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li::after { right: 0; transform-origin: 0 50%; }
+.aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li::before { right: 0; }
+.aq-closing__swap .aq-closing__returns li { padding: var(--space-2) 0 var(--space-2) var(--space-6); grid-template-columns: var(--space-8) var(--space-8) minmax(0, 1fr); column-gap: 0; }
+.aq-closing__swap .aq-closing__returns li::after { left: 0; transform-origin: 0 50%; }
+.aq-closing__swap .aq-closing__returns li::before { left: 0; }
+/* The tags hang above the rows, out of the flow, so the two lists and the pipe centre on one line */
+.aq-closing__swap { padding-top: var(--space-8); }
+.aq-closing__swap .aq-closing__include { position: relative; }
+.aq-closing__swap .aq-closing__include > .aq-closing__tag { position: absolute; bottom: 100%; left: 0; right: 0; padding-bottom: var(--space-2); border-bottom: 1px solid var(--aq-c-hair, var(--line)); }
+.aq-closing__swap .aq-closing__include:not(.aq-closing__returns) > .aq-closing__tag { margin-right: var(--space-6); }
+.aq-closing__swap .aq-closing__returns > .aq-closing__tag { margin-left: var(--space-6); }
+
+/* A returned document: a small drawn sheet with a folded corner and three text lines (decoration) */
+.aq-closing__doc {
+  position: relative; width: var(--space-6); height: var(--space-8); box-sizing: border-box; align-self: center;
+  border: 1px solid var(--aq-c-line, var(--line-strong)); border-top-right-radius: 0;
+  clip-path: polygon(0 0, 66% 0, 100% 25%, 100% 100%, 0 100%);
+}
+.aq-closing__doc::before { content: ""; position: absolute; right: -1px; top: -1px; width: 34%; height: 25%; box-sizing: border-box; border-left: 1px solid var(--aq-c-line, var(--line-strong)); border-bottom: 1px solid var(--aq-c-line, var(--line-strong)); }
+.aq-closing__doc::after { content: ""; position: absolute; left: 20%; right: 20%; top: 42%; height: 30%; border-top: 1px solid var(--aq-c-line, var(--line-strong)); border-bottom: 1px solid var(--aq-c-line, var(--line-strong)); }
+.aq-closing__returns li:hover .aq-closing__doc, .aq-closing__returns li:hover .aq-closing__doc::before, .aq-closing__returns li:hover .aq-closing__doc::after { border-color: var(--aq-c-water, var(--flow)); }
+
+/* The pipe between the manifolds: twin walls, the water line in its bore and a chevron at its outlet; the turnaround
+   rides above it as the pipe's label (real text) */
+.aq-closing__turn {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  margin: 0; padding: 0;
+  font: 400 13px/20px var(--font-mono); color: var(--on-navy-muted); text-align: center; overflow-wrap: anywhere;
+}
+.aq-closing__turn-t { position: absolute; left: 0; right: 0; bottom: calc(50% + var(--space-3)); padding-inline: var(--space-3); }
+.aq-closing__pipe {
+  position: relative; display: block; width: 100%; height: var(--space-2); box-sizing: border-box;
+  border-top: 1px solid var(--aq-c-line, var(--line-strong)); border-bottom: 1px solid var(--aq-c-line, var(--line-strong));
+  transform-origin: 0 50%; transform: scaleX(var(--aq-pipe, 1));
+}
+.aq-closing__pipe::before { content: ""; position: absolute; left: 0; right: 0; top: calc(50% - 0.75px); height: 1.5px; background: var(--aq-c-water, var(--flow)); transform-origin: 0 50%; transform: scaleX(var(--aq-water, 1)); }
+.aq-closing__pipe::after { content: ""; position: absolute; right: calc(-1 * var(--space-1)); top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid var(--aq-c-water, var(--flow)); border-right: 1.5px solid var(--aq-c-water, var(--flow)); transform: translate(-50%, -50%) rotate(45deg); opacity: var(--aq-water, 1); }
+/* The droplet Closing/motion.js sends through the pipe once */
+.aq-closing__pipe > i { position: absolute; left: 0; top: 50%; width: var(--space-2); height: var(--space-2); margin: calc(-1 * var(--space-1)) 0 0 calc(-1 * var(--space-1)); border-radius: 50%; background: var(--on-navy); opacity: 0; }
+
+/* "Reply within": the words before the turnaround, shown on phones only (on desktop the pipe already says it) */
+.aq-closing__within { display: none; }
+
+/* Call variant (cta.variant "call", contact-proposal): the exchange is a phone call. The middle column is wider; the
+   line's name rides above the pipe as the turnaround does, and the call button (a tel: link, 44 px; until the number
+   is confirmed the Button's pending text) hangs under it. */
+.aq-closing__swap--call { grid-template-columns: minmax(0, 1fr) minmax(calc(var(--space-32) + var(--space-16)), calc(2 * var(--space-32) + var(--space-6))) minmax(0, 1fr); }
+.aq-closing__call { position: absolute; left: 0; right: 0; top: calc(50% + var(--space-3)); display: flex; justify-content: center; padding-inline: var(--space-3); }
+.aq-closing__call .aq-btn { min-height: var(--aq-hit); max-width: 100%; white-space: normal; text-align: center; justify-content: center; }
+/* Until the number is confirmed the Button writes plain pending text (it never pretends to dial); here it keeps the
+   44 px slot the call button will fill, marked by a dashed hairline */
+.aq-closing__call .aq-btn--pending {
+  display: inline-flex; align-items: center; padding-inline: var(--space-3); color: var(--on-navy); font: 500 14px/20px var(--font-sans);
+  background: var(--navy); border: 1px dashed var(--aq-c-line, var(--line-strong)); border-radius: var(--radius-sm);
+}
+.aq-closing__turn--call .aq-closing__turn-t { color: var(--on-navy); }
+/* the band holds no button under the lead in a call: the exchange starts a step closer */
+.aq-closing--call .aq-closing__more { margin-top: var(--space-8); }
+
+@container (max-width: 860px) {
+  /* Phones (pass 12, S3): compact, but nothing is dropped. Headline, lead, full-width button, then the exchange as a
+     vertical flow down the band: every "what to send" item as a two-column chip grid (a long item takes the row), a
+     centred pipe running down to an arrow with the turnaround as a chip on it ("Reply within [time]"), then every
+     returned document as a row with its drawn sheet. The proof figure stays, smaller. */
+  .aq-closing.aq-section { padding-block: calc(var(--space-12) + var(--space-8)) var(--space-12); }
+  .aq-closing__mark { width: 90%; }
+  .aq-closing__frame { gap: var(--space-4); }
+  .aq-closing__h { font-size: 36px; line-height: 38px; letter-spacing: -0.03em; }
+  .aq-closing .aq-closing__lead { font-size: 16px; line-height: 24px; }
+  .aq-closing__action { width: 100%; }
+  .aq-closing__action .aq-btn { width: 100%; justify-content: center; }
+  .aq-closing__action .aq-btn--primary { min-height: var(--space-12); }
+  .aq-closing__more { margin-top: var(--space-6); gap: var(--space-6); }
+  .aq-closing__value { font-size: 28px; line-height: 34px; }
+
+  /* the send list (and a plain checklist) as chips, two to a row */
+  .aq-closing__include { gap: var(--space-3); }
+  .aq-closing__include:not(.aq-closing__returns) ol,
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) ol {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); columns: auto; border: 0;
+  }
+  .aq-closing__include:not(.aq-closing__returns) li,
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li {
+    display: flex; align-items: flex-start; gap: var(--space-2); min-height: var(--space-12); margin: 0;
+    padding: var(--space-2) var(--space-3); border: 1px solid var(--aq-c-hair, var(--line)); border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--navy) 70%, transparent);
+    font-size: var(--aq-read-phone, 14px); line-height: 20px;
+  }
+  .aq-closing__include:not(.aq-closing__returns) li.is-wide { grid-column: 1 / -1; }
+  .aq-closing__include:not(.aq-closing__returns) li .aq-index { flex: none; line-height: 20px; font-size: 12px; }
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) li + li { border-top: 1px solid var(--aq-c-hair, var(--line)); }
+
+  /* the exchange runs down the band */
+  .aq-closing__swap, .aq-closing__swap--call { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding-top: 0; }
+  .aq-closing__swap .aq-closing__include > .aq-closing__tag,
+  .aq-closing__swap .aq-closing__include:not(.aq-closing__returns) > .aq-closing__tag,
+  .aq-closing__swap .aq-closing__returns > .aq-closing__tag { position: static; margin: 0 0 var(--space-1); padding: 0 0 var(--space-2); border: 0; border-bottom: 1px solid var(--aq-c-hair, var(--line)); }
+  /* no manifolds on phones: the pipe in the middle carries the flow */
+  .aq-closing__swap .aq-closing__include li::before, .aq-closing__swap .aq-closing__include li::after { display: none; }
+  .aq-closing__swap .aq-closing__returns ol { columns: 1; border-bottom: 1px solid var(--aq-c-hair, var(--line)); }
+  .aq-closing__swap .aq-closing__returns li {
+    min-height: var(--space-12); padding: var(--space-2) 0; grid-template-columns: var(--space-8) var(--space-8) minmax(0, 1fr);
+    font-size: var(--aq-read-phone, 14px); line-height: 20px;
+  }
+  .aq-closing__swap .aq-closing__returns li + li { border-top: 1px solid var(--aq-c-hair, var(--line)); }
+
+  /* the pipe: centred, running down behind the turnaround chip to an arrow, with a clear run above and below the chip
+     so it reads as a pipe even when the chip wraps to two lines */
+  .aq-closing__turn {
+    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2);
+    min-height: calc(var(--space-16) + var(--space-8)); padding: var(--space-12) 0; text-align: center; font-size: 13px;
+  }
+  .aq-closing__pipe {
+    position: absolute; left: calc(50% - var(--space-1)); top: var(--space-2); bottom: var(--space-3); width: var(--space-2); height: auto;
+    border: 0; border-left: 1px solid var(--aq-c-line, var(--line-strong)); border-right: 1px solid var(--aq-c-line, var(--line-strong));
+    transform-origin: 50% 0; transform: scaleY(var(--aq-pipe, 1));
+  }
+  .aq-closing__pipe::before { left: calc(50% - 0.75px); right: auto; top: 0; bottom: 0; width: 1.5px; height: auto; transform-origin: 50% 0; transform: scaleY(var(--aq-water, 1)); }
+  .aq-closing__pipe::after { right: auto; left: 50%; top: auto; bottom: calc(-1 * var(--space-1)); transform: translate(-50%, -50%) rotate(135deg); }
+  .aq-closing__pipe > i { left: 50%; top: 0; }
+  .aq-closing__turn-t {
+    position: relative; z-index: 1; left: auto; right: auto; bottom: auto; max-width: 100%; padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--aq-c-line, var(--line-strong)); border-radius: var(--radius-sm); background: var(--navy);
+    font: 400 var(--aq-read-phone, 14px)/20px var(--font-mono); color: var(--on-navy);
+  }
+  .aq-closing__within { display: inline; font-family: var(--font-sans); font-size: var(--aq-read-phone, 14px); color: var(--on-navy-muted); }
+  /* call: the line's name as the chip, the call button under it on the pipe */
+  .aq-closing__turn--call { padding-bottom: var(--space-8); }
+  .aq-closing__call { position: relative; z-index: 1; top: auto; left: auto; right: auto; padding: 0; width: 100%; }
+  .aq-closing__call .aq-btn { width: 100%; min-height: var(--space-12); }
+  .aq-closing__call .aq-btn--pending { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .aq-closing__action .aq-btn__arrow { transition: none; } }
+
+/* Water (pass 9b): the FxRipple layer fills the band under the mark and the copy. Its brightest glint is on-navy at about
+   18 % (15 % on the dark theme's lighter navy), measured so on-navy-muted list text keeps AA over it. */
+.aq-closing > .aq-fx-shader { --fx-amt: 0.2; }
+[data-theme="dark"] .aq-closing > .aq-fx-shader { --fx-amt: 0.17; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-closing > .aq-fx-shader { --fx-amt: 0.17; } }

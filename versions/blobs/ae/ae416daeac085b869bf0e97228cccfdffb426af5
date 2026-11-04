@@ -1,0 +1,112 @@
+/* ---------- StrataRun: one water run stepping down a terrace of paper slabs (look "strata-run") ----------
+   Desktop: the stage labels in a row of equal columns over the drawing; each label's left hairline is the top of its
+   leader, which the svg carries on down to the part (the svg is as wide as the row, one column per stage). Slabs are
+   stacked sheets: raised tops, sunken sides, a hairline at every sheet edge. Behind them, a cut-paper stream in
+   flow-tint with its own thickness edge. Phones: labels stack down a vertical pipe, each with its own slab drawing. */
+.aq-strata-run-sec { overflow: hidden; }
+.aq-strata-run { position: relative; display: grid; gap: 0; }
+.aq-strata-run__stack { pointer-events: none; }
+.aq-strata-run__stages {
+  list-style: none; margin: 0; padding: 0; position: relative; z-index: 1;
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+}
+.aq-strata-run__stage {
+  position: relative; display: grid; align-content: start; gap: var(--space-1);
+  padding: 0 var(--space-4) var(--space-4) var(--space-3);
+  border-left: 1px solid var(--line-strong);
+  transition: border-color 200ms ease;
+}
+.aq-strata-run__stage .aq-index { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--flow); }
+.aq-strata-run__t { margin: 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); }
+.aq-strata-run__t a { color: inherit; text-decoration: none; padding-block: 11px; } /* pass 12 C: a 44 px target on desktop; the link is inline, so the padding adds no height (verify: the old negative margin did nothing) */
+.aq-strata-run__t a::after { content: "→"; display: inline-block; margin-left: var(--space-2); color: var(--flow); transition: transform 200ms ease; }
+.aq-strata-run__t a:hover::after, .aq-strata-run__t a:focus-visible::after { transform: translateX(3px); }
+.aq-strata-run__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-strata-run__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); max-width: 24ch; }
+.aq-strata-run__thumb { display: none; }
+.aq-strata-run__stage.is-hot, .aq-strata-run__stage:hover { border-left-color: var(--flow); }
+
+.aq-strata-run__fig { position: relative; margin-top: calc(-1 * var(--space-1)); }
+.aq-strata-run__svg { display: block; width: 100%; height: auto; }
+/* the slabs: stacked sheets */
+.aq-strata-run__slab { fill: var(--surface-sunken); stroke: var(--line-strong); stroke-width: 1; stroke-linejoin: round; }
+.aq-strata-run__slab.is-top { fill: var(--surface-raised); }
+/* the stream behind, with its paper edge */
+.aq-strata-run__stream { fill: var(--flow-tint); }
+.aq-strata-run__edge { fill: var(--line); }
+/* leaders and the monitoring bus */
+.aq-strata-run__lead { fill: none; stroke: var(--line-strong); stroke-width: 1; transition: stroke 200ms ease; }
+.aq-strata-run__dot { fill: var(--line-strong); transition: fill 200ms ease; }
+.aq-strata-run__lead.is-hot { stroke: var(--flow); }
+.aq-strata-run__dot.is-hot { fill: var(--flow); }
+.aq-strata-run__bus { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 4 3; }
+.aq-strata-run__node { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1; }
+.aq-strata-run__bus-g.is-hot .aq-strata-run__bus, .aq-strata-run__bus-g.is-hot .aq-strata-run__node { stroke: var(--flow); }
+.aq-strata-run__svg .aq-iso__part.is-hot .aq-iso__eq, .aq-strata-run__svg .aq-iso__part.is-hot .aq-iso__ln, .aq-strata-run__svg .aq-iso__part.is-hot .aq-iso__thin { stroke: var(--flow); }
+.aq-strata-run__return .aq-iso__pipe-wall { stroke-dasharray: none; }
+
+.aq-strata-run__base {
+  display: flex; align-items: center; gap: var(--space-3); margin: var(--space-2) 0 0;
+  font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+}
+.aq-strata-run__base a { color: inherit; display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; border-bottom: 1px solid transparent; }
+.aq-strata-run__base a::after { content: "→"; margin-left: var(--space-2); color: var(--flow); }
+.aq-strata-run__base a:hover { color: var(--ink); }
+.aq-strata-run__base a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-strata-run__bus-key { width: var(--space-12); height: 0; border-top: 1px dashed var(--line-strong); flex: none; }
+
+.aq-strata-run__pp { display: none; }
+
+/* Phones (pass 12, S10): the run turns vertical. Each stage's slab drawing stands full height (--th) in a row of its
+   own, alternating left and right; one twin-wall pipe zigzags down: in at the slab's near corner, out at the far
+   corner, across to the page edge and down past the stage's text to the next slab. The text sits under its slab.
+   --ly / --ry (inline, from the renderer): the slab's left and right corner heights as fractions of the drawing. */
+@container (max-width: 860px) {
+  .aq-strata-run { --th: 140px; --pc: var(--space-6); }
+  .aq-strata-run__fig { display: none; }
+  .aq-strata-run__stages { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); }
+  .aq-strata-run__stage { --ey: var(--ly, 0.6); --xy: var(--ry, 0.6); display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 0;
+    border-left: 0; padding: 0 var(--pc, var(--space-6)) var(--space-6); clip-path: inset(0 -4px); }
+  /* a pipe lane on both sides of every row, so the text keeps one left edge whichever side the pipe runs down */
+  .aq-strata-run__stage:nth-child(even) { --ey: var(--ry, 0.6); --xy: var(--ly, 0.6); }
+  /* row 1: the slab drawing on one side, its number and name in the free half beside it (above the pipe); row 2: the text */
+  .aq-strata-run__stage > .aq-index, .aq-strata-run__t { grid-row: 1; grid-column: 1; align-self: start; justify-self: end; width: 46%; position: relative; z-index: 1; }
+  .aq-strata-run .aq-strata-run__t { margin-top: calc(var(--space-4) + var(--space-1)); }
+  .aq-strata-run__stage:nth-child(even) > .aq-index, .aq-strata-run__stage:nth-child(even) .aq-strata-run__t { justify-self: start; }
+  /* beside a left-hand slab the name may run on into the right pipe lane (the pipe leaves that lane lower down) */
+  .aq-strata-run__stage:nth-child(odd) > .aq-index, .aq-strata-run__stage:nth-child(odd) .aq-strata-run__t {
+    width: calc(50% + var(--pc, var(--space-6)) - var(--space-2)); margin-right: calc(-1 * var(--pc, var(--space-6))); }
+  .aq-strata-run__d { grid-row: 2; grid-column: 1; }
+  .aq-strata-run__thumb { grid-row: 1; grid-column: 1; position: relative; display: flex; align-items: flex-start; height: var(--th, 120px);
+    margin: 0 calc(-1 * var(--pc, var(--space-6))) var(--space-3); padding: 0 var(--pc, var(--space-6)); }
+  .aq-strata-run__stage:nth-child(even) .aq-strata-run__thumb { flex-direction: row-reverse; }
+  .aq-strata-run__mini { flex: none; height: 100%; width: auto; max-width: 50%; }
+  .aq-strata-run__d { max-width: none; }
+  .aq-strata-run__t a { display: inline-block; padding-block: 10px; margin-block: -10px; } /* a 44 px target, no extra height */
+  .aq-strata-run__t a::after { display: inline; } /* the arrow keeps to the last word */
+  .aq-strata-run__base { padding-left: 0; }
+
+  /* the pipe: twin walls in line-strong, the water down the middle in flow */
+  .aq-strata-run__pp { display: block; box-sizing: border-box; border: 0 solid var(--line-strong); }
+  .aq-strata-run__pp--iv, .aq-strata-run__pp--ov { position: absolute; width: 10px; border-inline-width: 1px;
+    background: linear-gradient(var(--flow), var(--flow)) 50% 0 / 2px 100% no-repeat; }
+  .aq-strata-run__pp--ih, .aq-strata-run__pp--oh { height: 10px; border-block-width: 1px;
+    background: linear-gradient(var(--flow), var(--flow)) 0 50% / 100% 2px no-repeat; }
+  .aq-strata-run__pp--iv { left: calc(var(--pc, var(--space-6)) / 2 - 5px); top: 0; height: calc(var(--th, 120px) * var(--ey, 0.6) + 5px); }
+  .aq-strata-run__pp--ih { position: absolute; left: calc(var(--pc, var(--space-6)) / 2 - 5px); top: calc(var(--th, 120px) * var(--ey, 0.6) - 5px);
+    width: calc(var(--pc, var(--space-6)) / 2 + 9px); border-left-width: 0; }
+  .aq-strata-run__pp--oh { flex: 1 1 auto; align-self: flex-start; margin: calc(var(--th, 120px) * var(--xy, 0.6) - 5px) calc(var(--pc, var(--space-6)) / -2 - 5px) 0 -4px; }
+  .aq-strata-run__pp--ov { right: calc(var(--pc, var(--space-6)) / 2 - 5px); top: calc(var(--th, 120px) * var(--xy, 0.6) - 5px); height: 4000px; border-top-width: 1px; }
+  .aq-strata-run__stage:nth-child(even) .aq-strata-run__pp--iv { left: auto; right: calc(var(--pc, var(--space-6)) / 2 - 5px); }
+  .aq-strata-run__stage:nth-child(even) .aq-strata-run__pp--ih { left: auto; right: calc(var(--pc, var(--space-6)) / 2 - 5px); }
+  .aq-strata-run__stage:nth-child(even) .aq-strata-run__pp--oh { margin: calc(var(--th, 120px) * var(--xy, 0.6) - 5px) -4px 0 calc(var(--pc, var(--space-6)) / -2 - 5px); }
+  .aq-strata-run__stage:nth-child(even) .aq-strata-run__pp--ov { right: auto; left: calc(var(--pc, var(--space-6)) / 2 - 5px); }
+}
+/* Tablets (600-860 px): the run keeps a phone's measure (the zigzag stays tight, no bare pipe across the page) and the
+   slabs stand taller */
+@container (min-width: 600px) and (max-width: 860px) {
+  .aq-strata-run { --th: 180px; max-width: 560px; }
+}
+
+/* the moving water (AQbeam) while the visitor points at a stage: flow on the light sheet */
+.aq-strata-run { --beam: var(--flow); --beam-tail: var(--flow); --beam-w: 4.5; }
