@@ -6,7 +6,20 @@ This is the draft Aquemi website and the **Aquemi design system** it is built fr
 - Design system guide (generated from this repo): https://aquemi-official.github.io/aquemi-web/design-system.html
 - Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc
 
-We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a minute or two. No branches or reviews needed unless someone asks for one.
+## Branches
+
+Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` publishes all three on every push to any of them, in a minute or two):
+
+| Branch | Role | Published at |
+| --- | --- | --- |
+| `dev` | Day-to-day work. Commit and push here. | https://aquemi-official.github.io/aquemi-web/dev/ |
+| `staging` | Review before release. Only `dev` merges in. | https://aquemi-official.github.io/aquemi-web/staging/ |
+| `main` | Production, the public site. Only `staging` merges in. | https://aquemi-official.github.io/aquemi-web/ |
+
+- Work on `dev` (or a short branch merged into `dev`). Never commit straight to `staging` or `main`.
+- Promote a batch: merge `dev` into `staging`, review the staging copy, then merge `staging` into `main`. Fast-forward merges keep the three in step.
+- The staging and dev copies leave out the page history (`versions.html`) and the image gallery (`inspiration.html`); those work on production only. Their draft bar names the copy.
+- `python tools/versions.py` lists commits on `main`, so the page history shows released versions.
 
 ## The one rule
 

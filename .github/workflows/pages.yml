@@ -1,0 +1,66 @@
+name: Publish site
+
+# One GitHub Pages site carries all three branches:
+#   main     -> https://aquemi-official.github.io/aquemi-web/          (production)
+#   staging  -> https://aquemi-official.github.io/aquemi-web/staging/  (review before release)
+#   dev      -> https://aquemi-official.github.io/aquemi-web/dev/      (day-to-day work)
+# A push to any of them rebuilds the whole site from the latest commit of each branch.
+# The staging and dev copies leave out versions/ (page history) and design-system/inspiration/ (image gallery) to stay
+# inside the Pages size limit; those two pages work on production only. sw.js keeps each copy's cache apart.
+
+on:
+  push:
+    branches: [main, staging, dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: src-main
+      - uses: actions/checkout@v4
+        with:
+          ref: staging
+          path: src-staging
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          path: src-dev
+      - name: Assemble production, staging and dev
+        run: |
+          mkdir _site
+          rsync -a --exclude .git --exclude .github src-main/ _site/
+          for b in staging dev; do
+            rsync -a --exclude .git --exclude .github --exclude versions --exclude design-system/inspiration "src-$b/" "_site/$b/"
+            # Name the copy in the draft bar, so nobody mistakes it for production
+            label=$(echo "$b" | sed 's/./\U&/')
+            sed -i "s/Draft site · not for release · /${label} copy · draft site · not for release · /" "_site/$b/index.html"
+          done
+          touch _site/.nojekyll
+          du -sh _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
