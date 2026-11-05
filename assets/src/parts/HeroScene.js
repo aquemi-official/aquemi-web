@@ -281,16 +281,16 @@ function wHeroReply(p,f){var src=hsFrom(p,f.from);if(!src)return '';var cells=[]
 
 /* ---------- compliance-matrix (compliance, concept 234) ---------- */
 /* A ruled compliance matrix: f.cols (five heads: the clause, the three answers, the proof), rows numbered 01-04 whose
-   clause and proof cells are f.cells (placeholders until a real matrix is shown), one flow tick per row in the answer
-   column f.ticks names (1 to 3); and, tucked under its lower-right corner, a small PP package: a flat-top PP tank on
+   clause, answer and proof come from f.rows ([{c: clause, t: answer column 1-3, d: proof}], up to six; the older
+   f.cells (one clause and one proof for every row) with f.ticks still works), one flow tick per row in its answer column; and, tucked under its lower-right corner, a small PP package: a flat-top PP tank on
    its plinth piped with bead-ringed PP pipe to a generation module, the water leaving to the loop. Decoration
    (aria-hidden): the headline and lead carry the meaning. */
-function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],tk=(f.ticks||[1,1,2,1]).slice(0,6);if(cols.length<5)return '';
+function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],R=(f.rows&&f.rows.length?f.rows:(f.ticks||[1,1,2,1]).map(function(t){return {c:cell[0],t:t,d:cell[1]}})).slice(0,6);if(cols.length<5)return '';
  var tick='<svg class="aq-hero-scene__tick" viewBox="0 0 16 16" width="16" height="16" focusable="false"><path d="M3,8.5 L6.5,12 L13,4.5"/></svg>';
  var head=cols.map(function(c,i){return '<span class="aq-hero-scene__mx-th'+(i>0&&i<4?' is-mark':'')+'">'+tx(c)+'</span>'}).join('');
- var rows=tk.map(function(t,r){var o='<span class="aq-hero-scene__mx-c" data-r="'+(r+1)+'"><b>'+hsN(r+1)+'</b>'+tx(cell[0]||'')+'</span>';
+ var rows=R.map(function(x,r){var t=+x.t||1,o='<span class="aq-hero-scene__mx-c" data-r="'+(r+1)+'"><b>'+hsN(r+1)+'</b>'+tx(x.c||'')+'</span>';
   for(var j=1;j<4;j++)o+='<span class="aq-hero-scene__mx-m'+(j===t?' is-on':'')+'" data-r="'+(r+1)+'">'+(j===t?tick:'')+'</span>';
-  return o+'<span class="aq-hero-scene__mx-d" data-r="'+(r+1)+'">'+tx(cell[1]||'')+'</span>'}).join('');
+  return o+'<span class="aq-hero-scene__mx-d" data-r="'+(r+1)+'">'+tx(x.d||'')+'</span>'}).join('');
  var body='<path class="aq-iso__eq aq-iso__eq--alt aq-hero-scene__floor" d="'+isoBoxD([0,0,-4],112,52,4)+'"/>';
  var tank=hsPart('tank',24,26,0,1,'k1',function(b){hsPPTank(b,0,0,0,12,30)});
  var mod=isoPart('module',76,26,0,0.62,{w:40,d:36,h:52,id:'k1'});
