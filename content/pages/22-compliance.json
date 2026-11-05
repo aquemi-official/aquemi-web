@@ -479,27 +479,32 @@
   "Optional, not done in pass 11 (proof-and-seriousness.md § 5.2; L-14-9): \"Is plastic accepted for Purified Water?\" citing a published PP plant as precedent, with its caution; needs the owner and a checked public source before any wording",
   "Pass 11 integration (urs-guide review finding 5): the corporate-standard FAQ's link label is 'When not to choose polypropylene' (the review's 'When polypropylene is the wrong choice' is 6 words, over the 5-word button rule; systems uses 'When not to choose PP'), naming the block it lands on (urs-guide#pp-rows)",
   "Final round, pass 11: related links How a project runs (authoritative desk review, DESK-plan.md, Q1: project-plan from compliance and company pages)",
-  "Pass 12 (SITE-PLAN compliance; IB §4; RI 04, 15; NS critic A; FD-59, FD-60): pharmacopoeia table retitled 'Pharmacopoeias and other water standards' and given the hospital and laboratory rows (ST108:2023; ASTM D1193-24 and CLSI GP40 5th edition), two rows, gated by [hospital water scope] and [lab water scope], both linking ind-hospital-lab#grades, the hospital row keeping 'your program shows compliance' (pass 12 review finding 1) (never Purified Water, never bare 'Type 2'); limits intro says your quality unit releases the water (RI 04, 15) and the note names the edition basis; GMP devices row proof drops the readiness date; FAQ block gets anchor 'faq'. Hospital and lab scope stays on ind-hospital-lab ([hospital water scope], [lab water scope]); the CLSI GP40 edition and the ASTM D1193-24 types follow industries/pw-quality-and-limits.md §3 and need the same quality review as the other rows"
+  "Pass 12 (SITE-PLAN compliance; IB §4; RI 04, 15; NS critic A; FD-59, FD-60): pharmacopoeia table retitled 'Pharmacopoeias and other water standards' and given the hospital and laboratory rows (ST108:2023; ASTM D1193-24 and CLSI GP40 5th edition), two rows, gated by [hospital water scope] and [lab water scope], both linking ind-hospital-lab#grades, the hospital row keeping 'your program shows compliance' (pass 12 review finding 1) (never Purified Water, never bare 'Type 2'); limits intro says your quality unit releases the water (RI 04, 15) and the note names the edition basis; GMP devices row proof drops the readiness date; FAQ block gets anchor 'faq'. Hospital and lab scope stays on ind-hospital-lab ([hospital water scope], [lab water scope]); the CLSI GP40 edition and the ASTM D1193-24 types follow industries/pw-quality-and-limits.md §3 and need the same quality review as the other rows",
+  "Pass 13 (owner, 2026-11-04): the hero figure is the edition-timeline scene (HeroScene.js wHeroEdition), the edition FAQ's process drawn: specification approved, new edition published, change request, you approve; the new edition branches off at 02 and joins at 04. Keep its words in step with the FAQ \"Which edition of each standard do you design to?\". The compliance-matrix scene is retired (code kept in HeroScene.js); its last figure, to bring it back: {\"look\": \"compliance-matrix\", \"title\": \"Compliance matrix\", \"cols\": [\"Your clause\", \"Meets\", \"With a note\", \"Differs\", \"Proof\"], \"rows\": [{\"c\": \"4.1 Conductivity, USP <645>\", \"t\": 1, \"d\": \"FAT report\"}, {\"c\": \"4.2 TOC, USP <643>\", \"t\": 1, \"d\": \"OQ protocol\"}, {\"c\": \"6.3 Dead legs, ASME BPE\", \"t\": 2, \"d\": \"Dead leg register\"}, {\"c\": \"7.1 Piping in 316L\", \"t\": 3, \"d\": \"PP material certificates\"}]}"
  ],
  "figure": {
-  "look": "compliance-matrix",
-  "title": "Compliance matrix",
-  "cols": [
-   "Your clause",
-   "Meets",
-   "With a note",
-   "Differs",
-   "Proof"
-  ],
-  "cells": [
-   "[clause]",
-   "[document code]"
-  ],
-  "ticks": [
-   1,
-   1,
-   2,
-   1
+  "look": "edition-timeline",
+  "title": "When a standard changes",
+  "branch": "New edition",
+  "fork": 2,
+  "join": 4,
+  "steps": [
+   {
+    "t": "Specification approved",
+    "d": "The editions in force are fixed"
+   },
+   {
+    "t": "New edition published",
+    "d": "We assess what it changes"
+   },
+   {
+    "t": "Change request",
+    "d": "We name the documents it touches"
+   },
+   {
+    "t": "You approve",
+    "d": "The new edition applies"
+   }
   ]
  }
 }

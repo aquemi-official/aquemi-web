@@ -7479,6 +7479,52 @@ span.aq-hero-scene__row { cursor: default; }
   .aq-hero-scene__mx-d .aq-ph { white-space: nowrap; }
 }
 
+/* edition-timeline (compliance, pass 13): a ruled sheet like the matrix's; numbered stations on one flow line, and a
+   dashed flow branch (the new edition) that leaves at the fork station and rejoins at the join station, its label on
+   the branch. --n stations, --f fork, --j join (set by HeroScene.js). Station centres sit at (k - 0.5) / n of the rail. */
+.aq-hero-scene--edition { display: block; }
+.aq-hero-scene__ed { box-sizing: border-box; padding: var(--space-6); background: var(--surface-raised); border: 1px solid var(--line-strong); color: var(--ink); }
+.aq-hero-scene__ed-h { margin: 0 0 var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--line-strong); font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-hero-scene__ed-body { position: relative; padding-top: var(--space-12); }
+.aq-hero-scene__ed-rail { position: relative; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+/* the project line, first station to last, through the dots' centres */
+.aq-hero-scene__ed-rail::before { content: ""; position: absolute; top: calc(var(--space-2) - 1px); left: calc(50% / var(--n, 4)); right: calc(50% / var(--n, 4)); height: 2px; background: var(--flow); }
+.aq-hero-scene__ed-step { position: relative; display: grid; justify-items: center; align-content: start; row-gap: var(--space-1); padding: 0 var(--space-2); text-align: center; }
+.aq-hero-scene__ed-dot { position: relative; z-index: 1; box-sizing: border-box; width: var(--space-4); height: var(--space-4); margin-bottom: var(--space-2); border: 2px solid var(--flow); border-radius: 50%; background: var(--surface-raised); }
+.aq-hero-scene__ed-step:is(.is-fork, .is-join) .aq-hero-scene__ed-dot { background: var(--flow); }
+.aq-hero-scene__ed-n { font: 400 12px/16px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-hero-scene__ed-t { font: 500 15px/20px var(--font-sans); color: var(--ink); text-wrap: balance; }
+.aq-hero-scene__ed-d { font: 400 14px/20px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+/* the new edition: a dashed arch from the fork dot to the join dot, above the line */
+.aq-hero-scene__ed-branch {
+  position: absolute; top: var(--space-4); height: calc(var(--space-8) + var(--space-2));
+  left: calc((var(--f, 2) - 0.5) / var(--n, 4) * 100%); right: calc((var(--n, 4) - var(--j, 4) + 0.5) / var(--n, 4) * 100%);
+  box-sizing: border-box; border: 2px dashed var(--flow); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+.aq-hero-scene__ed-tag {
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); padding: 0 var(--space-2); white-space: nowrap;
+  background: var(--surface-raised); color: var(--flow); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase;
+}
+@container (max-width: 600px) {
+  /* phones: the line runs down the left, stations as rows (dot, number and words), the branch a dashed bracket on the
+     right from the fork row to the join row, its label turned along it */
+  .aq-hero-scene__ed { padding: var(--space-4); }
+  .aq-hero-scene__ed-h { margin-bottom: var(--space-2); padding-bottom: var(--space-2); font-size: 17px; line-height: 24px; }
+  .aq-hero-scene__ed-body { padding: 0 var(--space-8) 0 0; }
+  .aq-hero-scene__ed-rail { grid-template-columns: none; grid-auto-rows: minmax(var(--space-16), auto); }
+  .aq-hero-scene__ed-rail::before { top: calc(50% / var(--n, 4)); bottom: calc(50% / var(--n, 4)); left: calc(var(--space-2) - 1px); right: auto; width: 2px; height: auto; }
+  .aq-hero-scene__ed-step { grid-template-columns: var(--space-4) auto minmax(0, 1fr); grid-template-rows: auto auto; justify-items: start; align-content: center; column-gap: var(--space-2); row-gap: 0; padding: var(--space-1) 0; text-align: left; }
+  .aq-hero-scene__ed-dot { grid-row: 1 / span 2; align-self: center; margin: 0; }
+  .aq-hero-scene__ed-n { grid-row: 1; align-self: baseline; padding-top: 2px; }
+  .aq-hero-scene__ed-t { grid-column: 3; grid-row: 1; font-size: 14px; line-height: 20px; }
+  .aq-hero-scene__ed-d { grid-column: 3; grid-row: 2; font-size: 14px; line-height: 20px; }
+  .aq-hero-scene__ed-branch {
+    top: calc((var(--f, 2) - 0.5) / var(--n, 4) * 100%); bottom: calc((var(--n, 4) - var(--j, 4) + 0.5) / var(--n, 4) * 100%); height: auto;
+    left: auto; right: 0; width: var(--space-6); border: 2px dashed var(--flow); border-left: 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .aq-hero-scene__ed-tag { top: 50%; left: 100%; transform: translate(-50%, -50%) rotate(90deg); font-size: 11px; }
+}
+
 /* Phones (round C) */
 @container (max-width: 860px) {
   /* use-fan (Applications): the five industries are the next block's rows; the hero shows the drawing only */

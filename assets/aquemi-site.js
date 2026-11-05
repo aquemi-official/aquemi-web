@@ -901,16 +901,16 @@ function wHeroReply(p,f){var src=hsFrom(p,f.from);if(!src)return '';var cells=[]
 
 /* ---------- compliance-matrix (compliance, concept 234) ---------- */
 /* A ruled compliance matrix: f.cols (five heads: the clause, the three answers, the proof), rows numbered 01-04 whose
-   clause and proof cells are f.cells (placeholders until a real matrix is shown), one flow tick per row in the answer
-   column f.ticks names (1 to 3); and, tucked under its lower-right corner, a small PP package: a flat-top PP tank on
+   clause, answer and proof come from f.rows ([{c: clause, t: answer column 1-3, d: proof}], up to six; the older
+   f.cells (one clause and one proof for every row) with f.ticks still works), one flow tick per row in its answer column; and, tucked under its lower-right corner, a small PP package: a flat-top PP tank on
    its plinth piped with bead-ringed PP pipe to a generation module, the water leaving to the loop. Decoration
    (aria-hidden): the headline and lead carry the meaning. */
-function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],tk=(f.ticks||[1,1,2,1]).slice(0,6);if(cols.length<5)return '';
+function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],R=(f.rows&&f.rows.length?f.rows:(f.ticks||[1,1,2,1]).map(function(t){return {c:cell[0],t:t,d:cell[1]}})).slice(0,6);if(cols.length<5)return '';
  var tick='<svg class="aq-hero-scene__tick" viewBox="0 0 16 16" width="16" height="16" focusable="false"><path d="M3,8.5 L6.5,12 L13,4.5"/></svg>';
  var head=cols.map(function(c,i){return '<span class="aq-hero-scene__mx-th'+(i>0&&i<4?' is-mark':'')+'">'+tx(c)+'</span>'}).join('');
- var rows=tk.map(function(t,r){var o='<span class="aq-hero-scene__mx-c" data-r="'+(r+1)+'"><b>'+hsN(r+1)+'</b>'+tx(cell[0]||'')+'</span>';
+ var rows=R.map(function(x,r){var t=+x.t||1,o='<span class="aq-hero-scene__mx-c" data-r="'+(r+1)+'"><b>'+hsN(r+1)+'</b>'+tx(x.c||'')+'</span>';
   for(var j=1;j<4;j++)o+='<span class="aq-hero-scene__mx-m'+(j===t?' is-on':'')+'" data-r="'+(r+1)+'">'+(j===t?tick:'')+'</span>';
-  return o+'<span class="aq-hero-scene__mx-d" data-r="'+(r+1)+'">'+tx(cell[1]||'')+'</span>'}).join('');
+  return o+'<span class="aq-hero-scene__mx-d" data-r="'+(r+1)+'">'+tx(x.d||'')+'</span>'}).join('');
  var body='<path class="aq-iso__eq aq-iso__eq--alt aq-hero-scene__floor" d="'+isoBoxD([0,0,-4],112,52,4)+'"/>';
  var tank=hsPart('tank',24,26,0,1,'k1',function(b){hsPPTank(b,0,0,0,12,30)});
  var mod=isoPart('module',76,26,0,0.62,{w:40,d:36,h:52,id:'k1'});
@@ -921,6 +921,23 @@ function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],tk=(
  return '<figure class="aq-hero-scene aq-hero-scene--matrix" aria-hidden="true"><div class="aq-hero-scene__mx">'+(f.title?'<p class="aq-hero-scene__mx-h">'+tx(f.title)+'</p>':'')+
   '<div class="aq-hero-scene__mx-grid">'+head+rows+'</div></div><div class="aq-hero-scene__inset">'+svg+'</div></figure>'}
 
+/* ---------- edition-timeline (compliance, pass 13) ---------- */
+/* How a standard that changes mid-project is handled, as a ruled sheet: f.title, then f.steps ([{t, d}], three to five)
+   as numbered stations on one flow line. A dashed branch, labelled f.branch, leaves the line at step f.fork and rejoins
+   it at step f.join: the new edition runs beside the project and enters it only at the join (your approval). Desktop
+   draws the line across, phones down the left with the branch on the right. HTML and CSS only, token colours.
+   Decoration (aria-hidden): the headline, lead and the page's edition FAQ carry the meaning. Replaces the retired
+   compliance-matrix scene on the compliance page (its rows kept in the page's todo). */
+function wHeroEdition(p,f){var S=(f.steps||[]).slice(0,5),n=S.length;if(n<3)return '';
+ var fk=Math.min(Math.max(+f.fork||2,1),n-1),jn=Math.min(Math.max(+f.join||n,fk+1),n);
+ var li=S.map(function(x,i){var k=i+1;return '<li class="aq-hero-scene__ed-step'+(k===fk?' is-fork':'')+(k===jn?' is-join':'')+'">'
+  +'<span class="aq-hero-scene__ed-dot"></span><span class="aq-hero-scene__ed-n">'+hsN(k)+'</span>'
+  +'<span class="aq-hero-scene__ed-t">'+tx(x.t||'')+'</span>'+(x.d?'<span class="aq-hero-scene__ed-d">'+tx(x.d)+'</span>':'')+'</li>'}).join('');
+ return '<figure class="aq-hero-scene aq-hero-scene--edition" aria-hidden="true"><div class="aq-hero-scene__ed" style="--n:'+n+';--f:'+fk+';--j:'+jn+'">'
+  +(f.title?'<p class="aq-hero-scene__ed-h">'+tx(f.title)+'</p>':'')
+  +'<div class="aq-hero-scene__ed-body"><span class="aq-hero-scene__ed-branch">'+(f.branch?'<span class="aq-hero-scene__ed-tag">'+tx(f.branch)+'</span>':'')+'</span>'
+  +'<ol class="aq-hero-scene__ed-rail">'+li+'</ol></div></div></figure>'}
+
 /* The hero's scene for this page, or '' (unknown look, too few rows: the hero falls back to its other figure) */
 function wHeroScene(p){var f=p.figure||{},L=f.look;
  if(L==='module-lineup'||L==='service-ring'){var idx=heroBigIndex(p)||heroIndex(p);if(!idx)return '';return L==='module-lineup'?wHeroLineup(p,idx):wHeroRing(p,idx)}
@@ -930,6 +947,7 @@ function wHeroScene(p){var f=p.figure||{},L=f.look;
  if(L==='site-map')return wHeroSiteMap(p,f);
  if(L==='reply-flow')return wHeroReply(p,f);
  if(L==='compliance-matrix')return wHeroMatrix(p,f);
+ if(L==='edition-timeline')return wHeroEdition(p,f);
  return ''}
 /* IsoKit: the shared isometric line-drawing kit (README: design-system/components/IsoKit/README.md). Every look that
    draws equipment, pipes, water or drawing-sheet furniture builds it here, so all sections read as one hand.
