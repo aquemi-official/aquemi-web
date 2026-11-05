@@ -15,12 +15,6 @@
   "label": "See the client audit pack",
   "link": "#audit-pack"
  },
- "facts": [
-  {
-   "v": "[severity 1 on-site response time, hours]",
-   "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
-  }
- ],
  "blocks": [
   {
    "type": "table",
@@ -61,7 +55,7 @@
     ],
     [
      "A client audit finding or questionnaire gap",
-     "The client’s quality agreement (GUI-0001 C.02.012) at risk; first, evidence on design, trends and data integrity",
+     "The client’s quality agreement (GUI-0001 C.02.012) at risk; first, evidence on design, trends and records",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -115,7 +109,7 @@
    "nav": "Audit pack",
    "anchor": "audit-pack",
    "h": "The client audit pack",
-   "intro": "One pack per client and period: [reporting by suite, outlet and date].",
+   "intro": "One pack per client and period, with reporting agreed with each client.",
    "items": [
     {
      "t": "System description",
@@ -166,13 +160,13 @@
     {
      "t": "Duplex generation",
      "spot": "ro-skid",
-     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
+     "d": "Two trains, each sized to a share of demand set in your design: one runs while the other is sanitized.",
      "part": "trains"
     },
     {
      "t": "N+1 pumps",
      "spot": "pump",
-     "d": "Standby pump on each loop, automatic changeover: [duty and standby pumps, standard or option].",
+     "d": "Standby pump on each loop with automatic changeover: duty and standby pumps on request.",
      "part": "pumps"
     },
     {
@@ -184,14 +178,14 @@
     {
      "t": "Sanitize between campaigns",
      "spot": "loop",
-     "d": "[PP loop sanitization method] in campaign gaps, residual tested before use.",
+     "d": "A chemical method set per project, run in campaign gaps; residual tested before use.",
      "link": "sys-storage#sanitization",
      "part": "loop"
     },
     {
      "t": "Spares on your site",
      "spot": "wrench",
-     "d": "Critical spares on a service plan: [kit on site, replenished after use].",
+     "d": "Critical spares on a service plan, held as agreed in your plan.",
      "link": "svc-service",
      "part": "spares"
     },
@@ -220,7 +214,7 @@
    "items": [
     {
      "t": "Water scope review",
-     "d": "From your products, markets and PPQ date: the water specification, in [scope review turnaround, working days]."
+     "d": "From your products, markets and PPQ date: the water specification, in a time confirmed when you enquire."
     },
     {
      "t": "Change control",
@@ -228,11 +222,11 @@
     },
     {
      "t": "Build and tie in",
-     "d": "New outlets or a skid, built in our shop; tie-in in a campaign gap or shutdown, [site joints, by whom]."
+     "d": "New outlets or a skid, built in our shop; tie-in in a campaign gap or shutdown, site joints by the party named in your proposal."
     },
     {
      "t": "Release",
-     "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
+     "d": "New section qualified, extra sampling, then your quality unit releases it, over the duration set in your schedule."
     }
    ],
    "look": "tie-in-run"
@@ -245,7 +239,7 @@
    "items": [
     {
      "q": "A client needs WFI, stainless or a hot-held loop. What then?",
-     "a": "We supply one ambient polypropylene Purified Water (PW) package with polyvinyl chloride (PVC) pretreatment. No Water for Injection (WFI), pure steam, stills or stainless steel systems. Steam, a hot-held loop or routine 80 °C at loop pressure needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]. A standard requiring stainless rules out polypropylene, unless it allows exceptions.",
+     "a": "We supply one ambient polypropylene Purified Water (PW) package with polyvinyl chloride (PVC) pretreatment. No Water for Injection (WFI), pure steam, stills or stainless steel systems. Steam, a hot-held loop or routine 80 °C at loop pressure needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it). A standard requiring stainless rules out polypropylene, unless it allows exceptions.",
      "link": "sys-storage#sanitization",
      "link_label": "Compare sanitization methods"
     },
@@ -255,23 +249,23 @@
     },
     {
      "q": "Who owns the water data, us or our clients?",
-     "a": "Usually you: the water system is a site utility. Each quality agreement sets what that client receives (GUI-0001 C.02.012). Per-client reports: [reporting by suite, outlet and date].",
+     "a": "Usually you: the water system is a site utility. Each quality agreement sets what that client receives (GUI-0001 C.02.012). Per-client reporting is agreed with each client.",
      "link": "sys-monitoring#remote-access",
      "link_label": "Remote access options"
     },
     {
      "q": "Can you attend our clients' audits?",
-     "a": "Your clients audit the water system as part of your site. Our attendance as your supplier, in person or by video: [client audit attendance and terms]."
+     "a": "Your clients audit the water system as part of your site. Our attendance as your supplier, in person or by video, is agreed with you."
     },
     {
      "q": "Our clients will ask about you. What can we show them?",
-     "a": "Your clients can question the engineer who would lead your project and receive a written answer. They can audit our quality system on [on-site audit notice, working days] notice. They can witness the factory acceptance test (FAT) and read our specimen documents. Each check gives them a record to file.",
+     "a": "Your clients can question the engineer who would lead your project and receive a written answer. They can audit our quality system on reasonable notice. They can witness the factory acceptance test (FAT) and read our specimen documents. Each check gives them a record to file.",
      "link": "projects#verify",
      "link_label": "How to qualify us"
     },
     {
      "q": "Our system is another maker's, with paper records. Where do we start?",
-     "a": "For [makes and equipment types serviced]: with a system assessment of drawings, qualification file, trends and data integrity against your clients' markets.",
+     "a": "For makes and equipment confirmed when you enquire: with a system assessment of drawings, qualification file and trends against your clients' markets.",
      "link": "svc-upgrades",
      "link_label": "See the system assessment"
     }
@@ -291,7 +285,7 @@
  ],
  "cta": {
   "h": "Send your programs and uptime target",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I know my product, not my water spec|Contract manufacturing (CDMO)",
@@ -306,7 +300,7 @@
    "The redundancy to hold it",
    "The qualification scope"
   ],
-  "turnaround": "[scope review turnaround, working days]"
+  "turnaround": "a time confirmed when you enquire"
  },
  "todo": [
   "Target segment (FD-38): contract manufacturers are tier A, second after pharmaceutical (DR-002); tiers rank sales effort, web presence follows DR-027 (FD-59). This page serves drug CDMOs, natural health product and supplement contract makers (router row 5) and personal care contract makers (router row 6)",

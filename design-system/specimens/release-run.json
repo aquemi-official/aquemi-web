@@ -87,9 +87,9 @@
    "page": "buying",
    "slot": 6,
    "h": "Placing an order",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bff41e0",
    "hash": "9d0ebc33f3",
    "block": {
@@ -203,6 +203,78 @@
       "link": "svc-cq"
      }
     ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 6,
+   "h": "Placing an order",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "9eda697620",
+   "block": {
+    "type": "steps",
+    "nav": "Order",
+    "anchor": "order",
+    "h": "Placing an order",
+    "intro": "Four steps, from your purchase order to the start of the lead-time clock. Our bank details never change by email: call [sales phone number] before acting on such a request.",
+    "items": [
+     {
+      "t": "Address the order",
+      "d": "Make the purchase order (PO) out to [legal entity name]. Quote our proposal number, so price and scope carry over."
+     },
+     {
+      "t": "Add your references",
+      "d": "Public buyers: add your PO, tender and project numbers. We repeat them on every invoice."
+     },
+     {
+      "t": "We confirm in writing",
+      "d": "After your order: order accepted, drawing schedule and one named contact."
+     },
+     {
+      "t": "The lead-time clock starts",
+      "d": "Lead time counts from your order and from approved drawings, as page one states."
+     }
+    ],
+    "look": "release-run"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 6,
+   "h": "Placing an order",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "6c083ad5de",
+   "block": {
+    "type": "steps",
+    "nav": "Order",
+    "anchor": "order",
+    "h": "Placing an order",
+    "intro": "Four steps, from your purchase order to the start of the lead-time clock. Our bank details never change by email: check any such request with your Aquemi contact before acting on it.",
+    "items": [
+     {
+      "t": "Address the order",
+      "d": "Make the purchase order (PO) out to [legal entity name]. Quote our proposal number, so price and scope carry over."
+     },
+     {
+      "t": "Add your references",
+      "d": "Public buyers: add your PO, tender and project numbers. We repeat them on every invoice."
+     },
+     {
+      "t": "We confirm in writing",
+      "d": "After your order: order accepted, drawing schedule and one named contact."
+     },
+     {
+      "t": "The lead-time clock starts",
+      "d": "Lead time counts from your order and from approved drawings, as page one states."
+     }
+    ],
+    "look": "release-run"
    }
   }
  ]

@@ -90,9 +90,9 @@
    "page": "sys-storage",
    "slot": 4,
    "h": "Documents with the loop",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "f7a454d3d3",
    "block": {
@@ -120,6 +120,47 @@
      {
       "t": "Material certificates and joint records",
       "d": "[PP material certificates]; [PP joint records kept]",
+      "key": true
+     }
+    ],
+    "look": "sheet-stack",
+    "anchor": "documents"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 4,
+   "h": "Documents with the loop",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "e58da9b8a2",
+   "block": {
+    "type": "docs",
+    "h": "Documents with the loop",
+    "nav": "Documents",
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "items": [
+     {
+      "t": "Hydraulic calculation",
+      "d": "Shows turbulent flow by design: velocity and Reynolds number, every section and case",
+      "key": true
+     },
+     {
+      "t": "Dead leg register",
+      "d": "Proves every branch is short: L/D for each tee and sample valve",
+      "key": true
+     },
+     {
+      "t": "P&IDs and as-built isometrics",
+      "d": "Piping and instrumentation diagrams: flow direction, slopes, diameters and lengths",
+      "key": true
+     },
+     {
+      "t": "Material certificates and joint records",
+      "d": "Material certificates and joint records as set out in your proposal",
       "key": true
      }
     ],

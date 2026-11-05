@@ -128,9 +128,9 @@
    "page": "ind-hospital-lab",
    "slot": 5,
    "h": "For consultants and contractors",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "1f4eab0",
    "hash": "e1c4e6b7b9",
    "block": {
@@ -156,6 +156,52 @@
      {
       "t": "Panel approval",
       "d": "Electrical approval route: [panel certification mark held, or field evaluation used]"
+     },
+     {
+      "t": "Changeover plan",
+      "d": "Work in an occupied building; temporary water during the cutover; shutdown windows set with your facilities team"
+     },
+     {
+      "t": "Site safety",
+      "d": "Chemicals brought on site; drain discharge; isolation points"
+     }
+    ],
+    "fold_noun": "sections",
+    "look": "spine-shelf"
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 5,
+   "h": "For consultants and contractors",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "a9e2c19bd4",
+   "block": {
+    "type": "docs",
+    "nav": "For consultants",
+    "anchor": "specification",
+    "h": "For consultants and contractors",
+    "intro": "A specimen specification and basis-of-design sheet, sent within a time confirmed when you enquire. Your project's set follows the scope review.",
+    "items": [
+     {
+      "t": "Specification text",
+      "key": true,
+      "d": "Treatment train and loop; materials and joining; monitoring and sampling; validation support"
+     },
+     {
+      "t": "Basis of design",
+      "d": "Peak draw and fill profile; points of use from your fixture list; feed water analysis"
+     },
+     {
+      "t": "Battery limits",
+      "d": "Connections by tag, size and fluid; utilities and drains; what is ours and what is your contractor's"
+     },
+     {
+      "t": "Panel approval",
+      "d": "Electrical approval route: confirmed in your proposal"
      },
      {
       "t": "Changeover plan",

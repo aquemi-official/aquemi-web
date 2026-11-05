@@ -22,20 +22,19 @@
       "An engineer reads it",
       "Written answer, then a proposal"
      ],
-     "clock": "Written reply within [proposal response time, working days]",
+     "clock": "Written reply; time confirmed when you enquire",
      "link": "contact-proposal",
      "action": "Choose your request"
     },
     {
      "t": "Production stopped or water out of specification",
-     "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
-     "phone": "[service phone number]",
+     "d": "Severity 1. Use the service request and choose severity 1.",
      "steps": [
-      "Call the service line",
+      "Send a service request",
       "Triage confirms severity",
       "Remote diagnosis, then on site"
      ],
-     "clock": "Answered within [severity 1 phone answer time, minutes]",
+     "clock": "Answered within the time set in your service plan",
      "link": "contact-service",
      "intent": "Fault now|Severity 1: production stopped or water out of specification",
      "urgent": true,
@@ -49,7 +48,7 @@
       "Date and agenda back",
       "Protocol and test bay ready"
      ],
-     "clock": "Date and agenda within [visit booking reply time, working days]",
+     "clock": "Date and agenda agreed with you",
      "link": "contact-locations",
      "action": "Book a visit below",
      "current": true
@@ -70,36 +69,36 @@
    "rows": [
     [
      {
-      "t": "Head office, [head office, city and province]",
+      "t": "Ontario, Canada",
       "link": "about#facts"
      },
-     "[head office functions]",
-     "[mailing address]",
-     "[sales phone number] · [sales email] · [office hours, time zone]"
+     "",
+     "Not published",
+     "hello@aquemi.com"
     ],
     [
      {
-      "t": "Shop and test bay, [shop location, city and province]",
+      "t": "Shop and test bay, Ontario, Canada",
       "link": "svc-fabrication"
      },
-     "Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice",
-     "[shop address] · [map link]",
-     "[shop phone number] · [shop hours, time zone]"
+     "Skid and piping fabrication, witnessed FAT on reasonable notice",
+     "Given when you book a visit",
+     "Visits by appointment"
     ],
     [
      {
-      "t": "Service bases, [service bases, cities]",
+      "t": "Service, Ontario, Canada",
       "link": "svc-service"
      },
-     "Field technicians, [critical spares stock]",
-     "[street address, or home-based technicians]",
-     "[service phone number], [service phone hours] · [service email]"
+     "Field technicians, with critical spares agreed per plan",
+     "Ontario, Canada",
+     "Service request form · hello@aquemi.com"
     ],
     [
-     "Parts stock, [stock location or locations]",
-     "Spare parts and consumables, [order cut-off and delivery commitment]",
-     "[street address, or shipped from the shop]",
-     "[parts email address] · [parts desk hours, time zone]"
+     "Parts, Ontario, Canada",
+     "Spare parts and consumables, delivery confirmed with each order",
+     "Ontario, Canada",
+     "hello@aquemi.com"
     ]
    ],
    "fold": 4,
@@ -126,32 +125,32 @@
    "rows": [
     [
      "Ontario",
-     "[severity 1 on-site response time, hours] in [Ontario centres served]",
-     "[service base, city] · [stocking point for Ontario, city]",
-     "Design registration: Technical Standards and Safety Authority (TSSA). Engineering seal: Professional Engineers Ontario (PEO) · [certificate of authorization: yes or no]"
+     "The time set in your plan",
+     "Ontario, Canada",
+     "Design registration: Technical Standards and Safety Authority (TSSA). Engineering seal: Professional Engineers Ontario (PEO) · Certificate of authorization: status on request"
     ],
     [
      "Quebec",
-     "[Quebec severity 1 on-site hours, or visits only] in [Quebec centres served]",
-     "[service base, city] · [stocking point for Quebec, city]. [language of service in Quebec]",
-     "Design registration: Régie du bâtiment du Québec (RBQ). Engineering seal: Ordre des ingénieurs du Québec (OIQ) · [OIQ member on staff: yes or no]"
+     "Visits by arrangement",
+     "Ontario, Canada. Language of service confirmed when you enquire.",
+     "Design registration: Régie du bâtiment du Québec (RBQ). Engineering seal: Ordre des ingénieurs du Québec (OIQ) · Member on staff: status on request"
     ],
     [
      "British Columbia",
-     "[BC severity 1 on-site hours, or visits only] in [BC centres served]",
-     "[service base or partner, city] · [BC stocking point, city]",
-     "Design registration: Technical Safety BC. Engineering seal: Engineers and Geoscientists BC (EGBC) · [firm permit to practice: yes or no]"
+     "Visits by arrangement",
+     "Confirmed when you enquire",
+     "Design registration: Technical Safety BC. Engineering seal: Engineers and Geoscientists BC (EGBC) · Firm permit to practice: status on request"
     ],
     [
      "Alberta",
-     "[Alberta severity 1 on-site hours, or visits only] in [Alberta centres served]",
-     "[service base or partner, city] · [Alberta stocking point, city]",
-     "Design registration: Alberta Boilers Safety Association (ABSA). Engineering seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA) · [permit to practice: yes or no]"
+     "Visits by arrangement",
+     "Confirmed when you enquire",
+     "Design registration: Alberta Boilers Safety Association (ABSA). Engineering seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA) · Permit to practice: status on request"
     ],
     [
      "Other provinces and territories",
-     "[severity 1 on-site hours, or visits only]",
-     "[service base or partner, city] · [stocking point, city]",
+     "Visits by arrangement",
+     "Confirmed when you enquire",
      "Authorities where the system is installed"
     ]
    ],
@@ -242,16 +241,16 @@
     "c": "ON",
     "label": "Based in Ontario"
    },
-   "intro": "From [service bases, cities] we reach [service coverage area] within [travel time from service base, hours]. Parts for every package we build stay available for [parts availability period, years] from handover."
+   "intro": "From Ontario, Canada, we reach sites in an area agreed per project, in a time agreed in your service plan. Parts for every package we build stay available for a period stated in your proposal."
   },
   {
    "type": "form",
    "anchor": "visit",
    "nav": "Visit",
    "h": "Book a shop or test bay visit",
-   "intro": "Visits by appointment, on [shop visit notice, working days] notice.",
+   "intro": "Visits by appointment, on reasonable notice.",
    "submit": "Request a visit",
-   "note": "Visitors sign [visitor confidentiality and safety terms]. [privacy notice link]",
+   "note": "Visitors sign confidentiality and safety terms. {Privacy notice|privacy}",
    "steps": [
     {
      "title": "Your visit",
@@ -330,7 +329,7 @@
  ],
  "cta": {
   "h": "Tell us where your site is",
-  "body": "An engineer replies. Cost: [fit check cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "include": [
    "Site city and province",
    "In Notes: the response time and language you need"
@@ -339,7 +338,7 @@
    "On-site time, base and parts stock, in writing",
    "CRN route and engineering seal"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer"
@@ -374,12 +373,6 @@
   "Final round, pass 11: coverage intro states an honest response radius and parts policy: [travel time from service base, hours] and [parts availability period, years]; no map of one dot (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). Owner decides both"
  ],
  "primary_cta_link": "#coverage",
- "facts": [
-  {
-   "v": "[severity 1 on-site response time, hours]",
-   "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
-  }
- ],
  "hero_index": false,
  "figure": {
   "look": "site-map",

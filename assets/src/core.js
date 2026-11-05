@@ -22,7 +22,7 @@ var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our fir
 var NAVMENU=[
  {id:'systems',label:'Systems',hub:'systems',lead:'One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.',
   groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
-     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Alarms, records and audit trails mapped to Part 11']]},
+     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
    {h:'Plan and budget',items:[['systems#budget','Budget ranges','What a package costs and what moves it'],['systems#site','Site requirements','Space, utilities and connections you provide'],
      ['sys-pw#design','Skid design basis','Capacity, feed and recovery, each with its basis']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
@@ -45,7 +45,7 @@ var NAVMENU=[
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
  {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
   groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, Ph. Eur., GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits side by side'],
-     ['sys-monitoring#data-integrity','Data integrity','Audit trails and access, mapped to Part 11']]},
+     ['compliance#gmp','GMP and qualification','The GMP guides and IQ, OQ and PQ']]},
    {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
      ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
    {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],['cmp-quality#access','What you can read, and when','Public, under NDA, or at audit'],
@@ -64,11 +64,13 @@ var NAVMENU=[
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
 /* NAVSECT: [bar label, hub] per section (Hero.js heroIndex finds a hub by it) */
 var NAVSECT=NAVMENU.map(function(s){return [s.label,s.hub]});
-/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
-   hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the contact email, the
+   head office and the shop location (the footer's "designed, fabricated and tested in"). No phone number is published
+   for now (owner, 2026-11-04): the menu's urgent block keeps only the service request row, and wtel stays for when a
+   number is added back.
    Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
    files that repeat it; tools/design_system.py check warns on a value no page file carries. */
-var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]',shop:'[shop location, city and province]'};
+var CONTACT={email:'hello@aquemi.com',office:'Ontario, Canada',shop:'Ontario, Canada'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
@@ -88,8 +90,13 @@ function wnum(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');return s.indexOf(
 function wtel(s,cls,lead){s=String(s||'');var n=wnum(s),c=cls?' class="'+cls+'"':'',t=(lead||'')+(n?tx(s).replace(/ /g,'\u00a0'):tx(s));
  return n?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
-/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
-function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
+/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM).
+   Inline links: {words|target} in copy becomes a link, target a page id, "page#anchor" or "mailto:<address>"; a page or
+   anchor that does not exist (whas) leaves the words as plain text. Only for copy that is not itself inside a link. */
+function txLinks(s){return s.replace(/\{([^{}|]+)\|([^{}|\s]+)\}/g,function(m,t,to){
+ if(/^mailto:/i.test(to))return '<a href="'+to+'">'+t+'</a>';
+ return whas(to)?'<a href="#'+to+'" data-wp="'+to+'">'+t+'</a>':t})}
+function tx(s){s=txLinks(e(s));var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
 /* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label). intent (optional): option
    labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent, as Button) */
 function wlink(id,label,intent){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}

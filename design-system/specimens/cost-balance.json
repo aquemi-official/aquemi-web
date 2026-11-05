@@ -212,9 +212,9 @@
    "page": "first-system",
    "slot": 4,
    "h": "What it costs, all in and per month",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "6c883366da",
    "block": {
@@ -289,9 +289,9 @@
    "page": "buying",
    "slot": 4,
    "h": "How a price is built, for your capital request",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "c320040f35",
    "block": {
@@ -350,6 +350,227 @@
      "tank"
     ],
     "look": "cost-balance"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 4,
+   "h": "What it costs, all in and per month",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "89fb5929f7",
+   "block": {
+    "type": "spec",
+    "look": "cost-balance",
+    "nav": "Cost",
+    "anchor": "cost",
+    "h": "What it costs, all in and per month",
+    "intro": "Monthly lines are sized to your demand; your water and use change them. For a capital request, use the all-in figure.",
+    "cols": [
+     "Cost line",
+     "Amount",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "The package",
+      "v": "Priced per project, once",
+      "m": "Size and options; ranges on the systems page",
+      "link": "systems#budget"
+     },
+     {
+      "p": "Installation, connections and tie-in",
+      "v": "Quoted in your proposal, once",
+      "m": "Set in the proposal: who installs and connects each item"
+     },
+     {
+      "p": "Qualification or acceptance tests",
+      "v": "Quoted in your proposal, once",
+      "m": "Tests run on site; protocols in line 1, lab tests in line 7."
+     },
+     {
+      "p": "Service plan",
+      "v": "Quoted in your proposal",
+      "m": "Visits and calibration",
+      "link": "svc-service"
+     },
+     {
+      "p": "Filters, membranes, resin, salt and sanitant",
+      "v": "Estimated in your proposal",
+      "m": "Your feed water and daily use",
+      "link": "svc-service#running-cost"
+     },
+     {
+      "p": "Energy",
+      "v": "Estimated in your proposal",
+      "m": "Energy use estimated in your proposal, at your electricity rate"
+     },
+     {
+      "p": "Lab tests on your samples",
+      "v": "Estimated in your proposal",
+      "m": "Your lab or a contract lab; your sampling plan"
+     },
+     {
+      "p": "Water to drain",
+      "v": "Estimated in your proposal",
+      "m": "Part of the feed goes to drain (the recovery in your design), at your water rate",
+      "side": "out"
+     }
+    ],
+    "note": "First year, all in: lines 1 to 3 once, plus 12 months of lines 4 to 8. Add temporary water if production cannot stop.",
+    "glyphs": [
+     "softener",
+     "carbon-filter",
+     "ro-membrane",
+     "edi",
+     "tank"
+    ]
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 4,
+   "h": "How a price is built, for your capital request",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "57adbcd7d5",
+   "block": {
+    "type": "spec",
+    "nav": "Capital request",
+    "anchor": "capital",
+    "h": "How a price is built, for your capital request",
+    "intro": "Ask approval for one figure: installed, commissioned, and qualified or accepted. Each proposal ends with one paragraph your approver can read alone [confirm].",
+    "cols": [
+     "Cost line",
+     "Where the figure comes from",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Package and services",
+      "v": "Proposal total, each service its own line",
+      "m": "Before a quote: our budget range and its class",
+      "link": "systems#budget"
+     },
+     {
+      "p": "Installation and tie-ins",
+      "v": "The scope set out in your proposal",
+      "m": "Your contractor, unless the proposal includes it"
+     },
+     {
+      "p": "Utilities and site work",
+      "v": "Power, feed water and drain",
+      "m": "Up to the connection points",
+      "link": "systems#site"
+     },
+     {
+      "p": "Lab testing during qualification or acceptance",
+      "v": "Your lab or a contract lab",
+      "m": "Sampling weeks of performance qualification (PQ) or acceptance test",
+      "link": "svc-cq"
+     },
+     {
+      "p": "Temporary water",
+      "v": "Bought or made until the water is released for use",
+      "m": "Your cost while sampling runs"
+     },
+     {
+      "p": "Purified Water",
+      "v": "To your points of use",
+      "m": "What the approval buys",
+      "side": "out"
+     }
+    ],
+    "note": "A budget range states its class, date, valid-until date, lead time in weeks, one-line scope and basis. Its turnaround is confirmed when you enquire. Before the proposal, it moves with your water analysis, flow, loop length, points of use, and documentation and qualification scope. A proposal holds for the period stated on it; only the changes listed in it can move it. Service and consumables are yearly operating budget.",
+    "glyphs": [
+     "softener",
+     "carbon-filter",
+     "ro-membrane",
+     "edi",
+     "tank"
+    ],
+    "look": "cost-balance"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 4,
+   "h": "What it costs, all in and per month",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "9bc7d6da33",
+   "block": {
+    "type": "spec",
+    "look": "cost-balance",
+    "nav": "Cost",
+    "anchor": "cost",
+    "h": "What it costs, all in and per month",
+    "intro": "Monthly lines are sized to your demand; your water and use change them. For a capital request, use the all-in figure.",
+    "cols": [
+     "Cost line",
+     "Amount",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "The package",
+      "v": "Priced per project, once",
+      "m": "Size and options",
+      "link": "systems#budget"
+     },
+     {
+      "p": "Installation, connections and tie-in",
+      "v": "Quoted in your proposal, once",
+      "m": "Set in the proposal: who installs and connects each item"
+     },
+     {
+      "p": "Qualification or acceptance tests",
+      "v": "Quoted in your proposal, once",
+      "m": "Tests run on site; protocols in line 1, lab tests in line 7."
+     },
+     {
+      "p": "Service plan",
+      "v": "Quoted in your proposal",
+      "m": "Visits and calibration",
+      "link": "svc-service"
+     },
+     {
+      "p": "Filters, membranes, resin, salt and sanitant",
+      "v": "Estimated in your proposal",
+      "m": "Your feed water and daily use",
+      "link": "svc-service#running-cost"
+     },
+     {
+      "p": "Energy",
+      "v": "Estimated in your proposal",
+      "m": "Energy use estimated in your proposal, at your electricity rate"
+     },
+     {
+      "p": "Lab tests on your samples",
+      "v": "Estimated in your proposal",
+      "m": "Your lab or a contract lab; your sampling plan"
+     },
+     {
+      "p": "Water to drain",
+      "v": "Estimated in your proposal",
+      "m": "Part of the feed goes to drain (the recovery in your design), at your water rate",
+      "side": "out"
+     }
+    ],
+    "note": "First year, all in: lines 1 to 3 once, plus 12 months of lines 4 to 8. Add temporary water if production cannot stop.",
+    "glyphs": [
+     "softener",
+     "carbon-filter",
+     "ro-membrane",
+     "edi",
+     "tank"
+    ]
    }
   }
  ]

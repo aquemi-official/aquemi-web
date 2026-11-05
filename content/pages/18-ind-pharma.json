@@ -250,7 +250,7 @@
     ],
     [
      "Your quality unit, approving a supplier",
-     "Your user requirement specification (URS) answered row by row, each with its document; audit access; data integrity",
+     "Your user requirement specification (URS) answered row by row, each with its document; audit access",
      {
       "t": "How to qualify us",
       "link": "projects#verify"
@@ -283,7 +283,7 @@
     },
     {
      "code": "Your URS",
-     "read": "Answered row by row, each with its document; audit access; data integrity"
+     "read": "Answered row by row, each with its document; audit access"
     }
    ],
    "anchor": "inspectors"
@@ -310,7 +310,7 @@
     },
     {
      "t": "Where polypropylene stops",
-     "d": "Hot-held loops, steam or routine 80 °C at loop pressure need polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]. A stainless-only standard needs stainless.",
+     "d": "Hot-held loops, steam or routine 80 °C at loop pressure need polyvinylidene fluoride (PVDF) or stainless (ask whether we can quote it). A stainless-only standard needs stainless.",
      "part": "sheet",
      "side": "r",
      "row": 3,
@@ -413,7 +413,7 @@
    "items": [
     {
      "q": "How is water qualified for a natural health product line?",
-     "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this: [NHP qualification scope]. Where your quality assurance person requires it, we also run installation, operational and performance qualification (IQ, OQ, PQ).",
+     "a": "GUI-0158 asks for documented water quality criteria, test records, source water analyses, and calibrated, maintained treatment. Our scope for this is set per project. Where your quality assurance person requires it, we also run installation, operational and performance qualification (IQ, OQ, PQ).",
      "link": "contact-proposal",
      "intent": "I know my product, not my water spec|Natural health products",
      "link_label": "Request a water scope review"
@@ -436,7 +436,7 @@
     },
     {
      "q": "Can our quality unit audit you before we order?",
-     "a": "Yes. Audit our quality system on [on-site audit notice, working days] notice. Visit the shop and test bay by appointment, [shop visit notice, working days] notice. Witness your factory acceptance test (FAT) with [FAT witness notice, working days] notice.",
+     "a": "Yes. Audit our quality system on reasonable notice. Visit the shop and test bay by appointment, with reasonable notice. Witness your factory acceptance test (FAT) with reasonable notice.",
      "link": "cmp-quality#audit",
      "link_label": "Request an audit"
     }
@@ -457,7 +457,7 @@
  ],
  "cta": {
   "h": "Send your dosage forms",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I know my product, not my water spec|Pharmaceutical drug products",
@@ -466,7 +466,7 @@
    "Markets and pharmacopoeias",
    "Where your site is"
   ],
-  "turnaround": "[scope review turnaround, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "Grade per process step",
    "The PW package you need",
@@ -486,7 +486,7 @@
   "Scope line (DR-021 as amended by the pass 10 desk ruling): the hero lead names the package only; the exclusion lives in the second FAQ (after the NHP qualification answer; the first-system pointer now closes #nhp itself, so a reader leaving #nhp meets the qualification path before drug-only scope; desk Q4), worded as an envelope, with the full answer on industries#faq (DR-021 rule 2)",
   "Title and meta (DR-017 rule 5): the title names natural health products without the grade, so it stays near 56 characters; the meta keeps \"no WFI\" inside the first 160 characters",
   "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 3.4 and § 4.5): router row 4 now opens first-system (was industries#first-system). #nhp's pointer (SITE-PLAN \"If this is your first system\"; label \"Your first PW system\", buttons at most 5 words) now closes #nhp itself: the last row's note is {\"t\": \"If this is your first system\", \"link\": \"first-system\"} (grade-switch renders notes through tcell since the pass 11 integration, industries review finding 11), and the FAQ item 'This is our first water system. Where do we start?' is cut. The row's 'Under the importing market's drug rules' moved into its minimum cell, so no fact is lost. Lessons L-11-15, L-01-13, L-04-25",
-  "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1–2, journeys P1 and P4): decisions intro names the must-have rows default pharmaceutical URS templates carry (L-07-5, L-09-7, L-G2-1, L-G2-5); 'Where polypropylene stops' links urs-guide#allow-pp, the rows to write (pass 11 integration, urs-guide review finding 5). The inspector table gains the buyer's own quality unit: rows answered with documents (L-07-1, L-13-1, L-07-8, L-15-17), audit access (L-15-4), data integrity (L-G2-15)",
+  "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1–2, journeys P1 and P4): decisions intro names the must-have rows default pharmaceutical URS templates carry (L-07-5, L-09-7, L-G2-1, L-G2-5); 'Where polypropylene stops' links urs-guide#allow-pp, the rows to write (pass 11 integration, urs-guide review finding 5). The inspector table gains the buyer's own quality unit: rows answered with documents (L-07-1, L-13-1, L-07-8, L-15-17) and audit access (L-15-4)",
   "Proof at the point of doubt, pass 12 form (web/proof-and-seriousness.md § 5.2; DR-028 rule 2, FD-60): the quality-unit row links projects#verify with the label 'How to qualify us', and the FAQ 'Can our quality unit audit you before we order?' gives the audit and shop-visit notice times (R6) and links cmp-quality#audit. No case block until FD-42",
   "Final round, pass 11: lead opens with what the water does in the product and the reader's duty, then the package (L-BWT-2, L-BWT-3, L-BWT-25; BWT study § 9 rank 1). Confirm the uses named",
   "Final round, pass 11: related links Writing your URS (authoritative desk review, DESK-plan.md, Q1: URS guide from the pharma page)",

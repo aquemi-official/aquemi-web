@@ -214,9 +214,9 @@
    "type": "table",
    "nav": "PP or stainless",
    "anchor": "pp-or-stainless",
-   "eyebrow": "Technical note · [note publication month, year] · [note author and reviewer]",
+   "eyebrow": "Technical note · [note publication month, year]",
    "h": "Polypropylene or stainless steel for a PW loop",
-   "intro": "Polypropylene suits an ambient PW loop, sanitized chemically. Water for Injection (WFI) or a stainless standard needs stainless. A hot loop needs PVDF or stainless [whether we quote PVDF]. Limits, sampling and release are unchanged.",
+   "intro": "Polypropylene suits an ambient PW loop, sanitized chemically. Water for Injection (WFI) or a stainless standard needs stainless. A hot loop needs PVDF or stainless (ask whether we can quote it). Limits, sampling and release are unchanged.",
    "cols": [
     "What decides it",
     "Polypropylene (PP) fits when",
@@ -231,7 +231,7 @@
     [
      "Loop temperature",
      "The loop runs at ambient temperature. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
-     "The loop is held hot, or runs routine 80 °C at loop pressure. Polyvinylidene fluoride (PVDF) is the plastic option; [whether we quote PVDF]."
+     "The loop is held hot, or runs routine 80 °C at loop pressure. Polyvinylidene fluoride (PVDF) is the plastic option; ask whether we can quote it."
     ],
     [
      "Sanitization",
@@ -270,7 +270,7 @@
     },
     {
      "t": "Dose",
-     "d": "Fill the tank and loop: [PP loop sanitization method], at [sanitant concentration]."
+     "d": "Fill the tank and loop with the sanitant, by a chemical method set per project, at the concentration the written procedure sets."
     },
     {
      "t": "Prove it arrived",
@@ -279,7 +279,7 @@
     {
      "t": "Hold",
      "hold": "the operator, at start and end",
-     "d": "Hold for [contact time, hours], with the tank and loop out of use."
+     "d": "Hold for the contact time the written procedure sets, with the tank and loop out of use."
     },
     {
      "t": "Flush",
@@ -346,7 +346,7 @@
    "items": [
     {
      "q": "How is each note written and reviewed?",
-     "a": "A named engineer writes each note from a real question; a named reviewer checks it before publication. Each claim names standard, clause and edition. [named author and reviewer, by topic group]"
+     "a": "A named engineer writes each note from a real question; a named reviewer checks it before publication. Each claim names standard, clause and edition."
     },
     {
      "q": "Can we cite a note in our validation documents?",
@@ -363,7 +363,7 @@
    "nav": "Subscribe",
    "anchor": "subscribe",
    "h": "Get each technical note by email",
-   "intro": "[send frequency, emails per month at most]; confirmed by email first; no sales mail; your address never shared.",
+   "intro": "Occasional emails; confirmed by email first; no sales mail; your address never shared.",
    "submit": "Subscribe",
    "steps": [
     {
@@ -419,7 +419,7 @@
        "options": [
         "Yes, [legal entity name] may email me technical notes and, if ticked above, company news. I can withdraw consent at any time."
        ],
-       "help": "Sent by [legal entity name], [mailing address], [sales email]. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: [privacy notice link]."
+       "help": "Sent by [legal entity name], Ontario, Canada, hello@aquemi.com. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: {Privacy notice|privacy}."
       }
      ]
     }
@@ -428,13 +428,13 @@
  ],
  "cta": {
   "h": "A question you want answered now",
-  "body": "An engineer replies. Cost: [fit check cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "include": [
    "Your question",
    "Your system details",
    "Water data or documents, if any"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "A written answer from an engineer",
    "A public note, unnamed, with your permission"

@@ -36,27 +36,27 @@
     [
      "Material lot of both parts",
      "That both parts match their material certificates",
-     "Material log; [PP material certificates]"
+     "Material log; material certificates named in your proposal"
     ],
     [
      "Welder and qualification",
      "That the welder was qualified on the day",
-     "[welder qualification standard for thermoplastics] certificate"
+     "Qualification certificate, to the standard named in your proposal"
     ],
     [
      "Joining parameters",
      "That the qualified procedure ran with recorded settings",
-     "[what each joint record holds]"
+     "Joint number, welder, machine and date"
     ],
     [
      "Visual result",
      "That the joint meets the acceptance criteria",
-     "[joint acceptance criteria]; inspector sign-off"
+     "Written acceptance criteria; inspector sign-off"
     ],
     [
      "Test joint reference",
      "That the set-up was proven before production joints",
-     "Test joint record; [test joint examination method]"
+     "Test joint record; examination method named in your proposal"
     ],
     [
      "Date and inspector",
@@ -90,8 +90,8 @@
    "rows": [
     {
      "p": "Material",
-     "v": "Natural (unpigmented) PP, [PP grade]. Polyvinyl chloride (PVC) is used in pretreatment only",
-     "m": "[PP piping standard]; [how PP parts are marked for traceability]",
+     "v": "Natural (unpigmented) PP, grade named in your proposal. Polyvinyl chloride (PVC) is used in pretreatment only",
+     "m": "Piping standard named in your proposal; traceability marking set in our procedure",
      "at": [
       19,
       21
@@ -99,8 +99,8 @@
     },
     {
      "p": "Joining",
-     "v": "PP is joined by [PP joining method]",
-     "m": "[PP joining standard]",
+     "v": "PP is joined by the method named in your proposal",
+     "m": "The joining standard named in your proposal",
      "at": [
       47,
       25
@@ -108,8 +108,8 @@
     },
     {
      "p": "Test joints",
-     "v": "[when test joints are made]",
-     "m": "[test joint examination method]",
+     "v": "Set in our joining procedure",
+     "m": "Examination method named in your proposal",
      "at": [
       13,
       46
@@ -117,8 +117,8 @@
     },
     {
      "p": "Joint examination",
-     "v": "Visual on [share of product-contact joints visually examined, %]",
-     "m": "[joint acceptance criteria]",
+     "v": "Visual on product-contact joints, extent named in your proposal",
+     "m": "Written acceptance criteria",
      "at": [
       57,
       48
@@ -126,8 +126,8 @@
     },
     {
      "p": "Internal surface",
-     "v": "[PP internal surface specification, Ra µm]",
-     "m": "[basis for the PP surface specification]",
+     "v": "Confirmed in your proposal",
+     "m": "The PP maker's published data",
      "at": [
       93,
       65
@@ -136,28 +136,28 @@
     {
      "p": "Heat and expansion",
      "v": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. PP pipe lengthens as it warms; supports and routing take up the movement",
-     "m": "[PP pipe support spacing and expansion design]",
+     "m": "Set to the PP maker's published data",
      "part": "none"
     },
     {
      "p": "Material certificates",
      "v": "Each product-contact lot's marking checked against its certificate on receipt",
-     "m": "[PP material certificates]; material log"
+     "m": "Material certificates named in your proposal; material log"
     },
     {
      "p": "Procedures, welders and machines",
-     "v": "Written joining procedure; [number of qualified thermoplastic welders] welders; [joining machine calibration and data logging]",
-     "m": "[welder qualification standard for thermoplastics]; [machine calibration interval]"
+     "v": "Written joining procedure; qualified welders; machine calibration and logging to our procedure",
+     "m": "Welder qualification standard named in your proposal"
     },
     {
      "p": "Cleaning before first use",
-     "v": "[pre-commissioning flush and cleaning procedure for PP], PW rinse to conductivity and total organic carbon (TOC) limits",
+     "v": "Written flush and cleaning procedure, then a PW rinse to conductivity and total organic carbon (TOC) limits",
      "m": "Cleaning certificate"
     },
     {
      "p": "Pressure test",
-     "v": "[PP pressure test method]",
-     "m": "[PP pressure test standard]; witnessed"
+     "v": "Method named in your proposal",
+     "m": "Test standard named in your proposal; witnessed"
     }
    ],
    "nav": "Our standard",
@@ -172,23 +172,23 @@
    "items": [
     {
      "t": "Joint records",
-     "d": "[PP joint records kept]",
+     "d": "Joint records as set out in your proposal",
      "key": true,
      "link": "cmp-documentation#samples",
      "intent": "Joint records extract"
     },
     {
      "t": "Material log and PP certificates",
-     "d": "[PP material certificates], indexed by lot",
+     "d": "Material certificates named in your proposal, indexed by lot",
      "key": true
     },
     {
      "t": "Joining procedure and welder qualifications",
-     "d": "Procedure to [PP joining standard]; each welder's qualification record"
+     "d": "Procedure to the joining standard named in your proposal; each welder's qualification record"
     },
     {
      "t": "Pressure test and cleaning certificates",
-     "d": "[PP pressure test standard]; final rinse conductivity and TOC"
+     "d": "Pressure test to the standard named in your proposal; final rinse conductivity and TOC"
     }
    ],
    "nav": "Dossier",
@@ -197,7 +197,6 @@
   {
    "type": "steps",
    "look": "joint-steps",
-   "method": "[PP joining method]",
    "h": "From pipe to turnover",
    "items": [
     {
@@ -238,28 +237,28 @@
    "items": [
     {
      "q": "Can we audit the shop and see a joint log?",
-     "a": "Yes. Visit the shop in [shop location, city and province] by appointment, with [shop visit notice, working days] notice. Audit our quality system on [on-site audit notice, working days] notice. Before you order, we show a [specimen joint log]; your own log is in your dossier.",
+     "a": "Yes. Visit the shop in Ontario, Canada by appointment, with reasonable notice. Audit our quality system on reasonable notice. Before you order, we show a specimen joint log; your own log is in your dossier.",
      "link": "cmp-quality#audit",
      "link_label": "Request a supplier audit",
      "intent": "On-site supplier audit"
     },
     {
      "q": "What certificates come with the PP resin and pipe?",
-     "a": "[PP material certificates] for each lot, with conformity to [PP material standard]. We check each polypropylene (PP) lot's marking against its certificate on receipt."
+     "a": "Each lot comes with the material certificates named in your proposal, showing conformity to the material standard it names. We check each polypropylene (PP) lot's marking against its certificate on receipt."
     },
     {
      "q": "Who is qualified to make a joint?",
-     "a": "Only welders qualified to [welder qualification standard for thermoplastics], on the joining method they use. Their qualifications are in the dossier. Field joints on site: [installation scope].",
+     "a": "Only welders qualified to the standard named in your proposal, on the joining method they use. Their qualifications are in the dossier. Field joints on site follow the scope set out in your proposal.",
      "link": "systems#site",
      "link_label": "See site requirements"
     },
     {
      "q": "What happens to a rejected joint?",
-     "a": "It is cut out and remade to [PP joint repair rule], under a new number. Rejection rate reported: [joint rejection rate reported, yes or no]."
+     "a": "It is cut out and remade to our written repair procedure, under a new number. Rejection rate: reported on request."
     },
     {
      "q": "How is a PP loop cleaned before first use?",
-     "a": "[pre-commissioning flush and cleaning procedure for PP]. The final rinse is Purified Water (PW), run to conductivity and total organic carbon (TOC) limits and recorded."
+     "a": "We follow a written flush and cleaning procedure. The final rinse is Purified Water (PW), run to conductivity and total organic carbon (TOC) limits and recorded."
     }
    ],
    "anchor": "faq"
@@ -277,7 +276,7 @@
  ],
  "cta": {
   "h": "Send your spec",
-  "body": "An engineer marks it clause by clause. Cost: [document review cost].",
+  "body": "An engineer marks it clause by clause. Cost: quoted in your proposal.",
   "button": "Request a fabrication spec review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Review of another document|Fabrication or piping specification",
@@ -293,7 +292,7 @@
    "The clauses we would change",
    "A draft fabrication and inspection plan"
   ],
-  "turnaround": "[document review turnaround, working days]"
+  "turnaround": "A time confirmed when you enquire"
  },
  "todo": [
   "PP joining method for product-contact joints ([PP joining method], one name on every page; FD-18 recommends infrared (IR) or bead-and-crevice-free (BCF) fusion, no socket fusion, no solvent cement after the RO) and the joining standard and written procedure ([PP joining standard], as on compliance and cmp-quality). Once decided, name the method in the lead and the standard in the eyebrow (DR-010 rule 2, DR-001 rule 3)",

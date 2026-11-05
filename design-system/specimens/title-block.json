@@ -10,9 +10,9 @@
    "page": "cmp-documentation",
    "slot": 3,
    "h": "Delivery and signatures",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "541f27b",
    "hash": "7b3d15c980",
    "block": {
@@ -43,6 +43,92 @@
      {
       "p": "Retention",
       "v": "Aquemi keeps a copy for [retention period, years]",
+      "m": "Lost documents reissued on request"
+     }
+    ],
+    "look": "title-block",
+    "anchor": "delivery"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 3,
+   "h": "Delivery and signatures",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "0f5ab5137b",
+   "block": {
+    "type": "spec",
+    "nav": "Delivery",
+    "h": "Delivery and signatures",
+    "cols": [
+     "Item",
+     "How we deliver it",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Documents we write",
+      "v": "Searchable PDF, bookmarked, number and revision on every page",
+      "hl": true
+     },
+     {
+      "p": "Signatures",
+      "v": "Wet ink, scanned; or your validation system"
+     },
+     {
+      "p": "Timing",
+      "v": "Document list agreed at kickoff, [kickoff after order, working days] after order",
+      "m": "Drawings, certificates and FAT records reach you before the skid ships [confirm]. Never held back against an unpaid invoice [confirm]."
+     },
+     {
+      "p": "Retention",
+      "v": "Aquemi keeps a copy for [retention period, years]",
+      "m": "Lost documents reissued on request"
+     }
+    ],
+    "look": "title-block",
+    "anchor": "delivery"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 3,
+   "h": "Delivery and signatures",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "7305348a69",
+   "block": {
+    "type": "spec",
+    "nav": "Delivery",
+    "h": "Delivery and signatures",
+    "cols": [
+     "Item",
+     "How we deliver it",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Documents we write",
+      "v": "Searchable PDF, bookmarked, number and revision on every page",
+      "hl": true
+     },
+     {
+      "p": "Signatures",
+      "v": "Wet ink, scanned; or your validation system"
+     },
+     {
+      "p": "Timing",
+      "v": "Document list agreed at kickoff, on a date agreed with you",
+      "m": "Drawings, certificates and FAT records reach you before the skid ships [confirm]. Never held back against an unpaid invoice [confirm]."
+     },
+     {
+      "p": "Retention",
+      "v": "Aquemi keeps a copy for a period stated in your proposal",
       "m": "Lost documents reissued on request"
      }
     ],

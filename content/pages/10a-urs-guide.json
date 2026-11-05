@@ -29,16 +29,6 @@
   ],
   "foot": "One number, one sentence per row"
  },
- "facts": [
-  {
-   "v": "[URS review turnaround, working days]",
-   "l": "Written gap list · from complete inputs"
-  },
-  {
-   "v": "[URS review cost]",
-   "l": "URS gap review · cost"
-  }
- ],
  "blocks": [
   {
    "type": "table",
@@ -62,7 +52,7 @@
     [
      "A loop held hot, routine 80 °C sanitization at loop pressure, or steam sterilization",
      "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
-     "A polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]"
+     "A polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)"
     ],
     [
      "A chlorine or hypochlorite sanitization you cannot change",
@@ -81,7 +71,7 @@
     ],
     [
      "Very small or occasional demand",
-     "A generation skid and a loop would be oversized. Our range: [standard platforms and capacity ranges].",
+     "A generation skid and a loop would be oversized, even with each package sized to your demand.",
      "Service deionization (exchange tanks) or a laboratory polisher"
     ],
     [
@@ -140,7 +130,7 @@
     },
     {
      "t": "Controls, alarms and data",
-     "d": "Where failed water goes, restart after power loss, user access, audit trail, data retention and backup, screen language.",
+     "d": "Where failed water goes, restart after power loss, user access, data recording, retention and backup, screen language.",
      "label": "Controls"
     },
     {
@@ -314,7 +304,7 @@
    "rows": [
     [
      "What you receive from us",
-     "A compliance matrix against your client's URS, within [compliance matrix response time, working days]",
+     "A compliance matrix against your client's URS, in a time confirmed when you enquire",
      "Basis of design at the concept hold. Diagrams and a draft functional specification at basic design; approved issues at detailed design.",
      {
       "t": "Request a compliance matrix",
@@ -414,7 +404,7 @@
  ],
  "cta": {
   "h": "Send your draft URS",
-  "body": "An engineer marks each gap and proposes wording. Your URS stays yours to approve. Cost: [URS review cost].",
+  "body": "An engineer marks each gap and proposes wording. Your URS stays yours to approve. Cost: quoted in your proposal.",
   "button": "Request a URS gap review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|URS gap review",
@@ -424,7 +414,7 @@
    "Points of use and peak demand, L/h",
    "Your sanitization procedure"
   ],
-  "turnaround": "[URS review turnaround, working days]",
+  "turnaround": "A time confirmed when you enquire",
   "returns": [
    "Each gap, with proposed wording",
    "Rows that rule out polypropylene, and why"

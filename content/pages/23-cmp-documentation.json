@@ -32,7 +32,7 @@
     },
     {
      "t": "Specifications",
-     "d": "Functional and design specifications, alarm list, Part 11 and Annex 11 assessment"
+     "d": "Functional and design specifications, alarm list"
     },
     {
      "t": "Drawings and calculations",
@@ -40,27 +40,27 @@
     },
     {
      "t": "Materials and components",
-     "d": "[PP material certificates] by lot, to [PP material standard]; [elastomer certificates per compound]; [certificates supplied for PVC parts]; media, resin and component certificates"
+     "d": "Material certificates by lot, to the material standard named in your proposal; elastomer and polyvinyl chloride (PVC) certificates as named in your proposal; media, resin and component certificates"
     },
     {
      "t": "Fabrication and joining",
-     "d": "Fabrication and inspection plan; [PP joining method] procedure, welder qualifications, [PP joint records kept]"
+     "d": "Fabrication and inspection plan; procedure for the joining method named in your proposal, welder qualifications, joint records as set out in your proposal"
     },
     {
      "t": "Cleaning and drainability",
-     "d": "Slope survey; dead leg register to [dead leg design limit, L/D]; spray coverage test; cleaning certificate after [pre-commissioning flush and cleaning procedure for PP]"
+     "d": "Slope survey; dead leg register to the limit set in your design basis; spray coverage test; cleaning certificate after a written flush and cleaning procedure"
     },
     {
      "t": "Pressure equipment and panels",
-     "d": "Pressure tests to [PP pressure test method]. Canadian registration number (CRN) under CSA B51 and vessel data reports, where required. Panel certification or field evaluation"
+     "d": "Pressure tests to the method named in your proposal. Canadian registration number (CRN) under CSA B51 and vessel data reports, where required. Panel certification or field evaluation"
     },
     {
      "t": "Instruments and calibration",
-     "d": "Calibration certificates, traceable via [calibration provider and accreditation held]; total organic carbon system suitability, where an analyzer is fitted; vent filter integrity test"
+     "d": "Calibration certificates, traceable via a provider named in your proposal; total organic carbon system suitability, where an analyzer is fitted; vent filter integrity test"
     },
     {
      "t": "Software",
-     "d": "Version and checksum record, code review, baseline backup, audit trail review, backup and restore procedure"
+     "d": "Version and checksum record, code review, baseline backup, backup and restore procedure"
     },
     {
      "t": "Testing and qualification",
@@ -72,7 +72,7 @@
     },
     {
      "t": "Operation, maintenance and training",
-     "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first [months of operation], training records"
+     "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first period of operation, training records"
     }
    ],
    "fold": 4,
@@ -100,7 +100,7 @@
     [
      "Fabrication · Annex 15, 3.9",
      "Installation qualification (IQ) evidence. Both parties sign the inspection plan; your validation team verifies records at IQ.",
-     "Fabrication and inspection plan; Material log and certificates; Welder qualifications; [PP joint records kept]; Pressure test and cleaning records"
+     "Fabrication and inspection plan; Material log and certificates; Welder qualifications; Joint records as set out in your proposal; Pressure test and cleaning records"
     ],
     [
      "FAT and SAT · Annex 15, 3.6; GUI-0029, 8.1",
@@ -135,7 +135,7 @@
    "items": [
     {
      "t": "Draft and review",
-     "d": "Issued at its stage, numbered; your team comments within [standard review period, working days]."
+     "d": "Issued at its stage, numbered; your team comments within a period agreed with you."
     },
     {
      "t": "Revision",
@@ -176,17 +176,16 @@
     },
     {
      "p": "Signatures",
-     "v": "[electronic signature method]; wet ink, scanned; or your validation system",
-     "m": "[Part 11 and Annex 11 controls]"
+     "v": "Wet ink, scanned; or your validation system"
     },
     {
      "p": "Timing",
-     "v": "Document list agreed at kickoff, [kickoff after order, working days] after order",
+     "v": "Document list agreed at kickoff, on a date agreed with you",
      "m": "Drawings, certificates and FAT records reach you before the skid ships [confirm]. Never held back against an unpaid invoice [confirm]."
     },
     {
      "p": "Retention",
-     "v": "Aquemi keeps a copy for [retention period, years]",
+     "v": "Aquemi keeps a copy for a period stated in your proposal",
      "m": "Lost documents reissued on request"
     }
    ],
@@ -208,31 +207,31 @@
    "rows": [
     {
      "p": "Chemicals brought on site",
-     "v": "[chemicals brought on site, with SDS]",
+     "v": "Listed per visit",
      "m": "Each with its safety data sheet (SDS)",
      "part": "soft"
     },
     {
      "p": "Discharge to drain",
-     "v": "[discharge to drain per day, pH, temperature]",
+     "v": "Stated per system in your proposal",
      "m": "Includes reverse osmosis (RO) reject; set by your feed water",
      "part": "drain"
     },
     {
      "p": "Energies and isolation points",
-     "v": "[isolation points and energies]",
+     "v": "Listed per system in your manual",
      "m": "For your lockout procedure",
      "part": "pump panel"
     },
     {
      "p": "Control panel approval",
-     "v": "[panel certification mark held, or field evaluation used]",
+     "v": "Approval route confirmed in your proposal",
      "m": "Electrical safety of the control panel",
      "part": "panel"
     },
     {
      "p": "Pressure equipment",
-     "v": "[pressure-rated items in the PW package]",
+     "v": "Each pressure-rated item your design includes",
      "m": "Registration where required: Canadian registration number (CRN), CSA B51",
      "part": "gen"
     },
@@ -256,8 +255,8 @@
    "h": "Request a specimen package",
    "nav": "Specimens",
    "anchor": "samples",
-   "intro": "Aquemi-written [specimen package], sent [openly or under NDA] within [specimen package response time, working days]; cost: [specimen cost or free].",
-   "note": "[privacy notice link]",
+   "intro": "Aquemi-written specimen package, sent on request in a time confirmed when you enquire; cost discussed when you enquire.",
+   "note": "{Privacy notice|privacy}",
    "submit": "Send me the specimens",
    "fields": [
     {
@@ -306,7 +305,7 @@
    "items": [
     {
      "q": "Can we see real documents before we order?",
-     "a": "Yes. We send an Aquemi-written [specimen package]: the package index, protocol contents and record formats, shared [openly or under NDA]. Audit our quality system to see them in use.",
+     "a": "Yes. We send an Aquemi-written specimen package on request: the package index, protocol contents and record formats. Audit our quality system to see them in use.",
      "link": "cmp-quality#audit",
      "link_label": "Request a supplier audit"
     },
@@ -318,7 +317,7 @@
     },
     {
      "q": "When do we see the protocols?",
-     "a": "[protocol issue before FAT, weeks] before testing, the factory acceptance test (FAT) protocol reaches your quality unit for approval. Installation and operational qualification (IQ, OQ) protocols follow. They cite the FAT results your quality unit agreed to reuse (EU good manufacturing practice Annex 15, 3.6; GUI-0029, 8.1).",
+     "a": "The factory acceptance test (FAT) protocol reaches your quality unit for approval ahead of testing, on a date agreed with you. Installation and operational qualification (IQ, OQ) protocols follow. They cite the FAT results your quality unit agreed to reuse (EU good manufacturing practice Annex 15, 3.6; GUI-0029, 8.1).",
      "link": "svc-fat-sat",
      "link_label": "See what FAT proves"
     }
@@ -339,7 +338,7 @@
  ],
  "cta": {
   "h": "Send your URS for your document list",
-  "body": "An engineer replies in writing. Cost: [proposal cost or free].",
+  "body": "An engineer replies in writing. Cost: discussed when you enquire.",
   "button": "Send your URS",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Proposal against your URS",
@@ -349,7 +348,7 @@
    "Your numbering and good documentation practice rules",
    "Your electronic validation system, if used"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "Your system's document list, by stage",
    "Who approves each document"
@@ -363,7 +362,6 @@
   "Supplier audit route (FD-48; DR-028 rule 3; pass 12 NS row faq [0]): FAQ 1 offers the audit with no date. [quality system ready for audit, date] is a private launch gate, never printed; the route's notice is [on-site audit notice, working days] (cmp-quality's home). If the audit route is not open at launch, FAQ 1's audit sentence and its \"Request a supplier audit\" link (cmp-quality#audit) are hidden (DR-004 class 2), never dated. If the specimen sentence also goes, FAQ 1 names the documents and checks that exist and links \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\"); it never describes the company's age or record (FD-60)",
   "Protocol issue before FAT ([protocol issue before FAT, weeks]; FD-45; same name as svc-fat-sat)",
   "Client review period for each issued document ([standard review period, working days]; FD-47)",
-  "Electronic signatures on protocols and reports ([electronic signature method], [Part 11 and Annex 11 controls]; FD-23; svc-fat-sat and sys-monitoring use the method's name): whether the method records signer, date and meaning, linked to the record (21 CFR Part 11 Subpart C; EU GMP Annex 11 (2011), 14. The revised Annex 11 is still a 2025 consultation draft with no effective date, so the 2011 number stays until it is adopted; the draft renumbers it 13, and GUI-0050 keeps 4.14 until Health Canada adopts the revision: technical-checks TCK-06, TCK-09, H2O-12). Never \"Part 11 compliant\" (DR-004 rule 2)",
   "Retention of Aquemi's copy ([retention period, years]; FD-47, FD-48) and reissue on request; quality record retention is cmp-quality's",
   "PP material certificates and standard ([PP material certificates], [PP material standard]; FD-17; names shared with compliance, svc-fabrication, cmp-quality): the certificates received per lot, for example 21 CFR 177.1520 conformity, the dated USP <88> Class VI report and the EN 10204 type. Elastomers: [elastomer certificates per compound], cmp-quality's name (FD-17); contact-service's parts option and svc-service's like-for-like row name no standard either; the index said \"to USP <88> Class VI\" until pass C, a purchasing rule no owner decision confirms",
   "PVC parts, media and resin ([certificates supplied for PVC parts]; FD-17; sys-pretreatment's and svc-cq's name), and which components get certificates by serial number (membranes, electrodeionization modules, pumps)",

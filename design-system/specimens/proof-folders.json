@@ -315,9 +315,9 @@
    "page": "compliance",
    "slot": 2,
    "h": "Pharmacopoeias and other water standards",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "4e32162d95",
    "block": {
@@ -392,6 +392,98 @@
      [
       "ASTM D1193-24 Reagent water; CLSI GP40 (5th edition) clinical laboratory reagent water",
       "Within [lab water scope]: Type II or III, or the CLSI GP40 grade your method specifies",
+      "Water grade per point of use in the basis of design; verification report",
+      {
+       "t": "Hospitals and laboratories",
+       "link": "ind-hospital-lab#grades"
+      }
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "standards"
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 2,
+   "h": "Pharmacopoeias and other water standards",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "83e8244fd6",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Pharmacopoeia",
+    "anchor": "pharmacopoeia",
+    "look": "proof-folders",
+    "ground": "light",
+    "h": "Pharmacopoeias and other water standards",
+    "cols": [
+     "Standard",
+     "What we design to",
+     "Proof",
+     "Where we show it"
+    ],
+    "rows": [
+     [
+      "USP <645> Water conductivity",
+      "Stage 1, uncompensated; cell constant ± 2 %, instrument ± 0.1 µS/cm",
+      "Calibration certificates; FAT, SAT and OQ uncompensated readings",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "USP <643> Total organic carbon",
+      "System suitability: response efficiency 85 % to 115 %",
+      "Suitability records; analyzer calibration; OQ report",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "Ph. Eur. 0008 Purified water",
+      "As revised in 12.3, in force 1 July 2026",
+      "Functional specification",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      }
+     ],
+     [
+      "USP <1231> Water for pharmaceutical purposes (informational)",
+      "Microbial control: sampling plan; alert and action levels proposed from performance qualification data",
+      "Sampling plan; alert and action level rationale",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "EMA guideline on water for pharmaceutical use",
+      "PW minimum for most non-sterile dosage forms; WFI, which we do not supply, for parenterals",
+      "Water grade per point of use in the basis of design",
+      {
+       "t": "Pharmaceutical",
+       "link": "ind-pharma"
+      }
+     ],
+     [
+      "ANSI/AAMI ST108:2023 Critical water for device reprocessing",
+      "Within the scope confirmed when you enquire: the ST108:2023 critical-water limits; your program shows compliance",
+      "Water grade per point of use in the basis of design; validation report before first use",
+      {
+       "t": "Hospitals and laboratories",
+       "link": "ind-hospital-lab#grades"
+      }
+     ],
+     [
+      "ASTM D1193-24 Reagent water; CLSI GP40 (5th edition) clinical laboratory reagent water",
+      "Type II or III, or the CLSI GP40 grade your method specifies",
       "Water grade per point of use in the basis of design; verification report",
       {
        "t": "Hospitals and laboratories",

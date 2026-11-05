@@ -24,7 +24,7 @@ var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our fir
 var NAVMENU=[
  {id:'systems',label:'Systems',hub:'systems',lead:'One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.',
   groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
-     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Alarms, records and audit trails mapped to Part 11']]},
+     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
    {h:'Plan and budget',items:[['systems#budget','Budget ranges','What a package costs and what moves it'],['systems#site','Site requirements','Space, utilities and connections you provide'],
      ['sys-pw#design','Skid design basis','Capacity, feed and recovery, each with its basis']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
@@ -47,7 +47,7 @@ var NAVMENU=[
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
  {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
   groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, Ph. Eur., GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits side by side'],
-     ['sys-monitoring#data-integrity','Data integrity','Audit trails and access, mapped to Part 11']]},
+     ['compliance#gmp','GMP and qualification','The GMP guides and IQ, OQ and PQ']]},
    {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
      ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
    {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],['cmp-quality#access','What you can read, and when','Public, under NDA, or at audit'],
@@ -66,11 +66,13 @@ var NAVMENU=[
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
 /* NAVSECT: [bar label, hub] per section (Hero.js heroIndex finds a hub by it) */
 var NAVSECT=NAVMENU.map(function(s){return [s.label,s.hub]});
-/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
-   hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the contact email, the
+   head office and the shop location (the footer's "designed, fabricated and tested in"). No phone number is published
+   for now (owner, 2026-11-04): the menu's urgent block keeps only the service request row, and wtel stays for when a
+   number is added back.
    Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
    files that repeat it; tools/design_system.py check warns on a value no page file carries. */
-var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]',shop:'[shop location, city and province]'};
+var CONTACT={email:'hello@aquemi.com',office:'Ontario, Canada',shop:'Ontario, Canada'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
@@ -90,8 +92,13 @@ function wnum(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');return s.indexOf(
 function wtel(s,cls,lead){s=String(s||'');var n=wnum(s),c=cls?' class="'+cls+'"':'',t=(lead||'')+(n?tx(s).replace(/ /g,'\u00a0'):tx(s));
  return n?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
-/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
-function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
+/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM).
+   Inline links: {words|target} in copy becomes a link, target a page id, "page#anchor" or "mailto:<address>"; a page or
+   anchor that does not exist (whas) leaves the words as plain text. Only for copy that is not itself inside a link. */
+function txLinks(s){return s.replace(/\{([^{}|]+)\|([^{}|\s]+)\}/g,function(m,t,to){
+ if(/^mailto:/i.test(to))return '<a href="'+to+'">'+t+'</a>';
+ return whas(to)?'<a href="#'+to+'" data-wp="'+to+'">'+t+'</a>':t})}
+function tx(s){s=txLinks(e(s));var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
 /* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label). intent (optional): option
    labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent, as Button) */
 function wlink(id,label,intent){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}
@@ -211,8 +218,10 @@ if(typeof document!=='undefined'){
    Call (link "tel:[sales phone number]"): the number follows wnum in core.js, the rule the NavBar and Footer numbers use
    (wtel). Once it is confirmed (no [square brackets]) the button dials it, its digit groups kept on one line, with no
    arrow (it opens no page); until then the label shows as plain text with the placeholder (aq-btn--pending), never a
-   link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added. */
+   link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added.
+   Email (link "mailto:<address>"): opens the visitor's mail app, no arrow and no intent. */
 function wBtn(label,link,kind,intent){if(/^tel:/i.test(link||''))return wCall(label,link.slice(4),kind);
+ if(/^mailto:/i.test(link||''))return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="'+e(link)+'">'+tx(label)+'</a>';
  var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 function wCall(label,num,kind){num=String(num||'').trim();label=String(label||'');var n=wnum(num),s=tx(num),t=tx(label.indexOf(num)<0?(label?label+' ':'')+num:label);
  return n?'<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="tel:'+e(n)+'">'+t.split(s).join(s.replace(/ /g,'\u00a0'))+'</a>':'<span class="aq-btn aq-btn--pending">'+t+'</span>'}
@@ -384,8 +393,8 @@ document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.targe
 document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
  if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
 /* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description (the package,
-   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (service and
-   sales numbers and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
+   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (the contact email
+   as a mailto: link, and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
    columns in one row, then the legal line under a hairline. Phones show the columns two by two.
    The footer is its own sitemap, separate from the header menu (NAVMENU): every page, grouped in four columns.
    A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so a page appears
@@ -399,7 +408,7 @@ function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene with PVC pretreatment, for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
-  +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
+  +'<address class="aq-footer__contact">'+'<a href="mailto:'+e(CONTACT.email)+'">'+e(CONTACT.email)+'</a><span>'+tx(CONTACT.office)+'</span></address></div>'
   +cols.map(function(c,i){var open=i===cols.length-1,id='wfoot-'+i;return '<nav class="aq-footer__col'+(open?' is-open':'')+'" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead"><span class="aq-footer__colname">'+e(c[0])+'</span>'
    +'<button type="button" class="aq-footer__toggle" aria-expanded="'+open+'" aria-controls="'+id+'">'+e(c[0])+'<span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h5>'
    +'<div class="aq-footer__links" id="'+id+'">'+c[1].filter(whas).map(function(id){return wlink(id,label[id])}).join('')+'</div></nav>'}).join('')
@@ -1469,8 +1478,8 @@ function wKeyFacts(facts){
    page's section jump (navJumps in SectionNav.js) and the proposal button. The accordion is DOM-local too
    (aq:navgroup for motion). The service number and hours come from CONTACT (core.js): a tel: link once confirmed, the
    placeholder until then, and the hours always travel with the number, so the block never implies round-the-clock help.
-   Launch rule (design-system/website.md, Navigation): while the number is unconfirmed the urgent block goes, the
-   "Service request" row stays.
+   Launch rule (design-system/website.md, Navigation): while no number is published (owner, 2026-11-04) the block keeps
+   only "Production stopped?" and the "Service request" row; the call line and hours return with a number.
    The toggle carries a two-bar mark (aq-nav__burger, aria-hidden) that turns into a cross while the menu is open; its
    label stays the words "Menu" / "Close" (aq-nav__toggle-t). */
 /* The section a page belongs to (its "section" string), the entries of a group that exist, and the gate for a link
@@ -1528,7 +1537,7 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
   '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+navThemeBtn()+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
-  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
+  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+svc('aq-menu__service')+'</div>'+
   '<nav aria-label="Sections"><ul class="aq-menu__list aq-menu__list--sect">'+NAVMENU.map(function(s){var c=s===cs;
    return s.panel===null?'<li><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>':menuGroup(s,c)}).join('')+
   (T.length?'<li><button type="button" class="aq-menu__sect" id="wm-b-tasks" aria-expanded="false" aria-controls="wm-g-tasks">I need to<span class="aq-menu__plus" aria-hidden="true"></span></button><div class="aq-menu__group" id="wm-g-tasks" hidden><div class="aq-menu__group-in"><ul class="aq-menu__tasks">'+

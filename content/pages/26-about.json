@@ -36,47 +36,47 @@
     },
     {
      "p": "Why modular polypropylene",
-     "v": "[why modular PP, in the team's words]",
+     "v": "Modular polypropylene packages for ambient Purified Water, tested before they ship.",
      "m": "The team's engineering rationale, signed"
     },
     {
      "p": "Registration and ownership",
-     "v": "[ownership; any equipment maker's stake]",
+     "v": "Details on request",
      "m": "[corporate registration, jurisdiction and number]"
     },
     {
      "p": "People by discipline",
-     "v": "[headcount by discipline]",
+     "v": "Details on request",
      "m": "Organization chart, in the questionnaire pack",
      "link": "cmp-quality#audit"
     },
     {
      "p": "Quality system",
-     "v": "[ISO 9001 status, registrar and expiry]",
-     "m": "Audit with [on-site audit notice, working days] notice",
+     "v": "Status on request",
+     "m": "Audit on reasonable notice",
      "link": "cmp-quality#certification"
     },
     {
      "p": "Insurance and financial standing",
-     "v": "[general and professional liability limits, CAD] · [financial standing evidence for procurement]",
-     "m": "Certificate: [certificate of insurance status]. Financial evidence on request",
+     "v": "Insurance details on request",
+     "m": "Certificate: status on request. Financial evidence on request",
      "link": "buying#onboarding"
     },
     {
      "p": "Licences and seals",
-     "v": "[P.Eng. seal] in [provinces of licence] · [engineering firm permit, by province]",
-     "m": "[licensing body registers]"
+     "v": "Engineering seal and firm permit: details on request",
+     "m": "Licensing body registers on request"
     },
     {
      "p": "Head office",
-     "v": "[head office, city and province]",
-     "m": "Address on the Locations page",
+     "v": "Ontario, Canada",
+     "m": "Contact details on the Locations page",
      "link": "contact-locations#locations"
     },
     {
      "p": "Shop and test bay",
-     "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
-     "m": "Visit with [shop visit notice, working days] notice",
+     "v": "Ontario, Canada",
+     "m": "Visit with reasonable notice",
      "link": "contact-locations#visit"
     }
    ],
@@ -91,17 +91,17 @@
    "items": [
     {
      "t": "Commercial lead",
-     "d": "[Full name] · [portrait] · [years of relevant experience]. Your contact for scope, terms, supplier onboarding and company facts. [one sentence in their words, approved].",
+     "d": "Your contact for scope, terms, supplier onboarding and company facts.",
      "link": "buying"
     },
     {
      "t": "Industrial automation engineer",
-     "d": "[Full name] · [portrait] · [years in pharmaceutical water]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity. [one sentence in their words, approved].",
+     "d": "Direct experience on pharmaceutical water systems. Ask about controls.",
      "link": "sys-monitoring"
     },
     {
      "t": "Modular manufacturing and design specialist",
-     "d": "[Full name] · [portrait] · [years in modular fabrication]. Ask about skid design, fabrication and joint records. [one sentence in their words, approved].",
+     "d": "Ask about skid design, fabrication and joint records.",
      "link": "svc-fabrication"
     }
    ],
@@ -132,13 +132,13 @@
    "items": [
     {
      "t": "Witness your factory acceptance test (FAT)",
-     "d": "In [shop location, city and province], with [FAT witness notice, working days] notice.",
+     "d": "In Ontario, Canada, with reasonable notice.",
      "link": "svc-fat-sat",
      "icon": "gauge"
     },
     {
      "t": "Registration in your province",
-     "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for [pressure-rated items in the PW package].",
+     "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for each pressure-rated item your design includes.",
      "link": "compliance#engineering",
      "icon": "stamp"
     },
@@ -150,7 +150,7 @@
     },
     {
      "t": "Service and spares",
-     "d": "From [service bases, cities], with spares in [stock location or locations].",
+     "d": "From Ontario, Canada, with spares held there.",
      "link": "contact-locations#coverage",
      "icon": "valve",
      "fig": "truck"
@@ -166,13 +166,13 @@
    "items": [
     {
      "q": "What happens to our system if a key person leaves?",
-     "a": "The knowledge is in the records: specification, as-built drawings, [PP joint records kept], software backup, FAT and qualification reports. You receive them at handover, so whoever takes over works from them.",
+     "a": "The knowledge is in the records: specification, as-built drawings, joint records as set out in your proposal, software backup, FAT and qualification reports. You receive them at handover, so whoever takes over works from them.",
      "link": "cmp-documentation#index",
      "link_label": "See the documentation package"
     },
     {
      "q": "How do we qualify you as a supplier?",
-     "a": "Audit our quality system with [on-site audit notice, working days] notice, and witness your FAT before shipment. References and site visits are arranged with our commercial lead during qualification.",
+     "a": "Audit our quality system on reasonable notice, and witness your FAT before shipment. References and site visits are arranged with our commercial lead during qualification.",
      "link": "projects#verify",
      "link_label": "How to qualify us"
     },
@@ -184,7 +184,7 @@
     },
     {
      "q": "Do you work on other makers' systems?",
-     "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment.",
+     "a": "For makes and equipment confirmed when you enquire: service and upgrades, starting with a condition survey or an assessment.",
      "link": "svc-service",
      "link_label": "See service for other makes"
     }
@@ -205,7 +205,7 @@
  ],
  "cta": {
   "h": "Talk to the engineer who would lead your project",
-  "body": "Send what you have. An engineer replies. Cost: [fit check cost or free].",
+  "body": "Send what you have. An engineer replies. Cost: quoted in your proposal.",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
@@ -214,7 +214,7 @@
    "What you make, and where",
    "Your user requirement specification (URS), if any"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "A written answer from an engineer",
    "Answers to the questions you sent"

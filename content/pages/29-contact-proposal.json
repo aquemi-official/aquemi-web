@@ -3,7 +3,7 @@
  "section": "Contact",
  "nav_label": "Request a proposal",
  "title": "Request a proposal, review or assessment | Aquemi",
- "meta": "Start with a URS, a tender, your product, water data or a running system. An engineer replies in writing within [proposal response time, working days].",
+ "meta": "Start with a URS, a tender, your product, water data or a running system. An engineer replies in writing.",
  "path": "/contact/proposal/",
  "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
  "headline": "Tell us what you need. An engineer replies.",
@@ -22,21 +22,20 @@
       "An engineer reads it",
       "Written answer, then a proposal"
      ],
-     "clock": "Written reply within [proposal response time, working days]",
+     "clock": "Written reply; time confirmed when you enquire",
      "link": "contact-proposal",
      "action": "Choose your request",
      "current": true
     },
     {
      "t": "Production stopped or water out of specification",
-     "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
-     "phone": "[service phone number]",
+     "d": "Severity 1. Use the service request and choose severity 1.",
      "steps": [
-      "Call the service line",
+      "Send a service request",
       "Triage confirms severity",
       "Remote diagnosis, then on site"
      ],
-     "clock": "Answered within [severity 1 phone answer time, minutes]",
+     "clock": "Answered within the time set in your service plan",
      "link": "contact-service",
      "intent": "Fault now|Severity 1: production stopped or water out of specification",
      "urgent": true,
@@ -50,7 +49,7 @@
       "Pack, or audit dates and agenda",
       "Questionnaire completed or audit held"
      ],
-     "clock": "Reply within [audit request response time, working days]",
+     "clock": "Reply in a time confirmed when you ask",
      "link": "cmp-quality#audit",
      "action": "Request an audit or pack"
     }
@@ -63,7 +62,7 @@
    "h": "Send what you have",
    "intro": "Rough numbers are fine; leave unknowns blank.",
    "submit": "Send to an engineer",
-   "note": "Files kept [file storage location and retention, months]. [privacy notice link]",
+   "note": "Files kept only as long as your enquiry needs them. {Privacy notice|privacy}",
    "steps": [
     {
      "title": "Your request",
@@ -373,7 +372,7 @@
        "kind": "text",
        "required": true,
        "when": "I have a system already",
-       "help": "From the nameplate, or \"unknown\". Assessments cover [makes and equipment types serviced]."
+       "help": "From the nameplate, or \"unknown\". Which makes and equipment we assess is confirmed when you enquire."
       },
       {
        "label": "What should the assessment solve?",
@@ -486,8 +485,8 @@
     [
      "I have a URS or a draft",
      "Gap review · compliance matrix · proposal · other document review",
-     "[URS review turnaround, working days] · [compliance matrix response time, working days] · [proposal response time, working days] · [document review turnaround, working days]",
-     "[URS review cost] · [compliance matrix cost or free] · [proposal cost or free] · [document review cost]"
+     "Confirmed when you enquire",
+     "Discussed when you enquire"
     ],
     [
      "I have an RFQ or a tender",
@@ -495,26 +494,26 @@
       "t": "Proposal in your numbering, with your bid form filled in",
       "link": "buying#answer"
      },
-     "[proposal response time, working days]",
-     "[proposal cost or free]"
+     "Confirmed when you enquire",
+     "Discussed when you enquire"
     ],
     [
      "I know my product, not my water spec",
      "Water scope review: grade or standard per use, package, qualification or acceptance test scope",
-     "[scope review turnaround, working days]",
-     "[scope review cost or free]"
+     "Confirmed when you enquire",
+     "Discussed when you enquire"
     ],
     [
      "I have water data, no system yet",
      "Feed water review · modules, budget range and its class, from rough numbers · sizing proposal and firm price, from full analysis",
-     "[feed water review turnaround, working days] · [budget proposal turnaround, working days] · [proposal response time, working days]",
-     "[cost of the feed water review] · [budget range cost or free] · [proposal cost or free]"
+     "Confirmed when you enquire",
+     "Discussed when you enquire"
     ],
     [
      "I have a system already",
      "Scope and price, then options with downtime and requalification or retest",
-     "[assessment response time, working days]",
-     "[assessment price, CAD, credit against upgrade]"
+     "Confirmed when you enquire",
+     "Discussed when you enquire"
     ],
     [
      "I am qualifying suppliers",
@@ -522,14 +521,14 @@
       "t": "Audit or questionnaire pack, on Quality management",
       "link": "cmp-quality#audit"
      },
-     "Reply within [audit request response time, working days]",
-     "Before an order: [supplier audit before order, free or charged]"
+     "Confirmed when you ask",
+     "Discussed when you ask"
     ],
     [
      "Not sure yet: talk to an engineer",
      "A written answer from an engineer",
-     "Written reply within [proposal response time, working days]",
-     "[fit check cost or free]"
+     "Confirmed when you enquire",
+     "Discussed when you enquire"
     ]
    ],
    "look": "request-menu",
@@ -537,11 +536,10 @@
   }
  ],
  "cta": {
-  "h": "Prefer to talk first?",
-  "body": "Ask for an engineer, [office hours, time zone].",
-  "button": "Call [sales phone number]",
-  "link": "tel:[sales phone number]",
-  "variant": "call",
+  "h": "Prefer to write first?",
+  "body": "Email hello@aquemi.com and an engineer replies in writing.",
+  "button": "Email us",
+  "link": "mailto:hello@aquemi.com",
   "include_label": "Have ready",
   "include": [
    "Your URS, or your product and flow",
@@ -587,12 +585,6 @@
   "Pass 12 phase 6 (role interviews, contact-proposal row): single-column form and 16 px inputs on phones are a style change in components/EnquiryForm, not page copy"
  ],
  "primary_cta_link": "#intake",
- "facts": [
-  {
-   "v": "[proposal response time, working days]",
-   "l": "Written reply from an engineer · from receipt"
-  }
- ],
  "hero_index": false,
  "figure": {
   "look": "reply-flow",

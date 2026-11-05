@@ -113,9 +113,9 @@
    "page": "systems",
    "slot": 1,
    "h": "Budget ranges before a quote",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "6d6a840699",
    "block": {
@@ -150,6 +150,110 @@
      {
       "p": "Pretreatment train, [reference capacity, L/h]",
       "v": "[budget range, CAD]",
+      "m": "PVC train: multimedia, softener and carbon or bisulfite",
+      "spot": "pretreatment"
+     }
+    ],
+    "note": "Not in this range: installation, tie-ins, utilities, lab testing during qualification and temporary water. Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation.",
+    "note_link": "buying#capital",
+    "nav": "Budget",
+    "anchor": "budget",
+    "look": "budget-bento",
+    "note_link_label": "Build your capital request"
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 1,
+   "h": "Budget ranges before a quote",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "833220645c",
+   "block": {
+    "type": "spec",
+    "h": "Budget ranges before a quote",
+    "intro": "The package is configured to your use; the configurations are confirmed when you enquire.",
+    "cols": [
+     "Scope",
+     "Budget range",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Whole package, sized to your demand",
+      "v": "Priced per project",
+      "m": "Supply and turnover package; FAT, IQ and OQ as set out in your proposal",
+      "hl": true
+     },
+     {
+      "p": "PW generation, sized to your demand",
+      "v": "Priced per project",
+      "m": "Single-pass RO and EDI, city feed",
+      "spot": "ro-skid"
+     },
+     {
+      "p": "Storage tank and loop, your tank volume and points of use",
+      "v": "Priced per project",
+      "m": "Sanitized by a chemical method set per project; field piping excluded",
+      "spot": "storage-tank"
+     },
+     {
+      "p": "Pretreatment train, sized to your demand",
+      "v": "Priced per project",
+      "m": "PVC train: multimedia, softener and carbon or bisulfite",
+      "spot": "pretreatment"
+     }
+    ],
+    "note": "Not in this range: installation, tie-ins, utilities, lab testing during qualification and temporary water. Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation.",
+    "note_link": "buying#capital",
+    "nav": "Budget",
+    "anchor": "budget",
+    "look": "budget-bento",
+    "note_link_label": "Build your capital request"
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 1,
+   "h": "Budget ranges before a quote",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "304945c873",
+   "block": {
+    "type": "spec",
+    "h": "Budget ranges before a quote",
+    "intro": "The package is configured to your use; the configurations are confirmed when you enquire.",
+    "cols": [
+     "Scope",
+     "Budget range",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Whole package, sized to your demand",
+      "v": "Priced per project",
+      "m": "Supply and turnover package; FAT, installation qualification (IQ) and operational qualification (OQ) as set out in your proposal",
+      "hl": true
+     },
+     {
+      "p": "PW generation, sized to your demand",
+      "v": "Priced per project",
+      "m": "Single-pass RO and EDI, city feed",
+      "spot": "ro-skid"
+     },
+     {
+      "p": "Storage tank and loop, your tank volume and points of use",
+      "v": "Priced per project",
+      "m": "Sanitized by a chemical method set per project; field piping excluded",
+      "spot": "storage-tank"
+     },
+     {
+      "p": "Pretreatment train, sized to your demand",
+      "v": "Priced per project",
       "m": "PVC train: multimedia, softener and carbon or bisulfite",
       "spot": "pretreatment"
      }

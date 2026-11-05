@@ -177,9 +177,9 @@
    "page": "ind-cdmo",
    "slot": 0,
    "h": "Start from your situation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "825d240e8e",
    "block": {
@@ -222,6 +222,104 @@
      [
       "A client audit finding or questionnaire gap",
       "The client’s quality agreement (GUI-0001 C.02.012) at risk; first, evidence on design, trends and data integrity",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Upgrades: after an observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "One generation train: an outage stops several clients",
+      "Supply to every client program at risk; first, storage for your longest repair, standby pumps, duplex trains",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Redundancy options",
+       "link": "ind-cdmo#redundancy"
+      }
+     ],
+     [
+      "Natural health products or supplements for brand owners",
+      "Potable at minimum; PW where your specification calls for it",
+      {
+       "t": "PW generation, if your specification asks",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Pharmaceutical: natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Creams, lotions or over-the-counter (OTC) lines for brand owners",
+      "Water to your written specification; PW for lines that are also drugs",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Cosmetics and personal care",
+       "link": "ind-personal-care#grade"
+      }
+     ]
+    ],
+    "look": "suite-loop"
+   }
+  },
+  {
+   "page": "ind-cdmo",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "8e1f883958",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "anchor": "start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Systems",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A tech transfer for a new client program",
+      "Spare capacity and a new outlet, qualified before process performance qualification (PPQ)",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Upgrades: system assessment",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Clients filing in Canada, the US and Europe",
+      "Stricter of USP and Ph. Eur., per attribute",
+      {
+       "t": "PW generation",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Purified Water limits",
+       "link": "compliance#limits"
+      }
+     ],
+     [
+      "A client audit finding or questionnaire gap",
+      "The client’s quality agreement (GUI-0001 C.02.012) at risk; first, evidence on design, trends and records",
       {
        "t": "Monitoring and controls",
        "link": "sys-monitoring"

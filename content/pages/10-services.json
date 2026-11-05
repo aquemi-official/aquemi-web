@@ -37,7 +37,7 @@
       "link": "svc-design"
      },
      "Your URS, feed water analysis, peak demand in L/h",
-     "A compliance matrix marking every gap, within [URS review turnaround, working days]"
+     "A compliance matrix marking every gap, in a time confirmed when you enquire"
     ],
     [
      "Not under GMP: a hospital, lab or process specification",
@@ -46,7 +46,7 @@
       "link": "svc-design#faq"
      },
      "The standard and its edition, or the equipment maker's specification; feed water analysis",
-     "A compliance matrix against it, within [URS review turnaround, working days]"
+     "A compliance matrix against it, in a time confirmed when you enquire"
     ],
     [
      "Design approved",
@@ -55,7 +55,7 @@
       "link": "svc-fabrication"
      },
      "Approved drawings, piping and material specification, province",
-     "Clauses we meet or would change, a draft inspection plan, within [document review turnaround, working days]"
+     "Clauses we meet or would change, a draft inspection plan, in a time confirmed when you enquire"
     ],
     [
      "Skid in build, factory and site acceptance tests (FAT, SAT) ahead",
@@ -64,7 +64,7 @@
       "link": "svc-fat-sat"
      },
      "Your work email",
-     "Test cases with acceptance criteria, within [specimen package response time, working days]"
+     "Test cases with acceptance criteria, in a time confirmed when you enquire"
     ],
     [
      "Installed or arriving, qualification or acceptance ahead",
@@ -73,7 +73,7 @@
       "link": "svc-cq"
      },
      "URS or specification, validation master plan if any, points-of-use list",
-     "Draft C&Q and sampling plans, within [document review turnaround, working days]"
+     "Draft C&Q and sampling plans, in a time confirmed when you enquire"
     ],
     [
      "In service, qualified or accepted",
@@ -82,7 +82,7 @@
       "link": "svc-service"
      },
      "System, age, instruments, standby and ride-through time",
-     "Plan, annual price, first-visit tasks, within [quote response time, working days]"
+     "Plan, annual price, first-visit tasks, in a time confirmed when you enquire"
     ],
     [
      "Aging, out of support, or about to change",
@@ -91,7 +91,7 @@
       "link": "svc-upgrades"
      },
      "Drawings, a year of water data, the problem",
-     "Scope and price within [assessment response time, working days], then options with downtime and requalification or a repeat acceptance test"
+     "Scope and price in a time confirmed when you enquire, then options with downtime and requalification or a repeat acceptance test"
     ],
     [
      "Consultant or contractor",
@@ -100,7 +100,7 @@
       "link": "urs-guide#specification"
      },
      "Your client's URS or specification, and the bid date",
-     "A compliance matrix against it, within [compliance matrix response time, working days]"
+     "A compliance matrix against it, in a time confirmed when you enquire"
     ]
    ],
    "as": "router",
@@ -127,29 +127,29 @@
    "type": "steps",
    "anchor": "durations",
    "h": "How long each stage takes, and who signs",
-   "intro": "Weeks count from [lead time start event]. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+   "intro": "Each stage's duration is set in your project schedule, counted from the start event stated in your proposal. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
    "items": [
     {
-     "t": "Design, [design to DQ, weeks]",
+     "t": "Design",
      "hold": "You, or your quality unit under GMP",
      "link": "project-plan#stages"
     },
     {
-     "t": "Fabrication, [approved design to FAT, weeks]",
+     "t": "Fabrication",
      "link": "project-plan#stages"
     },
     {
-     "t": "FAT, [FAT duration, days]",
+     "t": "FAT",
      "hold": "Both parties",
      "link": "project-plan#stages"
     },
     {
-     "t": "Installation and SAT, [installation and SAT, days]",
+     "t": "Installation and SAT",
      "hold": "You",
      "link": "project-plan#stages"
     },
     {
-     "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+     "t": "Installation and operational qualification (IQ, OQ)",
      "hold": "Your quality unit, under GMP",
      "link": "project-plan#stages"
     },
@@ -170,23 +170,23 @@
    "items": [
     {
      "q": "Can the builder also qualify the system?",
-     "a": "Yes, under your control. We draft the protocols and reports; [executing staff: own engineers or named partner] execute them. Your quality unit approves each protocol before it runs and each report after. EU good manufacturing practice (GMP) Annex 15, 2.6, asks your site to confirm a supplier's protocols before approval.",
+     "a": "Yes, under your control. We draft the protocols and reports; engineers named in your proposal execute them. Your quality unit approves each protocol before it runs and each report after. EU good manufacturing practice (GMP) Annex 15, 2.6, asks your site to confirm a supplier's protocols before approval.",
      "link": "svc-cq#roles",
      "link_label": "See who writes, who reviews"
     },
     {
      "q": "Can we buy one stage only?",
-     "a": "[services sold separately, yes or no]. Each service has its own first step and its own documents."
+     "a": "Ask about any service on its own; what we can offer is confirmed when you enquire. Each service has its own first step and its own documents."
     },
     {
      "q": "Do you work on other makers' systems?",
-     "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment.",
+     "a": "For makes and equipment confirmed when you enquire: service and upgrades, starting with a condition survey or an assessment.",
      "link": "svc-service",
      "link_label": "See service for other makes"
     },
     {
      "q": "How long from order to water in use?",
-     "a": "[order to water in use, weeks] from [lead time start event], plus your review at each hold. Under GMP, WHO TRS 1033 allows use after at least 2 weeks of sampling, with your quality unit's approval. Sampling continues for a year.",
+     "a": "It is set in your project schedule, counted from the start event stated in your proposal, plus your review at each hold. Under GMP, WHO TRS 1033 allows use after at least 2 weeks of sampling, with your quality unit's approval. Sampling continues for a year.",
      "link": "project-plan#stages",
      "link_label": "See how a project runs"
     },
@@ -219,7 +219,7 @@
  ],
  "cta": {
   "h": "Tell us where your project stands",
-  "body": "Talking to an engineer: [fit check cost or free]. Production stopped or water out of specification? Call [service phone number], [service phone hours].",
+  "body": "Talking to an engineer: any cost is quoted in your proposal. Production stopped or water out of specification? {Send a service request|contact-service} and choose severity 1.",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
@@ -229,7 +229,7 @@
    "Feed water analysis, if any",
    "Existing system: builder, age, drawings"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "The stage to start at",
    "Its documents and duration",

@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "h, intro, cols [requirement, how, regulation A, regulation B], rows [[t, how, clausesA, clausesB]] (clauses split on \",\" and \";\", a \"(g)\" after \"11.10(d)\" reads 11.10(g)), fold (phones only), fold_noun.",
  "best_for": "ClauseCrosswalk sets a table of requirements against two regulations' clauses as an editorial crosswalk: the requirements large down the middle, each regulation a spine at the outer edge with its name set big and vertical and its clauses as chips, and a wire from every requirement to every clause it cites.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-monitoring",
@@ -163,9 +163,9 @@
    "page": "sys-monitoring",
    "slot": 3,
    "h": "Data integrity, clause by clause",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "97a1f0651d",
    "block": {

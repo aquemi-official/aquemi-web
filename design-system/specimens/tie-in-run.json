@@ -44,9 +44,9 @@
    "page": "ind-cdmo",
    "slot": 3,
    "h": "From signed program to released water",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "0e0ae234dd",
    "block": {
@@ -70,6 +70,41 @@
      {
       "t": "Release",
       "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
+     }
+    ],
+    "look": "tie-in-run"
+   }
+  },
+  {
+   "page": "ind-cdmo",
+   "slot": 3,
+   "h": "From signed program to released water",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "6de6e32cf2",
+   "block": {
+    "type": "steps",
+    "nav": "Tech transfer",
+    "anchor": "program",
+    "h": "From signed program to released water",
+    "items": [
+     {
+      "t": "Water scope review",
+      "d": "From your products, markets and PPQ date: the water specification, in a time confirmed when you enquire."
+     },
+     {
+      "t": "Change control",
+      "d": "Before design: change description, risk assessment and requalification scope for you and each affected client."
+     },
+     {
+      "t": "Build and tie in",
+      "d": "New outlets or a skid, built in our shop; tie-in in a campaign gap or shutdown, site joints by the party named in your proposal."
+     },
+     {
+      "t": "Release",
+      "d": "New section qualified, extra sampling, then your quality unit releases it, over the duration set in your schedule."
      }
     ],
     "look": "tie-in-run"

@@ -1,6 +1,6 @@
 /* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description (the package,
-   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (service and
-   sales numbers and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
+   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (the contact email
+   as a mailto: link, and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
    columns in one row, then the legal line under a hairline. Phones show the columns two by two.
    The footer is its own sitemap, separate from the header menu (NAVMENU): every page, grouped in four columns.
    A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so a page appears
@@ -14,7 +14,7 @@ function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene with PVC pretreatment, for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
-  +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
+  +'<address class="aq-footer__contact">'+'<a href="mailto:'+e(CONTACT.email)+'">'+e(CONTACT.email)+'</a><span>'+tx(CONTACT.office)+'</span></address></div>'
   +cols.map(function(c,i){var open=i===cols.length-1,id='wfoot-'+i;return '<nav class="aq-footer__col'+(open?' is-open':'')+'" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead"><span class="aq-footer__colname">'+e(c[0])+'</span>'
    +'<button type="button" class="aq-footer__toggle" aria-expanded="'+open+'" aria-controls="'+id+'">'+e(c[0])+'<span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h5>'
    +'<div class="aq-footer__links" id="'+id+'">'+c[1].filter(whas).map(function(id){return wlink(id,label[id])}).join('')+'</div></nav>'}).join('')

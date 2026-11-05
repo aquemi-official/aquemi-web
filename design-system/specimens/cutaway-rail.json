@@ -336,9 +336,9 @@
    "page": "compliance",
    "slot": 3,
    "h": "Good manufacturing practice (GMP) and qualification",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "19e4fd7a19",
    "block": {
@@ -414,6 +414,212 @@
      [
       "ASTM E2500; ICH Q9(R1)",
       "Verification focused on critical aspects, found by [risk assessment method]",
+      "Risk assessment; critical aspects list; design review",
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "Medical devices: ISO 13485:2016; FDA QMSR (21 CFR 820)",
+      "Supplier controls under 7.4; qualification reports for your process validation (7.5.6)",
+      "Questionnaire pack on request; qualification reports",
+      {
+       "t": "Medical devices",
+       "link": "ind-meddevice#supplier-quality"
+      }
+     ],
+     [
+      "EU GMP Annex 1 (2022); Health Canada GUI-0119",
+      "For sterile sites, or non-sterile sites that adopt it in writing: 6.5 records; 6.7 dead legs; 6.9 flow; 6.12 sanitization; 6.13 alert levels",
+      "Dead leg register; hydraulics; sanitization OQ",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "standards",
+    "ground": "dark"
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 3,
+   "h": "Good manufacturing practice (GMP) and qualification",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "c2e4b907de",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "GMP",
+    "anchor": "gmp",
+    "look": "cutaway-rail",
+    "tag": "Active",
+    "parts": [
+     "mat",
+     "mat loop pov docs",
+     "docs",
+     "ctl",
+     "ctl ana",
+     "docs",
+     "docs",
+     "pov loop"
+    ],
+    "h": "Good manufacturing practice (GMP) and qualification",
+    "cols": [
+     "Standard",
+     "What we design to",
+     "Proof",
+     "Where we show it"
+    ],
+    "rows": [
+     [
+      "Drug GMP (Health Canada GUI-0001 C.02.004, C.02.005, C.02.009; 21 CFR 211.63, 211.65); GUI-0158 where a natural health product needs PW",
+      "Qualified as a utility; non-reactive, non-additive, non-absorptive surfaces that withstand sanitizing",
+      "[PP material certificates] traced by lot",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ],
+     [
+      "WHO TRS 1033, Annex 3 (2021); FDA high-purity water guide (1993)",
+      "7.2.1 materials; 8.4 sanitization; 8.6 flow, dead legs; 11.3 three-phase qualification, 12 months",
+      "Material and joint records; sampling plan; phase reports",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "EU GMP Annex 15 (2015); GUI-0029",
+      "3.2 URS; 3.3 design qualification (DQ); 3.6 FAT reused where transport and installation cannot affect it",
+      "Traceability matrix; DQ report; executed FAT to OQ",
+      {
+       "t": "FAT and SAT",
+       "link": "svc-fat-sat"
+      }
+     ],
+     [
+      "GAMP 5 (2022); FDA computer software assurance (devices)",
+      "Tests scaled to risk; scripted for divert, quality alarms and sanitization",
+      "Software and configuration specifications; controls OQ",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "ASTM E2500; ICH Q9(R1)",
+      "Verification focused on critical aspects, found by [risk assessment method]",
+      "Risk assessment; critical aspects list; design review",
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "Medical devices: ISO 13485:2016; FDA QMSR (21 CFR 820)",
+      "Supplier controls under 7.4; qualification reports for your process validation (7.5.6)",
+      "Questionnaire pack on request; qualification reports",
+      {
+       "t": "Medical devices",
+       "link": "ind-meddevice#supplier-quality"
+      }
+     ],
+     [
+      "EU GMP Annex 1 (2022); Health Canada GUI-0119",
+      "For sterile sites, or non-sterile sites that adopt it in writing: 6.5 records; 6.7 dead legs; 6.9 flow; 6.12 sanitization; 6.13 alert levels",
+      "Dead leg register; hydraulics; sanitization OQ",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "standards",
+    "ground": "dark"
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 3,
+   "h": "Good manufacturing practice (GMP) and qualification",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "248a7e1ba6",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "GMP",
+    "anchor": "gmp",
+    "look": "cutaway-rail",
+    "tag": "Active",
+    "parts": [
+     "mat",
+     "mat loop pov docs",
+     "docs",
+     "ctl",
+     "ctl ana",
+     "docs",
+     "docs",
+     "pov loop"
+    ],
+    "h": "Good manufacturing practice (GMP) and qualification",
+    "cols": [
+     "Standard",
+     "What we design to",
+     "Proof",
+     "Where we show it"
+    ],
+    "rows": [
+     [
+      "Drug GMP (Health Canada GUI-0001 C.02.004, C.02.005, C.02.009; 21 CFR 211.63, 211.65); GUI-0158 where a natural health product needs PW",
+      "Qualified as a utility; non-reactive, non-additive, non-absorptive surfaces that withstand sanitizing",
+      "Material certificates named in your proposal, traced by lot",
+      {
+       "t": "Fabrication",
+       "link": "svc-fabrication"
+      }
+     ],
+     [
+      "WHO TRS 1033, Annex 3 (2021); FDA high-purity water guide (1993)",
+      "7.2.1 materials; 8.4 sanitization; 8.6 flow, dead legs; 11.3 three-phase qualification, 12 months",
+      "Material and joint records; sampling plan; phase reports",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "EU GMP Annex 15 (2015); GUI-0029",
+      "3.2 URS; 3.3 design qualification (DQ); 3.6 FAT reused where transport and installation cannot affect it",
+      "Traceability matrix; DQ report; executed FAT to OQ",
+      {
+       "t": "FAT and SAT",
+       "link": "svc-fat-sat"
+      }
+     ],
+     [
+      "GAMP 5 (2022); FDA computer software assurance (devices)",
+      "Tests scaled to risk; scripted for divert, quality alarms and sanitization",
+      "Software and configuration specifications; controls OQ",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring"
+      }
+     ],
+     [
+      "ASTM E2500; ICH Q9(R1)",
+      "Verification focused on critical aspects, found by a documented risk assessment",
       "Risk assessment; critical aspects list; design review",
       {
        "t": "Process design",

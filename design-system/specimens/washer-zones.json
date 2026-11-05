@@ -10,9 +10,9 @@
    "page": "ind-meddevice",
    "slot": 4,
    "h": "Systems for device plants",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "281a059",
    "hash": "4f9ba68c98",
    "block": {
@@ -40,6 +40,53 @@
       "icon": "conductivity",
       "d": "Conductivity and total organic carbon trended against your alert and action levels.",
       "tag": "Audit trail",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades and retrofits",
+      "icon": "valve",
+      "d": "Your existing system assessed, then upgraded under your change control.",
+      "tag": "Change control",
+      "link": "svc-upgrades"
+     }
+    ],
+    "look": "washer-zones"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 4,
+   "h": "Systems for device plants",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "36ecb9e671",
+   "block": {
+    "type": "grid",
+    "nav": "What we build",
+    "anchor": "systems",
+    "h": "Systems for device plants",
+    "items": [
+     {
+      "t": "PW generation",
+      "icon": "ro-membrane",
+      "d": "Final rinse water to your written endotoxin limit.",
+      "tag": "USP <645>",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "icon": "loop",
+      "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "tag": "USP <1231>",
+      "link": "sys-storage#sanitization"
+     },
+     {
+      "t": "Monitoring and controls",
+      "icon": "conductivity",
+      "d": "Conductivity and total organic carbon trended against your alert and action levels.",
+      "tag": "USP <643>",
       "link": "sys-monitoring"
      },
      {

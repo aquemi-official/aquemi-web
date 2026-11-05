@@ -106,9 +106,9 @@
    "page": "svc-fat-sat",
    "slot": 3,
    "h": "How you witness",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "e5db196551",
    "block": {
@@ -117,6 +117,55 @@
     "anchor": "witness",
     "h": "How you witness",
     "intro": "We finish the build before you arrive: the FAT is yours to check, not ours to fix [confirm]. Notice: [FAT witness notice, working days]; cost: [FAT witness costs, included or quoted].",
+    "items": [
+     {
+      "t": "In person",
+      "d": "In our test bay, inside the panels.",
+      "part": "panel"
+     },
+     {
+      "t": "Remote",
+      "d": "Cameras and live protocol.",
+      "part": "camera"
+     },
+     {
+      "t": "Hybrid",
+      "d": "One person attends for physical checks, the rest remote.",
+      "part": "gauge"
+     },
+     {
+      "t": "Your delegate",
+      "d": "A consultant you name witnesses and signs.",
+      "part": "documents"
+     },
+     {
+      "t": "Review only",
+      "d": "Unwitnessed; we send raw data and video.",
+      "part": "analyzer"
+     }
+    ],
+    "look": "witness-plan",
+    "zones": [
+     "Our test bay",
+     "Remote"
+    ]
+   }
+  },
+  {
+   "page": "svc-fat-sat",
+   "slot": 3,
+   "h": "How you witness",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "4761d202c9",
+   "block": {
+    "type": "options",
+    "nav": "Witnessing",
+    "anchor": "witness",
+    "h": "How you witness",
+    "intro": "We finish the build before you arrive: the FAT is yours to check, not ours to fix [confirm]. Witness it with reasonable notice; the cost is set out in your proposal.",
     "items": [
      {
       "t": "In person",

@@ -76,9 +76,9 @@
    "page": "svc-fabrication",
    "slot": 0,
    "h": "One joint, one log line",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "1f4eab0",
    "hash": "6b1657b6a8",
    "block": {
@@ -121,6 +121,75 @@
       "Test joint reference",
       "That the set-up was proven before production joints",
       "Test joint record; [test joint examination method]"
+     ],
+     [
+      "Date and inspector",
+      "Who accepted it, and when",
+      "Signature or electronic sign-off"
+     ],
+     [
+      "Repair or cut-out",
+      "How a rejected joint was replaced and accepted",
+      "New joint number linked to the original"
+     ]
+    ],
+    "nav": "Joint log",
+    "as": "evidence",
+    "fold": 4,
+    "fold_noun": "fields",
+    "anchor": "joint-log",
+    "intro": "The same joint log for every industry, under good manufacturing practice (GMP) or not."
+   }
+  },
+  {
+   "page": "svc-fabrication",
+   "slot": 0,
+   "h": "One joint, one log line",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "a6bb901c6c",
+   "block": {
+    "type": "table",
+    "look": "joint-tag",
+    "seam": "plain",
+    "h": "One joint, one log line",
+    "cols": [
+     "Field in the joint log, and what it proves",
+     "What it proves in an audit",
+     "Record"
+    ],
+    "rows": [
+     [
+      "Joint number",
+      "Where this joint is in your plant",
+      "Joint map; number on the pipe"
+     ],
+     [
+      "Material lot of both parts",
+      "That both parts match their material certificates",
+      "Material log; material certificates named in your proposal"
+     ],
+     [
+      "Welder and qualification",
+      "That the welder was qualified on the day",
+      "Qualification certificate, to the standard named in your proposal"
+     ],
+     [
+      "Joining parameters",
+      "That the qualified procedure ran with recorded settings",
+      "Joint number, welder, machine and date"
+     ],
+     [
+      "Visual result",
+      "That the joint meets the acceptance criteria",
+      "Written acceptance criteria; inspector sign-off"
+     ],
+     [
+      "Test joint reference",
+      "That the set-up was proven before production joints",
+      "Test joint record; examination method named in your proposal"
      ],
      [
       "Date and inspector",

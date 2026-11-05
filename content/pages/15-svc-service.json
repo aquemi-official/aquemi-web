@@ -7,24 +7,19 @@
  "path": "/services/service-spare-parts/",
  "eyebrow": "SERVICE AND SPARE PARTS · USP <645>",
  "headline": "Service that keeps your water in specification and your system qualified",
- "lead": "Service in writing: response times by severity, like-for-like parts, calibrations and a signed report after every visit. For our polypropylene package and [makes and equipment types serviced].",
+ "lead": "Service in writing: response times by severity, like-for-like parts, calibrations and a signed report after every visit. For our polypropylene package, and other makes and equipment confirmed when you enquire.",
  "tags": [
   "GUI-0001",
   "EU GMP Annex 15",
   "GUI-0029"
  ],
- "facts": [
-  {
-   "v": "[severity 1 on-site response time, hours]",
-   "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
-  }
- ],
  "primary_cta": "Request a service plan quote",
  "primary_cta_link": "contact-service#request",
  "primary_cta_intent": "Service plan quote",
  "secondary_cta": {
-  "label": "Production stopped? Call [service phone number]",
-  "link": "tel:[service phone number]"
+  "label": "Production stopped? Send a service request",
+  "link": "contact-service",
+  "intent": "Fault now|Severity 1: production stopped or water out of specification"
  },
  "blocks": [
   {
@@ -37,9 +32,9 @@
    "intro": "For drug, device, hospital, lab, cosmetics and process plants. Severity 1: production stopped or water out of specification. Severity 2: alarm, reduced capacity or adverse trend. Severity 3: no effect on water quality or supply.",
    "cols": [
     "",
-    "[tier 1 plan name]",
-    "[tier 2 plan name]",
-    "[tier 3 plan name]",
+    "Basic",
+    "Standard",
+    "Extended",
     "No plan"
    ],
    "rows": [
@@ -52,44 +47,44 @@
     ],
     [
      "Price · minimum term",
-     "[annual price, CAD] · [minimum term, months]",
-     "[annual price, CAD] · [minimum term, months]",
-     "[annual price, CAD] · [minimum term, months]",
-     "[call-out and hourly rates, CAD] · none"
+     "Priced per system · term set out in your plan",
+     "Priced per system · term set out in your plan",
+     "Priced per system · term set out in your plan",
+     "Rates quoted at booking · none"
     ],
     [
-     "On site, severity 1 · 2, inside [service coverage area]",
-     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+     "On site, severity 1 · 2, in an area agreed per project",
+     "Time set in your plan · visit time set in your plan",
+     "Time set in your plan · visit time set in your plan",
+     "Time set in your plan · visit time set in your plan",
      "Next available technician"
     ],
     [
      "Visits a year · calibration",
-     "[visits per year] · [calibration interval, months]",
-     "[visits per year] · [calibration interval, months]",
-     "[visits per year] · [calibration interval, months]",
+     "Visits set in your plan · calibration interval set per instrument",
+     "Visits set in your plan · calibration interval set per instrument",
+     "Visits set in your plan · calibration interval set per instrument",
      "On request"
     ],
     [
-     "Phone · remote diagnosis",
-     "[service phone hours] · [remote response time, hours]",
-     "[service phone hours] · [remote response time, hours]",
-     "[service phone hours] · [remote response time, hours]",
-     "[service phone hours] · best effort"
+     "Remote diagnosis",
+     "Response time set in your plan",
+     "Response time set in your plan",
+     "Response time set in your plan",
+     "Best effort"
     ],
     [
      "Critical spares",
      "Recommended list only",
-     "[kit held at Aquemi or on site]",
-     "[kit on site, replenished after use]",
+     "Agreed in your plan",
+     "Agreed in your plan",
      "Quoted per order"
     ],
     [
      "Unplanned repairs",
-     "[labour discount, %]",
-     "[labour discount, %]",
-     "[repair parts and labour terms]",
+     "Set out in your plan",
+     "Set out in your plan",
+     "Set out in your plan",
      "Charged in full"
     ],
     [
@@ -118,24 +113,24 @@
    "rows": [
     {
      "p": "Service plan, with calibration",
-     "v": "From [lowest plan price, CAD per year]",
+     "v": "Priced per system",
      "m": "System, instruments and distance",
      "part": "panel"
     },
     {
      "p": "Reverse osmosis (RO) membranes; electrodeionization (EDI) module or deionization (DI) resin",
-     "v": "[membrane and resin replacement intervals]",
+     "v": "Intervals set for your system",
      "m": "Feed water and flow"
     },
     {
      "p": "Filters, carbon, softener resin, ultraviolet (UV) lamp",
-     "v": "[filter, media and lamp intervals, months]",
+     "v": "Intervals set for your system",
      "m": "Feed water and run hours",
      "part": "pre"
     },
     {
      "p": "Water to drain",
-     "v": "RO reject at [design recovery, %] recovery",
+     "v": "RO reject at the recovery in your design",
      "m": "Feed water chemistry",
      "part": "drain",
      "link": "sys-pw",
@@ -143,13 +138,13 @@
     },
     {
      "p": "Energy",
-     "v": "[energy use, kWh per m³]",
+     "v": "Estimated in your proposal",
      "m": "Flow and feed temperature",
      "part": "pump"
     },
     {
      "p": "Sanitant and softener salt",
-     "v": "[PP loop sanitization method], [sanitization frequency]",
+     "v": "A chemical method set per project, at a frequency set by your monitoring",
      "m": "Your microbial trends; feed hardness",
      "part": "soft"
     }
@@ -189,14 +184,14 @@
      "m": "GUI-0001 C.02.005; 21 CFR 211.68"
     },
     {
-     "p": "UV lamp intensity [UV, standard or option]",
+     "p": "UV lamp intensity (UV on request)",
      "v": "Against a reference sensor or the maker’s method",
      "m": "Maker’s procedure"
     }
    ],
    "fold": 2,
    "fold_noun": "instruments",
-   "note": "Certificates show as-found and as-left values. Calibrated by [calibration provider and accreditation held]."
+   "note": "Certificates show as-found and as-left values. Calibrated by a provider named in your proposal."
   },
   {
    "type": "grid",
@@ -255,7 +250,7 @@
      "part": "report"
     }
    ],
-   "intro": "A routine visit stops your water for [routine visit downtime, hours] at most, at a time you choose."
+   "intro": "A routine visit stops your water for a period agreed with you, at a time you choose."
   },
   {
    "type": "table",
@@ -281,7 +276,7 @@
      "Instruments",
      "Same model, range and configuration",
      "Different model, range or data path",
-     "Installation qualification (IQ), loop check, audit trail check"
+     "Installation qualification (IQ), loop check, data recording check"
     ],
     [
      "Control software",
@@ -325,16 +320,16 @@
    "h": "When something goes wrong",
    "items": [
     {
-     "t": "Call",
-     "d": "[service phone number], [service phone hours]. Severity 1: always call. In warranty, call the same line with the serial number."
+     "t": "Service request",
+     "d": "Send a service request and choose severity 1 if production has stopped. In warranty, give the serial number."
     },
     {
      "t": "Triage",
-     "d": "We confirm severity and start your plan’s response clock. It stops at [response clock stop event]; a missed time earns [missed response remedy]."
+     "d": "We confirm severity and start your plan’s response clock. It stops at the event your plan names; a missed time earns the remedy set out in your plan."
     },
     {
      "t": "Remote diagnosis",
-     "d": "Trends and alarms reviewed within [remote response time, hours]; operators guided to a safe state.",
+     "d": "Trends and alarms reviewed within the response time set in your plan; operators guided to a safe state.",
      "link": "sys-monitoring"
     },
     {
@@ -363,37 +358,37 @@
     },
     {
      "q": "What does our team do between visits?",
-     "a": "[operator time, minutes a day]: read conductivity and alarms, keep the daily log and top up softener salt. Call at the first odd reading; a fault reported early is shorter to fix. The daily log is also one of your warranty conditions.",
+     "a": "A short daily round: read conductivity and alarms, keep the daily log and top up softener salt. Call at the first odd reading; a fault reported early is shorter to fix. The daily log is also one of your warranty conditions.",
      "link": "buying#faq",
      "link_label": "What keeps the warranty valid"
     },
     {
      "q": "We stop production for two weeks. What does the system need?",
-     "a": "[idle-period rules by duration]; the rules change with how long the system stands. Your operating manual carries the steps. Before the water goes back into use, your restart sampling and release apply. Tell us the dates if you want a visit for the restart."
+     "a": "Idle-period steps are set out for your system, and change with how long it stands. Your operating manual carries the steps. Before the water goes back into use, your restart sampling and release apply. Tell us the dates if you want a visit for the restart."
     },
     {
      "q": "Do you service other makers' systems?",
-     "a": "Yes, for [makes and equipment types serviced]. We start with a condition survey and a review of drawings, records and spares, then quote a plan. Missing records do not stop a visit. Parts for other makes: [parts supplied for other makes].",
+     "a": "Yes, for makes and equipment confirmed when you enquire. We start with a condition survey and a review of drawings, records and spares, then quote a plan. Missing records do not stop a visit. Parts for other makes: confirmed when you enquire.",
      "link": "contact-service#request",
      "link_label": "Request a condition survey",
      "intent": "First service, other make"
     },
     {
      "q": "Will you work to our SOPs and forms?",
-     "a": "Yes, on request: we follow your standard operating procedures (SOPs) and fill in your work orders and logbooks. We take your site induction, and good manufacturing practice (GMP) training where it applies, and work under your permits. Planned visits are booked [planned visit notice, working days] ahead, so permits and induction are ready.",
+     "a": "Yes, on request: we follow your standard operating procedures (SOPs) and fill in your work orders and logbooks. We take your site induction, and good manufacturing practice (GMP) training where it applies, and work under your permits. Planned visits are booked in advance, on dates agreed with you, so permits and induction are ready.",
      "link": "contact-service#request",
      "link_label": "Book a maintenance visit",
      "intent": "Preventive maintenance"
     },
     {
      "q": "How far away are you?",
-     "a": "Within [travel time from service base, hours] of anywhere in [service coverage area]. Coverage by province is on our locations page.",
+     "a": "We are based in Ontario, Canada. Travel time is agreed in your service plan, for an area agreed per project. Coverage by province is on our locations page.",
      "link": "contact-locations#coverage",
      "link_label": "See coverage by province"
     },
     {
      "q": "How long are parts available for a system this age?",
-     "a": "[parts availability period, years] from handover, for every package we build. Pumps, membranes, instruments and valves are makers’ catalogue parts. When a maker retires one, we name the successor and say whether it is like for like or a change.",
+     "a": "For a period stated in your proposal, from handover, for every package we build. Pumps, membranes, instruments and valves are makers’ catalogue parts. When a maker retires one, we name the successor and say whether it is like for like or a change.",
      "link": "svc-upgrades",
      "link_label": "Plan an upgrade instead"
     }
@@ -412,7 +407,7 @@
  ],
  "cta": {
   "h": "Send system details, get a priced plan",
-  "body": "An engineer replies. Cost: [plan quote cost or free].",
+  "body": "An engineer replies. Cost: discussed when you enquire.",
   "button": "Request a service plan quote",
   "link": "contact-service#request",
   "intent": "Service plan quote",
@@ -421,7 +416,7 @@
    "Standby and ride-through time",
    "Site address, access requirements"
   ],
-  "turnaround": "[quote response time, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "Plan for your system",
    "Annual price and term",

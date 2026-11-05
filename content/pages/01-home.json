@@ -17,10 +17,6 @@
  },
  "facts": [
   {
-   "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
-   "l": "Skid outlet · measured at FAT"
-  },
-  {
    "v": "[100 %]",
    "l": "Skids tested with water · at FAT"
   }
@@ -49,15 +45,15 @@
     },
     {
      "t": "Storage and distribution",
-     "d": "PP tank and loop: turbulent flow at peak demand, sanitized by [PP loop sanitization method].",
+     "d": "PP tank and loop: turbulent flow at peak demand, sanitized by a chemical method set per project.",
      "tag": "WHO TRS 1033",
      "link": "sys-storage",
      "spot": "storage-tank"
     },
     {
      "t": "Monitoring and controls",
-     "d": "Online total organic carbon (TOC) and conductivity, with audit trails.",
-     "tag": "21 CFR Part 11",
+     "d": "Online total organic carbon (TOC) and conductivity, with alarms and divert.",
+     "tag": "USP <643>",
      "link": "sys-monitoring",
      "icon": "conductivity"
     }
@@ -136,8 +132,8 @@
     ],
     [
      "Production stopped or water out of specification",
-     "A call to [service phone number], [service phone hours]",
-     "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+     "A service request marked severity 1",
+     "On site within the time set in your plan, in an area agreed per project",
      {
       "t": "Service request",
       "link": "contact-service",
@@ -236,7 +232,7 @@
     }
    ],
    "look": "project-run",
-   "intro": "Order to water in use: [order to water in use, weeks]. Not under good manufacturing practice (GMP)? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification."
+   "intro": "Order to water in use: set in your project schedule. Not under good manufacturing practice (GMP)? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification."
   },
   {
    "type": "grid",
@@ -252,7 +248,7 @@
     },
     {
      "t": "Running cost",
-     "d": "Service plans from [lowest plan price, CAD per year], plus consumables and energy.",
+     "d": "Service plans priced per system, plus consumables and energy.",
      "icon": "wrench",
      "link": "svc-service#running-cost"
     },
@@ -272,7 +268,7 @@
    "items": [
     {
      "q": "Who stands behind the system after handover?",
-     "a": "Your design engineer stays your contact [confirm]. Our team knows pharmaceutical water, controls and modular fabrication. We design and fabricate the package; [membranes and instruments bought from their makers]. You keep as-built drawings, joint records, FAT and qualification reports. Audit our quality system on [on-site audit notice, working days] notice. Witness your FAT with [FAT witness notice, working days] notice.",
+     "a": "Your design engineer stays your contact [confirm]. Our team knows pharmaceutical water, controls and modular fabrication. We design and fabricate the package; membranes and instruments come from their makers. You keep as-built drawings, joint records, FAT and qualification reports. Audit our quality system on reasonable notice. Witness your FAT with reasonable notice.",
      "link": "projects#verify",
      "link_label": "How to qualify us"
     },
@@ -282,13 +278,13 @@
     },
     {
      "q": "Do you work outside pharmaceutical manufacturing?",
-     "a": "Yes. Hospitals, laboratories, personal care, food, beverage and industrial plants get the same package. It is configured to the limit their standard or process sets. A hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+     "a": "Yes. Hospitals, laboratories, personal care, food, beverage and industrial plants get the same package. It is configured to the limit their standard or process sets. A hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it).",
      "link": "industries#matrix",
      "link_label": "Industry by water use"
     },
     {
      "q": "We have no URS yet. Is it too early to ask?",
-     "a": "No. Ask for a water scope review and tell us what you make. In [scope review turnaround, working days] we return the grade each step needs, the package and its qualification scope. Cost: [scope review cost or free]. [review obligation and use in your tender]",
+     "a": "No. Ask for a water scope review and tell us what you make. In a time confirmed when you enquire, we return the grade each step needs, the package and its qualification scope. Cost: quoted in your proposal. The review carries no obligation to order.",
      "link": "contact-proposal",
      "link_label": "Request a water scope review",
      "intent": "I know my product, not my water spec"
@@ -298,7 +294,7 @@
  ],
  "cta": {
   "h": "Send what you have. An engineer replies.",
-  "body": "Cost: [fit check cost or free].",
+  "body": "Cost: quoted in your proposal.",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
@@ -311,7 +307,7 @@
    "A written answer from an engineer",
    "Then a scope review, budget range or proposal"
   ],
-  "turnaround": "[proposal response time, working days]"
+  "turnaround": "Confirmed when you enquire"
  },
  "todo": [
   "Hero photograph of a finished Aquemi skid or installed loop",
