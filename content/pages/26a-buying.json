@@ -43,7 +43,7 @@
    "rows": [
     {
      "p": "Proposal",
-     "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid [proposal validity, days] · Lead time in weeks · Exclusions",
+     "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid for the period stated · Lead time in weeks · Exclusions",
      "m": "Ends with every departure from your specification and its reason, or a written \"none\"",
      "link": "buying#proposal",
      "link_label": "See the proposal lines",
@@ -51,43 +51,43 @@
     },
     {
      "p": "Currency, tax and duty",
-     "v": "[quoting currency] · [quoting terms, imported content]",
+     "v": "Currency and terms for imported content set out in your proposal",
      "m": "Stated on page one of each proposal",
      "part": "scope"
     },
     {
      "p": "Delivery and lead time",
-     "v": "[delivery terms] · [lead time from order, weeks] · [lead time from drawing approval, weeks]",
+     "v": "Delivery terms and both lead times stated in your proposal",
      "m": "Two clocks, stated separately: from your order and from approved drawings",
      "part": "base"
     },
     {
      "p": "Payment milestones",
-     "v": "[milestone structure]",
+     "v": "Set out in your proposal",
      "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT",
      "part": "scope"
     },
     {
      "p": "Acceptance and warranty start",
-     "v": "[warranty start event]",
+     "v": "The start event stated in your proposal",
      "m": "Not from shipment. One warranty text in proposal, manual and contract",
      "part": "valve"
     },
     {
      "p": "What the warranty covers",
-     "v": "[warranty periods: package, service work, consumables] · [warranty exclusions]",
+     "v": "Warranty periods and exclusions set out in your proposal",
      "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]",
      "part": "ro"
     },
     {
      "p": "Drawings and code",
-     "v": "[drawing ownership or licence terms] · [code delivered unlocked, and who owns it]",
+     "v": "Drawing terms, code access and ownership set out in your proposal",
      "m": "What you may change and copy, in writing",
      "part": "panel"
     },
     {
      "p": "Your contract form",
-     "v": "[contract form positions]",
+     "v": "Set out in your proposal",
      "m": "Any clause we cannot accept is listed once in our proposal, with the reason",
      "part": "scope"
     },
@@ -101,7 +101,7 @@
     },
     {
      "p": "Non-disclosure agreement",
-     "v": "[NDA turnaround, working days] from receipt",
+     "v": "Reviewed on receipt",
      "part": "scope"
     }
    ],
@@ -126,27 +126,27 @@
     ],
     [
      "Installation support",
-     "[installation scope]",
+     "As set out in your proposal",
      "Who places, connects and fills it, up to the connection points"
     ],
     [
      "Factory acceptance test (FAT)",
-     "[FAT in the price or priced option]",
+     "As set out in your proposal",
      "What is tested in our shop, and how you witness it"
     ],
     [
      "Site acceptance test (SAT) and commissioning",
-     "[SAT and commissioning: included or option]",
+     "As set out in your proposal",
      "Tests on your feed water before qualification or handover"
     ],
     [
      "Installation and operational qualification (IQ and OQ)",
-     "[IQ and OQ: included or priced option]",
+     "As set out in your proposal",
      "Who drafts and runs the protocols, and who approves them"
     ],
     [
      "Training",
-     "[training hours and audiences]",
+     "Hours and audiences agreed with you",
      "Who is trained, for how long, and the signed record"
     ],
     [
@@ -156,7 +156,7 @@
     ],
     [
      "First-year spares",
-     "[first-year spares: included or priced option]",
+     "As set out in your proposal",
      "Parts and quantities for the first year"
     ]
    ],
@@ -303,7 +303,7 @@
     },
     {
      "p": "Installation and tie-ins",
-     "v": "[installation scope]",
+     "v": "The scope set out in your proposal",
      "m": "Your contractor, unless the proposal includes it"
     },
     {
@@ -330,7 +330,7 @@
      "side": "out"
     }
    ],
-   "note": "A budget range states its class, date, valid-until date, lead time in weeks, one-line scope and basis. It comes back within [budget proposal turnaround, working days]. Before the proposal, it moves with your water analysis, flow, loop length, points of use, and documentation and qualification scope. A proposal holds [proposal validity, days]; only [price adjustment triggers after the quote] can move it. Service and consumables are yearly operating budget.",
+   "note": "A budget range states its class, date, valid-until date, lead time in weeks, one-line scope and basis. Its turnaround is confirmed when you enquire. Before the proposal, it moves with your water analysis, flow, loop length, points of use, and documentation and qualification scope. A proposal holds for the period stated on it; only the changes listed in it can move it. Service and consumables are yearly operating budget.",
    "glyphs": [
     "softener",
     "carbon-filter",
@@ -356,29 +356,29 @@
     },
     {
      "t": "Certificate of insurance",
-     "d": "Status: [certificate of insurance status]. Limits are in our company facts.",
+     "d": "Status on request.",
      "code": "INS",
      "key": true,
      "link": "about#facts"
     },
     {
      "t": "Workers' compensation clearance",
-     "d": "Workplace Safety and Insurance Board (WSIB), Ontario: [WSIB clearance status]",
+     "d": "Workplace Safety and Insurance Board (WSIB), Ontario: status on request",
      "code": "WSIB"
     },
     {
      "t": "Tax registration",
-     "d": "Business number and sales tax account: [tax registration status]",
+     "d": "Business number and sales tax account: details on request",
      "code": "TAX"
     },
     {
      "t": "Bank letter",
-     "d": "[bank reference letter status]",
+     "d": "Bank reference: details on request",
      "code": "BNK"
     },
     {
      "t": "Quality system status",
-     "d": "[ISO 9001 status, registrar and expiry]",
+     "d": "Status on request",
      "code": "QMS",
      "link": "cmp-quality#certification"
     },
@@ -397,7 +397,7 @@
    "nav": "Order",
    "anchor": "order",
    "h": "Placing an order",
-   "intro": "Four steps, from your purchase order to the start of the lead-time clock. Our bank details never change by email: call [sales phone number] before acting on such a request.",
+   "intro": "Four steps, from your purchase order to the start of the lead-time clock. Our bank details never change by email: check any such request with your Aquemi contact before acting on it.",
    "items": [
     {
      "t": "Address the order",
@@ -409,7 +409,7 @@
     },
     {
      "t": "We confirm in writing",
-     "d": "Within [order confirmation time, working days]: order accepted, drawing schedule and one named contact."
+     "d": "After your order: order accepted, drawing schedule and one named contact."
     },
     {
      "t": "The lead-time clock starts",
@@ -426,23 +426,23 @@
    "items": [
     {
      "q": "Can you sign our contract form?",
-     "a": "Yes, with exceptions named: our proposal lists any clause we cannot accept, once, with the reason. Send the form with your request for quotation (RFQ). Our standing positions: [contract form positions]."
+     "a": "Yes, with exceptions named: our proposal lists any clause we cannot accept, once, with the reason. Send the form with your request for quotation (RFQ). Our standing positions are set out in your proposal."
     },
     {
      "q": "Do you bid on public tenders paid after acceptance?",
-     "a": "[public tenders paid after acceptance, yes or no]. Where we bid, we bid on your terms and attach no terms of our own. A clause we cannot meet is raised in your question period [confirm]."
+     "a": "Ask about public tenders when you enquire. Where we bid, we bid on your terms and attach no terms of our own. A clause we cannot meet is raised in your question period [confirm]."
     },
     {
      "q": "Why pay anything before delivery?",
-     "a": "Each package is built for one site, from your approved drawings, and its material is bought then. Any payment at that point: [deposit, if any, and its event]. Every later payment follows an event you can check, such as a passed factory acceptance test (FAT) [confirm]."
+     "a": "Each package is built for one site, from your approved drawings, and its material is bought then. Any payment at that point is set out in your proposal. Every later payment follows an event you can check, such as a passed factory acceptance test (FAT) [confirm]."
     },
     {
      "q": "What keeps the warranty valid?",
-     "a": "Three conditions, all written in your proposal. Feed water stays inside the design basis, the daily log is kept, and changes are agreed with us first. [warranty conditions to confirm]"
+     "a": "Three conditions, all written in your proposal. Feed water stays inside the design basis, the daily log is kept, and changes are agreed with us first."
     },
     {
      "q": "What do you submit for a tender's experience or reference section?",
-     "a": "Our bid answers it with the named team and its experience. It adds our quality system and audit access, specimen documents and a witnessed factory acceptance test (FAT). Tell us before the tender closes what the clause must prove. Written answer within [proposal response time, working days]. References and site visits are arranged with our commercial lead during qualification.",
+     "a": "Our bid answers it with the named team and its experience. It adds our quality system and audit access, specimen documents and a witnessed factory acceptance test (FAT). Tell us before the tender closes what the clause must prove. Written answer in a time confirmed when you enquire. References and site visits are arranged with our commercial lead during qualification.",
      "link": "projects#verify",
      "link_label": "How to qualify us"
     }
@@ -461,7 +461,7 @@
  ],
  "cta": {
   "h": "Send your RFQ or supplier questionnaire",
-  "body": "An engineer answers it line by line, in your numbering. Cost: [proposal cost or free].",
+  "body": "An engineer answers it line by line, in your numbering. Cost: discussed when you enquire.",
   "button": "Send your RFQ",
   "link": "contact-proposal",
   "intent": "I have an RFQ or a tender",
@@ -476,7 +476,7 @@
    "Your bid form, every field answered",
    "Your questionnaire, completed"
   ],
-  "turnaround": "[proposal response time, working days]"
+  "turnaround": "Confirmed when you enquire"
  },
  "todo": [
   "Page (pass 11, SITE-PLAN new pages; structure-and-sitemap § 4.4; desk Q3): terms only. QA content (audit, certification, NCR and CAPA, suppliers, quality agreement) stays on cmp-quality (DR-001 rule 4 amended: terms move home from cmp-quality to buying; one home per approver question, not an approver page). DR-005 rule 7's home reference changes from cmp-quality#buying to buying#terms (record the amendment). Readers: procurement (R3 on terms), finance, site head, founder as approver; journeys P5, P4, P2",

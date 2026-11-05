@@ -378,9 +378,9 @@
    "page": "contact-locations",
    "slot": 1,
    "h": "Where to find us",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "f6841a4",
    "hash": "8c84aaee8d",
    "block": {
@@ -427,6 +427,138 @@
       "Spare parts and consumables, [order cut-off and delivery commitment]",
       "[street address, or shipped from the shop]",
       "[parts email address] · [parts desk hours, time zone]"
+     ]
+    ],
+    "fold": 4,
+    "fold_noun": "contacts",
+    "look": "site-plates",
+    "art": [
+     "office",
+     "shop",
+     "service",
+     "parts"
+    ]
+   }
+  },
+  {
+   "page": "contact-locations",
+   "slot": 1,
+   "h": "Where to find us",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "1d9296c3c3",
+   "block": {
+    "type": "table",
+    "anchor": "locations",
+    "nav": "Contacts",
+    "h": "Where to find us",
+    "cols": [
+     "Site",
+     "What happens here",
+     "Address",
+     "Contact and hours"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Ontario, Canada",
+       "link": "about#facts"
+      },
+      "",
+      "[mailing address]",
+      "[sales phone number] · [sales email] · [office hours, time zone]"
+     ],
+     [
+      {
+       "t": "Shop and test bay, Ontario, Canada",
+       "link": "svc-fabrication"
+      },
+      "Skid and piping fabrication, witnessed FAT on reasonable notice",
+      "Given when you book a visit",
+      "Visits by appointment"
+     ],
+     [
+      {
+       "t": "Service, Ontario, Canada",
+       "link": "svc-service"
+      },
+      "Field technicians, with critical spares agreed per plan",
+      "Ontario, Canada",
+      "[service phone number], [service phone hours] · [service email]"
+     ],
+     [
+      "Parts, Ontario, Canada",
+      "Spare parts and consumables, delivery confirmed with each order",
+      "Ontario, Canada",
+      "[parts email address] · [parts desk hours, time zone]"
+     ]
+    ],
+    "fold": 4,
+    "fold_noun": "contacts",
+    "look": "site-plates",
+    "art": [
+     "office",
+     "shop",
+     "service",
+     "parts"
+    ]
+   }
+  },
+  {
+   "page": "contact-locations",
+   "slot": 1,
+   "h": "Where to find us",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "fc49aedeb1",
+   "block": {
+    "type": "table",
+    "anchor": "locations",
+    "nav": "Contacts",
+    "h": "Where to find us",
+    "cols": [
+     "Site",
+     "What happens here",
+     "Address",
+     "Contact and hours"
+    ],
+    "rows": [
+     [
+      {
+       "t": "Ontario, Canada",
+       "link": "about#facts"
+      },
+      "",
+      "Not published",
+      "hello@aquemi.com"
+     ],
+     [
+      {
+       "t": "Shop and test bay, Ontario, Canada",
+       "link": "svc-fabrication"
+      },
+      "Skid and piping fabrication, witnessed FAT on reasonable notice",
+      "Given when you book a visit",
+      "Visits by appointment"
+     ],
+     [
+      {
+       "t": "Service, Ontario, Canada",
+       "link": "svc-service"
+      },
+      "Field technicians, with critical spares agreed per plan",
+      "Ontario, Canada",
+      "Service request form · hello@aquemi.com"
+     ],
+     [
+      "Parts, Ontario, Canada",
+      "Spare parts and consumables, delivery confirmed with each order",
+      "Ontario, Canada",
+      "hello@aquemi.com"
      ]
     ],
     "fold": 4,

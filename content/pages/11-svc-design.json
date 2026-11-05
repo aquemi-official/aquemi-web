@@ -66,7 +66,7 @@
     },
     {
      "t": "Concept and route",
-     "d": "Route options, mass balance and a budget at [concept estimate class and accuracy]. You approve the basis of design.",
+     "d": "Route options, mass balance and a budget with its accuracy stated. You approve the basis of design.",
      "hold": "You"
     },
     {
@@ -133,13 +133,13 @@
    "rows": [
     [
      "URS compliance matrix",
-     "Met. Outlet designed to [outlet conductivity guarantee, µS/cm @ 25 °C]; return monitored.",
+     "Met. Return monitored.",
      "Met. Every branch in the dead leg register."
     ],
     [
      "Basis of design",
      "Reverse osmosis and electrodeionization, passes set by your feed water analysis",
-     "[PP point-of-use valve type]; instrument tees sized to hold L/D ≤ 2"
+     "The point-of-use valve named in your proposal; instrument tees sized to hold L/D ≤ 2"
     ],
     [
      "Functional specification",
@@ -180,11 +180,11 @@
     },
     {
      "q": "Which risk assessment method do you use?",
-     "a": "[risk assessment method], under ICH Q9(R1), the quality risk management guideline."
+     "a": "A documented risk assessment, under ICH Q9(R1), the quality risk management guideline."
     },
     {
      "q": "Consultant: what do we receive, and when?",
-     "a": "A compliance matrix against your client's URS, within [compliance matrix response time, working days]. Drawings and specifications follow the design stages above. Writing the specification section? Our URS guide has notes for specifiers.",
+     "a": "A compliance matrix against your client's URS, in a time confirmed when you enquire. Drawings and specifications follow the design stages above. Writing the specification section? Our URS guide has notes for specifiers.",
      "link": "urs-guide#specification",
      "link_label": "Notes for specifiers"
     },
@@ -196,13 +196,13 @@
     },
     {
      "q": "Is design charged separately from the equipment?",
-     "a": "User requirement specification (URS) gap review: [URS review cost]. Design fees credited against an equipment order: [design fees credited, yes or no]. Design-only work: [design-only engagements offered, and pricing].",
+     "a": "User requirement specification (URS) gap review: quoted in your proposal. Whether design fees are credited against an equipment order is set out in your proposal. Design-only work: discussed when you enquire.",
      "link": "contact-proposal#requests",
      "link_label": "See what each request costs"
     },
     {
      "q": "Who seals drawings, and do we get native CAD files?",
-     "a": "[P.Eng. seal] in [provinces of licence]. Drawings come as [drawing formats delivered], under [drawing ownership or licence terms].",
+     "a": "Engineering seal: details on request. Drawings come in formats agreed with you, under terms set out in your proposal.",
      "link": "buying#terms",
      "link_label": "See the terms of sale"
     }
@@ -221,7 +221,7 @@
  ],
  "cta": {
   "h": "Send your URS or specification, draft or final",
-  "body": "An engineer replies. Cost: [URS review cost].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a URS gap review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|URS gap review",
@@ -231,7 +231,7 @@
    "Points of use and peak demand, L/h",
    "Bid or issue date, if specifying for a client"
   ],
-  "turnaround": "[URS review turnaround, working days]",
+  "turnaround": "A time confirmed when you enquire",
   "returns": [
    "URS compliance matrix: each gap with proposed wording",
    "Missing feed water data"
@@ -267,15 +267,5 @@
   "Pass 12 anchors (SITE-PLAN block list): failures, deliverables, trace added; stages and faq kept. No inbound link used the old generated ids",
   "Pass 12 review: deliverables link \"Request a specimen package\" -> cmp-documentation#samples (validation lead asks for a specimen). Specimen package lists FAT and IQ/OQ items, not design documents; add the design review report and traceability matrix there when FD-58/FD-46 allow (cmp-documentation owner). Until then the trace block is the visible design specimen; if the package stays FAT/IQ-OQ only at launch, drop the link",
   "Pass 12 review: stages intro GMP line is \"two holds below are yours: the basis of design, then DQ\", matching the hold fields (You at Concept and route; Your quality unit at Design review and freeze). Closing heading names URS or specification (FD-59); button text and intent unchanged"
- ],
- "facts": [
-  {
-   "v": "[URS review turnaround, working days]",
-   "l": "Written gap list · from complete inputs"
-  },
-  {
-   "v": "[design to DQ, weeks]",
-   "l": "To an approved design · from your URS"
-  }
  ]
 }

@@ -315,9 +315,9 @@
    "page": "buying",
    "slot": 1,
    "h": "What every proposal lists, line by line",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "a066bb55cf",
    "block": {
@@ -370,6 +370,71 @@
      [
       "First-year spares",
       "[first-year spares: included or priced option]",
+      "Parts and quantities for the first year"
+     ]
+    ],
+    "look": "joint-spine"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 1,
+   "h": "What every proposal lists, line by line",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "03e1410be3",
+   "block": {
+    "type": "table",
+    "nav": "Proposal",
+    "anchor": "proposal",
+    "h": "What every proposal lists, line by line",
+    "intro": "The same lines, in the same order. Each is marked included, priced option or by others; none is left blank.",
+    "cols": [
+     "Line",
+     "Included, priced option or by others",
+     "What the line states"
+    ],
+    "rows": [
+     [
+      "Package: pretreatment to distribution",
+      "Included",
+      "Each module and each point of use, sized from your water analysis"
+     ],
+     [
+      "Installation support",
+      "As set out in your proposal",
+      "Who places, connects and fills it, up to the connection points"
+     ],
+     [
+      "Factory acceptance test (FAT)",
+      "As set out in your proposal",
+      "What is tested in our shop, and how you witness it"
+     ],
+     [
+      "Site acceptance test (SAT) and commissioning",
+      "As set out in your proposal",
+      "Tests on your feed water before qualification or handover"
+     ],
+     [
+      "Installation and operational qualification (IQ and OQ)",
+      "As set out in your proposal",
+      "Who drafts and runs the protocols, and who approves them"
+     ],
+     [
+      "Training",
+      "Hours and audiences agreed with you",
+      "Who is trained, for how long, and the signed record"
+     ],
+     [
+      "Documents",
+      "Included",
+      "Drawings, test and qualification records, operating manual and as-built set [confirm each], each for information or approval"
+     ],
+     [
+      "First-year spares",
+      "As set out in your proposal",
       "Parts and quantities for the first year"
      ]
     ],

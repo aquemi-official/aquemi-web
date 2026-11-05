@@ -7,7 +7,7 @@
  "path": "/industries/hospitals-and-laboratories/",
  "eyebrow": "HOSPITALS · LABORATORIES · ST108 · ASTM D1193 · CLSI GP40",
  "headline": "Critical and reagent water, specified by your standard",
- "lead": "For hospital reprocessing departments, clinical and research laboratories, and the consultants who specify them. One ambient polypropylene package, configured to the standard you name: [hospital water scope]; [lab water scope].",
+ "lead": "For hospital reprocessing departments, clinical and research laboratories, and the consultants who specify them. One ambient polypropylene package, configured to the standard you name: hospital scope confirmed when you enquire; lab water to the grade you specify.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec|Hospital sterile processing",
@@ -235,7 +235,7 @@
    "nav": "Treatment train",
    "anchor": "train",
    "h": "One train, designed to the critical-water limits",
-   "intro": "The configuration follows your standard: [configurations offered for this use].",
+   "intro": "The configuration follows your standard and is confirmed when you enquire.",
    "stages": [
     {
      "t": "Generation",
@@ -253,19 +253,19 @@
      "t": "Loop pump and UV",
      "spot": "pump",
      "node": "pump",
-     "d": "Pumps: [duty and standby pumps, standard or option]. 254 nm ultraviolet (UV) on the supply lowers the viable count; it does not sanitize the loop."
+     "d": "Pumps: duty and standby pumps on request. 254 nm ultraviolet (UV) on the supply lowers the viable count; it does not sanitize the loop."
     },
     {
      "t": "Temperature",
      "spot": "heat-exchanger",
      "node": "hx",
-     "d": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]."
+     "d": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)."
     },
     {
      "t": "Points of use",
      "icon": "loop",
      "node": "pou",
-     "d": "Washers, sinks and bench taps on short branches; sections isolate for work. Endotoxin filtration: [endotoxin filter on the loop, standard or option]."
+     "d": "Washers, sinks and bench taps on short branches; sections isolate for work. Endotoxin filtration: on request."
     },
     {
      "t": "Return sensors",
@@ -277,7 +277,7 @@
      "t": "Sanitization",
      "icon": "tank",
      "node": "spray",
-     "d": "[PP loop sanitization method]; residual tested before use. PVC stays upstream, out of the critical-water loop."
+     "d": "A chemical method set per project; residual tested before use. PVC stays upstream, out of the critical-water loop."
     }
    ],
    "look": "train-strip",
@@ -288,7 +288,7 @@
    "nav": "For consultants",
    "anchor": "specification",
    "h": "For consultants and contractors",
-   "intro": "A specimen specification and basis-of-design sheet, sent in [specimen design set response time, working days]. Your project's set follows the scope review.",
+   "intro": "A specimen specification and basis-of-design sheet, sent within a time confirmed when you enquire. Your project's set follows the scope review.",
    "items": [
     {
      "t": "Specification text",
@@ -305,7 +305,7 @@
     },
     {
      "t": "Panel approval",
-     "d": "Electrical approval route: [panel certification mark held, or field evaluation used]"
+     "d": "Electrical approval route: confirmed in your proposal"
     },
     {
      "t": "Changeover plan",
@@ -364,7 +364,7 @@
    "items": [
     {
      "q": "Do you supply water for hospital reprocessing?",
-     "a": "Yes: [hospital water scope]. Reprocessing water is critical water under ANSI/AAMI ST108:2023 and CSA Z314:23, a different grade from Purified Water.",
+     "a": "Our hospital scope is confirmed when you enquire. Reprocessing water is critical water under ANSI/AAMI ST108:2023 and CSA Z314:23, a different grade from Purified Water.",
      "link": "ind-hospital-lab#grades",
      "link_label": "Compare the grades"
     },
@@ -374,7 +374,7 @@
     },
     {
      "q": "Can the loop be disinfected with hot water?",
-     "a": "Not routinely. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C]. A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+     "a": "Not routinely. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Any hot-water cycle stays inside the PP maker's published pressure–temperature curve for its hours. A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it).",
      "link": "industries#fit",
      "link_label": "Check your use fits"
     },
@@ -409,7 +409,7 @@
  ],
  "cta": {
   "h": "Send your basis of design or standard",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Hospital sterile processing",
@@ -419,7 +419,7 @@
    "Feed water analysis",
    "New building, renovation or occupied site"
   ],
-  "turnaround": "[scope review turnaround, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "The water specification by grade",
    "The treatment train and loop to hold it",

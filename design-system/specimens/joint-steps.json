@@ -56,15 +56,61 @@
    "page": "svc-fabrication",
    "slot": 3,
    "h": "From pipe to turnover",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "8a44c4dcaa",
    "block": {
     "type": "steps",
     "look": "joint-steps",
     "method": "[PP joining method]",
+    "h": "From pipe to turnover",
+    "items": [
+     {
+      "t": "Fabrication and inspection plan",
+      "d": "Agreed before material is ordered: standards, inspection extent, records, hold and witness points.",
+      "hold": "Both parties"
+     },
+     {
+      "t": "Receive and verify material",
+      "d": "Each PP lot checked against its certificate and logged."
+     },
+     {
+      "t": "Qualify the set-up",
+      "d": "Test joints made and accepted before any production joint. Witness point."
+     },
+     {
+      "t": "Join, record and inspect",
+      "d": "Each joint numbered and logged with its parameters; visual examination. Rejects cut out, renumbered. Witness point."
+     },
+     {
+      "t": "Test and survey",
+      "d": "Pressure test, slope survey and dead leg check. Witness point."
+     },
+     {
+      "t": "Clean and turn over",
+      "d": "Flushed and rinsed with PW before factory acceptance testing. Dossier indexed by joint number, updated with field joints.",
+      "link": "cmp-documentation#index"
+     }
+    ],
+    "nav": "Hold points",
+    "intro": "A joint inside a finished skid is hard to re-inspect.",
+    "anchor": "steps"
+   }
+  },
+  {
+   "page": "svc-fabrication",
+   "slot": 3,
+   "h": "From pipe to turnover",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "010f5ed7a0",
+   "block": {
+    "type": "steps",
+    "look": "joint-steps",
     "h": "From pipe to turnover",
     "items": [
      {

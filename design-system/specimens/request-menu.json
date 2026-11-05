@@ -217,9 +217,9 @@
    "page": "contact-proposal",
    "slot": 2,
    "h": "What each request returns",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "ca2c947a06",
    "block": {
@@ -283,6 +283,82 @@
       "A written answer from an engineer",
       "Written reply within [proposal response time, working days]",
       "[fit check cost or free]"
+     ]
+    ],
+    "look": "request-menu",
+    "intro": "Every proposal opens with a summary: one-line scope, price, quote date, valid until, lead time, departures with reasons or \"none\"."
+   }
+  },
+  {
+   "page": "contact-proposal",
+   "slot": 2,
+   "h": "What each request returns",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "2bbbd10a66",
+   "block": {
+    "type": "table",
+    "anchor": "requests",
+    "nav": "Requests",
+    "h": "What each request returns",
+    "fold": 7,
+    "fold_noun": "requests",
+    "cols": [
+     "Situation",
+     "What comes back",
+     "When",
+     "Cost"
+    ],
+    "rows": [
+     [
+      "I have a URS or a draft",
+      "Gap review · compliance matrix · proposal · other document review",
+      "Confirmed when you enquire",
+      "Discussed when you enquire"
+     ],
+     [
+      "I have an RFQ or a tender",
+      {
+       "t": "Proposal in your numbering, with your bid form filled in",
+       "link": "buying#answer"
+      },
+      "Confirmed when you enquire",
+      "Discussed when you enquire"
+     ],
+     [
+      "I know my product, not my water spec",
+      "Water scope review: grade or standard per use, package, qualification or acceptance test scope",
+      "Confirmed when you enquire",
+      "Discussed when you enquire"
+     ],
+     [
+      "I have water data, no system yet",
+      "Feed water review · modules, budget range and its class, from rough numbers · sizing proposal and firm price, from full analysis",
+      "Confirmed when you enquire",
+      "Discussed when you enquire"
+     ],
+     [
+      "I have a system already",
+      "Scope and price, then options with downtime and requalification or retest",
+      "Confirmed when you enquire",
+      "Discussed when you enquire"
+     ],
+     [
+      "I am qualifying suppliers",
+      {
+       "t": "Audit or questionnaire pack, on Quality management",
+       "link": "cmp-quality#audit"
+      },
+      "Confirmed when you ask",
+      "Discussed when you ask"
+     ],
+     [
+      "Not sure yet: talk to an engineer",
+      "A written answer from an engineer",
+      "Confirmed when you enquire",
+      "Discussed when you enquire"
      ]
     ],
     "look": "request-menu",

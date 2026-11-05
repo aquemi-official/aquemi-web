@@ -75,7 +75,7 @@
     ],
     [
      "You need a few litres a day at one lab bench",
-     "You need [minimum–maximum capacity, L/h] for production, rinsing or a lab building",
+     "You need a skid sized to your demand for production, rinsing or a lab building",
      {
       "t": "Labs and lab buildings",
       "link": "ind-hospital-lab#labs"
@@ -149,7 +149,7 @@
    "rows": [
     {
      "p": "Where our scope stops",
-     "v": "[standard battery limits, typical scope]; [installation scope]",
+     "v": "Battery limits set per project; installation scope set out in your proposal",
      "m": "Listed in the proposal: who supplies, installs and connects each item",
      "side": "limit",
      "link": "systems#site",
@@ -158,14 +158,14 @@
     },
     {
      "p": "The package",
-     "v": "[typical footprint and weight, by capacity]",
+     "v": "Confirmed in your proposal",
      "m": "Plus service clearance",
      "side": "package",
      "part": "package"
     },
     {
      "p": "Training",
-     "v": "[training hours and audiences]",
+     "v": "Hours and audiences agreed with you",
      "m": "For your daily operators",
      "link": "svc-cq#faq",
      "link_label": "Training",
@@ -181,21 +181,21 @@
     },
     {
      "p": "Drain",
-     "v": "[feed and drain flows, L/h]",
+     "v": "Feed and drain flows confirmed in your proposal",
      "m": "Reverse osmosis sends part of the feed to drain",
      "side": "site",
      "part": "drain"
     },
     {
      "p": "Power",
-     "v": "[supply voltage options]",
+     "v": "Supply voltage confirmed in your proposal",
      "m": "To the control panel; the proposal says who brings it",
      "side": "site",
      "part": "power"
     },
     {
      "p": "Way in",
-     "v": "Doors and route at least [minimum door and access width, m]",
+     "v": "Doors and route at least the width stated in your proposal",
      "m": "Measure the narrowest door on the route",
      "side": "site",
      "part": "door"
@@ -236,7 +236,7 @@
     {
      "p": "Check and log",
      "v": "Read conductivity, the purity reading, and the others on the panel; sign the log",
-     "m": "[operator rounds: how often, minutes each]"
+     "m": "Estimated in your proposal"
     },
     {
      "p": "Samples",
@@ -246,12 +246,12 @@
     {
      "p": "Filters and salt",
      "v": "Change filter cartridges; top up softener salt",
-     "m": "[filter, media and lamp intervals, months]"
+     "m": "Intervals set for your system"
     },
     {
      "p": "Sanitization",
-     "v": "[PP loop sanitization method]; residual tested before use",
-     "m": "[sanitization frequency]"
+     "v": "A chemical method set per project; residual tested before use",
+     "m": "At a frequency set by your monitoring"
     },
     {
      "p": "First weeks, drug lines",
@@ -260,7 +260,7 @@
     },
     {
      "p": "Year one in total",
-     "v": "[staff hours in year one: sampling, logs, sanitization]",
+     "v": "Estimated in your proposal",
      "m": "Plan these hours before you order"
     }
    ],
@@ -272,7 +272,7 @@
    "nav": "Cost",
    "anchor": "cost",
    "h": "What it costs, all in and per month",
-   "intro": "Monthly lines are for our smallest package, [reference capacity, L/h]; your water and use change them. For a capital request, use the all-in figure.",
+   "intro": "Monthly lines are sized to your demand; your water and use change them. For a capital request, use the all-in figure.",
    "cols": [
     "Cost line",
     "Amount",
@@ -281,46 +281,46 @@
    "rows": [
     {
      "p": "The package",
-     "v": "[budget range, CAD], once",
-     "m": "Size and options; ranges on the systems page",
+     "v": "Priced per project, once",
+     "m": "Size and options",
      "link": "systems#budget"
     },
     {
      "p": "Installation, connections and tie-in",
-     "v": "[installation cost, CAD], once",
-     "m": "Set in the proposal: [installation scope]"
+     "v": "Quoted in your proposal, once",
+     "m": "Set in the proposal: who installs and connects each item"
     },
     {
      "p": "Qualification or acceptance tests",
-     "v": "[qualification cost, CAD], once",
+     "v": "Quoted in your proposal, once",
      "m": "Tests run on site; protocols in line 1, lab tests in line 7."
     },
     {
      "p": "Service plan",
-     "v": "[service plan, CAD per month]",
+     "v": "Quoted in your proposal",
      "m": "Visits and calibration",
      "link": "svc-service"
     },
     {
      "p": "Filters, membranes, resin, salt and sanitant",
-     "v": "[consumables, CAD per month]",
+     "v": "Estimated in your proposal",
      "m": "Your feed water and daily use",
      "link": "svc-service#running-cost"
     },
     {
      "p": "Energy",
-     "v": "[energy, CAD per month]",
-     "m": "[energy use, kWh per m³] at your electricity rate"
+     "v": "Estimated in your proposal",
+     "m": "Energy use estimated in your proposal, at your electricity rate"
     },
     {
      "p": "Lab tests on your samples",
-     "v": "[sample testing, CAD per month]",
+     "v": "Estimated in your proposal",
      "m": "Your lab or a contract lab; your sampling plan"
     },
     {
      "p": "Water to drain",
-     "v": "[water to drain, CAD per month]",
-     "m": "Part of the feed goes to drain ([design recovery, %] recovery), at your water rate",
+     "v": "Estimated in your proposal",
+     "m": "Part of the feed goes to drain (the recovery in your design), at your water rate",
      "side": "out"
     }
    ],
@@ -437,13 +437,13 @@
     },
     {
      "q": "Do we get a full pharmaceutical document pack?",
-     "a": "No, unless your product's rules ask for one. Drug lines get qualification protocols and reports. Natural health product lines get the evidence GUI-0158 asks for: [NHP qualification scope]. Other lines get commissioning records and an acceptance test against your specification. Summary for your approver: [one-paragraph approver summary, yes or no].",
+     "a": "No, unless your product's rules ask for one. Drug lines get qualification protocols and reports. Natural health product lines get the evidence GUI-0158 asks for, with the scope set per project. Other lines get commissioning records and an acceptance test against your specification. A summary for your approver is available on request.",
      "link": "cmp-documentation",
      "link_label": "The document set"
     },
     {
      "q": "Who will we work with?",
-     "a": "A named team. Our commercial lead, an automation engineer with direct experience on pharmaceutical water systems, and a modular manufacturing and design specialist. [named project lead role] is your contact from order to handover.",
+     "a": "A named team. Our commercial lead, an automation engineer with direct experience on pharmaceutical water systems, and a modular manufacturing and design specialist. A project lead named in your order is your contact from order to handover.",
      "link": "about#people",
      "link_label": "The people"
     }
@@ -464,7 +464,7 @@
  ],
  "cta": {
   "h": "Start with what you make",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I know my product, not my water spec",
@@ -474,7 +474,7 @@
    "Your water report (city or well), if any",
    "Who will look after it, and for how many hours a week"
   ],
-  "turnaround": "[scope review turnaround, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "Which water each product needs",
    "The Purified Water package you need, or none",

@@ -130,9 +130,9 @@
    "page": "project-plan",
    "slot": 2,
    "h": "Notice before each event",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "fb336366c9",
    "block": {
@@ -181,6 +181,66 @@
       "Training syllabus",
       "[training syllabus notice, weeks] before training",
       "Topics and hours for your approval: [training hours and audiences]"
+     ]
+    ],
+    "look": "response-lanes"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 2,
+   "h": "Notice before each event",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "74b1c89bff",
+   "block": {
+    "type": "table",
+    "anchor": "notice",
+    "nav": "Notice",
+    "h": "Notice before each event",
+    "intro": "Each plan reaches you before its event, so your team can review it, book people and plan any shutdown. A late approval moves the event; the notice period stays the same.",
+    "cols": [
+     "Event",
+     "Notice",
+     "What you receive"
+    ],
+    "rows": [
+     [
+      "FAT protocol",
+      "Ahead of FAT, on a date agreed with you",
+      "Draft protocol for your approval; your team may add test cases"
+     ],
+     [
+      "FAT witness",
+      "Reasonable notice before FAT",
+      "Date, agenda and who attends"
+     ],
+     [
+      "Site readiness checklist",
+      "Ahead of delivery, on a date agreed with you",
+      "Utilities, access and floor your site must have ready [confirm]"
+     ],
+     [
+      "Shipping",
+      "Ahead of dispatch, on a date agreed with you",
+      "Delivery date, weights, lifting points and offloading needs"
+     ],
+     [
+      "Commissioning plan",
+      "Ahead of start-up, on a date agreed with you",
+      "Schedule, first water, off-specification water to drain, who attends"
+     ],
+     [
+      "SAT, IQ and OQ protocols, or acceptance test",
+      "Ahead of testing, on a date agreed with you",
+      "For your approval, or your quality unit's under GMP; nothing runs before it is signed"
+     ],
+     [
+      "Training syllabus",
+      "Ahead of training, on a date agreed with you",
+      "Topics for your approval, with hours and audiences agreed with you"
      ]
     ],
     "look": "response-lanes"

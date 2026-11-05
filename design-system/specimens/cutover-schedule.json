@@ -119,9 +119,9 @@
    "page": "project-plan",
    "slot": 0,
    "h": "Stages, what each leaves, and who signs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "3b32621580",
    "block": {
@@ -168,6 +168,74 @@
      },
      {
       "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+      "d": "To protocols your quality unit approves; leaves reports and draft procedures. Without GMP: commissioning and an acceptance test against your specification.",
+      "hold": "Your quality unit, or you without GMP",
+      "link": "svc-cq"
+     },
+     {
+      "t": "PQ under GMP: three phases, at least 12 months",
+      "d": "Performance qualification (PQ). After at least 2 weeks of sampling, your quality unit releases the water for use (WHO TRS 1033).",
+      "hold": "Your quality unit"
+     }
+    ],
+    "lane": "Order to water in use",
+    "ground": "light",
+    "look": "cutover-schedule"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 0,
+   "h": "Stages, what each leaves, and who signs",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "82ee6046d4",
+   "block": {
+    "type": "steps",
+    "anchor": "stages",
+    "nav": "Stages",
+    "h": "Stages, what each leaves, and who signs",
+    "intro": "Total: set in your project schedule, counted from the start event stated in your proposal, plus your review time. Each stage's duration is in the same schedule. Replacing a system? We plan the cutover; production stops only for a planned shutdown agreed with you.",
+    "items": [
+     {
+      "t": "Your approvals, before order",
+      "d": "Your user requirement specification (URS), capital approval and supplier approval. They come before our clock starts, so plan them first.",
+      "hold": "You"
+     },
+     {
+      "t": "Design to DQ",
+      "d": "Basis of design, piping and instrumentation diagrams and functional specification. Under good manufacturing practice (GMP), design qualification (DQ) closes this stage.",
+      "hold": "You, and your quality unit for DQ under GMP"
+     },
+     {
+      "t": "Drawing approval",
+      "d": "You review drawings for fabrication, in a review period agreed with you. Lead time to delivery, from order and from approval, is stated in your proposal.",
+      "hold": "You or your engineer"
+     },
+     {
+      "t": "Fabrication",
+      "d": "Polypropylene (PP) skids built in our shop. Leaves material certificates and joint records as set out in your proposal.",
+      "link": "svc-fabrication"
+     },
+     {
+      "t": "Factory acceptance test (FAT)",
+      "d": "With water, to the protocol you or your quality unit approved. Leaves raw data, deviation log, report and release to ship.",
+      "hold": "Both parties",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Shipping and storage",
+      "d": "Drained after FAT, then shipped. Kept until start-up under conditions set out in your proposal."
+     },
+     {
+      "t": "Installation and site acceptance tests (SAT)",
+      "d": "Installation to the scope set out in your proposal; site joints and pressure test by the party named there. Tie-in during the planned shutdown. Leaves the SAT report.",
+      "hold": "You, or your quality unit under GMP"
+     },
+     {
+      "t": "Installation and operational qualification (IQ, OQ)",
       "d": "To protocols your quality unit approves; leaves reports and draft procedures. Without GMP: commissioning and an acceptance test against your specification.",
       "hold": "Your quality unit, or you without GMP",
       "link": "svc-cq"

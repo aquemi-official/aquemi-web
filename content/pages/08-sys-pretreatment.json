@@ -15,24 +15,6 @@
   "label": "Replacing a train? See upgrades",
   "link": "svc-upgrades#upgrades"
  },
- "facts": [
-  {
-   "v": "[RO inlet chlorine target, mg/L as Cl₂]",
-   "l": "Total chlorine, RO inlet · online analyzer"
-  },
-  {
-   "v": "[softener outlet hardness target, mg/L as CaCO₃]",
-   "l": "Hardness, softener outlet · [hardness measurement method]"
-  },
-  {
-   "v": "[RO inlet SDI₁₅ target]",
-   "l": "Silt density index, RO inlet · ASTM D4189"
-  },
-  {
-   "v": "[pretreatment capacity range, L/h]",
-   "l": "Per train · at your coldest feed"
-  }
- ],
  "blocks": [
   {
    "type": "spec",
@@ -47,28 +29,28 @@
    "rows": [
     {
      "p": "Free and total chlorine",
-     "v": "[RO inlet chlorine target, mg/L as Cl₂]",
+     "v": "Set in your design basis",
      "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed",
      "hl": true
     },
     {
      "p": "Silt density index",
-     "v": "[RO inlet SDI₁₅ target]",
+     "v": "Set in your design basis",
      "m": "ASTM D4189, at the cartridge filter outlet"
     },
     {
      "p": "Turbidity",
-     "v": "[media filter outlet turbidity target, NTU]",
+     "v": "Set in your design basis",
      "m": "Media filter outlet"
     },
     {
      "p": "Hardness",
-     "v": "[softener outlet hardness target, mg/L as CaCO₃]",
-     "m": "[hardness measurement method], softener outlet"
+     "v": "Set in your design basis",
+     "m": "Method named in your proposal, softener outlet"
     },
     {
      "p": "Iron and manganese",
-     "v": "[design limit, mg/L each]",
+     "v": "Limits set in your design basis",
      "m": "Set with the membrane maker"
     },
     {
@@ -172,7 +154,7 @@
     [
      "Spring runoff and fall turnover",
      "Turbidity and organics raise SDI and foul membranes",
-     "Media filter sized for the worst month; [on-site SDI testing, standard or option]"
+     "Media filter sized for the worst month; SDI testing confirmed in your proposal"
     ],
     [
      "Hardness and alkalinity, highest in groundwater",
@@ -192,7 +174,7 @@
     [
      "No disinfectant after carbon",
      "Biofilm in carbon and softeners sheds into the RO",
-     "Carbon replaced every [carbon replacement interval, months] or bisulfite instead; samples around each bed"
+     "Carbon replaced at an interval set for your system, or bisulfite instead; samples around each bed"
     ]
    ],
    "nav": "Feed water",
@@ -271,7 +253,7 @@
     },
     {
      "t": "Media, resin and material certificates",
-     "d": "Lot numbers; [certificates supplied for PVC parts]"
+     "d": "Lot numbers; PVC certificates as named in your proposal"
     }
    ],
    "nav": "Documents",
@@ -322,7 +304,7 @@
     },
     {
      "t": "Feed heat exchanger",
-     "d": "Holds [feed heat exchanger design temperature, °C] in winter. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "d": "Holds the temperature set in your design basis in winter. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
      "spot": "heat-exchanger",
      "at": 3.6,
      "part": "hx",
@@ -368,7 +350,7 @@
    "items": [
     {
      "q": "Can you replace our existing pretreatment?",
-     "a": "Yes, on [makes and equipment types serviced]. We assess the system and replace the train; the existing pretreatment runs until cutover.",
+     "a": "Yes, on makes and equipment confirmed when you enquire. We assess the system and replace the train; the existing pretreatment runs until cutover.",
      "link": "svc-upgrades#upgrades"
     },
     {
@@ -377,12 +359,12 @@
     },
     {
      "q": "What does the pretreatment cost?",
-     "a": "[budget range, CAD] for a [reference capacity, L/h] train, before tax, as of [month year].",
+     "a": "It is priced per project, for a train sized to your demand.",
      "link": "systems#budget"
     },
     {
      "q": "How do you show the design covers seasonal changes?",
-     "a": "In the design basis, month by month. We take [months of history] of utility and site data and size every bed for each parameter's worst month, before you order."
+     "a": "In the design basis, month by month. We take the history you have of utility and site data and size every bed for each parameter's worst month, before you order."
     },
     {
      "q": "Is pretreatment part of the validated system?",
@@ -392,13 +374,13 @@
     },
     {
      "q": "What is replaced, and how often?",
-     "a": "Five items, set from your feed water: cartridges, filter media, carbon, softener resin and salt. Cartridges, media and resin follow [filter, media and lamp intervals, months]; salt follows hardness. Carbon follows [carbon replacement interval, months], reset from your microbial counts. It is replaced, not hot-water sanitized: PVC is rated to 60 °C, at 22 % of its pressure rating.",
+     "a": "Five items, set from your feed water: cartridges, filter media, carbon, softener resin and salt. Cartridges, media and resin follow intervals set for your system; salt follows hardness. Carbon follows an interval set for your system, reset from your microbial counts. It is replaced, not hot-water sanitized: PVC is rated to 60 °C, at 22 % of its pressure rating.",
      "link": "svc-service#running-cost",
      "link_label": "Running cost"
     },
     {
      "q": "What is the pretreatment built from?",
-     "a": "Polyvinyl chloride (PVC) pipe to [PVC pipe standard and schedule], joined by [PVC joining method]. It stays upstream of the reverse osmosis stage, so it never touches Purified Water. Vessels: [vessel material for media, softener and carbon beds]."
+     "a": "Polyvinyl chloride (PVC) pipe to the standard and schedule named in your proposal, joined by the method named there. It stays upstream of the reverse osmosis stage, so it never touches Purified Water. Vessels: material named in your proposal."
     },
     {
      "q": "What happens to the ammonia from chloramine?",
@@ -420,7 +402,7 @@
  ],
  "cta": {
   "h": "Send your seasonal water data",
-  "body": "An engineer replies in writing. Cost: [cost of the feed water review].",
+  "body": "An engineer replies in writing. Cost: quoted in your proposal.",
   "button": "Request a feed water review",
   "link": "contact-proposal",
   "intent": "I have water data, no system yet|Feed water review",
@@ -431,7 +413,7 @@
    "Peak demand, L/h",
    "Your current train and its problems, if replacing one"
   ],
-  "turnaround": "[feed water review turnaround, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "Seasonal design basis, month by month",
    "The pretreatment steps your water needs"

@@ -81,9 +81,9 @@
    "page": "cmp-documentation",
    "slot": 0,
    "h": "The turnover package, section by section",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "f3a21bed68",
    "block": {
@@ -145,6 +145,231 @@
      {
       "t": "Operation, maintenance and training",
       "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first [months of operation], training records"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "sections",
+    "look": "index-sheet"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 0,
+   "h": "The turnover package, section by section",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "42737724d6",
+   "block": {
+    "type": "docs",
+    "nav": "Index",
+    "anchor": "index",
+    "h": "The turnover package, section by section",
+    "intro": "Good manufacturing practice (GMP) closes testing with installation, operational and performance qualification (IQ, OQ, PQ). Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Index and project summary",
+      "d": "Register with current revisions, scope, tag list, connection points (battery limits)"
+     },
+     {
+      "t": "Requirements and design basis",
+      "key": true,
+      "d": "URS compliance matrix, basis of design, risk assessment, design review report, traceability matrix, commissioning and qualification (C&Q) plan"
+     },
+     {
+      "t": "Specifications",
+      "d": "Functional and design specifications, alarm list"
+     },
+     {
+      "t": "Drawings and calculations",
+      "d": "Piping and instrumentation diagrams (P&IDs), general arrangement, isometrics, process flow diagram, balances, membrane projections, loop hydraulics"
+     },
+     {
+      "t": "Materials and components",
+      "d": "[PP material certificates] by lot, to [PP material standard]; [elastomer certificates per compound]; [certificates supplied for PVC parts]; media, resin and component certificates"
+     },
+     {
+      "t": "Fabrication and joining",
+      "d": "Fabrication and inspection plan; [PP joining method] procedure, welder qualifications, [PP joint records kept]"
+     },
+     {
+      "t": "Cleaning and drainability",
+      "d": "Slope survey; dead leg register to [dead leg design limit, L/D]; spray coverage test; cleaning certificate after [pre-commissioning flush and cleaning procedure for PP]"
+     },
+     {
+      "t": "Pressure equipment and panels",
+      "d": "Pressure tests to [PP pressure test method]. Canadian registration number (CRN) under CSA B51 and vessel data reports, where required. Panel certification or field evaluation"
+     },
+     {
+      "t": "Instruments and calibration",
+      "d": "Calibration certificates, traceable via [calibration provider and accreditation held]; total organic carbon system suitability, where an analyzer is fitted; vent filter integrity test"
+     },
+     {
+      "t": "Software",
+      "d": "Version and checksum record, code review, baseline backup, backup and restore procedure"
+     },
+     {
+      "t": "Testing and qualification",
+      "d": "Factory and site acceptance tests (FAT, SAT), deviation logs, sanitization records. Under GMP: IQ, OQ and PQ protocols and reports."
+     },
+     {
+      "t": "Commissioning and acceptance, not under GMP",
+      "d": "Commissioning record and acceptance test report. Test data for your ST108:2023 critical-water validation, or CLSI GP40 (5th edition) or ASTM D1193-24 verification."
+     },
+     {
+      "t": "Operation, maintenance and training",
+      "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first [months of operation], training records"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "sections",
+    "look": "index-sheet"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 0,
+   "h": "The turnover package, section by section",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "45f1755f91",
+   "block": {
+    "type": "docs",
+    "nav": "Index",
+    "anchor": "index",
+    "h": "The turnover package, section by section",
+    "intro": "Good manufacturing practice (GMP) closes testing with installation, operational and performance qualification (IQ, OQ, PQ). Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Index and project summary",
+      "d": "Register with current revisions, scope, tag list, connection points (battery limits)"
+     },
+     {
+      "t": "Requirements and design basis",
+      "key": true,
+      "d": "URS compliance matrix, basis of design, risk assessment, design review report, traceability matrix, commissioning and qualification (C&Q) plan"
+     },
+     {
+      "t": "Specifications",
+      "d": "Functional and design specifications, alarm list"
+     },
+     {
+      "t": "Drawings and calculations",
+      "d": "Piping and instrumentation diagrams (P&IDs), general arrangement, isometrics, process flow diagram, balances, membrane projections, loop hydraulics"
+     },
+     {
+      "t": "Materials and components",
+      "d": "Material certificates by lot, to the material standard named in your proposal; elastomer and PVC certificates as named in your proposal; media, resin and component certificates"
+     },
+     {
+      "t": "Fabrication and joining",
+      "d": "Fabrication and inspection plan; procedure for the joining method named in your proposal, welder qualifications, joint records as set out in your proposal"
+     },
+     {
+      "t": "Cleaning and drainability",
+      "d": "Slope survey; dead leg register to the limit set in your design basis; spray coverage test; cleaning certificate after a written flush and cleaning procedure"
+     },
+     {
+      "t": "Pressure equipment and panels",
+      "d": "Pressure tests to the method named in your proposal. Canadian registration number (CRN) under CSA B51 and vessel data reports, where required. Panel certification or field evaluation"
+     },
+     {
+      "t": "Instruments and calibration",
+      "d": "Calibration certificates, traceable via a provider named in your proposal; total organic carbon system suitability, where an analyzer is fitted; vent filter integrity test"
+     },
+     {
+      "t": "Software",
+      "d": "Version and checksum record, code review, baseline backup, backup and restore procedure"
+     },
+     {
+      "t": "Testing and qualification",
+      "d": "Factory and site acceptance tests (FAT, SAT), deviation logs, sanitization records. Under GMP: IQ, OQ and PQ protocols and reports."
+     },
+     {
+      "t": "Commissioning and acceptance, not under GMP",
+      "d": "Commissioning record and acceptance test report. Test data for your ST108:2023 critical-water validation, or CLSI GP40 (5th edition) or ASTM D1193-24 verification."
+     },
+     {
+      "t": "Operation, maintenance and training",
+      "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first period of operation, training records"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "sections",
+    "look": "index-sheet"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 0,
+   "h": "The turnover package, section by section",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "b0fd2ea66b",
+   "block": {
+    "type": "docs",
+    "nav": "Index",
+    "anchor": "index",
+    "h": "The turnover package, section by section",
+    "intro": "Good manufacturing practice (GMP) closes testing with installation, operational and performance qualification (IQ, OQ, PQ). Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Index and project summary",
+      "d": "Register with current revisions, scope, tag list, connection points (battery limits)"
+     },
+     {
+      "t": "Requirements and design basis",
+      "key": true,
+      "d": "URS compliance matrix, basis of design, risk assessment, design review report, traceability matrix, commissioning and qualification (C&Q) plan"
+     },
+     {
+      "t": "Specifications",
+      "d": "Functional and design specifications, alarm list"
+     },
+     {
+      "t": "Drawings and calculations",
+      "d": "Piping and instrumentation diagrams (P&IDs), general arrangement, isometrics, process flow diagram, balances, membrane projections, loop hydraulics"
+     },
+     {
+      "t": "Materials and components",
+      "d": "Material certificates by lot, to the material standard named in your proposal; elastomer and polyvinyl chloride (PVC) certificates as named in your proposal; media, resin and component certificates"
+     },
+     {
+      "t": "Fabrication and joining",
+      "d": "Fabrication and inspection plan; procedure for the joining method named in your proposal, welder qualifications, joint records as set out in your proposal"
+     },
+     {
+      "t": "Cleaning and drainability",
+      "d": "Slope survey; dead leg register to the limit set in your design basis; spray coverage test; cleaning certificate after a written flush and cleaning procedure"
+     },
+     {
+      "t": "Pressure equipment and panels",
+      "d": "Pressure tests to the method named in your proposal. Canadian registration number (CRN) under CSA B51 and vessel data reports, where required. Panel certification or field evaluation"
+     },
+     {
+      "t": "Instruments and calibration",
+      "d": "Calibration certificates, traceable via a provider named in your proposal; total organic carbon system suitability, where an analyzer is fitted; vent filter integrity test"
+     },
+     {
+      "t": "Software",
+      "d": "Version and checksum record, code review, baseline backup, backup and restore procedure"
+     },
+     {
+      "t": "Testing and qualification",
+      "d": "Factory and site acceptance tests (FAT, SAT), deviation logs, sanitization records. Under GMP: IQ, OQ and PQ protocols and reports."
+     },
+     {
+      "t": "Commissioning and acceptance, not under GMP",
+      "d": "Commissioning record and acceptance test report. Test data for your ST108:2023 critical-water validation, or CLSI GP40 (5th edition) or ASTM D1193-24 verification."
+     },
+     {
+      "t": "Operation, maintenance and training",
+      "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first period of operation, training records"
      }
     ],
     "fold": 4,

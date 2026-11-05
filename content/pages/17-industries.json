@@ -282,12 +282,12 @@
     {
      "p": "Hot water",
      "fig": "sanitize",
-     "v": "Any hot-water cycle stays inside the PP maker’s pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C].",
-     "m": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]."
+     "v": "Any hot-water cycle stays inside the PP maker’s published pressure–temperature curve for its hours.",
+     "m": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)."
     },
     {
      "p": "Chemical sanitization",
-     "v": "[PP loop sanitization method]; residual tested before use.",
+     "v": "A chemical method set per project; residual tested before use.",
      "link": "sys-storage#sanitization",
      "link_label": "How the loop is sanitized"
     },
@@ -346,7 +346,7 @@
      "t": "Storage",
      "spot": "storage-tank",
      "link": "sys-storage",
-     "d": "Fitted where your use needs stored water: [configurations offered for this use]."
+     "d": "Fitted where your use needs stored water; configurations confirmed when you enquire."
     },
     {
      "t": "Distribution loop",
@@ -406,7 +406,7 @@
      ]
     }
    ],
-   "intro": "For drug, natural health product, cosmetic and food makers buying their first system. One skid covers [minimum–maximum capacity, L/h]; it does not fit Water for Injection, pure steam or a hot-held loop."
+   "intro": "For drug, natural health product, cosmetic and food makers buying their first system. One skid, sized to your demand; it does not fit Water for Injection, pure steam or a hot-held loop."
   },
   {
    "type": "faq",
@@ -445,7 +445,7 @@
  ],
  "cta": {
   "h": "Tell us what you make",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I know my product, not my water spec",
@@ -454,7 +454,7 @@
    "The standard you work to, if any",
    "Where your site is"
   ],
-  "turnaround": "[scope review turnaround, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "The grade per use, and who sets it",
    "The package you need",

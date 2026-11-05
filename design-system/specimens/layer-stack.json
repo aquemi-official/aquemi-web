@@ -57,9 +57,9 @@
    "page": "sys-monitoring",
    "slot": 0,
    "h": "How the controls are built",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "91f9c0a5eb",
    "block": {
@@ -87,6 +87,54 @@
      {
       "t": "Supervisory control (SCADA) historian",
       "d": "Keeps time-stamped records with an audit trail.",
+      "icon": "database",
+      "art": "historian"
+     },
+     {
+      "t": "Plant network",
+      "d": "Reaches your network through a demilitarized zone (DMZ).",
+      "art": "network"
+     }
+    ],
+    "nav": "Architecture",
+    "look": "layer-stack",
+    "anchor": "layers"
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 0,
+   "h": "How the controls are built",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "2a9d7b5002",
+   "block": {
+    "type": "diagram",
+    "h": "How the controls are built",
+    "stages": [
+     {
+      "t": "Instruments",
+      "d": "Measure total organic carbon (TOC), conductivity and temperature online.",
+      "icon": "conductivity",
+      "art": "instruments"
+     },
+     {
+      "t": "Controller (PLC)",
+      "d": "Runs sequences, interlocks and divert, even if every layer above fails.",
+      "art": "plc",
+      "key": true
+     },
+     {
+      "t": "Operator panel (HMI)",
+      "d": "Where operators see alarms, trends and sanitization status.",
+      "icon": "monitor",
+      "art": "hmi"
+     },
+     {
+      "t": "Supervisory control (SCADA) historian",
+      "d": "Keeps time-stamped records of quality values and alarms.",
       "icon": "database",
       "art": "historian"
      },

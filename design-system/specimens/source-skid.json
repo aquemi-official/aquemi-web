@@ -112,9 +112,9 @@
    "page": "about",
    "slot": 1,
    "h": "The people you would work with",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "9da91f0d6e",
    "block": {
@@ -137,6 +137,110 @@
      {
       "t": "Modular manufacturing and design specialist",
       "d": "[Full name] · [portrait] · [years in modular fabrication]. Ask about skid design, fabrication and joint records. [one sentence in their words, approved].",
+      "link": "svc-fabrication"
+     }
+    ],
+    "parts": [
+     {
+      "t": "The package",
+      "by": "We design and fabricate",
+      "part": "package"
+     },
+     {
+      "t": "Instruments",
+      "by": "From their makers",
+      "part": "instruments"
+     },
+     {
+      "t": "Membranes and EDI modules",
+      "by": "From their makers",
+      "part": "modules"
+     }
+    ],
+    "look": "source-skid"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 1,
+   "h": "The people you would work with",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "bd1560e2e6",
+   "block": {
+    "type": "grid",
+    "nav": "Team",
+    "anchor": "people",
+    "h": "The people you would work with",
+    "intro": "We design and fabricate the package; membranes, electrodeionization (EDI) modules and instruments come from their makers.",
+    "items": [
+     {
+      "t": "Commercial lead",
+      "d": "[Full name] · [portrait] · [years of relevant experience]. Your contact for scope, terms, supplier onboarding and company facts. [one sentence in their words, approved].",
+      "link": "buying"
+     },
+     {
+      "t": "Industrial automation engineer",
+      "d": "[Full name] · [portrait] · [years in pharmaceutical water]. Direct experience on pharmaceutical water systems. Ask about controls. [one sentence in their words, approved].",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Modular manufacturing and design specialist",
+      "d": "[Full name] · [portrait] · [years in modular fabrication]. Ask about skid design, fabrication and joint records. [one sentence in their words, approved].",
+      "link": "svc-fabrication"
+     }
+    ],
+    "parts": [
+     {
+      "t": "The package",
+      "by": "We design and fabricate",
+      "part": "package"
+     },
+     {
+      "t": "Instruments",
+      "by": "From their makers",
+      "part": "instruments"
+     },
+     {
+      "t": "Membranes and EDI modules",
+      "by": "From their makers",
+      "part": "modules"
+     }
+    ],
+    "look": "source-skid"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 1,
+   "h": "The people you would work with",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "5c4a026a10",
+   "block": {
+    "type": "grid",
+    "nav": "Team",
+    "anchor": "people",
+    "h": "The people you would work with",
+    "intro": "We design and fabricate the package; membranes, electrodeionization (EDI) modules and instruments come from their makers.",
+    "items": [
+     {
+      "t": "Commercial lead",
+      "d": "Your contact for scope, terms, supplier onboarding and company facts.",
+      "link": "buying"
+     },
+     {
+      "t": "Industrial automation engineer",
+      "d": "Direct experience on pharmaceutical water systems. Ask about controls.",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Modular manufacturing and design specialist",
+      "d": "Ask about skid design, fabrication and joint records.",
       "link": "svc-fabrication"
      }
     ],

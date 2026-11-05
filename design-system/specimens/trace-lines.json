@@ -96,9 +96,9 @@
    "page": "svc-design",
    "slot": 3,
    "h": "An example: two requirements traced to their tests",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "3e01c71853",
    "block": {
@@ -121,6 +121,50 @@
       "Basis of design",
       "Reverse osmosis and electrodeionization, passes set by your feed water analysis",
       "[PP point-of-use valve type]; instrument tees sized to hold L/D ≤ 2"
+     ],
+     [
+      "Functional specification",
+      "Water above the divert setpoint goes to drain until conductivity recovers",
+      "Not applicable"
+     ],
+     [
+      "Verification",
+      "FAT: divert on a simulated signal. SAT and OQ: your water, uncompensated reading.",
+      "IQ: as-built L/D measured against the register"
+     ]
+    ],
+    "nav": "Traceability"
+   }
+  },
+  {
+   "page": "svc-design",
+   "slot": 3,
+   "h": "An example: two requirements traced to their tests",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "b99f1f2112",
+   "block": {
+    "type": "table",
+    "anchor": "trace",
+    "look": "trace-lines",
+    "h": "An example: two requirements traced to their tests",
+    "cols": [
+     "Document",
+     "URS-012: conductivity limit ≤ 1.3 µS/cm @ 25 °C",
+     "URS-027: dead leg limit L/D ≤ 2"
+    ],
+    "rows": [
+     [
+      "URS compliance matrix",
+      "Met. Return monitored.",
+      "Met. Every branch in the dead leg register."
+     ],
+     [
+      "Basis of design",
+      "Reverse osmosis and electrodeionization, passes set by your feed water analysis",
+      "The point-of-use valve named in your proposal; instrument tees sized to hold L/D ≤ 2"
      ],
      [
       "Functional specification",

@@ -159,9 +159,9 @@
    "page": "services",
    "slot": 1,
    "h": "How long each stage takes, and who signs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "97761ebca9",
    "block": {
@@ -191,6 +191,56 @@
      },
      {
       "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+      "hold": "Your quality unit, under GMP",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Performance qualification (PQ), at least 12 months",
+      "hold": "Your quality unit, under GMP",
+      "link": "project-plan#stages"
+     }
+    ],
+    "nav": "Stages",
+    "ground": "light",
+    "look": "hold-timeline"
+   }
+  },
+  {
+   "page": "services",
+   "slot": 1,
+   "h": "How long each stage takes, and who signs",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "abea0d1a47",
+   "block": {
+    "type": "steps",
+    "anchor": "durations",
+    "h": "How long each stage takes, and who signs",
+    "intro": "Each stage's duration is set in your project schedule, counted from the start event stated in your proposal. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Design",
+      "hold": "You, or your quality unit under GMP",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Fabrication",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "FAT",
+      "hold": "Both parties",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Installation and SAT",
+      "hold": "You",
+      "link": "project-plan#stages"
+     },
+     {
+      "t": "Installation and operational qualification (IQ, OQ)",
       "hold": "Your quality unit, under GMP",
       "link": "project-plan#stages"
      },

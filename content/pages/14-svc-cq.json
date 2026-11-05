@@ -64,7 +64,7 @@
    "nav": "Who signs",
    "anchor": "roles",
    "h": "Who writes, who reviews",
-   "intro": "The validation master plan stays yours. You approve the C&Q plan before any test runs. IQ and OQ protocols reach you [protocol issue before IQ/OQ, weeks] before testing.",
+   "intro": "The validation master plan stays yours. You approve the C&Q plan before any test runs. IQ and OQ protocols reach you ahead of testing, on a date agreed with you.",
    "cols": [
     "Document or activity",
     "Written or done by",
@@ -83,7 +83,7 @@
     ],
     [
      "IQ and OQ execution",
-     "Aquemi [executing staff: own engineers or named partner], you witness",
+     "Aquemi engineers named in your proposal, you witness",
      "Your validation team"
     ],
     [
@@ -135,8 +135,8 @@
     },
     {
      "p": "IQ · Joints",
-     "v": "[PP joint records kept] for [PP joining method]",
-     "m": "[PP joining standard]",
+     "v": "Joint records for the joining method named in your proposal",
+     "m": "The joining standard named in your proposal",
      "part": "joint"
     },
     {
@@ -147,7 +147,7 @@
     },
     {
      "p": "OQ · Sanitization",
-     "v": "Full [PP loop sanitization method] cycle, verified at the coldest point",
+     "v": "Full sanitization cycle by a chemical method set per project, verified at the coldest point",
      "m": "Residual tested before use",
      "part": "coldest"
     },
@@ -166,19 +166,19 @@
     {
      "p": "IQ · Materials",
      "v": "Polypropylene (PP) modules and loop, polyvinyl chloride (PVC) pretreatment; elastomers to specification",
-     "m": "[PP material certificates]; [certificates supplied for PVC parts]",
+     "m": "PP and PVC material certificates as named in your proposal",
      "part": "skid"
     },
     {
      "p": "IQ · Instruments",
      "v": "Installed, ranged, calibrated; critical ones identified",
-     "m": "Traceable via [calibration provider and accreditation held]",
+     "m": "Traceable via a provider named in your proposal",
      "part": "gauge"
     },
     {
-     "p": "OQ · Data integrity",
-     "v": "Roles, audit trail, time sync, backup, restore",
-     "m": "Annex 11; GUI-0050; 21 CFR Part 11",
+     "p": "OQ · Access and data",
+     "v": "User access levels, time sync, backup, restore",
+     "m": "Against the functional specification",
      "part": "panel"
     }
    ],
@@ -292,18 +292,18 @@
     },
     {
      "q": "Can you qualify a system you did not build?",
-     "a": "Yes, for [makes and equipment types serviced]. We start with an assessment of its qualification file and the installed system.",
+     "a": "Yes, for makes and equipment confirmed when you enquire. We start with an assessment of its qualification file and the installed system.",
      "link": "svc-upgrades"
     },
     {
      "q": "Natural health products: do we need IQ, OQ and PQ?",
-     "a": "Not by name. GUI-0158's water sections (45 and 46) ask for three things. Criteria to qualify and monitor treated water, test records, and calibrated, maintained equipment. Our scope for that evidence: [NHP qualification scope]. Where your quality assurance person (QAP) asks for IQ, OQ and PQ, the path on this page applies.",
+     "a": "Not by name. GUI-0158's water sections (45 and 46) ask for three things. Criteria to qualify and monitor treated water, test records, and calibrated, maintained equipment. Our scope for that evidence is set per project. Where your quality assurance person (QAP) asks for IQ, OQ and PQ, the path on this page applies.",
      "link": "ind-pharma#nhp",
      "link_label": "Water by product line"
     },
     {
      "q": "Do you train the people who will run it?",
-     "a": "Yes, on your system after start-up: [training hours and audiences]. Training ends when your operators can run the system and clear its usual alarms. Each trainee signs a record, tied to the manual chapter covered, for your quality file."
+     "a": "Yes, on your system after start-up, in hours and for audiences agreed with you. Training ends when your operators can run the system and clear its usual alarms. Each trainee signs a record, tied to the manual chapter covered, for your quality file."
     }
    ]
   },
@@ -320,7 +320,7 @@
  ],
  "cta": {
   "h": "Send your requirements, get a C&Q plan",
-  "body": "An engineer replies. Cost: [document review cost].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a C&Q plan review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
@@ -334,7 +334,7 @@
    "IQ/OQ tests and reusable FAT tests",
    "A PQ sampling plan"
   ],
-  "turnaround": "[document review turnaround, working days]"
+  "turnaround": "a time confirmed when you enquire"
  },
  "todo": [
   "Who executes IQ and OQ: Aquemi's own engineers or a named partner ([executing staff: own engineers or named partner]; FD-46, FD-34; services uses the same name)",
@@ -363,11 +363,5 @@
   "Pass 12 (RI 03, RI 04, RI 15): roles table adds the deviation and change-control row between FAT and OQ; the acceptance FAQ adds \"investigated, never resampled to pass\". A written deviation route as a document waits on FD-45/FD-46; the specimen record on FD-47",
   "Pass 12 (RI 05): PQ intro says we draft the sampling plan with you (roles table); phase 3 says an adverse trend is investigated, not resampled. Who samples on site stays [on-site PQ sampling by Aquemi, yes or no] (FD-46, off the page until set). Alert-levels note marks the 100 CFU/mL action level as Purified Water's and points hospital readers to ST108's tighter limit (IB 3)",
   "Pass 12: anchors stages, iq-oq, pq, alert-levels added (roles and faq kept; inbound links services, first-system, ind-meddevice use roles and faq). No look changed"
- ],
- "facts": [
-  {
-   "v": "[IQ/OQ on site, days]",
-   "l": "On-site testing · full package"
-  }
  ]
 }

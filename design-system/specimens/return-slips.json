@@ -76,9 +76,9 @@
    "page": "project-plan",
    "slot": 3,
    "h": "Changes after you approve",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bff41e0",
    "hash": "7a8053470c",
    "block": {
@@ -111,6 +111,50 @@
       "Corrected drawings for your approval again",
       "[design correction turnaround, working days]",
       "[design gap warranty terms]"
+     ]
+    ],
+    "look": "return-slips"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 3,
+   "h": "Changes after you approve",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "38d542f98d",
+   "block": {
+    "type": "table",
+    "anchor": "changes",
+    "nav": "Changes",
+    "h": "Changes after you approve",
+    "intro": "Only the contact named in your order may ask for a change. Each request states reason, description, price, schedule effect, payment and your approval. Work starts after you sign it [confirm].",
+    "cols": [
+     "Situation",
+     "What comes back",
+     "When",
+     "Cost"
+    ],
+    "rows": [
+     [
+      "You change an approved drawing or specification",
+      "A change request with price, schedule effect and revised drawings",
+      "Agreed with you per request",
+      "Quoted in the change request"
+     ],
+     [
+      "Feed water or site data differ from the design basis",
+      "A change request, once we have checked the new data with you",
+      "Agreed with you per request",
+      "Quoted in the change request"
+     ],
+     [
+      "We find an error in our own design",
+      "Corrected drawings for your approval again",
+      "Agreed with you per correction",
+      "Set out in your proposal"
      ]
     ],
     "look": "return-slips"

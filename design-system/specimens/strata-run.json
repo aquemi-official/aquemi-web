@@ -114,9 +114,9 @@
    "page": "systems",
    "slot": 0,
    "h": "How the systems fit together",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "2991e518da",
    "block": {
@@ -220,6 +220,61 @@
     "base": "Monitoring and controls · alarm limits from your limit-writer",
     "base_link": "sys-monitoring",
     "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents."
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 0,
+   "h": "How the systems fit together",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "da86203a01",
+   "block": {
+    "type": "diagram",
+    "anchor": "modules",
+    "nav": "Modules",
+    "h": "How the systems fit together",
+    "stages": [
+     {
+      "t": "Feed water",
+      "icon": "droplet",
+      "d": "City or well drinking water that changes with the season."
+     },
+     {
+      "t": "Pretreatment",
+      "spot": "pretreatment",
+      "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
+      "link": "sys-pretreatment"
+     },
+     {
+      "t": "PW generation",
+      "spot": "ro-skid",
+      "d": "RO pushes water through a membrane so fine that most dissolved salts stay behind. Deionization (DI) or electrodeionization (EDI) removes most of the rest. Each skid is sized to your demand at your coldest feed.",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Storage",
+      "spot": "storage-tank",
+      "d": "Buffers generation against peak demand.",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Distribution loop",
+      "spot": "loop",
+      "d": "Keeps water moving from the tank to every outlet and back.",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Points of use",
+      "icon": "valve"
+     }
+    ],
+    "base": "Monitoring and controls · conductivity and total organic carbon (TOC)",
+    "look": "strata-run",
+    "base_link": "sys-monitoring",
+    "caption": "After the PVC pretreatment, the package is polypropylene (PP). Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats."
    }
   }
  ]

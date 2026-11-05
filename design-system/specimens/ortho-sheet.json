@@ -10,9 +10,9 @@
    "page": "sys-pw",
    "slot": 2,
    "h": "Skid design parameters",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "541f27b",
    "hash": "98a1e53440",
    "block": {
@@ -115,6 +115,130 @@
      {
       "p": "Instruments and controls",
       "v": "Conductivity and temperature after each stage; [online TOC at the outlet, standard or option]",
+      "m": "Water out of specification diverts at a setpoint below your alert level",
+      "hl": false,
+      "link": "sys-monitoring",
+      "part": "panel"
+     }
+    ],
+    "nav": "Skid design",
+    "anchor": "design",
+    "fold": 6,
+    "as": "callouts",
+    "ground": "light",
+    "fold_noun": "parameters",
+    "look": "ortho-sheet"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 2,
+   "h": "Skid design parameters",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "6668215263",
+   "block": {
+    "type": "spec",
+    "h": "Skid design parameters",
+    "caption": "Design basis",
+    "cols": [
+     "Parameter",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Capacity",
+      "v": "Sized to your demand, per skid",
+      "m": "At your coldest feed and end of membrane life (as set in your design basis), not 25 °C; parallel trains for larger demand",
+      "hl": true,
+      "at": [
+       14.7,
+       51.5
+      ],
+      "part": "membranes"
+     },
+     {
+      "p": "Battery limits and utilities",
+      "v": "Pretreated feed in, PW out to storage, concentrate to drain; supply voltage, feed pressure, drain flow and footprint confirmed in your proposal",
+      "m": "Electrical: approval route confirmed in your proposal",
+      "hl": false,
+      "link": "systems#site",
+      "link_label": "Site requirements",
+      "part": "utilities"
+     },
+     {
+      "p": "Membrane design temperature",
+      "v": "The temperature set in your design basis",
+      "m": "Otherwise sized at your site minimum",
+      "hl": false,
+      "at": [
+       57.0,
+       12.0
+      ],
+      "part": "exchanger"
+     },
+     {
+      "p": "Sanitization",
+      "v": "Method, and whether RO and EDI are heat-sanitizable, confirmed in your proposal",
+      "m": "Removal of any sanitant proven (WHO TRS 1033, 4.3.6)",
+      "hl": false,
+      "at": [
+       74.8,
+       29.7
+      ],
+      "part": "edi"
+     },
+     {
+      "p": "Materials and dead legs",
+      "v": "Unpigmented polypropylene (PP), grade named in your proposal; dead legs within the limit set in your design basis, sloped to drain",
+      "m": "Piping standard and material certificates named in your proposal",
+      "hl": false,
+      "at": [
+       23.3,
+       69.2
+      ],
+      "part": "piping"
+     },
+     {
+      "p": "Joints, product contact",
+      "v": "The joining method named in your proposal",
+      "m": "Inspection method and extent named in your proposal",
+      "hl": false,
+      "at": [
+       62.8,
+       68.6
+      ],
+      "part": "joints"
+     },
+     {
+      "p": "Budget range",
+      "v": "Priced per project",
+      "m": "Single-pass RO and EDI, city feed",
+      "hl": false,
+      "link": "systems#budget",
+      "part": "frame"
+     },
+     {
+      "p": "High-pressure RO section",
+      "v": "Material and pressure class named in your proposal",
+      "m": "Rated for the highest feed pressure at the coldest feed",
+      "hl": false,
+      "part": "pump"
+     },
+     {
+      "p": "System recovery",
+      "v": "Confirmed in your proposal",
+      "m": "Concentrate recycled where feed chemistry allows",
+      "hl": false,
+      "link": "svc-service#running-cost",
+      "part": "drain"
+     },
+     {
+      "p": "Instruments and controls",
+      "v": "Conductivity and temperature after each stage; online TOC on request",
       "m": "Water out of specification diverts at a setpoint below your alert level",
       "hl": false,
       "link": "sys-monitoring",

@@ -41,7 +41,7 @@
     ],
     [
      "Sanitization",
-     "Full [PP loop sanitization method] cycle, residual tested at the end",
+     "Full sanitization cycle by a chemical method set per project, residual tested at the end",
      "Full cycle on the installed loop, coldest point of use included"
     ],
     [
@@ -60,8 +60,8 @@
      "Points to your control and monitoring systems; critical instruments re-checked"
     ],
     [
-     "Data integrity",
-     "Roles, audit trail, time sync, backup and restore",
+     "Access and data",
+     "User access levels, time sync, backup and restore",
      "The same on the network, with your accounts and time server"
     ],
     [
@@ -145,7 +145,7 @@
    "items": [
     {
      "t": "Draft protocol",
-     "d": "From the functional specification, sent [protocol issue before FAT, weeks] ahead. Each test states its acceptance criterion and traces to your user requirement specification (URS)."
+     "d": "From the functional specification, sent ahead of FAT, on a date agreed with you. Each test states its acceptance criterion and traces to your user requirement specification (URS)."
     },
     {
      "t": "Your approval",
@@ -162,7 +162,7 @@
     },
     {
      "t": "Report and release",
-     "d": "Raw data, deviation log and release decision. Skid drained, then [post-FAT drying and sealing method].",
+     "d": "Raw data, deviation log and release decision. Skid drained, then dried and sealed by a method named in your proposal.",
      "hold": "Both parties"
     },
     {
@@ -177,7 +177,7 @@
    "nav": "Witnessing",
    "anchor": "witness",
    "h": "How you witness",
-   "intro": "We finish the build before you arrive: the FAT is yours to check, not ours to fix [confirm]. Notice: [FAT witness notice, working days]; cost: [FAT witness costs, included or quoted].",
+   "intro": "We finish the build before you arrive: the FAT is yours to check, not ours to fix [confirm]. Witness it with reasonable notice; the cost is set out in your proposal.",
    "items": [
     {
      "t": "In person",
@@ -242,13 +242,11 @@
     },
     {
      "q": "Is the software we see at FAT the software that ships?",
-     "a": "Its version and checksum are recorded at FAT: [code checksum recorded at FAT, yes or no]. Any later change goes through change control and is shown again at SAT.",
-     "link": "sys-monitoring#data-integrity",
-     "link_label": "How the code is controlled"
+     "a": "Whether the code version and checksum are recorded at FAT is confirmed in your proposal. Any later change goes through change control and is shown again at SAT."
     },
     {
      "q": "How long does a FAT take?",
-     "a": "[FAT duration, days] for the full Purified Water package, pretreatment to distribution, and [typical FAT duration, single module, days] for one module. Packages over [largest skid size, m] are tested module by module."
+     "a": "The duration in your schedule for the full Purified Water package, pretreatment to distribution, and a shorter duration for one module. Packages over a size set by transport are tested module by module."
     }
    ]
   },
@@ -265,7 +263,7 @@
  ],
  "cta": {
   "h": "Check our criteria against your URS",
-  "body": "Cost: [specimen cost or free].",
+  "body": "Cost: discussed when you enquire.",
   "button": "Request a specimen FAT protocol",
   "link": "cmp-documentation#samples",
   "intent": "FAT protocol: contents and test cases",
@@ -274,7 +272,7 @@
    "Which specimens you want",
    "Your work email"
   ],
-  "turnaround": "[specimen package response time, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "Protocol table of contents",
    "Aquemi-written test cases with acceptance criteria",
@@ -296,7 +294,7 @@
   "Test bay power: voltage, phases, frequency, kW ([voltage, phases, frequency, kW]); how skids for another voltage are tested ([transformer or site test])",
   "Test bay heating, only if a hot sanitization cycle is offered: medium and capacity (kW), inside the PP maker's pressure-temperature curve (DR-013)",
   "Largest skid footprint and height ([largest skid size, m], FAQ 6), crane capacity (t) and drain capacity (L/min) (FD-44); same name as about (DR-011 rule 2). If the test bay's water flow is shown, it is [test bay water, L/h], with these test bay limits (FD-44)",
-  "Remote witness platform and connection, and when raw data reach a remote witness (\"raw data the same day\" left the Remote option until FD-44 sets it); electronic signature method ([electronic signature method], as cmp-documentation) and whether it meets 21 CFR Part 11 (FD-23)",
+  "Remote witness platform and connection, and when raw data reach a remote witness (\"raw data the same day\" left the Remote option until FD-44 sets it)",
   "Specimen reply time ([specimen package response time, working days]: the closing turnaround; same name as cmp-documentation and projects; FD-47). At launch an unset time is cut (DR-006 rule 7)",
   "Specimen cost ([specimen cost or free]: the closing body; FD-02, FD-47; DR-006 rule 5, DR-005 rule 4). A new name: cmp-documentation's specimen form, the offer's home (DR-014 rule 12), should use it if it shows a cost. At launch an unset cost is cut (DR-005 rule 8)",
   "FAT first-pass rate or deviation closure time: a figure only when the owner confirms it (DR-011; FD-45); a closing proof box only with a confirmed figure (website.md closing rule). No case-study block on this page: typical configurations live on projects (R5); proof here is the method, the protocol and the specimen record (DR-028 rule 2)",
@@ -325,10 +323,6 @@
   {
    "v": "[100 %]",
    "l": "Skids tested with water · at FAT"
-  },
-  {
-   "v": "[FAT duration, days]",
-   "l": "Full package FAT · pretreatment to distribution"
   }
  ]
 }

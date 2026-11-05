@@ -15,16 +15,6 @@
   "label": "See the documentation package",
   "link": "cmp-documentation"
  },
- "facts": [
-  {
-   "v": "[minimum–maximum capacity, L/h]",
-   "l": "Per skid · coldest feed, end of membrane life"
-  },
-  {
-   "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
-   "l": "Skid outlet · measured at FAT"
-  }
- ],
  "blocks": [
   {
    "type": "spec",
@@ -61,16 +51,10 @@
      "level": "action",
      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
      "hl": false
-    },
-    {
-     "p": "Skid outlet, guaranteed",
-     "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
-     "m": "Proven at the factory and site acceptance tests (FAT, SAT)",
-     "hl": false
     }
    ],
    "nav": "Limits",
-   "intro": "Limits apply at each point of use; the skid outlet has its own guarantee. For critical, laboratory or boiler water, the skid is designed to the limit your standard names.",
+   "intro": "Limits apply at each point of use. For critical, laboratory or boiler water, the skid is designed to the limit your standard names.",
    "as": "gauges",
    "look": "limit-stack",
    "anchor": "limits"
@@ -115,20 +99,20 @@
     {
      "t": "DI or EDI",
      "spot": "edi-stack",
-     "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration].",
+     "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by the resin service route named in your proposal.",
      "label": "DI or EDI"
     },
     {
      "t": "To PW storage",
      "spot": "storage-tank",
-     "d": "Water out of specification does not reach storage: it goes to [divert route: drain or recirculation] until it recovers.",
+     "d": "Water out of specification does not reach storage: it goes to a route set in your design until it recovers.",
      "label": "Out"
     }
    ],
    "nav": "How it works",
    "look": "winding-route",
    "anchor": "process",
-   "intro": "The skid starts at the pretreated feed and ends at the storage inlet. Sample points: [sample point after each stage, confirm design]."
+   "intro": "The skid starts at the pretreated feed and ends at the storage inlet. Sample points: set in your design."
   },
   {
    "type": "spec",
@@ -142,8 +126,8 @@
    "rows": [
     {
      "p": "Capacity",
-     "v": "[minimum–maximum capacity, L/h] per skid",
-     "m": "At your coldest feed and end of membrane life ([membrane design life, years]), not 25 °C; parallel trains above",
+     "v": "Sized to your demand, per skid",
+     "m": "At your coldest feed and end of membrane life (as set in your design basis), not 25 °C; parallel trains for larger demand",
      "hl": true,
      "at": [
       14.7,
@@ -153,8 +137,8 @@
     },
     {
      "p": "Battery limits and utilities",
-     "v": "Pretreated feed in, PW out to storage, concentrate to drain; [supply voltage options]; [feed pressure and drain flow, per skid]; [typical footprint, m × m]",
-     "m": "Electrical: [panel certification mark held, or field evaluation used]",
+     "v": "Pretreated feed in, PW out to storage, concentrate to drain; supply voltage, feed pressure, drain flow and footprint confirmed in your proposal",
+     "m": "Electrical: approval route confirmed in your proposal",
      "hl": false,
      "link": "systems#site",
      "link_label": "Site requirements",
@@ -162,7 +146,7 @@
     },
     {
      "p": "Membrane design temperature",
-     "v": "[feed heat exchanger design temperature, °C]",
+     "v": "The temperature set in your design basis",
      "m": "Otherwise sized at your site minimum",
      "hl": false,
      "at": [
@@ -173,7 +157,7 @@
     },
     {
      "p": "Sanitization",
-     "v": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]",
+     "v": "Method, and whether RO and EDI are heat-sanitizable, confirmed in your proposal",
      "m": "Removal of any sanitant proven (WHO TRS 1033, 4.3.6)",
      "hl": false,
      "at": [
@@ -184,8 +168,8 @@
     },
     {
      "p": "Materials and dead legs",
-     "v": "Unpigmented polypropylene (PP), [PP grade]; dead legs ≤ [dead leg design limit, L/D], sloped to drain",
-     "m": "[PP piping standard]; [PP material certificates]",
+     "v": "Unpigmented polypropylene (PP), grade named in your proposal; dead legs within the limit set in your design basis, sloped to drain",
+     "m": "Piping standard and material certificates named in your proposal",
      "hl": false,
      "at": [
       23.3,
@@ -195,8 +179,8 @@
     },
     {
      "p": "Joints, product contact",
-     "v": "[PP joining method]",
-     "m": "[joint inspection method and extent]",
+     "v": "The joining method named in your proposal",
+     "m": "Inspection method and extent named in your proposal",
      "hl": false,
      "at": [
       62.8,
@@ -206,7 +190,7 @@
     },
     {
      "p": "Budget range",
-     "v": "[budget range, CAD] at [reference capacity, L/h]",
+     "v": "Priced per project",
      "m": "Single-pass RO and EDI, city feed",
      "hl": false,
      "link": "systems#budget",
@@ -214,14 +198,14 @@
     },
     {
      "p": "High-pressure RO section",
-     "v": "[RO high-pressure section material and pressure class]",
+     "v": "Material and pressure class named in your proposal",
      "m": "Rated for the highest feed pressure at the coldest feed",
      "hl": false,
      "part": "pump"
     },
     {
      "p": "System recovery",
-     "v": "[design recovery, %]",
+     "v": "Confirmed in your proposal",
      "m": "Concentrate recycled where feed chemistry allows",
      "hl": false,
      "link": "svc-service#running-cost",
@@ -229,7 +213,7 @@
     },
     {
      "p": "Instruments and controls",
-     "v": "Conductivity and temperature after each stage; [online TOC at the outlet, standard or option]",
+     "v": "Conductivity and temperature after each stage; online TOC on request",
      "m": "Water out of specification diverts at a setpoint below your alert level",
      "hl": false,
      "link": "sys-monitoring",
@@ -268,7 +252,7 @@
     },
     {
      "t": "Material certificates",
-     "d": "Prove the product-contact grade: [PP material certificates]. Membranes, EDI modules and resin arrive with makers' certificates and serial or lot numbers.",
+     "d": "Prove the product-contact grade: material certificates named in your proposal. Membranes, EDI modules and resin arrive with makers' certificates and serial or lot numbers.",
      "key": true,
      "at": [
       0.12,
@@ -277,7 +261,7 @@
     },
     {
      "t": "Joint records",
-     "d": "Prove each joint: [PP joining method]; [PP joint records kept]",
+     "d": "Prove each joint: the joining method named in your proposal, and joint records as set out in your proposal",
      "key": true,
      "at": [
       0.91,
@@ -314,7 +298,7 @@
     },
     {
      "t": "Duplex trains",
-     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
+     "d": "Two trains, each at a share of demand set in your design: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
      "spot": "ro-skid",
      "part": "duplex"
     },
@@ -359,7 +343,7 @@
     },
     {
      "q": "How is the PP skid sanitized?",
-     "a": "Skid sanitization: [sanitization method for the PP skid]; heat-sanitizable RO and EDI: [heat-sanitizable RO and EDI, yes or no]. After any chemical sanitization, removal of the sanitant is proven before use (WHO TRS 1033). Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
+     "a": "Skid sanitization: the method, and whether RO and EDI are heat-sanitizable, are confirmed in your proposal. After any chemical sanitization, removal of the sanitant is proven before use (WHO TRS 1033). Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it).",
      "link": "sys-storage#sanitization",
      "link_label": "Compare sanitization methods"
     },
@@ -369,7 +353,7 @@
     },
     {
      "q": "Critical water or boiler make-up, not PW: does this skid fit?",
-     "a": "Yes, if your use passes the fit check. For critical water (ANSI/AAMI ST108:2023) or boiler make-up, the RO train is designed to the limit your standard names. Whether DI or EDI is fitted follows that limit: [configurations offered for this use].",
+     "a": "Yes, if your use passes the fit check. For critical water (ANSI/AAMI ST108:2023) or boiler make-up, the RO train is designed to the limit your standard names. Whether DI or EDI is fitted follows that limit, and is confirmed when you enquire.",
      "link": "industries#fit",
      "link_label": "Check your use fits"
     },
@@ -385,7 +369,7 @@
     },
     {
      "q": "How do we know it will pass IQ/OQ?",
-     "a": "Two acceptance tests come first. The factory acceptance test (FAT) proves function before shipping. Your quality unit approves its protocol first and can witness it with [FAT witness notice, working days] notice. The site acceptance test (SAT), then installation and operational qualification (IQ/OQ), prove it on your site and feed water.",
+     "a": "Two acceptance tests come first. The factory acceptance test (FAT) proves function before shipping. Your quality unit approves its protocol first and can witness it with reasonable notice. The site acceptance test (SAT), then installation and operational qualification (IQ/OQ), prove it on your site and feed water.",
      "link": "svc-fat-sat",
      "link_label": "See what FAT proves"
     },
@@ -412,7 +396,7 @@
  ],
  "cta": {
   "h": "Send your feed water. Get a sized skid.",
-  "body": "An engineer replies in writing. Cost: [proposal cost or free].",
+  "body": "An engineer replies in writing. Cost: discussed when you enquire.",
   "button": "Request a sizing proposal",
   "link": "contact-proposal",
   "intent": "I have water data, no system yet|Sizing proposal|Purified Water (PW) generation",
@@ -422,7 +406,7 @@
    "Peak and average demand, L/h",
    "Pharmacopoeia or standard that applies"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "Skid sizing for your coldest feed",
    "Budget range and its class",

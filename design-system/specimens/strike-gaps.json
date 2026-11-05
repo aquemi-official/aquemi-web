@@ -154,9 +154,9 @@
    "page": "svc-upgrades",
    "slot": 2,
    "h": "Data integrity gaps in older controls",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "a22004177b",
    "block": {
@@ -201,6 +201,54 @@
     "fold": 3,
     "fold_noun": "gaps",
     "anchor": "data-integrity-gaps"
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 2,
+   "h": "Gaps in older controls",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "f3e495b44e",
+   "block": {
+    "type": "table",
+    "look": "strike-gaps",
+    "as": "failures",
+    "nav": "Controls",
+    "h": "Gaps in older controls",
+    "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out: spares are limited.",
+    "cols": [
+     "Gap",
+     "What it risks",
+     "What the upgrade does"
+    ],
+    "rows": [
+     [
+      "Shared operator login, or none",
+      "No record of who changed a set point or cleared an alarm",
+      "Individual operator accounts with access levels"
+     ],
+     [
+      "A chart recorder as the release record",
+      "Paper charts that fade and are slow to review",
+      "Time-stamped historian, or a defined paper record"
+     ],
+     [
+      "Backups never restored",
+      "A failed controller that cannot be rebuilt",
+      "Restore test at OQ, repeated on a schedule"
+     ],
+     [
+      "Records only in the old system",
+      "Past water records lost at changeover",
+      "Verified migration, or old records kept readable"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "gaps",
+    "anchor": "controls-gaps"
    }
   }
  ]

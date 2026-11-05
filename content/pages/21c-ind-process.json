@@ -7,7 +7,7 @@
  "path": "/industries/food-beverage-and-industrial/",
  "eyebrow": "FOOD · BEVERAGE · CANNABIS · INDUSTRIAL · ENERGY",
  "headline": "Demineralized water to the limit your process sets",
- "lead": "For distilleries, craft beverage, food, cannabis, electronics, hydrogen and chemical plants. One polypropylene package with reverse osmosis (RO) and electrodeionization (EDI), configured to your limit: [industrial water scope].",
+ "lead": "For distilleries, craft beverage, food, cannabis, electronics, hydrogen and chemical plants. One polypropylene package with reverse osmosis (RO) and electrodeionization (EDI), configured to your limit, with the scope confirmed when you enquire.",
  "primary_cta": "Send your water limit",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet",
@@ -258,7 +258,7 @@
     [
      "Metal finishing rinse",
      "Conductivity at each rinse stage, set by your finish specification",
-     "[industrial water scope]"
+     "Confirmed when you enquire"
     ]
    ],
    "look": "riser-valves"
@@ -269,7 +269,7 @@
    "nav": "Configurations",
    "anchor": "generation",
    "h": "Configured to your use",
-   "intro": "The base is generation: polyvinyl chloride (PVC) pretreatment, RO and EDI, with conductivity measured after each stage. Additions: [configurations offered for this use].",
+   "intro": "The base is generation: polyvinyl chloride (PVC) pretreatment, RO and EDI, with conductivity measured after each stage. Additions are confirmed when you enquire.",
    "items": [
     {
      "t": "Storage tank",
@@ -335,32 +335,32 @@
     },
     {
      "p": "Filters, carbon, softener resin and salt",
-     "v": "[filter, media and lamp intervals, months]",
+     "v": "Intervals set for your system",
      "m": "Feed water and run hours",
      "part": "pre soft"
     },
     {
      "p": "RO membranes and EDI module",
-     "v": "[membrane and resin replacement intervals]",
+     "v": "Intervals set for your system",
      "m": "Feed water and flow",
      "part": "gen"
     },
     {
      "p": "Water to drain",
-     "v": "RO reject at [design recovery, %] recovery",
+     "v": "RO reject at the recovery in your design",
      "m": "Feed water chemistry",
      "part": "drain",
      "side": "out"
     },
     {
      "p": "Energy",
-     "v": "[energy use, kWh per m³]",
+     "v": "Estimated in your proposal",
      "m": "Flow and feed temperature",
      "part": "pump"
     },
     {
      "p": "Service plan, with calibration",
-     "v": "From [lowest plan price, CAD per year]",
+     "v": "Priced per system",
      "m": "System, instruments and distance",
      "link": "svc-service#running-cost",
      "part": "panel"
@@ -395,12 +395,12 @@
     },
     {
      "p": "Hot water and steam",
-     "v": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
-     "m": "Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C]."
+     "v": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it).",
+     "m": "Any hot-water cycle stays inside the PP maker's published pressure–temperature rating for its hours."
     },
     {
      "p": "Generation skid sanitization",
-     "v": "[sanitization method for the PP skid]; [heat-sanitizable RO and EDI, yes or no]",
+     "v": "Method confirmed in your proposal, including whether RO and EDI can be heat-sanitized",
      "m": "The same RO and EDI skid, with or without a loop",
      "link": "sys-pw#design",
      "link_label": "Generation skid design",
@@ -408,8 +408,8 @@
     },
     {
      "p": "Flow",
-     "v": "[minimum–maximum capacity, L/h] per skid",
-     "m": "At your coldest feed water; parallel trains above it",
+     "v": "Sized to your demand",
+     "m": "At your coldest feed water; parallel trains for larger flows",
      "in": true
     },
     {
@@ -457,7 +457,7 @@
    "items": [
     {
      "q": "Can you supply generation without a loop?",
-     "a": "Yes: [configurations offered for this use]. Generation is PVC pretreatment, RO and EDI, feeding your tank, process or equipment directly. Electrolyser feed and boiler make-up rarely need a loop.",
+     "a": "We confirm the configuration when you enquire. Generation is PVC pretreatment, RO and EDI, feeding your tank, process or equipment directly. Electrolyser feed and boiler make-up rarely need a loop.",
      "link": "ind-process#generation",
      "link_label": "See the configurations"
     },
@@ -507,7 +507,7 @@
    "What it needs from your plant",
    "What it costs to run"
   ],
-  "turnaround": "[proposal response time, working days]"
+  "turnaround": "Confirmed when you enquire"
  },
  "todo": [
   "Page created in pass 12 (FD-59, R1, DR-027 row ind-process). Readers: process-engineer, operations-head, maintenance-lead, founder of a craft plant, consultant for an EPC (P1, P2, P6). Evidence classes: regulation (SFCR s.70, 21 CFR 117.37, Cannabis Regulations s.88.6), equipment-maker specifications, industry studies (industries/food-beverage.md, industries/other-industrial.md; IB §1 G5 and G6, §2.5)",

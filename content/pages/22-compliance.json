@@ -89,7 +89,7 @@
        "to": "pharmacopoeia"
       },
       {
-       "t": "[PP piping standard]",
+       "t": "Piping standard named in your proposal",
        "to": "engineering"
       }
      ],
@@ -100,12 +100,9 @@
      "icon": "gauge",
      "to": "gmp",
      "codes": [
-      "21 CFR Part 11",
-      "EU GMP Annex 11",
-      "GUI-0050",
       "GAMP 5",
       {
-       "t": "[panel standard]",
+       "t": "Panel standard named in your proposal",
        "to": "engineering"
       }
      ],
@@ -124,8 +121,8 @@
        "t": "21 CFR 211.63, 211.65",
        "to": "gmp"
       },
-      "[PP material standard]",
-      "[PP joining standard]",
+      "Material standard named in your proposal",
+      "Joining standard named in your proposal",
       "CSA B51"
      ],
      "spot": "weld"
@@ -208,7 +205,7 @@
     ],
     [
      "ANSI/AAMI ST108:2023 Critical water for device reprocessing",
-     "Within [hospital water scope]: the ST108:2023 critical-water limits; your program shows compliance",
+     "Within the scope confirmed when you enquire: the ST108:2023 critical-water limits; your program shows compliance",
      "Water grade per point of use in the basis of design; validation report before first use",
      {
       "t": "Hospitals and laboratories",
@@ -217,7 +214,7 @@
     ],
     [
      "ASTM D1193-24 Reagent water; CLSI GP40 (5th edition) clinical laboratory reagent water",
-     "Within [lab water scope]: Type II or III, or the CLSI GP40 grade your method specifies",
+     "Type II or III, or the CLSI GP40 grade your method specifies",
      "Water grade per point of use in the basis of design; verification report",
      {
       "t": "Hospitals and laboratories",
@@ -256,7 +253,7 @@
     [
      "Drug GMP (Health Canada GUI-0001 C.02.004, C.02.005, C.02.009; 21 CFR 211.63, 211.65); GUI-0158 where a natural health product needs PW",
      "Qualified as a utility; non-reactive, non-additive, non-absorptive surfaces that withstand sanitizing",
-     "[PP material certificates] traced by lot",
+     "Material certificates named in your proposal, traced by lot",
      {
       "t": "Fabrication",
       "link": "svc-fabrication"
@@ -281,17 +278,8 @@
      }
     ],
     [
-     "EU GMP Annex 11 (2011); 21 CFR Part 11; GUI-0050",
-     "Audit trail, access, e-signatures, record protection; your procedures complete them",
-     "Part 11 and Annex 11 assessment; audit trail tests",
-     {
-      "t": "Monitoring and controls",
-      "link": "sys-monitoring"
-     }
-    ],
-    [
      "GAMP 5 (2022); FDA computer software assurance (devices)",
-     "Tests scaled to risk; scripted for divert, quality alarms, sanitization and audit trail",
+     "Tests scaled to risk; scripted for divert, quality alarms and sanitization",
      "Software and configuration specifications; controls OQ",
      {
       "t": "Monitoring and controls",
@@ -300,7 +288,7 @@
     ],
     [
      "ASTM E2500; ICH Q9(R1)",
-     "Verification focused on critical aspects, found by [risk assessment method]",
+     "Verification focused on critical aspects, found by a documented risk assessment",
      "Risk assessment; critical aspects list; design review",
      {
       "t": "Process design",
@@ -354,7 +342,7 @@
    "rows": [
     [
      "CSA B51",
-     "A Canadian registration number (CRN) from the province of installation for [pressure-rated items in the PW package]",
+     "A Canadian registration number (CRN) from the province of installation for each pressure-rated item your design includes",
      "CRN registration; vessel data reports",
      {
       "t": "Fabrication",
@@ -362,8 +350,8 @@
      }
     ],
     [
-     "[panel standard]",
-     "Panels built and marked to [panel certification mark held, or field evaluation used]",
+     "Panel standard named in your proposal",
+     "Panels built and marked by the approval route confirmed in your proposal",
      "Panel label and report",
      {
       "t": "Monitoring and controls",
@@ -371,27 +359,27 @@
      }
     ],
     [
-     "[PP piping standard]",
-     "PP pipe, fittings and valves; dead legs ≤ [dead leg design limit, L/D]",
-     "Dead leg register; pressure test to [PP pressure test method]",
+     "Piping standard named in your proposal",
+     "PP pipe, fittings and valves; dead legs within the limit set in your design basis",
+     "Dead leg register; pressure test to the method named in your proposal",
      {
       "t": "Storage and distribution loops",
       "link": "sys-storage"
      }
     ],
     [
-     "[PP material standard]",
-     "Unpigmented product-contact PP, [PP grade]; polyvinyl chloride (PVC) in pretreatment only",
-     "[PP material certificates] traced by lot",
+     "Material standard named in your proposal",
+     "Unpigmented product-contact PP, grade named in your proposal; polyvinyl chloride (PVC) in pretreatment only",
+     "Material certificates named in your proposal, traced by lot",
      {
       "t": "Fabrication",
       "link": "svc-fabrication"
      }
     ],
     [
-     "[PP joining standard]",
-     "Joints by [PP joining method], to [welder qualification standard for thermoplastics]",
-     "[PP joint records kept]",
+     "Joining standard named in your proposal",
+     "Joints by the joining method and to the qualification standard named in your proposal",
+     "Joint records as set out in your proposal",
      {
       "t": "Fabrication",
       "link": "svc-fabrication"
@@ -429,7 +417,7 @@
     },
     {
      "q": "Who registers our pressure equipment, and when?",
-     "a": "The safety authority of each province where the item is used, before it is built. Each pressure-rated item needs a Canadian registration number (CRN) under CSA B51, unless exempt. [Aquemi CRN process and provinces covered]",
+     "a": "The safety authority of each province where the item is used, before it is built. Each pressure-rated item needs a Canadian registration number (CRN) under CSA B51, unless exempt. How registration is handled for your project is set out in your proposal.",
      "link": "contact-locations#coverage",
      "link_label": "Check coverage for your site"
     }
@@ -449,7 +437,7 @@
  ],
  "cta": {
   "h": "Send your requirements (URS). We return a compliance matrix.",
-  "body": "Each URS line answered in your numbering: meets, meets with a note, or differs, with its proof. Cost: [compliance matrix cost or free].",
+  "body": "Each URS line answered in your numbering: meets, meets with a note, or differs, with its proof. Cost: quoted in your proposal.",
   "button": "Request a compliance matrix",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|Compliance matrix",
@@ -463,7 +451,7 @@
    "Compliance matrix",
    "Exceptions, keyed to your clause numbers"
   ],
-  "turnaround": "[compliance matrix response time, working days]"
+  "turnaround": "Confirmed when you enquire"
  },
  "todo": [
   "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry; downloadable copies. The status line lives on cmp-quality, a related link here; never list a certificate here that is not held (DR-004 rule 3, FD-48; pass 12 DR-028 rule 3: a certificate not held is hidden, never dated)",

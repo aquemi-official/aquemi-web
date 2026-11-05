@@ -72,9 +72,9 @@
    "page": "ind-hospital-lab",
    "slot": 4,
    "h": "One train, designed to the critical-water limits",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "1f4eab0",
    "hash": "456be12f95",
    "block": {
@@ -125,6 +125,69 @@
       "icon": "tank",
       "node": "spray",
       "d": "[PP loop sanitization method]; residual tested before use. PVC stays upstream, out of the critical-water loop."
+     }
+    ],
+    "look": "train-strip",
+    "band": "limestone"
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 4,
+   "h": "One train, designed to the critical-water limits",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "2706b6cfad",
+   "block": {
+    "type": "diagram",
+    "nav": "Treatment train",
+    "anchor": "train",
+    "h": "One train, designed to the critical-water limits",
+    "intro": "The configuration follows your standard and is confirmed when you enquire.",
+    "stages": [
+     {
+      "t": "Generation",
+      "spot": "ro-skid",
+      "node": "gen",
+      "d": "Polyvinyl chloride (PVC) pretreatment, then RO. Electrodeionization (EDI) only where your grade needs it. Duplicate RO trains are often specified."
+     },
+     {
+      "t": "Storage",
+      "spot": "storage-tank",
+      "node": "tank",
+      "d": "Sized to the peak draw, such as washers filling together, so generation runs steady."
+     },
+     {
+      "t": "Loop pump and UV",
+      "spot": "pump",
+      "node": "pump",
+      "d": "Pumps: duty and standby pumps on request. 254 nm ultraviolet (UV) on the supply lowers the viable count; it does not sanitize the loop."
+     },
+     {
+      "t": "Temperature",
+      "spot": "heat-exchanger",
+      "node": "hx",
+      "d": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)."
+     },
+     {
+      "t": "Points of use",
+      "icon": "loop",
+      "node": "pou",
+      "d": "Washers, sinks and bench taps on short branches; sections isolate for work. Endotoxin filtration: on request."
+     },
+     {
+      "t": "Return sensors",
+      "icon": "conductivity",
+      "node": "sensors",
+      "d": "Conductivity online after the last treatment step; samples at loop out, loop return and each outlet."
+     },
+     {
+      "t": "Sanitization",
+      "icon": "tank",
+      "node": "spray",
+      "d": "A chemical method set per project; residual tested before use. PVC stays upstream, out of the critical-water loop."
      }
     ],
     "look": "train-strip",

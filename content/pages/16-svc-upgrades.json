@@ -7,7 +7,7 @@
  "path": "/services/upgrades-retrofits/",
  "eyebrow": "UPGRADES · EU GMP ANNEX 15 · GUI-0029",
  "headline": "Upgrade the system you have",
- "lead": "We assess your Purified Water (PW) system, then price options from one module to the whole polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: [makes and equipment types serviced].",
+ "lead": "We assess your Purified Water (PW) system, then price options from one module to the whole polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: confirmed when you enquire.",
  "tags": [],
  "primary_cta": "Request a system assessment",
  "primary_cta_link": "contact-proposal",
@@ -87,7 +87,7 @@
      "Deionization (DI) or exchange tanks to reverse osmosis (RO) and electrodeionization (EDI)",
      "New skid in place of resin beds or exchange tanks (cosmetics, labs, rinse lines); the loop usually stays",
      "Under GMP: IQ/OQ reusing factory test results, intensive then reduced sampling. Without GMP: acceptance test to your specification",
-     "[days]; DI or exchange tanks run until release",
+     "Agreed with you; DI or exchange tanks run until release",
      {
       "t": "PW generation",
       "link": "sys-pw"
@@ -97,7 +97,7 @@
      "New pretreatment",
      "Polyvinyl chloride (PVC) module before the RO",
      "IQ/OQ; RO inlet chlorine and hardness; downstream sampling",
-     "[days]; existing pretreatment runs until cutover",
+     "Agreed with you; existing pretreatment runs until cutover",
      {
       "t": "Pretreatment",
       "link": "sys-pretreatment"
@@ -106,8 +106,8 @@
     [
      "Distribution loop replacement",
      "PP loop and pump module; points of use reconnected",
-     "IQ with dead leg register; OQ of flow and [PP loop sanitization method]; every outlet sampled",
-     "[days], planned shutdown",
+     "IQ with dead leg register; OQ of flow and of chemical sanitization by a method set per project; every outlet sampled",
+     "Agreed with you; planned shutdown",
      {
       "t": "Storage and distribution loops",
       "link": "sys-storage"
@@ -117,7 +117,7 @@
      "Online total organic carbon (TOC) and conductivity",
      "Analyzer, sample line, historian link",
      "OQ with USP <643> suitability; lab results in parallel until release",
-     "[days]",
+     "Agreed with you",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -125,9 +125,9 @@
     ],
     [
      "Controls replacement",
-     "New controller (PLC), operator panel (HMI), supervisory control (SCADA), electronic records",
+     "New controller (PLC), operator panel (HMI), supervisory control (SCADA), data recording",
      "GAMP 5 validation; factory software test; short sampling",
-     "[days], tank full",
+     "Agreed with you; tank full",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -137,7 +137,7 @@
      "Capacity increase",
      "Second RO train, DI/EDI module or pump; PP sub-loops only off ambient, chemically sanitized loops",
      "IQ/OQ of new equipment; loop flow at the new peak",
-     "[days]; built while running",
+     "Agreed with you; built while running",
      {
       "t": "PW generation",
       "link": "sys-pw"
@@ -147,7 +147,7 @@
      "Hospital reprocessing or lab RO replacement",
      "New train in place of the failing RO, designed to ST108:2023 critical-water limits or ASTM D1193-24 Type II or III",
      "Acceptance test against your specification; your water program shows compliance before first use",
-     "[days]; the old unit or temporary water keeps the occupied building supplied",
+     "Agreed with you; the old unit or temporary water keeps the occupied building supplied",
      {
       "t": "Hospitals and laboratories",
       "link": "ind-hospital-lab"
@@ -171,43 +171,38 @@
    "look": "strike-gaps",
    "as": "failures",
    "nav": "Controls",
-   "h": "Data integrity gaps in older controls",
+   "h": "Gaps in older controls",
    "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out: spares are limited.",
    "cols": [
     "Gap",
-    "Requirement it misses",
+    "What it risks",
     "What the upgrade does"
    ],
    "rows": [
     [
      "Shared operator login, or none",
-     "21 CFR 11.10(d); Annex 11, 12",
-     "Individual accounts, roles, automatic logoff"
-    ],
-    [
-     "No audit trail on set points or alarms",
-     "21 CFR 11.10(e); Annex 11, 9",
-     "Audit trail of who, what, when and why"
+     "No record of who changed a set point or cleared an alarm",
+     "Individual operator accounts with access levels"
     ],
     [
      "A chart recorder as the release record",
-     "21 CFR 211.68; Annex 11, 4",
-     "Validated historian, or a defined paper record"
+     "Paper charts that fade and are slow to review",
+     "Time-stamped historian, or a defined paper record"
     ],
     [
      "Backups never restored",
-     "Annex 11, 7.2",
+     "A failed controller that cannot be rebuilt",
      "Restore test at OQ, repeated on a schedule"
     ],
     [
      "Records only in the old system",
-     "21 CFR 211.180; Annex 11, 17",
+     "Past water records lost at changeover",
      "Verified migration, or old records kept readable"
     ]
    ],
    "fold": 3,
    "fold_noun": "gaps",
-   "anchor": "data-integrity-gaps"
+   "anchor": "controls-gaps"
   },
   {
    "type": "grid",
@@ -244,7 +239,7 @@
     },
     {
      "t": "Controls",
-     "d": "Support status, audit trail and backups.",
+     "d": "Support status, spares, access and backups.",
      "spot": "cpu"
     }
    ],
@@ -258,7 +253,7 @@
    "items": [
     {
      "t": "System assessment",
-     "d": "On site, then a costed options report in [report turnaround, working days].",
+     "d": "On site, then a costed options report in a time agreed with you.",
      "icon": "magnifier"
     },
     {
@@ -274,7 +269,7 @@
     },
     {
      "t": "Cutover",
-     "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested.",
+     "d": "To the scope set out in your proposal, in a planned shutdown; flushed, sanitized and residual tested.",
      "icon": "wrench"
     },
     {
@@ -293,11 +288,11 @@
    "items": [
     {
      "q": "Will you upgrade another maker’s system?",
-     "a": "For [makes and equipment types serviced]: we assess it, then add or replace our modules. Without drawings, we walk the system down and measure dead legs. Polypropylene (PP) joins other piping by [tie-in method to existing piping]. A hot-held loop, or routine 80 °C sanitization at loop pressure, needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]."
+     "a": "For makes and equipment confirmed when you enquire: we assess it, then add or replace our modules. Without drawings, we walk the system down and measure dead legs. Polypropylene (PP) joins other piping by a method named in your proposal. A hot-held loop, or routine 80 °C sanitization at loop pressure, needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)."
     },
     {
      "q": "Will your work void our original maker's warranty?",
-     "a": "It can: some makers void a warranty after third-party work, so check its terms first. Our position goes in the options report: [warranty position on other makers' systems]. Calibrations are traceable via [calibration provider and accreditation held]. You keep every record we write: certificates, installation and operational qualification (IQ and OQ) reports, updated drawings."
+     "a": "It can: some makers void a warranty after third-party work, so check its terms first. Our position goes in the options report, stated case by case. Calibrations are traceable via a provider named in your proposal. You keep every record we write: certificates, installation and operational qualification (IQ and OQ) reports, updated drawings."
     },
     {
      "q": "Will an upgrade restart our performance qualification (PQ)?",
@@ -308,7 +303,7 @@
     },
     {
      "q": "Can we keep producing water during the upgrade?",
-     "a": "Yes, for generation, pretreatment and capacity upgrades. Each new module goes in beside the old one, tied in during a short shutdown. If your tank cannot cover it, plan temporary water: [temporary RO or EDI units, flow L/h]. Occupied hospitals and lab buildings stay supplied the same way. A loop replacement needs a planned shutdown."
+     "a": "Yes, for generation, pretreatment and capacity upgrades. Each new module goes in beside the old one, tied in during a short shutdown. If your tank cannot cover it, plan temporary water from temporary units sized with you. Occupied hospitals and lab buildings stay supplied the same way. A loop replacement needs a planned shutdown."
     },
     {
      "q": "Will the new controls become obsolete too?",
@@ -332,7 +327,7 @@
  ],
  "cta": {
   "h": "Send the system you have",
-  "body": "An engineer replies. Cost: [assessment price, CAD, credit against upgrade].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a system assessment",
   "link": "contact-proposal",
   "intent": "I have a system already",
@@ -342,7 +337,7 @@
    "A year of water data",
    "PLC and HMI models, program backup"
   ],
-  "turnaround": "[assessment response time, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "Assessment scope, days on site, price",
    "Then options with downtime and requalification"
@@ -364,17 +359,11 @@
   "Confirm software is tested before site work, and whether against a simulator ('on a simulator' was cut until FD-23 says so)",
   "Budget range per option in the assessment report (FD-03): the page says 'costed options' and names the cost basis (equipment, site work, requalification) without a figure; ranges only when the owner confirms (DR-005 rule 2)",
   "Case block option: an upgrade record with what changed, downtime, requalification time and, for a DI to RO and EDI conversion, payback; published only with the client's written approval (FD-42; DR-004 class 3; DR-028). The ten-year cost sheet is FD-49",
-  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3).",
   "Pass 11, phrasebook 21 (L-02-11, L-03-21; PB-02.14): lead now says options run from one module to the whole package; the downtime and requalification sentence and [makes and equipment types serviced] kept",
   "Pass 11, proof § 5.2 (L-09-15): new FAQ \"Will your work void our original maker's warranty?\" answers the three lock-in fears (warranty, traceable calibration, records issued). [warranty position on other makers' systems] is a new placeholder (FD-07, FD-30); [calibration provider and accreditation held] is svc-service's name (FD-32). If FD-30 says no other make is served, the FAQ goes with FAQ 1's bracket",
   "Pass 11, offer § 14 training and notice: no new copy here. Training on a changed module (controls replacement especially) follows the svc-cq training FAQ once FD-26 decides training; shutdown dates are the client's plan. project-plan not added to related: an upgrade runs on this page's own steps",
   "Pass 11 review findings 2 and 5: lead restores \"polypropylene (PP)\" (first use before the upgrades table, DR-003 rule 4); warranty FAQ opens with the answer (\"It can\") and spells out IQ and OQ (DR-003 rules 3 and 4)",
-  "Pass 12 (SITE-PLAN svc-upgrades; IB §3; RI 06, 07; DR-027, DR-028): heading 'After a water observation, failed test or accreditation finding' (mega-menu wording); intro drops '(Risk 2)' and closes on the non-GMP path ('Outside GMP, verification is an acceptance test against your specification'), matching the steps and the validation row. Upgrades intro gives three routes for an ageing system, the cost basis and that each states its downtime (no figures, RI 07). DI row widened to exchange tanks and prints the uses (cosmetics, labs, rinse lines) as a recognition list (IB §1 G3 IOT-18, G6 IOT-59; no frequency claim) with a GMP and a non-GMP requalification line; new row 'Hospital reprocessing or lab RO replacement': a train (not a bare RO) in place of the failing RO (ST108:2023 and ASTM D1193-24 wording per SITE-PLAN 1.2.6, occupied-building supply), start link ind-hospital-lab. Exchange DI kept as the starting point only, never as interim water after a finding. Steps: requalification step carries the GMP and non-GMP paths (R10). FAQ: occupied buildings in the keep-producing answer; new obsolescence FAQ says controllers are makers' catalogue parts and routes to svc-service#faq ([parts availability period, years] lives there, one home; owner confirms the term covers modules supplied in upgrades, FD-11, FD-30). Anchors data-integrity-gaps, assessment, steps, faq added; observation and upgrades kept"
- ],
- "facts": [
-  {
-   "v": "[assessment duration, days]",
-   "l": "Assessment on your site · per system"
-  }
+  "Pass 12 (SITE-PLAN svc-upgrades; IB §3; RI 06, 07; DR-027, DR-028): heading 'After a water observation, failed test or accreditation finding' (mega-menu wording); intro drops '(Risk 2)' and closes on the non-GMP path ('Outside GMP, verification is an acceptance test against your specification'), matching the steps and the validation row. Upgrades intro gives three routes for an ageing system, the cost basis and that each states its downtime (no figures, RI 07). DI row widened to exchange tanks and prints the uses (cosmetics, labs, rinse lines) as a recognition list (IB §1 G3 IOT-18, G6 IOT-59; no frequency claim) with a GMP and a non-GMP requalification line; new row 'Hospital reprocessing or lab RO replacement': a train (not a bare RO) in place of the failing RO (ST108:2023 and ASTM D1193-24 wording per SITE-PLAN 1.2.6, occupied-building supply), start link ind-hospital-lab. Exchange DI kept as the starting point only, never as interim water after a finding. Steps: requalification step carries the GMP and non-GMP paths (R10). FAQ: occupied buildings in the keep-producing answer; new obsolescence FAQ says controllers are makers' catalogue parts and routes to svc-service#faq ([parts availability period, years] lives there, one home; owner confirms the term covers modules supplied in upgrades, FD-11, FD-30). Anchors data-integrity-gaps, assessment, steps, faq added; observation and upgrades kept",
+  "Pass 13 (owner decision 2026-11-04): the first systems use polypropylene piping with simplified controls, so the controls-gaps table (strike-gaps, was #data-integrity-gaps \"Data integrity gaps in older controls\") no longer maps gaps to 21 CFR Part 11 or EU GMP Annex 11 clauses; its middle column states the practical risk instead. No audit-trail or electronic-records promise on this page."
  ]
 }

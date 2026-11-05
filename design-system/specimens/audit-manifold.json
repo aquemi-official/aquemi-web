@@ -153,9 +153,9 @@
    "page": "ind-meddevice",
    "slot": 5,
    "h": "Who audits your water system",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "74849d2772",
    "block": {
@@ -220,9 +220,9 @@
    "page": "cmp-quality",
    "slot": 5,
    "h": "What you can read, and when",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "a26a987be6",
    "block": {
@@ -283,6 +283,150 @@
      [
       "Live records and the shop",
       "At audit: remotely, or on site with [on-site audit notice, working days] notice",
+      {
+       "t": "Request an audit",
+       "link": "cmp-quality#audit",
+       "intent": "On-site supplier audit"
+      }
+     ]
+    ],
+    "look": "audit-manifold"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 5,
+   "h": "Who audits your water system",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "f08f66d366",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Auditors",
+    "anchor": "audits",
+    "h": "Who audits your water system",
+    "cols": [
+     "Auditor",
+     "What they read",
+     "Where we answer it"
+    ],
+    "rows": [
+     [
+      "Health Canada, through MDSAP (Class II to IV)",
+      "ISO 13485:2016: 6.3, 6.4.2, 7.5.2, 7.5.6, 7.5.7 and 7.6 calibration",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ],
+     [
+      "FDA",
+      "QMSR (21 CFR 820) since 2026, built on ISO 13485",
+      {
+       "t": "Our quality system",
+       "link": "cmp-quality"
+      }
+     ],
+     [
+      "EU notified body",
+      "EU MDR 2017/745 Annex I, 10.2 and 11, against EN ISO 13485",
+      {
+       "t": "Documentation package",
+       "link": "cmp-documentation"
+      }
+     ],
+     [
+      "Sterilization reviewer",
+      "ISO 11737-1; ISO 11137-2 or ISO 11135; ISO 17665",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage"
+      }
+     ],
+     [
+      "Drug inspector, combination products",
+      "Drug part: GUI-0001, or 21 CFR Part 4 with Part 211",
+      {
+       "t": "Pharmaceutical",
+       "link": "ind-pharma"
+      }
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "auditors",
+    "look": "audit-manifold"
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 5,
+   "h": "What you can read, and when",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "1615c528c0",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Access",
+    "anchor": "access",
+    "h": "What you can read, and when",
+    "intro": "Each part of our qualification pack: on this page, on request, under a non-disclosure agreement (NDA), or at audit.",
+    "cols": [
+     "Item",
+     "When you can read it",
+     "Route"
+    ],
+    "rows": [
+     [
+      "Certification status",
+      "Now, on this page",
+      {
+       "t": "See certification status",
+       "link": "cmp-quality#certification"
+      }
+     ],
+     [
+      "Procedure list and organization chart",
+      "On request, in the questionnaire pack",
+      {
+       "t": "Request the pack",
+       "link": "cmp-quality#audit",
+       "intent": "Quality questionnaire pack"
+      }
+     ],
+     [
+      "Specimen records: nonconformance, CAPA, change request",
+      "On request, in the questionnaire pack, as Aquemi-written specimens",
+      {
+       "t": "Request the pack",
+       "link": "cmp-quality#audit",
+       "intent": "Quality questionnaire pack"
+      }
+     ],
+     [
+      "Quality manual",
+      "On request",
+      {
+       "t": "NDA terms",
+       "link": "buying#terms"
+      }
+     ],
+     [
+      "Critical supplier names",
+      "On request",
+      {
+       "t": "See supplier requirements",
+       "link": "cmp-quality#suppliers"
+      }
+     ],
+     [
+      "Live records and the shop",
+      "At audit: remotely, or on site on reasonable notice",
       {
        "t": "Request an audit",
        "link": "cmp-quality#audit",

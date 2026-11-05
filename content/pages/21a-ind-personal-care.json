@@ -142,12 +142,12 @@
     {
      "p": "Circulation",
      "v": "Continuous flow from the tank to every outlet and back",
-     "m": "Return flow alarmed below [qualified minimum return flow, L/h]",
+     "m": "Return flow alarmed below the qualified minimum",
      "site": "flow"
     },
     {
      "p": "Sanitization",
-     "v": "[PP loop sanitization method]; residual tested before use.",
+     "v": "A chemical method set per project; residual tested before use.",
      "m": "Sanitization lowers counts; it does not sterilize"
     },
     {
@@ -163,7 +163,7 @@
     },
     {
      "p": "Sample ports",
-     "v": "[sample valve design and orientation]",
+     "v": "Sample valve design named in your proposal",
      "m": "A sample should show what production draws, not the valve"
     },
     {
@@ -189,7 +189,7 @@
    "rows": [
     {
      "p": "Ambient loop, chemically sanitized",
-     "v": "[PP loop sanitization method]; residual tested before use.",
+     "v": "A chemical method set per project; residual tested before use.",
      "m": "The duty this package is built for",
      "side": "package",
      "link": "industries#fit",
@@ -197,7 +197,7 @@
     },
     {
      "p": "Hot-held loop, steam, or routine 80 °C at loop pressure",
-     "v": "Needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]",
+     "v": "Needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)",
      "side": "site"
     },
     {
@@ -207,12 +207,12 @@
     },
     {
      "p": "Hot-water cycles",
-     "v": "Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C].",
+     "v": "Any hot-water cycle stays inside the PP maker's published pressure–temperature curve for its hours.",
      "side": "limit"
     },
     {
      "p": "Wetted parts",
-     "v": "[PP material certificates]",
+     "v": "Material certificates named in your proposal",
      "m": "For your file: what touches the water",
      "side": "package"
     },
@@ -248,7 +248,7 @@
     {
      "t": "Reverse osmosis (RO) with storage",
      "spot": "ro-skid",
-     "d": "RO fills a tank you draw from, without a loop: [configurations offered for this use]. Needs drinking water, a drain and power."
+     "d": "RO fills a tank you draw from, without a loop; configurations confirmed when you enquire. Needs drinking water, a drain and power."
     },
     {
      "t": "Full package with loop",
@@ -309,13 +309,13 @@
     },
     {
      "q": "Is polypropylene suitable for my product?",
-     "a": "Yes, for an ambient loop sanitized with chemicals. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. For your file on what touches the water: [PP material certificates].",
+     "a": "Yes, for an ambient loop sanitized with chemicals. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. For your file on what touches the water: material certificates named in your proposal.",
      "link": "ind-personal-care#fit",
      "link_label": "Where the package fits"
     },
     {
      "q": "Can documents come in French?",
-     "a": "[French documentation scope]. Tell us which documents your operators, quality team and inspectors read in French."
+     "a": "French documentation is confirmed per project. Tell us which documents your operators, quality team and inspectors read in French."
     },
     {
      "q": "Our counts rise at the DI outlet. Where do we start?",
@@ -344,7 +344,7 @@
  ],
  "cta": {
   "h": "Send your product list",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I know my product, not my water spec|Cosmetics or personal care",
@@ -358,7 +358,7 @@
    "The package and loop to supply it",
    "The records your file needs"
   ],
-  "turnaround": "[scope review turnaround, working days]"
+  "turnaround": "a time confirmed when you enquire"
  },
  "todo": [
   "New page, pass 12 (R1, DR-027; SITE-PLAN ind-personal-care; IB §2.3). Readers: founder (< 50 staff, P2), qa-head (P3: counts, audit finding), operations-head, process-engineer. Register: plain on router, uses, from-di and closing; precise on grade, microbes, fit and records (SITE-PLAN §1.1.3). Image queue 5-12 request a hero drawing and per-section concepts",

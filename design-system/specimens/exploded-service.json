@@ -46,9 +46,9 @@
    "page": "home",
    "slot": 4,
    "h": "Service after handover",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "ba4c5cf2d7",
    "block": {
@@ -66,6 +66,43 @@
      {
       "t": "Running cost",
       "d": "Service plans from [lowest plan price, CAD per year], plus consumables and energy.",
+      "icon": "wrench",
+      "link": "svc-service#running-cost"
+     },
+     {
+      "t": "Signed record",
+      "d": "A signed report after each visit, for your quality records.",
+      "icon": "binder",
+      "link": "svc-service"
+     }
+    ],
+    "look": "exploded-service"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 4,
+   "h": "Service after handover",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "672ad82a26",
+   "block": {
+    "type": "grid",
+    "anchor": "service",
+    "h": "Service after handover",
+    "ground": "light",
+    "items": [
+     {
+      "t": "Your change control",
+      "d": "Like-for-like parts, or the change goes through your change control first.",
+      "icon": "stamp",
+      "link": "svc-service"
+     },
+     {
+      "t": "Running cost",
+      "d": "Service plans priced per system, plus consumables and energy.",
       "icon": "wrench",
       "link": "svc-service#running-cost"
      },

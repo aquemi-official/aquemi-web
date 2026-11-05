@@ -22,7 +22,7 @@ var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our fir
 var NAVMENU=[
  {id:'systems',label:'Systems',hub:'systems',lead:'One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.',
   groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
-     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Alarms, records and audit trails mapped to Part 11']]},
+     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
    {h:'Plan and budget',items:[['systems#budget','Budget ranges','What a package costs and what moves it'],['systems#site','Site requirements','Space, utilities and connections you provide'],
      ['sys-pw#design','Skid design basis','Capacity, feed and recovery, each with its basis']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
@@ -45,7 +45,7 @@ var NAVMENU=[
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
  {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
   groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, Ph. Eur., GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits side by side'],
-     ['sys-monitoring#data-integrity','Data integrity','Audit trails and access, mapped to Part 11']]},
+     ['compliance#gmp','GMP and qualification','The GMP guides and IQ, OQ and PQ']]},
    {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
      ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
    {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],['cmp-quality#access','What you can read, and when','Public, under NDA, or at audit'],
@@ -64,11 +64,13 @@ var NAVMENU=[
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
 /* NAVSECT: [bar label, hub] per section (Hero.js heroIndex finds a hub by it) */
 var NAVSECT=NAVMENU.map(function(s){return [s.label,s.hub]});
-/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
-   hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the contact email, the
+   head office and the shop location (the footer's "designed, fabricated and tested in"). No phone number is published
+   for now (owner, 2026-11-04): the menu's urgent block keeps only the service request row, and wtel stays for when a
+   number is added back.
    Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
    files that repeat it; tools/design_system.py check warns on a value no page file carries. */
-var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]',shop:'[shop location, city and province]'};
+var CONTACT={email:'hello@aquemi.com',office:'Ontario, Canada',shop:'Ontario, Canada'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
@@ -88,8 +90,13 @@ function wnum(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');return s.indexOf(
 function wtel(s,cls,lead){s=String(s||'');var n=wnum(s),c=cls?' class="'+cls+'"':'',t=(lead||'')+(n?tx(s).replace(/ /g,'\u00a0'):tx(s));
  return n?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
-/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
-function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
+/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM).
+   Inline links: {words|target} in copy becomes a link, target a page id, "page#anchor" or "mailto:<address>"; a page or
+   anchor that does not exist (whas) leaves the words as plain text. Only for copy that is not itself inside a link. */
+function txLinks(s){return s.replace(/\{([^{}|]+)\|([^{}|\s]+)\}/g,function(m,t,to){
+ if(/^mailto:/i.test(to))return '<a href="'+to+'">'+t+'</a>';
+ return whas(to)?'<a href="#'+to+'" data-wp="'+to+'">'+t+'</a>':t})}
+function tx(s){s=txLinks(e(s));var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
 /* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label). intent (optional): option
    labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent, as Button) */
 function wlink(id,label,intent){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}
@@ -209,8 +216,10 @@ if(typeof document!=='undefined'){
    Call (link "tel:[sales phone number]"): the number follows wnum in core.js, the rule the NavBar and Footer numbers use
    (wtel). Once it is confirmed (no [square brackets]) the button dials it, its digit groups kept on one line, with no
    arrow (it opens no page); until then the label shows as plain text with the placeholder (aq-btn--pending), never a
-   link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added. */
+   link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added.
+   Email (link "mailto:<address>"): opens the visitor's mail app, no arrow and no intent. */
 function wBtn(label,link,kind,intent){if(/^tel:/i.test(link||''))return wCall(label,link.slice(4),kind);
+ if(/^mailto:/i.test(link||''))return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="'+e(link)+'">'+tx(label)+'</a>';
  var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 function wCall(label,num,kind){num=String(num||'').trim();label=String(label||'');var n=wnum(num),s=tx(num),t=tx(label.indexOf(num)<0?(label?label+' ':'')+num:label);
  return n?'<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="tel:'+e(n)+'">'+t.split(s).join(s.replace(/ /g,'\u00a0'))+'</a>':'<span class="aq-btn aq-btn--pending">'+t+'</span>'}
@@ -382,8 +391,8 @@ document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.targe
 document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
  if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
 /* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description (the package,
-   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (service and
-   sales numbers and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
+   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (the contact email
+   as a mailto: link, and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
    columns in one row, then the legal line under a hairline. Phones show the columns two by two.
    The footer is its own sitemap, separate from the header menu (NAVMENU): every page, grouped in four columns.
    A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so a page appears
@@ -397,7 +406,7 @@ function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene with PVC pretreatment, for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
-  +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
+  +'<address class="aq-footer__contact">'+'<a href="mailto:'+e(CONTACT.email)+'">'+e(CONTACT.email)+'</a><span>'+tx(CONTACT.office)+'</span></address></div>'
   +cols.map(function(c,i){var open=i===cols.length-1,id='wfoot-'+i;return '<nav class="aq-footer__col'+(open?' is-open':'')+'" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead"><span class="aq-footer__colname">'+e(c[0])+'</span>'
    +'<button type="button" class="aq-footer__toggle" aria-expanded="'+open+'" aria-controls="'+id+'">'+e(c[0])+'<span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h5>'
    +'<div class="aq-footer__links" id="'+id+'">'+c[1].filter(whas).map(function(id){return wlink(id,label[id])}).join('')+'</div></nav>'}).join('')
@@ -1467,8 +1476,8 @@ function wKeyFacts(facts){
    page's section jump (navJumps in SectionNav.js) and the proposal button. The accordion is DOM-local too
    (aq:navgroup for motion). The service number and hours come from CONTACT (core.js): a tel: link once confirmed, the
    placeholder until then, and the hours always travel with the number, so the block never implies round-the-clock help.
-   Launch rule (design-system/website.md, Navigation): while the number is unconfirmed the urgent block goes, the
-   "Service request" row stays.
+   Launch rule (design-system/website.md, Navigation): while no number is published (owner, 2026-11-04) the block keeps
+   only "Production stopped?" and the "Service request" row; the call line and hours return with a number.
    The toggle carries a two-bar mark (aq-nav__burger, aria-hidden) that turns into a cross while the menu is open; its
    label stays the words "Menu" / "Close" (aq-nav__toggle-t). */
 /* The section a page belongs to (its "section" string), the entries of a group that exist, and the gate for a link
@@ -1526,7 +1535,7 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
   '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+navThemeBtn()+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
-  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
+  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+svc('aq-menu__service')+'</div>'+
   '<nav aria-label="Sections"><ul class="aq-menu__list aq-menu__list--sect">'+NAVMENU.map(function(s){var c=s===cs;
    return s.panel===null?'<li><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>':menuGroup(s,c)}).join('')+
   (T.length?'<li><button type="button" class="aq-menu__sect" id="wm-b-tasks" aria-expanded="false" aria-controls="wm-g-tasks">I need to<span class="aq-menu__plus" aria-hidden="true"></span></button><div class="aq-menu__group" id="wm-g-tasks" hidden><div class="aq-menu__group-in"><ul class="aq-menu__tasks">'+
@@ -2928,55 +2937,6 @@ document.addEventListener('pointerover',function(ev){if(ev.pointerType==='touch'
 document.addEventListener('pointerout',function(ev){var r=ev.target.closest&&ev.target.closest('.'+K+'__row');if(r&&!(ev.relatedTarget&&r.contains(ev.relatedTarget))&&!r.contains(document.activeElement))on(r,false)});
 document.addEventListener('focusin',function(ev){var r=ev.target.closest&&ev.target.closest('.'+K+'__row');if(r)on(r,true)});
 document.addEventListener('focusout',function(ev){var r=ev.target.closest&&ev.target.closest('.'+K+'__row');if(r&&!(ev.relatedTarget&&r.contains(ev.relatedTarget))&&!r.matches(':hover'))on(r,false)});
-})();
-/* Look "clause-crosswalk" -> ClauseCrosswalk (design-system/components/ClauseCrosswalk): a table of requirements met
-   against two regulations' clauses (requirement, how we meet it, clause column A, clause column B), set as an
-   editorial crosswalk. The requirements run down the middle, large, with how we meet them beside; each regulation is a
-   spine on its side, its name set big and vertical along the outer edge and every clause it cites as a mono chip in
-   clause order; a wire runs from each requirement to each of its clauses on both sides, so a clause cited twice draws
-   two wires and the shape of the mapping reads at a glance. Hover a requirement to light its wires and clauses, or a
-   clause to light every requirement that cites it. Each row also carries its clause references as text (visually
-   hidden on desktop, shown on phones), so nothing depends on the wires.
-   Fields: h, intro, cols [requirement, how, regulation A, regulation B], rows [[t, how, clausesA, clausesB]] (clauses
-   split on "," and ";", a "(g)" after "11.10(d)" reads 11.10(g)), fold (phones only), fold_noun.
-   Phones (pass 12): each row is a mini crosswalk, regulation A's chips on a left rail and B's on a right rail, short
-   curves from every chip to the requirement set in a box between them, how under it; the rail names head the list. */
-function cwTok(c){var out=[],base='';String(c&&typeof c==='object'?c.t:c||'').split(/\s*[,;]\s*/).forEach(function(t){t=t.trim();if(!t)return;
-  if(t.charAt(0)==='('&&base)t=base+t;else base=t.replace(/\(.*$/,'');out.push(t)});return out}
-function cwKey(t){return (String(t).match(/\d+|[a-z]/gi)||[]).map(function(x){return /\d/.test(x)?('0000'+x).slice(-5):x})}
-function cwCmp(a,b){var A=cwKey(a),B=cwKey(b);for(var i=0;i<Math.max(A.length,B.length);i++){if(A[i]===B[i])continue;if(A[i]==null)return -1;if(B[i]==null)return 1;return A[i]<B[i]?-1:1}return 0}
-LOOKS['clause-crosswalk']=function(b,H){
- var C=b.cols||[],R=b.rows||[],N=R.length;if(N<1||C.length<4)return BLOCKS.table(b,H);
- var sides=[2,3].map(function(ci){var all={};R.forEach(function(r,i){cwTok(r[ci]).forEach(function(t){(all[t]=all[t]||[]).push(i)})});
-  var ks=Object.keys(all).sort(cwCmp);return {ci:ci,keys:ks,rows:all}});
- var Y=1000,ry=function(i){return ((i+0.5)/N*Y).toFixed(1)};
- function spine(s,k){var M=s.keys.length;
-  var chips=s.keys.map(function(t,j){return '<li class="aq-clause-crosswalk__node" data-cwn="'+k+j+'" data-rows="'+s.rows[t].join(' ')+'">'+tx(t)+'</li>'}).join('');
-  return '<div class="aq-clause-crosswalk__spine aq-clause-crosswalk__spine--'+k+'" aria-hidden="true"><p class="aq-clause-crosswalk__reg">'+tx(C[s.ci])+'</p><ol class="aq-clause-crosswalk__nodes">'+chips+'</ol></div>'}
- function wires(s,k){var M=s.keys.length,d='';
-  s.keys.forEach(function(t,j){var ny=((j+0.5)/M*Y).toFixed(1);s.rows[t].forEach(function(i){var a=k==='a'?'M0 '+ny+'C55 '+ny+' 45 '+ry(i)+' 100 '+ry(i):'M0 '+ry(i)+'C55 '+ry(i)+' 45 '+ny+' 100 '+ny;
-   d+='<path class="aq-clause-crosswalk__wire" data-cw="'+i+'" data-cwn="'+k+j+'" d="'+a+'"/>'})});
-  return '<svg class="aq-clause-crosswalk__wires aq-clause-crosswalk__wires--'+k+'" viewBox="0 0 100 '+Y+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+d+'</svg>'}
- var rows=R.map(function(r,i){var refs=sides.map(function(s,k){var t=cwTok(r[s.ci]);return t.length?'<span class="aq-clause-crosswalk__ref aq-clause-crosswalk__ref--'+(k?'b':'a')+'"><span class="aq-clause-crosswalk__rk">'+tx(C[s.ci])+'</span> '+t.map(function(x){return '<span class="aq-clause-crosswalk__chip">'+tx(x)+'</span>'}).join(' ')+'</span>':''}).join('');
-  /* pass 12 phone: a mini crosswalk per row, short curves from each rail's chips to the requirement's box (chip j of
-     M leaves at (j + 0.5) / M of the rail, the box sits at its middle; a stretched svg like the desktop wires) */
-  var mini=sides.map(function(s,k){var t=cwTok(r[s.ci]),M=t.length;if(!M)return '';
-   var d=t.map(function(x,j){var y=((j+0.5)/M*100).toFixed(1);return '<path'+(M===1?' class="is-straight"':'')+' d="'+(k?'M0 50C55 50 45 '+y+' 100 '+y:'M0 '+y+'C55 '+y+' 45 50 100 50')+'"/>'}).join('');
-   return '<svg class="aq-clause-crosswalk__mini aq-clause-crosswalk__mini--'+(k?'b':'a')+'" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+d+'</svg>'}).join('');
-  return fli('<li class="aq-clause-crosswalk__row" data-cw="'+i+'">'+idx(i)+'<h3 class="aq-clause-crosswalk__t">'+tcell(r[0])+'</h3><p class="aq-clause-crosswalk__how">'+tcell(r[1])+'</p><p class="aq-clause-crosswalk__refs">'+refs+'</p>'+mini+'</li>',b,i)}).join('');
- var phead='<div class="aq-clause-crosswalk__pheads" aria-hidden="true"><span>'+tx(C[2])+'</span><span>'+tx(C[3])+'</span></div>';
- var head='<div class="aq-clause-crosswalk__heads" aria-hidden="true"><span>'+tx(C[0])+'</span><span>'+tx(C[1])+'</span></div>';
- var inner='<div class="aq-clause-crosswalk" style="--cw-n:'+N+'">'+spine(sides[0],'a')+wires(sides[0],'a')
-  +head+'<div class="aq-clause-crosswalk__mid">'+phead+'<ol class="aq-clause-crosswalk__rows" role="list">'+rows+'</ol></div>'+wires(sides[1],'b')+spine(sides[1],'b')+'</div>';
- return sec(H+wFold(b,N,inner,b.fold_noun||'requirements'),'aq-clause-crosswalk-sec')};
-(function(){
- function set(root,rows,nodes){var on=rows||nodes;root.classList.toggle('has-hot',!!on);
-  [].forEach.call(root.querySelectorAll('[data-cw],[data-cwn]'),function(el){var r=el.getAttribute('data-cw'),n=el.getAttribute('data-cwn'),rs=el.getAttribute('data-rows');
-   var hot=!!on&&((rows&&r!=null&&rows.indexOf(r)>=0)||(nodes&&n!=null&&nodes.indexOf(n)>=0)||(rows&&rs&&rs.split(' ').some(function(x){return rows.indexOf(x)>=0})));el.classList.toggle('is-hot',hot)})}
- document.addEventListener('mouseover',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-clause-crosswalk');if(!root)return;
-  var row=ev.target.closest('.aq-clause-crosswalk__row'),node=ev.target.closest('.aq-clause-crosswalk__node');
-  if(row)set(root,[row.getAttribute('data-cw')],null);else if(node)set(root,node.getAttribute('data-rows').split(' '),[node.getAttribute('data-cwn')]);else set(root,null,null)});
- document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-clause-crosswalk');if(root&&!root.contains(ev.relatedTarget))set(root,null,null)});
 })();
 /* Look "clause-tabs" -> ClauseTabs (design-system/components/ClauseTabs): the terms as page one of a proposal held on a
    clipboard, each clause with a numbered tab on the page's edge, and a leader from every tab to what that clause

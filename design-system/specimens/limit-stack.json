@@ -184,9 +184,9 @@
    "page": "sys-pw",
    "slot": 0,
    "h": "Purified Water limits",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "68155a951e",
    "block": {
@@ -234,6 +234,59 @@
     ],
     "nav": "Limits",
     "intro": "Limits apply at each point of use; the skid outlet has its own guarantee. For critical, laboratory or boiler water, the skid is designed to the limit your standard names.",
+    "as": "gauges",
+    "look": "limit-stack",
+    "anchor": "limits"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 0,
+   "h": "Purified Water limits",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "3690247303",
+   "block": {
+    "type": "spec",
+    "h": "Purified Water limits",
+    "caption": "USP · Ph. Eur.",
+    "note": "Ph. Eur. 0008 as revised in 12.3, in force 1 July 2026. CFU: colony-forming units.",
+    "cols": [
+     "Parameter",
+     "Limit",
+     "Reference"
+    ],
+    "rows": [
+     {
+      "p": "Conductivity (USP)",
+      "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
+      "m": "USP <645>",
+      "hl": true
+     },
+     {
+      "p": "Conductivity (Ph. Eur.)",
+      "v": "≤ 5.1 µS/cm @ 25 °C",
+      "m": "Ph. Eur. 0008",
+      "hl": false
+     },
+     {
+      "p": "Total organic carbon (TOC)",
+      "v": "≤ 0.50 mg/L (500 ppb)",
+      "m": "USP <643>; Ph. Eur. 2.2.44",
+      "hl": false
+     },
+     {
+      "p": "Microbial action level",
+      "v": "≤ 100 CFU/mL",
+      "level": "action",
+      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+      "hl": false
+     }
+    ],
+    "nav": "Limits",
+    "intro": "Limits apply at each point of use. For critical, laboratory or boiler water, the skid is designed to the limit your standard names.",
     "as": "gauges",
     "look": "limit-stack",
     "anchor": "limits"

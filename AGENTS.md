@@ -16,8 +16,9 @@ Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` 
 | `staging` | Review before release. Only `dev` merges in. | https://aquemi-official.github.io/aquemi-web/staging/ |
 | `main` | Production, the public site. Only `staging` merges in. | https://aquemi-official.github.io/aquemi-web/ |
 
-- Work on `dev` (or a short branch merged into `dev`). Never commit straight to `staging` or `main`.
-- Promote a batch: merge `dev` into `staging`, review the staging copy, then merge `staging` into `main`. Fast-forward merges keep the three in step.
+- Work on `dev` (or a short branch merged into `dev`). Push to `dev` directly.
+- `main` and `staging` are protected on GitHub: no direct pushes (admins included), no force pushes, no deletion. They change only through a pull request whose design-system check (`check`) passes. No approval is required.
+- Promote a batch: open a pull request from `dev` into `staging` (`gh pr create --base staging --head dev`), merge it with a merge commit, review the staging copy, then do the same from `staging` into `main`. Use merge commits, not squash or rebase, so the branches keep a shared history.
 - The staging and dev copies leave out the page history (`versions.html`) and the image gallery (`inspiration.html`); those work on production only. Their draft bar names the copy.
 - `python tools/versions.py` lists commits on `main`, so the page history shows released versions.
 

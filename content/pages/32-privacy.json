@@ -1,0 +1,92 @@
+{
+ "id": "privacy",
+ "section": "Company",
+ "nav_label": "Privacy",
+ "title": "Privacy notice | Aquemi",
+ "meta": "What personal information Aquemi collects through this website and by email, why, who it is shared with, how long it is kept and how to access or correct it.",
+ "path": "/privacy/",
+ "eyebrow": "COMPANY · PRIVACY",
+ "headline": "Privacy notice",
+ "lead": "What we collect when you use this website or write to us, why we collect it, and what you can ask us to do with it. Last updated 4 November 2026.",
+ "primary_cta": "Email a privacy question",
+ "primary_cta_link": "mailto:hello@aquemi.com",
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "What we collect",
+   "body": [
+    "We collect only what you give us, and only what we need to answer you.",
+    "When you send a form or email us, we receive what you enter: your name, work email, company, role, phone number if you add one, the province or country of your site, your message and any files you attach. A job application adds your CV, the role you are applying for and your answers to the form. A subscription to technical notes adds your email address and the topics you choose.",
+    "We do not ask for sensitive personal information, and we ask you not to include it in messages or files."
+   ],
+   "nav": "What we collect",
+   "anchor": "collect"
+  },
+  {
+   "type": "prose",
+   "h": "Why we use it",
+   "body": [
+    "We use your information to reply to you and to do what you asked.",
+    "That means answering an enquiry, preparing a proposal, handling a service request or a visit, assessing a job application, or sending the technical notes you subscribed to. We use it for nothing else without asking you first, and we never sell it.",
+    "Every email we send you about technical notes has an unsubscribe link, as Canada's anti-spam legislation (CASL) requires."
+   ],
+   "nav": "Why we use it",
+   "anchor": "use"
+  },
+  {
+   "type": "prose",
+   "h": "This website",
+   "body": [
+    "This website sets no cookies and runs no analytics, advertising or tracking scripts.",
+    "To load faster, your browser keeps a copy of the site's pages and files on your device. That copy holds no personal information, and you can clear it in your browser settings. If you switch between the light and dark theme, the choice lasts only until you reload the page.",
+    "The site is hosted by GitHub, which may record visitors' internet addresses for security and operation under its own privacy statement."
+   ],
+   "nav": "This website",
+   "anchor": "website"
+  },
+  {
+   "type": "prose",
+   "h": "Who we share it with",
+   "body": [
+    "We share your information only with the service providers who help us run the website and our email, and only so they can do that work for us.",
+    "These providers may store or process information outside Canada, including in the United States, where it is subject to the laws of that country. We share information with anyone else only if you agree or the law requires it."
+   ],
+   "nav": "Sharing",
+   "anchor": "sharing"
+  },
+  {
+   "type": "prose",
+   "h": "How long we keep it",
+   "body": [
+    "We keep your information only as long as we need it for the reason you gave it to us, then delete it.",
+    "Files you attach to an enquiry are kept only as long as the enquiry needs them. Speculative job applications are kept for a limited period. Records that are part of a contract are kept as long as the contract and the law require. We protect what we keep with safeguards suited to how sensitive it is."
+   ],
+   "nav": "Retention",
+   "anchor": "retention"
+  },
+  {
+   "type": "prose",
+   "h": "Your choices and rights",
+   "body": [
+    "You can ask to see the personal information we hold about you, ask us to correct it, or withdraw your consent to its use.",
+    "Write to us at {hello@aquemi.com|mailto:hello@aquemi.com} and our privacy contact will reply. If you are not satisfied with our answer, you can complain to the Office of the Privacy Commissioner of Canada. Residents of Quebec can also contact the Commission d'accès à l'information du Québec.",
+    "If we change this notice, we update the date at the top of this page."
+   ],
+   "nav": "Your rights",
+   "anchor": "rights"
+  }
+ ],
+ "cta": {
+  "h": "Questions about your information?",
+  "body": "Email hello@aquemi.com. Our privacy contact replies in writing.",
+  "button": "Email us",
+  "link": "mailto:hello@aquemi.com"
+ },
+ "todo": [
+  "Pass 13 (owner, 2026-11-04): new page, the target of every privacy notice link (form notes on contact-proposal, contact-service, contact-locations, cmp-documentation, cmp-quality; careers; news sign-up), written as {Privacy notice|privacy}, and of the footer's Privacy link. Draft for counsel's review (PIPEDA; Quebec Law 25 where Quebec residents apply or enquire; CASL for technical-note emails; OQ-81) before launch.",
+  "Name the person accountable for privacy (PIPEDA principle 1; Law 25 requires the title and contact details of the person in charge of the protection of personal information to be published). Until then the page says 'our privacy contact' at hello@aquemi.com.",
+  "When the forms get a back end, name where submissions are stored (provider and country) in 'Who we share it with', and set the retention periods ('How long we keep it') to match the careers page's speculative-application period.",
+  "If analytics, cookies, embedded maps or videos are ever added, update 'This website' first.",
+  "CASL: every commercial email must carry the sender's mailing address. The news sign-up help names Ontario, Canada and hello@aquemi.com; a mailing address (a PO box works) is needed before the first technical-note email is sent."
+ ]
+}

@@ -85,19 +85,19 @@
    "rows": [
     {
      "p": "Quality system",
-     "v": "ISO 9001: [ISO 9001 status, registrar and expiry]. ISO 13485: [ISO 13485 status, registrar and expiry].",
+     "v": "ISO 9001 and ISO 13485: status on request.",
      "link": "cmp-quality#certification"
     },
     {
      "p": "Questionnaire and audit",
-     "v": "Your questionnaire completed; audit on [on-site audit notice, working days] notice.",
+     "v": "Your questionnaire completed; audit on reasonable notice.",
      "link": "cmp-quality#audit",
      "link_label": "Send your questionnaire",
      "intent": "Your questionnaire, completed"
     },
     {
      "p": "Quality agreement",
-     "v": "Your template, marked up within [quality agreement mark-up turnaround, working days]."
+     "v": "Your template, marked up within a time agreed with you."
     },
     {
      "p": "Documents and traceability",
@@ -111,18 +111,13 @@
      "link_label": "When you can read what"
     },
     {
-     "p": "Data integrity",
-     "v": "Audit trail and access control, clause by clause",
-     "link": "sys-monitoring#data-integrity"
-    },
-    {
      "p": "Clause-by-clause matrix",
      "v": "Each standard, with the document that proves it",
      "link": "compliance#map"
     },
     {
      "p": "Change notification",
-     "v": "Changes to parts, materials and software: [change notification to clients: scope and notice]."
+     "v": "Changes to parts, materials and software: notified as set in your quality agreement."
     },
     {
      "p": "Our own suppliers",
@@ -268,7 +263,7 @@
      "t": "Monitoring and controls",
      "icon": "conductivity",
      "d": "Conductivity and total organic carbon trended against your alert and action levels.",
-     "tag": "Audit trail",
+     "tag": "USP <643>",
      "link": "sys-monitoring"
     },
     {
@@ -303,10 +298,10 @@
     ],
     [
      "FDA",
-     "QMSR (21 CFR 820) since 2026, built on ISO 13485; Part 11",
+     "QMSR (21 CFR 820) since 2026, built on ISO 13485",
      {
-      "t": "Monitoring and controls",
-      "link": "sys-monitoring"
+      "t": "Our quality system",
+      "link": "cmp-quality"
      }
     ],
     [
@@ -366,7 +361,7 @@
     },
     {
      "q": "Is hospital reprocessing water the same grade as ours?",
-     "a": "No. Hospital reprocessing water is critical water under ANSI/AAMI ST108:2023, a different grade from Purified Water. Our hospital scope: [hospital water scope].",
+     "a": "No. Hospital reprocessing water is critical water under ANSI/AAMI ST108:2023, a different grade from Purified Water. Our hospital scope is confirmed when you enquire.",
      "link": "ind-hospital-lab#faq",
      "link_label": "Hospitals and laboratories"
     }
@@ -385,7 +380,7 @@
  ],
  "cta": {
   "h": "Send your devices and release limits",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I know my product, not my water spec|Medical devices",
@@ -395,7 +390,7 @@
    "Release limits and extraction volume, mL",
    "Washer fills per hour, L per fill"
   ],
-  "turnaround": "[scope review turnaround, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "Rinse water limits from your device limits",
    "The PW package to hold them",
@@ -411,12 +406,12 @@
   "PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it",
   "Point-of-use filters or ultrafiltration at the washer inlet (explainer; FD-21, 'point-of-use UF for device rinse'): whether the package supplies them; sys-pw lists ultrafiltration after deionization as an option",
   "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (IMD-71, IMD-70, IMD-72 in the library's sources/IMD.json); the QMSR took effect on 2 February 2026 (IMD-17); re-check at each new edition",
-  "Supplier quality block (DR-022): [on-site audit notice, working days] (R6; replaces the readiness date, which is a private launch gate), [quality agreement mark-up turnaround, working days] (FD-48) and [change notification to clients: scope and notice] (FD-48). At launch a row whose value is still a bracket drops (DR-004 class 2, DR-024 rule 6), except the quality system row: it is the first check a device QA head makes (desk Q5, DR-022), so it stays and FD-48 must set its status line before launch. Its links go to each answer's home, never a copy (DR-009): cmp-quality#certification, cmp-quality#audit (intent \"Your questionnaire, completed\"), cmp-quality#suppliers (what we require from suppliers), cmp-documentation#index, cmp-quality#access (label \"When you can read what\", 5 words; NDA spelled out, not abbreviated; pass 12 review F5), sys-monitoring#data-integrity, compliance#map, projects#verify",
+  "Supplier quality block (DR-022): [on-site audit notice, working days] (R6; replaces the readiness date, which is a private launch gate), [quality agreement mark-up turnaround, working days] (FD-48) and [change notification to clients: scope and notice] (FD-48). At launch a row whose value is still a bracket drops (DR-004 class 2, DR-024 rule 6), except the quality system row: it is the first check a device QA head makes (desk Q5, DR-022), so it stays and FD-48 must set its status line before launch. Its links go to each answer's home, never a copy (DR-009): cmp-quality#certification, cmp-quality#audit (intent \"Your questionnaire, completed\"), cmp-quality#suppliers (what we require from suppliers), cmp-documentation#index, cmp-quality#access (label \"When you can read what\", 5 words; NDA spelled out, not abbreviated; pass 12 review F5), compliance#map, projects#verify",
   "Router (DR-020 as amended): the dose-audit row carries the cut FAQ's answer (ISO 11737-1, ISO 11137-2); the drifting row lands on svc-upgrades#observation, labelled \"Out-of-trend results\"; the supplier row names what the reader checks rather than repeating the block intro (DR-009). Anchors on this page: start, supplier-quality, grades, rinse, systems, audits, faq (pass 12 adds start, rinse, systems, audits, faq; nothing outside links them yet)",
   "Scope line (DR-021 as amended): the lead names the package only; the exclusion lives in the first FAQ (\"Do we need WFI for our final rinse?\"), worded as an envelope with DR-013 rule 1's rating and stills (DR-021 rule 5)",
   "Pass 11 first-system path (SITE-PLAN; structure-and-sitemap § 4.5 entry links, pass 10 L8 retargeted): router row 5 \"A first PW system for a small plant\" now opens first-system (was industries#first-system)",
   "Pass 11 buyer asks (web/buyer-requirements-from-tenders.md § 1 and § 10, journeys P1 and P4): FAQ \"What should our URS ask of a rinse water supplier?\" gives the URS shape (numbered rows, each marked must-have or preference as on urs-guide#priority, DR-011 rule 3; L-07-1, L-G2-1) and the three-state answer with its document (L-07-8, L-15-17, L-13-1); links urs-guide. Evidence gap: the corpus holds no device maker's water URS, so the device rows (limits at the washer inlet) come from this page's grade table, not from the corpus",
-  "Proof at the point of doubt (web/proof-and-seriousness.md § 5.2, DR-004 rule 1, DR-022, DR-028): supplier quality row \"Supplier evidence\" (questionnaire, audit, FAT witness, specimen documents, and what you receive from each; DR-028 rule 1 wording) -> projects#verify, label \"How to qualify us\" (NS § 1.1). Copy only; it states no reference, count or certificate and never answers by absence. Spec rows 10 (pass 12 adds \"What you can read\" after documents)",
+  "Proof at the point of doubt (web/proof-and-seriousness.md § 5.2, DR-004 rule 1, DR-022, DR-028): supplier quality row \"Supplier evidence\" (questionnaire, audit, FAT witness, specimen documents, and what you receive from each; DR-028 rule 1 wording) -> projects#verify, label \"How to qualify us\" (NS § 1.1). Copy only; it states no reference, count or certificate and never answers by absence. Spec rows 9 (pass 12 adds \"What you can read\" after documents)",
   "Final round, pass 11: lead opens with what the water does (final rinse before packaging) and the reader's duty, then the package (L-BWT-2, L-BWT-3, L-BWT-25; BWT study § 9 rank 1). PVC pretreatment left to the FAQ to keep the lead short. Pass 12 review F2: lead cut to 29 words (SITE-PLAN § 1.4.1, lead <= 30) and names the package \"ambient polypropylene\" (DR-021 amended form), the process engineer's first-screen signal of no hot sanitization",
   "Pass 12 (SITE-PLAN ind-meddevice; IB § 2.6 and critic A G2 row; DR-027 rule 9; FD-59): the rinse explainer intro names device types for recognition (implants, surgical instruments, catheters and tubing, ophthalmic devices; industries/medical-devices.md Scope) and the other uses of the same loop: IVD reagent and ophthalmic solution preparation (IMD-21), passivation rinses and steam sterilizer feed (both inferences; to the sterilizer maker's specification; never as clean-steam generator feed, pass 12 review F3). Owner confirms each use ([confirm], one bracket for the list); an unconfirmed use drops from the sentence. Sterilizer feed stays off any row that sizes PW as feed to a customer's still or clean-steam generator (DR-002 rule 7)",
   "Pass 12 FAQ openings (SITE-PLAN § 1.4: answers open with yes, no or the number): WFI answer opens \"Not usually\", implant answer \"No, not on its own\", hospital grade answer \"No.\". Related: ind-hospital-lab replaces compliance (compliance#map stays linked from the supplier quality block)"

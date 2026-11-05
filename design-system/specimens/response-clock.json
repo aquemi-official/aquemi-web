@@ -127,9 +127,9 @@
    "page": "svc-service",
    "slot": 5,
    "h": "When something goes wrong",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "155128424c",
    "block": {
@@ -150,6 +150,88 @@
      {
       "t": "Remote diagnosis",
       "d": "Trends and alarms reviewed within [remote response time, hours]; operators guided to a safe state.",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "On site",
+      "d": "A technician with the likely parts, working under your site’s permits; water back within limits.",
+      "link": "cmp-documentation#safety"
+     },
+     {
+      "t": "Report",
+      "d": "Root cause, parts and lot numbers, for your deviation."
+     }
+    ]
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 5,
+   "h": "When something goes wrong",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "aac6d8c853",
+   "block": {
+    "type": "steps",
+    "look": "response-clock",
+    "nav": "Faults",
+    "anchor": "response",
+    "h": "When something goes wrong",
+    "items": [
+     {
+      "t": "Call",
+      "d": "[service phone number], [service phone hours]. Severity 1: always call. In warranty, call the same line with the serial number."
+     },
+     {
+      "t": "Triage",
+      "d": "We confirm severity and start your plan’s response clock. It stops at the event your plan names; a missed time earns the remedy set out in your plan."
+     },
+     {
+      "t": "Remote diagnosis",
+      "d": "Trends and alarms reviewed within the response time set in your plan; operators guided to a safe state.",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "On site",
+      "d": "A technician with the likely parts, working under your site’s permits; water back within limits.",
+      "link": "cmp-documentation#safety"
+     },
+     {
+      "t": "Report",
+      "d": "Root cause, parts and lot numbers, for your deviation."
+     }
+    ]
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 5,
+   "h": "When something goes wrong",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "bfd39bfedb",
+   "block": {
+    "type": "steps",
+    "look": "response-clock",
+    "nav": "Faults",
+    "anchor": "response",
+    "h": "When something goes wrong",
+    "items": [
+     {
+      "t": "Service request",
+      "d": "Send a service request and choose severity 1 if production has stopped. In warranty, give the serial number."
+     },
+     {
+      "t": "Triage",
+      "d": "We confirm severity and start your plan’s response clock. It stops at the event your plan names; a missed time earns the remedy set out in your plan."
+     },
+     {
+      "t": "Remote diagnosis",
+      "d": "Trends and alarms reviewed within the response time set in your plan; operators guided to a safe state.",
       "link": "sys-monitoring"
      },
      {

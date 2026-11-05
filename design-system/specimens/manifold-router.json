@@ -387,9 +387,9 @@
    "page": "home",
    "slot": 1,
    "h": "Start from where your project is",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "a17ee41c69",
    "block": {
@@ -653,6 +653,192 @@
     ],
     "look": "manifold-router",
     "panel": "compact"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 1,
+   "h": "Start from where your project is",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "8275f07b09",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "anchor": "start",
+    "h": "Start from where your project is",
+    "cols": [
+     "Your situation",
+     "Send us",
+     "What comes back",
+     "Where to start"
+    ],
+    "rows": [
+     [
+      "Planning your first water system",
+      "What you make, and roughly how much water a day",
+      "The grade each step needs, the package and how to estimate cost",
+      {
+       "t": "Your first system and its cost",
+       "link": "first-system"
+      }
+     ],
+     [
+      "Not drugs or devices: hospitals, labs, personal care, food or industrial",
+      "What the water is for, and the limit you work to",
+      "Where the water goes in your industry, and who sets its limit",
+      {
+       "t": "Where our water goes",
+       "link": "industries#map"
+      }
+     ],
+     [
+      "Writing a URS that permits polypropylene",
+      "Nothing yet; your draft when you want it checked",
+      "The order buyers use, and clauses that keep the design open",
+      {
+       "t": "Writing your URS",
+       "link": "urs-guide"
+      }
+     ],
+     [
+      "A URS, approved or in draft",
+      "Your URS and feed water analysis",
+      "A proposal, or a gap review of a draft",
+      {
+       "t": "Send your URS",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft"
+      }
+     ],
+     [
+      "Comparing proposals or qualifying suppliers",
+      "Your bid grid or questionnaire, if you use one",
+      {
+       "t": "The record each process leaves, and how to audit it",
+       "link": "cmp-quality"
+      },
+      {
+       "t": "Buying from Aquemi",
+       "link": "buying#compare"
+      }
+     ],
+     [
+      "Fixing an inspection finding or a water bottleneck",
+      "What to change, or the observation",
+      "Options with their downtime and the requalification each triggers",
+      {
+       "t": "Upgrades and water observations",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Production stopped or water out of specification",
+      "A call to [service phone number], [service phone hours]",
+      "On site within the time set in your plan, in an area agreed per project",
+      {
+       "t": "Service request",
+       "link": "contact-service",
+       "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 1,
+   "h": "Start from where your project is",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "7733f74f89",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "anchor": "start",
+    "h": "Start from where your project is",
+    "cols": [
+     "Your situation",
+     "Send us",
+     "What comes back",
+     "Where to start"
+    ],
+    "rows": [
+     [
+      "Planning your first water system",
+      "What you make, and roughly how much water a day",
+      "The grade each step needs, the package and how to estimate cost",
+      {
+       "t": "Your first system and its cost",
+       "link": "first-system"
+      }
+     ],
+     [
+      "Not drugs or devices: hospitals, labs, personal care, food or industrial",
+      "What the water is for, and the limit you work to",
+      "Where the water goes in your industry, and who sets its limit",
+      {
+       "t": "Where our water goes",
+       "link": "industries#map"
+      }
+     ],
+     [
+      "Writing a URS that permits polypropylene",
+      "Nothing yet; your draft when you want it checked",
+      "The order buyers use, and clauses that keep the design open",
+      {
+       "t": "Writing your URS",
+       "link": "urs-guide"
+      }
+     ],
+     [
+      "A URS, approved or in draft",
+      "Your URS and feed water analysis",
+      "A proposal, or a gap review of a draft",
+      {
+       "t": "Send your URS",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft"
+      }
+     ],
+     [
+      "Comparing proposals or qualifying suppliers",
+      "Your bid grid or questionnaire, if you use one",
+      {
+       "t": "The record each process leaves, and how to audit it",
+       "link": "cmp-quality"
+      },
+      {
+       "t": "Buying from Aquemi",
+       "link": "buying#compare"
+      }
+     ],
+     [
+      "Fixing an inspection finding or a water bottleneck",
+      "What to change, or the observation",
+      "Options with their downtime and the requalification each triggers",
+      {
+       "t": "Upgrades and water observations",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Production stopped or water out of specification",
+      "A service request marked severity 1",
+      "On site within the time set in your plan, in an area agreed per project",
+      {
+       "t": "Service request",
+       "link": "contact-service",
+       "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
    }
   }
  ]

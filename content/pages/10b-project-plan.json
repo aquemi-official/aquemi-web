@@ -7,7 +7,7 @@
  "path": "/services/how-a-project-runs/",
  "eyebrow": "PROJECT PLAN · EU GMP ANNEX 15 · WHO TRS 1033",
  "headline": "How a project runs, from order to water in use",
- "lead": "Plan holds and qualification time for your polypropylene Purified Water package from one schedule, with durations and who signs. Your contact from order to handover: [named project lead role].",
+ "lead": "Plan holds and qualification time for your polypropylene Purified Water package from one schedule, with durations and who signs. Your contact from order to handover: a project lead named in your order.",
  "primary_cta": "Talk to an engineer",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
@@ -31,7 +31,7 @@
    "anchor": "stages",
    "nav": "Stages",
    "h": "Stages, what each leaves, and who signs",
-   "intro": "Total: [order to water in use, weeks] from [lead time start event], plus your review time. Replacing a system? We plan the cutover; production stops only [planned shutdown, hours].",
+   "intro": "Total: set in your project schedule, counted from the start event stated in your proposal, plus your review time. Each stage's duration is in the same schedule. Replacing a system? We plan the cutover; production stops only for a planned shutdown agreed with you.",
    "items": [
     {
      "t": "Your approvals, before order",
@@ -39,37 +39,37 @@
      "hold": "You"
     },
     {
-     "t": "Design to DQ, [design to DQ, weeks]",
+     "t": "Design to DQ",
      "d": "Basis of design, piping and instrumentation diagrams and functional specification. Under good manufacturing practice (GMP), design qualification (DQ) closes this stage.",
      "hold": "You, and your quality unit for DQ under GMP"
     },
     {
-     "t": "Drawing approval, [submittal review clock, working days]",
-     "d": "You review drawings for fabrication. Lead time to delivery: [lead time from order, weeks] from order, [lead time from drawing approval, weeks] from approval.",
+     "t": "Drawing approval",
+     "d": "You review drawings for fabrication, in a review period agreed with you. Lead time to delivery, from order and from approval, is stated in your proposal.",
      "hold": "You or your engineer"
     },
     {
-     "t": "Fabrication, [approved design to FAT, weeks]",
-     "d": "Polypropylene (PP) skids built in our shop. Leaves [PP material certificates] and [PP joint records kept].",
+     "t": "Fabrication",
+     "d": "Polypropylene (PP) skids built in our shop. Leaves material certificates and joint records as set out in your proposal.",
      "link": "svc-fabrication"
     },
     {
-     "t": "Factory acceptance test (FAT), [FAT duration, days]",
+     "t": "Factory acceptance test (FAT)",
      "d": "With water, to the protocol you or your quality unit approved. Leaves raw data, deviation log, report and release to ship.",
      "hold": "Both parties",
      "link": "svc-fat-sat"
     },
     {
-     "t": "Shipping and storage, [shipping time, weeks]",
-     "d": "Drained after FAT, then shipped. Kept until start-up under [storage conditions before start-up]."
+     "t": "Shipping and storage",
+     "d": "Drained after FAT, then shipped. Kept until start-up under conditions set out in your proposal."
     },
     {
-     "t": "Installation and site acceptance tests (SAT), [installation and SAT, days]",
-     "d": "Installation by [installation scope]; site joints and pressure test by [site joints, by whom]. Tie-in during the planned shutdown. Leaves the SAT report.",
+     "t": "Installation and site acceptance tests (SAT)",
+     "d": "Installation to the scope set out in your proposal; site joints and pressure test by the party named there. Tie-in during the planned shutdown. Leaves the SAT report.",
      "hold": "You, or your quality unit under GMP"
     },
     {
-     "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+     "t": "Installation and operational qualification (IQ, OQ)",
      "d": "To protocols your quality unit approves; leaves reports and draft procedures. Without GMP: commissioning and an acceptance test against your specification.",
      "hold": "Your quality unit, or you without GMP",
      "link": "svc-cq"
@@ -90,7 +90,7 @@
    "anchor": "who",
    "nav": "Who does what",
    "h": "Who does what, and what is ready before installation",
-   "intro": "Your proposal marks every task and hand-off: by us, supplied only, or by you. Installation: [installation scope].",
+   "intro": "Your proposal marks every task and hand-off: by us, supplied only, or by you. Installation follows the scope set out in your proposal.",
    "cols": [
     "Who, or which hand-off",
     "Their part",
@@ -119,13 +119,13 @@
      "Your contractor",
      "Builds the room and brings utilities to the battery limits.",
      {
-      "t": "Power, feed water and drain at the battery limits: [standard battery limits, typical scope]",
+      "t": "Power, feed water and drain at the battery limits, set per project",
       "link": "systems#site"
      }
     ],
     [
      "Aquemi",
-     "Designs, builds and tests the package. Drafts each protocol, executes it through [executing staff: own engineers or named partner] and writes the report.",
+     "Designs, builds and tests the package. Drafts each protocol, executes it through engineers named in your proposal and writes the report.",
      {
       "t": "Your site readiness checklist, sent before delivery [confirm]",
       "link": "project-plan#notice"
@@ -133,17 +133,17 @@
     ],
     [
      "Mechanical hand-off: piping and tie-ins",
-     "[mechanical hand-off: by us, supplied only, by you]",
+     "Set out in your proposal",
      "Tie-in points agreed on the drawings"
     ],
     [
      "Electrical hand-off: power and wiring",
-     "[electrical hand-off: by us, supplied only, by you]",
+     "Set out in your proposal",
      "Supply at the battery limit, sized on the drawings"
     ],
     [
      "Controls hand-off: signals and alarms",
-     "[controls hand-off: by us, supplied only, by you]",
+     "Set out in your proposal",
      "Signals to your plant or building system agreed on the drawings"
     ]
    ],
@@ -163,38 +163,38 @@
    "rows": [
     [
      "FAT protocol",
-     "[protocol issue before FAT, weeks] before FAT",
+     "Ahead of FAT, on a date agreed with you",
      "Draft protocol for your approval; your team may add test cases"
     ],
     [
      "FAT witness",
-     "[FAT witness notice, working days] before FAT",
+     "Reasonable notice before FAT",
      "Date, agenda and who attends"
     ],
     [
      "Site readiness checklist",
-     "[site checklist before delivery, weeks] before delivery",
+     "Ahead of delivery, on a date agreed with you",
      "Utilities, access and floor your site must have ready [confirm]"
     ],
     [
      "Shipping",
-     "[shipping notice, working days] before dispatch",
+     "Ahead of dispatch, on a date agreed with you",
      "Delivery date, weights, lifting points and offloading needs"
     ],
     [
      "Commissioning plan",
-     "[commissioning plan notice, working days] before start-up",
+     "Ahead of start-up, on a date agreed with you",
      "Schedule, first water, off-specification water to drain, who attends"
     ],
     [
      "SAT, IQ and OQ protocols, or acceptance test",
-     "[protocol issue before IQ/OQ, weeks] before testing",
+     "Ahead of testing, on a date agreed with you",
      "For your approval, or your quality unit's under GMP; nothing runs before it is signed"
     ],
     [
      "Training syllabus",
-     "[training syllabus notice, weeks] before training",
-     "Topics and hours for your approval: [training hours and audiences]"
+     "Ahead of training, on a date agreed with you",
+     "Topics for your approval, with hours and audiences agreed with you"
     ]
    ],
    "look": "response-lanes"
@@ -215,20 +215,20 @@
     [
      "You change an approved drawing or specification",
      "A change request with price, schedule effect and revised drawings",
-     "[change request turnaround, working days]",
-     "[change pricing basis]"
+     "Agreed with you per request",
+     "Quoted in the change request"
     ],
     [
      "Feed water or site data differ from the design basis",
      "A change request, once we have checked the new data with you",
-     "[change request turnaround, working days]",
-     "[change pricing basis]"
+     "Agreed with you per request",
+     "Quoted in the change request"
     ],
     [
      "We find an error in our own design",
      "Corrected drawings for your approval again",
-     "[design correction turnaround, working days]",
-     "[design gap warranty terms]"
+     "Agreed with you per correction",
+     "Set out in your proposal"
     ]
    ],
    "look": "return-slips"
@@ -248,18 +248,18 @@
     {
      "p": "Contacts",
      "v": "From order to handover",
-     "m": "[named project lead role] and your project manager, named in the order",
+     "m": "A project lead and your project manager, both named in the order",
      "side": "limit"
     },
     {
      "p": "Kickoff meeting",
-     "v": "[kickoff after order, working days] after order",
+     "v": "On a date agreed with you",
      "m": "Schedule, holds, contacts and the document list agreed",
      "side": "package"
     },
     {
      "p": "Document review",
-     "v": "[submittal review clock, working days] per issue",
+     "v": "Review period agreed with you, per issue",
      "m": "The schedule assumes this clock; a longer review moves later dates",
      "side": "site"
     },
@@ -281,25 +281,25 @@
     },
     {
      "p": "Status report",
-     "v": "[status report frequency]",
+     "v": "Agreed with you",
      "m": "Progress against the schedule, open holds, risks and changes",
      "side": "package"
     },
     {
      "p": "Meeting minutes",
-     "v": "[minutes issue after meeting, working days] after each meeting",
+     "v": "Issued after each meeting",
      "m": "Actions with owner and date, for your correction",
      "side": "package"
     },
     {
      "p": "Design reviews",
-     "v": "[design review points]",
+     "v": "Agreed with you in the schedule",
      "m": "Your engineer attends; your quality unit too, under GMP",
      "side": "site"
     },
     {
      "p": "As-built drawings",
-     "v": "[as-built drawings after SAT, working days] after SAT",
+     "v": "On a date agreed with you",
      "m": "Marked as built; valves, gauges and sample points tagged as drawn [confirm]",
      "side": "package"
     }
@@ -329,11 +329,11 @@
     },
     {
      "q": "What if our site is not ready on time?",
-     "a": "Tell us as soon as you know. We agree a new delivery date and where the skids wait, under [storage conditions before start-up]. Storage and extra visits cost [site delay and storage charges]. The readiness checklist reaches you [site checklist before delivery, weeks] before delivery [confirm]."
+     "a": "Tell us as soon as you know. We agree a new delivery date and where the skids wait, under conditions set out in your proposal. Storage and extra visits cost what your proposal sets out. The readiness checklist reaches you ahead of delivery, on a date agreed with you [confirm]."
     },
     {
      "q": "Can the skids wait through a Canadian winter before start-up?",
-     "a": "Only under [storage conditions before start-up]. Frozen or dried-out reverse osmosis membranes may need replacing before start-up. Plan indoor storage if delivery comes before your room is ready."
+     "a": "Only under conditions set out in your proposal. Frozen or dried-out reverse osmosis membranes may need replacing before start-up. Plan indoor storage if delivery comes before your room is ready."
     },
     {
      "q": "Why a full FAT before IQ and OQ?",
@@ -343,7 +343,7 @@
     },
     {
      "q": "What do we pay at each stage?",
-     "a": "Payment follows events, not dates: [milestone structure]. The terms are on Buying from Aquemi.",
+     "a": "Payment follows events, not dates, through milestones set out in your proposal. The terms are on Buying from Aquemi.",
      "link": "buying#terms",
      "link_label": "See payment terms"
     }
@@ -362,7 +362,7 @@
  ],
  "cta": {
   "h": "Tell us your target date for water in use",
-  "body": "An engineer works back from it to your order date and holds. Cost: [fit check cost or free].",
+  "body": "An engineer works back from it to your order date and holds. Cost: quoted in your proposal.",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
@@ -372,7 +372,7 @@
    "New room, or the system you replace and its shutdown windows",
    "Your approval steps before order"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "A schedule worked back from your date",
    "Your holds and review time",

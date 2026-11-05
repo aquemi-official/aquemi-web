@@ -85,9 +85,9 @@
    "page": "svc-fat-sat",
    "slot": 0,
    "h": "What FAT proves, what SAT proves",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "0bfa85bc90",
    "block": {
@@ -136,6 +136,172 @@
      [
       "Data integrity",
       "Roles, audit trail, time sync, backup and restore",
+      "The same on the network, with your accounts and time server"
+     ],
+     [
+      "Piping and instrumentation diagram (P&ID) walkdown",
+      "Every line, valve and tag; skid slopes and dead legs",
+      "Field piping, loop slopes, low points, branch lengths"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "tests",
+    "conclusion": [
+     "Reuse in IQ/OQ",
+     "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
+     "Feed water, utilities and field piping: proven on site only"
+    ],
+    "look": "versus-spread",
+    "row_parts": [
+     "panel valve",
+     "util loop",
+     "skid tank loop pou",
+     "ro",
+     "inst pou",
+     "inst panel",
+     "panel",
+     "skid pipe loop pou"
+    ]
+   }
+  },
+  {
+   "page": "svc-fat-sat",
+   "slot": 0,
+   "h": "What FAT proves, what SAT proves",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "634786bba6",
+   "block": {
+    "type": "table",
+    "as": "versus",
+    "nav": "FAT and SAT",
+    "anchor": "versus",
+    "h": "What FAT proves, what SAT proves",
+    "intro": "Under GMP, FAT results executed to your approved protocol can be leveraged at site. Not under GMP: the same wet run proves the limit your process names.",
+    "cols": [
+     "Test",
+     "FAT, our test bay",
+     "SAT, your site"
+    ],
+    "rows": [
+     [
+      "Sequences and interlocks",
+      "Every sequence, alarm, interlock and divert, restart after power loss included",
+      "Critical alarms, interlocks and divert on your utilities and water"
+     ],
+     [
+      "Utilities and loop",
+      "Not possible: the skids run on our utilities",
+      "Power, drains, air, any heating or cooling; loop hydraulics at peak demand"
+     ],
+     [
+      "Sanitization",
+      "Full [PP loop sanitization method] cycle, residual tested at the end",
+      "Full cycle on the installed loop, coldest point of use included"
+     ],
+     [
+      "Reverse osmosis (RO) with electrodeionization (EDI) or deionization (DI)",
+      "Flow, recovery and outlet quality on our feed water",
+      "The same on your feed water, in the season you are in"
+     ],
+     [
+      "Outlet water limit",
+      "The limit you name: USP <645> and <643>, Ph. Eur. 0008, AAMI ST108:2023 critical water, or your equipment maker's specification",
+      "The same limit on your feed water, at the outlet and at any points of use"
+     ],
+     [
+      "Instruments and I/O",
+      "Every I/O point; critical instruments against a calibrated reference",
+      "Points to your control and monitoring systems; critical instruments re-checked"
+     ],
+     [
+      "Access and data",
+      "User access levels, time sync, backup and restore",
+      "The same on the network, with your accounts and time server"
+     ],
+     [
+      "Piping and instrumentation diagram (P&ID) walkdown",
+      "Every line, valve and tag; skid slopes and dead legs",
+      "Field piping, loop slopes, low points, branch lengths"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "tests",
+    "conclusion": [
+     "Reuse in IQ/OQ",
+     "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
+     "Feed water, utilities and field piping: proven on site only"
+    ],
+    "look": "versus-spread",
+    "row_parts": [
+     "panel valve",
+     "util loop",
+     "skid tank loop pou",
+     "ro",
+     "inst pou",
+     "inst panel",
+     "panel",
+     "skid pipe loop pou"
+    ]
+   }
+  },
+  {
+   "page": "svc-fat-sat",
+   "slot": 0,
+   "h": "What FAT proves, what SAT proves",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "e77b455da1",
+   "block": {
+    "type": "table",
+    "as": "versus",
+    "nav": "FAT and SAT",
+    "anchor": "versus",
+    "h": "What FAT proves, what SAT proves",
+    "intro": "Under GMP, FAT results executed to your approved protocol can be leveraged at site. Not under GMP: the same wet run proves the limit your process names.",
+    "cols": [
+     "Test",
+     "FAT, our test bay",
+     "SAT, your site"
+    ],
+    "rows": [
+     [
+      "Sequences and interlocks",
+      "Every sequence, alarm, interlock and divert, restart after power loss included",
+      "Critical alarms, interlocks and divert on your utilities and water"
+     ],
+     [
+      "Utilities and loop",
+      "Not possible: the skids run on our utilities",
+      "Power, drains, air, any heating or cooling; loop hydraulics at peak demand"
+     ],
+     [
+      "Sanitization",
+      "Full sanitization cycle by a chemical method set per project, residual tested at the end",
+      "Full cycle on the installed loop, coldest point of use included"
+     ],
+     [
+      "Reverse osmosis (RO) with electrodeionization (EDI) or deionization (DI)",
+      "Flow, recovery and outlet quality on our feed water",
+      "The same on your feed water, in the season you are in"
+     ],
+     [
+      "Outlet water limit",
+      "The limit you name: USP <645> and <643>, Ph. Eur. 0008, AAMI ST108:2023 critical water, or your equipment maker's specification",
+      "The same limit on your feed water, at the outlet and at any points of use"
+     ],
+     [
+      "Instruments and I/O",
+      "Every I/O point; critical instruments against a calibrated reference",
+      "Points to your control and monitoring systems; critical instruments re-checked"
+     ],
+     [
+      "Access and data",
+      "User access levels, time sync, backup and restore",
       "The same on the network, with your accounts and time server"
      ],
      [

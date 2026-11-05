@@ -21,42 +21,42 @@
    "items": [
     {
      "t": "Oral solid dose site",
-     "d": "Granulation water and equipment final rinse. [reference capacity, L/h]. Pretreatment, reverse osmosis (RO), electrodeionization (EDI), tank and loop; [PP loop sanitization method]. Qualification (IQ/OQ/PQ).",
+     "d": "Granulation water and equipment final rinse. Pretreatment, reverse osmosis (RO), electrodeionization (EDI), tank and loop; sanitized by a chemical method set per project. Qualification (IQ/OQ/PQ).",
      "icon": "ro-membrane",
      "tag": "Design basis",
      "link": "ind-pharma"
     },
     {
      "t": "Spirits proofing and process rinse",
-     "d": "Proofing water and precision rinse, to the limit your process sets. [reference capacity, L/h]. [configurations offered for this use]. Commissioning and acceptance.",
+     "d": "Proofing water and precision rinse, to the limit your process sets. Configuration confirmed when you enquire. Commissioning and acceptance.",
      "icon": "ro-membrane",
      "tag": "Design basis",
      "link": "ind-process"
     },
     {
      "t": "Medical device final rinse",
-     "d": "Washer final rinse to your written endotoxin limit. [reference capacity, L/h]. Pretreatment, RO, EDI, tank and loop; [PP loop sanitization method]. IQ/OQ/PQ.",
+     "d": "Washer final rinse to your written endotoxin limit. Pretreatment, RO, EDI, tank and loop; sanitized by a chemical method set per project. IQ/OQ/PQ.",
      "icon": "valve",
      "tag": "Design basis",
      "link": "ind-meddevice"
     },
     {
      "t": "Contract manufacturing multi-product loop",
-     "d": "One loop feeding several suites and client programs. [reference capacity, L/h]. Pretreatment, RO, EDI, tank and loop; [PP loop sanitization method]. IQ/OQ/PQ.",
+     "d": "One loop feeding several suites and client programs. Pretreatment, RO, EDI, tank and loop; sanitized by a chemical method set per project. IQ/OQ/PQ.",
      "icon": "conductivity",
      "tag": "Design basis",
      "link": "ind-cdmo"
     },
     {
      "t": "Cosmetics batching and filler rinse",
-     "d": "Cream water phase, filler rinse. [reference capacity, L/h]. [configurations offered for this use]; [PP loop sanitization method]. Commissioning and acceptance; IQ/OQ/PQ for over-the-counter drugs.",
+     "d": "Cream water phase, filler rinse. Configuration confirmed when you enquire; sanitized by a chemical method set per project. Commissioning and acceptance; IQ/OQ/PQ for over-the-counter drugs.",
      "icon": "loop",
      "tag": "Design basis",
      "link": "ind-personal-care"
     },
     {
      "t": "Laboratory building central loop",
-     "d": "Central loop designed to ASTM D1193-24 Type II or III. [reference capacity, L/h]. [configurations offered for this use]; [PP loop sanitization method]. Commissioning and acceptance.",
+     "d": "Central loop designed to ASTM D1193-24 Type II or III. Configuration confirmed when you enquire; sanitized by a chemical method set per project. Commissioning and acceptance.",
      "icon": "conductivity",
      "tag": "Design basis",
      "link": "ind-hospital-lab",
@@ -177,17 +177,17 @@
       "intent": "Not sure yet: talk to an engineer"
      },
      "A written answer from that engineer",
-     "[proposal response time, working days]"
+     "Confirmed when you enquire"
     ],
     [
-     "How we join and trace PP parts, in [shop location, city and province]",
+     "How we join and trace PP parts, in Ontario, Canada",
      {
       "t": "Shop visit",
       "link": "contact-locations#visit",
       "intent": "Shop tour before shortlisting"
      },
      "A walk through the shop and test bay, by appointment",
-     "[shop visit notice, working days] notice"
+     "Reasonable notice"
     ],
     [
      "What your turnover package will contain",
@@ -197,7 +197,7 @@
       "intent": "Turnover package index"
      },
      "The turnover package index and specimen documents",
-     "[specimen package response time, working days]"
+     "Confirmed when you enquire"
     ],
     [
      "How we lay out and document a design",
@@ -207,7 +207,7 @@
       "intent": "Not sure yet: talk to an engineer"
      },
      "A specimen piping and instrumentation diagram (P&ID) and 3D layout, labelled as a specimen",
-     "[specimen design set response time, working days]"
+     "Confirmed when you enquire"
     ],
     [
      "How we test a system before it ships",
@@ -217,7 +217,7 @@
       "intent": "FAT protocol: contents and test cases"
      },
      "Our factory acceptance test (FAT) protocol template, labelled as a specimen",
-     "[specimen package response time, working days]"
+     "Confirmed when you enquire"
     ],
     [
      "That our quality system works",
@@ -227,7 +227,7 @@
       "intent": "On-site supplier audit"
      },
      "An audit of our quality system, remote or on site",
-     "[on-site audit notice, working days] notice"
+     "Reasonable notice"
     ],
     [
      "That we read your user requirement specification (URS) line by line",
@@ -237,7 +237,7 @@
       "intent": "I have a URS or a draft|Compliance matrix"
      },
      "A compliance matrix answering each URS line",
-     "[compliance matrix response time, working days]"
+     "Confirmed when you enquire"
     ],
     [
      "Your system's alarms, interlocks and controls, before it ships",
@@ -247,7 +247,7 @@
       "intent": "Witness the FAT on our project"
      },
      "Your team at the FAT, testing alarms and interlocks",
-     "[FAT witness notice, working days] notice"
+     "Reasonable notice"
     ]
    ],
    "look": "check-ledger",
@@ -260,7 +260,7 @@
    "items": [
     {
      "q": "Is the technology proven?",
-     "a": "Yes. The parts are standard: [membranes and instruments bought from their makers]. Membranes, electrodeionization (EDI) modules and resin arrive with makers' certificates and serial or lot numbers. Our work is the design, the joints and the tests; each leaves a record you can check.",
+     "a": "Yes. The parts are standard: membranes and instruments come from their makers. Membranes, electrodeionization (EDI) modules and resin arrive with makers' certificates and serial or lot numbers. Our work is the design, the joints and the tests; each leaves a record you can check.",
      "link": "cmp-quality#suppliers",
      "link_label": "See our supplier requirements"
     },
@@ -290,7 +290,7 @@
  ],
  "cta": {
   "h": "Ask the engineer who would lead your project",
-  "body": "Tell us what you make, your demand and what your supplier approval asks for. An engineer replies in writing. Cost: [fit check cost or free].",
+  "body": "Tell us what you make, your demand and what your supplier approval asks for. An engineer replies in writing. Cost: quoted in your proposal.",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
@@ -306,7 +306,7 @@
    "A configuration sized to your demand",
    "Dates for the checks you choose"
   ],
-  "turnaround": "[proposal response time, working days]"
+  "turnaround": "Confirmed when you enquire"
  },
  "todo": [
   "Pass 12 (FD-59, FD-60, R5; DR-028; ops/pass12/SITE-PLAN.md projects; newness-sweep 2.1): page titled Applications (id, path and the verify anchor kept); typical configurations and the industry index lead; the record anatomy and the qualification ledger follow. Every card is a design basis (tag 'Design basis', heading 'Typical configurations · design basis'; DR-028 rule 5), never presented as a client installation (CSL-03 TC-D19, TC-D21)",
