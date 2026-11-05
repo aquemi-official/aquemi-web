@@ -923,6 +923,23 @@ function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],R=(f
  return '<figure class="aq-hero-scene aq-hero-scene--matrix" aria-hidden="true"><div class="aq-hero-scene__mx">'+(f.title?'<p class="aq-hero-scene__mx-h">'+tx(f.title)+'</p>':'')+
   '<div class="aq-hero-scene__mx-grid">'+head+rows+'</div></div><div class="aq-hero-scene__inset">'+svg+'</div></figure>'}
 
+/* ---------- edition-timeline (compliance, pass 13) ---------- */
+/* How a standard that changes mid-project is handled, as a ruled sheet: f.title, then f.steps ([{t, d}], three to five)
+   as numbered stations on one flow line. A dashed branch, labelled f.branch, leaves the line at step f.fork and rejoins
+   it at step f.join: the new edition runs beside the project and enters it only at the join (your approval). Desktop
+   draws the line across, phones down the left with the branch on the right. HTML and CSS only, token colours.
+   Decoration (aria-hidden): the headline, lead and the page's edition FAQ carry the meaning. Replaces the retired
+   compliance-matrix scene on the compliance page (its rows kept in the page's todo). */
+function wHeroEdition(p,f){var S=(f.steps||[]).slice(0,5),n=S.length;if(n<3)return '';
+ var fk=Math.min(Math.max(+f.fork||2,1),n-1),jn=Math.min(Math.max(+f.join||n,fk+1),n);
+ var li=S.map(function(x,i){var k=i+1;return '<li class="aq-hero-scene__ed-step'+(k===fk?' is-fork':'')+(k===jn?' is-join':'')+'">'
+  +'<span class="aq-hero-scene__ed-dot"></span><span class="aq-hero-scene__ed-n">'+hsN(k)+'</span>'
+  +'<span class="aq-hero-scene__ed-t">'+tx(x.t||'')+'</span>'+(x.d?'<span class="aq-hero-scene__ed-d">'+tx(x.d)+'</span>':'')+'</li>'}).join('');
+ return '<figure class="aq-hero-scene aq-hero-scene--edition" aria-hidden="true"><div class="aq-hero-scene__ed" style="--n:'+n+';--f:'+fk+';--j:'+jn+'">'
+  +(f.title?'<p class="aq-hero-scene__ed-h">'+tx(f.title)+'</p>':'')
+  +'<div class="aq-hero-scene__ed-body"><span class="aq-hero-scene__ed-branch">'+(f.branch?'<span class="aq-hero-scene__ed-tag">'+tx(f.branch)+'</span>':'')+'</span>'
+  +'<ol class="aq-hero-scene__ed-rail">'+li+'</ol></div></div></figure>'}
+
 /* The hero's scene for this page, or '' (unknown look, too few rows: the hero falls back to its other figure) */
 function wHeroScene(p){var f=p.figure||{},L=f.look;
  if(L==='module-lineup'||L==='service-ring'){var idx=heroBigIndex(p)||heroIndex(p);if(!idx)return '';return L==='module-lineup'?wHeroLineup(p,idx):wHeroRing(p,idx)}
@@ -932,6 +949,7 @@ function wHeroScene(p){var f=p.figure||{},L=f.look;
  if(L==='site-map')return wHeroSiteMap(p,f);
  if(L==='reply-flow')return wHeroReply(p,f);
  if(L==='compliance-matrix')return wHeroMatrix(p,f);
+ if(L==='edition-timeline')return wHeroEdition(p,f);
  return ''}
 /* IsoKit: the shared isometric line-drawing kit (README: design-system/components/IsoKit/README.md). Every look that
    draws equipment, pipes, water or drawing-sheet furniture builds it here, so all sections read as one hand.
