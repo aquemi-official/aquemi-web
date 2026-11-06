@@ -234,6 +234,8 @@ GENERATED = [('design-system/components/bundle.css', bundle_css), ('assets/aquem
 
 
 def build():
+    import studio  # tools/studio.py: the studio bar is generated first, so stamp() can version it
+    studio.build()
     tokens_css()
     for rel, fn in GENERATED:
         open(os.path.join(ROOT, rel), 'w', encoding='utf8', newline='\n').write(fn())
@@ -258,7 +260,8 @@ def build():
 # Files index.html loads with a ?v=<content hash> (and the service worker may keep for good, since a new version is a
 # new URL). Fonts and illustrations change name when they change, so they need no hash.
 VERSIONED = ['design-system/tokens.css', 'design-system/components/bundle.min.css', 'assets/site.css',
-             'assets/vendor/gsap-3.13.0.min.js', 'assets/aquemi-site.js', 'assets/motion.js', 'content/pages.min.json']
+             'assets/vendor/gsap-3.13.0.min.js', 'assets/aquemi-site.js', 'assets/motion.js', 'content/pages.min.json',
+             'studio/studio.css', 'studio/studio.js']
 
 
 def short_hash(rel):

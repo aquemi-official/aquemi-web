@@ -5,6 +5,18 @@ This is the draft Aquemi website and the **Aquemi design system** it is built fr
 - Site: https://aquemi-official.github.io/aquemi-web/
 - Design system guide (generated from this repo): https://aquemi-official.github.io/aquemi-web/design-system.html
 - Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc
+- Studio hub (every development tool): https://aquemi-official.github.io/aquemi-web/studio.html
+
+## The studio
+
+Every development tool beside the site (design system guide, section library, design research, media gallery, page history, the draft tools on the site) is one family, **the studio**, with one registry: `studio/manifest.json`. The studio bar across the top of every page, the hub `studio.html` and `python tools/studio.py` all read it. The live site is released without any of it (`python tools/studio.py release`). Read `studio/README.md` before working on any tool; Claude Code uses the `aquemi-studio` skill.
+
+```bash
+python tools/studio.py about      # which tool does what: reads, writes, how to refresh, which skill
+python tools/studio.py status     # what a change made stale
+python tools/studio.py refresh    # run the generators in order, then both checks
+python tools/studio.py check      # studio rules + a dry-run release of the live site
+```
 
 ## Branches
 
@@ -19,7 +31,8 @@ Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` 
 - Work on `dev` (or a short branch merged into `dev`). Push to `dev` directly.
 - `main` and `staging` are protected on GitHub: no direct pushes (admins included), no force pushes, no deletion. They change only through a pull request whose design-system check (`check`) passes. No approval is required.
 - Promote a batch: open a pull request from `dev` into `staging` (`gh pr create --base staging --head dev`), merge it with a merge commit, review the staging copy, then do the same from `staging` into `main`. Use merge commits, not squash or rebase, so the branches keep a shared history.
-- The staging and dev copies leave out the page history (`versions.html`) and the image gallery (`inspiration.html`); those work on production only. Their draft bar names the copy.
+- The staging and dev copies leave out the page history (`versions.html`) and the image gallery (`inspiration.html`); those work on production only (the studio bar links there). The studio bar names the copy.
+- `/live/` always shows `main` released: the website without the studio, as the public would see it. Going live is one switch, `"release": {"production": false}` in `studio/manifest.json`: the root then serves the released site and the tooled `main` moves to `/studio/` (studio/README.md, "Detaching for the live site").
 - `python tools/versions.py` lists commits on `main`, so the page history shows released versions.
 
 ## The one rule
@@ -51,7 +64,12 @@ Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` 
 | `assets/aquemi-site.js` | **Generated** from `assets/src/`. The site and the guide load it. |
 | `design-system/components/<Name>/motion.js`, `assets/src/motion/core.js`, `gl.js` | Motion (GSAP 3.13): the core animates every section the same way; a component's `motion.js` adds its own choreography with `AQmotion.fx('<Name>', fn)` and may register an ambient WebGL layer with `AQgl.def` (see FxShader). Reveals play once, under 5 s; rules in the brand book, Motion. New motion is ported from the Subframe Motion library (MIT; MCP server in `.mcp.json`). |
 | `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
-| `assets/site.css` | Draft-bar chrome only. No brand styles here. |
+| `assets/site.css` | Site page base only (box sizing, body ground, focus ring). No brand styles here. |
+| `studio/manifest.json` | The studio registry: every development tool (page, what, when, sources, outputs, commands, skill, ships), which copies carry the studio (`release`) and the files the live site is made of (`live.keep`). |
+| `studio/src/bar.js`, `studio/studio.css` | The studio bar's source and styles (tokens only). Every tool page and the site's `<!-- studio -->` block load them. |
+| `studio/studio.js` | **Generated** by `build` from `bar.js` and the manifest. |
+| `studio.html`, `studio/README.md` | The studio hub (rendered from the manifest) and the studio guide for people and agents. |
+| `tools/studio.py` | `about`, `status`, `refresh`, `check`, `release <out>`, `assemble` (the Pages workflow). Standard library only. |
 | `design-system/components/bundle.min.css`, `content/pages.min.json` | **Generated** minified site copies that `index.html` loads. The guide keeps the readable files. |
 | `assets/fonts/`, `assets/vendor/` | Self-hosted Geist fonts (with `fonts.css`, the same rules inlined in `index.html`) and GSAP 3.13 as one file. |
 | `sw.js` | Service worker: page loads from the network first, versioned and static files from the device. Its cache name is stamped by `build`. |
@@ -88,11 +106,13 @@ Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` 
 
 **Explore a new section idea.** Generate a loose concept image (Gemini works well), save it in `design-system/inspiration/` and rebuild the idea as a token-only component. Steps and the prompt recipe are in `design-system/inspiration/README.md`.
 
+**Add a development tool, or release the live site.** Follow `studio/README.md` ("Adding a tool", "Detaching for the live site"). The site must never depend on the studio: keep all studio wiring in `index.html` inside its `<!-- studio -->` block, and add any file the site loads at runtime to `live.keep`.
+
 **Publish to the Claude design system.** After design-system changes land, publish them so Claude chats, decks and designs use the same system. Claude Code does this with the `aquemi-design-system` skill in `.claude/skills/`. Other agents: tell the person it needs publishing.
 
 ## Working in parallel
 
-The sources are split so several people or agents can work at the same time without editing the same file: one component's `style.css`, `README.md` and `preview.html`; one block renderer; one page file. Give each agent its own files. Generated files (`bundle.css`, `aquemi-site.js`, `motion.js`, `pages.json`, `tokens.css`, `components.json`) are rebuilt from the sources, so concurrent `build` runs are safe; whoever commits runs `build` and `check` last.
+The sources are split so several people or agents can work at the same time without editing the same file: one component's `style.css`, `README.md` and `preview.html`; one block renderer; one page file. Give each agent its own files. Generated files (`bundle.css`, `aquemi-site.js`, `motion.js`, `pages.json`, `tokens.css`, `components.json`, `studio/studio.js`) are rebuilt from the sources, so concurrent `build` runs are safe; whoever commits runs `build` and `check` last.
 
 ## Before you push
 
@@ -100,6 +120,9 @@ The sources are split so several people or agents can work at the same time with
 python tools/specimens.py snapshot     # after page edits: keeps every section's content in the section library
 python tools/design_system.py build
 python tools/design_system.py check
+python tools/studio.py check            # studio rules and a dry-run release of the live site
 ```
 
-Preview locally with `python -m http.server 8000` and open http://localhost:8000/ and http://localhost:8000/design-system.html. The same check runs on GitHub for every push (`.github/workflows/design-system.yml`).
+`python tools/studio.py refresh` runs the first three (and the image steps) in order, then both checks.
+
+Preview locally with `python -m http.server 8000` and open http://localhost:8000/, http://localhost:8000/studio.html and http://localhost:8000/design-system.html. The same checks run on GitHub for every push (`.github/workflows/design-system.yml`).
