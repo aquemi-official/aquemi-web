@@ -22,7 +22,11 @@
 <!-- The Aquemi design system: tokens, then components (the minified site copy). Site chrome last. -->
 <link rel="stylesheet" href="design-system/tokens.css?v=a18f261217">
 <link rel="stylesheet" href="design-system/components/bundle.min.css?v=a4d5285dda">
-<link rel="stylesheet" href="assets/site.css?v=d06f0e5c4b">
+<link rel="stylesheet" href="assets/site.css?v=2f3c35a788">
+<!-- studio: development tooling (studio/manifest.json). python tools/studio.py release removes everything between these markers for the live site. -->
+<link rel="stylesheet" href="studio/studio.css?v=6c555bd684">
+<script defer src="studio/studio.js?v=8c49894e62" data-tool="site"></script>
+<!-- /studio -->
 <script>
 /* Boot: start the page content now, in parallel with the CSS and scripts (the preload above makes it one request),
    preload this page's equipment drawing so the hero never waits for it (crossorigin: CSS mask-image fetches in CORS mode, so a plain preload would go unused), and register the caching service worker. */
@@ -36,16 +40,7 @@
 </script>
 </head>
 <body>
-<div class="draftbar" role="region" aria-label="Draft tools">
- <span>Draft site · not for release · <a href="design-system.html">Design system</a> · <a id="wver" href="versions.html">Page history</a> · <a href="research.html">Design research</a></span>
- <span class="draftbar__tools">
-  <label><input type="checkbox" id="wph" checked> Highlight placeholders</label>
-  <label><input type="checkbox" id="wtodo"> Show open facts</label>
-  <select id="wjump" aria-label="Jump to page"></select>
- </span>
-</div>
-<div class="aq-page" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
-<div class="todo" id="wtodolist" hidden></div>
+<div class="aq-page is-clean" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
 <!-- All scripts are deferred: they download in parallel and never block the parser; they run in this order -->
 <script defer src="assets/vendor/gsap-3.13.0.min.js?v=53ecac42c6"></script>
 <script defer src="assets/aquemi-site.js?v=f31a1cea96"></script>
@@ -54,23 +49,18 @@
 document.addEventListener('DOMContentLoaded',function(){
 var $=function(id){return document.getElementById(id)},e=AQ.e;
 function render(){var p=AQ.wp(AQ.page)||AQ.pages()[0];if(!p)return;AQ.page=p.id;
- $('wsite').innerHTML=AQ.wPage(p);$('wsite').classList.toggle('is-clean',!$('wph').checked);
+ $('wsite').innerHTML=AQ.wPage(p);
  document.title=p.title||'Aquemi';
- $('wjump').value=p.id;$('wver').href='versions.html#page='+p.id;
- var t=p.todo||[];$('wtodolist').innerHTML='<h2>Open facts on this page ('+t.length+')</h2>'+(t.length?'<ul>'+t.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul>':'<p>None.</p>');
- $('wtodolist').hidden=!$('wtodo').checked;
  var m=$('wmenu');if(m)m.onclick=function(){AQ.menuOpen=!AQ.menuOpen;render()};
  if(window.AQmotion)requestAnimationFrame(function(){AQmotion.run($('wsite'))});
- document.querySelectorAll('.wform').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();f.querySelector('.wform-msg').textContent='Draft site: this form does not send anything yet.'})})}
+ document.querySelectorAll('.wform').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();f.querySelector('.wform-msg').textContent='Draft site: this form does not send anything yet.'})});
+ /* the studio bar (development copies only, see the studio block in <head>) listens for this; the live site has no listener */
+ document.dispatchEvent(new CustomEvent('aq:render',{detail:{page:p}}))}
 function go(id){AQ.page=id;AQ.menuOpen=false;try{history.replaceState(null,'','#'+id)}catch(x){}render();window.scrollTo(0,0)}
 AQ.onNav=go;
-$('wph').onchange=function(){$('wsite').classList.toggle('is-clean',!this.checked)};
-$('wtodo').onchange=function(){$('wtodolist').hidden=!this.checked};
-$('wjump').onchange=function(){go(this.value)};
 window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!==AQ.page&&AQ.wp(h))go(h)});
 /* The content was requested by the boot script in <head>; fall back to a fresh request if that failed */
 (window.AQBOOT&&AQBOOT.pages||Promise.reject()).catch(function(){return fetch('content/pages.json').then(function(r){return r.json()})}).then(function(d){AQ.setPages(d.pages);
- $('wjump').innerHTML=AQ.pages().map(function(p){return '<option value="'+e(p.id)+'">'+e(p.section+' · '+p.nav_label)+'</option>'}).join('');
  var h=location.hash.slice(1);if(AQ.wp(h))AQ.page=h;render()}).catch(function(err){$('wsite').innerHTML='<p style="padding:64px 32px">The page content could not load: '+e(err.message)+'</p>'});
 });
 </script>

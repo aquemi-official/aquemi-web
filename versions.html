@@ -8,6 +8,8 @@
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="studio/studio.css">
+<script defer src="studio/studio.js" data-tool="history"></script>
 <style>
 /* Page history viewer. Draft tooling, tokens only. */
 *, *::before, *::after { box-sizing: border-box; }
@@ -144,7 +146,7 @@ function touches(i){var ch=diff(i-1,i,S.page);return ch.copy||ch.design}
 function absent(i){var p=C[i].pages||{};return Object.keys(p).length>0&&p[S.page]===undefined}
 
 // The frame's own draft bar is hidden: this bar does its job.
-function tidy(f){try{var d=f.contentDocument;if(!d||d.getElementById('vh-tidy'))return;var s=d.createElement('style');s.id='vh-tidy';s.textContent='.draftbar{display:none!important}';(d.head||d.documentElement).appendChild(s)}catch(x){}}
+function tidy(f){try{var d=f.contentDocument;if(!d||d.getElementById('vh-tidy'))return;var s=d.createElement('style');s.id='vh-tidy';s.textContent='.draftbar,.sb,.sb-facts{display:none!important}';(d.head||d.documentElement).appendChild(s)}catch(x){}}
 function ratio(f){try{var w=f.contentWindow,d=w.document.documentElement,m=d.scrollHeight-w.innerHeight;return m>0?w.scrollY/m:0}catch(x){return 0}}
 function restore(f,r){if(!r)return;var t0=Date.now();(function go(){try{var w=f.contentWindow,d=w.document.documentElement,m=d.scrollHeight-w.innerHeight;if(m>w.innerHeight||Date.now()-t0>2500){w.scrollTo(0,r*m);return}}catch(x){return}setTimeout(go,120)})()}
 var syncing=false;

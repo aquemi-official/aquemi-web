@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aquemi studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<style>
+/* Geist and Geist Mono, self-hosted (SIL Open Font License 1.1), latin and latin-ext, variable weight 300-500 */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-mono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+</style>
+<link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="studio/studio.css">
+<script defer src="studio/studio.js" data-tool="studio"></script>
+<script src="assets/theme.js"></script>
+<style>
+/* Studio hub. Everything on it is read from studio/manifest.json: add a tool there and it appears here, in the
+   studio bar and in python tools/studio.py. Studio chrome, tokens only; never ships to the live site. */
+.st { max-width: var(--content-max); margin: 0 auto; padding: var(--space-12) max(16px, var(--space-6)) var(--space-24); display: flex; flex-direction: column; gap: var(--space-16); }
+.st section { display: flex; flex-direction: column; gap: var(--space-6); }
+.eb { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); margin: 0; }
+h1 { margin: 0; font: 300 clamp(36px, 6vw, 56px)/1.05 var(--font-sans); letter-spacing: -.025em; color: var(--ink); }
+h2 { margin: 0; font: 400 28px/34px var(--font-sans); letter-spacing: -.015em; color: var(--ink); }
+h3 { margin: 0; font: 500 18px/24px var(--font-sans); color: var(--ink); }
+p { margin: 0; }
+.lead { font: 400 18px/28px var(--font-sans); color: var(--ink-muted); max-width: 72ch; }
+.sm { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); max-width: 80ch; }
+a { color: var(--action); }
+code, pre { font: 400 13px/20px var(--font-mono); }
+code { background: var(--surface-sunken); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
+pre { margin: 0; background: var(--surface-sunken); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-4); overflow-x: auto; color: var(--ink); }
+.hd { display: flex; gap: var(--space-4); align-items: end; flex-wrap: wrap; }
+.hd .sp { flex: 1; }
+.hd select { font: 400 13px/18px var(--font-sans); color: var(--ink); background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: var(--space-1) var(--space-2); }
+.grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); }
+.card { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-md); min-width: 0; }
+.card__hd { display: flex; gap: var(--space-3); align-items: baseline; flex-wrap: wrap; }
+.card__hd .sp { flex: 1; }
+.tag { font: 500 11px/16px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); border: 1px solid var(--line); padding: 0 var(--space-2); border-radius: var(--radius-sm); white-space: nowrap; }
+.tag--live { color: var(--ink); border-color: var(--flow); }
+dl { margin: 0; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: var(--space-1) var(--space-3); font: 400 13px/20px var(--font-sans); color: var(--ink-muted); }
+dt { font: 500 11px/20px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-subtle); }
+dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+table { width: 100%; border-collapse: collapse; font: 400 14px/22px var(--font-sans); color: var(--ink); }
+th, td { text-align: left; padding: var(--space-2) var(--space-3) var(--space-2) 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11px/16px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-subtle); }
+.tw { overflow-x: auto; }
+.steps { margin: 0; padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); font: 400 15px/24px var(--font-sans); color: var(--ink); max-width: 80ch; }
+</style>
+</head>
+<body>
+<main class="st">
+<section>
+ <div class="hd"><div><p class="eb">Development tooling · never ships</p><h1>Aquemi studio</h1></div><span class="sp"></span>
+  <select id="wtheme" aria-label="Theme"><option value="">System theme</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
+ <p class="lead">Everything we build and review the website with, in one place: the design system guide, the section library, design research, the media gallery and the page history. It sits beside the site on every development copy and is left out of the live site, which is released without it.</p>
+ <p class="sm">This page, the bar at the top and <code>python tools/studio.py</code> all read one registry, <code>studio/manifest.json</code>. The guide for people and agents is <a href="studio/README.md">studio/README.md</a>.</p>
+</section>
+
+<section id="copies">
+ <h2>Copies of the site</h2>
+ <p class="sm">One GitHub Pages site carries every copy. Work on <code>dev</code>, review on <code>staging</code>, release from <code>main</code>. A copy marked live is the site without the studio.</p>
+ <div class="tw"><table><thead><tr><th>Copy</th><th>Branch</th><th>Carries</th><th>Open</th></tr></thead><tbody id="copies-t"></tbody></table></div>
+</section>
+
+<section id="tools">
+ <h2>Tools</h2>
+ <div class="grid" id="tools-g"></div>
+</section>
+
+<section id="work">
+ <h2>Workflows</h2>
+ <h3>Every change</h3>
+ <ol class="steps">
+  <li>Find the tool: <code>python tools/studio.py about</code> (or the cards above) says what each reads and writes.</li>
+  <li>Edit sources only (<code>content/pages/</code>, <code>design-system/</code>, <code>assets/src/</code>, <code>studio/</code>). Never edit a generated file.</li>
+  <li>See what went stale: <code>python tools/studio.py status</code>.</li>
+  <li>Refresh it: <code>python tools/studio.py refresh</code> (or name tools: <code>refresh sections guide</code>). It runs the generators in order and then both checks.</li>
+  <li>Commit and push to <code>dev</code>; promote <code>dev → staging → main</code> by pull request.</li>
+ </ol>
+ <h3>Before you push</h3>
+ <pre>python tools/specimens.py snapshot     # after page edits
+python tools/design_system.py build    # every generated file, the studio bar included
+python tools/design_system.py check    # design-system rules
+python tools/studio.py check           # studio rules and a dry-run release of the live site</pre>
+ <h3>Release the live site</h3>
+ <ol class="steps">
+  <li>Review <a id="live-link" href="#">the live preview</a>: main, released, exactly as the public would see it.</li>
+  <li>In <code>studio/manifest.json</code> set <code>"release": {"production": false}</code> and promote to <code>main</code>.</li>
+  <li>The Pages workflow then publishes the released site at the root and keeps the tooled copy of main at <code>studio/</code>. Nothing is deleted from the repository.</li>
+ </ol>
+ <p class="sm">Locally: <code>python tools/studio.py release ../aquemi-live</code> writes the live site to a folder, and fails on any studio file or broken link left in it.</p>
+</section>
+
+<section id="live">
+ <h2>What the live site is</h2>
+ <p class="sm">Only these files. Everything else in the repository is studio or source and stays behind; the studio block in <code>index.html</code> is cut out.</p>
+ <pre id="keep"></pre>
+</section>
+
+<section id="agents">
+ <h2>For agents</h2>
+ <p class="sm">Read <code>AGENTS.md</code> (rules and file map) and <code>studio/README.md</code> (this family of tools) first. Claude Code loads these skills from <code>.claude/skills/</code>; other agents can read the same files.</p>
+ <div class="tw"><table><thead><tr><th>Skill</th><th>Use it to</th></tr></thead><tbody id="skills-t"></tbody></table></div>
+ <p class="sm">MCP server <code>subframe-motion</code> (<code>.mcp.json</code>) serves the motion library used by the <code>motion-library</code> skill.</p>
+ <div class="tw"><table><thead><tr><th>Elsewhere</th><th>What</th></tr></thead><tbody id="ext-t"></tbody></table></div>
+</section>
+</main>
+<script>
+AQTheme.bind(document.getElementById('wtheme'));
+/* after DOMContentLoaded, so the deferred studio bar has said which copy this is (AQStudio) */
+document.addEventListener('DOMContentLoaded',function(){
+function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function $(id){return document.getElementById(id)}
+fetch('studio/manifest.json').then(function(r){return r.json()}).then(function(m){
+ var S=window.AQStudio||{copy:'local',base:new URL('./',location.href).href};
+ var root=S.copy==='staging'||S.copy==='dev'||S.copy==='live'?new URL('../',S.base).href:(S.copy==='studio'?new URL('../',S.base).href:S.base);
+ var local=S.copy==='local';
+ $('copies-t').innerHTML=m.copies.filter(function(c){return c.id!=='studio'||!m.release.production}).map(function(c){
+  var tooled=c.id==='live'?false:c.id==='studio'?true:m.release[c.id];
+  var url=local?'':root+c.path;
+  return '<tr><td>'+e(c.label)+'</td><td><code>'+e(c.branch)+'</code></td><td>'+(tooled?'Site and studio':'Live site only')+'</td><td>'+(local?'<span class="sm">published copies only</span>':'<a href="'+e(url)+'">'+e(url.replace(/^https?:\/\//,''))+'</a>')+'</td></tr>'}).join('');
+ $('live-link').href=local?'#live':root+'live/';
+ $('tools-g').innerHTML=m.tools.map(function(t){
+  return '<article class="card" id="t-'+e(t.id)+'"><div class="card__hd"><h3><a href="'+e(t.page)+'">'+e(t.name)+'</a></h3><span class="sp"></span>'+(t.ships==='live'?'<span class="tag tag--live">Ships live</span>':'<span class="tag">Studio only</span>')+(t.production_only?'<span class="tag">Production copy</span>':'')+'</div>'+
+  '<p class="sm">'+e(t.what)+'</p><dl><dt>When</dt><dd>'+e(t.when)+'</dd><dt>Reads</dt><dd>'+t.sources.map(function(s){return '<code>'+e(s)+'</code>'}).join(' ')+'</dd><dt>Writes</dt><dd>'+t.outputs.map(function(s){return '<code>'+e(s)+'</code>'}).join(' ')+'</dd><dt>Skill</dt><dd><code>'+e(t.skill)+'</code></dd></dl>'+
+  '<pre>'+t.run.map(e).join('\n')+'</pre></article>'}).join('');
+ $('keep').textContent=m.live.keep.join('\n');
+ $('skills-t').innerHTML=m.skills.map(function(s){return '<tr><td><a href="'+e(s.path)+'"><code>'+e(s.name)+'</code></a></td><td>'+e(s.what)+'</td></tr>'}).join('');
+ $('ext-t').innerHTML=m.external.map(function(x){return '<tr><td><a href="'+e(x.url)+'">'+e(x.name)+'</a></td><td>'+e(x.what)+'</td></tr>'}).join('');
+}).catch(function(err){$('tools-g').textContent='studio/manifest.json could not load: '+err.message});
+});
+</script>
+</body>
+</html>
