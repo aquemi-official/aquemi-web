@@ -1,0 +1,9 @@
+FxRipple is a water surface that remembers the pointer (ported from Subframe Motion "Ripple memory"): a small wave simulation whose glints trail the pointer across a navy band and fade in about two seconds.
+
+- Shader: `AQgl.def('ripple', …)` in this folder's `motion.js` (the licence header and what changed from the example are at its top). Runtime and API: `assets/src/motion/gl.js`; general rules: FxShader.
+- Markup: `<canvas class="aq-fx-shader" data-gl="ripple" aria-hidden="true"></canvas>` as the first child of a positioned host with `aq-fx-host` (or, where the host must not clip, `isolation: isolate`). Decoration only: aria-hidden, no text in it; the page is complete without WebGL.
+- Colour: the `on-navy` token read from the host (light and dark theme), drawn on a transparent ground so the host's own ground shows. Strength is `--fx-amt` on the canvas, set by the placement in its component's style.css (default 0.3 here).
+- Used on: the closing band of every page (`assets/src/parts/Closing.js`, `CLOSE_WATER`), marked `data-gl-optional`, so a page that already has two ambient layers (home) keeps a plain navy band.
+- Motion: only while on screen, only the most visible layer on the page moves, slow (one visible cycle well over 6 s), 30 fps cap (60 for this pointer-driven one), render scale at most 0.75 and lower on phones and low-power devices; a still frame under reduced motion.
+- When to use: Only on a navy band with short copy (the closing). It is the one layer that answers the visitor (pointer moves and presses); it never carries information, so keyboard and touch users lose nothing without it.
+- Retired from the site (owner, 2026-11-05): it was the closing band's water layer on every page; the band is now plain navy. The shader stays here; `CLOSE_WATER` in `assets/src/parts/Closing.js` brings it back.

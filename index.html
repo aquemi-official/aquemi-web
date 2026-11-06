@@ -23,9 +23,9 @@
 <link rel="stylesheet" href="design-system/tokens.css?v=a18f261217">
 <link rel="stylesheet" href="design-system/components/bundle.min.css?v=a4d5285dda">
 <link rel="stylesheet" href="assets/site.css?v=2f3c35a788">
-<!-- studio: development tooling (studio/manifest.json). python tools/studio.py release removes everything between these markers for the live site. -->
-<link rel="stylesheet" href="studio/studio.css?v=6c555bd684">
-<script defer src="studio/studio.js?v=8c49894e62" data-tool="site"></script>
+<!-- studio: development tooling (studio kit, studio.config.json). python studio/studio.py release removes everything between these markers for the live site. -->
+<link rel="stylesheet" href="studio/web/studio.css?v=81a91c6b17">
+<script defer src="studio/web/studio.js?v=5e1621954b" data-tool="site"></script>
 <!-- /studio -->
 <script>
 /* Boot: start the page content now, in parallel with the CSS and scripts (the preload above makes it one request),
@@ -43,7 +43,7 @@
 <div class="aq-page is-clean" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
 <!-- All scripts are deferred: they download in parallel and never block the parser; they run in this order -->
 <script defer src="assets/vendor/gsap-3.13.0.min.js?v=53ecac42c6"></script>
-<script defer src="assets/aquemi-site.js?v=f31a1cea96"></script>
+<script defer src="assets/aquemi-site.js?v=ef9752451f"></script>
 <script defer src="assets/motion.js?v=c9c87cbe5a"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){

@@ -1,5 +1,5 @@
 /* Hero */
-/* Pages with an equipment drawing in assets/illustrations/<page id>.png (the site loads the lossless .webp copy made by tools/images.py). Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
+/* Pages with an equipment drawing in assets/illustrations/<page id>.png (the site loads the lossless .webp copy made by the studio kit, python studio/studio.py refresh webp). Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
    Used by the Hero figure and by WaterPath stops. */
 var ART={
  'sys-pretreatment':'Pretreatment skid: multimedia filter, softener and carbon vessels with feed pump',

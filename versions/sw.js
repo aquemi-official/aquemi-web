@@ -1,5 +1,5 @@
 /* Page history service worker. Serves versions/at/<commit>/<path> from the content-addressed files that
-   tools/versions.py writes (tree/<commit>.json maps each path to blobs/<ab>/<blob-sha>), so every old
+   python studio/studio.py history writes (tree/<commit>.json maps each path to blobs/<ab>/<blob-sha>), so every old
    index.html runs exactly as it shipped. Everything else passes through untouched. */
 var BASE = new URL('./', self.location).href;
 var AT = new URL('at/', BASE).pathname;

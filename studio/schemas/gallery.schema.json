@@ -1,0 +1,100 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Media gallery manifest (<data.gallery>)",
+ "type": "object",
+ "required": [
+  "items"
+ ],
+ "properties": {
+  "cats": {
+   "type": "array",
+   "description": "[id, name, about, {contain, mask, numbered}]",
+   "items": {
+    "type": "array"
+   }
+  },
+  "statuses": {
+   "type": "array",
+   "description": "[id, name]",
+   "items": {
+    "type": "array"
+   }
+  },
+  "readme": {
+   "type": "string"
+  },
+  "component_link": {
+   "type": "string",
+   "description": "Prefix a 'component' value is appended to for a link"
+  },
+  "items": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "src",
+     "cat",
+     "status",
+     "title"
+    ],
+    "properties": {
+     "src": {
+      "type": "string",
+      "description": "Root-relative"
+     },
+     "thumb": {
+      "type": "string"
+     },
+     "cat": {
+      "type": "string"
+     },
+     "status": {
+      "type": "string"
+     },
+     "title": {
+      "type": "string"
+     },
+     "note": {
+      "type": "string"
+     },
+     "order": {
+      "type": "integer"
+     },
+     "size": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     },
+     "kb": {
+      "type": "integer"
+     },
+     "group": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "became": {
+      "type": "string"
+     },
+     "component": {
+      "type": "string"
+     },
+     "link": {
+      "type": "string"
+     },
+     "source": {
+      "type": "string"
+     },
+     "date": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}
