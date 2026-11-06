@@ -218,9 +218,9 @@
    "page": "svc-upgrades",
    "slot": 3,
    "h": "What the assessment reviews",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "c911786af7",
    "block": {
@@ -259,6 +259,57 @@
      {
       "t": "Controls",
       "d": "Support status, spares, access and backups.",
+      "spot": "cpu"
+     }
+    ],
+    "anchor": "assessment"
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 2,
+   "h": "What the assessment reviews",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "966e50f024",
+   "block": {
+    "type": "grid",
+    "look": "review-reticles",
+    "as": "route",
+    "nav": "Assessment",
+    "h": "What the assessment reviews",
+    "items": [
+     {
+      "t": "Records",
+      "d": "Qualification file, changes and drawings.",
+      "spot": "binder"
+     },
+     {
+      "t": "Water quality data",
+      "d": "A year of conductivity, TOC and microbial results.",
+      "spot": "toc"
+     },
+     {
+      "t": "Generation",
+      "d": "Performance on today’s feed, capacity at your coldest feed.",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "Materials, flow and fittings.",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Sanitization",
+      "d": "Whether your results support the schedule.",
+      "spot": "storage-tank",
+      "part": "outlet"
+     },
+     {
+      "t": "Controls",
+      "d": "Age and spares.",
       "spot": "cpu"
      }
     ],

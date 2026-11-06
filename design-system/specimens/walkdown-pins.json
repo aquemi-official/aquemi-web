@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, cols, rows [{p, v, m, part}], labels {part: name} (the leader callouts, short drawing names, aria-hidden), fold, fold_noun (phones only). part: the drawing anchor, one of \"branch\" (a point-of-use branch), \"joint\" (a loop joint), \"analyzer\", \"coldest\" (the far point of use), \"outlets\" (both points of use), \"panel\", \"skid\", \"gauge\"; a row without one marks the skid.",
  "best_for": "WalkdownPins sets IQ and OQ checks as a table beside the installed system they inspect, each check's number on its part and a few parts called out by name (look `walkdown-pins`, spec block).",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-cq",
@@ -267,9 +267,9 @@
    "page": "svc-cq",
    "slot": 2,
    "h": "IQ and OQ on site",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "3e8ce3d27e",
    "block": {

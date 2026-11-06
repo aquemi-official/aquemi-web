@@ -4,7 +4,7 @@
  "type": "grid",
  "fields": "h, items [{t, d, icon, link, part}]. part: which part the leader points at: \"impeller\", \"motor\" or \"tag\" (default in that order). Best for exactly three items.",
  "best_for": "ExplodedService pins a few service promises to an exploded view of the part that service keeps running: a centrifugal pump drawn apart along its shaft on a light drawing sheet, with a leader from three of its parts to the promises.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "home",
@@ -83,9 +83,9 @@
    "page": "home",
    "slot": 4,
    "h": "Service after handover",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "672ad82a26",
    "block": {

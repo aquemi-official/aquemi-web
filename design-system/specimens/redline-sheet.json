@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [fails at qualification, design mistake, what we design in], rows (cells strings or {t, link}).",
  "best_for": "RedlineSheet shows qualification failures that start in design as design-review markups on one limestone drawing sheet: each failure is a column with its revision triangle, a small drawing of the design with the mistake ringed by a revision cloud, the mistake struck through and the correction drawn in flow as the markup note.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-design",
@@ -50,9 +50,9 @@
    "page": "svc-design",
    "slot": 0,
    "h": "Qualification failures that start in design",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "6db6a96220",
    "block": {

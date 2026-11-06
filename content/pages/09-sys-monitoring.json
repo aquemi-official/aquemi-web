@@ -3,11 +3,11 @@
  "section": "Systems",
  "nav_label": "Monitoring and controls",
  "title": "Purified Water system monitoring and controls | Aquemi",
- "meta": "Online TOC (USP <643>), uncompensated conductivity (USP <645>), alarms and divert for a polypropylene Purified Water package.",
+ "meta": "Online TOC (USP <643>), uncompensated conductivity (USP <645>), alarms and divert for your Purified Water package.",
  "path": "/systems/monitoring-and-controls/",
  "eyebrow": "SYSTEMS · MONITORING AND CONTROLS · USP <645>, <643>",
  "headline": "Water data you can defend",
- "lead": "Monitoring and controls for our polypropylene Purified Water package with polyvinyl chloride (PVC) pretreatment. Online instruments, alarms and divert, with every quality value recorded and time-stamped.",
+ "lead": "Online instruments, alarms and divert for your Purified Water package. Quality readings are recorded and kept.",
  "primary_cta": "Request a controls specification review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
@@ -37,17 +37,6 @@
      "d": "Where operators see alarms, trends and sanitization status.",
      "icon": "monitor",
      "art": "hmi"
-    },
-    {
-     "t": "Supervisory control (SCADA) historian",
-     "d": "Keeps time-stamped records of quality values and alarms.",
-     "icon": "database",
-     "art": "historian"
-    },
-    {
-     "t": "Plant network",
-     "d": "Reaches your network through a demilitarized zone (DMZ).",
-     "art": "network"
     }
    ],
    "nav": "Architecture",
@@ -57,7 +46,7 @@
   {
    "type": "spec",
    "h": "Sensors and signals",
-   "caption": "MONITORING · WHO TRS 1033",
+   "caption": "MONITORING",
    "cols": [
     "Signal",
     "Design value",
@@ -66,7 +55,7 @@
    "rows": [
     {
      "p": "TOC analyzer",
-     "v": "Online; system suitability 85 % to 115 %",
+     "v": "Online, at the loop return",
      "m": "USP <643>",
      "at": [
       37.4,
@@ -75,8 +64,8 @@
     },
     {
      "p": "Conductivity cell",
-     "v": "Cell constant ± 2 %; ± 0.1 µS/cm; temperature ± 2 °C",
-     "m": "USP <645>, uncompensated",
+     "v": "Online; the uncompensated reading is the record",
+     "m": "USP <645>",
      "at": [
       49.4,
       57.7
@@ -84,144 +73,34 @@
     },
     {
      "p": "Temperature",
-     "v": "Generation, tank, loop supply and return, coldest sanitization point",
+     "v": "Generation, tank and loop",
      "at": [
       48.9,
       41.1
-     ],
-     "m": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats."
+     ]
     },
     {
      "p": "Divert (generation)",
-     "v": "Setpoint below your alert level; to a route set in your design, never to storage",
-     "m": "Value, time and duration recorded; tested at the factory and site acceptance tests (FAT, SAT)",
+     "v": "Water out of specification goes to drain, never to storage",
+     "m": "Tested at the factory and site acceptance tests (FAT, SAT)",
      "at": [
       72.9,
       37.7
      ]
     },
     {
-     "p": "Restart after power loss",
-     "v": "Restart behaviour set in your functional specification",
-     "m": "Tested at FAT"
-    },
-    {
      "p": "Flow and pressure",
      "v": "Return flow alarmed below the qualified minimum",
-     "m": "WHO TRS 1033, 8.6 and 12.3",
      "at": [
       57.4,
       69.7
      ]
-    },
-    {
-     "p": "Ultraviolet (UV) units, where fitted",
-     "v": "Intensity at 254 nm, lamp hours, lamp failure"
-    },
-    {
-     "p": "Data recording",
-     "v": "Every quality value at an interval set in your design, time-stamped",
-     "m": "One site time source"
     }
    ],
-   "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
    "nav": "Measurements",
-   "fold": 5,
-   "fold_noun": "signals",
    "as": "callouts",
    "look": "signal-dial",
    "anchor": "instruments"
-  },
-  {
-   "type": "table",
-   "h": "Alert, action and trend",
-   "intro": "You set the levels with our input. Microbial counts are laboratory results. The screen is a specimen: a drawing of online readings, not site data.",
-   "cols": [
-    "Line",
-    "How it is set",
-    "What the system does"
-   ],
-   "rows": [
-    [
-     "Specification",
-     {
-      "t": "Compendial limit, or your tighter internal limit",
-      "link": "compliance#limits"
-     },
-     "Diverts or stops supply; alarm needs a reason"
-    ],
-    [
-     "Action level",
-     "Qualification data; ≤ 100 CFU/mL (colony-forming units; USP <1231>; GUI-0001 C.02.009)",
-     "Quality alarm to your quality unit, logged"
-    ],
-    [
-     "Alert level",
-     "Qualification data; reassessed after investigations",
-     "Alarm with a comment, counted for trends"
-    ],
-    [
-     "Trend rule",
-     "Agreed with your quality unit, such as rising readings",
-     "Flags drift before any limit"
-    ]
-   ],
-   "nav": "Alarms",
-   "look": "hmi-trend",
-   "tabs": [
-    "Trends",
-    "Alarms",
-    "Sanitization"
-   ],
-   "plot": [
-    "limit",
-    "trend"
-   ],
-   "anchor": "alarms"
-  },
-  {
-   "type": "options",
-   "h": "Options",
-   "intro": "Your proposal states each option's effect on drawings, tests and lead time.",
-   "items": [
-    {
-     "t": "PLC and SCADA platform",
-     "d": "PLC and SCADA platforms confirmed per project.",
-     "spot": "cpu",
-     "part": "plc"
-    },
-    {
-     "t": "Historian",
-     "d": "Our historian, or your plant historian with ours as a buffer.",
-     "spot": "database",
-     "part": "historian"
-    },
-    {
-     "t": "Remote access",
-     "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
-     "spot": "network",
-     "part": "remote"
-    },
-    {
-     "t": "Integration",
-     "d": "Protocols confirmed per project connect it to your plant systems.",
-     "spot": "pid",
-     "part": "bus"
-    },
-    {
-     "t": "Control panels",
-     "d": "Built to the panel standard named in your proposal, with the approval route confirmed there.",
-     "spot": "monitor",
-     "link": "compliance#engineering",
-     "part": "panel"
-    }
-   ],
-   "nav": "Options",
-   "fold_noun": "options",
-   "as": "modules",
-   "base": "Controls",
-   "look": "option-checker",
-   "anchor": "options"
   },
   {
    "type": "faq",
@@ -231,24 +110,14 @@
    "items": [
     {
      "q": "Can we release water on online TOC and conductivity?",
-     "a": "Yes, for total organic carbon (TOC) and conductivity, once qualification shows the online readings match point-of-use samples. USP <643> and <645> allow online tests. Microbial counts stay laboratory tests.",
+     "a": "Yes, for TOC and conductivity, once qualification shows online readings match point-of-use samples. Microbial counts stay laboratory tests.",
      "link": "svc-cq"
     },
     {
-     "q": "Our transmitters show compensated conductivity. Is that a problem?",
-     "a": "For trending, no. USP <645> stage 1 compares the uncompensated reading with the table row at or below the measured temperature. Compensation can pass water stage 1 would fail. We store both."
-    },
-    {
      "q": "Do sites outside good manufacturing practice (GMP) get the same controls?",
-     "a": "Yes: the same instruments, alarms and records. Under ST108:2023, a hospital program checks critical-water conductivity daily and bacteria and endotoxin monthly. The online conductivity record supports the daily check; your program shows compliance.",
-     "link": "ind-hospital-lab#validation",
-     "link_label": "Hospital and laboratory checks"
-    },
-    {
-     "q": "What should our URS say about controls and data?",
-     "a": "Rows you can test, not a brand. In your user requirement specification (URS), name the access levels, the alarms and the values to record. State data retention in years and restore time in hours. Add your site's controller (PLC) standard, if you have one.",
-     "link": "urs-guide#outline",
-     "link_label": "Writing your URS"
+     "a": "Yes: the same instruments, alarms and records.",
+     "link": "ind-hospital-lab#grades",
+     "link_label": "Hospital and laboratory water"
     },
     {
      "q": "Do we get full access to the PLC and HMI code?",
@@ -258,7 +127,7 @@
     },
     {
      "q": "Our IT team allows no remote access to GMP equipment.",
-     "a": "Then we do not install it. The system runs and records fully offline. Any later access goes through your demilitarized zone (DMZ) under your change control, every session logged."
+     "a": "The system runs and records on its own, offline. It needs no connection to your network."
     }
    ]
   },
@@ -270,7 +139,7 @@
     "cmp-quality",
     "svc-upgrades#upgrades",
     "svc-service",
-    "ind-cdmo#audit-pack"
+    "ind-pharma"
    ]
   }
  ],
@@ -283,9 +152,7 @@
   "include": [
    "Your user requirement specification (URS); no URS? Tell us what you make",
    "Water grades and internal limits",
-   "Systems to control, new or existing",
-   "PLC, SCADA and historian standards",
-   "Remote access policy"
+   "Your site's controller (PLC) standard, if any"
   ],
   "turnaround": "A time confirmed when you enquire",
   "returns": [
@@ -321,6 +188,7 @@
   "Pass 12 (PS P18; RI 05 qc-micro 6): the hmi-trend intro labels the screen a specimen. Real HMI and alarm-log specimen screens stay Build (FD-47)",
   "Pass 12 (RI 04 qa-head 4): 'data integrity' always spelled out, never a bare 'DI'; the procedures side (change control, configuration control, user roles) lives on cmp-quality, now in related",
   "Pass 12 (FD-60, DR-028): no sentence on this page may say or imply the company is new or lacks references; the closing reads 'no URS? Tell us what you make' (pass 12 review; avoids the DR-028 'none yet' sweep hit)",
-  "Pass 13 (owner decision 2026-11-04): the first systems use polypropylene piping with simplified controls, so nothing on this page may claim or map to 21 CFR Part 11, EU GMP Annex 11 or GUI-0050, or promise audit trails or electronic signatures. The \"Data integrity, clause by clause\" section (clause-crosswalk, #data-integrity) and the Part 11 FAQ are cut; bring them back only on the owner's word."
+  "Pass 13 (owner decision 2026-11-04): the first systems use polypropylene piping with simplified controls, so nothing on this page may claim or map to 21 CFR Part 11, EU GMP Annex 11 or GUI-0050, or promise audit trails or electronic signatures. The \"Data integrity, clause by clause\" section (clause-crosswalk, #data-integrity) and the Part 11 FAQ are cut; bring them back only on the owner's word.",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired alert/action trend (hmi-trend) and options (option-checker: PLC/SCADA platform, historian, remote access, integration); layers 5 to 3 (SCADA historian, plant network); signals 8 to 5; FAQ 6 to 4; records wording per decision 2 ('Quality readings are recorded and kept'); related ind-cdmo#audit-pack -> ind-pharma."
  ]
 }

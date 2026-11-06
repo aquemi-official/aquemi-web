@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "- a table (urs-guide): h, intro, cols [need, why, instead], rows [[need, why, instead | {t, link, intent}]]; - or a spec (as: callouts, ind-process): rows [{p, v, m, link, link_label, in}] read as need = p, why = v, instead = m; a row with \"in\": true is not a tag: it is listed inside the envelope, under the band, as what fits (need bold, then why and instead each on its own line, then the link on its own line); - scale (look-only, DR-018): {from, to, unit, label}: the band's ends (from-to unit) and the envelope's label (\"Fits\"). Its figures must be stated by a reading field of the same block.",
  "best_for": "FitEnvelope draws where the package fits and what it does not take as a boundary: our polypropylene package stands inside a dashed \"fits\" envelope with its rated temperature range as a steel-blue band at the foot, and every exclusion hangs outside the envelope as a numbered tag tied to its edge.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "urs-guide",
@@ -167,9 +167,9 @@
    "page": "urs-guide",
    "slot": 0,
    "h": "When polypropylene is the wrong choice",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "f721e20cf7",
    "block": {
@@ -235,9 +235,9 @@
    "page": "ind-process",
    "slot": 6,
    "h": "Where it fits, and what we do not supply",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "b41a1509e4",
    "block": {

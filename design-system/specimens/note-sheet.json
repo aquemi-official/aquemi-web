@@ -10,9 +10,9 @@
    "page": "news",
    "slot": 0,
    "h": "The notes register",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "541f27b",
    "hash": "20faa7f66e",
    "block": {
@@ -212,6 +212,50 @@
      }
     ],
     "fold": 6,
+    "fold_noun": "notes",
+    "look": "note-sheet"
+   }
+  },
+  {
+   "page": "news",
+   "slot": 0,
+   "h": "The notes register",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "99973496f8",
+   "block": {
+    "type": "register",
+    "nav": "Notes",
+    "anchor": "notes",
+    "h": "The notes register",
+    "intro": "Each title opens its note, or the page that answers it.",
+    "topics": [
+     "Standards",
+     "Design"
+    ],
+    "items": [
+     {
+      "t": "Polypropylene or stainless steel for a PW loop",
+      "topic": "Design",
+      "std": "USP <1231>",
+      "date": "[note publication month, year]",
+      "link": "news#pp-or-stainless",
+      "featured": true,
+      "spot": "storage-tank",
+      "part": "pipe",
+      "d": "Our standard says stainless steel. Can a polypropylene loop carry our Purified Water?"
+     },
+     {
+      "t": "After a water observation: what inspectors ask for",
+      "topic": "Standards",
+      "std": "GUI-0001; 21 CFR 211",
+      "link": "svc-upgrades#observation",
+      "spot": "magnifier",
+      "d": "An inspector cited our water system. What will the response need?"
+     }
+    ],
     "fold_noun": "notes",
     "look": "note-sheet"
    }

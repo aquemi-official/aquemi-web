@@ -4,7 +4,7 @@
  "type": "diagram",
  "fields": "h, intro, stages [{t, d, node}]. node: the station the stage is: gen, tank, pump, hx, pou, sensors, spray (default by position in that order). The strip is fixed (one train); it carries no copy except the P&ID material tags PVC and PP and the CE instrument letters.",
  "best_for": "TrainStrip sets one treatment train as a P&ID strip on a navy band: PVC pretreatment, duplex RO in parallel, the tank, loop pump and UV, heat exchanger, endotoxin filter and an isolatable PP loop with its points of use, sensors and sanitization port, a numbered marker under each station and a numbered caption per stage below.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-hospital-lab",
@@ -135,9 +135,9 @@
    "page": "ind-hospital-lab",
    "slot": 4,
    "h": "One train, designed to the critical-water limits",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "2706b6cfad",
    "block": {

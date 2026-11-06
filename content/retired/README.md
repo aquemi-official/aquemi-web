@@ -8,8 +8,23 @@ Pages for products Aquemi does not offer at this time. They are kept here unchan
 | `05-sys-wfi-membrane.json` | 2026-10-30 | WFI not offered |
 | `06-sys-pure-steam.json` | 2026-10-30 | Pure steam not offered |
 | `19-ind-biotech.json` | 2026-10-30 | Page is built on WFI and pure steam for biologics |
+| `21-ind-cdmo.json` | 2026-11-05 | Contract manufacturers: mostly repeated the pharma page, which now has a contract-manufacturing row |
 
 The current offering is a modular polypropylene (PP) package with PVC pretreatment: pretreatment, RO, DI/EDI and distribution. Stainless steel piped systems are not offered.
+
+## Site simplification (retired 2026-11-05)
+
+The owner asked for a site that shows only what Aquemi offers today, with less repetition and less technical depth up front. Technical detail now comes in discovery meetings, per client. Every page was simplified and about 60 sections were retired. `simplify-2026-11/` holds every page file (and `core.js`, the nav) exactly as it was before. The section library (`sections.html`) keeps every retired section with its last content.
+
+What came out:
+- **Standards:** European standards (Ph. Eur., EU GMP and its Annexes, EMA, EN) and WHO TRS 1033. The focus is North America.
+- **Equipment options:** second-pass RO, CO2 removal, hot-water sanitization, duplex RO trains, and dead-leg specifications and registers.
+- **Controls:** SCADA, historian, network and remote-access options, and controls replacement. Process design and automation for other water system builders is offered instead, as one line on Services.
+- **Technical and compliance depth:** dense spec tables, clause tables, and compliance detail beyond surface level.
+- **Repetition:** repeated document lists, FAQs, PP heat-rating sentences and exclusion lines, each now kept in one place.
+- **Bottom band:** the water animation (`CLOSE_WATER` in `assets/src/parts/Closing.js`).
+
+To bring something back, compare the file in `simplify-2026-11/` with its live copy and restore the parts you want. A retired section comes back by restoring its block. Its look is still in the library.
 
 ## Part 11 content (retired 2026-11-04)
 

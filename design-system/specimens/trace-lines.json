@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [row name, requirement…] (\"URS-012: conductivity …\": the code before the first colon), rows (cells strings or {t, link}).",
  "best_for": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-design",
@@ -140,9 +140,9 @@
    "page": "svc-design",
    "slot": 3,
    "h": "An example: two requirements traced to their tests",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "b99f1f2112",
    "block": {

@@ -162,9 +162,9 @@
    "page": "urs-guide",
    "slot": 4,
    "h": "Rows to write if you allow polypropylene",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "ccf58038de",
    "block": {
@@ -213,9 +213,9 @@
    "page": "first-system",
    "slot": 1,
    "h": "Which water your product needs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "f44ef06d68",
    "block": {
@@ -314,6 +314,62 @@
      ]
     ],
     "look": "derivation-sheet"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 1,
+   "h": "Which water your product needs",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "8235ee5089",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "look": "derivation-sheet",
+    "nav": "Your water",
+    "anchor": "grade",
+    "h": "Which water your product needs",
+    "intro": "Purified Water is drinking water treated to written limits on dissolved salts, organic carbon and microbes. Minimums only: your file may go higher, never lower.",
+    "cols": [
+     "Your product",
+     "Minimum water",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Craft beverages and food",
+      "Potable, then treated to your recipe",
+      "Safe Food for Canadians Regulations; your recipe"
+     ],
+     [
+      "Natural health products",
+      "Potable water; Purified Water where your specification asks",
+      "GUI-0158; your microbial limits"
+     ],
+     [
+      "Cosmetics and personal care",
+      "Your written specification; Purified Water for lines sold as drugs",
+      "Your product class; ISO 22716"
+     ],
+     [
+      "Non-sterile drugs: oral, skin and nasal products",
+      "Purified Water",
+      "Health Canada GUI-0001; limits in USP <645> and <643>"
+     ],
+     [
+      "Medical devices: final rinse",
+      "Purified Water, with an endotoxin limit where needed",
+      "USP <161> per device"
+     ],
+     [
+      "Laboratories",
+      "ASTM D1193-24 Type II or III, or CLSI GP40 clinical laboratory reagent water",
+      "Your methods; not Purified Water"
+     ]
+    ]
    }
   }
  ]

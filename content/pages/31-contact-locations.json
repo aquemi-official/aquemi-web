@@ -3,7 +3,7 @@
  "section": "Contact",
  "nav_label": "Locations",
  "title": "Locations and service coverage | Aquemi",
- "meta": "Aquemi is based in Ontario. By province: severity 1 on-site time, where technicians and parts come from, CSA B51 design registration (CRN) and engineering seal.",
+ "meta": "Aquemi is based in Ontario. By province: on-site time, where technicians and parts come from, and design registration.",
  "path": "/contact/locations/",
  "eyebrow": "LOCATIONS · SERVICE COVERAGE",
  "headline": "Where we are, how fast we reach you",
@@ -120,32 +120,32 @@
     "Your region",
     "Severity 1: technician on site, on a plan",
     "Technician and parts from",
-    "Design registration (CRN), where required, and seal"
+    "Design registration and seal"
    ],
    "rows": [
     [
      "Ontario",
      "The time set in your plan",
      "Ontario, Canada",
-     "Design registration: Technical Standards and Safety Authority (TSSA). Engineering seal: Professional Engineers Ontario (PEO) · Certificate of authorization: status on request"
+     "Design registration: Technical Standards and Safety Authority (TSSA). Engineering seal: Professional Engineers Ontario (PEO)"
     ],
     [
      "Quebec",
      "Visits by arrangement",
      "Ontario, Canada. Language of service confirmed when you enquire.",
-     "Design registration: Régie du bâtiment du Québec (RBQ). Engineering seal: Ordre des ingénieurs du Québec (OIQ) · Member on staff: status on request"
+     "Design registration: Régie du bâtiment du Québec (RBQ). Engineering seal: Ordre des ingénieurs du Québec (OIQ)"
     ],
     [
      "British Columbia",
      "Visits by arrangement",
      "Confirmed when you enquire",
-     "Design registration: Technical Safety BC. Engineering seal: Engineers and Geoscientists BC (EGBC) · Firm permit to practice: status on request"
+     "Design registration: Technical Safety BC. Engineering seal: Engineers and Geoscientists BC (EGBC)"
     ],
     [
      "Alberta",
      "Visits by arrangement",
      "Confirmed when you enquire",
-     "Design registration: Alberta Boilers Safety Association (ABSA). Engineering seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA) · Permit to practice: status on request"
+     "Design registration: Alberta Boilers Safety Association (ABSA). Engineering seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA)"
     ],
     [
      "Other provinces and territories",
@@ -370,7 +370,8 @@
   "Cost of the written coverage answer: [fit check cost or free], the \"Not sure yet\" row of contact-proposal's requests table (FD-02; DR-006 rule 5). At launch, \"Free\" or the price; if unset, the cost line goes",
   "LocalBusiness schema per real location only, once addresses are confirmed",
   "Pass 11 (offer § 14 CL1; L-12-16, L-07-10; FD-44, FD-45): the shop row reads \"Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice\" (ops/placeholder-names.md name, as on svc-fat-sat and projects), two plate callouts (pass 11 review finding 5). The second callout ships with the private launch gate above (FD-44, DR-004 class 2)",
-  "Final round, pass 11: coverage intro states an honest response radius and parts policy: [travel time from service base, hours] and [parts availability period, years]; no map of one dot (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). Owner decides both"
+  "Final round, pass 11: coverage intro states an honest response radius and parts policy: [travel time from service base, hours] and [parts availability period, years]; no map of one dot (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). Owner decides both",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): text fixes only: coverage table's last column names the registration body and seal only (status-on-request clauses dropped); plainer meta."
  ],
  "primary_cta_link": "#coverage",
  "hero_index": false,

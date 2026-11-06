@@ -4,7 +4,7 @@
  "type": "steps",
  "fields": "h, intro, items [{t, d, hold}]. A step's marks follow its place in the order; hold names who signs and labels the sheet's signature boxes (first hold: the left box, second: the right).",
  "best_for": "RevisionSheet tells a document review cycle on one document: a paper sheet stays pinned beside the steps and takes each step's marks as the step reaches the middle of the screen (comments, answered comments and a struck draft tag, signatures, recorded data, the current revision), its revision block filling one row per step.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "cmp-documentation",
@@ -91,9 +91,9 @@
    "page": "cmp-documentation",
    "slot": 2,
    "h": "How each document reaches your file",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "7e33f62c03",
    "block": {

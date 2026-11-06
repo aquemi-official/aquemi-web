@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [your request, first response, what follows] (the two value labels head the lane zones), rows [request, first response, what follows], intro, nav. Cells may be {t, link, intent}.",
  "best_for": "ResponseLanes draws a table of response times by request as lanes on one clock: each request runs from where you call or send through its first response into what follows, every clause a stop with its time beneath, and the severities set as a calm scale of huge light numerals.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "contact-service",
@@ -190,9 +190,9 @@
    "page": "project-plan",
    "slot": 2,
    "h": "Notice before each event",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "74b1c89bff",
    "block": {

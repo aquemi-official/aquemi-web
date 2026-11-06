@@ -3,11 +3,11 @@
  "section": "Industries",
  "nav_label": "Hospitals and laboratories",
  "title": "Hospital critical water and lab water systems | Aquemi",
- "meta": "Polypropylene water package for hospital reprocessing and laboratory buildings: critical water designed to ST108:2023, reagent water to ASTM D1193-24 or CLSI GP40.",
+ "meta": "Water package for hospital reprocessing and laboratory buildings: critical water designed to ST108:2023, reagent water to ASTM D1193-24 or CLSI GP40.",
  "path": "/industries/hospitals-and-laboratories/",
- "eyebrow": "HOSPITALS · LABORATORIES · ST108 · ASTM D1193 · CLSI GP40",
+ "eyebrow": "HOSPITALS · LABORATORIES",
  "headline": "Critical and reagent water, specified by your standard",
- "lead": "For hospital reprocessing departments, clinical and research laboratories, and the consultants who specify them. One ambient polypropylene package, configured to the standard you name: hospital scope confirmed when you enquire; lab water to the grade you specify.",
+ "lead": "For hospital reprocessing departments, clinical and research laboratories, and the consultants who specify them. One water package, configured to the standard you name.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec|Hospital sterile processing",
@@ -18,80 +18,11 @@
  "blocks": [
   {
    "type": "table",
-   "as": "router",
-   "nav": "Where to start",
-   "anchor": "start",
-   "h": "Start from your project",
-   "cols": [
-    "Your project",
-    "What sets the water",
-    "Start with"
-   ],
-   "rows": [
-    [
-     "A reprocessing department renovation, or washers added",
-     "Critical water for the final rinse, sized to the washers' fill peaks",
-     {
-      "t": "Where water goes in reprocessing",
-      "link": "ind-hospital-lab#reprocessing"
-     }
-    ],
-    [
-     "A central reverse osmosis (RO) plant failing or ageing",
-     "Your standard, its edition and a year of water records",
-     {
-      "t": "Upgrades: system assessment",
-      "link": "svc-upgrades#assessment"
-     }
-    ],
-    [
-     "A new laboratory building, or a central plant replaced",
-     "Your consultant's basis of design and tap list",
-     {
-      "t": "For consultants and contractors",
-      "link": "ind-hospital-lab#specification"
-     }
-    ],
-    [
-     "Feed water for a clinical analyzer",
-     "The analyzer maker's water specification",
-     {
-      "t": "Send that specification with your request",
-      "link": "contact-proposal",
-      "intent": "I have a URS or a draft|Laboratory or research"
-     }
-    ],
-    [
-     "A biotech or battery research laboratory",
-     "The grade and edition your methods name",
-     {
-      "t": "Where water goes in a laboratory",
-      "link": "ind-hospital-lab#labs"
-     }
-    ],
-    [
-     "One laboratory, or one washer",
-     "Water at a single point of use",
-     "A point-of-use unit from your equipment supplier fits better"
-    ],
-    [
-     "A public tender or request for proposal",
-     "The tender's grid, standard and edition",
-     {
-      "t": "Your tender, answered line by line",
-      "link": "buying#answer"
-     }
-    ]
-   ],
-   "look": "stair-router"
-  },
-  {
-   "type": "table",
    "as": "evidence",
    "nav": "Grades",
    "anchor": "grades",
    "h": "Which water each standard asks for",
-   "intro": "None of these is Purified Water. Purified Water is held to ≤ 1.3 µS/cm at 25 °C (USP <645> stage 1), with no endotoxin limit.",
+   "intro": "None of these is Purified Water: each standard sets its own limits.",
    "cols": [
     "Water",
     "How it differs from Purified Water",
@@ -101,39 +32,33 @@
    "rows": [
     [
      "Critical water",
-     "Fewer ions removed, far tighter on microbes, plus an endotoxin limit: < 10 µS/cm, < 10 colony-forming units (CFU)/mL, < 10 endotoxin units/mL",
+     "Fewer ions removed than PW, far tighter on microbes, with an endotoxin limit",
      "ANSI/AAMI ST108:2023; CSA Z314:23",
      ""
     ],
     [
      "Utility water",
-     "Looser: < 500 µS/cm, < 500 CFU/mL. As the final rinse after high-level disinfection: < 10 CFU/mL and < 10 endotoxin units/mL",
+     "Looser; used for cleaning steps",
      "ANSI/AAMI ST108:2023",
      ""
     ],
     [
      "Type II reagent water",
-     "Tighter on ions and organic carbon: < 1 µS/cm at 25 °C, total organic carbon < 50 µg/L",
+     "Tighter than PW on ions and organic carbon",
      "",
-     "ASTM D1193-24; values from D1193-06"
+     "ASTM D1193-24"
     ],
     [
      "Type III reagent water",
-     "Tighter on ions than Type II, looser on organic carbon: < 0.25 µS/cm at 25 °C, total organic carbon < 200 µg/L. Not a purity ladder",
+     "Tighter on ions, looser on organic carbon than Type II",
      "",
-     "ASTM D1193-24; values from D1193-06"
+     "ASTM D1193-24"
     ],
     [
      "Clinical laboratory reagent water",
      "Defined for medical laboratories; an analyzer maker's specification governs that analyzer's feed",
      "",
      "CLSI GP40 5th ed."
-    ],
-    [
-     "Type I reagent water",
-     "Made at the bench by a point-of-use polisher fed from the loop, not by a central loop",
-     "",
-     "ASTM D1193-24"
     ]
    ],
    "look": "grade-crosswalk"
@@ -231,59 +156,6 @@
    "look": "building-loop"
   },
   {
-   "type": "diagram",
-   "nav": "Treatment train",
-   "anchor": "train",
-   "h": "One train, designed to the critical-water limits",
-   "intro": "The configuration follows your standard and is confirmed when you enquire.",
-   "stages": [
-    {
-     "t": "Generation",
-     "spot": "ro-skid",
-     "node": "gen",
-     "d": "Polyvinyl chloride (PVC) pretreatment, then RO. Electrodeionization (EDI) only where your grade needs it. Duplicate RO trains are often specified."
-    },
-    {
-     "t": "Storage",
-     "spot": "storage-tank",
-     "node": "tank",
-     "d": "Sized to the peak draw, such as washers filling together, so generation runs steady."
-    },
-    {
-     "t": "Loop pump and UV",
-     "spot": "pump",
-     "node": "pump",
-     "d": "Pumps: duty and standby pumps on request. 254 nm ultraviolet (UV) on the supply lowers the viable count; it does not sanitize the loop."
-    },
-    {
-     "t": "Temperature",
-     "spot": "heat-exchanger",
-     "node": "hx",
-     "d": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)."
-    },
-    {
-     "t": "Points of use",
-     "icon": "loop",
-     "node": "pou",
-     "d": "Washers, sinks and bench taps on short branches; sections isolate for work. Endotoxin filtration: on request."
-    },
-    {
-     "t": "Return sensors",
-     "icon": "conductivity",
-     "node": "sensors",
-     "d": "Conductivity online after the last treatment step; samples at loop out, loop return and each outlet."
-    },
-    {
-     "t": "Sanitization",
-     "icon": "tank",
-     "node": "spray",
-     "d": "A chemical method set per project; residual tested before use. PVC stays upstream, out of the critical-water loop."
-    }
-   ],
-   "look": "train-strip",
-   "band": "limestone"
-  },
-  {
    "type": "docs",
    "nav": "For consultants",
    "anchor": "specification",
@@ -304,57 +176,12 @@
      "d": "Connections by tag, size and fluid; utilities and drains; what is ours and what is your contractor's"
     },
     {
-     "t": "Panel approval",
-     "d": "Electrical approval route: confirmed in your proposal"
-    },
-    {
      "t": "Changeover plan",
      "d": "Work in an occupied building; temporary water during the cutover; shutdown windows set with your facilities team"
-    },
-    {
-     "t": "Site safety",
-     "d": "Chemicals brought on site; drain discharge; isolation points"
     }
    ],
    "fold_noun": "sections",
    "look": "spine-shelf"
-  },
-  {
-   "type": "steps",
-   "nav": "Validation",
-   "anchor": "validation",
-   "h": "Validation before first use",
-   "intro": "Designed to the ST108:2023 critical-water limits; your program shows compliance. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
-   "items": [
-    {
-     "t": "Protocol",
-     "d": "Written to your water management program and approved before any test runs.",
-     "hold": "Your water management team",
-     "icon": "binder"
-    },
-    {
-     "t": "Installation check (IQ)",
-     "d": "Drawings, materials, instruments and calibration checked as installed. Good manufacturing practice (GMP) sites call it installation qualification.",
-     "icon": "pid"
-    },
-    {
-     "t": "Operational check (OQ)",
-     "d": "Flows, alarms, controls and sanitization tested against the protocol. GMP sites call it operational qualification.",
-     "icon": "gauge"
-    },
-    {
-     "t": "Validation sampling",
-     "d": "Hospitals: bacteria and endotoxin at loop out, loop return and each outlet. Laboratories: verification to CLSI GP40.",
-     "icon": "magnifier"
-    },
-    {
-     "t": "Routine monitoring",
-     "d": "Critical water: conductivity daily after the last treatment step. Bacteria and endotoxin monthly at loop out, loop return and each outlet.",
-     "hold": "Your program",
-     "icon": "calendar"
-    }
-   ],
-   "look": "gate-line"
   },
   {
    "type": "faq",
@@ -370,13 +197,7 @@
     },
     {
      "q": "Do you supply dialysis water?",
-     "a": "No. Dialysis water systems are licensed as medical devices, and we do not make them. No Water for Injection, pure steam or stainless steel systems."
-    },
-    {
-     "q": "Can the loop be disinfected with hot water?",
-     "a": "Not routinely. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Any hot-water cycle stays inside the PP maker's published pressure–temperature curve for its hours. A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it).",
-     "link": "industries#fit",
-     "link_label": "Check your use fits"
+     "a": "No. Dialysis water systems are licensed as medical devices, and we do not make them."
     },
     {
      "q": "Can you supply Type I water?",
@@ -385,12 +206,6 @@
     {
      "q": "Can one plant serve reprocessing and the laboratory?",
      "a": "Yes, or two plants; your consultant decides. A shared plant feeds separate storage, each held to its own grade. Separate plants let one be disinfected while the other runs."
-    },
-    {
-     "q": "Can the changeover happen in an occupied building?",
-     "a": "Yes. The changeover plan sets shutdown windows, temporary water and isolation with your facilities team and contractor.",
-     "link": "cmp-documentation#safety",
-     "link_label": "Site safety information"
     }
    ]
   },
@@ -439,6 +254,7 @@
   "Intent options (DR-027 rule 10): hero ticks \"I know my product, not my water spec|Hospital sterile processing\" (department managers without a spec); closing ticks \"I have a URS or a draft|Hospital sterile processing\" (pass 12 review F1); router analyzer row ticks \"I have a URS or a draft|Laboratory or research\"",
   "Lessons: industries/hospital-reprocessing.md website 1-6 (consultant-first order, critical vs utility table, train, validation wording, dialysis only to exclude); industries/laboratories.md website 1-4 (Type I from point-of-use polishers, central RO for Type II or III and CLRW feed, analyzer maker governs); RI consultant 1 and contractor 1 (scope and limits first, battery limits); IB 2.4 and critic A (single washer or clinic routed to the equipment supplier, said plainly)",
   "Image queue (R11): page-specific hero drawing for this page; until it exists the hero shows no figure",
-  "Fit home (DR-027 rule 4, DR-013 rule 2): FAQ 3 \"Can the loop be disinfected with hot water?\" links industries#fit; [maximum loop sanitization temperature for PP, °C] and [whether we quote PVDF] are DR-013's registered names. Router row 7 (public tender) links buying#answer for procurement (pass 12 review F4)"
+  "Fit home (DR-027 rule 4, DR-013 rule 2): FAQ 3 \"Can the loop be disinfected with hot water?\" links industries#fit; [maximum loop sanitization temperature for PP, °C] and [whether we quote PVDF] are DR-013's registered names. Router row 7 (public tender) links buying#answer for procurement (pass 12 review F4)",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): router retired (decision 8; page ends at 5 sections), treatment-train and validation sections retired, grade table loses its figures and the Type I row, consultant documents cut to 4 (panel approval, site safety retired), FAQ cut to 4 (hot-water disinfection, occupied building retired), polypropylene and standards removed from hero."
  ]
 }

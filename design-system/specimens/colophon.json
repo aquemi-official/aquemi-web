@@ -698,9 +698,9 @@
    "page": "news",
    "slot": 3,
    "h": "A published case, read as precedent",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "72d7db876c",
    "block": {
@@ -827,9 +827,9 @@
    "page": "ind-meddevice",
    "slot": 1,
    "h": "Qualifying us as your supplier",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "15520d6221",
    "block": {
@@ -900,9 +900,9 @@
    "page": "about",
    "slot": 0,
    "h": "Company facts",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "0ccfdcf9bc",
    "block": {
@@ -955,6 +955,60 @@
       "p": "Licences and seals",
       "v": "Engineering seal and firm permit: details on request",
       "m": "Licensing body registers on request"
+     },
+     {
+      "p": "Head office",
+      "v": "Ontario, Canada",
+      "m": "Contact details on the Locations page",
+      "link": "contact-locations#locations"
+     },
+     {
+      "p": "Shop and test bay",
+      "v": "Ontario, Canada",
+      "m": "Visit with reasonable notice",
+      "link": "contact-locations#visit"
+     }
+    ],
+    "look": "colophon"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 0,
+   "h": "Company facts",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "0ae6c815f2",
+   "block": {
+    "type": "spec",
+    "nav": "Company",
+    "anchor": "facts",
+    "h": "Company facts",
+    "cols": [
+     "Item",
+     "Fact",
+     "Evidence"
+    ],
+    "rows": [
+     {
+      "p": "Scope",
+      "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. No Water for Injection, pure steam or stainless steel systems. Not residential or municipal. We also offer process design and automation to other water system builders",
+      "m": "Stated in these words in every proposal. Registered activity: [registered business activity, as filed]",
+      "link": "systems",
+      "hl": true
+     },
+     {
+      "p": "Why modular polypropylene",
+      "v": "Modular polypropylene packages for ambient Purified Water, tested before they ship.",
+      "m": "The team's engineering rationale, signed"
+     },
+     {
+      "p": "Quality system",
+      "v": "Status on request",
+      "m": "Audit on reasonable notice",
+      "link": "cmp-quality#certification"
      },
      {
       "p": "Head office",

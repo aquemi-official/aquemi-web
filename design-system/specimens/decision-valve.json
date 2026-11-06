@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "(a table block, as: \"router\"): h, cols [situation, step, ...the rest], rows [[situation, step, ...]]; cells may be {t, link, intent} as in every table. No new fields.",
  "best_for": "DecisionValve draws a router table as a multiport valve, a navy object on the paper: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pretreatment",
@@ -59,9 +59,9 @@
    "page": "sys-pretreatment",
    "slot": 3,
    "h": "Chlorine or chloramine: the removal step",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "19cb29a",
    "hash": "0f6cfde71c",
    "block": {

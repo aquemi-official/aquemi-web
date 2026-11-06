@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a failures table: h, intro, cols [gap, requirement, what the upgrade does], rows, fold, fold_noun.",
  "best_for": "StrikeGaps sets gaps and their fixes as a before and after in large light type: the gap as it stands, struck through like a drawing revision; the requirement it misses in mono on an arrow; what the upgrade does at full strength.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-upgrades",
@@ -108,9 +108,9 @@
    "page": "urs-guide",
    "slot": 3,
    "h": "Clauses that keep the design open",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "0567cdf5d1",
    "block": {
@@ -207,9 +207,9 @@
    "page": "svc-upgrades",
    "slot": 2,
    "h": "Gaps in older controls",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "f3e495b44e",
    "block": {

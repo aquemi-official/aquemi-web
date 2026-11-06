@@ -77,9 +77,9 @@
    "page": "projects",
    "slot": 0,
    "h": "Typical configurations · design basis",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "b675151f19",
    "block": {
@@ -127,6 +127,74 @@
      {
       "t": "Laboratory building central loop",
       "d": "Central loop designed to ASTM D1193-24 Type II or III. Configuration confirmed when you enquire; sanitized by a chemical method set per project. Commissioning and acceptance.",
+      "icon": "conductivity",
+      "tag": "Design basis",
+      "link": "ind-hospital-lab",
+      "spec_labels": [
+       "Grade",
+       "System",
+       "Checks"
+      ]
+     }
+    ],
+    "look": "config-cards"
+   }
+  },
+  {
+   "page": "projects",
+   "slot": 0,
+   "h": "Typical configurations · design basis",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "f210f246fc",
+   "block": {
+    "type": "grid",
+    "nav": "Configurations",
+    "anchor": "configurations",
+    "h": "Typical configurations · design basis",
+    "intro": "Each card is sized to your demand for municipal feed, chlorinated or chloraminated, at its coldest temperature. Each is chemically sanitized, by a method set per project.",
+    "items": [
+     {
+      "t": "Oral solid dose site",
+      "d": "Granulation water and equipment final rinse. Pretreatment, reverse osmosis (RO), electrodeionization (EDI), tank and loop. Qualification (IQ/OQ/PQ).",
+      "icon": "ro-membrane",
+      "tag": "Design basis",
+      "link": "ind-pharma"
+     },
+     {
+      "t": "Spirits proofing and process rinse",
+      "d": "Proofing water and precision rinse, to the limit your process sets. Configuration confirmed when you enquire. Commissioning and acceptance.",
+      "icon": "ro-membrane",
+      "tag": "Design basis",
+      "link": "ind-process"
+     },
+     {
+      "t": "Medical device final rinse",
+      "d": "Washer final rinse to your written endotoxin limit. Pretreatment, RO, EDI, tank and loop. IQ/OQ/PQ.",
+      "icon": "valve",
+      "tag": "Design basis",
+      "link": "ind-meddevice"
+     },
+     {
+      "t": "Contract manufacturing multi-product loop",
+      "d": "One loop feeding several suites and client programs. Pretreatment, RO, EDI, tank and loop. IQ/OQ/PQ.",
+      "icon": "conductivity",
+      "tag": "Design basis",
+      "link": "ind-pharma",
+      "scene": "suites"
+     },
+     {
+      "t": "Cosmetics batching and filler rinse",
+      "d": "Cream water phase, filler rinse. Configuration confirmed when you enquire. Commissioning and acceptance; IQ/OQ/PQ for over-the-counter drugs.",
+      "icon": "loop",
+      "tag": "Design basis",
+      "link": "ind-personal-care"
+     },
+     {
+      "t": "Laboratory building central loop",
+      "d": "Central loop to the reagent water type you specify. Configuration confirmed when you enquire. Commissioning and acceptance.",
       "icon": "conductivity",
       "tag": "Design basis",
       "link": "ind-hospital-lab",

@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "(a spec block, as skid-sheet): h, caption (eyebrow and a title block cell), intro, rows [{p, v, m, link, link_label, part}], note, cols[2] (the basis button's word). part (look-only): membranes, utilities, exchanger, edi, piping, joints, frame, pump, drain, panel. A row without a part lists with no tag. Every row shows on every width.",
  "best_for": "OrthoSheet reads a skid's design parameters off an orthographic general-arrangement sheet: one RO and EDI skid drawn flat in two views, the front elevation over the plan, with a numbered tag on a leader from each part to the parameter it governs and the parameter rows beside the sheet under the same numbers.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pw",
@@ -134,9 +134,9 @@
    "page": "sys-pw",
    "slot": 2,
    "h": "Skid design parameters",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "6668215263",
    "block": {

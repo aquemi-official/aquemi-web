@@ -10,9 +10,9 @@
    "page": "ind-hospital-lab",
    "slot": 1,
    "h": "Which water each standard asks for",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "f6841a4",
    "hash": "7ad281d7c6",
    "block": {
@@ -64,6 +64,63 @@
       "Made at the bench by a point-of-use polisher fed from the loop, not by a central loop",
       "",
       "ASTM D1193-24"
+     ]
+    ],
+    "look": "grade-crosswalk"
+   }
+  },
+  {
+   "page": "ind-hospital-lab",
+   "slot": 0,
+   "h": "Which water each standard asks for",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "374efb5959",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "nav": "Grades",
+    "anchor": "grades",
+    "h": "Which water each standard asks for",
+    "intro": "None of these is Purified Water: each standard sets its own limits.",
+    "cols": [
+     "Water",
+     "How it differs from Purified Water",
+     "Hospital standard",
+     "Laboratory standard"
+    ],
+    "rows": [
+     [
+      "Critical water",
+      "Fewer ions removed than PW, far tighter on microbes, with an endotoxin limit",
+      "ANSI/AAMI ST108:2023; CSA Z314:23",
+      ""
+     ],
+     [
+      "Utility water",
+      "Looser; used for cleaning steps",
+      "ANSI/AAMI ST108:2023",
+      ""
+     ],
+     [
+      "Type II reagent water",
+      "Tighter than PW on ions and organic carbon",
+      "",
+      "ASTM D1193-24"
+     ],
+     [
+      "Type III reagent water",
+      "Tighter on ions, looser on organic carbon than Type II",
+      "",
+      "ASTM D1193-24"
+     ],
+     [
+      "Clinical laboratory reagent water",
+      "Defined for medical laboratories; an analyzer maker's specification governs that analyzer's feed",
+      "",
+      "CLSI GP40 5th ed."
      ]
     ],
     "look": "grade-crosswalk"

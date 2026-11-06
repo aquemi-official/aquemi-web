@@ -3,11 +3,11 @@
  "section": "Industries",
  "nav_label": "Your first system",
  "title": "Planning your site's first Purified Water system | Aquemi",
- "meta": "For makers of natural health products, non-sterile drugs, devices, cosmetics and drinks, and small labs: whether a Purified Water package fits, what your site needs, all-in cost and five steps.",
+ "meta": "For makers of natural health products, non-sterile drugs, devices, cosmetics and drinks, and small labs: whether a Purified Water package fits, what your site needs, and what your team does each week.",
  "path": "/industries/first-system/",
  "eyebrow": "YOUR FIRST SYSTEM",
  "headline": "Planning your site's first Purified Water system",
- "lead": "For makers of natural health products, non-sterile drugs, devices, cosmetics and craft beverages, and small labs. One polypropylene package with polyvinyl chloride pretreatment.",
+ "lead": "For makers of natural health products, non-sterile drugs, devices, cosmetics and craft beverages, and small labs. One modular Purified Water package, sized to your site.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec",
@@ -33,8 +33,8 @@
    "look": "reader-split",
    "nav": "Is it for you",
    "anchor": "fit",
-   "h": "Is a polypropylene Purified Water package right for you?",
-   "intro": "One wrong-choice line that describes you is enough to rule this package out. No Water for Injection, pure steam or stainless steel systems.",
+   "h": "Is a packaged Purified Water system right for you?",
+   "intro": "One wrong-choice line that describes you is enough to rule this package out.",
    "cols": [
     "Wrong choice if",
     "Fits if",
@@ -58,19 +58,11 @@
      }
     ],
     [
-     "Your loop must be held hot, or sanitized routinely with hot water or steam",
-     "An ambient, chemically sanitized loop suits your products",
-     {
-      "t": "Sanitization methods",
-      "link": "sys-storage#sanitization"
-     }
-    ],
-    [
      "Your company standard names stainless steel for water piping",
      "Your specification allows a polypropylene loop, or has no material rule yet",
      {
-      "t": "When polypropylene is the wrong choice",
-      "link": "urs-guide#pp-rows"
+      "t": "The package and its materials",
+      "link": "systems"
      }
     ],
     [
@@ -111,11 +103,6 @@
      "Cosmetics and personal care",
      "Your written specification; Purified Water for lines sold as drugs",
      "Your product class; ISO 22716"
-    ],
-    [
-     "Natural health products: homeopathic dilutions, or sold abroad as drugs",
-     "Purified Water, or the liquid a monograph names",
-     "The monograph, or the importing market's drug rules"
     ],
     [
      "Non-sterile drugs: oral, skin and nasal products",
@@ -164,15 +151,6 @@
      "part": "package"
     },
     {
-     "p": "Training",
-     "v": "Hours and audiences agreed with you",
-     "m": "For your daily operators",
-     "link": "svc-cq#faq",
-     "link_label": "Training",
-     "side": "package",
-     "part": "panel"
-    },
-    {
      "p": "Water supply",
      "v": "City or well water, with its latest report",
      "m": "The report sets the pretreatment",
@@ -199,20 +177,6 @@
      "m": "Measure the narrowest door on the route",
      "side": "site",
      "part": "door"
-    },
-    {
-     "p": "Leased units",
-     "v": "Ask your landlord: drain, floor load, wall openings",
-     "m": "Before you order",
-     "side": "site",
-     "part": "floor"
-    },
-    {
-     "p": "Device washers and labs",
-     "v": "Drawn at the washer or bench, often in a clean room",
-     "m": "Plan the pipe and sample point there",
-     "side": "site",
-     "part": "use"
     }
    ],
    "sides": [
@@ -252,156 +216,9 @@
      "p": "Sanitization",
      "v": "A chemical method set per project; residual tested before use",
      "m": "At a frequency set by your monitoring"
-    },
-    {
-     "p": "First weeks, drug lines",
-     "v": "Sample daily for at least 2 weeks; your quality unit approves first use",
-     "m": "At start-up. Sampling then continues for a year."
-    },
-    {
-     "p": "Year one in total",
-     "v": "Estimated in your proposal",
-     "m": "Plan these hours before you order"
     }
    ],
    "note": "Your quality person sets the sample points and how often."
-  },
-  {
-   "type": "spec",
-   "look": "cost-balance",
-   "nav": "Cost",
-   "anchor": "cost",
-   "h": "What it costs, all in and per month",
-   "intro": "Monthly lines are sized to your demand; your water and use change them. For a capital request, use the all-in figure.",
-   "cols": [
-    "Cost line",
-    "Amount",
-    "Basis"
-   ],
-   "rows": [
-    {
-     "p": "The package",
-     "v": "Priced per project, once",
-     "m": "Size and options",
-     "link": "systems#budget"
-    },
-    {
-     "p": "Installation, connections and tie-in",
-     "v": "Quoted in your proposal, once",
-     "m": "Set in the proposal: who installs and connects each item"
-    },
-    {
-     "p": "Qualification or acceptance tests",
-     "v": "Quoted in your proposal, once",
-     "m": "Tests run on site; protocols in line 1, lab tests in line 7."
-    },
-    {
-     "p": "Service plan",
-     "v": "Quoted in your proposal",
-     "m": "Visits and calibration",
-     "link": "svc-service"
-    },
-    {
-     "p": "Filters, membranes, resin, salt and sanitant",
-     "v": "Estimated in your proposal",
-     "m": "Your feed water and daily use",
-     "link": "svc-service#running-cost"
-    },
-    {
-     "p": "Energy",
-     "v": "Estimated in your proposal",
-     "m": "Energy use estimated in your proposal, at your electricity rate"
-    },
-    {
-     "p": "Lab tests on your samples",
-     "v": "Estimated in your proposal",
-     "m": "Your lab or a contract lab; your sampling plan"
-    },
-    {
-     "p": "Water to drain",
-     "v": "Estimated in your proposal",
-     "m": "Part of the feed goes to drain (the recovery in your design), at your water rate",
-     "side": "out"
-    }
-   ],
-   "note": "First year, all in: lines 1 to 3 once, plus 12 months of lines 4 to 8. Add temporary water if production cannot stop.",
-   "glyphs": [
-    "softener",
-    "carbon-filter",
-    "ro-membrane",
-    "edi",
-    "tank"
-   ]
-  },
-  {
-   "type": "steps",
-   "look": "release-run",
-   "nav": "Steps",
-   "anchor": "steps",
-   "h": "From first call to water you can use",
-   "intro": "Have four answers: what is in your water, which grade, how much, and what limits your site. Missing one? Send the rest. We draft, check against your budget and revise until you approve.",
-   "items": [
-    {
-     "t": "Scope review",
-     "d": "You send what you make and where you sell it. We return the water each product needs."
-    },
-    {
-     "t": "Budget range",
-     "d": "You send how much water you use a day, and your water report. We return a package size and budget range.",
-     "link": "systems#budget"
-    },
-    {
-     "t": "Requirements and order",
-     "d": "You agree a short user requirement specification (URS) and the proposal, so both sides sign the same scope.",
-     "link": "urs-guide"
-    },
-    {
-     "t": "Build and test",
-     "d": "We build and test the package in our shop, with you as witness, then again on your site."
-    },
-    {
-     "t": "Water released for use",
-     "d": "We run the qualification or acceptance tests with you. Your quality person then releases the water for use.",
-     "link": "svc-cq"
-    }
-   ]
-  },
-  {
-   "type": "grid",
-   "look": "capital-request",
-   "nav": "Your case",
-   "anchor": "case",
-   "h": "Making the case inside your company",
-   "intro": "Four reasons you can paste into a capital request, with the source where one applies.",
-   "sheet": "Capital request: Purified Water system",
-   "items": [
-    {
-     "t": "Product quality",
-     "d": "In creams, liquids and drinks, water is an ingredient. Water made and tested to a written specification protects your limits and shelf life.",
-     "link": "ind-personal-care#grade"
-    },
-    {
-     "t": "Records an inspector reads",
-     "d": "Health Canada's good manufacturing practice guides ask for qualified, monitored water and its test records. GUI-0001 covers drugs; GUI-0158, natural health products.",
-     "tag": "GUI-0001",
-     "link": "ind-pharma#grades",
-     "codes": [
-      "GUI-0001",
-      "GUI-0158"
-     ]
-    },
-    {
-     "t": "Paperwork to match",
-     "d": "Documentation scales to your product's rules: qualification records for drug lines, an acceptance test against your specification for the rest.",
-     "link": "cmp-documentation"
-    },
-    {
-     "t": "Room to grow",
-     "d": "Sized to the water you use each day; adding lines later is a capacity upgrade.",
-     "link": "svc-upgrades#upgrades"
-    }
-   ],
-   "ground": "light"
   },
   {
    "type": "faq",
@@ -412,16 +229,12 @@
     {
      "q": "Our products only need potable water. Do we need this?",
      "a": "No, if every product's specification, monograph or recipe accepts potable water. Natural health products need potable water at minimum under GUI-0158. Cosmetics, drinks and lab water follow the standard you work to. The scope review confirms it per product.",
-     "link": "industries#matrix",
-     "link_label": "Water by industry"
+     "link": "first-system#grade",
+     "link_label": "Which water your product needs"
     },
     {
      "q": "How much water do we need?",
      "a": "Add up a normal day: water in your batches, equipment rinses and cleaning. Then note your busiest hour. A storage tank covers that hour, so the unit that makes the water can be smaller. Send both figures with your scope review."
-    },
-    {
-     "q": "Can we buy a used unit?",
-     "a": "You can. First ask for its drawings, material certificates, test records and service history. Qualification relies on those records, so check them before you buy."
     },
     {
      "q": "Do we need a URS before we call?",
@@ -436,16 +249,10 @@
      "link_label": "How a project runs"
     },
     {
-     "q": "Do we get a full pharmaceutical document pack?",
-     "a": "No, unless your product's rules ask for one. Drug lines get qualification protocols and reports. Natural health product lines get the evidence GUI-0158 asks for, with the scope set per project. Other lines get commissioning records and an acceptance test against your specification. A summary for your approver is available on request.",
-     "link": "cmp-documentation",
-     "link_label": "The document set"
-    },
-    {
-     "q": "Who will we work with?",
-     "a": "A named team. Our commercial lead, an automation engineer with direct experience on pharmaceutical water systems, and a modular manufacturing and design specialist. A project lead named in your order is your contact from order to handover.",
-     "link": "about#people",
-     "link_label": "The people"
+     "q": "What does it cost?",
+     "a": "Ask for a budget range with your scope review. Your proposal prices the package, installation, tests and service plan; running costs are on our service page.",
+     "link": "svc-service#running-cost",
+     "link_label": "Running costs"
     }
    ]
   },
@@ -503,6 +310,7 @@
   "Final round, pass 11: \"What your site needs\" gains natural health product and medical device site constraints (leased unit: drain, floor load, wall openings; rinse water drawn at the washer, often in a clean room) (authoritative desk review, DESK-plan.md, Q1: first-system must cover NHP and device site constraints)",
   "Final round, pass 11: steps intro: the four questions before design (water, grade, quantity, site) and the short design loop (draft, check against budget, revise until approved) (L-BWT-21, L-BWT-4; BWT study § 9 rank 2)",
   "Pass 12 (SITE-PLAN first-system; FD-59, FD-60; DR-027, DR-028): readers widened to cosmetics, craft beverage and lab owners (IB §2.6, critic G: the lead names the buyer's first system via the headline 'your site's first', never Aquemi's). Lead: reader list, then the package sentence; eyebrow drops the two Health Canada codes so non-drug readers are not turned away (the codes stay in #grade and #case). Words cut to hold the 1,300 page budget: site notes, step 1, 'Room to grow', grade 'what sets it' cells. Fit: rows 1, 2, 5 name cosmetics, recipes and lab buildings; row 5 links ind-hospital-lab#labs. Grade: plain definition of Purified Water first (RI 14 founder 1); rows run loosest to strictest as the derivation-sheet look reads them; NHP rows 1-2 merged; cosmetics row from ind-personal-care#grade's plan, beverage row from ind-process (potable floor), lab row in §1.2.6 wording (not Purified Water); WFI row dropped: fit row 1 and the fit intro carry it (one home: industries#faq). Case: fourth tile 'Paperwork to match' (RI 14 founder 3: documentation scales to the product's rules); tile 1 links ind-personal-care#grade. FAQ: potable answer opens with 'No' and links industries#matrix (one link per answer; the matrix routes to every group page); new 'Do we get a full pharmaceutical document pack?' carries the approver summary as [one-paragraph approver summary, yes or no] (FD-58, RI 14 founder 5); people answer replaced with NS row faq [5] wording (MISSION). Steps 5 and closing returns name acceptance as well as qualification (non-GMP path, DR-027 rule 8). Related: ind-pharma#nhp plus the three group pages, project-plan, about. Cost unchanged: structure only, values bracketed, no range (RI conflict 1)",
-  "Pass 12 review (ops/pass12/reviews/first-system.md): F1 fit row names routine hot-water sanitization and the 'chemically sanitized' ambient test (DR-013 rule 2, industries#fit); F2 document-pack FAQ gives NHP lines [NHP qualification scope] (FD-46, GUI-0158); F3 cost line 'Qualification or acceptance tests' (DR-027 rule 8); F4 water supply and closing include name well water (FD-59 rural readers; sys-pretreatment); F5 beverage grade row names the potable floor (Safe Food for Canadians Regulations, DR-011 rule 3, from industries#matrix); F6 meta 'non-sterile drugs'; F7 time FAQ opens with where the answer is (SITE-PLAN 1.4; durations stay on project-plan, DR-009); F8 team answer as one sentence (MISSION, DR-004); F9 shop test 'with you as witness' (FD-60 proof by process; notice times stay on project-plan/buying, DR-028 rule 3). Offsets: site rows 7-8 notes and step 2 'roughly' cut to hold 1,300 words"
+  "Pass 12 review (ops/pass12/reviews/first-system.md): F1 fit row names routine hot-water sanitization and the 'chemically sanitized' ambient test (DR-013 rule 2, industries#fit); F2 document-pack FAQ gives NHP lines [NHP qualification scope] (FD-46, GUI-0158); F3 cost line 'Qualification or acceptance tests' (DR-027 rule 8); F4 water supply and closing include name well water (FD-59 rural readers; sys-pretreatment); F5 beverage grade row names the potable floor (Safe Food for Canadians Regulations, DR-011 rule 3, from industries#matrix); F6 meta 'non-sterile drugs'; F7 time FAQ opens with where the answer is (SITE-PLAN 1.4; durations stay on project-plan, DR-009); F8 team answer as one sentence (MISSION, DR-004); F9 shop test 'with you as witness' (FD-60 proof by process; notice times stay on project-plan/buying, DR-028 rule 3). Offsets: site rows 7-8 notes and step 2 'roughly' cut to hold 1,300 words",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): fit table cut to 4 rows (hot loop row retired; PP row now links systems), grade table loses the homeopathic row, site rows cut to 6 (training, leased units, washers and labs retired), team rows cut to 4, cost, release-run and capital-request sections retired, FAQ now 5 (used unit, document pack, who we work with retired; new cost question links svc-service#running-cost because systems#budget and buying#capital are retired), polypropylene lead and WFI intro line removed."
  ]
 }

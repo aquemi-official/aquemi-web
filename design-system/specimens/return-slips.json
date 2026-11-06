@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [situation, what comes back, when, cost] (labels used as the slip field names), rows, fold, fold_noun. Each slip's ruled header has one mark per slip in its row, its own in flow (slip 2 of 4 lights the second).",
  "best_for": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "contact-proposal",
@@ -120,9 +120,9 @@
    "page": "project-plan",
    "slot": 3,
    "h": "Changes after you approve",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "38d542f98d",
    "block": {

@@ -201,9 +201,9 @@
    "page": "ind-meddevice",
    "slot": 2,
    "h": "Water grade by process step",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "1f4eab0",
    "hash": "e32e87b4a5",
    "block": {
@@ -238,6 +238,81 @@
       "Final rinse, cerebrospinal fluid contact",
       "WFI, or water held to its endotoxin limit",
       "2.15 endotoxin units per device (USP <161>)"
+     ]
+    ],
+    "look": "grade-mains",
+    "band": "plain",
+    "lanes": [
+     {
+      "id": "pw",
+      "t": "Purified Water (PW)"
+     },
+     {
+      "id": "wfi",
+      "t": "Water for Injection (WFI)",
+      "note": "We do not supply WFI",
+      "off": true
+     }
+    ],
+    "taps": [
+     [
+      "pw"
+     ],
+     [
+      "pw"
+     ],
+     [
+      "pw",
+      "wfi?"
+     ],
+     [
+      "wfi",
+      "pw?"
+     ]
+    ]
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 1,
+   "h": "Water grade by process step",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "ef491d7ec8",
+   "block": {
+    "type": "table",
+    "as": "grades",
+    "nav": "Grade by step",
+    "anchor": "grades",
+    "h": "Water grade by process step",
+    "intro": "Common practice, not a rule: your risk assessment sets the grade per step.",
+    "cols": [
+     "Process step",
+     "Typical water",
+     "What sets it"
+    ],
+    "rows": [
+     [
+      "Intermediate rinses; final rinse, intact-skin devices",
+      "PW",
+      "Your cleaning validation; ISO 13485 7.5.2"
+     ],
+     [
+      "Final rinse, radiation or ethylene oxide sterilized",
+      "PW with a microbial action level",
+      "Your bioburden and sterilization validation"
+     ],
+     [
+      "Final rinse, blood or lymph contact",
+      "PW with a written endotoxin limit, or Water for Injection (WFI)",
+      "Your endotoxin limit (USP <161>)"
+     ],
+     [
+      "Final rinse, cerebrospinal fluid contact",
+      "WFI, or water held to its endotoxin limit",
+      "Your endotoxin limit (USP <161>)"
      ]
     ],
     "look": "grade-mains",

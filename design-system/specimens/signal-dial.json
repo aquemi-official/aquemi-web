@@ -413,9 +413,9 @@
    "page": "sys-monitoring",
    "slot": 1,
    "h": "Sensors and signals",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "88c9d6980a",
    "block": {
@@ -501,9 +501,9 @@
    "page": "svc-service",
    "slot": 2,
    "h": "Instrument calibration",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "7e250a3207",
    "block": {
@@ -546,6 +546,75 @@
     "fold": 2,
     "fold_noun": "instruments",
     "note": "Certificates show as-found and as-left values. Calibrated by a provider named in your proposal."
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 1,
+   "h": "Sensors and signals",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "53cc79fa53",
+   "block": {
+    "type": "spec",
+    "h": "Sensors and signals",
+    "caption": "MONITORING",
+    "cols": [
+     "Signal",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "TOC analyzer",
+      "v": "Online, at the loop return",
+      "m": "USP <643>",
+      "at": [
+       37.4,
+       46.9
+      ]
+     },
+     {
+      "p": "Conductivity cell",
+      "v": "Online; the uncompensated reading is the record",
+      "m": "USP <645>",
+      "at": [
+       49.4,
+       57.7
+      ]
+     },
+     {
+      "p": "Temperature",
+      "v": "Generation, tank and loop",
+      "at": [
+       48.9,
+       41.1
+      ]
+     },
+     {
+      "p": "Divert (generation)",
+      "v": "Water out of specification goes to drain, never to storage",
+      "m": "Tested at the factory and site acceptance tests (FAT, SAT)",
+      "at": [
+       72.9,
+       37.7
+      ]
+     },
+     {
+      "p": "Flow and pressure",
+      "v": "Return flow alarmed below the qualified minimum",
+      "at": [
+       57.4,
+       69.7
+      ]
+     }
+    ],
+    "nav": "Measurements",
+    "as": "callouts",
+    "look": "signal-dial",
+    "anchor": "instruments"
    }
   }
  ]

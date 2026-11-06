@@ -20,47 +20,44 @@ var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked 
    block's ISO 9001 row (else any row) holds no [placeholder] (NavBar.js wfilled).
    NAVTASKS: the "I need to" row, the same in every panel and one more group on phones; [target, words after "I need to"]. */
 var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our first system'],['svc-upgrades#observation','answer a water observation'],
- ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['industries#fit','check our use fits']];
+ ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
 var NAVMENU=[
- {id:'systems',label:'Systems',hub:'systems',lead:'One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.',
+ {id:'systems',label:'Systems',hub:'systems',lead:'One Purified Water package: pretreatment, RO, DI/EDI and distribution.',
   groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
      ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
-   {h:'Plan and budget',items:[['systems#budget','Budget ranges','What a package costs and what moves it'],['systems#site','Site requirements','Space, utilities and connections you provide'],
-     ['sys-pw#design','Skid design basis','Capacity, feed and recovery, each with its basis']]}],
+   {h:'Plan and budget',items:[['systems#site','Site requirements','Space, utilities and connections you provide']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
   foot:{t:'No Water for Injection, pure steam or stainless steel systems.',to:'industries#faq',link:'Why'}},
  {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your Purified Water package.',
-  groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what'],['services#durations','Durations','Order to water in use, step by step']]},
-   {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'PP skids and loops, every joint logged'],
+  groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what']]},
+   {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'Skids and loops, every joint logged'],
      ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec']]},
    {h:'Running systems',items:[['svc-service',null,'Response times, visits, calibration and parts'],['svc-upgrades',null,'Options for an ageing system, with downtime'],
      ['svc-upgrades#observation','After a water observation','The plan your inspector will ask for']]}],
   feat:{to:'urs-guide',eyebrow:'Guide',t:'Writing your URS',d:'Settle what changes design, price and bidders',icon:'clipboard'}},
  {id:'industries',label:'Industries',hub:'industries',lead:'Where Purified Water goes in your plant. Many industries share the same water.',
   groups:[{h:'Regulated life sciences and healthcare',items:[['ind-pharma',null,'Liquids, creams, coatings and equipment rinse'],['ind-pharma#nhp','Natural health products','When your products need Purified Water'],
-     ['ind-cdmo',null,"One water system for every client's auditor"],['ind-meddevice',null,'Final rinse water with records auditors accept'],
+     ['ind-meddevice',null,'Final rinse water with records auditors accept'],
      ['ind-hospital-lab',null,'Reprocessing rinse water and central lab supply']]},
    {h:'Industrial and commercial',items:[['ind-personal-care',null,'Water phase for creams, lotions and OTC lines'],['ind-process#food','Food, beverage and cannabis','Proofing, ingredient and rinse water to your recipe'],
      ['ind-process#industrial','Industrial and energy','Rinse, electrolyser and boiler make-up to your limit'],['ind-hospital-lab#labs','Research and QC laboratories','Central reagent water for lab buildings'],
-     ['industries#matrix','All industries and uses','Where the water goes, industry by industry']]}],
+     ['industries','All industries and uses','Where the water goes, industry by industry']]}],
   feat:{to:'first-system',eyebrow:'Plain guide',t:'Your first system',d:'Grade, site, staff time and cost, plainly',icon:'droplet'},
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
  {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
-  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, Ph. Eur., GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits side by side'],
-     ['compliance#gmp','GMP and qualification','The GMP guides and IQ, OQ and PQ']]},
+  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits']]},
    {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
      ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
-   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],['cmp-quality#access','What you can read, and when','Public, under NDA, or at audit'],
+   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],
      ['cmp-quality#certification','Certification status','Quality, welding, pressure and panel approvals','filled']]}],
   feat:{to:'cmp-quality#audit',eyebrow:'Supplier audit',t:'Audit us before you order',d:'Book a supplier audit of our shop and QMS',icon:'magnifier'}},
  {id:'projects',label:'Applications',sections:['Projects','Applications'],hub:'projects',lead:'Typical Purified Water configurations, and how to qualify us as a supplier.',
-  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water'],['projects#by-industry','By industry','Where the water goes, industry by industry'],
-     ['projects#record','What a project record contains','Figures, methods, reports and approvals you receive']]},
+  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water']]},
    {h:'Qualify us',items:[['projects#verify','How to qualify us','Documents, audits and tests you can run'],['cmp-documentation#samples','Specimen documents','See the format before you order']]}],
   feat:{to:'svc-fat-sat',eyebrow:'Before delivery',t:'Factory acceptance test',d:'Your system tested at our shop, with you',icon:'gauge'}},
  {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, how buying from us works, and how to reach us.',
   groups:[{h:'About us',items:[['about','About Aquemi','Our team, company facts and where we work'],['news','Technical notes','Short answers to Purified Water questions'],['careers',null,'Open roles, pay and how we hire']]},
-   {h:'Working with us',items:[['buying#capital','Capital request','How a price is built, for your approver'],['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
+   {h:'Working with us',items:[['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
    {h:'Contact',items:[['contact-proposal',null,'Send a URS, tender, product or water data'],['contact-service',null,'Faults, calibration and parts for running systems']]}],
   phoneDrop:['contact-proposal','contact-service'],
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
@@ -267,9 +264,11 @@ function wClosing(c,p){if(!c||!c.h)return '';
   (call?'':'<div class="aq-closing__action">'+cta+'</div>')+
   (swap||f?'<div class="aq-closing__more">'+swap+(f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+'</div>':'')+
   '</div></div></section>'}
-/* The band is water (pass 9b): an FxRipple layer under everything, rings trailing the pointer and a slow drop every
-   6.5 s. Optional (data-gl-optional): a page that already has two ambient layers (home) keeps a plain navy band. */
-var CLOSE_WATER='<canvas class="aq-fx-shader" data-gl="ripple" data-gl-optional aria-hidden="true"></canvas>';
+/* The band was water (pass 9b): an FxRipple layer under everything, rings trailing the pointer and a slow drop every
+   6.5 s. Retired (owner, 2026-11-05): the closing band is plain navy. To bring it back, set CLOSE_WATER to
+   CLOSE_WATER_RETIRED. FxRipple stays in the design system. */
+var CLOSE_WATER_RETIRED='<canvas class="aq-fx-shader" data-gl="ripple" data-gl-optional aria-hidden="true"></canvas>';
+var CLOSE_WATER='';
 /* The brand mark, large and faint, cut by the band's top-left corner (the mark's supplied path, never redrawn). */
 var MARK_CLOSE='<svg class="aq-closing__mark" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.32 159.66A73.66 73.66 0 1 1 86.00 159.66A73.66 73.66 0 1 1 233.32 159.66ZM233.32 352.34A73.66 73.66 0 1 1 159.66 278.68A119.03 119.03 0 0 0 278.68 159.66A73.66 73.66 0 1 1 352.34 233.32A119.03 119.03 0 0 0 233.32 352.34ZM426.00 352.34A73.66 73.66 0 1 1 278.68 352.34A73.66 73.66 0 1 1 426.00 352.34Z"/></svg>';
 /* EnquiryForm pre-set: tick the options named by the linking button's intent (WINTENT) and show the conditional fields they open,
@@ -404,10 +403,10 @@ document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classLis
    Phones (pass 12 C, G-C1/F1): at 600 px and under each column is a disclosure: a 48 px head button (aria-expanded,
    aria-controls) over its links, Company open at first, the others closed; above 600 px the button is not shown, the
    column name is a plain heading and every column is open. One delegated click handler for the whole site. */
-function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring','compliance','cmp-documentation','cmp-quality']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-cdmo','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','projects','buying','news','careers','contact-proposal','contact-service','contact-locations']]],
+function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring','compliance','cmp-documentation','cmp-quality']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','projects','buying','news','careers','contact-proposal','contact-service','contact-locations']]],
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
-  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene with PVC pretreatment, for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
+  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Modular Purified Water packages for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
   +'<address class="aq-footer__contact">'+'<a href="mailto:'+e(CONTACT.email)+'">'+e(CONTACT.email)+'</a><span>'+tx(CONTACT.office)+'</span></address></div>'
   +cols.map(function(c,i){var open=i===cols.length-1,id='wfoot-'+i;return '<nav class="aq-footer__col'+(open?' is-open':'')+'" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead"><span class="aq-footer__colname">'+e(c[0])+'</span>'
    +'<button type="button" class="aq-footer__toggle" aria-expanded="'+open+'" aria-controls="'+id+'">'+e(c[0])+'<span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h5>'

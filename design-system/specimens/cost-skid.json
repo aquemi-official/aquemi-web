@@ -399,9 +399,9 @@
    "page": "ind-process",
    "slot": 5,
    "h": "From exchange DI to your own RO and EDI",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "f0ec397bce",
    "block": {
@@ -465,9 +465,9 @@
    "page": "cmp-documentation",
    "slot": 4,
    "h": "Site safety information for your permit",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "f06cf9e2ee",
    "block": {
@@ -512,6 +512,62 @@
       "v": "Each pressure-rated item your design includes",
       "m": "Registration where required: Canadian registration number (CRN), CSA B51",
       "part": "gen"
+     },
+     {
+      "p": "Insurance and workplace safety cover",
+      "v": "Certificate of insurance and Workplace Safety and Insurance Board (WSIB) clearance, before any site visit",
+      "m": "Status listed with our onboarding documents",
+      "link": "buying#onboarding"
+     },
+     {
+      "p": "Visits to your site",
+      "v": "We follow your permits, inductions and lockout rules",
+      "m": "Your safety team sets them before each visit"
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "items"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 1,
+   "h": "Site safety information for your permit",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "7bab896cdd",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Site safety",
+    "anchor": "safety",
+    "h": "Site safety information for your permit",
+    "intro": "What your safety team needs for a permit or a pre-start review, read off the package itself.",
+    "cols": [
+     "Item",
+     "What you receive",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Chemicals brought on site",
+      "v": "Listed per visit",
+      "m": "Each with its safety data sheet (SDS)",
+      "part": "soft"
+     },
+     {
+      "p": "Discharge to drain",
+      "v": "Stated per system in your proposal",
+      "m": "Includes reverse osmosis (RO) reject; set by your feed water",
+      "part": "drain"
+     },
+     {
+      "p": "Energies and isolation points",
+      "v": "Listed per system in your manual",
+      "m": "For your lockout procedure",
+      "part": "pump panel"
      },
      {
       "p": "Insurance and workplace safety cover",

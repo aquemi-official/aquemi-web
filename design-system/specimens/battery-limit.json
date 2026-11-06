@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows [{p, v, m, side, link, link_label}] (side: \"limit\" | \"package\" | \"site\"; default site), sides ([package label, site label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card).",
  "best_for": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "systems",
@@ -577,9 +577,9 @@
    "page": "project-plan",
    "slot": 4,
    "h": "How you see progress",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "ef579284b0",
    "block": {

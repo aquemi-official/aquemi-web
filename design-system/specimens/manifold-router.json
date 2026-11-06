@@ -569,9 +569,9 @@
    "page": "ind-process",
    "slot": 0,
    "h": "Start from your plant",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "1f4eab0",
    "hash": "fd7df56ddc",
    "block": {
@@ -752,9 +752,9 @@
    "page": "home",
    "slot": 1,
    "h": "Start from where your project is",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "7733f74f89",
    "block": {
@@ -822,6 +822,78 @@
       "Fixing an inspection finding or a water bottleneck",
       "What to change, or the observation",
       "Options with their downtime and the requalification each triggers",
+      {
+       "t": "Upgrades and water observations",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "Production stopped or water out of specification",
+      "A service request marked severity 1",
+      "On site within the time set in your plan, in an area agreed per project",
+      {
+       "t": "Service request",
+       "link": "contact-service",
+       "intent": "Fault now|Severity 1: production stopped or water out of specification"
+      }
+     ]
+    ],
+    "look": "manifold-router"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 1,
+   "h": "Start from where your project is",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "d3803d790e",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "anchor": "start",
+    "h": "Start from where your project is",
+    "cols": [
+     "Your situation",
+     "Send us",
+     "What comes back",
+     "Where to start"
+    ],
+    "rows": [
+     [
+      "Planning your first water system",
+      "What you make, and roughly how much water a day",
+      "The grade each step needs, the package and how to estimate cost",
+      {
+       "t": "Your first system and its cost",
+       "link": "first-system"
+      }
+     ],
+     [
+      "Not drugs or devices: hospitals, labs, personal care, food or industrial",
+      "What the water is for, and the limit you work to",
+      "Where the water goes in your industry, and who sets its limit",
+      {
+       "t": "Where our water goes",
+       "link": "industries#map"
+      }
+     ],
+     [
+      "A URS, approved or in draft",
+      "Your URS and feed water analysis",
+      "A proposal, or a gap review of a draft",
+      {
+       "t": "Send your URS",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft"
+      }
+     ],
+     [
+      "Fixing an inspection finding or a water bottleneck",
+      "What to change, or the observation",
+      "Options, with the downtime of each",
       {
        "t": "Upgrades and water observations",
        "link": "svc-upgrades"

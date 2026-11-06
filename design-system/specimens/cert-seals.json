@@ -108,9 +108,9 @@
    "page": "cmp-quality",
    "slot": 1,
    "h": "Certification status",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "dd729e4f59",
    "block": {
@@ -151,6 +151,44 @@
       "tag": "Standard named in your proposal",
       "link": "compliance#engineering",
       "icon": "monitor"
+     }
+    ],
+    "look": "cert-seals"
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 1,
+   "h": "Certification status",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "ba0aead19c",
+   "block": {
+    "type": "grid",
+    "nav": "Certification",
+    "anchor": "certification",
+    "h": "Certification status",
+    "items": [
+     {
+      "t": "Quality system",
+      "d": "Status on request",
+      "tag": "ISO 9001",
+      "icon": "stamp"
+     },
+     {
+      "t": "Device quality system",
+      "d": "Status on request",
+      "tag": "ISO 13485",
+      "icon": "stamp"
+     },
+     {
+      "t": "PP joining",
+      "d": "Status on request",
+      "tag": "Standard named in your proposal",
+      "link": "svc-fabrication",
+      "icon": "loop"
      }
     ],
     "look": "cert-seals"

@@ -6,3 +6,4 @@ FxRipple is a water surface that remembers the pointer (ported from Subframe Mot
 - Used on: the closing band of every page (`assets/src/parts/Closing.js`, `CLOSE_WATER`), marked `data-gl-optional`, so a page that already has two ambient layers (home) keeps a plain navy band.
 - Motion: only while on screen, only the most visible layer on the page moves, slow (one visible cycle well over 6 s), 30 fps cap (60 for this pointer-driven one), render scale at most 0.75 and lower on phones and low-power devices; a still frame under reduced motion.
 - When to use: Only on a navy band with short copy (the closing). It is the one layer that answers the visitor (pointer moves and presses); it never carries information, so keyboard and touch users lose nothing without it.
+- Retired from the site (owner, 2026-11-05): it was the closing band's water layer on every page; the band is now plain navy. The shader stays here; `CLOSE_WATER` in `assets/src/parts/Closing.js` brings it back.
