@@ -46,7 +46,7 @@ def main():
     seq, q = [], []
     for p in pages:
         for i, s in enumerate(p['sections']):
-            if s.get('type') in skip or not (s.get('h') or s.get('text')):
+            if s.get('type') in skip or not s.get('h') or len(s.get('text', '').split()) < 3:
                 continue
             if not seq:
                 rnd.shuffle(dirs)

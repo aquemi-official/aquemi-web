@@ -50,6 +50,9 @@ def run(P=None):
     out = P.path(P.cfg['data']['history'])
     skip = tuple(h.get('skip', [])) + (P.kit_rel + '/', P.cfg['data']['dir'] + '/', P.cfg['data']['history'] + '/', config.CONFIG_NAME, '.github/', '.claude/')
     copyp = tuple(h.get('copy', []))
+    if git(P.root, 'rev-parse', '--is-shallow-repository').strip() == 'true':
+        raise SystemExit('This clone is shallow: the page history would lose every commit it cannot see. Fetch the whole '
+                         'history first (git fetch --unshallow), then run this again.')
     branch = h.get('branch', 'main')
     # the published branch: origin's copy when there is one (a local branch may be behind), else the local one
     try:

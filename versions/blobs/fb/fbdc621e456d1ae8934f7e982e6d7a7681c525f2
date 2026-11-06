@@ -1,0 +1,260 @@
+{
+ "id": "ind-hospital-lab",
+ "section": "Industries",
+ "nav_label": "Hospitals and laboratories",
+ "title": "Hospital critical water and lab water systems | Aquemi",
+ "meta": "Water package for hospital reprocessing and laboratory buildings: critical water designed to ST108:2023, reagent water to ASTM D1193-24 or CLSI GP40.",
+ "path": "/industries/hospitals-and-laboratories/",
+ "eyebrow": "HOSPITALS · LABORATORIES",
+ "headline": "Critical and reagent water, specified by your standard",
+ "lead": "For hospital reprocessing departments, clinical and research laboratories, and the consultants who specify them. One water package, configured to the standard you name.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I know my product, not my water spec|Hospital sterile processing",
+ "secondary_cta": {
+  "label": "For consultants and contractors",
+  "link": "#specification"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Grades",
+   "anchor": "grades",
+   "h": "Which water each standard asks for",
+   "intro": "None of these is Purified Water: each standard sets its own limits.",
+   "cols": [
+    "Water",
+    "How it differs from Purified Water",
+    "Hospital standard",
+    "Laboratory standard"
+   ],
+   "rows": [
+    [
+     "Critical water",
+     "Fewer ions removed than PW, far tighter on microbes, with an endotoxin limit",
+     "ANSI/AAMI ST108:2023; CSA Z314:23",
+     ""
+    ],
+    [
+     "Utility water",
+     "Looser; used for cleaning steps",
+     "ANSI/AAMI ST108:2023",
+     ""
+    ],
+    [
+     "Type II reagent water",
+     "Tighter than PW on ions and organic carbon",
+     "",
+     "ASTM D1193-24"
+    ],
+    [
+     "Type III reagent water",
+     "Tighter on ions, looser on organic carbon than Type II",
+     "",
+     "ASTM D1193-24"
+    ],
+    [
+     "Clinical laboratory reagent water",
+     "Defined for medical laboratories; an analyzer maker's specification governs that analyzer's feed",
+     "",
+     "CLSI GP40 5th ed."
+    ]
+   ],
+   "look": "grade-crosswalk"
+  },
+  {
+   "type": "grid",
+   "as": "route",
+   "nav": "Reprocessing",
+   "anchor": "reprocessing",
+   "h": "Where water goes in reprocessing",
+   "items": [
+    {
+     "t": "Washer-disinfector final rinse",
+     "draw": "washer",
+     "d": "The last water on every instrument before drying. It needs critical water.",
+     "spot": "valve",
+     "part": "outlet"
+    },
+    {
+     "t": "Ultrasonic cleaners",
+     "draw": "ultrasonic",
+     "d": "Filled from the loop, at the grade your program sets for each step.",
+     "spot": "tank"
+    },
+    {
+     "t": "Manual sinks and lumen flushing",
+     "draw": "sink",
+     "d": "Rinsing and flushing channels by hand, from taps on the loop.",
+     "spot": "valve"
+    },
+    {
+     "t": "Endoscope reprocessors",
+     "draw": "endoscope",
+     "d": "They filter their own feed further; the maker's instructions set what goes in.",
+     "spot": "valve",
+     "part": "filter"
+    },
+    {
+     "t": "Cart washers",
+     "draw": "cart",
+     "d": "Utility water is enough here, not critical water.",
+     "spot": "loop"
+    },
+    {
+     "t": "Sterilizer feed",
+     "draw": "sterilizer",
+     "d": "Feed water to the sterilizer maker's specification. We supply the water, not the steam.",
+     "spot": "gauge"
+    }
+   ],
+   "look": "drawing-register"
+  },
+  {
+   "type": "grid",
+   "as": "route",
+   "nav": "Laboratories",
+   "anchor": "labs",
+   "h": "Where water goes in a laboratory building",
+   "intro": "University, hospital, quality control, biotech and battery research buildings: one central plant feeds the benches.",
+   "items": [
+    {
+     "t": "Glassware washers and autoclaves",
+     "draw": "washer",
+     "d": "They draw in batches, so storage is sized to carry the peak.",
+     "spot": "storage-tank",
+     "part": "tank"
+    },
+    {
+     "t": "Analyzer feed",
+     "draw": "analyzer",
+     "d": "To the analyzer maker's specification, which governs.",
+     "spot": "toc",
+     "part": "toc"
+    },
+    {
+     "t": "Reagent and buffer preparation",
+     "draw": "bench",
+     "d": "ASTM D1193-24 Type II or III at bench taps, or clinical laboratory reagent water.",
+     "spot": "valve",
+     "part": "loop"
+    },
+    {
+     "t": "Humidifiers",
+     "draw": "humidifier",
+     "d": "Fed from the loop, to the humidifier maker's specification.",
+     "spot": "loop"
+    },
+    {
+     "t": "Cell culture and molecular work",
+     "draw": "hood",
+     "d": "Type I water from a point-of-use polisher at the bench, from its own maker. The loop feeds it to that maker's specification.",
+     "spot": "loop"
+    }
+   ],
+   "look": "building-loop"
+  },
+  {
+   "type": "docs",
+   "nav": "For consultants",
+   "anchor": "specification",
+   "h": "For consultants and contractors",
+   "intro": "A specimen specification and basis-of-design sheet, sent within a time confirmed when you enquire. Your project's set follows the scope review.",
+   "items": [
+    {
+     "t": "Specification text",
+     "key": true,
+     "d": "Treatment train and loop; materials and joining; monitoring and sampling; validation support"
+    },
+    {
+     "t": "Basis of design",
+     "d": "Peak draw and fill profile; points of use from your fixture list; feed water analysis"
+    },
+    {
+     "t": "Battery limits",
+     "d": "Connections by tag, size and fluid; utilities and drains; what is ours and what is your contractor's"
+    },
+    {
+     "t": "Changeover plan",
+     "d": "Work in an occupied building; temporary water during the cutover; shutdown windows set with your facilities team"
+    }
+   ],
+   "fold_noun": "sections",
+   "look": "spine-shelf"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions hospitals and laboratories ask",
+   "items": [
+    {
+     "q": "Do you supply water for hospital reprocessing?",
+     "a": "Our hospital scope is confirmed when you enquire. Reprocessing water is critical water under ANSI/AAMI ST108:2023 and CSA Z314:23, a different grade from Purified Water.",
+     "link": "ind-hospital-lab#grades",
+     "link_label": "Compare the grades"
+    },
+    {
+     "q": "Do you supply dialysis water?",
+     "a": "No. Dialysis water systems are licensed as medical devices, and we do not make them."
+    },
+    {
+     "q": "Can you supply Type I water?",
+     "a": "No, not from a central loop. ASTM D1193-24 Type I comes from a point-of-use polisher at the bench, fed from the loop. Send the polisher maker's feed specification, and the loop is designed to it."
+    },
+    {
+     "q": "Can one plant serve reprocessing and the laboratory?",
+     "a": "Yes, or two plants; your consultant decides. A shared plant feeds separate storage, each held to its own grade. Separate plants let one be disinfected while the other runs."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "svc-design",
+    "svc-cq",
+    "svc-service",
+    "svc-upgrades",
+    "cmp-documentation",
+    "contact-proposal"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your basis of design or standard",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I have a URS or a draft|Hospital sterile processing",
+  "include": [
+   "Standard and edition, or the equipment maker's specification",
+   "Points of use and peak draw, L/h",
+   "Feed water analysis",
+   "New building, renovation or occupied site"
+  ],
+  "turnaround": "a time confirmed when you enquire",
+  "returns": [
+   "The water specification by grade",
+   "The treatment train and loop to hold it",
+   "The validation or acceptance-test scope"
+  ]
+ },
+ "todo": [
+  "Scope (FD-25): [hospital water scope] and [lab water scope] in the lead and FAQ 1, same names as ind-meddevice, industries, about and home. The page exists by ruling R1 (DR-027); hospital and lab sales gates live in sales/, never on the page (DR-028 rule 3, DR-027 rule 11)",
+  "Configurations (R2): [configurations offered for this use] in the train intro, one name with ind-personal-care and ind-process. No claim on degassing, mixed-bed polishing, Type I polishers, outdoor or containerized builds",
+  "Endotoxin filtration on the loop ([endotoxin filter on the loop, standard or option], train stage 5; was [confirm design], pass 12 review F3): filter type, position and whether it is standard or a priced option (industries/hospital-reprocessing.md typical train). Register in ops/placeholder-names.md",
+  "Duty and standby pumps ([duty and standby pumps, standard or option], train stage 3; sys-storage and ind-cdmo name). Duplicate RO trains are written \"often specified\", never \"usually\" (IB 2.4, industries/hospital-reprocessing.md website 3)",
+  "Loop sanitization ([PP loop sanitization method], train stage 7; DR-013 rule 3) and [whether we quote PVDF] (train stage 4; DR-013 rule 2, FD-15). Ozone never named here (DR-013 rule 4)",
+  "Basis-of-design and specification text turnaround ([specimen design set response time, working days], specification intro): new name per SITE-PLAN ind-hospital-lab block 6, a notice time in place of a readiness date (DR-028 rule 3, R6). Register in ops/placeholder-names.md",
+  "Panel approval route ([panel certification mark held, or field evaluation used], specification item 4; FD and placeholder-names Panel certification row)",
+  "Site safety item and FAQ 5 link cmp-documentation#safety, the one home of the safety block (SITE-PLAN 1.5 row 8). (anchor live 2026-11-03)",
+  "Grade values: ST108:2023 critical and utility water from the standard's published tables as reproduced in industries/pw-quality-and-limits.md section 3; ASTM values are the D1193-06 tables (the D1193-24 tables were not read), the hospital/lab column reads \"ASTM D1193-24; values from D1193-06\" until checked against D1193-24 (launch gate); CSA Z314:23 cited without numbers (not read)",
+  "Intent options (DR-027 rule 10): hero ticks \"I know my product, not my water spec|Hospital sterile processing\" (department managers without a spec); closing ticks \"I have a URS or a draft|Hospital sterile processing\" (pass 12 review F1); router analyzer row ticks \"I have a URS or a draft|Laboratory or research\"",
+  "Lessons: industries/hospital-reprocessing.md website 1-6 (consultant-first order, critical vs utility table, train, validation wording, dialysis only to exclude); industries/laboratories.md website 1-4 (Type I from point-of-use polishers, central RO for Type II or III and CLRW feed, analyzer maker governs); RI consultant 1 and contractor 1 (scope and limits first, battery limits); IB 2.4 and critic A (single washer or clinic routed to the equipment supplier, said plainly)",
+  "Image queue (R11): page-specific hero drawing for this page; until it exists the hero shows no figure",
+  "Fit home (DR-027 rule 4, DR-013 rule 2): FAQ 3 \"Can the loop be disinfected with hot water?\" links industries#fit; [maximum loop sanitization temperature for PP, °C] and [whether we quote PVDF] are DR-013's registered names. Router row 7 (public tender) links buying#answer for procurement (pass 12 review F4)",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): router retired (decision 8; page ends at 5 sections), treatment-train and validation sections retired, grade table loses its figures and the Type I row, consultant documents cut to 4 (panel approval, site safety retired), FAQ cut to 4 (hot-water disinfection, occupied building retired), polypropylene and standards removed from hero."
+ ]
+}

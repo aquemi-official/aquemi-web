@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aquemi</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0F2A47">
+<!-- Speed (see README, "Page speed"): one origin, the critical files first, everything else never in the way.
+     The versioned URLs (?v=<content hash>) are written by tools/design_system.py build; don't edit them by hand. -->
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="content/pages.min.json?v=447aeff1d8" as="fetch" crossorigin>
+<style>
+/* Geist and Geist Mono, self-hosted (SIL Open Font License 1.1), latin and latin-ext, variable weight 300-500 */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/geist-mono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+</style>
+<!-- The Aquemi design system: tokens, then components (the minified site copy). Site chrome last. -->
+<link rel="stylesheet" href="design-system/tokens.css?v=a18f261217">
+<link rel="stylesheet" href="design-system/components/bundle.min.css?v=e1aa83e4a8">
+<link rel="stylesheet" href="assets/site.css?v=d06f0e5c4b">
+<script>
+/* Boot: start the page content now, in parallel with the CSS and scripts (the preload above makes it one request),
+   preload this page's equipment drawing so the hero never waits for it (crossorigin: CSS mask-image fetches in CORS mode, so a plain preload would go unused), and register the caching service worker. */
+(function(){
+ var ART=['cmp-quality','ind-biotech','ind-cdmo','ind-hospital-lab','ind-meddevice','ind-personal-care','ind-pharma','ind-process','news','project-plan','svc-cq','svc-design','svc-fabrication','svc-fat-sat','svc-service','svc-upgrades','sys-monitoring','sys-pretreatment','sys-pure-steam','sys-pw','sys-storage','sys-wfi-distillation','sys-wfi-membrane'];
+ window.AQBOOT={pages:fetch('content/pages.min.json?v=447aeff1d8',{credentials:'same-origin',mode:'cors'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})};
+ var id=location.hash.slice(1).split('#')[0];
+ if(ART.indexOf(id)>-1){var l=document.createElement('link');l.rel='preload';l.as='image';l.crossOrigin='anonymous';l.href='assets/illustrations/'+id+'.webp';document.head.appendChild(l)}
+ if('serviceWorker' in navigator&&location.protocol==='https:')addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
+})();
+</script>
+</head>
+<body>
+<div class="draftbar" role="region" aria-label="Draft tools">
+ <span>Draft site · not for release · <a href="design-system.html">Design system</a> · <a id="wver" href="versions.html">Page history</a> · <a href="research.html">Design research</a></span>
+ <span class="draftbar__tools">
+  <label><input type="checkbox" id="wph" checked> Highlight placeholders</label>
+  <label><input type="checkbox" id="wtodo"> Show open facts</label>
+  <select id="wjump" aria-label="Jump to page"></select>
+ </span>
+</div>
+<div class="aq-page" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
+<div class="todo" id="wtodolist" hidden></div>
+<!-- All scripts are deferred: they download in parallel and never block the parser; they run in this order -->
+<script defer src="assets/vendor/gsap-3.13.0.min.js?v=53ecac42c6"></script>
+<script defer src="assets/aquemi-site.js?v=2dd53a6236"></script>
+<script defer src="assets/motion.js?v=a316966d61"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+var $=function(id){return document.getElementById(id)},e=AQ.e;
+function render(){var p=AQ.wp(AQ.page)||AQ.pages()[0];if(!p)return;AQ.page=p.id;
+ $('wsite').innerHTML=AQ.wPage(p);$('wsite').classList.toggle('is-clean',!$('wph').checked);
+ document.title=p.title||'Aquemi';
+ $('wjump').value=p.id;$('wver').href='versions.html#page='+p.id;
+ var t=p.todo||[];$('wtodolist').innerHTML='<h2>Open facts on this page ('+t.length+')</h2>'+(t.length?'<ul>'+t.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul>':'<p>None.</p>');
+ $('wtodolist').hidden=!$('wtodo').checked;
+ var m=$('wmenu');if(m)m.onclick=function(){AQ.menuOpen=!AQ.menuOpen;render()};
+ if(window.AQmotion)requestAnimationFrame(function(){AQmotion.run($('wsite'))});
+ document.querySelectorAll('.wform').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();f.querySelector('.wform-msg').textContent='Draft site: this form does not send anything yet.'})})}
+function go(id){AQ.page=id;AQ.menuOpen=false;try{history.replaceState(null,'','#'+id)}catch(x){}render();window.scrollTo(0,0)}
+AQ.onNav=go;
+$('wph').onchange=function(){$('wsite').classList.toggle('is-clean',!this.checked)};
+$('wtodo').onchange=function(){$('wtodolist').hidden=!this.checked};
+$('wjump').onchange=function(){go(this.value)};
+window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!==AQ.page&&AQ.wp(h))go(h)});
+/* The content was requested by the boot script in <head>; fall back to a fresh request if that failed */
+(window.AQBOOT&&AQBOOT.pages||Promise.reject()).catch(function(){return fetch('content/pages.json').then(function(r){return r.json()})}).then(function(d){AQ.setPages(d.pages);
+ $('wjump').innerHTML=AQ.pages().map(function(p){return '<option value="'+e(p.id)+'">'+e(p.section+' · '+p.nav_label)+'</option>'}).join('');
+ var h=location.hash.slice(1);if(AQ.wp(h))AQ.page=h;render()}).catch(function(err){$('wsite').innerHTML='<p style="padding:64px 32px">The page content could not load: '+e(err.message)+'</p>'});
+});
+</script>
+</body>
+</html>

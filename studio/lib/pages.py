@@ -133,7 +133,7 @@ def from_json(spec, reader):
 # ---------------------------------------------------------------- html
 
 class Outline(html.parser.HTMLParser):
-    SKIP = {'script', 'style', 'noscript', 'svg', 'template'}
+    SKIP = {'script', 'style', 'noscript', 'svg', 'template', 'nav', 'footer'}  # navigation and footers are not page copy
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -210,6 +210,13 @@ def from_html(spec, reader, exclude=()):
         out.append({'id': pid, 'title': title or pid, 'group': os.path.dirname(f), 'url': f, 'file': f,
                     'sections': secs, 'ctas': ctas, 'notes': re.findall(r'\[([^\]\n]{2,80})\]', ' '.join(s['text'] for s in secs))[:40],
                     'text': ' '.join((s['h'] + ' ' + s['text']).strip() for s in secs)})
+    # a site name every title ends with ("Menu | Bakery", "Blog | Bakery") is not part of each page's title
+    if len(out) > 1:
+        tails = {re.split(r'\s+[|·–—-]\s+', p['title'])[-1] if re.search(r'\s[|·–—-]\s', p['title']) else None for p in out}
+        if len(tails) == 1 and None not in tails:
+            tail = tails.pop()
+            for p in out:
+                p['title'] = re.sub(r'\s+[|·–—-]\s+' + re.escape(tail) + r'$', '', p['title']) or p['title']
     return out
 
 
