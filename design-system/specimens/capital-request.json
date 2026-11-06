@@ -4,15 +4,15 @@
  "type": "grid",
  "fields": "h, intro (section head), sheet (look-only: the form's title, default \"Capital request\"; on phones it breaks after its colon), items [{t, d, link, tag, codes}]. codes: the references to set in the margin (each must appear in that item's d); without codes, an item's tag stands there alone.",
  "best_for": "CapitalRequest sets a page's reasons to buy as a capital request form already filled in: one paper sheet with a folded corner, a numbered field per reason with its text typed on the field line, an \"Attach\" link to the page that holds the source, and the references a reason rests on as mono boxes in the margin.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "first-system",
    "slot": 6,
    "h": "Making the case inside your company",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "7f6820b",
    "hash": "751ff1b846",
    "block": {

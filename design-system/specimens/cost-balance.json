@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, cols, rows [{p, v, m, link, side}], fold, fold_noun, note. side: \"out\" puts a row on the leaving side (default: in). glyphs (optional): icon names for the train inside the boundary (default softener, carbon-filter, ro-membrane, edi, uv, tank). A row's link makes its name the link. Desktop shows every stream; the fold applies on phones, where the balance runs top to bottom: streams in, the boundary, streams out.",
  "best_for": "CostBalance draws what it costs to run a system as a balance around it: a dashed system boundary with the treatment train inside, every running cost a stream wired in from the left, the water that leaves (to drain) wired out to the right.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-service",
@@ -433,9 +433,9 @@
    "page": "buying",
    "slot": 4,
    "h": "How a price is built, for your capital request",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "57adbcd7d5",
    "block": {
@@ -500,9 +500,9 @@
    "page": "first-system",
    "slot": 4,
    "h": "What it costs, all in and per month",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "9bc7d6da33",
    "block": {

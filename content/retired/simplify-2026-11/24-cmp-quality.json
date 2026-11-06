@@ -1,0 +1,470 @@
+{
+ "id": "cmp-quality",
+ "section": "Compliance",
+ "nav_label": "Quality management",
+ "title": "Quality management and supplier audits | Aquemi",
+ "meta": "How our quality management system controls changes, nonconformances, traceability, calibration and suppliers, and how to audit it before you order.",
+ "path": "/compliance/quality/",
+ "eyebrow": "QUALITY · SUPPLIER AUDIT",
+ "headline": "Audit our quality system before you award",
+ "lead": "Your lab results stay the release reference; any change to a qualified system goes through your change control. Here: our quality system, its records and how to audit it.",
+ "primary_cta": "Request a supplier audit",
+ "primary_cta_link": "#audit",
+ "secondary_cta": {
+  "label": "How buying from us works",
+  "link": "buying"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Processes",
+   "h": "Each process, and the record it leaves",
+   "cols": [
+    "Process",
+    "What it controls",
+    "Record you can inspect"
+   ],
+   "rows": [
+    [
+     "Change control",
+     "Impact assessed before work continues; your approval for documents you approved",
+     "Change request with impact assessment; change control register"
+    ],
+    [
+     {
+      "t": "Control system access",
+      "link": "svc-fat-sat"
+     },
+     "Individual accounts with role-based rights, and a configuration baseline changed only under change control",
+     "User role list; configuration baseline backup"
+    ],
+    [
+     "Nonconformance and complaints",
+     "Items held and decided; repeat, systemic or client-reported causes get a corrective and preventive action (CAPA)",
+     "Nonconformance report (NCR); CAPA with effectiveness check; complaint log"
+    ],
+    [
+     "Identification and traceability",
+     "Product-contact parts traced by lot or serial number to joint and drawing",
+     "Material log against the material certificates named in your proposal; joint records as set out in your proposal"
+    ],
+    [
+     "Calibration",
+     "Traceable to national standards through a provider named in your proposal; an out-of-tolerance result reopens every reading since the last calibration",
+     "Calibration register; as-found and as-left certificates"
+    ],
+    [
+     "Document control",
+     "Only the current approved revision issued; superseded ones withdrawn and kept",
+     "Document register; client comment logs"
+    ],
+    [
+     "Supplier control",
+     "Product-contact and special-process suppliers approved before use, reviewed on a schedule",
+     "Approved supplier list; incoming inspection records"
+    ],
+    [
+     "Internal audit and management review",
+     "Each process audited by someone independent of it; results reviewed by management",
+     "Audit reports; management review minutes"
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "processes",
+   "look": "record-trail"
+  },
+  {
+   "type": "grid",
+   "nav": "Certification",
+   "anchor": "certification",
+   "h": "Certification status",
+   "items": [
+    {
+     "t": "Quality system",
+     "d": "Status on request",
+     "tag": "ISO 9001",
+     "icon": "stamp"
+    },
+    {
+     "t": "Device quality system",
+     "d": "Status on request",
+     "tag": "ISO 13485",
+     "icon": "stamp"
+    },
+    {
+     "t": "PP joining",
+     "d": "Status on request",
+     "tag": "Standard named in your proposal",
+     "link": "svc-fabrication",
+     "icon": "loop"
+    },
+    {
+     "t": "Pressure equipment",
+     "d": "Pressure vessel route: details on request",
+     "tag": "CSA B51",
+     "link": "compliance#engineering",
+     "icon": "tank"
+    },
+    {
+     "t": "Control panels",
+     "d": "Approval route confirmed in your proposal",
+     "tag": "Standard named in your proposal",
+     "link": "compliance#engineering",
+     "icon": "monitor"
+    }
+   ],
+   "look": "cert-seals"
+  },
+  {
+   "type": "steps",
+   "nav": "NCR and CAPA",
+   "h": "How a defect is held and closed",
+   "items": [
+    {
+     "t": "Identify and hold",
+     "d": "Whoever finds it tags and segregates the item or stops work, raising an NCR. A failed test is logged and investigated, never resampled to pass."
+    },
+    {
+     "t": "Disposition",
+     "d": "Reject, rework or accept as is. Accepting as is, or an unapproved repair, needs your approval.",
+     "hold": "You"
+    },
+    {
+     "t": "Repair",
+     "d": "A rejected product-contact joint is cut out and remade to our written repair procedure, under a new number."
+    },
+    {
+     "t": "Root cause and CAPA",
+     "d": "Repeat, systemic or client-reported: cause found, procedure, training or supplier changed."
+    },
+    {
+     "t": "Effectiveness check",
+     "d": "Evidence after an agreed period that the action worked, signed before the CAPA closes."
+    },
+    {
+     "t": "Reported to you",
+     "d": "Every NCR logged in your turnover package; one after shipment reaches you within a time set in your quality agreement."
+    }
+   ],
+   "look": "ncr-tiles",
+   "drawing": {
+    "step": 3,
+    "reject": "Rejected joint",
+    "cut": "Cut out",
+    "remade": "Remade to our written repair procedure",
+    "number": "New number"
+   }
+  },
+  {
+   "type": "table",
+   "nav": "Suppliers",
+   "h": "What we require from suppliers",
+   "intro": "An open corrective action (CAPA) on a supplier stops new orders to it [confirm].",
+   "facts": [
+    {
+     "k": "Supplier review",
+     "v": "Reviewed on a set schedule"
+    }
+   ],
+   "cols": [
+    "Supply",
+    "What we require",
+    "How we verify it"
+   ],
+   "rows": [
+    [
+     "Polypropylene (PP) pipe, fittings and valves",
+     "PP to the piping standard named in your proposal, with material certificates per lot",
+     "Lot marking checked against the certificate at receipt"
+    ],
+    [
+     "Elastomers and gaskets",
+     "Elastomer certificates as named in your proposal",
+     "Compound and grade checked; like-for-like replacement only"
+    ],
+    [
+     "Pretreatment piping",
+     "Polyvinyl chloride (PVC) to the standard and schedule named in your proposal, with PVC certificates as named there",
+     "Markings checked against the order at receipt"
+    ],
+    [
+     "Membranes, electrodeionization (EDI) modules and resin",
+     "Manufacturer's certificates with serial or lot numbers",
+     "Serial and lot numbers recorded at receipt and installation"
+    ],
+    [
+     "Pressure vessels and panels",
+     "Each pressure-rated item your design includes with a Canadian registration number (CRN) under CSA B51; panels to the panel standard named in your proposal",
+     "Data reports reviewed; panel label checked"
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "supply categories",
+   "look": "receiving-bench",
+   "anchor": "suppliers"
+  },
+  {
+   "type": "spec",
+   "nav": "Terms",
+   "anchor": "buying",
+   "h": "How buying from us works",
+   "cols": [
+    "Subject",
+    "What the buying page covers",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Terms of sale",
+     "v": "Proposal and validity · Lead time · Payment milestones · Warranty start and cover · Drawings and code · Your contract form",
+     "link": "buying#terms",
+     "link_label": "See the terms of sale"
+    },
+    {
+     "p": "Onboarding papers",
+     "v": "Registration · Insurance · Workers' compensation · Tax · Bank letter · Quality system status · Supplier questionnaire",
+     "link": "buying#onboarding",
+     "link_label": "See onboarding papers",
+     "m": "Each marked held, on request or in the questionnaire pack."
+    }
+   ],
+   "look": "contract-folders"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Access",
+   "anchor": "access",
+   "h": "What you can read, and when",
+   "intro": "Each part of our qualification pack: on this page, on request, under a non-disclosure agreement (NDA), or at audit.",
+   "cols": [
+    "Item",
+    "When you can read it",
+    "Route"
+   ],
+   "rows": [
+    [
+     "Certification status",
+     "Now, on this page",
+     {
+      "t": "See certification status",
+      "link": "cmp-quality#certification"
+     }
+    ],
+    [
+     "Procedure list and organization chart",
+     "On request, in the questionnaire pack",
+     {
+      "t": "Request the pack",
+      "link": "cmp-quality#audit",
+      "intent": "Quality questionnaire pack"
+     }
+    ],
+    [
+     "Specimen records: nonconformance, CAPA, change request",
+     "On request, in the questionnaire pack, as Aquemi-written specimens",
+     {
+      "t": "Request the pack",
+      "link": "cmp-quality#audit",
+      "intent": "Quality questionnaire pack"
+     }
+    ],
+    [
+     "Quality manual",
+     "On request",
+     {
+      "t": "NDA terms",
+      "link": "buying#terms"
+     }
+    ],
+    [
+     "Critical supplier names",
+     "On request",
+     {
+      "t": "See supplier requirements",
+      "link": "cmp-quality#suppliers"
+     }
+    ],
+    [
+     "Live records and the shop",
+     "At audit: remotely, or on site on reasonable notice",
+     {
+      "t": "Request an audit",
+      "link": "cmp-quality#audit",
+      "intent": "On-site supplier audit"
+     }
+    ]
+   ],
+   "look": "audit-manifold"
+  },
+  {
+   "type": "form",
+   "nav": "Request",
+   "anchor": "audit",
+   "h": "Request an audit or questionnaire pack",
+   "intro": "Audits on request; we reply in a time confirmed when you ask; cost: discussed when you ask.",
+   "note": "{Privacy notice|privacy}",
+   "submit": "Send my request",
+   "fields": [
+    {
+     "kind": "checkbox-group",
+     "label": "What you need",
+     "required": true,
+     "options": [
+      "Quality questionnaire pack",
+      "Your questionnaire, completed",
+      "Remote audit",
+      "On-site supplier audit"
+     ]
+    },
+    {
+     "kind": "file",
+     "label": "Your questionnaire, audit checklist or quality agreement",
+     "required": false,
+     "help": "PDF, Word or Excel."
+    },
+    {
+     "kind": "text",
+     "label": "Scope you are buying, or portal link",
+     "required": false
+    },
+    {
+     "kind": "text",
+     "label": "Full name",
+     "required": true
+    },
+    {
+     "kind": "email",
+     "label": "Work email",
+     "required": true
+    },
+    {
+     "kind": "text",
+     "label": "Company",
+     "required": true
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions quality and procurement ask",
+   "items": [
+    {
+     "q": "Are you ISO 9001 certified?",
+     "a": "Status on request. Your audit can test the processes above directly.",
+     "link": "cmp-quality#certification",
+     "link_label": "See certification status"
+    },
+    {
+     "q": "Can we audit you before we order?",
+     "a": "Yes. Remotely, or on site in Ontario, Canada, on reasonable notice. Cost: discussed when you ask."
+    },
+    {
+     "q": "What is in the questionnaire pack?",
+     "a": "Our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. Onboarding papers and their status are on our buying page.",
+     "link": "cmp-quality#audit",
+     "link_label": "Request the pack",
+     "intent": "Quality questionnaire pack"
+    },
+    {
+     "q": "Will you sign our quality agreement?",
+     "a": "We return our mark-up in a time agreed with you, from receipt. Send it with your request for proposal. Changes to parts, materials or software you approved: notice as set in your quality agreement."
+    },
+    {
+     "q": "Who can stop a shipment?",
+     "a": "Release to ship is signed by a role independent of the build, named in your quality plan. Nothing ships with an open nonconformance report (NCR) on a product-contact part unless you approved its disposition."
+    },
+    {
+     "q": "What should we ask any Purified Water supplier?",
+     "a": "Four things make proposals comparable. The document index, with who writes and who signs each document. A factory acceptance test (FAT) that runs the system on water. The record kept for each product-contact joint. Access to audit the quality system before you order.",
+     "link": "cmp-documentation#index",
+     "link_label": "See our document index"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "What auditors read next",
+   "items": [
+    "cmp-documentation",
+    "compliance",
+    "svc-fabrication",
+    "svc-fat-sat",
+    "project-plan",
+    "svc-cq"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Qualify us before you shortlist us",
+  "button": "Request a supplier audit",
+  "link": "#audit",
+  "include": [
+   "Your questionnaire or supplier portal link",
+   "Your audit checklist or quality agreement",
+   "The scope you are buying"
+  ],
+  "returns": [
+   "Our pack, or your questionnaire completed",
+   "Proposed audit dates and an agenda"
+  ],
+  "turnaround": "Confirmed when you ask"
+ },
+ "todo": [
+  "KEY: ISO 9001 status (certification status block, FAQ; FD-48): certified (registrar, certificate number, scope, expiry, downloadable copy) or, only if FD-48 chooses it, a status line naming the standard the QMS is built to. No target or readiness date on the page (DR-028 rule 3). Never claim certification until held; no ISO label in the eyebrow, a heading or the meta until certified (DR-004 rule 3)",
+  "ISO 9001 clause references per process (change control 6.3, 8.5.6; nonconformance and complaints 8.7, 9.1.2, 10.2; traceability 8.5.2; calibration 7.1.5; document control 7.5; supplier control 8.4; internal audit and management review 9.2, 9.3) were taken off the process rows: they state a basis FD-48 has not chosen, and the library has not read ISO 9001 (DR-007 rule 3). Restore them as \"Process · ISO 9001 n.n\" once FD-48 says the QMS is built to ISO 9001, checked against the standard's text",
+  "ISO 13485: device makers ask (FD-48; ind-meddevice links here for status). It applies to a product that is a medical device, not to a water system supplier (procurement/certifications-and-terms.md § 7); since the pass 10 review the certification block carries the status line \"Device quality system\" ([ISO 13485 status, registrar and expiry], tag ISO 13485), because ind-meddevice's supplier-quality row links here for it (DR-011 rule 3, DR-022). At launch drop this line and the ind-meddevice bracket together if FD-48 does not state it",
+  "Confirm the QMS processes listed exist as written procedures: document control, change control, NCR and CAPA with effectiveness check, supplier approval and review, identification and traceability, calibration with out-of-tolerance impact review, training matrix, internal audit, management review, complaint handling; procedure list for the questionnaire pack. At launch keep a process row only where a written procedure exists (DR-004)",
+  "Launch gate, never printed (pass 12, DR-028 rule 3, R6, DR-004 class 2 as amended; FD-48): [quality system ready for audit, date] is private. The page carries notice times only ([on-site audit notice, working days], [audit request response time, working days]). If the audit cannot be held and the pack does not exist at launch, the routes are hidden, never dated: the form (anchor audit), FAQ 2 and 3, FAQ 1's second sentence, the access block's pack and audit rows, and FAQ 6's sentence \"Access to audit the quality system before you order.\" go (its first sentence becomes \"Four things make proposals comparable.\"); the title, meta, eyebrow and headline drop the audit; the hero and closing buttons become \"Talk to an engineer\" to contact-proposal with the intent \"Not sure yet: talk to an engineer\". In the same commit the links to cmp-quality#audit on other pages change (check flags them) and the \"On-site supplier audit\" intents on projects and svc-fabrication go; check cannot flag services' router row \"Quality: request a supplier audit\" or home's risk FAQ audit sentence",
+  "Who answers audit and questionnaire requests (FD-34). Once a person holds the role, the form intro says who replies (DR-006 rule 7); until then \"we\" (DR-004 rule 4: no quality lead named before one exists)",
+  "Confirm change control practice: client approval before changing a client-approved document; internal changes approved by Aquemi quality; change control register in the turnover package",
+  "Confirm NCR practice: accept-as-is and repairs departing from approved documents need client approval; no shipment with an open product-contact NCR without client-approved disposition. The hero stamp ticks \"Nonconformances dispositioned\", not \"closed\", to match FAQ 5 (pass 10 review; DR-018 rule 1)",
+  "Notification time for nonconformances found after shipment (working days)",
+  "Supplier review interval (months); confirm that an open CAPA stops orders to that supplier; whether Aquemi audits critical subcontractors on site and how often; supplier audit practice",
+  "PP piping standard and PP material certificate type per lot for pipe, fittings and valves ([PP piping standard], [PP material certificates]; same as compliance; FD-17)",
+  "PVC pipe standard and schedule for pretreatment piping, and the certificates supplied for PVC parts ([PVC pipe standard and schedule], the name in ops/placeholder-names.md; [certificates supplied for PVC parts], the name sys-pretreatment, svc-cq and cmp-documentation use; FD-17). Were \"PVC pipe standard\" and \"manufacturer's certificate\" here",
+  "Elastomers and gaskets: the certificates required per compound ([elastomer certificates per compound] here and on cmp-documentation since pass C; contact-service's parts option and svc-service's like-for-like row name no standard; FD-17). The pages stated USP <88> Class VI and 21 CFR 177.2600, which MISSION does not state and the library has not checked (neither chapter text nor a maker's certificate: procurement/certifications-and-terms.md § 4–5). Once FD-17 sets the requirement, the four pages state it in one commit",
+  "Repair rule for a rejected PP joint ([PP joint repair rule]; FD-18)",
+  "Joint records kept for product-contact PP joints ([PP joint records kept], the name about, careers, compliance, svc-cq and sys-pw use until FD-18 is signed off; ops/placeholder-names.md): the record in the traceability row, for example a joint map and a per-joint log with machine parameters (FD-18's recommendation, not a decision). The row names them only once FD-18 is signed off. Was \"joint log and maps\", stated as practice",
+  "Which items in the PW package are pressure-rated and need a CRN ([pressure-rated items in the PW package]; same as compliance; FD-24)",
+  "Calibration provider and accreditation, for example ISO/IEC 17025 ([calibration provider and accreditation held], the canonical name in ops/placeholder-names.md); calibration intervals by instrument type (months) (FD-32). No \"NIST-traceable\" wording",
+  "Joint inspector qualification for PP joints, if any",
+  "Pressure equipment: certificate of authorization holder, or the certified vessel fabricator used ([pressure vessel certificate holder or certified vessel partner]; FD-24)",
+  "Control panels: [panel standard] and [panel certification mark held, or field evaluation used], compliance's names (FD-24, OQ-78). The standard the certification body applies (CSA C22.2 No. 14 or No. 286) and whether UL 508A applies for US sites, in writing from the certification body before the page names one (DR-007 rule 4)",
+  "PP joining status: [thermoplastic welder qualification status and expiry] and [welder qualification standard for thermoplastics] (FD-18). Fill as a status (qualified to [standard], expiry), never a count (DR-028 rule 1: the cert-readout look sets d in display type); svc-fabrication keeps [number of qualified thermoplastic welders] only where it is not display type (pass 12 review finding 3). Was \"PP joining qualification held\" and \"PP joining standard\" here. The item's icon is a neutral pipe run (\"loop\"), not a weld bead, while the joining method is open (pass 11 review; DR-018 rule 2, as careers); a joining icon may return once FD-18 names the method",
+  "Terms block \"How buying from us works\" (anchor buying kept; look terms-sheet shortened to one row, plus the onboarding row in pass 12; pass 11 SITE-PLAN, desk Q1, DR-001 rule 4 and DR-005 rule 7 as amended, DR-009): the eight terms rows and their to-do lines (proposal, currency, payment, warranty, delivery, drawings and code, onboarding documents, NDA; FD-05 to FD-08, FD-10, FD-12, FD-13, FD-33) moved to buying (26a-buying.json, buying#terms), where commercial phrasebook changes 2, 3, 4, 7 and 9 land. The full block and its to-dos are in git at aquemi-web bff41e0. The row names the subjects only, no values, so the terms keep one home. The hero secondary now links buying. Launch: if buying does not ship (its rule: FD-05 to FD-07 decided), restore the block from bff41e0 and the hero secondary returns to #buying. No rendered link targets cmp-quality#buying (checked pass 12); the anchor stays for old links. The row names buying#terms' subjects in its rows' order (proposal, lead time, payment, warranty start and cover, drawings and code, contract form); a second row names buying#onboarding's subjects in its items' order and links it (pass 12 review finding 4; replaces the pass 11 note)",
+  "Quality manual and critical supplier names shared openly or under NDA (same as svc-design: openly or under NDA): the access block's [quality manual: openly or under NDA] and [critical supplier names: openly or under NDA] (FD-48)",
+  "Questionnaire turnaround (working days); whether quality agreement mark-ups come back with the quote (yes or no: the FAQ leaves it out until confirmed) and the mark-up turnaround ([quality agreement mark-up turnaround, working days]); compliance's to-do asks the same (FD-48)",
+  "Remote audit: offered, notice (working days), whether a live shop view is possible",
+  "On-site audit notice ([on-site audit notice, working days], the name projects uses); shop and office location ([shop location, city and province], same as svc-fabrication, svc-design, about); whether supplier audits before order are free of charge ([supplier audit before order, free or charged], the name contact-proposal's requests table uses)",
+  "Audit request response time ([audit request response time, working days]) for the form and closing; form back end (where submissions go; DR-014 rule 10); the privacy notice in the form note ([privacy notice link], contact-proposal's name; FD-39, counsel OQ-81)",
+  "Role that releases a system to ship and its independence from production; quality organization chart",
+  "Quality record retention (years); turnover package copy retention is on cmp-documentation",
+  "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, certification status, organization chart, specimen NCR, CAPA and change records (Aquemi-written and labelled as specimens; a redacted client record only with the client's written consent: DR-004), calibration certificate and training matrix extract, and the onboarding documents. The pack is offered only when it exists (launch gate above)",
+  "Versioned evidence set (A1 or A2 PDF: certification status, insurance summary, procedure list, specimen index), dated and revised, once written; then a download link here (web/site-jobs.md § 5; audit D15). No download before the file exists (DR-006 rule 6)",
+  "Change notification to clients (FAQ \"Will you sign our quality agreement?\"; DR-022 rule 4): which changes you notify (parts, materials, software the client approved), how and with what notice ([change notification to clients: scope and notice]; FD-48). Until set, the placeholder stays",
+  "Supplier block intro \"An open corrective action (CAPA) on a supplier stops new orders to it [confirm]\": keep only if the written supplier-control procedure says so (FD-48); then drop \"[confirm]\". Was a display-size fact with a closed-valve glyph (pass 9), taken back to a plain line in pass 10 (DR-018 rules 2-3)",
+  "Access block (anchor access, before the audit form its rows link to; pass 11, proof-and-seriousness.md § 5.2, journeys P4 step 3; pass 12 RI qa-head 04: three tiers). Heading \"What you can read, and when\" matches the Compliance menu entry (SITE-PLAN 4.2, \"Public, under NDA, or at audit\"). Rows say their tier in the second cell: public: now on this page, or on request in the questionnaire pack, under NDA ([quality manual: openly or under NDA], [critical supplier names: openly or under NDA]; FD-48), at audit. If FD-48 puts neither item under NDA, the intro drops the NDA tier and the quality manual row's link goes. Look audit-manifold (also live on ind-meddevice): the unused retired table looks draw other subjects. Every note cell is a link, because AuditManifold styles a plain note like a link. A row whose item does not exist at launch leaves (DR-006 rule 6). Image queue #62 cmp-quality.access (three drawers) is the concept for a later look",
+  "Onboarding papers (insurance, registrations, banking and tax forms) and their status live item by item on buying#onboarding, each with its own placeholder (pass 11; DR-009, DR-011). The questionnaire pack FAQ points there in words; the buying block's second row names buying#onboarding's subjects in its order and links it (subjects only, pass 12 review finding 4); no onboarding placeholder on this page (pass 11 review finding 7)",
+  "Final round, pass 11: related links How a project runs (authoritative desk review, DESK-plan.md, Q1: project-plan from compliance and company pages)",
+  "Pass 12 lead (SITE-PLAN cmp-quality, RI qa-head 04): the quality promise in QA's terms first (release stays with the client's lab results; changes to a qualified system go through the client's change control), then the page's contents. Owner to confirm both as practice (FD-48); 28 words",
+  "Pass 12 control system access row (RI qa-head 04: user roles and configuration control as procedures, spelled out): the row summarizes and links svc-fat-sat, where each access role is tested (DR-009). Confirm the written procedure covers the user role list and configuration baseline backup (FD-48)",
+  "Pass 12 failed-test line in the NCR step (RI auditor 15: failures at FAT, SAT and commissioning logged and investigated, never resampled to pass; svc-cq states the same): confirm in the written NCR procedure (FD-48)",
+  "Pass 12 FAQ \"Can we audit you before we order?\" opens with \"Yes.\" (SITE-PLAN 1.4: answers open with yes, no or the number): true only while the launch gate holds; if the audit route is hidden, the FAQ goes with it"
+ ],
+ "figure": {
+  "art": "cmp-quality",
+  "plate": "stamp",
+  "label": "Recorded",
+  "title": "Shipment record",
+  "items": [
+   "Inspection record",
+   "Test record",
+   "Nonconformances dispositioned",
+   "Records reviewed"
+  ],
+  "sub": "Aquemi"
+ }
+}

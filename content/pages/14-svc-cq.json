@@ -3,9 +3,9 @@
  "section": "Services",
  "nav_label": "Commissioning and qualification",
  "title": "Purified Water system IQ, OQ and PQ | Aquemi",
- "meta": "Commissioning, IQ and OQ of your polypropylene Purified Water package to protocols you approve, then PQ over 12 months. Not under GMP: commissioning and an acceptance test to your specification.",
+ "meta": "Commissioning, IQ and OQ of your Purified Water package to protocols you approve, then PQ over 12 months. Not under GMP: commissioning and an acceptance test to your specification.",
  "path": "/services/commissioning-qualification/",
- "eyebrow": "IQ, OQ, PQ · EU GMP ANNEX 15 · GUI-0029",
+ "eyebrow": "COMMISSIONING · IQ · OQ · PQ",
  "headline": "IQ, OQ and a year of PQ",
  "lead": "Your quality unit approves each protocol and first production use; we commission and test on site. Not under good manufacturing practice (GMP): commissioning and an acceptance test against your specification.",
  "primary_cta": "Request a C&Q plan review",
@@ -21,7 +21,7 @@
    "nav": "Stages",
    "anchor": "stages",
    "h": "What each stage proves",
-   "intro": "One commissioning and qualification (C&Q) plan covers every stage, traditional or ASTM E2500. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+   "intro": "One commissioning and qualification (C&Q) plan covers every stage. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
    "items": [
     {
      "t": "Commissioning",
@@ -36,7 +36,7 @@
     },
     {
      "t": "Installation qualification (IQ)",
-     "d": "Installed as designed: drawings, materials, joints, slopes, instruments.",
+     "d": "Installed as designed: drawings, materials and instruments.",
      "label": "IQ",
      "art": "piping"
     },
@@ -87,11 +87,6 @@
      "Your validation team"
     ],
     [
-     "Deviations and changes, FAT to OQ",
-     "Aquemi logs each one with cause, fix and retest",
-     "Your validation team approves, under your change control"
-    ],
-    [
      "PQ protocol and sampling plan",
      "You, or Aquemi drafts for you",
      "Both teams and your laboratory"
@@ -100,104 +95,16 @@
      "PQ sampling and testing",
      "Your operators and laboratory",
      "Your quality control"
-    ],
-    [
-     "Alert and action levels",
-     "Aquemi recommends from the data",
-     "Your quality control"
-    ],
-    [
-     "Phase reports and final summary",
-     "Aquemi drafts from executed records",
-     "Your validation team"
     ]
    ],
-   "fold": 5,
-   "fold_noun": "documents",
    "look": "signature-blocks"
-  },
-  {
-   "type": "spec",
-   "nav": "IQ and OQ",
-   "anchor": "iq-oq",
-   "h": "IQ and OQ on site",
-   "cols": [
-    "Check",
-    "What we verify",
-    "Basis or record"
-   ],
-   "rows": [
-    {
-     "p": "IQ · Drawings and dead legs",
-     "v": "Walkdown: P&ID (piping and instrumentation diagram), isometrics, field piping",
-     "m": "Dead leg register, L/D per branch",
-     "part": "branch"
-    },
-    {
-     "p": "IQ · Joints",
-     "v": "Joint records for the joining method named in your proposal",
-     "m": "The joining standard named in your proposal",
-     "part": "joint"
-    },
-    {
-     "p": "OQ · Drain on high conductivity",
-     "v": "Divert on a real conductivity rise, then return",
-     "m": "Uncompensated reading",
-     "part": "analyzer"
-    },
-    {
-     "p": "OQ · Sanitization",
-     "v": "Full sanitization cycle by a chemical method set per project, verified at the coldest point",
-     "m": "Residual tested before use",
-     "part": "coldest"
-    },
-    {
-     "p": "OQ · Hydraulics",
-     "v": "Every point of use open at peak demand, then minimum",
-     "m": "Positive return pressure · functional specification",
-     "part": "outlets"
-    },
-    {
-     "p": "OQ · Sequences and interlocks",
-     "v": "Forced by real condition where safe, else simulated",
-     "m": "FAT results reused where accepted",
-     "part": "panel"
-    },
-    {
-     "p": "IQ · Materials",
-     "v": "Polypropylene (PP) modules and loop, polyvinyl chloride (PVC) pretreatment; elastomers to specification",
-     "m": "PP and PVC material certificates as named in your proposal",
-     "part": "skid"
-    },
-    {
-     "p": "IQ · Instruments",
-     "v": "Installed, ranged, calibrated; critical ones identified",
-     "m": "Traceable via a provider named in your proposal",
-     "part": "gauge"
-    },
-    {
-     "p": "OQ · Access and data",
-     "v": "User access levels, time sync, backup, restore",
-     "m": "Against the functional specification",
-     "part": "panel"
-    }
-   ],
-   "fold": 5,
-   "fold_noun": "checks",
-   "look": "walkdown-pins",
-   "labels": {
-    "joint": "Loop joint",
-    "analyzer": "Conductivity",
-    "coldest": "Coldest point",
-    "skid": "PP modules"
-   }
   },
   {
    "type": "steps",
    "nav": "PQ",
    "anchor": "pq",
    "h": "PQ in three phases",
-   "intro": "We draft the sampling plan with you; your lab tests conductivity, total organic carbon and microbial count. For example, 12 sample points over 28 days make 336 samples: book lab hours before PQ starts.",
+   "intro": "We draft the sampling plan with you; your lab tests the samples. For example, 12 sample points over 28 days make 336 samples: book lab time before PQ starts.",
    "items": [
     {
      "t": "Phase 1",
@@ -231,35 +138,6 @@
    }
   },
   {
-   "type": "spec",
-   "as": "gauges",
-   "nav": "Alert levels",
-   "anchor": "alert-levels",
-   "h": "Alert levels come from your data",
-   "cols": [
-    "Level",
-    "Set at",
-    "Basis"
-   ],
-   "rows": [
-    {
-     "p": "Microbial action level",
-     "v": "≤ 100 CFU/mL",
-     "level": "action",
-     "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
-     "hl": true,
-     "link": "compliance#limits"
-    },
-    {
-     "p": "Alert level",
-     "v": "From phases 1 and 2, confirmed on the year",
-     "m": "WHO TRS 1033, 11.3, 12.7 and 12.8"
-    }
-   ],
-   "note": "CFU: colony-forming units. The action level shown is for Purified Water; hospital critical water (ST108:2023) has a tighter limit. Alert levels come from your own data either way.",
-   "look": "cut-band"
-  },
-  {
    "type": "faq",
    "nav": "FAQ",
    "anchor": "faq",
@@ -267,39 +145,18 @@
    "items": [
     {
      "q": "Do we really have to wait a year before using the water?",
-     "a": "No. WHO TRS 1033 allows use from phase 2 when data show the required quality and your quality unit approves. The year covers seasonal feed water changes."
-    },
-    {
-     "q": "Can IQ and OQ be combined into one protocol?",
-     "a": "Yes, depending on complexity, under EU good manufacturing practice (GMP) Annex 15, 2.5 and 3.10. On a single module it saves a review cycle; on the full package we keep them apart.",
-     "link": "cmp-documentation#samples",
-     "link_label": "Request the IQ/OQ contents",
-     "intent": "IQ and OQ protocol contents"
-    },
-    {
-     "q": "What counts as passing IQ and OQ?",
-     "a": "The criteria written in each protocol, which your validation team approves before testing starts. The summary lists every test as met or not met. Each miss carries its deviation number, action and owner. Your quality unit decides release. A failed result is investigated, never resampled to pass."
+     "a": "No. Your quality unit can approve use from phase 2, when the data show the required quality. The year covers seasonal changes in your feed water."
     },
     {
      "q": "Not under GMP: do you still commission and test the system?",
-     "a": "Yes, to the standard you work under. Hospital critical water (ST108:2023): validation before first use, then monthly bacteria and endotoxin samples. Laboratories (CLSI GP40, 5th edition): verification against your user requirements. Process plants: an acceptance test to your process or equipment maker's specification.",
-     "link": "ind-hospital-lab#validation",
+     "a": "Yes, to the standard you work under: hospital critical water, laboratory reagent water, or your process or equipment maker's specification.",
+     "link": "ind-hospital-lab#grades",
      "link_label": "Hospital and lab water"
-    },
-    {
-     "q": "What if an action level is exceeded during PQ?",
-     "a": "It is a deviation under your procedure. We help find the root cause (WHO TRS 1033, 12.9); resampling verifies the fix. The phase may be extended."
     },
     {
      "q": "Can you qualify a system you did not build?",
      "a": "Yes, for makes and equipment confirmed when you enquire. We start with an assessment of its qualification file and the installed system.",
      "link": "svc-upgrades"
-    },
-    {
-     "q": "Natural health products: do we need IQ, OQ and PQ?",
-     "a": "Not by name. GUI-0158's water sections (45 and 46) ask for three things. Criteria to qualify and monitor treated water, test records, and calibrated, maintained equipment. Our scope for that evidence is set per project. Where your quality assurance person (QAP) asks for IQ, OQ and PQ, the path on this page applies.",
-     "link": "ind-pharma#nhp",
-     "link_label": "Water by product line"
     },
     {
      "q": "Do you train the people who will run it?",
@@ -331,8 +188,7 @@
   ],
   "returns": [
    "A draft C&Q plan, or an acceptance test scope",
-   "IQ/OQ tests and reusable FAT tests",
-   "A PQ sampling plan"
+   "The IQ/OQ and PQ scope"
   ],
   "turnaround": "a time confirmed when you enquire"
  },
@@ -362,6 +218,7 @@
   "Pass 12 (DR-027 rule 8, IB 3): the non-GMP sentence verbatim ends the stages intro. FAQ \"Not under GMP: do you still commission and test the system?\" replaces the ASTM E2500 FAQ, whose answer moved to the stages intro (RI 03 order: approach first; FAQ cap 8). It links ind-hospital-lab#validation (new page, R1); if that page has not launched, the link goes. ST108:2023 monthly bacteria and endotoxin are the standard's monitoring minimums (industries/hospital-reprocessing.md), not an Aquemi figure",
   "Pass 12 (RI 03, RI 04, RI 15): roles table adds the deviation and change-control row between FAT and OQ; the acceptance FAQ adds \"investigated, never resampled to pass\". A written deviation route as a document waits on FD-45/FD-46; the specimen record on FD-47",
   "Pass 12 (RI 05): PQ intro says we draft the sampling plan with you (roles table); phase 3 says an adverse trend is investigated, not resampled. Who samples on site stays [on-site PQ sampling by Aquemi, yes or no] (FD-46, off the page until set). Alert-levels note marks the 100 CFU/mL action level as Purified Water's and points hospital readers to ST108's tighter limit (IB 3)",
-  "Pass 12: anchors stages, iq-oq, pq, alert-levels added (roles and faq kept; inbound links services, first-system, ind-meddevice use roles and faq). No look changed"
+  "Pass 12: anchors stages, iq-oq, pq, alert-levels added (roles and faq kept; inbound links services, first-system, ind-meddevice use roles and faq). No look changed",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): roles table cut to 5 rows (deviations, alert levels, phase reports retired; fold dropped), IQ and OQ walkdown and alert-level sections retired, FAQ cut to 4 (combined IQ/OQ, what counts as passing, action level exceeded, natural health products retired), Annex 15, GUI-0029, ASTM E2500 and WHO TRS removed; hospital link now ind-hospital-lab#grades."
  ]
 }

@@ -75,9 +75,9 @@
    "page": "systems",
    "slot": 2,
    "h": "What your site needs before we arrive",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "f313b5471f",
    "block": {
@@ -129,6 +129,54 @@
       "m": "One list for your permit: chemicals with safety data sheets, discharge, isolation points",
       "link": "cmp-documentation#safety",
       "link_label": "Site safety information"
+     }
+    ],
+    "nav": "Site",
+    "anchor": "site",
+    "look": "limit-plan"
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 1,
+   "h": "What your site needs before we arrive",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "e38d3366af",
+   "block": {
+    "type": "spec",
+    "h": "What your site needs before we arrive",
+    "cols": [
+     "Item",
+     "Typical",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Connection points (battery limits)",
+      "v": "Battery limits set per project",
+      "m": "Listed in the proposal, with who supplies each",
+      "at": "limit"
+     },
+     {
+      "p": "Footprint and weight",
+      "v": "Confirmed in your proposal",
+      "m": "On the general arrangement drawings",
+      "at": "footprint"
+     },
+     {
+      "p": "Power, feed water and drain",
+      "v": "Supply voltage, feed and drain flows confirmed in your proposal",
+      "m": "RO reject and rinse water to drain",
+      "at": "utilities"
+     },
+     {
+      "p": "Tie-in and shutdown",
+      "v": "Planned with you",
+      "m": "Plan temporary water if production cannot stop",
+      "at": "tiein"
      }
     ],
     "nav": "Site",

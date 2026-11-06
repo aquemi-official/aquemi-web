@@ -3,178 +3,25 @@
  "section": "Industries",
  "nav_label": "Food, beverage and industrial",
  "title": "Demineralized water for food and industrial plants | Aquemi",
- "meta": "One polypropylene package with reverse osmosis and EDI for distilleries, craft beverage, food, cannabis, electronics, hydrogen and chemical plants, built to the limit your process sets.",
+ "meta": "One package with reverse osmosis and EDI for distilleries, craft beverage, food, cannabis and industrial plants, built to the limit your process sets.",
  "path": "/industries/food-beverage-and-industrial/",
  "eyebrow": "FOOD · BEVERAGE · CANNABIS · INDUSTRIAL · ENERGY",
  "headline": "Demineralized water to the limit your process sets",
- "lead": "For distilleries, craft beverage, food, cannabis, electronics, hydrogen and chemical plants. One polypropylene package with reverse osmosis (RO) and electrodeionization (EDI), configured to your limit, with the scope confirmed when you enquire.",
+ "lead": "For distilleries, craft beverage, food, cannabis, electronics, hydrogen and chemical plants. One package with reverse osmosis (RO) and electrodeionization (EDI), configured to the limit your process sets.",
  "primary_cta": "Send your water limit",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet",
  "secondary_cta": {
-  "label": "Who writes your limit",
-  "link": "#limits"
+  "label": "See industrial uses",
+  "link": "#industrial"
  },
  "blocks": [
-  {
-   "type": "table",
-   "as": "router",
-   "nav": "Where to start",
-   "anchor": "start",
-   "h": "Start from your plant",
-   "cols": [
-    "Your plant",
-    "Where the water goes",
-    "Start with"
-   ],
-   "rows": [
-    [
-     "A distillery",
-     "Proofing water that brings spirit to bottling strength; ingredient water",
-     {
-      "t": "Food, beverage and cannabis",
-      "link": "ind-process#food"
-     }
-    ],
-    [
-     "A craft brewery, cidery or soft drink maker",
-     "Ingredient water, adjusted to your recipe",
-     {
-      "t": "Food, beverage and cannabis",
-      "link": "ind-process#food"
-     }
-    ],
-    [
-     "Cannabis extracts, edibles, beverages or topicals",
-     "Water that touches the product; ingredient water",
-     {
-      "t": "Food, beverage and cannabis",
-      "link": "ind-process#food"
-     }
-    ],
-    [
-     "A food company with a natural health product or supplement line",
-     "That line's water, under its own rules",
-     {
-      "t": "Natural health products",
-      "link": "ind-pharma#nhp"
-     }
-    ],
-    [
-     "Electronics or precision parts",
-     "Final rinse and parts washers",
-     {
-      "t": "Industrial and energy",
-      "link": "ind-process#industrial"
-     }
-    ],
-    [
-     "A hydrogen electrolyser",
-     "Stack feed and make-up water",
-     {
-      "t": "Industrial and energy",
-      "link": "ind-process#industrial"
-     }
-    ],
-    [
-     "Water-based chemicals, coatings or adhesives",
-     "Water as a raw material; dilution",
-     {
-      "t": "Industrial and energy",
-      "link": "ind-process#industrial"
-     }
-    ],
-    [
-     "A boiler or humidifiers",
-     "Make-up water to the equipment maker's specification",
-     {
-      "t": "Industrial and energy",
-      "link": "ind-process#industrial"
-     }
-    ]
-   ],
-   "look": "manifold-router",
-   "panel": "compact"
-  },
-  {
-   "type": "table",
-   "as": "evidence",
-   "nav": "Your limit",
-   "anchor": "limits",
-   "h": "Who writes your limit, and what to send",
-   "intro": "Outside drugs and natural health products, no regulator sets a Purified Water grade for these uses. Your recipe, your process or your equipment maker sets the limit.",
-   "cols": [
-    "Who writes the limit",
-    "What it sets",
-    "What to send",
-    "Where it applies"
-   ],
-   "rows": [
-    [
-     "Recipe or brand specification",
-     "Ingredient water above the potable legal floor: hardness, alkalinity, chlorine, minerals",
-     "Your water profile; feed water analysis",
-     {
-      "t": "Food and beverage",
-      "link": "ind-process#food"
-     }
-    ],
-    [
-     "Cannabis quality assurance person",
-     "Potable water at minimum (Cannabis Regulations, s. 88.6), plus the methods they approve",
-     "Their water specification; any pharmaceutical standard your site runs",
-     {
-      "t": "Cannabis products",
-      "link": "ind-process#food"
-     }
-    ],
-    [
-     "Process engineer",
-     "Conductivity in µS/cm at each rinse or process stage",
-     "The limit, its stage and unit; flow at each stage",
-     {
-      "t": "Industrial and energy",
-      "link": "ind-process#industrial"
-     }
-    ],
-    [
-     "Electrolyser stack maker",
-     "Feed-water limits for the stack",
-     "The stack maker's feed-water specification, with revision",
-     {
-      "t": "Industrial and energy",
-      "link": "ind-process#industrial"
-     }
-    ],
-    [
-     "Boiler maker or treatment program",
-     "Make-up water quality for the boiler",
-     "The make-up specification; your treatment program's targets",
-     {
-      "t": "Industrial and energy",
-      "link": "ind-process#industrial"
-     }
-    ],
-    [
-     "ASTM D1193-24 Type II or III",
-     "Laboratory reagent water, by type",
-     "The type and edition your method or customer names",
-     {
-      "t": "Hospitals and laboratories",
-      "link": "ind-hospital-lab#grades"
-     }
-    ]
-   ],
-   "fold_noun": "limits",
-   "ground": "light",
-   "look": "limit-folders"
-  },
   {
    "type": "table",
    "nav": "Food and beverage",
    "anchor": "food",
    "h": "Food, beverage and cannabis",
-   "intro": "Potable water is the legal floor for food in Canada and the US. Your recipe or quality person sets the rest. Dairy plants use demineralized water for lab work and boiler make-up.",
+   "intro": "Potable water is the legal floor for food in Canada and the US. Your recipe or quality person sets the rest.",
    "cols": [
     "Plant",
     "Where the water goes",
@@ -185,17 +32,14 @@
     [
      "Distilling, spirits and liqueurs",
      "Proofing water, ingredient water",
-     "Potable (Safe Food for Canadians Regulations, s. 70; 21 CFR 117.37) · your recipe specification",
+     "Potable water, plus your recipe specification",
      "Generation sized to your proofing schedule, with storage for batch draws"
     ],
     [
      "Brewing, cider, soft drinks and juices, craft scale",
      "Ingredient water, quality control lab, boiler make-up",
      "Potable · your recipe and water profile",
-     {
-      "t": "Craft scale; larger plants: see where it fits",
-      "link": "ind-process#fit"
-     }
+     "Craft scale; larger plants confirmed when you enquire"
     ],
     [
      "Food ingredients, flavours and supplement lines",
@@ -209,7 +53,7 @@
     [
      "Cannabis products: extracts, edibles, beverages and topicals",
      "Water that touches the product, ingredient water, quality control lab",
-     "Potable (Cannabis Regulations, s. 88.6) · your quality assurance person's specification",
+     "Potable water, plus your quality assurance person's specification",
      "Ambient, small flows; Purified Water where your site runs pharmaceutical standards"
     ]
    ],
@@ -223,7 +67,7 @@
    "nav": "Industrial and energy",
    "anchor": "industrial",
    "h": "Industrial and energy",
-   "intro": "Each use takes generation to a written limit. Storage and a loop are added only where several points draw water.",
+   "intro": "Outside drugs and natural health products, your process or equipment maker sets the limit. Storage and a loop are added only where needed. Not supplied: semiconductor ultrapure water, bottled water lines, plant-scale main systems.",
    "cols": [
     "Your use",
     "Limit, and who sets it",
@@ -232,7 +76,7 @@
    "rows": [
     [
      "Electronics and precision rinse",
-     "Conductivity at each rinse stage, set by your process engineer; ASTM D1193-24 Type II where your customer names it",
+     "Conductivity at each rinse stage, set by your process engineer",
      "Generation to your rinse limit"
     ],
     [
@@ -254,11 +98,6 @@
      "Humidifier make-up",
      "The humidifier maker's specification",
      "Generation for cleanrooms, labs, grow rooms and device plants"
-    ],
-    [
-     "Metal finishing rinse",
-     "Conductivity at each rinse stage, set by your finish specification",
-     "Confirmed when you enquire"
     ]
    ],
    "look": "riser-valves"
@@ -281,7 +120,7 @@
     },
     {
      "t": "Loop to points of use",
-     "d": "Where several stations draw water. Polypropylene, ambient or chemically sanitized.",
+     "d": "Where several stations draw water. Ambient, chemically sanitized.",
      "spot": "loop",
      "at": 2.5,
      "part": "outlet",
@@ -315,141 +154,6 @@
    "look": "option-taps"
   },
   {
-   "type": "spec",
-   "nav": "From exchange DI",
-   "anchor": "from-ion-exchange",
-   "h": "From exchange DI to your own RO and EDI",
-   "intro": "With exchange deionization (DI), tanks are swapped on a schedule. With your own package, water is made on site. Send your daily use and exchange cost to compare.",
-   "cols": [
-    "Item",
-    "With your own package",
-    "Set by"
-   ],
-   "rows": [
-    {
-     "p": "Exchange tank swaps",
-     "v": "None: RO and EDI make the water on site",
-     "m": "Your daily use against your exchange cost",
-     "link": "systems#faq",
-     "part": "gen"
-    },
-    {
-     "p": "Filters, carbon, softener resin and salt",
-     "v": "Intervals set for your system",
-     "m": "Feed water and run hours",
-     "part": "pre soft"
-    },
-    {
-     "p": "RO membranes and EDI module",
-     "v": "Intervals set for your system",
-     "m": "Feed water and flow",
-     "part": "gen"
-    },
-    {
-     "p": "Water to drain",
-     "v": "RO reject at the recovery in your design",
-     "m": "Feed water chemistry",
-     "part": "drain",
-     "side": "out"
-    },
-    {
-     "p": "Energy",
-     "v": "Estimated in your proposal",
-     "m": "Flow and feed temperature",
-     "part": "pump"
-    },
-    {
-     "p": "Service plan, with calibration",
-     "v": "Priced per system",
-     "m": "System, instruments and distance",
-     "link": "svc-service#running-cost",
-     "part": "panel"
-    }
-   ],
-   "fold": 2,
-   "fold_noun": "items",
-   "look": "cost-skid"
-  },
-  {
-   "type": "spec",
-   "as": "callouts",
-   "nav": "Fit",
-   "anchor": "fit",
-   "h": "Where it fits, and what we do not supply",
-   "caption": "Fit",
-   "intro": "One polypropylene (PP) package with PVC pretreatment. No Water for Injection, pure steam or stainless steel systems.",
-   "cols": [
-    "Item",
-    "Fit",
-    "Basis"
-   ],
-   "rows": [
-    {
-     "p": "Temperature",
-     "v": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
-     "m": "Ambient or chemically sanitized loops",
-     "hl": true,
-     "link": "industries#fit",
-     "link_label": "Fit rules for every industry",
-     "in": true
-    },
-    {
-     "p": "Hot water and steam",
-     "v": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it).",
-     "m": "Any hot-water cycle stays inside the PP maker's published pressure–temperature rating for its hours."
-    },
-    {
-     "p": "Generation skid sanitization",
-     "v": "Method confirmed in your proposal, including whether RO and EDI can be heat-sanitized",
-     "m": "The same RO and EDI skid, with or without a loop",
-     "link": "sys-pw#design",
-     "link_label": "Generation skid design",
-     "in": true
-    },
-    {
-     "p": "Flow",
-     "v": "Sized to your demand",
-     "m": "At your coldest feed water; parallel trains for larger flows",
-     "in": true
-    },
-    {
-     "p": "Plant-scale main systems",
-     "v": "Not supplied",
-     "m": "Large hygienic dairy and beverage plants; battery gigafactories"
-    },
-    {
-     "p": "Semiconductor fab ultrapure water",
-     "v": "Not supplied",
-     "m": "ASTM D5127 duties"
-    },
-    {
-     "p": "Bottled water lines",
-     "v": "Not supplied",
-     "m": "Their loop sanitization regime",
-     "link": "sys-storage#sanitization",
-     "link_label": "Sanitization methods"
-    },
-    {
-     "p": "No written limit",
-     "v": "We help you write one",
-     "m": "From where the water goes and what fails when it is wrong",
-     "link": "ind-process#faq",
-     "link_label": "How we draft your limit",
-     "in": true
-    }
-   ],
-   "fold": 4,
-   "fold_noun": "rules",
-   "ground": "light",
-   "look": "fit-envelope",
-   "scale": {
-    "from": 0,
-    "to": 80,
-    "unit": "°C",
-    "label": "Fits"
-   }
-  },
-  {
    "type": "faq",
    "nav": "FAQ",
    "anchor": "faq",
@@ -476,6 +180,12 @@
      "a": "No. Lines under good manufacturing practice (GMP) add qualification documents to the package. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
      "link": "svc-cq",
      "link_label": "Commissioning and qualification"
+    },
+    {
+     "q": "We pay for exchange DI. When does our own RO and EDI make sense?",
+     "a": "Send your daily use and what exchange costs you today. We compare the two in writing.",
+     "link": "systems#faq",
+     "link_label": "Exchange DI or your own system"
     }
    ]
   },
@@ -520,6 +230,7 @@
   "Dairy QC labs and boiler make-up appear only in the food intro, as uses (R4). Food register is practical and cost-led (food-beverage.md 'Their language'); pharmacopoeia words only where a health product line is named",
   "Looks per SITE-PLAN: manifold-router, proof-folders, site-plates, riser-valves, option-taps, cost-skid, param-tiles. site-plates carries no art key: its drawings are site scenes (office, shop, service, parts) whose pins would label the wrong parts (DR-018); image queue 24 (food plate) replaces the empty plate in phase 6. option-taps: generation is the solid train, the three additions dashed",
   "Images (R11, image queue 21-28): page-specific hero drawing (RO/EDI skid feeding a proofing tank, a rinse tank and an electrolyser stack); concepts for start, limits, food, industrial, generation, from-ion-exchange, fit",
-  "Established voice (FD-60, DR-028): no reference, hold or first-delivery logic on this page. A reference question goes to buying#faq through sales, not from here"
+  "Established voice (FD-60, DR-028): no reference, hold or first-delivery logic on this page. A reference question goes to buying#faq through sales, not from here",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired the plant router, the limit-writers table, the exchange-DI cost block and the fit block (exclusions kept as one line in the industrial intro; exchange DI moved to one FAQ); dropped clause citations and the metal finishing row."
  ]
 }

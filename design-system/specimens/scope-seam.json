@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, intro, rows [{p, v, m, side, link, link_label}] (side: \"package\" | \"site\" | \"limit\"; default site), sides [package label, site label], seam (the seam's name). cols, fold and fold_noun are read by other looks, not here.",
  "best_for": "ScopeSeam shows where a package fits and where it does not as a band split navy and limestone: the ambient loop the package serves drawn whole in the navy half, a loop it cannot serve dashed in the limestone half, two tie-in nodes on the seam between them, the limit row on the seam itself and each half's rows numbered under its drawing.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-personal-care",
@@ -77,9 +77,9 @@
    "page": "ind-personal-care",
    "slot": 4,
    "h": "Where the package fits, and where it does not",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "fbdc2aab69",
    "block": {

@@ -2,12 +2,12 @@
  "id": "compliance",
  "section": "Compliance",
  "nav_label": "Standards we design to",
- "title": "Purified Water system standards: USP, Ph. Eur., GMP | Aquemi",
- "meta": "Standards behind our polypropylene Purified Water package: USP <645>, <643>, Ph. Eur. 0008, GUI-0001, 21 CFR 211, WHO TRS 1033, and the proof for each.",
+ "title": "Purified Water system standards: USP, GMP | Aquemi",
+ "meta": "Standards behind our Purified Water package: USP <645>, <643> and <1231>, Health Canada and FDA GMP, CSA B51, and how we show each.",
  "path": "/compliance/",
- "eyebrow": "COMPLIANCE · USP · PH. EUR. · GMP",
- "headline": "Every standard, its number, its proof",
- "lead": "The standards behind our ambient polypropylene (PP) Purified Water (PW) package with polyvinyl chloride pretreatment. For each, its limit and the document proving it.",
+ "eyebrow": "COMPLIANCE · USP · GMP",
+ "headline": "The standards behind our package",
+ "lead": "The water standards and good manufacturing practice (GMP) rules our Purified Water package is designed to. Send your requirements and we answer each one in a compliance matrix.",
  "primary_cta": "Request a compliance matrix",
  "primary_cta_intent": "I have a URS or a draft|Compliance matrix",
  "primary_cta_link": "contact-proposal",
@@ -23,8 +23,8 @@
    "nav": "Limits",
    "anchor": "limits",
    "h": "Purified Water limits",
-   "intro": "For Purified Water only, not Water for Injection (WFI). Where USP and Ph. Eur. differ, we design to the stricter value. Your quality unit releases the water on your laboratory's results.",
-   "caption": "USP · PH. EUR.",
+   "intro": "For Purified Water only, not Water for Injection (WFI). Your quality unit releases the water on your laboratory's results.",
+   "caption": "USP",
    "cols": [
     "Parameter",
     "Limit",
@@ -36,27 +36,23 @@
      "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
      "m": "USP <645>",
      "hl": true,
-     "icon": "conductivity",
-     "alt": {
-      "v": "≤ 5.1 µS/cm at 25 °C",
-      "m": "Ph. Eur."
-     }
+     "icon": "conductivity"
     },
     {
      "p": "Total organic carbon",
      "v": "≤ 0.50 mg/L (500 ppb)",
-     "m": "USP <643>; Ph. Eur. 2.2.44",
+     "m": "USP <643>",
      "icon": "toc"
     },
     {
      "p": "Microbial action level",
      "v": "≤ 100 CFU/mL",
      "level": "action",
-     "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+     "m": "USP <1231>",
      "icon": "droplet"
     }
    ],
-   "note": "Ph. Eur. conductivity: ≤ 5.1 µS/cm at 25 °C. Nitrates: ≤ 0.2 ppm, test waived at WFI conductivity (Ph. Eur. 11.4). CFU: colony-forming units. Editions: those in force when you approve the functional specification.",
+   "note": "CFU: colony-forming units. Editions: those in force when you approve the functional specification.",
    "look": "limit-bento"
   },
   {
@@ -65,7 +61,7 @@
    "nav": "Map",
    "anchor": "map",
    "h": "Which standard governs each part",
-   "intro": "Each standard links to its proof below.",
+   "intro": "The standards that govern each part of the package.",
    "zones": [
     {
      "t": "Generation",
@@ -73,56 +69,35 @@
      "to": "pharmacopoeia",
      "codes": [
       "USP <645>",
-      "USP <643>",
-      "Ph. Eur. 0008"
+      "USP <643>"
      ],
      "spot": "ro-skid"
     },
     {
      "t": "Storage and distribution",
      "icon": "loop",
-     "to": "gmp",
+     "to": "pharmacopoeia",
      "codes": [
-      "WHO TRS 1033",
-      {
-       "t": "USP <1231>",
-       "to": "pharmacopoeia"
-      },
-      {
-       "t": "Piping standard named in your proposal",
-       "to": "engineering"
-      }
+      "USP <1231>"
      ],
      "spot": "storage-tank"
     },
     {
      "t": "Controls and data",
      "icon": "gauge",
-     "to": "gmp",
+     "to": "pharmacopoeia",
      "codes": [
-      "GAMP 5",
-      {
-       "t": "Panel standard named in your proposal",
-       "to": "engineering"
-      }
+      "GAMP 5"
      ],
      "spot": "gauge"
     },
     {
      "t": "Materials and fabrication",
      "icon": "weld",
-     "to": "engineering",
+     "to": "pharmacopoeia",
      "codes": [
-      {
-       "t": "GUI-0001 C.02.004, C.02.005",
-       "to": "gmp"
-      },
-      {
-       "t": "21 CFR 211.63, 211.65",
-       "to": "gmp"
-      },
-      "Material standard named in your proposal",
-      "Joining standard named in your proposal",
+      "21 CFR 211.65",
+      "GUI-0001",
       "CSA B51"
      ],
      "spot": "weld"
@@ -130,14 +105,10 @@
     {
      "t": "Qualification",
      "icon": "binder",
-     "to": "gmp",
+     "to": "pharmacopoeia",
      "codes": [
-      "EU GMP Annex 15",
       "GUI-0029",
-      "WHO TRS 1033",
-      "ASTM E2500",
-      "ICH Q9(R1)",
-      "ISO 13485:2016"
+      "ASTM E2500"
      ],
      "spot": "binder"
     }
@@ -146,11 +117,11 @@
   {
    "type": "table",
    "as": "evidence",
-   "nav": "Pharmacopoeia",
+   "nav": "Water standards",
    "anchor": "pharmacopoeia",
    "look": "proof-folders",
    "ground": "light",
-   "h": "Pharmacopoeias and other water standards",
+   "h": "Water standards",
    "cols": [
     "Standard",
     "What we design to",
@@ -160,7 +131,7 @@
    "rows": [
     [
      "USP <645> Water conductivity",
-     "Stage 1, uncompensated; cell constant ± 2 %, instrument ± 0.1 µS/cm",
+     "Conductivity read uncompensated, as stage 1 asks",
      "Calibration certificates; FAT, SAT and OQ uncompensated readings",
      {
       "t": "Monitoring and controls",
@@ -169,7 +140,7 @@
     ],
     [
      "USP <643> Total organic carbon",
-     "System suitability: response efficiency 85 % to 115 %",
+     "Total organic carbon measured to the chapter's method",
      "Suitability records; analyzer calibration; OQ report",
      {
       "t": "Monitoring and controls",
@@ -177,30 +148,12 @@
      }
     ],
     [
-     "Ph. Eur. 0008 Purified water",
-     "As revised in 12.3, in force 1 July 2026",
-     "Functional specification",
-     {
-      "t": "PW generation",
-      "link": "sys-pw"
-     }
-    ],
-    [
      "USP <1231> Water for pharmaceutical purposes (informational)",
-     "Microbial control: sampling plan; alert and action levels proposed from performance qualification data",
+     "Sampling plan; alert and action levels from your qualification data",
      "Sampling plan; alert and action level rationale",
      {
       "t": "Commissioning and qualification",
       "link": "svc-cq"
-     }
-    ],
-    [
-     "EMA guideline on water for pharmaceutical use",
-     "PW minimum for most non-sterile dosage forms; WFI, which we do not supply, for parenterals",
-     "Water grade per point of use in the basis of design",
-     {
-      "t": "Pharmaceutical",
-      "link": "ind-pharma"
      }
     ],
     [
@@ -226,170 +179,6 @@
    "fold_noun": "standards"
   },
   {
-   "type": "table",
-   "as": "evidence",
-   "nav": "GMP",
-   "anchor": "gmp",
-   "look": "cutaway-rail",
-   "tag": "Active",
-   "parts": [
-    "mat",
-    "mat loop pov docs",
-    "docs",
-    "ctl",
-    "ctl ana",
-    "docs",
-    "docs",
-    "pov loop"
-   ],
-   "h": "Good manufacturing practice (GMP) and qualification",
-   "cols": [
-    "Standard",
-    "What we design to",
-    "Proof",
-    "Where we show it"
-   ],
-   "rows": [
-    [
-     "Drug GMP (Health Canada GUI-0001 C.02.004, C.02.005, C.02.009; 21 CFR 211.63, 211.65); GUI-0158 where a natural health product needs PW",
-     "Qualified as a utility; non-reactive, non-additive, non-absorptive surfaces that withstand sanitizing",
-     "Material certificates named in your proposal, traced by lot",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "WHO TRS 1033, Annex 3 (2021); FDA high-purity water guide (1993)",
-     "7.2.1 materials; 8.4 sanitization; 8.6 flow, dead legs; 11.3 three-phase qualification, 12 months",
-     "Material and joint records; sampling plan; phase reports",
-     {
-      "t": "Commissioning and qualification",
-      "link": "svc-cq"
-     }
-    ],
-    [
-     "EU GMP Annex 15 (2015); GUI-0029",
-     "3.2 URS; 3.3 design qualification (DQ); 3.6 FAT reused where transport and installation cannot affect it",
-     "Traceability matrix; DQ report; executed FAT to OQ",
-     {
-      "t": "FAT and SAT",
-      "link": "svc-fat-sat"
-     }
-    ],
-    [
-     "GAMP 5 (2022); FDA computer software assurance (devices)",
-     "Tests scaled to risk; scripted for divert, quality alarms and sanitization",
-     "Software and configuration specifications; controls OQ",
-     {
-      "t": "Monitoring and controls",
-      "link": "sys-monitoring"
-     }
-    ],
-    [
-     "ASTM E2500; ICH Q9(R1)",
-     "Verification focused on critical aspects, found by a documented risk assessment",
-     "Risk assessment; critical aspects list; design review",
-     {
-      "t": "Process design",
-      "link": "svc-design"
-     }
-    ],
-    [
-     "Medical devices: ISO 13485:2016; FDA QMSR (21 CFR 820)",
-     "Supplier controls under 7.4; qualification reports for your process validation (7.5.6)",
-     "Questionnaire pack on request; qualification reports",
-     {
-      "t": "Medical devices",
-      "link": "ind-meddevice#supplier-quality"
-     }
-    ],
-    [
-     "EU GMP Annex 1 (2022); Health Canada GUI-0119",
-     "For sterile sites, or non-sterile sites that adopt it in writing: 6.5 records; 6.7 dead legs; 6.9 flow; 6.12 sanitization; 6.13 alert levels",
-     "Dead leg register; hydraulics; sanitization OQ",
-     {
-      "t": "Storage and distribution loops",
-      "link": "sys-storage"
-     }
-    ]
-   ],
-   "fold": 2,
-   "fold_noun": "standards",
-   "ground": "dark"
-  },
-  {
-   "type": "table",
-   "as": "evidence",
-   "nav": "Engineering",
-   "anchor": "engineering",
-   "look": "skid-tags",
-   "parts": [
-    "vessel",
-    "panel",
-    "deadleg",
-    "wall",
-    "joint"
-   ],
-   "tag": "On the drawing",
-   "h": "Engineering, materials and pressure equipment",
-   "cols": [
-    "Standard",
-    "What we design to",
-    "Proof",
-    "Where we show it"
-   ],
-   "rows": [
-    [
-     "CSA B51",
-     "A Canadian registration number (CRN) from the province of installation for each pressure-rated item your design includes",
-     "CRN registration; vessel data reports",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "Panel standard named in your proposal",
-     "Panels built and marked by the approval route confirmed in your proposal",
-     "Panel label and report",
-     {
-      "t": "Monitoring and controls",
-      "link": "sys-monitoring"
-     }
-    ],
-    [
-     "Piping standard named in your proposal",
-     "PP pipe, fittings and valves; dead legs within the limit set in your design basis",
-     "Dead leg register; pressure test to the method named in your proposal",
-     {
-      "t": "Storage and distribution loops",
-      "link": "sys-storage"
-     }
-    ],
-    [
-     "Material standard named in your proposal",
-     "Unpigmented product-contact PP, grade named in your proposal; polyvinyl chloride (PVC) in pretreatment only",
-     "Material certificates named in your proposal, traced by lot",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "Joining standard named in your proposal",
-     "Joints by the joining method and to the qualification standard named in your proposal",
-     "Joint records as set out in your proposal",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ]
-   ],
-   "fold": 2,
-   "fold_noun": "standards"
-  },
-  {
    "type": "faq",
    "nav": "FAQ",
    "anchor": "faq",
@@ -397,27 +186,21 @@
    "items": [
     {
      "q": "Our auditor expects stainless. Will PP pass?",
-     "a": "No rule requires stainless. 21 CFR 211.65 and GUI-0001 C.02.005 ask for surfaces that do not react, add or absorb, and survive sanitizing. WHO TRS 1033, 7.2.1, generally recommends 316L or polyvinylidene chloride (PVDC). It does not name PP; we answer it point by point. Your qualification decides. Our scope: ambient Purified Water; no WFI, pure steam or stainless steel.",
-     "link": "sys-storage#sanitization",
-     "link_label": "Where a PP loop stops"
+     "a": "No rule requires stainless steel. US and Canadian GMP (21 CFR 211.65, GUI-0001) ask for surfaces that do not react, add or absorb, and that survive sanitizing. Your qualification decides.",
+     "link": "first-system#fit",
+     "link_label": "Where our package fits"
     },
     {
      "q": "Is your system USP certified?",
-     "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT) and operational qualification (OQ) prove it on your feed water."
+     "a": "No water system is. USP sets limits for water, not approvals for equipment. The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT) and operational qualification (OQ) prove it on your feed water."
     },
     {
      "q": "Which edition of each standard do you design to?",
-     "a": "The edition in force when you approve the functional specification. If a text changes mid-project, as Ph. Eur. 0008 did, we assess it under change control. We name the documents it touches; you approve the change."
-    },
-    {
-     "q": "Does our corporate engineering standard replace yours?",
-     "a": "No, it adds to this list. We write it into the functional specification and flag any conflicting clause before detailed design, not at installation qualification (IQ). A standard that requires stainless rules out polypropylene, unless it allows exceptions.",
-     "link": "urs-guide#pp-rows",
-     "link_label": "When not to choose polypropylene"
+     "a": "The edition in force when you approve the functional specification. If a standard changes mid-project, we assess it under change control. We name the documents it touches; you approve the change."
     },
     {
      "q": "Who registers our pressure equipment, and when?",
-     "a": "The safety authority of each province where the item is used, before it is built. Each pressure-rated item needs a Canadian registration number (CRN) under CSA B51, unless exempt. How registration is handled for your project is set out in your proposal.",
+     "a": "The safety authority of each province where the item is used, before it is built. Each pressure-rated item needs a Canadian registration number (CRN) under CSA B51, unless exempt. Your proposal says how registration is handled.",
      "link": "contact-locations#coverage",
      "link_label": "Check coverage for your site"
     }
@@ -430,7 +213,6 @@
     "cmp-documentation",
     "cmp-quality",
     "urs-guide",
-    "ind-cdmo",
     "project-plan"
    ]
   }
@@ -443,7 +225,7 @@
   "intent": "I have a URS or a draft|Compliance matrix",
   "include": [
    "No URS yet? What you make and your flow",
-   "Pharmacopoeias that apply",
+   "Standards that apply",
    "Corporate or site engineering standards",
    "Province of installation"
   ],
@@ -480,7 +262,8 @@
   "Pass 11 integration (urs-guide review finding 5): the corporate-standard FAQ's link label is 'When not to choose polypropylene' (the review's 'When polypropylene is the wrong choice' is 6 words, over the 5-word button rule; systems uses 'When not to choose PP'), naming the block it lands on (urs-guide#pp-rows)",
   "Final round, pass 11: related links How a project runs (authoritative desk review, DESK-plan.md, Q1: project-plan from compliance and company pages)",
   "Pass 12 (SITE-PLAN compliance; IB §4; RI 04, 15; NS critic A; FD-59, FD-60): pharmacopoeia table retitled 'Pharmacopoeias and other water standards' and given the hospital and laboratory rows (ST108:2023; ASTM D1193-24 and CLSI GP40 5th edition), two rows, gated by [hospital water scope] and [lab water scope], both linking ind-hospital-lab#grades, the hospital row keeping 'your program shows compliance' (pass 12 review finding 1) (never Purified Water, never bare 'Type 2'); limits intro says your quality unit releases the water (RI 04, 15) and the note names the edition basis; GMP devices row proof drops the readiness date; FAQ block gets anchor 'faq'. Hospital and lab scope stays on ind-hospital-lab ([hospital water scope], [lab water scope]); the CLSI GP40 edition and the ASTM D1193-24 types follow industries/pw-quality-and-limits.md §3 and need the same quality review as the other rows",
-  "Pass 13 (owner, 2026-11-04): the hero figure is the edition-timeline scene (HeroScene.js wHeroEdition), the edition FAQ's process drawn: specification approved, new edition published, change request, you approve; the new edition branches off at 02 and joins at 04. Keep its words in step with the FAQ \"Which edition of each standard do you design to?\". The compliance-matrix scene is retired (code kept in HeroScene.js); its last figure, to bring it back: {\"look\": \"compliance-matrix\", \"title\": \"Compliance matrix\", \"cols\": [\"Your clause\", \"Meets\", \"With a note\", \"Differs\", \"Proof\"], \"rows\": [{\"c\": \"4.1 Conductivity, USP <645>\", \"t\": 1, \"d\": \"FAT report\"}, {\"c\": \"4.2 TOC, USP <643>\", \"t\": 1, \"d\": \"OQ protocol\"}, {\"c\": \"6.3 Dead legs, ASME BPE\", \"t\": 2, \"d\": \"Dead leg register\"}, {\"c\": \"7.1 Piping in 316L\", \"t\": 3, \"d\": \"PP material certificates\"}]}"
+  "Pass 13 (owner, 2026-11-04): the hero figure is the edition-timeline scene (HeroScene.js wHeroEdition), the edition FAQ's process drawn: specification approved, new edition published, change request, you approve; the new edition branches off at 02 and joins at 04. Keep its words in step with the FAQ \"Which edition of each standard do you design to?\". The compliance-matrix scene is retired (code kept in HeroScene.js); its last figure, to bring it back: {\"look\": \"compliance-matrix\", \"title\": \"Compliance matrix\", \"cols\": [\"Your clause\", \"Meets\", \"With a note\", \"Differs\", \"Proof\"], \"rows\": [{\"c\": \"4.1 Conductivity, USP <645>\", \"t\": 1, \"d\": \"FAT report\"}, {\"c\": \"4.2 TOC, USP <643>\", \"t\": 1, \"d\": \"OQ protocol\"}, {\"c\": \"6.3 Dead legs, ASME BPE\", \"t\": 2, \"d\": \"Dead leg register\"}, {\"c\": \"7.1 Piping in 316L\", \"t\": 3, \"d\": \"PP material certificates\"}]}",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired the GMP and qualification table and the engineering table; dropped Ph. Eur., EMA, EU GMP and WHO TRS 1033 (limits, map chips, water standards rows, FAQs) and the corporate-standard FAQ; map zones all point to #pharmacopoeia; limits now USP only and the site's one home for them."
  ],
  "figure": {
   "look": "edition-timeline",

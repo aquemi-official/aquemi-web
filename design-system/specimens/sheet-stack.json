@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, items [{t, d, key, code, sheet, link, intent}], link, link_label, intent, fold, fold_noun. sheet: \"calc\", \"register\", \"iso\" or \"cert\" (default from the document code: HYD, DLR, P&ID or ISO, MAT).",
  "best_for": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-storage",
@@ -131,9 +131,9 @@
    "page": "sys-storage",
    "slot": 4,
    "h": "Documents with the loop",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "e58da9b8a2",
    "block": {

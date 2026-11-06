@@ -256,7 +256,9 @@
    "height": "640",
    "width": "1100",
    "subtitle": "Auditor table on a navy blueprint sheet, pipe headers as the column joins",
-   "summary": "AuditManifold sets an evidence table (who reads, what they read, where we answer it) on a navy blueprint sheet whose column joins are pipe headers, so each reader's row reads as one route from the auditor to our answer."
+   "summary": "AuditManifold sets an evidence table (who reads, what they read, where we answer it) on a navy blueprint sheet whose column joins are pipe headers, so each reader's row reads as one route from the auditor to our answer.",
+   "retired": true,
+   "look": "audit-manifold"
   },
   {
    "name": "AuditSkid",
@@ -266,7 +268,9 @@
    "height": "900",
    "width": "1100",
    "subtitle": "The client audit pack: six documents pinned to the parts of the system they cover",
-   "summary": "AuditSkid draws a documents block as the system those documents describe: one isometric skid in the middle of a light sheet, each document a numbered callout on a leader to the part it covers."
+   "summary": "AuditSkid draws a documents block as the system those documents describe: one isometric skid in the middle of a light sheet, each document a numbered callout on a leader to the part it covers.",
+   "retired": true,
+   "look": "audit-skid"
   },
   {
    "name": "Band",
@@ -286,7 +290,9 @@
    "height": "1250",
    "width": "1280",
    "subtitle": "Site requirements on a navy and limestone split; the divide is the battery limit, every card tied to it by a leader",
-   "summary": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site."
+   "summary": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
+   "retired": true,
+   "look": "battery-limit"
   },
   {
    "name": "BidRoute",
@@ -306,7 +312,9 @@
    "height": "900",
    "width": "1100",
    "subtitle": "Five inspectors as ring binders on the QA shelf beside the PP plant they inspect, bleeding off the page",
-   "summary": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine, beside a large drawing of the plant they inspect bleeding off the page."
+   "summary": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine, beside a large drawing of the plant they inspect bleeding off the page.",
+   "retired": true,
+   "look": "binder-spines"
   },
   {
    "name": "BinderTabs",
@@ -326,7 +334,9 @@
    "height": "900",
    "width": "1280",
    "subtitle": "Budget ranges as a Swiss bento: the whole package as the navy lead tile, three modules beside it, what moves the price and what is excluded as chips",
-   "summary": "BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row."
+   "summary": "BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row.",
+   "retired": true,
+   "look": "budget-bento"
   },
   {
    "name": "BuildingLoop",
@@ -356,7 +366,9 @@
    "height": "660",
    "width": "1100",
    "subtitle": "NCR to CAPA close as one ring that closes, navy ground",
-   "summary": "CapaRing shows a closed-loop procedure (a defect held, decided, repaired, corrected, checked and reported) as steps around one ring that the water runs once and closes, the hold step drawn as a closed valve."
+   "summary": "CapaRing shows a closed-loop procedure (a defect held, decided, repaired, corrected, checked and reported) as steps around one ring that the water runs once and closes, the hold step drawn as a closed valve.",
+   "retired": true,
+   "look": "capa-ring"
   },
   {
    "name": "CapitalRequest",
@@ -366,7 +378,9 @@
    "height": "980",
    "width": "1280",
    "subtitle": "First system: the reasons to buy as a filled-in capital request form, sources as Attach links, references in the margin",
-   "summary": "CapitalRequest sets a page's reasons to buy as a capital request form already filled in: one paper sheet with a folded corner, a numbered field per reason with its text typed on the field line, an \"Attach\" link to the page that holds the source, and the references a reason rests on as mono boxes in the margin."
+   "summary": "CapitalRequest sets a page's reasons to buy as a capital request form already filled in: one paper sheet with a folded corner, a numbered field per reason with its text typed on the field line, an \"Attach\" link to the page that holds the source, and the references a reason rests on as mono boxes in the margin.",
+   "retired": true,
+   "look": "capital-request"
   },
   {
    "name": "CaseStudy",
@@ -502,7 +516,9 @@
    "height": "820",
    "width": "1100",
    "subtitle": "How buying works as two folders: tabbed terms of sale and the onboarding papers with a signature line",
-   "summary": "ContractFolders sets \"how buying works\" as the folders a buyer is handed: each row a limestone folder with its subject on the tab and a sheet inside listing what the linked page covers, the link as a full-width row under it."
+   "summary": "ContractFolders sets \"how buying works\" as the folders a buyer is handed: each row a limestone folder with its subject on the tab and a sheet inside listing what the linked page covers, the link as a full-width row under it.",
+   "retired": true,
+   "look": "contract-folders"
   },
   {
    "name": "CostBalance",
@@ -512,7 +528,9 @@
    "height": "860",
    "width": "1100",
    "subtitle": "Running costs as streams across a system boundary",
-   "summary": "CostBalance draws what it costs to run a system as a balance around it: a dashed system boundary with the treatment train inside, every running cost a stream wired in from the left, the water that leaves (to drain) wired out to the right."
+   "summary": "CostBalance draws what it costs to run a system as a balance around it: a dashed system boundary with the treatment train inside, every running cost a stream wired in from the left, the water that leaves (to drain) wired out to the right.",
+   "retired": true,
+   "look": "cost-balance"
   },
   {
    "name": "CostSkid",
@@ -542,7 +560,9 @@
    "height": "900",
    "width": "1100",
    "subtitle": "C&Q: alert and action levels on a navy band cutting across the plant",
-   "summary": "CutBand lays a short table of levels across a hairline drawing of the plant as a full-width navy band, like a cutting plane (look `cut-band`, spec block)."
+   "summary": "CutBand lays a short table of levels across a hairline drawing of the plant as a full-width navy band, like a cutting plane (look `cut-band`, spec block).",
+   "retired": true,
+   "look": "cut-band"
   },
   {
    "name": "CutawayRail",
@@ -552,7 +572,9 @@
    "height": "2310",
    "width": "1300",
    "subtitle": "GMP standards on a rail beside a sticky cutaway; the active card lights the parts it governs",
-   "summary": "CutawayRail reads an evidence table beside one sticky drawing: a close isometric cutaway of the plant stays in view while one card per standard runs down a rail, and the card being read lights the parts it governs, with an \"active\" tag and a callout naming it."
+   "summary": "CutawayRail reads an evidence table beside one sticky drawing: a close isometric cutaway of the plant stays in view while one card per standard runs down a rail, and the card being read lights the parts it governs, with an \"active\" tag and a callout naming it.",
+   "retired": true,
+   "look": "cutaway-rail"
   },
   {
    "name": "CutoverSchedule",
@@ -572,7 +594,9 @@
    "height": "900",
    "width": "1100",
    "subtitle": "Five decisions as callouts round a hairline schematic of the plant, each leader into the part it sizes",
-   "summary": "DecisionPlant sets an options block of decisions as numbered callouts round one hairline process schematic of the plant they size, each leader running into the part it decides."
+   "summary": "DecisionPlant sets an options block of decisions as numbered callouts round one hairline process schematic of the plant they size, each leader running into the part it decides.",
+   "retired": true,
+   "look": "decision-plant"
   },
   {
    "name": "DecisionValve",
@@ -582,7 +606,9 @@
    "height": "980",
    "width": "1100",
    "subtitle": "Chlorine or chloramine router as a multiport valve on paper",
-   "summary": "DecisionValve draws a router table as a multiport valve, a navy object on the paper: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable."
+   "summary": "DecisionValve draws a router table as a multiport valve, a navy object on the paper: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable.",
+   "retired": true,
+   "look": "decision-valve"
   },
   {
    "name": "DerivationSheet",
@@ -602,7 +628,9 @@
    "height": "900",
    "width": "1280",
    "subtitle": "Four documents pinned by hotspots to the parts of the PW skid they cover",
-   "summary": "DocHotspots pins the documents delivered with a system to the parts of the skid they cover, so the reader sees what each record is about on the equipment itself."
+   "summary": "DocHotspots pins the documents delivered with a system to the parts of the skid they cover, so the reader sees what each record is about on the equipment itself.",
+   "retired": true,
+   "look": "doc-hotspots"
   },
   {
    "name": "DocList",
@@ -622,7 +650,9 @@
    "height": "640",
    "width": "1100",
    "subtitle": "Pretreatment documents along one snaking double-line pipe",
-   "summary": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run."
+   "summary": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run.",
+   "retired": true,
+   "look": "doc-pipe"
   },
   {
    "name": "DrawingRegister",
@@ -642,7 +672,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "Redundancy: two identical trains with a swap, the options as a band of numbered cards",
-   "summary": "DuplexTrains sets a redundancy options block as a huge light heading beside a framed drawing of two identical generation trains, a switch that swaps which train is in service, and the options as numbered cards in one band over a navy strip."
+   "summary": "DuplexTrains sets a redundancy options block as a huge light heading beside a framed drawing of two identical generation trains, a switch that swaps which train is in service, and the options as numbered cards in one band over a navy strip.",
+   "retired": true,
+   "look": "duplex-trains"
   },
   {
    "name": "EvidenceMap",
@@ -672,7 +704,9 @@
    "height": "900",
    "width": "1280",
    "subtitle": "Home: service promises as callouts on an exploded pump, on a light drawing sheet",
-   "summary": "ExplodedService pins a few service promises to an exploded view of the part that service keeps running: a centrifugal pump drawn apart along its shaft on a light drawing sheet, with a leader from three of its parts to the promises."
+   "summary": "ExplodedService pins a few service promises to an exploded view of the part that service keeps running: a centrifugal pump drawn apart along its shaft on a light drawing sheet, with a leader from three of its parts to the promises.",
+   "retired": true,
+   "look": "exploded-service"
   },
   {
    "name": "FAQ",
@@ -724,7 +758,9 @@
    "height": "1400",
    "width": "1200",
    "subtitle": "When polypropylene is the wrong choice: the package inside a dashed fit envelope, seven exclusion tags tied outside",
-   "summary": "FitEnvelope draws where the package fits and what it does not take as a boundary: our polypropylene package stands inside a dashed \"fits\" envelope with its rated temperature range as a steel-blue band at the foot, and every exclusion hangs outside the envelope as a numbered tag tied to its edge."
+   "summary": "FitEnvelope draws where the package fits and what it does not take as a boundary: our polypropylene package stands inside a dashed \"fits\" envelope with its rated temperature range as a steel-blue band at the foot, and every exclusion hangs outside the envelope as a numbered tag tied to its edge.",
+   "retired": true,
+   "look": "fit-envelope"
   },
   {
    "name": "FitReadout",
@@ -734,7 +770,9 @@
    "height": "1100",
    "width": "1300",
    "subtitle": "Navy P-T readout with one limit line, three numbered rule tiles and outlined not-served tags",
-   "summary": "FitReadout shows a fit test read off an instrument: a navy readout plots the loop material's pressure rating falling as it heats up to one limit line, beside the test's numbered rule tiles, with the rows that are not served or answered elsewhere as outlined tags that link their homes."
+   "summary": "FitReadout shows a fit test read off an instrument: a navy readout plots the loop material's pressure rating falling as it heats up to one limit line, beside the test's numbered rule tiles, with the rows that are not served or answered elsewhere as outlined tags that link their homes.",
+   "retired": true,
+   "look": "fit-readout"
   },
   {
    "name": "FusionBench",
@@ -786,7 +824,9 @@
    "height": "1080",
    "width": "1280",
    "subtitle": "Your first PW system as an editorial spread: navy mast, pipe collage, grade words set huge",
-   "summary": "GradeEditorial sets a short path (a grid block of about five items) as an editorial spread: the heading oversized on a navy mast, a geometric pipe collage facing asymmetric fact blocks whose key words (a grade, a span, a figure) are set huge."
+   "summary": "GradeEditorial sets a short path (a grid block of about five items) as an editorial spread: the heading oversized on a navy mast, a geometric pipe collage facing asymmetric fact blocks whose key words (a grade, a span, a figure) are set huge.",
+   "retired": true,
+   "look": "grade-editorial"
   },
   {
    "name": "GradeLadder",
@@ -866,7 +906,9 @@
    "height": "1000",
    "width": "1280",
    "subtitle": "Alarm lines as the operator panel's own dark screen: a trend against the limits, the drift flagged, the alarm summary",
-   "summary": "HmiTrend sets a table of alarm lines (line, how it is set, what the system does) as the operator panel's own screen: a dark instrument panel with a trend plot of one reading under the limit lines, flagged by the trend rule before it reaches any of them, and the alarm summary as the real table."
+   "summary": "HmiTrend sets a table of alarm lines (line, how it is set, what the system does) as the operator panel's own screen: a dark instrument panel with a trend plot of one reading under the limit lines, flagged by the trend rule before it reaches any of them, and the alarm summary as the real table.",
+   "retired": true,
+   "look": "hmi-trend"
   },
   {
    "name": "HoldTimeline",
@@ -876,7 +918,9 @@
    "height": "1000",
    "width": "1280",
    "subtitle": "Services: six stages on a rising line over a macro weld; hold points ringed, PQ as the boxed figure",
-   "summary": "HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a PP pipe, each stage's duration and deliverables hung off its node."
+   "summary": "HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a PP pipe, each stage's duration and deliverables hung off its node.",
+   "retired": true,
+   "look": "hold-timeline"
   },
   {
    "name": "IndexSheet",
@@ -940,7 +984,9 @@
    "height": "1500",
    "width": "1200",
    "subtitle": "The fabrication standard beside a traced duotone macro of a pipe end; a row moves the crop frame to its part",
-   "summary": "JointMacro sets a standard beside a traced duotone macro close-up of the thing it governs: the end of a polypropylene pipe fills the left of a navy band, its contours traced in a hairline and numbered to the rows at the right."
+   "summary": "JointMacro sets a standard beside a traced duotone macro close-up of the thing it governs: the end of a polypropylene pipe fills the left of a navy band, its contours traced in a hairline and numbered to the rows at the right.",
+   "retired": true,
+   "look": "joint-macro"
   },
   {
    "name": "JointSpine",
@@ -990,7 +1036,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "Comparing quotes: Quote A, Quote B and ours on the same ruled lines, gaps hatched, a straightedge across",
-   "summary": "LevellingSheet lays quotes side by side on the same ruled lines, so a buyer sees which lines each quote leaves blank before comparing prices (look `levelling-sheet`, an evidence table)."
+   "summary": "LevellingSheet lays quotes side by side on the same ruled lines, so a buyer sees which lines each quote leaves blank before comparing prices (look `levelling-sheet`, an evidence table).",
+   "retired": true,
+   "look": "levelling-sheet"
   },
   {
    "name": "LimitBento",
@@ -1022,7 +1070,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "One open drawer: a folder per limit-writer, each with its what-to-send slip and where it applies",
-   "summary": "LimitFolders shows who writes each limit and what to send them as one open file drawer: a folder per limit-writer standing side by side, its tab at its own cut, what the limit sets on the front leaf, a clipped white slip listing what to send, and a navy index label naming where it applies."
+   "summary": "LimitFolders shows who writes each limit and what to send them as one open file drawer: a folder per limit-writer standing side by side, its tab at its own cut, what the limit sets on the front leaf, a clipped white slip listing what to send, and a navy index label naming where it applies.",
+   "retired": true,
+   "look": "limit-folders"
   },
   {
    "name": "LimitPlan",
@@ -1042,7 +1092,9 @@
    "height": "1300",
    "width": "1280",
    "subtitle": "Purified Water limits as a stepped type stack beside the outlet pipe and its collar",
-   "summary": "LimitStack sets a page's water-quality limits as an editorial type stack beside a sculpted outlet pipe, so the reader sees each limit large, its reference, and the guaranteed skid-outlet value as the stack's last, boxed step."
+   "summary": "LimitStack sets a page's water-quality limits as an editorial type stack beside a sculpted outlet pipe, so the reader sees each limit large, its reference, and the guaranteed skid-outlet value as the stack's last, boxed step.",
+   "retired": true,
+   "look": "limit-stack"
   },
   {
    "name": "LimitWriters",
@@ -1146,7 +1198,9 @@
    "height": "1000",
    "width": "1280",
    "subtitle": "RO feed targets as a bento round the feed end of a spiral-wound RO element",
-   "summary": "MembraneFace sets a short list of feed-water targets as a bento round the thing they protect: the feed end of a spiral-wound reverse osmosis element, drawn large on navy, with one target per tile around it."
+   "summary": "MembraneFace sets a short list of feed-water targets as a bento round the thing they protect: the feed end of a spiral-wound reverse osmosis element, drawn large on navy, with one target per tile around it.",
+   "retired": true,
+   "look": "membrane-face"
   },
   {
    "name": "MethodBento",
@@ -1156,7 +1210,9 @@
    "height": "1100",
    "width": "1100",
    "subtitle": "Sanitization methods as a bento, hot-water rail with a probe",
-   "summary": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile."
+   "summary": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile.",
+   "retired": true,
+   "look": "method-bento"
   },
   {
    "name": "ModulePlinth",
@@ -1186,7 +1242,9 @@
    "height": "860",
    "width": "1100",
    "subtitle": "How a defect is held and closed: slash-numeral tiles and the joint repair drawing",
-   "summary": "NcrTiles shows how a defect is held and closed as a bento of navy and limestone tiles, each led by a huge light slash numeral, the hold step oversized, with one tile drawing the repair step in isometric line art."
+   "summary": "NcrTiles shows how a defect is held and closed as a bento of navy and limestone tiles, each led by a huge light slash numeral, the hold step oversized, with one tile drawing the repair step in isometric line art.",
+   "retired": true,
+   "look": "ncr-tiles"
   },
   {
    "name": "NoteSheet",
@@ -1236,7 +1294,9 @@
    "height": "820",
    "width": "1100",
    "subtitle": "Options as a Swiss grid beside a checkerboard field with one blueprint tile",
-   "summary": "OptionChecker sets an options block as a Swiss grid: a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile of the control system, beside the section title set large and the options as cells under huge light slash numerals."
+   "summary": "OptionChecker sets an options block as a Swiss grid: a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile of the control system, beside the section title set large and the options as cells under huge light slash numerals.",
+   "retired": true,
+   "look": "option-checker"
   },
   {
    "name": "OptionList",
@@ -1288,7 +1348,9 @@
    "height": "1500",
    "width": "1100",
    "subtitle": "Skid design parameters: ten values tagged to the parts of the RO and EDI skid they govern, on an orthographic GA sheet (front elevation over plan)",
-   "summary": "OrthoSheet reads a skid's design parameters off an orthographic general-arrangement sheet: one RO and EDI skid drawn flat in two views, the front elevation over the plan, with a numbered tag on a leader from each part to the parameter it governs and the parameter rows beside the sheet under the same numbers."
+   "summary": "OrthoSheet reads a skid's design parameters off an orthographic general-arrangement sheet: one RO and EDI skid drawn flat in two views, the front elevation over the plan, with a numbered tag on a leader from each part to the parameter it governs and the parameter rows beside the sheet under the same numbers.",
+   "retired": true,
+   "look": "ortho-sheet"
   },
   {
    "name": "PackMatrix",
@@ -1344,7 +1406,9 @@
    "height": "900",
    "width": "1280",
    "subtitle": "Router table drawn as a P&ID on navy: six situations piped through valves to a system and a start; phone width: tap rows, one short pipe open",
-   "summary": "PidRoutes draws a router table (situation, system, start with) as a P&ID on a navy blueprint ground: each situation is piped through its own valve to its system and on to where to start, and rows that share a destination page are tied by a header line."
+   "summary": "PidRoutes draws a router table (situation, system, start with) as a P&ID on a navy blueprint ground: each situation is piped through its own valve to its system and on to where to start, and rows that share a destination page are tied by a header line.",
+   "retired": true,
+   "look": "pid-routes"
   },
   {
    "name": "PipeCollage",
@@ -1354,7 +1418,9 @@
    "height": "1455",
    "width": "1300",
    "subtitle": "Engineering standards as a Swiss poster: a geometric collage, one numbered piece per standard, editorial blocks on brackets",
-   "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a flat-bottom PP vessel on its plinth, a control panel, a fused PP elbow with socket sleeves and a butt-fusion bead, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets."
+   "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a flat-bottom PP vessel on its plinth, a control panel, a fused PP elbow with socket sleeves and a butt-fusion bead, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets.",
+   "retired": true,
+   "look": "pipe-collage"
   },
   {
    "name": "PlanChecker",
@@ -1488,7 +1554,9 @@
    "height": "1080",
    "width": "1100",
    "subtitle": "Supplier control as a receiving bench: tagged supplies, the pipe lot marking joined to its certificate",
-   "summary": "ReceivingBench sets supplier control as a receiving bench: an isometric bench with the supplies the block lists, each tagged with its row number, and a magnifier pair that joins the pipe's lot marking to the certificate's lot line."
+   "summary": "ReceivingBench sets supplier control as a receiving bench: an isometric bench with the supplies the block lists, each tagged with its row number, and a magnifier pair that joins the pipe's lot marking to the certificate's lot line.",
+   "retired": true,
+   "look": "receiving-bench"
   },
   {
    "name": "RecordAnatomy",
@@ -1498,7 +1566,9 @@
    "height": "800",
    "width": "1100",
    "subtitle": "What a published figure carries: a drawing sheet with four specimen drawings and a title block",
-   "summary": "RecordAnatomy explains what a published record carries as a drawing sheet: the title large in the sheet's open half, four specimen drawings in a drawing field (one per point, none carrying a value), and the points themselves as the sheet's title block, so every published figure reads as signed off like a drawing."
+   "summary": "RecordAnatomy explains what a published record carries as a drawing sheet: the title large in the sheet's open half, four specimen drawings in a drawing field (one per point, none carrying a value), and the points themselves as the sheet's title block, so every published figure reads as signed off like a drawing.",
+   "retired": true,
+   "look": "record-anatomy"
   },
   {
    "name": "RecordSheet",
@@ -1542,7 +1612,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "P&ID band with each failure pinned, over three design-review markups on one sheet",
-   "summary": "RedlineSheet shows qualification failures that start in design as design-review markups on one limestone drawing sheet: each failure is a column with its revision triangle, a small drawing of the design with the mistake ringed by a revision cloud, the mistake struck through and the correction drawn in flow as the markup note."
+   "summary": "RedlineSheet shows qualification failures that start in design as design-review markups on one limestone drawing sheet: each failure is a column with its revision triangle, a small drawing of the design with the mistake ringed by a revision cloud, the mistake struck through and the correction drawn in flow as the markup note.",
+   "retired": true,
+   "look": "redline-sheet"
   },
   {
    "name": "RelatedLinks",
@@ -1562,7 +1634,9 @@
    "height": "720",
    "width": "1100",
    "subtitle": "Four tech-transfer steps as Swiss columns under one water line, the release column navy",
-   "summary": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released."
+   "summary": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released.",
+   "retired": true,
+   "look": "release-run"
   },
   {
    "name": "RequestMenu",
@@ -1592,7 +1666,9 @@
    "height": "1300",
    "width": "1100",
    "subtitle": "Response times by request as lanes on one clock: severities 1 to 4 under huge light numerals, then the other requests; every clause a stop with its placeholder clock",
-   "summary": "ResponseLanes draws a table of response times by request as lanes on one clock: each request runs from where you call or send through its first response into what follows, every clause a stop with its time beneath, and the severities set as a calm scale of huge light numerals."
+   "summary": "ResponseLanes draws a table of response times by request as lanes on one clock: each request runs from where you call or send through its first response into what follows, every clause a stop with its time beneath, and the severities set as a calm scale of huge light numerals.",
+   "retired": true,
+   "look": "response-lanes"
   },
   {
    "name": "RetrofitPlant",
@@ -1612,7 +1688,9 @@
    "height": "1400",
    "width": "1100",
    "subtitle": "What each request returns: each situation set large, a pipe across, and the returned items dealt out as paper slips with When and Cost",
-   "summary": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields."
+   "summary": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields.",
+   "retired": true,
+   "look": "return-slips"
   },
   {
    "name": "ReviewReticles",
@@ -1644,7 +1722,9 @@
    "height": "1320",
    "width": "1100",
    "subtitle": "One document taking each review step's marks, pinned beside the steps",
-   "summary": "RevisionSheet tells a document review cycle on one document: a paper sheet stays pinned beside the steps and takes each step's marks as the step reaches the middle of the screen (comments, answered comments and a struck draft tag, signatures, recorded data, the current revision), its revision block filling one row per step."
+   "summary": "RevisionSheet tells a document review cycle on one document: a paper sheet stays pinned beside the steps and takes each step's marks as the step reaches the middle of the screen (comments, answered comments and a struck draft tag, signatures, recorded data, the current revision), its revision block filling one row per step.",
+   "retired": true,
+   "look": "revision-sheet"
   },
   {
    "name": "RiserValves",
@@ -1724,7 +1804,9 @@
    "height": "1100",
    "width": "1100",
    "subtitle": "Where polypropylene stops: navy and limestone split, ambient loop inside, hot loop dashed outside",
-   "summary": "ScopeSeam shows where a package fits and where it does not as a band split navy and limestone: the ambient loop the package serves drawn whole in the navy half, a loop it cannot serve dashed in the limestone half, two tie-in nodes on the seam between them, the limit row on the seam itself and each half's rows numbered under its drawing."
+   "summary": "ScopeSeam shows where a package fits and where it does not as a band split navy and limestone: the ambient loop the package serves drawn whole in the navy half, a loop it cannot serve dashed in the limestone half, two tie-in nodes on the seam between them, the limit row on the seam itself and each half's rows numbered under its drawing.",
+   "retired": true,
+   "look": "scope-seam"
   },
   {
    "name": "SectionTrain",
@@ -1744,7 +1826,9 @@
    "height": "1100",
    "width": "1100",
    "subtitle": "Microbial control on one loop: flat P&ID on navy, real instrument tags, keyed notes",
-   "summary": "SensorLoop draws a spec block of control points or signals where each one sits on one storage and distribution loop: a flat P&ID on a navy sheet, an instrument balloon with its real tag letters over the row number on every measuring point, hoses numbered at their ends, and the rows as keyed notes along the foot."
+   "summary": "SensorLoop draws a spec block of control points or signals where each one sits on one storage and distribution loop: a flat P&ID on a navy sheet, an instrument balloon with its real tag letters over the row number on every measuring point, hoses numbered at their ends, and the rows as keyed notes along the foot.",
+   "retired": true,
+   "look": "sensor-loop"
   },
   {
    "name": "SheetPreviews",
@@ -1754,7 +1838,9 @@
    "height": "680",
    "width": "1100",
    "subtitle": "Records for your file: limestone sheets with numerals and record thumbnails",
-   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: each limestone sheet carries its light index numeral and a thumbnail of what kind of document it is, then its code, name and line."
+   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: each limestone sheet carries its light index numeral and a thumbnail of what kind of document it is, then its code, name and line.",
+   "retired": true,
+   "look": "sheet-previews"
   },
   {
    "name": "SheetStack",
@@ -1764,7 +1850,9 @@
    "height": "980",
    "width": "1100",
    "subtitle": "Four loop documents as an exploded stack of drawing sheets",
-   "summary": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it."
+   "summary": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it.",
+   "retired": true,
+   "look": "sheet-stack"
   },
   {
    "name": "ShopFloor",
@@ -1850,7 +1938,9 @@
    "height": "1120",
    "width": "1300",
    "subtitle": "Engineering standards keyed to a skid elevation: numbered tags on the parts match the numbered table rows",
-   "summary": "SkidTags keys an evidence table to an elevation drawing of a Purified Water skid: numbered square tags stand round the drawing with a leader to the part each standard governs, and the table rows below carry the same numbers, so every standard points at its part."
+   "summary": "SkidTags keys an evidence table to an elevation drawing of a Purified Water skid: numbered square tags stand round the drawing with a leader to the part each standard governs, and the table rows below carry the same numbers, so every standard points at its part.",
+   "retired": true,
+   "look": "skid-tags"
   },
   {
    "name": "SourceSkid",
@@ -1870,7 +1960,9 @@
    "height": "1150",
    "width": "1100",
    "subtitle": "Like for like or a change, on a drawing sheet with one dimensioned spare",
-   "summary": "SpareSheet sets like-for-like rules on a limestone drawing sheet: the title, one spare drawn large as a dimensioned part drawing, and the four-column table under them, where choosing a row draws its part."
+   "summary": "SpareSheet sets like-for-like rules on a limestone drawing sheet: the title, one spare drawn large as a dimensioned part drawing, and the four-column table under them, where choosing a row draws its part.",
+   "retired": true,
+   "look": "spare-sheet"
   },
   {
    "name": "SparesKit",
@@ -1902,7 +1994,9 @@
    "height": "820",
    "width": "1200",
    "subtitle": "The fabrication dossier beside the as-built isometric spool it indexes; a part shows its layer",
-   "summary": "SpoolDossier sets a document set beside the as-built isometric it indexes: the title huge and light at the top left, an isometric polypropylene spool at the right with numbered joints and lot-tagged lengths, and the documents in a hairline grid under them."
+   "summary": "SpoolDossier sets a document set beside the as-built isometric it indexes: the title huge and light at the top left, an isometric polypropylene spool at the right with numbered joints and lot-tagged lengths, and the documents in a hairline grid under them.",
+   "retired": true,
+   "look": "spool-dossier"
   },
   {
    "name": "StageStacks",
@@ -1912,7 +2006,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "What each stage issues: sheets stacked on the project axis, navy ground",
-   "summary": "StageStacks draws what each project stage issues as the document file building up: the stages stand on one project axis, each stage's documents stacked above it as sheets of paper, its name, clause and who approves under the axis."
+   "summary": "StageStacks draws what each project stage issues as the document file building up: the stages stand on one project axis, each stage's documents stacked above it as sheets of paper, its name, clause and who approves under the axis.",
+   "retired": true,
+   "look": "stage-stacks"
   },
   {
    "name": "StageTiles",
@@ -1954,7 +2050,9 @@
    "height": "800",
    "width": "1280",
    "subtitle": "Standards on a navy blueprint, each answer wired to the equipment that answers it",
-   "summary": "StandardWires sets a table of standards on a navy blueprint and wires each answer to the equipment that answers it, so a reader who starts from a standard sees which part of the system meets it."
+   "summary": "StandardWires sets a table of standards on a navy blueprint and wires each answer to the equipment that answers it, so a reader who starts from a standard sees which part of the system meets it.",
+   "retired": true,
+   "look": "standard-wires"
   },
   {
    "name": "StandardsGrid",
@@ -2004,7 +2102,9 @@
    "height": "820",
    "width": "1100",
    "subtitle": "Gaps struck through, the risk on the arrow, the fix set large",
-   "summary": "StrikeGaps sets gaps and their fixes as a before and after in large light type: the gap as it stands, struck through like a drawing revision; the requirement it misses in mono on an arrow; what the upgrade does at full strength."
+   "summary": "StrikeGaps sets gaps and their fixes as a before and after in large light type: the gap as it stands, struck through like a drawing revision; the requirement it misses in mono on an arrow; what the upgrade does at full strength.",
+   "retired": true,
+   "look": "strike-gaps"
   },
   {
    "name": "SuiteLoop",
@@ -2014,7 +2114,9 @@
    "height": "900",
    "width": "1100",
    "subtitle": "The situations as suites fed from one shared loop, each with its start page as the way out",
-   "summary": "SuiteLoop draws a router table as a plan of one shared loop serving a row of suites: every situation is a room fed by its own drop and valve off the loop, with the start page as the room's way out."
+   "summary": "SuiteLoop draws a router table as a plan of one shared loop serving a row of suites: every situation is a room fed by its own drop and valve off the loop, with the start page as the room's way out.",
+   "retired": true,
+   "look": "suite-loop"
   },
   {
    "name": "SystemRun",
@@ -2034,7 +2136,9 @@
    "height": "1180",
    "width": "1280",
    "subtitle": "Tank and pipework parameters keyed to numbered tags on one GA sheet of the PP storage set, budget in the title block",
-   "summary": "TankGa reads a spec block of fabrication parameters off one general arrangement (GA) sheet: an isometric line drawing of the PP storage set with a numbered tag on a leader for each parameter, the parameters as a ruled key beside it, and the budget in the title block."
+   "summary": "TankGa reads a spec block of fabrication parameters off one general arrangement (GA) sheet: an isometric line drawing of the PP storage set with a numbered tag on a leader for each parameter, the parameters as a ruled key beside it, and the budget in the title block.",
+   "retired": true,
+   "look": "tank-ga"
   },
   {
    "name": "TankSection",
@@ -2090,7 +2194,9 @@
    "height": "900",
    "width": "1100",
    "subtitle": "Tech transfer steps beside a loop gaining a new outlet, stage by stage",
-   "summary": "TieInRun tells ordered steps on one sticky drawing of a qualified loop gaining a new outlet: as the steps pass, the outlet is planned, its change boundary ruled, the branch built and tied in, and the water released into it."
+   "summary": "TieInRun tells ordered steps on one sticky drawing of a qualified loop gaining a new outlet: as the steps pass, the outlet is planned, its change boundary ruled, the branch built and tied in, and the water released into it.",
+   "retired": true,
+   "look": "tie-in-run"
   },
   {
    "name": "TimeCard",
@@ -2110,7 +2216,9 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "Delivery terms as the ruled zones of a drawing title block, an IsoKit drawing in each zone",
-   "summary": "TitleBlock sets delivery terms as the ruled title block of a drawing sheet: each row one zone with a numbered tag, its name, a small IsoKit drawing of what it delivers, the value and the note."
+   "summary": "TitleBlock sets delivery terms as the ruled title block of a drawing sheet: each row one zone with a numbered tag, its name, a small IsoKit drawing of what it delivers, the value and the note.",
+   "retired": true,
+   "look": "title-block"
   },
   {
    "name": "ToleranceScales",
@@ -2132,7 +2240,9 @@
    "height": "820",
    "width": "1100",
    "subtitle": "Two requirements as transit lines beside a readout tile of the traced limit",
-   "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests."
+   "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests.",
+   "retired": true,
+   "look": "trace-lines"
   },
   {
    "name": "TrainStrip",
@@ -2142,7 +2252,9 @@
    "height": "1100",
    "width": "1280",
    "subtitle": "Treatment train as a navy P&ID strip: PVC pretreatment, duplex RO, tank, UV, filter, PP loop with diaphragm valves",
-   "summary": "TrainStrip sets one treatment train as a P&ID strip on a navy band: PVC pretreatment, duplex RO in parallel, the tank, loop pump and UV, heat exchanger, endotoxin filter and an isolatable PP loop with its points of use, sensors and sanitization port, a numbered marker under each station and a numbered caption per stage below."
+   "summary": "TrainStrip sets one treatment train as a P&ID strip on a navy band: PVC pretreatment, duplex RO in parallel, the tank, loop pump and UV, heat exchanger, endotoxin filter and an isolatable PP loop with its points of use, sensors and sanitization port, a numbered marker under each station and a numbered caption per stage below.",
+   "retired": true,
+   "look": "train-strip"
   },
   {
    "name": "TwinRoute",
@@ -2176,7 +2288,9 @@
    "height": "1200",
    "width": "1300",
    "subtitle": "Industry by water use under one pipe header: navy squares where a grade is set, open where none is",
-   "summary": "UseMatrix shows an industry-by-use table as one water main: a twin-wall pipe runs along the column heads and tees down into every use column, and each cell is a square on its column's line, navy where a grade is set and open where the cell is a dash."
+   "summary": "UseMatrix shows an industry-by-use table as one water main: a twin-wall pipe runs along the column heads and tees down into every use column, and each cell is a square on its column's line, navy where a grade is set and open where the cell is a dash.",
+   "retired": true,
+   "look": "use-matrix"
   },
   {
    "name": "Versus",
@@ -2226,7 +2340,9 @@
    "height": "1200",
    "width": "1100",
    "subtitle": "C&Q: IQ and OQ checks as a table beside the installed system, numbers and callouts on the parts",
-   "summary": "WalkdownPins sets IQ and OQ checks as a table beside the installed system they inspect, each check's number on its part and a few parts called out by name (look `walkdown-pins`, spec block)."
+   "summary": "WalkdownPins sets IQ and OQ checks as a table beside the installed system they inspect, each check's number on its part and a few parts called out by name (look `walkdown-pins`, spec block).",
+   "retired": true,
+   "look": "walkdown-pins"
   },
   {
    "name": "WasherTrace",
@@ -2246,7 +2362,9 @@
    "height": "1000",
    "width": "1300",
    "subtitle": "A package feeding a cabinet washer: four dashed zones tagged 01-04, keyed to four system rows with their standard chips",
-   "summary": "WasherZones draws one package feeding a cabinet washer as an isometric line drawing with four dashed, numbered zones keyed to four rows of systems, each row carrying its standard as a navy chip."
+   "summary": "WasherZones draws one package feeding a cabinet washer as an isometric line drawing with four dashed, numbered zones keyed to four rows of systems, each row carrying its standard as a navy chip.",
+   "retired": true,
+   "look": "washer-zones"
   },
   {
    "name": "WaterPath",
@@ -2286,7 +2404,9 @@
    "height": "760",
    "width": "1100",
    "subtitle": "FAT and SAT: ways to witness as rows whose leaders run into the package in the test bay",
-   "summary": "WitnessPlan sets the ways to witness a FAT as ruled rows whose leader lines run into the package standing in the test bay; choosing a way lights its leader, marker and part (look `witness-plan`, options block)."
+   "summary": "WitnessPlan sets the ways to witness a FAT as ruled rows whose leader lines run into the package standing in the test bay; choosing a way lights its leader, marker and part (look `witness-plan`, options block).",
+   "retired": true,
+   "look": "witness-plan"
   },
   {
    "name": "CompareTable",

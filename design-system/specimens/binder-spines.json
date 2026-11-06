@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as the evidence table: cols, rows [who, read, {t, link, intent}], fold, fold_noun (phones only).",
  "best_for": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine, beside a large drawing of the plant they inspect bleeding off the page.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-pharma",
@@ -387,9 +387,9 @@
    "page": "ind-pharma",
    "slot": 2,
    "h": "What each inspector and auditor reads",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "7cd3cbc623",
    "block": {

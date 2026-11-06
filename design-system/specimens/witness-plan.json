@@ -4,7 +4,7 @@
  "type": "options",
  "fields": "h, intro, items [{t, d, part}], zones [bay label, remote label] (short drawing labels, aria-hidden: the frame and the camera). part: \"panel\", \"camera\", \"gauge\", \"documents\", \"analyzer\", \"ro\" or \"tank\".",
  "best_for": "WitnessPlan sets the ways to witness a FAT as ruled rows whose leader lines run into the package standing in the test bay; choosing a way lights its leader, marker and part (look `witness-plan`, options block).",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-fat-sat",
@@ -155,9 +155,9 @@
    "page": "svc-fat-sat",
    "slot": 3,
    "h": "How you witness",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "4761d202c9",
    "block": {

@@ -3,11 +3,11 @@
  "section": "Company",
  "nav_label": "Buying from Aquemi",
  "title": "Buying from Aquemi: terms, payment and onboarding | Aquemi",
- "meta": "Terms every Aquemi proposal states on page one, and how we answer your URS or RFQ line by line. Capital request notes, onboarding papers and ordering.",
+ "meta": "Terms every Aquemi proposal states on page one, how we answer your URS or RFQ line by line, onboarding papers and how to place an order.",
  "path": "/company/buying/",
  "eyebrow": "BUYING FROM AQUEMI",
  "headline": "How buying from us works",
- "lead": "Terms for buying our polypropylene Purified Water package, for procurement, finance and approvers. Every proposal opens with them. Send your contract form: we list any exceptions once, with reasons.",
+ "lead": "Terms for buying our Purified Water package, for procurement, finance and approvers. Every proposal opens with them.",
  "primary_cta": "Send your RFQ",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have an RFQ or a tender",
@@ -90,19 +90,6 @@
      "v": "Set out in your proposal",
      "m": "Any clause we cannot accept is listed once in our proposal, with the reason",
      "part": "scope"
-    },
-    {
-     "p": "Changes after order",
-     "v": "A signed change request before work starts [confirm]",
-     "m": "Price, schedule effect and payment on one page",
-     "link": "project-plan#changes",
-     "link_label": "See how changes work",
-     "part": "option"
-    },
-    {
-     "p": "Non-disclosure agreement",
-     "v": "Reviewed on receipt",
-     "part": "scope"
     }
    ],
    "look": "clause-tabs"
@@ -171,7 +158,7 @@
    "items": [
     {
      "t": "Your numbering kept",
-     "d": "Every clause answered where you wrote it. Nothing renumbered, merged or skipped.",
+     "d": "Every clause answered where you wrote it. Nothing renumbered, merged or skipped. Send your bid form with your RFQ.",
      "label": "Clauses"
     },
     {
@@ -189,156 +176,9 @@
      "t": "Departures on one page",
      "d": "Every departure from your specification, with its reason. If there is none, the page says \"none\".",
      "label": "Departures"
-    },
-    {
-     "t": "Your bid form, filled in",
-     "d": "Every field answered, none left blank. Send the form or comparison grid with your RFQ.",
-     "label": "Bid form"
-    },
-    {
-     "t": "Our answers bind us",
-     "d": "What the answers state can go into your purchase order as written [confirm].",
-     "label": "Contract"
     }
    ],
    "look": "binder-tabs"
-  },
-  {
-   "type": "table",
-   "as": "evidence",
-   "nav": "Compare",
-   "anchor": "compare",
-   "h": "Comparing quotes on the same lines",
-   "intro": "Level every quote on these lines before you compare prices.",
-   "cols": [
-    "Line to level",
-    "Ask of every quote",
-    "Where ours states it"
-   ],
-   "rows": [
-    [
-     "Pretreatment",
-     "Sized on your water analysis, or on an assumed feed?",
-     {
-      "t": "Pretreatment",
-      "link": "sys-pretreatment"
-     }
-    ],
-    [
-     "Storage and loop",
-     "Tank volume, loop length and every point of use counted?",
-     {
-      "t": "Storage and distribution",
-      "link": "sys-storage"
-     }
-    ],
-    [
-     "Instruments and controls",
-     "Which readings are recorded, and is the code delivered unlocked?",
-     {
-      "t": "Monitoring and controls",
-      "link": "sys-monitoring"
-     }
-    ],
-    [
-     "Documents",
-     "Which documents, and who writes and signs each?",
-     {
-      "t": "Document index",
-      "link": "cmp-documentation#index"
-     }
-    ],
-    [
-     "FAT",
-     "Run on water, to a protocol you approve first?",
-     {
-      "t": "FAT and SAT",
-      "link": "svc-fat-sat"
-     }
-    ],
-    [
-     "IQ and OQ",
-     "Included, a priced option, or left to you?",
-     {
-      "t": "Commissioning and qualification",
-      "link": "svc-cq"
-     }
-    ],
-    [
-     "Warranty start",
-     "Counted from shipment, or from acceptance on your site?",
-     {
-      "t": "Terms at a glance",
-      "link": "buying#terms"
-     }
-    ],
-    [
-     "Running cost",
-     "Per year, at your water and use, with the assumptions written?",
-     {
-      "t": "Running cost",
-      "link": "svc-service#running-cost"
-     }
-    ]
-   ],
-   "look": "levelling-sheet"
-  },
-  {
-   "type": "spec",
-   "nav": "Capital request",
-   "anchor": "capital",
-   "h": "How a price is built, for your capital request",
-   "intro": "Ask approval for one figure: installed, commissioned, and qualified or accepted. Each proposal ends with one paragraph your approver can read alone [confirm].",
-   "cols": [
-    "Cost line",
-    "Where the figure comes from",
-    "Note"
-   ],
-   "rows": [
-    {
-     "p": "Package and services",
-     "v": "Proposal total, each service its own line",
-     "m": "Before a quote: our budget range and its class",
-     "link": "systems#budget"
-    },
-    {
-     "p": "Installation and tie-ins",
-     "v": "The scope set out in your proposal",
-     "m": "Your contractor, unless the proposal includes it"
-    },
-    {
-     "p": "Utilities and site work",
-     "v": "Power, feed water and drain",
-     "m": "Up to the connection points",
-     "link": "systems#site"
-    },
-    {
-     "p": "Lab testing during qualification or acceptance",
-     "v": "Your lab or a contract lab",
-     "m": "Sampling weeks of performance qualification (PQ) or acceptance test",
-     "link": "svc-cq"
-    },
-    {
-     "p": "Temporary water",
-     "v": "Bought or made until the water is released for use",
-     "m": "Your cost while sampling runs"
-    },
-    {
-     "p": "Purified Water",
-     "v": "To your points of use",
-     "m": "What the approval buys",
-     "side": "out"
-    }
-   ],
-   "note": "A budget range states its class, date, valid-until date, lead time in weeks, one-line scope and basis. Its turnaround is confirmed when you enquire. Before the proposal, it moves with your water analysis, flow, loop length, points of use, and documentation and qualification scope. A proposal holds for the period stated on it; only the changes listed in it can move it. Service and consumables are yearly operating budget.",
-   "glyphs": [
-    "softener",
-    "carbon-filter",
-    "ro-membrane",
-    "edi",
-    "tank"
-   ],
-   "look": "cost-balance"
   },
   {
    "type": "docs",
@@ -393,32 +233,6 @@
    "look": "onboarding-fan"
   },
   {
-   "type": "steps",
-   "nav": "Order",
-   "anchor": "order",
-   "h": "Placing an order",
-   "intro": "Four steps, from your purchase order to the start of the lead-time clock. Our bank details never change by email: check any such request with your Aquemi contact before acting on it.",
-   "items": [
-    {
-     "t": "Address the order",
-     "d": "Make the purchase order (PO) out to [legal entity name]. Quote our proposal number, so price and scope carry over."
-    },
-    {
-     "t": "Add your references",
-     "d": "Public buyers: add your PO, tender and project numbers. We repeat them on every invoice."
-    },
-    {
-     "t": "We confirm in writing",
-     "d": "After your order: order accepted, drawing schedule and one named contact."
-    },
-    {
-     "t": "The lead-time clock starts",
-     "d": "Lead time counts from your order and from approved drawings, as page one states."
-    }
-   ],
-   "look": "release-run"
-  },
-  {
    "type": "faq",
    "nav": "FAQ",
    "anchor": "faq",
@@ -429,16 +243,16 @@
      "a": "Yes, with exceptions named: our proposal lists any clause we cannot accept, once, with the reason. Send the form with your request for quotation (RFQ). Our standing positions are set out in your proposal."
     },
     {
-     "q": "Do you bid on public tenders paid after acceptance?",
-     "a": "Ask about public tenders when you enquire. Where we bid, we bid on your terms and attach no terms of our own. A clause we cannot meet is raised in your question period [confirm]."
-    },
-    {
      "q": "Why pay anything before delivery?",
-     "a": "Each package is built for one site, from your approved drawings, and its material is bought then. Any payment at that point is set out in your proposal. Every later payment follows an event you can check, such as a passed factory acceptance test (FAT) [confirm]."
+     "a": "Each package is built for one site, from your approved drawings, and its material is bought then. Any payment at that point is set out in your proposal. Every later payment follows an event you can check, such as a passed factory acceptance test (FAT)."
     },
     {
      "q": "What keeps the warranty valid?",
      "a": "Three conditions, all written in your proposal. Feed water stays inside the design basis, the daily log is kept, and changes are agreed with us first."
+    },
+    {
+     "q": "How do we place an order?",
+     "a": "Make the purchase order out to [legal entity name] and quote our proposal number. Our bank details never change by email: check any such request with your Aquemi contact before acting on it."
     },
     {
      "q": "What do you submit for a tender's experience or reference section?",
@@ -502,6 +316,7 @@
   "Onboarding: corporate registration links about#facts, the entity's home (review finding 16; L-01-2). Insurance certificate status is [certificate of insurance status], one name with about#facts' Insurance row, which links buying#onboarding (DR-011; review finding 19, settled by the pass 11 integrator)",
   "Pass 11 integration (look reuse across the four new pages; urs-guide review finding 23, project-plan finding 10): the hero plate is now 'stamp' (page one of a proposal, its rows as buying#terms' Proposal row lists them, accepted and signed by you), so the 'route' plate stays only on project-plan. Kept reuses, each checked against every unused look of its type (python tools/specimens.py fit): compare on reader-split (also urs-guide, project-plan, first-system; the retired table looks draw joints, plans with buttons, the shop, spares or the FAT and SAT scenes, none a list of lines to level), proposal on joint-spine and answer on binder-tabs (also urs-guide; no retired table or steps look draws a document's lines or a returned answer), capital on cost-balance (also first-system; no retired spec look draws a budget), order on release-run (also first-system; capa-ring, fault-knot and shop-route draw a defect loop, a breakdown and a shop route). Revisit if a look for proposals or orders is added",
   "Final round, pass 11: proposal \"Documents\" line names what you receive (drawings, test and qualification records, operating manual, as-built set) [confirm each]; the full index stays on cmp-documentation (L-BWT-26; BWT study § 9 rank 13)",
-  "Pass 12 (SITE-PLAN buying; RI 08, 09, 10): capital renamed \"How a price is built\": summary first (installed, commissioned, qualified), the fields of a budget range (DR-005 rule 1), its turnaround [budget proposal turnaround, working days] (systems' closing), what moves the figure before and after the proposal; ranges only when the owner confirms (DR-005). Proposal column reads \"priced option\" (RI 09: never \"available\"). A downloadable requirement grid is offered only when the file exists (FD-58); none linked now. Block order kept (terms first for procurement; finance's summary sits in capital's intro) Pass 12 review fixes: capital's non-GMP path (\"qualified or accepted\", acceptance-test sampling; R10, FD-59); FAQ 5 answer first, codes spelled out in FAQ 1, 3, 5 (DR-003 rules 3, 4); lead cut to 28 words."
+  "Pass 12 (SITE-PLAN buying; RI 08, 09, 10): capital renamed \"How a price is built\": summary first (installed, commissioned, qualified), the fields of a budget range (DR-005 rule 1), its turnaround [budget proposal turnaround, working days] (systems' closing), what moves the figure before and after the proposal; ranges only when the owner confirms (DR-005). Proposal column reads \"priced option\" (RI 09: never \"available\"). A downloadable requirement grid is offered only when the file exists (FD-58); none linked now. Block order kept (terms first for procurement; finance's summary sits in capital's intro) Pass 12 review fixes: capital's non-GMP path (\"qualified or accepted\", acceptance-test sampling; R10, FD-59); FAQ 5 answer first, codes spelled out in FAQ 1, 3, 5 (DR-003 rules 3, 4); lead cut to 28 words.",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired the quote-levelling table, the capital request block and the order steps (the bank-detail fraud warning kept as one FAQ); terms at 8 rows (changes after order and NDA retired), URS answer at 4 steps, public tenders FAQ retired."
  ]
 }

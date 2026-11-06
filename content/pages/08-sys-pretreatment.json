@@ -3,11 +3,11 @@
  "section": "Systems",
  "nav_label": "Pretreatment",
  "title": "RO pretreatment for Purified Water systems | Aquemi",
- "meta": "PVC pretreatment for our polypropylene Purified Water package. It takes drinking water (EPA, EU, Japan or WHO limits) and holds RO feed to chlorine, hardness and SDI targets all year.",
+ "meta": "PVC pretreatment for your Purified Water package. It takes municipal or well drinking water and holds RO feed to chlorine, hardness and SDI targets all year.",
  "path": "/systems/pretreatment/",
  "eyebrow": "SYSTEMS · PVC PRETREATMENT · USP <1231>",
  "headline": "Keep chlorine and scale off your membranes",
- "lead": "We design the polyvinyl chloride (PVC) pretreatment of our polypropylene Purified Water package from your seasonal data. It protects the reverse osmosis (RO) membranes all year.",
+ "lead": "We design the polyvinyl chloride (PVC) pretreatment from your seasonal feed water data. It protects the reverse osmosis (RO) membranes all year.",
  "primary_cta": "Request a feed water review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet|Feed water review",
@@ -16,54 +16,6 @@
   "link": "svc-upgrades#upgrades"
  },
  "blocks": [
-  {
-   "type": "spec",
-   "h": "Water at the RO inlet",
-   "caption": "RO FEED · DESIGN TARGETS",
-   "note": "The membrane datasheet takes precedence.",
-   "cols": [
-    "Parameter",
-    "Design target",
-    "Measured by"
-   ],
-   "rows": [
-    {
-     "p": "Free and total chlorine",
-     "v": "Set in your design basis",
-     "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed",
-     "hl": true
-    },
-    {
-     "p": "Silt density index",
-     "v": "Set in your design basis",
-     "m": "ASTM D4189, at the cartridge filter outlet"
-    },
-    {
-     "p": "Turbidity",
-     "v": "Set in your design basis",
-     "m": "Media filter outlet"
-    },
-    {
-     "p": "Hardness",
-     "v": "Set in your design basis",
-     "m": "Method named in your proposal, softener outlet"
-    },
-    {
-     "p": "Iron and manganese",
-     "v": "Limits set in your design basis",
-     "m": "Set with the membrane maker"
-    },
-    {
-     "p": "Silica and scaling ions",
-     "v": "Below saturation in the RO concentrate",
-     "m": "Membrane projection at coldest and warmest feed"
-    }
-   ],
-   "nav": "RO inlet targets",
-   "as": "gauges",
-   "look": "membrane-face",
-   "anchor": "inlet"
-  },
   {
    "type": "diagram",
    "h": "How the train is built",
@@ -83,7 +35,7 @@
     {
      "t": "Media filter",
      "spot": "carbon-filter",
-     "d": "Removes turbidity and particles that raise SDI.",
+     "d": "Removes turbidity and particles that raise the silt density index (SDI).",
      "cut": "media",
      "catch": {
       "g": "p",
@@ -91,9 +43,9 @@
      }
     },
     {
-     "t": "Duplex softener",
+     "t": "Softener",
      "icon": "softener",
-     "d": "Removes hardness so membranes don't scale; one bed runs, one regenerates.",
+     "d": "Removes hardness so membranes don't scale.",
      "cut": "softener",
      "catch": {
       "g": "h",
@@ -127,7 +79,7 @@
      "cut": "out"
     }
    ],
-   "base": "Online monitoring · total chlorine, ORP, pressure drop",
+   "base": "Online monitoring · chlorine and pressure drop",
    "nav": "The train",
    "look": "section-train",
    "anchor": "train"
@@ -143,13 +95,13 @@
    "rows": [
     [
      "Chloramine, used by many large utilities",
-     "Oxidizes membranes; its ammonia loads the electrodeionization (EDI) stage",
+     "Oxidizes membranes",
      "Catalytic carbon, two beds or bisulfite; total chlorine alarm"
     ],
     [
      "Winter near 2 °C, summer over 20 °C",
      "Cold cuts RO output and silica solubility; warmth speeds growth",
-     "Membranes sized at your coldest month; RO sanitization set for summer"
+     "Membranes sized at your coldest month"
     ],
     [
      "Spring runoff and fall turnover",
@@ -158,23 +110,8 @@
     ],
     [
      "Hardness and alkalinity, highest in groundwater",
-     "Carbonate scales the last elements; CO₂ loads the EDI",
-     "Softeners sized on measured hardness; CO₂ handled on the Purified Water skid"
-    ],
-    [
-     "Silica",
-     "Passes softeners, scales the concentrate and limits recovery",
-     "Recovery limited at your coldest feed; antiscalant if needed"
-    ],
-    [
-     "Iron and manganese, mostly well water",
-     "Foul membranes and coat resin",
-     "Oxidation and catalytic media ahead of the softener"
-    ],
-    [
-     "No disinfectant after carbon",
-     "Biofilm in carbon and softeners sheds into the RO",
-     "Carbon replaced at an interval set for your system, or bisulfite instead; samples around each bed"
+     "Carbonate scales the last elements",
+     "Softeners sized on measured hardness"
     ]
    ],
    "nav": "Feed water",
@@ -186,82 +123,9 @@
     "oxidize",
     "cold",
     "foul",
-    "scale",
-    "silica",
-    "coat",
-    "biofilm"
+    "scale"
    ],
-   "anchor": "feed-water",
-   "intro": "Feeding a hydrogen electrolyser or boiler make-up? The same train protects your RO and EDI from every cause below."
-  },
-  {
-   "type": "table",
-   "as": "router",
-   "nav": "Chlorine or chloramine",
-   "anchor": "chloramine",
-   "h": "Chlorine or chloramine: the removal step",
-   "cols": [
-    "Your supply",
-    "Removal step",
-    "Removes",
-    "Watch for"
-   ],
-   "rows": [
-    [
-     "Your utility chloraminates",
-     "Catalytic carbon",
-     "Chlorine and chloramine, with less contact time",
-     "Sized at peak flow and winter temperature"
-    ],
-    [
-     "Chloramine, with a breakthrough check",
-     "Two carbon beds in series",
-     "Both; a sample point between beds",
-     "Two beds to backwash and replace"
-    ],
-    [
-     "Free chlorine only, no dosed chemicals",
-     "Granular activated carbon",
-     "Free chlorine and some organics; chloramine only slowly",
-     "Biofilm; needs regular backwash and replacement"
-    ],
-    [
-     "Little floor space, or no carbon bed",
-     "Sodium bisulfite dosing",
-     "Both, by chemical reduction, fast",
-     "Overdose feeds bacteria; verify on ORP"
-    ]
-   ],
-   "look": "decision-valve"
-  },
-  {
-   "type": "docs",
-   "h": "Documents delivered",
-   "key": 2,
-   "items": [
-    {
-     "t": "Feed water review and design basis",
-     "d": "Sets the RO inlet targets: data used and design months"
-    },
-    {
-     "t": "Membrane projections",
-     "d": "Predict output at coldest and warmest feed, new and at end of membrane life"
-    },
-    {
-     "t": "Functional specification",
-     "d": "Regeneration, backwash, alarms and interlocks"
-    },
-    {
-     "t": "Media, resin and material certificates",
-     "d": "Lot numbers; PVC certificates as named in your proposal"
-    }
-   ],
-   "nav": "Documents",
-   "fold_noun": "documents",
-   "link": "cmp-documentation#index",
-   "link_label": "Full index",
-   "look": "doc-pipe",
-   "anchor": "documents"
+   "anchor": "feed-water"
   },
   {
    "type": "options",
@@ -304,7 +168,7 @@
     },
     {
      "t": "Feed heat exchanger",
-     "d": "Holds the temperature set in your design basis in winter. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "d": "Holds the feed temperature in winter.",
      "spot": "heat-exchanger",
      "at": 3.6,
      "part": "hx",
@@ -321,7 +185,7 @@
     },
     {
      "part": "softener",
-     "label": "Duplex softener"
+     "label": "Softener"
     },
     {
      "part": "carbon",
@@ -355,36 +219,17 @@
     },
     {
      "q": "Our water meets drinking water standards. Why is that not enough?",
-     "a": "Those standards protect people, not membranes. Health Canada sets no guideline value for chloramine; the US EPA allows up to 4 mg/L. Polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine."
-    },
-    {
-     "q": "What does the pretreatment cost?",
-     "a": "It is priced per project, for a train sized to your demand.",
-     "link": "systems#budget"
+     "a": "Those standards protect people, not membranes. Chlorine and chloramine that are safe to drink still damage reverse osmosis membranes."
     },
     {
      "q": "How do you show the design covers seasonal changes?",
      "a": "In the design basis, month by month. We take the history you have of utility and site data and size every bed for each parameter's worst month, before you order."
     },
     {
-     "q": "Is pretreatment part of the validated system?",
-     "a": "Not necessarily: your risk assessment sets the boundary; write it into your user requirement specification (URS). WHO TRS 1033 allows construction to drinking water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope.",
-     "link": "urs-guide#outline",
-     "link_label": "Writing your URS"
-    },
-    {
      "q": "What is replaced, and how often?",
-     "a": "Five items, set from your feed water: cartridges, filter media, carbon, softener resin and salt. Cartridges, media and resin follow intervals set for your system; salt follows hardness. Carbon follows an interval set for your system, reset from your microbial counts. It is replaced, not hot-water sanitized: PVC is rated to 60 °C, at 22 % of its pressure rating.",
+     "a": "Cartridges, filter media, carbon, softener resin and salt, on intervals set from your feed water and microbial counts.",
      "link": "svc-service#running-cost",
      "link_label": "Running cost"
-    },
-    {
-     "q": "What is the pretreatment built from?",
-     "a": "Polyvinyl chloride (PVC) pipe to the standard and schedule named in your proposal, joined by the method named there. It stays upstream of the reverse osmosis stage, so it never touches Purified Water. Vessels: material named in your proposal."
-    },
-    {
-     "q": "What happens to the ammonia from chloramine?",
-     "a": "Some passes the reverse osmosis membranes as ammonia gas, at the pH used to control CO₂. It then loads the electrodeionization stage, so we design chloramine removal and the Purified Water skid together."
     }
    ],
    "anchor": "faq"
@@ -446,6 +291,7 @@
   "Pass 12 (SITE-PLAN sys-pretreatment; FD-59, DR-027): title drops \"pharmaceutical\"; the feed water table intro speaks to hydrogen electrolyser and boiler make-up readers in the second person (\"Feeding a hydrogen electrolyser or boiler make-up? … your RO and EDI from every cause below\") (industries-breadth §4); feed water causes stay industry-neutral. No claim that RO replaces boiler chemistry (SITE-PLAN 1.2.4). Related swaps ind-pharma for the industries hub (every group reachable) and points svc-service at #visit (pass 12 review: the FAQ already links #running-cost; the visit checklist is the maintenance lead's other desk need)",
   "Pass 12 (RI 01 consumables and intervals as a structure; SITE-PLAN 1.4.2 DR-013 rule 1 in the first block that mentions heat): the carbon FAQ became \"What is replaced, and how often?\" with svc-service's existing names ([filter, media and lamp intervals, months], [carbon replacement interval, months]) and the no-hot-water line kept; the feed heat exchanger option carries DR-013 rule 1 verbatim. No new placeholder names. FAQ count stays 8 (budget). If engineering confirms separate cartridge, media and resin intervals, register one name each in ops/placeholder-names.md and update svc-service#running-cost in the same edit (DR-011)",
   "Pass 12 anchors added for the mega menu and inbound links: train, feed-water, documents, options, faq (inlet and chloramine kept; sys-pw links #chloramine)",
-  "Owner: which consumables the plant's team changes (cartridges, salt) and whether cartridges, media and resin are standard sizes bought locally (FD-21, FD-30). If confirmed, add one sentence to the consumables FAQ within its 60-word cap, or put it on svc-service#spares"
+  "Owner: which consumables the plant's team changes (cartridges, salt) and whether cartridges, media and resin are standard sizes bought locally (FD-21, FD-30). If confirmed, add one sentence to the consumables FAQ within its 60-word cap, or put it on svc-service#spares",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired RO inlet targets (membrane-face), the chlorine or chloramine table (decision-valve) and documents (doc-pipe); 'Duplex softener' renamed 'Softener' (decision 3); feed water 7 to 4 rows (silica, iron and manganese, biofilm); FAQ 8 to 4; PP and EPA/EU/WHO wording out of hero and options."
  ]
 }

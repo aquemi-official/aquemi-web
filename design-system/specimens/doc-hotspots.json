@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, intro, items [{t, d, code, key, at: [x, y]}], link, link_label, intent. at: the hotspot on the drawing, as fractions of the drawing's box (0–1, from the top left); an item without one gets no hotspot. Codes come from the DocList lookup (docCode, blocks/docs.js) unless the item names its own.",
  "best_for": "DocHotspots pins the documents delivered with a system to the parts of the skid they cover, so the reader sees what each record is about on the equipment itself.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pw",
@@ -266,9 +266,9 @@
    "page": "sys-pw",
    "slot": 3,
    "h": "Documents with the skid",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "120edfe4bc",
    "block": {

@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, intro, items [{t, d, key, link, intent, layer}]. layer (optional): joints, lots, quals, test (default from the part's words).",
  "best_for": "SpoolDossier sets a document set beside the as-built isometric it indexes: the title huge and light at the top left, an isometric polypropylene spool at the right with numbered joints and lot-tagged lengths, and the documents in a hairline grid under them.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-fabrication",
@@ -124,9 +124,9 @@
    "page": "svc-fabrication",
    "slot": 2,
    "h": "The fabrication dossier",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "1383f5706d",
    "block": {

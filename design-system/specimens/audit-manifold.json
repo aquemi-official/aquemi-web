@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as the evidence table: h, intro, cols [who, read, answer], rows [who, read, {t, link, intent} or text], fold, fold_noun. The look never folds (pass 12, S7: the header pipe references every row), so `fold` is kept in the data and ignored here. Access tables (pass 12): when a \"what they read\" cell says how a reader gets the item (on this page, on request, at audit, under NDA), the row carries its access state for the phone valve: open (now, on this page), half (on request, at audit) or closed with an \"NDA\" tag; the state is read from the row's own words.",
  "best_for": "AuditManifold sets an evidence table (who reads, what they read, where we answer it) on a navy blueprint sheet whose column joins are pipe headers, so each reader's row reads as one route from the auditor to our answer.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-meddevice",
@@ -297,9 +297,9 @@
    "page": "ind-meddevice",
    "slot": 5,
    "h": "Who audits your water system",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "f08f66d366",
    "block": {
@@ -364,9 +364,9 @@
    "page": "cmp-quality",
    "slot": 5,
    "h": "What you can read, and when",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "1615c528c0",
    "block": {

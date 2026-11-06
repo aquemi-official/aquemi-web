@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, intro, items [{t, d, code, key, link, intent, tag}], key, fold, fold_noun, link, link_label, intent.",
  "best_for": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pretreatment",
@@ -125,9 +125,9 @@
    "page": "sys-pretreatment",
    "slot": 4,
    "h": "Documents delivered",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "0e9a5ab3b7",
    "block": {

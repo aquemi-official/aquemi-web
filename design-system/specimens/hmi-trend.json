@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "h, intro, cols (three labels), rows [[line, how, what]] (a cell may be {t, link}), lines (the role of each row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown; decoration, aria-hidden), plot (optional: the roles drawn on the trend plot, e.g. [\"limit\",\"trend\"] when the action and alert levels are laboratory results, not online readings; default every role; the table keeps every row). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.",
  "best_for": "HmiTrend sets a table of alarm lines (line, how it is set, what the system does) as the operator panel's own screen: a dark instrument panel with a trend plot of one reading under the limit lines, flagged by the trend rule before it reaches any of them, and the alarm summary as the real table.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-monitoring",
@@ -174,9 +174,9 @@
    "page": "sys-monitoring",
    "slot": 2,
    "h": "Alert, action and trend",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "0f400928f2",
    "block": {

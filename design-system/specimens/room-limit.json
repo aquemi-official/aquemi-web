@@ -107,9 +107,9 @@
    "page": "first-system",
    "slot": 2,
    "h": "What your site needs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "5cbef3234c",
    "block": {
@@ -191,6 +191,80 @@
       "m": "Plan the pipe and sample point there",
       "side": "site",
       "part": "use"
+     }
+    ],
+    "sides": [
+     "The package brings",
+     "Your site provides"
+    ],
+    "seam": "Where our scope stops"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 2,
+   "h": "What your site needs",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "414d529a14",
+   "block": {
+    "type": "spec",
+    "look": "room-limit",
+    "nav": "Your site",
+    "anchor": "site",
+    "h": "What your site needs",
+    "intro": "On your side: a water supply, a drain, power, floor space and a way in.",
+    "cols": [
+     "Item",
+     "What it takes",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Where our scope stops",
+      "v": "Battery limits set per project; installation scope set out in your proposal",
+      "m": "Listed in the proposal: who supplies, installs and connects each item",
+      "side": "limit",
+      "link": "systems#site",
+      "link_label": "Site details",
+      "part": "line"
+     },
+     {
+      "p": "The package",
+      "v": "Confirmed in your proposal",
+      "m": "Plus service clearance",
+      "side": "package",
+      "part": "package"
+     },
+     {
+      "p": "Water supply",
+      "v": "City or well water, with its latest report",
+      "m": "The report sets the pretreatment",
+      "side": "site",
+      "part": "water"
+     },
+     {
+      "p": "Drain",
+      "v": "Feed and drain flows confirmed in your proposal",
+      "m": "Reverse osmosis sends part of the feed to drain",
+      "side": "site",
+      "part": "drain"
+     },
+     {
+      "p": "Power",
+      "v": "Supply voltage confirmed in your proposal",
+      "m": "To the control panel; the proposal says who brings it",
+      "side": "site",
+      "part": "power"
+     },
+     {
+      "p": "Way in",
+      "v": "Doors and route at least the width stated in your proposal",
+      "m": "Measure the narrowest door on the route",
+      "side": "site",
+      "part": "door"
      }
     ],
     "sides": [

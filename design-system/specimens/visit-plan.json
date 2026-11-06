@@ -329,9 +329,9 @@
    "page": "svc-service",
    "slot": 3,
    "h": "What a maintenance visit covers",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "9c4a9e41a4",
    "block": {
@@ -392,6 +392,75 @@
      }
     ],
     "intro": "A routine visit stops your water for a period agreed with you, at a time you choose."
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 2,
+   "h": "What a maintenance visit covers",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "6db1679c72",
+   "block": {
+    "type": "grid",
+    "look": "visit-plan",
+    "as": "route",
+    "nav": "Visits",
+    "anchor": "visit",
+    "h": "What a maintenance visit covers",
+    "items": [
+     {
+      "t": "Data review",
+      "d": "Conductivity, total organic carbon (TOC), temperature and alarms since the last visit.",
+      "link": "sys-monitoring",
+      "spot": "toc",
+      "part": "panel toc"
+     },
+     {
+      "t": "Pretreatment",
+      "d": "Softener leakage, carbon or bisulfite, RO inlet chlorine.",
+      "link": "sys-pretreatment",
+      "spot": "pretreatment",
+      "part": "pre"
+     },
+     {
+      "t": "RO and DI/EDI",
+      "d": "Normalized flow, salt passage and pressure drop against baseline.",
+      "link": "sys-pw",
+      "spot": "ro-skid",
+      "part": "gen"
+     },
+     {
+      "t": "UV, if fitted, and sanitization",
+      "d": "Lamp intensity and hours; last sanitization record checked, residual tested before use.",
+      "link": "sys-storage#sanitization",
+      "spot": "uv",
+      "part": "uv"
+     },
+     {
+      "t": "Loop hydraulics",
+      "d": "Return flow against the qualified or design minimum, pump and valves.",
+      "link": "sys-storage",
+      "spot": "pump",
+      "part": "loop tank"
+     },
+     {
+      "t": "Wearing parts",
+      "d": "Seals and diaphragms like for like, lots recorded; vent filters tested.",
+      "spot": "wrench",
+      "part": "wear"
+     },
+     {
+      "t": "Signed report",
+      "d": "As-found, as-left and return-to-service readings, work done, parts and lots. Signed before we leave, for your quality file.",
+      "end": true,
+      "spot": "stamp",
+      "part": "report"
+     }
+    ],
+    "intro": "A routine visit stops your water for a period agreed with you, at a time you choose. Calibration certificates show as-found and as-left values."
    }
   }
  ]

@@ -306,9 +306,9 @@
    "page": "cmp-documentation",
    "slot": 0,
    "h": "The turnover package, section by section",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "b0fd2ea66b",
    "block": {
@@ -366,6 +366,61 @@
      {
       "t": "Commissioning and acceptance, not under GMP",
       "d": "Commissioning record and acceptance test report. Test data for your ST108:2023 critical-water validation, or CLSI GP40 (5th edition) or ASTM D1193-24 verification."
+     },
+     {
+      "t": "Operation, maintenance and training",
+      "d": "Operation and maintenance manual, draft operating procedures, spare parts list for the first period of operation, training records"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "sections",
+    "look": "index-sheet"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 0,
+   "h": "The turnover package, section by section",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "2a96a03719",
+   "block": {
+    "type": "docs",
+    "nav": "Index",
+    "anchor": "index",
+    "h": "The turnover package, section by section",
+    "intro": "Good manufacturing practice (GMP) closes testing with installation, operational and performance qualification (IQ, OQ, PQ). Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+    "items": [
+     {
+      "t": "Index and project summary",
+      "d": "Register with current revisions, scope, tag list, connection points (battery limits)"
+     },
+     {
+      "t": "Requirements and design",
+      "key": true,
+      "d": "URS compliance matrix, design basis, risk assessment, traceability matrix"
+     },
+     {
+      "t": "Specifications and drawings",
+      "d": "Functional specification, P&IDs, general arrangement and layout"
+     },
+     {
+      "t": "Materials and fabrication records",
+      "d": "Material certificates and joint records"
+     },
+     {
+      "t": "Cleaning, pressure and panels",
+      "d": "Cleaning certificate, pressure tests and registration where required"
+     },
+     {
+      "t": "Instruments and software",
+      "d": "Calibration certificates, software version and backup"
+     },
+     {
+      "t": "Testing and qualification",
+      "d": "Factory and site acceptance tests. Under GMP: IQ, OQ and PQ. Not under GMP: commissioning and an acceptance test."
      },
      {
       "t": "Operation, maintenance and training",

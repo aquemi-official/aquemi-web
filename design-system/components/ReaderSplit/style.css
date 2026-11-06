@@ -101,3 +101,6 @@ a.aq-reader-split__go:focus-visible { outline: 2px solid var(--focus); outline-o
 }
 .aq-reader-split__pt { min-width: 0; text-wrap: balance; }/* pass 12 (F9): no lone word after a hard hyphen ("hand- / off") */
 .aq-reader-split__nb { white-space: nowrap; }
+
+/* The split band (also defined in BatteryLimit, retired 2026-11-05): the section is the positioned host of its ground. */
+.aq-band--split { position: relative; }

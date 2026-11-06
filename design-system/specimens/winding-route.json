@@ -388,9 +388,9 @@
    "page": "sys-pw",
    "slot": 1,
    "h": "How water moves through the skid",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "65d4e412c9",
    "block": {
@@ -429,6 +429,57 @@
       "d": "Where needed, adds margin on conductivity, TOC and silica.",
       "label": "RO 2",
       "optional": "Where needed"
+     },
+     {
+      "t": "DI or EDI",
+      "spot": "edi-stack",
+      "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by the resin service route named in your proposal.",
+      "label": "DI or EDI"
+     },
+     {
+      "t": "To PW storage",
+      "spot": "storage-tank",
+      "d": "Water out of specification does not reach storage: it goes to a route set in your design until it recovers.",
+      "label": "Out"
+     }
+    ],
+    "nav": "How it works",
+    "look": "winding-route",
+    "anchor": "process",
+    "intro": "The skid starts at the pretreated feed and ends at the storage inlet. Sample points: set in your design."
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 0,
+   "h": "How water moves through the skid",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "19e2598c89",
+   "block": {
+    "type": "diagram",
+    "h": "How water moves through the skid",
+    "stages": [
+     {
+      "t": "Softened, dechlorinated feed",
+      "spot": "pretreatment",
+      "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last.",
+      "label": "Feed"
+     },
+     {
+      "t": "Heat exchanger",
+      "spot": "heat-exchanger",
+      "d": "Where fitted, warms winter feed to the membrane design temperature.",
+      "label": "Heat",
+      "optional": true
+     },
+     {
+      "t": "Reverse osmosis (RO)",
+      "spot": "ro-skid",
+      "d": "Reverse osmosis (RO) pushes water through a membrane so fine that most dissolved ions, organics and bacteria stay behind.",
+      "label": "RO"
      },
      {
       "t": "DI or EDI",

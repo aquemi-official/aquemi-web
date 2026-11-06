@@ -141,9 +141,9 @@
    "page": "svc-cq",
    "slot": 1,
    "h": "Who writes, who reviews",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "e99ac3e266",
    "block": {
@@ -202,6 +202,57 @@
     ],
     "fold": 5,
     "fold_noun": "documents",
+    "look": "signature-blocks"
+   }
+  },
+  {
+   "page": "svc-cq",
+   "slot": 1,
+   "h": "Who writes, who reviews",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "4a1d80618c",
+   "block": {
+    "type": "table",
+    "as": "roles",
+    "nav": "Who signs",
+    "anchor": "roles",
+    "h": "Who writes, who reviews",
+    "intro": "The validation master plan stays yours. You approve the C&Q plan before any test runs. IQ and OQ protocols reach you ahead of testing, on a date agreed with you.",
+    "cols": [
+     "Document or activity",
+     "Written or done by",
+     "Reviewed by"
+    ],
+    "rows": [
+     [
+      "Risk assessment and C&Q plan",
+      "Aquemi drafts from your requirements (URS)",
+      "Your validation team"
+     ],
+     [
+      "FAT, SAT, IQ and OQ protocols",
+      "Aquemi",
+      "Your validation team"
+     ],
+     [
+      "IQ and OQ execution",
+      "Aquemi engineers named in your proposal, you witness",
+      "Your validation team"
+     ],
+     [
+      "PQ protocol and sampling plan",
+      "You, or Aquemi drafts for you",
+      "Both teams and your laboratory"
+     ],
+     [
+      "PQ sampling and testing",
+      "Your operators and laboratory",
+      "Your quality control"
+     ]
+    ],
     "look": "signature-blocks"
    }
   }

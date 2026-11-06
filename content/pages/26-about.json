@@ -3,10 +3,10 @@
  "section": "Company",
  "nav_label": "About",
  "title": "About Aquemi: Purified Water engineering in Ontario | Aquemi",
- "meta": "Aquemi designs, builds, qualifies and services a Purified Water package in polypropylene with PVC pretreatment. Company facts, the team, and how to qualify us.",
+ "meta": "Aquemi designs, builds, qualifies and services a Purified Water package. Company facts, the team, and how to qualify us.",
  "path": "/company/about/",
  "eyebrow": "ABOUT AQUEMI",
- "headline": "One polypropylene Purified Water package, built in Ontario, commissioned and qualified on your site",
+ "headline": "Purified Water packages, designed and built in Ontario",
  "lead": "For plants and labs that need Purified Water. Your contacts: a commercial lead, an automation engineer experienced on pharmaceutical water systems, and a modular manufacturing and design specialist.",
  "primary_cta": "Talk to an engineer",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
@@ -29,7 +29,7 @@
    "rows": [
     {
      "p": "Scope",
-     "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. Purified Water only. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. No Water for Injection, pure steam or stainless steel systems. Not residential or municipal",
+     "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. No Water for Injection, pure steam or stainless steel systems. Not residential or municipal. We also offer process design and automation to other water system builders",
      "m": "Stated in these words in every proposal. Registered activity: [registered business activity, as filed]",
      "link": "systems",
      "hl": true
@@ -40,32 +40,10 @@
      "m": "The team's engineering rationale, signed"
     },
     {
-     "p": "Registration and ownership",
-     "v": "Details on request",
-     "m": "[corporate registration, jurisdiction and number]"
-    },
-    {
-     "p": "People by discipline",
-     "v": "Details on request",
-     "m": "Organization chart, in the questionnaire pack",
-     "link": "cmp-quality#audit"
-    },
-    {
      "p": "Quality system",
      "v": "Status on request",
      "m": "Audit on reasonable notice",
      "link": "cmp-quality#certification"
-    },
-    {
-     "p": "Insurance and financial standing",
-     "v": "Insurance details on request",
-     "m": "Certificate: status on request. Financial evidence on request",
-     "link": "buying#onboarding"
-    },
-    {
-     "p": "Licences and seals",
-     "v": "Engineering seal and firm permit: details on request",
-     "m": "Licensing body registers on request"
     },
     {
      "p": "Head office",
@@ -137,12 +115,6 @@
      "icon": "gauge"
     },
     {
-     "t": "Registration in your province",
-     "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for each pressure-rated item your design includes.",
-     "link": "compliance#engineering",
-     "icon": "stamp"
-    },
-    {
      "t": "Designed for Canadian feed water",
      "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
      "link": "sys-pretreatment",
@@ -175,18 +147,6 @@
      "a": "Audit our quality system on reasonable notice, and witness your FAT before shipment. References and site visits are arranged with our commercial lead during qualification.",
      "link": "projects#verify",
      "link_label": "How to qualify us"
-    },
-    {
-     "q": "Do you supply hospital, lab, cosmetics or industrial water?",
-     "a": "Yes, where the use fits our polypropylene package: hospitals, laboratories, cosmetics, food, beverage, industrial and energy plants.",
-     "link": "industries#matrix",
-     "link_label": "See industries by water use"
-    },
-    {
-     "q": "Do you work on other makers' systems?",
-     "a": "For makes and equipment confirmed when you enquire: service and upgrades, starting with a condition survey or an assessment.",
-     "link": "svc-service",
-     "link_label": "See service for other makes"
     }
    ]
   },
@@ -245,7 +205,8 @@
   "Project-facts sheet: link it from this page once it exists, with no brackets (DR-001 rule 5; FD-03, FD-05 to FD-08)",
   "Proposal response time ([proposal response time, working days]; FD-01) and cost of talking to an engineer ([fit check cost or free]; FD-02): at launch, if unset, the closing says \"An engineer replies in writing.\" and the cost line goes (DR-006 rule 7, DR-005 rule 8). Shared closing contact [named contact, role, direct line] is the integrator's field (PS § 5.1)",
   "DI or EDI (FD-21): the figure label \"Pretreatment · RO · deionization\" covers DI/EDI; once FD-21 decides, align the label, the people intro and the parts label in one commit",
-  "Launch (DR-026 launch rule): if buying is not published, the hero secondary returns to cmp-quality#buying, related drops buying, and the Insurance row links cmp-quality#audit"
+  "Launch (DR-026 launch rule): if buying is not published, the hero secondary returns to cmp-quality#buying, related drops buying, and the Insurance row links cmp-quality#audit",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): company facts at 5 rows (registration, people, insurance and licences rows retired; PP temperature sentence dropped; 'Not residential or municipal' kept; one line on process design and automation for other builders added to Scope); CRN tile retired; FAQ at 2."
  ],
  "figure": {
   "look": "shop-bay",

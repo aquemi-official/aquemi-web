@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption (eyebrow and title block), rows [{p, v, m, link, link_label}], anchor, nav.",
  "best_for": "TankGa reads a spec block of fabrication parameters off one general arrangement (GA) sheet: an isometric line drawing of the PP storage set with a numbered tag on a leader for each parameter, the parameters as a ruled key beside it, and the budget in the title block.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-storage",
@@ -99,9 +99,9 @@
    "page": "sys-storage",
    "slot": 3,
    "h": "Tank and pipework",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "e6bbf1c952",
    "block": {

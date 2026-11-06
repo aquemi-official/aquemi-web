@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl}], note. No new fields.",
  "best_for": "MembraneFace sets a short list of feed-water targets as a bento round the thing they protect: the feed end of a spiral-wound reverse osmosis element, drawn large on navy, with one target per tile around it.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pretreatment",
@@ -183,9 +183,9 @@
    "page": "sys-pretreatment",
    "slot": 0,
    "h": "Water at the RO inlet",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "0eee5ea2dc",
    "block": {

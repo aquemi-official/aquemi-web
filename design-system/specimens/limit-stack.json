@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption (shown beside the heading), intro (an annotation on the pipe), rows [{p, v, m, level}], note.",
  "best_for": "LimitStack sets a page's water-quality limits as an editorial type stack beside a sculpted outlet pipe, so the reader sees each limit large, its reference, and the guaranteed skid-outlet value as the stack's last, boxed step.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pw",
@@ -243,9 +243,9 @@
    "page": "sys-pw",
    "slot": 0,
    "h": "Purified Water limits",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "3690247303",
    "block": {

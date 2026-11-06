@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, intro, caption, rows [{p, v, m, link, link_label, hl}], tiles (how many rows are tiles, default 3).",
  "best_for": "FitReadout shows a fit test read off an instrument: a navy readout plots the loop material's pressure rating falling as it heats up to one limit line, beside the test's numbered rule tiles, with the rows that are not served or answered elsewhere as outlined tags that link their homes.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "industries",
@@ -79,9 +79,9 @@
    "page": "industries",
    "slot": 3,
    "h": "Where the package fits, in any industry",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "76e33d74ad",
    "block": {

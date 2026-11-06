@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold, fold_noun. part (optional): wall, face, exam, bore, mark, or \"none\" (default from the item's words). The fold applies on phones only, and not on this look (pass 12, S7: the callouts point at rows 07-10).",
  "best_for": "JointMacro sets a standard beside a traced duotone macro close-up of the thing it governs: the end of a polypropylene pipe fills the left of a navy band, its contours traced in a hairline and numbered to the rows at the right.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-fabrication",
@@ -304,9 +304,9 @@
    "page": "svc-fabrication",
    "slot": 1,
    "h": "Our fabrication standard",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "ee0ecaa615",
    "block": {

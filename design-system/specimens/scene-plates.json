@@ -10,9 +10,9 @@
    "page": "ind-process",
    "slot": 2,
    "h": "Food, beverage and cannabis",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "281a059",
    "hash": "c1cf563e6d",
    "block": {
@@ -56,6 +56,61 @@
       "Cannabis products: extracts, edibles, beverages and topicals",
       "Water that touches the product, ingredient water, quality control lab",
       "Potable (Cannabis Regulations, s. 88.6) · your quality assurance person's specification",
+      "Ambient, small flows; Purified Water where your site runs pharmaceutical standards"
+     ]
+    ],
+    "fold": 4,
+    "fold_noun": "plants",
+    "look": "scene-plates"
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 0,
+   "h": "Food, beverage and cannabis",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "605e79ab9d",
+   "block": {
+    "type": "table",
+    "nav": "Food and beverage",
+    "anchor": "food",
+    "h": "Food, beverage and cannabis",
+    "intro": "Potable water is the legal floor for food in Canada and the US. Your recipe or quality person sets the rest.",
+    "cols": [
+     "Plant",
+     "Where the water goes",
+     "Legal floor and limit",
+     "Fit"
+    ],
+    "rows": [
+     [
+      "Distilling, spirits and liqueurs",
+      "Proofing water, ingredient water",
+      "Potable water, plus your recipe specification",
+      "Generation sized to your proofing schedule, with storage for batch draws"
+     ],
+     [
+      "Brewing, cider, soft drinks and juices, craft scale",
+      "Ingredient water, quality control lab, boiler make-up",
+      "Potable · your recipe and water profile",
+      "Craft scale; larger plants confirmed when you enquire"
+     ],
+     [
+      "Food ingredients, flavours and supplement lines",
+      "Ingredient water, natural health product lines, quality control lab",
+      "Potable · health product lines: their own good manufacturing practice (GMP)",
+      {
+       "t": "Generation to your ingredient specification; supplement lines: natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Cannabis products: extracts, edibles, beverages and topicals",
+      "Water that touches the product, ingredient water, quality control lab",
+      "Potable water, plus your quality assurance person's specification",
       "Ambient, small flows; Purified Water where your site runs pharmaceutical standards"
      ]
     ],

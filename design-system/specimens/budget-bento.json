@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption (eyebrow), intro, cols ([scope, range, basis] labels for the tile keys), rows [{p, v, m, hl, spot, link, link_label}], note, note_link, note_link_label. spot: a Spot or Icon name for a module tile.",
  "best_for": "BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "systems",
@@ -218,9 +218,9 @@
    "page": "systems",
    "slot": 1,
    "h": "Budget ranges before a quote",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "304945c873",
    "block": {

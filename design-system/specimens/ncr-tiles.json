@@ -4,7 +4,7 @@
  "type": "steps",
  "fields": "h, intro, items [{t, d, hold, link}], drawing (optional): {step (1-based index of the step the drawing shows, e.g. the repair), reject, cut, remade, number (short drawing labels, aria-hidden duplicates of that step's text; [placeholders] allowed)}.",
  "best_for": "NcrTiles shows how a defect is held and closed as a bento of navy and limestone tiles, each led by a huge light slash numeral, the hold step oversized, with one tile drawing the repair step in isometric line art.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "cmp-quality",
@@ -110,9 +110,9 @@
    "page": "cmp-quality",
    "slot": 2,
    "h": "How a defect is held and closed",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "bbb602c7e5",
    "block": {

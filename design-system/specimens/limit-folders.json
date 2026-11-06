@@ -4,15 +4,15 @@
  "type": "table",
  "fields": "cols [who writes the limit, what it sets, what to send, where it applies], rows (cells strings or {t, link}). The tab's short name is the writer up to its first number (ASTM D1193-24), else its first word.",
  "best_for": "LimitFolders shows who writes each limit and what to send them as one open file drawer: a folder per limit-writer standing side by side, its tab at its own cut, what the limit sets on the front leaf, a clipped white slip listing what to send, and a navy index label naming where it applies.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-process",
    "slot": 1,
    "h": "Who writes your limit, and what to send",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "281a059",
    "hash": "5be03ebe8b",
    "block": {

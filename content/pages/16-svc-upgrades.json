@@ -3,11 +3,11 @@
  "section": "Services",
  "nav_label": "Upgrades and retrofits",
  "title": "Purified Water system upgrades and retrofits | Aquemi",
- "meta": "Upgrade a Purified Water, lab or critical water system after a finding, or for capacity or controls: an assessment, then modules with downtime and requalification stated.",
+ "meta": "Upgrade a Purified Water, lab or critical water system after a finding, or for capacity: an assessment, then modules with downtime and requalification stated.",
  "path": "/services/upgrades-retrofits/",
- "eyebrow": "UPGRADES · EU GMP ANNEX 15 · GUI-0029",
+ "eyebrow": "UPGRADES AND RETROFITS",
  "headline": "Upgrade the system you have",
- "lead": "We assess your Purified Water (PW) system, then price options from one module to the whole polypropylene (PP) package. Each option states its downtime and requalification. Systems covered: confirmed when you enquire.",
+ "lead": "We assess your Purified Water (PW) system, then price options from one module to a whole new package. Each option states its downtime and requalification. Systems covered: confirmed when you enquire.",
  "tags": [],
  "primary_cta": "Request a system assessment",
  "primary_cta_link": "contact-proposal",
@@ -25,7 +25,7 @@
    "anchor": "observation",
    "nav": "Findings",
    "h": "After a water observation, failed test or accreditation finding",
-   "intro": "Five FDA warning letters (2024 to 2026) asked for these, within 15 working days. Health Canada’s GUI-0023 rates an unqualified PW system a major observation. Outside GMP, verification is an acceptance test against your specification.",
+   "intro": "After a finding, inspectors and auditors ask for an assessment, a plan with dates and proof the fix works. We prepare the technical parts; you approve them.",
    "cols": [
     "Asked for",
     "Prepared by",
@@ -55,16 +55,6 @@
      "Monitoring with alert and action levels",
      "Aquemi: levels from your data",
      "You"
-    ],
-    [
-     "Lot risk assessment and the written reply",
-     "You",
-     "You"
-    ],
-    [
-     "A qualified consultant, where asked",
-     "Your consultant",
-     "You"
     ]
    ],
    "caption_noun": "requests"
@@ -86,7 +76,7 @@
     [
      "Deionization (DI) or exchange tanks to reverse osmosis (RO) and electrodeionization (EDI)",
      "New skid in place of resin beds or exchange tanks (cosmetics, labs, rinse lines); the loop usually stays",
-     "Under GMP: IQ/OQ reusing factory test results, intensive then reduced sampling. Without GMP: acceptance test to your specification",
+     "Under good manufacturing practice (GMP): IQ/OQ and sampling. Without GMP: an acceptance test to your specification",
      "Agreed with you; DI or exchange tanks run until release",
      {
       "t": "PW generation",
@@ -105,8 +95,8 @@
     ],
     [
      "Distribution loop replacement",
-     "PP loop and pump module; points of use reconnected",
-     "IQ with dead leg register; OQ of flow and of chemical sanitization by a method set per project; every outlet sampled",
+     "Polypropylene loop and pump module; points of use reconnected",
+     "IQ/OQ of the new loop; every outlet sampled",
      "Agreed with you; planned shutdown",
      {
       "t": "Storage and distribution loops",
@@ -115,8 +105,8 @@
     ],
     [
      "Online total organic carbon (TOC) and conductivity",
-     "Analyzer, sample line, historian link",
-     "OQ with USP <643> suitability; lab results in parallel until release",
+     "Analyzer and sample line",
+     "OQ; lab results in parallel until release",
      "Agreed with you",
      {
       "t": "Monitoring and controls",
@@ -124,18 +114,8 @@
      }
     ],
     [
-     "Controls replacement",
-     "New controller (PLC), operator panel (HMI), supervisory control (SCADA), data recording",
-     "GAMP 5 validation; factory software test; short sampling",
-     "Agreed with you; tank full",
-     {
-      "t": "Monitoring and controls",
-      "link": "sys-monitoring"
-     }
-    ],
-    [
      "Capacity increase",
-     "Second RO train, DI/EDI module or pump; PP sub-loops only off ambient, chemically sanitized loops",
+     "A larger RO, DI/EDI module or pump",
      "IQ/OQ of new equipment; loop flow at the new peak",
      "Agreed with you; built while running",
      {
@@ -159,50 +139,11 @@
     "pre",
     "loop",
     "toc",
-    "panel",
     "gen loop",
     "gen"
    ],
    "anchor": "upgrades",
    "intro": "An ageing system has three routes: replace one module, replace generation and keep the loop, or replace the whole package. Our options report prices each by equipment, site work and requalification, and states its downtime."
-  },
-  {
-   "type": "table",
-   "look": "strike-gaps",
-   "as": "failures",
-   "nav": "Controls",
-   "h": "Gaps in older controls",
-   "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out: spares are limited.",
-   "cols": [
-    "Gap",
-    "What it risks",
-    "What the upgrade does"
-   ],
-   "rows": [
-    [
-     "Shared operator login, or none",
-     "No record of who changed a set point or cleared an alarm",
-     "Individual operator accounts with access levels"
-    ],
-    [
-     "A chart recorder as the release record",
-     "Paper charts that fade and are slow to review",
-     "Time-stamped historian, or a defined paper record"
-    ],
-    [
-     "Backups never restored",
-     "A failed controller that cannot be rebuilt",
-     "Restore test at OQ, repeated on a schedule"
-    ],
-    [
-     "Records only in the old system",
-     "Past water records lost at changeover",
-     "Verified migration, or old records kept readable"
-    ]
-   ],
-   "fold": 3,
-   "fold_noun": "gaps",
-   "anchor": "controls-gaps"
   },
   {
    "type": "grid",
@@ -213,7 +154,7 @@
    "items": [
     {
      "t": "Records",
-     "d": "Qualification file, changes, drawings, dead leg register.",
+     "d": "Qualification file, changes and drawings.",
      "spot": "binder"
     },
     {
@@ -228,18 +169,18 @@
     },
     {
      "t": "Storage and distribution",
-     "d": "Materials, dead legs, slope, flow and fittings.",
+     "d": "Materials, flow and fittings.",
      "spot": "storage-tank"
     },
     {
      "t": "Sanitization",
-     "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
+     "d": "Whether your results support the schedule.",
      "spot": "storage-tank",
      "part": "outlet"
     },
     {
      "t": "Controls",
-     "d": "Support status, spares, access and backups.",
+     "d": "Age and spares.",
      "spot": "cpu"
     }
    ],
@@ -288,15 +229,11 @@
    "items": [
     {
      "q": "Will you upgrade another maker’s system?",
-     "a": "For makes and equipment confirmed when you enquire: we assess it, then add or replace our modules. Without drawings, we walk the system down and measure dead legs. Polypropylene (PP) joins other piping by a method named in your proposal. A hot-held loop, or routine 80 °C sanitization at loop pressure, needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)."
-    },
-    {
-     "q": "Will your work void our original maker's warranty?",
-     "a": "It can: some makers void a warranty after third-party work, so check its terms first. Our position goes in the options report, stated case by case. Calibrations are traceable via a provider named in your proposal. You keep every record we write: certificates, installation and operational qualification (IQ and OQ) reports, updated drawings."
+     "a": "For makes and equipment confirmed when you enquire: we assess it, then add or replace modules. Without drawings, we walk the system down first. New piping joins yours by a method named in your proposal."
     },
     {
      "q": "Will an upgrade restart our performance qualification (PQ)?",
-     "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale.",
+     "a": "Not necessarily. A risk assessment sets what is retested after a change, under your change control. Your quality unit decides; we draft the rationale.",
      "link": "contact-service",
      "link_label": "Plan a requalification",
      "intent": "Requalification after a change"
@@ -304,12 +241,6 @@
     {
      "q": "Can we keep producing water during the upgrade?",
      "a": "Yes, for generation, pretreatment and capacity upgrades. Each new module goes in beside the old one, tied in during a short shutdown. If your tank cannot cover it, plan temporary water from temporary units sized with you. Occupied hospitals and lab buildings stay supplied the same way. A loop replacement needs a planned shutdown."
-    },
-    {
-     "q": "Will the new controls become obsolete too?",
-     "a": "Yes, eventually: makers retire every controller. Ours are makers’ catalogue parts, not our own. Our service page states how long parts stay available, and how we name a successor.",
-     "link": "svc-service#faq",
-     "link_label": "Parts availability"
     }
    ],
    "anchor": "faq"
@@ -334,8 +265,7 @@
   "include": [
    "Make, model, year; your finding or goal",
    "Drawings and qualification summary",
-   "A year of water data",
-   "PLC and HMI models, program backup"
+   "A year of water data"
   ],
   "turnaround": "a time confirmed when you enquire",
   "returns": [
@@ -364,6 +294,7 @@
   "Pass 11, offer § 14 training and notice: no new copy here. Training on a changed module (controls replacement especially) follows the svc-cq training FAQ once FD-26 decides training; shutdown dates are the client's plan. project-plan not added to related: an upgrade runs on this page's own steps",
   "Pass 11 review findings 2 and 5: lead restores \"polypropylene (PP)\" (first use before the upgrades table, DR-003 rule 4); warranty FAQ opens with the answer (\"It can\") and spells out IQ and OQ (DR-003 rules 3 and 4)",
   "Pass 12 (SITE-PLAN svc-upgrades; IB §3; RI 06, 07; DR-027, DR-028): heading 'After a water observation, failed test or accreditation finding' (mega-menu wording); intro drops '(Risk 2)' and closes on the non-GMP path ('Outside GMP, verification is an acceptance test against your specification'), matching the steps and the validation row. Upgrades intro gives three routes for an ageing system, the cost basis and that each states its downtime (no figures, RI 07). DI row widened to exchange tanks and prints the uses (cosmetics, labs, rinse lines) as a recognition list (IB §1 G3 IOT-18, G6 IOT-59; no frequency claim) with a GMP and a non-GMP requalification line; new row 'Hospital reprocessing or lab RO replacement': a train (not a bare RO) in place of the failing RO (ST108:2023 and ASTM D1193-24 wording per SITE-PLAN 1.2.6, occupied-building supply), start link ind-hospital-lab. Exchange DI kept as the starting point only, never as interim water after a finding. Steps: requalification step carries the GMP and non-GMP paths (R10). FAQ: occupied buildings in the keep-producing answer; new obsolescence FAQ says controllers are makers' catalogue parts and routes to svc-service#faq ([parts availability period, years] lives there, one home; owner confirms the term covers modules supplied in upgrades, FD-11, FD-30). Anchors data-integrity-gaps, assessment, steps, faq added; observation and upgrades kept",
-  "Pass 13 (owner decision 2026-11-04): the first systems use polypropylene piping with simplified controls, so the controls-gaps table (strike-gaps, was #data-integrity-gaps \"Data integrity gaps in older controls\") no longer maps gaps to 21 CFR Part 11 or EU GMP Annex 11 clauses; its middle column states the practical risk instead. No audit-trail or electronic-records promise on this page."
+  "Pass 13 (owner decision 2026-11-04): the first systems use polypropylene piping with simplified controls, so the controls-gaps table (strike-gaps, was #data-integrity-gaps \"Data integrity gaps in older controls\") no longer maps gaps to 21 CFR Part 11 or EU GMP Annex 11 clauses; its middle column states the practical risk instead. No audit-trail or electronic-records promise on this page.",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): findings table cut to 4 rows and its FDA/GUI-0023 intro rewritten, controls replacement upgrade row retired (decision 7; parts trimmed), controls-gaps section retired, assessment and requalification text cut to plain words (dead legs, historian, USP <643> suitability, WHO TRS removed), FAQ cut to 3 (warranty, controls obsolescence retired), PLC/HMI include line dropped."
  ]
 }

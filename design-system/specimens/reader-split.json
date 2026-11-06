@@ -774,9 +774,9 @@
    "page": "project-plan",
    "slot": 1,
    "h": "Who does what, and what is ready before installation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "3cbdd745dc",
    "block": {
@@ -849,9 +849,9 @@
    "page": "first-system",
    "slot": 0,
    "h": "Is a polypropylene Purified Water package right for you?",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "71c28dedfe",
    "block": {
@@ -898,6 +898,121 @@
       {
        "t": "When polypropylene is the wrong choice",
        "link": "urs-guide#pp-rows"
+      }
+     ],
+     [
+      "You need a few litres a day at one lab bench",
+      "You need a skid sized to your demand for production, rinsing or a lab building",
+      {
+       "t": "Labs and lab buildings",
+       "link": "ind-hospital-lab#labs"
+      }
+     ]
+    ]
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 1,
+   "h": "Who does what, and what is ready before installation",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "bf45da2f54",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "anchor": "who",
+    "nav": "Who does what",
+    "h": "Who does what, and what is ready before installation",
+    "intro": "Your proposal marks every task and hand-off: by us, supplied only, or by you. Installation follows the scope set out in your proposal.",
+    "cols": [
+     "Who, or which hand-off",
+     "Their part",
+     "Ready before installation"
+    ],
+    "rows": [
+     [
+      "You: project manager, site head or safety lead",
+      "Own the schedule, the order and site access. Name one contact who approves drawings and changes.",
+      {
+       "t": "Work permits: chemicals, drain and isolation points for your safety team",
+       "link": "cmp-documentation#safety"
+      }
+     ],
+     [
+      "Your quality unit, under GMP",
+      "Approves the URS, each protocol before it runs and each report after. Decides first use from PQ data.",
+      "Validation master plan; SAT, IQ and OQ protocols approved"
+     ],
+     [
+      "Your engineer and trades",
+      "Your engineer writes or reviews the URS and may witness FAT. Your mechanical, electrical and plumbing trades review our drawings.",
+      "Drawing comments closed in writing before fabrication [confirm]"
+     ],
+     [
+      "Your contractor",
+      "Builds the room and brings utilities to the battery limits.",
+      {
+       "t": "Power, feed water and drain at the battery limits, set per project",
+       "link": "systems#site"
+      }
+     ],
+     [
+      "Aquemi",
+      "Designs, builds and tests the package. Drafts each protocol, executes it through engineers named in your proposal and writes the report.",
+      "Your site readiness checklist, sent before delivery [confirm]"
+     ]
+    ],
+    "look": "reader-split"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 0,
+   "h": "Is a packaged Purified Water system right for you?",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "98ff60ac06",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "reader-split",
+    "nav": "Is it for you",
+    "anchor": "fit",
+    "h": "Is a packaged Purified Water system right for you?",
+    "intro": "One wrong-choice line that describes you is enough to rule this package out.",
+    "cols": [
+     "Wrong choice if",
+     "Fits if",
+     "Read"
+    ],
+    "rows": [
+     [
+      "Your products are injected, or need Water for Injection (WFI)",
+      "Your products are non-sterile: tablets, liquids, creams, cosmetics, or devices rinsed with Purified Water",
+      {
+       "t": "Grade by dosage form",
+       "link": "ind-pharma#grades"
+      }
+     ],
+     [
+      "Every product needs only potable water",
+      "Your specification, a monograph, a drug rule or your recipe asks for Purified Water",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ],
+     [
+      "Your company standard names stainless steel for water piping",
+      "Your specification allows a polypropylene loop, or has no material rule yet",
+      {
+       "t": "The package and its materials",
+       "link": "systems"
       }
      ],
      [

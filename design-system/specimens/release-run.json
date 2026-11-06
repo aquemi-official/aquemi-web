@@ -4,7 +4,7 @@
  "type": "steps",
  "fields": "as steps: h, intro, items [{t, d, link}].",
  "best_for": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-cdmo",
@@ -166,9 +166,9 @@
    "page": "first-system",
    "slot": 5,
    "h": "From first call to water you can use",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "7a98e8d97e",
    "block": {
@@ -245,9 +245,9 @@
    "page": "buying",
    "slot": 6,
    "h": "Placing an order",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
    "commit": "503a507",
    "hash": "6c083ad5de",
    "block": {
