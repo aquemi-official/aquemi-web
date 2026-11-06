@@ -5,10 +5,10 @@
      (fonts, icons, illustrations, brand, vendor) are served from the cache once fetched: a new version is a new URL.
    - CACHE is a hash of all of those, stamped by the build, so any change starts a fresh cache and the old one is deleted.
    - Nothing else is touched: other files use the network and the browser's own cache, and versions/ keeps its own worker.
-   - The production site serves staging/ and dev/ copies under its own scope (.github/workflows/pages.yml). Each copy has
+   - The production site serves staging/, dev/, live/ (and, once production is live, studio/) copies under its own scope (.github/workflows/pages.yml). Each copy has
      its own worker: this one leaves those folders alone, and each worker's cache is named after its scope (NAME), so a
      new deploy of one copy only deletes that copy's old cache. */
-const CACHE = 'aquemi-a7d3ddec86';
+const CACHE = 'aquemi-4bf448910e';
 const SCOPE = new URL(self.registration.scope).pathname;
 const NAME = CACHE + '@' + SCOPE;
 const STATIC = /^(assets\/(fonts|icons|illustrations|vendor)|brand)\//;
@@ -27,7 +27,7 @@ self.addEventListener('fetch', function (e) {
   var url = new URL(req.url);
   if (url.origin !== location.origin) return;
   var path = url.pathname.slice(SCOPE.length);
-  if (/^(versions|staging|dev)\//.test(path)) return;
+  if (/^(versions|staging|dev|live|studio)\//.test(path)) return;
 
   if (req.mode === 'navigate') {
     e.respondWith(fetch(req).then(function (res) {

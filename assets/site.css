@@ -1,20 +1,11 @@
-/* Draft-site chrome only: page base, the draft bar and the open-facts list.
-   Brand styles are not here: they come from design-system/tokens.css and design-system/components/bundle.css. */
+/* Site page base only: what the live site needs around the design system. Brand styles are not here: they come from
+   design-system/tokens.css and design-system/components/bundle.css. The draft tools (studio bar, open facts) are
+   studio chrome, in studio/studio.css, and never ship to the live site. */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; }
 body { background: var(--surface); color: var(--ink); font-family: var(--font-sans); }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-
-.draftbar { display: flex; gap: var(--space-4); align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 6px var(--space-4); background: var(--surface-sunken); border-bottom: 1px solid var(--line); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
-.draftbar a { color: var(--flow); }
-.draftbar__tools { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
-.draftbar label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
-.draftbar select { font: inherit; color: var(--ink); background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 2px 6px; max-width: 260px; }
-
-.todo { max-width: var(--content-max); margin: 0 auto; padding: var(--space-6) var(--space-8) var(--space-12); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
-.todo h2 { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2); }
-.todo ul { margin: 0; padding-left: 18px; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
