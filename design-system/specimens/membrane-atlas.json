@@ -150,9 +150,9 @@
    "page": "sys-pretreatment",
    "slot": 2,
    "h": "Canadian feed water and what it does",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "0f3c28438c",
    "block": {
@@ -216,6 +216,131 @@
     ],
     "anchor": "feed-water",
     "intro": "Feeding a hydrogen electrolyser or boiler make-up? The same train protects your RO and EDI from every cause below."
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 2,
+   "h": "Canadian feed water and what it does",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "505fba51bb",
+   "block": {
+    "type": "table",
+    "h": "Canadian feed water and what it does",
+    "cols": [
+     "Feed condition",
+     "Effect on your RO",
+     "What we design for"
+    ],
+    "rows": [
+     [
+      "Chloramine, used by many large utilities",
+      "Oxidizes membranes; its ammonia loads the electrodeionization (EDI) stage",
+      "Catalytic carbon, two beds or bisulfite; total chlorine alarm"
+     ],
+     [
+      "Winter near 2 °C, summer over 20 °C",
+      "Cold cuts RO output and silica solubility; warmth speeds growth",
+      "Membranes sized at your coldest month; RO sanitization set for summer"
+     ],
+     [
+      "Spring runoff and fall turnover",
+      "Turbidity and organics raise SDI and foul membranes",
+      "Media filter sized for the worst month; SDI testing confirmed in your proposal"
+     ],
+     [
+      "Hardness and alkalinity, highest in groundwater",
+      "Carbonate scales the last elements; CO₂ loads the EDI",
+      "Softeners sized on measured hardness; CO₂ handled on the Purified Water skid"
+     ],
+     [
+      "Silica",
+      "Passes softeners, scales the concentrate and limits recovery",
+      "Recovery limited at your coldest feed; antiscalant if needed"
+     ],
+     [
+      "Iron and manganese, mostly well water",
+      "Foul membranes and coat resin",
+      "Oxidation and catalytic media ahead of the softener"
+     ],
+     [
+      "No disinfectant after carbon",
+      "Biofilm in carbon and softeners sheds into the RO",
+      "Carbon replaced at an interval set for your system, or bisulfite instead; samples around each bed"
+     ]
+    ],
+    "nav": "Feed water",
+    "as": "failures",
+    "fold": 3,
+    "fold_noun": "feed conditions",
+    "look": "membrane-atlas",
+    "marks": [
+     "oxidize",
+     "cold",
+     "foul",
+     "scale",
+     "silica",
+     "coat",
+     "biofilm"
+    ],
+    "anchor": "feed-water",
+    "intro": "Feeding a hydrogen electrolyser or boiler make-up? The same train protects your RO and EDI from every cause below."
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 1,
+   "h": "Canadian feed water and what it does",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "49f0dfceeb",
+   "block": {
+    "type": "table",
+    "h": "Canadian feed water and what it does",
+    "cols": [
+     "Feed condition",
+     "Effect on your RO",
+     "What we design for"
+    ],
+    "rows": [
+     [
+      "Chloramine, used by many large utilities",
+      "Oxidizes membranes",
+      "Catalytic carbon, two beds or bisulfite; total chlorine alarm"
+     ],
+     [
+      "Winter near 2 °C, summer over 20 °C",
+      "Cold cuts RO output and silica solubility; warmth speeds growth",
+      "Membranes sized at your coldest month"
+     ],
+     [
+      "Spring runoff and fall turnover",
+      "Turbidity and organics raise SDI and foul membranes",
+      "Media filter sized for the worst month; SDI testing confirmed in your proposal"
+     ],
+     [
+      "Hardness and alkalinity, highest in groundwater",
+      "Carbonate scales the last elements",
+      "Softeners sized on measured hardness"
+     ]
+    ],
+    "nav": "Feed water",
+    "as": "failures",
+    "fold": 3,
+    "fold_noun": "feed conditions",
+    "look": "membrane-atlas",
+    "marks": [
+     "oxidize",
+     "cold",
+     "foul",
+     "scale"
+    ],
+    "anchor": "feed-water"
    }
   }
  ]

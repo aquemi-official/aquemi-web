@@ -137,9 +137,9 @@
    "page": "svc-service",
    "slot": 1,
    "h": "What it costs to run",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bff41e0",
    "hash": "688cb894c9",
    "block": {
@@ -201,9 +201,9 @@
    "page": "ind-process",
    "slot": 5,
    "h": "From exchange DI to your own RO and EDI",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "6e7c60c7aa",
    "block": {
@@ -267,9 +267,9 @@
    "page": "cmp-documentation",
    "slot": 4,
    "h": "Site safety information for your permit",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "403b2b5f4e",
    "block": {
@@ -314,6 +314,260 @@
       "v": "[pressure-rated items in the PW package]",
       "m": "Registration where required: Canadian registration number (CRN), CSA B51",
       "part": "gen"
+     },
+     {
+      "p": "Insurance and workplace safety cover",
+      "v": "Certificate of insurance and Workplace Safety and Insurance Board (WSIB) clearance, before any site visit",
+      "m": "Status listed with our onboarding documents",
+      "link": "buying#onboarding"
+     },
+     {
+      "p": "Visits to your site",
+      "v": "We follow your permits, inductions and lockout rules",
+      "m": "Your safety team sets them before each visit"
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "items"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 1,
+   "h": "What it costs to run",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "22b31f592b",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Running cost",
+    "anchor": "running-cost",
+    "h": "What it costs to run",
+    "intro": "Intervals depend on your feed water and daily draw; we set the first schedule from your water analysis.",
+    "cols": [
+     "Item",
+     "Interval or amount",
+     "Set by"
+    ],
+    "rows": [
+     {
+      "p": "Service plan, with calibration",
+      "v": "Priced per system",
+      "m": "System, instruments and distance",
+      "part": "panel"
+     },
+     {
+      "p": "Reverse osmosis (RO) membranes; electrodeionization (EDI) module or deionization (DI) resin",
+      "v": "Intervals set for your system",
+      "m": "Feed water and flow"
+     },
+     {
+      "p": "Filters, carbon, softener resin, ultraviolet (UV) lamp",
+      "v": "Intervals set for your system",
+      "m": "Feed water and run hours",
+      "part": "pre"
+     },
+     {
+      "p": "Water to drain",
+      "v": "RO reject at the recovery in your design",
+      "m": "Feed water chemistry",
+      "part": "drain",
+      "link": "sys-pw",
+      "side": "out"
+     },
+     {
+      "p": "Energy",
+      "v": "Estimated in your proposal",
+      "m": "Flow and feed temperature",
+      "part": "pump"
+     },
+     {
+      "p": "Sanitant and softener salt",
+      "v": "A chemical method set per project, at a frequency set by your monitoring",
+      "m": "Your microbial trends; feed hardness",
+      "part": "soft"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "items"
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 5,
+   "h": "From exchange DI to your own RO and EDI",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "f0ec397bce",
+   "block": {
+    "type": "spec",
+    "nav": "From exchange DI",
+    "anchor": "from-ion-exchange",
+    "h": "From exchange DI to your own RO and EDI",
+    "intro": "With exchange deionization (DI), tanks are swapped on a schedule. With your own package, water is made on site. Send your daily use and exchange cost to compare.",
+    "cols": [
+     "Item",
+     "With your own package",
+     "Set by"
+    ],
+    "rows": [
+     {
+      "p": "Exchange tank swaps",
+      "v": "None: RO and EDI make the water on site",
+      "m": "Your daily use against your exchange cost",
+      "link": "systems#faq",
+      "part": "gen"
+     },
+     {
+      "p": "Filters, carbon, softener resin and salt",
+      "v": "Intervals set for your system",
+      "m": "Feed water and run hours",
+      "part": "pre soft"
+     },
+     {
+      "p": "RO membranes and EDI module",
+      "v": "Intervals set for your system",
+      "m": "Feed water and flow",
+      "part": "gen"
+     },
+     {
+      "p": "Water to drain",
+      "v": "RO reject at the recovery in your design",
+      "m": "Feed water chemistry",
+      "part": "drain",
+      "side": "out"
+     },
+     {
+      "p": "Energy",
+      "v": "Estimated in your proposal",
+      "m": "Flow and feed temperature",
+      "part": "pump"
+     },
+     {
+      "p": "Service plan, with calibration",
+      "v": "Priced per system",
+      "m": "System, instruments and distance",
+      "link": "svc-service#running-cost",
+      "part": "panel"
+     }
+    ],
+    "fold": 2,
+    "fold_noun": "items",
+    "look": "cost-skid"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 4,
+   "h": "Site safety information for your permit",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "f06cf9e2ee",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Site safety",
+    "anchor": "safety",
+    "h": "Site safety information for your permit",
+    "intro": "What your safety team needs for a permit or a pre-start review, read off the package itself.",
+    "cols": [
+     "Item",
+     "What you receive",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Chemicals brought on site",
+      "v": "Listed per visit",
+      "m": "Each with its safety data sheet (SDS)",
+      "part": "soft"
+     },
+     {
+      "p": "Discharge to drain",
+      "v": "Stated per system in your proposal",
+      "m": "Includes reverse osmosis (RO) reject; set by your feed water",
+      "part": "drain"
+     },
+     {
+      "p": "Energies and isolation points",
+      "v": "Listed per system in your manual",
+      "m": "For your lockout procedure",
+      "part": "pump panel"
+     },
+     {
+      "p": "Control panel approval",
+      "v": "Approval route confirmed in your proposal",
+      "m": "Electrical safety of the control panel",
+      "part": "panel"
+     },
+     {
+      "p": "Pressure equipment",
+      "v": "Each pressure-rated item your design includes",
+      "m": "Registration where required: Canadian registration number (CRN), CSA B51",
+      "part": "gen"
+     },
+     {
+      "p": "Insurance and workplace safety cover",
+      "v": "Certificate of insurance and Workplace Safety and Insurance Board (WSIB) clearance, before any site visit",
+      "m": "Status listed with our onboarding documents",
+      "link": "buying#onboarding"
+     },
+     {
+      "p": "Visits to your site",
+      "v": "We follow your permits, inductions and lockout rules",
+      "m": "Your safety team sets them before each visit"
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "items"
+   }
+  },
+  {
+   "page": "cmp-documentation",
+   "slot": 1,
+   "h": "Site safety information for your permit",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "7bab896cdd",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Site safety",
+    "anchor": "safety",
+    "h": "Site safety information for your permit",
+    "intro": "What your safety team needs for a permit or a pre-start review, read off the package itself.",
+    "cols": [
+     "Item",
+     "What you receive",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Chemicals brought on site",
+      "v": "Listed per visit",
+      "m": "Each with its safety data sheet (SDS)",
+      "part": "soft"
+     },
+     {
+      "p": "Discharge to drain",
+      "v": "Stated per system in your proposal",
+      "m": "Includes reverse osmosis (RO) reject; set by your feed water",
+      "part": "drain"
+     },
+     {
+      "p": "Energies and isolation points",
+      "v": "Listed per system in your manual",
+      "m": "For your lockout procedure",
+      "part": "pump panel"
      },
      {
       "p": "Insurance and workplace safety cover",

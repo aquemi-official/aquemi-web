@@ -106,9 +106,9 @@
    "page": "compliance",
    "slot": 1,
    "h": "Which standard governs each part",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-04",
    "commit": "b8b6da7",
    "hash": "ae51b18704",
    "block": {
@@ -193,6 +193,263 @@
        "ASTM E2500",
        "ICH Q9(R1)",
        "ISO 13485:2016"
+      ],
+      "spot": "binder"
+     }
+    ]
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 1,
+   "h": "Which standard governs each part",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "61143945c2",
+   "block": {
+    "type": "standards-map",
+    "look": "standards-orbit",
+    "nav": "Map",
+    "anchor": "map",
+    "h": "Which standard governs each part",
+    "intro": "Each standard links to its proof below.",
+    "zones": [
+     {
+      "t": "Generation",
+      "icon": "ro-membrane",
+      "to": "pharmacopoeia",
+      "codes": [
+       "USP <645>",
+       "USP <643>",
+       "Ph. Eur. 0008"
+      ],
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "icon": "loop",
+      "to": "gmp",
+      "codes": [
+       "WHO TRS 1033",
+       {
+        "t": "USP <1231>",
+        "to": "pharmacopoeia"
+       },
+       {
+        "t": "[PP piping standard]",
+        "to": "engineering"
+       }
+      ],
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Controls and data",
+      "icon": "gauge",
+      "to": "gmp",
+      "codes": [
+       "GAMP 5",
+       {
+        "t": "[panel standard]",
+        "to": "engineering"
+       }
+      ],
+      "spot": "gauge"
+     },
+     {
+      "t": "Materials and fabrication",
+      "icon": "weld",
+      "to": "engineering",
+      "codes": [
+       {
+        "t": "GUI-0001 C.02.004, C.02.005",
+        "to": "gmp"
+       },
+       {
+        "t": "21 CFR 211.63, 211.65",
+        "to": "gmp"
+       },
+       "[PP material standard]",
+       "[PP joining standard]",
+       "CSA B51"
+      ],
+      "spot": "weld"
+     },
+     {
+      "t": "Qualification",
+      "icon": "binder",
+      "to": "gmp",
+      "codes": [
+       "EU GMP Annex 15",
+       "GUI-0029",
+       "WHO TRS 1033",
+       "ASTM E2500",
+       "ICH Q9(R1)",
+       "ISO 13485:2016"
+      ],
+      "spot": "binder"
+     }
+    ]
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 1,
+   "h": "Which standard governs each part",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "fcc58d9b5a",
+   "block": {
+    "type": "standards-map",
+    "look": "standards-orbit",
+    "nav": "Map",
+    "anchor": "map",
+    "h": "Which standard governs each part",
+    "intro": "Each standard links to its proof below.",
+    "zones": [
+     {
+      "t": "Generation",
+      "icon": "ro-membrane",
+      "to": "pharmacopoeia",
+      "codes": [
+       "USP <645>",
+       "USP <643>",
+       "Ph. Eur. 0008"
+      ],
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "icon": "loop",
+      "to": "gmp",
+      "codes": [
+       "WHO TRS 1033",
+       {
+        "t": "USP <1231>",
+        "to": "pharmacopoeia"
+       },
+       {
+        "t": "Piping standard named in your proposal",
+        "to": "engineering"
+       }
+      ],
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Controls and data",
+      "icon": "gauge",
+      "to": "gmp",
+      "codes": [
+       "GAMP 5",
+       {
+        "t": "Panel standard named in your proposal",
+        "to": "engineering"
+       }
+      ],
+      "spot": "gauge"
+     },
+     {
+      "t": "Materials and fabrication",
+      "icon": "weld",
+      "to": "engineering",
+      "codes": [
+       {
+        "t": "GUI-0001 C.02.004, C.02.005",
+        "to": "gmp"
+       },
+       {
+        "t": "21 CFR 211.63, 211.65",
+        "to": "gmp"
+       },
+       "Material standard named in your proposal",
+       "Joining standard named in your proposal",
+       "CSA B51"
+      ],
+      "spot": "weld"
+     },
+     {
+      "t": "Qualification",
+      "icon": "binder",
+      "to": "gmp",
+      "codes": [
+       "EU GMP Annex 15",
+       "GUI-0029",
+       "WHO TRS 1033",
+       "ASTM E2500",
+       "ICH Q9(R1)",
+       "ISO 13485:2016"
+      ],
+      "spot": "binder"
+     }
+    ]
+   }
+  },
+  {
+   "page": "compliance",
+   "slot": 1,
+   "h": "Which standard governs each part",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "0bf91c8c35",
+   "block": {
+    "type": "standards-map",
+    "look": "standards-orbit",
+    "nav": "Map",
+    "anchor": "map",
+    "h": "Which standard governs each part",
+    "intro": "The standards that govern each part of the package.",
+    "zones": [
+     {
+      "t": "Generation",
+      "icon": "ro-membrane",
+      "to": "pharmacopoeia",
+      "codes": [
+       "USP <645>",
+       "USP <643>"
+      ],
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "icon": "loop",
+      "to": "pharmacopoeia",
+      "codes": [
+       "USP <1231>"
+      ],
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Controls and data",
+      "icon": "gauge",
+      "to": "pharmacopoeia",
+      "codes": [
+       "GAMP 5"
+      ],
+      "spot": "gauge"
+     },
+     {
+      "t": "Materials and fabrication",
+      "icon": "weld",
+      "to": "pharmacopoeia",
+      "codes": [
+       "21 CFR 211.65",
+       "GUI-0001",
+       "CSA B51"
+      ],
+      "spot": "weld"
+     },
+     {
+      "t": "Qualification",
+      "icon": "binder",
+      "to": "pharmacopoeia",
+      "codes": [
+       "GUI-0029",
+       "ASTM E2500"
       ],
       "spot": "binder"
      }

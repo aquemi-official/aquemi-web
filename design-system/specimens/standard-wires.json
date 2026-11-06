@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "h, intro, cols (three labels), rows [[standard, asks, {t, link, art}]], fold, fold_noun, nav (plate title). art: analyzer | storage | panel | pretreatment | generation | outlet (what the cell draws; default by the link's page; outlet is a lab point of use on its drop from the loop).",
  "best_for": "StandardWires sets a table of standards on a navy blueprint and wires each answer to the equipment that answers it, so a reader who starts from a standard sees which part of the system meets it.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "systems",
@@ -161,9 +161,9 @@
    "page": "systems",
    "slot": 3,
    "h": "Start from the standard you cite",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "1f4eab0",
    "hash": "4a21adcc34",
    "block": {
@@ -194,6 +194,87 @@
        "t": "Monitoring and controls",
        "link": "sys-monitoring",
        "art": "panel"
+      }
+     ],
+     [
+      "ANSI/AAMI ST108:2023; CSA Z314:23",
+      "Critical water for reprocessing medical devices: bacteria and endotoxin limits, conductivity checked daily",
+      {
+       "t": "Hospitals and laboratories",
+       "link": "ind-hospital-lab#grades",
+       "art": "storage"
+      }
+     ],
+     [
+      "ASTM D1193-24; CLSI GP40, 5th edition",
+      "Laboratory reagent water: four ASTM types plus microbial grades, or clinical laboratory reagent water (CLRW)",
+      {
+       "t": "Hospitals and laboratories",
+       "link": "ind-hospital-lab#grades",
+       "art": "outlet"
+      }
+     ],
+     [
+      "Your process or equipment maker's specification",
+      "The limits your recipe, process or equipment maker sets for the water",
+      {
+       "t": "Food, beverage and industrial",
+       "link": "ind-process#limits",
+       "art": "generation"
+      }
+     ],
+     [
+      "WHO TRS 1033",
+      "Turbulent flow; storage that limits microbial growth; online conductivity and TOC",
+      {
+       "t": "Storage and distribution loops",
+       "link": "sys-storage",
+       "art": "storage"
+      }
+     ],
+     [
+      "USP <1231>",
+      "Guidance: drinking water feed; pretreatment that protects the RO without adding bioburden",
+      {
+       "t": "Pretreatment",
+       "link": "sys-pretreatment",
+       "art": "pretreatment"
+      }
+     ]
+    ],
+    "as": "evidence",
+    "fold": 5,
+    "look": "standard-wires"
+   }
+  },
+  {
+   "page": "systems",
+   "slot": 3,
+   "h": "Start from the standard you cite",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "dc0147a914",
+   "block": {
+    "type": "table",
+    "h": "Start from the standard you cite",
+    "anchor": "standards",
+    "nav": "By standard",
+    "cols": [
+     "Standard",
+     "What it asks",
+     "Where we answer it"
+    ],
+    "intro": "Purified Water is one grade. Critical water and laboratory reagent water are others, with their own limits.",
+    "rows": [
+     [
+      "USP <645>, <643>; Ph. Eur. 0008",
+      "Uncompensated conductivity; total organic carbon (TOC) ≤ 0.50 mg/L (500 ppb)",
+      {
+       "t": "Monitoring and controls",
+       "link": "sys-monitoring",
+       "art": "analyzer"
       }
      ],
      [

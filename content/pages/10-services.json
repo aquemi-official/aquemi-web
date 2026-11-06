@@ -3,11 +3,11 @@
  "section": "Services",
  "nav_label": "Services",
  "title": "Purified Water services, from design to upgrades | Aquemi",
- "meta": "Design, fabrication, FAT and SAT, IQ/OQ/PQ or acceptance testing, service and upgrades. For a modular Purified Water package in polypropylene with PVC pretreatment.",
+ "meta": "Design, fabrication, FAT and SAT, IQ/OQ/PQ or acceptance testing, service and upgrades. For a modular Purified Water package with PVC pretreatment, and process design and automation for other water system builders.",
  "path": "/services/",
- "eyebrow": "SERVICES · EU GMP ANNEX 15 · GUI-0029",
+ "eyebrow": "SERVICES · DESIGN · BUILD · TEST · SERVICE",
  "headline": "Purified Water services, from design to upgrades",
- "lead": "We design, build, test and service your polypropylene Purified Water package, and support its qualification or acceptance. For drug and device makers, hospitals, laboratories, personal care, food and industrial plants.",
+ "lead": "We design, build, test and service your Purified Water package, and support its qualification or acceptance. We also do process design and automation for other water system builders.",
  "primary_cta": "Talk to an engineer",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
@@ -31,22 +31,13 @@
    ],
    "rows": [
     [
-     "New system, user requirement specification (URS) approved or in draft",
+     "New system: user requirement specification (URS) or other specification, approved or in draft",
      {
       "t": "Process design: request a URS gap review",
       "link": "svc-design"
      },
      "Your URS, feed water analysis, peak demand in L/h",
-     "A compliance matrix marking every gap, within [URS review turnaround, working days]"
-    ],
-    [
-     "Not under GMP: a hospital, lab or process specification",
-     {
-      "t": "Process design: request a specification review",
-      "link": "svc-design#faq"
-     },
-     "The standard and its edition, or the equipment maker's specification; feed water analysis",
-     "A compliance matrix against it, within [URS review turnaround, working days]"
+     "A compliance matrix marking every gap"
     ],
     [
      "Design approved",
@@ -55,7 +46,7 @@
       "link": "svc-fabrication"
      },
      "Approved drawings, piping and material specification, province",
-     "Clauses we meet or would change, a draft inspection plan, within [document review turnaround, working days]"
+     "Clauses we meet or would change, a draft inspection plan"
     ],
     [
      "Skid in build, factory and site acceptance tests (FAT, SAT) ahead",
@@ -64,7 +55,7 @@
       "link": "svc-fat-sat"
      },
      "Your work email",
-     "Test cases with acceptance criteria, within [specimen package response time, working days]"
+     "Test cases with acceptance criteria"
     ],
     [
      "Installed or arriving, qualification or acceptance ahead",
@@ -73,7 +64,7 @@
       "link": "svc-cq"
      },
      "URS or specification, validation master plan if any, points-of-use list",
-     "Draft C&Q and sampling plans, within [document review turnaround, working days]"
+     "Draft C&Q and sampling plans"
     ],
     [
      "In service, qualified or accepted",
@@ -82,7 +73,7 @@
       "link": "svc-service"
      },
      "System, age, instruments, standby and ride-through time",
-     "Plan, annual price, first-visit tasks, within [quote response time, working days]"
+     "Plan, annual price, first-visit tasks"
     ],
     [
      "Aging, out of support, or about to change",
@@ -91,16 +82,16 @@
       "link": "svc-upgrades"
      },
      "Drawings, a year of water data, the problem",
-     "Scope and price within [assessment response time, working days], then options with downtime and requalification or a repeat acceptance test"
+     "Scope and price, then options with their downtime"
     ],
     [
-     "Consultant or contractor",
+     "Process design and automation for other water system builders",
      {
-      "t": "Writing your URS: notes for specifiers",
-      "link": "urs-guide#specification"
+      "t": "Process design: tell us about your project",
+      "link": "svc-design"
      },
-     "Your client's URS or specification, and the bid date",
-     "A compliance matrix against it, within [compliance matrix response time, working days]"
+     "What you build, and the process or controls you need designed",
+     "We design processes and controls for companies that build their own systems: [scope confirmed when you enquire]"
     ]
    ],
    "as": "router",
@@ -108,13 +99,12 @@
    "look": "stair-router",
    "labels": [
     "New system",
-    "Not under GMP",
     "Design approved",
     "Skid in build",
     "Installed",
     "In service",
     "Aging",
-    "Specifying for a client"
+    "Other system builders"
    ],
    "kinetic": [
     "Start",
@@ -124,83 +114,25 @@
    "intro": "Every project runs in four stages: design; build and test; install and hand over; operate. Find where your project stands below."
   },
   {
-   "type": "steps",
-   "anchor": "durations",
-   "h": "How long each stage takes, and who signs",
-   "intro": "Weeks count from [lead time start event]. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
-   "items": [
-    {
-     "t": "Design, [design to DQ, weeks]",
-     "hold": "You, or your quality unit under GMP",
-     "link": "project-plan#stages"
-    },
-    {
-     "t": "Fabrication, [approved design to FAT, weeks]",
-     "link": "project-plan#stages"
-    },
-    {
-     "t": "FAT, [FAT duration, days]",
-     "hold": "Both parties",
-     "link": "project-plan#stages"
-    },
-    {
-     "t": "Installation and SAT, [installation and SAT, days]",
-     "hold": "You",
-     "link": "project-plan#stages"
-    },
-    {
-     "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
-     "hold": "Your quality unit, under GMP",
-     "link": "project-plan#stages"
-    },
-    {
-     "t": "Performance qualification (PQ), at least 12 months",
-     "hold": "Your quality unit, under GMP",
-     "link": "project-plan#stages"
-    }
-   ],
-   "nav": "Stages",
-   "ground": "light",
-   "look": "hold-timeline"
-  },
-  {
    "type": "faq",
    "h": "Questions teams ask",
    "nav": "FAQ",
    "items": [
     {
      "q": "Can the builder also qualify the system?",
-     "a": "Yes, under your control. We draft the protocols and reports; [executing staff: own engineers or named partner] execute them. Your quality unit approves each protocol before it runs and each report after. EU good manufacturing practice (GMP) Annex 15, 2.6, asks your site to confirm a supplier's protocols before approval.",
+     "a": "Yes, under your control. We draft the protocols and reports; engineers named in your proposal execute them. Your quality unit approves each protocol before it runs and each report after.",
      "link": "svc-cq#roles",
      "link_label": "See who writes, who reviews"
     },
     {
      "q": "Can we buy one stage only?",
-     "a": "[services sold separately, yes or no]. Each service has its own first step and its own documents."
+     "a": "Ask about any service on its own; what we can offer is confirmed when you enquire. Each service has its own first step and its own documents."
     },
     {
      "q": "Do you work on other makers' systems?",
-     "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment.",
+     "a": "For makes and equipment confirmed when you enquire: service and upgrades, starting with a condition survey or an assessment.",
      "link": "svc-service",
      "link_label": "See service for other makes"
-    },
-    {
-     "q": "How long from order to water in use?",
-     "a": "[order to water in use, weeks] from [lead time start event], plus your review at each hold. Under GMP, WHO TRS 1033 allows use after at least 2 weeks of sampling, with your quality unit's approval. Sampling continues for a year.",
-     "link": "project-plan#stages",
-     "link_label": "See how a project runs"
-    },
-    {
-     "q": "What if we change something after approving the drawings?",
-     "a": "You get one page first: the reason, the price and the effect on the schedule. Work on that item waits for your written approval [confirm].",
-     "link": "project-plan#changes",
-     "link_label": "How changes are handled"
-    },
-    {
-     "q": "What stays with our team after handover?",
-     "a": "Your operators read the system each day and keep its log. Visits, calibrations and parts follow your service plan.",
-     "link": "svc-service#faq",
-     "link_label": "What your team does"
     }
    ],
    "anchor": "faq"
@@ -219,7 +151,7 @@
  ],
  "cta": {
   "h": "Tell us where your project stands",
-  "body": "Talking to an engineer: [fit check cost or free]. Production stopped or water out of specification? Call [service phone number], [service phone hours].",
+  "body": "Talking to an engineer: any cost is quoted in your proposal. Production stopped or water out of specification? {Send a service request|contact-service} and choose severity 1.",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
@@ -229,7 +161,7 @@
    "Feed water analysis, if any",
    "Existing system: builder, age, drawings"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "Confirmed when you enquire",
   "returns": [
    "The stage to start at",
    "Its documents and duration",
@@ -268,6 +200,7 @@
   "Pass 12 review (services finding 3): hero lead deviates from the SITE-PLAN lead text for the §1.2.1 / DR-027 rule 9 reader order and names: 'hospitals, laboratories' (not 'plants'), 'food and industrial plants' (not 'process', matching the ind-process group title); keeps pass 11 'support its qualification' (30 words, 0 codes)",
   "Pass 12 review (services findings 1, 2, 7): non-GMP path carried past design: router rows 5-6 read 'qualification or acceptance' / 'qualified or accepted', row 5 asks for 'URS or specification, validation master plan if any', row 7 returns 'requalification or a repeat acceptance test'; Design hold 'You, or your quality unit under GMP' (non-GMP reader sees who approves the design), IQ/OQ hold marked 'under GMP' like DQ and PQ",
   "Pass 12 review (services finding 4): FAQ 4 'How long from order to water in use?' opens with [order to water in use, weeks] from [lead time start event] (same name and clock as project-plan#stages and home steps, DR-009 home there, DR-011 one name); WHO sentence marked 'Under GMP'. Orchestrator call if the hub must not print the total; then the answer reverts to the pass 11 'Add up the stages' sentence",
-  "Pass 12 review (services finding 5, cross-file): svc-design owner to add to its FAQ 'We are not under GMP. What do you design from?': 'You get a compliance matrix against it, within [URS review turnaround, working days].' Router row 2's send cell adds 'feed water analysis' (parity with row 1)"
+  "Pass 12 review (services finding 5, cross-file): svc-design owner to add to its FAQ 'We are not under GMP. What do you design from?': 'You get a compliance matrix against it, within [URS review turnaround, working days].' Router row 2's send cell adds 'feed water analysis' (parity with row 1)",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired stage durations (hold-timeline); router 8 to 7 rows (non-GMP row folded into row 1, consultant row out, new row 'Process design and automation for other water system builders' per decision 1); repeated 'in a time confirmed when you enquire' removed; FAQ 6 to 3 (change question moved to project-plan); EU GMP out of eyebrow and FAQ."
  ]
 }

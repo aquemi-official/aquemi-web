@@ -151,9 +151,9 @@
    "page": "home",
    "slot": 3,
    "h": "From order to water in use",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "1f4eab0",
    "hash": "79ac33c485",
    "block": {
@@ -195,6 +195,106 @@
     ],
     "look": "project-run",
     "intro": "Order to water in use: [order to water in use, weeks]. Not under good manufacturing practice (GMP)? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification."
+   }
+  },
+  {
+   "page": "home",
+   "slot": 3,
+   "h": "From order to water in use",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "681672ea9c",
+   "block": {
+    "type": "steps",
+    "anchor": "steps",
+    "h": "From order to water in use",
+    "items": [
+     {
+      "t": "Design",
+      "d": "We turn your user requirement specification (URS) into a design you approve before anything is built.",
+      "link": "svc-design"
+     },
+     {
+      "t": "Fabricate",
+      "d": "We build the PP skids and record each joint.",
+      "link": "svc-fabrication"
+     },
+     {
+      "t": "Test",
+      "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves.",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Qualify",
+      "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves.",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Water in use",
+      "d": "After performance qualification (PQ) phase 1, your quality unit releases the water. The project plan shows each stage's length, notice and who holds it.",
+      "link": "project-plan",
+      "art": "sys-storage"
+     },
+     {
+      "t": "Support",
+      "d": "PQ support through 12 months of data, then service and spare parts.",
+      "link": "svc-service"
+     }
+    ],
+    "look": "project-run",
+    "intro": "Order to water in use: set in your project schedule. Not under good manufacturing practice (GMP)? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification."
+   }
+  },
+  {
+   "page": "home",
+   "slot": 3,
+   "h": "From order to water in use",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "a8dada3827",
+   "block": {
+    "type": "steps",
+    "anchor": "steps",
+    "h": "From order to water in use",
+    "items": [
+     {
+      "t": "Design",
+      "d": "We turn your user requirement specification (URS) into a design you approve before anything is built.",
+      "link": "svc-design"
+     },
+     {
+      "t": "Fabricate",
+      "d": "We build the skids in our Ontario shop.",
+      "link": "svc-fabrication"
+     },
+     {
+      "t": "Test",
+      "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves.",
+      "link": "svc-fat-sat"
+     },
+     {
+      "t": "Qualify",
+      "d": "Site tests, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves.",
+      "link": "svc-cq"
+     },
+     {
+      "t": "Water in use",
+      "d": "Your quality unit releases the water after the first phase of performance qualification (PQ).",
+      "link": "project-plan",
+      "art": "sys-storage"
+     },
+     {
+      "t": "Support",
+      "d": "Service, calibration and spare parts after handover.",
+      "link": "svc-service"
+     }
+    ],
+    "look": "project-run",
+    "intro": "Not under good manufacturing practice (GMP)? The same stages apply, with an acceptance test in place of qualification."
    }
   }
  ]

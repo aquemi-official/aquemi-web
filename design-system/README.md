@@ -14,7 +14,7 @@ Write the way a senior process engineer explains a system to a peer: plain, exac
 
 - Use **we** for Aquemi and **you** for the client. Never "the customer".
 - Lead with the outcome, then the evidence. "Conductivity holds below 1.1 µS/cm at 25 °C across the loop" beats "Industry-leading water quality".
-- Name the standard every time a claim depends on one: USP <645>, USP <643>, Ph. Eur., GAMP 5, 21 CFR Part 11.
+- Name the standard every time a claim depends on one: USP <645>, USP <643>, Ph. Eur., GAMP 5, WHO TRS 1033.
 - Use short sentences and active verbs. One idea per sentence.
 - Don't hype. Never write *revolutionary*, *world-class*, *cutting-edge*, *best-in-class*, *seamless* or *solutions-driven*.
 - No emoji, no exclamation marks.

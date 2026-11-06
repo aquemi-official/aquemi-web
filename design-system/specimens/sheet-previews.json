@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, items [{t, d, code, key, link, intent, tag, sheet}], key, fold, fold_noun, link, link_label, intent.",
  "best_for": "SheetPreviews sets a short document list as a Swiss row of sheets: each limestone sheet carries its light index numeral and a thumbnail of what kind of document it is, then its code, name and line.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pretreatment",
@@ -95,9 +95,9 @@
    "page": "ind-personal-care",
    "slot": 6,
    "h": "Records for your file",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "f6841a4",
    "hash": "cd26521be3",
    "block": {

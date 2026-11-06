@@ -220,9 +220,9 @@
    "page": "careers",
    "slot": 0,
    "h": "Roles, base and pay",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "42b93e0ae0",
    "block": {
@@ -283,6 +283,286 @@
     ],
     "as": "router",
     "intro": "Each role states its pay range and whether it is open.",
+    "look": "role-loop"
+   }
+  },
+  {
+   "page": "careers",
+   "slot": 0,
+   "h": "Roles, base and pay",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "ab918e7b17",
+   "block": {
+    "type": "table",
+    "nav": "Roles",
+    "anchor": "roles",
+    "h": "Roles, base and pay",
+    "cols": [
+     "Role",
+     "What you do",
+     "Must have",
+     "Base and travel",
+     "Pay and opening"
+    ],
+    "rows": [
+     [
+      "Process engineer",
+      "Size systems from pretreatment to the loop and draw piping and instrumentation diagrams (P&IDs). Design to USP <645> and <643> limits, with USP <1231> guidance",
+      "Chemical or mechanical engineering degree; P.Eng. or ing., or eligible, in [provinces of licence]; [minimum years]",
+      "[head office, city and province] · [hybrid days per week] · travel [% of working days]",
+      "[process engineer pay range, CAD per year] · [status, posting reference]"
+     ],
+     [
+      "[PP fabrication job title]",
+      "Build PP skids and piping by [PP joining method], with [PP joint records kept]",
+      "Qualified to [welder qualification standard for thermoplastics], or pass a test joint at interview",
+      "[shop location, city and province] · travel [% of working days]",
+      "[PP fabrication role pay range, CAD per hour] · [status, posting reference]"
+     ],
+     [
+      "Validation specialist",
+      "Run factory and site acceptance tests (FAT, SAT); execute installation and operational qualification (IQ/OQ). Record and investigate deviations for the client's approval; assemble turnover packages",
+      "Science or engineering degree or diploma; [minimum years] executing protocols under good manufacturing practice (GMP)",
+      "[validation base, city and province] · travel [% of working days]",
+      "[validation specialist pay range, CAD per year] · [status, posting reference]"
+     ],
+     [
+      "Controls and automation engineer",
+      "Program PLCs (programmable logic controllers) and operator panels; set up alarms, user access levels and data recording; test following GAMP 5",
+      "Engineering degree or technologist diploma; [PLC and SCADA platforms supported]",
+      "[head office, city and province] · travel [% of working days]",
+      "[controls engineer pay range, CAD per year] · [status, posting reference]"
+     ],
+     [
+      "Field service technician",
+      "Commission and maintain systems, calibrate conductivity and total organic carbon (TOC) instruments, run sanitizations on site. Sign a report after every visit",
+      "Instrumentation or millwright trade or diploma; driver's licence",
+      "[service bases, cities] · travel [% of working days] · on call [on-call rota]",
+      "[field service technician pay range, CAD per hour] · [status, posting reference]"
+     ],
+     [
+      "Quality specialist",
+      "Document control, nonconformances and corrective and preventive action (CAPA); review fabrication records; host audits",
+      "Degree or diploma; [minimum years] in manufacturing quality",
+      "[shop location, city and province] · travel [% of working days]",
+      "[quality specialist pay range, CAD per year] · [status, posting reference]"
+     ]
+    ],
+    "as": "router",
+    "intro": "Each role states its pay range and whether it is open.",
+    "look": "role-loop"
+   }
+  },
+  {
+   "page": "careers",
+   "slot": 0,
+   "h": "Roles, base and pay",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "ab9d05eda3",
+   "block": {
+    "type": "table",
+    "nav": "Roles",
+    "anchor": "roles",
+    "h": "Roles, base and pay",
+    "cols": [
+     "Role",
+     "What you do",
+     "Must have",
+     "Base and travel",
+     "Pay and opening"
+    ],
+    "rows": [
+     [
+      "Process engineer",
+      "Size systems from pretreatment to the loop and draw piping and instrumentation diagrams (P&IDs). Design to USP <645> and <643> limits, with USP <1231> guidance",
+      "Chemical or mechanical engineering degree; P.Eng. or ing., or eligible, in the province of installation; relevant experience",
+      "Ontario, Canada · working pattern and travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Polypropylene fabricator",
+      "Build PP skids and piping to our joining procedure, and keep joint records",
+      "A thermoplastic welding qualification, or pass a test joint at interview",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Validation specialist",
+      "Run factory and site acceptance tests (FAT, SAT); execute installation and operational qualification (IQ/OQ). Record and investigate deviations for the client's approval; assemble turnover packages",
+      "Science or engineering degree or diploma; relevant experience executing protocols under good manufacturing practice (GMP)",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Controls and automation engineer",
+      "Program PLCs (programmable logic controllers) and operator panels; set up alarms, user access levels and data recording; test following GAMP 5",
+      "Engineering degree or technologist diploma; PLC and SCADA experience",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Field service technician",
+      "Commission and maintain systems, calibrate conductivity and total organic carbon (TOC) instruments, run sanitizations on site. Sign a report after every visit",
+      "Instrumentation or millwright trade or diploma; driver's licence",
+      "Ontario, Canada · travel and on-call rota discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Quality specialist",
+      "Document control, nonconformances and corrective and preventive action (CAPA); review fabrication records; host audits",
+      "Degree or diploma; relevant experience in manufacturing quality",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ]
+    ],
+    "as": "router",
+    "intro": "Pay is discussed at interview; ask whether a role is open.",
+    "look": "role-loop"
+   }
+  },
+  {
+   "page": "careers",
+   "slot": 0,
+   "h": "Roles, base and pay",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "36d5b202fb",
+   "block": {
+    "type": "table",
+    "nav": "Roles",
+    "anchor": "roles",
+    "h": "Roles, base and pay",
+    "cols": [
+     "Role",
+     "What you do",
+     "Must have",
+     "Base and travel",
+     "Pay and opening"
+    ],
+    "rows": [
+     [
+      "Process engineer",
+      "Size systems from pretreatment to the loop and draw piping and instrumentation diagrams (P&IDs). Design to USP <645> and <643> limits, with USP <1231> guidance",
+      "Chemical or mechanical engineering degree; P.Eng. or ing., or eligible, in the province of installation; relevant experience",
+      "Ontario, Canada · working pattern and travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Polypropylene fabricator",
+      "Build PP skids and piping to our joining procedure, and keep joint records",
+      "A thermoplastic welding qualification, or pass a test joint at interview",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Validation specialist",
+      "Run factory and site acceptance tests (FAT, SAT); execute installation and operational qualification (IQ/OQ). Record and investigate deviations for the client's approval; assemble turnover packages",
+      "Science or engineering degree or diploma; relevant experience executing protocols under good manufacturing practice (GMP)",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Controls and automation engineer",
+      "Program PLCs (programmable logic controllers) and operator panels; set up alarms, user access levels and data recording; test following GAMP 5",
+      "Engineering degree or technologist diploma; PLC and supervisory control (SCADA) experience",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Field service technician",
+      "Commission and maintain systems, calibrate conductivity and total organic carbon (TOC) instruments, run sanitizations on site. Sign a report after every visit",
+      "Instrumentation or millwright trade or diploma; driver's licence",
+      "Ontario, Canada · travel and on-call rota discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Quality specialist",
+      "Document control, nonconformances and corrective and preventive action (CAPA); review fabrication records; host audits",
+      "Degree or diploma; relevant experience in manufacturing quality",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ]
+    ],
+    "as": "router",
+    "intro": "Pay is discussed at interview; ask whether a role is open.",
+    "look": "role-loop"
+   }
+  },
+  {
+   "page": "careers",
+   "slot": 0,
+   "h": "Roles, base and pay",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "226ece3f16",
+   "block": {
+    "type": "table",
+    "nav": "Roles",
+    "anchor": "roles",
+    "h": "Roles, base and pay",
+    "cols": [
+     "Role",
+     "What you do",
+     "Must have",
+     "Base and travel",
+     "Pay and opening"
+    ],
+    "rows": [
+     [
+      "Process engineer",
+      "Size systems from pretreatment to the loop and draw piping and instrumentation diagrams (P&IDs). Design to USP Purified Water limits",
+      "Chemical or mechanical engineering degree; P.Eng. or ing., or eligible, in the province of installation; relevant experience",
+      "Ontario, Canada · working pattern and travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Polypropylene fabricator",
+      "Build PP skids and piping to our joining procedure, and keep joint records",
+      "A thermoplastic welding qualification, or pass a test joint at interview",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Validation specialist",
+      "Run factory and site acceptance tests (FAT, SAT); execute installation and operational qualification (IQ/OQ). Record and investigate deviations for the client's approval; assemble turnover packages",
+      "Science or engineering degree or diploma; relevant experience executing protocols under good manufacturing practice (GMP)",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Controls and automation engineer",
+      "Program PLCs (programmable logic controllers) and operator panels; set up alarms, user access levels and data recording; test following GAMP 5",
+      "Engineering degree or technologist diploma; PLC and operator panel experience",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Field service technician",
+      "Commission and maintain systems, calibrate conductivity and total organic carbon (TOC) instruments, run sanitizations on site. Sign a report after every visit",
+      "Instrumentation or millwright trade or diploma; driver's licence",
+      "Ontario, Canada · travel and on-call rota discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ],
+     [
+      "Quality specialist",
+      "Document control, nonconformances and corrective and preventive action (CAPA); review fabrication records; host audits",
+      "Degree or diploma; relevant experience in manufacturing quality",
+      "Ontario, Canada · travel discussed at interview",
+      "Pay discussed at interview · Status on request"
+     ]
+    ],
+    "as": "router",
+    "intro": "Pay is discussed at interview; ask whether a role is open. The posting and written offer govern.",
     "look": "role-loop"
    }
   }

@@ -228,9 +228,9 @@
    "page": "sys-storage",
    "slot": 0,
    "h": "Microbial control, rule by rule",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "a7178a05c8",
    "block": {
@@ -370,6 +370,146 @@
      }
     ],
     "fold_noun": "conditions"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 0,
+   "h": "Microbial control, rule by rule",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "abce69aa20",
+   "block": {
+    "type": "spec",
+    "h": "Microbial control, rule by rule",
+    "intro": "Three controls hold counts down: moving water, a chemical method set per project on a schedule, and sample points that show the result. Sanitization lowers counts; it does not sterilize. Your trend shows whether the schedule holds.",
+    "caption": "PW LOOP · WHO TRS 1033",
+    "cols": [
+     "Rule",
+     "Design value",
+     "Basis"
+    ],
+    "nav": "Design rules",
+    "anchor": "rules",
+    "rows": [
+     {
+      "p": "Flow regime",
+      "v": "Turbulent in every section at peak demand",
+      "m": "WHO TRS 1033, 8.6; return flow alarmed, recorded at SAT",
+      "hl": true,
+      "rule": "The velocity set in your design basis",
+      "fig": "turbulent"
+     },
+     {
+      "p": "Loop sanitization",
+      "v": "A chemical method set per project",
+      "m": "WHO TRS 1033, 8.4; inside the PP maker's pressure–temperature curve; verified at the coldest point",
+      "rule": "Up to the PP maker's published rating"
+     },
+     {
+      "p": "Sample valves",
+      "v": "Sample valve design named in your proposal",
+      "m": "Drawn as production draws, so a result reflects the water, not the valve"
+     },
+     {
+      "p": "Dead legs",
+      "v": "Every branch, instrument tee and sample valve kept short",
+      "m": "WHO TRS 1033, 8.6; measured and listed in the dead leg register",
+      "rule": "The limit set in your design basis",
+      "fig": "deadleg"
+     },
+     {
+      "p": "Slope and drainage",
+      "v": "Continuous fall to low-point drains",
+      "m": "WHO TRS 1033, 7.2.1; fall measured on each run",
+      "rule": "The slope set in your design basis",
+      "fig": "slope"
+     },
+     {
+      "p": "Point-of-use valves",
+      "v": "Valve type and joining method named in your proposal",
+      "m": "WHO TRS 1033, 8.6"
+     },
+     {
+      "p": "Tank vent",
+      "v": "Hydrophobic 0.2 µm filter",
+      "m": "WHO TRS 1033, 9.2",
+      "fig": "vent"
+     },
+     {
+      "p": "Online monitoring",
+      "v": "Conductivity, temperature and flow on the return; total organic carbon (TOC) on request",
+      "m": "USP <645>; USP <643>",
+      "fig": "monitor"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "rules",
+    "as": "rules",
+    "look": "rule-figures"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 0,
+   "h": "Microbial control, rule by rule",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "6c448d18f2",
+   "block": {
+    "type": "spec",
+    "h": "Microbial control, rule by rule",
+    "intro": "Three controls hold counts down: moving water, scheduled chemical sanitization and sample points that show the result.",
+    "caption": "PW LOOP",
+    "cols": [
+     "Rule",
+     "Design value",
+     "Basis"
+    ],
+    "nav": "Design rules",
+    "anchor": "sanitization",
+    "rows": [
+     {
+      "p": "Flow regime",
+      "v": "Turbulent in every section at peak demand",
+      "m": "Return flow alarmed, recorded at SAT",
+      "hl": true,
+      "rule": "The velocity set in your design basis",
+      "fig": "turbulent"
+     },
+     {
+      "p": "Loop sanitization",
+      "v": "A chemical method set per project",
+      "m": "Residual tested at every outlet before use",
+      "fig": "none"
+     },
+     {
+      "p": "Sample valves",
+      "v": "Sample valve design named in your proposal",
+      "m": "Drawn as production draws, so a result reflects the water, not the valve"
+     },
+     {
+      "p": "Slope and drainage",
+      "v": "Continuous fall to low-point drains",
+      "m": "Fall measured on each run",
+      "rule": "The slope set in your design basis",
+      "fig": "slope"
+     },
+     {
+      "p": "Online monitoring",
+      "v": "Conductivity, temperature and flow on the return; total organic carbon (TOC) on request",
+      "m": "USP <645>; USP <643>",
+      "fig": "monitor"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "rules",
+    "as": "rules",
+    "look": "rule-figures"
    }
   }
  ]

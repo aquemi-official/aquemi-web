@@ -4,15 +4,15 @@
  "type": "table",
  "fields": "cols [row label, use 1 … use n] (2 to 6 uses), rows ([industry string or {t, link}, cell …]; a cell \"—\" or \"-\" or \"\" is a blank), intro.",
  "best_for": "UseMatrix shows an industry-by-use table as one water main: a twin-wall pipe runs along the column heads and tees down into every use column, and each cell is a square on its column's line, navy where a grade is set and open where the cell is a dash.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "industries",
    "slot": 1,
    "h": "Industry by water use",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "f6841a4",
    "hash": "f901e9cfa6",
    "block": {

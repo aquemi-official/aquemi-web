@@ -4,15 +4,15 @@
  "type": "spec",
  "fields": "- a table (urs-guide): h, intro, cols [need, why, instead], rows [[need, why, instead | {t, link, intent}]]; - or a spec (as: callouts, ind-process): rows [{p, v, m, link, link_label, in}] read as need = p, why = v, instead = m; a row with \"in\": true is not a tag: it is listed inside the envelope, under the band, as what fits (need bold, then why and instead each on its own line, then the link on its own line); - scale (look-only, DR-018): {from, to, unit, label}: the band's ends (from-to unit) and the envelope's label (\"Fits\"). Its figures must be stated by a reading field of the same block.",
  "best_for": "FitEnvelope draws where the package fits and what it does not take as a boundary: our polypropylene package stands inside a dashed \"fits\" envelope with its rated temperature range as a steel-blue band at the foot, and every exclusion hangs outside the envelope as a numbered tag tied to its edge.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "urs-guide",
    "slot": 0,
    "h": "When polypropylene is the wrong choice",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "7f6820b",
    "hash": "2392e35df3",
    "block": {
@@ -78,9 +78,9 @@
    "page": "ind-process",
    "slot": 6,
    "h": "Where it fits, and what we do not supply",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "7f6820b",
    "hash": "5354fb0137",
    "block": {
@@ -123,6 +123,163 @@
       "p": "Flow",
       "v": "[minimum–maximum capacity, L/h] per skid",
       "m": "At your coldest feed water; parallel trains above it",
+      "in": true
+     },
+     {
+      "p": "Plant-scale main systems",
+      "v": "Not supplied",
+      "m": "Large hygienic dairy and beverage plants; battery gigafactories"
+     },
+     {
+      "p": "Semiconductor fab ultrapure water",
+      "v": "Not supplied",
+      "m": "ASTM D5127 duties"
+     },
+     {
+      "p": "Bottled water lines",
+      "v": "Not supplied",
+      "m": "Their loop sanitization regime",
+      "link": "sys-storage#sanitization",
+      "link_label": "Sanitization methods"
+     },
+     {
+      "p": "No written limit",
+      "v": "We help you write one",
+      "m": "From where the water goes and what fails when it is wrong",
+      "link": "ind-process#faq",
+      "link_label": "How we draft your limit",
+      "in": true
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "rules",
+    "ground": "light",
+    "look": "fit-envelope",
+    "scale": {
+     "from": 0,
+     "to": 80,
+     "unit": "°C",
+     "label": "Fits"
+    }
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 0,
+   "h": "When polypropylene is the wrong choice",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "f721e20cf7",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "fit-envelope",
+    "anchor": "pp-rows",
+    "nav": "Wrong choice",
+    "h": "When polypropylene is the wrong choice",
+    "intro": "Our package is polypropylene (PP) with polyvinyl chloride (PVC) pretreatment. If your URS needs any row below, our package does not fit as written. We will tell you early.",
+    "cols": [
+     "If your URS needs",
+     "Why polypropylene does not fit",
+     "Look instead for"
+    ],
+    "rows": [
+     [
+      "Water for Injection (WFI), pure steam or a sterile-product loop",
+      "Outside this package's scope.",
+      "A WFI or stainless steel system supplier"
+     ],
+     [
+      "A loop held hot, routine 80 °C sanitization at loop pressure, or steam sterilization",
+      "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "A polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)"
+     ],
+     [
+      "A chlorine or hypochlorite sanitization you cannot change",
+      "Polypropylene is not recommended for chlorinated service.",
+      "Another chemical method, if your procedures allow it"
+     ],
+     [
+      "A corporate or client standard that names 316L stainless steel",
+      "A policy, not a technical question. A deviation needs your quality unit's approval.",
+      "A stainless steel system supplier"
+     ],
+     [
+      "An extension of a hot-sanitized stainless system",
+      "The two parts could not share one sanitization regime.",
+      "The existing material"
+     ],
+     [
+      "Very small or occasional demand",
+      "A generation skid and a loop would be oversized, even with each package sized to your demand.",
+      "Service deionization (exchange tanks) or a laboratory polisher"
+     ],
+     [
+      "Equipment outdoors, in an unheated room, or pipe in return-air plenums",
+      "Unpigmented PP is sensitive to sunlight, and PP is combustible. Some components need a heated room.",
+      "A heated indoor plant room, on a route your code accepts"
+     ]
+    ],
+    "scale": {
+     "from": 0,
+     "to": 80,
+     "unit": "°C",
+     "label": "Fits"
+    },
+    "fold": 3
+   }
+  },
+  {
+   "page": "ind-process",
+   "slot": 6,
+   "h": "Where it fits, and what we do not supply",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "b41a1509e4",
+   "block": {
+    "type": "spec",
+    "as": "callouts",
+    "nav": "Fit",
+    "anchor": "fit",
+    "h": "Where it fits, and what we do not supply",
+    "caption": "Fit",
+    "intro": "One polypropylene (PP) package with PVC pretreatment. No Water for Injection, pure steam or stainless steel systems.",
+    "cols": [
+     "Item",
+     "Fit",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Temperature",
+      "v": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "m": "Ambient or chemically sanitized loops",
+      "hl": true,
+      "link": "industries#fit",
+      "link_label": "Fit rules for every industry",
+      "in": true
+     },
+     {
+      "p": "Hot water and steam",
+      "v": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it).",
+      "m": "Any hot-water cycle stays inside the PP maker's published pressure–temperature rating for its hours."
+     },
+     {
+      "p": "Generation skid sanitization",
+      "v": "Method confirmed in your proposal, including whether RO and EDI can be heat-sanitized",
+      "m": "The same RO and EDI skid, with or without a loop",
+      "link": "sys-pw#design",
+      "link_label": "Generation skid design",
+      "in": true
+     },
+     {
+      "p": "Flow",
+      "v": "Sized to your demand",
+      "m": "At your coldest feed water; parallel trains for larger flows",
       "in": true
      },
      {

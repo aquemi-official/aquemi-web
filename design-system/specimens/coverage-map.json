@@ -446,9 +446,9 @@
    "page": "contact-locations",
    "slot": 2,
    "h": "Can you support my site?",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "1b638014c1",
    "block": {
@@ -582,6 +582,290 @@
      "label": "Based in Ontario"
     },
     "intro": "From [service bases, cities] we reach [service coverage area] within [travel time from service base, hours]. Parts for every package we build stay available for [parts availability period, years] from handover."
+   }
+  },
+  {
+   "page": "contact-locations",
+   "slot": 2,
+   "h": "Can you support my site?",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "e58e943588",
+   "block": {
+    "type": "table",
+    "anchor": "coverage",
+    "nav": "Coverage",
+    "h": "Can you support my site?",
+    "cols": [
+     "Your region",
+     "Severity 1: technician on site, on a plan",
+     "Technician and parts from",
+     "Design registration (CRN), where required, and seal"
+    ],
+    "rows": [
+     [
+      "Ontario",
+      "The time set in your plan",
+      "Ontario, Canada",
+      "Design registration: Technical Standards and Safety Authority (TSSA). Engineering seal: Professional Engineers Ontario (PEO) · Certificate of authorization: status on request"
+     ],
+     [
+      "Quebec",
+      "Visits by arrangement",
+      "Ontario, Canada. Language of service confirmed when you enquire.",
+      "Design registration: Régie du bâtiment du Québec (RBQ). Engineering seal: Ordre des ingénieurs du Québec (OIQ) · Member on staff: status on request"
+     ],
+     [
+      "British Columbia",
+      "Visits by arrangement",
+      "Confirmed when you enquire",
+      "Design registration: Technical Safety BC. Engineering seal: Engineers and Geoscientists BC (EGBC) · Firm permit to practice: status on request"
+     ],
+     [
+      "Alberta",
+      "Visits by arrangement",
+      "Confirmed when you enquire",
+      "Design registration: Alberta Boilers Safety Association (ABSA). Engineering seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA) · Permit to practice: status on request"
+     ],
+     [
+      "Other provinces and territories",
+      "Visits by arrangement",
+      "Confirmed when you enquire",
+      "Authorities where the system is installed"
+     ]
+    ],
+    "as": "router",
+    "look": "coverage-map",
+    "map": [
+     {
+      "c": "YT",
+      "n": "Yukon",
+      "x": 0,
+      "y": 0
+     },
+     {
+      "c": "NT",
+      "n": "Northwest Territories",
+      "x": 1,
+      "y": 0
+     },
+     {
+      "c": "NU",
+      "n": "Nunavut",
+      "x": 2,
+      "y": 0
+     },
+     {
+      "c": "BC",
+      "n": "British Columbia",
+      "x": 0,
+      "y": 1
+     },
+     {
+      "c": "AB",
+      "n": "Alberta",
+      "x": 1,
+      "y": 1
+     },
+     {
+      "c": "SK",
+      "n": "Saskatchewan",
+      "x": 2,
+      "y": 1
+     },
+     {
+      "c": "MB",
+      "n": "Manitoba",
+      "x": 3,
+      "y": 1
+     },
+     {
+      "c": "ON",
+      "n": "Ontario",
+      "x": 4,
+      "y": 1,
+      "r": 0
+     },
+     {
+      "c": "QC",
+      "n": "Quebec",
+      "x": 5,
+      "y": 1
+     },
+     {
+      "c": "NL",
+      "n": "Newfoundland and Labrador",
+      "x": 6,
+      "y": 1
+     },
+     {
+      "c": "NB",
+      "n": "New Brunswick",
+      "x": 5,
+      "y": 2
+     },
+     {
+      "c": "PE",
+      "n": "Prince Edward Island",
+      "x": 6,
+      "y": 2
+     },
+     {
+      "c": "NS",
+      "n": "Nova Scotia",
+      "x": 6,
+      "y": 3
+     }
+    ],
+    "base": {
+     "c": "ON",
+     "label": "Based in Ontario"
+    },
+    "intro": "From Ontario, Canada, we reach sites in an area agreed per project, in a time agreed in your service plan. Parts for every package we build stay available for a period stated in your proposal."
+   }
+  },
+  {
+   "page": "contact-locations",
+   "slot": 2,
+   "h": "Can you support my site?",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "b9ee6e440e",
+   "block": {
+    "type": "table",
+    "anchor": "coverage",
+    "nav": "Coverage",
+    "h": "Can you support my site?",
+    "cols": [
+     "Your region",
+     "Severity 1: technician on site, on a plan",
+     "Technician and parts from",
+     "Design registration and seal"
+    ],
+    "rows": [
+     [
+      "Ontario",
+      "The time set in your plan",
+      "Ontario, Canada",
+      "Design registration: Technical Standards and Safety Authority (TSSA). Engineering seal: Professional Engineers Ontario (PEO)"
+     ],
+     [
+      "Quebec",
+      "Visits by arrangement",
+      "Ontario, Canada. Language of service confirmed when you enquire.",
+      "Design registration: Régie du bâtiment du Québec (RBQ). Engineering seal: Ordre des ingénieurs du Québec (OIQ)"
+     ],
+     [
+      "British Columbia",
+      "Visits by arrangement",
+      "Confirmed when you enquire",
+      "Design registration: Technical Safety BC. Engineering seal: Engineers and Geoscientists BC (EGBC)"
+     ],
+     [
+      "Alberta",
+      "Visits by arrangement",
+      "Confirmed when you enquire",
+      "Design registration: Alberta Boilers Safety Association (ABSA). Engineering seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA)"
+     ],
+     [
+      "Other provinces and territories",
+      "Visits by arrangement",
+      "Confirmed when you enquire",
+      "Authorities where the system is installed"
+     ]
+    ],
+    "as": "router",
+    "look": "coverage-map",
+    "map": [
+     {
+      "c": "YT",
+      "n": "Yukon",
+      "x": 0,
+      "y": 0
+     },
+     {
+      "c": "NT",
+      "n": "Northwest Territories",
+      "x": 1,
+      "y": 0
+     },
+     {
+      "c": "NU",
+      "n": "Nunavut",
+      "x": 2,
+      "y": 0
+     },
+     {
+      "c": "BC",
+      "n": "British Columbia",
+      "x": 0,
+      "y": 1
+     },
+     {
+      "c": "AB",
+      "n": "Alberta",
+      "x": 1,
+      "y": 1
+     },
+     {
+      "c": "SK",
+      "n": "Saskatchewan",
+      "x": 2,
+      "y": 1
+     },
+     {
+      "c": "MB",
+      "n": "Manitoba",
+      "x": 3,
+      "y": 1
+     },
+     {
+      "c": "ON",
+      "n": "Ontario",
+      "x": 4,
+      "y": 1,
+      "r": 0
+     },
+     {
+      "c": "QC",
+      "n": "Quebec",
+      "x": 5,
+      "y": 1
+     },
+     {
+      "c": "NL",
+      "n": "Newfoundland and Labrador",
+      "x": 6,
+      "y": 1
+     },
+     {
+      "c": "NB",
+      "n": "New Brunswick",
+      "x": 5,
+      "y": 2
+     },
+     {
+      "c": "PE",
+      "n": "Prince Edward Island",
+      "x": 6,
+      "y": 2
+     },
+     {
+      "c": "NS",
+      "n": "Nova Scotia",
+      "x": 6,
+      "y": 3
+     }
+    ],
+    "base": {
+     "c": "ON",
+     "label": "Based in Ontario"
+    },
+    "intro": "From Ontario, Canada, we reach sites in an area agreed per project, in a time agreed in your service plan. Parts for every package we build stay available for a period stated in your proposal."
    }
   }
  ]

@@ -4,15 +4,15 @@
  "type": "docs",
  "fields": "as docs: h, intro, items [{t, d, key, link, intent}], fold, fold_noun (phones only).",
  "best_for": "AuditSkid draws a documents block as the system those documents describe: one isometric skid in the middle of a light sheet, each document a numbered callout on a leader to the part it covers.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-cdmo",
    "slot": 1,
    "h": "The client audit pack",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-01",
-   "last_seen": "2026-11-02",
+   "last_seen": "2026-11-04",
    "commit": "0efa42f",
    "hash": "5f7d517055",
    "block": {
@@ -21,6 +21,61 @@
     "anchor": "audit-pack",
     "h": "The client audit pack",
     "intro": "One pack per client and period: [reporting by suite, outlet and date].",
+    "items": [
+     {
+      "t": "System description",
+      "key": true,
+      "d": "PW generation, loops, outlets by suite, sanitization",
+      "part": "ro"
+     },
+     {
+      "t": "Compliance matrix",
+      "key": true,
+      "d": "Each USP, Ph. Eur. and client limit: design value and where it is tested",
+      "part": "sample"
+     },
+     {
+      "t": "Qualification summary",
+      "d": "Factory acceptance test to performance qualification, with deviations and approvals",
+      "part": "skid"
+     },
+     {
+      "t": "Trend reports",
+      "d": "Conductivity, total organic carbon and microbial counts against alert and action levels",
+      "part": "analyzer"
+     },
+     {
+      "t": "Excursion summary",
+      "d": "Excursions by outlet and date, with the batches that used the water; your quality unit assesses product impact",
+      "part": "outlet"
+     },
+     {
+      "t": "Change log",
+      "d": "Changes since qualification, with risk assessment and requalification scope",
+      "part": "tiein"
+     }
+    ],
+    "fold": 4,
+    "fold_noun": "documents",
+    "look": "audit-skid",
+    "corner": "Client · period"
+   }
+  },
+  {
+   "page": "ind-cdmo",
+   "slot": 1,
+   "h": "The client audit pack",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "9643d7ddf4",
+   "block": {
+    "type": "docs",
+    "nav": "Audit pack",
+    "anchor": "audit-pack",
+    "h": "The client audit pack",
+    "intro": "One pack per client and period, with reporting agreed with each client.",
     "items": [
      {
       "t": "System description",

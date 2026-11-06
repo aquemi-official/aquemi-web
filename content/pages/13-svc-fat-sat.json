@@ -3,9 +3,9 @@
  "section": "Services",
  "nav_label": "FAT and SAT",
  "title": "Purified Water system FAT and SAT | Aquemi",
- "meta": "Factory and site acceptance tests (FAT, SAT) for your polypropylene Purified Water package. Under GMP, written for IQ/OQ reuse (EU GMP Annex 15, 3.6; GUI-0029, 8.1); otherwise, against your specification.",
+ "meta": "Factory and site acceptance tests (FAT, SAT) for your Purified Water package. Under GMP, written so IQ/OQ can reuse them; otherwise, tested against your specification.",
  "path": "/services/fat-sat/",
- "eyebrow": "FAT · SAT · EU GMP ANNEX 15 · GUI-0029",
+ "eyebrow": "FACTORY AND SITE ACCEPTANCE TESTS",
  "headline": "Watch it run on water before it ships",
  "lead": "Your quality unit approves the protocol; we run the factory acceptance test (FAT) on your Purified Water package. A site acceptance test (SAT) proves the rest on your site.",
  "tags": [],
@@ -22,7 +22,7 @@
    "nav": "FAT and SAT",
    "anchor": "versus",
    "h": "What FAT proves, what SAT proves",
-   "intro": "Under GMP, FAT results executed to your approved protocol can be leveraged at site. Not under GMP: the same wet run proves the limit your process names.",
+   "intro": "Under good manufacturing practice (GMP), FAT results executed to your approved protocol can be leveraged at site. Not under GMP: the same wet run proves the limit your process names.",
    "cols": [
     "Test",
     "FAT, our test bay",
@@ -41,40 +41,18 @@
     ],
     [
      "Sanitization",
-     "Full [PP loop sanitization method] cycle, residual tested at the end",
+     "Full sanitization cycle by a chemical method set per project, residual tested at the end",
      "Full cycle on the installed loop, coldest point of use included"
     ],
     [
-     "Reverse osmosis (RO) with electrodeionization (EDI) or deionization (DI)",
-     "Flow, recovery and outlet quality on our feed water",
-     "The same on your feed water, in the season you are in"
-    ],
-    [
      "Outlet water limit",
-     "The limit you name: USP <645> and <643>, Ph. Eur. 0008, AAMI ST108:2023 critical water, or your equipment maker's specification",
+     "The limit you name: USP, the standard you work to, or your equipment maker's specification",
      "The same limit on your feed water, at the outlet and at any points of use"
-    ],
-    [
-     "Instruments and I/O",
-     "Every I/O point; critical instruments against a calibrated reference",
-     "Points to your control and monitoring systems; critical instruments re-checked"
-    ],
-    [
-     "Data integrity",
-     "Roles, audit trail, time sync, backup and restore",
-     "The same on the network, with your accounts and time server"
-    ],
-    [
-     "Piping and instrumentation diagram (P&ID) walkdown",
-     "Every line, valve and tag; skid slopes and dead legs",
-     "Field piping, loop slopes, low points, branch lengths"
     ]
    ],
-   "fold": 3,
-   "fold_noun": "tests",
    "conclusion": [
     "Reuse in IQ/OQ",
-    "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
+    "Where shipping and installation cannot change the result, and your quality unit agrees",
     "Feed water, utilities and field piping: proven on site only"
    ],
    "look": "versus-spread",
@@ -82,11 +60,7 @@
     "panel valve",
     "util loop",
     "skid tank loop pou",
-    "ro",
-    "inst pou",
-    "inst panel",
-    "panel",
-    "skid pipe loop pou"
+    "inst pou"
    ]
   },
   {
@@ -145,7 +119,7 @@
    "items": [
     {
      "t": "Draft protocol",
-     "d": "From the functional specification, sent [protocol issue before FAT, weeks] ahead. Each test states its acceptance criterion and traces to your user requirement specification (URS)."
+     "d": "From the functional specification, sent ahead of FAT, on a date agreed with you. Each test states its acceptance criterion."
     },
     {
      "t": "Your approval",
@@ -158,58 +132,19 @@
     },
     {
      "t": "Witnessed run",
-     "d": "You witness each test case. Results are recorded as found, never resampled to pass; minor defects go on the punch list."
+     "d": "You witness each test case, in person, remotely or by a delegate you name. Results are recorded as found, never resampled to pass."
     },
     {
      "t": "Report and release",
-     "d": "Raw data, deviation log and release decision. Skid drained, then [post-FAT drying and sealing method].",
+     "d": "Raw data, deviation log and release decision. Skid drained, then dried and sealed by a method named in your proposal.",
      "hold": "Both parties"
     },
     {
      "t": "SAT on your site",
-     "d": "Critical tests re-run on site; the report feeds IQ/OQ. Signed commissioning values become your day-one record for later visits [confirm]."
+     "d": "Critical tests re-run on site; the report feeds IQ/OQ."
     }
    ],
    "look": "test-sheet"
-  },
-  {
-   "type": "options",
-   "nav": "Witnessing",
-   "anchor": "witness",
-   "h": "How you witness",
-   "intro": "We finish the build before you arrive: the FAT is yours to check, not ours to fix [confirm]. Notice: [FAT witness notice, working days]; cost: [FAT witness costs, included or quoted].",
-   "items": [
-    {
-     "t": "In person",
-     "d": "In our test bay, inside the panels.",
-     "part": "panel"
-    },
-    {
-     "t": "Remote",
-     "d": "Cameras and live protocol.",
-     "part": "camera"
-    },
-    {
-     "t": "Hybrid",
-     "d": "One person attends for physical checks, the rest remote.",
-     "part": "gauge"
-    },
-    {
-     "t": "Your delegate",
-     "d": "A consultant you name witnesses and signs.",
-     "part": "documents"
-    },
-    {
-     "t": "Review only",
-     "d": "Unwitnessed; we send raw data and video.",
-     "part": "analyzer"
-    }
-   ],
-   "look": "witness-plan",
-   "zones": [
-    "Our test bay",
-    "Remote"
-   ]
   },
   {
    "type": "faq",
@@ -219,7 +154,7 @@
    "items": [
     {
      "q": "Will our quality unit accept FAT results in place of IQ/OQ tests?",
-     "a": "Yes, if it approves the reuse before the factory acceptance test (FAT) and has assessed us (ASTM E2500). Under EU good manufacturing practice (GMP) Annex 15, 3.6, and GUI-0029, 8.1, transport and installation must not change the result. We propose candidate tests for installation and operational qualification (IQ, OQ).",
+     "a": "Yes, if it approves the reuse before the factory acceptance test (FAT). We propose which tests installation and operational qualification (IQ, OQ) can reuse.",
      "link": "cmp-quality#audit",
      "link_label": "Request a supplier audit"
     },
@@ -231,24 +166,8 @@
      "intent": "Pre-FAT walk-down or protocol review"
     },
     {
-     "q": "How do FAT deviations reach SAT and IQ/OQ?",
-     "a": "By a written route [confirm]. The FAT report lists each deviation with its status. Open ones carry into SAT and close before IQ/OQ reuses the affected test. A fix after FAT goes through change control your quality unit reviews, and is retested at SAT.",
-     "link": "svc-cq",
-     "link_label": "How IQ/OQ uses FAT"
-    },
-    {
-     "q": "What can stop an acceptance test?",
-     "a": "A test can stop on things outside the process design. Examples: an instrument out of calibration, a missing reagent, an unbooked lab, no one free to sample. Before FAT and SAT, we check each of these with you [confirm]."
-    },
-    {
-     "q": "Is the software we see at FAT the software that ships?",
-     "a": "Its version and checksum are recorded at FAT: [code checksum recorded at FAT, yes or no]. Any later change goes through change control and is shown again at SAT.",
-     "link": "sys-monitoring#data-integrity",
-     "link_label": "How the code is controlled"
-    },
-    {
      "q": "How long does a FAT take?",
-     "a": "[FAT duration, days] for the full Purified Water package, pretreatment to distribution, and [typical FAT duration, single module, days] for one module. Packages over [largest skid size, m] are tested module by module."
+     "a": "The duration in your schedule for the full Purified Water package, pretreatment to distribution, and a shorter duration for one module. Packages over a size set by transport are tested module by module."
     }
    ]
   },
@@ -265,7 +184,7 @@
  ],
  "cta": {
   "h": "Check our criteria against your URS",
-  "body": "Cost: [specimen cost or free].",
+  "body": "Send your user requirement specification (URS) if you have one. Cost: discussed when you enquire.",
   "button": "Request a specimen FAT protocol",
   "link": "cmp-documentation#samples",
   "intent": "FAT protocol: contents and test cases",
@@ -274,7 +193,7 @@
    "Which specimens you want",
    "Your work email"
   ],
-  "turnaround": "[specimen package response time, working days]",
+  "turnaround": "a time confirmed when you enquire",
   "returns": [
    "Protocol table of contents",
    "Aquemi-written test cases with acceptance criteria",
@@ -296,7 +215,7 @@
   "Test bay power: voltage, phases, frequency, kW ([voltage, phases, frequency, kW]); how skids for another voltage are tested ([transformer or site test])",
   "Test bay heating, only if a hot sanitization cycle is offered: medium and capacity (kW), inside the PP maker's pressure-temperature curve (DR-013)",
   "Largest skid footprint and height ([largest skid size, m], FAQ 6), crane capacity (t) and drain capacity (L/min) (FD-44); same name as about (DR-011 rule 2). If the test bay's water flow is shown, it is [test bay water, L/h], with these test bay limits (FD-44)",
-  "Remote witness platform and connection, and when raw data reach a remote witness (\"raw data the same day\" left the Remote option until FD-44 sets it); electronic signature method ([electronic signature method], as cmp-documentation) and whether it meets 21 CFR Part 11 (FD-23)",
+  "Remote witness platform and connection, and when raw data reach a remote witness (\"raw data the same day\" left the Remote option until FD-44 sets it)",
   "Specimen reply time ([specimen package response time, working days]: the closing turnaround; same name as cmp-documentation and projects; FD-47). At launch an unset time is cut (DR-006 rule 7)",
   "Specimen cost ([specimen cost or free]: the closing body; FD-02, FD-47; DR-006 rule 5, DR-005 rule 4). A new name: cmp-documentation's specimen form, the offer's home (DR-014 rule 12), should use it if it shows a cost. At launch an unset cost is cut (DR-005 rule 8)",
   "FAT first-pass rate or deviation closure time: a figure only when the owner confirms it (DR-011; FD-45); a closing proof box only with a confirmed figure (website.md closing rule). No case-study block on this page: typical configurations live on projects (R5); proof here is the method, the protocol and the specimen record (DR-028 rule 2)",
@@ -317,7 +236,8 @@
   "Pass 12 witnessing intro (NS 1.2 readiness row; R6; DR-028 rule 3): \"Available once [shop and test bay ready for visits]\" became the notice; the [confirm] on the first sentence stays with Process step 3 (FD-45)",
   "Pass 12 FAQ 3 \"How do FAT deviations reach SAT and IQ/OQ?\" (RI 03 items 3 and 5; RI 15 item 4): the written route between FAT and IQ/OQ is a practice to confirm ([confirm], FD-45); svc-cq states the route from its side and is the home of change control after handover. If unconfirmed at launch, the answer keeps only its second and last sentences",
   "Pass 12 closing returns \"A specimen executed test record, with one deviation\" (RI 03 item 3; SITE-PLAN §1.5 conflict 7): an Aquemi-written specimen, labelled specimen, showing the format and an exception; never a client record. It joins the FD-47 specimen set: if the owner's specimen package does not include it, the line goes. The cmp-documentation#samples option label \"FAT protocol: contents and test cases\" is unchanged",
-  "Pass 12 anchors versus, wet-run, steps, witness (SITE-PLAN svc-fat-sat block list): no inbound link used the old s-N ids (only #faq, kept)"
+  "Pass 12 anchors versus, wet-run, steps, witness (SITE-PLAN svc-fat-sat block list): no inbound link used the old s-N ids (only #faq, kept)",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): versus table cut to 4 rows (RO, instruments, access and data, P&ID walkdown retired; fold dropped), witnessing section retired (one line moved into step 4), FAQ cut to 3 (deviation route, what can stop a test, software checksum retired), Annex 15 and GUI-0029 removed. Todos about the witnessing section, the day-one record and FAQ 3 to 5 no longer apply."
  ],
  "primary_cta_link": "cmp-documentation#samples",
  "primary_cta_intent": "FAT protocol: contents and test cases",
@@ -325,10 +245,6 @@
   {
    "v": "[100 %]",
    "l": "Skids tested with water · at FAT"
-  },
-  {
-   "v": "[FAT duration, days]",
-   "l": "Full package FAT · pretreatment to distribution"
   }
  ]
 }

@@ -76,9 +76,9 @@
    "page": "first-system",
    "slot": 3,
    "h": "What your team does each week",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bff41e0",
    "hash": "d1f77fb803",
    "block": {
@@ -131,9 +131,9 @@
    "page": "careers",
    "slot": 1,
    "h": "Pay, benefits and terms",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "c2b5e78ac4",
    "block": {
@@ -192,6 +192,173 @@
     "fold": 3,
     "fold_noun": "terms",
     "look": "time-card"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 3,
+   "h": "What your team does each week",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "20e346ac02",
+   "block": {
+    "type": "spec",
+    "look": "time-card",
+    "nav": "Your team",
+    "anchor": "team",
+    "h": "What your team does each week",
+    "cols": [
+     "Task",
+     "What it means",
+     "How often"
+    ],
+    "rows": [
+     {
+      "p": "Check and log",
+      "v": "Read conductivity, the purity reading, and the others on the panel; sign the log",
+      "m": "Estimated in your proposal"
+     },
+     {
+      "p": "Samples",
+      "v": "Draw water at the outlets for your lab or a contract lab",
+      "m": "Your sampling plan sets how often"
+     },
+     {
+      "p": "Filters and salt",
+      "v": "Change filter cartridges; top up softener salt",
+      "m": "Intervals set for your system"
+     },
+     {
+      "p": "Sanitization",
+      "v": "A chemical method set per project; residual tested before use",
+      "m": "At a frequency set by your monitoring"
+     },
+     {
+      "p": "First weeks, drug lines",
+      "v": "Sample daily for at least 2 weeks; your quality unit approves first use",
+      "m": "At start-up. Sampling then continues for a year."
+     },
+     {
+      "p": "Year one in total",
+      "v": "Estimated in your proposal",
+      "m": "Plan these hours before you order"
+     }
+    ],
+    "note": "Your quality person sets the sample points and how often."
+   }
+  },
+  {
+   "page": "careers",
+   "slot": 1,
+   "h": "Pay, benefits and terms",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "e40cc3c781",
+   "block": {
+    "type": "spec",
+    "nav": "Pay & terms",
+    "anchor": "terms",
+    "h": "Pay, benefits and terms",
+    "cols": [
+     "Item",
+     "Our terms",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Hours",
+      "v": "Discussed at interview",
+      "m": "Working pattern by role"
+     },
+     {
+      "p": "Travel",
+      "v": "Travel terms and arrangements discussed at interview",
+      "m": "By role"
+     },
+     {
+      "p": "Overtime and shutdown work",
+      "v": "Discussed at interview",
+      "m": ""
+     },
+     {
+      "p": "Health, dental and retirement",
+      "v": "Benefits discussed at interview",
+      "m": ""
+     },
+     {
+      "p": "Vacation",
+      "v": "Discussed at interview",
+      "m": ""
+     },
+     {
+      "p": "Training and qualification",
+      "v": "Qualification and training budget discussed at interview",
+      "m": ""
+     },
+     {
+      "p": "Professional licence",
+      "v": "Professional dues and supervision discussed at interview",
+      "m": "Provincial engineering regulator"
+     },
+     {
+      "p": "Working language",
+      "v": "Discussed at interview",
+      "m": "Quebec's Charter of the French Language applies to work in Quebec"
+     }
+    ],
+    "note": "The posting and written offer govern.",
+    "fold": 3,
+    "fold_noun": "terms",
+    "look": "time-card"
+   }
+  },
+  {
+   "page": "first-system",
+   "slot": 3,
+   "h": "What your team does each week",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "4c11c2c1f9",
+   "block": {
+    "type": "spec",
+    "look": "time-card",
+    "nav": "Your team",
+    "anchor": "team",
+    "h": "What your team does each week",
+    "cols": [
+     "Task",
+     "What it means",
+     "How often"
+    ],
+    "rows": [
+     {
+      "p": "Check and log",
+      "v": "Read conductivity, the purity reading, and the others on the panel; sign the log",
+      "m": "Estimated in your proposal"
+     },
+     {
+      "p": "Samples",
+      "v": "Draw water at the outlets for your lab or a contract lab",
+      "m": "Your sampling plan sets how often"
+     },
+     {
+      "p": "Filters and salt",
+      "v": "Change filter cartridges; top up softener salt",
+      "m": "Intervals set for your system"
+     },
+     {
+      "p": "Sanitization",
+      "v": "A chemical method set per project; residual tested before use",
+      "m": "At a frequency set by your monitoring"
+     }
+    ],
+    "note": "Your quality person sets the sample points and how often."
    }
   }
  ]

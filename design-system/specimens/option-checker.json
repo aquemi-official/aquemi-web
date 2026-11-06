@@ -4,7 +4,7 @@
  "type": "options",
  "fields": "h, intro (optional; printed under the title in the top cell through wSecHead, as option-taps does), items [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the option sets; none: no part lights).",
  "best_for": "OptionChecker sets an options block as a Swiss grid: a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile of the control system, beside the section title set large and the options as cells under huge light slash numerals.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-monitoring",
@@ -115,9 +115,9 @@
    "page": "sys-monitoring",
    "slot": 4,
    "h": "Options",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "21ec835534",
    "block": {
@@ -152,6 +152,114 @@
      {
       "t": "Control panels",
       "d": "Built to [panel standard] and marked to [panel certification mark held, or field evaluation used].",
+      "spot": "monitor",
+      "link": "compliance#engineering",
+      "part": "panel"
+     }
+    ],
+    "nav": "Options",
+    "fold_noun": "options",
+    "as": "modules",
+    "base": "Controls",
+    "look": "option-checker",
+    "anchor": "options"
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 3,
+   "h": "Options",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "16dd2961f9",
+   "block": {
+    "type": "options",
+    "h": "Options",
+    "intro": "Your proposal states each option's effect on drawings, tests and lead time.",
+    "items": [
+     {
+      "t": "PLC and SCADA platform",
+      "d": "[PLC and SCADA platforms supported].",
+      "spot": "cpu",
+      "part": "plc"
+     },
+     {
+      "t": "Historian",
+      "d": "Our historian, or your plant historian with ours as a buffer.",
+      "spot": "database",
+      "part": "historian"
+     },
+     {
+      "t": "Remote access",
+      "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
+      "spot": "network",
+      "part": "remote"
+     },
+     {
+      "t": "Integration",
+      "d": "[plant network protocols supported] to your plant systems.",
+      "spot": "pid",
+      "part": "bus"
+     },
+     {
+      "t": "Control panels",
+      "d": "Built to [panel standard] and marked to [panel certification mark held, or field evaluation used].",
+      "spot": "monitor",
+      "link": "compliance#engineering",
+      "part": "panel"
+     }
+    ],
+    "nav": "Options",
+    "fold_noun": "options",
+    "as": "modules",
+    "base": "Controls",
+    "look": "option-checker",
+    "anchor": "options"
+   }
+  },
+  {
+   "page": "sys-monitoring",
+   "slot": 3,
+   "h": "Options",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "bf5b8760b8",
+   "block": {
+    "type": "options",
+    "h": "Options",
+    "intro": "Your proposal states each option's effect on drawings, tests and lead time.",
+    "items": [
+     {
+      "t": "PLC and SCADA platform",
+      "d": "PLC and SCADA platforms confirmed per project.",
+      "spot": "cpu",
+      "part": "plc"
+     },
+     {
+      "t": "Historian",
+      "d": "Our historian, or your plant historian with ours as a buffer.",
+      "spot": "database",
+      "part": "historian"
+     },
+     {
+      "t": "Remote access",
+      "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
+      "spot": "network",
+      "part": "remote"
+     },
+     {
+      "t": "Integration",
+      "d": "Protocols confirmed per project connect it to your plant systems.",
+      "spot": "pid",
+      "part": "bus"
+     },
+     {
+      "t": "Control panels",
+      "d": "Built to the panel standard named in your proposal, with the approval route confirmed there.",
       "spot": "monitor",
       "link": "compliance#engineering",
       "part": "panel"

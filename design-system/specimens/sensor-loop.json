@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption (the eyebrow), intro, rows [{p, v, m, site}], note, fold, fold_noun (phones only). site: flow | uv | cond | toc | temp | divert | data; a row without a site is placed by its words (\"sample\" -> sample tees, \"hose\" / \"point of use\" / \"outlet\" -> the hoses) or is a note only.",
  "best_for": "SensorLoop draws a spec block of control points or signals where each one sits on one storage and distribution loop: a flat P&ID on a navy sheet, an instrument balloon with its real tag letters over the row number on every measuring point, hoses numbered at their ends, and the rows as keyed notes along the foot.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-monitoring",
@@ -98,9 +98,9 @@
    "page": "ind-personal-care",
    "slot": 3,
    "h": "Where microbes get in, and what the package does",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "8518f87f4b",
    "block": {
@@ -142,6 +142,66 @@
      {
       "p": "Sample ports",
       "v": "[sample valve design and orientation]",
+      "m": "A sample should show what production draws, not the valve"
+     },
+     {
+      "p": "Hoses and points of use",
+      "v": "Draining, storage and replacement on your standard operating procedure (SOP)",
+      "m": "Your procedure controls them, not the package"
+     }
+    ],
+    "note": "Your QC lab tests the water; your quality unit decides on any batch.",
+    "look": "sensor-loop"
+   }
+  },
+  {
+   "page": "ind-personal-care",
+   "slot": 3,
+   "h": "Where microbes get in, and what the package does",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "5f613497b8",
+   "block": {
+    "type": "spec",
+    "as": "callouts",
+    "nav": "Microbial control",
+    "anchor": "microbes",
+    "h": "Where microbes get in, and what the package does",
+    "caption": "MICROBIAL CONTROL · AMBIENT LOOP",
+    "intro": "Most water problems start after the generator: in the loop, hoses, taps and sampling. Each control point, and who owns it.",
+    "cols": [
+     "Control point",
+     "Design",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Circulation",
+      "v": "Continuous flow from the tank to every outlet and back",
+      "m": "Return flow alarmed below the qualified minimum",
+      "site": "flow"
+     },
+     {
+      "p": "Sanitization",
+      "v": "A chemical method set per project; residual tested before use.",
+      "m": "Sanitization lowers counts; it does not sterilize"
+     },
+     {
+      "p": "Ultraviolet (UV), where fitted",
+      "v": "254 nm UV on the supply lowers the viable count; it does not sanitize the loop.",
+      "site": "uv"
+     },
+     {
+      "p": "Online conductivity",
+      "v": "Read continuously and recorded against your alert and action levels",
+      "m": "USP <645>",
+      "site": "cond"
+     },
+     {
+      "p": "Sample ports",
+      "v": "Sample valve design named in your proposal",
       "m": "A sample should show what production draws, not the valve"
      },
      {

@@ -1,0 +1,479 @@
+{
+ "id": "industries",
+ "section": "Industries",
+ "nav_label": "Industries",
+ "title": "Purified Water systems by industry | Aquemi",
+ "meta": "Purified Water by industry: where it goes and who sets the limit, for drug, device, hospital, lab, cosmetics, food and industrial plants. No WFI.",
+ "path": "/industries/",
+ "eyebrow": "INDUSTRIES · ONE WATER, MANY PLANTS",
+ "headline": "Your product sets the grade",
+ "lead": "For drug, natural health product, device and cosmetic makers, hospitals, laboratories, food and industrial plants. One Purified Water package in polypropylene with PVC pretreatment. No Water for Injection, pure steam or stainless steel systems.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I know my product, not my water spec",
+ "secondary_cta": {
+  "label": "Plan your first PW system",
+  "link": "first-system"
+ },
+ "index": [
+  "ind-pharma",
+  "ind-cdmo",
+  "ind-meddevice",
+  "ind-hospital-lab",
+  "ind-personal-care",
+  "ind-process"
+ ],
+ "blocks": [
+  {
+   "type": "grid",
+   "anchor": "map",
+   "nav": "Where it goes",
+   "h": "Where our water goes",
+   "intro": "One Purified Water package, configured to each use, across all six. What changes is where the water goes and who writes its limit.",
+   "items": [
+    {
+     "t": "Drugs and natural health products",
+     "tag": "USP · Ph. Eur.",
+     "link": "ind-pharma",
+     "d": "Granulation fluid, coating suspensions, syrups and drops, cream water phase, final equipment rinse; veterinary lines too."
+    },
+    {
+     "t": "Contract manufacturing",
+     "tag": "Each client",
+     "link": "ind-cdmo",
+     "d": "One site loop feeding several suites and client programs, through every campaign changeover."
+    },
+    {
+     "t": "Medical devices",
+     "tag": "USP <161>",
+     "link": "ind-meddevice",
+     "d": "Final rinse after cleaning, intermediate rinses, diagnostic reagent and ophthalmic solution make-up."
+    },
+    {
+     "t": "Hospitals and laboratories",
+     "tag": "ST108 · ASTM · CLSI",
+     "link": "ind-hospital-lab",
+     "d": "Washer-disinfector final rinse, endoscope reprocessing, analyzer feed, reagent and buffer make-up, lab building loops."
+    },
+    {
+     "t": "Cosmetics and personal care",
+     "tag": "Your specification · PW for drugs",
+     "link": "ind-personal-care",
+     "d": "Water phase of creams and lotions, shampoos and gels, over-the-counter sunscreens, household products, filler rinse."
+    },
+    {
+     "t": "Food, beverage and industrial",
+     "tag": "Your recipe or equipment maker",
+     "link": "ind-process",
+     "d": "Spirits proofing, beverage and ingredient water, cannabis extracts, electronics rinse, chemical batches, boiler and electrolyser feed."
+    }
+   ],
+   "look": "application-wheel"
+  },
+  {
+   "type": "table",
+   "look": "use-matrix",
+   "anchor": "matrix",
+   "nav": "By use",
+   "h": "Industry by water use",
+   "intro": "The minimum grade at each use, and who sets it; a dash where no grade is set. Your specification can go higher. Lab cells: the grade each test method names.",
+   "cols": [
+    "Industry",
+    "In the product",
+    "Final rinse",
+    "Cleaning",
+    "Lab",
+    "Equipment feed"
+   ],
+   "rows": [
+    [
+     {
+      "t": "Drugs and natural health products",
+      "link": "ind-pharma"
+     },
+     "PW (GUI-0001); potable minimum for natural health products (GUI-0158)",
+     "Same grade as the product (EMA)",
+     "Potable for the initial rinse (EMA)",
+     "Meets each test method (GUI-0001)",
+     "—"
+    ],
+    [
+     {
+      "t": "Contract manufacturing",
+      "link": "ind-cdmo"
+     },
+     "PW: stricter of USP and Ph. Eur., plus client limits",
+     "Same grade as each client’s product (EMA)",
+     "Potable for the initial rinse (EMA)",
+     "Meets each test method",
+     "—"
+    ],
+    [
+     {
+      "t": "Medical devices",
+      "link": "ind-meddevice"
+     },
+     "Your specification for reagents and solutions (ISO 13485)",
+     "PW; endotoxin limit by body contact (USP <161>)",
+     "Set by your cleaning validation",
+     "Meets each test method",
+     "—"
+    ],
+    [
+     {
+      "t": "Hospital sterile processing",
+      "link": "ind-hospital-lab#reprocessing"
+     },
+     "—",
+     "Critical water (ANSI/AAMI ST108:2023)",
+     "Utility water (ST108:2023)",
+     "Clinical laboratory reagent water (CLSI GP40)",
+     "Washer and sterilizer maker’s specification"
+    ],
+    [
+     {
+      "t": "Research and quality control laboratories",
+      "link": "ind-hospital-lab#labs"
+     },
+     "—",
+     "—",
+     "—",
+     "ASTM D1193-24 Type II or III, by method",
+     "Washer, autoclave and humidifier maker’s specification"
+    ],
+    [
+     {
+      "t": "Cosmetics and personal care",
+      "link": "ind-personal-care"
+     },
+     "Your written specification; PW for drug lines",
+     "Your written specification",
+     "—",
+     "Meets each test method",
+     "—"
+    ],
+    [
+     {
+      "t": "Food, beverage and cannabis",
+      "link": "ind-process#food"
+     },
+     "Potable minimum (Safe Food for Canadians Regulations; 21 CFR 117); your recipe sets the rest",
+     "Potable minimum",
+     "Potable minimum",
+     "Meets each test method",
+     "Boiler maker’s make-up specification"
+    ],
+    [
+     {
+      "t": "Industrial and energy",
+      "link": "ind-process#industrial"
+     },
+     "Your product specification",
+     "Your process limit",
+     "—",
+     "—",
+     "Electrolyser, boiler or humidifier maker’s limit"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "as": "router",
+   "look": "pid-routes",
+   "anchor": "start",
+   "nav": "Where to start",
+   "h": "Your situation and where to start",
+   "cols": [
+    "Your situation",
+    "System",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "A new oral or topical drug line",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Process design",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "A new client program with a tech transfer date",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Upgrades: system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "Not drugs or devices? Send the standard you work to",
+     {
+      "t": "The package, to your limit",
+      "link": "systems"
+     },
+     {
+      "t": "Request a water scope review",
+      "link": "contact-proposal",
+      "intent": "I know my product, not my water spec|Another industry"
+     }
+    ],
+    [
+     "Natural health products: does this line need PW?",
+     {
+      "t": "PW generation, if your specification asks",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Pharmaceutical: natural health products",
+      "link": "ind-pharma#nhp"
+     }
+    ],
+    [
+     "Your first PW system, no specification yet",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Your first PW system",
+      "link": "first-system"
+     }
+    ],
+    [
+     "A water observation, or out-of-trend results",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades: after an observation",
+      "link": "svc-upgrades#observation"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "spec",
+   "as": "rules",
+   "look": "fit-readout",
+   "anchor": "fit",
+   "nav": "Fit",
+   "h": "Where the package fits, in any industry",
+   "caption": "FIT · EVERY INDUSTRY",
+   "intro": "One test for every industry: an ambient loop, sanitized chemically. Where an industry needs more, its page answers it.",
+   "cols": [
+    "Condition",
+    "Our answer",
+    "Basis or detail"
+   ],
+   "rows": [
+    {
+     "p": "Temperature and pressure",
+     "hl": true,
+     "v": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "m": "The PP maker’s pressure–temperature curve sets every loop’s limits."
+    },
+    {
+     "p": "Hot water",
+     "fig": "sanitize",
+     "v": "Any hot-water cycle stays inside the PP maker’s published pressure–temperature curve for its hours.",
+     "m": "Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)."
+    },
+    {
+     "p": "Chemical sanitization",
+     "v": "A chemical method set per project; residual tested before use.",
+     "link": "sys-storage#sanitization",
+     "link_label": "How the loop is sanitized"
+    },
+    {
+     "p": "Standards that name 316L stainless steel",
+     "v": "Not served",
+     "m": "Our loops are polypropylene after PVC pretreatment."
+    },
+    {
+     "p": "Water for Injection and pure steam",
+     "v": "Not supplied",
+     "link": "industries#faq",
+     "link_label": "Why, in the questions below"
+    },
+    {
+     "p": "Hospitals and laboratories",
+     "v": "The grades we design to, and what we do not supply",
+     "link": "ind-hospital-lab#faq",
+     "link_label": "Hospital and lab questions"
+    },
+    {
+     "p": "Food, beverage and industrial",
+     "v": "Where generation fits, and the plants it does not",
+     "link": "ind-process#fit",
+     "link_label": "Process plant fit"
+    }
+   ],
+   "fold_noun": "conditions"
+  },
+  {
+   "type": "diagram",
+   "look": "limit-writers",
+   "anchor": "same-water",
+   "nav": "Same package",
+   "h": "Same package, different limit-writer",
+   "intro": "Someone writes your water limit: a pharmacopoeia, ANSI/AAMI ST108:2023, ASTM D1193-24 or CLSI GP40, your recipe or your equipment maker. The industry decides which; the water train stays the same.",
+   "stages": [
+    {
+     "t": "Feed water",
+     "icon": "droplet",
+     "d": "Your city or well water. Its analysis sizes the pretreatment, whatever you make."
+    },
+    {
+     "t": "Pretreatment",
+     "spot": "pretreatment",
+     "link": "sys-pretreatment",
+     "d": "A polyvinyl chloride (PVC) train removes chlorine, hardness and particles before reverse osmosis (RO). The same in every industry."
+    },
+    {
+     "t": "Generation",
+     "spot": "ro-skid",
+     "link": "sys-pw",
+     "d": "RO, then deionization (DI) or electrodeionization (EDI) where your grade needs it. The outlet is designed to meet your limit-writer’s number."
+    },
+    {
+     "t": "Storage",
+     "spot": "storage-tank",
+     "link": "sys-storage",
+     "d": "Fitted where your use needs stored water; configurations confirmed when you enquire."
+    },
+    {
+     "t": "Distribution loop",
+     "spot": "loop",
+     "link": "sys-storage#sanitization",
+     "d": "Changes by industry: how often it is sanitized, and whether an endotoxin limit applies."
+    },
+    {
+     "t": "Points of use",
+     "icon": "valve",
+     "d": "Changes by industry: what you sample and the records you file, at the product, rinse, washer, bench or electrolyser."
+    }
+   ],
+   "base": "Monitoring and controls · alarm limits from your limit-writer",
+   "base_link": "sys-monitoring",
+   "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents.",
+   "writers": [
+    "A pharmacopoeia",
+    "ANSI/AAMI ST108:2023",
+    "ASTM D1193-24 or CLSI GP40",
+    "Your recipe",
+    "Your equipment maker"
+   ]
+  },
+  {
+   "type": "grid",
+   "look": "grade-editorial",
+   "nav": "First system",
+   "anchor": "first-system",
+   "h": "Your first Purified Water system",
+   "items": [
+    {
+     "t": "Your product’s grade",
+     "d": "Non-sterile drugs need PW (GUI-0001); natural health products, potable water at minimum. Cosmetic and food lines follow your written specification.",
+     "link": "ind-pharma#grades",
+     "big": [
+      {
+       "v": "PW",
+       "l": "Non-sterile drugs · Health Canada GUI-0001"
+      },
+      {
+       "v": "Potable",
+       "l": "Natural health products, at minimum · GUI-0158"
+      }
+     ]
+    },
+    {
+     "t": "Your first system, in plain terms",
+     "d": "Whether a packaged system fits, what your site needs, what your team does each week and running cost per month.",
+     "link": "first-system",
+     "panel": true,
+     "list": [
+      "Whether a packaged system fits",
+      "What your site needs",
+      "What your team does each week",
+      "Running cost per month"
+     ]
+    }
+   ],
+   "intro": "For drug, natural health product, cosmetic and food makers buying their first system. One skid, sized to your demand; it does not fit Water for Injection, pure steam or a hot-held loop."
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "Do you supply Water for Injection (WFI)?",
+     "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel. It covers pretreatment, reverse osmosis, deionization or electrodeionization, and distribution; no stills. Where your product needs WFI (injectables, vaccines, biologics), you generate it; PW is the usual feed to a WFI still."
+    },
+    {
+     "q": "Do cosmetics and personal care lines need PW?",
+     "a": "Not always: drug lines need PW under drug good manufacturing practice (GMP); cosmetic-only lines follow your written specification.",
+     "link": "ind-personal-care#grade",
+     "link_label": "Cosmetics: grade by legal class"
+    },
+    {
+     "q": "My industry is not listed. Can you help?",
+     "a": "Yes, when the fit above holds. Send your standard, its edition and grade, and where the water is drawn: each tap, machine or line.",
+     "link": "contact-proposal",
+     "link_label": "Send your standard",
+     "intent": "I know my product, not my water spec|Another industry"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "services",
+    "compliance",
+    "cmp-quality"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us what you make",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I know my product, not my water spec",
+  "include": [
+   "What you make, and where you sell it",
+   "The standard you work to, if any",
+   "Where your site is"
+  ],
+  "turnaround": "a time confirmed when you enquire",
+  "returns": [
+   "The grade per use, and who sets it",
+   "The package you need",
+   "Your qualification or acceptance-test scope"
+  ]
+ },
+ "todo": [
+  "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal (DR-014); shown here as the figure only",
+  "Pass 12 (DR-027 rule 3; IB 2.2; L-BWT-16, L-BWT-23): the hub says one water, many plants once, three ways: #map (recognition list, six group cards), #matrix (industry by water use, minimum grade and its source, dash where none), #same-water (limit-writers). The grade-and-inspector table left the hub; each inspector row lives on its industry page",
+  "#map renders as the plain link grid while its look is drawn: market-callouts (the plan's pick) holds four callouts at fixed slots and renders no links, so six linked group cards would collide; the wheel concept (image queue, FD-62) gets its look in phase 6. Keep six cards, one per ind-* page, in DR-027 rule 9 order",
+  "#matrix keeps macro-leaders as the interim look (8 rows, the look's ceiling). Cells: minimum grade and its source only (DR-027 rule 3). Cells are third-party rules: EMA water guideline (final and initial rinse), GUI-0001/GUI-0158, USP <161>, ST108:2023, CLSI GP40, ASTM D1193-24, SFCR s.70 and 21 CFR 117.37 (IB 1). Confirm the uses named with the group page editors",
+  "#map and recognition lists name veterinary lines and household products as uses only, with no claim on their rules (R4, DR-027 rule 7)",
+  "#start (pid-routes): the device-drift row became \"Not drugs or devices? Send the standard you work to\" (SITE-PLAN industries); the device reader enters through ind-meddevice. Row 5 reads \"Your first PW system\" so it is the buyer's first system (DR-028 rule 2)",
+  "#fit is the fit gate's one home (DR-027 rule 4): DR-013 rules 1-3 verbatim; no ozone line (DR-013 rule 4); 316L standards not served; the exclusion homes are linked, not restated (DR-027 rule 5: WFI here in #faq, dialysis ind-hospital-lab#faq, semiconductor UPW, bottled water and plant-scale mains ind-process#fit). The lead row carries no rule figure so 80 °C never stands alone. No fold: all seven rows show, because the Industries menu's exclusion line links here (pass 12 review)",
+  "#same-water (strata-run, interim; SITE-PLAN): Storage carries [configurations offered for this use] (R2): no claim on generation-only skids, degassing, polishing or containerized builds until the owner fills it",
+  "WFI wording (FAQ, #fit): Aquemi supplies PW only (MISSION). PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it until the owner confirms. Sterile industries named once in the WFI answer so they self-route (IB critic A)",
+  "Cosmetics FAQ: one line plus a link to ind-personal-care#grade, the grade rule's home (DR-027 rule 2, DR-023 moved). The DR-023 intent string now travels on that page's contact links",
+  "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if your specification asks' and links sys-pw, the same wording as ind-cdmo (DR-011 rule 3)",
+  "#first-system: pointer to the first-system page (pass 11, DR-015 amended), look and anchor kept for old links; item 1 keeps the grade facts and links ind-pharma#grades (DR-009); intro names cosmetics and food makers (SITE-PLAN industries) and keeps sys-pw's capacity placeholder (DR-011 rule 2). Unfilled at launch, the capacity clause goes and the \"does not fit\" clause stays",
+  "Anchors: #map, #matrix, #start, #fit, #same-water, #first-system, #faq. #adjacent left with its block (hospital, lab and industrial rows moved to ind-hospital-lab and ind-process); inbound links on ind-meddevice, about and the menu fallback are retargeted by their owners (SITE-PLAN 4.5); an alias is the integrator's call"
+ ]
+}

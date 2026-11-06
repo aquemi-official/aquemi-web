@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl}], note. No new fields.",
  "best_for": "MembraneFace sets a short list of feed-water targets as a bento round the thing they protect: the feed end of a spiral-wound reverse osmosis element, drawn large on navy, with one target per tile around it.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pretreatment",
@@ -125,9 +125,9 @@
    "page": "sys-pretreatment",
    "slot": 0,
    "h": "Water at the RO inlet",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "d25ffbf097",
    "block": {
@@ -165,6 +165,64 @@
      {
       "p": "Iron and manganese",
       "v": "[design limit, mg/L each]",
+      "m": "Set with the membrane maker"
+     },
+     {
+      "p": "Silica and scaling ions",
+      "v": "Below saturation in the RO concentrate",
+      "m": "Membrane projection at coldest and warmest feed"
+     }
+    ],
+    "nav": "RO inlet targets",
+    "as": "gauges",
+    "look": "membrane-face",
+    "anchor": "inlet"
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 0,
+   "h": "Water at the RO inlet",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "0eee5ea2dc",
+   "block": {
+    "type": "spec",
+    "h": "Water at the RO inlet",
+    "caption": "RO FEED · DESIGN TARGETS",
+    "note": "The membrane datasheet takes precedence.",
+    "cols": [
+     "Parameter",
+     "Design target",
+     "Measured by"
+    ],
+    "rows": [
+     {
+      "p": "Free and total chlorine",
+      "v": "Set in your design basis",
+      "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed",
+      "hl": true
+     },
+     {
+      "p": "Silt density index",
+      "v": "Set in your design basis",
+      "m": "ASTM D4189, at the cartridge filter outlet"
+     },
+     {
+      "p": "Turbidity",
+      "v": "Set in your design basis",
+      "m": "Media filter outlet"
+     },
+     {
+      "p": "Hardness",
+      "v": "Set in your design basis",
+      "m": "Method named in your proposal, softener outlet"
+     },
+     {
+      "p": "Iron and manganese",
+      "v": "Limits set in your design basis",
       "m": "Set with the membrane maker"
      },
      {

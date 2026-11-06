@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, intro, cols ([item, typical, note] labels; the second and third key each card's value and note), rows [{p, v, m, side, link, link_label}] (side: \"limit\" | \"package\" | \"site\"; default site), sides ([package label, site label]), seam (the line's name), fold, fold_noun (the fold applies on phones only; desktop shows every card).",
  "best_for": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "systems",
@@ -332,9 +332,9 @@
    "page": "project-plan",
    "slot": 4,
    "h": "How you see progress",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "0faa7d8e0c",
    "block": {
@@ -570,6 +570,96 @@
     "seam": "Where polypropylene stops",
     "fold": 4,
     "fold_noun": "conditions",
+    "look": "battery-limit"
+   }
+  },
+  {
+   "page": "project-plan",
+   "slot": 4,
+   "h": "How you see progress",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "ef579284b0",
+   "block": {
+    "type": "spec",
+    "anchor": "reporting",
+    "nav": "Progress",
+    "h": "How you see progress",
+    "intro": "We keep the record; your team reviews it on an agreed clock.",
+    "cols": [
+     "Item",
+     "When",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Contacts",
+      "v": "From order to handover",
+      "m": "A project lead and your project manager, both named in the order",
+      "side": "limit"
+     },
+     {
+      "p": "Kickoff meeting",
+      "v": "On a date agreed with you",
+      "m": "Schedule, holds, contacts and the document list agreed",
+      "side": "package"
+     },
+     {
+      "p": "Document review",
+      "v": "Review period agreed with you, per issue",
+      "m": "The schedule assumes this clock; a longer review moves later dates",
+      "side": "site"
+     },
+     {
+      "p": "Hold point signatures",
+      "v": "At each hold in the stages",
+      "m": "The next stage starts after your signature",
+      "link": "project-plan#stages",
+      "link_label": "See the stages",
+      "side": "site"
+     },
+     {
+      "p": "Submittal log",
+      "v": "Updated with every issue",
+      "m": "Each document: approved, approved as noted, revise and resubmit, or for information",
+      "link": "cmp-documentation#by-stage",
+      "link_label": "Documents by stage",
+      "side": "package"
+     },
+     {
+      "p": "Status report",
+      "v": "Agreed with you",
+      "m": "Progress against the schedule, open holds, risks and changes",
+      "side": "package"
+     },
+     {
+      "p": "Meeting minutes",
+      "v": "Issued after each meeting",
+      "m": "Actions with owner and date, for your correction",
+      "side": "package"
+     },
+     {
+      "p": "Design reviews",
+      "v": "Agreed with you in the schedule",
+      "m": "Your engineer attends; your quality unit too, under GMP",
+      "side": "site"
+     },
+     {
+      "p": "As-built drawings",
+      "v": "On a date agreed with you",
+      "m": "Marked as built; valves, gauges and sample points tagged as drawn [confirm]",
+      "side": "package"
+     }
+    ],
+    "sides": [
+     "From Aquemi",
+     "From your team"
+    ],
+    "seam": "One contact each side",
+    "fold": 4,
+    "fold_noun": "items",
     "look": "battery-limit"
    }
   }

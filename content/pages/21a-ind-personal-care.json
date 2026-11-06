@@ -3,11 +3,11 @@
  "section": "Industries",
  "nav_label": "Cosmetics and personal care",
  "title": "Purified Water for cosmetics and personal care | Aquemi",
- "meta": "Purified Water for cosmetics and personal care makers: the water each product class needs, microbial control in the loop, and records for drug and cosmetic lines. One polypropylene package; no WFI.",
+ "meta": "Purified Water for cosmetics and personal care makers: the water each product class needs, where it goes in your plant, and moving off exchange DI.",
  "path": "/industries/cosmetics-personal-care/",
  "eyebrow": "COSMETICS · PERSONAL CARE · ISO 22716",
  "headline": "Your product's class sets the water",
- "lead": "For makers of creams, lotions, shampoos and over-the-counter (OTC) lines. One polypropylene Purified Water package with polyvinyl chloride (PVC) pretreatment, sized to your batches.",
+ "lead": "For makers of creams, lotions, shampoos and over-the-counter (OTC) lines. One Purified Water package, sized to your batches.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec|Cosmetics or personal care",
@@ -104,7 +104,7 @@
    "nav": "Where water goes",
    "anchor": "uses",
    "h": "Where water goes in a personal care plant",
-   "intro": "One package supplies every point below. Cooling and boiler water are outside Purified Water and have their own limits.",
+   "intro": "One package supplies every point below. Most microbial problems start after the generator: in hoses, taps and sampling. The loop circulates and is sanitized on a schedule your results set.",
    "items": [
     {
      "t": "Ingredient water",
@@ -126,113 +126,6 @@
    "look": "plant-stations"
   },
   {
-   "type": "spec",
-   "as": "callouts",
-   "nav": "Microbial control",
-   "anchor": "microbes",
-   "h": "Where microbes get in, and what the package does",
-   "caption": "MICROBIAL CONTROL · AMBIENT LOOP",
-   "intro": "Most water problems start after the generator: in the loop, hoses, taps and sampling. Each control point, and who owns it.",
-   "cols": [
-    "Control point",
-    "Design",
-    "Note"
-   ],
-   "rows": [
-    {
-     "p": "Circulation",
-     "v": "Continuous flow from the tank to every outlet and back",
-     "m": "Return flow alarmed below [qualified minimum return flow, L/h]",
-     "site": "flow"
-    },
-    {
-     "p": "Sanitization",
-     "v": "[PP loop sanitization method]; residual tested before use.",
-     "m": "Sanitization lowers counts; it does not sterilize"
-    },
-    {
-     "p": "Ultraviolet (UV), where fitted",
-     "v": "254 nm UV on the supply lowers the viable count; it does not sanitize the loop.",
-     "site": "uv"
-    },
-    {
-     "p": "Online conductivity",
-     "v": "Read continuously and recorded against your alert and action levels",
-     "m": "USP <645>",
-     "site": "cond"
-    },
-    {
-     "p": "Sample ports",
-     "v": "[sample valve design and orientation]",
-     "m": "A sample should show what production draws, not the valve"
-    },
-    {
-     "p": "Hoses and points of use",
-     "v": "Draining, storage and replacement on your standard operating procedure (SOP)",
-     "m": "Your procedure controls them, not the package"
-    }
-   ],
-   "note": "Your QC lab tests the water; your quality unit decides on any batch.",
-   "look": "sensor-loop"
-  },
-  {
-   "type": "spec",
-   "nav": "Fit",
-   "anchor": "fit",
-   "h": "Where the package fits, and where it does not",
-   "intro": "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Your loop's temperature decides the material.",
-   "cols": [
-    "Condition",
-    "What applies",
-    "Note"
-   ],
-   "rows": [
-    {
-     "p": "Ambient loop, chemically sanitized",
-     "v": "[PP loop sanitization method]; residual tested before use.",
-     "m": "The duty this package is built for",
-     "side": "package",
-     "link": "industries#fit",
-     "link_label": "Check your use fits"
-    },
-    {
-     "p": "Hot-held loop, steam, or routine 80 °C at loop pressure",
-     "v": "Needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]",
-     "side": "site"
-    },
-    {
-     "p": "A standard that requires stainless steel",
-     "v": "Rules out polypropylene, unless the standard allows exceptions",
-     "side": "site"
-    },
-    {
-     "p": "Hot-water cycles",
-     "v": "Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C].",
-     "side": "limit"
-    },
-    {
-     "p": "Wetted parts",
-     "v": "[PP material certificates]",
-     "m": "For your file: what touches the water",
-     "side": "package"
-    },
-    {
-     "p": "Batch peaks",
-     "v": "Storage sized to your largest batch and its rinses",
-     "m": "From batch size and batches per week",
-     "side": "package"
-    }
-   ],
-   "sides": [
-    "Fits the package",
-    "Needs another material"
-   ],
-   "seam": "Where polypropylene stops",
-   "fold": 4,
-   "fold_noun": "conditions",
-   "look": "scope-seam"
-  },
-  {
    "type": "options",
    "as": "modules",
    "nav": "From exchange DI",
@@ -248,7 +141,7 @@
     {
      "t": "Reverse osmosis (RO) with storage",
      "spot": "ro-skid",
-     "d": "RO fills a tank you draw from, without a loop: [configurations offered for this use]. Needs drinking water, a drain and power."
+     "d": "RO fills a tank you draw from, without a loop; configurations confirmed when you enquire. Needs drinking water, a drain and power."
     },
     {
      "t": "Full package with loop",
@@ -260,39 +153,6 @@
    "fold": 3,
    "fold_noun": "options",
    "look": "module-plinth"
-  },
-  {
-   "type": "docs",
-   "nav": "Records",
-   "anchor": "records",
-   "h": "Records for your file",
-   "items": [
-    {
-     "t": "Monitoring records",
-     "d": "Conductivity trends, alarms and excursions, by date",
-     "sheet": "trend"
-    },
-    {
-     "t": "Sanitization and calibration",
-     "d": "Each sanitization with its residual test; instrument calibration certificates",
-     "sheet": "log"
-    },
-    {
-     "t": "Drug lines: qualification",
-     "d": "Installation qualification (IQ), operational qualification (OQ), performance qualification (PQ): protocols and reports",
-     "sheet": "binder",
-     "link": "svc-cq"
-    },
-    {
-     "t": "Cosmetic-only lines: acceptance",
-     "d": "Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
-     "sheet": "signoff"
-    }
-   ],
-   "fold_noun": "records",
-   "link": "cmp-documentation#index",
-   "link_label": "Full document index",
-   "look": "sheet-previews"
   },
   {
    "type": "faq",
@@ -309,25 +169,11 @@
     },
     {
      "q": "Is polypropylene suitable for my product?",
-     "a": "Yes, for an ambient loop sanitized with chemicals. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. For your file on what touches the water: [PP material certificates].",
-     "link": "ind-personal-care#fit",
-     "link_label": "Where the package fits"
+     "a": "Yes, for an ambient loop sanitized with chemicals. Material certificates for everything that touches the water come with your documents."
     },
     {
      "q": "Can documents come in French?",
-     "a": "[French documentation scope]. Tell us which documents your operators, quality team and inspectors read in French."
-    },
-    {
-     "q": "Our counts rise at the DI outlet. Where do we start?",
-     "a": "With an assessment of the whole system: loop, hoses, taps and sampling, before a new generator. Bring 12 months of results by point of use, with the organisms found.",
-     "link": "svc-upgrades#observation",
-     "link_label": "After an observation"
-    },
-    {
-     "q": "Do you supply Water for Injection (WFI) or pure steam?",
-     "a": "No. We supply Purified Water in polypropylene only. No Water for Injection, pure steam or stainless steel systems.",
-     "link": "industries#faq",
-     "link_label": "The full answer"
+     "a": "French documentation is confirmed per project. Tell us which documents your operators, quality team and inspectors read in French."
     }
    ]
   },
@@ -344,7 +190,7 @@
  ],
  "cta": {
   "h": "Send your product list",
-  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "I know my product, not my water spec|Cosmetics or personal care",
@@ -358,7 +204,7 @@
    "The package and loop to supply it",
    "The records your file needs"
   ],
-  "turnaround": "[scope review turnaround, working days]"
+  "turnaround": "a time confirmed when you enquire"
  },
  "todo": [
   "New page, pass 12 (R1, DR-027; SITE-PLAN ind-personal-care; IB §2.3). Readers: founder (< 50 staff, P2), qa-head (P3: counts, audit finding), operations-head, process-engineer. Register: plain on router, uses, from-di and closing; precise on grade, microbes, fit and records (SITE-PLAN §1.1.3). Image queue 5-12 request a hero drawing and per-section concepts",
@@ -372,6 +218,7 @@
   "Records (#records): the non-GMP sentence verbatim (DR-027 rule 8) on the cosmetic-only card; drug lines link svc-cq. Specimens only where labelled (SITE-PLAN §1.5 conflict 7); no sheet here claims a delivered record",
   "Looks (SITE-PLAN §1.1.5; specimens.py fit): decision-valve (live on sys-pretreatment; plan choice), derivation-sheet (live on first-system and urs-guide: the grade-table look), shop-floor (retired), sensor-loop (retired), battery-limit (live on first-system and project-plan), module-plinth (retired), sheet-previews (retired). None is used on ind-pharma, ind-cdmo or ind-meddevice. shop-floor draws our shop plan, so its cards carry no station field (no pins on shop rooms that are not plant stations); image queue 8 asks a plant-plan concept to replace it; uses moved from shop-floor (it drew our shop as the reader's plant) to industry-feed (live on home and first-system, on no ind-* page; 4 items, no tags so names set large; review 3 option b). shop-floor stays in the section library; image queue 8 plant-plan concept may still replace industry-feed in phase 6",
   "Closing turnaround: [scope review turnaround, working days] rather than the plan's [proposal response time, working days], because the button is the water scope review (one fact, one name; ind-cdmo and first-system use the same). Orchestrator to confirm",
-  "Established voice (DR-028): no reference, 'first' or readiness wording; buyer-side 'a new line or plant' only (SITE-PLAN §1.3.2). References, if asked, go to buying#faq (one answer)"
+  "Established voice (DR-028): no reference, 'first' or readiness wording; buyer-side 'a new line or plant' only (SITE-PLAN §1.3.2). References, if asked, go to buying#faq (one answer)",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): microbes control-point table, fit readout and records sections retired (microbial message moved into the where-water-goes intro), FAQ cut to 3 (DI outlet counts and WFI retired; PP answer loses 0 to 80 °C and its #fit link), polypropylene and WFI wording removed from hero and meta."
  ]
 }

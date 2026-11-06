@@ -4,15 +4,15 @@
  "type": "spec",
  "fields": "h, caption (eyebrow and title block), rows [{p, v, m, link, link_label}], anchor, nav.",
  "best_for": "TankGa reads a spec block of fabrication parameters off one general arrangement (GA) sheet: an isometric line drawing of the PP storage set with a numbered tag on a leader for each parameter, the parameters as a ruled key beside it, and the budget in the title block.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-storage",
    "slot": 3,
    "h": "Tank and pipework",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "281a059",
    "hash": "d61bca8325",
    "block": {
@@ -84,6 +84,95 @@
       "p": "Spray ball",
       "v": "Wets head space and walls continuously",
       "m": "WHO TRS 1033, 9.2; [spray coverage test method]",
+      "part": "spray"
+     }
+    ],
+    "nav": "Fabrication",
+    "fold": 5,
+    "fold_noun": "parameters",
+    "as": "callouts",
+    "look": "tank-ga",
+    "anchor": "tank"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 3,
+   "h": "Tank and pipework",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "e6bbf1c952",
+   "block": {
+    "type": "spec",
+    "h": "Tank and pipework",
+    "caption": "FABRICATION · POLYPROPYLENE",
+    "cols": [
+     "Parameter",
+     "Design value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Tank volume",
+      "v": "Sized to your demand",
+      "m": "Sized from your demand profile",
+      "part": "volume"
+     },
+     {
+      "p": "Product contact",
+      "v": "Unpigmented PP, grade named in your proposal",
+      "m": "Material certificates named in your proposal",
+      "part": "contact"
+     },
+     {
+      "p": "Internal surface",
+      "v": "Confirmed in your proposal",
+      "m": "The PP maker's published data",
+      "part": "surface"
+     },
+     {
+      "p": "Joints",
+      "v": "Joining method and joint records as set out in your proposal",
+      "m": "The qualification standard named in your proposal",
+      "part": "joint"
+     },
+     {
+      "p": "Budget",
+      "v": "Priced per project, for your tank volume and points of use",
+      "m": "Quoted in your proposal",
+      "link": "systems#budget",
+      "part": "budget"
+     },
+     {
+      "p": "Tank design",
+      "v": "Design rating confirmed in your proposal",
+      "m": "Tank design standard named in your proposal",
+      "part": "design"
+     },
+     {
+      "p": "Cleaning before first use",
+      "v": "Written flush and cleaning procedure",
+      "m": "PW rinse to conductivity and TOC limits",
+      "part": "flush"
+     },
+     {
+      "p": "Heat exchangers",
+      "v": "Double tube sheet, on request",
+      "m": "FDA high-purity water guide (1993)",
+      "part": "hx"
+     },
+     {
+      "p": "Pumps",
+      "v": "Sanitary centrifugal, variable speed; duty and standby pumps on request",
+      "m": "Sized for the worst-case outlet combination",
+      "part": "pump"
+     },
+     {
+      "p": "Spray ball",
+      "v": "Wets head space and walls continuously",
+      "m": "WHO TRS 1033, 9.2; test method named in your proposal",
       "part": "spray"
      }
     ],

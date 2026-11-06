@@ -63,9 +63,9 @@
    "page": "sys-storage",
    "slot": 1,
    "h": "How a loop works",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "7e54e232e9",
    "block": {
@@ -174,6 +174,61 @@
      }
     ],
     "look": "loop-circuit"
+   }
+  },
+  {
+   "page": "sys-storage",
+   "slot": 1,
+   "h": "How a loop works",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "e34a4359d1",
+   "block": {
+    "type": "diagram",
+    "h": "How a loop works",
+    "intro": "The same loop carries Purified Water, hospital critical water or laboratory reagent water, designed to the limits your standard names.",
+    "stages": [
+     {
+      "t": "From generation",
+      "icon": "droplet",
+      "d": "PW enters the tank under a vent filter."
+     },
+     {
+      "t": "Storage tank",
+      "spot": "storage-tank",
+      "d": "Buffers generation against peak demand and drains fully."
+     },
+     {
+      "t": "Loop pump",
+      "spot": "pump",
+      "d": "Keeps every section turbulent at peak demand."
+     },
+     {
+      "t": "Heat exchanger",
+      "spot": "heat-exchanger",
+      "d": "Holds loop temperature. Fitted on request."
+     },
+     {
+      "t": "Points of use",
+      "icon": "loop",
+      "d": "Every outlet sits on a short branch, so no water stands."
+     },
+     {
+      "t": "Return sensors",
+      "icon": "conductivity",
+      "d": "Measure the water after the last outlet, beside the return sample valve."
+     },
+     {
+      "t": "Spray ball",
+      "icon": "tank",
+      "d": "Wets the whole tank head so no surface stays dry."
+     }
+    ],
+    "nav": "How it works",
+    "look": "loop-circuit",
+    "anchor": "loop"
    }
   }
  ]

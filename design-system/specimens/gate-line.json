@@ -55,9 +55,9 @@
    "page": "svc-upgrades",
    "slot": 4,
    "h": "How an upgrade runs",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "6ce0e969f0",
    "block": {
@@ -101,9 +101,9 @@
    "page": "ind-hospital-lab",
    "slot": 6,
    "h": "Validation before first use",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "5016a9e0d5",
    "block": {
@@ -142,6 +142,52 @@
      }
     ],
     "look": "gate-line"
+   }
+  },
+  {
+   "page": "svc-upgrades",
+   "slot": 3,
+   "h": "How an upgrade runs",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "930544108d",
+   "block": {
+    "type": "steps",
+    "look": "gate-line",
+    "nav": "How it runs",
+    "h": "How an upgrade runs",
+    "items": [
+     {
+      "t": "System assessment",
+      "d": "On site, then a costed options report in a time agreed with you.",
+      "icon": "magnifier"
+     },
+     {
+      "t": "Change control",
+      "d": "We draft the change request’s technical content.",
+      "hold": "Your quality unit",
+      "icon": "binder"
+     },
+     {
+      "t": "Design, build, test",
+      "d": "A factory acceptance test (FAT) of modules and software keeps site work short.",
+      "icon": "pid"
+     },
+     {
+      "t": "Cutover",
+      "d": "To the scope set out in your proposal, in a planned shutdown; flushed, sanitized and residual tested.",
+      "icon": "wrench"
+     },
+     {
+      "t": "Requalification or acceptance",
+      "d": "Under GMP: IQ/OQ of what changed, with agreed sampling. Without GMP: an acceptance test against your specification. Drawings and procedures updated.",
+      "icon": "gauge"
+     }
+    ],
+    "lane": "Your system",
+    "anchor": "steps"
    }
   }
  ]

@@ -4,7 +4,7 @@
  "type": "spec",
  "fields": "h, cols, rows [{p, v, m, part}], labels {part: name} (the leader callouts, short drawing names, aria-hidden), fold, fold_noun (phones only). part: the drawing anchor, one of \"branch\" (a point-of-use branch), \"joint\" (a loop joint), \"analyzer\", \"coldest\" (the far point of use), \"outlets\" (both points of use), \"panel\", \"skid\", \"gauge\"; a row without one marks the skid.",
  "best_for": "WalkdownPins sets IQ and OQ checks as a table beside the installed system they inspect, each check's number on its part and a few parts called out by name (look `walkdown-pins`, spec block).",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "svc-cq",
@@ -95,9 +95,9 @@
    "page": "svc-cq",
    "slot": 2,
    "h": "IQ and OQ on site",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "4b91e4cde2",
    "block": {
@@ -163,6 +163,178 @@
       "p": "OQ · Data integrity",
       "v": "Roles, audit trail, time sync, backup, restore",
       "m": "Annex 11; GUI-0050; 21 CFR Part 11",
+      "part": "panel"
+     }
+    ],
+    "fold": 5,
+    "fold_noun": "checks",
+    "look": "walkdown-pins",
+    "labels": {
+     "joint": "Loop joint",
+     "analyzer": "Conductivity",
+     "coldest": "Coldest point",
+     "skid": "PP modules"
+    }
+   }
+  },
+  {
+   "page": "svc-cq",
+   "slot": 2,
+   "h": "IQ and OQ on site",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "920c037981",
+   "block": {
+    "type": "spec",
+    "nav": "IQ and OQ",
+    "anchor": "iq-oq",
+    "h": "IQ and OQ on site",
+    "cols": [
+     "Check",
+     "What we verify",
+     "Basis or record"
+    ],
+    "rows": [
+     {
+      "p": "IQ · Drawings and dead legs",
+      "v": "Walkdown: P&ID (piping and instrumentation diagram), isometrics, field piping",
+      "m": "Dead leg register, L/D per branch",
+      "part": "branch"
+     },
+     {
+      "p": "IQ · Joints",
+      "v": "[PP joint records kept] for [PP joining method]",
+      "m": "[PP joining standard]",
+      "part": "joint"
+     },
+     {
+      "p": "OQ · Drain on high conductivity",
+      "v": "Divert on a real conductivity rise, then return",
+      "m": "Uncompensated reading",
+      "part": "analyzer"
+     },
+     {
+      "p": "OQ · Sanitization",
+      "v": "Full [PP loop sanitization method] cycle, verified at the coldest point",
+      "m": "Residual tested before use",
+      "part": "coldest"
+     },
+     {
+      "p": "OQ · Hydraulics",
+      "v": "Every point of use open at peak demand, then minimum",
+      "m": "Positive return pressure · functional specification",
+      "part": "outlets"
+     },
+     {
+      "p": "OQ · Sequences and interlocks",
+      "v": "Forced by real condition where safe, else simulated",
+      "m": "FAT results reused where accepted",
+      "part": "panel"
+     },
+     {
+      "p": "IQ · Materials",
+      "v": "Polypropylene (PP) modules and loop, polyvinyl chloride (PVC) pretreatment; elastomers to specification",
+      "m": "[PP material certificates]; [certificates supplied for PVC parts]",
+      "part": "skid"
+     },
+     {
+      "p": "IQ · Instruments",
+      "v": "Installed, ranged, calibrated; critical ones identified",
+      "m": "Traceable via [calibration provider and accreditation held]",
+      "part": "gauge"
+     },
+     {
+      "p": "OQ · Access and data",
+      "v": "User access levels, time sync, backup, restore",
+      "m": "Against the functional specification",
+      "part": "panel"
+     }
+    ],
+    "fold": 5,
+    "fold_noun": "checks",
+    "look": "walkdown-pins",
+    "labels": {
+     "joint": "Loop joint",
+     "analyzer": "Conductivity",
+     "coldest": "Coldest point",
+     "skid": "PP modules"
+    }
+   }
+  },
+  {
+   "page": "svc-cq",
+   "slot": 2,
+   "h": "IQ and OQ on site",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "3e8ce3d27e",
+   "block": {
+    "type": "spec",
+    "nav": "IQ and OQ",
+    "anchor": "iq-oq",
+    "h": "IQ and OQ on site",
+    "cols": [
+     "Check",
+     "What we verify",
+     "Basis or record"
+    ],
+    "rows": [
+     {
+      "p": "IQ · Drawings and dead legs",
+      "v": "Walkdown: P&ID (piping and instrumentation diagram), isometrics, field piping",
+      "m": "Dead leg register, L/D per branch",
+      "part": "branch"
+     },
+     {
+      "p": "IQ · Joints",
+      "v": "Joint records for the joining method named in your proposal",
+      "m": "The joining standard named in your proposal",
+      "part": "joint"
+     },
+     {
+      "p": "OQ · Drain on high conductivity",
+      "v": "Divert on a real conductivity rise, then return",
+      "m": "Uncompensated reading",
+      "part": "analyzer"
+     },
+     {
+      "p": "OQ · Sanitization",
+      "v": "Full sanitization cycle by a chemical method set per project, verified at the coldest point",
+      "m": "Residual tested before use",
+      "part": "coldest"
+     },
+     {
+      "p": "OQ · Hydraulics",
+      "v": "Every point of use open at peak demand, then minimum",
+      "m": "Positive return pressure · functional specification",
+      "part": "outlets"
+     },
+     {
+      "p": "OQ · Sequences and interlocks",
+      "v": "Forced by real condition where safe, else simulated",
+      "m": "FAT results reused where accepted",
+      "part": "panel"
+     },
+     {
+      "p": "IQ · Materials",
+      "v": "Polypropylene (PP) modules and loop, polyvinyl chloride (PVC) pretreatment; elastomers to specification",
+      "m": "PP and PVC material certificates as named in your proposal",
+      "part": "skid"
+     },
+     {
+      "p": "IQ · Instruments",
+      "v": "Installed, ranged, calibrated; critical ones identified",
+      "m": "Traceable via a provider named in your proposal",
+      "part": "gauge"
+     },
+     {
+      "p": "OQ · Access and data",
+      "v": "User access levels, time sync, backup, restore",
+      "m": "Against the functional specification",
       "part": "panel"
      }
     ],

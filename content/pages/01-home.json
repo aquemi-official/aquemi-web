@@ -5,9 +5,9 @@
  "title": "Purified Water systems: pretreatment, RO, DI/EDI | Aquemi",
  "meta": "A modular Purified Water package in polypropylene with PVC pretreatment, designed in Ontario to meet USP <645> and <643>. For drug, device, hospital, laboratory, personal care and process plants. No WFI, pure steam or stainless steel.",
  "path": "/",
- "eyebrow": "PURIFIED WATER · USP <645>, <643> · PH. EUR. 0008",
+ "eyebrow": "PURIFIED WATER · USP <645>, <643>",
  "headline": "Modular Purified Water systems, from pretreatment to point of use",
- "lead": "For makers of drugs, natural health products and devices; for hospitals, labs, personal care and process plants. One polypropylene Purified Water package, designed in Ontario. No Water for Injection, pure steam or stainless steel systems.",
+ "lead": "For makers of drugs, natural health products and devices; for hospitals, labs, personal care and process plants. One Purified Water package, built in Ontario. No Water for Injection, pure steam or stainless steel systems.",
  "primary_cta": "Talk to an engineer",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "Not sure yet: talk to an engineer",
@@ -16,10 +16,6 @@
   "link": "systems"
  },
  "facts": [
-  {
-   "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
-   "l": "Skid outlet · measured at FAT"
-  },
   {
    "v": "[100 %]",
    "l": "Skids tested with water · at FAT"
@@ -49,15 +45,15 @@
     },
     {
      "t": "Storage and distribution",
-     "d": "PP tank and loop: turbulent flow at peak demand, sanitized by [PP loop sanitization method].",
-     "tag": "WHO TRS 1033",
+     "d": "Tank and loop keep water moving to every point of use, sanitized on a set schedule.",
+     "tag": "USP <1231>",
      "link": "sys-storage",
      "spot": "storage-tank"
     },
     {
      "t": "Monitoring and controls",
-     "d": "Online total organic carbon (TOC) and conductivity, with audit trails.",
-     "tag": "21 CFR Part 11",
+     "d": "Online total organic carbon (TOC) and conductivity, with alarms and divert.",
+     "tag": "USP <643>",
      "link": "sys-monitoring",
      "icon": "conductivity"
     }
@@ -95,15 +91,6 @@
      }
     ],
     [
-     "Writing a URS that permits polypropylene",
-     "Nothing yet; your draft when you want it checked",
-     "The order buyers use, and clauses that keep the design open",
-     {
-      "t": "Writing your URS",
-      "link": "urs-guide"
-     }
-    ],
-    [
      "A URS, approved or in draft",
      "Your URS and feed water analysis",
      "A proposal, or a gap review of a draft",
@@ -114,21 +101,9 @@
      }
     ],
     [
-     "Comparing proposals or qualifying suppliers",
-     "Your bid grid or questionnaire, if you use one",
-     {
-      "t": "The record each process leaves, and how to audit it",
-      "link": "cmp-quality"
-     },
-     {
-      "t": "Buying from Aquemi",
-      "link": "buying#compare"
-     }
-    ],
-    [
      "Fixing an inspection finding or a water bottleneck",
      "What to change, or the observation",
-     "Options with their downtime and the requalification each triggers",
+     "Options, with the downtime of each",
      {
       "t": "Upgrades and water observations",
       "link": "svc-upgrades"
@@ -136,8 +111,8 @@
     ],
     [
      "Production stopped or water out of specification",
-     "A call to [service phone number], [service phone hours]",
-     "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+     "A service request marked severity 1",
+     "On site within the time set in your plan, in an area agreed per project",
      {
       "t": "Service request",
       "link": "contact-service",
@@ -154,16 +129,16 @@
    "items": [
     {
      "t": "Drugs and natural health products",
-     "d": "In oral liquids, creams, coatings and final equipment rinses. Natural health products (GUI-0158): potable minimum, PW where your specification or monograph calls for it.",
+     "d": "In oral liquids, creams, coatings and final equipment rinses.",
      "tag": "GUI-0001",
      "link": "ind-pharma",
      "icon": "loop"
     },
     {
      "t": "Contract manufacturing",
-     "d": "In every client's product, from one system: the stricter of USP and Ph. Eur. on each attribute, plus each client's limits.",
-     "tag": "USP · Ph. Eur.",
-     "link": "ind-cdmo",
+     "d": "In every client's product, from one system, to each client's limits.",
+     "tag": "Client limits",
+     "link": "ind-pharma",
      "icon": "loop"
     },
     {
@@ -175,7 +150,7 @@
     },
     {
      "t": "Hospitals and laboratories",
-     "d": "Washer-disinfector final rinse in sterile processing, and reagent water for laboratories. Hospitals name critical water (ST108:2023); labs name ASTM D1193-24 Type II or III.",
+     "d": "Washer-disinfector final rinse in sterile processing, and reagent water for laboratories.",
      "tag": "ST108",
      "link": "ind-hospital-lab",
      "icon": "conductivity"
@@ -210,7 +185,7 @@
     },
     {
      "t": "Fabricate",
-     "d": "We build the PP skids and record each joint.",
+     "d": "We build the skids in our Ontario shop.",
      "link": "svc-fabrication"
     },
     {
@@ -220,85 +195,28 @@
     },
     {
      "t": "Qualify",
-     "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves.",
+     "d": "Site tests, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves.",
      "link": "svc-cq"
     },
     {
      "t": "Water in use",
-     "d": "After performance qualification (PQ) phase 1, your quality unit releases the water. The project plan shows each stage's length, notice and who holds it.",
+     "d": "Your quality unit releases the water after the first phase of performance qualification (PQ).",
      "link": "project-plan",
      "art": "sys-storage"
     },
     {
      "t": "Support",
-     "d": "PQ support through 12 months of data, then service and spare parts.",
+     "d": "Service, calibration and spare parts after handover.",
      "link": "svc-service"
     }
    ],
    "look": "project-run",
-   "intro": "Order to water in use: [order to water in use, weeks]. Not under good manufacturing practice (GMP)? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification."
-  },
-  {
-   "type": "grid",
-   "anchor": "service",
-   "h": "Service after handover",
-   "ground": "light",
-   "items": [
-    {
-     "t": "Your change control",
-     "d": "Like-for-like parts, or the change goes through your change control first.",
-     "icon": "stamp",
-     "link": "svc-service"
-    },
-    {
-     "t": "Running cost",
-     "d": "Service plans from [lowest plan price, CAD per year], plus consumables and energy.",
-     "icon": "wrench",
-     "link": "svc-service#running-cost"
-    },
-    {
-     "t": "Signed record",
-     "d": "A signed report after each visit, for your quality records.",
-     "icon": "binder",
-     "link": "svc-service"
-    }
-   ],
-   "look": "exploded-service"
-  },
-  {
-   "type": "faq",
-   "anchor": "faq",
-   "h": "Questions before the first call",
-   "items": [
-    {
-     "q": "Who stands behind the system after handover?",
-     "a": "Your design engineer stays your contact [confirm]. Our team knows pharmaceutical water, controls and modular fabrication. We design and fabricate the package; [membranes and instruments bought from their makers]. You keep as-built drawings, joint records, FAT and qualification reports. Audit our quality system on [on-site audit notice, working days] notice. Witness your FAT with [FAT witness notice, working days] notice.",
-     "link": "projects#verify",
-     "link_label": "How to qualify us"
-    },
-    {
-     "q": "Do you supply WFI or pure steam?",
-     "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel."
-    },
-    {
-     "q": "Do you work outside pharmaceutical manufacturing?",
-     "a": "Yes. Hospitals, laboratories, personal care, food, beverage and industrial plants get the same package. It is configured to the limit their standard or process sets. A hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
-     "link": "industries#matrix",
-     "link_label": "Industry by water use"
-    },
-    {
-     "q": "We have no URS yet. Is it too early to ask?",
-     "a": "No. Ask for a water scope review and tell us what you make. In [scope review turnaround, working days] we return the grade each step needs, the package and its qualification scope. Cost: [scope review cost or free]. [review obligation and use in your tender]",
-     "link": "contact-proposal",
-     "link_label": "Request a water scope review",
-     "intent": "I know my product, not my water spec"
-    }
-   ]
+   "intro": "Not under good manufacturing practice (GMP)? The same stages apply, with an acceptance test in place of qualification."
   }
  ],
  "cta": {
   "h": "Send what you have. An engineer replies.",
-  "body": "Cost: [fit check cost or free].",
+  "body": "Cost: quoted in your proposal.",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
@@ -311,7 +229,7 @@
    "A written answer from an engineer",
    "Then a scope review, budget range or proposal"
   ],
-  "turnaround": "[proposal response time, working days]"
+  "turnaround": "Confirmed when you enquire"
  },
  "todo": [
   "Hero photograph of a finished Aquemi skid or installed loop",
@@ -342,6 +260,7 @@
   "'Who stands behind the system after handover?' FAQ (pass 12, newness sweep home rows; DR-028): continuity line (the design engineer stays the contact [confirm]), known parts, the records, then audit and FAT witness with notice times. Owner confirms the continuity promise (FD-34). Link: projects#verify 'How to qualify us'. Pass 12 review: team line by discipline from MISSION (pharmaceutical water systems, controls, modular fabrication; R7, no names or counts)",
   "Pass 12 FAQ 'Do you work outside pharmaceutical manufacturing?': one line, link industries#matrix (the industries editor owns the anchor). The configuration per use stays on the group pages ([configurations offered for this use]; R2). Fit-gate sentence from industries#fit (DR-013 rule 2; [whether we quote PVDF], FD-15) so food and industrial readers meet the hot-loop limit",
   "Pass 12 closing: [named contact, role, direct line] (PS section 5.1, FD-34) goes in the shared closing field once the closing renders one; not added to this page's cta by hand",
-  "Pass 12 steps heading: stays 'From order to water in use'; the duration stays in the intro as [order to water in use, weeks] (canonical name; the 9-word heading budget keeps it out of the heading). The intro adds DR-027 rule 8's non-GMP sentence verbatim (pass 12 review 5; home invites non-GMP readers)"
+  "Pass 12 steps heading: stays 'From order to water in use'; the duration stays in the intro as [order to water in use, weeks] (canonical name; the 9-word heading budget keeps it out of the heading). The intro adds DR-027 rule 8's non-GMP sentence verbatim (pass 12 review 5; home invites non-GMP readers)",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired the service grid (exploded-service) and the FAQ; router 7 to 5 rows (URS and comparing-proposals rows); Ph. Eur. out of the eyebrow; contract-manufacturing tile links ind-pharma (ind-cdmo retired); shorter step and industry text."
  ]
 }

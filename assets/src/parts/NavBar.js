@@ -21,8 +21,8 @@
    page's section jump (navJumps in SectionNav.js) and the proposal button. The accordion is DOM-local too
    (aq:navgroup for motion). The service number and hours come from CONTACT (core.js): a tel: link once confirmed, the
    placeholder until then, and the hours always travel with the number, so the block never implies round-the-clock help.
-   Launch rule (design-system/website.md, Navigation): while the number is unconfirmed the urgent block goes, the
-   "Service request" row stays.
+   Launch rule (design-system/website.md, Navigation): while no number is published (owner, 2026-11-04) the block keeps
+   only "Production stopped?" and the "Service request" row; the call line and hours return with a number.
    The toggle carries a two-bar mark (aq-nav__burger, aria-hidden) that turns into a cross while the menu is open; its
    label stays the words "Menu" / "Close" (aq-nav__toggle-t). */
 /* The section a page belongs to (its "section" string), the entries of a group that exist, and the gate for a link
@@ -80,7 +80,7 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
   '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+navThemeBtn()+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
-  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
+  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+svc('aq-menu__service')+'</div>'+
   '<nav aria-label="Sections"><ul class="aq-menu__list aq-menu__list--sect">'+NAVMENU.map(function(s){var c=s===cs;
    return s.panel===null?'<li><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>':menuGroup(s,c)}).join('')+
   (T.length?'<li><button type="button" class="aq-menu__sect" id="wm-b-tasks" aria-expanded="false" aria-controls="wm-g-tasks">I need to<span class="aq-menu__plus" aria-hidden="true"></span></button><div class="aq-menu__group" id="wm-g-tasks" hidden><div class="aq-menu__group-in"><ul class="aq-menu__tasks">'+

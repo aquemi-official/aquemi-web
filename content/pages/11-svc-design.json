@@ -3,16 +3,13 @@
  "section": "Services",
  "nav_label": "Process design and engineering",
  "title": "Purified Water system design, URS to DQ | Aquemi",
- "meta": "Process design for a polypropylene Purified Water package: URS gap review, basis of design, P&IDs, functional specification and risk assessment, ready for your DQ.",
+ "meta": "Process design for your Purified Water package: URS gap review, basis of design, P&IDs, functional specification and risk assessment, ready for your DQ.",
  "path": "/services/process-design/",
  "eyebrow": "SERVICES · PROCESS DESIGN · URS TO DQ",
  "headline": "Purified Water system design, traced to your URS",
- "lead": "We design the Purified Water package to your user requirement specification (URS), from pretreatment to the polypropylene loop. Your quality unit approves it at design qualification (DQ).",
+ "lead": "We design the Purified Water package to your user requirement specification (URS), from pretreatment to the distribution loop. Your quality unit approves it at design qualification (DQ).",
  "tags": [
-  "EU GMP Annex 15",
-  "GUI-0029",
-  "ASTM E2500",
-  "ICH Q9(R1)"
+  "GUI-0029"
  ],
  "primary_cta": "Request a URS gap review",
  "primary_cta_link": "contact-proposal",
@@ -23,42 +20,11 @@
  },
  "blocks": [
   {
-   "type": "table",
-   "anchor": "failures",
-   "look": "redline-sheet",
-   "as": "failures",
-   "h": "Qualification failures that start in design",
-   "intro": "Each is cheap to fix on paper, expensive in a qualified room.",
-   "cols": [
-    "Fails at qualification",
-    "Design mistake",
-    "What we design in"
-   ],
-   "rows": [
-    [
-     "No turbulent flow at peak demand",
-     "Loop sized on average demand",
-     "Hydraulics checked at peak demand, every operating case"
-    ],
-    [
-     "Dead leg found at installation qualification (IQ)",
-     "Branch drawn without its length",
-     "Every branch dimensioned and listed in a dead leg register"
-    ],
-    [
-     "Send-to-drain deviation at operational qualification (OQ)",
-     "Setpoint missing from the specification",
-     "Every setpoint, alarm and interlock written as a testable sentence"
-    ]
-   ],
-   "nav": "Why design"
-  },
-  {
    "type": "steps",
    "anchor": "stages",
    "look": "fidelity-ladder",
    "h": "Design stages, and what you approve",
-   "intro": "Under GMP, two holds below are yours: the basis of design, then DQ. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+   "intro": "Under good manufacturing practice (GMP), two holds below are yours: the basis of design, then DQ. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
    "items": [
     {
      "t": "URS and feed water review",
@@ -66,7 +32,7 @@
     },
     {
      "t": "Concept and route",
-     "d": "Route options, mass balance and a budget at [concept estimate class and accuracy]. You approve the basis of design.",
+     "d": "Route options and a budget. You approve the basis of design.",
      "hold": "You"
     },
     {
@@ -75,7 +41,7 @@
     },
     {
      "t": "Detailed design",
-     "d": "Approved P&IDs, isometrics, design specifications and the commissioning and qualification plan."
+     "d": "Approved drawings, design specifications and the commissioning and qualification plan."
     },
     {
      "t": "Design review and freeze",
@@ -102,12 +68,12 @@
     },
     {
      "t": "P&IDs and general arrangement drawings",
-     "d": "Every line, valve and tag, with slopes, drains and sample points; the layout with its connections. IQ verifies against them.",
+     "d": "Every line, valve and instrument, and the layout with its connections. Installation qualification (IQ) verifies against them.",
      "use": "IQ"
     },
     {
      "t": "Functional and design specifications",
-     "d": "Setpoints, alarms, interlocks and divert logic, each testable. OQ tests against them.",
+     "d": "Setpoints, alarms, interlocks and divert logic, each testable. Operational qualification (OQ) tests against them.",
      "use": "OQ"
     },
     {
@@ -119,40 +85,6 @@
    "nav": "What you receive",
    "link": "cmp-documentation#samples",
    "link_label": "Request a specimen package"
-  },
-  {
-   "type": "table",
-   "anchor": "trace",
-   "look": "trace-lines",
-   "h": "An example: two requirements traced to their tests",
-   "cols": [
-    "Document",
-    "URS-012: conductivity limit ≤ 1.3 µS/cm @ 25 °C",
-    "URS-027: dead leg limit L/D ≤ 2"
-   ],
-   "rows": [
-    [
-     "URS compliance matrix",
-     "Met. Outlet designed to [outlet conductivity guarantee, µS/cm @ 25 °C]; return monitored.",
-     "Met. Every branch in the dead leg register."
-    ],
-    [
-     "Basis of design",
-     "Reverse osmosis and electrodeionization, passes set by your feed water analysis",
-     "[PP point-of-use valve type]; instrument tees sized to hold L/D ≤ 2"
-    ],
-    [
-     "Functional specification",
-     "Water above the divert setpoint goes to drain until conductivity recovers",
-     "Not applicable"
-    ],
-    [
-     "Verification",
-     "FAT: divert on a simulated signal. SAT and OQ: your water, uncompensated reading.",
-     "IQ: as-built L/D measured against the register"
-    ]
-   ],
-   "nav": "Traceability"
   },
   {
    "type": "faq",
@@ -169,42 +101,26 @@
     },
     {
      "q": "We are not under GMP. What do you design from?",
-     "a": "From the specification your use already works to. Hospitals and laboratories: the basis of design from your consultant. Cosmetic-only lines: your written water specification. Food and beverage: your recipe or process specification. Industrial plants: the electrolyser stack or boiler maker's feed water specification. Design qualification (DQ) applies only where a quality unit approves the design.",
+     "a": "From the specification you already work to: a consultant's basis of design, your water specification or your equipment maker's.",
      "link": "contact-proposal",
      "link_label": "Send your specification",
      "intent": "I have a URS or a draft|URS gap review"
     },
     {
      "q": "Who owns DQ: you or us?",
-     "a": "You do. Design qualification (DQ) shows the design meets your requirements and good manufacturing practice (GMP), under EU GMP Annex 15, 3.3. Your quality unit approves it (Health Canada GUI-0029, section 5). We supply the evidence: the design review report, traceability matrix and risk assessment."
-    },
-    {
-     "q": "Which risk assessment method do you use?",
-     "a": "[risk assessment method], under ICH Q9(R1), the quality risk management guideline."
-    },
-    {
-     "q": "Consultant: what do we receive, and when?",
-     "a": "A compliance matrix against your client's URS, within [compliance matrix response time, working days]. Drawings and specifications follow the design stages above. Writing the specification section? Our URS guide has notes for specifiers.",
-     "link": "urs-guide#specification",
-     "link_label": "Notes for specifiers"
+     "a": "You do. Your quality unit approves it (Health Canada GUI-0029). We supply the evidence: the design review report and traceability matrix."
     },
     {
      "q": "Consultant or contractor: where does your scope end?",
-     "a": "At the battery limits: the points where our supply ends and your work starts. How a project runs lists the mechanical, electrical and control hand-offs, and who installs what. Connection points are under Systems.",
+     "a": "At the battery limits: the points where our supply ends and your work starts. How a project runs lists who does what before installation. Connection points are under Systems.",
      "link": "project-plan#who",
      "link_label": "See who does what"
     },
     {
      "q": "Is design charged separately from the equipment?",
-     "a": "User requirement specification (URS) gap review: [URS review cost]. Design fees credited against an equipment order: [design fees credited, yes or no]. Design-only work: [design-only engagements offered, and pricing].",
+     "a": "User requirement specification (URS) gap review: quoted in your proposal. Whether design fees are credited against an equipment order is set out in your proposal. Design-only work: discussed when you enquire.",
      "link": "contact-proposal#requests",
      "link_label": "See what each request costs"
-    },
-    {
-     "q": "Who seals drawings, and do we get native CAD files?",
-     "a": "[P.Eng. seal] in [provinces of licence]. Drawings come as [drawing formats delivered], under [drawing ownership or licence terms].",
-     "link": "buying#terms",
-     "link_label": "See the terms of sale"
     }
    ]
   },
@@ -221,7 +137,7 @@
  ],
  "cta": {
   "h": "Send your URS or specification, draft or final",
-  "body": "An engineer replies. Cost: [URS review cost].",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
   "button": "Request a URS gap review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|URS gap review",
@@ -231,7 +147,7 @@
    "Points of use and peak demand, L/h",
    "Bid or issue date, if specifying for a client"
   ],
-  "turnaround": "[URS review turnaround, working days]",
+  "turnaround": "A time confirmed when you enquire",
   "returns": [
    "URS compliance matrix: each gap with proposed wording",
    "Missing feed water data"
@@ -266,16 +182,7 @@
   "Pass 12 closing include (FD-59 breadth): \"Your URS, basis of design or process specification\" so a non-GMP reader knows what to send",
   "Pass 12 anchors (SITE-PLAN block list): failures, deliverables, trace added; stages and faq kept. No inbound link used the old generated ids",
   "Pass 12 review: deliverables link \"Request a specimen package\" -> cmp-documentation#samples (validation lead asks for a specimen). Specimen package lists FAT and IQ/OQ items, not design documents; add the design review report and traceability matrix there when FD-58/FD-46 allow (cmp-documentation owner). Until then the trace block is the visible design specimen; if the package stays FAT/IQ-OQ only at launch, drop the link",
-  "Pass 12 review: stages intro GMP line is \"two holds below are yours: the basis of design, then DQ\", matching the hold fields (You at Concept and route; Your quality unit at Design review and freeze). Closing heading names URS or specification (FD-59); button text and intent unchanged"
- ],
- "facts": [
-  {
-   "v": "[URS review turnaround, working days]",
-   "l": "Written gap list · from complete inputs"
-  },
-  {
-   "v": "[design to DQ, weeks]",
-   "l": "To an approved design · from your URS"
-  }
+  "Pass 12 review: stages intro GMP line is \"two holds below are yours: the basis of design, then DQ\", matching the hold fields (You at Concept and route; Your quality unit at Design review and freeze). Closing heading names URS or specification (FD-59); button text and intent unchanged",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired design-stage failures (redline-sheet) and the traced-requirements example (trace-lines); FAQ 8 to 5 (risk method, consultant deliverables, seals and CAD); tags cut to GUI-0029; EU GMP Annex 15 and PP out; scope-end answer no longer names the retired hand-off rows on project-plan."
  ]
 }

@@ -4,15 +4,15 @@
  "type": "table",
  "fields": "as a table: facts [{k, v}] (the standing rule, shown as one line over the rows), cols [supply, what we require, how we verify it], rows (cells strings or {t, link}; up to five drawn supplies, in this order), fold, fold_noun (phones only). The circle labels come from the page's own words: \"Lot marking\" and \"Certificate\".",
  "best_for": "ReceivingBench sets supplier control as a receiving bench: an isometric bench with the supplies the block lists, each tagged with its row number, and a magnifier pair that joins the pipe's lot marking to the certificate's lot line.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "cmp-quality",
    "slot": 3,
    "h": "What we require from suppliers",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "7f6820b",
    "hash": "05df88d5b5",
    "block": {
@@ -55,6 +55,64 @@
      [
       "Pressure vessels and panels",
       "[pressure-rated items in the PW package] with a Canadian registration number (CRN) under CSA B51; panels to [panel standard]",
+      "Data reports reviewed; panel label checked"
+     ]
+    ],
+    "fold": 2,
+    "fold_noun": "supply categories",
+    "look": "receiving-bench",
+    "anchor": "suppliers"
+   }
+  },
+  {
+   "page": "cmp-quality",
+   "slot": 3,
+   "h": "What we require from suppliers",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "5d520cbdcf",
+   "block": {
+    "type": "table",
+    "nav": "Suppliers",
+    "h": "What we require from suppliers",
+    "intro": "An open corrective action (CAPA) on a supplier stops new orders to it [confirm].",
+    "facts": [
+     {
+      "k": "Supplier review",
+      "v": "Reviewed on a set schedule"
+     }
+    ],
+    "cols": [
+     "Supply",
+     "What we require",
+     "How we verify it"
+    ],
+    "rows": [
+     [
+      "Polypropylene (PP) pipe, fittings and valves",
+      "PP to the piping standard named in your proposal, with material certificates per lot",
+      "Lot marking checked against the certificate at receipt"
+     ],
+     [
+      "Elastomers and gaskets",
+      "Elastomer certificates as named in your proposal",
+      "Compound and grade checked; like-for-like replacement only"
+     ],
+     [
+      "Pretreatment piping",
+      "Polyvinyl chloride (PVC) to the standard and schedule named in your proposal, with PVC certificates as named there",
+      "Markings checked against the order at receipt"
+     ],
+     [
+      "Membranes, electrodeionization (EDI) modules and resin",
+      "Manufacturer's certificates with serial or lot numbers",
+      "Serial and lot numbers recorded at receipt and installation"
+     ],
+     [
+      "Pressure vessels and panels",
+      "Each pressure-rated item your design includes with a Canadian registration number (CRN) under CSA B51; panels to the panel standard named in your proposal",
       "Data reports reviewed; panel label checked"
      ]
     ],

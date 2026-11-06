@@ -4,7 +4,7 @@
  "type": "options",
  "fields": "as options: h, items [{t, d, link, link_label}], fold, fold_noun (phones only).",
  "best_for": "DecisionPlant sets an options block of decisions as numbered callouts round one hairline process schematic of the plant they size, each leader running into the part it decides.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "ind-pharma",
@@ -190,9 +190,9 @@
    "page": "ind-pharma",
    "slot": 3,
    "h": "Decide before your requirements (URS) are approved",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "00fead061d",
    "block": {
@@ -218,6 +218,69 @@
      {
       "t": "Where polypropylene stops",
       "d": "Hot-held loops, steam or routine 80 °C at loop pressure need polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]. A stainless-only standard needs stainless.",
+      "part": "sheet",
+      "side": "r",
+      "row": 3,
+      "link": "urs-guide#allow-pp",
+      "link_label": "Writing the PP rows"
+     },
+     {
+      "t": "Canadian feed water",
+      "d": "Near freezing in winter, over 20 °C in summer; membranes sized for the coldest month.",
+      "link": "sys-pretreatment",
+      "part": "membranes",
+      "side": "l",
+      "row": 1
+     },
+     {
+      "t": "Shutdown windows",
+      "d": "Duplex trains and isolable sections let you service without stopping every line.",
+      "part": "trains",
+      "side": "l",
+      "row": 2
+     }
+    ],
+    "fold": 3,
+    "fold_noun": "decisions",
+    "as": "decisions",
+    "look": "decision-plant",
+    "gate": "URS",
+    "intro": "URS templates often make stainless steel and heat sanitization must-have rows. Settle each decision below before your URS is approved.",
+    "anchor": "decide"
+   }
+  },
+  {
+   "page": "ind-pharma",
+   "slot": 3,
+   "h": "Decide before your requirements (URS) are approved",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "cdaebd7ad3",
+   "block": {
+    "type": "options",
+    "nav": "Decisions",
+    "h": "Decide before your requirements (URS) are approved",
+    "items": [
+     {
+      "t": "Product mix in five years",
+      "d": "Generation and headers sized for planned lines, expansion written into the URS.",
+      "part": "headers",
+      "side": "r",
+      "row": 2
+     },
+     {
+      "t": "Loop sanitization route",
+      "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+      "link": "sys-storage#sanitization",
+      "part": "loop",
+      "side": "r",
+      "row": 1
+     },
+     {
+      "t": "Where polypropylene stops",
+      "d": "Hot-held loops, steam or routine 80 °C at loop pressure need polyvinylidene fluoride (PVDF) or stainless (ask whether we can quote it). A stainless-only standard needs stainless.",
       "part": "sheet",
       "side": "r",
       "row": 3,

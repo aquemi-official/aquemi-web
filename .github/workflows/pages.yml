@@ -5,8 +5,11 @@ name: Publish site
 #   staging  -> https://aquemi-official.github.io/aquemi-web/staging/  (review before release)
 #   dev      -> https://aquemi-official.github.io/aquemi-web/dev/      (day-to-day work)
 # A push to any of them rebuilds the whole site from the latest commit of each branch.
-# The staging and dev copies leave out versions/ (page history) and design-system/inspiration/ (image gallery) to stay
-# inside the Pages size limit; those two pages work on production only. sw.js keeps each copy's cache apart.
+# The studio (studio/manifest.json, "release") decides what each copy is: the tooled draft (site, studio bar and
+# tool pages) or the live site (python tools/studio.py release: only the website). /live/ always shows main released,
+# so the live site can be reviewed before production switches; once it does, the tooled main moves to /studio/.
+# The tooled staging and dev copies leave out versions/ and design-system/inspiration/ to stay inside the Pages size
+# limit; page history and the image gallery work on the production (or /studio/) copy only. See studio/README.md.
 
 on:
   push:
@@ -38,18 +41,17 @@ jobs:
         with:
           ref: dev
           path: src-dev
-      - name: Assemble production, staging and dev
+      # The assembler comes from the commit that triggered this run, so the newest studio tooling assembles every copy
+      - uses: actions/checkout@v4
+        with:
+          path: self
+          sparse-checkout: |
+            tools
+            studio
+      - name: Assemble production, staging, dev and the live preview
         run: |
-          mkdir _site
-          rsync -a --exclude .git --exclude .github src-main/ _site/
-          for b in staging dev; do
-            rsync -a --exclude .git --exclude .github --exclude versions --exclude design-system/inspiration "src-$b/" "_site/$b/"
-            # Name the copy in the draft bar, so nobody mistakes it for production
-            label=$(echo "$b" | sed 's/./\U&/')
-            sed -i "s/Draft site · not for release · /${label} copy · draft site · not for release · /" "_site/$b/index.html"
-          done
-          touch _site/.nojekyll
-          du -sh _site
+          python3 self/tools/studio.py assemble _site --main src-main --staging src-staging --dev src-dev
+          du -sh _site _site/live
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

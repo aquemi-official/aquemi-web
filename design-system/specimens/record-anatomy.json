@@ -4,7 +4,7 @@
  "type": "prose",
  "fields": "h, intro, points [{t, d, fig}]. fig (optional): figure, method, report, approval, the zone's drawing (default by order).",
  "best_for": "RecordAnatomy explains what a published record carries as a drawing sheet: the title large in the sheet's open half, four specimen drawings in a drawing field (one per point, none carrying a value), and the points themselves as the sheet's title block, so every published figure reads as signed off like a drawing.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "projects",
@@ -84,9 +84,9 @@
    "page": "projects",
    "slot": 2,
    "h": "What every project record contains",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "59446105cd",
    "block": {

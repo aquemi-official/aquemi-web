@@ -4,7 +4,7 @@
  "type": "grid",
  "fields": "seen in its blocks: h, items, intro (items: t, d, link, big, span, list, bars, bars_note, kicker, panel).",
  "best_for": "GradeEditorial sets a short path (a grid block of about five items) as an editorial spread: the heading oversized on a navy mast, a geometric pipe collage facing asymmetric fact blocks whose key words (a grade, a span, a figure) are set huge.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "industries",
@@ -260,9 +260,9 @@
    "page": "industries",
    "slot": 5,
    "h": "Your first Purified Water system",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "0139834e1d",
    "block": {
@@ -301,6 +301,53 @@
      }
     ],
     "intro": "For drug, natural health product, cosmetic and food makers buying their first system. One skid covers [minimum–maximum capacity, L/h]; it does not fit Water for Injection, pure steam or a hot-held loop."
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 5,
+   "h": "Your first Purified Water system",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "1148ea09cd",
+   "block": {
+    "type": "grid",
+    "look": "grade-editorial",
+    "nav": "First system",
+    "anchor": "first-system",
+    "h": "Your first Purified Water system",
+    "items": [
+     {
+      "t": "Your product’s grade",
+      "d": "Non-sterile drugs need PW (GUI-0001); natural health products, potable water at minimum. Cosmetic and food lines follow your written specification.",
+      "link": "ind-pharma#grades",
+      "big": [
+       {
+        "v": "PW",
+        "l": "Non-sterile drugs · Health Canada GUI-0001"
+       },
+       {
+        "v": "Potable",
+        "l": "Natural health products, at minimum · GUI-0158"
+       }
+      ]
+     },
+     {
+      "t": "Your first system, in plain terms",
+      "d": "Whether a packaged system fits, what your site needs, what your team does each week and running cost per month.",
+      "link": "first-system",
+      "panel": true,
+      "list": [
+       "Whether a packaged system fits",
+       "What your site needs",
+       "What your team does each week",
+       "Running cost per month"
+      ]
+     }
+    ],
+    "intro": "For drug, natural health product, cosmetic and food makers buying their first system. One skid, sized to your demand; it does not fit Water for Injection, pure steam or a hot-held loop."
    }
   }
  ]

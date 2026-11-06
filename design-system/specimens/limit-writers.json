@@ -10,9 +10,9 @@
    "page": "industries",
    "slot": 4,
    "h": "Same package, different limit-writer",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "f6841a4",
    "hash": "4282ce136d",
    "block": {
@@ -45,6 +45,70 @@
       "spot": "storage-tank",
       "link": "sys-storage",
       "d": "Fitted where your use needs stored water: [configurations offered for this use]."
+     },
+     {
+      "t": "Distribution loop",
+      "spot": "loop",
+      "link": "sys-storage#sanitization",
+      "d": "Changes by industry: how often it is sanitized, and whether an endotoxin limit applies."
+     },
+     {
+      "t": "Points of use",
+      "icon": "valve",
+      "d": "Changes by industry: what you sample and the records you file, at the product, rinse, washer, bench or electrolyser."
+     }
+    ],
+    "base": "Monitoring and controls · alarm limits from your limit-writer",
+    "base_link": "sys-monitoring",
+    "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents.",
+    "writers": [
+     "A pharmacopoeia",
+     "ANSI/AAMI ST108:2023",
+     "ASTM D1193-24 or CLSI GP40",
+     "Your recipe",
+     "Your equipment maker"
+    ]
+   }
+  },
+  {
+   "page": "industries",
+   "slot": 1,
+   "h": "Same package, different limit-writer",
+   "status": "live",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "024314b239",
+   "block": {
+    "type": "diagram",
+    "look": "limit-writers",
+    "anchor": "same-water",
+    "nav": "Same package",
+    "h": "Same package, different limit-writer",
+    "intro": "Someone writes your water limit: a pharmacopoeia, ANSI/AAMI ST108:2023, ASTM D1193-24 or CLSI GP40, your recipe or your equipment maker. The industry decides which; the water train stays the same.",
+    "stages": [
+     {
+      "t": "Feed water",
+      "icon": "droplet",
+      "d": "Your city or well water. Its analysis sizes the pretreatment, whatever you make."
+     },
+     {
+      "t": "Pretreatment",
+      "spot": "pretreatment",
+      "link": "sys-pretreatment",
+      "d": "A polyvinyl chloride (PVC) train removes chlorine, hardness and particles before reverse osmosis (RO). The same in every industry."
+     },
+     {
+      "t": "Generation",
+      "spot": "ro-skid",
+      "link": "sys-pw",
+      "d": "RO, then deionization (DI) or electrodeionization (EDI) where your grade needs it. The outlet is designed to meet your limit-writer’s number."
+     },
+     {
+      "t": "Storage",
+      "spot": "storage-tank",
+      "link": "sys-storage",
+      "d": "Fitted where your use needs stored water; configurations confirmed when you enquire."
      },
      {
       "t": "Distribution loop",

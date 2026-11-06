@@ -10,9 +10,9 @@
    "page": "sys-pw",
    "slot": 4,
    "h": "Configurations and options",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "281a059",
    "hash": "a7810abdd4",
    "block": {
@@ -59,6 +59,105 @@
     "spot": "ro-skid",
     "look": "ghost-skid",
     "intro": "Each tag names what the option adds on paper. Your proposal marks it included or priced, with its lead time effect.",
+    "anchor": "options"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 4,
+   "h": "Configurations and options",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "31361d6ab0",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Configurations and options",
+    "items": [
+     {
+      "t": "Membrane degasser",
+      "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high. Adds: its datasheet, a P&ID line and a FAT check.",
+      "spot": "ro-membrane",
+      "part": "degasser"
+     },
+     {
+      "t": "Duplex trains",
+      "d": "Two trains, each at a share of demand set in your design: one runs while the other is sanitized. Adds: the second train’s FAT checks and a changeover test.",
+      "spot": "ro-skid",
+      "part": "duplex"
+     },
+     {
+      "t": "Recirculation at no demand",
+      "d": "Circulates when storage is full, so water does not stand in the membranes. Adds: a control sequence, tested at FAT.",
+      "spot": "loop",
+      "shape": "round",
+      "part": "recirc"
+     },
+     {
+      "t": "Ultrafiltration or 254 nm UV",
+      "d": "After DI or EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize. Adds: a P&ID line, FAT check.",
+      "spot": "uv-ozone",
+      "shape": "tag",
+      "part": "polish"
+     },
+     {
+      "t": "Recovery enhancement",
+      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter. Adds: revised membrane projections and a FAT check.",
+      "spot": "pump",
+      "shape": "tag",
+      "part": "recovery"
+     }
+    ],
+    "nav": "Options",
+    "fold": 3,
+    "spot": "ro-skid",
+    "look": "ghost-skid",
+    "intro": "Each tag names what the option adds on paper. Your proposal marks it included or priced, with its lead time effect.",
+    "anchor": "options"
+   }
+  },
+  {
+   "page": "sys-pw",
+   "slot": 1,
+   "h": "Configurations and options",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "e305295963",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "h": "Configurations and options",
+    "items": [
+     {
+      "t": "Recirculation at no demand",
+      "d": "Circulates when storage is full, so water does not stand in the membranes.",
+      "spot": "loop",
+      "shape": "round",
+      "part": "recirc"
+     },
+     {
+      "t": "Ultrafiltration or UV",
+      "d": "After DI or EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
+      "spot": "uv-ozone",
+      "shape": "tag",
+      "part": "polish"
+     },
+     {
+      "t": "Recovery enhancement",
+      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
+      "spot": "pump",
+      "shape": "tag",
+      "part": "recovery"
+     }
+    ],
+    "nav": "Options",
+    "spot": "ro-skid",
+    "look": "ghost-skid",
+    "intro": "Your proposal marks each option included or priced.",
     "anchor": "options"
    }
   }

@@ -20,57 +20,56 @@ var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked 
    block's ISO 9001 row (else any row) holds no [placeholder] (NavBar.js wfilled).
    NAVTASKS: the "I need to" row, the same in every panel and one more group on phones; [target, words after "I need to"]. */
 var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our first system'],['svc-upgrades#observation','answer a water observation'],
- ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['industries#fit','check our use fits']];
+ ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
 var NAVMENU=[
- {id:'systems',label:'Systems',hub:'systems',lead:'One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.',
+ {id:'systems',label:'Systems',hub:'systems',lead:'One Purified Water package: pretreatment, RO, DI/EDI and distribution.',
   groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
-     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Alarms, records and audit trails mapped to Part 11']]},
-   {h:'Plan and budget',items:[['systems#budget','Budget ranges','What a package costs and what moves it'],['systems#site','Site requirements','Space, utilities and connections you provide'],
-     ['sys-pw#design','Skid design basis','Capacity, feed and recovery, each with its basis']]}],
+     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
+   {h:'Plan and budget',items:[['systems#site','Site requirements','Space, utilities and connections you provide']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
   foot:{t:'No Water for Injection, pure steam or stainless steel systems.',to:'industries#faq',link:'Why'}},
  {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your Purified Water package.',
-  groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what'],['services#durations','Durations','Order to water in use, step by step']]},
-   {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'PP skids and loops, every joint logged'],
+  groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what']]},
+   {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'Skids and loops, every joint logged'],
      ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec']]},
    {h:'Running systems',items:[['svc-service',null,'Response times, visits, calibration and parts'],['svc-upgrades',null,'Options for an ageing system, with downtime'],
      ['svc-upgrades#observation','After a water observation','The plan your inspector will ask for']]}],
   feat:{to:'urs-guide',eyebrow:'Guide',t:'Writing your URS',d:'Settle what changes design, price and bidders',icon:'clipboard'}},
  {id:'industries',label:'Industries',hub:'industries',lead:'Where Purified Water goes in your plant. Many industries share the same water.',
   groups:[{h:'Regulated life sciences and healthcare',items:[['ind-pharma',null,'Liquids, creams, coatings and equipment rinse'],['ind-pharma#nhp','Natural health products','When your products need Purified Water'],
-     ['ind-cdmo',null,"One water system for every client's auditor"],['ind-meddevice',null,'Final rinse water with records auditors accept'],
+     ['ind-meddevice',null,'Final rinse water with records auditors accept'],
      ['ind-hospital-lab',null,'Reprocessing rinse water and central lab supply']]},
    {h:'Industrial and commercial',items:[['ind-personal-care',null,'Water phase for creams, lotions and OTC lines'],['ind-process#food','Food, beverage and cannabis','Proofing, ingredient and rinse water to your recipe'],
      ['ind-process#industrial','Industrial and energy','Rinse, electrolyser and boiler make-up to your limit'],['ind-hospital-lab#labs','Research and QC laboratories','Central reagent water for lab buildings'],
-     ['industries#matrix','All industries and uses','Where the water goes, industry by industry']]}],
+     ['industries','All industries and uses','Where the water goes, industry by industry']]}],
   feat:{to:'first-system',eyebrow:'Plain guide',t:'Your first system',d:'Grade, site, staff time and cost, plainly',icon:'droplet'},
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
  {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
-  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, Ph. Eur., GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits side by side'],
-     ['sys-monitoring#data-integrity','Data integrity','Audit trails and access, mapped to Part 11']]},
+  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits']]},
    {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
      ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
-   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],['cmp-quality#access','What you can read, and when','Public, under NDA, or at audit'],
+   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],
      ['cmp-quality#certification','Certification status','Quality, welding, pressure and panel approvals','filled']]}],
   feat:{to:'cmp-quality#audit',eyebrow:'Supplier audit',t:'Audit us before you order',d:'Book a supplier audit of our shop and QMS',icon:'magnifier'}},
  {id:'projects',label:'Applications',sections:['Projects','Applications'],hub:'projects',lead:'Typical Purified Water configurations, and how to qualify us as a supplier.',
-  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water'],['projects#by-industry','By industry','Where the water goes, industry by industry'],
-     ['projects#record','What a project record contains','Figures, methods, reports and approvals you receive']]},
+  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water']]},
    {h:'Qualify us',items:[['projects#verify','How to qualify us','Documents, audits and tests you can run'],['cmp-documentation#samples','Specimen documents','See the format before you order']]}],
   feat:{to:'svc-fat-sat',eyebrow:'Before delivery',t:'Factory acceptance test',d:'Your system tested at our shop, with you',icon:'gauge'}},
  {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, how buying from us works, and how to reach us.',
   groups:[{h:'About us',items:[['about','About Aquemi','Our team, company facts and where we work'],['news','Technical notes','Short answers to Purified Water questions'],['careers',null,'Open roles, pay and how we hire']]},
-   {h:'Working with us',items:[['buying#capital','Capital request','How a price is built, for your approver'],['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
+   {h:'Working with us',items:[['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
    {h:'Contact',items:[['contact-proposal',null,'Send a URS, tender, product or water data'],['contact-service',null,'Faults, calibration and parts for running systems']]}],
   phoneDrop:['contact-proposal','contact-service'],
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
 /* NAVSECT: [bar label, hub] per section (Hero.js heroIndex finds a hub by it) */
 var NAVSECT=NAVMENU.map(function(s){return [s.label,s.hub]});
-/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
-   hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the contact email, the
+   head office and the shop location (the footer's "designed, fabricated and tested in"). No phone number is published
+   for now (owner, 2026-11-04): the menu's urgent block keeps only the service request row, and wtel stays for when a
+   number is added back.
    Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
    files that repeat it; tools/design_system.py check warns on a value no page file carries. */
-var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]',shop:'[shop location, city and province]'};
+var CONTACT={email:'hello@aquemi.com',office:'Ontario, Canada',shop:'Ontario, Canada'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
@@ -90,8 +89,13 @@ function wnum(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');return s.indexOf(
 function wtel(s,cls,lead){s=String(s||'');var n=wnum(s),c=cls?' class="'+cls+'"':'',t=(lead||'')+(n?tx(s).replace(/ /g,'\u00a0'):tx(s));
  return n?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
-/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
-function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
+/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM).
+   Inline links: {words|target} in copy becomes a link, target a page id, "page#anchor" or "mailto:<address>"; a page or
+   anchor that does not exist (whas) leaves the words as plain text. Only for copy that is not itself inside a link. */
+function txLinks(s){return s.replace(/\{([^{}|]+)\|([^{}|\s]+)\}/g,function(m,t,to){
+ if(/^mailto:/i.test(to))return '<a href="'+to+'">'+t+'</a>';
+ return whas(to)?'<a href="#'+to+'" data-wp="'+to+'">'+t+'</a>':t})}
+function tx(s){s=txLinks(e(s));var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
 /* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label). intent (optional): option
    labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent, as Button) */
 function wlink(id,label,intent){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}
@@ -211,8 +215,10 @@ if(typeof document!=='undefined'){
    Call (link "tel:[sales phone number]"): the number follows wnum in core.js, the rule the NavBar and Footer numbers use
    (wtel). Once it is confirmed (no [square brackets]) the button dials it, its digit groups kept on one line, with no
    arrow (it opens no page); until then the label shows as plain text with the placeholder (aq-btn--pending), never a
-   link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added. */
+   link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added.
+   Email (link "mailto:<address>"): opens the visitor's mail app, no arrow and no intent. */
 function wBtn(label,link,kind,intent){if(/^tel:/i.test(link||''))return wCall(label,link.slice(4),kind);
+ if(/^mailto:/i.test(link||''))return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="'+e(link)+'">'+tx(label)+'</a>';
  var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 function wCall(label,num,kind){num=String(num||'').trim();label=String(label||'');var n=wnum(num),s=tx(num),t=tx(label.indexOf(num)<0?(label?label+' ':'')+num:label);
  return n?'<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="tel:'+e(n)+'">'+t.split(s).join(s.replace(/ /g,'\u00a0'))+'</a>':'<span class="aq-btn aq-btn--pending">'+t+'</span>'}
@@ -258,9 +264,11 @@ function wClosing(c,p){if(!c||!c.h)return '';
   (call?'':'<div class="aq-closing__action">'+cta+'</div>')+
   (swap||f?'<div class="aq-closing__more">'+swap+(f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+'</div>':'')+
   '</div></div></section>'}
-/* The band is water (pass 9b): an FxRipple layer under everything, rings trailing the pointer and a slow drop every
-   6.5 s. Optional (data-gl-optional): a page that already has two ambient layers (home) keeps a plain navy band. */
-var CLOSE_WATER='<canvas class="aq-fx-shader" data-gl="ripple" data-gl-optional aria-hidden="true"></canvas>';
+/* The band was water (pass 9b): an FxRipple layer under everything, rings trailing the pointer and a slow drop every
+   6.5 s. Retired (owner, 2026-11-05): the closing band is plain navy. To bring it back, set CLOSE_WATER to
+   CLOSE_WATER_RETIRED. FxRipple stays in the design system. */
+var CLOSE_WATER_RETIRED='<canvas class="aq-fx-shader" data-gl="ripple" data-gl-optional aria-hidden="true"></canvas>';
+var CLOSE_WATER='';
 /* The brand mark, large and faint, cut by the band's top-left corner (the mark's supplied path, never redrawn). */
 var MARK_CLOSE='<svg class="aq-closing__mark" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.32 159.66A73.66 73.66 0 1 1 86.00 159.66A73.66 73.66 0 1 1 233.32 159.66ZM233.32 352.34A73.66 73.66 0 1 1 159.66 278.68A119.03 119.03 0 0 0 278.68 159.66A73.66 73.66 0 1 1 352.34 233.32A119.03 119.03 0 0 0 233.32 352.34ZM426.00 352.34A73.66 73.66 0 1 1 278.68 352.34A73.66 73.66 0 1 1 426.00 352.34Z"/></svg>';
 /* EnquiryForm pre-set: tick the options named by the linking button's intent (WINTENT) and show the conditional fields they open,
@@ -384,8 +392,8 @@ document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.targe
 document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
  if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
 /* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description (the package,
-   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (service and
-   sales numbers and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
+   the plants it serves, and where we design, fabricate and test: the shop location) and the contact line (the contact email
+   as a mailto: link, and the head office); both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap
    columns in one row, then the legal line under a hairline. Phones show the columns two by two.
    The footer is its own sitemap, separate from the header menu (NAVMENU): every page, grouped in four columns.
    A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so a page appears
@@ -395,11 +403,11 @@ document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classLis
    Phones (pass 12 C, G-C1/F1): at 600 px and under each column is a disclosure: a 48 px head button (aria-expanded,
    aria-controls) over its links, Company open at first, the others closed; above 600 px the button is not shown, the
    column name is a plain heading and every column is open. One delegated click handler for the whole site. */
-function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring','compliance','cmp-documentation','cmp-quality']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-cdmo','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','projects','buying','news','careers','contact-proposal','contact-service','contact-locations']]],
+function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring','compliance','cmp-documentation','cmp-quality']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','projects','buying','news','careers','contact-proposal','contact-service','contact-locations']]],
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
-  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">A modular Purified Water package in polypropylene with PVC pretreatment, for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
-  +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
+  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Modular Purified Water packages for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
+  +'<address class="aq-footer__contact">'+'<a href="mailto:'+e(CONTACT.email)+'">'+e(CONTACT.email)+'</a><span>'+tx(CONTACT.office)+'</span></address></div>'
   +cols.map(function(c,i){var open=i===cols.length-1,id='wfoot-'+i;return '<nav class="aq-footer__col'+(open?' is-open':'')+'" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead"><span class="aq-footer__colname">'+e(c[0])+'</span>'
    +'<button type="button" class="aq-footer__toggle" aria-expanded="'+open+'" aria-controls="'+id+'">'+e(c[0])+'<span class="aq-phone-kit__chev" aria-hidden="true"></span></button></h5>'
    +'<div class="aq-footer__links" id="'+id+'">'+c[1].filter(whas).map(function(id){return wlink(id,label[id])}).join('')+'</div></nav>'}).join('')
@@ -894,16 +902,16 @@ function wHeroReply(p,f){var src=hsFrom(p,f.from);if(!src)return '';var cells=[]
 
 /* ---------- compliance-matrix (compliance, concept 234) ---------- */
 /* A ruled compliance matrix: f.cols (five heads: the clause, the three answers, the proof), rows numbered 01-04 whose
-   clause and proof cells are f.cells (placeholders until a real matrix is shown), one flow tick per row in the answer
-   column f.ticks names (1 to 3); and, tucked under its lower-right corner, a small PP package: a flat-top PP tank on
+   clause, answer and proof come from f.rows ([{c: clause, t: answer column 1-3, d: proof}], up to six; the older
+   f.cells (one clause and one proof for every row) with f.ticks still works), one flow tick per row in its answer column; and, tucked under its lower-right corner, a small PP package: a flat-top PP tank on
    its plinth piped with bead-ringed PP pipe to a generation module, the water leaving to the loop. Decoration
    (aria-hidden): the headline and lead carry the meaning. */
-function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],tk=(f.ticks||[1,1,2,1]).slice(0,6);if(cols.length<5)return '';
+function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],R=(f.rows&&f.rows.length?f.rows:(f.ticks||[1,1,2,1]).map(function(t){return {c:cell[0],t:t,d:cell[1]}})).slice(0,6);if(cols.length<5)return '';
  var tick='<svg class="aq-hero-scene__tick" viewBox="0 0 16 16" width="16" height="16" focusable="false"><path d="M3,8.5 L6.5,12 L13,4.5"/></svg>';
  var head=cols.map(function(c,i){return '<span class="aq-hero-scene__mx-th'+(i>0&&i<4?' is-mark':'')+'">'+tx(c)+'</span>'}).join('');
- var rows=tk.map(function(t,r){var o='<span class="aq-hero-scene__mx-c" data-r="'+(r+1)+'"><b>'+hsN(r+1)+'</b>'+tx(cell[0]||'')+'</span>';
+ var rows=R.map(function(x,r){var t=+x.t||1,o='<span class="aq-hero-scene__mx-c" data-r="'+(r+1)+'"><b>'+hsN(r+1)+'</b>'+tx(x.c||'')+'</span>';
   for(var j=1;j<4;j++)o+='<span class="aq-hero-scene__mx-m'+(j===t?' is-on':'')+'" data-r="'+(r+1)+'">'+(j===t?tick:'')+'</span>';
-  return o+'<span class="aq-hero-scene__mx-d" data-r="'+(r+1)+'">'+tx(cell[1]||'')+'</span>'}).join('');
+  return o+'<span class="aq-hero-scene__mx-d" data-r="'+(r+1)+'">'+tx(x.d||'')+'</span>'}).join('');
  var body='<path class="aq-iso__eq aq-iso__eq--alt aq-hero-scene__floor" d="'+isoBoxD([0,0,-4],112,52,4)+'"/>';
  var tank=hsPart('tank',24,26,0,1,'k1',function(b){hsPPTank(b,0,0,0,12,30)});
  var mod=isoPart('module',76,26,0,0.62,{w:40,d:36,h:52,id:'k1'});
@@ -914,6 +922,23 @@ function wHeroMatrix(p,f){var cols=(f.cols||[]).slice(0,5),cell=f.cells||[],tk=(
  return '<figure class="aq-hero-scene aq-hero-scene--matrix" aria-hidden="true"><div class="aq-hero-scene__mx">'+(f.title?'<p class="aq-hero-scene__mx-h">'+tx(f.title)+'</p>':'')+
   '<div class="aq-hero-scene__mx-grid">'+head+rows+'</div></div><div class="aq-hero-scene__inset">'+svg+'</div></figure>'}
 
+/* ---------- edition-timeline (compliance, pass 13) ---------- */
+/* How a standard that changes mid-project is handled, as a ruled sheet: f.title, then f.steps ([{t, d}], three to five)
+   as numbered stations on one flow line. A dashed branch, labelled f.branch, leaves the line at step f.fork and rejoins
+   it at step f.join: the new edition runs beside the project and enters it only at the join (your approval). Desktop
+   draws the line across, phones down the left with the branch on the right. HTML and CSS only, token colours.
+   Decoration (aria-hidden): the headline, lead and the page's edition FAQ carry the meaning. Replaces the retired
+   compliance-matrix scene on the compliance page (its rows kept in the page's todo). */
+function wHeroEdition(p,f){var S=(f.steps||[]).slice(0,5),n=S.length;if(n<3)return '';
+ var fk=Math.min(Math.max(+f.fork||2,1),n-1),jn=Math.min(Math.max(+f.join||n,fk+1),n);
+ var li=S.map(function(x,i){var k=i+1;return '<li class="aq-hero-scene__ed-step'+(k===fk?' is-fork':'')+(k===jn?' is-join':'')+'">'
+  +'<span class="aq-hero-scene__ed-dot"></span><span class="aq-hero-scene__ed-n">'+hsN(k)+'</span>'
+  +'<span class="aq-hero-scene__ed-t">'+tx(x.t||'')+'</span>'+(x.d?'<span class="aq-hero-scene__ed-d">'+tx(x.d)+'</span>':'')+'</li>'}).join('');
+ return '<figure class="aq-hero-scene aq-hero-scene--edition" aria-hidden="true"><div class="aq-hero-scene__ed" style="--n:'+n+';--f:'+fk+';--j:'+jn+'">'
+  +(f.title?'<p class="aq-hero-scene__ed-h">'+tx(f.title)+'</p>':'')
+  +'<div class="aq-hero-scene__ed-body"><span class="aq-hero-scene__ed-branch">'+(f.branch?'<span class="aq-hero-scene__ed-tag">'+tx(f.branch)+'</span>':'')+'</span>'
+  +'<ol class="aq-hero-scene__ed-rail">'+li+'</ol></div></div></figure>'}
+
 /* The hero's scene for this page, or '' (unknown look, too few rows: the hero falls back to its other figure) */
 function wHeroScene(p){var f=p.figure||{},L=f.look;
  if(L==='module-lineup'||L==='service-ring'){var idx=heroBigIndex(p)||heroIndex(p);if(!idx)return '';return L==='module-lineup'?wHeroLineup(p,idx):wHeroRing(p,idx)}
@@ -923,6 +948,7 @@ function wHeroScene(p){var f=p.figure||{},L=f.look;
  if(L==='site-map')return wHeroSiteMap(p,f);
  if(L==='reply-flow')return wHeroReply(p,f);
  if(L==='compliance-matrix')return wHeroMatrix(p,f);
+ if(L==='edition-timeline')return wHeroEdition(p,f);
  return ''}
 /* IsoKit: the shared isometric line-drawing kit (README: design-system/components/IsoKit/README.md). Every look that
    draws equipment, pipes, water or drawing-sheet furniture builds it here, so all sections read as one hand.
@@ -1469,8 +1495,8 @@ function wKeyFacts(facts){
    page's section jump (navJumps in SectionNav.js) and the proposal button. The accordion is DOM-local too
    (aq:navgroup for motion). The service number and hours come from CONTACT (core.js): a tel: link once confirmed, the
    placeholder until then, and the hours always travel with the number, so the block never implies round-the-clock help.
-   Launch rule (design-system/website.md, Navigation): while the number is unconfirmed the urgent block goes, the
-   "Service request" row stays.
+   Launch rule (design-system/website.md, Navigation): while no number is published (owner, 2026-11-04) the block keeps
+   only "Production stopped?" and the "Service request" row; the call line and hours return with a number.
    The toggle carries a two-bar mark (aq-nav__burger, aria-hidden) that turns into a cross while the menu is open; its
    label stays the words "Menu" / "Close" (aq-nav__toggle-t). */
 /* The section a page belongs to (its "section" string), the entries of a group that exist, and the gate for a link
@@ -1528,7 +1554,7 @@ function wHead(section){var cs=navOf(section),pg=wp(WP),jumps=navJumps(pg),T=nav
   '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+navThemeBtn()+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
-  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
+  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+svc('aq-menu__service')+'</div>'+
   '<nav aria-label="Sections"><ul class="aq-menu__list aq-menu__list--sect">'+NAVMENU.map(function(s){var c=s===cs;
    return s.panel===null?'<li><a href="#'+s.hub+'" data-wp="'+s.hub+'"'+(c?' aria-current="page"':'')+'>'+e(s.label)+'</a></li>':menuGroup(s,c)}).join('')+
   (T.length?'<li><button type="button" class="aq-menu__sect" id="wm-b-tasks" aria-expanded="false" aria-controls="wm-g-tasks">I need to<span class="aq-menu__plus" aria-hidden="true"></span></button><div class="aq-menu__group" id="wm-g-tasks" hidden><div class="aq-menu__group-in"><ul class="aq-menu__tasks">'+

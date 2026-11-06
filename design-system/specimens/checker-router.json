@@ -223,9 +223,9 @@
    "page": "ind-pharma",
    "slot": 0,
    "h": "Your situation and where to start",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-05",
    "commit": "bee7493",
    "hash": "52f61ada73",
    "block": {
@@ -294,6 +294,79 @@
      "",
      "",
      "ro",
+     "",
+     ""
+    ],
+    "anchor": "start"
+   }
+  },
+  {
+   "page": "ind-pharma",
+   "slot": 0,
+   "h": "Your situation and where to start",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "755a01e96f",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Your situation and where to start",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "A new line, or more points of use",
+      "More PW, tied into a qualified plant",
+      {
+       "t": "Upgrades and retrofits",
+       "link": "svc-upgrades"
+      }
+     ],
+     [
+      "You make products for several client companies",
+      "One water specification holding each client's limits; a water report per client",
+      {
+       "t": "Request a water scope review",
+       "link": "contact-proposal",
+       "intent": "I know my product, not my water spec|Contract manufacturing (CDMO)"
+      }
+     ],
+     [
+      "An inspection due, an observation, or results out of trend",
+      "Water quality at risk; first, assess design, trends and records.",
+      {
+       "t": "After a water observation",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "A new plant, or your first PW system",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "first-system"
+      }
+     ],
+     [
+      "Natural health products: does this line need PW?",
+      "Potable at minimum; PW where your specification calls for it",
+      {
+       "t": "Natural health products",
+       "link": "ind-pharma#nhp"
+      }
+     ]
+    ],
+    "look": "checker-router",
+    "draws": [
+     "outlet",
+     "",
+     "",
      "",
      ""
     ],

@@ -57,9 +57,9 @@
    "page": "home",
    "slot": 0,
    "h": "One package, one water path",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "6b56535bb2",
    "block": {
@@ -94,6 +94,150 @@
       "t": "Monitoring and controls",
       "d": "Online total organic carbon (TOC) and conductivity, with audit trails.",
       "tag": "21 CFR Part 11",
+      "link": "sys-monitoring",
+      "icon": "conductivity"
+     }
+    ],
+    "look": "system-run"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 0,
+   "h": "One package, one water path",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "23f7f5c931",
+   "block": {
+    "type": "path",
+    "h": "One package, one water path",
+    "intro": "One package makes Purified Water (PW) for your products and final rinses, from drinking water to the point of use.",
+    "from": "Drinking water",
+    "to": "Point of use",
+    "items": [
+     {
+      "t": "Pretreatment",
+      "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
+      "tag": "USP <1231>",
+      "link": "sys-pretreatment",
+      "spot": "pretreatment"
+     },
+     {
+      "t": "PW generation",
+      "d": "RO and deionization on a polypropylene (PP) skid, designed to meet the USP conductivity and organic carbon limits.",
+      "tag": "USP <645>",
+      "link": "sys-pw",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "PP tank and loop: turbulent flow at peak demand, sanitized by [PP loop sanitization method].",
+      "tag": "WHO TRS 1033",
+      "link": "sys-storage",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Monitoring and controls",
+      "d": "Online total organic carbon (TOC) and conductivity, with alarms and divert.",
+      "tag": "USP <643>",
+      "link": "sys-monitoring",
+      "icon": "conductivity"
+     }
+    ],
+    "look": "system-run"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 0,
+   "h": "One package, one water path",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "a17a023086",
+   "block": {
+    "type": "path",
+    "h": "One package, one water path",
+    "intro": "One package makes Purified Water (PW) for your products and final rinses, from drinking water to the point of use.",
+    "from": "Drinking water",
+    "to": "Point of use",
+    "items": [
+     {
+      "t": "Pretreatment",
+      "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
+      "tag": "USP <1231>",
+      "link": "sys-pretreatment",
+      "spot": "pretreatment"
+     },
+     {
+      "t": "PW generation",
+      "d": "RO and deionization on a polypropylene (PP) skid, designed to meet the USP conductivity and organic carbon limits.",
+      "tag": "USP <645>",
+      "link": "sys-pw",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "PP tank and loop: turbulent flow at peak demand, sanitized by a chemical method set per project.",
+      "tag": "WHO TRS 1033",
+      "link": "sys-storage",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Monitoring and controls",
+      "d": "Online total organic carbon (TOC) and conductivity, with alarms and divert.",
+      "tag": "USP <643>",
+      "link": "sys-monitoring",
+      "icon": "conductivity"
+     }
+    ],
+    "look": "system-run"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 0,
+   "h": "One package, one water path",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "0b6853538c",
+   "block": {
+    "type": "path",
+    "h": "One package, one water path",
+    "intro": "One package makes Purified Water (PW) for your products and final rinses, from drinking water to the point of use.",
+    "from": "Drinking water",
+    "to": "Point of use",
+    "items": [
+     {
+      "t": "Pretreatment",
+      "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
+      "tag": "USP <1231>",
+      "link": "sys-pretreatment",
+      "spot": "pretreatment"
+     },
+     {
+      "t": "PW generation",
+      "d": "RO and deionization on a polypropylene (PP) skid, designed to meet the USP conductivity and organic carbon limits.",
+      "tag": "USP <645>",
+      "link": "sys-pw",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "Tank and loop keep water moving to every point of use, sanitized on a set schedule.",
+      "tag": "USP <1231>",
+      "link": "sys-storage",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Monitoring and controls",
+      "d": "Online total organic carbon (TOC) and conductivity, with alarms and divert.",
+      "tag": "USP <643>",
       "link": "sys-monitoring",
       "icon": "conductivity"
      }

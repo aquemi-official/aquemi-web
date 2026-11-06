@@ -18,57 +18,56 @@ var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked 
    block's ISO 9001 row (else any row) holds no [placeholder] (NavBar.js wfilled).
    NAVTASKS: the "I need to" row, the same in every panel and one more group on phones; [target, words after "I need to"]. */
 var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our first system'],['svc-upgrades#observation','answer a water observation'],
- ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['industries#fit','check our use fits']];
+ ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
 var NAVMENU=[
- {id:'systems',label:'Systems',hub:'systems',lead:'One polypropylene Purified Water package: pretreatment, RO, DI/EDI and distribution.',
+ {id:'systems',label:'Systems',hub:'systems',lead:'One Purified Water package: pretreatment, RO, DI/EDI and distribution.',
   groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
-     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Alarms, records and audit trails mapped to Part 11']]},
-   {h:'Plan and budget',items:[['systems#budget','Budget ranges','What a package costs and what moves it'],['systems#site','Site requirements','Space, utilities and connections you provide'],
-     ['sys-pw#design','Skid design basis','Capacity, feed and recovery, each with its basis']]}],
+     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
+   {h:'Plan and budget',items:[['systems#site','Site requirements','Space, utilities and connections you provide']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
   foot:{t:'No Water for Injection, pure steam or stainless steel systems.',to:'industries#faq',link:'Why'}},
  {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your Purified Water package.',
-  groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what'],['services#durations','Durations','Order to water in use, step by step']]},
-   {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'PP skids and loops, every joint logged'],
+  groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what']]},
+   {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'Skids and loops, every joint logged'],
      ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec']]},
    {h:'Running systems',items:[['svc-service',null,'Response times, visits, calibration and parts'],['svc-upgrades',null,'Options for an ageing system, with downtime'],
      ['svc-upgrades#observation','After a water observation','The plan your inspector will ask for']]}],
   feat:{to:'urs-guide',eyebrow:'Guide',t:'Writing your URS',d:'Settle what changes design, price and bidders',icon:'clipboard'}},
  {id:'industries',label:'Industries',hub:'industries',lead:'Where Purified Water goes in your plant. Many industries share the same water.',
   groups:[{h:'Regulated life sciences and healthcare',items:[['ind-pharma',null,'Liquids, creams, coatings and equipment rinse'],['ind-pharma#nhp','Natural health products','When your products need Purified Water'],
-     ['ind-cdmo',null,"One water system for every client's auditor"],['ind-meddevice',null,'Final rinse water with records auditors accept'],
+     ['ind-meddevice',null,'Final rinse water with records auditors accept'],
      ['ind-hospital-lab',null,'Reprocessing rinse water and central lab supply']]},
    {h:'Industrial and commercial',items:[['ind-personal-care',null,'Water phase for creams, lotions and OTC lines'],['ind-process#food','Food, beverage and cannabis','Proofing, ingredient and rinse water to your recipe'],
      ['ind-process#industrial','Industrial and energy','Rinse, electrolyser and boiler make-up to your limit'],['ind-hospital-lab#labs','Research and QC laboratories','Central reagent water for lab buildings'],
-     ['industries#matrix','All industries and uses','Where the water goes, industry by industry']]}],
+     ['industries','All industries and uses','Where the water goes, industry by industry']]}],
   feat:{to:'first-system',eyebrow:'Plain guide',t:'Your first system',d:'Grade, site, staff time and cost, plainly',icon:'droplet'},
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
  {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
-  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, Ph. Eur., GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits side by side'],
-     ['sys-monitoring#data-integrity','Data integrity','Audit trails and access, mapped to Part 11']]},
+  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits']]},
    {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
      ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
-   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],['cmp-quality#access','What you can read, and when','Public, under NDA, or at audit'],
+   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],
      ['cmp-quality#certification','Certification status','Quality, welding, pressure and panel approvals','filled']]}],
   feat:{to:'cmp-quality#audit',eyebrow:'Supplier audit',t:'Audit us before you order',d:'Book a supplier audit of our shop and QMS',icon:'magnifier'}},
  {id:'projects',label:'Applications',sections:['Projects','Applications'],hub:'projects',lead:'Typical Purified Water configurations, and how to qualify us as a supplier.',
-  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water'],['projects#by-industry','By industry','Where the water goes, industry by industry'],
-     ['projects#record','What a project record contains','Figures, methods, reports and approvals you receive']]},
+  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water']]},
    {h:'Qualify us',items:[['projects#verify','How to qualify us','Documents, audits and tests you can run'],['cmp-documentation#samples','Specimen documents','See the format before you order']]}],
   feat:{to:'svc-fat-sat',eyebrow:'Before delivery',t:'Factory acceptance test',d:'Your system tested at our shop, with you',icon:'gauge'}},
  {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, how buying from us works, and how to reach us.',
   groups:[{h:'About us',items:[['about','About Aquemi','Our team, company facts and where we work'],['news','Technical notes','Short answers to Purified Water questions'],['careers',null,'Open roles, pay and how we hire']]},
-   {h:'Working with us',items:[['buying#capital','Capital request','How a price is built, for your approver'],['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
+   {h:'Working with us',items:[['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
    {h:'Contact',items:[['contact-proposal',null,'Send a URS, tender, product or water data'],['contact-service',null,'Faults, calibration and parts for running systems']]}],
   phoneDrop:['contact-proposal','contact-service'],
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
 /* NAVSECT: [bar label, hub] per section (Hero.js heroIndex finds a hub by it) */
 var NAVSECT=NAVMENU.map(function(s){return [s.label,s.hub]});
-/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
-   hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the contact email, the
+   head office and the shop location (the footer's "designed, fabricated and tested in"). No phone number is published
+   for now (owner, 2026-11-04): the menu's urgent block keeps only the service request row, and wtel stays for when a
+   number is added back.
    Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
    files that repeat it; tools/design_system.py check warns on a value no page file carries. */
-var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]',shop:'[shop location, city and province]'};
+var CONTACT={email:'hello@aquemi.com',office:'Ontario, Canada',shop:'Ontario, Canada'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
@@ -88,8 +87,13 @@ function wnum(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');return s.indexOf(
 function wtel(s,cls,lead){s=String(s||'');var n=wnum(s),c=cls?' class="'+cls+'"':'',t=(lead||'')+(n?tx(s).replace(/ /g,'\u00a0'):tx(s));
  return n?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
-/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
-function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
+/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM).
+   Inline links: {words|target} in copy becomes a link, target a page id, "page#anchor" or "mailto:<address>"; a page or
+   anchor that does not exist (whas) leaves the words as plain text. Only for copy that is not itself inside a link. */
+function txLinks(s){return s.replace(/\{([^{}|]+)\|([^{}|\s]+)\}/g,function(m,t,to){
+ if(/^mailto:/i.test(to))return '<a href="'+to+'">'+t+'</a>';
+ return whas(to)?'<a href="#'+to+'" data-wp="'+to+'">'+t+'</a>':t})}
+function tx(s){s=txLinks(e(s));var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
 /* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label). intent (optional): option
    labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent, as Button) */
 function wlink(id,label,intent){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}

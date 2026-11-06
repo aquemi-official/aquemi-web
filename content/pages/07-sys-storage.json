@@ -2,12 +2,12 @@
  "id": "sys-storage",
  "section": "Systems",
  "nav_label": "Storage and distribution loops",
- "title": "Purified Water storage and distribution loops in polypropylene | Aquemi",
- "meta": "Polypropylene Purified Water tanks and loops: circulation, scheduled sanitization and sample points control microbes, inside PP's pressure–temperature rating.",
+ "title": "Purified Water storage and distribution loops | Aquemi",
+ "meta": "Purified Water tanks and loops: circulation, scheduled sanitization and sample points control microbes.",
  "path": "/systems/storage-and-distribution/",
  "eyebrow": "SYSTEMS · STORAGE AND DISTRIBUTION · USP <645>, <643>",
  "headline": "Loops that hold quality to every outlet",
- "lead": "Polypropylene (PP) tanks and loops keep Purified Water (PW) moving at peak demand. Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+ "lead": "Tanks and loops keep Purified Water (PW) moving to every point of use at peak demand.",
  "primary_cta": "Request a loop sizing",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet|Sizing proposal|Storage and distribution loop",
@@ -15,81 +15,49 @@
   "label": "See the documentation package",
   "link": "cmp-documentation"
  },
- "facts": [
-  {
-   "v": "≥ [design minimum return velocity, m/s]",
-   "l": "Return velocity, peak demand · measured on site"
-  },
-  {
-   "v": "≤ [dead leg design limit, L/D]",
-   "l": "Dead leg, every branch · measured and listed"
-  },
-  {
-   "v": "[tank volume range, L]",
-   "l": "Storage tank · sized from your demand"
-  }
- ],
  "blocks": [
   {
    "type": "spec",
    "h": "Microbial control, rule by rule",
-   "intro": "Three controls hold counts down: moving water, [PP loop sanitization method] on a schedule, and sample points that show the result. Sanitization lowers counts; it does not sterilize. Your trend shows whether the schedule holds.",
-   "caption": "PW LOOP · WHO TRS 1033",
+   "intro": "Three controls hold counts down: moving water, scheduled chemical sanitization and sample points that show the result.",
+   "caption": "PW LOOP",
    "cols": [
     "Rule",
     "Design value",
     "Basis"
    ],
    "nav": "Design rules",
-   "anchor": "rules",
+   "anchor": "sanitization",
    "rows": [
     {
      "p": "Flow regime",
      "v": "Turbulent in every section at peak demand",
-     "m": "WHO TRS 1033, 8.6; return flow alarmed, recorded at SAT",
+     "m": "Return flow alarmed, recorded at SAT",
      "hl": true,
-     "rule": "≥ [design minimum return velocity, m/s]",
+     "rule": "The velocity set in your design basis",
      "fig": "turbulent"
     },
     {
      "p": "Loop sanitization",
-     "v": "[PP loop sanitization method]",
-     "m": "WHO TRS 1033, 8.4; inside the PP maker's pressure–temperature curve; verified at the coldest point",
-     "rule": "≤ [maximum loop sanitization temperature for PP, °C]"
+     "v": "A chemical method set per project",
+     "m": "Residual tested at every outlet before use",
+     "fig": "none"
     },
     {
      "p": "Sample valves",
-     "v": "[sample valve design and orientation]",
+     "v": "Sample valve design named in your proposal",
      "m": "Drawn as production draws, so a result reflects the water, not the valve"
-    },
-    {
-     "p": "Dead legs",
-     "v": "Every branch, instrument tee and sample valve kept short",
-     "m": "WHO TRS 1033, 8.6; measured and listed in the dead leg register",
-     "rule": "≤ [dead leg design limit, L/D]",
-     "fig": "deadleg"
     },
     {
      "p": "Slope and drainage",
      "v": "Continuous fall to low-point drains",
-     "m": "WHO TRS 1033, 7.2.1; fall measured on each run",
-     "rule": "≥ [design minimum slope, in/ft or %]",
+     "m": "Fall measured on each run",
+     "rule": "The slope set in your design basis",
      "fig": "slope"
     },
     {
-     "p": "Point-of-use valves",
-     "v": "[PP point-of-use valve type], joined by [PP joining method]",
-     "m": "WHO TRS 1033, 8.6"
-    },
-    {
-     "p": "Tank vent",
-     "v": "Hydrophobic 0.2 µm filter",
-     "m": "WHO TRS 1033, 9.2",
-     "fig": "vent"
-    },
-    {
      "p": "Online monitoring",
-     "v": "Conductivity, temperature and flow on the return; total organic carbon (TOC): [TOC on the return, standard or option]",
+     "v": "Conductivity, temperature and flow on the return; total organic carbon (TOC) on request",
      "m": "USP <645>; USP <643>",
      "fig": "monitor"
     }
@@ -122,7 +90,7 @@
     {
      "t": "Heat exchanger",
      "spot": "heat-exchanger",
-     "d": "Holds loop temperature. [heat exchanger, standard or option]"
+     "d": "Holds loop temperature. Fitted on request."
     },
     {
      "t": "Points of use",
@@ -145,176 +113,13 @@
    "anchor": "loop"
   },
   {
-   "type": "table",
-   "h": "Chemical, hot water or UV",
-   "intro": "Ozone needs the PP maker's written rating, which we have not found.",
-   "nav": "Sanitization",
-   "anchor": "sanitization",
-   "cols": [
-    "Method",
-    "How it controls microbes",
-    "Fit with PP",
-    "Trade-off"
-   ],
-   "rows": [
-    [
-     "Chemical",
-     "[PP loop sanitization method]; residual tested before use",
-     "A sanitant the PP maker rates",
-     "Loop out of use each cycle"
-    ],
-    [
-     "Hot water",
-     "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
-     "Inside the PP maker's pressure–temperature curve; ≥ 65 °C needs an engineer's review",
-     "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
-    ],
-    [
-     "Ultraviolet (UV)",
-     "254 nm UV on the supply lowers the viable count; it does not sanitize the loop",
-     "Alongside chemical or hot water, never alone",
-     "Lamps need replacing"
-    ]
-   ],
-   "look": "method-bento",
-   "figs": [
-    "chemical",
-    "hot",
-    "uv"
-   ],
-   "scale": {
-    "row": 1,
-    "base": "Inside the PP maker's pressure–temperature curve",
-    "marks": [
-     {
-      "v": 65,
-      "l": "Needs an engineer's review"
-     },
-     {
-      "v": 80,
-      "l": "Not for routine use at loop pressure"
-     }
-    ]
-   }
-  },
-  {
-   "type": "spec",
-   "h": "Tank and pipework",
-   "caption": "FABRICATION · POLYPROPYLENE",
-   "cols": [
-    "Parameter",
-    "Design value",
-    "Basis"
-   ],
-   "rows": [
-    {
-     "p": "Tank volume",
-     "v": "[tank volume range, L]",
-     "m": "Sized from your demand profile",
-     "part": "volume"
-    },
-    {
-     "p": "Product contact",
-     "v": "Unpigmented PP, [PP grade]",
-     "m": "[PP material certificates]",
-     "part": "contact"
-    },
-    {
-     "p": "Internal surface",
-     "v": "[PP internal surface specification, Ra µm]",
-     "m": "[basis for the PP surface specification]",
-     "part": "surface"
-    },
-    {
-     "p": "Joints",
-     "v": "[PP joining method]; [PP joint records kept]",
-     "m": "[welder qualification standard for thermoplastics]",
-     "part": "joint"
-    },
-    {
-     "p": "Budget",
-     "v": "[budget range, CAD] for [reference tank volume L, points of use]",
-     "m": "Before tax, as of [month year]",
-     "link": "systems#budget",
-     "part": "budget"
-    },
-    {
-     "p": "Tank design",
-     "v": "[PP tank design: atmospheric or pressure-rated]",
-     "m": "[PP tank design standard]",
-     "part": "design"
-    },
-    {
-     "p": "Cleaning before first use",
-     "v": "[pre-commissioning flush and cleaning procedure for PP]",
-     "m": "PW rinse to conductivity and TOC limits",
-     "part": "flush"
-    },
-    {
-     "p": "Heat exchangers",
-     "v": "Double tube sheet [heat exchanger, standard or option]",
-     "m": "FDA high-purity water guide (1993)",
-     "part": "hx"
-    },
-    {
-     "p": "Pumps",
-     "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
-     "m": "Sized for the worst-case outlet combination",
-     "part": "pump"
-    },
-    {
-     "p": "Spray ball",
-     "v": "Wets head space and walls continuously",
-     "m": "WHO TRS 1033, 9.2; [spray coverage test method]",
-     "part": "spray"
-    }
-   ],
-   "nav": "Fabrication",
-   "fold": 5,
-   "fold_noun": "parameters",
-   "as": "callouts",
-   "look": "tank-ga",
-   "anchor": "tank"
-  },
-  {
-   "type": "docs",
-   "h": "Documents with the loop",
-   "nav": "Documents",
-   "link": "cmp-documentation#index",
-   "link_label": "Full index",
-   "items": [
-    {
-     "t": "Hydraulic calculation",
-     "d": "Shows turbulent flow by design: velocity and Reynolds number, every section and case",
-     "key": true
-    },
-    {
-     "t": "Dead leg register",
-     "d": "Proves every branch is short: L/D for each tee and sample valve",
-     "key": true
-    },
-    {
-     "t": "P&IDs and as-built isometrics",
-     "d": "Piping and instrumentation diagrams: flow direction, slopes, diameters and lengths",
-     "key": true
-    },
-    {
-     "t": "Material certificates and joint records",
-     "d": "[PP material certificates]; [PP joint records kept]",
-     "key": true
-    }
-   ],
-   "look": "sheet-stack",
-   "anchor": "documents"
-  },
-  {
    "type": "options",
    "as": "modules",
    "h": "Options",
    "items": [
     {
      "t": "UV on the supply",
-     "d": "After the tank, before the first outlet. [UV, standard or option]",
+     "d": "Ultraviolet (UV), after the tank and before the first outlet.",
      "spot": "uv",
      "part": [
       "uv"
@@ -350,20 +155,10 @@
    "nav": "FAQ",
    "items": [
     {
-     "q": "How hot can a PP loop be sanitized?",
-     "a": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. Any hot-water cycle stays inside the PP maker's pressure–temperature curve for its hours: [maximum loop sanitization temperature for PP, °C]. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF].",
-     "link": "news#pp-or-stainless",
-     "link_label": "PP or stainless for loops"
-    },
-    {
      "q": "We had a plastic loop fail before. What is different?",
-     "a": "Three design rows answer it: joints, supports and heat. Joints: [PP joining method], each one logged in [PP joint records kept]. Supports: [PP pipe support spacing and expansion design]. Heat: any hot-water cycle stays inside the PP maker's pressure–temperature curve. Tell us what failed in yours; we check our design against it.",
+     "a": "Joints and supports. Each joint is made by a qualified welder and logged; supports follow the pipe maker's published data. Tell us what failed in yours; we check our design against it.",
      "link": "svc-fabrication",
      "link_label": "How joints are logged"
-    },
-    {
-     "q": "How do you measure L/D?",
-     "a": "L runs from the main pipe's inside wall to the valve seal point; D is the branch's inside diameter. We measure every tee and sample valve and list each in the dead leg register."
     },
     {
      "q": "How do you keep flow turbulent when several outlets open?",
@@ -371,12 +166,12 @@
     },
     {
      "q": "Can we add points of use later?",
-     "a": "Yes, after a hydraulic check at the new peak demand. Each branch is cut in with [PP point-of-use valve type] under your change control. Shutdown: [typical shutdown for a point-of-use addition, days].",
+     "a": "Yes, after a hydraulic check at the new peak demand. Each branch is cut in with the point-of-use valve named in your proposal, under your change control. Shutdown: planned with you.",
      "link": "svc-upgrades"
     },
     {
      "q": "How do you show the sanitant reached every outlet?",
-     "a": "The sanitization procedure names every outlet opened in the cycle and its contact time: [PP loop sanitization method]. Each outlet is then flushed and the residual tested before use."
+     "a": "The sanitization procedure names every outlet opened in the cycle. Each outlet is then flushed and the residual tested before use."
     }
    ],
    "anchor": "faq"
@@ -394,24 +189,24 @@
  ],
  "cta": {
   "h": "Send your points of use",
-  "body": "An engineer replies with a loop concept or questions. Cost: [proposal cost or free].",
+  "body": "An engineer replies with a loop concept or questions. Cost: discussed when you enquire.",
   "button": "Request a loop sizing",
   "link": "contact-proposal",
   "intent": "I have water data, no system yet|Sizing proposal|Storage and distribution loop",
   "include": [
    "Points of use: location, L/h, temperature",
    "Outlets open together, peak L/h",
-   "Sanitization procedure: method, °C, hours a year",
+   "Your sanitization procedure, if any",
    "PW specification and current generation, if any",
    "Layout drawings with outlet locations"
   ],
   "returns": [
    "Loop concept for your peak demand",
-   "Tank size and loop velocities",
-   "Sanitization method within the PP rating",
+   "Tank size",
+   "A sanitization method for your loop",
    "Questions on missing data"
   ],
-  "turnaround": "[proposal response time, working days]"
+  "turnaround": "Confirmed when you enquire"
  },
  "todo": [
   "Design minimum return velocity at peak demand, m/s: rules table and hero fact ([design minimum return velocity, m/s]; FD-19)",
@@ -452,6 +247,7 @@
   "Pass 12 (SITE-PLAN §1.4.2): the lead carries DR-013 rule 1 verbatim as the PP boundary in the first screen; the earlier drainage clause is left to the slope row and the meta",
   "Pass 12: anchors rules, loop, tank, documents, options and faq added; sanitization unchanged (linked from systems, sys-pw, first-system, ind-pharma, ind-meddevice, svc-service; ind-process links it for bottled water). Nothing linked the old s-N anchors",
   "Pass 12 (FD-60, DR-028): page swept; the ozone intro is a technical limit (DR-013 rule 4; newness sweep keeps it verbatim). No reference, readiness or newness wording on this page",
-  "Pass 12 review: return-sensor stage names the return sample valve; design detail under [sample valve design and orientation] (owner confirms with FD-19)"
+  "Pass 12 review: return-sensor stage names the return sample valve; design detail under [sample valve design and orientation] (owner confirms with FD-19)",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired sanitization methods (method-bento), tank and pipework (tank-ga) and documents (sheet-stack); anchor 'sanitization' moved onto the rule-figures block (was 'rules'); rules 8 to 5 (dead legs, point-of-use valves, tank vent), WHO clause numbers out, no heat figure; FAQ 6 to 4; PP rating sentence out of the hero."
  ]
 }

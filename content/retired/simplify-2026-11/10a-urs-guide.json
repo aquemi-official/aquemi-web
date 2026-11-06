@@ -1,0 +1,446 @@
+{
+ "id": "urs-guide",
+ "section": "Services",
+ "nav_label": "Writing your URS",
+ "title": "Writing a URS for a Purified Water system | Aquemi",
+ "meta": "What a Purified Water URS should settle: must-haves, outcome clauses, polypropylene rows, and when polypropylene is the wrong choice.",
+ "path": "/services/writing-a-urs/",
+ "eyebrow": "SERVICES · WRITING YOUR URS",
+ "headline": "Writing a URS for a Purified Water system",
+ "lead": "Your user requirement specification (URS) is your document, answered row by row. Settle what changes design, price and who can bid. First: where our polypropylene package does not fit.",
+ "primary_cta": "Request a URS gap review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have a URS or a draft|URS gap review",
+ "secondary_cta": {
+  "label": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I know my product, not my water spec"
+ },
+ "figure": {
+  "plate": "binder",
+  "label": "Your URS",
+  "items": [
+   "Grade and boundary",
+   "Demand and points of use",
+   "Feed water",
+   "Limits and where measured",
+   "Sanitization, then materials",
+   "Acceptance and documents"
+  ],
+  "foot": "One number, one sentence per row"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "evidence",
+   "look": "fit-envelope",
+   "anchor": "pp-rows",
+   "nav": "Wrong choice",
+   "h": "When polypropylene is the wrong choice",
+   "intro": "Our package is polypropylene (PP) with polyvinyl chloride (PVC) pretreatment. If your URS needs any row below, our package does not fit as written. We will tell you early.",
+   "cols": [
+    "If your URS needs",
+    "Why polypropylene does not fit",
+    "Look instead for"
+   ],
+   "rows": [
+    [
+     "Water for Injection (WFI), pure steam or a sterile-product loop",
+     "Outside this package's scope.",
+     "A WFI or stainless steel system supplier"
+    ],
+    [
+     "A loop held hot, routine 80 °C sanitization at loop pressure, or steam sterilization",
+     "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "A polyvinylidene fluoride (PVDF) or stainless loop (ask whether we can quote it)"
+    ],
+    [
+     "A chlorine or hypochlorite sanitization you cannot change",
+     "Polypropylene is not recommended for chlorinated service.",
+     "Another chemical method, if your procedures allow it"
+    ],
+    [
+     "A corporate or client standard that names 316L stainless steel",
+     "A policy, not a technical question. A deviation needs your quality unit's approval.",
+     "A stainless steel system supplier"
+    ],
+    [
+     "An extension of a hot-sanitized stainless system",
+     "The two parts could not share one sanitization regime.",
+     "The existing material"
+    ],
+    [
+     "Very small or occasional demand",
+     "A generation skid and a loop would be oversized, even with each package sized to your demand.",
+     "Service deionization (exchange tanks) or a laboratory polisher"
+    ],
+    [
+     "Equipment outdoors, in an unheated room, or pipe in return-air plenums",
+     "Unpigmented PP is sensitive to sunlight, and PP is combustible. Some components need a heated room.",
+     "A heated indoor plant room, on a route your code accepts"
+    ]
+   ],
+   "scale": {
+    "from": 0,
+    "to": 80,
+    "unit": "°C",
+    "label": "Fits"
+   },
+   "fold": 3
+  },
+  {
+   "type": "steps",
+   "look": "binder-tabs",
+   "anchor": "outline",
+   "nav": "Outline",
+   "h": "What a Purified Water URS should settle",
+   "intro": "Number each requirement, one sentence each; suppliers answer in your numbering. Hospitals and labs issue a basis of design; industrial users send the equipment maker's spec. The same order helps.",
+   "items": [
+    {
+     "t": "Before design",
+     "d": "Feed water, grade, demand and site limits first. Then the loop: scheme, components, check against URS and budget, change or freeze.",
+     "label": "Start"
+    },
+    {
+     "t": "Water grade and system boundary",
+     "d": "Purified Water to USP, Ph. Eur. or both, by edition, or your standard's grade. Where the system starts and ends; what is by others.",
+     "link": "industries#fit",
+     "label": "Grade"
+    },
+    {
+     "t": "Demand and points of use",
+     "d": "Every point of use, washers and humidifiers too: peak draw in L/h, daily volume, temperature and planned growth.",
+     "label": "Demand"
+    },
+    {
+     "t": "Feed water",
+     "d": "Feed water analyses from every season, and the coldest feed temperature: cold feed cuts membrane output.",
+     "label": "Feed"
+    },
+    {
+     "t": "Quality limits and where you prove them",
+     "d": "Name each limit and its pharmacopoeia, where it is measured (online or lab), and who sets alert and action levels.",
+     "label": "Limits"
+    },
+    {
+     "t": "Sanitization, then materials",
+     "d": "Settle the sanitization method first: it decides the materials. Then write materials as performance, unless a standard names one.",
+     "label": "Sanitize",
+     "link": "urs-guide#clauses"
+    },
+    {
+     "t": "Controls, alarms and data",
+     "d": "Where failed water goes, restart after power loss, user access, data recording, retention and backup, screen language.",
+     "label": "Controls"
+    },
+    {
+     "t": "Room, utilities and approvals",
+     "d": "Room size and access, power, air, drains, room temperature, and who obtains each Canadian approval, such as pressure registration.",
+     "label": "Site"
+    },
+    {
+     "t": "Testing and acceptance",
+     "d": "Who writes and approves each protocol, and whether factory results count toward qualification. Acceptance: tests, numeric criteria, run length, signatures.",
+     "label": "Tests"
+    },
+    {
+     "t": "Documents, service and spares",
+     "d": "A dated document schedule, handover set, response hours, spares on site, training hours, warranty start event.",
+     "label": "Handover"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "look": "bid-route",
+   "anchor": "priority",
+   "nav": "Must-haves",
+   "h": "Must-haves, preferences and how bids answer",
+   "intro": "Every value in a bid should name the document that proves it.",
+   "cols": [
+    "Practice",
+    "What it does to the bids",
+    "Use it for"
+   ],
+   "rows": [
+    [
+     "Must-have",
+     "One shortfall ends a bid, whatever its price.",
+     "What your product, your inspector or a written standard requires"
+    ],
+    [
+     "Preference",
+     "Scored against the other bids.",
+     "Features you would trade for price, time or service"
+    ],
+    [
+     "Too many must-haves",
+     "Fewer suppliers can bid; sometimes only one.",
+     "Ask of each one: is this the outcome, or one way to reach it?"
+    ],
+    [
+     "One answer format",
+     "Every row answered: meets, meets with a note, or differs.",
+     "Every row of the URS"
+    ],
+    [
+     "One deviation list",
+     "Silence is often read as full compliance, and enforced later.",
+     "Every difference, keyed to your rows, with its reason"
+    ],
+    [
+     "Separate price lines",
+     "Shows what each bid includes; lets you trim options to budget.",
+     "Factory and site tests, documents, start-up, training, spares and options"
+    ]
+   ],
+   "icons": [
+    "gate",
+    "beam",
+    "pinch",
+    "sheet",
+    "slip",
+    "strips"
+   ]
+  },
+  {
+   "type": "table",
+   "as": "failures",
+   "look": "strike-gaps",
+   "anchor": "clauses",
+   "nav": "Clauses",
+   "h": "Clauses that keep the design open",
+   "intro": "A clause that names hardware decides the design before anyone sees your plant. If you truly need one material or method, say so plainly.",
+   "cols": [
+    "Clause that locks one design",
+    "Topic",
+    "Outcome clause any supplier can answer"
+   ],
+   "rows": [
+    [
+     "An analyser of one named make and model",
+     "Monitoring",
+     "Online conductivity at the loop return within the pharmacopoeia limit, with calibration records"
+    ],
+    [
+     "316L stainless steel for all product-contact parts",
+     "Product contact",
+     "Compatible with Purified Water and your sanitizing agent, with lot certificates, fully drainable, with minimal dead legs"
+    ],
+    [
+     "Hot-water sanitization at 80 °C, weekly",
+     "Sanitization",
+     "Method and frequency to suit the materials, proven effective in every part; any chemical sanitant proven absent before use"
+    ],
+    [
+     "Orbital welds with weld logs and borescope records",
+     "Joints",
+     "A record traceable to each joint, with its examination and acceptance"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "as": "grades",
+   "look": "derivation-sheet",
+   "anchor": "allow-pp",
+   "nav": "Polypropylene rows",
+   "h": "Rows to write if you allow polypropylene",
+   "intro": "Written this way, a polypropylene bid can be scored, not excluded. Each row can be checked at installation.",
+   "cols": [
+    "Row",
+    "What to write",
+    "What sets it"
+   ],
+   "rows": [
+    [
+     "Product-contact material",
+     "Virgin, unpigmented polypropylene, with a material certificate per lot",
+     "Purified Water quality and your sanitizing agent"
+    ],
+    [
+     "Pressure rating and wall",
+     "Pressure class and wall ratio for each line, stated at your highest operating and sanitizing temperature",
+     "Polypropylene's pressure rating falls as it heats"
+    ],
+    [
+     "Joints and records",
+     "A record per joint, with a joint map and examination, replacing stainless weld logs and passivation records",
+     "A copied stainless document list leaves rows nobody can answer"
+    ],
+    [
+     "Sanitization",
+     "A method within the material's temperature and chemical ratings; any sanitant proven absent at every outlet before use",
+     "Your sanitization procedure and the material maker's chemical resistance data"
+    ],
+    [
+     "Installation",
+     "Tank and pipe kept from sunlight, in a heated room, on supports that let the pipe expand",
+     "Unpigmented polypropylene is sensitive to sunlight; plastic pipe moves more with temperature than steel"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "look": "pipe-collage",
+   "anchor": "specification",
+   "nav": "For consultants",
+   "h": "Writing a specification section instead of a URS",
+   "intro": "Consultants often issue a three-part specification section with the drawings. Same rules: outcomes, must-haves marked, and who does what.",
+   "pieces": [
+    "",
+    "",
+    "vessel",
+    "pipe",
+    "panel"
+   ],
+   "cols": [
+    "Part",
+    "What it holds",
+    "Note for the specifier",
+    "Where we answer it"
+   ],
+   "rows": [
+    [
+     "What you receive from us",
+     "A compliance matrix against your client's URS, in a time confirmed when you enquire",
+     "Basis of design at the concept hold. Diagrams and a draft functional specification at basic design; approved issues at detailed design.",
+     {
+      "t": "Request a compliance matrix",
+      "link": "contact-proposal",
+      "intent": "I have a URS or a draft|Compliance matrix"
+     }
+    ],
+    [
+     "Part 1 General",
+     "Scope, references, submittals, quality, warranty and its start event",
+     "Cite GUI-0001 first, then the pharmacopoeia and edition you release to",
+     {
+      "t": "Compliance",
+      "link": "compliance"
+     }
+    ],
+    [
+     "Part 2 Products",
+     "Performance rows, with a basis of design \"or approved equal\"",
+     "Write outcomes; name a material only when a standard requires one",
+     {
+      "t": "Outcome clauses",
+      "link": "urs-guide#clauses"
+     }
+    ],
+    [
+     "Part 3 Execution",
+     "Installation, field joints, flushing, testing, start-up and training",
+     "Say who does each: package supplier, contractor or owner",
+     {
+      "t": "Site requirements",
+      "link": "systems#site"
+     }
+    ],
+    [
+     "Building commissioning",
+     "Utilities, building automation points and the plant room",
+     "A separate layer from the water system's own qualification",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "parts"
+  },
+  {
+   "type": "faq",
+   "anchor": "faq",
+   "nav": "FAQ",
+   "h": "Questions URS writers ask",
+   "items": [
+    {
+     "q": "Who writes the URS, and who answers it?",
+     "a": "You write it, and your quality unit approves it. A consultant may draft it for you; the approval stays yours. Suppliers answer it row by row, and the answers often become part of the contract."
+    },
+    {
+     "q": "Can we send our URS before we issue it?",
+     "a": "Yes. A draft is the best time: a sentence costs less to change than a design. We mark each gap and propose wording. Your URS stays yours to write and approve.",
+     "link": "contact-proposal",
+     "link_label": "Request a URS gap review",
+     "intent": "I have a URS or a draft|URS gap review"
+    },
+    {
+     "q": "Will a review from you tie our URS to Aquemi?",
+     "a": "No. We propose outcome wording that any capable supplier can answer. Where a row fits only one design, we mark it. Where polypropylene is the wrong choice, we say so."
+    },
+    {
+     "q": "Our corporate standard names stainless steel. Can polypropylene still bid?",
+     "a": "Only with a deviation your quality unit approves. If the standard stands, write it as a must-have and ask stainless suppliers. That saves everyone a bid.",
+     "link": "news#pp-or-stainless",
+     "link_label": "Polypropylene or stainless steel"
+    },
+    {
+     "q": "Which standards should our URS cite?",
+     "a": "In Canada, Health Canada's GUI-0001 first. Then the pharmacopoeia you release to, USP or Ph. Eur., with its edition. USP <1231> is guidance, not a requirement. For design, WHO TRS 1033 Annex 3 is a common reference. Name the text, never \"pharma grade\"."
+    },
+    {
+     "q": "We are a small firm. How long should our URS be?",
+     "a": "As long as its rows need. A short URS that settles grade, demand, feed water, sanitization and acceptance beats a long copied one. Buying your first system? Start with the plain guide.",
+     "link": "first-system",
+     "link_label": "Your first system"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where the URS goes next",
+   "items": [
+    "svc-design",
+    "first-system",
+    "buying",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your draft URS",
+  "body": "An engineer marks each gap and proposes wording. Your URS stays yours to approve. Cost: quoted in your proposal.",
+  "button": "Request a URS gap review",
+  "link": "contact-proposal",
+  "intent": "I have a URS or a draft|URS gap review",
+  "include": [
+   "Your URS or draft",
+   "Feed water analysis, summer and winter",
+   "Points of use and peak demand, L/h",
+   "Your sanitization procedure"
+  ],
+  "turnaround": "A time confirmed when you enquire",
+  "returns": [
+   "Each gap, with proposed wording",
+   "Rows that rule out polypropylene, and why"
+  ]
+ },
+ "todo": [
+  "Page added in pass 11 (SITE-PLAN new-page table; structure-and-sitemap § 4.3; copy cut from ops/pass11/synthesis/urs-starter-draft.md). Desk Q1 ruling: built first, with \"when PP is the wrong choice\" high on the page and consultant notes in `specification`. Evidence: L-07-1, L-07-3, L-07-4, L-07-5, L-07-14, L-07-15, L-07-16, L-08-25, L-09-2, L-09-7, L-09-8, L-09-17, L-10-1, L-10-7, L-10-8, L-10-12, L-10-13, L-10-19, L-11-2, L-12-5, L-12-19, L-13-1, L-13-19, L-14-22, L-15-6, L-15-7, L-15-17, L-G2-1, L-G2-3, L-G2-4, L-G2-5, L-G2-6, L-G2-7",
+  "Hero: the lead names the PP package (DR-021 rule 3: this page does not carry the nine-page exclusion line; the scope lives in the wrong-choice table). Hero secondary is the no-URS door (DR-006 rule 3), worded as on svc-design. Founders without a URS are routed to first-system from the FAQ and related block (SITE-PLAN home router split). L-09-17, L-10-19",
+  "pp-rows (wrong choice): anchor kept for the systems and sys-pw FAQ \"When is polypropylene the wrong choice?\" (SITE-PLAN), so the anchor sits on the wrong-choice table, high on the page (desk Q1); the draft's \"rows to include if you allow PP\" block moved to anchor `allow-pp`. Rows from sales/objections-plastic-pw.md \"Where plastic is the wrong answer\", cut to the 8-row table budget. Dropped: the ozone row (DR-013 rule 4 bans an ozone row on any page; sys-storage holds the one boundary line), the ambient-discipline row (its alternative read as a self-sanitizing claim, DR-013 rule 8), and the separate steam row (merged into the hot-loop row). The hot-loop row uses DR-013 rule 1 word for word and rule 2's PVDF placeholder; the chlorine row names chlorine as a regime that does not fit, never as a PP method (DR-013 rule 3). Hot water at 65–79 °C is deliberately absent: it is an engineer's review, not a refusal",
+  "[whether we quote PVDF] (pp-rows, hot-loop row): DR-013 rule 2 placeholder (FD-15). At launch, if unset, drop the bracket; the row stands",
+  "outline: the draft's 13 question groups condensed to 9 tabs (the draft's 13th group, comparing bids, lives in `priority`). Draft's \"who answers\" column is not on the page; add it as a line per tab only after a buyer panel asks for it. L-09-17, L-07-1, L-12-5, L-10-13, L-15-6, L-08-25, L-G2-3, L-G2-4, L-07-4, L-09-2, L-07-3",
+  "priority: L-G2-1, L-10-1, L-12-19, L-13-19 (must-haves and over-starring); L-G3-8, L-07-8, L-13-1 (three-state answer with proof); L-G2-10, L-15-17 (absent deviation list read as full compliance); L-15-5, L-13-8 (separate price lines, trim options to budget)",
+  "clauses: L-G2-5, L-07-14, L-10-7, L-10-8; the product-contact clause is an inference (structure-and-sitemap § 4.3). The struck 80 °C clause is a buyer's example, not a PP statement (DR-013 applies to PP wording). Neutral by design: no clause that only Aquemi can meet (L-11-18 caution)",
+  "allow-pp: L-15-7, L-G2-6, L-G2-7, L-07-14, L-06-20; records for plastic in place of weld logs (L-10-7, L-09-2 caution). No Aquemi grade, joining method or sanitization method stated: [PP grade], [PP joining method] and [PP loop sanitization method] stay on the system pages (DR-013, FD-18). The look avoids a fusion drawing: the joining method is unconfirmed (DR-018 rule 2). Cut to 5 lines (pipe wall merged into pressure, document list into joints, light and supports into installation): the DerivationSheet entrance writes one line per 0.85 s, and 8 lines left the last two hidden after scroll (motioncheck 1280) and broke the 5 s reveal rule",
+  "specification (consultant notes): skeleton b07-5; L-07-15, L-10-12, L-14-22, L-11-2, L-07-16. Takes over svc-design FAQ 4's consultant content (SITE-PLAN; DR-019 amended): compliance matrix within [compliance matrix response time, working days] and the basis-of-design and basic-design holds, as svc-design's stages say (confirm the holds, FD-46). DR-019 rule 4: no spec text, datasheet, typical P&ID or GA offered until one exists; the basis-of-design pack (cut sheet, utilities, building automation points, footprint, typical GA) waits for those files",
+  "[compliance matrix response time, working days] (specification): same name as svc-design, services row 8 and compliance (FD-01). At launch an unset time leaves the clause (DR-006 rule 7)",
+  "[URS review turnaround, working days] and [URS review cost] (hero facts, closing): same names as svc-design and contact-proposal's requests table (FD-01, FD-02); at launch an unset fact goes (DR-010 rule 5) and the closing reads \"An engineer replies in writing.\" (DR-006 rule 7)",
+  "templates block (structure-and-sitemap § 4.3 B5: URS outline, response matrix, demand worksheet) omitted until the files exist (DR-004; desk Q3 rejected downloads that do not exist). A printable PDF twin later (L-15-2)",
+  "faq: L-09-8 (send the URS early), L-05-6 (corporate stainless standard), L-06-16 (who writes, who approves), L-G2-1 caution (answers become contract). DR-007 for the standards answer (GUI-0001 first; USP <1231> guidance; no Annex 1). The \"tie our URS to Aquemi\" answer promises gap marking only, which svc-design's URS gap review already offers",
+  "Closing returns \"Rows that rule out polypropylene, and why\": confirm the URS gap review returns this (FD-02). Open: whether Aquemi drafts a URS for small firms (owner decision; not on the page). French version per DR-012",
+  "Before shipping: buyer-panel with process-engineer, consultant, founder, qa-head, validation-lead, procurement; one notebook desk question (urs-starter-draft editor check 8)",
+  "Lab and hospital reprocessing water row cut in pass 11 (scope then open, FD-25). Pass 12: FD-59 and DR-027 settle the breadth; the page carries it as one outline-intro line (IB §3), not as a wrong-choice row, because hospital and lab grades are not Purified Water and their home is ind-hospital-lab.",
+  "Pass 11 review fixes (reviews/new-urs-guide.md): folds removed from pp-rows, priority and clauses (DR-003 rule 2: never fold the scope; DR-024 rule 1: gate roles' rows stay open). Clauses reordered so the analyser and product-contact rows lead and 316L and hot water are not the only rows shown (L-11-18 caution). Sanitization outcome clause and allow-pp sanitization row worded method-neutral ([PP loop sanitization method] open, DR-013, FD-14). Three-state answer reads \"meets, meets with a note, or differs\" as on buying and compliance (DR-011). Small-demand row points to [standard platforms and capacity ranges] (FD-20). Specification row restores \"approved issues at detailed design\" from svc-design (DR-009 rule 4; FD-46). Related gains buying (comparing quotes); compliance stays linked from the specification Part 1 row",
+  "Final round, pass 11: outline opens with the four answers before design (feed water, grade, demand, site limits) and the design loop: scheme, components, check against URS and budget, change or freeze (L-BWT-21; BWT study § 9 rank 2). Outline intro shortened to stay inside the 1,300-word page budget",
+  "Final round, pass 11: the stainless-standard FAQ links the technical note \"Polypropylene or stainless steel for a PW loop\" (news#pp-or-stainless) (authoritative desk review, DESK-plan.md, Q1: pair the URS guide with the PP-or-stainless note)",
+  "Pass 12 (SITE-PLAN urs-guide; ops/pass12/edits/urs-guide.md): outline intro carries the breadth line (IB §3: hospitals and labs issue a basis of design, industrial users send the equipment maker's spec, the same order helps). Priority gains an intro with the proof convention (RI 01, RI 12: every value names the document that proves it); the three-state answer row stays and drops its duplicate proof clause. Words held to the 1,300 budget by trimming the feed, demand, limits, controls, site, tests and handover tabs, the deviation row, the clauses and specification intros and one allow-pp row. RI 09 requirement grid: not offered until the file exists (FD-58), same rule as the templates block. NS: no rows for this page; the small-firm FAQ is buyer-side and stays. FD-60 checked: no sentence about Aquemi's age, references or plans",
+  "Pass 12 review (reviews/urs-guide.md): F1 FD-59 Grade tab adds \"or your standard's grade\" and links its title to industries#fit (switch to ind-hospital-lab if that page owns the grade question); F2 \"write\" -> \"issue\" (basis of design comes from the consultant, IB §3); F3 Tests tab adds numeric acceptance criteria (validation lead, L-09-1); F5 \"certified by lot\" -> \"with lot certificates\". Offsets: must-haves and price-lines rows trimmed; net 0 words. F4 (\"Our answers do.\" proof convention as our commitment) not applied: needs orchestrator or owner OK."
+ ]
+}

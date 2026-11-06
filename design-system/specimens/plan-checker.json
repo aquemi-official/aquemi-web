@@ -180,9 +180,9 @@
    "page": "svc-service",
    "slot": 0,
    "h": "Service plans: response, scope, price",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "6268bce7f5",
    "block": {
@@ -249,6 +249,243 @@
       "[labour discount, %]",
       "[repair parts and labour terms]",
       "Charged in full"
+     ],
+     [
+      "Annual system review",
+      "No",
+      "Yes",
+      "Yes, with a trend review meeting",
+      "No"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "terms"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 0,
+   "h": "Service plans: response, scope, price",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "commit": "503a507",
+   "hash": "f5848b2ffa",
+   "block": {
+    "type": "table",
+    "look": "plan-checker",
+    "as": "plans",
+    "nav": "Plans",
+    "anchor": "plans",
+    "h": "Service plans: response, scope, price",
+    "intro": "For drug, device, hospital, lab, cosmetics and process plants. Severity 1: production stopped or water out of specification. Severity 2: alarm, reduced capacity or adverse trend. Severity 3: no effect on water quality or supply.",
+    "cols": [
+     "",
+     "Basic",
+     "Standard",
+     "Extended",
+     "No plan"
+    ],
+    "rows": [
+     [
+      "Suits",
+      "Own team and standby",
+      "Production depends on this system",
+      "No standby, little ride-through",
+      "Own team and spares"
+     ],
+     [
+      "Price · minimum term",
+      "Priced per system · term set out in your plan",
+      "Priced per system · term set out in your plan",
+      "Priced per system · term set out in your plan",
+      "Rates quoted at booking · none"
+     ],
+     [
+      "On site, severity 1 · 2, in an area agreed per project",
+      "Time set in your plan · visit time set in your plan",
+      "Time set in your plan · visit time set in your plan",
+      "Time set in your plan · visit time set in your plan",
+      "Next available technician"
+     ],
+     [
+      "Visits a year · calibration",
+      "Visits set in your plan · calibration interval set per instrument",
+      "Visits set in your plan · calibration interval set per instrument",
+      "Visits set in your plan · calibration interval set per instrument",
+      "On request"
+     ],
+     [
+      "Phone · remote diagnosis",
+      "[service phone hours] · response time set in your plan",
+      "[service phone hours] · response time set in your plan",
+      "[service phone hours] · response time set in your plan",
+      "[service phone hours] · best effort"
+     ],
+     [
+      "Critical spares",
+      "Recommended list only",
+      "Agreed in your plan",
+      "Agreed in your plan",
+      "Quoted per order"
+     ],
+     [
+      "Unplanned repairs",
+      "Set out in your plan",
+      "Set out in your plan",
+      "Set out in your plan",
+      "Charged in full"
+     ],
+     [
+      "Annual system review",
+      "No",
+      "Yes",
+      "Yes, with a trend review meeting",
+      "No"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "terms"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 0,
+   "h": "Service plans: response, scope, price",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "7d3a6d2a11",
+   "block": {
+    "type": "table",
+    "look": "plan-checker",
+    "as": "plans",
+    "nav": "Plans",
+    "anchor": "plans",
+    "h": "Service plans: response, scope, price",
+    "intro": "For drug, device, hospital, lab, cosmetics and process plants. Severity 1: production stopped or water out of specification. Severity 2: alarm, reduced capacity or adverse trend. Severity 3: no effect on water quality or supply.",
+    "cols": [
+     "",
+     "Basic",
+     "Standard",
+     "Extended",
+     "No plan"
+    ],
+    "rows": [
+     [
+      "Suits",
+      "Own team and standby",
+      "Production depends on this system",
+      "No standby, little ride-through",
+      "Own team and spares"
+     ],
+     [
+      "Price · minimum term",
+      "Priced per system · term set out in your plan",
+      "Priced per system · term set out in your plan",
+      "Priced per system · term set out in your plan",
+      "Rates quoted at booking · none"
+     ],
+     [
+      "On site, severity 1 · 2, in an area agreed per project",
+      "Time set in your plan · visit time set in your plan",
+      "Time set in your plan · visit time set in your plan",
+      "Time set in your plan · visit time set in your plan",
+      "Next available technician"
+     ],
+     [
+      "Visits a year · calibration",
+      "Visits set in your plan · calibration interval set per instrument",
+      "Visits set in your plan · calibration interval set per instrument",
+      "Visits set in your plan · calibration interval set per instrument",
+      "On request"
+     ],
+     [
+      "Remote diagnosis",
+      "Response time set in your plan",
+      "Response time set in your plan",
+      "Response time set in your plan",
+      "Best effort"
+     ],
+     [
+      "Critical spares",
+      "Recommended list only",
+      "Agreed in your plan",
+      "Agreed in your plan",
+      "Quoted per order"
+     ],
+     [
+      "Unplanned repairs",
+      "Set out in your plan",
+      "Set out in your plan",
+      "Set out in your plan",
+      "Charged in full"
+     ],
+     [
+      "Annual system review",
+      "No",
+      "Yes",
+      "Yes, with a trend review meeting",
+      "No"
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "terms"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 0,
+   "h": "Service plans: response, scope, price",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "0e52f45886",
+   "block": {
+    "type": "table",
+    "look": "plan-checker",
+    "as": "plans",
+    "nav": "Plans",
+    "anchor": "plans",
+    "h": "Service plans: response, scope, price",
+    "intro": "For drug, device, hospital, lab, cosmetics and process plants. Severity 1: production stopped or water out of specification. Severity 2: alarm, reduced capacity or adverse trend. Severity 3: no effect on water quality or supply.",
+    "cols": [
+     "",
+     "Basic",
+     "Standard",
+     "Extended",
+     "No plan"
+    ],
+    "rows": [
+     [
+      "Suits",
+      "Own team and standby",
+      "Production depends on this system",
+      "No standby, little ride-through",
+      "Own team and spares"
+     ],
+     [
+      "On site, severity 1 · 2, in an area agreed per project",
+      "Time set in your plan · visit time set in your plan",
+      "Time set in your plan · visit time set in your plan",
+      "Time set in your plan · visit time set in your plan",
+      "Next available technician"
+     ],
+     [
+      "Visits a year · calibration",
+      "Visits set in your plan · calibration interval set per instrument",
+      "Visits set in your plan · calibration interval set per instrument",
+      "Visits set in your plan · calibration interval set per instrument",
+      "On request"
+     ],
+     [
+      "Critical spares",
+      "Recommended list only",
+      "Agreed in your plan",
+      "Agreed in your plan",
+      "Quoted per order"
      ],
      [
       "Annual system review",

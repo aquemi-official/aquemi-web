@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}), fold, fold_noun.",
  "best_for": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a flat-bottom PP vessel on its plinth, a control panel, a fused PP elbow with socket sleeves and a butt-fusion bead, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "compliance",
@@ -172,9 +172,9 @@
    "page": "urs-guide",
    "slot": 5,
    "h": "Writing a specification section instead of a URS",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "31c7a7c4de",
    "block": {
@@ -202,6 +202,88 @@
      [
       "What you receive from us",
       "A compliance matrix against your client's URS, within [compliance matrix response time, working days]",
+      "Basis of design at the concept hold. Diagrams and a draft functional specification at basic design; approved issues at detailed design.",
+      {
+       "t": "Request a compliance matrix",
+       "link": "contact-proposal",
+       "intent": "I have a URS or a draft|Compliance matrix"
+      }
+     ],
+     [
+      "Part 1 General",
+      "Scope, references, submittals, quality, warranty and its start event",
+      "Cite GUI-0001 first, then the pharmacopoeia and edition you release to",
+      {
+       "t": "Compliance",
+       "link": "compliance"
+      }
+     ],
+     [
+      "Part 2 Products",
+      "Performance rows, with a basis of design \"or approved equal\"",
+      "Write outcomes; name a material only when a standard requires one",
+      {
+       "t": "Outcome clauses",
+       "link": "urs-guide#clauses"
+      }
+     ],
+     [
+      "Part 3 Execution",
+      "Installation, field joints, flushing, testing, start-up and training",
+      "Say who does each: package supplier, contractor or owner",
+      {
+       "t": "Site requirements",
+       "link": "systems#site"
+      }
+     ],
+     [
+      "Building commissioning",
+      "Utilities, building automation points and the plant room",
+      "A separate layer from the water system's own qualification",
+      {
+       "t": "Commissioning and qualification",
+       "link": "svc-cq"
+      }
+     ]
+    ],
+    "fold": 3,
+    "fold_noun": "parts"
+   }
+  },
+  {
+   "page": "urs-guide",
+   "slot": 5,
+   "h": "Writing a specification section instead of a URS",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "44573ad0d2",
+   "block": {
+    "type": "table",
+    "as": "evidence",
+    "look": "pipe-collage",
+    "anchor": "specification",
+    "nav": "For consultants",
+    "h": "Writing a specification section instead of a URS",
+    "intro": "Consultants often issue a three-part specification section with the drawings. Same rules: outcomes, must-haves marked, and who does what.",
+    "pieces": [
+     "",
+     "",
+     "vessel",
+     "pipe",
+     "panel"
+    ],
+    "cols": [
+     "Part",
+     "What it holds",
+     "Note for the specifier",
+     "Where we answer it"
+    ],
+    "rows": [
+     [
+      "What you receive from us",
+      "A compliance matrix against your client's URS, in a time confirmed when you enquire",
       "Basis of design at the concept hold. Diagrams and a draft functional specification at basic design; approved issues at detailed design.",
       {
        "t": "Request a compliance matrix",

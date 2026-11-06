@@ -3,23 +3,17 @@
  "section": "Contact",
  "nav_label": "Service request",
  "title": "Service request: faults, calibration and parts | Aquemi",
- "meta": "Production stopped? Call [service phone number], [service phone hours]. Or log a fault, maintenance, USP <645> calibration, parts or requalification request.",
+ "meta": "Production stopped or water out of specification? Log a severity 1 fault here, or a maintenance, USP <645> calibration, parts or requalification request.",
  "path": "/contact/service/",
  "eyebrow": "SERVICE REQUEST · FAULTS · CALIBRATION · PARTS",
- "headline": "Service for Aquemi systems and [makes and equipment types serviced]",
- "lead": "Production stopped? Call [service phone number], [service phone hours]. Anything else? The form asks only what your request needs.",
+ "headline": "Service requests: faults, calibration and parts",
+ "lead": "Production stopped? Choose severity 1 on the form below. Anything else? The form asks only what your request needs.",
  "primary_cta": "Log a service request",
  "primary_cta_link": "#request",
  "secondary_cta": {
-  "label": "Call [service phone number]",
-  "link": "tel:[service phone number]"
+  "label": "Email hello@aquemi.com",
+  "link": "mailto:hello@aquemi.com"
  },
- "facts": [
-  {
-   "v": "[severity 1 on-site response time, hours]",
-   "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
-  }
- ],
  "blocks": [
   {
    "type": "contact-routes",
@@ -33,20 +27,19 @@
       "An engineer reads it",
       "Written answer, then a proposal"
      ],
-     "clock": "Written reply within [proposal response time, working days]",
+     "clock": "Written reply; time confirmed when you enquire",
      "link": "contact-proposal",
      "action": "Choose your request"
     },
     {
      "t": "Production stopped or water out of specification",
-     "d": "Severity 1. Answered [service phone hours].",
-     "phone": "[service phone number]",
+     "d": "Severity 1. Use the service request and choose severity 1.",
      "steps": [
-      "Call the service line",
+      "Send a service request",
       "Triage confirms severity",
       "Remote diagnosis, then on site"
      ],
-     "clock": "Answered within [severity 1 phone answer time, minutes]",
+     "clock": "Answered within the time set in your service plan",
      "link": "contact-service",
      "urgent": true,
      "action": "Log a service request",
@@ -59,7 +52,7 @@
       "On-site time, base, parts",
       "Ask for it in writing"
      ],
-     "clock": "Written reply within [proposal response time, working days]",
+     "clock": "Written reply; time confirmed when you enquire",
      "link": "contact-locations#coverage",
      "action": "Check coverage for your site"
     }
@@ -69,7 +62,7 @@
    "type": "table",
    "nav": "Response times",
    "h": "Response times by request",
-   "intro": "Times apply on a service plan; otherwise, a call-out with the next available technician. In warranty, call this line with the serial number. [warranty periods: package, service work, consumables] from [warranty start event]; [warranty exclusions].",
+   "intro": "Times apply on a service plan; otherwise, a call-out with the next available technician. In warranty, give the serial number. Warranty periods, their start event and exclusions are set out in your proposal.",
    "cols": [
     "Your request",
     "First response",
@@ -78,38 +71,38 @@
    "rows": [
     [
      "Severity 1: production stopped or water out of specification",
-     "Answered within [severity 1 phone answer time, minutes]; remote diagnosis within [remote response time, hours]",
-     "On site within [severity 1 on-site response time, hours], inside [service coverage area]"
+     "Answer and remote diagnosis within the times set in your service plan",
+     "On site within the time set in your plan, in an area agreed per project"
     ],
     [
      "Severity 2: alarm, reduced capacity or adverse trend",
-     "Reply within [severity 2 reply time, hours]",
-     "Visit within [severity 2 visit time]"
+     "Reply as set in your service plan",
+     "Visit as set in your plan"
     ],
     [
      "Severity 3: no effect on water quality or supply",
-     "Reply within [severity 3 reply time, working days]",
+     "Reply as set in your service plan",
      "Fixed at the next or a booked visit"
     ],
     [
      "Preventive maintenance or calibration",
-     "Date within [maintenance booking reply time, working days]",
+     "Date agreed with you",
      "Signed report; calibration certificates for instruments checked against USP <645> and <643>"
     ],
     [
      "Requalification or retest after a change",
-     "Reply within [requalification support reply time, working days]",
-     "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7); outside GMP, an acceptance test to your specification"
+     "Reply confirmed when you enquire",
+     "Input for your change request and the tests we propose (GUI-0029); outside GMP, an acceptance test to your specification"
     ],
     [
      "Parts and consumables",
-     "Quote within [parts quote turnaround, working hours]",
+     "Quote once stock is confirmed",
      "Matched by tag or part number to your qualified parts list, like for like, with certificates"
     ],
     [
      "First service, other make",
-     "Reply within [other-builder request reply time, working days]",
-     "For [makes and equipment types serviced]: a condition survey quote"
+     "Reply confirmed when you enquire",
+     "A condition survey quote, for makes and equipment confirmed when you enquire"
     ]
    ],
    "as": "router",
@@ -120,9 +113,9 @@
    "anchor": "request",
    "nav": "Request",
    "h": "Log a service request",
-   "intro": "Parts orders also by email: [parts email address].",
+   "intro": "Parts orders also by email: hello@aquemi.com.",
    "submit": "Send service request",
-   "note": "Ticket number by email within [ticket acknowledgment time, minutes]. Out of hours, forms read within [out-of-hours form review time, hours]. [privacy notice link]",
+   "note": "Ticket number by email a short time after you send the form. Out of hours, forms are read the next working day. {Privacy notice|privacy}",
    "steps": [
     {
      "title": "Your request",
@@ -153,7 +146,7 @@
         "Severity 2: alarm, reduced capacity or adverse trend",
         "Severity 3: no effect on water quality or supply"
        ],
-       "help": "Severity 1? Call [service phone number] too. Not sure? Choose the higher one."
+       "help": "Not sure? Choose the higher one."
       },
       {
        "label": "Ticket number, if you already called",
@@ -182,10 +175,10 @@
         "Generation: reverse osmosis (RO), deionization (DI) or electrodeionization (EDI)",
         "Storage and distribution loop",
         "Pretreatment",
-        "Controls: PLC, HMI or SCADA",
+        "Controls: PLC or operator panel (HMI)",
         "One instrument"
        ],
-       "help": "Controller (PLC), operator panel (HMI) or supervisory control (SCADA)."
+       "help": "Controller (PLC) or operator panel (HMI)."
       }
      ]
     },
@@ -234,7 +227,7 @@
         "Maintenance and calibration",
         "A service plan"
        ],
-       "help": "We service [makes and equipment types serviced]."
+       "help": "Which makes and equipment we service is confirmed when you enquire."
       },
       {
        "label": "Service plan or contract number",
@@ -317,7 +310,6 @@
        "when": "Fault now|Service plan quote",
        "options": [
         "No remote connection",
-        "Read-only telemetry through your demilitarized zone (DMZ)",
         "Supervised session your staff open",
         "Your IT decides"
        ],
@@ -328,7 +320,7 @@
        "kind": "file",
        "required": false,
        "when": "Fault now",
-       "help": "A copy from [trend window, hours] before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]."
+       "help": "A copy from the hours before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]."
       },
       {
        "label": "Preferred window",
@@ -391,7 +383,7 @@
         "Planned replacement",
         "Quote only"
        ],
-       "help": "Restoring a stopped system? Call [service phone number] too."
+       "help": "Restoring a stopped system? Choose severity 1."
       },
       {
        "label": "Certificates to ship with the parts",
@@ -556,7 +548,7 @@
     },
     {
      "q": "We have no service plan. Will you come?",
-     "a": "Yes, inside [service coverage area], as a call-out with the next available technician. You pay [call-out and hourly rates, CAD], travel at [travel charge basis] and parts as quoted. Every visit ends with a signed report."
+     "a": "Yes, in an area agreed per project, as a call-out with the next available technician. You pay call-out, hourly and travel rates quoted at booking, and parts as quoted. Every visit ends with a signed report."
     }
    ]
   }
@@ -593,7 +585,8 @@
   "Pass 11 (offer § 14 CS3; L-15-20, L-14-1, L-13-5; FD-11): the parts row's What follows reads \"Matched by tag or part number to your qualified parts list, like for like, with certificates\"; the form's \"Parts needed\" help asks for the tag (pass 11 review finding 6: \"Quote\" as a verb beside \"Quote\" as a price read as a contradiction)",
   "Pass 11 integration (DR-011, one name per fact; placeholder-names Warranty row): the response table intro's warranty line uses buying#terms' three names, [warranty periods: package, service work, consumables], [warranty start event] and [warranty exclusions], replacing the retired [warranty period, start, exclusions]",
   "Pass 12 (FD-59, DR-027 rules 8-9; SITE-PLAN contact-service): breadth without new fields. The systems option names generation by technology (RO, DI, EDI), so a hospital, lab or process plant's system is not misnamed Purified Water (SITE-PLAN 1.2.6); the records list adds commissioning or acceptance test reports; the requalification row and its help list add the non-GMP path (acceptance test to your specification); the water-in-use help and the first FAQ name 'whoever owns your water specification' beside the quality unit. Severity and request-type option names unchanged: svc-service, home, contact-proposal and contact-locations tick them by intent.",
-  "Pass 12 (RI 06, SITE-PLAN contact-service): no industry field added; a fault request needs the system, not the industry, and the maintenance lead's path is phone first, form second. If one is added, it uses the ten DR-027 rule 10 options from contact-proposal. Tap-to-call stays the hero's secondary link (tel:); the sticky phone bar is phase 6 layout work. FD-60: no newness wording on the page ('No service plan yet?' and 'Raised, not yet approved' are the reader's own status)."
+  "Pass 12 (RI 06, SITE-PLAN contact-service): no industry field added; a fault request needs the system, not the industry, and the maintenance lead's path is phone first, form second. If one is added, it uses the ten DR-027 rule 10 options from contact-proposal. Tap-to-call stays the hero's secondary link (tel:); the sticky phone bar is phase 6 layout work. FD-60: no newness wording on the page ('No service plan yet?' and 'Raised, not yet approved' are the reader's own status).",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): text fixes only: plainer headline; EU GMP Annex 15 dropped from the response table; SCADA and DMZ telemetry options removed from the form (no page used them as intents)."
  ],
  "hero_index": false,
  "figure": {

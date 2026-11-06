@@ -10,9 +10,9 @@
    "page": "buying",
    "slot": 0,
    "h": "Terms at a glance",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "7f6820b",
    "hash": "a7a9fc88cc",
    "block": {
@@ -88,6 +88,169 @@
      {
       "p": "Non-disclosure agreement",
       "v": "[NDA turnaround, working days] from receipt",
+      "part": "scope"
+     }
+    ],
+    "look": "clause-tabs"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 0,
+   "h": "Terms at a glance",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "415c996f79",
+   "block": {
+    "type": "spec",
+    "nav": "Terms",
+    "anchor": "terms",
+    "h": "Terms at a glance",
+    "intro": "Every proposal opens with these terms, in this order. FAT and SAT are the factory and site acceptance tests.",
+    "cols": [
+     "Term",
+     "Ours",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Proposal",
+      "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid for the period stated · Lead time in weeks · Exclusions",
+      "m": "Ends with every departure from your specification and its reason, or a written \"none\"",
+      "link": "buying#proposal",
+      "link_label": "See the proposal lines",
+      "part": "scope"
+     },
+     {
+      "p": "Currency, tax and duty",
+      "v": "Currency and terms for imported content set out in your proposal",
+      "m": "Stated on page one of each proposal",
+      "part": "scope"
+     },
+     {
+      "p": "Delivery and lead time",
+      "v": "Delivery terms and both lead times stated in your proposal",
+      "m": "Two clocks, stated separately: from your order and from approved drawings",
+      "part": "base"
+     },
+     {
+      "p": "Payment milestones",
+      "v": "Set out in your proposal",
+      "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT",
+      "part": "scope"
+     },
+     {
+      "p": "Acceptance and warranty start",
+      "v": "The start event stated in your proposal",
+      "m": "Not from shipment. One warranty text in proposal, manual and contract",
+      "part": "valve"
+     },
+     {
+      "p": "What the warranty covers",
+      "v": "Warranty periods and exclusions set out in your proposal",
+      "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]",
+      "part": "ro"
+     },
+     {
+      "p": "Drawings and code",
+      "v": "Drawing terms, code access and ownership set out in your proposal",
+      "m": "What you may change and copy, in writing",
+      "part": "panel"
+     },
+     {
+      "p": "Your contract form",
+      "v": "Set out in your proposal",
+      "m": "Any clause we cannot accept is listed once in our proposal, with the reason",
+      "part": "scope"
+     },
+     {
+      "p": "Changes after order",
+      "v": "A signed change request before work starts [confirm]",
+      "m": "Price, schedule effect and payment on one page",
+      "link": "project-plan#changes",
+      "link_label": "See how changes work",
+      "part": "option"
+     },
+     {
+      "p": "Non-disclosure agreement",
+      "v": "Reviewed on receipt",
+      "part": "scope"
+     }
+    ],
+    "look": "clause-tabs"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 0,
+   "h": "Terms at a glance",
+   "status": "live",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "commit": "c7b1342",
+   "hash": "9a816ba183",
+   "block": {
+    "type": "spec",
+    "nav": "Terms",
+    "anchor": "terms",
+    "h": "Terms at a glance",
+    "intro": "Every proposal opens with these terms, in this order. FAT and SAT are the factory and site acceptance tests.",
+    "cols": [
+     "Term",
+     "Ours",
+     "Note"
+    ],
+    "rows": [
+     {
+      "p": "Proposal",
+      "v": "Page one: scope in one plain line · Price and its basis · Issue date, valid for the period stated · Lead time in weeks · Exclusions",
+      "m": "Ends with every departure from your specification and its reason, or a written \"none\"",
+      "link": "buying#proposal",
+      "link_label": "See the proposal lines",
+      "part": "scope"
+     },
+     {
+      "p": "Currency, tax and duty",
+      "v": "Currency and terms for imported content set out in your proposal",
+      "m": "Stated on page one of each proposal",
+      "part": "scope"
+     },
+     {
+      "p": "Delivery and lead time",
+      "v": "Delivery terms and both lead times stated in your proposal",
+      "m": "Two clocks, stated separately: from your order and from approved drawings",
+      "part": "base"
+     },
+     {
+      "p": "Payment milestones",
+      "v": "Set out in your proposal",
+      "m": "Each payment tied to an event you can check: approved drawings, passed FAT, delivery, accepted SAT",
+      "part": "scope"
+     },
+     {
+      "p": "Acceptance and warranty start",
+      "v": "The start event stated in your proposal",
+      "m": "Not from shipment. One warranty text in proposal, manual and contract",
+      "part": "valve"
+     },
+     {
+      "p": "What the warranty covers",
+      "v": "Warranty periods and exclusions set out in your proposal",
+      "m": "Membranes, modules and instruments keep their maker's warranty, passed to you [confirm]",
+      "part": "ro"
+     },
+     {
+      "p": "Drawings and code",
+      "v": "Drawing terms, code access and ownership set out in your proposal",
+      "m": "What you may change and copy, in writing",
+      "part": "panel"
+     },
+     {
+      "p": "Your contract form",
+      "v": "Set out in your proposal",
+      "m": "Any clause we cannot accept is listed once in our proposal, with the reason",
       "part": "scope"
      }
     ],

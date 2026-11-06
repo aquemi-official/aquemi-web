@@ -4,7 +4,7 @@
  "type": "docs",
  "fields": "h, intro, items [{t, d, code, key, link, intent, tag}], key, fold, fold_noun, link, link_label, intent.",
  "best_for": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "sys-pretreatment",
@@ -86,9 +86,9 @@
    "page": "sys-pretreatment",
    "slot": 4,
    "h": "Documents delivered",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
+   "last_seen": "2026-11-04",
    "commit": "bee7493",
    "hash": "1a28ef35ba",
    "block": {
@@ -111,6 +111,45 @@
      {
       "t": "Media, resin and material certificates",
       "d": "Lot numbers; [certificates supplied for PVC parts]"
+     }
+    ],
+    "nav": "Documents",
+    "fold_noun": "documents",
+    "link": "cmp-documentation#index",
+    "link_label": "Full index",
+    "look": "doc-pipe",
+    "anchor": "documents"
+   }
+  },
+  {
+   "page": "sys-pretreatment",
+   "slot": 4,
+   "h": "Documents delivered",
+   "status": "retired",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-05",
+   "commit": "503a507",
+   "hash": "0e9a5ab3b7",
+   "block": {
+    "type": "docs",
+    "h": "Documents delivered",
+    "key": 2,
+    "items": [
+     {
+      "t": "Feed water review and design basis",
+      "d": "Sets the RO inlet targets: data used and design months"
+     },
+     {
+      "t": "Membrane projections",
+      "d": "Predict output at coldest and warmest feed, new and at end of membrane life"
+     },
+     {
+      "t": "Functional specification",
+      "d": "Regeneration, backwash, alarms and interlocks"
+     },
+     {
+      "t": "Media, resin and material certificates",
+      "d": "Lot numbers; PVC certificates as named in your proposal"
      }
     ],
     "nav": "Documents",
