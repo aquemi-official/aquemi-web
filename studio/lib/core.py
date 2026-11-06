@@ -165,11 +165,12 @@ def status(P):
             print('%-16s sources edited, not committed: refresh before you commit (%s)' % (t['name'], ' && '.join(t.get('run', []))))
         elif s and o and s > o + 1:
             stale += 1
-            print('%-16s sources changed after outputs: %s' % (t['name'], ' && '.join(t.get('run', []))))
+            print('%-16s sources committed after its outputs last changed (they may already match; refresh to be sure): %s' % (
+                t['name'], ' && '.join(t.get('run', []))))
         else:
             print('%-16s current' % t['name'])
     if stale or edited:
-        print('\n%d tool(s) to refresh, %d with uncommitted edits: python %s/studio.py refresh' % (stale, edited, P.kit_rel))
+        print('\n%d tool(s) maybe stale, %d with uncommitted edits: python %s/studio.py refresh, then check' % (stale, edited, P.kit_rel))
     else:
         print('\nEverything current. python %s/studio.py check before you push.' % P.kit_rel)
 
