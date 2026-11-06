@@ -25,10 +25,11 @@ RES = os.path.join(ROOT, 'research')
 INS = os.path.join(ROOT, 'design-system', 'inspiration')
 ATLAS = os.path.join(INS, 'style-atlas')
 TEXT = ('.md', '.json', '.py', '.sh', '.js', '.txt')
-SKILLS = [('image-prompt-loop', 'Image → text → image: describe images, refresh the atlas, write prompts, generate in Gemini'),
-          ('motion-library', 'Port motion from the Subframe Motion library into the site (GSAP and WebGL, tokens)'),
+SKILLS = [('studio-image-loop', 'Image → text → image: describe images, refresh the atlas, write prompts, generate in Gemini'),
+          ('studio-motion', 'Port motion from the Subframe Motion library into the site (GSAP and WebGL, tokens)'),
+          ('studio-site-scan', 'Scan other sites, compare them with ours, adapt our sitemap and copy'),
           ('aquemi-design-system', 'Change, check and publish the design system'),
-          ('aquemi-studio', 'Run, check and release the studio: every development tool beside the site')]
+          ('studio', 'Run, check and release the studio kit: every development tool beside the site')]
 BRIEFS = [('pass9/BUILD-BRIEF.md', 'Pass 9 build brief'), ('pass9/GEN-BRIEF.md', 'Pass 9 Gemini generator'),
           ('pass9/POLISH-BRIEF.md', 'Pass 9 polish round'), ('pass9b/GEN-BRIEF.md', 'Pass 9b Gemini generator'),
           ('pass9b/BUILD-BRIEF.md', 'Pass 9b build brief'), ('pass9b/MOTION-BRIEF.md', 'Pass 9b motion brief')]
@@ -292,13 +293,13 @@ def panel_overview(stats, status, kit):
 <h2>The loop: image → text → image</h2>
 <ol class="rs-loop">%s</ol>
 <p class="rs-note">Stages 2 to 5 run again as one loop: new images are described, the atlas is refreshed, and the next prompts come from its kit.
-The <a href="#skills">image-prompt-loop skill</a> runs it.</p>
+The <a href="#skills">studio-image-loop skill</a> runs it.</p>
 <div class="rs-cols">
  <div>
   <h2>Where we stopped</h2>
   <p>The Gemini image quota ran out twice. Sections without a concept were built from ideas in the pool (their build notes say which).</p>
   <ul class="rs-stops">%s</ul>
-  <p>To carry on when the quota resets: the <code>image-prompt-loop</code> skill, stage 3, with <code>research/pass9b/GEN-BRIEF.md</code>;
+  <p>To carry on when the quota resets: the <code>studio-image-loop</code> skill, stage 3, with <code>research/pass9b/GEN-BRIEF.md</code>;
   the queue is <code>research/pass9b/queue.json</code> (sections still waiting are marked on <a href="#concepts">Concepts</a>).
   Then describe the new images (stage 1) so the atlas covers them.</p>
  </div>
@@ -386,7 +387,7 @@ def panel_images(desc, fams, imgs_all):
                          % (n, esc(f.lower()), esc(thumb(f)), n, esc(f.rsplit('.', 1)[0])))
     return '''<p class="rs-intro">Each Gemini original was read back into text: what style family it belongs to, its palette, type, composition and layout
 devices, the motion it implies, 25 to 40 text-to-image keywords, a content-free prompt that would make it again, what works, what fails, and how well it fits
-the brand (1 to 5). Click an image for its full description. The 34 pass 9b images are not described yet (image-prompt-loop, stage 1).</p>
+the brand (1 to 5). Click an image for its full description. The 34 pass 9b images are not described yet (studio-image-loop, stage 1).</p>
 <div class="rs-bar"><input class="rs-search" type="search" placeholder="Search keywords, e.g. limestone, leader lines, macro" aria-label="Search the descriptions">
 <span class="rs-count" id="rs-icount"></span></div>
 <div class="rs-bar"><span class="rs-lab">Family</span>%s</div>
@@ -495,7 +496,7 @@ def panel_skills():
         f = os.path.join(RES, rel)
         if os.path.exists(f):
             docs.append((rel.replace('/', '-').replace('.md', ''), title, 'Brief · research/' + rel, md(read(f))))
-    kit = os.path.join(ROOT, '.claude', 'skills', 'image-prompt-loop', 'tools', 'kit.json')
+    kit = os.path.join(ROOT, 'design-system', 'inspiration', 'style-atlas', 'prompt-kit.json')
     if os.path.exists(kit):
         k = load(kit)
         h = ('<h2>The prompt kit</h2><p>%s</p><h3>Base (before the section)</h3><pre class="rs-prompt">%s</pre><h3>Section part</h3><p>The section\'s heading and real content, written by <code>section_prompts.py</code> from the page file, then one art direction.</p>'
@@ -704,7 +705,7 @@ JS = r'''
         '<h4>Text-to-image keywords</h4><div class="rs-kw">' + (d.t2i_keywords || []).map(function (k) { return '<span>' + e(k) + '</span>'; }).join('') + '</div>' +
         '<h4>A prompt that would make it again</h4><pre class="rs-prompt">' + e(d.t2i_prompt) + '</pre><button class="rs-copy" data-copy="' + e(n) + '">Copy prompt</button>' +
         list('What works', d.strengths) + list('What fails', d.weaknesses) + '<h4>Brand fit</h4><p>' + e(d.brand_fit) + ' of 5. ' + e(d.brand_fit_why) + '</p>';
-    } else side += '<p class="rs-key">' + e(n) + ' · pass 9b</p><h3>' + e(f) + '</h3><p>Not described yet. The image-prompt-loop skill, stage 1, writes its description and adds it to the atlas.</p>';
+    } else side += '<p class="rs-key">' + e(n) + ' · pass 9b</p><h3>' + e(f) + '</h3><p>Not described yet. The studio-image-loop skill, stage 1, writes its description and adds it to the atlas.</p>';
     open('design-system/inspiration/gemini/' + f, n + ' · ' + f, side + '</div>');
   }
   document.addEventListener('click', function (ev) {
@@ -742,11 +743,11 @@ def main():
     p9, p9b = prompts()
     done = set(imgs)
     waiting = sorted(set(p9b) - done)
-    kit = load(os.path.join(ROOT, '.claude', 'skills', 'image-prompt-loop', 'tools', 'kit.json'))
+    kit = load(os.path.join(ROOT, 'design-system', 'inspiration', 'style-atlas', 'prompt-kit.json'))
     nsec = sum(len(p['blocks']) for p in pg)
     nlook = sum(1 for p in pg for b in p['blocks'] if b.get('look'))
     looks = len(glob.glob(os.path.join(ROOT, 'assets', 'src', 'blocks', 'look-*.js')))
-    cat = os.path.join(ROOT, '.claude', 'skills', 'motion-library', 'catalog.json')
+    cat = os.path.join(ROOT, 'studio', 'tools', 'motion', 'catalog.json')
     motion = len(load(cat)) if os.path.exists(cat) else 0
     if isinstance(load(cat), dict):
         motion = len(load(cat).get('examples', load(cat)))
@@ -780,8 +781,8 @@ def main():
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="design-system/tokens.css">
 <link rel="stylesheet" href="assets/site.css">
-<link rel="stylesheet" href="studio/studio.css">
-<script defer src="studio/studio.js" data-tool="research"></script>
+<link rel="stylesheet" href="studio/web/studio.css">
+<script defer src="studio/web/studio.js" data-tool="research"></script>
 <script src="assets/theme.js"></script>
 <!-- Generated by tools/research.py; edit the sources, not this file. -->
 <style>%s</style>

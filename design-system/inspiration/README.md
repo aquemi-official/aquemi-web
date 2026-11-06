@@ -204,7 +204,7 @@ When the quota reset, the same loop ran on the sections pass 9 had not reached (
 
 ## Pass 12: concepts for new and borrowed sections (2026-11-03)
 
-FD-62 image run: one fresh Gemini Pro chat per image, prompts from the pass 12 kit (`.claude/skills/image-prompt-loop/tools/kit.json`, pair mode = desktop plus a 390 px phone strip in one image; hero = black-on-white equipment drawing). Queue, prompts and log: `research/pass12/concepts/`.
+FD-62 image run: one fresh Gemini Pro chat per image, prompts from the pass 12 kit (`style-atlas/prompt-kit.json`, then in the image-prompt-loop skill, pair mode = desktop plus a 390 px phone strip in one image; hero = black-on-white equipment drawing). Queue, prompts and log: `research/pass12/concepts/`.
 
 | File | Prompted for | The idea |
 | --- | --- | --- |
@@ -289,15 +289,15 @@ FD-62 image run: one fresh Gemini Pro chat per image, prompts from the pass 12 k
 Every Gemini original is described as text-to-image keywords and a reusable prompt in `style-atlas/images/*.json`;
 `style-atlas/aggregate.py` counts them into `keywords.json`, and `style-atlas/STYLE-ATLAS.md` names the brand core,
 ten style families, what combines well, what fails (with negative keywords), a prompt kit and three ways to unify
-the styles. The `image-prompt-loop` skill (`.claude/skills/image-prompt-loop/`) runs the loop: describe images,
+the styles. The `studio-image-loop` skill (from the studio kit, `studio/skills/`; Aquemi rules in `design-system/notes/image-loop.md`) runs the loop: describe images,
 refresh the atlas, write section prompts from its kit, generate in Gemini, keep every image here.
 
 ## Keep every image
 
 Every image generated for the site is kept, used or not: the people reviewing the design want to look them all over.
-The media gallery (`inspiration.html`) shows all of them with a status tag (live on the site, became a component,
+The media gallery (`studio/web/gallery.html`) shows all of them with a status tag (live on the site, became a component,
 source of a site drawing, reference only, superseded, build record). It reads `gallery.json`, which
-`python tools/gallery.py` writes (needs Pillow): it scans the folders below and the site's assets, works out each
+`python studio/studio.py gallery` writes through `tools/gallery.py` (needs Pillow): it scans the folders below and the site's assets, works out each
 status from the tables in this README and from what the pages use, and makes the thumbnails in `thumbs/`.
 `python tools/gallery.py --import ../research` also copies build records (page snapshots per pass, concept beside
 build) into `record/`. Rerun it after adding any image.
@@ -317,7 +317,7 @@ To get originals at full size with Claude in Chrome: open the image's `=s1600` U
 
 ## Equipment drawings
 
-`art/` holds the black-on-white source drawings; `tools/line_art.py` turns each into the transparent mask in `assets/illustrations/` that the Illustration component paints with a token. One file per page id (`sys-pw.png`, `svc-cq.png`, `ind-pharma.png` …). Prompt recipe: see the Illustration component README.
+`art/` holds the black-on-white source drawings; `studio/tools/images/line_art.py` turns each into the transparent mask in `assets/illustrations/` that the Illustration component paints with a token. One file per page id (`sys-pw.png`, `svc-cq.png`, `ind-pharma.png` …). Prompt recipe: see the Illustration component README.
 
 A replaced drawing stays for the record: its old source is renamed with a suffix that says why, and `ART_REPLACED` in `tools/gallery.py` shows it as superseded. On 2026-10-31 three drawings that contradicted the offer were redrawn for the polypropylene PW package: `art/svc-fabrication-stainless.png` (orbital weld head with tri-clamps), `art/sys-storage-stainless.png` (stainless tank) and `art/ind-pharma-sterile.png` (vial filling machine), Gemini originals `gemini/14`, `08` and `22`. Their replacements are `art/svc-fabrication.png` (butt-fusion machine), `art/sys-storage.png` (PP tank and loop) and `art/ind-pharma.png` (mixing vessel fed by a PW point-of-use valve), originals `gemini/65`–`67`.
 

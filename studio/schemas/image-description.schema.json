@@ -1,0 +1,128 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "One image described as text (<data.atlas>/images/<image>.json)",
+ "type": "object",
+ "required": [
+  "file",
+  "style_family",
+  "t2i_keywords",
+  "t2i_prompt",
+  "brand_fit"
+ ],
+ "properties": {
+  "file": {
+   "type": "string"
+  },
+  "prompted_for": {
+   "type": "string"
+  },
+  "section_kind": {
+   "type": "string"
+  },
+  "style_family": {
+   "type": "string",
+   "description": "2-4 words naming its visual family"
+  },
+  "art_direction": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "composition": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "layout_devices": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "palette": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "typography": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "rendering": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "line_and_texture": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "motifs": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "ui_patterns": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "motion_implied": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "mood": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "strengths": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "weaknesses": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "t2i_keywords": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "minItems": 10,
+   "description": "25-40 reusable text-to-image phrases, most important first"
+  },
+  "t2i_prompt": {
+   "type": "string",
+   "description": "70-120 words, content-neutral, <CONTENT> where the section's content goes"
+  },
+  "signature_idea": {
+   "type": "string"
+  },
+  "brand_fit": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 5
+  },
+  "brand_fit_why": {
+   "type": "string"
+  }
+ }
+}

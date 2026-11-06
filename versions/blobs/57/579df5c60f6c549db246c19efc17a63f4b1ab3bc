@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aquemi design system</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="design-system/components/bundle.css">
+<link rel="stylesheet" href="design-system/components/bundle-library.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="studio/studio.css">
+<script defer src="studio/studio.js" data-tool="guide"></script>
+<script src="assets/theme.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<style>
+/* Guide layout: contents rail + one reading column. Everything on this page is generated from design-system/:
+   tokens.json, components.json (from tools/design_system.py build), each component's preview.html and README.md,
+   and the brand book markdown. Add a component there and it appears here. */
+.dh { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.dh__in { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; max-width: 1440px; margin: 0 auto; padding: var(--space-3) max(16px, var(--space-6)); }
+.dh__in img { width: 120px; height: auto; }
+.dh__t { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+.dh__sp { flex: 1; }
+.dh a.lnk { font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.dh a.lnk:hover { text-decoration: underline; }
+.dh select { font: 400 13px/18px var(--font-sans); color: var(--ink); background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 4px 6px; }
+.doc { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--space-12); max-width: 1440px; margin: 0 auto; padding: var(--space-8) max(16px, var(--space-6)) var(--space-24); }
+.toc { position: sticky; top: 72px; align-self: start; max-height: calc(100vh - 96px); overflow: auto; display: flex; flex-direction: column; gap: 2px; font: 400 14px/22px var(--font-sans); }
+.toc a { color: var(--ink-muted); text-decoration: none; padding: 2px 0; }
+.toc a:hover { color: var(--ink); }
+.toc .g { margin-top: var(--space-4); font: 500 11px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-subtle); }
+.dm { min-width: 0; display: flex; flex-direction: column; gap: var(--space-16); }
+.dm section { display: flex; flex-direction: column; gap: var(--space-6); scroll-margin-top: 80px; }
+.eb { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+.dt { margin: 0; font: 300 48px/52px var(--font-sans); letter-spacing: -.025em; color: var(--ink); }
+.d1 { margin: 0; font: 400 32px/38px var(--font-sans); letter-spacing: -.015em; color: var(--ink); }
+.d2 { margin: 0; font: 500 20px/28px var(--font-sans); color: var(--ink); }
+.lead { margin: 0; font: 400 18px/28px var(--font-sans); color: var(--ink-muted); max-width: 72ch; }
+.sm { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.sm a { color: var(--flow); }
+code, pre { font-family: var(--font-mono); font-size: 13px; }
+:not(pre) > code { background: var(--surface-sunken); padding: 1px 4px; border-radius: var(--radius-sm); }
+.md { max-width: 80ch; font: 400 16px/26px var(--font-sans); color: var(--ink); }
+.md h1 { font: 400 32px/38px var(--font-sans); margin: var(--space-8) 0 var(--space-4); }
+.md h2 { font: 400 24px/30px var(--font-sans); margin: var(--space-8) 0 var(--space-3); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.md h3 { font: 500 18px/26px var(--font-sans); margin: var(--space-6) 0 var(--space-2); }
+.md table { border-collapse: collapse; width: 100%; font-size: 14px; display: block; overflow-x: auto; }
+.md th, .md td { text-align: left; border-bottom: 1px solid var(--line); padding: 6px 10px; vertical-align: top; }
+.md th { background: var(--surface-sunken); font-weight: 500; }
+.md a { color: var(--flow); }
+.md blockquote { margin: 0; padding-left: var(--space-4); border-left: 2px solid var(--line-strong); color: var(--ink-muted); }
+.md > :first-child { margin-top: 0; }
+.how { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 var(--space-8); border-top: 1px solid var(--line-strong); }
+.how > div { padding-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.how pre { margin: 0; padding: var(--space-3); background: var(--surface-sunken); overflow-x: auto; white-space: pre-wrap; color: var(--ink); }
+.sw { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-4); }
+.sw > div { border: 1px solid var(--line); background: var(--surface-raised); display: flex; flex-direction: column; }
+.sw .chip { display: grid; grid-template-columns: 1fr 1fr; height: 64px; border-bottom: 1px solid var(--line); }
+.sw .meta { padding: var(--space-3); display: flex; flex-direction: column; gap: 2px; }
+.sw b { font: 500 14px/20px var(--font-mono); color: var(--ink); }
+.sw .v { font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.typr { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--space-6); padding: var(--space-4) 0; border-top: 1px solid var(--line); align-items: baseline; }
+.typr .meta { font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.typr .meta b { display: block; color: var(--ink); font-weight: 500; }
+.bars > div { display: grid; grid-template-columns: 120px 70px minmax(0, 1fr); gap: var(--space-3); align-items: center; padding: 4px 0; font: 400 13px/18px var(--font-mono); color: var(--ink); }
+.bars i { display: block; height: 10px; background: var(--flow); }
+.comp { border-top: 1px solid var(--line-strong); padding-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); scroll-margin-top: 80px; }
+.comp__hd { display: flex; gap: var(--space-4); align-items: baseline; flex-wrap: wrap; }
+.comp__hd .sp { flex: 1; }
+.comp__links { display: flex; gap: var(--space-4); flex-wrap: wrap; font: 400 13px/18px var(--font-sans); }
+.comp__links a { color: var(--flow); }
+.stage { border: 1px solid var(--line); background: var(--surface); overflow-x: auto; }
+.stage__bar { display: flex; gap: var(--space-2); align-items: center; justify-content: space-between; padding: 6px var(--space-3); border-bottom: 1px solid var(--line); background: var(--surface-sunken); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.stage__bar button { font: inherit; color: var(--ink); background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 1px 8px; cursor: pointer; }
+.stage__body { min-width: 0; }
+.stage__body.is-narrow { max-width: 390px; border-right: 1px dashed var(--line-strong); }
+details.src summary { cursor: pointer; font: 400 13px/20px var(--font-sans); color: var(--ink-muted); }
+details.src pre { margin: var(--space-2) 0 0; padding: var(--space-3); background: var(--surface-sunken); color: var(--ink); overflow-x: auto; max-height: 420px; }
+.blk { display: flex; flex-direction: column; gap: var(--space-3); }
+.blk .stage .aq-section { padding-block: var(--space-8); }
+.err { color: var(--fail); }
+.ret { font: 500 11px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 1px 6px; }
+.ret a { color: var(--flow); }
+@media (max-width: 900px) {
+  .doc { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; max-height: none; flex-direction: row; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+  .toc .g { width: 100%; margin-top: var(--space-2); }
+  .typr { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+  .dt { font-size: 36px; line-height: 40px; }
+}
+</style>
+</head>
+<body>
+<header class="dh"><div class="dh__in">
+ <a href="index.html#home" aria-label="Aquemi site"><img class="aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>
+ <span class="dh__t">Design system</span><span class="dh__sp"></span>
+ <a class="lnk" id="artlink" href="https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc">Claude design system</a>
+ <a class="lnk" href="https://github.com/Aquemi-Official/aquemi-web/tree/main/design-system">Source on GitHub</a>
+ <select id="wtheme" aria-label="Theme"><option value="">System theme</option><option value="light">Light</option><option value="dark">Dark</option></select>
+</div></header>
+<div class="doc">
+<nav class="toc" aria-label="Contents" id="toc">
+ <span class="g">Start</span><a href="#overview">Overview</a><a href="#extend">Change or extend it</a>
+ <span class="g">Foundations</span><a href="#colour">Colour</a><a href="#type">Typography</a><a href="#space">Space and shape</a>
+</nav>
+<main class="dm">
+
+<section id="overview">
+ <span class="eb">Aquemi design system</span>
+ <h1 class="dt">Precise, quiet, finished.</h1>
+ <p class="lead">Every token, component and page block on this page is read from <code>design-system/</code> in the repository: the same files the website loads and the Claude design system is published from. Change a file there and this page, the site and the next Claude session all follow.</p>
+ <p class="sm" id="counts"></p>
+</section>
+
+<section id="extend">
+ <span class="eb">Working on the system</span>
+ <h2 class="d1">Change or extend it</h2>
+ <div class="how">
+  <div><h3 class="d2">Change a colour, size or space</h3><p class="sm">Edit <code>design-system/tokens.json</code>, then rebuild. Every component and page updates.</p><pre>python tools/design_system.py build</pre></div>
+  <div><h3 class="d2">Adjust a component</h3><p class="sm">Styles are in the component's <code>style.css</code> (built into <code>bundle.css</code>), rules in the component's <code>README.md</code>, the example in its <code>preview.html</code>. Each component below links to all three.</p></div>
+  <div><h3 class="d2">Add a component</h3><p class="sm">Scaffold it, write the README and preview with real copy, style it with tokens only, then build and check.</p><pre>python tools/design_system.py new PullQuote "Page sections"
+python tools/design_system.py build
+python tools/design_system.py check</pre></div>
+  <div><h3 class="d2">With Claude</h3><p class="sm">Open this repository in Claude Code and ask, for example, "add a comparison table component to the design system". <code>CLAUDE.md</code> gives the agent the workflow, including publishing to the Claude design system.</p></div>
+ </div>
+</section>
+
+<section id="colour"><span class="eb">Foundations</span><h2 class="d1">Colour</h2><p class="lead">Light value left, dark value right. Text colours show their contrast on <code>surface</code> in each theme.</p><div class="sw" id="swatches"></div></section>
+<section id="type"><span class="eb">Foundations</span><h2 class="d1">Typography</h2><div id="typescale"></div></section>
+<section id="space"><span class="eb">Foundations</span><h2 class="d1">Space and shape</h2><div class="bars" id="spacing"></div><div class="bars" id="radii"></div></section>
+
+<div id="components" style="display:contents"></div>
+
+<section id="blocks">
+ <span class="eb">From the live site</span>
+ <h2 class="d1">Page blocks with real content</h2>
+ <p class="lead">Each block type in <code>content/pages/</code> (renderer in <code>assets/src/blocks/</code>), rendered with its first real example on the site.</p>
+ <div id="blocklib" class="dm" style="gap:var(--space-12)"></div>
+</section>
+
+<div id="docs" style="display:contents"></div>
+</main>
+</div>
+<script src="assets/aquemi-site.js"></script>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)},e=AQ.e;
+var REPO='https://github.com/Aquemi-Official/aquemi-web';
+AQTheme.bind($('wtheme'));
+function get(u,kind){return fetch(u,{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(u+' '+r.status);return kind==='json'?r.json():r.text()})}
+function md(s){return window.marked?marked.parse(s):'<pre>'+e(s)+'</pre>'}
+function toc(group,items){$('toc').insertAdjacentHTML('beforeend','<span class="g">'+e(group)+'</span>'+items.map(function(x){return '<a href="#'+e(x[0])+'">'+e(x[1])+'</a>'}).join(''))}
+
+/* Foundations, from tokens.json */
+function hex(c){c=String(c).replace('#','');if(c.length===3)c=c.split('').map(function(x){return x+x}).join('');var n=parseInt(c.slice(0,6),16);return [n>>16&255,n>>8&255,n&255]}
+function lum(c){return hex(c).map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)}).reduce(function(a,v,i){return a+v*[.2126,.7152,.0722][i]},0)}
+function ratio(a,b){if(!/^#/.test(a)||!/^#/.test(b))return '';var x=lum(a),y=lum(b);return ((Math.max(x,y)+.05)/(Math.min(x,y)+.05)).toFixed(1)}
+get('design-system/tokens.json','json').then(function(T){
+ var col={};T.color.tokens.forEach(function(t){col[t.name]=typeof t.value==='string'?{light:t.value,dark:t.value}:t.value});
+ $('swatches').innerHTML=T.color.tokens.map(function(t){var v=col[t.name],L=v.light,Dk=v.dark||L,txt=/^(ink|flow|pass|caution|fail|focus|line-strong)/.test(t.name);
+  var cr=txt?ratio(L,col.surface.light)+':1 · '+ratio(Dk,col.surface.dark)+':1 on surface':'';
+  return '<div><div class="chip"><span style="background:'+e(L)+'"></span><span style="background:'+e(Dk)+'"></span></div><div class="meta"><b>'+e(t.name)+'</b><span class="v">'+e(L)+' · '+e(Dk)+(cr?' · '+e(cr):'')+'</span><span class="sm">'+e(t.usage||'')+'</span></div></div>'}).join('');
+ $('typescale').innerHTML=T.type.groups.map(function(g){return g.styles.map(function(s){var fam=T.type.families[s.family||g.family]||'';
+  var st='font-family:'+fam.replace(/"/g,"'")+';font-size:'+s.fontSize+';line-height:'+s.lineHeight+';font-weight:'+s.fontWeight+(s.letterSpacing?';letter-spacing:'+s.letterSpacing:'')+(s.name==='eyebrow'?';text-transform:uppercase':'')+';overflow-wrap:anywhere;color:var(--ink)';
+  return '<div class="typr"><div style="'+e(st)+'">'+e(s.sample||s.name)+'</div><div class="meta"><b>'+e(s.name)+'</b>'+e(s.fontSize+' / '+s.lineHeight+' · '+s.fontWeight)+'<br>'+e(s.usage||'')+'</div></div>'}).join('')}).join('');
+ var px=function(v){return parseFloat(v)||0},mx=Math.max.apply(null,T.spacing.tokens.map(function(t){return px(t.value)}));
+ $('spacing').innerHTML=T.spacing.tokens.map(function(t){return '<div title="'+e(t.usage||'')+'"><span>'+e(t.name)+'</span><span class="sm">'+e(t.value)+'</span><i style="width:'+(100*px(t.value)/mx).toFixed(1)+'%"></i></div>'}).join('');
+ $('radii').innerHTML=T.radius.tokens.concat(T.layout?T.layout.tokens:[]).map(function(t){return '<div><span>'+e(t.name)+'</span><span class="sm">'+e(t.value)+'</span><span class="sm">'+e(t.usage||'')+'</span></div>'}).join('');
+}).catch(function(err){$('swatches').innerHTML='<p class="err">Tokens could not load: '+e(err.message)+'</p>'});
+
+/* Components, from components.json: live preview, guidelines, links to the source */
+get('design-system/components.json','json').then(function(M){
+ if(M.artifact)$('artlink').href=M.artifact;
+ var groups={};M.components.forEach(function(c){var g=c.group||'Other';(groups[g]=groups[g]||[]).push(c)});
+ var order=M.groups.filter(function(g){return groups[g]}).concat(Object.keys(groups).filter(function(g){return M.groups.indexOf(g)<0}));
+ var nr=M.components.filter(function(c){return c.retired}).length;
+ $('counts').textContent=M.components.length+' components in '+order.length+' groups'+(nr?' ('+nr+' retired: drawn only by looks no page uses, kept in the Section library)':'')+'.';
+ $('components').innerHTML=order.map(function(g){var id='g-'+g.toLowerCase().replace(/\W+/g,'-');
+  return '<section id="'+id+'"><span class="eb">Components</span><h2 class="d1">'+e(g)+'</h2>'+groups[g].map(function(c){
+   var base=REPO+'/blob/main/design-system/components/'+c.name+'/';
+   return '<article class="comp" id="c-'+e(c.name)+'"><div class="comp__hd"><h3 class="d1" style="font-size:26px;line-height:32px">'+e(c.name)+'</h3>'+(c.retired?'<span class="ret">Retired · <a href="sections.html#'+e(c.look||'')+'">Section library</a></span>':'')+'<span class="sm">'+e(c.subtitle||'')+'</span><span class="sp"></span><span class="comp__links"><a href="'+base+'README.md">README</a><a href="'+base+'preview.html">Preview</a><a href="'+base+'style.css">Styles</a></span></div>'+
+    '<div class="stage"><div class="stage__bar"><span>preview.html</span><button type="button" data-narrow>Phone width</button></div><div class="stage__body" data-preview><p class="sm" style="padding:16px">Loading…</p></div></div>'+
+    '<div class="md" data-readme></div><details class="src"><summary>Show preview code</summary><pre data-code></pre></details></article>'}).join('')+'</section>'}).join('');
+ order.forEach(function(g){toc(g,groups[g].map(function(c){return ['c-'+c.name,c.name]}))});
+ toc('From the site',[['blocks','Page blocks']]);
+ M.components.forEach(function(c){var el=document.getElementById('c-'+c.name);
+  get(c.preview).then(function(h){var code=h;Object.keys(M.assets||{}).forEach(function(k){h=h.split(k).join(M.assets[k])});
+   el.querySelector('[data-preview]').innerHTML=h.replace(/^<!--[\s\S]*?-->\s*/,'');el.querySelector('[data-code]').textContent=code}).catch(function(err){el.querySelector('[data-preview]').innerHTML='<p class="err" style="padding:16px">'+e(err.message)+'</p>'});
+  get(c.readme).then(function(t){el.querySelector('[data-readme]').innerHTML=md(t)}).catch(function(){el.querySelector('[data-readme]').innerHTML='<p class="err">No README.md yet.</p>'})});
+ docs()}).catch(function(err){$('components').innerHTML='<section><p class="err">components.json could not load ('+e(err.message)+'). Run: python tools/design_system.py build</p></section>'});
+document.addEventListener('click',function(ev){var b=ev.target.closest('[data-narrow]');if(!b)return;var body=b.closest('.stage').querySelector('.stage__body');body.classList.toggle('is-narrow');b.textContent=body.classList.contains('is-narrow')?'Full width':'Phone width'});
+
+/* Brand book, website plan and page inventory, rendered from markdown */
+function docs(){var D=[['brand','Brand book','design-system/README.md'],['website','Website plan','design-system/website.md'],['inventory','Page inventory','design-system/page-inventory.md']];
+ $('docs').innerHTML=D.map(function(d){return '<section id="'+d[0]+'"><span class="eb">Guidelines</span><h2 class="d1">'+e(d[1])+'</h2><p class="sm"><a href="'+REPO+'/blob/main/'+d[2]+'">'+e(d[2])+'</a></p><div class="md" data-doc="'+e(d[2])+'"></div></section>'}).join('');
+ toc('Guidelines',D.map(function(d){return [d[0],d[1]]}));
+ D.forEach(function(d){var box=document.querySelector('[data-doc="'+d[2]+'"]');get(d[2]).then(function(t){box.innerHTML=md(t.replace(/^#\s.*\n/,''))}).catch(function(err){box.innerHTML='<p class="err">'+e(err.message)+'</p>'})})}
+
+/* Page blocks with real content from content/pages.json */
+var BLOCKS=[['prose','Prose'],['grid','LinkGrid'],['options','OptionList'],['steps','ProcessSteps'],['diagram','ProcessDiagram'],['readout','Readout'],['spec','SpecTable'],['table','SpecTable (table)'],['docs','DocList'],['tags','Band with StandardTag'],['band','Band'],['faq','FAQ'],['case','CaseStudy'],['form','EnquiryForm'],['related','LinkGrid (related pages)']];
+get('content/pages.json','json').then(function(d){AQ.setPages(d.pages);
+ $('blocklib').innerHTML=BLOCKS.map(function(b){var src=null;d.pages.some(function(p){return (p.blocks||[]).some(function(x){if(x.type===b[0]){src={p:p,b:x};return true}})});
+  if(!src)return '';
+  return '<div class="blk"><div class="comp__hd"><h3 class="d2">'+e(b[1])+'</h3><code>"type": "'+e(b[0])+'"</code><span class="sp"></span><span class="sm">from <a href="index.html#'+e(src.p.id)+'">'+e(src.p.nav_label)+'</a></span></div><div class="stage"><div class="aq-page">'+AQ.wBlock(src.b)+'</div></div><details class="src"><summary>Show JSON</summary><pre>'+e(JSON.stringify(src.b,null,1))+'</pre></details></div>'}).join('');
+}).catch(function(err){$('blocklib').innerHTML='<p class="err">Blocks could not load: '+e(err.message)+'</p>'});
+})();
+</script>
+</body>
+</html>

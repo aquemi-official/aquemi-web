@@ -1,0 +1,388 @@
+{
+ "id": "contact-locations",
+ "section": "Contact",
+ "nav_label": "Locations",
+ "title": "Locations and service coverage | Aquemi",
+ "meta": "Aquemi is based in Ontario. By province: on-site time, where technicians and parts come from, and design registration.",
+ "path": "/contact/locations/",
+ "eyebrow": "LOCATIONS · SERVICE COVERAGE",
+ "headline": "Where we are, how fast we reach you",
+ "lead": "Based in Ontario. For your province: severity 1 on-site time, where technicians and parts come from, who registers and seals the design.",
+ "primary_cta": "Check coverage for your site",
+ "blocks": [
+  {
+   "type": "contact-routes",
+   "h": "Three ways in",
+   "routes": [
+    {
+     "t": "Request a proposal or review",
+     "d": "New system, upgrade or document review.",
+     "steps": [
+      "Send what you have",
+      "An engineer reads it",
+      "Written answer, then a proposal"
+     ],
+     "clock": "Written reply; time confirmed when you enquire",
+     "link": "contact-proposal",
+     "action": "Choose your request"
+    },
+    {
+     "t": "Production stopped or water out of specification",
+     "d": "Severity 1. Use the service request and choose severity 1.",
+     "steps": [
+      "Send a service request",
+      "Triage confirms severity",
+      "Remote diagnosis, then on site"
+     ],
+     "clock": "Answered within the time set in your service plan",
+     "link": "contact-service",
+     "intent": "Fault now|Severity 1: production stopped or water out of specification",
+     "urgent": true,
+     "action": "Log a service request"
+    },
+    {
+     "t": "Visit the shop and test bay",
+     "d": "Tour or factory acceptance test (FAT) witness, by appointment.",
+     "steps": [
+      "Purpose, dates, group",
+      "Date and agenda back",
+      "Protocol and test bay ready"
+     ],
+     "clock": "Date and agenda agreed with you",
+     "link": "contact-locations",
+     "action": "Book a visit below",
+     "current": true
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "anchor": "locations",
+   "nav": "Contacts",
+   "h": "Where to find us",
+   "cols": [
+    "Site",
+    "What happens here",
+    "Address",
+    "Contact and hours"
+   ],
+   "rows": [
+    [
+     {
+      "t": "Ontario, Canada",
+      "link": "about#facts"
+     },
+     "",
+     "Not published",
+     "hello@aquemi.com"
+    ],
+    [
+     {
+      "t": "Shop and test bay, Ontario, Canada",
+      "link": "svc-fabrication"
+     },
+     "Skid and piping fabrication, witnessed FAT on reasonable notice",
+     "Given when you book a visit",
+     "Visits by appointment"
+    ],
+    [
+     {
+      "t": "Service, Ontario, Canada",
+      "link": "svc-service"
+     },
+     "Field technicians, with critical spares agreed per plan",
+     "Ontario, Canada",
+     "Service request form · hello@aquemi.com"
+    ],
+    [
+     "Parts, Ontario, Canada",
+     "Spare parts and consumables, delivery confirmed with each order",
+     "Ontario, Canada",
+     "hello@aquemi.com"
+    ]
+   ],
+   "fold": 4,
+   "fold_noun": "contacts",
+   "look": "site-plates",
+   "art": [
+    "office",
+    "shop",
+    "service",
+    "parts"
+   ]
+  },
+  {
+   "type": "table",
+   "anchor": "coverage",
+   "nav": "Coverage",
+   "h": "Can you support my site?",
+   "cols": [
+    "Your region",
+    "Severity 1: technician on site, on a plan",
+    "Technician and parts from",
+    "Design registration and seal"
+   ],
+   "rows": [
+    [
+     "Ontario",
+     "The time set in your plan",
+     "Ontario, Canada",
+     "Design registration: Technical Standards and Safety Authority (TSSA). Engineering seal: Professional Engineers Ontario (PEO)"
+    ],
+    [
+     "Quebec",
+     "Visits by arrangement",
+     "Ontario, Canada. Language of service confirmed when you enquire.",
+     "Design registration: Régie du bâtiment du Québec (RBQ). Engineering seal: Ordre des ingénieurs du Québec (OIQ)"
+    ],
+    [
+     "British Columbia",
+     "Visits by arrangement",
+     "Confirmed when you enquire",
+     "Design registration: Technical Safety BC. Engineering seal: Engineers and Geoscientists BC (EGBC)"
+    ],
+    [
+     "Alberta",
+     "Visits by arrangement",
+     "Confirmed when you enquire",
+     "Design registration: Alberta Boilers Safety Association (ABSA). Engineering seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA)"
+    ],
+    [
+     "Other provinces and territories",
+     "Visits by arrangement",
+     "Confirmed when you enquire",
+     "Authorities where the system is installed"
+    ]
+   ],
+   "as": "router",
+   "look": "coverage-map",
+   "map": [
+    {
+     "c": "YT",
+     "n": "Yukon",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "c": "NT",
+     "n": "Northwest Territories",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "c": "NU",
+     "n": "Nunavut",
+     "x": 2,
+     "y": 0
+    },
+    {
+     "c": "BC",
+     "n": "British Columbia",
+     "x": 0,
+     "y": 1
+    },
+    {
+     "c": "AB",
+     "n": "Alberta",
+     "x": 1,
+     "y": 1
+    },
+    {
+     "c": "SK",
+     "n": "Saskatchewan",
+     "x": 2,
+     "y": 1
+    },
+    {
+     "c": "MB",
+     "n": "Manitoba",
+     "x": 3,
+     "y": 1
+    },
+    {
+     "c": "ON",
+     "n": "Ontario",
+     "x": 4,
+     "y": 1,
+     "r": 0
+    },
+    {
+     "c": "QC",
+     "n": "Quebec",
+     "x": 5,
+     "y": 1
+    },
+    {
+     "c": "NL",
+     "n": "Newfoundland and Labrador",
+     "x": 6,
+     "y": 1
+    },
+    {
+     "c": "NB",
+     "n": "New Brunswick",
+     "x": 5,
+     "y": 2
+    },
+    {
+     "c": "PE",
+     "n": "Prince Edward Island",
+     "x": 6,
+     "y": 2
+    },
+    {
+     "c": "NS",
+     "n": "Nova Scotia",
+     "x": 6,
+     "y": 3
+    }
+   ],
+   "base": {
+    "c": "ON",
+    "label": "Based in Ontario"
+   },
+   "intro": "From Ontario, Canada, we reach sites in an area agreed per project, in a time agreed in your service plan. Parts for every package we build stay available for a period stated in your proposal."
+  },
+  {
+   "type": "form",
+   "anchor": "visit",
+   "nav": "Visit",
+   "h": "Book a shop or test bay visit",
+   "intro": "Visits by appointment, on reasonable notice.",
+   "submit": "Request a visit",
+   "note": "Visitors sign confidentiality and safety terms. {Privacy notice|privacy}",
+   "steps": [
+    {
+     "title": "Your visit",
+     "next": "Continue to group and contact",
+     "fields": [
+      {
+       "label": "Purpose of the visit",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "Shop tour before shortlisting",
+        "Witness the FAT on our project",
+        "Pre-FAT walk-down or protocol review",
+        "Training at the test bay before handover"
+       ]
+      },
+      {
+       "kind": "note",
+       "label": "Auditing our quality system?",
+       "link": "cmp-quality#audit",
+       "action": "Request a supplier audit"
+      },
+      {
+       "label": "Project or purchase order number",
+       "kind": "text",
+       "required": false,
+       "when": "Witness the FAT on our project|Pre-FAT walk-down or protocol review|Training at the test bay before handover"
+      },
+      {
+       "label": "Preferred dates",
+       "kind": "text",
+       "required": true,
+       "help": "Two or three dates, or a week. A FAT date follows the project schedule."
+      },
+      {
+       "label": "Number of visitors",
+       "kind": "text",
+       "required": true,
+       "unit": "people"
+      }
+     ]
+    },
+    {
+     "title": "Group and contact",
+     "fields": [
+      {
+       "label": "Access or safety needs",
+       "kind": "textarea",
+       "required": false,
+       "help": "Mobility access or a site induction your company requires."
+      },
+      {
+       "label": "Full name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Company and site",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Work email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us where your site is",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
+  "include": [
+   "Site city and province",
+   "In Notes: the response time and language you need"
+  ],
+  "returns": [
+   "On-site time, base and parts stock, in writing",
+   "CRN route and engineering seal"
+  ],
+  "turnaround": "Confirmed when you enquire",
+  "button": "Talk to an engineer",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer"
+ },
+ "todo": [
+  "Head office: full address ([mailing address], news' CASL sender address too), sales phone and email ([sales email], news' contact email too), office hours with time zone (same placeholders as about and contact-proposal). Its \"What happens here\" cell is [head office functions] (pass 10) until FD-33 says what happens there (sales and proposals, engineering, or both); the site-plates drawing keeps the office plate",
+  "Shop and test bay: address ([shop address]), phone, hours, map link (shop location same as about)",
+  "Visit notice: [shop visit notice, working days] (route 3 and the visit form intro, pass 12 NS rows; FD-44). [shop and test bay ready for visits] is a private launch gate, never printed (R6, DR-028 rule 3): route 3 and the visit form ship when the gate passes, with notice times only, no dates",
+  "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
+  "Site drawings (DR-018): the service and parts rows draw an empty plate (no truck, no depot) until FD-28 and FD-33 confirm a service base or parts stock at an address; then set art \"service\" and \"parts\" again. The table's nav reads \"Contacts\" (pass 10 review), since a row may be home-based technicians or parts shipped from the shop, not a site (DR-018 rule 6). All four rows show (fold 4, pass 11): the service and parts rows answer procurement's and the maintenance lead's question (DR-024 rule 1)",
+  "Parts stock locations, parts email ([parts email address], contact-service's name), parts desk hours, order cut-off and delivery commitment (FD-11, FD-31)",
+  "Service coverage area (same as home, svc-service and contact-service); it travels with every severity 1 time (DR-011 rule 4)",
+  "Per region (Ontario, Quebec, British Columbia, Alberta, other provinces and territories): centres served, service base or partner, stocking point, severity 1 on-site response in hours or \"visits only\" (FD-27, FD-28). Centres served sit with the time they apply to (DR-011 rule 4)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, Ontario's coverage row included, per plan on svc-service). Every on-site time on this page carries svc-service's condition \"on a plan, inside [service coverage area]\"; without a plan, a call-out with the next available technician (contact-service). If the owner sets times for every caller, drop \"on a plan\" on all pages at once (DR-011 rules 3 and 4). Route 2's clock is the phone answer time, [severity 1 phone answer time, minutes], as on contact-service and contact-proposal (FD-27)",
+  "Hero facts (pass 12, DR-028 rule 1): the technicians count left the hero (no headcount in display type); one fact, as on contact-service and svc-service. [number of service technicians] goes to the questionnaire pack with about's [headcount by discipline] (R7). The parts commitment lives on svc-service#faq (one home, DR-009); the coverage intro repeats it with its start event, \"from handover\" (DR-010)",
+  "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove \"or partner\" from the cells if none",
+  "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
+  "Which components of the PP PW package need a CRN, if any (the coverage table names each province's authority \"where required\"; FD-24, OQ-79)",
+  "Engineering licences: licensed engineers per province (P.Eng. or ing.), PEO certificate of authorization, EGBC and APEGA permits to practice, an OIQ member on staff for Quebec, engineer of record route where not licensed (same as about; FD-24, FD-34). The coverage table names each authority as \"Design registration:\" and \"Engineering seal:\" (the column head's terms), so the coverage-map look strikes no CRN or seal stamp while the status is open (DR-018 rule 2); \"CRN:\" and \"Seal:\" return only once FD-24 confirms a registration route and a firm authorization in that province",
+  "French: [language of service in Quebec] (technicians, service reports, documents); New Brunswick (FD-36, DR-012)",
+  "Language for the day (visit form): the field (English, French) returns to step 2 only once a named French-speaking engineer can host on the same terms, as on contact-proposal (FD-36, DR-012 rule 2 and consequences)",
+  "Other provinces and territories, remote sites: whether served, travel response or visits only, site spares kit for remote sites. Only Ontario's map tile is tied to its row (the base, MISSION); every other tile is drawn dashed, tied to no row. Each tile's r returns as FD-28 confirms service in that province",
+  "United States: row removed until FD-37 decides whether Aquemi delivers there. If it does, add a row: states and system types; US service base and parts route; ASME certificate or vessel partner and National Board registration; panel mark for US; Incoterms rule and transit time; who travels for installation, SAT and IQ/OQ and entry route; US response; state licence route",
+  "Visit booking reply time (working days); visitor confidentiality and safety terms, and when visitors sign them (sent with the agenda, or on arrival); privacy notice ([privacy notice link], contact-proposal's and contact-service's name; PIPEDA, Quebec Law 25; FD-39)",
+  "Visit practicalities: photo ID, nearest airport and drive time, drive time from Toronto and Montreal, reception hours, PPE visitors bring and what is provided, photography rules (FD-44)",
+  "Remote witness platform (same as svc-fat-sat)",
+  "Shipping: drain and drying method after the FAT, crating standard and shock or tilt indicators, transit time to main centres (days)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Cost of the written coverage answer: [fit check cost or free], the \"Not sure yet\" row of contact-proposal's requests table (FD-02; DR-006 rule 5). At launch, \"Free\" or the price; if unset, the cost line goes",
+  "LocalBusiness schema per real location only, once addresses are confirmed",
+  "Pass 11 (offer § 14 CL1; L-12-16, L-07-10; FD-44, FD-45): the shop row reads \"Skid and piping fabrication, witnessed FAT on [FAT witness notice, working days] notice\" (ops/placeholder-names.md name, as on svc-fat-sat and projects), two plate callouts (pass 11 review finding 5). The second callout ships with the private launch gate above (FD-44, DR-004 class 2)",
+  "Final round, pass 11: coverage intro states an honest response radius and parts policy: [travel time from service base, hours] and [parts availability period, years]; no map of one dot (L-BWT-27; BWT study § 9 rank 10; FD-28, FD-11). Owner decides both",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): text fixes only: coverage table's last column names the registration body and seal only (status-on-request clauses dropped); plainer meta."
+ ],
+ "primary_cta_link": "#coverage",
+ "hero_index": false,
+ "figure": {
+  "look": "site-map",
+  "from": "locations",
+  "at": [
+   "office",
+   "shop",
+   "van",
+   "crates"
+  ]
+ }
+}

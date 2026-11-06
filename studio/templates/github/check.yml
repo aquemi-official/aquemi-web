@@ -1,0 +1,25 @@
+name: Studio check
+
+# Copy to .github/workflows/check.yml. Fails a push or pull request when the studio's rules are broken or the live
+# site could not be released cleanly (python studio/studio.py check), or when a generated file is out of date.
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Studio rules and a dry-run release of the live site
+        run: python studio/studio.py check
+      - name: Generated files are current
+        run: |
+          python studio/studio.py build
+          if ! git diff --exit-code; then
+            echo "::error::A generated file is out of date. Run: python studio/studio.py build (or refresh), then commit."
+            exit 1
+          fi

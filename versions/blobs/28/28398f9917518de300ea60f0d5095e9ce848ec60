@@ -1,0 +1,224 @@
+{
+ "id": "svc-cq",
+ "section": "Services",
+ "nav_label": "Commissioning and qualification",
+ "title": "Purified Water system IQ, OQ and PQ | Aquemi",
+ "meta": "Commissioning, IQ and OQ of your Purified Water package to protocols you approve, then PQ over 12 months. Not under GMP: commissioning and an acceptance test to your specification.",
+ "path": "/services/commissioning-qualification/",
+ "eyebrow": "COMMISSIONING · IQ · OQ · PQ",
+ "headline": "IQ, OQ and a year of PQ",
+ "lead": "Your quality unit approves each protocol and first production use; we commission and test on site. Not under good manufacturing practice (GMP): commissioning and an acceptance test against your specification.",
+ "primary_cta": "Request a C&Q plan review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
+ "secondary_cta": {
+  "label": "See what FAT can replace",
+  "link": "svc-fat-sat#faq"
+ },
+ "blocks": [
+  {
+   "type": "steps",
+   "nav": "Stages",
+   "anchor": "stages",
+   "h": "What each stage proves",
+   "intro": "One commissioning and qualification (C&Q) plan covers every stage. Not under GMP? The same stages apply, with commissioning and an acceptance test against your specification in place of qualification.",
+   "items": [
+    {
+     "t": "Commissioning",
+     "d": "Flush, pressure test, sanitization, start-up, punch list.",
+     "label": "Commissioning"
+    },
+    {
+     "t": "Factory and site acceptance tests (FAT and SAT)",
+     "d": "Tested before shipping, then on your utilities.",
+     "link": "svc-fat-sat",
+     "label": "FAT · SAT"
+    },
+    {
+     "t": "Installation qualification (IQ)",
+     "d": "Installed as designed: drawings, materials and instruments.",
+     "label": "IQ",
+     "art": "piping"
+    },
+    {
+     "t": "Operational qualification (OQ)",
+     "d": "Operating limits and worst case tested.",
+     "label": "OQ"
+    },
+    {
+     "t": "Performance qualification (PQ)",
+     "d": "Required quality, reproducibly, across the seasons.",
+     "label": "PQ"
+    },
+    {
+     "t": "Periodic review",
+     "d": "Yearly review of data and changes, under your change control; requalify where they point.",
+     "label": "Review"
+    }
+   ],
+   "look": "stage-tiles"
+  },
+  {
+   "type": "table",
+   "as": "roles",
+   "nav": "Who signs",
+   "anchor": "roles",
+   "h": "Who writes, who reviews",
+   "intro": "The validation master plan stays yours. You approve the C&Q plan before any test runs. IQ and OQ protocols reach you ahead of testing, on a date agreed with you.",
+   "cols": [
+    "Document or activity",
+    "Written or done by",
+    "Reviewed by"
+   ],
+   "rows": [
+    [
+     "Risk assessment and C&Q plan",
+     "Aquemi drafts from your requirements (URS)",
+     "Your validation team"
+    ],
+    [
+     "FAT, SAT, IQ and OQ protocols",
+     "Aquemi",
+     "Your validation team"
+    ],
+    [
+     "IQ and OQ execution",
+     "Aquemi engineers named in your proposal, you witness",
+     "Your validation team"
+    ],
+    [
+     "PQ protocol and sampling plan",
+     "You, or Aquemi drafts for you",
+     "Both teams and your laboratory"
+    ],
+    [
+     "PQ sampling and testing",
+     "Your operators and laboratory",
+     "Your quality control"
+    ]
+   ],
+   "look": "signature-blocks"
+  },
+  {
+   "type": "steps",
+   "nav": "PQ",
+   "anchor": "pq",
+   "h": "PQ in three phases",
+   "intro": "We draft the sampling plan with you; your lab tests the samples. For example, 12 sample points over 28 days make 336 samples: book lab time before PQ starts.",
+   "items": [
+    {
+     "t": "Phase 1",
+     "d": "At least 2 weeks of daily samples at every step and point of use. No production use.",
+     "days": 14
+    },
+    {
+     "t": "Phase 2",
+     "d": "At least 2 more weeks, same sampling, procedures in use. Production use with your approval.",
+     "hold": "Your quality unit",
+     "days": 14
+    },
+    {
+     "t": "Phase 3",
+     "d": "A reduced routine plan, trended, until the phases cover at least 12 months. An adverse trend is investigated, never resampled away."
+    }
+   ],
+   "look": "pq-calendar",
+   "grid": {
+    "points": 12,
+    "days": 28,
+    "rows": "sample points",
+    "cols": "days",
+    "unit": "samples",
+    "example": true
+   },
+   "year": {
+    "weeks": 52,
+    "months": 12,
+    "label": "12 months"
+   }
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions on qualification and handover",
+   "items": [
+    {
+     "q": "Do we really have to wait a year before using the water?",
+     "a": "No. Your quality unit can approve use from phase 2, when the data show the required quality. The year covers seasonal changes in your feed water."
+    },
+    {
+     "q": "Not under GMP: do you still commission and test the system?",
+     "a": "Yes, to the standard you work under: hospital critical water, laboratory reagent water, or your process or equipment maker's specification.",
+     "link": "ind-hospital-lab#grades",
+     "link_label": "Hospital and lab water"
+    },
+    {
+     "q": "Can you qualify a system you did not build?",
+     "a": "Yes, for makes and equipment confirmed when you enquire. We start with an assessment of its qualification file and the installed system.",
+     "link": "svc-upgrades"
+    },
+    {
+     "q": "Do you train the people who will run it?",
+     "a": "Yes, on your system after start-up, in hours and for audiences agreed with you. Training ends when your operators can run the system and clear its usual alarms. Each trainee signs a record, tied to the manual chapter covered, for your quality file."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after qualification",
+   "items": [
+    "svc-fat-sat",
+    "project-plan",
+    "sys-monitoring",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your requirements, get a C&Q plan",
+  "body": "An engineer replies. Cost: quoted in your proposal.",
+  "button": "Request a C&Q plan review",
+  "link": "contact-proposal",
+  "intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
+  "include": [
+   "No URS yet? What you make and your flow",
+   "Your URS or specification, validation master plan, protocol templates",
+   "Points of use and demand pattern"
+  ],
+  "returns": [
+   "A draft C&Q plan, or an acceptance test scope",
+   "The IQ/OQ and PQ scope"
+  ],
+  "turnaround": "a time confirmed when you enquire"
+ },
+ "todo": [
+  "Who executes IQ and OQ: Aquemi's own engineers or a named partner ([executing staff: own engineers or named partner]; FD-46, FD-34; services uses the same name)",
+  "IQ/OQ days on site for the full package, pretreatment to distribution ([IQ/OQ on site, days]; hero fact, DR-010; FD-08; services uses the same name); add a single-module figure only if it differs",
+  "PQ support scope: whether Aquemi staff take samples on site in phases 1 and 2 ([on-site PQ sampling by Aquemi, yes or no]) and through which laboratory ([contract laboratory, if Aquemi arranges one]) (FD-46). Until then the roles table says your operators and laboratory sample and test",
+  "Which C&Q documents Aquemi drafts (risk assessment, C&Q plan, protocols, PQ protocol, reports, alert level recommendation; roles table and FAQ; FD-46) and whether it writes them in client templates. \"In your template\" (roles table) and \"in your model\" (ASTM E2500 answer) were cut until confirmed, as on svc-design",
+  "FAT practice (FD-45): the FAT and SAT stage says \"Tested before shipping\"; add \"with water\" only once a wet FAT of every skid is policy (svc-fat-sat's [100 %] fact)",
+  "C&Q plan review: cost and turnaround ([document review cost], [document review turnaround, working days]; the names in contact-proposal's requests table; FD-01, FD-02)",
+  "Calibration provider and its accreditation, for example ISO/IEC 17025 ([calibration provider and accreditation held]; svc-service's name; FD-32)",
+  "Qualification and requalification of systems Aquemi did not build, and of which makes ([makes and equipment types serviced]; FD-30; the full answer lives on svc-service and svc-upgrades)",
+  "PP joining method, joint records kept and the PP joining standard checked at IQ ([PP joining method], [PP joint records kept], [PP joining standard], the name compliance and svc-fabrication use; FD-18). Joint records, for example the joint map and per-joint log; the example stays out of the brackets",
+  "Material certificates verified at IQ ([PP material certificates], [certificates supplied for PVC parts]; the names compliance, cmp-quality and sys-pretreatment use; FD-17)",
+  "PP loop sanitization method proven at OQ, with its contact time and residual test ([PP loop sanitization method]; FD-14, DR-013)",
+  "Case block: only from a confirmed client project with the client's permission to publish (phase dates, deviations, water release date; FD-42, DR-028). Specimens show the format and stay labelled as specimens (pass 12 SITE-PLAN 1.5 conflict 7; FD-47)",
+  "NHP qualification scope ([NHP qualification scope]; FD-46; new in pass 10, SITE-PLAN 7): what Aquemi delivers for a natural health product site under GUI-0158 sections 45 and 46 (qualification criteria for the treated water, test record templates, calibration and maintenance SOPs for the purification system). IQ/OQ/PQ is an Aquemi service (MISSION), so the FAQ's last sentence stands without FD-46. The FAQ states GUI-0158's own terms (checked against industries/natural-health-products.md, IPH-02, IPH-05, desk ruling Q9); \"dry-dose lines need only documented rinse control\" waits on FD-20 and stays off this page. At launch an unset scope drops that sentence, the rest of the answer stands",
+  "Pass 10, intent I6 (SITE-PLAN 4.5): \"Request the IQ/OQ contents\" (cmp-documentation#samples, \"IQ and OQ protocol contents\") sits on the FAQ \"Can IQ and OQ be combined\" because the walkdown-pins look of \"IQ and OQ on site\" renders no link. Specimens wait on FD-47: at launch, with no specimen, the FAQ link goes (DR-006 rule 6)",
+  "Pass 11, phrasebook 18 (L-03-27, PB-03.24): PQ intro says your lab tests and to book lab hours before PQ starts (review finding 9: calm, no \"now\"); matches the roles table (your operators and laboratory sample and test). Stays true until FD-46 says Aquemi samples",
+  "Pass 11, offer § 14 notice (L-08-10, L-11-9): roles intro (moved from stages in pass 12, intro budget) \"IQ and OQ protocols reach you [protocol issue before IQ/OQ, weeks] before testing\", project-plan#notice's name for the same fact (its home for every notice period; one figure on both pages, DR-011; FD-45, FD-46). At launch an unset value drops the sentence",
+  "Pass 11, proof § 5.2 (L-G3-13, L-14-8): new FAQ \"What counts as passing IQ and OQ?\" states the acceptance definition and the met / not met summary with action and owner per miss. The specimen acceptance summary with a \"not met, action\" row waits on FD-47 (no specimen exists; no download promised)",
+  "Pass 11, phrasebook 14 and offer § 14 S5 (L-08-9, L-10-15, L-11-10, L-14-5; PB-08.8, PB-08.9, PB-10.21), owner decision: new FAQ \"Do you train the people who will run it?\" with [training hours and audiences] (offer § 14's name; one name, DR-011). MISSION lists commissioning, not training, so whether training is a priced line, its audiences, hours and sign-off standard are FD-26 (phrasebook open question 2). If Aquemi does not train, the FAQ goes at launch. One home: this FAQ; a services row or project-plan line links here rather than repeating it (DR-009)",
+  "Pass 11, related (SITE-PLAN, svc pages): project-plan replaces svc-upgrades (still linked from the FAQ \"Can you qualify a system you did not build?\"). Related: if project-plan has not launched (FD-08), svc-upgrades returns in its place (pass 11 review finding 13)",
+  "Pass 11, proof § 5.2 open (L-10-16): a handover sampling plan in plain words (for the first [weeks] we sample at [points] and send you the results) waits on FD-46 (who samples); the PQ intro carries the plain-words version for now",
+  "Pass 11 review findings 4 and 10: training FAQ opens \"Yes, on your system after start-up\" (offer § 14 S5's when). 'Yes' stands only with FD-26; repeat sessions ([repeat training policy], offer § 14 S5, L-11-10) wait on the same decision. FAQ heading now \"Questions on qualification and handover\" so operations and maintenance readers find the training answer",
+  "Pass 12 (SITE-PLAN svc-cq, R10): title drops \"to EU GMP Annex 15\"; eyebrow and FAQ keep it. Lead gives the GMP path (quality unit approves each protocol and first production use: RI 03 lead, RI 07 QA release) and the non-GMP path in one line each",
+  "Pass 12 (DR-027 rule 8, IB 3): the non-GMP sentence verbatim ends the stages intro. FAQ \"Not under GMP: do you still commission and test the system?\" replaces the ASTM E2500 FAQ, whose answer moved to the stages intro (RI 03 order: approach first; FAQ cap 8). It links ind-hospital-lab#validation (new page, R1); if that page has not launched, the link goes. ST108:2023 monthly bacteria and endotoxin are the standard's monitoring minimums (industries/hospital-reprocessing.md), not an Aquemi figure",
+  "Pass 12 (RI 03, RI 04, RI 15): roles table adds the deviation and change-control row between FAT and OQ; the acceptance FAQ adds \"investigated, never resampled to pass\". A written deviation route as a document waits on FD-45/FD-46; the specimen record on FD-47",
+  "Pass 12 (RI 05): PQ intro says we draft the sampling plan with you (roles table); phase 3 says an adverse trend is investigated, not resampled. Who samples on site stays [on-site PQ sampling by Aquemi, yes or no] (FD-46, off the page until set). Alert-levels note marks the 100 CFU/mL action level as Purified Water's and points hospital readers to ST108's tighter limit (IB 3)",
+  "Pass 12: anchors stages, iq-oq, pq, alert-levels added (roles and faq kept; inbound links services, first-system, ind-meddevice use roles and faq). No look changed",
+  "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): roles table cut to 5 rows (deviations, alert levels, phase reports retired; fold dropped), IQ and OQ walkdown and alert-level sections retired, FAQ cut to 4 (combined IQ/OQ, what counts as passing, action level exceeded, natural health products retired), Annex 15, GUI-0029, ASTM E2500 and WHO TRS removed; hospital link now ind-hospital-lab#grades."
+ ]
+}

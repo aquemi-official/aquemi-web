@@ -1,0 +1,255 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "studio.config.json: one project's settings for the studio kit",
+ "type": "object",
+ "required": [
+  "project"
+ ],
+ "properties": {
+  "project": {
+   "type": "object",
+   "required": [
+    "name"
+   ],
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "about": {
+     "type": "string"
+    },
+    "repo": {
+     "type": "string",
+     "description": "owner/name on GitHub"
+    },
+    "url": {
+     "type": "string"
+    },
+    "agents": {
+     "type": "string"
+    }
+   }
+  },
+  "brand": {
+   "type": "object",
+   "properties": {
+    "book": {
+     "type": "string"
+    },
+    "plan": {
+     "type": "string"
+    },
+    "summary": {
+     "type": "string"
+    },
+    "voice": {
+     "type": "string"
+    },
+    "offer": {
+     "type": "string"
+    },
+    "never": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "site": {
+   "type": "object",
+   "properties": {
+    "entry": {
+     "type": "string"
+    },
+    "pages": {
+     "type": "object",
+     "description": "adapter html (glob, exclude), json (file, list, id, title, group, url, sections, heading, type, notes, ctas) or command (run)",
+     "properties": {
+      "adapter": {
+       "enum": [
+        "html",
+        "json",
+        "command"
+       ]
+      }
+     }
+    },
+    "current": {
+     "type": "object",
+     "description": "How the bar knows the page shown: {match: 'path'} or {event, path} for single-page sites"
+    },
+    "root": {
+     "type": "string",
+     "description": "CSS selector of the page content; open notes go after it"
+    },
+    "toggles": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "id",
+       "label",
+       "class"
+      ],
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "label": {
+        "type": "string"
+       },
+       "target": {
+        "type": "string"
+       },
+       "class": {
+        "type": "string"
+       },
+       "when_off": {
+        "type": "boolean"
+       },
+       "default": {
+        "type": "boolean"
+       }
+      }
+     }
+    },
+    "notes_label": {
+     "type": "string"
+    }
+   }
+  },
+  "theme": {
+   "type": "object",
+   "properties": {
+    "css": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "map": {
+     "type": "object",
+     "description": "kit token name -> CSS value, e.g. {\"ink\": \"var(--text)\"}"
+    },
+    "icon": {
+     "type": "string"
+    }
+   }
+  },
+  "data": {
+   "type": "object",
+   "description": "Root-relative locations: dir, history, gallery, atlas, scans, prompt_kit, concepts"
+  },
+  "history": {
+   "type": "object",
+   "properties": {
+    "branch": {
+     "type": "string"
+    },
+    "copy": {
+     "type": "array"
+    },
+    "skip": {
+     "type": "array"
+    },
+    "checkpoints": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "commit",
+       "title"
+      ],
+      "properties": {
+       "commit": {
+        "type": "string"
+       },
+       "title": {
+        "type": "string"
+       },
+       "note": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  },
+  "gallery": {
+   "type": "object",
+   "description": "sources [{dir, cat, status, name, about, group, contain, mask, numbered}] or producer (argv)"
+  },
+  "atlas": {
+   "type": "object",
+   "description": "producer (argv) run before the kit's own index"
+  },
+  "images": {
+   "type": "object",
+   "properties": {
+    "webp": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "notes": {
+   "type": "object",
+   "description": "kit skill name -> project notes file the skill reads first"
+  },
+  "tools": {
+   "type": "array",
+   "description": "The project's own tools: id, name, page, kind, what, when, sources, outputs, run, skill, ships ('live' or 'studio'), production_only"
+  },
+  "disable": {
+   "type": "array",
+   "description": "Kit tool ids to hide"
+  },
+  "skills": {
+   "type": "array",
+   "description": "The project's own skills: name, path, what"
+  },
+  "refresh": {
+   "type": "array",
+   "description": "Project generator steps: id, label, run (argv), tools, needs_path"
+  },
+  "checks": {
+   "type": "array",
+   "description": "Project check commands (argv lists)"
+  },
+  "branches": {
+   "type": "object"
+  },
+  "copies": {
+   "type": "array"
+  },
+  "release": {
+   "type": "object",
+   "description": "<copy id>: true (tooled) or false (live site); heavy: paths left out of non-production tooled copies"
+  },
+  "live": {
+   "type": "object",
+   "required": [
+    "keep"
+   ],
+   "properties": {
+    "keep": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "The only files the live site is made of: a path, a folder/ or a glob"
+    }
+   }
+  },
+  "external": {
+   "type": "array"
+  },
+  "env": {
+   "type": "object",
+   "description": "Environment for generator steps, e.g. {\"TZ\": \"America/Toronto\"} so dates match on every machine"
+  }
+ }
+}

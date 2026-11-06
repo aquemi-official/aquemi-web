@@ -15,11 +15,11 @@ jobs:
       - name: Rules (tokens, components, renderer classes)
         run: python tools/design_system.py check
       - name: Studio rules and a dry-run release of the live site
-        run: python tools/studio.py check
+        run: python studio/studio.py check
       - name: Generated files are current
         run: |
           python tools/design_system.py build
-          if ! git diff --exit-code -- design-system/tokens.css design-system/components.json design-system/components/bundle.css assets/aquemi-site.js content/pages.json studio/studio.js; then
+          if ! git diff --exit-code -- design-system/tokens.css design-system/components.json design-system/components/bundle.css assets/aquemi-site.js content/pages.json studio/web/studio.js studio-data/; then
             echo "::error::A generated file is out of date. Run: python tools/design_system.py build, then commit."
             exit 1
           fi

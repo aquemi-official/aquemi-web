@@ -1,0 +1,55 @@
+name: Publish site
+
+# Copy to .github/workflows/pages.yml and set Settings > Pages > Source to "GitHub Actions".
+# One Pages site carries every copy in studio.config.json "copies": production at the root, staging/ and dev/, live/
+# (production released: the site without the studio, for review before the switch) and, once production is the live
+# site ("release": {"production": false}), draft/ (the tooled production). A push to any of the branches rebuilds all.
+# Branches that do not exist yet are skipped. Remove a branch here if the project has no such branch.
+on:
+  push:
+    branches: [main, staging, dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: self
+      - name: Check out every branch that exists
+        run: |
+          for b in main staging dev; do
+            if git -C self ls-remote --exit-code --heads origin "$b" >/dev/null; then
+              git clone --depth 1 --branch "$b" "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "src-$b"
+            fi
+          done
+      - name: Assemble every copy
+        run: |
+          args=""
+          for b in main staging dev; do [ -d "src-$b" ] && args="$args $b=src-$b"; done
+          python3 self/studio/studio.py assemble _site $args
+          du -sh _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
