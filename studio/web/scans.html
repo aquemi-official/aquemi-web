@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site scans</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="studio.css">
+<script src="studio.js" data-tool="scans"></script>
+<style>
+/* Site scans viewer. Reads <data.scans>/index.json, <site>/site.json, <site>/pages/<slug>.json and <site>/compare.json,
+   written by `python studio/studio.py scan`. Uses the project's tokens when it has them, plain fallbacks when not. */
+:root {
+  --sc-ink: var(--ink, #14181f);
+  --sc-muted: var(--ink-muted, #5b6270);
+  --sc-ground: var(--surface, #f7f6f2);
+  --sc-raised: var(--surface-raised, #ffffff);
+  --sc-sunken: var(--surface-sunken, #eeece6);
+  --sc-line: var(--line, #d9d6cf);
+  --sc-line-strong: var(--line-strong, #b9b5ac);
+  --sc-accent: var(--flow, #2c6aa0);
+  --sc-warn: var(--warning, #a1600b);
+  --sc-sans: var(--font-sans, system-ui, -apple-system, "Segoe UI", sans-serif);
+  --sc-mono: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) {
+    --sc-ink: var(--ink, #e9e7e1);
+    --sc-muted: var(--ink-muted, #a3a7af);
+    --sc-ground: var(--surface, #12161c);
+    --sc-raised: var(--surface-raised, #1a2028);
+    --sc-sunken: var(--surface-sunken, #0d1015);
+    --sc-line: var(--line, #2c333d);
+    --sc-line-strong: var(--line-strong, #46505c);
+    --sc-accent: var(--flow, #78aee0);
+    --sc-warn: var(--warning, #e0a54f);
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--sc-ground); color: var(--sc-ink); font: 400 15px/1.5 var(--sc-sans); }
+a { color: var(--sc-accent); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
+.sc { max-width: 1280px; margin: 0 auto; padding: 32px 16px 96px; }
+.sc-hd h1 { margin: 0; font: 300 clamp(30px, 5vw, 44px)/1.1 var(--sc-sans); letter-spacing: -0.02em; }
+.sc-hd p { margin: 8px 0 0; max-width: 70ch; color: var(--sc-muted); }
+.sc-eb { font: 500 12px/16px var(--sc-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--sc-muted); margin: 0 0 8px; }
+code, .mono { font-family: var(--sc-mono); font-size: 13px; }
+code { background: var(--sc-sunken); padding: 1px 5px; overflow-wrap: anywhere; }
+.sc-body { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; margin-top: 28px; }
+.sc-sites { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.sc-sites button { width: 100%; text-align: left; padding: 10px 12px; border: 1px solid var(--sc-line); background: var(--sc-raised); cursor: pointer; display: grid; gap: 2px; }
+.sc-sites button:hover { border-color: var(--sc-line-strong); }
+.sc-sites button[aria-current="true"] { border-color: var(--sc-accent); box-shadow: inset 3px 0 0 var(--sc-accent); }
+.sc-sites b { font-weight: 500; overflow-wrap: anywhere; }
+.sc-sites span { font: 400 12px/16px var(--sc-mono); color: var(--sc-muted); }
+.sc-main { min-width: 0; }
+.sc-empty { padding: 24px; border: 1px dashed var(--sc-line-strong); background: var(--sc-raised); }
+.sc-empty p { margin: 0 0 8px; }
+.sc-stats { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0 0 16px; font: 400 12px/16px var(--sc-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--sc-muted); }
+.sc-stats b { display: block; font: 300 28px/34px var(--sc-sans); letter-spacing: -0.01em; color: var(--sc-ink); text-transform: none; }
+.sc-site-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 0 0 12px; }
+.sc-site-h h2 { margin: 0; font: 400 26px/32px var(--sc-sans); overflow-wrap: anywhere; }
+.sc-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--sc-line); margin-bottom: 20px; overflow-x: auto; scrollbar-width: none; }
+.sc-tabs button { border: 0; background: none; padding: 10px 14px; cursor: pointer; color: var(--sc-muted); border-bottom: 2px solid transparent; white-space: nowrap; font-family: var(--sc-mono); font-size: 13px; }
+.sc-tabs button[aria-selected="true"] { color: var(--sc-ink); border-bottom-color: var(--sc-accent); }
+.sc-note { padding: 12px 14px; border-left: 3px solid var(--sc-accent); background: var(--sc-raised); margin: 0 0 16px; color: var(--sc-muted); }
+.sc-note--warn { border-left-color: var(--sc-warn); }
+.sc-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+.sc-card { border: 1px solid var(--sc-line); background: var(--sc-raised); padding: 16px; min-width: 0; }
+.sc-card h3 { margin: 0 0 4px; font: 500 16px/22px var(--sc-sans); }
+.sc-card > p { margin: 0 0 12px; color: var(--sc-muted); font-size: 13px; }
+/* map */
+.sc-tree, .sc-tree ul { list-style: none; margin: 0; padding: 0; }
+.sc-tree ul { padding-left: 16px; border-left: 1px solid var(--sc-line); margin-left: 6px; }
+.sc-tree li { margin: 2px 0; }
+.sc-tree summary, .sc-leaf { display: flex; gap: 8px; align-items: baseline; cursor: pointer; padding: 2px 0; min-width: 0; }
+.sc-leaf { cursor: default; padding-left: 14px; }
+.sc-tree .n { overflow-wrap: anywhere; }
+.sc-tree .c { margin-left: auto; font: 400 12px/16px var(--sc-mono); color: var(--sc-muted); flex: none; }
+.sc-tree .s { font: 400 11px/14px var(--sc-mono); color: var(--sc-accent); flex: none; }
+.sc-nav { list-style: none; margin: 0; padding: 0; columns: 2 180px; column-gap: 20px; }
+.sc-nav li { break-inside: avoid; padding: 2px 0; overflow-wrap: anywhere; }
+/* pages */
+.sc-scroll { overflow-x: auto; border: 1px solid var(--sc-line); background: var(--sc-raised); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--sc-line); vertical-align: top; }
+th { font: 500 11px/14px var(--sc-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--sc-muted); background: var(--sc-sunken); position: sticky; top: 0; }
+td.num, th.num { text-align: right; font-family: var(--sc-mono); white-space: nowrap; }
+tbody tr { cursor: pointer; }
+tbody tr:hover, tbody tr[aria-current="true"] { background: var(--sc-sunken); }
+td .path { font-family: var(--sc-mono); font-size: 13px; overflow-wrap: anywhere; }
+td:first-child { min-width: 140px; }
+td:nth-child(2) { min-width: 160px; }
+td:last-child { min-width: 180px; }
+.tag { display: inline-block; padding: 0 6px; border: 1px solid var(--sc-line-strong); font: 400 11px/16px var(--sc-mono); color: var(--sc-muted); margin: 0 4px 2px 0; }
+.tag--warn { border-color: var(--sc-warn); color: var(--sc-warn); }
+.sc-detail { margin-top: 20px; }
+.sc-ol { list-style: none; margin: 0; padding: 0; }
+.sc-ol li { padding: 3px 0; border-bottom: 1px solid var(--sc-line); overflow-wrap: anywhere; }
+.sc-ol .lv { display: inline-block; min-width: 26px; margin-right: 6px; font: 400 11px/16px var(--sc-mono); color: var(--sc-muted); }
+.sc-ol .l1 { font-weight: 500; }
+.sc-ol .l2 { padding-left: 16px; }
+.sc-ol .l3 { padding-left: 32px; color: var(--sc-muted); }
+.sc-text { white-space: pre-wrap; max-height: 420px; overflow: auto; font-size: 14px; background: var(--sc-sunken); padding: 12px; margin: 0; }
+/* words */
+.sc-filter { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.sc-filter button { border: 1px solid var(--sc-line); background: var(--sc-raised); padding: 4px 10px; cursor: pointer; font: 400 13px/18px var(--sc-mono); }
+.sc-filter button[aria-pressed="true"] { background: var(--sc-ink); color: var(--sc-ground); border-color: var(--sc-ink); }
+.sc-terms { list-style: none; margin: 0; padding: 0; }
+.sc-terms li { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: 4px 10px; padding: 5px 0; border-bottom: 1px solid var(--sc-line); align-items: center; }
+.sc-terms .t { overflow-wrap: anywhere; }
+.sc-terms .in { grid-column: 1 / -1; font: 400 11px/14px var(--sc-mono); color: var(--sc-muted); overflow-wrap: anywhere; }
+.bars { display: grid; gap: 2px; }
+.bar { height: 6px; background: var(--sc-sunken); position: relative; }
+.bar i { position: absolute; inset: 0 auto 0 0; background: var(--sc-accent); }
+.bar--us i { background: var(--sc-ink); }
+.sc-key { display: flex; gap: 14px; font: 400 12px/16px var(--sc-mono); color: var(--sc-muted); margin: 0 0 12px; flex-wrap: wrap; }
+.sc-key i { display: inline-block; width: 18px; height: 6px; margin-right: 6px; vertical-align: middle; background: var(--sc-accent); }
+.sc-key i.us { background: var(--sc-ink); }
+.sc-count { font: 400 12px/16px var(--sc-mono); color: var(--sc-muted); }
+/* compare */
+.sc-pick { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 16px; }
+.sc-pick select { font: inherit; color: var(--sc-ink); background: var(--sc-raised); border: 1px solid var(--sc-line-strong); padding: 6px 8px; max-width: 100%; }
+.sc-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.sc-pair .sc-card h3 { overflow-wrap: anywhere; }
+@media (max-width: 860px) {
+  .sc-body { grid-template-columns: minmax(0, 1fr); }
+  .sc-sites { flex-direction: row; overflow-x: auto; padding-bottom: 4px; }
+  .sc-sites li { flex: 0 0 auto; max-width: 75vw; }
+  .sc-pair { grid-template-columns: minmax(0, 1fr); }
+  th:nth-child(2), td:nth-child(2) { display: none; }
+}
+</style>
+</head>
+<body>
+<main class="sc">
+  <header class="sc-hd">
+    <p class="sc-eb" id="sc-proj">Studio</p>
+    <h1>Site scans</h1>
+    <p>Other sites taken apart: their sitemap, page outlines, calls to action and the words they use, set against our pages.
+      Study structure, coverage and vocabulary here; never copy their sentences, claims or figures.</p>
+  </header>
+  <div class="sc-body">
+    <nav aria-label="Scanned sites"><ul class="sc-sites" id="sc-sites"></ul></nav>
+    <section class="sc-main" id="sc-main" aria-live="polite"></section>
+  </div>
+</main>
+<script>
+(function () {
+  'use strict';
+  var S = window.STUDIO || { root: new URL('../../', location.href).href, cfg: { data: { scans: 'studio-data/scans' } } };
+  var cfg = S.cfg || {};
+  var scansRel = ((cfg.data && cfg.data.scans) || 'studio-data/scans').replace(/\/+$/, '');
+  var BASE = (S.root || '') + scansRel + '/';
+  var KIT = 'studio';
+  var $ = function (id) { return document.getElementById(id); };
+  var cache = {};
+  var index = null, all = null;
+  if (cfg.project && cfg.project.name) $('sc-proj').textContent = cfg.project.name + ' studio';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function safeHref(u) { return /^(https?:|mailto:|tel:)/i.test(String(u || '')) ? esc(u) : '#'; }
+  function ext(u, text) { return '<a href="' + safeHref(u) + '" target="_blank" rel="noopener noreferrer">' + esc(text) + '</a>'; }
+  function load(path) {
+    if (!cache[path]) {
+      cache[path] = fetch(BASE + path, { cache: 'no-cache' }).then(function (r) {
+        if (!r.ok) throw new Error(r.status + ' ' + path);
+        return r.json();
+      });
+      cache[path].catch(function () { delete cache[path]; });
+    }
+    return cache[path];
+  }
+  function maybe(path) { return load(path).catch(function () { return null; }); }
+
+  // ------------------------------------------------------------ state in the hash: #site=x&page=y&tab=map
+  function state() {
+    var o = {};
+    location.hash.replace(/^#/, '').split('&').forEach(function (kv) {
+      if (!kv) return;
+      var i = kv.indexOf('=');
+      o[decodeURIComponent(i < 0 ? kv : kv.slice(0, i))] = i < 0 ? '' : decodeURIComponent(kv.slice(i + 1));
+    });
+    return o;
+  }
+  function go(patch) {
+    var o = state();
+    Object.keys(patch).forEach(function (k) { if (patch[k] == null || patch[k] === '') delete o[k]; else o[k] = patch[k]; });
+    var h = Object.keys(o).map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(o[k]); }).join('&');
+    if (('#' + h) === location.hash) render(); else location.hash = h;
+  }
+  window.addEventListener('hashchange', render);
+
+  // ------------------------------------------------------------ site list
+  function sitesList() {
+    var st = state(), sites = (index && index.sites) || [];
+    var items = sites.map(function (s) {
+      return '<li><button type="button" data-site="' + esc(s.id) + '" aria-current="' + (st.site === s.id) + '"><b>' + esc(s.host) +
+        '</b><span>' + s.pages + ' pages · ' + s.words_median + ' words median' + (s.thin ? ' · ' + s.thin + ' thin' : '') + '</span>' +
+        '<span>' + esc((s.scanned_at || '').slice(0, 10)) + (s.compare ? ' · compared' : '') + '</span></button></li>';
+    });
+    if (all && sites.length > 1) {
+      items.push('<li><button type="button" data-site="_all" aria-current="' + (st.site === '_all') + '"><b>All sites</b><span>' +
+        all.theirs.pages + ' pages against ours</span></button></li>');
+    }
+    $('sc-sites').innerHTML = items.join('');
+  }
+  $('sc-sites').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-site]');
+    if (b) go({ site: b.getAttribute('data-site'), page: null, ours: null });
+  });
+
+  function empty() {
+    $('sc-main').innerHTML = '<div class="sc-empty"><p><b>No sites scanned yet.</b></p>' +
+      '<p>Scan a competitor or reference site from the project root:</p>' +
+      '<p><code>python ' + KIT + '/studio.py scan https://example.com --max 40</code></p>' +
+      '<p>then compare it with our pages: <code>python ' + KIT + '/studio.py scan compare &lt;site-id&gt;</code>. ' +
+      'Results land in <code>' + esc(scansRel) + '/</code> and show here.</p></div>';
+  }
+
+  // ------------------------------------------------------------ render
+  function render() {
+    if (!index) return;
+    var sites = index.sites || [];
+    if (!sites.length) { sitesList(); return empty(); }
+    var st = state();
+    if (!st.site || (st.site !== '_all' && !sites.some(function (s) { return s.id === st.site; }))) {
+      st.site = sites[0].id;
+      history.replaceState(null, '', '#site=' + encodeURIComponent(st.site));
+    }
+    sitesList();
+    if (st.site === '_all') return renderAll(st);
+    var entry = sites.filter(function (s) { return s.id === st.site; })[0];
+    Promise.all([load(st.site + '/site.json'), entry.compare ? maybe(st.site + '/compare.json') : null]).then(function (r) {
+      renderSite(st, r[0], r[1]);
+    }).catch(function (e) {
+      $('sc-main').innerHTML = '<p class="sc-note sc-note--warn">Could not read ' + esc(st.site) + '/site.json (' + esc(e.message) + ').</p>';
+    });
+  }
+
+  function tabsBar(tabs, cur) {
+    return '<div class="sc-tabs" role="tablist">' + tabs.map(function (t) {
+      return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (t[0] === cur) + '">' + esc(t[1]) + '</button>';
+    }).join('') + '</div>';
+  }
+  $('sc-main').addEventListener('click', function (e) {
+    var t = e.target.closest('[data-tab]');
+    if (t) return go({ tab: t.getAttribute('data-tab') });
+    var f = e.target.closest('[data-n]');
+    if (f) return go({ n: f.getAttribute('data-n') });
+    var row = e.target.closest('tr[data-slug]');
+    if (row && !e.target.closest('a')) go({ page: row.getAttribute('data-slug') });
+  });
+  $('sc-main').addEventListener('keydown', function (e) {
+    var row = e.target.closest('tr[data-slug]');
+    if (row && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go({ page: row.getAttribute('data-slug') }); }
+  });
+  $('sc-main').addEventListener('change', function (e) {
+    if (e.target.id === 'sc-ours') go({ ours: e.target.value });
+  });
+
+  function renderSite(st, site, cmp) {
+    var tab = st.tab || 'map';
+    var ok = site.pages.filter(function (p) { return p.slug; });
+    var words = ok.map(function (p) { return p.words; }).sort(function (a, b) { return a - b; });
+    var thin = ok.filter(function (p) { return p.thin; }).length;
+    var h = '<div class="sc-site-h"><h2>' + esc(site.host) + '</h2>' + ext(site.url, site.url) + '</div>' +
+      '<div class="sc-stats"><span><b>' + ok.length + '</b>pages read</span><span><b>' + (site.sitemap_urls_total || 0) +
+      '</b>' + (site.sitemap_found ? 'in sitemap' : 'URLs found') + '</span><span><b>' + (words.length ? words[Math.floor(words.length / 2)] : 0) +
+      '</b>median words</span><span><b>' + esc((site.scanned_at || '').slice(0, 10)) + '</b>scanned</span></div>';
+    if (thin) h += '<p class="sc-note sc-note--warn">' + thin + ' page' + (thin > 1 ? 's are' : ' is') + ' thin (under 80 words), often a sign the page is ' +
+      'drawn by JavaScript. Capture it in a browser and add it with <code>python ' + KIT + '/studio.py scan import ' + esc(site.id) + ' &lt;file.html&gt; &lt;url&gt;</code>.</p>';
+    h += tabsBar([['map', 'Map'], ['pages', 'Pages'], ['words', 'Words'], ['compare', 'Compare']], tab);
+    if (tab === 'pages') h += pagesTab(site, ok, st);
+    else if (tab === 'words') h += wordsTab(cmp, site.id, st);
+    else if (tab === 'compare') h += compareTab(cmp, site.id, st);
+    else h += mapTab(site);
+    $('sc-main').innerHTML = h;
+    if (tab === 'pages' && st.page) detail(site, st.page);
+  }
+
+  function renderAll(st) {
+    var tab = st.tab === 'compare' ? 'compare' : 'words';
+    var h = '<div class="sc-site-h"><h2>All sites</h2><span class="sc-count">' + esc((all.sites || []).join(', ')) + '</span></div>' +
+      tabsBar([['words', 'Words'], ['compare', 'Compare']], tab);
+    h += tab === 'compare' ? compareTab(all, '--all', st) : wordsTab(all, '--all', st);
+    $('sc-main').innerHTML = h;
+  }
+
+  // ------------------------------------------------------------ map
+  function treeHtml(n, depth) {
+    var kids = n.children || [];
+    var label = '<span class="n">' + esc(depth ? n.name : '/') + '</span><span class="c">' + n.count + '</span>';
+    if (!kids.length) return '<li><div class="sc-leaf">' + label + '</div></li>';
+    var shown = kids.slice(0, 200);
+    return '<li><details' + (depth < 1 ? ' open' : '') + '><summary>' + label + '</summary><ul>' +
+      shown.map(function (c) { return treeHtml(c, depth + 1); }).join('') +
+      (kids.length > shown.length ? '<li class="sc-count">and ' + (kids.length - shown.length) + ' more</li>' : '') + '</ul></details></li>';
+  }
+  function mapTab(site) {
+    var nav = site.nav || [];
+    return '<div class="sc-cols"><div class="sc-card"><h3>URL tree</h3><p>Every URL found (sitemap or crawl), by path. The number is the URLs under it.</p>' +
+      (site.tree ? '<ul class="sc-tree">' + treeHtml(site.tree, 0) + '</ul>' : '<p>No URLs.</p>') + '</div>' +
+      '<div class="sc-card"><h3>Home page navigation</h3><p>Links in the home page’s header and nav, in order.</p>' +
+      (nav.length ? '<ul class="sc-nav">' + nav.map(function (l) { return '<li>' + ext(l.href, l.text) + '</li>'; }).join('') + '</ul>' : '<p>None found.</p>') +
+      '</div></div>';
+  }
+
+  // ------------------------------------------------------------ pages
+  function pagesTab(site, ok, st) {
+    var rows = ok.map(function (p) {
+      var ctas = (p.ctas || []).filter(function (c) { return c.in !== 'footer'; });
+      return '<tr tabindex="0" data-slug="' + esc(p.slug) + '" aria-current="' + (st.page === p.slug) + '"><td><span class="path">' + esc(p.path) + '</span>' +
+        (p.thin ? ' <span class="tag tag--warn">thin</span>' : '') + (p.source === 'import' ? ' <span class="tag">imported</span>' : '') +
+        '</td><td>' + esc(p.title) + '</td><td class="num">' + p.words + '</td><td class="num">' + (p.h2_count || 0) + '</td><td>' +
+        ctas.slice(0, 3).map(function (c) { return '<span class="tag">' + esc(c.text) + '</span>'; }).join('') +
+        (ctas.length > 3 ? '<span class="sc-count">+' + (ctas.length - 3) + '</span>' : '') + '</td></tr>';
+    });
+    var failed = site.pages.filter(function (p) { return !p.slug; });
+    return '<div class="sc-scroll"><table><thead><tr><th>Path</th><th>Title</th><th class="num">Words</th><th class="num">H2</th><th>Calls to action</th></tr></thead><tbody>' +
+      rows.join('') + '</tbody></table></div>' +
+      (failed.length ? '<p class="sc-count">Not read: ' + failed.map(function (p) { return esc(p.path) + ' (' + esc(p.error || p.status) + ')'; }).join(', ') + '</p>' : '') +
+      '<div class="sc-detail" id="sc-detail"></div>';
+  }
+  function detail(site, slug) {
+    var box = $('sc-detail');
+    if (!box) return;
+    box.innerHTML = '<p class="sc-count">Loading…</p>';
+    load(site.id + '/pages/' + slug + '.json').then(function (p) {
+      var ol = (p.outline || []).map(function (o) {
+        return '<li class="l' + o.l + '"><span class="lv">h' + o.l + '</span>' + esc(o.h) + '</li>';
+      }).join('');
+      var ctas = (p.ctas || []).map(function (c) {
+        return '<li><span class="lv">' + esc(c.in) + '</span>' + (c.href ? ext(c.href, c.text) : esc(c.text)) + '</li>';
+      }).join('');
+      box.innerHTML = '<div class="sc-cols"><div class="sc-card"><h3>' + esc(p.title || p.path) + '</h3><p>' + ext(p.url, p.path) + ' · ' + p.words + ' words' +
+        (p.lang ? ' · ' + esc(p.lang) : '') + '</p>' +
+        '<p><b>Meta description.</b> ' + (p.description ? esc(p.description) : '<i>none</i>') + '</p>' +
+        '<h3>Outline</h3>' + (ol ? '<ul class="sc-ol">' + ol + '</ul>' : '<p>No h1–h3 headings.</p>') + '</div>' +
+        '<div class="sc-card"><h3>Calls to action</h3>' + (ctas ? '<ul class="sc-ol">' + ctas + '</ul>' : '<p>None found.</p>') +
+        '<h3 style="margin-top:16px">Page facts</h3><p>' +
+        (p.schema && p.schema.length ? 'Schema.org: ' + p.schema.map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '<br>' : '') +
+        p.images + ' images, ' + p.images_no_alt + ' without alt · ' + p.links_internal + ' internal links, ' + p.links_external + ' external' +
+        (p.canonical && p.canonical !== p.url ? '<br>Canonical: ' + ext(p.canonical, p.canonical) : '') + '</p>' +
+        '<details><summary>Main text (for study, not for reuse)</summary><pre class="sc-text">' + esc(p.text || '') + '</pre></details></div></div>';
+    }).catch(function (e) { box.innerHTML = '<p class="sc-note sc-note--warn">' + esc(e.message) + '</p>'; });
+  }
+
+  // ------------------------------------------------------------ words
+  function missing(id) {
+    var cmd = id === '--all' ? 'scan compare --all' : 'scan compare ' + id;
+    return '<p class="sc-note">No comparison yet. Run <code>python ' + KIT + '/studio.py ' + esc(cmd) + '</code> (add one of our page ids to pair it with their closest pages).</p>';
+  }
+  function termList(rows, n, k) {
+    rows = rows.filter(function (r) { return !n || r.n === n; }).slice(0, k);
+    if (!rows.length) return '<p class="sc-count">Nothing here.</p>';
+    return '<ul class="sc-terms">' + rows.map(function (r) {
+      return '<li><span class="t">' + esc(r.term) + ' <span class="sc-count">' + r.their_pages + ' · ' + r.our_pages + '</span></span>' +
+        '<span class="bars"><span class="bar"><i style="width:' + Math.round(r.their_share * 100) + '%"></i></span>' +
+        '<span class="bar bar--us"><i style="width:' + Math.round(r.our_share * 100) + '%"></i></span></span>' +
+        (r.in && r.in.length ? '<span class="in">' + r.in.map(esc).join(' · ') + '</span>' : '') + '</li>';
+    }).join('') + '</ul>';
+  }
+  function wordsTab(cmp, id, st) {
+    if (!cmp) return missing(id);
+    var n = st.n === '2' ? 2 : st.n === 'all' ? 0 : 1;
+    var filt = '<div class="sc-filter">' + [['1', 'Words'], ['2', 'Two-word phrases'], ['all', 'Both']].map(function (f) {
+      return '<button type="button" data-n="' + f[0] + '" aria-pressed="' + (String(n || 'all') === f[0]) + '">' + f[1] + '</button>';
+    }).join('') + '</div>';
+    var hd = function (list) {
+      return list.length ? '<ul class="sc-ol">' + list.slice(0, 30).map(function (x) {
+        return '<li><span class="lv">' + (x.pages) + '</span>' + esc(x.h || x.text) + '</li>';
+      }).join('') + '</ul>' : '<p class="sc-count">None.</p>';
+    };
+    return '<div class="sc-stats"><span><b>' + cmp.theirs.pages + '</b>their pages</span><span><b>' + cmp.theirs.words_median +
+      '</b>their median words</span><span><b>' + cmp.ours.pages + '</b>our pages</span><span><b>' + cmp.ours.words_median + '</b>our median words</span></div>' +
+      '<p class="sc-key"><span><i></i>share of their pages</span><span><i class="us"></i>share of ours</span><span>numbers: their pages · our pages</span></p>' + filt +
+      '<div class="sc-cols"><div class="sc-card"><h3>They say, we don’t</h3><p>Coverage and vocabulary to consider, in our own words.</p>' + termList(cmp.they_say || [], n, 60) + '</div>' +
+      '<div class="sc-card"><h3>We say, they don’t</h3><p>Our distinct terms, or jargon readers may not search for.</p>' + termList(cmp.we_say || [], n, 60) + '</div>' +
+      '<div class="sc-card"><h3>Shared</h3><p>The common ground of the field.</p>' + termList(cmp.shared || [], n, 60) + '</div></div>' +
+      '<div class="sc-cols" style="margin-top:20px"><div class="sc-card"><h3>Their h2 headings</h3><p>By number of pages.</p>' + hd(cmp.headings.theirs) + '</div>' +
+      '<div class="sc-card"><h3>Our section headings</h3><p>By number of pages.</p>' + hd(cmp.headings.ours) + '</div>' +
+      '<div class="sc-card"><h3>Their calls to action</h3><p>Outside the footer, by number of pages.' + (cmp.ctas.ours_note ? ' ' + esc(cmp.ctas.ours_note) : '') + '</p>' +
+      hd(cmp.ctas.theirs) + (cmp.ctas.ours && cmp.ctas.ours.length ? '<h3 style="margin-top:12px">Ours</h3>' + hd(cmp.ctas.ours) : '') + '</div></div>';
+  }
+
+  // ------------------------------------------------------------ compare
+  function outlineList(ol) {
+    return ol && ol.length ? '<ul class="sc-ol">' + ol.map(function (o) {
+      return '<li class="l' + (o.l || 2) + '"><span class="lv">' + esc(o.type || ('h' + (o.l || 2))) + '</span>' + esc(o.h) + '</li>';
+    }).join('') + '</ul>' : '<p class="sc-count">No headings.</p>';
+  }
+  function compareTab(cmp, id, st) {
+    if (!cmp) return missing(id);
+    var pairs = (cmp.pairs || []).filter(function (p) { return p.matches && p.matches.length; });
+    if (!pairs.length) return '<p class="sc-note">No pairs in this comparison. Run <code>python ' + KIT + '/studio.py scan compare ' + esc(id) + ' &lt;our page id&gt;</code>.</p>';
+    var cur = pairs.filter(function (p) { return p.ours.id === st.ours; })[0] || pairs[0];
+    var h = '<div class="sc-pick"><label for="sc-ours">Our page</label><select id="sc-ours">' + pairs.map(function (p) {
+      return '<option value="' + esc(p.ours.id) + '"' + (p === cur ? ' selected' : '') + '>' + esc(p.ours.title || p.ours.id) + ' (' + esc(p.ours.id) + ')</option>';
+    }).join('') + '</select></div>';
+    h += '<p class="sc-count">Their closest pages by shared vocabulary (tf-idf cosine). Compare the structure: which questions each page answers, in what order.</p>';
+    cur.matches.forEach(function (m) {
+      h += '<div class="sc-pair"><div class="sc-card"><h3>Ours: ' + esc(cur.ours.title || cur.ours.id) + '</h3><p>' + cur.ours.words + ' words</p>' + outlineList(cur.ours.outline) + '</div>' +
+        '<div class="sc-card"><h3>' + esc(m.title || m.path) + '</h3><p>' + esc(m.site) + ' · ' + esc(m.path) + ' · ' + m.words + ' words · similarity ' + m.score.toFixed(2) + '</p>' +
+        outlineList(m.outline) + '</div></div>';
+    });
+    return h;
+  }
+
+  // ------------------------------------------------------------ start
+  load('index.json').then(function (r) {
+    index = r;
+    return index.compare_all ? maybe('compare-all.json') : null;
+  }).then(function (r) {
+    all = r;
+    render();
+  }).catch(function () {
+    index = { sites: [] };
+    render();
+  });
+})();
+</script>
+</body>
+</html>

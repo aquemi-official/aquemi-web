@@ -1,0 +1,75 @@
+{
+ "about": "The studio kit: development and design tooling for any static website, worked by people and Claude agents. This file is the kit's own registry and never names a project; a project describes itself in studio.config.json at its root. See README.md.",
+ "name": "Studio",
+ "version": "1.0.0",
+ "tools": [
+  {
+   "id": "hub",
+   "name": "Studio",
+   "page": "web/index.html",
+   "kind": "hub",
+   "what": "The hub: every tool, the copies of the site, what each tool reads and writes, the command that refreshes it, the agent skills, and what the live site leaves out.",
+   "when": "Start here.",
+   "sources": ["studio.config.json", "studio/kit.json"],
+   "outputs": ["studio/web/studio.js"],
+   "run": ["python studio/studio.py status", "python studio/studio.py refresh", "python studio/studio.py check"],
+   "skill": "studio"
+  },
+  {
+   "id": "history",
+   "name": "Page history",
+   "page": "web/history.html",
+   "kind": "tool",
+   "what": "Any page as it was at each named checkpoint or at any commit on the production branch, flipped or compared side by side, desktop or phone. Old commits run unchanged from content-addressed copies served by a service worker.",
+   "when": "After a release you want listed; to compare a page before and after a change; to recover how something looked.",
+   "sources": ["git history of the production branch", "studio.config.json history.checkpoints"],
+   "outputs": ["{data.history}/index.json", "{data.history}/tree/", "{data.history}/blobs/", "{data.history}/sw.js"],
+   "run": ["python studio/studio.py history"],
+   "skill": "studio",
+   "heavy": true
+  },
+  {
+   "id": "gallery",
+   "name": "Media gallery",
+   "page": "web/gallery.html",
+   "kind": "tool",
+   "what": "Every image made or considered for the site, used or not, filtered by kind and by what became of it: generated concepts, references, captures, drawings, icons, the brand and build records.",
+   "when": "After adding any image; when looking for an earlier concept or deciding what to use.",
+   "sources": ["studio.config.json gallery.sources (or the project's gallery.producer)"],
+   "outputs": ["{data.gallery}", "thumbnails beside it"],
+   "run": ["python studio/studio.py gallery"],
+   "skill": "studio-image-loop",
+   "heavy": true
+  },
+  {
+   "id": "atlas",
+   "name": "Style atlas",
+   "page": "web/atlas.html",
+   "kind": "tool",
+   "what": "The image loop made readable: every generated or reference image taken apart into text-to-image keywords and a reusable prompt, the keywords counted across the set, style families, what scored with the brand and what failed, and the prompt kit new images are made from.",
+   "when": "After describing new images; before writing image prompts; when finding or changing the visual direction.",
+   "sources": ["{data.atlas}/images/*.json", "{data.atlas}/STYLE-ATLAS.md", "{data.prompt_kit}"],
+   "outputs": ["{data.atlas}/atlas.json"],
+   "run": ["python studio/studio.py atlas"],
+   "skill": "studio-image-loop"
+  },
+  {
+   "id": "scans",
+   "name": "Site scans",
+   "page": "web/scans.html",
+   "kind": "tool",
+   "what": "Other sites taken apart: sitemap, page outlines, calls to action, the words they use, and how our pages compare, so structure and copy decisions start from what the field does.",
+   "when": "Before planning a sitemap or rewriting a page; to see the words a market uses that we don't.",
+   "sources": ["the scanned sites", "our pages (studio.config.json site.pages)"],
+   "outputs": ["{data.scans}/index.json", "{data.scans}/<site>/site.json", "{data.scans}/<site>/pages/"],
+   "run": ["python studio/studio.py scan <url>", "python studio/studio.py scan compare <site>"],
+   "skill": "studio-site-scan"
+  }
+ ],
+ "skills": [
+  {"name": "studio", "what": "Work with the studio: find the right tool, refresh what a change made stale, check, page history, release the live site, add a tool, promote branches."},
+  {"name": "studio-image-loop", "what": "Image to text to image: describe images as keywords and prompts, refresh the style atlas, write section prompts from the prompt kit, generate concepts (Gemini through Claude in Chrome), keep every image in the gallery."},
+  {"name": "studio-motion", "what": "Find and port motion (hover, press, scroll, shaders) from the Subframe Motion library into the project's own stack and tokens."},
+  {"name": "studio-site-scan", "what": "Scan other sites (sitemap, outlines, copy, calls to action), compare them with ours, and adapt our structure and copy in our own voice."}
+ ]
+}

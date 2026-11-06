@@ -1,0 +1,72 @@
+/* Studio kit: the studio bar, and the base every studio viewer is built on. Never loaded by the live site
+   (python studio/studio.py release cuts the studio blocks and leaves studio/ out).
+
+   Tokens. Viewers use plain token names (--ink, --surface, --line, --flow ...). The defaults below sit in :where(),
+   which has no specificity, so a project's own tokens (studio.config.json theme.css, loaded by studio.js) always win,
+   in either order. A project whose tokens have other names maps them in theme.map ({"ink": "var(--text)"}). */
+:where(:root) {
+  --ink: #15191f; --ink-muted: #545b66; --ink-subtle: #7b828d; --ink-inverse: #f7f6f2;
+  --surface: #f7f6f2; --surface-raised: #ffffff; --surface-sunken: #eceae4;
+  --line: #dcd9d2; --line-strong: #b9b5ac;
+  --flow: #2b67a0; --action: #1f5a91; --focus: #2b67a0;
+  --pass: #2f7d4f; --caution: #b07a12; --fail: #b3412f; --navy: #18263a;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px;
+  --space-10: 40px; --space-12: 48px; --space-16: 64px; --space-24: 96px;
+  --radius-sm: 4px; --radius-md: 8px; --content-max: 1280px;
+}
+@media (prefers-color-scheme: dark) {
+  :where(:root:not([data-theme="light"])) {
+    --ink: #eceae4; --ink-muted: #a9adb4; --ink-subtle: #868b93; --ink-inverse: #15191f;
+    --surface: #12161c; --surface-raised: #1a1f27; --surface-sunken: #0d1015;
+    --line: #2b313b; --line-strong: #434a56; --flow: #78a9d8; --action: #8cb6df; --focus: #78a9d8; --navy: #0b1220;
+  }
+}
+:where(:root[data-theme="dark"]) {
+  --ink: #eceae4; --ink-muted: #a9adb4; --ink-subtle: #868b93; --ink-inverse: #15191f;
+  --surface: #12161c; --surface-raised: #1a1f27; --surface-sunken: #0d1015;
+  --line: #2b313b; --line-strong: #434a56; --flow: #78a9d8; --action: #8cb6df; --focus: #78a9d8; --navy: #0b1220;
+}
+
+/* ---------------------------------------------------------------- the bar */
+.sb { position: relative; z-index: 30; flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-4); padding: var(--space-1) var(--space-4); background: var(--surface-sunken); border-bottom: 1px solid var(--line); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); text-align: left; }
+.sb a { color: var(--flow); text-decoration: none; }
+.sb a:hover { text-decoration: underline; }
+.sb :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.sb__id { display: inline-flex; gap: var(--space-2); align-items: baseline; white-space: nowrap; }
+.sb__home { font-weight: 500; color: var(--ink) !important; letter-spacing: .04em; text-transform: uppercase; }
+.sb__copy[data-copy="staging"], .sb__copy[data-copy="dev"], .sb__copy[data-copy="local"] { color: var(--ink); }
+.sb__nav { display: flex; gap: var(--space-3); flex: 1 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.sb__nav::-webkit-scrollbar { display: none; }
+.sb__t { white-space: nowrap; padding-block: var(--space-1); border-bottom: 1px solid transparent; }
+.sb__t[aria-current="page"] { color: var(--ink); border-bottom-color: var(--flow); }
+.sb__t--kit::before { content: ""; display: inline-block; width: 1px; height: 10px; margin-right: var(--space-3); background: var(--line-strong); vertical-align: -1px; }
+.sb__t--kit ~ .sb__t--kit::before { display: none; }
+.sb__x { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
+.sb__x:empty { display: none; }
+.sb label { display: inline-flex; gap: var(--space-1); align-items: center; cursor: pointer; }
+.sb select { font: inherit; color: var(--ink); background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 0 var(--space-1); max-width: 260px; }
+@media (max-width: 640px) { .sb__nav { flex-basis: 100%; order: 3; } .sb__x { flex: 1 1 100%; flex-wrap: nowrap; gap: var(--space-3); } .sb select { flex: 1 1 auto; min-width: 0; max-width: none; } .sb__copy { display: none; } }
+
+.sb-notes { max-width: var(--content-max); margin: 0 auto; padding: var(--space-6) var(--space-8) var(--space-12); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.sb-notes h2 { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2); }
+.sb-notes ul { margin: 0; padding-left: var(--space-4); }
+@media print { .sb, .sb-notes { display: none; } }
+
+/* ---------------------------------------------------------------- viewer base (studio/web/*.html only) */
+html.st-viewer, html.st-viewer body { margin: 0; }
+html.st-viewer *, html.st-viewer *::before, html.st-viewer *::after { box-sizing: border-box; }
+html.st-viewer body { background: var(--surface); color: var(--ink); font-family: var(--font-sans); -webkit-text-size-adjust: 100%; }
+html.st-viewer :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+html.st-viewer [hidden] { display: none !important; }
+html.st-viewer img { max-width: 100%; }
+.st-in { max-width: var(--content-max); margin: 0 auto; padding-inline: max(16px, var(--space-6)); }
+.st-eyebrow { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+.st-display { margin: var(--space-2) 0 0; font: 300 clamp(34px, 6vw, 56px)/1.05 var(--font-sans); letter-spacing: -.025em; color: var(--ink); text-wrap: balance; }
+.st-lead { margin: var(--space-4) 0 0; font: 400 18px/28px var(--font-sans); color: var(--ink-muted); max-width: 72ch; }
+.st-sm { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); max-width: 80ch; }
+.st-viewer code { font: 400 0.92em/1.4 var(--font-mono); background: var(--surface-sunken); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
+.st-empty { padding: var(--space-8); border: 1px dashed var(--line-strong); border-radius: var(--radius-md); color: var(--ink-muted); font: 400 15px/24px var(--font-sans); }
+.st-empty pre { margin: var(--space-3) 0 0; font: 400 13px/20px var(--font-mono); color: var(--ink); white-space: pre-wrap; }
+@media (prefers-reduced-motion: reduce) { html.st-viewer * { transition: none !important; scroll-behavior: auto !important; } }

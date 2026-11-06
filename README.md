@@ -8,7 +8,7 @@ Working draft of the Aquemi customer site and the Aquemi design system it is bui
 
 This is for drafting and testing. Every page carries a `noindex` tag. Work on `dev`; Pages updates every copy in a minute or two (AGENTS.md, Branches).
 
-**Development tooling: the studio.** The design system guide, section library, design research, media gallery and page history are one family, opened from `studio.html` or the bar across every page, registered in `studio/manifest.json` and run with `python tools/studio.py`. The live site is released without it. See [studio/README.md](studio/README.md).
+**Development tooling: the studio kit.** Page history, media gallery, style atlas, site scans, motion porting and the studio bar come from the portable kit in [`studio/`](studio/README.md), which never names Aquemi and can be copied into another web project. Aquemi's settings for it, and its own tools (the design system guide, the section library, design research), are in `studio.config.json`. Hub: `studio/web/index.html`. The live site is released without any of it.
 
 **Working on it, by hand or with an AI agent: read [AGENTS.md](AGENTS.md).** It covers the file map, the rules and step-by-step workflows for changing tokens, adding components, adding pages and publishing to Claude.
 
@@ -22,9 +22,9 @@ This is for drafting and testing. Every page carries a `noindex` tag. Work on `d
 python tools/design_system.py build
 python tools/design_system.py check
 python tools/design_system.py new PullQuote "Page sections"
-python tools/studio.py status      # what a change made stale
-python tools/studio.py refresh     # regenerate it all, then check
-python tools/studio.py check       # studio rules + a dry-run release of the live site
+python studio/studio.py status      # what a change made stale
+python studio/studio.py refresh     # regenerate it all, then check
+python studio/studio.py check      # studio rules + a dry-run release of the live site
 ```
 
 Preview locally:
@@ -41,7 +41,7 @@ The site is built to load like a parts catalogue: everything from one origin, th
 
 - **One origin.** Geist and Geist Mono are self-hosted in `assets/fonts/` (latin and latin-ext WOFF2, SIL OFL) and GSAP 3.13 with its plugins is one file in `assets/vendor/`. No third-party request on page load.
 - **Critical files first, in parallel.** `index.html` preloads the two latin fonts and the page content, and its boot script starts fetching `content/pages.min.json` in `<head>`, alongside the CSS. All scripts are `defer`. On a page with an equipment drawing the boot script preloads it too.
-- **Smaller files.** `build` writes site copies `bundle.min.css` (half the gzipped size of `bundle.css`) and `pages.min.json`. Illustrations are served as lossless WebP (`python tools/images.py` after adding or changing a PNG in `assets/illustrations/`; needs Pillow). The PNGs stay the source.
+- **Smaller files.** `build` writes site copies `bundle.min.css` (half the gzipped size of `bundle.css`) and `pages.min.json`. Illustrations are served as lossless WebP (`python studio/studio.py refresh webp` after adding or changing a PNG in `assets/illustrations/`; needs Pillow). The PNGs stay the source.
 - **Cache for good, stay fresh.** `build` stamps each file's content hash into `index.html` (`?v=…`) and a cache name into `sw.js`. The service worker serves versioned files and the static folders (fonts, icons, illustrations, brand, vendor) from the device, but always asks the network first for the page itself, so a push shows on the next load. It runs only over https and leaves `versions/` alone.
 - **Motion never holds the page.** Headings wait at most 0.8 s for fonts before animating.
 

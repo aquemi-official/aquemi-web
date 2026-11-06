@@ -1,0 +1,441 @@
+{
+ "$schema": "studio/schemas/config.schema.json",
+ "about": "Aquemi's settings for the studio kit in studio/ (see studio/README.md). The kit is generic; everything that is Aquemi lives here and in the files it points to.",
+ "project": {
+  "name": "Aquemi",
+  "about": "Aquemi designs and fabricates modular polypropylene Purified Water systems for pharmaceutical and other regulated plants. Readers are engineers, validation leads and QA managers.",
+  "repo": "aquemi-official/aquemi-web",
+  "url": "https://aquemi-official.github.io/aquemi-web/",
+  "agents": "AGENTS.md"
+ },
+ "brand": {
+  "book": "design-system/README.md",
+  "plan": "design-system/website.md",
+  "summary": "Precise, quiet, finished. Navy and limestone grounds, one steel-blue accent, Geist light headlines with Geist Mono figures, hairline line art, square corners, space as a material.",
+  "voice": "Name the standard, give the number with its unit, no hype words, sentence case. Facts only Aquemi can supply go in [square brackets]; never fill one with a guessed value.",
+  "offer": "Modular polypropylene Purified Water packages only, built in Ontario.",
+  "never": [
+   "stainless steel, chrome or brushed metal",
+   "Water for Injection, pure steam or stills",
+   "orbital welding",
+   "figures, standards, claims or logos copied out of an image or a competitor's site"
+  ]
+ },
+ "env": {
+  "TZ": "America/Toronto"
+ },
+ "site": {
+  "entry": "index.html",
+  "pages": {
+   "adapter": "json",
+   "file": "content/pages.json",
+   "list": "pages",
+   "id": "id",
+   "title": "nav_label",
+   "group": "section",
+   "url": "index.html#{id}",
+   "sections": "blocks",
+   "heading": "h",
+   "type": "type",
+   "notes": "todo",
+   "ctas": [
+    "primary_cta",
+    "secondary_cta",
+    "cta.button"
+   ]
+  },
+  "current": {
+   "event": "aq:render",
+   "path": "page.id"
+  },
+  "root": "#wsite",
+  "toggles": [
+   {
+    "id": "ph",
+    "label": "Placeholders",
+    "target": "#wsite",
+    "class": "is-clean",
+    "when_off": true,
+    "default": true
+   }
+  ],
+  "notes_label": "Open facts"
+ },
+ "theme": {
+  "css": [
+   "assets/fonts/fonts.css",
+   "design-system/tokens.css"
+  ],
+  "icon": "brand/favicon.svg"
+ },
+ "data": {
+  "dir": "studio-data",
+  "history": "versions",
+  "gallery": "design-system/inspiration/gallery.json",
+  "atlas": "design-system/inspiration/style-atlas",
+  "scans": "research/scans",
+  "prompt_kit": "design-system/inspiration/style-atlas/prompt-kit.json",
+  "concepts": "design-system/inspiration/gemini"
+ },
+ "history": {
+  "branch": "main",
+  "copy": [
+   "content/"
+  ],
+  "skip": [
+   "design-system/inspiration/",
+   ".github/",
+   "tools/",
+   ".claude/",
+   "versions/",
+   "research/",
+   "research.html",
+   "sections.html",
+   "board/",
+   "studio/",
+   "studio-data/",
+   "studio.config.json",
+   "design-system/specimens/",
+   "design-system/section-library.",
+   "design-system/components/bundle-library.css",
+   "assets/library",
+   "versions.html",
+   "inspiration.html",
+   "studio.html"
+  ],
+  "checkpoints": [
+   {
+    "commit": "e26059f",
+    "title": "First draft",
+    "note": "The first site: 31 pages in the first Aquemi design system, one stylesheet and one renderer."
+   },
+   {
+    "commit": "e299ecf",
+    "title": "Second pass and Gemini rebuild",
+    "note": "Second-pass copy on every page; sections, table, heroes and footer rebuilt from Gemini concepts; equipment drawings."
+   },
+   {
+    "commit": "05157a0",
+    "title": "Third pass: system skeleton",
+    "note": "Every page compressed to the shared page skeleton, content budgets, site-wide phone pass."
+   },
+   {
+    "commit": "ea55d15",
+    "title": "Fourth pass: navy ground",
+    "note": "Navy ground with light sheets, the fold, six table shapes, closing exchange, PlanTiers."
+   },
+   {
+    "commit": "871f1e0",
+    "title": "Visual and fidelity passes",
+    "note": "Concepts 50 to 63 as components (limit gauges, callouts, binder, hold points), each matched to its concept. Tag pre-pass6."
+   },
+   {
+    "commit": "55bd940",
+    "title": "Pass 6: bold display, design first",
+    "note": "Barlow Condensed capitals, first GSAP motion, about half the words, drawn hero figures and spot drawings. Tag pre-pass7."
+   },
+   {
+    "commit": "cd1bbf4",
+    "title": "Pass 7: section refinement and motion",
+    "note": "Section-by-section refinement and per-component GSAP choreography."
+   },
+   {
+    "commit": "2d50dbf",
+    "title": "Brand book",
+    "note": "Back on the brand book: Geist Light sentence case, light surface, Lucide-style icons, How we work. Pass 7 motion kept."
+   },
+   {
+    "commit": "44f3015",
+    "title": "Pass 8: copy passes",
+    "note": "Passes A, B and C on every page against 16 site decisions and the buyer library: each page for its readers at their buying stage, fewer words, one name per open fact, section reviews, form and link fixes."
+   },
+   {
+    "commit": "30040f0",
+    "title": "Pass 9: every section its own design",
+    "note": "Each section of all 27 pages redrawn from Gemini concepts in varied art directions (104 looks, IsoKit drawings, per-section GSAP), new hero, FAQ, related links, form and closing, then a polish pass. Tag pre-pass9."
+   },
+   {
+    "commit": "1f1147c",
+    "title": "Pass 9b: library motion, every section concepted",
+    "note": "Motion ported from the Subframe Motion library site-wide (ambient WebGL shaders, odometer counts, interactions on every page); the 81 sections pass 9 had no concept for got their own Gemini concepts and were rebuilt from them."
+   },
+   {
+    "commit": "3010d6d",
+    "title": "Pass 10: copy and audience",
+    "note": "Every page re-read for each industry and buyer role after notebook interviews and a 73-site competitor study: natural health products get their own door, device QA its supplier block, failure-led routers, drawings that no longer state open facts, wired form options. Design kept: the section library holds every look, 32 restored."
+   },
+   {
+    "commit": "52711ee",
+    "title": "Pass 11: commercial lessons, 31 pages",
+    "note": "Every page reworked from 395 supplier decks, proposals, tenders, URSs and award packages: four new pages (writing your URS, how a project runs, your first system, buying from Aquemi) and the first technical note; plain words for owners and approvers, the buyer's own numbering for engineers and QA, honest proof for a new supplier; reviewed by the distilled conversion library; 13 retired looks back on the site."
+   },
+   {
+    "commit": "ba5fd31",
+    "title": "Pass 12: every industry, mega menu, phones",
+    "note": "Every industry the package serves (three new industry pages, an industries hub by water use), an established voice (Applications with typical configurations, Technical notes), pages reworked from role interviews with the conversion library, a mega menu, and five build rounds from 75 new Gemini concepts: a phone pass on every section, about 40 new looks, polypropylene hero drawings; strong desktop sections kept."
+   }
+  ]
+ },
+ "gallery": {
+  "producer": [
+   "python",
+   "tools/gallery.py"
+  ]
+ },
+ "atlas": {
+  "producer": [
+   "python",
+   "design-system/inspiration/style-atlas/aggregate.py"
+  ]
+ },
+ "images": {
+  "webp": [
+   "assets/illustrations"
+  ]
+ },
+ "notes": {
+  "image-loop": "design-system/notes/image-loop.md",
+  "motion": "design-system/notes/motion.md",
+  "site-scan": "design-system/notes/site-scan.md"
+ },
+ "tools": [
+  {
+   "id": "site",
+   "name": "Site",
+   "page": "index.html#home",
+   "kind": "site",
+   "what": "The website itself, rendered from content/pages/*.json through the design system. In the studio it carries the studio bar: placeholder highlighting, open facts per page, a page jump and a link to that page's history.",
+   "when": "Edit copy, add a page, check a page in place.",
+   "sources": [
+    "content/pages/",
+    "assets/src/",
+    "design-system/components/"
+   ],
+   "outputs": [
+    "content/pages.json",
+    "content/pages.min.json",
+    "assets/aquemi-site.js",
+    "assets/motion.js",
+    "design-system/components/bundle.css",
+    "design-system/components/bundle.min.css"
+   ],
+   "run": [
+    "python tools/specimens.py snapshot",
+    "python tools/design_system.py build"
+   ],
+   "skill": "aquemi-design-system",
+   "ships": "live"
+  },
+  {
+   "id": "guide",
+   "name": "Design system",
+   "page": "design-system.html",
+   "kind": "tool",
+   "what": "The visual guide: brand book, tokens in both themes, every component with its README and live preview, every page block with real content. Generated at load time from design-system/.",
+   "when": "Before building any UI; after changing a token or component, to review it in light, dark and phone width.",
+   "sources": [
+    "design-system/tokens.json",
+    "design-system/components/",
+    "design-system/README.md"
+   ],
+   "outputs": [
+    "design-system/tokens.css",
+    "design-system/components.json",
+    "design-system/components/bundle.css",
+    "design-system/components/bundle-library.css"
+   ],
+   "run": [
+    "python tools/design_system.py build",
+    "python tools/design_system.py check"
+   ],
+   "skill": "aquemi-design-system",
+   "ships": "studio"
+  },
+  {
+   "id": "sections",
+   "name": "Section library",
+   "page": "sections.html",
+   "kind": "tool",
+   "what": "Every look (section design) the site has had, live or retired, rendered with its motion from every content it has shown, grouped by block type, with a phone-width toggle. Looks are never deleted.",
+   "when": "Before inventing a section: find a look that fits the block type. After page edits: snapshot so every content version is kept.",
+   "sources": [
+    "design-system/specimens/",
+    "assets/src/blocks/look-*.js"
+   ],
+   "outputs": [
+    "design-system/section-library.json",
+    "design-system/section-library.md",
+    "assets/library.js",
+    "assets/library-motion.js",
+    "design-system/components/bundle-library.css"
+   ],
+   "run": [
+    "python tools/specimens.py snapshot",
+    "python tools/specimens.py fit <type>",
+    "python tools/design_system.py build"
+   ],
+   "skill": "aquemi-design-system",
+   "ships": "studio"
+  },
+  {
+   "id": "research",
+   "name": "Design research",
+   "page": "research.html",
+   "kind": "tool",
+   "what": "The image loop for people to read: each section's Gemini concept and what it became, every image taken apart into keywords, themes, the style atlas, build notes, skills and briefs.",
+   "when": "After new concepts, descriptions or build notes; when writing new image prompts.",
+   "sources": [
+    "research/",
+    "design-system/inspiration/style-atlas/",
+    "design-system/inspiration/gemini/",
+    ".claude/skills/"
+   ],
+   "outputs": [
+    "research.html"
+   ],
+   "run": [
+    "python tools/gallery.py",
+    "python tools/research.py"
+   ],
+   "skill": "studio-image-loop",
+   "ships": "studio"
+  }
+ ],
+ "skills": [
+  {
+   "name": "aquemi-design-system",
+   "path": ".claude/skills/aquemi-design-system/SKILL.md",
+   "what": "Tokens, components, page blocks and looks; publishing to the Claude design system."
+  }
+ ],
+ "refresh": [
+  {
+   "id": "snapshot",
+   "label": "section library snapshot",
+   "run": [
+    "python",
+    "tools/specimens.py",
+    "snapshot"
+   ],
+   "tools": [
+    "sections",
+    "site"
+   ]
+  },
+  {
+   "id": "research",
+   "label": "design research page",
+   "run": [
+    "python",
+    "tools/research.py"
+   ],
+   "tools": [
+    "research"
+   ],
+   "needs_path": "../research"
+  },
+  {
+   "id": "build",
+   "label": "design system build (site, guide, library, studio bar)",
+   "run": [
+    "python",
+    "tools/design_system.py",
+    "build"
+   ],
+   "tools": [
+    "guide",
+    "sections",
+    "site",
+    "hub"
+   ]
+  }
+ ],
+ "checks": [
+  [
+   "python",
+   "tools/design_system.py",
+   "check"
+  ]
+ ],
+ "build": [
+  "python",
+  "tools/design_system.py",
+  "build"
+ ],
+ "branches": {
+  "work": "dev",
+  "review": "staging",
+  "production": "main"
+ },
+ "copies": [
+  {
+   "id": "production",
+   "path": "",
+   "branch": "main",
+   "label": "Production"
+  },
+  {
+   "id": "staging",
+   "path": "staging/",
+   "branch": "staging",
+   "label": "Staging"
+  },
+  {
+   "id": "dev",
+   "path": "dev/",
+   "branch": "dev",
+   "label": "Dev"
+  },
+  {
+   "id": "live",
+   "path": "live/",
+   "branch": "main",
+   "label": "Live preview"
+  },
+  {
+   "id": "draft",
+   "path": "draft/",
+   "branch": "main",
+   "label": "Draft (tooled main)"
+  }
+ ],
+ "release": {
+  "production": true,
+  "staging": true,
+  "dev": true,
+  "heavy": [
+   "versions",
+   "design-system/inspiration"
+  ]
+ },
+ "live": {
+  "keep": [
+   "index.html",
+   "sw.js",
+   "brand/",
+   "assets/fonts/*.woff2",
+   "assets/icons/",
+   "assets/illustrations/*.webp",
+   "assets/vendor/",
+   "assets/aquemi-site.js",
+   "assets/motion.js",
+   "assets/site.css",
+   "content/pages.min.json",
+   "content/pages.json",
+   "design-system/tokens.css",
+   "design-system/components/bundle.min.css"
+  ]
+ },
+ "external": [
+  {
+   "name": "Claude design system",
+   "url": "https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc",
+   "what": "The design system published for Claude chats, decks and designs. Publish after design-system changes (skill aquemi-design-system)."
+  },
+  {
+   "name": "Source on GitHub",
+   "url": "https://github.com/aquemi-official/aquemi-web",
+   "what": "The repository: dev for work, staging for review, main for production."
+  }
+ ]
+}

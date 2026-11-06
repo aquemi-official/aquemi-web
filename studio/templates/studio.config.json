@@ -1,0 +1,63 @@
+{
+ "$schema": "studio/schemas/config.schema.json",
+ "about": "Settings for the studio kit in studio/ (see studio/README.md). The kit is generic; everything about this project lives here and in the files it points to.",
+ "project": {"name": "Website", "about": "", "repo": "", "url": "", "agents": "AGENTS.md"},
+ "brand": {
+  "book": "",
+  "summary": "",
+  "voice": "Facts only the client can supply go in [square brackets]; never fill one with a guessed value.",
+  "offer": "",
+  "never": []
+ },
+ "site": {
+  "entry": "index.html",
+  "pages": {"adapter": "html", "glob": ["*.html", "**/*.html"]},
+  "current": {"match": "path"},
+  "root": "main",
+  "toggles": [],
+  "notes_label": "Open notes"
+ },
+ "theme": {"css": []},
+ "data": {
+  "dir": "studio-data",
+  "history": "studio-data/history",
+  "gallery": "studio-data/gallery/gallery.json",
+  "atlas": "studio-data/atlas",
+  "scans": "studio-data/scans",
+  "prompt_kit": "studio-data/atlas/prompt-kit.json",
+  "concepts": "studio-data/concepts"
+ },
+ "history": {"branch": "main", "copy": [], "skip": [], "checkpoints": []},
+ "gallery": {"sources": [
+  {"dir": "studio-data/concepts", "cat": "concept", "status": "reference", "numbered": true},
+  {"dir": "studio-data/references", "cat": "reference", "status": "reference"},
+  {"dir": "studio-data/records", "cat": "record", "status": "record"},
+  {"dir": "images", "cat": "site", "status": "live", "contain": true},
+  {"dir": "img", "cat": "site", "status": "live", "contain": true},
+  {"dir": "assets", "cat": "site", "status": "live", "contain": true}
+ ]},
+ "images": {"webp": []},
+ "notes": {},
+ "tools": [
+  {
+   "id": "site", "name": "Site", "page": "index.html", "kind": "site", "ships": "live",
+   "what": "The website itself. In the studio it carries the studio bar: a page jump, open notes per page and a link to the page's history.",
+   "when": "Edit copy, add a page, check a page in place.",
+   "sources": ["*.html"], "outputs": [], "run": ["python studio/studio.py refresh"], "skill": "studio"
+  }
+ ],
+ "skills": [],
+ "refresh": [],
+ "checks": [],
+ "branches": {"work": "dev", "review": "staging", "production": "main"},
+ "copies": [
+  {"id": "production", "path": "", "branch": "main", "label": "Production"},
+  {"id": "staging", "path": "staging/", "branch": "staging", "label": "Staging"},
+  {"id": "dev", "path": "dev/", "branch": "dev", "label": "Dev"},
+  {"id": "live", "path": "live/", "branch": "main", "label": "Live preview"},
+  {"id": "draft", "path": "draft/", "branch": "main", "label": "Draft (tooled production)"}
+ ],
+ "release": {"production": true, "staging": true, "dev": true, "heavy": ["studio-data/history"]},
+ "live": {"keep": ["index.html"]},
+ "external": []
+}

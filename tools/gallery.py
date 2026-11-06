@@ -1,4 +1,4 @@
-"""Build the media gallery (inspiration.html) manifest: every image made or looked at for the site, used or not.
+"""Aquemi's media gallery producer (studio.config.json gallery.producer; the viewer is studio/web/gallery.html): every image made or looked at for the site, used or not.
 
   python tools/gallery.py                     Rescan the repo, make missing thumbnails, write design-system/inspiration/gallery.json
   python tools/gallery.py --import <research> Also copy build records from a research folder (page snapshots per pass,
@@ -81,6 +81,22 @@ RECORD_SETS = [  # (folder in record/, label, order)
     ('pass5', 'Before pass 6'),
     ('fidelity', 'Concept beside build (pass 6)'),
 ]
+
+
+# Kinds and statuses for the studio's gallery viewer (studio/web/gallery.html), sent with the data
+CATS = [
+    ['gemini', 'Gemini originals', 'Full-resolution outputs from Gemini, oldest first. Section concepts, equipment art, icon and spot sheets.', {'numbered': 1}],
+    ['capture', 'Concept captures', 'The crops each component was rebuilt from. Mapping in design-system/inspiration/README.md.'],
+    ['drawing', 'Equipment drawings', 'The page drawings as the site paints them: transparent masks in assets/illustrations/.', {'contain': 1, 'mask': 1}],
+    ['icon', 'Icons', 'The site icon set: Lucide-style SVGs at 1.5 px, Lucide plus equipment icons drawn on its grid (assets/icons/).', {'contain': 1, 'mask': 1}],
+    ['brand', 'Brand', 'Logo, lockup, mark and favicon (brand/).', {'contain': 1}],
+    ['source', 'Drawing sources', 'Black-on-white sources the equipment masks were cleaned from (design-system/inspiration/art/).'],
+    ['snapshot', 'Page snapshots', 'What every page looked like at each design pass, desktop and phone.'],
+    ['fidelity', 'Concept beside build', 'Concept, desktop build and phone build side by side, from the fidelity pass.'],
+    ['chats', 'From other chats and agents', 'Screens and images from other Claude chats, agent scratchpads and earlier passes, oldest source first: the site as each pass saw it, Gemini and notebook sessions, review screenshots. Grouped by the chat or pass they came from; pick one under Source.'],
+    ['archive', 'Archive', 'Superseded and retired files, kept for the record: replaced concepts, and the raster icons and spot drawings the site used before the Lucide-style SVG set.'],
+]
+STATUSES = [['live', 'Live on the site'], ['built', 'Became a component'], ['source', 'Source of a site drawing'], ['kit', 'In the kit, not on a page'], ['reference', 'Reference only'], ['superseded', 'Superseded'], ['record', 'Build record']]
 
 
 def rel(p):
@@ -178,7 +194,8 @@ def import_records(research):
 
 
 PAGE_NAMES = {'index.html': 'site', '': 'site', 'design-system.html': 'design system guide', 'inspiration.html': 'media gallery',
-              'versions.html': 'page history', 'versions': 'page history'}
+              'versions.html': 'page history', 'versions': 'page history', 'gallery.html': 'media gallery',
+              'history.html': 'page history', 'atlas.html': 'style atlas', 'scans.html': 'site scans'}
 TOOL_HOSTS = {'gemini.google.com': 'Gemini', 'notebook.google.com': 'Notebook', 'claude.ai': 'Claude artifact'}
 
 
@@ -312,7 +329,8 @@ def build():
     chats(add)
 
     out = os.path.join(INS, 'gallery.json')
-    json.dump({'generated_by': 'tools/gallery.py', 'items': items}, open(out, 'w', encoding='utf8', newline='\n'), ensure_ascii=False, indent=0)
+    json.dump({'generated_by': 'tools/gallery.py', 'cats': CATS, 'statuses': STATUSES, 'component_link': 'design-system.html#c-',
+               'readme': 'design-system/inspiration/README.md', 'items': items}, open(out, 'w', encoding='utf8', newline='\n'), ensure_ascii=False, indent=0)
     # Drop thumbnails whose source is gone
     keep = {i['thumb'] for i in items}
     for t in glob.glob(os.path.join(THUMBS, '*.jpg')):

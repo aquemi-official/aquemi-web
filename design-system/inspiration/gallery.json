@@ -1,5 +1,103 @@
 {
 "generated_by": "tools/gallery.py",
+"cats": [
+[
+"gemini",
+"Gemini originals",
+"Full-resolution outputs from Gemini, oldest first. Section concepts, equipment art, icon and spot sheets.",
+{
+"numbered": 1
+}
+],
+[
+"capture",
+"Concept captures",
+"The crops each component was rebuilt from. Mapping in design-system/inspiration/README.md."
+],
+[
+"drawing",
+"Equipment drawings",
+"The page drawings as the site paints them: transparent masks in assets/illustrations/.",
+{
+"contain": 1,
+"mask": 1
+}
+],
+[
+"icon",
+"Icons",
+"The site icon set: Lucide-style SVGs at 1.5 px, Lucide plus equipment icons drawn on its grid (assets/icons/).",
+{
+"contain": 1,
+"mask": 1
+}
+],
+[
+"brand",
+"Brand",
+"Logo, lockup, mark and favicon (brand/).",
+{
+"contain": 1
+}
+],
+[
+"source",
+"Drawing sources",
+"Black-on-white sources the equipment masks were cleaned from (design-system/inspiration/art/)."
+],
+[
+"snapshot",
+"Page snapshots",
+"What every page looked like at each design pass, desktop and phone."
+],
+[
+"fidelity",
+"Concept beside build",
+"Concept, desktop build and phone build side by side, from the fidelity pass."
+],
+[
+"chats",
+"From other chats and agents",
+"Screens and images from other Claude chats, agent scratchpads and earlier passes, oldest source first: the site as each pass saw it, Gemini and notebook sessions, review screenshots. Grouped by the chat or pass they came from; pick one under Source."
+],
+[
+"archive",
+"Archive",
+"Superseded and retired files, kept for the record: replaced concepts, and the raster icons and spot drawings the site used before the Lucide-style SVG set."
+]
+],
+"statuses": [
+[
+"live",
+"Live on the site"
+],
+[
+"built",
+"Became a component"
+],
+[
+"source",
+"Source of a site drawing"
+],
+[
+"kit",
+"In the kit, not on a page"
+],
+[
+"reference",
+"Reference only"
+],
+[
+"superseded",
+"Superseded"
+],
+[
+"record",
+"Build record"
+]
+],
+"component_link": "design-system.html#c-",
+"readme": "design-system/inspiration/README.md",
 "items": [
 {
 "src": "design-system/inspiration/gemini/01-concept-water-path.png",
@@ -5637,7 +5735,7 @@
 "src": "assets/illustrations/ind-cdmo.png",
 "thumb": "design-system/inspiration/thumbs/assets__illustrations__ind-cdmo.jpg",
 "cat": "drawing",
-"status": "live",
+"status": "kit",
 "title": "ind cdmo",
 "note": "assets/illustrations/ind-cdmo.png",
 "component": "Illustration",
@@ -6116,7 +6214,7 @@
 "src": "assets/icons/database.svg",
 "thumb": "assets/icons/database.svg",
 "cat": "icon",
-"status": "live",
+"status": "kit",
 "title": "database",
 "note": "assets/icons/database.svg",
 "component": "Icon",
@@ -6986,12 +7084,12 @@
 "where": null
 },
 {
-"src": "design-system/inspiration/chats/site-build-chat/13uohg.jpg",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__13uohg.jpg",
+"src": "design-system/inspiration/chats/site-build-chat/hcjkpm.jpg",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__hcjkpm.jpg",
 "cat": "chats",
 "status": "record",
 "title": "Gemini · 30 Oct 02:09",
-"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793340595549-13uohg.jpg",
+"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793340595549-hcjkpm.jpg",
 "component": null,
 "group": "Design system and first site build chat",
 "order": 1793338964.573179,
@@ -7006,12 +7104,12 @@
 "where": null
 },
 {
-"src": "design-system/inspiration/chats/site-build-chat/hcjkpm.jpg",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__hcjkpm.jpg",
+"src": "design-system/inspiration/chats/site-build-chat/13uohg.jpg",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__13uohg.jpg",
 "cat": "chats",
 "status": "record",
 "title": "Gemini · 30 Oct 02:09",
-"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793340595549-hcjkpm.jpg",
+"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793340595549-13uohg.jpg",
 "component": null,
 "group": "Design system and first site build chat",
 "order": 1793338964.573179,
@@ -7706,26 +7804,6 @@
 "where": null
 },
 {
-"src": "design-system/inspiration/chats/site-build-chat/6zwfkb.jpg",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__6zwfkb.jpg",
-"cat": "chats",
-"status": "record",
-"title": "Gemini · 30 Oct 02:41",
-"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793342487497-6zwfkb.jpg",
-"component": null,
-"group": "Design system and first site build chat",
-"order": 1793338964.573179,
-"size": [
-627,
-298
-],
-"kb": 18,
-"source": "Design system and first site build chat",
-"date": "2026-10-30 02:41",
-"url": "https://gemini.google.com/app/a3a250fff216067f",
-"where": null
-},
-{
 "src": "design-system/inspiration/chats/site-build-chat/cwtgtn.jpg",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__cwtgtn.jpg",
 "cat": "chats",
@@ -7760,6 +7838,26 @@
 298
 ],
 "kb": 16,
+"source": "Design system and first site build chat",
+"date": "2026-10-30 02:41",
+"url": "https://gemini.google.com/app/a3a250fff216067f",
+"where": null
+},
+{
+"src": "design-system/inspiration/chats/site-build-chat/6zwfkb.jpg",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__6zwfkb.jpg",
+"cat": "chats",
+"status": "record",
+"title": "Gemini · 30 Oct 02:41",
+"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793342487497-6zwfkb.jpg",
+"component": null,
+"group": "Design system and first site build chat",
+"order": 1793338964.573179,
+"size": [
+627,
+298
+],
+"kb": 18,
 "source": "Design system and first site build chat",
 "date": "2026-10-30 02:41",
 "url": "https://gemini.google.com/app/a3a250fff216067f",
@@ -7986,26 +8084,6 @@
 "where": null
 },
 {
-"src": "design-system/inspiration/chats/site-build-chat/3z9ge8.jpg",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__3z9ge8.jpg",
-"cat": "chats",
-"status": "record",
-"title": "Gemini · 30 Oct 03:33",
-"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793345589201-3z9ge8.jpg",
-"component": null,
-"group": "Design system and first site build chat",
-"order": 1793338964.573179,
-"size": [
-627,
-298
-],
-"kb": 17,
-"source": "Design system and first site build chat",
-"date": "2026-10-30 03:33",
-"url": "https://gemini.google.com/app/1529435be3f36bb6",
-"where": null
-},
-{
 "src": "design-system/inspiration/chats/site-build-chat/lziqa2.jpg",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__lziqa2.jpg",
 "cat": "chats",
@@ -8020,6 +8098,26 @@
 298
 ],
 "kb": 19,
+"source": "Design system and first site build chat",
+"date": "2026-10-30 03:33",
+"url": "https://gemini.google.com/app/1529435be3f36bb6",
+"where": null
+},
+{
+"src": "design-system/inspiration/chats/site-build-chat/3z9ge8.jpg",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__3z9ge8.jpg",
+"cat": "chats",
+"status": "record",
+"title": "Gemini · 30 Oct 03:33",
+"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793345589201-3z9ge8.jpg",
+"component": null,
+"group": "Design system and first site build chat",
+"order": 1793338964.573179,
+"size": [
+627,
+298
+],
+"kb": 17,
 "source": "Design system and first site build chat",
 "date": "2026-10-30 03:33",
 "url": "https://gemini.google.com/app/1529435be3f36bb6",
@@ -8086,26 +8184,6 @@
 "where": null
 },
 {
-"src": "design-system/inspiration/chats/site-build-chat/qv0u98.jpg",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__qv0u98.jpg",
-"cat": "chats",
-"status": "record",
-"title": "Gemini · 30 Oct 03:34",
-"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793345694140-qv0u98.jpg",
-"component": null,
-"group": "Design system and first site build chat",
-"order": 1793338964.573179,
-"size": [
-627,
-298
-],
-"kb": 15,
-"source": "Design system and first site build chat",
-"date": "2026-10-30 03:34",
-"url": "https://gemini.google.com/app/1529435be3f36bb6",
-"where": null
-},
-{
 "src": "design-system/inspiration/chats/site-build-chat/zpy7ws.jpg",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__zpy7ws.jpg",
 "cat": "chats",
@@ -8120,6 +8198,26 @@
 298
 ],
 "kb": 14,
+"source": "Design system and first site build chat",
+"date": "2026-10-30 03:34",
+"url": "https://gemini.google.com/app/1529435be3f36bb6",
+"where": null
+},
+{
+"src": "design-system/inspiration/chats/site-build-chat/qv0u98.jpg",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__site-build-chat__qv0u98.jpg",
+"cat": "chats",
+"status": "record",
+"title": "Gemini · 30 Oct 03:34",
+"note": "From chat bffbea7d, screenshot mcp-claude-in-chrome-blob-1793345694140-qv0u98.jpg",
+"component": null,
+"group": "Design system and first site build chat",
+"order": 1793338964.573179,
+"size": [
+627,
+298
+],
+"kb": 15,
 "source": "Design system and first site build chat",
 "date": "2026-10-30 03:34",
 "url": "https://gemini.google.com/app/1529435be3f36bb6",
@@ -8286,26 +8384,6 @@
 "where": null
 },
 {
-"src": "design-system/inspiration/chats/page-passes-chat/m258wa.jpg",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__page-passes-chat__m258wa.jpg",
-"cat": "chats",
-"status": "record",
-"title": "Gemini · 30 Oct 13:53",
-"note": "From chat c234ff2a, screenshot mcp-claude-in-chrome-blob-1793382829858-m258wa.jpg",
-"component": null,
-"group": "Page passes chat (screens seen in the conversation)",
-"order": 1793382555.8505778,
-"size": [
-1440,
-714
-],
-"kb": 34,
-"source": "Page passes chat (screens seen in the conversation)",
-"date": "2026-10-30 13:53",
-"url": "https://gemini.google.com/app/90883f5df5fc60f6",
-"where": null
-},
-{
 "src": "design-system/inspiration/chats/page-passes-chat/r96cz9.jpg",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__page-passes-chat__r96cz9.jpg",
 "cat": "chats",
@@ -8340,6 +8418,26 @@
 714
 ],
 "kb": 53,
+"source": "Page passes chat (screens seen in the conversation)",
+"date": "2026-10-30 13:53",
+"url": "https://gemini.google.com/app/90883f5df5fc60f6",
+"where": null
+},
+{
+"src": "design-system/inspiration/chats/page-passes-chat/m258wa.jpg",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__chats__page-passes-chat__m258wa.jpg",
+"cat": "chats",
+"status": "record",
+"title": "Gemini · 30 Oct 13:53",
+"note": "From chat c234ff2a, screenshot mcp-claude-in-chrome-blob-1793382829858-m258wa.jpg",
+"component": null,
+"group": "Page passes chat (screens seen in the conversation)",
+"order": 1793382555.8505778,
+"size": [
+1440,
+714
+],
+"kb": 34,
 "source": "Page passes chat (screens seen in the conversation)",
 "date": "2026-10-30 13:53",
 "url": "https://gemini.google.com/app/90883f5df5fc60f6",
