@@ -8,7 +8,7 @@
    - The production site serves staging/, dev/, live/ (and, once production is live, studio/) copies under its own scope (.github/workflows/pages.yml). Each copy has
      its own worker: this one leaves those folders alone, and each worker's cache is named after its scope (NAME), so a
      new deploy of one copy only deletes that copy's old cache. */
-const CACHE = 'aquemi-4bf448910e';
+const CACHE = 'aquemi-f78908cae9';
 const SCOPE = new URL(self.registration.scope).pathname;
 const NAME = CACHE + '@' + SCOPE;
 const STATIC = /^(assets\/(fonts|icons|illustrations|vendor)|brand)\//;

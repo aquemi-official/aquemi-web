@@ -1,16 +1,11 @@
 name: Publish site
 
-# One GitHub Pages site carries all three branches:
-#   main     -> https://aquemi-official.github.io/aquemi-web/          (production)
-#   staging  -> https://aquemi-official.github.io/aquemi-web/staging/  (review before release)
-#   dev      -> https://aquemi-official.github.io/aquemi-web/dev/      (day-to-day work)
-# A push to any of them rebuilds the whole site from the latest commit of each branch.
-# The studio (studio/manifest.json, "release") decides what each copy is: the tooled draft (site, studio bar and
-# tool pages) or the live site (python tools/studio.py release: only the website). /live/ always shows main released,
-# so the live site can be reviewed before production switches; once it does, the tooled main moves to /studio/.
-# The tooled staging and dev copies leave out versions/ and design-system/inspiration/ to stay inside the Pages size
-# limit; page history and the image gallery work on the production (or /studio/) copy only. See studio/README.md.
-
+# From the studio kit (studio/templates/github/pages.yml). Aquemi: production https://aquemi-official.github.io/aquemi-web/,
+# staging/ and dev/ (without versions/ and design-system/inspiration/, release.heavy, to stay under the Pages size limit).
+# One Pages site carries every copy in studio.config.json "copies": production at the root, staging/ and dev/, live/
+# (production released: the site without the studio, for review before the switch) and, once production is the live
+# site ("release": {"production": false}), draft/ (the tooled production). A push to any of the branches rebuilds all.
+# Branches that do not exist yet are skipped. Remove a branch here if the project has no such branch.
 on:
   push:
     branches: [main, staging, dev]
@@ -31,27 +26,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
-          path: src-main
-      - uses: actions/checkout@v4
-        with:
-          ref: staging
-          path: src-staging
-      - uses: actions/checkout@v4
-        with:
-          ref: dev
-          path: src-dev
-      # The assembler comes from the commit that triggered this run, so the newest studio tooling assembles every copy
-      - uses: actions/checkout@v4
-        with:
           path: self
-          sparse-checkout: |
-            tools
-            studio
-      - name: Assemble production, staging, dev and the live preview
+      - name: Check out every branch that exists
         run: |
-          python3 self/tools/studio.py assemble _site --main src-main --staging src-staging --dev src-dev
-          du -sh _site _site/live
+          for b in main staging dev; do
+            if git -C self ls-remote --exit-code --heads origin "$b" >/dev/null; then
+              git clone --depth 1 --branch "$b" "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "src-$b"
+            fi
+          done
+      - name: Assemble every copy
+        run: |
+          args=""
+          for b in main staging dev; do [ -d "src-$b" ] && args="$args $b=src-$b"; done
+          python3 self/studio/studio.py assemble _site $args
+          du -sh _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

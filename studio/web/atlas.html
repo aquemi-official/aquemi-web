@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Style atlas</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="studio.css">
+<script src="studio.js" data-tool="atlas"></script>
+<style>
+/* Style atlas viewer (studio kit). Reads <data.atlas>/atlas.json (python studio/studio.py atlas). Tokens only. */
+.at-head { padding-block: var(--space-12) var(--space-6); border-bottom: 1px solid var(--line); }
+.at-nums { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); margin-top: var(--space-6); font: 400 12px/16px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-muted); }
+.at-nums b { display: block; font: 300 40px/44px var(--font-sans); letter-spacing: -.02em; color: var(--ink); text-transform: none; }
+.at-tabs { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.at-tabs .st-in { display: flex; gap: var(--space-1); overflow-x: auto; scrollbar-width: thin; }
+.at-tabs button { flex: none; padding: var(--space-4) var(--space-3); font: 500 13px/16px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-muted); background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; }
+.at-tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--flow); }
+.at-main { padding-block: var(--space-8) var(--space-16); }
+.at-tools { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-bottom: var(--space-6); }
+.at-tools input, .at-tools select { min-height: 36px; padding: 0 var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-raised); color: var(--ink); font: 400 14px/20px var(--font-mono); }
+.at-tools input { flex: 1 1 240px; }
+.at-n { font: 400 13px/18px var(--font-mono); color: var(--ink-muted); }
+.at-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.at-card button { all: unset; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-2); width: 100%; cursor: pointer; }
+.at-card button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.at-fig { aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--line); background: var(--surface-sunken); display: grid; place-items: center; color: var(--ink-subtle); font: 400 12px/16px var(--font-mono); }
+.at-fig img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.at-card button:hover .at-fig { border-color: var(--flow); }
+.at-cap b { display: block; font: 500 14px/20px var(--font-sans); color: var(--ink); }
+.at-cap span { font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.at-fit { display: inline-block; min-width: 18px; text-align: center; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 0 var(--space-1); margin-right: var(--space-1); color: var(--ink); }
+.at-fit.is-hi { border-color: var(--pass); color: var(--pass); } .at-fit.is-lo { border-color: var(--fail); color: var(--fail); }
+.at-bars { display: grid; gap: var(--space-1); }
+.at-bar { display: grid; grid-template-columns: minmax(0, 1fr) 48px; gap: var(--space-3); align-items: center; font: 400 14px/20px var(--font-sans); color: var(--ink); background: none; border: 0; padding: var(--space-1) 0; text-align: left; cursor: pointer; }
+.at-bar span { position: relative; z-index: 0; padding: 0 var(--space-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.at-bar span::before { content: ""; position: absolute; z-index: -1; inset: 0 auto 0 0; width: var(--w); background: var(--surface-sunken); border-left: 2px solid var(--flow); }
+.at-bar i { font: 400 12px/16px var(--font-mono); font-style: normal; color: var(--ink-muted); text-align: right; }
+.at-cols { display: grid; gap: var(--space-8) var(--space-10); grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); align-items: start; }
+.at-cols h3, .at-main h2 { margin: 0 0 var(--space-3); font: 500 16px/22px var(--font-sans); color: var(--ink); }
+.at-main h2 { font: 300 28px/34px var(--font-sans); letter-spacing: -.01em; margin-top: var(--space-6); }
+.at-prose { max-width: 80ch; font: 400 16px/26px var(--font-sans); color: var(--ink); }
+.at-prose h1, .at-prose h2, .at-prose h3, .at-prose h4 { font-weight: 400; line-height: 1.25; margin: 1.6em 0 .5em; }
+.at-prose h1 { font-size: 32px; font-weight: 300; } .at-prose h2 { font-size: 24px; } .at-prose h3 { font-size: 19px; font-weight: 500; }
+.at-prose table { border-collapse: collapse; font-size: 14px; display: block; overflow-x: auto; }
+.at-prose th, .at-prose td { border-bottom: 1px solid var(--line); padding: var(--space-1) var(--space-3) var(--space-1) 0; text-align: left; vertical-align: top; }
+.at-prose pre { background: var(--surface-sunken); padding: var(--space-3); overflow-x: auto; font: 400 13px/20px var(--font-mono); }
+.at-prose a { color: var(--action); }
+pre.at-pre { margin: 0; white-space: pre-wrap; background: var(--surface-sunken); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-4); font: 400 13px/20px var(--font-mono); color: var(--ink); }
+.at-dlg { position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--ink) 55%, transparent); display: grid; place-items: center; padding: var(--space-4); }
+.at-dlg__box { width: min(1100px, 100%); max-height: 100%; overflow: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.at-dlg__img { background: var(--surface-sunken); padding: var(--space-4); }
+.at-dlg__img img { width: 100%; height: auto; display: block; }
+.at-dlg__txt { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); font: 400 14px/22px var(--font-sans); color: var(--ink); }
+.at-dlg__txt h3 { margin: 0; font: 400 22px/28px var(--font-sans); }
+.at-dlg dl { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: var(--space-1) var(--space-3); margin: 0; }
+.at-dlg dt { font: 500 11px/20px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-subtle); }
+.at-dlg dd { margin: 0; color: var(--ink-muted); }
+.at-btn { min-height: 36px; padding: 0 var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-raised); color: var(--ink); font: 500 13px/16px var(--font-mono); cursor: pointer; }
+.at-chip { display: inline-block; margin: 0 var(--space-1) var(--space-1) 0; padding: 0 var(--space-2); border: 1px solid var(--line); border-radius: var(--radius-sm); font: 400 12px/20px var(--font-mono); color: var(--ink-muted); background: none; cursor: pointer; }
+@media (max-width: 760px) { .at-dlg__box { grid-template-columns: 1fr; } .at-dlg dl { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="at-head"><div class="st-in">
+ <p class="st-eyebrow" id="eb">Studio · style atlas</p>
+ <h1 class="st-display">What our images say</h1>
+ <p class="st-lead">Every generated or reference image taken apart into text-to-image keywords and a reusable prompt. The words that keep coming back, the families they form, what scored with the brand and what failed: the vocabulary new images are prompted with.</p>
+ <div class="at-nums" id="nums"></div>
+</div></header>
+<nav class="at-tabs" aria-label="Atlas"><div class="st-in" role="tablist" id="tabs"></div></nav>
+<main class="st-in at-main" id="main"></main>
+<div class="at-dlg" id="dlg" hidden role="dialog" aria-modal="true" aria-label="Image description"><div class="at-dlg__box" id="dlgbox"></div></div>
+<script>
+(function () {
+  var ST = window.STUDIO, e = ST.esc, A = null, state = { tab: 'images', q: '', fam: '', kw: '' };
+  var $ = function (id) { return document.getElementById(id) };
+  function at(u) { return !u || /^(https?:|data:|\/)/.test(u) ? u : ST.root + u }
+  var TABS = [['images', 'Images'], ['keywords', 'Keywords'], ['fields', 'Traits'], ['fit', 'Scored and failed'], ['atlas', 'Atlas'], ['kit', 'Prompt kit']];
+  function readHash() { var h = new URLSearchParams(location.hash.slice(1)); state.tab = h.get('tab') || 'images'; state.q = h.get('q') || ''; state.fam = h.get('fam') || ''; state.kw = h.get('kw') || '' }
+  function writeHash() { var h = new URLSearchParams(); if (state.tab !== 'images') h.set('tab', state.tab); ['q', 'fam', 'kw'].forEach(function (k) { if (state[k]) h.set(k, state[k]) }); history.replaceState(null, '', h.toString() ? '#' + h : location.pathname + location.search) }
+  function fold(s) { return String(s || '').toLowerCase().replace(/-/g, ' ').split(/\s+/).map(function (w) { return w.length > 4 && /s$/.test(w) && !/ss$/.test(w) ? w.slice(0, -1) : w }).join(' ').trim() }
+  function md(src) {  // a small Markdown renderer: headings, lists, tables, code, emphasis, links
+    var out = [], lines = String(src || '').replace(/\r/g, '').split('\n'), i = 0;
+    function inl(s) { return e(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\*([^*]+)\*/g, '<i>$1</i>').replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>') }
+    while (i < lines.length) {
+      var l = lines[i];
+      if (/^```/.test(l)) { var b = []; i++; while (i < lines.length && !/^```/.test(lines[i])) b.push(lines[i++]); i++; out.push('<pre>' + e(b.join('\n')) + '</pre>'); continue }
+      var h = /^(#{1,4})\s+(.*)/.exec(l); if (h) { out.push('<h' + h[1].length + '>' + inl(h[2]) + '</h' + h[1].length + '>'); i++; continue }
+      if (/^\|/.test(l)) { var rows = []; while (i < lines.length && /^\|/.test(lines[i])) rows.push(lines[i++]); rows = rows.filter(function (r) { return !/^\|\s*:?-{2,}/.test(r) });
+        out.push('<table>' + rows.map(function (r, k) { var c = r.replace(/^\||\|$/g, '').split('|'); return '<tr>' + c.map(function (x) { return (k ? '<td>' : '<th>') + inl(x.trim()) + (k ? '</td>' : '</th>') }).join('') + '</tr>' }).join('') + '</table>'); continue }
+      if (/^\s*([-*]|\d+\.)\s+/.test(l)) { var ol = /^\s*\d+\./.test(l), it = []; while (i < lines.length && /^\s*([-*]|\d+\.)\s+/.test(lines[i])) it.push(lines[i++].replace(/^\s*([-*]|\d+\.)\s+/, ''));
+        out.push((ol ? '<ol>' : '<ul>') + it.map(function (x) { return '<li>' + inl(x) + '</li>' }).join('') + (ol ? '</ol>' : '</ul>')); continue }
+      if (!l.trim()) { i++; continue }
+      var p = []; while (i < lines.length && lines[i].trim() && !/^(#|\||```|\s*([-*]|\d+\.)\s)/.test(lines[i])) p.push(lines[i++]); out.push('<p>' + inl(p.join(' ')) + '</p>');
+    }
+    return out.join('\n');
+  }
+  function fitTag(f) { return f == null ? '' : '<span class="at-fit' + (f >= 4 ? ' is-hi' : f <= 2 ? ' is-lo' : '') + '" title="Brand fit ' + e(f) + ' of 5">' + e(f) + '</span>' }
+  function bars(list, max, attr) { return '<div class="at-bars">' + list.map(function (r) { return '<button class="at-bar" type="button"' + (attr ? ' data-' + attr + '="' + e(r[0]) + '"' : '') + '><span style="--w:' + Math.max(2, Math.round(r[1] / max * 100)) + '%">' + e(r[0]) + '</span><i>' + e(r[1]) + '</i></button>' }).join('') + '</div>' }
+
+  function images() {
+    var q = state.q.toLowerCase(), list = A.images.filter(function (d) {
+      if (state.fam && fold(d.style_family) !== state.fam) return false;
+      if (state.kw && (d.t2i_keywords || []).map(fold).indexOf(state.kw) < 0) return false;
+      if (q && JSON.stringify(d).toLowerCase().indexOf(q) < 0) return false;
+      return true });
+    var fams = '<option value="">Every family</option>' + A.families.map(function (f) { return '<option value="' + e(f[0]) + '"' + (f[0] === state.fam ? ' selected' : '') + '>' + e(f[0]) + ' · ' + f[1] + '</option>' }).join('');
+    $('main').innerHTML = '<div class="at-tools"><input type="search" id="q" placeholder="Search descriptions, keywords, prompts" value="' + e(state.q) + '" aria-label="Search"><select id="fam" aria-label="Style family">' + fams + '</select>' +
+      (state.kw ? '<button class="at-chip" id="kwx" type="button">keyword: ' + e(state.kw) + ' ×</button>' : '') + '<span class="at-n">' + list.length + ' of ' + A.images.length + '</span></div>' +
+      '<ul class="at-grid">' + list.map(function (d) { return '<li class="at-card"><button type="button" data-i="' + A.images.indexOf(d) + '"><span class="at-fig">' + (d._thumb || d._src ? '<img loading="lazy" alt="" src="' + e(at(d._thumb || d._src)) + '">' : 'no image file') + '</span><span class="at-cap"><b>' + e(d.file || d._json) + '</b><span>' + fitTag(d.brand_fit) + e(d.style_family || '') + '</span></span></button></li>' }).join('') + '</ul>';
+    var t; $('q').oninput = function () { var v = this.value; clearTimeout(t); t = setTimeout(function () { state.q = v.trim(); render(); var q = $('q'); q.focus(); q.setSelectionRange(q.value.length, q.value.length) }, 200) };
+    $('fam').onchange = function () { state.fam = this.value; render() };
+    if ($('kwx')) $('kwx').onclick = function () { state.kw = ''; render() };
+  }
+  function keywords() {
+    var max = A.keywords.length ? A.keywords[0].n : 1;
+    $('main').innerHTML = '<p class="st-sm">Text-to-image keywords counted across ' + A.count + ' images (case, plurals and hyphens folded). Pick one to see the images that carry it.</p>' + bars(A.keywords.slice(0, 150).map(function (k) { return [k.k, k.n] }), max, 'kw');
+  }
+  function fields() {
+    var names = { art_direction: 'Art direction', composition: 'Composition', layout_devices: 'Layout devices', palette: 'Palette', typography: 'Typography', rendering: 'Rendering', line_and_texture: 'Line and texture', motifs: 'Motifs', ui_patterns: 'UI patterns', motion_implied: 'Motion implied', mood: 'Mood', strengths: 'Strengths', weaknesses: 'Weaknesses' };
+    $('main').innerHTML = '<h2>Style families</h2>' + bars(A.families.slice(0, 30), A.families.length ? A.families[0][1] : 1, 'fam') +
+      '<h2>Traits</h2><div class="at-cols">' + Object.keys(A.fields).map(function (k) { var l = A.fields[k].slice(0, 15); return '<section><h3>' + e(names[k] || k) + '</h3>' + bars(l, l.length ? l[0][1] : 1) + '</section>' }).join('') + '</div>';
+  }
+  function fit() {
+    var h = A.fit.histogram, ks = Object.keys(h), max = Math.max.apply(null, ks.map(function (k) { return h[k] }).concat([1]));
+    function lst(l, i) { return l.length ? bars(l.map(function (r) { return [r[0], r[i]] }), Math.max.apply(null, l.map(function (r) { return r[i] }).concat([1])), 'kw') : '<p class="st-sm">Needs images rated both 4–5 and 1–2.</p>' }
+    $('main').innerHTML = '<h2>Brand fit</h2><p class="st-sm">How each image scored against the brand (1–5, in its description).</p>' + bars(ks.map(function (k) { return [k + ' of 5', h[k]] }), max) +
+      '<div class="at-cols" style="margin-top:var(--space-8)"><section><h3>Keywords that lean high-fit (' + A.fit.high + ' images rated 4–5)</h3>' + lst(A.fit.scored, 1) + '</section><section><h3>Keywords that lean low-fit (' + A.fit.low + ' images rated 1–2)</h3>' + lst(A.fit.failed, 2) + '</section></div>';
+  }
+  function doc(key, empty, fmt) {
+    var p = A.docs[key];
+    if (!p) { $('main').innerHTML = '<div class="st-empty">' + empty + '</div>'; return }
+    $('main').innerHTML = '<p class="at-n">' + e(p) + '</p><div id="doc">Loading…</div>';
+    fetch(at(p), { cache: 'no-cache' }).then(function (r) { return r.text() }).then(function (t) { $('doc').innerHTML = fmt(t) });
+  }
+  function kitView(t) {
+    var k; try { k = JSON.parse(t) } catch (x) { return '<pre class="at-pre">' + e(t) + '</pre>' }
+    var h = '';
+    Object.keys(k).forEach(function (key) { var v = k[key]; if (key.charAt(0) === '_') return;
+      h += '<h2>' + e(key) + '</h2>' + (typeof v === 'string' ? '<pre class="at-pre">' + e(v) + '</pre>' : Array.isArray(v) && v.every(function (x) { return typeof x === 'string' }) ? '<ol class="at-prose">' + v.map(function (x) { return '<li>' + e(x) + '</li>' }).join('') + '</ol>' : '<pre class="at-pre">' + e(JSON.stringify(v, null, 1)) + '</pre>') });
+    return (k._about ? '<p class="st-sm">' + e(k._about) + '</p>' : '') + h;
+  }
+  function render() {
+    writeHash();
+    Array.prototype.forEach.call($('tabs').children, function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === state.tab)) });
+    if (!A.count && state.tab !== 'atlas' && state.tab !== 'kit') { $('main').innerHTML = '<div class="st-empty">No image descriptions yet. Describe images with the <code>studio-image-loop</code> skill (one JSON per image in <code>' + e(ST.cfg.data.atlas) + '/images/</code>), then run<pre>python ' + e(ST.cfg.kit) + '/studio.py atlas</pre></div>'; return }
+    ({ images: images, keywords: keywords, fields: fields, fit: fit,
+       atlas: function () { doc('atlas', 'No STYLE-ATLAS.md yet: the synthesis step of the image loop writes it.', function (t) { return '<div class="at-prose">' + md(t) + '</div>' }) },
+       kit: function () { doc('prompt_kit', 'No prompt kit yet (' + e(ST.cfg.data.prompt_kit) + '): the studio-image-loop skill builds it from the atlas.', kitView) } })[state.tab]();
+  }
+  function open(i) {
+    var d = A.images[i]; if (!d) return;
+    var rows = [['Made for', d.prompted_for], ['Kind', d.section_kind], ['Family', d.style_family], ['Idea', d.signature_idea], ['Mood', (d.mood || []).join(', ')], ['Palette', (d.palette || []).join('; ')], ['Strengths', (d.strengths || []).join('; ')], ['Weaknesses', (d.weaknesses || []).join('; ')], ['Brand fit', d.brand_fit != null ? d.brand_fit + ' of 5 · ' + (d.brand_fit_why || '') : '']];
+    $('dlgbox').innerHTML = '<div class="at-dlg__img">' + (d._src ? '<img alt="" src="' + e(at(d._src)) + '">' : '<p class="st-sm">The image file was not found.</p>') + '</div><div class="at-dlg__txt"><h3>' + e(d.file || d._json) + '</h3><dl>' + rows.filter(function (r) { return r[1] }).map(function (r) { return '<dt>' + e(r[0]) + '</dt><dd>' + e(r[1]) + '</dd>' }).join('') + '</dl>' +
+      (d.t2i_prompt ? '<b>Prompt</b><pre class="at-pre" id="pp">' + e(d.t2i_prompt) + '</pre>' : '') + '<b>Keywords</b><div>' + (d.t2i_keywords || []).map(function (k) { return '<button type="button" class="at-chip" data-kw="' + e(fold(k)) + '">' + e(k) + '</button>' }).join('') + '</div>' +
+      '<div style="display:flex;gap:var(--space-2);flex-wrap:wrap">' + (d.t2i_prompt ? '<button class="at-btn" id="cp" type="button">Copy prompt</button>' : '') + '<a class="at-btn" style="display:inline-flex;align-items:center;text-decoration:none" href="' + e(at(d._json)) + '">JSON</a><button class="at-btn" id="dx" type="button">Close</button></div></div>';
+    $('dlg').hidden = false; $('dx').focus();
+    $('dx').onclick = close;
+    if ($('cp')) $('cp').onclick = function () { try { navigator.clipboard.writeText(d.t2i_prompt); this.textContent = 'Copied' } catch (x) {} };
+  }
+  function close() { $('dlg').hidden = true }
+  $('dlg').addEventListener('click', function (ev) { if (ev.target === $('dlg')) close() });
+  addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !$('dlg').hidden) close() });
+  document.addEventListener('click', function (ev) {
+    var t = ev.target.closest('[data-i],[data-kw],[data-fam],[data-tab]'); if (!t) return;
+    if (t.dataset.tab) { state.tab = t.dataset.tab; render(); return }
+    if (t.dataset.i != null) { open(+t.dataset.i); return }
+    if (t.dataset.kw) { close(); state.kw = t.dataset.kw; state.tab = 'images'; render(); scrollTo(0, 0); return }
+    if (t.dataset.fam) { state.fam = t.dataset.fam; state.tab = 'images'; render(); scrollTo(0, 0) }
+  });
+  $('tabs').innerHTML = TABS.map(function (t) { return '<button type="button" role="tab" data-tab="' + t[0] + '">' + e(t[1]) + '</button>' }).join('');
+  $('eb').textContent = ST.cfg.project.name + ' · style atlas';
+  readHash();
+  addEventListener('hashchange', function () { if (A) { readHash(); render() } });
+  fetch(ST.data('atlas') + '/atlas.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(); return r.json() }).then(function (d) {
+    A = d;
+    $('nums').innerHTML = [[d.count, 'images described'], [d.keywords.length, 'keywords'], [d.families.length, 'style families'], [d.fit.high, 'rated 4–5']].map(function (n) { return '<div><b>' + e(n[0]) + '</b>' + e(n[1]) + '</div>' }).join('');
+    render();
+  }).catch(function () { A = { count: 0, images: [], docs: {} }; render() });
+})();
+</script>
+</body>
+</html>

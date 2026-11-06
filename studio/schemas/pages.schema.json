@@ -1,0 +1,86 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Pages: the kit's view of a site (<data.dir>/pages.json, and pages.collect())",
+ "type": "object",
+ "properties": {
+  "pages": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "title",
+     "url"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Stable page id; history and the bar key on it"
+     },
+     "title": {
+      "type": "string"
+     },
+     "group": {
+      "type": "string",
+      "description": "Section of the site, for grouping"
+     },
+     "url": {
+      "type": "string",
+      "description": "Root-relative address, may carry a #fragment (single-page sites)"
+     },
+     "file": {
+      "type": "string",
+      "description": "The source file the page comes from"
+     },
+     "sections": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "type": {
+         "type": "string"
+        },
+        "h": {
+         "type": "string"
+        },
+        "text": {
+         "type": "string",
+         "description": "Only from pages.collect(); the written index keeps headings"
+        }
+       }
+      }
+     },
+     "notes": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Open notes: facts still to supply"
+     },
+     "ctas": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "text": {
+         "type": "string"
+        },
+        "href": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "text": {
+      "type": "string",
+      "description": "All reader-visible copy (pages.collect() only)"
+     },
+     "words": {
+      "type": "integer",
+      "description": "Index only"
+     }
+    }
+   }
+  }
+ }
+}

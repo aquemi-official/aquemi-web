@@ -5,18 +5,19 @@ This is the draft Aquemi website and the **Aquemi design system** it is built fr
 - Site: https://aquemi-official.github.io/aquemi-web/
 - Design system guide (generated from this repo): https://aquemi-official.github.io/aquemi-web/design-system.html
 - Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc
-- Studio hub (every development tool): https://aquemi-official.github.io/aquemi-web/studio.html
+- Studio hub (every development tool): https://aquemi-official.github.io/aquemi-web/studio/web/index.html
 
 ## The studio
 
-Every development tool beside the site (design system guide, section library, design research, media gallery, page history, the draft tools on the site) is one family, **the studio**, with one registry: `studio/manifest.json`. The studio bar across the top of every page, the hub `studio.html` and `python tools/studio.py` all read it. The live site is released without any of it (`python tools/studio.py release`). Read `studio/README.md` before working on any tool; Claude Code uses the `aquemi-studio` skill.
+Every development tool beside the site is the **studio kit** in `studio/` (portable: it never names Aquemi and can be copied into another web project). Aquemi's settings for it are in `studio.config.json`: brand, the page adapter for `content/pages.json`, data locations, page-history checkpoints, branches, the live keep-list, and Aquemi's own tools (the design system guide, the section library, design research). Aquemi's rules for the kit's skills are in `design-system/notes/` (`image-loop.md`, `motion.md`, `site-scan.md`). The kit's own section, at the end of this file, says how to use it; `studio/README.md` is the full guide.
 
-```bash
-python tools/studio.py about      # which tool does what: reads, writes, how to refresh, which skill
-python tools/studio.py status     # what a change made stale
-python tools/studio.py refresh    # run the generators in order, then both checks
-python tools/studio.py check      # studio rules + a dry-run release of the live site
-```
+| Tool | Page | Where it comes from |
+| --- | --- | --- |
+| Site | `index.html` | Aquemi |
+| Design system | `design-system.html` | Aquemi (`tools/design_system.py`) |
+| Section library | `sections.html` | Aquemi (`tools/specimens.py`) |
+| Design research | `research.html` | Aquemi (`tools/research.py`, pass 9 record) |
+| Studio hub, Page history, Media gallery, Style atlas, Site scans | `studio/web/` | Kit (Aquemi's gallery and atlas data come from `tools/gallery.py` and `style-atlas/aggregate.py`) |
 
 ## Branches
 
@@ -31,9 +32,9 @@ Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` 
 - Work on `dev` (or a short branch merged into `dev`). Push to `dev` directly.
 - `main` and `staging` are protected on GitHub: no direct pushes (admins included), no force pushes, no deletion. They change only through a pull request whose design-system check (`check`) passes. No approval is required.
 - Promote a batch: open a pull request from `dev` into `staging` (`gh pr create --base staging --head dev`), merge it with a merge commit, review the staging copy, then do the same from `staging` into `main`. Use merge commits, not squash or rebase, so the branches keep a shared history.
-- The staging and dev copies leave out the page history (`versions.html`) and the image gallery (`inspiration.html`); those work on production only (the studio bar links there). The studio bar names the copy.
-- `/live/` always shows `main` released: the website without the studio, as the public would see it. Going live is one switch, `"release": {"production": false}` in `studio/manifest.json`: the root then serves the released site and the tooled `main` moves to `/studio/` (studio/README.md, "Detaching for the live site").
-- `python tools/versions.py` lists commits on `main`, so the page history shows released versions.
+- The staging and dev copies leave out the page history (`versions/`) and the image gallery's files (`design-system/inspiration/`); those work on production only (the studio bar links there). The studio bar names the copy.
+- `/live/` always shows `main` released: the website without the studio, as the public would see it. Going live is one switch, `"release": {"production": false}` in `studio.config.json`: the root then serves the released site and the tooled `main` moves to `/draft/` (studio/README.md, "Detaching for the live site").
+- `python studio/studio.py history` lists commits on `main`, so the page history shows released versions.
 
 ## The one rule
 
@@ -65,17 +66,16 @@ Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` 
 | `design-system/components/<Name>/motion.js`, `assets/src/motion/core.js`, `gl.js` | Motion (GSAP 3.13): the core animates every section the same way; a component's `motion.js` adds its own choreography with `AQmotion.fx('<Name>', fn)` and may register an ambient WebGL layer with `AQgl.def` (see FxShader). Reveals play once, under 5 s; rules in the brand book, Motion. New motion is ported from the Subframe Motion library (MIT; MCP server in `.mcp.json`). |
 | `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
 | `assets/site.css` | Site page base only (box sizing, body ground, focus ring). No brand styles here. |
-| `studio/manifest.json` | The studio registry: every development tool (page, what, when, sources, outputs, commands, skill, ships), which copies carry the studio (`release`) and the files the live site is made of (`live.keep`). |
-| `studio/src/bar.js`, `studio/studio.css` | The studio bar's source and styles (tokens only). Every tool page and the site's `<!-- studio -->` block load them. |
-| `studio/studio.js` | **Generated** by `build` from `bar.js` and the manifest. |
-| `studio.html`, `studio/README.md` | The studio hub (rendered from the manifest) and the studio guide for people and agents. |
-| `tools/studio.py` | `about`, `status`, `refresh`, `check`, `release <out>`, `assemble` (the Pages workflow). Standard library only. |
+| `studio/` | The studio kit (generic; see `studio/README.md`). Edit it only for changes every project would want; then `python studio/studio.py install`. |
+| `studio.config.json` | Aquemi's settings for the kit: everything Aquemi about the tooling. |
+| `studio/web/studio.js`, `studio-data/` | **Generated** by `build` (the studio bar, the page index, the hub's data). |
+| `design-system/notes/` | Aquemi's rules for the kit's skills: image loop, motion (with every motion port so far), site scans. |
 | `design-system/components/bundle.min.css`, `content/pages.min.json` | **Generated** minified site copies that `index.html` loads. The guide keeps the readable files. |
 | `assets/fonts/`, `assets/vendor/` | Self-hosted Geist fonts (with `fonts.css`, the same rules inlined in `index.html`) and GSAP 3.13 as one file. |
 | `sw.js` | Service worker: page loads from the network first, versioned and static files from the device. Its cache name is stamped by `build`. |
-| `tools/images.py` | Writes the WebP copy of each PNG in `assets/illustrations/`; run it after adding or changing one (needs Pillow). The site uses the WebP. |
-| `inspiration.html` | Media gallery of every image made or considered, used or not, tagged by what became of it. Reads `design-system/inspiration/gallery.json`; after adding an image run `python tools/gallery.py`. |
-| `versions.html`, `versions/` | Page history: any page as it was at each big checkpoint (the default stops) or at any commit on main ("All versions"), flipped or compared side by side (desktop or phone). `versions/blobs`, `tree`, `index.json` are **generated** by `python tools/versions.py` (rerun after pushes you want listed; add named checkpoints in its `CHECKPOINTS`). `versions/sw.js` serves old commits from them. Never edit generated files in `versions/`. |
+| `studio/tools/images/` | `webp.py` (the WebP copy of each PNG in `assets/illustrations/`, run by `python studio/studio.py refresh webp` after adding or changing one; needs Pillow; the site uses the WebP), `line_art.py`, `icon_sheet.py`. |
+| `studio/web/gallery.html` | Media gallery of every image made or considered, used or not, tagged by what became of it. Reads `design-system/inspiration/gallery.json`; after adding an image run `python studio/studio.py gallery` (Aquemi's producer `tools/gallery.py`). `inspiration.html` redirects there. |
+| `studio/web/history.html`, `versions/` | Page history: any page as it was at each big checkpoint (the default stops, `history.checkpoints` in `studio.config.json`) or at any commit on main ("All versions"), flipped or compared side by side (desktop or phone). `versions/blobs`, `tree`, `index.json` and `sw.js` are **generated** by `python studio/studio.py history` (rerun on main after pushes you want listed). `versions.html` redirects there. Never edit generated files in `versions/`. |
 | `research.html`, `research/` | Design research: pass 9's image loop for people to read (each section's Gemini concept and what it became, every image taken apart into keywords, themes, the style atlas, build notes, skills and briefs). **Generated** by `python tools/research.py`, which also copies the text records from the working folder `../research/pass9*` into `research/`; rerun after new concepts, descriptions or build notes (and `tools/gallery.py` first for new images). |
 | `sections.html`, `design-system/specimens/<look>.json`, `section-library.md`, `section-library.json` | The **Section library**: every look (section design) the site has had, live or retired, rendered with its motion from every content it has shown, grouped by block type, with a phone-width toggle. Specimens are written by `python tools/specimens.py snapshot` (appended, never pruned); the catalog (`.md` for editors, `.json` for the page) by the same command. `python tools/specimens.py fit <type>` lists the looks that take a block type. |
 | `design-system/components/bundle-library.css`, `assets/library.js`, `assets/library-motion.js` | **Generated** by `build`: the retired looks (no page uses them) and their components, kept out of the site's bundles. Only `sections.html` loads them (`library.js` is the site script plus the retired renderers, loaded instead of `aquemi-site.js`); the guide loads the CSS to show retired components. |
@@ -106,13 +106,13 @@ Three long-lived branches, one GitHub Pages site (`.github/workflows/pages.yml` 
 
 **Explore a new section idea.** Generate a loose concept image (Gemini works well), save it in `design-system/inspiration/` and rebuild the idea as a token-only component. Steps and the prompt recipe are in `design-system/inspiration/README.md`.
 
-**Add a development tool, or release the live site.** Follow `studio/README.md` ("Adding a tool", "Detaching for the live site"). The site must never depend on the studio: keep all studio wiring in `index.html` inside its `<!-- studio -->` block, and add any file the site loads at runtime to `live.keep`.
+**Add a development tool, or release the live site.** Follow `studio/README.md` and the `studio` skill. An Aquemi-only tool goes in `studio.config.json` `tools`; one any site could use goes in the kit, without naming Aquemi. The site must never depend on the studio: keep all studio wiring in `index.html` inside its `<!-- studio -->` block, and add any file the site loads at runtime to `live.keep`.
 
 **Publish to the Claude design system.** After design-system changes land, publish them so Claude chats, decks and designs use the same system. Claude Code does this with the `aquemi-design-system` skill in `.claude/skills/`. Other agents: tell the person it needs publishing.
 
 ## Working in parallel
 
-The sources are split so several people or agents can work at the same time without editing the same file: one component's `style.css`, `README.md` and `preview.html`; one block renderer; one page file. Give each agent its own files. Generated files (`bundle.css`, `aquemi-site.js`, `motion.js`, `pages.json`, `tokens.css`, `components.json`, `studio/studio.js`) are rebuilt from the sources, so concurrent `build` runs are safe; whoever commits runs `build` and `check` last.
+The sources are split so several people or agents can work at the same time without editing the same file: one component's `style.css`, `README.md` and `preview.html`; one block renderer; one page file. Give each agent its own files. Generated files (`bundle.css`, `aquemi-site.js`, `motion.js`, `pages.json`, `tokens.css`, `components.json`, `studio/web/studio.js`, `studio-data/`) are rebuilt from the sources, so concurrent `build` runs are safe; whoever commits runs `build` and `check` last.
 
 ## Before you push
 
@@ -120,9 +120,19 @@ The sources are split so several people or agents can work at the same time with
 python tools/specimens.py snapshot     # after page edits: keeps every section's content in the section library
 python tools/design_system.py build
 python tools/design_system.py check
-python tools/studio.py check            # studio rules and a dry-run release of the live site
+python studio/studio.py check           # studio rules and a dry-run release of the live site
 ```
 
-`python tools/studio.py refresh` runs the first three (and the image steps) in order, then both checks.
+`python studio/studio.py refresh` runs the first three (and the image, gallery and atlas steps) in order, then both checks.
 
-Preview locally with `python -m http.server 8000` and open http://localhost:8000/, http://localhost:8000/studio.html and http://localhost:8000/design-system.html. The same checks run on GitHub for every push (`.github/workflows/design-system.yml`).
+Preview locally with `python -m http.server 8000` and open http://localhost:8000/, http://localhost:8000/studio/web/index.html and http://localhost:8000/design-system.html. The same checks run on GitHub for every push (`.github/workflows/design-system.yml`).
+
+<!-- studio-kit -->
+## The studio (development and design tooling)
+
+This project uses the **studio kit** in `studio/`: page history, media gallery, style atlas (image → keywords → prompts), site scans (other sites' sitemaps, outlines and words), motion porting, and a studio bar on every draft page. The kit is generic; `studio.config.json` at the root says everything about this project (brand, where pages and data live, branches, what the live site is made of, its own tools and notes). The live site is released without any of it.
+
+- Read `studio/README.md` before working on any tool. Claude Code skills: `studio` (the kit as a whole), `studio-image-loop`, `studio-motion`, `studio-site-scan`.
+- `python studio/studio.py about` says which tool does what; `status` what a change made stale; `refresh` regenerates it all and runs the checks; `check` must report 0 problems before you push.
+- Never edit generated files (a tool's `outputs`). Studio wiring in site pages stays between `<!-- studio: ... -->` and `<!-- /studio -->`. Edit kit files in `studio/`, then `python studio/studio.py install`.
+<!-- /studio-kit -->

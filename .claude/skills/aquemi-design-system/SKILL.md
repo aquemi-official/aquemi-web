@@ -16,7 +16,7 @@ description: Change, extend, review or publish the Aquemi design system in this 
    - Existing component: edit its `style.css`, README and preview together (`bundle.css` is generated).
    - New section type on the site: component first, then a renderer `assets/src/blocks/<type>.js`, then content in a page file in `content/pages/`, then the mapping table in `design-system/page-inventory.md`.
    - Section looks (`"look": "<name>"` on a block, `assets/src/blocks/look-<name>.js` + its component): **never delete one.** Before inventing a new look, run `python tools/specimens.py fit <type>` and reuse one that fits (live or retired, see `sections.html`). A look no page uses is retired: the build moves it into the library bundles, and it stays in the section library. After page edits run `python tools/specimens.py snapshot` so every content version is kept.
-3. Run `python tools/design_system.py build`, `python tools/design_system.py check` and `python tools/studio.py check`. Fix every problem they report. (`python tools/studio.py refresh` does all of it in order; the `aquemi-studio` skill covers the tooling as a whole.)
+3. Run `python tools/design_system.py build`, `python tools/design_system.py check` and `python studio/studio.py check`. Fix every problem they report. (`python studio/studio.py refresh` does all of it in order; the `studio` skill covers the tooling as a whole.)
 4. Review visually: serve the repo (`python -m http.server 8000`) and open `/design-system.html` and the affected site pages. Check light, dark and the "Phone width" toggle on the component.
 5. Commit to `dev` and push; the dev copy updates in a minute or two. Promote through `staging` to `main` (AGENTS.md, Branches).
 
