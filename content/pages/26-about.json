@@ -31,7 +31,7 @@
      "p": "Scope",
      "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. No Water for Injection, pure steam or stainless steel systems. Not residential or municipal. We also offer process design and automation to other water system builders",
      "m": "Stated in these words in every proposal. Registered activity: [registered business activity, as filed]",
-     "link": "systems",
+     "link": "emi",
      "hl": true
     },
     {
@@ -43,7 +43,7 @@
      "p": "Quality system",
      "v": "Status on request",
      "m": "Audit on reasonable notice",
-     "link": "cmp-quality#certification"
+     "link": "quality#certification"
     },
     {
      "p": "Head office",
@@ -75,7 +75,7 @@
     {
      "t": "Industrial automation engineer",
      "d": "Direct experience on pharmaceutical water systems. Ask about controls.",
-     "link": "sys-monitoring"
+     "link": "emi-controls"
     },
     {
      "t": "Modular manufacturing and design specialist",
@@ -117,7 +117,7 @@
     {
      "t": "Designed for Canadian feed water",
      "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
-     "link": "sys-pretreatment",
+     "link": "emi-pt",
      "icon": "softener"
     },
     {
@@ -139,13 +139,13 @@
     {
      "q": "What happens to our system if a key person leaves?",
      "a": "The knowledge is in the records: specification, as-built drawings, joint records as set out in your proposal, software backup, FAT and qualification reports. You receive them at handover, so whoever takes over works from them.",
-     "link": "cmp-documentation#index",
+     "link": "svc-documentation#index",
      "link_label": "See the documentation package"
     },
     {
      "q": "How do we qualify you as a supplier?",
      "a": "Audit our quality system on reasonable notice, and witness your FAT before shipment. References and site visits are arranged with our commercial lead during qualification.",
-     "link": "projects#verify",
+     "link": "quality#verify",
      "link_label": "How to qualify us"
     }
    ]
@@ -154,10 +154,10 @@
    "type": "related",
    "h": "Check what we say here",
    "items": [
-    "compliance",
-    "cmp-quality",
+    "emi#limits",
+    "quality",
     "buying",
-    "projects",
+    "emi#configurations",
     "industries",
     "project-plan"
    ]

@@ -225,9 +225,9 @@
    "page": "about",
    "slot": 2,
    "h": "What changes for a Canadian site",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "e9e30cb9ee",
    "block": {
@@ -246,6 +246,44 @@
       "t": "Designed for Canadian feed water",
       "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
       "link": "sys-pretreatment",
+      "icon": "softener"
+     },
+     {
+      "t": "Service and spares",
+      "d": "From Ontario, Canada, with spares held there.",
+      "link": "contact-locations#coverage",
+      "icon": "valve",
+      "fig": "truck"
+     }
+    ],
+    "look": "site-tiles"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 2,
+   "h": "What changes for a Canadian site",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "e87ccea25e",
+   "block": {
+    "type": "grid",
+    "nav": "Canada",
+    "anchor": "canada",
+    "h": "What changes for a Canadian site",
+    "items": [
+     {
+      "t": "Witness your factory acceptance test (FAT)",
+      "d": "In Ontario, Canada, with reasonable notice.",
+      "link": "svc-fat-sat",
+      "icon": "gauge"
+     },
+     {
+      "t": "Designed for Canadian feed water",
+      "d": "Chloramine, cold winter intakes and seasonal swings set pretreatment and reverse osmosis (RO) sizing.",
+      "link": "emi-pt",
       "icon": "softener"
      },
      {

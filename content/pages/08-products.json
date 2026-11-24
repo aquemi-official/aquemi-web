@@ -1,0 +1,155 @@
+{
+ "id": "products",
+ "section": "Products",
+ "nav_label": "All products",
+ "title": "Aquemi products: P-40, P-80, dosing tank and AeroWell | Aquemi",
+ "meta": "Standard Aquemi equipment with a fixed datasheet: the P-40 portable pure-water cart, the P-80, a dosing tank and the AeroWell atmospheric water generator.",
+ "path": "/products/",
+ "eyebrow": "PRODUCTS · STANDARD EQUIPMENT",
+ "headline": "Standard equipment, one datasheet each",
+ "lead": "EMI is engineered to your requirements. Products are standard items: one design, one datasheet, built to order. Four today: the P-40 portable pure-water cart, the P-80, a dosing tank and the AeroWell atmospheric water generator.",
+ "primary_cta": "Ask about a product",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I want a standard product",
+ "secondary_cta": {
+  "label": "See EMI, the engineered system",
+  "link": "emi"
+ },
+ "index": [
+  "p-40",
+  "aerowell"
+ ],
+ "blocks": [
+  {
+   "type": "grid",
+   "nav": "Products",
+   "anchor": "range",
+   "h": "The range",
+   "intro": "Each product is one fixed design with its own datasheet. The first units of each are built to order, with a longer lead time while we complete the design.",
+   "items": [
+    {
+     "t": "P-40 portable pure-water cart",
+     "tag": "Reverse osmosis and deionization",
+     "icon": "valve",
+     "link": "p-40",
+     "d": "Hose in, hose out, no power. Sediment, carbon, one 4040 RO element and mixed-bed DI on a wheeled frame, for rinse, fill and top-up water."
+    },
+    {
+     "t": "P-80",
+     "tag": "In design",
+     "icon": "pump",
+     "d": "[P-80: what it is, in one line]. In design; datasheet to follow."
+    },
+    {
+     "t": "Dosing tank",
+     "tag": "In design",
+     "icon": "tank",
+     "d": "[Dosing tank: what it is, in one line]. In design; datasheet to follow."
+    },
+    {
+     "t": "AeroWell atmospheric water generator",
+     "tag": "Water from air",
+     "icon": "droplet",
+     "link": "aerowell",
+     "d": "Drinking water from the air: 9 US gal (34 L) a day at 26 °C and 60 % humidity, on a 120 V outlet."
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "EMI or a product",
+   "anchor": "which",
+   "h": "EMI or a product?",
+   "intro": "Both come from the same shop. What differs is who sets the design.",
+   "cols": [
+    "",
+    "EMI",
+    "Products"
+   ],
+   "rows": [
+    [
+     "Designed to",
+     "Your user requirement specification (URS) and feed water",
+     "One fixed datasheet"
+    ],
+    [
+     "Water",
+     "Purified Water, designed to meet USP <645> and <643>",
+     "Low-mineral or drinking water; not a pharmacopoeial grade"
+    ],
+    [
+     "Documents",
+     "Design, fabrication, test and qualification records",
+     "Datasheet and manual"
+    ],
+    [
+     "Testing",
+     "Factory acceptance test with water, witnessed; IQ, OQ and PQ",
+     "Factory check before shipping"
+    ],
+    [
+     "Price",
+     "In your proposal",
+     "Confirmed when you enquire"
+    ]
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions buyers ask",
+   "items": [
+    {
+     "q": "Can a product make Purified Water for a GMP plant?",
+     "a": "No. Products are not designed or certified for pharmaceutical, dialysis or laboratory water grades. That is EMI's job.",
+     "link": "emi",
+     "link_label": "See EMI"
+    },
+    {
+     "q": "Who are the products for?",
+     "a": "Trades, light industry, mobile and off-grid users: rinse, fill, top-up and drinking water where no plant exists."
+    },
+    {
+     "q": "How do we buy one?",
+     "a": "Send the enquiry form with the product name. We confirm price, lead time and freight in writing. The first units of each product are built to order, with a longer lead time while we complete the design.",
+     "link": "buying",
+     "link_label": "How buying works"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "emi",
+    "buying",
+    "contact-proposal",
+    "about"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Ask about a product",
+  "body": "Tell us the product and where it will work. An engineer replies in writing with price and lead time.",
+  "button": "Ask about a product",
+  "link": "contact-proposal",
+  "intent": "I want a standard product",
+  "include": [
+   "Product name",
+   "Where and how it will be used",
+   "Feed water or site conditions, if known"
+  ],
+  "turnaround": "Confirmed when you enquire",
+  "returns": [
+   "Price and lead time",
+   "Datasheet",
+   "Questions on fit"
+  ]
+ },
+ "todo": [
+  "Products (2026-11-23): new section. P-80 and dosing tank have no page until their repositories hold a description and a datasheet; their cards carry placeholders.",
+  "Lead time for the first units of each product ([product lead time, weeks]) and list prices, if any are to be published; whether products ship outside Canada.",
+  "A product photograph or line drawing per card once a unit is built or the line art is approved."
+ ]
+}

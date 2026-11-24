@@ -111,7 +111,7 @@
      "v": "RO reject at the recovery in your design",
      "m": "Feed water chemistry",
      "part": "drain",
-     "link": "sys-pw",
+     "link": "emi-ro",
      "side": "out"
     },
     {
@@ -141,35 +141,35 @@
     {
      "t": "Data review",
      "d": "Conductivity, total organic carbon (TOC), temperature and alarms since the last visit.",
-     "link": "sys-monitoring",
+     "link": "emi-controls",
      "spot": "toc",
      "part": "panel toc"
     },
     {
      "t": "Pretreatment",
      "d": "Softener leakage, carbon or bisulfite, RO inlet chlorine.",
-     "link": "sys-pretreatment",
+     "link": "emi-pt",
      "spot": "pretreatment",
      "part": "pre"
     },
     {
      "t": "RO and DI/EDI",
      "d": "Normalized flow, salt passage and pressure drop against baseline.",
-     "link": "sys-pw",
+     "link": "emi-ro",
      "spot": "ro-skid",
      "part": "gen"
     },
     {
      "t": "UV, if fitted, and sanitization",
      "d": "Lamp intensity and hours; last sanitization record checked, residual tested before use.",
-     "link": "sys-storage#sanitization",
+     "link": "emi-sds#sanitization",
      "spot": "uv",
      "part": "uv"
     },
     {
      "t": "Loop hydraulics",
      "d": "Return flow against the qualified or design minimum, pump and valves.",
-     "link": "sys-storage",
+     "link": "emi-sds",
      "spot": "pump",
      "part": "loop tank"
     },
@@ -207,12 +207,12 @@
     {
      "t": "Remote diagnosis",
      "d": "Trends and alarms reviewed within the response time set in your plan; operators guided to a safe state.",
-     "link": "sys-monitoring"
+     "link": "emi-controls"
     },
     {
      "t": "On site",
      "d": "A technician with the likely parts, working under your site’s permits; water back within limits.",
-     "link": "cmp-documentation#safety"
+     "link": "svc-documentation#safety"
     },
     {
      "t": "Report",

@@ -13,7 +13,7 @@
  "primary_cta_intent": "I have an RFQ or a tender",
  "secondary_cta": {
   "label": "Send your supplier questionnaire",
-  "link": "cmp-quality#audit",
+  "link": "quality#audit",
   "intent": "Your questionnaire, completed"
  },
  "figure": {
@@ -169,7 +169,7 @@
     {
      "t": "The proof beside it",
      "d": "Each answer names the document and page that shows it.",
-     "link": "cmp-documentation#index",
+     "link": "svc-documentation#index",
      "label": "Proof"
     },
     {
@@ -220,13 +220,13 @@
      "t": "Quality system status",
      "d": "Status on request",
      "code": "QMS",
-     "link": "cmp-quality#certification"
+     "link": "quality#certification"
     },
     {
      "t": "Supplier questionnaire",
      "d": "Your form completed, or our questionnaire pack",
      "code": "SQ",
-     "link": "cmp-quality#audit",
+     "link": "quality#audit",
      "intent": "Your questionnaire, completed"
     }
    ],
@@ -257,7 +257,7 @@
     {
      "q": "What do you submit for a tender's experience or reference section?",
      "a": "Our bid answers it with the named team and its experience. It adds our quality system and audit access, specimen documents and a witnessed factory acceptance test (FAT). Tell us before the tender closes what the clause must prove. Written answer in a time confirmed when you enquire. References and site visits are arranged with our commercial lead during qualification.",
-     "link": "projects#verify",
+     "link": "quality#verify",
      "link_label": "How to qualify us"
     }
    ]
@@ -267,9 +267,9 @@
    "h": "What procurement reads next",
    "items": [
     "about",
-    "cmp-quality",
+    "quality",
     "project-plan",
-    "projects"
+    "emi#configurations"
    ]
   }
  ],

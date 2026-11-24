@@ -335,9 +335,9 @@
    "page": "svc-service",
    "slot": 1,
    "h": "What it costs to run",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-23",
    "commit": "503a507",
    "hash": "22b31f592b",
    "block": {
@@ -530,7 +530,7 @@
    }
   },
   {
-   "page": "cmp-documentation",
+   "page": "svc-documentation",
    "slot": 1,
    "h": "Site safety information for your permit",
    "status": "live",
@@ -582,6 +582,70 @@
      }
     ],
     "fold": 3,
+    "fold_noun": "items"
+   }
+  },
+  {
+   "page": "svc-service",
+   "slot": 1,
+   "h": "What it costs to run",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "f396ac4b6e",
+   "block": {
+    "type": "spec",
+    "look": "cost-skid",
+    "nav": "Running cost",
+    "anchor": "running-cost",
+    "h": "What it costs to run",
+    "intro": "Intervals depend on your feed water and daily draw; we set the first schedule from your water analysis.",
+    "cols": [
+     "Item",
+     "Interval or amount",
+     "Set by"
+    ],
+    "rows": [
+     {
+      "p": "Service plan, with calibration",
+      "v": "Priced per system",
+      "m": "System, instruments and distance",
+      "part": "panel"
+     },
+     {
+      "p": "Reverse osmosis (RO) membranes; electrodeionization (EDI) module or deionization (DI) resin",
+      "v": "Intervals set for your system",
+      "m": "Feed water and flow"
+     },
+     {
+      "p": "Filters, carbon, softener resin, ultraviolet (UV) lamp",
+      "v": "Intervals set for your system",
+      "m": "Feed water and run hours",
+      "part": "pre"
+     },
+     {
+      "p": "Water to drain",
+      "v": "RO reject at the recovery in your design",
+      "m": "Feed water chemistry",
+      "part": "drain",
+      "link": "emi-ro",
+      "side": "out"
+     },
+     {
+      "p": "Energy",
+      "v": "Estimated in your proposal",
+      "m": "Flow and feed temperature",
+      "part": "pump"
+     },
+     {
+      "p": "Sanitant and softener salt",
+      "v": "A chemical method set per project, at a frequency set by your monitoring",
+      "m": "Your microbial trends; feed hardness",
+      "part": "soft"
+     }
+    ],
+    "fold": 2,
     "fold_noun": "items"
    }
   }

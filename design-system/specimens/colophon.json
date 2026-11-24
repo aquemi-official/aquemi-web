@@ -976,9 +976,9 @@
    "page": "about",
    "slot": 0,
    "h": "Company facts",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "0ae6c815f2",
    "block": {
@@ -1009,6 +1009,60 @@
       "v": "Status on request",
       "m": "Audit on reasonable notice",
       "link": "cmp-quality#certification"
+     },
+     {
+      "p": "Head office",
+      "v": "Ontario, Canada",
+      "m": "Contact details on the Locations page",
+      "link": "contact-locations#locations"
+     },
+     {
+      "p": "Shop and test bay",
+      "v": "Ontario, Canada",
+      "m": "Visit with reasonable notice",
+      "link": "contact-locations#visit"
+     }
+    ],
+    "look": "colophon"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 0,
+   "h": "Company facts",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "b86b7c3516",
+   "block": {
+    "type": "spec",
+    "nav": "Company",
+    "anchor": "facts",
+    "h": "Company facts",
+    "cols": [
+     "Item",
+     "Fact",
+     "Evidence"
+    ],
+    "rows": [
+     {
+      "p": "Scope",
+      "v": "One modular Purified Water package in polypropylene, with polyvinyl chloride (PVC) pretreatment: pretreatment to distribution, design to service. No Water for Injection, pure steam or stainless steel systems. Not residential or municipal. We also offer process design and automation to other water system builders",
+      "m": "Stated in these words in every proposal. Registered activity: [registered business activity, as filed]",
+      "link": "emi",
+      "hl": true
+     },
+     {
+      "p": "Why modular polypropylene",
+      "v": "Modular polypropylene packages for ambient Purified Water, tested before they ship.",
+      "m": "The team's engineering rationale, signed"
+     },
+     {
+      "p": "Quality system",
+      "v": "Status on request",
+      "m": "Audit on reasonable notice",
+      "link": "quality#certification"
      },
      {
       "p": "Head office",

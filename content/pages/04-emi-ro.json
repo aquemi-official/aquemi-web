@@ -1,19 +1,19 @@
 {
- "id": "sys-pw",
- "section": "Systems",
- "nav_label": "Purified Water (PW) generation",
- "title": "Purified Water (PW) generation: RO and DI/EDI skid | Aquemi",
- "meta": "RO and DI or EDI on one skid, designed to meet USP <645> and <643> and sized for your coldest feed.",
- "path": "/systems/purified-water/",
- "eyebrow": "SYSTEMS · PW GENERATION · RO · DI/EDI",
- "headline": "Purified Water, sized for your coldest day",
- "lead": "A skid makes Purified Water (PW) by reverse osmosis and deionization, designed to meet USP <645> and <643>.",
+ "id": "emi-ro",
+ "section": "EMI",
+ "nav_label": "RO · Reverse osmosis",
+ "title": "EMI RO: reverse osmosis for Purified Water | Aquemi",
+ "meta": "The EMI RO skid makes Purified Water by reverse osmosis, designed to meet USP <645> and <643> and sized for your coldest feed. It carries the control panel for every EMI skid.",
+ "path": "/emi/ro/",
+ "eyebrow": "EMI · RO · USP <645>, <643>",
+ "headline": "Reverse osmosis, sized for your coldest day",
+ "lead": "The RO skid makes Purified Water (PW) by reverse osmosis, designed to meet USP <645> and <643>. It carries EMI's control panel: an EDI skid and an SDS skid wire to it.",
  "primary_cta": "Request a sizing proposal",
  "primary_cta_link": "contact-proposal",
- "primary_cta_intent": "I have water data, no system yet|Sizing proposal|Purified Water (PW) generation",
+ "primary_cta_intent": "I have water data, no system yet|Sizing proposal|RO skid",
  "secondary_cta": {
-  "label": "See the documentation package",
-  "link": "cmp-documentation"
+  "label": "See the EDI skid",
+  "link": "emi-edi"
  },
  "blocks": [
   {
@@ -40,15 +40,9 @@
      "label": "RO"
     },
     {
-     "t": "DI or EDI",
-     "spot": "edi-stack",
-     "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by the resin service route named in your proposal.",
-     "label": "DI or EDI"
-    },
-    {
-     "t": "To PW storage",
+     "t": "To the EDI skid, or storage",
      "spot": "storage-tank",
-     "d": "Water out of specification does not reach storage: it goes to a route set in your design until it recovers.",
+     "d": "Permeate goes to the EDI skid where your limit needs it, else to storage. Water out of specification does not reach storage: it goes to a route set in your design until it recovers.",
      "label": "Out"
     }
    ],
@@ -109,6 +103,12 @@
      "a": "A factory acceptance test (FAT) with water proves it before shipping; your team can witness it. Site tests, then installation and operational qualification (IQ/OQ), prove it on your feed water.",
      "link": "svc-fat-sat",
      "link_label": "See what FAT proves"
+    },
+    {
+     "q": "Where is the control panel?",
+     "a": "On the RO skid. One controller runs every EMI skid: the EDI skid wires to this panel, and the SDS skid's remote I/O panel connects to it.",
+     "link": "emi-controls",
+     "link_label": "See the controls"
     }
    ],
    "nav": "FAQ",
@@ -118,10 +118,10 @@
    "type": "related",
    "h": "Where to go next",
    "items": [
-    "sys-pretreatment",
-    "sys-storage",
-    "sys-monitoring",
-    "svc-service"
+    "emi-pt",
+    "emi-edi",
+    "emi-sds",
+    "emi-controls"
    ]
   }
  ],
@@ -130,7 +130,7 @@
   "body": "An engineer replies in writing. Cost: discussed when you enquire.",
   "button": "Request a sizing proposal",
   "link": "contact-proposal",
-  "intent": "I have water data, no system yet|Sizing proposal|Purified Water (PW) generation",
+  "intent": "I have water data, no system yet|Sizing proposal|RO skid",
   "include": [
    "Feed water analysis, ideally two seasons",
    "Feed temperature range, °C",
@@ -145,6 +145,7 @@
   ]
  },
  "todo": [
+  "EMI (2026-11-23): the PW generation page became the RO skid page; DI/EDI moved to the new EDI skid page (emi-edi). The drawing still shows an EDI stack on the skid (assets/illustrations/emi-ro.png): redraw as the RO skid with its control panel when the EMI drawings exist.",
   "Capacity range per skid, L/h ([minimum–maximum capacity, L/h], hero and design table; one range on every page and in proposals; FD-20). Unfilled at launch, the capacity fact goes (DR-010 rule 5)",
   "[duplex train shares offered]: FD-20/FD-21, for example 50 % or 100 % each; the example stays out of the brackets.",
   "Guaranteed conductivity at the skid outlet, µS/cm at 25 °C, and how FAT and SAT measure it ([outlet conductivity guarantee, µS/cm @ 25 °C], hero and limits table; same name on home and svc-design; FD-21)",

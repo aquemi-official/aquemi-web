@@ -1,0 +1,264 @@
+{
+ "id": "p-40",
+ "section": "Products",
+ "nav_label": "P-40 portable pure-water cart",
+ "title": "P-40 portable pure-water cart: hose-fed RO and DI | Aquemi",
+ "meta": "The Aquemi P-40 is a portable RO/DI cart: sediment, catalytic carbon, one 4040 RO element and mixed-bed DI on a wheeled aluminium frame. Tap pressure does the work.",
+ "path": "/products/p-40/",
+ "eyebrow": "PRODUCTS · P-40 · PORTABLE RO/DI CART",
+ "headline": "Low-mineral water, made where the job is",
+ "lead": "Reverse osmosis and deionization on one hose-fed cart. Connect a garden hose, open the tap and take low-mineral water from the outlet hose. No pump, tank or power supply: tap pressure does the work.",
+ "primary_cta": "Ask about the P-40",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I want a standard product|P-40",
+ "secondary_cta": {
+  "label": "All products",
+  "link": "products"
+ },
+ "blocks": [
+  {
+   "type": "diagram",
+   "look": "winding-route",
+   "nav": "How it works",
+   "anchor": "process",
+   "h": "Four stages on one frame",
+   "intro": "Water passes the four stages in a fixed order. Three 3/4 in garden-hose connections: feed, product and concentrate.",
+   "stages": [
+    {
+     "t": "Feed hose",
+     "spot": "pretreatment",
+     "label": "In",
+     "d": "A hose tap on a mains supply at 2.8 to 5.5 bar (40 to 80 psi); a pressure regulator above that."
+    },
+    {
+     "t": "Sediment filter",
+     "spot": "pretreatment",
+     "label": "1",
+     "d": "5 µm, in a 10 × 2.5 in housing. Changed on pressure drop."
+    },
+    {
+     "t": "Catalytic carbon block",
+     "spot": "pretreatment",
+     "label": "2",
+     "d": "10 × 4.5 in housing. Removes chlorine and chloramine, which would damage the membrane."
+    },
+    {
+     "t": "Reverse osmosis",
+     "spot": "ro-skid",
+     "label": "3",
+     "d": "One 4040 element in a 304 stainless steel housing. Concentrate leaves through a fixed 1.6 mm orifice, always open, with a ball valve to set recovery and flush."
+    },
+    {
+     "t": "Mixed-bed deionization",
+     "spot": "edi-stack",
+     "label": "4",
+     "d": "10 × 4.5 in housing. Design target: 0 ppm TDS reading at the outlet while the resin has capacity."
+    },
+    {
+     "t": "Product hose",
+     "spot": "storage-tank",
+     "label": "Out",
+     "d": "Low-mineral water, checked with a handheld TDS meter."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "nav": "Technical data",
+   "anchor": "data",
+   "h": "Technical data",
+   "caption": "Design values",
+   "intro": "Figures from the drawings and the makers' ratings, and design values calculated for one new element. No figure has been measured on a built unit yet.",
+   "cols": [
+    "Item",
+    "Value",
+    "Basis"
+   ],
+   "fold": 6,
+   "fold_noun": "rows",
+   "rows": [
+    {
+     "p": "Product flow",
+     "v": "3.9 L/min (1.04 gpm) at 4.1 bar (60 psi) feed, 25 °C, 50 % recovery",
+     "m": "Calculated; 2.6 to 5.2 L/min across 2.8 to 5.5 bar at 25 °C, 3.0 L/min at 5.5 bar and 5 °C",
+     "hl": true
+    },
+    {
+     "p": "Membrane element",
+     "v": "One 4040 element, 2,500 US gal/day (6.6 L/min) at 5.5 bar, 25 °C, 550 ppm, 15 % recovery, ±20 %; salt rejection 98.5 % nominal, 96 % minimum",
+     "m": "Maker's rating"
+    },
+    {
+     "p": "Recovery",
+     "v": "Set by the ball valve: 33 to 50 % recommended, 25 to 33 % on hard water",
+     "m": "Design value"
+    },
+    {
+     "p": "Product water",
+     "v": "RO permeate about 6 to 7 mg/L TDS from a 210 mg/L feed; DI outlet design target 0 ppm TDS reading",
+     "m": "Calculated; measured: [P-40 product water, measured on first unit]"
+    },
+    {
+     "p": "Feed water",
+     "v": "2.8 to 5.5 bar (40 to 80 psi) recommended, 6.2 bar (90 psi) maximum at 22 °C; 4.4 to 37.8 °C; silt density index 5 maximum",
+     "m": "Makers' ratings of the tubing, housings and membrane"
+    },
+    {
+     "p": "Connections",
+     "v": "Three 3/4 in garden-hose thread (GHT): feed (brass, 1,196 mm high), product (303 stainless steel, 471 mm), concentrate (brass, 150 mm)",
+     "m": "Drawing P40-000"
+    },
+    {
+     "p": "Size",
+     "v": "1,369 mm high × 531 mm wide × 423 mm deep (53.9 × 20.9 × 16.7 in); handle 1,244 mm (49 in); wheel track 483 mm (19 in)",
+     "m": "Drawing P40-000"
+    },
+    {
+     "p": "Mass",
+     "v": "About 28 kg (61 lb) dry; about 41 kg (90 lb) holding 13 L of water",
+     "m": "Calculated"
+    },
+    {
+     "p": "Frame",
+     "v": "6063-T6 aluminium T-slot rail, clear anodized, bolted, no welds; two rigid 4 in rubber casters and one levelling mount",
+     "m": "Drawing P40-100"
+    },
+    {
+     "p": "Wetted parts",
+     "v": "Brass fittings before the DI stage, 303 stainless steel after it; 1/2 in OD polyethylene tubing with push-fit fittings; 304 stainless steel RO housing",
+     "m": "Drawing P40-000"
+    }
+   ],
+   "note": "Not designed or certified for drinking water. No certification or listing at this date. Design values are not guarantees of performance."
+  },
+  {
+   "type": "table",
+   "nav": "Consumables",
+   "anchor": "consumables",
+   "h": "Consumables",
+   "intro": "Life in litres of product water, calculated for a 210 mg/L feed; it depends on your water.",
+   "cols": [
+    "Stage",
+    "Size",
+    "Estimated life"
+   ],
+   "rows": [
+    [
+     "1 · Sediment filter",
+     "10 × 2.5 in, 5 µm",
+     "Change on pressure drop"
+    ],
+    [
+     "2 · Carbon block",
+     "10 × 4.5 in",
+     "8,700 L (2,300 gal), from the maker's chloramine capacity"
+    ],
+    [
+     "3 · RO element",
+     "4040 (4 × 40 in)",
+     "[RO element life, L or months]"
+    ],
+    [
+     "4 · DI resin",
+     "10 × 4.5 in",
+     "2,700 to 5,200 L (700 to 1,400 gal)"
+    ]
+   ]
+  },
+  {
+   "type": "grid",
+   "nav": "Where it fits",
+   "anchor": "fits",
+   "h": "Where it fits, and where it does not",
+   "items": [
+    {
+     "t": "Water-fed pole window cleaning",
+     "tag": "Fits",
+     "icon": "droplet",
+     "d": "Low-mineral water dries without spots."
+    },
+    {
+     "t": "Vehicle, fleet and boat final rinse",
+     "tag": "Fits",
+     "icon": "valve",
+     "d": "Spot-free rinse at the yard or the dock, and solar panel washing."
+    },
+    {
+     "t": "Fill and top-up",
+     "tag": "Fits",
+     "icon": "tank",
+     "d": "Battery and coolant top-up, closed heating and chilled-water loop fill, pressure-washer and steam-cleaner feed."
+    },
+    {
+     "t": "Not suitable",
+     "tag": "Not for",
+     "icon": "shield",
+     "d": "Drinking water. Laboratory water grades. Dental units, autoclaves and sterilizers. Dialysis and pharmaceutical Purified Water. Continuous production duty."
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions buyers ask",
+   "items": [
+    {
+     "q": "Is the water drinkable?",
+     "a": "No. The P-40 is not designed or certified for drinking water. For drinking water from air, see the AeroWell.",
+     "link": "aerowell",
+     "link_label": "See the AeroWell"
+    },
+    {
+     "q": "What do I need on site?",
+     "a": "A hose tap at 2.8 to 5.5 bar (a regulator above that), three garden hoses, a drain for the concentrate hose and a handheld TDS meter to check the outlet."
+    },
+    {
+     "q": "How do I know the resin is spent?",
+     "a": "The outlet TDS reading rises above 0 ppm. Change the DI cartridge. The carbon block and sediment filter have their own intervals."
+    },
+    {
+     "q": "When can I get one?",
+     "a": "The first units are built to order with a longer lead time while we complete the design and test the first unit. Price and lead time: confirmed when you enquire.",
+     "link": "buying",
+     "link_label": "How buying works"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "products",
+    "aerowell",
+    "buying",
+    "contact-proposal"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Ask about the P-40",
+  "body": "Tell us the product and where it will work. An engineer replies in writing with price and lead time.",
+  "button": "Ask about the P-40",
+  "link": "contact-proposal",
+  "intent": "I want a standard product|P-40",
+  "include": [
+   "Where the cart will work",
+   "Your tap pressure and water hardness, if known",
+   "How many litres a day"
+  ],
+  "turnaround": "Confirmed when you enquire",
+  "returns": [
+   "Price and lead time",
+   "Datasheet",
+   "Questions on fit"
+  ]
+ },
+ "todo": [
+  "Products (2026-11-23): new page from the P-40 repository (aquemi-official/p-40, data sheet AQ-P40-DS Draft C, 2026-11-23). Every performance figure is a calculated design value; the repository says not to publish one as a guarantee until measured on a built unit. The Basis column says so on the page.",
+  "Measured product water quality on the first unit ([P-40 product water, measured on first unit]); RO element life ([RO element life, L or months]); filter housing plastic grade; feed limits for TDS, hardness and iron.",
+  "Hero image: the repository holds line art (docs/product-documents/assets/p40_iso_limestone.svg, p40_front_view.svg) and renders with a logo decal that is not part of the design. Brochure rule: line drawings until a real unit is photographed; whether renders may be shown is an open decision. Save the chosen drawing as assets/illustrations/p-40.png.",
+  "Lead time for the first units and the price ([product lead time, weeks], [P-40 price, CAD]).",
+  "Open engineering questions in the repository (DI cartridge flow rating below the product flow, tip angle, sump clearance): the page prints no figure that depends on them."
+ ]
+}

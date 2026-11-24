@@ -216,9 +216,9 @@
    "page": "about",
    "slot": 1,
    "h": "The people you would work with",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-23",
    "commit": "503a507",
    "hash": "5c4a026a10",
    "block": {
@@ -237,6 +237,58 @@
       "t": "Industrial automation engineer",
       "d": "Direct experience on pharmaceutical water systems. Ask about controls.",
       "link": "sys-monitoring"
+     },
+     {
+      "t": "Modular manufacturing and design specialist",
+      "d": "Ask about skid design, fabrication and joint records.",
+      "link": "svc-fabrication"
+     }
+    ],
+    "parts": [
+     {
+      "t": "The package",
+      "by": "We design and fabricate",
+      "part": "package"
+     },
+     {
+      "t": "Instruments",
+      "by": "From their makers",
+      "part": "instruments"
+     },
+     {
+      "t": "Membranes and EDI modules",
+      "by": "From their makers",
+      "part": "modules"
+     }
+    ],
+    "look": "source-skid"
+   }
+  },
+  {
+   "page": "about",
+   "slot": 1,
+   "h": "The people you would work with",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "3fb873a1cb",
+   "block": {
+    "type": "grid",
+    "nav": "Team",
+    "anchor": "people",
+    "h": "The people you would work with",
+    "intro": "We design and fabricate the package; membranes, electrodeionization (EDI) modules and instruments come from their makers.",
+    "items": [
+     {
+      "t": "Commercial lead",
+      "d": "Your contact for scope, terms, supplier onboarding and company facts.",
+      "link": "buying"
+     },
+     {
+      "t": "Industrial automation engineer",
+      "d": "Direct experience on pharmaceutical water systems. Ask about controls.",
+      "link": "emi-controls"
      },
      {
       "t": "Modular manufacturing and design specialist",

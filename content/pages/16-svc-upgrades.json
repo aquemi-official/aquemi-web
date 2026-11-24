@@ -80,7 +80,7 @@
      "Agreed with you; DI or exchange tanks run until release",
      {
       "t": "PW generation",
-      "link": "sys-pw"
+      "link": "emi-ro"
      }
     ],
     [
@@ -90,7 +90,7 @@
      "Agreed with you; existing pretreatment runs until cutover",
      {
       "t": "Pretreatment",
-      "link": "sys-pretreatment"
+      "link": "emi-pt"
      }
     ],
     [
@@ -100,7 +100,7 @@
      "Agreed with you; planned shutdown",
      {
       "t": "Storage and distribution loops",
-      "link": "sys-storage"
+      "link": "emi-sds"
      }
     ],
     [
@@ -110,7 +110,7 @@
      "Agreed with you",
      {
       "t": "Monitoring and controls",
-      "link": "sys-monitoring"
+      "link": "emi-controls"
      }
     ],
     [
@@ -120,7 +120,7 @@
      "Agreed with you; built while running",
      {
       "t": "PW generation",
-      "link": "sys-pw"
+      "link": "emi-ro"
      }
     ],
     [
@@ -251,8 +251,8 @@
    "items": [
     "svc-cq",
     "svc-service",
-    "sys-monitoring",
-    "sys-storage"
+    "emi-controls",
+    "emi-sds"
    ]
   }
  ],

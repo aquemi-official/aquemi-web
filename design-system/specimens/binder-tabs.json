@@ -453,9 +453,9 @@
    "page": "buying",
    "slot": 2,
    "h": "Your URS or RFQ, answered line by line",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "112e982550",
    "block": {
@@ -479,6 +479,47 @@
       "t": "The proof beside it",
       "d": "Each answer names the document and page that shows it.",
       "link": "cmp-documentation#index",
+      "label": "Proof"
+     },
+     {
+      "t": "Departures on one page",
+      "d": "Every departure from your specification, with its reason. If there is none, the page says \"none\".",
+      "label": "Departures"
+     }
+    ],
+    "look": "binder-tabs"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 2,
+   "h": "Your URS or RFQ, answered line by line",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "8b05da878b",
+   "block": {
+    "type": "steps",
+    "nav": "Your RFQ",
+    "anchor": "answer",
+    "h": "Your URS or RFQ, answered line by line",
+    "intro": "Send your user requirements specification (URS), request for quotation (RFQ) or tender. It comes back answered in your own numbering.",
+    "items": [
+     {
+      "t": "Your numbering kept",
+      "d": "Every clause answered where you wrote it. Nothing renumbered, merged or skipped. Send your bid form with your RFQ.",
+      "label": "Clauses"
+     },
+     {
+      "t": "One answer per line",
+      "d": "Meets, meets with a note, or differs. A line that does not apply says why.",
+      "label": "Answer"
+     },
+     {
+      "t": "The proof beside it",
+      "d": "Each answer names the document and page that shows it.",
+      "link": "svc-documentation#index",
       "label": "Proof"
      },
      {

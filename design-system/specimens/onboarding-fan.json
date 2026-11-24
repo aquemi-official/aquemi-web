@@ -72,9 +72,9 @@
    "page": "buying",
    "slot": 3,
    "h": "Onboarding papers and their status",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-04",
-   "last_seen": "2026-11-04",
+   "last_seen": "2026-11-23",
    "commit": "503a507",
    "hash": "22c10fe6ea",
    "block": {
@@ -124,6 +124,68 @@
       "d": "Your form completed, or our questionnaire pack",
       "code": "SQ",
       "link": "cmp-quality#audit",
+      "intent": "Your questionnaire, completed"
+     }
+    ],
+    "look": "onboarding-fan"
+   }
+  },
+  {
+   "page": "buying",
+   "slot": 3,
+   "h": "Onboarding papers and their status",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "de7b80c3c1",
+   "block": {
+    "type": "docs",
+    "nav": "Onboarding",
+    "anchor": "onboarding",
+    "h": "Onboarding papers and their status",
+    "intro": "Procurement checks these before award. Each is marked held, on request or in the questionnaire pack. Ask for any with your RFQ.",
+    "items": [
+     {
+      "t": "Corporate registration",
+      "d": "[corporate registration, jurisdiction and number]",
+      "code": "REG",
+      "key": true,
+      "link": "about#facts"
+     },
+     {
+      "t": "Certificate of insurance",
+      "d": "Status on request.",
+      "code": "INS",
+      "key": true,
+      "link": "about#facts"
+     },
+     {
+      "t": "Workers' compensation clearance",
+      "d": "Workplace Safety and Insurance Board (WSIB), Ontario: status on request",
+      "code": "WSIB"
+     },
+     {
+      "t": "Tax registration",
+      "d": "Business number and sales tax account: details on request",
+      "code": "TAX"
+     },
+     {
+      "t": "Bank letter",
+      "d": "Bank reference: details on request",
+      "code": "BNK"
+     },
+     {
+      "t": "Quality system status",
+      "d": "Status on request",
+      "code": "QMS",
+      "link": "quality#certification"
+     },
+     {
+      "t": "Supplier questionnaire",
+      "d": "Your form completed, or our questionnaire pack",
+      "code": "SQ",
+      "link": "quality#audit",
       "intent": "Your questionnaire, completed"
      }
     ],

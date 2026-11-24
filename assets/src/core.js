@@ -6,7 +6,7 @@
 var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
-/* NAVMENU: the header's six sections, each a mega panel on wide screens and an expandable group in the phone menu
+/* NAVMENU: the header's five sections (EMI, Products, Services, Industries, Company), each a mega panel on wide screens and an expandable group in the phone menu
    (NavBar.js; design-system/components/NavBar/README.md). The one source: NAVSECT derives from it.
    Section: id, label (the bar's words), sections (the page "section" strings that make it current; default [label]),
    hub (its overview page, the panel's first link), lead (one line, 14 words or fewer), groups [{h, items}], feat (the
@@ -18,18 +18,25 @@ var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked 
    block's ISO 9001 row (else any row) holds no [placeholder] (NavBar.js wfilled).
    NAVTASKS: the "I need to" row, the same in every panel and one more group on phones; [target, words after "I need to"]. */
 var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our first system'],['svc-upgrades#observation','answer a water observation'],
- ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
+ ['quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
 var NAVMENU=[
- {id:'systems',label:'Systems',hub:'systems',lead:'One Purified Water package: pretreatment, RO, DI/EDI and distribution.',
-  groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
-     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
-   {h:'Plan and budget',items:[['systems#site','Site requirements','Space, utilities and connections you provide']]}],
+ {id:'emi',label:'EMI',hub:'emi',lead:'Our modular Purified Water system: one skid or four, whatever your water needs, sharing one control panel.',
+  groups:[{h:'The skids, take what you need',items:[['emi-pt','PT','Pretreatment: protects the RO from your feed water'],['emi-ro','RO','Reverse osmosis, with the control panel'],
+     ['emi-edi','EDI','Electrodeionization, where your limit needs it'],['emi-sds','SDS','Storage tank, pump and loop that keep water moving'],
+     ['emi-controls',null,'One panel for every skid: TOC, conductivity, alarms, records']]},
+   {h:'Plan and budget',items:[['emi#configurations','Typical configurations','Sized skid sets by industry, demand and feed water'],['emi#limits','Purified Water limits','Conductivity, TOC and microbial limits'],['emi#site','Site requirements','Space, utilities and connections you provide']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
   foot:{t:'No Water for Injection, pure steam or stainless steel systems.',to:'industries#faq',link:'Why'}},
- {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your Purified Water package.',
+ {id:'products',label:'Products',hub:'products',lead:'Standard equipment with a fixed datasheet, built to order.',
+  groups:[{h:'Water on site',items:[['p-40',null,'Hose-fed RO and DI cart: rinse, fill and top-up water'],['p-80',null,'In design; datasheet to follow'],['dosing-tank',null,'In design; datasheet to follow']]},
+   {h:'Water from air',items:[['aerowell',null,'Drinking water from the air, on a 120 V outlet']]},
+   {h:'Choosing',items:[['products#which','EMI or a product?','Who sets the design, what you receive']]}],
+  feat:{to:'p-40',eyebrow:'New',t:'P-40 portable pure-water cart',d:'Hose in, hose out, no power',icon:'valve'},
+  foot:{t:'Products are not designed or certified for pharmaceutical, dialysis or laboratory water.',to:'emi',link:'See EMI'}},
+ {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your EMI system.',
   groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what']]},
    {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'Skids and loops, every joint logged'],
-     ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec']]},
+     ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec'],['svc-documentation',null,'Every document from URS to turnover']]},
    {h:'Running systems',items:[['svc-service',null,'Response times, visits, calibration and parts'],['svc-upgrades',null,'Options for an ageing system, with downtime'],
      ['svc-upgrades#observation','After a water observation','The plan your inspector will ask for']]}],
   feat:{to:'urs-guide',eyebrow:'Guide',t:'Writing your URS',d:'Settle what changes design, price and bidders',icon:'clipboard'}},
@@ -42,20 +49,9 @@ var NAVMENU=[
      ['industries','All industries and uses','Where the water goes, industry by industry']]}],
   feat:{to:'first-system',eyebrow:'Plain guide',t:'Your first system',d:'Grade, site, staff time and cost, plainly',icon:'droplet'},
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
- {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
-  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits']]},
-   {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
-     ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
-   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],
-     ['cmp-quality#certification','Certification status','Quality, welding, pressure and panel approvals','filled']]}],
-  feat:{to:'cmp-quality#audit',eyebrow:'Supplier audit',t:'Audit us before you order',d:'Book a supplier audit of our shop and QMS',icon:'magnifier'}},
- {id:'projects',label:'Applications',sections:['Projects','Applications'],hub:'projects',lead:'Typical Purified Water configurations, and how to qualify us as a supplier.',
-  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water']]},
-   {h:'Qualify us',items:[['projects#verify','How to qualify us','Documents, audits and tests you can run'],['cmp-documentation#samples','Specimen documents','See the format before you order']]}],
-  feat:{to:'svc-fat-sat',eyebrow:'Before delivery',t:'Factory acceptance test',d:'Your system tested at our shop, with you',icon:'gauge'}},
- {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, how buying from us works, and how to reach us.',
+ {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, our quality system, how buying from us works, and how to reach us.',
   groups:[{h:'About us',items:[['about','About Aquemi','Our team, company facts and where we work'],['news','Technical notes','Short answers to Purified Water questions'],['careers',null,'Open roles, pay and how we hire']]},
-   {h:'Working with us',items:[['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
+   {h:'Working with us',items:[['quality',null,'Our processes, certification and how to audit us'],['quality#verify','Qualify us as a supplier','Documents, audits and tests you can run'],['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
    {h:'Contact',items:[['contact-proposal',null,'Send a URS, tender, product or water data'],['contact-service',null,'Faults, calibration and parts for running systems']]}],
   phoneDrop:['contact-proposal','contact-service'],
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
@@ -122,10 +118,10 @@ var ICONS=' softener carbon-filter ro-membrane edi still pure-steam tank loop va
 function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexOf(' '+n+' ')>=0}
 function wIcon(n,cls){var u='url(assets/icons/'+n+'.svg)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
 /* Page icon: the one icon that stands for a page wherever the page is shown small (related links, linked row ends). */
-var PAGE_ICON={systems:'loop','sys-pw':'ro-membrane','sys-wfi-distillation':'still','sys-wfi-membrane':'edi','sys-pure-steam':'pure-steam','sys-storage':'tank',
- 'sys-pretreatment':'softener','sys-monitoring':'conductivity',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
+var PAGE_ICON={emi:'loop','emi-ro':'ro-membrane','emi-edi':'edi','sys-wfi-distillation':'still','sys-wfi-membrane':'edi','sys-pure-steam':'pure-steam','emi-sds':'tank',
+ 'emi-pt':'softener','emi-controls':'conductivity',products:'factory','p-40':'valve','p-80':'pump','dosing-tank':'tank',aerowell:'droplet',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
  'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
- compliance:'shield','cmp-documentation':'binder','cmp-quality':'magnifier',projects:'checklist',about:'people',careers:'briefcase',news:'newspaper',
+ 'svc-documentation':'binder',quality:'magnifier',about:'people',careers:'briefcase',news:'newspaper',
  'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin',
  'ind-personal-care':'droplet','ind-hospital-lab':'dna','ind-process':'pump'};
 /* pageIcon: PAGE_ICON for a link, looked up by its page part, so page#anchor (systems#budget) shows its page's icon */

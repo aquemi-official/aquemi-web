@@ -1,0 +1,150 @@
+{
+ "id": "emi-edi",
+ "section": "EMI",
+ "nav_label": "EDI · Electrodeionization",
+ "title": "EMI EDI: electrodeionization after RO | Aquemi",
+ "meta": "The EMI EDI skid polishes RO permeate by electrodeionization to the conductivity your standard names, designed to meet USP <645>, with no regeneration chemicals.",
+ "path": "/emi/edi/",
+ "eyebrow": "EMI · EDI · USP <645>",
+ "headline": "Ions out, no regeneration chemicals",
+ "lead": "The EDI skid polishes reverse osmosis (RO) permeate by electrodeionization (EDI) to the conductivity your standard names, designed to meet USP <645>. Its instruments wire to the control panel on the RO skid.",
+ "primary_cta": "Request a sizing proposal",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have water data, no system yet|Sizing proposal|EDI skid",
+ "secondary_cta": {
+  "label": "See the RO skid",
+  "link": "emi-ro"
+ },
+ "blocks": [
+  {
+   "type": "diagram",
+   "look": "winding-route",
+   "nav": "How it works",
+   "anchor": "process",
+   "h": "How water moves through the skid",
+   "intro": "The skid starts at the RO permeate connection and ends at the storage inlet. Sample points: set in your design.",
+   "stages": [
+    {
+     "t": "RO permeate",
+     "spot": "ro-skid",
+     "label": "Feed",
+     "d": "Arrives from the RO skid at [RO permeate conductivity, µS/cm], low enough for EDI."
+    },
+    {
+     "t": "EDI stack",
+     "spot": "edi-stack",
+     "label": "EDI",
+     "d": "A direct current drives the remaining ions through membranes into a concentrate stream. The resin in the dilute cells keeps working without regeneration chemicals."
+    },
+    {
+     "t": "Concentrate",
+     "spot": "pump",
+     "label": "Reject",
+     "optional": true,
+     "d": "Recycled to the RO feed or sent to drain, set in your design."
+    },
+    {
+     "t": "To PW storage",
+     "spot": "storage-tank",
+     "label": "Out",
+     "d": "Water out of specification does not reach storage: it goes to a route set in your design until it recovers."
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "as": "modules",
+   "look": "ghost-skid",
+   "spot": "edi-stack",
+   "nav": "Options",
+   "anchor": "options",
+   "h": "Configurations and options",
+   "intro": "Your proposal marks each option included or priced.",
+   "items": [
+    {
+     "t": "Standalone, with its own panel",
+     "d": "Where you already make RO permeate, the EDI skid is supplied with the control panel the RO skid would carry.",
+     "spot": "pump",
+     "shape": "tag",
+     "part": "recovery"
+    },
+    {
+     "t": "Recirculation at no demand",
+     "d": "Circulates when storage is full, so water does not stand in the stack.",
+     "spot": "loop",
+     "shape": "round",
+     "part": "recirc"
+    },
+    {
+     "t": "Ultrafiltration or UV",
+     "d": "After EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
+     "spot": "uv-ozone",
+     "shape": "tag",
+     "part": "polish"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions engineers ask",
+   "items": [
+    {
+     "q": "Do we need EDI, or is RO enough?",
+     "a": "Your limit decides. The RO skid alone reaches [RO permeate conductivity, µS/cm]. Where your standard asks for less, the EDI skid takes it to [EDI outlet conductivity guarantee, µS/cm @ 25 °C].",
+     "link": "first-system#fit",
+     "link_label": "Check your use fits"
+    },
+    {
+     "q": "Where is the EDI skid's control panel?",
+     "a": "On the RO skid. The EDI skid's instruments and valves wire to that panel, so one controller runs both. An EDI skid supplied without an RO skid comes with the panel.",
+     "link": "emi-controls",
+     "link_label": "See the controls"
+    },
+    {
+     "q": "Can we add the EDI skid later?",
+     "a": "Yes. The RO skid's panel and piping are designed with the EDI connection in place. Adding it to a qualified system goes through your change control.",
+     "link": "svc-upgrades",
+     "link_label": "See upgrades"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "emi-ro",
+    "emi-sds",
+    "emi-controls",
+    "svc-service"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your limit. Get a sized EDI skid.",
+  "body": "An engineer replies in writing. Cost: discussed when you enquire.",
+  "button": "Request a sizing proposal",
+  "link": "contact-proposal",
+  "intent": "I have water data, no system yet|Sizing proposal|EDI skid",
+  "include": [
+   "The conductivity limit your standard names",
+   "RO permeate quality, if you make it already",
+   "Peak and average demand, L/h"
+  ],
+  "turnaround": "Confirmed when you enquire",
+  "returns": [
+   "EDI skid sizing",
+   "Budget range and its class",
+   "Questions on missing data"
+  ]
+ },
+ "todo": [
+  "EMI (2026-11-23): new page, split from the PW generation page. Equipment drawing assets/illustrations/emi-edi.png for the hero (the EDI stack, its pump and the wiring run to the RO panel); until then the hero shows a photograph placeholder.",
+  "EDI outlet conductivity guarantee ([EDI outlet conductivity guarantee, µS/cm @ 25 °C]) and how FAT and SAT measure it (FD-21).",
+  "RO permeate conductivity feeding the EDI ([RO permeate conductivity, µS/cm]; same name as emi-ro).",
+  "Whether concentrate recycles to the RO feed or goes to drain as standard, and the divert route for out-of-specification water (same route as emi-ro and emi-controls).",
+  "Datasheet per skid (dated): capacity in L/h at a stated feed temperature, outlet quality and method, recovery, utilities, footprint and weight, materials, sanitization method and maximum temperature, instruments. Once it exists it becomes the hero's secondary link (DR-006).",
+  "Whether the EDI modules are rated for hot water ([heat-sanitizable RO and EDI, yes or no], same name as emi-ro)."
+ ]
+}

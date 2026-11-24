@@ -1,6 +1,6 @@
 # Page inventory
 
-The draft website at https://aquemi-official.github.io/aquemi-web/ has 34 pages built from this system (pass 13 added privacy and retired ind-cdmo, and simplified every page on 2026-11-05: retired sections are in the section library, the earlier page files in content/retired/simplify-2026-11/; pass 11 added urs-guide, project-plan, first-system and buying, DR-026; pass 12 added ind-personal-care, ind-hospital-lab and ind-process, DR-027, renamed projects "Applications" and news "Technical notes", and made the header a mega menu, DR-029). Aquemi offers a modular Purified Water package in PP with PVC pretreatment (pretreatment, RO, DI/EDI, distribution); the WFI, pure steam and biotechnology pages are retired to `content/retired/`. The repository is `Aquemi-Official/aquemi-web`; page copy lives in `content/pages.json`. Use this list when you design or write any page, deck or document so page names and structure match the site.
+The draft website at https://aquemi-official.github.io/aquemi-web/ has 36 pages built from this system (the EMI and Products restructure of 2026-11-23 renamed the Systems pages as EMI skid pages and added the EDI skid, retired Compliance and Applications into content/retired/products-2026-11/ with their limits, configurations and supplier-check blocks re-homed on emi and quality, moved Documentation package to Services and Quality management to Company, and added Products with the P-40 and AeroWell pages; pass 13 added privacy and retired ind-cdmo, and simplified every page on 2026-11-05: retired sections are in the section library, the earlier page files in content/retired/simplify-2026-11/; pass 11 added urs-guide, project-plan, first-system and buying, DR-026; pass 12 added ind-personal-care, ind-hospital-lab and ind-process, DR-027, renamed projects "Applications" and news "Technical notes", and made the header a mega menu, DR-029). Aquemi offers EMI, a modular Purified Water system of four skids in PP with PVC pretreatment (PT, RO, EDI, SDS) sharing one control panel, and standard products (P-40, P-80, dosing tank, AeroWell); the WFI, pure steam and biotechnology pages are retired to `content/retired/`. The repository is `Aquemi-Official/aquemi-web`; page copy lives in `content/pages.json`. Use this list when you design or write any page, deck or document so page names and structure match the site.
 
 Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a short `nav` label, four or more), content sections, a closing navy Band, Footer, and the BackToTop button (shown once the reader is well down the page). The sections each page uses are listed below in order, each as `type (nav label, or heading when it has none, #anchor, fold: Look component)`; generated from the page files by the pass 12 integrator; `closing` notes a `cta.include` checklist, `cta.returns` and an explicit `cta.proof`.
 
@@ -10,15 +10,24 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | --- | --- | --- |
 | [Home](https://aquemi-official.github.io/aquemi-web/#home) | Modular Purified Water systems, from pretreatment to point of use | path (One package, one water path: SystemRun), table as router (Start from where your project is, #start: ManifoldRouter), grid (Same package, different limits by industry, #industries: IndustryDrops), steps (From order to water in use, #steps: ProjectRun), closing (checklist, returns) |
 
-## Systems
+## EMI
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [All systems](https://aquemi-official.github.io/aquemi-web/#systems) | Purified Water systems, designed to meet USP limits | diagram (Modules, #modules: StrataRun), spec (Site, #site: LimitPlan), faq (FAQ, #faq), closing (checklist, returns) |
-| [Purified Water (PW) generation](https://aquemi-official.github.io/aquemi-web/#sys-pw) | Purified Water, sized for your coldest day | diagram (How it works, #process: WindingRoute), options as modules (Options, #options: GhostSkid), faq (FAQ, #faq), closing (checklist, returns) |
-| [Storage and distribution loops](https://aquemi-official.github.io/aquemi-web/#sys-storage) | Loops that hold quality to every outlet | spec as rules (Design rules, #sanitization, fold 4: RuleFigures), diagram (How it works, #loop: LoopCircuit), options as modules (Options, #options: LoopDock), faq (FAQ, #faq), closing (checklist, returns) |
-| [Pretreatment](https://aquemi-official.github.io/aquemi-web/#sys-pretreatment) | Keep chlorine and scale off your membranes | diagram (The train, #train: SectionTrain), table as failures (Feed water, #feed-water, fold 3: MembraneAtlas), options as modules (Options, #options: OptionTaps), faq (FAQ, #faq), closing (checklist, returns) |
-| [Monitoring and controls](https://aquemi-official.github.io/aquemi-web/#sys-monitoring) | Water data you can defend | diagram (Architecture, #layers: LayerStack), spec as callouts (Measurements, #instruments: SignalDial), faq (FAQ, #remote-access), closing (checklist, returns) |
+| [EMI overview](https://aquemi-official.github.io/aquemi-web/#emi) | The skids your water needs | diagram (Modules, #modules: StrataRun), spec as gauges (Limits, #limits: LimitBento), grid (Configurations, #configurations: ConfigCards), spec (Site, #site: LimitPlan), faq (FAQ, #faq), closing (checklist, returns) |
+| [PT · Pretreatment](https://aquemi-official.github.io/aquemi-web/#emi-pt) | Keep chlorine and scale off your membranes | diagram (The train, #train: SectionTrain), table as failures (Feed water, #feed-water, fold 3: MembraneAtlas), options as modules (Options, #options: OptionTaps), faq (FAQ, #faq), closing (checklist, returns) |
+| [RO · Reverse osmosis](https://aquemi-official.github.io/aquemi-web/#emi-ro) | Reverse osmosis, sized for your coldest day | diagram (How it works, #process: WindingRoute), options as modules (Options, #options: GhostSkid), faq (FAQ, #faq), closing (checklist, returns) |
+| [EDI · Electrodeionization](https://aquemi-official.github.io/aquemi-web/#emi-edi) | Ions out, no regeneration chemicals | diagram (How it works, #process: WindingRoute), options as modules (Options, #options: GhostSkid), faq (FAQ, #faq), closing (checklist, returns) |
+| [SDS · Storage and distribution](https://aquemi-official.github.io/aquemi-web/#emi-sds) | Loops that hold quality to every outlet | spec as rules (Design rules, #sanitization, fold 4: RuleFigures), diagram (How it works, #loop: LoopCircuit), options as modules (Options, #options: LoopDock), faq (FAQ, #faq), closing (checklist, returns) |
+| [Controls](https://aquemi-official.github.io/aquemi-web/#emi-controls) | Water data you can defend | diagram (Architecture, #layers: LayerStack), spec as callouts (Measurements, #instruments: SignalDial), faq (FAQ, #remote-access), closing (checklist, returns) |
+
+## Products
+
+| Page | Headline | Sections |
+| --- | --- | --- |
+| [All products](https://aquemi-official.github.io/aquemi-web/#products) | Standard equipment, one datasheet each | grid (Products, #range), table (EMI or a product, #which), faq (FAQ, #faq), closing (checklist, returns) |
+| [P-40 portable pure-water cart](https://aquemi-official.github.io/aquemi-web/#p-40) | Low-mineral water, made where the job is | diagram (How it works, #process: WindingRoute), spec (Technical data, #data, fold 6), table (Consumables, #consumables), grid (Where it fits, #fits), faq (FAQ, #faq), closing (checklist, returns) |
+| [AeroWell atmospheric water generator](https://aquemi-official.github.io/aquemi-web/#aerowell) | Drinking water from the air, on a 120 V outlet | diagram (How it works, #process: WindingRoute), spec (Technical data, #data, fold 6), faq (FAQ, #faq), closing (checklist, returns) |
 
 ## Services
 
@@ -31,6 +40,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | [Fabrication](https://aquemi-official.github.io/aquemi-web/#svc-fabrication) | Trace any joint back to its welder and material | table as evidence (Joint log, #joint-log, fold 4: JointTag), steps (Hold points, #steps: JointSteps), faq (FAQ, #faq), closing (checklist, returns) |
 | [FAT and SAT](https://aquemi-official.github.io/aquemi-web/#svc-fat-sat) | Watch it run on water before it ships | table as versus (FAT and SAT, #versus: VersusSpread), prose as explainer (Why water, #wet-run: WetRunHmi), steps (Process, #steps: TestSheet), faq (FAQ, #faq), closing (checklist, returns) |
 | [Commissioning and qualification](https://aquemi-official.github.io/aquemi-web/#svc-cq) | IQ, OQ and a year of PQ | steps (Stages, #stages: StageTiles), table as roles (Who signs, #roles: SignatureBlocks), steps (PQ, #pq: PqCalendar), faq (FAQ, #faq), closing (checklist, returns) |
+| [Documentation package](https://aquemi-official.github.io/aquemi-web/#svc-documentation) | Every document your auditor asks for | docs (Index, #index, fold 4: IndexSheet), spec (Site safety, #safety, fold 3: CostSkid), form (Specimens, #samples), faq (FAQ, #faq), closing (checklist, returns) |
 | [Service and spare parts](https://aquemi-official.github.io/aquemi-web/#svc-service) | Service that keeps your water in specification | table as plans (Plans, #plans, fold 3: PlanChecker), spec (Running cost, #running-cost, fold 2: CostSkid), grid as route (Visits, #visit: VisitPlan), steps (Faults, #response: ResponseClock), faq (FAQ, #faq), closing (checklist, returns) |
 | [Upgrades and retrofits](https://aquemi-official.github.io/aquemi-web/#svc-upgrades) | Upgrade the system you have | table as roles (Findings, #observation: ApprovalMerge), table as router (Upgrades, #upgrades: RetrofitPlant), grid as route (Assessment, #assessment: ReviewReticles), steps (How it runs, #steps: GateLine), faq (FAQ, #faq), closing (checklist, returns) |
 
@@ -46,26 +56,13 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | [Hospitals and laboratories](https://aquemi-official.github.io/aquemi-web/#ind-hospital-lab) | Critical and reagent water, specified by your standard | table as evidence (Grades, #grades: GradeCrosswalk), grid as route (Reprocessing, #reprocessing: DrawingRegister), grid as route (Laboratories, #labs: BuildingLoop), docs (For consultants, #specification: SpineShelf), faq (FAQ, #faq), closing (checklist, returns) |
 | [Food, beverage and industrial](https://aquemi-official.github.io/aquemi-web/#ind-process) | Demineralized water to the limit your process sets | table (Food and beverage, #food, fold 4: ScenePlates), table as router (Industrial and energy, #industrial: RiserValves), options as modules (Configurations, #generation: OptionTaps), faq (FAQ, #faq), closing (checklist, returns) |
 
-## Compliance
-
-| Page | Headline | Sections |
-| --- | --- | --- |
-| [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | The standards behind our package | spec as gauges (Limits, #limits: LimitBento), standards-map (Map, #map: StandardsOrbit), table as evidence (Water standards, #pharmacopoeia, fold 3: ProofFolders), faq (FAQ, #faq), closing (checklist, returns) |
-| [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | Every document your auditor asks for | docs (Index, #index, fold 4: IndexSheet), spec (Site safety, #safety, fold 3: CostSkid), form (Specimens, #samples), faq (FAQ, #faq), closing (checklist, returns) |
-| [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Audit our quality system before you award | table as evidence (Processes, #processes, fold 3: RecordTrail), grid (Certification, #certification: CertSeals), form (Request, #audit), faq (FAQ), closing (checklist, returns) |
-
-## Applications
-
-| Page | Headline | Sections |
-| --- | --- | --- |
-| [Applications](https://aquemi-official.github.io/aquemi-web/#projects) | Purified Water configurations, engineered to your demand and feed water | grid (Configurations, #configurations: ConfigCards), table as router (Qualify us, #verify: CheckLedger), faq (FAQ), closing (checklist, returns) |
-
 ## Company
 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [About](https://aquemi-official.github.io/aquemi-web/#about) | Purified Water packages, designed and built in Ontario | spec (Company, #facts: Colophon), grid (Team, #people: SourceSkid), grid (Canada, #canada: SiteTiles), faq (FAQ, #faq), closing (checklist, returns) |
 | [Buying from Aquemi](https://aquemi-official.github.io/aquemi-web/#buying) | How buying from us works | spec (Terms, #terms: ClauseTabs), table (Proposal, #proposal: JointSpine), steps (Your RFQ, #answer: BinderTabs), docs (Onboarding, #onboarding: OnboardingFan), faq (FAQ, #faq), closing (checklist, returns) |
+| [Quality management](https://aquemi-official.github.io/aquemi-web/#quality) | Audit our quality system before you award | table as evidence (Processes, #processes, fold 3: RecordTrail), grid (Certification, #certification: CertSeals), table as router (Qualify us, #verify: CheckLedger), form (Request, #audit), faq (FAQ), closing (checklist, returns) |
 | [Careers](https://aquemi-official.github.io/aquemi-web/#careers) | Design, build and service Purified Water packages | table as router (Roles, #roles: RoleLoop), steps (Hiring, #hiring: HirePath), form (Apply, #apply), faq (FAQ, #faq), closing (checklist, returns) |
 | [Technical notes](https://aquemi-official.github.io/aquemi-web/#news) | Water questions, answered in three sentences | register (Notes, #notes: NoteSheet), table (PP or stainless, #pp-or-stainless: MacroLeaders), faq (FAQ, #faq), form (Subscribe, #subscribe), closing (checklist, returns) |
 | [Privacy](https://aquemi-official.github.io/aquemi-web/#privacy) | Privacy notice | prose (What we collect, #collect), prose (Why we use it, #use), prose (This website, #website), prose (Sharing, #sharing), prose (Retention, #retention), prose (Your rights, #rights), closing. Linked from the footer's legal line and every privacy notice link (pass 13) |

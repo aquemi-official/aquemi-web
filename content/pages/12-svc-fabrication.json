@@ -90,7 +90,7 @@
     {
      "t": "Clean and turn over",
      "d": "Flushed and rinsed with PW before factory acceptance testing. Dossier indexed by joint number, updated with field joints.",
-     "link": "cmp-documentation#index"
+     "link": "svc-documentation#index"
     }
    ],
    "nav": "Hold points",
@@ -105,7 +105,7 @@
     {
      "q": "Can we audit the shop and see a joint log?",
      "a": "Yes. Visit the shop in Ontario, Canada by appointment, with reasonable notice. Audit our quality system on reasonable notice. Before you order, we show a specimen joint log; your own log is in your dossier.",
-     "link": "cmp-quality#audit",
+     "link": "quality#audit",
      "link_label": "Request a supplier audit",
      "intent": "On-site supplier audit"
     },
@@ -130,8 +130,8 @@
    "items": [
     "svc-design",
     "svc-fat-sat",
-    "cmp-quality",
-    "systems#site"
+    "quality",
+    "emi#site"
    ]
   }
  ],

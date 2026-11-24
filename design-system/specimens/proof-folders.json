@@ -4,7 +4,7 @@
  "type": "table",
  "fields": "as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}), fold, fold_noun. The code on the tab and the stamp is the standard cell up to its number (\"USP <645>\", \"Ph. Eur. 0008\"), else its first word (\"EMA\"); the rest of the cell is the standard's title under it.",
  "best_for": "ProofFolders shows an evidence table as a drawer of manila folders, one per standard: the standard set large beside its folder, what we design to typed on a slip, the proof as clipped sheets struck with a stamp of the standard's code, and where we show it as the folder's navy index label.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "compliance",
@@ -499,9 +499,9 @@
    "page": "compliance",
    "slot": 2,
    "h": "Water standards",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "7bd54e3c69",
    "block": {

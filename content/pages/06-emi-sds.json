@@ -1,19 +1,19 @@
 {
- "id": "sys-storage",
- "section": "Systems",
- "nav_label": "Storage and distribution loops",
- "title": "Purified Water storage and distribution loops | Aquemi",
+ "id": "emi-sds",
+ "section": "EMI",
+ "nav_label": "SDS · Storage and distribution",
+ "title": "EMI SDS: Purified Water storage and distribution | Aquemi",
  "meta": "Purified Water tanks and loops: circulation, scheduled sanitization and sample points control microbes.",
- "path": "/systems/storage-and-distribution/",
- "eyebrow": "SYSTEMS · STORAGE AND DISTRIBUTION · USP <645>, <643>",
+ "path": "/emi/sds/",
+ "eyebrow": "EMI · SDS · USP <645>, <643>",
  "headline": "Loops that hold quality to every outlet",
- "lead": "Tanks and loops keep Purified Water (PW) moving to every point of use at peak demand.",
+ "lead": "The SDS skid holds Purified Water (PW) and keeps it moving to every point of use at peak demand. Its remote I/O panel wires to the control panel on the RO skid.",
  "primary_cta": "Request a loop sizing",
  "primary_cta_link": "contact-proposal",
- "primary_cta_intent": "I have water data, no system yet|Sizing proposal|Storage and distribution loop",
+ "primary_cta_intent": "I have water data, no system yet|Sizing proposal|SDS skid",
  "secondary_cta": {
   "label": "See the documentation package",
-  "link": "cmp-documentation"
+  "link": "svc-documentation"
  },
  "blocks": [
   {
@@ -180,8 +180,8 @@
    "type": "related",
    "h": "Where to go next",
    "items": [
-    "sys-pw",
-    "sys-monitoring",
+    "emi-ro",
+    "emi-controls",
     "svc-service",
     "ind-hospital-lab"
    ]
@@ -192,7 +192,7 @@
   "body": "An engineer replies with a loop concept or questions. Cost: discussed when you enquire.",
   "button": "Request a loop sizing",
   "link": "contact-proposal",
-  "intent": "I have water data, no system yet|Sizing proposal|Storage and distribution loop",
+  "intent": "I have water data, no system yet|Sizing proposal|SDS skid",
   "include": [
    "Points of use: location, L/h, temperature",
    "Outlets open together, peak L/h",

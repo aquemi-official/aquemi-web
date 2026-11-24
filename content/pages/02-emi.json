@@ -1,21 +1,22 @@
 {
- "id": "systems",
- "section": "Systems",
- "nav_label": "All systems",
- "title": "Purified Water system modules and site requirements | Aquemi",
- "meta": "One modular Purified Water package in polypropylene with PVC pretreatment, designed to meet USP <645> and <643>: modules and site requirements.",
- "path": "/systems/",
- "eyebrow": "SYSTEMS · PW · RO · DI/EDI",
- "headline": "Purified Water systems, designed to meet USP limits",
- "lead": "One modular polypropylene package, with polyvinyl chloride (PVC) pretreatment, makes Purified Water (PW) for every point of use. No Water for Injection, pure steam or stainless steel systems.",
+ "id": "emi",
+ "section": "EMI",
+ "nav_label": "EMI overview",
+ "title": "EMI modular Purified Water skids: PT, RO, EDI and SDS | Aquemi",
+ "meta": "EMI is a modular Purified Water system: pretreatment, RO, EDI and storage and distribution skids in polypropylene with PVC pretreatment, designed to meet USP <645> and <643>. Take the skids your water needs.",
+ "path": "/emi/",
+ "eyebrow": "EMI · MODULAR PURIFIED WATER SKIDS · USP <645>, <643>",
+ "headline": "The skids your water needs",
+ "lead": "EMI is our Purified Water system in four modular skids: pretreatment, reverse osmosis, electrodeionization, and storage and distribution. Take one, two or all four: each is sized to your water, and they share one control panel.",
  "primary_cta": "Get a budget range",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
  "index": [
-  "sys-pretreatment",
-  "sys-pw",
-  "sys-storage",
-  "sys-monitoring"
+  "emi-pt",
+  "emi-ro",
+  "emi-edi",
+  "emi-sds",
+  "emi-controls"
  ],
  "figure": {
   "look": "module-lineup"
@@ -25,7 +26,7 @@
    "type": "diagram",
    "anchor": "modules",
    "nav": "Modules",
-   "h": "How the systems fit together",
+   "h": "How the skids fit together",
    "stages": [
     {
      "t": "Feed water",
@@ -33,28 +34,34 @@
      "d": "City or well drinking water that changes with the season."
     },
     {
-     "t": "Pretreatment",
+     "t": "PT",
      "spot": "pretreatment",
-     "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
-     "link": "sys-pretreatment"
+     "d": "Pretreatment (PT): a PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
+     "link": "emi-pt"
     },
     {
-     "t": "PW generation",
+     "t": "RO",
      "spot": "ro-skid",
-     "d": "RO pushes water through a membrane so fine that most dissolved salts stay behind. Deionization (DI) or electrodeionization (EDI) removes most of the rest. Each skid is sized to your demand at your coldest feed.",
-     "link": "sys-pw"
+     "d": "Reverse osmosis (RO) pushes water through a membrane so fine that most dissolved salts stay behind. Sized to your demand at your coldest feed. Carries the control panel.",
+     "link": "emi-ro"
     },
     {
-     "t": "Storage",
+     "t": "EDI",
+     "spot": "edi-stack",
+     "d": "Electrodeionization (EDI) removes most of the remaining ions, without regeneration chemicals. Fitted where your limit needs it.",
+     "link": "emi-edi"
+    },
+    {
+     "t": "SDS",
      "spot": "storage-tank",
-     "d": "Buffers generation against peak demand.",
-     "link": "sys-storage"
+     "d": "Storage and distribution (SDS): tank, pump, heat exchanger and loop return on one skid. Buffers generation against peak demand.",
+     "link": "emi-sds"
     },
     {
      "t": "Distribution loop",
      "spot": "loop",
-     "d": "Keeps water moving from the tank to every outlet and back.",
-     "link": "sys-storage"
+     "d": "Keeps water moving from the SDS skid to every outlet and back.",
+     "link": "emi-sds"
     },
     {
      "t": "Points of use",
@@ -63,8 +70,105 @@
    ],
    "base": "Monitoring and controls · conductivity and total organic carbon (TOC)",
    "look": "strata-run",
-   "base_link": "sys-monitoring",
-   "caption": "After the PVC pretreatment, the package is polypropylene (PP)."
+   "base_link": "emi-controls",
+   "caption": "After the PVC pretreatment, the package is polypropylene (PP).",
+   "intro": "Take the skids your water needs; each has its own frame, piping and instruments. The control panel sits on the RO skid; the EDI skid wires to it, and the SDS skid connects its remote I/O panel to it."
+  },
+  {
+   "type": "spec",
+   "as": "gauges",
+   "nav": "Limits",
+   "anchor": "limits",
+   "h": "Purified Water limits",
+   "intro": "What EMI is designed to make. For Purified Water only, not Water for Injection (WFI). Your quality unit releases the water on your laboratory's results.",
+   "caption": "USP",
+   "cols": [
+    "Parameter",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
+     "m": "USP <645>",
+     "hl": true,
+     "icon": "conductivity"
+    },
+    {
+     "p": "Total organic carbon",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>",
+     "icon": "toc"
+    },
+    {
+     "p": "Microbial action level",
+     "v": "≤ 100 CFU/mL",
+     "level": "action",
+     "m": "USP <1231>",
+     "icon": "droplet"
+    }
+   ],
+   "note": "CFU: colony-forming units. Editions: those in force when you approve the functional specification.",
+   "look": "limit-bento"
+  },
+  {
+   "type": "grid",
+   "nav": "Configurations",
+   "anchor": "configurations",
+   "h": "Typical configurations · design basis",
+   "intro": "Each configuration is a set of EMI skids sized to your demand for municipal feed, chlorinated or chloraminated, at its coldest temperature. Each is chemically sanitized, by a method set per project.",
+   "items": [
+    {
+     "t": "Oral solid dose site",
+     "d": "Granulation water and equipment final rinse. Pretreatment, reverse osmosis (RO), electrodeionization (EDI), tank and loop. Qualification (IQ/OQ/PQ).",
+     "icon": "ro-membrane",
+     "tag": "Design basis",
+     "link": "ind-pharma"
+    },
+    {
+     "t": "Spirits proofing and process rinse",
+     "d": "Proofing water and precision rinse, to the limit your process sets. Configuration confirmed when you enquire. Commissioning and acceptance.",
+     "icon": "ro-membrane",
+     "tag": "Design basis",
+     "link": "ind-process"
+    },
+    {
+     "t": "Medical device final rinse",
+     "d": "Washer final rinse to your written endotoxin limit. Pretreatment, RO, EDI, tank and loop. IQ/OQ/PQ.",
+     "icon": "valve",
+     "tag": "Design basis",
+     "link": "ind-meddevice"
+    },
+    {
+     "t": "Contract manufacturing multi-product loop",
+     "d": "One loop feeding several suites and client programs. Pretreatment, RO, EDI, tank and loop. IQ/OQ/PQ.",
+     "icon": "conductivity",
+     "tag": "Design basis",
+     "link": "ind-pharma",
+     "scene": "suites"
+    },
+    {
+     "t": "Cosmetics batching and filler rinse",
+     "d": "Cream water phase, filler rinse. Configuration confirmed when you enquire. Commissioning and acceptance; IQ/OQ/PQ for over-the-counter drugs.",
+     "icon": "loop",
+     "tag": "Design basis",
+     "link": "ind-personal-care"
+    },
+    {
+     "t": "Laboratory building central loop",
+     "d": "Central loop to the reagent water type you specify. Configuration confirmed when you enquire. Commissioning and acceptance.",
+     "icon": "conductivity",
+     "tag": "Design basis",
+     "link": "ind-hospital-lab",
+     "spec_labels": [
+      "Grade",
+      "System",
+      "Checks"
+     ]
+    }
+   ],
+   "look": "config-cards"
   },
   {
    "type": "spec",
@@ -116,6 +220,12 @@
      "link": "svc-service#running-cost"
     },
     {
+     "q": "Can we buy one skid now and add the others later?",
+     "a": "Yes. Each skid has defined connections and the panel on the RO skid is wired for the EDI and SDS skids from the start. Adding a skid to a qualified system goes through your change control.",
+     "link": "svc-upgrades",
+     "link_label": "See upgrades"
+    },
+    {
      "q": "Can you supply one part, or should one supplier design it all?",
      "a": "The configurations we supply are confirmed when you enquire. When we supply the whole package, we design pretreatment, generation and distribution together. Interface limits go in the functional specification; we test our scope at the factory acceptance test (FAT)."
     },
@@ -137,7 +247,7 @@
     "svc-design",
     "urs-guide",
     "first-system",
-    "cmp-documentation",
+    "svc-documentation",
     "svc-service"
    ]
   }
@@ -162,6 +272,7 @@
   ]
  },
  "todo": [
+  "EMI (2026-11-23): the Systems hub became the EMI hub; the four pages became skid pages, with a new EDI skid page. The limits block came from the retired compliance page and the configurations block from the retired Applications page (content/retired/products-2026-11/). EMI is a name, not an acronym: never expand it on the site.",
   "Budget bands (FD-03, DR-005): a whole-package row, then three module rows, each a CAD range costed from Aquemi's own configuration at its reference size ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use]); the table's estimate class and accuracy ([estimate class and accuracy]) and price date ([month year]); never MISSION's internal band. Unfilled at launch: the table goes, the two note lines and \"Get a budget range\" stay (DR-005 rule 8), and the title and meta drop \"budget ranges\"",
   "Confirm the band boundary in the whole-package row (supply, FAT, IQ/OQ protocols, turnover package) and the exclusions in the note (installation, tie-ins, utilities, PQ lab testing, temporary water) (FD-03)",
   "Smallest project quoted, if the owner publishes one: one plain line under the budget table (FD-04, DR-005 rule 2)",

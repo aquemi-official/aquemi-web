@@ -155,7 +155,7 @@
     {
      "q": "Will our quality unit accept FAT results in place of IQ/OQ tests?",
      "a": "Yes, if it approves the reuse before the factory acceptance test (FAT). We propose which tests installation and operational qualification (IQ, OQ) can reuse.",
-     "link": "cmp-quality#audit",
+     "link": "quality#audit",
      "link_label": "Request a supplier audit"
     },
     {
@@ -177,7 +177,7 @@
    "items": [
     "svc-fabrication",
     "svc-cq",
-    "cmp-documentation",
+    "svc-documentation",
     "project-plan"
    ]
   }
@@ -186,7 +186,7 @@
   "h": "Check our criteria against your URS",
   "body": "Send your user requirement specification (URS) if you have one. Cost: discussed when you enquire.",
   "button": "Request a specimen FAT protocol",
-  "link": "cmp-documentation#samples",
+  "link": "svc-documentation#samples",
   "intent": "FAT protocol: contents and test cases",
   "include": [
    "Where your project stands",
@@ -239,7 +239,7 @@
   "Pass 12 anchors versus, wet-run, steps, witness (SITE-PLAN svc-fat-sat block list): no inbound link used the old s-N ids (only #faq, kept)",
   "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): versus table cut to 4 rows (RO, instruments, access and data, P&ID walkdown retired; fold dropped), witnessing section retired (one line moved into step 4), FAQ cut to 3 (deviation route, what can stop a test, software checksum retired), Annex 15 and GUI-0029 removed. Todos about the witnessing section, the day-one record and FAQ 3 to 5 no longer apply."
  ],
- "primary_cta_link": "cmp-documentation#samples",
+ "primary_cta_link": "svc-documentation#samples",
  "primary_cta_intent": "FAT protocol: contents and test cases",
  "facts": [
   {

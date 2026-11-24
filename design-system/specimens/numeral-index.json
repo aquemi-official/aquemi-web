@@ -333,9 +333,9 @@
    "page": "ind-meddevice",
    "slot": 0,
    "h": "Start from your situation",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "d2e3090b46",
    "block": {
@@ -371,6 +371,63 @@
       {
        "t": "Supplier quality",
        "link": "cmp-quality"
+      }
+     ],
+     [
+      "A first PW system for a small plant",
+      "Cost, scope and your team’s first year",
+      {
+       "t": "Your first PW system",
+       "link": "first-system"
+      }
+     ]
+    ],
+    "look": "numeral-index",
+    "anchor": "start"
+   }
+  },
+  {
+   "page": "ind-meddevice",
+   "slot": 0,
+   "h": "Start from your situation",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "a0c2d5ab2e",
+   "block": {
+    "type": "table",
+    "as": "router",
+    "nav": "Where to start",
+    "h": "Start from your situation",
+    "cols": [
+     "Your situation",
+     "What you need",
+     "Start with"
+    ],
+    "rows": [
+     [
+      "Endotoxin or bioburden drifting at the washer inlet",
+      "Your rinse water limit at risk; first, assess loop, sample point and trends",
+      {
+       "t": "Out-of-trend results",
+       "link": "svc-upgrades#observation"
+      }
+     ],
+     [
+      "A new device or line",
+      "Rinse water limits worked back from your device limits",
+      {
+       "t": "Process design",
+       "link": "svc-design"
+      }
+     ],
+     [
+      "A supplier questionnaire or audit due",
+      "Our quality system status, audit access and quality agreement",
+      {
+       "t": "Supplier quality",
+       "link": "quality"
       }
      ],
      [

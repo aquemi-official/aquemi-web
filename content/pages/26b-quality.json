@@ -1,11 +1,11 @@
 {
- "id": "cmp-quality",
- "section": "Compliance",
+ "id": "quality",
+ "section": "Company",
  "nav_label": "Quality management",
  "title": "Quality management and supplier audits | Aquemi",
  "meta": "How our quality management system controls changes, nonconformances, traceability, calibration and suppliers, and how to audit it before you order.",
- "path": "/compliance/quality/",
- "eyebrow": "QUALITY · SUPPLIER AUDIT",
+ "path": "/company/quality/",
+ "eyebrow": "COMPANY · QUALITY · SUPPLIER AUDIT",
  "headline": "Audit our quality system before you award",
  "lead": "Our quality system, the records it keeps, and how to audit it before you order. Changes to your qualified system go through your change control.",
  "primary_cta": "Request a supplier audit",
@@ -91,6 +91,76 @@
    "look": "cert-seals"
   },
   {
+   "type": "table",
+   "as": "router",
+   "nav": "Qualify us",
+   "anchor": "verify",
+   "h": "Qualify us as your supplier",
+   "cols": [
+    "What you check",
+    "Route",
+    "What you receive",
+    "Time to arrange"
+   ],
+   "rows": [
+    [
+     {
+      "t": "The engineer who would lead your project",
+      "link": "about#people"
+     },
+     {
+      "t": "Talk to an engineer",
+      "link": "contact-proposal",
+      "intent": "Not sure yet: talk to an engineer"
+     },
+     "A written answer from that engineer",
+     "Confirmed when you enquire"
+    ],
+    [
+     "How we join and trace PP parts, in Ontario, Canada",
+     {
+      "t": "Shop visit",
+      "link": "contact-locations#visit",
+      "intent": "Shop tour before shortlisting"
+     },
+     "A walk through the shop and test bay, by appointment",
+     "Reasonable notice"
+    ],
+    [
+     "What your turnover package and FAT protocol contain",
+     {
+      "t": "Specimen package",
+      "link": "svc-documentation#samples",
+      "intent": "Turnover package index"
+     },
+     "The turnover package index and our factory acceptance test (FAT) protocol template, labelled as specimens",
+     "Confirmed when you enquire"
+    ],
+    [
+     "That our quality system works",
+     {
+      "t": "Supplier audit",
+      "link": "quality#audit",
+      "intent": "On-site supplier audit"
+     },
+     "An audit of our quality system, remote or on site",
+     "Reasonable notice"
+    ],
+    [
+     "Your system's alarms, interlocks and controls, before it ships",
+     {
+      "t": "Factory acceptance test (FAT) witness",
+      "link": "contact-locations#visit",
+      "intent": "Witness the FAT on our project"
+     },
+     "Your team at the FAT, testing alarms and interlocks",
+     "Reasonable notice"
+    ]
+   ],
+   "look": "check-ledger",
+   "intro": "References and site visits are arranged with our commercial lead during qualification."
+  },
+  {
    "type": "form",
    "nav": "Request",
    "anchor": "audit",
@@ -146,7 +216,7 @@
     {
      "q": "Are you ISO 9001 certified?",
      "a": "Status on request. Your audit can test the processes above directly.",
-     "link": "cmp-quality#certification",
+     "link": "quality#certification",
      "link_label": "See certification status"
     },
     {
@@ -156,7 +226,7 @@
     {
      "q": "What is in the questionnaire pack?",
      "a": "Our questionnaire or yours, procedure list, certification status and organization chart. Aquemi-written specimen records: a nonconformance, its corrective and preventive action, and a change request. Onboarding papers and their status are on our buying page.",
-     "link": "cmp-quality#audit",
+     "link": "quality#audit",
      "link_label": "Request the pack",
      "intent": "Quality questionnaire pack"
     },
@@ -170,8 +240,8 @@
    "type": "related",
    "h": "What auditors read next",
    "items": [
-    "cmp-documentation",
-    "compliance",
+    "svc-documentation",
+    "emi#limits",
     "svc-fabrication",
     "buying"
    ]
@@ -193,6 +263,7 @@
   "turnaround": "Confirmed when you ask"
  },
  "todo": [
+  "EMI (2026-11-23): moved from the retired Compliance section to Company (id cmp-quality became quality); the supplier-check table came from the retired Applications page.",
   "KEY: ISO 9001 status (certification status block, FAQ; FD-48): certified (registrar, certificate number, scope, expiry, downloadable copy) or, only if FD-48 chooses it, a status line naming the standard the QMS is built to. No target or readiness date on the page (DR-028 rule 3). Never claim certification until held; no ISO label in the eyebrow, a heading or the meta until certified (DR-004 rule 3)",
   "ISO 9001 clause references per process (change control 6.3, 8.5.6; nonconformance and complaints 8.7, 9.1.2, 10.2; traceability 8.5.2; calibration 7.1.5; document control 7.5; supplier control 8.4; internal audit and management review 9.2, 9.3) were taken off the process rows: they state a basis FD-48 has not chosen, and the library has not read ISO 9001 (DR-007 rule 3). Restore them as \"Process · ISO 9001 n.n\" once FD-48 says the QMS is built to ISO 9001, checked against the standard's text",
   "ISO 13485: device makers ask (FD-48; ind-meddevice links here for status). It applies to a product that is a medical device, not to a water system supplier (procurement/certifications-and-terms.md § 7); since the pass 10 review the certification block carries the status line \"Device quality system\" ([ISO 13485 status, registrar and expiry], tag ISO 13485), because ind-meddevice's supplier-quality row links here for it (DR-011 rule 3, DR-022). At launch drop this line and the ind-meddevice bracket together if FD-48 does not state it",
@@ -236,7 +307,7 @@
   "Simplified 2026-11-05 (owner's 12 points; archive in content/retired/simplify-2026-11/): retired the NCR steps, the supplier table, the buying pointer and the access table; process trail at 6 rows (control system access and internal audit retired), certification at 3 tiles (pressure equipment and control panels retired), FAQ at 4; process trail anchored #processes."
  ],
  "figure": {
-  "art": "cmp-quality",
+  "art": "quality",
   "plate": "stamp",
   "label": "Recorded",
   "title": "Shipment record",

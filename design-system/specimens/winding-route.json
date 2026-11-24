@@ -453,9 +453,9 @@
    "page": "sys-pw",
    "slot": 0,
    "h": "How water moves through the skid",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "19e2598c89",
    "block": {
@@ -498,6 +498,202 @@
     "look": "winding-route",
     "anchor": "process",
     "intro": "The skid starts at the pretreated feed and ends at the storage inlet. Sample points: set in your design."
+   }
+  },
+  {
+   "page": "emi-ro",
+   "slot": 0,
+   "h": "How water moves through the skid",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "be81c1673a",
+   "block": {
+    "type": "diagram",
+    "h": "How water moves through the skid",
+    "stages": [
+     {
+      "t": "Softened, dechlorinated feed",
+      "spot": "pretreatment",
+      "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last.",
+      "label": "Feed"
+     },
+     {
+      "t": "Heat exchanger",
+      "spot": "heat-exchanger",
+      "d": "Where fitted, warms winter feed to the membrane design temperature.",
+      "label": "Heat",
+      "optional": true
+     },
+     {
+      "t": "Reverse osmosis (RO)",
+      "spot": "ro-skid",
+      "d": "Reverse osmosis (RO) pushes water through a membrane so fine that most dissolved ions, organics and bacteria stay behind.",
+      "label": "RO"
+     },
+     {
+      "t": "To the EDI skid, or storage",
+      "spot": "storage-tank",
+      "d": "Permeate goes to the EDI skid where your limit needs it, else to storage. Water out of specification does not reach storage: it goes to a route set in your design until it recovers.",
+      "label": "Out"
+     }
+    ],
+    "nav": "How it works",
+    "look": "winding-route",
+    "anchor": "process",
+    "intro": "The skid starts at the pretreated feed and ends at the storage inlet. Sample points: set in your design."
+   }
+  },
+  {
+   "page": "emi-edi",
+   "slot": 0,
+   "h": "How water moves through the skid",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "4f6a1826ee",
+   "block": {
+    "type": "diagram",
+    "look": "winding-route",
+    "nav": "How it works",
+    "anchor": "process",
+    "h": "How water moves through the skid",
+    "intro": "The skid starts at the RO permeate connection and ends at the storage inlet. Sample points: set in your design.",
+    "stages": [
+     {
+      "t": "RO permeate",
+      "spot": "ro-skid",
+      "label": "Feed",
+      "d": "Arrives from the RO skid at [RO permeate conductivity, µS/cm], low enough for EDI."
+     },
+     {
+      "t": "EDI stack",
+      "spot": "edi-stack",
+      "label": "EDI",
+      "d": "A direct current drives the remaining ions through membranes into a concentrate stream. The resin in the dilute cells keeps working without regeneration chemicals."
+     },
+     {
+      "t": "Concentrate",
+      "spot": "pump",
+      "label": "Reject",
+      "optional": true,
+      "d": "Recycled to the RO feed or sent to drain, set in your design."
+     },
+     {
+      "t": "To PW storage",
+      "spot": "storage-tank",
+      "label": "Out",
+      "d": "Water out of specification does not reach storage: it goes to a route set in your design until it recovers."
+     }
+    ]
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 0,
+   "h": "Four stages on one frame",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "d7b52bc4b1",
+   "block": {
+    "type": "diagram",
+    "look": "winding-route",
+    "nav": "How it works",
+    "anchor": "process",
+    "h": "Four stages on one frame",
+    "intro": "Water passes the four stages in a fixed order. Three 3/4 in garden-hose connections: feed, product and concentrate.",
+    "stages": [
+     {
+      "t": "Feed hose",
+      "spot": "pretreatment",
+      "label": "In",
+      "d": "A hose tap on a mains supply at 2.8 to 5.5 bar (40 to 80 psi); a pressure regulator above that."
+     },
+     {
+      "t": "Sediment filter",
+      "spot": "pretreatment",
+      "label": "1",
+      "d": "5 µm, in a 10 × 2.5 in housing. Changed on pressure drop."
+     },
+     {
+      "t": "Catalytic carbon block",
+      "spot": "pretreatment",
+      "label": "2",
+      "d": "10 × 4.5 in housing. Removes chlorine and chloramine, which would damage the membrane."
+     },
+     {
+      "t": "Reverse osmosis",
+      "spot": "ro-skid",
+      "label": "3",
+      "d": "One 4040 element in a 304 stainless steel housing. Concentrate leaves through a fixed 1.6 mm orifice, always open, with a ball valve to set recovery and flush."
+     },
+     {
+      "t": "Mixed-bed deionization",
+      "spot": "edi-stack",
+      "label": "4",
+      "d": "10 × 4.5 in housing. Design target: 0 ppm TDS reading at the outlet while the resin has capacity."
+     },
+     {
+      "t": "Product hose",
+      "spot": "storage-tank",
+      "label": "Out",
+      "d": "Low-mineral water, checked with a handheld TDS meter."
+     }
+    ]
+   }
+  },
+  {
+   "page": "aerowell",
+   "slot": 0,
+   "h": "How air becomes water",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "db15dc9527",
+   "block": {
+    "type": "diagram",
+    "look": "winding-route",
+    "nav": "How it works",
+    "anchor": "process",
+    "h": "How air becomes water",
+    "intro": "Air in, drinking water at the dispenser. Production rises with warm, humid air and falls with dry or cold air.",
+    "stages": [
+     {
+      "t": "Air filter",
+      "spot": "pretreatment",
+      "label": "Air",
+      "d": "A MERV 13 filter cleans the air drawn in."
+     },
+     {
+      "t": "Condensation",
+      "spot": "heat-exchanger",
+      "label": "Cool",
+      "d": "The air is cooled below its dew point and its moisture condenses."
+     },
+     {
+      "t": "Filtration and mineralizer",
+      "spot": "ro-skid",
+      "label": "Filter",
+      "d": "Four filtration stages, then a mineralizer for taste."
+     },
+     {
+      "t": "LED UV",
+      "spot": "uv-ozone",
+      "label": "UV",
+      "d": "Ultraviolet light sterilizes the water before storage."
+     },
+     {
+      "t": "Storage and dispenser",
+      "spot": "storage-tank",
+      "label": "Out",
+      "d": "1.8 US gal (6.8 L) internal storage; the dispenser delivers 1 US gal/min (3.8 L/min)."
+     }
+    ]
    }
   }
  ]

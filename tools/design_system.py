@@ -875,7 +875,7 @@ def intent_problems(pages):
     for pid, pg in pages.items():
         pc, c, sc = pg.get('primary_cta') or '', pg.get('cta') or {}, pg.get('secondary_cta') or {}
         links = [('primary_cta_intent', pg.get('primary_cta_intent'), pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')),
-                 ('secondary_cta.intent', sc.get('intent'), sc.get('link') or 'systems'),
+                 ('secondary_cta.intent', sc.get('intent'), sc.get('link') or 'emi'),
                  ('cta.intent', c.get('intent'), c.get('link') or 'contact-proposal')]
         jumps = {'primary_cta_intent', 'secondary_cta.intent', 'cta.intent'}  # wBtn links, where "#anchor" jumps in the page
         for i, b in enumerate(pg.get('blocks', [])):

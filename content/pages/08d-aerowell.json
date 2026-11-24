@@ -1,0 +1,191 @@
+{
+ "id": "aerowell",
+ "section": "Products",
+ "nav_label": "AeroWell atmospheric water generator",
+ "title": "AeroWell A9 atmospheric water generator: drinking water from air | Aquemi",
+ "meta": "The AeroWell A9 condenses moisture from the air and filters it into drinking water: 9 US gal (34 L) a day at 26 °C and 60 % RH from a 120 V outlet, for RVs, boats and off-grid sites.",
+ "path": "/products/aerowell/",
+ "eyebrow": "PRODUCTS · AEROWELL A9 · ATMOSPHERIC WATER GENERATOR",
+ "headline": "Drinking water from the air, on a 120 V outlet",
+ "lead": "The AeroWell A9 draws in air, condenses its moisture and filters it into drinking water: 9 US gal a day at 26 °C and 60 % humidity. For RVs, boats and off-grid sites.",
+ "primary_cta": "Ask about the AeroWell",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I want a standard product|AeroWell",
+ "secondary_cta": {
+  "label": "All products",
+  "link": "products"
+ },
+ "blocks": [
+  {
+   "type": "diagram",
+   "look": "winding-route",
+   "nav": "How it works",
+   "anchor": "process",
+   "h": "How air becomes water",
+   "intro": "Air in, drinking water at the dispenser. Production rises with warm, humid air and falls with dry or cold air.",
+   "stages": [
+    {
+     "t": "Air filter",
+     "spot": "pretreatment",
+     "label": "Air",
+     "d": "A MERV 13 filter cleans the air drawn in."
+    },
+    {
+     "t": "Condensation",
+     "spot": "heat-exchanger",
+     "label": "Cool",
+     "d": "The air is cooled below its dew point and its moisture condenses."
+    },
+    {
+     "t": "Filtration and mineralizer",
+     "spot": "ro-skid",
+     "label": "Filter",
+     "d": "Four filtration stages, then a mineralizer for taste."
+    },
+    {
+     "t": "LED UV",
+     "spot": "uv-ozone",
+     "label": "UV",
+     "d": "Ultraviolet light sterilizes the water before storage."
+    },
+    {
+     "t": "Storage and dispenser",
+     "spot": "storage-tank",
+     "label": "Out",
+     "d": "1.8 US gal (6.8 L) internal storage; the dispenser delivers 1 US gal/min (3.8 L/min)."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "nav": "Technical data",
+   "anchor": "data",
+   "h": "Technical data",
+   "caption": "AeroWell A9",
+   "intro": "Rated at 26 °C (78 °F) and 60 % relative humidity.",
+   "cols": [
+    "Item",
+    "Value",
+    "Basis"
+   ],
+   "fold": 6,
+   "fold_noun": "rows",
+   "rows": [
+    {
+     "p": "Net production",
+     "v": "9 US gal/day (34 L/day) at 26 °C, 60 % RH",
+     "m": "A9 datasheet",
+     "hl": true
+    },
+    {
+     "p": "Efficiency",
+     "v": "2.4 L/kWh",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Power",
+     "v": "580 W nominal, 865 W peak; 120 V, 60 Hz",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Internal storage",
+     "v": "1.8 US gal (6.8 L)",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Dispenser flow",
+     "v": "1 US gal/min (3.8 L/min)",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Filtration",
+     "v": "MERV 13 air filter; four water filtration stages and a mineralizer; LED UV sterilization",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Operating temperature",
+     "v": "5 to 37 °C (41 to 99 °F)",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Size",
+     "v": "1,321 mm long × 483 mm wide × 406 mm high (52 × 19 × 16 in)",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Dry weight",
+     "v": "73 kg (160 lb)",
+     "m": "A9 datasheet"
+    },
+    {
+     "p": "Certifications",
+     "v": "[AeroWell certifications held]",
+     "m": "Stated once confirmed"
+    }
+   ],
+   "note": "Production at your site depends on temperature and humidity."
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Questions buyers ask",
+   "items": [
+    {
+     "q": "How much water will it make at my site?",
+     "a": "It depends on temperature and humidity. The 9 US gal/day rating is at 26 °C and 60 % RH; drier or colder air makes less. Send your typical conditions and we reply with an estimate.",
+     "link": "contact-proposal",
+     "link_label": "Ask for an estimate"
+    },
+    {
+     "q": "Is the water safe to drink?",
+     "a": "The condensed water passes four filtration stages, a mineralizer and LED UV sterilization. Certifications held: [AeroWell certifications held]."
+    },
+    {
+     "q": "What maintenance does it need?",
+     "a": "Routine checks and filter changes every 6 to 12 months, depending on use and air quality."
+    },
+    {
+     "q": "Can it be built into a vehicle or a product?",
+     "a": "Yes. We design custom versions for manufacturers who want water generation in their coaches, boats or off-grid products.",
+     "link": "contact-proposal",
+     "link_label": "Ask about a custom version"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "products",
+    "p-40",
+    "buying",
+    "contact-proposal"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Ask about the AeroWell",
+  "body": "Tell us the product and where it will work. An engineer replies in writing with price and lead time.",
+  "button": "Ask about the AeroWell",
+  "link": "contact-proposal",
+  "intent": "I want a standard product|AeroWell",
+  "include": [
+   "Where it will run: vehicle, boat, building or site",
+   "Typical temperature and humidity",
+   "How many litres a day you need"
+  ],
+  "turnaround": "Confirmed when you enquire",
+  "returns": [
+   "Price and lead time",
+   "Datasheet",
+   "Questions on fit"
+  ]
+ },
+ "todo": [
+  "Products (2026-11-23): new page. Figures are the AeroWell A9 datasheet as published on hydrosphair.com (archived 2026-07-11); confirm each against the current build before release, and replace the datasheet basis with a dated Aquemi datasheet (aquemi-official/aerowell is empty today).",
+  "Certifications ([AeroWell certifications held]): the previous site said \"UL 508A and NSF compliant\"; print only what is held, with the standard number (FD-24).",
+  "Photographs of the unit, and whether the Living Vehicle case study and the Elite Coach Works testimonial may be reused under the Aquemi name.",
+  "Lead time and price ([product lead time, weeks], [AeroWell price, CAD]); whether units ship outside Canada."
+ ]
+}

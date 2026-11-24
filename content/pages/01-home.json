@@ -13,7 +13,7 @@
  "primary_cta_intent": "Not sure yet: talk to an engineer",
  "secondary_cta": {
   "label": "See the systems",
-  "link": "systems"
+  "link": "emi"
  },
  "facts": [
   {
@@ -33,28 +33,28 @@
      "t": "Pretreatment",
      "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
      "tag": "USP <1231>",
-     "link": "sys-pretreatment",
+     "link": "emi-pt",
      "spot": "pretreatment"
     },
     {
      "t": "PW generation",
      "d": "RO and deionization on a polypropylene (PP) skid, designed to meet the USP conductivity and organic carbon limits.",
      "tag": "USP <645>",
-     "link": "sys-pw",
+     "link": "emi-ro",
      "spot": "ro-skid"
     },
     {
      "t": "Storage and distribution",
      "d": "Tank and loop keep water moving to every point of use, sanitized on a set schedule.",
      "tag": "USP <1231>",
-     "link": "sys-storage",
+     "link": "emi-sds",
      "spot": "storage-tank"
     },
     {
      "t": "Monitoring and controls",
      "d": "Online total organic carbon (TOC) and conductivity, with alarms and divert.",
      "tag": "USP <643>",
-     "link": "sys-monitoring",
+     "link": "emi-controls",
      "icon": "conductivity"
     }
    ],
@@ -202,7 +202,7 @@
      "t": "Water in use",
      "d": "Your quality unit releases the water after the first phase of performance qualification (PQ).",
      "link": "project-plan",
-     "art": "sys-storage"
+     "art": "emi-sds"
     },
     {
      "t": "Support",

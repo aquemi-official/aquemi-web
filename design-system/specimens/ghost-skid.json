@@ -119,7 +119,7 @@
    }
   },
   {
-   "page": "sys-pw",
+   "page": "emi-ro",
    "slot": 1,
    "h": "Configurations and options",
    "status": "live",
@@ -159,6 +159,49 @@
     "look": "ghost-skid",
     "intro": "Your proposal marks each option included or priced.",
     "anchor": "options"
+   }
+  },
+  {
+   "page": "emi-edi",
+   "slot": 1,
+   "h": "Configurations and options",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "cba9243c86",
+   "block": {
+    "type": "options",
+    "as": "modules",
+    "look": "ghost-skid",
+    "spot": "edi-stack",
+    "nav": "Options",
+    "anchor": "options",
+    "h": "Configurations and options",
+    "intro": "Your proposal marks each option included or priced.",
+    "items": [
+     {
+      "t": "Standalone, with its own panel",
+      "d": "Where you already make RO permeate, the EDI skid is supplied with the control panel the RO skid would carry.",
+      "spot": "pump",
+      "shape": "tag",
+      "part": "recovery"
+     },
+     {
+      "t": "Recirculation at no demand",
+      "d": "Circulates when storage is full, so water does not stand in the stack.",
+      "spot": "loop",
+      "shape": "round",
+      "part": "recirc"
+     },
+     {
+      "t": "Ultrafiltration or UV",
+      "d": "After EDI, where microbial margin is needed. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
+      "spot": "uv-ozone",
+      "shape": "tag",
+      "part": "polish"
+     }
+    ]
    }
   }
  ]

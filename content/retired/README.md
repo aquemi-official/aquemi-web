@@ -12,6 +12,17 @@ Pages for products Aquemi does not offer at this time. They are kept here unchan
 
 The current offering is a modular polypropylene (PP) package with PVC pretreatment: pretreatment, RO, DI/EDI and distribution. Stainless steel piped systems are not offered.
 
+## EMI and Products restructure (retired 2026-11-23)
+
+The Systems section became **EMI**, the modular skid system (PT, RO, EDI, SDS skids and Controls), and a **Products** section was added for the standard items (P-40, P-80, dosing tank, AeroWell). Two pages were retired to `products-2026-11/`; nothing of theirs that buyers use was lost:
+
+| Page | Where its content went |
+| --- | --- |
+| `22-compliance.json` (Standards we design to) | The Purified Water limits block is on `emi#limits`. The standards map and the water-standards table are retired (their looks stay in the section library). |
+| `25-projects.json` (Applications) | The typical configurations are on `emi#configurations`; the supplier-check table is on `quality#verify`. |
+
+Two pages moved rather than retired: Documentation package is now `svc-documentation` under Services, and Quality management is now `quality` under Company. Every link to the old ids was rewritten (`sys-pw` → `emi-ro`, `sys-pretreatment` → `emi-pt`, `sys-storage` → `emi-sds`, `sys-monitoring` → `emi-controls`, `systems` → `emi`, `cmp-documentation` → `svc-documentation`, `cmp-quality` → `quality`, `compliance` → `emi#limits`, `projects` → `emi#configurations`), and the illustrations were renamed to match.
+
 ## Site simplification (retired 2026-11-05)
 
 The owner asked for a site that shows only what Aquemi offers today, with less repetition and less technical depth up front. Technical detail now comes in discovery meetings, per client. Every page was simplified and about 60 sections were retired. `simplify-2026-11/` holds every page file (and `core.js`, the nav) exactly as it was before. The section library (`sections.html`) keeps every retired section with its last content.

@@ -319,9 +319,9 @@
    "page": "sys-pretreatment",
    "slot": 0,
    "h": "How the train is built",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "b6eddd860a",
    "block": {
@@ -384,6 +384,84 @@
       "t": "To RO",
       "spot": "ro-skid",
       "link": "sys-pw",
+      "cut": "out"
+     }
+    ],
+    "base": "Online monitoring · chlorine and pressure drop",
+    "nav": "The train",
+    "look": "section-train",
+    "anchor": "train"
+   }
+  },
+  {
+   "page": "emi-pt",
+   "slot": 0,
+   "h": "How the train is built",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "6b9beb2b09",
+   "block": {
+    "type": "diagram",
+    "h": "How the train is built",
+    "stages": [
+     {
+      "t": "Municipal or well water",
+      "icon": "droplet",
+      "d": "City or well drinking water that changes with the season.",
+      "cut": "feed"
+     },
+     {
+      "t": "Backflow preventer and break tank",
+      "spot": "storage-tank",
+      "d": "Protects the public supply and buffers flow.",
+      "cut": "tank"
+     },
+     {
+      "t": "Media filter",
+      "spot": "carbon-filter",
+      "d": "Removes turbidity and particles that raise the silt density index (SDI).",
+      "cut": "media",
+      "catch": {
+       "g": "p",
+       "t": "Particles"
+      }
+     },
+     {
+      "t": "Softener",
+      "icon": "softener",
+      "d": "Removes hardness so membranes don't scale.",
+      "cut": "softener",
+      "catch": {
+       "g": "h",
+       "t": "Hardness"
+      }
+     },
+     {
+      "t": "Carbon bed",
+      "icon": "carbon-filter",
+      "d": "Removes chlorine and chloramine, which oxidize RO membranes.",
+      "cut": "carbon",
+      "catch": {
+       "g": "c",
+       "t": "Chlorine and chloramine"
+      }
+     },
+     {
+      "t": "Cartridge filter",
+      "icon": "ro-membrane",
+      "d": "Catches fines from the beds before the RO.",
+      "cut": "cartridge",
+      "catch": {
+       "g": "f",
+       "t": "Fines"
+      }
+     },
+     {
+      "t": "To RO",
+      "spot": "ro-skid",
+      "link": "emi-ro",
       "cut": "out"
      }
     ],

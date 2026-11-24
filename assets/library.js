@@ -8,7 +8,7 @@
 var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
-/* NAVMENU: the header's six sections, each a mega panel on wide screens and an expandable group in the phone menu
+/* NAVMENU: the header's five sections (EMI, Products, Services, Industries, Company), each a mega panel on wide screens and an expandable group in the phone menu
    (NavBar.js; design-system/components/NavBar/README.md). The one source: NAVSECT derives from it.
    Section: id, label (the bar's words), sections (the page "section" strings that make it current; default [label]),
    hub (its overview page, the panel's first link), lead (one line, 14 words or fewer), groups [{h, items}], feat (the
@@ -20,18 +20,25 @@ var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked 
    block's ISO 9001 row (else any row) holds no [placeholder] (NavBar.js wfilled).
    NAVTASKS: the "I need to" row, the same in every panel and one more group on phones; [target, words after "I need to"]. */
 var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our first system'],['svc-upgrades#observation','answer a water observation'],
- ['cmp-quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
+ ['quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
 var NAVMENU=[
- {id:'systems',label:'Systems',hub:'systems',lead:'One Purified Water package: pretreatment, RO, DI/EDI and distribution.',
-  groups:[{h:'The package',items:[['sys-pw',null,'The RO and DI/EDI skid that makes your water'],['sys-storage',null,'Tanks and loops that keep water moving'],
-     ['sys-pretreatment',null,'Protects the RO from your feed water'],['sys-monitoring',null,'Online TOC and conductivity, alarms and records']]},
-   {h:'Plan and budget',items:[['systems#site','Site requirements','Space, utilities and connections you provide']]}],
+ {id:'emi',label:'EMI',hub:'emi',lead:'Our modular Purified Water system: one skid or four, whatever your water needs, sharing one control panel.',
+  groups:[{h:'The skids, take what you need',items:[['emi-pt','PT','Pretreatment: protects the RO from your feed water'],['emi-ro','RO','Reverse osmosis, with the control panel'],
+     ['emi-edi','EDI','Electrodeionization, where your limit needs it'],['emi-sds','SDS','Storage tank, pump and loop that keep water moving'],
+     ['emi-controls',null,'One panel for every skid: TOC, conductivity, alarms, records']]},
+   {h:'Plan and budget',items:[['emi#configurations','Typical configurations','Sized skid sets by industry, demand and feed water'],['emi#limits','Purified Water limits','Conductivity, TOC and microbial limits'],['emi#site','Site requirements','Space, utilities and connections you provide']]}],
   feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
   foot:{t:'No Water for Injection, pure steam or stainless steel systems.',to:'industries#faq',link:'Why'}},
- {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your Purified Water package.',
+ {id:'products',label:'Products',hub:'products',lead:'Standard equipment with a fixed datasheet, built to order.',
+  groups:[{h:'Water on site',items:[['p-40',null,'Hose-fed RO and DI cart: rinse, fill and top-up water'],['p-80',null,'In design; datasheet to follow'],['dosing-tank',null,'In design; datasheet to follow']]},
+   {h:'Water from air',items:[['aerowell',null,'Drinking water from the air, on a 120 V outlet']]},
+   {h:'Choosing',items:[['products#which','EMI or a product?','Who sets the design, what you receive']]}],
+  feat:{to:'p-40',eyebrow:'New',t:'P-40 portable pure-water cart',d:'Hose in, hose out, no power',icon:'valve'},
+  foot:{t:'Products are not designed or certified for pharmaceutical, dialysis or laboratory water.',to:'emi',link:'See EMI'}},
+ {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your EMI system.',
   groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what']]},
    {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'Skids and loops, every joint logged'],
-     ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec']]},
+     ['svc-fat-sat',null,'Tests at our shop and on your site'],['svc-cq',null,'IQ, OQ, PQ, or acceptance to your spec'],['svc-documentation',null,'Every document from URS to turnover']]},
    {h:'Running systems',items:[['svc-service',null,'Response times, visits, calibration and parts'],['svc-upgrades',null,'Options for an ageing system, with downtime'],
      ['svc-upgrades#observation','After a water observation','The plan your inspector will ask for']]}],
   feat:{to:'urs-guide',eyebrow:'Guide',t:'Writing your URS',d:'Settle what changes design, price and bidders',icon:'clipboard'}},
@@ -44,20 +51,9 @@ var NAVMENU=[
      ['industries','All industries and uses','Where the water goes, industry by industry']]}],
   feat:{to:'first-system',eyebrow:'Plain guide',t:'Your first system',d:'Grade, site, staff time and cost, plainly',icon:'droplet'},
   foot:{t:'Not listed? Most uses share the same water. Not offered: dialysis water and semiconductor ultrapure water.'}},
- {id:'compliance',label:'Compliance',hub:'compliance',lead:'The standards we design to, the documents you receive, our quality system.',
-  groups:[{h:'Standards',items:[['compliance#map','Standards we design to',"USP, GMP and your industry's standard"],['compliance#limits','Purified Water limits','Conductivity, TOC and microbial limits']]},
-   {h:'Documents',items:[['cmp-documentation',null,'Every document from URS to turnover'],['cmp-documentation#samples','Specimen documents','See the format before you order'],
-     ['cmp-documentation#safety','Site safety information','Chemicals, drain and isolation for your permit']]},
-   {h:'Quality',items:[['cmp-quality',null,'Our processes and the record each leaves'],
-     ['cmp-quality#certification','Certification status','Quality, welding, pressure and panel approvals','filled']]}],
-  feat:{to:'cmp-quality#audit',eyebrow:'Supplier audit',t:'Audit us before you order',d:'Book a supplier audit of our shop and QMS',icon:'magnifier'}},
- {id:'projects',label:'Applications',sections:['Projects','Applications'],hub:'projects',lead:'Typical Purified Water configurations, and how to qualify us as a supplier.',
-  groups:[{h:'How it is built',items:[['projects#configurations','Typical configurations','Sized designs by industry, demand and feed water']]},
-   {h:'Qualify us',items:[['projects#verify','How to qualify us','Documents, audits and tests you can run'],['cmp-documentation#samples','Specimen documents','See the format before you order']]}],
-  feat:{to:'svc-fat-sat',eyebrow:'Before delivery',t:'Factory acceptance test',d:'Your system tested at our shop, with you',icon:'gauge'}},
- {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, how buying from us works, and how to reach us.',
+ {id:'about',label:'Company',sections:['Company','Contact'],hub:'about',lead:'Who we are, our quality system, how buying from us works, and how to reach us.',
   groups:[{h:'About us',items:[['about','About Aquemi','Our team, company facts and where we work'],['news','Technical notes','Short answers to Purified Water questions'],['careers',null,'Open roles, pay and how we hire']]},
-   {h:'Working with us',items:[['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
+   {h:'Working with us',items:[['quality',null,'Our processes, certification and how to audit us'],['quality#verify','Qualify us as a supplier','Documents, audits and tests you can run'],['contact-locations','Locations and coverage','On-site times and engineering seals by province']]},
    {h:'Contact',items:[['contact-proposal',null,'Send a URS, tender, product or water data'],['contact-service',null,'Faults, calibration and parts for running systems']]}],
   phoneDrop:['contact-proposal','contact-service'],
   feat:{to:'buying',eyebrow:'For procurement and finance',t:'Buying from Aquemi',d:'Terms, payment, onboarding and your RFQ',icon:'briefcase'}}];
@@ -124,10 +120,10 @@ var ICONS=' softener carbon-filter ro-membrane edi still pure-steam tank loop va
 function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexOf(' '+n+' ')>=0}
 function wIcon(n,cls){var u='url(assets/icons/'+n+'.svg)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
 /* Page icon: the one icon that stands for a page wherever the page is shown small (related links, linked row ends). */
-var PAGE_ICON={systems:'loop','sys-pw':'ro-membrane','sys-wfi-distillation':'still','sys-wfi-membrane':'edi','sys-pure-steam':'pure-steam','sys-storage':'tank',
- 'sys-pretreatment':'softener','sys-monitoring':'conductivity',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
+var PAGE_ICON={emi:'loop','emi-ro':'ro-membrane','emi-edi':'edi','sys-wfi-distillation':'still','sys-wfi-membrane':'edi','sys-pure-steam':'pure-steam','emi-sds':'tank',
+ 'emi-pt':'softener','emi-controls':'conductivity',products:'factory','p-40':'valve','p-80':'pump','dosing-tank':'tank',aerowell:'droplet',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
  'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
- compliance:'shield','cmp-documentation':'binder','cmp-quality':'magnifier',projects:'checklist',about:'people',careers:'briefcase',news:'newspaper',
+ 'svc-documentation':'binder',quality:'magnifier',about:'people',careers:'briefcase',news:'newspaper',
  'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin',
  'ind-personal-care':'droplet','ind-hospital-lab':'dna','ind-process':'pump'};
 /* pageIcon: PAGE_ICON for a link, looked up by its page part, so page#anchor (systems#budget) shows its page's icon */
@@ -403,7 +399,7 @@ document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classLis
    Phones (pass 12 C, G-C1/F1): at 600 px and under each column is a disclosure: a 48 px head button (aria-expanded,
    aria-controls) over its links, Company open at first, the others closed; above 600 px the button is not shown, the
    column name is a plain heading and every column is open. One delegated click handler for the whole site. */
-function wFoot(){var cols=[['Systems & compliance',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring','compliance','cmp-documentation','cmp-quality']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','projects','buying','news','careers','contact-proposal','contact-service','contact-locations']]],
+function wFoot(){var cols=[['EMI',['emi-pt','emi-ro','emi-edi','emi-sds','emi-controls']],['Products',['p-40','p-80','dosing-tank','aerowell']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-documentation','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','buying','quality','news','careers','contact-proposal','contact-service','contact-locations']]],
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Modular Purified Water packages for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
@@ -419,13 +415,13 @@ if(typeof document!=='undefined')document.addEventListener('click',function(ev){
 /* Pages with an equipment drawing in assets/illustrations/<page id>.png (the site loads the lossless .webp copy made by the studio kit, python studio/studio.py refresh webp). Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
    Used by the Hero figure and by WaterPath stops. */
 var ART={
- 'sys-pretreatment':'Pretreatment skid: multimedia filter, softener and carbon vessels with feed pump',
- 'sys-pw':'Purified Water skid: RO pressure vessels, high-pressure pump and EDI stack',
+ 'emi-pt':'Pretreatment skid: multimedia filter, softener and carbon vessels with feed pump',
+ 'emi-ro':'Purified Water skid: RO pressure vessels, high-pressure pump and EDI stack',
  'sys-wfi-distillation':'Multi-effect WFI still: five columns, condenser and feed pump on one skid',
  'sys-wfi-membrane':'WFI membrane skid: double-pass RO, EDI, heat exchangers and ultrafilter',
  'sys-pure-steam':'Pure steam generator: evaporator column, separator, preheater and control panel',
- 'sys-storage':'Polypropylene storage tank with vent filter, distribution pump, heat exchanger, UV and loop with point-of-use valves',
- 'sys-monitoring':'Wall-mounted analyzer panel: TOC and conductivity transmitters, controller and sample lines from a polypropylene header',
+ 'emi-sds':'Polypropylene storage tank with vent filter, distribution pump, heat exchanger, UV and loop with point-of-use valves',
+ 'emi-controls':'Wall-mounted analyzer panel: TOC and conductivity transmitters, controller and sample lines from a polypropylene header',
  'svc-design':'Skid design: a 3D frame model standing on its P&ID sheet, with scale rule and pencil',
  'svc-fabrication':'Butt-fusion machine joining two polypropylene pipes, with heater plate, facing tool and a finished spool',
  'svc-fat-sat':'Factory acceptance test in the shop: a polypropylene skid with membrane housings, cartridge filters and a control box, looped by fused test pipe through true-union valves to a test tank on a plinth, and a cart with a handheld meter and the open protocol binder',
@@ -443,18 +439,18 @@ var ART={
 /* Width / height of each drawing in ART (the PNG mask's own ratio). On phones the hero's drawing box takes this ratio,
    never taller than 5:4 (ART_R below 1.25 keeps the 5:4 box), so a wide drawing runs the full gutter width with no
    empty band above or below it. A page missing here keeps the 5:4 box. */
-var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':0.94,'ind-meddevice':0.91,'ind-personal-care':1.57,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.08,'svc-service':0.86,'svc-upgrades':1.16,'sys-monitoring':0.66,'sys-pretreatment':1.18,'sys-pure-steam':0.65,'sys-pw':0.93,'sys-storage':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'cmp-quality':0.97,'project-plan':1.15,'news':0.87};
+var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':0.94,'ind-meddevice':0.91,'ind-personal-care':1.57,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.08,'svc-service':0.86,'svc-upgrades':1.16,'emi-controls':0.66,'emi-pt':1.18,'sys-pure-steam':0.65,'emi-ro':0.93,'emi-sds':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'quality':0.97,'project-plan':1.15,'news':0.87};
 /* Hero-only drawings (pass 12 round D): pages that are not equipment pages but take a line drawing as their hero
    figure, opted in with the hero field "figure": {"art": "<id>"} (assets/illustrations/<id>.png, ratio in ART_R).
    Kept out of ART so related cards, project-run and the other ART readers keep what they draw for these pages. */
 var HERO_ART={
- 'cmp-quality':'Audit table in the shop: an open quality manual, the nonconformance register, a pipe length with a fused joint and a tag, and a shipment record, with fused pipe lengths on a rack behind',
+ 'quality':'Audit table in the shop: an open quality manual, the nonconformance register, a pipe length with a fused joint and a tag, and a shipment record, with fused pipe lengths on a rack behind',
  'project-plan':'One schedule in three steps: the signed order with a pen, the package on a pallet for its factory test, then a point-of-use valve over a sink with the handover binder; a hold diamond where each step drops',
  'news':'Drafting board: a pinned note sheet with three numbered answer lines, earlier notes tabbed behind it, and a pencil sketch of a polypropylene loop with a diaphragm valve'
 };
 function heroArtId(p){var f=p.figure;return f&&typeof f==='object'&&HERO_ART[f.art]?f.art:''}
 function artMask(id){var u='url(assets/illustrations/'+id+'.webp)';return '-webkit-mask-image:'+u+';mask-image:'+u}
-/* Equipment figure (sys-, svc-, ind- pages with a drawing): the drawing large and dominant, up to four key facts as
+/* Equipment figure (emi-, svc-, ind- and product pages with a drawing): the drawing large and dominant, up to four key facts as
    callouts round it, each joined to the drawing by a leader line ending in a dot. Callouts come in two lists: the top
    pair and the bottom pair, so phones can stack them above and below the drawing.
    HERO_AT: the anchor of each slot on the drawing, as fractions of the square drawing box (top left, top right, bottom
@@ -475,9 +471,9 @@ function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=
    Placement: the phone box has ratio R (--art-r), the drawing (ratio r, ART_R) sits in it contained and centred, and its
    square box (side = the drawing's longer side) is centred on it, so a pin lands at 50 % + (a - 0.5) x side / box. */
 var HERO_AT_P={
- 'sys-storage':[[0.40,0.36],[0.115,0.37],[0.62,0.42]],
- 'sys-pw':[[0.40,0.36],[0.92,0.47]],
- 'sys-pretreatment':[[0.40,0.36],[0.62,0.32],[0.885,0.555],[0.65,0.665]]
+ 'emi-sds':[[0.40,0.36],[0.115,0.37],[0.62,0.42]],
+ 'emi-ro':[[0.40,0.36],[0.92,0.47]],
+ 'emi-pt':[[0.40,0.36],[0.62,0.32],[0.885,0.555],[0.65,0.665]]
 };
 function heroPins(n,id,R){var at=HERO_AT_P[id]||HERO_AT,r=ART_R[id]||1,w=r>=R?1:r/R,h=r>=R?1/r:1/R,S=Math.max(w,h),o='';
  for(var i=0;i<n;i++){var a=at[i]||HERO_AT[i];o+='<span class="aq-hero__pin" style="left:'+(50+(a[0]-0.5)*S*100).toFixed(1)+'%;top:'+(50+(a[1]-0.5)*S*R*100).toFixed(1)+'%">'+(i+1)+'</span>'}
@@ -489,7 +485,7 @@ function heroPins(n,id,R){var at=HERO_AT_P[id]||HERO_AT,r=ART_R[id]||1,w=r>=R?1:
    upright PP redraws of svc-service 0.86, ind-hospital-lab 0.94 and svc-fat-sat 1.02 run the full gutter width, their
    box as tall as the drawing, so no side bands either). */
 var ART_FULL={'svc-upgrades':1,'svc-service':0.86,'ind-hospital-lab':0.94,'svc-fat-sat':1};
-function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,ART_FULL[id]||(/^sys-/.test(id)||HERO_ART[id]?1:1.25)):1.25}
+function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,ART_FULL[id]||(/^emi-/.test(id)||HERO_ART[id]?1:1.25)):1.25}
 function wHeroFigure(p,facts,id){id=id||p.id;var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'},r=ART_R[id],R=heroBoxR(id);
  return '<figure class="aq-hero__figure'+(HERO_ART[id]?' aq-hero__figure--drawing':'')+'"'+(r?' style="--art-r:'+R+'"':'')+'>'
   +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
@@ -608,14 +604,14 @@ function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3)
 function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
 /* figure.look (pass 12 round B): a hub page's drawn scene with its keyed index (HeroScene.js); it wins over the other
    figure kinds and over index / hero_index, so a scene whose key cannot be built falls back to them. */
-function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),detail=/^sys-|^svc-|^ind-/.test(p.id),scene=home||art||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
+function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),detail=/^emi-|^svc-|^ind-/.test(p.id)||(p.section==='Products'&&p.id!=='products'),scene=home||art||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
-  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'systems','link',p.secondary_cta.intent):'')+'</div>'+
+  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'emi','link',p.secondary_cta.intent):'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+tx(t)+'</span>'}).join('')+'</div>':'')+'</div>';
- /* Callouts round the drawing only on sys-* pages, where each fact is a figure of the drawn module (a design value,
+ /* Callouts round the drawing only on emi-* pages, where each fact is a figure of the drawn module (a design value,
     guarantee or capacity, "what, where · basis", DR-010); service and industry pages keep their facts in the KeyFacts
     strip under the drawing. */
- var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
+ var all=p.facts||[],co=art&&/^emi-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts,fart||p.id):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':scene?' aq-hero__grid--figure aq-hero__grid--scene':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'" data-hero="'+e(p.id)+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
@@ -657,15 +653,16 @@ function hsKey(items,o){o=o||{};
  return o.aria?'<nav class="'+kc+'" aria-label="'+e(o.aria)+'">'+list+'</nav>':'<div class="'+kc+'">'+list+'</div>'}
 function hsWrap(kind,draw,key){return '<figure class="aq-hero-scene aq-hero-scene--'+kind+'">'+draw+key+'</figure>'}
 
-/* ---------- module-lineup (systems) ---------- */
+/* ---------- module-lineup (emi) ---------- */
 /* What stands on each module's plinth, by page id; c is the plinth's top centre. Returns {parts, inn, out, top} */
 function hsModule(id,c,k){var x=c[0],y=c[1],z=c[2],K='k'+k,G=1.2,P=function(kind,u,v,s,o){o=o||{};o.id=K;return isoPart(kind,x+u*G,y+v*G,z,s*G,o)};
- if(id==='sys-pretreatment'){var f=P('filter',-12,8,0.9),cb=P('carbon',14,-8,0.9);
+ if(id==='emi-pt'){var f=P('filter',-12,8,0.9),cb=P('carbon',14,-8,0.9);
   return {parts:[cb,f],inn:f.ports.in,out:cb.ports.out,top:cb.ports.top,link:isoPipe(isoRoute(f.ports.out,cb.ports.in,'xyz'),{r:1.6,to:K,caps:false,wall:false})}}
- if(id==='sys-pw'){var r=isoPart('ro',x-36,y-8,z,0.64,{id:K}),ed=P('edi',4,-26,0.66);
-  return {parts:[ed,r],inn:r.ports.in,out:ed.ports.out,top:r.ports.top,link:isoPipe(isoRoute(r.ports.out,ed.ports.in,'zyx'),{r:1.6,to:K,caps:false,wall:false})}}
- if(id==='sys-storage'){var t=P('tank',0,0,0.86);return {parts:[t],inn:t.ports.in,out:t.ports.out,top:t.ports.top}}
- if(id==='sys-monitoring'){var pa=P('panel',8,-8,0.9),an=P('analyzer',-16,10,0.9);return {parts:[pa,an],inn:an.ports.sample,top:pa.ports.top}}
+ if(id==='emi-ro'){var r=isoPart('ro',x-36,y-8,z,0.64,{id:K}),pa=P('panel',14,-22,0.7);
+  return {parts:[pa,r],inn:r.ports.in,out:r.ports.out,top:r.ports.top}}
+ if(id==='emi-edi'){var ed=P('edi',0,-6,0.8);return {parts:[ed],inn:ed.ports.in,out:ed.ports.out,top:ed.ports.top}}
+ if(id==='emi-sds'){var t=P('tank',0,0,0.86);return {parts:[t],inn:t.ports.in,out:t.ports.out,top:t.ports.top}}
+ if(id==='emi-controls'){var pa=P('panel',8,-8,0.9),an=P('analyzer',-16,10,0.9);return {parts:[pa,an],inn:an.ports.sample,top:pa.ports.top}}
  var m=P('module',0,0,0.8);return {parts:[m],inn:m.ports.in,out:m.ports.out,top:m.ports.top}}
 function wHeroLineup(p,idx){var it=idx.items.slice(0,4),n=it.length;if(n<2)return '';
  var S=96,PW=84,PD=70,pts=[],body='',tags='',mods=[];
@@ -12554,15 +12551,14 @@ function relPlan(){var x=-50,y=-19,w=96,d=34,z=1.8,n=5,rh=d/n,g='',k='',m='',dm=
   +'<path class="aq-iso__eq" d="'+m+dm+'"/>'
   +isoPart('skid',sx-5,yc-3,z,1,{w:10,d:6})+'<path class="aq-iso__eq" d="'+isoBoxD([sx-3.4,yc-1.8,z+3.2],6.8,3.6,5.4)+'"/>'}
 var REL_ISO={
- systems:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('ro',6,6,6,0.9)},[-48,-58,144,141]],
+ emi:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('ro',6,6,6,0.9)},[-48,-58,144,141]],
+ products:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('module',30,28,6,0.8)+isoPart('tank',80,30,6,0.6)},[-48,-33,144,116]],
  services:[function(){return isoPart('desk',0,0,0,1.3)},[-40,-80,79,101]],
  'urs-guide':[function(){return isoPart('clipboard',0,0,0,1.6,{ticks:4})},[-40,-25,80,48]],
  'first-system':[function(){return isoPart('wall',-50,-40,0,1,{w:100,h:52})+relFoot(-34,-12,60,44)+isoPart('module',0,10,0,0.8)},[-57,-97,135,126]],
  'project-plan':[relPlan,[-56,-36,113,67]],
- 'cmp-documentation':[function(){return isoPart('binder',0,0,0,1.5)},[-70,-60,116,85]],
- 'cmp-quality':[function(){return relSheet(-34,-22,50,40)+relRule(-34,-22,50,40,5)+isoPart('stamp',22,8,0,1.3)},[-45,-29,78,51]],
- compliance:[function(){return relSheet(-38,-26,76,52)+relGrid(-38,-26,76,52,4,6)+relTicks(-38,-26,76,52,6)},[-55,-33,111,65]],
- projects:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('module',30,28,6,0.8)+isoPart('tank',80,30,6,0.6)},[-48,-33,144,116]],
+ 'svc-documentation':[function(){return isoPart('binder',0,0,0,1.5)},[-70,-60,116,85]],
+ 'quality':[function(){return relSheet(-34,-22,50,40)+relRule(-34,-22,50,40,5)+isoPart('stamp',22,8,0,1.3)},[-45,-29,78,51]],
  industries:[function(){return isoPart('outlet',-30,20,0,1)+isoPart('outlet',20,20,0,1)},[-67,-72,90,104]],
  about:[function(){return isoPart('building',-45,-26,0,1)},[-61,-76,123,111]],
  buying:[function(){return isoPart('truck',-40,-14,0,1)},[-45,-57,101,83]],
@@ -12911,8 +12907,8 @@ BLOCKS['table']=function(b,H){if(b.as&&TABLE_AS[b.as])return TABLE_AS[b.as](b,H)
 /* CompareTable tabs (--tabs, phones): show the pressed column */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-compare-table__tab');if(!t)return;var w=t.closest('.aq-compare-table');w.setAttribute('data-col',t.getAttribute('data-col'));[].forEach.call(w.querySelectorAll('.aq-compare-table__tab'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;
-   name is the optional plain-language line. Cards link to Compliance when that page exists. */
-BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+H+wFold(b,(b.items||[]).length,'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x,i){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return fli('<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">',b,i)+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>',b.fold_noun||'standards')+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
+   name is the optional plain-language line. Cards link to the EMI limits when that page exists. */
+BLOCKS['tags']=function(b,H){var lk=wp('emi#limits');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+H+wFold(b,(b.items||[]).length,'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x,i){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return fli('<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">',b,i)+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>',b.fold_noun||'standards')+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
 /* Table as "versus" -> Versus: two routes facing each other across a spine of factors (hot or ambient WFI, multi-effect
    or vapour compression). Fields as a table with exactly three columns: cols [factor label, route A, route B], rows
    [factor, A, B]. A row whose factor starts "Fits when" (or "Choose") becomes the verdict: two closing lines,

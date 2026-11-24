@@ -1,19 +1,19 @@
 {
- "id": "sys-monitoring",
- "section": "Systems",
- "nav_label": "Monitoring and controls",
- "title": "Purified Water system monitoring and controls | Aquemi",
+ "id": "emi-controls",
+ "section": "EMI",
+ "nav_label": "Controls",
+ "title": "EMI controls: one panel for every skid | Aquemi",
  "meta": "Online TOC (USP <643>), uncompensated conductivity (USP <645>), alarms and divert for your Purified Water package.",
- "path": "/systems/monitoring-and-controls/",
- "eyebrow": "SYSTEMS · MONITORING AND CONTROLS · USP <645>, <643>",
+ "path": "/emi/controls/",
+ "eyebrow": "EMI · CONTROLS · USP <645>, <643>",
  "headline": "Water data you can defend",
- "lead": "Online instruments, alarms and divert for your Purified Water package. Quality readings are recorded and kept.",
+ "lead": "One control panel, on the RO skid, runs every EMI skid: online instruments, alarms and divert. Quality readings are recorded and kept.",
  "primary_cta": "Request a controls specification review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have a URS or a draft|Review of another document|Controls URS or functional specification",
  "secondary_cta": {
   "label": "See the documentation package",
-  "link": "cmp-documentation"
+  "link": "svc-documentation"
  },
  "blocks": [
   {
@@ -28,7 +28,7 @@
     },
     {
      "t": "Controller (PLC)",
-     "d": "Runs sequences, interlocks and divert, even if every layer above fails.",
+     "d": "One controller, in the panel on the RO skid, runs sequences, interlocks and divert for every skid, even if every layer above fails.",
      "art": "plc",
      "key": true
     },
@@ -41,7 +41,8 @@
    ],
    "nav": "Architecture",
    "look": "layer-stack",
-   "anchor": "layers"
+   "anchor": "layers",
+   "intro": "The panel on the RO skid holds the controller. The EDI skid wires to it; the SDS skid's remote I/O panel connects to it. A standalone SDS skid carries the full panel."
   },
   {
    "type": "spec",
@@ -109,6 +110,10 @@
    "h": "Questions quality and IT teams ask",
    "items": [
     {
+     "q": "How many panels does an EMI system have?",
+     "a": "One controller. The RO skid carries the panel; the EDI skid wires to it; the SDS skid has a remote I/O panel wired to it. An SDS or EDI skid supplied alone carries the full panel."
+    },
+    {
      "q": "Can we release water on online TOC and conductivity?",
      "a": "Yes, for TOC and conductivity, once qualification shows online readings match point-of-use samples. Microbial counts stay laboratory tests.",
      "link": "svc-cq"
@@ -136,7 +141,7 @@
    "h": "Where to go next",
    "items": [
     "svc-fat-sat",
-    "cmp-quality",
+    "quality",
     "svc-upgrades#upgrades",
     "svc-service",
     "ind-pharma"

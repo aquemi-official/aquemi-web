@@ -13,7 +13,7 @@
  "primary_cta_intent": "I know my product, not my water spec|Medical devices",
  "secondary_cta": {
   "label": "Qualify us as a supplier",
-  "link": "cmp-quality"
+  "link": "quality"
  },
  "blocks": [
   {
@@ -48,7 +48,7 @@
      "Our quality system status, audit access and quality agreement",
      {
       "t": "Supplier quality",
-      "link": "cmp-quality"
+      "link": "quality"
      }
     ],
     [
@@ -201,9 +201,9 @@
    "h": "Where to go next",
    "items": [
     "ind-hospital-lab",
-    "cmp-quality",
-    "cmp-documentation",
-    "projects"
+    "quality",
+    "svc-documentation",
+    "emi#configurations"
    ]
   }
  ],

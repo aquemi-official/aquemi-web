@@ -2,13 +2,13 @@
 /* Pages with an equipment drawing in assets/illustrations/<page id>.png (the site loads the lossless .webp copy made by the studio kit, python studio/studio.py refresh webp). Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
    Used by the Hero figure and by WaterPath stops. */
 var ART={
- 'sys-pretreatment':'Pretreatment skid: multimedia filter, softener and carbon vessels with feed pump',
- 'sys-pw':'Purified Water skid: RO pressure vessels, high-pressure pump and EDI stack',
+ 'emi-pt':'Pretreatment skid: multimedia filter, softener and carbon vessels with feed pump',
+ 'emi-ro':'Purified Water skid: RO pressure vessels, high-pressure pump and EDI stack',
  'sys-wfi-distillation':'Multi-effect WFI still: five columns, condenser and feed pump on one skid',
  'sys-wfi-membrane':'WFI membrane skid: double-pass RO, EDI, heat exchangers and ultrafilter',
  'sys-pure-steam':'Pure steam generator: evaporator column, separator, preheater and control panel',
- 'sys-storage':'Polypropylene storage tank with vent filter, distribution pump, heat exchanger, UV and loop with point-of-use valves',
- 'sys-monitoring':'Wall-mounted analyzer panel: TOC and conductivity transmitters, controller and sample lines from a polypropylene header',
+ 'emi-sds':'Polypropylene storage tank with vent filter, distribution pump, heat exchanger, UV and loop with point-of-use valves',
+ 'emi-controls':'Wall-mounted analyzer panel: TOC and conductivity transmitters, controller and sample lines from a polypropylene header',
  'svc-design':'Skid design: a 3D frame model standing on its P&ID sheet, with scale rule and pencil',
  'svc-fabrication':'Butt-fusion machine joining two polypropylene pipes, with heater plate, facing tool and a finished spool',
  'svc-fat-sat':'Factory acceptance test in the shop: a polypropylene skid with membrane housings, cartridge filters and a control box, looped by fused test pipe through true-union valves to a test tank on a plinth, and a cart with a handheld meter and the open protocol binder',
@@ -26,18 +26,18 @@ var ART={
 /* Width / height of each drawing in ART (the PNG mask's own ratio). On phones the hero's drawing box takes this ratio,
    never taller than 5:4 (ART_R below 1.25 keeps the 5:4 box), so a wide drawing runs the full gutter width with no
    empty band above or below it. A page missing here keeps the 5:4 box. */
-var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':0.94,'ind-meddevice':0.91,'ind-personal-care':1.57,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.08,'svc-service':0.86,'svc-upgrades':1.16,'sys-monitoring':0.66,'sys-pretreatment':1.18,'sys-pure-steam':0.65,'sys-pw':0.93,'sys-storage':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'cmp-quality':0.97,'project-plan':1.15,'news':0.87};
+var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':0.94,'ind-meddevice':0.91,'ind-personal-care':1.57,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.08,'svc-service':0.86,'svc-upgrades':1.16,'emi-controls':0.66,'emi-pt':1.18,'sys-pure-steam':0.65,'emi-ro':0.93,'emi-sds':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'quality':0.97,'project-plan':1.15,'news':0.87};
 /* Hero-only drawings (pass 12 round D): pages that are not equipment pages but take a line drawing as their hero
    figure, opted in with the hero field "figure": {"art": "<id>"} (assets/illustrations/<id>.png, ratio in ART_R).
    Kept out of ART so related cards, project-run and the other ART readers keep what they draw for these pages. */
 var HERO_ART={
- 'cmp-quality':'Audit table in the shop: an open quality manual, the nonconformance register, a pipe length with a fused joint and a tag, and a shipment record, with fused pipe lengths on a rack behind',
+ 'quality':'Audit table in the shop: an open quality manual, the nonconformance register, a pipe length with a fused joint and a tag, and a shipment record, with fused pipe lengths on a rack behind',
  'project-plan':'One schedule in three steps: the signed order with a pen, the package on a pallet for its factory test, then a point-of-use valve over a sink with the handover binder; a hold diamond where each step drops',
  'news':'Drafting board: a pinned note sheet with three numbered answer lines, earlier notes tabbed behind it, and a pencil sketch of a polypropylene loop with a diaphragm valve'
 };
 function heroArtId(p){var f=p.figure;return f&&typeof f==='object'&&HERO_ART[f.art]?f.art:''}
 function artMask(id){var u='url(assets/illustrations/'+id+'.webp)';return '-webkit-mask-image:'+u+';mask-image:'+u}
-/* Equipment figure (sys-, svc-, ind- pages with a drawing): the drawing large and dominant, up to four key facts as
+/* Equipment figure (emi-, svc-, ind- and product pages with a drawing): the drawing large and dominant, up to four key facts as
    callouts round it, each joined to the drawing by a leader line ending in a dot. Callouts come in two lists: the top
    pair and the bottom pair, so phones can stack them above and below the drawing.
    HERO_AT: the anchor of each slot on the drawing, as fractions of the square drawing box (top left, top right, bottom
@@ -58,9 +58,9 @@ function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=
    Placement: the phone box has ratio R (--art-r), the drawing (ratio r, ART_R) sits in it contained and centred, and its
    square box (side = the drawing's longer side) is centred on it, so a pin lands at 50 % + (a - 0.5) x side / box. */
 var HERO_AT_P={
- 'sys-storage':[[0.40,0.36],[0.115,0.37],[0.62,0.42]],
- 'sys-pw':[[0.40,0.36],[0.92,0.47]],
- 'sys-pretreatment':[[0.40,0.36],[0.62,0.32],[0.885,0.555],[0.65,0.665]]
+ 'emi-sds':[[0.40,0.36],[0.115,0.37],[0.62,0.42]],
+ 'emi-ro':[[0.40,0.36],[0.92,0.47]],
+ 'emi-pt':[[0.40,0.36],[0.62,0.32],[0.885,0.555],[0.65,0.665]]
 };
 function heroPins(n,id,R){var at=HERO_AT_P[id]||HERO_AT,r=ART_R[id]||1,w=r>=R?1:r/R,h=r>=R?1/r:1/R,S=Math.max(w,h),o='';
  for(var i=0;i<n;i++){var a=at[i]||HERO_AT[i];o+='<span class="aq-hero__pin" style="left:'+(50+(a[0]-0.5)*S*100).toFixed(1)+'%;top:'+(50+(a[1]-0.5)*S*R*100).toFixed(1)+'%">'+(i+1)+'</span>'}
@@ -72,7 +72,7 @@ function heroPins(n,id,R){var at=HERO_AT_P[id]||HERO_AT,r=ART_R[id]||1,w=r>=R?1:
    upright PP redraws of svc-service 0.86, ind-hospital-lab 0.94 and svc-fat-sat 1.02 run the full gutter width, their
    box as tall as the drawing, so no side bands either). */
 var ART_FULL={'svc-upgrades':1,'svc-service':0.86,'ind-hospital-lab':0.94,'svc-fat-sat':1};
-function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,ART_FULL[id]||(/^sys-/.test(id)||HERO_ART[id]?1:1.25)):1.25}
+function heroBoxR(id){var r=ART_R[id];return r?Math.max(r,ART_FULL[id]||(/^emi-/.test(id)||HERO_ART[id]?1:1.25)):1.25}
 function wHeroFigure(p,facts,id){id=id||p.id;var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'},r=ART_R[id],R=heroBoxR(id);
  return '<figure class="aq-hero__figure'+(HERO_ART[id]?' aq-hero__figure--drawing':'')+'"'+(r?' style="--art-r:'+R+'"':'')+'>'
   +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
@@ -191,14 +191,14 @@ function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3)
 function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
 /* figure.look (pass 12 round B): a hub page's drawn scene with its keyed index (HeroScene.js); it wins over the other
    figure kinds and over index / hero_index, so a scene whose key cannot be built falls back to them. */
-function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),detail=/^sys-|^svc-|^ind-/.test(p.id),scene=home||art||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
+function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),detail=/^emi-|^svc-|^ind-/.test(p.id)||(p.section==='Products'&&p.id!=='products'),scene=home||art||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
-  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'systems','link',p.secondary_cta.intent):'')+'</div>'+
+  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'emi','link',p.secondary_cta.intent):'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+tx(t)+'</span>'}).join('')+'</div>':'')+'</div>';
- /* Callouts round the drawing only on sys-* pages, where each fact is a figure of the drawn module (a design value,
+ /* Callouts round the drawing only on emi-* pages, where each fact is a figure of the drawn module (a design value,
     guarantee or capacity, "what, where · basis", DR-010); service and industry pages keep their facts in the KeyFacts
     strip under the drawing. */
- var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
+ var all=p.facts||[],co=art&&/^emi-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts,fart||p.id):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':scene?' aq-hero__grid--figure aq-hero__grid--scene':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'" data-hero="'+e(p.id)+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}

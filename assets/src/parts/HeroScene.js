@@ -36,15 +36,16 @@ function hsKey(items,o){o=o||{};
  return o.aria?'<nav class="'+kc+'" aria-label="'+e(o.aria)+'">'+list+'</nav>':'<div class="'+kc+'">'+list+'</div>'}
 function hsWrap(kind,draw,key){return '<figure class="aq-hero-scene aq-hero-scene--'+kind+'">'+draw+key+'</figure>'}
 
-/* ---------- module-lineup (systems) ---------- */
+/* ---------- module-lineup (emi) ---------- */
 /* What stands on each module's plinth, by page id; c is the plinth's top centre. Returns {parts, inn, out, top} */
 function hsModule(id,c,k){var x=c[0],y=c[1],z=c[2],K='k'+k,G=1.2,P=function(kind,u,v,s,o){o=o||{};o.id=K;return isoPart(kind,x+u*G,y+v*G,z,s*G,o)};
- if(id==='sys-pretreatment'){var f=P('filter',-12,8,0.9),cb=P('carbon',14,-8,0.9);
+ if(id==='emi-pt'){var f=P('filter',-12,8,0.9),cb=P('carbon',14,-8,0.9);
   return {parts:[cb,f],inn:f.ports.in,out:cb.ports.out,top:cb.ports.top,link:isoPipe(isoRoute(f.ports.out,cb.ports.in,'xyz'),{r:1.6,to:K,caps:false,wall:false})}}
- if(id==='sys-pw'){var r=isoPart('ro',x-36,y-8,z,0.64,{id:K}),ed=P('edi',4,-26,0.66);
-  return {parts:[ed,r],inn:r.ports.in,out:ed.ports.out,top:r.ports.top,link:isoPipe(isoRoute(r.ports.out,ed.ports.in,'zyx'),{r:1.6,to:K,caps:false,wall:false})}}
- if(id==='sys-storage'){var t=P('tank',0,0,0.86);return {parts:[t],inn:t.ports.in,out:t.ports.out,top:t.ports.top}}
- if(id==='sys-monitoring'){var pa=P('panel',8,-8,0.9),an=P('analyzer',-16,10,0.9);return {parts:[pa,an],inn:an.ports.sample,top:pa.ports.top}}
+ if(id==='emi-ro'){var r=isoPart('ro',x-36,y-8,z,0.64,{id:K}),pa=P('panel',14,-22,0.7);
+  return {parts:[pa,r],inn:r.ports.in,out:r.ports.out,top:r.ports.top}}
+ if(id==='emi-edi'){var ed=P('edi',0,-6,0.8);return {parts:[ed],inn:ed.ports.in,out:ed.ports.out,top:ed.ports.top}}
+ if(id==='emi-sds'){var t=P('tank',0,0,0.86);return {parts:[t],inn:t.ports.in,out:t.ports.out,top:t.ports.top}}
+ if(id==='emi-controls'){var pa=P('panel',8,-8,0.9),an=P('analyzer',-16,10,0.9);return {parts:[pa,an],inn:an.ports.sample,top:pa.ports.top}}
  var m=P('module',0,0,0.8);return {parts:[m],inn:m.ports.in,out:m.ports.out,top:m.ports.top}}
 function wHeroLineup(p,idx){var it=idx.items.slice(0,4),n=it.length;if(n<2)return '';
  var S=96,PW=84,PD=70,pts=[],body='',tags='',mods=[];

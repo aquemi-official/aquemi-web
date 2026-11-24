@@ -79,25 +79,25 @@
     {
      "t": "Pretreatment",
      "spot": "pretreatment",
-     "link": "sys-pretreatment",
+     "link": "emi-pt",
      "d": "A polyvinyl chloride (PVC) train removes chlorine, hardness and particles before reverse osmosis (RO). The same in every industry."
     },
     {
      "t": "Generation",
      "spot": "ro-skid",
-     "link": "sys-pw",
+     "link": "emi-ro",
      "d": "RO, then deionization (DI) or electrodeionization (EDI) where your grade needs it. The outlet is designed to meet your limit-writer’s number."
     },
     {
      "t": "Storage",
      "spot": "storage-tank",
-     "link": "sys-storage",
+     "link": "emi-sds",
      "d": "Fitted where your use needs stored water; configurations confirmed when you enquire."
     },
     {
      "t": "Distribution loop",
      "spot": "loop",
-     "link": "sys-storage#sanitization",
+     "link": "emi-sds#sanitization",
      "d": "Changes by industry: how often it is sanitized, and whether an endotoxin limit applies."
     },
     {
@@ -107,7 +107,7 @@
     }
    ],
    "base": "Monitoring and controls · alarm limits from your limit-writer",
-   "base_link": "sys-monitoring",
+   "base_link": "emi-controls",
    "caption": "What stays the same: the stages and their materials. What changes: sanitization, monitoring and documents.",
    "writers": [
     "A pharmacopoeia",
@@ -141,8 +141,8 @@
    "h": "Where to go next",
    "items": [
     "services",
-    "compliance",
-    "cmp-quality"
+    "emi#limits",
+    "quality"
    ]
   }
  ],

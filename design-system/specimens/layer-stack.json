@@ -153,9 +153,9 @@
    "page": "sys-monitoring",
    "slot": 0,
    "h": "How the controls are built",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "571f55c220",
    "block": {
@@ -184,6 +184,44 @@
     "nav": "Architecture",
     "look": "layer-stack",
     "anchor": "layers"
+   }
+  },
+  {
+   "page": "emi-controls",
+   "slot": 0,
+   "h": "How the controls are built",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "7a69563",
+   "hash": "6f27e051f1",
+   "block": {
+    "type": "diagram",
+    "h": "How the controls are built",
+    "stages": [
+     {
+      "t": "Instruments",
+      "d": "Measure total organic carbon (TOC), conductivity and temperature online.",
+      "icon": "conductivity",
+      "art": "instruments"
+     },
+     {
+      "t": "Controller (PLC)",
+      "d": "One controller, in the panel on the RO skid, runs sequences, interlocks and divert for every skid, even if every layer above fails.",
+      "art": "plc",
+      "key": true
+     },
+     {
+      "t": "Operator panel (HMI)",
+      "d": "Where operators see alarms, trends and sanitization status.",
+      "icon": "monitor",
+      "art": "hmi"
+     }
+    ],
+    "nav": "Architecture",
+    "look": "layer-stack",
+    "anchor": "layers",
+    "intro": "The panel on the RO skid holds the controller. The EDI skid wires to it; the SDS skid's remote I/O panel connects to it. A standalone SDS skid carries the full panel."
    }
   }
  ]

@@ -4,7 +4,7 @@
  "type": "standards-map",
  "fields": "as the standards map: zones [{t, codes, to, spot}]. to: the section that holds the proof (the title jumps there); each code is a chip that scrolls to the row naming it (standardsmap.js handles data-smap-code clicks). spot picks the drawn part the arc touches: ro-skid -> RO rack, storage-tank -> tank and loop, gauge -> control panel, weld -> skid frame (fabrication), binder -> binders; any other spot gets a node with no arc. Zones take the slots left top, right top, right bottom, left bottom, bottom in order (five at most on the rings; more stack under the stage).",
  "best_for": "StandardsOrbit draws a standards map as orbits round the plant: the Purified Water plant in isometric line art in the middle of a navy band, two elliptical rings round it, and each zone of the system a node on the outer ring with its standards beside it and an arc running in to the part that zone governs.",
- "status": "live",
+ "status": "retired",
  "instances": [
   {
    "page": "compliance",
@@ -391,9 +391,9 @@
    "page": "compliance",
    "slot": 1,
    "h": "Which standard governs each part",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-23",
    "commit": "c7b1342",
    "hash": "0bf91c8c35",
    "block": {

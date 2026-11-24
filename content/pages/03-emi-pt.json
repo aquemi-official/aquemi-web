@@ -1,13 +1,13 @@
 {
- "id": "sys-pretreatment",
- "section": "Systems",
- "nav_label": "Pretreatment",
- "title": "RO pretreatment for Purified Water systems | Aquemi",
+ "id": "emi-pt",
+ "section": "EMI",
+ "nav_label": "PT · Pretreatment",
+ "title": "EMI PT: RO pretreatment for Purified Water | Aquemi",
  "meta": "PVC pretreatment for your Purified Water package. It takes municipal or well drinking water and holds RO feed to chlorine, hardness and SDI targets all year.",
- "path": "/systems/pretreatment/",
- "eyebrow": "SYSTEMS · PVC PRETREATMENT · USP <1231>",
+ "path": "/emi/pt/",
+ "eyebrow": "EMI · PT · PVC PRETREATMENT · USP <1231>",
  "headline": "Keep chlorine and scale off your membranes",
- "lead": "We design the polyvinyl chloride (PVC) pretreatment from your seasonal feed water data. It protects the reverse osmosis (RO) membranes all year.",
+ "lead": "The PT skid is EMI's polyvinyl chloride (PVC) pretreatment, designed from your seasonal feed water data. It protects the reverse osmosis (RO) membranes all year.",
  "primary_cta": "Request a feed water review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet|Feed water review",
@@ -75,7 +75,7 @@
     {
      "t": "To RO",
      "spot": "ro-skid",
-     "link": "sys-pw",
+     "link": "emi-ro",
      "cut": "out"
     }
    ],
@@ -238,7 +238,7 @@
    "type": "related",
    "h": "Where to go next",
    "items": [
-    "sys-pw",
+    "emi-ro",
     "svc-upgrades#upgrades",
     "svc-service#visit",
     "industries"
