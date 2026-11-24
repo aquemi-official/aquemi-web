@@ -2,12 +2,12 @@
  "id": "equipment",
  "section": "Equipment",
  "nav_label": "All equipment",
- "title": "Aquemi equipment: EMI skids, P-40, P-80, dosing tank and AeroWell | Aquemi",
+ "title": "Aquemi equipment: EMI skids, P-40, P-80, dosing tank, portable CIP and AeroWell | Aquemi",
  "meta": "Aquemi water equipment: EMI, the modular Purified Water skid system, and standard items with a fixed datasheet: the P-40 and P-80, a dosing tank and the AeroWell atmospheric water generator.",
  "path": "/equipment/",
  "eyebrow": "EQUIPMENT · WATER FOR INDUSTRY · ON SITE · FROM AIR",
  "headline": "Water equipment, from a skid system to a cart",
- "lead": "EMI, our modular Purified Water system, is engineered to your requirements. The rest is standard equipment: one design, one datasheet, built to order. The P-40 cart, the P-80, a dosing tank and the AeroWell.",
+ "lead": "EMI, our modular Purified Water system, is engineered to your requirements. The rest is standard equipment: one design, one datasheet, built to order. The P-40, P-80, dosing tank, portable CIP and AeroWell.",
  "primary_cta": "Ask about equipment",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I want standard equipment",
@@ -20,6 +20,7 @@
   "p-40",
   "p-80",
   "dosing-tank",
+  "portable-cip",
   "aerowell"
  ],
  "blocks": [
@@ -57,6 +58,13 @@
      "icon": "tank",
      "link": "dosing-tank",
      "d": "[Dosing tank: what it is, in one line]. In design; datasheet to follow."
+    },
+    {
+     "t": "Portable CIP",
+     "tag": "Water on site",
+     "icon": "wrench",
+     "link": "portable-cip",
+     "d": "[Portable CIP: what it is, in one line]. Clean-in-place (CIP) on wheels. In design; datasheet to follow."
     },
     {
      "t": "AeroWell atmospheric water generator",

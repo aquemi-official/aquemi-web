@@ -25,7 +25,7 @@ var NAVMENU=[
  {id:'equipment',label:'Equipment',sections:['Equipment','EMI'],hub:'equipment',lead:'EMI, our modular Purified Water system, and standard equipment with a fixed datasheet.',
   groups:[{h:'Water for industry',items:[['emi','EMI',"Modular Purified Water: the skids your water needs"],['emi-pt','PT','Pretreatment: protects the RO from your feed water'],['emi-ro','RO','Reverse osmosis, with the control panel'],
      ['emi-edi','EDI','Electrodeionization, where your limit needs it'],['emi-sds','SDS','Storage tank, pump and loop that keep water moving'],['emi-controls',null,'One panel for every skid: TOC, conductivity, alarms, records']]},
-   {h:'Water on site',items:[['p-40',null,'Hose-fed RO and DI cart: rinse, fill and top-up water'],['p-80',null,'In design; datasheet to follow'],['dosing-tank',null,'In design; datasheet to follow']]},
+   {h:'Water on site',items:[['p-40',null,'Hose-fed RO and DI cart: rinse, fill and top-up water'],['p-80',null,'In design; datasheet to follow'],['dosing-tank',null,'In design; datasheet to follow'],['portable-cip',null,'Clean-in-place on wheels; in design']]},
    {h:'Water from air',items:[['aerowell',null,'Drinking water from the air, on a 120 V outlet'],['equipment#which','Engineered or standard?','Who sets the design, what you receive']]}],
   feat:{to:'emi#configurations',eyebrow:'EMI',t:'Typical configurations',d:'Sized skid sets by industry, demand and feed water',icon:'loop'},
   foot:{t:'EMI is designed to meet USP <645> and <643>. The standard equipment is not for pharmaceutical, dialysis or laboratory water.',to:'emi#limits',link:'Limits'}},
@@ -115,7 +115,7 @@ function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexO
 function wIcon(n,cls){var u='url(assets/icons/'+n+'.svg)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
 /* Page icon: the one icon that stands for a page wherever the page is shown small (related links, linked row ends). */
 var PAGE_ICON={emi:'loop','emi-ro':'ro-membrane','emi-edi':'edi','sys-wfi-distillation':'still','sys-wfi-membrane':'edi','sys-pure-steam':'pure-steam','emi-sds':'tank',
- 'emi-pt':'softener','emi-controls':'conductivity',equipment:'factory','p-40':'valve','p-80':'pump','dosing-tank':'tank',aerowell:'droplet',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
+ 'emi-pt':'softener','emi-controls':'conductivity',equipment:'factory','p-40':'valve','p-80':'pump','dosing-tank':'tank','portable-cip':'wrench',aerowell:'droplet',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
  'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
  'svc-documentation':'binder',quality:'magnifier',about:'people',careers:'briefcase',news:'newspaper',
  'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin',
@@ -393,7 +393,7 @@ document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classLis
    Phones (pass 12 C, G-C1/F1): at 600 px and under each column is a disclosure: a 48 px head button (aria-expanded,
    aria-controls) over its links, Company open at first, the others closed; above 600 px the button is not shown, the
    column name is a plain heading and every column is open. One delegated click handler for the whole site. */
-function wFoot(){var cols=[['Equipment',['emi','emi-pt','emi-ro','emi-edi','emi-sds','emi-controls','p-40','p-80','dosing-tank','aerowell']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-documentation','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','buying','quality','news','careers','contact-proposal','contact-service','contact-locations']]],
+function wFoot(){var cols=[['Equipment',['emi','emi-pt','emi-ro','emi-edi','emi-sds','emi-controls','p-40','p-80','dosing-tank','portable-cip','aerowell']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-documentation','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','buying','quality','news','careers','contact-proposal','contact-service','contact-locations']]],
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Modular Purified Water packages for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'

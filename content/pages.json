@@ -1664,12 +1664,12 @@
    "id": "equipment",
    "section": "Equipment",
    "nav_label": "All equipment",
-   "title": "Aquemi equipment: EMI skids, P-40, P-80, dosing tank and AeroWell | Aquemi",
+   "title": "Aquemi equipment: EMI skids, P-40, P-80, dosing tank, portable CIP and AeroWell | Aquemi",
    "meta": "Aquemi water equipment: EMI, the modular Purified Water skid system, and standard items with a fixed datasheet: the P-40 and P-80, a dosing tank and the AeroWell atmospheric water generator.",
    "path": "/equipment/",
    "eyebrow": "EQUIPMENT · WATER FOR INDUSTRY · ON SITE · FROM AIR",
    "headline": "Water equipment, from a skid system to a cart",
-   "lead": "EMI, our modular Purified Water system, is engineered to your requirements. The rest is standard equipment: one design, one datasheet, built to order. The P-40 cart, the P-80, a dosing tank and the AeroWell.",
+   "lead": "EMI, our modular Purified Water system, is engineered to your requirements. The rest is standard equipment: one design, one datasheet, built to order. The P-40, P-80, dosing tank, portable CIP and AeroWell.",
    "primary_cta": "Ask about equipment",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I want standard equipment",
@@ -1682,6 +1682,7 @@
     "p-40",
     "p-80",
     "dosing-tank",
+    "portable-cip",
     "aerowell"
    ],
    "blocks": [
@@ -1719,6 +1720,13 @@
        "icon": "tank",
        "link": "dosing-tank",
        "d": "[Dosing tank: what it is, in one line]. In design; datasheet to follow."
+      },
+      {
+       "t": "Portable CIP",
+       "tag": "Water on site",
+       "icon": "wrench",
+       "link": "portable-cip",
+       "d": "[Portable CIP: what it is, in one line]. Clean-in-place (CIP) on wheels. In design; datasheet to follow."
       },
       {
        "t": "AeroWell atmospheric water generator",
@@ -2518,6 +2526,125 @@
     "Certifications ([AeroWell certifications held]): the previous site said \"UL 508A and NSF compliant\"; print only what is held, with the standard number (FD-24).",
     "Photographs of the unit, and whether the Living Vehicle case study and the Elite Coach Works testimonial may be reused under the Aquemi name.",
     "Lead time and price ([product lead time, weeks], [AeroWell price, CAD]); whether units ship outside Canada."
+   ]
+  },
+  {
+   "id": "portable-cip",
+   "section": "Equipment",
+   "nav_label": "Portable CIP",
+   "title": "Portable CIP: in design | Aquemi",
+   "meta": "The Aquemi Portable CIP is in design. Its datasheet follows the first unit. Ask for price and lead time.",
+   "path": "/equipment/portable-cip/",
+   "eyebrow": "EQUIPMENT · PORTABLE CIP · IN DESIGN",
+   "headline": "Portable CIP: in design",
+   "lead": "[Portable CIP: what it is, two sentences]. A clean-in-place (CIP) unit on wheels, in design; its datasheet follows the first unit.",
+   "primary_cta": "Ask about the Portable CIP",
+   "primary_cta_link": "contact-proposal",
+   "primary_cta_intent": "I want standard equipment|Portable CIP",
+   "secondary_cta": {
+    "label": "All equipment",
+    "link": "equipment"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "nav": "Technical data",
+     "anchor": "data",
+     "h": "Technical data",
+     "caption": "To be confirmed",
+     "intro": "Each row is filled from the datasheet when the first unit is drawn and tested. Nothing here is a design value yet.",
+     "cols": [
+      "Item",
+      "Value",
+      "Basis"
+     ],
+     "rows": [
+      {
+       "p": "Capacity",
+       "v": "[Portable CIP capacity, with its unit]",
+       "m": "Datasheet"
+      },
+      {
+       "p": "Feed and utilities",
+       "v": "[Portable CIP feed and utilities]",
+       "m": "Datasheet"
+      },
+      {
+       "p": "Connections",
+       "v": "[Portable CIP connections]",
+       "m": "Drawing"
+      },
+      {
+       "p": "Size and mass",
+       "v": "[Portable CIP size and mass]",
+       "m": "Drawing"
+      },
+      {
+       "p": "Materials",
+       "v": "[Portable CIP wetted and frame materials]",
+       "m": "Drawing"
+      }
+     ],
+     "note": "Design values are not guarantees of performance. No certification or listing at this date."
+    },
+    {
+     "type": "faq",
+     "nav": "FAQ",
+     "anchor": "faq",
+     "h": "Questions buyers ask",
+     "items": [
+      {
+       "q": "When can I get one?",
+       "a": "The first units are built to order with a longer lead time while we complete the design and test the first unit. Price and lead time: confirmed when you enquire.",
+       "link": "buying",
+       "link_label": "How buying works"
+      },
+      {
+       "q": "What will the datasheet cover?",
+       "a": "Capacity with its basis, feed and utilities, connections, size and mass, materials, consumables and what each figure rests on: a drawing, a maker's rating, a calculation or a measurement.",
+       "link": "p-40#data",
+       "link_label": "See the P-40's"
+      },
+      {
+       "q": "Is it for pharmaceutical water?",
+       "a": "No. Standard equipment is not designed or certified for pharmaceutical, dialysis or laboratory water grades. For Purified Water, see EMI.",
+       "link": "emi",
+       "link_label": "See EMI"
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Where to go next",
+     "items": [
+      "equipment",
+      "p-80",
+      "buying",
+      "contact-proposal"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Ask about the Portable CIP",
+    "body": "Tell us where it will work. An engineer replies in writing with what we can say today, and the datasheet when it exists.",
+    "button": "Ask about the Portable CIP",
+    "link": "contact-proposal",
+    "intent": "I want standard equipment|Portable CIP",
+    "include": [
+     "Where and how it will be used",
+     "Feed water or site conditions, if known",
+     "How many units, and when"
+    ],
+    "turnaround": "Confirmed when you enquire",
+    "returns": [
+     "What we can say today",
+     "Lead time for the first units",
+     "The datasheet, when it exists"
+    ]
+   },
+   "todo": [
+    "Equipment (2026-11-23): stub page. The repository aquemi-official/portable-cip (not created yet) holds only a README; every fact is a placeholder. Write what the Portable CIP is, what it is for and who buys it, then the datasheet rows, then a drawing or photograph for the hero (assets/illustrations/p-80.png).",
+    "Lead time and price for the first units ([product lead time, weeks])."
    ]
   },
   {
@@ -8224,6 +8351,7 @@
           "P-40",
           "P-80",
           "Dosing tank",
+          "Portable CIP",
           "AeroWell",
           "Not sure: tell me which fits"
          ],

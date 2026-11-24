@@ -34,6 +34,7 @@ EMI (Water for industry) and the standard items (Water on site, Water from air) 
 | [AeroWell atmospheric water generator](https://aquemi-official.github.io/aquemi-web/#aerowell) | Drinking water from the air, on a 120 V outlet | diagram (How it works, #process: WindingRoute), spec (Technical data, #data, fold 6), faq (FAQ, #faq), closing (checklist, returns) |
 | [P-80](https://aquemi-official.github.io/aquemi-web/#p-80) | P-80: in design | spec (Technical data, #data), faq (FAQ, #faq), closing (checklist, returns) |
 | [Dosing tank](https://aquemi-official.github.io/aquemi-web/#dosing-tank) | Dosing tank: in design | spec (Technical data, #data), faq (FAQ, #faq), closing (checklist, returns) |
+| [Portable CIP](https://aquemi-official.github.io/aquemi-web/#portable-cip) | Portable CIP: in design | spec (Technical data, #data), faq (FAQ, #faq), closing (checklist, returns) |
 
 ## Services
 
