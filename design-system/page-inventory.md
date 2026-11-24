@@ -1,6 +1,6 @@
 # Page inventory
 
-The draft website at https://aquemi-official.github.io/aquemi-web/ has 36 pages built from this system (the EMI and Products restructure of 2026-11-23 renamed the Systems pages as EMI skid pages and added the EDI skid, retired Compliance and Applications into content/retired/products-2026-11/ with their limits, configurations and supplier-check blocks re-homed on emi and quality, moved Documentation package to Services and Quality management to Company, and added Products with the P-40 and AeroWell pages; pass 13 added privacy and retired ind-cdmo, and simplified every page on 2026-11-05: retired sections are in the section library, the earlier page files in content/retired/simplify-2026-11/; pass 11 added urs-guide, project-plan, first-system and buying, DR-026; pass 12 added ind-personal-care, ind-hospital-lab and ind-process, DR-027, renamed projects "Applications" and news "Technical notes", and made the header a mega menu, DR-029). Aquemi offers EMI, a modular Purified Water system of four skids in PP with PVC pretreatment (PT, RO, EDI, SDS) sharing one control panel, and standard products (P-40, P-80, dosing tank, AeroWell); the WFI, pure steam and biotechnology pages are retired to `content/retired/`. The repository is `Aquemi-Official/aquemi-web`; page copy lives in `content/pages.json`. Use this list when you design or write any page, deck or document so page names and structure match the site.
+The draft website at https://aquemi-official.github.io/aquemi-web/ has 36 pages built from this system (the EMI and Products restructure of 2026-11-23 renamed the Systems pages as EMI skid pages and added the EDI skid, retired Compliance and Applications into content/retired/products-2026-11/ with their limits, configurations and supplier-check blocks re-homed on emi and quality, moved Documentation package to Services and Quality management to Company, and added Products with the P-40 and AeroWell pages, renamed Equipment and given EMI, P-80 and dosing tank the same day; pass 13 added privacy and retired ind-cdmo, and simplified every page on 2026-11-05: retired sections are in the section library, the earlier page files in content/retired/simplify-2026-11/; pass 11 added urs-guide, project-plan, first-system and buying, DR-026; pass 12 added ind-personal-care, ind-hospital-lab and ind-process, DR-027, renamed projects "Applications" and news "Technical notes", and made the header a mega menu, DR-029). Aquemi offers EMI, a modular Purified Water system of four skids in PP with PVC pretreatment (PT, RO, EDI, SDS) sharing one control panel, and standard products (P-40, P-80, dosing tank, AeroWell); the WFI, pure steam and biotechnology pages are retired to `content/retired/`. The repository is `Aquemi-Official/aquemi-web`; page copy lives in `content/pages.json`. Use this list when you design or write any page, deck or document so page names and structure match the site.
 
 Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a short `nav` label, four or more), content sections, a closing navy Band, Footer, and the BackToTop button (shown once the reader is well down the page). The sections each page uses are listed below in order, each as `type (nav label, or heading when it has none, #anchor, fold: Look component)`; generated from the page files by the pass 12 integrator; `closing` notes a `cta.include` checklist, `cta.returns` and an explicit `cta.proof`.
 
@@ -10,7 +10,11 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | --- | --- | --- |
 | [Home](https://aquemi-official.github.io/aquemi-web/#home) | Modular Purified Water systems, from pretreatment to point of use | path (One package, one water path: SystemRun), table as router (Start from where your project is, #start: ManifoldRouter), grid (Same package, different limits by industry, #industries: IndustryDrops), steps (From order to water in use, #steps: ProjectRun), closing (checklist, returns) |
 
-## EMI
+## Equipment
+
+EMI (Water for industry) and the standard items (Water on site, Water from air) share the Equipment menu; the EMI pages keep their own section string "EMI" so their hero index lists the skids.
+
+### EMI
 
 | Page | Headline | Sections |
 | --- | --- | --- |
@@ -21,13 +25,15 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | [SDS · Storage and distribution](https://aquemi-official.github.io/aquemi-web/#emi-sds) | Loops that hold quality to every outlet | spec as rules (Design rules, #sanitization, fold 4: RuleFigures), diagram (How it works, #loop: LoopCircuit), options as modules (Options, #options: LoopDock), faq (FAQ, #faq), closing (checklist, returns) |
 | [Controls](https://aquemi-official.github.io/aquemi-web/#emi-controls) | Water data you can defend | diagram (Architecture, #layers: LayerStack), spec as callouts (Measurements, #instruments: SignalDial), faq (FAQ, #remote-access), closing (checklist, returns) |
 
-## Products
+### Standard equipment
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [All products](https://aquemi-official.github.io/aquemi-web/#products) | Standard equipment, one datasheet each | grid (Products, #range), table (EMI or a product, #which), faq (FAQ, #faq), closing (checklist, returns) |
+| [All equipment](https://aquemi-official.github.io/aquemi-web/#equipment) | Water equipment, from a skid system to a cart | grid (Products, #range), table (EMI or a product, #which), faq (FAQ, #faq), closing (checklist, returns) |
 | [P-40 portable pure-water cart](https://aquemi-official.github.io/aquemi-web/#p-40) | Low-mineral water, made where the job is | diagram (How it works, #process: WindingRoute), spec (Technical data, #data, fold 6), table (Consumables, #consumables), grid (Where it fits, #fits), faq (FAQ, #faq), closing (checklist, returns) |
 | [AeroWell atmospheric water generator](https://aquemi-official.github.io/aquemi-web/#aerowell) | Drinking water from the air, on a 120 V outlet | diagram (How it works, #process: WindingRoute), spec (Technical data, #data, fold 6), faq (FAQ, #faq), closing (checklist, returns) |
+| [P-80](https://aquemi-official.github.io/aquemi-web/#p-80) | P-80: in design | spec (Technical data, #data), faq (FAQ, #faq), closing (checklist, returns) |
+| [Dosing tank](https://aquemi-official.github.io/aquemi-web/#dosing-tank) | Dosing tank: in design | spec (Technical data, #data), faq (FAQ, #faq), closing (checklist, returns) |
 
 ## Services
 

@@ -6032,11 +6032,31 @@
      "page": "contact-proposal",
      "slot": 2,
      "h": "What each request returns",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-23",
      "last_seen": "2026-11-23",
      "commit": "7a69563",
      "hash": "5325861a5f"
+    },
+    {
+     "page": "contact-proposal",
+     "slot": 2,
+     "h": "What each request returns",
+     "status": "retired",
+     "first_seen": "2026-11-23",
+     "last_seen": "2026-11-23",
+     "commit": "eb6bdfe",
+     "hash": "99b14a740a"
+    },
+    {
+     "page": "contact-proposal",
+     "slot": 2,
+     "h": "What each request returns",
+     "status": "live",
+     "first_seen": "2026-11-23",
+     "last_seen": "2026-11-23",
+     "commit": "eb6bdfe",
+     "hash": "ebe0464f57"
     }
    ]
   },
@@ -8303,11 +8323,21 @@
      "page": "emi",
      "slot": 0,
      "h": "How the skids fit together",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-23",
      "last_seen": "2026-11-23",
      "commit": "7a69563",
      "hash": "98b0bf2302"
+    },
+    {
+     "page": "emi",
+     "slot": 0,
+     "h": "How the skids fit together",
+     "status": "live",
+     "first_seen": "2026-11-23",
+     "last_seen": "2026-11-23",
+     "commit": "eb6bdfe",
+     "hash": "aa2d286204"
     }
    ]
   },
@@ -8491,11 +8521,21 @@
      "page": "home",
      "slot": 0,
      "h": "One package, one water path",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-23",
      "last_seen": "2026-11-23",
      "commit": "7a69563",
      "hash": "2a7297ca13"
+    },
+    {
+     "page": "home",
+     "slot": 0,
+     "h": "EMI: one system, one water path",
+     "status": "live",
+     "first_seen": "2026-11-23",
+     "last_seen": "2026-11-23",
+     "commit": "eb6bdfe",
+     "hash": "3317271d07"
     }
    ]
   },

@@ -249,7 +249,7 @@
    "page": "home",
    "slot": 0,
    "h": "One package, one water path",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-23",
    "last_seen": "2026-11-23",
    "commit": "7a69563",
@@ -258,6 +258,54 @@
     "type": "path",
     "h": "One package, one water path",
     "intro": "One package makes Purified Water (PW) for your products and final rinses, from drinking water to the point of use.",
+    "from": "Drinking water",
+    "to": "Point of use",
+    "items": [
+     {
+      "t": "Pretreatment",
+      "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
+      "tag": "USP <1231>",
+      "link": "emi-pt",
+      "spot": "pretreatment"
+     },
+     {
+      "t": "PW generation",
+      "d": "RO and deionization on a polypropylene (PP) skid, designed to meet the USP conductivity and organic carbon limits.",
+      "tag": "USP <645>",
+      "link": "emi-ro",
+      "spot": "ro-skid"
+     },
+     {
+      "t": "Storage and distribution",
+      "d": "Tank and loop keep water moving to every point of use, sanitized on a set schedule.",
+      "tag": "USP <1231>",
+      "link": "emi-sds",
+      "spot": "storage-tank"
+     },
+     {
+      "t": "Monitoring and controls",
+      "d": "Online total organic carbon (TOC) and conductivity, with alarms and divert.",
+      "tag": "USP <643>",
+      "link": "emi-controls",
+      "icon": "conductivity"
+     }
+    ],
+    "look": "system-run"
+   }
+  },
+  {
+   "page": "home",
+   "slot": 0,
+   "h": "EMI: one system, one water path",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "eb6bdfe",
+   "hash": "3317271d07",
+   "block": {
+    "type": "path",
+    "h": "EMI: one system, one water path",
+    "intro": "EMI is our modular Purified Water (PW) system: skids for pretreatment, reverse osmosis, electrodeionization and storage and distribution, taken as your water needs them. One water path from drinking water to the point of use.",
     "from": "Drinking water",
     "to": "Point of use",
     "items": [

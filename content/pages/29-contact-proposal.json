@@ -86,7 +86,7 @@
         "I have a system already",
         "I am qualifying suppliers",
         "Not sure yet: talk to an engineer",
-        "I want a standard product"
+        "I want standard equipment"
        ],
        "help": "RFQ: request for quotation."
       },
@@ -166,10 +166,10 @@
        "help": "A feed water review names the pretreatment your water needs."
       },
       {
-       "label": "Which product?",
+       "label": "Which item?",
        "kind": "radio",
        "required": true,
-       "when": "I want a standard product",
+       "when": "I want standard equipment",
        "options": [
         "P-40",
         "P-80",
@@ -177,14 +177,14 @@
         "AeroWell",
         "Not sure: tell me which fits"
        ],
-       "help": "Standard items with a fixed datasheet, built to order."
+       "help": "Standard items with a fixed datasheet, built to order. For EMI, start from your water data instead."
       },
       {
        "kind": "note",
-       "when": "I want a standard product",
-       "label": "Products are standard items, not Purified Water systems: see the range and what each is for.",
-       "link": "products",
-       "action": "See the products"
+       "when": "I want standard equipment",
+       "label": "Standard equipment is not a Purified Water system: see the range and what each item is for.",
+       "link": "equipment",
+       "action": "See the equipment"
       }
      ]
     },
@@ -554,10 +554,10 @@
      "Discussed when you enquire"
     ],
     [
-     "I want a standard product",
+     "I want standard equipment",
      {
       "t": "Price, lead time, freight and the datasheet",
-      "link": "products"
+      "link": "equipment"
      },
      "Confirmed when you enquire",
      "No charge"
@@ -585,7 +585,7 @@
   ]
  },
  "todo": [
-  "Products (2026-11-23): the form's first question gained \"I want a standard product\" with a product radio; the requests table gained its row. The \"No charge\" cost for a product quote is an assumption to confirm (FD-02).",
+  "Products (2026-11-23): the form's first question gained \"I want standard equipment\" with a product radio; the requests table gained its row. The \"No charge\" cost for a product quote is an assumption to confirm (FD-02).",
   "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
   "Turnaround per request, for the requests table: URS review, compliance matrix, document review (one figure for loop, controls, fabrication, C&Q plan and FAT list reviews), scope review, feed water review, budget proposal, assessment, audit request (FD-01). Once filled, name each figure in its cell (gap review, matrix, proposal, document review), since the placeholder names then disappear",
   "Cost per request, free or CAD, and whether a fee is credited against an order: URS review, compliance matrix, proposals, document review, scope review, feed water review ([cost of the feed water review], the canonical name in ops/placeholder-names.md), budget range, assessment, supplier audit, fit check (FD-02). The requests table shows all six rows (DR-024 rule 5). At launch a cost FD-02 has not set drops its row (DR-024 rule 6, DR-005 rule 8); \"Free\" only where FD-02 says so",

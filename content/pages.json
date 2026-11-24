@@ -4,17 +4,17 @@
    "id": "home",
    "section": "Home",
    "nav_label": "Home",
-   "title": "Purified Water systems: pretreatment, RO, DI/EDI | Aquemi",
-   "meta": "A modular Purified Water package in polypropylene with PVC pretreatment, designed in Ontario to meet USP <645> and <643>. For drug, device, hospital, laboratory, personal care and process plants. No WFI, pure steam or stainless steel.",
+   "title": "EMI modular Purified Water systems: pretreatment, RO, EDI | Aquemi",
+   "meta": "EMI, a modular Purified Water system in polypropylene with PVC pretreatment, designed in Ontario to meet USP <645> and <643>. For drug, device, hospital, laboratory, personal care and process plants. No WFI, pure steam or stainless steel.",
    "path": "/",
    "eyebrow": "PURIFIED WATER · USP <645>, <643>",
    "headline": "Modular Purified Water systems, from pretreatment to point of use",
-   "lead": "For makers of drugs, natural health products and devices; for hospitals, labs, personal care and process plants. One Purified Water package, built in Ontario. No Water for Injection, pure steam or stainless steel systems.",
+   "lead": "For makers of drugs, natural health products and devices; for hospitals, labs, personal care and process plants. EMI, the modular Purified Water system, built in Ontario. No Water for Injection, pure steam or stainless steel.",
    "primary_cta": "Talk to an engineer",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "Not sure yet: talk to an engineer",
    "secondary_cta": {
-    "label": "See the systems",
+    "label": "See EMI",
     "link": "emi"
    },
    "facts": [
@@ -26,8 +26,8 @@
    "blocks": [
     {
      "type": "path",
-     "h": "One package, one water path",
-     "intro": "One package makes Purified Water (PW) for your products and final rinses, from drinking water to the point of use.",
+     "h": "EMI: one system, one water path",
+     "intro": "EMI is our modular Purified Water (PW) system: skids for pretreatment, reverse osmosis, electrodeionization and storage and distribution, taken as your water needs them. One water path from drinking water to the point of use.",
      "from": "Drinking water",
      "to": "Point of use",
      "items": [
@@ -234,6 +234,7 @@
     "turnaround": "Confirmed when you enquire"
    },
    "todo": [
+    "Equipment (2026-11-23): the home page names EMI in the lead, the secondary button and the water-path section, so visitors learn that EMI is the modular Purified Water system before they reach the Equipment menu.",
     "Hero photograph of a finished Aquemi skid or installed loop",
     "Outlet conductivity guarantee at the skid outlet, measured at FAT ([outlet conductivity guarantee, µS/cm @ 25 °C]; same placeholder as sys-pw and svc-design; FD-21). At launch an unset hero fact goes (DR-010)",
     "Confirm every skid in the PW package is tested with water at FAT (hero fact [100 %]; FD-45); loops fabricated on site are tested at SAT",
@@ -275,7 +276,7 @@
    "path": "/emi/",
    "eyebrow": "EMI · MODULAR PURIFIED WATER SKIDS · USP <645>, <643>",
    "headline": "The skids your water needs",
-   "lead": "EMI is our Purified Water system in four modular skids: pretreatment, reverse osmosis, electrodeionization, and storage and distribution. Take one, two or all four: each is sized to your water, and they share one control panel.",
+   "lead": "EMI is our Purified Water system in four modular skids: pretreatment, reverse osmosis, electrodeionization, and storage and distribution. Take one, two or all four, each sized to your water; they share one control panel.",
    "primary_cta": "Get a budget range",
    "primary_cta_link": "contact-proposal",
    "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
@@ -340,7 +341,7 @@
      "look": "strata-run",
      "base_link": "emi-controls",
      "caption": "After the PVC pretreatment, the package is polypropylene (PP).",
-     "intro": "Take the skids your water needs; each has its own frame, piping and instruments. The control panel sits on the RO skid; the EDI skid wires to it, and the SDS skid connects its remote I/O panel to it."
+     "intro": "Take the skids your water needs. The control panel sits on the RO skid; the EDI skid wires to it, and the SDS skid connects its remote I/O panel to it."
     },
     {
      "type": "spec",
@@ -1660,51 +1661,63 @@
    ]
   },
   {
-   "id": "products",
-   "section": "Products",
-   "nav_label": "All products",
-   "title": "Aquemi products: P-40, P-80, dosing tank and AeroWell | Aquemi",
-   "meta": "Standard Aquemi equipment with a fixed datasheet: the P-40 portable pure-water cart, the P-80, a dosing tank and the AeroWell atmospheric water generator.",
-   "path": "/products/",
-   "eyebrow": "PRODUCTS · STANDARD EQUIPMENT",
-   "headline": "Standard equipment, one datasheet each",
-   "lead": "EMI is engineered to your requirements. Products are standard items: one design, one datasheet, built to order. Four today: the P-40 portable pure-water cart, the P-80, a dosing tank and the AeroWell atmospheric water generator.",
-   "primary_cta": "Ask about a product",
+   "id": "equipment",
+   "section": "Equipment",
+   "nav_label": "All equipment",
+   "title": "Aquemi equipment: EMI skids, P-40, P-80, dosing tank and AeroWell | Aquemi",
+   "meta": "Aquemi water equipment: EMI, the modular Purified Water skid system, and standard items with a fixed datasheet: the P-40 and P-80, a dosing tank and the AeroWell atmospheric water generator.",
+   "path": "/equipment/",
+   "eyebrow": "EQUIPMENT · WATER FOR INDUSTRY · ON SITE · FROM AIR",
+   "headline": "Water equipment, from a skid system to a cart",
+   "lead": "EMI, our modular Purified Water system, is engineered to your requirements. The rest is standard equipment: one design, one datasheet, built to order. The P-40 cart, the P-80, a dosing tank and the AeroWell.",
+   "primary_cta": "Ask about equipment",
    "primary_cta_link": "contact-proposal",
-   "primary_cta_intent": "I want a standard product",
+   "primary_cta_intent": "I want standard equipment",
    "secondary_cta": {
-    "label": "See EMI, the engineered system",
+    "label": "See EMI",
     "link": "emi"
    },
    "index": [
+    "emi",
     "p-40",
+    "p-80",
+    "dosing-tank",
     "aerowell"
    ],
    "blocks": [
     {
      "type": "grid",
-     "nav": "Products",
+     "nav": "Range",
      "anchor": "range",
      "h": "The range",
-     "intro": "Each product is one fixed design with its own datasheet. The first units of each are built to order, with a longer lead time while we complete the design.",
+     "intro": "EMI is sized and configured per project. Each standard item is one fixed design with its own datasheet; the first units are built to order, with a longer lead time while we complete the design.",
      "items": [
       {
+       "t": "EMI modular Purified Water system",
+       "tag": "Water for industry",
+       "icon": "loop",
+       "link": "emi",
+       "d": "Pretreatment, reverse osmosis, electrodeionization and storage and distribution skids that share one control panel. Take the skids your water needs."
+      },
+      {
        "t": "P-40 portable pure-water cart",
-       "tag": "Reverse osmosis and deionization",
+       "tag": "Water on site",
        "icon": "valve",
        "link": "p-40",
        "d": "Hose in, hose out, no power. Sediment, carbon, one 4040 RO element and mixed-bed DI on a wheeled frame, for rinse, fill and top-up water."
       },
       {
        "t": "P-80",
-       "tag": "In design",
+       "tag": "Water on site",
        "icon": "pump",
+       "link": "p-80",
        "d": "[P-80: what it is, in one line]. In design; datasheet to follow."
       },
       {
        "t": "Dosing tank",
-       "tag": "In design",
+       "tag": "Water on site",
        "icon": "tank",
+       "link": "dosing-tank",
        "d": "[Dosing tank: what it is, in one line]. In design; datasheet to follow."
       },
       {
@@ -1718,14 +1731,14 @@
     },
     {
      "type": "table",
-     "nav": "EMI or a product",
+     "nav": "Engineered or standard",
      "anchor": "which",
-     "h": "EMI or a product?",
+     "h": "Engineered or standard?",
      "intro": "Both come from the same shop. What differs is who sets the design.",
      "cols": [
       "",
       "EMI",
-      "Products"
+      "Standard equipment"
      ],
      "rows": [
       [
@@ -1762,18 +1775,18 @@
      "h": "Questions buyers ask",
      "items": [
       {
-       "q": "Can a product make Purified Water for a GMP plant?",
+       "q": "Can the standard equipment make Purified Water for a GMP plant?",
        "a": "No. Products are not designed or certified for pharmaceutical, dialysis or laboratory water grades. That is EMI's job.",
        "link": "emi",
        "link_label": "See EMI"
       },
       {
-       "q": "Who are the products for?",
+       "q": "Who is the standard equipment for?",
        "a": "Trades, light industry, mobile and off-grid users: rinse, fill, top-up and drinking water where no plant exists."
       },
       {
        "q": "How do we buy one?",
-       "a": "Send the enquiry form with the product name. We confirm price, lead time and freight in writing. The first units of each product are built to order, with a longer lead time while we complete the design.",
+       "a": "Send the enquiry form with the item's name. We confirm price, lead time and freight in writing. The first units of each are built to order, with a longer lead time while we complete the design. EMI starts with a proposal.",
        "link": "buying",
        "link_label": "How buying works"
       }
@@ -1791,13 +1804,13 @@
     }
    ],
    "cta": {
-    "h": "Ask about a product",
-    "body": "Tell us the product and where it will work. An engineer replies in writing with price and lead time.",
-    "button": "Ask about a product",
+    "h": "Ask about equipment",
+    "body": "Tell us the item and where it will work. An engineer replies in writing with price and lead time. For EMI, send your water data instead.",
+    "button": "Ask about equipment",
     "link": "contact-proposal",
-    "intent": "I want a standard product",
+    "intent": "I want standard equipment",
     "include": [
-     "Product name",
+     "The item's name",
      "Where and how it will be used",
      "Feed water or site conditions, if known"
     ],
@@ -1809,14 +1822,14 @@
     ]
    },
    "todo": [
-    "Products (2026-11-23): new section. P-80 and dosing tank have no page until their repositories hold a description and a datasheet; their cards carry placeholders.",
+    "Equipment (2026-11-23): the Products section became Equipment and houses EMI (Water for industry) beside the standard items (Water on site, Water from air). P-80 and the dosing tank have pages built of placeholders until their repositories hold a description and a datasheet.",
     "Lead time for the first units of each product ([product lead time, weeks]) and list prices, if any are to be published; whether products ship outside Canada.",
     "A product photograph or line drawing per card once a unit is built or the line art is approved."
    ]
   },
   {
    "id": "p-40",
-   "section": "Products",
+   "section": "Equipment",
    "nav_label": "P-40 portable pure-water cart",
    "title": "P-40 portable pure-water cart: hose-fed RO and DI | Aquemi",
    "meta": "The Aquemi P-40 is a portable RO/DI cart: sediment, catalytic carbon, one 4040 RO element and mixed-bed DI on a wheeled aluminium frame. Tap pressure does the work.",
@@ -1826,10 +1839,10 @@
    "lead": "Reverse osmosis and deionization on one hose-fed cart. Connect a garden hose, open the tap and take low-mineral water from the outlet hose. No pump, tank or power supply: tap pressure does the work.",
    "primary_cta": "Ask about the P-40",
    "primary_cta_link": "contact-proposal",
-   "primary_cta_intent": "I want a standard product|P-40",
+   "primary_cta_intent": "I want standard equipment|P-40",
    "secondary_cta": {
     "label": "All products",
-    "link": "products"
+    "link": "equipment"
    },
    "blocks": [
     {
@@ -2045,7 +2058,7 @@
      "type": "related",
      "h": "Where to go next",
      "items": [
-      "products",
+      "equipment",
       "aerowell",
       "buying",
       "contact-proposal"
@@ -2057,7 +2070,7 @@
     "body": "Tell us the product and where it will work. An engineer replies in writing with price and lead time.",
     "button": "Ask about the P-40",
     "link": "contact-proposal",
-    "intent": "I want a standard product|P-40",
+    "intent": "I want standard equipment|P-40",
     "include": [
      "Where the cart will work",
      "Your tap pressure and water hardness, if known",
@@ -2079,8 +2092,246 @@
    ]
   },
   {
+   "id": "p-80",
+   "section": "Equipment",
+   "nav_label": "P-80",
+   "title": "P-80: in design | Aquemi",
+   "meta": "The Aquemi P-80 is in design. Its datasheet follows the first unit. Ask for price and lead time.",
+   "path": "/equipment/p-80/",
+   "eyebrow": "EQUIPMENT · P-80 · IN DESIGN",
+   "headline": "P-80: in design",
+   "lead": "[P-80: what it is, two sentences]. The P-80 is in design; its datasheet follows the first unit.",
+   "primary_cta": "Ask about the P-80",
+   "primary_cta_link": "contact-proposal",
+   "primary_cta_intent": "I want standard equipment|P-80",
+   "secondary_cta": {
+    "label": "All equipment",
+    "link": "equipment"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "nav": "Technical data",
+     "anchor": "data",
+     "h": "Technical data",
+     "caption": "To be confirmed",
+     "intro": "Each row is filled from the datasheet when the first unit is drawn and tested. Nothing here is a design value yet.",
+     "cols": [
+      "Item",
+      "Value",
+      "Basis"
+     ],
+     "rows": [
+      {
+       "p": "Capacity",
+       "v": "[P-80 capacity, with its unit]",
+       "m": "Datasheet"
+      },
+      {
+       "p": "Feed and utilities",
+       "v": "[P-80 feed and utilities]",
+       "m": "Datasheet"
+      },
+      {
+       "p": "Connections",
+       "v": "[P-80 connections]",
+       "m": "Drawing"
+      },
+      {
+       "p": "Size and mass",
+       "v": "[P-80 size and mass]",
+       "m": "Drawing"
+      },
+      {
+       "p": "Materials",
+       "v": "[P-80 wetted and frame materials]",
+       "m": "Drawing"
+      }
+     ],
+     "note": "Design values are not guarantees of performance. No certification or listing at this date."
+    },
+    {
+     "type": "faq",
+     "nav": "FAQ",
+     "anchor": "faq",
+     "h": "Questions buyers ask",
+     "items": [
+      {
+       "q": "When can I get one?",
+       "a": "The first units are built to order with a longer lead time while we complete the design and test the first unit. Price and lead time: confirmed when you enquire.",
+       "link": "buying",
+       "link_label": "How buying works"
+      },
+      {
+       "q": "What will the datasheet cover?",
+       "a": "Capacity with its basis, feed and utilities, connections, size and mass, materials, consumables and what each figure rests on: a drawing, a maker's rating, a calculation or a measurement.",
+       "link": "p-40#data",
+       "link_label": "See the P-40's"
+      },
+      {
+       "q": "Is it for pharmaceutical water?",
+       "a": "No. Standard equipment is not designed or certified for pharmaceutical, dialysis or laboratory water grades. For Purified Water, see EMI.",
+       "link": "emi",
+       "link_label": "See EMI"
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Where to go next",
+     "items": [
+      "equipment",
+      "p-40",
+      "buying",
+      "contact-proposal"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Ask about the P-80",
+    "body": "Tell us where it will work. An engineer replies in writing with what we can say today, and the datasheet when it exists.",
+    "button": "Ask about the P-80",
+    "link": "contact-proposal",
+    "intent": "I want standard equipment|P-80",
+    "include": [
+     "Where and how it will be used",
+     "Feed water or site conditions, if known",
+     "How many units, and when"
+    ],
+    "turnaround": "Confirmed when you enquire",
+    "returns": [
+     "What we can say today",
+     "Lead time for the first units",
+     "The datasheet, when it exists"
+    ]
+   },
+   "todo": [
+    "Equipment (2026-11-23): stub page. The repository aquemi-official/p-80 holds only a README; every fact is a placeholder. Write what the P-80 is, what it is for and who buys it, then the datasheet rows, then a drawing or photograph for the hero (assets/illustrations/p-80.png).",
+    "Lead time and price for the first units ([product lead time, weeks])."
+   ]
+  },
+  {
+   "id": "dosing-tank",
+   "section": "Equipment",
+   "nav_label": "Dosing tank",
+   "title": "dosing tank: in design | Aquemi",
+   "meta": "The Aquemi dosing tank is in design. Its datasheet follows the first unit. Ask for price and lead time.",
+   "path": "/equipment/dosing-tank/",
+   "eyebrow": "EQUIPMENT · DOSING TANK · IN DESIGN",
+   "headline": "dosing tank: in design",
+   "lead": "[dosing tank: what it is, two sentences]. The dosing tank is in design; its datasheet follows the first unit.",
+   "primary_cta": "Ask about the dosing tank",
+   "primary_cta_link": "contact-proposal",
+   "primary_cta_intent": "I want standard equipment|Dosing tank",
+   "secondary_cta": {
+    "label": "All equipment",
+    "link": "equipment"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "nav": "Technical data",
+     "anchor": "data",
+     "h": "Technical data",
+     "caption": "To be confirmed",
+     "intro": "Each row is filled from the datasheet when the first unit is drawn and tested. Nothing here is a design value yet.",
+     "cols": [
+      "Item",
+      "Value",
+      "Basis"
+     ],
+     "rows": [
+      {
+       "p": "Capacity",
+       "v": "[dosing tank capacity, with its unit]",
+       "m": "Datasheet"
+      },
+      {
+       "p": "Feed and utilities",
+       "v": "[dosing tank feed and utilities]",
+       "m": "Datasheet"
+      },
+      {
+       "p": "Connections",
+       "v": "[dosing tank connections]",
+       "m": "Drawing"
+      },
+      {
+       "p": "Size and mass",
+       "v": "[dosing tank size and mass]",
+       "m": "Drawing"
+      },
+      {
+       "p": "Materials",
+       "v": "[dosing tank wetted and frame materials]",
+       "m": "Drawing"
+      }
+     ],
+     "note": "Design values are not guarantees of performance. No certification or listing at this date."
+    },
+    {
+     "type": "faq",
+     "nav": "FAQ",
+     "anchor": "faq",
+     "h": "Questions buyers ask",
+     "items": [
+      {
+       "q": "When can I get one?",
+       "a": "The first units are built to order with a longer lead time while we complete the design and test the first unit. Price and lead time: confirmed when you enquire.",
+       "link": "buying",
+       "link_label": "How buying works"
+      },
+      {
+       "q": "What will the datasheet cover?",
+       "a": "Capacity with its basis, feed and utilities, connections, size and mass, materials, consumables and what each figure rests on: a drawing, a maker's rating, a calculation or a measurement.",
+       "link": "p-40#data",
+       "link_label": "See the P-40's"
+      },
+      {
+       "q": "Is it for pharmaceutical water?",
+       "a": "No. Standard equipment is not designed or certified for pharmaceutical, dialysis or laboratory water grades. For Purified Water, see EMI.",
+       "link": "emi",
+       "link_label": "See EMI"
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Where to go next",
+     "items": [
+      "equipment",
+      "p-40",
+      "buying",
+      "contact-proposal"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Ask about the dosing tank",
+    "body": "Tell us where it will work. An engineer replies in writing with what we can say today, and the datasheet when it exists.",
+    "button": "Ask about the dosing tank",
+    "link": "contact-proposal",
+    "intent": "I want standard equipment|Dosing tank",
+    "include": [
+     "Where and how it will be used",
+     "Feed water or site conditions, if known",
+     "How many units, and when"
+    ],
+    "turnaround": "Confirmed when you enquire",
+    "returns": [
+     "What we can say today",
+     "Lead time for the first units",
+     "The datasheet, when it exists"
+    ]
+   },
+   "todo": [
+    "Equipment (2026-11-23): stub page. The repository aquemi-official/dosing-tank holds only a README; every fact is a placeholder. Write what the dosing tank is, what it is for and who buys it, then the datasheet rows, then a drawing or photograph for the hero (assets/illustrations/dosing-tank.png).",
+    "Lead time and price for the first units ([product lead time, weeks])."
+   ]
+  },
+  {
    "id": "aerowell",
-   "section": "Products",
+   "section": "Equipment",
    "nav_label": "AeroWell atmospheric water generator",
    "title": "AeroWell A9 atmospheric water generator: drinking water from air | Aquemi",
    "meta": "The AeroWell A9 condenses moisture from the air and filters it into drinking water: 9 US gal (34 L) a day at 26 °C and 60 % RH from a 120 V outlet, for RVs, boats and off-grid sites.",
@@ -2090,10 +2341,10 @@
    "lead": "The AeroWell A9 draws in air, condenses its moisture and filters it into drinking water: 9 US gal a day at 26 °C and 60 % humidity. For RVs, boats and off-grid sites.",
    "primary_cta": "Ask about the AeroWell",
    "primary_cta_link": "contact-proposal",
-   "primary_cta_intent": "I want a standard product|AeroWell",
+   "primary_cta_intent": "I want standard equipment|AeroWell",
    "secondary_cta": {
     "label": "All products",
-    "link": "products"
+    "link": "equipment"
    },
    "blocks": [
     {
@@ -2237,7 +2488,7 @@
      "type": "related",
      "h": "Where to go next",
      "items": [
-      "products",
+      "equipment",
       "p-40",
       "buying",
       "contact-proposal"
@@ -2249,7 +2500,7 @@
     "body": "Tell us the product and where it will work. An engineer replies in writing with price and lead time.",
     "button": "Ask about the AeroWell",
     "link": "contact-proposal",
-    "intent": "I want a standard product|AeroWell",
+    "intent": "I want standard equipment|AeroWell",
     "include": [
      "Where it will run: vehicle, boat, building or site",
      "Typical temperature and humidity",
@@ -7885,7 +8136,7 @@
           "I have a system already",
           "I am qualifying suppliers",
           "Not sure yet: talk to an engineer",
-          "I want a standard product"
+          "I want standard equipment"
          ],
          "help": "RFQ: request for quotation."
         },
@@ -7965,10 +8216,10 @@
          "help": "A feed water review names the pretreatment your water needs."
         },
         {
-         "label": "Which product?",
+         "label": "Which item?",
          "kind": "radio",
          "required": true,
-         "when": "I want a standard product",
+         "when": "I want standard equipment",
          "options": [
           "P-40",
           "P-80",
@@ -7976,14 +8227,14 @@
           "AeroWell",
           "Not sure: tell me which fits"
          ],
-         "help": "Standard items with a fixed datasheet, built to order."
+         "help": "Standard items with a fixed datasheet, built to order. For EMI, start from your water data instead."
         },
         {
          "kind": "note",
-         "when": "I want a standard product",
-         "label": "Products are standard items, not Purified Water systems: see the range and what each is for.",
-         "link": "products",
-         "action": "See the products"
+         "when": "I want standard equipment",
+         "label": "Standard equipment is not a Purified Water system: see the range and what each item is for.",
+         "link": "equipment",
+         "action": "See the equipment"
         }
        ]
       },
@@ -8353,10 +8604,10 @@
        "Discussed when you enquire"
       ],
       [
-       "I want a standard product",
+       "I want standard equipment",
        {
         "t": "Price, lead time, freight and the datasheet",
-        "link": "products"
+        "link": "equipment"
        },
        "Confirmed when you enquire",
        "No charge"
@@ -8384,7 +8635,7 @@
     ]
    },
    "todo": [
-    "Products (2026-11-23): the form's first question gained \"I want a standard product\" with a product radio; the requests table gained its row. The \"No charge\" cost for a product quote is an assumption to confirm (FD-02).",
+    "Products (2026-11-23): the form's first question gained \"I want standard equipment\" with a product radio; the requests table gained its row. The \"No charge\" cost for a product quote is an assumption to confirm (FD-02).",
     "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
     "Turnaround per request, for the requests table: URS review, compliance matrix, document review (one figure for loop, controls, fabrication, C&Q plan and FAT list reviews), scope review, feed water review, budget proposal, assessment, audit request (FD-01). Once filled, name each figure in its cell (gap review, matrix, proposal, document review), since the placeholder names then disappear",
     "Cost per request, free or CAD, and whether a fee is credited against an order: URS review, compliance matrix, proposals, document review, scope review, feed water review ([cost of the feed water review], the canonical name in ops/placeholder-names.md), budget range, assessment, supplier audit, fit check (FD-02). The requests table shows all six rows (DR-024 rule 5). At launch a cost FD-02 has not set drops its row (DR-024 rule 6, DR-005 rule 8); \"Free\" only where FD-02 says so",

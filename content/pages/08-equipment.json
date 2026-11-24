@@ -1,49 +1,61 @@
 {
- "id": "products",
- "section": "Products",
- "nav_label": "All products",
- "title": "Aquemi products: P-40, P-80, dosing tank and AeroWell | Aquemi",
- "meta": "Standard Aquemi equipment with a fixed datasheet: the P-40 portable pure-water cart, the P-80, a dosing tank and the AeroWell atmospheric water generator.",
- "path": "/products/",
- "eyebrow": "PRODUCTS · STANDARD EQUIPMENT",
- "headline": "Standard equipment, one datasheet each",
- "lead": "EMI is engineered to your requirements. Products are standard items: one design, one datasheet, built to order. Four today: the P-40 portable pure-water cart, the P-80, a dosing tank and the AeroWell atmospheric water generator.",
- "primary_cta": "Ask about a product",
+ "id": "equipment",
+ "section": "Equipment",
+ "nav_label": "All equipment",
+ "title": "Aquemi equipment: EMI skids, P-40, P-80, dosing tank and AeroWell | Aquemi",
+ "meta": "Aquemi water equipment: EMI, the modular Purified Water skid system, and standard items with a fixed datasheet: the P-40 and P-80, a dosing tank and the AeroWell atmospheric water generator.",
+ "path": "/equipment/",
+ "eyebrow": "EQUIPMENT · WATER FOR INDUSTRY · ON SITE · FROM AIR",
+ "headline": "Water equipment, from a skid system to a cart",
+ "lead": "EMI, our modular Purified Water system, is engineered to your requirements. The rest is standard equipment: one design, one datasheet, built to order. The P-40 cart, the P-80, a dosing tank and the AeroWell.",
+ "primary_cta": "Ask about equipment",
  "primary_cta_link": "contact-proposal",
- "primary_cta_intent": "I want a standard product",
+ "primary_cta_intent": "I want standard equipment",
  "secondary_cta": {
-  "label": "See EMI, the engineered system",
+  "label": "See EMI",
   "link": "emi"
  },
  "index": [
+  "emi",
   "p-40",
+  "p-80",
+  "dosing-tank",
   "aerowell"
  ],
  "blocks": [
   {
    "type": "grid",
-   "nav": "Products",
+   "nav": "Range",
    "anchor": "range",
    "h": "The range",
-   "intro": "Each product is one fixed design with its own datasheet. The first units of each are built to order, with a longer lead time while we complete the design.",
+   "intro": "EMI is sized and configured per project. Each standard item is one fixed design with its own datasheet; the first units are built to order, with a longer lead time while we complete the design.",
    "items": [
     {
+     "t": "EMI modular Purified Water system",
+     "tag": "Water for industry",
+     "icon": "loop",
+     "link": "emi",
+     "d": "Pretreatment, reverse osmosis, electrodeionization and storage and distribution skids that share one control panel. Take the skids your water needs."
+    },
+    {
      "t": "P-40 portable pure-water cart",
-     "tag": "Reverse osmosis and deionization",
+     "tag": "Water on site",
      "icon": "valve",
      "link": "p-40",
      "d": "Hose in, hose out, no power. Sediment, carbon, one 4040 RO element and mixed-bed DI on a wheeled frame, for rinse, fill and top-up water."
     },
     {
      "t": "P-80",
-     "tag": "In design",
+     "tag": "Water on site",
      "icon": "pump",
+     "link": "p-80",
      "d": "[P-80: what it is, in one line]. In design; datasheet to follow."
     },
     {
      "t": "Dosing tank",
-     "tag": "In design",
+     "tag": "Water on site",
      "icon": "tank",
+     "link": "dosing-tank",
      "d": "[Dosing tank: what it is, in one line]. In design; datasheet to follow."
     },
     {
@@ -57,14 +69,14 @@
   },
   {
    "type": "table",
-   "nav": "EMI or a product",
+   "nav": "Engineered or standard",
    "anchor": "which",
-   "h": "EMI or a product?",
+   "h": "Engineered or standard?",
    "intro": "Both come from the same shop. What differs is who sets the design.",
    "cols": [
     "",
     "EMI",
-    "Products"
+    "Standard equipment"
    ],
    "rows": [
     [
@@ -101,18 +113,18 @@
    "h": "Questions buyers ask",
    "items": [
     {
-     "q": "Can a product make Purified Water for a GMP plant?",
+     "q": "Can the standard equipment make Purified Water for a GMP plant?",
      "a": "No. Products are not designed or certified for pharmaceutical, dialysis or laboratory water grades. That is EMI's job.",
      "link": "emi",
      "link_label": "See EMI"
     },
     {
-     "q": "Who are the products for?",
+     "q": "Who is the standard equipment for?",
      "a": "Trades, light industry, mobile and off-grid users: rinse, fill, top-up and drinking water where no plant exists."
     },
     {
      "q": "How do we buy one?",
-     "a": "Send the enquiry form with the product name. We confirm price, lead time and freight in writing. The first units of each product are built to order, with a longer lead time while we complete the design.",
+     "a": "Send the enquiry form with the item's name. We confirm price, lead time and freight in writing. The first units of each are built to order, with a longer lead time while we complete the design. EMI starts with a proposal.",
      "link": "buying",
      "link_label": "How buying works"
     }
@@ -130,13 +142,13 @@
   }
  ],
  "cta": {
-  "h": "Ask about a product",
-  "body": "Tell us the product and where it will work. An engineer replies in writing with price and lead time.",
-  "button": "Ask about a product",
+  "h": "Ask about equipment",
+  "body": "Tell us the item and where it will work. An engineer replies in writing with price and lead time. For EMI, send your water data instead.",
+  "button": "Ask about equipment",
   "link": "contact-proposal",
-  "intent": "I want a standard product",
+  "intent": "I want standard equipment",
   "include": [
-   "Product name",
+   "The item's name",
    "Where and how it will be used",
    "Feed water or site conditions, if known"
   ],
@@ -148,7 +160,7 @@
   ]
  },
  "todo": [
-  "Products (2026-11-23): new section. P-80 and dosing tank have no page until their repositories hold a description and a datasheet; their cards carry placeholders.",
+  "Equipment (2026-11-23): the Products section became Equipment and houses EMI (Water for industry) beside the standard items (Water on site, Water from air). P-80 and the dosing tank have pages built of placeholders until their repositories hold a description and a datasheet.",
   "Lead time for the first units of each product ([product lead time, weeks]) and list prices, if any are to be published; whether products ship outside Canada.",
   "A product photograph or line drawing per card once a unit is built or the line art is approved."
  ]

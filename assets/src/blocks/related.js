@@ -38,7 +38,7 @@ function relPlan(){var x=-50,y=-19,w=96,d=34,z=1.8,n=5,rh=d/n,g='',k='',m='',dm=
   +isoPart('skid',sx-5,yc-3,z,1,{w:10,d:6})+'<path class="aq-iso__eq" d="'+isoBoxD([sx-3.4,yc-1.8,z+3.2],6.8,3.6,5.4)+'"/>'}
 var REL_ISO={
  emi:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('ro',6,6,6,0.9)},[-48,-58,144,141]],
- products:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('module',30,28,6,0.8)+isoPart('tank',80,30,6,0.6)},[-48,-33,144,116]],
+ equipment:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('module',30,28,6,0.8)+isoPart('tank',80,30,6,0.6)},[-48,-33,144,116]],
  services:[function(){return isoPart('desk',0,0,0,1.3)},[-40,-80,79,101]],
  'urs-guide':[function(){return isoPart('clipboard',0,0,0,1.6,{ticks:4})},[-40,-25,80,48]],
  'first-system':[function(){return isoPart('wall',-50,-40,0,1,{w:100,h:52})+relFoot(-34,-12,60,44)+isoPart('module',0,10,0,0.8)},[-57,-97,135,126]],

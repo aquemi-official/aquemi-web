@@ -6,7 +6,7 @@
 var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
-/* NAVMENU: the header's five sections (EMI, Products, Services, Industries, Company), each a mega panel on wide screens and an expandable group in the phone menu
+/* NAVMENU: the header's four sections (Equipment, Services, Industries, Company), each a mega panel on wide screens and an expandable group in the phone menu
    (NavBar.js; design-system/components/NavBar/README.md). The one source: NAVSECT derives from it.
    Section: id, label (the bar's words), sections (the page "section" strings that make it current; default [label]),
    hub (its overview page, the panel's first link), lead (one line, 14 words or fewer), groups [{h, items}], feat (the
@@ -20,19 +20,13 @@ var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked 
 var NAVTASKS=[['urs-guide','specify a new system'],['first-system','plan our first system'],['svc-upgrades#observation','answer a water observation'],
  ['quality#audit','qualify a supplier'],['buying','check cost, time and terms'],['contact-service','fix a stopped system'],['first-system#fit','check our use fits']];
 var NAVMENU=[
- {id:'emi',label:'EMI',hub:'emi',lead:'Our modular Purified Water system: one skid or four, whatever your water needs, sharing one control panel.',
-  groups:[{h:'The skids, take what you need',items:[['emi-pt','PT','Pretreatment: protects the RO from your feed water'],['emi-ro','RO','Reverse osmosis, with the control panel'],
-     ['emi-edi','EDI','Electrodeionization, where your limit needs it'],['emi-sds','SDS','Storage tank, pump and loop that keep water moving'],
-     ['emi-controls',null,'One panel for every skid: TOC, conductivity, alarms, records']]},
-   {h:'Plan and budget',items:[['emi#configurations','Typical configurations','Sized skid sets by industry, demand and feed water'],['emi#limits','Purified Water limits','Conductivity, TOC and microbial limits'],['emi#site','Site requirements','Space, utilities and connections you provide']]}],
-  feat:{to:'news#pp-or-stainless',eyebrow:'Technical note',t:'Polypropylene or stainless?',d:"When a PP loop fits, and when it doesn't",icon:'loop'},
-  foot:{t:'No Water for Injection, pure steam or stainless steel systems.',to:'industries#faq',link:'Why'}},
- {id:'products',label:'Products',hub:'products',lead:'Standard equipment with a fixed datasheet, built to order.',
-  groups:[{h:'Water on site',items:[['p-40',null,'Hose-fed RO and DI cart: rinse, fill and top-up water'],['p-80',null,'In design; datasheet to follow'],['dosing-tank',null,'In design; datasheet to follow']]},
-   {h:'Water from air',items:[['aerowell',null,'Drinking water from the air, on a 120 V outlet']]},
-   {h:'Choosing',items:[['products#which','EMI or a product?','Who sets the design, what you receive']]}],
-  feat:{to:'p-40',eyebrow:'New',t:'P-40 portable pure-water cart',d:'Hose in, hose out, no power',icon:'valve'},
-  foot:{t:'Products are not designed or certified for pharmaceutical, dialysis or laboratory water.',to:'emi',link:'See EMI'}},
+ {id:'equipment',label:'Equipment',sections:['Equipment','EMI'],hub:'equipment',lead:'EMI, our modular Purified Water system, and standard equipment with a fixed datasheet.',
+  groups:[{h:'Water for industry',items:[['emi','EMI',"Modular Purified Water: the skids your water needs"],['emi-pt','PT','Pretreatment: protects the RO from your feed water'],['emi-ro','RO','Reverse osmosis, with the control panel'],
+     ['emi-edi','EDI','Electrodeionization, where your limit needs it'],['emi-sds','SDS','Storage tank, pump and loop that keep water moving'],['emi-controls',null,'One panel for every skid: TOC, conductivity, alarms, records']]},
+   {h:'Water on site',items:[['p-40',null,'Hose-fed RO and DI cart: rinse, fill and top-up water'],['p-80',null,'In design; datasheet to follow'],['dosing-tank',null,'In design; datasheet to follow']]},
+   {h:'Water from air',items:[['aerowell',null,'Drinking water from the air, on a 120 V outlet'],['equipment#which','Engineered or standard?','Who sets the design, what you receive']]}],
+  feat:{to:'emi#configurations',eyebrow:'EMI',t:'Typical configurations',d:'Sized skid sets by industry, demand and feed water',icon:'loop'},
+  foot:{t:'EMI is designed to meet USP <645> and <643>. The standard equipment is not for pharmaceutical, dialysis or laboratory water.',to:'emi#limits',link:'Limits'}},
  {id:'services',label:'Services',hub:'services',lead:'Design, fabrication, testing, qualification and service for your EMI system.',
   groups:[{h:'Plan the project',items:[['project-plan',null,'Stages, durations and who does what']]},
    {h:'Design, build, test',items:[['svc-design',null,'From your URS or design basis to approved design'],['svc-fabrication',null,'Skids and loops, every joint logged'],
@@ -119,7 +113,7 @@ function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexO
 function wIcon(n,cls){var u='url(assets/icons/'+n+'.svg)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
 /* Page icon: the one icon that stands for a page wherever the page is shown small (related links, linked row ends). */
 var PAGE_ICON={emi:'loop','emi-ro':'ro-membrane','emi-edi':'edi','sys-wfi-distillation':'still','sys-wfi-membrane':'edi','sys-pure-steam':'pure-steam','emi-sds':'tank',
- 'emi-pt':'softener','emi-controls':'conductivity',products:'factory','p-40':'valve','p-80':'pump','dosing-tank':'tank',aerowell:'droplet',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
+ 'emi-pt':'softener','emi-controls':'conductivity',equipment:'factory','p-40':'valve','p-80':'pump','dosing-tank':'tank',aerowell:'droplet',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
  'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
  'svc-documentation':'binder',quality:'magnifier',about:'people',careers:'briefcase',news:'newspaper',
  'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin',
@@ -397,7 +391,7 @@ document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classLis
    Phones (pass 12 C, G-C1/F1): at 600 px and under each column is a disclosure: a 48 px head button (aria-expanded,
    aria-controls) over its links, Company open at first, the others closed; above 600 px the button is not shown, the
    column name is a plain heading and every column is open. One delegated click handler for the whole site. */
-function wFoot(){var cols=[['EMI',['emi-pt','emi-ro','emi-edi','emi-sds','emi-controls']],['Products',['p-40','p-80','dosing-tank','aerowell']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-documentation','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','buying','quality','news','careers','contact-proposal','contact-service','contact-locations']]],
+function wFoot(){var cols=[['Equipment',['emi','emi-pt','emi-ro','emi-edi','emi-sds','emi-controls','p-40','p-80','dosing-tank','aerowell']],['Services',['urs-guide','project-plan','svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-documentation','svc-service','svc-upgrades']],['Industries',['first-system','ind-pharma','ind-pharma#nhp','ind-meddevice','ind-hospital-lab','ind-personal-care','ind-process']],['Company',['about','buying','quality','news','careers','contact-proposal','contact-service','contact-locations']]],
   label={'ind-pharma#nhp':'Natural health products','buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
   +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Modular Purified Water packages for drug, device, personal care, hospital, laboratory and process plants. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
@@ -602,7 +596,7 @@ function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3)
 function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
 /* figure.look (pass 12 round B): a hub page's drawn scene with its keyed index (HeroScene.js); it wins over the other
    figure kinds and over index / hero_index, so a scene whose key cannot be built falls back to them. */
-function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),detail=/^emi-|^svc-|^ind-/.test(p.id)||(p.section==='Products'&&p.id!=='products'),scene=home||art||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
+function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),detail=/^emi-|^svc-|^ind-/.test(p.id)||(p.section==='Equipment'&&p.id!=='equipment'),scene=home||art||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'emi','link',p.secondary_cta.intent):'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+tx(t)+'</span>'}).join('')+'</div>':'')+'</div>';
@@ -7332,7 +7326,7 @@ function relPlan(){var x=-50,y=-19,w=96,d=34,z=1.8,n=5,rh=d/n,g='',k='',m='',dm=
   +isoPart('skid',sx-5,yc-3,z,1,{w:10,d:6})+'<path class="aq-iso__eq" d="'+isoBoxD([sx-3.4,yc-1.8,z+3.2],6.8,3.6,5.4)+'"/>'}
 var REL_ISO={
  emi:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('ro',6,6,6,0.9)},[-48,-58,144,141]],
- products:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('module',30,28,6,0.8)+isoPart('tank',80,30,6,0.6)},[-48,-33,144,116]],
+ equipment:[function(){return isoPart('skid',0,0,0,1,{w:110,d:56})+isoPart('module',30,28,6,0.8)+isoPart('tank',80,30,6,0.6)},[-48,-33,144,116]],
  services:[function(){return isoPart('desk',0,0,0,1.3)},[-40,-80,79,101]],
  'urs-guide':[function(){return isoPart('clipboard',0,0,0,1.6,{ticks:4})},[-40,-25,80,48]],
  'first-system':[function(){return isoPart('wall',-50,-40,0,1,{w:100,h:52})+relFoot(-34,-12,60,44)+isoPart('module',0,10,0,0.8)},[-57,-97,135,126]],

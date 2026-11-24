@@ -398,7 +398,7 @@
    "page": "emi",
    "slot": 0,
    "h": "How the skids fit together",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-23",
    "last_seen": "2026-11-23",
    "commit": "7a69563",
@@ -454,6 +454,68 @@
     "base_link": "emi-controls",
     "caption": "After the PVC pretreatment, the package is polypropylene (PP).",
     "intro": "Take the skids your water needs; each has its own frame, piping and instruments. The control panel sits on the RO skid; the EDI skid wires to it, and the SDS skid connects its remote I/O panel to it."
+   }
+  },
+  {
+   "page": "emi",
+   "slot": 0,
+   "h": "How the skids fit together",
+   "status": "live",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "commit": "eb6bdfe",
+   "hash": "aa2d286204",
+   "block": {
+    "type": "diagram",
+    "anchor": "modules",
+    "nav": "Modules",
+    "h": "How the skids fit together",
+    "stages": [
+     {
+      "t": "Feed water",
+      "icon": "droplet",
+      "d": "City or well drinking water that changes with the season."
+     },
+     {
+      "t": "PT",
+      "spot": "pretreatment",
+      "d": "Pretreatment (PT): a PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
+      "link": "emi-pt"
+     },
+     {
+      "t": "RO",
+      "spot": "ro-skid",
+      "d": "Reverse osmosis (RO) pushes water through a membrane so fine that most dissolved salts stay behind. Sized to your demand at your coldest feed. Carries the control panel.",
+      "link": "emi-ro"
+     },
+     {
+      "t": "EDI",
+      "spot": "edi-stack",
+      "d": "Electrodeionization (EDI) removes most of the remaining ions, without regeneration chemicals. Fitted where your limit needs it.",
+      "link": "emi-edi"
+     },
+     {
+      "t": "SDS",
+      "spot": "storage-tank",
+      "d": "Storage and distribution (SDS): tank, pump, heat exchanger and loop return on one skid. Buffers generation against peak demand.",
+      "link": "emi-sds"
+     },
+     {
+      "t": "Distribution loop",
+      "spot": "loop",
+      "d": "Keeps water moving from the SDS skid to every outlet and back.",
+      "link": "emi-sds"
+     },
+     {
+      "t": "Points of use",
+      "icon": "valve"
+     }
+    ],
+    "base": "Monitoring and controls · conductivity and total organic carbon (TOC)",
+    "look": "strata-run",
+    "base_link": "emi-controls",
+    "caption": "After the PVC pretreatment, the package is polypropylene (PP).",
+    "intro": "Take the skids your water needs. The control panel sits on the RO skid; the EDI skid wires to it, and the SDS skid connects its remote I/O panel to it."
    }
   }
  ]
