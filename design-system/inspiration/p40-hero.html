@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P-40 hero backdrop</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<style>
+/* Comparison only: the P-40 hero (the site's own renderer) with five backdrops behind the rendering. Not part of the design system. */
+body { margin: 0; background: var(--surface); overflow-x: hidden; }
+.cx-bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between;
+  padding: var(--space-3) var(--space-8); background: var(--surface); border-bottom: 1px solid var(--line); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.cx-bar b { font-weight: 500; color: var(--ink); }
+.cx-intro { padding-block: var(--space-12) var(--space-8); }
+.cx-intro .aq-lead { margin-top: var(--space-4); }
+.cx-opt { margin-bottom: var(--space-16); }
+.cx-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-2) var(--space-6); padding-bottom: var(--space-3); }
+.cx-head h2 { margin: 0; font: 500 20px/28px var(--font-sans); color: var(--ink); }
+.cx-head p { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); max-width: var(--text-max); }
+.cx-frame { width: 100vw; margin-left: calc(50% - 50vw); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.cx-frame .aq-hero { padding-block: var(--space-16); }
+/* A: as now (the registration-cross sheet alone) */
+/* B: Flow mist, the brand's system-hero ground (class aq-hero--mist, already in the system) */
+/* C: the isometric line drawing as a watermark behind the rendering, ink at 6 %, cut by the top edge like the closing band's mark */
+.gx-mark .aq-hero__photo { position: relative; }
+.gx-mark .aq-hero__photo::before { content: ""; position: absolute; left: 50%; top: -12%; width: 150%; height: 124%; transform: translateX(-56%);
+  background: var(--ink); opacity: 0.08; pointer-events: none;
+  -webkit-mask: url(../../assets/illustrations/p-40.webp) center / contain no-repeat; mask: url(../../assets/illustrations/p-40.webp) center / contain no-repeat; }
+.gx-mark .aq-hero__photo img { position: relative; }
+/* D: a drawing-sheet plate: the figure column on surface-sunken with the crosses kept to the plate, the rest of the hero plain */
+.gx-plate .aq-hero__sheet { display: none; }
+.gx-plate .aq-hero__photo { background: var(--surface-sunken); border: 1px solid var(--line); padding: var(--space-8) var(--space-6) 0; align-self: stretch;
+  background-image: radial-gradient(circle, var(--line-strong) 0.7px, transparent 0.8px); background-size: 24px 24px; }
+.gx-plate .aq-hero__photo img { max-height: 64vh; }
+/* E: a navy band hero, the rendering on navy as on the closing band; text in limestone (the system's aq-band--navy) */
+.gx-navy .aq-hero { background: var(--navy); }
+.gx-navy .aq-hero__sheet path { stroke: var(--limestone); opacity: 0.25; }
+/* F: mist and the watermark together */
+@media (max-width: 860px) { .cx-bar { padding-inline: var(--space-4); } }
+</style>
+</head>
+<body>
+<div class="aq-page">
+<div class="cx-bar"><span><b>P-40 hero backdrop</b> · comparison, not in the design system</span>
+ <span><label><input type="checkbox" id="cx-dark"> Dark theme</label></span></div>
+<div class="aq-in">
+ <header class="cx-intro">
+  <p class="aq-eyebrow">P-40 · hero</p>
+  <h1 class="aq-display">Six backdrops for the rendering</h1>
+  <p class="aq-lead">The same hero six times, built by the site's own renderer, with something behind the cart. A is the page as it stands. The brand book allows two gradient grounds; B is the one made for a hero with an equipment figure.</p>
+ </header>
+ <div id="cx-opts"></div>
+</div>
+</div>
+<script src="../../assets/aquemi-site.js"></script>
+<script>
+(function () {
+  var OPTS = [
+    ['', 'A · As now', 'The registration-cross sheet alone, fading in from the top right.'],
+    ['aq-hero--mist', 'B · Flow mist', 'The brand\'s system-hero ground: one faint flow-tint bloom in the top-right corner over the crosses. Already in the system (used on the EMI skid pages).'],
+    ['gx-mark', 'C · Drawing watermark', 'The isometric line drawing, large and faint (ink at 6 %) behind the rendering, the way the closing band carries the brand mark.'],
+    ['gx-plate', 'D · Drawing-sheet plate', 'The figure column becomes a sunken drawing sheet with a fine dot grid; the rest of the hero is plain surface.'],
+    ['gx-navy', 'E · Navy band', 'The hero on navy, the rendering lit against it, headline and lead in limestone (the system\'s navy band).'],
+    ['aq-hero--mist gx-mark', 'F · Mist and watermark', 'B and C together: the bloom in the corner and the faint drawing behind the cart.']
+  ];
+  fetch('../../content/pages.json').then(function (r) { return r.json() }).then(function (d) {
+    AQ.setPages(d.pages); var p = AQ.wp('p-40');
+    /* ?only=C renders one option (for stills) */
+    var only = /only=([A-F])/.exec(location.search), list = only ? OPTS.filter(function (o) { return o[1].charAt(0) === only[1] }) : OPTS;
+    document.getElementById('cx-opts').innerHTML = list.map(function (o) {
+      var navy = o[0].indexOf('gx-navy') > -1;
+      return '<section class="cx-opt"><div class="cx-head"><h2>' + o[1] + '</h2><p>' + o[2] + '</p></div>' +
+        '<div class="cx-frame ' + o[0] + '">' + AQ.wHero(p).replace('class="aq-hero', 'class="aq-hero' + (navy ? ' aq-band--navy' : '') + (o[0].indexOf('aq-hero--mist') > -1 ? ' aq-hero--mist' : '')).replace(/src="assets\//g, 'src="../../assets/') + '</div></section>';
+    }).join('');
+  });
+  document.getElementById('cx-dark').addEventListener('change', function () {
+    if (this.checked) document.documentElement.setAttribute('data-theme', 'dark'); else document.documentElement.removeAttribute('data-theme');
+  });
+})();
+</script>
+</body>
+</html>

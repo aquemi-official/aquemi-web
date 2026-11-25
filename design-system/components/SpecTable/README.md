@@ -2,7 +2,7 @@ Specification sheets present water quality limits as a two-column matrix with th
 
 ## Spec sheet (default)
 
-On desktop the rows flow into two columns on `surface-raised`, separated by `line` hairlines. Each cell stacks the parameter (Geist 400 16/24), the limit in `data` (Geist Mono 14/24, tabular figures) with its unit, and the method or reference beneath (Geist 14/24 `ink-muted`). Highlighted rows at the top span both columns; the first one is the sheet's one `flow-tint` band, its parameter at `h3` (Geist 500 20/28) and its value one step larger (Mono 20/28). On phones (container 860 px or less) it becomes compact rows on hairlines: the parameter, the value, then the basis in small muted type; the highlighted row keeps its tint. No sideways scroll is needed.
+On desktop the rows flow into two columns on `surface-raised`, separated by `line` hairlines. Each cell stacks the parameter (Geist 500 16/24, so the row titles read apart from the mono values), the limit in `data` (Geist Mono 14/24, tabular figures) with its unit, and the method or reference beneath (Geist 14/24 `ink-muted`). Highlighted rows at the top span both columns; the first one is the sheet's one `flow-tint` band, its parameter at `h3` (Geist 500 20/28) and its value one step larger (Mono 20/28). On phones (container 860 px or less) it becomes compact rows on hairlines: the parameter, the value, then the basis in small muted type; the highlighted row keeps its tint. No sideways scroll is needed.
 
 ```html
 <table class="aq-spec" role="table">
@@ -28,7 +28,7 @@ On desktop the rows flow into two columns on `surface-raised`, separated by `lin
 ## Token rules
 
 - Surfaces: label strip `surface-sunken`, matrix body `surface-raised`, rules `line`. No boxes, no shadows. Band `flow-tint`; text on it stays `ink` and `ink-muted`.
-- Type: header labels Geist 500 14/20 `ink-muted` in sentence case; parameter Geist 400 16/24; values in `data` (Geist Mono 14/24, tabular figures) at every width; band parameter `h3`, band value Mono 20/28 on desktop. Placeholders in values keep the Placeholder style at the row's text size. Method Geist 14/24 `ink-muted` (13/20 on phones). Nothing is uppercase except the visually hidden caption, which is an `eyebrow`.
+- Type: header labels Geist 500 14/20 `ink-muted` in sentence case; parameter Geist 500 16/24; values in `data` (Geist Mono 14/24, tabular figures) at every width; band parameter `h3`, band value Mono 20/28 on desktop. Placeholders in values keep the Placeholder style at the row's text size. Method Geist 14/24 `ink-muted` (13/20 on phones). Nothing is uppercase except the visually hidden caption, which is an `eyebrow`.
 - Spacing only from `--space-*`: cells `space-4` vertical, matrix columns `space-12` apart, band padding `space-6` (`space-4` on phones).
 - Status words use `aq-status aq-status--pass`, `--caution` or `--fail`, and always include the word.
 

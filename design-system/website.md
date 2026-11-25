@@ -157,7 +157,7 @@ Intents are no longer a warning. An intent label that ticks nothing on the linke
 - **System:** hero + facts, limits (spec), how it works (diagram), design parameters (spec), options, documents, FAQ, related, closing (with "what to send" as `cta.include`).
 - **Service:** hero + facts, what you get (grid or docs), how it runs (steps), deliverables (docs), proof or commercial terms, FAQ, related, closing.
 - **Industry:** hero + facts, your requirements (spec or table), what we build for you (grid), evidence (docs or case), FAQ, related, closing.
-- **Standard equipment (Equipment section):** hero (photograph placeholder until a unit is photographed or line art approved), how it works (diagram), technical data (spec with a Basis column; design values never printed as guarantees), consumables (table), where it fits and where it does not (grid), FAQ, related, closing with a product enquiry intent.
+- **Standard equipment (Equipment section):** hero (photograph placeholder until a unit is photographed or line art approved), how it works (diagram), technical data (spec with a Basis column; design values never printed as guarantees), consumables (table), where it fits and where it does not (grid), documents (docs: the released brochure and data sheet as files), FAQ, related, closing with a product enquiry intent.
 - **Company and contact:** hero, three to six focused sections, closing. On contact pages the form sits within the first two screens after the hero.
 
 Every section answers a question the buyer has at that point. If two sections answer the same question, merge them.

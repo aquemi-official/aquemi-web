@@ -12,8 +12,8 @@
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I want standard equipment|P-40",
  "secondary_cta": {
-  "label": "All products",
-  "link": "equipment"
+  "label": "Brochure and data sheet",
+  "link": "p-40#documents"
  },
  "blocks": [
   {
@@ -40,7 +40,7 @@
      "t": "Catalytic carbon block",
      "spot": "pretreatment",
      "label": "2",
-     "d": "10 × 4.5 in housing. Removes chlorine and chloramine, which would damage the membrane."
+     "d": "10 × 4.5 in housing, 1 µm. Removes chlorine and chloramine, which would damage the membrane."
     },
     {
      "t": "Reverse osmosis",
@@ -58,7 +58,7 @@
      "t": "Product hose",
      "spot": "storage-tank",
      "label": "Out",
-     "d": "Low-mineral water, checked with a handheld TDS meter."
+     "d": "Low-mineral water, checked with a handheld TDS meter. A check valve keeps it from flowing back."
     }
    ]
   },
@@ -68,75 +68,67 @@
    "anchor": "data",
    "h": "Technical data",
    "caption": "Design values",
-   "intro": "Figures from the drawings and the makers' ratings, and design values calculated for one new element. No figure has been measured on a built unit yet.",
+   "intro": "Performance figures are estimates for the stated conditions.",
    "cols": [
     "Item",
     "Value",
     "Basis"
    ],
-   "fold": 6,
-   "fold_noun": "rows",
    "rows": [
     {
      "p": "Product flow",
-     "v": "3.9 L/min (1.04 gpm) at 4.1 bar (60 psi) feed, 25 °C, 50 % recovery",
-     "m": "Calculated; 2.6 to 5.2 L/min across 2.8 to 5.5 bar at 25 °C, 3.0 L/min at 5.5 bar and 5 °C",
+     "v": "3.9 L/min at 4.1 bar, 25 °C, 50 % recovery",
+     "m": "Estimate; 1.4 to 5.2 L/min over 2.8 to 5.5 bar, 5 to 25 °C",
      "hl": true
     },
     {
-     "p": "Membrane element",
-     "v": "One 4040 element, 2,500 US gal/day (6.6 L/min) at 5.5 bar, 25 °C, 550 ppm, 15 % recovery, ±20 %; salt rejection 98.5 % nominal, 96 % minimum",
+     "p": "Recovery",
+     "v": "33 to 50 %, set by the ball valve",
+     "m": "Estimate"
+    },
+    {
+     "p": "Membrane",
+     "v": "One 4040 element, 98.5 % salt rejection",
      "m": "Maker's rating"
     },
     {
-     "p": "Recovery",
-     "v": "Set by the ball valve: 33 to 50 % recommended, 25 to 33 % on hard water",
-     "m": "Design value"
-    },
-    {
-     "p": "Product water",
-     "v": "RO permeate about 6 to 7 mg/L TDS from a 210 mg/L feed; DI outlet design target 0 ppm TDS reading",
-     "m": "Calculated; measured: [P-40 product water, measured on first unit]"
-    },
-    {
      "p": "Feed water",
-     "v": "2.8 to 5.5 bar (40 to 80 psi) recommended, 6.2 bar (90 psi) maximum at 22 °C; 4.4 to 37.8 °C; silt density index 5 maximum",
-     "m": "Makers' ratings of the tubing, housings and membrane"
+     "v": "Treated mains, 2.8 to 5.5 bar, 4.4 to 37.8 °C",
+     "m": "6.2 bar maximum; no frost"
     },
     {
      "p": "Connections",
-     "v": "Three 3/4 in garden-hose thread (GHT): feed (brass, 1,196 mm high), product (303 stainless steel, 471 mm), concentrate (brass, 150 mm)",
-     "m": "Drawing P40-000"
+     "v": "Three 3/4 in garden-hose threads: feed, product, concentrate",
+     "m": "Drawing"
     },
     {
      "p": "Size",
-     "v": "1,369 mm high × 531 mm wide × 423 mm deep (53.9 × 20.9 × 16.7 in); handle 1,244 mm (49 in); wheel track 483 mm (19 in)",
-     "m": "Drawing P40-000"
+     "v": "1,369 × 531 × 423 mm (53.9 × 20.9 × 16.7 in)",
+     "m": "Drawing"
     },
     {
      "p": "Mass",
-     "v": "About 28 kg (61 lb) dry; about 41 kg (90 lb) holding 13 L of water",
-     "m": "Calculated"
+     "v": "About 28 kg dry, 41 kg with water",
+     "m": "Estimate"
     },
     {
-     "p": "Frame",
-     "v": "6063-T6 aluminium T-slot rail, clear anodized, bolted, no welds; two rigid 4 in rubber casters and one levelling mount",
-     "m": "Drawing P40-100"
-    },
-    {
-     "p": "Wetted parts",
-     "v": "Brass fittings before the DI stage, 303 stainless steel after it; 1/2 in OD polyethylene tubing with push-fit fittings; 304 stainless steel RO housing",
-     "m": "Drawing P40-000"
+     "p": "Materials",
+     "v": "Anodized aluminium frame; 304 stainless RO housing; polypropylene filter housings",
+     "m": "Drawing"
     }
    ],
-   "note": "Not designed or certified for drinking water. No certification or listing at this date. Design values are not guarantees of performance."
+   "note": "Not designed or certified for drinking water. Estimates are not guarantees of performance.",
+   "look": "param-tiles",
+   "plate": {
+    "name": "P-40"
+   }
   },
   {
    "type": "table",
    "nav": "Consumables",
    "anchor": "consumables",
    "h": "Consumables",
-   "intro": "Life in litres of product water, calculated for a 210 mg/L feed; it depends on your water.",
+   "intro": "Makers' published figures; life depends on your feed water.",
    "cols": [
     "Stage",
     "Size",
@@ -145,25 +137,37 @@
    "rows": [
     [
      "1 · Sediment filter",
-     "10 × 2.5 in, 5 µm",
+     "5 µm",
      "Change on pressure drop"
     ],
     [
      "2 · Carbon block",
      "10 × 4.5 in",
-     "8,700 L (2,300 gal), from the maker's chloramine capacity"
+     "22,700 L of feed water"
     ],
     [
      "3 · RO element",
-     "4040 (4 × 40 in)",
-     "[RO element life, L or months]"
+     "4040",
+     "No life figure from its maker"
     ],
     [
      "4 · DI resin",
      "10 × 4.5 in",
-     "2,700 to 5,200 L (700 to 1,400 gal)"
+     "11,400 L at 5 ppm"
     ]
-   ]
+   ],
+   "look": "spares-kit",
+   "kit": [
+    "cartridge",
+    "cartridge",
+    "membrane",
+    "cartridge"
+   ],
+   "marks": [
+    "⌀",
+    "⟳"
+   ],
+   "key": false
   },
   {
    "type": "grid",
@@ -198,6 +202,27 @@
    ]
   },
   {
+   "type": "docs",
+   "nav": "Documents",
+   "anchor": "documents",
+   "h": "Brochure and data sheet",
+   "key": 0,
+   "items": [
+    {
+     "t": "P-40 product brochure",
+     "file": "assets/docs/P-40_brochure.pdf",
+     "d": "Four pages: what it is, where it fits, how it works and the main figures. PDF, 1.4 MB, opens in a new tab.",
+     "icon": "document"
+    },
+    {
+     "t": "P-40 data sheet",
+     "file": "assets/docs/P-40_data_sheet.pdf",
+     "icon": "binder",
+     "d": "Two pages: estimated flows by pressure and temperature, feed limits, connections, dimensions, materials, consumables and warranty. PDF, 1.1 MB."
+    }
+   ]
+  },
+  {
    "type": "faq",
    "nav": "FAQ",
    "anchor": "faq",
@@ -211,15 +236,23 @@
     },
     {
      "q": "What do I need on site?",
-     "a": "A hose tap at 2.8 to 5.5 bar (a regulator above that), three garden hoses, a drain for the concentrate hose and a handheld TDS meter to check the outlet."
+     "a": "A hose tap on a treated mains supply at 2.8 to 5.5 bar (a regulator above that), three garden hoses, a drain for the concentrate hose and a handheld TDS meter to check the outlet. Hoses, regulator and meter are available as accessories."
+    },
+    {
+     "q": "What ships with the cart?",
+     "a": "A new membrane element and a cartridge set, packed separately. Hoses, the TDS meter and the pressure regulator are sold separately."
     },
     {
      "q": "How do I know the resin is spent?",
-     "a": "The outlet TDS reading rises above 0 ppm. Change the DI cartridge. The carbon block and sediment filter have their own intervals."
+     "a": "The outlet TDS reading rises. Change the DI cartridge. The carbon block and sediment filter have their own intervals."
+    },
+    {
+     "q": "Is there a warranty?",
+     "a": "A 12-month limited warranty on the frame, housings, valves, fittings and tubing. Cartridges and the membrane element are consumables and are not covered. Full terms on request."
     },
     {
      "q": "When can I get one?",
-     "a": "The first units are built to order with a longer lead time while we complete the design and test the first unit. Price and lead time: confirmed when you enquire.",
+     "a": "Lead time about 4 weeks. Price on request: confirmed when you enquire.",
      "link": "buying",
      "link_label": "How buying works"
     }
@@ -250,15 +283,39 @@
   "turnaround": "Confirmed when you enquire",
   "returns": [
    "Price and lead time",
-   "Datasheet",
    "Questions on fit"
   ]
  },
  "todo": [
-  "Products (2026-11-23): new page from the P-40 repository (aquemi-official/p-40, data sheet AQ-P40-DS Draft C, 2026-11-23). Every performance figure is a calculated design value; the repository says not to publish one as a guarantee until measured on a built unit. The Basis column says so on the page.",
-  "Measured product water quality on the first unit ([P-40 product water, measured on first unit]); RO element life ([RO element life, L or months]); filter housing plastic grade; feed limits for TDS, hardness and iron.",
-  "Hero image: the repository holds line art (docs/product-documents/assets/p40_iso_limestone.svg, p40_front_view.svg) and renders with a logo decal that is not part of the design. Brochure rule: line drawings until a real unit is photographed; whether renders may be shown is an open decision. Save the chosen drawing as assets/illustrations/p-40.png.",
-  "Lead time for the first units and the price ([product lead time, weeks], [P-40 price, CAD]).",
-  "Open engineering questions in the repository (DI cartridge flow rating below the product flow, tip angle, sump clearance): the page prints no figure that depends on them."
- ]
+  "Documents (2026-11-24): the released brochure and data sheet (AQ-P40-BR and AQ-P40-DS, Rev A) are served from assets/docs/ and open from the Documents section; the request form was dropped (owner). Keep both PDFs in step with the p-40 repository.",
+  "Hero and tiles (2026-11-24): the CAD rendering (assets/renders/p-40.webp, from p40_render_cutout.png in the p-40 repository) is the hero figure on the Flow mist ground; the technical-data tiles carry a P-40 nameplate (plate, name alone) in place of a drawing. The isometric line-art mask assets/illustrations/p-40.png stays for the inspiration board and any later use. Regenerate the rendering when the CAD changes; the drawing and document numbers in the plate come from the repository.",
+  "Consumables (2026-11-24): shown as the spares tray (spares-kit, a retired look brought back) with cartridge and membrane drawings; marks ⌀ size and ⟳ estimated life.",
+  "Equipment (2026-11-24): the page follows data sheet AQ-P40-DS Rev A, released in the p-40 repository at fe03cd7 (products submodule main). Rev A dropped the D/M/E marks, the \"not measured\" notes, the 5 °C flow row, the hard-water recovery figure and every permeate or outlet TDS figure (owner's decision), and added the DI stage flow rating, treated-mains supply, pH, the final cartridge choices, supply, lead time and the warranty short form.",
+  "Technical data simplified 2026-11-24 (owner): eight short rows; the DI flow rating, pH, port heights, wheel track, housing sub-materials and the membrane rating conditions stay on the data sheet only.",
+  "Performance figures stay estimates: the technical data note still says no unit has been built or tested. Replace the estimates with measured figures after the first unit (and the DI flow rating question: product flow can exceed the resin cartridge's 0.8 gpm maximum).",
+  "Warranty: the full terms (docs/Aquemi_P-40_Limited_Warranty.md) are a draft awaiting review by a lawyer licensed in Ontario; the short form on the data sheet and this page is taken from its sections 1 to 3.",
+  "Price: on request only. The pricing analysis in the repository is internal and is never published."
+ ],
+ "facts": [
+  {
+   "v": "3.9 L/min",
+   "l": "Product flow · 4.1 bar feed, 25 °C, 50 % recovery · estimate"
+  },
+  {
+   "v": "4",
+   "l": "Stages · sediment, catalytic carbon, RO, mixed-bed DI"
+  },
+  {
+   "v": "0 W",
+   "l": "Power · tap pressure does the work"
+  },
+  {
+   "v": "About 4 weeks",
+   "l": "Lead time · price on request"
+  }
+ ],
+ "figure": {
+  "photo": "assets/renders/p-40.webp",
+  "alt": "Rendering of the P-40 portable pure-water cart: three stacked filter housings and the RO vessel on a wheeled aluminium frame with a pull handle"
+ }
 }

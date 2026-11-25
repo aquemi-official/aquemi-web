@@ -9,6 +9,11 @@
 .aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
 .aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
 .aq-hero .aq-tags { margin-top: var(--space-2); }
+/* A product rendering or photograph (figure.photo): the image contained in the figure column, bottom-aligned with the text column's actions, no box */
+/* the grid variant for a rendering: the image column bottom-aligns with the text column (figure.photo) */
+.aq-hero__grid--photo { align-items: end; }
+.aq-hero__photo { position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: center; min-height: 100%; }
+.aq-hero__photo img { display: block; max-width: 100%; max-height: 72vh; width: auto; height: auto; }
 .aq-photo { position: relative; z-index: 1; aspect-ratio: 4 / 3; min-height: 100%; max-width: 100%; background-color: var(--surface-sunken); border: 1px solid var(--line); display: flex; align-items: flex-end; padding: var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
 .aq-arc { position: absolute; right: -1px; bottom: -1px; width: min(38%, 420px); height: auto; pointer-events: none; }
 .aq-arc__outer { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }

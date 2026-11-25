@@ -3,12 +3,20 @@
    the basis under a hairline (and the row's link, as a spec row's). The first highlighted row is the wide navy lead
    tile; one cell of the grid is a blueprint of the skid itself (IsoKit on navy). The fold (fold, fold_noun) applies on
    phones only: desktop shows every tile, so the grid stays whole.
-   Fields: h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun. */
+   Fields: h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun, art (optional: the id of a
+   line drawing in assets/illustrations/, painted in Limestone on the navy cell in place of the skid; a product page gives
+   its own drawing), plate (optional: a drawing title block in place of the skid, {name, title, rows [[label, value]]}; name alone sets
+   the product's name large and heavy, centred:
+   the product's name set large, its title, and the ruled fields of a drawing sheet's title block: drawing, revision,
+   issue, documents). */
 function ptSkid(){
  var sk=isoPart('skid',0,0,0,1,{w:176,d:84}),ro=isoPart('ro',10,8,9,1,{id:'ro'}),ed=isoPart('edi',140,12,9,1,{id:'edi'}),pn=isoPart('panel',150,62,9,0.9,{id:'pn'});
  var run=isoPipe(isoRoute(ro.ports.out,ed.ports.in,'xzy'),{r:1.8,to:'edi',caps:false});
  var inner=[sk,ro,run,ed,pn].join(''),bx=isoBounds([[0,0,0],[176,0,0],[0,84,0],[176,84,0],[0,0,70],[176,0,70],[0,84,70]],26),W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y];
  return isoSvg(W,Hh,inner,'aq-iso--navy aq-param-tiles__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',m:6,band:0,gridStep:20})})}
+function ptPlate(t){var rows=(t.rows||[]).map(function(r){return '<div class="aq-param-tiles__field"><dt>'+tx(r[0])+'</dt><dd>'+tx(r[1])+'</dd></div>'}).join('');
+ var alone=!t.title&&!rows;
+ return '<div class="aq-param-tiles__plate'+(alone?' aq-param-tiles__plate--name':'')+'"><p class="aq-param-tiles__plate-name">'+tx(t.name||'')+'</p>'+(t.title?'<p class="aq-param-tiles__plate-title">'+tx(t.title)+'</p>':'')+(rows?'<dl class="aq-param-tiles__fields">'+rows+'</dl>':'')+'</div>'}
 LOOKS['param-tiles']=function(b,H){
  var rows=b.rows||[],lead=-1;rows.some(function(r,i){if(r.hl){lead=i;return true}});
  /* pass 12 C: the cells the grid fills (lead 2, blueprint 4, the rest 1 each); one left over in the last row (four
@@ -23,6 +31,7 @@ LOOKS['param-tiles']=function(b,H){
    +'<h3 class="aq-param-tiles__p">'+tx(r.p)+'</h3></div>'
    +'<p class="aq-param-tiles__v">'+tx(r.v)+'</p>'
    +(r.m||lk?'<p class="aq-param-tiles__m">'+(r.m?'<span>'+tx(r.m)+'</span>':'')+lk+'</p>':'')+'</li>',b,i)}).join('');
- var grid='<div class="aq-param-tiles">'+'<div class="aq-param-tiles__fig" aria-hidden="true">'+ptSkid()+'</div>'
+ var fig=b.plate?ptPlate(b.plate):b.art?'<div class="aq-param-tiles__art" style="'+artMask(b.art)+'"></div><span class="aq-param-tiles__scan" aria-hidden="true"></span>':ptSkid();
+ var grid='<div class="aq-param-tiles">'+'<div class="aq-param-tiles__fig" aria-hidden="true">'+fig+'</div>'
   +'<ol class="aq-param-tiles__list">'+tiles+'</ol></div>';
  return sec(wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+wFold(b,rows.length,grid,b.fold_noun||'parameters')+wSpecNote(b))};

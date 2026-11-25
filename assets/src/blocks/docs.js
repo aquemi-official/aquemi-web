@@ -6,7 +6,8 @@
    list ("Full index →"), so a module page keeps its deciding documents and points to the full package without another
    row. A link to a missing page prints nothing. Item link (optional): an item's link (a page id or page#anchor) makes
    its name a link, and its intent ticks those options on the linked page's form, as a block link's does
-   (svc-fabrication's "Joint records" to cmp-documentation#samples). */
+   (svc-fabrication's "Joint records" to cmp-documentation#samples). Item file (optional): a path under assets/docs/ (a
+   released PDF); the name opens it in a new tab. Use it only for a file that exists in the repository (DR-006 rule 6). */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT,
    a URS compliance matrix before the URS itself). */
 var DOC_CODES=[
@@ -46,7 +47,7 @@ var DOC_ICONS=[[/borescope/i,'borescope'],[/\bweld|\bwps\b|welder/i,'weld'],[/p&
 function docIcon(x){if(x.icon==='none')return '';if(isIcon(x.icon))return x.icon;var t=String(x.t||'');
   for(var i=0;i<DOC_ICONS.length;i++)if(DOC_ICONS[i][0].test(t))return DOC_ICONS[i][1];return ''}
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,intent:x.intent,icon:x.icon,tag:x.tag}});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,file:x.file,intent:x.intent,icon:x.icon,tag:x.tag}});
   var n=items.length,codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=n;
@@ -57,7 +58,7 @@ BLOCKS['docs']=function(b,H){
   var noun=b.fold_noun||'documents';
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     /* Item link: the name links its page or page#anchor; intent (options that page's form ticks on arrival) rides on it, as a table cell's */
-    var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
+    var name=x.file?'<a href="'+e(x.file)+'" target="_blank" rel="noopener">'+tx(x.t)+'</a>':x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
     /* A tag with no letter or digit ("+") would read as a missing label: leave the code cell empty */
     var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
     return fli('<li'+(key[i]?' class="is-key"':'')+'>',b,i)+idx(i)

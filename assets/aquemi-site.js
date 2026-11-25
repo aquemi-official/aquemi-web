@@ -431,11 +431,12 @@ var ART={
 /* Width / height of each drawing in ART (the PNG mask's own ratio). On phones the hero's drawing box takes this ratio,
    never taller than 5:4 (ART_R below 1.25 keeps the 5:4 box), so a wide drawing runs the full gutter width with no
    empty band above or below it. A page missing here keeps the 5:4 box. */
-var ART_R={'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':0.94,'ind-meddevice':0.91,'ind-personal-care':1.57,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.08,'svc-service':0.86,'svc-upgrades':1.16,'emi-controls':0.66,'emi-pt':1.18,'sys-pure-steam':0.65,'emi-ro':0.93,'emi-sds':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'quality':0.97,'project-plan':1.15,'news':0.87};
+var ART_R={'p-40':0.45,'ind-biotech':0.57,'ind-cdmo':1.22,'ind-hospital-lab':0.94,'ind-meddevice':0.91,'ind-personal-care':1.57,'ind-pharma':0.53,'ind-process':1.3,'svc-cq':1.14,'svc-design':1.24,'svc-fabrication':1.15,'svc-fat-sat':1.08,'svc-service':0.86,'svc-upgrades':1.16,'emi-controls':0.66,'emi-pt':1.18,'sys-pure-steam':0.65,'emi-ro':0.93,'emi-sds':1,'sys-wfi-distillation':0.93,'sys-wfi-membrane':0.91,'quality':0.97,'project-plan':1.15,'news':0.87};
 /* Hero-only drawings (pass 12 round D): pages that are not equipment pages but take a line drawing as their hero
    figure, opted in with the hero field "figure": {"art": "<id>"} (assets/illustrations/<id>.png, ratio in ART_R).
    Kept out of ART so related cards, project-run and the other ART readers keep what they draw for these pages. */
 var HERO_ART={
+ 'p-40':'P-40 portable pure-water cart in isometric view: three stacked filter housings and the RO vessel on a wheeled T-slot frame with a pull handle',
  'quality':'Audit table in the shop: an open quality manual, the nonconformance register, a pipe length with a fused joint and a tag, and a shipment record, with fused pipe lengths on a rack behind',
  'project-plan':'One schedule in three steps: the signed order with a pen, the package on a pallet for its factory test, then a point-of-use valve over a sink with the handover binder; a hold diamond where each step drops',
  'news':'Drafting board: a pinned note sheet with three numbered answer lines, earlier notes tabbed behind it, and a pencil sketch of a polypropylene loop with a diaphragm valve'
@@ -594,9 +595,12 @@ function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3)
  var stops=st.map(function(t,i){return '<span class="aq-hero__stop aq-hero__stop--'+['r','b','t'][i]+'" style="left:'+P[i][0]+'%;top:'+P[i][1]+'%"><b>'+(i+1)+'</b><span>'+tx(t)+'</span></span>'}).join('');
  return heroFrame('route',svg+stops,f.label)}
 function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
+/* figure.photo (2026-11-24): a product rendering or photograph as the hero figure, {photo: "assets/renders/<id>.webp", alt}: the
+   image itself, contained, on the hero ground with no box; it wins over the drawn kinds and the index. Renders are
+   kept in assets/renders/ (live.keep); the line-art masks stay in assets/illustrations/. */
 /* figure.look (pass 12 round B): a hub page's drawn scene with its keyed index (HeroScene.js); it wins over the other
    figure kinds and over index / hero_index, so a scene whose key cannot be built falls back to them. */
-function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),detail=/^emi-|^svc-|^ind-/.test(p.id)||(p.section==='Equipment'&&p.id!=='equipment'),scene=home||art||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
+function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),art=!!(ART[p.id]&&!home||fart),photo=!home&&!art&&p.figure&&typeof p.figure==='object'&&p.figure.photo?p.figure:null,detail=/^emi-|^svc-|^ind-/.test(p.id)||(p.section==='Equipment'&&p.id!=='equipment'),scene=home||art||photo||!p.figure||!p.figure.look?'':wHeroScene(p),drawn=home||art||photo?'':scene||wHeroDrawn(p.figure),idx=home||detail||drawn||photo?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'emi','link',p.secondary_cta.intent):'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+tx(t)+'</span>'}).join('')+'</div>':'')+'</div>';
@@ -604,9 +608,9 @@ function wHero(p){var home=p.id==='home',fart=home||ART[p.id]?'':heroArtId(p),ar
     guarantee or capacity, "what, where · basis", DR-010); service and industry pages keep their facts in the KeyFacts
     strip under the drawing. */
  var all=p.facts||[],co=art&&/^emi-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
- var right=home?wHomeLoop():art?wHeroFigure(p,callouts,fart||p.id):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
- var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':scene?' aq-hero__grid--figure aq-hero__grid--scene':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'" data-hero="'+e(p.id)+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ var right=home?wHomeLoop():art?wHeroFigure(p,callouts,fart||p.id):photo?'<div class="aq-hero__photo"><img src="'+e(photo.photo)+'" alt="'+e(photo.alt||'')+'" decoding="async"></div>':drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
+ var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':photo?' aq-hero__grid--figure aq-hero__grid--photo':scene?' aq-hero__grid--figure aq-hero__grid--scene':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
+ return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co||photo?' aq-hero--mist':'')+'" data-hero="'+e(p.id)+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* HeroScene (pass 12, round B): drawn hero scenes for the hub pages that had no drawing (S17). Opt-in hero field
    "figure": {"look": "<scene>", …look-only fields}; README: design-system/components/HeroScene/README.md.
    Each scene is one IsoKit line drawing (aria-hidden) with numbered tags, and a key under it whose rows carry the same
@@ -1990,7 +1994,8 @@ BLOCKS['diagram']=function(b,H){return sec(H+wDiagram(b)+(b.caption?'<p class="a
    list ("Full index →"), so a module page keeps its deciding documents and points to the full package without another
    row. A link to a missing page prints nothing. Item link (optional): an item's link (a page id or page#anchor) makes
    its name a link, and its intent ticks those options on the linked page's form, as a block link's does
-   (svc-fabrication's "Joint records" to cmp-documentation#samples). */
+   (svc-fabrication's "Joint records" to cmp-documentation#samples). Item file (optional): a path under assets/docs/ (a
+   released PDF); the name opens it in a new tab. Use it only for a file that exists in the repository (DR-006 rule 6). */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT,
    a URS compliance matrix before the URS itself). */
 var DOC_CODES=[
@@ -2030,7 +2035,7 @@ var DOC_ICONS=[[/borescope/i,'borescope'],[/\bweld|\bwps\b|welder/i,'weld'],[/p&
 function docIcon(x){if(x.icon==='none')return '';if(isIcon(x.icon))return x.icon;var t=String(x.t||'');
   for(var i=0;i<DOC_ICONS.length;i++)if(DOC_ICONS[i][0].test(t))return DOC_ICONS[i][1];return ''}
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,intent:x.intent,icon:x.icon,tag:x.tag}});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,file:x.file,intent:x.intent,icon:x.icon,tag:x.tag}});
   var n=items.length,codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=n;
@@ -2041,7 +2046,7 @@ BLOCKS['docs']=function(b,H){
   var noun=b.fold_noun||'documents';
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     /* Item link: the name links its page or page#anchor; intent (options that page's form ticks on arrival) rides on it, as a table cell's */
-    var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
+    var name=x.file?'<a href="'+e(x.file)+'" target="_blank" rel="noopener">'+tx(x.t)+'</a>':x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
     /* A tag with no letter or digit ("+") would read as a missing label: leave the code cell empty */
     var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
     return fli('<li'+(key[i]?' class="is-key"':'')+'>',b,i)+idx(i)
@@ -4964,6 +4969,43 @@ if(typeof document!=='undefined'){
   if(nx){nx.focus();frame(w,nx.getAttribute('data-i'))}});
 }
 })();
+/* Look "param-tiles" -> ParamTiles (design-system/components/ParamTiles): a spec block's design parameters as a Swiss
+   grid of numbered tiles, the number set huge with a slash and the parameter name beside it, the design value in mono,
+   the basis under a hairline (and the row's link, as a spec row's). The first highlighted row is the wide navy lead
+   tile; one cell of the grid is a blueprint of the skid itself (IsoKit on navy). The fold (fold, fold_noun) applies on
+   phones only: desktop shows every tile, so the grid stays whole.
+   Fields: h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun, art (optional: the id of a
+   line drawing in assets/illustrations/, painted in Limestone on the navy cell in place of the skid; a product page gives
+   its own drawing), plate (optional: a drawing title block in place of the skid, {name, title, rows [[label, value]]}; name alone sets
+   the product's name large and heavy, centred:
+   the product's name set large, its title, and the ruled fields of a drawing sheet's title block: drawing, revision,
+   issue, documents). */
+function ptSkid(){
+ var sk=isoPart('skid',0,0,0,1,{w:176,d:84}),ro=isoPart('ro',10,8,9,1,{id:'ro'}),ed=isoPart('edi',140,12,9,1,{id:'edi'}),pn=isoPart('panel',150,62,9,0.9,{id:'pn'});
+ var run=isoPipe(isoRoute(ro.ports.out,ed.ports.in,'xzy'),{r:1.8,to:'edi',caps:false});
+ var inner=[sk,ro,run,ed,pn].join(''),bx=isoBounds([[0,0,0],[176,0,0],[0,84,0],[176,84,0],[0,0,70],[176,0,70],[0,84,70]],26),W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y];
+ return isoSvg(W,Hh,inner,'aq-iso--navy aq-param-tiles__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',m:6,band:0,gridStep:20})})}
+function ptPlate(t){var rows=(t.rows||[]).map(function(r){return '<div class="aq-param-tiles__field"><dt>'+tx(r[0])+'</dt><dd>'+tx(r[1])+'</dd></div>'}).join('');
+ var alone=!t.title&&!rows;
+ return '<div class="aq-param-tiles__plate'+(alone?' aq-param-tiles__plate--name':'')+'"><p class="aq-param-tiles__plate-name">'+tx(t.name||'')+'</p>'+(t.title?'<p class="aq-param-tiles__plate-title">'+tx(t.title)+'</p>':'')+(rows?'<dl class="aq-param-tiles__fields">'+rows+'</dl>':'')+'</div>'}
+LOOKS['param-tiles']=function(b,H){
+ var rows=b.rows||[],lead=-1;rows.some(function(r,i){if(r.hl){lead=i;return true}});
+ /* pass 12 C: the cells the grid fills (lead 2, blueprint 4, the rest 1 each); one left over in the last row (four
+    columns, and three under 1100 px) would leave an empty navy cell beside it, so the last tile runs the full row */
+ /* the limestone tiles are fixed paper: data-theme="light" keeps flow (links) and placeholders at their light values
+    in dark mode (flow turned pale blue on the paper) */
+ var cells=rows.length+(lead>=0?1:0)+4,wide=rows.length>1&&lead!==rows.length-1&&cells%4===1;
+ var tiles=rows.map(function(r,i){
+  var lk=r.link&&wp(r.link)?'<a class="aq-param-tiles__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
+  return fli('<li class="aq-param-tiles__tile'+(i===lead?' is-lead':'')+(wide&&i===rows.length-1?' is-row':'')+'"'+(i===lead?'':' data-theme="light"')+'>'
+   +'<div class="aq-param-tiles__head"><span class="aq-param-tiles__n" aria-hidden="true"><span>'+(i<9?'0':'')+(i+1)+'</span></span><span class="aq-param-tiles__slash" aria-hidden="true"></span>'
+   +'<h3 class="aq-param-tiles__p">'+tx(r.p)+'</h3></div>'
+   +'<p class="aq-param-tiles__v">'+tx(r.v)+'</p>'
+   +(r.m||lk?'<p class="aq-param-tiles__m">'+(r.m?'<span>'+tx(r.m)+'</span>':'')+lk+'</p>':'')+'</li>',b,i)}).join('');
+ var fig=b.plate?ptPlate(b.plate):b.art?'<div class="aq-param-tiles__art" style="'+artMask(b.art)+'"></div><span class="aq-param-tiles__scan" aria-hidden="true"></span>':ptSkid();
+ var grid='<div class="aq-param-tiles">'+'<div class="aq-param-tiles__fig" aria-hidden="true">'+fig+'</div>'
+  +'<ol class="aq-param-tiles__list">'+tiles+'</ol></div>';
+ return sec(wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+wFold(b,rows.length,grid,b.fold_noun||'parameters')+wSpecNote(b))};
 /* Look "plan-checker" -> PlanChecker (design-system/components/PlanChecker): service plans as a checker of square-cornered
    tiles on limestone, no table rules. One column per plan, alternating navy and limestone; each column is two tiles:
    the head (a huge light slash numeral "01/", the plan name, who it suits) and the terms (each value set first, its
@@ -6371,6 +6413,41 @@ if(typeof document!=='undefined'&&document.addEventListener){
   var k=Math.round(r.scrollLeft/(c.getBoundingClientRect().width||1)),d=r.parentNode.querySelectorAll('.aq-source-skid__dots span');
   [].forEach.call(d,function(x,i){x.classList.toggle('is-on',i===Math.min(k,d.length-1))})},true)}
 })();
+/* Look "spares-kit" -> SparesKit (design-system/components/SparesKit): like-for-like rules read off the spares kit
+   itself. A tray (a shadow board seen from above) holds one pocket per part, each part drawn flat in line art in its
+   cut-out: an RO membrane element, an instrument probe with its transmitter, a program memory card, a gasket and a
+   diaphragm, an EDI module, a UV lamp, a vent filter cartridge. Under each pocket: the part, then the two answers
+   the table gives, marked like a drawing note: "=" like for like when…, "≠" a change when…, and the arrow to what
+   follows a change. The last cell of the tray is the key (the column names).
+   Fields as a table block: h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun.
+   key: false drops the key cell (when the column names under each part already say what the marks mean).
+   marks (optional): the three note symbols for the answer columns (default = ≠ →, the like-for-like reading);
+   a table of other answers names its own (the P-40 consumables: ⌀ size, ⟳ life).
+   kit (optional): one drawing name per row (membrane, probe, card, seal, edi, lamp, cartridge); without it the
+   drawing is matched from the part's name, and a part with no match gets a plain pocket. Desktop shows the whole
+   tray; the fold applies on phones, where the pockets stack one per row, drawing beside the answers. */
+var SK_ART={
+ membrane:'<rect x="22" y="36" width="196" height="28"/><path d="M34 36v28M206 36v28M70 36v28M118 36v28M166 36v28"/><path class="k-t" d="M22 50h-10M218 50h10"/><circle class="k-t" cx="28" cy="50" r="3"/>',
+ probe:'<rect x="30" y="40" width="58" height="20"/><path d="M88 46h70v8H88"/><path class="k-t" d="M158 48h22M158 52h22"/><path d="M30 50C14 50 14 78 40 78h38"/><rect x="78" y="70" width="40" height="22"/><path class="k-t" d="M84 76h28M84 81h20"/><circle class="k-a" cx="112" cy="86" r="2"/>',
+ card:'<path d="M70 26h84l16 16v44H70Z"/><path class="k-t" d="M154 26v16h16"/><path d="M82 86V70M92 86V70M102 86V70M112 86V70M122 86V70M132 86V70"/><rect class="k-a" x="86" y="38" width="44" height="18"/>',
+ seal:'<circle cx="74" cy="52" r="30"/><circle cx="74" cy="52" r="20"/><circle cx="168" cy="52" r="30"/><circle class="k-t" cx="168" cy="52" r="7"/><path class="k-t" d="M168 22v-6M168 82v6M138 52h-6M198 52h6"/><circle class="k-t" cx="150" cy="31" r="2"/><circle class="k-t" cx="186" cy="31" r="2"/><circle class="k-t" cx="150" cy="73" r="2"/><circle class="k-t" cx="186" cy="73" r="2"/>',
+ edi:'<rect x="40" y="26" width="16" height="52"/><rect x="184" y="26" width="16" height="52"/><rect x="56" y="32" width="128" height="40"/><path class="k-t" d="M64 32v40M72 32v40M80 32v40M88 32v40M96 32v40M104 32v40M112 32v40M120 32v40M128 32v40M136 32v40M144 32v40M152 32v40M160 32v40M168 32v40M176 32v40"/><path d="M36 30h168M36 74h168"/><rect class="k-a" x="104" y="14" width="32" height="12"/>',
+ lamp:'<rect x="30" y="42" width="180" height="16" rx="8"/><path class="k-t" d="M44 50h152"/><path d="M210 46h12M210 54h12M30 46h-12M30 54h-12"/><path class="k-a" d="M60 50h120"/>',
+ cartridge:'<rect x="74" y="20" width="92" height="12"/><rect x="80" y="32" width="80" height="48"/><path class="k-t" d="M88 32v48M96 32v48M104 32v48M112 32v48M120 32v48M128 32v48M136 32v48M144 32v48M152 32v48"/><rect x="74" y="80" width="92" height="8"/><path d="M112 88v6h16v-6"/>'};
+var SK_MATCH=[[/membrane/i,'membrane'],[/instrument|probe|sensor/i,'probe'],[/software|program/i,'card'],[/gasket|diaphragm|seal/i,'seal'],[/\bEDI\b|electrodeioni/i,'edi'],[/lamp/i,'lamp'],[/vent|cartridge/i,'cartridge']];
+function skArt(name,kind){if(!kind||!SK_ART[kind]){var s=String(name&&name.t||name||'');kind='';SK_MATCH.some(function(m){if(m[0].test(s)){kind=m[1];return true}})}
+ var a=SK_ART[kind]||'';
+ return '<svg class="aq-spares-kit__art" viewBox="0 0 240 104" aria-hidden="true" focusable="false"><g class="aq-spares-kit__pocket">'+(a?a.replace(/ class="k-[ta]"/g,''):'<rect x="40" y="24" width="160" height="56"/>')+'</g>'
+  +'<g class="aq-spares-kit__part">'+(a||'')+'</g></svg>'}
+LOOKS['spares-kit']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-spares-kit',kit=b.kit||[],M=b.marks||['=','≠','→'];
+ var cells=R.map(function(r,i){return fli('<li class="'+K+'__slot">'+'<div class="'+K+'__well">'+skArt(r[0],kit[i])+'<span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span></div>'
+  +'<h3 class="'+K+'__t">'+tcell(r[0])+'</h3><dl class="'+K+'__rules">'
+  +(r[1]!=null?'<div class="'+K+'__rule '+K+'__rule--same"><dt><span class="'+K+'__sym" aria-hidden="true">'+e(M[0])+'</span>'+tx(C[1]||'')+'</dt><dd>'+tcell(r[1])+'</dd></div>':'')
+  +(r[2]!=null?'<div class="'+K+'__rule '+K+'__rule--change"><dt><span class="'+K+'__sym" aria-hidden="true">'+e(M[1])+'</span>'+tx(C[2]||'')+'</dt><dd>'+tcell(r[2])+'</dd></div>':'')
+  +(r[3]!=null?'<div class="'+K+'__rule '+K+'__rule--then"><dt><span class="'+K+'__sym" aria-hidden="true">'+e(M[2])+'</span>'+tx(C[3]||'')+'</dt><dd>'+tcell(r[3])+'</dd></div>':'')
+  +'</dl></li>',b,i)}).join('');
+ var key=b.key===false?'':'<li class="'+K+'__key" aria-hidden="true"><p class="'+K+'__keyh">Key</p>'+[[M[0],C[1]],[M[1],C[2]],[M[2],C[3]]].filter(function(k){return k[1]}).map(function(k){return '<p class="'+K+'__keyr"><span class="'+K+'__sym">'+k[0]+'</span>'+tx(k[1])+'</p>'}).join('')+'</li>';
+ return sec(H+wFold(b,R.length,'<ol class="'+K+'" role="list">'+cells+key+'</ol>',b.fold_noun||'parts'),K+'-sec')};
 /* Look "spine-shelf" -> SpineShelf (design-system/components/SpineShelf): the turnover package as the object on the
    shelf and its index that opens. Left, the package stands as a row of binder spines on one shelf, one spine per
    section, numbered, the section's name on its label holder, each spine as thick as the section holds documents; the

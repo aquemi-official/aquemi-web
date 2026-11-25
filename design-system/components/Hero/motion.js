@@ -40,6 +40,8 @@
       m.on(fig, function () { t.delay(Date.now() - t0 < 400 ? (narrow ? 0.5 : 0.4) : 0.1).play() }, 'top 88%');
     }
 
+    // Rendering or photograph (figure.photo): arrives with the lead, a short rise and fade (16 px, the brand's limit)
+    var ph = q('.aq-hero__photo img'); if (ph) tl.from(ph, { y: 16, autoAlpha: 0, duration: 0.9, clearProps: 'transform,opacity,visibility' }, 0.3);
     // Equipment figure: print wipe, then leaders out of the drawing to the callouts
     figure(q('.aq-hero__figure'), function () {
       var f = q('.aq-hero__figure'), art = q('.aq-illustration', f), t = m.tw(gsap.timeline({ defaults: { ease: 'power3.out' } }));

@@ -174,3 +174,6 @@ System pages with an equipment drawing (`sys-*`) carry `aq-hero--mist`: one fain
   height (six rows fill the paper at every width); on phones the plate stands at 12:13 and a long row wraps instead of
   ending in an ellipsis. A KeyFacts strip closing a phone hero ends it at `space-6`.
 
+## Rendering or photograph
+
+A page may set `figure: {photo, alt}` (a WebP in `assets/renders/`, cut to its bounds) to show a product rendering or photograph as the hero figure: the image itself, contained in the figure column and bottom-aligned with the actions, with no box or placeholder. It arrives with the lead (a 16 px rise and fade), on the Flow mist ground, as the skid drawings are. Use it for standard equipment with a rendering or a photographed unit; EMI pages keep their line-art masks and callouts.

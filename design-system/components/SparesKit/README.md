@@ -9,3 +9,7 @@ Look `spares-kit` (`assets/src/blocks/look-spares-kit.js`) on a `table` block (p
 - Desktop shows the whole tray (four columns, two below 1080 px); the fold applies on phones, one pocket per row.
 
 Motion: the pockets show, then each part drops into its pocket and settles, its name and rules rising after it. Once, about 2.5 s. Hover lifts a part out of its pocket.
+
+## Other answers
+
+The three note symbols (= ≠ →) are the like-for-like reading. A table whose columns mean something else sets `marks` (one symbol per answer column) and `kit` (one drawing name per row: membrane, probe, card, seal, edi, lamp, cartridge). The P-40's consumables use it as a tray of cartridges: `marks: ["⌀", "⟳"]` for size and estimated life. `key: false` drops the key cell when the column names under each part already explain the marks.

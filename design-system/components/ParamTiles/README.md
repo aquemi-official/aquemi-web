@@ -13,3 +13,11 @@ ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles w
 Motion: the grid is assembled like a poster. Tiles wipe into their cells in reading order, each from a different edge in turn; the big number rolls up out of its cell while its digits decode; the slash cuts down; label, value and basis follow. The blueprint cell draws the skid through `AQiso.timeline` (sheet, frame, equipment, then water from RO to EDI). Under 5 s; folded tiles appear whole when opened; nothing under reduced motion.
 
 Pass 9 polish: values are Geist Light (placeholders keep their mono chip); when the count leaves one cell empty in the last row of the four-column grid, the last tile spans two so the grid closes square.
+
+## A product's own drawing
+
+The blueprint cell draws the EMI skid by default. A block may set `art` to the id of a line drawing in `assets/illustrations/` (the same file its hero uses): the cell then paints that drawing in Limestone on the navy, so a product page such as the P-40 shows its own equipment, never a skid it is not.
+
+## A drawing title block
+
+A block may set `plate` instead: `{name, title, rows: [[label, value], …]}` fills the blueprint cell with a drawing sheet's title block, the product's name set large and light in Limestone, its title under it, and the ruled fields (drawing number, revision, issue, documents) in mono on hairlines. With `name` alone the cell carries just the product's name, large and in the system's heaviest weight (500), centred: a nameplate. Use the full title block for a product whose drawings are not on the site, so the cell says what the figures rest on.

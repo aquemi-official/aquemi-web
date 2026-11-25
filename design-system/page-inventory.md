@@ -30,7 +30,7 @@ EMI (Water for industry) and the standard items (Water on site, Water from air) 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [All equipment](https://aquemi-official.github.io/aquemi-web/#equipment) | Water equipment, from a skid system to a cart | grid (Products, #range), table (EMI or a product, #which), faq (FAQ, #faq), closing (checklist, returns) |
-| [P-40 portable pure-water cart](https://aquemi-official.github.io/aquemi-web/#p-40) | Low-mineral water, made where the job is | diagram (How it works, #process: WindingRoute), spec (Technical data, #data, fold 6), table (Consumables, #consumables), grid (Where it fits, #fits), faq (FAQ, #faq), closing (checklist, returns) |
+| [P-40 portable pure-water cart](https://aquemi-official.github.io/aquemi-web/#p-40) | Low-mineral water, made where the job is | diagram (How it works, #process: WindingRoute), spec (Technical data, #data: ParamTiles, with the P-40 drawing in its blueprint cell), table (Consumables, #consumables: SparesKit), grid (Where it fits, #fits), docs (Documents, #documents), faq (FAQ, #faq), closing (checklist, returns) |
 | [AeroWell atmospheric water generator](https://aquemi-official.github.io/aquemi-web/#aerowell) | Drinking water from the air, on a 120 V outlet | diagram (How it works, #process: WindingRoute), spec (Technical data, #data, fold 6), faq (FAQ, #faq), closing (checklist, returns) |
 | [P-80](https://aquemi-official.github.io/aquemi-web/#p-80) | P-80: in design | spec (Technical data, #data), faq (FAQ, #faq), closing (checklist, returns) |
 | [Dosing tank](https://aquemi-official.github.io/aquemi-web/#dosing-tank) | Dosing tank: in design | spec (Technical data, #data), faq (FAQ, #faq), closing (checklist, returns) |

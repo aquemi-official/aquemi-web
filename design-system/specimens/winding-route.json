@@ -594,9 +594,9 @@
    "page": "p-40",
    "slot": 0,
    "h": "Four stages on one frame",
-   "status": "live",
+   "status": "retired",
    "first_seen": "2026-11-23",
-   "last_seen": "2026-11-23",
+   "last_seen": "2026-11-24",
    "commit": "7a69563",
    "hash": "d7b52bc4b1",
    "block": {
@@ -692,6 +692,62 @@
       "spot": "storage-tank",
       "label": "Out",
       "d": "1.8 US gal (6.8 L) internal storage; the dispenser delivers 1 US gal/min (3.8 L/min)."
+     }
+    ]
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 0,
+   "h": "Four stages on one frame",
+   "status": "live",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "commit": "59fbf55",
+   "hash": "a7e078ab54",
+   "block": {
+    "type": "diagram",
+    "look": "winding-route",
+    "nav": "How it works",
+    "anchor": "process",
+    "h": "Four stages on one frame",
+    "intro": "Water passes the four stages in a fixed order. Three 3/4 in garden-hose connections: feed, product and concentrate.",
+    "stages": [
+     {
+      "t": "Feed hose",
+      "spot": "pretreatment",
+      "label": "In",
+      "d": "A hose tap on a mains supply at 2.8 to 5.5 bar (40 to 80 psi); a pressure regulator above that."
+     },
+     {
+      "t": "Sediment filter",
+      "spot": "pretreatment",
+      "label": "1",
+      "d": "5 µm, in a 10 × 2.5 in housing. Changed on pressure drop."
+     },
+     {
+      "t": "Catalytic carbon block",
+      "spot": "pretreatment",
+      "label": "2",
+      "d": "10 × 4.5 in housing, 1 µm. Removes chlorine and chloramine, which would damage the membrane."
+     },
+     {
+      "t": "Reverse osmosis",
+      "spot": "ro-skid",
+      "label": "3",
+      "d": "One 4040 element in a 304 stainless steel housing. Concentrate leaves through a fixed 1.6 mm orifice, always open, with a ball valve to set recovery and flush."
+     },
+     {
+      "t": "Mixed-bed deionization",
+      "spot": "edi-stack",
+      "label": "4",
+      "d": "10 × 4.5 in housing. Design target: 0 ppm TDS reading at the outlet while the resin has capacity."
+     },
+     {
+      "t": "Product hose",
+      "spot": "storage-tank",
+      "label": "Out",
+      "d": "Low-mineral water, checked with a handheld TDS meter. A check valve keeps it from flowing back."
      }
     ]
    }

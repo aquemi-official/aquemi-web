@@ -4869,11 +4869,13 @@
    "look": "param-tiles",
    "component": "ParamTiles",
    "type": "spec",
-   "status": "retired",
-   "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun.",
+   "status": "live",
+   "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun, art (optional: the id of a line drawing in assets/illustrations/, painted in Limestone on the navy cell in place of the skid; a product page gives its own drawing), plate (optional: a drawing title block in place of the skid, {name, title, rows [[label, value]]}; name alone sets the product's name large and heavy, centred: the product's name set large, its title, and the ruled fields of a drawing sheet's title block: drawing, revision, issue, documents).",
    "best_for": "ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles with one blueprint cell of the skid, so each parameter reads as its own panel and the whole grid scans at a glance.",
    "held": "8-10",
-   "pages": [],
+   "pages": [
+    "p-40"
+   ],
    "instances": [
     {
      "page": "sys-pw",
@@ -4924,6 +4926,46 @@
      "last_seen": "2026-11-03",
      "commit": "bee7493",
      "hash": "52b66a0cf8"
+    },
+    {
+     "page": "p-40",
+     "slot": 1,
+     "h": "Technical data",
+     "status": "retired",
+     "first_seen": "2026-11-24",
+     "last_seen": "2026-11-24",
+     "commit": "59fbf55",
+     "hash": "3d164326cc"
+    },
+    {
+     "page": "p-40",
+     "slot": 1,
+     "h": "Technical data",
+     "status": "retired",
+     "first_seen": "2026-11-24",
+     "last_seen": "2026-11-24",
+     "commit": "59fbf55",
+     "hash": "21234b0cfa"
+    },
+    {
+     "page": "p-40",
+     "slot": 1,
+     "h": "Technical data",
+     "status": "retired",
+     "first_seen": "2026-11-24",
+     "last_seen": "2026-11-24",
+     "commit": "59fbf55",
+     "hash": "2d407e85ef"
+    },
+    {
+     "page": "p-40",
+     "slot": 1,
+     "h": "Technical data",
+     "status": "live",
+     "first_seen": "2026-11-24",
+     "last_seen": "2026-11-24",
+     "commit": "59fbf55",
+     "hash": "1371453967"
     }
    ]
   },
@@ -7737,11 +7779,13 @@
    "look": "spares-kit",
    "component": "SparesKit",
    "type": "table",
-   "status": "retired",
-   "fields": "h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun. kit (optional): one drawing name per row (membrane, probe, card, seal, edi, lamp, cartridge); without it the drawing is matched from the part's name, and a part with no match gets a plain pocket. Desktop shows the whole tray; the fold applies on phones, where the pockets stack one per row, drawing beside the answers.",
+   "status": "live",
+   "fields": "h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun. key: false drops the key cell (when the column names under each part already say what the marks mean). marks (optional): the three note symbols for the answer columns (default = ≠ →, the like-for-like reading); a table of other answers names its own (the P-40 consumables: ⌀ size, ⟳ life). kit (optional): one drawing name per row (membrane, probe, card, seal, edi, lamp, cartridge); without it the drawing is matched from the part's name, and a part with no match gets a plain pocket. Desktop shows the whole tray; the fold applies on phones, where the pockets stack one per row, drawing beside the answers.",
    "best_for": "SparesKit reads like-for-like rules off the spares kit: a tray (a shadow board seen from above) with one pocket per part, each part drawn flat in line art in its cut-out, and under it the answers: \"=\" like for like when, \"≠\" a change when, \"→\" what follows a change.",
-   "held": "7",
-   "pages": [],
+   "held": "4-7",
+   "pages": [
+    "p-40"
+   ],
    "instances": [
     {
      "page": "svc-service",
@@ -7752,6 +7796,26 @@
      "last_seen": "2026-11-01",
      "commit": "64551a4",
      "hash": "44d9429793"
+    },
+    {
+     "page": "p-40",
+     "slot": 2,
+     "h": "Consumables",
+     "status": "retired",
+     "first_seen": "2026-11-24",
+     "last_seen": "2026-11-24",
+     "commit": "59fbf55",
+     "hash": "aade59fa2e"
+    },
+    {
+     "page": "p-40",
+     "slot": 2,
+     "h": "Consumables",
+     "status": "live",
+     "first_seen": "2026-11-24",
+     "last_seen": "2026-11-24",
+     "commit": "59fbf55",
+     "hash": "e95b7ac4a8"
     }
    ]
   },
@@ -9580,9 +9644,9 @@
      "page": "p-40",
      "slot": 0,
      "h": "Four stages on one frame",
-     "status": "live",
+     "status": "retired",
      "first_seen": "2026-11-23",
-     "last_seen": "2026-11-23",
+     "last_seen": "2026-11-24",
      "commit": "7a69563",
      "hash": "d7b52bc4b1"
     },
@@ -9595,6 +9659,16 @@
      "last_seen": "2026-11-23",
      "commit": "7a69563",
      "hash": "db15dc9527"
+    },
+    {
+     "page": "p-40",
+     "slot": 0,
+     "h": "Four stages on one frame",
+     "status": "live",
+     "first_seen": "2026-11-24",
+     "last_seen": "2026-11-24",
+     "commit": "59fbf55",
+     "hash": "a7e078ab54"
     }
    ]
   },

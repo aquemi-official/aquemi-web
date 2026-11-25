@@ -5,6 +5,9 @@
    the table gives, marked like a drawing note: "=" like for like when…, "≠" a change when…, and the arrow to what
    follows a change. The last cell of the tray is the key (the column names).
    Fields as a table block: h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun.
+   key: false drops the key cell (when the column names under each part already say what the marks mean).
+   marks (optional): the three note symbols for the answer columns (default = ≠ →, the like-for-like reading);
+   a table of other answers names its own (the P-40 consumables: ⌀ size, ⟳ life).
    kit (optional): one drawing name per row (membrane, probe, card, seal, edi, lamp, cartridge); without it the
    drawing is matched from the part's name, and a part with no match gets a plain pocket. Desktop shows the whole
    tray; the fold applies on phones, where the pockets stack one per row, drawing beside the answers. */
@@ -21,12 +24,12 @@ function skArt(name,kind){if(!kind||!SK_ART[kind]){var s=String(name&&name.t||na
  var a=SK_ART[kind]||'';
  return '<svg class="aq-spares-kit__art" viewBox="0 0 240 104" aria-hidden="true" focusable="false"><g class="aq-spares-kit__pocket">'+(a?a.replace(/ class="k-[ta]"/g,''):'<rect x="40" y="24" width="160" height="56"/>')+'</g>'
   +'<g class="aq-spares-kit__part">'+(a||'')+'</g></svg>'}
-LOOKS['spares-kit']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-spares-kit',kit=b.kit||[];
+LOOKS['spares-kit']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-spares-kit',kit=b.kit||[],M=b.marks||['=','≠','→'];
  var cells=R.map(function(r,i){return fli('<li class="'+K+'__slot">'+'<div class="'+K+'__well">'+skArt(r[0],kit[i])+'<span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span></div>'
   +'<h3 class="'+K+'__t">'+tcell(r[0])+'</h3><dl class="'+K+'__rules">'
-  +(r[1]!=null?'<div class="'+K+'__rule '+K+'__rule--same"><dt><span class="'+K+'__sym" aria-hidden="true">=</span>'+tx(C[1]||'')+'</dt><dd>'+tcell(r[1])+'</dd></div>':'')
-  +(r[2]!=null?'<div class="'+K+'__rule '+K+'__rule--change"><dt><span class="'+K+'__sym" aria-hidden="true">≠</span>'+tx(C[2]||'')+'</dt><dd>'+tcell(r[2])+'</dd></div>':'')
-  +(r[3]!=null?'<div class="'+K+'__rule '+K+'__rule--then"><dt><span class="'+K+'__sym" aria-hidden="true">→</span>'+tx(C[3]||'')+'</dt><dd>'+tcell(r[3])+'</dd></div>':'')
+  +(r[1]!=null?'<div class="'+K+'__rule '+K+'__rule--same"><dt><span class="'+K+'__sym" aria-hidden="true">'+e(M[0])+'</span>'+tx(C[1]||'')+'</dt><dd>'+tcell(r[1])+'</dd></div>':'')
+  +(r[2]!=null?'<div class="'+K+'__rule '+K+'__rule--change"><dt><span class="'+K+'__sym" aria-hidden="true">'+e(M[1])+'</span>'+tx(C[2]||'')+'</dt><dd>'+tcell(r[2])+'</dd></div>':'')
+  +(r[3]!=null?'<div class="'+K+'__rule '+K+'__rule--then"><dt><span class="'+K+'__sym" aria-hidden="true">'+e(M[2])+'</span>'+tx(C[3]||'')+'</dt><dd>'+tcell(r[3])+'</dd></div>':'')
   +'</dl></li>',b,i)}).join('');
- var key='<li class="'+K+'__key" aria-hidden="true"><p class="'+K+'__keyh">Key</p>'+[['=',C[1]],['≠',C[2]],['→',C[3]]].filter(function(k){return k[1]}).map(function(k){return '<p class="'+K+'__keyr"><span class="'+K+'__sym">'+k[0]+'</span>'+tx(k[1])+'</p>'}).join('')+'</li>';
+ var key=b.key===false?'':'<li class="'+K+'__key" aria-hidden="true"><p class="'+K+'__keyh">Key</p>'+[[M[0],C[1]],[M[1],C[2]],[M[2],C[3]]].filter(function(k){return k[1]}).map(function(k){return '<p class="'+K+'__keyr"><span class="'+K+'__sym">'+k[0]+'</span>'+tx(k[1])+'</p>'}).join('')+'</li>';
  return sec(H+wFold(b,R.length,'<ol class="'+K+'" role="list">'+cells+key+'</ol>',b.fold_noun||'parts'),K+'-sec')};

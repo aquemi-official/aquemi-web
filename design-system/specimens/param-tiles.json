@@ -2,9 +2,9 @@
  "look": "param-tiles",
  "component": "ParamTiles",
  "type": "spec",
- "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun.",
+ "fields": "h, caption (eyebrow), intro, rows [{p, v, m, hl, link, link_label}], fold, fold_noun, art (optional: the id of a line drawing in assets/illustrations/, painted in Limestone on the navy cell in place of the skid; a product page gives its own drawing), plate (optional: a drawing title block in place of the skid, {name, title, rows [[label, value]]}; name alone sets the product's name large and heavy, centred: the product's name set large, its title, and the ruled fields of a drawing sheet's title block: drawing, revision, issue, documents).",
  "best_for": "ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles with one blueprint cell of the skid, so each parameter reads as its own panel and the whole grid scans at a glance.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "sys-pw",
@@ -535,6 +535,318 @@
     "fold_noun": "rules",
     "ground": "light",
     "look": "param-tiles"
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 1,
+   "h": "Technical data",
+   "status": "retired",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "commit": "59fbf55",
+   "hash": "3d164326cc",
+   "block": {
+    "type": "spec",
+    "nav": "Technical data",
+    "anchor": "data",
+    "h": "Technical data",
+    "caption": "Design values",
+    "intro": "Performance figures are estimates for the stated conditions.",
+    "cols": [
+     "Item",
+     "Value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Product flow",
+      "v": "3.9 L/min at 4.1 bar, 25 °C, 50 % recovery",
+      "m": "Estimate; 1.4 to 5.2 L/min over 2.8 to 5.5 bar, 5 to 25 °C",
+      "hl": true
+     },
+     {
+      "p": "Recovery",
+      "v": "33 to 50 %, set by the ball valve",
+      "m": "Estimate"
+     },
+     {
+      "p": "Membrane",
+      "v": "One 4040 element, 98.5 % salt rejection",
+      "m": "Maker's rating"
+     },
+     {
+      "p": "Feed water",
+      "v": "Treated mains, 2.8 to 5.5 bar, 4.4 to 37.8 °C",
+      "m": "6.2 bar maximum; no frost"
+     },
+     {
+      "p": "Power",
+      "v": "None: tap pressure does the work",
+      "m": "No pump, tank or power supply"
+     },
+     {
+      "p": "Connections",
+      "v": "Three 3/4 in garden-hose threads: feed, product, concentrate",
+      "m": "Drawing"
+     },
+     {
+      "p": "Size",
+      "v": "1,369 × 531 × 423 mm (53.9 × 20.9 × 16.7 in)",
+      "m": "Drawing"
+     },
+     {
+      "p": "Mass",
+      "v": "About 28 kg dry, 41 kg with water",
+      "m": "Estimate"
+     },
+     {
+      "p": "Materials",
+      "v": "Anodized aluminium frame; 304 stainless RO housing; polypropylene filter housings",
+      "m": "Drawing"
+     }
+    ],
+    "note": "Not designed or certified for drinking water. Estimates are not guarantees of performance.",
+    "look": "param-tiles",
+    "art": "p-40"
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 1,
+   "h": "Technical data",
+   "status": "retired",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "commit": "59fbf55",
+   "hash": "21234b0cfa",
+   "block": {
+    "type": "spec",
+    "nav": "Technical data",
+    "anchor": "data",
+    "h": "Technical data",
+    "caption": "Design values",
+    "intro": "Performance figures are estimates for the stated conditions.",
+    "cols": [
+     "Item",
+     "Value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Product flow",
+      "v": "3.9 L/min at 4.1 bar, 25 °C, 50 % recovery",
+      "m": "Estimate; 1.4 to 5.2 L/min over 2.8 to 5.5 bar, 5 to 25 °C",
+      "hl": true
+     },
+     {
+      "p": "Recovery",
+      "v": "33 to 50 %, set by the ball valve",
+      "m": "Estimate"
+     },
+     {
+      "p": "Membrane",
+      "v": "One 4040 element, 98.5 % salt rejection",
+      "m": "Maker's rating"
+     },
+     {
+      "p": "Feed water",
+      "v": "Treated mains, 2.8 to 5.5 bar, 4.4 to 37.8 °C",
+      "m": "6.2 bar maximum; no frost"
+     },
+     {
+      "p": "Connections",
+      "v": "Three 3/4 in garden-hose threads: feed, product, concentrate",
+      "m": "Drawing"
+     },
+     {
+      "p": "Size",
+      "v": "1,369 × 531 × 423 mm (53.9 × 20.9 × 16.7 in)",
+      "m": "Drawing"
+     },
+     {
+      "p": "Mass",
+      "v": "About 28 kg dry, 41 kg with water",
+      "m": "Estimate"
+     },
+     {
+      "p": "Materials",
+      "v": "Anodized aluminium frame; 304 stainless RO housing; polypropylene filter housings",
+      "m": "Drawing"
+     }
+    ],
+    "note": "Not designed or certified for drinking water. Estimates are not guarantees of performance.",
+    "look": "param-tiles",
+    "art": "p-40"
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 1,
+   "h": "Technical data",
+   "status": "retired",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "commit": "59fbf55",
+   "hash": "2d407e85ef",
+   "block": {
+    "type": "spec",
+    "nav": "Technical data",
+    "anchor": "data",
+    "h": "Technical data",
+    "caption": "Design values",
+    "intro": "Performance figures are estimates for the stated conditions.",
+    "cols": [
+     "Item",
+     "Value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Product flow",
+      "v": "3.9 L/min at 4.1 bar, 25 °C, 50 % recovery",
+      "m": "Estimate; 1.4 to 5.2 L/min over 2.8 to 5.5 bar, 5 to 25 °C",
+      "hl": true
+     },
+     {
+      "p": "Recovery",
+      "v": "33 to 50 %, set by the ball valve",
+      "m": "Estimate"
+     },
+     {
+      "p": "Membrane",
+      "v": "One 4040 element, 98.5 % salt rejection",
+      "m": "Maker's rating"
+     },
+     {
+      "p": "Feed water",
+      "v": "Treated mains, 2.8 to 5.5 bar, 4.4 to 37.8 °C",
+      "m": "6.2 bar maximum; no frost"
+     },
+     {
+      "p": "Connections",
+      "v": "Three 3/4 in garden-hose threads: feed, product, concentrate",
+      "m": "Drawing"
+     },
+     {
+      "p": "Size",
+      "v": "1,369 × 531 × 423 mm (53.9 × 20.9 × 16.7 in)",
+      "m": "Drawing"
+     },
+     {
+      "p": "Mass",
+      "v": "About 28 kg dry, 41 kg with water",
+      "m": "Estimate"
+     },
+     {
+      "p": "Materials",
+      "v": "Anodized aluminium frame; 304 stainless RO housing; polypropylene filter housings",
+      "m": "Drawing"
+     }
+    ],
+    "note": "Not designed or certified for drinking water. Estimates are not guarantees of performance.",
+    "look": "param-tiles",
+    "plate": {
+     "name": "P-40",
+     "title": "Portable pure-water cart · title block",
+     "rows": [
+      [
+       "Drawing",
+       "P40-000 · general arrangement"
+      ],
+      [
+       "Frame",
+       "P40-100 · frame assembly"
+      ],
+      [
+       "Data sheet",
+       "AQ-P40-DS · Rev A"
+      ],
+      [
+       "Brochure",
+       "AQ-P40-BR · Rev A"
+      ],
+      [
+       "Issued",
+       "2026-11"
+      ],
+      [
+       "Units",
+       "mm · bar · L/min"
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 1,
+   "h": "Technical data",
+   "status": "live",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "commit": "59fbf55",
+   "hash": "1371453967",
+   "block": {
+    "type": "spec",
+    "nav": "Technical data",
+    "anchor": "data",
+    "h": "Technical data",
+    "caption": "Design values",
+    "intro": "Performance figures are estimates for the stated conditions.",
+    "cols": [
+     "Item",
+     "Value",
+     "Basis"
+    ],
+    "rows": [
+     {
+      "p": "Product flow",
+      "v": "3.9 L/min at 4.1 bar, 25 °C, 50 % recovery",
+      "m": "Estimate; 1.4 to 5.2 L/min over 2.8 to 5.5 bar, 5 to 25 °C",
+      "hl": true
+     },
+     {
+      "p": "Recovery",
+      "v": "33 to 50 %, set by the ball valve",
+      "m": "Estimate"
+     },
+     {
+      "p": "Membrane",
+      "v": "One 4040 element, 98.5 % salt rejection",
+      "m": "Maker's rating"
+     },
+     {
+      "p": "Feed water",
+      "v": "Treated mains, 2.8 to 5.5 bar, 4.4 to 37.8 °C",
+      "m": "6.2 bar maximum; no frost"
+     },
+     {
+      "p": "Connections",
+      "v": "Three 3/4 in garden-hose threads: feed, product, concentrate",
+      "m": "Drawing"
+     },
+     {
+      "p": "Size",
+      "v": "1,369 × 531 × 423 mm (53.9 × 20.9 × 16.7 in)",
+      "m": "Drawing"
+     },
+     {
+      "p": "Mass",
+      "v": "About 28 kg dry, 41 kg with water",
+      "m": "Estimate"
+     },
+     {
+      "p": "Materials",
+      "v": "Anodized aluminium frame; 304 stainless RO housing; polypropylene filter housings",
+      "m": "Drawing"
+     }
+    ],
+    "note": "Not designed or certified for drinking water. Estimates are not guarantees of performance.",
+    "look": "param-tiles",
+    "plate": {
+     "name": "P-40"
+    }
    }
   }
  ]

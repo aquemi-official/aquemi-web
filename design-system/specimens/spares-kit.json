@@ -2,9 +2,9 @@
  "look": "spares-kit",
  "component": "SparesKit",
  "type": "table",
- "fields": "h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun. kit (optional): one drawing name per row (membrane, probe, card, seal, edi, lamp, cartridge); without it the drawing is matched from the part's name, and a part with no match gets a plain pocket. Desktop shows the whole tray; the fold applies on phones, where the pockets stack one per row, drawing beside the answers.",
+ "fields": "h, intro, cols [part, like-for-like, change, what follows], rows, fold, fold_noun. key: false drops the key cell (when the column names under each part already say what the marks mean). marks (optional): the three note symbols for the answer columns (default = ≠ →, the like-for-like reading); a table of other answers names its own (the P-40 consumables: ⌀ size, ⟳ life). kit (optional): one drawing name per row (membrane, probe, card, seal, edi, lamp, cartridge); without it the drawing is matched from the part's name, and a part with no match gets a plain pocket. Desktop shows the whole tray; the fold applies on phones, where the pockets stack one per row, drawing beside the answers.",
  "best_for": "SparesKit reads like-for-like rules off the spares kit: a tray (a shadow board seen from above) with one pocket per part, each part drawn flat in line art in its cut-out, and under it the answers: \"=\" like for like when, \"≠\" a change when, \"→\" what follows a change.",
- "status": "retired",
+ "status": "live",
  "instances": [
   {
    "page": "svc-service",
@@ -73,6 +73,117 @@
     ],
     "fold": 3,
     "fold_noun": "parts"
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 2,
+   "h": "Consumables",
+   "status": "retired",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "commit": "59fbf55",
+   "hash": "aade59fa2e",
+   "block": {
+    "type": "table",
+    "nav": "Consumables",
+    "anchor": "consumables",
+    "h": "Consumables",
+    "intro": "Makers' published figures; life depends on your feed water.",
+    "cols": [
+     "Stage",
+     "Size",
+     "Estimated life"
+    ],
+    "rows": [
+     [
+      "1 · Sediment filter",
+      "5 µm",
+      "Change on pressure drop"
+     ],
+     [
+      "2 · Carbon block",
+      "10 × 4.5 in",
+      "22,700 L of feed water"
+     ],
+     [
+      "3 · RO element",
+      "4040",
+      "No life figure from its maker"
+     ],
+     [
+      "4 · DI resin",
+      "10 × 4.5 in",
+      "11,400 L at 5 ppm"
+     ]
+    ],
+    "look": "spares-kit",
+    "kit": [
+     "cartridge",
+     "cartridge",
+     "membrane",
+     "cartridge"
+    ],
+    "marks": [
+     "⌀",
+     "⟳"
+    ]
+   }
+  },
+  {
+   "page": "p-40",
+   "slot": 2,
+   "h": "Consumables",
+   "status": "live",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "commit": "59fbf55",
+   "hash": "e95b7ac4a8",
+   "block": {
+    "type": "table",
+    "nav": "Consumables",
+    "anchor": "consumables",
+    "h": "Consumables",
+    "intro": "Makers' published figures; life depends on your feed water.",
+    "cols": [
+     "Stage",
+     "Size",
+     "Estimated life"
+    ],
+    "rows": [
+     [
+      "1 · Sediment filter",
+      "5 µm",
+      "Change on pressure drop"
+     ],
+     [
+      "2 · Carbon block",
+      "10 × 4.5 in",
+      "22,700 L of feed water"
+     ],
+     [
+      "3 · RO element",
+      "4040",
+      "No life figure from its maker"
+     ],
+     [
+      "4 · DI resin",
+      "10 × 4.5 in",
+      "11,400 L at 5 ppm"
+     ]
+    ],
+    "look": "spares-kit",
+    "kit": [
+     "cartridge",
+     "cartridge",
+     "membrane",
+     "cartridge"
+    ],
+    "marks": [
+     "⌀",
+     "⟳"
+    ],
+    "key": false
    }
   }
  ]
