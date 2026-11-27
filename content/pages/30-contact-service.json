@@ -316,11 +316,9 @@
        "help": "No connection? We diagnose from your readings and a call; on-site times do not change."
       },
       {
-       "label": "Alarm log and trend data",
-       "kind": "file",
-       "required": false,
-       "when": "Fault now",
-       "help": "A copy from the hours before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]."
+       "kind": "note",
+       "label": "Keep a copy of the alarm log and trend data from the hours before the first alarm. We ask for it by email when we reply.",
+       "when": "Fault now"
       },
       {
        "label": "Preferred window",
@@ -462,11 +460,9 @@
        ]
       },
       {
-       "label": "Files",
-       "kind": "file",
-       "required": false,
-       "when": "Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make",
-       "help": "Spares list, schedule, nameplate photos or change request, up to [maximum upload size, MB]."
+       "kind": "note",
+       "label": "Have a spares list, schedule, nameplate photos or change request? We ask for them by email when we reply.",
+       "when": "Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make"
       },
       {
        "label": "Notes",
@@ -567,6 +563,7 @@
   ]
  },
  "todo": [
+  "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
   "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer, dispatcher or nobody; if nobody, route 2 and the phone menu say so, with the form note's [out-of-hours form review time, hours] (buyer panel 2026-10-31).",
   "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition, here and on contact-proposal and contact-locations.",
   "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",

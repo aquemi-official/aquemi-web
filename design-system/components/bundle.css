@@ -13496,6 +13496,8 @@ a.aq-tag:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-form .aq-form__note { margin: var(--space-4) 0 0; }
 .aq-form__step > .wform-msg { display: block; margin-top: var(--space-2); }
 
+/* Honeypot (botcheck): never drawn */
+.aq-form__hp { display: none; }
 /* Submit band */
 .aq-form__actions {
   display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap;

@@ -17,8 +17,8 @@ BLOCKS['form']=function(b,H){
  F.forEach(function(f,i){var l=f.section||(i===0?L1:i===cut?L2:'');if(l||!G.length)G.push({l:l||L1,f:[]});G[G.length-1].f.push(i)});
  var body=G.map(function(g,gi){var n=gi+1,q=0;return '<fieldset class="aq-form__section"><legend class="aq-form__legend"><span class="aq-form__num">'+n+'.0</span> '+tx((b.sections&&b.sections[gi])||g.l)+'</legend><div class="aq-form__grid">'+g.f.map(function(i){return wField(F[i],i,F[i].kind==='note'||F[i]._show===false?'':n+'.'+(++q))}).join('')+'</div></fieldset>'}).join('');
  return split(H,
-  '<form class="aq-form wform" novalidate>'
+  '<form class="aq-form wform" novalidate'+wFormAttrs(b)+'>'
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+wReqText(wReq(F))+'</span></p>'
   +body
-  +'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span>'+(b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+'</div>'
+  +'<div class="aq-form__actions">'+wHoney()+'<button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span>'+(b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+'</div>'
   +'</form>');};

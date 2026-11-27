@@ -58,6 +58,11 @@ var NAVSECT=NAVMENU.map(function(s){return [s.label,s.hub]});
    Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
    files that repeat it; tools/design_system.py check warns on a value no page file carries. */
 var CONTACT={email:'hello@aquemi.com',office:'Ontario, Canada',shop:'Ontario, Canada'};
+/* FORMS: where every form (EnquiryForm, parts/EnquiryForm.js wSend) posts. Web3Forms (web3forms.com) receives the
+   submission and emails it to the address the access key was made for (CONTACT.email, the hello@ alias), with the
+   visitor's email as reply-to. key is the Web3Forms access key: with it empty the forms say they are not connected
+   yet and send nothing. The key only lets a page send mail to that one address, so it may sit in the site script. */
+var FORMS={endpoint:'https://api.web3forms.com/submit',key:'eecad3f8-7179-45c4-b2b8-26a27127d517'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */

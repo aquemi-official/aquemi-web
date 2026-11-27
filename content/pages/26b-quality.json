@@ -181,10 +181,8 @@
      ]
     },
     {
-     "kind": "file",
-     "label": "Your questionnaire, audit checklist or quality agreement",
-     "required": false,
-     "help": "PDF, Word or Excel."
+     "kind": "note",
+     "label": "Have a questionnaire, audit checklist or quality agreement? We ask for it by email when we reply."
     },
     {
      "kind": "text",
@@ -263,6 +261,7 @@
   "turnaround": "Confirmed when you ask"
  },
  "todo": [
+  "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
   "EMI (2026-11-23): moved from the retired Compliance section to Company (id cmp-quality became quality); the supplier-check table came from the retired Applications page.",
   "KEY: ISO 9001 status (certification status block, FAQ; FD-48): certified (registrar, certificate number, scope, expiry, downloadable copy) or, only if FD-48 chooses it, a status line naming the standard the QMS is built to. No target or readiness date on the page (DR-028 rule 3). Never claim certification until held; no ISO label in the eyebrow, a heading or the meta until certified (DR-004 rule 3)",
   "ISO 9001 clause references per process (change control 6.3, 8.5.6; nonconformance and complaints 8.7, 9.1.2, 10.2; traceability 8.5.2; calibration 7.1.5; document control 7.5; supplier control 8.4; internal audit and management review 9.2, 9.3) were taken off the process rows: they state a basis FD-48 has not chosen, and the library has not read ISO 9001 (DR-007 rule 3). Restore them as \"Process · ISO 9001 n.n\" once FD-48 says the QMS is built to ISO 9001, checked against the standard's text",

@@ -7555,10 +7555,8 @@
        ]
       },
       {
-       "kind": "file",
-       "label": "Your questionnaire, audit checklist or quality agreement",
-       "required": false,
-       "help": "PDF, Word or Excel."
+       "kind": "note",
+       "label": "Have a questionnaire, audit checklist or quality agreement? We ask for it by email when we reply."
       },
       {
        "kind": "text",
@@ -7637,6 +7635,7 @@
     "turnaround": "Confirmed when you ask"
    },
    "todo": [
+    "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
     "EMI (2026-11-23): moved from the retired Compliance section to Company (id cmp-quality became quality); the supplier-check table came from the retired Applications page.",
     "KEY: ISO 9001 status (certification status block, FAQ; FD-48): certified (registrar, certificate number, scope, expiry, downloadable copy) or, only if FD-48 chooses it, a status line naming the standard the QMS is built to. No target or readiness date on the page (DR-028 rule 3). Never claim certification until held; no ISO label in the eyebrow, a heading or the meta until certified (DR-004 rule 3)",
     "ISO 9001 clause references per process (change control 6.3, 8.5.6; nonconformance and complaints 8.7, 9.1.2, 10.2; traceability 8.5.2; calibration 7.1.5; document control 7.5; supplier control 8.4; internal audit and management review 9.2, 9.3) were taken off the process rows: they state a basis FD-48 has not chosen, and the library has not read ISO 9001 (DR-007 rule 3). Restore them as \"Process · ISO 9001 n.n\" once FD-48 says the QMS is built to ISO 9001, checked against the standard's text",
@@ -7848,10 +7847,8 @@
          "help": "Your role, and which part of our work it would serve."
         },
         {
-         "kind": "file",
-         "label": "CV",
-         "required": true,
-         "accept": ".pdf,.docx"
+         "kind": "note",
+         "label": "Have your CV ready. We ask for it by email when we reply."
         }
        ]
       },
@@ -7961,6 +7958,7 @@
     ]
    },
    "todo": [
+    "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
     "Open roles: status and posting reference for each of the six roles ([status, posting reference]); posting reference format. At launch list only open roles, in the table, the form's role options and the meta; if none is open, say so in the roles intro and lead with the speculative application: the hero button becomes \"Send a speculative application\" to #apply (FD-40). Never publish all six as open with no team on the page: it reads as empty seats (FD-60, DR-028).",
     "Pay range per role (CAD per year or per hour), and the lead's commitment \"Every posting states its pay range\" (the meta's \"Pay range in every posting\" and the title's \"and pay\" with it; FD-40); confirm employee count against Ontario's 25-employee threshold and the provinces Aquemi posts in. The legal basis (\"as BC and Ontario law require\") left the page until counsel confirms it applies (OQ-87)",
     "Roles intro (pass 12, DR-028 rule 1): it no longer names who runs Aquemi; the team is shown on about only, by discipline and experience (MISSION; R7), and named people wait on FD-34 with consent. Never list a role here as held",
@@ -8296,7 +8294,7 @@
      "h": "Send what you have",
      "intro": "Rough numbers are fine; leave unknowns blank.",
      "submit": "Send to an engineer",
-     "note": "Files kept only as long as your enquiry needs them. {Privacy notice|privacy}",
+     "note": "{Privacy notice|privacy}",
      "steps": [
       {
        "title": "Your request",
@@ -8647,10 +8645,8 @@
          ]
         },
         {
-         "label": "Documents",
-         "kind": "file",
-         "required": false,
-         "help": "URS, tender documents, water analysis or drawings, up to [maximum upload size, MB]. Or email them later."
+         "kind": "note",
+         "label": "Have a URS, tender documents, a water analysis or drawings? We ask for them by email when we reply."
         },
         {
          "label": "Notes or questions",
@@ -8820,6 +8816,7 @@
     ]
    },
    "todo": [
+    "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
     "Products (2026-11-23): the form's first question gained \"I want standard equipment\" with a product radio; the requests table gained its row. The \"No charge\" cost for a product quote is an assumption to confirm (FD-02).",
     "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
     "Turnaround per request, for the requests table: URS review, compliance matrix, document review (one figure for loop, controls, fabrication, C&Q plan and FAT list reviews), scope review, feed water review, budget proposal, assessment, audit request (FD-01). Once filled, name each figure in its cell (gap review, matrix, proposal, document review), since the placeholder names then disappear",
@@ -9183,11 +9180,9 @@
          "help": "No connection? We diagnose from your readings and a call; on-site times do not change."
         },
         {
-         "label": "Alarm log and trend data",
-         "kind": "file",
-         "required": false,
-         "when": "Fault now",
-         "help": "A copy from the hours before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]."
+         "kind": "note",
+         "label": "Keep a copy of the alarm log and trend data from the hours before the first alarm. We ask for it by email when we reply.",
+         "when": "Fault now"
         },
         {
          "label": "Preferred window",
@@ -9329,11 +9324,9 @@
          ]
         },
         {
-         "label": "Files",
-         "kind": "file",
-         "required": false,
-         "when": "Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make",
-         "help": "Spares list, schedule, nameplate photos or change request, up to [maximum upload size, MB]."
+         "kind": "note",
+         "label": "Have a spares list, schedule, nameplate photos or change request? We ask for them by email when we reply.",
+         "when": "Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make"
         },
         {
          "label": "Notes",
@@ -9434,6 +9427,7 @@
     ]
    },
    "todo": [
+    "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
     "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer, dispatcher or nobody; if nobody, route 2 and the phone menu say so, with the form note's [out-of-hours form review time, hours] (buyer panel 2026-10-31).",
     "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition, here and on contact-proposal and contact-locations.",
     "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",

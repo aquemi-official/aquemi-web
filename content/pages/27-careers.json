@@ -152,10 +152,8 @@
        "help": "Your role, and which part of our work it would serve."
       },
       {
-       "kind": "file",
-       "label": "CV",
-       "required": true,
-       "accept": ".pdf,.docx"
+       "kind": "note",
+       "label": "Have your CV ready. We ask for it by email when we reply."
       }
      ]
     },
@@ -265,6 +263,7 @@
   ]
  },
  "todo": [
+  "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
   "Open roles: status and posting reference for each of the six roles ([status, posting reference]); posting reference format. At launch list only open roles, in the table, the form's role options and the meta; if none is open, say so in the roles intro and lead with the speculative application: the hero button becomes \"Send a speculative application\" to #apply (FD-40). Never publish all six as open with no team on the page: it reads as empty seats (FD-60, DR-028).",
   "Pay range per role (CAD per year or per hour), and the lead's commitment \"Every posting states its pay range\" (the meta's \"Pay range in every posting\" and the title's \"and pay\" with it; FD-40); confirm employee count against Ontario's 25-employee threshold and the provinces Aquemi posts in. The legal basis (\"as BC and Ontario law require\") left the page until counsel confirms it applies (OQ-87)",
   "Roles intro (pass 12, DR-028 rule 1): it no longer names who runs Aquemi; the team is shown on about only, by discipline and experience (MISSION; R7), and named people wait on FD-34 with consent. Never list a role here as held",

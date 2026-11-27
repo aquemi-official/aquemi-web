@@ -62,7 +62,7 @@
    "h": "Send what you have",
    "intro": "Rough numbers are fine; leave unknowns blank.",
    "submit": "Send to an engineer",
-   "note": "Files kept only as long as your enquiry needs them. {Privacy notice|privacy}",
+   "note": "{Privacy notice|privacy}",
    "steps": [
     {
      "title": "Your request",
@@ -413,10 +413,8 @@
        ]
       },
       {
-       "label": "Documents",
-       "kind": "file",
-       "required": false,
-       "help": "URS, tender documents, water analysis or drawings, up to [maximum upload size, MB]. Or email them later."
+       "kind": "note",
+       "label": "Have a URS, tender documents, a water analysis or drawings? We ask for them by email when we reply."
       },
       {
        "label": "Notes or questions",
@@ -586,6 +584,7 @@
   ]
  },
  "todo": [
+  "Files (2026-11-26): the forms are text-only while Web3Forms is on its free plan (no attachments). The file field here became a note saying files are asked for by email in the reply; its definition is in git history (this commit's parent) and comes back when the plan carries files.",
   "Products (2026-11-23): the form's first question gained \"I want standard equipment\" with a product radio; the requests table gained its row. The \"No charge\" cost for a product quote is an assumption to confirm (FD-02).",
   "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
   "Turnaround per request, for the requests table: URS review, compliance matrix, document review (one figure for loop, controls, fabrication, C&Q plan and FAT list reviews), scope review, feed water review, budget proposal, assessment, audit request (FD-01). Once filled, name each figure in its cell (gap review, matrix, proposal, document review), since the placeholder names then disappear",

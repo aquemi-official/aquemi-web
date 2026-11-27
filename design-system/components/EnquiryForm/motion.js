@@ -79,8 +79,9 @@ AQmotion.fx('EnquiryForm', function (root, m) {
    3. Send. Ported from Subframe Motion "An action in progress" (loading-button), MIT, (c) 2026 Subframe. The submit
       button's faces (label, pending spinner, alert) are stacked at one fixed footprint and spring-crossfade (opacity,
       a 3 px rise, a 2 px blur; stiffness 260, damping 34, mass 0.8: about 0.35 s). A blocked Send shows the alert for
-      1.4 s; an accepted Send shows the pending face while the page's handler answers (at least 0.45 s, so it never
-      flashes), then the label returns and the status line wipes in. The faces are aria-hidden: the button keeps its
+      1.4 s; an accepted Send shows the pending face while the form posts (aq:sending from parts/EnquiryForm.js wSend,
+      at least 0.45 s, so it never flashes), then on aq:sent the label returns and the status line wipes in; on
+      aq:failed the alert face shows and the line wipes in the same way. The faces are aria-hidden: the button keeps its
       label, and the status line (role="status") says what happened. */
 (function () {
   if (typeof document === 'undefined' || window.__aqFormFx) return; window.__aqFormFx = 1;
@@ -147,15 +148,20 @@ AQmotion.fx('EnquiryForm', function (root, m) {
     if (state === 'error') b._aqFace = setTimeout(function () { face(b, 'label') }, 1400);
   }
   window.AQformFace = face;
-  // Bubble phase: runs after the page's own submit handler (index.html), and only for a Send the form accepted
-  document.addEventListener('submit', function (ev) {
-    var fm = ev.target, b = fm.classList && fm.classList.contains('wform') && fm.querySelector('.aq-form__submit');
-    if (!b || !b.offsetParent) return;
-    var msg = fm.querySelector('.wform-msg'), anim = !still();
-    face(b, 'pending'); if (msg && anim) gsap.set(msg, { autoAlpha: 0 });
-    setTimeout(function () {
-      face(b, 'label');
-      if (msg && anim) gsap.fromTo(msg, { autoAlpha: 0, clipPath: 'inset(0 100% 0 0)' }, { autoAlpha: 1, clipPath: 'inset(0 0% 0 0)', duration: 0.4, ease: 'power2.out', clearProps: 'opacity,visibility,clipPath' });
-    }, 450);
+  // The send itself (parts/EnquiryForm.js wSend) says when it starts and how it ended; the faces follow
+  document.addEventListener('aq:sending', function (ev) {
+    var fm = ev.target, b = fm.querySelector && fm.querySelector('.aq-form__submit'); if (!b || !b.offsetParent) return;
+    var msg = fm.querySelector('.wform-msg'); fm._aqSendAt = Date.now();
+    face(b, 'pending'); if (msg && !still()) gsap.set(msg, { autoAlpha: 0 });
   });
+  function ended(ev, ok) {
+    var fm = ev.target, b = fm.querySelector && fm.querySelector('.aq-form__submit'); if (!b || !b.offsetParent) return;
+    var msg = fm.querySelector('.wform-msg'), wait = Math.max(0, 450 - (Date.now() - (fm._aqSendAt || 0)));
+    setTimeout(function () {
+      face(b, ok ? 'label' : 'error');
+      if (msg && !still()) gsap.fromTo(msg, { autoAlpha: 0, clipPath: 'inset(0 100% 0 0)' }, { autoAlpha: 1, clipPath: 'inset(0 0% 0 0)', duration: 0.4, ease: 'power2.out', clearProps: 'opacity,visibility,clipPath' });
+    }, wait);
+  }
+  document.addEventListener('aq:sent', function (ev) { ended(ev, true) });
+  document.addEventListener('aq:failed', function (ev) { ended(ev, false) });
 })();

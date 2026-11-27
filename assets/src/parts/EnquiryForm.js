@@ -49,6 +49,12 @@ function wFormNote(f){var tel=/^tel:/i.test(f.link||''),lk=tel?wBtn(f.action||'C
 function wReq(fs){return fs.filter(function(f){return f.required&&f.kind!=='note'&&f._show!==false}).length}
 function wReqNow(fm){return [].filter.call(fm.querySelectorAll('[required],[data-required]'),function(x){var w=x.closest('[data-when]');return !w||!w.hidden}).length}
 function wReqText(n){return '<span class="wform-req">'+n+' required</span>'}
+/* Honeypot (Web3Forms' botcheck): a checkbox no visitor sees or tabs to; a submission with it ticked is dropped as a
+   bot's, quietly (the status line says sent). Not a field: never numbered, counted or validated. */
+function wHoney(){return '<input class="aq-form__hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">'}
+/* What the form says once sent (b.sent, one line) and what it is called in the email's subject (b.submit): on the form
+   element, where wSend reads them. */
+function wFormAttrs(b){return ' data-sent="'+e(b.sent||'')+'" data-name="'+e(b.submit||'Send')+'"'}
 function wField(f,i,ref){if(f.kind==='note')return wFormNote(f);var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f.required?' required':'',hid=id+'_help',
  when=f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'',
  num=typeof ref==='string'?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
@@ -65,12 +71,12 @@ function wField(f,i,ref){if(f.kind==='note')return wFormNote(f);var id='wf'+(f._
 /* EnquiryForm in steps: each step is one numbered sheet section (Step 1 = 1.0), with a progress list, Back and Continue.
    Items are numbered 1.1, 1.2 … in order; notes take no number. */
 function wFormSteps(b){var n=0,S=b.steps,k=S.length,all=[];S.forEach(function(s){(s.fields||[]).forEach(function(fd){fd._n=n++;all.push(fd)})});
- return '<form class="aq-form aq-form--steps wform" novalidate>'
+ return '<form class="aq-form aq-form--steps wform" novalidate'+wFormAttrs(b)+'>'
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+k+' steps · '+wReqText(wReq(all))+'</span></p>'
   +'<ol class="aq-form__progress">'+S.map(function(s,i){return '<li'+(i?'':' aria-current="step"')+'>'+tx(s.title)+'</li>'}).join('')+'</ol>'
   +S.map(function(s,i){var q=0;return '<fieldset class="aq-form__section aq-form__step" data-step="'+i+'"'+(i?' hidden':'')+'><legend class="aq-form__legend"><span class="aq-form__num">'+(i+1)+'.0</span> Step '+(i+1)+' of '+k+': '+tx(s.title)+'</legend>'
    +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd){return wField(fd,fd._n,fd.kind==='note'||fd._show===false?'':(i+1)+'.'+(++q))}).join('')+'</div>'
-   +'<div class="aq-form__actions">'+(i?'<button class="aq-btn aq-btn--secondary" type="button" data-step-go="'+(i-1)+'">Back</button>':'')+(i<k-1?'<button class="aq-btn aq-btn--primary" type="button" data-step-go="'+(i+1)+'">'+tx(s.next||'Continue')+' <span class="aq-btn__arrow">→</span></button>':'<button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button>')+'</div>'
+   +'<div class="aq-form__actions">'+(i?'<button class="aq-btn aq-btn--secondary" type="button" data-step-go="'+(i-1)+'">Back</button>':'')+(i<k-1?'<button class="aq-btn aq-btn--primary" type="button" data-step-go="'+(i+1)+'">'+tx(s.next||'Continue')+' <span class="aq-btn__arrow">→</span></button>':''+wHoney()+'<button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button>')+'</div>'
    +(i===k-1&&b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+(i===k-1?'<span class="aq-small wform-msg" role="status"></span>':'')+'</fieldset>'}).join('')
   +'</form>'}
 /* Item numbers of the fields showing, per numbered section ("2.0" numbers its items 2.1, 2.2 …); a ref inside a hidden
@@ -118,3 +124,35 @@ document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.targe
  if(wCheck(st).length){ev.preventDefault();ev.stopImmediatePropagation()}},true);
 document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
  if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
+/* Send (bubble phase, after the validation above let the submit through). The form posts itself to FORMS.endpoint as
+   multipart form data, files included: every field under its label as shown on the page, minus the fields inside a hidden
+   conditional block and file inputs with nothing chosen, plus what Web3Forms reads: access_key, subject ("<submit
+   label> · <page name>"), from_name, replyto (the visitor's email, so Reply in Gmail answers them), and page (the page
+   id) so the mail says which form it came from. The status line (role="status") says what happened: "Sending…", then the
+   block's sent line (default "Sent. We reply by email to <address>.") or "Not sent. Try again, or email hello@…". Once
+   sent the submit stays disabled until the visitor changes an answer, so a second click never sends twice. With no key
+   (FORMS.key empty) nothing is posted and the line says the form is not connected yet. The form fires aq:sending,
+   aq:sent and aq:failed for the motion layer (EnquiryForm/motion.js: pending face, status wipe). */
+function wSay(fm,t){var m=fm.querySelector('.wform-msg');if(m)m.textContent=t}
+function wSend(fm){if(fm.dataset.sending)return;var sb=fm.querySelector('.aq-form__submit'),hp=fm.querySelector('.aq-form__hp');
+ var mail=[].map.call(fm.querySelectorAll('input[type="email"]'),function(x){return String(x.value||'').trim()}).filter(Boolean)[0]||'';
+ function done(ok,t){delete fm.dataset.sending;wSay(fm,t);if(ok&&sb)sb.disabled=true;fm.dispatchEvent(new CustomEvent(ok?'aq:sent':'aq:failed',{bubbles:true}))}
+ if(!FORMS.key){wSay(fm,'This form is not connected yet. Email '+CONTACT.email+' instead.');return}
+ var sent=fm.dataset.sent||'Sent. We reply by email'+(mail?' to '+mail:'')+'.';
+ if(hp&&hp.checked){done(true,sent);return}
+ /* The fields go under their labels as the visitor read them ("Documents you want"), not the slugs the inputs are named by */
+ var raw=new FormData(fm),fd=new FormData(),lab={};raw.delete('botcheck');
+ [].forEach.call(fm.querySelectorAll('[data-when][hidden] [name]'),function(x){raw.delete(x.name)});
+ [].forEach.call(fm.querySelectorAll('input[type="file"]'),function(x){if(!x.files||!x.files.length)raw.delete(x.name)});
+ [].forEach.call(fm.querySelectorAll('[name]'),function(x){if(lab[x.name])return;var fd0=x.closest('.aq-field'),l=fd0&&fd0.querySelector('.aq-field__label'),t=l?l.cloneNode(true):null;
+  if(t){[].forEach.call(t.querySelectorAll('.aq-form__ref,.aq-field__optional'),function(z){z.remove()});lab[x.name]=t.textContent.replace(/\s+/g,' ').trim()}});
+ raw.forEach(function(v,k){fd.append(lab[k]||k,v)});
+ var p=wp(AQ.page);fd.append('access_key',FORMS.key);fd.append('subject',(fm.dataset.name||'Form')+' · '+(p&&(p.nav_label||p.title)||'Aquemi'));
+ fd.append('from_name','Aquemi website');fd.append('page',AQ.page||'');if(mail)fd.append('replyto',mail);
+ fm.dataset.sending='1';wSay(fm,'Sending…');fm.dispatchEvent(new CustomEvent('aq:sending',{bubbles:true}));
+ fetch(FORMS.endpoint,{method:'POST',body:fd,headers:{Accept:'application/json'}}).then(function(r){return r.json()}).then(function(j){
+  if(j&&j.success)done(true,sent);else done(false,'Not sent'+(j&&j.message?': '+j.message:'')+'. Try again, or email '+CONTACT.email+'.')
+ }).catch(function(){done(false,'Not sent. Check your connection and try again, or email '+CONTACT.email+'.')})}
+document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;ev.preventDefault();wSend(fm)});
+document.addEventListener('input',function(ev){var fm=ev.target.closest&&ev.target.closest('form.wform'),sb=fm&&fm.querySelector('.aq-form__submit');if(sb&&sb.disabled){sb.disabled=false;wSay(fm,'')}});
+
